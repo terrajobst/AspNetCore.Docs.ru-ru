@@ -11,18 +11,18 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 4173a2ef539859031674fb613b25031e3b343c67
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: cff6f171432febac5ec3e7adf9cf77953e0ece2d
+ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера, HTTP.sys, в ASP.NET Core
 
 По [Tom Dykstra](http://github.com/tdykstra) и [Ross Крис](https://github.com/Tratcher)
 
 > [!NOTE]
-> Этот раздел относится только к ASP.NET Core 2.0 и более поздних версий. В более ранних версиях ASP.NET Core, называется HTTP.sys [WebListener](WebListener.md).
+> Этот раздел относится только к ASP.NET Core 2.0 и более поздних версий. В более ранних версиях ASP.NET Core, называется HTTP.sys [WebListener](xref:fundamentals/servers/weblistener).
 
 Компонент HTTP.sys — [веб-сервер для ASP.NET Core](index.md) , которое будет выполняться только в Windows. Она была основана на [драйвер режима ядра Http.Sys](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx). Компонент HTTP.sys — это альтернатива [Kestrel](kestrel.md) , где есть некоторые функции, которые не Kestel. **HTTP.sys не может использоваться с IIS или IIS Express, как оно не совместимо с [модуль ASP.NET Core](aspnet-core-module.md).**
 
@@ -80,7 +80,7 @@ HTTP.sys полезен для развертываний, где нужно п�
 
 * Вызовите `UseHttpSys` метод расширения в `WebHostBuilder` в вашей `Main` метод, указывая любой [параметры HTTP.sys](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs) , требуется, как показано в следующем примере:
 
-  [!code-csharp[](HttpSys/sample/Program.cs?name=snippet_Main&highlight=11-19)]
+  [!code-csharp[](httpsys/sample/Program.cs?name=snippet_Main&highlight=11-19)]
 
 ### <a name="configure-httpsys-options"></a>Настройка параметров HTTP.sys
 
@@ -90,7 +90,7 @@ HTTP.sys полезен для развертываний, где нужно п�
 
 Можно задать максимальное число открытых подключений TCP для всего приложения на следующий код в *Program.cs*:
 
-[!code-csharp[](HttpSys/sample/Program.cs?name=snippet_Options&highlight=5)]
+[!code-csharp[](httpsys/sample/Program.cs?name=snippet_Options&highlight=5)]
 
 Максимальное число подключений — неограниченное (null) по умолчанию.
 
@@ -107,7 +107,7 @@ public IActionResult MyActionMethod()
 
 Ниже приведен пример, в котором показано, как настроить ограничения для всего приложения, каждый запрос:
 
-[!code-csharp[](HttpSys/sample/Program.cs?name=snippet_Options&highlight=6)]
+[!code-csharp[](httpsys/sample/Program.cs?name=snippet_Options&highlight=6)]
 
 Можно переопределить параметр на конкретный запрос в *файла Startup.cs*:
 
@@ -121,7 +121,7 @@ public IActionResult MyActionMethod()
 
 По умолчанию ASP.NET Core привязывается к `http://localhost:5000`. Чтобы настроить префиксы URL-адреса и порты, можно использовать `UseUrls` метод расширения `urls` аргумент командной строки, переменной среды ASPNETCORE_URLS или `UrlPrefixes` свойство [HttpSysOptions](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs). Следующий пример кода использует `UrlPrefixes`.
 
-[!code-csharp[](HttpSys/sample/Program.cs?name=snippet_Main&highlight=17)]
+[!code-csharp[](httpsys/sample/Program.cs?name=snippet_Main&highlight=17)]
 
 Преимущество `UrlPrefixes` , могут быть получены сообщение об ошибке сразу же при попытке добавить префикс, который неправильно отформатирован. Преимущество `UseUrls` (совместно используется с `urls` и ASPNETCORE_URLS) — что можно легко переключаться между Kestrel и HTTP.sys.
 
