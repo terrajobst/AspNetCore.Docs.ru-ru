@@ -1,0 +1,19 @@
+## <a name="add-initial-migration-and-update-the-database"></a><span data-ttu-id="1dfaf-101">Добавление первоначальной миграции и обновления базы данных</span><span class="sxs-lookup"><span data-stu-id="1dfaf-101">Add initial migration and update the database</span></span>
+
+* <span data-ttu-id="1dfaf-102">Откройте командную строку и перейдите в каталог проекта.</span><span class="sxs-lookup"><span data-stu-id="1dfaf-102">Open a command prompt and navigate to the project directory.</span></span> <span data-ttu-id="1dfaf-103">(Каталог, содержащий *файла Startup.cs* файл).</span><span class="sxs-lookup"><span data-stu-id="1dfaf-103">(The directory containing the *Startup.cs* file).</span></span>
+
+* <span data-ttu-id="1dfaf-104">В командной строке выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="1dfaf-104">Run the following commands in the command prompt:</span></span>
+
+  ```console
+  dotnet restore
+  dotnet ef migrations add Initial
+  dotnet ef database update
+  ```
+  
+  <span data-ttu-id="1dfaf-105">[.NET core](http://go.microsoft.com/fwlink/?LinkID=517853) — это реализация кросс платформенных .NET.</span><span class="sxs-lookup"><span data-stu-id="1dfaf-105">[.NET Core](http://go.microsoft.com/fwlink/?LinkID=517853) is a cross-platform implementation of .NET.</span></span> <span data-ttu-id="1dfaf-106">Вот, выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="1dfaf-106">Here is what these commands do:</span></span>
+
+  * <span data-ttu-id="1dfaf-107">`dotnet restore`: Загружает пакеты NuGet, указанный в *.csproj* файла.</span><span class="sxs-lookup"><span data-stu-id="1dfaf-107">`dotnet restore`: Downloads the NuGet packages specified in the *.csproj* file.</span></span>
+  * <span data-ttu-id="1dfaf-108">`dotnet ef migrations add Initial`Запускает команду CLI основных компонентов .NET Framework сущности миграции и создает первоначальной миграции.</span><span class="sxs-lookup"><span data-stu-id="1dfaf-108">`dotnet ef migrations add Initial` Runs the Entity Framework .NET Core CLI migrations command and creates the initial migration.</span></span> <span data-ttu-id="1dfaf-109">Параметр после «добавить» является имя, назначенное для миграции.</span><span class="sxs-lookup"><span data-stu-id="1dfaf-109">The parameter after "add" is a name that you assign to the migration.</span></span> <span data-ttu-id="1dfaf-110">Здесь присвоении миграции «Начальный» так как это миграции исходной базы данных.</span><span class="sxs-lookup"><span data-stu-id="1dfaf-110">Here you're naming the migration "Initial" because it's the initial database migration.</span></span> <span data-ttu-id="1dfaf-111">Эта операция создает *и перенос данных и\<даты времени > _Initial.cs* файл, содержащий команды миграции, чтобы добавить *фильма* таблице в базе данных.</span><span class="sxs-lookup"><span data-stu-id="1dfaf-111">This operation creates the *Data/Migrations/\<date-time>_Initial.cs* file containing the migration commands to add the *Movie* table to the database.</span></span>
+  * <span data-ttu-id="1dfaf-112">`dotnet ef database update`Обновляет базу данных переноса, который мы только что создали.</span><span class="sxs-lookup"><span data-stu-id="1dfaf-112">`dotnet ef database update`  Updates the database with the migration we just created.</span></span>
+
+<span data-ttu-id="1dfaf-113">Вы узнаете о базы данных и строку соединения в следующем уроке.</span><span class="sxs-lookup"><span data-stu-id="1dfaf-113">You'll learn about the database and connection string in the next tutorial.</span></span> <span data-ttu-id="1dfaf-114">Вы узнаете об изменениях модели данных в [добавить поле](xref:tutorials/first-mvc-app/new-field) учебника.</span><span class="sxs-lookup"><span data-stu-id="1dfaf-114">You'll learn about data model changes in the [Add a field](xref:tutorials/first-mvc-app/new-field) tutorial.</span></span>

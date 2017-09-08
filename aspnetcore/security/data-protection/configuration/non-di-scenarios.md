@@ -1,0 +1,40 @@
+---
+title: "Зависимые сценарии не DI"
+author: rick-anderson
+description: 
+keywords: ASP.NET Core
+ms.author: riande
+manager: wpickett
+ms.date: 10/14/2016
+ms.topic: article
+ms.assetid: a7d8a962-80ff-48e3-96f6-8472b7ba2df9
+ms.technology: aspnet
+ms.prod: asp.net-core
+uid: security/data-protection/configuration/non-di-scenarios
+ms.openlocfilehash: 54a930c26f9f48ea0e6f7865e2927bcde0f4d6c0
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/11/2017
+---
+# <a name="non-di-aware-scenarios"></a><span data-ttu-id="c7df5-103">Зависимые сценарии не DI</span><span class="sxs-lookup"><span data-stu-id="c7df5-103">Non DI aware scenarios</span></span>
+
+<span data-ttu-id="c7df5-104">Система защиты данных обычно проектируется [добавляется в контейнер службы](../consumer-apis/overview.md) и передавать зависимые компоненты через механизм DI.</span><span class="sxs-lookup"><span data-stu-id="c7df5-104">The data protection system is normally designed [to be added to a service container](../consumer-apis/overview.md) and to be provided to dependent components via a DI mechanism.</span></span> <span data-ttu-id="c7df5-105">Тем не менее могут быть некоторые случаи, когда это нецелесообразно, особенно при импорте существующего приложения в системе.</span><span class="sxs-lookup"><span data-stu-id="c7df5-105">However, there may be some cases where this is not feasible, especially when importing the system into an existing application.</span></span>
+
+<span data-ttu-id="c7df5-106">Для поддержки следующих сценариев пакет Microsoft.AspNetCore.DataProtection.Extensions содержит конкретный тип DataProtectionProvider, которая предлагает простой способ использования системы защиты данных минуя DI конкретного пути кода.</span><span class="sxs-lookup"><span data-stu-id="c7df5-106">To support these scenarios the package Microsoft.AspNetCore.DataProtection.Extensions provides a concrete type DataProtectionProvider which offers a simple way to use the data protection system without going through DI-specific code paths.</span></span> <span data-ttu-id="c7df5-107">Сам тип реализует IDataProtectionProvider и создав его так же легко, как поставщик DirectoryInfo, где должно храниться этот поставщик криптографических ключей.</span><span class="sxs-lookup"><span data-stu-id="c7df5-107">The type itself implements IDataProtectionProvider, and constructing it is as easy as providing a DirectoryInfo where this provider's cryptographic keys should be stored.</span></span>
+
+<span data-ttu-id="c7df5-108">Пример:</span><span class="sxs-lookup"><span data-stu-id="c7df5-108">For example:</span></span>
+
+<span data-ttu-id="c7df5-109">[!code-none[Main](non-di-scenarios/_static/nodisample1.cs)]</span><span class="sxs-lookup"><span data-stu-id="c7df5-109">[!code-none[Main](non-di-scenarios/_static/nodisample1.cs)]</span></span>
+
+>[!WARNING]
+> <span data-ttu-id="c7df5-110">По умолчанию DataProtectionProvider конкретный тип, не шифруются необработанные материал ключа перед его сохранении в файловой системе.</span><span class="sxs-lookup"><span data-stu-id="c7df5-110">By default the DataProtectionProvider concrete type does not encrypt raw key material before persisting it to the file system.</span></span> <span data-ttu-id="c7df5-111">Это необходимо для поддержки сценариев, где совместное использование точек разработчика к сети, в этом случае система защиты данных не может вывести автоматически механизм соответствующие статических ключа шифрования.</span><span class="sxs-lookup"><span data-stu-id="c7df5-111">This is to support scenarios where the developer points to a network share, in which case the data protection system cannot automatically deduce an appropriate at-rest key encryption mechanism.</span></span>
+>
+><span data-ttu-id="c7df5-112">Кроме того, не конкретный тип DataProtectionProvider [изолировать приложения](overview.md#data-protection-configuration-per-app-isolation) по умолчанию, так что все приложения указывали на том же каталоге ключа могут совместно использовать полезных данных до тех пор, пока их параметры цели соответствуют.</span><span class="sxs-lookup"><span data-stu-id="c7df5-112">Additionally, the DataProtectionProvider concrete type does not [isolate applications](overview.md#data-protection-configuration-per-app-isolation) by default, so all applications pointed at the same key directory can share payloads as long as their purpose parameters match.</span></span>
+
+<span data-ttu-id="c7df5-113">Разработчик приложения можно преодолеть эти при необходимости.</span><span class="sxs-lookup"><span data-stu-id="c7df5-113">The application developer can address both of these if desired.</span></span> <span data-ttu-id="c7df5-114">Конструктор DataProtectionProvider принимает [обратного вызова необязательная конфигурация](overview.md#data-protection-configuration-callback) которого можно использовать для настройки поведения системы.</span><span class="sxs-lookup"><span data-stu-id="c7df5-114">The DataProtectionProvider constructor accepts an [optional configuration callback](overview.md#data-protection-configuration-callback) which can be used to tweak the behaviors of the system.</span></span> <span data-ttu-id="c7df5-115">В следующем примере показано восстановление изоляцию через явный вызов SetApplicationName, а также демонстрирует настройки системы для автоматического шифрования материализованного ключа с помощью Windows DPAPI.</span><span class="sxs-lookup"><span data-stu-id="c7df5-115">The sample below demonstrates restoring isolation via an explicit call to SetApplicationName, and it also demonstrates configuring the system to automatically encrypt persisted keys using Windows DPAPI.</span></span> <span data-ttu-id="c7df5-116">Если каталог указывает на общий ресурс UNC, вы можете распределять общий сертификат на всех компьютерах, соответствующих и настроить систему, чтобы вместо этого используйте шифрование на основе сертификата через вызов [ProtectKeysWithCertificate](overview.md#configuring-x509-certificate).</span><span class="sxs-lookup"><span data-stu-id="c7df5-116">If the directory points to a UNC share, you may wish to distribute a shared certificate across all relevant machines and to configure the system to use certificate-based encryption instead via a call to [ProtectKeysWithCertificate](overview.md#configuring-x509-certificate).</span></span>
+
+<span data-ttu-id="c7df5-117">[!code-none[Main](non-di-scenarios/_static/nodisample2.cs)]</span><span class="sxs-lookup"><span data-stu-id="c7df5-117">[!code-none[Main](non-di-scenarios/_static/nodisample2.cs)]</span></span>
+
+>[!TIP]
+> <span data-ttu-id="c7df5-118">Экземпляры этого типа DataProtectionProvider много времени.</span><span class="sxs-lookup"><span data-stu-id="c7df5-118">Instances of the DataProtectionProvider concrete type are expensive to create.</span></span> <span data-ttu-id="c7df5-119">Если приложение поддерживает несколько экземпляров этого типа, и они указывает на том же каталоге хранилища ключей, может наблюдаться снижение производительности приложения.</span><span class="sxs-lookup"><span data-stu-id="c7df5-119">If an application maintains multiple instances of this type and if they're all pointing at the same key storage directory, application performance may be degraded.</span></span> <span data-ttu-id="c7df5-120">Предполагаемое использование — что разработчик приложения после создания экземпляра этого типа, затем сохранить максимально повторное использование одной ссылки на этот.</span><span class="sxs-lookup"><span data-stu-id="c7df5-120">The intended usage is that the application developer instantiate this type once then keep reusing this single reference as much as possible.</span></span> <span data-ttu-id="c7df5-121">Тип DataProtectionProvider и все IDataProtector экземпляры, созданные из этого являются потокобезопасными для нескольких клиентов.</span><span class="sxs-lookup"><span data-stu-id="c7df5-121">The DataProtectionProvider type and all IDataProtector instances created from it are thread-safe for multiple callers.</span></span>

@@ -1,0 +1,51 @@
+---
+title: "Снятие защиты полезных данных, ключи которых были отозваны"
+author: rick-anderson
+description: 
+keywords: ASP.NET Core
+ms.author: riande
+manager: wpickett
+ms.date: 10/14/2016
+ms.topic: article
+ms.assetid: 6c4e6591-45d2-4d25-855e-062ad352d648
+ms.technology: aspnet
+ms.prod: asp.net-core
+uid: security/data-protection/consumer-apis/dangerous-unprotect
+ms.openlocfilehash: 44f21f380b994f46a8bb7368bca0cfc6e438ec4d
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/11/2017
+---
+# <a name="unprotecting-payloads-whose-keys-have-been-revoked"></a><span data-ttu-id="7252c-103">Снятие защиты полезных данных, ключи которых были отозваны</span><span class="sxs-lookup"><span data-stu-id="7252c-103">Unprotecting payloads whose keys have been revoked</span></span>
+
+<a name=data-protection-consumer-apis-dangerous-unprotect></a>
+
+<span data-ttu-id="7252c-104">В основном защиты данных ASP.NET Core API-интерфейсы не предназначены для неопределенного сохраняемости Конфиденциально полезных данных.</span><span class="sxs-lookup"><span data-stu-id="7252c-104">The ASP.NET Core data protection APIs are not primarily intended for indefinite persistence of confidential payloads.</span></span> <span data-ttu-id="7252c-105">Другие технологии, такие как [CNG Windows DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) и [Azure Rights Management](https://technet.microsoft.com/library/jj585024.aspx) больше подходят для сценария хранилища не ограничена, и они обладают возможностями соответственно строгого управления ключами.</span><span class="sxs-lookup"><span data-stu-id="7252c-105">Other technologies like [Windows CNG DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) and [Azure Rights Management](https://technet.microsoft.com/library/jj585024.aspx) are more suited to the scenario of indefinite storage, and they have correspondingly strong key management capabilities.</span></span> <span data-ttu-id="7252c-106">С другой стороны, нет ничего запретить разработчик с помощью интерфейсов API защиты данных ASP.NET Core для долгосрочной защиты конфиденциальных данных.</span><span class="sxs-lookup"><span data-stu-id="7252c-106">That said, there is nothing prohibiting a developer from using the ASP.NET Core data protection APIs for long-term protection of confidential data.</span></span> <span data-ttu-id="7252c-107">Ключи никогда не удаляются из ключей, поэтому IDataProtector.Unprotect всегда можно восстановить существующий полезных данных, при условии, что ключи в наличии и допустимости.</span><span class="sxs-lookup"><span data-stu-id="7252c-107">Keys are never removed from the key ring, so IDataProtector.Unprotect can always recover existing payloads as long as the keys are available and valid.</span></span>
+
+<span data-ttu-id="7252c-108">Однако проблема возникает, когда разработчик пытается снять защиту данных, защищенный с разделом отозванных как IDataProtector.Unprotect в этом случае будет вызвано исключение.</span><span class="sxs-lookup"><span data-stu-id="7252c-108">However, an issue arises when the developer tries to unprotect data that has been protected with a revoked key, as IDataProtector.Unprotect will throw an exception in this case.</span></span> <span data-ttu-id="7252c-109">Это может быть удобно при кратковременных или временных полезных данных (например, токены проверки подлинности), как эти виды полезных данных можно легко воссоздать в системе и в худшем случае посетитель узла возможно, потребуется снова войти в систему.</span><span class="sxs-lookup"><span data-stu-id="7252c-109">This might be fine for short-lived or transient payloads (like authentication tokens), as these kinds of payloads can easily be recreated by the system, and at worst the site visitor might be required to log in again.</span></span> <span data-ttu-id="7252c-110">Однако для сохраненного полезных данных, имеющих Unprotect throw может привести к потере недопустимых значений.</span><span class="sxs-lookup"><span data-stu-id="7252c-110">But for persisted payloads, having Unprotect throw could lead to unacceptable data loss.</span></span>
+
+## <a name="ipersisteddataprotector"></a><span data-ttu-id="7252c-111">IPersistedDataProtector</span><span class="sxs-lookup"><span data-stu-id="7252c-111">IPersistedDataProtector</span></span>
+
+<span data-ttu-id="7252c-112">Для поддержки сценария, что полезные данные, необходимо снять защиту даже в случае отозванных ключи, система защиты данных содержит тип IPersistedDataProtector.</span><span class="sxs-lookup"><span data-stu-id="7252c-112">To support the scenario of allowing payloads to be unprotected even in the face of revoked keys, the data protection system contains an IPersistedDataProtector type.</span></span> <span data-ttu-id="7252c-113">Чтобы получить экземпляр IPersistedDataProtector, получить экземпляр IDataProtector в обычном и попробуйте преобразовать IDataProtector для IPersistedDataProtector.</span><span class="sxs-lookup"><span data-stu-id="7252c-113">To get an instance of IPersistedDataProtector, simply get an instance of IDataProtector in the normal fashion and try casting the IDataProtector to IPersistedDataProtector.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="7252c-114">Не все экземпляры IDataProtector может быть приведен к IPersistedDataProtector.</span><span class="sxs-lookup"><span data-stu-id="7252c-114">Not all IDataProtector instances can be cast to IPersistedDataProtector.</span></span> <span data-ttu-id="7252c-115">Разработчикам следует использовать в C# как оператор или аналогичные, чтобы избежать исключений среды выполнения причиной недопустимые приведения, они должны быть подготовлены к соответствующим образом обрабатывать случаи сбоя.</span><span class="sxs-lookup"><span data-stu-id="7252c-115">Developers should use the C# as operator or similar to avoid runtime exceptions caused by invalid casts, and they should be prepared to handle the failure case appropriately.</span></span>
+
+<span data-ttu-id="7252c-116">IPersistedDataProtector предоставляет поверхность следующие API:</span><span class="sxs-lookup"><span data-stu-id="7252c-116">IPersistedDataProtector exposes the following API surface:</span></span>
+
+```csharp
+DangerousUnprotect(byte[] protectedData, bool ignoreRevocationErrors,
+     out bool requiresMigration, out bool wasRevoked) : byte[]
+   ```
+
+<span data-ttu-id="7252c-117">Этот API принимает защищенных полезных данных (в виде массива байтов) и возвращает незащищенных полезных данных.</span><span class="sxs-lookup"><span data-stu-id="7252c-117">This API takes the protected payload (as a byte array) and returns the unprotected payload.</span></span> <span data-ttu-id="7252c-118">Нет ни одна перегрузка на основе строк.</span><span class="sxs-lookup"><span data-stu-id="7252c-118">There is no string-based overload.</span></span> <span data-ttu-id="7252c-119">Ниже приведены два выходных параметров.</span><span class="sxs-lookup"><span data-stu-id="7252c-119">The two out parameters are as follows.</span></span>
+
+* <span data-ttu-id="7252c-120">requiresMigration: установлено значение true, если ключ, используемый для защиты этого полезные данные больше не по умолчанию активного ключа, например, старый ключ, используемый для защиты этого полезные данные и ключ операции отката с момента откроется месте.</span><span class="sxs-lookup"><span data-stu-id="7252c-120">requiresMigration: will be set to true if the key used to protect this payload is no longer the active default key, e.g., the key used to protect this payload is old and a key rolling operation has since taken place.</span></span> <span data-ttu-id="7252c-121">Вызывающий объект можете рассмотреть возможность размещения полезных данных в зависимости от их бизнес-требованиям.</span><span class="sxs-lookup"><span data-stu-id="7252c-121">The caller may wish to consider reprotecting the payload depending on their business needs.</span></span>
+
+* <span data-ttu-id="7252c-122">wasRevoked: будет присвоено значение true, если ключ, используемый для защиты этого полезных данных был отозван.</span><span class="sxs-lookup"><span data-stu-id="7252c-122">wasRevoked: will be set to true if the key used to protect this payload was revoked.</span></span>
+
+>[!WARNING]
+> <span data-ttu-id="7252c-123">Соблюдайте осторожность при передаче ignoreRevocationErrors: значение true, чтобы метод DangerousUnprotect.</span><span class="sxs-lookup"><span data-stu-id="7252c-123">Exercise extreme caution when passing ignoreRevocationErrors: true to the DangerousUnprotect method.</span></span> <span data-ttu-id="7252c-124">Если после вызова этого метода wasRevoked значение равно true, отозвать ключ, используемый для защиты этого полезные данные, и подлинность полезных данных, которые должны рассматриваться как подозрительная.</span><span class="sxs-lookup"><span data-stu-id="7252c-124">If after calling this method the wasRevoked value is true, then the key used to protect this payload was revoked, and the payload's authenticity should be treated as suspect.</span></span> <span data-ttu-id="7252c-125">В этом случае только продолжают работать в незащищенном полезных данных при наличии некоторую уверенность в отдельном что его подлинность, например, что он поступающих от защищенную базу данных, а не отправки клиентом ненадежных веб.</span><span class="sxs-lookup"><span data-stu-id="7252c-125">In this case only continue operating on the unprotected payload if you have some separate assurance that it is authentic, e.g. that it's coming from a secure database rather than being sent by an untrusted web client.</span></span>
+
+<span data-ttu-id="7252c-126">[!code-none[Main](dangerous-unprotect/samples/dangerous-unprotect.cs)]</span><span class="sxs-lookup"><span data-stu-id="7252c-126">[!code-none[Main](dangerous-unprotect/samples/dangerous-unprotect.cs)]</span></span>
