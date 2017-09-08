@@ -11,11 +11,11 @@ ms.assetid: 0dd63913-a041-48b6-96a4-3aeaedbdf5d0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: ad34a86c90c06dcddeeba7a0deba95f8057b4513
-ms.sourcegitcommit: def90564eff4adfeed0a8e511e4c201b040e9a5e
+ms.openlocfilehash: 7d216bc07d0a8d739f0cecbc5b571b6144c13e61
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/26/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="creating-a-complex-data-model---ef-core-with-aspnet-core-mvc-tutorial-5-of-10"></a>Создание сложных данных модели - Core EF учебнику ASP.NET Core MVC (5, 10)
 
@@ -73,7 +73,7 @@ Contoso университета примера веб-приложения по
 
 [!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
 
-`StringLength` Атрибут не предотвратить ввода пробелы в имени пользователя. Можно использовать `RegularExpression` атрибутов для применения ограничений входных данных. Например следующий код требуются первого символа в записываются прописными буквами и остальные символы преобразуются в алфавитном порядке.
+`StringLength` Атрибут не предотвратить ввода пробелы в имени пользователя. Можно использовать `RegularExpression` атрибутов для применения ограничений входных данных. Например следующий код требует первого символа в записываются прописными буквами и остальные символы преобразуются в алфавитном порядке:
 
 ```csharp
 [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
@@ -245,7 +245,7 @@ public int InstructorID { get; set; }
 public int CourseID { get; set; }
 ```
 
-По умолчанию платформа Entity Framework предполагается генерировать значений первичного ключа в базе данных. Это требуется для большинства сценариев. Однако для набора сущностей, будет использовать курса определяемый пользователем номер серии 1000 для одного подразделения ряд 2000 для разных отделов и так далее.
+По умолчанию Entity Framework предполагает генерировать значений первичного ключа в базе данных. Это требуется для большинства сценариев. Однако для набора сущностей, будет использовать курса определяемый пользователем номер серии 1000 для одного подразделения ряд 2000 для разных отделов и так далее.
 
 `DatabaseGenerated` Атрибут также может использоваться для создания значения по умолчанию, как в случае столбцов базы данных, используемых для записи даты строки был создан или обновлен.  Дополнительные сведения см. в разделе [созданные свойства](https://docs.microsoft.com/ef/core/modeling/generated-properties).
 

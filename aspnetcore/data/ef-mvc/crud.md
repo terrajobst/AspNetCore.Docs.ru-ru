@@ -11,11 +11,11 @@ ms.assetid: 6e1cd570-40f1-4b24-8b6e-7d2d27758f18
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/crud
-ms.openlocfilehash: b99a58d77d4f1751753ae576ade4bd6dd981fbbf
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 855f060a6404dedff310b288ada9738689069ceb
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>Создания, чтения, обновления и удаления - Core EF учебнику Core ASP.NET MVC (часть 2 из 10)
 
@@ -96,7 +96,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 ### <a name="add-enrollments-to-the-details-view"></a>Добавить в представлении сведений о регистрации
 
-Откройте *Views/Students/Details.cshtml*. Каждое поле отображается с помощью `DisplayNameFor` и `DisplayFor` вспомогательного приложения, как показано в следующем примере:
+Откройте *Views/Students/Details.cshtml*. Каждое поле отображается с помощью `DisplayNameFor` и `DisplayFor` вспомогательные объекты, как показано в следующем примере:
 
 [!code-html[](intro/samples/cu/Views/Students/Details.cshtml?range=13-18&highlight=2,5)]
 
@@ -274,7 +274,7 @@ public class Student
 
 Чтобы освободить ресурсы, занятые подключения к базе данных, экземпляр контекста должен быть удален как можно быстрее после завершения с ним. Встроенная ASP.NET Core [внедрения зависимостей](../../fundamentals/dependency-injection.md) берет на себя эту задачу для вас.
 
-В *файла Startup.cs* вызове [метод расширения AddDbContext](https://github.com/aspnet/EntityFramework/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) для подготовки `DbContext` класс в контейнере ASP.NET DI. Что метод задает время существования службы `Scoped` по умолчанию. `Scoped`означает время существования объекта контекста совпадает с временем жизни запроса web, и `Dispose` метод автоматически вызывается в конце веб-запроса.
+В *файла Startup.cs*, можно вызвать [метод расширения AddDbContext](https://github.com/aspnet/EntityFramework/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) для подготовки `DbContext` класс в контейнере ASP.NET DI. Что метод задает время существования службы `Scoped` по умолчанию. `Scoped`означает время существования объекта контекста совпадает с временем жизни запроса web, и `Dispose` метод автоматически вызывается в конце веб-запроса.
 
 ## <a name="handling-transactions"></a>Обработка транзакций
 

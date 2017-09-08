@@ -11,8 +11,8 @@ ms.assetid: 15e79e15-bda5-441d-80c7-8032a2628605
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 4c402aee195d6614733be71c9c422e33553ad646
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: f44a4f842180b4001eb1428316c24fd9cacc39db
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 09/05/2017
@@ -176,8 +176,6 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 В *Views/Departments/Edit.cshtml*, внесите следующие изменения:
 
-* Удалить `<div>` элемент, который был формирования шаблонов для `RowVersion` поля.
-
 * Добавление скрытого поля для сохранения `RowVersion` значение свойства, следующий сразу за скрытого поля для `DepartmentID` свойства.
 
 * Добавьте пункт «Выберите Administrator» в раскрывающемся списке.
@@ -251,7 +249,7 @@ public async Task<IActionResult> Delete(Department department)
 
 * Добавляет сообщение об ошибке между `h2` и `h3` заголовков.
 
-* Заменяет LastName FullName в **администратора** поля.
+* Заменяет FirstMidName FullName в **администратора** поля.
 
 * Удаляет поле RowVersion.
 

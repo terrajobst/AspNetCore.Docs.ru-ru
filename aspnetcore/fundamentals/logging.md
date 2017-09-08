@@ -12,8 +12,8 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30e00e2a442225bbe04be0d343f7048efe484477
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: 15abe93d881aed3b6950a859dc9445ec50ee9bb5
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 09/05/2017
@@ -306,7 +306,7 @@ System.Exception: Item not found exception.
 3|Консоль|Microsoft.AspNetCore.Mvc.Razor.Razor|Отладка|
 4|Консоль|Microsoft.AspNetCore.Mvc.Razor|Ошибка|
 5|Консоль|Все категории|Сведения|
-6|Все поставщики|Все категории|Предупреждение
+6|Все поставщики|Все категории|Отладка
 7|Все поставщики|Система|Отладка
 8|Отладка|Майкрософт|Трассировка
 

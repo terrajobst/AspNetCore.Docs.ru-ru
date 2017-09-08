@@ -10,11 +10,11 @@ ms.assetid: e6c1ff3c-5673-43bf-9c2d-077f6ada1f29
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 1140f4916ca39cb454eaa41fdf6adfe7ad26cc31
-ms.sourcegitcommit: dfd6af48cf66813eaf04b011cb9341339a751254
+ms.openlocfilehash: bc2896d0eeda7e84cef06ee3f235e637bfe04318
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-aspnet-core-mvc-tutorial-3-of-10"></a>Сортировка, фильтрация, разбиение по страницам и группирование - Core EF учебнику ASP.NET Core MVC (3 из 10)
 
@@ -213,7 +213,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 Создание *SchoolViewModels* папки в *моделей* папки.
 
-В новой папке добавьте файл класса EnrollmentDateGroup.cs и замените код шаблона с помощью следующего кода:
+В новой папке, добавьте файл класса *EnrollmentDateGroup.cs* и замените код шаблона с помощью следующего кода:
 
 [!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
