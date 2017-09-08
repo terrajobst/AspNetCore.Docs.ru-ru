@@ -1,0 +1,1 @@
+Этот проект используется для предоставления фрагменты [EF MVC учебника серии Core](https://docs.microsoft.com/aspnet/core/data/ef-mvc/intro). Пример проекта, который встроен в соответствии с учебниками находится на https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final.
