@@ -1,8 +1,8 @@
 ---
-title: "Глобализация и локализация"
+title: "Глобализация и локализация в ASP.NET Core"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "Узнайте, как ASP.NET Core предоставляет службы и по промежуточного слоя для локализация содержимого на разных языках и региональных параметров."
+keywords: "ASP.NET Core, локализации, языка и региональных параметров, язык, файл ресурсов, глобализации, локализации, языковой стандарт"
 ms.author: riande
 manager: wpickett
 ms.date: 01/14/2017
@@ -11,13 +11,13 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 70f11cc9de8e885745e7d08cb98ac68e3cc8ef95
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: c6c9db21a95131a3d7920054e32004791b499c11
+ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/08/2017
 ---
-# <a name="globalization-and-localization"></a>Глобализация и локализация
+# <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
 По [Рик Андерсон](https://twitter.com/RickAndMSFT), [Бауден Дэмьен](https://twitter.com/damien_bod), [Bart Calixto](https://twitter.com/bartmax), [Надим Афана](https://twitter.com/NadeemAfana), и [Ateya Hisham Bin](https://twitter.com/hishambinateya)
 
@@ -190,7 +190,7 @@ ASP.NET Core позволяет задать два значения языка 
 
 Локализация настраивается в `ConfigureServices` метод:
 
-[!code-csharp[Main](localization/sample/Startup.cs?range=45-49)]
+[!code-csharp[Main](localization/sample/Program.cs?name=snippet1)]
 
 * `AddLocalization`Добавляет службы локализации в контейнере службы. Приведенный выше также задает путь к ресурсам «Ресурсы».
 
@@ -200,9 +200,9 @@ ASP.NET Core позволяет задать два значения языка 
 
 ### <a name="localization-middleware"></a>Локализация по промежуточного слоя
 
-Текущий язык и региональные параметры в запросе задается в локализации [по промежуточного слоя](middleware.md). По промежуточного слоя локализации включено в `Configure` метод *файла Startup.cs* файл. Обратите внимание, что по промежуточного слоя локализации должен быть настроен перед любое по промежуточного слоя, который может проверить запрос языка и региональных параметров (например, `app.UseMvc()`).
+Текущий язык и региональные параметры в запросе задается в локализации [по промежуточного слоя](middleware.md). По промежуточного слоя локализации включено в `Configure` метод *Program.cs* файла. Обратите внимание, что по промежуточного слоя локализации должен быть настроен перед любое по промежуточного слоя, который может проверить запрос языка и региональных параметров (например, `app.UseMvcWithDefaultRoute()`).
 
-[!code-csharp[Main](localization/sample/Startup.cs?highlight=13-35&range=123-159)]
+[!code-csharp[Main](localization/sample/Program.cs?name=snippet2)]
 
 `UseRequestLocalization`Инициализирует `RequestLocalizationOptions` объекта. При каждом запросе списка из `RequestCultureProvider` в `RequestLocalizationOptions` перечисляется и используется первый поставщик, успешно можно определить запрос языка и региональных параметров. Поставщики по умолчанию берутся из `RequestLocalizationOptions` класса:
 
@@ -259,25 +259,27 @@ ASP.NET Core позволяет задать два значения языка 
 Предположим, что нужно позволить клиентам хранить их языка и региональных параметров в базах данных. Можно написать поставщика для поиска этих значений для пользователя. Следующий код демонстрирует добавление настраиваемого поставщика:
 
 ```csharp
+private const string enUSCulture = "en-US";
+
 services.Configure<RequestLocalizationOptions>(options =>
-   {
-       var supportedCultures = new[]
-       {
-           new CultureInfo("en-US"),
-           new CultureInfo("fr")
-       };
+{
+    var supportedCultures = new[]
+    {
+        new CultureInfo(enUSCulture),
+        new CultureInfo("fr")
+    };
 
-       options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");
-       options.SupportedCultures = supportedCultures;
-       options.SupportedUICultures = supportedCultures;
+    options.DefaultRequestCulture = new RequestCulture(culture: enUSCulture, uiCulture: enUSCulture);
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
 
-       options.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async context =>
-       {
-         // My custom request culture logic
-         return new ProviderCultureResult("en");
-       }));
-   });
-   ```
+    options.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async context =>
+    {
+        // My custom request culture logic
+        return new ProviderCultureResult("en");
+    }));
+});
+```
 
 Используйте `RequestLocalizationOptions` для добавления или удаления поставщиков локализации.
 
@@ -289,7 +291,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 *Views/Shared/_SelectLanguagePartial.cshtml* добавляется файл `footer` раздел файла разметки, она будет доступна во всех представлениях:
 
-[!code-HTML[Main](localization/sample/Views/Shared/_Layout.cshtml?range=48-61&highlight=10)]
+[!code-HTML[Main](localization/sample/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
 `SetLanguage` Метод задает язык и региональные параметры cookie.
 

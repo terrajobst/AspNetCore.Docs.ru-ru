@@ -11,11 +11,11 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: dae7ac6e377d2c17bc8f86e5b6da98107366cc73
-ms.sourcegitcommit: 418e6aa4ab79474ecc4d0a6af573a3759b113fe4
+ms.openlocfilehash: 39e76b14af85de34b8443bf4e04d18d13ad2aa90
+ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/08/2017
 ---
 <a name=fundamentals-configuration></a>
 
@@ -41,11 +41,11 @@ API конфигурации предоставляет способ настр�
 
 Следующее приложение консоли использует поставщик конфигурации JSON:
 
-[!code-csharp[Main](configuration/sample/src/ConfigJson/Program.cs)]
+[!code-csharp[Main](configuration/sample/ConfigJson/Program.cs)]
 
 Считывает и отображает следующие параметры конфигурации приложения:
 
-[!code-json[Main](configuration/sample/src/ConfigJson/appsettings.json)]
+[!code-json[Main](configuration/sample/ConfigJson/appsettings.json)]
 
 Конфигурация состоит из иерархический список пар "имя значение", в которых узлы разделяются точкой с запятой. Для получения значения, доступ к `Configuration` индексатора с ключом соответствующего элемента:
 
@@ -63,13 +63,11 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 Предыдущий пример использует конфигурации индексатора для считывания значений. Для настройки доступа извне `Startup`, используйте [параметры шаблона](xref:fundamentals/configuration#options-config-objects). *Параметры шаблона* показано далее в этой статье.
 
-Это обычно имеют разные параметры конфигурации для разных сред, например, разработки, тестирования и эксплуатации. Следующий выделенный код добавляет два поставщика конфигурации для трех источников:
+Это обычно имеют разные параметры конфигурации для разных сред, например, разработки, тестирования и производства. `CreateDefaultBuilder` Метод расширения в приложении ASP.NET Core 2.x (или с помощью `AddJsonFile` и `AddEnvironmentVariables` непосредственно в приложении ASP.NET Core 1.x) добавляет поставщиков конфигурации для чтения файлы JSON и системные настройки источников:
 
-1. Поставщик JSON, чтении *appsettings.json*
-2. Поставщик JSON, чтении *appsettings.\< EnvironmentName > .json*
-3. Поставщик переменных среды
-
-[!code-csharp[Main](configuration/sample/src/WebConfigBind/Startup.cs?name=snippet2&highlight=7-9)]
+* *appSettings.JSON*
+* * appsettings. \<EnvironmentName > .json
+* переменные среды
 
 В разделе [AddJsonFile](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.jsonconfigurationextensions) объяснение параметров. `reloadOnChange`поддерживается только в ASP.NET Core 1.1 и более поздних версий. 
 
@@ -96,21 +94,21 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 Класс параметров должен быть абстрактным открытый конструктор без параметров. Пример:
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Models/MyOptions.cs)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Models/MyOptions.cs)]
 
 <a name=options-example></a>
 
 В следующем коде включен поставщик конфигурации JSON. `MyOptions` Класса добавляется в контейнер службы и привязан к конфигурации.
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Startup.cs?name=snippet1&highlight=8,20-22)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Startup.cs?name=snippet1&highlight=8,20-21)]
 
 Следующие [контроллера](../mvc/controllers/index.md) использует [конструктор внедрения зависимостей](xref:fundamentals/dependency-injection#what-is-dependency-injection) на [ `IOptions<TOptions>` ](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.options.ioptions-1) для доступа к параметрам:
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Controllers/HomeController.cs?name=snippet1)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Controllers/HomeController.cs?name=snippet1)]
 
 Со следующими *appsettings.json* файла:
 
-[!code-json[Main](configuration/sample/src/UsingOptions/appsettings1.json)]
+[!code-json[Main](configuration/sample/UsingOptions/appsettings1.json)]
 
 `HomeController.Index` Возвращает `option1 = value1_from_json, option2 = 2`.
 
@@ -118,7 +116,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 В следующем коде секунды `IConfigureOptions<TOptions>` служба добавляется в контейнер службы. Она использует делегат для настройки привязки с `MyOptions`.
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Startup2.cs?name=snippet1&highlight=9-13)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Startup2.cs?name=snippet1&highlight=9-13)]
 
 Можно добавить несколько поставщиков конфигурации. Поставщики конфигурации, доступные в пакетах NuGet. Они применяются в порядке, в котором они зарегистрированы.
 
@@ -130,23 +128,27 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 В следующем коде третий `IConfigureOptions<TOptions>` служба добавляется в контейнер службы. Привязывает `MySubOptions` к разделу `subsection` из *appsettings.json* файла:
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Startup3.cs?name=snippet1&highlight=16-17)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Startup3.cs?name=snippet1&highlight=16-17)]
 
 Примечание: Этот метод расширения требуется `Microsoft.Extensions.Options.ConfigurationExtensions` пакет NuGet.
 
 С помощью следующих *appsettings.json* файла:
 
-[!code-json[Main](configuration/sample/src/UsingOptions/appsettings.json)]
+[!code-json[Main](configuration/sample/UsingOptions/appsettings.json)]
 
 `MySubOptions` Класса:
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Models/MySubOptions.cs)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Models/MySubOptions.cs?name=snippet1)]
 
 Со следующими `Controller`:
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Controllers/HomeController2.cs?name=snippet1)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Controllers/HomeController2.cs?name=snippet1)]
 
 `subOption1 = subvalue1_from_json, subOption2 = 200`возвращается.
+
+Можно также предлагаемых в модель представления или вставить `IOptions<TOptions>` непосредственно в представлении:
+
+[!code-html[Main](configuration/sample/UsingOptions/Views/Home/Index.cshtml?highlight=3-4,16-17,20-21)]
 
 <a name=in-memory-provider></a>
 
@@ -174,27 +176,27 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 Следующий пример демонстрирует использование поставщика в памяти и связать с классом:
 
-[!code-csharp[Main](configuration/sample/src/InMemory/Program.cs)]
+[!code-csharp[Main](configuration/sample/InMemory/Program.cs)]
 
 Значения конфигурации возвращается в виде строк, но привязка позволяет для создания объектов. Привязка позволяет получить POCO объекты или графы даже весь объект. Следующий пример показано, как выполнить привязку к `MyWindow` и использовать шаблон, параметры с приложением ASP.NET MVC основных компонентов:
 
-[!code-csharp[Main](configuration/sample/src/WebConfigBind/MyWindow.cs)]
+[!code-csharp[Main](configuration/sample/WebConfigBind/MyWindow.cs)]
 
-[!code-json[Main](configuration/sample/src/WebConfigBind/appsettings.json)]
+[!code-json[Main](configuration/sample/WebConfigBind/appsettings.json)]
 
-Привязка пользовательского класса в `ConfigureServices` в `Startup` класса:
+Привязка пользовательского класса в `ConfigureServices` при создании узла:
 
-[!code-csharp[Main](configuration/sample/src/WebConfigBind/Startup.cs?name=snippet1&highlight=3,4)]
+[!code-csharp[Main](configuration/sample/WebConfigBind/Program.cs?name=snippet1&highlight=3-4)]
 
 Параметры отображения из `HomeController`:
 
-[!code-csharp[Main](configuration/sample/src/WebConfigBind/Controllers/HomeController.cs)]
+[!code-csharp[Main](configuration/sample/WebConfigBind/Controllers/HomeController.cs)]
 
 ### <a name="getvalue"></a>GetValue
 
 В следующем образце показано [GetValue<T> ](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.configurationbinder#Microsoft_Extensions_Configuration_ConfigurationBinder_GetValue_Microsoft_Extensions_Configuration_IConfiguration_System_Type_System_String_System_Object_) метода расширения:
 
-[!code-csharp[Main](configuration/sample/src/InMemoryGetValue/Program.cs?highlight=27-29)]
+[!code-csharp[Main](configuration/sample/InMemoryGetValue/Program.cs?highlight=27-29)]
 
 ConfigurationBinder `GetValue<T>` метод позволяет задать значение по умолчанию (80 в образце). `GetValue<T>`для простых сценариях и не привязывается к весь раздел. `GetValue<T>`Возвращает скалярные значения из `GetSection(key).Value` преобразован к определенному типу.
 
@@ -202,11 +204,11 @@ ConfigurationBinder `GetValue<T>` метод позволяет задать з�
 
 Можно выполнить привязку рекурсивно для каждого объекта в классе. Рассмотрим следующий `AppOptions` класса:
 
-[!code-csharp[Main](configuration/sample/src/ObjectGraph/AppOptions.cs)]
+[!code-csharp[Main](configuration/sample/ObjectGraph/AppOptions.cs)]
 
 Следующий пример привязывает к `AppOptions` класса:
 
-[!code-csharp[Main](configuration/sample/src/ObjectGraph/Program.cs?highlight=15-16)]
+[!code-csharp[Main](configuration/sample/ObjectGraph/Program.cs?highlight=15-16)]
 
 **ASP.NET Core 1.1** и более поздней версии можно использовать `Get<T>`, которая работает с весь раздел. `Get<T>`может быть более convienent, чем при использовании `Bind`. Следующий код показывает, как использовать `Get<T>` с примером выше:
 
@@ -216,7 +218,7 @@ var appConfig = config.GetSection("App").Get<AppOptions>();
 
 С помощью следующих *appsettings.json* файла:
 
-[!code-json[Main](configuration/sample/src/ObjectGraph/appsettings.json)]
+[!code-json[Main](configuration/sample/ObjectGraph/appsettings.json)]
 
 Программа выводит `Height 11`.
 
@@ -255,35 +257,35 @@ public void CanBindObjectTree()
 
 Определение `ConfigurationValue` сущности для хранения значения конфигурации базы данных:
 
-[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/ConfigurationValue.cs)]
+[!code-csharp[Main](configuration/sample/CustomConfigurationProvider/ConfigurationValue.cs)]
 
 Добавить `ConfigurationContext` хранение и доступ к настроенные значения:
 
-[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/ConfigurationContext.cs?name=snippet1)]
+[!code-csharp[Main](configuration/sample/CustomConfigurationProvider/ConfigurationContext.cs?name=snippet1)]
 
 Создайте класс, реализующий [IConfigurationSource](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.iconfigurationsource):
 
-[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationSource.cs?highlight=7)]
+[!code-csharp[Main](configuration/sample/CustomConfigurationProvider/EntityFrameworkConfigurationSource.cs?highlight=7)]
 
 Создание настраиваемого поставщика конфигурации путем наследования от [ConfigurationProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.configurationprovider).  Поставщик конфигурации инициализирует базы данных при пустом:
 
-[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs?highlight=9,18-31,38-39)]
+[!code-csharp[Main](configuration/sample/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs?highlight=9,18-31,38-39)]
 
 При запуске образца отображаются выделенные значения из базы данных («value_from_ef_1» и «value_from_ef_2»).
 
 Можно добавить `EFConfigSource` метод расширения для добавления источник конфигурации:
 
-[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/EntityFrameworkExtensions.cs?highlight=12)]
+[!code-csharp[Main](configuration/sample/CustomConfigurationProvider/EntityFrameworkExtensions.cs?highlight=12)]
 
 Ниже показано, как использовать собственную `EFConfigProvider`:
 
-[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/Program.cs?highlight=20-25)]
+[!code-csharp[Main](configuration/sample/CustomConfigurationProvider/Program.cs?highlight=21-26)]
 
 Обратите внимание, в этом примере добавляется пользовательский `EFConfigProvider` после поставщика JSON, поэтому все параметры из базы данных переопределяют параметры из *appsettings.json* файла.
 
 С помощью следующих *appsettings.json* файла:
 
-[!code-json[Main](configuration/sample/src/CustomConfigurationProvider/appsettings.json)]
+[!code-json[Main](configuration/sample/CustomConfigurationProvider/appsettings.json)]
 
 Отображаются следующие сведения:
 
@@ -297,7 +299,7 @@ key3=value_from_json_3
 
 Следующий пример включает поставщик конфигурации CommandLine последнего:
 
-[!code-csharp[Main](configuration/sample/src/CommandLine/Program.cs)]
+[!code-csharp[Main](configuration/sample/CommandLine/Program.cs)]
 
 Используйте следующие параметры для передачи в параметрах конфигурации.
 
