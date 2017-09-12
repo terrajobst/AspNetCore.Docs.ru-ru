@@ -11,15 +11,15 @@ ms.assetid: 9da9eb52-8583-4069-af91-155ba3529d7f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/actions
-ms.openlocfilehash: b7d6341c0312b3f5f122acfb2ee01210151b33bb
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 5dc6c7dc70027bb79875f389d535119a2543b873
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="handling-requests-with-controllers-in-aspnet-core-mvc"></a>Обработка запросов с контроллеров в ASP.NET Core MVC
 
-По [Стив Смит](http://ardalis.com) и [Скотт Addie](https://github.com/scottaddie)
+По [Стив Смит](https://ardalis.com/) и [Скотт Addie](https://github.com/scottaddie)
 
 Контроллеры, действий и результатов действий являются основной частью как разработчикам создавать приложения с помощью ASP.NET Core MVC.
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 08/11/2017
 
 Класс контроллера не должен иметь связанный с ним `[NonController]` атрибута.
 
-Необходимо следовать контроллеров [явные зависимости принцип](http://deviq.com/explicit-dependencies-principle). Существует несколько подходов к реализации этот принцип. Если несколько действий контроллера требуют той же службы, рассмотрите возможность использования [внедрение конструктора](xref:mvc/controllers/dependency-injection#constructor-injection) запрашивать эти зависимости. Если службе требуется только одно действие методом, рассмотрите возможность использования [действия внедрения](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) для запроса зависимость.
+Необходимо следовать контроллеров [явные зависимости принцип](http://deviq.com/explicit-dependencies-principle/). Существует несколько подходов к реализации этот принцип. Если несколько действий контроллера требуют той же службы, рассмотрите возможность использования [внедрение конструктора](xref:mvc/controllers/dependency-injection#constructor-injection) запрашивать эти зависимости. Если службе требуется только одно действие методом, рассмотрите возможность использования [действия внедрения](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) для запроса зависимость.
 
 В пределах **M**одели -**V**росмотр -**C**шаблон ontroller контроллер отвечает за начальной обработки запроса и создание экземпляра модели. Как правило бизнес-решения должно выполняться в пределах модели.
 

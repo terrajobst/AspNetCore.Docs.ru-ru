@@ -1,4 +1,4 @@
-Для создания самозаверяющего SSL-сертификатов в Windows, можно использовать командлет PowerShell [New-SelfSignedCertificate](https://technet.microsoft.com/library/hh848633). Существует также сторонние средства, облегчающие создавать самозаверяющие сертификаты.
+Для создания самозаверяющего SSL-сертификатов в Windows, можно использовать командлет PowerShell [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pki/new-selfsignedcertificate). Существует также сторонние средства, облегчающие создавать самозаверяющие сертификаты.
 
 * [SelfCert](https://www.pluralsight.com/blog/software-development/selfcert-create-a-self-signed-certificate-interactively-gui-or-programmatically-in-net)
 * [Makecert пользовательского интерфейса](http://makecertui.codeplex.com/)

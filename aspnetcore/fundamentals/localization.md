@@ -11,11 +11,11 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: c6c9db21a95131a3d7920054e32004791b499c11
-ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
+ms.openlocfilehash: 2a760343566d2c2be591983e20830b5207a2199b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/08/2017
 
 Создание многоязычных веб-сайта с помощью ASP.NET Core позволит узла для достижения более широкую аудиторию. ASP.NET Core предоставляет службы и по промежуточного слоя для локализация на разных языках и региональных параметров.
 
-Включает в себя интернационализации [глобализации](https://msdn.microsoft.com/library/aa292081(v=vs.71).aspx) и [локализации](https://msdn.microsoft.com/library/aa292137(v=vs.71).aspx). Глобализация — это процесс разработки приложений, которые поддерживают разные культуры. Глобализация добавляет поддержку для ввода, отображения и вывода определенного набора языковых сценариев, относящихся к конкретным регионам.
+Включает в себя интернационализации [глобализации](https://docs.microsoft.com/dotnet/api/system.globalization) и [локализации](https://docs.microsoft.com/dotnet/standard/globalization-localization/localization). Глобализация — это процесс разработки приложений, которые поддерживают разные культуры. Глобализация добавляет поддержку для ввода, отображения и вывода определенного набора языковых сценариев, относящихся к конкретным регионам.
 
 Локализация — это процесс адаптации глобализованное приложение, которое уже обработана возможности локализации для определенного языка и региональных параметров или языкового стандарта.  Дополнительные сведения см. **глобализации и локализации условия** в конце этого документа.
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 09/08/2017
 
 ## <a name="make-the-apps-content-localizable"></a>Сделать локализуемого содержимого приложения
 
-Представленные в ASP.NET Core `IStringLocalizer` и `IStringLocalizer<T>` были разработана для повышения производительности при разработке локализованных приложений. `IStringLocalizer`использует [ResourceManager](https://msdn.microsoft.com/library/system.resources.resourcemanager(v=vs.110).aspx) и [ResourceReader](https://msdn.microsoft.com/library/system.resources.resourcereader(v=vs.110).aspx) для предоставления ресурсов, связанных с языком и региональными параметрами, во время выполнения. Простой интерфейс имеет индекс и `IEnumerable` для возвращения локализованные строки. `IStringLocalizer`не требуется хранить строки языка по умолчанию в файле ресурсов. Можно разрабатывать приложения, предназначенные для локализации и не требуется создавать файлы ресурсов на раннем этапе разработки. В следующем примере кода показано, как программы-оболочки для строки «О Title» для локализации.
+Представленные в ASP.NET Core `IStringLocalizer` и `IStringLocalizer<T>` были разработана для повышения производительности при разработке локализованных приложений. `IStringLocalizer`использует [ResourceManager](https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager) и [ResourceReader](https://docs.microsoft.com/dotnet/api/system.resources.resourcereader) для предоставления ресурсов, связанных с языком и региональными параметрами, во время выполнения. Простой интерфейс имеет индекс и `IEnumerable` для возвращения локализованные строки. `IStringLocalizer`не требуется хранить строки языка по умолчанию в файле ресурсов. Можно разрабатывать приложения, предназначенные для локализации и не требуется создавать файлы ресурсов на раннем этапе разработки. В следующем примере кода показано, как программы-оболочки для строки «О Title» для локализации.
 
 [!code-csharp[Main](localization/sample/Controllers/AboutController.cs)]
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 09/08/2017
 
 ## <a name="view-localization"></a>Представление локализации
 
-`IViewLocalizer` Служба предоставляет локализованные строки для [представление](http://docs.asp.net/projects/mvc/en/latest/views/index.html). `ViewLocalizer` Класс реализует этот интерфейс и находит расположение ресурса из пути файла представления. Ниже показано, как использовать реализацию по умолчанию `IViewLocalizer`:
+`IViewLocalizer` Служба предоставляет локализованные строки для [представление](https://docs.microsoft.com/aspnet/core). `ViewLocalizer` Класс реализует этот интерфейс и находит расположение ресурса из пути файла представления. Ниже показано, как использовать реализацию по умолчанию `IViewLocalizer`:
 
 [!code-HTML[Main](localization/sample/Views/Home/About.cshtml)]
 
@@ -124,7 +124,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="supportedcultures-and-supporteduicultures"></a>SupportedCultures и SupportedUICultures
 
-ASP.NET Core позволяет задать два значения языка и региональных параметров, `SupportedCultures` и `SupportedUICultures`. [CultureInfo](https://msdn.microsoft.com/library/system.globalization.cultureinfo(v=vs.110).aspx) для объекта `SupportedCultures` определяет результаты функции, зависящие от языка и региональных параметров, такие как дата, время, числа и денежных единиц. `SupportedCultures`также определяет порядок сортировки текста, правила регистра и сравнения строк. В разделе [CultureInfo.CurrentCulture](https://msdn.microsoft.com/library/system.globalization.cultureinfo.currentculture%28v=vs.110%29.aspx) для получения дополнительных сведений о как сервер получает язык и региональные параметры. `SupportedUICultures` Определяет, что означает строк (из *.resx* файлы) поиск которого выполняется [ResourceManager](https://msdn.microsoft.com/library/system.resources.resourcemanager(v=vs.110).aspx). `ResourceManager` Просто выполняет поиск строк, связанных с языком и региональными параметрами, определяется `CurrentUICulture`. Каждый поток в .NET имеет `CurrentCulture` и `CurrentUICulture` объектов. ASP.NET Core проверяет эти значения при подготовке к просмотру функции, зависящие от языка и региональных параметров. Например, если язык и региональные параметры текущего потока имеет значение «en US» (английский, США) `DateTime.Now.ToLongDateString()` отображает «Четверг, февраль 18 2016", но если `CurrentCulture` имеет значение для «es-ES» (испанский, Испания) выходные данные будут «jueves de febrero 18 de 2016".
+ASP.NET Core позволяет задать два значения языка и региональных параметров, `SupportedCultures` и `SupportedUICultures`. [CultureInfo](https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo) для объекта `SupportedCultures` определяет результаты функции, зависящие от языка и региональных параметров, такие как дата, время, числа и денежных единиц. `SupportedCultures`также определяет порядок сортировки текста, правила регистра и сравнения строк. В разделе [CultureInfo.CurrentCulture](https://docs.microsoft.com/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture) для получения дополнительных сведений о как сервер получает язык и региональные параметры. `SupportedUICultures` Определяет, что означает строк (из *.resx* файлы) поиск которого выполняется [ResourceManager](https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager). `ResourceManager` Просто выполняет поиск строк, связанных с языком и региональными параметрами, определяется `CurrentUICulture`. Каждый поток в .NET имеет `CurrentCulture` и `CurrentUICulture` объектов. ASP.NET Core проверяет эти значения при подготовке к просмотру функции, зависящие от языка и региональных параметров. Например, если язык и региональные параметры текущего потока имеет значение «en US» (английский, США) `DateTime.Now.ToLongDateString()` отображает «Четверг, февраль 18 2016", но если `CurrentCulture` имеет значение для «es-ES» (испанский, Испания) выходные данные будут «jueves de febrero 18 de 2016".
 
 ## <a name="working-with-resource-files"></a>Работа с файлами ресурсов
 
@@ -182,7 +182,7 @@ ASP.NET Core позволяет задать два значения языка 
 
 ### <a name="adding-other-cultures"></a>Добавление других языков и региональных параметров
 
-Каждой комбинации языка и региональных параметров (отличных от языка по умолчанию) требуется отдельный файл ресурсов. Создание файлов ресурсов для разных языков и региональных параметров путем создания новых файлов ресурсов, в которых языковые коды ISO являются частью имени файла (например, **en-us**, **fr-ca**, и  **en-gb**). Эти коды ISO помещаются между именем файла и *.resx* файл с расширением, как и в *Welcome.es MX.resx* (Испанский/Мексика). Чтобы указать язык, удалите код страны (`MX` в предыдущем примере). Имя файла ресурсов нейтральным испанский — *Welcome.es.resx*.
+Каждой комбинации языка и региональных параметров (отличных от языка по умолчанию) требуется отдельный файл ресурсов. Создание файлов ресурсов для разных языков и региональных параметров путем создания новых файлов ресурсов, в которых языковые коды ISO являются частью имени файла (например, **en-us**, **fr-ca**, и ** en-gb**). Эти коды ISO помещаются между именем файла и *.resx* файл с расширением, как и в *Welcome.es MX.resx* (Испанский/Мексика). Чтобы указать язык, удалите код страны (`MX` в предыдущем примере). Имя файла ресурсов нейтральным испанский — *Welcome.es.resx*.
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>Реализовать стратегию, чтобы выбрать язык и региональные параметры для каждого запроса  
 
@@ -214,7 +214,7 @@ ASP.NET Core позволяет задать два значения языка 
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-Некоторые приложения будет использовать строку запроса для задания [culture и Uiculture](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx#Current). Для приложений, использующих файлы cookie или подход заголовок Accept-Language добавив строку запроса URL-адрес полезен для отладки и тестирования кода. По умолчанию `QueryStringRequestCultureProvider` регистрируется как первый Поставщик локализации в `RequestCultureProvider` списка. Запрос передан в строковых параметров `culture` и `ui-culture`. Следующий пример присваивает Испанский/Мексика определенного языка и региональных параметров (язык и регион):
+Некоторые приложения будет использовать строку запроса для задания [culture и Uiculture](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx). Для приложений, использующих файлы cookie или подход заголовок Accept-Language добавив строку запроса URL-адрес полезен для отладки и тестирования кода. По умолчанию `QueryStringRequestCultureProvider` регистрируется как первый Поставщик локализации в `RequestCultureProvider` списка. Запрос передан в строковых параметров `culture` и `ui-culture`. Следующий пример присваивает Испанский/Мексика определенного языка и региональных параметров (язык и регион):
 
    `http://localhost:5000/?culture=es-MX&ui-culture=es-MX`
 
@@ -303,7 +303,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 Процесс локализации приложения необходимо также основные сведения о соответствующей кодировки, обычно используемые в разработке современного программного обеспечения и понимания проблем, связанных с ними. Несмотря на то, что все компьютеры сохранения текста в виде чисел (коды), разных систем хранения тот же текст, с помощью различных чисел. Процесс локализации ссылается на перевод пользовательского интерфейса (UI) приложения для определенного языка и региональных параметров или языкового стандарта.
 
-[Локализуемость](https://msdn.microsoft.com/library/aa292135(v=vs.71).aspx) — это промежуточный процесс для проверки того, что международное приложение готово к локализации.
+[Локализуемость](https://docs.microsoft.com/dotnet/standard/globalization-localization/localizability-review) — это промежуточный процесс для проверки того, что международное приложение готово к локализации.
 
 [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) формат имя языка и региональных параметров является "<languagecode2>-< код_страны_или_региона2 >», где <languagecode2> является кодом языка, а < код_страны_или_региона2 > — код региона. Например `es-CL` испанский (Чили) `en-US` для английского языка (США) и `en-AU` для английского языка (Австралия). [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) представляет собой сочетание ISO 639, кода двух букв нижнего регистра, языка и региональных параметров, связанных с языком и ISO 3166, код страны или региона на прописных букв, связанные с страны или региона.  В разделе [имя языка и региональных параметров языка](https://msdn.microsoft.com/library/ee825488(v=cs.20).aspx).
 
@@ -322,5 +322,5 @@ services.Configure<RequestLocalizationOptions>(options =>
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Проект Localization.StarterWeb](https://github.com/aspnet/entropy) используется в статье.
-* [Файлы ресурсов в Visual Studio](https://msdn.microsoft.com/library/xbx3z216(v=vs.110).aspx#VSResFiles)
-* [Ресурсы в RESX-файлы](https://msdn.microsoft.com/library/xbx3z216(v=vs.110).aspx#ResourcesFiles)
+* [Файлы ресурсов в Visual Studio](https://docs.microsoft.com/cpp/windows/resource-files-visual-studio)
+* [Ресурсы в RESX-файлы](https://docs.microsoft.com/dotnet/framework/resources/working-with-resx-files-programmatically)

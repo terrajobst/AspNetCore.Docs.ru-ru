@@ -10,11 +10,11 @@ ms.assetid: abeb2f8e-dfbf-4398-a04c-338a613a65bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: security/authorization/secure-data
-ms.openlocfilehash: 7ce59816d106cce9fabd8393ee764454bd0f7f27
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: db05ffb585022c3d9512d32da28c54788f97129c
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Создание приложения ASP.NET Core пользовательскими данными, защищенных авторизации
 
@@ -103,7 +103,7 @@ dotnet ef database update
 
 ### <a name="require-ssl-and-authenticated-users"></a>Требовать SSL и проверку подлинности пользователей
 
-В `ConfigureServices` метод *файла Startup.cs* файл, добавьте [RequireHttpsAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/RequireHttpsAttribute/index.html.md#Microsoft.AspNetCore.Mvc.RequireHttpsAttribute.md) фильтр авторизации:
+В `ConfigureServices` метод *файла Startup.cs* файл, добавьте [RequireHttpsAttribute](https://docs.microsoft.com/aspnet/core/api) фильтр авторизации:
 
 [!code-csharp[Main](secure-data/samples/final/Startup.cs?name=snippet_SSL&highlight=1)]
 
@@ -161,7 +161,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="register-the-authorization-handlers"></a>Регистрировать обработчики авторизации
 
-С помощью Entity Framework Core Services должны быть зарегистрированы для [внедрения зависимостей](xref:fundamentals/dependency-injection) с помощью [AddScoped](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/ServiceCollectionServiceExtensions/index.html.md#Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped.md). `ContactIsOwnerAuthorizationHandler` Использует ASP.NET Core [удостоверения](xref:security/authentication/identity), которые построены на Entity Framework Core. Зарегистрировать обработчики с коллекцией служб, они будут доступны для `ContactsController` через [внедрения зависимостей](xref:fundamentals/dependency-injection). Добавьте следующий код в конец `ConfigureServices`:
+С помощью Entity Framework Core Services должны быть зарегистрированы для [внедрения зависимостей](xref:fundamentals/dependency-injection) с помощью [AddScoped](https://docs.microsoft.com/aspnet/core/api). `ContactIsOwnerAuthorizationHandler` Использует ASP.NET Core [удостоверения](xref:security/authentication/identity), которые построены на Entity Framework Core. Зарегистрировать обработчики с коллекцией служб, они будут доступны для `ContactsController` через [внедрения зависимостей](xref:fundamentals/dependency-injection). Добавьте следующий код в конец `ConfigureServices`:
 
 [!code-csharp[Main](secure-data/samples/final/Startup.cs?name=AuthorizationHandlers)]
 
@@ -264,7 +264,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 Выполните следующие действия для создания начального приложения.
 
-* Создание **веб-приложения ASP.NET Core** с помощью [2017 г. Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) с именем «ContactManager»
+* Создание **веб-приложения ASP.NET Core** с помощью [2017 г. Visual Studio](https://www.visualstudio.com/) с именем «ContactManager»
 
   * Создание приложения с **отдельных учетных записей пользователей**.
   * Присвойте ему имя «ContactManager», пространство имен будет соответствовать использование пространства имен в образце.

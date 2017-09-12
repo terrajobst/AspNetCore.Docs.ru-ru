@@ -11,11 +11,11 @@ ms.assetid: 492b3a7e-04c5-461b-b96a-38ecee5c64bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/iis-modules
-ms.openlocfilehash: 4d9d3d863e62373716ecd81b9e1880145a127e9b
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 353cd4c18cb2708f2dece5ba2b5271f452379d52
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="using-iis-modules-with-aspnet-core"></a>Использование с ASP.NET Core модули IIS
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 08/11/2017
 **Трассировка**<br>`FailedRequestsTracingModule` | Да | [Ведение журнала ASP.NET Core](xref:fundamentals/logging#the-tracesource-provider)
 **Кэширование файлов**<br>`FileCacheModule` | Нет | [Кэширование ответов по промежуточного слоя](xref:performance/caching/middleware)
 **Кэширование HTTP**<br>`HttpCacheModule` | Нет | [Кэширование ответов по промежуточного слоя](xref:performance/caching/middleware)
-**Ведение журнала HTTP**<br>`HttpLoggingModule` | Да | [Ведение журнала ASP.NET Core](xref:fundamentals/logging)<br>Реализации: [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging), [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging), [NLog](https://github.com/NLog/NLog.Extensions.Logging), [Serilog](https://github.com/serilog/serilog-framework-logging)
+**Ведение журнала HTTP**<br>`HttpLoggingModule` | Да | [Ведение журнала ASP.NET Core](xref:fundamentals/logging)<br>Реализации: [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging), [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging), [NLog](https://github.com/NLog/NLog.Extensions.Logging), [Serilog](https://github.com/serilog/serilog-extensions-logging)
 **Перенаправление HTTP**<br>`HttpRedirectionModule` | Да | [По промежуточного слоя перезаписи URL-адрес](xref:fundamentals/url-rewriting)
 **Проверка подлинности с сопоставлением сертификата клиента IIS**<br>`IISCertificateMappingAuthenticationModule` | Да | 
 **Ограничения IP-адресов и доменов**<br>`IpRestrictionModule` | Да | 
@@ -84,7 +84,7 @@ WindowsAuthentication | Нет |
 Если у вас есть модуль IIS настроен на уровне сервера, который вы хотите отключить для приложения, это можно сделать с дополнением к вашей *web.config* файла. Модуль следует оставить на месте и отключите его с помощью параметра конфигурации (при наличии) либо удалить модуль из приложения.
 
 ### <a name="module-deactivation"></a>Отключение модуля
-Многие модули предоставляют параметр конфигурации, позволяющих сделать без их удаления из приложения. Это простой и быстрый способ деактивировать модуля. Например, если вы хотите отключить модуль переопределения URL-адреса IIS, используйте `<httpRedirect>` элемента, как показано ниже. Дополнительные сведения об отключении модулей с параметрами конфигурации по ссылкам в *дочерние элементы* раздел [IIS `<system.webServer>` ](https://www.iis.net/configreference/system.webserver).
+Многие модули предоставляют параметр конфигурации, позволяющих сделать без их удаления из приложения. Это простой и быстрый способ деактивировать модуля. Например, если вы хотите отключить модуль переопределения URL-адреса IIS, используйте `<httpRedirect>` элемента, как показано ниже. Дополнительные сведения об отключении модулей с параметрами конфигурации по ссылкам в *дочерние элементы* раздел [IIS `<system.webServer>` ](https://docs.microsoft.com/iis/configuration/system.webServer/).
 
 ```xml
 <configuration>
@@ -150,6 +150,6 @@ Appcmd.exe delete module MODULE_NAME /app.name:APPLICATION_NAME
 
 ## <a name="resources"></a>Ресурсы
 * [Публикация в IIS](xref:publishing/iis)
-* [Общие сведения о модули IIS](https://www.iis.net/learn/get-started/introduction-to-iis/iis-modules-overview)
+* [Общие сведения о модули IIS](https://docs.microsoft.com/iis/get-started/introduction-to-iis/iis-modules-overview)
 * [Настройка IIS 7.0 ролей и модулей](https://technet.microsoft.com/library/cc627313.aspx)
-* [IIS`<system.webServer>`](https://www.iis.net/configreference/system.webserver)
+* [IIS`<system.webServer>`](https://docs.microsoft.com/iis/configuration/system.webServer/)

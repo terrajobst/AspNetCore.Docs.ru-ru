@@ -10,15 +10,15 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/startup
-ms.openlocfilehash: 16969386c55ae2fd2ab574c1799a765e74f59278
-ms.sourcegitcommit: 4147d2d29ea50e7e9b87879c572ac2a9fb51798c
+ms.openlocfilehash: 69af91de6d2c48af58bc10a32d8857af18a41b6a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="application-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
-По [Стив Смит](http://ardalis.com) и [Tom Dykstra](https://github.com/tdykstra/)
+По [Стив Смит](https://ardalis.com/) и [Tom Dykstra](https://github.com/tdykstra/)
 
 `Startup` Класс настраивает службы и конвейер обработки запросов приложения. 
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/15/2017
 
 Приложения ASP.NET Core требуется `Startup` класса. По соглашению `Startup` класс имеет имя «Загрузки». Укажите имя класса запуска в `Main` программы [WebHostBuilderExtensions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions) [ `UseStartup<TStartup>` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) метод. В разделе [размещения](xref:fundamentals/hosting) для получения дополнительных сведений о `WebHostBuilder`, выполняемая перед `Startup`.
 
-Можно определить отдельные `Startup` классы для различных сред и соответствующие выбрана одна во время выполнения. При указании `startupAssembly` в [конфигурации WebHost](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/hosting?tabs=aspnetcore2x#configuring-a-host) или параметры, размещение будет загрузить эту сборку для запуска и выполните поиск `Startup` или `Startup[Environment]` типа. Класс которого совпадения суффикс имени текущей среде будет иметь приоритет, поэтому, если приложение выполняется в *разработки* среды и включает в себя `Startup` и `StartupDevelopment` класса `StartupDevelopment` класс будет использовать. В разделе [FindStartupType](https://github.com/aspnet/Hosting/blob/rel/1.1.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs) в `StartupLoader` и [работа с несколькими средами](environments.md#startup-conventions).
+Можно определить отдельные `Startup` классы для различных сред и соответствующие выбрана одна во время выполнения. При указании `startupAssembly` в [конфигурации WebHost](https://docs.microsoft.com/aspnet/core/fundamentals/hosting?tabs=aspnetcore2x#configuring-a-host) или параметры, размещение будет загрузить эту сборку для запуска и выполните поиск `Startup` или `Startup[Environment]` типа. Класс которого совпадения суффикс имени текущей среде будет иметь приоритет, поэтому, если приложение выполняется в *разработки* среды и включает в себя `Startup` и `StartupDevelopment` класса `StartupDevelopment` класс будет использовать. В разделе [FindStartupType](https://github.com/aspnet/Hosting/blob/rel/1.1.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs) в `StartupLoader` и [работа с несколькими средами](environments.md#startup-conventions).
 
 Кроме того, можно определить фиксированный `Startup` класс, который будет использоваться независимо от среды, путем вызова `UseStartup<TStartup>`. Этот способ является рекомендуемым.
 
@@ -38,9 +38,9 @@ ms.lasthandoff: 08/15/2017
 
 ## <a name="the-configureservices-method"></a>Метод ConfigureServices
 
-[ConfigureServices](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.hosting.startupbase#Microsoft_AspNetCore_Hosting_StartupBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_) является необязательным; но, если вызывается до `Configure` метод с веб-узла. Веб-узла могут настраивать некоторые службы перед ``Startup`` методы вызываются (см. [размещение](xref:fundamentals/hosting)). По соглашению [параметры конфигурации](xref:fundamentals/configuration) устанавливаются в этом методе.
+[ConfigureServices](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.startupbase#Microsoft_AspNetCore_Hosting_StartupBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_) является необязательным; но, если вызывается до `Configure` метод с веб-узла. Веб-узла могут настраивать некоторые службы перед ``Startup`` методы вызываются (см. [размещение](xref:fundamentals/hosting)). По соглашению [параметры конфигурации](xref:fundamentals/configuration) устанавливаются в этом методе.
 
-Для функций, требующих значительной установки существует `Add[Service]` методы расширения в [IServiceCollection](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.extensions.dependencyinjection.iservicecollection). В этом примере с помощью шаблона веб-сайта по умолчанию настраивает приложение для использования служб для Entity Framework, удостоверения и MVC:
+Для функций, требующих значительной установки существует `Add[Service]` методы расширения в [IServiceCollection](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.dependencyinjection.iservicecollection). В этом примере с помощью шаблона веб-сайта по умолчанию настраивает приложение для использования служб для Entity Framework, удостоверения и MVC:
 
 [!code-csharp[Main](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
 

@@ -11,15 +11,15 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: bcd225875cfe2a544581c331231c704094780ea3
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 93e8b99e7fbac88aabd347c077d923214ba7aebe
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>Реализация WebListener веб-сервера в ASP.NET Core
 
-По [Tom Dykstra](http://github.com/tdykstra) и [Ross Крис](https://github.com/Tratcher)
+По [Tom Dykstra](https://github.com/tdykstra) и [Ross Крис](https://github.com/Tratcher)
 
 > [!NOTE]
 > Этот раздел относится только к ASP.NET Core 1.x. В ASP.NET Core 2.0, называется WebListener [HTTP.sys](httpsys.md).
@@ -62,7 +62,7 @@ WebListener при также хорошо подходит для развер�
 
 ### <a name="configure-windows-server"></a>Настройка Windows Server
 
-* Установите версию .NET с требованиями приложения, такие как [.NET Core](https://go.microsoft.com/fwlink/?LinkID=827524) или .NET Framework 4.5.1.
+* Установите версию .NET с требованиями приложения, такие как [.NET Core](https://download.microsoft.com/download/0/A/3/0A372822-205D-4A86-BFA7-084D2CBE9EDF/DotNetCore.1.0.1-SDK.1.0.0.Preview2-003133-x64.exe) или .NET Framework 4.5.1.
 
 * Предварительной регистрации префиксы URL-адрес, привязку к WebListener и настроить сертификаты SSL
 
@@ -80,7 +80,7 @@ WebListener при также хорошо подходит для развер�
 
 * Установка пакета NuGet [Microsoft.AspNetCore.Server.WebListener](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.WebListener/). Также устанавливает [Microsoft.Net.Http.Server](https://www.nuget.org/packages/Microsoft.Net.Http.Server/) как зависимость.
 
-* Вызовите [ `UseWebListener` ](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilderKestrelExtensions/index.html#Microsoft.AspNetCore.Hosting.WebHostBuilderWebListenerExtensions.UseWebListener.md) метод расширения в [WebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html#Microsoft.AspNetCore.Hosting.WebHostBuilder.md) в ваш `Main` метод, указывая любой WebListener [параметры](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.AspNetCore.Server.WebListener/WebListenerOptions.cs) и [ Параметры](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.Net.Http.Server/WebListenerSettings.cs) , требуется, как показано в следующем примере:
+* Вызовите [ `UseWebListener` ](https://docs.microsoft.com/aspnet/core/api) метод расширения в [WebHostBuilder](https://docs.microsoft.com/aspnet/core/api) в ваш `Main` метод, указывая любой WebListener [параметры](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.AspNetCore.Server.WebListener/WebListenerOptions.cs) и [ Параметры](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.Net.Http.Server/WebListenerSettings.cs) , требуется, как показано в следующем примере:
 
   [!code-csharp[](weblistener/sample/Program.cs?name=snippet_Main&highlight=13-17)]
 
@@ -152,14 +152,14 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={000000
 
 Ниже приведен в официальной документации.
 
-* [Команды Netsh для гипертекста передачи протокол (HTTP)](http://technet.microsoft.com/library/cc725882.aspx)
+* [Команды Netsh для гипертекста передачи протокол (HTTP)](https://technet.microsoft.com/library/cc725882.aspx)
 * [UrlPrefix строк](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
 Подробные инструкции для нескольких сценариев на следующих ресурсах. Статьи, которые ссылаются на `HttpListener` применяются как к `WebListener`, как они строятся на Http.Sys.
 
-* [Как: Настройка порта с SSL-сертификата](http://msdn.microsoft.com/library/ms733791.aspx)
+* [Как: Настройка порта с SSL-сертификата](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
 * [Подключения по протоколу HTTPS - HttpListener и на основе размещения сертификацию клиента](http://sunshaking.blogspot.com/2012/11/https-communication-httplistener-based.html) это является блог сторонних разработчиков и довольно старый, но по-прежнему содержит полезные сведения.
-* [Практическое руководство: Пошаговое руководство с помощью HttpListener или HTTP-сервере неуправляемого типов кода (C++) как простой сервера SSL](http://blogs.msdn.com/b/jpsanders/archive/2009/09/29/walkthrough-using-httplistener-as-an-ssl-simple-server.aspx) это тоже старые блог полезные сведения.
+* [Практическое руководство: Пошаговое руководство с помощью HttpListener или HTTP-сервере неуправляемого типов кода (C++) как простой сервера SSL](https://blogs.msdn.microsoft.com/jpsanders/2009/09/29/how-to-walkthrough-using-httplistener-or-http-server-unmanaged-code-c-as-an-ssl-simple-server/) это тоже старые блог полезные сведения.
 * [Как настроить WebListener Core .NET с помощью протокола SSL?](https://blogs.msdn.microsoft.com/timomta/2016/11/04/how-do-i-set-up-a-net-core-weblistener-with-ssl/)
 
 Ниже приведены некоторые сторонних средств, которые могут быть проще в использовании, чем netsh.exe командной строки. Они не предоставляется или не поддерживается корпорацией Майкрософт. Средства Запуск от имени администратора по умолчанию, поскольку сам netsh.exe требуются права администратора.
@@ -167,7 +167,7 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={000000
 * [HTTP.sys Manager](http://httpsysmanager.codeplex.com/) предоставляет пользовательский Интерфейс для включения в список и Настройка SSL-сертификатов и параметров, префиксов резервирования и списки доверия сертификатов. 
 * [HttpConfig](http://www.stevestechspot.com/ABetterHttpcfg.aspx) позволяет перечислить или настроить сертификаты SSL и префиксы URL-адрес. Пользовательский Интерфейс будет более http.sys Manager предоставляет несколько дополнительных параметров конфигурации, а в противном случае она предоставляет аналогичные функциональные возможности. Не удается создать новый список доверия сертификатов (CTL), но можно назначить уже существующую.
 
-Для создания самозаверяющего SSL-сертификаты, корпорация Майкрософт предоставляет средства командной строки: [MakeCert.exe](https://msdn.microsoft.com/library/windows/desktop/aa386968) и командлет PowerShell [New-SelfSignedCertificate](https://technet.microsoft.com/library/hh848633). Существуют также сторонние пользовательского интерфейса средства, облегчающие создавать самозаверяющие сертификаты SSL:
+Для создания самозаверяющего SSL-сертификаты, корпорация Майкрософт предоставляет средства командной строки: [MakeCert.exe](https://msdn.microsoft.com/library/windows/desktop/aa386968) и командлет PowerShell [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pki/new-selfsignedcertificate). Существуют также сторонние пользовательского интерфейса средства, облегчающие создавать самозаверяющие сертификаты SSL:
 
 * [SelfCert](https://www.pluralsight.com/blog/software-development/selfcert-create-a-self-signed-certificate-interactively-gui-or-programmatically-in-net)
 * [Makecert пользовательского интерфейса](http://makecertui.codeplex.com/)

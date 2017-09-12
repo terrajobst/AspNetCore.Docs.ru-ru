@@ -11,11 +11,11 @@ ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: b79d86358a8f1552118fac508c4cc02cf674f169
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 5705e9f879af4be3fe338716a4310bf9f0530039
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>Ответ сжатия по промежуточного слоя ASP.NET Core
 
@@ -169,7 +169,7 @@ ms.lasthandoff: 08/25/2017
 ![Fiddler окно, отображающее результат запроса с заголовком Accept-Encoding и значение mycustomcompression. Заголовки Vary и Content-Encoding, добавляются в ответ.](response-compression/_static/request-custom-compression.png)
 
 ## <a name="compression-with-secure-protocol"></a>Сжатие с безопасным протоколом
-Сжатые ответы по безопасным соединениям можно управлять при помощи `EnableForHttps` параметр, который по умолчанию отключена. С помощью сжатия с динамической страницы может привести к проблемам безопасности таких как [CRIME](https://en.wikipedia.org/wiki/CRIME_(security_exploit)) и [нарушения](https://en.wikipedia.org/wiki/BREACH_(security_exploit)) атак.
+Сжатые ответы по безопасным соединениям можно управлять при помощи `EnableForHttps` параметр, который по умолчанию отключена. С помощью сжатия с динамической страницы может привести к проблемам безопасности таких как [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) и [нарушения](https://wikipedia.org/wiki/BREACH_(security_exploit)) атак.
 
 ## <a name="adding-the-vary-header"></a>Добавление заголовка Vary
 При сжатии ответы на основе `Accept-Encoding` заголовок, потенциально несколько версий сжатого ответа и несжатую версию. Чтобы настроить кэш клиента и прокси-сервера, существует несколько версий и должны быть сохранены, `Vary` добавить заголовок с `Accept-Encoding` значение. В ASP.NET Core 1.x, добавление `Vary` заголовок в ответ выполняется вручную. В ASP.NET Core добавляет по промежуточного слоя 2.x `Vary` заголовка автоматически при ответе сжимается.

@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/validation
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 514c7770b7f508893a059c1adcf56204160aceda
-ms.sourcegitcommit: 275a5381b6172b4f0b5fcd1d252aff03d3dae166
+ms.openlocfilehash: be130c24f5baf643a4c9493a33ec45bdd4cc66ed
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-model-validation-in-aspnet-core-mvc"></a>Общие сведения о проверке модели в ASP.NET Core MVC
 
-По [Рэйчел Аппель](http://github.com/rachelappel)
+По [Рэйчел Аппель](https://github.com/rachelappel)
 
 ## <a name="introduction-to-model-validation"></a>Общие сведения о проверке модели
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 08/30/2017
 
 * `[Url]`: Проверяет свойство имеет формат URL-адреса.
 
-MVC поддерживает любой атрибут, который является производным от `ValidationAttribute` для целей проверки. Множество полезных проверки атрибутов можно найти в [System.ComponentModel.DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations(v=vs.110).aspx) пространства имен.
+MVC поддерживает любой атрибут, который является производным от `ValidationAttribute` для целей проверки. Множество полезных проверки атрибутов можно найти в [System.ComponentModel.DataAnnotations](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations) пространства имен.
 
 Возможны случаи, в которых требуется больше возможностей, чем встроенные атрибуты. В тех случаях, можно создать собственные настраиваемые атрибуты проверки путем наследования от `ValidationAttribute` или изменение модели для реализации `IValidatableObject`.
 

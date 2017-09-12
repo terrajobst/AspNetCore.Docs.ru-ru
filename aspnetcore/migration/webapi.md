@@ -11,15 +11,15 @@ ms.assetid: 4f0564b4-ed4e-4e1e-9755-c1144d21a0ef
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/webapi
-ms.openlocfilehash: 55125e711a8b04f5a363ba965ab2223da02aab78
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 2dd2d40aef3803ad2f75504920a1174fee5c2444
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="migrating-from-aspnet-web-api"></a>Миграция из веб-API ASP.NET
 
-По [Стив Смит](http://ardalis.com) и [Скотт Addie](https://scottaddie.com)
+По [Стив Смит](https://ardalis.com/) и [Скотт Addie](https://scottaddie.com)
 
 Веб-API — это службы HTTP, которые широкого диапазона клиентов, включая браузеры и мобильные устройства. Основные ASP.NET MVC включает поддержку для создания веб-API, обеспечивая единый, согласованный способ создания веб-приложений. В этой статье мы демонстрируются шаги, необходимые для миграции реализация веб-API из веб-API ASP.NET ASP.NET Core MVC.
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="review-aspnet-web-api-project"></a>Просмотр ASP.NET Web API проекта
 
-В этой статье используется пример проекта *ProductsApp*, созданный в статье [Приступая к работе с веб-API ASP.NET](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) начальной точкой. В этом проекте простого проекта веб-API ASP.NET настраивается следующим образом.
+В этой статье используется пример проекта *ProductsApp*, созданный в статье [Приступая к работе с веб-API ASP.NET](https://docs.microsoft.com/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) начальной точкой. В этом проекте простого проекта веб-API ASP.NET настраивается следующим образом.
 
 В *Global.asax.cs*, выполняется вызов `WebApiConfig.Register`:
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 08/11/2017
 [!code-csharp[Main](../migration/webapi/sample/ProductsApp/App_Start/WebApiConfig.cs?highlight=15,16,17,18,19,20)]
 
 
-Этот класс настраивает [маршрутизацией атрибутов](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2), несмотря на то, что он фактически не используется в проекте. Он также настраивает таблицу маршрутизации, которая используется веб-API ASP.NET. В этом случае веб-API ASP.NET будет ожидать, что URL-адреса в соответствии с форматом */api/ {controller} / {id}*, с *{id}* дополнительными.
+Этот класс настраивает [маршрутизацией атрибутов](https://docs.microsoft.com/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2), несмотря на то, что он фактически не используется в проекте. Он также настраивает таблицу маршрутизации, которая используется веб-API ASP.NET. В этом случае веб-API ASP.NET будет ожидать, что URL-адреса в соответствии с форматом */api/ {controller} / {id}*, с *{id}* дополнительными.
 
 *ProductsApp* проект содержит только один простой контроллер, который наследует от `ApiController` и предоставляет два метода:
 

@@ -12,17 +12,17 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/bower
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 409f7afba8dd7d03b7b9aa27d93ec9167252b965
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: f5d208072f55d78de6ec8c238ebbe723cc0ec598
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Управление пакетами стороне клиента с помощью Bower в ASP.NET Core
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT), [Риса Ноэл](http://blog.falafel.com/author/noel-rice/), и [Скотт Addie](https://scottaddie.com) 
+По [Рик Андерсон](https://twitter.com/RickAndMSFT), [Риса Ноэл](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/), и [Скотт Addie](https://scottaddie.com) 
 
-[Bower](https://bower.io/) вызывает саму себя «Диспетчер пакетов для Интернета.» В экосистеме .NET он заполняет void влево на невозможность NuGet доставки статического содержимого файлов. Для проектов ASP.NET Core эти статические файлы, присущие клиентские библиотеки, такие как [jQuery](http://jquery.com/) и [начальной загрузки](http://getbootstrap.com/). Для библиотеки .NET, по-прежнему использовать [NuGet](https://nuget.org/) диспетчера пакетов.
+[Bower](https://bower.io/) вызывает саму себя «Диспетчер пакетов для Интернета.» В экосистеме .NET он заполняет void влево на невозможность NuGet доставки статического содержимого файлов. Для проектов ASP.NET Core эти статические файлы, присущие клиентские библиотеки, такие как [jQuery](http://jquery.com/) и [начальной загрузки](http://getbootstrap.com/). Для библиотеки .NET, по-прежнему использовать [NuGet](https://www.nuget.org/) диспетчера пакетов.
 
 Процесс создания новых проектов, созданных с помощью шаблонов проектов ASP.NET Core, Настройка на стороне клиента. [jQuery](http://jquery.com/) и [начальной загрузки](http://getbootstrap.com/) установлены, и поддерживается Bower.
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 09/05/2017
 
 * Щелкните правой кнопкой мыши проект в обозревателе решений и выберите **управление пакетами Bower** (также в главном меню **проекта** > **управление пакетами Bower**).
 
-* В **Bower: \<имя проекта\>**  окно, перейдите на вкладку «Просмотр» и отфильтруйте список пакетов, введя `font-awesome` в поле поиска:
+* В **Bower: \<имя проекта\> ** окно, перейдите на вкладку «Просмотр» и отфильтруйте список пакетов, введя `font-awesome` в поле поиска:
 
  ![Управление пакетами bower](bower/_static/manage-bower-packages.png)
 

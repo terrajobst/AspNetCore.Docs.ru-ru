@@ -11,11 +11,11 @@ ms.assetid: f2bbbf4e-0945-43ce-be59-8bf19e448798
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: cef7644d29168e9560d1175885ea85a525fec435
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 16a9385630d88c4c9f33954f83fce2bbce5be719
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="key-encryption-at-rest"></a>Шифрование ключа при хранении
 
@@ -74,7 +74,7 @@ sc.AddDataProtection()
 
    Облако, тем не менее, часто требуется содержимого зашифрованные на одном компьютере быть расшифрованы на другом. Таким образом начиная с Windows 8, Microsoft расширенные идея использования относительно простой интерфейс API для охвата облачных сценариев. Это новый API с названием DPAPI-NG, позволяет безопасно совместно использовать секретные данные (ключи, пароли, материал ключа) и сообщения, защищая набор субъектов, которые можно использовать для отключения их защиты на разных компьютерах после надлежащую проверку подлинности и авторизации.
 
-   Из [https://msdn.microsoft.com/library/windows/desktop/hh706794 (v=vs.85).aspx](https://msdn.microsoft.com/library/windows/desktop/hh706794(v=vs.85).aspx)
+   Из [о CNG DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794(v=vs.85).aspx)
 
 Участник кодируются как дескриптор правила защиты. Рассмотрим ниже примере, который шифрует материал ключа таким образом, что только присоединенных к домену пользователя с указанным SID может расшифровать материал ключа.
 
@@ -97,7 +97,7 @@ sc.AddDataProtection()
 
 ## <a name="certificate-based-encryption-with-windows-dpapi-ng"></a>Шифрование на основе сертификата с Windows DPAPI-NG
 
-Если вы работаете на Windows 8.1 или Windows Server 2012 R2 или более поздней версии, Windows DPAPI-NG можно использовать для выполнения шифрования на основе сертификатов, даже если приложение выполняется [.NET Core](https://microsoft.com/net/core). Для использования этой возможности, используйте строки дескриптора правило «сертификата = HashId:thumbprint», где отпечаток является шестнадцатеричной кодировке отпечаток SHA1 сертификата для использования. Пример см. ниже.
+Если вы работаете на Windows 8.1 или Windows Server 2012 R2 или более поздней версии, Windows DPAPI-NG можно использовать для выполнения шифрования на основе сертификатов, даже если приложение выполняется [.NET Core](https://www.microsoft.com/net/core). Для использования этой возможности, используйте строки дескриптора правило «сертификата = HashId:thumbprint», где отпечаток является шестнадцатеричной кодировке отпечаток SHA1 сертификата для использования. Пример см. ниже.
 
 ```csharp
 sc.AddDataProtection()

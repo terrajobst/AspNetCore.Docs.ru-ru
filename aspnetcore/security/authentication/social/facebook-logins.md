@@ -11,11 +11,11 @@ ms.assetid: 8c65179b-688c-4af1-8f5e-1862920cda95
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 9554d66712f93df6d2c50503b60162757986e707
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: da019ad3fd6cefa23b8331c98cc36e50ac9c1105
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="configuring-facebook-authentication"></a>Настройка проверки подлинности Facebook
 
@@ -23,11 +23,11 @@ ms.lasthandoff: 08/25/2017
 
 По [Valeriy Novytskyy](https://github.com/01binary) и [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
-Этого учебника показано, как предоставить пользователям возможность войти в свою учетную запись Facebook с помощью ASP.NET 2.0 основной пример проекта создан на [предыдущую страницу](index.md). Мы начнем с создания код приложения Facebook, следуя [официальный действия](https://developers.facebook.com/docs/apps/register).
+Этого учебника показано, как предоставить пользователям возможность войти в свою учетную запись Facebook с помощью ASP.NET 2.0 основной пример проекта создан на [предыдущую страницу](index.md). Мы начнем с создания код приложения Facebook, следуя [официальный действия](https://www.facebook.com/unsupportedbrowser).
 
 ## <a name="create-the-app-in-facebook"></a>Создать приложение на Facebook
 
-*  Перейдите к [Facebook для разработчиков](https://developers.facebook.com/apps) страницы и выполните вход. Если у вас еще нет учетной записи Facebook, используйте **зарегистрироваться для Facebook** ссылку на страницу входа для ее создания.
+*  Перейдите к [Facebook для разработчиков](https://www.facebook.com/unsupportedbrowser) страницы и выполните вход. Если у вас еще нет учетной записи Facebook, используйте **зарегистрироваться для Facebook** ссылку на страницу входа для ее создания.
 
 * Коснитесь **Создание приложения** кнопку в правом верхнем углу, чтобы создать новый идентификатор приложения.
 

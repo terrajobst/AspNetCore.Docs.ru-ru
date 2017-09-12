@@ -11,15 +11,15 @@ ms.assetid: ebd98159-a028-4a94-b06c-43981c79c6be
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 8dae9cf1597ae2bddf2943af4a7ab9d50620825b
-ms.sourcegitcommit: 26166785ad181a8519cb008800d71d96499b0499
+ms.openlocfilehash: 2b95073bc0972908d0c0b2158a036e4374c7df4d
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="custom-model-binding"></a>Привязка пользовательских модели
 
-По [Стив Смит](http://ardalis.com)
+По [Стив Смит](https://ardalis.com/)
 
 Привязка модели позволяет действия контроллера для работы непосредственно с типами моделей (переданное в качестве аргументов метода), а чем HTTP-запросов. Сопоставление между моделями данных и приложений для входящего запроса обрабатывается связыватели моделей. Разработчики могут расширить функциональность привязки встроенных модели путем реализации пользовательских связыватели (хотя обычно не требуется указать собственный поставщик).
 
@@ -137,4 +137,4 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 Пользовательские связыватели:
 - Не пытайтесь задать коды состояния или возвращать результаты (например, 404 не найдено). При сбое привязки модели, [фильтр действий](xref:mvc/controllers/filters) или логику в сам метод должен обрабатывать ошибку.
 - Наиболее полезны для исключения повторяющихся частей кода и перекрестные вопросов от методов действий.
-- Обычно не используются для преобразования строки в пользовательский тип [ `TypeConverter` ](https://msdn.microsoft.com/library/ayybcxe5.aspx) обычно является лучшим вариантом.
+- Обычно не используются для преобразования строки в пользовательский тип [ `TypeConverter` ](https://docs.microsoft.com//dotnet/api/system.componentmodel.typeconverter) обычно является лучшим вариантом.

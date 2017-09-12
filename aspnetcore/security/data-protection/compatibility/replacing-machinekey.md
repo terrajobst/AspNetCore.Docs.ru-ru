@@ -11,17 +11,17 @@ ms.assetid: 5ac13589-3837-4b4d-8abe-81f843942120
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/compatibility/replacing-machinekey
-ms.openlocfilehash: b7f260bd5d548588a51095537c9c1b1802553c54
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 29229b9507ece6aff8278b0ad66169c9e4e7498b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="replacing-machinekey-in-aspnet"></a>Замена `<machineKey>` в ASP.NET
 
 <a name=compatibility-replacing-machinekey></a>
 
-Реализация `<machineKey>` элемент в ASP.NET [заменяемая](http://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx). Это позволяет большинство вызовы подпрограммы шифрования ASP.NET для направляться через замены механизм защиты данных, включая новую систему защиты данных.
+Реализация `<machineKey>` элемент в ASP.NET [заменяемая](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/). Это позволяет большинство вызовы подпрограммы шифрования ASP.NET для направляться через замены механизм защиты данных, включая новую систему защиты данных.
 
 ## <a name="package-installation"></a>Установка пакета
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/11/2017
 
 Для установки новой системы защиты данных в существующий проект ASP.NET 4.5.1+, установите пакет Microsoft.AspNetCore.DataProtection.SystemWeb. Это будет создавать системы защиты данных с помощью [конфигурация по умолчанию](../configuration/default-settings.md#data-protection-default-settings) параметры.
 
-При установке пакета, он вставляется строка в *Web.config* , сообщает ASP.NET, чтобы использовать его для [наиболее криптографических операций](http://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx), включая проверку подлинности форм, состояние представления и вызовы MachineKey.Protect. Строки, которая будет вставлена выглядит следующим образом.
+При установке пакета, он вставляется строка в *Web.config* , сообщает ASP.NET, чтобы использовать его для [наиболее криптографических операций](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/), включая проверку подлинности форм, состояние представления и вызовы MachineKey.Protect. Строки, которая будет вставлена выглядит следующим образом.
 
 ```xml
 <machineKey compatibilityMode="Framework45" dataProtectorType="..." />

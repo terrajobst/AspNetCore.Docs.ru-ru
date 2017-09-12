@@ -11,15 +11,15 @@ ms.assetid: 4eb7e52f-5665-41a4-a3e3-e348d07337f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/application-model
-ms.openlocfilehash: 18046389becd17135ff831e71e700244d48552d3
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 1a5d461809afeef0f485fd3a665250631d855b36
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="working-with-the-application-model"></a>Работа с моделью приложения
 
-По [Стив Смит](http://ardalis.com)
+По [Стив Смит](https://ardalis.com/)
 
 Определяет основные ASP.NET MVC *модель приложения* представляющие компоненты приложения MVC. Можно читать и управлять этой модели, чтобы изменить поведение элементов MVC. По умолчанию MVC соблюдаются определенные соглашения для определения классов, которые считаются контроллеров, какие методы этих классов являются действия и поведение маршрутизации и параметры. Вы можете настроить это поведение в соответствии с потребностями приложения путем создания собственного правила и применения их глобально или как атрибуты.
 
@@ -70,13 +70,13 @@ ASP.NET Core MVC загружает модели приложения, с пом
 
 Некоторые встроенные поведения реализуются `DefaultApplicationModelProvider`. Этот поставщик отвечает за создание [ `ControllerModel` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel), который в свою очередь ссылается на [ `ActionModel` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ActionModel), [ `PropertyModel` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel), и [ `ParameterModel` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ParameterModel) экземпляров. `DefaultApplicationModelProvider` Класса является элементом реализации внутреннюю структуру, можно и приведет к изменению в будущем. 
 
-`AuthorizationApplicationModelProvider` Отвечает за применение поведение, связанное с `AuthorizeFilter` и `AllowAnonymousFilter` атрибуты. [Дополнительные сведения об этих атрибутов](https://docs.microsoft.com/aspnet/core/security/authorization/simple).
+`AuthorizationApplicationModelProvider` Отвечает за применение поведение, связанное с `AuthorizeFilter` и `AllowAnonymousFilter` атрибуты. [Дополнительные сведения об этих атрибутов](xref:security/authorization/simple).
 
-`CorsApplicationModelProvider` Реализует поведение, связанное с `IEnableCorsAttribute` и `IDisableCorsAttribute`и `DisableCorsAuthorizationFilter`. [Дополнительные сведения о CORS](https://docs.microsoft.com/aspnet/core/security/cors).
+`CorsApplicationModelProvider` Реализует поведение, связанное с `IEnableCorsAttribute` и `IDisableCorsAttribute`и `DisableCorsAuthorizationFilter`. [Дополнительные сведения о CORS](xref:security/cors).
 
 ## <a name="conventions"></a>Соглашения
 
-Модель приложения определяет соглашение о абстрактные классы, которые предоставляют простой способ настроить поведение модели, чем переопределение всей модели или поставщика. Эти абстракции являются рекомендуемый способ изменения поведения приложения. Соглашения позволяют писать код, который будет динамически применения настроек. Хотя [фильтры](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters) позволяют изменить поведение платформы, настройки позволяют пользователю контролировать, как совместно проводной всего приложения.
+Модель приложения определяет соглашение о абстрактные классы, которые предоставляют простой способ настроить поведение модели, чем переопределение всей модели или поставщика. Эти абстракции являются рекомендуемый способ изменения поведения приложения. Соглашения позволяют писать код, который будет динамически применения настроек. Хотя [фильтры](xref:mvc/controllers/filters) позволяют изменить поведение платформы, настройки позволяют пользователю контролировать, как совместно проводной всего приложения.
 
 Доступны следующие соглашения:
 
@@ -85,7 +85,7 @@ ASP.NET Core MVC загружает модели приложения, с пом
 * [`IActionModelConvention`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.iactionmodelconvention)
 * [`IParameterModelConvention`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.iparametermodelconvention)
 
-Соглашения применяются, добавив их в MVC параметры либо путем реализации `Attribute`s и применении этих параметров действия, контроллеров и действий (аналогично [ `Filters` ](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters)). В отличие от фильтров соглашения о выполняются только при запуске приложения, не являющийся частью каждого запроса.
+Соглашения применяются, добавив их в MVC параметры либо путем реализации `Attribute`s и применении этих параметров действия, контроллеров и действий (аналогично [ `Filters` ](xref:mvc/controllers/filters)). В отличие от фильтров соглашения о выполняются только при запуске приложения, не являющийся частью каждого запроса.
 
 ### <a name="sample-modifying-the-applicationmodel"></a>Пример: Изменение ApplicationModel
 
@@ -159,7 +159,7 @@ ASP.NET Core MVC загружает модели приложения, с пом
 [!code-csharp[Main](./application-model/sample/src/AppModelSample/Startup.cs?name=ConfigureServices&highlight=6)]
 
 > [!TIP]
-> Можно добавить соглашения в вашей [по промежуточного слоя](https://docs.microsoft.com/aspnet/core/fundamentals/middleware) , обратившись к `MvcOptions` с помощью`services.Configure<MvcOptions>(c => c.Conventions.Add(YOURCONVENTION));`
+> Можно добавить соглашения в вашей [по промежуточного слоя](xref:fundamentals/middleware) , обратившись к `MvcOptions` с помощью`services.Configure<MvcOptions>(c => c.Conventions.Add(YOURCONVENTION));`
 
 В этом примере применяется это соглашение маршруты, не использующие атрибут маршрутизации, где контроллер имеет «Пространство имен» в имени. Следующий контроллер демонстрирует это соглашение:
 
@@ -170,7 +170,7 @@ ASP.NET Core MVC загружает модели приложения, с пом
 ASP.NET Core MVC использует другой набор соглашений из веб-API ASP.NET 2. С помощью пользовательского соглашения, можно изменить поведение приложения ASP.NET Core MVC для соответствия, приложения веб-API. Поставляется с Microsoft [WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim/) специально для этой цели.
 
 > [!NOTE]
-> Дополнительные сведения о [миграции с веб-API ASP.NET](https://docs.microsoft.com/aspnet/core/migration/webapi)).
+> Дополнительные сведения о [миграции с веб-API ASP.NET](xref:migration/webapi).
 
 Чтобы использовать оболочку совместимости Web API, необходимо добавить пакет в проект и добавить условные обозначения MVC с помощью `AddWebApiConventions` в `Startup`:
 
@@ -199,7 +199,7 @@ services.AddMvc().AddWebApiConventions();
 
 ### <a name="routes"></a>Маршруты
 
-`UseWebApiRoutesAttribute` Элементы управления ли `WebApiApplicationModelConvention` применяется соглашение контроллера. Если включено, это обозначение используется для добавления поддержки [областей](https://docs.microsoft.com/aspnet/core/mvc/controllers/areas) для маршрута.
+`UseWebApiRoutesAttribute` Элементы управления ли `WebApiApplicationModelConvention` применяется соглашение контроллера. Если включено, это обозначение используется для добавления поддержки [областей](xref:mvc/controllers/areas) для маршрута.
 
 В дополнение к набор соглашений, включает пакет совместимости `System.Web.Http.ApiController` базового класса, который заменяет, предоставляемых веб-API. Это позволяет контроллеров, написанные для веб-API и наследование из его `ApiController` будут работать, как они были разработаны, при выполнении с ASP.NET Core MVC. Этот базовый класс, отмеченный со всеми `UseWebApi*` атрибуты, приведенные выше. `ApiController` Предоставляет свойства, методы и типы результата, совместимые с имеющимся в веб-API.
 

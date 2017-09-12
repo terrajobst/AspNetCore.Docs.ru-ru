@@ -12,16 +12,16 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/angular
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50d2e76c472e67c26238abee4f7b0ed64cd043ab
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 2c7929976f0c9f8284ab397b1a87d576bcdd15b0
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="using-angularjs-for-single-page-applications-spas-with-aspnet-core"></a>С помощью AngularJS для приложений на одной странице (SPAs) с ASP.NET Core
 
 
-По [Venkata Koppaka](http://blog.falafel.com/author/venkata-koppaka/) и [Скотт Addie](https://scottaddie.com)
+По [Venkata Koppaka](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/) и [Скотт Addie](https://scottaddie.com)
 
 В этой статье вы узнаете, как создать приложение ASP.NET SPA стиля, с помощью AngularJS.
 
@@ -29,9 +29,9 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="what-is-angularjs"></a>Что такое AngularJS?
 
-[AngularJS](http://angularjs.org/) — это современная платформа JavaScript из Google, обычно используется для работы с приложениями одной страницы (SPAs). AngularJS открытой источником в рамках лицензии MIT и может располагаться после разработки ход AngularJS [своего репозитория GitHub](https://github.com/angular/angular.js). Библиотеке называется угловая, поскольку HTML использует углового были сформированы квадратные скобки.
+[AngularJS](https://angularjs.org/) — это современная платформа JavaScript из Google, обычно используется для работы с приложениями одной страницы (SPAs). AngularJS открытой источником в рамках лицензии MIT и может располагаться после разработки ход AngularJS [своего репозитория GitHub](https://github.com/angular/angular.js). Библиотеке называется угловая, поскольку HTML использует углового были сформированы квадратные скобки.
 
-AngularJS не является библиотекой манипуляции DOM, например jQuery, но она использует подмножество называется jQLite jQuery. AngularJS в основе декларативных атрибутов HTML, которые можно добавить теги HTML. Можно попробовать AngularJS в браузере с помощью [School код веб-сайта](https://www.codeschool.com/courses/shaping-up-with-angular-js) или [W3Schools веб-сайт](https://www.w3schools.com/angular/).
+AngularJS не является библиотекой манипуляции DOM, например jQuery, но она использует подмножество называется jQLite jQuery. AngularJS в основе декларативных атрибутов HTML, которые можно добавить теги HTML. Можно попробовать AngularJS в браузере с помощью [School код веб-сайта](https://www.codeschool.com/courses/shaping-up-with-angularjs) или [W3Schools веб-сайт](https://www.w3schools.com/angular/).
 
 Эта статья посвящена AngularJS некоторые особенности, на котором заголовок угловая.
 
@@ -63,7 +63,7 @@ AngularJS не является библиотекой манипуляции DO
 
 ## <a name="key-components"></a>Основные компоненты
 
-AngularJS включает ряд основных компонентов, таких как *директивы*, *шаблоны*, *знаки повторения*, *модули*,  *контроллеры*, *компоненты*, *маршрутизатора компонент* и многое другое. Давайте рассмотрим, как эти компоненты взаимодействуют для добавления поведения на веб-страницы.
+AngularJS включает ряд основных компонентов, таких как *директивы*, *шаблоны*, *знаки повторения*, *модули*, * контроллеры*, *компоненты*, *маршрутизатора компонент* и многое другое. Давайте рассмотрим, как эти компоненты взаимодействуют для добавления поведения на веб-страницы.
 
 ### <a name="directives"></a>Директивы
 
@@ -393,4 +393,4 @@ AngularJS имеет встроенные маршрут поставщика д
 
 * [Угловое документы](https://docs.angularjs.org)
 
-* [Угловое Info 2](http://angular.io)
+* [Угловое Info 2](https://angular.io/)

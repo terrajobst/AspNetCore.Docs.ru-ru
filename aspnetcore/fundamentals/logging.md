@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15abe93d881aed3b6950a859dc9445ec50ee9bb5
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: b9a4ae6e7d9b2fa998b91e643e63657239d4866b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>Общие сведения о входе ASP.NET Core
 
-По [Стив Смит](http://ardalis.com) и [Tom Dykstra](https://github.com/tdykstra)
+По [Стив Смит](https://ardalis.com/) и [Tom Dykstra](https://github.com/tdykstra)
 
 ASP.NET Core поддерживает API ведения журнала, который работает с множеством регистраторов. Встроенные поставщики позволяют отправлять журналы одному или нескольким назначениям, а можно подключить платформа ведения журналов сторонних разработчиков. В этой статье показано, как использовать API встроенного ведения журнала и поставщики в коде.
 
@@ -244,7 +244,7 @@ _logger.LogInformation("Parameter values: {p2}, {p1}", p1, p2);
 Parameter values: parm1, parm2
 ```
 
-Платформа ведения журнала сообщений форматирование таким образом, чтобы сделать возможным для поставщиков ведения журнала для реализации [семантической ведения журналов, также известные как структурированный ведения журнала](http://programmers.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging). Так как сами аргументы передаются в систему ведения журналов не только строковое сообщение, отформатированное, регистраторов можно хранить значения параметров, как поля, кроме строку сообщения. Например если Направляемая выходные данные журналов для табличного хранилища Azure и вызова метода средство ведения журнала выглядит следующим образом:
+Платформа ведения журнала сообщений форматирование таким образом, чтобы сделать возможным для поставщиков ведения журнала для реализации [семантической ведения журналов, также известные как структурированный ведения журнала](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging). Так как сами аргументы передаются в систему ведения журналов не только строковое сообщение, отформатированное, регистраторов можно хранить значения параметров, как поля, кроме строку сообщения. Например если Направляемая выходные данные журналов для табличного хранилища Azure и вызова метода средство ведения журнала выглядит следующим образом:
 
 ```csharp
 _logger.LogInformation("Getting item {ID} at {RequestTime}", id, DateTime.Now);
@@ -514,7 +514,7 @@ loggerFactory.AddEventSourceLogger()
   New-EtwTraceSession -Name "MyAppTrace" -LocalFilePath C:\trace.etl
   ```
 
-* Добавьте поставщиков трассировки событий Windows для [CLR](https://msdn.microsoft.com/library/ff357718), ASP.NET Core и другим пользователям при необходимости. Идентификатор GUID поставщика ASP.NET Core `3ac73b97-af73-50e9-0822-5da4367920d0`. 
+* Добавьте поставщиков трассировки событий Windows для [CLR](https://docs.microsoft.com/dotnet/framework/performance/clr-etw-providers), ASP.NET Core и другим пользователям при необходимости. Идентификатор GUID поставщика ASP.NET Core `3ac73b97-af73-50e9-0822-5da4367920d0`. 
 
   ```powershell
   Add-EtwTraceProvider -Guid "{e13c0d23-ccbc-4e12-931b-d9cc2eee27e4}" -SessionName MyAppTrace
@@ -555,7 +555,7 @@ loggerFactory.AddEventLog()
 <a id="tracesource"></a>
 ### <a name="the-tracesource-provider"></a>Поставщик TraceSource
 
-[Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource) пакет поставщик использует [System.Diagnostics.TraceSource](https://msdn.microsoft.com/library/system.diagnostics.tracesource.aspx) библиотеки и поставщики.
+[Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource) пакет поставщик использует [System.Diagnostics.TraceSource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracesource) библиотеки и поставщики.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -573,7 +573,7 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 [Перегрузки AddTraceSource](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.tracesourcefactoryextensions) позволяют передать переключатель источника и прослушиватель трассировки.
 
-Чтобы использовать этот поставщик, приложения должен выполняться на .NET Framework (а не .NET Core). Поставщик позволяет, маршрутизации сообщений на различные [прослушиватели](https://msdn.microsoft.com/library/4y5y10s7), такие как [TextWriterTraceListener](https://msdn.microsoft.com/library/system.diagnostics.textwritertracelistener) используется в примере приложения.
+Чтобы использовать этот поставщик, приложения должен выполняться на .NET Framework (а не .NET Core). Поставщик позволяет, маршрутизации сообщений на различные [прослушиватели](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/trace-listeners), такие как [TextWriterTraceListener](https://docs.microsoft.com/dotnet/api/system.diagnostics.textwritertracelistenerr) используется в примере приложения.
 
 В следующем примере настраивается `TraceSource` поставщик, записывающий в журнал `Warning` и более поздней версии сообщения в окно консоли.
 
@@ -621,9 +621,9 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 * [NLog](https://github.com/NLog/NLog.Extensions.Logging) -поставщик для библиотеки NLog
 
-* [Serilog](https://github.com/serilog/serilog-framework-logging) -поставщик для библиотеки Serilog
+* [Serilog](https://github.com/serilog/serilog-extensions-logging) -поставщик для библиотеки Serilog
 
-Некоторые сторонние платформы можно сделать [семантической ведения журналов, также известные как структурированный ведения журнала](http://programmers.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
+Некоторые сторонние платформы можно сделать [семантической ведения журналов, также известные как структурированный ведения журнала](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
 
 С использованием сторонней платформы похоже на использование одного из встроенных поставщиков: добавьте пакет NuGet в проект и вызов метода расширения на `ILoggerFactory`. Дополнительные сведения см. в документации каждого framework.
 

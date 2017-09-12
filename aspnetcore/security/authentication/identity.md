@@ -11,15 +11,15 @@ ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 72802830660ddcf479e540de7cfc33a07c49dc23
-ms.sourcegitcommit: b02db6da115e55140da91b67355aaf56aae1703f
+ms.openlocfilehash: 5a76cac1d64718b9dece3a3201db06c8192fb6f3
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об учетных данных ASP.NET Core
 
-По [Pranav Rastogi](https://github.com/rustd), [Рик Андерсон](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra), Джон Гэллоуэй [Reitan Эрик](https://github.com/Erikre), и [Стив Смит](http://ardalis.com)
+По [Pranav Rastogi](https://github.com/rustd), [Рик Андерсон](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra), Джон Гэллоуэй [Reitan Эрик](https://github.com/Erikre), и [Стив Смит](https://ardalis.com/)
 
 Удостоверение ASP.NET Core является система членства, в котором можно добавить функциональные возможности входа в приложение. Пользователи могут создавать учетную запись и имя входа с именем пользователя и пароль или их можно использовать поставщик внешней учетной записи, например Facebook, Google, учетной записи Майкрософт, Twitter или другим пользователям.
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 09/11/2017
     # <a name="net-core-clitabnetcore-cli"></a>[.NET core CLI](#tab/netcore-cli)
     Если используется .NET Core CLI, создайте новый проект с помощью ``dotnet new mvc --auth Individual``. Это создаст новый проект с тем же кодом шаблона удостоверений, создаваемых в Visual Studio.
  
-    Созданный проект содержит `Microsoft.AspNetCore.Identity.EntityFrameworkCore` пакет, который будет сохраняться данные удостоверений и схемы SQL Server с помощью [Entity Framework Core](https://docs.efproject.net).
+    Созданный проект содержит `Microsoft.AspNetCore.Identity.EntityFrameworkCore` пакет, который будет сохраняться данные удостоверений и схемы SQL Server с помощью [Entity Framework Core](https://docs.microsoft.com/ef/).
     
     ---
  

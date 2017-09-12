@@ -11,17 +11,17 @@ ms.assetid: d9a65066-d7cb-47df-b046-64629c4d2c6f
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/windows-service
-ms.openlocfilehash: 1b3cdc18ded89ebdf7b7afa9f43af9669748eff4
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 33a4eca48a04f9b29c60a446f4191d39d21e7e7d
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="host-an-aspnet-core-app-in-a-windows-service"></a>Узел приложения ASP.NET Core в службе Windows
 
 По [Tom Dykstra](https://github.com/tdykstra)
 
-Для размещения приложения ASP.NET Core в Windows, если вы не используете IIS рекомендуется выполнять [службы Windows](https://msdn.microsoft.com/library/d56de412). Таким образом она сможет автоматически начать после перезагрузки и сбои, не ожидая, пока кто-либо выполнить вход.
+Для размещения приложения ASP.NET Core в Windows, если вы не используете IIS рекомендуется выполнять [службы Windows](https://docs.microsoft.com/dotnet/framework/windows-services/introduction-to-windows-service-applications). Таким образом она сможет автоматически начать после перезагрузки и сбои, не ожидая, пока кто-либо выполнить вход.
 
 [Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/hosting/windows-service/sample) разделе [дальнейшие действия](#next-steps) разделе инструкции о том, как запустить его.
 
@@ -121,5 +121,5 @@ ms.lasthandoff: 08/11/2017
 
 В этой статье был записан с помощью источников, которые уже были опубликованы. Минимальное значение и наиболее полезные из них были их:
 
-* [Размещение ASP.NET Core в качестве службы Windows](http://stackoverflow.com/questions/37346383/hosting-asp-net-core-as-windows-service/37464074#37464074)
-* [Как разместить основные ASP.NET в службе Windows](http://dotnetthoughts.net/how-to-host-your-aspnet-core-in-a-windows-service/)
+* [Размещение ASP.NET Core в качестве службы Windows](https://stackoverflow.com/questions/37346383/hosting-asp-net-core-as-windows-service/37464074)
+* [Как разместить основные ASP.NET в службе Windows](https://dotnetthoughts.net/how-to-host-your-aspnet-core-in-a-windows-service/)

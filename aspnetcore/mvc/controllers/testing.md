@@ -11,15 +11,15 @@ ms.assetid: dd4135ec-2b15-410c-b3fb-3d12eed4a1ac
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/testing
-ms.openlocfilehash: d5b2bd0200082000aeaf8015cfff9c8c1ec1bdd9
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: e8a464e75dea3a0ec08c13a11888884e6bb6a4c7
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="testing-controller-logic-in-aspnet-core"></a>Тестирование логики контроллер в ASP.NET Core
 
-По [Стив Смит](http://ardalis.com)
+По [Стив Смит](https://ardalis.com/)
 
 Контроллеры в приложениях ASP.NET MVC должно быть небольшим и ориентированы на проблемы пользовательского интерфейса. Большие контроллеры, работающие с аспектами без пользовательского интерфейса труднее тестировать и поддерживать.
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 09/05/2017
 При написании настраиваемые фильтры, маршрутов и т. д следует модульный тест их, но не как часть тесты на действие конкретном контроллере. Их необходимо тестировать отдельно.
 
 > [!TIP]
-> [Создание и запуск модульных тестов с помощью Visual Studio](https://www.visualstudio.com/get-started/code/create-and-run-unit-tests-vs).
+> [Создание и запуск модульных тестов с помощью Visual Studio](https://www.visualstudio.com/docs/code/create-and-run-unit-tests-vs).
 
 Чтобы продемонстрировать модульного тестирования, просмотрите следующий контроллер. Здесь отображается список мозговой сеансы и новые мозговой сеансов с помощью POST:
 

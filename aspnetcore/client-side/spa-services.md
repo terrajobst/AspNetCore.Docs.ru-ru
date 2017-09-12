@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/spa-services
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 300e90912a03980d1dcde2edaf34677d80cab136
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 0dbe5e3567bb4feea7e56cff3dcf75be5df88310
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="using-javascriptservices-for-creating-single-page-applications-with-aspnet-core"></a>С помощью JavaScriptServices для создания приложений на одной странице с помощью ASP.NET Core
 
@@ -33,9 +33,9 @@ ms.lasthandoff: 08/11/2017
 JavaScriptServices — это совокупность технологий клиентские ASP.NET Core. Его задача — размещать в качестве разработчиков предпочтительный серверную платформу для построения SPAs ASP.NET Core.
 
 JavaScriptServices состоит из трех различных пакетов NuGet.
-* [Microsoft.AspNetCore.NodeServices](http://www.nuget.org/packages/Microsoft.AspNetCore.NodeServices/) (NodeServices)
-* [Microsoft.AspNetCore.SpaServices](http://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) (SpaServices)
-* [Microsoft.AspNetCore.SpaTemplates](http://www.nuget.org/packages/Microsoft.AspNetCore.SpaTemplates/) (SpaTemplates)
+* [Microsoft.AspNetCore.NodeServices](https://www.nuget.org/packages/Microsoft.AspNetCore.NodeServices/) (NodeServices)
+* [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) (SpaServices)
+* [Microsoft.AspNetCore.SpaTemplates](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaTemplates/) (SpaTemplates)
 
 Эти пакеты полезны, если вы:
 * Запускать JavaScript на сервере
@@ -75,7 +75,7 @@ SpaServices предоставляет полезные инфраструкту
 * [Пакет SDK для .NET core](https://www.microsoft.com/net/download/core) 1.0 (или более поздней версии)
     * Если вы в Windows, это можно сделать, выбрав Visual Studio 2017 **кросс платформенной разработки .NET Core** рабочей нагрузки.
 
-* [Microsoft.AspNetCore.SpaServices](http://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) пакета NuGet
+* [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) пакета NuGet
 
 <a name="server-prerendering"></a>
 
@@ -264,7 +264,7 @@ dotnet new angular
     * Исключает исходное сопоставление.
     * Оптимизирует код на стороне клиента через объединение и Минификация.
 
-ASP.NET Core использует переменную среды с именем `ASPNETCORE_ENVIRONMENT` для хранения режим конфигурации. В разделе  **[параметр среды](xref:fundamentals/environments#setting-the-environment)**  для получения дополнительной информации.
+ASP.NET Core использует переменную среды с именем `ASPNETCORE_ENVIRONMENT` для хранения режим конфигурации. В разделе ** [параметр среды](xref:fundamentals/environments#setting-the-environment) ** для получения дополнительной информации.
 
 ### <a name="running-with-net-core-cli"></a>Запуск с .NET Core CLI
 

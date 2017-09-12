@@ -11,11 +11,11 @@ ms.assetid: fda0c2a8-1743-4505-be1a-7f8ceeef8647
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/yeoman
-ms.openlocfilehash: 3a7cd83becc570d2f73014b356977fedb16f29bb
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 61561b55774faf375090c92b574a64f1a12f9647
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-building-projects-with-yeoman-in-aspnet-core"></a>Введение в построение проектов с Yeoman в ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 08/11/2017
 
 ### <a name="prerequisites"></a>Предварительные требования
 
-Node.js и npm являются обязательными для Yeoman. Загрузить [Node.js](https://nodejs.org/en/). Программа установки включает [Node.js](https://nodejs.org/en/) и [npm](https://www.npmjs.com/). Bower также является обязательным для установки платформы пользовательского интерфейса, такие как начальной загрузки.
+Node.js и npm являются обязательными для Yeoman. Загрузить [Node.js](https://nodejs.org/). Программа установки включает [Node.js](https://nodejs.org/) и [npm](https://www.npmjs.com/). Bower также является обязательным для установки платформы пользовательского интерфейса, такие как начальной загрузки.
 
 Чтобы установить Yeoman и Bower, выполните следующую команду:
 
@@ -135,7 +135,7 @@ dotnet run
 
 ## <a name="adding-to-your-project-with-sub-generators"></a>Добавление в проект с генераторами sub
 
-С помощью Yeoman [sub генераторы](https://www.github.com/omnisharp/generator-aspnet#sub-generators), можно добавить любую `nuget.config` или `web.config` после создания проекта. Например выполните следующую команду из каталога, в котором следует создать файл:
+С помощью Yeoman [sub генераторы](https://github.com/omnisharp/generator-aspnet), можно добавить любую `nuget.config` или `web.config` после создания проекта. Например выполните следующую команду из каталога, в котором следует создать файл:
 
 ```console
 yo aspnet:nugetconfig

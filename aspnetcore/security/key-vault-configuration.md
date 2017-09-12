@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: 0292bdae-b3ed-4637-bd67-19b9bb8b65cb
 ms.prod: asp.net-core
 uid: security/key-vault-configuration
-ms.openlocfilehash: b9b03dab6446aed7ee875916cd2e64acbb226e8f
-ms.sourcegitcommit: 70089de5bfd8ecd161261aa95faf07a4e1534cf8
+ms.openlocfilehash: 72b6098b2a71957da338ef36beff4808201773f4
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="azure-key-vault-configuration-provider"></a>Поставщик конфигурации Azure хранилища ключей
 
@@ -161,4 +161,4 @@ Configuration.Reload();
 * [Microsoft Azure: Хранилище ключей](https://azure.microsoft.com/services/key-vault/)
 * [Microsoft Azure: Документации хранилища ключей](https://docs.microsoft.com/azure/key-vault/)
 * [Описание способов создания и передачи, защищенных HSM ключей для хранилища ключей Azure](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)
-* [Класс KeyVaultClient](https://msdn.microsoft.com/library/microsoft.azure.keyvault.keyvaultclient.aspx)
+* [Класс KeyVaultClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault.keyvaultclient)

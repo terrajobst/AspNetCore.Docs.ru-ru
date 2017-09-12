@@ -11,11 +11,11 @@ ms.assetid: 6e1cd570-40f1-4b24-8b6e-7d2d27758f18
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 855f060a6404dedff310b288ada9738689069ceb
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: 87aa7e63b1a08e457c5fdcbc052bfa039b8d2175
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>Создания, чтения, обновления и удаления - Core EF учебнику Core ASP.NET MVC (часть 2 из 10)
 
@@ -122,7 +122,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 Вы удалены `ID` из `Bind` атрибут, так как код имеет значение первичного ключа, который SQL Server будет автоматически устанавливать при вставке строки. Входные данные пользователя не задано значение идентификатора.
 
-Кроме `Bind` блок try-catch-атрибут имеет значение только изменения, внесенные в код формирования шаблонов. Если исключение, которое является производным от `DbUpdateException` будет обработано, пока сохраняются изменения, отображаются сообщения об ошибке. `DbUpdateException`исключения иногда вызываются объекты, внешние приложения, а не наличие программной ошибки, поэтому пользователю предлагается повторите попытку. Несмотря на то, что не реализована в этом образце, производственного качества приложения будет занесения исключения. Дополнительные сведения см. в разделе **подробные сведения в журнале** статьи [мониторинг и данные телеметрии (облака реальных построение приложений с Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).
+Кроме `Bind` блок try-catch-атрибут имеет значение только изменения, внесенные в код формирования шаблонов. Если исключение, которое является производным от `DbUpdateException` будет обработано, пока сохраняются изменения, отображаются сообщения об ошибке. `DbUpdateException`исключения иногда вызываются объекты, внешние приложения, а не наличие программной ошибки, поэтому пользователю предлагается повторите попытку. Несмотря на то, что не реализована в этом образце, производственного качества приложения будет занесения исключения. Дополнительные сведения см. в разделе **подробные сведения в журнале** статьи [мониторинг и данные телеметрии (облака реальных построение приложений с Azure)](https://docs.microsoft.com/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).
 
 `ValidateAntiForgeryToken` Атрибут помогает предотвратить атаки подделки межсайтовых запросов. Токен автоматически вставляется в представлении по [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) и включается при отправке формы пользователем. Маркер проверяется с `ValidateAntiForgeryToken` атрибута. Дополнительные сведения о CSRF см. в разделе [запрос защиты от подделки](../../security/anti-request-forgery.md).
 
@@ -274,7 +274,7 @@ public class Student
 
 Чтобы освободить ресурсы, занятые подключения к базе данных, экземпляр контекста должен быть удален как можно быстрее после завершения с ним. Встроенная ASP.NET Core [внедрения зависимостей](../../fundamentals/dependency-injection.md) берет на себя эту задачу для вас.
 
-В *файла Startup.cs*, можно вызвать [метод расширения AddDbContext](https://github.com/aspnet/EntityFramework/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) для подготовки `DbContext` класс в контейнере ASP.NET DI. Что метод задает время существования службы `Scoped` по умолчанию. `Scoped`означает время существования объекта контекста совпадает с временем жизни запроса web, и `Dispose` метод автоматически вызывается в конце веб-запроса.
+В *файла Startup.cs*, можно вызвать [метод расширения AddDbContext](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) для подготовки `DbContext` класс в контейнере ASP.NET DI. Что метод задает время существования службы `Scoped` по умолчанию. `Scoped`означает время существования объекта контекста совпадает с временем жизни запроса web, и `Dispose` метод автоматически вызывается в конце веб-запроса.
 
 ## <a name="handling-transactions"></a>Обработка транзакций
 

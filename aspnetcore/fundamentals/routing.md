@@ -11,15 +11,15 @@ ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 98756e2c5b336aabcf5155d929160b616baaf2ee
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 431b837dc93abdf305b77615409883fd54b99455
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
-По [Nowak Райана](https://github.com/rynowak), [Стив Смит](http://ardalis.com), и [Рик Андерсон](https://twitter.com/RickAndMSFT)
+По [Nowak Райана](https://github.com/rynowak), [Стив Смит](https://ardalis.com/), и [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 Функции маршрутизации отвечает за сопоставление входящего запроса к обработчику маршрута. Маршруты определяются в приложении ASP.NET и настроить при запуске приложения. Маршрут при необходимости можно извлечь значения из URL-адреса, содержащиеся в запросе, а затем эти значения могут использоваться для обработки запроса. Используя данные о маршруте из приложения ASP.NET, функции маршрутизации также могут создавать URL-адреса, которые сопоставляются обработчики маршрутов. Таким образом маршрутизации можно найти обработчик маршрутов на основе URL-адрес или URL-адрес, соответствующий заданным маршрутом обработчика, на основе сведений обработчик маршрута.
 
@@ -325,9 +325,9 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 
 ## <a name="regular-expressions"></a>Регулярные выражения 
 
-Платформа ASP.NET Core добавляет `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` конструктору регулярного выражения. В разделе [перечисление RegexOptions](https://msdn.microsoft.com/library/system.text.regularexpressions.regexoptions(v=vs.110).aspx) описание этих членов.
+Платформа ASP.NET Core добавляет `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` конструктору регулярного выражения. В разделе [перечисление RegexOptions](https://docs.microsoft.com/dotnet/api/system.text.regularexpressions.regexoptions) описание этих членов.
 
-Регулярные выражения Используйте разделители и маркеров, аналогичны выполняемым службой маршрутизации и в языке C#. Необходимо экранировать токены регулярного выражения. Например, чтобы использовать регулярное выражение `^\d{3}-\d{2}-\d{4}$` в маршрутизации, она должна иметь `\` символов, введенных в качестве `\\` в C# исходный файл для экранирования `\` строка escape-символ (если используется [verbatim строковые литералы](https://msdn.microsoft.com/library/aa691090(v=vs.71).aspx)). `{` , `}` , "[" И "]" символы следует экранировать путем удвоения их escape-символы-разделители параметров службы маршрутизации.  В следующей таблице показаны регулярного выражения и escape-версии.
+Регулярные выражения Используйте разделители и маркеров, аналогичны выполняемым службой маршрутизации и в языке C#. Необходимо экранировать токены регулярного выражения. Например, чтобы использовать регулярное выражение `^\d{3}-\d{2}-\d{4}$` в маршрутизации, она должна иметь `\` символов, введенных в качестве `\\` в C# исходный файл для экранирования `\` строка escape-символ (если используется [verbatim строковые литералы](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/string). `{` , `}` , "[" И "]" символы следует экранировать путем удвоения их escape-символы-разделители параметров службы маршрутизации.  В следующей таблице показаны регулярного выражения и escape-версии.
 
 | Выражение               | Бумага для заметок |
 | ----------------- | ------------ | 
@@ -347,7 +347,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 | `^[a-z]{2}$` |  hello | Нет | в разделе `^` и `$` выше |
 | `^[a-z]{2}$` |  123abc456 | Нет | в разделе `^` и `$` выше |
 
-Ссылаться на [регулярные выражения .NET Framework](https://msdn.microsoft.com/library/hs600312(v=vs.110).aspx) Дополнительные сведения о синтаксисе регулярных выражений.
+Ссылаться на [регулярные выражения .NET Framework](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) Дополнительные сведения о синтаксисе регулярных выражений.
 
 Ограничение параметра с известным набором возможных значений, используйте регулярные выражения. Например `{action:regex(^(list|get|create)$)}` соответствует только `action` маршрутизации значение `list`, `get`, или `create`. При передаче в словарь ограничения, строка «^ (список | get | создать) $» соответствует. Ограничения, передаваемые в словаре ограничения (не inline внутри шаблона), которые не соответствуют одному из известных ограничений также рассматриваются как регулярные выражения.
 

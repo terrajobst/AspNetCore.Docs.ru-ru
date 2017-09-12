@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/owin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28bd52edbdb3159642ce523dd63fde9d6001678c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 796d075d4d0c6b888be4fc2225fc482acdbad498
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-open-web-interface-for-net-owin"></a>Общие сведения, чтобы открыть веб-интерфейс для .NET (OWIN)
 
-По [Стив Смит](http://ardalis.com) и [Рик Андерсон](https://twitter.com/RickAndMSFT)
+По [Стив Смит](https://ardalis.com/) и [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core поддерживает открытие веб-интерфейс .NET (OWIN). OWIN позволяет веб-приложений, связано с веб-серверов. Он определяет стандартный способ для промежуточного по для использования в конвейере для обработки запросов и связанных ответов. Приложения ASP.NET Core и по промежуточного слоя могут взаимодействовать с по промежуточного слоя, серверов и приложений на основе OWIN.
 

@@ -11,11 +11,11 @@ ms.assetid: 4542cd37-b47c-454c-be19-d1b5810d67fe
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/introduction
-ms.openlocfilehash: bcf1ce5a272a374c9605e50dee5c5fb27305527d
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: b7391fffd5d512c01af5d709755a925f739b59ba
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-data-protection"></a>Общие сведения о защите данных
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 08/11/2017
 
 С этими правилами, помните, мы разработали простой, [удобные](using-data-protection.md) стека защиты данных.
 
-В основном защиты данных ASP.NET Core API-интерфейсы не предназначены для неопределенного сохраняемости Конфиденциально полезных данных. Другие технологии, такие как [CNG Windows DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) и [Azure Rights Management](https://technet.microsoft.com/library/jj585024.aspx) больше подходят для сценария хранилища не ограничена, и они обладают возможностями соответственно строгого управления ключами. С другой стороны, нет ничего запретить разработчик с помощью интерфейсов API защиты данных ASP.NET Core для долгосрочной защиты конфиденциальных данных.
+В основном защиты данных ASP.NET Core API-интерфейсы не предназначены для неопределенного сохраняемости Конфиденциально полезных данных. Другие технологии, такие как [CNG Windows DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) и [Azure Rights Management](https://docs.microsoft.com/rights-management/) больше подходят для сценария хранилища не ограничена, и они обладают возможностями соответственно строгого управления ключами. С другой стороны, нет ничего запретить разработчик с помощью интерфейсов API защиты данных ASP.NET Core для долгосрочной защиты конфиденциальных данных.
 
 ## <a name="audience"></a>Аудитория
 

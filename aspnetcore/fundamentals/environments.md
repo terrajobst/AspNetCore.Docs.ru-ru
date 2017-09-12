@@ -11,15 +11,15 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 5e41920c9745f903d33fa25922727e920c1efc26
-ms.sourcegitcommit: 8f5277871eff86134ebf68d3737196cfd4a62c2c
+ms.openlocfilehash: 8f8612fd9c92370d9b0a86572dca654a6a034916
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/13/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="working-with-multiple-environments"></a>Работа с несколькими средами
 
-По [Стив Смит](http://ardalis.com)
+По [Стив Смит](https://ardalis.com/)
 
 ASP.NET Core обеспечивает поддержку для управления поведением приложения в нескольких средах, например разработки, промежуточной и производственной. Переменные среды используются для указания среды выполнения, что позволяет приложению должны быть настроены для этой среды.
 
@@ -27,7 +27,7 @@ ASP.NET Core обеспечивает поддержку для управлен
 
 ## <a name="development-staging-production"></a>Разработка решений, промежуточное хранение производства
 
-ASP.NET Core ссылается на определенный [переменной среды](https://github.com/aspnet/Home/wiki/Environment-Variables), `ASPNETCORE_ENVIRONMENT` для описания приложения в данный момент работает в среде. Эту переменную можно задать любое значение, например, но по соглашению используются три значения: `Development`, `Staging`, и `Production`. Вы найдете следующие значения, используемые в примерах и шаблоны в ASP.NET Core.
+ASP.NET Core ссылается на определенный [переменной среды](https://github.com/aspnet/Home/wiki), `ASPNETCORE_ENVIRONMENT` для описания приложения в данный момент работает в среде. Эту переменную можно задать любое значение, например, но по соглашению используются три значения: `Development`, `Staging`, и `Production`. Вы найдете следующие значения, используемые в примерах и шаблоны в ASP.NET Core.
 
 Текущее значение параметра среде могут быть обнаружены программным образом из в приложении. Кроме того, можно использовать среду [тег вспомогательный](../mvc/views/tag-helpers/index.md) для включения определенных разделов в вашей [представление](../mvc/views/index.md) в зависимости от текущей среды приложения.
 

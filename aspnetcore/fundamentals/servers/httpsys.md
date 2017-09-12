@@ -11,15 +11,15 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: cff6f171432febac5ec3e7adf9cf77953e0ece2d
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: 5ffe6b5d55d88cbcfa62dfacf1e6e896f1304e39
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера, HTTP.sys, в ASP.NET Core
 
-По [Tom Dykstra](http://github.com/tdykstra) и [Ross Крис](https://github.com/Tratcher)
+По [Tom Dykstra](https://github.com/tdykstra) и [Ross Крис](https://github.com/Tratcher)
 
 > [!NOTE]
 > Этот раздел относится только к ASP.NET Core 2.0 и более поздних версий. В более ранних версиях ASP.NET Core, называется HTTP.sys [WebListener](xref:fundamentals/servers/weblistener).
@@ -161,14 +161,14 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={000000
 
 Ниже приведен в справочной документации для *netsh.exe*:
 
-* [Команды Netsh для гипертекста передачи протокол (HTTP)](http://technet.microsoft.com/library/cc725882.aspx)
+* [Команды Netsh для гипертекста передачи протокол (HTTP)](https://technet.microsoft.com/library/cc725882.aspx)
 * [UrlPrefix строк](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
 Подробные инструкции для нескольких сценариев на следующих ресурсах. Статьи, которые ссылаются на HttpListener применяются при HTTP.sys, как они строятся на Http.Sys.
 
-* [Как: Настройка порта с SSL-сертификата](http://msdn.microsoft.com/library/ms733791.aspx)
+* [Как: Настройка порта с SSL-сертификата](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
 * [Подключения по протоколу HTTPS - HttpListener и на основе размещения сертификацию клиента](http://sunshaking.blogspot.com/2012/11/https-communication-httplistener-based.html) это является блог сторонних разработчиков и довольно старый, но по-прежнему содержит полезные сведения.
-* [Практическое руководство: Пошаговое руководство с помощью HttpListener или HTTP-сервере неуправляемого типов кода (C++) как простой сервера SSL](http://blogs.msdn.com/b/jpsanders/archive/2009/09/29/walkthrough-using-httplistener-as-an-ssl-simple-server.aspx) это тоже старые блог полезные сведения.
+* [Практическое руководство: Пошаговое руководство с помощью HttpListener или HTTP-сервере неуправляемого типов кода (C++) как простой сервера SSL](https://blogs.msdn.microsoft.com/jpsanders/2009/09/29/how-to-walkthrough-using-httplistener-or-http-server-unmanaged-code-c-as-an-ssl-simple-server/) это тоже старые блог полезные сведения.
 
 Ниже приведены некоторые сторонних средств, которые могут быть удобнее, чем *netsh.exe* командной строки. Они не предоставляется или не поддерживается корпорацией Майкрософт. Средства Запуск от имени администратора по умолчанию, поскольку *netsh.exe* сам требуются права администратора.
 
@@ -181,6 +181,6 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={000000
 
 Дополнительные сведения см. в следующих ресурсах:
 
-* [Образец приложения для этой статьи](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/HttpSys/sample)
+* [Образец приложения для этой статьи](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample)
 * [HTTP.sys исходного кода](https://github.com/aspnet/HttpSysServer/)
 * [Размещение](xref:fundamentals/hosting)

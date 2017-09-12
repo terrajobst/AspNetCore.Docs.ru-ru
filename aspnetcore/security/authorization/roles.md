@@ -11,17 +11,17 @@ ms.assetid: 5e014da1-8bc0-409b-951a-88b92c661fdf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/roles
-ms.openlocfilehash: d8dfcbb16ee7977d197b019c4e5e1b30fff17755
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 1dc76f316b70d486febe386cc47cd1f843d8d8e3
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="role-based-authorization"></a>Авторизация на основе ролей
 
 <a name=security-authorization-role-based></a>
 
-При создании удостоверения может принадлежать одной или нескольких ролей, например Трейси может принадлежать к роли администраторов и пользователей одновременным Скотт может относиться только к роли пользователя. Как эти роли создаются и управляются зависит от процесса авторизации резервного хранилища. Роли доступны разработчику через [IsInRole](https://msdn.microsoft.com/library/system.security.claims.claimsprincipal.isinrole(v=vs.110).aspx) свойство [ClaimsPrincipal](https://msdn.microsoft.com/library/system.security.claims.claimsprincipal(v=vs.110).aspx) класса.
+При создании удостоверения может принадлежать одной или нескольких ролей, например Трейси может принадлежать к роли администраторов и пользователей одновременным Скотт может относиться только к роли пользователя. Как эти роли создаются и управляются зависит от процесса авторизации резервного хранилища. Роли доступны разработчику через [IsInRole](https://docs.microsoft.com/dotnet/api/system.security.principal.genericprincipal.isinrole) свойство [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) класса.
 
 ## <a name="adding-role-checks"></a>Добавление проверки роли
 

@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/aspnet-core-module
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c4124f71f30b758d82a6bf641328a8d5abf779f2
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 50c3085c28be4e6ddc4a732aba489ce871ab9ab1
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-aspnet-core-module"></a>Введение в ASP.NET Core модуля
 
-По [Tom Dykstra](http://github.com/tdykstra), [Рик Штраль](https://github.com/RickStrahl), и [Ross Крис](https://github.com/Tratcher) 
+По [Tom Dykstra](https://github.com/tdykstra), [Рик Штраль](https://github.com/RickStrahl), и [Ross Крис](https://github.com/Tratcher) 
 
 Модуль Core ASP.NET (ANCM) позволяет запускать приложениям за IIS, ASP.NET Core с помощью служб IIS для что такое эффективное (безопасности, управляемости и много больше) и [Kestrel](kestrel.md) для что такое эффективное (быстротой действительно) и получение преимущества обеих технологий за один раз. **ANCM работает только с Kestrel; оно не совместимо с WebListener (в ASP.NET Core 1.x) или HTTP.sys (в 2.x).** 
 

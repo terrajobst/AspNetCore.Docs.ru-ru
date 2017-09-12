@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/accconfirm
-ms.openlocfilehash: aaed75c78a99e59954add959a76a2fd68ea5f3fc
-ms.sourcegitcommit: f2fb0b45284e4f8c4a9c422bec790aede7c1f0ac
+ms.openlocfilehash: 2f99a5d3db84c3fd3f7ebcb8bccd9a4b8bc8e2b8
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Подтверждение учетной записи и пароль восстановления в ASP.NET Core
 
@@ -62,7 +62,7 @@ dotnet new mvc --auth Individual
 
 ## <a name="test-new-user-registration"></a>Регистрация нового пользователя теста
 
-Запустите приложение, выберите **зарегистрировать** ссылку и регистрации пользователя. Следуйте инструкциям для выполнения миграции Entity Framework Core. На этом этапе является проверку только в электронном письме с [[EmailAddress]](http://msdn.microsoft.com/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx) атрибута. После отправки регистрации вы вошли в приложение. Далее в этом учебнике мы изменим это, не может входить новых пользователей до проверила электронной почте.
+Запустите приложение, выберите **зарегистрировать** ссылку и регистрации пользователя. Следуйте инструкциям для выполнения миграции Entity Framework Core. На этом этапе является проверку только в электронном письме с [[EmailAddress]](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute) атрибута. После отправки регистрации вы вошли в приложение. Далее в этом учебнике мы изменим это, не может входить новых пользователей до проверила электронной почте.
 
 ## <a name="view-the-identity-database"></a>Представление базы данных удостоверений
 

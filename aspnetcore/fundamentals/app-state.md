@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/app-state
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bdc93b2c06b7f0314b5bf49e0e3ea5aa3c1eb3cf
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 8b451bde1e3180d12781d55113638cc1a99182c8
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>Общие сведения о состоянии сеанса и приложения в ASP.NET Core
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT), [Стив Смит](http://ardalis.com), и [Diana LaRose](https://github.com/DianaLaRose)
+По [Рик Андерсон](https://twitter.com/RickAndMSFT), [Стив Смит](https://ardalis.com/), и [Diana LaRose](https://github.com/DianaLaRose)
 
 Протокол HTTP является протоколом без состояния. Веб-сервер обрабатывает каждый HTTP-запрос как независимый запрос и не сохраняет значения пользователя из предыдущих запросов. В этой статье описаны различные способы сохранить состояние приложения и сеанса между запросами. 
 
@@ -58,7 +58,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Данные cookie кодируется с [Base64UrlTextEncoder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.authentication.base64urltextencoder). Так как файл cookie шифруется и фрагментирован, предельный размер одного файла cookie не применяется. Данные cookie не сжимается, поскольку сжатие данных encryped может привести к проблемам безопасности таких как [CRIME](https://en.wikipedia.org/wiki/CRIME_(security_exploit)) и [нарушения](https://en.wikipedia.org/wiki/BREACH_(security_exploit)) атак. Дополнительные сведения на основе файлов cookie TempData поставщика см. в разделе [CookieTempDataProvider](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.ViewFeatures/ViewFeatures/CookieTempDataProvider.cs).
+Данные cookie кодируется с [Base64UrlTextEncoder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.authentication.base64urltextencoder). Так как файл cookie шифруется и фрагментирован, предельный размер одного файла cookie не применяется. Данные cookie не сжимается, поскольку сжатие данных encryped может привести к проблемам безопасности таких как [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) и [нарушения](https://wikipedia.org/wiki/BREACH_(security_exploit)) атак. Дополнительные сведения на основе файлов cookie TempData поставщика см. в разделе [CookieTempDataProvider](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.ViewFeatures/ViewFeatures/CookieTempDataProvider.cs).
 
 ### <a name="query-strings"></a>Строки запросов
 

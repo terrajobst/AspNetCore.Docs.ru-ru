@@ -11,11 +11,11 @@ ms.assetid: 285ae47d-e0bf-4b03-b0a8-2b1fb18bc3a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/machine-wide-policy
-ms.openlocfilehash: 513726e209401d158ac98d5874942765751ac07d
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 7ada940acfbb7fb0887fd7c0cd722bf62f211248
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="machine-wide-policy"></a>Расширенные политики компьютера
 
@@ -77,4 +77,4 @@ ms.lasthandoff: 08/11/2017
 Если EncryptionType имеет любое другое значение (отличные от null / пусто), система защиты данных возникает исключение при запуске.
 
 >[!WARNING]
-> При настройке параметр политики по умолчанию, который включает в себя имена типов (EncryptionAlgorithmType, ValidationAlgorithmType, KeyEscrowSinks), типы должны быть доступны для приложения. На практике это означает, что для приложений, выполняемых в среде CLR рабочего стола, сборкам, которые содержат эти типы должны быть правами PartialTrust. Для приложений ASP.NET Core на [.NET Core](https://microsoft.com/net/core), следует устанавливать пакеты, которые содержат эти типы.
+> При настройке параметр политики по умолчанию, который включает в себя имена типов (EncryptionAlgorithmType, ValidationAlgorithmType, KeyEscrowSinks), типы должны быть доступны для приложения. На практике это означает, что для приложений, выполняемых в среде CLR рабочего стола, сборкам, которые содержат эти типы должны быть правами PartialTrust. Для приложений ASP.NET Core на [.NET Core](https://www.microsoft.com/net/core), следует устанавливать пакеты, которые содержат эти типы.

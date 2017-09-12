@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/memory
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f872cd0c355f7961ae8628c28c62d3b51c8db2c5
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 1e2d43d837ba76c6ef8b5136f3751edb44d6606a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-in-memory-caching-in-aspnet-core"></a>Введение в ASP.NET Core кэширование в памяти
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT), [Luo Джон](https://github.com/JunTaoLuo), и [Стив Смит](http://ardalis.com)
+По [Рик Андерсон](https://twitter.com/RickAndMSFT), [Luo Джон](https://github.com/JunTaoLuo), и [Стив Смит](https://ardalis.com/)
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/memory/sample)
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/11/2017
 
 Кэширование может значительно повысить производительность и масштабируемость приложения за счет снижения работ, необходимый для создания содержимого. Кэширование будет работать наилучшим образом с данными, которые редко изменяются. Кэширование делает копию данных, которые могут быть возвращены намного быстрее, чем из исходного источника. Следует писать и тестировать приложения никогда не зависят от кэшированных данных.
 
-ASP.NET Core поддерживает несколько разных кэша. Простейший кэша на основе [IMemoryCache](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache), который представляет кэша, хранящийся в памяти веб-сервера. Приложения, которые выполняются на ферме серверов из нескольких серверов следует убедиться, прикрепленные сеансы при использовании кэша в памяти. Прикрепленные сеансы убедитесь, что последующие запросы от клиента все перейти на том же сервере. Например, использование приложения Azure Web [маршрутизации запросов приложений](http://www.iis.net/learn/extensions/planning-for-arr) (ARR), чтобы перенаправлять все последующие запросы на тот же сервер.
+ASP.NET Core поддерживает несколько разных кэша. Простейший кэша на основе [IMemoryCache](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache), который представляет кэша, хранящийся в памяти веб-сервера. Приложения, которые выполняются на ферме серверов из нескольких серверов следует убедиться, прикрепленные сеансы при использовании кэша в памяти. Прикрепленные сеансы убедитесь, что последующие запросы от клиента все перейти на том же сервере. Например, использование приложения Azure Web [маршрутизации запросов приложений](https://www.iis.net/learn/extensions/planning-for-arr) (ARR), чтобы перенаправлять все последующие запросы на тот же сервер.
 
 Non прикрепленных сеансов в веб-ферме требуется [распределенный кэш](distributed.md) во избежание проблем с согласованностью кэша. Для некоторых приложений распределенного кэша может поддерживать более масштабного чем кэша в памяти. Использование распределенного кэша разгружает кэш-памяти во внешний процесс. 
 

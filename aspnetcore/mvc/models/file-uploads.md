@@ -11,15 +11,15 @@ ms.assetid: ebc98159-a028-4a94-b06c-43981c79c6be
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 78cc9cd846f9b0963dbba9069c86ca295f7a32e4
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 3d42fd0657bcfb4b0fdab699bbcb572e5736688c
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="file-uploads-in-aspnet-core"></a>В ASP.NET Core передачи файлов
 
-По [Стив Смит](http://ardalis.com)
+По [Стив Смит](https://ardalis.com/)
 
 Действия ASP.NET MVC поддерживает возможность отправки одного или нескольких файлов, используя простую модель привязки для файлов меньшего размера или потоковая передача больших файлов.
 
@@ -75,7 +75,7 @@ public interface IFormFile
 
 [!code-csharp[Main](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
 
-Файлы загружаются с помощью `IFormFile` метод помещаются в буфер в памяти или на диске, на веб-сервере перед обработкой. Внутри метода действия `IFormFile` содержимое доступно в виде потока. В дополнение к локальной файловой системе, файлах может передаваться в [хранилища больших двоичных объектов Azure](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs) или [Entity Framework](https://docs.microsoft.com/ef/core/index).
+Файлы загружаются с помощью `IFormFile` метод помещаются в буфер в памяти или на диске, на веб-сервере перед обработкой. Внутри метода действия `IFormFile` содержимое доступно в виде потока. В дополнение к локальной файловой системе, файлах может передаваться в [хранилища больших двоичных объектов Azure](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/) или [Entity Framework](https://docs.microsoft.com/ef/core/index).
 
 Для хранения двоичного файла данных в базе данных с использованием Entity Framework, определите свойство типа `byte[]` на сущность:
 
@@ -197,7 +197,7 @@ The request filtering module is configured to deny a request that exceeds the re
 </system.webServer>
 ```
 
-Этот параметр применяется только к службам IIS. Поведение не происходит по умолчанию при размещении на Kestrel. Дополнительные сведения см. в разделе [ограничения запросов \<requestLimits\>](https://www.iis.net/configreference/system.webserver/security/requestfiltering/requestlimits).
+Этот параметр применяется только к службам IIS. Поведение не происходит по умолчанию при размещении на Kestrel. Дополнительные сведения см. в разделе [ограничения запросов \<requestLimits\>](https://docs.microsoft.com/iis/configuration/system.webServer/security/requestFiltering/requestLimits/).
 
 ### <a name="null-reference-exception-with-iformfile"></a>Пустая ссылка на исключение IFormFile
 

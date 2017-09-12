@@ -11,17 +11,17 @@ ms.assetid: 9c826a76-fbd2-46b5-978d-6ca6df53531a
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/http-modules
-ms.openlocfilehash: f99c2751138ac789e7105ff256ce7254e280463e
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: e14664133abf010b80374036e4855fdff71d1d5f
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="migrating-http-handlers-and-modules-to-aspnet-core-middleware"></a>Миграция обработчики HTTP-данных и модули в по промежуточного слоя ASP.NET Core 
 
 По [Мэтт Perdeck](https://www.linkedin.com/in/mattperdeck)
 
-В этой статье показано, как выполнить миграцию существующих ASP.NET [модулей и обработчиков HTTP](https://msdn.microsoft.com/library/bb398986.aspx) для ASP.NET Core [по промежуточного слоя](../fundamentals/middleware.md).
+В этой статье показано, как выполнить миграцию существующих ASP.NET [HTTP-модули и обработчики в system.webserver](https://docs.microsoft.com/iis/configuration/system.webserver/) для ASP.NET Core [по промежуточного слоя](../fundamentals/middleware.md).
 
 ## <a name="modules-and-handlers-revisited"></a>Модули и обработчики продукта
 
@@ -31,15 +31,15 @@ ms.lasthandoff: 08/11/2017
 
 **Существуют следующие обработчики.**
 
-   * Классы, реализующие [IHttpHandler](https://msdn.microsoft.com/library/system.web.ihttphandler.aspx)
+   * Классы, реализующие [IHttpHandler](https://docs.microsoft.com/dotnet/api/system.web.ihttphandler)
 
    * Используется для обработки запросов с заданным именем файла или расширения, такие как *.report*
 
-   * [Настроить](https://msdn.microsoft.com/library/46c5ddfy.aspx) в *Web.config*
+   * [Настроить](https://docs.microsoft.com//iis/configuration/system.webserver/handlers/) в *Web.config*
 
 **Модули являются:**
 
-   * Классы, реализующие [IHttpModule](https://msdn.microsoft.com/library/system.web.ihttpmodule.aspx)
+   * Классы, реализующие [IHttpModule](https://docs.microsoft.com/dotnet/api/system.web.ihttpmodule)
 
    * Вызывается для каждого запроса
 
@@ -47,11 +47,11 @@ ms.lasthandoff: 08/11/2017
 
    * Возможность добавить в HTTP-ответ или создать свои собственные
 
-   * [Настроить](https://msdn.microsoft.com/library/ms227673.aspx) в *Web.config*
+   * [Настроить](https://docs.microsoft.com//iis/configuration/system.webserver/modules/) в *Web.config*
 
 **Порядок, в котором модули обработки входящих запросов определяется:**
 
-   1. [Жизненного цикла приложения](https://msdn.microsoft.com/library/ms227673.aspx), который является ряда событий, произошедших в ASP.NET: [BeginRequest](https://msdn.microsoft.com/library/system.web.httpapplication.beginrequest.aspx), [AuthenticateRequest](https://msdn.microsoft.com/library/system.web.httpapplication.authenticaterequest.aspx)и т. д. Каждый модуль можно создать обработчик для одного или нескольких событий.
+   1. [Жизненного цикла приложения](https://msdn.microsoft.com/library/ms227673.aspx), который является ряда событий, произошедших в ASP.NET: [BeginRequest](https://docs.microsoft.com/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](https://docs.microsoft.com/dotnet/api/system.web.httpapplication.authenticaterequest)и т. д. Каждый модуль можно создать обработчик для одного или нескольких событий.
 
    2. Для одного события в порядке, в котором они были заданы на *Web.config*.
 
@@ -245,7 +245,7 @@ HTTP-модули обычно добавляются конвейера зап�
 public async Task Invoke(HttpContext context)
 ```
 
-`HttpContext`значительно изменилась в ASP.NET Core. В этом разделе показано, как преобразовать наиболее часто используемые свойства [System.Web.HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.aspx) к новому `Microsoft.AspNetCore.Http.HttpContext`.
+`HttpContext`значительно изменилась в ASP.NET Core. В этом разделе показано, как преобразовать наиболее часто используемые свойства [System.Web.HttpContext](https://docs.microsoft.com/dotnet/api/system.web.httpcontext) к новому `Microsoft.AspNetCore.Http.HttpContext`.
 
 ### <a name="httpcontext"></a>HttpContext
 
@@ -382,7 +382,7 @@ public async Task Invoke(HttpContext httpContext)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Обработчики HTTP-данных и общие сведения о модули HTTP](https://msdn.microsoft.com/library/bb398986.aspx)
+* [Обработчики HTTP-данных и общие сведения о модули HTTP](https://docs.microsoft.com/iis/configuration/system.webserver/)
 
 * [Конфигурация](../fundamentals/configuration.md)
 

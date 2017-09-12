@@ -11,11 +11,11 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: b8ef101458e0a6e6284624693689181646ced051
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: 949733119b4e3a4b8716f2bcc1f631949d5049bc
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>Приступая к работе с ASP.NET MVC ядра и Entity Framework Core, с помощью Visual Studio (1, 10)
 
@@ -39,7 +39,7 @@ EF Core 2.0 — это последняя версия EF, но еще не вс
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-Если возникли проблемы, не удается устранить, обычно можно найти решения путем сравнения код, чтобы [завершенного проекта](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final). Список распространенных ошибок и способы их устранения см. в разделе [раздел "Устранение неполадок" последнего учебника в серии](advanced.md#common-errors). Если вы не нашли нужную информацию существует, можно разместить вопрос StackOverflow.com для [ASP.NET Core](http://stackoverflow.com/questions/tagged/asp.net-core) или [EF Core](http://stackoverflow.com/questions/tagged/entity-framework-core).
+Если возникли проблемы, не удается устранить, обычно можно найти решения путем сравнения код, чтобы [завершенного проекта](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final). Список распространенных ошибок и способы их устранения см. в разделе [раздел "Устранение неполадок" последнего учебника в серии](advanced.md#common-errors). Если вы не нашли нужную информацию существует, можно разместить вопрос StackOverflow.com для [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) или [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
 > [!TIP] 
 > Это серию учебников, 10, каждый из которых строится на выполняемые операции в предыдущих учебниках.  Рекомендуется сохранить копию проекта после каждого успешного завершения учебника.  Затем, если возникли проблемы, можно начать сначала из предыдущего учебника вместо вернемся к началу весь ряд.
@@ -330,7 +330,7 @@ Entity Framework интерпретирует свойство как свойс
 
 * Свойства сущности, которые называются Идентификатором или classnameID распознаются как свойства основного ключа.
 
-* Свойство интерпретируется как свойство внешнего ключа, если он называется  *<navigation property name> <primary key property name>*  (например, `StudentID` для `Student` свойство навигации с момента `Student` — первичный ключ сущности `ID`). Свойства внешнего ключа может также называться просто  *<primary key property name>*  (например, `EnrollmentID` с момента `Enrollment` первичного ключа сущности является `EnrollmentID`).
+* Свойство интерпретируется как свойство внешнего ключа, если он называется * <navigation property name> <primary key property name> * (например, `StudentID` для `Student` свойство навигации с момента `Student` — первичный ключ сущности `ID`). Свойства внешнего ключа может также называться просто * <primary key property name> * (например, `EnrollmentID` с момента `Enrollment` первичного ключа сущности является `EnrollmentID`).
 
 Можно переопределить обычным образом. Например можно явно указать имена таблиц, как было показано ранее в этом учебнике. И можно задать имена столбцов и настройте желаемые свойства как первичного или внешнего ключа, как можно будет увидеть в [более поздней версии учебника](complex-data-model.md) этой серии.
 

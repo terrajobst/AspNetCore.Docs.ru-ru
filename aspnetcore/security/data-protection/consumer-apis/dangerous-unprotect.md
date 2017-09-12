@@ -11,17 +11,17 @@ ms.assetid: 6c4e6591-45d2-4d25-855e-062ad352d648
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/dangerous-unprotect
-ms.openlocfilehash: 44f21f380b994f46a8bb7368bca0cfc6e438ec4d
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 5d176515792045545add66ba5aedb0358d8bdc70
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="unprotecting-payloads-whose-keys-have-been-revoked"></a>Снятие защиты полезных данных, ключи которых были отозваны
 
 <a name=data-protection-consumer-apis-dangerous-unprotect></a>
 
-В основном защиты данных ASP.NET Core API-интерфейсы не предназначены для неопределенного сохраняемости Конфиденциально полезных данных. Другие технологии, такие как [CNG Windows DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) и [Azure Rights Management](https://technet.microsoft.com/library/jj585024.aspx) больше подходят для сценария хранилища не ограничена, и они обладают возможностями соответственно строгого управления ключами. С другой стороны, нет ничего запретить разработчик с помощью интерфейсов API защиты данных ASP.NET Core для долгосрочной защиты конфиденциальных данных. Ключи никогда не удаляются из ключей, поэтому IDataProtector.Unprotect всегда можно восстановить существующий полезных данных, при условии, что ключи в наличии и допустимости.
+В основном защиты данных ASP.NET Core API-интерфейсы не предназначены для неопределенного сохраняемости Конфиденциально полезных данных. Другие технологии, такие как [CNG Windows DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) и [Azure Rights Management](https://docs.microsoft.com/rights-management/) больше подходят для сценария хранилища не ограничена, и они обладают возможностями соответственно строгого управления ключами. С другой стороны, нет ничего запретить разработчик с помощью интерфейсов API защиты данных ASP.NET Core для долгосрочной защиты конфиденциальных данных. Ключи никогда не удаляются из ключей, поэтому IDataProtector.Unprotect всегда можно восстановить существующий полезных данных, при условии, что ключи в наличии и допустимости.
 
 Однако проблема возникает, когда разработчик пытается снять защиту данных, защищенный с разделом отозванных как IDataProtector.Unprotect в этом случае будет вызвано исключение. Это может быть удобно при кратковременных или временных полезных данных (например, токены проверки подлинности), как эти виды полезных данных можно легко воссоздать в системе и в худшем случае посетитель узла возможно, потребуется снова войти в систему. Однако для сохраненного полезных данных, имеющих Unprotect throw может привести к потере недопустимых значений.
 

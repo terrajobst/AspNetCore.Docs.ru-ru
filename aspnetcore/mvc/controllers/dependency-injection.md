@@ -11,17 +11,17 @@ ms.assetid: bc8b4ba3-e9ba-48fd-b1eb-cd48ff6bc7a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 371fb0f721797e4d8f7a26858ae0a709cb5cd39e
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: b83bd4a24ccf7e90e9df06d6a8e229a2d5c6699a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="dependency-injection-into-controllers"></a>Внедрение зависимостей в контроллерах
 
 <a name=dependency-injection-controllers></a>
 
-По [Стив Смит](http://ardalis.com)
+По [Стив Смит](https://ardalis.com/)
 
 Контроллеров MVC ASP.NET Core должен запросить явным образом с помощью конструкторов их зависимости. В некоторых случаях действия отдельных контроллера может потребоваться службы, и он не имеет смысл для запроса на уровне контроллера. В этом случае также можно запустить службу как параметр метода действия.
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="dependency-injection"></a>Внедрение зависимостей
 
-Методика внедрения зависимости следует [принципом инверсии зависимостей](http://deviq.com/dependency-inversion-principle), обеспечивая приложений может состоять из слабо связанных модулей. ASP.NET Core имеет встроенную поддержку [внедрения зависимостей](../../fundamentals/dependency-injection.md), что делает упрощает тестирование и поддержку приложений.
+Методика внедрения зависимости следует [принципом инверсии зависимостей](http://deviq.com/dependency-inversion-principle/), обеспечивая приложений может состоять из слабо связанных модулей. ASP.NET Core имеет встроенную поддержку [внедрения зависимостей](../../fundamentals/dependency-injection.md), что делает упрощает тестирование и поддержку приложений.
 
 ## <a name="constructor-injection"></a>Внедрение конструктора
 
@@ -70,7 +70,7 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceP
 ![Приветствие сервера](dependency-injection/_static/server-greeting.png)
 
 >[!TIP]
-> В разделе [логику контроллера тестирования](testing.md) научиться явно запросить зависимости [http://deviq.com/explicit-dependencies-principle](http://deviq.com/explicit-dependencies-principle) контроллеры упрощает код для тестирования.
+> В разделе [логику контроллера тестирования](testing.md) научиться явно запросить зависимости [http://deviq.com/explicit-dependencies-principle/](http://deviq.com/explicit-dependencies-principle/) контроллеры упрощает код для тестирования.
 
 Внедрение встроенных зависимостей ASP.NET Core поддерживает наличие только один конструктор для классов запроса службы. При наличии более одного конструктора, можно получить исключение с сообщением:
 

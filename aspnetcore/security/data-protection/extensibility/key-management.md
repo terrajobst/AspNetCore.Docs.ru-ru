@@ -11,11 +11,11 @@ ms.assetid: 3606b251-8324-4485-8d52-582a2cd5cffb
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: fb74905660015b9a83503e1f74b25c66ae9df9e3
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: ed84b6dc257d5fd9e4c1cf6106df3c8bd6e14f64
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="key-management-extensibility"></a>Управление ключами расширяемости
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 08/25/2017
 
 ## <a name="xmlkeymanager"></a>XmlKeyManager
 
-Тип XmlKeyManager — входящие в конкретную реализацию IKeyManager. Она предоставляет несколько полезных средств, включая переноса ключей и шифрования ключей при хранении. Ключи в этой системе представляются в виде XML-элементы (в частности, [XElement](https://msdn.microsoft.com/library/system.xml.linq.xelement(v=vs.110).aspx)).
+Тип XmlKeyManager — входящие в конкретную реализацию IKeyManager. Она предоставляет несколько полезных средств, включая переноса ключей и шифрования ключей при хранении. Ключи в этой системе представляются в виде XML-элементы (в частности, [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview).
 
 XmlKeyManager зависит от других компонентов во время выполнения своих задач.
 

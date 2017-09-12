@@ -11,11 +11,11 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 735c53ab8a01d995c4945a95705ee9adb2fcdf02
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 05a92c4eee6b26e49831c11e1251aedba87ed717
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>По промежуточного слоя в ASP.NET Core видоизменения URL-адресов
 
@@ -221,7 +221,7 @@ app.UseRewriter(options);
 * TIME_YEAR
 
 ### <a name="iis-url-rewrite-module-rules"></a>Правила модуль переопределения URL-адреса IIS
-Чтобы использовать правила, применяемые к модуль переопределения URL-адреса IIS, используйте `AddIISUrlRewrite`. Убедитесь, что файл правил развертывается с приложением. Не направлять по промежуточного слоя для использования вашей *web.config* файлов при работе в Windows Server IIS. В службах IIS, эти правила должны храниться вне вашего *web.config* для предотвращения конфликтов с модуль переопределения IIS. Дополнительные сведения и примеры правил модуль переопределения URL-адрес служб IIS см. в разделе [2.0 с помощью модуля перепишите URL-адрес](https://www.iis.net/learn/extensions/url-rewrite-module/using-url-rewrite-module-20) и [URL-адрес ссылки перепишите конфигурации модуль](https://www.iis.net/learn/extensions/url-rewrite-module/url-rewrite-module-configuration-reference).
+Чтобы использовать правила, применяемые к модуль переопределения URL-адреса IIS, используйте `AddIISUrlRewrite`. Убедитесь, что файл правил развертывается с приложением. Не направлять по промежуточного слоя для использования вашей *web.config* файлов при работе в Windows Server IIS. В службах IIS, эти правила должны храниться вне вашего *web.config* для предотвращения конфликтов с модуль переопределения IIS. Дополнительные сведения и примеры правил модуль переопределения URL-адрес служб IIS см. в разделе [2.0 с помощью модуля перепишите URL-адрес](https://docs.microsoft.com/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) и [URL-адрес ссылки перепишите конфигурации модуль](https://docs.microsoft.com/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference).
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -381,8 +381,8 @@ app.UseRewriter(options);
 * [Регулярные выражения в .NET](/dotnet/articles/standard/base-types/regular-expressions)
 * [Элементы языка регулярных выражений — краткий справочник](/dotnet/articles/standard/base-types/quick-ref)
 * [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/)
-* [Используя модуль переопределения URL-адрес 2.0 (для IIS)](https://www.iis.net/learn/extensions/url-rewrite-module/using-url-rewrite-module-20)
-* [Справочник по конфигурации модуля перезаписи URL-адрес](https://www.iis.net/learn/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)
+* [Используя модуль переопределения URL-адрес 2.0 (для IIS)](https://docs.microsoft.com/iis/extensions/url-rewrite-module/using-url-rewrite-module-20)
+* [Справочник по конфигурации модуля перезаписи URL-адрес](https://docs.microsoft.com/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)
 * [Перепишите модуля IIS URL-адрес форума](https://forums.iis.net/1152.aspx)
 * [Сохранять простую структуру с URL-адрес](https://support.google.com/webmasters/answer/76329?hl=en)
 * [10 перезаписи URL-адресов, советы и рекомендации](http://ruslany.net/2009/04/10-url-rewriting-tips-and-tricks/)

@@ -4,7 +4,7 @@ Contoso университета демонстрируется использо
 
 ## <a name="build-it-from-scratch"></a>Создать ее с нуля
 
-Можно построить приложение, выполнив действия, описанные в [серию учебников](https://docs.asp.net/en/latest/data/ef-mvc/intro.html).
+Можно построить приложение, выполнив действия, описанные в [серию учебников](https://docs.microsoft.com/aspnet/core/data/ef-mvc/intro).
 
 ## <a name="download-it"></a>Загрузите его
 

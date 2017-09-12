@@ -11,15 +11,15 @@ ms.assetid: 89af38d1-52e0-4db7-b791-dbce909b0714
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/overview
-ms.openlocfilehash: 3e95ccd8aeda54a050cd656ea0c831fd928f53a2
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 67394b066c18a149a97b957d6478ba8301ea8147
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Общие сведения об основных ASP.NET MVC
 
-По [Стив Смит](http://ardalis.com)
+По [Стив Смит](https://ardalis.com/)
 
 Основные компоненты ASP.NET MVC — многофункциональную платформу для построения веб-приложений и шаблон разработки Model-View-Controller с помощью API-интерфейсов.
 
@@ -153,7 +153,7 @@ public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = 
 }
 ```
 
-Платформа будет обрабатывать проверки запроса данных на клиенте и на сервере. Логику проверки, указанные на типы модели добавляется в готовом для просмотра представления в виде ненавязчивой заметок и обеспечивается в браузере с [jQuery проверки](http://jqueryvalidation.org/).
+Платформа будет обрабатывать проверки запроса данных на клиенте и на сервере. Логику проверки, указанные на типы модели добавляется в готовом для просмотра представления в виде ненавязчивой заметок и обеспечивается в браузере с [jQuery проверки](https://jqueryvalidation.org/).
 
 ### <a name="dependency-injection"></a>Внедрение зависимостей
 

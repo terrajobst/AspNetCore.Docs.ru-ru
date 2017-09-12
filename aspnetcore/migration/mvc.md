@@ -11,15 +11,15 @@ ms.assetid: 3155cc9e-d0c9-424b-886c-35c0ec6f9f4e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/mvc
-ms.openlocfilehash: ccdceed927d90a1f3201be9d9f92ebb4f2f66e66
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 2bd689626e867e0ea82fbebdf92447a6029aa35b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>Миграция из ASP.NET MVC в ASP.NET Core MVC
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT), [рот Daniel](https://github.com/danroth27), [Стив Смит](http://ardalis.com), и [Скотт Addie](https://scottaddie.com)
+По [Рик Андерсон](https://twitter.com/RickAndMSFT), [рот Daniel](https://github.com/danroth27), [Стив Смит](https://ardalis.com/), и [Скотт Addie](https://scottaddie.com)
 
 В этой статье показано, как начать перенос проекта ASP.NET MVC для [ASP.NET Core MVC](../mvc/overview.md). В процессе выделяются многих вещах, которые были изменены с ASP.NET MVC. Миграция с ASP.NET MVC состоит из нескольких этапов, и в этой статье рассматриваются начальной настройки, основные контроллеры и представления, статическое содержимое и зависимости на стороне клиента. Дополнительные статьи описывается Миграция конфигурации и удостоверения код, который содержится во многих проектах ASP.NET MVC.
 
@@ -138,9 +138,9 @@ ms.lasthandoff: 08/11/2017
 
 Используется в проекте ASP.NET MVC старый [начальной загрузки](http://getbootstrap.com/) для его задания стиля и хранилищ, программу начальной загрузки файлов в *содержимого* и *сценариев* папки. Шаблон, который создан старого проекта ASP.NET MVC, ссылается на начальной загрузки в файл макета (*Views/Shared/_Layout.cshtml*). Можно скопировать *bootstrap.js* и *bootstrap.css* файлы из ASP.NET MVC проекта для *wwwroot* папки в новый проект, но такой подход не используется улучшенный механизм для управления зависимости на стороне клиента в ASP.NET Core.
 
-В новом проекте, мы добавим поддержку для начальной загрузки (и другие клиентские библиотеки) с помощью [Bower](http://bower.io/):
+В новом проекте, мы добавим поддержку для начальной загрузки (и другие клиентские библиотеки) с помощью [Bower](https://bower.io/):
 
-* Добавить [Bower](http://bower.io/) файл конфигурации с именем *bower.json* с корнем проекта (правой кнопкой мыши проект, а затем **Добавить > новый элемент > файла конфигурации для Bower**). Добавить [начальной загрузки](http://getbootstrap.com/) и [jQuery](https://jquery.com/) в файл (см. выделенные строки ниже).
+* Добавить [Bower](https://bower.io/) файл конфигурации с именем *bower.json* с корнем проекта (правой кнопкой мыши проект, а затем **Добавить > новый элемент > файла конфигурации для Bower**). Добавить [начальной загрузки](http://getbootstrap.com/) и [jQuery](https://jquery.com/) в файл (см. выделенные строки ниже).
 
   [!code-json[Main](mvc/sample/bower.json?highlight=5-6)]
 

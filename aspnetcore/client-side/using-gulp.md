@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-gulp
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05ea4d5f0a0be08cbbdd114320d3544aae054dd2
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: bd617a99ad348c545cbf50f6aa461ca8f456d3a8
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-using-gulp-in-aspnet-core"></a>Общие сведения об использовании Gulp в ASP.NET Core 
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 08/11/2017
 * Скомпилируйте МЕНЕЕ или SASS файлов CSS.
 * Скомпилируйте файлы CoffeeScript и TypeScript в код JavaScript.
 
-Объект *средство запуска задач* — это средство, автоматизирующее этих задач процедуры разработки и многое другое. Visual Studio предоставляет встроенную поддержку для средства запуска два распространенных задач на основе JavaScript: [Gulp](http://gulpjs.com) и [Grunt](using-grunt.md).
+Объект *средство запуска задач* — это средство, автоматизирующее этих задач процедуры разработки и многое другое. Visual Studio предоставляет встроенную поддержку для средства запуска два распространенных задач на основе JavaScript: [Gulp](https://gulpjs.com/) и [Grunt](using-grunt.md).
 
 ## <a name="gulp"></a>Gulp
 
@@ -266,7 +266,7 @@ IntelliSense предоставляет дополнение кода, опис�
 
 ![gulp IntelliSense](using-gulp/_static/08-IntelliSense.png)
 
-Дополнительные сведения о технологии IntelliSense см. в разделе [IntelliSense для JavaScript](https://msdn.microsoft.com/library/bb385682).
+Дополнительные сведения о технологии IntelliSense см. в разделе [IntelliSense для JavaScript](https://docs.microsoft.com/visualstudio/ide/javascript-intellisense).
 
 ## <a name="development-staging-and-production-environments"></a>Разработки, промежуточной и производственной сред
 

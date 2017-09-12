@@ -11,17 +11,17 @@ ms.assetid: 80fb9e43-e4db-4af2-b2a8-e1364a712f69
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: 05d64858dd70b45a1e2bb90a86ab3cbdc85264b1
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: ff3ded36a04fdbba0628dc5f223bfd865d58612a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="dependency-injection-into-views"></a>Внедрение зависимостей в представления
 
-По [Стив Смит](http://ardalis.com)
+По [Стив Смит](https://ardalis.com/)
 
-Поддерживает ASP.NET Core [внедрения зависимостей](xref:fundamentals/dependency-injection) в представления. Это может быть полезно для представления службы, такие как локализации или данные, необходимые только для заполнения представления элементов. Можно попытаться ведение [Разделение областей ответственности](http://deviq.com/separation-of-concerns) между контроллерами и представлениями. Большая часть данных, которые отображаются в представлениях необходимо передать из контроллера.
+Поддерживает ASP.NET Core [внедрения зависимостей](xref:fundamentals/dependency-injection) в представления. Это может быть полезно для представления службы, такие как локализации или данные, необходимые только для заполнения представления элементов. Можно попытаться ведение [Разделение областей ответственности](http://deviq.com/separation-of-concerns/) между контроллерами и представлениями. Большая часть данных, которые отображаются в представлениях необходимо передать из контроллера.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample)
 

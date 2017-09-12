@@ -11,17 +11,17 @@ ms.assetid: db9a86ab-46c2-40e0-baed-86e38c16af1f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: 84c357ebbf28dffc4382f6c648921210e72ac854
-ms.sourcegitcommit: 26166785ad181a8519cb008800d71d96499b0499
+ms.openlocfilehash: 80e27c94b3c60a181c45f8e006126a7e7dd3d425
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>Принципы работы по промежуточного слоя ASP.NET Core
 
 <a name=fundamentals-middleware></a>
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Стив Смит](http://ardalis.com)
+По [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Стив Смит](https://ardalis.com/)
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/middleware/sample)
 

@@ -11,15 +11,15 @@ ms.assetid: 870f082d-6d43-453d-b311-45f3aeb4d2c5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/distributed
-ms.openlocfilehash: 09a1a30de38b9eb40d4fa6a684a7d43ac3e0413c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: abf680fef9de175082c1e4f4cebc2b9648f18a28
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="working-with-a-distributed-cache"></a>Работа с распределенного кэша
 
-По [Стив Смит](http://ardalis.com)
+По [Стив Смит](https://ardalis.com/)
 
 Распределенные кэши могут улучшить производительность и масштабируемость приложений ASP.NET Core, особенно в том случае, если размещенные в среде фермы облако или сервера. В этой статье объясняется, как работать с ASP.NET Core встроенных распределенного кэша абстракции и реализации.
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="using-a-redis-distributed-cache"></a>С помощью Redis распределенного кэша
 
-[Redis](http://redis.io) -хранилище данных в памяти открытым исходным кодом, который часто используется в качестве распределенного кэша. Можно использовать локально, и можно настроить [кэш Azure Redis](https://azure.microsoft.com/services/cache/) для приложений ASP.NET Core, размещенной в Azure. Настраивает приложение ASP.NET Core реализации кэша с помощью `RedisDistributedCache` экземпляра.
+[Redis](https://redis.io/) -хранилище данных в памяти открытым исходным кодом, который часто используется в качестве распределенного кэша. Можно использовать локально, и можно настроить [кэш Azure Redis](https://azure.microsoft.com/services/cache/) для приложений ASP.NET Core, размещенной в Azure. Настраивает приложение ASP.NET Core реализации кэша с помощью `RedisDistributedCache` экземпляра.
 
 Настройте реализацию Redis в `ConfigureServices` и откройте его в коде приложения, запросив экземпляр `IDistributedCache` (см. приведенный выше код).
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 08/11/2017
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13&range=27-40)]
 
 > [!NOTE]
-> Чтобы установить Redis на локальном компьютере, необходимо установить пакет chocolatey [http://chocolatey.org/packages/redis-64/](http://chocolatey.org/packages/redis-64/) и запустите `redis-server` из командной строки.
+> Чтобы установить Redis на локальном компьютере, необходимо установить пакет chocolatey [https://chocolatey.org/packages/redis-64/](https://chocolatey.org/packages/redis-64/) и запустите `redis-server` из командной строки.
 
 ## <a name="using-a-sql-server-distributed-cache"></a>Использование SQL Server распределенного кэша
 

@@ -11,17 +11,17 @@ ms.assetid: bd27832c-2877-4b7b-9337-e009361d845f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/bootstrap
-ms.openlocfilehash: ff734c884a60d51a1703f6444cf6d2d49e9bffb0
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fc00bcce24d586865bf6a1d3f2f7e782a2f1c703
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="building-beautiful-responsive-sites-with-bootstrap"></a>Создание привлекательных, быстро реагирующих узлов с начальной загрузки
 
 <a name=bootstrap-index></a>
 
-По [Стив Смит](http://ardalis.com)
+По [Стив Смит](https://ardalis.com/)
 
 Bootstrap сейчас наиболее популярных веб-платформа для разработки отвечать на запросы веб-приложений. Он предлагает ряд функций и преимуществ, которые могут упростить работу пользователей с веб-сайте ли вы новичок в переднего плана проектирования и разработки или экспертом. Bootstrap развертывается как набор файлов CSS и JavaScript и призван помочь масштаба веб-сайта или приложения эффективно от телефонов для планшетных ПК для настольных компьютеров.
 

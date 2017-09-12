@@ -11,11 +11,11 @@ ms.assetid: d54230f9-8e5f-4861-a29c-1d3a14e0b0d9
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 810d89798330aeb1c387ec85eb05b1f4efde167a
-ms.sourcegitcommit: 275a5381b6172b4f0b5fcd1d252aff03d3dae166
+ms.openlocfilehash: d8512bdd49b61019f22a49900bdd65086d821a6b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="bundling-and-minification-in-aspnet-core"></a>Объединение и Минификация в ASP.NET Core
 
@@ -91,8 +91,8 @@ imageElement | r
 * уменьшения - введите минификации параметры вывода. **Необязательный**, *по умолчанию —`minify: { enabled: true }`*
   * Параметры конфигурации доступны на тип выходного файла.
     * [Уменьшитель CSS](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
-    * [Уменьшитель JavaScript](https://github.com/madskristensen/BundlerMinifier/wiki/jsminifier)
-    * [Уменьшитель HTML](https://github.com/madskristensen/BundlerMinifier/wiki/htmlminifier)
+    * [Уменьшитель JavaScript](https://github.com/madskristensen/BundlerMinifier/wiki)
+    * [Уменьшитель HTML](https://github.com/madskristensen/BundlerMinifier/wiki)
 * includeInProject - добавить созданные файлы в файл проекта. **Необязательный**, *по умолчанию - false*
 * Сопоставления - формирования сопоставлений источника для объединенный файл. **Необязательный**, *по умолчанию - false*
 
@@ -106,7 +106,7 @@ imageElement | r
 
 ![Расширение BuildBundlerMinifier предложений](../client-side/bundling-and-minification/_static/view-extension.png)
 
-После завершения перезагрузки необходимо настроить сборку для запуска процессов минификации и объединения клиентских средств. Щелкните правой кнопкой мыши `bundleconfig.json` файла и выберите *Enable пакета на сборки...* .
+После завершения перезагрузки необходимо настроить сборку для запуска процессов минификации и объединения клиентских средств. Щелкните правой кнопкой мыши `bundleconfig.json` файла и выберите *Enable пакета на сборки... *.
 
 Выполните построение проекта и `bundleconfig.json` включается в процесс построения для создания выходных файлов, на основе конфигурации.
 
@@ -202,7 +202,7 @@ footer
 > [!NOTE]
 > Преобразование параметр доступен только в Visual Studio 2015 и 2017 г.
 
-Щелкните правой кнопкой мыши `bundleconfig.json` и выберите **преобразовать Gulp...** . Это создаст `gulpfile.js` и установите пакеты необходимых npm.
+Щелкните правой кнопкой мыши `bundleconfig.json` и выберите **преобразовать Gulp... **. Это создаст `gulpfile.js` и установите пакеты необходимых npm.
 
 ![Преобразовать в Gulp](../client-side/bundling-and-minification/_static/convert-togulp.png)
 

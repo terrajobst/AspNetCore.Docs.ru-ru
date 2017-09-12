@@ -11,15 +11,15 @@ ms.assetid: 40d534f2-89b3-4b09-9c2c-3494bf9991c9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: testing/integration-testing
-ms.openlocfilehash: d30af6edc31fbce2ebb77c57be3fd78231c54b50
-ms.sourcegitcommit: 418e6aa4ab79474ecc4d0a6af573a3759b113fe4
+ms.openlocfilehash: 02018299c9bd1d194c2c70c14f518786e803d572
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="integration-testing-in-aspnet-core"></a>Интеграция тестирования в ASP.NET Core
 
-По [Стив Смит](http://ardalis.com)
+По [Стив Смит](https://ardalis.com/)
 
 Интеграционного тестирования гарантирует, что компоненты приложения работают корректно, когда собраны вместе. ASP.NET Core предоставляет возможности интеграции тестирования с помощью платформы модульного тестирования и встроенных тестов веб-узел, который может использоваться для обработки запросов без нагрузки на сеть.
 
@@ -130,7 +130,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 После этого рефакторинга, вы уверены, как и раньше, работает веб-приложение, поскольку тесты интеграции всех завершается успешно.
 
 > [!NOTE]
-> Рекомендуется для фиксации изменений в систему управления версиями после завершения рефакторинг и тесты успешно выполнены. Если занятии краткое руководство. Разработка, [рассмотрите возможность добавления фиксации ли цикл красный-зеленый — рефакторинг](http://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development).
+> Рекомендуется для фиксации изменений в систему управления версиями после завершения рефакторинг и тесты успешно выполнены. Если занятии краткое руководство. Разработка, [рассмотрите возможность добавления фиксации ли цикл красный-зеленый — рефакторинг](https://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development).
 
 ## <a name="resources"></a>Ресурсы
 
