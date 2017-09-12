@@ -11,11 +11,11 @@ ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 5718336868f3ee5ab08162ae2bc885c695d19a1d
-ms.sourcegitcommit: f3366461010da37981cf7fc092b9b9613eb4ca89
+ms.openlocfilehash: 72802830660ddcf479e540de7cfc33a07c49dc23
+ms.sourcegitcommit: b02db6da115e55140da91b67355aaf56aae1703f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 09/11/2017
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об учетных данных ASP.NET Core
 
@@ -48,19 +48,33 @@ ms.lasthandoff: 08/18/2017
 2.  Настройка службы удостоверений и добавление по промежуточного слоя в `Startup`.
 
     Службы удостоверений добавляются к приложению в `ConfigureServices` метод `Startup` класса:
- 
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=configureservices&highlight=7-9,13-34)]
+
+    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+    
+    [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-39)]
     
     Эти службы доступны для приложения с помощью [внедрения зависимостей](xref:fundamentals/dependency-injection).
- 
+    
+    Путем вызова для приложения включена удостоверения `UseAuthentication` в `Configure` метод. `UseAuthentication`Добавление проверки подлинности [по промежуточного слоя](xref:fundamentals/middleware) к конвейеру запросов.
+    
+    [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
+    
+    # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+    
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,13-34)]
+    
+    Эти службы доступны для приложения с помощью [внедрения зависимостей](xref:fundamentals/dependency-injection).
+    
     Путем вызова для приложения включена удостоверения `UseIdentity` в `Configure` метод. `UseIdentity`Добавляет файл cookie проверки подлинности с помощью [по промежуточного слоя](xref:fundamentals/middleware) к конвейеру запросов.
- 
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=configure&highlight=21)]
- 
+        
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configure&highlight=21)]
+    
+    ---
+     
     Дополнительные сведения о время загрузки приложения см. в разделе [запуска приложения](xref:fundamentals/startup).
 
 3.  Создайте пользователя.
- 
+
     Запустите приложение и щелкните на **зарегистрировать** ссылку.
 
     Если при первом выполнении этого действия может потребоваться для выполнения миграции. Приложение предложит **применить миграции**:
@@ -76,7 +90,7 @@ ms.lasthandoff: 08/18/2017
     
     Когда пользователь щелкает **зарегистрировать** ссылку, ``Register`` при вызове действия на ``AccountController``. ``Register`` Действие создает пользователя путем вызова `CreateAsync` на `_userManager` объекта (для ``AccountController`` путем внедрения зависимостей):
  
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=register&highlight=11)]
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_register&highlight=11)]
 
     Если пользователь успешно создан, пользователь вошел вызове ``_signInManager.SignInAsync``.
 
@@ -86,7 +100,7 @@ ms.lasthandoff: 08/18/2017
  
     Пользователи могут войти, щелкнув **входа** ссылок в верхней части сайта, или может быть переход на страницу входа, если они пытаются получить доступ к части сайта, требующей авторизации. Когда пользователь отправляет форму на странице входа ``AccountController`` ``Login`` вызова действия.
 
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=login&highlight=13-14)]
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
  
     ``Login`` Вызывает действие ``PasswordSignInAsync`` на ``_signInManager`` объекта (для ``AccountController`` путем внедрения зависимостей).
  
@@ -96,15 +110,23 @@ ms.lasthandoff: 08/18/2017
  
     Щелкнув **Выход** связывать вызовы `LogOut` действие.
  
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=logout&highlight=7)]
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_logout&highlight=7)]
  
     Предыдущий код выше вызовы `_signInManager.SignOutAsync` метод. `SignOutAsync` Метод очищает утверждения пользователей, хранящихся в файле cookie.
  
 6.  Конфигурация.
 
     Удостоверение имеет некоторые виды поведения по умолчанию, которые можно переопределить в классе при запуске приложения. Необходимо настроить ``IdentityOptions`` при использовании поведения по умолчанию.
- 
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=configureservices&highlight=13-34)]
+
+    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+    
+    [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-39)]
+    
+    # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+    
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=13-34)]
+
+    ---
     
     Дополнительные сведения о настройке удостоверений см. в разделе [Настройка удостоверений](xref:security/authentication/identity-configuration).
     
@@ -112,7 +134,7 @@ ms.lasthandoff: 08/18/2017
  
 7.  Просмотр базы данных.
 
-    Если приложение использует базу данных SQL Server (по умолчанию в Windows и для пользователей Visual Studio), можно просматривать базы данных с приложением, создаваемым. Можно использовать **SQL Server Management Studio**. Кроме того, в Visual Studio, выберите **представление** -> **обозреватель объектов SQL Server**. Подключиться к **(localdb) \MSSQLLocalDB**. База данных с именем, соответствующим  **aspnet - <*имя проекта*>-<*Дата строка*> ** отображается.
+    Если приложение использует базу данных SQL Server (по умолчанию в Windows и для пользователей Visual Studio), можно просматривать базы данных с приложением, создаваемым. Можно использовать **SQL Server Management Studio**. Кроме того, в Visual Studio, выберите **представление** -> **обозреватель объектов SQL Server**. Подключиться к **(localdb) \MSSQLLocalDB**. База данных с именем, соответствующим * *aspnet - <*имя проекта*>-<*Дата строка*> ** отображается.
 
     ![Контекстные меню AspNetUsers таблицу базы данных](identity/_static/04-db.png)
     
