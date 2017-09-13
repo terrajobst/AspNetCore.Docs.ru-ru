@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/kestrel
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 451a548403c8fa0ed2befeb6969a3ee28fe34790
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: baf1a979e4f18cbc7818f78b866e6cb6958efccf
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-kestrel-web-server-implementation-in-aspnet-core"></a>Общие сведения о Kestrel реализация веб-сервера в ASP.NET Core
 
-По [Tom Dykstra](http://github.com/tdykstra), [Ross Крис](https://github.com/Tratcher), и [Стивен Хальтер](https://twitter.com/halter73)
+По [Tom Dykstra](https://github.com/tdykstra), [Ross Крис](https://github.com/Tratcher), и [Стивен Хальтер](https://twitter.com/halter73)
 
 Kestrel является кросс платформенных [веб-сервер для ASP.NET Core](index.md) на основе [libuv](https://github.com/libuv/libuv), кросс платформенной библиотекой асинхронных операций ввода-вывода. Kestrel является веб-сервером, который включен по умолчанию в шаблонах проектов ASP.NET Core. 
 
