@@ -1,20 +1,20 @@
 ---
 title: "Введение в Razor Pages в ASP.NET Core"
 author: Rick-Anderson
-description: "Общие сведения о Razor Pages в ASP.NET Core"
-keywords: ASP.NET Core, Razor Pages
+description: "Этот документ содержит общие сведения об использовании страниц Razor в ASP.NET Core для упрощения разработки в сценариях, где применяются страницы."
+keywords: "ASP.NET Core, страницы Razor"
 ms.author: riande
 manager: wpickett
-ms.date: 08/15/2017
+ms.date: 09/12/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 543399d99af127f943f7e9119fb5d84c8c5bc499
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: e9678279db85ec03616e693b9772c6ee71c4fef8
+ms.sourcegitcommit: d2f705f7a8ef2c1a940f590e4de188621fd48d2a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -30,7 +30,7 @@ Razor Pages — это новая функция платформы MVC ASP.NET
 
 Установите [.NET Core](https://www.microsoft.com/net/core) 2.0.0 или более поздней версии.
 
-Если вы используете Visual Studio, установите [Visual Studio](https://www.visualstudio.com/vs/) 15.3 или более поздней версии, а также следующие рабочие нагрузки.
+Если вы используете Visual Studio, установите [Visual Studio](https://www.visualstudio.com/vs/) 2017 версии 15.3 или более поздней версии, а также следующие рабочие нагрузки:
 
 * **ASP.NET и веб-разработка**
 * **Кроссплатформенная разработка .NET Core**
@@ -63,25 +63,23 @@ Razor Pages — это новая функция платформы MVC ASP.NET
 
 Функция Razor Pages активируется в файле *Startup.cs*:
 
-[!code-cs[main](index/sample/RazorPagesIntro/Startup.cs?name=Startup)]
+[!code-cs[main](index/sample/RazorPagesIntro/Startup.cs?name=snippet_Startup)]
 
 Рассмотрим простую страницу: <a name="OnGet"></a>
 
 [!code-cshtml[main](index/sample/RazorPagesIntro/Pages/Index.cshtml)]
 
-Представленный выше код выглядит как файл представления Razor и отличается от него только директивой `@page`. Директива `@page` превращает файл в действие MVC, а значит обрабатывает запросы напрямую, минуя контроллер. Директива `@page` должна быть первой директивой Razor на странице. Директива `@page` влияет на поведение всех остальных конструкций Razor. Директива [@functions](xref:mvc/views/razor#functions) активирует содержимое на уровне функций.
+Представленный выше код выглядит как файл представления Razor и отличается от него только директивой `@page`. Директива `@page` превращает файл в действие MVC, а значит обрабатывает запросы напрямую, минуя контроллер. Директива `@page` должна быть первой директивой Razor на странице. Директива `@page` влияет на поведение всех остальных конструкций Razor.
 
-В следующих двух файлах показана аналогичная страница с `PageModel` в отдельном файле. Файл *Pages/Index2.cshtml*:
+Похожая страница с использованием класса `PageModel` показана в следующих двух файлах. Файл *Pages/Index2.cshtml*:
 
 [!code-cshtml[main](index/sample/RazorPagesIntro/Pages/Index2.cshtml)]
 
-Файл кода программной части *Pages/Index2.cshtml.cs*:
+Файл кода "программной части" *Pages/Index2.cshtml.cs*:
 
 [!code-cs[main](index/sample/RazorPagesIntro/Pages/Index2.cshtml.cs)]
 
 Как правило, файл класса `PageModel` называется так же, как файл Razor Pages, но с расширением *.cs*. Например, представленная выше страница Razor Pages называется *Pages/Index2.cshtml*. Файл, содержащий класс `PageModel`, называется *Pages/Index2.cshtml.cs*.
-
-Для простых страниц сочетание класса `PageModel` с разметкой Razor работает нормально. Для более сложного кода рекомендуется хранить код модели страницы отдельно.
 
 Сопоставления URL-адресов со страницами определяются расположением конкретной страницы в файловой системе. В приведенной ниже таблице показаны пути Razor Pages и соответствующие URL-адреса.
 
@@ -90,7 +88,7 @@ Razor Pages — это новая функция платформы MVC ASP.NET
 | */Pages/index.cshtml* | `/` или `/Index` |
 | */Pages/Contact.cshtml* | `/Contact` |
 | */Pages/Store/Contact.cshtml* | `/Store/Contact` |
-| */Pages/Store/Index.cshtml* | `/Store` или `/Store/Index`  |
+| */Pages/Store/Index.cshtml* | `/Store` или `/Store/Index` |
 
 Примечания.
 
@@ -115,9 +113,9 @@ Razor Pages — это новая функция платформы MVC ASP.NET
 
 Файл кода программной части *Pages/Create.cshtml.cs* для представления:
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=ALL)]
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_ALL)]
 
-Как правило, класс `PageModel` называется `<PageName>Model` и находится в том же пространстве имен, что и страница. Конвертация страницы с помощью директивы `@functions` для определения обработчиков и страницы с помощью класса `PageModel` не требует существенных изменений.
+Как правило, класс `PageModel` называется `<PageName>Model` и находится в том же пространстве имен, что и страница.
 
 Применение файла кода программной части `PageModel` позволяет выполнять модульное тестирование, но требует написания явного конструктора и класса. Страницы без файлов кода программной части `PageModel` поддерживают компиляцию среды выполнения, что может пригодиться в процессе разработки.  <!-- review: advantage because you can make changes and refresh the browser without explicitly compiling the app -->
 
@@ -130,7 +128,7 @@ Razor Pages — это новая функция платформы MVC ASP.NET
 
 Предыдущий метод `OnPostAsync`:
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=OnPostAsync)]
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync)]
 
 Простая схема `OnPostAsync`
 
@@ -145,18 +143,9 @@ Razor Pages — это новая функция платформы MVC ASP.NET
 
 Для указания согласия на привязку модели в свойстве `Customer` используется атрибут `[BindProperty]`.
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=PageModel&highlight=10-11)]
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_PageModel&highlight=10-11)]
 
 По умолчанию функция Razor Pages привязывает свойства ко всем командам, кроме GET. Привязка к свойствам позволяет сократить объем необходимого кода. Привязка уменьшает код за счет того, что для визуализации полей формы (`<input asp-for="Customer.Name" />`) и получения входных данных используется одно и то же свойство.
-
-Ниже показана комбинированная версия кода для создания страницы:
-
-[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/CreateCombined.cshtml)]
-
-Вместо директивы `@model` воспользуемся новой функцией Pages. По умолчанию созданный класс, производный от `Page`, *сам по себе* является моделью. Но с представлениями Razor лучше использовать *модель представлений*. С функцией Pages вы получаете модель представлений *автоматически*.
-
-Основное отличие состоит в том, что вместо внедрения конструктора внедряются свойства (`@inject`). На этой странице для [внедрения зависимостей конструктора](xref:mvc/controllers/dependency-injection#constructor-injection) используется [@inject](xref:mvc/views/razor#inject). Инструкция `@inject` создает и инициализирует свойство `Db`, которое используется в `OnPostAsync`. Введенные свойства (`@inject`) задаются до выполнения методов обработчика.
-
 
 Домашняя страница (*Index.cshtml*):
 
@@ -168,7 +157,7 @@ Razor Pages — это новая функция платформы MVC ASP.NET
 
 Файл *Index.cshtml* содержит следующую разметку для создания ссылки на правку для каждого контактного лица.
 
-```html
+```cshtml
 <a asp-page="./Edit" asp-route-id="@contact.Id">edit</a>
 ```
 
@@ -212,7 +201,7 @@ Pages работает со всеми функциями представлен
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/_ViewStart.cshtml)]
 
-Примечание. Макет хранится в папке *Pages*. Pages ищет другие представления (макеты, шаблоны, частичные реплики) в иерархическом порядке, начиная с той папки, где находится текущая страница. Макет в папке *Pages* можно использовать на любой странице Razor, которая находится в папке *Pages*.
+**Примечание.** Макет хранится в папке *Pages*. Pages ищет другие представления (макеты, шаблоны, частичные реплики) в иерархическом порядке, начиная с той папки, где находится текущая страница. Макет в папке *Pages* можно использовать на любой странице Razor, которая находится в папке *Pages*.
 
 Корпорация Майкрософт рекомендует **не** размещать файл макета в папке *Views/Shared*. *Views/Shared* — это шаблон представлений MVC. Razor Pages опирается на иерархию папок, а не на условные обозначения путей.
 
@@ -236,7 +225,7 @@ Pages работает со всеми функциями представлен
 
 Например, файл кода программной части *Pages/Customers/Edit.cshtml.cs* задает пространство имен явно:
 
-[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/Edit.cshtml.cs?name=namespace)]
+[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/Edit.cshtml.cs?name=snippet_namespace)]
 
 Файл *Pages/_ViewImports.cshtml* задает следующее пространство имен:
 
@@ -244,15 +233,13 @@ Pages работает со всеми функциями представлен
 
 Сформированное пространство имен для файла *Pages/Customers/Edit.cshtml* Razor Pages совпадает с именем файла кода программной части. Директива `@namespace` разработана таким образом, чтобы добавляемые в проект классы C# и сгенерированный страницами код *просто работали* без добавления директивы `@using` для файла кода программной части.
 
-Примечание. `@namespace` также работает со стандартными представлениями Razor.
+**Примечание.** `@namespace` также работает со стандартными представлениями Razor.
 
 Исходный файл представления *Pages/Create.cshtml*:
 
 [!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Create.cshtml?highlight=2)]
 
-Обновленная страница:
-
-Файл представления *Pages/Create.cshtml*:
+Обновленный файл представления *Pages/Create.cshtml*:
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/Customers/Create.cshtml?highlight=2)]
 
@@ -264,9 +251,9 @@ Pages работает со всеми функциями представлен
 
 На представленной выше странице `Create` используется `RedirectToPage`:
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=OnPostAsync&highlight=10)]
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync&highlight=10)]
 
-Это приложение имеет следующую структуру файлов и папок.
+Это приложение имеет следующую структуру файлов и папок:
 
 * */Pages*
 
@@ -304,8 +291,9 @@ ASP.NET Core позволяет использовать свойство [TempD
 
 Атрибут `[TempData]` появился в ASP.NET 2.0 и поддерживается в контроллерах и на страницах.
 
-В следующем коде значение `Message` задается с помощью `TempData`.
-[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateDot.cshtml.cs?highlight=10-11,27-28&name=snippetTemp)]
+В следующем коде значение `Message` задается с помощью `TempData`:
+
+[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateDot.cshtml.cs?highlight=10-11,25&name=snippet_Temp)]
 
 Представленная ниже разметка в файле *Pages/Customers/Index.cshtml* отображает значение `Message` с помощью `TempData`.
 
@@ -349,7 +337,6 @@ public string Message { get; set; }
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateRoute.cshtml?highlight=1)]
 
-
 В представленном выше маршруте вместо строки запроса URL-путь содержит имя обработчика. Символ `?` после `handler` означает, что параметр маршрута является необязательным.
 
 С помощью директивы `@page` можно добавить к маршруту страницы дополнительные сегменты и параметры. Все, что вы добавите, будет **присоединено** к маршруту страницы по умолчанию. Использовать для изменения маршрута страницы абсолютный или виртуальный путь (например, вида `"~/Some/Other/Path"`) нельзя.
@@ -358,7 +345,7 @@ public string Message { get; set; }
 
 Чтобы настроить дополнительные параметры, воспользуйтесь методом расширения `AddRazorPagesOptions` в построителе MVC:
 
-[!code-cs[main](index/sample/RazorPagesContacts/StartupAdvanced.cs?name=snippet1)]
+[!code-cs[main](index/sample/RazorPagesContacts/StartupAdvanced.cs?name=snippet_1)]
 
 В настоящее время `RazorPagesOptions` позволяет задавать корневую папку для страниц и добавлять для них обозначения моделей приложений. В дальнейшем мы планируем расширить спектр его возможностей.
 
