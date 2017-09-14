@@ -11,15 +11,15 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: a14bc7fbcdac9acddfdab4fcd6e40385ca48bcc4
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 041bb04a3a3699a166a03338865da154403d8c07
+ms.sourcegitcommit: f535ce61c6a5e615bc6399b5d763c734396231f4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/13/2017
 ---
 <a name=fundamentals-configuration></a>
 
-  # <a name="configuration-in-aspnet-core"></a>Конфигурации в ASP.NET Core
+# <a name="configuration-in-aspnet-core"></a>Конфигурации в ASP.NET Core
 
 [Рик Андерсон](https://twitter.com/RickAndMSFT), [Марка Михаэлиса](http://intellitect.com/author/mark-michaelis/), [Стив Смит](https://ardalis.com/), и [Дэниэла рот](https://github.com/danroth27)
 
@@ -65,8 +65,8 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 Это обычно имеют разные параметры конфигурации для разных сред, например, разработки, тестирования и производства. `CreateDefaultBuilder` Метод расширения в приложении ASP.NET Core 2.x (или с помощью `AddJsonFile` и `AddEnvironmentVariables` непосредственно в приложении ASP.NET Core 1.x) добавляет поставщиков конфигурации для чтения файлы JSON и системные настройки источников:
 
-* *appSettings.JSON*
-* * appsettings. \<EnvironmentName > .json
+* *appsettings.json*
+* *appSettings. \<EnvironmentName > .json*
 * переменные среды
 
 В разделе [AddJsonFile](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.jsonconfigurationextensions) объяснение параметров. `reloadOnChange`поддерживается только в ASP.NET Core 1.1 и более поздних версий. 
@@ -356,6 +356,6 @@ dotnet run /Profile:MachineName
 ### <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Работа с несколькими средами](environments.md)
-* [Безопасного хранения секрета приложения во время разработки](../security/app-secrets.md)
-* [Внедрение зависимостей](dependency-injection.md)
-* [Поставщик конфигурации Azure хранилища ключей](xref:security/key-vault-configuration)
+* [Безопасное хранение секретов приложений во время разработки](../security/app-secrets.md)
+* [Введение зависимостей](dependency-injection.md)
+* [Поставщик конфигурации Azure Key Vault](xref:security/key-vault-configuration)

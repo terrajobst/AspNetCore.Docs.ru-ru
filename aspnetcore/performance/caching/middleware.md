@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: f9267eab-2762-42ac-1638-4a25d2c9d67c
 ms.prod: asp.net-core
 uid: performance/caching/middleware
-ms.openlocfilehash: 7790f38dda61eabd3cbbc6088ad455c07289b739
-ms.sourcegitcommit: 70089de5bfd8ecd161261aa95faf07a4e1534cf8
+ms.openlocfilehash: 4013619f738b3b8b58e45d9dfd205e7b75e056b4
+ms.sourcegitcommit: 029dd7fbc0793e84b9ed91f2b45624bbc187fb32
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/14/2017
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Кэширование по промежуточного слоя в ASP.NET Core ответов
 
@@ -30,11 +30,11 @@ ms.lasthandoff: 08/23/2017
 ## <a name="configuration"></a>Конфигурация
 В `ConfigureServices`, добавление в коллекцию службы по промежуточного слоя.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](middleware/samples/2.x/Program.cs?name=snippet1&highlight=4)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](middleware/samples/1.x/Startup.cs?name=snippet1&highlight=3)]
 
@@ -42,11 +42,11 @@ ms.lasthandoff: 08/23/2017
 
 Настройка приложения для использования по промежуточного слоя с `UseResponseCaching` метод расширения, который добавляет по промежуточного слоя в конвейер обработки запросов. Добавляет в пример приложения [ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2) заголовок в ответ, который кэширует кэшируемых ответов на срок до 10 секунд. Образец отправляет [ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4) заголовок для настройки по промежуточного слоя для обслуживания только если кэшированный ответ [ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4) заголовок последующих запросов таковыми исходного запроса.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](middleware/samples/2.x/Program.cs?name=snippet1&highlight=8)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](middleware/samples/1.x/Startup.cs?name=snippet2&highlight=3)]
 
@@ -113,7 +113,7 @@ if (responseCachingFeature != null)
 
 * [Fiddler](http://www.telerik.com/fiddler)
 * [Firebug](http://getfirebug.com/)
-* [Почтальон](https://www.getpostman.com/)
+* [Postman](https://www.getpostman.com/)
 
 ### <a name="conditions-for-caching"></a>Условия для кэширования
 * Запрос должен привести ответ 200 (ОК) с сервера.
@@ -125,7 +125,7 @@ if (responseCachingFeature != null)
 * `Set-Cookie` Заголовок не должен присутствовать.
 * `Vary`Параметры заголовка должно быть допустимым и не равно `*`.
 * `Content-Length` Значение заголовка (если задать) должно соответствовать размеру текста ответа.
-* `HttpSendFileFeature` Не используется.
+* [IHttpSendFileFeature](/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature) не используется.
 * Ответ не должно быть устаревшей в соответствии с `Expires` заголовок и `max-age` и `s-maxage` кэшировать директивы.
 * Буферизация прошла успешно, и размер ответа меньше, чем настроенное или по умолчанию `SizeLimit`.
 * Требуется ответ может быть кэширован в соответствии с [RFC 7234](https://tools.ietf.org/html/rfc7234) спецификации. Например `no-store` директива не должен существовать в поля заголовка запроса или ответа. В разделе *раздел 3: хранение ответы в кэше* из [RFC 7234](https://tools.ietf.org/html/rfc7234) подробные сведения.
@@ -136,4 +136,4 @@ if (responseCachingFeature != null)
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Запуск приложения](xref:fundamentals/startup)
-* [По промежуточного слоя](xref:fundamentals/middleware)
+* [ПО промежуточного слоя](xref:fundamentals/middleware)
