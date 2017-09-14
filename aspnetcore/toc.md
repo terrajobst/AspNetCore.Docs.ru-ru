@@ -163,8 +163,7 @@
 ## [Использование привязывания к браузеру](xref:client-side/using-browserlink)
 
 # [Мобильные приложения](xref:mobile/index)
-
-# [Создание серверных служб для собственных мобильных приложений](xref:mobile/native-mobile-backend)
+## [Создание серверных служб для собственных мобильных приложений](xref:mobile/native-mobile-backend)
 
 # [Размещение и развертывание](xref:publishing/index)
 ## [Размещение в Windows с помощью IIS](xref:publishing/iis)
