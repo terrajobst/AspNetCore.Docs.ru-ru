@@ -10,11 +10,11 @@ ms.assetid: e6c1ff3c-5673-43bf-9c2d-077f6ada1f29
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: bc2896d0eeda7e84cef06ee3f235e637bfe04318
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: 9de39ce59633036c0dd850a7552bd3f4806c5431
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-aspnet-core-mvc-tutorial-3-of-10"></a>Сортировка, фильтрация, разбиение по страницам и группирование - Core EF учебнику ASP.NET Core MVC (3 из 10)
 
@@ -94,7 +94,7 @@ Contoso университета примера веб-приложения по
 
 [!code-html[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
-Этот код использует `<form>` [тег вспомогательный](https://docs.asp.net/en/latest/mvc/views/tag-helpers/intro.html) Добавление поиска текстовое поле и кнопку. По умолчанию `<form>` тег вспомогательный отправки данных с помощью запроса POST, это означает, что параметры передаются в тексте сообщения HTTP, а не в URL-адрес как строки запросов. При указании HTTP GET, данные формы переданный URL-адрес как строки запроса, который позволяет пользователям bookmark URL-адрес. Получение рекомендуется рекомендации W3C, который следует использовать действие не приводит к появлению обновления.
+Этот код использует `<form>` [тег вспомогательный](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/intro) Добавление поиска текстовое поле и кнопку. По умолчанию `<form>` тег вспомогательный отправки данных с помощью запроса POST, это означает, что параметры передаются в тексте сообщения HTTP, а не в URL-адрес как строки запросов. При указании HTTP GET, данные формы переданный URL-адрес как строки запроса, который позволяет пользователям bookmark URL-адрес. Получение рекомендуется рекомендации W3C, который следует использовать действие не приводит к появлению обновления.
 
 Откройте страницу, введите строку поиска и нажмите кнопку поиска, чтобы проверить работоспособность фильтрации.
 

@@ -2,7 +2,7 @@
 title: "Авторизация на основе ресурсов"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: 0902ba17-5304-4a12-a2d4-e0904569e988
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 2f799588ba4aca4664e1679e4c34657e7ca121fb
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 7f7df52bf51a81558818836450997281a21b5839
+ms.sourcegitcommit: f303a457644ed034a49aa89edecb4e79d9028cb1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="resource-based-authorization"></a>Авторизация на основе ресурсов
 
 <a name=security-authorization-resource-based></a>
 
-Часто авторизации зависит от ресурса к которому выполняется доступ. Пример документа может иметь свойство автора. Для обновления, поэтому необходимо загрузить ресурс из репозитория документа перед предоставлением авторизации оценку допускается только автор документа. Это невозможно выполнить с атрибутом авторизовать как атрибут вычисление выполняется перед привязкой данных и перед запуском кода загрузки ресурса в действие. Вместо декларативного авторизации, атрибутов метода, необходимо использовать принудительной авторизации, где разработчик вызывает функцию авторизации в свой собственный код.
+Часто авторизации зависит от ресурса к которому выполняется доступ. Например документ может иметь свойство автора. Для обновления, поэтому необходимо загрузить ресурс из репозитория документа перед предоставлением авторизации оценку допускается только автор документа. Это невозможно выполнить с атрибутом авторизовать как атрибут вычисление выполняется перед привязкой данных и перед запуском кода загрузки ресурса в действие. Вместо декларативного авторизации, атрибутов метода, необходимо использовать принудительной авторизации, где разработчик вызывает функцию авторизации в свой собственный код.
 
 ## <a name="authorizing-within-your-code"></a>Авторизация в коде
 
@@ -52,7 +52,7 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 
 <a name=security-authorization-resource-based-imperative></a>
 
-Для вызова службы нагрузки ресурс в действие затем вызвать `AuthorizeAsync` требуется перегрузки. Пример
+Для вызова службы, загрузить ресурс в пределах действия затем вызвать `AuthorizeAsync` требуется перегрузки. Пример:
 
 ```csharp
 public async Task<IActionResult> Edit(Guid documentId)
@@ -82,7 +82,7 @@ public async Task<IActionResult> Edit(Guid documentId)
 ```csharp
 public class DocumentAuthorizationHandler : AuthorizationHandler<MyRequirement, Document>
 {
-    public override Task HandleRequirementAsync(AuthorizationHandlerContext context,
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
                                                 MyRequirement requirement,
                                                 Document resource)
     {
@@ -93,7 +93,7 @@ public class DocumentAuthorizationHandler : AuthorizationHandler<MyRequirement, 
 }
 ```
 
-Не забывайте также должен Зарегистрируйте обработчик в `ConfigureServices` метода.
+Не забывайте также должен Зарегистрируйте обработчик в `ConfigureServices` метод:
 
 ```csharp
 services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationHandler>();
@@ -101,7 +101,7 @@ services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationHandler>();
 
 ### <a name="operational-requirements"></a>Операционные требования
 
-При принятии решений на основе операций, таких как чтение, запись, обновление и удаление, можно использовать `OperationAuthorizationRequirement` класса в `Microsoft.AspNetCore.Authorization.Infrastructure` пространства имен. Этот класс требования готовых позволяет написать один обработчик с именем параметризованные операции, а не создавать отдельные классы для каждой операции. Чтобы использовать его указать имена некоторых операций:
+При принятии решений на основе операций, таких как чтение, запись, обновление и удаление, можно использовать `OperationAuthorizationRequirement` класса в `Microsoft.AspNetCore.Authorization.Infrastructure` пространства имен. Этот класс требования готовых позволяет написать один обработчик с именем параметризованные операции, а не создавать отдельные классы для каждой операции. Чтобы использовать его, предоставляют некоторые имена операции:
 
 ```csharp
 public static class Operations
@@ -117,7 +117,7 @@ public static class Operations
 }
 ```
 
-Ваш обработчик может затем быть реализован следующим образом с использованием гипотетической `Document` класса в качестве ресурса;
+Ваш обработчик может затем быть реализован следующим образом с использованием гипотетической `Document` класса в качестве ресурса:
 
 ```csharp
 public class DocumentAuthorizationHandler :
@@ -137,7 +137,7 @@ public class DocumentAuthorizationHandler :
 
 Вы увидите работает обработчик `OperationAuthorizationRequirement`. Код в обработчике необходимо выполнить свойства имени указанного требования в учетную запись, при создании его оценки.
 
-Для вызова обработчика оперативной ресурсов, необходимо указать операцию, при вызове `AuthorizeAsync` в действии. Пример
+Для вызова обработчика оперативной ресурсов, необходимо указать операцию, при вызове `AuthorizeAsync` в действии. Пример:
 
 ```csharp
 if (await _authorizationService.AuthorizeAsync(User, document, Operations.Read))

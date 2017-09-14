@@ -11,11 +11,11 @@ ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a022
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/DistributedCacheTagHelper
-ms.openlocfilehash: b6e0beca0833b1dbe0843e8f8848b976726cc7b0
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 2b260624fb2d85ab1a2625511397bcb4a85b6e77
+ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="distributed-cache-tag-helper"></a>Вспомогательный тег распределенного кэша
 
@@ -52,14 +52,14 @@ ms.lasthandoff: 08/11/2017
 ```cshtml
 <distributed-cache name="my-distributed-cache-unique-key-101">
     Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</distributed-cache>
 ```
 
 ## <a name="distributed-cache-tag-helper-idistributedcache-implementations"></a>Распределенного кэша тег вспомогательные IDistributedCache реализации
 
 Существует два способа реализации `IDistributedCache` встроенной в ASP.NET Core.  Один основан на **Sql Server** и на основе другого **Redis**. Подробности этих реализаций можно найти в ресурсе, упоминаемой ниже именованный «работа с распределенного кэша». Обе реализации включают задание экземпляра `IDistributedCache` в ASP.NET Core **файла startup.cs**.
 
-Существует атрибуты тега специально связанные с использованием любой реализации `IDistributedCache`.
+Нет никаких атрибутов тега, в частности, связанные с использованием любой конкретной реализации `IDistributedCache`.
 
 
 
