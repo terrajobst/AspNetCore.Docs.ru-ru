@@ -5,25 +5,25 @@ description: "Встроенные вспомогательные функции
 keywords: "ASP.NET Core, вспомогательная функция тегов"
 ms.author: riande
 manager: wpickett
-ms.date: 7/11/2017
+ms.date: 09/13/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 3f47cc571eff0c522aaf6543de58f158835384d4
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: e7c8c64283ca3740698300689b10497f984cfd3e
+ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a>Встроенные вспомогательные функции тегов ASP.NET Core
 
 Автор: [Питер Кельнер (Peter Kellner)](http://peterkellner.net) 
 
-Платформа ASP.NET Core включает в себя множество вспомогательных функций тегов, которые могут помочь повысить производительность при написании надежного кода. В этом разделе приводится обзор всех встроенных вспомогательных функций тегов.
+ASP.NET Core включает множество встроенных вспомогательных функций для эффективной работы с тегами. В этом разделе приводится их обзор.
 
 > [!NOTE]
-> Существуют встроенные вспомогательные функции тегов, которые не рассматриваются, так как обработчик представлений [Razor](xref:mvc/views/razor) использует их для внутренних целей. В их число входит вспомогательная функция тегов для символа ~, которая расширяется до корневого пути к веб-сайту.
+> Некоторые встроенные вспомогательные функции тегов здесь не рассматриваются, так как они используются для внутренних задач обработчика представлений [Razor](xref:mvc/views/razor). В их число входит вспомогательная функция для знака "~", который разворачивается к корневому пути веб-сайта.
 
 ## <a name="built-in-aspnet-core-tag-helpers"></a>Встроенные вспомогательные функции тегов ASP.NET Core
 
@@ -37,13 +37,13 @@ ms.lasthandoff: 08/11/2017
 
 [comment]: **[FormActionTagHelper](xref:mvc/views/tag-helpers/builtin-th/FormActionTagHelper)**
 
-[comment]: **[FormTagTagHelper](xref:mvc/views/tag-helpers/builtin-th/FormTagHelper)**
+**[Вспомогательная функция тега форм](xref:mvc/views/working-with-forms#the-form-tag-helper)**
 
 **[Вспомогательная функция тега образа](xref:mvc/views/tag-helpers/builtin-th/ImageTagHelper)**
 
-[comment]: **[InputTagHelper](xref:mvc/views/tag-helpers/builtin-th/InputTagHelper)**
+**[Вспомогательная функция тега Input](xref:mvc/views/working-with-forms#the-input-tag-helper)**
 
-[comment]: **[LabelTagHelper](xref:mvc/views/tag-helpers/builtin-th/LabelTagHelper)**
+**[Вспомогательная функция тега метки](xref:mvc/views/working-with-forms#the-label-tag-helper)**
 
 [comment]: **[LinkTagHelper](xref:mvc/views/tag-helpers/builtin-th/LinkTagHelper)**
 
@@ -51,21 +51,15 @@ ms.lasthandoff: 08/11/2017
 
 [comment]: **[ScriptTagHelper](xref:mvc/views/tag-helpers/builtin-th/ScriptTagTagHelper)**
 
-[comment]: **[SelectTagHelper](xref:mvc/views/tag-helpers/builtin-th/SelectTagTagHelper)**
+**[Вспомогательная функция тега Select](xref:mvc/views/working-with-forms#the-select-tag-helper)**
 
-[comment]: **[TextAreaTagHelper](xref:mvc/views/tag-helpers/builtin-th/TextAreaTagHelper)**
+**[Вспомогательная функция тега Textarea](xref:mvc/views/working-with-forms#the-textarea-tag-helper)**
 
-[comment]: **[ValidationMessageTagHelper](xref:mvc/views/tag-helpers/builtin-th/ValidationMessageTagHelper)**
+**[Вспомогательная функция тега сообщения о проверке](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)**
 
-[comment]: **[ValidationSummaryTagHelper](xref:mvc/views/tag-helpers/builtin-th/ValidationSummaryTagHelper)**  
-  
-  
-<!--
+**[Вспомогательная функция тега сводки по проверке](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)**
 
-## Additional Resources
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
-REQUIRED These must be xref links, not relative, that is ../../
-* [Client-Side Development](../../../client-side/index.md)
-
-* [Tag Helpers](xref:mvc/views/tag-helpers/intro)
--->
+* [Клиентская разработка](xref:client-side/index)
+* [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro)
