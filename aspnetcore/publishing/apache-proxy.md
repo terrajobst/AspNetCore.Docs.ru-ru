@@ -11,15 +11,15 @@ ms.assetid: fa9b0cb7-afb3-4361-9e7e-33afffeaca0c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/apache-proxy
-ms.openlocfilehash: 831e2fa148e52f6447e9065f5949785627d5e248
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 9dc22ea20a6ae2e2477f9e6db95ddabecc038dcb
+ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/14/2017
 ---
 # <a name="set-up-a-hosting-environment-for-aspnet-core-on-linux-with-apache-and-deploy-to-it"></a>Настройка среды размещения для ASP.NET Core в операционной системе Linux с Apache и развертывание в эту среду
 
-Автор: [Шейн Бойер (Shayne Boyer)](https://www.github.com/spboyer)
+Автор: [Шейн Бойер (Shayne Boyer)](https://github.com/spboyer)
 
 Apache является популярным HTTP-сервером и может быть настроен как прокси-сервер для перенаправления трафика HTTP аналогично Nginx. В этом руководстве вы узнаете, как установить Apache в CentOS 7 и использовать его в качестве обратного прокси-сервера для входящих подключений и их перенаправления в приложение ASP.NET Core в Kestrel. Для этого будет использоваться расширение *mod_proxy* и другие связанные модули Apache.
 
@@ -134,7 +134,8 @@ Apache является популярным HTTP-сервером и может
     WorkingDirectory=/var/aspnetcore/hellomvc
     ExecStart=/usr/local/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
     Restart=always
-    RestartSec=10                                          # Restart service after 10 seconds if dotnet service crashes
+    # Restart service after 10 seconds if dotnet service crashes
+    RestartSec=10
     SyslogIdentifier=dotnet-example
     User=apache
     Environment=ASPNETCORE_ENVIRONMENT=Production 

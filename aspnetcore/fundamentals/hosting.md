@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1a789ff1bc6b3e3af99419e7d74d3fb46bb2345
-ms.sourcegitcommit: 368aabde4de3728a8e5a8c016a2ec61f9c0854bf
+ms.openlocfilehash: 4eb57cf80399abdb7c6d05546ea2b0d5718c56c3
+ms.sourcegitcommit: 0a3f215b4f665afc6f2678642968eea698102346
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="hosting-in-aspnet-core"></a>Размещение в ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/12/2017
 
 ## <a name="setting-up-a-host"></a>Настройка узла
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Создание узла с помощью экземпляра [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder). Это обычно выполняется в точке входа приложения, `Main` метод. В шаблоны проектов `Main` находится в папке *Program.cs*. Типичный *Program.cs* вызовы [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) начата Настройка узла:
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 09/12/2017
 
 `CreateDefaultBuilder`выполняет следующие задачи:
 
-* Настраивает [Kestrel](servers/kestrel.md) и веб-сервер.
+* Настраивает [Kestrel](servers/kestrel.md) и веб-сервер. Параметры по умолчанию Kestrel см. в разделе [Kestrel параметры раздела Kestrel реализация веб-сервера в ASP.NET Core](xref:fundamentals/servers/kestrel#kestrel-options).
 * Задает содержимое корневого [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory).
 * Необязательная конфигурация загружает из:
   * *appSettings.JSON*.
@@ -43,7 +43,7 @@ ms.lasthandoff: 09/12/2017
   * Переменные среды.
   * Аргументы командной строки.
 * Настраивает [входа](xref:fundamentals/logging) для вывода на консоль и отладка с [фильтрации журнала](xref:fundamentals/logging#log-filtering) правила, указанные в разделе конфигурации ведения журнала *appsettings.json* или *appsettings. {Среды} .json* файл.
-* При работе под IIS обеспечивает интеграцию служб IIS, настроив базовый путь и порт, сервер должен прослушивать при использовании [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратного прокси-сервера между Kestrel и службами IIS. Кроме того, настраивает приложение для [перехватить ошибки запуска](#capture-startup-errors).
+* При работе под IIS позволяет [интеграции IIS](xref:publishing/iis) путем настройки пути к базовой папке и порта сервера должен прослушивать при использовании [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратного прокси-сервера служб IIS и Kestrel. Кроме того, настраивает приложение для [перехватить ошибки запуска](#capture-startup-errors). Параметры по умолчанию служб IIS см. в разделе [IIS параметры раздела узла ASP.NET Core в Windows с помощью IIS](xref:publishing/iis#iis-options).
 
 *Содержимое корневого* определяет, где узел ищет файлы содержимого, такие как файлы представления MVC. Корень содержимого по умолчанию — [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory). Это приведет к с помощью корневую папку веб-проекта, который является корнем содержимого при запуске приложения из корневой папки (например, вызов [dotnet запуска](/dotnet/core/tools/dotnet-run) из папки проекта). Это значение по умолчанию, используемых в [Visual Studio](https://www.visualstudio.com/) и [dotnet новые шаблоны](/dotnet/core/tools/dotnet-new).
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 09/12/2017
 > [!NOTE]
 > В качестве альтернативы с помощью статического `CreateDefaultBuilder` метод, создание узла из [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) поддерживаемых подход с ASP.NET Core 2.x. См. на вкладке 1.x ASP.NET Core для получения дополнительной информации.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Создание узла с помощью экземпляра [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder). Это обычно выполняется в точке входа приложения, `Main` метод. В шаблоны проектов `Main` находится в папке *Program.cs*. Следующие *Program.cs* демонстрируется использование `WebHostBuilder` для создания узла:
 
@@ -97,7 +97,7 @@ host.Run();
 
 Когда `false`, ошибки во время запуска результат в узле выхода. Когда `true`, узел перехватывает исключения во время запуска и пытается запустить сервер.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -105,7 +105,7 @@ WebHost.CreateDefaultBuilder(args)
     ...
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 var host = new WebHostBuilder()
@@ -126,7 +126,7 @@ var host = new WebHostBuilder()
 
 Содержимое корневого также используется как базовый путь для [параметр корневого веб-каталога](#web-root). Если путь не существует, узлу не удается запустить.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -134,7 +134,7 @@ WebHost.CreateDefaultBuilder(args)
     ...
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 var host = new WebHostBuilder()
@@ -155,7 +155,7 @@ var host = new WebHostBuilder()
 
 При включении (или когда <a href="#environment">среды</a> равно `Development`), приложение записывает подробные сведения об исключениях.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -163,7 +163,7 @@ WebHost.CreateDefaultBuilder(args)
     ...
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 var host = new WebHostBuilder()
@@ -182,9 +182,9 @@ var host = new WebHostBuilder()
 **По умолчанию**: рабочей среде  
 **Задать с помощью**:`UseEnvironment`
 
-Можно задать *среды* любое значение. Значения, определяемые платформой `Development`, `Staging`, и `Production`. Значения не учитывается регистр. По умолчанию *среды* считывается из `ASPNETCORE_ENVIRONMENT` переменной среды. При использовании [Visual Studio](https://www.visualstudio.com/), переменные среды может быть задан в *launchSettings.json* файла. Дополнительные сведения см. в разделе [работа с несколькими средами](xref:fundamentals/environments).
+Можно задать *среды* любое значение. Значения, определяемые платформой `Development`, `Staging`, и `Production`. Значения не учитывается регистр. По умолчанию *среды* считывается из `ASPNETCORE_ENVIRONMENT` переменной среды. При использовании [Visual Studio](https://www.visualstudio.com/), переменные среды может быть задан в *launchSettings.json* файла. Дополнительные сведения см. в статье [Работа с несколькими средами](xref:fundamentals/environments).
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -192,7 +192,7 @@ WebHost.CreateDefaultBuilder(args)
     ...
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 var host = new WebHostBuilder()
@@ -215,7 +215,7 @@ var host = new WebHostBuilder()
 
 Несмотря на то, что значения конфигурации по умолчанию устанавливается равным пустой строке, размещения сборок запуска всегда включать сборку приложения. При предоставлении услуг размещения сборок при запуске, они добавляются в сборку приложения для загрузки, когда приложение создает его общие службы во время запуска.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -223,7 +223,7 @@ WebHost.CreateDefaultBuilder(args)
     ...
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Эта функция недоступна в ASP.NET Core 1.x.
 
@@ -240,7 +240,7 @@ WebHost.CreateDefaultBuilder(args)
 
 Этот компонент впервые появился в ASP.NET Core 2.0.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -248,7 +248,7 @@ WebHost.CreateDefaultBuilder(args)
     ...
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Эта функция недоступна в ASP.NET Core 1.x.
 
@@ -265,7 +265,7 @@ WebHost.CreateDefaultBuilder(args)
 
 Этот компонент впервые появился в ASP.NET Core 2.0.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -273,7 +273,7 @@ WebHost.CreateDefaultBuilder(args)
     ...
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Эта функция недоступна в ASP.NET Core 1.x.
 
@@ -290,7 +290,7 @@ WebHost.CreateDefaultBuilder(args)
 
 Значение, разделенных точкой с запятой (;) префиксов список URL-адрес которого сервер должен отвечать. Например, `http://localhost:123`. Используйте "\*» для указания, что сервер должен прослушивать запросы по любой IP-адрес или имя узла, используя указанный порт и протокол (например, `http://*:5000`). Протокол (`http://` или `https://`) должен быть включен, все URL-адреса. Поддерживаемые форматы различаться для разных серверов.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -298,9 +298,9 @@ WebHost.CreateDefaultBuilder(args)
     ...
 ```
 
-Kestrel имеет собственную конфигурацию конечной точки API. Дополнительные сведения см. в разделе [Kestrel реализация веб-сервера в ASP.NET Core](xref:fundamentals/servers/kestrel?tabs=aspnetcore2x#endpoint-configuration).
+Kestrel имеет собственную конфигурацию конечной точки API. Дополнительные сведения см. в статье [Реализация веб-сервера Kestrel в ASP.NET Core](xref:fundamentals/servers/kestrel?tabs=aspnetcore2x#endpoint-configuration).
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 var host = new WebHostBuilder()
@@ -321,7 +321,7 @@ var host = new WebHostBuilder()
 
 Несмотря на то, что ключ принимает *int* с `UseSetting` (например, `.UseSetting(WebHostDefaults.ShutdownTimeoutKey, "10")`), `UseShutdownTimeout` принимает метод расширения `TimeSpan`. Этот компонент впервые появился в ASP.NET Core 2.0.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -329,7 +329,7 @@ WebHost.CreateDefaultBuilder(args)
     ...
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Эта функция недоступна в ASP.NET Core 1.x.
 
@@ -346,7 +346,7 @@ WebHost.CreateDefaultBuilder(args)
 
 Сборку можно ссылаться по имени (`string`) или тип (`TStartup`). При наличии нескольких `UseStartup` методы вызываются, приоритет имеет последняя.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -360,7 +360,7 @@ WebHost.CreateDefaultBuilder(args)
     ...
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 var host = new WebHostBuilder()
@@ -385,7 +385,7 @@ var host = new WebHostBuilder()
 **По умолчанию**: Если не указан, значение по умолчанию — "(Content Root)/wwwroot», если путь существует. Если путь не существует, то используется поставщик холостой файла.  
 **Задать с помощью**:`UseWebRoot`
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -393,7 +393,7 @@ WebHost.CreateDefaultBuilder(args)
     ...
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 var host = new WebHostBuilder()
@@ -407,7 +407,7 @@ var host = new WebHostBuilder()
 
 Используйте [конфигурации](configuration.md) для настройки узла. В следующем примере конфигурации узла при необходимости указывается в *hosting.json* файла. Загрузить любую конфигурацию из *hosting.json* файл может быть переопределена аргументы командной строки. Конфигурации построения (в `config`) используется для настройки узла с `UseConfiguration`.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 *Hosting.JSON*:
 
@@ -448,7 +448,7 @@ public class Program
 }
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 *Hosting.JSON*:
 
@@ -506,7 +506,7 @@ dotnet run --urls "http://*:8080"
 
 ## <a name="starting-the-host"></a>Запуск узла
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 **Выполнить**
 
@@ -677,7 +677,7 @@ using (var host = WebHost.StartWith("http://localhost:8080", app =>
 
 Дает тот же результат, как **StartWith (действие<IApplicationBuilder> приложения)**, за исключением приложение реагирует на `http://localhost:8080`.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 **Выполнить**
 

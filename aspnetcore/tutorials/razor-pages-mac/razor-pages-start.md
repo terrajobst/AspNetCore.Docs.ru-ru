@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-mac/razor-pages-start
-ms.openlocfilehash: caadc3fcb3bb71abe0773aed4f6ff60a043e3a02
-ms.sourcegitcommit: d9ec19e5452af83648074db5d96c0a0f4f9e7f9a
+ms.openlocfilehash: 56ff18589d189b0d2760c761c58b5b030d02940b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-for-mac"></a>Начало работы с Razor Pages в ASP.NET Core с использованием Visual Studio для Mac
 
@@ -24,9 +24,9 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Установите следующее.
+Установите следующие компоненты:
 
-* [.NET Core 2.0.0 SDK](https://dot.net/core) или более поздней версии
+* [пакет SDK для .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии;
 * [Visual Studio для Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
 
 ## <a name="create-a-razor-web-app"></a>Создание веб-приложения Razor
@@ -53,7 +53,7 @@ dotnet run
 
 ### <a name="launch-the-app"></a>Запуск приложения
 
-В Visual Studio откройте меню **Выполнить > Запуск без отладки**, чтобы запустить приложение. Visual Studio запускает [IIS Express](http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview), открывает браузер и переходит к `http://localhost:5000`.
+В Visual Studio откройте меню **Выполнить > Запуск без отладки**, чтобы запустить приложение. Visual Studio запускает [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview), открывает браузер и переходит к `http://localhost:5000`.
 
 В следующем учебнике мы добавим в проект модель.
 

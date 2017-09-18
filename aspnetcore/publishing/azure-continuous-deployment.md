@@ -11,11 +11,11 @@ ms.assetid: 2707c7a8-2350-4304-9856-fda58e5c0a16
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/azure-continuous-deployment
-ms.openlocfilehash: b576ef6bce3b211afe7465f33dfe62c25dac1f62
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: a9efad38b1c75bd3a186b4ec85861357ecf744b9
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="continuous-deployment-to-azure-for-aspnet-core-with-visual-studio-and-git"></a>Непрерывное развертывание в Azure для ASP.NET Core с помощью Visual Studio и Git
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/11/2017
 См. также статью [Использование VSTS для сборки и публикации в веб-приложении Azure с помощью непрерывного развертывания](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic), в которой показано, как настроить рабочий процесс непрерывной поставки для [службы приложений Azure](https://azure.microsoft.com/documentation/articles/app-service-changes-existing-services/) с помощью Visual Studio Team Services. Непрерывная поставка Azure в Team Services упрощает настройку эффективного конвейера развертывания с целью публикации обновлений для приложения в службе приложений Azure. Этот конвейер можно настроить на портале Azure для сборки, выполнения тестов, развертывания в промежуточном слоте и последующего развертывания в рабочей среде.
 
 > [!NOTE]
-> Для работы с этим руководством требуется учетная запись Microsoft Azure. Если у вас нет учетной записи, вы можете [активировать преимущества подписчика MSDN](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) или [зарегистрироваться для получения бесплатной версии](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+> Для работы с этим руководством требуется учетная запись Microsoft Azure. Если у вас нет учетной записи, вы можете [активировать преимущества подписчика MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) или [зарегистрироваться для получения бесплатной версии](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -34,9 +34,9 @@ ms.lasthandoff: 08/11/2017
 
 * [Visual Studio](https://www.visualstudio.com)
 
-* [ASP.NET Core](http://go.microsoft.com/fwlink/?LinkId=627627) (среда выполнения и средства);
+* [ASP.NET Core](https://download.microsoft.com/download/F/6/E/F6ECBBCC-B02F-424E-8E03-D47E9FA631B7/DotNetCore.1.0.1-VS2015Tools.Preview2.0.3.exe) (среда выполнения и средства);
 
-* [Git](http://git-scm.com/downloads) для Windows.
+* [Git](https://git-scm.com/downloads) для Windows.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Создание веб-приложения ASP.NET Core
 

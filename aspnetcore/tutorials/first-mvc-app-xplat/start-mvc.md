@@ -11,11 +11,11 @@ ms.assetid: 1d18b589-1638-4dc6-1638-fb0f41998d78
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/start-mvc
-ms.openlocfilehash: 82ce5bbc695b190759ac2c05cdceebb5f7854eb7
-ms.sourcegitcommit: e6a8f171f26fab1b2195a2d7f14e7d258a2e690e
+ms.openlocfilehash: cfce91271ca21dd800fb68a14389606ce6d835f5
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc--on-mac-linux-or-windows"></a>Начало работы с MVC ASP.NET Core в операционных системах Mac, Linux и Windows
 
@@ -31,11 +31,11 @@ ms.lasthandoff: 08/23/2017
 
 ## <a name="install-vs-code-and-net-core"></a>Установка VS Code и .NET Core
 
-Для этого учебника требуется [пакет SDK для .NET Core 2.0.0](https://dot.net/core) или более поздней версии. См. [этот PDF-файл](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-mvc-app-mac/start-mvc/8-23-17.pdf) для версии ASP.NET Core 1.1.
+Для этого учебника требуется [пакет SDK для .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии. См. [этот PDF-файл](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-mvc-app-mac/start-mvc/8-23-17.pdf) для версии ASP.NET Core 1.1.
 
 Установите следующие компоненты:
 
-* [Пакет SDK .NET Core 2.0.0](https://dot.net/core) или более поздней версии.
+* [Пакет SDK .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии.
 * [Visual Studio Code.](https://code.visualstudio.com)
 * Расширение VS Code [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
 
@@ -75,9 +75,9 @@ VS Code запускает веб-сервер [Kestrel](xref:fundamentals/serve
 - [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal)
 - [Сочетания клавиш](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
 
-  - [Сочетания клавиш для Mac](https://go.microsoft.com/fwlink/?linkid=832143)
-  - [Сочетания клавиш для Linux](https://go.microsoft.com/fwlink/?linkid=832144)
-  - [Сочетания клавиш для Windows](https://go.microsoft.com/fwlink/?linkid=832145)
+  - [Сочетания клавиш для Mac](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
+  - [Сочетания клавиш для Linux](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
+  - [Сочетания клавиш для Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
 
 >[!div class="step-by-step"]
 [Следующая статья — "Добавление контроллера"](adding-controller.md)

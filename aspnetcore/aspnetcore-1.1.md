@@ -11,18 +11,18 @@ ms.assetid: 062f8353-d1bc-4e99-a821-c1d1bb162c47
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: aspnetcore-1.1
-ms.openlocfilehash: 7fdb00bc64cb20bd0e658b3a81814059404476d2
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 6b1c6648a55e966f448a383440b2b4f0d8e5afa1
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>Новые возможности ASP.NET Core 1.1
 
 В состав ASP.NET Core 1.1 входят следующие новые функции и компоненты:
 
-- [ПО промежуточного слоя для переопределения URL-адресов](https://docs.microsoft.com/aspnet/core/fundamentals/url-rewriting)
-- [ПО промежуточного слоя для кэширования ответов](https://docs.microsoft.com/aspnet/core/performance/caching/middleware)
+- [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting)
+- [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
 - [Просмотр компонентов как вспомогательных функций тегов](xref:mvc/views/view-components#invoking-a-view-component-as-a-tag-helper)
 - [ПО промежуточного слоя в качестве фильтров MVC](xref:mvc/controllers/filters#using-middleware-in-the-filter-pipeline)
 - [Поставщик TempData на основе файлов cookie](xref:fundamentals/app-state#cookie-based-tempdata-provider )

@@ -6,7 +6,7 @@
 
 [!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-Это метод HTTP POST, обозначенный атрибутом [`[HttpPost]`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpPostAttribute/index.html). Атрибут [`[FromBody]`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/FromBodyAttribute/index.html) сообщает MVC, что необходимо получить значение элемента задачи из текста HTTP-запроса.
+Это метод HTTP POST, обозначенный атрибутом [`[HttpPost]`](https://docs.microsoft.com/aspnet/core/api). Атрибут [`[FromBody]`](https://docs.microsoft.com/aspnet/core/api) сообщает MVC, что необходимо получить значение элемента задачи из текста HTTP-запроса.
 
 Метод `CreatedAtRoute` возвращает ответ 201, который представляет собой стандартный ответ для метода HTTP POST, создающий новый ресурс на сервере. `CreatedAtRoute` также добавляет в ответ заголовок расположения. Заголовок расположения указывает URI вновь созданной задачи. См. раздел [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 

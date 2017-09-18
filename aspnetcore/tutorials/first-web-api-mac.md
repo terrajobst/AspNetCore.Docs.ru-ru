@@ -1,21 +1,21 @@
 ---
 title: "Создание веб-API с помощью ASP.NET Core и Visual Studio для Mac"
-author: rick-anderson
 description: "Создание веб-API с помощью MVC ASP.NET Core и Visual Studio для Mac"
-keywords: "ASP.NET Core, WebAPI, веб-API, REST, mac, macOS, HTTP, служба, служба HTTP"
+author: rick-anderson
 ms.author: riande
-manager: wpickett
-ms.date: 5/24/2017
+ms.date: 09/15/2017
 ms.topic: get-started-article
-ms.assetid: 830b4af5-ed14-1638-7734-764a6f13a8f6
-ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-web-api-mac
-ms.openlocfilehash: 08619d3b4ab2d6fdb04794dcbafac0b696dd8504
-ms.sourcegitcommit: 3273675dad5ac3e1dc1c589938b73db3f7d6660a
+helpviewer_heywords: ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, Service, HTTP Service
+ms.technology: aspnet
+keywords: "ASP.NET Core, WebAPI, веб-API, REST, mac, macOS, HTTP, служба, служба HTTP"
+manager: wpickett
+ms.openlocfilehash: 992059f7abd7650f82c1307acf3ba3219a6fcbb5
+ms.sourcegitcommit: 0a3f215b4f665afc6f2678642968eea698102346
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>Создание веб-API с помощью MVC ASP.NET Core и Visual Studio для Mac
 
@@ -37,14 +37,14 @@ ms.lasthandoff: 08/28/2017
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Установите следующее.
+Установите следующие компоненты:
 
 - [Пакет SDK для .NET Core](https://www.microsoft.com/net/core#macos)  
 - [Visual Studio для Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
 
 ## <a name="create-the-project"></a>Создание проекта
 
-В Visual Studio выберите меню **Файл > Новое решение**.
+В Visual Studio выберите **Файл > Новое решение**.
 
 ![Новое решение macOS](first-web-api-mac/_static/sln.png)
 
@@ -127,13 +127,13 @@ ms.lasthandoff: 08/28/2017
 
 ## <a name="implement-the-other-crud-operations"></a>Реализация других операций CRUD
 
-Добавим к контроллеру методы `Create`, `Update` и `Delete`. Это — вариации темы, поэтому мы просто покажем код и выделим основные различия. После добавления или изменения кода выполните сборку проекта.
+Добавим к контроллеру методы `Create`, `Update` и `Delete`. Это вариации темы, поэтому мы просто покажем код и выделим основные различия. После добавления или изменения кода выполните сборку проекта.
 
 ### <a name="create"></a>Создать
 
 [!code-csharp[Main](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-Это метод HTTP POST, обозначенный атрибутом [`[HttpPost]`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpPostAttribute/index.html). Атрибут [`[FromBody]`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/FromBodyAttribute/index.html) сообщает MVC, чтобы необходимо получить значение элемента задачи из текста HTTP-запроса.
+Это метод HTTP POST, обозначенный атрибутом [`[HttpPost]`](https://docs.microsoft.com/aspnet/core/api). Атрибут [`[FromBody]`](https://docs.microsoft.com/aspnet/core/api) сообщает MVC, что необходимо получить значение элемента задачи из текста HTTP-запроса.
 
 Метод `CreatedAtRoute` возвращает ответ 201, который представляет собой стандартный ответ для метода HTTP POST, создающий новый ресурс на сервере. `CreatedAtRoute` также добавляет в ответ заголовок расположения. Заголовок расположения указывает URI вновь созданной задачи. См. раздел [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
@@ -144,11 +144,11 @@ ms.lasthandoff: 08/28/2017
 
 ![Консоль Postman](first-web-api/_static/pmc.png)
 
-* Укажите HTTP-метод `POST`.
-* Установите переключатель **Текст запроса**.
-* Установите переключатель **без обработки**.
-* В качестве типа выберите JSON.
-* В редакторе пар ключей и значений введите элемент Todo, например.
+* Укажите HTTP-метод `POST`
+* Установите переключатель **Текст запроса**
+* Установите переключатель **без обработки**
+* В качестве типа выберите JSON
+* В редакторе пар ключей и значений введите элемент Todo, например
 
 ```json
 {
@@ -157,13 +157,13 @@ ms.lasthandoff: 08/28/2017
 }
 ```
 
-* Нажмите кнопку **Отправить**.
+* Нажмите кнопку **Отправить**
 
-* Откройте вкладку "Заголовки" в нижней области и скопируйте заголовок **расположения**.
+* Откройте вкладку "Заголовки" в нижней области и скопируйте заголовок **расположения**:
 
 ![Вкладка "Заголовки" в консоли Postman](first-web-api/_static/pmget.png)
 
-URI заголовка расположения URI позволяет получить доступ к только что созданному ресурсу. Снова вызовите метод `GetById` для создания маршрута с именем `"GetTodo"`:
+URI заголовка расположения позволяет получить доступ к только что созданному ресурсу. Снова вызовите метод `GetById` для создания маршрута с именем `"GetTodo"`:
 
 ```csharp
 [HttpGet("{id}", Name = "GetTodo")]
@@ -200,4 +200,4 @@ public IActionResult GetById(string id)
 * Сведения о развертывании API см. в статье [Публикация и развертывание](../publishing/index.md).
 * [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample)
 * [Postman](https://www.getpostman.com/)
-* [Fiddler](http://www.fiddler2.com/fiddler2/)
+* [Fiddler](https://www.telerik.com/download/fiddler)

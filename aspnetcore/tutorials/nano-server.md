@@ -11,11 +11,11 @@ ms.assetid: 50922cf1-ca58-4006-9236-99b7ff2dd0cf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/nano-server
-ms.openlocfilehash: affd5bb36f33aab5cdff6904016b628794462d97
-ms.sourcegitcommit: 26166785ad181a8519cb008800d71d96499b0499
+ms.openlocfilehash: 39e9dea5b3cbd43f41f8a9bceb5d5f8eb6adb16d
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="aspnet-core-with-iis-on-nano-server"></a>ASP.NET Core с IIS в Nano Server
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 09/01/2017
 
 ## <a name="introduction"></a>Вступление
 
-Nano Server представляет собой вариант установки в Windows Server 2016, который занимает минимум памяти и отличается более высоким уровнем защиты и обслуживания, чем Server Core или полный сервер. Дополнительные сведения и ссылки на загрузку 180-дневных ознакомительных версий см. в [официальной документации Nano Server](https://technet.microsoft.com/library/mt126167.aspx). 
+Nano Server представляет собой вариант установки в Windows Server 2016, который занимает минимум памяти и отличается более высоким уровнем защиты и обслуживания, чем Server Core или полный сервер. Дополнительные сведения и ссылки на загрузку 180-дневных ознакомительных версий см. в [официальной документации Nano Server](https://docs.microsoft.com/windows-server/get-started/getting-started-with-nano-server). 
 
 Опробовать Nano Server можно тремя простыми способами. В учетной записи MS
 
@@ -106,7 +106,7 @@ Install-NanoServerPackage -Name Microsoft-NanoServer-IIS-Package
 
 ## <a name="installing-the-aspnet-core-module-ancm"></a>Установка модуля ASP.NET Core (ANCM)
 
-Модуль Core ASP.NET, IIS — это модуль 7.5 или более новой версии, отвечающий за управление процессами HTTP-прослушивателей ASP.NET Core и пропускание запросов к управляемым процессам через прокси-сервер. На данный момент модули ASP.NET Core для IIS устанавливается вручную. [Пакет размещения .NET Core Windows Server](https://aka.ms/dotnetcore.2.0.0-windowshosting) необходимо установить на обычный компьютер (не Nano). После установки пакета на обычный компьютер необходимо будет скопировать следующие файлы в общую папку, созданную ранее.
+Модуль Core ASP.NET, IIS — это модуль 7.5 или более новой версии, отвечающий за управление процессами HTTP-прослушивателей ASP.NET Core и пропускание запросов к управляемым процессам через прокси-сервер. На данный момент модули ASP.NET Core для IIS устанавливается вручную. [Пакет размещения .NET Core Windows Server](https://download.microsoft.com/download/B/1/D/B1D7D5BF-3920-47AA-94BD-7A6E48822F18/DotNetCore.2.0.0-WindowsHosting.exe) необходимо установить на обычный компьютер (не Nano). После установки пакета на обычный компьютер необходимо будет скопировать следующие файлы в общую папку, созданную ранее.
 
 На обычном сервере (не Nano) с IIS выполните следующие команды копирования.
 

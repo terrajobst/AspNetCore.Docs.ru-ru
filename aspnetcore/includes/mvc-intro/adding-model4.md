@@ -6,7 +6,7 @@
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_1)] 
 
-Этот конструктор применяет [внедрение зависимостей](xref:fundamentals/dependency-injection) для внедрения контекста базы данных (`MvcMovieContext `) в контроллер. Контекст базы данных используется в каждом методе [создания, чтения, обновления и удаления](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) в контроллере.
+Этот конструктор применяет [внедрение зависимостей](xref:fundamentals/dependency-injection) для внедрения контекста базы данных (`MvcMovieContext `) в контроллер. Контекст базы данных используется в каждом методе [создания, чтения, обновления и удаления](https://wikipedia.org/wiki/Create,_read,_update_and_delete) в контроллере.
 
 <a name=strongly-typed-models-keyword-label></a>
 

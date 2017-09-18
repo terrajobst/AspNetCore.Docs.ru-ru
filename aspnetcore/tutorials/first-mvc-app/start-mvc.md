@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 9636e0e51e506d294ffb50a21165195c9d04fe20
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 283a3869300b83235197951cbbee92a82532c6e3
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-visual-studio"></a>Начало работы с MVC ASP.NET Core и Visual Studio
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 08/25/2017
 
 Установите Visual Studio Community 2017. Выберите загрузку сообщества. Если платформа Visual Studio 2017 уже установлена, пропустите этот шаг.
 
-* [Установщик главной страницы Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Установщик главной страницы Visual Studio 2017](https://www.visualstudio.com/)
 
 Запустите программу установки и выберите следующие рабочие нагрузки.
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 08/25/2017
 <!-- These images are also used by uid: tutorials/first-mvc-app-xplat/start-mvc -->
 ![Запуск приложения](start-mvc/_static/1.png)
 
-* Visual Studio запускает [IIS Express](http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview), а затем ваше приложение. Обратите внимание на то, что в адресной строке указывается `localhost:port#`, а не что-либо типа `example.com`. Это связано с тем, что `localhost` — стандартное имя узла для локального компьютера. Когда Visual Studio создает веб-проект, для веб-сервера используется случайный порт. На представленном выше снимке экрана используется порт номер 5000. При запуске приложения вы увидите другой номер порта.
+* Visual Studio запускает [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview), а затем ваше приложение. Обратите внимание на то, что в адресной строке указывается `localhost:port#`, а не что-либо типа `example.com`. Это связано с тем, что `localhost` — стандартное имя узла для локального компьютера. Когда Visual Studio создает веб-проект, для веб-сервера используется случайный порт. На представленном выше снимке экрана используется порт номер 5000. При запуске приложения вы увидите другой номер порта.
 * Запуск приложения с помощью клавиш **CTRL+F5** (режим без отладки) позволяет внести изменения в код, сохранить файл, обновить браузер и увидеть изменения в коде. Многие разработчики предпочитают использовать режим без отладки, чтобы быстро запустить приложение и просмотреть изменения.
 * Из меню **Отладка** можно запустить приложение в режиме с отладкой или без.
 

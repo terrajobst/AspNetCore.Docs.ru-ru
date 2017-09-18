@@ -11,11 +11,11 @@ ms.assetid: 830b4bf5-dd14-423e-9f59-764a6f13a8f6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-vsc
-ms.openlocfilehash: abe088f2c9df94135209ce71540e6b345186ee70
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 17687e38aae066bdab4663268a2af54f20a6ad75
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-code-on-linux-macos-and-windows"></a>Создание веб-API с помощью ASP.NET Core MVC и Visual Studio Code на платформах macOS, Windows и Linux
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/11/2017
 ## <a name="set-up-your-development-environment"></a>Настройка среды разработки
 
 Скачайте и установите следующие компоненты:
-- [.NET Core](https://microsoft.com/net/core)
+- [.NET Core](https://www.microsoft.com/net/core)
 - [Visual Studio Code.](https://code.visualstudio.com)
 - [Расширение C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Visual Studio Code
 
@@ -57,7 +57,7 @@ dotnet new webapi
 
 <!-- uid: tutorials/first-mvc-app-xplat/start-mvc uses the pic below. If you change it, make sure it's consistent -->
 
-![VS Code с предупреждением "Required assets to build and debug are missing from 'TodoApi'.Add them?" (В TodoApi отсутствуют необходимые ресурсы для сборки и отладки. Добавить их? "Больше не спрашивать", "Не сейчас", "Да", а также информационное сообщение "There are unresolved dependencies" (Имеются неразрешенные зависимости) — "Восстановить", "Закрыть"](web-api-vsc/_static/vsc_restore.png)
+![VS Code с предупреждением "Required assets to build and debug are missing from 'TodoApi'.Add them?" (В TodoApi отсутствуют необходимые ресурсы для сборки и отладки. Добавить их? "Больше не спрашивать", "Не сейчас", "Да", а также информационное сообщение "There are unresolved dependencies" (Имеются неразрешенные зависимости) — "Восстановить", "Закрыть"](web-api-vsc/_static/vsc_restore.png)
 
 Нажмите клавишу **отладки** (F5), чтобы выполнить сборку программы и запустить ее. В браузере перейдите по адресу http://localhost:5000/api/values. Отобразится следующее:
 
@@ -75,7 +75,7 @@ dotnet new webapi
 
 ## <a name="add-a-model-class"></a>Добавление класса модели
 
-Модель — это объект, представляющий данные в приложении. В этом случае единственной моделью является задача.
+Модель — это объект, представляющий данные в приложении. В этом случае единственной моделью является задача.
 
 Добавьте папку с именем *Models*. Классы моделей можно размещать в любом месте в проекте, но по соглашению используется папка *Models*.
 
@@ -83,11 +83,11 @@ dotnet new webapi
 
 [!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoItem.cs)]
 
-После создания `TodoItem` база данных сформирует `Id`.
+После создания `TodoItem` база данных формирует `Id`.
 
 ## <a name="create-the-database-context"></a>Создание контекста базы данных
 
-*Контекст базы данных* —это основной класс, который координирует функциональные возможности Entity Framework для заданной модели данных. Этот класс создается путем наследования от класса `Microsoft.EntityFrameworkCore.DbContext`.
+*Контекст базы данных* —это основной класс, который координирует функциональные возможности Entity Framework для заданной модели данных. Этот класс создается путем наследования от класса `Microsoft.EntityFrameworkCore.DbContext`.
 
 Добавьте класс `TodoContext` в папку *Models*:
 
@@ -114,9 +114,9 @@ dotnet new webapi
 - [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal)
 - [Сочетания клавиш](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
 
-  - [Сочетания клавиш для Mac](https://go.microsoft.com/fwlink/?linkid=832143)
-  - [Сочетания клавиш для Linux](https://go.microsoft.com/fwlink/?linkid=832144)
-  - [Сочетания клавиш для Windows](https://go.microsoft.com/fwlink/?linkid=832145)
+  - [Сочетания клавиш для Mac](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
+  - [Сочетания клавиш для Linux](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
+  - [Сочетания клавиш для Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
 
 [!INCLUDE[next steps](../includes/webApi/next.md)]
 

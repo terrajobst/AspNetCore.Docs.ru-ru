@@ -11,11 +11,11 @@ ms.assetid: ff8fd9b8-7c98-424d-8641-7524e23bf541
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: dd8b8603d8444c95f086fd593aabe86d60f93ad4
-ms.sourcegitcommit: eb025f2166023e1c394a0213c7ed8a9ca7190da5
+ms.openlocfilehash: d06a957f41d4d8928f825c7a795b3d1518ab4421
+ms.sourcegitcommit: c496ec8d5483e7de79b20d06127da7a6cbdac108
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="working-with-sql-server-localdb"></a>Работа с SQL Server LocalDB
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 08/19/2017
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB — это упрощенная версия ядра СУБД SQL Server Express, предназначенная для разработки программ. LocalDB запускается по требованию в пользовательском режиме, поэтому настройки не слишком сложны. По умолчанию база данных LocalDB создает файлы \*.mdf в каталоге *C:/Users/\<пользователь\>*.
+LocalDB — это упрощенная версия ядра СУБД SQL Server Express, предназначенная для разработки программ. LocalDB запускается по требованию в пользовательском режиме, поэтому настройки не слишком сложны. По умолчанию база данных LocalDB создает файлы \*.mdf в каталоге *C:/Users/\<пользователь\>*.
 
 * В меню **Вид** откройте **обозреватель объектов SQL Server** (SSOX).
 
@@ -75,7 +75,7 @@ if (context.Movie.Any())
 
 Добавьте инициализатор заполнения в метод `Main` в файле *Program.cs*:
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Program.cs?highlight=6,16-32)]
+[!code-csharp[Main](start-mvc/sample/MvcMovie/Program.cs?highlight=6,14-32)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 

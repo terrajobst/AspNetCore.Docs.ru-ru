@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-mac/start-mvc
-ms.openlocfilehash: b2e447cac0012ac41d06a70b1452c7d0523546cf
-ms.sourcegitcommit: e6a8f171f26fab1b2195a2d7f14e7d258a2e690e
+ms.openlocfilehash: 028d6d3246908a9cd44a6834449d2fdbc9cae0b8
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>Начало работы с MVC ASP.NET Core и Visual Studio для Mac
 
@@ -30,11 +30,11 @@ ms.lasthandoff: 08/23/2017
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для этого учебника требуется [пакет SDK для .NET Core 2.0.0](https://dot.net/core) или более поздней версии. См. [этот PDF-файл](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-mvc-app-mac/start-mvc/8-23-17.pdf) для версии ASP.NET Core 1.1.
+Для этого учебника требуется [пакет SDK для .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии. См. [этот PDF-файл](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-mvc-app-mac/start-mvc/8-23-17.pdf) для версии ASP.NET Core 1.1.
 
 Установите следующие компоненты:
 
-- [пакет SDK для .NET Core 2.0.0](https://dot.net/core) или более поздней версии;
+- [пакет SDK для .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии;
 - [Visual Studio для Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
 
 ## <a name="create-a-web-app"></a>Создание веб-приложения
@@ -53,7 +53,7 @@ ms.lasthandoff: 08/23/2017
 
 ### <a name="launch-the-app"></a>Запуск приложения
 
-В Visual Studio выберите **Выполнить > Запуск без отладки**, чтобы запустить приложение. Visual Studio запустит [IIS Express](http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview), откроет браузер и перейдет к `http://localhost:port`, где *port* — это номер порта, выбранный случайным образом.
+В Visual Studio выберите **Выполнить > Запуск без отладки**, чтобы запустить приложение. Visual Studio запустит [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview), откроет браузер и перейдет к `http://localhost:port`, где *port* — это номер порта, выбранный случайным образом.
 
 ![Новый проект в браузере](start-mvc/b1.png)
 
