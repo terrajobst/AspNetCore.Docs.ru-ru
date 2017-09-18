@@ -1,5 +1,5 @@
 ---
-title: "Конфигурации в ASP.NET Core"
+title: "Конфигурация в .NET Core"
 author: rick-anderson
 description: "Узнайте, как использовать API конфигурации для настройки приложения ASP.NET Core из нескольких источников."
 keywords: "ASP.NET Core, конфигурации JSON, конфигурации"
@@ -11,15 +11,13 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: 041bb04a3a3699a166a03338865da154403d8c07
-ms.sourcegitcommit: f535ce61c6a5e615bc6399b5d763c734396231f4
+ms.openlocfilehash: 7d591259587766a932a14bb030c76274101d16ac
+ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/14/2017
 ---
-<a name=fundamentals-configuration></a>
-
-# <a name="configuration-in-aspnet-core"></a>Конфигурации в ASP.NET Core
+# <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
 [Рик Андерсон](https://twitter.com/RickAndMSFT), [Марка Михаэлиса](http://intellitect.com/author/mark-michaelis/), [Стив Смит](https://ardalis.com/), и [Дэниэла рот](https://github.com/danroth27)
 
@@ -287,7 +285,7 @@ public void CanBindObjectTree()
 
 [!code-json[Main](configuration/sample/CustomConfigurationProvider/appsettings.json)]
 
-Отображаются следующие сведения:
+Отобразится следующее:
 
 ```console
 key1=value_from_ef_1

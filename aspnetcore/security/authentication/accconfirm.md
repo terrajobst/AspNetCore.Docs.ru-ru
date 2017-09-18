@@ -10,21 +10,21 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 2f99a5d3db84c3fd3f7ebcb8bccd9a4b8bc8e2b8
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 8fe21b1a1ccb93c124dbd12a540b195400d45ef6
+ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/14/2017
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Подтверждение учетной записи и пароль восстановления в ASP.NET Core
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 Этого учебника показано, как создать приложение ASP.NET Core с помощью сброса пароля и подтверждение по электронной почте.
 
-## <a name="create-a-new-aspnet-core-project"></a>Создайте новый проект ASP.NET Core
+## <a name="create-a-new-aspnet-core-project"></a>Создание проекта ASP.NET Core
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Этот шаг применяется Visual Studio в Windows. В следующем разделе инструкции CLI.
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 09/12/2017
 
 ![Отображение «Radio отдельных учетных записей пользователей» выбран диалоговое окно нового проекта](accconfirm/_static/2.png)
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Учебник по требуется Visual Studio 2017 или более поздней версии.
 
@@ -96,12 +96,12 @@ dotnet new mvc --auth Individual
 
 Обновление `ConfigureServices` требовать подтверждения по электронной почте:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](accconfirm/sample/WebPW/Startup.cs?name=snippet1&highlight=6-9)]
 
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](accconfirm/sample/WebApp1/Startup.cs?name=snippet1&highlight=13-16)]
 
@@ -117,7 +117,7 @@ config.SignIn.RequireConfirmedEmail = true;
 
 В этом учебнике SendGrid используется для отправки электронной почты. Требуется учетной записи SendGrid и ключ для отправки электронной почты. Можно использовать другие поставщики электронной почты. Включает 2.x ASP.NET Core `System.Net.Mail`, позволяющий отправлять электронную почту из приложения. Мы рекомендуем использовать SendGrid или другая служба электронной почты для отправки электронной почты.
 
-[Параметры шаблона](xref:fundamentals/configuration#options-config-objects) используется для доступа к параметрам учетной записи и ключа пользователя. Дополнительные сведения см. в разделе [конфигурации](xref:fundamentals/configuration#fundamentals-configuration).
+[Параметры шаблона](xref:fundamentals/configuration#options-config-objects) используется для доступа к параметрам учетной записи и ключа пользователя. Дополнительные сведения см. в разделе [конфигурации](xref:fundamentals/configuration).
 
 Создание класса для получения ключа защиты электронной почты. Для этого образца `AuthMessageSenderOptions` класса создается в *Services/AuthMessageSenderOptions.cs* файла.
 
@@ -145,11 +145,11 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 Добавить `AuthMessageSenderOptions` в контейнер службы, в конце `ConfigureServices` метод в *файла Startup.cs* файла:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](accconfirm/sample/WebPW/Startup.cs?name=snippet1&highlight=18)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 [!code-csharp[Main](accconfirm/sample/WebApp1/Startup.cs?name=snippet1&highlight=26)]
 
 ---
@@ -166,14 +166,14 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 #### <a name="configure-sendgrid"></a>Настройка SendGrid
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 * Добавьте код в *Services/EmailSender.cs* аналогичный приведенному ниже, чтобы настроить SendGrid:
 
 [!code-csharp[Main](accconfirm/sample/WebPW/Services/EmailSender.cs)]
 
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 * Добавьте код в *Services/MessageServices.cs* аналогичный приведенному ниже, чтобы настроить SendGrid:
 
 [!code-csharp[Main](accconfirm/sample/WebApp1/Services/MessageServices.cs)]
@@ -184,7 +184,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 Шаблон содержит код для восстановления и подтверждение пароля учетной записи. Найти `[HttpPost] Register` метод в *AccountController.cs* файла.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Запретить пользователям вновь зарегистрированного выполняется автоматический вход в систему, преобразуйте следующую строку:
 
@@ -196,7 +196,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 [!code-csharp[Main](accconfirm/sample/WebPW/Controllers/AccountController.cs?highlight=19&name=snippet_Register)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Раскомментируйте код, чтобы включить подтверждение учетной записи.
 
@@ -239,14 +239,14 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 ![панель переходов](accconfirm/_static/x.png)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Страница управления отображается с **профиль** с выбранной вкладкой. **Электронной почты** показывает подтвердила типа "флажок", указывающее, сообщения электронной почты. 
 
 ![страница «Управление»](accconfirm/_static/rick2.png)
 
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Далее в этом учебнике говорится об этой странице.
 ![страница «Управление»](accconfirm/_static/rick2.png)

@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/app-state
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b451bde1e3180d12781d55113638cc1a99182c8
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 409444e99cfa49f30812c6130120391a8f477839
+ms.sourcegitcommit: 50608ec8ae49897d8bf11d5f6dc511da30862bfa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/15/2017
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>Общие сведения о состоянии сеанса и приложения в ASP.NET Core
 
@@ -42,7 +42,7 @@ ASP.NET Core сохраняет состояние сеанса, предост�
 <a name="temp"></a>
 ### <a name="tempdata"></a>TempData
 
-Основные ASP.NET MVC предоставляет [TempData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller#Microsoft_AspNetCore_Mvc_Controller_TempData) свойство [контроллера](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller). Это свойство хранит данные до чтения. `Keep` И `Peek` методы можно использовать для изучения данных без удаления. `TempData`особенно полезна для перенаправления, когда данные, необходимые для более чем одного запроса. `TempData`построено на основе состояния сеанса. 
+Основные ASP.NET MVC предоставляет [TempData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller#Microsoft_AspNetCore_Mvc_Controller_TempData) свойство [контроллера](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller). Это свойство хранит данные до тех пор, пока они не будут прочитаны. Для проверки данных без удаления можно использовать методы `Keep` и `Peek`. `TempData`особенно полезна для перенаправления, когда данные, необходимые для более чем одного запроса. `TempData`построено на основе состояния сеанса. 
 
 ## <a name="cookie-based-tempdata-provider"></a>На основе файла cookie TempData поставщика 
 
@@ -96,7 +96,15 @@ public void ConfigureServices(IServiceCollection services)
 
 Ниже показано, как для настройки поставщика сеансов в памяти.
 
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+[!code-csharp[Main](app-state/sample/src/WebAppSessionDotNetCore2.0App/Startup.cs?highlight=11-19,24)]
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
 [!code-csharp[Main](app-state/sample/src/WebAppSession/Startup.cs?highlight=11-19,24)]
+
+---
 
 Можно ссылаться на сеанс из `HttpContext` после его установки и настройки.
 
@@ -116,7 +124,15 @@ public void ConfigureServices(IServiceCollection services)
 
 Чтобы переопределить значения по умолчанию сеанс, используйте `SessionOptions`:
 
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+[!code-csharp[Main](app-state/sample/src/WebAppSessionDotNetCore2.0App/StartupCopy.cs?name=snippet1&highlight=8-12)]
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
 [!code-csharp[Main](app-state/sample/src/WebAppSession/StartupCopy.cs?name=snippet1&highlight=8-12)]
+
+---
 
 Сервер использует `IdleTimeout` свойства, чтобы определить, как долго сеанс может быть неактивным до его содержимое оставляются. Это свойство не зависит от срок действия файла cookie. Каждый запрос, который проходит через по промежуточного слоя сеанса (чтение и запись для данных) сбрасывает время ожидания.
 
@@ -230,4 +246,5 @@ public class MyController : Controller
 ### <a name="additional-resources"></a>Дополнительные ресурсы
 
 
-* [Пример кода, используемого в данном документе](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/app-state/sample/src/WebAppSession)
+* [ASP.NET Core 1.x: пример кода, используемого в данном документе](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/app-state/sample/src/WebAppSession)
+* [ASP.NET Core 2.x: пример кода, используемого в данном документе](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/app-state/sample/src/WebAppSessionDotNetCore2.0App)

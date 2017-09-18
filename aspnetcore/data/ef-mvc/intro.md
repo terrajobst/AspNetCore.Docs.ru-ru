@@ -11,11 +11,11 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 949733119b4e3a4b8716f2bcc1f631949d5049bc
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 6bde59ddbf153ada36034765b390892ec2ed5997
+ms.sourcegitcommit: 98ecb0f1bae4886507b090c84ecd99ff1e5c46ed
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/17/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>Приступая к работе с ASP.NET MVC ядра и Entity Framework Core, с помощью Visual Studio (1, 10)
 
@@ -30,8 +30,8 @@ Contoso университета примера веб-приложения по
 EF Core 2.0 — это последняя версия EF, но еще не все возможности EF 6.x. Сведения о том, как выбрать между EF 6.x и EF Core см [EF Core vs. EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/). При выборе EF 6.x. в разделе [предыдущей версии этого учебника ряда](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
 > [!NOTE]
-> * Версии ASP.NET Core 1.1 этого учебника, см. [VS 2017 г. с обновлением 2 версии этого учебника в формате PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/efmvc/intro/_static/efmvc1.1.pdf).
-> * Visual Studio 2015 версии этого учебника, см. [VS 2015 версию документации ASP.NET Core в формате PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf).
+> * Версии ASP.NET Core 1.1 этого учебника, см. [VS 2017 г. с обновлением 2 версии этого учебника в формате PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf).
+> * Версию этого учебника для Visual Studio 2015 см. в статье [документации по ASP.NET Core для VS 2015 в формате PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -80,7 +80,7 @@ EF Core 2.0 — это последняя версия EF, но еще не вс
 
 * Нажмите кнопку **ОК**.
 
-  ![Диалоговое окно нового проекта ASP.NET](intro/_static/new-aspnet.png)
+  ![Диалоговое окно "Новый проект ASP.NET"](intro/_static/new-aspnet.png)
 
 ## <a name="set-up-the-site-style"></a>Настройка стиля узла
 
@@ -168,7 +168,7 @@ Entity Framework интерпретирует свойство как свойс
 
 ## <a name="create-the-database-context"></a>Создать контекст базы данных
 
-Основной класс, который координирует функции в заданной модели данных Entity Framework является класс контекста базы данных. Создание этого класса путем наследования от `Microsoft.EntityFrameworkCore.DbContext` класса. В коде указывается, какие сущности включаются в модель данных. Можно также настроить некоторые параметры поведения Entity Framework. В этом проекте класс с именем `SchoolContext`.
+Основной класс, который координирует функции в заданной модели данных Entity Framework является класс контекста базы данных. Этот класс создается путем наследования от класса `Microsoft.EntityFrameworkCore.DbContext`. В коде указывается, какие сущности включаются в модель данных. Можно также настроить некоторые параметры поведения Entity Framework. В этом проекте класс с именем `SchoolContext`.
 
 В папку проекта, создайте папку с именем *данные*.
 
@@ -176,7 +176,7 @@ Entity Framework интерпретирует свойство как свойс
 
 [!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_Intro)]
 
-Этот код создает `DbSet` свойство для каждого набора сущностей. В терминологии Entity Framework соответствует обычно набор сущностей в таблице базы данных, а сущности для строки в таблице.
+Этот код создает `DbSet` свойство для каждого набора сущностей. В терминологии Entity Framework набор сущностей обычно соответствует таблице базы данных, а сущность — строке в этой таблице.
 
 Может опущен `DbSet<Enrollment>` и `DbSet<Course>` инструкций и он будет работать так же. Платформа Entity Framework будет включать их неявно поскольку `Student` ссылки на сущности `Enrollment` сущности и `Enrollment` ссылки на сущности `Course` сущности.
 
@@ -204,7 +204,7 @@ Entity Framework интерпретирует свойство как свойс
 
 ### <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-Строка подключения указывает на базу данных SQL Server LocalDB. LocalDB — это облегченная версия SQL Server Express Database Engine и предназначен для разработки приложений, а не использования в рабочей среде. LocalDB запускает по запросу и в пользовательском режиме, поэтому нет сложные конфигурации. По умолчанию создает LocalDB *.mdf* файлов баз данных в `C:/Users/<user>` каталога.
+Строка подключения указывает на базу данных SQL Server LocalDB. LocalDB — это облегченная версия SQL Server Express Database Engine и предназначен для разработки приложений, а не использования в рабочей среде. LocalDB запускается по требованию в пользовательском режиме, поэтому настройки не слишком сложны. По умолчанию создает LocalDB *.mdf* файлов баз данных в `C:/Users/<user>` каталога.
 
 ## <a name="add-code-to-initialize-the-database-with-test-data"></a>Добавьте код для инициализации базы данных с тестовыми данными
 
@@ -242,7 +242,7 @@ Entity Framework интерпретирует свойство как свойс
 
 * Щелкните правой кнопкой мыши **контроллеров** папки в **обозревателе решений** и выберите **Добавить > новый элемент формирования шаблонов**.
 
-* В **Добавление зависимостей MVC** диалогового окна выберите **минимальные зависимости**и выберите **добавить**.
+* В диалоговом окне **Добавление зависимостей MVC** установите переключатель в положение **Минимальный набор зависимостей** и нажмите кнопку **Добавить**.
 
   ![Добавление зависимостей](intro/_static/add-depend.png)
 

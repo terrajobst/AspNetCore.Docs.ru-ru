@@ -1,20 +1,20 @@
 ---
-title: "Безопасного хранения секрета приложения во время разработка решений в ASP.NET Core"
+title: "Безопасного хранения секрета приложения во время разработки в ASP.NET Core"
 author: rick-anderson
 description: "Показано, как безопасно хранить секреты во время разработки"
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
-ms.date: 7/14/2017
+ms.date: 09/15/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/app-secrets
-ms.openlocfilehash: 56214c2fbdca84591c5c1a6b7f2451f33ee64ef0
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: e112cc5ef9cba5aff6470ce4b9b1091a3c2b2600
+ms.sourcegitcommit: f1271b218d7dfdc806ec8f411c81f3750130463d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/15/2017
 ---
 # <a name="safe-storage-of-app-secrets-during-development-in-aspnet-core"></a>Безопасного хранения секрета приложения во время разработки в ASP.NET Core
 
@@ -42,36 +42,19 @@ ms.lasthandoff: 09/12/2017
 >[!WARNING]
 > Секрет диспетчера хранимых секретные данные не шифруются и не будет считаться доверенного хранилища. Это только в целях разработки. Ключи и значения хранятся в файле конфигурации JSON в папке профиля пользователя.
 
-### <a name="visual-studio-2017-installing-the-secret-manager-tool"></a>Visual Studio 2017 г.: Секрет диспетчера установки
+## <a name="installing-the-secret-manager-tool"></a>Установка средства диспетчера секрет
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Щелкните правой кнопкой мыши проект в обозревателе решений и выберите **изменить \<project_name\>.csproj** в контекстном меню. Добавьте в выделенной строке *.csproj* и сохранение файлов для восстановления, связанный с ним пакет NuGet:
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets.csproj?highlight=21)]
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
-Щелкните правой кнопкой мыши проект в обозревателе решений и выберите **управление секретами пользователя** в контекстном меню. Это жест добавляет новый `UserSecretsId` узла в `PropertyGroup` из *.csproj* файла. Также открывает `secrets.json` файл в текстовом редакторе.
+Щелкните правой кнопкой мыши проект в обозревателе решений и выберите **управление секретами пользователя** в контекстном меню. Это жест добавляет новый `UserSecretsId` узла в `PropertyGroup` из *.csproj* файла, как видно из следующего примера:
 
-Добавьте следующий код в файл `secrets.json`:
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
-```json
-{
-    "MySecret": "ValueOfMySecret"
-}
-```
-
-### <a name="visual-studio-2015-installing-the-secret-manager-tool"></a>Visual Studio 2015: Секрет диспетчера установки
-
-Откройте проект `project.json` файла. Добавьте ссылку на `Microsoft.Extensions.SecretManager.Tools` в `tools` свойство и сохранить, чтобы восстановить связанный с ним пакет NuGet:
-
-```json
-"tools": {
-    "Microsoft.Extensions.SecretManager.Tools": "1.0.0-preview2-final",
-    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
-},
-```
-
-Щелкните правой кнопкой мыши проект в обозревателе решений и выберите **управление секретами пользователя** в контекстном меню. Это жест добавляет новый `userSecretsId` свойства `project.json`. Также открывает `secrets.json` файл в текстовом редакторе.
-
-Добавьте следующий код в файл `secrets.json`:
+Сохранение измененного *.csproj* также файл откроется `secrets.json` файл в текстовом редакторе. Замените содержимое `secrets.json` файла следующим кодом:
 
 ```json
 {
@@ -79,11 +62,11 @@ ms.lasthandoff: 09/12/2017
 }
 ```
 
-### <a name="visual-studio-code-or-command-line-installing-the-secret-manager-tool"></a>Visual Studio Code или командной строки: Установка средства диспетчера секрет
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
-Добавить `Microsoft.Extensions.SecretManager.Tools` для *.csproj* файл и запустите `dotnet restore`.
+Добавить `Microsoft.Extensions.SecretManager.Tools` для *.csproj* файл и запустите `dotnet restore`. Можно использовать те же действия для установки средства диспетчера секрета, используемого для командной строки.
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets.csproj?highlight=21)]
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
 Тестирование диспетчера секрет, выполнив следующую команду:
 
@@ -100,7 +83,7 @@ dotnet user-secrets -h
 
 Добавить `UserSecretsId` проекта в *.csproj* файла:
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets.csproj?range=7-9&highlight=2)]
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
 Использование диспетчера секрет, чтобы задать секрет. Например в окно командной строки от каталога проекта, введите следующую команду:
 
@@ -115,6 +98,8 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 ```
 
 Также можно использовать средство диспетчера секрет для перечисления, удаления и очистите секреты приложения.
+
+-----
 
 ## <a name="accessing-user-secrets-via-configuration"></a>Доступ к секретной информации пользователя через конфигурацию
 
