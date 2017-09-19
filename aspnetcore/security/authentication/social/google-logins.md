@@ -5,28 +5,28 @@ description: "Программа установки внешней учетно�
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
-ms.date: 8/2/2017
+ms.date: 08/02/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/google-logins
-ms.openlocfilehash: c0bf20437dcdffc447dde3e6405cd6bf55bc8cfd
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 7e37a8af4ae5a957483fa5f4a89ea4e8999a3d1d
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="configuring-google-authentication-in-aspnet-core"></a>Настройка проверки подлинности Google в ASP.NET Core
 
 <a name=security-authentication-google-logins></a>
 
-По [Valeriy Novytskyy](https://github.com/01binary) и [Рик Андерсон](https://twitter.com/RickAndMSFT)
+Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 Этого учебника показано, как предоставить пользователям возможность войти в их Google + учетную запись с помощью ASP.NET 2.0 основной пример проекта создан на [предыдущую страницу](index.md). Мы начать со следующих [официальный действия](https://developers.google.com/identity/sign-in/web/devconsole-project) для создания нового приложения в консоли Google API.
 
 ## <a name="create-the-app-in-google-api-console"></a>Создание приложения в консоли Google API
 
-* Перейдите к [https://console.developers.google.com/projectselector/apis/library](https://console.developers.google.com/projectselector/apis/library) и выполните вход. Если у вас еще нет учетной записи Google, используйте **Дополнительные параметры** > **[создать учетную запись](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api)**  ссылку, чтобы создать один:
+* Перейдите к [https://console.developers.google.com/projectselector/apis/library](https://console.developers.google.com/projectselector/apis/library) и выполните вход. Если у вас еще нет учетной записи Google, используйте **Дополнительные параметры** > **[создать учетную запись](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api) ** ссылку, чтобы создать один:
 
 ![Консоли Google API](index/_static/GoogleConsoleLogin.png)
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 08/25/2017
 
    `dotnet add package Microsoft.AspNetCore.Authentication.Google`
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Добавление службы Google в `ConfigureServices` метод в *файла Startup.cs* файла:
 
@@ -110,7 +110,7 @@ services.AddAuthentication().AddGoogle(googleOptions =>
 
 `AddAuthentication` Метод должен вызываться только один раз при добавлении нескольких поставщиков проверки подлинности. Все ранее настроенные переопределения могут быть последующие вызовы [AuthenticationOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.authenticationoptions) свойства.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Добавить по промежуточного слоя Google в `Configure` метод в *файла Startup.cs* файла:
 

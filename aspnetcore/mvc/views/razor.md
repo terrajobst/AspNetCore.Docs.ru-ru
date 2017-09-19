@@ -5,16 +5,16 @@ description: "Подробное описание синтаксиса Razor"
 keywords: ASP.NET Core, Razor
 ms.author: riande
 manager: wpickett
-ms.date: 07/4/2017
+ms.date: 07/04/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: 7648bc2ac7b9efd1653725cda749d6cd271bae77
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fff2f98592473a9baf6a2d4e360fec3026b7210d
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="razor-syntax-for-aspnet-core"></a>Синтаксис Razor ASP.NET Core
 
@@ -36,7 +36,7 @@ Razor является синтаксис разметки для внедрен
 
 ## <a name="razor-syntax"></a>Синтаксис Razor
 
-Razor поддерживает C# и использует `@` символ переход из HTML для C#. Razor вычисляет выражения C# и отображает их в выходных данных HTML. Razor может выполнить переход из HTML в C# или в Razor разметку. Когда `@` следуют символ [Razor зарезервированное ключевое слово](#razor-reserved-keywords) он переходит в разметку Razor, в противном случае он переходит в обычный C#.
+Razor поддерживает C# и использует `@` символ переход из HTML для C#. Razor вычисляет выражения C# и отображает их в выходных данных HTML. Razor может выполнять переход с HTML на C# или на разметку Razor. Когда `@` следуют символ [Razor зарезервированное ключевое слово](#razor-reserved-keywords) он переходит в разметку Razor, в противном случае он переходит в обычный C#.
 
 <a name=escape-at-label></a>
 
@@ -494,7 +494,7 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 При передаче "[Rick@contoso.com](mailto:Rick@contoso.com)» в модели:
 
-   В разделе [макета](layout.md) для получения дополнительной информации.
+   Дополнительные сведения см. в статье о [макете](layout.md).
 
 ### `@inject`
 

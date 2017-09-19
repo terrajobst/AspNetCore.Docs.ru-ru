@@ -5,17 +5,17 @@ description: "Использование идентификаторов с пр�
 keywords: "ASP.NET Core, удостоверение, авторизации, безопасность"
 ms.author: riande
 manager: wpickett
-ms.date: 7/7/2017
+ms.date: 07/07/2017
 ms.topic: article
 ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 5a76cac1d64718b9dece3a3201db06c8192fb6f3
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 0c17daa96bc69dc0b8393811a4dfe0e5dc4a1884
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об учетных данных ASP.NET Core
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 09/12/2017
  
     ![Диалоговое окно создания нового проекта](identity/_static/01-mvc.png)
     
-    # <a name="net-core-clitabnetcore-cli"></a>[.NET core CLI](#tab/netcore-cli)
+    # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
     Если используется .NET Core CLI, создайте новый проект с помощью ``dotnet new mvc --auth Individual``. Это создаст новый проект с тем же кодом шаблона удостоверений, создаваемых в Visual Studio.
  
     Созданный проект содержит `Microsoft.AspNetCore.Identity.EntityFrameworkCore` пакет, который будет сохраняться данные удостоверений и схемы SQL Server с помощью [Entity Framework Core](https://docs.microsoft.com/ef/).
@@ -49,7 +49,7 @@ ms.lasthandoff: 09/12/2017
 
     Службы удостоверений добавляются к приложению в `ConfigureServices` метод `Startup` класса:
 
-    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
     
     [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-39)]
     
@@ -59,7 +59,7 @@ ms.lasthandoff: 09/12/2017
     
     [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
     
-    # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+    # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
     
     [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,13-34)]
     
@@ -118,11 +118,11 @@ ms.lasthandoff: 09/12/2017
 
     Удостоверение имеет некоторые виды поведения по умолчанию, которые можно переопределить в классе при запуске приложения. Необходимо настроить ``IdentityOptions`` при использовании поведения по умолчанию.
 
-    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
     
     [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-39)]
     
-    # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+    # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
     
     [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=13-34)]
 
@@ -158,7 +158,7 @@ ms.lasthandoff: 09/12/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Миграция проверку подлинности и удостоверение](xref:migration/identity)
-* [Подтверждение учетной записи и восстановления пароля.](xref:security/authentication/accconfirm)
+* [Миграция на другой метод проверки подлинности и другие удостоверения](xref:migration/identity)
+* [Подтверждение учетной записи и восстановление пароля](xref:security/authentication/accconfirm)
 * [Двухфакторная проверка подлинности с помощью SMS](xref:security/authentication/2fa)
-* [Включение проверки подлинности с использованием Facebook, Google и других внешних поставщиков](xref:security/authentication/social/index)
+* [Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков](xref:security/authentication/social/index)

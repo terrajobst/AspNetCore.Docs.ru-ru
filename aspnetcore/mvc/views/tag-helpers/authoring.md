@@ -5,22 +5,22 @@ description: "Сведения о разработке вспомогатель�
 keywords: "ASP.NET Core, вспомогательных функций тегов"
 ms.author: riande
 manager: wpickett
-ms.date: 6/14/2017
+ms.date: 06/14/2017
 ms.topic: article
 ms.assetid: 4f16d978-5695-4abf-a785-fdaabf3bbcb9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/authoring
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97013d06273c0993b74cdacfa16cb0d655c73667
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 1a5222da1380c2fe768b287bfa1a49b300c02f2b
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="authoring-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>Создание вспомогательных функций тегов в ASP.NET Core, пошаговое руководство с примерами
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample)
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 09/12/2017
     public class Email : TagHelper
     ```
 
-2.  Чтобы сделать `EmailTagHelper` класса для наших представлений Razor, добавьте `addTagHelper` директиву *Views/_ViewImports.cshtml* файла: [!code-html [Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
+2.  Чтобы сделать `EmailTagHelper` класса для наших представлений Razor, добавьте `addTagHelper` директиву *Views/_ViewImports.cshtml* файла:[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
     
     Приведенный выше код использует синтаксисе знаков подстановки для указания всех вспомогательных функций тегов в нашем сборки будет доступно. Первая строка после `@addTagHelper` указывает тег вспомогательное приложение для загрузки (используйте «*» для всех вспомогательных функций тегов), и вторая строка «AuthoringTagHelpers» указывает тег модуль сборки. Кроме того, обратите внимание, что вторая строка переносит вспомогательных функций тегов Core ASP.NET MVC с помощью синтаксиса подстановочный знак (Эти вспомогательные методы обсуждаются в [Общие сведения о вспомогательных функций тегов](intro.md).) Это `@addTagHelper` директиву, которая делает доступными для представления Razor вспомогательный тег. Кроме того можно указать полное доменное имя (FQN) тега вспомогательного метода, как показано ниже:
     
@@ -108,7 +108,7 @@ ms.lasthandoff: 09/12/2017
 
 Этот способ подходит для атрибута «href», пока он не существует в настоящее время в коллекции атрибутов. Можно также использовать `output.Attributes.Add` метод, чтобы добавить атрибут вспомогательной функции тегов в конец коллекции атрибутов тега.
 
-1.  Обновить разметки в *Views/Home/Contact.cshtml* файла с учетом внесенных изменений: [!code-html [Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
+1.  Обновить разметки в *Views/Home/Contact.cshtml* файла с учетом внесенных изменений:[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
 
 2.  Запустите приложение и убедитесь, что он создает правильные ссылки.
     
@@ -183,7 +183,7 @@ ms.lasthandoff: 09/12/2017
 
 1.  Добавить *моделей* папки.
 
-2.  Добавьте следующие `WebsiteContext` класса *моделей* папки:
+2.  Добавьте следующий класс `WebsiteContext` в папку *Models*:
 
     [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Models/WebsiteContext.cs)]
 

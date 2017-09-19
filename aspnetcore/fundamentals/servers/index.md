@@ -11,11 +11,11 @@ ms.assetid: dba74f39-58cd-4dee-a061-6d15f7346959
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/index
-ms.openlocfilehash: 17124f1ef181a4f1572d9375ae8cd27ce8845016
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 54c8e1ad7d4de7f953d9801c214c0bd577304f46
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Реализации веб-сервера в ASP.NET Core
 
@@ -115,7 +115,7 @@ WebListener можно также использовать вместо Kestrel 
 
 ## <a name="notes-about-aspnet-core-server-infrastructure"></a>Примечания об инфраструктуре сервера ASP.NET Core
 
-[`IApplicationBuilder`](https://docs.microsoft.com/aspnet/core/api), доступный к методе `Configure` класса `Startup`, предоставляет свойство `ServerFeatures` типа [`IFeatureCollection`](https://docs.microsoft.com/aspnet/core/api). И Kestrel, и WebListener предоставляют только один компонент, [`IServerAddressesFeature`](https://docs.microsoft.com/aspnet/core/api), но различные реализации серверов могут предоставлять дополнительные функциональные возможности.
+[`IApplicationBuilder`](/aspnet/core/api/microsoft.aspnetcore.builder.iapplicationbuilder), доступный к методе `Configure` класса `Startup`, предоставляет свойство `ServerFeatures` типа [`IFeatureCollection`](/aspnet/core/api/microsoft.aspnetcore.http.features.ifeaturecollection). И Kestrel, и WebListener предоставляют только один компонент, [`IServerAddressesFeature`](/aspnet/core/api/microsoft.aspnetcore.hosting.server.features.iserveraddressesfeature), но различные реализации серверов могут предоставлять дополнительные функциональные возможности.
 
 `IServerAddressesFeature` можно использовать для того, чтобы узнать, какой порт в реализации сервера привязан к среде выполнения.
 

@@ -5,23 +5,23 @@ description: "Настройка внешнего входа Facebook в ASP.NET
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
-ms.date: 8/1/2017
+ms.date: 08/01/2017
 ms.topic: article
 ms.assetid: 8c65179b-688c-4af1-8f5e-1862920cda95
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: da019ad3fd6cefa23b8331c98cc36e50ac9c1105
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 840513fc0b00c4aa478726faa6db8bdbffd561b1
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="configuring-facebook-authentication"></a>Настройка проверки подлинности Facebook
 
 <a name=security-authentication-facebook-logins></a>
 
-По [Valeriy Novytskyy](https://github.com/01binary) и [Рик Андерсон](https://twitter.com/RickAndMSFT)
+Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 Этого учебника показано, как предоставить пользователям возможность войти в свою учетную запись Facebook с помощью ASP.NET 2.0 основной пример проекта создан на [предыдущую страницу](index.md). Мы начнем с создания код приложения Facebook, следуя [официальный действия](https://www.facebook.com/unsupportedbrowser).
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 09/12/2017
 
    `dotnet add package Microsoft.AspNetCore.Authentication.Facebook`
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Добавьте службу Facebook в `ConfigureServices` метод в *файла Startup.cs* файла:
 
@@ -88,7 +88,7 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 
 `AddAuthentication` Метод должен вызываться только один раз при добавлении нескольких поставщиков проверки подлинности. Все ранее настроенные переопределения могут быть последующие вызовы [AuthenticationOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.authenticationoptions) свойства.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Добавить по промежуточного слоя Facebook в `Configure` метод в *файла Startup.cs* файла:
 
