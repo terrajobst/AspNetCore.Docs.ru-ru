@@ -11,11 +11,11 @@ ms.assetid: f0930c68-4d17-4748-adbf-801e17601eb6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/index
-ms.openlocfilehash: d030b4f16727080488056c9cde48c31a14a166bf
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: df3c1f0c2768b89c3ea5dc901782170c530a542e
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="hosting-and-deployment-overview-for-aspnet-core-apps"></a>Общие сведения о размещении и развертывании приложений ASP.NET Core
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 08/25/2017
 
 Помимо копирования выходных данных `dotnet publish` на сервер в процессе развертывания часто требуется выполнение и других задач. Это может быть, например, включение дополнительных файлов в папку *публикации* или исключение из нее каких-либо файлов. Visual Studio использует для веб-развертывания MSBuild и настраивает MSBuild для решения многих других задач в процессе развертывания. Дополнительные сведения см. в статье [Профили публикации в Visual Studio](xref:publishing/web-publishing-vs) и в книге [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Использование MSBuild и сборки Team Foundation).
 
-Развертывание можно выполнять напрямую из Visual Studio в службу приложений Azure, используя [компонент веб-публикации](xref:tutorials/publish-to-azure-webapp-using-vs) или [встроенную поддержку Git](xref:publishing/azure-continuous-deployment). Visual Studio Team Services поддерживает [непрерывное развертывание в службе приложений Azure](https://www.visualstudio.com/en-us/docs/build/aspnet/core/quick-to-azure).
+Развертывание можно выполнять напрямую из Visual Studio в службу приложений Azure, используя [компонент веб-публикации](xref:tutorials/publish-to-azure-webapp-using-vs) или [встроенную поддержку Git](xref:publishing/azure-continuous-deployment). Visual Studio Team Services поддерживает [непрерывное развертывание в службе приложений Azure](https://www.visualstudio.com/docs/build/aspnet/core/quick-to-azure).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
