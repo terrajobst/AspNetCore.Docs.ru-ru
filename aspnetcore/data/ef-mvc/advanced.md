@@ -11,11 +11,11 @@ ms.assetid: 92a2986a-d005-4ff6-9559-6657fd466bb7
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 210f8e8b91c2487e5c4b73fdeb6ff0d5aa35c0c5
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 70434d1c814af2a96493027c6a2ad87845cd5cae
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="advanced-topics---ef-core-with-aspnet-core-mvc-tutorial-10-of-10"></a>Дополнительные разделы - Core EF учебнику ASP.NET Core MVC (10, 10)
 
@@ -61,7 +61,7 @@ Contoso университета примера веб-приложения по
 
 [!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings2)]
 
-Запустите страницу About. Он отображает те же данные, которые раньше.
+Запустите приложение и перейти на страницу о программе. Он отображает те же данные, которые раньше.
 
 ![О странице](advanced/_static/about.png)
 
@@ -109,7 +109,7 @@ Contoso университета примера веб-приложения по
 
 Откройте *StudentsController.cs* и `Details` метод установить точку останова на `if (student == null)` инструкции.
 
-Запустите приложение в режиме отладки и перейти к странице сведений для учащихся.
+Запустить приложение в режиме отладки и перейти к странице сведений для учащихся.
 
 Последовательно выберите пункты **вывода** вывода окна, показывающая отладки и появится запрос:
 

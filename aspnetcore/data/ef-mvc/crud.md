@@ -11,11 +11,11 @@ ms.assetid: 6e1cd570-40f1-4b24-8b6e-7d2d27758f18
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 87aa7e63b1a08e457c5fdcbc052bfa039b8d2175
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 3393bb90d170cfc572d2307ec18f1a8e25bdce59
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>Создания, чтения, обновления и удаления - Core EF учебнику Core ASP.NET MVC (часть 2 из 10)
 
@@ -156,7 +156,7 @@ public class Student
 
 Код в *Views/Students/Create.cshtml* использует `label`, `input`, и `span` (для проверки сообщений) вспомогательных функций для каждого поля тегов.
 
-Запустите страницу, выбрав **учащихся** и нажав кнопку **создать новый**.
+Запустите приложение, выберите **учащихся** и нажмите кнопку **создать новый**.
 
 Введите имена и даты. Попробуйте ввести недопустимую дату, если браузер позволяет сделать. (Некоторые браузеры заставляет использовать элемент выбора даты.) Нажмите кнопку **создать** для сообщения об ошибке.
 
@@ -222,7 +222,7 @@ public class Student
 
 ### <a name="test-the-edit-page"></a>Тестовая страница редактирования
 
-Запустите приложение и выберите **учащихся** , затем щелкните **изменить** гиперссылки.
+Запустите приложение, выберите **учащихся** , затем щелкните **изменить** гиперссылки.
 
 ![Страница изменения студентов](crud/_static/student-edit.png)
 
@@ -264,7 +264,7 @@ public class Student
 
 [!code-html[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
 
-Запустите страницу, выбрав **учащихся** и нажав кнопку **удалить** гиперссылки:
+Запустите приложение, выберите **учащихся** и нажмите кнопку **удалить** гиперссылки:
 
 ![Удалить страницу подтверждения](crud/_static/student-delete.png)
 

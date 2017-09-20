@@ -2,7 +2,7 @@
 title: "Привязка вспомогательный тег | Документы Microsoft"
 author: pkellner
 description: "Показано, как работать с вспомогательный тег привязки"
-keywords: "ASP.NET Core, вспомогательные тега"
+keywords: "ASP.NET Core, вспомогательная функция тегов"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
@@ -11,15 +11,15 @@ ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a011
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/AnchorTagHelper
-ms.openlocfilehash: f08e6a5288076d56b55843f1872bcfa8104f3923
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fdb91836699b4dd334499cffa6c4c3961c5c020f
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="anchor-tag-helper"></a>Вспомогательный тег привязки
 
-По [Питер Kellner](http://peterkellner.net) 
+Автор: [Питер Кельнер (Peter Kellner)](http://peterkellner.net) 
 
 Вспомогательный тег привязки улучшает привязки HTML (`<a ... ></a>`) тега путем добавления новых атрибутов. Ссылки, созданной (на `href` тега) создается с использованием новых атрибутов. Этот URL-адрес может включать необязательный протокол, такой как https.
 

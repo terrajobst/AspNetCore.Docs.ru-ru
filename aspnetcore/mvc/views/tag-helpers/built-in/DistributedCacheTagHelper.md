@@ -2,7 +2,7 @@
 title: "Распределенного кэша тег вспомогательный | Документы Microsoft"
 author: pkellner
 description: "Показано, как работать с вспомогательный тег кэша"
-keywords: "ASP.NET Core, вспомогательные тега"
+keywords: "ASP.NET Core, вспомогательная функция тегов"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
@@ -12,14 +12,14 @@ ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/DistributedCacheTagHelper
 ms.openlocfilehash: 2b260624fb2d85ab1a2625511397bcb4a85b6e77
-ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="distributed-cache-tag-helper"></a>Вспомогательный тег распределенного кэша
 
-По [Питер Kellner](http://peterkellner.net) 
+Автор: [Питер Кельнер (Peter Kellner)](http://peterkellner.net) 
 
 
 Тег вспомогательный объект распределенного кэша позволяет существенно повысить производительность приложения ASP.NET Core, кэшируя его содержимого с источником распределенного кэша.

@@ -2,7 +2,7 @@
 title: "Вспомогательный тег изображения | Документы Microsoft"
 author: pkellner
 description: "Показано, как работать с тега поддержки изображений"
-keywords: "ASP.NET Core, вспомогательные тега"
+keywords: "ASP.NET Core, вспомогательная функция тегов"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
@@ -11,15 +11,15 @@ ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a013
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/ImageTagHelper
-ms.openlocfilehash: 67537674154d885fc6f69accd2cc7f01c9104d71
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: e91018be7d706ddc227f82b695a188ed91163f9d
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="imagetaghelper"></a>ImageTagHelper
 
-По [Питер Kellner](http://peterkellner.net) 
+Автор: [Питер Кельнер (Peter Kellner)](http://peterkellner.net) 
 
 Тег поддержки изображений улучшает `img` (`<img>`) тега. Требуется `src` тег а также `boolean` атрибут `asp-append-version`.
 
