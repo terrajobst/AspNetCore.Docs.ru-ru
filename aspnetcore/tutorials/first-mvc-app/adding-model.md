@@ -11,11 +11,11 @@ ms.assetid: 8dc28498-00ee-4d66-b903-b593059e9f39
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 8d0bebc22e1cfdc6d9b213d0c3159a7dab988020
-ms.sourcegitcommit: 0bd3f6ec577c648dd777877e97572ec2da1b36c4
+ms.openlocfilehash: 7469546494ec54bfe36bc5bd2f5f9702889ddf4a
+ms.sourcegitcommit: 2e61e287e220eddd5f3f4cd9147aa6417cfd9236
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/12/2017
 ---
 [!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
 
@@ -70,7 +70,7 @@ Visual Studio создаст следующие компоненты:
 * контроллер фильмов (*Controllers/MoviesController.cs*);
 * файлы представления Razor для страниц Create, Delete, Details, Edit и Index (*Views/Movies/&ast;.cshtml*).
 
-Автоматическое создание контекста базы данных и методов и представлений действий [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (создание, чтение, обновление и удаление) называется *формированием шаблонов*. Вскоре вы получите полнофункциональное веб-приложение, позволяющее управлять базой данных фильмов.
+Автоматическое создание контекста базы данных и методов и представлений действий [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (создание, чтение, обновление и удаление) называется *формированием шаблонов*. Вскоре вы получите полнофункциональное веб-приложение, позволяющее управлять базой данных фильмов.
 
 Если запустить приложение и щелкнуть ссылку **Mvc Movie**, возникнет ошибка наподобие следующей:
 
@@ -106,7 +106,7 @@ Add-Migration Initial
 Update-Database
 ```
 
-Примечание. Если при работе с PMC возникают проблемы, см. раздел [Использование CLI](#cli).
+**Примечание**. Если при выполнении команды `Install-Package` возникнет ошибка, откройте диспетчер пакетов NuGet и найдите пакет `Microsoft.EntityFrameworkCore.Tools`. Это позволит установить пакет или убедиться, что он установлен. Если же у вас возникают проблемы с PMC, вы можете [воспользоваться командной строкой](#cli).
 
 Команда `Add-Migration` формирует код для создания схемы исходной базы данных. Схема создается на основе модели, указанной в `DbContext` (в файле *Data/MvcMovieContext.cs*). Аргумент `Initial` используется для присвоения имен миграциям. Можно использовать любое имя, но обычно выбирается имя, описывающее миграцию. Дополнительные сведения см. в статье [Введение в миграции](xref:data/ef-mvc/migrations#introduction-to-migrations).
 

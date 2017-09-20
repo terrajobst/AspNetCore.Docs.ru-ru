@@ -10,17 +10,17 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: bda00f290043251ad308192c5b1a873ae7cd0d85
-ms.sourcegitcommit: e832a9b9f41a8b26a8c88edfd8fc35b8bfd97d5d
+ms.openlocfilehash: 1b5f4297d4812fbbd60fb8b94446da205cd6bb55
+ms.sourcegitcommit: f303a457644ed034a49aa89edecb4e79d9028cb1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="adding-a-new-field-to-a-razor-page"></a>Добавление нового поля на страницу Razor
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-В этом разделе вы будете использовать [Entity Framework](http://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html) Code First Migrations для добавления нового поля к модели и переноса этого изменения в базу данных.
+В этом разделе вы будете использовать [Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) Code First Migrations для добавления нового поля к модели и переноса этого изменения в базу данных.
 
 Если вы используете EF Code First для автоматического создания базы данных, Code First добавляет в нее таблицу, которая позволяет отслеживать синхронизацию схемы базы данных с классами модели, на основе которой она была создана. Если синхронизация нарушена, EF вызывает исключение. Это позволяет упростить поиск проблем с согласованностью между базой данных и кодом.
 
@@ -105,4 +105,4 @@ Update-Database
 
 >[!div class="step-by-step"]
 [Предыдущая тема — "Добавление поиска"](xref:tutorials/razor-pages/search)
-[Следующая тема — "Добавление нового поля"](xref:tutorials/razor-pages/new-field)
+[Следующая тема — "Добавление проверки"](xref:tutorials/razor-pages/validation)

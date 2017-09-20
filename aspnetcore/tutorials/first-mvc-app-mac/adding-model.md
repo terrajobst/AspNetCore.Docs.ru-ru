@@ -5,17 +5,19 @@ description: "Добавление модели в простое приложе
 keywords: "ASP.NET Core, MVC, шаблоны, формирование шаблонов"
 ms.author: riande
 manager: wpickett
-ms.date: 03/30/2017
+ms.devlang: csharp
+ms.date: 09/15/2017
 ms.topic: get-started-article
 ms.assetid: 8dc28498-eeee-1638-b903-b593059e9f39
 ms.technology: aspnet
-ms.prod: asp.net-core
+ms.prod: .net-core
+helpviewer_keywords: aspnet, csharp, mvc
 uid: tutorials/first-mvc-app-mac/adding-model
-ms.openlocfilehash: 4a158802a19011cbb45da1b3ca43d67706efe4cd
-ms.sourcegitcommit: d9e2c99c837078fcac0e315025f8fbfbd45ea6e8
+ms.openlocfilehash: 36819284073eb1cb20b19c41512944e34c54c6d3
+ms.sourcegitcommit: 3fece4e2869581df72090ff5e82af1a09d927699
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/15/2017
 ---
 [!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
 
@@ -46,9 +48,9 @@ ms.lasthandoff: 08/28/2017
 
 - Сохраните файл.
 
-- Создайте файл *Models/MvcMovieContext.cs* и добавьте следующий класс `MvcMovieContext`: [!code-csharp[Main](../../tutorials/first-mvc-app-xplat/start-mvc/sample/MvcMovie/Models/MvcMovieContext.cs)]
+- Создайте файл *Models/MvcMovieContext.cs* и добавьте следующий класс `MvcMovieContext`: [!code-csharp[Main](../../tutorials/first-mvc-app-xplat/start-mvc/sample/MvcMovie/Models/MvcMovieContext.cs)].
    
-- Откройте файл *Startup.cs* и добавьте два использования: [!code-csharp[Main](../../tutorials/first-mvc-app-xplat/start-mvc/sample/MvcMovie/Startup.cs?name=snippet1&highlight=1,2)]
+- Откройте файл *Startup.cs* и добавьте две директивы using: [!code-csharp[Main](../../tutorials/first-mvc-app-xplat/start-mvc/sample/MvcMovie/Startup.cs?name=snippet1&highlight=1,2)].
 
 - Добавьте контекст базы данных в файл *Startup.cs*:
 
@@ -82,7 +84,7 @@ dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMo
 * Контроллер фильмов (*Controllers/MoviesController.cs*)
 * Файлы представления Razor для страниц Create, Delete, Edit и Index (*Views/Movies/\*.cshtml*)
 
-Автоматическое создание методов и представлений действия [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (создание, чтение, обновление и удаление) называется *формированием шаблонов*. Вскоре вы получите полнофункциональное веб-приложение, позволяющее управлять базой данных фильмов.
+Автоматическое создание методов и представлений действия [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (создание, чтение, обновление и удаление) называется *формированием шаблонов*. Вскоре вы получите полнофункциональное веб-приложение, позволяющее управлять базой данных фильмов.
 
 ### <a name="add-the-files-to-visual-studio"></a>Добавление файлов в Visual Studio
 
@@ -109,5 +111,5 @@ dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMo
 * [Глобализация и локализация](xref:fundamentals/localization)
 
 >[!div class="step-by-step"]
-[Назад: Добавление представления](adding-view.md)
-[Далее: Работа с SQL](working-with-sql.md)  
+[Назад: добавление представления](adding-view.md)
+[Далее: работа с SQL](working-with-sql.md)  

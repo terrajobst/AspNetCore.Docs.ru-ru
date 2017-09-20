@@ -11,11 +11,11 @@ ms.assetid: a4449ad3-5bad-410c-afa7-dc32d832b552
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/iis
-ms.openlocfilehash: 351f3519643bc88fc3dd1c4fbac1c144c6837523
-ms.sourcegitcommit: 0a70706a3814d2684f3ff96095d1e8291d559cc7
+ms.openlocfilehash: 48e67add785fc1d7e79c659565afb1ec68c1defb
+ms.sourcegitcommit: f531d90646b9d261c5fbbffcecd6ded9185ae292
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/15/2017
 ---
 # <a name="set-up-a-hosting-environment-for-aspnet-core-on-windows-with-iis-and-deploy-to-it"></a>Настройка среды размещения для ASP.NET Core в операционной системе Windows со службами IIS и развертывание в этой среде
 
@@ -66,22 +66,38 @@ ms.lasthandoff: 08/22/2017
 
 ## <a name="install-web-deploy-when-publishing-with-visual-studio"></a>Установка веб-развертывания при публикации с помощью Visual Studio
 
-Если вы планируете развертывать приложения с помощью веб-развертывания в Visual Studio, установите последнюю версию веб-развертывания в размещающей системе. Чтобы установить веб-развертывание, можно использовать [установщик веб-платформы (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) или получить установщик непосредственно в [Центре загрузки Майкрософт](https://www.microsoft.com/search/result.aspx?q=webdeploy&form=dlc). Предпочтительный метод — использовать WebPI. WebPI обеспечивает автономную установку и настройку поставщиков размещения.
+Если вы планируете развертывать приложения с помощью веб-развертывания в Visual Studio, установите последнюю версию веб-развертывания в размещающей системе. Чтобы установить веб-развертывание, можно использовать [установщик веб-платформы (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) или получить установщик непосредственно в [Центре загрузки Майкрософт](https://www.microsoft.com/download/details.aspx?id=43717). Предпочтительный метод — использовать WebPI. WebPI обеспечивает автономную установку и настройку поставщиков размещения.
 
 ## <a name="application-configuration"></a>Настройка приложения
 
 ### <a name="enabling-the-iisintegration-components"></a>Включение компонентов IISIntegration
 
-Включите в зависимости приложения зависимость от *Microsoft.AspNetCore.Server.IISIntegration*. Включите в приложение ПО промежуточного слоя для интеграции IIS, добавив метод расширения *.UseIISIntegration()* в *WebHostBuilder()*. Обратите внимание, что код, вызывающий *.UseIISIntegration()*, не влияет на переносимость кода.
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+Обычно *Program.cs* вызывает [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder), чтобы начать настройку узла. `CreateDefaultBuilder` настраивает [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и активирует интеграцию IIS, задавая базовый путь и порт для [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module):
+
+```csharp
+public static IWebHost BuildWebHost(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+Включите в зависимости приложения зависимость от [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/). Включите в приложение ПО промежуточного слоя для интеграции IIS, добавив метод расширения *UseIISIntegration* в *WebHostBuilder*:
 
 ```csharp
 var host = new WebHostBuilder()
     .UseKestrel()
-    .UseContentRoot(Directory.GetCurrentDirectory())
     .UseIISIntegration()
-    .UseStartup<Startup>()
-    .Build();
+    ...
 ```
+
+`UseKestrel` и `UseIISIntegration` являются обязательными элементами. Код, вызывающий *UseIISIntegration*, не влияет на переносимость кода. Если приложение запускается не в IIS (например, запускается непосредственно в Kestrel), то в `UseIISIntegration` нет операций.
+
+---
+
+Дополнительные сведения о размещении см. в разделе [Размещение в ASP.NET Core](xref:fundamentals/hosting).
 
 ### <a name="setting-iisoptions-for-the-iisintegration-service"></a>Задание IISOptions для службы IISIntegration
 
@@ -154,7 +170,7 @@ services.Configure<IISOptions>(options => {
 ![Диалоговое окно "Публикация"](iis/_static/pub-dialog.png)
 
 ### <a name="web-deploy-outside-of-visual-studio"></a>Веб-развертывание вне Visual Studio
-Веб-развертывание можно также использовать вне Visual Studio с помощью командной строки. Дополнительные сведения см. в статье [Средство веб-развертывания](https://technet.microsoft.com/library/dd568996(WS.10).aspx).
+Веб-развертывание можно также использовать вне Visual Studio с помощью командной строки. Дополнительные сведения см. в статье [Средство веб-развертывания](https://docs.microsoft.com/iis/publish/using-web-deploy/use-the-web-deployment-tool).
 
 ### <a name="alternatives-to-web-deploy"></a>Альтернативы веб-развертыванию
 Если вы не хотите применять веб-развертывание или не используете Visual Studio, вы можете прибегнуть к одному из методов переноса приложения в систему размещения, например Xcopy, Robocopy или PowerShell. Пользователи Visual Studio могут применять [образцы публикации](https://github.com/aspnet/vsweb-publish/blob/master/samples/samples.md).
@@ -185,12 +201,12 @@ services.Configure<IISOptions>(options => {
 
 * Запустите [скрипт PowerShell](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1), чтобы создать соответствующие записи в реестре (например, `.\Provision-AutoGenKeys.ps1 DefaultAppPool`). В результате ключи будут храниться в реестре и защищаться посредством API защиты данных с использованием ключа на уровне компьютера.
 * Настройте пул приложений IIS для загрузки профиля пользователя. Этот параметр находится на странице **Дополнительные параметры** пула приложений в разделе **Модель процесса**. Задайте для параметра **Загрузить профиль пользователя** значение `True`. В результате ключи будут храниться в каталоге профиля пользователя и защищаться посредством API защиты данных с использованием ключа на уровне учетной записи пользователя, применяемой для пула приложений.
-* Измените код приложения так, чтобы [в качестве хранилища набора ключей использовалась файловая система](https://docs.microsoft.com/aspnet/core/security/data-protection/configuration/overview). Используйте сертификат X509 для защиты набора ключей, причем это должен быть доверенный сертификат. Например, если сертификат является самозаверяющим, его необходимо поместить в доверенное корневое хранилище.
+* Измените код приложения так, чтобы [в качестве хранилища набора ключей использовалась файловая система](xref:security/data-protection/configuration/overview). Используйте сертификат X509 для защиты набора ключей, причем это должен быть доверенный сертификат. Например, если сертификат является самозаверяющим, его необходимо поместить в доверенное корневое хранилище.
 
 При использовании служб IIS в веб-ферме:
 
 * используйте общую папку, которая доступна всем компьютерам;
-* разверните сертификат X509 на каждом компьютере;  настройте [защиту данных в коде](https://docs.asp.net/en/latest/security/data-protection/configuration/overview.html).
+* разверните сертификат X509 на каждом компьютере;  настройте [защиту данных в коде](https://docs.microsoft.com/aspnet/core/security/data-protection/configuration/overview).
 
 ### <a name="1-create-a-data-protection-registry-hive"></a>1. Создание куста реестра для защиты данных
 
@@ -244,7 +260,7 @@ services.Configure<IISOptions>(options => {
 
 ## <a name="configuration-of-iis-with-webconfig"></a>Настройка служб IIS с помощью файла web.config
 
-Раздел `<system.webServer>` файла *web.config* по-прежнему действует для тех компонентов IIS, которые относятся к конфигурации прокси-сервера. Например, на уровне системы в службах IIS может быть настроено динамическое сжатие, однако для приложения этот параметр можно отключить с помощью элемента `<urlCompression>` в файле *web.config* приложения. Дополнительные сведения см. в [справочнике по настройке `<system.webServer>`](https://www.iis.net/configreference/system.webserver), [справочнике по настройке модуля ASP.NET Core](xref:hosting/aspnet-core-module) и статье [Использование модулей IIS с ASP.NET Core](xref:hosting/iis-modules). Если нужно задать переменные среды для отдельных приложений, выполняющихся в изолированных пулах приложений (такая возможность поддерживается в службах IIS 10.0 и более поздних версий), см. подраздел, посвященный *команде AppCmd.exe*, в разделе [Переменные среды \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) справочной документации по службам IIS.
+Раздел `<system.webServer>` файла *web.config* по-прежнему действует для тех компонентов IIS, которые относятся к конфигурации прокси-сервера. Например, на уровне системы в службах IIS может быть настроено динамическое сжатие, однако для приложения этот параметр можно отключить с помощью элемента `<urlCompression>` в файле *web.config* приложения. Дополнительные сведения см. в [справочнике по настройке `<system.webServer>`](https://docs.microsoft.com/iis/configuration/system.webServer/), [справочнике по настройке модуля ASP.NET Core](xref:hosting/aspnet-core-module) и статье [Использование модулей IIS с ASP.NET Core](xref:hosting/iis-modules). Если нужно задать переменные среды для отдельных приложений, выполняющихся в изолированных пулах приложений (такая возможность поддерживается в службах IIS 10.0 и более поздних версий), см. подраздел, посвященный *команде AppCmd.exe*, в разделе [Переменные среды \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) справочной документации по службам IIS.
 
 ## <a name="configuration-sections-of-webconfig"></a>Разделы конфигурации файла web.config
 
@@ -509,6 +525,6 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 * [Введение в ASP.NET Core](../index.md)
 
-* [Официальный веб-сайт Microsoft IIS](http://www.iis.net/)
+* [Официальный веб-сайт Microsoft IIS](https://www.iis.net/)
 
-* [Библиотека Microsoft TechNet: Windows Server](https://technet.microsoft.com/library/bb625087.aspx)
+* [Библиотека Microsoft TechNet: Windows Server](https://docs.microsoft.com/windows-server/windows-server-versions)

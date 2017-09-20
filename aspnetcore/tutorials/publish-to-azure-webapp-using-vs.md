@@ -11,11 +11,11 @@ ms.assetid: 78571e4a-a143-452d-9cf2-0860f85972e6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 14ce45f0cd15b2de39f722767df076d2c0313787
-ms.sourcegitcommit: 6ece943781d8a56784bb6160f14da85210d3fcea
+ms.openlocfilehash: 0c0ec1c7c1408b0460c594a47a3e5738cd170d5f
+ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/11/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>Публикация веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/11/2017
 
 ## <a name="set-up-the-development-environment"></a>Настройка среды разработки
 
-* Установите [.NET Core и инструменты Visual Studio](http://go.microsoft.com/fwlink/?LinkID=798306).
+* Установите последнюю версию [пакета Azure SDK для Visual Studio](https://www.visualstudio.com/vs/azure-tools/). При установке пакета SDK будет установлена Visual Studio, если это еще не сделано.
 
 * Проверьте свою [учетную запись Azure](https://portal.azure.com/). Вы можете [открыть бесплатную учетную запись Azure](https://azure.microsoft.com/pricing/free-trial/) или [активировать преимущества для подписчиков Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
@@ -95,7 +95,7 @@ Visual Studio создает решение.
 
 * Присвойте приложению уникальное имя. 
 
-* Выберите подписку MSDN.
+* Выберите подписку.
 
 * Щелкните **Создать…** рядом с группой ресурсов и введите имя для новой группы ресурсов.
 
@@ -160,7 +160,7 @@ Visual Studio вернет диалоговое окно **Создание сл
 
 * Измените страницу Razor *Pages/About.cshtml* и ее содержимое. Например, вы можете изменить абзац на "Hello ASP.NET Core!":
 
-    [!code-html[Сведения](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
+    [!code-html[About](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
 
 * Щелкните правой кнопкой мыши проект и снова выберите пункт **Опубликовать...**.
 
