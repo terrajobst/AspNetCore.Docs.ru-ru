@@ -11,11 +11,11 @@ ms.assetid: a4449ad3-5bad-410c-afa7-dc32d832b552
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/iis
-ms.openlocfilehash: 48e67add785fc1d7e79c659565afb1ec68c1defb
-ms.sourcegitcommit: f531d90646b9d261c5fbbffcecd6ded9185ae292
+ms.openlocfilehash: 8ffadc1dede4053faa129a3b224aace901e70e14
+ms.sourcegitcommit: ad01283f299d346cf757c4f4744c48634dc27e73
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="set-up-a-hosting-environment-for-aspnet-core-on-windows-with-iis-and-deploy-to-it"></a>Настройка среды размещения для ASP.NET Core в операционной системе Windows со службами IIS и развертывание в этой среде
 
@@ -99,21 +99,22 @@ var host = new WebHostBuilder()
 
 Дополнительные сведения о размещении см. в разделе [Размещение в ASP.NET Core](xref:fundamentals/hosting).
 
-### <a name="setting-iisoptions-for-the-iisintegration-service"></a>Задание IISOptions для службы IISIntegration
+### <a name="iis-options"></a>Параметры служб IIS
 
-Чтобы настроить параметры службы *IISIntegration*, включите конфигурацию службы для *IISOptions* в *ConfigureServices*.
+Чтобы настроить параметры службы *IISIntegration*, включите конфигурацию службы для *IISOptions* в *ConfigureServices*:
 
 ```csharp
-services.Configure<IISOptions>(options => {
-  ...
+services.Configure<IISOptions>(options => 
+{
+    ...
 });
 ```
 
-| Параметр | Параметр|
-| --- | --- | 
-| AutomaticAuthentication | Если задано значение true, ПО промежуточного слоя для проверки подлинности будет изменять поступающие запросы пользователей и отвечать на общие запросы. Если задано значение false, ПО промежуточного слоя для проверки подлинности будет предоставлять удостоверение и отвечать на запросы, только если это явно указано в AuthenticationScheme. |
-| ForwardClientCertificate | Если задано значение true и имеется заголовок запроса `MS-ASPNETCORE-CLIENTCERT`, будет заполняться `ITLSConnectionFeature`. |
-| ForwardWindowsAuthentication | Если задано значение true, ПО промежуточного слоя для проверки подлинности будет пытаться выполнить проверку подлинности с помощью проверки подлинности Windows на основе обработчика платформы. Если задано значение false, ПО промежуточного слоя для проверки подлинности не добавляется. |
+| Параметр                         | По умолчанию | Параметр |
+| ------------------------------ | ------- | ------- |
+| `AutomaticAuthentication`      | `true`  | Если значение — `true`, ПО промежуточного слоя для проверки подлинности задаст значение `HttpContext.User` и будет отвечать на общие запросы. Если значение — `false`, ПО промежуточного слоя для проверки подлинности только предоставит идентификатор (`HttpContext.User`) и будет отвечать только на явные запросы от `AuthenticationScheme`. Для работы `AutomaticAuthentication` необходимо включить в службах IIS проверку подлинности Windows. |
+| `AuthenticationDisplayName`    | `null`  | Задает отображаемое имя для пользователей на страницах входа. |
+| `ForwardClientCertificate`     | `true`  | Если значение — `true` и если присутствует заголовок запроса `MS-ASPNETCORE-CLIENTCERT`, происходит заполнение `HttpContext.Connection.ClientCertificate`. |
 
 ### <a name="webconfig"></a>web.config.
 
@@ -449,7 +450,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 * Убедитесь в том, что приложение выполняется локально в Kestrel. Сбой процесса может быть результатом проблемы в приложении. Дополнительные сведения см. в разделе [Советы по устранению неполадок](#troubleshooting-tips).
 
-* Изучите атрибут *arguments* элемента `<aspNetCore>` в файле *web.config* и убедитесь в том, что он имеет одно из следующих значений: а) *.\мое_приложение.dll* для зависимого от платформы развертывания; б) отсутствует, содержит пустую строку (*arguments=""*) или список аргументов приложения (*arguments="arg1, arg2, ..."*) для автономного развертывания.
+* Проверьте атрибут *arguments* элемента `<aspNetCore>` в файле *web.config* и удостоверьтесь, что его значение: а) имеет вид *.\<мое_приложение>.dll* для развертывания, зависящего от платформы; б) отсутствует, содержит пустую строку (*arguments=""*) или список аргументов вашего приложения (*arguments="arg1, arg2, ..."*) для автономного развертывания.
 
 ### <a name="missing-net-framework-version"></a>Отсутствует версия платформы .NET Framework
 
