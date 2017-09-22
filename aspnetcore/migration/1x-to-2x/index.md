@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 7a845cec23f662dd6fe48044b819099f2c20ecb3
-ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
+ms.openlocfilehash: 541774d46bbf570ee860c72fdff5cece364935df
+ms.sourcegitcommit: 55759ae80e7039036a7c6da8e3806f7c88ade325
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="migrating-from-aspnet-core-1x-to-aspnet-core-20"></a>Миграция с ASP.NET Core 1.x на ASP.NET Core 2.0
 
@@ -152,7 +152,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 3. Удалите вызов API на стороне клиента Application Insights из файла *_Layout.cshtml*. Этот вызов включает две строки кода:
 
-    [!code-cshtml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Shared/_Layout.cshtml?range=1,19)]
+    [!code-cshtml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Shared/_Layout.cshtml?range=1,19&dedent=4)]
 
 Если вы используете пакет SDK для Application Insights напрямую, продолжайте делать это. [Метапакет](xref:fundamentals/metapackage) версии 2.0 включает в себя последнюю версию Application Insights, поэтому при попытке сослаться на более старую версию возникает ошибка понижения уровня пакета.
 

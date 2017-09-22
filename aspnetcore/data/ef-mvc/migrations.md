@@ -2,7 +2,7 @@
 title: "Основные ASP.NET MVC с основными EF - Migrations - 4 из 10"
 author: tdykstra
 description: "В этом учебнике сначала с помощью EF Core миграции для управления изменений модели данных в приложении ASP.NET Core MVC."
-keywords: "ASP.NET Core, Entity Framework Core, миграция"
+keywords: "ASP.NET Core,Entity Framework Core,миграция"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -11,11 +11,11 @@ ms.assetid: 81f6c9c2-a819-4f3a-97a4-4b0503b56c26
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 4d81099d1ab97a8a49d96657153a54aa96dd6bf8
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 638bef0cda14f53a326c66c6a5da3f3c1bb762c6
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="migrations---ef-core-with-aspnet-core-mvc-tutorial-4-of-10"></a>Миграция - Core EF учебнику ASP.NET Core MVC (4 из 10)
 
@@ -31,11 +31,11 @@ Contoso университета примера веб-приложения по
 
 Синхронизация базы данных с моделью данных, этот метод работает хорошо, пока развертывание приложения в рабочей среде. Когда приложение выполняется в производственной среде, он обычно хранит данные, которые вы хотите сохранить, и вы не хотите потерять все, что каждый раз вносятся изменения, такие как добавление нового столбца. Средство миграции Core EF решает эту проблему, позволяя EF обновить схему базы данных вместо создания новой базы данных.
 
-## <a name="entity-framework-core-nuget-packages-for-migrations"></a>Entity Framework Core NuGet пакетов для миграции
+## <a name="entity-framework-core-nuget-packages-for-migrations"></a>Пакеты Entity Framework Core NuGet для миграций
 
 Для работы с миграции, можно использовать **консоль диспетчера пакетов** (PMC) или интерфейса командной строки (CLI).  Эти учебники демонстрируют использование команды CLI. Сведения о PMC находится в [конце этого учебника](#pmc).
 
-Средства EF для интерфейса командной строки (CLI) доступны на ресурсе [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet). Чтобы установить этот пакет, добавьте его в `DotNetCliToolReference` коллекции в *.csproj* файла, как показано. **Примечание:** необходимо установить этот пакет путем редактирования *.csproj* файла; нельзя использовать `install-package` команды или графического пользовательского интерфейса диспетчера пакетов. Можно изменить *.csproj* файла, щелкнув правой кнопкой мыши имя проекта в **обозревателе решений** и выбрав **изменить ContosoUniversity.csproj**.
+Средства EF для интерфейса командной строки (CLI) доступны в [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet). Чтобы установить этот пакет, добавьте его в `DotNetCliToolReference` коллекции в *.csproj* файла, как показано. **Примечание**. Необходимо установить этот пакет, отредактировав файл *.csproj*; использовать команду `install-package` или графический пользовательский интерфейс диспетчера пакетов нельзя. Можно изменить *.csproj* файла, щелкнув правой кнопкой мыши имя проекта в **обозревателе решений** и выбрав **изменить ContosoUniversity.csproj**.
 
 [!code-xml[](intro/samples/cu/ContosoUniversity.csproj?range=12-15&highlight=2)]
   
@@ -68,7 +68,7 @@ Contoso университета примера веб-приложения по
 
   ![Откройте командное окно](migrations/_static/open-command-window.png)
 
-В командной строке введите следующую команду:
+Введите в командном окне следующую команду:
 
 ```console
 dotnet ef migrations add InitialCreate
@@ -87,11 +87,11 @@ Done. To undo this action, use 'ef migrations remove'
 > [!NOTE]
 > Если вы видите сообщение об ошибке *не исполняемый объект найден соответствующий команда «dotnet-ef»*, в разделе [этой записи блога](http://thedatafarm.com/data-access/no-executable-found-matching-command-dotnet-ef/) справку по устранению неполадок.
 
-Если вы видите сообщение об ошибке «*не может получить доступ к файла... ContosoUniversity.dll, так как он используется другим процессом.* » значок IIS Express поиска на панели задач Windows, щелкните его правой кнопкой мыши, затем щелкните **ContosoUniversity > остановка узла**.
+Если вы видите сообщение об ошибке «*не может получить доступ к файла... ContosoUniversity.dll, так как он используется другим процессом. *» значок IIS Express поиска на панели задач Windows, щелкните его правой кнопкой мыши, затем щелкните **ContosoUniversity > остановка узла**.
 
 ## <a name="examine-the-up-and-down-methods"></a>Изучите вверх и вниз методы
 
-При выполнении `migrations add` команды EF созданный код, который создаст базу данных с нуля. Этот код находится в *миграций* папки в файл с именем  *\<timestamp > _InitialCreate.cs*. `Up` Метод `InitialCreate` класс создает таблицы базы данных, которые соответствуют наборов сущностей модели данных, и `Down` метод удаляет их, как показано в следующем примере.
+При выполнении `migrations add` команды EF созданный код, который создаст базу данных с нуля. Этот код находится в *миграций* папки в файл с именем * \<timestamp > _InitialCreate.cs*. `Up` Метод `InitialCreate` класс создает таблицы базы данных, которые соответствуют наборов сущностей модели данных, и `Down` метод удаляет их, как показано в следующем примере.
 
 [!code-csharp[Main](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
 
@@ -109,7 +109,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 Поскольку текущей схемы базы данных представлен в коде, EF Core не должен взаимодействовать с базой данных для создания миграции. При добавлении миграции EF определяет, что изменилось, сравнивая модели данных в файле моментального снимка. EF взаимодействует с базой данных, только когда требуется обновить базу данных. 
 
-Должен обеспечивать синхронизацию с миграций, которые ее создать, поэтому невозможно удалить миграции, просто удалив файл с именем файла моментального снимка  *\<timestamp > _\<migrationname > .cs*. Если вы удалите этот файл, оставшиеся операции миграции будут синхронизированы с файлом моментального снимка базы данных. Чтобы удалить добавленный последней миграции, используйте [dotnet ef миграции удалить](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) команды.
+Должен обеспечивать синхронизацию с миграций, которые ее создать, поэтому невозможно удалить миграции, просто удалив файл с именем файла моментального снимка * \<timestamp > _\<migrationname > .cs*. Если вы удалите этот файл, оставшиеся операции миграции будут синхронизированы с файлом моментального снимка базы данных. Чтобы удалить добавленный последней миграции, используйте [dotnet ef миграции удалить](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) команды.
 
 ## <a name="apply-the-migration-to-the-database"></a>Применить к базе данных миграции
 

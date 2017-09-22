@@ -11,11 +11,11 @@ ms.assetid: d9a65066-d7cb-47df-b046-64629c4d2c6f
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/windows-service
-ms.openlocfilehash: 33a4eca48a04f9b29c60a446f4191d39d21e7e7d
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 5b54c77ff9e019b1d550aa687923077a3e9ba5c2
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="host-an-aspnet-core-app-in-a-windows-service"></a>Узел приложения ASP.NET Core в службе Windows
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 09/12/2017
 
   При создании проекта в Visual Studio, используйте **основное приложение ASP.NET (.NET Framework)** шаблона.
 
-* Если приложение будет получать запросы из Интернета (не только из внутренней сети), он должен использовать [WebListener](xref:fundamentals/servers/weblistener) веб-сервер вместо [Kestrel](xref:fundamentals/servers/kestrel).  Для развертываний edge kestrel необходимо использовать со службами IIS.  Дополнительные сведения см. в разделе [использование Kestrel с обратного прокси-сервера](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
+* Если приложение будет получать запросы из Интернета (не только из внутренней сети), он должен использовать [WebListener](xref:fundamentals/servers/weblistener) веб-сервер вместо [Kestrel](xref:fundamentals/servers/kestrel).  Для развертываний edge kestrel необходимо использовать со службами IIS.  Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
 
 ## <a name="getting-started"></a>Начало работы
 

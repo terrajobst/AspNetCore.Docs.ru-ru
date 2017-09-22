@@ -2,7 +2,7 @@
 title: "Ведение журнала в ASP.NET Core"
 author: ardalis
 description: "Представляет платформу ведения журналов в ASP.NET Core. Содержит раздел для каждого поставщика встроенного ведения журнала, а также ссылки на некоторые популярные сторонних поставщиков."
-keywords: "ASP.NET Core, ведение журнала, регистраторов, Microsoft.Extensions.Logging, ILogger, ILoggerFactory, уровень журнала, WithFilter, TraceSource, журнал событий, EventSource, область действия"
+keywords: "ASP.NET Core, ведение журнала, ведение журнала providers,Microsoft.Extensions.Logging,ILogger,ILoggerFactory,LogLevel,WithFilter,TraceSource,EventLog,EventSource,scopes"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 10/14/2016
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b9a4ae6e7d9b2fa998b91e643e63657239d4866b
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: ca81f01fe1c5026514eafedf852b4bc8f3b6fd21
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>Общие сведения о входе ASP.NET Core
 
@@ -24,11 +24,11 @@ ms.lasthandoff: 09/12/2017
 
 ASP.NET Core поддерживает API ведения журнала, который работает с множеством регистраторов. Встроенные поставщики позволяют отправлять журналы одному или нескольким назначениям, а можно подключить платформа ведения журналов сторонних разработчиков. В этой статье показано, как использовать API встроенного ведения журнала и поставщики в коде.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample2)
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample)
 
@@ -50,7 +50,7 @@ ASP.NET Core не поддерживает асинхронные методы �
 
 ## <a name="how-to-add-providers"></a>Добавление поставщиков
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Регистратор принимает сообщения, созданные с помощью `ILogger` и отображает или сохраняет их. Например поставщик консоли отображает сообщения на консоль и поставщика службы приложений Azure можно хранить их в хранилище больших двоичных объектов.
 
@@ -62,7 +62,7 @@ ASP.NET Core не поддерживает асинхронные методы �
 
 [!code-csharp[](logging/sample2/Program.cs?name=snippet_TemplateCode&highlight=7)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Регистратор принимает сообщения, созданные с помощью `ILogger` и отображает или сохраняет их. Например поставщик консоли отображает сообщения на консоль и поставщика службы приложений Azure можно хранить их в хранилище больших двоичных объектов.
 
@@ -269,7 +269,7 @@ System.Exception: Item not found exception.
 
 ## <a name="log-filtering"></a>Фильтрацию журнала
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Можно указать минимальный уровень для определенного поставщика и категории, или для всех поставщиков или всех категориях.  Все журналы с минимальным размером не передачей с этим поставщиком, поэтому они не получить отображаются или записываются. 
 
@@ -351,7 +351,7 @@ System.Exception: Item not found exception.
 
 [!code-csharp[](logging/sample2/Program.cs?name=snippet_FilterFunction&highlight=5-13)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Некоторые поставщики ведения журнала позволяют указать при журналы должны записываются на носителе или обрабатывается на основе уровень ведения журнала и категории.
 
@@ -381,13 +381,13 @@ System.Exception: Item not found exception.
 
 Следующий пример кода позволяет областей для поставщика консоли:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 В *Program.cs*:
 
 [!code-csharp[](logging/sample2/Program.cs?name=snippet_Scopes&highlight=4)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 В *файла Startup.cs*:
 
@@ -422,13 +422,13 @@ ASP.NET Core поставляется следующих поставщиков:
 
 [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console) пакета поставщик отправляет выходные данные журнала на консоль. 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 logging.AddConsole()
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 loggerFactory.AddConsole()
@@ -448,7 +448,7 @@ loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
 [!code-json[](logging/sample//appsettings.json)]
 
-Параметры, отображаемые предел framework журналы для предупреждений, позволяет приложению для входа на уровне отладки, как описано в статье [фильтрации журнала](#log-filtering) раздела. Дополнительные сведения см. в разделе [конфигурации](configuration.md).
+Параметры, отображаемые предел framework журналы для предупреждений, позволяет приложению для входа на уровне отладки, как описано в статье [фильтрации журнала](#log-filtering) раздела. Дополнительные сведения см. в разделе [Конфигурация](configuration.md).
 
 ---
 
@@ -459,13 +459,13 @@ loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
 В Linux, этот поставщик записывает журналы на */var/log/message*.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 logging.AddDebug()
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 loggerFactory.AddDebug()
@@ -480,13 +480,13 @@ loggerFactory.AddDebug()
 
 Для приложений, предназначенных для ASP.NET Core 1.1.0 или более поздней версии, [Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource) пакет поставщика могут реализовывать события трассировки. В Windows, он использует [ETW](https://msdn.microsoft.com/library/windows/desktop/bb968803). Поставщик является кросс платформенных, но есть событие не сбора и отображения программ еще для Linux и macOS. 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 logging.AddEventSourceLogger()
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 loggerFactory.AddEventSourceLogger()
@@ -536,13 +536,13 @@ loggerFactory.AddEventSourceLogger()
 
 [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog) пакета поставщик отправляет выходные данные журнала в журнал событий Windows.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 logging.AddEventLog()
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 loggerFactory.AddEventLog()
@@ -557,13 +557,13 @@ loggerFactory.AddEventLog()
 
 [Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource) пакет поставщик использует [System.Diagnostics.TraceSource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracesource) библиотеки и поставщики.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 logging.AddTraceSource(sourceSwitchName);
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 loggerFactory.AddTraceSource(sourceSwitchName);
@@ -584,14 +584,14 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) пакет поставщика записи журналов в текстовые файлы в файловой системе приложения службы приложений Azure и [хранилище больших двоичных объектов](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage) в учетной записи хранилища Azure. Поставщик является доступной только для приложений, предназначенных для ASP.NET Core 1.1.0 или более поздней версии. 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 > [!NOTE]
 > ASP.NET 2.0 лежит в режиме предварительного просмотра.  Приложениям, созданным с помощью последнего предварительного выпуска может не работать при развертывании в службе приложений Azure. При выпуске ASP.NET 2.0 основной службе приложений Azure будет выполняться 2.0 приложения и службы приложений Azure, поставщик будет работать, как указано ниже.
 
 Не нужно устанавливать пакет поставщика или вызов `AddAzureWebAppDiagnostics` метода расширения.  Поставщик является автоматически доступны для приложения при развертывании приложения в службе приложений Azure.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 loggerFactory.AddAzureWebAppDiagnostics();

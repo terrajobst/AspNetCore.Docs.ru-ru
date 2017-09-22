@@ -11,11 +11,11 @@ ms.assetid: 0e0fedcd-a7b4-4479-8ae0-36eab0229d7e
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: fundamentals/websockets
-ms.openlocfilehash: a5914ad0d1056db993fcbfa1f00dd3422fcc4b6e
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 8a6b5cc8ca8ac17f0e4c5b23f20013130cd472c8
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-websockets-in-aspnet-core"></a>Общие сведения о WebSockets в ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/12/2017
 
 В этой статье объясняется, как начало работы с WebSockets в ASP.NET Core. [WebSocket](https://wikipedia.org/wiki/WebSocket) — это протокол, позволяющий двусторонний обмен данными постоянно каналы через TCP-подключений. Он используется для приложений, например чат, каналам биржевых котировок, игры, в любое место в режиме реального времени функциональные возможности веб-приложения.
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/websockets/sample). В разделе [дальнейшие действия](#next-steps) Дополнительные сведения.
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/websockets/sample). В разделе [дальнейшие действия](#next-steps) Дополнительные сведения.
 
 
 ## <a name="prerequisites"></a>Предварительные требования

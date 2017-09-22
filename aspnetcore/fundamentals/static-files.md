@@ -12,17 +12,17 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/static-files
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea6c180332dd5ab3a7238dcd73a4a1c8534c6243
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 11457cb8684e98147447303ae4653b74414a11fb
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-working-with-static-files-in-aspnet-core"></a>Введение в работу с статических файлов в ASP.NET Core
 
 <a name=fundamentals-static-files></a>
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 Статические файлы, такие как HTML, CSS, JavaScript и изображение, активы, которые может обслуживать приложения ASP.NET Core непосредственно на клиентах.
 
@@ -199,7 +199,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 ### <a name="considerations"></a>Особенности
 
 >[!WARNING]
-> `UseDirectoryBrowser`и `UseStaticFiles` может вызвать утечку секретные данные. Рекомендуется, чтобы вы **не** directory Включение просмотра в рабочей среде. Будьте внимательны о какие каталоги включения с `UseStaticFiles` или `UseDirectoryBrowser` как весь каталог и все вложенные каталоги будут доступны. Рекомендуется оставлять открытый содержимое в своем собственном каталоге например  *\<содержимое корневого > / wwwroot*, от представления приложений, файлы конфигурации и т. д.
+> `UseDirectoryBrowser`и `UseStaticFiles` может вызвать утечку секретные данные. Рекомендуется, чтобы вы **не** directory Включение просмотра в рабочей среде. Будьте внимательны о какие каталоги включения с `UseStaticFiles` или `UseDirectoryBrowser` как весь каталог и все вложенные каталоги будут доступны. Рекомендуется оставлять открытый содержимое в своем собственном каталоге например * \<содержимое корневого > / wwwroot*, от представления приложений, файлы конфигурации и т. д.
 
 * URL-адреса для содержимого, представлены `UseDirectoryBrowser` и `UseStaticFiles` чувствительность к регистру и ограничения на символы их базовой файловой системы. Например Windows не учитывает регистр, но Mac и Linux не.
 
@@ -220,6 +220,6 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [По промежуточного слоя](middleware.md)
+* [ПО промежуточного слоя](middleware.md)
 
 * [Введение в ASP.NET Core](../index.md)

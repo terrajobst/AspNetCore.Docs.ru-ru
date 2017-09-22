@@ -10,24 +10,24 @@ ms.topic: article
 ms.assetid: 0292bdae-b3ed-4637-bd67-19b9bb8b65cb
 ms.prod: asp.net-core
 uid: security/key-vault-configuration
-ms.openlocfilehash: 72b6098b2a71957da338ef36beff4808201773f4
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 2c94daafec8d3b4051bd3091478521ab12a434bd
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="azure-key-vault-configuration-provider"></a>Поставщик конфигурации Azure хранилища ключей
 
 По [Latham Люк](https://github.com/GuardRex) и [Эндрю Stanton сиделка](https://github.com/anurse)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Просмотреть или загрузить образец кода для 2.x:
 
 * [Пример базового](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/2.x) -считывает значения секрета в приложение.
 * [Образец префикс имени ключа](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/2.x) — значения секрета операций чтения с помощью префикса имя ключа, представляющую версию приложения, который позволяет загрузить другой набор секретного значения для каждой версии приложения.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Просмотреть или загрузить образец кода для 1.x:
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 09/12/2017
 | `ClientId`     | Идентификатор приложения Azure Active Directory  | 627e911e-43CC-61d4-992e-12db9c81b413         |
 | `ClientSecret` | Ключ приложения Azure Active Directory | g58K3dtg59o1Pa + e59v2Tx829w6VxTB2yv9sv/101di = |
 
-[!code-csharp[Программа](key-vault-configuration/samples/basic-sample/2.x/Program.cs?name=snippet1&highlight=2,7-10)]
+[!code-csharp[Program](key-vault-configuration/samples/basic-sample/2.x/Program.cs?name=snippet1&highlight=2,7-10)]
 
 ## <a name="creating-key-vault-secrets-and-loading-configuration-values-basic-sample"></a>Создание хранилища ключей секреты и загрузки значений конфигурации (basic образец)
 1. Создание хранилища ключей и настроить Azure Active Directory (Azure AD) для приложения согласно инструкциям в [приступить к работе с хранилищем ключей Azure](https://azure.microsoft.com/documentation/articles/key-vault-get-started/).
@@ -83,7 +83,7 @@ ms.lasthandoff: 09/12/2017
 
 С помощью второй пример приложения создайте секрета в хранилище ключей для `5000-AppSecret` (периоды не разрешены в именах секрета хранилища ключей) представляющий секрет приложения для версии 5.0.0.0 приложения. Для другой версии, 5.1.0.0, создать секрет для `5100-AppSecret`. Каждая версия приложения загружает собственные секретное значение в его конфигурации как `AppSecret`, чередует off версии при загрузке секрета. Ниже приводится пример реализации.
 
-[!code-csharp[Построитель конфигурации](key-vault-configuration/samples/key-name-prefix-sample/2.x/Program.cs?name=snippet1&highlight=12)]
+[!code-csharp[Configuration builder](key-vault-configuration/samples/key-name-prefix-sample/2.x/Program.cs?name=snippet1&highlight=12)]
 
 [!code-csharp[PrefixKeyVaultSecretManager](key-vault-configuration/samples/key-name-prefix-sample/2.x/Startup.cs?name=snippet1)]
 

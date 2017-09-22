@@ -2,7 +2,7 @@
 title: "Модуль ASP.NET Core"
 author: tdykstra
 description: "Вводит ASP.NET Core модуля (ANCM), модуль, позволяющий использовать в качестве обратного прокси-сервера IIS или IIS Express Kestrel веб-сервере IIS."
-keywords: "ASP.NET Core, IIS, IIS Express, модуль ASP.NET Core UseIISIntegration"
+keywords: "Модуль Core Express,ASP.NET IIS ASP.NET Core, IIS, UseIISIntegration"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 08/03/2017
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/aspnet-core-module
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50c3085c28be4e6ddc4a732aba489ce871ab9ab1
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 479fc3a389168bb08e278aa3d9da3bf7df1b49f4
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-aspnet-core-module"></a>Введение в ASP.NET Core модуля
 
@@ -62,11 +62,11 @@ ANCM имеет несколько других функций.
 
 ### <a name="install-the-iisintegration-nuget-package"></a>Установка пакета IISIntegration NuGet
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/) пакет включен в ASP.NET Core metapackages ([Microsoft.AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore/) и [Microsoft.AspNetCore.All](xref:fundamentals/metapackage) ). Если вы не используете один из metapackages, установите `Microsoft.AspNetCore.Server.IISIntegration` отдельно. `IISIntegration` Пакета — пакет взаимодействие, который считывает переменные среды вещания по ANCM для настройки приложения. Переменные среды предоставляют сведения о конфигурации, такие как порт для прослушивания. 
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 В приложении, установите [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/). `IISIntegration` Пакета — пакет взаимодействие, который считывает переменные среды вещания по ANCM для настройки приложения. Переменные среды предоставляют сведения о конфигурации, такие как порт для прослушивания. 
 
@@ -74,13 +74,13 @@ ANCM имеет несколько других функций.
 
 ### <a name="call-useiisintegration"></a>Вызов UseIISIntegration
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 `UseIISIntegration` Метод расширения в [ `WebHostBuilder` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilder) вызывается автоматически при выполнении с IIS.
 
 Если не используется один из metapackages ASP.NET Core и еще не установили `Microsoft.AspNetCore.Server.IISIntegration` пакета, возникнет ошибка времени выполнения. При вызове метода `UseIISIntegration` явным образом, если пакет не установлен получить ошибку времени компиляции.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 В вашем приложении `Main` метод, вызовите `UseIISIntegration` метод расширения в [ `WebHostBuilder` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilder). 
 
@@ -92,11 +92,11 @@ ANCM имеет несколько других функций.
 
 ### <a name="ancm-port-binding-overrides-other-port-bindings"></a>Привязка порта ANCM переопределяет другие привязки портов
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ANCM создает динамический порт для назначения для внутренней обработки. `UseIISIntegration` Метод принимает этот динамический порт и настраивает Kestrel для прослушивания `http://locahost:{dynamicPort}/`. Это значение переопределяет другие конфигурации URL-адрес, например вызовы `UseUrls` или [API прослушивания по Kestrel](xref:fundamentals/servers/kestrel?tabs=aspnetcore2x#endpoint-configuration). Таким образом, не нужно вызывать `UseUrls` или Kestrel в `Listen` API при использовании ANCM. Если вы вызываете `UseUrls` или `Listen`, Kestrel прослушивает порт, укажите при запуске приложения без IIS.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ANCM создает динамический порт для назначения для внутренней обработки. `UseIISIntegration` Метод принимает этот динамический порт и настраивает Kestrel для прослушивания `http://locahost:{dynamicPort}/`. Это значение переопределяет другие конфигурации URL-адрес, например вызовы `UseUrls`. Таким образом, не нужно вызывать `UseUrls` при использовании ANCM. Если вы вызываете `UseUrls`, Kestrel прослушивает порт, укажите при запуске приложения без IIS.
 

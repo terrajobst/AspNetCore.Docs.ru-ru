@@ -11,15 +11,15 @@ ms.assetid: ab4705b7-59d7-4f31-bc97-ea7f292fe926
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/view-components
-ms.openlocfilehash: 07a2aca731b8017450a1b0da00ddef25306c122e
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: bb8a889c66ec9ca0c0aec7b4a4184d7c19858d78
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="view-components"></a>Просмотр компонентов
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/view-components/sample)
 
@@ -172,7 +172,7 @@ ms.lasthandoff: 09/12/2017
 
 * Создание *представления/общие/компоненты или PriorityList* папки. Этот имя папки должно соответствовать имени класса представления компонента или имя класса, за вычетом суффикс (если мы следовали правилам и использовать *ViewComponent* суффикса в имени класса). Если вы использовали `ViewComponent` атрибут, имя класса пришлось бы соответствует обозначение атрибута.
 
-* Создание *Views/Shared/Components/PriorityList/Default.cshtml* представления Razor: [!code-html [Main](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
+* Создание *Views/Shared/Components/PriorityList/Default.cshtml* представления Razor:[!code-html[Main](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
     
    Представления Razor принимает список `TodoItem` и отображает их. Если компонент представления `InvokeAsync` метод не передает имя представления (как в нашем примере) *по умолчанию* используется для имени представления по соглашению. Далее в этом учебнике я покажу, как передать имя представления. Чтобы переопределить стили по умолчанию для определенного контроллера, добавления представления к папке контроллера представления (например *Views/Todo/Components/PriorityList/Default.cshtml)*.
     

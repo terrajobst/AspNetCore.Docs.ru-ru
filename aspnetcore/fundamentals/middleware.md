@@ -11,11 +11,11 @@ ms.assetid: db9a86ab-46c2-40e0-baed-86e38c16af1f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: 80e27c94b3c60a181c45f8e006126a7e7dd3d425
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: cb39d74b9293b3ab341beba08d2f0af90261ca5f
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>Принципы работы по промежуточного слоя ASP.NET Core
 
@@ -164,7 +164,7 @@ app.Map("/level1/level2", HandleMultiSeg);
 
 ASP.NET Core поставляется со следующими компонентами по промежуточного слоя:
 
-| По промежуточного слоя | Описание |
+| ПО промежуточного слоя | Описание |
 | ----- | ------- |
 | [Проверка подлинности](xref:security/authentication/identity) | Обеспечивает поддержку проверки подлинности. |
 | [CORS](xref:security/cors) | Настраивает общий доступ к ресурсам независимо от источника. |
@@ -173,7 +173,7 @@ ASP.NET Core поставляется со следующими компонен
 | [Маршрутизация](xref:fundamentals/routing) | Определяет и ограничивает запрос маршрутов. |
 | [Сеанс](xref:fundamentals/app-state) | Предоставляет поддержку для управления пользовательских сеансов. |
 | [Статические файлы](xref:fundamentals/static-files) | Обеспечивает поддержку для обслуживания статических файлов и просмотр каталогов. |
-| [По промежуточного слоя перезаписи URL-адрес](xref:fundamentals/url-rewriting) | Предоставляет поддержку для перезаписи URL-адресов и перенаправления запросов. |
+| [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting) | Предоставляет поддержку для перезаписи URL-адресов и перенаправления запросов. |
 
 <a name=middleware-writing-middleware></a>
 
@@ -228,6 +228,6 @@ public class MyMiddleware
 ## <a name="resources"></a>Ресурсы
 
 * [Пример кода, используемый в этом документе](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/middleware/sample)
-* [Миграция модули HTTP с по промежуточного слоя](../migration/http-modules.md)
+* [Миграция с модулей HTTP на ПО промежуточного слоя](../migration/http-modules.md)
 * [Запуск приложения](startup.md)
 * [Параметры запроса](request-features.md)

@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/working-with-forms
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3f7792d7458013f837a48ca2caa459f35658f02
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 2fe774a1ae02ab5ea168c19045fcc8664c0273a6
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a>Общие сведения об использовании вспомогательных функций тегов в форм в ASP.NET Core
 
@@ -590,7 +590,7 @@ HTML [ \<optgroup >](https://www.w3.org/wiki/HTML/Elements/optgroup) элеме�
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Вспомогательных функций тегов](tag-helpers/intro.md)
+* [Вспомогательные функции тегов](tag-helpers/intro.md)
 
 * [Элемент HTML-формы](https://www.w3.org/TR/html401/interact/forms.html)
 

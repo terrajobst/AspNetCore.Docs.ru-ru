@@ -2,7 +2,7 @@
 title: "Реализация веб-сервера, HTTP.sys, в ASP.NET Core"
 author: rick-anderson
 description: "Вводит HTTP.sys, веб-сервер для ASP.NET Core в Windows. Основанное на драйвер режима ядра Http.Sys, HTTP.sys — это альтернатива Kestrel, который можно использовать для прямого подключения к Интернету, без IIS."
-keywords: "ASP.NET Core, HttpSys, HTTP.sys, HttpListener, префиксы URL-адрес, протокол SSL"
+keywords: "Префиксы ASP.NET Core,HttpSys,HTTP.sys,HttpListener,url, протокол SSL"
 ms.author: riande
 manager: wpickett
 ms.date: 08/07/2017
@@ -11,11 +11,11 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 5ffe6b5d55d88cbcfa62dfacf1e6e896f1304e39
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 38ceb20c8901baadc7efbacb81a3598afce3f006
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера, HTTP.sys, в ASP.NET Core
 
@@ -46,13 +46,13 @@ HTTP.sys поддерживает следующие функции:
 
 HTTP.sys полезен для развертываний, где нужно предоставить сервера к Интернету напрямую без использования служб IIS.
 
-![HTTP.sys взаимодействует непосредственно с Интернетом](httpsys/_static/httpsys-to-internet.png)
+![HTTP.sys взаимодействует с Интернетом напрямую.](httpsys/_static/httpsys-to-internet.png)
 
 Так как она была основана на Http.Sys, HTTP.sys не требует обратного прокси-сервера для защиты от атак на систему. Компонент Http.Sys — это надежная технология, которое защищает от атак многих типов, а также обеспечивает надежности, безопасности и масштабируемости полнофункциональное веб-сервера. Сами службы IIS выполняется как HTTP-прослушивателем на базе Http.Sys. 
 
 Компонент HTTP.sys — хороший выбор для внутреннего развертывания при необходимости компонент, не поддерживаемых Kestrel, такие как проверка подлинности Windows.
 
-![HTTP.sys взаимодействует непосредственно с внутренней сети](httpsys/_static/httpsys-to-internal.png)
+![HTTP.sys взаимодействует с вашей внутренней сетью напрямую.](httpsys/_static/httpsys-to-internal.png)
 
 ## <a name="how-to-use-httpsys"></a>Как использовать HTTP.sys
 

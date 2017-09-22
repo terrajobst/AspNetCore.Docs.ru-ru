@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-browserlink
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b2ff38288cee3e9ca42a07c219521bb79a00a359
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: 211dd5d03e6b8414e0b2ed3234d8970c92f72452
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-browser-link-in-aspnet-core"></a>Введение в связи с браузером в ASP.NET Core 
 
@@ -61,7 +61,7 @@ app.UseBrowserLink();
 
 [!code-csharp[Main](./using-browserlink/sample/BrowserLinkSample/src/BrowserLinkSample/Startup.cs?highlight=1,4&range=40-44)]
 
-Дополнительные сведения см. в разделе [работа с несколькими средами](../fundamentals/environments.md).
+Дополнительные сведения см. в статье [Работа с несколькими средами](../fundamentals/environments.md).
 
 ## <a name="how-to-use-browser-link"></a>Как использовать связь с браузером
 
@@ -85,7 +85,7 @@ app.UseBrowserLink();
 
 ![Раскрывающееся меню F5](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-Чтобы одновременно открыть несколько браузеров, выберите **просмотреть с помощью...**  же раскрывающемся списке.  Удерживая нажатой клавишу CTRL при выборе в браузерах, требуется и нажмите кнопку **Обзор**:
+Чтобы одновременно открыть несколько браузеров, выберите **просмотреть с помощью... ** же раскрывающемся списке.  Удерживая нажатой клавишу CTRL при выборе в браузерах, требуется и нажмите кнопку **Обзор**:
 
 ![Одновременное открытие большинство браузеров](using-browserlink/_static/open-many-browsers-at-once.png)
 

@@ -11,11 +11,11 @@ ms.assetid: 492b3a7e-04c5-461b-b96a-38ecee5c64bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/iis-modules
-ms.openlocfilehash: 353cd4c18cb2708f2dece5ba2b5271f452379d52
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 97c5fb6db6fe2a1dbae5529c11479413fd4814fb
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="using-iis-modules-with-aspnet-core"></a>Использование с ASP.NET Core модули IIS
 
@@ -36,22 +36,22 @@ ms.lasthandoff: 09/12/2017
 **Документ по умолчанию**<br>`DefaultDocumentModule` | Нет | [По умолчанию файлы по промежуточного слоя](xref:fundamentals/static-files#serving-a-default-document)
 **Дайджест-проверка подлинности**<br>`DigestAuthenticationModule` | Да | 
 **Просмотр каталогов**<br>`DirectoryListingModule` | Нет | [По промежуточного слоя просмотра каталогов](xref:fundamentals/static-files#enabling-directory-browsing)
-**Динамическое сжатие**<br>`DynamicCompressionModule` | Да | [По промежуточного слоя сжатия ответов](xref:performance/response-compression)
+**Динамическое сжатие**<br>`DynamicCompressionModule` | Да | [ПО промежуточного слоя для сжатия ответов](xref:performance/response-compression)
 **Трассировка**<br>`FailedRequestsTracingModule` | Да | [Ведение журнала ASP.NET Core](xref:fundamentals/logging#the-tracesource-provider)
-**Кэширование файлов**<br>`FileCacheModule` | Нет | [Кэширование ответов по промежуточного слоя](xref:performance/caching/middleware)
-**Кэширование HTTP**<br>`HttpCacheModule` | Нет | [Кэширование ответов по промежуточного слоя](xref:performance/caching/middleware)
+**Кэширование файлов**<br>`FileCacheModule` | Нет | [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
+**Кэширование HTTP**<br>`HttpCacheModule` | Нет | [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
 **Ведение журнала HTTP**<br>`HttpLoggingModule` | Да | [Ведение журнала ASP.NET Core](xref:fundamentals/logging)<br>Реализации: [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging), [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging), [NLog](https://github.com/NLog/NLog.Extensions.Logging), [Serilog](https://github.com/serilog/serilog-extensions-logging)
-**Перенаправление HTTP**<br>`HttpRedirectionModule` | Да | [По промежуточного слоя перезаписи URL-адрес](xref:fundamentals/url-rewriting)
+**Перенаправление HTTP**<br>`HttpRedirectionModule` | Да | [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting)
 **Проверка подлинности с сопоставлением сертификата клиента IIS**<br>`IISCertificateMappingAuthenticationModule` | Да | 
 **Ограничения IP-адресов и доменов**<br>`IpRestrictionModule` | Да | 
-**Фильтры ISAPI**<br>`IsapiFilterModule` | Да | [По промежуточного слоя](xref:fundamentals/middleware)
-**ISAPI**<br>`IsapiModule` | Да | [По промежуточного слоя](xref:fundamentals/middleware)
+**Фильтры ISAPI**<br>`IsapiFilterModule` | Да | [ПО промежуточного слоя](xref:fundamentals/middleware)
+**ISAPI**<br>`IsapiModule` | Да | [ПО промежуточного слоя](xref:fundamentals/middleware)
 **Поддержка протоколов**<br>`ProtocolSupportModule` | Да | 
 **Фильтрация запросов**<br>`RequestFilteringModule` | Да | [По промежуточного слоя перезаписи URL-адрес`IRule`](xref:fundamentals/url-rewriting#irule-based-rule)
 **Монитор запросов**<br>`RequestMonitorModule` | Да | 
-**Переписывание URL-адресов**<br>`RewriteModule` | Yes† | [По промежуточного слоя перезаписи URL-адрес](xref:fundamentals/url-rewriting)
+**Переписывание URL-адресов**<br>`RewriteModule` | Yes† | [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting)
 **Включения на стороне сервера**<br>`ServerSideIncludeModule` | Нет | 
-**Статическое сжатие**<br>`StaticCompressionModule` | Нет | [По промежуточного слоя сжатия ответов](xref:performance/response-compression)
+**Статическое сжатие**<br>`StaticCompressionModule` | Нет | [ПО промежуточного слоя для сжатия ответов](xref:performance/response-compression)
 **Статическое содержимое**<br>`StaticFileModule` | Нет | [По промежуточного слоя статических файлов](xref:fundamentals/static-files)
 **Кэширование маркеров**<br>`TokenCacheModule` | Да | 
 **Кэширование URI**<br>`UriCacheModule` | Да | 
@@ -67,13 +67,13 @@ AnonymousIdentification | Нет |
 DefaultAuthentication | Нет | 
 FileAuthorization | Нет | 
 FormsAuthentication | Нет | [Файл cookie проверки подлинности по промежуточного слоя](xref:security/authentication/cookie)
-OutputCache | Нет | [Кэширование ответов по промежуточного слоя](xref:performance/caching/middleware)
+OutputCache | Нет | [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
 Профиль | Нет | 
 RoleManager | Нет | 
 ScriptModule 4.0 | Нет | 
 Сеанс | Нет | [Сеанс по промежуточного слоя](xref:fundamentals/app-state)
 UrlAuthorization | Нет | 
-UrlMappingsModule | Нет | [По промежуточного слоя перезаписи URL-адрес](xref:fundamentals/url-rewriting)
+UrlMappingsModule | Нет | [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting)
 UrlRoutingModule 4.0 | Нет | [Удостоверение ASP.NET Core](xref:security/authentication/identity)
 WindowsAuthentication | Нет | 
 

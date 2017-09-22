@@ -2,7 +2,7 @@
 title: "Работа с моделью приложения"
 author: ardalis
 description: 
-keywords: "Модель приложения ASP.NET Core, ASP.NET Core MVC"
+keywords: "Core,ASP.NET Core ASP.NET MVC, модель приложения"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 4eb7e52f-5665-41a4-a3e3-e348d07337f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/application-model
-ms.openlocfilehash: 1a5d461809afeef0f485fd3a665250631d855b36
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 3c35184921dbe26cde100fd3d5124e38ea0d06cf
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="working-with-the-application-model"></a>Работа с моделью приложения
 
