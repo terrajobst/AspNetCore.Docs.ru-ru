@@ -11,11 +11,11 @@ ms.assetid: ab4705b7-1638-1638-bc97-ea7f292fe92a
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 0cb61315916d1b38f7cab3339e150c446fb69d98
-ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
+ms.openlocfilehash: bfee2e5e8f71c99465be79589a77f0e173097b23
+ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/24/2017
 ---
 # <a name="razor-view-compilation-and-precompilation-in-aspnet-core"></a>Компиляция представления Razor и предварительной компиляции в ASP.NET Core
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 09/20/2017
 Представлений Razor компилируются во время выполнения при вызове представления. ASP.NET Core 1.1.0 и более поздней версии можно при необходимости компиляции представлений Razor и развертываются с приложением &mdash; этот процесс называется предварительной компиляции. Предварительная компиляция включает шаблоны проектов ASP.NET Core 2.x по умолчанию.
 
 > [!NOTE]
-> Предварительная компиляция представления Razor недоступна, при выполнении [Self-Contained развертывания](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) в ASP.NET Core версии 2.0.0 и более ранних версий.
+> Предварительная компиляция представления Razor в настоящее время недоступна, при выполнении [автономное развертывание (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) в ASP.NET Core 2.0. Компонент будет доступен для SCD, когда освобождает 2.1. Дополнительные сведения см. в разделе [представление компиляция завершается с ошибкой при перекрестной компиляции для Linux в Windows](https://github.com/aspnet/MvcPrecompilation/issues/102).
 
 Замечания по предварительной компиляции.
 

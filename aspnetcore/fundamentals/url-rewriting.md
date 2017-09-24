@@ -11,15 +11,15 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 05a92c4eee6b26e49831c11e1251aedba87ed717
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 44c78a6304eacc70cdee9bb0d9407376017abcac
+ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/24/2017
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>По промежуточного слоя в ASP.NET Core видоизменения URL-адресов
 
-По [Latham Люк](https://github.com/GuardRex) и [Mengistu Микаэль](https://github.com/mikaelm12)
+По [Latham Люк](https://github.com/guardrex) и [Mengistu Микаэль](https://github.com/mikaelm12)
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)
 
@@ -62,11 +62,11 @@ ms.lasthandoff: 09/12/2017
 ## <a name="extension-and-options"></a>Расширение и параметры
 Установить на перезапись URL-адреса и перенаправить правила, создав экземпляр `RewriteOptions` класса с помощью методов расширения для каждого правила. Привязать несколько правил в порядке, что вы хотите их обработать. `RewriteOptions` Передаются в по промежуточного слоя перезаписи URL-адрес, как оно добавляется в конвейер обработки запросов с `app.UseRewriter(options);`.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet1)]
 
@@ -75,11 +75,11 @@ ms.lasthandoff: 09/12/2017
 ### <a name="url-redirect"></a>URL-адрес перенаправления
 Используйте `AddRedirect` для перенаправления запросов. Первый параметр содержит регулярное выражение для сопоставления по пути входящего URL-адреса. Второй параметр является строка замены. Третий параметр, если он присутствует, указывает код состояния. Если не указать код состояния, по умолчанию 302 (найдено), который указывает, что ресурс временно переместить или заменить.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=5)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet1&highlight=2)]
 
@@ -122,11 +122,11 @@ app.UseRewriter(options);
 ### <a name="url-rewrite"></a>Перезапись URL-адреса
 Используйте `AddRewrite` для создания правил для перезаписи URL-адреса. Первый параметр содержит регулярное выражение для сопоставления на входящий URL-адрес. Второй параметр является строка замены. Третий параметр `skipRemainingRules: {true|false}`, указывает по промежуточного слоя ли пропустить правила дополнительных подстановки, если применяется текущего правила.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=6)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet1&highlight=3)]
 
@@ -166,13 +166,13 @@ app.UseRewriter(options);
 ### <a name="apache-modrewrite"></a>Apache mod_rewrite
 Применение правил Apache mod_rewrite с `AddApacheModRewrite`. Убедитесь, что файл правил развертывается с приложением. Дополнительные сведения и примеры правил mod_rewrite см. в разделе [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/).
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Объект `StreamReader` используется для чтения правил из *ApacheModRewrite.txt* файлу правил.
 
 [!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=1,7)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Первый параметр принимает `IFileProvider`, которая обеспечивается за счет [внедрения зависимостей](dependency-injection.md). `IHostingEnvironment` Встраивается для предоставления `ContentRootFileProvider`. Второй параметр — путь к файлу правил, являющийся *ApacheModRewrite.txt* в пример приложения.
 
@@ -223,13 +223,13 @@ app.UseRewriter(options);
 ### <a name="iis-url-rewrite-module-rules"></a>Правила модуль переопределения URL-адреса IIS
 Чтобы использовать правила, применяемые к модуль переопределения URL-адреса IIS, используйте `AddIISUrlRewrite`. Убедитесь, что файл правил развертывается с приложением. Не направлять по промежуточного слоя для использования вашей *web.config* файлов при работе в Windows Server IIS. В службах IIS, эти правила должны храниться вне вашего *web.config* для предотвращения конфликтов с модуль переопределения IIS. Дополнительные сведения и примеры правил модуль переопределения URL-адрес служб IIS см. в разделе [2.0 с помощью модуля перепишите URL-адрес](https://docs.microsoft.com/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) и [URL-адрес ссылки перепишите конфигурации модуль](https://docs.microsoft.com/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference).
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Объект `StreamReader` используется для чтения правил из *IISUrlRewrite.xml* файлу правил.
 
 [!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=2,8)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Первый параметр принимает `IFileProvider`, а второй параметр — это путь к XML-файл правил, который является *IISUrlRewrite.xml* в пример приложения.
 
@@ -249,7 +249,7 @@ app.UseRewriter(options);
 
 #### <a name="unsupported-features"></a>Неподдерживаемые функции
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 По промежуточного слоя выпущен с ASP.NET Core 2.x не поддерживает следующие функции модуль переопределения URL-адреса IIS:
 * Правила для исходящих подключений
@@ -257,7 +257,7 @@ app.UseRewriter(options);
 * Знаки подстановки
 * LogRewrittenUrl
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 По промежуточного слоя выпущен с ASP.NET Core 1.x не поддерживает следующие функции модуль переопределения URL-адреса IIS:
 * Глобальные правила
@@ -305,11 +305,11 @@ app.UseRewriter(options);
 | `RuleResult.EndResponse`             | Остановить применение правил и отправки ответа                       |
 | `RuleResult.SkipRemainingRules`      | Остановить применение правил и отправить контекст следующее по промежуточного слоя |
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=9)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet1&highlight=6)]
 
@@ -317,11 +317,11 @@ app.UseRewriter(options);
 
 Пример приложения показан метод, который перенаправляет запросы для путей, заканчиваться *.xml*. Если сделать запрос `/file.xml`, оно перенаправляется в `/xmlfiles/file.xml`. Код состояния равно 301 (перемещен постоянно). Для перенаправления необходимо явно задать код состояния ответа; в противном случае возвращается код состояния 200 (ОК) и перенаправление не будет выполняться на клиенте.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/RewriteRules.cs?name=snippet1)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet2)]
 
@@ -334,11 +334,11 @@ app.UseRewriter(options);
 ### <a name="irule-based-rule"></a>Правила на основе IRule
 Используйте `Add(IRule)` реализовать собственную логику правила в класс, производный от `IRule`. С помощью `IRule` обеспечивает большую гибкость по сравнению с использованием подхода правила на основе методов. Производный класс может включать конструктор, где можно передать в параметры для `ApplyRule` метод.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=10-11)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet1&highlight=7-8)]
 
@@ -346,11 +346,11 @@ app.UseRewriter(options);
 
 Значения параметров в пример приложения для `extension` и `newPath` проверяются, чтобы удовлетворять нескольким условиям. `extension` Должен содержать значение, а значение должно быть *.png*, *.jpg*, или *.gif*. Если `newPath` является недопустимой, `ArgumentException` возникает исключение. Если сделать запрос *image.png*, оно перенаправляется в `/png-images/image.png`. Если сделать запрос *image.jpg*, оно перенаправляется в `/jpg-images/image.jpg`. Чтобы 301 (перемещен постоянно), задается код состояния и `context.Result` прекратить обработку правил и отправки ответа.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](url-rewriting/samples/2.x/RewriteRules.cs?name=snippet2)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](url-rewriting/samples/1.x/RewriteRule.cs?name=snippet1)]
 
@@ -377,7 +377,7 @@ app.UseRewriter(options);
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 * [Запуск приложения](startup.md)
-* [По промежуточного слоя](middleware.md)
+* [ПО промежуточного слоя](middleware.md)
 * [Регулярные выражения в .NET](/dotnet/articles/standard/base-types/regular-expressions)
 * [Элементы языка регулярных выражений — краткий справочник](/dotnet/articles/standard/base-types/quick-ref)
 * [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/)

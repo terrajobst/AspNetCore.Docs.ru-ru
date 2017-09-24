@@ -11,15 +11,15 @@ ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: 5705e9f879af4be3fe338716a4310bf9f0530039
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: ab004c038b82888aa57d5e25fcb69a06deec8411
+ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/24/2017
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>Ответ сжатия по промежуточного слоя ASP.NET Core
 
-По [Latham Люк](https://github.com/GuardRex)
+По [Latham Люк](https://github.com/guardrex)
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples)
 
@@ -78,11 +78,11 @@ ms.lasthandoff: 09/12/2017
 ## <a name="configuration"></a>Конфигурация
 Ниже показано включение по промежуточного слоя сжатия ответа с со сжатием gzip по умолчанию и для типов MIME по умолчанию.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](response-compression/samples/2.x/StartupBasic.cs?name=snippet1&highlight=4,8)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](response-compression/samples/1.x/StartupBasic.cs?name=snippet1&highlight=3,8)]
 
@@ -112,11 +112,11 @@ ms.lasthandoff: 09/12/2017
 | `CompressionLevel.Optimal`       | Ответы должны оптимально сжиматься, даже если сжатие занимает больше времени для завершения.                |
 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](response-compression/samples/2.x/Program.cs?name=snippet1&highlight=3,8-11)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=5,10-13)]
 
@@ -135,11 +135,11 @@ ms.lasthandoff: 09/12/2017
 
 Можно заменить или добавить типы MIME с параметрами по промежуточного слоя сжатия ответов. Обратите внимание, что подстановочные MIME типы, такие как `text/*` не поддерживаются. Пример приложения добавляет тип MIME для `image/svg+xml` и сжимает и служит ASP.NET Core изображение баннера (*banner.svg*).
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](response-compression/samples/2.x/Program.cs?name=snippet1&highlight=5)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=7)]
 
@@ -150,13 +150,13 @@ ms.lasthandoff: 09/12/2017
 
 Используя пример приложения, клиент отправляет запрос с `Accept-Encoding: mycustomcompression` заголовок. По промежуточного слоя использует реализацию пользовательского сжатия и возвращает ответ с `Content-Encoding: mycustomcompression` заголовок. Клиент должен иметь возможность распаковки пользовательских кодировок в порядке для реализации пользовательских сжатия для работы.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 [!code-csharp[Main](response-compression/samples/2.x/Program.cs?name=snippet1&highlight=4)]
 
 [!code-csharp[Main](response-compression/samples/2.x/CustomCompressionProvider.cs?name=snippet1)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 [!code-csharp[Main](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=6)]
 
@@ -193,7 +193,7 @@ ms.lasthandoff: 09/12/2017
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 * [Запуск приложения](xref:fundamentals/startup)
-* [По промежуточного слоя](xref:fundamentals/middleware)
+* [ПО промежуточного слоя](xref:fundamentals/middleware)
 * [Сеть разработчиков Mozilla: Приемлемой кодировкой](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
 * [Раздела RFC 7231 3.1.2.1: Codings содержимого](https://tools.ietf.org/html/rfc7231#section-3.1.2.1)
 * [RFC 7230 разделе 4.2.3: Кодирование Gzip](https://tools.ietf.org/html/rfc7230#section-4.2.3)
