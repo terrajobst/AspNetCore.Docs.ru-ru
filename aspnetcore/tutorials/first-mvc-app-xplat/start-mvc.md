@@ -2,7 +2,7 @@
 title: "Введение в ASP.NET Core MVC для Mac, Linux и Windows"
 author: rick-anderson
 description: "Начало работы с MVC ASP.NET Core и Visual Studio Code в операционных системах Mac, Linux и Windows"
-keywords: ASP.NET Core, MVC, VS Code, Visual Studio Code, Mac, Linux, Windows
+keywords: ASP.NET Core,MVC,VS Code,Visual Studio Code,Mac,Linux,Windows
 ms.author: riande
 manager: wpickett
 ms.date: 07/07/2017
@@ -11,37 +11,37 @@ ms.assetid: 1d18b589-1638-4dc6-1638-fb0f41998d78
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/start-mvc
-ms.openlocfilehash: cfce91271ca21dd800fb68a14389606ce6d835f5
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 87ce5dca011a7bc37d34799db159d933c158cba1
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
-# <a name="getting-started-with-aspnet-core-mvc--on-mac-linux-or-windows"></a><span data-ttu-id="83728-104">Начало работы с MVC ASP.NET Core в операционных системах Mac, Linux и Windows</span><span class="sxs-lookup"><span data-stu-id="83728-104">Getting started with ASP.NET Core MVC  on Mac, Linux, or Windows</span></span>
+# <a name="getting-started-with-aspnet-core-mvc--on-mac-linux-or-windows"></a><span data-ttu-id="d89fa-104">Начало работы с MVC ASP.NET Core в операционных системах Mac, Linux и Windows</span><span class="sxs-lookup"><span data-stu-id="d89fa-104">Getting started with ASP.NET Core MVC  on Mac, Linux, or Windows</span></span>
 
-<span data-ttu-id="83728-105">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="83728-105">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="d89fa-105">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="d89fa-105">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="83728-106">В этом учебнике представлены основы построения веб-приложений MVC ASP.NET Core с помощью [Visual Studio Code](https://code.visualstudio.com) (VS Code).</span><span class="sxs-lookup"><span data-stu-id="83728-106">This tutorial will teach you the basics of building an ASP.NET Core MVC web app using [Visual Studio Code](https://code.visualstudio.com) (VS Code).</span></span> <span data-ttu-id="83728-107">Для работы с этим руководством требуется знание VS Code.</span><span class="sxs-lookup"><span data-stu-id="83728-107">The tutorial assumes familarity with VS Code.</span></span> <span data-ttu-id="83728-108">Дополнительные сведения см. в разделах [Начало работы с VS Code](https://code.visualstudio.com/docs) и [Справка по Visual Studio Code](#visual-studio-code-help).</span><span class="sxs-lookup"><span data-stu-id="83728-108">See [Getting started with VS Code](https://code.visualstudio.com/docs) and [Visual Studio Code help](#visual-studio-code-help) for more information.</span></span> [!INCLUDE[consider RP](../../includes/razor.md)]
+<span data-ttu-id="d89fa-106">В этом учебнике представлены основы построения веб-приложений MVC ASP.NET Core с помощью [Visual Studio Code](https://code.visualstudio.com) (VS Code).</span><span class="sxs-lookup"><span data-stu-id="d89fa-106">This tutorial will teach you the basics of building an ASP.NET Core MVC web app using [Visual Studio Code](https://code.visualstudio.com) (VS Code).</span></span> <span data-ttu-id="d89fa-107">Для работы с этим руководством требуется знание VS Code.</span><span class="sxs-lookup"><span data-stu-id="d89fa-107">The tutorial assumes familarity with VS Code.</span></span> <span data-ttu-id="d89fa-108">Дополнительные сведения см. в разделах [Начало работы с VS Code](https://code.visualstudio.com/docs) и [Справка по Visual Studio Code](#visual-studio-code-help).</span><span class="sxs-lookup"><span data-stu-id="d89fa-108">See [Getting started with VS Code](https://code.visualstudio.com/docs) and [Visual Studio Code help](#visual-studio-code-help) for more information.</span></span> [!INCLUDE[consider RP](../../includes/razor.md)]
 
-<span data-ttu-id="83728-109">Существует 3 версии этого учебника:</span><span class="sxs-lookup"><span data-stu-id="83728-109">There are 3 versions of this tutorial:</span></span>
+<span data-ttu-id="d89fa-109">Существует 3 версии этого учебника:</span><span class="sxs-lookup"><span data-stu-id="d89fa-109">There are 3 versions of this tutorial:</span></span>
 
-* <span data-ttu-id="83728-110">macOS: [Создание приложения ASP.NET Core MVC с помощью Visual Studio для Mac](xref:tutorials/first-mvc-app-mac/start-mvc)</span><span class="sxs-lookup"><span data-stu-id="83728-110">macOS: [Create an ASP.NET Core MVC app with Visual Studio for Mac](xref:tutorials/first-mvc-app-mac/start-mvc)</span></span>
-* <span data-ttu-id="83728-111">Windows: [Создание приложения ASP.NET Core MVC с помощью Visual Studio](xref:tutorials/first-mvc-app/start-mvc)</span><span class="sxs-lookup"><span data-stu-id="83728-111">Windows: [Create an ASP.NET Core MVC app with Visual Studio](xref:tutorials/first-mvc-app/start-mvc)</span></span>
-* <span data-ttu-id="83728-112">macOS, Linux и Windows: [Создание приложения MVC ASP.NET Core с помощью Visual Studio Code](xref:tutorials/first-mvc-app-xplat/start-mvc)</span><span class="sxs-lookup"><span data-stu-id="83728-112">macOS, Linux, and Windows: [Create an ASP.NET Core MVC app with Visual Studio Code](xref:tutorials/first-mvc-app-xplat/start-mvc)</span></span> 
+* <span data-ttu-id="d89fa-110">macOS: [Создание приложения ASP.NET Core MVC с помощью Visual Studio для Mac](xref:tutorials/first-mvc-app-mac/start-mvc)</span><span class="sxs-lookup"><span data-stu-id="d89fa-110">macOS: [Create an ASP.NET Core MVC app with Visual Studio for Mac](xref:tutorials/first-mvc-app-mac/start-mvc)</span></span>
+* <span data-ttu-id="d89fa-111">Windows: [Создание приложения ASP.NET Core MVC с помощью Visual Studio](xref:tutorials/first-mvc-app/start-mvc)</span><span class="sxs-lookup"><span data-stu-id="d89fa-111">Windows: [Create an ASP.NET Core MVC app with Visual Studio](xref:tutorials/first-mvc-app/start-mvc)</span></span>
+* <span data-ttu-id="d89fa-112">macOS, Linux и Windows: [Создание приложения MVC ASP.NET Core с помощью Visual Studio Code](xref:tutorials/first-mvc-app-xplat/start-mvc)</span><span class="sxs-lookup"><span data-stu-id="d89fa-112">macOS, Linux, and Windows: [Create an ASP.NET Core MVC app with Visual Studio Code](xref:tutorials/first-mvc-app-xplat/start-mvc)</span></span> 
 
-## <a name="install-vs-code-and-net-core"></a><span data-ttu-id="83728-113">Установка VS Code и .NET Core</span><span class="sxs-lookup"><span data-stu-id="83728-113">Install VS Code and .NET Core</span></span>
+## <a name="install-vs-code-and-net-core"></a><span data-ttu-id="d89fa-113">Установка VS Code и .NET Core</span><span class="sxs-lookup"><span data-stu-id="d89fa-113">Install VS Code and .NET Core</span></span>
 
-<span data-ttu-id="83728-114">Для этого учебника требуется [пакет SDK для .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="83728-114">This tutorial requires the [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) or later.</span></span> <span data-ttu-id="83728-115">См. [этот PDF-файл](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-mvc-app-mac/start-mvc/8-23-17.pdf) для версии ASP.NET Core 1.1.</span><span class="sxs-lookup"><span data-stu-id="83728-115">See [the pdf](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-mvc-app-mac/start-mvc/8-23-17.pdf) for the ASP.NET Core 1.1 version.</span></span>
+<span data-ttu-id="d89fa-114">Для этого учебника требуется [пакет SDK для .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="d89fa-114">This tutorial requires the [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) or later.</span></span> <span data-ttu-id="d89fa-115">См. [этот PDF-файл](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-mvc-app-mac/start-mvc/8-23-17.pdf) для версии ASP.NET Core 1.1.</span><span class="sxs-lookup"><span data-stu-id="d89fa-115">See [the pdf](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-mvc-app-mac/start-mvc/8-23-17.pdf) for the ASP.NET Core 1.1 version.</span></span>
 
-<span data-ttu-id="83728-116">Установите следующие компоненты:</span><span class="sxs-lookup"><span data-stu-id="83728-116">Install the following:</span></span>
+<span data-ttu-id="d89fa-116">Установите следующие компоненты:</span><span class="sxs-lookup"><span data-stu-id="d89fa-116">Install the following:</span></span>
 
-* <span data-ttu-id="83728-117">[Пакет SDK .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="83728-117">[.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) or later.</span></span>
-* [<span data-ttu-id="83728-118">Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="83728-118">Visual Studio Code</span></span>](https://code.visualstudio.com)
-* <span data-ttu-id="83728-119">Расширение VS Code [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)</span><span class="sxs-lookup"><span data-stu-id="83728-119">VS Code [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)</span></span> 
+* <span data-ttu-id="d89fa-117">[Пакет SDK .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="d89fa-117">[.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) or later.</span></span>
+* [<span data-ttu-id="d89fa-118">Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="d89fa-118">Visual Studio Code</span></span>](https://code.visualstudio.com)
+* <span data-ttu-id="d89fa-119">Расширение VS Code [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)</span><span class="sxs-lookup"><span data-stu-id="d89fa-119">VS Code [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)</span></span> 
 
-## <a name="create-a-web-app-with-dotnet"></a><span data-ttu-id="83728-120">Создание веб-приложения с dotnet</span><span class="sxs-lookup"><span data-stu-id="83728-120">Create a web app with dotnet</span></span>
+## <a name="create-a-web-app-with-dotnet"></a><span data-ttu-id="d89fa-120">Создание веб-приложения с dotnet</span><span class="sxs-lookup"><span data-stu-id="d89fa-120">Create a web app with dotnet</span></span>
 
-<span data-ttu-id="83728-121">Из терминала выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="83728-121">From a terminal, run the following commands:</span></span>
+<span data-ttu-id="d89fa-121">Из терминала выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="d89fa-121">From a terminal, run the following commands:</span></span>
 
 ```console
 mkdir MvcMovie
@@ -49,35 +49,35 @@ cd MvcMovie
 dotnet new mvc
 ```
 
-<span data-ttu-id="83728-122">Откройте папку *MvcMovie* в Visual Studio Code (VS Code) и выберите файл *Startup.cs*.</span><span class="sxs-lookup"><span data-stu-id="83728-122">Open the *MvcMovie* folder in Visual Studio Code (VS Code) and select the *Startup.cs* file.</span></span>
+<span data-ttu-id="d89fa-122">Откройте папку *MvcMovie* в Visual Studio Code (VS Code) и выберите файл *Startup.cs*.</span><span class="sxs-lookup"><span data-stu-id="d89fa-122">Open the *MvcMovie* folder in Visual Studio Code (VS Code) and select the *Startup.cs* file.</span></span>
 
-- <span data-ttu-id="83728-123">Нажмите кнопку **Да** в **предупреждении** "Required assets to build and debug are missing from 'MvcMovie'.</span><span class="sxs-lookup"><span data-stu-id="83728-123">Select **Yes** to the **Warn** message "Required assets to build and debug are missing from 'MvcMovie'.</span></span> <span data-ttu-id="83728-124">Add them?" (В MvcMovie отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?)</span><span class="sxs-lookup"><span data-stu-id="83728-124">Add them?"</span></span>
-- <span data-ttu-id="83728-125">В **информационном** сообщении "There are unresolved dependencies" (Имеются неразрешенные зависимости) щелкните **Восстановить**.</span><span class="sxs-lookup"><span data-stu-id="83728-125">Select **Restore** to the **Info** message "There are unresolved dependencies".</span></span>
+- <span data-ttu-id="d89fa-123">Нажмите кнопку **Да** в **предупреждении** "Required assets to build and debug are missing from 'MvcMovie'.</span><span class="sxs-lookup"><span data-stu-id="d89fa-123">Select **Yes** to the **Warn** message "Required assets to build and debug are missing from 'MvcMovie'.</span></span> <span data-ttu-id="d89fa-124">Add them?" (В MvcMovie отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?)</span><span class="sxs-lookup"><span data-stu-id="d89fa-124">Add them?"</span></span>
+- <span data-ttu-id="d89fa-125">В **информационном** сообщении "There are unresolved dependencies" (Имеются неразрешенные зависимости) щелкните **Восстановить**.</span><span class="sxs-lookup"><span data-stu-id="d89fa-125">Select **Restore** to the **Info** message "There are unresolved dependencies".</span></span>
 
 ![VS Code с предупреждением "Required assets to build and debug are missing from 'MvcMovie'.Add them?" (В MvcMovie отсутствуют необходимые ресурсы для сборки и отладки.](../web-api-vsc/_static/vsc_restore.png)
 
-<span data-ttu-id="83728-129">Нажмите клавишу **отладки** (F5), чтобы выполнить сборку программы и запустить ее.</span><span class="sxs-lookup"><span data-stu-id="83728-129">Press **Debug** (F5) to build and run the program.</span></span>
+<span data-ttu-id="d89fa-129">Нажмите клавишу **отладки** (F5), чтобы выполнить сборку программы и запустить ее.</span><span class="sxs-lookup"><span data-stu-id="d89fa-129">Press **Debug** (F5) to build and run the program.</span></span>
 
 ![Запуск приложения](../first-mvc-app/start-mvc/_static/1.png)
 
-<span data-ttu-id="83728-131">VS Code запускает веб-сервер [Kestrel](xref:fundamentals/servers/kestrel) и ваше приложение.</span><span class="sxs-lookup"><span data-stu-id="83728-131">VS Code starts the [Kestrel](xref:fundamentals/servers/kestrel) web server and runs your app.</span></span> <span data-ttu-id="83728-132">Обратите внимание на то, что в адресной строке указывается `localhost:5000`, а не что-либо типа `example.com`.</span><span class="sxs-lookup"><span data-stu-id="83728-132">Notice that the address bar shows `localhost:5000` and not something like `example.com`.</span></span> <span data-ttu-id="83728-133">Это связано с тем, что `localhost` — стандартное имя узла для локального компьютера.</span><span class="sxs-lookup"><span data-stu-id="83728-133">That's because `localhost` is the standard hostname for your local computer.</span></span>
+<span data-ttu-id="d89fa-131">VS Code запускает веб-сервер [Kestrel](xref:fundamentals/servers/kestrel) и ваше приложение.</span><span class="sxs-lookup"><span data-stu-id="d89fa-131">VS Code starts the [Kestrel](xref:fundamentals/servers/kestrel) web server and runs your app.</span></span> <span data-ttu-id="d89fa-132">Обратите внимание на то, что в адресной строке указывается `localhost:5000`, а не что-либо типа `example.com`.</span><span class="sxs-lookup"><span data-stu-id="d89fa-132">Notice that the address bar shows `localhost:5000` and not something like `example.com`.</span></span> <span data-ttu-id="d89fa-133">Это связано с тем, что `localhost` — стандартное имя узла для локального компьютера.</span><span class="sxs-lookup"><span data-stu-id="d89fa-133">That's because `localhost` is the standard hostname for your local computer.</span></span>
 
-<span data-ttu-id="83728-134">Шаблон по умолчанию включает рабочие ссылки **Домой, О программе** и **Контакты**.</span><span class="sxs-lookup"><span data-stu-id="83728-134">The default template gives you working **Home, About** and **Contact** links.</span></span> <span data-ttu-id="83728-135">На представленном выше снимке экрана эти ссылки не отображаются.</span><span class="sxs-lookup"><span data-stu-id="83728-135">The browser image above doesn't show these links.</span></span> <span data-ttu-id="83728-136">Если размер окна вашего браузера слишком мал, нажмите значок навигации, чтобы отобразить эти ссылки.</span><span class="sxs-lookup"><span data-stu-id="83728-136">Depending on the size of your browser, you might need to click the navigation icon to show them.</span></span>
+<span data-ttu-id="d89fa-134">Шаблон по умолчанию включает рабочие ссылки **Домой, О программе** и **Контакты**.</span><span class="sxs-lookup"><span data-stu-id="d89fa-134">The default template gives you working **Home, About** and **Contact** links.</span></span> <span data-ttu-id="d89fa-135">На представленном выше снимке экрана эти ссылки не отображаются.</span><span class="sxs-lookup"><span data-stu-id="d89fa-135">The browser image above doesn't show these links.</span></span> <span data-ttu-id="d89fa-136">Если размер окна вашего браузера слишком мал, нажмите значок навигации, чтобы отобразить эти ссылки.</span><span class="sxs-lookup"><span data-stu-id="d89fa-136">Depending on the size of your browser, you might need to click the navigation icon to show them.</span></span>
 
 ![Значок навигации в правом верхнем углу экрана](../first-mvc-app/start-mvc/_static/2.png)
 
-<span data-ttu-id="83728-138">В следующей части этого учебника мы поговорим об MVC и приступим к написанию кода.</span><span class="sxs-lookup"><span data-stu-id="83728-138">In the next part of this tutorial, we'll learn about MVC and start writing some code.</span></span>
+<span data-ttu-id="d89fa-138">В следующей части этого учебника мы поговорим об MVC и приступим к написанию кода.</span><span class="sxs-lookup"><span data-stu-id="d89fa-138">In the next part of this tutorial, we'll learn about MVC and start writing some code.</span></span>
 
-## <a name="visual-studio-code-help"></a><span data-ttu-id="83728-139">Справка по Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="83728-139">Visual Studio Code help</span></span>
+## <a name="visual-studio-code-help"></a><span data-ttu-id="d89fa-139">Справка по Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="d89fa-139">Visual Studio Code help</span></span>
 
-- [<span data-ttu-id="83728-140">Начало работы</span><span class="sxs-lookup"><span data-stu-id="83728-140">Getting started</span></span>](https://code.visualstudio.com/docs)
-- [<span data-ttu-id="83728-141">Отладка</span><span class="sxs-lookup"><span data-stu-id="83728-141">Debugging</span></span>](https://code.visualstudio.com/docs/editor/debugging)
-- [<span data-ttu-id="83728-142">Интегрированный терминал</span><span class="sxs-lookup"><span data-stu-id="83728-142">Integrated terminal</span></span>](https://code.visualstudio.com/docs/editor/integrated-terminal)
-- [<span data-ttu-id="83728-143">Сочетания клавиш</span><span class="sxs-lookup"><span data-stu-id="83728-143">Keyboard shortcuts</span></span>](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
+- [<span data-ttu-id="d89fa-140">Начало работы</span><span class="sxs-lookup"><span data-stu-id="d89fa-140">Getting started</span></span>](https://code.visualstudio.com/docs)
+- [<span data-ttu-id="d89fa-141">Отладка</span><span class="sxs-lookup"><span data-stu-id="d89fa-141">Debugging</span></span>](https://code.visualstudio.com/docs/editor/debugging)
+- [<span data-ttu-id="d89fa-142">Интегрированный терминал</span><span class="sxs-lookup"><span data-stu-id="d89fa-142">Integrated terminal</span></span>](https://code.visualstudio.com/docs/editor/integrated-terminal)
+- [<span data-ttu-id="d89fa-143">Сочетания клавиш</span><span class="sxs-lookup"><span data-stu-id="d89fa-143">Keyboard shortcuts</span></span>](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
 
-  - [<span data-ttu-id="83728-144">Сочетания клавиш для Mac</span><span class="sxs-lookup"><span data-stu-id="83728-144">Mac keyboard shortcuts</span></span>](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
-  - [<span data-ttu-id="83728-145">Сочетания клавиш для Linux</span><span class="sxs-lookup"><span data-stu-id="83728-145">Linux keyboard shortcuts</span></span>](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
-  - [<span data-ttu-id="83728-146">Сочетания клавиш для Windows</span><span class="sxs-lookup"><span data-stu-id="83728-146">Windows keyboard shortcuts</span></span>](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+  - [<span data-ttu-id="d89fa-144">Сочетания клавиш для Mac</span><span class="sxs-lookup"><span data-stu-id="d89fa-144">Mac keyboard shortcuts</span></span>](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
+  - [<span data-ttu-id="d89fa-145">Сочетания клавиш для Linux</span><span class="sxs-lookup"><span data-stu-id="d89fa-145">Linux keyboard shortcuts</span></span>](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
+  - [<span data-ttu-id="d89fa-146">Сочетания клавиш для Windows</span><span class="sxs-lookup"><span data-stu-id="d89fa-146">Windows keyboard shortcuts</span></span>](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
 
 >[!div class="step-by-step"]
-[<span data-ttu-id="83728-147">Следующая статья — "Добавление контроллера"</span><span class="sxs-lookup"><span data-stu-id="83728-147">Next - Add a controller</span></span>](adding-controller.md)
+[<span data-ttu-id="d89fa-147">Следующая статья — "Добавление контроллера"</span><span class="sxs-lookup"><span data-stu-id="d89fa-147">Next - Add a controller</span></span>](adding-controller.md)
