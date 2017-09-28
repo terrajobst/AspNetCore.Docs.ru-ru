@@ -5,16 +5,16 @@ description: "Описание страниц Razor Pages, созданных п
 keywords: ASP.NET Core,Razor Pages,Razor,MVC
 ms.author: riande
 manager: wpickett
-ms.date: 07/27/2017
+ms.date: 09/27/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 77462ede7b88ed22695b9ea701a7333e1667e548
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 3fd155c5e9a119717243a4bafff776fcbd06fab5
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>Сформированные страницы Razor Pages в ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/19/2017
 
 ## <a name="the-create-delete-details-and-edit-pages"></a>Страницы Create, Delete, Details и Edit
 
-Изучите файл кода программной части *Pages/Movies/Index.cshtml.cs*: [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Index.cshtml.cs)]
+Изучите файл кода программной части *Pages/Movies/Index.cshtml.cs*: [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs)]
 
 Страницы Razor Pages являются производными от `PageModel`. Как правило, класс, производный от `PageModel`, называется `<PageName>Model`. Используя [внедрение зависимостей](xref:fundamentals/dependency-injection), конструктор добавляет на страницу `MovieContext`. Этому шаблону соответствуют все сформированные страницы.
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 09/19/2017
 
 Изучите страницу Razor *Pages/Movies/Index.cshtml*:
 
-[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Index.cshtml)]
+[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml)]
 
 Razor может выполнять переход с HTML на C# или на разметку Razor. Если за символом `@` следует [зарезервированное ключевое слово Razor](xref:mvc/views/razor#razor-reserved-keywords), он переходит на разметку Razor, а если нет, то на C#.
 
@@ -42,14 +42,16 @@ Razor может выполнять переход с HTML на C# или на �
 
 Проверьте лямбда-выражение, которое используется в следующем вспомогательном методе HTML.
 
-`@Html.DisplayNameFor(model => model.Movie[0].Title))`
+```cshtml
+@Html.DisplayNameFor(model => model.Movies[0].Title))
+```
 
 Вспомогательный метод HTML `DisplayNameFor` проверяет свойство `Title`, указанное в лямбда-выражении, и определяет отображаемое имя. Лямбда-выражение проверяется, а не вычисляется. Это означает, что в случае, если `model`, `model.Movies` или `model.Movies[0]` имеют значение `null` или пусты, права доступа не нарушаются. При вычислении лямбда-выражения (например, с помощью `@Html.DisplayFor(modelItem => item.Title)`) вычисляются значения для свойств модели.
 
 <a name="md"></a>
 ### <a name="the-model-directive"></a>директиву @model;
 
-[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Index.cshtml?range=1-2&highlight=2)]
+[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-2&highlight=2)]
 
 Директива `@model` определяет тип модели, передаваемой на страницу Razor. В приведенном выше примере строка `@model` делает класс, производный от `PageModel`, доступным для страниц Razor. Модель используется на странице во [вспомогательных методах HTML](https://docs.microsoft.com/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers) `@Html.DisplayNameFor` и `@Html.DisplayName`.
 
@@ -62,11 +64,11 @@ Razor может выполнять переход с HTML на C# или на �
 
 Рассмотрим следующий код.
 
-[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Index.cshtml?range=1-6&highlight=4-)]
+[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-6&highlight=4-)]
 
 Выделенный выше код представляет собой пример перехода Razor на C#. Символы `{` и `}` ограничивают блок кода C#.
 
-Базовый класс `Controller` содержит свойство словаря `ViewData`, позволяющее передать данные в представление. Объекты можно добавить в словарь `ViewData` с помощью шаблона "ключ/значение". В приведенном выше примере в словарь `ViewData` добавляется свойство "Title". Свойство "Title" используется в файле *Pages/_Layout.cshtml*. Ниже показаны первые несколько строк файла *Pages/_Layout.cshtml*.
+Базовый класс `PageModel` содержит свойство словаря `ViewData`, позволяющее передать данные в представление. Объекты можно добавить в словарь `ViewData` с помощью шаблона "ключ/значение". В приведенном выше примере в словарь `ViewData` добавляется свойство "Title". Свойство "Title" используется в файле *Pages/_Layout.cshtml*. Ниже показаны первые несколько строк файла *Pages/_Layout.cshtml*.
 
 [!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/NU/_Layout1.cshtml?highlight=6-)]
 
@@ -84,7 +86,7 @@ Razor может выполнять переход с HTML на C# или на �
 
 Измените элемент `<title>` в файле *Pages/_Layout.cshtml*, чтобы использовать более короткую строку.
 
-[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/_Layout.cshtml?range=1-6&highlight=6-)]
+[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/_Layout.cshtml?range=1-6&highlight=6)]
 
 Найдите следующий элемент привязки в файле *Pages/_Layout.cshtml*.
 
@@ -97,7 +99,7 @@ Razor может выполнять переход с HTML на C# или на �
 <a asp-page="/Movies/Index" class="navbar-brand">RpMovie</a>
 ```
 
-Указанный выше элемент привязки является [вспомогательной функцией тега](xref:mvc/views/tag-helpers/intro). В данном случае он является [вспомогательной функцией тега привязки](xref:mvc/views/tag-helpers/builtin-th/AnchorTagHelper). Атрибут вспомогательной функции тега `asp-page="/Movies/Index"` и его значение создают ссылку на страницу Razor `/Movies/Index`.
+Указанный выше элемент привязки является [вспомогательной функцией тега](xref:mvc/views/tag-helpers/intro). В данном случае он является [вспомогательной функцией тега привязки](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper). Атрибут вспомогательной функции тега `asp-page="/Movies/Index"` и его значение создают ссылку на страницу Razor `/Movies/Index`.
 
 Сохраните изменения и протестируйте приложение, нажав на ссылку **RpMovie**. См. файл [_Layout.cshtml](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/_Layout.cshtml) в GitHub.
 
@@ -105,7 +107,7 @@ Razor может выполнять переход с HTML на C# или на �
 
 Изучите файл кода программной части *Pages/Movies/Create.cshtml.cs*:
 
-[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Create.cshtml.cs?name=snippetALL)]
+[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 
 Метод `OnGet` инициализирует все состояния, необходимые для страницы. Страница Create не содержит никаких состояний для инициализации. Метод `Page` создает объект `PageResult`, который формирует страницу *Create.cshtml*.
 
@@ -113,7 +115,7 @@ Razor может выполнять переход с HTML на C# или на �
 
 Метод `OnPostAsync` выполняется, когда страница публикует данные формы:
 
-[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Create.cshtml.cs?name=snippetPost)]
+[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetPost)]
 
 Если в модели есть ошибки, форма отображается снова вместе со всеми опубликованными данными этой формы. Большинство ошибок в модели может быть перехвачено на стороне клиента до публикации формы. Пример ошибки в модели — это публикация значения для поля даты, которое нельзя конвертировать в дату. О проверке на стороне клиента и проверке модели мы поговорим подробнее далее в этом учебнике.
 
@@ -123,7 +125,7 @@ Razor может выполнять переход с HTML на C# или на �
 
 Изучите файл страницы Razor *Pages/Movies/Create.cshtml*:
 
-[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Create.cshtml)]
+[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml)]
 
 Visual Studio выделяет тег `<form method="post">` отдельным шрифтом, который используется для вспомогательных функций тегов. Элемент `<form method="post">` представляет собой [вспомогательную функцию тега Form](xref:mvc/views/working-with-forms#the-form-tag-helper). Вспомогательная функция тега Form автоматически включает [маркер защиты от подделки](xref:security/anti-request-forgery).
 
@@ -131,7 +133,7 @@ Visual Studio выделяет тег `<form method="post">` отдельным 
 
 Ядро формирования шаблонов создает разметку Razor для каждого поля в модели (кроме ID) следующего вида:
 
-[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Create.cshtml?range=15-20)]
+[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=15-20)]
 
 [Вспомогательные функции тегов Validation](xref:mvc/views/working-with-forms#the-validation-tag-helpers) (`<div asp-validation-summary` и ` <span asp-validation-for`) отображают ошибки проверки. Более подробно проверка рассматривается далее в этой серии статей.
 
