@@ -1,21 +1,21 @@
 ---
 title: "Создание веб-API с помощью ASP.NET Core и VS Code"
-author: rick-anderson
 description: "Создание веб-API на платформах macOS, Linux или Windows с помощью ASP.NET Core MVC и Visual Studio Code"
-keywords: "ASP.NET Core, WebAPI, веб-API, REST, Mac, Linux, HTTP, служба, служба HTTP, VS Code"
+author: rick-anderson
 ms.author: riande
-manager: wpickett
-ms.date: 5/24/2017
+ms.date: 09/22/2017
 ms.topic: get-started-article
-ms.assetid: 830b4bf5-dd14-423e-9f59-764a6f13a8f6
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+keywords: "ASP.NET Core, WebAPI, веб-API, REST, Mac, Linux, HTTP, служба, служба HTTP, VS Code"
+manager: wpickett
+ms.assetid: 830b4bf5-dd14-423e-9f59-764a6f13a8f6
 uid: tutorials/web-api-vsc
-ms.openlocfilehash: 17687e38aae066bdab4663268a2af54f20a6ad75
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: e09943b2f810d04456a65589976aa07065a9f010
+ms.sourcegitcommit: e6bcd56a4b11e20ff55df004971f9ed384937342
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-code-on-linux-macos-and-windows"></a>Создание веб-API с помощью ASP.NET Core MVC и Visual Studio Code на платформах macOS, Windows и Linux
 
@@ -83,7 +83,7 @@ dotnet new webapi
 
 [!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoItem.cs)]
 
-После создания `TodoItem` база данных формирует `Id`.
+После создания `TodoItem` база данных сформирует `Id`.
 
 ## <a name="create-the-database-context"></a>Создание контекста базы данных
 

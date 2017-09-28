@@ -11,11 +11,11 @@ helpviewer_heywords: ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, Serv
 ms.technology: aspnet
 keywords: "ASP.NET Core, WebAPI, веб-API, REST, mac, macOS, HTTP, служба, служба HTTP"
 manager: wpickett
-ms.openlocfilehash: 992059f7abd7650f82c1307acf3ba3219a6fcbb5
-ms.sourcegitcommit: 0a3f215b4f665afc6f2678642968eea698102346
+ms.openlocfilehash: 6835cdefcc001452a3ffc8f4fd6a2f55f7274692
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>Создание веб-API с помощью MVC ASP.NET Core и Visual Studio для Mac
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 09/18/2017
 
 [!code-csharp[Main](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-Это метод HTTP POST, обозначенный атрибутом [`[HttpPost]`](https://docs.microsoft.com/aspnet/core/api). Атрибут [`[FromBody]`](https://docs.microsoft.com/aspnet/core/api) сообщает MVC, что необходимо получить значение элемента задачи из текста HTTP-запроса.
+Это метод HTTP POST, обозначенный атрибутом [`[HttpPost]`](/aspnet/core/api/microsoft.aspnetcore.mvc.httppostattribute). Атрибут [`[FromBody]`](/aspnet/core/api/microsoft.aspnetcore.mvc.frombodyattribute) сообщает MVC, что необходимо получить значение элемента задачи из текста HTTP-запроса.
 
 Метод `CreatedAtRoute` возвращает ответ 201, который представляет собой стандартный ответ для метода HTTP POST, создающий новый ресурс на сервере. `CreatedAtRoute` также добавляет в ответ заголовок расположения. Заголовок расположения указывает URI вновь созданной задачи. См. раздел [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 

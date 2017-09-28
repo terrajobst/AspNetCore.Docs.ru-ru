@@ -5,16 +5,16 @@ description: "Демонстрирует, как добавить новое п�
 keywords: "ASP.NET Core,Entity Framework Core,миграция"
 ms.author: riande
 manager: wpickett
-ms.date: 8/7/2017
+ms.date: 08/07/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 1b5f4297d4812fbbd60fb8b94446da205cd6bb55
-ms.sourcegitcommit: f303a457644ed034a49aa89edecb4e79d9028cb1
+ms.openlocfilehash: b45642e39eb46631bb8034f4747222fb1bc0a83b
+ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/24/2017
 ---
 # <a name="adding-a-new-field-to-a-razor-page"></a>Добавление нового поля на страницу Razor
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 09/12/2017
 
 В следующем коде показан файл *Create.cshtml* с полем `Rating`:
 
-[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?highlight=31-35)]
+[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?highlight=36-40)]
 
 Добавьте поле `Rating` на страницу "Edit" (Редактирование).
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 09/12/2017
 
 Обновите класс `SeedData` так, чтобы он предоставлял значение нового столбца. Ниже показан пример изменения, которое необходимо выполнить для каждого блока `new Movie`.
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs?name=snippet1&highlight=6)]
+[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
 См. [готовый файл SeedData.cs](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs).
 
