@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 72ab979c6c718544955ae5734903ec936fc5afbc
-ms.sourcegitcommit: 195b2b331434f74334c5c5b7dfeba62d744a1e38
+ms.openlocfilehash: 3112faa38bb9702f6856097e315c413f0974010d
+ms.sourcegitcommit: 3ba32b2b6425ed94604cb0f681db0d5bb5f8ad58
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -157,11 +157,9 @@ Razor Pages — это новая функция платформы MVC ASP.NET
 
 Файл *Index.cshtml* содержит следующую разметку для создания ссылки на правку для каждого контактного лица.
 
-```cshtml
-<a asp-page="./Edit" asp-route-id="@contact.Id">edit</a>
-```
+[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=21)]
 
-[Вспомогательный тег привязки](xref:mvc/views/tag-helpers/builtin-th/AnchorTagHelper) использует атрибут [asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/AnchorTagHelper#route) для создания ссылки на страницу редактирования. Эта ссылка содержит данные о маршруте с идентификатором контактного лица. Например, `http://localhost:5000/Edit/1`.
+[Вспомогательный тег привязки](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) использует атрибут [asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#route) для создания ссылки на страницу редактирования. Эта ссылка содержит данные о маршруте с идентификатором контактного лица. Например, `http://localhost:5000/Edit/1`.
 
 Файл *Pages/Edit.cshtml*:
 
@@ -172,6 +170,34 @@ Razor Pages — это новая функция платформы MVC ASP.NET
 Файл *Pages/Edit.cshtml.cs*:
 
 [!code-cs[main](index/sample/RazorPagesContacts/Pages/Edit.cshtml.cs)]
+
+Файл *Index.cshtml* также содержит разметку для создания кнопки удаления у каждого контакта клиента:
+
+[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=22-23)]
+
+Во время обработки кнопки удаления в HTML ее `formaction` включает параметры для следующего:
+
+* Идентификатор контакта клиента, указанный атрибутом `asp-route-id`.
+* Параметр `handler`, указанный атрибутом `asp-page-handler`.
+
+Пример отображенной кнопки удаления с идентификатором контакта клиента `1`:
+
+```html
+<button type="submit" formaction="/?id=1&amp;handler=delete">delete</button>
+```
+
+При выборе кнопки на сервер отправляется запрос формы `POST`. По соглашению имя метода обработчика выбирается на основе значения параметра `handler` в соответствии со схемой `OnPost[handler]Async`.
+
+Так как `handler` — `delete` в этом примере, метод обработчика `OnPostDeleteAsync` используется для обработки запроса `POST`. Если `asp-page-handler` имеет другое значение, например `remove`, выбирается метод обработчика страницы с именем `OnPostRemoveAsync`.
+
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Index.cshtml.cs?range=26-37)]
+
+Метод `OnPostDeleteAsync`:
+
+* Принимает `id` из строки запроса.
+* Отправляет в базу данных запрос контакта клиента с `FindAsync`.
+* Если контакт клиента найден, он удаляется из списка контактов. База данных обновляется.
+* Вызывает `RedirectToPage` для перенаправления на корневую страницу индекса (`/Index`).
 
 <a name="xsrf"></a>
 
