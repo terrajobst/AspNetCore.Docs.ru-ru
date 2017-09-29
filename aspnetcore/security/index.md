@@ -11,11 +11,11 @@ ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe012345
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/index
-ms.openlocfilehash: e8045b8804d1e7915cd81d697d43a173e33a7119
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: f173d03f55a1ce52222a75c023f9e8a20d5c60dc
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="security"></a>Безопасность
 
@@ -79,7 +79,6 @@ ms.lasthandoff: 09/12/2017
 *   [Безопасное хранение секретов приложений во время разработки](app-secrets.md)
 *   [Поставщик конфигурации Azure Key Vault](key-vault-configuration.md)
 *   [Применение SSL](enforcing-ssl.md)
-*   [Настройка HTTPS для разработки](https.md)
 *   [Защита от подделки запросов](anti-request-forgery.md)
 *   [Предотвращение атак с открытой переадресацией](preventing-open-redirects.md)
 *   [Предотвращение использования межузловых сценариев](cross-site-scripting.md)
