@@ -11,11 +11,11 @@ ms.assetid: eda7ee17-f38c-462e-8d1d-63f459901cf3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/social/index
-ms.openlocfilehash: b561dcee5435dfc34cfa0b9b15babf75ca8f3508
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 56036000535156b4b5814dde2a0145dcdfff28c3
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="enabling-authentication-using-facebook-google-and-other-external-providers"></a>Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков
 
@@ -52,8 +52,6 @@ ms.lasthandoff: 09/22/2017
 Для проверки подлинности по протоколу HTTPS в OAuth 2.0 обязательно использовать протокол SSL.
 
 Примечание. Проекты, созданные с использованием шаблонов **Веб-приложение** или **Веб-API** для ASP.NET Core 2.x, автоматически настраиваются с поддержкой SSL и запускаются с URL-адресом https, если выбран параметр **Учетные записи отдельных пользователей** в диалоговом окне **Изменить способ проверки подлинности** в мастере проекта, как показано выше.
-
-* Дополнительные сведения и инструкции по включению поддержки протокола SSL вручную см. в разделе [Настройка HTTPS для разработки в ASP.NET Core](xref:security/https).
 
 * Инструкции по включению обязательного использования протокола SSL на сайте см. в разделе [Принудительное применение протокола SSL в приложении ASP.NET Core](xref:security/enforcing-ssl).
 
