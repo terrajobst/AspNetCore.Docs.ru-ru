@@ -11,11 +11,11 @@ ms.assetid: bc8b4ba3-e9ba-48fd-b1eb-cd48ff6bc7a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: b83bd4a24ccf7e90e9df06d6a8e229a2d5c6699a
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: f6b454da838308adddaaddb84073722f647af379
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="dependency-injection-into-controllers"></a>Внедрение зависимостей в контроллерах
 
@@ -49,8 +49,6 @@ ms.lasthandoff: 09/12/2017
 
 Если мы запустим приложение, мы скорее возникает ошибка:
 
-<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
-
 ```
 An unhandled exception occurred while processing the request.
 
@@ -73,8 +71,6 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceP
 > В разделе [логику контроллера тестирования](testing.md) научиться явно запросить зависимости [http://deviq.com/explicit-dependencies-principle/](http://deviq.com/explicit-dependencies-principle/) контроллеры упрощает код для тестирования.
 
 Внедрение встроенных зависимостей ASP.NET Core поддерживает наличие только один конструктор для классов запроса службы. При наличии более одного конструктора, можно получить исключение с сообщением:
-
-<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ```
 An unhandled exception occurred while processing the request.

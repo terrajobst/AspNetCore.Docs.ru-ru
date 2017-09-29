@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/google-logins
-ms.openlocfilehash: 7e37a8af4ae5a957483fa5f4a89ea4e8999a3d1d
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 8723a74250ff1b0a63139057bfc17fdd31dd169e
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuring-google-authentication-in-aspnet-core"></a>Настройка проверки подлинности Google в ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/19/2017
 
 ## <a name="create-the-app-in-google-api-console"></a>Создание приложения в консоли Google API
 
-* Перейдите к [https://console.developers.google.com/projectselector/apis/library](https://console.developers.google.com/projectselector/apis/library) и выполните вход. Если у вас еще нет учетной записи Google, используйте **Дополнительные параметры** > **[создать учетную запись](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api) ** ссылку, чтобы создать один:
+* Перейдите к [https://console.developers.google.com/projectselector/apis/library](https://console.developers.google.com/projectselector/apis/library) и выполните вход. Если у вас еще нет учетной записи Google, используйте **Дополнительные параметры** > **[создать учетную запись](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api)**  ссылку, чтобы создать один:
 
 ![Консоли Google API](index/_static/GoogleConsoleLogin.png)
 
@@ -101,6 +101,10 @@ ms.lasthandoff: 09/19/2017
 Добавление службы Google в `ConfigureServices` метод в *файла Startup.cs* файла:
 
 ```csharp
+services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+
 services.AddAuthentication().AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
@@ -108,7 +112,7 @@ services.AddAuthentication().AddGoogle(googleOptions =>
 });
 ```
 
-`AddAuthentication` Метод должен вызываться только один раз при добавлении нескольких поставщиков проверки подлинности. Все ранее настроенные переопределения могут быть последующие вызовы [AuthenticationOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.authenticationoptions) свойства.
+[!INCLUDE[default settings configuration](includes/default-settings.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 

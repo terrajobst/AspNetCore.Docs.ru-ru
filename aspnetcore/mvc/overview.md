@@ -1,7 +1,7 @@
 ---
 title: "Общие сведения об основных ASP.NET MVC"
 author: ardalis
-description: 
+description: "Узнайте, как основной ASP.NET MVC является многофункциональную платформу для построения веб-приложений и шаблон разработки Model-View-Controller с помощью API-интерфейсов."
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
@@ -11,11 +11,11 @@ ms.assetid: 89af38d1-52e0-4db7-b791-dbce909b0714
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/overview
-ms.openlocfilehash: 67394b066c18a149a97b957d6478ba8301ea8147
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 2492b6aa4602dbbf3b9cd3dca00d40690c640cab
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Общие сведения об основных ASP.NET MVC
 
@@ -77,7 +77,7 @@ ASP.NET Core MVC предоставляет основанный на шабло
 * [Возможности тестирования](#testability)
 * [Обработчик представлений Razor](#razor-view-engine)
 * [Строго типизированные представления](#strongly-typed-views)
-* [Вспомогательных функций тегов](#tag-helpers)
+* [Вспомогательные функции тегов](#tag-helpers)
 * [Просмотр компонентов](#view-components)
 
 ### <a name="routing"></a>Маршрутизация
@@ -91,8 +91,6 @@ routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id
 ```
 
 *Атрибут маршрутизации* позволяет указать сведения о маршрутизации по контроллеров и действий с помощью атрибутов, которые определяют маршрутов для приложения. Это означает, определениях маршрута находятся рядом с контроллера и действия, с которым они связаны.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [1, 4]}} -->
 
 ```csharp
 [Route("api/[controller]")]
@@ -118,8 +116,6 @@ public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = 
 
 Основные ASP.NET MVC поддерживает [проверки](models/validation.md) дополняя модель объекта с атрибуты проверки данных заметок. Атрибуты проверки проверяются на стороне клиента, прежде чем значения передаются на сервер, а также вызывается на сервере перед выполнением действия контроллера.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4, 5, 8, 9]}} -->
-
 ```csharp
 using System.ComponentModel.DataAnnotations;
 public class LoginViewModel
@@ -138,8 +134,6 @@ public class LoginViewModel
 ```
 
 Действие контроллера:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3]}} -->
 
 ```csharp
 public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
@@ -161,17 +155,15 @@ ASP.NET Core имеет встроенную поддержку [внедрен�
 
 Можно также использовать приложение [внедрение зависимостей в представлении файлы](views/dependency-injection.md), с использованием `@inject` директиву:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1]}} -->
-
-```html
+```cshtml
 @inject SomeService ServiceName
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>@ServiceName.GetTitle</title>
+    <title>@ServiceName.GetTitle</title>
 </head>
 <body>
-  <h1>@ServiceName.GetTitle</h1>
+    <h1>@ServiceName.GetTitle</h1>
 </body>
 </html>
 ```
@@ -185,7 +177,6 @@ ASP.NET Core имеет встроенную поддержку [внедрен�
 [Authorize]
    public class AccountController : Controller
    {
-
 ```
 
 ### <a name="areas"></a>Области
@@ -224,7 +215,7 @@ ASP.NET Core имеет встроенную поддержку [внедрен�
 
 Например, следующее представление определяется модель управляемого типа `IEnumerable<Product>`:
 
-```html
+```cshtml
 @model IEnumerable<Product>
 <ul>
     @foreach (Product p in Model)
@@ -240,9 +231,7 @@ ASP.NET Core имеет встроенную поддержку [внедрен�
 
 Существует множество встроенных вспомогательных функций тегов для общих задач — например для создания формы, ссылки, загрузки средств и пакетов дополнительные - и еще более доступные из открытых репозиториев GitHub и в качестве NuGet. Вспомогательных функций тегов разрабатываются в C#, и они предназначены для HTML-элементов на основе имени элемента, имя атрибута или родительского тега. Например, встроенная LinkTagHelper можно использовать, чтобы создать ссылку на `Login` действие `AccountsController`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3]}} -->
-
-```html
+```cshtml
 <p>
     Thank you for confirming your email.
     Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
@@ -251,9 +240,7 @@ ASP.NET Core имеет встроенную поддержку [внедрен�
 
 `EnvironmentTagHelper` Может использоваться для включения различных наборов символов в зависимости от среды выполнения, например разработки, промежуточной или производственной представления (например, raw или уменьшенный):
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1, 3, 4, 9]}} -->
-
-```html
+```cshtml
 <environment names="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>
 </environment>

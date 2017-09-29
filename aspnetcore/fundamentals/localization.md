@@ -11,11 +11,11 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 2a760343566d2c2be591983e20830b5207a2199b
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 85a192bf0b2eb245ecdaaa8ffa1c8dd2f43b45b0
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -39,41 +39,41 @@ ms.lasthandoff: 09/12/2017
 
 Представленные в ASP.NET Core `IStringLocalizer` и `IStringLocalizer<T>` были разработана для повышения производительности при разработке локализованных приложений. `IStringLocalizer`использует [ResourceManager](https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager) и [ResourceReader](https://docs.microsoft.com/dotnet/api/system.resources.resourcereader) для предоставления ресурсов, связанных с языком и региональными параметрами, во время выполнения. Простой интерфейс имеет индекс и `IEnumerable` для возвращения локализованные строки. `IStringLocalizer`не требуется хранить строки языка по умолчанию в файле ресурсов. Можно разрабатывать приложения, предназначенные для локализации и не требуется создавать файлы ресурсов на раннем этапе разработки. В следующем примере кода показано, как программы-оболочки для строки «О Title» для локализации.
 
-[!code-csharp[Main](localization/sample/Controllers/AboutController.cs)]
+[!code-csharp[Main](localization/sample/Localization/Controllers/AboutController.cs)]
 
 В представленном выше коде `IStringLocalizer<T>` реализацию поступают из [внедрения зависимостей](dependency-injection.md). Если локализованное значение атрибута «О Title» не найден, то ключу индексатора возвращается, то есть строка «О Title». Можно оставить значение по умолчанию язык строковых литералов в приложении и помещать их в локализатора, так что можно сосредоточиться на разработке приложений. Разработка приложения с языком по умолчанию и подготовить его к этапу локализации без предварительного создания файла ресурсов по умолчанию. Кроме того можно использовать традиционный подход и укажите ключ для извлечения языковую строку по умолчанию. Для многих разработчиков нового рабочего процесса не было язык по умолчанию *.resx* файл и просто обернуть строковые литералы можно снизить издержки локализация приложения. Другим разработчикам использовать традиционные рабочий процесс как его можно упростить его для работы с более строковые литералы и упростить обновление локализованные строки.
 
 Используйте `IHtmlLocalizer<T>` реализации для ресурсов, содержащие HTML. `IHtmlLocalizer`Аргументы, которые отформатированы в строке ресурса, но не строки ресурса кодирует HTML. В примере выделен под только значение `name` параметр — в кодировке HTML.
 
-[!code-csharp[Main](../fundamentals/localization/sample/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
+[!code-csharp[Main](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
 Примечание: Обычно требуется только локализовать текст и не HTML.
 
 На самом низком уровне, вы можете получить `IStringLocalizerFactory` из [внедрения зависимости](dependency-injection.md):
 
-[!code-csharp[Main](localization/sample/Controllers/TestController.cs?start=9&end=26&highlight=7-13)]
+[!code-csharp[Main](localization/sample/Localization/Controllers/TestController.cs?start=9&end=26&highlight=7-13)]
 
 Приведенный выше код демонстрирует каждого из двух фабрику создания методов.
 
 Можно секционировать локализованные строки контроллером области, или только один контейнер. В примере приложения пустой класс с именем `SharedResource` используется для общих ресурсов.
 
-[!code-csharp[Main](localization/sample/Resources/SharedResource.cs)]
+[!code-csharp[Main](localization/sample/Localization/Resources/SharedResource.cs)]
 
 Некоторые разработчики используют `Startup` класс, содержащий глобальные или общих строк.  В приведенном ниже примере `InfoController` и `SharedResource` локализаторам используются:
 
-[!code-csharp[Main](localization/sample/Controllers/InfoController.cs?range=9-26)]
+[!code-csharp[Main](localization/sample/Localization/Controllers/InfoController.cs?range=9-26)]
 
 ## <a name="view-localization"></a>Представление локализации
 
 `IViewLocalizer` Служба предоставляет локализованные строки для [представление](https://docs.microsoft.com/aspnet/core). `ViewLocalizer` Класс реализует этот интерфейс и находит расположение ресурса из пути файла представления. Ниже показано, как использовать реализацию по умолчанию `IViewLocalizer`:
 
-[!code-HTML[Main](localization/sample/Views/Home/About.cshtml)]
+[!code-HTML[Main](localization/sample/Localization/Views/Home/About.cshtml)]
 
 Реализация по умолчанию `IViewLocalizer` находит файл ресурсов на основе имени файла этого представления. Нет возможности использовать файл общих ресурсов. `ViewLocalizer`реализует с помощью локализатора `IHtmlLocalizer`, поэтому Razor не HTML кодирования локализованные строки. Можно параметризировать строки ресурсов и `IViewLocalizer` будет HTML кодирования параметров, но не строки ресурса. Рассмотрим следующую разметку Razor.
 
-```HTML
+```cshtml
 @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
-   ```
+```
 
 Файл ресурсов может содержать следующие элементы.
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 09/12/2017
 
 Использование файла общего ресурса в виде, вставки `IHtmlLocalizer<T>`:
 
-[!code-HTML[Main](../fundamentals/localization/sample/Views/Test/About.cshtml?highlight=5,12)]
+[!code-HTML[Main](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
 
 ## <a name="dataannotations-localization"></a>Локализация DataAnnotations
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 09/12/2017
 * Resources/ViewModels.Account.RegisterViewModel.fr.resx
 * Resources/ViewModels/Account/RegisterViewModel.fr.resx
 
-[!code-csharp[Main](localization/sample/ViewModels/Account/RegisterViewModel.cs?start=9&end=26)]
+[!code-csharp[Main](localization/sample/Localization/ViewModels/Account/RegisterViewModel.cs?start=9&end=26)]
 
 В ASP.NET Core MVC 1.1.0 и более поздней версии, не относящееся к проверке атрибутов локализованы. ASP.NET Core MVC 1.0 **не** поиск локализованных строк для атрибутов без проверки.
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 09/12/2017
 
 Ниже показано, как использовать одну строку ресурса для проверки атрибутов с несколькими классами:
 
-```
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc()
@@ -136,7 +136,7 @@ ASP.NET Core позволяет задать два значения языка 
 
 2. В **поиск установленных шаблонов** введите «resource» и имя файла.
 
-    ![Диалоговое окно добавления нового элемента](localization/_static/res.png)
+    ![Диалоговое окно ''Добавление нового элемента''](localization/_static/res.png)
 
 3. Введите значение ключа (собственную строку) в **имя** столбец и переведенных строк в **значение** столбца.
 
@@ -182,7 +182,7 @@ ASP.NET Core позволяет задать два значения языка 
 
 ### <a name="adding-other-cultures"></a>Добавление других языков и региональных параметров
 
-Каждой комбинации языка и региональных параметров (отличных от языка по умолчанию) требуется отдельный файл ресурсов. Создание файлов ресурсов для разных языков и региональных параметров путем создания новых файлов ресурсов, в которых языковые коды ISO являются частью имени файла (например, **en-us**, **fr-ca**, и ** en-gb**). Эти коды ISO помещаются между именем файла и *.resx* файл с расширением, как и в *Welcome.es MX.resx* (Испанский/Мексика). Чтобы указать язык, удалите код страны (`MX` в предыдущем примере). Имя файла ресурсов нейтральным испанский — *Welcome.es.resx*.
+Каждой комбинации языка и региональных параметров (отличных от языка по умолчанию) требуется отдельный файл ресурсов. Создание файлов ресурсов для разных языков и региональных параметров путем создания новых файлов ресурсов, в которых языковые коды ISO являются частью имени файла (например, **en-us**, **fr-ca**, и  **en-gb**). Эти коды ISO помещаются между именем файла и *.resx* файл с расширением, как и в *Welcome.es MX.resx* (Испанский/Мексика). Чтобы указать язык, удалите код страны (`MX` в предыдущем примере). Имя файла ресурсов нейтральным испанский — *Welcome.es.resx*.
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>Реализовать стратегию, чтобы выбрать язык и региональные параметры для каждого запроса  
 
@@ -190,7 +190,7 @@ ASP.NET Core позволяет задать два значения языка 
 
 Локализация настраивается в `ConfigureServices` метод:
 
-[!code-csharp[Main](localization/sample/Program.cs?name=snippet1)]
+[!code-csharp[Main](localization/sample/Localization/Program.cs?name=snippet1)]
 
 * `AddLocalization`Добавляет службы локализации в контейнере службы. Приведенный выше также задает путь к ресурсам «Ресурсы».
 
@@ -202,7 +202,7 @@ ASP.NET Core позволяет задать два значения языка 
 
 Текущий язык и региональные параметры в запросе задается в локализации [по промежуточного слоя](middleware.md). По промежуточного слоя локализации включено в `Configure` метод *Program.cs* файла. Обратите внимание, что по промежуточного слоя локализации должен быть настроен перед любое по промежуточного слоя, который может проверить запрос языка и региональных параметров (например, `app.UseMvcWithDefaultRoute()`).
 
-[!code-csharp[Main](localization/sample/Program.cs?name=snippet2)]
+[!code-csharp[Main](localization/sample/Localization/Program.cs?name=snippet2)]
 
 `UseRequestLocalization`Инициализирует `RequestLocalizationOptions` объекта. При каждом запросе списка из `RequestCultureProvider` в `RequestLocalizationOptions` перечисляется и используется первый поставщик, успешно можно определить запрос языка и региональных параметров. Поставщики по умолчанию берутся из `RequestLocalizationOptions` класса:
 
@@ -287,15 +287,15 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 В этом примере **Localization.StarterWeb** проект на [GitHub](https://github.com/aspnet/entropy) содержится пользовательский Интерфейс, чтобы задать `Culture`. *Views/Shared/_SelectLanguagePartial.cshtml* файла можно выбрать из списка поддерживаемых языков и региональных параметров языка и региональных параметров:
 
-[!code-HTML[Main](localization/sample/Views/Shared/_SelectLanguagePartial.cshtml)]
+[!code-HTML[Main](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 
 *Views/Shared/_SelectLanguagePartial.cshtml* добавляется файл `footer` раздел файла разметки, она будет доступна во всех представлениях:
 
-[!code-HTML[Main](localization/sample/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
+[!code-HTML[Main](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
 `SetLanguage` Метод задает язык и региональные параметры cookie.
 
-[!code-csharp[Main](localization/sample/Controllers/HomeController.cs?range=57-67)]
+[!code-csharp[Main](localization/sample/Localization/Controllers/HomeController.cs?range=57-67)]
 
 Не удается подключить *_SelectLanguagePartial.cshtml* на примеры кода для данного проекта. **Localization.StarterWeb** проект на [GitHub](https://github.com/aspnet/entropy) содержится код для потока `RequestLocalizationOptions` для Razor, частичная через [внедрения зависимостей](dependency-injection.md) контейнера.
 

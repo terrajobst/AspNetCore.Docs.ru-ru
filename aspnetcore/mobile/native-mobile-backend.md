@@ -11,11 +11,11 @@ ms.assetid: 3b6a32f2-5af9-4ede-9b7f-17ab300526d0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 7b2b35b1519badbc8b8fbddab97a0c6336926185
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: be1cd9f4fe41f1a79669975cb6a89439cdd9e5c7
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="creating-backend-services-for-native-mobile-applications"></a>Создание серверных служб для собственных мобильных приложений
 
@@ -46,8 +46,6 @@ ms.lasthandoff: 09/12/2017
 ![Изменение элемента диалогового окна](native-mobile-backend/_static/todo-android-edit-item.png)
 
 В этом примере настраивается по умолчанию для использования серверных служб, размещенных на developer.xamarin.com, которые позволяет выполнять операции только для чтения. Можно протестировать их самостоятельно для приложения ASP.NET Core, созданные в следующем разделе, запущенными на локальном компьютере, необходимо обновить приложение `RestUrl` константой. Перейдите к `ToDoREST` проект и откройте *Constants.cs* файла. Замените `RestUrl` URL-адрес, включающий компьютера IP адрес (не "localhost" или "127.0.0.1, так как этот адрес используется в эмуляторе устройства не со своего компьютера). Включите имя порта (5000). Для тестирования работы служб с устройством, убедитесь, что у вас нет активных брандмауэр блокирует доступ к этому порту.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "csharp"} -->
 
 ```csharp
 // URL of REST service (Xamarin ReadOnly Service)

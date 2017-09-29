@@ -11,11 +11,11 @@ ms.assetid: dd4135ec-2b15-410c-b3fb-3d12eed4a1ac
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/testing
-ms.openlocfilehash: e8a464e75dea3a0ec08c13a11888884e6bb6a4c7
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 5d81e0193fb042993452ed314e70fb63573e615c
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="testing-controller-logic-in-aspnet-core"></a>Тестирование логики контроллер в ASP.NET Core
 
@@ -122,9 +122,7 @@ ms.lasthandoff: 09/12/2017
 
 Настраивает каждого класса теста интеграции `TestServer` , будет выполняться приложение ASP.NET Core. По умолчанию `TestServer` размещает веб-приложения в папке, где он запущен - в этом случае папки проекта. Таким образом, при попытке проверить действия контроллера, которые возвращают `ViewResult`, появится это сообщение об ошибке:
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "none"} -->
-
-```none
+```
 The view 'Index' was not found. The following locations were searched:
 (list of locations)
 ```

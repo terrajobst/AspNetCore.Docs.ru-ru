@@ -11,11 +11,11 @@ ms.assetid: 5e16d5e8-5696-4cb2-8ec7-d36be305c922
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/areas
-ms.openlocfilehash: 0f388ba090ada11a0ac7937606cbcd5a89d6263e
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 3096d6404ff9c7e34eefcfb1990e7bf1ccab27ba
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="areas"></a>Области
 
@@ -105,8 +105,6 @@ services.Configure<RazorViewEngineOptions>(options =>
 
 После того как вы определили в иерархии папок, необходимо указать MVC, каждый контроллер, сопоставлена с областями. Это сделать с помощью оформления имени контроллера с `[Area]` атрибута.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
-
 ```csharp
 ...
    namespace MyStore.Areas.Products.Controllers
@@ -130,8 +128,6 @@ services.Configure<RazorViewEngineOptions>(options =>
    ```
 
 Настройка определения маршрута, который работает с только что созданный областей. [Маршрутизации к действиям контроллера](routing.md) статье подробно создание определений маршрутов, включая использование стандартных маршрутов и маршрутов с атрибутами. В этом примере мы будем использовать обычные маршрута. Чтобы сделать это, откройте *файла Startup.cs* файл и измените его, добавив `areaRoute` с именем ниже определения маршрута.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4, 5, 6]}} -->
 
 ```csharp
 ...

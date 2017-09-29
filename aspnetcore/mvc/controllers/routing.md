@@ -11,11 +11,11 @@ ms.assetid: 26250a4d-bf62-4d45-8549-26801cf956e9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/routing
-ms.openlocfilehash: da67124ffc874c4f83fff077c6429e9f3e571587
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 5a0b5399f7441035cb1231a009681ca22b07ab4e
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="routing-to-controller-actions"></a>Маршрутизация в действиях контроллера
 
@@ -103,8 +103,6 @@ app.UseMvc(routes =>
 
 `UseMvc`и `UseMvcWithDefaultRoute` добавить экземпляр `RouterMiddleware` для конвейера по промежуточного слоя. MVC не взаимодействует непосредственно с по промежуточного слоя и использует маршрутизацию для обработки запросов. MVC подключен ко всем маршрутам через экземпляр `MvcRouteHandler`. Код внутри `UseMvc` — примерно следующего содержания:
 
-<!-- literal_block {"ids": [], "names": [], "backrefs": [], "dupnames": [], "xml:space": "preserve", "classes": []} -->
-
 ```csharp
 var routes = new RouteBuilder(app);
 
@@ -125,8 +123,6 @@ app.UseRouter(routes.Build());
 ## <a name="conventional-routing"></a>Обычная маршрутизация
 
 `default` Маршрута:
-
-<!-- literal_block {"ids": [], "names": [], "backrefs": [], "dupnames": [], "xml:space": "preserve", "classes": []} -->
 
 ```csharp
 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
@@ -152,15 +148,13 @@ routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
 Можно добавить несколько маршрутов внутри `UseMvc` , добавив дополнительные вызовы `MapRoute`. Это позволит вам определить несколько соглашения или добавить обычной маршруты, которые выделены для определенного действия, такие как:
 
-<!-- literal_block {"ids": [], "names": [], "backrefs": [], "dupnames": [], "xml:space": "preserve", "classes": []} -->
-
 ```csharp
 app.UseMvc(routes =>
 {
    routes.MapRoute("blog", "blog/{*article}",
             defaults: new { controller = "Blog", action = "Article" });
    routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-}
+});
 ```
 
 `blog` Маршрут здесь *выделенной обычной маршрута*, это означает, что он использует традиционных систем маршрутизации, но предназначенный для определенных действий. Поскольку `controller` и `action` не отображаются в шаблоне маршрута как параметры, они могут иметь только значения по умолчанию и таким образом этот маршрут всегда сопоставлять действие `BlogController.Article`.
@@ -177,8 +171,6 @@ app.UseMvc(routes =>
 ### <a name="disambiguating-actions"></a>Неоднозначными действия
 
 Если два действия совпадают по маршрутизация, MVC должны устранить неоднозначность в выберите кандидата «рекомендации», либо исключение. Пример:
-
-<!-- literal_block {"ids": [], "names": [], "backrefs": [], "dupnames": [], "xml:space": "preserve", "classes": []} -->
 
 ```csharp
 public class ProductsController : Controller
@@ -284,8 +276,6 @@ public class MyDemoController : Controller
 
 Атрибут маршрутизации можно также сделать использование `Http[Verb]` атрибуты, такие как `HttpPostAttribute`. Все эти атрибуты могут принимать шаблона маршрута. В этом примере показано два действий, которые соответствуют один и тот же шаблон маршрута:
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 [HttpGet("/products")]
 public IActionResult ListProducts()
@@ -339,8 +329,6 @@ public class ProductsApiController : Controller
 ### <a name="combining-routes"></a>Объединение маршрутов
 
 Чтобы сделать атрибут маршрутизации менее повторяющихся, атрибуты маршрута на контроллере, объединяются с атрибуты маршрута в отдельных операциях. Какой-либо шаблон маршрута на контроллере добавляются к шаблонов маршрута для действия. Делает помещения атрибута маршрута для контроллера **все** действий в контроллере маршрутизацию атрибута.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 [Route("products")]
@@ -432,8 +420,6 @@ public class ProductsController : MyBaseController
 
 Атрибут маршрутизации поддерживает определение нескольких маршрутов достижения те же действия. Наиболее распространенное использование является имитируют поведение *обычной маршрут по умолчанию* как показано в следующем примере:
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 [Route("[controller]")]
 public class ProductsController : Controller
@@ -445,8 +431,6 @@ public class ProductsController : Controller
 ```
 
 Размещение различных атрибутов маршрутов на контроллере означает каждый из них объединит с каждым из атрибутов маршрутов на методы действий.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 [Route("Store")]
@@ -460,8 +444,6 @@ public class ProductsController : Controller
 ```
 
 При различных атрибутов маршрутов (, реализующие `IActionConstraint`) помещаются в действие, а затем объединяет каждое действие ограничение с помощью шаблона маршрута из атрибута, который она определена.
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 [Route("api/[controller]")]
@@ -630,8 +612,6 @@ public Task<IActionResult> Edit(int id, Customer customer)
 
 Обычная маршрутизация можно использовать специальный вид определение маршрут с именем *выделенной обычной маршрута*. В следующем примере маршрут с именем `blog` выделенной обычной маршрутом.
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 app.UseMvc(routes =>
 {
@@ -687,8 +667,6 @@ app.UseMvc(routes =>
 При выполнении действия внутри области, значения маршрута `area` могут быть использованы как *значение окружения* для маршрутизации, используемый для создания URL-адрес. Это означает, что по умолчанию областей выступать в *прикрепленные* для создания URL-адресов, как показано в следующем примере.
 
 [!code-csharp[Main](routing/sample/AreasRouting/Startup.cs?name=snippet3)]
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {"linenostart": 1}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#", "source": "/Users/shirhatti/src/Docs/aspnet/mvc/controllers/routing/sample/AreasRouting/Areas/Duck/Controllers/UsersController.cs"} -->
 
 [!code-csharp[Main](routing/sample/AreasRouting/Areas/Duck/Controllers/UsersController.cs)]
 

@@ -1,24 +1,24 @@
 ---
 title: "Связь с браузером в ASP.NET Core"
 author: ncarandini
-description: "Функцию Visual Studio, которая связывает среду разработки с одного или нескольких веб-браузеров"
+description: "Узнайте, как связь с браузером является функцией Visual Studio, которая связывает среду разработки с одного или нескольких веб-браузеров."
 keywords: "ASP.NET Core, связь с браузером, синхронизации CSS"
 ms.author: riande
 manager: wpickett
-ms.date: 12/28/2016
+ms.date: 09/22/2017
 ms.topic: article
 ms.assetid: 11813d4c-3f8a-445a-b23b-e4a57d001abc
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-browserlink
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 211dd5d03e6b8414e0b2ed3234d8970c92f72452
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 67ddc58e38962bd876050739a2a1447be4f589bb
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
-# <a name="introduction-to-browser-link-in-aspnet-core"></a>Введение в связи с браузером в ASP.NET Core 
+# <a name="browser-link-in-aspnet-core"></a>Связь с браузером в ASP.NET Core 
 
 По [Nicolò Carandini](https://github.com/ncarandini), [Mike Wasson](https://github.com/MikeWasson), и [Tom Dykstra](https://github.com/tdykstra)
 
@@ -26,42 +26,49 @@ ms.lasthandoff: 09/22/2017
 
 ## <a name="browser-link-setup"></a>Установка связи обозревателя
 
-ASP.NET Core **веб-приложение** шаблонов в Visual Studio 2015 и более поздних версий, имеют все необходимое для связи с браузером.
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Чтобы добавить в проект, созданный с помощью ASP.NET Core связь с браузером **пустой** или **веб-API** шаблона, выполните следующие действия:
+ASP.NET Core 2.x **веб-приложение**, **пустой**, и **веб-API** шаблона проекты, использующие [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) мета пакет, который содержит ссылку на пакет для [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/). Таким образом, использование `Microsoft.AspNetCore.All` метапакет требует никаких дополнительных действий, чтобы сделать доступными для использования связь с браузером.
 
-1. Добавить *Microsoft.VisualStudio.Web.BrowserLink.Loader* пакета 
-2. Добавьте в код конфигурации в *файла Startup.cs* файл.
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-### <a name="add-the-package"></a>Добавление пакета
+ASP.NET Core 1.x **веб-приложение** шаблон проекта содержит ссылку на пакет для [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) пакета. **Пустой** или **веб-API** шаблона проектов необходимо добавить ссылку на пакет `Microsoft.VisualStudio.Web.BrowserLink`.
 
-Поскольку компоненты Visual Studio, самым простым способом добавления пакета — для открытия **консоль диспетчера пакетов** (**представление > Другие окна > консоль диспетчера пакетов**) и выполните следующую команду:
+Так как это функция Visual Studio, самым простым способом для добавления пакета **пустой** или **веб-API** шаблона проекта является открытие **консоль диспетчера пакетов** (**Представление** > **другие окна** > **консоль диспетчера пакетов**) и выполните следующую команду:
 
 ```console
-install-package Microsoft.VisualStudio.Web.BrowserLink.Loader
+install-package Microsoft.VisualStudio.Web.BrowserLink
 ```
 
-Кроме того, можно использовать **диспетчера пакетов NuGet**.  Щелкните правой кнопкой мыши имя проекта в **обозревателе решений**и выберите **управление пакетами NuGet**. 
+Кроме того, можно использовать **диспетчера пакетов NuGet**. Щелкните правой кнопкой мыши имя проекта в **обозревателе решений** и выберите **управление пакетами NuGet**:
 
 ![Диспетчер пакетов Open NuGet](using-browserlink/_static/open-nuget-package-manager.png)
 
-Затем найдите и установки пакета.
+Найти и установить пакет:
 
 ![Добавление пакета с помощью диспетчера пакетов NuGet](using-browserlink/_static/add-package-with-nuget-package-manager.png)
 
-### <a name="add-configuration-code"></a>Добавьте в код конфигурации
+---
 
-Откройте *файла Startup.cs* файл и в `Configure` метод добавьте следующий код:
+### <a name="configuration"></a>Конфигурация
+
+В `Configure` метод *файла Startup.cs* файла:
 
 ```csharp
 app.UseBrowserLink();
 ```
 
-Обычно этот код находится внутри `if` блока, который обеспечивает связь с браузером только в среде разработки, как показано ниже:
+Обычно код находится внутри `if` блок, позволяющий только связь с браузером в среде разработки, как показано ниже:
 
-[!code-csharp[Main](./using-browserlink/sample/BrowserLinkSample/src/BrowserLinkSample/Startup.cs?highlight=1,4&range=40-44)]
+```csharp
+if (env.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    app.UseBrowserLink();
+}
+```
 
-Дополнительные сведения см. в статье [Работа с несколькими средами](../fundamentals/environments.md).
+Дополнительные сведения см. в статье [Работа с несколькими средами](xref:fundamentals/environments).
 
 ## <a name="how-to-use-browser-link"></a>Как использовать связь с браузером
 
@@ -71,10 +78,10 @@ app.UseBrowserLink();
 
 На панели инструментов связь с браузером можно:
 
-- Обновить веб-приложения в нескольких браузерах за один раз
-- Откройте **мониторинга связи с браузером**
-- Включить или отключить **связь с браузером**
-- Включение и отключение автоматической синхронизации CSS
+* Обновите веб-приложения в нескольких браузерах за один раз.
+* Откройте **мониторинга связи с браузером**.
+* Включить или отключить **связь с браузером**. Примечание: По умолчанию в Visual Studio 2017 г. (15,3) отключена связь с браузером.
+* Включение и отключение автоматической синхронизации CSS.
 
 > [!NOTE]
 > Некоторые Visual Studio подключаемые модули, прежде всего *2015 пакет расширения Web* и *2017 г. пакет расширения веб*, предоставляют расширенные функциональные возможности для связи с браузером, но некоторые дополнительные функции не работают с ASP. Проекты NET Core.
@@ -85,11 +92,11 @@ app.UseBrowserLink();
 
 ![Раскрывающееся меню F5](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-Чтобы одновременно открыть несколько браузеров, выберите **просмотреть с помощью... ** же раскрывающемся списке.  Удерживая нажатой клавишу CTRL при выборе в браузерах, требуется и нажмите кнопку **Обзор**:
+Чтобы одновременно открыть несколько браузеров, выберите **просмотреть с помощью...**  же раскрывающемся списке. Удерживая нажатой клавишу CTRL при выборе в браузерах, требуется и нажмите кнопку **Обзор**:
 
 ![Одновременное открытие большинство браузеров](using-browserlink/_static/open-many-browsers-at-once.png)
 
-Ниже приведен пример снимка экрана отображение откройте Visual Studio с представление Index и два открытые окна браузера.
+Ниже приведен на снимке экрана показан откройте Visual Studio с помощью индекса представления и два открытые окна браузера.
 
 ![Синхронизация с пример двух браузеров](using-browserlink/_static/sync-with-two-browsers-example.png)
 
@@ -109,11 +116,11 @@ app.UseBrowserLink();
 
 ![Откройте browserslink панели мониторинга.](using-browserlink/_static/open-browserlink-dashboard.png)
 
-Если браузер не подключен, можно запустить сеанс отладки не щелкнув _Просмотр в браузере_ ссылку:
+Если браузер не подключен, можно запустить сеанс режима отладки, выбрав *Просмотр в браузере* ссылку:
 
 ![browserlink-панели мониторинга нет подключений](using-browserlink/_static/browserlink-dashboard-no-connections.png)
 
-В противном случае подключенной браузеры отображаются со путь к странице, отображение каждого браузера:
+В противном случае — путь к странице, показывающая всеми браузерами, показаны подключенных браузеры:
 
 ![browserlink панель мониторинга — два подключения](using-browserlink/_static/browserlink-dashboard-two-connections.png)
 
@@ -121,7 +128,7 @@ app.UseBrowserLink();
 
 ### <a name="enable-or-disable-browser-link"></a>Включить или отключить связь с браузером
 
-При повторном включении связь с браузером после ее отключения, необходимо обновить в браузерах для повторного подключения их.
+При повторном включении связь с браузером после ее отключения, браузеры для повторного подключения, их необходимо обновить.
 
 ### <a name="enable-or-disable-css-auto-sync"></a>Включение и отключение автоматической синхронизации CSS
 
@@ -141,6 +148,6 @@ app.UseBrowserLink();
 </body>
 ```
 
-Исходные файлы не изменяются. Компонент по промежуточного слоя динамически вставляет ссылки на скрипты. 
+Исходные файлы не изменены. Компонент по промежуточного слоя динамически вставляет ссылки на скрипты. 
 
-Поскольку код браузером все JavaScript, он работает во всех браузерах, поддерживаемых SignalR, не требуя подключаемый модуль обозревателя.
+Поскольку код браузером все JavaScript, он работает во всех браузерах, поддерживаемых SignalR без необходимости подключаемый модуль обозревателя.

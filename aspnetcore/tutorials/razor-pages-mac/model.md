@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-mac/model
-ms.openlocfilehash: d000da06face3080cf81de4dc15a2596f2bfa7ea
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 648ecd3a782fa489b727982ce5f7a2087539bf38
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="adding-a-model-to-a-razor-pages-app-in-aspnet-core-with-visual-studio-for-mac"></a>Добавление модели в приложение Razor Pages в ASP.NET Core с помощью Visual Studio для Mac
 
@@ -47,15 +47,15 @@ ms.lasthandoff: 09/19/2017
 
 Чтобы изменить файл *.csproj*, выполните следующие действия.
 
-* Выберите **Файл > Открыть** и выберите файл *.csproj*.
+* Выберите **Файл** > **Открыть**, а затем выберите файл *.csproj*.
 * Выберите **Параметры**.
 * Изменение значение параметра **Открыть с помощью** на **Редактор исходного кода**.
 
 ![Изменение файла csproj](model/csproj.png)
 
-В следующем примере кода показан обновленный файл *csproj*.
+Добавьте ссылку на инструмент `Microsoft.EntityFrameworkCore.Tools.DotNet` во вторую группу **\<ItemGroup>**:
 
-[!code-xml[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?highlight=10)]
+[!code-xml[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?range=12-16&highlight=4)]
 
 [!INCLUDE[model3](../../includes/RP/model3.md)]
 [!INCLUDE[model 4x](../../includes/RP/model4x.md)]

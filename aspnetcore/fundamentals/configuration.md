@@ -11,15 +11,15 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: 7d591259587766a932a14bb030c76274101d16ac
-ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
+ms.openlocfilehash: 379030df4ca91a38fce251aeaab9c5dfaf11e915
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
-[Рик Андерсон](https://twitter.com/RickAndMSFT), [Марка Михаэлиса](http://intellitect.com/author/mark-michaelis/), [Стив Смит](https://ardalis.com/), и [Дэниэла рот](https://github.com/danroth27)
+[Рик Андерсон](https://twitter.com/RickAndMSFT), [Марка Михаэлиса](http://intellitect.com/author/mark-michaelis/), [Стив Смит](https://ardalis.com/), [рот Daniel](https://github.com/danroth27), и [Latham Люк](https://github.com/guardrex)
 
 API конфигурации предоставляет способ настройки приложения на основе списка пар «имя значение». Конфигурация для чтения во время выполнения из нескольких источников. Пары «имя значение» могут быть сгруппированы в многоуровневой иерархии. Нет поставщиков конфигурации для:
 
@@ -295,55 +295,187 @@ key3=value_from_json_3
 
 ## <a name="commandline-configuration-provider"></a>Поставщик конфигурации Командная строка
 
-Следующий пример включает поставщик конфигурации CommandLine последнего:
+[Командная строка конфигурации поставщика](/aspnet/core/api/microsoft.extensions.configuration.commandline.commandlineconfigurationprovider) получает пар ключ значение аргумента командной строки для конфигурации во время выполнения.
 
-[!code-csharp[Main](configuration/sample/CommandLine/Program.cs)]
+[Просмотреть или загрузить образец конфигурации Командная строка](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample/CommandLine)
+
+### <a name="setting-up-the-provider"></a>Настройка поставщика
+
+# <a name="basic-configurationtabbasicconfiguration"></a>[Основная конфигурация](#tab/basicconfiguration)
+
+Чтобы активировать настройки командной строки, вызовите `AddCommandLine` метод расширения в экземпляре [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder):
+
+[!code-csharp[Main](configuration/sample_snapshot/CommandLine/Program.cs?highlight=18,21)]
+
+Выполнение кода, выводятся следующие данные:
+
+```console
+MachineName: MairaPC
+Left: 1980
+```
+
+Передача аргумента пары "ключ значение" в командной строке приводит к изменению значений `Profile:MachineName` и `App:MainWindow:Left`:
+
+```console
+dotnet run Profile:MachineName=BartPC App:MainWindow:Left=1979
+```
+
+В окне консоли отображается:
+
+```console
+MachineName: BartPC
+Left: 1979
+```
+
+Чтобы переопределить конфигурацию, сформированную другими поставщиками конфигурации с конфигурацией командной строки, вызовите `AddCommandLine` последней в `ConfigurationBuilder`:
+
+[!code-csharp[Main](configuration/sample_snapshot/CommandLine/Program2.cs?range=11-16&highlight=1,5)]
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+Типичные приложения ASP.NET Core 2.x использовать метод статических удобных `CreateDefaultBuilder` для создания узла:
+
+[!code-csharp[Main](configuration/sample_snapshot/Program.cs?highlight=12)]
+
+`CreateDefaultBuilder`Загружает дополнительной конфигурации из *appsettings.json*, *appsettings. {} Среда} .json*, [секретов пользователя](xref:security/app-secrets) (в `Development` среды), переменные и аргументы командной строки. Поставщик конфигурации CommandLine вызывается. Последнего вызова поставщика позволяет ранее вызов аргументы командной строки, которые передаются во время выполнения для переопределения набора конфигурации с других поставщиков конфигурации.
+
+Обратите внимание, что для *appsettings* файлов, в которой `reloadOnChange` включен. Аргументы командной строки переопределяются в том случае, если совпадающее значение конфигурации в *appsettings* был изменен после запуска приложения.
+
+> [!NOTE]
+> В качестве альтернативы с помощью `CreateDefaultBuilder` создание узла с помощью метода [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) и вручную создания конфигурации с [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) поддерживается в ASP.NET Core 2.x. См. на вкладке 1.x ASP.NET Core для получения дополнительной информации.
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+Создание [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) и вызвать `AddCommandLine` метод, чтобы использовать поставщик конфигурации Командная строка. Последнего вызова поставщика позволяет ранее вызов аргументы командной строки, которые передаются во время выполнения для переопределения набора конфигурации с других поставщиков конфигурации. Применить конфигурацию [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) с `UseConfiguration` метод:
+
+[!code-csharp[Main](configuration/sample_snapshot/CommandLine/Program2.cs?highlight=11,15,19)]
+
+---
+
+### <a name="arguments"></a>Аргументы
+
+Аргументы, передаваемые в командной строке должен соответствовать одному из двух форматов, показано в следующей таблице.
+
+| Аргумент формата                                                     | Пример        |
+| ------------------------------------------------------------------- | :------------: |
+| Один аргумент: пара ключ значение, разделенные знаком равенства (`=`) | `key1=value`   |
+| Последовательность из двух аргументов: пара ключ значение, разделенные пробелом    | `/key1 value1` |
+
+**Один аргумент**
+
+Значение должно следовать знак равенства (`=`). Может иметь значение null (например, `mykey=`).
+
+Ключ может иметь префикс.
+
+| Префикс ключа               | Пример         |
+| ------------------------ | :-------------: |
+| Без префикса                | `key1=value1`   |
+| Единый тире (`-`) &#8224; | `-key2=value2`  |
+| Двух дефисов (`--`)        | `--key3=value3` |
+| Косая черта (`/`)      | `/key4=value4`  |
+
+&#8224; Ключ с префиксом один тире (`-`) должны быть предоставлены в [переключения сопоставления](#switch-mappings), описаны ниже.
+
+Пример команды:
+
+```console
+dotnet run key1=value1 -key2=value2 --key3=value3 /key4=value4
+```
+
+Примечание: Если `-key1` не существуют в [переключения сопоставления](#switch-mappings) заданное поставщиком конфигурации `FormatException` возникает исключение.
+
+**Последовательность из двух аргументов**
+
+Значение не может иметь значение null и должны соответствовать ключ, разделенные пробелом.
+
+Ключ должен иметь префикс.
+
+| Префикс ключа               | Пример         |
+| ------------------------ | :-------------: |
+| Единый тире (`-`) &#8224; | `-key1 value1`  |
+| Двух дефисов (`--`)        | `--key2 value2` |
+| Косая черта (`/`)      | `/key3 value3`  |
+
+&#8224; Ключ с префиксом один тире (`-`) должны быть предоставлены в [переключения сопоставления](#switch-mappings), описаны ниже.
+
+Пример команды:
+
+```console
+dotnet run -key1 value1 --key2 value2 /key3 value3
+```
+
+Примечание: Если `-key1` не существуют в [переключения сопоставления](#switch-mappings) заданное поставщиком конфигурации `FormatException` возникает исключение.
+
+### <a name="duplicate-keys"></a>Повторяющиеся ключи
+
+Если указаны повторяющиеся ключи, используется последний пару ключ значение.
+
+### <a name="switch-mappings"></a>Переключение сопоставления
+
+При построении конфигурации с вручную `ConfigurationBuilder`, при необходимости можно предоставить ключ словаря сопоставления для `AddCommandLine` метод. Коммутатор сопоставления позволяют предоставить логика замены имя ключа.
+
+При использовании словарь сопоставлений коммутатора словаре проверяется на ключ, который совпадает с ключом, предоставляемые аргумента командной строки. Если ключ командной строки, найден в словаре, значение словаря (замены ключей) передается обратно, чтобы задать конфигурацию. Сопоставление коммутатора не требуется для командной строки раздела префиксом с одного дефиса (`-`).
+
+Переключение ключа правила сопоставления словаря:
+
+* Параметры должны начинаться с дефиса (`-`) или двойной дефис (`--`).
+* Словарь сопоставлений коммутатора не должен содержать повторяющиеся ключи.
+
+В следующем примере `GetSwitchMappings` метод позволяет аргументы командной строки для использования одного тире (`-`) ключа префикс и избежать начальные подраздела префиксы.
+
+[!code-csharp[Main](configuration/sample/CommandLine/Program.cs?highlight=10-19,32)]
+
+Без указания аргументов командной строки, передаваемые словаре `AddInMemoryCollection` задает значения конфигурации. Запуск приложения с помощью следующей команды:
+
+```console
+dotnet run
+```
+
+В окне консоли отображается:
+
+```console
+MachineName: RickPC
+Left: 1980
+```
 
 Используйте следующие параметры для передачи в параметрах конфигурации.
 
 ```console
-dotnet run /Profile:MachineName=Bob /App:MainWindow:Left=1234
+dotnet run /Profile:MachineName=DahliaPC /App:MainWindow:Left=1984
 ```
 
-Что отображается:
+В окне консоли отображается:
 
 ```console
-Hello Bob
-Left 1234
+MachineName: DahliaPC
+Left: 1984
 ```
 
-`GetSwitchMappings` Метод позволяет использовать `-` вместо `/` и удаляются начальные подраздела префиксы. Пример:
+Вновь созданный словаре сопоставлений коммутатора он содержит данные, показанные в следующей таблице.
+
+| Ключ            | Значение                 |
+| -------------- | --------------------- |
+| `-MachineName` | `Profile:MachineName` |
+| `-Left`        | `App:MainWindow:Left` |
+
+Чтобы продемонстрировать ключа переключения, используя словарь, выполните следующую команду:
 
 ```console
-dotnet run -MachineName=Bob -Left=7734
+dotnet run -MachineName=ChadPC -Left=1988
 ```
 
-Отображает:
+Ключи командной строки, меняются местами. В окне консоли отображаются значения конфигурации для `Profile:MachineName` и `App:MainWindow:Left`:
 
 ```console
-Hello Bob
-Left 7734
+MachineName: ChadPC
+Left: 1988
 ```
-
-Аргументы командной строки необходимо включить (он может иметь значение null) значение. Пример:
-
-```console
-dotnet run /Profile:MachineName=
-```
-
-Нормально, но
-
-```console
-dotnet run /Profile:MachineName
-```
-
-приводит к исключению. Если указать параметр командной строки префикса - или--для которого отсутствует соответствующий сопоставление коммутатора будет создано исключение.
 
 ## <a name="the-webconfig-file"></a>В файле web.config
 
 Объект *web.config* файл будет необходим для размещения приложения в IIS или IIS Express. *Web.config* включает AspNetCoreModule в службах IIS для запуска приложения. Параметры в *web.config* включить AspNetCoreModule в службах IIS для запуска приложения и настройки других параметров IIS и модулей. Если вы используете Visual Studio и удалить *web.config*, Visual Studio создаст новое.
 
-### <a name="additional-notes"></a>Дополнительные сведения
+## <a name="additional-notes"></a>Дополнительные сведения
 
 * После внедрения зависимости (DI) не задано до `ConfigureServices` вызывается.
 * Система конфигурации не учитывать DI.
@@ -351,9 +483,10 @@ dotnet run /Profile:MachineName
   * `IConfigurationRoot`Используется для корневого узла. Можно инициировать перезагрузку.
   * `IConfigurationSection`Представляет раздел конфигурации значения. `GetSection` И `GetChildren` методы возвращают `IConfigurationSection`.
 
-### <a name="additional-resources"></a>Дополнительные ресурсы
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Работа с несколькими средами](environments.md)
 * [Безопасное хранение секретов приложений во время разработки](../security/app-secrets.md)
+* [Размещение в ASP.NET Core](xref:fundamentals/hosting)
 * [Введение зависимостей](dependency-injection.md)
 * [Поставщик конфигурации Azure Key Vault](xref:security/key-vault-configuration)

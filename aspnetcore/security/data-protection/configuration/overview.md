@@ -11,11 +11,11 @@ ms.assetid: 0e4881a3-a94d-4e35-9c1c-f025d65dcff0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 39fab796c24456d61a6a103c4a3f7a8722b4718c
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 9361dcec89a0f35067181523cc56637d629614ff
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuring-data-protection"></a>Настройка защиты данных
 
@@ -67,8 +67,6 @@ public void ConfigureServices(IServiceCollection services)
 
 <a name=data-protection-code-sample-application-name></a>
 
-<!-- literal_block {"ids": ["data-protection-code-sample-application-name"], "linenos": false, "names": ["data-protection-code-sample-application-name"], "xml:space": "preserve", "language": "csharp"} -->
-
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -113,7 +111,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Стек защиты данных позволяет изменять алгоритм по умолчанию, используемые вновь создаваемых ключей. Самый простой способ сделать это является вызов UseCryptographicAlgorithms из конфигурации обратного вызова, как в примере ниже.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
 services.AddDataProtection()
@@ -124,7 +122,7 @@ services.AddDataProtection()
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 services.AddDataProtection()
@@ -150,7 +148,7 @@ services.AddDataProtection()
 
 ### <a name="specifying-custom-managed-algorithms"></a>Указание пользовательских управляемых алгоритмов
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Чтобы указать пользовательские управляемые алгоритмы, создайте экземпляр ManagedAuthenticatedEncryptorConfiguration, указывающий типы реализации.
 
@@ -169,7 +167,7 @@ serviceCollection.AddDataProtection()
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Чтобы указать пользовательские управляемые алгоритмы, создайте экземпляр ManagedAuthenticatedEncryptionSettings, указывающий типы реализации.
 
@@ -199,7 +197,7 @@ serviceCollection.AddDataProtection()
 
 ### <a name="specifying-custom-windows-cng-algorithms"></a>Указание пользовательские алгоритмы Windows CNG
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Чтобы указать пользовательский алгоритм Windows CNG с помощью шифрования в режиме CBC + проверки HMAC, создайте экземпляр CngCbcAuthenticatedEncryptorConfiguration алгоритмической сведениями.
 
@@ -220,7 +218,7 @@ services.AddDataProtection()
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Чтобы указать пользовательский алгоритм Windows CNG с помощью шифрования в режиме CBC + проверки HMAC, создайте экземпляр CngCbcAuthenticatedEncryptionSettings алгоритмической сведениями.
 
@@ -246,7 +244,7 @@ services.AddDataProtection()
 > [!NOTE]
 > Алгоритм шифрования симметричных блока должен иметь длину ключа 128 бит ≥ и размер блока ≥ 64-разрядная, и он должен поддерживать режим CBC шифрования с заполнением PKCS #7. Хэш-алгоритм должен иметь размер хэш-кода > = 128 бит и должны поддерживать открываемого с флагом BCRYPT_ALG_HANDLE_HMAC_FLAG. \*Поставщика свойства можно задать значение null, чтобы использовать поставщика по умолчанию для указанного алгоритма. В разделе [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) Дополнительные сведения см.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Чтобы указать пользовательский алгоритм Windows CNG с помощью шифрования режим Galois (счетчиков) + проверки, создайте экземпляр CngGcmAuthenticatedEncryptorConfiguration алгоритмической сведениями.
 
@@ -263,7 +261,7 @@ services.AddDataProtection()
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Чтобы указать пользовательский алгоритм Windows CNG с помощью шифрования режим Galois (счетчиков) + проверки, создайте экземпляр CngGcmAuthenticatedEncryptionSettings алгоритмической сведениями.
 
@@ -291,5 +289,5 @@ services.AddDataProtection()
 
 ### <a name="see-also"></a>См. также
 
-* [Зависимые сценарии не DI](non-di-scenarios.md)
-* [Расширенные политики компьютера](machine-wide-policy.md)
+* [Сценарии, не поддерживающие DI](non-di-scenarios.md)
+* [Политика на уровне компьютера](machine-wide-policy.md)
