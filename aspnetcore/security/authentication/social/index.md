@@ -11,88 +11,86 @@ ms.assetid: eda7ee17-f38c-462e-8d1d-63f459901cf3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/social/index
-ms.openlocfilehash: 5c4b7139a09acf2f02877840d09df431e0e71e0c
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 56036000535156b4b5814dde2a0145dcdfff28c3
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
-# <a name="enabling-authentication-using-facebook-google-and-other-external-providers"></a><span data-ttu-id="1d12e-103">Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков</span><span class="sxs-lookup"><span data-stu-id="1d12e-103">Enabling authentication using Facebook, Google and other external providers</span></span>
+# <a name="enabling-authentication-using-facebook-google-and-other-external-providers"></a>Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков
 
 <a name=security-authentication-social-logins></a>
 
-<span data-ttu-id="1d12e-104">Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="1d12e-104">By [Valeriy Novytskyy](https://github.com/01binary) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-<span data-ttu-id="1d12e-105">В этом руководстве демонстрируется построение приложения ASP.NET Core 2.x, с помощью которого пользователи могут выполнять вход, используя OAuth 2.0 с учетными данными внешних поставщиков проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="1d12e-105">This tutorial demonstrates how to build an ASP.NET Core 2.x app that enables users to log in using OAuth 2.0 with credentials from external authentication providers.</span></span>
+В этом руководстве демонстрируется построение приложения ASP.NET Core 2.x, с помощью которого пользователи могут выполнять вход, используя OAuth 2.0 с учетными данными внешних поставщиков проверки подлинности.
 
-<span data-ttu-id="1d12e-106">В следующих разделах рассматриваются такие поставщики, как [Facebook](facebook-logins.md), [Twitter](twitter-logins.md), [Google](google-logins.md), и [Microsoft](microsoft-logins.md).</span><span class="sxs-lookup"><span data-stu-id="1d12e-106">[Facebook](facebook-logins.md), [Twitter](twitter-logins.md), [Google](google-logins.md), and [Microsoft](microsoft-logins.md) providers are covered in the following sections.</span></span> <span data-ttu-id="1d12e-107">В сторонних пакетах также доступны другие поставщики, такие как [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) и [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).</span><span class="sxs-lookup"><span data-stu-id="1d12e-107">Other providers are available in third-party packages such as [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) and [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).</span></span>
+В следующих разделах рассматриваются такие поставщики, как [Facebook](facebook-logins.md), [Twitter](twitter-logins.md), [Google](google-logins.md), и [Microsoft](microsoft-logins.md). В сторонних пакетах также доступны другие поставщики, такие как [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) и [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
 
 ![Значки социальных сетей для Facebook, Twitter, Google+ и Windows](index/_static/social.png)
 
-<span data-ttu-id="1d12e-109">Возможность выполнять вход с использованием существующих учетных данных очень удобна и позволяет передать все задачи, связанные с управлением процессом входа, сторонней организации.</span><span class="sxs-lookup"><span data-stu-id="1d12e-109">Enabling users to sign in with their existing credentials is convenient for the users and shifts many of the complexities of managing the sign-in process onto a third party.</span></span> <span data-ttu-id="1d12e-110">Демонстрацию того, как вход с использованием учетных данных социальных сетей помогает повысить трафик и количество конверсий, см. в примерах для [Facebook](https://www.facebook.com/unsupportedbrowser) и [Twitter](https://dev.twitter.com/resources/case-studies).</span><span class="sxs-lookup"><span data-stu-id="1d12e-110">For examples of how social logins can drive traffic and customer conversions, see case studies by [Facebook](https://www.facebook.com/unsupportedbrowser) and [Twitter](https://dev.twitter.com/resources/case-studies).</span></span>
+Возможность выполнять вход с использованием существующих учетных данных очень удобна и позволяет передать все задачи, связанные с управлением процессом входа, сторонней организации. Демонстрацию того, как вход с использованием учетных данных социальных сетей помогает повысить трафик и количество конверсий, см. в примерах для [Facebook](https://www.facebook.com/unsupportedbrowser) и [Twitter](https://dev.twitter.com/resources/case-studies).
 
-<span data-ttu-id="1d12e-111">Примечание. Представленные здесь пакеты абстрагируют значительную часть задач, связанных с процессом проверки подлинности OAuth, однако для эффективного устранения неполадок необходимо понимать общие сведения об их реализации.</span><span class="sxs-lookup"><span data-stu-id="1d12e-111">Note: Packages presented here abstract a great deal of complexity of the OAuth authentication flow, but understanding the details may become necessary when troubleshooting.</span></span> <span data-ttu-id="1d12e-112">Также вы можете воспользоваться множеством доступных ресурсов, например содержащих [общие сведения о протоколе OAuth 2](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) или [описание основных принципов работы OAuth 2](http://www.bubblecode.net/2016/01/22/understanding-oauth2/).</span><span class="sxs-lookup"><span data-stu-id="1d12e-112">Many resources are available; for example, see [Introduction to OAuth 2](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) or [Understanding OAuth 2](http://www.bubblecode.net/2016/01/22/understanding-oauth2/).</span></span> <span data-ttu-id="1d12e-113">Некоторые проблемы можно устранить, ознакомившись с [исходным кодом ASP.NET Core для пакетов поставщиков](https://github.com/aspnet/Security/tree/dev/src).</span><span class="sxs-lookup"><span data-stu-id="1d12e-113">Some issues can be resolved by looking at the [ASP.NET Core source code for the provider packages](https://github.com/aspnet/Security/tree/dev/src).</span></span>
+Примечание. Представленные здесь пакеты абстрагируют значительную часть задач, связанных с процессом проверки подлинности OAuth, однако для эффективного устранения неполадок необходимо понимать общие сведения об их реализации. Также вы можете воспользоваться множеством доступных ресурсов, например содержащих [общие сведения о протоколе OAuth 2](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) или [описание основных принципов работы OAuth 2](http://www.bubblecode.net/2016/01/22/understanding-oauth2/). Некоторые проблемы можно устранить, ознакомившись с [исходным кодом ASP.NET Core для пакетов поставщиков](https://github.com/aspnet/Security/tree/dev/src).
 
-## <a name="create-a-new-aspnet-core-project"></a><span data-ttu-id="1d12e-114">Создание проекта ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="1d12e-114">Create a New ASP.NET Core Project</span></span>
+## <a name="create-a-new-aspnet-core-project"></a>Создание проекта ASP.NET Core
 
-* <span data-ttu-id="1d12e-115">В Visual Studio 2017 создайте новый проект, используя начальную страницу или команду меню **Файл > Создать > Проект**.</span><span class="sxs-lookup"><span data-stu-id="1d12e-115">In Visual Studio 2017, create a new project from the Start Page, or via **File > New > Project**.</span></span>
+* В Visual Studio 2017 создайте новый проект, используя начальную страницу или команду меню **Файл > Создать > Проект**.
 
-* <span data-ttu-id="1d12e-116">Выберите шаблон **Веб-приложение ASP.NET Core**, который находится в категории **Visual C# > .NET Core**:</span><span class="sxs-lookup"><span data-stu-id="1d12e-116">Select the **ASP.NET Core Web Application** template available in **Visual C# > .NET Core** category:</span></span>
+* Выберите шаблон **Веб-приложение ASP.NET Core**, который находится в категории **Visual C# > .NET Core**:
 
 ![Диалоговое окно создания нового проекта](index/_static/new-project.png)
 
-* <span data-ttu-id="1d12e-118">Коснитесь пункта **Веб-приложение** и убедитесь, что параметру **Проверка подлинности** присвоено значение **Учетные записи отдельных пользователей**:</span><span class="sxs-lookup"><span data-stu-id="1d12e-118">Tap **Web Application** and verify **Authentication** is set to **Individual User Accounts**:</span></span>
+* Коснитесь пункта **Веб-приложение** и убедитесь, что параметру **Проверка подлинности** присвоено значение **Учетные записи отдельных пользователей**:
 
 ![Диалоговое окно "Создание веб-приложения"](index/_static/select-project.png)
 
-<span data-ttu-id="1d12e-120">Примечание. Это руководство относится к пакету SDK версии ASP.NET Core 2.0, который можно выбрать в верхней части мастера.</span><span class="sxs-lookup"><span data-stu-id="1d12e-120">Note: This tutorial applies to ASP.NET Core 2.0 SDK version which can be selected at the top of the wizard.</span></span>
+Примечание. Это руководство относится к пакету SDK версии ASP.NET Core 2.0, который можно выбрать в верхней части мастера.
 
-## <a name="require-ssl"></a><span data-ttu-id="1d12e-121">Обязательное использование SSL</span><span class="sxs-lookup"><span data-stu-id="1d12e-121">Require SSL</span></span>
+## <a name="require-ssl"></a>Обязательное использование SSL
 
-<span data-ttu-id="1d12e-122">Для проверки подлинности по протоколу HTTPS в OAuth 2.0 обязательно использовать протокол SSL.</span><span class="sxs-lookup"><span data-stu-id="1d12e-122">OAuth 2.0 requires the use of SSL for authentication over the HTTPS protocol.</span></span>
+Для проверки подлинности по протоколу HTTPS в OAuth 2.0 обязательно использовать протокол SSL.
 
-<span data-ttu-id="1d12e-123">Примечание. Проекты, созданные с использованием шаблонов **Веб-приложение** или **Веб-API** для ASP.NET Core 2.x, автоматически настраиваются с поддержкой SSL и запускаются с URL-адресом https, если выбран параметр **Учетные записи отдельных пользователей** в диалоговом окне **Изменить способ проверки подлинности** в мастере проекта, как показано выше.</span><span class="sxs-lookup"><span data-stu-id="1d12e-123">Note: Projects created using **Web Application** or **Web API** project templates for ASP.NET Core 2.x are automatically configured to enable SSL and launch with https URL if the **Individual User Accounts** option was selected on **Change Authentication dialog** in the project wizard as shown above.</span></span>
+Примечание. Проекты, созданные с использованием шаблонов **Веб-приложение** или **Веб-API** для ASP.NET Core 2.x, автоматически настраиваются с поддержкой SSL и запускаются с URL-адресом https, если выбран параметр **Учетные записи отдельных пользователей** в диалоговом окне **Изменить способ проверки подлинности** в мастере проекта, как показано выше.
 
-* <span data-ttu-id="1d12e-124">Дополнительные сведения и инструкции по включению поддержки протокола SSL вручную см. в разделе [Настройка HTTPS для разработки в ASP.NET Core](xref:security/https).</span><span class="sxs-lookup"><span data-stu-id="1d12e-124">Learn how to enable SSL manually by following the steps in [Setting up HTTPS for development in ASP.NET Core](xref:security/https) topic.</span></span>
+* Инструкции по включению обязательного использования протокола SSL на сайте см. в разделе [Принудительное применение протокола SSL в приложении ASP.NET Core](xref:security/enforcing-ssl).
 
-* <span data-ttu-id="1d12e-125">Инструкции по включению обязательного использования протокола SSL на сайте см. в разделе [Принудительное применение протокола SSL в приложении ASP.NET Core](xref:security/enforcing-ssl).</span><span class="sxs-lookup"><span data-stu-id="1d12e-125">Then, require SSL on your site by following the steps in [Enforcing SSL in an ASP.NET Core app](xref:security/enforcing-ssl) topic.</span></span>
+## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a>Хранение маркеров безопасности, предоставленных поставщиками входа, с помощью SecretManager
 
-## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a><span data-ttu-id="1d12e-126">Хранение маркеров безопасности, предоставленных поставщиками входа, с помощью SecretManager</span><span class="sxs-lookup"><span data-stu-id="1d12e-126">Use SecretManager to store tokens assigned by login providers</span></span>
+Поставщики входа с использованием учетных данных социальных сетей в процессе регистрации назначают маркеры **идентификатора приложения** и **секретного кода приложения** (точные правила именования зависят от поставщика).
 
-<span data-ttu-id="1d12e-127">Поставщики входа с использованием учетных данных социальных сетей в процессе регистрации назначают маркеры **идентификатора приложения** и **секретного кода приложения** (точные правила именования зависят от поставщика).</span><span class="sxs-lookup"><span data-stu-id="1d12e-127">Social login providers assign **Application Id** and **Application Secret** tokens during the registration process (exact naming varies by provider).</span></span>
+Фактически эти значения определяют *имя пользователя* и *пароль*, которые ваше приложение использует для доступа к API поставщика. Они содержат секретные данные, которые могут быть привязаны к конфигурации приложения с помощью компонента **Secret Manager**, вместо того, чтобы жестко задавать или хранить их непосредственно в файлах конфигурации.
 
-<span data-ttu-id="1d12e-128">Фактически эти значения определяют *имя пользователя* и *пароль*, которые ваше приложение использует для доступа к API поставщика. Они содержат секретные данные, которые могут быть привязаны к конфигурации приложения с помощью компонента **Secret Manager**, вместо того, чтобы жестко задавать или хранить их непосредственно в файлах конфигурации.</span><span class="sxs-lookup"><span data-stu-id="1d12e-128">These values are effectively the *user name* and *password* your application uses to access their API, and constitute the "secrets" that can be linked to your application configuration with the help of **Secret Manager** instead of storing them in configuration files directly or hard-coding them.</span></span>
+Инструкции по сохранению маркеров безопасности, назначаемых приведенными ниже поставщиками входа, см. в разделе [Безопасное хранение секретных данных приложения в процессе разработки в ASP.NET Core](xref:security/app-secrets).
 
-<span data-ttu-id="1d12e-129">Инструкции по сохранению маркеров безопасности, назначаемых приведенными ниже поставщиками входа, см. в разделе [Безопасное хранение секретных данных приложения в процессе разработки в ASP.NET Core](xref:security/app-secrets).</span><span class="sxs-lookup"><span data-stu-id="1d12e-129">Follow the steps in [Safe storage of app secrets during development in ASP.NET Core](xref:security/app-secrets) topic so that you can store tokens assigned by each login provider below.</span></span>
+## <a name="setup-login-providers-required-by-your-application"></a>Настройка поставщиков входа, используемых приложением
 
-## <a name="setup-login-providers-required-by-your-application"></a><span data-ttu-id="1d12e-130">Настройка поставщиков входа, используемых приложением</span><span class="sxs-lookup"><span data-stu-id="1d12e-130">Setup login providers required by your application</span></span>
+В следующих разделах приводятся инструкции по настройке приложения для работы с соответствующими поставщиками:
 
-<span data-ttu-id="1d12e-131">В следующих разделах приводятся инструкции по настройке приложения для работы с соответствующими поставщиками:</span><span class="sxs-lookup"><span data-stu-id="1d12e-131">Use the following topics to configure your application to use the respective providers:</span></span>
+* Инструкции для [Facebook](facebook-logins.md)
+* Инструкции для [Twitter](twitter-logins.md)
+* Инструкции для [Google](google-logins.md)
+* Инструкции для [Майкрософт](microsoft-logins.md)
+* Инструкции для [других поставщиков](other-logins.md)
 
-* <span data-ttu-id="1d12e-132">Инструкции для [Facebook](facebook-logins.md)</span><span class="sxs-lookup"><span data-stu-id="1d12e-132">[Facebook](facebook-logins.md) instructions</span></span>
-* <span data-ttu-id="1d12e-133">Инструкции для [Twitter](twitter-logins.md)</span><span class="sxs-lookup"><span data-stu-id="1d12e-133">[Twitter](twitter-logins.md) instructions</span></span>
-* <span data-ttu-id="1d12e-134">Инструкции для [Google](google-logins.md)</span><span class="sxs-lookup"><span data-stu-id="1d12e-134">[Google](google-logins.md) instructions</span></span>
-* <span data-ttu-id="1d12e-135">Инструкции для [Майкрософт](microsoft-logins.md)</span><span class="sxs-lookup"><span data-stu-id="1d12e-135">[Microsoft](microsoft-logins.md) instructions</span></span>
-* <span data-ttu-id="1d12e-136">Инструкции для [других поставщиков](other-logins.md)</span><span class="sxs-lookup"><span data-stu-id="1d12e-136">[Other provider](other-logins.md) instructions</span></span>
+## <a name="optionally-set-password"></a>Необязательная установка пароля
 
-## <a name="optionally-set-password"></a><span data-ttu-id="1d12e-137">Необязательная установка пароля</span><span class="sxs-lookup"><span data-stu-id="1d12e-137">Optionally set password</span></span>
+При регистрации с использованием внешнего поставщика входа у вас нет пароля, зарегистрированного в приложении. Благодаря этому вам не нужно создавать и запоминать пароль для сайта, однако при этом возникает зависимость от внешнего поставщика входа. Если внешний поставщик входа недоступен, вы не сможете войти на веб-сайт.
 
-<span data-ttu-id="1d12e-138">При регистрации с использованием внешнего поставщика входа у вас нет пароля, зарегистрированного в приложении.</span><span class="sxs-lookup"><span data-stu-id="1d12e-138">When you register with an external login provider, you do not have a password registered with the app.</span></span> <span data-ttu-id="1d12e-139">Благодаря этому вам не нужно создавать и запоминать пароль для сайта, однако при этом возникает зависимость от внешнего поставщика входа.</span><span class="sxs-lookup"><span data-stu-id="1d12e-139">This alleviates you from creating and remembering a password for the site, but it also makes you dependent on the external login provider.</span></span> <span data-ttu-id="1d12e-140">Если внешний поставщик входа недоступен, вы не сможете войти на веб-сайт.</span><span class="sxs-lookup"><span data-stu-id="1d12e-140">If the external login provider is unavailable, you won't be able to log in to the web site.</span></span>
+Чтобы создать пароль и войти с использованием адреса электронной почты, который был настроен при входе с использованием внешнего поставщика, выполните следующие действия:
 
-<span data-ttu-id="1d12e-141">Чтобы создать пароль и войти с использованием адреса электронной почты, который был настроен при входе с использованием внешнего поставщика, выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="1d12e-141">To create a password and sign in using your email that you set during the sign in process with external providers:</span></span>
-
-* <span data-ttu-id="1d12e-142">Коснитесь ссылки **Hello <email alias>** в правом верхнем углу, чтобы перейти к представлению **Управление**.</span><span class="sxs-lookup"><span data-stu-id="1d12e-142">Tap the **Hello <email alias>** link at the top right corner to navigate to the **Manage** view.</span></span>
+* Коснитесь ссылки **Hello <email alias>** в правом верхнем углу, чтобы перейти к представлению **Управление**.
 
 ![Представление управления веб-приложения](index/_static/pass1a.png)
 
-* <span data-ttu-id="1d12e-144">Коснитесь элемента **Создать**</span><span class="sxs-lookup"><span data-stu-id="1d12e-144">Tap **Create**</span></span>
+* Коснитесь элемента **Создать**
 
 ![Настройте страницу пароля](index/_static/pass2a.png)
 
-* <span data-ttu-id="1d12e-146">Введите допустимый пароль, который будет использоваться для входа с применением этого адреса электронной почты.</span><span class="sxs-lookup"><span data-stu-id="1d12e-146">Set a valid password and you can use this to sign in with your email.</span></span>
+* Введите допустимый пароль, который будет использоваться для входа с применением этого адреса электронной почты.
 
-## <a name="next-steps"></a><span data-ttu-id="1d12e-147">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="1d12e-147">Next steps</span></span>
+## <a name="next-steps"></a>Следующие шаги
 
-* <span data-ttu-id="1d12e-148">В этой статье описывается внешняя проверка подлинности и приводятся предварительные требования для добавления внешних поставщиков входа в приложение ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="1d12e-148">This article introduced external authentication and explained the prerequisites required to add external logins to your ASP.NET Core app.</span></span>
+* В этой статье описывается внешняя проверка подлинности и приводятся предварительные требования для добавления внешних поставщиков входа в приложение ASP.NET Core.
 
-* <span data-ttu-id="1d12e-149">Инструкции по настройке учетных данных для входа, используемых вашим приложением, см. на соответствующих страницах поставщиков.</span><span class="sxs-lookup"><span data-stu-id="1d12e-149">Reference provider-specific pages to configure logins for the providers required by your app.</span></span>
+* Инструкции по настройке учетных данных для входа, используемых вашим приложением, см. на соответствующих страницах поставщиков.
