@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/dependency-injection
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5dfebeddb3a9394fd1faf798e029a9312201089
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: f5c903a72d004afac55fbcc04ad157442e7a18ee
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="introduction-to-dependency-injection-in-aspnet-core"></a>Общие сведения о внедрение зависимостей в ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/22/2017
 
 ASP.NET Core является разработана с нуля для поддержки и воспользоваться внедрения зависимостей. ASP.NET Core приложения могут использовать службы встроенная платформа, задав их внедрены в методы в классе при запуске, и службы приложения могут быть настроены для внедрения также. Контейнер служб по умолчанию, предоставляемый ASP.NET Core предоставляет минимальный набор и не предназначен для замены другие контейнеры.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/sample)
+[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-dependency-injection"></a>Что такое внедрения зависимости
 

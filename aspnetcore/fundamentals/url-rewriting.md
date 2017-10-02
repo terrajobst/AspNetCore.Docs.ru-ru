@@ -1,7 +1,7 @@
 ---
 title: "По промежуточного слоя в ASP.NET Core видоизменения URL-адресов"
 author: guardrex
-description: "Общие сведения о URL-адрес, перезаписи и перенаправления с инструкциями о способах использования по промежуточного слоя перезаписи URL-адрес в приложениях ASP.NET Core."
+description: "Дополнительные сведения о URL-адрес, перезаписи и перенаправления с по промежуточного слоя перезаписи URL-адрес в приложениях ASP.NET Core."
 keywords: "ASP.NET Core переопределения URL-адресов переписывать, URL-адрес, URL-адрес перенаправления URL-адрес перенаправления, по промежуточного слоя, apache_mod"
 ms.author: riande
 manager: wpickett
@@ -11,17 +11,17 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 44c78a6304eacc70cdee9bb0d9407376017abcac
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: 0a4024edf13651e2ed7e0f87e554e8ba8d895619
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>По промежуточного слоя в ASP.NET Core видоизменения URL-адресов
 
 По [Latham Люк](https://github.com/guardrex) и [Mengistu Микаэль](https://github.com/mikaelm12)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)
+[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
 
 Перезапись URL-адрес является изменение запроса URL-адреса на основании одного или нескольких стандартных правил. Переписывание URL-адресов создает абстракции между расположений ресурсов и их адресов, позволяя местоположения и адреса не связаны тесно. Существует несколько сценариев, где полезен перезаписи URL-адресов:
 * Перемещение или замещение ресурсы сервера временно или навсегда при сохранении стабильный указатели для этих ресурсов

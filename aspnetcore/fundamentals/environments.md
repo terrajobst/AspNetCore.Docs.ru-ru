@@ -1,7 +1,7 @@
 ---
-title: "Работа с несколькими средами"
+title: "Работа с несколькими средами в ASP.NET Core"
 author: ardalis
-description: 
+description: "Узнайте, как ASP.NET Core предоставляет поддержку для управления поведением приложения в нескольких средах."
 keywords: "ASP.NET Core, параметры среды, ASPNETCORE_ENVIRONMENT"
 ms.author: riande
 manager: wpickett
@@ -11,11 +11,11 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: b66ef7e3626effff1c66c37a86865699fa8866f9
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 054b3e9f1e2bcfe1e4a75eca4d9dc6326ee6e44f
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="working-with-multiple-environments"></a>Работа с несколькими средами
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/22/2017
 
 ASP.NET Core обеспечивает поддержку для управления поведением приложения в нескольких средах, например разработки, промежуточной и производственной. Переменные среды используются для указания среды выполнения, что позволяет приложению должны быть настроены для этой среды.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample)
+[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="development-staging-production"></a>Разработка решений, промежуточное хранение производства
 

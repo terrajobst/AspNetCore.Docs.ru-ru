@@ -1,7 +1,7 @@
 ---
 title: "Ведение журнала в ASP.NET Core"
 author: ardalis
-description: "Представляет платформу ведения журналов в ASP.NET Core. Содержит раздел для каждого поставщика встроенного ведения журнала, а также ссылки на некоторые популярные сторонних поставщиков."
+description: "Дополнительные сведения о платформы ведения журналов в ASP.NET Core. Обнаружение встроенных регистраторов и Дополнительные сведения о распространенных сторонних поставщиков."
 keywords: "ASP.NET Core, ведение журнала, ведение журнала providers,Microsoft.Extensions.Logging,ILogger,ILoggerFactory,LogLevel,WithFilter,TraceSource,EventLog,EventSource,scopes"
 ms.author: tdykstra
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca81f01fe1c5026514eafedf852b4bc8f3b6fd21
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 9557e9f6915507450de3ffe500582839a28c3f0c
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>Общие сведения о входе ASP.NET Core
 
@@ -26,11 +26,11 @@ ASP.NET Core поддерживает API ведения журнала, кот�
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample2)
+[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample2) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample)
+[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
 
 ---
 

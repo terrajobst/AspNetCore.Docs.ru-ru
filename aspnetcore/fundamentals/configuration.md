@@ -11,11 +11,11 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: 379030df4ca91a38fce251aeaab9c5dfaf11e915
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: ca6b62dd4699536b24c3422a2a51fc3fe1744f0a
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -33,7 +33,7 @@ API конфигурации предоставляет способ настр�
 
 Каждое значение конфигурации сопоставляет строковый ключ. Поддержка встроенных привязок для десериализации параметров в пользовательский [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) объекта (простой класс .NET со свойствами).
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample)
+[Просмотреть или загрузить образец кода](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="simple-configuration"></a>Простая настройка
 

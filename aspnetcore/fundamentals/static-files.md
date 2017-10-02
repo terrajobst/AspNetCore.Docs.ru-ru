@@ -1,7 +1,7 @@
 ---
 title: "Работа с статических файлов в ASP.NET Core"
 author: rick-anderson
-description: "Работа с статические файлы по ASP.NET Core"
+description: "Дополнительные сведения о работе с статических файлов в ASP.NET Core."
 keywords: "ASP.NET Core, статические файлы, статические активы, HTML, CSS, JavaScript"
 ms.author: riande
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/static-files
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69a4542c9b2a0d7091d05d42029e68384b760dd7
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: e099c4767958f153134e0fb6b3de8132ab1ead82
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="working-with-static-files-in-aspnet-core"></a>Работа с статических файлов в ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/28/2017
 
 Статические файлы, такие как HTML, CSS, JavaScript и изображение, активы, которые может обслуживать приложения ASP.NET Core непосредственно на клиентах.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/sample)
+[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="serving-static-files"></a>Обработку статических файлов
 

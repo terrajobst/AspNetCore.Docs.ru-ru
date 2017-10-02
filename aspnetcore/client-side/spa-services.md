@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/spa-services
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0dbe5e3567bb4feea7e56cff3dcf75be5df88310
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: a93dae3edec73f1b5254aa60662834ca83de62fd
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="using-javascriptservices-for-creating-single-page-applications-with-aspnet-core"></a>С помощью JavaScriptServices для создания приложений на одной странице с помощью ASP.NET Core
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 09/12/2017
 
 Приложение одной странице (SPA) является типом популярных веб-приложения из-за его присущие многофункциональном пользовательском интерфейсе. Интеграция клиентского SPA платформы или библиотеки, такие как [Вращательный](https://angular.io/) или [реагировать](https://facebook.github.io/react/), с серверные платформы, такие как ASP.NET Core могут возникнуть трудности. [JavaScriptServices](https://github.com/aspnet/JavaScriptServices) разработанного для уменьшения трения в процессе интеграции. Он позволяет работать между клиента и сервера технологии стеки.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/spa-services/sample)
+[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/spa-services/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
 
 <a name="what-is-js-services"></a>
 
@@ -87,7 +87,7 @@ ASP.NET Core [вспомогательных функций тегов](xref:mvc
 
 ### <a name="prerequisites"></a>Предварительные требования
 
-Установите следующее:
+Установите следующие компоненты:
 * [предварительной визуализации ASPNET](https://www.npmjs.com/package/aspnet-prerendering) пакета npm:
 
     ```console
@@ -144,7 +144,7 @@ ASP.NET Core [вспомогательных функций тегов](xref:mvc
 
 ### <a name="prerequisites"></a>Предварительные требования
 
-Установите следующее:
+Установите следующие компоненты:
 * [ASPNET webpack](https://www.npmjs.com/package/aspnet-webpack) пакета npm:
 
     ```console
@@ -171,7 +171,7 @@ ASP.NET Core [вспомогательных функций тегов](xref:mvc
 
 ### <a name="prerequisites"></a>Предварительные требования
 
-Установите следующее:
+Установите следующие компоненты:
 * [активные промежуточное webpack](https://www.npmjs.com/package/webpack-hot-middleware) пакета npm:
 
     ```console
@@ -208,7 +208,7 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
 
 ### <a name="prerequisites"></a>Предварительные требования
 
-Установите следующее:
+Установите следующие компоненты:
 * Клиентские маршрутизации пакета npm. В примере с момента:
 
     ```console
@@ -264,7 +264,7 @@ dotnet new angular
     * Исключает исходное сопоставление.
     * Оптимизирует код на стороне клиента через объединение и Минификация.
 
-ASP.NET Core использует переменную среды с именем `ASPNETCORE_ENVIRONMENT` для хранения режим конфигурации. В разделе ** [параметр среды](xref:fundamentals/environments#setting-the-environment) ** для получения дополнительной информации.
+ASP.NET Core использует переменную среды с именем `ASPNETCORE_ENVIRONMENT` для хранения режим конфигурации. В разделе  **[параметр среды](xref:fundamentals/environments#setting-the-environment)**  для получения дополнительной информации.
 
 ### <a name="running-with-net-core-cli"></a>Запуск с .NET Core CLI
 

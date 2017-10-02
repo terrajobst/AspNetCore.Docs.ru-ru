@@ -5,16 +5,16 @@ description:
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
-ms.date: 08/03/2017
+ms.date: 09/03/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: index
-ms.openlocfilehash: d8516643393cdf9175adc78ab98420dc1dc5d1d9
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 748c8c0b9dd0e6eab0d7347bbf89ed80c10bdb54
+ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/29/2017
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 09/12/2017
 
 ASP.NET Core является кроссплатформенной, высокопроизводительной средой с [открытым исходным кодом](https://github.com/aspnet/home) для создания современных облачных приложений, подключенных к Интернету. ASP.NET Core позволяет выполнять следующие задачи:
 
-* Создавать веб-приложения и службы, приложения IoT и серверные части для мобильных приложений.
+* Создавать веб-приложения и службы, приложения [IoT](https://www.microsoft.com/en-us/internet-of-things/) и серверные части для мобильных приложений.
 * Использовать избранные средства разработки в Windows, macOS и Linux.
 * Выполнять развертывания в облаке и локальной среде.
 * Работать в [.NET Core или .NET Framework](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server).

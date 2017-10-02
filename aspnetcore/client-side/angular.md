@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/angular
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d271560476ee4efdffbd457e37eb769a7ae6ca25
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 4aecf9e9bd11cc7e2b36b40955178d9e9368c185
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="using-angularjs-for-single-page-applications-spas-with-aspnet-core"></a>С помощью AngularJS для приложений на одной странице (SPAs) с ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 09/22/2017
 
 В этой статье вы узнаете, как создать приложение ASP.NET SPA стиля, с помощью AngularJS.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/angular/sample)
+[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/angular/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-angularjs"></a>Что такое AngularJS?
 
@@ -63,7 +63,7 @@ AngularJS не является библиотекой манипуляции DO
 
 ## <a name="key-components"></a>Основные компоненты
 
-AngularJS включает ряд основных компонентов, таких как *директивы*, *шаблоны*, *знаки повторения*, *модули*, * контроллеры*, *компоненты*, *маршрутизатора компонент* и многое другое. Давайте рассмотрим, как эти компоненты взаимодействуют для добавления поведения на веб-страницы.
+AngularJS включает ряд основных компонентов, таких как *директивы*, *шаблоны*, *знаки повторения*, *модули*,  *контроллеры*, *компоненты*, *маршрутизатора компонент* и многое другое. Давайте рассмотрим, как эти компоненты взаимодействуют для добавления поведения на веб-страницы.
 
 ### <a name="directives"></a>Директивы
 

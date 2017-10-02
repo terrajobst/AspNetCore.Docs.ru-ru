@@ -1,7 +1,7 @@
 ---
 title: "Открыть веб-интерфейс для .NET (OWIN)"
 author: ardalis
-description: "Общие сведения, чтобы открыть веб-интерфейс для .NET (OWIN)."
+description: "Узнайте, как ASP.NET Core поддерживает открытие веб-интерфейса для .NET (OWIN), который позволяет веб-приложений, связано с веб-серверов."
 keywords: "ASP.NET Core, откройте веб-интерфейс .NET, OWIN"
 ms.author: riande
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/owin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd32d6929f16a619ad2cc8c7752a0373cbdff034
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: e111a451bcc741f3e77f7ce756356cc1b57a5b52
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="introduction-to-open-web-interface-for-net-owin"></a>Общие сведения, чтобы открыть веб-интерфейс для .NET (OWIN)
 
@@ -32,7 +32,7 @@ OWIN обеспечивает разделение уровень, позвол�
 
 Примечание: С помощью этих адаптеров поставляется с затратами по производительности. Приложения, использующие только компоненты ASP.NET Core не следует использовать пакет Owin или адаптеров.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample)
+[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="running-owin-middleware-in-the-aspnet-pipeline"></a>Под управлением OWIN по промежуточного слоя в конвейере ASP.NET
 
