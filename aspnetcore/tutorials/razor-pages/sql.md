@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 852bd2dff96c951f55a9b142d8e15b6ec5856921
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 42fa98886f3e87e79ea1ea4a2223a79319676006
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="working-with-sql-server-localdb-and-aspnet-core"></a>Работа с SQL Server LocalDB и ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/22/2017
 
 Система [конфигурации](xref:fundamentals/configuration) ASP.NET Core считывает `ConnectionString`. Для разработки на локальном уровне она получает строку подключения из файла *appsettings.json*:
 
-[!code-javascript[Main](razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=2&range=8-10)]
+[!code-json[Main](razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=2&range=8-10)]
 
 При развертывании приложения на тестовом или рабочем сервере вы можете использовать переменную среды или другой способ настройки строки подключения к реальному серверу SQL Server. Дополнительные сведения см. в статье [Конфигурация](xref:fundamentals/configuration).
 
@@ -45,9 +45,9 @@ LocalDB — это упрощенная версия ядра СУБД SQL Serv
 
   ![Таблица Movie, открытая в конструкторе](sql/_static/dv.png)
 
-Обратите внимание на значок с изображением ключа рядом с `ID`. По умолчанию EF сделает свойство с именем `ID` первичным ключом.
+Обратите внимание на значок с изображением ключа рядом с `ID`. По умолчанию EF создает свойство с именем `ID` для первичного ключа.
 
-* Щелкните правой кнопкой мыши таблицу `Movie` и выберите пункт **Просмотр данных**.
+* Щелкните правой кнопкой мыши таблицу `Movie` и выберите пункт **Просмотреть данные**.
 
   ![Открытая таблица Movie с отображением данных](sql/_static/vd22.png)
 
@@ -60,7 +60,7 @@ LocalDB — это упрощенная версия ядра СУБД SQL Serv
 Если в базе данных есть фильмы, возвращается инициализатор заполнения и фильмы не добавляются.
 
 ```csharp
-if (context.Movie.Any())
+if (context.Movies.Any())
 {
     return;   // DB has been seeded.
 }
@@ -86,12 +86,12 @@ if (context.Movie.Any())
    * Если среда Visual Studio была запущена в режиме без отладки, нажмите клавишу F5 для запуска в режиме отладки.
    * Если среда Visual Studio была запущена в режиме отладки, остановите отладчик и нажмите клавишу F5.
    
-В приложении будут отображены данные.
+В приложении отображаются заполненные данные.
 
 ![Приложение Movie с данными по фильмам, открытое в Chrome](sql/_static/m55.png)
 
 В следующем учебнике будет улучшено представление данных.
 
 >[!div class="step-by-step"]
-[Назад: сформированные страницы Razor Pages](xref:tutorials/razor-pages/page)   
-[Далее: обновление страниц](xref:tutorials/razor-pages/da1)
+[Предыдущая тема. Шаблонные страницы Razor](xref:tutorials/razor-pages/page)
+[Следующая тема. Обновление страниц](xref:tutorials/razor-pages/da1)

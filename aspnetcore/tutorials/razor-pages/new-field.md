@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: b45642e39eb46631bb8034f4747222fb1bc0a83b
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: cab986d0a7b7ac68cdda36a558e9b05c429108d0
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="adding-a-new-field-to-a-razor-page"></a>Добавление нового поля на страницу Razor
 
@@ -50,7 +50,9 @@ ms.lasthandoff: 09/24/2017
 
 Для работы приложения необходимо обновить базу данных, включив в нее новое поле. Если запустить приложение сейчас, возникнет исключение `SqlException`:
 
-`SqlException: Invalid column name 'Rating'.`
+```
+SqlException: Invalid column name 'Rating'.
+```
 
 Эта ошибка связана с тем, что обновленный класс модели Movie отличается от схемы таблицы Movie в базе данных. (В таблице базы данных отсутствует столбец `Rating`.)
 
@@ -72,9 +74,7 @@ ms.lasthandoff: 09/24/2017
 
 Постройте решение.
 
-<a name="pmc"></a>
-
-В меню **Сервис** последовательно выберите пункты **Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
+<a name="pmc"></a> В меню **Сервис** последовательно выберите пункты **Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
 В PMC введите следующие команды:
 
 ```PMC
@@ -93,13 +93,13 @@ Update-Database
 
 * Выберите базу данных в SSOX.
 * Щелкните базу данных правой кнопкой мыши и выберите *Удалить*.
-* Выберите **Закрыть существующие соединения*
-* Нажмите кнопку **ОК**
-* Обновление базы данных в [PMC](xref:tutorials/razor-pages/new-field#pmc) 
+* Выберите **Закрыть существующие соединения**.
+* Нажмите кнопку **ОК**.
+* Обновите базу данных в [PMC](xref:tutorials/razor-pages/new-field#pmc).
 
-    ```PMC
-    Update-Database
-    ```
+  ```PMC
+  Update-Database
+  ```
 
 Запустите приложение и проверьте возможность создания, редактирования и отображения фильмов с использованием поля `Rating`. Если база данных не заполнена начальными значениями, остановите IIS Express и затем запустите приложение.
 

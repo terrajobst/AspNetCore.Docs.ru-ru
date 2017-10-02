@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 8c6e281e761e69908fc742d1f19c14a00de4bd46
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 1d8d7805aafbf28fef044d09369a1dc76108b141
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core"></a>Начало работы с Razor Pages в ASP.NET Core
 
@@ -28,11 +28,11 @@ ms.lasthandoff: 09/19/2017
 
 ## <a name="create-a-razor-web-app"></a>Создание веб-приложения Razor
 
-* В меню **Файл** Visual Studio откройте меню **Создать > Проект**.
+* В меню **Файл** Visual Studio откройте меню **Создать** > **Проект**.
 * Создайте новое веб-приложение ASP.NET Core. Назовите проект **RazorPagesMovie**. Очень важно, чтобы проект имел имя *RazorPagesMovie*, так как пространства имен при копировании и вставке кода должны совпасть.
- ![Новое веб-приложение ASP.NET Core](../../mvc/razor-pages/index/_static/np.png)
+  ![Новое веб-приложение ASP.NET Core](../../mvc/razor-pages/index/_static/np.png)
 * Выберите в раскрывающемся списке **ASP.NET Core 2.0**, а затем **Веб-приложение**.
- ![Веб-приложение (Razor Pages)](../../mvc/razor-pages/index/_static/np2.png)
+  ![Веб-приложение (Razor Pages)](../../mvc/razor-pages/index/_static/np2.png)
 
 Шаблон Visual Studio создает начальный проект:
 
@@ -48,4 +48,4 @@ ms.lasthandoff: 09/19/2017
 [!INCLUDE[razor-pages-start](../../includes/RP/razor-pages-start.md)]
 
 >[!div class="step-by-step"]
-[Далее: добавление модели](xref:tutorials/razor-pages/modelz)  
+[Далее: добавление модели](xref:tutorials/razor-pages/modelz)

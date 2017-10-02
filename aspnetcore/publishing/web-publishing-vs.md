@@ -5,23 +5,23 @@ description: "Описание веб-публикации в Visual Studio."
 keywords: "ASP.NET Core, веб-публикация, публикация, msbuild, веб-развертывание, публикации dotnet, Visual Studio 2017"
 ms.author: riande
 manager: wpickett
-ms.date: 03/14/2017
+ms.date: 09/26/2017
 ms.topic: article
 ms.assetid: 0377a02d-8fda-47a5-929a-24a16e1d2c93
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/web-publishing-vs
-ms.openlocfilehash: 665c98b5ac16bb9739af4ac204fca59a55dbb812
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 8a2584363cbf418281cc0e2d796debe57fab846f
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="create-publish-profiles-for-visual-studio-and-msbuild-to-deploy-aspnet-core-apps"></a>Создание профилей публикации для Visual Studio и MSBuild с целью развертывания приложений ASP.NET Core
 
 Авторы: [Саид Ибрагим Хашими](https://github.com/sayedihashimi) (Sayed Ibrahim Hashimi) и [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
-В этой статье рассказывается об использовании Visual Studio 2017 для создания профилей публикации. Профили публикации, созданные с помощью Visual Studio, можно применять в MSBuild и Visual Studio 2017.
+В этой статье рассказывается об использовании Visual Studio 2017 для создания профилей публикации. Профили публикации, созданные с помощью Visual Studio, можно применять в MSBuild и Visual Studio 2017. Статья содержит сведения о процессе публикации. Инструкции по публикации в Azure см. в статье [Публикация веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs).
 
 Представленный ниже файл *.csproj* был создан с помощью команды `dotnet new mvc`.
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 09/22/2017
 
 После загрузки проекта вычисляются элементы проекта (файлы). Порядок обработки файла определяется атрибутом `item type`. По умолчанию файлы с расширением *.cs* включаются в список элементов `Compile`. Файлы в списке элементов `Compile` компилируются.
 
-Список элементов `Content` содержит предназначенные для публикации файлы и результаты сборки. По умолчанию файлы, соответствующие шаблону wwwroot/**, включаются в элемент `Content`. [wwwroot/** — это стандартная маска](https://gruntjs.com/configuring-tasks#globbing-patterns), которая охватывает все файлы в папке *wwwroot* **и** ее подпапках. Чтобы напрямую добавить в список публикации отдельный файл, можно добавить этот файл в папку *.csproj*, как показано в разделе [Включение файлов](#including-files).
+Список элементов `Content` содержит предназначенные для публикации файлы и результаты сборки. По умолчанию файлы, соответствующие шаблону wwwroot/**, включаются в элемент `Content`. [wwwroot/** — это стандартная маска](https://gruntjs.com/configuring-tasks#globbing-patterns), которая охватывает все файлы в папке *wwwroot* **и** ее подпапках. Чтобы напрямую добавить в список публикации отдельный файл, можно добавить этот файл в файл *CSPROJ*, как показано в разделе [Включение файлов](#including-files).
 
 При нажатии кнопки **Публикация** в Visual Studio или публикации из командной строки происходит следующее.
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 09/22/2017
 - Вычисляются публикуемые элементы (файлы, требующие публикации).
 - Проект публикуется. (Вычисляемые файлы копируются в место назначения публикации.)
 
-## <a name="simple-command-line-publishing"></a>Простая публикация из командной строки
+## <a name="basic-command-line-publishing"></a>Простая публикация из командной строки
 
 Этот метод работает на всех поддерживаемых платформах .NET Core и не требует Visual Studio. В приведенных ниже примерах команда `dotnet publish` выполняется из папки проекта (содержащей файл *.csproj*). Если вы не находитесь в папке проекта, путь к файлу проекта можно передать явным образом. Пример:
 
@@ -116,23 +116,35 @@ dotnet publish  c:/webs/web1
 
 Для создания и публикации веб-приложения выполните следующие команды.
 
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```console
+dotnet new mvc
+dotnet publish
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
 ```console
 dotnet new mvc
 dotnet restore
 dotnet publish
 ```
 
+--------------
+
 Команда `dotnet publish` выдает результаты следующего вида.
 
 ```console
 C:\Webs\Web1>dotnet publish
-Microsoft (R) Build Engine version 15.1.548.43366
+Microsoft (R) Build Engine version 15.3.409.57025 for .NET Core
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-  Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp1.1\Web1.dll
+  Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp2.0\Web1.dll
+  Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp2.0\publish\
 ```
 
-Папка для публикации по умолчанию — `bin\$(Configuration)\netcoreapp<version>\publish`. Значение параметра `$(Configuration)` по умолчанию — Debug (Отладка). В приведенном выше примере `<TargetFramework>` — это `netcoreapp1.1`. Фактический путь в приведенном выше примере — *bin\Debug\netcoreapp1.1\publish*.
+Папка для публикации по умолчанию — `bin\$(Configuration)\netcoreapp<version>\publish`. Значение параметра `$(Configuration)` по умолчанию — Debug (Отладка). В приведенном выше примере `<TargetFramework>` — это `netcoreapp2.0`.
 
 `dotnet publish -h` отображает справку по публикации.
 
@@ -222,7 +234,7 @@ dotnet publish -c Release -o C:/MyWebs/test
 
 Простейший способ публикации с помощью MSDeploy — это сначала создать профиль публикации в Visual Studio 2017, а затем применить этот профиль из командной строки.
 
-В следующем примере мы создали веб-приложение ASP.NET Core (используя команду `dotnet new mvc`) и добавили профиль публикации Azure с помощью Visual Studio.
+В следующем примере создается веб-приложение ASP.NET Core (с помощью команды `dotnet new mvc`), и добавляется профиль публикации Azure с помощью Visual Studio.
 
 Команда `msbuild` выполняется в **командной строке разработчика для VS 2017**. Командная строка разработчика задаст соответствующий файл *msbuild.exe* в пути и некоторые переменные MSBuild.
 

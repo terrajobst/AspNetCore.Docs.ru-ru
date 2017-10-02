@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: f8d86b48363675adaf27e2bed39f835f117e624a
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 9a822457d1581a70d59c553eb28133815f395d7d
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="adding-validation-to-a-razor-page"></a>Добавление проверки на страницу Razor
 
@@ -128,8 +128,6 @@ public DateTime ReleaseDate { get; set; }
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
-Благодарим вас за изучение общих сведений о страницах Razor. Мы будем рады любым комментариям. Отличным дополнением к этому учебнику является статья [Начало работы с EF и MVC](xref:data/ef-mvc/intro).
-
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Работа с формами](xref:mvc/views/working-with-forms)
@@ -139,3 +137,4 @@ public DateTime ReleaseDate { get; set; }
 
 >[!div class="step-by-step"]
 [Предыдущая тема. Добавление нового поля](xref:tutorials/razor-pages/new-field)
+[Следующая тема. Отправка файлов](xref:tutorials/razor-pages/uploading-files)
