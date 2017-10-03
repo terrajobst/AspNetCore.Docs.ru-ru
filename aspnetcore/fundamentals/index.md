@@ -1,24 +1,24 @@
 ---
 title: "Основы ASP.NET Core"
 author: rick-anderson
-description: "В этой статье приводится общий обзор основных понятий, которые нужно знать для сборки приложений ASP.NET Core."
+description: "Познакомьтесь с основными понятиями для создания приложений ASP.NET Core."
 keywords: "ASP.NET Core, основы, обзор"
 ms.author: riande
 manager: wpickett
-ms.date: 08/18/2017
+ms.date: 09/30/2017
 ms.topic: get-started-article
 ms.assetid: a19b7836-63e4-44e8-8250-50d426dd1070
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/index
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99fbe0e02be27a0fbbb7ff65bc15713aab58c003
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: e707bb92b2d8b1776ae2970001f1699248580e5f
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 10/01/2017
 ---
-# <a name="aspnet-core-fundamentals-overview"></a>ASP.NET Core, основы, обзор
+# <a name="aspnet-core-fundamentals"></a>Основы ASP.NET Core
 
 Приложение ASP.NET Core — это консольное приложение, создающее веб-сервер в своем методе `Main`:
 
@@ -26,9 +26,9 @@ ms.lasthandoff: 08/25/2017
 
 [!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program2x.cs)]
 
-Метод `Main` вызывает `WebHost.CreateDefaultBuilder`, создающий узел веб-приложения по шаблону конструктора. Конструктор содержит методы, определяющие веб-сервер (например, `UseKestrel`), а также класс запуска (`UseStartup`). В приведенном выше примере веб-сервер [Kestrel](xref:fundamentals/servers/kestrel) выделяется автоматически. Веб-узел ASP.NET Core попытается запуститься на сервере IIS, если он будет доступен. Другие веб-серверы, такие как [HTTP.sys](xref:fundamentals/servers/httpsys), можно использовать, вызывая соответствующий метод расширения. `UseStartup` подробно описывается в следующем разделе.
+Метод `Main` вызывает `WebHost.CreateDefaultBuilder`, создающий узел веб-приложения по шаблону конструктора. Конструктор содержит методы, определяющие веб-сервер (например, `UseKestrel`), а также класс запуска (`UseStartup`). В приведенном выше примере веб-сервер [Kestrel](xref:fundamentals/servers/kestrel) выделяется автоматически. Веб-хост ASP.NET Core попытается запуститься в службах IIS, если они доступны. Другие веб-серверы, такие как [HTTP.sys](xref:fundamentals/servers/httpsys), можно использовать, вызывая соответствующий метод расширения. `UseStartup` подробно описывается в следующем разделе.
 
-`IWebHostBuilder`, тип возвращаемого значения вызова `WebHost.CreateDefaultBuilder`, предоставляет множество вспомогательных методов. В число таких методов входят, например, `UseHttpSys` для размещения приложения на веб-сервере HTTP.sys и `UseContentRoot` для указания корневого каталога содержимого. Методы `Build` и `Run` собирают объект `IWebHost`, в котором будет размещаться приложение, и переходят к ожиданию HTTP-запросов.
+`IWebHostBuilder`, тип возвращаемого значения вызова `WebHost.CreateDefaultBuilder`, предоставляет множество вспомогательных методов. В число таких методов входят, например, `UseHttpSys` для размещения приложения в HTTP.sys и `UseContentRoot` для указания корневого каталога содержимого. Методы `Build` и `Run` собирают объект `IWebHost`, в котором будет размещаться приложение, и переходят к ожиданию HTTP-запросов.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/25/2017
 
 Метод `Main` применяет `WebHostBuilder`, создающий узел веб-приложения по шаблону конструктора. Конструктор содержит методы, определяющие веб-сервер (например, `UseKestrel`), а также класс запуска (`UseStartup`). В приведенном выше примере используется веб-сервер [Kestrel](xref:fundamentals/servers/kestrel). Другие веб-серверы, такие как [WebListener](xref:fundamentals/servers/weblistener), можно использовать, вызывая соответствующий метод расширения. `UseStartup` подробно описывается в следующем разделе.
 
-`WebHostBuilder` предоставляет множество вспомогательных методов, включая `UseIISIntegration` для размещения в IIS и IIS Express и `UseContentRoot` для указания корневого каталога содержимого. Методы `Build` и `Run` собирают объект `IWebHost`, в котором будет размещаться приложение, и переходят к ожиданию HTTP-запросов.
+В `WebHostBuilder` есть множество вспомогательных методов, включая `UseIISIntegration` для размещения в службах IIS и IIS Express и `UseContentRoot` для указания корневого каталога содержимого. Методы `Build` и `Run` собирают объект `IWebHost`, в котором будет размещаться приложение, и переходят к ожиданию HTTP-запросов.
 
 ---
 
@@ -59,27 +59,35 @@ ms.lasthandoff: 08/25/2017
 ```csharp
 public class Startup
 {
-    // This method gets called by the runtime. Use this method to add services to the container.
+    // This method gets called by the runtime. Use this method
+    // to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
     }
 
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    // This method gets called by the runtime. Use this method
+    // to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app)
     {
     }
 }
 ```
 
-* `ConfigureServices` определяет [службы](#services), используемые вашим приложением (такие как MVC ASP.NET Core, Entity Framework Core, Identity и т. д.).
-
-* `Configure` определяет [ПО промежуточного слоя](xref:fundamentals/middleware) в конвейере обработки запросов.
+`ConfigureServices` определяет [службы](#dependency-injection-services), используемые вашим приложением (такие как ASP.NET Core MVC, Entity Framework Core и Identity). `Configure` определяет [ПО промежуточного слоя](xref:fundamentals/middleware) для конвейера обработки запросов.
 
 Дополнительные сведения см. в разделе [Запуск приложения](xref:fundamentals/startup).
 
-## <a name="services"></a>Службы
+## <a name="content-root"></a>Корневой каталог содержимого
 
-Служба — это компонент, предназначенный для общего использования в приложении. Доступ к службе предоставляется путем [внедрения зависимостей](xref:fundamentals/dependency-injection). ASP.NET Core включает встроенный контейнер для инверсии управления (IoC), который поддерживает [внедрение конструктора](xref:mvc/controllers/dependency-injection#constructor-injection) по умолчанию. Встроенный контейнер можно заменить на контейнер по вашему выбору. Помимо формирования слабых взаимосвязей внедрение зависимостей обеспечивает доступ к службам в рамках всего приложения. Например, в любой части вашего приложения доступна служба [входа](xref:fundamentals/logging).
+Корневой каталог содержимого — это базовый путь к любому содержимому, которое используется приложением, включая представления, [страницы Razor](xref:mvc/razor-pages/index) и статические активы. По умолчанию корневой каталог содержимого совпадает с базовым путем исполняемого файла приложения.
+
+## <a name="web-root"></a>Корневой веб-узел
+
+Корневой каталог документов — это каталог в проекте, содержащий открытые и статические ресурсы, такие как CSS, JavaScript и файлы изображений.
+
+## <a name="dependency-injection-services"></a>Введение зависимостей (службы)
+
+Служба — это компонент, предназначенный для общего использования в приложении. Доступ к службе предоставляется путем [внедрения зависимостей](xref:fundamentals/dependency-injection). ASP.NET Core включает встроенный контейнер для ****инверсии ****управления ****(IoC), который поддерживает [внедрение конструктора](xref:mvc/controllers/dependency-injection#constructor-injection) по умолчанию. При необходимости вы можете заменить собственный контейнер по умолчанию. Помимо формирования слабых взаимосвязей, внедрение зависимостей обеспечивает доступ к службам в рамках всего приложения (например, [ведение журнала](xref:fundamentals/logging)).
 
 Дополнительные сведения см. в разделе [Введение зависимостей](xref:fundamentals/dependency-injection).
 
@@ -90,51 +98,119 @@ public class Startup
 ASP.NET Core содержит большой набор встроенных ПО промежуточного слоя:
 
 * [Статические файлы](xref:fundamentals/static-files)
-
 * [Маршрутизация](xref:fundamentals/routing)
-
 * [Проверка подлинности](xref:security/authentication/index)
+* [ПО промежуточного слоя для сжатия ответов](xref:performance/response-compression)
+* [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting)
 
-В ASP.NET Core можно использовать любое ПО промежуточного слоя на базе [OWIN](http://owin.org), а также писать собственные, пользовательские ПО промежуточного слоя.
+В приложениях ASP.NET Core можно использовать любое ПО промежуточного слоя на базе [OWIN](http://owin.org), а также писать собственные, пользовательские ПО промежуточного слоя.
 
 Дополнительные сведения см. в статьях [ПО промежуточного слоя](xref:fundamentals/middleware) и [Открытый веб-интерфейс .NET (OWIN)](xref:fundamentals/owin).
 
-## <a name="servers"></a>Серверы
-
-В модели размещения ASP.NET Core запросы не прослушиваются напрямую. Переадресация запросов в приложение происходит через реализацию сервера HTTP. Переадресованный запрос упаковывается как набор объектов функций, доступ к которым можно получить через интерфейсы. Приложение внедряет этот набор в `HttpContext`. ASP.NET Core включает управляемый кроссплатформенный веб-сервер под названием [Kestrel](xref:fundamentals/servers/kestrel). Обычно Kestrel выполняется за рабочим веб-сервером, таким как [IIS](https://iis.net) или [nginx](http://nginx.org).
-
-Дополнительные сведения см. в статьях [Серверы](xref:fundamentals/servers/index) и [Размещения](xref:fundamentals/hosting).
-
-## <a name="content-root"></a>Корневой каталог содержимого
-
-Корневой каталог содержимого — это базовый путь к любому содержимому, которое используется приложением, включая представления, [страницы Razor](xref:mvc/razor-pages/index) и статические активы. По умолчанию корневой каталог содержимого совпадает с базовой папкой, в которой хранится исполняемый файл приложения. Другое расположение для корневого каталога содержимого определяет параметр `WebHostBuilder`.
-
-## <a name="web-root"></a>Корневой веб-узел
-
-Корневой веб-узел приложения — это каталог в проекте, содержащий открытые статические ресурсы, такие как CSS, JavaScript и файлы изображений. По умолчанию ПО промежуточного слоя статических файлов обслуживает только файлы из корневого веб-каталога и его подпапок. Дополнительные сведения см. в статье о [работе со статическими файлами](xref:fundamentals/static-files). По умолчанию путь к корневому веб-узлу указывает на папку */wwwroot*; другое местонахождение можно указать с помощью параметра `WebHostBuilder`.
-
-## <a name="configuration"></a>Конфигурация
-
-В ASP.NET Core для обработки простых пар имен и значений используется новая модель конфигурации. Новая модель конфигурации опирается не на `System.Configuration` или *web.config*, а на упорядоченный набор поставщиков конфигурации. Встроенные поставщики конфигурации поддерживают различные форматы файлов (XML, JSON, INI) и переменных среды для выполнения конфигурации на основе среды. Кроме того, можно писать и собственные, пользовательские поставщики конфигурации.
-
-Дополнительные сведения см. в статье [Конфигурация](xref:fundamentals/configuration).
-
 ## <a name="environments"></a>Среды
 
-Среды разработка и рабочая среда представляют собой основные составляющие в ASP.NET Core и могут задаваться с использованием соответствующих переменных.
+Окружения для разработки и работы представляют собой ключевые компоненты ASP.NET Core и могут задаваться с использованием соответствующих переменных среды.
 
 Дополнительные сведения см. в статье [Работа с несколькими средами](xref:fundamentals/environments).
 
+## <a name="configuration"></a>Конфигурация
+
+ASP.NET Core использует модель конфигурации на основе пар "имя-значение". Модель конфигурации не основана на `System.Configuration` или *web.config*. Конфигурация получает параметры от упорядоченного набора поставщиков конфигурации. Встроенные поставщики конфигурации поддерживают различные форматы файлов (XML, JSON, INI) и переменных среды для выполнения конфигурации на основе среды. Кроме того, можно писать и собственные, пользовательские поставщики конфигурации.
+
+Дополнительные сведения см. в разделе [Конфигурация](xref:fundamentals/configuration).
+
+## <a name="logging"></a>Ведение журнала
+
+ASP.NET Core поддерживает API ведения журнала, который работает с разными поставщиками. Встроенные поставщики поддерживают отправку журналов в одно расположение или несколько. Можно также использовать сторонние платформы ведения журнала.
+
+[Ведение журнала](xref:fundamentals/logging)
+
+## <a name="error-handling"></a>Обработка ошибок
+
+ASP.NET Core включает встроенные функции для обработки ошибок в приложениях, включая страницу исключений разработчика, настраиваемые страницы ошибок, страницы статических кодов состояний и обработку исключений при запуске.
+
+Дополнительные сведения см. в разделе [Обработка ошибок](xref:fundamentals/error-handling).
+
+## <a name="routing"></a>Маршрутизация
+
+В ASP.NET Core присутствуют функции для маршрутизации запросов приложений обработчикам маршрутов.
+
+Дополнительные сведения см. в разделе [Маршрутизация](xref:fundamentals/routing).
+
+## <a name="file-providers"></a>Поставщики файлов
+
+ASP.NET Core ограничивает доступ к файловой системе с помощью поставщиков файлов, которые предоставляют общий интерфейс для работы с файлами на разных платформах.
+
+Дополнительные сведения см. в разделе [Поставщики файлов](xref:fundamentals/file-providers).
+
+## <a name="static-files"></a>Статические файлы
+
+ПО промежуточного слоя для статических файлов обрабатывает такие статические файлы, как HTML, CSS, файлы изображений и JavaScript.
+
+Дополнительные сведения см. в разделе [Работа со статическими файлами](xref:fundamentals/static-files).
+
+## <a name="hosting"></a>Размещение
+
+Приложения ASP.NET Core настраивают и запускают *хост*, который отвечает за запуск приложений и управление жизненным циклом.
+
+Дополнительные сведения см. в разделе [Размещение](xref:fundamentals/hosting).
+
+## <a name="session-and-application-state"></a>Состояние сеанса и приложения
+
+Состояние сеанса — это функция в ASP.NET Core, которую можно использовать для сохранения пользовательских данных во время просмотра веб-приложения пользователем.
+
+Дополнительные сведения см. в разделе [Состояние сеанса и приложения](xref:fundamentals/app-state).
+
+## <a name="servers"></a>Серверы
+
+Модель размещения ASP.NET Core не прослушивает запросы напрямую. Модель размещения полагается на реализацию HTTP-сервера для переадресации запроса в приложение. Переадресованный запрос упаковывается как набор объектов функций, доступ к которым можно получить через интерфейсы. ASP.NET Core включает управляемый кроссплатформенный веб-сервер под названием [Kestrel](xref:fundamentals/servers/kestrel). Часто Kestrel выполняется за рабочим веб-сервером, таким как [IIS](https://www.iis.net/) или [nginx](http://nginx.org). Kestrel можно запускать как пограничный сервер.
+
+Дополнительные сведения см. в разделе [Серверы](xref:fundamentals/servers/index) и в следующих разделах.
+
+* [Kestrel](xref:fundamentals/servers/kestrel)
+* [Модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
+* [HTTP.sys](xref:fundamentals/servers/httpsys) (ранее — [WebListener](xref:fundamentals/servers/weblistener))
+
+## <a name="globalization-and-localization"></a>Глобализация и локализация
+
+Создание многоязычного веб-сайта на основе ASP.NET Core позволяет расширить аудиторию. ASP.NET Core предоставляет службы и ПО промежуточного слоя для локализации на разные языки и для разных региональных параметров.
+
+Дополнительные сведения см. в разделе [Глобализация и локализация](xref:fundamentals/localization).
+
+## <a name="request-features"></a>Параметры запроса
+
+Сведения о реализации веб-сервера, связанные с HTTP-запросами и ответами, определяются в интерфейсах. Эти интерфейсы используются реализациями сервера и ПО промежуточного слоя для создания и изменения конвейера размещения приложений.
+
+Дополнительные сведения см. в разделе [Параметры запроса](xref:fundamentals/request-features).
+
+## <a name="open-web-interface-for-net-owin"></a>Открытый веб-интерфейс для .NET (OWIN)
+
+ASP.NET Core поддерживает открытый веб-интерфейс для .NET (OWIN). OWIN позволяет ослабить зависимость веб-приложений от веб-сервера.
+
+Дополнительные сведения см. в разделе [Открытый веб-интерфейс для .NET (OWIN)](xref:fundamentals/owin).
+
+## <a name="websockets"></a>Протокол WebSocket
+
+[WebSocket](https://wikipedia.org/wiki/WebSocket) — это протокол, предоставляющий сохраняемые двусторонние каналы связи по TCP-подключениям. Он используется для таких приложений, как чаты, биржевые тикеры, игры, а также везде, где в веб-приложении нужны функции реального времени. ASP.NET Core поддерживает функции WebSocket.
+
+Дополнительные сведения см. в разделе [Протокол WebSocket](xref:fundamentals/websockets).
+
+## <a name="microsoftaspnetcoreall-metapackage"></a>Метапакет Microsoft.AspNetCore.All
+
+Метапакет [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) для ASP.NET Core включает:
+
+* все пакеты, поддерживаемые командой ASP.NET Core;
+* все пакеты, поддерживаемые Entity Framework Core; 
+* внутренние и сторонние зависимости, используемые ASP.NET Core и Entity Framework Core.
+
+Дополнительные сведения см. в разделе [Метапакет Microsoft.AspNetCore.All](xref:fundamentals/metapackage).
+
 ## <a name="net-core-vs-net-framework-runtime"></a>Выбор между .NET Core и .NET Framework
 
-Приложения ASP.NET Core могут предназначаться для среды .NET Core или .NET Framework. Дополнительные сведения см. в статье [Выбор между .NET Core и .NET Framework](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server).
+Приложения ASP.NET Core могут задавать среду выполнения .NET Core или .NET Framework как целевую.
 
-## <a name="additional-information"></a>Дополнительные сведения
+Дополнительные сведения см. в статье [Выбор между .NET Core и .NET Framework](/dotnet/articles/standard/choosing-core-framework-server).
 
-См. также следующие статьи.
+## <a name="choose-between-aspnet-core-and-aspnet"></a>Выбор между ASP.NET Core и ASP.NET
 
-- [Обработка ошибок](xref:fundamentals/error-handling)
-- [Поставщики файлов](xref:fundamentals/file-providers)
-- [Глобализация и локализация](xref:fundamentals/localization)
-- [Ведение журнала](xref:fundamentals/logging)
-- [Управление состоянием приложения](xref:fundamentals/app-state)
+Дополнительные сведения о выборе между ASP.NET Core и ASP.NET см. в разделе [Выбор между ASP.NET Core и ASP.NET](xref:fundamentals/choose-between-aspnet-and-aspnetcore).
