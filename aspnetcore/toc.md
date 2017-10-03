@@ -139,6 +139,7 @@
 ## [Тестирование интеграции](testing/integration-testing.md)
 ## [Контроллеры тестирования](mvc/controllers/testing.md)
 ## [Удаленная отладка](https://docs.microsoft.com/visualstudio/debugger/remote-debugging-azure)
+## [Отладка моментальных снимков](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)
 
 # [Работа с данными](data/index.md)
 ## [Начало работы с ASP.NET Core и Entity Framework Core с использованием Visual Studio](data/ef-mvc/index.md)
@@ -178,7 +179,7 @@
 ### [Размещение в Linux с использованием Apache](xref:publishing/apache-proxy)
 ### [Размещение в Docker](xref:publishing/docker)
 #### [Сборка образов Docker](https://docs.microsoft.com/dotnet/articles/core/docker/building-net-docker-images)
-#### [Инструменты Visual Studio для Docker](https://docs.microsoft.com/dotnet/articles/core/docker/visual-studio-tools-for-docker)
+#### [Инструменты Visual Studio для Docker](xref:publishing/vs-tools-for-docker)
 #### [Публикация в образ Docker](https://azure.microsoft.com/documentation/articles/vs-azure-tools-docker-hosting-web-apps-in-docker/)
 ## [Развертывание](xref:tutorials/publish-to-azure-webapp-using-vs)
 ### [Опубликовать в Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs)
