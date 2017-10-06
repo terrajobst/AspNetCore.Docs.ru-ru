@@ -11,11 +11,11 @@ ms.assetid: 981852c9-78f9-4590-aaee-9d50a2838dfe
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/index
-ms.openlocfilehash: 4edec00ebc82b0217e0db4f6325c3e7cca341e08
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 92f480236d035bafe329b14c7383e25c3edd3499
+ms.sourcegitcommit: af6c2a58ea828899d5fbe6bc442a1b1ea3e46cf7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/05/2017
 ---
 # <a name="authentication"></a>Проверка подлинности
 
@@ -44,3 +44,5 @@ ms.lasthandoff: 09/12/2017
   * [Вызов веб-API в веб-приложении ASP.NET Core с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
 
 * [Защита приложений ASP.NET Core с помощью IdentityServer4](https://identityserver4.readthedocs.io/release/)
+
+* [Защита приложений ASP.NET Core с помощью проверки подлинности в службе приложений Azure (Easy Auth) ](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)
