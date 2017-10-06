@@ -5,16 +5,16 @@ description: "В этой статье описываются предварит
 keywords: "ASP.NET Core, миграция"
 ms.author: scaddie
 manager: wpickett
-ms.date: 08/01/2017
+ms.date: 10/03/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 541774d46bbf570ee860c72fdff5cece364935df
-ms.sourcegitcommit: 55759ae80e7039036a7c6da8e3806f7c88ade325
+ms.openlocfilehash: ea8ccbaf9ddc0d7ee18bb58dbc30d3b803143e81
+ms.sourcegitcommit: 25b43461de1f3a5df11c1e0118f911bf5ff220fa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/04/2017
 ---
 # <a name="migrating-from-aspnet-core-1x-to-aspnet-core-20"></a>Миграция с ASP.NET Core 1.x на ASP.NET Core 2.0
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 09/22/2017
 <a name="dot-net-cli-tool-reference"></a>
 
 ## <a name="update-net-core-cli-tools"></a>Обновление средств CLI для .NET Core
-Измените значение атрибута * каждого узла * в файле `Version`CSPROJ`<DotNetCliToolReference />` на 2.0.0.
+Измените значение атрибута  *каждого узла*  в файле `Version`CSPROJ`<DotNetCliToolReference />` на 2.0.0.
 
 Например, вот список средств CLI, используемых в типичном проекте ASP.NET Core 2.0, предназначенном для .NET Core 2.0:
 
@@ -103,6 +103,27 @@ ms.lasthandoff: 09/22/2017
 ```
 Unable to create an object of type '<Context>'. Add an implementation of 'IDesignTimeDbContextFactory<Context>' to the project, or see https://go.microsoft.com/fwlink/?linkid=851728 for additional patterns supported at design time.
 ```
+
+<a name="add-modify-configuration"></a>
+
+## <a name="add-configuration-providers"></a>Все поставщики конфигурации
+В проектах 1.x поставщики конфигурации добавлялись в приложение с помощью конструктора `Startup`. Для этого нужно было создать экземпляр `ConfigurationBuilder`, загрузить применимые поставщики (переменные сред, параметры приложений и т. д.) и инициализировать член `IConfigurationRoot`.
+
+[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_1xStartup)]
+
+В примере выше происходит загрузка члена `Configuration` с параметрами конфигурации из *appsettings.json* и любого файла *appsettings.\<Имя_среды\>.json*, соответствующего свойству `IHostingEnvironment.EnvironmentName`. Эти файлы располагаются по тому же пути, что и *Startup.cs*.
+
+В проектах 2.0 стереотипный код конфигурации из проектов 1.x запускается "за кулисами". Например, переменные сред и параметры приложений загружаются при запуске. Эквивалентный код *Startup.cs* сокращается до инициализации `IConfiguration` с внедрением экземпляра.
+
+[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/Startup.cs?name=snippet_2xStartup)]
+
+Чтобы удалить добавляемых `WebHostBuilder.CreateDefaultBuilder` поставщиков по умолчанию, вызовите метод `Clear` для свойства `IConfigurationBuilder.Sources` внутри `ConfigureAppConfiguration`. Чтобы снова добавить поставщиков, используйте метод `ConfigureAppConfiguration` в *Program.cs*.
+
+[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/Program.cs?name=snippet_ProgramMainConfigProviders&highlight=9-14)]
+
+Конфигурацию, используемую в предыдущем фрагменте кода методом `CreateDefaultBuilder`, можно посмотреть [здесь](https://github.com/aspnet/MetaPackages/blob/rel/2.0.0/src/Microsoft.AspNetCore/WebHost.cs#L152).
+
+Дополнительные сведения см. в разделе [Конфигурация в ASP.NET Core](xref:fundamentals/configuration).
 
 <a name="db-init-code"></a>
 
