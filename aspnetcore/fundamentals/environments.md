@@ -11,11 +11,11 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 054b3e9f1e2bcfe1e4a75eca4d9dc6326ee6e44f
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 2a92c50085e70b4a505913c86348ba5fe54f6d13
+ms.sourcegitcommit: 67811da1278c75cb10994602c13bd5adec3f0907
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/04/2017
 ---
 # <a name="working-with-multiple-environments"></a>Работа с несколькими средами
 
@@ -27,7 +27,7 @@ ASP.NET Core обеспечивает поддержку для управлен
 
 ## <a name="development-staging-production"></a>Разработка решений, промежуточное хранение производства
 
-ASP.NET Core ссылается на определенный [переменной среды](https://github.com/aspnet/Home/wiki), `ASPNETCORE_ENVIRONMENT` для описания приложения в данный момент работает в среде. Эту переменную можно задать любое значение, например, но по соглашению используются три значения: `Development`, `Staging`, и `Production`. Вы найдете следующие значения, используемые в примерах и шаблоны в ASP.NET Core.
+ASP.NET Core ссылается на переменную среды, `ASPNETCORE_ENVIRONMENT` для описания приложения в данный момент работает в среде. Эту переменную можно задать любое значение, например, но по соглашению используются три значения: `Development`, `Staging`, и `Production`. Вы найдете следующие значения, используемые в примерах и шаблоны в ASP.NET Core.
 
 Текущее значение параметра среде могут быть обнаружены программным образом из в приложении. Кроме того, можно использовать среду [тег вспомогательный](../mvc/views/tag-helpers/index.md) для включения определенных разделов в вашей [представление](../mvc/views/index.md) в зависимости от текущей среды приложения.
 
