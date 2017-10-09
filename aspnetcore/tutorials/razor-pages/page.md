@@ -10,17 +10,17 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 3fd155c5e9a119717243a4bafff776fcbd06fab5
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 211d5fd3b8a736799155c2ab1c1cf92993e63fc3
+ms.sourcegitcommit: 3ba32b2b6425ed94604cb0f681db0d5bb5f8ad58
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 09/28/2017
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>Сформированные страницы Razor Pages в ASP.NET Core
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-В этом учебнике изучаются страницы Razor Pages, созданные путем формирования шаблонов в [предыдущем учебнике](xref:tutorials/razor-pages/page). 
+В этом руководстве рассматриваются страницы Razor Pages, созданные в ходе формирования шаблонов в предыдущем руководстве по [добавлению модели](xref:tutorials/razor-pages/model#scaffold-the-movie-model). 
 
 [Просмотрите или скачайте](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie) пример.
 
@@ -144,5 +144,5 @@ Visual Studio выделяет тег `<form method="post">` отдельным 
 В следующем учебнике рассматривается SQL Server LocalDB и заполнение базы данных.
 
 >[!div class="step-by-step"]
-[Назад: Добавление модели](xref:tutorials/razor-pages/modelz)
+[Назад: Добавление модели](xref:tutorials/razor-pages/model)
 [Далее: SQL Server LocalDB](xref:tutorials/razor-pages/sql)

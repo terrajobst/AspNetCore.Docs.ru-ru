@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 9a822457d1581a70d59c553eb28133815f395d7d
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 302e3077e8cf1cc3b145fcb4ba2ff677023d1524
+ms.sourcegitcommit: c9658c0db446f7cb2e443f62b00cf773bed545fa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 09/30/2017
 ---
 # <a name="adding-validation-to-a-razor-page"></a>Добавление проверки на страницу Razor
 
@@ -36,7 +36,12 @@ ms.lasthandoff: 09/28/2017
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
 
-Атрибуты проверки задают поведение, которое применяется к свойствам модели. Атрибуты `Required` и `MinimumLength` указывают, что свойство должно иметь значение. Тем не менее, чтобы удовлетворить ограничениям проверки, пользователю достаточно ввести пробел. Атрибут `RegularExpression` ограничивает набор допустимых для ввода символов. В приведенном выше коде в полях `Genre` и `Rating` можно использовать только буквы (пробелы, числа и специальные символы не допускаются). Атрибут `Range` ограничивает диапазон значений. Атрибут `StringLength` задает максимальную и при необходимости минимальную длину строки. [Типы значений](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/value-types) (например, `decimal`, `int`, `float`, `DateTime`) по своей природе являются обязательными и не требуют атрибута `[Required]`.
+Атрибуты проверки определяют поведение, которое применяется к свойствам модели.
+
+* Атрибуты `Required` и `MinimumLength` означают, что свойство должно иметь значение. Но пользователь может ввести пробел, чтобы соблюсти ограничение проверки для типа, допускающего значение null. [Типы значений](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/value-types), не допускающие значение null (например, `decimal`, `int`, `float` и `DateTime`), являются обязательными и не требуют атрибута `Required`.
+* Атрибут `RegularExpression` ограничивает символы, которые может ввести пользователь. В приведенном выше коде в полях `Genre` и `Rating` можно использовать только буквы (пробелы, числа и специальные символы не допускаются).
+* Атрибут `Range` ограничивает диапазон значений.
+* Атрибут `StringLength` задает максимальную и при необходимости минимальную длину строки. 
 
 Наличие правил проверки, которые автоматически применяются ASP.NET Core, помогает повысить степень надежности приложения. Автоматическая проверка моделей помогает защитить приложение, поскольку вам не приходится беспокоиться о самостоятельной проверке добавляемого кода.
 
@@ -127,6 +132,10 @@ public DateTime ReleaseDate { get; set; }
 В следующем коде демонстрируется объединение атрибутов в одной строке:
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+
+### <a name="publish-to-azure"></a>Публикация в Azure
+
+Дополнительные сведения о публикации этого приложения в Azure см. в руководстве по [публикации веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
