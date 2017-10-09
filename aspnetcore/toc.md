@@ -209,6 +209,7 @@
 #### [Вызов веб-API ASP.NET Core из приложения WPF с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
 #### [Вызов веб-API в веб-приложении ASP.NET Core с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
 ### [Защита приложений ASP.NET Core с помощью IdentityServer4](https://identityserver4.readthedocs.io/)
+### [Защита приложений ASP.NET Core с помощью проверки подлинности в службе приложений Azure (Easy Auth)](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)
 ## [Авторизация](xref:security/authorization/index)
 ### [Введение](xref:security/authorization/introduction)
 ### [Создание приложения с защитой данных пользователя с помощью авторизации](xref:security/authorization/secure-data)
