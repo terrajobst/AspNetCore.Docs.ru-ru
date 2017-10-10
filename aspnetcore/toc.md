@@ -68,7 +68,7 @@
 ## [Создание серверных служб для мобильных приложений](mobile/native-mobile-backend.md)
 ## [Сборка веб-API](mvc/web-api/index.md)
 ## [Создание веб-API](xref:tutorials/first-web-api-mac)
-### [Страницы справки по веб-API ASP.NET с использованием Swagger](tutorials/web-api-help-pages-using-swagger.md)
+### [Страницы справки по веб-API ASP.NET Core с использованием Swagger](tutorials/web-api-help-pages-using-swagger.md)
 ### [Создание серверных служб для собственных мобильных приложений](mobile/native-mobile-backend.md)
 
 # [Основы](fundamentals/index.md)
@@ -279,7 +279,7 @@
 ## [Миграция с ASP.NET Core 1.x на 2.0](xref:migration/1x-to-2x/index)
 ### [Проверка подлинности и удостоверения](xref:migration/1x-to-2x/identity-2x)
 
-# [Справочник по интерфейсам API](/aspnet/core/api/)
+# [Справочник по интерфейсам API](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0)
 
 # [Заметки о выпуске 2.0](aspnetcore-2.0.md)
 ## [Заметки о выпуске 1.1](aspnetcore-1.1.md)
