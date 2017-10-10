@@ -5,27 +5,25 @@ description:
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
-ms.date: 09/01/2017
+ms.date: 10/05/2017
 ms.topic: get-started-article
 ms.assetid: 78571e4a-a143-452d-9cf2-0860f85972e6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 0c0ec1c7c1408b0460c594a47a3e5738cd170d5f
-ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
+ms.openlocfilehash: df22852d2daddb2a3faef8404d0d250a6a1697a5
+ms.sourcegitcommit: e987c950caae7af9c4ece8a82228caa364e0a5df
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 10/05/2017
 ---
 # <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>Публикация веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio
 
 Авторы: [Рик Андерсон (Rick Anderson)](https://twitter.com/RickAndMSFT), [Сезар Блум Сильвейра (Cesar Blum Silveira)](https://github.com/cesarbs) и [Рейчел Аппель (Rachel Appel)](https://twitter.com/rachelappel)
 
-## <a name="set-up-the-development-environment"></a>Настройка среды разработки
+## <a name="set-up"></a>Настройка
 
-* Установите последнюю версию [пакета Azure SDK для Visual Studio](https://www.visualstudio.com/vs/azure-tools/). При установке пакета SDK будет установлена Visual Studio, если это еще не сделано.
-
-* Проверьте свою [учетную запись Azure](https://portal.azure.com/). Вы можете [открыть бесплатную учетную запись Azure](https://azure.microsoft.com/pricing/free-trial/) или [активировать преимущества для подписчиков Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
+* Создайте [бесплатную учетную запись Azure](https://aka.ms/K5y5yh), если у вас ее нет. 
 
 ## <a name="create-a-web-app"></a>Создание веб-приложения
 
@@ -186,8 +184,4 @@ Visual Studio вернет диалоговое окно **Создание сл
 
 ### <a name="next-steps"></a>Следующие шаги
 
-* [Начало работы с ASP.NET Core MVC и Visual Studio](first-mvc-app/start-mvc.md)
-
-* [Введение в ASP.NET Core](../index.md)
-
-* [Основы](../fundamentals/index.md)
+* [Непрерывное развертывание в Azure с помощью Visual Studio и Git](../publishing/azure-continuous-deployment.md)

@@ -1,81 +1,86 @@
 ---
 title: "Разработка приложений ASP.NET Core с использованием dotnet watch"
 author: rick-anderson
-description: "Показывает способы использования dotnet watch."
+description: "В этом учебнике показано, как установить и использовать наблюдатель за файлами .NET Core CLI (dotnet watch) в приложении ASP.NET Core."
 keywords: "ASP.NET Core, использование dotnet watch"
 ms.author: riande
 manager: wpickett
-ms.date: 03/09/2017
+ms.date: 10/05/2017
 ms.topic: article
 ms.assetid: 563ffb3f-d369-4aa5-bf0a-7300b4e7832c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 6a8943619e6174dbcd3d901b7bb736ba5d3af95d
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 9baf2ce2a1270a728616a8a2ab45deca9a9cde6f
+ms.sourcegitcommit: e7f01a649f240b6b57118c53314ab82f7f36f2eb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="developing-aspnet-core-apps-using-dotnet-watch"></a>Разработка приложений ASP.NET Core с использованием dotnet watch
 
-
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Виктор Хурдугачи](https://twitter.com/victorhurdugaci) (Victor Hurdugaci)
 
-Средство `dotnet watch` выполняет команду `dotnet` при изменении файлов исходного кода. Например, в результате изменения файла может выполняться компиляция, тестирование или развертывание.
+`dotnet watch` — это средство, которое запускает команду [.NET Core CLI](/dotnet/core/tools) при изменении исходных файлов. Например, в результате изменения файла может выполняться компиляция, тестирование или развертывание.
 
 В этом руководстве используется уже существующее приложение веб-API с двумя конечными точками, одна из которых возвращает сумму, а другая — произведение. В методе product присутствует ошибка, которая будет исправлена в рамках этого руководства.
 
-Скачайте [образец приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). В нем содержатся два проекта: `WebApp` (веб-приложение) и `WebAppTests` (модульные тесты для веб-приложения).
+Скачайте [образец приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Он содержит два проекта: *WebApp* (веб-API ASP.NET Core) и *WebAppTests* (модульные тесты для веб-API).
 
-В консоли перейдите в папку WebApp и выполните следующие команды:
+В командной оболочке перейдите в папку *WebApp* и запустите следующую команду:
 
-- `dotnet restore`
-- `dotnet run`
+```console
+dotnet run
+```
 
 В выходных данных в консоли будут показаны аналогичные следующим сообщения, которые свидетельствуют о том, что приложение выполняется и ожидает запросов:
 
 ```console
 $ dotnet run
-Hosting environment: Production
+Hosting environment: Development
 Content root path: C:/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebApp
 Now listening on: http://localhost:5000
 Application started. Press Ctrl+C to shut down.
 ```
 
-В веб-браузере перейдите по адресу `http://localhost:5000/api/math/sum?a=4&b=5`. Должен появиться результат `9`.
+В браузере перейдите на адрес `http://localhost:<port number>/api/math/sum?a=4&b=5`. Должен появиться результат `9`.
 
-Перейдите к API product (`http://localhost:5000/api/math/product?a=4&b=5`), который возвращает значение `9`, а не ожидаемое `20`. Эта ошибка будет исправлена далее в этом руководстве.
+Перейдите к API продукта (`http://localhost:<port number>/api/math/product?a=4&b=5`). Он возвращает `9`, а не `20`, как ожидалось. Эта ошибка будет исправлена далее в этом руководстве.
 
 ## <a name="add-dotnet-watch-to-a-project"></a>Добавление `dotnet watch` в проект
 
-- Добавьте `Microsoft.DotNet.Watcher.Tools` в файл *.csproj*:
- ```xml
- <ItemGroup>
-   <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
- </ItemGroup> 
- ```
+1. Добавьте ссылку на пакет `Microsoft.DotNet.Watcher.Tools` в *CSPROJ*-файл:
 
-- Запустите `dotnet restore`.
+    ```xml
+    <ItemGroup>
+        <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
+    </ItemGroup> 
+    ```
 
-## <a name="running-dotnet-commands-using-dotnet-watch"></a>Выполнение команд `dotnet` с помощью `dotnet watch`
+1. Установите пакет `Microsoft.DotNet.Watcher.Tools`, запустив следующую команду:
+    
+    ```console
+    dotnet restore
+    ```
 
-Любые команды `dotnet` можно запускать с помощью `dotnet watch`, например:
+## <a name="running-net-core-cli-commands-using-dotnet-watch"></a>Запуск команд .NET Core CLI с помощью `dotnet watch`
+
+Любую [команду .NET Core CLI](/dotnet/core/tools#cli-commands) можно запустить с `dotnet watch`. Пример:
 
 | Команда | Команда с контрольным значением |
 | ---- | ----- |
 | dotnet run | dotnet watch run |
-| dotnet run -f net451 | dotnet watch run -f net451 |
-| dotnet run -f net451 -- --arg1 | dotnet watch run -f net451 -- --arg1 |
+| dotnet run -f netcoreapp2.0 | dotnet watch run -f netcoreapp2.0 |
+| dotnet run -f netcoreapp2.0 -- --arg1 | dotnet watch run -f netcoreapp2.0 -- --arg1 |
 | dotnet test | dotnet watch test |
 
-Выполните `dotnet watch run` в папке `WebApp`. В выходных данных консоли будет указано, что выполнен запуск `watch`.
+Запустите `dotnet watch run` в папке *WebApp*. В выходных данных консоли будет указано, что запущен `watch`.
 
 ## <a name="making-changes-with-dotnet-watch"></a>Внесение изменений с использованием `dotnet watch`
 
 Убедитесь, что `dotnet watch` выполняется.
 
-Исправьте ошибку в методе `Product` для `MathController` так, чтобы он возвращал произведение, а не сумму чисел.
+Исправьте ошибку в методе `Product` для *MathController.cs* так, чтобы он возвращал произведение, а не сумму чисел.
 
 ```csharp
 public static int Product(int a, int b)
@@ -84,24 +89,25 @@ public static int Product(int a, int b)
 } 
 ```
 
-Сохраните файл. В выходных данных консоли будут показаны сообщения, указывающие, что `dotnet watch` обнаружил изменение файла и перезапустил приложение.
+Сохраните файл. В выходных данных консоли будет показано, что `dotnet watch` обнаружил изменение файла и перезапустил приложение.
 
-Убедитесь, что `http://localhost:5000/api/math/product?a=4&b=5` возвращает правильный результат.
+Убедитесь, что `http://localhost:<port number>/api/math/product?a=4&b=5` возвращает правильный результат.
 
 ## <a name="running-tests-using-dotnet-watch"></a>Выполнение тестов с использованием `dotnet watch`
 
-- Снова измените метод `Product` для `MathController` так, чтобы он возвращал сумму чисел, после чего сохраните файл.
-- В окне командной строки перейдите в папку `WebAppTests`.
-- Запуск `dotnet restore`
-- Запустите `dotnet watch test`. В выходных данных появятся сообщения о том, что проверка завершилась неудачно и модуль наблюдения ожидает изменений в файле:
+1. Снова измените метод `Product` для *MathController.cs* так, чтобы он возвращал сумму чисел, после чего сохраните файл.
+1. В командной оболочке перейдите в папку *WebAppTests*.
+1. Запустите `dotnet restore`.
+1. Запустите `dotnet watch test`. В выходных данных будет указано, что проверка не пройдена и наблюдатель ожидает изменений в файле:
 
- ```console
- Total tests: 2. Passed: 1. Failed: 1. Skipped: 0.
- Test Run Failed.
-  ```
-- Исправьте код метода `Product` так, чтобы он возвращал произведение. Сохраните файл.
+     ```console
+     Total tests: 2. Passed: 1. Failed: 1. Skipped: 0.
+     Test Run Failed.
+     ```
 
-`dotnet watch` обнаруживает изменения в файле и повторно запускает тесты. В выходных данных консоли появляются сообщения об успешном прохождении тестов.
+1. Исправьте код метода `Product` так, чтобы он возвращал произведение. Сохраните файл.
+
+`dotnet watch` обнаруживает изменения в файле и повторно запускает тесты. В выходных данных консоли будет указано, что проверка пройдена.
 
 ## <a name="dotnet-watch-in-github"></a>dotnet-watch на сайте GitHub
 
