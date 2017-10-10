@@ -1,25 +1,24 @@
 ---
 title: "Создание веб-приложения ASP.NET Core MVC для Windows"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "Оглавление по введению в ASP.NET Core MVC на базе Visual Studio для Windows."
+keywords: "ASP.NET Core, MVC, руководство, введение"
 ms.author: riande
 manager: wpickett
-ms.date: 06/26/2017
+ms.date: 10/06/2017
 ms.topic: get-started-article
-ms.assetid: 959ff4ca-be2d-444c-ac04-789e787146f3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/index
-ms.openlocfilehash: b69f345e4b9d9996f48be7f07e436cde4e2d7fa4
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 123ee5d08849a2a6f31e9299f45b20f3e5589e31
+ms.sourcegitcommit: ab91aad2680efc4eb5c0642746e2b981db7f81b8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 10/10/2017
 ---
-# <a name="create-a-web-app-with-aspnet-core-mvc-using-visual-studio-on-windows"></a>Создание веб-приложения ASP.NET Core MVC с помощью Visual Studio для Windows
+# <a name="create-a-web-app-with-aspnet-core-mvc-using-visual-studio"></a>Создание веб-приложения ASP.NET Core MVC с помощью Visual Studio
 
-В этой серии учебников представлены основы создания веб-приложений ASP.NET Core MVC с помощью Visual Studio. [!INCLUDE[consider RP](../../includes/razor.md)]
+ [!INCLUDE[consider RP](../../includes/razor.md)]
 
 1. [Начало работы](start-mvc.md)
 1. [Добавление контроллера](adding-controller.md)
