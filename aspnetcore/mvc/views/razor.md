@@ -1,99 +1,91 @@
 ---
 title: "Справочник по синтаксису Razor для ASP.NET Core"
-author: rick-anderson
-description: "Подробное описание синтаксиса Razor"
-keywords: ASP.NET Core, Razor
+author: guardrex
+description: "Дополнительные сведения о синтаксиса Razor разметки для внедрения серверного кода в веб-страниц."
+keywords: "Директивы Razor ASP.NET Core, Razor,"
 ms.author: riande
 manager: wpickett
-ms.date: 07/04/2017
+ms.date: 09/29/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: 0e65f0e9f672f9f93256ebc039ea0db2e4ef5ae0
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 532e278597a0029b5bae93068af5b7b147c35688
+ms.sourcegitcommit: e45f8912ce32b4071bf7e83b8f8315cd8bba3520
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/04/2017
 ---
-# <a name="razor-syntax-for-aspnet-core"></a><span data-ttu-id="2285b-104">Синтаксис Razor ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="2285b-104">Razor syntax for ASP.NET Core</span></span>
+# <a name="razor-syntax-for-aspnet-core"></a><span data-ttu-id="8589f-104">Синтаксис Razor ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="8589f-104">Razor syntax for ASP.NET Core</span></span>
 
-<span data-ttu-id="2285b-105">По [Taylor Mullen](https://twitter.com/ntaylormullen) и [Рик Андерсон](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="2285b-105">By [Taylor Mullen](https://twitter.com/ntaylormullen) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="8589f-105">По [Рик Андерсон](https://twitter.com/RickAndMSFT), [Latham Люк](https://github.com/guardrex), и [Taylor Mullen](https://twitter.com/ntaylormullen)</span><span class="sxs-lookup"><span data-stu-id="8589f-105">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Luke Latham](https://github.com/guardrex), and [Taylor Mullen](https://twitter.com/ntaylormullen)</span></span>
 
-## <a name="what-is-razor"></a><span data-ttu-id="2285b-106">Что такое Razor</span><span class="sxs-lookup"><span data-stu-id="2285b-106">What is Razor?</span></span>
+<span data-ttu-id="8589f-106">Razor является синтаксис разметки для внедрения серверного кода в веб-страниц.</span><span class="sxs-lookup"><span data-stu-id="8589f-106">Razor is a markup syntax for embedding server-based code into webpages.</span></span> <span data-ttu-id="8589f-107">Синтаксис Razor содержит Razor разметки, C# и HTML.</span><span class="sxs-lookup"><span data-stu-id="8589f-107">The Razor syntax consists of Razor markup, C#, and HTML.</span></span> <span data-ttu-id="8589f-108">Файлы, содержащие Razor, обычно имеют *.cshtml* расширение имени файла.</span><span class="sxs-lookup"><span data-stu-id="8589f-108">Files containing Razor generally have a *.cshtml* file extension.</span></span>
 
-<span data-ttu-id="2285b-107">Razor является синтаксис разметки для внедрения серверного кода в веб-страницы.</span><span class="sxs-lookup"><span data-stu-id="2285b-107">Razor is a markup syntax for embedding server based code into web pages.</span></span> <span data-ttu-id="2285b-108">Синтаксис Razor состоит из разметки Razor, C# и HTML.</span><span class="sxs-lookup"><span data-stu-id="2285b-108">The Razor syntax consists of Razor markup, C# and HTML.</span></span> <span data-ttu-id="2285b-109">Файлы, содержащие Razor, обычно имеют *.cshtml* расширение имени файла.</span><span class="sxs-lookup"><span data-stu-id="2285b-109">Files containing Razor generally have a *.cshtml* file extension.</span></span>
+## <a name="rendering-html"></a><span data-ttu-id="8589f-109">Подготовка к просмотру HTML</span><span class="sxs-lookup"><span data-stu-id="8589f-109">Rendering HTML</span></span>
 
-## <a name="rendering-html"></a><span data-ttu-id="2285b-110">Подготовка к просмотру HTML</span><span class="sxs-lookup"><span data-stu-id="2285b-110">Rendering HTML</span></span>
+<span data-ttu-id="8589f-110">Язык по умолчанию Razor — HTML.</span><span class="sxs-lookup"><span data-stu-id="8589f-110">The default Razor language is HTML.</span></span> <span data-ttu-id="8589f-111">Подготовки отчетов HTML из разметки Razor ничем не отличается от визуализации HTML из HTML-файл.</span><span class="sxs-lookup"><span data-stu-id="8589f-111">Rendering HTML from Razor markup is no different than rendering HTML from an HTML file.</span></span> <span data-ttu-id="8589f-112">Если поместить HTML-разметку в *.cshtml* Razor-файл, он отображается на сервере без изменений.</span><span class="sxs-lookup"><span data-stu-id="8589f-112">If you place HTML markup into a *.cshtml* Razor file, it's rendered by the server unchanged.</span></span>
 
-<span data-ttu-id="2285b-111">Язык по умолчанию Razor — HTML.</span><span class="sxs-lookup"><span data-stu-id="2285b-111">The default Razor language is HTML.</span></span> <span data-ttu-id="2285b-112">Подготовка к просмотру HTML из Razor не отличается от HTML-файла.</span><span class="sxs-lookup"><span data-stu-id="2285b-112">Rendering HTML from Razor is no different than in an HTML file.</span></span> <span data-ttu-id="2285b-113">Файл Razor с следующую разметку:</span><span class="sxs-lookup"><span data-stu-id="2285b-113">A Razor file with the following markup:</span></span>
+## <a name="razor-syntax"></a><span data-ttu-id="8589f-113">Синтаксис Razor</span><span class="sxs-lookup"><span data-stu-id="8589f-113">Razor syntax</span></span>
 
-```html
-<p>Hello World</p>
-```
+<span data-ttu-id="8589f-114">Razor поддерживает C# и использует `@` символ переход из HTML для C#.</span><span class="sxs-lookup"><span data-stu-id="8589f-114">Razor supports C# and uses the `@` symbol to transition from HTML to C#.</span></span> <span data-ttu-id="8589f-115">Razor вычисляет выражения C# и отображает их в выходных данных HTML.</span><span class="sxs-lookup"><span data-stu-id="8589f-115">Razor evaluates C# expressions and renders them in the HTML output.</span></span>
 
-<span data-ttu-id="2285b-114">Подготавливается к просмотру без изменений `<p>Hello World</p>` сервером.</span><span class="sxs-lookup"><span data-stu-id="2285b-114">Is rendered unchanged as `<p>Hello World</p>` by the server.</span></span>
+<span data-ttu-id="8589f-116">Когда `@` следуют символ [Razor зарезервированное ключевое слово](#razor-reserved-keywords), он переходит в Razor разметку.</span><span class="sxs-lookup"><span data-stu-id="8589f-116">When an `@` symbol is followed by a [Razor reserved keyword](#razor-reserved-keywords), it transitions into Razor-specific markup.</span></span> <span data-ttu-id="8589f-117">В противном случае он переходит в обычный C#.</span><span class="sxs-lookup"><span data-stu-id="8589f-117">Otherwise, it transitions into plain C#.</span></span>
 
-## <a name="razor-syntax"></a><span data-ttu-id="2285b-115">Синтаксис Razor</span><span class="sxs-lookup"><span data-stu-id="2285b-115">Razor syntax</span></span>
-
-<span data-ttu-id="2285b-116">Razor поддерживает C# и использует `@` символ переход из HTML для C#.</span><span class="sxs-lookup"><span data-stu-id="2285b-116">Razor supports C# and uses the `@` symbol to transition from HTML to C#.</span></span> <span data-ttu-id="2285b-117">Razor вычисляет выражения C# и отображает их в выходных данных HTML.</span><span class="sxs-lookup"><span data-stu-id="2285b-117">Razor evaluates C# expressions and renders them in the HTML output.</span></span> <span data-ttu-id="2285b-118">Razor может выполнять переход с HTML на C# или на разметку Razor.</span><span class="sxs-lookup"><span data-stu-id="2285b-118">Razor can transition from HTML into C# or into Razor-specific markup.</span></span> <span data-ttu-id="2285b-119">Когда `@` следуют символ [Razor зарезервированное ключевое слово](#razor-reserved-keywords) он переходит в разметку Razor, в противном случае он переходит в обычный C#.</span><span class="sxs-lookup"><span data-stu-id="2285b-119">When an `@` symbol is followed by a [Razor reserved keyword](#razor-reserved-keywords) it transitions into Razor-specific markup, otherwise it transitions into plain C#.</span></span>
-
-<a name=escape-at-label></a>
-
-<span data-ttu-id="2285b-120">Содержащий HTML `@` символы необходимо экранировать со вторым `@` символов.</span><span class="sxs-lookup"><span data-stu-id="2285b-120">HTML containing `@` symbols may need to be escaped with a second `@` symbol.</span></span> <span data-ttu-id="2285b-121">Пример:</span><span class="sxs-lookup"><span data-stu-id="2285b-121">For example:</span></span>
+<span data-ttu-id="8589f-118">Чтобы escape `@` символ в разметке Razor, использовать второй `@` символа:</span><span class="sxs-lookup"><span data-stu-id="8589f-118">To escape an `@` symbol in Razor markup, use a second `@` symbol:</span></span>
 
 ```cshtml
 <p>@@Username</p>
 ```
 
-<span data-ttu-id="2285b-122">будет отображен следующий код HTML:</span><span class="sxs-lookup"><span data-stu-id="2285b-122">would render the following HTML:</span></span>
+<span data-ttu-id="8589f-119">Код отображается в формате HTML с помощью одного `@` символа:</span><span class="sxs-lookup"><span data-stu-id="8589f-119">The code is rendered in HTML with a single `@` symbol:</span></span>
 
-```cshtml
+```html
 <p>@Username</p>
 ```
 
-<a name=razor-email-ref></a>
+<span data-ttu-id="8589f-120">HTML-атрибутов и содержимого, содержащий адреса электронной почты не обрабатывают `@` символ как символ перехода.</span><span class="sxs-lookup"><span data-stu-id="8589f-120">HTML attributes and content containing email addresses don't treat the `@` symbol as a transition character.</span></span> <span data-ttu-id="8589f-121">В следующем примере адреса электронной почты не изменятся путем синтаксического анализа Razor:</span><span class="sxs-lookup"><span data-stu-id="8589f-121">The email addresses in the following example are untouched by Razor parsing:</span></span>
 
-<span data-ttu-id="2285b-123">HTML-атрибутов и содержимого, содержащий адреса электронной почты не обрабатывают `@` символ как символ перехода.</span><span class="sxs-lookup"><span data-stu-id="2285b-123">HTML attributes and content containing email addresses don’t treat the `@` symbol as a transition character.</span></span>
+```cshtml
+<a href="mailto:Support@contoso.com">Support@contoso.com</a>
+```
 
-   `<a href="mailto:Support@contoso.com">Support@contoso.com</a>`
+## <a name="implicit-razor-expressions"></a><span data-ttu-id="8589f-122">Неявные выражения Razor</span><span class="sxs-lookup"><span data-stu-id="8589f-122">Implicit Razor expressions</span></span>
 
-## <a name="implicit-razor-expressions"></a><span data-ttu-id="2285b-124">Неявные выражения Razor</span><span class="sxs-lookup"><span data-stu-id="2285b-124">Implicit Razor expressions</span></span>
+<span data-ttu-id="8589f-123">Неявные Razor выражения начинаются со `@` вместе с кодом C#:</span><span class="sxs-lookup"><span data-stu-id="8589f-123">Implicit Razor expressions start with `@` followed by C# code:</span></span>
 
-<span data-ttu-id="2285b-125">Неявные Razor выражения начинаются со `@` вместе с кодом C#.</span><span class="sxs-lookup"><span data-stu-id="2285b-125">Implicit Razor expressions start with `@` followed by C# code.</span></span> <span data-ttu-id="2285b-126">Пример:</span><span class="sxs-lookup"><span data-stu-id="2285b-126">For example:</span></span>
-
-```html
+```cshtml
 <p>@DateTime.Now</p>
 <p>@DateTime.IsLeapYear(2016)</p>
 ```
 
-<span data-ttu-id="2285b-127">За исключением C# `await` неявные выражения ключевое слово не должно содержать пробелов.</span><span class="sxs-lookup"><span data-stu-id="2285b-127">With the exception of the C# `await` keyword implicit expressions must not contain spaces.</span></span> <span data-ttu-id="2285b-128">Например можно intermingle пробелы при условии, что оператор C# имеет очистить окончания:</span><span class="sxs-lookup"><span data-stu-id="2285b-128">For example, you can intermingle spaces as long as the C# statement has a clear ending:</span></span>
+<span data-ttu-id="8589f-124">За исключением C# `await` ключевое слово, неявные выражения не должно содержать пробелов.</span><span class="sxs-lookup"><span data-stu-id="8589f-124">With the exception of the C# `await` keyword, implicit expressions must not contain spaces.</span></span> <span data-ttu-id="8589f-125">Можно intermingle пробелы, если очистить конца оператора C#:</span><span class="sxs-lookup"><span data-stu-id="8589f-125">You can intermingle spaces if the C# statement has a clear ending:</span></span>
 
-```html
+```cshtml
 <p>@await DoSomething("hello", "world")</p>
 ```
 
-## <a name="explicit-razor-expressions"></a><span data-ttu-id="2285b-129">Прямые выражения Razor</span><span class="sxs-lookup"><span data-stu-id="2285b-129">Explicit Razor expressions</span></span>
+## <a name="explicit-razor-expressions"></a><span data-ttu-id="8589f-126">Прямые выражения Razor</span><span class="sxs-lookup"><span data-stu-id="8589f-126">Explicit Razor expressions</span></span>
 
-<span data-ttu-id="2285b-130">Прямые Razor выражения состоит из символа с балансировкой скобки @.</span><span class="sxs-lookup"><span data-stu-id="2285b-130">Explicit Razor expressions consists of an @ symbol with balanced parenthesis.</span></span> <span data-ttu-id="2285b-131">Например, для подготовки к просмотру время прошлой недели:</span><span class="sxs-lookup"><span data-stu-id="2285b-131">For example, to render last week's time:</span></span>
+<span data-ttu-id="8589f-127">Явные Razor выражения состоят из `@` символ со сбалансированной скобками.</span><span class="sxs-lookup"><span data-stu-id="8589f-127">Explicit Razor expressions consist of an `@` symbol with balanced parenthesis.</span></span> <span data-ttu-id="8589f-128">Для подготовки к просмотру время прошлой неделе, используется следующая разметка Razor:</span><span class="sxs-lookup"><span data-stu-id="8589f-128">To render last week's time, the following Razor markup is used:</span></span>
 
-```html
+```cshtml
 <p>Last week this time: @(DateTime.Now - TimeSpan.FromDays(7))</p>
 ```
 
-<span data-ttu-id="2285b-132">Любое содержимое в @ круглая скобка () вычисляется и отображается в выходных данных.</span><span class="sxs-lookup"><span data-stu-id="2285b-132">Any content within the @() parenthesis is evaluated and rendered to the output.</span></span>
+<span data-ttu-id="8589f-129">Любое содержимое в `@()` скобки вычисляется и отображается в выходных данных.</span><span class="sxs-lookup"><span data-stu-id="8589f-129">Any content within the `@()` parenthesis is evaluated and rendered to the output.</span></span>
 
-<span data-ttu-id="2285b-133">Неявные выражения обычно не могут содержать пробелы.</span><span class="sxs-lookup"><span data-stu-id="2285b-133">Implicit expressions generally cannot contain spaces.</span></span> <span data-ttu-id="2285b-134">Например в следующем коде одну неделю не вычитается из текущего времени:</span><span class="sxs-lookup"><span data-stu-id="2285b-134">For example, in the code below, one week is not subtracted from the current time:</span></span>
+<span data-ttu-id="8589f-130">Неявные выражения, описанные в предыдущем разделе, обычно не может содержать пробелы.</span><span class="sxs-lookup"><span data-stu-id="8589f-130">Implicit expressions, described in the previous section, generally can't contain spaces.</span></span> <span data-ttu-id="8589f-131">В следующем коде одну неделю не вычитается из текущего времени:</span><span class="sxs-lookup"><span data-stu-id="8589f-131">In the following code, one week isn't subtracted from the current time:</span></span>
 
-[!code-html[Main](razor/sample/Views/Home/Contact.cshtml?range=20)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact.cshtml?range=17)]
 
-<span data-ttu-id="2285b-135">Который отображает следующий код HTML:</span><span class="sxs-lookup"><span data-stu-id="2285b-135">Which renders the following HTML:</span></span>
+<span data-ttu-id="8589f-132">Код отображает следующий код HTML:</span><span class="sxs-lookup"><span data-stu-id="8589f-132">The code renders the following HTML:</span></span>
 
 ```html
 <p>Last week: 7/7/2016 4:39:52 PM - TimeSpan.FromDays(7)</p>
 ```
 
-<span data-ttu-id="2285b-136">Явное выражение можно использовать для объединения текста с результатом выражения:</span><span class="sxs-lookup"><span data-stu-id="2285b-136">You can use an explicit expression to concatenate text with an expression result:</span></span>
+<span data-ttu-id="8589f-133">Явное выражение можно использовать для объединения текста с результатом выражения:</span><span class="sxs-lookup"><span data-stu-id="8589f-133">You can use an explicit expression to concatenate text with an expression result:</span></span>
 
 ```cshtml
 @{
@@ -103,70 +95,71 @@ ms.lasthandoff: 09/28/2017
 <p>Age@(joe.Age)</p>
 ```
 
-<span data-ttu-id="2285b-137">Без явного выражение `<p>Age@joe.Age</p>` будет рассматриваться как адрес электронной почты и `<p>Age@joe.Age</p>` будет проходить.</span><span class="sxs-lookup"><span data-stu-id="2285b-137">Without the explicit expression, `<p>Age@joe.Age</p>` would be treated as an email address and `<p>Age@joe.Age</p>` would be rendered.</span></span> <span data-ttu-id="2285b-138">Если они написаны как выражение явного `<p>Age33</p>` подготавливается к просмотру.</span><span class="sxs-lookup"><span data-stu-id="2285b-138">When written as an explicit expression, `<p>Age33</p>` is rendered.</span></span>
+<span data-ttu-id="8589f-134">Без явного выражение `<p>Age@joe.Age</p>` рассматривается как адрес электронной почты и `<p>Age@joe.Age</p>` подготавливается к просмотру.</span><span class="sxs-lookup"><span data-stu-id="8589f-134">Without the explicit expression, `<p>Age@joe.Age</p>` is treated as an email address, and `<p>Age@joe.Age</p>` is rendered.</span></span> <span data-ttu-id="8589f-135">Если они написаны как выражение явного `<p>Age33</p>` подготавливается к просмотру.</span><span class="sxs-lookup"><span data-stu-id="8589f-135">When written as an explicit expression, `<p>Age33</p>` is rendered.</span></span>
 
-<a name=expression-encoding-label></a>
+## <a name="expression-encoding"></a><span data-ttu-id="8589f-136">Кодировка выражения</span><span class="sxs-lookup"><span data-stu-id="8589f-136">Expression encoding</span></span>
 
-## <a name="expression-encoding"></a><span data-ttu-id="2285b-139">Кодировка выражения</span><span class="sxs-lookup"><span data-stu-id="2285b-139">Expression encoding</span></span>
-
-<span data-ttu-id="2285b-140">Выражения C#, которые были оценены как строка, кодируется в HTML.</span><span class="sxs-lookup"><span data-stu-id="2285b-140">C# expressions that evaluate to a string are HTML encoded.</span></span> <span data-ttu-id="2285b-141">Выражения C#, которые были оценены как `IHtmlContent` подготавливаются к просмотру непосредственно через *IHtmlContent.WriteTo*.</span><span class="sxs-lookup"><span data-stu-id="2285b-141">C# expressions that evaluate to `IHtmlContent` are rendered directly through *IHtmlContent.WriteTo*.</span></span> <span data-ttu-id="2285b-142">Выражения C#, которые не дают *IHtmlContent* преобразуются в строку (с *ToString*) и кодируются перед подготовкой к просмотру.</span><span class="sxs-lookup"><span data-stu-id="2285b-142">C# expressions that don't evaluate to *IHtmlContent* are converted to a string (by *ToString*) and encoded before they are rendered.</span></span> <span data-ttu-id="2285b-143">Например, приведенная ниже разметка Razor:</span><span class="sxs-lookup"><span data-stu-id="2285b-143">For example, the following Razor markup:</span></span>
+<span data-ttu-id="8589f-137">Выражения C#, которые были оценены как строка, кодируется в HTML.</span><span class="sxs-lookup"><span data-stu-id="8589f-137">C# expressions that evaluate to a string are HTML encoded.</span></span> <span data-ttu-id="8589f-138">Выражения C#, которые были оценены как `IHtmlContent` подготавливаются к просмотру непосредственно через `IHtmlContent.WriteTo`.</span><span class="sxs-lookup"><span data-stu-id="8589f-138">C# expressions that evaluate to `IHtmlContent` are rendered directly through `IHtmlContent.WriteTo`.</span></span> <span data-ttu-id="8589f-139">Выражения C#, которые не дают `IHtmlContent` преобразуются в строки по `ToString` и закодированы, прежде чем они отображаются.</span><span class="sxs-lookup"><span data-stu-id="8589f-139">C# expressions that don't evaluate to `IHtmlContent` are converted to a string by `ToString` and encoded before they're rendered.</span></span>
 
 ```cshtml
 @("<span>Hello World</span>")
 ```
 
-<span data-ttu-id="2285b-144">Элементы HTML:</span><span class="sxs-lookup"><span data-stu-id="2285b-144">Renders this HTML:</span></span>
+<span data-ttu-id="8589f-140">Код отображает следующий код HTML:</span><span class="sxs-lookup"><span data-stu-id="8589f-140">The code renders the following HTML:</span></span>
 
 ```html
 &lt;span&gt;Hello World&lt;/span&gt;
 ```
 
-<span data-ttu-id="2285b-145">Который браузера отображается в виде:</span><span class="sxs-lookup"><span data-stu-id="2285b-145">Which the browser renders as:</span></span>
+<span data-ttu-id="8589f-141">HTML-код отображается в обозревателе, как:</span><span class="sxs-lookup"><span data-stu-id="8589f-141">The HTML is shown in the browser as:</span></span>
 
-`<span>Hello World</span>`
+```
+<span>Hello World</span>
+```
 
-<span data-ttu-id="2285b-146">`HtmlHelper``Raw` выходные данные не закодированы, но к просмотру в виде HTML-разметка.</span><span class="sxs-lookup"><span data-stu-id="2285b-146">`HtmlHelper` `Raw` output is not encoded but rendered as HTML markup.</span></span>
+<span data-ttu-id="8589f-142">`HtmlHelper.Raw`выходные данные не закодированы, однако к просмотру в виде HTML-разметка.</span><span class="sxs-lookup"><span data-stu-id="8589f-142">`HtmlHelper.Raw` output isn't encoded but rendered as HTML markup.</span></span>
 
->[!WARNING]
-> <span data-ttu-id="2285b-147">С помощью `HtmlHelper.Raw` на unsanitized пользователя ввод представляет угрозу безопасности.</span><span class="sxs-lookup"><span data-stu-id="2285b-147">Using `HtmlHelper.Raw` on unsanitized user input is a security risk.</span></span> <span data-ttu-id="2285b-148">Ввод данных пользователем может содержать вредоносный JavaScript или использовать.</span><span class="sxs-lookup"><span data-stu-id="2285b-148">User input might contain malicious JavaScript or other exploits.</span></span> <span data-ttu-id="2285b-149">Сложно очистки данных ввод данных пользователем, не используйте `HtmlHelper.Raw` на ввод данных пользователем.</span><span class="sxs-lookup"><span data-stu-id="2285b-149">Sanitizing user input is difficult, avoid using `HtmlHelper.Raw` on user input.</span></span>
-
-<span data-ttu-id="2285b-150">Приведенная ниже разметка Razor:</span><span class="sxs-lookup"><span data-stu-id="2285b-150">The following Razor markup:</span></span>
+> [!WARNING]
+> <span data-ttu-id="8589f-143">С помощью `HtmlHelper.Raw` на unsanitized пользователя ввод представляет угрозу безопасности.</span><span class="sxs-lookup"><span data-stu-id="8589f-143">Using `HtmlHelper.Raw` on unsanitized user input is a security risk.</span></span> <span data-ttu-id="8589f-144">Ввод данных пользователем может содержать вредоносный JavaScript или использовать.</span><span class="sxs-lookup"><span data-stu-id="8589f-144">User input might contain malicious JavaScript or other exploits.</span></span> <span data-ttu-id="8589f-145">Ввод данных пользователем очистки данных сложно.</span><span class="sxs-lookup"><span data-stu-id="8589f-145">Sanitizing user input is difficult.</span></span> <span data-ttu-id="8589f-146">Избегайте использования `HtmlHelper.Raw` с вводимыми пользователем данными.</span><span class="sxs-lookup"><span data-stu-id="8589f-146">Avoid using `HtmlHelper.Raw` with user input.</span></span>
 
 ```cshtml
 @Html.Raw("<span>Hello World</span>")
 ```
 
-<span data-ttu-id="2285b-151">Элементы HTML:</span><span class="sxs-lookup"><span data-stu-id="2285b-151">Renders this HTML:</span></span>
+<span data-ttu-id="8589f-147">Код отображает следующий код HTML:</span><span class="sxs-lookup"><span data-stu-id="8589f-147">The code renders the following HTML:</span></span>
 
 ```html
 <span>Hello World</span>
 ```
 
-<a name=razor-code-blocks-label></a>
+## <a name="razor-code-blocks"></a><span data-ttu-id="8589f-148">Блоки кода Razor</span><span class="sxs-lookup"><span data-stu-id="8589f-148">Razor code blocks</span></span>
 
-## <a name="razor-code-blocks"></a><span data-ttu-id="2285b-152">Блоки кода Razor</span><span class="sxs-lookup"><span data-stu-id="2285b-152">Razor code blocks</span></span>
+<span data-ttu-id="8589f-149">Блоки кода Razor начинаться с `@` и заключены в `{}`.</span><span class="sxs-lookup"><span data-stu-id="8589f-149">Razor code blocks start with `@` and are enclosed by `{}`.</span></span> <span data-ttu-id="8589f-150">В отличие от выражения код внутри блоков кода C# не отображаются.</span><span class="sxs-lookup"><span data-stu-id="8589f-150">Unlike expressions, C# code inside code blocks isn't rendered.</span></span> <span data-ttu-id="8589f-151">Блоки кода и выражения в представлении использующими ту же область и определены в порядке:</span><span class="sxs-lookup"><span data-stu-id="8589f-151">Code blocks and expressions in a view share the same scope and are defined in order:</span></span>
 
-<span data-ttu-id="2285b-153">Блоки кода Razor начинаться с `@` и заключены в `{}`.</span><span class="sxs-lookup"><span data-stu-id="2285b-153">Razor code blocks start with `@` and are enclosed by `{}`.</span></span> <span data-ttu-id="2285b-154">В отличие от выражения код внутри блоков кода C# не отображаются.</span><span class="sxs-lookup"><span data-stu-id="2285b-154">Unlike expressions, C# code inside code blocks is not rendered.</span></span> <span data-ttu-id="2285b-155">Блоки кода и выражения в страницу Razor использующими ту же область и определены в порядке (то есть, объявления в блоке кода будет в области действия для блоков кода, более поздней версии, а также выражений).</span><span class="sxs-lookup"><span data-stu-id="2285b-155">Code blocks and expressions in a Razor page share the same scope and are defined in order (that is, declarations in a code block will be in scope for later code blocks and expressions).</span></span>
-
-```none
+```cshtml
 @{
-    var output = "Hello World";
+    var quote = "The future depends on what you do today. - Mahatma Gandhi";
 }
 
-<p>The rendered result: @output</p>
+<p>@quote</p>
+
+@{
+    quote = "Hate cannot drive out hate, only love can do that. - Martin Luther King, Jr.";
+}
+
+<p>@quote</p>
 ```
 
-<span data-ttu-id="2285b-156">Будет отображен:</span><span class="sxs-lookup"><span data-stu-id="2285b-156">Would render:</span></span>
+<span data-ttu-id="8589f-152">Код отображает следующий код HTML:</span><span class="sxs-lookup"><span data-stu-id="8589f-152">The code renders the following HTML:</span></span>
 
 ```html
-<p>The rendered result: Hello World</p>
+<p>The future depends on what you do today. - Mahatma Gandhi</p>
+<p>Hate cannot drive out hate, only love can do that. - Martin Luther King, Jr.</p>
 ```
 
-<a name=implicit-transitions-label></a>
+### <a name="implicit-transitions"></a><span data-ttu-id="8589f-153">Неявные переходов</span><span class="sxs-lookup"><span data-stu-id="8589f-153">Implicit transitions</span></span>
 
-### <a name="implicit-transitions"></a><span data-ttu-id="2285b-157">Неявные переходов</span><span class="sxs-lookup"><span data-stu-id="2285b-157">Implicit transitions</span></span>
-
-<span data-ttu-id="2285b-158">В блоке кода языка по умолчанию — C#, но вы можете переходить обратно в формат HTML.</span><span class="sxs-lookup"><span data-stu-id="2285b-158">The default language in a code block is C#, but you can transition back to HTML.</span></span> <span data-ttu-id="2285b-159">HTML в блоке кода перейдет обратно в визуализации HTML:</span><span class="sxs-lookup"><span data-stu-id="2285b-159">HTML within a code block will transition back into rendering HTML:</span></span>
+<span data-ttu-id="8589f-154">В блоке кода языка по умолчанию — C#, но вы можете переходить обратно в формат HTML:</span><span class="sxs-lookup"><span data-stu-id="8589f-154">The default language in a code block is C#, but you can transition back to HTML:</span></span>
 
 ```cshtml
 @{
@@ -175,11 +168,9 @@ ms.lasthandoff: 09/28/2017
 }
 ```
 
-<a name=explicit-delimited-transition-label></a>
+### <a name="explicit-delimited-transition"></a><span data-ttu-id="8589f-155">Явные перехода с разделителями</span><span class="sxs-lookup"><span data-stu-id="8589f-155">Explicit delimited transition</span></span>
 
-### <a name="explicit-delimited-transition"></a><span data-ttu-id="2285b-160">Явные перехода с разделителями</span><span class="sxs-lookup"><span data-stu-id="2285b-160">Explicit delimited transition</span></span>
-
-<span data-ttu-id="2285b-161">Чтобы определить часть блока кода, должны обрабатывать HTML, заключите символов к просмотру с Razor `<text>` тег:</span><span class="sxs-lookup"><span data-stu-id="2285b-161">To define a sub-section of a code block that should render HTML, surround the characters to be rendered with the Razor `<text>` tag:</span></span>
+<span data-ttu-id="8589f-156">Чтобы определить часть блока кода, должны обрабатывать HTML, окружить символов для подготовки к просмотру Razor  **\<текст >** тег:</span><span class="sxs-lookup"><span data-stu-id="8589f-156">To define a sub-section of a code block that should render HTML, surround the characters for rendering with the Razor **\<text>** tag:</span></span>
 
 ```cshtml
 @for (var i = 0; i < people.Length; i++)
@@ -189,13 +180,13 @@ ms.lasthandoff: 09/28/2017
 }
 ```
 
-<span data-ttu-id="2285b-162">Такой подход обычно используется для отрисовки HTML-код, не заключенных в HTML-тега.</span><span class="sxs-lookup"><span data-stu-id="2285b-162">You generally use this approach when you want to render HTML that is not surrounded by an HTML tag.</span></span> <span data-ttu-id="2285b-163">Без тега HTML или Razor возникает ошибка времени выполнения Razor.</span><span class="sxs-lookup"><span data-stu-id="2285b-163">Without an HTML or Razor tag, you get a Razor runtime error.</span></span>
+<span data-ttu-id="8589f-157">Используйте этот подход, когда нужно отобразить HTML-код, не заключенных в HTML-тега.</span><span class="sxs-lookup"><span data-stu-id="8589f-157">Use this approach when you want to render HTML that isn't surrounded by an HTML tag.</span></span> <span data-ttu-id="8589f-158">Без тега HTML или Razor возникнет ошибка среды выполнения Razor.</span><span class="sxs-lookup"><span data-stu-id="8589f-158">Without an HTML or Razor tag, you receive a Razor runtime error.</span></span>
 
-<a name=explicit-line-transition-with-label></a>
+<span data-ttu-id="8589f-159"> **\<Текст >** тег также полезен для управления пробелов при подготовке к просмотру содержимого.</span><span class="sxs-lookup"><span data-stu-id="8589f-159">The **\<text>** tag is also useful to control whitespace when rendering content.</span></span> <span data-ttu-id="8589f-160">Содержимое между  **\<текст >** визуализации тегов и пробелов до или после  **\<текст >** тегов отображается в выходных данных HTML.</span><span class="sxs-lookup"><span data-stu-id="8589f-160">Only the content between the **\<text>** tags is rendered, and no whitespace before or after the **\<text>** tags appears in the HTML output.</span></span>
 
-### <a name="explicit-line-transition-with-"></a><span data-ttu-id="2285b-164">Явные строки перехода с`@:`</span><span class="sxs-lookup"><span data-stu-id="2285b-164">Explicit Line Transition with `@:`</span></span>
+### <a name="explicit-line-transition-with-"></a><span data-ttu-id="8589f-161">Явные строки перехода с @:</span><span class="sxs-lookup"><span data-stu-id="8589f-161">Explicit Line Transition with @:</span></span>
 
-<span data-ttu-id="2285b-165">Для подготовки к просмотру остальная часть всю строку как HTML внутри блока кода, используйте `@:` синтаксис:</span><span class="sxs-lookup"><span data-stu-id="2285b-165">To render the rest of an entire line as HTML inside a code block, use the `@:` syntax:</span></span>
+<span data-ttu-id="8589f-162">Для подготовки к просмотру остальная часть всю строку как HTML внутри блока кода, используйте `@:` синтаксис:</span><span class="sxs-lookup"><span data-stu-id="8589f-162">To render the rest of an entire line as HTML inside a code block, use the `@:` syntax:</span></span>
 
 ```cshtml
 @for (var i = 0; i < people.Length; i++)
@@ -205,31 +196,29 @@ ms.lasthandoff: 09/28/2017
 }
 ```
 
-<span data-ttu-id="2285b-166">Без `@:` в приведенном выше коде получаемому Razor, ошибка во время выполнения.</span><span class="sxs-lookup"><span data-stu-id="2285b-166">Without the `@:` in the code above, you'd get a Razor run time error.</span></span>
+<span data-ttu-id="8589f-163">Без `@:` в коде, возникнет ошибка среды выполнения Razor.</span><span class="sxs-lookup"><span data-stu-id="8589f-163">Without the `@:` in the code, you recieve a Razor runtime error.</span></span>
 
-<a name=control-structures-razor-label></a>
+## <a name="control-structures"></a><span data-ttu-id="8589f-164">Управляющие структуры</span><span class="sxs-lookup"><span data-stu-id="8589f-164">Control Structures</span></span>
 
-## <a name="control-structures"></a><span data-ttu-id="2285b-167">Управляющие структуры</span><span class="sxs-lookup"><span data-stu-id="2285b-167">Control Structures</span></span>
+<span data-ttu-id="8589f-165">Управляющие структуры являются расширением блоков кода.</span><span class="sxs-lookup"><span data-stu-id="8589f-165">Control structures are an extension of code blocks.</span></span> <span data-ttu-id="8589f-166">Все аспекты блоков кода (плавный переход к разметки встроенный C#) также применяются к следующим структурам.</span><span class="sxs-lookup"><span data-stu-id="8589f-166">All aspects of code blocks (transitioning to markup, inline C#) also apply to the following structures.</span></span>
 
-<span data-ttu-id="2285b-168">Управляющие структуры являются расширением блоков кода.</span><span class="sxs-lookup"><span data-stu-id="2285b-168">Control structures are an extension of code blocks.</span></span> <span data-ttu-id="2285b-169">Все аспекты блоков кода (плавный переход к разметки встроенный C#) также применяются к следующим структурам.</span><span class="sxs-lookup"><span data-stu-id="2285b-169">All aspects of code blocks (transitioning to markup, inline C#) also apply to the following structures.</span></span>
+### <a name="conditionals-if-else-if-else-and-switch"></a><span data-ttu-id="8589f-167">Условные выражения @if, else if, else, и@switch</span><span class="sxs-lookup"><span data-stu-id="8589f-167">Conditionals @if, else if, else, and @switch</span></span>
 
-### <a name="conditionals-if-else-if-else-and-switch"></a><span data-ttu-id="2285b-170">Условные выражения `@if`, `else if`, `else` и`@switch`</span><span class="sxs-lookup"><span data-stu-id="2285b-170">Conditionals `@if`, `else if`, `else` and `@switch`</span></span>
-
-<span data-ttu-id="2285b-171">`@if` Семейство элементов управления при запуске кода:</span><span class="sxs-lookup"><span data-stu-id="2285b-171">The `@if` family controls when code runs:</span></span>
+<span data-ttu-id="8589f-168">`@if`элементы управления, при выполнении кода.</span><span class="sxs-lookup"><span data-stu-id="8589f-168">`@if` controls when code runs:</span></span>
 
 ```cshtml
 @if (value % 2 == 0)
 {
-    <p>The value was even</p>
+    <p>The value was even.</p>
 }
 ```
 
-<span data-ttu-id="2285b-172">`else`и `else if` не требуют `@` символа:</span><span class="sxs-lookup"><span data-stu-id="2285b-172">`else` and `else if` don't require the `@` symbol:</span></span>
+<span data-ttu-id="8589f-169">`else`и `else if` не требуют `@` символа:</span><span class="sxs-lookup"><span data-stu-id="8589f-169">`else` and `else if` don't require the `@` symbol:</span></span>
 
 ```cshtml
 @if (value % 2 == 0)
 {
-    <p>The value was even</p>
+    <p>The value was even.</p>
 }
 else if (value >= 1337)
 {
@@ -237,11 +226,11 @@ else if (value >= 1337)
 }
 else
 {
-    <p>The value was not large and is odd.</p>
+    <p>The value is odd and small.</p>
 }
 ```
 
-<span data-ttu-id="2285b-173">Можно использовать инструкцию switch следующим образом:</span><span class="sxs-lookup"><span data-stu-id="2285b-173">You can use a switch statement like this:</span></span>
+<span data-ttu-id="8589f-170">Можно использовать инструкцию switch следующим образом:</span><span class="sxs-lookup"><span data-stu-id="8589f-170">You can use a switch statement like this:</span></span>
 
 ```cshtml
 @switch (value)
@@ -253,26 +242,27 @@ else
         <p>Your number is 1337!</p>
         break;
     default:
-        <p>Your number was not 1 or 1337.</p>
+        <p>Your number wasn't 1 or 1337.</p>
         break;
 }
 ```
 
-### <a name="looping-for-foreach-while-and-do-while"></a><span data-ttu-id="2285b-174">Циклы `@for`, `@foreach`, `@while`, и`@do while`</span><span class="sxs-lookup"><span data-stu-id="2285b-174">Looping `@for`, `@foreach`, `@while`, and `@do while`</span></span>
+### <a name="looping-for-foreach-while-and-do-while"></a><span data-ttu-id="8589f-171">Циклы @for, @foreach, @while, и @do во время</span><span class="sxs-lookup"><span data-stu-id="8589f-171">Looping @for, @foreach, @while, and @do while</span></span>
 
-<span data-ttu-id="2285b-175">Может отображать шаблонного HTML с помощью элемента управления операторы цикла.</span><span class="sxs-lookup"><span data-stu-id="2285b-175">You can render templated HTML with looping control statements.</span></span> <span data-ttu-id="2285b-176">Например, чтобы отобразить список пользователей:</span><span class="sxs-lookup"><span data-stu-id="2285b-176">For example, to render a list of people:</span></span>
+<span data-ttu-id="8589f-172">Может отображать шаблонного HTML с помощью элемента управления операторы цикла.</span><span class="sxs-lookup"><span data-stu-id="8589f-172">You can render templated HTML with looping control statements.</span></span> <span data-ttu-id="8589f-173">Для подготовки к просмотру список лиц:</span><span class="sxs-lookup"><span data-stu-id="8589f-173">To render a list of people:</span></span>
 
 ```cshtml
 @{
     var people = new Person[]
     {
-          new Person("John", 33),
-          new Person("Doe", 41),
+          new Person("Weston", 33),
+          new Person("Johnathon", 41),
+          ...
     };
 }
 ```
 
-<span data-ttu-id="2285b-177">Можно использовать любой из следующих инструкций цикла:</span><span class="sxs-lookup"><span data-stu-id="2285b-177">You can use any of the following looping statements:</span></span>
+<span data-ttu-id="8589f-174">Можно использовать любой из следующих инструкций цикла:</span><span class="sxs-lookup"><span data-stu-id="8589f-174">You can use any of the following looping statements:</span></span>
 
 `@for`
 
@@ -323,32 +313,32 @@ else
 } while (i < people.Length);
 ```
 
-### <a name="compound-using"></a><span data-ttu-id="2285b-178">Составные`@using`</span><span class="sxs-lookup"><span data-stu-id="2285b-178">Compound `@using`</span></span>
+### <a name="compound-using"></a><span data-ttu-id="8589f-175">Составные@using</span><span class="sxs-lookup"><span data-stu-id="8589f-175">Compound @using</span></span>
 
-<span data-ttu-id="2285b-179">В C# using-оператор используется для обеспечения удаления объекта.</span><span class="sxs-lookup"><span data-stu-id="2285b-179">In C# a using statement is used to ensure an object is disposed.</span></span> <span data-ttu-id="2285b-180">В Razor такой же механизм может быть использован для создания вспомогательных методов HTML, которые содержат дополнительное содержимое.</span><span class="sxs-lookup"><span data-stu-id="2285b-180">In Razor this same mechanism can be used to create HTML helpers that contain additional content.</span></span> <span data-ttu-id="2285b-181">Например, можно использовать вспомогательные методы HTML для отрисовки тега формы с `@using` инструкции:</span><span class="sxs-lookup"><span data-stu-id="2285b-181">For instance, we can utilize HTML Helpers to render a form tag with the `@using` statement:</span></span>
+<span data-ttu-id="8589f-176">В C# `using` инструкция используется для обеспечения удаления объекта.</span><span class="sxs-lookup"><span data-stu-id="8589f-176">In C#, a `using` statement is used to ensure an object is disposed.</span></span> <span data-ttu-id="8589f-177">В Razor тот же механизм используется для создания вспомогательных методов HTML, который содержит дополнительное содержимое.</span><span class="sxs-lookup"><span data-stu-id="8589f-177">In Razor, the same mechanism is used to create HTML Helpers that contain additional content.</span></span> <span data-ttu-id="8589f-178">Например, можно с помощью вспомогательных методов HTML для отрисовки тега формы с `@using` инструкции:</span><span class="sxs-lookup"><span data-stu-id="8589f-178">For instance, you can utilize HTML Helpers to render a form tag with the `@using` statement:</span></span>
 
 ```cshtml
 @using (Html.BeginForm())
 {
     <div>
         email:
-        <input type="email" id="Email" name="Email" value="" />
-        <button type="submit"> Register </button>
+        <input type="email" id="Email" value="">
+        <button>Register</button>
     </div>
 }
 ```
 
-<span data-ttu-id="2285b-182">Можно также выполнять действия уровня области похожий на приведенный выше с [вспомогательных функций тегов](tag-helpers/index.md).</span><span class="sxs-lookup"><span data-stu-id="2285b-182">You can also perform scope level actions like the above with [Tag Helpers](tag-helpers/index.md).</span></span>
+<span data-ttu-id="8589f-179">Также можно выполнять действия на уровне области с [вспомогательных функций тегов](xref:mvc/views/tag-helpers/intro).</span><span class="sxs-lookup"><span data-stu-id="8589f-179">You can also perform scope-level actions with [Tag Helpers](xref:mvc/views/tag-helpers/intro).</span></span>
 
-### <a name="try-catch-finally"></a><span data-ttu-id="2285b-183">`@try`, `catch`, `finally`</span><span class="sxs-lookup"><span data-stu-id="2285b-183">`@try`, `catch`, `finally`</span></span>
+### <a name="try-catch-finally"></a><span data-ttu-id="8589f-180">@try, catch, finally</span><span class="sxs-lookup"><span data-stu-id="8589f-180">@try, catch, finally</span></span>
 
-<span data-ttu-id="2285b-184">Обработка исключений похожа на C#:</span><span class="sxs-lookup"><span data-stu-id="2285b-184">Exception handling is similar to  C#:</span></span>
+<span data-ttu-id="8589f-181">Обработка исключений похожа на C#:</span><span class="sxs-lookup"><span data-stu-id="8589f-181">Exception handling is similar to C#:</span></span>
 
-[!code-html[Main](razor/sample/Views/Home/Contact7.cshtml)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact7.cshtml)]
 
-### `@lock`
+### <a name="lock"></a>@lock
 
-<span data-ttu-id="2285b-185">Razor имеет возможность защитить критические секции с помощью инструкций блокировки:</span><span class="sxs-lookup"><span data-stu-id="2285b-185">Razor has the capability to protect critical sections with lock statements:</span></span>
+<span data-ttu-id="8589f-182">Razor имеет возможность защитить критические секции с помощью инструкций блокировки:</span><span class="sxs-lookup"><span data-stu-id="8589f-182">Razor has the capability to protect critical sections with lock statements:</span></span>
 
 ```cshtml
 @lock (SomeLock)
@@ -357,247 +347,231 @@ else
 }
 ```
 
-### <a name="comments"></a><span data-ttu-id="2285b-186">Комментарии</span><span class="sxs-lookup"><span data-stu-id="2285b-186">Comments</span></span>
+### <a name="comments"></a><span data-ttu-id="8589f-183">Комментарии</span><span class="sxs-lookup"><span data-stu-id="8589f-183">Comments</span></span>
 
-<span data-ttu-id="2285b-187">Razor поддерживает комментарии C# и HTML.</span><span class="sxs-lookup"><span data-stu-id="2285b-187">Razor supports C# and HTML comments.</span></span> <span data-ttu-id="2285b-188">Следующую разметку:</span><span class="sxs-lookup"><span data-stu-id="2285b-188">The following markup:</span></span>
+<span data-ttu-id="8589f-184">Razor поддерживает комментарии C# и HTML.</span><span class="sxs-lookup"><span data-stu-id="8589f-184">Razor supports C# and HTML comments:</span></span>
 
 ```cshtml
 @{
-    /* C# comment. */
-    // Another C# comment.
+    /* C# comment */
+    // Another C# comment
 }
 <!-- HTML comment -->
 ```
 
-<span data-ttu-id="2285b-189">Отображается сервером как:</span><span class="sxs-lookup"><span data-stu-id="2285b-189">Is rendered by the server as:</span></span>
+<span data-ttu-id="8589f-185">Код отображает следующий код HTML:</span><span class="sxs-lookup"><span data-stu-id="8589f-185">The code renders the following HTML:</span></span>
 
-```cshtml
+```html
 <!-- HTML comment -->
 ```
 
-<span data-ttu-id="2285b-190">Перед отображением страницы комментариев Razor удаляются сервером.</span><span class="sxs-lookup"><span data-stu-id="2285b-190">Razor comments are removed by the server before the page is rendered.</span></span> <span data-ttu-id="2285b-191">Использует Razor `@*  *@` в качестве разделителя комментариев.</span><span class="sxs-lookup"><span data-stu-id="2285b-191">Razor uses `@*  *@` to delimit comments.</span></span> <span data-ttu-id="2285b-192">Следующий код закомментирована, поэтому сервер не будет содержать разметку:</span><span class="sxs-lookup"><span data-stu-id="2285b-192">The following code is commented out, so the server will not render any markup:</span></span>
+<span data-ttu-id="8589f-186">Комментарии Razor удаляются сервером перед отображением веб-страницы.</span><span class="sxs-lookup"><span data-stu-id="8589f-186">Razor comments are removed by the server before the webpage is rendered.</span></span> <span data-ttu-id="8589f-187">Использует Razor `@*  *@` в качестве разделителя комментариев.</span><span class="sxs-lookup"><span data-stu-id="8589f-187">Razor uses `@*  *@` to delimit comments.</span></span> <span data-ttu-id="8589f-188">Следующий код закомментирована, поэтому сервер не создают разметку:</span><span class="sxs-lookup"><span data-stu-id="8589f-188">The following code is commented out, so the server doesn't render any markup:</span></span>
 
 ```cshtml
 @*
- @{
-     /* C# comment. */
-     // Another C# comment.
- }
- <!-- HTML comment -->
+    @{
+        /* C# comment */
+        // Another C# comment
+    }
+    <!-- HTML comment -->
 *@
 ```
 
-<a name=razor-directives-label></a>
+## <a name="directives"></a><span data-ttu-id="8589f-189">Директивы</span><span class="sxs-lookup"><span data-stu-id="8589f-189">Directives</span></span>
 
-## <a name="directives"></a><span data-ttu-id="2285b-193">Директивы</span><span class="sxs-lookup"><span data-stu-id="2285b-193">Directives</span></span>
+<span data-ttu-id="8589f-190">Неявные выражения с следующие зарезервированные ключевые слова представляются директивы Razor `@` символов.</span><span class="sxs-lookup"><span data-stu-id="8589f-190">Razor directives are represented by implicit expressions with reserved keywords following the `@` symbol.</span></span> <span data-ttu-id="8589f-191">Директива обычно изменяет способ представления анализируется или включает различные функциональные возможности.</span><span class="sxs-lookup"><span data-stu-id="8589f-191">A directive typically changes the way a view is parsed or enables different functionality.</span></span>
 
-<span data-ttu-id="2285b-194">Неявные выражения с следующие зарезервированные ключевые слова представляются директивы Razor `@` символов.</span><span class="sxs-lookup"><span data-stu-id="2285b-194">Razor directives are represented by implicit expressions with reserved keywords following the `@` symbol.</span></span> <span data-ttu-id="2285b-195">Директива обычно будет изменить способ разборе или включить различные функциональные возможности на странице Razor.</span><span class="sxs-lookup"><span data-stu-id="2285b-195">A directive will typically change the way a page is parsed or enable different functionality within your Razor page.</span></span>
-
-<span data-ttu-id="2285b-196">Основные сведения о том, как Razor создает код для представления будет упрощения понимания работы директивы.</span><span class="sxs-lookup"><span data-stu-id="2285b-196">Understanding how Razor generates code for a view will make it easier to understand how directives work.</span></span> <span data-ttu-id="2285b-197">Страница Razor используется для создания файла C#.</span><span class="sxs-lookup"><span data-stu-id="2285b-197">A Razor page is used to generate a C# file.</span></span> <span data-ttu-id="2285b-198">Например, эта страница Razor:</span><span class="sxs-lookup"><span data-stu-id="2285b-198">For example, this Razor page:</span></span>
+<span data-ttu-id="8589f-192">Основные сведения о том, как Razor создает код для представления помогает понять принципы работы директивы.</span><span class="sxs-lookup"><span data-stu-id="8589f-192">Understanding how Razor generates code for a view makes it easier to understand how directives work.</span></span>
 
 [!code-html[Main](razor/sample/Views/Home/Contact8.cshtml)]
 
-<span data-ttu-id="2285b-199">Создает класс следующего вида:</span><span class="sxs-lookup"><span data-stu-id="2285b-199">Generates a class similar to the following:</span></span>
+<span data-ttu-id="8589f-193">Код создает класс следующего вида:</span><span class="sxs-lookup"><span data-stu-id="8589f-193">The code generates a class similar to the following:</span></span>
 
 ```csharp
 public class _Views_Something_cshtml : RazorPage<dynamic>
 {
     public override async Task ExecuteAsync()
     {
-        var output = "Hello World";
+        var output = "Getting old ain't for wimps! - Anonymous";
 
-        WriteLiteral("/r/n<div>Output: ");
+        WriteLiteral("/r/n<div>Quote of the Day: ");
         Write(output);
         WriteLiteral("</div>");
     }
 }
 ```
 
-<span data-ttu-id="2285b-200">[Просмотр класса Razor C#, созданного для представления](#razor-customcompilationservice-label) способы просмотра этим классом.</span><span class="sxs-lookup"><span data-stu-id="2285b-200">[Viewing the Razor C# class generated for a view](#razor-customcompilationservice-label) explains how to view this generated class.</span></span>
+<span data-ttu-id="8589f-194">Далее в этой статье разделе [Просмотр класс Razor C#, созданный для представления](#viewing-the-razor-c-class-generated-for-a-view) способы просмотра этим классом.</span><span class="sxs-lookup"><span data-stu-id="8589f-194">Later in this article, the section [Viewing the Razor C# class generated for a view](#viewing-the-razor-c-class-generated-for-a-view) explains how to view this generated class.</span></span>
 
-### `@using`
+### <a name="using"></a>@using
 
-<span data-ttu-id="2285b-201">`@using` Директива добавит c# `using` на странице созданный razor директиву:</span><span class="sxs-lookup"><span data-stu-id="2285b-201">The `@using` directive will add the c# `using` directive to the generated razor page:</span></span>
+<span data-ttu-id="8589f-195">`@using` Добавляет директивы C# `using` директиву созданного представления:</span><span class="sxs-lookup"><span data-stu-id="8589f-195">The `@using` directive adds the C# `using` directive to the generated view:</span></span>
 
-[!code-html[Main](razor/sample/Views/Home/Contact9.cshtml)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact9.cshtml)]
 
-### `@model`
+### <a name="model"></a>@model
 
-<span data-ttu-id="2285b-202">`@model` Директива определяет тип модели, переданных в страницу Razor.</span><span class="sxs-lookup"><span data-stu-id="2285b-202">The `@model` directive specifies the type of the model passed to the Razor page.</span></span> <span data-ttu-id="2285b-203">Для этого используется следующий синтаксис:</span><span class="sxs-lookup"><span data-stu-id="2285b-203">It uses the following syntax:</span></span>
+<span data-ttu-id="8589f-196">`@model` Директива определяет тип модели, переданный в представлении:</span><span class="sxs-lookup"><span data-stu-id="8589f-196">The `@model` directive specifies the type of the model passed to a view:</span></span>
 
 ```cshtml
 @model TypeNameOfModel
 ```
 
-<span data-ttu-id="2285b-204">Например, при создании приложения ASP.NET Core MVC для каждой учетной записи *Views/Account/Login.cshtml* представления Razor содержит следующее объявление модели:</span><span class="sxs-lookup"><span data-stu-id="2285b-204">For example, if you create an ASP.NET Core MVC app with individual user accounts, the *Views/Account/Login.cshtml* Razor view contains the following model declaration:</span></span>
+<span data-ttu-id="8589f-197">При создании приложения ASP.NET Core MVC для каждой учетной записи *Views/Account/Login.cshtml* представление содержит следующее объявление модели:</span><span class="sxs-lookup"><span data-stu-id="8589f-197">If you create an ASP.NET Core MVC app with individual user accounts, the *Views/Account/Login.cshtml* view contains the following model declaration:</span></span>
 
 ```cshtml
 @model LoginViewModel
 ```
 
-<span data-ttu-id="2285b-205">В приведенном выше примере класс наследует класс, созданный `RazorPage<dynamic>`.</span><span class="sxs-lookup"><span data-stu-id="2285b-205">In the preceding class example, the class generated inherits from `RazorPage<dynamic>`.</span></span> <span data-ttu-id="2285b-206">Добавив `@model` контролировать то, что наследуется.</span><span class="sxs-lookup"><span data-stu-id="2285b-206">By adding an `@model` you control what’s inherited.</span></span> <span data-ttu-id="2285b-207">Пример</span><span class="sxs-lookup"><span data-stu-id="2285b-207">For example</span></span>
-
-```cshtml
-@model LoginViewModel
-```
-
-<span data-ttu-id="2285b-208">Создает следующий класс</span><span class="sxs-lookup"><span data-stu-id="2285b-208">Generates the following class</span></span>
+<span data-ttu-id="8589f-198">Созданный класс наследует `RazorPage<dynamic>`:</span><span class="sxs-lookup"><span data-stu-id="8589f-198">The class generated inherits from `RazorPage<dynamic>`:</span></span>
 
 ```csharp
 public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 ```
 
-<span data-ttu-id="2285b-209">Предоставлять страниц Razor `Model` свойство для доступа к модели, переданных в страницу.</span><span class="sxs-lookup"><span data-stu-id="2285b-209">Razor pages expose a `Model` property for accessing the model passed to the page.</span></span>
+<span data-ttu-id="8589f-199">Предоставляет Razor `Model` свойство для доступа к модели передаются в представление:</span><span class="sxs-lookup"><span data-stu-id="8589f-199">Razor exposes a `Model` property for accessing the model passed to the view:</span></span>
 
 ```cshtml
 <div>The Login Email: @Model.Email</div>
 ```
 
-<span data-ttu-id="2285b-210">`@model` Директива указана тип этого свойства (путем указания `T` в `RazorPage<T>` наследника созданного класса страницы).</span><span class="sxs-lookup"><span data-stu-id="2285b-210">The `@model` directive specified the type of this property (by specifying the `T` in `RazorPage<T>` that the generated class for your page derives from).</span></span> <span data-ttu-id="2285b-211">Если не указать `@model` директивы `Model` свойство будет иметь тип `dynamic`.</span><span class="sxs-lookup"><span data-stu-id="2285b-211">If you don't specify the `@model` directive the `Model` property will be of type `dynamic`.</span></span> <span data-ttu-id="2285b-212">Значение модели передается из контроллера в представление.</span><span class="sxs-lookup"><span data-stu-id="2285b-212">The value of the model is passed from the controller to the view.</span></span> <span data-ttu-id="2285b-213">В разделе [со строго типизированными моделей и @model ключевое слово](../../tutorials/first-mvc-app/adding-model.md#strongly-typed-models-keyword-label) для получения дополнительной информации.</span><span class="sxs-lookup"><span data-stu-id="2285b-213">See [Strongly typed models and the @model keyword](../../tutorials/first-mvc-app/adding-model.md#strongly-typed-models-keyword-label) for more information.</span></span>
+<span data-ttu-id="8589f-200">`@model` Директива определяет тип этого свойства.</span><span class="sxs-lookup"><span data-stu-id="8589f-200">The `@model` directive specifies the type of this property.</span></span> <span data-ttu-id="8589f-201">Указывает директиву `T` в `RazorPage<T>` , созданный класс, который представлении является производным от.</span><span class="sxs-lookup"><span data-stu-id="8589f-201">The directive specifies the `T` in `RazorPage<T>` that the generated class that your view derives from.</span></span> <span data-ttu-id="8589f-202">Если не указать `@model` директивы, `Model` свойство относится к типу `dynamic`.</span><span class="sxs-lookup"><span data-stu-id="8589f-202">If you don't specify the `@model` directive, the `Model` property is of type `dynamic`.</span></span> <span data-ttu-id="8589f-203">Значение модели передается из контроллера в представление.</span><span class="sxs-lookup"><span data-stu-id="8589f-203">The value of the model is passed from the controller to the view.</span></span> <span data-ttu-id="8589f-204">В разделе [со строго типизированными моделей и @model ключевое слово](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-keyword-label) для получения дополнительной информации.</span><span class="sxs-lookup"><span data-stu-id="8589f-204">See [Strongly typed models and the @model keyword](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-keyword-label) for more information.</span></span>
 
-### `@inherits`
+### <a name="inherits"></a>@inherits
 
-<span data-ttu-id="2285b-214">`@inherits` Директива дает полный контроль над класс наследует Razor страницы:</span><span class="sxs-lookup"><span data-stu-id="2285b-214">The `@inherits` directive gives you full control of the class your Razor page inherits:</span></span>
+<span data-ttu-id="8589f-205">`@inherits` Директива дает полный контроль над класс наследует представления:</span><span class="sxs-lookup"><span data-stu-id="8589f-205">The `@inherits` directive gives you full control of the class your view inherits:</span></span>
 
 ```cshtml
 @inherits TypeNameOfClassToInheritFrom
 ```
 
-<span data-ttu-id="2285b-215">Например предположим, мы должны были пользовательского страницы типа Razor:</span><span class="sxs-lookup"><span data-stu-id="2285b-215">For instance, let’s say we had the following custom Razor page type:</span></span>
+<span data-ttu-id="8589f-206">Ниже приведен пользовательский тип страницы Razor.</span><span class="sxs-lookup"><span data-stu-id="8589f-206">The following is a custom Razor page type:</span></span>
 
 [!code-csharp[Main](razor/sample/Classes/CustomRazorPage.cs)]
 
-<span data-ttu-id="2285b-216">Создает следующие Razor `<div>Custom text: Hello World</div>`.</span><span class="sxs-lookup"><span data-stu-id="2285b-216">The following Razor would generate `<div>Custom text: Hello World</div>`.</span></span>
+<span data-ttu-id="8589f-207">`CustomText` Отображается в представлении:</span><span class="sxs-lookup"><span data-stu-id="8589f-207">The `CustomText` is displayed in a view:</span></span>
 
-[!code-html[Main](razor/sample/Views/Home/Contact10.cshtml)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact10.cshtml)]
 
-<span data-ttu-id="2285b-217">Нельзя использовать `@model` и `@inherits` на одной странице.</span><span class="sxs-lookup"><span data-stu-id="2285b-217">You can't use `@model` and `@inherits` on the same page.</span></span> <span data-ttu-id="2285b-218">Может иметь `@inherits` в *_ViewImports.cshtml* файл, который импортирует страниц Razor.</span><span class="sxs-lookup"><span data-stu-id="2285b-218">You can have `@inherits` in a *_ViewImports.cshtml* file that the Razor page imports.</span></span> <span data-ttu-id="2285b-219">Например, если представление Razor импортированы следующие *_ViewImports.cshtml* файла:</span><span class="sxs-lookup"><span data-stu-id="2285b-219">For example, if your Razor view imported the following *_ViewImports.cshtml* file:</span></span>
+<span data-ttu-id="8589f-208">Код отображает следующий код HTML:</span><span class="sxs-lookup"><span data-stu-id="8589f-208">The code renders the following HTML:</span></span>
 
-[!code-html[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
-
-<span data-ttu-id="2285b-220">На следующей странице строго типизированные Razor</span><span class="sxs-lookup"><span data-stu-id="2285b-220">The following strongly typed Razor page</span></span>
-
-[!code-html[Main](razor/sample/Views/Home/Login1.cshtml)]
-
-<span data-ttu-id="2285b-221">Создает этот HTML-разметку:</span><span class="sxs-lookup"><span data-stu-id="2285b-221">Generates this HTML markup:</span></span>
-
-```cshtml
-<div>The Login Email: Rick@contoso.com</div>
-<div>Custom text: Hello World</div>
+```html
+<div>Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping a slop bucket on the street below.</div>
 ```
 
-<span data-ttu-id="2285b-222">При передаче "[Rick@contoso.com](mailto:Rick@contoso.com)» в модели:</span><span class="sxs-lookup"><span data-stu-id="2285b-222">When passed "[Rick@contoso.com](mailto:Rick@contoso.com)" in the model:</span></span>
+<span data-ttu-id="8589f-209">Нельзя использовать `@model` и `@inherits` в одном представлении.</span><span class="sxs-lookup"><span data-stu-id="8589f-209">You can't use `@model` and `@inherits` in the same view.</span></span> <span data-ttu-id="8589f-210">Может иметь `@inherits` в *_ViewImports.cshtml* файл, который импортирует представления:</span><span class="sxs-lookup"><span data-stu-id="8589f-210">You can have `@inherits` in a *_ViewImports.cshtml* file that the view imports:</span></span>
 
-   <span data-ttu-id="2285b-223">Дополнительные сведения см. в статье о [макете](layout.md).</span><span class="sxs-lookup"><span data-stu-id="2285b-223">See [Layout](layout.md) for more information.</span></span>
+[!code-cshtml[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
 
-### `@inject`
+<span data-ttu-id="8589f-211">Ниже приведен пример строго типизированное представление:</span><span class="sxs-lookup"><span data-stu-id="8589f-211">The following is an example of a strongly-typed view:</span></span>
 
-<span data-ttu-id="2285b-224">`@inject` Директива позволяет внедрять службы из вашего [контейнер службы](../../fundamentals/dependency-injection.md) в Razor страницу для использования.</span><span class="sxs-lookup"><span data-stu-id="2285b-224">The `@inject` directive enables you to inject a service from your [service container](../../fundamentals/dependency-injection.md)  into your Razor page for use.</span></span> <span data-ttu-id="2285b-225">В разделе [внедрение зависимостей в представления](dependency-injection.md).</span><span class="sxs-lookup"><span data-stu-id="2285b-225">See [Dependency injection into views](dependency-injection.md).</span></span>
+[!code-cshtml[Main](razor/sample/Views/Home/Login1.cshtml)]
 
-<a name="functions"></a>
+<span data-ttu-id="8589f-212">Если «rick@contoso.com» передается в модель, представление создает следующую разметку HTML:</span><span class="sxs-lookup"><span data-stu-id="8589f-212">If "rick@contoso.com" is passed in the model, the view generates the following HTML markup:</span></span>
 
-### `@functions`
+```html
+<div>The Login Email: rick@contoso.com</div>
+<div>Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping a slop bucket on the street below.</div>
+```
 
-<span data-ttu-id="2285b-226">`@functions` Директива позволяет добавлять функции уровня содержимого на страницу Razor.</span><span class="sxs-lookup"><span data-stu-id="2285b-226">The `@functions` directive enables you to add function level content to your Razor page.</span></span> <span data-ttu-id="2285b-227">Синтаксис выглядит следующим образом.</span><span class="sxs-lookup"><span data-stu-id="2285b-227">The syntax is:</span></span>
+### <a name="inject"></a>@inject
+
+<span data-ttu-id="8589f-213">`@inject` Директива позволяет внедрять службы из вашего [контейнер службы](xref:fundamentals/dependency-injection) в представлении.</span><span class="sxs-lookup"><span data-stu-id="8589f-213">The `@inject` directive enables you to inject a service from your [service container](xref:fundamentals/dependency-injection) into your view.</span></span> <span data-ttu-id="8589f-214">В разделе [внедрение зависимостей в представления](xref:mvc/views/dependency-injection) для получения дополнительной информации.</span><span class="sxs-lookup"><span data-stu-id="8589f-214">See [Dependency injection into views](xref:mvc/views/dependency-injection) for more information.</span></span>
+
+### <a name="functions"></a>@functions
+
+<span data-ttu-id="8589f-215">`@functions` Директива позволяет добавить в представление содержимого на уровне функций:</span><span class="sxs-lookup"><span data-stu-id="8589f-215">The `@functions` directive enables you to add function-level content to a view:</span></span>
 
 ```cshtml
 @functions { // C# Code }
 ```
 
-<span data-ttu-id="2285b-228">Пример:</span><span class="sxs-lookup"><span data-stu-id="2285b-228">For example:</span></span>
+<span data-ttu-id="8589f-216">Пример:</span><span class="sxs-lookup"><span data-stu-id="8589f-216">For example:</span></span>
 
-[!code-html[Main](razor/sample/Views/Home/Contact6.cshtml)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact6.cshtml)]
 
-<span data-ttu-id="2285b-229">Создает следующую разметку HTML:</span><span class="sxs-lookup"><span data-stu-id="2285b-229">Generates the following HTML markup:</span></span>
+<span data-ttu-id="8589f-217">Код формирует следующую разметку HTML:</span><span class="sxs-lookup"><span data-stu-id="8589f-217">The code generates the following HTML markup:</span></span>
 
-```cshtml
+```html
 <div>From method: Hello</div>
 ```
 
-<span data-ttu-id="2285b-230">Созданный Razor C# выглядит следующим образом.</span><span class="sxs-lookup"><span data-stu-id="2285b-230">The generated Razor C# looks like:</span></span>
+<span data-ttu-id="8589f-218">Следующий код — это созданный класс Razor C#:</span><span class="sxs-lookup"><span data-stu-id="8589f-218">The following code is the generated Razor C# class:</span></span>
 
 [!code-csharp[Main](razor/sample/Classes/Views_Home_Test_cshtml.cs?range=1-19)]
 
-### `@section`
+### <a name="section"></a>@section
 
-<span data-ttu-id="2285b-231">`@section` Директива используется в сочетании с [страница макета](layout.md) Включение представления для отображения содержимого в различных частях готовый для просмотра HTML-страницы.</span><span class="sxs-lookup"><span data-stu-id="2285b-231">The `@section` directive is used in conjunction with the [layout page](layout.md) to enable views to render content in different parts of the rendered HTML page.</span></span> <span data-ttu-id="2285b-232">В разделе [разделы](layout.md#layout-sections-label) для получения дополнительной информации.</span><span class="sxs-lookup"><span data-stu-id="2285b-232">See [Sections](layout.md#layout-sections-label) for more information.</span></span>
+<span data-ttu-id="8589f-219">`@section` Директива используется в сочетании с [макета](xref:mvc/views/layout) Включение представления для отображения содержимого в различные части HTML-страницы.</span><span class="sxs-lookup"><span data-stu-id="8589f-219">The `@section` directive is used in conjunction with the [layout](xref:mvc/views/layout) to enable views to render content in different parts of the HTML page.</span></span> <span data-ttu-id="8589f-220">В разделе [разделы](xref:mvc/views/layout#layout-sections-label) для получения дополнительной информации.</span><span class="sxs-lookup"><span data-stu-id="8589f-220">See [Sections](xref:mvc/views/layout#layout-sections-label) for more information.</span></span>
 
-## <a name="tag-helpers"></a><span data-ttu-id="2285b-233">Вспомогательных функций тегов</span><span class="sxs-lookup"><span data-stu-id="2285b-233">Tag Helpers</span></span>
+## <a name="tag-helpers"></a><span data-ttu-id="8589f-221">Вспомогательных функций тегов</span><span class="sxs-lookup"><span data-stu-id="8589f-221">Tag Helpers</span></span>
 
-<span data-ttu-id="2285b-234">Следующие [вспомогательных функций тегов](tag-helpers/index.md) директивы подробно описаны в ссылкам.</span><span class="sxs-lookup"><span data-stu-id="2285b-234">The following [Tag Helpers](tag-helpers/index.md) directives are detailed in the links provided.</span></span>
+<span data-ttu-id="8589f-222">Существует три директивы, которые относятся к [вспомогательных функций тегов](xref:mvc/views/tag-helpers/intro).</span><span class="sxs-lookup"><span data-stu-id="8589f-222">There are three directives that pertain to [Tag Helpers](xref:mvc/views/tag-helpers/intro).</span></span>
 
-* [@addTagHelper](tag-helpers/intro.md#add-helper-label)
-* [@removeTagHelper](tag-helpers/intro.md#remove-razor-directives-label)
-* [@tagHelperPrefix](tag-helpers/intro.md#prefix-razor-directives-label)
+| <span data-ttu-id="8589f-223">Директива</span><span class="sxs-lookup"><span data-stu-id="8589f-223">Directive</span></span> | <span data-ttu-id="8589f-224">Функция</span><span class="sxs-lookup"><span data-stu-id="8589f-224">Function</span></span> |
+| --------- | -------- |
+| [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | <span data-ttu-id="8589f-225">Делает доступными для представления вспомогательных функций тегов.</span><span class="sxs-lookup"><span data-stu-id="8589f-225">Makes Tag Helpers available to a view.</span></span> |
+| [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | <span data-ttu-id="8589f-226">Удаляет ранее добавленный из представления в виде вспомогательных функций тегов.</span><span class="sxs-lookup"><span data-stu-id="8589f-226">Removes Tag Helpers previously added from a view.</span></span> |
+| [@tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | <span data-ttu-id="8589f-227">Указывает префикс тега для включения поддержка вспомогательных функций тегов и явно объявить использование вспомогательного тег.</span><span class="sxs-lookup"><span data-stu-id="8589f-227">Specifies a tag prefix to enable Tag Helper support and to make Tag Helper usage explicit.</span></span> |
 
-<a name=razor-reserved-keywords-label></a>
+## <a name="razor-reserved-keywords"></a><span data-ttu-id="8589f-228">Razor зарезервированные ключевые слова</span><span class="sxs-lookup"><span data-stu-id="8589f-228">Razor reserved keywords</span></span>
 
-## <a name="razor-reserved-keywords"></a><span data-ttu-id="2285b-235">Razor зарезервированные ключевые слова</span><span class="sxs-lookup"><span data-stu-id="2285b-235">Razor reserved keywords</span></span>
+### <a name="razor-keywords"></a><span data-ttu-id="8589f-229">Ключевые слова Razor</span><span class="sxs-lookup"><span data-stu-id="8589f-229">Razor keywords</span></span>
 
-### <a name="razor-keywords"></a><span data-ttu-id="2285b-236">Ключевые слова Razor</span><span class="sxs-lookup"><span data-stu-id="2285b-236">Razor keywords</span></span>
+* <span data-ttu-id="8589f-230">страница (требуется Core ASP.NET 2.0 и более поздние версии)</span><span class="sxs-lookup"><span data-stu-id="8589f-230">page (Requires ASP.NET Core 2.0 and later)</span></span>
+* <span data-ttu-id="8589f-231">функции</span><span class="sxs-lookup"><span data-stu-id="8589f-231">functions</span></span>
+* <span data-ttu-id="8589f-232">наследует</span><span class="sxs-lookup"><span data-stu-id="8589f-232">inherits</span></span>
+* <span data-ttu-id="8589f-233">model</span><span class="sxs-lookup"><span data-stu-id="8589f-233">model</span></span>
+* <span data-ttu-id="8589f-234">section</span><span class="sxs-lookup"><span data-stu-id="8589f-234">section</span></span>
+* <span data-ttu-id="8589f-235">Вспомогательный (не поддерживаемых ASP.NET Core)</span><span class="sxs-lookup"><span data-stu-id="8589f-235">helper (Not currently supported by ASP.NET Core)</span></span>
 
-* <span data-ttu-id="2285b-237">страница (требуется Core ASP.NET 2.0 и более поздние версии)</span><span class="sxs-lookup"><span data-stu-id="2285b-237">page (Requires ASP.NET Core 2.0 and later)</span></span>
-* <span data-ttu-id="2285b-238">функции</span><span class="sxs-lookup"><span data-stu-id="2285b-238">functions</span></span>
-* <span data-ttu-id="2285b-239">наследует</span><span class="sxs-lookup"><span data-stu-id="2285b-239">inherits</span></span>
-* <span data-ttu-id="2285b-240">model</span><span class="sxs-lookup"><span data-stu-id="2285b-240">model</span></span>
-* <span data-ttu-id="2285b-241">section</span><span class="sxs-lookup"><span data-stu-id="2285b-241">section</span></span>
-* <span data-ttu-id="2285b-242">Вспомогательный (не поддерживается ASP.NET Core.)</span><span class="sxs-lookup"><span data-stu-id="2285b-242">helper   (Not supported by ASP.NET Core.)</span></span>
+<span data-ttu-id="8589f-236">Ключевые слова Razor экранируются с `@(Razor Keyword)` (например, `@(functions)`).</span><span class="sxs-lookup"><span data-stu-id="8589f-236">Razor keywords are escaped with `@(Razor Keyword)` (for example, `@(functions)`).</span></span>
 
-<span data-ttu-id="2285b-243">Ключевые слова Razor предварять `@(Razor Keyword)`, например `@(functions)`.</span><span class="sxs-lookup"><span data-stu-id="2285b-243">Razor keywords can be escaped with `@(Razor Keyword)`, for example `@(functions)`.</span></span> <span data-ttu-id="2285b-244">См. Полный пример ниже.</span><span class="sxs-lookup"><span data-stu-id="2285b-244">See the complete sample below.</span></span>
+### <a name="c-razor-keywords"></a><span data-ttu-id="8589f-237">Ключевые слова C# Razor</span><span class="sxs-lookup"><span data-stu-id="8589f-237">C# Razor keywords</span></span>
 
-### <a name="c-razor-keywords"></a><span data-ttu-id="2285b-245">Ключевые слова C# Razor</span><span class="sxs-lookup"><span data-stu-id="2285b-245">C# Razor keywords</span></span>
+* <span data-ttu-id="8589f-238">case</span><span class="sxs-lookup"><span data-stu-id="8589f-238">case</span></span>
+* <span data-ttu-id="8589f-239">do</span><span class="sxs-lookup"><span data-stu-id="8589f-239">do</span></span>
+* <span data-ttu-id="8589f-240">default</span><span class="sxs-lookup"><span data-stu-id="8589f-240">default</span></span>
+* <span data-ttu-id="8589f-241">for</span><span class="sxs-lookup"><span data-stu-id="8589f-241">for</span></span>
+* <span data-ttu-id="8589f-242">foreach</span><span class="sxs-lookup"><span data-stu-id="8589f-242">foreach</span></span>
+* <span data-ttu-id="8589f-243">if</span><span class="sxs-lookup"><span data-stu-id="8589f-243">if</span></span>
+* <span data-ttu-id="8589f-244">else</span><span class="sxs-lookup"><span data-stu-id="8589f-244">else</span></span>
+* <span data-ttu-id="8589f-245">lock</span><span class="sxs-lookup"><span data-stu-id="8589f-245">lock</span></span>
+* <span data-ttu-id="8589f-246">switch</span><span class="sxs-lookup"><span data-stu-id="8589f-246">switch</span></span>
+* <span data-ttu-id="8589f-247">try</span><span class="sxs-lookup"><span data-stu-id="8589f-247">try</span></span>
+* <span data-ttu-id="8589f-248">catch</span><span class="sxs-lookup"><span data-stu-id="8589f-248">catch</span></span>
+* <span data-ttu-id="8589f-249">finally</span><span class="sxs-lookup"><span data-stu-id="8589f-249">finally</span></span>
+* <span data-ttu-id="8589f-250">использование</span><span class="sxs-lookup"><span data-stu-id="8589f-250">using</span></span>
+* <span data-ttu-id="8589f-251">while</span><span class="sxs-lookup"><span data-stu-id="8589f-251">while</span></span>
 
-* <span data-ttu-id="2285b-246">case</span><span class="sxs-lookup"><span data-stu-id="2285b-246">case</span></span>
-* <span data-ttu-id="2285b-247">do</span><span class="sxs-lookup"><span data-stu-id="2285b-247">do</span></span>
-* <span data-ttu-id="2285b-248">default</span><span class="sxs-lookup"><span data-stu-id="2285b-248">default</span></span>
-* <span data-ttu-id="2285b-249">for</span><span class="sxs-lookup"><span data-stu-id="2285b-249">for</span></span>
-* <span data-ttu-id="2285b-250">foreach</span><span class="sxs-lookup"><span data-stu-id="2285b-250">foreach</span></span>
-* <span data-ttu-id="2285b-251">if</span><span class="sxs-lookup"><span data-stu-id="2285b-251">if</span></span>
-* <span data-ttu-id="2285b-252">else</span><span class="sxs-lookup"><span data-stu-id="2285b-252">else</span></span>
-* <span data-ttu-id="2285b-253">lock</span><span class="sxs-lookup"><span data-stu-id="2285b-253">lock</span></span>
-* <span data-ttu-id="2285b-254">switch</span><span class="sxs-lookup"><span data-stu-id="2285b-254">switch</span></span>
-* <span data-ttu-id="2285b-255">try</span><span class="sxs-lookup"><span data-stu-id="2285b-255">try</span></span>
-* <span data-ttu-id="2285b-256">catch</span><span class="sxs-lookup"><span data-stu-id="2285b-256">catch</span></span>
-* <span data-ttu-id="2285b-257">finally</span><span class="sxs-lookup"><span data-stu-id="2285b-257">finally</span></span>
-* <span data-ttu-id="2285b-258">использование</span><span class="sxs-lookup"><span data-stu-id="2285b-258">using</span></span>
-* <span data-ttu-id="2285b-259">while</span><span class="sxs-lookup"><span data-stu-id="2285b-259">while</span></span>
+<span data-ttu-id="8589f-252">Ключевые слова C# Razor необходимо экранировать двойные с `@(@C# Razor Keyword)` (например, `@(@case)`).</span><span class="sxs-lookup"><span data-stu-id="8589f-252">C# Razor keywords must be double-escaped with `@(@C# Razor Keyword)` (for example, `@(@case)`).</span></span> <span data-ttu-id="8589f-253">Первый `@` экранирует анализатор Razor.</span><span class="sxs-lookup"><span data-stu-id="8589f-253">The first `@` escapes the Razor parser.</span></span> <span data-ttu-id="8589f-254">Второй `@` экранирует анализатор C#.</span><span class="sxs-lookup"><span data-stu-id="8589f-254">The second `@` escapes the C# parser.</span></span>
 
-<span data-ttu-id="2285b-260">Ключевые слова C# Razor должны быть двойные escape-последовательность с `@(@C# Razor Keyword)`, например `@(@case)`.</span><span class="sxs-lookup"><span data-stu-id="2285b-260">C# Razor keywords need to be double escaped with `@(@C# Razor Keyword)`, for example `@(@case)`.</span></span> <span data-ttu-id="2285b-261">Первый `@` экранирует анализатор Razor второй `@` экранирует анализатор C#.</span><span class="sxs-lookup"><span data-stu-id="2285b-261">The first `@` escapes the Razor parser, the second `@` escapes the C# parser.</span></span> <span data-ttu-id="2285b-262">См. Полный пример ниже.</span><span class="sxs-lookup"><span data-stu-id="2285b-262">See the complete sample below.</span></span>
+### <a name="reserved-keywords-not-used-by-razor"></a><span data-ttu-id="8589f-255">Зарезервированные ключевые слова, не используется в Razor</span><span class="sxs-lookup"><span data-stu-id="8589f-255">Reserved keywords not used by Razor</span></span>
 
-### <a name="reserved-keywords-not-used-by-razor"></a><span data-ttu-id="2285b-263">Зарезервированные ключевые слова, не используется в Razor</span><span class="sxs-lookup"><span data-stu-id="2285b-263">Reserved keywords not used by Razor</span></span>
+* <span data-ttu-id="8589f-256">namespace</span><span class="sxs-lookup"><span data-stu-id="8589f-256">namespace</span></span>
+* <span data-ttu-id="8589f-257">класс</span><span class="sxs-lookup"><span data-stu-id="8589f-257">class</span></span>
 
-* <span data-ttu-id="2285b-264">namespace</span><span class="sxs-lookup"><span data-stu-id="2285b-264">namespace</span></span>
-* <span data-ttu-id="2285b-265">класс</span><span class="sxs-lookup"><span data-stu-id="2285b-265">class</span></span>
+## <a name="viewing-the-razor-c-class-generated-for-a-view"></a><span data-ttu-id="8589f-258">Просмотр класса Razor C#, созданного для представления</span><span class="sxs-lookup"><span data-stu-id="8589f-258">Viewing the Razor C# class generated for a view</span></span>
 
-<a name=razor-customcompilationservice-label></a>
+<span data-ttu-id="8589f-259">Добавьте следующий класс в проект ASP.NET MVC основных компонентов:</span><span class="sxs-lookup"><span data-stu-id="8589f-259">Add the following class to your ASP.NET Core MVC project:</span></span>
 
-## <a name="viewing-the-razor-c-class-generated-for-a-view"></a><span data-ttu-id="2285b-266">Просмотр класса Razor C#, созданного для представления</span><span class="sxs-lookup"><span data-stu-id="2285b-266">Viewing the Razor C# class generated for a view</span></span>
+[!code-csharp[Main](razor/sample/Utilities/CustomTemplateEngine.cs)]
 
-<span data-ttu-id="2285b-267">Добавьте следующий класс в проект ASP.NET MVC основных компонентов:</span><span class="sxs-lookup"><span data-stu-id="2285b-267">Add the following class to your ASP.NET Core MVC project:</span></span>
+<span data-ttu-id="8589f-260">Переопределить `RazorTemplateEngine` добавленные MVC с `CustomTemplateEngine` класса:</span><span class="sxs-lookup"><span data-stu-id="8589f-260">Override the `RazorTemplateEngine` added by MVC with the `CustomTemplateEngine` class:</span></span>
 
-[!code-csharp[Main](razor/sample/Services/CustomCompilationService.cs)]
+[!code-csharp[Main](razor/sample/Startup.cs?highlight=4&range=10-14)]
 
-<span data-ttu-id="2285b-268">Переопределить `ICompilationService` добавленные MVC с выше класса;</span><span class="sxs-lookup"><span data-stu-id="2285b-268">Override the `ICompilationService` added by MVC with the above class;</span></span>
+<span data-ttu-id="8589f-261">Точка останова `return csharpDocument` инструкция `CustomTemplateEngine`.</span><span class="sxs-lookup"><span data-stu-id="8589f-261">Set a break point on the `return csharpDocument` statement of `CustomTemplateEngine`.</span></span> <span data-ttu-id="8589f-262">Когда выполнение программы остановится в точке останова, просматривать значения `generatedCode`.</span><span class="sxs-lookup"><span data-stu-id="8589f-262">When program execution stops at the break point, view the value of `generatedCode`.</span></span>
 
-[!code-csharp[Main](razor/sample/Startup.cs?highlight=4&range=29-33)]
+![Представление визуализатор текста generatedCode](razor/_static/tvr.png)
 
-<span data-ttu-id="2285b-269">Точка останова `Compile` метод `CustomCompilationService` и представление `compilationContent`.</span><span class="sxs-lookup"><span data-stu-id="2285b-269">Set a break point on the `Compile` method of `CustomCompilationService` and view `compilationContent`.</span></span>
+## <a name="view-lookups-and-case-sensitivity"></a><span data-ttu-id="8589f-264">Представление уточняющих запросов и чувствительности к регистру</span><span class="sxs-lookup"><span data-stu-id="8589f-264">View lookups and case sensitivity</span></span>
 
-![Представление визуализатор текста compilationContent](razor/_static/tvr.png)
+<span data-ttu-id="8589f-265">Обработчик представлений Razor выполняет поиск с учетом регистра для представлений.</span><span class="sxs-lookup"><span data-stu-id="8589f-265">The Razor view engine performs case-sensitive lookups for views.</span></span> <span data-ttu-id="8589f-266">Однако фактические уточняющего запроса определяется базовая файловая система:</span><span class="sxs-lookup"><span data-stu-id="8589f-266">However, the actual lookup is determined by the underlying file system:</span></span>
 
-<a name="case"></a>
-## <a name="view-lookups-and-case-sensitivity"></a><span data-ttu-id="2285b-271">Представление уточняющих запросов и чувствительности к регистру</span><span class="sxs-lookup"><span data-stu-id="2285b-271">View lookups and case sensitivity</span></span>
+* <span data-ttu-id="8589f-267">На основе исходного файла:</span><span class="sxs-lookup"><span data-stu-id="8589f-267">File based source:</span></span> 
+  * <span data-ttu-id="8589f-268">В операционных системах без учета регистра файловые системы (например, Windows) поиск поставщика физических файлов зависят от регистра.</span><span class="sxs-lookup"><span data-stu-id="8589f-268">On operating systems with case insensitive file systems (for example, Windows), physical file provider lookups are case insensitive.</span></span> <span data-ttu-id="8589f-269">Например `return View("Test")` приводит к соответствий для */Views/Home/Test.cshtml*, */Views/home/test.cshtml*и любой другой тип регистра.</span><span class="sxs-lookup"><span data-stu-id="8589f-269">For example, `return View("Test")` results in matches for */Views/Home/Test.cshtml*, */Views/home/test.cshtml*, and any other casing variant.</span></span>
+  * <span data-ttu-id="8589f-270">В системах файлов с учетом регистра (например, Linux, OSX и с `EmbeddedFileProvider`), уточняющие запросы выполняются с учетом регистра.</span><span class="sxs-lookup"><span data-stu-id="8589f-270">On case sensitive file systems (for example, Linux, OSX, and with `EmbeddedFileProvider`), lookups are case sensitive.</span></span> <span data-ttu-id="8589f-271">Например `return View("Test")` специально совпадений */Views/Home/Test.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="8589f-271">For example, `return View("Test")` specifically matches */Views/Home/Test.cshtml*.</span></span>
+* <span data-ttu-id="8589f-272">Предварительно скомпилированные представлений: С основными ASP.Net 2.0 и более поздних, поиске предкомпилированного представления без учета регистра для всех операционных систем.</span><span class="sxs-lookup"><span data-stu-id="8589f-272">Precompiled views: With ASP.Net Core 2.0 and later, looking up precompiled views is case insensitive on all operating systems.</span></span> <span data-ttu-id="8589f-273">Поведение идентично поведение поставщика физического файла в Windows.</span><span class="sxs-lookup"><span data-stu-id="8589f-273">The behavior is identical to physical file provider's behavior on Windows.</span></span> <span data-ttu-id="8589f-274">Если два представления предкомпилированного отличаются только регистром, результатом поиска является недетерминированным.</span><span class="sxs-lookup"><span data-stu-id="8589f-274">If two precompiled views differ only in case, the result of lookup is non-deterministic.</span></span>
 
-<span data-ttu-id="2285b-272">Обработчик представлений Razor выполняет поиск с учетом регистра для представлений.</span><span class="sxs-lookup"><span data-stu-id="2285b-272">The Razor view engine performs case-sensitive lookups for views.</span></span> <span data-ttu-id="2285b-273">Однако фактические уточняющего запроса определяется базового источника:</span><span class="sxs-lookup"><span data-stu-id="2285b-273">However, the actual lookup is determined by the underlying source:</span></span>
-
-* <span data-ttu-id="2285b-274">На основе исходного файла:</span><span class="sxs-lookup"><span data-stu-id="2285b-274">File based source:</span></span> 
-
-    * <span data-ttu-id="2285b-275">В операционных системах без учета регистра файловые системы (например, Windows) поиск поставщика физических файлов зависят от регистра.</span><span class="sxs-lookup"><span data-stu-id="2285b-275">On operating systems with case insensitive file systems (like Windows), physical file provider lookups are case insensitive.</span></span> <span data-ttu-id="2285b-276">Например `return View("Test")` приведет к появлению `/Views/Home/Test.cshtml`, `/Views/home/test.cshtml` и всех других вариантов регистр обнаруживаются.</span><span class="sxs-lookup"><span data-stu-id="2285b-276">For example `return View("Test")` would result in `/Views/Home/Test.cshtml`, `/Views/home/test.cshtml` and all other casing variants would be discovered.</span></span>
-    * <span data-ttu-id="2285b-277">В системах файлов с учетом регистра, которая содержит Linux OSX и `EmbeddedFileProvider`, уточняющие запросы выполняются с учетом регистра.</span><span class="sxs-lookup"><span data-stu-id="2285b-277">On case sensitive file systems, which includes Linux, OSX and `EmbeddedFileProvider`, lookups are case sensitive.</span></span> <span data-ttu-id="2285b-278">Например `return View("Test")` выглядит специально `/Views/Home/Test.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="2285b-278">For example, `return View("Test")` would specifically look for `/Views/Home/Test.cshtml`.</span></span>
-        
-* <span data-ttu-id="2285b-279">Предварительно скомпилированный представления:</span><span class="sxs-lookup"><span data-stu-id="2285b-279">Precompiled views:</span></span>
-
-   * <span data-ttu-id="2285b-280">С помощью ASP.Net Core 2.0 и более поздних версиях поиска предкомпилированного представления без учета регистра для всех операционных систем.</span><span class="sxs-lookup"><span data-stu-id="2285b-280">With ASP.Net Core 2.0 and later, looking up precompiled views is case insensitive on all operating systems.</span></span> <span data-ttu-id="2285b-281">Поведение идентично поведение поставщика физического файла в Windows.</span><span class="sxs-lookup"><span data-stu-id="2285b-281">The behavior is identical to physical file provider's behavior on Windows.</span></span> 
-   <span data-ttu-id="2285b-282">Примечание: Если два представления предкомпилированного отличаются только регистром, результатом поиска является недетерминированным.</span><span class="sxs-lookup"><span data-stu-id="2285b-282">Note: If two precompiled views differ only in case, the result of lookup is non-deterministic.</span></span>
-
-<span data-ttu-id="2285b-283">Разработчики могут совпадает с регистром имена файлов и каталогов для имен области, контроллера и действия.</span><span class="sxs-lookup"><span data-stu-id="2285b-283">Developers are encouraged to match the casing of file and directory names to the casing of area, controller and action names.</span></span> <span data-ttu-id="2285b-284">Благодаря развертываний остаются независимыми от используемой файловой системы.</span><span class="sxs-lookup"><span data-stu-id="2285b-284">This would ensure your deployments remain agnostic of the underlying file system.</span></span>
+<span data-ttu-id="8589f-275">Разработчики могут совпадает с регистром имена файлов и каталогов для имен области, контроллера и действия.</span><span class="sxs-lookup"><span data-stu-id="8589f-275">Developers are encouraged to match the casing of file and directory names to the casing of area, controller, and action names.</span></span> <span data-ttu-id="8589f-276">Это гарантирует, что поиск развертываний их представлений независимо от используемой файловой системы.</span><span class="sxs-lookup"><span data-stu-id="8589f-276">This ensures your deployments will find their views regardless of the underlying file system.</span></span>
