@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-browserlink
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 67ddc58e38962bd876050739a2a1447be4f589bb
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 95062961877b8da843ce47fb1719ee85224fa8c8
+ms.sourcegitcommit: 9c27fa0f0c57ad611aa43f63afb9b9c9571d4a94
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="browser-link-in-aspnet-core"></a>Связь с браузером в ASP.NET Core 
 
@@ -81,7 +81,7 @@ if (env.IsDevelopment())
 * Обновите веб-приложения в нескольких браузерах за один раз.
 * Откройте **мониторинга связи с браузером**.
 * Включить или отключить **связь с браузером**. Примечание: По умолчанию в Visual Studio 2017 г. (15,3) отключена связь с браузером.
-* Включение и отключение автоматической синхронизации CSS.
+* Включить или отключить [Автосинхронизации CSS](#enable-or-disable-css-auto-sync).
 
 > [!NOTE]
 > Некоторые Visual Studio подключаемые модули, прежде всего *2015 пакет расширения Web* и *2017 г. пакет расширения веб*, предоставляют расширенные функциональные возможности для связи с браузером, но некоторые дополнительные функции не работают с ASP. Проекты NET Core.
