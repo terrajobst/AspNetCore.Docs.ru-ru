@@ -43,7 +43,7 @@ ms.lasthandoff: 09/12/2017
 
 5. Перейдите по адресу [http://localhost:5000](http://localhost:5000).
 
-6. Откройте файл *Pages/About.cshtml* и измените страницу, чтобы на ней отображалось сообщение "Hello, world! Время на сервере — @DateTime.Now":
+6. Откройте файл *Pages/About.cshtml* и измените страницу, чтобы на ней отображалось сообщение "Hello, world! Время на сервере — @DateTime.Now" :
 
     [!code-html[Main](getting-started/sample/getting-started/about.cshtml?highlight=9&range=1-9)]
 
