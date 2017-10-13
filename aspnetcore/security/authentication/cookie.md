@@ -11,11 +11,11 @@ ms.assetid: 2bdcbf95-8d9d-4537-a4a0-a5ee439dcb62
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/cookie
-ms.openlocfilehash: e5c53a7044edb56e065b2dc1536343fdaf9fb007
-ms.sourcegitcommit: 7d8f4e3443a2989a64343f8fec83e6a4c4ed2f97
+ms.openlocfilehash: ea9c93e34a3242b5b3716404228edb8902baf625
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/29/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="using-cookie-authentication-without-aspnet-core-identity"></a>С помощью файла Cookie проверки подлинности без удостоверения ASP.NET Core
 
@@ -76,7 +76,7 @@ ASP.NET Core 1.x указывает куки-файл [по промежуточ
 
 * `AccessDeniedPath`— Это относительный путь, к которому перенаправления запросов, если пользователь пытается получить доступ к ресурсу, но не передает [политики авторизации](xref:security/authorization/policies#security-authorization-policies-based) для этого ресурса.
 
-* `AuthenticationScheme`-Это значение, по которой происходит обращение схему определенного файла cookie проверки подлинности. Это полезно при наличии нескольких экземпляров файла cookie проверки подлинности, и вы хотите [применять проверку подлинности только один экземпляр](xref:security/authorization/limitingidentitybyscheme#security-authorization-limiting-by-scheme).
+* `AuthenticationScheme`-Это значение, по которой происходит обращение схему определенного файла cookie проверки подлинности. Это полезно при наличии нескольких экземпляров файла cookie проверки подлинности и потребности приложения в [применять проверку подлинности только один экземпляр](xref:security/authorization/limitingidentitybyscheme).
 
 * `AutomaticAuthenticate`-Этот флаг действителен только для ASP.NET Core 1.x. Указывает на то файла cookie проверки подлинности следует запустить при каждом запросе и попытка проверки и воссоздания любому участнику сериализованный она создана.
 

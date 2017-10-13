@@ -11,11 +11,11 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 2a92c50085e70b4a505913c86348ba5fe54f6d13
-ms.sourcegitcommit: 67811da1278c75cb10994602c13bd5adec3f0907
+ms.openlocfilehash: becdfa647acb6483b39f5421ab881c4817f31c40
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="working-with-multiple-environments"></a>Работа с несколькими средами
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 10/04/2017
 
 ASP.NET Core обеспечивает поддержку для управления поведением приложения в нескольких средах, например разработки, промежуточной и производственной. Переменные среды используются для указания среды выполнения, что позволяет приложению должны быть настроены для этой среды.
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="development-staging-production"></a>Разработка решений, промежуточное хранение производства
 
@@ -50,7 +50,7 @@ ASP.NET Core ссылается на переменную среды, `ASPNETCOR
 Изменения, внесенные в проект профилей могут не вступили в силу только после перезапуска веб-сервера используется (в частности, Kestrel необходимо перезагрузить перед он обнаруживает изменения, внесенные в своей среде).
 
 >[!WARNING]
-> Переменные среды сохраняются в *launchSettings.json* не защищены каким-либо образом и будет входить в состав репозиторий исходного кода для проекта, если используется один. **Никогда не храните учетные данные или другие секретные данные в этот файл.** Если вам требуется место для хранения таких данных, используйте *секрет диспетчер* средство описано в [безопасного хранения секрета приложения во время разработки](../security/app-secrets.md#security-app-secrets).
+> Переменные среды сохраняются в *launchSettings.json* не защищены каким-либо образом и будет входить в состав репозиторий исходного кода для проекта, если используется один. **Никогда не храните учетные данные или другие секретные данные в этот файл.** Если вам требуется место для хранения таких данных, используйте *секрет диспетчер* средство описано в [безопасного хранения секрета приложения во время разработки](xref:security/app-secrets).
 
 ### <a name="staging"></a>Промежуточный
 

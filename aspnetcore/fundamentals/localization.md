@@ -11,11 +11,11 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 9ff2fb92c81719c7278d70b5df5387f1244195bf
-ms.sourcegitcommit: e7f01a649f240b6b57118c53314ab82f7f36f2eb
+ms.openlocfilehash: b64af625dd280b40e3c743af9415e3a67155fe6e
+ms.sourcegitcommit: e9bd53f53c0ba148343cd2057c714a7c72ee81e9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/06/2017
 
 [!code-csharp[Main](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-Примечание: Обычно требуется только локализовать текст и не HTML.
+**Примечание:** обычно требуется только локализовать текст и не HTML.
 
 На самом низком уровне, вы можете получить `IStringLocalizerFactory` из [внедрения зависимости](dependency-injection.md):
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 10/06/2017
 
 [!code-csharp[Main](localization/sample/Localization/Resources/SharedResource.cs)]
 
-Некоторые разработчики используют `Startup` класс, содержащий глобальные или общих строк.  В приведенном ниже примере `InfoController` и `SharedResource` локализаторам используются:
+Некоторые разработчики используют `Startup` класс, содержащий глобальные или общих строк. В приведенном ниже примере `InfoController` и `SharedResource` локализаторам используются:
 
 [!code-csharp[Main](localization/sample/Localization/Controllers/InfoController.cs?range=9-26)]
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 10/06/2017
 
 `IViewLocalizer` Служба предоставляет локализованные строки для [представление](https://docs.microsoft.com/aspnet/core). `ViewLocalizer` Класс реализует этот интерфейс и находит расположение ресурса из пути файла представления. Ниже показано, как использовать реализацию по умолчанию `IViewLocalizer`:
 
-[!code-HTML[Main](localization/sample/Localization/Views/Home/About.cshtml)]
+[!code-cshtml[Main](localization/sample/Localization/Views/Home/About.cshtml)]
 
 Реализация по умолчанию `IViewLocalizer` находит файл ресурсов на основе имени файла этого представления. Нет возможности использовать файл общих ресурсов. `ViewLocalizer`реализует с помощью локализатора `IHtmlLocalizer`, поэтому Razor не HTML кодирования локализованные строки. Можно параметризировать строки ресурсов и `IViewLocalizer` будет HTML кодирования параметров, но не строки ресурса. Рассмотрим следующую разметку Razor.
 
@@ -83,13 +83,11 @@ ms.lasthandoff: 10/06/2017
 
 Отображенное представление будет содержать HTML-разметку из файла ресурсов.
 
-Примечания.
-- Представление локализации требуется пакет NuGet «Localization.AspNetCore.TagHelpers».
-- Как правило, требуется только локализовать текст и не HTML.
+**Примечание:** обычно требуется только локализовать текст и не HTML.
 
 Использование файла общего ресурса в виде, вставки `IHtmlLocalizer<T>`:
 
-[!code-HTML[Main](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
+[!code-cshtml[Main](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
 
 ## <a name="dataannotations-localization"></a>Локализация DataAnnotations
 
@@ -287,11 +285,11 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 В этом примере **Localization.StarterWeb** проект на [GitHub](https://github.com/aspnet/entropy) содержится пользовательский Интерфейс, чтобы задать `Culture`. *Views/Shared/_SelectLanguagePartial.cshtml* файла можно выбрать из списка поддерживаемых языков и региональных параметров языка и региональных параметров:
 
-[!code-HTML[Main](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
+[!code-cshtml[Main](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 
 *Views/Shared/_SelectLanguagePartial.cshtml* добавляется файл `footer` раздел файла разметки, она будет доступна во всех представлениях:
 
-[!code-HTML[Main](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
+[!code-cshtml[Main](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
 `SetLanguage` Метод задает язык и региональные параметры cookie.
 
