@@ -11,15 +11,15 @@ ms.assetid: c96ed361-c382-4980-8933-800e740cfc38
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/purpose-strings
-ms.openlocfilehash: cc33bcfab4945e6d6f9ca7e61edeff4d1837661a
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 799c3dc2768e264307783efafee626a346a9362c
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="purpose-strings"></a>Назначение строк
 
-<a name=data-protection-consumer-apis-purposes></a>
+<a name="data-protection-consumer-apis-purposes"></a>
 
 Компоненты, которые занимают IDataProtectionProvider необходимо передать уникальный *целей* параметр метода CreateProtector. Целей *параметр* обеспечивается самой безопасность системы защиты данных, как она обеспечивает изоляцию между шифрования потребителей, даже если корневой криптографические ключи совпадают.
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 08/11/2017
 
 Так как параметр целей CreateProtector, массив строк, указанных выше может вместо указаны как [«Contoso.Security.BearerToken», «v1»]. Это позволяет установление иерархии целей и открывает возможность многопользовательский режим сценариев с системой защиты данных.
 
-<a name=data-protection-contoso-purpose></a>
+<a name="data-protection-contoso-purpose"></a>
 
 >[!WARNING]
 > Компоненты, не следует разрешать недоверенному пользователю вход в качестве единственного источника входных данных для целей цепочки.

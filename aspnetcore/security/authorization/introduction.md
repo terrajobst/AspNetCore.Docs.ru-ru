@@ -11,15 +11,15 @@ ms.assetid: a6a556ed-ba59-4107-9358-44cf20e5931b
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/introduction
-ms.openlocfilehash: 040525505a982fc1be1901effb9186a8fe1cdbdf
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fa6dcbc0627181cd1aca0926fa008f3db907742f
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="introduction"></a>Вступление
 
-<a name=security-authorization-introduction></a>
+<a name="security-authorization-introduction"></a>
 
 Авторизация — это процесс, определяющее, какое может выполнять пользователь. Например пользователь с правами администратора может создать библиотеку документов, добавьте документы, редактирования документов и их удаления. Пользователь без прав администратора работы с библиотекой только авторизованные читать документы.
 

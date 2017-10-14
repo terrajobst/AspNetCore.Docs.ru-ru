@@ -11,15 +11,15 @@ ms.assetid: fb9b807a-d143-4861-9ddb-005d8796afa3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-management
-ms.openlocfilehash: 507c00edc5bade2427151ecadfed581817e4d088
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 687207cb6a1cea89166fd2b6172cdc0a013de4b3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="key-management"></a>Управление ключами
 
-<a name=data-protection-implementation-key-management></a>
+<a name="data-protection-implementation-key-management"></a>
 
 Система защиты данных автоматически управляет временем существования главные ключи, используемые для установки и снятия защиты полезных данных. Каждый раздел может существовать в одном из четырех этапов.
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/11/2017
 
 Существует одно исключение. Если разработчик приложения должен [отключено автоматическое создание ключа](../configuration/overview.md#data-protection-configuring-disable-automatic-key-generation), то система защиты данных необходимо выбрать что-либо ключ по умолчанию. В этом случае резервная системой будет выбран ключ не отозван с самая поздняя дата активации с предпочтением в ключи, для которых времени для распространения на других компьютерах в кластере. Система резервного использования может оказаться в результате выбора ключ с истекшим сроком действия по умолчанию. Система резервного использования никогда не будет выбирать отозванных ключ как ключ по умолчанию, и если кольцо ключ является пустым или каждый ключ был отозван система будет создавать ошибку при инициализации.
 
-<a name=data-protection-implementation-key-management-expiration></a>
+<a name="data-protection-implementation-key-management-expiration"></a>
 
 ## <a name="key-expiration-and-rolling"></a>Срок действия ключа и накат
 

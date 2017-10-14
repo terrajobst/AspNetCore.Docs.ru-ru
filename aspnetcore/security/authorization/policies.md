@@ -11,15 +11,15 @@ ms.assetid: e422a1b2-dc4a-4bcc-b8d9-7ee62009b6a3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/policies
-ms.openlocfilehash: 2e3bbcc9ffd90d7cba974466860738f1f462d3b3
-ms.sourcegitcommit: c29954cdfed0257eef92243175802ad6929e32bc
+ms.openlocfilehash: 24585ed5b4c21a357fc0eed4de6ccedf9fa50d3e
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/13/2017
 ---
 # <a name="custom-policy-based-authorization"></a>Пользовательская авторизация на основе политик
 
-<a name=security-authorization-policies-based></a>
+<a name="security-authorization-policies-based"></a>
 
 В системе [роли авторизации](roles.md) и [утверждений авторизации](claims.md) сделать использование требования, обработчик требование и предварительно настроенных политик. Эти блоки позволяют представить оценок авторизации кода, что обеспечивает более широкие, для повторного использования, и структура легко тестируемых авторизации.
 
@@ -74,13 +74,13 @@ public class MinimumAgeRequirement : IAuthorizationRequirement
 
 Это требование не должны иметь данные или свойства.
 
-<a name=security-authorization-policies-based-authorization-handler></a>
+<a name="security-authorization-policies-based-authorization-handler"></a>
 
 ## <a name="authorization-handlers"></a>Обработчики авторизации
 
 Обработчик авторизации отвечает за вычисление любой свойств является обязательным. Обработчик авторизации необходимо их оценки относительно указанного `AuthorizationHandlerContext` решаете, разрешена ли авторизация. Это требование может иметь [несколько обработчиков](policies.md#security-authorization-policies-based-multiple-handlers). Обработчики должны наследовать `AuthorizationHandler<T>` там, где T — требование, обрабатывает его.
 
-<a name=security-authorization-handler-example></a>
+<a name="security-authorization-handler-example"></a>
 
 Минимальный возраст обработчик может выглядеть следующим образом:
 
@@ -116,7 +116,7 @@ public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
 
 В коде выше мы сначала найдите ли основной текущий пользователь не имеет даты рождения утверждения, которой выполнялась, мы знаем, что издатель и доверия. Если утверждение отсутствует мы не удается авторизовать так мы возвращаем. Если у нас есть утверждение, мы выяснить, насколько стара пользователь является и, если они удовлетворяют минимальный возраст, передаваемые с требование затем авторизация прошла успешно. После успешной авторизации мы называем `context.Succeed()` передав требование, которое было выполнено успешно, как параметр.
 
-<a name=security-authorization-policies-based-handler-registration></a>
+<a name="security-authorization-policies-based-handler-registration"></a>
 
 Обработчики должны быть зарегистрированы в коллекции служб во время настройки, например;
 
@@ -150,7 +150,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Независимо от того, вызывается в обработчике все обработчики для требования будет вызываться, если политика требует требование. Это позволяет требования с побочными эффектами, например ведение журнала, который всегда будет иметь место даже в том случае, если `context.Fail()` был вызван в другой обработчик.
 
-<a name=security-authorization-policies-based-multiple-handlers></a>
+<a name="security-authorization-policies-based-multiple-handlers"></a>
 
 ## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>Зачем нужен несколько обработчиков для требования?
 

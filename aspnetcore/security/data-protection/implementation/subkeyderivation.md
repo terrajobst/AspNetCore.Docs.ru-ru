@@ -11,22 +11,22 @@ ms.assetid: 34bb58a3-5a9a-41e5-b090-08f75b4bbefa
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/subkeyderivation
-ms.openlocfilehash: 24ce71b417599bea22b7fae8b384db599f9e907c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: e070742b5d9966c4772fd2f0a6d637d98a46137c
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="subkey-derivation-and-authenticated-encryption"></a>Проверкой подлинности шифрования и подразделов наследования
 
-<a name=data-protection-implementation-subkey-derivation></a>
+<a name="data-protection-implementation-subkey-derivation"></a>
 
 Большинство ключей в кольце ключ будет содержать определенные виды энтропии и будет иметь алгоритмическое сведения о том, «режим CBC шифрования + HMAC проверки» или «шифрование GCM + проверки». В таких случаях мы называем внедренные энтропии материала основного (или км) для данного ключа и мы выполнения функции производного ключа для получения ключей, которые будут использоваться для фактических криптографических операций.
 
 > [!NOTE]
 > Ключи являются абстрактными, а пользовательская реализация может вести себя как показано ниже. Если ключ обеспечивает собственную реализацию IAuthenticatedEncryptor, а не с помощью одного из встроенных фабрик, механизм, описанные в этом разделе, больше не применяется.
 
-<a name=data-protection-implementation-subkey-derivation-aad></a>
+<a name="data-protection-implementation-subkey-derivation-aad"></a>
 
 ## <a name="additional-authenticated-data-and-subkey-derivation"></a>Дополнительные данные, прошедшие проверку подлинности и подразделов наследования
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 08/11/2017
 
 (K_E, K_H) = SP800_108_CTR_HMACSHA512 (contextHeader K_M AAD, || keyModifier)
 
-Здесь выполняется вызов Формирования NIST SP800-108 в режиме счетчика (см. [NIST SP800-108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf), сек. 5.1) со следующими параметрами:
+Здесь выполняется вызов Формирования NIST SP800-108 в режиме счетчика (см. [NIST SP800-108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf), секунду 5.1) со следующими параметрами:
 
 * Ключ производного ключа (KDK) = K_M
 

@@ -11,11 +11,11 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: ca6b62dd4699536b24c3422a2a51fc3fe1744f0a
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: d626768fe1a485705e104a5c758cbdb0b46685a3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -33,7 +33,7 @@ API конфигурации предоставляет способ настр�
 
 Каждое значение конфигурации сопоставляет строковый ключ. Поддержка встроенных привязок для десериализации параметров в пользовательский [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) объекта (простой класс .NET со свойствами).
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="simple-configuration"></a>Простая настройка
 
@@ -81,7 +81,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 * **Никогда не** хранить пароли и другие конфиденциальные данные в коде поставщика конфигурации или в файлах конфигурации в виде обычного текста. Не используйте секреты производства в разработке и тестовую среду. Вместо этого укажите секретные данные за пределами дереве проекта, чтобы их может быть сохранена в репозиторий случайно. Дополнительные сведения о [работа с несколькими средами](environments.md) и управление ими [безопасного хранения секрета приложения во время разработки](../security/app-secrets.md).
 * Если `:` не может быть использование переменных среды в системе, замените `:` с `__` (двойной символ подчеркивания).
 
-<a name=options-config-objects></a>
+<a name="options-config-objects"></a>
 
 ## <a name="using-options-and-configuration-objects"></a>С помощью параметров и объектов конфигурации
 
@@ -94,7 +94,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 [!code-csharp[Main](configuration/sample/UsingOptions/Models/MyOptions.cs)]
 
-<a name=options-example></a>
+<a name="options-example"></a>
 
 В следующем коде включен поставщик конфигурации JSON. `MyOptions` Класса добавляется в контейнер службы и привязан к конфигурации.
 
@@ -148,7 +148,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 [!code-html[Main](configuration/sample/UsingOptions/Views/Home/Index.cshtml?highlight=3-4,16-17,20-21)]
 
-<a name=in-memory-provider></a>
+<a name="in-memory-provider"></a>
 
 ## <a name="ioptionssnapshot"></a>IOptionsSnapshot
 
@@ -247,7 +247,7 @@ public void CanBindObjectTree()
 }
 ```
 
-<a name=custom-config-providers></a>
+<a name="custom-config-providers"></a>
 
 ## <a name="basic-sample-of-entity-framework-custom-provider"></a>Базовый образец пользовательского поставщика Entity Framework
 

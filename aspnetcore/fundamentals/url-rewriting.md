@@ -11,17 +11,17 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 0a4024edf13651e2ed7e0f87e554e8ba8d895619
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: dde0b5673c9885db2fecbb24b384752e5ddf70eb
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>По промежуточного слоя в ASP.NET Core видоизменения URL-адресов
 
 По [Latham Люк](https://github.com/guardrex) и [Mengistu Микаэль](https://github.com/mikaelm12)
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 Перезапись URL-адрес является изменение запроса URL-адреса на основании одного или нескольких стандартных правил. Переписывание URL-адресов создает абстракции между расположений ресурсов и их адресов, позволяя местоположения и адреса не связаны тесно. Существует несколько сценариев, где полезен перезаписи URL-адресов:
 * Перемещение или замещение ресурсы сервера временно или навсегда при сохранении стабильный указатели для этих ресурсов
@@ -98,7 +98,7 @@ ms.lasthandoff: 10/01/2017
 
 Захватываемые группы в строке замены, вводится в строку с знак доллара (`$`) следуют порядковый номер записи. Первое значение группы захвата получен с `$1`, другой — с `$2`, и они по-прежнему в последовательности для групп захвата в регулярное выражение. Установлен только один захватываемой группы в регулярное выражение правила перенаправления в пример приложения, то есть только одна группа, введенный в строке замены, который является `$1`. Если применяется правило, URL-адрес становится `/redirected/1234/5678`.
 
-<a name=url-redirect-to-secure-endpoint></a>
+<a name="url-redirect-to-secure-endpoint"></a>
 ### <a name="url-redirect-to-a-secure-endpoint"></a>URL-адрес перенаправления для защищенной конечной точки
 Используйте `AddRedirectToHttps` для перенаправления HTTP-запросов на один и тот же узел и путь, с помощью протокола HTTPS (`https://`). Если код состояния не указано, по промежуточного слоя по умолчанию 302 (найдено). Если порт не указан, по умолчанию используется по промежуточного слоя `null`, означающее протокол примет `https://` и клиент обращается к ресурсу через порт 443. В примере показано установить код состояния для 301 (перемещен постоянно) и изменить номер порта 5001.
 ```csharp

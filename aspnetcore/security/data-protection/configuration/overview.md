@@ -11,19 +11,19 @@ ms.assetid: 0e4881a3-a94d-4e35-9c1c-f025d65dcff0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 9361dcec89a0f35067181523cc56637d629614ff
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: d35e0e806999ffd2e0f8f82e0adfc940ea2b503d
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="configuring-data-protection"></a>Настройка защиты данных
 
-<a name=data-protection-configuring></a>
+<a name="data-protection-configuring"></a>
 
 При инициализации системы защиты данных применяет некоторые [параметры по умолчанию](default-settings.md#data-protection-default-settings) в зависимости от рабочей среды. Эти параметры обычно хорошо подходят для приложений, работающих на одном компьютере. Существуют случаи, когда разработчик может потребоваться изменить эти (возможно потому, что их приложения распределены между несколькими компьютерами или соответствия требованиям), и для этих сценариев система защиты данных предлагает широкие возможности API конфигурации.
 
-<a name=data-protection-configuration-callback></a>
+<a name="data-protection-configuration-callback"></a>
 
 Отсутствует метод расширения AddDataProtection, возвращающий IDataProtectionBuilder который в свою очередь предоставляет методы расширения, что можно соединить в цепочку вместе для настройки различных защиты данных параметров. Например для хранения ключей в UNC-ресурс вместо % LOCALAPPDATA % (по умолчанию), настройте систему следующим образом:
 
@@ -38,7 +38,7 @@ public void ConfigureServices(IServiceCollection services)
 >[!WARNING]
 > При изменении расположения сохраняемость ключа система будет шифровать больше не будет автоматически ключи хранятся так как он не знает ли DPAPI — это механизм шифрования соответствующие.
 
-<a name=configuring-x509-certificate></a>
+<a name="configuring-x509-certificate"></a>
 
 Можно настроить систему для защиты ключей неактивные вызовом ProtectKeysWith\* интерфейсы API настройки. Рассмотрим следующий пример, который хранит ключи в общем ресурсе UNC и шифрует эти ключи хранятся с конкретным сертификатом X.509.
 
@@ -65,7 +65,7 @@ public void ConfigureServices(IServiceCollection services)
 
 По умолчанию система защиты данных изолирует приложений друг от друга, даже если они совместно используют тот же физический репозиторий ключа. Это предотвращает приложений понимание друг друга защищенных полезных данных. Для совместного использования защищенных полезных данных между двумя приложениями, настройки системы, передача в одно и то же имя приложения для обоих приложений, как в следующем примере:
 
-<a name=data-protection-code-sample-application-name></a>
+<a name="data-protection-code-sample-application-name"></a>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -75,7 +75,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<a name=data-protection-configuring-disable-automatic-key-generation></a>
+<a name="data-protection-configuring-disable-automatic-key-generation"></a>
 
 Наконец возможно, сценарий, где требуется приложение для автоматического развертывания ключей, как приближающихся истечение срока действия. Примером этого может быть в связи первичного и вторичного, где только основное приложение отвечает за вопросы управления ключами, а все приложения получателя просто имеют только для чтения представление кольца ключ приложения. Можно настроить получателей приложений необходимо рассматривать ключей только для чтения, настройки системы, как показано ниже:
 
@@ -87,7 +87,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<a name=data-protection-configuration-per-app-isolation></a>
+<a name="data-protection-configuration-per-app-isolation"></a>
 
 ## <a name="per-application-isolation"></a>Изоляция на уровне приложения
 
@@ -105,7 +105,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Если система защиты данных, не предоставляются ASP.NET Core для узла (например, если разработчик создает его себе через конкретный тип DataProtectionProvider) изоляции приложений отключена по умолчанию и все приложения резервного путем ввода материалы могут совместно использовать полезных данных, при условии, что они предоставляют соответствующие целей. Для обеспечения изоляции приложений в этой среде, вызовите метод SetApplicationName в объекте конфигурации см. в разделе [образец кода](#data-protection-code-sample-application-name) выше.
 
-<a name=data-protection-changing-algorithms></a>
+<a name="data-protection-changing-algorithms"></a>
 
 ## <a name="changing-algorithms"></a>Изменение алгоритмов
 
@@ -144,7 +144,7 @@ services.AddDataProtection()
 >[!TIP]
 > Изменение алгоритмов не влияет на существующие ключи в ключ обмена. Он влияет только на вновь созданных ключей.
 
-<a name=data-protection-changing-algorithms-custom-managed></a>
+<a name="data-protection-changing-algorithms-custom-managed"></a>
 
 ### <a name="specifying-custom-managed-algorithms"></a>Указание пользовательских управляемых алгоритмов
 
@@ -193,7 +193,7 @@ serviceCollection.AddDataProtection()
 > [!NOTE]
 > SymmetricAlgorithm должен иметь длину ключа 128 бит ≥ и размер блока ≥ 64-разрядная, и он должен поддерживать режим CBC шифрования с заполнением PKCS #7. KeyedHashAlgorithm должен иметь размер хэш-кода > = 128 бит, и он должен поддерживать ключи длина равна длине дайджест хэш-алгоритм. KeyedHashAlgorithm не является обязательным для HMAC.
 
-<a name=data-protection-changing-algorithms-cng></a>
+<a name="data-protection-changing-algorithms-cng"></a>
 
 ### <a name="specifying-custom-windows-cng-algorithms"></a>Указание пользовательские алгоритмы Windows CNG
 

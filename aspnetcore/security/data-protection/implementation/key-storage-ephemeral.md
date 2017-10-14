@@ -11,15 +11,15 @@ ms.assetid: af6ea1d0-0d9d-41df-a870-5dda24978e2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-storage-ephemeral
-ms.openlocfilehash: 6b564f082eefad993ac938407e0f3b657d83fb52
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: ee8dccac3ba990b110758042192779426b01fc53
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="ephemeral-data-protection-providers"></a>Поставщики защиты временных данных
 
-<a name=data-protection-implementation-key-storage-ephemeral></a>
+<a name="data-protection-implementation-key-storage-ephemeral"></a>
 
 Существуют сценарии, если приложению необходима throwaway IDataProtectionProvider. Например, разработчик может просто Поэкспериментировав в одноразовые консольное приложение или само приложение является временным (скрипт создается или проект модульного теста). Для поддержки следующих сценариев пакета Microsoft.AspNetCore.DataProtection включает тип EphemeralDataProtectionProvider. Этот тип обеспечивает базовую реализацию IDataProtectionProvider которого ключа репозитория удерживается исключительно в памяти и не записывается в резервное хранилище.
 

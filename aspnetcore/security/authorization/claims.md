@@ -11,15 +11,15 @@ ms.assetid: 737be5cd-3511-4f1c-b0ce-65403fb5eed3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/claims
-ms.openlocfilehash: fca75952429d48b02c2c4350b79e29a1957599dc
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 51d747c3c295164b6c0e00b5bafe63c565d588b4
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="claims-based-authorization"></a>Авторизация на основе утверждений
 
-<a name=security-authorization-claims-based></a>
+<a name="security-authorization-claims-based"></a>
 
 При создании удостоверение может быть присвоено одно или несколько утверждений, выданных доверенной стороной. Утверждение-это имя значение пара, которая представляет какие субъекта, можно сделать, не какие субъекта. Например имеется водительские права, выданный центром локального определяющим лицензии. Ваше водительское удостоверение есть дата рождения. В этом случае будет имя утверждения `DateOfBirth`, значение утверждения будет дата рождения, например `8th June 1970` и издатель будет определяющим центра лицензии. Авторизация на основе утверждений, в самом простом случае проверяет значение утверждения и разрешает доступ к ресурсу на основе этого значения. Например, если требуется доступ к сообщество ночь процесс авторизации может быть:
 

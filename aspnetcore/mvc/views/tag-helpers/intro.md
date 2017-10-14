@@ -11,11 +11,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/intro
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06644b8359fb5ccc2e61a17a4c6e20e354d5ceef
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 78004aa370cac8b297fd7ede534260c83965ae79
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="introduction-to-tag-helpers-in-aspnet-core"></a>Общие сведения о вспомогательных функций тегов в ASP.NET Core 
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 09/28/2017
 
 Вспомогательные объекты области тег управляется сочетание `@addTagHelper`, `@removeTagHelper`и «!» символ отказаться от участия.
 
-<a name=add-helper-label></a>
+<a name="add-helper-label"></a>
 
 ### <a name="addtaghelper-makes-tag-helpers-available"></a>`@addTagHelper`делает доступными вспомогательных функций тегов
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 09/28/2017
 
 Как упоминалось ранее, добавление `@addTagHelper` директиву *Views/_ViewImports.cshtml* файла делает доступными для всех Просмотр файлов в тег вспомогательный *представления* каталога и вложенные каталоги. Можно использовать `@addTagHelper` директив в файлах определенных представлений, чтобы согласиться на предоставление тег модуля поддержки только те представления.
 
-<a name=remove-razor-directives-label></a>
+<a name="remove-razor-directives-label"></a>
 
 ### <a name="removetaghelper-removes-tag-helpers"></a>`@removeTagHelper`Удаляет вспомогательных функций тегов
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 09/28/2017
 
 Необходимо применить тег вспомогательный символ отказаться открывающий и закрывающий теги. (В редакторе Visual Studio автоматически добавляет символ отказа закрывающий тег при добавлении одного открывающий тег). После добавления символа отказа элемента и атрибуты тега вспомогательный больше не отображаются в отдельных шрифт.
 
-<a name=prefix-razor-directives-label></a>
+<a name="prefix-razor-directives-label"></a>
 
 ### <a name="using-taghelperprefix-to-make-tag-helper-usage-explicit"></a>С помощью `@tagHelperPrefix` вносить вспомогательный тег использования явное
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 09/28/2017
 
 ![изображение](intro/_static/label.png)
 
-Не только получить Справка в формате HTML, но значок («@» символ с «<>», в нем).
+Не только получить Справка в формате HTML, но значок («@" symbol with "<>» в нем).
 
 ![изображение](intro/_static/tagSym.png)
 

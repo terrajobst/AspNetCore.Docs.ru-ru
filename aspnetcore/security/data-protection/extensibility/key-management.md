@@ -11,15 +11,15 @@ ms.assetid: 3606b251-8324-4485-8d52-582a2cd5cffb
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: ed84b6dc257d5fd9e4c1cf6106df3c8bd6e14f64
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: ce23931e72404347ebc17c69ae90e70cd15328bc
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="key-management-extensibility"></a>Управление ключами расширяемости
 
-<a name=data-protection-extensibility-key-management></a>
+<a name="data-protection-extensibility-key-management"></a>
 
 >[!TIP]
 > Чтение [управление ключами](../implementation/key-management.md#data-protection-implementation-key-management) раздел перед считыванием в этом разделе, как он описаны некоторые основные принципы эти API-интерфейсы.
@@ -37,11 +37,11 @@ ms.lasthandoff: 09/12/2017
 
 * Ключевой идентификатор (GUID)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Кроме того, IKey предоставляет метод CreateEncryptor, который может использоваться для создания [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра привязан к данному ключу.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Кроме того, IKey предоставляет метод CreateEncryptorInstance, который может использоваться для создания [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра привязан к данному ключу.
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 09/12/2017
 >[!WARNING]
 > Записи IKeyManager является очень сложных задач, а большинство разработчиков не должны предпринимать попытки его. Вместо этого, большинство разработчиков следует воспользоваться функциональными возможностями [XmlKeyManager](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-xmlkeymanager) класса.
 
-<a name=data-protection-extensibility-key-management-xmlkeymanager></a>
+<a name="data-protection-extensibility-key-management-xmlkeymanager"></a>
 
 ## <a name="xmlkeymanager"></a>XmlKeyManager
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 09/12/2017
 
 XmlKeyManager зависит от других компонентов во время выполнения своих задач.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 * AlgorithmConfiguration определяет алгоритмы, используемые с новыми ключами.
 
@@ -81,7 +81,7 @@ XmlKeyManager зависит от других компонентов во вр�
 
 * IKeyEscrowSink [необязательно], который предоставляет службы переноса ключей.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 * IXmlRepository, какие элементы управления, где ключи сохраняются в хранилище.
 
@@ -93,7 +93,7 @@ XmlKeyManager зависит от других компонентов во вр�
 
 Ниже перечислены высокоуровневые диаграммы, которые указывают, как эти компоненты соединены друг с другом в пределах XmlKeyManager.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
    ![Создание ключа](key-management/_static/keycreation2.png)
 
@@ -101,7 +101,7 @@ XmlKeyManager зависит от других компонентов во вр�
 
 В реализации CreateNewKey AlgorithmConfiguration компонент используется для создания уникальных IAuthenticatedEncryptorDescriptor, который затем сериализуется в формат XML. Если присутствует приемник перенос ключа, необработанные XML-данные (незашифрованные) предоставляется в приемник для долговременного хранения. Незашифрованные XML затем выполняется через IXmlEncryptor (при необходимости) для формирования зашифрованного XML-документа. Этот зашифрованный документ сохраняется в долговременном хранилище через IXmlRepository. (Если не IXmlEncryptor не настроена, незашифрованные документа сохраняются в IXmlRepository.)
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
    ![Создание ключа](key-management/_static/keycreation1.png)
 
@@ -111,11 +111,11 @@ XmlKeyManager зависит от других компонентов во вр�
 
 ---
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
    ![Получение ключа](key-management/_static/keyretrieval2.png)
    
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
    ![Получение ключа](key-management/_static/keyretrieval1.png)
 
@@ -139,7 +139,7 @@ XmlKeyManager зависит от других компонентов во вр�
 
 Существуют две встроенные конкретные типы, реализующие IXmlRepository: FileSystemXmlRepository и RegistryXmlRepository. В разделе [документа поставщиков хранилища ключей](../implementation/key-storage-providers.md#data-protection-implementation-key-storage-providers) для получения дополнительной информации. Регистрация пользовательского IXmlRepository бы быть подходящим способом, чтобы использовать другой резервное хранилище, например, хранилище больших двоичных объектов Azure. Чтобы изменить приложение всего репозитория по умолчанию, зарегистрируйте пользовательские одноэлементный IXmlRepository в поставщик услуг.
 
-<a name=data-protection-extensibility-key-management-ixmlencryptor></a>
+<a name="data-protection-extensibility-key-management-ixmlencryptor"></a>
 
 ## <a name="ixmlencryptor"></a>IXmlEncryptor
 

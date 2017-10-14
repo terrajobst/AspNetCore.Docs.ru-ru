@@ -11,15 +11,15 @@ ms.assetid: 95790927-2bfe-445e-b1fd-429c2c7030ce
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/cross-site-scripting
-ms.openlocfilehash: 1816977837efd82f374a03d9f776db21358e2850
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: d0880fda4ee726bd30a48cce0907a3887f2a4545
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="preventing-cross-site-scripting"></a>Предотвращение межсайтовых сценариев
 
-<a name=security-cross-site-scripting></a>
+<a name="security-cross-site-scripting"></a>
 
 Межсайтовых сценариев (XSS) является уязвимость системы безопасности, позволяющая злоумышленнику разместить клиентские скрипты (обычно JavaScript) в веб-страницы. При других пользователей загрузить измененные страницы будут выполняться скрипты злоумышленники, что позволит ему похищать файлы cookie и токены сеанса изменение содержимого веб-страницы по обработке модели DOM или перенаправить браузер на другую страницу. Уязвимости XSS обычно возникают в том случае, когда приложение входные данные пользователя и выводит его на странице без проверки, кодирования или его преобразование.
 
@@ -183,7 +183,7 @@ var example = "\"Quoted Value with spaces and &\"";
 >[!WARNING]
 > Не используйте недоверенные входные данные как часть URL-пути. Всегда передает недоверенные входные данные как значение строки запроса.
 
-<a name=security-cross-site-scripting-customization></a>
+<a name="security-cross-site-scripting-customization"></a>
 
 ## <a name="customizing-the-encoders"></a>Настройка кодировщики
 

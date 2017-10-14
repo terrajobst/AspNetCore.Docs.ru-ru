@@ -11,11 +11,11 @@ ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 9d24c2956c24a7995b3eeffc19e8c0a827349493
-ms.sourcegitcommit: ed401027aac45c5938c917c7f518a33ceffe9f95
+ms.openlocfilehash: 5dd8bee7228587d7e13f128bc8f16102fb70a412
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/02/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/02/2017
 >[!IMPORTANT]
 > В этом документе рассматриваются низкого уровня ASP.NET Core маршрутизации. Для маршрутизации ASP.NET Core MVC, в разделе [маршрутизации действия контроллера](../mvc/controllers/routing.md)
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Основы маршрутизации
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/02/2017
 
 Маршрутизация подключен к [по промежуточного слоя](middleware.md) продаж по `RouterMiddleware` класса. [ASP.NET MVC](../mvc/overview.md) добавляет маршрутизации для конвейера по промежуточного слоя в процессе его настройки. Дополнительные сведения об использовании маршрутизации в качестве автономного компонента см. в разделе [с помощью маршрутизации-по промежуточного слоя](#using-routing-middleware).
 
-<a name=url-matching-ref></a>
+<a name="url-matching-ref"></a>
 
 ### <a name="url-matching"></a>URL-адрес соответствует
 
@@ -159,7 +159,7 @@ routes.MapRoute(
 
 ![Локальные токены Windows](routing/_static/tokens.png)
 
-<a name=id1></a>
+<a name="id1"></a>
 
 ### <a name="url-generation"></a>Создание URL-адреса
 

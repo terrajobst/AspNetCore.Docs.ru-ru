@@ -11,11 +11,11 @@ ms.assetid: 9c826a76-fbd2-46b5-978d-6ca6df53531a
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/http-modules
-ms.openlocfilehash: e14664133abf010b80374036e4855fdff71d1d5f
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: eb5049d4d63c224ca74fc39072ae2c0d98ba330d
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="migrating-http-handlers-and-modules-to-aspnet-core-middleware"></a>Миграция обработчики HTTP-данных и модули в по промежуточного слоя ASP.NET Core 
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 09/12/2017
 
    * В разделе [Создание конвейера по промежуточного слоя с IApplicationBuilder](../fundamentals/middleware.md#creating-a-middleware-pipeline-with-iapplicationbuilder)
 
-![По промежуточного слоя](http-modules/_static/middleware.png)
+![ПО промежуточного слоя](http-modules/_static/middleware.png)
 
 Обратите внимание на то, как в приведенном выше рисунке промежуточного по проверки подлинности short-circuited запроса.
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 09/12/2017
 
 Как показано в [по промежуточного слоя](../fundamentals/middleware.md) , по промежуточного слоя ASP.NET Core используется класс, предоставляющий `Invoke` метод ведения `HttpContext` и возвращая `Task`. Новый по промежуточного слоя будет выглядеть следующим образом:
 
-<a name=http-modules-usemiddleware></a>
+<a name="http-modules-usemiddleware"></a>
 
 [!code-csharp[Main](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddleware.cs?highlight=9,13,20,24,28,30,32)]
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 09/12/2017
 
 *MyMiddlewareExtensions* вспомогательный класс для упрощения настройки по промежуточного слоя в вашей `Startup` класса. `UseMyMiddleware` Метод добавляет по промежуточного слоя класса конвейера запросов. Службы, необходимые по промежуточного слоя получить введенный в конструкторе по промежуточного слоя.
 
-<a name=http-modules-shortcircuiting-middleware></a>
+<a name="http-modules-shortcircuiting-middleware"></a>
 
 Модуль может вызвать завершение запроса, например, если пользователь не авторизован:
 
@@ -388,4 +388,4 @@ public async Task Invoke(HttpContext httpContext)
 
 * [Запуск приложения](../fundamentals/startup.md)
 
-* [По промежуточного слоя](../fundamentals/middleware.md)
+* [ПО промежуточного слоя](../fundamentals/middleware.md)

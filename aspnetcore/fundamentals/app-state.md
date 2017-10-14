@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/app-state
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9c1d10101d23e105c4a8af41d851f69b1b6a175
-ms.sourcegitcommit: 9c27fa0f0c57ad611aa43f63afb9b9c9571d4a94
+ms.openlocfilehash: d4d10ef45d562f34c3f8b5ce025abaf763c862d3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>Общие сведения о состоянии сеанса и приложения в ASP.NET Core
 
@@ -43,6 +43,7 @@ ASP.NET Core сохраняет состояние сеанса, предост�
 
 Основные ASP.NET MVC предоставляет [TempData](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) свойство [контроллера](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-2.0). Это свойство хранит данные до тех пор, пока они не будут прочитаны. Для проверки данных без удаления можно использовать методы `Keep` и `Peek`. `TempData`особенно полезна для перенаправления, когда данные, необходимые для более чем одного запроса. `TempData`реализуется TempData поставщиков, например, с помощью файлов cookie или с состоянием сеанса.
 
+<a name="tempdata-providers"></a>
 ### <a name="tempdata-providers"></a>Поставщики TempData
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
@@ -106,7 +107,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Кэширование — эффективный способ хранения и извлечения данных. Можно управлять временем жизни кэшированных элементов на основе времени и другие вопросы. Дополнительные сведения о [кэширование](../performance/caching/index.md).
 
-<a name=session></a>
+<a name="session"></a>
 ## <a name="working-with-session-state"></a>Работа с состоянием сеанса
 
 ### <a name="configuring-session"></a>Настройка сеанса
@@ -167,7 +168,7 @@ public void ConfigureServices(IServiceCollection services)
 
 В следующем примере показано задание и получение int и строку:
 
-[!code-csharp[Main](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?name=snippet1)]
+[!code-csharp[Main](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?range=8-27,49)]
 
 При добавлении следующие методы расширения, можно задать и получить сериализуемые объекты для сеанса:
 
@@ -232,7 +233,7 @@ public class HomeController : Controller
 
 Данный подход также имеет преимущество устраняя повторение «magic строки» в нескольких местах в коде.
 
-<a name=appstate-errors></a>
+<a name="appstate-errors"></a>
 
 ## <a name="application-state-data"></a>Данные состояния приложения
 
