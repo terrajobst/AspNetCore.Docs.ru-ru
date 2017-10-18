@@ -12,25 +12,25 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9557e9f6915507450de3ffe500582839a28c3f0c
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: b2e991ea37b1b726e472d78d839143546ebd559f
+ms.sourcegitcommit: 29da58de11e20c9c60448e36e7075c6b13622624
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>Общие сведения о входе ASP.NET Core
 
 По [Стив Смит](https://ardalis.com/) и [Tom Dykstra](https://github.com/tdykstra)
 
-ASP.NET Core поддерживает API ведения журнала, который работает с множеством регистраторов. Встроенные поставщики позволяют отправлять журналы одному или нескольким назначениям, а можно подключить платформа ведения журналов сторонних разработчиков. В этой статье показано, как использовать API встроенного ведения журнала и поставщики в коде.
+ASP.NET Core поддерживает API ведения журнала, который работает с разными поставщиками. Встроенные поставщики позволяют отправлять журналы одному или нескольким назначениям, а можно подключить платформа ведения журналов сторонних разработчиков. В этой статье показано, как использовать API встроенного ведения журнала и поставщики в коде.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample2) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample2) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ---
 
@@ -585,9 +585,6 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) пакет поставщика записи журналов в текстовые файлы в файловой системе приложения службы приложений Azure и [хранилище больших двоичных объектов](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage) в учетной записи хранилища Azure. Поставщик является доступной только для приложений, предназначенных для ASP.NET Core 1.1.0 или более поздней версии. 
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
-> [!NOTE]
-> ASP.NET 2.0 лежит в режиме предварительного просмотра.  Приложениям, созданным с помощью последнего предварительного выпуска может не работать при развертывании в службе приложений Azure. При выпуске ASP.NET 2.0 основной службе приложений Azure будет выполняться 2.0 приложения и службы приложений Azure, поставщик будет работать, как указано ниже.
 
 Не нужно устанавливать пакет поставщика или вызов `AddAzureWebAppDiagnostics` метода расширения.  Поставщик является автоматически доступны для приложения при развертывании приложения в службе приложений Azure.
 
