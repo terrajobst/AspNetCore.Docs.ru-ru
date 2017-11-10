@@ -11,11 +11,11 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: a4e9ab26fa49720aa2334101ee12916fc797d944
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 379802f644b977563b0b50354feb1fb9a4c8fabb
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>Приступая к работе с ASP.NET MVC ядра и Entity Framework Core, с помощью Visual Studio (1, 10)
 
@@ -94,11 +94,11 @@ EF Core 2.0 — это последняя версия EF, но еще не вс
 
 Изменения выделены.
 
-[!code-html[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,30,36-39,48)]
+[!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,30,36-39,48)]
 
 В *Views/Home/Index.cshtml*, замените содержимое файла следующим кодом, чтобы заменить текст о ASP.NET и MVC на текст об этом приложении:
 
-[!code-html[](intro/samples/cu/Views/Home/Index.cshtml)]
+[!code-cshtml[](intro/samples/cu/Views/Home/Index.cshtml)]
 
 Нажмите CTRL + F5, чтобы запустить проект или **Отладка > Начать без отладки** в меню. Появится домашняя страница с вкладками для страниц, которые можно создать с помощью этих учебников.
 
@@ -288,7 +288,7 @@ Entity Framework интерпретирует свойство как свойс
 
 *Views/Students/Index.cshtml* представление отображает этот список в таблице:
 
-[!code-html[](intro/samples/cu/Views/Students/Index1.cshtml)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index1.cshtml)]
 
 Нажмите CTRL + F5, чтобы запустить проект или **Отладка > Начать без отладки** в меню.
 
@@ -330,7 +330,7 @@ Entity Framework интерпретирует свойство как свойс
 
 * Свойства сущности, которые называются Идентификатором или classnameID распознаются как свойства основного ключа.
 
-* Свойство интерпретируется как свойство внешнего ключа, если он называется * <navigation property name> <primary key property name> * (например, `StudentID` для `Student` свойство навигации с момента `Student` — первичный ключ сущности `ID`). Свойства внешнего ключа может также называться просто * <primary key property name> * (например, `EnrollmentID` с момента `Enrollment` первичного ключа сущности является `EnrollmentID`).
+* Свойство интерпретируется как свойство внешнего ключа, если он называется  *<navigation property name> <primary key property name>*  (например, `StudentID` для `Student` свойство навигации с момента `Student` — первичный ключ сущности `ID`). Свойства внешнего ключа может также называться просто  *<primary key property name>*  (например, `EnrollmentID` с момента `Enrollment` первичного ключа сущности является `EnrollmentID`).
 
 Можно переопределить обычным образом. Например можно явно указать имена таблиц, как было показано ранее в этом учебнике. И можно задать имена столбцов и настройте желаемые свойства как первичного или внешнего ключа, как можно будет увидеть в [более поздней версии учебника](complex-data-model.md) этой серии.
 

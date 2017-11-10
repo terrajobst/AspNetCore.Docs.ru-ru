@@ -11,17 +11,17 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 85a192bf0b2eb245ecdaaa8ffa1c8dd2f43b45b0
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 1922037245a33f49c17f1c361003260462d96264
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
 По [Рик Андерсон](https://twitter.com/RickAndMSFT), [Бауден Дэмьен](https://twitter.com/damien_bod), [Bart Calixto](https://twitter.com/bartmax), [Надим Афана](https://twitter.com/NadeemAfana), и [Ateya Hisham Bin](https://twitter.com/hishambinateya)
 
-Создание многоязычных веб-сайта с помощью ASP.NET Core позволит узла для достижения более широкую аудиторию. ASP.NET Core предоставляет службы и по промежуточного слоя для локализация на разных языках и региональных параметров.
+Создание многоязычных веб-сайта с помощью ASP.NET Core позволит узла для достижения более широкую аудиторию. ASP.NET Core предоставляет службы и ПО промежуточного слоя для локализации на разные языки и для разных региональных параметров.
 
 Включает в себя интернационализации [глобализации](https://docs.microsoft.com/dotnet/api/system.globalization) и [локализации](https://docs.microsoft.com/dotnet/standard/globalization-localization/localization). Глобализация — это процесс разработки приложений, которые поддерживают разные культуры. Глобализация добавляет поддержку для ввода, отображения и вывода определенного набора языковых сценариев, относящихся к конкретным регионам.
 
@@ -43,11 +43,11 @@ ms.lasthandoff: 09/28/2017
 
 В представленном выше коде `IStringLocalizer<T>` реализацию поступают из [внедрения зависимостей](dependency-injection.md). Если локализованное значение атрибута «О Title» не найден, то ключу индексатора возвращается, то есть строка «О Title». Можно оставить значение по умолчанию язык строковых литералов в приложении и помещать их в локализатора, так что можно сосредоточиться на разработке приложений. Разработка приложения с языком по умолчанию и подготовить его к этапу локализации без предварительного создания файла ресурсов по умолчанию. Кроме того можно использовать традиционный подход и укажите ключ для извлечения языковую строку по умолчанию. Для многих разработчиков нового рабочего процесса не было язык по умолчанию *.resx* файл и просто обернуть строковые литералы можно снизить издержки локализация приложения. Другим разработчикам использовать традиционные рабочий процесс как его можно упростить его для работы с более строковые литералы и упростить обновление локализованные строки.
 
-Используйте `IHtmlLocalizer<T>` реализации для ресурсов, содержащие HTML. `IHtmlLocalizer`Аргументы, которые отформатированы в строке ресурса, но не строки ресурса кодирует HTML. В примере выделен под только значение `name` параметр — в кодировке HTML.
+Используйте `IHtmlLocalizer<T>` реализации для ресурсов, содержащие HTML. `IHtmlLocalizer`Кодирует строку ресурса форматируемые аргументы HTML, но кодировка HTML не собственно строкой ресурса. В примере выделен под только значение `name` параметр — в кодировке HTML.
 
 [!code-csharp[Main](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-Примечание: Обычно требуется только локализовать текст и не HTML.
+**Примечание:** обычно требуется только локализовать текст и не HTML.
 
 На самом низком уровне, вы можете получить `IStringLocalizerFactory` из [внедрения зависимости](dependency-injection.md):
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 09/28/2017
 
 [!code-csharp[Main](localization/sample/Localization/Resources/SharedResource.cs)]
 
-Некоторые разработчики используют `Startup` класс, содержащий глобальные или общих строк.  В приведенном ниже примере `InfoController` и `SharedResource` локализаторам используются:
+Некоторые разработчики используют `Startup` класс, содержащий глобальные или общих строк. В приведенном ниже примере `InfoController` и `SharedResource` локализаторам используются:
 
 [!code-csharp[Main](localization/sample/Localization/Controllers/InfoController.cs?range=9-26)]
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 09/28/2017
 
 `IViewLocalizer` Служба предоставляет локализованные строки для [представление](https://docs.microsoft.com/aspnet/core). `ViewLocalizer` Класс реализует этот интерфейс и находит расположение ресурса из пути файла представления. Ниже показано, как использовать реализацию по умолчанию `IViewLocalizer`:
 
-[!code-HTML[Main](localization/sample/Localization/Views/Home/About.cshtml)]
+[!code-cshtml[Main](localization/sample/Localization/Views/Home/About.cshtml)]
 
 Реализация по умолчанию `IViewLocalizer` находит файл ресурсов на основе имени файла этого представления. Нет возможности использовать файл общих ресурсов. `ViewLocalizer`реализует с помощью локализатора `IHtmlLocalizer`, поэтому Razor не HTML кодирования локализованные строки. Можно параметризировать строки ресурсов и `IViewLocalizer` будет HTML кодирования параметров, но не строки ресурса. Рассмотрим следующую разметку Razor.
 
@@ -83,13 +83,11 @@ ms.lasthandoff: 09/28/2017
 
 Отображенное представление будет содержать HTML-разметку из файла ресурсов.
 
-Примечания.
-- Представление локализации требуется пакет NuGet «Localization.AspNetCore.TagHelpers».
-- Как правило, требуется только локализовать текст и не HTML.
+**Примечание:** обычно требуется только локализовать текст и не HTML.
 
 Использование файла общего ресурса в виде, вставки `IHtmlLocalizer<T>`:
 
-[!code-HTML[Main](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
+[!code-cshtml[Main](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
 
 ## <a name="dataannotations-localization"></a>Локализация DataAnnotations
 
@@ -102,7 +100,7 @@ ms.lasthandoff: 09/28/2017
 
 В ASP.NET Core MVC 1.1.0 и более поздней версии, не относящееся к проверке атрибутов локализованы. ASP.NET Core MVC 1.0 **не** поиск локализованных строк для атрибутов без проверки.
 
-<a name=one-resource-string-multiple-classes></a>
+<a name="one-resource-string-multiple-classes"></a>
 ### <a name="using-one-resource-string-for-multiple-classes"></a>Используя одну строку ресурса для нескольких классов
 
 Ниже показано, как использовать одну строку ресурса для проверки атрибутов с несколькими классами:
@@ -287,11 +285,11 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 В этом примере **Localization.StarterWeb** проект на [GitHub](https://github.com/aspnet/entropy) содержится пользовательский Интерфейс, чтобы задать `Culture`. *Views/Shared/_SelectLanguagePartial.cshtml* файла можно выбрать из списка поддерживаемых языков и региональных параметров языка и региональных параметров:
 
-[!code-HTML[Main](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
+[!code-cshtml[Main](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 
 *Views/Shared/_SelectLanguagePartial.cshtml* добавляется файл `footer` раздел файла разметки, она будет доступна во всех представлениях:
 
-[!code-HTML[Main](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
+[!code-cshtml[Main](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
 `SetLanguage` Метод задает язык и региональные параметры cookie.
 
@@ -317,6 +315,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 * Культура:, Это язык, возможно, область.
 * Нейтральный язык и региональные параметры: язык и региональные параметры указанного языка, но не область. (например «en», «es»)
 * Определенного языка и региональных параметров: языка и региональных параметров, который имеет указанный язык и регион. (для, например «en US», «en-GB», «es-CL»)
+* Родительский язык и региональные параметры: нейтральной культуры, содержащий определенного языка и региональных параметров. (например, «en» является родительского языка и региональных параметров «en US» и «en-GB»)
 * Язык: Языковой стандарт — совпадает с языком и региональными параметрами.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы

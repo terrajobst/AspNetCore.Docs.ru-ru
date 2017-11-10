@@ -11,11 +11,11 @@ ms.assetid: 71fec30f-8ea7-4ca8-96e3-d2e26c5be44e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 37613d974fdf1766b187cdd05efc926ecc6a351b
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 778ef976fdbef70684ca26b0c7c548ffcc83ee00
+ms.sourcegitcommit: e45f8912ce32b4071bf7e83b8f8315cd8bba3520
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/04/2017
 ---
 # <a name="reading-related-data---ef-core-with-aspnet-core-mvc-tutorial-6-of-10"></a>Чтение связанных данных - Core EF учебнику ASP.NET Core MVC (6 из 10)
 
@@ -184,7 +184,7 @@ Contoso университета примера веб-приложения по
   }
   ```
 
-* Добавлен **курсы** столбец, отображающий курсы при изучении каждого инструктора. В разделе [явные строки перехода с `@:` ](xref:mvc/views/razor#explicit-line-transition-with-label) для получения дополнительных сведений о данного синтаксиса razor.
+* Добавлен **курсы** столбец, отображающий курсы при изучении каждого инструктора. В разделе [явные строки перехода с `@:` ](xref:mvc/views/razor#explicit-line-transition-with-) для получения дополнительных сведений о данного синтаксиса razor.
 
 * Добавленный код, который динамически добавляет `class="success"` для `tr` инструктора выбранного элемента. Это задает цвет фона для строк, выделенных с помощью класса начальной загрузки.
 

@@ -11,11 +11,11 @@ ms.assetid: dd4135ec-2b15-410c-b3fb-3d12eed4a1ac
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/testing
-ms.openlocfilehash: 5d81e0193fb042993452ed314e70fb63573e615c
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: aa60912e06946bd0df4936d33c88d3bf7b69984c
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="testing-controller-logic-in-aspnet-core"></a>Тестирование логики контроллер в ASP.NET Core
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 09/28/2017
 При написании настраиваемые фильтры, маршрутов и т. д следует модульный тест их, но не как часть тесты на действие конкретном контроллере. Их необходимо тестировать отдельно.
 
 > [!TIP]
-> [Создание и запуск модульных тестов с помощью Visual Studio](https://www.visualstudio.com/docs/code/create-and-run-unit-tests-vs).
+> [Создание и запуск модульных тестов с помощью Visual Studio](https://docs.microsoft.com/visualstudio/test/unit-test-your-code).
 
 Чтобы продемонстрировать модульного тестирования, просмотрите следующий контроллер. Здесь отображается список мозговой сеансы и новые мозговой сеансов с помощью POST:
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 09/28/2017
 
 Приложение предоставляет функциональные возможности, что веб-API (список планов, связанные с мозговой сеанса, а также метод для добавления новых идей в сеансе):
 
-<a name=ideas-controller></a>
+<a name="ideas-controller"></a>
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?highlight=21,22,27,30,31,32,33,34,35,36,41,42,46,52,65)]
 
