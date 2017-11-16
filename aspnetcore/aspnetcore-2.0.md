@@ -11,11 +11,11 @@ ms.assetid: 08c9f457-9c24-40f9-a08b-47dc251e4cec
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: aspnetcore-2.0
-ms.openlocfilehash: c572315d7a801b9b87d5f4cd14b82c5ed27e7a85
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 98af3788652e87f6222551cb4a8e5427b312660c
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Новые возможности ASP.NET Core 2.0
 
@@ -58,7 +58,7 @@ Razor Pages — это новая функция платформы MVC ASP.NET
 
 В ASP.NET 2.0 Core ведение журнала по умолчанию включено в систему внедрения зависимостей. Добавление поставщиков и настройка фильтрации выполняются в файле *Program.cs*, а не в файле *Startup.cs*. А `ILoggerFactory` по умолчанию поддерживает такой способ фильтрации, который позволяет использовать один гибкий подход и для перекрестной фильтрации по поставщикам, и для фильтрации по отдельному поставщику.
 
-Дополнительные сведения см. в статье [Введение в ведение журналов](xref:fundamentals/logging).
+Дополнительные сведения см. в статье [Введение в ведение журналов](xref:fundamentals/logging/index).
 
 ## <a name="authentication-update"></a>Изменения в проверке подлинности
 

@@ -11,11 +11,11 @@ ms.assetid: 062f8353-d1bc-4e99-a821-c1d1bb162c47
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: aspnetcore-1.1
-ms.openlocfilehash: 28a99d3040df9611995fc8aed4bb8751aa9845f8
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: f014bdb41447f0354938c719ab37104b2d4b08e5
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>Новые возможности ASP.NET Core 1.1
 
@@ -25,8 +25,8 @@ ms.lasthandoff: 09/22/2017
 - [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
 - [Просмотр компонентов как вспомогательных функций тегов](xref:mvc/views/view-components#invoking-a-view-component-as-a-tag-helper)
 - [ПО промежуточного слоя в качестве фильтров MVC](xref:mvc/controllers/filters#using-middleware-in-the-filter-pipeline)
-- [Поставщик TempData на основе файлов cookie](xref:fundamentals/app-state#cookie-based-tempdata-provider )
-- [Поставщик ведения журнала службы приложений Azure](xref:fundamentals/logging#appservice)
+- [Поставщик TempData на основе файлов cookie](xref:fundamentals/app-state#tempdata)
+- [Поставщик ведения журнала службы приложений Azure](xref:fundamentals/logging/index#appservice)
 - [Поставщик конфигурации Azure Key Vault](xref:security/key-vault-configuration)
 - [Репозитории ключей защиты данных для хранилищ Azure и Redis](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis)
 - [Сервер WebListener для Windows](xref:fundamentals/servers/weblistener)
