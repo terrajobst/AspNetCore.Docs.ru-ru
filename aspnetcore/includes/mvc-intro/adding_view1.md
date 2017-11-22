@@ -10,4 +10,4 @@
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-Предыдущий код возвращает объект `View`. В нем используется шаблон представления для создания HTML-ответа браузеру. Методы контроллера (также называются методами действия), такие как приведенный выше метод `Index`, обычно возвращают [IActionResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iactionresult) (или производный от `ActionResult` класс), а не примитивные типы, такие как строки.
+Предыдущий код возвращает объект `View`. В нем используется шаблон представления для создания HTML-ответа браузеру. Методы контроллера (также называются методами действия), такие как приведенный выше метод `Index`, обычно возвращают [IActionResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iactionresult) (или производный от `ActionResult` класс), а не типы, такие как строки.

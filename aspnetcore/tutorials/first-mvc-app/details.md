@@ -1,21 +1,20 @@
 ---
 title: "Изучение методов Details и Delete"
 author: rick-anderson
-description: "Метод и представление контроллера Details в простом приложении ASP.NET Core MVC."
+description: "Метод и представление контроллера Details в базовом приложении ASP.NET Core MVC."
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
 ms.date: 03/07/2017
 ms.topic: get-started-article
-ms.assetid: 870192b4-8d4f-45c7-8c14-83d02bc0ad79
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: bab93a2faa122d9d6d2e71367519baa09bd76bd1
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 43394106c9074f9487e1065a37a88eb017833bae
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="examining-the-details-and-delete-methods"></a>Изучение методов Details и Delete
 
@@ -55,6 +54,10 @@ EF упрощает поиск данных с помощью метода `Sing
 [ValidateAntiForgeryToken]
 public async Task<IActionResult> Delete(int id, bool notUsed)
 ```
+
+### <a name="publish-to-azure"></a>Публикация в Azure
+
+Дополнительные сведения о публикации этого приложения в Azure с помощью Visual Studio см. в руководстве по [публикации веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs).  Приложение можно также опубликовать из [командной строки](xref:tutorials/publish-to-azure-webapp-using-cli).
 
 Благодарим вас за изучение общих сведений по ASP.NET Core MVC. Мы будем рады любым комментариям. Отличным дополнением к этому учебнику является статья [Начало работы с EF и MVC](xref:data/ef-mvc/intro).
 

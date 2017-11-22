@@ -10,17 +10,23 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 9d647657f21dd7e952808e5fe020f7a9e8767cd8
-ms.sourcegitcommit: 3ba32b2b6425ed94604cb0f681db0d5bb5f8ad58
+ms.openlocfilehash: 5c58b5156f62572687755c9c0878db10c3c14eb1
+ms.sourcegitcommit: c07fb5cb5df0a12f9fe6735fcbc90964608fa687
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core"></a>Начало работы с Razor Pages в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
 В этом учебнике приводятся основные сведения о веб-приложении Razor Pages в ASP.NET Core. Перед работой с этим учебником рекомендуем изучить статью [Введение в Razor Pages](xref:mvc/razor-pages/index). Razor Pages — это рекомендуемый способ создания пользовательского интерфейса для веб-приложений в ASP.NET Core.
+
+Существуют три версии этого руководства:
+
+* Windows: это руководство.
+* MacOS: [Начало работы с Razor Pages в ASP.NET Core с использованием Visual Studio для Mac](xref:tutorials/razor-pages-mac/razor-pages-start).
+* macOS, Linux и Windows: [Начало работы с Razor Pages в ASP.NET Core с Visual Studio Code](xref:tutorials/razor-pages-vsc/razor-pages-start).
 
 ## <a name="prerequisites"></a>Предварительные требования
 

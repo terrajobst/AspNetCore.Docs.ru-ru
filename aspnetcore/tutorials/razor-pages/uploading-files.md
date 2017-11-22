@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/uploading-files
-ms.openlocfilehash: 5a3dc302186c7fd0a5730bc2c7599676fb543ba7
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 3b54bf0b40c396c8c141966219f65231fb362ca4
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="uploading-files-to-a-razor-page-in-aspnet-core"></a>Отправка файлов на страницу Razor в ASP.NET Core
 
@@ -25,6 +25,14 @@ ms.lasthandoff: 09/28/2017
 [Пример приложения Razor Pages Movie](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie) в этом руководстве использует для отправки файлов простую привязку модели, которая хорошо подходит для небольших файлов. Сведения о потоковой передаче больших файлов см. в статье [Отправка больших файлов с помощью потоковой передачи](xref:mvc/models/file-uploads#uploading-large-files-with-streaming).
 
 В приведенных ниже действиях вы добавляете функцию отправки файлов с расписанием фильмов в пример приложения. Расписание фильмов представлено классом `Schedule`. Он включает в себя две версии расписания. Одна версия, `PublicSchedule`, предоставляется клиентам. Для сотрудников организации используется другая версия — `PrivateSchedule`. Каждая версия отправляется в виде отдельного файла. В руководстве показано, как выполнить две отправки файла со страницы на сервер с помощью отдельной операции POST.
+
+## <a name="add-a-fileupload-class"></a>Добавление класса FileUpload
+
+Создайте страницу Razor для передачи пары файлов ниже. Добавьте класс `FileUpload`, привязанный к странице для получения данных расписания. Щелкните правой кнопкой мыши папку *Models*. Выберите **Добавить** > **Класс**. Назовите класс **FileUpload** и добавьте следующие свойства.
+
+[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/FileUpload.cs)]
+
+Этот класс содержит свойство для заголовка расписания и свойство для каждой из двух версий расписания. Все три свойства являются обязательными, а заголовок должен иметь длину от 3 до 60 символов.
 
 ## <a name="add-a-helper-method-to-upload-files"></a>Добавление вспомогательного метода для отправки файлов
 
@@ -42,11 +50,9 @@ ms.lasthandoff: 09/28/2017
 
 ## <a name="update-the-moviecontext"></a>Обновление MovieContext
 
-Укажите `DbSet` в `MovieContext` (*Models/MovieContext.cs*) для расписаний и добавьте строку в метод `OnModelCreating`, задающий имя таблицы базы данных (`Schedule`) в единственном числе для свойства `DbSet`.
+Укажите `DbSet` в `MovieContext` (*Models/MovieContext.cs*) для расписаний:
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieContext.cs?highlight=13,18)]
-
-Примечание. Если не переопределить `OnModelCreating` для использования имен таблиц в единственном числе, Entity Framework предполагает, что вы используете имена таблиц базы данных во множественном числе (например, `Movies` и `Schedules`). В среде разработчиков нет единого мнения о том, следует ли использовать имена таблиц во множественном числе. Настройте `MovieContext` и базу данных одинаковым образом. В обоих случаях следует использовать имена таблиц базы данных либо в единственном, либо во множественном числе.
+[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieContext.cs?highlight=13)]
 
 ## <a name="add-the-schedule-table-to-the-database"></a>Добавление таблицы Schedule в базу данных
 
@@ -60,14 +66,6 @@ ms.lasthandoff: 09/28/2017
 Add-Migration AddScheduleTable
 Update-Database
 ```
-
-## <a name="add-a-fileupload-class"></a>Добавление класса FileUpload
-
-После этого добавьте класс `FileUpload`, который привязан к странице для получения данных расписания. Щелкните правой кнопкой мыши папку *Models*. Выберите **Добавить** > **Класс**. Назовите класс **FileUpload** и добавьте следующие свойства.
-
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/FileUpload.cs)]
-
-Этот класс содержит свойство для заголовка расписания и свойство для каждой из двух версий расписания. Все три свойства являются обязательными, а заголовок должен иметь длину от 3 до 60 символов.
 
 ## <a name="add-a-file-upload-razor-page"></a>Добавление страницы Razor для отправки файлов
 
@@ -97,7 +95,7 @@ Update-Database
 
 [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet3)]
 
-При публикации формы на сервере проверяется `ModelState`. В случае ошибки `Schedules` перестраивается, а страница отрисовывается с отображением одного сообщения или нескольких о том, почему не удалось выполнить проверку страницы. При прохождении проверки свойства `FileUpload` используются в *OnPostAsync*, чтобы передать файлы для двух версий расписания и создать объект `Schedule` для хранения данных. После этого расписание сохраняется в базе данных.
+При публикации формы на сервере проверяется `ModelState`. В случае ошибки `Schedule` перестраивается, а страница отрисовывается с отображением одного сообщения или нескольких о том, почему не удалось выполнить проверку страницы. При прохождении проверки свойства `FileUpload` используются в *OnPostAsync*, чтобы передать файлы для двух версий расписания и создать объект `Schedule` для хранения данных. После этого расписание сохраняется в базе данных.
 
 [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet4)]
 

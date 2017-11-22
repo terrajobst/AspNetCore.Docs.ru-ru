@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 290d752ea5f177348ff3e749cc125e946ae6e763
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: dfe8136dccb0e98a9fc6b1395161ccb442392c76
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="updating-the-generated-pages"></a>Изменение созданных страниц
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 09/28/2017
 
 В динамически созданных ссылках идентификаторы фильмов передаются с помощью строки запроса (например, `http://localhost:5000/Movies/Details?id=2`). 
 
-Обновите страницы Razor Edit, Details и Delete так, чтобы использовался шаблон маршрута "{id:int}". Измените директиву страницы для каждой из этих страниц на `@page "{id:int}"`. Запустите приложение и просмотрите исходный код. Созданный код HTML добавляет идентификатор в путь URL-адреса:
+Обновите страницы Razor Edit, Details и Delete так, чтобы использовался шаблон маршрута "{id:int}". Измените директиву страницы для каждой из этих страниц c `@page` на `@page "{id:int}"`. Запустите приложение и просмотрите исходный код. Созданный код HTML добавляет идентификатор в путь URL-адреса:
 
 ```html
 <td>

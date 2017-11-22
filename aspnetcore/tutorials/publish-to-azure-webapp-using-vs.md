@@ -5,27 +5,27 @@ description:
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
-ms.date: 09/01/2017
+ms.date: 10/05/2017
 ms.topic: get-started-article
 ms.assetid: 78571e4a-a143-452d-9cf2-0860f85972e6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 0c0ec1c7c1408b0460c594a47a3e5738cd170d5f
-ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
+ms.openlocfilehash: 6f697ed4d8876a19cd058533e4f6a5d4f7cdc2fb
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>Публикация веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio
 
 Авторы: [Рик Андерсон (Rick Anderson)](https://twitter.com/RickAndMSFT), [Сезар Блум Сильвейра (Cesar Blum Silveira)](https://github.com/cesarbs) и [Рейчел Аппель (Rachel Appel)](https://twitter.com/rachelappel)
 
-## <a name="set-up-the-development-environment"></a>Настройка среды разработки
+Если вы работаете на компьютере Mac, см. раздел [Publish to Azure from Visual Studio for Mac](https://blog.xamarin.com/publish-azure-visual-studio-mac/) (Публикация в Azure из Visual Studio для компьютера Mac).
 
-* Установите последнюю версию [пакета Azure SDK для Visual Studio](https://www.visualstudio.com/vs/azure-tools/). При установке пакета SDK будет установлена Visual Studio, если это еще не сделано.
+## <a name="set-up"></a>Настройка
 
-* Проверьте свою [учетную запись Azure](https://portal.azure.com/). Вы можете [открыть бесплатную учетную запись Azure](https://azure.microsoft.com/pricing/free-trial/) или [активировать преимущества для подписчиков Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
+* Создайте [бесплатную учетную запись Azure](https://aka.ms/K5y5yh), если у вас ее нет. 
 
 ## <a name="create-a-web-app"></a>Создание веб-приложения
 
@@ -186,8 +186,4 @@ Visual Studio вернет диалоговое окно **Создание сл
 
 ### <a name="next-steps"></a>Следующие шаги
 
-* [Начало работы с ASP.NET Core MVC и Visual Studio](first-mvc-app/start-mvc.md)
-
-* [Введение в ASP.NET Core](../index.md)
-
-* [Основы](../fundamentals/index.md)
+* [Непрерывное развертывание в Azure с помощью Visual Studio и Git](../publishing/azure-continuous-deployment.md)

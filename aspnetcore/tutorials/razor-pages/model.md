@@ -9,12 +9,12 @@ ms.date: 07/27/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
-uid: tutorials/razor-pages/modelz
-ms.openlocfilehash: bd2c3e09366e228fade69f843849e7452196c475
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+uid: tutorials/razor-pages/model
+ms.openlocfilehash: 38f27a1d5ca80cec4b7bc43c3d5473fc829f1b05
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="adding-a-model-to-a-razor-pages-app"></a>Добавление модели в приложение Razor Pages
 
@@ -69,11 +69,25 @@ Update-Database
 
 Команда `Add-Migration` формирует код для создания схемы исходной базы данных. Схема создается на основе модели, указанной в `DbContext` (в файле *Models/MovieContext.cs*). Аргумент `Initial` используется для присвоения имен миграциям. Можно использовать любое имя, но обычно выбирается имя, описывающее миграцию. Дополнительные сведения см. в статье [Введение в миграции](xref:data/ef-mvc/migrations#introduction-to-migrations).
 
-Команда `Update-Database` выполняет `Up` метод в файле *Migrations/\<отметка-времени>_InitialCreate.cs*, который создает базу данных.
+Команда `Update-Database` выполняет метод `Up` в файле *Migrations/\<метка-времени>_InitialCreate.cs*, который создает базу данных.
 
 [!INCLUDE[model 4windows](../../includes/RP/model4Win.md)]
 
-[!INCLUDE[model 4](../../includes/RP/model4.md)]
+[!INCLUDE[model 4](../../includes/RP/model4tbl.md)]
+
+<a name="test"></a>
+### <a name="test-the-app"></a>Тестирование приложения
+
+* Запустите приложение и добавьте `/Movies` к URL-адресу в браузере (`http://localhost:port/movies`).
+* Протестируйте ссылку **Создать**.
+
+ ![Страница "Создать"](../../tutorials/razor-pages/model/_static/conan.png)
+
+<a name="scaffold"></a>
+
+* Протестируйте ссылки **Изменить**, **Сведения** и **Удалить**.
+
+Если появляется исключение SQL, выполните миграции и обновите базу данных.
 
 В следующем учебнике рассматриваются файлы, созданные с помощью формирования шаблонов.
 

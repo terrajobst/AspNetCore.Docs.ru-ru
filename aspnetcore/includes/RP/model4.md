@@ -25,10 +25,9 @@ dotnet aspnet-codegenerator razorpage -h
 
 * Протестируйте ссылки **Изменить**, **Сведения** и **Удалить**.
 
-Если появляется следующая ошибка, выполните миграции и обновите базу данных.
+Если появляется ошибка, аналогичная приведенной ниже, убедитесь, что выполнены миграции и база данных обновлена:
 
 ```
 An unhandled exception occurred while processing the request.
-SqliteException: SQLite Error 1: 'no such table: Movie'.
-Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(int rc, sqlite3 db)
+'no such table: Movie'.
 ```

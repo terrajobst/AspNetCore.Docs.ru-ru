@@ -5,7 +5,7 @@
 
 ![Окно браузера с указателем, наведенным на ссылку "Edit" (Изменить), и URL-адресом ссылки http://localhost:1234/Movies/Edit/5](../../tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
-Ссылки **Edit** (Изменить), **Details** (Сведения) и **Delete** (Удалить) создаются вспомогательной функцией тегов привязки MVC Core в файле *Views/Movies/Index.cshtml*.
+Ссылки **Edit** (Изменить), **Details** (Сведения) и **Delete** (Удалить) создаются вспомогательной функцией тегов привязки Core MVC в файле *Views/Movies/Index.cshtml*.
 
 [!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 

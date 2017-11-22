@@ -1,4 +1,4 @@
-Выделенный выше код демонстрирует добавление контекста базы данных фильмов в контейнер [внедрения зависимостей](xref:fundamentals/dependency-injection). Строка после `services.AddDbContext<MvcMovieContext>(options =>` не отображается (см. код). Она задает используемую базу данных и строку подключения. `=>` — это [лямбда-оператор](https://docs.microsoft.com/dotnet/articles/csharp/language-reference/operators/lambda-operator).
+Выделенный выше код демонстрирует добавление контекста базы данных фильмов в контейнер [внедрения зависимостей](xref:fundamentals/dependency-injection) (в файле *Startup.cs*). `services.AddDbContext<MvcMovieContext>(options =>` задает используемую базу данных и строку подключения. `=>` — это [лямбда-оператор](https://docs.microsoft.com/dotnet/articles/csharp/language-reference/operators/lambda-operator).
 
 Откройте файл *Controllers/MoviesController.cs* и изучите его конструктор:
 
@@ -8,7 +8,7 @@
 
 Этот конструктор применяет [внедрение зависимостей](xref:fundamentals/dependency-injection) для внедрения контекста базы данных (`MvcMovieContext `) в контроллер. Контекст базы данных используется в каждом методе [создания, чтения, обновления и удаления](https://wikipedia.org/wiki/Create,_read,_update_and_delete) в контроллере.
 
-<a name=strongly-typed-models-keyword-label></a>
+<a name="strongly-typed-models-keyword-label"></a>
 
 ## <a name="strongly-typed-models-and-the-model-keyword"></a>Строго типизированные модели и ключевое слово @model
 
