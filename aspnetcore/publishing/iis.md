@@ -11,11 +11,11 @@ ms.assetid: a4449ad3-5bad-410c-afa7-dc32d832b552
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/iis
-ms.openlocfilehash: e9e9019d5b879498e8800bb579c177dd3ad64061
-ms.sourcegitcommit: 96af03c9f44f7c206e68ae3ef8596068e6b4e5fd
+ms.openlocfilehash: 7eb1537df47fcf0b24db2a7d843b655a6f6f8f21
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="install-the-net-core-windows-server-hosting-bundle"></a>Установка пакета размещения .NET Core для Windows Server
 
-1. Установите [пакет размещения .NET Core для Windows Server](https://download.microsoft.com/download/5/C/1/5C190037-632B-443D-842D-39085F02E1E8/DotNetCore.2.0.3-WindowsHosting.exe) в размещающей системе. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратный прокси-сервер между службами IIS и сервером Kestrel. Если система не подключена к Интернету, перед установкой пакета размещения .NET Core для Windows Server получите и установите [Распространяемый компонент Microsoft Visual C++ 2015](https://www.microsoft.com/download/details.aspx?id=53840).
+1. Установите [пакет размещения .NET Core для Windows Server](https://aka.ms/dotnetcore-2-windowshosting) в размещающей системе. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратный прокси-сервер между службами IIS и сервером Kestrel. Если система не подключена к Интернету, перед установкой пакета размещения .NET Core для Windows Server получите и установите [Распространяемый компонент Microsoft Visual C++ 2015](https://www.microsoft.com/download/details.aspx?id=53840).
 
 2. Перезапустите систему или выполните в командной строке команду **net stop was /y**, а затем команду **net start w3svc**, чтобы изменение системной переменной PATH вступило в силу.
 
@@ -272,7 +272,7 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="configuration-sections-of-webconfig"></a>Разделы конфигурации файла web.config
 
-В отличие от приложений .NET Framework, которые настраиваются с помощью элементов `<system.web>`, `<appSettings>`, `<connectionStrings>` и `<location>` в файле *web.config*, приложения ASP.NET Core настраиваются с помощью других поставщиков конфигурации. Дополнительные сведения см. в разделе [Конфигурация](xref:fundamentals/configuration).
+В отличие от приложений .NET Framework, которые настраиваются с помощью элементов `<system.web>`, `<appSettings>`, `<connectionStrings>` и `<location>` в файле *web.config*, приложения ASP.NET Core настраиваются с помощью других поставщиков конфигурации. Дополнительные сведения см. в разделе [Конфигурация](xref:fundamentals/configuration/index).
 
 ## <a name="application-pools"></a>Пулы приложений
 
