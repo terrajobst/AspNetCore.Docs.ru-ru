@@ -12,24 +12,24 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-mac/index
 ms.openlocfilehash: 6cb8f1b8daa0417b6e02efcf5a6c4e37a54e79d0
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="create-a-web-app-with-aspnet-core-mvc-using-visual-studio-for-mac"></a>Создание веб-приложения ASP.NET Core MVC с помощью Visual Studio для Mac
+# <a name="create-a-web-app-with-aspnet-core-mvc-using-visual-studio-for-mac"></a><span data-ttu-id="33182-104">Создание веб-приложения ASP.NET Core MVC с помощью Visual Studio для Mac</span><span class="sxs-lookup"><span data-stu-id="33182-104">Create a web app with ASP.NET Core MVC using Visual Studio for Mac</span></span>
 
-В этой серии учебников представлены основы создания веб-приложений ASP.NET Core MVC с помощью Visual Studio для Mac. 
+<span data-ttu-id="33182-105">В этой серии учебников представлены основы создания веб-приложений ASP.NET Core MVC с помощью Visual Studio для Mac.</span><span class="sxs-lookup"><span data-stu-id="33182-105">This series of tutorials teaches you the basics of building an ASP.NET Core MVC web app using Visual Studio for Mac.</span></span> 
 
 [!INCLUDE[consider RP](../../includes/razor.md)]
 
-1. [Начало работы](start-mvc.md)
-1. [Добавление контроллера](adding-controller.md)
-1. [Добавление представления](adding-view.md)
-1. [Добавление модели](adding-model.md)
-1. [SQLite](working-with-sql.md)
-1. [Методы и представления контроллера](controller-methods-views.md)
-1. [Добавление поиска](search.md)
-1. [Добавление нового поля](new-field.md)
-1. [Добавление проверки](validation.md)
-1. [Изучение методов Details и Delete](xref:tutorials/first-mvc-app/details)
+1. [<span data-ttu-id="33182-106">Начало работы</span><span class="sxs-lookup"><span data-stu-id="33182-106">Getting started</span></span>](start-mvc.md)
+1. [<span data-ttu-id="33182-107">Добавление контроллера</span><span class="sxs-lookup"><span data-stu-id="33182-107">Adding a controller</span></span>](adding-controller.md)
+1. [<span data-ttu-id="33182-108">Добавление представления</span><span class="sxs-lookup"><span data-stu-id="33182-108">Adding a view</span></span>](adding-view.md)
+1. [<span data-ttu-id="33182-109">Добавление модели</span><span class="sxs-lookup"><span data-stu-id="33182-109">Adding a model</span></span>](adding-model.md)
+1. [<span data-ttu-id="33182-110">SQLite</span><span class="sxs-lookup"><span data-stu-id="33182-110">SQLite</span></span>](working-with-sql.md)
+1. [<span data-ttu-id="33182-111">Методы и представления контроллера</span><span class="sxs-lookup"><span data-stu-id="33182-111">Controller methods and views</span></span>](controller-methods-views.md)
+1. [<span data-ttu-id="33182-112">Добавление поиска</span><span class="sxs-lookup"><span data-stu-id="33182-112">Adding Search</span></span>](search.md)
+1. [<span data-ttu-id="33182-113">Добавление нового поля</span><span class="sxs-lookup"><span data-stu-id="33182-113">Adding a New Field</span></span>](new-field.md)
+1. [<span data-ttu-id="33182-114">Добавление проверки</span><span class="sxs-lookup"><span data-stu-id="33182-114">Adding Validation</span></span>](validation.md)
+1. [<span data-ttu-id="33182-115">Изучение методов Details и Delete</span><span class="sxs-lookup"><span data-stu-id="33182-115">Examining the Details and Delete methods</span></span>](xref:tutorials/first-mvc-app/details)
