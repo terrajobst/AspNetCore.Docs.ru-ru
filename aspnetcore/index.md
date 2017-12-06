@@ -1,7 +1,7 @@
 ---
 title: "Введение в ASP.NET Core"
 author: rick-anderson
-description: 
+description: "Общие сведения о работе с ASP.NET Core."
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: index
-ms.openlocfilehash: 748c8c0b9dd0e6eab0d7347bbf89ed80c10bdb54
-ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
+ms.openlocfilehash: a075c63fddb9e28a1da37d4ef6647808a0dcb583
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/29/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -29,13 +29,13 @@ ASP.NET Core является кроссплатформенной, высоко
 
 ## <a name="why-use-aspnet-core"></a>Зачем использовать ASP.NET Core?
 
-Миллионы разработчиков использовали ASP.NET (и продолжают использовать) для создания веб-приложений. ASP.NET Core является модификацией ASP.NET с внесенными архитектурными изменениями, формирующими более рациональную и модульную платформу.
+Миллионы разработчиков использовали и продолжают использовать ASP.NET для создания веб-приложений. ASP.NET Core является модификацией ASP.NET с внесенными архитектурными изменениями, формирующими более рациональную и модульную платформу.
 
 ASP.NET Core предоставляет следующие преимущества:
 
 * Единое решение для создания пользовательского веб-интерфейса и веб-API.
 * Интеграция [современных клиентских платформ](xref:client-side/index) и рабочих процессов разработки.
-* Облачная [система конфигурации](xref:fundamentals/configuration) на основе среды.
+* Облачная [система конфигурации](xref:fundamentals/configuration/index) на основе среды.
 * Встроенное [введение зависимостей](xref:fundamentals/dependency-injection).
 * Упрощенный, высокопроизводительный и модульный конвейер HTTP-запросов.
 * Возможность размещения в IIS или в собственном процессе.
