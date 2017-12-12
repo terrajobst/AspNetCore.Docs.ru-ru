@@ -1,79 +1,158 @@
 ---
-title: "Ограничение удостоверения по схеме"
+title: "Авторизация в нужной раскладки - ASP.NET Core"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "В этой статье объясняется, как ограничить удостоверение для нужной раскладки при работе с несколькими методами проверки подлинности."
+keywords: "ASP.NET Core удостоверения, схема проверки подлинности"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 10/12/2017
 ms.topic: article
 ms.assetid: d3d6ca1b-b4b5-4bf7-898e-dcd90ec1bf8c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: 2483c441da317a5c29b611b3a4910eae3c01fd7a
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 8c9d068b88263d0c06b11a6b87416fb02885c475
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="limiting-identity-by-scheme"></a><span data-ttu-id="bf090-103">Ограничение удостоверения по схеме</span><span class="sxs-lookup"><span data-stu-id="bf090-103">Limiting identity by scheme</span></span>
+# <a name="authorize-with-a-specific-scheme"></a><span data-ttu-id="537bf-104">Авторизация в нужной раскладки</span><span class="sxs-lookup"><span data-stu-id="537bf-104">Authorize with a specific scheme</span></span>
 
-<a name=security-authorization-limiting-by-scheme></a>
+<span data-ttu-id="537bf-105">В некоторых сценариях, например приложений на одной странице (SPAs) обычно используется несколько методов проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="537bf-105">In some scenarios, such as Single Page Applications (SPAs), it's common to use multiple authentication methods.</span></span> <span data-ttu-id="537bf-106">Например приложение может использовать проверку подлинности на основе файлов cookie для входа и проверки подлинности носителя JWT для запросов JavaScript.</span><span class="sxs-lookup"><span data-stu-id="537bf-106">For example, the app may use cookie-based authentication to log in and JWT bearer authentication for JavaScript requests.</span></span> <span data-ttu-id="537bf-107">В некоторых случаях приложение может иметь несколько экземпляров обработчик проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="537bf-107">In some cases, the app may have multiple instances of an authentication handler.</span></span> <span data-ttu-id="537bf-108">Например два обработчика куки-файл, где один содержит основные идентификаторов и один создается при инициирована многофакторная проверка подлинности (MFA).</span><span class="sxs-lookup"><span data-stu-id="537bf-108">For example, two cookie handlers where one contains a basic identity and one is created when a multi-factor authentication (MFA) has been triggered.</span></span> <span data-ttu-id="537bf-109">Могут быть предприняты многофакторной проверки Подлинности, поскольку пользователь запросил операцию, которая требует дополнительной безопасности.</span><span class="sxs-lookup"><span data-stu-id="537bf-109">MFA may be triggered because the user requested an operation that requires extra security.</span></span>
 
-<span data-ttu-id="bf090-104">В некоторых сценариях например приложений на одной странице возможна в конечном итоге несколько методов проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="bf090-104">In some scenarios, such as Single Page Applications it is possible to end up with multiple authentication methods.</span></span> <span data-ttu-id="bf090-105">Например приложение может использовать проверку подлинности на основе файлов cookie для входа и проверки подлинности носителя для запросов на JavaScript.</span><span class="sxs-lookup"><span data-stu-id="bf090-105">For example, your application may use cookie-based authentication to log in and bearer authentication for JavaScript requests.</span></span> <span data-ttu-id="bf090-106">В некоторых случаях может иметь несколько экземпляров промежуточного по проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="bf090-106">In some cases you may have multiple instances of an authentication middleware.</span></span> <span data-ttu-id="bf090-107">Например два файла cookie middlewares где один содержит основные идентификаторов и один создается при многофакторной проверки подлинности активируются, так как операция, которой требуется повысить уровень защиты по запросу пользователя.</span><span class="sxs-lookup"><span data-stu-id="bf090-107">For example, two cookie middlewares where one contains a basic identity and one is created when a multi-factor authentication has triggered because the user requested an operation that requires extra security.</span></span>
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="537bf-110">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="537bf-110">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-<span data-ttu-id="bf090-108">Схемы проверки подлинности имен при промежуточного по проверки подлинности настраивается во время проверки подлинности, например</span><span class="sxs-lookup"><span data-stu-id="bf090-108">Authentication schemes are named when authentication middleware is configured during authentication, for example</span></span>
+<span data-ttu-id="537bf-111">Имя схемы проверки подлинности — при настройке службы проверки подлинности во время проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="537bf-111">An authentication scheme is named when the authentication service is configured during authentication.</span></span> <span data-ttu-id="537bf-112">Пример:</span><span class="sxs-lookup"><span data-stu-id="537bf-112">For example:</span></span>
 
 ```csharp
-app.UseCookieAuthentication(new CookieAuthenticationOptions()
+public void ConfigureServices(IServiceCollection services)
 {
-    AuthenticationScheme = "Cookie",
-    LoginPath = new PathString("/Account/Unauthorized/"),
-    AccessDeniedPath = new PathString("/Account/Forbidden/"),
-    AutomaticAuthenticate = false
-});
+    // Code omitted for brevity
 
-app.UseBearerAuthentication(options =>
-{
-    options.AuthenticationScheme = "Bearer";
-    options.AutomaticAuthenticate = false;
-});
+    services.AddAuthentication()
+        .AddCookie(options => {
+            options.LoginPath = "/Account/Unauthorized/";
+            options.AccessDeniedPath = "/Account/Forbidden/";
+        })
+        .AddJwtBearer(options => {
+            options.Audience = "http://localhost:5001/";
+            options.Authority = "http://localhost:5000/";
+        });
 ```
 
-<span data-ttu-id="bf090-109">В этой конфигурации двух middlewares проверки подлинности будут добавлены, один для файлов cookie и один для носителя.</span><span class="sxs-lookup"><span data-stu-id="bf090-109">In this configuration two authentication middlewares have been added, one for cookies and one for bearer.</span></span>
+<span data-ttu-id="537bf-113">В приведенном выше коде были добавлены два обработчики проверки подлинности: один для файлов cookie и один для носителя.</span><span class="sxs-lookup"><span data-stu-id="537bf-113">In the preceding code, two authentication handlers have been added: one for cookies and one for bearer.</span></span>
 
 >[!NOTE]
-><span data-ttu-id="bf090-110">При добавлении нескольких промежуточного по проверки подлинности следует убедиться, что не по промежуточного слоя настроена на автоматический запуск.</span><span class="sxs-lookup"><span data-stu-id="bf090-110">When adding multiple authentication middleware you should ensure that no middleware is configured to run automatically.</span></span> <span data-ttu-id="bf090-111">Это можно сделать, задав `AutomaticAuthenticate` параметры свойству значение false.</span><span class="sxs-lookup"><span data-stu-id="bf090-111">You do this by setting the `AutomaticAuthenticate` options property to false.</span></span> <span data-ttu-id="bf090-112">Если этого не сделать Такая фильтрация по схеме, не будет работать.</span><span class="sxs-lookup"><span data-stu-id="bf090-112">If you fail to do this filtering by scheme will not work.</span></span>
+><span data-ttu-id="537bf-114">Указание схемы по умолчанию приводит к `HttpContext.User` свойства, задаваемого этому удостоверению.</span><span class="sxs-lookup"><span data-stu-id="537bf-114">Specifying the default scheme results in the `HttpContext.User` property being set to that identity.</span></span> <span data-ttu-id="537bf-115">Если такое поведение не требуется, отключите его с вызова без параметров форме `AddAuthentication`.</span><span class="sxs-lookup"><span data-stu-id="537bf-115">If that behavior isn't desired, disable it by invoking the parameterless form of `AddAuthentication`.</span></span>
 
-## <a name="selecting-the-scheme-with-the-authorize-attribute"></a><span data-ttu-id="bf090-113">При выборе схемы с атрибутом авторизовать</span><span class="sxs-lookup"><span data-stu-id="bf090-113">Selecting the scheme with the Authorize attribute</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="537bf-116">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="537bf-116">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-<span data-ttu-id="bf090-114">Как без промежуточного по проверки подлинности настроен для автоматического запуска и создания удостоверения вы должны, точке авторизации выберите, какое по промежуточного слоя будет использоваться.</span><span class="sxs-lookup"><span data-stu-id="bf090-114">As no authentication middleware is configured to automatically run and create an identity you must, at the point of authorization choose which middleware will be used.</span></span> <span data-ttu-id="bf090-115">Установите по промежуточного слоя, необходимо авторизовать с проще всего использовать `ActiveAuthenticationSchemes` свойства.</span><span class="sxs-lookup"><span data-stu-id="bf090-115">The simplest way to select the middleware you wish to authorize with is to use the `ActiveAuthenticationSchemes` property.</span></span> <span data-ttu-id="bf090-116">Это свойство принимает разделенный запятыми список схем проверки подлинности для использования.</span><span class="sxs-lookup"><span data-stu-id="bf090-116">This property accepts a comma delimited list of Authentication Schemes to use.</span></span> <span data-ttu-id="bf090-117">Например,</span><span class="sxs-lookup"><span data-stu-id="bf090-117">For example;</span></span>
+<span data-ttu-id="537bf-117">Схемы проверки подлинности-это именованные middlewares проверки подлинности настраиваются во время проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="537bf-117">Authentication schemes are named when authentication middlewares are configured during authentication.</span></span> <span data-ttu-id="537bf-118">Пример:</span><span class="sxs-lookup"><span data-stu-id="537bf-118">For example:</span></span>
 
 ```csharp
-[Authorize(ActiveAuthenticationSchemes = "Cookie,Bearer")]
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    // Code omitted for brevity
+
+    app.UseCookieAuthentication(new CookieAuthenticationOptions()
+    {
+        AuthenticationScheme = "Cookie",
+        LoginPath = "/Account/Unauthorized/",
+        AccessDeniedPath = "/Account/Forbidden/",
+        AutomaticAuthenticate = false
+    });
+    
+    app.UseJwtBearerAuthentication(new JwtBearerOptions()
+    {
+        AuthenticationScheme = "Bearer",
+        AutomaticAuthenticate = false,
+        Audience = "http://localhost:5001/",
+        Authority = "http://localhost:5000/",
+        RequireHttpsMetadata = false
+    });
+```
+
+<span data-ttu-id="537bf-119">В приведенном выше коде были добавлены два middlewares проверки подлинности: один для файлов cookie и один для носителя.</span><span class="sxs-lookup"><span data-stu-id="537bf-119">In the preceding code, two authentication middlewares have been added: one for cookies and one for bearer.</span></span>
+
+>[!NOTE]
+><span data-ttu-id="537bf-120">Указание схемы по умолчанию приводит к `HttpContext.User` свойства, задаваемого этому удостоверению.</span><span class="sxs-lookup"><span data-stu-id="537bf-120">Specifying the default scheme results in the `HttpContext.User` property being set to that identity.</span></span> <span data-ttu-id="537bf-121">Если такое поведение не требуется, отключить, задав `AuthenticationOptions.AutomaticAuthenticate` свойства `false`.</span><span class="sxs-lookup"><span data-stu-id="537bf-121">If that behavior isn't desired, disable it by setting the `AuthenticationOptions.AutomaticAuthenticate` property to `false`.</span></span>
+
+---
+
+## <a name="selecting-the-scheme-with-the-authorize-attribute"></a><span data-ttu-id="537bf-122">При выборе схемы с атрибутом авторизовать</span><span class="sxs-lookup"><span data-stu-id="537bf-122">Selecting the scheme with the Authorize attribute</span></span>
+
+<span data-ttu-id="537bf-123">Во время авторизации приложение сообщает, что обработчик для использования.</span><span class="sxs-lookup"><span data-stu-id="537bf-123">At the point of authorization, the app indicates the handler to be used.</span></span> <span data-ttu-id="537bf-124">Выберите обработчик, с помощью которого приложение будет авторизации, передавая список с разделителями запятыми схем проверки подлинности для `[Authorize]`.</span><span class="sxs-lookup"><span data-stu-id="537bf-124">Select the handler with which the app will authorize by passing a comma-delimited list of authentication schemes to `[Authorize]`.</span></span> <span data-ttu-id="537bf-125">`[Authorize]` Атрибут указывает схему проверки подлинности или схем, которые будут использовать независимо от того, настроена ли значение по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="537bf-125">The `[Authorize]` attribute specifies the authentication scheme or schemes to use regardless of whether a default is configured.</span></span> <span data-ttu-id="537bf-126">Пример:</span><span class="sxs-lookup"><span data-stu-id="537bf-126">For example:</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="537bf-127">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="537bf-127">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+[Authorize(AuthenticationSchemes = AuthSchemes)]
+public class MixedController : Controller
+    // Requires the following imports:
+    // using Microsoft.AspNetCore.Authentication.Cookies;
+    // using Microsoft.AspNetCore.Authentication.JwtBearer;
+    private const string AuthSchemes =
+        CookieAuthenticationDefaults.AuthenticationScheme + "," +
+        JwtBearerDefaults.AuthenticationScheme;
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="537bf-128">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="537bf-128">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+
+```csharp
+[Authorize(ActiveAuthenticationSchemes = AuthSchemes)]
+public class MixedController : Controller
+    // Requires the following imports:
+    // using Microsoft.AspNetCore.Authentication.Cookies;
+    // using Microsoft.AspNetCore.Authentication.JwtBearer;
+    private const string AuthSchemes =
+        CookieAuthenticationDefaults.AuthenticationScheme + "," +
+        JwtBearerDefaults.AuthenticationScheme;
+```
+
+---
+
+<span data-ttu-id="537bf-129">В предыдущем примере носителя и файл cookie обработчики запуска и иметь возможность создания и добавления удостоверение для текущего пользователя.</span><span class="sxs-lookup"><span data-stu-id="537bf-129">In the preceding example, both the cookie and bearer handlers run and have a chance to create and append an identity for the current user.</span></span> <span data-ttu-id="537bf-130">Указав только одну схему, выполняется соответствующий обработчик.</span><span class="sxs-lookup"><span data-stu-id="537bf-130">By specifying a single scheme only, the corresponding handler runs.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="537bf-131">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="537bf-131">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+[Authorize(AuthenticationSchemes = 
+    JwtBearerDefaults.AuthenticationScheme)]
 public class MixedController : Controller
 ```
 
-<span data-ttu-id="bf090-118">В примере выше носителя и файл cookie middlewares запускается и иметь возможность создания и добавления удостоверение для текущего пользователя.</span><span class="sxs-lookup"><span data-stu-id="bf090-118">In the example above both the cookie and bearer middlewares will run and have a chance to create and append an identity for the current user.</span></span> <span data-ttu-id="bf090-119">Указав единственную схему только указанный по промежуточного слоя будет выполняться;</span><span class="sxs-lookup"><span data-stu-id="bf090-119">By specifying a single scheme only the specified middleware will run;</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="537bf-132">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="537bf-132">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
 ```csharp
-[Authorize(ActiveAuthenticationSchemes = "Bearer")]
+[Authorize(ActiveAuthenticationSchemes = 
+    JwtBearerDefaults.AuthenticationScheme)]
+public class MixedController : Controller
 ```
 
-<span data-ttu-id="bf090-120">В этом случае будет выполняться только по промежуточного слоя с схемы носителя и будет проигнорировано всех удостоверений, основан на файле cookie.</span><span class="sxs-lookup"><span data-stu-id="bf090-120">In this case only the middleware with the Bearer scheme would run, and any cookie based identities would be ignored.</span></span>
+---
 
-## <a name="selecting-the-scheme-with-policies"></a><span data-ttu-id="bf090-121">При выборе схемы с помощью политик</span><span class="sxs-lookup"><span data-stu-id="bf090-121">Selecting the scheme with policies</span></span>
+<span data-ttu-id="537bf-133">В приведенном выше коде выполняется обработчик, со схемой «Bearer».</span><span class="sxs-lookup"><span data-stu-id="537bf-133">In the preceding code, only the handler with the "Bearer" scheme runs.</span></span> <span data-ttu-id="537bf-134">Всех удостоверений на основе файлов cookie учитываются.</span><span class="sxs-lookup"><span data-stu-id="537bf-134">Any cookie-based identities are ignored.</span></span>
 
-<span data-ttu-id="bf090-122">Чтобы задать нужный схем в [политики](policies.md#security-authorization-policies-based) можно задать `AuthenticationSchemes` коллекции при добавлении политики.</span><span class="sxs-lookup"><span data-stu-id="bf090-122">If you prefer to specify the desired schemes in [policy](policies.md#security-authorization-policies-based) you can set the `AuthenticationSchemes` collection when adding your policy.</span></span>
+## <a name="selecting-the-scheme-with-policies"></a><span data-ttu-id="537bf-135">При выборе схемы с помощью политик</span><span class="sxs-lookup"><span data-stu-id="537bf-135">Selecting the scheme with policies</span></span>
+
+<span data-ttu-id="537bf-136">Чтобы задать нужный схем в [политики](xref:security/authorization/policies), можно задать `AuthenticationSchemes` коллекции при добавлении политики:</span><span class="sxs-lookup"><span data-stu-id="537bf-136">If you prefer to specify the desired schemes in [policy](xref:security/authorization/policies), you can set the `AuthenticationSchemes` collection when adding your policy:</span></span>
 
 ```csharp
-options.AddPolicy("Over18", policy =>
+services.AddAuthorization(options =>
 {
-    policy.AuthenticationSchemes.Add("Bearer");
-    policy.RequireAuthenticatedUser();
-    policy.Requirements.Add(new Over18Requirement());
+    options.AddPolicy("Over18", policy =>
+    {
+        policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
+        policy.RequireAuthenticatedUser();
+        policy.Requirements.Add(new MinimumAgeRequirement());
+    });
 });
 ```
 
-<span data-ttu-id="bf090-123">В этом примере Over18 политики будет выполняться только для идентификаторов, созданные `Bearer` по промежуточного слоя.</span><span class="sxs-lookup"><span data-stu-id="bf090-123">In this example the Over18 policy will only run against the identity created by the `Bearer` middleware.</span></span>
+<span data-ttu-id="537bf-137">В предыдущем примере политики «Over18» выполняется только для идентификаторов, созданные с помощью обработчика «Bearer».</span><span class="sxs-lookup"><span data-stu-id="537bf-137">In the preceding example, the "Over18" policy only runs against the identity created by the "Bearer" handler.</span></span> <span data-ttu-id="537bf-138">Используйте политику, задав `[Authorize]` атрибута `Policy` свойство:</span><span class="sxs-lookup"><span data-stu-id="537bf-138">Use the policy by setting the `[Authorize]` attribute's `Policy` property:</span></span>
+
+```csharp
+[Authorize(Policy = "Over18")]
+public class RegistrationController : Controller
+```
