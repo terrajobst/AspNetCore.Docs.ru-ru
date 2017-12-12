@@ -1,8 +1,8 @@
 ---
 title: "Проверка подлинности"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "В этом документе приводится перечень различных разделов о проверке подлинности в ASP.NET Core."
+keywords: "ASP.NET Core, проверка подлинности"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 981852c9-78f9-4590-aaee-9d50a2838dfe
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/index
-ms.openlocfilehash: 4edec00ebc82b0217e0db4f6325c3e7cca341e08
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 9b92a3206e2d6ca921e8580fa367e4bae12725c5
+ms.sourcegitcommit: 037d3900f739dbaa2ba14158e3d7dc81478952ad
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="authentication"></a>Проверка подлинности
 
@@ -43,4 +43,8 @@ ms.lasthandoff: 09/12/2017
 
   * [Вызов веб-API в веб-приложении ASP.NET Core с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
 
-* [Защита приложений ASP.NET Core с помощью IdentityServer4](https://identityserver4.readthedocs.io/release/)
+* [Защита приложений ASP.NET Core с помощью IdentityServer4](http://docs.identityserver.io/en/release/)
+
+* [Защита приложений ASP.NET Core с помощью проверки подлинности в службе приложений Azure (Easy Auth)](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)
+
+* [Статьи на основе проектов, созданных с помощью учетных записей отдельных пользователей](xref:security/authentication/individual)

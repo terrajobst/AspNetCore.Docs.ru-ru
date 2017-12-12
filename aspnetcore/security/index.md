@@ -1,23 +1,47 @@
 ---
-title: "Безопасность"
-author: rick-anderson
-description: 
-keywords: ASP.NET Core
-ms.author: riande
+title: "Общие сведения о безопасности ASP.NET Core | Документы Майкрософт"
+author: rachelappel
+description: "Сведения об основах проверки подлинности, авторизации и безопасности в ASP.NET Core"
+ms.author: rachelap
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 11/01/2017
 ms.topic: article
 ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe012345
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/index
-ms.openlocfilehash: f173d03f55a1ce52222a75c023f9e8a20d5c60dc
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 4f3a74d67ce3453499ea9785cc80bee183dc1aff
+ms.sourcegitcommit: e4fb6b13be56a0fb2f2778623740a047d6489227
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="security"></a>Безопасность
+# <a name="aspnet-core-security-overview"></a>Общие сведения о безопасности ASP.NET Core
+
+ASP.NET Core позволяет разработчикам легко настраивать параметры безопасности для приложений и управлять ими. ASP.NET Core содержит функции для управления проверкой подлинности, авторизацией, защитой данных, применением SSL, секретами приложений, защитой от подделки запросов, а также для управления CORS. Эти функции обеспечения безопасности позволяют создавать надежные и защищенные приложения ASP.NET Core. 
+
+## <a name="aspnet-core-security-features"></a>Функции безопасности в ASP.NET Core
+
+ASP.NET Core предоставляет множество средств и библиотек для защиты приложений, включая встроенные поставщики удостоверений, однако помимо них можно использовать сторонние службы удостоверений, такие как Facebook, LinkedIn и Twitter. В ASP.NET Core можно легко управлять секретами приложений, которые позволяют хранить и использовать конфиденциальные данные, не предоставляя их в коде. 
+
+## <a name="authentication-vs-authorization"></a>Проверка подлинности и Авторизация
+
+Проверка подлинности — это процесс, когда пользователь вводит учетные данные, которые затем сравниваются с данными, хранящимися в операционной системе, базе данных, приложении или ресурсе. Если они совпадают, пользователи успешно проходят проверку подлинности и во время авторизации могут выполнять действия, для которых у них есть разрешения. Авторизация представляет собой процесс, определяющий, какие действия может выполнять пользователь. 
+
+Если взглянуть на проверку подлинности с другой стороны, ее можно считать способом входа в определенную область, например на сервер, в базу данных, приложение или ресурс, тогда как авторизация определяет, какие действия с какими объектами может выполнять пользователь в этой области (на сервере, в базе данных или приложении).
+
+## <a name="common-vulnerabilities-in-software"></a>Распространенные уязвимости в программном обеспечении
+
+ASP.NET Core и EF содержат средства, помогающие защитить приложения и предотвратить возникновение нарушений безопасности. Далее приводится список ссылок на документацию с описанием методов, позволяющих устранять наиболее распространенные уязвимости в веб-приложениях:
+
+* [Атаки с использованием межузловых сценариев](https://docs.microsoft.com/aspnet/core/security/cross-site-scripting)
+* [Атаки путем внедрения кода SQL](https://docs.microsoft.com/ef/core/querying/raw-sql)
+* [Подделки межсайтовых запросов (CSRF)](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery)
+* [Атаки с открытой переадресацией](https://docs.microsoft.com/aspnet/core/security/preventing-open-redirects)
+
+Существует еще целый ряд уязвимостей, о которых следует знать. Дополнительные сведения см. в разделе этого документа, посвященном *документации по безопасности ASP.NET*. 
+
+## <a name="aspnet-security-documentation"></a>Документация по безопасности ASP.NET
 
 *   [Проверка подлинности](authentication/index.md)
     *   [Общие сведения об Identity](authentication/identity.md)
@@ -63,7 +87,7 @@ ms.lasthandoff: 09/28/2017
         *   [Расширяемость управления ключами](data-protection/extensibility/key-management.md)
         *   [Различные API](data-protection/extensibility/misc-apis.md)
     *   [Реализация](data-protection/implementation/index.md)
-        *   [Сведения о шифровании с проверкой подлинности.](data-protection/implementation/authenticated-encryption-details.md)
+        *   [Сведения о шифровании с проверкой подлинности](data-protection/implementation/authenticated-encryption-details.md)
         *   [Формирование подключа и шифрование с проверкой подлинности](data-protection/implementation/subkeyderivation.md)
         *   [Заголовки контекста](data-protection/implementation/context-headers.md)
         *   [Управление ключами](data-protection/implementation/key-management.md)

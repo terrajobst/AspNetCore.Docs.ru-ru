@@ -1,28 +1,39 @@
 ---
 title: "Работа с данными в ASP.NET Core"
 author: rick-anderson
-description: 
+description: "Содержит ссылки на статьи о работе с данными. Во многих используется Entity Framework Core."
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 10/14/2017
 ms.topic: article
-ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe0ba2ef
 ms.technology: aspnet
 ms.prod: asp.net-core
-ms.openlocfilehash: 3566127476289ae085a9161132b103638bc9b068
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+uid: data/index
+ms.openlocfilehash: b3bcd15a078ed2125d14c3e94311e385a1db9683
+ms.sourcegitcommit: 6e46abd65973dea796d364a514de9ec2e3e1c1ed
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="working-with-data-in-aspnet-core"></a>Работа с данными в ASP.NET Core 
 
+* [Начало работы с Razor Pages и Entity Framework Core в Visual Studio](xref:data/ef-rp/index)
+
+   * [Начало работы с Razor Pages и EF](xref:data/ef-rp/intro)
+   * [Операции создания, чтения, обновления и удаления](xref:data/ef-rp/crud)
+   * [Сортировка, фильтрация, разбиение на страницы и группирование данных](xref:data/ef-rp/sort-filter-page)
+   * [Миграции](xref:data/ef-rp/migrations)
+   * [Создание сложной модели данных](xref:data/ef-rp/complex-data-model)
+   * [Чтение связанных данных](xref:data/ef-rp/read-related-data)
+   * [Обновление связанных данных](xref:data/ef-rp/update-related-data)
+   * [Обработка конфликтов параллелизма](xref:data/ef-rp/concurrency)
+
 *   [Начало работы с ASP.NET Core и Entity Framework Core с использованием Visual Studio](ef-mvc/index.md)
     *   [Начало работы](ef-mvc/intro.md)
-    *   [Операции создания, чтения, обновления и удаления](ef-mvc/crud.md)
-    *   [Сортировка, фильтрация, разбиение на страницы и группирование данных](ef-mvc/sort-filter-page.md)
-    *   [Миграции](ef-mvc/migrations.md)
+    *   [Операции создания, чтения, обновления и удаления](xref:data/ef-mvc/crud)
+    *   [Сортировка, фильтрация, разбиение на страницы и группирование данных](xref:data/ef-mvc/sort-filter-page)
+    *   [Миграции](xref:data/ef-mvc/migrations)
     *   [Создание сложной модели данных](ef-mvc/complex-data-model.md)
     *   [Чтение связанных данных](ef-mvc/read-related-data.md)
     *   [Обновление связанных данных](ef-mvc/update-related-data.md)
@@ -37,3 +48,4 @@ ms.lasthandoff: 08/11/2017
     *   [Начало работы с хранилищем BLOB-объектов Azure и подключенными службами Visual Studio](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)
     *   [Начало работы с хранилищем очередей и подключенными службами Visual Studio](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-queues/)
     *   [Начало работы с хранилищем таблиц Azure и подключенными службами Visual Studio](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-tables/)
+

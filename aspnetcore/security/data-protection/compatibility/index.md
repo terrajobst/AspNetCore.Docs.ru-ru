@@ -1,8 +1,8 @@
 ---
 title: "Совместимость в ASP.NET Core"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "В этом документе приводится перечень различных разделов о совместимости с защитой данных в ASP.NET Core."
+keywords: "ASP.NET Core, совместимость, защита данных"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 132f1834-db4c-4874-af6f-9a57cc0a8e83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/compatibility/index
-ms.openlocfilehash: ba01777b6801a17b18d9da95ec75643a24c1c942
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 5031974e39a03eab5a843fab1e9f5ed40741a768
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="compatibility-in-aspnet-core"></a>Совместимость в ASP.NET Core
 

@@ -11,11 +11,11 @@ ms.assetid: f0930c68-4d17-4748-adbf-801e17601eb6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/index
-ms.openlocfilehash: df3c1f0c2768b89c3ea5dc901782170c530a542e
-ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
+ms.openlocfilehash: 0de459128426c4d027606951592b1fe3fdd24fd9
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="hosting-and-deployment-overview-for-aspnet-core-apps"></a>Общие сведения о размещении и развертывании приложений ASP.NET Core
 
@@ -58,6 +58,10 @@ ms.lasthandoff: 09/20/2017
 Помимо копирования выходных данных `dotnet publish` на сервер в процессе развертывания часто требуется выполнение и других задач. Это может быть, например, включение дополнительных файлов в папку *публикации* или исключение из нее каких-либо файлов. Visual Studio использует для веб-развертывания MSBuild и настраивает MSBuild для решения многих других задач в процессе развертывания. Дополнительные сведения см. в статье [Профили публикации в Visual Studio](xref:publishing/web-publishing-vs) и в книге [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Использование MSBuild и сборки Team Foundation).
 
 Развертывание можно выполнять напрямую из Visual Studio в службу приложений Azure, используя [компонент веб-публикации](xref:tutorials/publish-to-azure-webapp-using-vs) или [встроенную поддержку Git](xref:publishing/azure-continuous-deployment). Visual Studio Team Services поддерживает [непрерывное развертывание в службе приложений Azure](https://www.visualstudio.com/docs/build/aspnet/core/quick-to-azure).
+
+## <a name="publishing-to-azure"></a>Публикация в Azure
+
+Дополнительные сведения о публикации этого приложения в Azure с помощью Visual Studio см. в руководстве по [публикации веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs).  Приложение можно также опубликовать в Azure из [командной строки](xref:tutorials/publish-to-azure-webapp-using-cli).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

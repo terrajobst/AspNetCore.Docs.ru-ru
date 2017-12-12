@@ -1,28 +1,34 @@
 ---
-title: "Конфигурация в .NET Core"
+title: "Настройка защиты данных в ASP.NET Core"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "Ознакомьтесь с разделами, в которых объясняется, как настроить защиту данных в ASP.NET Core."
+keywords: "ASP.NET Core, защита данных"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 10/12/2017
 ms.topic: article
 ms.assetid: 517047b3-b5a9-4b5a-9084-01dae4c74cef
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/index
-ms.openlocfilehash: f2b896f36b77d94b0268c09dcf35daa22e1c6885
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: a502de94a0f7177f29c95f6a6a4468a715e66983
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
+# <a name="data-protection-configuration-in-aspnet-core"></a>Настройка защиты данных в ASP.NET Core
 
-* [Настройка защиты данных](overview.md)
+Изучите эти разделы, чтобы узнать о настройке защиты данных в ASP.NET Core:
 
-* [Параметры по умолчанию](default-settings.md)
+* [Настройка защиты данных](xref:security/data-protection/configuration/overview)  
+  Общие сведения о настройке защиты данных в ASP.NET Core.
 
-* [Политика на уровне компьютера](machine-wide-policy.md)
+* [Управление ключами для защиты данных и время существования](xref:security/data-protection/configuration/default-settings)  
+  Сведения об управлении ключами для защиты данных и времени существования.
 
-* [Сценарии, не поддерживающие DI](non-di-scenarios.md)
+* [Поддержка политика защиты данных на уровне компьютера](xref:security/data-protection/configuration/machine-wide-policy)  
+  Сведения о настройке политики по умолчанию на уровне компьютера для всех приложений, использующих защиту данных.
+
+* [Сценарии без поддержки внедрения зависимостей для защиты данных в ASP.NET Core](xref:security/data-protection/configuration/non-di-scenarios)  
+  Сведения о применении конкретного типа [DataProtectionProvider](/dotnet/api/Microsoft.AspNetCore.DataProtection.DataProtectionProvider) для использования данных без перехода через ветви кода, поддерживающие внедрение зависимостей.
