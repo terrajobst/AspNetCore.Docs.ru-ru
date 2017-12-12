@@ -1,85 +1,109 @@
 ---
-title: "Безопасность"
-author: rick-anderson
-description: 
-keywords: ASP.NET Core
-ms.author: riande
+title: "Общие сведения о безопасности ASP.NET Core | Документы Майкрософт"
+author: rachelappel
+description: "Сведения об основах проверки подлинности, авторизации и безопасности в ASP.NET Core"
+ms.author: rachelap
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 11/01/2017
 ms.topic: article
 ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe012345
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/index
-ms.openlocfilehash: f173d03f55a1ce52222a75c023f9e8a20d5c60dc
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 4f3a74d67ce3453499ea9785cc80bee183dc1aff
+ms.sourcegitcommit: e4fb6b13be56a0fb2f2778623740a047d6489227
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="security"></a>Безопасность
+# <a name="aspnet-core-security-overview"></a><span data-ttu-id="7176c-103">Общие сведения о безопасности ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="7176c-103">ASP.NET Core Security Overview</span></span>
 
-*   [Проверка подлинности](authentication/index.md)
-    *   [Общие сведения об Identity](authentication/identity.md)
-    *   [Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков](authentication/social/index.md)
-    * [Настройка проверки подлинности Windows](authentication/windowsauth.md)
-    *   [Подтверждение учетной записи и восстановление пароля](authentication/accconfirm.md)
-    *   [Двухфакторная проверка подлинности с помощью SMS](authentication/2fa.md) 
-    *   [Использование проверки подлинности с помощью файлов cookie без ASP.NET Core Identity](authentication/cookie.md)
-    *   [Azure Active Directory](authentication/azure-active-directory/index.md)
-        *   [Интеграция Azure AD в веб-приложение ASP.NET Core](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
-        *   [Вызов веб-API ASP.NET Core из приложения WPF с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
-        *   [Вызов веб-API в веб-приложении ASP.NET Core с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
-        *   [ASP.NET Core с Azure AD B2C](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapp/)
-    *   [Защита приложений ASP.NET Core с помощью IdentityServer4](https://identityserver4.readthedocs.io)
-*   [Авторизация](authorization/index.md)
-    *   [Введение](authorization/introduction.md)
-    *   [Создание приложения с защитой данных пользователя с помощью авторизации](xref:security/authorization/secure-data)
-    *   [Простая авторизация](authorization/simple.md)
-    *   [Авторизация на основе ролей](authorization/roles.md)
-    *   [Авторизация на основе утверждений](authorization/claims.md)
-    *   [Пользовательская авторизация на основе политик](authorization/policies.md)
-    *   [Внедрение зависимостей в обработчики требований](authorization/dependencyinjection.md)
-    *   [Авторизация на основе ресурсов](authorization/resourcebased.md)
-    *   [Авторизация на основе представлений](authorization/views.md)
-    *   [Ограничение идентификаторов по схеме](authorization/limitingidentitybyscheme.md)
-*   [Защита данных](data-protection/index.md)
-    *   [Общие сведения о защите данных](data-protection/introduction.md)
-    *   [Начало работы с API защиты данных](data-protection/using-data-protection.md)
-    *   [Потребительские API](data-protection/consumer-apis/index.md)
-        *   [Обзор потребительских API](data-protection/consumer-apis/overview.md)
-        *   [Строки назначений](data-protection/consumer-apis/purpose-strings.md)
-        *   [Иерархия назначений и мультитенантность](data-protection/consumer-apis/purpose-strings-multitenancy.md)
-        *   [Хэширование паролей](data-protection/consumer-apis/password-hashing.md)
-        *   [Ограничение времени существования защищенных полезных данных](data-protection/consumer-apis/limited-lifetime-payloads.md)
-        *   [Снятие защиты полезных данных, ключи которых были отозваны](data-protection/consumer-apis/dangerous-unprotect.md)
-    *   [Конфигурация](data-protection/configuration/index.md)
-        *   [Настройка защиты данных](data-protection/configuration/overview.md)
-        *   [Параметры по умолчанию](data-protection/configuration/default-settings.md)
-        *   [Политика на уровне компьютера](data-protection/configuration/machine-wide-policy.md)
-        *   [Сценарии, не поддерживающие DI](data-protection/configuration/non-di-scenarios.md)
-    *   [API расширяемости](data-protection/extensibility/index.md)
-        *   [Расширяемость базового шифрования](data-protection/extensibility/core-crypto.md)
-        *   [Расширяемость управления ключами](data-protection/extensibility/key-management.md)
-        *   [Различные API](data-protection/extensibility/misc-apis.md)
-    *   [Реализация](data-protection/implementation/index.md)
-        *   [Сведения о шифровании с проверкой подлинности.](data-protection/implementation/authenticated-encryption-details.md)
-        *   [Формирование подключа и шифрование с проверкой подлинности](data-protection/implementation/subkeyderivation.md)
-        *   [Заголовки контекста](data-protection/implementation/context-headers.md)
-        *   [Управление ключами](data-protection/implementation/key-management.md)
-        *   [Поставщики хранилищ ключей](data-protection/implementation/key-storage-providers.md)
-        *   [Шифрование ключей при хранении](data-protection/implementation/key-encryption-at-rest.md)
-        *   [Неизменность ключа и изменение параметров](data-protection/implementation/key-immutability.md)
-        *   [Формат хранилища ключей](data-protection/implementation/key-storage-format.md)
-        *   [Временные поставщики защиты данных](data-protection/implementation/key-storage-ephemeral.md)
-    *   [Совместимость](data-protection/compatibility/index.md)
-        *   [Совместное использование файлов cookie в приложениях](data-protection/compatibility/cookie-sharing.md)
-        *   [Замена <machineKey> в ASP.NET](data-protection/compatibility/replacing-machinekey.md)
-*   [Создание приложения с защитой данных пользователя с помощью авторизации](xref:security/authorization/secure-data)
-*   [Безопасное хранение секретов приложений во время разработки](app-secrets.md)
-*   [Поставщик конфигурации Azure Key Vault](key-vault-configuration.md)
-*   [Применение SSL](enforcing-ssl.md)
-*   [Защита от подделки запросов](anti-request-forgery.md)
-*   [Предотвращение атак с открытой переадресацией](preventing-open-redirects.md)
-*   [Предотвращение использования межузловых сценариев](cross-site-scripting.md)
-*   [Включение запросов о происхождении (CORS)](cors.md)
+<span data-ttu-id="7176c-104">ASP.NET Core позволяет разработчикам легко настраивать параметры безопасности для приложений и управлять ими.</span><span class="sxs-lookup"><span data-stu-id="7176c-104">ASP.NET Core enables developers to easily configure and manage security for their apps.</span></span> <span data-ttu-id="7176c-105">ASP.NET Core содержит функции для управления проверкой подлинности, авторизацией, защитой данных, применением SSL, секретами приложений, защитой от подделки запросов, а также для управления CORS.</span><span class="sxs-lookup"><span data-stu-id="7176c-105">ASP.NET Core contains features for managing authentication, authorization, data protection, SSL enforcement, app secrets, anti-request forgery protection, and CORS management.</span></span> <span data-ttu-id="7176c-106">Эти функции обеспечения безопасности позволяют создавать надежные и защищенные приложения ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="7176c-106">These security features allow you to build robust yet secure ASP.NET Core apps.</span></span> 
+
+## <a name="aspnet-core-security-features"></a><span data-ttu-id="7176c-107">Функции безопасности в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="7176c-107">ASP.NET Core security features</span></span>
+
+<span data-ttu-id="7176c-108">ASP.NET Core предоставляет множество средств и библиотек для защиты приложений, включая встроенные поставщики удостоверений, однако помимо них можно использовать сторонние службы удостоверений, такие как Facebook, LinkedIn и Twitter.</span><span class="sxs-lookup"><span data-stu-id="7176c-108">ASP.NET Core provides many tools and libraries to secure your apps including built-in Identity providers but you can use 3rd party identity services such as Facebook, Twitter, or LinkedIn.</span></span> <span data-ttu-id="7176c-109">В ASP.NET Core можно легко управлять секретами приложений, которые позволяют хранить и использовать конфиденциальные данные, не предоставляя их в коде.</span><span class="sxs-lookup"><span data-stu-id="7176c-109">With ASP.NET Core, you can easily manage app secrets, which are a way to store and use confidential information without having to expose it in the code.</span></span> 
+
+## <a name="authentication-vs-authorization"></a><span data-ttu-id="7176c-110">Проверка подлинности и Авторизация</span><span class="sxs-lookup"><span data-stu-id="7176c-110">Authentication vs. Authorization</span></span>
+
+<span data-ttu-id="7176c-111">Проверка подлинности — это процесс, когда пользователь вводит учетные данные, которые затем сравниваются с данными, хранящимися в операционной системе, базе данных, приложении или ресурсе.</span><span class="sxs-lookup"><span data-stu-id="7176c-111">Authentication is a process in which a user provides credentials that are then compared to those stored in an operating system, database, app or resource.</span></span> <span data-ttu-id="7176c-112">Если они совпадают, пользователи успешно проходят проверку подлинности и во время авторизации могут выполнять действия, для которых у них есть разрешения.</span><span class="sxs-lookup"><span data-stu-id="7176c-112">If they match, users authenticate successfully, and can then perform actions that they are authorized for, during an authorization process.</span></span> <span data-ttu-id="7176c-113">Авторизация представляет собой процесс, определяющий, какие действия может выполнять пользователь.</span><span class="sxs-lookup"><span data-stu-id="7176c-113">The authorization refers to the process that determines what a user is allowed to do.</span></span> 
+
+<span data-ttu-id="7176c-114">Если взглянуть на проверку подлинности с другой стороны, ее можно считать способом входа в определенную область, например на сервер, в базу данных, приложение или ресурс, тогда как авторизация определяет, какие действия с какими объектами может выполнять пользователь в этой области (на сервере, в базе данных или приложении).</span><span class="sxs-lookup"><span data-stu-id="7176c-114">Another way to think of authentication is to consider it as a way to enter a space, such as a server, database, app or resource, while authorization is which actions the user can perform to which objects inside that space (server, database, or app).</span></span>
+
+## <a name="common-vulnerabilities-in-software"></a><span data-ttu-id="7176c-115">Распространенные уязвимости в программном обеспечении</span><span class="sxs-lookup"><span data-stu-id="7176c-115">Common Vulnerabilities in software</span></span>
+
+<span data-ttu-id="7176c-116">ASP.NET Core и EF содержат средства, помогающие защитить приложения и предотвратить возникновение нарушений безопасности.</span><span class="sxs-lookup"><span data-stu-id="7176c-116">ASP.NET Core and EF contain features that help you secure your apps and prevent security breaches.</span></span> <span data-ttu-id="7176c-117">Далее приводится список ссылок на документацию с описанием методов, позволяющих устранять наиболее распространенные уязвимости в веб-приложениях:</span><span class="sxs-lookup"><span data-stu-id="7176c-117">The following list of links takes you to documentation detailing techniques to avoid the most common security vulnerabilities in web apps:</span></span>
+
+* [<span data-ttu-id="7176c-118">Атаки с использованием межузловых сценариев</span><span class="sxs-lookup"><span data-stu-id="7176c-118">Cross site scripting attacks</span></span>](https://docs.microsoft.com/aspnet/core/security/cross-site-scripting)
+* [<span data-ttu-id="7176c-119">Атаки путем внедрения кода SQL</span><span class="sxs-lookup"><span data-stu-id="7176c-119">SQL Injection attacks</span></span>](https://docs.microsoft.com/ef/core/querying/raw-sql)
+* [<span data-ttu-id="7176c-120">Подделки межсайтовых запросов (CSRF)</span><span class="sxs-lookup"><span data-stu-id="7176c-120">Cross-Site Request Forgery (CSRF)</span></span>](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery)
+* [<span data-ttu-id="7176c-121">Атаки с открытой переадресацией</span><span class="sxs-lookup"><span data-stu-id="7176c-121">Open redirect attacks</span></span>](https://docs.microsoft.com/aspnet/core/security/preventing-open-redirects)
+
+<span data-ttu-id="7176c-122">Существует еще целый ряд уязвимостей, о которых следует знать.</span><span class="sxs-lookup"><span data-stu-id="7176c-122">There are more vulnerabilities that you should be aware of.</span></span> <span data-ttu-id="7176c-123">Дополнительные сведения см. в разделе этого документа, посвященном *документации по безопасности ASP.NET*.</span><span class="sxs-lookup"><span data-stu-id="7176c-123">For more information, see the section in this document on *ASP.NET Security Documentation*.</span></span> 
+
+## <a name="aspnet-security-documentation"></a><span data-ttu-id="7176c-124">Документация по безопасности ASP.NET</span><span class="sxs-lookup"><span data-stu-id="7176c-124">ASP.NET Security Documentation</span></span>
+
+*   [<span data-ttu-id="7176c-125">Проверка подлинности</span><span class="sxs-lookup"><span data-stu-id="7176c-125">Authentication</span></span>](authentication/index.md)
+    *   [<span data-ttu-id="7176c-126">Общие сведения об Identity</span><span class="sxs-lookup"><span data-stu-id="7176c-126">Introduction to Identity</span></span>](authentication/identity.md)
+    *   [<span data-ttu-id="7176c-127">Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков</span><span class="sxs-lookup"><span data-stu-id="7176c-127">Enabling authentication using Facebook, Google and other external providers</span></span>](authentication/social/index.md)
+    * [<span data-ttu-id="7176c-128">Настройка проверки подлинности Windows</span><span class="sxs-lookup"><span data-stu-id="7176c-128">Configure Windows Authentication</span></span>](authentication/windowsauth.md)
+    *   [<span data-ttu-id="7176c-129">Подтверждение учетной записи и восстановление пароля</span><span class="sxs-lookup"><span data-stu-id="7176c-129">Account Confirmation and Password Recovery</span></span>](authentication/accconfirm.md)
+    *   [<span data-ttu-id="7176c-130">Двухфакторная проверка подлинности с помощью SMS</span><span class="sxs-lookup"><span data-stu-id="7176c-130">Two-factor authentication with SMS</span></span>](authentication/2fa.md) 
+    *   [<span data-ttu-id="7176c-131">Использование проверки подлинности с помощью файлов cookie без ASP.NET Core Identity</span><span class="sxs-lookup"><span data-stu-id="7176c-131">Using Cookie Authentication without ASP.NET Core Identity</span></span>](authentication/cookie.md)
+    *   [<span data-ttu-id="7176c-132">Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="7176c-132">Azure Active Directory</span></span>](authentication/azure-active-directory/index.md)
+        *   [<span data-ttu-id="7176c-133">Интеграция Azure AD в веб-приложение ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="7176c-133">Integrating Azure AD Into an ASP.NET Core Web App</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
+        *   [<span data-ttu-id="7176c-134">Вызов веб-API ASP.NET Core из приложения WPF с помощью Azure AD</span><span class="sxs-lookup"><span data-stu-id="7176c-134">Calling a ASP.NET Core Web API From a WPF Application Using Azure AD</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
+        *   [<span data-ttu-id="7176c-135">Вызов веб-API в веб-приложении ASP.NET Core с помощью Azure AD</span><span class="sxs-lookup"><span data-stu-id="7176c-135">Calling a Web API in an ASP.NET Core Web Application Using Azure AD</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
+        *   [<span data-ttu-id="7176c-136">ASP.NET Core с Azure AD B2C</span><span class="sxs-lookup"><span data-stu-id="7176c-136">An ASP.NET Core web app with Azure AD B2C</span></span>](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapp/)
+    *   [<span data-ttu-id="7176c-137">Защита приложений ASP.NET Core с помощью IdentityServer4</span><span class="sxs-lookup"><span data-stu-id="7176c-137">Securing ASP.NET Core apps with IdentityServer4</span></span>](https://identityserver4.readthedocs.io)
+*   [<span data-ttu-id="7176c-138">Авторизация</span><span class="sxs-lookup"><span data-stu-id="7176c-138">Authorization</span></span>](authorization/index.md)
+    *   [<span data-ttu-id="7176c-139">Введение</span><span class="sxs-lookup"><span data-stu-id="7176c-139">Introduction</span></span>](authorization/introduction.md)
+    *   [<span data-ttu-id="7176c-140">Создание приложения с защитой данных пользователя с помощью авторизации</span><span class="sxs-lookup"><span data-stu-id="7176c-140">Create an app with user data protected by authorization</span></span>](xref:security/authorization/secure-data)
+    *   [<span data-ttu-id="7176c-141">Простая авторизация</span><span class="sxs-lookup"><span data-stu-id="7176c-141">Simple Authorization</span></span>](authorization/simple.md)
+    *   [<span data-ttu-id="7176c-142">Авторизация на основе ролей</span><span class="sxs-lookup"><span data-stu-id="7176c-142">Role based Authorization</span></span>](authorization/roles.md)
+    *   [<span data-ttu-id="7176c-143">Авторизация на основе утверждений</span><span class="sxs-lookup"><span data-stu-id="7176c-143">Claims-Based Authorization</span></span>](authorization/claims.md)
+    *   [<span data-ttu-id="7176c-144">Пользовательская авторизация на основе политик</span><span class="sxs-lookup"><span data-stu-id="7176c-144">Custom Policy-Based Authorization</span></span>](authorization/policies.md)
+    *   [<span data-ttu-id="7176c-145">Внедрение зависимостей в обработчики требований</span><span class="sxs-lookup"><span data-stu-id="7176c-145">Dependency Injection in requirement handlers</span></span>](authorization/dependencyinjection.md)
+    *   [<span data-ttu-id="7176c-146">Авторизация на основе ресурсов</span><span class="sxs-lookup"><span data-stu-id="7176c-146">Resource-based authorization</span></span>](authorization/resourcebased.md)
+    *   [<span data-ttu-id="7176c-147">Авторизация на основе представлений</span><span class="sxs-lookup"><span data-stu-id="7176c-147">View-based authorization</span></span>](authorization/views.md)
+    *   [<span data-ttu-id="7176c-148">Ограничение идентификаторов по схеме</span><span class="sxs-lookup"><span data-stu-id="7176c-148">Limiting identity by scheme</span></span>](authorization/limitingidentitybyscheme.md)
+*   [<span data-ttu-id="7176c-149">Защита данных</span><span class="sxs-lookup"><span data-stu-id="7176c-149">Data Protection</span></span>](data-protection/index.md)
+    *   [<span data-ttu-id="7176c-150">Общие сведения о защите данных</span><span class="sxs-lookup"><span data-stu-id="7176c-150">Introduction to Data Protection</span></span>](data-protection/introduction.md)
+    *   [<span data-ttu-id="7176c-151">Начало работы с API защиты данных</span><span class="sxs-lookup"><span data-stu-id="7176c-151">Getting Started with the Data Protection APIs</span></span>](data-protection/using-data-protection.md)
+    *   [<span data-ttu-id="7176c-152">Потребительские API</span><span class="sxs-lookup"><span data-stu-id="7176c-152">Consumer APIs</span></span>](data-protection/consumer-apis/index.md)
+        *   [<span data-ttu-id="7176c-153">Обзор потребительских API</span><span class="sxs-lookup"><span data-stu-id="7176c-153">Consumer APIs Overview</span></span>](data-protection/consumer-apis/overview.md)
+        *   [<span data-ttu-id="7176c-154">Строки назначений</span><span class="sxs-lookup"><span data-stu-id="7176c-154">Purpose Strings</span></span>](data-protection/consumer-apis/purpose-strings.md)
+        *   [<span data-ttu-id="7176c-155">Иерархия назначений и мультитенантность</span><span class="sxs-lookup"><span data-stu-id="7176c-155">Purpose hierarchy and multi-tenancy</span></span>](data-protection/consumer-apis/purpose-strings-multitenancy.md)
+        *   [<span data-ttu-id="7176c-156">Хэширование паролей</span><span class="sxs-lookup"><span data-stu-id="7176c-156">Password Hashing</span></span>](data-protection/consumer-apis/password-hashing.md)
+        *   [<span data-ttu-id="7176c-157">Ограничение времени существования защищенных полезных данных</span><span class="sxs-lookup"><span data-stu-id="7176c-157">Limiting the lifetime of protected payloads</span></span>](data-protection/consumer-apis/limited-lifetime-payloads.md)
+        *   [<span data-ttu-id="7176c-158">Снятие защиты полезных данных, ключи которых были отозваны</span><span class="sxs-lookup"><span data-stu-id="7176c-158">Unprotecting payloads whose keys have been revoked</span></span>](data-protection/consumer-apis/dangerous-unprotect.md)
+    *   [<span data-ttu-id="7176c-159">Конфигурация</span><span class="sxs-lookup"><span data-stu-id="7176c-159">Configuration</span></span>](data-protection/configuration/index.md)
+        *   [<span data-ttu-id="7176c-160">Настройка защиты данных</span><span class="sxs-lookup"><span data-stu-id="7176c-160">Configuring Data Protection</span></span>](data-protection/configuration/overview.md)
+        *   [<span data-ttu-id="7176c-161">Параметры по умолчанию</span><span class="sxs-lookup"><span data-stu-id="7176c-161">Default Settings</span></span>](data-protection/configuration/default-settings.md)
+        *   [<span data-ttu-id="7176c-162">Политика на уровне компьютера</span><span class="sxs-lookup"><span data-stu-id="7176c-162">Machine Wide Policy</span></span>](data-protection/configuration/machine-wide-policy.md)
+        *   [<span data-ttu-id="7176c-163">Сценарии, не поддерживающие DI</span><span class="sxs-lookup"><span data-stu-id="7176c-163">Non DI Aware Scenarios</span></span>](data-protection/configuration/non-di-scenarios.md)
+    *   [<span data-ttu-id="7176c-164">API расширяемости</span><span class="sxs-lookup"><span data-stu-id="7176c-164">Extensibility APIs</span></span>](data-protection/extensibility/index.md)
+        *   [<span data-ttu-id="7176c-165">Расширяемость базового шифрования</span><span class="sxs-lookup"><span data-stu-id="7176c-165">Core cryptography extensibility</span></span>](data-protection/extensibility/core-crypto.md)
+        *   [<span data-ttu-id="7176c-166">Расширяемость управления ключами</span><span class="sxs-lookup"><span data-stu-id="7176c-166">Key management extensibility</span></span>](data-protection/extensibility/key-management.md)
+        *   [<span data-ttu-id="7176c-167">Различные API</span><span class="sxs-lookup"><span data-stu-id="7176c-167">Miscellaneous APIs</span></span>](data-protection/extensibility/misc-apis.md)
+    *   [<span data-ttu-id="7176c-168">Реализация</span><span class="sxs-lookup"><span data-stu-id="7176c-168">Implementation</span></span>](data-protection/implementation/index.md)
+        *   [<span data-ttu-id="7176c-169">Сведения о шифровании с проверкой подлинности</span><span class="sxs-lookup"><span data-stu-id="7176c-169">Authenticated encryption details</span></span>](data-protection/implementation/authenticated-encryption-details.md)
+        *   [<span data-ttu-id="7176c-170">Формирование подключа и шифрование с проверкой подлинности</span><span class="sxs-lookup"><span data-stu-id="7176c-170">Subkey Derivation and Authenticated Encryption</span></span>](data-protection/implementation/subkeyderivation.md)
+        *   [<span data-ttu-id="7176c-171">Заголовки контекста</span><span class="sxs-lookup"><span data-stu-id="7176c-171">Context headers</span></span>](data-protection/implementation/context-headers.md)
+        *   [<span data-ttu-id="7176c-172">Управление ключами</span><span class="sxs-lookup"><span data-stu-id="7176c-172">Key Management</span></span>](data-protection/implementation/key-management.md)
+        *   [<span data-ttu-id="7176c-173">Поставщики хранилищ ключей</span><span class="sxs-lookup"><span data-stu-id="7176c-173">Key Storage Providers</span></span>](data-protection/implementation/key-storage-providers.md)
+        *   [<span data-ttu-id="7176c-174">Шифрование ключей при хранении</span><span class="sxs-lookup"><span data-stu-id="7176c-174">Key Encryption At Rest</span></span>](data-protection/implementation/key-encryption-at-rest.md)
+        *   [<span data-ttu-id="7176c-175">Неизменность ключа и изменение параметров</span><span class="sxs-lookup"><span data-stu-id="7176c-175">Key Immutability and Changing Settings</span></span>](data-protection/implementation/key-immutability.md)
+        *   [<span data-ttu-id="7176c-176">Формат хранилища ключей</span><span class="sxs-lookup"><span data-stu-id="7176c-176">Key Storage Format</span></span>](data-protection/implementation/key-storage-format.md)
+        *   [<span data-ttu-id="7176c-177">Временные поставщики защиты данных</span><span class="sxs-lookup"><span data-stu-id="7176c-177">Ephemeral data protection providers</span></span>](data-protection/implementation/key-storage-ephemeral.md)
+    *   [<span data-ttu-id="7176c-178">Совместимость</span><span class="sxs-lookup"><span data-stu-id="7176c-178">Compatibility</span></span>](data-protection/compatibility/index.md)
+        *   [<span data-ttu-id="7176c-179">Совместное использование файлов cookie в приложениях</span><span class="sxs-lookup"><span data-stu-id="7176c-179">Sharing cookies between applications</span></span>](data-protection/compatibility/cookie-sharing.md)
+        *   [<span data-ttu-id="7176c-180">Замена <machineKey> в ASP.NET</span><span class="sxs-lookup"><span data-stu-id="7176c-180">Replacing <machineKey> in ASP.NET</span></span>](data-protection/compatibility/replacing-machinekey.md)
+*   [<span data-ttu-id="7176c-181">Создание приложения с защитой данных пользователя с помощью авторизации</span><span class="sxs-lookup"><span data-stu-id="7176c-181">Create an app with user data protected by authorization</span></span>](xref:security/authorization/secure-data)
+*   [<span data-ttu-id="7176c-182">Безопасное хранение секретов приложений во время разработки</span><span class="sxs-lookup"><span data-stu-id="7176c-182">Safe storage of app secrets during development</span></span>](app-secrets.md)
+*   [<span data-ttu-id="7176c-183">Поставщик конфигурации Azure Key Vault</span><span class="sxs-lookup"><span data-stu-id="7176c-183">Azure Key Vault configuration provider</span></span>](key-vault-configuration.md)
+*   [<span data-ttu-id="7176c-184">Применение SSL</span><span class="sxs-lookup"><span data-stu-id="7176c-184">Enforcing SSL</span></span>](enforcing-ssl.md)
+*   [<span data-ttu-id="7176c-185">Защита от подделки запросов</span><span class="sxs-lookup"><span data-stu-id="7176c-185">Anti-Request Forgery</span></span>](anti-request-forgery.md)
+*   [<span data-ttu-id="7176c-186">Предотвращение атак с открытой переадресацией</span><span class="sxs-lookup"><span data-stu-id="7176c-186">Preventing Open Redirect Attacks</span></span>](preventing-open-redirects.md)
+*   [<span data-ttu-id="7176c-187">Предотвращение использования межузловых сценариев</span><span class="sxs-lookup"><span data-stu-id="7176c-187">Preventing Cross-Site Scripting</span></span>](cross-site-scripting.md)
+*   [<span data-ttu-id="7176c-188">Включение запросов о происхождении (CORS)</span><span class="sxs-lookup"><span data-stu-id="7176c-188">Enabling Cross-Origin Requests (CORS)</span></span>](cors.md)
