@@ -1,8 +1,8 @@
 ---
 title: "Настройка внешнего входа Facebook в ASP.NET Core"
 author: rick-anderson
-description: "Настройка внешнего входа Facebook в ASP.NET Core"
-keywords: ASP.NET Core
+description: "В этом учебнике показано интеграции проверки подлинности пользователя учетной записи Facebook в существующее приложение ASP.NET Core."
+keywords: "ASP.NET Core, Facebook, имя входа, проверка подлинности"
 ms.author: riande
 manager: wpickett
 ms.date: 08/01/2017
@@ -11,23 +11,21 @@ ms.assetid: 8c65179b-688c-4af1-8f5e-1862920cda95
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 2b478ce38e98977a7c52e9317b5bc6fa0d6624b7
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 826ac826c22dae81e5dbea08a11a62cac0b1068a
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configuring-facebook-authentication"></a>Настройка проверки подлинности Facebook
 
-<a name=security-authentication-facebook-logins></a>
-
 Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-Этого учебника показано, как предоставить пользователям возможность войти в свою учетную запись Facebook с помощью ASP.NET 2.0 основной пример проекта создан на [предыдущую страницу](index.md). Мы начнем с создания код приложения Facebook, следуя [официальный действия](https://www.facebook.com/unsupportedbrowser).
+Этого учебника показано, как предоставить пользователям возможность войти в свою учетную запись Facebook с помощью ASP.NET 2.0 основной пример проекта создан на [предыдущую страницу](index.md). Мы начнем с создания код приложения Facebook, следуя [официальный действия](https://developers.facebook.com).
 
 ## <a name="create-the-app-in-facebook"></a>Создать приложение на Facebook
 
-*  Перейдите к [Facebook для разработчиков](https://www.facebook.com/unsupportedbrowser) страницы и выполните вход. Если у вас еще нет учетной записи Facebook, используйте **зарегистрироваться для Facebook** ссылку на страницу входа для ее создания.
+*  Перейдите к [Facebook для разработчиков](https://developers.facebook.com) страницы и выполните вход. Если у вас еще нет учетной записи Facebook, используйте **зарегистрироваться для Facebook** ссылку на страницу входа для ее создания.
 
 * Коснитесь **Создание приложения** кнопку в правом верхнем углу, чтобы создать новый идентификатор приложения.
 
@@ -64,6 +62,13 @@ ms.lasthandoff: 09/28/2017
 ## <a name="store-facebook-app-id-and-app-secret"></a>Сохранить код приложения Facebook и секрет приложения
 
 Связать конфиденциальные параметры, например Facebook `App ID` и `App Secret` в конфигурации приложения с помощью [секрет диспетчер](xref:security/app-secrets). В целях этого учебника назовите токены `Authentication:Facebook:AppId` и `Authentication:Facebook:AppSecret`.
+
+Выполните следующие команды для безопасного хранения `App ID` и `App Secret` с помощью диспетчера секрет:
+
+```console
+dotnet user-secrets set Authentication:Facebook:AppId <app-id>
+dotnet user-secrets set Authentication:Facebook:AppSecret <app-secret>
+```
 
 ## <a name="configure-facebook-authentication"></a>Настройка проверки подлинности Facebook
 

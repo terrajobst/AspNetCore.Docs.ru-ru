@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/complex-data-model
 ms.openlocfilehash: cacb23441e5f5ab06c6be27f3068276f21ff4ed9
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="creating-a-complex-data-model---ef-core-with-aspnet-core-mvc-tutorial-5-of-10"></a>Создание сложных данных модели - Core EF учебнику ASP.NET Core MVC (5, 10)
 
@@ -93,7 +93,7 @@ dotnet ef migrations add MaxLengthOnNames
 dotnet ef database update
 ```
 
-`migrations add` Команда выдает предупреждение, может привести к потере данных, поскольку это изменение делает максимальную длину более короткие для двух столбцов.  Миграция создает файл с именем * \<timeStamp > _MaxLengthOnNames.cs*. Этот файл содержит код в `Up` метод, который будет обновлять базу данных в соответствии с текущей моделью данных. `database update` Этот код выполнялась команда.
+`migrations add` Команда выдает предупреждение, может привести к потере данных, поскольку это изменение делает максимальную длину более короткие для двух столбцов.  Миграция создает файл с именем  *\<timeStamp > _MaxLengthOnNames.cs*. Этот файл содержит код в `Up` метод, который будет обновлять базу данных в соответствии с текущей моделью данных. `database update` Этот код выполнялась команда.
 
 Отметка времени, в качестве префикса к имени файла миграции используется платформой Entity Framework для упорядочения для миграции. Можно создать несколько миграции перед выполнением команды update-database, и затем все миграций применяются в порядке, в котором они были созданы.
 

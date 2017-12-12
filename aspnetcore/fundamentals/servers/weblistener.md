@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/weblistener
 ms.openlocfilehash: f1abb3558546cd907c78b44d9353d9c9f1f5aff1
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>Реализация WebListener веб-сервера в ASP.NET Core
 
@@ -42,7 +42,7 @@ WebListener поддерживает следующие функции:
 
 - Windows 7 и Windows Server 2008 R2 и более поздних версий
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="when-to-use-weblistener"></a>Когда следует использовать WebListener
 
@@ -86,7 +86,7 @@ WebListener при также хорошо подходит для развер�
 
 * Настройка URL-адреса и порты прослушивания 
 
-  По умолчанию ASP.NET Core привязывается к `http://localhost:5000`. Чтобы настроить префиксы URL-адреса и порты, можно использовать `UseURLs` метод расширения `urls` аргумент командной строки или система конфигурации ASP.NET Core. Дополнительные сведения см. в разделе [размещения](../../fundamentals/hosting.md).
+  По умолчанию ASP.NET Core привязывается к `http://localhost:5000`. Чтобы настроить префиксы URL-адреса и порты, можно использовать `UseURLs` метод расширения `urls` аргумент командной строки или система конфигурации ASP.NET Core. Дополнительные сведения см. в разделе [Размещение](../../fundamentals/hosting.md).
 
   Веб-прослушиватель использует [Http.Sys префикс строковые форматы](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx). Требования к формат строки префикса, относящиеся к WebListener отсутствуют.
 
@@ -157,7 +157,7 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={000000
 
 Подробные инструкции для нескольких сценариев на следующих ресурсах. Статьи, которые ссылаются на `HttpListener` применяются как к `WebListener`, как они строятся на Http.Sys.
 
-* [Как: Настройка порта с SSL-сертификата](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
+* [Практическое руководство. Настройка порта с использованием SSL-сертификата](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
 * [Подключения по протоколу HTTPS - HttpListener и на основе размещения сертификацию клиента](http://sunshaking.blogspot.com/2012/11/https-communication-httplistener-based.html) это является блог сторонних разработчиков и довольно старый, но по-прежнему содержит полезные сведения.
 * [Практическое руководство: Пошаговое руководство с помощью HttpListener или HTTP-сервере неуправляемого типов кода (C++) как простой сервера SSL](https://blogs.msdn.microsoft.com/jpsanders/2009/09/29/how-to-walkthrough-using-httplistener-or-http-server-unmanaged-code-c-as-an-ssl-simple-server/) это тоже старые блог полезные сведения.
 * [Как настроить WebListener Core .NET с помощью протокола SSL?](https://blogs.msdn.microsoft.com/timomta/2016/11/04/how-do-i-set-up-a-net-core-weblistener-with-ssl/)

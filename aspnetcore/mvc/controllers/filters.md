@@ -11,11 +11,11 @@ ms.assetid: 531bda08-aa5b-4471-8f08-96add22c8683
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/filters
-ms.openlocfilehash: 215d165d0029bbf38ef37cdde57b80a15bff9ef9
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 0a2a374ac77b9fd7c626aa6749cffbd3fb0f08d5
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="filters"></a>Фильтры
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 09/22/2017
 
 Платформа включает встроенные фильтры на основе атрибутов, можно создать подкласс и настройки. Например следующий результат фильтр добавляет заголовок ответа.
 
-<a name=add-header-attribute></a>
+<a name="add-header-attribute"></a>
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderAttribute.cs?highlight=5,16)]
 
@@ -167,7 +167,7 @@ ms.lasthandoff: 09/22/2017
 
 Краткой записи конвейера фильтра в любой момент, задав `Result` свойство `context` указанный параметр в метод фильтра. Для экземпляра следующий фильтр ресурсов предотвращает выполнение оставшуюся часть конвейера.
 
-<a name=short-circuiting-resource-filter></a>
+<a name="short-circuiting-resource-filter"></a>
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?highlight=12,13,14,15)]
 
@@ -188,7 +188,7 @@ ms.lasthandoff: 09/22/2017
 * `IFilterFactory`реализован в атрибуте
 
 > [!NOTE]
-> Одну зависимость, можно получить из DI — средство ведения журнала. Однако следует избегать создания и использования фильтров исключительно в целях ведения журнала, поскольку [ведение журналов встроенная функция](../../fundamentals/logging.md) уже всеми необходимыми. Если вы собираетесь добавить фильтры ведения журнала, следует обращать внимание на домен в бизнесе или поведение, характерное для фильтра, вместо действия MVC или другие события framework.
+> Одну зависимость, можно получить из DI — средство ведения журнала. Однако следует избегать создания и использования фильтров исключительно в целях ведения журнала, поскольку [ведение журналов встроенная функция](xref:fundamentals/logging/index) уже всеми необходимыми. Если вы собираетесь добавить фильтры ведения журнала, следует обращать внимание на домен в бизнесе или поведение, характерное для фильтра, вместо действия MVC или другие события framework.
 
 ### <a name="servicefilterattribute"></a>ServiceFilterAttribute
 

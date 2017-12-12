@@ -1,8 +1,8 @@
 ---
-title: "Вступление"
+title: "Общие сведения об авторизации"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "Этот документ содержит общее объяснение авторизации и объясняется, как авторизации относится к ASP.NET Core."
+keywords: "ASP.NET Core, авторизации"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: a6a556ed-ba59-4107-9358-44cf20e5931b
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/introduction
-ms.openlocfilehash: 040525505a982fc1be1901effb9186a8fe1cdbdf
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 192cc494c2378f77207a4b1c17b0b0a73ca642ed
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="introduction"></a>Вступление
 
-<a name=security-authorization-introduction></a>
+<a name="security-authorization-introduction"></a>
 
 Авторизация — это процесс, определяющее, какое может выполнять пользователь. Например пользователь с правами администратора может создать библиотеку документов, добавьте документы, редактирования документов и их удаления. Пользователь без прав администратора работы с библиотекой только авторизованные читать документы.
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="authorization-types"></a>Типы проверки подлинности
 
-Авторизации ASP.NET Core предоставляет декларативный простой [роли](roles.md#security-authorization-role-based) и [широкие возможности на основе политики](policies.md#security-authorization-policies-based) модели. Авторизации представляется в формате требований и обработчики оценки утверждения пользователя соответствие требованиям. В простых политик или политик, что оценка удостоверение пользователя и свойства ресурса, который пользователь пытается получить доступ к может основываться принудительных проверок.
+Авторизации ASP.NET Core предоставляет декларативный простой [роли](roles.md) и [широкие возможности на основе политики](policies.md) модели. Авторизации представляется в формате требований и обработчики оценки утверждения пользователя соответствие требованиям. В простых политик или политик, что оценка удостоверение пользователя и свойства ресурса, который пользователь пытается получить доступ к может основываться принудительных проверок.
 
 ## <a name="namespaces"></a>Пространства имен
 

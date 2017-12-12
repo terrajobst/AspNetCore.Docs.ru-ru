@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
 ms.openlocfilehash: da5b7b3bf1aa01ee22edf9bd003d8f79a00a5d0b
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Кэшировать вспомогательный тег в ядре ASP.NET MVC
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 09/28/2017
 
 | Тип атрибута    | Пример значения     |
 |----------------   |----------------   |
-| TimeSpan    | " @TimeSpan.FromSeconds (120)"    |
+| TimeSpan    | "@TimeSpan.FromSeconds(120)"    |
 
 
 Задает интервал времени с момента первого запроса для кэширования содержимого. 
@@ -103,7 +103,7 @@ ms.lasthandoff: 09/28/2017
 
 | Тип атрибута    | Пример значения     |
 |----------------   |----------------   |
-| TimeSpan    | " @TimeSpan.FromSeconds (60)"     |
+| TimeSpan    | "@TimeSpan.FromSeconds(60)"     |
 
 
 Задает время, следует удалить запись кэша, если оно не было обращений.
@@ -229,7 +229,7 @@ routes.MapRoute(
 
 | Тип атрибута    | Примеры значений                |
 |----------------   |----------------               |
-| Строка             | " @Model "                 |
+| Строка             | "@Model"                 |
 
 
 Позволяет настраивать Возвращает кэшированные данные. При обновлении объект, упоминаемый в строковое значение атрибута изменяется, содержимое тега вспомогательный объект кэша. Часто объединение строк значений модели назначаются данному атрибуту.  По сути, это означает, что делает кэш недействительным обновления к любому из объединенных значений.

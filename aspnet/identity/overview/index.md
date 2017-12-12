@@ -1,0 +1,43 @@
+---
+uid: identity/overview/index
+title: "Общие сведения об ASP.NET Identity | Документы Microsoft"
+author: rick-anderson
+description: 
+ms.author: aspnetcontent
+manager: wpickett
+ms.date: 10/02/2013
+ms.topic: article
+ms.assetid: d3972a0e-9ff6-4de1-bf4d-c94943cab048
+ms.technology: 
+ms.prod: .net-framework
+msc.legacyurl: /identity/overview
+msc.type: book
+ms.openlocfilehash: deea9b9172f7da0483a31617b1f1c0d3e9fc2e21
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 11/10/2017
+---
+<a name="aspnet-identity-overview"></a>Общие сведения об удостоверении ASP.NET
+====================
+- [Приступая к работе с ASP.NET Identity](getting-started/index.md)
+
+    - [Введение в ASP.NET Identity](getting-started/introduction-to-aspnet-identity.md)
+    - [ASP.NET Identity, рекомендуется использовать ресурсы](getting-started/aspnet-identity-recommended-resources.md)
+    - [Добавление ASP.NET Identity пустой или существующий веб-форм проекта](getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project.md)
+    - [Разработка приложений ASP.NET с Azure Active Directory](getting-started/developing-aspnet-apps-with-windows-azure-active-directory.md)
+    - [ASP.NET Identity: С помощью MySQL хранилища с поставщиком EntityFramework MySQL (C#)](getting-started/aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider.md)
+- [Функции и API](features-api/index.md)
+
+    - [Рекомендации по развертыванию пароли и другие конфиденциальные данные в ASP.NET и службы приложений Azure](features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md)
+    - [Подтверждение учетной записи и пароль восстановления в ASP.NET Identity (C#)](features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md)
+    - [Двухфакторная проверка подлинности с помощью SMS и электронной почты с ASP.NET Identity](features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md)
+- [Расширяемость](extensibility/index.md)
+
+    - [Обзор поставщиков пользовательского хранилища для ASP.NET Identity](extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md)
+    - [Реализация поставщика хранилища ASP.NET Identity пользовательских MySQL](extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider.md)
+    - [Изменение первичного ключа для пользователей в ASP.NET Identity](extensibility/change-primary-key-for-users-in-aspnet-identity.md)
+- [Миграции](migrations/index.md)
+
+    - [Миграция существующего веб-сайта из SQL членства в ASP.NET Identity](migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)
+    - [Перенос данных универсальной поставщик членства и профили пользователей для ASP.NET Identity (C#)](migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity.md)

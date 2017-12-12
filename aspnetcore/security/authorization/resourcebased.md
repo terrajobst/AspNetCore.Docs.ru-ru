@@ -1,45 +1,52 @@
 ---
-title: "Авторизация на основе ресурсов"
-author: rick-anderson
-description: 
-keywords: ASP.NET Core,
-ms.author: riande
+title: "Авторизация на основе ресурсов в ASP.NET Core"
+author: scottaddie
+description: "Дополнительные сведения о реализации авторизации на основе ресурсов в приложении ASP.NET Core время авторизовать атрибута не будет достаточно."
 manager: wpickett
-ms.date: 10/14/2016
-ms.topic: article
-ms.assetid: 0902ba17-5304-4a12-a2d4-e0904569e988
-ms.technology: aspnet
+ms.author: scaddie
+ms.custom: mvc
+ms.date: 11/07/2017
+ms.devlang: csharp
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 7f7df52bf51a81558818836450997281a21b5839
-ms.sourcegitcommit: f303a457644ed034a49aa89edecb4e79d9028cb1
+ms.openlocfilehash: 708f306da740870b106cbeeb96879480f8745439
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="resource-based-authorization"></a>Авторизация на основе ресурсов
 
-<a name=security-authorization-resource-based></a>
+Автор: [Скотт Адди](https://twitter.com/Scott_Addie) (Scott Addie)
 
-Часто авторизации зависит от ресурса к которому выполняется доступ. Например документ может иметь свойство автора. Для обновления, поэтому необходимо загрузить ресурс из репозитория документа перед предоставлением авторизации оценку допускается только автор документа. Это невозможно выполнить с атрибутом авторизовать как атрибут вычисление выполняется перед привязкой данных и перед запуском кода загрузки ресурса в действие. Вместо декларативного авторизации, атрибутов метода, необходимо использовать принудительной авторизации, где разработчик вызывает функцию авторизации в свой собственный код.
+Зависит от стратегии авторизации доступ к ресурсу. Рассмотрим документ, который имеет свойство автора. Только автор может обновлять документа. Следовательно документа должны извлекаться из хранилища данных для оценки авторизации.
 
-## <a name="authorizing-within-your-code"></a>Авторизация в коде
+Атрибут оценки происходит перед привязкой данных и до выполнения действия, который загружает документ или обработчику страницы. По этим причинам декларативный авторизации с помощью `[Authorize]` атрибута не будет достаточно. Вместо этого можно вызвать метод настраиваемой авторизации&mdash;стиля называется принудительной авторизации.
 
-Авторизации реализован в виде службы, `IAuthorizationService`, зарегистрированных в службе коллекции и доступны через [внедрения зависимостей](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection) для контроллеров для доступа к.
+Используйте [образец приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples) ([загрузке](xref:tutorials/index#how-to-download-a-sample)) для изучения функций, описанных в этом разделе.
+
+## <a name="use-imperative-authorization"></a>Использование принудительной авторизации
+
+Авторизация реализуется в виде [IAuthorizationService](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationservice) службы и регистрируется в службе коллекции в течение `Startup` класса. Службы доступны через [внедрения зависимостей](xref:fundamentals/dependency-injection#fundamentals-dependency-injection) обработчики страницы или действий.
+
+[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Controllers/DocumentController.cs?name=snippet_IAuthServiceDI&highlight=6)]
+
+`IAuthorizationService`имеет два `AuthorizeAsync` перегруженных версий метода: один прием, ресурс и имя политики, а другой принимает ресурс и список требований для оценки.
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
-public class DocumentController : Controller
-{
-    IAuthorizationService _authorizationService;
-
-    public DocumentController(IAuthorizationService authorizationService)
-    {
-        _authorizationService = authorizationService;
-    }
-}
+Task<AuthorizationResult> AuthorizeAsync(ClaimsPrincipal user,
+                          object resource,
+                          IEnumerable<IAuthorizationRequirement> requirements);
+Task<AuthorizationResult> AuthorizeAsync(ClaimsPrincipal user,
+                          object resource,
+                          string policyName);
 ```
 
-`IAuthorizationService`поддерживает два метода, один где передается ресурса и имя политики и другие где передается ресурса и список требований для оценки.
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
 Task<bool> AuthorizeAsync(ClaimsPrincipal user,
@@ -50,104 +57,78 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
                           string policyName);
 ```
 
-<a name=security-authorization-resource-based-imperative></a>
+---
 
-Для вызова службы, загрузить ресурс в пределах действия затем вызвать `AuthorizeAsync` требуется перегрузки. Пример:
+<a name="security-authorization-resource-based-imperative"></a>
 
-```csharp
-public async Task<IActionResult> Edit(Guid documentId)
-{
-    Document document = documentRepository.Find(documentId);
+В следующем примере загружается ресурса с защитой в пользовательской `Document` объекта. `AuthorizeAsync` Перегрузка вызывается для определения, разрешен ли текущий пользователь для изменения указанного документа. Пользовательскую политику авторизации «EditPolicy» добавляется в решение. В разделе [авторизации на основе политики настраиваемый](xref:security/authorization/policies) для получения дополнительных сведений о создании политик авторизации.
 
-    if (document == null)
-    {
-        return new HttpNotFoundResult();
-    }
+> [!NOTE]
+> Следующий код, образцы предполагается выполнения проверки подлинности и набор `User` свойство.
 
-    if (await _authorizationService.AuthorizeAsync(User, document, "EditPolicy"))
-    {
-        return View(document);
-    }
-    else
-    {
-        return new ChallengeResult();
-    }
-}
-```
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-## <a name="writing-a-resource-based-handler"></a>Написание обработчика на основе ресурсов
+[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Pages/Document/Edit.cshtml.cs?name=snippet_DocumentEditHandler)]
 
-Написание обработчика для авторизации на основе ресурсов, это не слишком отличается для [написание обработчика plain требования](policies.md#security-authorization-policies-based-authorization-handler). Создать требование и затем Реализуйте обработчик требование, указав требование как до, а также от типа ресурса. Например обработчик, который может принимать ресурса документа будет выглядеть следующим образом:
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-```csharp
-public class DocumentAuthorizationHandler : AuthorizationHandler<MyRequirement, Document>
-{
-    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
-                                                MyRequirement requirement,
-                                                Document resource)
-    {
-        // Validate the requirement against the resource and identity.
+[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentEditAction)]
 
-        return Task.CompletedTask;
-    }
-}
-```
+---
 
-Не забывайте также должен Зарегистрируйте обработчик в `ConfigureServices` метод:
+## <a name="write-a-resource-based-handler"></a>Написание обработчика, основанное на ресурсах
 
-```csharp
-services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationHandler>();
-```
+Написание обработчика для авторизации на основе ресурсов не сильно отличается от [написание обработчика plain требования](xref:security/authorization/policies#security-authorization-policies-based-authorization-handler). Создание класса пользовательского требования и реализовать класс обработчика требование. Класс обработчика указывает требований и тип ресурса. Например, обработчик использование `SameAuthorRequirement` требование и `Document` ресурсов выглядит следующим образом:
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
+
+---
+
+Регистрация требование и обработчик в `Startup.ConfigureServices` метод:
+
+[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Startup.cs?name=snippet_ConfigureServicesSample&highlight=3-7,9)]
 
 ### <a name="operational-requirements"></a>Операционные требования
 
-При принятии решений на основе операций, таких как чтение, запись, обновление и удаление, можно использовать `OperationAuthorizationRequirement` класса в `Microsoft.AspNetCore.Authorization.Infrastructure` пространства имен. Этот класс требования готовых позволяет написать один обработчик с именем параметризованные операции, а не создавать отдельные классы для каждой операции. Чтобы использовать его, предоставляют некоторые имена операции:
+Если вы вносите решений, основанных на результаты CRUD (**C**оздать, **R**честь, **U**бновить, **D**далить) операции, используют [OperationAuthorizationRequirement](/dotnet/api/microsoft.aspnetcore.authorization.infrastructure.operationauthorizationrequirement) вспомогательного класса. Этот класс позволяет создавать один обработчик вместо отдельный класс для каждого типа операции. Чтобы использовать его, предоставляют некоторые имена операции:
 
-```csharp
-public static class Operations
-{
-    public static OperationAuthorizationRequirement Create =
-        new OperationAuthorizationRequirement { Name = "Create" };
-    public static OperationAuthorizationRequirement Read =
-        new OperationAuthorizationRequirement   { Name = "Read" };
-    public static OperationAuthorizationRequirement Update =
-        new OperationAuthorizationRequirement { Name = "Update" };
-    public static OperationAuthorizationRequirement Delete =
-        new OperationAuthorizationRequirement { Name = "Delete" };
-}
-```
+[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_OperationsClass)]
 
-Ваш обработчик может затем быть реализован следующим образом с использованием гипотетической `Document` класса в качестве ресурса:
+Обработчик реализуется следующим образом, с помощью `OperationAuthorizationRequirement` требование и `Document` ресурсов:
 
-```csharp
-public class DocumentAuthorizationHandler :
-    AuthorizationHandler<OperationAuthorizationRequirement, Document>
-{
-    public override Task HandleRequirementAsync(AuthorizationHandlerContext context,
-                                                OperationAuthorizationRequirement requirement,
-                                                Document resource)
-    {
-        // Validate the operation using the resource, the identity and
-        // the Name property value from the requirement.
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-        return Task.CompletedTask;
-    }
-}
-```
+[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
 
-Вы увидите работает обработчик `OperationAuthorizationRequirement`. Код в обработчике необходимо выполнить свойства имени указанного требования в учетную запись, при создании его оценки.
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Для вызова обработчика оперативной ресурсов, необходимо указать операцию, при вызове `AuthorizeAsync` в действии. Пример:
+[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
 
-```csharp
-if (await _authorizationService.AuthorizeAsync(User, document, Operations.Read))
-{
-    return View(document);
-}
-else
-{
-    return new ChallengeResult();
-}
-```
+---
 
-В этом примере проверяется, является ли пользователь может выполнять операции чтения для текущего `document` экземпляра. После успешного авторизации будет возвращаться представления документа. Если завершается неудачно авторизации, возвращая `ChallengeResult` сообщит проверку подлинности произошел сбой авторизации по промежуточного слоя и по промежуточного слоя может принимать соответствующий ответ, например возвращая код состояния 401 или 403 или перенаправления пользователя на страницу входа для Интерактивный обозревателя клиента.
+Предыдущий обработчик проверяет операцию с использованием ресурсов, удостоверение пользователя и требование `Name` свойство.
+
+Для вызова обработчика оперативной ресурсов, указать операцию при вызове `AuthorizeAsync` в обработчику страницы или действия. В следующем примере определяется, разрешено ли авторизованного пользователя для просмотра указанного документа.
+
+> [!NOTE]
+> Следующий код, образцы предполагается выполнения проверки подлинности и набор `User` свойство.
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Pages/Document/View.cshtml.cs?name=snippet_DocumentViewHandler&highlight=10-11)]
+
+Если авторизации завершается успешно, возвращается страницы для просмотра документа. Если происходит сбой авторизации, но пользователь прошел проверку подлинности, возвращая `ForbidResult` сообщает все по промежуточного слоя проверки подлинности, которое не удалось выполнить авторизацию. Значение `ChallengeResult` возвращается, если необходимо выполнить проверку подлинности. Для интерактивного обозревателя клиента он может подойти перенаправлять пользователя на страницу входа.
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+[!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentViewAction&highlight=11-12)]
+
+Если авторизации завершается успешно, возвращается представление для документа. В случае непрохождения авторизации возвращение `ChallengeResult` информирует любое по промежуточного слоя проверки подлинности, не удалось выполнить авторизацию, что по промежуточного слоя может принимать соответствующий ответ. Соответствующий ответ может вернул код состояния 401 или 403. Для интерактивного обозревателя клиента это может означать перенаправления пользователя на страницу входа.
+
+---

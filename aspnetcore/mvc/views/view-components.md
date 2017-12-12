@@ -11,17 +11,17 @@ ms.assetid: ab4705b7-59d7-4f31-bc97-ea7f292fe926
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/view-components
-ms.openlocfilehash: 3bc6d3f85d8ea7fb9b72b18cfd9c5ec2d07293b0
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 2cf82df78c250cdfdd808d49acfc06dc2ea82f5f
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="view-components"></a>Просмотр компонентов
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="introducing-view-components"></a>Знакомство с приложением Просмотр компонентов
 
@@ -89,23 +89,23 @@ ms.lasthandoff: 10/01/2017
 
 Чтобы использовать компонент представления, следует вызвать следующий внутри представления:
 
-```html
+```cshtml
 @Component.InvokeAsync("Name of view component", <anonymous type containing parameters>)
 ```
 
 Параметры передаются `InvokeAsync` метод. `PriorityList` Из вызывается компонент представления, разработанные в статье *Views/Todo/Index.cshtml* файл представления. В следующих `InvokeAsync` метод вызывается с двумя параметрами:
 
-[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml?range=35)]
+[!code-cshtml[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml?range=35)]
 
 ## <a name="invoking-a-view-component-as-a-tag-helper"></a>Вызов компонента представления как вспомогательный тега
 
 Для ASP.NET Core 1.1 и более поздних версиях можно вызвать компонент представления как [вспомогательный тег](xref:mvc/views/tag-helpers/intro):
 
-[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexTagHelper.cshtml?range=37-38)]
+[!code-cshtml[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexTagHelper.cshtml?range=37-38)]
 
 Преобразуется в стиле Pascal класса и метода параметры для вспомогательных функций тегов их [нижний регистр kebab](https://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101). Вспомогательный объект тег для вызова компонента представление использует `<vc></vc>` элемента. Представления компонента указывается следующим образом:
 
-```html
+```cshtml
 <vc:[view-component-name]
   parameter1="parameter1 value"
   parameter2="parameter2 value">
@@ -114,7 +114,7 @@ ms.lasthandoff: 10/01/2017
 
 Примечание: Для использования в качестве тега вспомогательный компонент представления, необходимо зарегистрировать сборку, содержащую компонент представления с помощью `@addTagHelper` директивы. Например, если представление компонент находится в сборке с именем «MyWebApp», добавьте следующую директиву для `_ViewImports.cshtml` файла:
 
-```csharp
+```cshtml
 @addTagHelper *, MyWebApp
 ```
 
@@ -122,11 +122,11 @@ ms.lasthandoff: 10/01/2017
 
 `InvokeAsync` Метод, используемый в этом учебнике:
 
-[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml?range=35)]
+[!code-cshtml[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml?range=35)]
 
 В разметке вспомогательный тег:
 
-[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexTagHelper.cshtml?range=37-38)]
+[!code-cshtml[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexTagHelper.cshtml?range=37-38)]
 
 В примере выше `PriorityList` становится компонент представления `priority-list`. Параметры в компонент представления, передаются как атрибуты в нижний регистр kebab.
 
@@ -172,7 +172,7 @@ ms.lasthandoff: 10/01/2017
 
 * Создание *представления/общие/компоненты или PriorityList* папки. Этот имя папки должно соответствовать имени класса представления компонента или имя класса, за вычетом суффикс (если мы следовали правилам и использовать *ViewComponent* суффикса в имени класса). Если вы использовали `ViewComponent` атрибут, имя класса пришлось бы соответствует обозначение атрибута.
 
-* Создание *Views/Shared/Components/PriorityList/Default.cshtml* представления Razor:[!code-html[Main](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
+* Создание *Views/Shared/Components/PriorityList/Default.cshtml* представления Razor:[!code-cshtml[Main](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
     
    Представления Razor принимает список `TodoItem` и отображает их. Если компонент представления `InvokeAsync` метод не передает имя представления (как в нашем примере) *по умолчанию* используется для имени представления по соглашению. Далее в этом учебнике я покажу, как передать имя представления. Чтобы переопределить стили по умолчанию для определенного контроллера, добавления представления к папке контроллера представления (например *Views/Todo/Components/PriorityList/Default.cshtml)*.
     
@@ -180,7 +180,7 @@ ms.lasthandoff: 10/01/2017
 
 * Добавить `div` содержащем вызов компонент списка приоритет в нижнюю часть *Views/Todo/index.cshtml* файла:
 
-    [!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFirst.cshtml?range=34-38)]
+    [!code-cshtml[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFirst.cshtml?range=34-38)]
 
 Разметка `@await Component.InvokeAsync` показан синтаксис для вызова компонентов представления. Первым аргументом является имя компонента, который нужно вызвать или вызова. Последующие аргументы передаются в компонент. `InvokeAsync`может занять произвольное число аргументов.
 
@@ -202,13 +202,13 @@ ms.lasthandoff: 10/01/2017
 
 Копировать *Views/Shared/Components/PriorityList/Default.cshtml* файл, чтобы представление с именем *Views/Shared/Components/PriorityList/PVC.cshtml*. Добавьте заголовок, чтобы указать, что представление PVC используется.
 
-[!code-html[Main](../../mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml?highlight=3)]
+[!code-cshtml[Main](../../mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml?highlight=3)]
 
 Обновление *Views/TodoList/Index.cshtml*:
 
 <!-- Views/TodoList/Index.cshtml is never imported, so change to test tutorial -->
 
-[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml?range=35)]
+[!code-cshtml[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml?range=35)]
 
 Запустите приложение и проверить PVC представление.
 
@@ -244,7 +244,7 @@ ms.lasthandoff: 10/01/2017
 
 Добавить `using` инструкцию, чтобы ваш Razor просмотра файла, а `nameof` оператор:
 
-[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml?range=1-6,33-)]
+[!code-cshtml[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml?range=1-6,33-)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

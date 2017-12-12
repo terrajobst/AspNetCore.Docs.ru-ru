@@ -7,22 +7,21 @@ ms.author: riande
 manager: wpickett
 ms.date: 02/28/2017
 ms.topic: article
-ms.assetid: 4095d273-bf3f-46cf-bdcc-18cf6815cbad
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-gulp
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2a2971a46d9d45a8fda5ac56073af608a0ede2b
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 68f6838889cfb830f2c5a1976b3140ae5d94ac25
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="introduction-to-using-gulp-in-aspnet-core"></a>Общие сведения об использовании Gulp в ASP.NET Core 
 
 По [Reitan Эрик](https://github.com/Erikre), [Scott Addie](https://scottaddie.com), [рот Daniel](https://github.com/danroth27), и [Бойера Shayne](https://twitter.com/spboyer)
 
-Типичные современных веб-приложения процесс построения может:
+В обычной современных веб-приложения процесс построения может:
 
 * Объединение и уменьшения файлы JavaScript и CSS.
 * Запуск средств для вызова объединение и Минификация задачи перед каждой сборкой.
@@ -31,7 +30,7 @@ ms.lasthandoff: 09/22/2017
 
 Объект *средство запуска задач* — это средство, автоматизирующее этих задач процедуры разработки и многое другое. Visual Studio предоставляет встроенную поддержку для средства запуска два распространенных задач на основе JavaScript: [Gulp](https://gulpjs.com/) и [Grunt](using-grunt.md).
 
-## <a name="gulp"></a>Gulp
+## <a name="gulp"></a>gulp
 
 Gulp — это на базе JavaScript потоковой передачи построения набор средств для клиентского кода. Обычно он используется для потоковой передачи клиентские файлы через ряд процессов при активации определенного события в среде построения. Например, Gulp можно использовать для автоматизации [объединение и Минификация](bundling-and-minification.md) или очистки среде разработки до новой сборки.
 

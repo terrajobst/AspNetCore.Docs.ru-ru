@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/webapi
 ms.openlocfilehash: 4acb7ccf7f944df5d08ac7faa342f0c72cf9d1a7
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="migrating-from-aspnet-web-api"></a>Миграция из веб-API ASP.NET
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 10/01/2017
 
 Веб-API — это службы HTTP, которые широкого диапазона клиентов, включая браузеры и мобильные устройства. Основные ASP.NET MVC включает поддержку для создания веб-API, обеспечивая единый, согласованный способ создания веб-приложений. В этой статье мы демонстрируются шаги, необходимые для миграции реализация веб-API из веб-API ASP.NET ASP.NET Core MVC.
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/webapi/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/webapi/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="review-aspnet-web-api-project"></a>Просмотр ASP.NET Web API проекта
 

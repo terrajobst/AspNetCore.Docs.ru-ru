@@ -1,99 +1,104 @@
 ---
 title: "Справочник по синтаксису Razor для ASP.NET Core"
 author: rick-anderson
-description: "Подробное описание синтаксиса Razor"
-keywords: ASP.NET Core, Razor
+description: "Дополнительные сведения о синтаксиса Razor разметки для внедрения серверного кода в веб-страниц."
+keywords: "Директивы Razor ASP.NET Core, Razor,"
 ms.author: riande
 manager: wpickett
-ms.date: 07/04/2017
+ms.date: 10/18/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: 0e65f0e9f672f9f93256ebc039ea0db2e4ef5ae0
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: e3c3149254d602db1fcc6d42360690be026189a5
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="razor-syntax-for-aspnet-core"></a>Синтаксис Razor ASP.NET Core
 
-По [Taylor Mullen](https://twitter.com/ntaylormullen) и [Рик Андерсон](https://twitter.com/RickAndMSFT)
+По [Рик Андерсон](https://twitter.com/RickAndMSFT), [Latham Люк](https://github.com/guardrex), [Taylor Mullen](https://twitter.com/ntaylormullen), и [Dan Vicarel](https://github.com/Rabadash8820)
 
-## <a name="what-is-razor"></a>Что такое Razor
-
-Razor является синтаксис разметки для внедрения серверного кода в веб-страницы. Синтаксис Razor состоит из разметки Razor, C# и HTML. Файлы, содержащие Razor, обычно имеют *.cshtml* расширение имени файла.
+Razor является синтаксис разметки для внедрения серверного кода в веб-страниц. Синтаксис Razor содержит Razor разметки, C# и HTML. Файлы, содержащие Razor, обычно имеют *.cshtml* расширение имени файла.
 
 ## <a name="rendering-html"></a>Подготовка к просмотру HTML
 
-Язык по умолчанию Razor — HTML. Подготовка к просмотру HTML из Razor не отличается от HTML-файла. Файл Razor с следующую разметку:
-
-```html
-<p>Hello World</p>
-```
-
-Подготавливается к просмотру без изменений `<p>Hello World</p>` сервером.
+Язык по умолчанию Razor — HTML. Подготовки отчетов HTML из разметки Razor ничем не отличается от визуализации HTML из HTML-файл.  HTML-разметку в *.cshtml* файлах Razor визуализируется с сервера без изменений.
 
 ## <a name="razor-syntax"></a>Синтаксис Razor
 
-Razor поддерживает C# и использует `@` символ переход из HTML для C#. Razor вычисляет выражения C# и отображает их в выходных данных HTML. Razor может выполнять переход с HTML на C# или на разметку Razor. Когда `@` следуют символ [Razor зарезервированное ключевое слово](#razor-reserved-keywords) он переходит в разметку Razor, в противном случае он переходит в обычный C#.
+Razor поддерживает C# и использует `@` символ переход из HTML для C#. Razor вычисляет выражения C# и отображает их в выходных данных HTML.
 
-<a name=escape-at-label></a>
+Когда `@` следуют символ [Razor зарезервированное ключевое слово](#razor-reserved-keywords), он переходит в Razor разметку. В противном случае он переходит в обычный C#.
 
-Содержащий HTML `@` символы необходимо экранировать со вторым `@` символов. Пример:
+Чтобы escape `@` символ в разметке Razor, использовать второй `@` символа:
 
 ```cshtml
 <p>@@Username</p>
 ```
 
-будет отображен следующий код HTML:
+Код отображается в формате HTML с помощью одного `@` символа:
 
-```cshtml
+```html
 <p>@Username</p>
 ```
 
-<a name=razor-email-ref></a>
+HTML-атрибутов и содержимого, содержащий адреса электронной почты не обрабатывают `@` символ как символ перехода. В следующем примере адреса электронной почты не изменятся путем синтаксического анализа Razor:
 
-HTML-атрибутов и содержимого, содержащий адреса электронной почты не обрабатывают `@` символ как символ перехода.
-
-   `<a href="mailto:Support@contoso.com">Support@contoso.com</a>`
+```cshtml
+<a href="mailto:Support@contoso.com">Support@contoso.com</a>
+```
 
 ## <a name="implicit-razor-expressions"></a>Неявные выражения Razor
 
-Неявные Razor выражения начинаются со `@` вместе с кодом C#. Пример:
+Неявные Razor выражения начинаются со `@` вместе с кодом C#:
 
-```html
+```cshtml
 <p>@DateTime.Now</p>
 <p>@DateTime.IsLeapYear(2016)</p>
 ```
 
-За исключением C# `await` неявные выражения ключевое слово не должно содержать пробелов. Например можно intermingle пробелы при условии, что оператор C# имеет очистить окончания:
+За исключением C# `await` ключевое слово, неявные выражения не должно содержать пробелов. Если оператор C# есть очистить окончания, можно их объединения пространств:
 
-```html
+```cshtml
 <p>@await DoSomething("hello", "world")</p>
 ```
 
+Неявные выражения **не** содержать универсальные шаблоны C#, как символы в квадратных скобках (`<>`) интерпретируются как HTML-тега. Следующий код является **не** допустимым:
+
+```cshtml
+<p>@GenericMethod<int>()</p>
+```
+
+Предыдущий код вызывает ошибку компилятора, примерно следующего вида:
+
+ * Элемент «int» не была закрыта.  Все элементы должны быть либо самостоятельно закрыть или имеет соответствующего закрывающего тега.
+ *  Не удается преобразовать группу методов «GenericMethod», чтобы, не являющийся делегатом типа «объект». Предполагается ли вызывать этот метод? " 
+ 
+Универсальный метод вызывает должны быть заключены в [явное выражение Razor](#explicit-razor-expressions) или [блок кода Razor](#razor-code-blocks). Это ограничение не применяется к *.vbhtml* файлы Razor, поскольку синтаксис Visual Basic помещает параметры универсального типа, вместо квадратных в круглые скобки.
+
 ## <a name="explicit-razor-expressions"></a>Прямые выражения Razor
 
-Прямые Razor выражения состоит из символа с балансировкой скобки @. Например, для подготовки к просмотру время прошлой недели:
+Явные Razor выражения состоят из `@` символ со сбалансированной скобками. Для подготовки к просмотру время прошлой неделе, используется следующая разметка Razor:
 
-```html
+```cshtml
 <p>Last week this time: @(DateTime.Now - TimeSpan.FromDays(7))</p>
 ```
 
-Любое содержимое в @ круглая скобка () вычисляется и отображается в выходных данных.
+Любое содержимое в `@()` скобки вычисляется и отображается в выходных данных.
 
-Неявные выражения обычно не могут содержать пробелы. Например в следующем коде одну неделю не вычитается из текущего времени:
+Неявные выражения, описанные в предыдущем разделе, обычно не может содержать пробелы. В следующем коде одну неделю не вычитается из текущего времени:
 
-[!code-html[Main](razor/sample/Views/Home/Contact.cshtml?range=20)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact.cshtml?range=17)]
 
-Который отображает следующий код HTML:
+Код отображает следующий код HTML:
 
 ```html
 <p>Last week: 7/7/2016 4:39:52 PM - TimeSpan.FromDays(7)</p>
 ```
 
-Явное выражение можно использовать для объединения текста с результатом выражения:
+Явные выражения могут использоваться для объединения текста с результатом выражения:
 
 ```cshtml
 @{
@@ -103,70 +108,91 @@ HTML-атрибутов и содержимого, содержащий адре
 <p>Age@(joe.Age)</p>
 ```
 
-Без явного выражение `<p>Age@joe.Age</p>` будет рассматриваться как адрес электронной почты и `<p>Age@joe.Age</p>` будет проходить. Если они написаны как выражение явного `<p>Age33</p>` подготавливается к просмотру.
+Без явного выражение `<p>Age@joe.Age</p>` рассматривается как адрес электронной почты и `<p>Age@joe.Age</p>` подготавливается к просмотру. Если они написаны как выражение явного `<p>Age33</p>` подготавливается к просмотру.
 
-<a name=expression-encoding-label></a>
+
+Прямые выражения можно использовать для отображения выходных данных из универсальных методов в *.cshtml* файлов. В выражении неявное символов в квадратных скобках (`<>`) интерпретируются как HTML-тега. Следующая разметка является **не** допустимым Razor:
+
+```cshtml
+<p>@GenericMethod<int>()</p>
+```
+
+Предыдущий код вызывает ошибку компилятора, примерно следующего вида:
+
+ * Элемент «int» не была закрыта.  Все элементы должны быть либо самостоятельно закрыть или имеет соответствующего закрывающего тега.
+ *  Не удается преобразовать группу методов «GenericMethod», чтобы, не являющийся делегатом типа «объект». Предполагается ли вызывать этот метод? " 
+ 
+ В следующем примере показана запись правильно этот код.  Код записывается как явное выражение:
+
+```cshtml
+<p>@(GenericMethod<int>())</p>
+```
+
+Примечание: это ограничение не применяется к *.vbhtml* файлах Razor.  С *.vbhtml* круглые скобки вокруг параметров универсального типа, вместо квадратных помещает файлы Razor, синтаксис Visual Basic.
 
 ## <a name="expression-encoding"></a>Кодировка выражения
 
-Выражения C#, которые были оценены как строка, кодируется в HTML. Выражения C#, которые были оценены как `IHtmlContent` подготавливаются к просмотру непосредственно через *IHtmlContent.WriteTo*. Выражения C#, которые не дают *IHtmlContent* преобразуются в строку (с *ToString*) и кодируются перед подготовкой к просмотру. Например, приведенная ниже разметка Razor:
+Выражения C#, которые были оценены как строка, кодируется в HTML. Выражения C#, которые были оценены как `IHtmlContent` подготавливаются к просмотру непосредственно через `IHtmlContent.WriteTo`. Выражения C#, которые не дают `IHtmlContent` преобразуются в строки по `ToString` и закодированы, прежде чем они отображаются.
 
 ```cshtml
 @("<span>Hello World</span>")
 ```
 
-Элементы HTML:
+Код отображает следующий код HTML:
 
 ```html
 &lt;span&gt;Hello World&lt;/span&gt;
 ```
 
-Который браузера отображается в виде:
+HTML-код отображается в обозревателе, как:
 
-`<span>Hello World</span>`
+```
+<span>Hello World</span>
+```
 
-`HtmlHelper``Raw` выходные данные не закодированы, но к просмотру в виде HTML-разметка.
+`HtmlHelper.Raw`выходные данные не закодированы, однако к просмотру в виде HTML-разметка.
 
->[!WARNING]
-> С помощью `HtmlHelper.Raw` на unsanitized пользователя ввод представляет угрозу безопасности. Ввод данных пользователем может содержать вредоносный JavaScript или использовать. Сложно очистки данных ввод данных пользователем, не используйте `HtmlHelper.Raw` на ввод данных пользователем.
-
-Приведенная ниже разметка Razor:
+> [!WARNING]
+> С помощью `HtmlHelper.Raw` на unsanitized пользователя ввод представляет угрозу безопасности. Ввод данных пользователем может содержать вредоносный JavaScript или использовать. Ввод данных пользователем очистки данных сложно. Избегайте использования `HtmlHelper.Raw` с вводимыми пользователем данными.
 
 ```cshtml
 @Html.Raw("<span>Hello World</span>")
 ```
 
-Элементы HTML:
+Код отображает следующий код HTML:
 
 ```html
 <span>Hello World</span>
 ```
 
-<a name=razor-code-blocks-label></a>
-
 ## <a name="razor-code-blocks"></a>Блоки кода Razor
 
-Блоки кода Razor начинаться с `@` и заключены в `{}`. В отличие от выражения код внутри блоков кода C# не отображаются. Блоки кода и выражения в страницу Razor использующими ту же область и определены в порядке (то есть, объявления в блоке кода будет в области действия для блоков кода, более поздней версии, а также выражений).
+Блоки кода Razor начинаться с `@` и заключены в `{}`. В отличие от выражения код внутри блоков кода C# не отображаются. Блоки кода и выражения в представлении использующими ту же область и определены в порядке:
 
-```none
+```cshtml
 @{
-    var output = "Hello World";
+    var quote = "The future depends on what you do today. - Mahatma Gandhi";
 }
 
-<p>The rendered result: @output</p>
+<p>@quote</p>
+
+@{
+    quote = "Hate cannot drive out hate, only love can do that. - Martin Luther King, Jr.";
+}
+
+<p>@quote</p>
 ```
 
-Будет отображен:
+Код отображает следующий код HTML:
 
 ```html
-<p>The rendered result: Hello World</p>
+<p>The future depends on what you do today. - Mahatma Gandhi</p>
+<p>Hate cannot drive out hate, only love can do that. - Martin Luther King, Jr.</p>
 ```
-
-<a name=implicit-transitions-label></a>
 
 ### <a name="implicit-transitions"></a>Неявные переходов
 
-В блоке кода языка по умолчанию — C#, но вы можете переходить обратно в формат HTML. HTML в блоке кода перейдет обратно в визуализации HTML:
+В блоке кода языка по умолчанию — C#, но страница Razor может перейти обратно в HTML:
 
 ```cshtml
 @{
@@ -175,11 +201,9 @@ HTML-атрибутов и содержимого, содержащий адре
 }
 ```
 
-<a name=explicit-delimited-transition-label></a>
-
 ### <a name="explicit-delimited-transition"></a>Явные перехода с разделителями
 
-Чтобы определить часть блока кода, должны обрабатывать HTML, заключите символов к просмотру с Razor `<text>` тег:
+Чтобы определить подраздел блок кода, должны обрабатывать HTML, окружить символов для подготовки к просмотру Razor  **\<текст >** тег:
 
 ```cshtml
 @for (var i = 0; i < people.Length; i++)
@@ -189,11 +213,14 @@ HTML-атрибутов и содержимого, содержащий адре
 }
 ```
 
-Такой подход обычно используется для отрисовки HTML-код, не заключенных в HTML-тега. Без тега HTML или Razor возникает ошибка времени выполнения Razor.
+Этот способ используется для отрисовки HTML-код, не заключенных в HTML-тега. Без тега HTML или Razor возникает ошибка времени выполнения Razor.
 
-<a name=explicit-line-transition-with-label></a>
+ **\<Текст >** тег полезен для управления пробелов при подготовке к просмотру содержимого:
 
-### <a name="explicit-line-transition-with-"></a>Явные строки перехода с`@:`
+* Содержимое между  **\<текст >** визуализации тега. 
+* Без пробелов до или после  **\<текст >** тег появляется в выходных данных HTML.
+
+### <a name="explicit-line-transition-with-"></a>Явные строки перехода с @:
 
 Для подготовки к просмотру остальная часть всю строку как HTML внутри блока кода, используйте `@:` синтаксис:
 
@@ -205,22 +232,22 @@ HTML-атрибутов и содержимого, содержащий адре
 }
 ```
 
-Без `@:` в приведенном выше коде получаемому Razor, ошибка во время выполнения.
+Без `@:` в коде, формируется ошибка выполнения Razor.
 
-<a name=control-structures-razor-label></a>
+Предупреждение: Дополнительный `@` символы в файле Razor может привести к причина ошибки компилятора на инструкции ниже в блоке. Эти ошибки компилятора могут быть трудными для понимания, так как фактический ошибка возникает до указанной ошибки.  Эта ошибка проявляется после объединения нескольких явного или неявного выражения в один блок кода.
 
 ## <a name="control-structures"></a>Управляющие структуры
 
 Управляющие структуры являются расширением блоков кода. Все аспекты блоков кода (плавный переход к разметки встроенный C#) также применяются к следующим структурам.
 
-### <a name="conditionals-if-else-if-else-and-switch"></a>Условные выражения `@if`, `else if`, `else` и`@switch`
+### <a name="conditionals-if-else-if-else-and-switch"></a>Условные выражения @if, else if, else, и@switch
 
-`@if` Семейство элементов управления при запуске кода:
+`@if`элементы управления, при выполнении кода.
 
 ```cshtml
 @if (value % 2 == 0)
 {
-    <p>The value was even</p>
+    <p>The value was even.</p>
 }
 ```
 
@@ -229,7 +256,7 @@ HTML-атрибутов и содержимого, содержащий адре
 ```cshtml
 @if (value % 2 == 0)
 {
-    <p>The value was even</p>
+    <p>The value was even.</p>
 }
 else if (value >= 1337)
 {
@@ -237,11 +264,11 @@ else if (value >= 1337)
 }
 else
 {
-    <p>The value was not large and is odd.</p>
+    <p>The value is odd and small.</p>
 }
 ```
 
-Можно использовать инструкцию switch следующим образом:
+Приведенная ниже разметка показано, как использовать инструкцию switch:
 
 ```cshtml
 @switch (value)
@@ -253,26 +280,27 @@ else
         <p>Your number is 1337!</p>
         break;
     default:
-        <p>Your number was not 1 or 1337.</p>
+        <p>Your number wasn't 1 or 1337.</p>
         break;
 }
 ```
 
-### <a name="looping-for-foreach-while-and-do-while"></a>Циклы `@for`, `@foreach`, `@while`, и`@do while`
+### <a name="looping-for-foreach-while-and-do-while"></a>Циклы @for, @foreach, @while, и @do во время
 
-Может отображать шаблонного HTML с помощью элемента управления операторы цикла. Например, чтобы отобразить список пользователей:
+Шаблонные HTML может осуществляться с помощью элемента управления операторы цикла.  Для подготовки к просмотру список лиц:
 
 ```cshtml
 @{
     var people = new Person[]
     {
-          new Person("John", 33),
-          new Person("Doe", 41),
+          new Person("Weston", 33),
+          new Person("Johnathon", 41),
+          ...
     };
 }
 ```
 
-Можно использовать любой из следующих инструкций цикла:
+Поддерживаются следующие операторы цикла:
 
 `@for`
 
@@ -323,30 +351,31 @@ else
 } while (i < people.Length);
 ```
 
-### <a name="compound-using"></a>Составные`@using`
+### <a name="compound-using"></a>Составные@using
 
-В C# using-оператор используется для обеспечения удаления объекта. В Razor такой же механизм может быть использован для создания вспомогательных методов HTML, которые содержат дополнительное содержимое. Например, можно использовать вспомогательные методы HTML для отрисовки тега формы с `@using` инструкции:
+В C# `using` инструкция используется для обеспечения удаления объекта. В Razor тот же механизм используется для создания вспомогательных методов HTML, который содержит дополнительное содержимое. В следующем коде вспомогательных методов HTML отрисовки тега формы с `@using` инструкции:
+
 
 ```cshtml
 @using (Html.BeginForm())
 {
     <div>
         email:
-        <input type="email" id="Email" name="Email" value="" />
-        <button type="submit"> Register </button>
+        <input type="email" id="Email" value="">
+        <button>Register</button>
     </div>
 }
 ```
 
-Можно также выполнять действия уровня области похожий на приведенный выше с [вспомогательных функций тегов](tag-helpers/index.md).
+Действия на уровне области, которые могут быть выполнены с [вспомогательных функций тегов](xref:mvc/views/tag-helpers/intro).
 
-### <a name="try-catch-finally"></a>`@try`, `catch`, `finally`
+### <a name="try-catch-finally"></a>@try, catch, finally
 
 Обработка исключений похожа на C#:
 
-[!code-html[Main](razor/sample/Views/Home/Contact7.cshtml)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact7.cshtml)]
 
-### `@lock`
+### <a name="lock"></a>@lock
 
 Razor имеет возможность защитить критические секции с помощью инструкций блокировки:
 
@@ -359,146 +388,139 @@ Razor имеет возможность защитить критические 
 
 ### <a name="comments"></a>Комментарии
 
-Razor поддерживает комментарии C# и HTML. Следующую разметку:
+Razor поддерживает комментарии C# и HTML.
 
 ```cshtml
 @{
-    /* C# comment. */
-    // Another C# comment.
+    /* C# comment */
+    // Another C# comment
 }
 <!-- HTML comment -->
 ```
 
-Отображается сервером как:
+Код отображает следующий код HTML:
 
-```cshtml
+```html
 <!-- HTML comment -->
 ```
 
-Перед отображением страницы комментариев Razor удаляются сервером. Использует Razor `@*  *@` в качестве разделителя комментариев. Следующий код закомментирована, поэтому сервер не будет содержать разметку:
+Комментарии Razor удаляются сервером перед отображением веб-страницы. Использует Razor `@*  *@` в качестве разделителя комментариев. Следующий код закомментирована, поэтому сервер не создают разметку:
 
 ```cshtml
 @*
- @{
-     /* C# comment. */
-     // Another C# comment.
- }
- <!-- HTML comment -->
+    @{
+        /* C# comment */
+        // Another C# comment
+    }
+    <!-- HTML comment -->
 *@
 ```
 
-<a name=razor-directives-label></a>
-
 ## <a name="directives"></a>Директивы
 
-Неявные выражения с следующие зарезервированные ключевые слова представляются директивы Razor `@` символов. Директива обычно будет изменить способ разборе или включить различные функциональные возможности на странице Razor.
+Неявные выражения с следующие зарезервированные ключевые слова представляются директивы Razor `@` символов. Директива обычно изменяет способ представления анализируется или включает различные функциональные возможности.
 
-Основные сведения о том, как Razor создает код для представления будет упрощения понимания работы директивы. Страница Razor используется для создания файла C#. Например, эта страница Razor:
+Основные сведения о том, как Razor создает код для представления помогает понять принципы работы директивы.
 
 [!code-html[Main](razor/sample/Views/Home/Contact8.cshtml)]
 
-Создает класс следующего вида:
+Код создает класс следующего вида:
 
 ```csharp
 public class _Views_Something_cshtml : RazorPage<dynamic>
 {
     public override async Task ExecuteAsync()
     {
-        var output = "Hello World";
+        var output = "Getting old ain't for wimps! - Anonymous";
 
-        WriteLiteral("/r/n<div>Output: ");
+        WriteLiteral("/r/n<div>Quote of the Day: ");
         Write(output);
         WriteLiteral("</div>");
     }
 }
 ```
 
-[Просмотр класса Razor C#, созданного для представления](#razor-customcompilationservice-label) способы просмотра этим классом.
+Далее в этой статье разделе [Просмотр класс Razor C#, созданный для представления](#viewing-the-razor-c-class-generated-for-a-view) способы просмотра этим классом.
 
-### `@using`
+### <a name="using"></a>@using
 
-`@using` Директива добавит c# `using` на странице созданный razor директиву:
+`@using` Добавляет директивы C# `using` директиву созданного представления:
 
-[!code-html[Main](razor/sample/Views/Home/Contact9.cshtml)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact9.cshtml)]
 
-### `@model`
+### <a name="model"></a>@model
 
-`@model` Директива определяет тип модели, переданных в страницу Razor. Для этого используется следующий синтаксис:
+`@model` Директива определяет тип модели, переданный в представлении:
 
 ```cshtml
 @model TypeNameOfModel
 ```
 
-Например, при создании приложения ASP.NET Core MVC для каждой учетной записи *Views/Account/Login.cshtml* представления Razor содержит следующее объявление модели:
+В приложении ASP.NET Core MVC, созданных с помощью отдельных учетных записей пользователей *Views/Account/Login.cshtml* представление содержит следующее объявление модели:
 
 ```cshtml
 @model LoginViewModel
 ```
 
-В приведенном выше примере класс наследует класс, созданный `RazorPage<dynamic>`. Добавив `@model` контролировать то, что наследуется. Пример
-
-```cshtml
-@model LoginViewModel
-```
-
-Создает следующий класс
+Созданный класс наследует `RazorPage<dynamic>`:
 
 ```csharp
 public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 ```
 
-Предоставлять страниц Razor `Model` свойство для доступа к модели, переданных в страницу.
+Предоставляет Razor `Model` свойство для доступа к модели передаются в представление:
 
 ```cshtml
 <div>The Login Email: @Model.Email</div>
 ```
 
-`@model` Директива указана тип этого свойства (путем указания `T` в `RazorPage<T>` наследника созданного класса страницы). Если не указать `@model` директивы `Model` свойство будет иметь тип `dynamic`. Значение модели передается из контроллера в представление. В разделе [со строго типизированными моделей и @model ключевое слово](../../tutorials/first-mvc-app/adding-model.md#strongly-typed-models-keyword-label) для получения дополнительной информации.
+`@model` Директива определяет тип этого свойства. Указывает директиву `T` в `RazorPage<T>` , созданный класс, который представлении является производным от. Если `@model` директив не будет указано, `Model` свойство относится к типу `dynamic`. Значение модели передается из контроллера в представление. Дополнительные сведения см. в разделе [со строго типизированными моделей и @model ключевое слово.
 
-### `@inherits`
+### <a name="inherits"></a>@inherits
 
-`@inherits` Директива дает полный контроль над класс наследует Razor страницы:
+`@inherits` Директива предоставляет полный контроль над класс наследует представления:
 
 ```cshtml
 @inherits TypeNameOfClassToInheritFrom
 ```
 
-Например предположим, мы должны были пользовательского страницы типа Razor:
+Следующий код является пользовательским типом Razor страницы:
 
 [!code-csharp[Main](razor/sample/Classes/CustomRazorPage.cs)]
 
-Создает следующие Razor `<div>Custom text: Hello World</div>`.
+`CustomText` Отображается в представлении:
 
-[!code-html[Main](razor/sample/Views/Home/Contact10.cshtml)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact10.cshtml)]
 
-Нельзя использовать `@model` и `@inherits` на одной странице. Может иметь `@inherits` в *_ViewImports.cshtml* файл, который импортирует страниц Razor. Например, если представление Razor импортированы следующие *_ViewImports.cshtml* файла:
+Код отображает следующий код HTML:
 
-[!code-html[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
-
-На следующей странице строго типизированные Razor
-
-[!code-html[Main](razor/sample/Views/Home/Login1.cshtml)]
-
-Создает этот HTML-разметку:
-
-```cshtml
-<div>The Login Email: Rick@contoso.com</div>
-<div>Custom text: Hello World</div>
+```html
+<div>Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping a slop bucket on the street below.</div>
 ```
 
-При передаче "[Rick@contoso.com](mailto:Rick@contoso.com)» в модели:
+ `@model`и `@inherits` может использоваться в одном представлении.  `@inherits`может быть в *_ViewImports.cshtml* файл, который импортирует представления:
 
-   Дополнительные сведения см. в статье о [макете](layout.md).
+[!code-cshtml[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
 
-### `@inject`
+Следующий код является примером строго типизированное представление:
 
-`@inject` Директива позволяет внедрять службы из вашего [контейнер службы](../../fundamentals/dependency-injection.md) в Razor страницу для использования. В разделе [внедрение зависимостей в представления](dependency-injection.md).
+[!code-cshtml[Main](razor/sample/Views/Home/Login1.cshtml)]
 
-<a name="functions"></a>
+Если «rick@contoso.com» передается в модель, представление создает следующую разметку HTML:
 
-### `@functions`
+```html
+<div>The Login Email: rick@contoso.com</div>
+<div>Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping a slop bucket on the street below.</div>
+```
 
-`@functions` Директива позволяет добавлять функции уровня содержимого на страницу Razor. Синтаксис выглядит следующим образом.
+### <a name="inject"></a>@inject
+
+
+`@inject` Директива включает страницы Razor, чтобы запустить службу из [контейнер службы](xref:fundamentals/dependency-injection) в представление. Дополнительные сведения см. в разделе [внедрение зависимостей в представления](xref:mvc/views/dependency-injection).
+
+### <a name="functions"></a>@functions
+
+`@functions` Директива включает страницы Razor для добавления содержимого на уровне функций в представлении:
 
 ```cshtml
 @functions { // C# Code }
@@ -506,31 +528,31 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 Пример:
 
-[!code-html[Main](razor/sample/Views/Home/Contact6.cshtml)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact6.cshtml)]
 
-Создает следующую разметку HTML:
+Код формирует следующую разметку HTML:
 
-```cshtml
+```html
 <div>From method: Hello</div>
 ```
 
-Созданный Razor C# выглядит следующим образом.
+Следующий код — это созданный класс Razor C#:
 
 [!code-csharp[Main](razor/sample/Classes/Views_Home_Test_cshtml.cs?range=1-19)]
 
-### `@section`
+### <a name="section"></a>@section
 
-`@section` Директива используется в сочетании с [страница макета](layout.md) Включение представления для отображения содержимого в различных частях готовый для просмотра HTML-страницы. В разделе [разделы](layout.md#layout-sections-label) для получения дополнительной информации.
+`@section` Директива используется в сочетании с [макета](xref:mvc/views/layout) Включение представления для отображения содержимого в различные части HTML-страницы. Дополнительные сведения см. в разделе [разделы](xref:mvc/views/layout#layout-sections-label).
 
 ## <a name="tag-helpers"></a>Вспомогательных функций тегов
 
-Следующие [вспомогательных функций тегов](tag-helpers/index.md) директивы подробно описаны в ссылкам.
+Существует три директивы, которые относятся к [вспомогательных функций тегов](xref:mvc/views/tag-helpers/intro).
 
-* [@addTagHelper](tag-helpers/intro.md#add-helper-label)
-* [@removeTagHelper](tag-helpers/intro.md#remove-razor-directives-label)
-* [@tagHelperPrefix](tag-helpers/intro.md#prefix-razor-directives-label)
-
-<a name=razor-reserved-keywords-label></a>
+| Директива | Функция |
+| --------- | -------- |
+| [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | Делает доступными для представления вспомогательных функций тегов. |
+| [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | Удаляет ранее добавленный из представления в виде вспомогательных функций тегов. |
+| [@tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | Указывает префикс тега для включения поддержка вспомогательных функций тегов и явно объявить использование вспомогательного тег. |
 
 ## <a name="razor-reserved-keywords"></a>Razor зарезервированные ключевые слова
 
@@ -541,9 +563,9 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 * наследует
 * model
 * section
-* Вспомогательный (не поддерживается ASP.NET Core.)
+* Вспомогательный (не поддерживаемых ASP.NET Core)
 
-Ключевые слова Razor предварять `@(Razor Keyword)`, например `@(functions)`. См. Полный пример ниже.
+Ключевые слова Razor экранируются с `@(Razor Keyword)` (например, `@(functions)`).
 
 ### <a name="c-razor-keywords"></a>Ключевые слова C# Razor
 
@@ -562,42 +584,39 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 * использование
 * while
 
-Ключевые слова C# Razor должны быть двойные escape-последовательность с `@(@C# Razor Keyword)`, например `@(@case)`. Первый `@` экранирует анализатор Razor второй `@` экранирует анализатор C#. См. Полный пример ниже.
+Ключевые слова C# Razor необходимо экранировать двойные с `@(@C# Razor Keyword)` (например, `@(@case)`). Первый `@` экранирует анализатор Razor. Второй `@` экранирует анализатор C#.
 
 ### <a name="reserved-keywords-not-used-by-razor"></a>Зарезервированные ключевые слова, не используется в Razor
 
 * namespace
 * класс
 
-<a name=razor-customcompilationservice-label></a>
-
 ## <a name="viewing-the-razor-c-class-generated-for-a-view"></a>Просмотр класса Razor C#, созданного для представления
 
 Добавьте следующий класс в проект ASP.NET MVC основных компонентов:
 
-[!code-csharp[Main](razor/sample/Services/CustomCompilationService.cs)]
+[!code-csharp[Main](razor/sample/Utilities/CustomTemplateEngine.cs)]
 
-Переопределить `ICompilationService` добавленные MVC с выше класса;
+Переопределить `RazorTemplateEngine` добавленные MVC с `CustomTemplateEngine` класса:
 
-[!code-csharp[Main](razor/sample/Startup.cs?highlight=4&range=29-33)]
+[!code-csharp[Main](razor/sample/Startup.cs?highlight=4&range=10-14)]
 
-Точка останова `Compile` метод `CustomCompilationService` и представление `compilationContent`.
+Точка останова `return csharpDocument` инструкция `CustomTemplateEngine`. Когда выполнение программы остановится в точке останова, просматривать значения `generatedCode`.
 
-![Представление визуализатор текста compilationContent](razor/_static/tvr.png)
+![Представление визуализатор текста generatedCode](razor/_static/tvr.png)
 
-<a name="case"></a>
 ## <a name="view-lookups-and-case-sensitivity"></a>Представление уточняющих запросов и чувствительности к регистру
 
-Обработчик представлений Razor выполняет поиск с учетом регистра для представлений. Однако фактические уточняющего запроса определяется базового источника:
+Обработчик представлений Razor выполняет поиск с учетом регистра для представлений. Однако фактические уточняющего запроса определяется базовая файловая система:
 
 * На основе исходного файла: 
+  * В операционных системах без учета регистра файловые системы (например, Windows) поиск поставщика физических файлов зависят от регистра. Например `return View("Test")` приводит к соответствий для */Views/Home/Test.cshtml*, */Views/home/test.cshtml*и любой другой тип регистра.
+  * В системах с учетом регистра файла (например, Linux, OSX и с `EmbeddedFileProvider`), уточняющие запросы выполняются с учетом регистра. Например `return View("Test")` специально совпадений */Views/Home/Test.cshtml*.
+* Предварительно скомпилированные представлений: С основными ASP.NET 2.0 и более поздних, поиске предкомпилированного представления без учета регистра для всех операционных систем. Поведение идентично поведение поставщика физического файла в Windows. Если два представления предкомпилированного отличаются только регистром, результатом поиска является недетерминированным.
 
-    * В операционных системах без учета регистра файловые системы (например, Windows) поиск поставщика физических файлов зависят от регистра. Например `return View("Test")` приведет к появлению `/Views/Home/Test.cshtml`, `/Views/home/test.cshtml` и всех других вариантов регистр обнаруживаются.
-    * В системах файлов с учетом регистра, которая содержит Linux OSX и `EmbeddedFileProvider`, уточняющие запросы выполняются с учетом регистра. Например `return View("Test")` выглядит специально `/Views/Home/Test.cshtml`.
-        
-* Предварительно скомпилированный представления:
+Разработчики могут совпадает с регистром имена файлов и каталогов на регистр:
 
-   * С помощью ASP.Net Core 2.0 и более поздних версиях поиска предкомпилированного представления без учета регистра для всех операционных систем. Поведение идентично поведение поставщика физического файла в Windows. 
-   Примечание: Если два представления предкомпилированного отличаются только регистром, результатом поиска является недетерминированным.
-
-Разработчики могут совпадает с регистром имена файлов и каталогов для имен области, контроллера и действия. Благодаря развертываний остаются независимыми от используемой файловой системы.
+    * Имена областей, контроллера и действия. 
+    * Страниц Razor.
+    
+Регистра гарантирует, что развертываний найти их представления независимо от используемой файловой системы.

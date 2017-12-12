@@ -11,15 +11,15 @@ ms.assetid: 492b3a7e-04c5-461b-b96a-38ecee5c64bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/iis-modules
-ms.openlocfilehash: afad266874d3ac059d9f3a6d26a5330a0006320b
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: fee8e830ab43f731de9c90fad06b577662760f87
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="using-iis-modules-with-aspnet-core"></a>Использование с ASP.NET Core модули IIS
 
-По [Latham Люк](https://github.com/guardrex)
+Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
 Приложения ASP.NET Core размещены в IIS в конфигурации обратного прокси-сервера. Некоторые собственные модули IIS и всех модулей IIS управляемых недоступны для обработки запросов для приложений ASP.NET Core. Во многих случаях ASP.NET Core является альтернативой функции собственные и управляемые модули IIS.
 
@@ -37,10 +37,10 @@ ms.lasthandoff: 09/24/2017
 **Дайджест-проверка подлинности**<br>`DigestAuthenticationModule` | Да | 
 **Просмотр каталогов**<br>`DirectoryListingModule` | Нет | [По промежуточного слоя просмотра каталогов](xref:fundamentals/static-files#enabling-directory-browsing)
 **Динамическое сжатие**<br>`DynamicCompressionModule` | Да | [ПО промежуточного слоя для сжатия ответов](xref:performance/response-compression)
-**Трассировка**<br>`FailedRequestsTracingModule` | Да | [Ведение журнала ASP.NET Core](xref:fundamentals/logging#the-tracesource-provider)
+**Трассировка**<br>`FailedRequestsTracingModule` | Да | [Ведение журнала ASP.NET Core](xref:fundamentals/logging/index#the-tracesource-provider)
 **Кэширование файлов**<br>`FileCacheModule` | Нет | [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
 **Кэширование HTTP**<br>`HttpCacheModule` | Нет | [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
-**Ведение журнала HTTP**<br>`HttpLoggingModule` | Да | [Ведение журнала ASP.NET Core](xref:fundamentals/logging)<br>Реализации: [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging), [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging), [NLog](https://github.com/NLog/NLog.Extensions.Logging), [Serilog](https://github.com/serilog/serilog-extensions-logging)
+**Ведение журнала HTTP**<br>`HttpLoggingModule` | Да | [Ведение журнала ASP.NET Core](xref:fundamentals/logging/index)<br>Реализации: [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging), [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging), [NLog](https://github.com/NLog/NLog.Extensions.Logging), [Serilog](https://github.com/serilog/serilog-extensions-logging)
 **Перенаправление HTTP**<br>`HttpRedirectionModule` | Да | [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting)
 **Проверка подлинности с сопоставлением сертификата клиента IIS**<br>`IISCertificateMappingAuthenticationModule` | Да | 
 **Ограничения IP-адресов и доменов**<br>`IpRestrictionModule` | Да | 

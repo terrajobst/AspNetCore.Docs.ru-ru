@@ -1,7 +1,7 @@
 ---
 title: "Связь с браузером в ASP.NET Core"
 author: ncarandini
-description: "Узнайте, как связь с браузером является функцией Visual Studio, которая связывает среду разработки с одного или нескольких веб-браузеров."
+description: "Объясняет, как связь с браузером является функцией Visual Studio, которая связывает среду разработки с одного или нескольких веб-браузеров."
 keywords: "ASP.NET Core, связь с браузером, синхронизации CSS"
 ms.author: riande
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-browserlink
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 67ddc58e38962bd876050739a2a1447be4f589bb
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: b69d085e8bee4cdac2dff08b46a95a8869e263b7
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="browser-link-in-aspnet-core"></a>Связь с браузером в ASP.NET Core 
 
@@ -81,7 +81,7 @@ if (env.IsDevelopment())
 * Обновите веб-приложения в нескольких браузерах за один раз.
 * Откройте **мониторинга связи с браузером**.
 * Включить или отключить **связь с браузером**. Примечание: По умолчанию в Visual Studio 2017 г. (15,3) отключена связь с браузером.
-* Включение и отключение автоматической синхронизации CSS.
+* Включить или отключить [Автосинхронизации CSS](#enable-or-disable-css-auto-sync).
 
 > [!NOTE]
 > Некоторые Visual Studio подключаемые модули, прежде всего *2015 пакет расширения Web* и *2017 г. пакет расширения веб*, предоставляют расширенные функциональные возможности для связи с браузером, но некоторые дополнительные функции не работают с ASP. Проекты NET Core.

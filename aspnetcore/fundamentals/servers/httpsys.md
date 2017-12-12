@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
 ms.openlocfilehash: d3f9eb4943ed62b674d6bb2ab1b275b0a3c02343
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера, HTTP.sys, в ASP.NET Core
 
@@ -40,7 +40,7 @@ HTTP.sys поддерживает следующие функции:
 
 - Windows 7 и Windows Server 2008 R2 и более поздних версий
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>Когда следует использовать HTTP.sys
 
@@ -125,7 +125,7 @@ public IActionResult MyActionMethod()
 
 Преимущество `UrlPrefixes` , могут быть получены сообщение об ошибке сразу же при попытке добавить префикс, который неправильно отформатирован. Преимущество `UseUrls` (совместно используется с `urls` и ASPNETCORE_URLS) — что можно легко переключаться между Kestrel и HTTP.sys.
 
-Если используются и `UseUrls` (или `urls` или ASPNETCORE_URLS) и `UrlPrefixes`, параметры в `UrlPrefixes` переопределить значения в `UseUrls`. Дополнительные сведения см. в разделе [размещения](xref:fundamentals/hosting).
+Если используются и `UseUrls` (или `urls` или ASPNETCORE_URLS) и `UrlPrefixes`, параметры в `UrlPrefixes` переопределить значения в `UseUrls`. Дополнительные сведения см. в разделе [Размещение](xref:fundamentals/hosting).
 
 Использует HTTP.sys [HTTP Server API UrlPrefix строковые форматы](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
 
@@ -166,7 +166,7 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={000000
 
 Подробные инструкции для нескольких сценариев на следующих ресурсах. Статьи, которые ссылаются на HttpListener применяются при HTTP.sys, как они строятся на Http.Sys.
 
-* [Как: Настройка порта с SSL-сертификата](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
+* [Практическое руководство. Настройка порта с использованием SSL-сертификата](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
 * [Подключения по протоколу HTTPS - HttpListener и на основе размещения сертификацию клиента](http://sunshaking.blogspot.com/2012/11/https-communication-httplistener-based.html) это является блог сторонних разработчиков и довольно старый, но по-прежнему содержит полезные сведения.
 * [Практическое руководство: Пошаговое руководство с помощью HttpListener или HTTP-сервере неуправляемого типов кода (C++) как простой сервера SSL](https://blogs.msdn.microsoft.com/jpsanders/2009/09/29/how-to-walkthrough-using-httplistener-or-http-server-unmanaged-code-c-as-an-ssl-simple-server/) это тоже старые блог полезные сведения.
 

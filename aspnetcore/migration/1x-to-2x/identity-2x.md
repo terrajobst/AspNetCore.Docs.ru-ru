@@ -5,16 +5,16 @@ description: "В этой статье описаны наиболее расп�
 keywords: "Проверка подлинности ASP.NET Core, удостоверение,"
 ms.author: scaddie
 manager: wpickett
-ms.date: 08/02/2017
+ms.date: 10/26/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: b4e67e7cfea3c01e3ca8c0d5df2a04e789749932
-ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
+ms.openlocfilehash: 1d8c75a21cd7110b3e414f0c600e9f05cbaeff45
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="migrating-authentication-and-identity-to-aspnet-core-20"></a>Миграция проверку подлинности и удостоверение для основных компонентов ASP.NET 2.0
 
@@ -59,7 +59,8 @@ public void ConfigureServices(IServiceCollection services)
     // If you want to tweak Identity cookies, they're no longer part of IdentityOptions.
     services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/LogIn");
     services.AddAuthentication()
-            .AddFacebook(options => {
+            .AddFacebook(options => 
+            {
                 options.AppId = Configuration["auth:facebook:appid"];
                 options.AppSecret = Configuration["auth:facebook:appsecret"];
             });
@@ -108,7 +109,8 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
         // If you don't want the cookie to be automatically authenticated and assigned to HttpContext.User, 
         // remove the CookieAuthenticationDefaults.AuthenticationScheme parameter passed to AddAuthentication.
         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => {
+                .AddCookie(options => 
+                {
                     options.LoginPath = "/Account/LogIn";
                     options.LogoutPath = "/Account/LogOff";
                 });
@@ -126,7 +128,8 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
     ```csharp
     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options => {
+            .AddJwtBearer(options => 
+            {
                 options.Audience = "http://localhost:5001/";
                 options.Authority = "http://localhost:5000/";
             });
@@ -146,12 +149,14 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 - Вызвать `AddOpenIdConnect` метод в `ConfigureServices` метод:
 
     ```csharp
-    services.AddAuthentication(options => {
+    services.AddAuthentication(options => 
+    {
         options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
     })
     .AddCookie()
-    .AddOpenIdConnect(options => {
+    .AddOpenIdConnect(options => 
+    {
         options.Authority = Configuration["auth:oidc:authority"];
         options.ClientId = Configuration["auth:oidc:clientid"];
     });
@@ -169,7 +174,8 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
     
     ```csharp
     services.AddAuthentication()
-            .AddFacebook(options => {
+            .AddFacebook(options => 
+            {
                 options.AppId = Configuration["auth:facebook:appid"];
                 options.AppSecret = Configuration["auth:facebook:appsecret"];
             });
@@ -187,7 +193,8 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
     ```csharp
     services.AddAuthentication()
-            .AddGoogle(options => {
+            .AddGoogle(options => 
+            {
                 options.ClientId = Configuration["auth:google:clientid"];
                 options.ClientSecret = Configuration["auth:google:clientsecret"];
             });    
@@ -205,7 +212,8 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
     ```csharp
     services.AddAuthentication()
-            .AddMicrosoftAccount(options => {
+            .AddMicrosoftAccount(options => 
+            {
                 options.ClientId = Configuration["auth:microsoft:clientid"];
                 options.ClientSecret = Configuration["auth:microsoft:clientsecret"];
             });
@@ -223,25 +231,29 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
     ```csharp
     services.AddAuthentication()
-            .AddTwitter(options => {
+            .AddTwitter(options => 
+            {
                 options.ConsumerKey = Configuration["auth:twitter:consumerkey"];
                 options.ConsumerSecret = Configuration["auth:twitter:consumersecret"];
             });
     ```
 
 ### <a name="setting-default-authentication-schemes"></a>Параметр схемы проверки подлинности по умолчанию
-В 1.x `AutomaticAuthenticate` и `AutomaticChallenge` свойства должны устанавливаться на одна схема проверки подлинности. Произошла хороший способ контроля.
+В 1.x `AutomaticAuthenticate` и `AutomaticChallenge` свойства [AuthenticationOptions](https://docs.microsoft.com/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1) базового класса должны устанавливаться на одна схема проверки подлинности. Произошла хороший способ контроля.
 
-В версии 2.0, эти свойства будут удалены как флаги в отдельных `AuthenticationOptions` экземпляра и были перемещены в базу [AuthenticationOptions](/aspnet/core/api/microsoft.aspnetcore.builder.authenticationoptions) класса. Свойства можно настроить в `AddAuthentication` вызова метода внутри `ConfigureServices` метод *файла Startup.cs*:
+В версии 2.0, эти свойства будут удалены как свойства в отдельных `AuthenticationOptions` экземпляра. Они могут быть настроены в `AddAuthentication` вызова метода внутри `ConfigureServices` метод *файла Startup.cs*:
 
 ```csharp
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
 ```
 
+В предыдущем фрагменте кода схемы по умолчанию имеет значение `CookieAuthenticationDefaults.AuthenticationScheme` («файлы cookie»).
+
 Кроме того, используйте перегруженную версию `AddAuthentication` метод, чтобы задать более одного свойства. В следующем примере перегруженный метод схемы по умолчанию выбрана `CookieAuthenticationDefaults.AuthenticationScheme`. Схема проверки подлинности можно также может быть указан в пределах индивидуальными `[Authorize]` атрибутов или политики авторизации.
 
 ```csharp
-services.AddAuthentication(options => {
+services.AddAuthentication(options => 
+{
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
 });

@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: adf577ae1e1c752c3b1a332ec94a7a7627a7a4b4
-ms.sourcegitcommit: 76d42f09f3e0dd2f2105493eca6b29994aa47706
+ms.openlocfilehash: 2861ca474e7e82da81943966394a92040ce96ab8
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configure-identity"></a>Настройка удостоверения
 
@@ -22,7 +22,7 @@ ASP.NET Core Identity имеет некоторые виды поведения 
 
 ## <a name="passwords-policy"></a>Политики паролей
 
-По умолчанию удостоверение требует, что пароли содержать прописные буквы, строчные буквы, цифры и буквы или цифры. Существуют также некоторые другие ограничения. Если вы хотите упростить ограничения для пароля, можно сделать это в `Startup` класса приложения.
+По умолчанию удостоверение требует, что пароли содержат символ верхнего регистра, строчные буквы, цифры и не алфавитно-цифровой символ. Существуют также некоторые другие ограничения. Если вы хотите упростить ограничения для пароля, можно сделать это в `Startup` класса приложения.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 

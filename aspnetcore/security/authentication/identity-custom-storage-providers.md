@@ -11,11 +11,11 @@ ms.assetid: b2ace545-ecf6-4664-b31e-b65bd4a6b025
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: c1d974e72eab388ba7b196c4b48f21a06b59dc20
-ms.sourcegitcommit: f5cf472d49c2475e4d57654efd5fc0a4ccecba4c
+ms.openlocfilehash: 687ca96be5121502e816bdc856e17dcd5923fe05
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/30/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Поставщики пользовательского хранилища для ASP.NET Core Identity
 
@@ -68,7 +68,7 @@ ASP.NET Core Identity состоит из класса с именами мен�
 
 ### <a name="user-claims"></a>Утверждения пользователей
 
-Набор инструкций (или [утверждений](https://docs.microsoft.com//dotnet/api/system.security.claims.claim) о пользователе, которые представляют удостоверение пользователя. Можно включить большего выражения удостоверение пользователя, чем можно создать с помощью ролей.
+Набор инструкций (или [утверждений](https://docs.microsoft.com//dotnet/api/system.security.claims.claim)) о пользователе, которые представляют удостоверение пользователя. Можно включить большего выражения удостоверение пользователя, чем можно создать с помощью ролей.
 
 ### <a name="user-logins"></a>Имена входа
 

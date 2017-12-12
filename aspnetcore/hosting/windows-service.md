@@ -11,11 +11,11 @@ ms.assetid: d9a65066-d7cb-47df-b046-64629c4d2c6f
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/windows-service
-ms.openlocfilehash: ca3b98f0b0405fcd5751cb7d9bc7a40257739084
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: a6d1acf5ab8f40b0b4d487a6f34cd83d13907852
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="host-an-aspnet-core-app-in-a-windows-service"></a>Узел приложения ASP.NET Core в службе Windows
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/01/2017
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* Приложение должно выполняться в среде выполнения .NET framework.  В *.csproj* файла, укажите соответствующие значения для [TargetFramework](https://docs.microsoft.com/nuget/schema/target-frameworks) и [RuntimeIdentifier](https://docs.microsoft.com/dotnet/articles/core/rid-catalog). Ниже приведен пример:
+* Приложение должно выполняться в среде выполнения .NET Framework.  В *.csproj* файла, укажите соответствующие значения для [TargetFramework](https://docs.microsoft.com/nuget/schema/target-frameworks) и [RuntimeIdentifier](https://docs.microsoft.com/dotnet/articles/core/rid-catalog). Ниже приведен пример:
 
   [!code-xml[](windows-service/sample/AspNetCoreService.csproj?range=3-6)]
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 10/01/2017
 
   * В браузере перейдите к http://localhost: 5000, чтобы убедиться, что он работает.
 
-Если приложение не запускается до должным образом при запуске в службе, быстрый способ сделать доступной сообщения об ошибках является для добавления поставщика ведения журнала, такие как [поставщик журнала событий Windows](xref:fundamentals/logging#eventlog).
+Если приложение не запускается до должным образом при запуске в службе, быстрый способ сделать доступной сообщения об ошибках является для добавления поставщика ведения журнала, такие как [поставщик журнала событий Windows](xref:fundamentals/logging/index#eventlog).
 
 ## <a name="acknowledgments"></a>Подтверждения
 

@@ -12,14 +12,14 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/extensibility/app-parts
 ms.openlocfilehash: a260675e7461105d4f6a0c61fd13971663c268f2
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="application-parts-in-aspnet-core"></a>Частей приложения в ASP.NET Core
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 *Часть приложения* — это абстракция над ресурсы приложения, из которого MVC такими функциями, как контроллеров, просмотр компонентов или вспомогательных функций тегов могут быть обнаружены. Одним из примеров части приложения является AssemblyPart, который содержит ссылку на сборку и предоставляет типы и ссылки на компиляцию. *Функции поставщиков* работают с частей приложения для заполнения компонентов приложения ASP.NET Core MVC. Является позволяют настроить приложения для обнаружения (или избежать загрузки) основного варианта использования для частей приложения MVC компоненты из сборки.
 

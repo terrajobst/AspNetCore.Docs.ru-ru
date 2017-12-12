@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/partial
 ms.openlocfilehash: 60f5255ca31accbffffec18053b29810977a5ff1
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="partial-views"></a>Разделяемые представления
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 10/01/2017
 
 ASP.NET Core MVC поддерживает частичного представления, которые могут быть полезны при наличии допускающих многократное использование частей веб-страниц, которые вы хотите поделиться между различными представлениями.
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-are-partial-views"></a>Что такое частичного представления.
 
