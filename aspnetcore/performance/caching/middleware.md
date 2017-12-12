@@ -1,26 +1,24 @@
 ---
 title: "Кэширование по промежуточного слоя в ASP.NET Core ответов"
 author: guardrex
-description: "Конфигурация и использование по промежуточного слоя, кэширование ответа в приложениях ASP.NET Core."
-keywords: "ASP.NET Core кэширование ответов, кэширование, ResponseCache, ResponseCaching, Cache-Control, VaryByQueryKeys, по промежуточного слоя"
+description: "Дополнительные сведения о настройке и использовании по промежуточного слоя, кэширование ответа в приложениях ASP.NET Core."
 ms.author: riande
 manager: wpickett
 ms.date: 08/22/2017
 ms.topic: article
-ms.assetid: f9267eab-2762-42ac-1638-4a25d2c9d67c
 ms.prod: asp.net-core
 uid: performance/caching/middleware
-ms.openlocfilehash: bc3350a7ef15c5c38aa072bab15cbddc7d0ee0fa
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: f3312d0c333b47169c71891eea79f03be0abcfa3
+ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Кэширование по промежуточного слоя в ASP.NET Core ответов
 
 По [Latham Люк](https://github.com/guardrex) и [Джон Luo](https://github.com/JunTaoLuo)
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 Этот документ содержит сведения о способах настройки по промежуточного слоя ответа кэширование в приложениях ASP.NET Core. По промежуточного слоя определяет, когда ответов может быть кэширован, ответы на магазины и служит ответы из кэша. Основные сведения о кэшировании HTTP и `ResponseCache` см. в разделе [кэширование ответов](response.md).
 
@@ -112,13 +110,13 @@ if (responseCachingFeature != null)
 
 [Будущих улучшений по промежуточного слоя](https://github.com/aspnet/ResponseCaching/issues/96) разрешает настройки по промежуточного слоя сценариях кэширования, где запрос `Cache-Control` заголовок игнорироваться при принятии решения о обслуживать кэшированный ответ. При получении больший контроль над поведение кэширования изучение других функций кэширования ASP.NET Core. См. указанные ниже разделы.
 
-* [Введение в ASP.NET Core кэширование в памяти](xref:performance/caching/memory)
+* [Кэширование в памяти](xref:performance/caching/memory)
 * [Работа с распределенного кэша](xref:performance/caching/distributed)
 * [Кэшировать вспомогательный тег в ядре ASP.NET MVC](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
 * [Вспомогательный тег распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
 
 ## <a name="troubleshooting"></a>Устранение неполадок
-Если режим кэширования не должным образом, проверка ответов может быть кэширован и может быть предоставлен из кэша с помощью проверки запроса заголовки входящих и исходящих заголовки ответа. Включение [входа](xref:fundamentals/logging) может помочь при отладке. Журналы по промежуточного слоя, кэширование поведение и при получении ответа из кэша.
+Если режим кэширования не должным образом, проверка ответов может быть кэширован и может быть предоставлен из кэша с помощью проверки запроса заголовки входящих и исходящих заголовки ответа. Включение [входа](xref:fundamentals/logging/index) может помочь при отладке. Журналы по промежуточного слоя, кэширование поведение и при получении ответа из кэша.
 
 При тестирование и устранение неполадок поведение кэширования, браузер может задать заголовки запроса, влияющих на кэширование нежелательно способами. Например, браузер может задать `Cache-Control` заголовка `no-cache` при обновлении страницы. Следующие средства можно явно задать заголовки запроса и являются предпочтительными для тестирования кэширования:
 
@@ -148,3 +146,9 @@ if (responseCachingFeature != null)
 
 * [Запуск приложения](xref:fundamentals/startup)
 * [ПО промежуточного слоя](xref:fundamentals/middleware)
+* [Кэширование в памяти](xref:performance/caching/memory)
+* [Работа с распределенного кэша](xref:performance/caching/distributed)
+* [Обнаруживать изменения с маркерами изменения](xref:fundamentals/primitives/change-tokens)
+* [Кэширование ответов](xref:performance/caching/response)
+* [Вспомогательный тег кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [Вспомогательный тег распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

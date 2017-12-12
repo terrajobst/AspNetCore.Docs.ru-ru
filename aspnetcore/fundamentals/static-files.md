@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/static-files
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40c9a799c6ac8a2ce712df4b8fbf3c142ef3fd82
-ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
+ms.openlocfilehash: c0751576a1391f26f045c3f8c42ea39c0ff6e5d9
+ms.sourcegitcommit: e4fb6b13be56a0fb2f2778623740a047d6489227
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="working-with-static-files-in-aspnet-core"></a>Работа с статических файлов в ASP.NET Core
 
@@ -68,6 +68,8 @@ ms.lasthandoff: 10/13/2017
 `StaticFileOptions()`можно задать заголовки ответа. Например, приведенный ниже код задает обработку из статических файлов *wwwroot* папок и наборов `Cache-Control` заголовок, чтобы сделать их публично кэшируемый 10 минут (600 секунд):
 
 [!code-csharp[Main](../fundamentals/static-files/sample/StartupAddHeader.cs?name=snippet1)]
+
+[HeaderDictionaryExtensions.Append](/dotnet/api/microsoft.aspnetcore.http.headerdictionaryextensions.append) метод доступен из [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/) пакета. Добавить `using Microsoft.AspNetCore.Http;` для вашей *csharp* файл, если метод недоступен.
 
 ![Отображение заголовка Cache-Control заголовки ответа были добавлены](static-files/_static/add-header.png)
 

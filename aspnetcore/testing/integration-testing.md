@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: testing/integration-testing
 ms.openlocfilehash: 155fd2f0663c6225531a4df6f323ebb30ab1ee73
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="integration-testing-in-aspnet-core"></a>Интеграция тестирования в ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 10/01/2017
 
 Интеграционного тестирования гарантирует, что компоненты приложения работают корректно, когда собраны вместе. ASP.NET Core предоставляет возможности интеграции тестирования с помощью платформы модульного тестирования и встроенных тестов веб-узел, который может использоваться для обработки запросов без нагрузки на сеть.
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/testing/integration-testing/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/testing/integration-testing/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="introduction-to-integration-testing"></a>Общие сведения о интеграционного тестирования
 

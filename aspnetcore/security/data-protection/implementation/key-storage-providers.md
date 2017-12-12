@@ -11,17 +11,17 @@ ms.assetid: 423e0a79-2f34-44c4-aaf3-146a53c39251
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 1c73608245e668c0810813e29f78f1ac3dacc414
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: d4b286dc47f8d66e6d09c3e0f48e6326139c8e1e
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="key-storage-providers"></a>Поставщики хранилища ключей
 
-<a name=data-protection-implementation-key-storage-providers></a>
+<a name="data-protection-implementation-key-storage-providers"></a>
 
-По умолчанию система защиты данных [использует эвристику](../configuration/default-settings.md#data-protection-default-settings) для определения, где должны сохраняться материалом ключа шифрования. Разработчик может переопределить эвристика и вручную указать расположение.
+По умолчанию система защиты данных [использует эвристику](xref:security/data-protection/configuration/default-settings) для определения, где должны сохраняться материалом ключа шифрования. Разработчик может переопределить эвристика и вручную указать расположение.
 
 > [!NOTE]
 > При указании расположения явную сохраняемость ключа система защиты данных будет отменить регистрацию шифрования ключа по умолчанию в механизм rest, который предоставляется эвристика, поэтому ключи больше не шифруются при хранении. Рекомендуется, кроме того [укажите механизм явного ключа шифрования](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers) для производственных приложений.

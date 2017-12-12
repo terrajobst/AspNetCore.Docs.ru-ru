@@ -1,7 +1,7 @@
 ---
 title: "Совместное использование файлов cookie между приложениями"
 author: rick-anderson
-description: 
+description: "В этом документе объясняется, как стек защиты данных поддерживает совместное использование файлов cookie проверки подлинности между ASP.NET 4.x и приложений ASP.NET Core."
 keywords: "Совместное использование Core,ASP.NET,cookies,Interop,cookie ASP.NET"
 ms.author: riande
 manager: wpickett
@@ -11,11 +11,11 @@ ms.assetid: 9a7aae45-8e21-4c54-950c-3c29df6c1082
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/compatibility/cookie-sharing
-ms.openlocfilehash: dbf52b0a990a3627b8eded22db033c45d51ba6ad
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: e92cc81f9362787b7b4bfb44ba26b82182826a59
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="sharing-cookies-between-applications"></a>Совместное использование файлов cookie между приложениями
 
@@ -27,28 +27,28 @@ ms.lasthandoff: 09/22/2017
 
 Для совместного использования файлов cookie проверки подлинности между двумя приложениями ASP.NET Core, настройка каждого приложения, которое следует совместно использовать файлы cookie следующим образом.
 
-В вашей настройки используйте метод CookieAuthenticationOptions, чтобы настроить службу защиты данных файлов cookie и AuthenticationScheme для сопоставления ASP.NET 4.X.
+В вашей настройки метода, используйте CookieAuthenticationOptions, чтобы настроить службу защиты данных файлов cookie и AuthenticationScheme для сопоставления ASP.NET 4.x.
 
 Если вы используете удостоверений:
 
 ```csharp
 app.AddIdentity<ApplicationUser, IdentityRole>(options =>
-   {
-       options.Cookies.ApplicationCookie.AuthenticationScheme = "ApplicationCookie";
-       var protectionProvider = DataProtectionProvider.Create(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"));
-       options.Cookies.ApplicationCookie.DataProtectionProvider = protectionProvider;
-       options.Cookies.ApplicationCookie.TicketDataFormat = new TicketDataFormat(protectionProvider.CreateProtector("Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationMiddleware", "Cookies", "v2"));
-   });
-   ```
+{
+    options.Cookies.ApplicationCookie.AuthenticationScheme = "ApplicationCookie";
+    var protectionProvider = DataProtectionProvider.Create(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"));
+    options.Cookies.ApplicationCookie.DataProtectionProvider = protectionProvider;
+    options.Cookies.ApplicationCookie.TicketDataFormat = new TicketDataFormat(protectionProvider.CreateProtector("Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationMiddleware", "Cookies", "v2"));
+});
+```
 
 Если вы используете файлы cookie напрямую:
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
-   {
-       DataProtectionProvider = DataProtectionProvider.Create(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"))
-   });
-   ```
+{
+    DataProtectionProvider = DataProtectionProvider.Create(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"))
+});
+```
    
 `DataProtectionProvider` Требует `Microsoft.AspNetCore.DataProtection.Extensions` пакет NuGet.
 
@@ -97,20 +97,20 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
     ```csharp
     app.UseCookieAuthentication(new CookieAuthenticationOptions
-       {
-           AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-           CookieName = ".AspNetCore.Cookies",
-           // CookieName = ".AspNetCore.ApplicationCookie", (if you're using identity)
-           // CookiePath = "...", (if necessary)
-           // ...
-           TicketDataFormat = new AspNetTicketDataFormat(
-               new DataProtectorShim(
-                   DataProtectionProvider.Create(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"))
-                   .CreateProtector("Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationMiddleware",
-                   "Cookies", "v2"))),
-           CookieManager = new ChunkingCookieManager()
-       });
-       ```
+    {
+        AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+        CookieName = ".AspNetCore.Cookies",
+        // CookieName = ".AspNetCore.ApplicationCookie", (if you're using identity)
+        // CookiePath = "...", (if necessary)
+        // ...
+        TicketDataFormat = new AspNetTicketDataFormat(
+            new DataProtectorShim(
+                DataProtectionProvider.Create(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"))
+                .CreateProtector("Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationMiddleware",
+                "Cookies", "v2"))),
+        CookieManager = new ChunkingCookieManager()
+    });
+    ```
     Чтобы она указывала на том же месте хранения, указывает приложению ASP.NET Core и должны быть настроены с одинаковыми параметрами имеет DirectoryInfo.
 
 ASP.NET 4.x и приложения ASP.NET Core теперь настроены для совместного использования файлов cookie проверки подлинности.

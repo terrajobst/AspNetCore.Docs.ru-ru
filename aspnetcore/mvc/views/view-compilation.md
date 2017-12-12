@@ -5,23 +5,23 @@ description: "Ссылки документов о том, как включит
 keywords: "ASP.NET Core компиляции представления Razor, предварительная компиляция Razor, предварительной компиляции Razor"
 ms.author: riande
 manager: wpickett
-ms.date: 08/16/2017
+ms.date: 12/05/2017
 ms.topic: article
 ms.assetid: ab4705b7-1638-1638-bc97-ea7f292fe92a
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/view-compilation
-ms.openlocfilehash: bfee2e5e8f71c99465be79589a77f0e173097b23
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: 873f6203f9e7b5bb14968dcec3f8d8e5548bd834
+ms.sourcegitcommit: 282f69e8dd63c39bde97a6d72783af2970d92040
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="razor-view-compilation-and-precompilation-in-aspnet-core"></a>Компиляция представления Razor и предварительной компиляции в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-Представлений Razor компилируются во время выполнения при вызове представления. ASP.NET Core 1.1.0 и более поздней версии можно при необходимости компиляции представлений Razor и развертываются с приложением &mdash; этот процесс называется предварительной компиляции. Предварительная компиляция включает шаблоны проектов ASP.NET Core 2.x по умолчанию.
+Представлений Razor компилируются во время выполнения при вызове представления. ASP.NET Core 1.1.0 и более поздней версии можно при необходимости компиляции представлений Razor и развертываются с приложением&mdash;этот процесс называется предварительной компиляции. Предварительная компиляция включает шаблоны проектов ASP.NET Core 2.x по умолчанию.
 
 > [!NOTE]
 > Предварительная компиляция представления Razor в настоящее время недоступна, при выполнении [автономное развертывание (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) в ASP.NET Core 2.0. Компонент будет доступен для SCD, когда освобождает 2.1. Дополнительные сведения см. в разделе [представление компиляция завершается с ошибкой при перекрестной компиляции для Linux в Windows](https://github.com/aspnet/MvcPrecompilation/issues/102).
@@ -35,7 +35,7 @@ ms.lasthandoff: 09/24/2017
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Если проект предназначен для платформы .NET Framework, включить ссылку пакета `Microsoft.AspNetCore.Mvc.Razor.ViewCompilation`:
+Если проект предназначен для платформы .NET Framework, включить ссылку пакета [Microsoft.AspNetCore.Mvc.Razor.ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation/):
 
 ```xml
 <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.0.0" PrivateAssets="All" />
@@ -54,3 +54,7 @@ ms.lasthandoff: 09/24/2017
 [!code-xml[Main](view-compilation\sample\MvcRazorCompileOnPublish.csproj?highlight=5,12)]
 
 ---
+
+Объект *< имя_проекта >. PrecompiledViews.dll* файл, содержащий скомпилированный представлений Razor, создается при успешном завершении предварительной компиляции. Например, на следующем снимке экрана показано содержимое *Index.cshtml* внутри *WebApplication1.PrecompiledViews.dll*:
+
+![Представлений Razor внутри библиотеки DLL](view-compilation/_static/razor-views-in-dll.png)

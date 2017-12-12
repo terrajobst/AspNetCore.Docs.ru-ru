@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/spa-services
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3c38a1730e43586f37cd773bb8daa418736952f
-ms.sourcegitcommit: b3d46df910fb679edb8dd47234db6b4da604eedb
+ms.openlocfilehash: 8d47910beef9195295c8da6ac81b83b3ffe20124
+ms.sourcegitcommit: fe880bf4ed1c8116071c0e47c0babf3623b7f44a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="using-javascriptservices-for-creating-single-page-applications-with-aspnet-core"></a>С помощью JavaScriptServices для создания приложений на одной странице с помощью ASP.NET Core
 
@@ -98,11 +98,11 @@ ASP.NET Core [вспомогательных функций тегов](xref:mvc
 
 Вспомогательных функций тегов вносятся найти через регистрации пространства имен в проекте *_ViewImports.cshtml* файла:
 
-[!code-csharp[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/_ViewImports.cshtml?highlight=3)]
+[!code-cshtml[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/_ViewImports.cshtml?highlight=3)]
 
 Эти вспомогательных функций тегов абстрагируется от особенностей взаимодействовать непосредственно с низкоуровневые интерфейсы API, используя синтаксис, подобный HTML внутри представления Razor:
 
-[!code-html[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=5)]
+[!code-cshtml[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=5)]
 
 ### <a name="the-asp-prerender-module-tag-helper"></a>`asp-prerender-module` Тег вспомогательный
 
@@ -118,7 +118,7 @@ ASP.NET Core [вспомогательных функций тегов](xref:mvc
 
 При работе с `asp-prerender-module` вспомогательный тег `asp-prerender-data` вспомогательный тега может использоваться для передачи контекстных данных из представления Razor JavaScript на стороне сервера. Например, приведенный ниже код передает пользовательских данных для `main-server` модуля:
 
-[!code-html[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=9-12)]
+[!code-cshtml[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=9-12)]
 
 Данных, полученных `UserName` аргумент сериализуется с использованием как встроенный сериализатор JSON и хранится в `params.data` объекта. В следующем примере углового данных используется для создания индивидуальное приветствие в `h1` элемента:
 

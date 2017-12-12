@@ -22,7 +22,7 @@ var movies = from m in _context.Movie
 
 Если параметр `searchString` содержит строку, запрос фильмов изменяется для фильтрации по значению в строке поиска:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_SearchNull)]
+[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_SearchNull2)]
 
 Приведенный выше код `s => s.Title.Contains()` представляет собой [лямбда-выражение](https://docs.microsoft.com/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions). Лямбда-выражения используются в запросах [LINQ](https://docs.microsoft.com/dotnet/standard/using-linq) на основе методов в качестве аргументов стандартных методов операторов запроса, таких как метод [Where](https://docs.microsoft.com//dotnet/api/system.linq.enumerable.where) или `Contains` (используется в приведенном выше коде). Запросы LINQ не выполняются в том случае, если они определяются или изменяются путем вызова метода (например, `Where`, `Contains` или `OrderBy`). Вместо этого выполнение запроса откладывается.  Это означает, что вычисление выражения откладывается до тех пор, пока не будет выполнена итерация его реализованного значения или пока не будет вызван метод `ToListAsync`. Дополнительные сведения об отложенном и немедленном выполнении запросов см. в разделе [Выполнение запроса](https://docs.microsoft.com/dotnet/framework/data/adonet/ef/language-reference/query-execution).
 

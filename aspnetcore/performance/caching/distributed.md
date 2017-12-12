@@ -1,29 +1,27 @@
 ---
-title: "Работа с распределенного кэша"
+title: "Работа с распределенного кэша в ASP.NET Core"
 author: ardalis
-description: 
-keywords: ASP.NET Core
+description: "Сведения об использовании распределенное кэширование для повышения производительности и масштабируемости приложений ASP.NET Core, особенно в том случае, если размещенные в среде фермы облако или сервера."
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
 ms.topic: article
-ms.assetid: 870f082d-6d43-453d-b311-45f3aeb4d2c5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/distributed
-ms.openlocfilehash: abf680fef9de175082c1e4f4cebc2b9648f18a28
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: a00937e8c47e73fa8e29af883f44f6e1f4d4b1b4
+ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 11/29/2017
 ---
-# <a name="working-with-a-distributed-cache"></a>Работа с распределенного кэша
+# <a name="working-with-a-distributed-cache-in-aspnet-core"></a>Работа с распределенного кэша в ASP.NET Core
 
 По [Стив Смит](https://ardalis.com/)
 
 Распределенные кэши могут улучшить производительность и масштабируемость приложений ASP.NET Core, особенно в том случае, если размещенные в среде фермы облако или сервера. В этой статье объясняется, как работать с ASP.NET Core встроенных распределенного кэша абстракции и реализации.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/distributed/sample)
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/distributed/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-a-distributed-cache"></a>Что такое распределенного кэша
 
@@ -68,7 +66,7 @@ ms.lasthandoff: 09/12/2017
 
    2. Настройка деталей реализации `IDistributedCache` в ваш `Startup` класса `ConfigureServices` метода и добавьте его в контейнер существует.
 
-   3. В приложении [`Middleware](../../fundamentals/middleware.md) or MVC controller classes, request an instance of `IDistributedCache "из конструктора. Экземпляр будут предоставляться [внедрения зависимостей](../../fundamentals/dependency-injection.md) (DI).
+   3. В приложении [по промежуточного слоя](../../fundamentals/middleware.md) или классов контроллеров MVC, запросить экземпляр `IDistributedCache` из конструктора. Экземпляр будут предоставляться [внедрения зависимостей](../../fundamentals/dependency-injection.md) (DI).
 
 > [!NOTE]
 > Нет необходимости использовать единственный элемент или Scoped время существования `IDistributedCache` экземпляров (хотя бы для встроенных реализаций). Можно также создать экземпляр везде, где может потребоваться одно (вместо использования [внедрения зависимостей](../../fundamentals/dependency-injection.md)), но это может усложнить код для тестирования и приводит к нарушению [явные зависимости принцип](http://deviq.com/explicit-dependencies-principle/).
@@ -105,7 +103,7 @@ ms.lasthandoff: 09/12/2017
 
 Чтобы использовать средство кэша sql, добавьте `SqlConfig.Tools` для `<ItemGroup>` элемент *.csproj* файл и запустите восстановление dotnet.
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/DistCacheSample.csproj?range=23-25)]
+[!code-xml[Main](./distributed/sample/src/DistCacheSample/DistCacheSample.csproj?range=23-25)]
 
 Протестируйте SqlConfig.Tools, выполнив следующую команду
 
@@ -136,8 +134,13 @@ C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(loc
 
 При выборе реализация `IDistributedCache` для приложения, выбор между Redis и SQL Server, основанное на существующей инфраструктуре и среду, требований к производительности и качества работы команды. Если команда является более удобно работать с Redis, это лучший выбор. Если предпочитает ваша команда SQL Server, можно быть уверенным, что реализация также. Обратите внимание, что традиционные решения кэширования сохраняет данные в памяти, что позволяет для быстрого получения данных. Необходимо хранить в кэше часто используемых данных и хранить все данные в постоянном хранилище серверной части, например SQL Server или хранилища Azure. Кэш redis — это кэширования решение, которое обеспечивает высокую пропускную способность и низкую задержку по сравнению с кэша SQL.
 
-Дополнительные ресурсы:
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [В памяти кэша](memory.md)
 * [Кэш Azure redis](https://azure.microsoft.com/documentation/services/redis-cache/)
 * [База данных SQL в Azure](https://azure.microsoft.com/documentation/services/sql-database/)
+* [Кэширование в памяти](xref:performance/caching/memory)
+* [Обнаруживать изменения с маркерами изменения](xref:fundamentals/primitives/change-tokens)
+* [Кэширование ответов](xref:performance/caching/response)
+* [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
+* [Вспомогательный тег кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [Вспомогательный тег распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

@@ -10,20 +10,20 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/extensibility/core-crypto
-ms.openlocfilehash: 8ee4e380b154db7f1736edc793b56258655ddd52
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 69839562c39ab83531085e20dac1bd56e8d13d3f
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="core-cryptography-extensibility"></a>Основные расширяемости шифрования
 
-<a name=data-protection-extensibility-core-crypto></a>
+<a name="data-protection-extensibility-core-crypto"></a>
 
 >[!WARNING]
 > Типы, реализующие любой из следующих интерфейсов должны быть потокобезопасным для нескольких клиентов.
 
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptor></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptor"></a>
 
 ## <a name="iauthenticatedencryptor"></a>IAuthenticatedEncryptor
 
@@ -40,12 +40,12 @@ ms.lasthandoff: 08/25/2017
 > [!NOTE]
 > Сам экземпляр IAuthenticatedEncryptor не обязательно фактически содержит материал ключа. Например реализация может делегировать аппаратный модуль безопасности для всех операций.
 
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptorfactory></a>
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptorfactory"></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor"></a>
 
 ## <a name="how-to-create-an-iauthenticatedencryptor"></a>Создание IAuthenticatedEncryptor
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 **IAuthenticatedEncryptorFactory** интерфейс представляет тип, который знает, как создать [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра. API-интерфейса выглядит следующим образом.
 
@@ -72,7 +72,7 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 // the 'roundTripped' and 'plaintext' buffers should be equivalent
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 **IAuthenticatedEncryptorDescriptor** интерфейс представляет тип, который знает, как создать [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра. API-интерфейса выглядит следующим образом.
 
@@ -102,17 +102,17 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 ---
 
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor"></a>
 
 ## <a name="iauthenticatedencryptordescriptor-aspnet-core-2x-only"></a>IAuthenticatedEncryptorDescriptor (ASP.NET Core 2.x только)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 **IAuthenticatedEncryptorDescriptor** интерфейс представляет тип, который знает, как экспортировать сама себя XML. API-интерфейса выглядит следующим образом.
 
 * ExportToXml(): XmlSerializedDescriptorInfo
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ---
 
@@ -120,7 +120,7 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 Основное различие между IAuthenticatedEncryptor и IAuthenticatedEncryptorDescriptor является то, что дескриптор знает, как создать шифратор и передайте в него допустимые аргументы. Рассмотрите возможность IAuthenticatedEncryptor, реализация которого зависит от SymmetricAlgorithm и KeyedHashAlgorithm. Задание шифратор — использовать эти типы, но он не обязательно знать эти типы происхождения, поэтому его нельзя записывать действительно правильную описание как воссоздать сам при повторном запуске приложения. Дескриптор действует как более высокого уровня на основе этого. Так как дескриптор знает, как создать экземпляр шифратор (например, он знает, как создать необходимые алгоритмы), он может сериализовать эти знания в формате XML, чтобы экземпляр шифратора можно воссоздать после сброса приложения.
 
-<a name=data-protection-extensibility-core-crypto-exporttoxml></a>
+<a name="data-protection-extensibility-core-crypto-exporttoxml"></a>
 
 Дескриптор быть сериализованы посредством его ExportToXml подпрограммы. Эта процедура возвращает XmlSerializedDescriptorInfo, который содержит два свойства: это представление XElement дескриптора и тип, представляющий [IAuthenticatedEncryptorDescriptorDeserializer](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer) которого может быть используется, чтобы восстановить этот дескриптор получает соответствующий XElement.
 
@@ -131,7 +131,7 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 Также возможны случаи, где сериализованный дескриптора не содержит конфиденциальные сведения. Снова рассмотрим случай криптографический ключ, хранящийся в HSM. Дескриптор не может записать материал ключа при сериализации сам, так как аппаратный модуль безопасности не будут предоставлены материалы в текстовом виде. Вместо этого дескриптора может запишите ключ в оболочку версию ключа (если аппаратный модуль безопасности позволяет выполнять экспорт таким образом) или аппаратный модуль безопасности собственный уникальный идентификатор для ключа.
 
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer"></a>
 
 ## <a name="iauthenticatedencryptordescriptordeserializer"></a>IAuthenticatedEncryptorDescriptorDeserializer
 
@@ -152,7 +152,7 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 ## <a name="the-top-level-factory"></a>Фабрика верхнего уровня
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 **AlgorithmConfiguration** класс представляет тип, который знает, как создать [IAuthenticatedEncryptorDescriptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor) экземпляров. Он предоставляет единый интерфейс API.
 
@@ -162,9 +162,9 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 При вызове CreateNewDescriptor, исключительно для этого вызова метода создается новый материал ключа и создается новый IAuthenticatedEncryptorDescriptor которого переносится этот материал ключа и алгоритма сведения, необходимые для использования материала. Материал ключа может создания в программном обеспечении (и в памяти), может создать и находятся в аппаратный модуль безопасности и т. д. Важно точка находится любые два вызова CreateNewDescriptor никогда не следует создавать эквивалентные IAuthenticatedEncryptorDescriptor экземпляров.
 
-Тип AlgorithmConfiguration служит в качестве точки входа для создания ключа подпрограммы например [автоматического смену ключей](../implementation/key-management.md#data-protection-implementation-key-management). Чтобы изменить реализацию для всех будущих ключей, установите свойство AuthenticatedEncryptorConfiguration в KeyManagementOptions.
+Тип AlgorithmConfiguration служит в качестве точки входа для создания ключа подпрограммы например [автоматического смену ключей](../implementation/key-management.md#key-expiration-and-rolling). Чтобы изменить реализацию для всех будущих ключей, установите свойство AuthenticatedEncryptorConfiguration в KeyManagementOptions.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 **IAuthenticatedEncryptorConfiguration** интерфейс представляет тип, который знает, как создать [IAuthenticatedEncryptorDescriptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor) экземпляров. Он предоставляет единый интерфейс API.
 
@@ -174,6 +174,6 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 При вызове CreateNewDescriptor, исключительно для этого вызова метода создается новый материал ключа и создается новый IAuthenticatedEncryptorDescriptor которого переносится этот материал ключа и алгоритма сведения, необходимые для использования материала. Материал ключа может создания в программном обеспечении (и в памяти), может создать и находятся в аппаратный модуль безопасности и т. д. Важно точка находится любые два вызова CreateNewDescriptor никогда не следует создавать эквивалентные IAuthenticatedEncryptorDescriptor экземпляров.
 
-Тип IAuthenticatedEncryptorConfiguration служит в качестве точки входа для создания ключа подпрограммы например [автоматического смену ключей](../implementation/key-management.md#data-protection-implementation-key-management). Чтобы изменить реализацию для всех будущих ключей, зарегистрируйте одноэлементный IAuthenticatedEncryptorConfiguration в контейнере службы.
+Тип IAuthenticatedEncryptorConfiguration служит в качестве точки входа для создания ключа подпрограммы например [автоматического смену ключей](../implementation/key-management.md#key-expiration-and-rolling). Чтобы изменить реализацию для всех будущих ключей, зарегистрируйте одноэлементный IAuthenticatedEncryptorConfiguration в контейнере службы.
 
 ---

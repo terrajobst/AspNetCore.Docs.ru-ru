@@ -2,7 +2,7 @@
 title: "С помощью Bower в ASP.NET Core"
 author: rick-anderson
 description: "Управление пакетами стороне клиента с помощью Bower."
-keywords: ASP.NET Core, bower
+keywords: ASP.NET Core,bower
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/bower
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f5d9acc59b6f40dc8a336f59925d639fff007c4e
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 183e748cbf87b1973941eacb3fb1008f4041bb2a
+ms.sourcegitcommit: 532a323f99a37c4d7894c95cee3f7a04b594dcec
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Управление пакетами стороне клиента с помощью Bower в ASP.NET Core
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 09/22/2017
 
 * Щелкните правой кнопкой мыши проект в обозревателе решений и выберите **управление пакетами Bower** (также в главном меню **проекта** > **управление пакетами Bower**).
 
-* В **Bower: \<имя проекта\> ** окно, перейдите на вкладку «Просмотр» и отфильтруйте список пакетов, введя `font-awesome` в поле поиска:
+* В **Bower: \<имя проекта\>**  окно, перейдите на вкладку «Просмотр» и отфильтруйте список пакетов, введя `font-awesome` в поле поиска:
 
  ![Управление пакетами bower](bower/_static/manage-bower-packages.png)
 
@@ -78,7 +78,7 @@ Bower использует [семантического управления в
 
 ## <a name="exploring-the-client-side-build-process"></a>Обзор процесса сборки на стороне клиента
 
-Большинство шаблонов проектов ASP.NET Core уже настроены для использования Bower. Это Далее Пошаговое руководство начинается с пустой проект ASP.NET Core и добавляет каждый фрагмент вручную, то можно понять, как Bower используется в проекте. Вы видите, можно, что происходит в структуре проекта и выполняется вывод каждого изменения конфигурации среды выполнения.
+Большинство шаблонов проектов ASP.NET Core уже настроены для использования Bower. Это Далее Пошаговое руководство начинается с пустой проект ASP.NET Core и добавляет каждый фрагмент вручную, то можно понять, как Bower используется в проекте. Вы увидите, что происходит в структуре проекта и среду выполнения, в выходные данные, что для каждого изменения конфигурации.
 
 Указаны общие шаги для использования процесса построения на стороне клиента с помощью Bower.
 

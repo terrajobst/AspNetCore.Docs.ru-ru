@@ -1,8 +1,8 @@
 ---
 title: "Программа установки внешней учетной записи Google в ASP.NET Core"
 author: rick-anderson
-description: "Программа установки внешней учетной записи Google в ASP.NET Core"
-keywords: ASP.NET Core
+description: "В этом учебнике показано интеграции проверки подлинности пользователя учетной записи Google в существующее приложение ASP.NET Core."
+keywords: "ASP.NET Core, Google, имя входа, проверка подлинности"
 ms.author: riande
 manager: wpickett
 ms.date: 08/02/2017
@@ -10,15 +10,13 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/google-logins
-ms.openlocfilehash: 8723a74250ff1b0a63139057bfc17fdd31dd169e
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: af316d832de7356d539eaaab5be6485639030c7a
+ms.sourcegitcommit: 8ab9d0065fad23400757e4e08033787e42c97d41
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="configuring-google-authentication-in-aspnet-core"></a>Настройка проверки подлинности Google в ASP.NET Core
-
-<a name=security-authentication-google-logins></a>
 
 Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -89,13 +87,6 @@ ms.lasthandoff: 09/28/2017
 
 ## <a name="configure-google-authentication"></a>Настройка проверки подлинности Google
 
-Шаблон проекта, используемые в этом учебнике гарантирует, что [Microsoft.AspNetCore.Authentication.Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google) пакет установлен.
-
- * Чтобы установить этот пакет с 2017 г. для Visual Studio, щелкните правой кнопкой мыши проект и выберите пункт **управление пакетами NuGet**.
- * Чтобы установить с .NET Core CLI, выполните следующую команду в каталоге проекта:
-
-   `dotnet add package Microsoft.AspNetCore.Authentication.Google`
-
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Добавление службы Google в `ConfigureServices` метод в *файла Startup.cs* файла:
@@ -115,6 +106,13 @@ services.AddAuthentication().AddGoogle(googleOptions =>
 [!INCLUDE[default settings configuration](includes/default-settings.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+Шаблон проекта, используемые в этом учебнике гарантирует, что [Microsoft.AspNetCore.Authentication.Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google) пакет установлен.
+
+ * Чтобы установить этот пакет с 2017 г. для Visual Studio, щелкните правой кнопкой мыши проект и выберите пункт **управление пакетами NuGet**.
+ * Чтобы установить с .NET Core CLI, выполните следующую команду в каталоге проекта:
+
+   `dotnet add package Microsoft.AspNetCore.Authentication.Google`
 
 Добавить по промежуточного слоя Google в `Configure` метод в *файла Startup.cs* файла:
 

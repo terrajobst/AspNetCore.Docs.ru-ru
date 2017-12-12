@@ -11,11 +11,11 @@ ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 820836eaf3a29c9941e84458f09ac470f8150ba7
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 0679663b3b3b66f9935d0fb24360be2954fcdee1
+ms.sourcegitcommit: 9ecd4e9fb0c40c3693dab079eab1ff94b461c922
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об учетных данных ASP.NET Core
 
@@ -32,11 +32,11 @@ ms.lasthandoff: 09/22/2017
 1.  Создайте проект веб-приложения ASP.NET Core с отдельными учетными записями пользователей.
 
     # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-    В Visual Studio, выберите **файл** -> **New** -> **проекта**. Выберите **веб-приложение ASP.NET** из **новый проект** диалоговое окно. При выборе ASP.NET Core **веб-приложение** с **индивидуальные учетные записи** в качестве метода проверки подлинности.
+    В Visual Studio, выберите **файл** -> **New** -> **проекта**. Выберите **веб-приложение ASP.NET** из **новый проект** диалоговое окно. При выборе ASP.NET Core **Web Application(Model-View-Controller)** для ASP.NET Core 2.x с **индивидуальные учетные записи** в качестве метода проверки подлинности.
 
     Примечание: Необходимо выбрать **индивидуальные учетные записи**.
  
-    ![Диалоговое окно создания нового проекта](identity/_static/01-mvc.png)
+    ![Диалоговое окно создания нового проекта](identity/_static/01-mvc_2.png)
     
     # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
     Если используется .NET Core CLI, создайте новый проект с помощью ``dotnet new mvc --auth Individual``. Это создаст новый проект с тем же кодом шаблона удостоверений, создаваемых в Visual Studio.
@@ -134,7 +134,7 @@ ms.lasthandoff: 09/22/2017
  
 7.  Просмотр базы данных.
 
-    Если приложение использует базу данных SQL Server (по умолчанию в Windows и для пользователей Visual Studio), можно просматривать базы данных с приложением, создаваемым. Можно использовать **SQL Server Management Studio**. Кроме того, в Visual Studio, выберите **представление** -> **обозреватель объектов SQL Server**. Подключиться к **(localdb) \MSSQLLocalDB**. База данных с именем, соответствующим * *aspnet - <*имя проекта*>-<*Дата строка*> ** отображается.
+    Если приложение использует базу данных SQL Server (по умолчанию в Windows и для пользователей Visual Studio), можно просматривать базы данных с приложением, создаваемым. Можно использовать **SQL Server Management Studio**. Кроме того, в Visual Studio, выберите **представление** -> **обозреватель объектов SQL Server**. Подключиться к **(localdb) \MSSQLLocalDB**. База данных с именем, соответствующим  **aspnet - <*имя проекта*>-<*Дата строка*> ** отображается.
 
     ![Контекстные меню AspNetUsers таблицу базы данных](identity/_static/04-db.png)
     

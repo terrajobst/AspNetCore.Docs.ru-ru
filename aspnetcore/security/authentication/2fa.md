@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/2fa
-ms.openlocfilehash: 802a4c92b366d656e194e2099b412e48eef7ae6d
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 15620d89c4db2e74dbcec4707bb2ebc6df916e03
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="two-factor-authentication-with-sms"></a>Двухфакторная проверка подлинности с помощью SMS
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 09/22/2017
 
 ### <a name="provide-credentials-for-the-sms-service"></a>Укажите учетные данные для службы SMS
 
-Мы будем использовать [параметры шаблона](xref:fundamentals/configuration#options-config-objects) для доступа к параметрам учетной записи и ключа пользователя. 
+Мы будем использовать [параметры шаблона](xref:fundamentals/configuration/options) для доступа к параметрам учетной записи и ключа пользователя. 
 
    * Создание класса для выборки защищенный ключ SMS. Для этого образца `SMSoptions` класса создается в *Services/SMSoptions.cs* файла.
 

@@ -1,8 +1,8 @@
 ---
 title: "Включение запросы независимо от источника (CORS)"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "В этом документе представлены CORS как стандарт для предоставления или отклонения запросов независимо от источника в приложении ASP.NET Core."
+keywords: "ASP.NET Core, CORS, кросс-источника"
 ms.author: riande
 manager: wpickett
 ms.date: 05/17/2017
@@ -11,11 +11,11 @@ ms.assetid: f9d95e88-4d7e-4d0c-a8e1-47de1128d505
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/cors
-ms.openlocfilehash: e441ce1c50139a5b33865eec8e8d99764258730d
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 5398b6ad6531710de2b8000cb368e5fa607ae7ff
+ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="enabling-cross-origin-requests-cors"></a>Включение запросы независимо от источника (CORS)
 
@@ -219,7 +219,7 @@ $.ajax({
 
 [!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=89-94)]
 
-<a name=cors-how-cors-works></a>
+<a name="cors-how-cors-works"></a>
 
 ## <a name="how-cors-works"></a>Как работает CORS
 
@@ -240,7 +240,7 @@ User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6
 Host: myservice.azurewebsites.net
 ```
 
-Если сервер разрешает запрос, он устанавливает заголовка Access-Control-Allow-Origin. Значение этого заголовка соответствует заголовку источника либо является использование подстановочного знака «*», это значит, что разрешены любые источники.:
+Если сервер разрешает запрос, он устанавливает заголовка Access-Control-Allow-Origin в ответе. Значение этого заголовка соответствует заголовку источника из запроса, либо значение подстановочный знак «*», это значит, что разрешены любые источники:
 
 ```
 HTTP/1.1 200 OK

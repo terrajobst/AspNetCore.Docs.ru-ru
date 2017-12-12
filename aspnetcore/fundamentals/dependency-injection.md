@@ -12,21 +12,21 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/dependency-injection
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f5c903a72d004afac55fbcc04ad157442e7a18ee
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 8d12960708f9d9bf2bc7c5997f82096d93087d13
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="introduction-to-dependency-injection-in-aspnet-core"></a>Общие сведения о внедрение зависимостей в ASP.NET Core
 
-<a name=fundamentals-dependency-injection></a>
+<a name="fundamentals-dependency-injection"></a>
 
 По [Стив Смит](https://ardalis.com/) и [Скотт Addie](https://scottaddie.com)
 
 ASP.NET Core является разработана с нуля для поддержки и воспользоваться внедрения зависимостей. ASP.NET Core приложения могут использовать службы встроенная платформа, задав их внедрены в методы в классе при запуске, и службы приложения могут быть настроены для внедрения также. Контейнер служб по умолчанию, предоставляемый ASP.NET Core предоставляет минимальный набор и не предназначен для замены другие контейнеры.
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-dependency-injection"></a>Что такое внедрения зависимости
 
@@ -143,7 +143,7 @@ public CharactersController(ICharacterRepository characterRepository, string tit
 >[!WARNING]
 > Устранение основных опасности необходимо использовать с осторожностью `Scoped` из Singleton-классом. Вполне вероятно, в этом случае, служба будет иметь неверное состояние при обработке последующих запросов.
 
-Службы, имеющие зависимости следует зарегистрировать их в контейнере. Если конструктор служб требуется примитив, таких как `string`, это могут быть добавлены с помощью [параметры шаблона и конфигурации](configuration.md).
+Службы, имеющие зависимости следует зарегистрировать их в контейнере. Если конструктор служб требуется примитив, таких как `string`, это могут быть добавлены с помощью [конфигурации](xref:fundamentals/configuration/index) и [параметры шаблона](xref:fundamentals/configuration/options).
 
 ## <a name="service-lifetimes-and-registration-options"></a>Время существования службы и параметры регистрации
 
@@ -228,11 +228,16 @@ public class Service1 : IDisposable {}
 public class Service2 : IDisposable {}
 public class Service3 : IDisposable {}
 
+public interface ISomeService {}
+public class SomeServiceImplementation : ISomeService, IDisposable {}
+
+
 public void ConfigureServices(IServiceCollection services)
 {
     // container will create the instance(s) of these types and will dispose them
     services.AddScoped<Service1>();
     services.AddSingleton<Service2>();
+    services.AddSingleton<ISomeService>(sp => new SomeServiceImplementation());
 
     // container did not create instance so it will NOT dispose it
     services.AddSingleton<Service3>(new Service3());
@@ -296,7 +301,7 @@ public class DefaultModule : Module
 
 * DI — для объектов, имеющих сложных зависимостей. Контроллеры, служб, адаптеры и репозиториев иллюстрируют все объекты, которые могут быть добавлены DI.
 
-* Не храните данные и конфигурации непосредственно в DI. Например корзину пользователя обычно не следует добавлять в контейнер службы. Следует использовать конфигурации [параметры модели](configuration.md#options-config-objects). Аналогичным образом можно Избегайте «данных владельца» объекты, которые существуют только для доступа к какой-либо другой объект. Лучше запроса фактический элемент понадобится DI, если это возможно.
+* Не храните данные и конфигурации непосредственно в DI. Например корзину пользователя обычно не следует добавлять в контейнер службы. Следует использовать конфигурации [параметры шаблона](xref:fundamentals/configuration/options). Аналогичным образом можно Избегайте «данных владельца» объекты, которые существуют только для доступа к какой-либо другой объект. Лучше запроса фактический элемент понадобится DI, если это возможно.
 
 * Избегайте доступа к службам.
 

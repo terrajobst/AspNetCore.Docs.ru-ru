@@ -1,8 +1,8 @@
 ---
 title: "Формат хранилища ключей"
 author: tdykstra
-description: 
-keywords: ASP.NET Core
+description: "В этом документе подробно описывается реализация формата хранения ключей защиты данных ASP.NET Core."
+keywords: "Хранилище ключей ASP.NET Core, защиты данных"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: e8996478-f7bf-4b58-bab4-7fdb5d8556c5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-storage-format
-ms.openlocfilehash: e761eaa406a9691e3fa36881d42c1a0c1bd8a206
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 4ebad05f7d55e954463ce5e277b419a7d6f773c0
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="key-storage-format"></a>Формат хранилища ключей
 
-<a name=data-protection-implementation-key-storage-format></a>
+<a name="data-protection-implementation-key-storage-format"></a>
 
 Объекты хранятся хранятся в XML-представление. Каталог по умолчанию для хранилища ключей является % LOCALAPPDATA%\ASP.NET\DataProtection-Keys\.
 

@@ -11,15 +11,17 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 379802f644b977563b0b50354feb1fb9a4c8fabb
-ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
+ms.openlocfilehash: 5095def776f79d0bb76d5a8e94a4228ef0abed75
+ms.sourcegitcommit: a80d35647aff66323160b2cb413b65d79d98f7a6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>Приступая к работе с ASP.NET MVC ядра и Entity Framework Core, с помощью Visual Studio (1, 10)
 
 По [Tom Dykstra](https://github.com/tdykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT)
+
+Доступна версия страниц Razor этого учебника [здесь](xref:data/ef-rp/intro). Версия страниц Razor проще выполните и рассматриваются дополнительные возможности EF. Корпорация Майкрософт рекомендует следовать [страниц Razor версии этого учебника](xref:data/ef-rp/intro).
 
 Contoso университета примера веб-приложения показано, как создавать веб-приложения ASP.NET MVC 2.0 ядра с помощью основных Entity Framework (EF) 2.0 и Visual Studio 2017 г.
 
@@ -64,7 +66,7 @@ EF Core 2.0 — это последняя версия EF, но еще не вс
 
 * В левой области выберите **установленные > Visual C# > Web**.
 
-* Выберите **веб-приложения ASP.NET Core** шаблона проекта.
+* Выберите шаблон проекта **Веб-приложение ASP.NET Core**.
 
 * Введите **ContosoUniversity** как имя и нажмите кнопку **ОК**.
 
@@ -192,7 +194,7 @@ Entity Framework интерпретирует свойство как свойс
 
 [!code-csharp[Main](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=3-4)]
 
-Имя строки подключения передается в контекст путем вызова метода на `DbContextOptionsBuilder` объекта. Для локальной разработки [система конфигурации ASP.NET Core](../../fundamentals/configuration.md) считывает строку подключения из *appsettings.json* файла.
+Имя строки подключения передается в контекст путем вызова метода на `DbContextOptionsBuilder` объекта. Для локальной разработки [система конфигурации ASP.NET Core](xref:fundamentals/configuration/index) считывает строку подключения из *appsettings.json* файла.
 
 Добавить `using` инструкции для `ContosoUniversity.Data` и `Microsoft.EntityFrameworkCore` пространства имен, а затем постройте проект.
 

@@ -1,26 +1,24 @@
 ---
 title: "Кэширование ответов в ASP.NET Core"
 author: rick-anderson
-description: "Сведения об использовании ответа кэширование снизить пропускную способность и повысить производительность."
-keywords: "ASP.NET Core, кэширование, HTTP-заголовки ответа"
+description: "Сведения об использовании ответ, кэширование, более низкие требования к пропускной способности и повышения производительности приложений ASP.NET Core."
 ms.author: riande
 manager: wpickett
 ms.date: 09/20/2017
 ms.topic: article
-ms.assetid: cb42035a-60b0-472e-a614-cb79f443f654
 ms.prod: asp.net-core
 uid: performance/caching/response
-ms.openlocfilehash: 79d9246632aae0fe9c3629fd7202842836828151
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 104cfb2eab706a2ec6278b4d1c461f70b0af5df1
+ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="response-caching-in-aspnet-core"></a>Кэширование ответов в ASP.NET Core
 
 По [Luo Джон](https://github.com/JunTaoLuo), [Рик Андерсон](https://twitter.com/RickAndMSFT), [Стив Смит](https://ardalis.com/), и [Latham Люк](https://github.com/guardrex)
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 Кэширование ответов снижает количество запросов, выполненных клиентом или прокси-сервера веб-сервера. Кэширование ответов также сокращает время работы веб-сервер выполняет для формирования ответа. Кэширование ответов управляется заголовки, указывающие способ клиента, прокси-сервера и по промежуточного слоя для кэширования ответов.
 
@@ -179,4 +177,9 @@ Cache-Control: public,max-age=60
 
 * [Кэширование в HTTP из спецификации](https://tools.ietf.org/html/rfc7234#section-3)
 * [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
+* [Кэширование в памяти](xref:performance/caching/memory)
+* [Работа с распределенного кэша](xref:performance/caching/distributed)
+* [Обнаруживать изменения с маркерами изменения](xref:fundamentals/primitives/change-tokens)
 * [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
+* [Вспомогательный тег кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [Вспомогательный тег распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

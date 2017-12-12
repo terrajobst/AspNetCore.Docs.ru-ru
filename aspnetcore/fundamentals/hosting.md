@@ -10,17 +10,17 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
-ms.openlocfilehash: 455b992dc10129278f8e23366aac9d8bcbf5594c
-ms.sourcegitcommit: ef9784dd7500f22fb98b3591ebd73d57d4f67544
+ms.openlocfilehash: 7deccf135ddd21729206ebed58ddc8aca52c1deb
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/21/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="hosting-in-aspnet-core"></a>Размещение в ASP.NET Core
 
-По [Latham Люк](https://github.com/guardrex)
+Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-Настройка приложений ASP.NET Core и запустите *узла*, который отвечает за управление запуском и временем существования приложения. Как минимум узел настраивает сервер и конвейер обработки запросов.
+Приложения ASP.NET Core настраивают и запускают *хост*, который отвечает за запуск приложений и управление жизненным циклом. Как минимум узел настраивает сервер и конвейер обработки запросов.
 
 ## <a name="setting-up-a-host"></a>Настройка узла
 
@@ -40,12 +40,12 @@ ms.lasthandoff: 09/21/2017
   * [Секреты пользователя](xref:security/app-secrets) при запуске приложения `Development` среде.
   * Переменные среды.
   * Аргументы командной строки.
-* Настраивает [входа](xref:fundamentals/logging) для вывода на консоль и отладка с [фильтрации журнала](xref:fundamentals/logging#log-filtering) правила, указанные в разделе конфигурации ведения журнала *appsettings.json* или *appsettings. {Среды} .json* файл.
+* Настраивает [входа](xref:fundamentals/logging/index) для вывода на консоль и отладка с [фильтрации журнала](xref:fundamentals/logging/index#log-filtering) правила, указанные в разделе конфигурации ведения журнала *appsettings.json* или *appsettings. {Среды} .json* файл.
 * При работе под IIS позволяет [интеграции IIS](xref:publishing/iis) путем настройки пути к базовой папке и порта сервера должен прослушивать при использовании [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратного прокси-сервера служб IIS и Kestrel. Кроме того, настраивает приложение для [перехватить ошибки запуска](#capture-startup-errors). Параметры по умолчанию служб IIS см. в разделе [IIS параметры раздела узла ASP.NET Core в Windows с помощью IIS](xref:publishing/iis#iis-options).
 
 *Содержимое корневого* определяет, где узел ищет файлы содержимого, такие как файлы представления MVC. Корень содержимого по умолчанию — [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory). Это приведет к с помощью корневую папку веб-проекта, который является корнем содержимого при запуске приложения из корневой папки (например, вызов [dotnet запуска](/dotnet/core/tools/dotnet-run) из папки проекта). Это значение по умолчанию, используемых в [Visual Studio](https://www.visualstudio.com/) и [dotnet новые шаблоны](/dotnet/core/tools/dotnet-new).
 
-В разделе [конфигурации в ASP.NET Core](xref:fundamentals/configuration) Дополнительные сведения о настройке приложения.
+В разделе [конфигурации в ASP.NET Core](xref:fundamentals/configuration/index) Дополнительные сведения о настройке приложения.
 
 > [!NOTE]
 > В качестве альтернативы с помощью статического `CreateDefaultBuilder` метод, создание узла из [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) поддерживаемых подход с ASP.NET Core 2.x. См. на вкладке 1.x ASP.NET Core для получения дополнительной информации.
@@ -403,7 +403,7 @@ var host = new WebHostBuilder()
 
 ## <a name="overriding-configuration"></a>Переопределение конфигурации
 
-Используйте [конфигурации](configuration.md) для настройки узла. В следующем примере конфигурации узла при необходимости указывается в *hosting.json* файла. Загрузить любую конфигурацию из *hosting.json* файл может быть переопределена аргументы командной строки. Конфигурации построения (в `config`) используется для настройки узла с `UseConfiguration`.
+Используйте [конфигурации](xref:fundamentals/configuration/index) для настройки узла. В следующем примере конфигурации узла при необходимости указывается в *hosting.json* файла. Загрузить любую конфигурацию из *hosting.json* файл может быть переопределена аргументы командной строки. Конфигурации построения (в `config`) используется для настройки узла с `UseConfiguration`.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 

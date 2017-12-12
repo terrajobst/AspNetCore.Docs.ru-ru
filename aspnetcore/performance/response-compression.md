@@ -11,27 +11,32 @@ ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: 7aea4db44764d5d8f47520adb6599e651e0e9000
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: fdb396d8857dc9c118cc19da1f7d1d498dfaacd5
+ms.sourcegitcommit: 8ab9d0065fad23400757e4e08033787e42c97d41
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>Ответ сжатия по промежуточного слоя ASP.NET Core
 
-По [Latham Люк](https://github.com/guardrex)
+Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 Пропускная способность сети является ограниченным ресурсом. Обычно уменьшить размер ответа часто значительно увеличивает скорость реагирования приложения. Для сжатия ответов приложения является одним из способов уменьшить размер полезных данных.
 
 ## <a name="when-to-use-response-compression-middleware"></a>Когда следует использовать ответ сжатия по промежуточного слоя
-Используйте технологии сжатия ответ на основе сервера в IIS, Apache или Nginx, где производительности по промежуточного слоя, скорее всего, не совпадают, серверных модулей. Используйте ответа сжатия по промежуточного слоя, если не удается использовать.
-* [Модуль сжатия динамического IIS](https://www.iis.net/overview/reliability/dynamiccachingandcompression)
-* [Модуль mod_deflate Apache](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
-* [NGINX сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
-* [HTTP.sys сервера](xref:fundamentals/servers/httpsys) (ранее называвшиеся [WebListener](xref:fundamentals/servers/weblistener))
-* [Kestrel](xref:fundamentals/servers/kestrel)
+Используйте технологии сжатия ответ на основе сервера в IIS, Apache или Nginx. Производительность по промежуточного слоя, скорее всего, не будет соответствовать модулей сервера. [HTTP.sys сервера](xref:fundamentals/servers/httpsys) и [Kestrel](xref:fundamentals/servers/kestrel) в настоящее время не предлагают поддержка встроенных сжатия.
+
+Используйте ответа сжатия по промежуточного слоя, когда вы:
+
+* Не удается использовать следующие технологии сжатия на основе сервера:
+  * [Модуль сжатия динамического IIS](https://www.iis.net/overview/reliability/dynamiccachingandcompression)
+  * [Модуль mod_deflate Apache](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
+  * [NGINX сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
+* Размещение непосредственно на:
+  * [HTTP.sys сервера](xref:fundamentals/servers/httpsys) (ранее называвшиеся [WebListener](xref:fundamentals/servers/weblistener))
+  * [Kestrel](xref:fundamentals/servers/kestrel)
 
 ## <a name="response-compression"></a>Сжатие ответа
 Как правило любой ответ, изначально не сжаты могут выиграть от сжатия ответов. Ответы, изначально не сжаты обычно включают: CSS, JavaScript, HTML, XML и JSON. Не следует сжимать изначально сжатых ресурсов, таких как файлы PNG. При попытке выполнить дальнейшее сжатие изначально сжатого ответа любой небольшой дополнительное сокращение времени, размер и передачи скорее всего будет злоумышленниками время, затраченное на обработку сжатие. Не сжимать файлы размером меньше примерно 150-1000 байт (в зависимости от его содержимого и повысить эффективность сжатия). Затраты на сжатие небольших файлов может привести к сжатый файл, размер которых превышает несжатого файла.

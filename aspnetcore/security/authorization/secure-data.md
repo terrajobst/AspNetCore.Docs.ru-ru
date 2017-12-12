@@ -10,11 +10,11 @@ ms.assetid: abeb2f8e-dfbf-4398-a04c-338a613a65bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: security/authorization/secure-data
-ms.openlocfilehash: 000b14ddc1adb56c029d3da8ab0754215403ba79
-ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
+ms.openlocfilehash: 8eeb5d71575fd819239da6dd63dd31e323fb0556
+ms.sourcegitcommit: 96af03c9f44f7c206e68ae3ef8596068e6b4e5fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Создание приложения ASP.NET Core пользовательскими данными, защищенных авторизации
 
@@ -186,7 +186,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ### <a name="add-a-contact-operations-requirements-class"></a>Добавьте класс требования операции контактов
 
-Добавить `ContactOperationsRequirements` класса *авторизации* папки. Этот класс содержит требованиям наших поддерживает приложения:
+Добавить `ContactOperations` класса *авторизации* папки. Этот класс содержит требованиям наших поддерживает приложения:
 
 [!code-csharp[Main](secure-data/samples/final/Authorization/ContactOperations.cs)]
 

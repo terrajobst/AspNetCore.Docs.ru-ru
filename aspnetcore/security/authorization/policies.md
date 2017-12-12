@@ -1,8 +1,8 @@
 ---
 title: "Пользовательская авторизация на основе политик"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "В этом документе описывается создание и использование обработчиков политику настраиваемой авторизации в приложении ASP.NET Core."
+keywords: "ASP.NET Core авторизации, настраиваемые политики, политика авторизации"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: e422a1b2-dc4a-4bcc-b8d9-7ee62009b6a3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/policies
-ms.openlocfilehash: 5021b5d20f6d9b9a4d8889f25b5e41f2c9306f64
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 0281d054204a11acc2cf11cf5fca23a8f70aad8e
+ms.sourcegitcommit: 037d3900f739dbaa2ba14158e3d7dc81478952ad
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="custom-policy-based-authorization"></a>Пользовательская авторизация на основе политик
 
-<a name=security-authorization-policies-based></a>
+<a name="security-authorization-policies-based"></a>
 
-В системе [роли авторизации](roles.md#security-authorization-role-based) и [утверждений авторизации](claims.md#security-authorization-claims-based) сделать использование требования, обработчик требование и предварительно настроенных политик. Эти блоки позволяют представить оценок авторизации кода, что обеспечивает более широкие, для повторного использования, и структура легко тестируемых авторизации.
+В системе [роли авторизации](roles.md) и [утверждений авторизации](claims.md) сделать использование требования, обработчик требование и предварительно настроенных политик. Эти блоки позволяют представить оценок авторизации кода, что обеспечивает более широкие, для повторного использования, и структура легко тестируемых авторизации.
 
 Политика авторизации состоит из одного или нескольких требований и регистрируется при запуске приложения в процессе настройки службы авторизации, в `ConfigureServices` в *файла Startup.cs* файл.
 
@@ -74,13 +74,13 @@ public class MinimumAgeRequirement : IAuthorizationRequirement
 
 Это требование не должны иметь данные или свойства.
 
-<a name=security-authorization-policies-based-authorization-handler></a>
+<a name="security-authorization-policies-based-authorization-handler"></a>
 
 ## <a name="authorization-handlers"></a>Обработчики авторизации
 
 Обработчик авторизации отвечает за вычисление любой свойств является обязательным. Обработчик авторизации необходимо их оценки относительно указанного `AuthorizationHandlerContext` решаете, разрешена ли авторизация. Это требование может иметь [несколько обработчиков](policies.md#security-authorization-policies-based-multiple-handlers). Обработчики должны наследовать `AuthorizationHandler<T>` там, где T — требование, обрабатывает его.
 
-<a name=security-authorization-handler-example></a>
+<a name="security-authorization-handler-example"></a>
 
 Минимальный возраст обработчик может выглядеть следующим образом:
 
@@ -114,10 +114,11 @@ public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
 }
 ```
 
-В коде выше мы сначала найдите ли основной текущий пользователь не имеет даты рождения утверждения, которой выполнялась, мы знаем, что издатель и доверия. Если утверждение отсутствует мы не удается авторизовать так мы возвращаем. Если у нас есть утверждение, мы выяснить, насколько стара пользователь является и, если они удовлетворяют минимальный возраст, передаваемые с требование затем авторизация прошла успешно. После успешной авторизации мы называем `context.Succeed()` передав требование, которое было выполнено успешно, как параметр.
+В приведенном выше коде сначала взглянуть на предмет основной текущий пользователь не имеет даты рождения утверждения, которой выполнялась, мы знаем, что издатель и доверия. Если утверждение отсутствует мы не удается авторизовать так мы возвращаем. Если у нас есть утверждение, мы выяснить, насколько стара пользователь является и, если они удовлетворяют минимальный возраст, передаваемые с требование затем авторизация прошла успешно. После успешной авторизации мы называем `context.Succeed()` передав требование, которое было выполнено успешно, как параметр.
 
-<a name=security-authorization-policies-based-handler-registration></a>
+<a name="security-authorization-policies-based-handler-registration"></a>
 
+### <a name="handler-registration"></a>Регистрации обработчика
 Обработчики должны быть зарегистрированы в коллекции служб во время настройки, например;
 
 ```csharp
@@ -148,9 +149,9 @@ public void ConfigureServices(IServiceCollection services)
 
 * Чтобы гарантировать сбоя, даже если другие обработчики для требования завершиться успешно, вызовите `context.Fail`.
 
-Независимо от того, вызывается в обработчике все обработчики для требования будет вызываться, если политика требует требование. Это позволяет требования с побочными эффектами, например ведение журнала, который всегда будет иметь место даже в том случае, если `context.Fail()` был вызван в другой обработчик.
+Независимо от того, вызывается, внутри обработчиком все обработчики для требования будет вызываться при политики требует требование. Это позволяет требования с побочными эффектами, например ведение журнала, который всегда будет иметь место даже в том случае, если `context.Fail()` был вызван в другой обработчик.
 
-<a name=security-authorization-policies-based-multiple-handlers></a>
+<a name="security-authorization-policies-based-multiple-handlers"></a>
 
 ## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>Зачем нужен несколько обработчиков для требования?
 

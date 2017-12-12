@@ -11,11 +11,11 @@ ms.assetid: 9c826a76-fbd2-46b5-978d-6ca6df53531a
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/http-modules
-ms.openlocfilehash: eb5049d4d63c224ca74fc39072ae2c0d98ba330d
-ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
+ms.openlocfilehash: f217e5264742826f285444dcbaea4b28b97c4d7e
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="migrating-http-handlers-and-modules-to-aspnet-core-middleware"></a>Миграция обработчики HTTP-данных и модули в по промежуточного слоя ASP.NET Core 
 
@@ -169,11 +169,11 @@ HTTP-модули обычно добавляются конвейера зап�
 
 Некоторые модули и обработчики имеют параметры конфигурации, которые хранятся в *Web.config*. Однако в ASP.NET Core новая модель конфигурации используются вместо *Web.config*.
 
-Новый [система конфигурации](../fundamentals/configuration.md) предоставляет следующие параметры, чтобы устранить эту проблему:
+Новый [система конфигурации](xref:fundamentals/configuration/index) предоставляет следующие параметры, чтобы устранить эту проблему:
 
 * Напрямую внедрить параметры в по промежуточного слоя, как показано в [разделу](#loading-middleware-options-through-direct-injection).
 
-* Используйте [параметры шаблона](../fundamentals/configuration.md#options-config-objects):
+* Используйте [параметры шаблона](xref:fundamentals/configuration/options):
 
 1.  Создание класса, содержащего параметры по промежуточного слоя, например:
 
@@ -384,7 +384,7 @@ public async Task Invoke(HttpContext httpContext)
 
 * [Обработчики HTTP-данных и общие сведения о модули HTTP](https://docs.microsoft.com/iis/configuration/system.webserver/)
 
-* [Конфигурация](../fundamentals/configuration.md)
+* [Конфигурация](xref:fundamentals/configuration/index)
 
 * [Запуск приложения](../fundamentals/startup.md)
 

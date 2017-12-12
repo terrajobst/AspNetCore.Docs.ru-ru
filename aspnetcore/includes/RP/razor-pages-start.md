@@ -12,7 +12,7 @@
 | ----------------- | ------------ | 
 | wwwroot | Содержит статические файлы. См. статью [Работа с статическими файлами](xref:fundamentals/static-files). |
 | Число страниц | Папка для [Razor Pages](xref:mvc/razor-pages/index). | 
-| *appsettings.json* | [Конфигурация](xref:fundamentals/configuration) |
+| *appsettings.json* | [Конфигурация](xref:fundamentals/configuration/index) |
 | *bower.json* | Управление пакетами на стороне клиента. См. раздел [Bower](xref:client-side/bower).|
 | *Program.cs* | [Содержит](xref:fundamentals/hosting) приложение ASP.NET Core.|
 | *Startup.cs* | Настраивает службы и конвейер обработки запросов. См. раздел [Запуск](xref:fundamentals/startup).|

@@ -11,11 +11,11 @@ ms.assetid: bc8b4ba3-e9ba-48fd-b1eb-cd48ff6bc7a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: ff0a1a34ee6b025be6312a81f1a0bcdd07026adb
-ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
+ms.openlocfilehash: 46b92a1cab6fb2cd06eff44feb6a55788fca5c2a
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="dependency-injection-into-controllers"></a>Внедрение зависимостей в контроллерах
 
@@ -89,7 +89,7 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstr
 
 ## <a name="accessing-settings-from-a-controller"></a>Доступ к параметрам из контроллера
 
-Доступ к параметрам приложения или конфигурации из контроллера — это общий шаблон. Такой доступ следует использовать шаблон параметры, описанные в [конфигурации](../../fundamentals/configuration.md). Обычно следует не запросить параметры непосредственно из вашего контроллера с помощью внедрения зависимости. Оптимальный подход — запрос `IOptions<T>` экземпляра, где `T` класс конфигурации, необходимо.
+Доступ к параметрам приложения или конфигурации из контроллера — это общий шаблон. Такой доступ следует использовать шаблон параметры, описанные в [конфигурации](xref:fundamentals/configuration/index). Обычно следует не запросить параметры непосредственно из вашего контроллера с помощью внедрения зависимости. Оптимальный подход — запрос `IOptions<T>` экземпляра, где `T` класс конфигурации, необходимо.
 
 Для работы с параметрами шаблона, необходимо создать класс, который представляет параметры, подобные следующему:
 
@@ -100,7 +100,7 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstr
 [!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=3,4,5,6,9,16,19&range=14-44)]
 
 > [!NOTE]
-> В списке выше, Настройка приложения, чтобы считать параметры из файла формата JSON. Можно также настроить параметры полностью в коде, как показано в приведенном выше коде комментариями. В разделе [конфигурации](../../fundamentals/configuration.md) для дальнейшей настройки.
+> В списке выше, Настройка приложения, чтобы считать параметры из файла формата JSON. Можно также настроить параметры полностью в коде, как показано в приведенном выше коде комментариями. В разделе [конфигурации](xref:fundamentals/configuration/index) для дальнейшей настройки.
 
 После указания объект строго типизированных конфигурации (в этом случае `SampleWebSettings`) и добавить его в коллекцию служб, можно запросить его из любого контроллеру или методу действия, запросив экземпляр `IOptions<T>` (в этом случае `IOptions<SampleWebSettings>`) . В следующем коде показано, как один запрос параметров из контроллера:
 
