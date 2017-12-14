@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 36dd2ad01f93ab1093bad84a58504a150c70ea16
-ms.sourcegitcommit: 4925a91ef4130ddb333f187ab13defe66f2c6cef
+ms.openlocfilehash: a66b5ea32c2090b9944cd61f90f7fe011a823e82
+ms.sourcegitcommit: 3511552becb081fb860a23d6c9b6c4efcab74577
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/03/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -123,7 +123,7 @@ Razor Pages — это новая функция платформы MVC ASP.NET
 
 Как правило, класс `PageModel` называется `<PageName>Model` и находится в том же пространстве имен, что и страница.
 
-Применение файла кода программной части `PageModel` позволяет выполнять модульное тестирование, но требует написания явного конструктора и класса. Страницы без файлов кода программной части `PageModel` поддерживают компиляцию среды выполнения, что может пригодиться в процессе разработки.  <!-- review: advantage because you can make changes and refresh the browser without explicitly compiling the app -->
+Класс `PageModel` позволяет разделять логику страницы и ее представление. Он определяет обработчики страницы для запросов, отправляемых на страницу, а также данные для ее визуализации. Такое разделение позволяет управлять зависимостями страницы путем их [внедрения](xref:fundamentals/dependency-injection) и выполнять [модульное тестирование](xref:testing/razor-pages-testing) страниц.
 
 Страница содержит *метод обработчика* `OnPostAsync`, который выполняется по запросам `POST` (когда пользователь публикует форму). Методы обработчика можно добавить для любой HTTP-команды. Наиболее распространенные обработчики
 
