@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/intro
-ms.openlocfilehash: d3bcf9aaf7fa809825a0ba8631ee52d3860b090d
-ms.sourcegitcommit: 05e798c9bac7b9e9983599afb227ef393905d023
+ms.openlocfilehash: 98fe1b0c2dcf2e133d921b2cc8695bd2056c5ec0
+ms.sourcegitcommit: a33737ea24e1ea9642e461d1bc90d6701f889436
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio-1-of-8"></a>Приступая к работе со страницами Razor и Entity Framework Core, с помощью Visual Studio (1, 8)
 
@@ -71,9 +71,9 @@ Contoso университета образец веб-приложения по
 
 Изменения выделены.
 
-[!code-html[](intro/samples/cu/Pages/_Layout.cshtml?highlight=6,29,35-39,47&range=1-50)]
+[!code-html[](intro/samples/cu/Pages/_Layout.cshtml?highlight=6,29,35-38,47&range=1-50)]
 
-В *Views/Home/Index.cshtml*, замените содержимое файла следующим кодом, чтобы заменить текст о ASP.NET и MVC на текст об этом приложении:
+В *Pages/Index.cshtml*, замените содержимое файла следующим кодом, чтобы заменить текст о ASP.NET и MVC на текст об этом приложении:
 
 [!code-html[](intro/samples/cu/Pages/Index.cshtml)]
 
@@ -279,7 +279,7 @@ The system cannot find the file specified.
 
 Щелкните правой кнопкой мыши **студента** и нажмите кнопку **данные представления** создания столбцов и строк, вставляемых в таблицу.
 
-*.Mdf* и *.ldf* файлы базы данных находятся в *C:\Users\<имя_пользователя >* папки.
+*.Mdf* и *.ldf* файлы базы данных находятся в *C:\Users\\ <yourusername>*  папки.
 
 `EnsureCreated`вызывается при запуске приложения, что позволяет следующий рабочий процесс:
 
