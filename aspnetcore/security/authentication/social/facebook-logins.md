@@ -11,11 +11,11 @@ ms.assetid: 8c65179b-688c-4af1-8f5e-1862920cda95
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 826ac826c22dae81e5dbea08a11a62cac0b1068a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 058670b4f699288e1acbe76bae08dcebf69346b8
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="configuring-facebook-authentication"></a>Настройка проверки подлинности Facebook
 
@@ -25,9 +25,9 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="create-the-app-in-facebook"></a>Создать приложение на Facebook
 
-*  Перейдите к [Facebook для разработчиков](https://developers.facebook.com) страницы и выполните вход. Если у вас еще нет учетной записи Facebook, используйте **зарегистрироваться для Facebook** ссылку на страницу входа для ее создания.
+*  Перейдите к [приложения Facebook разработчики](https://developers.facebook.com/apps/) страницы и выполните вход. Если у вас еще нет учетной записи Facebook, используйте **зарегистрироваться для Facebook** ссылку на страницу входа для ее создания.
 
-* Коснитесь **Создание приложения** кнопку в правом верхнем углу, чтобы создать новый идентификатор приложения.
+* Коснитесь **добавить новое приложение** кнопку в правом верхнем углу, чтобы создать новый идентификатор приложения.
 
    ![Facebook для портала разработчиков открыть в Microsoft Edge](index/_static/FBMyApps.png)
 
@@ -35,10 +35,10 @@ ms.lasthandoff: 11/10/2017
 
    ![Создайте форму новый идентификатор приложения](index/_static/FBNewAppId.png)
 
-* В появившемся **выберите продукт** запрос, нажмите кнопку **Set Up** на **входа Facebook** карты.
+* На **выберите продукт** щелкните **Set Up** на **входа Facebook** карты.
 
    ![Страница установки продукта](index/_static/FBProductSetup.png)
-
+  
 * **Краткое руководство** запустит мастер **выберите платформу** первая страница. Сейчас пропустить мастер, нажав кнопку **параметры** ссылку в меню слева:
 
    ![Пропустить быстрый запуск](index/_static/FBSkipQuickStart.png)
@@ -72,13 +72,6 @@ dotnet user-secrets set Authentication:Facebook:AppSecret <app-secret>
 
 ## <a name="configure-facebook-authentication"></a>Настройка проверки подлинности Facebook
 
-Шаблон проекта, используемые в этом учебнике гарантирует, что [Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) пакет уже установлен.
-
-* Чтобы установить этот пакет с 2017 г. для Visual Studio, щелкните правой кнопкой мыши проект и выберите пункт **управление пакетами NuGet**.
-* Чтобы установить с .NET Core CLI, выполните следующую команду в каталоге проекта:
-
-   `dotnet add package Microsoft.AspNetCore.Authentication.Facebook`
-
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Добавьте службу Facebook в `ConfigureServices` метод в *файла Startup.cs* файла:
@@ -98,6 +91,13 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 [!INCLUDE[default settings configuration](includes/default-settings.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+Установка [Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) пакета.
+
+* Чтобы установить этот пакет с 2017 г. для Visual Studio, щелкните правой кнопкой мыши проект и выберите пункт **управление пакетами NuGet**.
+* Чтобы установить с .NET Core CLI, выполните следующую команду в каталоге проекта:
+
+   `dotnet add package Microsoft.AspNetCore.Authentication.Facebook`
 
 Добавить по промежуточного слоя Facebook в `Configure` метод в *файла Startup.cs* файла:
 

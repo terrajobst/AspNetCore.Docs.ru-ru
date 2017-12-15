@@ -16,7 +16,7 @@
       * `SecretName`: `secret_value_1`
       * `Section--SecretName`: `secret_value_2`
   * Регистрация примера приложения в Azure Active Directory.
-  * Разрешить приложению доступ к хранилища ключей. При использовании `Set-AzureRmKeyVaultAccessPolicy` командлет PowerShell, чтобы разрешить приложению доступ к хранилища ключей, обеспечивают `List` и `Get` доступ к секретной информации с `-PermissionsToKeys list,get`.
+  * Разрешить приложению доступ к хранилища ключей. При использовании `Set-AzureRmKeyVaultAccessPolicy` командлет PowerShell, чтобы разрешить приложению доступ к хранилища ключей, обеспечивают `List` и `Get` доступ к секретной информации с `-PermissionsToSecrets list,get`.
 2. Обновление приложения *appsettings.json* файл со значениями `Vault`, `ClientId`, и `ClientSecret`.
 3. Запустите пример приложения, который получает свои значения конфигурации `IConfigurationRoot` с тем же именем, как имя секрета.
   * Не иерархическими значениями: значение для `SecretName` получен с `config["SecretName"]`.

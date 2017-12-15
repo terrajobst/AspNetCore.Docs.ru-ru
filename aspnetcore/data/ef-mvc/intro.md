@@ -11,17 +11,17 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 5095def776f79d0bb76d5a8e94a4228ef0abed75
-ms.sourcegitcommit: a80d35647aff66323160b2cb413b65d79d98f7a6
+ms.openlocfilehash: 2b21c7fb35c65d9374723faac5b812289023a0f6
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>Приступая к работе с ASP.NET MVC ядра и Entity Framework Core, с помощью Visual Studio (1, 10)
 
 По [Tom Dykstra](https://github.com/tdykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
-Доступна версия страниц Razor этого учебника [здесь](xref:data/ef-rp/intro). Версия страниц Razor проще выполните и рассматриваются дополнительные возможности EF. Корпорация Майкрософт рекомендует следовать [страниц Razor версии этого учебника](xref:data/ef-rp/intro).
+Доступна версия страниц Razor этого учебника [здесь](xref:data/ef-rp/intro). Версия учебника по Razor Pages проще в изучении, и в ней рассматриваются дополнительные возможности EF. Корпорация Майкрософт рекомендует следовать [страниц Razor версии этого учебника](xref:data/ef-rp/intro).
 
 Contoso университета примера веб-приложения показано, как создавать веб-приложения ASP.NET MVC 2.0 ядра с помощью основных Entity Framework (EF) 2.0 и Visual Studio 2017 г.
 
@@ -244,15 +244,10 @@ Entity Framework интерпретирует свойство как свойс
 
 * Щелкните правой кнопкой мыши **контроллеров** папки в **обозревателе решений** и выберите **Добавить > новый элемент формирования шаблонов**.
 
-* В диалоговом окне **Добавление зависимостей MVC** установите переключатель в положение **Минимальный набор зависимостей** и нажмите кнопку **Добавить**.
+Если **Добавление зависимостей MVC** откроется диалоговое окно:
 
-  ![Добавление зависимостей](intro/_static/add-depend.png)
-
-  Visual Studio добавляет зависимости, необходимые для формировании шаблона контроллера. Единственное изменение в файле проекта заключается в добавлении `Microsoft.VisualStudio.Web.CodeGeneration.Design` пакета.
-
-  Объект *ScaffoldingReadMe.txt* создается файл, который можно удалить.
-
-* Еще раз щелкните правой кнопкой мыши **контроллеров** папки в **обозревателе решений** и выберите **Добавить > новый элемент формирования шаблонов**.
+* [Обновление до последней версии Visual Studio](https://www.visualstudio.com/downloads/). Версии Visual Studio до 15,5 выводить это окно.
+* Если не удается обновить, выберите **добавить**и выполните шаги добавления контроллера.
 
 * В **Добавление формирования шаблонов** диалоговое окно:
 

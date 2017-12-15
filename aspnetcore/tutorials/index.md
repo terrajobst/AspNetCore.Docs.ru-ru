@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/index
-ms.openlocfilehash: 44eaac4f3f4ad55cbc9b5ca9fae6e406ceff3d3c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 66f6e4542dd208a986b256acd4bd1d0381aa46c6
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="aspnet-core-tutorials"></a>Учебники по ASP.NET Core
 
@@ -38,7 +38,6 @@ ms.lasthandoff: 11/10/2017
    * [Веб-приложение в Visual Studio Code на Mac или Linux](first-mvc-app-xplat/index.md)
 
 * [Начало работы с ASP.NET Core и Entity Framework Core с использованием Visual Studio](../data/ef-mvc/index.md)
-* [Сборка проектов с помощью Yeoman](../client-side/yeoman.md)
 * [Создание вспомогательных функций тегов](../mvc/views/tag-helpers/authoring.md)
 * [Создание простого компонента представления](../mvc/views/view-components.md#walkthrough-creating-a-simple-view-component)
 * [Разработка приложений ASP.NET Core с использованием контрольных значений dotnet](dotnet-watch.md)

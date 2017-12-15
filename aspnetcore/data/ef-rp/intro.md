@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/intro
-ms.openlocfilehash: 98fe1b0c2dcf2e133d921b2cc8695bd2056c5ec0
-ms.sourcegitcommit: a33737ea24e1ea9642e461d1bc90d6701f889436
+ms.openlocfilehash: 571d683636244565b184cfec49061ec656377f11
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio-1-of-8"></a>Приступая к работе со страницами Razor и Entity Framework Core, с помощью Visual Studio (1, 8)
 
@@ -250,6 +250,14 @@ The system cannot find the file specified.
 ```
 
 Выполните команду еще раз и оставьте комментарий в нижней части страницы.
+
+Если возникает ошибка.
+  ```
+No executable found matching command "dotnet-aspnet-codegenerator"
+  ```
+
+Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
+
 
 Выполните построение проекта. Сборки приводит к возникновению ошибки следующим образом:
 

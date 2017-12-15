@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: 0292bdae-b3ed-4637-bd67-19b9bb8b65cb
 ms.prod: asp.net-core
 uid: security/key-vault-configuration
-ms.openlocfilehash: 352d125b9042c603b59ed9bda0e99b6a49c7ab9f
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: 19cab22176c732c5cb8e337d7635bddc54107921
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-key-vault-configuration-provider"></a>Поставщик конфигурации Azure хранилища ключей
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/29/2017
       * `SecretName`: `secret_value_1`
       * `Section--SecretName`: `secret_value_2`
   * Регистрация примера приложения в Azure Active Directory.
-  * Разрешить приложению доступ к хранилища ключей. При использовании `Set-AzureRmKeyVaultAccessPolicy` командлет PowerShell, чтобы разрешить приложению доступ к хранилища ключей, обеспечивают `List` и `Get` доступ к секретной информации с `-PermissionsToKeys list,get`.
+  * Разрешить приложению доступ к хранилища ключей. При использовании `Set-AzureRmKeyVaultAccessPolicy` командлет PowerShell, чтобы разрешить приложению доступ к хранилища ключей, обеспечивают `List` и `Get` доступ к секретной информации с `-PermissionsToSecrets list,get`.
 2. Обновление приложения *appsettings.json* файл со значениями `Vault`, `ClientId`, и `ClientSecret`.
 3. Запустите пример приложения, который получает свои значения конфигурации `IConfigurationRoot` с тем же именем, как имя секрета.
   * Не иерархическими значениями: значение для `SecretName` получен с `config["SecretName"]`.
@@ -105,7 +105,7 @@ ms.lasthandoff: 11/29/2017
       * `5000-AppSecret`: `5.0.0.0_secret_value`
       * `5100-AppSecret`: `5.1.0.0_secret_value`
   * Регистрация примера приложения в Azure Active Directory.
-  * Разрешить приложению доступ к хранилища ключей. При использовании `Set-AzureRmKeyVaultAccessPolicy` командлет PowerShell, чтобы разрешить приложению доступ к хранилища ключей, обеспечивают `List` и `Get` доступ к секретной информации с `-PermissionsToKeys list,get`.
+  * Разрешить приложению доступ к хранилища ключей. При использовании `Set-AzureRmKeyVaultAccessPolicy` командлет PowerShell, чтобы разрешить приложению доступ к хранилища ключей, обеспечивают `List` и `Get` доступ к секретной информации с `-PermissionsToSecrets list,get`.
 2. Обновление приложения *appsettings.json* файл со значениями `Vault`, `ClientId`, и `ClientSecret`.
 3. Запустите пример приложения, который получает свои значения конфигурации `IConfigurationRoot` с тем же именем, как имя с префиксом секрета. В этом образце используется префикс версию приложения, что вы указали `PrefixKeyVaultSecretManager` при добавлении поставщика хранилища ключей Azure конфигурации. Значение для `AppSecret` получен с `config["AppSecret"]`. Веб-страницы, созданный приложением показано загруженное значение.
 
