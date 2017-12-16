@@ -11,11 +11,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 8fcc5e7c6bc39f961931589128a7a5863482aa4e
-ms.sourcegitcommit: b38796ea3806bf39b89806adfa681b2a33762907
+ms.openlocfilehash: 41f014e1d23d46ed28c8c1be5ee92f1a6d878ad9
+ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/15/2017
 ---
 <a name="call-a-web-api-from-a-net-client-c"></a>Вызов веб-API из клиента .NET (C#)
 ====================
@@ -167,7 +167,7 @@ resp.Content.ReadAsAsync<IEnumerable<Product>>(formatters);
 
 Для проверки клиентского приложения:
 
-1. [Загрузить](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/samples/server) и запустить приложение сервера. [Инструкции по загрузке](https://docs.microsoft.com/en-us/aspnet/core/tutorials/#how-to-download-a-sample). Убедитесь, что работа приложения сервера. Для exaxmple `http://localhost:64195/api/products` должен возвращать список продуктов.
+1. [Загрузить](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) и запустить приложение сервера. [Инструкции по загрузке](https://docs.microsoft.com/en-us/aspnet/core/tutorials/#how-to-download-a-sample). Убедитесь, что работа приложения сервера. Для exaxmple `http://localhost:64195/api/products` должен возвращать список продуктов.
 2. Задайте базовый универсальный код Ресурса для HTTP-запросов. Измените номер порта к порту, используемому в приложении сервера.
     [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet5&highlight=2)]
 

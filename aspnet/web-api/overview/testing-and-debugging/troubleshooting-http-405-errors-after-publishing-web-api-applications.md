@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/testing-and-debugging/troubleshooting-http-405-errors-after-publishing-web-api-applications
 msc.type: authoredcontent
-ms.openlocfilehash: 2455bbed891179466de8fb6ade3b0a8e66eadee6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b87ae7420e1295030e90c30e97b1e331413ce263
+ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/15/2017
 ---
 <a name="troubleshooting-http-405-errors-after-publishing-web-api-2-applications"></a>Устранение неполадок HTTP 405 ошибок после публикации веб-API 2 приложений
 ====================
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/10/2017
 | **ПОЛУЧИТЬ** | Этот метод используется для извлечения данных из URI и он, вероятно, наиболее часто используемые метод HTTP. |
 | **HEAD** | Этот метод является очень похоже на метод GET, за исключением того, что он не получать фактически не данные от URI запроса — он просто возвращает код состояния HTTP. |
 | **ПОМЕСТИТЬ** | Этот метод обычно используется для отправки данных на новый универсальный код Ресурса; POST часто используется для отправки данных формы. |
-| **PUT** | Этот метод обычно используется для необработанных данных в URI; PUT часто используется для отправки данных JSON или XML в приложениях Web API. |
+| **PUT** | Этот метод обычно используется для отправки необработанные данные универсальный код Ресурса; PUT часто используется для отправки данных JSON или XML в приложениях Web API. |
 | **УДАЛИТЬ** | Этот метод используется для удаления данных с помощью URI. |
 | **ПАРАМЕТРЫ** | Этот метод обычно используется для получения списка HTTP-методов, которые поддерживаются для URI. |
 | **КОПИРОВАНИЕ ПЕРЕМЕЩЕНИЕ** | Эти методы используются с WebDAV и их назначение описательные имена. |
