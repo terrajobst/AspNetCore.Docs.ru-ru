@@ -11,11 +11,11 @@ ms.assetid: eda7ee17-f38c-462e-8d1d-63f459901cf3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/social/index
-ms.openlocfilehash: 9fc0d6c3e9691f8c3fa0d769ac53c3337d822fc5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9cc637f469dcb7097ee1b3996fde8a4ebac8d7ff
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="enabling-authentication-using-facebook-google-and-other-external-providers"></a>Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков
 
@@ -46,6 +46,13 @@ ms.lasthandoff: 11/10/2017
 ![Диалоговое окно "Создание веб-приложения"](index/_static/select-project.png)
 
 Примечание. Это руководство относится к пакету SDK версии ASP.NET Core 2.0, который можно выбрать в верхней части мастера.
+
+## <a name="apply-migrations"></a>Применение миграции
+
+* Запустите приложение и щелкните ссылку для **входа**.
+* Выберите ссылку **Регистрация нового пользователя**.
+* Введите адрес электронной почты и пароль для новой учетной записи, а затем щелкните **Зарегистрироваться**.
+* Следуйте инструкциям по применению миграции.
 
 ## <a name="require-ssl"></a>Обязательное использование SSL
 
