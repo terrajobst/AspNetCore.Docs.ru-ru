@@ -11,11 +11,11 @@ ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: fdb396d8857dc9c118cc19da1f7d1d498dfaacd5
-ms.sourcegitcommit: 8ab9d0065fad23400757e4e08033787e42c97d41
+ms.openlocfilehash: 68e8c89f6e5485f25d1a551ab3e524f0e9c53d0d
+ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>Ответ сжатия по промежуточного слоя ASP.NET Core
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/17/2017
 
 Когда клиент может обрабатывать сжатое содержимое, клиент должен уведомить сервер его возможности, отправляя `Accept-Encoding` заголовок с запросом. Когда сервер отправляет сжатое содержимое, он должен содержать сведения в `Content-Encoding` заголовок кодируется как сжатого ответа. В следующей таблице показаны содержимого обозначения кодировки, поддерживаемые по промежуточного слоя.
 
-| `Accept-Encoding`значения заголовка | Поддерживается по промежуточного слоя | Описание                                                 |
+| `Accept-Encoding`значения заголовка | Поддерживается по промежуточного слоя | Описание:                                                 |
 | :-----------------------------: | :------------------: | ----------------------------------------------------------- |
 | `br`                            | Нет                   | Формат Brotli сжатых данных                               |
 | `compress`                      | Нет                   | Формат данных «сжатие» UNIX                                 |
@@ -110,7 +110,7 @@ ms.lasthandoff: 11/17/2017
 
 По умолчанию используется поставщик сжатие gzip быстрым уровень сжатия (`CompressionLevel.Fastest`), который может не обеспечить наиболее эффективное сжатие. При желании наиболее эффективный сжатия можно настроить по промежуточного слоя для оптимального сжатия.
 
-| Уровень сжатия                | Описание                                                                                                   |
+| Уровень сжатия                | Описание:                                                                                                   |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | `CompressionLevel.Fastest`       | Как можно быстрее, следует выполнить сжатие, даже если результат не сжимается оптимально. |
 | `CompressionLevel.NoCompression` | Должно осуществляться без сжатия.                                                                           |
@@ -183,7 +183,7 @@ ms.lasthandoff: 11/17/2017
 
 [!code-csharp[Main](response-compression/samples/1.x/Startup.cs?name=snippet1)]
 
-## <a name="middlware-issue-when-behind-an-nginx-reverse-proxy"></a>Проблема Middlware за Nginx обратного прокси-сервера
+## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>Проблемы по промежуточного слоя за Nginx обратного прокси-сервера
 При получении запроса через прокси, Nginx, `Accept-Encoding` заголовок удаляется. Это предотвращает сжатие ответ по промежуточного слоя. Дополнительные сведения см. в разделе [NGINX: сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Эта проблема отслеживается [выяснить сквозной сжатия для nginx (BasicMiddleware #123)](https://github.com/aspnet/BasicMiddleware/issues/123).
 
 ## <a name="working-with-iis-dynamic-compression"></a>Работа с динамическое сжатие IIS

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead
 msc.type: authoredcontent
-ms.openlocfilehash: 24c6a35a6b663ebb0f8d0e3e7988322fa5d9018c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6790cd0deb36c9fb297ccd4df371f763dba17844
+ms.sourcegitcommit: 17b025bd33f4474f0deaafc6d0447a4e72bcad87
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/27/2017
 ---
 <a name="what-not-to-do-in-aspnet-and-what-to-do-instead"></a>Что не делать в ASP.NET и что нужно делать вместо этого
 ====================
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/10/2017
     - [UrlPathEncode](#urlpathencode)
 - [Надежность и производительность](#performance)
 
-    - [PreSendRequestHeaders и PreSendRequestContext](#presend)
+    - [PreSendRequestHeaders и PreSendRequestContent](#presend)
     - [События асинхронной страницы с веб-форм](#asyncevents)
     - [Выстрелил и забыл работы](#fire)
     - [Тело сущности запроса](#requestentity)
@@ -200,11 +200,13 @@ ms.lasthandoff: 11/10/2017
 
 <a id="presend"></a>
 
-### <a name="presendrequestheaders-and-presendrequestcontext"></a>PreSendRequestHeaders и PreSendRequestContext
+### <a name="presendrequestheaders-and-presendrequestcontent"></a>PreSendRequestHeaders и PreSendRequestContent
 
 Рекомендация: Не используйте эти события с управляемых модулей. Вместо этого можно напишите собственный модуль IIS для выполнения требуемой задачи. В разделе [создания модулей машинного кода HTTP](https://msdn.microsoft.com/en-us/library/ms693629.aspx).
 
-Можно использовать [PreSendRequestHeaders](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.presendrequestheaders.aspx) и [PreSendRequestContext](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.presendrequestcontent.aspx) событий с собственные модули IIS, но не использовать их с управляемых модулей, реализует интерфейс IHttpModule. Настройка этих свойств может вызвать трудности в асинхронных запросов.
+Можно использовать [PreSendRequestHeaders](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.presendrequestheaders.aspx) и [PreSendRequestContent](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.presendrequestcontent.aspx) событий с собственные модули IIS.
+> [!WARNING]
+> Не используйте `PreSendRequestHeaders` и `PreSendRequestContent` с управляемых модулей, которые реализуют `IHttpModule`. Настройка этих свойств может вызвать трудности в асинхронных запросов. Сочетание маршрутизации запрошенный приложений (ARR) и websockets может стать причиной исключения нарушения прав доступа, которые могут вызвать w3wp к сбою. Например, iiscore! W3_CONTEXT_BASE::GetIsLastNotification + 68 в iiscore.dll вызвала нарушение прав доступа (0xC0000005).
 
 <a id="asyncevents"></a>
 

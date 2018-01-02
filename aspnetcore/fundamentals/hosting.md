@@ -10,17 +10,17 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
-ms.openlocfilehash: dfec2a67112d40b528b97c847da3dda8ef1e63bd
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: 14e48adf5671a41ad6e135caeb4a87fdf7292aa6
+ms.sourcegitcommit: 5834afb87e4262b9b88e60e3fe6c735e61a1e08d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="hosting-in-aspnet-core"></a>Размещение в ASP.NET Core
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-Приложения ASP.NET Core настраивают и запускают *хост*, который отвечает за запуск приложений и управление жизненным циклом. Как минимум узел настраивает сервер и конвейер обработки запросов.
+Настройка приложений ASP.NET Core и запустите *узла*. Основное приложение отвечает за управление запуском и временем существования приложения. Как минимум узел настраивает сервер и конвейер обработки запросов.
 
 ## <a name="setting-up-a-host"></a>Настройка узла
 
@@ -40,19 +40,19 @@ ms.lasthandoff: 12/14/2017
   * [Секреты пользователя](xref:security/app-secrets) при запуске приложения `Development` среде.
   * Переменные среды.
   * Аргументы командной строки.
-* Настраивает [входа](xref:fundamentals/logging/index) для вывода на консоль и отладка с [фильтрации журнала](xref:fundamentals/logging/index#log-filtering) правила, указанные в разделе конфигурации ведения журнала *appsettings.json* или *appsettings. {Среды} .json* файл.
+* Настраивает [входа](xref:fundamentals/logging/index) для вывода на консоль и отладки. Ведение журнала включает [фильтрации журнала](xref:fundamentals/logging/index#log-filtering) правила, указанные в разделе конфигурации ведения журнала *appsettings.json* или *appsettings. {} Среда} .json* файл.
 * При работе под IIS позволяет [интеграции IIS](xref:publishing/iis) путем настройки пути к базовой папке и порта сервера должен прослушивать при использовании [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратного прокси-сервера служб IIS и Kestrel. Кроме того, настраивает приложение для [перехватить ошибки запуска](#capture-startup-errors). Параметры по умолчанию служб IIS см. в разделе [IIS параметры раздела узла ASP.NET Core в Windows с помощью IIS](xref:publishing/iis#iis-options).
 
-*Содержимое корневого* определяет, где узел ищет файлы содержимого, такие как файлы представления MVC. Корень содержимого по умолчанию — [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory). Это приведет к с помощью корневую папку веб-проекта, который является корнем содержимого при запуске приложения из корневой папки (например, вызов [dotnet запуска](/dotnet/core/tools/dotnet-run) из папки проекта). Это значение по умолчанию, используемых в [Visual Studio](https://www.visualstudio.com/) и [dotnet новые шаблоны](/dotnet/core/tools/dotnet-new).
+*Содержимое корневого* определяет, где узел ищет файлы содержимого, такие как файлы представления MVC. Корень содержимого по умолчанию — [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory). Содержимое корневого по умолчанию (`Directory.GetCurrentDirectory`) приводит к с помощью корневую папку веб-проекта, который является корнем содержимого при запуске приложения из корневой папки (например, вызов [dotnet запуска](/dotnet/core/tools/dotnet-run) из папки проекта). Это значение по умолчанию, используемых в [Visual Studio](https://www.visualstudio.com/) и [dotnet новые шаблоны](/dotnet/core/tools/dotnet-new).
 
-В разделе [конфигурации в ASP.NET Core](xref:fundamentals/configuration/index) Дополнительные сведения о настройке приложения.
+Дополнительные сведения о настройке приложения см. в разделе [конфигурации в ASP.NET Core](xref:fundamentals/configuration/index).
 
 > [!NOTE]
-> В качестве альтернативы с помощью статического `CreateDefaultBuilder` метод, создание узла из [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) поддерживаемых подход с ASP.NET Core 2.x. Дополнительные сведения см. в разделе о ASP.NET Core 1.x.
+> В качестве альтернативы с помощью статического `CreateDefaultBuilder` метод, создание узла из [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) поддерживаемых подход с ASP.NET Core 2.x. Дополнительные сведения см. в разделе вкладке 1.x ASP.NET Core.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Создание узла с помощью экземпляра [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder). Это обычно выполняется в точке входа приложения, `Main` метод. В шаблоны проектов `Main` находится в папке *Program.cs*. Следующие *Program.cs* демонстрируется использование `WebHostBuilder` для создания узла:
+Создание узла с помощью экземпляра [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder). Создание ведущего приложения обычно выполняется в точке входа приложения, `Main` метод. В шаблоны проектов `Main` находится в папке *Program.cs*. Типичный *Program.cs* вызовы [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) начата Настройка узла:
 
 [!code-csharp[Main](../common/samples/WebApplication1/Program.cs)]
 
@@ -82,7 +82,11 @@ host.Run();
 
 ## <a name="host-configuration-values"></a>Значения конфигурации узла
 
-[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) предоставляет методы для настройки большинства значений конфигурации, доступные для узла, которой можно также задать непосредственно с [UseSetting](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.usesetting) и связанный ключ. При установке значения с `UseSetting`, значение устанавливается в виде строки (в кавычках) независимо от типа.
+[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) обеспечивает следующие подходы для установки большинства значений конфигурации, доступные для узла:
+
+* Переменные среды в формате `ASPNETCORE_{configurationKey}`. Например, `ASPNETCORE_DETAILEDERRORS`.
+* Явные методы, такие как `CaptureStartupErrors`.
+* [UseSetting](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.usesetting) и связанный ключ. При установке значения с `UseSetting`, имеет значение как строка независимо от типа.
 
 ### <a name="capture-startup-errors"></a>Запись ошибки при загрузке
 
@@ -91,7 +95,8 @@ host.Run();
 **Ключ**: captureStartupErrors  
 **Тип**: *bool* (`true` или `1`)  
 **По умолчанию**: по умолчанию используется значение `false` Если приложение запускается с Kestrel за IIS, где значение по умолчанию — `true`.  
-**Задать с помощью**:`CaptureStartupErrors`
+**Задать с помощью**:`CaptureStartupErrors`  
+**Переменная среды**:`ASPNETCORE_CAPTURESTARTUPERRORS`
 
 Когда `false`, ошибки во время запуска результат в узле выхода. Когда `true`, узел перехватывает исключения во время запуска и пытается запустить сервер.
 
@@ -120,7 +125,8 @@ var host = new WebHostBuilder()
 **Ключ**: contentRoot  
 **Тип**: *строка*  
 **По умолчанию**: по умолчанию для папки, в которой хранится сборку приложения.  
-**Задать с помощью**:`UseContentRoot`
+**Задать с помощью**:`UseContentRoot`  
+**Переменная среды**:`ASPNETCORE_CONTENTROOT`
 
 Содержимое корневого также используется как базовый путь для [параметр корневого веб-каталога](#web-root). Если путь не существует, узлу не удается запустить.
 
@@ -149,7 +155,8 @@ var host = new WebHostBuilder()
 **Ключ**: detailedErrors  
 **Тип**: *bool* (`true` или `1`)  
 **По умолчанию**: false  
-**Задать с помощью**:`UseSetting`
+**Задать с помощью**:`UseSetting`  
+**Переменная среды**:`ASPNETCORE_DETAILEDERRORS`
 
 При включении (или когда <a href="#environment">среды</a> равно `Development`), приложение записывает подробные сведения об исключениях.
 
@@ -178,7 +185,8 @@ var host = new WebHostBuilder()
 **Ключ**: среды  
 **Тип**: *строка*  
 **По умолчанию**: рабочей среде  
-**Задать с помощью**:`UseEnvironment`
+**Задать с помощью**:`UseEnvironment`  
+**Переменная среды**:`ASPNETCORE_ENVIRONMENT`
 
 Можно задать *среды* любое значение. Значения, определяемые платформой `Development`, `Staging`, и `Production`. Значения не учитывается регистр. По умолчанию *среды* считывается из `ASPNETCORE_ENVIRONMENT` переменной среды. При использовании [Visual Studio](https://www.visualstudio.com/), переменные среды может быть задан в *launchSettings.json* файла. Дополнительные сведения см. в статье [Работа с несколькими средами](xref:fundamentals/environments).
 
@@ -207,7 +215,8 @@ var host = new WebHostBuilder()
 **Ключ**: hostingStartupAssemblies  
 **Тип**: *строка*  
 **По умолчанию**: пустая строка  
-**Задать с помощью**:`UseSetting`
+**Задать с помощью**:`UseSetting`  
+**Переменная среды**:`ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`
 
 Разделенный точками с запятой строка размещения запуска сборок для загрузки при запуске. Этот компонент впервые появился в ASP.NET Core 2.0.
 
@@ -234,7 +243,8 @@ WebHost.CreateDefaultBuilder(args)
 **Ключ**: preferHostingUrls  
 **Тип**: *bool* (`true` или `1`)  
 **По умолчанию**: true  
-**Задать с помощью**:`PreferHostingUrls`
+**Задать с помощью**:`PreferHostingUrls`  
+**Переменная среды**:`ASPNETCORE_PREFERHOSTINGURLS`
 
 Этот компонент впервые появился в ASP.NET Core 2.0.
 
@@ -259,7 +269,8 @@ WebHost.CreateDefaultBuilder(args)
 **Ключ**: preventHostingStartup  
 **Тип**: *bool* (`true` или `1`)  
 **По умолчанию**: false  
-**Задать с помощью**:`UseSetting`
+**Задать с помощью**:`UseSetting`  
+**Переменная среды**:`ASPNETCORE_PREVENTHOSTINGSTARTUP`
 
 Этот компонент впервые появился в ASP.NET Core 2.0.
 
@@ -284,7 +295,8 @@ WebHost.CreateDefaultBuilder(args)
 **Ключ**: URL-адреса  
 **Тип**: *строка*  
 **По умолчанию**: http://localhost: 5000  
-**Задать с помощью**:`UseUrls`
+**Задать с помощью**:`UseUrls`  
+**Переменная среды**:`ASPNETCORE_URLS`
 
 Значение, разделенных точкой с запятой (;) префиксов список URL-адрес которого сервер должен отвечать. Например, `http://localhost:123`. Используйте "\*» для указания, что сервер должен прослушивать запросы по любой IP-адрес или имя узла, используя указанный порт и протокол (например, `http://*:5000`). Протокол (`http://` или `https://`) должен быть включен, все URL-адреса. Поддерживаемые форматы различаться для разных серверов.
 
@@ -315,7 +327,8 @@ var host = new WebHostBuilder()
 **Ключ**: shutdownTimeoutSeconds  
 **Тип**: *int*  
 **По умолчанию**: 5  
-**Задать с помощью**:`UseShutdownTimeout`
+**Задать с помощью**:`UseShutdownTimeout`  
+**Переменная среды**:`ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`
 
 Несмотря на то, что ключ принимает *int* с `UseSetting` (например, `.UseSetting(WebHostDefaults.ShutdownTimeoutKey, "10")`), `UseShutdownTimeout` принимает метод расширения `TimeSpan`. Этот компонент впервые появился в ASP.NET Core 2.0.
 
@@ -340,7 +353,8 @@ WebHost.CreateDefaultBuilder(args)
 **Ключ**: startupAssembly  
 **Тип**: *строка*  
 **По умолчанию**: сборка приложения  
-**Задать с помощью**:`UseStartup`
+**Задать с помощью**:`UseStartup`  
+**Переменная среды**:`ASPNETCORE_STARTUPASSEMBLY`
 
 Сборку можно ссылаться по имени (`string`) или тип (`TStartup`). При наличии нескольких `UseStartup` методы вызываются, приоритет имеет последняя.
 
@@ -381,7 +395,8 @@ var host = new WebHostBuilder()
 **Ключ**: webroot  
 **Тип**: *строка*  
 **По умолчанию**: Если не указан, значение по умолчанию — "(Content Root)/wwwroot», если путь существует. Если путь не существует, то используется поставщик холостой файла.  
-**Задать с помощью**:`UseWebRoot`
+**Задать с помощью**:`UseWebRoot`  
+**Переменная среды**:`ASPNETCORE_WEBROOT`
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -819,7 +834,7 @@ public async Task Invoke(HttpContext context, IHostingEnvironment env)
 | --------------------- | --------------------- |
 | `ApplicationStarted`  | Узел полностью запущен. |
 | `ApplicationStopping` | Узел выполняет правильное завершение работы. По-прежнему может обрабатывать запросы. Завершение работы блокируется до завершения этого события. |
-| `ApplicationStopped`  | Узел завершает нормальное завершение работы. Все запросы должны обрабатываться полностью. Завершение работы блокируется до завершения этого события. |
+| `ApplicationStopped`  | Узел завершает нормальное завершение работы. Все запросы будут обрабатываться. Завершение работы блокируется до завершения этого события. |
 
 | Метод            | Действие                                           |
 | ----------------- | ------------------------------------------------ |
