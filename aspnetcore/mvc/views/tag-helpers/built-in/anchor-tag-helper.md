@@ -11,11 +11,11 @@ ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a011
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 503ad7c4ce8c4f08b2a06dbe9f985566f54d3ca2
-ms.sourcegitcommit: 44a62f59d4db39d685c4487a0345a486be18d7c7
+ms.openlocfilehash: b2bdf8b2b297a66b08445d99afbc5f43d2e37ef6
+ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="anchor-tag-helper"></a>Вспомогательный тег привязки
 
@@ -86,16 +86,18 @@ ms.lasthandoff: 12/21/2017
 
 The `asp-page` attribute is mutually exclusive with the `asp-route`, `asp-controller`, and `asp-action` attributes. However, `asp-page` can be used with `asp-route-id` to control routing, as the following code sample demonstrates:
 
-```
-cshtml<a asp-page="/Speaker" asp-route-id="@speaker.Id">динамика представления</a>
+```cshtml
+<a asp-page="/Speaker" asp-route-id="@speaker.Id">View Speaker</a>
 ```
 
-The `asp-route-id` produces the following output:
+`asp-route-id` Выводятся следующие данные:
 
 ```html
 https://localhost:44399/Speakers/Index/2?page=%2FSpeaker
 ```
 
+> [!NOTE]
+> Для использования `asp-page` атрибут на страницах Razor, URL-адреса должен быть относительным путем, например `"./Speaker"`. Относительные пути в `asp-page` атрибута не доступны в представлениях MVC. Вместо этого используйте синтаксис «/» для представления MVC.
 
 ### <a name="asp-route-value"></a>ASP - маршрута-{value}
 

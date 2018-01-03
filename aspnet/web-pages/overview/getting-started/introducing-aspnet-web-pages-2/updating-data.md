@@ -5,24 +5,24 @@ author: tfitzmac
 description: "Этого учебника показано, как обновить запись (изменение) существующей базы данных при использовании веб-страниц ASP.NET (Razor). Предполагается, что выполнены ряда th..."
 ms.author: aspnetcontent
 manager: wpickett
-ms.date: 05/28/2015
+ms.date: 01/02/2018
 ms.topic: article
 ms.assetid: ac86ec9c-6b69-485b-b9e0-8b9127b13e6b
 ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 msc.type: authoredcontent
-ms.openlocfilehash: 6fdb365c1449e6c54dfdbe492211700211f61005
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aabf572e254de9861719fdc502340353482919b4
+ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/03/2018
 ---
 <a name="introducing-aspnet-web-pages---updating-database-data"></a>Введение в ASP.NET Web Pages — обновление баз данных
 ====================
 по [Tom FitzMacken](https://github.com/tfitzmac)
 
-> Этого учебника показано, как обновить запись (изменение) существующей базы данных при использовании веб-страниц ASP.NET (Razor). Предполагается, что завершена ряда через [ввод данных с помощью форм с помощью веб-страниц ASP.NET](https://go.microsoft.com/fwlink/?LinkId=251582).
+> Этого учебника показано, как обновить запись (изменение) существующей базы данных при использовании веб-страниц ASP.NET (Razor). Предполагается, что завершена ряда через [ввод данных с помощью форм с помощью веб-страниц ASP.NET](entering-data.md).
 > 
 > Что вы узнаете следующее.
 > 
@@ -143,7 +143,7 @@ ms.lasthandoff: 11/10/2017
 
 Это разметку и код аналогичен имеется *AddMovie* страницы. Нет небольшими различиями в текст для кнопки "Отправить". Как и в *AddMovie* страницы, `Html.ValidationSummary` вызов, который будет отображать ошибки проверки, если таковые имеются. Это время пропускают вызовы `Validation.Message`, так как ошибки отображаются в сводку проверки. Как отмечалось в предыдущем учебнике сводки проверки и сообщения об отдельных ошибках можно использовать в различных сочетаниях.
 
-Снова Обратите внимание, `method` атрибут `<form>` задан равным `post`. Как и в *AddMovie.cshtml* страницы, эта страница вносит изменения в базу данных. Таким образом, следует выполнить эту форму `POST` операции. (Дополнительные сведения о различиях между `GET` и `POST` операций, в разделе [GET, POST и HTTP глагол безопасности](https://go.microsoft.com/fwlink/?LinkId=251581#GET,_POST,_and_HTTP_Verb_Safety) боковой панели в учебнике HTML-форм.)
+Снова Обратите внимание, `method` атрибут `<form>` задан равным `post`. Как и в *AddMovie.cshtml* страницы, эта страница вносит изменения в базу данных. Таким образом, следует выполнить эту форму `POST` операции. (Дополнительные сведения о различиях между `GET` и `POST` операций, в разделе [GET, POST и HTTP глагол безопасности](form-basics.md#GET,_POST,_and_HTTP_Verb_Safety) боковой панели в учебнике HTML-форм.)
 
 Как было показано ранее учебника `value` атрибуты текстовых полей устанавливаются с помощью кода Razor для предварительной загрузки их. Это время, вы используете переменных как `title` и `genre` для этой задачи, а не `Request.Form["title"]`:
 
@@ -224,7 +224,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > Конечно `Query` метод может вернуть только одну строку базы данных. Однако ASP.NET всегда обрабатывает результаты `Query` метод как коллекция. Даже если метод возвращает только одну строку, необходимо извлечь, одну строку из коллекции. Таким образом, в ситуациях, где вы *знать* вы получите только одну строку, это немного удобнее всего использовать `QuerySingle`.
 > 
-> Существует несколько методов, которые выполняют определенные типы операций базы данных. Можно найти список методов базы данных в [краткий справочник по API веб-страниц ASP.NET](https://go.microsoft.com/fwlink/?LinkID=202907#Data).
+> Существует несколько методов, которые выполняют определенные типы операций базы данных. Можно найти список методов базы данных в [краткий справочник по API веб-страниц ASP.NET](../../api-reference/asp-net-web-pages-api-reference.md#Data).
 
 
 ## <a name="making-validation-for-the-id-more-robust"></a>Делая проверки для идентификатора более надежный
@@ -308,7 +308,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Введение в программирование веб-ASP.NET с синтаксисом Razor](https://go.microsoft.com/fwlink/?LinkID=202890)
+- [Введение в программирование веб-ASP.NET с синтаксисом Razor](introducing-razor-syntax-c.md)
 - [Инструкции SQL UPDATE](http://www.w3schools.com/sql/sql_update.asp) на сайте W3Schools
 
 >[!div class="step-by-step"]

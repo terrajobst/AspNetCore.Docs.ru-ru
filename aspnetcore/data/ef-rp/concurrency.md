@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 0c49376fd1b602fe03ef2a152d19b58513ae2710
-ms.sourcegitcommit: 05e798c9bac7b9e9983599afb227ef393905d023
+ms.openlocfilehash: 8862c6b9a5eb7ac3b6889071e4ce9ff6f02512c9
+ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/03/2018
 ---
 en-us /
 
@@ -38,7 +38,7 @@ en-us /
 * Последнее обновление wins. То есть последние обновления значения сохраняются в базы данных.
 * Первый из текущего обновления, будут потеряны.
 
-### <a name="optimistic-concurrency"></a>Оптимистический параллелизм
+### <a name="optimistic-concurrency"></a>Оптимистическая блокировка
 
 Оптимистичного параллелизма позволяет конфликтов параллелизма активна и затем реакцию соответствующим образом об их появлении. Например Мария — страница отдела редактирования и изменяет бюджет для английского языка отдела с $350,000.00 на 0,00 долларов.
 
@@ -194,7 +194,7 @@ dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outD
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet)]
 
-Для обнаружения проблемы параллелизма [OriginalValue](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) обновляется `rowVersion` значения из сущности указано, оно получено. EF Core создает команду SQL UPDATE с предложением WHERE, содержащее исходное `RowVersion` значение. Если нет строк, затронутых командой обновления (не строки имеют исходное `RowVersion` значение), `DbUpdateConcurrencyException` исключение.
+Для обнаружения проблемы параллелизма [OriginalValue](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) обновляется `rowVersion` значения из сущности, оно получено. EF Core создает команду SQL UPDATE с предложением WHERE, содержащее исходное `RowVersion` значение. Если нет строк, затронутых командой обновления (не строки имеют исходное `RowVersion` значение), `DbUpdateConcurrencyException` исключение.
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_rv&highlight=24-)]
 

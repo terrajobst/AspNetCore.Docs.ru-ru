@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: dotnet-mvc
 ms.prod: .net-framework
 uid: mvc/overview/getting-started/introduction/adding-a-view
-ms.openlocfilehash: 52f15784f16d355791360021f045cf4f3c467897
-ms.sourcegitcommit: d1d8071d4093bf2444b5ae19d6e45c3d187e338b
+ms.openlocfilehash: cf0bb7984ad3460f8784193f7bb407c9b0ad50db
+ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/19/2017
+ms.lasthandoff: 01/03/2018
 ---
 <a name="adding-a-view"></a>Добавление представления
 ====================
@@ -109,7 +109,7 @@ ms.lasthandoff: 11/19/2017
 
 ![](adding-a-view/_static/image9.png)
 
-Наши небольшую &quot;данные&quot; (в этом случае &quot;Hello из наших шаблон представления!&quot; сообщение) задается жестко, хотя. Приложение MVC имеет &quot;V&quot; (представление) и у вас есть &quot;C&quot; (контроллер), но не &quot;M&quot; (модель). еще. Вскоре, мы рассмотрим как создать базу данных и получения из него данных модели.
+Наши небольшую &quot;данные&quot; (в этом случае &quot;Hello из наших шаблон представления!&quot; сообщение) задается жестко, хотя. Приложение MVC имеет &quot;V&quot; (представление) и у вас есть &quot;C&quot; (контроллер), но не &quot;M&quot; (модель). еще. Вскоре мы рассмотрим, как создать базу данных и извлечь модель данных из него.
 
 ## <a name="passing-data-from-the-controller-to-the-view"></a>Передача данных из контроллера в представление
 
