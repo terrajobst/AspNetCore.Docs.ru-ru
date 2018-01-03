@@ -37,6 +37,18 @@
 ### [Обновление связанных данных](xref:data/ef-rp/update-related-data)
 ### [Обработка конфликтов параллелизма](xref:data/ef-rp/concurrency)
 
+## [Доступ к данным — MVC и EF Core](data/ef-mvc/index.md)
+### [Начало работы](data/ef-mvc/intro.md)
+### [Операции создания, чтения, обновления и удаления](data/ef-mvc/crud.md)
+### [Сортировка, фильтрация, разбиение на страницы и группирование данных](data/ef-mvc/sort-filter-page.md)
+### [Миграции](data/ef-mvc/migrations.md)
+### [Создание сложной модели данных](data/ef-mvc/complex-data-model.md)
+### [Чтение связанных данных](data/ef-mvc/read-related-data.md)
+### [Обновление связанных данных](data/ef-mvc/update-related-data.md)
+### [Обработка конфликтов параллелизма](data/ef-mvc/concurrency.md)
+### [Наследование](data/ef-mvc/inheritance.md)
+### [Дополнительные разделы](data/ef-mvc/advanced.md)
+
 ## [Создание серверных служб для мобильных приложений](mobile/native-mobile-backend.md)
 ## [Сборка веб-API](mvc/web-api/index.md)
 ## [Создание веб-API](xref:tutorials/first-web-api-mac)
