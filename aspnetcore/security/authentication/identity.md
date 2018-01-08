@@ -11,11 +11,11 @@ ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 7af53bfad2b77558a06003cbc6534236235054c4
-ms.sourcegitcommit: 677986b3a39817b712e2432cce85ad1685326b75
+ms.openlocfilehash: 4a5d3622a22b70daa22333cafe58f8831bf0918e
+ms.sourcegitcommit: fc98e93464ccf37d9904e89a71cdddbd4bbdb86a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об учетных данных ASP.NET Core
 
@@ -32,28 +32,29 @@ ms.lasthandoff: 01/04/2018
 1.  Создайте проект веб-приложения ASP.NET Core с отдельными учетными записями пользователей.
 
     # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-    В Visual Studio, выберите **файл** -> **New** -> **проекта**. Выберите **веб-приложения ASP.NET Core** и нажмите кнопку **ОК**. 
+
+    В Visual Studio, выберите **файл** -> **New** -> **проекта**. Выберите **веб-приложения ASP.NET Core** и нажмите кнопку **ОК**.
 
     ![Диалоговое окно создания нового проекта](identity/_static/01-new-project.png)
 
-    Выберите ASP.NET Core **веб-приложения (Model-View-Controller)** для ASP.NET Core 2.x, а затем выберите **изменить аутентификацию**. 
+    Выберите ASP.NET Core **веб-приложения (Model-View-Controller)** для ASP.NET Core 2.x, а затем выберите **изменить аутентификацию**.
 
     ![Диалоговое окно создания нового проекта](identity/_static/02-new-project.png)
 
     Откроется диалоговое окно предложения вариантов проверки подлинности. Выберите **отдельных учетных записей пользователей** и нажмите кнопку **ОК** для возврата к диалоговому окну предыдущего.
 
     ![Диалоговое окно создания нового проекта](identity/_static/03-new-project-auth.png)
-    
+
     При выборе **отдельных учетных записей пользователей** направляет Visual Studio для создания моделей, ViewModels, представления, контроллеры и другие активы, необходимые для проверки подлинности как часть шаблона проекта.
- 
-    
+
     # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
     Если используется .NET Core CLI, создайте новый проект с помощью ``dotnet new mvc --auth Individual``. Эта команда создает новый проект с тем же кодом шаблона удостоверений, создаваемых в Visual Studio.
- 
+
     Созданный проект содержит `Microsoft.AspNetCore.Identity.EntityFrameworkCore` пакет, который сохраняет данные удостоверений и схемы SQL Server с помощью [Entity Framework Core](https://docs.microsoft.com/ef/).
-    
+
     ---
- 
+
 2.  Настройка службы удостоверений и добавление по промежуточного слоя в `Startup`.
 
     Службы удостоверений добавляются к приложению в `ConfigureServices` метод `Startup` класса:
@@ -162,7 +163,7 @@ ms.lasthandoff: 01/04/2018
     }
     ```
     
-    # <a name="visual-studiotabvisualstudio"></a>[Visual Studio](#tab/visualstudio)     
+    # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
     Запустите проект с помощью **Ctrl** + **F5** и перейдите к **о** страницы. Только прошедшие проверку подлинности пользователи могут получить доступ к **о** страницы, поэтому ASP.NET вы будете перенаправлены на страницу входа для входа или регистрации.
 
