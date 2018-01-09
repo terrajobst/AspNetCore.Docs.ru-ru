@@ -1,7 +1,7 @@
 ---
 title: "Использование шаблонов одностраничных приложений"
 author: SteveSandersonMS
-description: "Узнайте, как установить и начать использовать шаблоны проектов одностраничных приложений ASP.NET Core (предварительная версия)."
+description: "Узнайте, как установить и начать использовать шаблоны проектов одностраничных приложений ASP.NET Core (релиз-кандидат)."
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,13 +11,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/index
-ms.openlocfilehash: 59031d79a9558bb8fc94e55ac04e70876618dc02
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: 0ac3803aabdc148401b9d5b614645a8560c9a089
+ms.sourcegitcommit: fc98e93464ccf37d9904e89a71cdddbd4bbdb86a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="use-the-single-page-application-templates-preview"></a>Использование шаблонов одностраничных приложений (предварительная версия)
+# <a name="use-the-single-page-application-templates-release-candidate"></a>Использование шаблонов одностраничных приложений (релиз-кандидат)
 
 > [!NOTE]
 > В выпуск пакета SDK для .NET Core 2.0.x входят шаблоны проектов для Angular, React и React с Redux. **В этой документации речь идет не о выпущенных шаблонах проекта.** Эта документация предназначена для шаблонов следующих версий для Angular, React и React с Redux, которые мы планируем выпустить в начале 2018 г.
@@ -29,10 +29,10 @@ ms.lasthandoff: 12/14/2017
 
 ## <a name="installation"></a>Установка
 
-Выполните следующую команду, чтобы установить **предварительную версию** шаблонов ASP.NET Core для Angular, React и React с Redux:
+Выполните следующую команду, чтобы установить **релиз-кандидат** шаблонов ASP.NET Core для Angular, React и React с Redux:
 
 ```console
-dotnet new --install Microsoft.DotNet.Web.Spa.ProjectTemplates::2.0.0-preview1-final
+dotnet new --install Microsoft.DotNet.Web.Spa.ProjectTemplates::2.0.0-rc1-final
 ```
 
 ## <a name="use-the-templates"></a>Использование шаблонов
