@@ -153,7 +153,7 @@
 ## [Объединение и минификация](xref:client-side/bundling-and-minification)
 ## [Использование привязывания к браузеру](xref:client-side/using-browserlink)
 ## [Использование JavaScriptServices для одностраничных приложений](xref:client-side/spa-services)
-## [Использование шаблонов проектов для одностраничных приложений (предварительная версия)](xref:spa/index)
+## [Использование шаблонов проектов для одностраничных приложений (релиз-кандидат)](xref:spa/index)
 ### [Шаблон проекта Angular](xref:spa/angular)
 ### [Шаблон проекта React](xref:spa/react)
 ### [Шаблон проекта React с Redux](xref:spa/react-with-redux)
