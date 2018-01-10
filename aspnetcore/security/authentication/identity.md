@@ -11,11 +11,11 @@ ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 4a5d3622a22b70daa22333cafe58f8831bf0918e
-ms.sourcegitcommit: fc98e93464ccf37d9904e89a71cdddbd4bbdb86a
+ms.openlocfilehash: fc8e076af92bd8f9a95e73abb66ce32cae8ab9cf
+ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об учетных данных ASP.NET Core
 
@@ -25,6 +25,8 @@ ms.lasthandoff: 01/05/2018
 
 Вы можете настроить ASP.NET Identity Core использование базы данных SQL Server для хранения имен пользователей, пароли и данные профиля. Кроме того можно использовать собственные постоянное хранилище, например, табличное хранилище Azure. Этот документ содержит инструкции по Visual Studio и с помощью CLI.
 
+[Просмотреть или загрузить образец кода.](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [(Сведения о загрузке)](https://docs.microsoft.com/en-us/aspnet/core/tutorials/index#how-to-download-a-sample)
+
 ## <a name="overview-of-identity"></a>Общие сведения об идентификации
 
 В этом разделе будет использование ASP.NET Core Identity Добавление функциональности для регистрации, вход и выход пользователя. Более подробные инструкции по созданию приложений с помощью ASP.NET Core Identity см. в разделе Дальнейшие действия в конце этой статьи.
@@ -33,7 +35,7 @@ ms.lasthandoff: 01/05/2018
 
     # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-    В Visual Studio, выберите **файл** -> **New** -> **проекта**. Выберите **веб-приложения ASP.NET Core** и нажмите кнопку **ОК**.
+    В Visual Studio, выберите **файл** > **New** > **проекта**. Выберите **веб-приложения ASP.NET Core** и нажмите кнопку **ОК**.
 
     ![Диалоговое окно создания нового проекта](identity/_static/01-new-project.png)
 
@@ -144,7 +146,7 @@ ms.lasthandoff: 01/05/2018
  
 7.  Просмотр базы данных.
 
-    Если приложение использует базу данных SQL Server (по умолчанию в Windows и для пользователей Visual Studio), можно просматривать базы данных с приложением, создаваемым. Можно использовать **SQL Server Management Studio**. Кроме того, в Visual Studio, выберите **представление** -> **обозреватель объектов SQL Server**. Подключиться к **(localdb) \MSSQLLocalDB**. База данных с именем, соответствующим  **aspnet - <*имя проекта*>-<*Дата строка*> ** отображается.
+    Если приложение использует базу данных SQL Server (по умолчанию в Windows и для пользователей Visual Studio), можно просматривать базы данных с приложением, создаваемым. Можно использовать **SQL Server Management Studio**. Кроме того, в Visual Studio, выберите **представление** > **обозреватель объектов SQL Server**. Подключиться к **(localdb) \MSSQLLocalDB**. База данных с именем, соответствующим  **aspnet - <*имя проекта*>-<*Дата строка*> ** отображается.
 
     ![Контекстные меню AspNetUsers таблицу базы данных](identity/_static/04-db.png)
     

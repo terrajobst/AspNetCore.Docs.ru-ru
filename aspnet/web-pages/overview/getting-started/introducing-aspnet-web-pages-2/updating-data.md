@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 msc.type: authoredcontent
-ms.openlocfilehash: aabf572e254de9861719fdc502340353482919b4
-ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
+ms.openlocfilehash: b016231975bf8d359f4c390b0b478edc383117d4
+ms.sourcegitcommit: df2157ae9aeea0075772719c29784425c783e82a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/10/2018
 ---
 <a name="introducing-aspnet-web-pages---updating-database-data"></a>Введение в ASP.NET Web Pages — обновление баз данных
 ====================
@@ -308,7 +308,7 @@ ms.lasthandoff: 01/03/2018
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Введение в программирование веб-ASP.NET с синтаксисом Razor](introducing-razor-syntax-c.md)
+- [Введение в программирование веб-ASP.NET с синтаксисом Razor](../../getting-started/introducing-razor-syntax-c.md)
 - [Инструкции SQL UPDATE](http://www.w3schools.com/sql/sql_update.asp) на сайте W3Schools
 
 >[!div class="step-by-step"]

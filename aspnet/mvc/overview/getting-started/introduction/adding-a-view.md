@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: dotnet-mvc
 ms.prod: .net-framework
 uid: mvc/overview/getting-started/introduction/adding-a-view
-ms.openlocfilehash: cf0bb7984ad3460f8784193f7bb407c9b0ad50db
-ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
+ms.openlocfilehash: d273eb5e99da6c6b7678e03b1a8973041113744c
+ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/09/2018
 ---
 <a name="adding-a-view"></a>Добавление представления
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/03/2018
 
 `Index` Описанный выше метод использует Просмотр шаблона для создания HTML-ответа в браузер. Методы контроллера (также известный как [методы действий](http://rachelappel.com/asp.net-mvc-actionresults-explained)), такие как `Index` метод выше, обычно возвращают [ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult.aspx) (или класс, производный от [ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult.aspx)), не простых типов, таких как строка.
 
-Щелкните правой кнопкой мыши *Views\HelloWorld* папку и нажмите кнопку **добавить**, нажмите кнопку **страница представления MVC 5 с (макета Razor)**.
+Щелкните правой кнопкой мыши *Views\HelloWorld* папку и нажмите кнопку **добавить**, нажмите кнопку **страница представления MVC 5 с макетом (Razor)**.
   
 ![](adding-a-view/_static/image1.png)   
   
