@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
-ms.openlocfilehash: 054b60206cafc3d6dd5775436995638d7f5700cf
-ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
+ms.openlocfilehash: 8adc58d67f103e8d1fc8fe197cf392752bdaf660
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="hosting-in-aspnet-core"></a>Размещение в ASP.NET Core
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/09/2018
   * Переменные среды.
   * Аргументы командной строки.
 * Настраивает [входа](xref:fundamentals/logging/index) для вывода на консоль и отладки. Ведение журнала включает [фильтрации журнала](xref:fundamentals/logging/index#log-filtering) правила, указанные в разделе конфигурации ведения журнала *appsettings.json* или *appsettings. {} Среда} .json* файл.
-* При работе под IIS позволяет [интеграции IIS](xref:publishing/iis). Настраивает сервер должен прослушивать при использовании порта и пути к базовой папке [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратного прокси-сервера служб IIS и Kestrel. Кроме того, настраивает приложение для [перехватить ошибки запуска](#capture-startup-errors). Параметры по умолчанию служб IIS см. в разделе [IIS параметры раздела узла ASP.NET Core в Windows с помощью IIS](xref:publishing/iis#iis-options).
+* При работе под IIS позволяет [интеграции IIS](xref:host-and-deploy/iis/index). Настраивает сервер прослушивает при использовании порта и пути к базовой папке [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратный прокси-сервер служб IIS и Kestrel. Кроме того, настраивает приложение для [перехватить ошибки запуска](#capture-startup-errors). Параметры по умолчанию служб IIS см. в разделе [IIS параметры раздела узла ASP.NET Core в Windows с помощью IIS](xref:host-and-deploy/iis/index#iis-options).
 
 *Содержимое корневого* определяет, где узел ищет файлы содержимого, такие как файлы представления MVC. При запуске приложения из корневой папки проекта в корневой папки проекта используется в качестве корня содержимого. Это значение по умолчанию, используемых в [Visual Studio](https://www.visualstudio.com/) и [dotnet новые шаблоны](/dotnet/core/tools/dotnet-new).
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 01/09/2018
 
 *Содержимое корневого* определяет, где узел ищет файлы содержимого, такие как файлы представления MVC. Для получения содержимого корневого каталога по умолчанию `UseContentRoot` по [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory?view=netcore-1.1). При запуске приложения из корневой папки проекта в корневой папки проекта используется в качестве корня содержимого. Это значение по умолчанию, используемых в [Visual Studio](https://www.visualstudio.com/) и [dotnet новые шаблоны](/dotnet/core/tools/dotnet-new).
 
-Чтобы использовать в качестве обратного прокси-сервера IIS, вызовите [UseIISIntegration](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions) как часть построения узла. `UseIISIntegration`неправильно настраивает *сервера*, таких как [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel?view=aspnetcore-1.1) does. `UseIISIntegration`настраивает сервер должен прослушивать при использовании порта и пути к базовой папке [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) создание обратного прокси-сервера между Kestrel и службами IIS. Для использования IIS с ASP.NET Core `UseKestrel` и `UseIISIntegration` должен быть указан. `UseIISIntegration`активируется, только при запуске IIS или IIS Express. Дополнительные сведения см. в разделе [введение в ASP.NET Core модуля](xref:fundamentals/servers/aspnet-core-module) и [ссылки на конфигурации ASP.NET Core модуль](xref:hosting/aspnet-core-module).
+Чтобы использовать в качестве обратного прокси-сервера IIS, вызовите [UseIISIntegration](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions) как часть построения узла. `UseIISIntegration`неправильно настраивает *сервера*, таких как [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel?view=aspnetcore-1.1) does. `UseIISIntegration`настраивает сервер прослушивает при использовании порта и пути к базовой папке [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) создание обратного прокси-сервера между Kestrel и службами IIS. Для использования IIS с ASP.NET Core `UseKestrel` и `UseIISIntegration` должен быть указан. `UseIISIntegration`активируется, только при запуске IIS или IIS Express. Дополнительные сведения см. в разделе [введение в ASP.NET Core модуля](xref:fundamentals/servers/aspnet-core-module) и [ссылки на конфигурации ASP.NET Core модуль](xref:host-and-deploy/aspnet-core-module).
 
 Минимальную реализацию, которая настраивает узел (и приложения ASP.NET Core) включает в себя указание сервера и настройки конвейера запросов приложения:
 
@@ -266,7 +266,7 @@ WebHost.CreateDefaultBuilder(args)
 
 ### <a name="prevent-hosting-startup"></a>Запретить размещение запуска
 
-Предотвращает автоматическая загрузка размещение запуска сборок, включая размещение сборок запуска задаются сборку приложения. В разделе [Добавление компонентов приложения из внешней сборки с помощью IHostingStartup](xref:hosting/ihostingstartup) для получения дополнительной информации.
+Предотвращает автоматическая загрузка размещение запуска сборок, включая размещение сборок запуска задаются сборку приложения. В разделе [Добавление компонентов приложения из внешней сборки с помощью IHostingStartup](xref:host-and-deploy/ihostingstartup) для получения дополнительной информации.
 
 **Ключ**: preventHostingStartup  
 **Тип**: *bool* (`true` или `1`)  
@@ -908,7 +908,7 @@ WebHost.CreateDefaultBuilder(args)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Публикация в Windows с помощью служб IIS](../publishing/iis.md)
-* [Публикация в Linux с помощью Nginx](../publishing/linuxproduction.md)
-* [Публикация в Linux с помощью Apache](../publishing/apache-proxy.md)
-* [Узел в службе Windows](xref:hosting/windows-service)
+* [Размещение в Windows с помощью IIS](xref:host-and-deploy/iis/index)
+* [Размещение в Linux с использованием Nginx](xref:host-and-deploy/linux-nginx)
+* [Размещение в Linux с использованием Apache](xref:host-and-deploy/linux-apache)
+* [Узел в службе Windows](xref:host-and-deploy/windows-service)

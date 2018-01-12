@@ -5,17 +5,17 @@ description: "Сведения об оптимизации статически�
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/01/2017
+ms.date: 01/10/2018
 ms.devlang: csharp
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: c271b7ef386bacedbd45fbe9f62c9c486db55b36
-ms.sourcegitcommit: 05e798c9bac7b9e9983599afb227ef393905d023
+ms.openlocfilehash: ac8e7fee7600dabb8f4970b5bf87ad7a57ebf17f
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="bundling-and-minification"></a>Объединение и Минификация
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 12/05/2017
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig.json)]
 
-Параметры пакета:
+Следующие параметры конфигурации.
 
 * `outputFileName`: Имя файла набора для вывода. Может содержать относительный путь от *bundleconfig.json* файла. **Обязательно**
 * `inputFiles`: Массив файлов, которые будут объединены. Это относительные пути к файлу конфигурации. **Необязательный**, * пустое значение преобразуется в пустой выходной файл. [Этот режим](http://www.tldp.org/LDP/abs/html/globbingref.html) поддерживаются шаблоны.
@@ -91,6 +91,9 @@ ms.lasthandoff: 12/05/2017
 ## <a name="build-time-execution-of-bundling-and-minification"></a>Объединение и Минификация выполнения во время сборки
 
 [BuildBundlerMinifier](https://www.nuget.org/packages/BuildBundlerMinifier/) пакет NuGet разрешает выполнение объединение и Минификация во время построения. Внедряет пакет [целевые объекты MSBuild](/visualstudio/msbuild/msbuild-targets) которого сборки и очистить времени выполнения. *Bundleconfig.json* файл анализируется в процессе построения для создания выходных файлов, на основе определенной конфигурации.
+
+> [!NOTE]
+> BuildBundlerMinifier относится к проекту сообщество ведет на GitHub, для которых корпорация Майкрософт не поддерживает. Должна быть заполнена проблемы [здесь](https://github.com/madskristensen/BundlerMinifier/issues).
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
@@ -176,6 +179,9 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 [!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=10)]
 
+> [!NOTE]
+> BundlerMinifier.Core относится к проекту сообщество ведет на GitHub, для которых корпорация Майкрософт не поддерживает. Должна быть заполнена проблемы [здесь](https://github.com/madskristensen/BundlerMinifier/issues).
+
 Этот пакет расширяет .NET Core CLI для включения *dotnet пакета* средства. В окне консоли диспетчера пакетов (PMC) или в командной оболочке можно выполнить следующую команду:
 
 ```console
@@ -243,6 +249,9 @@ dotnet bundle
 ### <a name="use-the-bundler--minifier-extension"></a>Использовать расширение Bundler & Уменьшитель
 
 Visual Studio [Bundler & Уменьшитель](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.BundlerMinifier) расширения выполняет преобразование на Gulp.
+
+> [!NOTE]
+> Расширение Bundler & Уменьшитель принадлежит сообщество ведет проекта на GitHub, для которых корпорация Майкрософт не поддерживает. Должна быть заполнена проблемы [здесь](https://github.com/madskristensen/BundlerMinifier/issues).
 
 Щелкните правой кнопкой мыши *bundleconfig.json* в обозревателе решений и выберите **Bundler & Уменьшитель** > **преобразовать Gulp...** :
 

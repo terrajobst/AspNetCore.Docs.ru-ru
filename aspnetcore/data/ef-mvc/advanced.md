@@ -11,11 +11,11 @@ ms.assetid: 92a2986a-d005-4ff6-9559-6657fd466bb7
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: d63502a32e38eb192b40f21f5cd57d20048154e3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4c20ed37e1e54273929593dddc9fe1180f1492d6
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="advanced-topics---ef-core-with-aspnet-core-mvc-tutorial-10-of-10"></a>Дополнительные разделы - Core EF учебнику ASP.NET Core MVC (10, 10)
 
@@ -192,7 +192,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 Дополнительные сведения об основных EF см. в разделе [документации по Entity Framework Core](https://docs.microsoft.com/ef/core). Доступна также книги: [Entity Framework Core в действии](https://www.manning.com/books/entity-framework-core-in-action).
 
-Сведения о развертывании веб-приложения после его построения см. в разделе [публикации и развертывания](../../publishing/index.md).
+Сведения о развертывании веб-приложения см. в разделе [узла и развернуть](xref:host-and-deploy/index).
 
 Сведения о других разделов, связанных с ASP.NET MVC основных компонентов, таких как проверка подлинности и авторизации, в разделе [документации ASP.NET Core](https://docs.microsoft.com/aspnet/core/).
 

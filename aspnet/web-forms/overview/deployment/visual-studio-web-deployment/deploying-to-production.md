@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: 2a8b165c149ceacba49a193c25e4a66a701ea0d6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2c49e7f6925b1ca172642747c5052ba97d70d036
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>ASP.NET веб-развертывания с помощью Visual Studio: развертывание в рабочей среде
 ====================
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/10/2017
 ## <a name="create-a-staging-environment"></a>Создать промежуточную среду
 
 > [!NOTE]
-> С момента этого учебника была написана, службе приложений Azure добавлен новый компонент для автоматизировать многие процессы вокруг с промежуточной и производственной средах. В разделе [Настройка промежуточных сред для веб-приложений в службе приложений Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/).
+> С момента этого учебника была написана, службе приложений Azure добавлен новый компонент для автоматизировать многие процессы для создания промежуточной и производственной средах. В разделе [Настройка промежуточных сред для веб-приложений в службе приложений Azure](https://azure.microsoft.com/documentation/articles/web-sites-staged-publishing/).
 
 
 Как описано в статье [Развернуть Учебник тестовая среда,](deploying-to-iis.md), наиболее надежный тестовой среды является веб-сайте поставщика услуг размещения, как рабочем веб-узле. Во многих поставщиков услуг размещения необходимо взвесить преимущества этого к значительным расходам дополнительных, но в Azure можно создать Дополнительные бесплатные веб-приложение в качестве промежуточного приложения. Необходимо настроить базу данных, а также дополнительные расходы для этого по затрат на рабочей базы данных будут ни одна или минимальным. В Azure оплачивается объема хранилища базы данных, которые можно использовать, а не для каждой базы данных и объем дополнительного хранилища, который будет использоваться в промежуточной будет минимальным.

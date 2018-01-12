@@ -11,11 +11,11 @@ ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: 68e8c89f6e5485f25d1a551ab3e524f0e9c53d0d
-ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
+ms.openlocfilehash: 86244179115fe6a7d0f7298495086a96ee9570d9
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>Ответ сжатия по промежуточного слоя ASP.NET Core
 
@@ -187,7 +187,7 @@ ms.lasthandoff: 12/19/2017
 При получении запроса через прокси, Nginx, `Accept-Encoding` заголовок удаляется. Это предотвращает сжатие ответ по промежуточного слоя. Дополнительные сведения см. в разделе [NGINX: сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Эта проблема отслеживается [выяснить сквозной сжатия для nginx (BasicMiddleware #123)](https://github.com/aspnet/BasicMiddleware/issues/123).
 
 ## <a name="working-with-iis-dynamic-compression"></a>Работа с динамическое сжатие IIS
-При наличии активных динамического сжатия модуль IIS настроен на уровне сервера, который вы хотите отключить для приложения, это можно сделать с дополнением к вашей *web.config* файла. Дополнительные сведения см. в разделе [модули IIS Отключение](xref:hosting/iis-modules#disabling-iis-modules).
+При наличии активных динамического сжатия модуль IIS настроен на уровне сервера, который вы хотите отключить для приложения, это можно сделать с дополнением к вашей *web.config* файла. Дополнительные сведения см. в разделе [модули IIS Отключение](xref:host-and-deploy/iis/modules#disabling-iis-modules).
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 Использование таких средств, как [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), или [почтальон](https://www.getpostman.com/), позволяют задавать `Accept-Encoding` заголовок запроса и изучения заголовки ответа, размер и текст. По промежуточного слоя сжатия ответа сжимает ответов, которые удовлетворяют следующим условиям:

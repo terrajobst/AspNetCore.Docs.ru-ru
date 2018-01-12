@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: index
-ms.openlocfilehash: 3a18ed30819a3d395e9bfb5dba0547667a4425e8
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: 5d8e9a72a3b69866f5a4f725076e44575d20d64f
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -38,7 +38,7 @@ ASP.NET Core предоставляет следующие преимущест�
 * Облачная [система конфигурации](xref:fundamentals/configuration/index) на основе среды.
 * Встроенное [введение зависимостей](xref:fundamentals/dependency-injection).
 * Упрощенный [высокопроизводительный](https://github.com/aspnet/benchmarks) модульный конвейер HTTP-запросов.
-* Возможность размещения в [IIS](xref:publishing/iis), [Nginx](xref:publishing/linuxproduction), [Apache](xref:publishing/apache-proxy), [Docker](xref:publishing/docker) или в собственном процессе.
+* Возможность размещения в [IIS](xref:host-and-deploy/iis/index), [Nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache), [Docker](xref:host-and-deploy/docker/index) или в собственном процессе.
 * Параллельное управление версиями приложения, ориентированное на [.NET Core](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server).
 * Инструментарий, упрощающий процесс современной веб-разработки.
 * Возможность сборки и запуска в ОС Windows, macOS и Linux.
@@ -48,7 +48,7 @@ ASP.NET Core поставляется полностью в виде пакет�
 
 ## <a name="build-web-apis-and-web-ui-using-aspnet-core-mvc"></a>Создание веб-API и пользовательского веб-интерфейса с помощью ASP.NET Core MVC
 
-ASP.NET Core MVC предоставляет функции, которые позволяют создавать [веб-интерфейсы API](xref:tutorials/index#building-web-apis) и [веб-приложения](xref:tutorials/index#building-web-applications).
+ASP.NET Core MVC предоставляет функции, которые позволяют создавать [веб-интерфейсы API](xref:tutorials/index#build-web-apis) и [веб-приложения](xref:tutorials/index#build-web-apps).
 
 * [Шаблон Model-View-Controller (MVC)](xref:mvc/overview) помогает сделать веб-API и веб-приложения [тестируемыми](testing/index.md).
 * [Страницы Razor](xref:mvc/razor-pages/index) (новый компонент в ASP.NET Core 2.0) — это основанная на страницах модель программирования, которая упрощает создание пользовательского веб-интерфейса и повышает его эффективность.

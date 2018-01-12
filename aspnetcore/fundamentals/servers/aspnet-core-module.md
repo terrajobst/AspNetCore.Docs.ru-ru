@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/aspnet-core-module
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d1f551dbde5f3dd6e71808154c2e5885d588d7c
-ms.sourcegitcommit: 282f69e8dd63c39bde97a6d72783af2970d92040
+ms.openlocfilehash: 5eef9405c0c3d219755d7cffa5d45c3df45ddb5c
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="introduction-to-aspnet-core-module"></a>Введение в ASP.NET Core модуля
 
@@ -54,7 +54,7 @@ ANCM имеет несколько других функций.
 
 ## <a name="how-to-use-ancm-in-aspnet-core-apps"></a>Как использовать в приложениях ASP.NET Core ANCM
 
-В этом разделе Обзор процесса настройки сервера IIS и ASP.NET Core приложения. Подробные инструкции см. в разделе [публикация в службах IIS](../../publishing/iis.md).
+В этом разделе Обзор процесса настройки сервера IIS и ASP.NET Core приложения. Подробные инструкции см. в разделе [узла в Windows с помощью IIS](xref:host-and-deploy/iis/index).
 
 ### <a name="install-ancm"></a>Установить ANCM
 
@@ -107,7 +107,7 @@ ANCM создает динамический порт для назначени�
 
 ### <a name="configure-ancm-options-in-webconfig"></a>Настройка параметров ANCM в файле Web.config
 
-Конфигурация для модуля ASP.NET Core хранится в *Web.config* файл, расположенный в корневой папке приложения. Параметры в этом файле точки для запуска команды и аргументы, которые запуска приложения ASP.NET Core. Образец кода Web.config и рекомендации по настройке см. в разделе [модуля конфигурации ASP.NET Core Reference](../../hosting/aspnet-core-module.md).
+Конфигурация для модуля ASP.NET Core хранится в *web.config* файл, расположенный в корневой папке приложения. Параметры в этом файле точки для запуска команды и аргументы, которые запуска приложения ASP.NET Core. Для образца *web.config* кода, а также соответствующие параметры конфигурации в разделе [модуля конфигурации ASP.NET Core Reference](xref:host-and-deploy/aspnet-core-module).
 
 ### <a name="run-with-iis-express-in-development"></a>Запустите сервер IIS Express в разработке
 
@@ -125,5 +125,5 @@ IIS Express можно запускать Visual Studio с использова�
 
 * [Образец приложения для этой статьи](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/aspnet-core-module/sample)
 * [Исходный код ASP.NET модуль Core](https://github.com/aspnet/AspNetCoreModule)
-* [Справочник по конфигурации модуля ASP.NET Core](../../hosting/aspnet-core-module.md)
-* [Публикация в IIS](../../publishing/iis.md)
+* [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
+* [Размещение в Windows с помощью IIS](xref:host-and-deploy/iis/index)
