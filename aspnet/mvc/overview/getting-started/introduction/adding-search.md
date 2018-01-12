@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: a7664d16a056424ee51db2208152cb5d35d8e5d9
-ms.sourcegitcommit: d1d8071d4093bf2444b5ae19d6e45c3d187e338b
+ms.openlocfilehash: 10457d154f5fda875f7d1054d48daeeba3a50b7c
+ms.sourcegitcommit: 2b263e87217658caa42eedc4f9d2d21ef0ab5d59
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/19/2017
+ms.lasthandoff: 01/12/2018
 ---
 <a name="search"></a>Поиск
 ====================
@@ -123,7 +123,7 @@ Visual Studio 2013 имеет значительное улучшение раб
 
 [!code-csharp[Main](adding-search/samples/sample12.cs)]
 
-Код использует `AddRange` метод универсального `List` коллекции для добавления в список всех уникальных жанров. (Без `Distinct` модификатор, следует добавить повторяющийся жанров — например, комедия добавляется дважды в нашем примере). Код сохраняет список жанров в `ViewBag.movieGenre` объекта. Хранение данных категории (такие фильма жанра) как [SelectList](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlist(v=vs.108).aspx) объекта в `ViewBag`, то доступ к данным категории в раскрывающемся списке — типичный подход для приложений MVC.
+Код использует `AddRange` метод универсального `List` коллекции для добавления в список всех уникальных жанров. (Без `Distinct` модификатор, следует добавить повторяющийся жанров — например, комедия добавляется дважды в нашем примере). Код сохраняет список жанров в `ViewBag.MovieGenre` объекта. Хранение данных категории (такие фильма жанра) как [SelectList](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlist(v=vs.108).aspx) объекта в `ViewBag`, то доступ к данным категории в раскрывающемся списке — типичный подход для приложений MVC.
 
 В следующем коде показано, как проверить `movieGenre` параметра. Если она не пустая, код далее ограничивает запрос фильмов с целью ограничения фильмы, выбранных для заданного жанра.
 
@@ -141,7 +141,7 @@ Visual Studio 2013 имеет значительное улучшение раб
 
 [!code-cshtml[Main](adding-search/samples/sample15.cshtml)]
 
-Параметр «movieGenre» предоставляет ключ для `DropDownList` вспомогательный метод для поиска `IEnumerable<SelectListItem>` в `ViewBag`. `ViewBag` Была заполнена в методе действия:
+Параметр «MovieGenre» предоставляет ключ для `DropDownList` вспомогательный метод для поиска `IEnumerable<SelectListItem>` в `ViewBag`. `ViewBag` Была заполнена в методе действия:
 
 [!code-csharp[Main](adding-search/samples/sample16.cs?highlight=10)]
 
