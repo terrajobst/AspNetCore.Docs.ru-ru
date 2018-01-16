@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging/index
-ms.openlocfilehash: 737de614625ce560df1c3d7cfd9810f9433c153d
-ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
+ms.openlocfilehash: 3eb167c961b8d089d508ef5622db6ae1cdd99088
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>Общие сведения о ведении журналов в ASP.NET Core
 
@@ -56,7 +56,7 @@ ASP.NET Core не предоставляет асинхронные методы
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_ExpandDefault&highlight=16,17)]
 
-Шаблон проекта по умолчанию настраивает ведение журнала так, как это показано в приведенном выше коде, однако вызов `ConfigureLogging` осуществляется методом `CreateDefaultBuilder`. Ниже приведен код в файле *Program.cs*, созданный с помощью шаблонов проекта:
+Шаблон проекта по умолчанию включает ведение журнала с помощью метода[CreateDefaultBuilder](https://docs.microsoft.com/ dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder?view=aspnetcore-2.0#Microsoft_AspNetCore_WebHost_CreateDefaultBuilder_System_String___).
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_TemplateCode&highlight=7)]
 
@@ -302,7 +302,7 @@ System.Exception: Item not found exception.
 | 1      | Отладка         | Все категории                          | Сведения       |
 | 2      | Консоль       | Microsoft.AspNetCore.Mvc.Razor.Internal | Предупреждение           |
 | 3      | Консоль       | Microsoft.AspNetCore.Mvc.Razor.Razor    | Отладка             |
-| 4      | Консоль       | Microsoft.AspNetCore.Mvc.Razor          | Ошибка             |
+| 4      | Консоль       | Microsoft.AspNetCore.Mvc.Razor          | Error             |
 | 5      | Консоль       | Все категории                          | Сведения       |
 | 6      | Все поставщики | Все категории                          | Отладка             |
 | 7      | Все поставщики | Система                                  | Отладка             |

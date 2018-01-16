@@ -10,11 +10,11 @@ ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe012345
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/index
-ms.openlocfilehash: 3f4df08d6cf5d183735ae4b4ec4f07ed60a9623a
-ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
+ms.openlocfilehash: f6a1f32c1edd098b0782fd066d8e32f09952a9b7
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="aspnet-core-security-overview"></a>Общие сведения о безопасности ASP.NET Core
 
@@ -49,7 +49,7 @@ ASP.NET Core и EF содержат средства, помогающие за�
     * [Настройка проверки подлинности Windows](authentication/windowsauth.md)
     *   [Подтверждение учетной записи и восстановление пароля](authentication/accconfirm.md)
     *   [Двухфакторная проверка подлинности с помощью SMS](authentication/2fa.md) 
-    *   [Использование проверки подлинности с помощью файлов cookie без ASP.NET Core Identity](authentication/cookie.md)
+    *   [Использование проверки подлинности с помощью файлов cookie без Identity](authentication/cookie.md)
     *   [Azure Active Directory](authentication/azure-active-directory/index.md)
         *   [Интеграция Azure AD в веб-приложение ASP.NET Core](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
         *   [Вызов веб-API ASP.NET Core из приложения WPF с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
@@ -62,7 +62,7 @@ ASP.NET Core и EF содержат средства, помогающие за�
     *   [Простая авторизация](authorization/simple.md)
     *   [Авторизация на основе ролей](authorization/roles.md)
     *   [Авторизация на основе утверждений](authorization/claims.md)
-    *   [Пользовательская авторизация на основе политик](authorization/policies.md)
+    *   [Авторизация на основе политик](authorization/policies.md)
     *   [Внедрение зависимостей в обработчики требований](authorization/dependencyinjection.md)
     *   [Авторизация на основе ресурсов](authorization/resourcebased.md)
     *   [Авторизация на основе представлений](authorization/views.md)
@@ -80,8 +80,8 @@ ASP.NET Core и EF содержат средства, помогающие за�
     *   [Конфигурация](data-protection/configuration/index.md)
         *   [Настройка защиты данных](data-protection/configuration/overview.md)
         *   [Параметры по умолчанию](data-protection/configuration/default-settings.md)
-        *   [Политика на уровне компьютера](data-protection/configuration/machine-wide-policy.md)
-        *   [Сценарии, не поддерживающие DI](data-protection/configuration/non-di-scenarios.md)
+        *   [Политики уровня компьютера](data-protection/configuration/machine-wide-policy.md)
+        *   [Сценарии, не поддерживающие внедрение зависимостей](data-protection/configuration/non-di-scenarios.md)
     *   [API расширяемости](data-protection/extensibility/index.md)
         *   [Расширяемость базового шифрования](data-protection/extensibility/core-crypto.md)
         *   [Расширяемость управления ключами](data-protection/extensibility/key-management.md)
@@ -105,5 +105,5 @@ ASP.NET Core и EF содержат средства, помогающие за�
 *   [Применение SSL](enforcing-ssl.md)
 *   [Защита от подделки запросов](anti-request-forgery.md)
 *   [Предотвращение атак с открытой переадресацией](preventing-open-redirects.md)
-*   [Предотвращение использования межузловых сценариев](cross-site-scripting.md)
+*   [Предотвращайте использование межузловых сценариев](cross-site-scripting.md)
 *   [Включение запросов о происхождении (CORS)](cors.md)

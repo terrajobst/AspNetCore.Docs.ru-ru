@@ -11,11 +11,11 @@ ms.assetid: dba74f39-58cd-4dee-a061-6d15f7346959
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/index
-ms.openlocfilehash: 04dee100dff91f7868175ff4be01156787e13e81
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b149cb316e4266e67d846b8ef8c2c7f2a25ded5c
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Реализации веб-сервера в ASP.NET Core
 
@@ -79,11 +79,11 @@ Kestrel можно использовать отдельно или с *обра
 
 ### <a name="nginx-with-kestrel"></a>Nginx с Kestrel
 
-Сведения о том, как использовать Nginx в Linux в качестве обратного прокси-сервера для Kestrel, см. в статье [Публикация в рабочей среде Linux](../../publishing/linuxproduction.md).
+Сведения о том, как использовать Nginx в Linux в качестве обратного прокси-сервера для Kestrel, см. в статье [Размещение в Linux с использованием Nginx](xref:host-and-deploy/linux-nginx).
 
 ### <a name="apache-with-kestrel"></a>Apache с Kestrel
 
-Сведения о том, как использовать Apache в Linux в качестве обратного прокси-сервера для Kestrel, см. в статье [Использование веб-сервера Apache в качестве обратного прокси-сервера](../../publishing/apache-proxy.md).
+Сведения о том, как использовать Apache в Linux в качестве обратного прокси-сервера для Kestrel, см. в статье [Размещение в Linux с использованием Apache](xref:host-and-deploy/linux-apache).
 
 ## <a name="httpsys"></a>HTTP.sys
 
@@ -131,16 +131,16 @@ WebListener можно также использовать вместо Kestrel 
 
 - [Kestrel](kestrel.md)
 - [Kestrel с IIS](aspnet-core-module.md)
-- [Kestrel с Nginx](../../publishing/linuxproduction.md)
-- [Kestrel с Apache](../../publishing/apache-proxy.md)
+- [Размещение в Linux с использованием Nginx](xref:host-and-deploy/linux-nginx)
+- [Размещение в Linux с использованием Apache](xref:host-and-deploy/linux-apache)
 - [HTTP.sys](httpsys.md)
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 - [Kestrel](kestrel.md)
 - [Kestrel с IIS](aspnet-core-module.md)
-- [Kestrel с Nginx](../../publishing/linuxproduction.md)
-- [Kestrel с Apache](../../publishing/apache-proxy.md)
+- [Размещение в Linux с использованием Nginx](xref:host-and-deploy/linux-nginx)
+- [Размещение в Linux с использованием Apache](xref:host-and-deploy/linux-apache)
 - [WebListener](weblistener.md)
 
 ---

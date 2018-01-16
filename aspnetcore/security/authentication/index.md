@@ -11,11 +11,11 @@ ms.assetid: 981852c9-78f9-4590-aaee-9d50a2838dfe
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/index
-ms.openlocfilehash: 9b92a3206e2d6ca921e8580fa367e4bae12725c5
-ms.sourcegitcommit: 037d3900f739dbaa2ba14158e3d7dc81478952ad
+ms.openlocfilehash: 182d3b5d567a46bb0f7d7c5864ebbc252782d8a3
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="authentication"></a>Проверка подлинности
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 12/01/2017
 
 * [Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков](social/index.md)
 
-* [Включение создания QR-кода в ASP.NET Identity](identity-enable-qrcodes.md)
+* [Включение создания кода QR в Identity](identity-enable-qrcodes.md)
 
 * [Настройка проверки подлинности Windows](windowsauth.md)
 
@@ -33,18 +33,18 @@ ms.lasthandoff: 12/01/2017
 
 * [Двухфакторная проверка подлинности с помощью SMS](2fa.md)
 
-* [Использование проверки подлинности с помощью файлов cookie без ASP.NET Core Identity](cookie.md)
+* [Использование проверки подлинности с помощью файлов cookie без Identity](cookie.md)
 
 * [Azure Active Directory](azure-active-directory/index.md)
 
-  * [Интеграция Azure AD в веб-приложение ASP.NET Core](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
+  * [Интеграция Azure AD в веб-приложение ASP.NET Core](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
 
-  * [Вызов веб-API ASP.NET Core из приложения WPF с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
+  * [Вызов веб-API ASP.NET Core из приложения WPF с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
 
-  * [Вызов веб-API в веб-приложении ASP.NET Core с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
+  * [Вызов веб-API в веб-приложении ASP.NET Core с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
 
 * [Защита приложений ASP.NET Core с помощью IdentityServer4](http://docs.identityserver.io/en/release/)
 
-* [Защита приложений ASP.NET Core с помощью проверки подлинности в службе приложений Azure (Easy Auth)](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)
+* [Защита приложений ASP.NET Core с помощью проверки подлинности в службе приложений Azure (Easy Auth)](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)
 
 * [Статьи на основе проектов, созданных с помощью учетных записей отдельных пользователей](xref:security/authentication/individual)

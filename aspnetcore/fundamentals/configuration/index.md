@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 6281d6ba254670b111964715410fc0694ae4d149
-ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
+ms.openlocfilehash: b662e66ab5b4c46d1a8d10eb7c38bf4064b5b927
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="configure-an-aspnet-core-app"></a>Настройка приложения ASP.NET Core
 
@@ -375,7 +375,7 @@ Left: 1988
 
 ## <a name="the-webconfig-file"></a>Файл web.config
 
-Файл *web.config* необходим для размещения приложения в службах IIS или IIS Express. Файл *web.confi* включает AspNetCoreModule в службах IIS для запуска приложения. Параметры в файле *web.config* включают модуль AspNetCoreModule в службах IIS для запуска приложения и настройки других параметров и модулей IIS. Если вы используете Visual Studio и удаляете файл *web.config*, Visual Studio создаст новый файл.
+Файл *web.config* необходим для размещения приложения в службах IIS или IIS Express. Параметры в файле *web.config* включают [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) для запуска приложения и настройки других параметров и модулей IIS. Если файл *web.config* отсутствует и файл проекта содержит `<Project Sdk="Microsoft.NET.Sdk.Web">`, при публикации проекта файл *web.config* создается в опубликованных выходных данных (папка *publish*). Дополнительные сведения см. в разделе [Размещение ASP.NET Core в Windows со службами IIS](xref:host-and-deploy/iis/index#webconfig).
 
 ## <a name="additional-notes"></a>Дополнительные сведения
 
