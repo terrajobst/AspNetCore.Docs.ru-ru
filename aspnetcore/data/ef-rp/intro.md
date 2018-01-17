@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/intro
-ms.openlocfilehash: 86f9eceb5b8646e371811fa4611a4509ff652231
-ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
+ms.openlocfilehash: 2725960aa8a54c803a141b8d1275e65f245f7082
+ms.sourcegitcommit: 87168cdc409e7a7257f92a0f48f9c5ab320b5b28
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio-1-of-8"></a>Приступая к работе со страницами Razor и Entity Framework Core, с помощью Visual Studio (1, 8)
 
@@ -34,7 +34,7 @@ Contoso университета образец веб-приложения по
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-Если возникли проблемы, не удается устранить, обычно можно найти решения путем сравнения код, чтобы [завершения этапа](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots) или [завершенного проекта](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu-final). Список распространенных ошибок и способы их устранения см. в разделе [раздел "Устранение неполадок" последнего учебника в серии](xref:data/ef-mvc/advanced#common-errors). Если вы не нашли нужную информацию существует, можно разместить вопрос StackOverflow.com для [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) или [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
+Если возникли проблемы, не удается устранить, обычно можно найти решения путем сравнения код, чтобы [завершения этапа](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots) или [завершенного проекта](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu-final). Список распространенных ошибок и способы их устранения см. в разделе [раздел "Устранение неполадок" последнего учебника в серии](xref:data/ef-mvc/advanced#common-errors). Если вы не нашли нужную информацию существует, можно разместить вопрос на [StackOverflow.com](https://stackoverflow.com/questions/tagged/asp.net-core) для [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) или [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
 > [!TIP]
 > Эта серия учебников основан на выполняемые операции в предыдущих учебниках. Рекомендуется сохранить копию проекта после каждого успешного завершения учебника. Если возникли проблемы, можно начать сначала из предыдущего учебника вместо вернуться в начало. Кроме того, вы можете загрузить [завершения этапа](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots) и начать заново с помощью завершенной рабочей области.

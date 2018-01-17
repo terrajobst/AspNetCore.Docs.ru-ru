@@ -1,80 +1,114 @@
 ---
 title: "Работа с несколькими средами в ASP.NET Core"
-author: ardalis
+author: rick-anderson
 description: "Узнайте, как ASP.NET Core предоставляет поддержку для управления поведением приложения в нескольких средах."
 keywords: "ASP.NET Core, параметры среды, ASPNETCORE_ENVIRONMENT"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 12/25/2017
 ms.topic: article
-ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 9127c3d7180422c0e3dbd813340dd485bf360c81
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 784d176145c3e4e44ddc0ea06b6702f70cd4b08c
+ms.sourcegitcommit: 87168cdc409e7a7257f92a0f48f9c5ab320b5b28
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="working-with-multiple-environments"></a>Работа с несколькими средами
 
-По [Стив Смит](https://ardalis.com/)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-ASP.NET Core обеспечивает поддержку для управления поведением приложения в нескольких средах, например разработки, промежуточной и производственной. Переменные среды используются для указания среды выполнения, что позволяет приложению должны быть настроены для этой среды.
+ASP.NET Core обеспечивает поддержку установки поведение приложения во время выполнения с переменными среды.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="development-staging-production"></a>Разработка решений, промежуточное хранение производства
+## <a name="environments"></a>Среды
 
-ASP.NET Core ссылается на переменную среды, `ASPNETCORE_ENVIRONMENT` для описания приложения в данный момент работает в среде. Эту переменную можно задать любое значение, например, но по соглашению используются три значения: `Development`, `Staging`, и `Production`. Вы найдете следующие значения, используемые в примерах и шаблоны в ASP.NET Core.
+ASP.NET Core считывает переменной среды `ASPNETCORE_ENVIRONMENT` при запуске приложения и сохраняет это значение в [IHostingEnvironment.EnvironmentName](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_IHostingEnvironment_EnvironmentName). `ASPNETCORE_ENVIRONMENT`можно задать любое значение, но [три значения](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname?view=aspnetcore-2.0) поддерживаются платформой: [разработки](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development?view=aspnetcore-2.0), [промежуточной](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging?view=aspnetcore-2.0), и [рабочей](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production?view=aspnetcore-2.0). Если `ASPNETCORE_ENVIRONMENT` не задано, то по умолчанию `Production`.
 
-Текущее значение параметра среде могут быть обнаружены программным образом из в приложении. Кроме того, можно использовать среду [тег вспомогательный](../mvc/views/tag-helpers/index.md) для включения определенных разделов в вашей [представление](../mvc/views/index.md) в зависимости от текущей среды приложения.
+[!code-csharp[Main](environments/sample/WebApp1/Startup.cs?name=snippet)]
 
-Обратите внимание: В Windows и macOS, заданным именем среды регистр не учитывается. Является ли значение переменной `Development` или `development` или `DEVELOPMENT` результаты будут одинаковыми. Тем не менее, является Linux **регистра** ОС по умолчанию. Переменные среды, имена файлов и параметры требуют чувствительность к регистру.
+Предыдущий код:
+
+* Вызовы [UseDeveloperExceptionPage](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_DeveloperExceptionPageExtensions_UseDeveloperExceptionPage_Microsoft_AspNetCore_Builder_IApplicationBuilder_) и [UseBrowserLink](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.browserlinkextensions.usebrowserlink?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_BrowserLinkExtensions_UseBrowserLink_Microsoft_AspNetCore_Builder_IApplicationBuilder_) при `ASPNETCORE_ENVIRONMENT` равно `Development`.
+* Вызовы [UseExceptionHandler](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.exceptionhandlerextensions.useexceptionhandler?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_ExceptionHandlerExtensions_UseExceptionHandler_Microsoft_AspNetCore_Builder_IApplicationBuilder_) при значение `ASPNETCORE_ENVIRONMENT` задано одно из следующих:
+
+    * `Staging`
+    * `Production`
+    * `Staging_2`
+
+[Вспомогательный тега среды ](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper) использует значение `IHostingEnvironment.EnvironmentName` для включения или исключения разметки в элементе:
+
+[!code-html[Main](environments/sample/WebApp1/Pages/About.cshtml)]
+
+Обратите внимание: В Windows и macOS, переменные среды и значения не учитывается регистр. Переменные среды для Linux и значения являются **регистра** по умолчанию.
 
 ### <a name="development"></a>Разработка
 
-Это должна быть среды, используемые при разработке приложения. Обычно он используется для включения возможностей, которые вы не должны быть доступны при запуске приложения в рабочей среде, такие как [страницы разработчик исключений](xref:fundamentals/error-handling#the-developer-exception-page).
+В среде разработки можно включить функции, которые не должны предоставляться в рабочей среде. Например, включить шаблоны ASP.NET Core [страницы разработчик исключений](xref:fundamentals/error-handling#the-developer-exception-page) в среде разработки.
 
-Если вы используете Visual Studio, можно настроить среду в профилей отладки проекта. Отладка профилей укажите [сервера](xref:fundamentals/servers/index) для использования при запуске приложения и любых переменных окружения требуется задать. Проект может иметь несколько профилей отладки, которые по-разному задать переменные среды. С помощью управления этими профилями **отладки** вкладке проекта веб-приложения **свойства** меню. Значения, заданные в свойствах проекта сохраняются в *launchSettings.json* файла и можно также настроить профили путем непосредственного изменения этого файла.
+Среда для локального компьютера может быть задано в *Properties\launchSettings.json* файла проекта. Задание значений среды в *launchSettings.json* переопределяют значения, заданные в среде системы.
 
-Профиль для IIS Express показан ниже:
+Следующий код XML показывает три профиля из *launchSettings.json* файла:
+
+[!code-xml[Main](environments/sample/WebApp1/Properties/launchSettings.json?highlight=10,11,18,26)]
+
+При запуске приложения с `dotnet run`, первый профиль с `"commandName": "Project"` будет использоваться. Значение `commandName` указывает веб-сервера для запуска. `commandName`может принимать одно из:
+
+* IIS Express
+* IIS
+* Проект (которое запускает Kestrel)
+
+При запуске приложения с `dotnet run`:
+
+* *launchSettings.json* считывается если он доступен. `environmentVariables`параметры в *launchSettings.json* переопределение переменных среды.
+* Среда размещения отображается.
+
+
+Ниже показано приложение к работе с `dotnet run`:
+```bash
+PS C:\Webs\WebApp1> dotnet run
+Using launch settings from C:\Webs\WebApp1\Properties\launchSettings.json...
+Hosting environment: Staging
+Content root path: C:\Webs\WebApp1
+Now listening on: http://localhost:54340
+Application started. Press Ctrl+C to shut down.
+```
+
+Visual Studio **отладки** вкладка предоставляет графический интерфейс пользователя для редактирования *launchSettings.json* файла:
 
 ![Переменные среды параметр свойства проекта](environments/_static/project-properties-debug.png)
 
-Вот `launchSettings.json` файл, который включает профили для `Development` и `Staging`:
-
-[!code-json[Main](../fundamentals/environments/sample/src/Environments/Properties/launchSettings.json?highlight=15,22)]
-
-Изменения, внесенные в проект профилей могут не вступили в силу только после перезапуска веб-сервера используется (в частности, Kestrel необходимо перезагрузить перед он обнаруживает изменения, внесенные в своей среде).
+Изменения, внесенные в проект профилей могут не вступают в силу только после перезапуска веб-сервера. Необходимо перезапустить kestrel, прежде чем он обнаруживает изменения, внесенные в своей среде.
 
 >[!WARNING]
-> Переменные среды сохраняются в *launchSettings.json* не защищены каким-либо образом и будет входить в состав репозиторий исходного кода для проекта, если используется один. **Никогда не храните учетные данные или другие секретные данные в этот файл.** Если вам требуется место для хранения таких данных, используйте *секрет диспетчер* средство описано в [безопасного хранения секрета приложения во время разработки](xref:security/app-secrets).
-
-### <a name="staging"></a>Промежуточный
-
-По соглашению `Staging` среда находится в предварительной рабочей среде для окончательного тестирования перед развертыванием в рабочей среде. В идеальном случае его физических характеристик, должны быть зеркально производства, чтобы все проблемы, которые могут возникнуть в рабочей среде, сначала выполнялись в промежуточной среде, где они обращаться не окажет влияния на пользователей.
+> *launchSettings.json* не следует хранить секреты. [Секрет диспетчера](xref:security/app-secrets) может использоваться для хранения конфиденциальных данных для локальной разработки.
 
 ### <a name="production"></a>Производство
 
-`Production` Среда — это среда, в которой выполняется приложение после его запуска и используется конечными пользователями. Эта среда должны быть настроены для повышения безопасности, производительности и надежности приложений. Ниже перечислены некоторые общие параметры, которые, возможно, в производственную среду, будут отличаться от разработки.
+В рабочей среде должны быть настроены для повышения безопасности, производительности и надежности приложений. Ниже перечислены некоторые общие параметры, которые, возможно, в производственную среду, будут отличаться от разработки.
 
-* Включить кэширование
-
-* Убедитесь, объединяются в один пакет, уменьшено и потенциально полученном из CDN все ресурсы на стороне клиента
-
-* Отключить ErrorPages диагностики
-
-* Включите страницы с сообщением об ошибке
-
-* Включить производства, ведение журнала и мониторинг (например, [Application Insights](https://azure.microsoft.com/documentation/articles/app-insights-asp-net-five/))
-
-Это ни в коем случае должен быть полный список. Лучше избегать рассеивания проверки среды во многих частях приложения. Вместо этого рекомендуется для выполнения таких проверок в приложении `Startup` классов там, где возможно
+* Кэширование.
+* Клиентские ресурсы объединяются в один пакет, уменьшено и потенциально полученном из CDN.
+* Страницы диагностики ошибок отключена.
+* Страницы ошибок включено.
+* Ведение журнала производства и мониторинг включен. Например [Application Insights](https://azure.microsoft.com/documentation/articles/app-insights-asp-net-five/).
 
 ## <a name="setting-the-environment"></a>Настройка среды
 
+Часто полезно задать конкретную среду для тестирования. Если среда не задано, то по умолчанию `Production` отключающее большинство функций отладки.
+
 Метод для настройки среды, зависит от операционной системы.
+
+### <a name="azure"></a>Azure
+
+Для службы приложения Azure:
+
+* Выберите **параметры приложения** колонку.
+* Добавить ключ и значение в **параметры приложения**.
+
 
 ### <a name="windows"></a>Windows
 Чтобы задать `ASPNETCORE_ENVIRONMENT` для текущего сеанса, если приложение запускается с помощью `dotnet run`, используются следующие команды
@@ -92,15 +126,16 @@ $Env:ASPNETCORE_ENVIRONMENT = "Development"
 
 ![Дополнительные свойства системы](environments/_static/systemsetting_environment.png)
 
-![Переменная среды ASPNET Core](environments/_static/windows_aspnetcore_environment.png) 
+![Переменная среды ASPNET Core](environments/_static/windows_aspnetcore_environment.png)
 
-**файл Web.config**
+
+**web.config**
 
 В разделе *задание переменных среды* раздел [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module#setting-environment-variables) раздела.
 
 **На пул приложений IIS**
 
-Если нужно задать переменные среды для отдельных приложений, выполняющихся в изолированных пулах приложений (такая возможность поддерживается в службах IIS 10.0 и более поздних версий), см. подраздел, посвященный *команде AppCmd.exe*, в разделе [Переменные среды \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) справочной документации по службам IIS.
+Для установки переменных среды для отдельных приложений, выполняющихся в изолированной пулы приложений (поддерживается в IIS 10.0 +), в разделе *команды AppCmd.exe* раздел [переменных среды \< environmentVariables >](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) раздела.
 
 ### <a name="macos"></a>MacOS
 Установка текущей среды для macOS можно сделать в строки при запуске приложения;
@@ -112,52 +147,35 @@ ASPNETCORE_ENVIRONMENT=Development dotnet run
 
 ```bash
 export ASPNETCORE_ENVIRONMENT=Development
-``` 
+```
 Переменные среды уровня машины задаются *.bashrc* или *.bash_profile* файла. Измените файл, используя любой текстовый редактор и добавьте следующий оператор.
 
 ```
 export ASPNETCORE_ENVIRONMENT=Development
-```  
+```
 
 ### <a name="linux"></a>Linux
 Дистрибутивы Linux, используйте `export` команды из командной строки для параметров переменных на основе сеансов и *bash_profile* файла параметров уровня среды компьютера.
 
-## <a name="determining-the-environment-at-runtime"></a>Определение среды во время выполнения
+### <a name="configuration-by-environment"></a>Настройка среды
 
-`IHostingEnvironment` Служба предоставляет основная абстракция для работы со средами. Эта служба предоставляется с ASP.NET Размещение слоя и могут быть внесены в логику запуска через [внедрения зависимостей](dependency-injection.md). Шаблон веб-сайта ASP.NET Core в Visual Studio использует этот подход для загрузки файлов конфигурации, относящиеся к среде (при его наличии) и настроить параметры обработки ошибок приложения. В обоих случаях это достигается с помощью ссылки на среду в настоящее время путем вызова `EnvironmentName` или `IsEnvironment` на экземпляре `IHostingEnvironment` переданные в соответствующий метод.
+В разделе [конфигурации средой](xref:fundamentals/configuration/index#configuration-by-environment) для получения дополнительной информации.
 
-> [!NOTE]
-> Если необходимо проверить, выполняется ли приложение в конкретной среде, используйте `env.IsEnvironment("environmentname")` , так как он правильно не учитывать регистр (вместо проверки `env.EnvironmentName == "Development"` например).
+<a name="startup-conventions"></a>
+## <a name="environment-based-startup-class-and-methods"></a>Класс запуска и методы на основе среды
 
-Например можно использовать следующий код в методе Настройка для настройки среды обработки определенных ошибок:
+При запуске приложения ASP.NET Core [класс запуска](xref:fundamentals/startup) загружает приложение. Если класс `Startup{EnvironmentName}` существует, что будет вызван для этого `EnvironmentName`:
 
-[!code-csharp[Main](environments/sample/src/Environments/Startup.cs?range=19-30)]
+[!code-csharp[Main](environments/sample/WebApp1/StartupDev.cs?name=snippet&highlight=1)]
 
-Если приложение выполняется `Development` среде, а затем она включает поддержку среды выполнения, необходимо использовать функцию «BrowserLink» в Visual Studio, страницы ошибки разработки (которые обычно не должны выполняться в рабочей среде) и ошибка специальная база данных страницы (которые предоставляют способ примените миграции и поэтому можно использовать только при разработке). В противном случае если приложение не выполняется в среде разработки, страница Стандартная ошибка обработки настроена для отображения в ответ на необработанные исключения.
+Примечание: Вызов [WebHostBuilder.UseStartup<TStartup> ](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) переопределяет разделы конфигурации.
 
-Необходимо определить, какое содержимое для отправки клиенту во время выполнения, в зависимости от текущей среды. Например в среде разработки вы обычно служат не свернуто сценариев и стилей, которые облегчает процесс отладки. Уменьшенная версий должна использоваться в производственной среде и тестовых средах и обычно из CDN. Это можно сделать с помощью среды [тег вспомогательный](../mvc/views/tag-helpers/intro.md). Вспомогательный тега среды будет отображать его содержимое, только если текущая среда соответствует одному из среды, заданные с помощью `names` атрибута.
+[Настройка](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_StartupBase_Configure_Microsoft_AspNetCore_Builder_IApplicationBuilder_) и [ConfigureServices](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices?view=aspnetcore-2.0) поддержки конкретных версий среды формы `Configure{EnvironmentName}` и `Configure{EnvironmentName}Services`:
 
-[!code-html[Main](environments/sample/src/Environments/Views/Shared/_Layout.cshtml?range=13-22)]
-
-Чтобы начать работу с помощью вспомогательных функций тегов см. в разделе вашего приложения [Общие сведения о вспомогательных функций тегов](../mvc/views/tag-helpers/intro.md).
-
-## <a name="startup-conventions"></a>При запуске соглашения
-
-ASP.NET Core поддерживает подход, основанный на соглашение, с настройкой запуска приложения, в зависимости от текущей среды. Можно также программно управлять поведение приложения в соответствии с какой среде он находится, позволяя создавать и управлять ими свои собственные соглашения.
-
-При запуске приложения ASP.NET Core `Startup` класс используется для начальной загрузки приложения и загрузите его параметры конфигурации, т. д. ([Дополнительные сведения о запуске ASP.NET](startup.md)). Тем не менее, если существует класс с именем `Startup{EnvironmentName}` (например `StartupDevelopment`) и `ASPNETCORE_ENVIRONMENT` соответствует переменной среды, имя, а затем, `Startup` вместо него используется класс. Таким образом, можно настроить `Startup` для разработки, но имеют отдельные `StartupProduction` , будет использоваться при запуске приложения в рабочей среде. И наоборот.
-
-> [!NOTE]
-> Вызов `WebHostBuilder.UseStartup<TStartup>()` переопределяет разделы конфигурации.
-
-Помимо использования совершенно разные `Startup` класса, в зависимости от текущей среды, также можно внести изменения в настройки приложения в `Startup` класса. `Configure()` И `ConfigureServices()` методы поддерживают конкретных версий аналогично `Startup` класса формы `Configure{EnvironmentName}()` и `Configure{EnvironmentName}Services()`. Если определить метод `ConfigureDevelopment()` он будет вызван вместо `Configure()` Если имеет значение среды разработки. Аналогичным образом `ConfigureDevelopmentServices()` вызывается вместо `ConfigureServices()` в той же среде.
-
-## <a name="summary"></a>Сводка
-
-ASP.NET Core предоставляет ряд функций и соглашения, которые позволяют разработчикам легко управлять работой своих приложений в различных средах. При публикации приложения из среды разработки для промежуточного хранения в рабочей среде, заданных переменных среды соответствующим образом для среды позволяет оптимизировать приложения для отладки, тестирования или рабочей среде используйте соответствующим образом.
+[!code-csharp[Main](environments/sample/WebApp1/Startup.cs?name=snippet_all&highlight=15,37)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
+* [Запуск приложения](xref:fundamentals/startup)
 * [Конфигурация](xref:fundamentals/configuration/index)
-
-* [Общие сведения о вспомогательных функциях тегов](../mvc/views/tag-helpers/intro.md)
+* [IHostingEnvironment.EnvironmentName](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_IHostingEnvironment_EnvironmentName)
