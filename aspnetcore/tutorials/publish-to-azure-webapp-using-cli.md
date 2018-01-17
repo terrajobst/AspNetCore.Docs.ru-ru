@@ -1,6 +1,6 @@
 ---
 title: "Публикация приложения ASP.NET Core в Azure с использованием программ командной строки | Документация Майкрософт"
-description: "Узнайте, как создать и развернуть приложение Microsoft Azure с помощью ASP.NET Core и клиента командной строки Git."
+description: "Сведения о публикации приложения ASP.NET Core в службе приложений Azure с помощью клиента командной строки Git."
 services: multiple
 keywords: "ASP.NET Core, Azure, служба приложений, Git, командная строка"
 author: camsoper
@@ -13,11 +13,11 @@ ms.technology: aspnet
 ms.custom: mvc
 ms.devlang: dotnet
 uid: tutorials/publish-to-azure-webapp-using-cli
-ms.openlocfilehash: 0bcff4f79356b960f663dcebb1d79a108417dbd2
-ms.sourcegitcommit: f017f940a164dbaf84307410c78eb14e0f3ac811
+ms.openlocfilehash: 6af5de584cbf8cd59d86a965592b958061014c95
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-an-aspnet-core-application-to-azure-app-service-from-the-command-line"></a>Развертывание приложения ASP.NET Core в службе приложений Azure из командной строки
 

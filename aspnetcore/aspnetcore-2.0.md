@@ -11,11 +11,11 @@ ms.assetid: 08c9f457-9c24-40f9-a08b-47dc251e4cec
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: aspnetcore-2.0
-ms.openlocfilehash: 98af3788652e87f6222551cb4a8e5427b312660c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f01f047f809e4eaa055a4204611b152c5db87f74
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Новые возможности ASP.NET Core 2.0
 
@@ -142,7 +142,7 @@ ASP.NET Core всегда помогает в создании HTML-кода д�
 
 ## <a name="other-documentation-updates-for-20"></a>Изменения в другой документации к версии 2.0
 
-* [Создание профилей публикации для Visual Studio и MSBuild с целью развертывания приложений ASP.NET Core](xref:publishing/web-publishing-vs)
+* [Профили публикации Visual Studio для развертывания приложений ASP.NET Core](xref:host-and-deploy/visual-studio-publish-profiles)
 * [Управление ключами](xref:security/data-protection/implementation/key-management)
 * [Настройка проверки подлинности Facebook](xref:security/authentication/facebook-logins)
 * [Настройка проверки подлинности Twitter](xref:security/authentication/twitter-logins)

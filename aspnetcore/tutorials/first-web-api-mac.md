@@ -11,11 +11,11 @@ helpviewer_heywords: ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, Serv
 ms.technology: aspnet
 keywords: "ASP.NET Core, WebAPI, веб-API, REST, mac, macOS, HTTP, служба, служба HTTP"
 manager: wpickett
-ms.openlocfilehash: 6bbd5e332e395928d8f79888ecf190f7f59a4bbc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3f84fa55baf6d808185a28db290d9e6d3c46bdac
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>Создание веб-API с помощью MVC ASP.NET Core и Visual Studio для Mac
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 11/10/2017
 
 В этом учебнике вы создадите веб-API для управления списком дел. Вы не будете создавать пользовательский интерфейс.
 
-Существует 3 версии этого учебника.
+Существует 3 версии этого учебника:
 
 * macOS: создание веб-API с помощью Visual Studio для Mac (этот учебник)
 * Windows: [создание веб-API с помощью Visual Studio для Windows](xref:tutorials/first-web-api)
@@ -197,7 +197,7 @@ public IActionResult GetById(string id)
 ## <a name="next-steps"></a>Следующие шаги
 
 * [Маршрутизация к действиям контроллера](xref:mvc/controllers/routing)
-* Сведения о развертывании API см. в статье [Публикация и развертывание](../publishing/index.md).
+* Сведения о развертывании API см. в разделе [Размещение и развертывание](xref:host-and-deploy/index).
 * [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 * [Postman](https://www.getpostman.com/)
 * [Fiddler](https://www.telerik.com/download/fiddler)
