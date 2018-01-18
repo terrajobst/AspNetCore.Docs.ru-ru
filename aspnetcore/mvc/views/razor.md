@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: e3c3149254d602db1fcc6d42360690be026189a5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6df769069fce52755a57d8404f88203a652a1ab9
+ms.sourcegitcommit: a3e88639a6bcf8fb4d634036dac93130c464a097
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="razor-syntax-for-aspnet-core"></a>Синтаксис Razor ASP.NET Core
 
@@ -76,7 +76,7 @@ HTML-атрибутов и содержимого, содержащий адре
  * Элемент «int» не была закрыта.  Все элементы должны быть либо самостоятельно закрыть или имеет соответствующего закрывающего тега.
  *  Не удается преобразовать группу методов «GenericMethod», чтобы, не являющийся делегатом типа «объект». Предполагается ли вызывать этот метод? " 
  
-Универсальный метод вызывает должны быть заключены в [явное выражение Razor](#explicit-razor-expressions) или [блок кода Razor](#razor-code-blocks). Это ограничение не применяется к *.vbhtml* файлы Razor, поскольку синтаксис Visual Basic помещает параметры универсального типа, вместо квадратных в круглые скобки.
+Универсальный метод вызывает должны быть заключены в [явное выражение Razor](#explicit-razor-expressions) или [блок кода Razor](#razor-code-blocks).
 
 ## <a name="explicit-razor-expressions"></a>Прямые выражения Razor
 
@@ -127,8 +127,6 @@ HTML-атрибутов и содержимого, содержащий адре
 ```cshtml
 <p>@(GenericMethod<int>())</p>
 ```
-
-Примечание: это ограничение не применяется к *.vbhtml* файлах Razor.  С *.vbhtml* круглые скобки вокруг параметров универсального типа, вместо квадратных помещает файлы Razor, синтаксис Visual Basic.
 
 ## <a name="expression-encoding"></a>Кодировка выражения
 
@@ -569,7 +567,7 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 ### <a name="c-razor-keywords"></a>Ключевые слова C# Razor
 
-* case
+* регистр знаков
 * do
 * default
 * for
