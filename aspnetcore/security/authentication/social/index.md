@@ -2,20 +2,18 @@
 title: "Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков"
 author: rick-anderson
 description: "В этом руководстве демонстрируется построение приложения ASP.NET Core 2.x с использованием OAuth 2.0 с внешними поставщиками проверки подлинности."
-keywords: "ASP.NET Core, проверка подлинности, социальные службы, поставщики проверки подлинности, google, facebook, twitter, учетная запись майкрософт"
 ms.author: riande
 manager: wpickett
 ms.date: 11/01/2016
 ms.topic: article
-ms.assetid: eda7ee17-f38c-462e-8d1d-63f459901cf3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/social/index
-ms.openlocfilehash: 9cc637f469dcb7097ee1b3996fde8a4ebac8d7ff
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: 7d03998c82bf13976ec6157acb5c56c28e5c0d52
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="enabling-authentication-using-facebook-google-and-other-external-providers"></a>Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков
 
