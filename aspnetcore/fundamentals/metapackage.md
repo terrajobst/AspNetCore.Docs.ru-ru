@@ -2,7 +2,6 @@
 title: "Metapackage Microsoft.AspNetCore.All для ASP.NET Core 2.x и более поздних версий"
 author: Rick-Anderson
 description: "Microsoft.AspNetCore.All metapackage включает все поддерживаемые пакеты ASP.NET Core и Entity Framework Core, вместе с их зависимости."
-keywords: ASP.NET Core,NuGet,package,Microsoft.AspNetCore.All,metapackage
 ms.author: riande
 manager: wpickett
 ms.date: 09/20/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/metapackage
-ms.openlocfilehash: ff25d80be907994f7ac3d64a8ffa39ae53278ba6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8a44ee7ebb7e6b0112000429f1f080bceb7dc895
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 #<a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-2x"></a>Metapackage Microsoft.AspNetCore.All для ASP.NET Core 2.x
 

@@ -2,20 +2,18 @@
 title: "Реализация WebListener веб-сервера в ASP.NET Core"
 author: rick-anderson
 description: "Вводит WebListener веб-сервер для ASP.NET Core в Windows. Основанное на драйвер режима ядра Http.Sys, WebListener является альтернативой Kestrel, который можно использовать для прямого подключения к Интернету, без IIS."
-keywords: "ASP.NET Core, WebListener, HttpListener, префиксы URL-адрес, протокол SSL"
 ms.author: riande
 manager: wpickett
 ms.date: 08/07/2017
 ms.topic: article
-ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: f1abb3558546cd907c78b44d9353d9c9f1f5aff1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f1bdbc723e4602c2e53723aff91ec5d254f4bd93
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>Реализация WebListener веб-сервера в ASP.NET Core
 

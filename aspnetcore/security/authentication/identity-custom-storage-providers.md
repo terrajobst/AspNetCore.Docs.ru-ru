@@ -2,20 +2,18 @@
 title: "Поставщики пользовательского хранилища для ASP.NET Core Identity | Документы Microsoft"
 author: ardalis
 description: "Сведения о настройке поставщиков пользовательского хранилища для ASP.NET Core Identity."
-keywords: "Поставщики ASP.NET Core, удостоверение, пользовательского хранилища"
 ms.author: riande
 manager: wpickett
 ms.date: 05/24/2017
 ms.topic: article
-ms.assetid: b2ace545-ecf6-4664-b31e-b65bd4a6b025
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 687ca96be5121502e816bdc856e17dcd5923fe05
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6a5feb9039c5b0e9823e5f22f4d55a70830dd3e6
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Поставщики пользовательского хранилища для ASP.NET Core Identity
 
@@ -62,7 +60,7 @@ ASP.NET Core Identity состоит из класса с именами мен�
 
 [ASP.NET Core Identity](https://github.com/aspnet/identity) типы данных описаны в следующих разделах:
 
-### <a name="users"></a>Users
+### <a name="users"></a>Пользователи
 
 Зарегистрированным пользователям вашего веб-сайта. [IdentityUser](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuser) типа может расширенные или использовать в качестве примера для пользовательского типа. Необходимо наследовать от определенного типа для реализации решения хранилища пользовательское удостоверение.
 
@@ -220,7 +218,7 @@ public class UserStore : IUserStore<IdentityUser>,
 1. При использовании ролей обновление `RoleManager` для использования вашей `RoleStore` класса.
 1. Обновите строку соединения и учетные данные для конфигурации приложения.
 
-Пример.
+Пример
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

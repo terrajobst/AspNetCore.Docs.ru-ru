@@ -2,20 +2,18 @@
 title: "Общие сведения ASP.NET Core MVC"
 author: ardalis
 description: "Узнайте, как основной ASP.NET MVC является многофункциональную платформу для построения веб-приложений и шаблон разработки Model-View-Controller с помощью API-интерфейсов."
-keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
 ms.date: 01/08/2018
 ms.topic: article
-ms.assetid: 89af38d1-52e0-4db7-b791-dbce909b0714
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/overview
-ms.openlocfilehash: 33c293e15c0a7f18bbace9dc564fe11d93a7d509
-ms.sourcegitcommit: df2157ae9aeea0075772719c29784425c783e82a
+ms.openlocfilehash: ad8a1dfae89a7ecd5573c16ba70d7d12216b4c57
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Общие сведения ASP.NET Core MVC
 
@@ -29,7 +27,7 @@ ms.lasthandoff: 01/10/2018
 
 На следующей диаграмме показаны три основных компонента и какие из них ссылаются другие:
 
-![Шаблон MVC](overview/_static/mvc.png)
+![MVC Pattern](overview/_static/mvc.png)
 
 Это разграничение обязанностей позволяет масштабировать приложения с точки зрения сложности, так как это упрощает код, отлаживать и тестировать нечто (модели, представления или контроллер) с одним заданием (и соответствует [персональной ответственности ](http://deviq.com/single-responsibility-principle/)). Более сложен для обновления, тестирования и отладки кода, имеющее зависимости, которые распределены между двумя или несколькими из этих трех областей. Например логики интерфейса пользователя, как правило, изменение чаще, чем бизнес-логики. Если код и бизнес-логики представления объединяются в один объект, необходимо изменить объект, содержащий бизнес-логику, каждый раз при изменении пользовательского интерфейса. Это может привести к ошибкам и требуется повторное все бизнес-логики, после изменения каждой минимальным пользовательским интерфейсом.
 

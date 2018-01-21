@@ -2,20 +2,18 @@
 title: "Маршрутизация в ASP.NET Core"
 author: ardalis
 description: "Узнайте, как функции маршрутизации ASP.NET Core отвечает за сопоставление входящего запроса к обработчику маршрута."
-keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 58388f674ed5d353c1c7208a67fb338e49fdb592
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ffa3178dc4e3aac3ba51c29b7efa3f71eb56bcfe
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -236,7 +234,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 | / пакета и отслеживание/3  | Hello! Значения маршрута: [операция, отслеживать] [идентификатор -3] |
 | пакет, отслеживать/3 / | Hello! Значения маршрута: [операция, отслеживать] [идентификатор -3]  |
 | / Package/отслеживания / | \<Переход в совпадение > |
-| ПОЛУЧИТЬ /hello/Joe | Здравствуйте, Joe! |
+| GET /hello/Joe | Здравствуйте, Joe! |
 | POST /hello/Joe | \<Переход к следующему, соответствует только HTTP GET > |
 | ПОЛУЧИТЬ /hello/Joe/Smith | \<Переход в совпадение > |
 
@@ -278,8 +276,8 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 | Шаблон маршрута | Пример сопоставления URL-адреса | Примечания |
 | -------- | -------- | ------- |
 | hello  | /Hello  | Соответствует только один путь`/hello` |
-| {Страницы = Home} | / | Соответствует и задает `Page` для`Home` |
-| {Страницы = Home}  | Или обратитесь в службу  | Соответствует и задает `Page` для`Contact` |
+| {Page=Home} | / | Соответствует и задает `Page` для`Home` |
+| {Page=Home}  | Или обратитесь в службу  | Соответствует и задает `Page` для`Contact` |
 | {controller} / {action} / {id}? | / / Список продуктов | Сопоставляет `Products` контроллера и `List` действие |
 | {controller} / {action} / {id}? | / Продукты/подробности/123  |  Сопоставляет `Products` контроллера и `Details` действие.  `id`значение 123 |
 | {контроллера = Home} / {action = индекс} / {id}? | /  |  Сопоставляет `Home` контроллера и `Index` метода. `id` учитывается. |
@@ -336,7 +334,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 
 Регулярные выражения, используемые в маршрутизации часто начинается с `^` (совпадение начальной позиции строки) буквы и заканчиваться `$` символ (конечное положение строки совпадают). `^` И `$` символов убедитесь, что соответствует регулярному выражению значение параметра всем маршруте. Без `^` и `$` символов регулярных выражений будет соответствовать любой подстроке внутри строки, который часто не требуется. В следующей таблице показаны некоторые примеры и объясняется, почему они совпадают, или не соответствует.
 
-| Выражение               | Строка | Соответствие | Комментарий |
+| Выражение               | String | Соответствие | Комментарий |
 | ----------------- | ------------ |  ------------ |  ------------ | 
 | `[a-z]{2}` | hello | да | совпадений подстрок |
 | `[a-z]{2}` | 123abc456 | да | совпадений подстрок |

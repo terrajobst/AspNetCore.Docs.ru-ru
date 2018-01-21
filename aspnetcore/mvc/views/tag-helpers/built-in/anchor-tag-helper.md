@@ -2,20 +2,18 @@
 title: "Привязка вспомогательный тег | Документы Microsoft"
 author: pkellner
 description: "Показано, как работать с вспомогательный тег привязки"
-keywords: "ASP.NET Core, вспомогательная функция тегов"
 ms.author: riande
 manager: wpickett
 ms.date: 12/20/2017
 ms.topic: article
-ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a011
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 86756a1d09e6e55ca79aed6e5b718088b82b782c
-ms.sourcegitcommit: 2b263e87217658caa42eedc4f9d2d21ef0ab5d59
+ms.openlocfilehash: 7923876c792544ac4d559eb8de29475d8a4b37e0
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="anchor-tag-helper"></a>Вспомогательный тег привязки
 
@@ -168,7 +166,7 @@ app.UseMvc(routes =>
 
 `Name = "speakerevals"`Указывает вспомогательный тег привязки для создания маршрута непосредственно к этому методу контроллера, используя URL-адрес `/Speaker/Evaluations`. Если `asp-controller` или `asp-action` указать в дополнение к `asp-route`, созданный маршрут не может отличаться от ожидаемого. `asp-route`не следует использовать с любой из атрибутов `asp-controller` или `asp-action` во избежание конфликта маршрута.
 
-### <a name="asp-all-route-data"></a>ASP-all маршрутизации данных
+### <a name="asp-all-route-data"></a>asp-all-route-data
 
 `asp-all-route-data`позволяет создавать словарь пары ключ-значение, где ключ является именем параметра, а значение — значение, связанное с этим ключом.
 

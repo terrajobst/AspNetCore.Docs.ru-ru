@@ -2,21 +2,19 @@
 title: "Внедрение зависимостей в ASP.NET Core"
 author: ardalis
 description: "Узнайте, как ASP.NET Core реализует внедрения зависимостей и способ его использования."
-keywords: "ASP.NET Core внедрения зависимостей, di"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: fccd69be-7ad1-47fb-b203-b3633b6b9a9b
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/dependency-injection
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d12960708f9d9bf2bc7c5997f82096d93087d13
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: 1da3d557c48921747634b08cedb518184fb5f963
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-dependency-injection-in-aspnet-core"></a>Общие сведения о внедрение зависимостей в ASP.NET Core
 
@@ -24,7 +22,7 @@ ms.lasthandoff: 11/29/2017
 
 По [Стив Смит](https://ardalis.com/) и [Скотт Addie](https://scottaddie.com)
 
-ASP.NET Core разработана с нуля для поддержки и применения внедрения зависимостей. Приложения ASP.NET Core могут использовать службы встроенной платформы путем их внедрения в методы класса Startup. Службы приложений могут быть также настроены для внедрения. Контейнер служб по умолчанию, предоставляемый ASP.NET Core, сожержит минимальный набор функций и не предназначен для замены других контейнеров.
+ASP.NET Core является разработана с нуля для поддержки и воспользоваться внедрения зависимостей. ASP.NET Core приложения могут использовать службы встроенная платформа, задав их внедрены в методы в классе при запуске, и службы приложения могут быть настроены для внедрения также. Контейнер служб по умолчанию, предоставляемый ASP.NET Core предоставляет минимальный набор и не предназначен для замены другие контейнеры.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
@@ -153,11 +151,11 @@ public CharactersController(ICharacterRepository characterRepository, string tit
 
 Время существования временной службы создаются каждый раз, когда они запрашиваются. Это время существования лучше всего подходит для простой и без сохранения состояния службы.
 
-**Областью действия**
+**Scoped**
 
 Служб времени существования с областью создаются один раз для каждого запроса.
 
-**Одноэлементный**
+**Singleton**
 
 Службы времени жизни Singleton создаются при первом запросе (или когда `ConfigureServices` запускается при указании экземпляра существует) и затем каждый последующий запрос будет использовать тот же экземпляр. Если приложению требуется одноэлементное поведение, что контейнер службы для управления временем существования службы рекомендуется вместо реализации шаблона разработки одноэлементный и самостоятельного управления временем жизни объекта в классе.
 
@@ -220,7 +218,7 @@ public CharactersController(ICharacterRepository characterRepository, string tit
 
 Контейнер будет вызвать `Dispose` для `IDisposable` типов, он создает. Тем не менее при добавлении экземпляра к контейнеру самостоятельно, она не будет удален.
 
-Пример.
+Пример
 
 ```csharp
 // Services implement IDisposable:

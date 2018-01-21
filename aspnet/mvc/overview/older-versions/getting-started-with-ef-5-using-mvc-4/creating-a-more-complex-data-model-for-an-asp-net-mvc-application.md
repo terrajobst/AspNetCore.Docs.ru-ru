@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 350c2e4e92c8a53d22dd2500330281b4003a05e9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5283da2786d41c0ae06607185dd416aeb7d2b62a
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 <a name="creating-a-more-complex-data-model-for-an-aspnet-mvc-application-4-of-10"></a>Создание более сложные модели данных для приложения ASP.NET MVC (4 из 10)
 ====================
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/10/2017
 
 [StringLength](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx) атрибут не предотвратить ввода пробелы в имени пользователя. Можно использовать [регулярное выражение](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx) атрибутов для применения ограничений входных данных. Например следующий код требуются первого символа в записываются прописными буквами и остальные символы преобразуются в алфавитном порядке.
 
-`[RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]`
+`[RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]`
 
 [MaxLength](https://msdn.microsoft.com/en-us/library/System.ComponentModel.DataAnnotations.MaxLengthAttribute.aspx) атрибут предоставляет аналогичные функциональные возможности для [StringLength](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx) атрибута, но не предоставляет клиентской проверки.
 
@@ -295,17 +295,17 @@ ms.lasthandoff: 11/10/2017
 
 Ниже показано, как будут выглядеть эти связи в схеме сущности. (Эта схема была создана с помощью [Entity Framework Power Tools](https://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d); Создание схемы не является частью учебника, он просто используется здесь как пример.)
 
-![Ученик Course_many для many_relationship](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image11.png)
+![Student-Course_many-to-many_relationship](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image11.png)
 
 Каждая линия связи имеет 1 на одном конце и звездочку (\*) в другое, указывающее, один ко многим.
 
 Если `Enrollment` таблицы не были включены сведения об оценках, его потребуется только содержат два внешних ключа `CourseID` и `StudentID`. В этом случае он будет соответствовать многие ко многим Соединяемая таблица *без полезных данных* (или *таблицы присоединения*) в базе данных и создать класс модели для него вообще не требуется. `Instructor` И `Course` сущности, имеют этот тип связи "многие ко многим", и как можно видеть, между ними отсутствует класс сущности:
 
-![Инструктора Course_many для many_relationship](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image12.png)
+![Instructor-Course_many-to-many_relationship](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image12.png)
 
 Соединяемая таблица является обязательным в базе данных, однако, как показано на следующей схеме базы данных:
 
-![Инструктора Course_many для many_relationship_tables](https://asp.net/media/2577802/Windows-Live-Writer_Creating-a.NET-MVC-Application-4-of-10h1_B662_Instructor-Course_many-to-many_relationship_tables_03e042cf-db89-4b4c-985a-e458351ada76.png)
+![Instructor-Course_many-to-many_relationship_tables](https://asp.net/media/2577802/Windows-Live-Writer_Creating-a.NET-MVC-Application-4-of-10h1_B662_Instructor-Course_many-to-many_relationship_tables_03e042cf-db89-4b4c-985a-e458351ada76.png)
 
 Платформа Entity Framework автоматически создает `CourseInstructor` таблицы и чтения и обновить ее косвенно, чтение и обновление `Instructor.Courses` и `Course.Instructors` свойства навигации.
 

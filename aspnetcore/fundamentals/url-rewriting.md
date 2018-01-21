@@ -2,20 +2,18 @@
 title: "По промежуточного слоя в ASP.NET Core видоизменения URL-адресов"
 author: guardrex
 description: "Дополнительные сведения о URL-адрес, перезаписи и перенаправления с по промежуточного слоя перезаписи URL-адрес в приложениях ASP.NET Core."
-keywords: "ASP.NET Core переопределения URL-адресов переписывать, URL-адрес, URL-адрес перенаправления URL-адрес перенаправления, по промежуточного слоя, apache_mod"
 ms.author: riande
 manager: wpickett
 ms.date: 08/17/2017
 ms.topic: article
-ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: e07634a6d7ad97bf8735029b5c28d6935b71eb52
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 769696931498605bd3cf3459279939afb86a4ee8
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>По промежуточного слоя в ASP.NET Core видоизменения URL-адресов
 

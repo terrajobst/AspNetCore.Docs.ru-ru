@@ -2,7 +2,6 @@
 title: "Работа с несколькими средами в ASP.NET Core"
 author: rick-anderson
 description: "Узнайте, как ASP.NET Core предоставляет поддержку для управления поведением приложения в нескольких средах."
-keywords: "ASP.NET Core, параметры среды, ASPNETCORE_ENVIRONMENT"
 ms.author: riande
 manager: wpickett
 ms.date: 12/25/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 784d176145c3e4e44ddc0ea06b6702f70cd4b08c
-ms.sourcegitcommit: 87168cdc409e7a7257f92a0f48f9c5ab320b5b28
+ms.openlocfilehash: 83d1593d46761b1c00aa431cfdcde59cb3b28b65
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="working-with-multiple-environments"></a>Работа с несколькими средами
 
@@ -157,7 +156,7 @@ export ASPNETCORE_ENVIRONMENT=Development
 ### <a name="linux"></a>Linux
 Дистрибутивы Linux, используйте `export` команды из командной строки для параметров переменных на основе сеансов и *bash_profile* файла параметров уровня среды компьютера.
 
-### <a name="configuration-by-environment"></a>Настройка среды
+### <a name="configuration-by-environment"></a>Конфигурация для разных сред
 
 В разделе [конфигурации средой](xref:fundamentals/configuration/index#configuration-by-environment) для получения дополнительной информации.
 

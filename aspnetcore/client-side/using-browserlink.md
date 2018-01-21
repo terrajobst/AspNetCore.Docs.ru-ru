@@ -2,21 +2,19 @@
 title: "Связь с браузером в ASP.NET Core"
 author: ncarandini
 description: "Объясняет, как связь с браузером является функцией Visual Studio, которая связывает среду разработки с одного или нескольких веб-браузеров."
-keywords: "ASP.NET Core, связь с браузером, синхронизации CSS"
 ms.author: riande
 manager: wpickett
 ms.date: 09/22/2017
 ms.topic: article
-ms.assetid: 11813d4c-3f8a-445a-b23b-e4a57d001abc
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-browserlink
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b69d085e8bee4cdac2dff08b46a95a8869e263b7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d5db65c268923e96c45b034639437fc3496ccac1
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="browser-link-in-aspnet-core"></a>Связь с браузером в ASP.NET Core 
 

@@ -2,21 +2,19 @@
 title: "Модуль ASP.NET Core"
 author: tdykstra
 description: "Вводит ASP.NET Core модуля (ANCM), модуль, позволяющий использовать в качестве обратного прокси-сервера IIS или IIS Express Kestrel веб-сервере IIS."
-keywords: "Модуль Core Express,ASP.NET IIS ASP.NET Core, IIS, UseIISIntegration"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 08/03/2017
 ms.topic: article
-ms.assetid: 4661af33-34c5-4d71-93a0-8c7632f43580
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/aspnet-core-module
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5eef9405c0c3d219755d7cffa5d45c3df45ddb5c
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 153c40f0e825ff5826e916c7ea877a25d81954f1
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-aspnet-core-module"></a>Введение в ASP.NET Core модуля
 

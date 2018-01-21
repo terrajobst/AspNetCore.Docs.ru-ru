@@ -2,18 +2,17 @@
 title: "Страниц Razor с основными EF - сортировки, фильтрации, разбиение на страницы: 3 8."
 author: rick-anderson
 description: "В этом учебнике предстоит добавить сортировку, фильтрацию и разбиение по страницам функциональные возможности для разбиения на страницы с помощью ASP.NET Core и Entity Framework Core."
-keywords: "ASP.NET Core Entity Framework Core, сортировки, фильтрации, разбиение на страницы, группирование"
 ms.author: riande
 ms.date: 10/22/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 5e17663b88a622101245228e9372db55e4e874be
-ms.sourcegitcommit: 703593d5fd14076e79be2ba75a5b8da12a60ab15
+ms.openlocfilehash: 08f00e183dd8a8daa883d0b9ff15698b3a39f625
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-razor-pages-3-of-8"></a>Сортировка, фильтрация, разбиение по страницам и группирование - Core EF со страницами Razor (3 8)
 
@@ -142,7 +141,7 @@ ms.lasthandoff: 12/05/2017
 
 В предыдущем коде используется `<form>` [тег вспомогательный](xref:mvc/views/tag-helpers/intro) Добавление поиска текстовое поле и кнопку. По умолчанию `<form>` тег вспомогательный отправки данных с помощью POST. С помощью запроса POST передачи параметров в тексте сообщения HTTP, а не в URL-адрес. При использовании HTTP GET данные формы передается как строки запроса в URL-АДРЕСЕ. Передача данных со строками запроса позволяет пользователям bookmark URL-адрес. [Рекомендации W3C](https://www.w3.org/2001/tag/doc/whenToUseGet.html) Майкрософт рекомендует использовать GET, если действие не приводит к появлению обновления.
 
-Тестирование приложения:
+Проверьте работу приложения:
 
 * Выберите **учащихся** вкладку и введите строку поиска.
 * Выберите **поиска**.
@@ -280,7 +279,7 @@ http://localhost:5000/Students?SearchString=an
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Отладка ASP.NET Core 2.x источника](https://github.com/aspnet/Docs/issues/4155)
+* [Отладка источника ASP.NET Core 2.x](https://github.com/aspnet/Docs/issues/4155)
 
 В следующем уроке приложение использует миграции для обновления данных модели.
 

@@ -2,20 +2,18 @@
 title: "Пользовательские модули форматирования в ASP.NET Core MVC веб-API"
 author: tdykstra
 description: "Узнайте, как создавать и использовать пользовательские модули форматирования для веб-API в ASP.NET Core."
-keywords: "ASP.NET Core веб-api, пользовательские модули форматирования"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 02/08/2017
 ms.topic: article
-ms.assetid: 1fb6fdc2-e199-4469-9012-b909d1913422
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/custom-formatters
-ms.openlocfilehash: 5e665abe10fd7444c3fd5f20cfeca3ef0a5f79d3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3a6474fdae29b170978226de74d523b20a16cd0c
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="custom-formatters-in-aspnet-core-mvc-web-apis"></a>Пользовательские модули форматирования в ASP.NET Core MVC веб-API
 
@@ -84,7 +82,7 @@ ASP.NET Core MVC имеет встроенную поддержку для об�
 Предположим, что подпись метода действие возвращает `Person` типа, но он может возвращать `Student` или `Instructor` тип, производный от `Person`. Если требуется, чтобы модуль форматирования для обработки только `Student` объектов, проверьте тип [объекта](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object) в контекст объект, предоставляемый для `CanWriteResult` метод. Обратите внимание, что нет необходимости использовать `CanWriteResult` при возвращении операции `IActionResult`; в этом случае `CanWriteType` метод получает тип среды выполнения.
 
 <a id="read-write"></a>
-### <a name="override-readrequestbodyasyncwriteresponsebodyasync"></a>Переопределить ReadRequestBodyAsync/WriteResponseBodyAsync 
+### <a name="override-readrequestbodyasyncwriteresponsebodyasync"></a>Override ReadRequestBodyAsync/WriteResponseBodyAsync 
 
 Выполняют реальную работу десериализации или сериализации в `ReadRequestBodyAsync` или `WriteResponseBodyAsync`.  Выделенные строки в следующем примере показано, как получить службы из контейнера внедрения зависимостей (их не удается получить из параметров конструктора).
 

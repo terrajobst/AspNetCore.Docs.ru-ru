@@ -2,21 +2,19 @@
 title: "Вспомогательных функций тегов в форм в ASP.NET Core"
 author: rick-anderson
 description: "Описывает встроенные вспомогательных функций тегов используется с формами."
-keywords: "Формирует ASP.NET Core, вспомогательные тег вспомогательной функции тегов, HTML-формы"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
 ms.topic: article
-ms.assetid: 25595059-4fac-4785-8152-f88590e3169b
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/working-with-forms
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da36985206521798d3bfe71f6372dc5cc4fca09a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9fbe2c5cb495aabee0e1f0bdb3871641efa03599
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a>Общие сведения об использовании вспомогательных функций тегов в форм в ASP.NET Core
 
@@ -112,7 +110,7 @@ Type expected
 |Тип .NET|Тип входных данных|
 |---|---|
 |Bool|Тип = «checkbox»|
-|Строка|Тип = «text»|
+|String|Тип = «text»|
 |DateTime|тип = «datetime»|
 |Byte|Тип = «number»|
 |Int|Тип = «number»|
@@ -124,8 +122,8 @@ Type expected
 
 |Атрибут|Тип входных данных|
 |---|---|
-|[EmailAddress]|Тип = «email»|
-|[URL-адрес]|Тип = «url»|
+|[EmailAddress]|type=”email”|
+|[URL-адрес]|type=”url”|
 |[HiddenInput]|Тип = «hidden»|
 |[Phone]|Тип = «телефон»|
 |[DataType(DataType.Password)]| Тип = «password»|

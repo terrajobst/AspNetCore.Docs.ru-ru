@@ -2,20 +2,18 @@
 title: "Шифрование ключа при хранении"
 author: rick-anderson
 description: "В этом документе описаны особенности реализации элемента ASP.NET Core данных защиты ключа шифрования."
-keywords: "ASP.NET Core, защиты данных, ключей шифрования"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: f2bbbf4e-0945-43ce-be59-8bf19e448798
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: b56dc56ed94662dbedeea49022aa73941bc833c5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a0b9ab31264e5cae666a69491bf4a8ee8251a86f
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="key-encryption-at-rest"></a>Шифрование ключа при хранении
 

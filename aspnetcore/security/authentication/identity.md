@@ -2,20 +2,18 @@
 title: "Общие сведения об учетных данных ASP.NET Core"
 author: rick-anderson
 description: "Использовать удостоверение с приложением ASP.NET Core"
-keywords: "ASP.NET Core, удостоверение, авторизации, безопасность"
 ms.author: riande
 manager: wpickett
 ms.date: 01/02/2018
 ms.topic: article
-ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: fc8e076af92bd8f9a95e73abb66ce32cae8ab9cf
-ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
+ms.openlocfilehash: 436a5ecfd126c9660591cd55efc1cc52b9493136
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об учетных данных ASP.NET Core
 
@@ -146,7 +144,7 @@ ms.lasthandoff: 01/09/2018
  
 7.  Просмотр базы данных.
 
-    Если приложение использует базу данных SQL Server (по умолчанию в Windows и для пользователей Visual Studio), можно просматривать базы данных с приложением, создаваемым. Можно использовать **SQL Server Management Studio**. Кроме того, в Visual Studio, выберите **представление** > **обозреватель объектов SQL Server**. Подключиться к **(localdb) \MSSQLLocalDB**. База данных с именем, соответствующим  **aspnet - <*имя проекта*>-<*Дата строка*> ** отображается.
+    Если приложение использует базу данных SQL Server (по умолчанию в Windows и для пользователей Visual Studio), можно просматривать базы данных с приложением, создаваемым. Можно использовать **SQL Server Management Studio**. Кроме того, в Visual Studio, выберите **представление** > **обозреватель объектов SQL Server**. Подключиться к **(localdb) \MSSQLLocalDB**. База данных с именем, соответствующим **aspnet - <*имя проекта*>-<*Дата строка* >**  отображается.
 
     ![Контекстные меню AspNetUsers таблицу базы данных](identity/_static/04-db.png)
     

@@ -2,20 +2,18 @@
 title: "Поддержка WebSockets в ASP.NET Core"
 author: tdykstra
 description: "Дополнительные сведения о начале работы с WebSockets в ASP.NET Core."
-keywords: ASP.NET Core, WebSockets
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/25/2017
 ms.topic: article
-ms.assetid: 0e0fedcd-a7b4-4479-8ae0-36eab0229d7e
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: fundamentals/websockets
-ms.openlocfilehash: 114d52d831668e5facd1142b5f9e5f68e7456f7e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 46c1f42b925a43df470d7491a1e259ab51ea5f50
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-websockets-in-aspnet-core"></a>Общие сведения о WebSockets в ASP.NET Core
 
@@ -56,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 * Поддержка клиентов, вызывающих методы на сервере или наоборот.
 * Поддержка масштабирования на несколько серверов.
 
-## <a name="how-to-use-it"></a>Способ его использования
+## <a name="how-to-use-it"></a>Использование
 
 * Установка [Microsoft.AspNetCore.WebSockets](https://www.nuget.org/packages/Microsoft.AspNetCore.WebSockets/) пакета.
 * Настройки по промежуточного слоя.

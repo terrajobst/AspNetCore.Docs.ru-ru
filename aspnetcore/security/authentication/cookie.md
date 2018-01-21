@@ -2,20 +2,18 @@
 title: "С помощью файла Cookie проверки подлинности без удостоверения ASP.NET Core"
 author: rick-anderson
 description: "Описание использования файлов cookie проверки подлинности без ASP.NET Core Identity"
-keywords: "ASP.NET Core, файлы cookie"
 ms.author: riande
 manager: wpickett
 ms.date: 10/11/2017
 ms.topic: article
-ms.assetid: 2bdcbf95-8d9d-4537-a4a0-a5ee439dcb62
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/cookie
-ms.openlocfilehash: ee660667251ec4a64f2b3e83f39214e9defcea03
-ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
+ms.openlocfilehash: 26921eb6af6629d821e57112a47b40146cb027f6
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="using-cookie-authentication-without-aspnet-core-identity"></a>С помощью файла Cookie проверки подлинности без удостоверения ASP.NET Core
 
@@ -68,7 +66,7 @@ ms.lasthandoff: 01/09/2018
 | [SessionStore](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.sessionstore?view=aspnetcore-2.0) | Необязательный контейнер, используемый для хранения идентификаторов различных запросов. При использовании только идентификатор сеанса отправляется клиенту. `SessionStore`можно использовать для устранения возможных проблем с большой удостоверения. |
 | [SlidingExpiration](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.slidingexpiration?view=aspnetcore-2.0) | Флаг, указывающий, должен быть новый файл cookie, срок действия обновленного выдан динамически. Это может произойти на любой запрос, где текущего срока действия файла cookie более чем на 50% срок действия истек. Новую дату окончания срока действия перемещается вперед для текущей даты, а также `ExpireTimespan`. [Время истечения срока действия файла cookie абсолютный](xref:security/authentication/cookie#absolute-cookie-expiration) можно задать с помощью `AuthenticationProperties` класса при вызове `SignInAsync`. Абсолютный срок действия может повысить безопасность приложения, ограничивая количество времени, допустимый файл cookie проверки подлинности. Значение по умолчанию — `true`. |
 | [TicketDataFormat](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.ticketdataformat?view=aspnetcore-2.0) | `TicketDataFormat` Используется для установки и снятия защиты identity и других свойств, хранящихся в значении cookie. Если не указано, `TicketDataFormat` создается с помощью [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.dataprotectionprovider?view=aspnetcore-2.0). |
-| [Проверка](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.validate?view=aspnetcore-2.0) | Метод, который проверяет, что параметры являются допустимыми. |
+| [Validate](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.validate?view=aspnetcore-2.0) | Метод, который проверяет, что параметры являются допустимыми. |
 
 Задать `CookieAuthenticationOptions` в конфигурации службы для проверки подлинности в `ConfigureServices` метод:
 
@@ -144,7 +142,7 @@ app.UseCookiePolicy(cookiePolicyOptions);
 | [MinimumSameSitePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.minimumsamesitepolicy) | Влияет на атрибут веб-сайте куки-файл (см. ниже). Значение по умолчанию — `SameSiteMode.Lax`. Этот параметр доступен для основных компонентов ASP.NET 2.0 +. |
 | [OnAppendCookie](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.onappendcookie) | Вызывается при добавлении файла cookie. |
 | [OnDeleteCookie](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.ondeletecookie) | Вызывается при удалении файла cookie. |
-| [Защита](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.secure) | Влияет ли файлы cookie должен быть Secure. Значение по умолчанию — `CookieSecurePolicy.None`. |
+| [Secure](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.secure) | Влияет ли файлы cookie должен быть Secure. Значение по умолчанию — `CookieSecurePolicy.None`. |
 
 **MinimumSameSitePolicy** (ASP.NET Core 2.0 + только)
 

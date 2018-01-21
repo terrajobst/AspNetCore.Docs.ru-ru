@@ -2,20 +2,18 @@
 title: "Ответ сжатия по промежуточного слоя ASP.NET Core"
 author: guardrex
 description: "Дополнительные сведения о сжатия ответов и использовании ответа сжатия по промежуточного слоя в приложениях ASP.NET Core."
-keywords: "ASP.NET Core, производительности, сжатие ответа, gzip, приемлемой кодировкой, по промежуточного слоя"
 ms.author: riande
 manager: wpickett
 ms.date: 08/20/2017
 ms.topic: article
-ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: 86244179115fe6a7d0f7298495086a96ee9570d9
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 9270287b62f91ddb81d6a347dd583e1cbb32f3c3
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>Ответ сжатия по промежуточного слоя ASP.NET Core
 
@@ -33,7 +31,7 @@ ms.lasthandoff: 01/11/2018
 * Не удается использовать следующие технологии сжатия на основе сервера:
   * [Модуль сжатия динамического IIS](https://www.iis.net/overview/reliability/dynamiccachingandcompression)
   * [Модуль mod_deflate Apache](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
-  * [NGINX сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
+  * [Nginx сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
 * Размещение непосредственно на:
   * [HTTP.sys сервера](xref:fundamentals/servers/httpsys) (ранее называвшиеся [WebListener](xref:fundamentals/servers/weblistener))
   * [Kestrel](xref:fundamentals/servers/kestrel)
@@ -184,7 +182,7 @@ ms.lasthandoff: 01/11/2018
 [!code-csharp[Main](response-compression/samples/1.x/Startup.cs?name=snippet1)]
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>Проблемы по промежуточного слоя за Nginx обратного прокси-сервера
-При получении запроса через прокси, Nginx, `Accept-Encoding` заголовок удаляется. Это предотвращает сжатие ответ по промежуточного слоя. Дополнительные сведения см. в разделе [NGINX: сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Эта проблема отслеживается [выяснить сквозной сжатия для nginx (BasicMiddleware #123)](https://github.com/aspnet/BasicMiddleware/issues/123).
+При получении запроса через прокси, Nginx, `Accept-Encoding` заголовок удаляется. Это предотвращает сжатие ответ по промежуточного слоя. Дополнительные сведения см. в разделе [NGINX: сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Эта проблема отслеживается [выяснить сквозной сжатия для Nginx (BasicMiddleware #123)](https://github.com/aspnet/BasicMiddleware/issues/123).
 
 ## <a name="working-with-iis-dynamic-compression"></a>Работа с динамическое сжатие IIS
 При наличии активных динамического сжатия модуль IIS настроен на уровне сервера, который вы хотите отключить для приложения, это можно сделать с дополнением к вашей *web.config* файла. Дополнительные сведения см. в разделе [модули IIS Отключение](xref:host-and-deploy/iis/modules#disabling-iis-modules).
@@ -199,7 +197,7 @@ ms.lasthandoff: 01/11/2018
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 * [Запуск приложения](xref:fundamentals/startup)
 * [ПО промежуточного слоя](xref:fundamentals/middleware)
-* [Сеть разработчиков Mozilla: Приемлемой кодировкой](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
+* [Mozilla Developer Network: Accept-Encoding](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
 * [Раздела RFC 7231 3.1.2.1: Codings содержимого](https://tools.ietf.org/html/rfc7231#section-3.1.2.1)
 * [RFC 7230 разделе 4.2.3: Кодирование Gzip](https://tools.ietf.org/html/rfc7230#section-4.2.3)
 * [Версия спецификации формата файла GZIP 4.3](http://www.ietf.org/rfc/rfc1952.txt)

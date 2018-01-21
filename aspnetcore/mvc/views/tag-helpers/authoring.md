@@ -2,29 +2,27 @@
 title: "Создание вспомогательных функций тегов в ASP.NET Core"
 author: rick-anderson
 description: "Сведения о разработке вспомогательных функций тегов в ASP.NET Core."
-keywords: "ASP.NET Core, вспомогательных функций тегов"
 ms.author: riande
 manager: wpickett
-ms.date: 06/14/2017
+ms.date: 01/19/2018
 ms.topic: article
-ms.assetid: 4f16d978-5695-4abf-a785-fdaabf3bbcb9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/authoring
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cbe46ee1d3cd9f7a30a87d364074f1302f9af7ab
-ms.sourcegitcommit: 5834afb87e4262b9b88e60e3fe6c735e61a1e08d
+ms.openlocfilehash: 9aaf40377e07e53fd0b7ebb177bcbb2df52b7553
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/19/2018
 ---
-# <a name="authoring-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>Создание вспомогательных функций тегов в ASP.NET Core, пошаговое руководство с примерами
+# <a name="author-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>Автор вспомогательных функций тегов в ASP.NET Core, пошаговое руководство с примерами
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="getting-started-with-tag-helpers"></a>Приступая к работе с вспомогательных функций тегов
+## <a name="get-started-with-tag-helpers"></a>Приступая к работе с вспомогательных функций тегов
 
 Этот учебник содержит вводные сведения о программирования вспомогательных функций тегов. [Общие сведения о вспомогательных функций тегов](intro.md) описываются преимущества, которые предоставляют вспомогательных функций тегов.
 
@@ -46,7 +44,7 @@ ms.lasthandoff: 12/20/2017
 
 ```html
 <a href="mailto:Support@contoso.com">Support@contoso.com</a>
-   ```
+```
 
 То есть тег, делает это ссылку в электронной почте. Может потребоваться в случае, если вы пишете механизмом поддержки блогов, для отправки электронной почты для отдела маркетинга, поддержки и другие контакты все в одном домене.
 
@@ -188,7 +186,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 [HtmlTargetElement("MyBold")]
    ```
 
-## <a name="passing-a-model-to-a-tag-helper"></a>Передача модели помощникам тега
+## <a name="pass-a-model-to-a-tag-helper"></a>Передать модель помощникам тега
 
 1.  Добавить *моделей* папки.
 
@@ -285,7 +283,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 >
 >[Nameof](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/nameof) оператор будет защищать код должен его постоянно оптимизируемого (мы может возникнуть необходимость изменить имя, `RedCondition`).
 
-### <a name="avoiding-tag-helper-conflicts"></a>Предотвращение конфликтов вспомогательный тега
+### <a name="avoid-tag-helper-conflicts"></a>Избегание конфликтов в тег вспомогательный
 
 В этом разделе запись пару автоматическое связывание вспомогательных функций тегов. Первый заменяет разметку, содержащую URL-адрес, начинающийся с HTTP HTML привязки тег содержащую же URL-адрес (и тем самым давая ссылку на URL-адрес). Второй будет то же сделайте для URL-адреса начиная с веб-публикации.
 
@@ -329,7 +327,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
     
     Приведенный выше код гарантирует, вспомогательные тег HTTP выполняется перед вспомогательный тег WWW. Изменение `Order` для `MaxValue` и убедитесь, что разметки, созданной для тега WWW неверен.
 
-## <a name="inspecting-and-retrieving-child-content"></a>Проверки и извлечения содержимого дочернего элемента
+## <a name="inspect-and-retrieve-child-content"></a>Проверки и извлечения содержимого дочернего элемента
 
 Вспомогательных функций тегов предоставляют несколько свойств, чтобы извлечь содержимое.
 

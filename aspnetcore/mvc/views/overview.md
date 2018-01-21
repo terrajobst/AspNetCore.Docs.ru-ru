@@ -2,7 +2,6 @@
 title: "Представления в ASP.NET Core MVC"
 author: ardalis
 description: "Узнайте, как обрабатывать представления презентации данных приложения и взаимодействия с пользователем в ASP.NET Core MVC."
-keywords: "ASP.NET Core просмотра MVC, razor, viewmodel, viewdata, viewbag"
 ms.author: riande
 manager: wpickett
 ms.date: 12/12/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: 2562d4e5fb85159e6ccb47990f54448ddc188077
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: c0a1f475941f3389e9aa1f5bb7819bef491b2cae
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Представления в ASP.NET Core MVC
 
@@ -93,8 +92,8 @@ ms.lasthandoff: 12/14/2017
 
 Не важно, если возвращается неявно `ViewResult` с `return View();` или явным образом передать имя представления для `View` метод с `return View("<ViewName>");`. В обоих случаях представление обнаружения выполняет поиск соответствующего файла представления в следующем порядке:
 
-   1. *Представления или\[Имя_контроллера]\[ViewName] .cshtml*
-   1. *Представления/Общие/\[ViewName] .cshtml*
+   1. *Views/\[ControllerName]\[ViewName].cshtml*
+   1. *Views/Shared/\[ViewName].cshtml*
 
 Путь к файлу представления могут быть предоставлены вместо имени представления. Если с помощью абсолютный путь, начиная с корневого каталога приложения (при необходимости, начиная с «/» или «~ /»), *.cshtml* должно быть указано расширение:
 

@@ -2,21 +2,19 @@
 title: "Состояние сеанса и приложения в ASP.NET Core"
 author: rick-anderson
 description: "Методы сохранения приложения и состояние пользователя (сеанс) между запросами."
-keywords: "Учет ASP.NET Core, состояние приложения, состояние сеанса, строки запроса,"
 ms.author: riande
 manager: wpickett
 ms.date: 11/27/2017
 ms.topic: article
-ms.assetid: 18cda488-0769-4cb9-82f6-4c6685f2045d
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/app-state
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 35b34f1a40e431e59e6b9c1d9bfb4ce3fced35e6
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: 13b4d759ae574cdf9899ca148f0ffd3d9df6f9ae
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>Общие сведения о состоянии сеанса и приложения в ASP.NET Core
 

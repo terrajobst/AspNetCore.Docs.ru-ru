@@ -2,7 +2,6 @@
 title: "Двухфакторная проверка подлинности с помощью SMS"
 author: rick-anderson
 description: "Показано, как настроить двухфакторную проверку подлинности (2FA) с ASP.NET Core"
-keywords: "ASP.NET Core, SMS, проверку подлинности, 2FA, двухфакторной проверки подлинности, двухфакторной проверки подлинности"
 ms.author: riande
 manager: wpickett
 ms.date: 08/15/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/2fa
-ms.openlocfilehash: 15620d89c4db2e74dbcec4707bb2ebc6df916e03
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: 0970b7e95b116ceab1d17502d2f8aee9cd821715
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="two-factor-authentication-with-sms"></a>Двухфакторная проверка подлинности с помощью SMS
 

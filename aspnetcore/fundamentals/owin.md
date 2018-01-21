@@ -2,21 +2,19 @@
 title: "Открытый веб-интерфейс для .NET (OWIN)"
 author: ardalis
 description: "Узнайте, как ASP.NET Core поддерживает открытие веб-интерфейса для .NET (OWIN), который позволяет веб-приложений, связано с веб-серверов."
-keywords: "ASP.NET Core, откройте веб-интерфейс .NET, OWIN"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 70c4e6bc-a773-4039-96ec-6fe557c9369d
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/owin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2ee970a1c9cd05ebee76b92c3e2c7c6c6cc6ef8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e819037e2ebd1566c778879516e20de8dc7603ea
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-open-web-interface-for-net-owin"></a>Общие сведения, чтобы открыть веб-интерфейс для .NET (OWIN)
 
@@ -239,36 +237,36 @@ public class Startup
 
 ### <a name="request-data-owin-v100"></a>Данные запроса (версии 1.0.0 OWIN)
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | Описание: |
 | ----------------- | ------------ | ----------- |
-| owin. RequestScheme | `String` |  |
+| owin.RequestScheme | `String` |  |
 | owin. RequestMethod  | `String` | |    
-| owin. RequestPathBase  | `String` | |    
-| owin. RequestPath | `String` | |     
-| owin. RequestQueryString  | `String` | |    
-| owin. RequestProtocol  | `String` | |    
+| owin.RequestPathBase  | `String` | |    
+| owin.RequestPath | `String` | |     
+| owin.RequestQueryString  | `String` | |    
+| owin.RequestProtocol  | `String` | |    
 | owin. RequestHeaders | `IDictionary<string,string[]>`  | |
-| owin. RequestBody | `Stream`  | |
+| owin.RequestBody | `Stream`  | |
 
 ### <a name="request-data-owin-v110"></a>Данные запроса (OWIN v1.1.0)
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | Описание: |
 | ----------------- | ------------ | ----------- |
 | owin. ИД запроса | `String` | Optional |
 
 ### <a name="response-data-owin-v100"></a>Данные ответа (версии 1.0.0 OWIN)
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | Описание: |
 | ----------------- | ------------ | ----------- |
-| owin. ResponseStatusCode | `int` | Optional |
-| owin. ResponseReasonPhrase | `String` | Optional |
+| owin.ResponseStatusCode | `int` | Optional |
+| owin.ResponseReasonPhrase | `String` | Optional |
 | owin. ResponseHeaders | `IDictionary<string,string[]>`  | |
-| owin. ResponseBody | `Stream`  | |
+| owin.ResponseBody | `Stream`  | |
 
 
 ### <a name="other-data-owin-v100"></a>Другие данные (версии 1.0.0 OWIN)
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | Описание: |
 | ----------------- | ------------ | ----------- |
 | owin. CallCancelled | `CancellationToken` |  |
 | owin. Версия  | `String` | |   
@@ -276,49 +274,49 @@ public class Startup
 
 ### <a name="common-keys"></a>Общие ключи
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | Описание: |
 | ----------------- | ------------ | ----------- |
-| протокол SSL. ClientCertificate | `X509Certificate` |  |
-| протокол SSL. LoadClientCertAsync  | `Func<Task>` | |    
-| сервер. RemoteIpAddress  | `String` | |    
-| сервер. Удаленный порт | `String` | |     
-| сервер. LocalIpAddress  | `String` | |    
-| сервер. LocalPort  | `String` | |    
+| ssl.ClientCertificate | `X509Certificate` |  |
+| ssl.LoadClientCertAsync  | `Func<Task>` | |    
+| server.RemoteIpAddress  | `String` | |    
+| server.RemotePort | `String` | |     
+| server.LocalIpAddress  | `String` | |    
+| server.LocalPort  | `String` | |    
 | сервер. IsLocal  | `bool` | |    
 | сервер. Псевдособытие  | `Action<Action<object>,object>` | |
 
 
 ### <a name="sendfiles-v030"></a>SendFiles v0.3.0
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | Описание: |
 | ----------------- | ------------ | ----------- |
-| sendfile. SendAsync | В разделе [сигнатура делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | По запросу |
+| sendfile.SendAsync | В разделе [сигнатура делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | По запросу |
 
 
 ### <a name="opaque-v030"></a>Непрозрачный v0.3.0
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | Описание: |
 | ----------------- | ------------ | ----------- |
-| непрозрачный. Версия | `String` |  |
+| opaque.Version | `String` |  |
 | непрозрачный. Обновление | `OpaqueUpgrade` | В разделе [сигнатура делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
-| непрозрачный. Поток | `Stream` |  |
+| opaque.Stream | `Stream` |  |
 | непрозрачный. CallCancelled | `CancellationToken` |  |
 
 
 ### <a name="websocket-v030"></a>WebSocket v0.3.0
 
-| Ключ               | Значение (тип) | Описание |
+| Ключ               | Значение (тип) | Описание: |
 | ----------------- | ------------ | ----------- |
 | WebSocket. Версия | `String` |  |
-| WebSocket. Принять | `WebSocketAccept` | В разделе [сигнатура делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
-| WebSocket. AcceptAlt |  | Non-spec |
+| websocket.Accept | `WebSocketAccept` | В разделе [сигнатура делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
+| websocket.AcceptAlt |  | Non-spec |
 | WebSocket. Подпротокол | `String` | В разделе [RFC6455 раздел 4.2.2](https://tools.ietf.org/html/rfc6455#section-4.2.2) шаг 5.5 |
-| WebSocket. SendAsync | `WebSocketSendAsync` | В разделе [сигнатура делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
-| WebSocket. ReceiveAsync | `WebSocketReceiveAsync` | В разделе [сигнатура делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
-| WebSocket. CloseAsync | `WebSocketCloseAsync` | В разделе [сигнатура делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
+| websocket.SendAsync | `WebSocketSendAsync` | В разделе [сигнатура делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
+| websocket.ReceiveAsync | `WebSocketReceiveAsync` | В разделе [сигнатура делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
+| websocket.CloseAsync | `WebSocketCloseAsync` | В разделе [сигнатура делегата](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
 | WebSocket. CallCancelled | `CancellationToken` |  |
-| WebSocket. ClientCloseStatus | `int` | Optional |
-| WebSocket. ClientCloseDescription | `String` | Optional |
+| websocket.ClientCloseStatus | `int` | Optional |
+| websocket.ClientCloseDescription | `String` | Optional |
 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы

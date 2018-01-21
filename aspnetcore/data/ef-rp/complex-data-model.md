@@ -2,7 +2,6 @@
 title: "Страниц Razor с основными EF - модели данных — 5 8."
 author: rick-anderson
 description: "В этом учебнике добавляйте дополнительные сущности и связи и настроить модель данных, указав форматирование, проверки и правила сопоставления базы данных."
-keywords: "Заметок к данным ASP.NET Core, Entity Framework Core,"
 ms.author: riande
 manager: wpickett
 ms.date: 10/25/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: c2761f79fa4836d29541526782969bb0fd47778b
-ms.sourcegitcommit: 6e46abd65973dea796d364a514de9ec2e3e1c1ed
+ms.openlocfilehash: c375fe6ea98c621012eb55589c8b174c2a95b697
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="creating-a-complex-data-model---ef-core-with-razor-pages-tutorial-5-of-8"></a>Создание сложных данных модели - Core EF учебнику страниц Razor (5 8)
 
@@ -84,7 +83,7 @@ ms.lasthandoff: 12/02/2017
 Предыдущий код допускается использование не более 50 символов. `StringLength` Атрибута не запрещает ввод символы-разделители для имени пользователя. [Регулярное выражение](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute?view=netframework-4.7.1) атрибут используется для применения ограничений входных данных. Например следующий код требует первого символа в записываются прописными буквами и остальные символы преобразуются в алфавитном порядке:
 
 ```csharp
-[RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
+[RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
 ```
 
 Запуск приложения:

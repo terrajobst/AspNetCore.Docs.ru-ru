@@ -2,20 +2,18 @@
 title: "Привязка пользовательских модели"
 author: ardalis
 description: "Настройка привязки модели в ASP.NET Core MVC."
-keywords: "ASP.NET Core, привязки модели, настраиваемый связыватель модели"
 ms.author: riande
 manager: wpickett
 ms.date: 04/10/2017
 ms.topic: article
-ms.assetid: ebd98159-a028-4a94-b06c-43981c79c6be
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: f3fc3d624c3b79d49a886dd85ca8b19147631e39
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d8b94f53954c5ab63ccf3aab4eb7a7a7dbea487b
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="custom-model-binding"></a>Привязка пользовательских модели
 
@@ -74,7 +72,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 Строка в кодировке base64 в этот метод api, с помощью таких средств, как можно РАЗМЕСТИТЬ [почтальон](https://www.getpostman.com/):
 
-![почтальон](custom-model-binding/images/postman.png "почтальон")
+![postman](custom-model-binding/images/postman.png "postman")
 
 До тех пор, пока средство привязки можно привязывать данные запроса к соответствующим именем свойства или аргументы, привязка модели будет выполнена успешно. В следующем примере показано, как использовать `ByteArrayModelBinder` с модель представлений:
 

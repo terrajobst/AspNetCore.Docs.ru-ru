@@ -2,20 +2,18 @@
 title: "Внедрение зависимостей в обработчиках требование"
 author: rick-anderson
 description: "В этом документе описано, как для добавления обработчиков требования авторизации в приложение ASP.NET Core с помощью внедрения зависимости."
-keywords: "ASP.NET Core внедрения зависимостей, обработчик авторизации"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 5fb6625c-173a-4feb-8380-73c9844dc23c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/dependencyinjection
-ms.openlocfilehash: b5e590cc63387553af7385b611cdf8cd6b255db7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9aaa356fe67a7e2c8177ffa1b886ec6b3dc13ef0
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="dependency-injection-in-requirement-handlers"></a>Внедрение зависимостей в обработчиках требование
 

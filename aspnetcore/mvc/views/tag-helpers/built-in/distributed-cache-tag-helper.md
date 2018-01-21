@@ -2,20 +2,18 @@
 title: "Распределенного кэша тег вспомогательный | Документы Microsoft"
 author: pkellner
 description: "Показано, как работать с вспомогательный тег кэша"
-keywords: "ASP.NET Core, вспомогательная функция тегов"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
 ms.topic: article
-ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a022
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
-ms.openlocfilehash: 462c3775677924fc7b9b715cd6de75fe53ada89e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f5844dade218fdba1169a55fe3ce251a9cc03db2
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="distributed-cache-tag-helper"></a>Вспомогательный тег распределенного кэша
 
@@ -43,7 +41,7 @@ ms.lasthandoff: 11/10/2017
 
 | Тип атрибута    | Пример значения     |
 |----------------   |----------------   |
-| string    | «my-distributed-cache-unique-key-101»     |
+| string    | "my-distributed-cache-unique-key-101"     |
 
 Необходимая `name` атрибут используется в качестве ключа, кэш сохраняется для каждого экземпляра вспомогательный тег распределенного кэша.  В отличие от основных кэш тег вспомогательного приложения, назначающий ключа к каждому экземпляру вспомогательный тег кэша на основе имени страницы Razor и расположение тега вспомогательного метода на странице razor вспомогательные распределенного кэша тег только сформирует его ключ на атрибут`name`
 

@@ -2,20 +2,18 @@
 title: "Снятие защиты полезных данных, ключи которых были отозваны"
 author: rick-anderson
 description: "В этом документе объясняется, как следует снять защиту данных, защищенные с помощью ключей, поскольку были отозваны, в приложении ASP.NET Core."
-keywords: "Ключи, IPersistedDataProtector отозван ASP.NET Core, защиты данных"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 6c4e6591-45d2-4d25-855e-062ad352d648
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/dangerous-unprotect
-ms.openlocfilehash: 5d431f0bbe7152525c9a360a6e90bccbd26be93d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f2425de3f790cd8dab17940ec52a2a7e170cc630
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="unprotecting-payloads-whose-keys-have-been-revoked"></a>Снятие защиты полезных данных, ключи которых были отозваны
 

@@ -2,20 +2,18 @@
 title: "Основные ASP.NET MVC с основными EF - наследования - 9, 10"
 author: tdykstra
 description: "Этот учебник будет показано, как реализовать наследование в модели данных с использованием Entity Framework Core в приложении ASP.NET Core."
-keywords: "ASP.NET Core, Entity Framework Core, наследования"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
 ms.topic: get-started-article
-ms.assetid: 41dc0db7-6f17-453e-aba6-633430609c74
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 10bde121dac3bdbbf0e55f2d146d91dea0f0210f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 756f1bbba73bd760f780d18c01597642dd1f7216
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="inheritance---ef-core-with-aspnet-core-mvc-tutorial-9-of-10"></a>Наследование - Core EF учебнику ASP.NET Core MVC (9, 10)
 

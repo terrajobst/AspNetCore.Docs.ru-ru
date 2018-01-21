@@ -2,20 +2,18 @@
 title: "Обработка запросов с контроллеров в ASP.NET Core MVC"
 author: ardalis
 description: 
-keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
 ms.date: 07/03/2017
 ms.topic: article
-ms.assetid: 9da9eb52-8583-4069-af91-155ba3529d7f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/actions
-ms.openlocfilehash: 5dc6c7dc70027bb79875f389d535119a2543b873
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cef493fc2010d1c82e5c1dfec85864539252b817
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="handling-requests-with-controllers-in-aspnet-core-mvc"></a>Обработка запросов с контроллеров в ASP.NET Core MVC
 
@@ -68,7 +66,7 @@ ms.lasthandoff: 11/10/2017
 
     Этот тип возвращает код состояния HTTP. Некоторые вспомогательные методы этого типа представляют собой `BadRequest`, `NotFound`, и `Ok`. Например `return BadRequest();` создает код состояния 400, при выполнении. Если такие методы, как `BadRequest`, `NotFound`, и `Ok` являются перегружены, они больше не считаться ответчики код состояния HTTP, так как выполняется согласование содержимого.
 
-* **Перенаправления**
+* **Redirect**
 
     Этот тип возвращает перенаправление на действие или назначения (с помощью `Redirect`, `LocalRedirect`, `RedirectToAction`, или `RedirectToRoute`). Например `return RedirectToAction("Complete", new {id = 123});` перенаправляет `Complete`, передав анонимный объект.
 

@@ -2,20 +2,18 @@
 title: "Проверка модели в ASP.NET Core MVC"
 author: rachelappel
 description: "Дополнительные сведения о проверке модели в ASP.NET Core MVC."
-keywords: "ASP.NET Core, MVC, проверка"
 ms.author: riande
 manager: wpickett
 ms.date: 12/18/2016
 ms.topic: article
-ms.assetid: 3a8676dd-7ed8-4a05-bca2-44e288ab99ee
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/validation
-ms.openlocfilehash: 7f641c247cb672934e76fa13bc7b7beb3990dd82
-ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
+ms.openlocfilehash: 91db17e103723ac411a2ad4f3f9549860f250cce
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-model-validation-in-aspnet-core-mvc"></a>Общие сведения о проверке модели в ASP.NET Core MVC
 
@@ -173,7 +171,7 @@ $.get({
 
 ### <a name="add-validation-to-dynamic-controls"></a>Добавление проверки для динамических элементов управления
 
-Можно также обновить правила проверки в форме, когда отдельные элементы управления, такие как `<input/>`s и `<select/>`s, создаются динамически. Невозможно передать селекторы для этих элементов для `parse()` непосредственно из-за форму уже проверен и не будут обновлены.  Вместо этого сначала удалите существующие данные проверки, и повторной обработки всей формы, как показано ниже:
+Можно также обновить правила проверки в форме, когда отдельные элементы управления, такие как `<input/>`s и `<select/>`s, создаются динамически. Невозможно передать селекторы для этих элементов для `parse()` непосредственно из-за форму уже проверен и не будут обновлены. Вместо этого сначала удалите существующие данные проверки, и повторной обработки всей формы, как показано ниже:
 
 ```js
 $.get({
@@ -233,11 +231,11 @@ $.get({
 
 Теперь при вводе сообщения электронной почты, JavaScript, в представлении вызывает удаленный ли сообщение электронной почты, переведены в и, если да, отображается сообщение об ошибке. В противном случае пользователь может отправить форму обычным образом.
 
-`AdditionalFields` Свойство `[Remote]` атрибут полезен для проверки комбинаций полей данных на сервере.  Например если `User` модели выше имеет два дополнительных свойства вызывается `FirstName` и `LastName`, может потребоваться убедитесь, что нет существующих пользователей уже есть этой пары имен.  Определить новые свойства, как показано в следующем коде:
+`AdditionalFields` Свойство `[Remote]` атрибут полезен для проверки комбинаций полей данных на сервере. Например если `User` модели выше имеет два дополнительных свойства вызывается `FirstName` и `LastName`, может потребоваться убедитесь, что нет существующих пользователей уже есть этой пары имен. Определить новые свойства, как показано в следующем коде:
 
 [!code-csharp[Main](validation/sample/User.cs?range=10-13)]
 
-`AdditionalFields`могли быть заданы явно на строки `"FirstName"` и `"LastName"`, но с помощью [ `nameof` ](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof) оператор, как это упрощает позже рефакторинга.  Метод действия для выполнения проверки необходимо затем принять два аргумента, один для значения `FirstName` и один для значения `LastName`.
+`AdditionalFields`могли быть заданы явно на строки `"FirstName"` и `"LastName"`, но с помощью [ `nameof` ](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof) оператор, как это упрощает позже рефакторинга. Метод действия для выполнения проверки необходимо затем принять два аргумента, один для значения `FirstName` и один для значения `LastName`.
 
 
 [!code-csharp[Main](validation/sample/UsersController.cs?range=30-39)]
@@ -248,11 +246,11 @@ $.get({
 * Если после создания пары отображается сообщение об ошибке. 
 * Если не выполнено, пользователь может отправить форму.
 
-Если необходимо проверить два или более дополнительных полей с `[Remote]` атрибут, можно предоставлять их как список с разделителями запятыми.  Например, чтобы добавить `MiddleName` в модель свойство `[Remote]` атрибута, как показано в следующем коде:
+Если необходимо проверить два или более дополнительных полей с `[Remote]` атрибут, можно предоставлять их как список с разделителями запятыми. Например, чтобы добавить `MiddleName` в модель свойство `[Remote]` атрибута, как показано в следующем коде:
 
 ```cs
 [Remote(action: "VerifyName", controller: "Users", AdditionalFields = nameof(FirstName) + "," + nameof(LastName))]
 public string MiddleName { get; set; }
 ```
 
-`AdditionalFields`, как и все аргументы атрибута должно быть константное выражение.  Таким образом, не должны использовать [интерполируются строка](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interpolated-strings) или вызвать [ `string.Join()` ](https://msdn.microsoft.com/en-us/library/system.string.join(v=vs.110).aspx) для инициализации `AdditionalFields`. Для каждого дополнительные поля, добавляемого `[Remote]` атрибут, необходимо добавить другого аргумента соответствующего метода действия контроллера.
+`AdditionalFields`, как и все аргументы атрибута должно быть константное выражение. Таким образом, не должны использовать [интерполируются строка](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interpolated-strings) или вызвать [ `string.Join()` ](https://msdn.microsoft.com/en-us/library/system.string.join(v=vs.110).aspx) для инициализации `AdditionalFields`. Для каждого дополнительные поля, добавляемого `[Remote]` атрибут, необходимо добавить другого аргумента соответствующего метода действия контроллера.

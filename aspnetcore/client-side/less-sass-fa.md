@@ -2,20 +2,18 @@
 title: "Меньше Sass и шрифтов, здорово в ASP.NET Core"
 author: ardalis
 description: "Сведения об использовании меньше Sass и здорово шрифтов в приложениях ASP.NET Core."
-keywords: "ASP.NET Core меньше Sass, здорово шрифта, препроцессорами"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 94c988f9-95fd-425d-b37e-7f846598c6d4
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/less-sass-fa
-ms.openlocfilehash: 159377300d33e98393fd6705d0fec578f8f6b735
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c3a53d6118a72c00d61d9139b05325fd1cbd53da
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-styling-applications-with-less-sass-and-font-awesome-in-aspnet-core"></a>Общие сведения о стилях приложений с меньшим, Sass и здорово шрифта в ASP.NET Core
 
@@ -545,7 +543,7 @@ Sass также включает функции и условной логики
 
 Можно просмотреть полный список доступных значков здесь:
 
-http://fontawesome.IO/icons/
+http://fontawesome.io/icons/
 
 ## <a name="summary"></a>Сводка
 

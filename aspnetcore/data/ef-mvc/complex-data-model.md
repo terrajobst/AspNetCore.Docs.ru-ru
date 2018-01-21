@@ -2,20 +2,18 @@
 title: "Основные ASP.NET MVC с основными EF - модели данных — 5, 10"
 author: tdykstra
 description: "В этом учебнике добавляйте дополнительные сущности и связи и настроить модель данных, указав форматирование, проверки и правила сопоставления базы данных."
-keywords: "Заметок к данным ASP.NET Core, Entity Framework Core,"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
 ms.topic: get-started-article
-ms.assetid: 0dd63913-a041-48b6-96a4-3aeaedbdf5d0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: cacb23441e5f5ab06c6be27f3068276f21ff4ed9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5b5645936504333573950b5bd17f5a037ffd984f
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="creating-a-complex-data-model---ef-core-with-aspnet-core-mvc-tutorial-5-of-10"></a>Создание сложных данных модели - Core EF учебнику ASP.NET Core MVC (5, 10)
 
@@ -76,7 +74,7 @@ Contoso университета примера веб-приложения по
 `StringLength` Атрибут не предотвратить ввода пробелы в имени пользователя. Можно использовать `RegularExpression` атрибутов для применения ограничений входных данных. Например следующий код требует первого символа в записываются прописными буквами и остальные символы преобразуются в алфавитном порядке:
 
 ```csharp
-[RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
+[RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
 ```
 
 `MaxLength` Атрибут предоставляет функциональность, аналогичную `StringLength` атрибута, но не предоставляет клиентской проверки.

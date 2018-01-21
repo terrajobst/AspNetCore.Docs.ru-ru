@@ -2,21 +2,19 @@
 title: "С помощью JavaScriptServices для создания приложений на одной странице"
 author: scottaddie
 description: "Узнайте о преимуществах использования JavaScriptServices для создания одной страницы приложений (SPA) поддерживаемый ASP.NET Core."
-keywords: "ASP.NET Core углового, SPA, JavaScriptServices, SpaServices"
 ms.author: scaddie
 manager: wpickett
 ms.date: 08/02/2017
 ms.topic: article
-ms.assetid: 4b30576b-2718-4c39-9253-a59966747893
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/spa-services
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d47910beef9195295c8da6ac81b83b3ffe20124
-ms.sourcegitcommit: fe880bf4ed1c8116071c0e47c0babf3623b7f44a
+ms.openlocfilehash: 6d84659c8c65bebb46551eb38bd52e405ff56016
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="using-javascriptservices-for-creating-single-page-applications-with-aspnet-core"></a>С помощью JavaScriptServices для создания приложений на одной странице с помощью ASP.NET Core
 
@@ -75,7 +73,7 @@ SpaServices предоставляет полезные инфраструкту
 * [Пакет SDK для .NET core](https://www.microsoft.com/net/download/core) 1.0 (или более поздней версии)
     * Если вы в Windows, это можно сделать, выбрав Visual Studio 2017 **кросс платформенной разработки .NET Core** рабочей нагрузки.
 
-* [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) пакета NuGet
+* [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) NuGet package
 
 <a name="server-prerendering"></a>
 
@@ -239,12 +237,12 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 
 | Шаблоны                                 | Краткое имя | Язык | Теги        |
 |:------------------------------------------|:-----------|:---------|:------------|
-| Ядро ASP.NET MVC с углового             | angular    | [C#]     | Web, MVC или SPA |
-| Ядро ASP.NET MVC с Aurelia             | aurelia    | [C#]     | Web, MVC или SPA |
-| Ядро ASP.NET MVC с Knockout.js         | маскирования   | [C#]     | Web, MVC или SPA |
-| Ядро ASP.NET MVC с React.js            | react      | [C#]     | Web, MVC или SPA |
-| MVC ASP.NET Core с React.js и локализации  | reactredux | [C#]     | Web, MVC или SPA |
-| Ядро ASP.NET MVC с Vue.js              | VUE        | [C#]     | Web, MVC или SPA | 
+| Ядро ASP.NET MVC с углового             | angular    | [C#]     | Web/MVC/SPA |
+| Ядро ASP.NET MVC с Aurelia             | aurelia    | [C#]     | Web/MVC/SPA |
+| Ядро ASP.NET MVC с Knockout.js         | маскирования   | [C#]     | Web/MVC/SPA |
+| Ядро ASP.NET MVC с React.js            | react      | [C#]     | Web/MVC/SPA |
+| MVC ASP.NET Core с React.js и локализации  | reactredux | [C#]     | Web/MVC/SPA |
+| Ядро ASP.NET MVC с Vue.js              | VUE        | [C#]     | Web/MVC/SPA | 
 
 Чтобы создать новый проект с помощью одного из шаблонов SPA, включают **короткое имя** шаблона в `dotnet new` команды. Следующая команда создает углового приложения с ASP.NET MVC Core настроен на стороне сервера:
 

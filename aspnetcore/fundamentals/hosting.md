@@ -2,7 +2,6 @@
 title: "Размещение в ASP.NET Core"
 author: guardrex
 description: "Дополнительные сведения о веб-узла в ASP.NET Core, который отвечает за управление запуском и временем существования приложения."
-keywords: "ASP.NET Core веб-узла, IWebHost, WebHostBuilder, IHostingEnvironment, IApplicationLifetime"
 ms.author: riande
 manager: wpickett
 ms.date: 09/21/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
-ms.openlocfilehash: 8adc58d67f103e8d1fc8fe197cf392752bdaf660
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 7f6712073002b73ca4ddd7586718c81e62cacbc2
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="hosting-in-aspnet-core"></a>Размещение в ASP.NET Core
 
@@ -35,8 +34,8 @@ ms.lasthandoff: 01/11/2018
 * Настраивает [Kestrel](servers/kestrel.md) и веб-сервер. Параметры по умолчанию Kestrel см. в разделе [Kestrel параметры раздела Kestrel реализация веб-сервера в ASP.NET Core](xref:fundamentals/servers/kestrel#kestrel-options).
 * Задает содержимое корневого пути, возвращенных [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory).
 * Необязательная конфигурация загружает из:
-  * *appSettings.JSON*.
-  * *appSettings. {Среды} .json*.
+  * *appsettings.json*.
+  * *appsettings.{Environment}.json*.
   * [Секреты пользователя](xref:security/app-secrets) при запуске приложения `Development` среде.
   * Переменные среды.
   * Аргументы командной строки.

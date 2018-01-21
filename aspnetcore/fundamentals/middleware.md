@@ -2,20 +2,18 @@
 title: "По промежуточного слоя ASP.NET Core"
 author: rick-anderson
 description: "Дополнительные сведения о ASP.NET Core по промежуточного слоя и конвейер запросов."
-keywords: "ASP.NET Core, по промежуточного слоя, конвейера, делегат"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2017
 ms.topic: article
-ms.assetid: db9a86ab-46c2-40e0-baed-86e38c16af1f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: ad8d207b1e6de396f16d098fb07ddc89bea2c520
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: af16046c97964e8e1c16a4f5989fcfa794741c4d
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>Принципы работы по промежуточного слоя ASP.NET Core
 
@@ -195,7 +193,7 @@ app.Map("/level1/level2", HandleMultiSeg);
 
 ASP.NET Core поставляется со следующими компонентами по промежуточного слоя:
 
-| ПО промежуточного слоя | Описание |
+| ПО промежуточного слоя | Описание: |
 | ----- | ------- |
 | [Проверка подлинности](xref:security/authentication/identity) | Обеспечивает поддержку проверки подлинности. |
 | [CORS](xref:security/cors) | Настраивает общий доступ к ресурсам независимо от источника. |

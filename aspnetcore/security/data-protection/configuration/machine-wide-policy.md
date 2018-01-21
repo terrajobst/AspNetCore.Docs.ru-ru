@@ -2,20 +2,18 @@
 title: "Политика компьютера для защиты данных поддержки в ASP.NET Core"
 author: rick-anderson
 description: "Дополнительные сведения о поддержке задание политики уровня компьютера по умолчанию для всех приложений, использующих защиту данных ASP.NET Core."
-keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 285ae47d-e0bf-4b03-b0a8-2b1fb18bc3a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/machine-wide-policy
-ms.openlocfilehash: 692e120f13882be594afc5fb926b96b82d9609e2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4c3ae3b628ebe17c7926c71f1fad664d719d1706
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="data-protection-machine-wide-policy-support-in-aspnet-core"></a>Политика компьютера для защиты данных поддержки в ASP.NET Core
 
@@ -36,7 +34,7 @@ ms.lasthandoff: 11/10/2017
 
 Ниже приведены поддерживаемые значения.
 
-| Значение              | Тип   | Описание |
+| Значение              | Тип   | Описание: |
 | ------------------ | :----: | ----------- |
 | EncryptionType     | string | Указывает, какие алгоритмы, которые следует использовать для защиты данных. Значение должно быть CNG CBC, CNG GCM или управляемый код и описывается более подробно ниже. |
 | DefaultKeyLifetime | DWORD  | Задает время существования для вновь созданных ключей. Значение указывается в днях и должен быть > = 7. |
@@ -46,7 +44,7 @@ ms.lasthandoff: 11/10/2017
 
 Если EncryptionType CNG CBC, система настроен на использование симметричный блочный шифр режим CBC по конфиденциальности и HMAC подлинность с помощью служб, предоставляемых Windows CNG (см. [указание пользовательские алгоритмы Windows CNG](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms) для Дополнительные сведения о). Поддерживаются следующие дополнительные значения, каждое из которых соответствует свойству типа CngCbcAuthenticatedEncryptionSettings.
 
-| Значение                       | Тип   | Описание |
+| Значение                       | Тип   | Описание: |
 | --------------------------- | :----: | ----------- |
 | EncryptionAlgorithm         | string | Имя блока симметричный алгоритм шифрования, поддерживаемая CNG. Этот алгоритм открывается в режиме CBC. |
 | EncryptionAlgorithmProvider | string | Имя может выдавать алгоритм EncryptionAlgorithm реализации поставщика CNG. |
@@ -56,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 
 Если EncryptionType CNG GCM, система настроена используемый симметричный блочный шифр Galois/режим конфиденциальности и подлинность службы, предоставляемые Windows CNG (см. [указание пользовательские алгоритмы Windows CNG](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms) Дополнительные сведения). Поддерживаются следующие дополнительные значения, каждое из которых соответствует свойству типа CngGcmAuthenticatedEncryptionSettings.
 
-| Значение                       | Тип   | Описание |
+| Значение                       | Тип   | Описание: |
 | --------------------------- | :----: | ----------- |
 | EncryptionAlgorithm         | string | Имя блока симметричный алгоритм шифрования, поддерживаемая CNG. Этот алгоритм открывается в режиме Galois (счетчиков). |
 | EncryptionAlgorithmProvider | string | Имя может выдавать алгоритм EncryptionAlgorithm реализации поставщика CNG. |
@@ -64,7 +62,7 @@ ms.lasthandoff: 11/10/2017
 
 Если EncryptionType является управляемым, система настроена для использования управляемых SymmetricAlgorithm по конфиденциальности и KeyedHashAlgorithm подлинность (см. [указание пользовательский управляемый алгоритмы](xref:security/data-protection/configuration/overview#specifying-custom-managed-algorithms) Дополнительные сведения). Поддерживаются следующие дополнительные значения, каждое из которых соответствует свойству типа ManagedAuthenticatedEncryptionSettings.
 
-| Значение                      | Тип   | Описание |
+| Значение                      | Тип   | Описание: |
 | -------------------------- | :----: | ----------- |
 | EncryptionAlgorithmType    | string | Имя типа, реализующего SymmetricAlgorithm сборки. |
 | EncryptionAlgorithmKeySize | DWORD  | Длина (в битах) ключа для формирования алгоритм симметричного шифрования. |

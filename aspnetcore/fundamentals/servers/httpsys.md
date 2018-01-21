@@ -2,20 +2,18 @@
 title: "Реализация веб-сервера, HTTP.sys, в ASP.NET Core"
 author: rick-anderson
 description: "Вводит HTTP.sys, веб-сервер для ASP.NET Core в Windows. Основанное на драйвер режима ядра Http.Sys, HTTP.sys — это альтернатива Kestrel, который можно использовать для прямого подключения к Интернету, без IIS."
-keywords: "Префиксы ASP.NET Core,HttpSys,HTTP.sys,HttpListener,url, протокол SSL"
 ms.author: riande
 manager: wpickett
 ms.date: 08/07/2017
 ms.topic: article
-ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 8d46862af44379d8592efdf214a80214dce2d69d
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: 60301e1e3eb96f51e86ef9f8be61f5fd8a4c009c
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера, HTTP.sys, в ASP.NET Core
 
