@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/formats-and-model-binding/bson-support-in-web-api-21
 msc.type: authoredcontent
-ms.openlocfilehash: 08ef1564b2f8f11294c3bb1ec0ff9a3d063895b6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 53ad705fad6d2225cecca4d73355bd6ebfcf56d5
+ms.sourcegitcommit: 459cb3289741a3f46325e605a617dc926ee0563d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/22/2018
 ---
 <a name="bson-support-in-aspnet-web-api-21"></a>Поддержка BSON в ASP.NET Web API 2.1
 ====================
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/10/2017
 
 BSON была разработана для упрощенная, легко просматривать и быстро для шифрования или расшифровки.
 
-- BSON сопоставим по размер в JSON. В зависимости от данных BSON полезных данных может быть меньше или больше полезные данные JSON. Для сериализации двоичных данных, таких как файл изображения BSON меньше, чем JSON, так как не двоичные данные не кодировке base64.
+- BSON сопоставим по размер в JSON. В зависимости от данных BSON полезных данных может быть меньше или больше полезные данные JSON. Для сериализации двоичных данных, таких как файл изображения BSON меньше, чем JSON, так как двоичные данные не кодировке base64.
 - Документы BSON являются удобной для быстрого просмотра, так как элементы начинаются с префикса длины поля, поэтому средство синтаксического анализа можно пропустить элементы без их декодирования.
 - Эффективны, так как числовые типы данных хранятся в виде числа, строки не кодирования и декодирования.
 
