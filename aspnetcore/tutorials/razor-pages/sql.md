@@ -2,7 +2,6 @@
 title: "Работа с SQL Server LocalDB и ASP.NET Core"
 author: rick-anderson
 description: "Описывается работа с SQL Server LocalDB и ASP.NET Core."
-keywords: ASP.NET Core, Razor Pages, Razor, MVC, SQL, LocalDB
 ms.author: riande
 manager: wpickett
 ms.date: 08/07/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 1e6ea093317527eecd5909449ac1973ca13cfc32
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: 90aa194eda1c52afb1f299a0b95c7040e32a02fc
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="working-with-sql-server-localdb-and-aspnet-core"></a>Работа с SQL Server LocalDB и ASP.NET Core
 
@@ -22,7 +21,7 @@ ms.lasthandoff: 11/29/2017
 
 Объект `MovieContext` обрабатывает задачу подключения к базе данных и сопоставления объектов `Movie` с записями базы данных. Контекст базы данных регистрируется с помощью контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection) в методе `ConfigureServices` в файле *Startup.cs*:
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=6-7)]
+[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=7-8)]
 
 Система [конфигурации](xref:fundamentals/configuration/index) ASP.NET Core считывает `ConnectionString`. Для разработки на локальном уровне она получает строку подключения из файла *appsettings.json*:
 

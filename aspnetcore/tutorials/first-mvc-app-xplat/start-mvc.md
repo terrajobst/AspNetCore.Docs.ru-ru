@@ -2,20 +2,18 @@
 title: "Введение в ASP.NET Core MVC для Mac, Linux и Windows"
 author: rick-anderson
 description: "Начало работы с MVC ASP.NET Core и Visual Studio Code в операционных системах Mac, Linux и Windows"
-keywords: ASP.NET Core,MVC,VS Code,Visual Studio Code,Mac,Linux,Windows
 ms.author: riande
 manager: wpickett
 ms.date: 07/07/2017
 ms.topic: get-started-article
-ms.assetid: 1d18b589-1638-4dc6-1638-fb0f41998d78
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/start-mvc
-ms.openlocfilehash: 87ce5dca011a7bc37d34799db159d933c158cba1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f439b6414d95f6edd1c2201c8aee043f1eab9b76
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="getting-started-with-aspnet-core-mvc--on-mac-linux-or-windows"></a>Начало работы с MVC ASP.NET Core в операционных системах Mac, Linux и Windows
 
@@ -52,7 +50,7 @@ dotnet new mvc
 Откройте папку *MvcMovie* в Visual Studio Code (VS Code) и выберите файл *Startup.cs*.
 
 - Нажмите кнопку **Да** в **предупреждении** "Required assets to build and debug are missing from 'MvcMovie'. Add them?" (В MvcMovie отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?)
-- В **информационном** сообщении "There are unresolved dependencies" (Имеются неразрешенные зависимости) щелкните **Восстановить**.
+- Щелкните **Восстановить** в **информационном** сообщении "There are unresolved dependencies" (Имеются неразрешенные зависимости).
 
 ![VS Code с предупреждением "Required assets to build and debug are missing from 'MvcMovie'.Add them?" (В MvcMovie отсутствуют необходимые ресурсы для сборки и отладки. Добавить их? "Больше не спрашивать", "Не сейчас", "Да", а также информационное сообщение "There are unresolved dependencies" (Имеются неразрешенные зависимости) — "Восстановить", "Закрыть"](../web-api-vsc/_static/vsc_restore.png)
 

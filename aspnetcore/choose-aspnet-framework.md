@@ -2,20 +2,18 @@
 title: "Выбор между ASP.NET и ASP.NET Core"
 author: rick-anderson
 description: "Как выбрать между ASP.NET и ASP.NET Core."
-keywords: "ASP.NET Core, основы, обзор"
 ms.author: riande
 manager: wpickett
 ms.date: 09/30/2017
 ms.topic: article
-ms.assetid: f0d17abf-3c69-413e-87fc-30780805e33f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 875064bd3437acc4e2a53220e19e86431d8c159b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c909c9a852549577c4a9fbc461aaf3f710b301ef
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="choose-between-aspnet-and-aspnet-core"></a>Выбор между ASP.NET и ASP.NET Core 
 
@@ -34,7 +32,7 @@ ASP.NET — это развитая платформа, предоставляю
 | ASP.NET Core | ASP.NET |
 |---|---|
 |Предназначена для Windows, macOS или Linux|Предназначена для Windows|
-|[Страницы Razor](xref:mvc/razor-pages/index) являются рекомендуемым методом для создания пользовательского веб-интерфейса в ASP.NET Core 2.0. См. также [MVC](xref:mvc/overview) и [веб-API](xref:tutorials/first-web-api).|Использование [веб-форм](https://docs.microsoft.com/aspnet/web-forms), [SignalR](https://docs.microsoft.com/aspnet/signalr), [MVC](https://docs.microsoft.com/aspnet/mvc), [веб-API](https://docs.microsoft.com/aspnet/web-api/) или [веб-страниц](https://docs.microsoft.com/aspnet/web-pages)|
+|[Razor Pages](xref:mvc/razor-pages/index) — рекомендуемый метод создания пользовательского веб-интерфейса в ASP.NET Core 2.0. См. также [MVC](xref:mvc/overview) и [веб-API](xref:tutorials/first-web-api).|Использование [веб-форм](https://docs.microsoft.com/aspnet/web-forms), [SignalR](https://docs.microsoft.com/aspnet/signalr), [MVC](https://docs.microsoft.com/aspnet/mvc), [веб-API](https://docs.microsoft.com/aspnet/web-api/) или [веб-страниц](https://docs.microsoft.com/aspnet/web-pages)|
 |Несколько версий для одного компьютера|Одна версия для одного компьютера|
 |Разработка в Visual Studio, [Visual Studio для Mac](https://www.visualstudio.com/vs/visual-studio-mac/) или [Visual Studio Code](https://code.visualstudio.com/) с использованием C# или F#|Разработка с Visual Studio с использованием C#, VB и F#|
 |Более высокая производительность, чем в ASP.NET|Хорошая производительность|
