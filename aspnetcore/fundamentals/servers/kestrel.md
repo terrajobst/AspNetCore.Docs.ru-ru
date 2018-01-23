@@ -2,21 +2,19 @@
 title: "Реализация kestrel веб-сервера в ASP.NET Core"
 author: tdykstra
 description: "Вводит Kestrel кросс платформенных веб-сервер для ASP.NET Core в соответствии с libuv."
-keywords: "ASP.NET Core, Kestrel, libuv, префиксы URL-адрес"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 08/02/2017
 ms.topic: article
-ms.assetid: 560bd66f-7dd0-4e68-b5fb-f31477e4b785
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/kestrel
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 451c36fc9095b6e076e5287c992b6163205c523b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3695a6a127f77bd90538d72af6112ccf507f3482
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-kestrel-web-server-implementation-in-aspnet-core"></a>Общие сведения о Kestrel реализация веб-сервера в ASP.NET Core
 
@@ -242,7 +240,7 @@ public IActionResult MyActionMethod()
   http://[0:0:0:0:0:ffff:4137:270a]:80/ 
   ```
 
-  [:] эквивалентно IPv6 IPv4 0.0.0.0.
+  [::] эквивалентно IPv6 IPv4 0.0.0.0.
 
 
 * Имя узла с номером порта
@@ -283,7 +281,7 @@ public IActionResult MyActionMethod()
   https://[0:0:0:0:0:ffff:4137:270a]:443/ 
   ```
 
-  [:] эквивалентно IPv6 IPv4 0.0.0.0.
+  [::] эквивалентно IPv6 IPv4 0.0.0.0.
 
 
 * Имя узла с номером порта
