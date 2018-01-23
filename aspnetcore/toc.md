@@ -130,6 +130,7 @@
 ## [Контроллеры тестирования](xref:mvc/controllers/testing)
 ## [Удаленная отладка](/visualstudio/debugger/remote-debugging-azure)
 ## [Отладка моментальных снимков](/azure/application-insights/app-insights-snapshot-debugger)
+## [Отладка моментальных снимков в Visual Studio](/visualstudio/debugger/debug-live-azure-applications)
 
 # [Доступ к данным и хранилища данных](data/index.md)
 ## [Начало работы с Razor Pages и Entity Framework Core в Visual Studio](xref:data/ef-rp/intro)

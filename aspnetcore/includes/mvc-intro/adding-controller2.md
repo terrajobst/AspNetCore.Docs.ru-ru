@@ -16,7 +16,7 @@ MVC вызывает классы контроллера (и методы дей
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-Формат маршрутизации задается в файле *Startup.cs*.
+Формат маршрутизации задается в методе `Configure` в файле *Startup.cs*.
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
