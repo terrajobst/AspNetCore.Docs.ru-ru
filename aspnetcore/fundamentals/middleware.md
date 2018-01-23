@@ -4,16 +4,16 @@ author: rick-anderson
 description: "Дополнительные сведения о ASP.NET Core по промежуточного слоя и конвейер запросов."
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2017
+ms.date: 01/22/2018
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: af16046c97964e8e1c16a4f5989fcfa794741c4d
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: ef130e736e2f32fa134156d979ce5bfbedcae828
+ms.sourcegitcommit: 3f491f887074310fc0f145cd01a670aa63b969e3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>Принципы работы по промежуточного слоя ASP.NET Core
 
@@ -191,18 +191,22 @@ app.Map("/level1/level2", HandleMultiSeg);
 
 ## <a name="built-in-middleware"></a>Встроенные по промежуточного слоя
 
-ASP.NET Core поставляется со следующими компонентами по промежуточного слоя:
+ASP.NET Core поставляется со следующих компонентов по промежуточного слоя, а также описание порядка, в котором они должны быть добавлены:
 
-| ПО промежуточного слоя | Описание: |
-| ----- | ------- |
-| [Проверка подлинности](xref:security/authentication/identity) | Обеспечивает поддержку проверки подлинности. |
-| [CORS](xref:security/cors) | Настраивает общий доступ к ресурсам независимо от источника. |
-| [Кэширование ответов](xref:performance/caching/middleware) | Предоставляет поддержку для кэширования ответов. |
-| [Сжатие ответа](xref:performance/response-compression) | Поддерживает сжатие ответов. |
-| [Маршрутизация](xref:fundamentals/routing) | Определяет и ограничивает запрос маршрутов. |
-| [Сеанс](xref:fundamentals/app-state) | Предоставляет поддержку для управления пользовательских сеансов. |
-| [Статические файлы](xref:fundamentals/static-files) | Обеспечивает поддержку для обслуживания статических файлов и просмотр каталогов. |
-| [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting) | Предоставляет поддержку для перезаписи URL-адресов и перенаправления запросов. |
+| ПО промежуточного слоя | Описание: | Номер |
+| ---------- | ----------- | ----- |
+| [Проверка подлинности](xref:security/authentication/identity) | Обеспечивает поддержку проверки подлинности. | Прежде чем `HttpContext.User` необходим. Конечная точка для обратных вызовов OAuth. |
+| [CORS](xref:security/cors) | Настраивает общий доступ к ресурсам независимо от источника. | Прежде чем компоненты, которые используют CORS. |
+| [Диагностика](xref:fundamentals/error-handling) | Настраивает диагностики. | Прежде чем компоненты, которые приведут к ошибке. |
+| [ForwardedHeaders/HttpOverrides](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions) | Пересылает прокси заголовки на текущий запрос. | Прежде чем компонентов, использующих обновленные поля (примеры: схему, узел, адреса ClientIP, метод). |
+| [Кэширование ответов](xref:performance/caching/middleware) | Предоставляет поддержку для кэширования ответов. | Прежде чем компоненты, которым необходимо кэширование. |
+| [Сжатие ответа](xref:performance/response-compression) | Поддерживает сжатие ответов. | Прежде чем компонентов, требующих сжатия. |
+| [RequestLocalization](xref:fundamentals/localization) | Обеспечивает поддержку локализации. | Прежде чем локализации важные компоненты. |
+| [Маршрутизация](xref:fundamentals/routing) | Определяет и ограничивает запрос маршрутов. | Конечная точка для совпадающих маршрутов. |
+| [Сеанс](xref:fundamentals/app-state) | Предоставляет поддержку для управления пользовательских сеансов. | Прежде чем компоненты, которые требуется сеанс. |
+| [Статические файлы](xref:fundamentals/static-files) | Обеспечивает поддержку для обслуживания статических файлов и просмотр каталогов. | Конечная точка, если запрос соответствует файлы. |
+| [Переписывание URL-адресов](xref:fundamentals/url-rewriting) | Предоставляет поддержку для перезаписи URL-адресов и перенаправления запросов. | Прежде чем компонентов, использующих URL-адрес. |
+| [WebSockets](xref:fundamentals/websockets) | Включает протокол соединения WebSocket. | Прежде чем компоненты, необходимые для принятия запросов WebSocket. |
 
 <a name="middleware-writing-middleware"></a>
 

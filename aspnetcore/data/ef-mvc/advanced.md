@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: ea83e5b17df80e5615dda49335247340d1cfb016
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: c5c06e61239c65cb1ff501a57777363a047a8db5
+ms.sourcegitcommit: f8ecf3d8f5b15f1e84ec86de3835b49ebe89fa1e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="advanced-topics---ef-core-with-aspnet-core-mvc-tutorial-10-of-10"></a>Дополнительные разделы - Core EF учебнику ASP.NET Core MVC (10, 10)
 
@@ -169,7 +169,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 ## <a name="entity-framework-core-source-code-and-development-plans"></a>Entity Framework Core исходного кода и разработки планов
 
-Исходный код для Entity Framework Core доступен на [https://github.com/aspnet/EntityFrameworkCore](https://github.com/aspnet/EntityFrameworkCore). Помимо исходного кода, можно получить Ночные построения, отслеживанием, компонент спецификаций, заметки собрания разработчика [стратегия для будущих разработок](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap)и многое другое. Можно регистрировать ошибки и могут способствовать собственные усовершенствования EF исходного кода.
+Entity Framework Core исходный код доступен по [https://github.com/aspnet/EntityFrameworkCore](https://github.com/aspnet/EntityFrameworkCore). Репозиторий EF Core содержит Ночные построения отслеживания проблемы, технические характеристики функции, конструктора собраний и [стратегия для будущих разработок](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap). Файл или поиск ошибок и участие.
 
 Несмотря на то, что исходный код открыт, Entity Framework Core полностью поддерживается как продуктов корпорации Майкрософт. Команда Microsoft Entity Framework поддерживает элемент управления, по которому принимаются вклад и проверяет все изменения кода, чтобы обеспечить его качество каждого выпуска.
 
