@@ -5,16 +5,16 @@ description: "Используйте API конфигурации для нас�
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 1/11/2018
+ms.date: 01/11/2018
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 0f8618898089418f709506aee5eb013f983dc294
-ms.sourcegitcommit: 87168cdc409e7a7257f92a0f48f9c5ab320b5b28
+ms.openlocfilehash: c4f57d1e02ad5f4e235039999af9df9d236756a7
+ms.sourcegitcommit: 3d512ea991ac36dfd4c800b7d1f8a27bfc50635e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="configure-an-aspnet-core-app"></a>Настройка приложения ASP.NET Core
 
@@ -50,7 +50,7 @@ API конфигурации позволяет настраивать веб-п
 
 Конфигурация — это иерархический список пар "имя-значение", в котором узлы разделяются двоеточием. Чтобы получить значение, обратитесь к индексатору `Configuration` с ключом соответствующего элемента:
 
-[!code-csharp[Main](index/sample/ConfigJson/Program.cs?range=24-24)]
+[!code-csharp[Main](index/sample/ConfigJson/Program.cs?range=21-22)]
 
 Для работы с массивами в источниках конфигурации в формате JSON используйте индекс массива в составе строки с разделителем-двоеточием. В следующем примере возвращается имя первого элемента в предыдущем массиве `wizards`:
 
@@ -59,7 +59,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}");
 // Output: Gandalf
 ```
 
-Пары "имя-значение", записываемые во встроенные поставщики [конфигурации](https://docs.microsoft.com/ dotnet/api/microsoft.extensions.configuration), **не сохраняются**. Однако можно создать пользовательский поставщик, который сохраняет значения. См. раздел [Пользовательский поставщик конфигурации](xref:fundamentals/configuration/index#custom-config-providers).
+Пары "имя-значение", записываемые во встроенные поставщики [конфигурации](/dotnet/api/microsoft.extensions.configuration), **не сохраняются**. Однако можно создать пользовательский поставщик, который сохраняет значения. См. раздел [Пользовательский поставщик конфигурации](xref:fundamentals/configuration/index#custom-config-providers).
 
 В предыдущем примере для считывания значений используется индексатор конфигурации. Для доступа к конфигурации вне `Startup` воспользуйтесь *шаблоном параметров*. Дополнительные сведения см. в разделе [Параметры](xref:fundamentals/configuration/options).
 
@@ -72,7 +72,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}");
 * *appsettings.\<имя_среды>.json*
 * Переменные среды
 
-Приложения ASP.NET Core 1.x должны вызывать `AddJsonFile` и [AddEnvironmentVariables](https://docs.microsoft.com/ dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables #Microsoft_Extensions_Configuration_EnvironmentVariablesExtensions_AddEnvironmentVariables_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_).
+Приложения ASP.NET Core 1.x должны вызывать `AddJsonFile` и [AddEnvironmentVariables](/dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables#Microsoft_Extensions_Configuration_EnvironmentVariablesExtensions_AddEnvironmentVariables_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_).
 
 Объяснение параметров см. в разделе [AddJsonFile](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions). `reloadOnChange` поддерживается только в ASP.NET Core 1.1 и более поздних версиях.
 
@@ -106,7 +106,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}");
 
 ### <a name="getvalue"></a>GetValue
 
-В следующем примере показан метод расширения [GetValue&lt;T&gt;](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.configurationbinder#Microsoft_Extensions_Configuration_ConfigurationBinder_GetValue_Microsoft_Extensions_Configuration_IConfiguration_System_Type_System_String_System_Object_):
+В следующем примере показан метод расширения [GetValue&lt;T&gt;](/dotnet/api/microsoft.extensions.configuration.configurationbinder.get?view=aspnetcore-2.0#Microsoft_Extensions_Configuration_ConfigurationBinder_Get__1_Microsoft_Extensions_Configuration_IConfiguration_):
 
 [!code-csharp[Main](index/sample/InMemoryGetValue/Program.cs?highlight=31)]
 
@@ -175,11 +175,11 @@ public void CanBindObjectTree()
 
 [!code-csharp[Main](index/sample/CustomConfigurationProvider/ConfigurationContext.cs?name=snippet1)]
 
-Создайте класс, реализующий [IConfigurationSource](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.iconfigurationsource).
+Создайте класс, реализующий [IConfigurationSource](/dotnet/api/Microsoft.Extensions.Configuration.IConfigurationSource).
 
 [!code-csharp[Main](index/sample/CustomConfigurationProvider/EntityFrameworkConfigurationSource.cs?highlight=7)]
 
-Создайте пользовательский поставщик конфигурации путем наследования от [ConfigurationProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.configurationprovider). Поставщик конфигурации инициализирует пустую базу данных:
+Создайте пользовательский поставщик конфигурации путем наследования от [ConfigurationProvider](/dotnet/api/Microsoft.Extensions.Configuration.ConfigurationProvider). Поставщик конфигурации инициализирует пустую базу данных:
 
 [!code-csharp[Main](index/sample/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs?highlight=9,18-31,38-39)]
 
@@ -401,7 +401,7 @@ Left: 1988
 * `IConfiguration` имеет две специализации:
   * `IConfigurationRoot` используется для корневого узла. Может инициировать перезагрузку.
   * `IConfigurationSection` представляет раздел значений конфигурации. Методы `GetSection` и `GetChildren` возвращают `IConfigurationSection`.
-  * Используйте [IConfigurationRoot](https://docs.microsoft.com/ dotnet/api/microsoft.extensions.configuration.iconfigurationroot) при перезагрузке конфигурации или когда необходим доступ к каждому поставщику. Оба этих случая нетипичные.
+  * Используйте [IConfigurationRoot](/dotnet/api/microsoft.extensions.configuration.iconfigurationroot) при перезагрузке конфигурации или когда необходим доступ к каждому поставщику. Оба этих случая нетипичные.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
