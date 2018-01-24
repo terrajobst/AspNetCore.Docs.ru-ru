@@ -130,6 +130,7 @@
 ## [Контроллеры тестирования](xref:mvc/controllers/testing)
 ## [Удаленная отладка](/visualstudio/debugger/remote-debugging-azure)
 ## [Отладка моментальных снимков](/azure/application-insights/app-insights-snapshot-debugger)
+## [Отладка моментальных снимков в Visual Studio](/visualstudio/debugger/debug-live-azure-applications)
 
 # [Доступ к данным и хранилища данных](data/index.md)
 ## [Начало работы с Razor Pages и Entity Framework Core в Visual Studio](xref:data/ef-rp/intro)
@@ -204,6 +205,7 @@
 ### [Использование проверки подлинности с помощью файлов cookie без Identity](xref:security/authentication/cookie)
 ### [Azure Active Directory](xref:security/authentication/azure-active-directory/index)
 #### [Интеграция Azure AD в веб-приложение ASP.NET Core](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
+#### [Интеграция Azure AD B2C в веб-приложение ASP.NET Core для клиентов](xref:security/authentication/azure-ad-b2c)
 #### [Вызов веб-API ASP.NET Core из приложения WPF с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
 #### [Вызов веб-API в веб-приложении ASP.NET Core с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
 ### [Защита приложений ASP.NET Core с помощью IdentityServer4](https://identityserver4.readthedocs.io/)
