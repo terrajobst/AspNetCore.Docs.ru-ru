@@ -11,11 +11,11 @@ ms.assetid: 54bb961d-29d9-4dee-8e2c-a93fc33c16f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: 630378510f4182034735cb4c306dfc5a761543ab
-ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
+ms.openlocfilehash: 08503b724aaea64ad2d32eaa710378ec77b9a1fe
+ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="aspnet-core-web-api-help-pages-using-swagger"></a>Страницы справки по веб-API ASP.NET Core с использованием Swagger
 
@@ -227,6 +227,8 @@ XML-комментарии можно включить следующим обр
 См. описание Visual Studio Code.
 
 ---
+
+Включение комментариев XML предоставляет отладочную информацию для недокументированных открытых типов и членов. Недокументированные типы и члены обозначены предупреждающим сообщением: *Отсутствует комментарий XML для открытого видимого типа или члена*.
 
 Настройте Swagger на использование созданного XML-файла. В Linux и других операционных системах, отличных от Windows, имена и пути файлов могут быть чувствительны к регистру. Например, файл *ToDoApi.XML* будет найден в Windows, но не в CentOS.
 
