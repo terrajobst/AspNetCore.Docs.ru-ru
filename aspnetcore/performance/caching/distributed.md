@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/distributed
-ms.openlocfilehash: a00937e8c47e73fa8e29af883f44f6e1f4d4b1b4
-ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
+ms.openlocfilehash: a0af4887143f6ed37a1af982ec21a2ad5eae9515
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="working-with-a-distributed-cache-in-aspnet-core"></a>Работа с распределенного кэша в ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/29/2017
 
 ## <a name="what-is-a-distributed-cache"></a>Что такое распределенного кэша
 
-Распределенный кэш является общим для нескольких серверов приложений (см. [кэширование основы](memory.md#caching-basics)). Сведения в кэше не хранятся в памяти отдельных веб-серверов и кэшированных данных доступен для всех серверов приложений. Это обеспечивает несколько преимуществ:
+Распределенный кэш является общим для нескольких серверов приложений (см. [кэширование основы](memory.md#caching-basics)). Информация в кэше не хранятся в памяти отдельных веб-серверов и кэшированных данных доступен для всех серверов приложений. Это обеспечивает несколько преимуществ:
 
 1. Кэшированные данные согласованного на всех веб-серверах. Пользователи не видеть разные результаты в зависимости от веб-сервер обрабатывает их запроса
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/29/2017
 
 `IDistributedCache` Интерфейс включает синхронные и асинхронные методы. Интерфейс позволяет элементы добавлены, получение и удалены из реализации распределенного кэша. `IDistributedCache` Интерфейс содержит следующие методы:
 
-**Get-GetAsync**
+**Get, GetAsync**
 
 Принимает строковый ключ и извлекает кэшированного элемента как `byte[]` Если найден в кэше.
 
@@ -52,11 +52,11 @@ ms.lasthandoff: 11/29/2017
 
 Добавляет элемент (как `byte[]`) в кэш с помощью строкового ключа.
 
-**Обновление RefreshAsync**
+**Refresh, RefreshAsync**
 
 Обновляет объект в кэше, по его ключу, сброс его скользящий срок хранения (если таковые имеются).
 
-**Удалите асинхронно удаляет**
+**Remove, RemoveAsync**
 
 Удаляет запись по его ключу.
 
@@ -139,8 +139,8 @@ C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(loc
 * [Кэш Azure redis](https://azure.microsoft.com/documentation/services/redis-cache/)
 * [База данных SQL в Azure](https://azure.microsoft.com/documentation/services/sql-database/)
 * [Кэширование в памяти](xref:performance/caching/memory)
-* [Обнаруживать изменения с маркерами изменения](xref:fundamentals/primitives/change-tokens)
+* [Обнаружение изменений с помощью маркеров изменений](xref:fundamentals/primitives/change-tokens)
 * [Кэширование ответов](xref:performance/caching/response)
 * [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
-* [Вспомогательный тег кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Вспомогательный тег распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* [Вспомогательная функция тега кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [Вспомогательная функция тега распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

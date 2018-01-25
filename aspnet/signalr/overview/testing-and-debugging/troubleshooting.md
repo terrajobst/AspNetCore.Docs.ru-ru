@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/testing-and-debugging/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: d7a1dcc04baaa5ab27aecf95936d943f5a9b3f0c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2394ee81f4592417a034e47db6eefd3e4b91a9af
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="signalr-troubleshooting"></a>Устранение неполадок SignalR
 ====================
@@ -192,7 +192,7 @@ SignalR серверы не знаете, если клиент является
 
 - **Ссылка на адресов прокси-сервера концентратора неправильный формат:** Эта ошибка обычно возникает, если ссылку на созданный концентратор прокси-адрес имеет неправильный формат. Проверьте, правильно становится ссылка на адрес в концентратор. В разделе [как ссылаться на динамически созданный прокси](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy) подробные сведения.
 - **Добавление маршрутов для приложения, прежде чем добавлять маршрут концентратора:** Если приложение использует другие маршруты, убедитесь, что добавления маршрута первый вызов `MapSignalR`.
-- **С помощью служб IIS 7 и 7.5 без обновления без расширений URL-адресов:** с помощью IIS 7 и 7.5 требует обновления без расширений URL-адресов, чтобы сервер может предоставлять доступ к определениям концентратора в `/signalr/hubs`. Обновление можно найти [здесь](https://support.microsoft.com/kb/980368/en-us).
+- **С помощью служб IIS 7 и 7.5 без обновления без расширений URL-адресов:** с помощью IIS 7 и 7.5 требует обновления без расширений URL-адресов, чтобы сервер может предоставлять доступ к определениям концентратора в `/signalr/hubs`. Обновление можно найти [здесь](https://support.microsoft.com/kb/980368).
 - **IIS кэшировать устарела или привести к повреждению:** чтобы убедиться, что содержимое кэша не устарела, введите следующую команду в окне PowerShell, чтобы очистить кэш:
 
     [!code-powershell[Main](troubleshooting/samples/sample11.ps1)]

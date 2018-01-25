@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/displaying-maps-in-an-aspnet-web-pages-site
 msc.type: authoredcontent
-ms.openlocfilehash: a802e4fed81fadca195c8aa83c37c7100ac5cbec
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6f3e6a0cfb8c08cd971e88986d0f059dd8237aab
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="displaying-maps-in-an-aspnet-web-pages-razor-site"></a>Отображение карты в веб-страницы (Razor) узла ASP.NET
 ====================
@@ -114,4 +114,4 @@ ms.lasthandoff: 11/10/2017
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 
-[Справочник по API Microsoft.Maps](https://msdn.microsoft.com/en-us/library/gg427611.aspx)
+[Справочник по API Microsoft.Maps](https://msdn.microsoft.com/library/gg427611.aspx)

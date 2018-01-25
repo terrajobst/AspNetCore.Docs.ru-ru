@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 1ea779cb10661512690e3fec16ae73be0f40d15a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f43f0a2dd80e26ecff15e5742e18264ddb5b26aa
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="overview-of-custom-storage-providers-for-aspnet-identity"></a>Обзор поставщиков пользовательского хранилища для ASP.NET Identity
 ====================
@@ -71,9 +71,9 @@ ASP.NET Identity состоит из класса с именами менедж
 
 Для реализации поставщика пользовательского хранилища, необходимо понимать типы данных при использовании ASP.NET Identity и решить, какие компоненты, необходимые для вашего приложения.
 
-| Данные | Описание |
+| Данные | Описание: |
 | --- | --- |
-| Users | Зарегистрированным пользователям вашего веб-сайта. Включает в себя пользователя идентификатор и имя пользователя. Может включать хэшированный пароль, если пользователи будут входить с использованием учетных данных, которые относятся к веб-узла (а не с помощью учетных данных с внешних сайтов, таких как Facebook) и метку безопасности для указания ли что-либо изменения в учетных данных пользователя. Может также включать адрес электронной почты, телефонный номер, является ли двухфакторная проверка подлинности включена, текущее число неудачных попыток входа, и является ли учетная запись заблокирована. |
+| Пользователи | Зарегистрированным пользователям вашего веб-сайта. Включает в себя пользователя идентификатор и имя пользователя. Может включать хэшированный пароль, если пользователи будут входить с использованием учетных данных, которые относятся к веб-узла (а не с помощью учетных данных с внешних сайтов, таких как Facebook) и метку безопасности для указания ли что-либо изменения в учетных данных пользователя. Может также включать адрес электронной почты, телефонный номер, является ли двухфакторная проверка подлинности включена, текущее число неудачных попыток входа, и является ли учетная запись заблокирована. |
 | Утверждения пользователей | Набор инструкций (или утверждения) о пользователе, которые представляют удостоверение пользователя. Можно включить большего выражения удостоверение пользователя, чем можно создать с помощью ролей. |
 | Имена входа | Сведения о поставщике внешней проверки подлинности (например, Facebook) для использования при входе пользователя. |
 | Роли | Группы авторизации для веб-узла. Содержит имя роли идентификатор и роли (например, «Admin» или «Employee»). |
@@ -89,7 +89,7 @@ ASP.NET Identity состоит из класса с именами менедж
 
 На уровне доступа к данным предоставляют логику для сохранения данных из ASP.NET Identity для источника данных. Уровень доступа к данным для поставщика настраиваемого хранилища может включать следующие классы для хранения сведений о пользователе и роли.
 
-| Класс | Описание | Пример |
+| Класс | Описание: | Пример |
 | --- | --- | --- |
 | Контекст | Инкапсулирует сведения для подключения к вашей механизм сохранения и выполнения запросов. Этот класс является центральным элементом слоя доступа к данным. Классы данных потребуется экземпляр этого класса для выполнения своих операций. Также будет инициализировать хранилище классов с экземпляром этого класса. | [MySQLDatabase](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/AspNet.Identity.MySQL/MySQLDatabase.cs) |
 | Хранилище пользователя | Хранит и извлекает сведения о пользователе (например, хэш имени и пароля пользователя). | [UserTable (MySQL)](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/AspNet.Identity.MySQL/UserTable.cs) |
@@ -109,15 +109,15 @@ ASP.NET Identity состоит из класса с именами менедж
 <a id="user"></a>
 ## <a name="customize-the-user-class"></a>Настроить класс пользователя
 
-При реализации поставщика хранилища, необходимо создать класс пользователя, который эквивалентен [IdentityUser](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.identity.entityframework.identityuser(v=vs.108).aspx) класса в [Microsoft.ASP.NET.Identity.EntityFramework](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.identity.entityframework(v=vs.108).aspx) пространство имен:
+При реализации поставщика хранилища, необходимо создать класс пользователя, который эквивалентен [IdentityUser](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework.identityuser(v=vs.108).aspx) класса в [Microsoft.ASP.NET.Identity.EntityFramework](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework(v=vs.108).aspx) пространство имен:
 
 В примере ниже показан класс IdentityUser, необходимо создать и интерфейс для реализации этого класса.
 
 ![](overview-of-custom-storage-providers-for-aspnet-identity/_static/image2.png)
 
-[IUser&lt;TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613291(v=vs.108).aspx) интерфейс определяет свойства, которые пытается вызвать при выполнении запроса операции UserManager. Интерфейс содержит два свойства - идентификатор и имя пользователя. [IUser&lt;TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613291(v=vs.108).aspx) интерфейс позволяет указывать тип ключа для пользователя с помощью универсального **TKey** параметра. Тип идентификатора свойства совпадает со значением параметра TKey.
+[IUser&lt;TKey&gt; ](https://msdn.microsoft.com/library/dn613291(v=vs.108).aspx) интерфейс определяет свойства, которые пытается вызвать при выполнении запроса операции UserManager. Интерфейс содержит два свойства - идентификатор и имя пользователя. [IUser&lt;TKey&gt; ](https://msdn.microsoft.com/library/dn613291(v=vs.108).aspx) интерфейс позволяет указывать тип ключа для пользователя с помощью универсального **TKey** параметра. Тип идентификатора свойства совпадает со значением параметра TKey.
 
-Также предоставляет платформу удостоверений [IUser](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.identity.iuser(v=vs.108).aspx) интерфейса (без параметром универсального типа) при необходимости использовать строковое значение для ключа.
+Также предоставляет платформу удостоверений [IUser](https://msdn.microsoft.com/library/microsoft.aspnet.identity.iuser(v=vs.108).aspx) интерфейса (без параметром универсального типа) при необходимости использовать строковое значение для ключа.
 
 Класс IdentityUser реализует IUser и содержит дополнительные свойства или конструкторы для пользователей на веб-сайте. Пример класса IdentityUser, который использует целое число для ключа. Поле Id равно **int** в соответствии со значением универсального параметра. 
 
@@ -128,7 +128,7 @@ ASP.NET Identity состоит из класса с именами менедж
 <a id="userstore"></a>
 ## <a name="customize-the-user-store"></a>Настроить хранилище пользователей
 
-Можно также создать UserStore класс, предоставляющий методы для всех операций с данными пользователя. Этот класс является эквивалентом [UserStore&lt;TUser&gt; ](https://msdn.microsoft.com/en-us/library/dn315446(v=vs.108).aspx) класса в [Microsoft.ASP.NET.Identity.EntityFramework](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.identity.entityframework(v=vs.108).aspx) пространства имен. В классе UserStore реализовать [IUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613276(v=vs.108).aspx) и любые дополнительные интерфейсы. Выберите необязательные интерфейсы для реализации на основании функциональные возможности, которые требуется предоставить в приложении.
+Можно также создать UserStore класс, предоставляющий методы для всех операций с данными пользователя. Этот класс является эквивалентом [UserStore&lt;TUser&gt; ](https://msdn.microsoft.com/library/dn315446(v=vs.108).aspx) класса в [Microsoft.ASP.NET.Identity.EntityFramework](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework(v=vs.108).aspx) пространства имен. В классе UserStore реализовать [IUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx) и любые дополнительные интерфейсы. Выберите необязательные интерфейсы для реализации на основании функциональные возможности, которые требуется предоставить в приложении.
 
 На следующем рисунке UserStore класса, который необходимо создать и соответствующие интерфейсы.
 
@@ -153,27 +153,27 @@ ASP.NET Identity состоит из класса с именами менедж
 ![](overview-of-custom-storage-providers-for-aspnet-identity/_static/image4.png)
 
 - **IUserStore**  
- [IUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613278(v=vs.108).aspx) интерфейс — только интерфейс, необходимо реализовать в хранилище пользователя. Он определяет методы для создания, обновления, удаления и получения пользователей.
+ [IUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613278(v=vs.108).aspx) интерфейс — только интерфейс, необходимо реализовать в хранилище пользователя. Он определяет методы для создания, обновления, удаления и получения пользователей.
 - **IUserClaimStore**  
- [IUserClaimStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613265(v=vs.108).aspx) интерфейс определяет методы, необходимо реализовать в хранилище пользователя для включения заявок на доступ пользователя. Он содержит методы или добавления, удаления и получает утверждения пользователя.
+ [IUserClaimStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613265(v=vs.108).aspx) интерфейс определяет методы, необходимо реализовать в хранилище пользователя для включения заявок на доступ пользователя. Он содержит методы или добавления, удаления и получает утверждения пользователя.
 - **IUserLoginStore**  
- [IUserLoginStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613272(v=vs.108).aspx) определяет методы, необходимо реализовать в хранилище пользователя для включения внешних поставщиков аутентификации. Содержит методы для добавления, удаления и извлечения имен входа пользователей и метод для извлечения на основе сведений имени входа пользователя.
+ [IUserLoginStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613272(v=vs.108).aspx) определяет методы, необходимо реализовать в хранилище пользователя для включения внешних поставщиков аутентификации. Содержит методы для добавления, удаления и извлечения имен входа пользователей и метод для извлечения на основе сведений имени входа пользователя.
 - **IUserRoleStore**  
- [IUserRoleStore&lt;TKey, TUser&gt; ](https://msdn.microsoft.com/en-us/library/dn613276(v=vs.108).aspx) интерфейс определяет методы, необходимо реализовать в хранилище пользователя для сопоставления пользователей в роль. Содержит методы для добавления, удаления и извлечения роли пользователя, а также метод для проверки, если пользователь назначен роли.
+ [IUserRoleStore&lt;TKey, TUser&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx) интерфейс определяет методы, необходимо реализовать в хранилище пользователя для сопоставления пользователей в роль. Содержит методы для добавления, удаления и извлечения роли пользователя, а также метод для проверки, если пользователь назначен роли.
 - **IUserPasswordStore**  
- [IUserPasswordStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613273(v=vs.108).aspx) интерфейса определяются методы, необходимо реализовать в хранилище пользователя для сохранения паролей на основании хэша. Содержит методы для получения и задания хэшированный пароль и метод, который указывает, ли пользователь использовать пароль.
+ [IUserPasswordStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613273(v=vs.108).aspx) интерфейса определяются методы, необходимо реализовать в хранилище пользователя для сохранения паролей на основании хэша. Содержит методы для получения и задания хэшированный пароль и метод, который указывает, ли пользователь использовать пароль.
 - **IUserSecurityStampStore**  
- [IUserSecurityStampStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613277(v=vs.108).aspx) интерфейса определяются методы, которые необходимо реализовать в хранилище пользователя для использования метку безопасности, указывающее, изменилось ли учетная запись пользователя . Это метка обновляется, когда пользователь изменяет пароль, или добавляет или удаляет имена входа. Содержит методы для получения и задания метку безопасности.
+ [IUserSecurityStampStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613277(v=vs.108).aspx) интерфейса определяются методы, которые необходимо реализовать в хранилище пользователя для использования метку безопасности, указывающее, изменилось ли учетная запись пользователя . Это метка обновляется, когда пользователь изменяет пароль, или добавляет или удаляет имена входа. Содержит методы для получения и задания метку безопасности.
 - **IUserTwoFactorStore**  
- [IUserTwoFactorStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613279(v=vs.108).aspx) интерфейса определяются методы, необходимо реализовать для реализации двухфакторная проверка подлинности. Содержит методы для получения и задания двухфакторная проверка подлинности включена ли для пользователя.
+ [IUserTwoFactorStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613279(v=vs.108).aspx) интерфейса определяются методы, необходимо реализовать для реализации двухфакторная проверка подлинности. Содержит методы для получения и задания двухфакторная проверка подлинности включена ли для пользователя.
 - **IUserPhoneNumberStore**  
- [IUserPhoneNumberStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613275(v=vs.108).aspx) интерфейса определяются методы, необходимо реализовать для хранения номеров телефонов пользователя. Содержит методы для получения и задания, номер телефона и подтверждается ли номер телефона.
+ [IUserPhoneNumberStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613275(v=vs.108).aspx) интерфейса определяются методы, необходимо реализовать для хранения номеров телефонов пользователя. Содержит методы для получения и задания, номер телефона и подтверждается ли номер телефона.
 - **IUserEmailStore**  
- [IUserEmailStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613143(v=vs.108).aspx) интерфейса определяются методы, необходимо реализовать для хранения адреса электронной почты пользователя. Содержит методы для получения и задания адреса электронной почты и подтверждается ли сообщение электронной почты.
+ [IUserEmailStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613143(v=vs.108).aspx) интерфейса определяются методы, необходимо реализовать для хранения адреса электронной почты пользователя. Содержит методы для получения и задания адреса электронной почты и подтверждается ли сообщение электронной почты.
 - **IUserLockoutStore**  
- [IUserLockoutStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613271(v=vs.108).aspx) интерфейса определяются методы, необходимо реализовать для хранения сведений о блокировке учетной записи. Он содержит методы для получения текущее количество неудачных попыток доступа, получение и задание ли учетной записи могут быть заблокированы, получение и задание блокировка дату окончания, увеличивая число неудачных попыток и сброс числа неудачных попыток входа.
+ [IUserLockoutStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613271(v=vs.108).aspx) интерфейса определяются методы, необходимо реализовать для хранения сведений о блокировке учетной записи. Он содержит методы для получения текущее количество неудачных попыток доступа, получение и задание ли учетной записи могут быть заблокированы, получение и задание блокировка дату окончания, увеличивая число неудачных попыток и сброс числа неудачных попыток входа.
 - **IQueryableUserStore**  
- [IQueryableUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613267(v=vs.108).aspx) интерфейс определяет элементы, необходимо реализовать для предоставления хранилища поддерживает запросы пользователя. Он содержит свойство, которое содержит поддерживает запросы пользователей.
+ [IQueryableUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613267(v=vs.108).aspx) интерфейс определяет элементы, необходимо реализовать для предоставления хранилища поддерживает запросы пользователя. Он содержит свойство, которое содержит поддерживает запросы пользователей.
 
  Реализуйте интерфейсы, которые необходимы в коде приложения; Например IUserClaimStore, IUserLoginStore, IUserRoleStore, IUserPasswordStore и IUserSecurityStampStore интерфейсы, как показано ниже. 
 
@@ -183,22 +183,22 @@ ASP.NET Identity состоит из класса с именами менедж
 
 ### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>IdentityUserClaim, IdentityUserLogin и IdentityUserRole
 
-Пространство имен Microsoft.AspNet.Identity.EntityFramework содержит реализации [IdentityUserClaim](https://msdn.microsoft.com/en-us/library/dn613250(v=vs.108).aspx), [IdentityUserLogin](https://msdn.microsoft.com/en-us/library/dn613251(v=vs.108).aspx), и [IdentityUserRole](https://msdn.microsoft.com/en-us/library/dn613252(v=vs.108).aspx) классы. Если вы используете эти функции, можно создавать собственные версии этих классов и определять свойства для вашего приложения. Тем не менее иногда бывает более эффективно не загружать эти сущности в память при выполнение основных операций (например, добавляя или удаляя утверждения пользователя). Вместо этого внутреннего хранилища классы могут выполнять эти операции непосредственно в источнике данных. Например метод UserStore.GetClaimsAsync() можно вызвать метод userClaimTable.FindByUserId(user. Метод ID) для выполнения запроса на который непосредственно таблицу и возвращает список утверждений.
+Пространство имен Microsoft.AspNet.Identity.EntityFramework содержит реализации [IdentityUserClaim](https://msdn.microsoft.com/library/dn613250(v=vs.108).aspx), [IdentityUserLogin](https://msdn.microsoft.com/library/dn613251(v=vs.108).aspx), и [IdentityUserRole](https://msdn.microsoft.com/library/dn613252(v=vs.108).aspx) классы. Если вы используете эти функции, можно создавать собственные версии этих классов и определять свойства для вашего приложения. Тем не менее иногда бывает более эффективно не загружать эти сущности в память при выполнение основных операций (например, добавляя или удаляя утверждения пользователя). Вместо этого внутреннего хранилища классы могут выполнять эти операции непосредственно в источнике данных. Например метод UserStore.GetClaimsAsync() можно вызвать метод userClaimTable.FindByUserId(user. Метод ID) для выполнения запроса на который непосредственно таблицу и возвращает список утверждений.
 
 [!code-csharp[Main](overview-of-custom-storage-providers-for-aspnet-identity/samples/sample6.cs)]
 
 <a id="role"></a>
 ## <a name="customize-the-role-class"></a>Настроить класс ролей
 
-При реализации поставщика хранилища, необходимо создать класс ролей, что эквивалентно [IdentityRole](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.identity.entityframework.identityrole(v=vs.108).aspx) класса в [Microsoft.ASP.NET.Identity.EntityFramework](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.identity.entityframework(v=vs.108).aspx) пространство имен:
+При реализации поставщика хранилища, необходимо создать класс ролей, что эквивалентно [IdentityRole](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework.identityrole(v=vs.108).aspx) класса в [Microsoft.ASP.NET.Identity.EntityFramework](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework(v=vs.108).aspx) пространство имен:
 
 В примере ниже показан класс IdentityRole, необходимо создать и интерфейс для реализации этого класса.
 
 ![](overview-of-custom-storage-providers-for-aspnet-identity/_static/image5.png)
 
-[IRole&lt;TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613268(v=vs.108).aspx) интерфейс определяет свойства, которые RoleManager пытается вызвать при выполнении запроса операции. Интерфейс содержит два свойства - идентификатор и имя. [IRole&lt;TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613268(v=vs.108).aspx) интерфейс позволяет указать тип ключа для роли через универсальный **TKey** параметра. Тип идентификатора свойства совпадает со значением параметра TKey.
+[IRole&lt;TKey&gt; ](https://msdn.microsoft.com/library/dn613268(v=vs.108).aspx) интерфейс определяет свойства, которые RoleManager пытается вызвать при выполнении запроса операции. Интерфейс содержит два свойства - идентификатор и имя. [IRole&lt;TKey&gt; ](https://msdn.microsoft.com/library/dn613268(v=vs.108).aspx) интерфейс позволяет указать тип ключа для роли через универсальный **TKey** параметра. Тип идентификатора свойства совпадает со значением параметра TKey.
 
-Также предоставляет платформу удостоверений [IRole](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.identity.irole(v=vs.108).aspx) интерфейса (без параметром универсального типа) при необходимости использовать строковое значение для ключа.
+Также предоставляет платформу удостоверений [IRole](https://msdn.microsoft.com/library/microsoft.aspnet.identity.irole(v=vs.108).aspx) интерфейса (без параметром универсального типа) при необходимости использовать строковое значение для ключа.
 
 Пример класса IdentityRole, который использует целое число для ключа. Поле «Идентификатор» имеет значение int в соответствии со значением универсального параметра. 
 
@@ -209,7 +209,7 @@ ASP.NET Identity состоит из класса с именами менедж
 <a id="rolestore"></a>
 ## <a name="customize-the-role-store"></a>Настройка хранилища ролей
 
-Можно также создать RoleStore класс, предоставляющий методы для всех операций с данными на ролях. Этот класс является эквивалентом [RoleStore&lt;TRole&gt; ](https://msdn.microsoft.com/en-us/library/dn468181(v=vs.108).aspx) класса в пространстве имен Microsoft.ASP.NET.Identity.EntityFramework. В классе RoleStore реализовать [IRoleStore&lt;TRole, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613266(v=vs.108).aspx) и при необходимости [IQueryableRoleStore&lt;TRole, TKey&gt; ](https://msdn.microsoft.com/en-us/library/dn613262(v=vs.108).aspx) интерфейс.
+Можно также создать RoleStore класс, предоставляющий методы для всех операций с данными на ролях. Этот класс является эквивалентом [RoleStore&lt;TRole&gt; ](https://msdn.microsoft.com/library/dn468181(v=vs.108).aspx) класса в пространстве имен Microsoft.ASP.NET.Identity.EntityFramework. В классе RoleStore реализовать [IRoleStore&lt;TRole, TKey&gt; ](https://msdn.microsoft.com/library/dn613266(v=vs.108).aspx) и при необходимости [IQueryableRoleStore&lt;TRole, TKey&gt; ](https://msdn.microsoft.com/library/dn613262(v=vs.108).aspx) интерфейс.
 
 ![](overview-of-custom-storage-providers-for-aspnet-identity/_static/image6.png)
 
@@ -218,7 +218,7 @@ ASP.NET Identity состоит из класса с именами менедж
 [!code-csharp[Main](overview-of-custom-storage-providers-for-aspnet-identity/samples/sample8.cs)]
 
 - **IRoleStore&lt;TRole&gt;**  
- [IRoleStore](https://msdn.microsoft.com/en-us/library/dn468195.aspx) интерфейс определяет методы для реализации в классе роли хранилища. Содержит методы для создания, обновления, удаления и получения ролей.
+ [IRoleStore](https://msdn.microsoft.com/library/dn468195.aspx) интерфейс определяет методы для реализации в классе роли хранилища. Содержит методы для создания, обновления, удаления и получения ролей.
 - **RoleStore&lt;TRole&gt;**  
  Чтобы настроить RoleStore, создайте класс, реализующий интерфейс IRoleStore. Имеется только для реализации этого класса, если хотите использовать ролей в вашей системе. Конструктор, который принимает параметр с именем *базы данных* типа ExampleDatabase является только показано, как передать в классе доступа к данным. Например в реализации MySQL этот конструктор использует параметр типа MySQLDatabase.  
   
@@ -255,7 +255,7 @@ ASP.NET Identity состоит из класса с именами менедж
 
 - Блог: [реализации ASP.NET Identity](http://odetocode.com/blogs/scott/archive/2014/01/20/implementing-asp-net-identity.aspx)
 - Учебник и GIT кода: [поставщика удостоверений Simple.Data Asp.Net](http://designcoderelease.blogspot.co.uk/2015/03/simpledata-aspnet-identity-provider.html)
-- Учебник:[установить основные учетные записи удостоверения и обращены внешних DB](http://typecastexception.com/post/2013/10/27/Configuring-Db-Connection-and-Code-First-Migration-for-Identity-Accounts-in-ASPNET-MVC-5-and-Visual-Studio-2013.aspx). По [ @xivSolutions ](https://twitter.com/xivSolutions).
+- Учебник:[установить основные учетные записи удостоверения и обращены внешних DB](http://typecastexception.com/post/2013/10/27/Configuring-Db-Connection-and-Code-First-Migration-for-Identity-Accounts-in-ASPNET-MVC-5-and-Visual-Studio-2013.aspx). By [@xivSolutions](https://twitter.com/xivSolutions).
 - Учебник по[: реализация поставщика хранилища ASP.NET Identity пользовательских MySQL](implementing-a-custom-mysql-aspnet-identity-storage-provider.md)
 - [Сущности CodeFluent](http://blog.codefluententities.com/2014/04/30/asp-net-identity-v2-and-codefluent-entities/) по [SoftFluent](http://www.softfluent.com/)
 - [Хранилище таблиц Azure](https://www.nuget.org/packages/accidentalfish.aspnet.identity.azure/) , Джеймс Randall @@.

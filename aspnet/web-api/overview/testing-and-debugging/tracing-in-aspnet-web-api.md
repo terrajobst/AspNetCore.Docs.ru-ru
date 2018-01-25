@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: f35c8a10018ce796e2d905d6ee839ff09bb380a1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7392ae5d9bc4c3aab45a9373099a0ee18e873a4f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="tracing-in-aspnet-web-api-2"></a>Трассировка в ASP.NET Web API 2
 ====================
@@ -58,7 +58,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](tracing-in-aspnet-web-api/samples/sample2.cs?highlight=6)]
 
-Этот код добавляет [пространство имен SystemDiagnosticsTraceWriter](https://msdn.microsoft.com/en-us/library/system.web.http.tracing.systemdiagnosticstracewriter.aspx) класса конвейера веб-API. **Пространство имен SystemDiagnosticsTraceWriter** класс записывает трассировки, чтобы [System.Diagnostics.Trace](https://msdn.microsoft.com/en-us/library/system.diagnostics.trace).
+Этот код добавляет [пространство имен SystemDiagnosticsTraceWriter](https://msdn.microsoft.com/library/system.web.http.tracing.systemdiagnosticstracewriter.aspx) класса конвейера веб-API. **Пространство имен SystemDiagnosticsTraceWriter** класс записывает трассировки, чтобы [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace).
 
 Для просмотра трассировки, запустите приложение в отладчике. В браузере перейдите к `/api/values`.
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/10/2017
 
 [![](tracing-in-aspnet-web-api/_static/image7.png)](tracing-in-aspnet-web-api/_static/image6.png)
 
-Поскольку **пространство имен SystemDiagnosticsTraceWriter** записывает трассировки, чтобы **System.Diagnostics.Trace**, вы можете зарегистрировать дополнительные прослушиватели трассировки, например, для записи трассировки в файл журнала. Дополнительные сведения о записи трассировки см. в разделе [прослушиватели трассировки](https://msdn.microsoft.com/en-us/library/4y5y10s7.aspx) в MSDN.
+Поскольку **пространство имен SystemDiagnosticsTraceWriter** записывает трассировки, чтобы **System.Diagnostics.Trace**, вы можете зарегистрировать дополнительные прослушиватели трассировки, например, для записи трассировки в файл журнала. Дополнительные сведения о записи трассировки см. в разделе [прослушиватели трассировки](https://msdn.microsoft.com/library/4y5y10s7.aspx) в MSDN.
 
 ### <a name="configuring-systemdiagnosticstracewriter"></a>Настройка пространство имен SystemDiagnosticsTraceWriter
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/10/2017
 
 Чтобы получить модуль записи трассировки, вызовите **HttpConfiguration.Services.GetTraceWriter**. От контроллера, этот метод доступен через **ApiController.Configuration** свойство.
 
-Для записи трассировки, можно вызвать метод **ITraceWriter.Trace** непосредственно, но [ITraceWriterExtensions](https://msdn.microsoft.com/en-us/library/system.web.http.tracing.itracewriterextensions.aspx) класс определяет некоторые методы расширений, которые являются более понятным. Например **сведения** в приведенном выше примере создает трассировку с уровнем трассировки **сведения**.
+Для записи трассировки, можно вызвать метод **ITraceWriter.Trace** непосредственно, но [ITraceWriterExtensions](https://msdn.microsoft.com/library/system.web.http.tracing.itracewriterextensions.aspx) класс определяет некоторые методы расширений, которые являются более понятным. Например **сведения** в приведенном выше примере создает трассировку с уровнем трассировки **сведения**.
 
 ## <a name="web-api-tracing-infrastructure"></a>Инфраструктура веб-API трассировки
 

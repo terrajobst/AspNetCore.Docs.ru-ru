@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-partitioning-strategies
 msc.type: authoredcontent
-ms.openlocfilehash: 8eddb7af2d9032153b30ab54d5e882f0b46cd4ce
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: dca016cb6293a346f5622cc272e510b182c86d58
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="data-partitioning-strategies-building-real-world-cloud-apps-with-azure"></a>(Создание реальных облачных приложений в Azure) стратегии секционирования данных
 ====================
@@ -101,8 +101,8 @@ ms.lasthandoff: 11/10/2017
 
 Документация:
 
-- [Советы и рекомендации по проектированию крупномасштабных служб в облачных служб Windows Azure](https://msdn.microsoft.com/en-us/library/windowsazure/jj717232.aspx). Технический документ, Марк Симмс и Майкл Томасси.
-- [Шаблоны и методики - облачные шаблоны проектирования Майкрософт](https://msdn.microsoft.com/en-us/library/dn568099.aspx). См. руководство секционирование данных, шаблон сегментирования.
+- [Советы и рекомендации по проектированию крупномасштабных служб в облачных служб Windows Azure](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx). Технический документ, Марк Симмс и Майкл Томасси.
+- [Шаблоны и методики - облачные шаблоны проектирования Майкрософт](https://msdn.microsoft.com/library/dn568099.aspx). См. руководство секционирование данных, шаблон сегментирования.
 
 Видеоролики:
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5b193fa3256e5886481c7b36d88aa09c1fa7017c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 60ef1f93efea777e9309ad8c664a2c6645f1ce80
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuring-the-production-web-application-to-use-the-production-database-vb"></a>Настройка рабочего веб-приложение для использования рабочей базы данных (Visual Basic)
 ====================
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="examining-the-connection-string-information"></a>Анализ данных строки подключения
 
-Строка подключения, используемая веб-приложением рецензий хранится в файле конфигурации приложения s `Web.config`. `Web.config`включает в себя специальный раздел для хранения строки подключения, соответствующее имя [ &lt;connectionStrings&gt;](https://msdn.microsoft.com/en-us/library/bf7sd233.aspx). `Web.config` -Файле для веб-сайта рецензий одну строку соединения, заданные в этом разделе с именем `ReviewsConnectionString`:
+Строка подключения, используемая веб-приложением рецензий хранится в файле конфигурации приложения s `Web.config`. `Web.config`включает в себя специальный раздел для хранения строки подключения, соответствующее имя [ &lt;connectionStrings&gt;](https://msdn.microsoft.com/library/bf7sd233.aspx). `Web.config` -Файле для веб-сайта рецензий одну строку соединения, заданные в этом разделе с именем `ReviewsConnectionString`:
 
 [!code-xml[Main](configuring-the-production-web-application-to-use-the-production-database-vb/samples/sample1.xml)]
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 - `Data Source`— Указывает расположение сервера базы данных и имя экземпляра сервера базы данных (если таковые имеются). Значение, `.\SQLEXPRESS`, пример которого сервер базы данных и имя экземпляра. Срок указывает, что сервер базы данных на том же компьютере, что приложение; Имя экземпляра является `SQLEXPRESS`.
 - `AttachDbFilename`— Указывает расположение файла базы данных. Значение содержит заполнитель `|DataDirectory|`, который разрешается в полное приложение s `App_Data` папку во время выполнения.
 - `Integrated Security`-Логическое значение, указывающее, следует ли использовать указанного имени пользователя и пароля при подключении к базе данных (false) или текущий Windows учетные данные учетной записи (true).
-- `User Instance`— параметр конфигурации, относящиеся к SQL Server экспресс-выпусков, указывающее, следует ли разрешить пользователям без прав администратора на локальном компьютере присоединяться и подключаться к базе данных SQL Server, экспресс-выпуск. В разделе [экземпляров SQL Server Express пользователя](https://msdn.microsoft.com/en-us/library/ms254504.aspx) Дополнительные сведения об этом параметре.
+- `User Instance`— параметр конфигурации, относящиеся к SQL Server экспресс-выпусков, указывающее, следует ли разрешить пользователям без прав администратора на локальном компьютере присоединяться и подключаться к базе данных SQL Server, экспресс-выпуск. В разделе [экземпляров SQL Server Express пользователя](https://msdn.microsoft.com/library/ms254504.aspx) Дополнительные сведения об этом параметре.
   
 
 Параметры строки подключения допустимый зависят от базы данных, подключении и [ADO.NET](http://ADO.NET) используемого поставщика базы данных. Например строка подключения для подключения к Microsoft SQL Server базы данных отличается от используемого для подключения к базе данных Oracle. Аналогично подключение к базе данных Microsoft SQL Server с помощью поставщика SqlClient использует другую строку соединения, чем при использовании поставщика OLE DB.
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/10/2017
 
 Среда рабочей базы данных должны появиться в обозревателе серверов. Выберите базу данных из обозревателя серверов и перейдите в окно «Свойства». Там будет найти свойство с именем строки подключения в строке подключения s базы данных. При условии, что вы используете базы данных Microsoft SQL Server в рабочей среде и Поставщик SqlClient строки подключения должен выглядеть следующим образом:
 
-**Источник данных =*serverName*; Начальный каталог =*databaseName*; Сохранять сведения о безопасности = True; ИД пользователя =*username*; Пароль =*пароль***
+**Источник данных =*serverName*; Начальный каталог =*databaseName*; Сохранять сведения о безопасности = True; ИД пользователя =*username*; Пароль = * пароль***
 
 Где *serverName*, *databaseName*, *username*, и *пароль* являются значениями для имени сервера базы данных, базы данных имя и имя пользователя и пароль, предоставленные вашей компании узла веб.
 
@@ -147,10 +147,10 @@ ms.lasthandoff: 11/10/2017
 
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
-- [Строки подключения и файлы конфигурации](https://msdn.microsoft.com/en-us/library/ms254494.aspx)
+- [Строки подключения и файлы конфигурации](https://msdn.microsoft.com/library/ms254494.aspx)
 - [Сведения о @ ConnectionStrings.com строки конфигурации базы данных](http://www.connectionstrings.com/)
 - [Можно вывести параметры из файла Web.config](http://www.asp101.com/tips/index.asp?id=154)
-- [Техническая документация для &lt;connectionStrings&gt; элемент](https://msdn.microsoft.com/en-us/library/bf7sd233.aspx)
+- [Техническая документация для &lt;connectionStrings&gt; элемент](https://msdn.microsoft.com/library/bf7sd233.aspx)
 
 >[!div class="step-by-step"]
 [Назад](deploying-a-database-vb.md)

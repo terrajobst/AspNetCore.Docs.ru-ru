@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/formats-and-model-binding/media-formatters
 msc.type: authoredcontent
-ms.openlocfilehash: 7d85b995cd577d0ff90fe96bce508c7fbdc6ebbb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9103574597df126a22e21a2f51815f608e46f47f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="media-formatters-in-aspnet-web-api-2"></a>Модули форматирования мультимедиа в ASP.NET Web API 2
 ====================
@@ -48,8 +48,8 @@ ms.lasthandoff: 11/10/2017
 
 Чтобы создать модуль форматирования мультимедиа, являются производными от одного из этих классов:
 
-- [MediaTypeFormatter](https://msdn.microsoft.com/en-us/library/system.net.http.formatting.mediatypeformatter.aspx). Этот класс использует асинхронное чтение и запись методы.
-- [BufferedMediaTypeFormatter](https://msdn.microsoft.com/en-us/library/system.net.http.formatting.bufferedmediatypeformatter.aspx). Этот класс является производным от **MediaTypeFormatter** , но использует sychronous методы чтения и записи.
+- [MediaTypeFormatter](https://msdn.microsoft.com/library/system.net.http.formatting.mediatypeformatter.aspx). Этот класс использует асинхронное чтение и запись методы.
+- [BufferedMediaTypeFormatter](https://msdn.microsoft.com/library/system.net.http.formatting.bufferedmediatypeformatter.aspx). Этот класс является производным от **MediaTypeFormatter** , но использует sychronous методы чтения и записи.
 
 Наследование от **BufferedMediaTypeFormatter** проще, так как нет асинхронного кода, но это также означает, что вызывающий поток можно заблокировать во время ввода-вывода.
 
@@ -91,10 +91,10 @@ ms.lasthandoff: 11/10/2017
 
 При необходимости форматирования мультимедиа может поддерживать несколько кодировок, например UTF-8 или ISO 8859-1.
 
-В конструкторе, добавьте один или несколько [System.Text.Encoding](https://msdn.microsoft.com/en-us/library/system.text.encoding.aspx) типы **SupportedEncodings** коллекции. Поместите первый кодировку по умолчанию.
+В конструкторе, добавьте один или несколько [System.Text.Encoding](https://msdn.microsoft.com/library/system.text.encoding.aspx) типы **SupportedEncodings** коллекции. Поместите первый кодировку по умолчанию.
 
 [!code-csharp[Main](media-formatters/samples/sample10.cs?highlight=6-7)]
 
-В **WriteToStream** и **ReadFromStream** вызывать методы, [MediaTypeFormatter.SelectCharacterEncoding](https://msdn.microsoft.com/en-us/library/hh969054.aspx) для выбора предпочтительной кодировки. Этот метод совпадает со списком поддерживаемых кодировок заголовки запроса. Используйте возвращенный **кодировка** при чтении или записи из потока:
+В **WriteToStream** и **ReadFromStream** вызывать методы, [MediaTypeFormatter.SelectCharacterEncoding](https://msdn.microsoft.com/library/hh969054.aspx) для выбора предпочтительной кодировки. Этот метод совпадает со списком поддерживаемых кодировок заголовки запроса. Используйте возвращенный **кодировка** при чтении или записи из потока:
 
 [!code-csharp[Main](media-formatters/samples/sample11.cs?highlight=3,5)]

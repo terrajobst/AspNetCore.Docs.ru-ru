@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 15de0ca9bcceb7f745fa311b18d2c095f1dafcb1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5d1be6c30cda5a06087516210a77f48b6a3fe45b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>Использование существующих хранимых процедур для адаптеров таблиц типизированного набора данных (Visual Basic)
 ====================
@@ -200,7 +200,7 @@ Visual Studio позволяет легко добавлять новые хра
 
 Начинается шаблон, определив `TRY...CATCH` блокировать конструкцию, новые для SQL Server 2005. Как и с `Try...Catch` блоков в Visual Basic, SQL `TRY...CATCH` блок выполняет операторы в `TRY` блока. Если любая инструкция вызывает ошибку, управление немедленно передается `CATCH` блока.
 
-Если ошибок нет, выполнение инструкций SQL, состав транзакции, `COMMIT TRANSACTION` оператор фиксирует изменения и завершает транзакцию. Если, однако одна из инструкций приводит к ошибке `ROLLBACK TRANSACTION` в `CATCH` блок возвращает базу данных в состояние до начала транзакции. Хранимая процедура вызывает ошибки с помощью [команда RAISERROR](https://msdn.microsoft.com/en-us/library/ms178592.aspx), чего `SqlException` вызываемого в приложении.
+Если ошибок нет, выполнение инструкций SQL, состав транзакции, `COMMIT TRANSACTION` оператор фиксирует изменения и завершает транзакцию. Если, однако одна из инструкций приводит к ошибке `ROLLBACK TRANSACTION` в `CATCH` блок возвращает базу данных в состояние до начала транзакции. Хранимая процедура вызывает ошибки с помощью [команда RAISERROR](https://msdn.microsoft.com/library/ms178592.aspx), чего `SqlException` вызываемого в приложении.
 
 > [!NOTE]
 > Поскольку `TRY...CATCH` блок является новой возможностью в SQL Server 2005, выше шаблона не будет работать, если вы используете более старых версий Microsoft SQL Server. Если вы не используете SQL Server 2005, обратитесь к [управление транзакции в хранимых процедур SQL Server](http://www.4guysfromrolla.com/webtech/080305-1.shtml) для шаблона, который будет работать с другими версиями SQL Server.

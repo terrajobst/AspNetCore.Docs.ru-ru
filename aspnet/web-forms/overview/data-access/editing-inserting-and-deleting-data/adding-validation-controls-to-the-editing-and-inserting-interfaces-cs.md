@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a5855d5624360e955d5bcbcdd44e745fa54f8bd8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b8b05705629b5e8a9acfc5d23517ef1b3cfa7cd6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-validation-controls-to-the-editing-and-inserting-interfaces-c"></a>Добавление элементов управления проверки для редактирования и вставка интерфейсов (C#)
 ====================
@@ -103,11 +103,11 @@ ms.lasthandoff: 11/10/2017
 
 При создании формы для ввода данных, очень важно, что пользователь ввел все необходимые поля и, юридические, правильно отформатированные значения всех указанных входных данных. Чтобы быть уверенным, что входные данные пользователя являются допустимыми, ASP.NET предоставляет пять встроенных элементов управления проверки, разработанных для использования для проверки значения одного элемента управления ввода:
 
-- [RequiredFieldValidator](https://msdn.microsoft.com/en-us/library/5hbw267h(VS.80).aspx) гарантирует, что значение было предоставлено
-- [CompareValidator](https://msdn.microsoft.com/en-us/library/db330ayw(VS.80).aspx) проверяет значение постоянное значение или значения элементов управления Web или гарантирует, что формат значения является допустимым для указанного типа данных
-- [RangeValidator](https://msdn.microsoft.com/en-us/library/f70d09xt.aspx) гарантирует, что значение в диапазоне значений
-- [RegularExpressionValidator](https://msdn.microsoft.com/en-US/library/eahwtc9e.aspx) проверяет значение на соответствие [регулярных выражений](http://en.wikipedia.org/wiki/Regular_expression)
-- [Проверяющий](https://msdn.microsoft.com/en-us/library/9eee01cx(VS.80).aspx) проверяет значение на соответствие настраиваемых, пользовательских метод
+- [RequiredFieldValidator](https://msdn.microsoft.com/library/5hbw267h(VS.80).aspx) гарантирует, что значение было предоставлено
+- [CompareValidator](https://msdn.microsoft.com/library/db330ayw(VS.80).aspx) проверяет значение постоянное значение или значения элементов управления Web или гарантирует, что формат значения является допустимым для указанного типа данных
+- [RangeValidator](https://msdn.microsoft.com/library/f70d09xt.aspx) гарантирует, что значение в диапазоне значений
+- [RegularExpressionValidator](https://msdn.microsoft.com/library/eahwtc9e.aspx) проверяет значение на соответствие [регулярных выражений](http://en.wikipedia.org/wiki/Regular_expression)
+- [Проверяющий](https://msdn.microsoft.com/library/9eee01cx(VS.80).aspx) проверяет значение на соответствие настраиваемых, пользовательских метод
 
 Дополнительные сведения для этих пяти элементов управления см. [раздел проверяющие элементы управления](https://quickstarts.asp.net/quickstartv20/aspnet/doc/ctrlref/validation/default.aspx) из [ASP.NET по основам](https://asp.net/QuickStart/aspnet/).
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/10/2017
 **Рис. 5**: Добавление RequiredFieldValidator для `ProductName` `EditItemTemplate` ([Просмотр полноразмерное изображение](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image15.png))
 
 
-Все проверяющие элементы управления работают путем проверки входных данных одного элемента управления ASP.NET Web. Таким образом, необходимо убедиться, что RequiredFieldValidator, мы только что добавили следует проверить в текстовое поле в `EditItemTemplate`; это делается путем присвоения свойству проверяющего элемента управления [свойство ControlToValidate](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.basevalidator.controltovalidate(VS.80).aspx) для `ID` соответствующего веб-элемента управления. Текстовое поле в настоящее время имеет довольно неопределенный `ID` из `TextBox1`, но давайте на что-нибудь более подходящее. Щелкните текстовое поле в шаблоне и в окне свойств измените `ID` из `TextBox1` для `EditProductName`.
+Все проверяющие элементы управления работают путем проверки входных данных одного элемента управления ASP.NET Web. Таким образом, необходимо убедиться, что RequiredFieldValidator, мы только что добавили следует проверить в текстовое поле в `EditItemTemplate`; это делается путем присвоения свойству проверяющего элемента управления [свойство ControlToValidate](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.controltovalidate(VS.80).aspx) для `ID` соответствующего веб-элемента управления. Текстовое поле в настоящее время имеет довольно неопределенный `ID` из `TextBox1`, но давайте на что-нибудь более подходящее. Щелкните текстовое поле в шаблоне и в окне свойств измените `ID` из `TextBox1` для `EditProductName`.
 
 
 [![Измените идентификатор текстовое поле для EditProductName](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image17.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image16.png)
@@ -141,7 +141,7 @@ ms.lasthandoff: 11/10/2017
 **Рис. 6**: изменить текстовое поле `ID` для `EditProductName` ([Просмотр полноразмерное изображение](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image18.png))
 
 
-Затем задайте RequiredFieldValidator `ControlToValidate` свойства `EditProductName`. Задайте [свойство ErrorMessage](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.basevalidator.errormessage(VS.80).aspx) на «Необходимо указать название продукта» и [свойства Text](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.basevalidator.text(VS.80).aspx) для «\*». `Text` Значение свойства, если указано, является текст, отображаемый элементом управления проверки в том случае, если проверка завершается с ошибкой. `ErrorMessage` Значение свойства, которое является обязательным, используется элемент управления ValidationSummary; Если `Text` значение свойства задано, `ErrorMessage` также является текст, отображаемый элементом управления проверки в случае недопустимого ввода.
+Затем задайте RequiredFieldValidator `ControlToValidate` свойства `EditProductName`. Задайте [свойство ErrorMessage](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.errormessage(VS.80).aspx) на «Необходимо указать название продукта» и [свойства Text](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.text(VS.80).aspx) для «\*». `Text` Значение свойства, если указано, является текст, отображаемый элементом управления проверки в том случае, если проверка завершается с ошибкой. `ErrorMessage` Значение свойства, которое является обязательным, используется элемент управления ValidationSummary; Если `Text` значение свойства задано, `ErrorMessage` также является текст, отображаемый элементом управления проверки в случае недопустимого ввода.
 
 После задания этих трех свойств RequiredFieldValidator экран должен выглядеть примерно как на рис.
 
@@ -155,7 +155,7 @@ ms.lasthandoff: 11/10/2017
 
 Прежде чем добавлять CompareValidator для `UnitPrice` `EditItemTemplate`, давайте сначала измените идентификатор элемента управления TextBox Web из `TextBox2` для `EditUnitPrice`. После этого изменения CompareValidator, добавьте параметр его `ControlToValidate` свойства `EditUnitPrice`, ее `ErrorMessage` свойства «цена должна быть больше или равно нулю и не может включать символ валюты» и его `Text` свойства "\*".
 
-Чтобы указать, что `UnitPrice` значение должно быть больше или равно 0, значение CompareValidator [свойство оператор](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.comparevalidator.operator(VS.80).aspx) для `GreaterThanEqual`, ее [свойства ValueToCompare](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.comparevalidator.valuetocompare(VS.80).aspx) «0» и его [ Свойство типа](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.basecomparevalidator.type.aspx) для `Currency`. В следующем показан декларативный синтаксис `UnitPrice` в TemplateField `EditItemTemplate` после внесения этих изменений:
+Чтобы указать, что `UnitPrice` значение должно быть больше или равно 0, значение CompareValidator [свойство оператор](https://msdn.microsoft.com/library/system.web.ui.webcontrols.comparevalidator.operator(VS.80).aspx) для `GreaterThanEqual`, ее [свойства ValueToCompare](https://msdn.microsoft.com/library/system.web.ui.webcontrols.comparevalidator.valuetocompare(VS.80).aspx) «0» и его [ Свойство типа](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basecomparevalidator.type.aspx) для `Currency`. В следующем показан декларативный синтаксис `UnitPrice` в TemplateField `EditItemTemplate` после внесения этих изменений:
 
 [!code-aspx[Main](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/samples/sample3.aspx)]
 
@@ -197,9 +197,9 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-4-summarizing-data-entry-problems"></a>Шаг 4: Сводка проблем с вводом данных
 
-В дополнение к пяти проверяющие элементы управления, включает ASP.NET [управления ValidationSummary](https://msdn.microsoft.com/en-US/library/f9h59855(VS.80).aspx), который отображает `ErrorMessage` s этих элементов управления проверки, которые обнаружены недопустимые данные. Эти сводные данные могут отображаться в виде текста на веб-странице или с помощью модального, клиентские messagebox. Давайте усовершенствовать этого учебника, чтобы включить клиентский messagebox суммирования проблемы с проверкой.
+В дополнение к пяти проверяющие элементы управления, включает ASP.NET [управления ValidationSummary](https://msdn.microsoft.com/library/f9h59855(VS.80).aspx), который отображает `ErrorMessage` s этих элементов управления проверки, которые обнаружены недопустимые данные. Эти сводные данные могут отображаться в виде текста на веб-странице или с помощью модального, клиентские messagebox. Давайте усовершенствовать этого учебника, чтобы включить клиентский messagebox суммирования проблемы с проверкой.
 
-Для этого перетащите элемент управления ValidationSummary из области элементов в конструктор. Расположение проверяющего элемента управления не имеет значения, так как мы собираемся задана Отображение сводки только в качестве messagebox. После добавления элемента управления, задать его [свойство ShowSummary](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.validationsummary.showsummary(VS.80).aspx) для `false` и его [свойство ShowMessageBox](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.validationsummary.showmessagebox(VS.80).aspx) для `true`. В результате этого добавления в messagebox клиентские описаны ошибок проверки.
+Для этого перетащите элемент управления ValidationSummary из области элементов в конструктор. Расположение проверяющего элемента управления не имеет значения, так как мы собираемся задана Отображение сводки только в качестве messagebox. После добавления элемента управления, задать его [свойство ShowSummary](https://msdn.microsoft.com/library/system.web.ui.webcontrols.validationsummary.showsummary(VS.80).aspx) для `false` и его [свойство ShowMessageBox](https://msdn.microsoft.com/library/system.web.ui.webcontrols.validationsummary.showmessagebox(VS.80).aspx) для `true`. В результате этого добавления в messagebox клиентские описаны ошибок проверки.
 
 
 [![Ошибки проверки, приведены в Messagebox стороны клиента](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image32.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs/_static/image31.png)

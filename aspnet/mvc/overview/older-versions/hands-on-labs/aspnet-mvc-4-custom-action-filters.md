@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-custom-action-filters
 msc.type: authoredcontent
-ms.openlocfilehash: 6362f0506934ca3b3cc86e1a927af75e7bc4e1d3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 103cd68c576463d87d0077cc149f9b89c6e028e8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4-custom-action-filters"></a>ASP.NET MVC 4 настраиваемых фильтров действий
 ====================
@@ -96,7 +96,7 @@ ms.lasthandoff: 11/10/2017
 > - **Результат** фильтр, который является оболочкой для исполнения объекта ActionResult. Этот фильтр может выполнять дополнительную обработку результата, например изменить HTTP-ответа.
 > - **Исключение** фильтр, который выполняется при наличии необработанного исключения в методе действия, начиная с фильтры авторизации и заканчивая выполнением результата. Фильтры исключений можно использовать для ведения журнала или отображения страниц об ошибках.
 > 
-> Дополнительные сведения о поставщиках фильтры посетите эту ссылку MSDN: ([https://msdn.microsoft.com/en-us/library/dd410209.aspx](https://msdn.microsoft.com/en-us/library/dd410209.aspx)).
+> Дополнительные сведения о поставщиках фильтры посетите эту ссылку MSDN: ([https://msdn.microsoft.com/library/dd410209.aspx](https://msdn.microsoft.com/library/dd410209.aspx)).
 
 
 <a id="AboutLoggingFeature"></a>
@@ -164,7 +164,7 @@ ms.lasthandoff: 11/10/2017
     > [!NOTE]
     > **OnActionExecuting** использует метод **Entity Framework** для добавления нового ActionLog регистра. Он создает и заполняет новый экземпляр сущности из сведений о контексте **filterContext**.
     > 
-    > Дополнительные сведения о **параметром ControllerContext** класса в [msdn](https://msdn.microsoft.com/en-us/library/system.web.mvc.controllercontext.aspx).
+    > Дополнительные сведения о **параметром ControllerContext** класса в [msdn](https://msdn.microsoft.com/library/system.web.mvc.controllercontext.aspx).
 
 <a id="Ex1Task2"></a>
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 11/10/2017
 
 Кроме того для каждого фильтра действия есть свойство Order, который используется для определения порядка выполнения в область фильтра.
 
-Дополнительные сведения о порядке выполнения настраиваемые фильтры действий можно найти в этой статье MSDN: ([https://msdn.microsoft.com/en-us/library/dd381609(v=vs.98).aspx](https://msdn.microsoft.com/en-us/library/dd381609(v=vs.98).aspx)).
+Дополнительные сведения о порядке выполнения настраиваемые фильтры действий можно найти в этой статье MSDN: ([https://msdn.microsoft.com/library/dd381609(v=vs.98).aspx](https://msdn.microsoft.com/library/dd381609(v=vs.98).aspx)).
 
 <a id="Ex2Task1"></a>
 

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: b88cd54040c02c977a83e20d7af7fda4fff969c1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3638c6779a0fcedaaa49623126b28ecf09a4954f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>Миграция существующего веб-сайта из SQL членства в ASP.NET Identity
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="migrating-to-visual-studio-2013"></a>Миграция в Visual Studio 2013
 
-1. Установка Visual Studio Express 2013 для Web или Visual Studio 2013 вместе с [последние обновления](https://www.microsoft.com/en-us/download/details.aspx?id=44921).
+1. Установка Visual Studio Express 2013 для Web или Visual Studio 2013 вместе с [последние обновления](https://www.microsoft.com/download/details.aspx?id=44921).
 2. Откройте проект выше в установленной версии Visual Studio. Если SQL Server Express не установлен на компьютере, запрос отображается при открытии проекта, так как использует строку подключения SQL Express. Можно либо установить SQL Express или как обойти изменить строку подключения с LocalDb. В этой статье мы изменим ее в LocalDb.
 3. Откройте файл web.config и измените строку подключения из. SQLExpess для v11.0 (LocalDb). Удалите "User Instance = true" в строке подключения.
 
@@ -86,10 +86,10 @@ ms.lasthandoff: 11/10/2017
 
 Для ASP.NET Identity классы для работы без дополнительной настройки существующих пользователей с данными нам необходимо для переноса схемы базы данных с тем, необходимые для ASP.NET Identity. Это можно сделать путем добавления новых таблиц и копирование существующие данные в этих таблицах. По умолчанию ASP.NET Identity использует EntityFramework для сопоставления классов модели удостоверения в базе данных для хранения или извлечения информации. Эти классы модели реализовывать интерфейсы идентификаторов основных компонентов, определение и объектов роли пользователя. Таблицы и столбцы в базе данных основаны на этих классов модели. Классы модели EntityFramework v2.1.0 удостоверений и их свойства, как определено ниже
 
-| **IdentityUser** | **Тип** | **IdentityRole** | **IdentityUserRole** | **IdentityUserLogin** | **IdentityUserClaim** |
+| **IdentityUser** | **Type** | **IdentityRole** | **IdentityUserRole** | **IdentityUserLogin** | **IdentityUserClaim** |
 | --- | --- | --- | --- | --- | --- |
 | Идентификатор | string | Идентификатор | RoleId | ProviderKey | Идентификатор |
-| Имя пользователя | string | Имя | Идентификатор пользователя | Идентификатор пользователя | ClaimType |
+| Имя пользователя | string | name | Идентификатор пользователя | Идентификатор пользователя | ClaimType |
 | PasswordHash | string |  |  | LoginProvider | ClaimValue |
 | SecurityStamp | string |  |  |  | Пользователь\_идентификатор |
 | Адрес эл. почты | string |  |  |  |  |
@@ -98,17 +98,17 @@ ms.lasthandoff: 11/10/2017
 | PhoneNumberConfirmed | bool |  |  |  |  |
 | LockoutEnabled | bool |  |  |  |  |
 | LockoutEndDate | DateTime |  |  |  |  |
-| Счетчик AccessFailedCount | int |  |  |  |  |
+| AccessFailedCount | int |  |  |  |  |
 
-Мы должны иметь таблиц для каждой из этих моделей с столбцы, соответствующие свойства. Сопоставление между классами и таблиц, определенное в `OnModelCreating` метод `IdentityDBContext`. Этот процесс известен как метод fluent API конфигурации и Дополнительные сведения можно найти [здесь](https://msdn.microsoft.com/en-us/data/jj591617.aspx). Конфигурация для классов является описанным ниже
+Мы должны иметь таблиц для каждой из этих моделей с столбцы, соответствующие свойства. Сопоставление между классами и таблиц, определенное в `OnModelCreating` метод `IdentityDBContext`. Этот процесс известен как метод fluent API конфигурации и Дополнительные сведения можно найти [здесь](https://msdn.microsoft.com/data/jj591617.aspx). Конфигурация для классов является описанным ниже
 
 | **Класс** | **Таблица** | **Первичный ключ** | **Внешний ключ** |
 | --- | --- | --- | --- |
 | IdentityUser | AspnetUsers | Идентификатор |  |
 | IdentityRole | AspnetRoles | Идентификатор |  |
-| IdentityUserRole | AspnetUserRole | UserId + RoleId | Пользователь\_идентификатор -&gt;AspnetUsers RoleId -&gt;AspnetRoles |
-| IdentityUserLogin | AspnetUserLogins | ProviderKey + UserId + LoginProvider | UserId -&gt;AspnetUsers |
-| IdentityUserClaim | AspnetUserClaims | Идентификатор | Пользователь\_идентификатор -&gt;AspnetUsers |
+| IdentityUserRole | AspnetUserRole | UserId + RoleId | User\_Id-&gt;AspnetUsers RoleId-&gt;AspnetRoles |
+| IdentityUserLogin | AspnetUserLogins | ProviderKey + UserId + LoginProvider | UserId-&gt;AspnetUsers |
+| IdentityUserClaim | AspnetUserClaims | Идентификатор | User\_Id-&gt;AspnetUsers |
 
 Эта информация позволяет создавать инструкции SQL для создания новых таблиц. Мы записи каждой инструкции по отдельности или сформировать весь скрипт с помощью команд EntityFramework PowerShell, которые затем можно изменить при необходимости. Для этого откройте VS **консоль диспетчера пакетов** из **представление** или **средства** меню
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-sql[Main](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/samples/sample1.sql)]
 
-Далее нам нужно скопировать информацию из существующего членства базы данных SQL в новые таблицы для удостоверения. Это можно сделать с помощью SQL путем копирования данных непосредственно из одной таблицы в другую. Чтобы добавить данные в строках таблицы, мы используем `INSERT INTO [Table]` построения. Для копирования из другой таблицы, можно использовать `INSERT INTO` инструкции вместе с `SELECT` инструкции. Получить все сведения о пользователе, нам нужно запросить *aspnet\_пользователей* и *aspnet\_членства* таблиц и скопируйте данные на *AspNetUsers*таблицы. Мы используем `INSERT INTO` и `SELECT` вместе с `JOIN` и `LEFT OUTER JOIN` инструкции. Дополнительные сведения о запросе и копирования данных между таблицами, см. [это](https://technet.microsoft.com/en-us/library/ms190750%28v=sql.105%29.aspx) ссылку. Кроме того таблицы AspnetUserLogins и AspnetUserClaims пусты начинается с, так как нет сведений в членства SQL, это сопоставляется по умолчанию. Только копируемых данных предназначен для пользователей и ролей. Для проекта, созданного в предыдущих шагах будет SQL-запрос, чтобы скопировать данные в таблицу пользователей
+Далее нам нужно скопировать информацию из существующего членства базы данных SQL в новые таблицы для удостоверения. Это можно сделать с помощью SQL путем копирования данных непосредственно из одной таблицы в другую. Чтобы добавить данные в строках таблицы, мы используем `INSERT INTO [Table]` построения. Для копирования из другой таблицы, можно использовать `INSERT INTO` инструкции вместе с `SELECT` инструкции. Получить все сведения о пользователе, нам нужно запросить *aspnet\_пользователей* и *aspnet\_членства* таблиц и скопируйте данные на *AspNetUsers*таблицы. Мы используем `INSERT INTO` и `SELECT` вместе с `JOIN` и `LEFT OUTER JOIN` инструкции. Дополнительные сведения о запросе и копирования данных между таблицами, см. [это](https://technet.microsoft.com/library/ms190750%28v=sql.105%29.aspx) ссылку. Кроме того таблицы AspnetUserLogins и AspnetUserClaims пусты начинается с, так как нет сведений в членства SQL, это сопоставляется по умолчанию. Только копируемых данных предназначен для пользователей и ролей. Для проекта, созданного в предыдущих шагах будет SQL-запрос, чтобы скопировать данные в таблицу пользователей
 
 [!code-sql[Main](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/samples/sample2.sql)]
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 11/10/2017
 
     ASP\_netUsers и asp\_netMembership--&gt; AspNetUsers
 
-    ASPNET\_UserInRoles--&gt; AspNetUserRoles
+    aspnet\_UserInRoles --&gt; AspNetUserRoles
 
     Как описано в предыдущем разделе, то AspNetUserClaims и AspNetUserLogins таблицы пусты. Поле «Дискриминатора» в таблице пользователь ASPNET должно соответствовать имени класса модели, которая определяется как следующий шаг. Также PasswordHash столбец находится в форме "зашифрованный пароль | соли пароль | формат пароля". Это позволяет использовать специальную логику шифрования членства SQL, чтобы можно было повторно использовать старый пароль. Который описан далее в этой статье.
 
@@ -202,7 +202,7 @@ ms.lasthandoff: 11/10/2017
 - Часть, для создания базы данных могут быть пропущены.
 - Разработчику необходимо задать идентификатор приложения для нового пользователя для сопоставления кода текущего приложения. Это можно сделать, запросив ApplicationId для этого приложения, перед созданием объекта-пользователя в классе Register.aspx.cs и ее настройка перед созданием пользователя. 
 
-    Пример.
+    Пример
 
     Определение метода в Register.aspx.cs страницу, чтобы запросить aspnet\_приложений таблицы и получение идентификатора приложения в соответствии с именем приложения
 
@@ -216,7 +216,7 @@ ms.lasthandoff: 11/10/2017
 
 Перенос системы удостоверений помогает пользователю добавить Open Authentication (OAuth) для приложения. См. образец [здесь](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/SQLMembership-Identity-OWIN/) содержит включенным OAuth.
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 В этом учебнике мы показали способов переноса пользователей членства SQL с ASP.NET Identity, но мы не порта данных профиля. В следующем уроке мы будем в перенос данных профиля из членства SQL до новой системы удостоверений.
 

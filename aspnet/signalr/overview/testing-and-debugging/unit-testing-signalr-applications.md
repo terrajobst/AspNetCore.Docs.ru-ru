@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/testing-and-debugging/unit-testing-signalr-applications
 msc.type: authoredcontent
-ms.openlocfilehash: e55efd644dd4b6fb57061ffb89a5c041136c7b5e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d767e1a9d27670387133e5a48a8f92f5bdd39d9e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="unit-testing-signalr-applications"></a>Тестирование приложений SignalR единицы
 ====================
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/10/2017
 <a id="unit"></a>
 ## <a name="unit-testing-signalr-applications"></a>Модульное тестирование приложений SignalR
 
-Функции модульного теста в SignalR 2 можно использовать для создания модульных тестов для приложения SignalR. Включает SignalR 2 [IHubCallerConnectionContext](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hubs.ihubcallerconnectioncontext(v=vs.118).aspx) интерфейс, который можно использовать для создания макетов объекта для имитации для тестирования методов концентратора.
+Функции модульного теста в SignalR 2 можно использовать для создания модульных тестов для приложения SignalR. Включает SignalR 2 [IHubCallerConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.ihubcallerconnectioncontext(v=vs.118).aspx) интерфейс, который можно использовать для создания макетов объекта для имитации для тестирования методов концентратора.
 
 В этом разделе вы добавите модульных тестов для приложения, созданного в [учебник по началу работы](../getting-started/tutorial-getting-started-with-signalr.md) с помощью [XUnit.net](https://github.com/xunit/xunit) и [заказа](https://github.com/Moq/moq4).
 
@@ -82,7 +82,7 @@ XUnit.net будет использоваться для управления т
 
     [!code-csharp[Main](unit-testing-signalr-applications/samples/sample1.cs)]
 
-    В приведенном выше коде тестовый клиент создается с помощью `Mock` объекта из [заказа](https://github.com/Moq/moq4) библиотеки типа [IHubCallerConnectionContext](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hubs.ihubcallerconnectioncontext(v=vs.118).aspx) (в версии 2.1 SignalR, назначьте `dynamic` для типа параметр). `IHubCallerConnectionContext` Интерфейс является прокси-объект, с помощью которого можно вызывать методы на стороне клиента. `broadcastMessage` Функция затем определено для макетов клиента таким образом, он может быть вызван `ChatHub` класса. Затем вызывается обработчик тестов `Send` метод `ChatHub` класс, который в свою очередь вызывает макеты `broadcastMessage` функции.
+    В приведенном выше коде тестовый клиент создается с помощью `Mock` объекта из [заказа](https://github.com/Moq/moq4) библиотеки типа [IHubCallerConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.ihubcallerconnectioncontext(v=vs.118).aspx) (в версии 2.1 SignalR, назначьте `dynamic` для типа параметр). `IHubCallerConnectionContext` Интерфейс является прокси-объект, с помощью которого можно вызывать методы на стороне клиента. `broadcastMessage` Функция затем определено для макетов клиента таким образом, он может быть вызван `ChatHub` класса. Затем вызывается обработчик тестов `Send` метод `ChatHub` класс, который в свою очередь вызывает макеты `broadcastMessage` функции.
 9. Постройте решение, нажав клавишу **F6**.
 10. Выполните модульный тест. В Visual Studio, выберите **тест**, **Windows**, **Test Explorer**. Щелкните правой кнопкой мыши в окне обозревателя тестов **HubsAreMockableViaDynamic** и выберите **выполнение выбранных тестов**.
 
@@ -101,7 +101,7 @@ XUnit.net будет использоваться для управления т
 
     [!code-csharp[Main](unit-testing-signalr-applications/samples/sample2.cs)]
 
-    В приведенном выше коде интерфейс создается определение сигнатура `broadcastMessage` метода, для которого обработчик тестов будет создание макетов клиента. Макеты клиента создается с помощью `Mock` объекта типа [IHubCallerConnectionContext](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hubs.ihubcallerconnectioncontext(v=vs.118).aspx) (в версии 2.1 SignalR, назначьте `dynamic` для параметра типа.) `IHubCallerConnectionContext` Интерфейс является прокси-объект, с помощью которого можно вызывать методы на стороне клиента.
+    В приведенном выше коде интерфейс создается определение сигнатура `broadcastMessage` метода, для которого обработчик тестов будет создание макетов клиента. Макеты клиента создается с помощью `Mock` объекта типа [IHubCallerConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.ihubcallerconnectioncontext(v=vs.118).aspx) (в версии 2.1 SignalR, назначьте `dynamic` для параметра типа.) `IHubCallerConnectionContext` Интерфейс является прокси-объект, с помощью которого можно вызывать методы на стороне клиента.
 
     Тест, затем создает экземпляр `ChatHub`, а затем создает имитационную версию объекта `broadcastMessage` метод, который в свою очередь, вызывается путем вызова метода `Send` метод на концентраторе.
 3. Постройте решение, нажав клавишу **F6**.

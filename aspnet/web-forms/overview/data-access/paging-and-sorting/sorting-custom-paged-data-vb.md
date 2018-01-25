@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/sorting-custom-paged-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f7ba21116c2f5f976ffa95955247a49dc5f81e6c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ee02915a5c69d824c6450157b0c734a2e2ab5c11
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="sorting-custom-paged-data-vb"></a>Сортировка настраиваемый постраничных данных (Visual Basic)
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 
 - Записи жестко запросы для каждого выражения сортировки, которые могут использоваться; затем с помощью `IF/ELSE` инструкции T-SQL, чтобы определить, какой запрос для выполнения.
 - Используйте `CASE` инструкцию, чтобы предоставить динамический `ORDER BY` на основе выражений `@sortExpressio` n входной параметр; см. раздел используется для сортировки результатов запроса динамически раздела [Power SQL `CASE` инструкции](http://www.4guysfromrolla.com/webtech/102704-1.shtml) Для получения дополнительных сведений.
-- Создать соответствующий запрос как строку в хранимой процедуре, а затем используйте [ `sp_executesql` системной хранимой процедуры](https://msdn.microsoft.com/en-us/library/ms188001.aspx) для выполнения динамических запросов.
+- Создать соответствующий запрос как строку в хранимой процедуре, а затем используйте [ `sp_executesql` системной хранимой процедуры](https://msdn.microsoft.com/library/ms188001.aspx) для выполнения динамических запросов.
 
 Каждый из этих способов имеет свои недостатки. Первый параметр не как два других как сопровождения, поскольку оно требует создания запроса для каждого возможных выражения. Таким образом Если позже вы решите включить для добавления новой страницы и сортировки полей в GridView также необходимо будет вернуться назад и обновить хранимую процедуру. Второй подход имеет некоторые тонкости, описывающие возможны проблемы с производительностью при сортировке столбцов без строк базы данных также страдает от такие же проблемы удобство поддержки, как первое. И третий вариант, с использованием динамического SQL, возникает риск атаки путем внедрения кода SQL, если злоумышленник сможет выполнить хранимую процедуру, передав значения входного параметра по своему выбору.
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 11/10/2017
 
 Дополнить DAL и уровень бизнес-ЛОГИКИ для включения методов, которые используют `GetProductsPagedAndSorted` является настройка ObjectDataSource в хранимую процедуру, все, что остается `SortParameter.aspx` страницы использовать новый метод уровень бизнес-ЛОГИКИ и передачи `SortExpression` на основе параметров столбец, который пользователь хочет сортировать результаты по.
 
-Сначала измените ObjectDataSource s `SelectMethod` из `GetProductsPaged` для `GetProductsPagedAndSorted`. Это можно сделать с помощью мастера настройки источника данных из окна свойств или напрямую с помощью декларативного синтаксиса. Затем нужно указать значение для ObjectDataSource s [ `SortParameterName` свойства](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.sortparametername.aspx). Если это свойство задано, ObjectDataSource пытается передать в GridView s `SortExpression` свойства `SelectMethod`. В частности, элемент управления ObjectDataSource ищет входной параметр, имя которого равен значению `SortParameterName` свойство. Так как уровень бизнес-ЛОГИКИ s `GetProductsPagedAndSorted` метод имеет входной параметр выражения сортировки, с именем `sortExpression`, набор ObjectDataSource s `SortExpression` свойства sortExpression.
+Сначала измените ObjectDataSource s `SelectMethod` из `GetProductsPaged` для `GetProductsPagedAndSorted`. Это можно сделать с помощью мастера настройки источника данных из окна свойств или напрямую с помощью декларативного синтаксиса. Затем нужно указать значение для ObjectDataSource s [ `SortParameterName` свойства](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.sortparametername.aspx). Если это свойство задано, ObjectDataSource пытается передать в GridView s `SortExpression` свойства `SelectMethod`. В частности, элемент управления ObjectDataSource ищет входной параметр, имя которого равен значению `SortParameterName` свойство. Так как уровень бизнес-ЛОГИКИ s `GetProductsPagedAndSorted` метод имеет входной параметр выражения сортировки, с именем `sortExpression`, набор ObjectDataSource s `SortExpression` свойства sortExpression.
 
 После внесения этих изменений два ObjectDataSource s должен выглядеть следующим образом:
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 11/10/2017
 
 Чтобы включить сортировку в GridView, просто установите флажок Включить сортировку в GridView s смарт-тег, который задает GridView s `AllowSorting` свойства `true` в результате чего текст заголовка для каждого столбца отображаются как LinkButton. Когда пользователь щелкает один из заголовков элементов управления LinkButton, обратная передача и пройти следующие действия:
 
-1. Обновления GridView его [ `SortExpression` свойство](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.gridview.sortexpression.aspx) значению `SortExpression` была нажата, ссылку на заголовок поля
+1. Обновления GridView его [ `SortExpression` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.sortexpression.aspx) значению `SortExpression` была нажата, ссылку на заголовок поля
 2. ObjectDataSource вызывает s уровень бизнес-ЛОГИКИ `GetProductsPagedAndSorted` метод, передавая GridView s `SortExpression` свойство в качестве значения для метода s `sortExpression` входной параметр (вместе с необходимым `startRowIndex` и `maximumRows` значений входных параметров)
 3. МЕТОДА вызывает DAL s `GetProductsPagedAndSorted` метод
 4. Выполняет DAL `GetProductsPagedAndSorted` передача хранимой процедуры в `@sortExpression` параметра (вместе с `@startRowIndex` и `@maximumRows` значений входных параметров)

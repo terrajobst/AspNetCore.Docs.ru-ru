@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f7ab0df2ebfa24b0928117e683325b158e3aad1c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cfd0cdb0afe3bf71686715c0b1891adfbbd5019a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="sorting-data-in-a-datalist-or-repeater-control-c"></a>Сортировка данных в DataList или управления повторителем (C#)
 ====================
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-3-instructing-the-objectdatasource-to-sort-the-data"></a>Шаг 3: Указание ObjectDataSource для сортировки данных
 
-Чтобы отсортировать данные, отображаемые в повторителя, нам необходимо информировать ObjectDataSource выражения сортировки, с помощью которого данные должны быть отсортированы. Прежде, чем элемент управления ObjectDataSource извлекает свои данные, сначала происходит его [ `Selecting` событий](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.selecting.aspx), который дает возможность указать выражение сортировки. `Selecting` Обработчик событий передается объект типа [ `ObjectDataSourceSelectingEventArgs` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasourceselectingeventargs.aspx), который имеет свойство с именем [ `Arguments` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasourceselectingeventargs.arguments.aspx) типа [ `DataSourceSelectArguments` ](https://msdn.microsoft.com/en-us/library/system.web.ui.datasourceselectarguments.aspx). `DataSourceSelectArguments` Класс предназначен для передачи запросов, связанных с данными из объекта-получателя данных в элемент управления источником данных и включает [ `SortExpression` свойства](https://msdn.microsoft.com/en-us/library/system.web.ui.datasourceselectarguments.sortexpression.aspx).
+Чтобы отсортировать данные, отображаемые в повторителя, нам необходимо информировать ObjectDataSource выражения сортировки, с помощью которого данные должны быть отсортированы. Прежде, чем элемент управления ObjectDataSource извлекает свои данные, сначала происходит его [ `Selecting` событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selecting.aspx), который дает возможность указать выражение сортировки. `Selecting` Обработчик событий передается объект типа [ `ObjectDataSourceSelectingEventArgs` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasourceselectingeventargs.aspx), который имеет свойство с именем [ `Arguments` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasourceselectingeventargs.arguments.aspx) типа [ `DataSourceSelectArguments` ](https://msdn.microsoft.com/library/system.web.ui.datasourceselectarguments.aspx). `DataSourceSelectArguments` Класс предназначен для передачи запросов, связанных с данными из объекта-получателя данных в элемент управления источником данных и включает [ `SortExpression` свойства](https://msdn.microsoft.com/library/system.web.ui.datasourceselectarguments.sortexpression.aspx).
 
 Чтобы передать данные сортировки ObjectDataSource со страницы ASP.NET, создайте обработчик событий для `Selecting` событий и используйте следующий код:
 

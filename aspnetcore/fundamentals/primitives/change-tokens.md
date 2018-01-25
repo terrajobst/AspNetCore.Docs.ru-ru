@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/primitives/change-tokens
-ms.openlocfilehash: a9479e3d676ed4dc880996a4a77de30d82b84cd5
-ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
+ms.openlocfilehash: 94bf356fcbfab3930804485c1b65e4a0f4c52b8e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Обнаружения изменений с маркерами изменения в ASP.NET Core
 
@@ -135,7 +135,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 [!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet2)]
 
-Если `OnPostStartMonitoring` является, мониторинг включен, а также текущее состояние будет очищено. Когда `OnPostStopMonitoring` будет запущен, мониторинг отключен и переходит в состояние, чтобы отразить не выполняется мониторинг.
+Если `OnPostStartMonitoring` является, мониторинг включен, а также текущее состояние будет очищено. Когда `OnPostStopMonitoring` будет запущен, мониторинг отключен и переходит в состояние для отражения, что мониторинг не происходит.
 
 ## <a name="monitoring-cached-file-changes"></a>Наблюдение за изменениями кэшированных файлов
 
@@ -200,9 +200,9 @@ var compositeChangeToken =
 ## <a name="see-also"></a>См. также
 
 * [Кэширование в памяти](xref:performance/caching/memory)
-* [Работа с распределенного кэша](xref:performance/caching/distributed)
-* [Обнаруживать изменения с маркерами изменения](xref:fundamentals/primitives/change-tokens)
+* [Работа с распределенным кэшем](xref:performance/caching/distributed)
+* [Обнаружение изменений с помощью маркеров изменений](xref:fundamentals/primitives/change-tokens)
 * [Кэширование ответов](xref:performance/caching/response)
 * [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
-* [Вспомогательный тег кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Вспомогательный тег распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* [Вспомогательная функция тега кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [Вспомогательная функция тега распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

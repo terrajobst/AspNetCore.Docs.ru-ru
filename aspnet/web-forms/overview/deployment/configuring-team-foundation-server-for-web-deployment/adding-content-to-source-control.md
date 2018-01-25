@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control
 msc.type: authoredcontent
-ms.openlocfilehash: a6a90a03674cfe7565da0ed56148186ee9525707
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d46e2697d10ca27f8e08533350a6e7f2354b4a43
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-content-to-source-control"></a>Добавление содержимого в систему управления версиями
 ====================
@@ -90,7 +90,7 @@ ms.lasthandoff: 11/10/2017
 1. На рабочей станции разработчика переместите проектов и решений в соответствующую папку в структуре сопоставленную папку для командного проекта.
 
     > [!NOTE]
-    > Многие организации будут иметь рекомендуемым способом, как проекты и решения должна быть организована в системе управления версиями. Руководство по структуре папок см. в разделе [How To: вашей папки системы управления версиями структуру в Team Foundation Server](https://msdn.microsoft.com/en-us/library/bb668992.aspx).
+    > Многие организации будут иметь рекомендуемым способом, как проекты и решения должна быть организована в системе управления версиями. Руководство по структуре папок см. в разделе [How To: вашей папки системы управления версиями структуру в Team Foundation Server](https://msdn.microsoft.com/library/bb668992.aspx).
 2. Откройте решение в Visual Studio 2010.
 3. В **обозревателе решений** щелкните правой кнопкой мыши решение и выберите **добавить решение в систему управления версиями**.
 
@@ -149,13 +149,13 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="conclusion"></a>Заключение
 
-В этом разделе описано, как подключиться к командному проекту, сопоставление структуру папок и добавления содержимого в системе управления версиями. Дополнительные сведения о том, как работать с элементами в системе управления версиями см. в разделе [использование управления версиями](https://msdn.microsoft.com/en-us/library/ms181368.aspx).
+В этом разделе описано, как подключиться к командному проекту, сопоставление структуру папок и добавления содержимого в системе управления версиями. Дополнительные сведения о том, как работать с элементами в системе управления версиями см. в разделе [использование управления версиями](https://msdn.microsoft.com/library/ms181368.aspx).
 
 Следующий раздел [Настройка сервера сборки TFS для развертывания веб-](configuring-a-tfs-build-server-for-web-deployment.md), описывает, как подготовить сервер TFS Team Build для построения и развертывания решения.
 
 ## <a name="further-reading"></a>Дополнительные сведения
 
-Более подробные сведения о работе с системой управления версиями в Team Foundation Server см. в разделе [использование управления версиями](https://msdn.microsoft.com/en-us/library/ms181368.aspx).
+Более подробные сведения о работе с системой управления версиями в Team Foundation Server см. в разделе [использование управления версиями](https://msdn.microsoft.com/library/ms181368.aspx).
 
 >[!div class="step-by-step"]
 [Назад](creating-a-team-project-in-tfs.md)

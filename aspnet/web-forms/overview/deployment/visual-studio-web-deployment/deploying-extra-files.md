@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files
 msc.type: authoredcontent
-ms.openlocfilehash: a34607b25f6cf502f5fbf2fe51bf1937f470159e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 46e18ba81c3db8bb04c5cb997bcc1607e4e38bae
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-extra-files"></a>ASP.NET веб-развертывания с помощью Visual Studio: развертывание дополнительных файлов
 ====================
@@ -83,13 +83,13 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="more-information"></a>Дополнительные сведения
 
-Если вы знаете, как работать с файлами MSBuild, можно автоматизировать многие другие задачи развертывания путем написания кода в *.pubxml* файлов (для задачи, связанные с профилем) или проекта *. wpp.targets* файла (для задачи, применяется ко всем профилям). Дополнительные сведения о *.pubxml* и *. wpp.targets* файлов, в разделе [как: изменение параметров развертывания в файлы профилей публикации (.pubxml) и. wpp.targets файл в Visual Studio Web Проекты](https://msdn.microsoft.com/en-us/library/ff398069). Основные сведения о MSBuild кода, в разделе **составляющие файл проекта** в [корпоративного развертывания ряда: основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md). Чтобы научиться работать с файлами MSBuild для выполнения задач собственные сценарии, см. в данной книге: [внутри Microsoft Build Engine: с помощью MSBuild и Team Foundation Build](http://msbuildbook.com) Sayed Ibraham Hashimi и Уильям Bartholomew.
+Если вы знаете, как работать с файлами MSBuild, можно автоматизировать многие другие задачи развертывания путем написания кода в *.pubxml* файлов (для задачи, связанные с профилем) или проекта *. wpp.targets* файла (для задачи, применяется ко всем профилям). Дополнительные сведения о *.pubxml* и *. wpp.targets* файлов, в разделе [как: изменение параметров развертывания в файлы профилей публикации (.pubxml) и. wpp.targets файл в Visual Studio Web Проекты](https://msdn.microsoft.com/library/ff398069). Основные сведения о MSBuild кода, в разделе **составляющие файл проекта** в [корпоративного развертывания ряда: основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md). Чтобы научиться работать с файлами MSBuild для выполнения задач собственные сценарии, см. в данной книге: [внутри Microsoft Build Engine: с помощью MSBuild и Team Foundation Build](http://msbuildbook.com) Sayed Ibraham Hashimi и Уильям Bartholomew.
 
 ## <a name="acknowledgements"></a>Благодарности
 
 Я хочу поблагодарить следующих людям, которые вносили свой вклад значительные к содержимому этого учебника ряда:
 
-- [Alberto Poblacion, MVP &amp; MCT, Испания](https://mvp.microsoft.com/en-us/mvp/Alberto%20Poblacion%20Bolano-36772)
+- [Alberto Poblacion, MVP &amp; MCT, Испания](https://mvp.microsoft.com/mvp/Alberto%20Poblacion%20Bolano-36772)
 - Фергюсон Jarod, MVP разработки платформы данных, Соединенных Штатов
 - Резкого Mittal, корпорация Майкрософт
 - [Джон Гэллоуэй](https://weblogs.asp.net/jgalloway) (twitter: [ @jongalloway ](http://twitter.com/jongalloway))

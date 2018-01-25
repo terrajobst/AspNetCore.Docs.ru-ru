@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/code-editing-in-web-forms-pages
 msc.type: authoredcontent
-ms.openlocfilehash: dfcddb4373fbf17ca29c5ab94c6ab3387ed6b526
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8714f673cb0434189ca23d2dda14035d8652a051
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="code-editing-aspnet-web-forms-in-visual-studio-2013"></a>Код редактирования веб-форм ASP.NET в Visual Studio 2013
 ====================
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/10/2017
 
 Для выполнения данного пошагового руководства требуется:
 
-- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/en-us/downloads#vs) или [Microsoft Visual Studio Express 2013 для Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web). Платформа .NET Framework устанавливается автоматически. 
+- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs) или [Microsoft Visual Studio Express 2013 для Web](https://www.microsoft.com/visualstudio/11/downloads#express-web). Платформа .NET Framework устанавливается автоматически. 
 
     > [!NOTE] 
     > 
@@ -132,8 +132,8 @@ ms.lasthandoff: 11/10/2017
 ### <a name="to-extract-a-method-in-a-c-page"></a>Извлечение метода на странице C#
 
 1. Переключитесь в **разработки** представления.
-2. В **элементов**, из **Стандартная** вкладки, перетащите [кнопку](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.button.aspx) на страницу.
-3. Дважды щелкните **кнопку** управления, чтобы создать обработчик для его [нажмите кнопку](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.button.click.aspx) события, а затем добавьте следующий выделенный код:
+2. В **элементов**, из **Стандартная** вкладки, перетащите [кнопку](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx) на страницу.
+3. Дважды щелкните **кнопку** управления, чтобы создать обработчик для его [нажмите кнопку](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.click.aspx) события, а затем добавьте следующий выделенный код:
 
     [!code-csharp[Main](code-editing-in-web-forms-pages/samples/sample2.cs?highlight=3-16)]
 
@@ -185,13 +185,13 @@ ms.lasthandoff: 11/10/2017
 
 Поскольку существует много задач кодирования, которые часто возникает необходимость выполнить разработчики веб-форм, редактор кода предоставляет библиотеку фрагментов, или блоков предварительно написанного кода. Эти фрагменты кода можно вставить в страницу.
 
-Каждый язык, используемый в Visual Studio имеет небольшие различия в способе вставки фрагментов кода. Сведения о вставке фрагментов см. в разделе [фрагментов кода Visual Basic](https://msdn.microsoft.com/en-us/library/18yz4be4.aspx). Сведения о вставке фрагментов кода в Visual C# см. в разделе [фрагменты кода Visual C#](https://msdn.microsoft.com/en-us/library/z41h7fat.aspx).
+Каждый язык, используемый в Visual Studio имеет небольшие различия в способе вставки фрагментов кода. Сведения о вставке фрагментов см. в разделе [фрагментов кода Visual Basic](https://msdn.microsoft.com/library/18yz4be4.aspx). Сведения о вставке фрагментов кода в Visual C# см. в разделе [фрагменты кода Visual C#](https://msdn.microsoft.com/library/z41h7fat.aspx).
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 В этом пошаговом руководстве показаны базовые возможности редактора кода Visual Studio 2010 для исправления ошибок в коде, рефакторинга кода, переименование переменных и вставки фрагментов кода в код. Дополнительные возможности в редакторе можно сделать и ускорить разработку приложений. Например, можно сделать следующее:
 
-- Дополнительные сведения о возможностях IntelliSense, таких как изменение параметров IntelliSense, управление фрагментами кода и поиск фрагментов кода в Интернете. Дополнительные сведения см. в статье [Using IntelliSense](https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx) (Использование IntelliSense).
-- Научитесь создавать собственные фрагменты кода. Дополнительные сведения см. в разделе [Создание и использование фрагментов кода IntelliSense](https://msdn.microsoft.com/en-us/library/ms165392.aspx)
-- Дополнительные сведения о функциях языка Visual Basic фрагменты кода IntelliSense, таких как настройка фрагментов и устранение неполадок. Дополнительные сведения см. в разделе [фрагменты кода IntelliSense в Visual Basic](https://msdn.microsoft.com/en-us/library/18yz4be4.aspx)
-- Дополнительные сведения о C#-отдельных функций IntelliSense, таких как рефакторинга и фрагментов кода. Дополнительные сведения см. в разделе [IntelliSense для Visual C#](https://msdn.microsoft.com/en-us/library/43f44291.aspx).
+- Дополнительные сведения о возможностях IntelliSense, таких как изменение параметров IntelliSense, управление фрагментами кода и поиск фрагментов кода в Интернете. Дополнительные сведения см. в статье [Using IntelliSense](https://msdn.microsoft.com/library/hcw1s69b.aspx) (Использование IntelliSense).
+- Научитесь создавать собственные фрагменты кода. Дополнительные сведения см. в разделе [Создание и использование фрагментов кода IntelliSense](https://msdn.microsoft.com/library/ms165392.aspx)
+- Дополнительные сведения о функциях языка Visual Basic фрагменты кода IntelliSense, таких как настройка фрагментов и устранение неполадок. Дополнительные сведения см. в разделе [фрагменты кода IntelliSense в Visual Basic](https://msdn.microsoft.com/library/18yz4be4.aspx)
+- Дополнительные сведения о C#-отдельных функций IntelliSense, таких как рефакторинга и фрагментов кода. Дополнительные сведения см. в разделе [IntelliSense для Visual C#](https://msdn.microsoft.com/library/43f44291.aspx).

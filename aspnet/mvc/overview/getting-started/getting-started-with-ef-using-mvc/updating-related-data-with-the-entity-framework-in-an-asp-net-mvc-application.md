@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 348940748e3c33ace03d1b8f41615e9814cf6b40
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 205d5ddcd0c3240c87ec5705a6676215eb67942d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Обновление данных, связанных с платформой Entity Framework в приложении ASP.NET MVC
 ====================
@@ -127,7 +127,7 @@ ms.lasthandoff: 11/10/2017
 
 - Изменяет имя метода для `EditPost` поскольку подпись теперь является таким же, как `HttpGet` метод ( `ActionName` атрибут указывает, что по-прежнему используется /Edit/ URL-адрес).
 - Возвращает текущий `Instructor` сущностей из базы данных, используя упреждающую для `OfficeAssignment` свойства навигации. Это то же самое, как это требовалось в `HttpGet` `Edit` метод.
-- Обновляет извлеченного `Instructor` сущности значениями из связывателя модели. [TryUpdateModel](https://msdn.microsoft.com/en-us/library/dd470908(v=vs.108).aspx) используется перегрузка метода позволяет *белого списка* свойства, которые необходимо включить. Это предотвращает чрезмерное учета, как описано в статье [второй учебника](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md).
+- Обновляет извлеченного `Instructor` сущности значениями из связывателя модели. [TryUpdateModel](https://msdn.microsoft.com/library/dd470908(v=vs.108).aspx) используется перегрузка метода позволяет *белого списка* свойства, которые необходимо включить. Это предотвращает чрезмерное учета, как описано в статье [второй учебника](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md).
 
     [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample12.cs)]
 - Если отсутствует в расположении офиса, задает `Instructor.OfficeAssignment` свойство в значение null, чтобы связанные строки в `OfficeAssignment` таблица будет удалена.
@@ -163,7 +163,7 @@ ms.lasthandoff: 11/10/2017
 
 Код добавляет упреждающую для `Courses` свойства навигации и вызывает новый `PopulateAssignedCourseData` метод для предоставления сведений о флажок массив с помощью `AssignedCourseData` просматривать класс модели.
 
-Код в `PopulateAssignedCourseData` метод считывает все `Course` класс модели сущности для загрузки списка курсов, с помощью представления. Для каждого курса код проверяет, существует ли курса инструктора `Courses` свойство навигации. Чтобы создать эффективную подстановку при проверке, назначена ли курса инструктора, курсы, назначенные инструктора помещаются в [HashSet](https://msdn.microsoft.com/en-us/library/bb359438.aspx) коллекции. `Assigned` Свойству `true` курсы инструктора назначается. Представление будет использовать это свойство для определения, какие проверки поля должны отображаться как выбранные. Наконец, список передается в представление `ViewBag` свойство.
+Код в `PopulateAssignedCourseData` метод считывает все `Course` класс модели сущности для загрузки списка курсов, с помощью представления. Для каждого курса код проверяет, существует ли курса инструктора `Courses` свойство навигации. Чтобы создать эффективную подстановку при проверке, назначена ли курса инструктора, курсы, назначенные инструктора помещаются в [HashSet](https://msdn.microsoft.com/library/bb359438.aspx) коллекции. `Assigned` Свойству `true` курсы инструктора назначается. Представление будет использовать это свойство для определения, какие проверки поля должны отображаться как выбранные. Наконец, список передается в представление `ViewBag` свойство.
 
 Добавьте код, который выполняется, когда пользователь щелкает **Сохранить**. Замените `EditPost` метод следующий код, который вызывает новый метод, который обновляет `Courses` свойство навигации `Instructor` сущности. Изменения выделены.
 
@@ -171,7 +171,7 @@ ms.lasthandoff: 11/10/2017
 
 Сигнатура метода теперь отличается от `HttpGet` `Edit` метод, поэтому имя метода изменений из `EditPost` к `Edit`.
 
-Поскольку представление не имеет коллекцию `Course` сущностей, связыватель модели не может автоматически обновлять `Courses` свойство навигации. Вместо использования связыватель модели для обновления `Courses` свойство навигации, который будет выполняться в новой `UpdateInstructorCourses` метод. Поэтому необходимо исключить `Courses` свойству из привязки модели. Это не требует изменений в код, который вызывает [TryUpdateModel](https://msdn.microsoft.com/en-us/library/dd470908(v=vs.98).aspx) так, как вы используете *список утвержденных* перегрузки и `Courses` отсутствует в списке include.
+Поскольку представление не имеет коллекцию `Course` сущностей, связыватель модели не может автоматически обновлять `Courses` свойство навигации. Вместо использования связыватель модели для обновления `Courses` свойство навигации, который будет выполняться в новой `UpdateInstructorCourses` метод. Поэтому необходимо исключить `Courses` свойству из привязки модели. Это не требует изменений в код, который вызывает [TryUpdateModel](https://msdn.microsoft.com/library/dd470908(v=vs.98).aspx) так, как вы используете *список утвержденных* перегрузки и `Courses` отсутствует в списке include.
 
 Если проверка не были выбраны поля, код в `UpdateInstructorCourses` инициализирует `Courses` свойство навигации с пустой коллекции:
 
@@ -266,7 +266,7 @@ ms.lasthandoff: 11/10/2017
 <a id="transactions"></a>
 ## <a name="handling-transactions"></a>Обработка транзакций
 
-Как описано в статье [основные функциональные возможности CRUD учебника](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md), по умолчанию неявно реализует операции Entity Framework. См. в сценариях, где требуется дополнительный контроль — например, если вы хотите включить действия, выполненные за пределами платформы Entity Framework транзакции-- [работы с транзакциями](https://msdn.microsoft.com/en-US/data/dn456843) на сайте MSDN.
+Как описано в статье [основные функциональные возможности CRUD учебника](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md), по умолчанию неявно реализует операции Entity Framework. См. в сценариях, где требуется дополнительный контроль — например, если вы хотите включить действия, выполненные за пределами платформы Entity Framework транзакции-- [работы с транзакциями](https://msdn.microsoft.com/data/dn456843) на сайте MSDN.
 
 ## <a name="summary"></a>Сводка
 

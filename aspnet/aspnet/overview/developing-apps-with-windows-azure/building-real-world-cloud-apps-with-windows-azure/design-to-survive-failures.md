@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
 msc.type: authoredcontent
-ms.openlocfilehash: a0ee790da07c99cdb1279a6bca637a4ce8076e84
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 62a16e9a99cd1298b0db5f8099092212f9f6850b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="design-to-survive-failures-building-real-world-cloud-apps-with-azure"></a>Разработка выдержать сбои (Создание реальных облачных приложений в Azure)
 ====================
@@ -117,14 +117,14 @@ ms.lasthandoff: 11/10/2017
 
 Документация:
 
-- [Отказоустойчивость: Руководство по гибкой облачной архитектуре](https://msdn.microsoft.com/en-us/library/windowsazure/jj853352.aspx). Технический документ по Marc Mercuri, Ульрих Хоманн и Эндрю Таунхилл. Версия веб-страницы серия видеоматериалов Безаварийность.
-- [Советы и рекомендации по проектированию крупномасштабных служб в облачных службах Azure](https://msdn.microsoft.com/en-us/library/windowsazure/jj717232.aspx). Технический документ, Марк Симмс и Майкл Томасси.
-- [Техническое руководство по непрерывности бизнеса Azure](https://msdn.microsoft.com/en-us/library/windowsazure/hh873027.aspx). Технический документ, Патрик Уиклайн и Джейсон рот.
-- [Аварийное восстановление и высокий уровень доступности для приложений Azure](https://msdn.microsoft.com/en-us/library/windowsazure/dn251004.aspx). Технический документ, Michael McKeown, Kommalapati Хану и Джейсон рот.
-- [Шаблоны и методики - руководство по Azure Майкрософт](https://msdn.microsoft.com/en-us/library/dn568099.aspx). Центр обработки данных несколькими см. руководство по развертыванию, Размыкатель цепи шаблон.
+- [Отказоустойчивость: Руководство по гибкой облачной архитектуре](https://msdn.microsoft.com/library/windowsazure/jj853352.aspx). Технический документ по Marc Mercuri, Ульрих Хоманн и Эндрю Таунхилл. Версия веб-страницы серия видеоматериалов Безаварийность.
+- [Советы и рекомендации по проектированию крупномасштабных служб в облачных службах Azure](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx). Технический документ, Марк Симмс и Майкл Томасси.
+- [Техническое руководство по непрерывности бизнеса Azure](https://msdn.microsoft.com/library/windowsazure/hh873027.aspx). Технический документ, Патрик Уиклайн и Джейсон рот.
+- [Аварийное восстановление и высокий уровень доступности для приложений Azure](https://msdn.microsoft.com/library/windowsazure/dn251004.aspx). Технический документ, Michael McKeown, Kommalapati Хану и Джейсон рот.
+- [Шаблоны и методики - руководство по Azure Майкрософт](https://msdn.microsoft.com/library/dn568099.aspx). Центр обработки данных несколькими см. руководство по развертыванию, Размыкатель цепи шаблон.
 - [Поддержка Azure — соглашений об уровне обслуживания](https://azure.microsoft.com/support/legal/sla/).
-- [Непрерывность бизнес-процессов в базе данных Azure SQL](https://msdn.microsoft.com/en-us/library/windowsazure/hh852669.aspx). Документацию по SQL функции базы данных высокого уровня доступности и аварийного восстановления.
-- [Высокий уровень доступности и аварийное восстановление для SQL Server в виртуальных машинах Azure](https://msdn.microsoft.com/en-us/library/windowsazure/jj870962.aspx).
+- [Непрерывность бизнес-процессов в базе данных Azure SQL](https://msdn.microsoft.com/library/windowsazure/hh852669.aspx). Документацию по SQL функции базы данных высокого уровня доступности и аварийного восстановления.
+- [Высокий уровень доступности и аварийное восстановление для SQL Server в виртуальных машинах Azure](https://msdn.microsoft.com/library/windowsazure/jj870962.aspx).
 
 Видеоролики:
 

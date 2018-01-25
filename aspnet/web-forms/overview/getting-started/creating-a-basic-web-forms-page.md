@@ -12,17 +12,17 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/creating-a-basic-web-forms-page
 msc.type: authoredcontent
-ms.openlocfilehash: 20e920ff63444c0d69cecb972619b07fe6d23097
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6b699cc939292b7ab0167dba7cfa6a00b681ef3a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-basic-aspnet-45-web-forms-page-in-visual-studio-2013"></a>Создание основных ASP.NET 4.5 Web Forms страницы в Visual Studio 2013
 ====================
 По [Эрик Reitan](https://github.com/Erikre)
 
-В этом пошаговом руководстве предоставляются общие сведения о среде веб-разработки в [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/en-us/downloads#vs) и [Microsoft Visual Studio Express 2013 для Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web). Это пошаговое руководство поможет создать простой страницы веб-форм ASP.NET и иллюстрирует основные приемы создания новой страницы, добавление элементов управления и написания кода.
+В этом пошаговом руководстве предоставляются общие сведения о среде веб-разработки в [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs) и [Microsoft Visual Studio Express 2013 для Web](https://www.microsoft.com/visualstudio/11/downloads#express-web). Это пошаговое руководство поможет создать простой страницы веб-форм ASP.NET и иллюстрирует основные приемы создания новой страницы, добавление элементов управления и написания кода.
 
 В данном пошаговом руководстве представлены следующие задачи.
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/10/2017
 
 Для выполнения данного пошагового руководства требуется:
 
-- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/en-us/downloads#vs) или [Microsoft Visual Studio Express 2013 для Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web). Платформа .NET Framework устанавливается автоматически. 
+- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs) или [Microsoft Visual Studio Express 2013 для Web](https://www.microsoft.com/visualstudio/11/downloads#express-web). Платформа .NET Framework устанавливается автоматически. 
 
     > [!NOTE] 
     > 
@@ -342,7 +342,7 @@ Visual Studio предлагает различные способы устан�
 4. Закройте браузер.
 
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 
 <a id="nextStepsToggle"></a>

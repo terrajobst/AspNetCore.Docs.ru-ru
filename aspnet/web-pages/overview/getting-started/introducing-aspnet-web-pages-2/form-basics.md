@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
 msc.type: authoredcontent
-ms.openlocfilehash: 97e4a2a1794dbdccf80f0b44c1246c743fa23019
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 68056759b2e80230e5fd2c0f9b2d2a89b549cf37
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="introducing-aspnet-web-pages---html-form-basics"></a>Общие сведения о веб-страницах ASP.NET — основы HTML-формы
 ====================
@@ -220,7 +220,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > **Важно!** С помощью заполнителей (таких как `@0`) для передачи значений в команды SQL является *крайне важно* для обеспечения безопасности. Он отображается, с заполнителями для данных переменной, способ является единственным способом, следует создавать команды SQL.
 > 
-> Никогда не создания инструкции SQL путем объединения (объединения) литеральный текст и значения, которые можно получить от пользователя. Объединения вводимых пользователем данных в одну инструкцию SQL открывает веб-сайт в *атак путем внедрения кода SQL* когда злоумышленник отправляет значения на страницу, взломать базы данных. (Дополнительные статьи о [атаки SQL Injection](https://msdn.microsoft.com/en-us/library/ms161953.aspx) веб-сайте MSDN.)
+> Никогда не создания инструкции SQL путем объединения (объединения) литеральный текст и значения, которые можно получить от пользователя. Объединения вводимых пользователем данных в одну инструкцию SQL открывает веб-сайт в *атак путем внедрения кода SQL* когда злоумышленник отправляет значения на страницу, взломать базы данных. (Дополнительные статьи о [атаки SQL Injection](https://msdn.microsoft.com/library/ms161953.aspx) веб-сайте MSDN.)
 
 
 ## <a name="updating-the-movies-page-with-search-code"></a>Обновление страницы фильмов с кодом поиска

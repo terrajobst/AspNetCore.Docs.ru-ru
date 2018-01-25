@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/updating-and-deleting-existing-binary-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e14b19f99e9f41c5a296d73ba689095a686794db
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8baf187d484424aeaee57f8c57ac391a0ae9e946
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="updating-and-deleting-existing-binary-data-vb"></a>Обновление и удаление существующих двоичных данных (Visual Basic)
 ====================
@@ -150,7 +150,7 @@ ObjectDataSource будут включать значение для его `Del
 
 Один из недостатков для хранения двоичных данных, внешних по отношению к базе данных является, необходимо выполнить дополнительные действия для очистки этих файлов при удалении записи связанной базы данных. GridView и ObjectDataSource предоставляют события, которые вызывают срабатывание до и после выполнения команды удаления. Мы действительно нужны для создания обработчиков событий для событий до и после действия. Прежде чем `Categories` удаляется запись нам нужно определить пути к файлу s PDF, но мы не хотите t требуется удалить в формате PDF, перед удалением категории в случае некоторые исключения, а категории не удаляется.
 
-GridView s [ `RowDeleting` событий](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.rowdeleting.aspx) активируется до команды удаления ObjectDataSource s был вызван, пока его [ `RowDeleted` событие](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.rowdeleted.aspx) срабатывает после. Создание обработчиков событий для этих двух событий, используя следующий код:
+GridView s [ `RowDeleting` событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rowdeleting.aspx) активируется до команды удаления ObjectDataSource s был вызван, пока его [ `RowDeleted` событие](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rowdeleted.aspx) срабатывает после. Создание обработчиков событий для этих двух событий, используя следующий код:
 
 
 [!code-vb[Main](updating-and-deleting-existing-binary-data-vb/samples/sample5.vb)]

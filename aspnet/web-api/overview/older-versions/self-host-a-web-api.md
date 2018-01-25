@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/self-host-a-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: b308ee9ec209ba8bbb021827655c83443dd149e6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 564f859e73a88ac9c5f27e9b8f7409ec126642f8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="self-host-aspnet-web-api-1-c"></a>Резидентной ASP.NET Web API 1 (C#)
 ====================
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="set-the-target-framework-visual-studio-2010"></a>Требуемая версия (Visual Studio 2010)
 
-Если вы используете Visual Studio 2010, необходимо измените целевую платформу на .NET Framework 4.0. (По умолчанию предназначен шаблон проекта [профиля .net Framework клиента](https://msdn.microsoft.com/en-us/library/cc656912.aspx#features_not_included_in_the_net_framework_client_profile).)
+Если вы используете Visual Studio 2010, необходимо измените целевую платформу на .NET Framework 4.0. (По умолчанию предназначен шаблон проекта [профиля .net Framework клиента](https://msdn.microsoft.com/library/cc656912.aspx#features_not_included_in_the_net_framework_client_profile).)
 
 В обозревателе решений щелкните правой кнопкой мыши проект и выберите **свойства**. В **требуемой версии .NET framework** раскрывающемся списке, измените целевую платформу .NET Framework 4.0. Для применения изменений нажмите кнопку **Да**.
 
@@ -98,10 +98,10 @@ ms.lasthandoff: 11/10/2017
 
 Дополнительные сведения о коде в этом контроллере см. в разделе [Приступая к работе](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) учебника. Этот контроллер определяет три действия GET:
 
-| URI | Описание |
+| URI | Описание: |
 | --- | --- |
 | / api/продуктов | Получение списка всех продуктов. |
-| /API/продукты/*идентификатор* | Получение продукта по идентификатору. |
+| /api/products/*id* | Получение продукта по идентификатору. |
 | /API/продукты /? категории =*категории* | Получение списка продуктов по категориям. |
 
 ## <a name="host-the-web-api"></a>Размещения веб-API

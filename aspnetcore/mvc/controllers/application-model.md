@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/application-model
-ms.openlocfilehash: c69dd1cfae713036ce0ee95f70acc162b1e82cb0
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: a0913edaab723656c9be484332e02c551a5c88e1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="working-with-the-application-model"></a>Работа с моделью приложения
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 01/19/2018
 Каждый уровень модели имеет доступ к обычное `Properties` коллекции, а более низкие уровни можно получить доступ к и перезаписать значения свойств, заданные на более высоких уровнях иерархии. Свойства, сохраняются в `ActionDescriptor.Properties` при создании действия. Затем при обработке запроса какие-либо свойства соглашение о добавлении или изменении может осуществляться через `ActionContext.ActionDescriptor.Properties`. С помощью свойств является хорошим способом настроить фильтры, связыватели моделей, т. д., отдельно для каждого действия.
 
 > [!NOTE]
-> `ActionDescriptor.Properties` Коллекции не является потокобезопасным (для операций записи), после завершения процесса запуска приложения. Соглашения — это лучший способ, чтобы добавить данные в эту коллекцию.
+> `ActionDescriptor.Properties` Сбор данных не потокобезопасным (для операций записи) после завершения процесса запуска приложения. Соглашения — это лучший способ, чтобы добавить данные в эту коллекцию.
 
 ### <a name="iapplicationmodelprovider"></a>IApplicationModelProvider
 
@@ -53,7 +53,7 @@ ASP.NET Core MVC загружает модели приложения, с пом
 * [`CorsApplicationModelProvider`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.cors.internal.corsapplicationmodelprovider)
 
 > [!NOTE]
-> Порядок, в которой два поставщика с тем же значением для `Order` называются не определено и поэтому не следует полагаться на.
+> Порядок, в которой два поставщика с тем же значением для `Order` называются не определено и поэтому не следует полагаться.
 
 > [!NOTE]
 > `IApplicationModelProvider`является расширенные концепции для авторов framework для расширения. В общем случае приложения должны использовать соглашения и платформ следует использовать поставщиков. Ключевое различие — всегда поставщики выполняются перед соглашения.

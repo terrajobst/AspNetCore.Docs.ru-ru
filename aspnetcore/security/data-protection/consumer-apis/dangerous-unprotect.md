@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/dangerous-unprotect
-ms.openlocfilehash: f2425de3f790cd8dab17940ec52a2a7e170cc630
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 08a8ad9b3b3cc2de48751d4149bf39c58954fd90
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="unprotecting-payloads-whose-keys-have-been-revoked"></a>Снятие защиты полезных данных, ключи которых были отозваны
 
@@ -44,6 +44,6 @@ DangerousUnprotect(byte[] protectedData, bool ignoreRevocationErrors,
 * `wasRevoked`: будет присвоено значение true, если ключ, используемый для защиты этого полезных данных был отозван.
 
 >[!WARNING]
-> Соблюдайте осторожность при передаче `ignoreRevocationErrors: true` для `DangerousUnprotect` метод. Если после вызова этого метода `wasRevoked` имеет значение true, то ключ, используемый для защиты этого полезных данных был отозван и подлинность полезных данных, которые должны рассматриваться как подозрительная. В этом случае только продолжают работать в незащищенном полезных данных при наличии некоторую уверенность в отдельном что его подлинность, например, что он поступающих от защищенную базу данных, а не отправки клиентом ненадежных веб.
+> Соблюдайте осторожность при передаче `ignoreRevocationErrors: true` для `DangerousUnprotect` метод. Если после вызова этого метода `wasRevoked` имеет значение true, то ключ, используемый для защиты этого полезных данных был отозван и подлинность полезных данных, которые должны рассматриваться как подозрительная. В этом случае только продолжают работать на незащищенных полезных данных при наличии отдельных некоторую уверенность в том, что это подлинный, например, он поступает из защищенную базу данных, а не отправки клиентом ненадежных веб.
 
 [!code-csharp[Main](dangerous-unprotect/samples/dangerous-unprotect.cs)]

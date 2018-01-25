@@ -10,17 +10,17 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 7d89416626433bf737b63eda4b17e65b089ae142
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: aab96b5313a8632950e51f5586612c1d0d3d176e
+ms.sourcegitcommit: 83b5a4715fd25e4eb6f7c8427c0ef03850a7fa07
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Параметры шаблона в ASP.NET Core
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-Параметры шаблона использует параметры классы для представления групп связанные параметры. Когда параметры конфигурации, изолируются компонент в классы отдельных параметров, приложение устанавливает двух принципов важные программного обеспечения:
+Шаблон параметров использует классы параметров для представления групп связанных настроек. Когда параметры конфигурации, изолируются компонент в классы отдельных параметров, приложение устанавливает двух принципов важные программного обеспечения:
 
 * [Принцип разделения интерфейс (ISP)](http://deviq.com/interface-segregation-principle/): функции (классы), зависящих от параметров конфигурации зависят от только параметры конфигурации, которые они используют.
 * [Разделение областей ответственности](http://deviq.com/separation-of-concerns/): параметры для разных частей приложения, не зависящие от них или связанные друг с другом.
@@ -258,6 +258,12 @@ services.PostConfigureAll<MyOptions>("named_options_1", myOptions =>
 [IOptionsFactory&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) создание новых параметрах экземпляров отвечает (ядро ASP.NET 2.0 или более поздней версии). Он имеет один [создать](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1.create) метод. Реализация по умолчанию принимает все зарегистрированные `IConfigureOptions` и `IPostConfigureOptions` и запускает все сначала настраивается, за которым следует после настраивает. Позволяют разделить `IConfigureNamedOptions` и `IConfigureOptions` и вызывает только соответствующий интерфейс.
 
 [IOptionsMonitorCache&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1) (ядро ASP.NET 2.0 или более поздней версии) используется `IOptionsMonitor` кэш `TOptions` экземпляров. `IOptionsMonitorCache` Делает недействительными параметры экземпляров в мониторе, чтобы значение будет пересчитано ([TryRemove](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryremove)). Значения могут быть вручную обеспечены также [TryAdd](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryadd). [Снимите](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.clear) метод используется, когда все именованные экземпляры может быть повторно создан по требованию.
+
+## <a name="accessing-options-during-startup"></a>Доступ к параметры во время запуска
+
+`IOptions`можно использовать в `Configure`, поскольку службы построены перед `Configure` выполнения метода. Если поставщик служб построен `ConfigureServices` для доступа к параметрам, он не будет содержать параметры конфигурации, предоставляемых после построения поставщика услуг. Таким образом в состояние несогласованные параметры могут существовать из-за порядок регистрации службы.
+
+Поскольку параметры обычно загружаются из конфигурации, конфигурации можно использовать при запуске в обоих `Configure` и `ConfigureServices`. Примеры использования конфигурации во время запуска см. в разделе [запуска приложения](xref:fundamentals/startup) раздела.
 
 ## <a name="see-also"></a>См. также
 

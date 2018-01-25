@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8d4d1a5795f5edabc51b578ecc45676490711c1a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 79f06707cadf027baa03652dc722cab31f494b09
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="core-differences-between-iis-and-the-aspnet-development-server-c"></a>Основные различия между IIS и ASP.NET Development Server (C#)
 ====================
@@ -47,7 +47,7 @@ ASP.NET Development Server связывает входящие запросы в
 [!code-csharp[Main](core-differences-between-iis-and-the-asp-net-development-server-cs/samples/sample1.cs)]
 
 > [!NOTE]
-> [ `File.WriteAllText` Метод](https://msdn.microsoft.com/en-us/library/system.io.file.writealltext.aspx) создает новый файл, если он не существует и записывает указанным содержимым. Если файл уже существует, перезаписывается существующего содержимого.
+> [ `File.WriteAllText` Метод](https://msdn.microsoft.com/library/system.io.file.writealltext.aspx) создает новый файл, если он не существует и записывает указанным содержимым. Если файл уже существует, перезаписывается существующего содержимого.
 
 
 Затем посетите *обучение самостоятельно ASP.NET 3.5 в течение 24 часов* страница «Просмотр книги» в среде разработки с использованием сервера разработки ASP.NET. При условии, что вы вошли в систему под учетной записью, имеет достаточные разрешения для создания и изменения в текстовый файл в Интернете корневого каталога приложения рецензия на книгу отображается теми же самыми, но каждый раз, когда страница посетил даты и времени пользователя  IP-адрес хранится в `LastTYASP35Access.txt` файла. Укажите в браузере в этот файл; Вы увидите сообщение, похожее на показанное на рис. 1.
@@ -58,7 +58,7 @@ ASP.NET Development Server связывает входящие запросы в
 **Рис. 1**: текстовый файл содержит последнюю дату и время, была выбрана рецензия на книгу ([Просмотр полноразмерное изображение](core-differences-between-iis-and-the-asp-net-development-server-cs/_static/image3.png))
 
 
-Развертывание веб-приложения в рабочей среде, а затем перейдите размещаемый *обучение самостоятельно ASP.NET 3.5 в течение 24 часов* страница «Просмотр» для книги. На этом этапе либо появится страница «Просмотр» книги как обычный или сообщение об ошибке, которое показано на рисунке 2. Некоторые веб-узла поставщиками предоставить разрешения на запись для анонимного ASP.NET учетную запись компьютера, в котором регистр страницы будет работать без ошибок. Если, однако поставщик узла web запрещает доступ на запись для учетной записи анонимного то [ `UnauthorizedAccessException` исключение](https://msdn.microsoft.com/en-us/library/system.unauthorizedaccessexception.aspx) вызывается, когда `TYASP35.aspx` страница пытается записать текущей даты и времени в `LastTYASP35Access.txt` файла.
+Развертывание веб-приложения в рабочей среде, а затем перейдите размещаемый *обучение самостоятельно ASP.NET 3.5 в течение 24 часов* страница «Просмотр» для книги. На этом этапе либо появится страница «Просмотр» книги как обычный или сообщение об ошибке, которое показано на рисунке 2. Некоторые веб-узла поставщиками предоставить разрешения на запись для анонимного ASP.NET учетную запись компьютера, в котором регистр страницы будет работать без ошибок. Если, однако поставщик узла web запрещает доступ на запись для учетной записи анонимного то [ `UnauthorizedAccessException` исключение](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) вызывается, когда `TYASP35.aspx` страница пытается записать текущей даты и времени в `LastTYASP35Access.txt` файла.
 
 
 [![Учетной записи компьютера по умолчанию, используемый службой IIS не имеет разрешения на запись в файловой системе](core-differences-between-iis-and-the-asp-net-development-server-cs/_static/image5.png)](core-differences-between-iis-and-the-asp-net-development-server-cs/_static/image4.png)
@@ -90,7 +90,7 @@ Take немедленно здесь заключается в ASP.NET Developme
 
 [!code-xml[Main](core-differences-between-iis-and-the-asp-net-development-server-cs/samples/sample3.xml)]
 
-с:
+На:
 
 [!code-xml[Main](core-differences-between-iis-and-the-asp-net-development-server-cs/samples/sample4.xml)]
 
@@ -123,7 +123,7 @@ Take немедленно здесь заключается в ASP.NET Developme
 Эта разметка указывает, что службы IIS 7 для использования на основе ASP.NET модули проверки подлинности и авторизации. Повторное развертывание приложения и повторно откройте PDF-файл. Это время, когда IIS обрабатывает запрос на его предоставляет логику проверки подлинности и авторизации среды выполнения ASP.NET возможность проверить запрос. Так как только прошедшие проверку подлинности пользователи авторизованы для просмотра содержимого в `PrivateDocs` папку анонимный посетителя автоматически перенаправляется на страницу входа (см. обратно на рис. 3).
 
 > [!NOTE]
-> Если поставщик узла web по-прежнему использует IIS 6 нельзя использовать функцию интегрированного конвейера. Одно решение — поместить частных документов в папке, которая запрещает доступ по протоколу HTTP (например, `App_Data`), а затем создать страницу, чтобы обслуживать эти документы. Эта страница может быть вызван `GetPDF.aspx`и передается имя PDF через параметр строки запроса. `GetPDF.aspx` Страницы сначала нужно проверить, что пользователь имеет разрешение на просмотр файла и, если да, использовать [ `Response.WriteFile(filePath)` ](https://msdn.microsoft.com/en-us/library/system.web.httpresponse.writefile.aspx) метод для отправки содержимого PDF-файл клиента, отправившего запрос. Этот способ также будет работать для IIS 7, если вы не хотите включить интегрированного конвейера.
+> Если поставщик узла web по-прежнему использует IIS 6 нельзя использовать функцию интегрированного конвейера. Одно решение — поместить частных документов в папке, которая запрещает доступ по протоколу HTTP (например, `App_Data`), а затем создать страницу, чтобы обслуживать эти документы. Эта страница может быть вызван `GetPDF.aspx`и передается имя PDF через параметр строки запроса. `GetPDF.aspx` Страницы сначала нужно проверить, что пользователь имеет разрешение на просмотр файла и, если да, использовать [ `Response.WriteFile(filePath)` ](https://msdn.microsoft.com/library/system.web.httpresponse.writefile.aspx) метод для отправки содержимого PDF-файл клиента, отправившего запрос. Этот способ также будет работать для IIS 7, если вы не хотите включить интегрированного конвейера.
 
 
 ## <a name="summary"></a>Сводка
@@ -138,7 +138,7 @@ Take немедленно здесь заключается в ASP.NET Developme
 
 - [Интеграция ASP.NET с IIS 7.0](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis)
 - [С помощью проверки подлинности ASP.NET форумы со всеми типами содержимого на сервере IIS 7](https://blogs.iis.net/bills/archive/2007/05/19/using-asp-net-forms-authentication-with-all-types-of-content-with-iis7-video.aspx) (видео)
-- [Веб-серверы в Visual Web Developer](https://msdn.microsoft.com/en-us/library/58wxa9w5.aspx)
+- [Веб-серверы в Visual Web Developer](https://msdn.microsoft.com/library/58wxa9w5.aspx)
 
 >[!div class="step-by-step"]
 [Назад](common-configuration-differences-between-development-and-production-cs.md)

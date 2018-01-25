@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/11-adding-email-to-your-web-site
 msc.type: authoredcontent
-ms.openlocfilehash: 2db94088a04e87c6ab89df26a7a7b0e2a2653a1a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c5878c3bc468daef050dcebee99f64441066409a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="sending-email-from-an-aspnet-web-pages-razor-site"></a>Отправка электронной почты из веб-страниц (Razor) узла ASP.NET
 ====================
@@ -138,6 +138,6 @@ ms.lasthandoff: 11/10/2017
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 
-- [Веб-страницы ASP.NET руководство по устранению неполадок (Razor)](https://go.microsoft.com/fwlink/?LinkId=253001)
-- [Протокол SMTP](https://msdn.microsoft.com/en-us/library/aa480435.aspx)
+- [Руководство по устранению неполадок веб-страниц ASP.NET (Razor)](https://go.microsoft.com/fwlink/?LinkId=253001)
+- [Протокол SMTP](https://msdn.microsoft.com/library/aa480435.aspx)
 - [Настройка поведения сайта для веб-страниц ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906)

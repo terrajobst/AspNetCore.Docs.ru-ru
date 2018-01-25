@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web-applications-offline-with-web-deploy
 msc.type: authoredcontent
-ms.openlocfilehash: a0c59245eedbf53f367949e12dd83e2611f44fc4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1c262ec7b834107524a18c6552b171f731452c91
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="taking-web-applications-offline-with-web-deploy"></a>Создание веб-приложений вне сети с помощью веб-развертывания
 ====================
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/10/2017
 > В следующей процедуре предполагается, что вы используете пользовательского файла проекта MSBuild для управления процесс развертывания, как описано в [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md). Если вы развертываете прямой из Visual Studio, необходимо использовать другой подход. Sayed Ibrahim Hashimi описывает один такой подход в [занять ваш веб-приложения вне сети во время публикации как](http://sedodream.com/2012/01/08/HowToTakeYourWebAppOfflineDuringPublishing.aspx).
 
 
-Для развертывания *приложения\_автономного* файла для целевой веб-сайт IIS, необходимо вызывать с помощью MSDeploy.exe [веб-развертывания **contentPath** поставщика](https://technet.microsoft.com/en-us/library/dd569034(WS.10).aspx). **ContentPath** поставщик поддерживает физический каталог пути и пути к веб-сайта или приложения IIS, что делает его идеальным выбором для синхронизации файлов между папки проекта Visual Studio и веб-приложение IIS. Для развертывания файла, команде MSDeploy должен выглядеть примерно следующим образом:
+Для развертывания *приложения\_автономного* файла для целевой веб-сайт IIS, необходимо вызывать с помощью MSDeploy.exe [веб-развертывания **contentPath** поставщика](https://technet.microsoft.com/library/dd569034(WS.10).aspx). **ContentPath** поставщик поддерживает физический каталог пути и пути к веб-сайта или приложения IIS, что делает его идеальным выбором для синхронизации файлов между папки проекта Visual Studio и веб-приложение IIS. Для развертывания файла, команде MSDeploy должен выглядеть примерно следующим образом:
 
 
 [!code-console[Main](taking-web-applications-offline-with-web-deploy/samples/sample1.cmd)]
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample3.xml)]
 3. **SourceRoot** свойства определен в другом месте в *Publish.proj* файла. Он указывает на расположение исходного содержимого относительно текущего пути & #x 2014; другими словами, относительно расположения в корневую папку *Publish.proj* файла.
-4. **ContentPath** поставщик не будет принимать относительных путей к файлам, поэтому вам нужно получить абсолютный путь для файла исходного кода, прежде чем вы сможете развернуть его. Можно использовать [ConvertToAbsolutePath](https://msdn.microsoft.com/en-us/library/bb882668.aspx) задач для этого.
+4. **ContentPath** поставщик не будет принимать относительных путей к файлам, поэтому вам нужно получить абсолютный путь для файла исходного кода, прежде чем вы сможете развернуть его. Можно использовать [ConvertToAbsolutePath](https://msdn.microsoft.com/library/bb882668.aspx) задач для этого.
 5. Добавьте новый **целевой** элемента с именем **GetAppOfflineAbsolutePath**. В этом целевом объекте, используйте **ConvertToAbsolutePath** задачи, чтобы получить абсолютный путь к *приложения\_автономного шаблона* файл в папке проекта.
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample4.xml)]
@@ -148,7 +148,7 @@ ms.lasthandoff: 11/10/2017
 1. Откройте решение в Visual Studio 2010.
 2. В **обозревателе решений** окно, щелкните правой кнопкой мыши узел проекта приложения web (например, **ContactManager.Mvc**), пункты **добавить**и нажмите кнопку **Новый элемент**.
 3. В **Добавление нового элемента** выберите **XML-файл** шаблона.
-4. В **имя** введите *[имя проекта]***. wpp.targets** (например, **ContactManager.Mvc.wpp.targets**), а затем нажмите кнопку  **Добавить**.
+4. В **имя** введите *[имя проекта] ***.wpp.targets** (например, **ContactManager.Mvc.wpp.targets**), а затем нажмите кнопку **добавить**.
 
     ![](taking-web-applications-offline-with-web-deploy/_static/image4.png)
 

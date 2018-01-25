@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 5af7289392c18d58de11249c75e539c9e08954be
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ab051b2ab85d1aac1e7179f342f22f470b1d1cc7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="tutorial-high-frequency-realtime-with-signalr-2"></a>Учебник: В реальном времени с SignalR 2 по высокой частотой
 ====================
@@ -226,4 +226,4 @@ ms.lasthandoff: 11/10/2017
 - [SignalR Github и образцы](https://github.com/SignalR/SignalR)
 - [Вики-сайте SignalR](https://github.com/SignalR/SignalR/wiki)
 
-Пошаговое руководство по развертыванию приложения на SignalR для Azure см. в разделе [SignalR с помощью с веб-приложений в службе приложений Azure](../deployment/using-signalr-with-azure-web-sites.md). Подробные сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [создать веб-приложение ASP.NET в службе приложений Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-get-started/).
+Пошаговое руководство по развертыванию приложения на SignalR для Azure см. в разделе [SignalR с помощью с веб-приложений в службе приложений Azure](../deployment/using-signalr-with-azure-web-sites.md). Подробные сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [создать веб-приложение ASP.NET в службе приложений Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/).

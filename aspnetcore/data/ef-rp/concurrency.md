@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: a980669d49d332d7ef2ff5a18c73e9b269281287
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: b36fb71cba058a3409b30a1d9469159fcd027375
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 en-us /
 
@@ -32,7 +32,7 @@ en-us /
 * Пользователь переходит на страницу редактирования для сущности.
 * Другой пользователь обновляет той же сущности перед изменение первый пользователь будет записано в базу данных.
 
-Если обнаружение параллелизма не включено, при выполнении параллельных обновлений:
+Если обнаружение параллелизма не включен, при выполнении параллельных обновлений:
 
 * Последнее обновление wins. То есть последние обновления значения сохраняются в базы данных.
 * Первый из текущего обновления, будут потеряны.
@@ -57,13 +57,13 @@ en-us /
 
 * Можно хранить список какие свойства были изменены пользователем и обновлять соответствующие столбцы в базе данных.
 
- В этом сценарии данные не будут потеряны. Различные свойства были обновлены двумя пользователями. При очередном кто-то просматривает отделе английского языка, они видят Джейн и Джона изменения. Этот метод обновления может снизить количество конфликтов, которые могут привести к потере данных. Этот подход: * нельзя избежать потери данных, если конкурирующих изменений для одного свойства.
+ В этом сценарии данные не будут потеряны. Различные свойства были обновлены двумя пользователями. При очередном кто-то просматривает английский отдела, они смогут увидеть измененные Джейн и Джона. Этот метод обновления может снизить количество конфликтов, которые могут привести к потере данных. Этот подход: * нельзя избежать потери данных, если конкурирующих изменений для одного свойства.
         * — Обычно не удобно в веб-приложения. Он требует поддержки значительные состояния, чтобы отслеживать все извлеченных и новые значения. Обслуживание больших объемов состояния может повлиять на производительность приложения.
         * Может увеличить сложность приложений по сравнению с обнаружения параллелизма для сущности.
 
 * Можно разрешить изменение Джона перезаписать Джейн изменений.
 
- Далее время кто-то просматривает отделе английского языка, они видят 9/1/2013 и извлеченное значение $350,000.00. Такой подход называется *клиент побеждает* или *побеждает последний* сценария. (Все значения из клиента имеют приоритет над возможности хранилища данных). Если этого не сделать, написания кода для обработки параллелизма, клиент побеждает происходит автоматически.
+ Следующий раз кто-то просматривает отделе английского языка, они увидят 9/1/2013 и извлеченное значение $350,000.00. Такой подход называется *клиент побеждает* или *побеждает последний* сценария. (Все значения из клиента имеют приоритет над возможности хранилища данных). Если этого не сделать, написания кода для обработки параллелизма, клиент побеждает происходит автоматически.
 
 * Можно запретить изменение Джона обновляются в базе данных. Как правило, приложение будет: * сообщение об ошибке.
         * Показывают текущее состояние данных.
@@ -73,16 +73,16 @@ en-us /
 
 ## <a name="handling-concurrency"></a>Обработка параллелизма 
 
-Если свойство настроен как [маркер параллелизма](https://docs.microsoft.com/en-us/ef/core/modeling/concurrency):
+Если свойство настроен как [маркер параллелизма](https://docs.microsoft.com/ef/core/modeling/concurrency):
 
-* EF Core проверяет, что свойство не был изменен после его, которые были выбраны. Проверка будет выполняться при [SaveChanges](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) или [SaveChangesAsync](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_) вызывается.
+* EF Core проверяет, что свойство не был изменен после его, которые были выбраны. Проверка будет выполняться при [SaveChanges](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) или [SaveChangesAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_) вызывается.
 * Если свойство было изменено после получено, [DbUpdateConcurrencyException](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception?view=efcore-2.0) возникает исключение. 
 
 Модели базы данных и данных должен быть настроен для поддержки генерации `DbUpdateConcurrencyException`.
 
 ### <a name="detecting-concurrency-conflicts-on-a-property"></a>Обнаружение конфликтов параллелизма, свойство
 
-Конфликты параллелизма, которые могут быть обнаружены на уровне свойств с [ConcurrencyCheck](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0) атрибута. Атрибут может применяться с несколькими свойствами в модели. Дополнительные сведения см. в разделе [данных заметок-ConcurrencyCheck](https://docs.microsoft.com/en-us/ef/core/modeling/concurrency#data-annotations).
+Конфликты параллелизма, которые могут быть обнаружены на уровне свойств с [ConcurrencyCheck](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0) атрибута. Атрибут может применяться с несколькими свойствами в модели. Дополнительные сведения см. в разделе [данных заметок-ConcurrencyCheck](https://docs.microsoft.com/ef/core/modeling/concurrency#data-annotations).
 
 `[ConcurrencyCheck]` Атрибут не используется в этом учебнике.
 
@@ -127,7 +127,7 @@ modelBuilder.Entity<Department>()
 
 [!code-sql[](intro/samples/sql.txt?highlight=4-6)]
 
-[@@ROWCOUNT ](https://docs.microsoft.com/en-us/sql/t-sql/functions/rowcount-transact-sql) возвращает количество строк, затронутых при выполнении последней инструкции. Невозможно строки обновляются, вызывает EF Core `DbUpdateConcurrencyException`.
+[@@ROWCOUNT ](https://docs.microsoft.com/sql/t-sql/functions/rowcount-transact-sql) возвращает количество строк, затронутых при выполнении последней инструкции. Невозможно строки обновляются, вызывает EF Core `DbUpdateConcurrencyException`.
 
 Вы увидите ядро EF T-SQL создает в окне вывода Visual Studio.
 
@@ -250,7 +250,7 @@ dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outD
 
 ![Сообщение об ошибке отдел изменить страницу](concurrency/_static/edit-error.png)
 
-Это окно браузера не собираетесь изменить поля «имя». Скопируйте и вставьте значение текущей (языки) в поле «имя». Нажатием клавиши TAB out. Проверка на стороне клиента удаляет сообщение об ошибке.
+Это окно браузера не планируется изменять поля «имя». Скопируйте и вставьте значение текущей (языки) в поле «имя». Нажатием клавиши TAB out. Проверка на стороне клиента удаляет сообщение об ошибке.
 
 ![Сообщение об ошибке отдел изменить страницу](concurrency/_static/cv.png)
 
@@ -305,8 +305,8 @@ dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outD
 
 ### <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Маркеры параллелизма EF ядра](https://docs.microsoft.com/en-us/ef/core/modeling/concurrency)
-* [Обработка параллелизма EF ядра](https://docs.microsoft.com/en-us/ef/core/saving/concurrency)
+* [Маркеры параллелизма EF ядра](https://docs.microsoft.com/ef/core/modeling/concurrency)
+* [Обработка параллелизма EF ядра](https://docs.microsoft.com/ef/core/saving/concurrency)
 
 >[!div class="step-by-step"]
 [Назад](xref:data/ef-rp/update-related-data)

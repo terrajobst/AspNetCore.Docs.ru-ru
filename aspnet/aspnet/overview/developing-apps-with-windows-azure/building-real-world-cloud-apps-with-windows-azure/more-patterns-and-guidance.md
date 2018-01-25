@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/more-patterns-and-guidance
 msc.type: authoredcontent
-ms.openlocfilehash: 2ac18799d214777d098cc85ec6c85fd09f84a782
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a388f2e0ca3e1f0ce24a6def2a2b91711a7bf5a7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="more-patterns-and-guidance-building-real-world-cloud-apps-with-azure"></a>Дополнительные шаблоны и рекомендации (Создание реальных облачных приложений в Azure)
 ====================
@@ -31,18 +31,18 @@ ms.lasthandoff: 11/10/2017
 
 - Перенос существующих локальных приложений в облако. 
 
-    - [Перемещение приложений в облако](https://msdn.microsoft.com/en-us/library/ff728592.aspx). Электронная книга шаблонов и методов Майкрософт. Также доступно как [Мягкая жестких копирование](https://www.amazon.com/dp/1621140202).
+    - [Перемещение приложений в облако](https://msdn.microsoft.com/library/ff728592.aspx). Электронная книга шаблонов и методов Майкрософт. Также доступно как [Мягкая жестких копирование](https://www.amazon.com/dp/1621140202).
     - [Перенос Microsoft ASP.NET и IIS.NET](https://go.microsoft.com/fwlink/?LinkId=400656). Практический пример использования, Robert McMurray.
     - [Перемещение четвертого &amp; мэром для веб-сайты Azure](http://www.jeff.wilcox.name/2013/04/4thandmayor-azure-websites/). Запись в блоге, Джефф Wilcox chronicling свой опыт работы в перемещение веб-приложения с Amazon Web Services на веб-приложений в службе приложений Azure.
-    - [Перемещение приложений в Azure: какие изменения?](https://azure.microsoft.com/en-us/documentation/videos/web-sites-internals-and-the-file-system/) Краткая видео (Stefan Schackow), объясняет доступ к файловой системе в веб-приложений в службе приложений Azure.
+    - [Перемещение приложений в Azure: какие изменения?](https://azure.microsoft.com/documentation/videos/web-sites-internals-and-the-file-system/) Краткая видео (Stefan Schackow), объясняет доступ к файловой системе в веб-приложений в службе приложений Azure.
     - [Azure гибридного облака](https://www.amazon.com/dp/B00EOP4UQW). Бумажная копия книги или электронная книга Garber Дэнни Jamal Malik и Фазио Adam.
 - Проблемы безопасности, аутентификации и авторизации, уникальные для облачных приложений
 
     - [Руководство по безопасности Azure](https://azure.microsoft.com/blog/2014/02/10/best-practices-windows-azure-websites-waws/)
-    - [Шаблоны и методики - руководство по Azure Майкрософт](https://msdn.microsoft.com/en-us/library/dn568099.aspx). Шаблон привратника см. в разделе, шаблон федеративное удостоверение.
+    - [Шаблоны и методики - руководство по Azure Майкрософт](https://msdn.microsoft.com/library/dn568099.aspx). Шаблон привратника см. в разделе, шаблон федеративное удостоверение.
     - [Безопасность сети Azure](https://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx). Технический документ по Ashin Palekar.
 
-См. также дополнительные облачные вычислительных шаблоны и рекомендации по [рекомендации - руководство по Azure](https://msdn.microsoft.com/en-us/library/dn568099.aspx).
+См. также дополнительные облачные вычислительных шаблоны и рекомендации по [рекомендации - руководство по Azure](https://msdn.microsoft.com/library/dn568099.aspx).
 
 <a id="resources"></a>
 ## <a name="resources"></a>Ресурсы
@@ -51,9 +51,9 @@ ms.lasthandoff: 11/10/2017
 
 Документация
 
-- [Советы и рекомендации по проектированию крупномасштабных служб в облачных службах Azure](https://msdn.microsoft.com/en-us/library/windowsazure/jj717232.aspx). Технический документ, Марк Симмс и Майкл Томасси.
-- [Отказоустойчивость: Руководство по гибкой облачной архитектуре](https://msdn.microsoft.com/en-us/library/windowsazure/jj853352.aspx). Технический документ по Marc Mercuri, Ульрих Хоманн и Эндрю Таунхилл. Версия веб-страницы серия видеоматериалов Безаварийность.
-- [Руководство по Azure](https://azure.microsoft.com/en-us/develop/net/guidance/) страница портала для официальной документации, относящихся к разработке приложений для Azure.
+- [Советы и рекомендации по проектированию крупномасштабных служб в облачных службах Azure](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx). Технический документ, Марк Симмс и Майкл Томасси.
+- [Отказоустойчивость: Руководство по гибкой облачной архитектуре](https://msdn.microsoft.com/library/windowsazure/jj853352.aspx). Технический документ по Marc Mercuri, Ульрих Хоманн и Эндрю Таунхилл. Версия веб-страницы серия видеоматериалов Безаварийность.
+- [Руководство по Azure](https://azure.microsoft.com/develop/net/guidance/) страница портала для официальной документации, относящихся к разработке приложений для Azure.
 
 Видеоролики
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 11/10/2017
 - [Windows Azure, шаблоны программирования для начинающих](https://www.amazon.com/dp/1849685606). По Беккер Riccardo.
 - [Microsoft Windows Azure разработки рецепты](https://www.amazon.com/dp/1849682224). Нил Маккензи.
 
-И, наконец когда начать построение приложений реального мира и их выполнение в Azure, рано или поздно, возможно, потребуется помощь специалистов. Можно задавать вопросы на веб-узлам сообщества, такие как [форумы Azure или StackOverflow](https://azure.microsoft.com/en-us/support/forums/), или можно обратиться в корпорацию Майкрософт непосредственно для поддержки Azure. Корпорация Майкрософт предлагает несколько уровней технической поддержки Azure: Сводка и сравнение вариантов см. в разделе [Azure поддерживает](https://azure.microsoft.com/en-us/support/plans/).
+И, наконец когда начать построение приложений реального мира и их выполнение в Azure, рано или поздно, возможно, потребуется помощь специалистов. Можно задавать вопросы на веб-узлам сообщества, такие как [форумы Azure или StackOverflow](https://azure.microsoft.com/support/forums/), или можно обратиться в корпорацию Майкрософт непосредственно для поддержки Azure. Корпорация Майкрософт предлагает несколько уровней технической поддержки Azure: Сводка и сравнение вариантов см. в разделе [Azure поддерживает](https://azure.microsoft.com/support/plans/).
 
 <a id="acknowledgments"></a>
 ## <a name="acknowledgments"></a>Подтверждения
@@ -123,7 +123,7 @@ ms.lasthandoff: 11/10/2017
 - Эдвард Bakker
 - Srdjan Bozovic
 - Канал Man Минг
-- Gallina Gianni роза
+- Gianni Rosa Gallina
 - Morgado Паулу
 - Джейсон Oliveira
 - Alberto Poblacion

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: fecdd582918a61f3d01519c75d159f9c601c8223
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1a28284e203904cc943e5e46b369e8a58ea5c820
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="connection-resiliency-and-command-interception-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Устойчивость подключения и команды перехвата с платформой Entity Framework в приложении ASP.NET MVC
 ====================
@@ -49,14 +49,14 @@ ms.lasthandoff: 11/10/2017
 
 Можно настроить эти параметры вручную для среды базы данных поддерживается поставщиком Entity Framework, но значения по умолчанию, которые обычно подходит для сети приложения, использующего базу данных SQL Windows Azure уже настроена, и Это и есть параметры, которые необходимо реализовать для приложения Contoso университета.
 
-Необходимо выполнить, чтобы включить устойчивость подключений создать класс внутри сборки, производный от [DbConfiguration](https://msdn.microsoft.com/en-us/data/jj680699.aspx) класса и в этом классе задать базу данных SQL *стратегия выполнения*, в EF – еще один термин для *политика повторов*.
+Необходимо выполнить, чтобы включить устойчивость подключений создать класс внутри сборки, производный от [DbConfiguration](https://msdn.microsoft.com/data/jj680699.aspx) класса и в этом классе задать базу данных SQL *стратегия выполнения*, в EF – еще один термин для *политика повторов*.
 
 1. В папке DAL, добавьте файл класса с именем *SchoolConfiguration.cs*.
 2. Замените код шаблона с помощью следующего кода:
 
     [!code-csharp[Main](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
-    Entity Framework автоматически выполняет код в класс, производный от `DbConfiguration`. Можно использовать `DbConfiguration` классе для выполнения задач настройки в коде, в противном случае это делается в *Web.config* файла. Дополнительные сведения см. в разделе [EntityFramework конфигурации на основе кода](https://msdn.microsoft.com/en-us/data/jj680699).
+    Entity Framework автоматически выполняет код в класс, производный от `DbConfiguration`. Можно использовать `DbConfiguration` классе для выполнения задач настройки в коде, в противном случае это делается в *Web.config* файла. Дополнительные сведения см. в разделе [EntityFramework конфигурации на основе кода](https://msdn.microsoft.com/data/jj680699).
 3. В *StudentController.cs*, добавьте `using` инструкции для `System.Data.Entity.Infrastructure`.
 
     [!code-csharp[Main](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.cs)]
@@ -66,13 +66,13 @@ ms.lasthandoff: 11/10/2017
 
     Вы использовали `DataException` выявления ошибок, которые может быть временной, чтобы обеспечить понятное сообщение «повторить». Но теперь, когда вы включили политику повтора, только ошибки, скорее всего, будут временными будет уже были испытаны и не удалось выполнить несколько раз, и фактического возвращенное исключение будет вставлено в `RetryLimitExceededException` исключение.
 
-Дополнительные сведения см. в разделе [устойчивость подключений Entity Framework и логика повторных попыток](https://msdn.microsoft.com/en-us/data/dn456835).
+Дополнительные сведения см. в разделе [устойчивость подключений Entity Framework и логика повторных попыток](https://msdn.microsoft.com/data/dn456835).
 
 ## <a name="enable-command-interception"></a>Включение перехвата команды
 
 Теперь, когда вы включили политику повтора, как вы тестируете для проверки, что он работает как ожидалось? Это не так просто принудительно временная ошибка происходит, особенно когда у вас локально, и он будет особенно трудно интегрировать фактические временные ошибки в автоматических модульных тестов. Чтобы протестировать функция устойчивости подключений, вам необходим способ перехватывать запросы, которые отправляет Entity Framework для SQL Server и замените тип исключения, который обычно временных ответа SQL Server.
 
-Перехват запросов также можно использовать для реализации рекомендации для облачных приложений: [входа задержки и успешность всех вызовов к внешним службам](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry.md#log) такие как базы данных службы. Предоставляет EF6 [выделенной API ведения журнала](https://msdn.microsoft.com/en-us/data/dn469464) , можно упростить его делать ведения журнала, но в этом разделе учебника вы научитесь использовать Entity Framework [возможность перехвата](https://msdn.microsoft.com/en-us/data/dn469464) напрямую, как в Ведение журнала и для имитации временных ошибок.
+Перехват запросов также можно использовать для реализации рекомендации для облачных приложений: [входа задержки и успешность всех вызовов к внешним службам](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry.md#log) такие как базы данных службы. Предоставляет EF6 [выделенной API ведения журнала](https://msdn.microsoft.com/data/dn469464) , можно упростить его делать ведения журнала, но в этом разделе учебника вы научитесь использовать Entity Framework [возможность перехвата](https://msdn.microsoft.com/data/dn469464) напрямую, как в Ведение журнала и для имитации временных ошибок.
 
 ### <a name="create-a-logging-interface-and-class"></a>Создание класса и интерфейса записи журнала
 

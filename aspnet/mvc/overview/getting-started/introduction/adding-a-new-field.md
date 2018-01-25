@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: 7427b4f7c6b7a00fe795053aac0f612471a163cd
-ms.sourcegitcommit: 2b263e87217658caa42eedc4f9d2d21ef0ab5d59
+ms.openlocfilehash: 7339f6658ede16e79d19762bd6636917fe4de85f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-a-new-field"></a>Добавление нового поля
 ====================
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/12/2018
 
 В **консоль диспетчера пакетов** окно в `PM>` приглашение ввести
 
-Enable-Migrations - ContextTypeName MvcMovie.Models.MovieDBContext
+Enable-Migrations -ContextTypeName MvcMovie.Models.MovieDBContext
 
 ![](adding-a-new-field/_static/image3.png)
 
@@ -66,13 +66,13 @@ Visual Studio открывает *Configuration.cs* файла. Замените
 > 
 > Code First Migrations вызовы `Seed` метод после каждой миграции (то есть вызов **базы данных обновления** в консоли диспетчера пакетов), и этот метод обновляет строки, которые уже были вставлены или вставляет их, если они еще не существует.
 > 
-> [AddOrUpdate](https://msdn.microsoft.com/en-us/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) операцией «вставки-обновления» выполняет метод в следующем коде:
+> [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) операцией «вставки-обновления» выполняет метод в следующем коде:
 > 
 > [!code-csharp[Main](adding-a-new-field/samples/sample3.cs)]
 > 
-> Поскольку [начальное значение](https://msdn.microsoft.com/en-us/library/hh829453(v=vs.103).aspx) метод выполняется с каждой миграции, просто нельзя вставить данные, так как вы пытаетесь добавить строки уже существует после первой миграции, который создает базу данных. «[Upsert](http://en.wikipedia.org/wiki/Upsert)«операция позволяет избежать ошибок, произойдет при попытке вставить строку, которая уже существует, но оно переопределяет любые изменения данных, внесенные во время тестирования приложения. С тестовыми данными в некоторых таблицах не имеет смысла, происходит: в некоторых случаях при изменении данных во время тестирования требуется изменения после обновления базы данных. В этом случае необходимо выполнить операцию вставки условного: вставьте строку только в том случае, если он еще не существует.   
+> Поскольку [начальное значение](https://msdn.microsoft.com/library/hh829453(v=vs.103).aspx) метод выполняется с каждой миграции, просто нельзя вставить данные, так как вы пытаетесь добавить строки уже существует после первой миграции, который создает базу данных. «[Upsert](http://en.wikipedia.org/wiki/Upsert)«операция позволяет избежать ошибок, произойдет при попытке вставить строку, которая уже существует, но оно переопределяет любые изменения данных, внесенные во время тестирования приложения. С тестовыми данными в некоторых таблицах не имеет смысла, происходит: в некоторых случаях при изменении данных во время тестирования требуется изменения после обновления базы данных. В этом случае необходимо выполнить операцию вставки условного: вставьте строку только в том случае, если он еще не существует.   
 >   
-> Первый параметр, передаваемый [AddOrUpdate](https://msdn.microsoft.com/en-us/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) метод задает свойство, используемое для проверки, если строки уже существует. Для тестовых данных фильм, которому предоставляется `Title` свойство может использоваться для этой цели, так как каждый заголовок в списке является уникальным:
+> Первый параметр, передаваемый [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) метод задает свойство, используемое для проверки, если строки уже существует. Для тестовых данных фильм, которому предоставляется `Title` свойство может использоваться для этой цели, так как каждый заголовок в списке является уникальным:
 > 
 > [!code-csharp[Main](adding-a-new-field/samples/sample4.cs)]
 > 
@@ -80,7 +80,7 @@ Visual Studio открывает *Configuration.cs* файла. Замените
 >   
 >  *Последовательность содержит более одного элемента*  
 >   
-> Дополнительные сведения о [AddOrUpdate](https://msdn.microsoft.com/en-us/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) метода, в разделе [Будьте внимательны с EF 4.3 AddOrUpdate метод](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/)...
+> Дополнительные сведения о [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) метода, в разделе [Будьте внимательны с EF 4.3 AddOrUpdate метод](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/)...
 
 
 **Нажмите клавиши CTRL-SHIFT-B для сборки проекта.** (Ниже завершится ошибкой, если не на этом этапе построения.)

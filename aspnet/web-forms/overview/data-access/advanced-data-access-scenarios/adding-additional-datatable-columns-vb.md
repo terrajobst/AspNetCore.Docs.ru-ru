@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2668a685389938979fc4b0a1e1701a90cef5dc1c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d357ca7bfe364090ff2c8504b2116e0d99d004bc
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-additional-datatable-columns-vb"></a>Добавление дополнительных DataTable столбцов (Visual Basic)
 ====================
@@ -90,12 +90,12 @@ ms.lasthandoff: 11/10/2017
 
 [!code-sql[Main](adding-additional-datatable-columns-vb/samples/sample1.sql)]
 
-Приведенный выше запрос использует новый SQL Server 2005 s [ `NTILE` функция](https://msdn.microsoft.com/en-us/library/ms175126.aspx) для разделения результаты на четыре группы, где определяются группы `UnitPrice` значений, отсортированных в порядке убывания.
+Приведенный выше запрос использует новый SQL Server 2005 s [ `NTILE` функция](https://msdn.microsoft.com/library/ms175126.aspx) для разделения результаты на четыре группы, где определяются группы `UnitPrice` значений, отсортированных в порядке убывания.
 
 К сожалению, конструктор запросов не знает, как выполнить синтаксический анализ `OVER` ключевое слово и выводится сообщение об ошибке при анализе приведенный выше запрос. Таким образом введите приведенный выше запрос непосредственно в текстовое поле в мастере без использования построителя запросов.
 
 > [!NOTE]
-> Дополнительные сведения о s NTILE и SQL Server 2005 см. другие функции ранжирования [возврат ранжированные результаты с Microsoft SQL Server 2005](http://www.4guysfromrolla.com/webtech/010406-1.shtml) и [раздел Ранжирующие функции](https://msdn.microsoft.com/en-us/library/ms189798.aspx) из [SQL 2005 электронной документации по Server](https://msdn.microsoft.com/en-us/library/ms189798.aspx).
+> Дополнительные сведения о s NTILE и SQL Server 2005 см. другие функции ранжирования [возврат ранжированные результаты с Microsoft SQL Server 2005](http://www.4guysfromrolla.com/webtech/010406-1.shtml) и [раздел Ранжирующие функции](https://msdn.microsoft.com/library/ms189798.aspx) из [SQL 2005 электронной документации по Server](https://msdn.microsoft.com/library/ms189798.aspx).
 
 
 После ввода `SELECT` запроса и нажмите кнопку Далее, мастер появляется запрос на указание имени для хранимой процедуры, она будет создана. Имя новой хранимой процедуры `Products_SelectWithPriceQuartile` и нажмите кнопку Далее.

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-vb
 msc.type: authoredcontent
-ms.openlocfilehash: bb0b80f63ea69bb12a28f01193946f5689e70fb9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2e0698269c0a29c234f03dc56f7b63e7bc83d032
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="updating-the-tableadapter-to-use-joins-vb"></a>Обновление адаптера таблицы для использования соединения (Visual Basic)
 ====================
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 Объект `JOIN` объединяет записи из одной таблицы с записями из другой таблицы, в зависимости от некоторых условий. В указанном выше запросе, например `LEFT JOIN Categories ON Categories.CategoryID = Products.CategoryID` указывает, что SQL Server для слияния каждой записи продукта с категорией запись которого `CategoryID` значение соответствует продукту s `CategoryID` значение. Результаты слияния позволяет работать с в соответствующие поля категории для каждого продукта (например, `CategoryName`).
 
 > [!NOTE]
-> `JOIN`s обычно используются при запросе данных из реляционных баз данных. Если вы не знакомы с `JOIN` синтаксиса или нужно немного подтянуть свои навыки по его использованию, d рекомендуется [SQL Join учебника](http://www.w3schools.com/sql/sql_join.asp) в [школы W3](http://www.w3schools.com/). Также следует ознакомиться, [ `JOIN` основы](https://msdn.microsoft.com/en-us/library/ms191517.aspx) и [запросах](https://msdn.microsoft.com/en-us/library/ms189575.aspx) разделы [электронной документации по SQL](https://msdn.microsoft.com/en-us/library/ms130214.aspx).
+> `JOIN`s обычно используются при запросе данных из реляционных баз данных. Если вы не знакомы с `JOIN` синтаксиса или нужно немного подтянуть свои навыки по его использованию, d рекомендуется [SQL Join учебника](http://www.w3schools.com/sql/sql_join.asp) в [школы W3](http://www.w3schools.com/). Также следует ознакомиться, [ `JOIN` основы](https://msdn.microsoft.com/library/ms191517.aspx) и [запросах](https://msdn.microsoft.com/library/ms189575.aspx) разделы [электронной документации по SQL](https://msdn.microsoft.com/library/ms130214.aspx).
 
 
 Поскольку `JOIN` s и коррелированные вложенные запросы могут использоваться для получения взаимосвязанных данных из других таблиц, многие разработчики остаются затруднения, их заголовки и узнать, какие подходы использовать. Все специалистами SQL я хранить общались сказать примерно то же самое, что он t важны с точки как SQL Server будет создавать планы выполнения примерно идентичными. Его советам, будет использовать метод, при котором вы и ваша команда наиболее удобен. Заслуживает, отметить, что после imparting это требование экспертам немедленно express их предпочтения `JOIN` s через коррелированные вложенные запросы.

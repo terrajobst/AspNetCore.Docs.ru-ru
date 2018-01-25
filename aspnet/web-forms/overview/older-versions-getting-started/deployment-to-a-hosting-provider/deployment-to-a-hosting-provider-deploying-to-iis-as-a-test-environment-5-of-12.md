@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: a5538744dfaff76f28c5f17d8f5d782ef3f6c118
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a7995844ee6ed19efa130c4f6c019214d6652ea7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-to-iis-as-a-test-environment---5-of-12"></a>Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: развертывание в IIS, в тестовой среде - 5, 12
 ====================
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/10/2017
 
 Если вы видите только два пула приложений, а они устанавливаются в .NET Framework 2.0, необходимо установить ASP.NET 4 в службах IIS:
 
-- Откройте окно командной строки, щелкнув правой кнопкой мыши **командной строки** в Windows **запустить** , выберите в меню **Запуск от имени администратора**. Затем запустите [aspnet\_regiis.exe](https://msdn.microsoft.com/en-us/library/k6h9cz8h.aspx) для установки ASP.NET 4 в IIS с помощью следующих команд. (В 64-разрядных системах замените «Framework» с «Framework64»).
+- Откройте окно командной строки, щелкнув правой кнопкой мыши **командной строки** в Windows **запустить** , выберите в меню **Запуск от имени администратора**. Затем запустите [aspnet\_regiis.exe](https://msdn.microsoft.com/library/k6h9cz8h.aspx) для установки ASP.NET 4 в IIS с помощью следующих команд. (В 64-разрядных системах замените «Framework» с «Framework64»).
 
     [!code-console[Main](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12/samples/sample2.cmd)]
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 11/10/2017
 - Создание *пакета развертывания* и установите его с помощью пользовательского интерфейса диспетчера IIS. Пакет развертывания состоит из *.zip* файл, содержащий файлы и метаданные, необходимые для установки сайта в IIS.
 - Создание пакета развертывания и установите его с помощью командной строки.
 
-Процесс, который вы выполнили на предыдущих уроках, чтобы настроить Visual Studio для автоматизации задач развертывания применяется ко всем из трех способов. В этих учебниках используется первый из этих методов. Сведения об использовании пакетов развертывания см. в разделе [Карта содержимого развертывания ASP.NET](https://msdn.microsoft.com/en-us/library/bb386521.aspx).
+Процесс, который вы выполнили на предыдущих уроках, чтобы настроить Visual Studio для автоматизации задач развертывания применяется ко всем из трех способов. В этих учебниках используется первый из этих методов. Сведения об использовании пакетов развертывания см. в разделе [Карта содержимого развертывания ASP.NET](https://msdn.microsoft.com/library/bb386521.aspx).
 
 Перед публикацией убедитесь, что Visual Studio выполняется с правами администратора. (В Windows 7 **запустить** меню, щелкните правой кнопкой мыши значок для используемой версии Visual Studio, вы используете и выберите **Запуск от имени администратора**.) Режим администратора является обязательным для публикации только при публикации в IIS на локальном компьютере.
 
@@ -244,7 +244,7 @@ ms.lasthandoff: 11/10/2017
 
 - [IIS Express Обзор](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview) на сайте IIS.net.
 - [Знакомство с IIS Express](https://weblogs.asp.net/scottgu/archive/2010/06/28/introducing-iis-express.aspx) в блоге Скотта Гатри.
-- [Как: укажите веб-сервера для веб-проектов в Visual Studio](https://msdn.microsoft.com/en-us/library/ms178108.aspx).
+- [Как: укажите веб-сервера для веб-проектов в Visual Studio](https://msdn.microsoft.com/library/ms178108.aspx).
 - [Основные различия между IIS и ASP.NET Development Server](../deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-cs.md) на веб-сайте ASP.NET.
 - [Тестирование приложения ASP.NET MVC или веб-приложение форм в службах IIS 7 за 30 секунд](https://blogs.msdn.com/b/rickandy/archive/2011/04/22/test-you-asp-net-mvc-or-webforms-application-on-iis-7-in-30-seconds.aspx) в блоге Рика Андерсона. Эта запись содержит примеры почему тестирование с помощью Visual Studio Development Server (Cassini) не является надежной, как и тестирование в IIS Express, и почему тестирование в IIS Express не является надежной, как и тестирование в службах IIS.
 

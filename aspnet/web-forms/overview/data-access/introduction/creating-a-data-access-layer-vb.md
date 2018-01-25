@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 556b90f5e29f30756a4bd3b16be9608011558c4d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ad578d5d5fb1ef0ac63d3cbde3f307535ea3d98c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-data-access-layer-vb"></a>Создание уровня доступа к данным (Visual Basic)
 ====================
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/10/2017
 Чтобы вернуть строго типизированных объектов, разработчики можно создать собственные настраиваемые бизнес-объекты или использовать типизированные наборы данных. Бизнес-объект реализуется разработчиком как представляет класс, как правило, свойства которого отражают столбцы базовой таблицы базы данных бизнес-объекта. Типизированный набор данных — это класс, созданный Visual Studio, на основе схемы базы данных и, члены которого являются строго типизированными в соответствии с этой схемы. Типизированные сам набор данных состоит из классов, расширяющих классы ADO.NET DataSet, DataTable и DataRow. Помимо строго типизированных объектов DataTable типизированные наборы данных теперь также включают адаптеры таблиц TableAdapter, которые являются классы, методы для заполнения таблицы данных набора данных и внесения изменений, сделанных в объектах DataTable в базе данных.
 
 > [!NOTE]
-> Дополнительные сведения о преимуществах и недостатках использования типизированных наборов данных и пользовательских бизнес-объектов см. [проектирование компоненты уровня данных и передачи данных через уровни](https://msdn.microsoft.com/en-us/library/ms978496.aspx).
+> Дополнительные сведения о преимуществах и недостатках использования типизированных наборов данных и пользовательских бизнес-объектов см. [проектирование компоненты уровня данных и передачи данных через уровни](https://msdn.microsoft.com/library/ms978496.aspx).
 
 
 Эти учебники по архитектуре, мы будем использовать строго типизированных наборов данных. На рисунке 3 показан рабочий процесс между различными уровнями приложения, использующего типизированные наборы данных.
@@ -293,7 +293,7 @@ Beverages.aspx.vb
 **Рисунок 21**: каждой вставки, обновления и запроса на удаление отправляется базы данных немедленно ([Просмотр полноразмерное изображение](creating-a-data-access-layer-vb/_static/image57.png))
 
 
-Другая схема, которую я буду называть пакетного обновления шаблон, является обновление всей DataSet, DataTable или коллекции из DataRow в один вызов метода. С этим шаблоном разработчик удаляет, вставка и изменение объектов DataRow в DataTable и затем передает эти DataRow или DataTable в метод обновления. Затем этот метод перечисляет переданные DataRow, определяет ли они были изменены, добавленных или удаленных (через DataRow [свойства RowState](https://msdn.microsoft.com/en-us/library/system.data.datarow.rowstate.aspx) значение) и отправляет запрос к соответствующей базе данных для каждой записи.
+Другая схема, которую я буду называть пакетного обновления шаблон, является обновление всей DataSet, DataTable или коллекции из DataRow в один вызов метода. С этим шаблоном разработчик удаляет, вставка и изменение объектов DataRow в DataTable и затем передает эти DataRow или DataTable в метод обновления. Затем этот метод перечисляет переданные DataRow, определяет ли они были изменены, добавленных или удаленных (через DataRow [свойства RowState](https://msdn.microsoft.com/library/system.data.datarow.rowstate.aspx) значение) и отправляет запрос к соответствующей базе данных для каждой записи.
 
 
 [![Все изменения синхронизируются с базой данных при вызове метода обновления](creating-a-data-access-layer-vb/_static/image59.png)](creating-a-data-access-layer-vb/_static/image58.png)
@@ -339,7 +339,7 @@ Beverages.aspx.vb
 **Рис. 25**: создать метод, чтобы добавить новые строки `Products` таблицы ([Просмотр полноразмерное изображение](creating-a-data-access-layer-vb/_static/image69.png))
 
 
-На следующем экране `InsertCommand` `CommandText` отображается. Расширить этот запрос, добавив `SELECT SCOPE_IDENTITY()` в конце запроса, который возвращает последнее значение идентификатора, вставленное в `IDENTITY` столбец в той же области. (См. [технической документации](https://msdn.microsoft.com/en-us/library/ms190315.aspx) Дополнительные сведения о `SCOPE_IDENTITY()` и поэтому может потребоваться [использовать область\_IDENTITY() вместо @@IDENTITY](http://weblogs.sqlteam.com/travisl/archive/2003/10/29/405.aspx).) Убедитесь, что завершить `INSERT` инструкция точкой с запятой перед добавлением `SELECT` инструкции.
+На следующем экране `InsertCommand` `CommandText` отображается. Расширить этот запрос, добавив `SELECT SCOPE_IDENTITY()` в конце запроса, который возвращает последнее значение идентификатора, вставленное в `IDENTITY` столбец в той же области. (См. [технической документации](https://msdn.microsoft.com/library/ms190315.aspx) Дополнительные сведения о `SCOPE_IDENTITY()` и поэтому может потребоваться [использовать область\_IDENTITY() вместо @@IDENTITY](http://weblogs.sqlteam.com/travisl/archive/2003/10/29/405.aspx).) Убедитесь, что завершить `INSERT` инструкция точкой с запятой перед добавлением `SELECT` инструкции.
 
 
 [![Запрос должен возвращать значение SCOPE_IDENTITY() дополнения](creating-a-data-access-layer-vb/_static/image71.png)](creating-a-data-access-layer-vb/_static/image70.png)
@@ -520,18 +520,18 @@ SuppliersAndProducts.aspx.vb
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
 - [Построение DAL, с помощью строго типизированные адаптеры таблицы и таблицы данных в VS 2005 и ASP.NET 2.0](https://weblogs.asp.net/scottgu/435498)
-- [Проектирование компоненты уровня данных и передачи данных через уровни](https://msdn.microsoft.com/en-us/library/ms978496.aspx)
+- [Проектирование компоненты уровня данных и передачи данных через уровни](https://msdn.microsoft.com/library/ms978496.aspx)
 - [Построение слой доступа к данным с помощью конструктора набора данных Visual Studio 2005](http://www.theserverside.net/articles/showarticle.tss?id=DataSetDesigner)
 - [Шифрование данных конфигурации в ASP.NET 2.0 приложений](http://aspnet.4guysfromrolla.com/articles/021506-1.aspx)
-- [Общие сведения об адаптере таблиц](https://msdn.microsoft.com/en-us/library/bz9tthwx.aspx)
-- [Работа с типизированного набора данных](https://msdn.microsoft.com/en-us/library/esbykkzb.aspx)
+- [Общие сведения об адаптере таблиц](https://msdn.microsoft.com/library/bz9tthwx.aspx)
+- [Работа с типизированного набора данных](https://msdn.microsoft.com/library/esbykkzb.aspx)
 - [С помощью доступа к строго типизированным данным в Visual Studio 2005 и ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/020806-1.aspx)
 - [Способы расширения методы адаптера таблицы](https://blogs.msdn.com/vbteam/archive/2005/05/04/ExtendingTableAdapters.aspx)
 - [Извлечение скалярных данных из хранимой процедуры](http://aspnet.4guysfromrolla.com/articles/062905-1.aspx)
 
 ### <a name="video-training-on-topics-contained-in-this-tutorial"></a>Видео на разделы, содержащиеся в этом учебнике
 
-- [Слои доступа к данным в приложениях ASP.NET](../../../videos/data-access/adonet-data-services/data-access-layers-in-aspnet-applications.md)
+- [Уровни доступа к данным в приложениях ASP.NET](../../../videos/data-access/adonet-data-services/data-access-layers-in-aspnet-applications.md)
 - [Как вручную связать набор данных в элемент управления Datagrid](../../../videos/data-access/adonet-data-services/how-to-manually-bind-a-dataset-to-a-datagrid.md)
 - [Порядок работы с наборами данных и фильтры приложения ASP](../../../videos/data-access/adonet-data-services/how-to-work-with-datasets-and-filters-from-an-asp-application.md)
 

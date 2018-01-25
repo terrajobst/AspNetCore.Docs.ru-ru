@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 41efda63026c9d17cb9dceb92b5efc87490a722d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 92d9e583b6c26fa8c928d33e14593d280702a269
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="intro-to-aspnet-mvc-4"></a>Введение в ASP.NET MVC 4
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/10/2017
 
 > Обновленная версия, если этот учебник доступен [здесь](../../getting-started/introduction/getting-started.md) с помощью [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads). Новое учебное использует ASP.NET MVC 5 обеспечивает множество преимуществ по сравнению этого учебника.
 > 
-> Этот учебник поможет узнать основы создания MVC 4 веб-приложения ASP.NET с помощью Microsoft [Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/en-us/products/express) или Visual Web Developer 2010 Express пакетом обновления 1. Visual Studio 2012 рекомендуется установить для завершения работы с учебником ничего не придется. Если вы используете Visual Studio 2010 необходимо установить компоненты ниже. Все из них можно установить, перейдите по следующим ссылкам:
+> Этот учебник поможет узнать основы создания MVC 4 веб-приложения ASP.NET с помощью Microsoft [Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/products/express) или Visual Web Developer 2010 Express пакетом обновления 1. Visual Studio 2012 рекомендуется установить для завершения работы с учебником ничего не придется. Если вы используете Visual Studio 2010 необходимо установить компоненты ниже. Все из них можно установить, перейдите по следующим ссылкам:
 > 
 > - [Необходимые компоненты Visual Studio Web Developer Express SP1](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)
 > - [Установщик удостоверения рабочего Процесса для ASP.NET MVC 4](https://go.microsoft.com/fwlink/?LinkId=243392)
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > Проект Visual Web Developer с исходного кода C# доступна по следующему адресу. [Загрузка версии C#](https://code.msdn.microsoft.com/Intro-to-ASPNET-MVC-4-61d0219d/file/114480/1/MvcMovie.zip).
 > 
-> В этом учебнике вы запустите приложение в Visual Studio. Вы можете также сделать приложение доступным через Интернет, развертывая ее поставщика услуг размещения. Корпорация Майкрософт предлагает бесплатные веб-размещения для до 10 веб-сайтов в [освободить пробную учетную запись Windows Azure](https://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A443DD604). Сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [создания и развертывания веб-сайт ASP.NET и базы данных SQL с помощью Visual Studio](https://docs.microsoft.com/dotnet/azure/). Этот учебник также показано, как использовать Entity Framework Code First Migrations для развертывания базы данных SQL Server к базе данных SQL Windows Azure (прежнее название — SQL Azure).
+> В этом учебнике вы запустите приложение в Visual Studio. Вы можете также сделать приложение доступным через Интернет, развертывая ее поставщика услуг размещения. Корпорация Майкрософт предлагает бесплатные веб-размещения для до 10 веб-сайтов в [освободить пробную учетную запись Windows Azure](https://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A443DD604). Сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [создания и развертывания веб-сайт ASP.NET и базы данных SQL с помощью Visual Studio](https://docs.microsoft.com/dotnet/azure/). Этот учебник также показано, как использовать Entity Framework Code First Migrations для развертывания базы данных SQL Server к базе данных SQL Windows Azure (прежнее название — SQL Azure).
 > 
 > Это руководство было написано с Рик Андерсон ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) ).
 

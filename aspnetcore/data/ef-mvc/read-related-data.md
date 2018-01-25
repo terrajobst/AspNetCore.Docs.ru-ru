@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 1321cb00a432669b4a97ad20063b6cf9ea75f24c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 2333ac70c77847ece1f90c9ff22eec30bc35fea1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="reading-related-data---ef-core-with-aspnet-core-mvc-tutorial-6-of-10"></a>Чтение связанных данных - Core EF учебнику ASP.NET Core MVC (6 из 10)
 
@@ -75,7 +75,7 @@ Contoso университета примера веб-приложения по
 
 * Изменить заголовок из индекса к курсам.
 
-* Добавлен **номер** столбца, отображающего `CourseID` значение свойства. По умолчанию первичные ключи не являются формирования шаблонов, так как обычно они не имеют смысла для конечных пользователей. Однако в этом случае первичный ключ имеет смысл, и вы хотите отображать их.
+* Добавлен **номер** столбца, отображающего `CourseID` значение свойства. По умолчанию первичные ключи не являются формирования шаблонов, так как обычно они имеют смысла для конечных пользователей. Однако в этом случае первичный ключ имеет смысл, и вы хотите отображать их.
 
 * Изменить **отдел** столбец, отображающий название отдела. Код отображает `Name` свойства сущности «отдел», который загружается `Department` свойство навигации:
 
@@ -173,7 +173,7 @@ Contoso университета примера веб-приложения по
 
 * Изменить заголовок страницы из **индекс** для **инструкторов**.
 
-* Добавлен **Office** столбец, отображающий `item.OfficeAssignment.Location` только тогда, когда `item.OfficeAssignment` не имеет значение null. (Так как один к нулю или одному связь, могут не существовать связанной сущности OfficeAssignment.)
+* Добавлен **Office** столбец, отображающий `item.OfficeAssignment.Location` только тогда, когда `item.OfficeAssignment` не равно null. (Так как один к нулю или одному связь, могут не существовать связанной сущности OfficeAssignment.)
 
   ```html
   @if (item.OfficeAssignment != null)

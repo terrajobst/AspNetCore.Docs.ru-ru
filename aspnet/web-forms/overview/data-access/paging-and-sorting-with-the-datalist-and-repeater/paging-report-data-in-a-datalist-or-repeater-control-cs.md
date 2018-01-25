@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 783557b69486c284a6ed927e32e71cb602695080
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4952adff752ec834b8be5f190181be98a034ccfd
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="paging-report-data-in-a-datalist-or-repeater-control-c"></a>Разбиение на страницы данных отчета в DataList или управления повторителем (C#)
 ====================
@@ -80,7 +80,7 @@ ms.lasthandoff: 11/10/2017
 
 *Пользовательское разбиение по страницам* решает разбиения возможны проблемы с производительностью, перехватывая нужного подмножества записей для отображения на запрошенную страницу. При реализации пользовательского разбиения на страницы, нам необходимо написать SQL-запрос, возвращающий эффективность правильным набором записей. Мы узнали, как создать запрос с помощью SQL Server 2005 s новый [ `ROW_NUMBER()` ключевое слово](http://www.4guysfromrolla.com/webtech/010406-1.shtml) в [эффективно разбивка на страницы через большие объемы данных](../paging-and-sorting/efficiently-paging-through-large-amounts-of-data-cs.md) учебника.
 
-Для реализации постраничного просмотра по умолчанию для элементов управления DataList или повторителя, можно использовать [ `PagedDataSource` класса](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.aspx) как оболочка `ProductsDataTable` страниц, содержимое. `PagedDataSource` Класс имеет `DataSource` свойство, которое может быть присвоен любой перечисляемый объект и [ `PageSize` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.pagesize.aspx) и [ `CurrentPageIndex` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.currentpageindex.aspx) свойств, которые указывают, сколько записей следует отображать на каждой странице и индекса текущей страницы. После задания этих свойств `PagedDataSource` можно использовать в качестве источника данных каких-либо данных веб-элемента управления. `PagedDataSource`, При перечислении, будет возвращать только соответствующие подмножество записей из его внутренним `DataSource` на основе `PageSize` и `CurrentPageIndex` свойства. На рисунке 4 показаны функциональные возможности `PagedDataSource` класса.
+Для реализации постраничного просмотра по умолчанию для элементов управления DataList или повторителя, можно использовать [ `PagedDataSource` класса](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.aspx) как оболочка `ProductsDataTable` страниц, содержимое. `PagedDataSource` Класс имеет `DataSource` свойство, которое может быть присвоен любой перечисляемый объект и [ `PageSize` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.pagesize.aspx) и [ `CurrentPageIndex` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.currentpageindex.aspx) свойств, которые указывают, сколько записей следует отображать на каждой странице и индекса текущей страницы. После задания этих свойств `PagedDataSource` можно использовать в качестве источника данных каких-либо данных веб-элемента управления. `PagedDataSource`, При перечислении, будет возвращать только соответствующие подмножество записей из его внутренним `DataSource` на основе `PageSize` и `CurrentPageIndex` свойства. На рисунке 4 показаны функциональные возможности `PagedDataSource` класса.
 
 
 ![Заключает в оболочку PagedDataSource перечислимый объект выгружаемой интерфейса](paging-report-data-in-a-datalist-or-repeater-control-cs/_static/image6.png)
@@ -204,7 +204,7 @@ DataList и повторителя мы отвечают за выбор при 
 
 ## <a name="determining-the-total-number-of-records-being-paged-through"></a>Определить общее число страниц
 
-`PagedDataSource` Объект, возвращенный ObjectDataSource s `Select()` метод имеет внутри него *все* из записей продуктов, даже если только их подмножество, отображаются в DataList. `PagedDataSource` s [ `Count` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.count.aspx) возвращает количество элементов, которые будут отображаться в DataList; [ `DataSourceCount` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.datasourcecount.aspx) возвращает общее число элементов в `PagedDataSource`. Таким образом, нам нужно назначить ASP.NET страницы s `TotalRowCount` свойства значение из `PagedDataSource` s `DataSourceCount` свойство.
+`PagedDataSource` Объект, возвращенный ObjectDataSource s `Select()` метод имеет внутри него *все* из записей продуктов, даже если только их подмножество, отображаются в DataList. `PagedDataSource` s [ `Count` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.count.aspx) возвращает количество элементов, которые будут отображаться в DataList; [ `DataSourceCount` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.datasourcecount.aspx) возвращает общее число элементов в `PagedDataSource`. Таким образом, нам нужно назначить ASP.NET страницы s `TotalRowCount` свойства значение из `PagedDataSource` s `DataSourceCount` свойство.
 
 Чтобы сделать это, создайте обработчик событий для ObjectDataSource s `Selected` событий. В `Selected` обработчик событий, у нас есть доступ к возвращаемому значению ObjectDataSource s `Select()` метода в данном случае `PagedDataSource`.
 
@@ -224,7 +224,7 @@ DataList и повторителя мы отвечают за выбор при 
 
 ## <a name="disabling-paging-interface-controls"></a>Отключение подкачки элементы управления интерфейса
 
-В настоящее время включены все четыре кнопки, независимо от того, просматриваемую страницу. Тем не менее мы хотим Отключение кнопки первой и назад при отображении первой страницы данных и кнопок Далее и Дата последнего при отображении на последней странице. `PagedDataSource` Объект, возвращаемый ObjectDataSource s `Select()` метод имеет свойства [ `IsFirstPage` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.isfirstpage.aspx) и [ `IsLastPage` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.islastpage.aspx) , можно проверить для определения, если просматривается первой или последней странице данных.
+В настоящее время включены все четыре кнопки, независимо от того, просматриваемую страницу. Тем не менее мы хотим Отключение кнопки первой и назад при отображении первой страницы данных и кнопок Далее и Дата последнего при отображении на последней странице. `PagedDataSource` Объект, возвращаемый ObjectDataSource s `Select()` метод имеет свойства [ `IsFirstPage` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.isfirstpage.aspx) и [ `IsLastPage` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.islastpage.aspx) , можно проверить для определения, если просматривается первой или последней странице данных.
 
 Добавьте следующий элемент управления ObjectDataSource s `Selected` обработчик событий:
 

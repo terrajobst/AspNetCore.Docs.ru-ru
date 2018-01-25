@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 73332d168e2f22621cb234a6591f3ce0eeed802f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 93b4df5fcbde8d87866d00dffda8a241d0dd596b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-validation-to-the-model"></a>Добавление проверки для модели
 ====================
@@ -40,13 +40,13 @@ ms.lasthandoff: 11/10/2017
 
 Сначала добавить некоторую логику проверки для `Movie` класса.
 
-Откройте файл *Movie.cs*. Добавить `using` инструкции в верхней части файла, который ссылается на [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) пространство имен:
+Откройте файл *Movie.cs*. Добавить `using` инструкции в верхней части файла, который ссылается на [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) пространство имен:
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample1.cs)]
 
 Обратите внимание на то, пространство имен не содержит `System.Web`. DataAnnotations предоставляет встроенный набор атрибутов проверки, которые декларативно применяются к любому классу или свойству.
 
-Теперь обновите `Movie` класса, чтобы воспользоваться преимуществами встроенной [ `Required` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx), [ `StringLength` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx), и [ `Range` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.rangeattribute.aspx) атрибутов проверки . В качестве примера для применения атрибутов, используйте следующий код.
+Теперь обновите `Movie` класса, чтобы воспользоваться преимуществами встроенной [ `Required` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx), [ `StringLength` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx), и [ `Range` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx) атрибутов проверки . В качестве примера для применения атрибутов, используйте следующий код.
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample2.cs?highlight=4,10,13,17)]
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 11/10/2017
 5. Удалите текст.
 6. Нажатием клавиши TAB out.
 
-Порядок операций будет активировать проверку без нажатие кнопки "Отправить". Просто нажатие кнопки "Отправить" без ввода любое поле, запускающих проверки на стороне клиента. Данные формы передаются на сервер только после того, как будут устранены любые ошибки на стороне клиента. Это можно проверить, разместить точки останова в методе HTTP Post или используя [инструмента fiddler](http://fiddler2.com/fiddler2/) или IE 9 [средств разработчика F12](https://msdn.microsoft.com/en-us/ie/aa740478).
+Порядок операций будет активировать проверку без нажатие кнопки "Отправить". Просто нажатие кнопки "Отправить" без ввода любое поле, запускающих проверки на стороне клиента. Данные формы передаются на сервер только после того, как будут устранены любые ошибки на стороне клиента. Это можно проверить, разместить точки останова в методе HTTP Post или используя [инструмента fiddler](http://fiddler2.com/fiddler2/) или IE 9 [средств разработчика F12](https://msdn.microsoft.com/ie/aa740478).
 
 ![](adding-validation-to-the-model/_static/image2.png)
 
@@ -137,17 +137,17 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="adding-formatting-to-the-movie-model"></a>Добавление форматирования к модели фильма
 
-Откройте файл *Movie.cs* и проверьте класс `Movie`. [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) Пространство имен содержит атрибуты форматирования помимо встроенный набор атрибутов проверки. Мы уже использовали [ `DataType` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx) значение перечисления для даты выпуска и поля цены. В следующем коде показано `ReleaseDate` и `Price` свойства с помощью соответствующих [ `DisplayFormat` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx) атрибута.
+Откройте файл *Movie.cs* и проверьте класс `Movie`. [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) Пространство имен содержит атрибуты форматирования помимо встроенный набор атрибутов проверки. Мы уже использовали [ `DataType` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) значение перечисления для даты выпуска и поля цены. В следующем коде показано `ReleaseDate` и `Price` свойства с помощью соответствующих [ `DisplayFormat` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) атрибута.
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample9.cs)]
 
-[ `DataType` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx) Атрибуты не являются атрибутами проверки, они используются для определить обработчик представлений, Подготовка к просмотру HTML. В приведенном выше примере `DataType.Date` атрибут отображает фильма даты в виде даты, без времени. Например, следующая [ `DataType` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx) атрибуты не проверки формата данных:
+[ `DataType` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) Атрибуты не являются атрибутами проверки, они используются для определить обработчик представлений, Подготовка к просмотру HTML. В приведенном выше примере `DataType.Date` атрибут отображает фильма даты в виде даты, без времени. Например, следующая [ `DataType` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) атрибуты не проверки формата данных:
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample10.cs)]
 
-Атрибуты, перечисленные выше только предоставить подсказки для обработчика представлений для форматирования данных (и укажите атрибуты, такие как &lt;&gt; для URL-адреса и &lt;href =&quot;mailto:EmailAddress.com&quot; &gt; для электронной почты. Можно использовать [регулярное выражение](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx) атрибут для проверки формата данных.
+Атрибуты, перечисленные выше только предоставить подсказки для обработчика представлений для форматирования данных (и укажите атрибуты, такие как &lt;&gt; для URL-адреса и &lt;href =&quot;mailto:EmailAddress.com&quot; &gt; для электронной почты. Можно использовать [регулярное выражение](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx) атрибут для проверки формата данных.
 
-Альтернативный подход к использованию `DataType` атрибутов, можно явно задать [ `DataFormatString` ](https://msdn.microsoft.com/en-us/library/system.string.format.aspx) значение. В следующем коде показано свойство даты выпуска с помощью строки формата даты (а именно, &quot;d&quot;). Это будет использовать для указания, что вы не хотите времени как часть даты выпуска.
+Альтернативный подход к использованию `DataType` атрибутов, можно явно задать [ `DataFormatString` ](https://msdn.microsoft.com/library/system.string.format.aspx) значение. В следующем коде показано свойство даты выпуска с помощью строки формата даты (а именно, &quot;d&quot;). Это будет использовать для указания, что вы не хотите времени как часть даты выпуска.
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample11.cs)]
 

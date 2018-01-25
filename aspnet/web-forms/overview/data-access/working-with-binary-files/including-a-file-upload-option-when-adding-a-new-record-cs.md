@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fcb791868e6af9eef1614d039d11ef5232b40af5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 384251e5d0d72c6d1cc014c929a5d504be11d1d6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="including-a-file-upload-option-when-adding-a-new-record-c"></a>Включая параметр передачи файла при добавлении новой записи (C#)
 ====================
@@ -176,7 +176,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-6-saving-the-uploaded-brochure-to-the-web-server-s-file-system"></a>Шаг 6: Сохранение переданные брошюр файловую систему Web Server s
 
-Когда пользователь вводит значения для новой категории и нажимает кнопку "Добавить", обратная передача и вставку рабочего процесса развертывания. Во-первых, DetailsView s [ `ItemInserting` событие](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.detailsview.iteminserting.aspx) активируется. Далее, ObjectDataSource s `Insert()` вызывается метод, что приводит к новой записи, добавляемые `Categories` таблицы. После этого DetailsView s [ `ItemInserted` событие](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.detailsview.iteminserted.aspx) активируется.
+Когда пользователь вводит значения для новой категории и нажимает кнопку "Добавить", обратная передача и вставку рабочего процесса развертывания. Во-первых, DetailsView s [ `ItemInserting` событие](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.iteminserting.aspx) активируется. Далее, ObjectDataSource s `Insert()` вызывается метод, что приводит к новой записи, добавляемые `Categories` таблицы. После этого DetailsView s [ `ItemInserted` событие](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.iteminserted.aspx) активируется.
 
 Прежде чем ObjectDataSource s `Insert()` вызывается метод, необходимо сначала убедитесь, что соответствующий файл типы были отправлены пользователем и сохраните брошюр PDF в web server s файловую систему. Создайте обработчик событий для DetailsView s `ItemInserting` событий и добавьте следующий код:
 
@@ -191,7 +191,7 @@ ms.lasthandoff: 11/10/2017
 
 Как было сказано в [передачи файлов](uploading-files-cs.md) учебника, необходимо соблюдать осторожность при сохранении файлов в файловой системе, этой отправки одного пользователя s не перезаписывает другой s. В этом учебнике мы будет пытаться использовать то же имя отправленного файла. Если уже существует файл в `~/Brochures` каталога с этой же именем, однако мы будем добавляется число в конце пока не будет найдено уникальное имя. Например, если пользователь отправляет брошюр файл с именем `Meats.pdf`, но уже существует файл с именем `Meats.pdf` в `~/Brochures` папки, мы изменим имя сохраненного файла `Meats-1.pdf`. Если, существует, мы попытаемся `Meats-2.pdf`, и т. д., пока не будет найдено уникальное имя файла.
 
-В следующем коде используется [ `File.Exists(path)` метод](https://msdn.microsoft.com/en-us/library/system.io.file.exists.aspx) для определения того, существует ли файл с указанным именем файла. В этом случае он продолжает повторите новые имена файлов для брошюр, пока не будет обнаружен конфликт.
+В следующем коде используется [ `File.Exists(path)` метод](https://msdn.microsoft.com/library/system.io.file.exists.aspx) для определения того, существует ли файл с указанным именем файла. В этом случае он продолжает повторите новые имена файлов для брошюр, пока не будет обнаружен конфликт.
 
 
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample7.cs)]

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
 msc.type: authoredcontent
-ms.openlocfilehash: 465c9cf6f452c268e7e23509e7a29547df5d3e83
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 995d9a088e3095f36a01d2adb19ec08e6a6d1b3e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure-app-service"></a>Рекомендации по развертыванию пароли и другие конфиденциальные данные в ASP.NET и службы приложений Azure
 ====================
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 Среда выполнения ASP.NET объединяет содержимое внешнего файла разметку в &lt;appSettings&gt; элемента. Среда выполнения игнорирует атрибут файла, если не удается найти указанный файл.
 
 > [!WARNING]
-> Безопасность — не добавлять вашей *секреты .config* файл в проект или вернуть его в систему управления версиями. По умолчанию Visual Studio устанавливает `Build Action` для `Content`, то есть файл развертывания. Дополнительные сведения см. [почему не все файлы в папке проекта развертывания?](https://msdn.microsoft.com/en-us/library/ee942158(v=vs.110).aspx#can_i_exclude_specific_files_or_folders_from_deployment) Несмотря на то, что можно использовать любое расширение для *секреты .config* файла, рекомендуется сохранить его *.config*, как файлы конфигурации не предоставляются службами IIS. Обратите внимание, что *AppSettingsSecrets.config* файл имеет два каталога уровня выше из *web.config* файл, поэтому оно не полностью входит в нужном каталоге решений. Путем перемещения файла из каталога решения &quot;добавить git \* &quot; не станем добавлять в репозиторий.
+> Безопасность — не добавлять вашей *секреты .config* файл в проект или вернуть его в систему управления версиями. По умолчанию Visual Studio устанавливает `Build Action` для `Content`, то есть файл развертывания. Дополнительные сведения см. [почему не все файлы в папке проекта развертывания?](https://msdn.microsoft.com/library/ee942158(v=vs.110).aspx#can_i_exclude_specific_files_or_folders_from_deployment) Несмотря на то, что можно использовать любое расширение для *секреты .config* файла, рекомендуется сохранить его *.config*, как файлы конфигурации не предоставляются службами IIS. Обратите внимание, что *AppSettingsSecrets.config* файл имеет два каталога уровня выше из *web.config* файл, поэтому оно не полностью входит в нужном каталоге решений. Путем перемещения файла из каталога решения &quot;добавить git \* &quot; не станем добавлять в репозиторий.
 
 
 <a id="con"></a>
@@ -96,7 +96,7 @@ Visual Studio создает новые проекты ASP.NET, использу
 
 **Параметры приложения** и **строка подключения** значения переопределяют те же параметры в *web.config* файла. В нашем примере мы не были развернуты эти параметры в Azure, но если эти ключи были в *web.config* файла, параметры, отображаемые на портале бы больший приоритет.
 
-Рекомендуется следовать [рабочий процесс DevOps](../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything.md) и использовать [Azure PowerShell](https://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/) (или другой структуре, такие как [Chef](http://www.opscode.com/chef/) или [Puppet](http://puppetlabs.com/puppet/what-is-puppet)) для Автоматизация установки этих значений в Azure. Следующий сценарий PowerShell использует [Export-CliXml](http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk) Экспорт зашифрованные секретные данные на диск:
+Рекомендуется следовать [рабочий процесс DevOps](../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything.md) и использовать [Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/) (или другой структуре, такие как [Chef](http://www.opscode.com/chef/) или [Puppet](http://puppetlabs.com/puppet/what-is-puppet)) для Автоматизация установки этих значений в Azure. Следующий сценарий PowerShell использует [Export-CliXml](http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk) Экспорт зашифрованные секретные данные на диск:
 
 [!code-powershell[Main](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure/samples/sample6.ps1)]
 
@@ -105,7 +105,7 @@ Visual Studio создает новые проекты ASP.NET, использу
 [!code-powershell[Main](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure/samples/sample7.ps1)]
 
 > [!WARNING]
-> Безопасность — не включать пароли и другие секретные данные в сценарии PowerShell, выполнив так противоречит цели с помощью сценария PowerShell для развертывания конфиденциальных данных. [Get-Credential](https://technet.microsoft.com/en-us/library/hh849815.aspx) командлет предоставляет безопасного механизма для получения пароля. С помощью строки пользовательского интерфейса можно предотвратить утечку пароль.
+> Безопасность — не включать пароли и другие секретные данные в сценарии PowerShell, выполнив так противоречит цели с помощью сценария PowerShell для развертывания конфиденциальных данных. [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) командлет предоставляет безопасного механизма для получения пароля. С помощью строки пользовательского интерфейса можно предотвратить утечку пароль.
 
 
 ### <a name="deploying-db-connection-strings"></a>Развертывание базы данных строки подключения
@@ -119,7 +119,7 @@ Visual Studio создает новые проекты ASP.NET, использу
 
 ## <a name="notes-for-on-premises-servers"></a>Заметки о локальных серверов
 
-При развертывании веб-серверов в локальной среде вы можете помочь безопасного секреты с [шифрование разделов конфигурации, файлов конфигурации](https://msdn.microsoft.com/en-us/library/ff647398.aspx). В качестве альтернативы можно использовать тот же подход рекомендуется для веб-сайтов Azure: оставьте настройки разработки в файлах конфигурации, а также использовать значения переменных среды для параметров рабочей. Таким образом, тем не менее, необходимо написать код приложения для функций, которые автоматически веб-сайтов Azure: извлечь параметры из переменных среды и использовать эти значения вместо параметров файла конфигурации или использовать параметры файла конфигурации при переменные среды не найдены.
+При развертывании веб-серверов в локальной среде вы можете помочь безопасного секреты с [шифрование разделов конфигурации, файлов конфигурации](https://msdn.microsoft.com/library/ff647398.aspx). В качестве альтернативы можно использовать тот же подход рекомендуется для веб-сайтов Azure: оставьте настройки разработки в файлах конфигурации, а также использовать значения переменных среды для параметров рабочей. Таким образом, тем не менее, необходимо написать код приложения для функций, которые автоматически веб-сайтов Azure: извлечь параметры из переменных среды и использовать эти значения вместо параметров файла конфигурации или использовать параметры файла конфигурации при переменные среды не найдены.
 
 <a id="addRes"></a>
 ## <a name="additional-resources"></a>Дополнительные ресурсы

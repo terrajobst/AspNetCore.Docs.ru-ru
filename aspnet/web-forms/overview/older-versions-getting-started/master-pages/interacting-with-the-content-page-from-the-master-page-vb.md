@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0a2720c8dbd1b0fb12d4000ac5e309e203128604
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a25f739e5d5717d275554909e1584bb7e7fed302
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="interacting-with-the-content-page-from-the-master-page-vb"></a>Взаимодействие с содержимым страницы на главной странице (Visual Basic)
 ====================
@@ -158,7 +158,7 @@ ms.lasthandoff: 11/10/2017
 Второй параметр, передаваемый обработчику событий может включать дополнительные сведения о событии. Хотя базовый `EventArgs` класса не передать информацию, платформа .NET Framework включает ряд классов, расширяющих `EventArgs` и включают в себя дополнительные свойства. Например `CommandEventArgs` обработчиков событий, которые отвечают на передается экземпляр `Command` события и содержит два свойства информационное: `CommandArgument` и `CommandName`.
 
 > [!NOTE]
-> Дополнительные сведения о создании вызову и обработке событий см. [события и делегаты](https://msdn.microsoft.com/en-us/library/17sde2xt.aspx) и [делегаты для событий в простой английской](http://www.codeproject.com/KB/cs/eventdelegates.aspx).
+> Дополнительные сведения о создании вызову и обработке событий см. [события и делегаты](https://msdn.microsoft.com/library/17sde2xt.aspx) и [делегаты для событий в простой английской](http://www.codeproject.com/KB/cs/eventdelegates.aspx).
 
 
 Для определения события используйте следующий синтаксис:
@@ -251,7 +251,7 @@ ms.lasthandoff: 11/10/2017
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
 - [Просмотр и обновление данных в ASP.NET](http://aspnet.4guysfromrolla.com/articles/011106-1.aspx)
-- [События и делегаты](https://msdn.microsoft.com/en-us/library/17sde2xt.aspx)
+- [События и делегаты](https://msdn.microsoft.com/library/17sde2xt.aspx)
 - [Передача сведений об между содержимым и главных страниц](http://aspnet.4guysfromrolla.com/articles/013107-1.aspx)
 - [Работа с данными в учебниках ASP.NET](../../data-access/index.md)
 

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-recommended-resources
 msc.type: authoredcontent
-ms.openlocfilehash: 8050d37cfea91701e1cae0413feb41ca9a68baff
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cb6e378d6b1de7d43bbc4272b64f9029f4e92924
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-identity-recommended-resources"></a>ASP.NET Identity, рекомендуется использовать ресурсы
 ====================
@@ -27,10 +27,10 @@ ms.lasthandoff: 11/10/2017
 > Если вы знаете значительные записи блога [stackoverflow](http://stackoverflow.com) потоком, или любую ссылку, может потребоваться, [отправьте сообщение электронной почты](mailto:aspnetue@microsoft.com?subject=Identity recommended resources) со ссылкой или просто оставьте сообщение в нижней части этой страницы.
 
 
-- [Приступая к работе с ASP.NET Identity](#gettingstarted)
+- [Начало работы с ASP.NET Identity](#gettingstarted)
 - [Новый рекомендованные статьи необходимо чтения](#feat)
 - [Промежуточные ASP.NET Identity](#adv)
-- [Видео](#video)
+- [Видеоролики](#video)
 - [Где можно задавать вопросы, запросить функции, ошибки и ночные построения отчетов](#samp)
 - [Записи в блогах на удостоверение](#blog)
 - [Поставщики пользовательского хранилища для ASP.NET Identity](#cust)
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/10/2017
 - [Развернуть приложение безопасного ASP.NET MVC с членством, OAuth и базы данных SQL на Azure](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Этот учебник добавляет развертывания Azure, как защищать приложения с ролями, как использовать API членства для добавления пользователей и ролей и дополнительные функции безопасности.
 - [Введение в ASP.NET Identity](introduction-to-aspnet-identity.md)
 - [Создание безопасного веб-приложения ASP.NET MVC 5 с журналом в сбросить пароль и подтверждение по электронной почте](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md)
-- [Приложения ASP.NET MVC 5 с помощью SMS и электронной почты двухфакторной проверки подлинности](../../../mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication.md)
+- [Приложение ASP.NET MVC 5 с двухфакторной проверкой подлинности по SMS и электронной почте](../../../mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication.md)
 
 <a id="feat"></a>
 ## <a name="new-featured-must-read-articles"></a>Новый рекомендованные статьи необходимо чтения
@@ -59,11 +59,11 @@ ms.lasthandoff: 11/10/2017
 ## <a name="intermediate-aspnet-identity"></a>Промежуточные ASP.NET Identity
 
 - [Подтверждение учетной записи и пароль восстановления в ASP.NET Identity](../features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md)
-- [Двухфакторная проверка подлинности с помощью SMS и электронной почты с ASP.NET Identity](../features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md)
-- [Миграция существующего веб-сайта из SQL членства в ASP.NET Identity](../migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)
-- [Добавление ASP.NET Identity пустой или существующий веб-форм проекта](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project.md)
-- MSDN Magazine [внешней проверки подлинности с использованием удостоверения ASP.NET](https://msdn.microsoft.com/en-us/magazine/dn745860.aspx) по Дино Эспозито
-- MSDN Magazine[первый взгляд на ASP.NET Identity](https://msdn.microsoft.com/en-us/magazine/dn605872.aspx) по Дино Эспозито
+- [Двухфакторная проверка подлинности с помощью SMS и электронной почты в ASP.NET Identity](../features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md)
+- [Миграция существующего веб-сайта из членства SQL в ASP.NET Identity](../migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)
+- [Добавление ASP.NET Identity в пустой или существующий проект веб-форм](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project.md)
+- MSDN Magazine [внешней проверки подлинности с использованием удостоверения ASP.NET](https://msdn.microsoft.com/magazine/dn745860.aspx) по Дино Эспозито
+- MSDN Magazine[первый взгляд на ASP.NET Identity](https://msdn.microsoft.com/magazine/dn605872.aspx) по Дино Эспозито
 - [ASP.NET Identity — блокировки пользователя](http://tech.trailmax.info/2014/06/asp-net-identity-user-lockout/)
 
 <a id="samp"></a>
@@ -141,7 +141,7 @@ ms.lasthandoff: 11/10/2017
 
 - Учебник: [Обзор поставщиков пользовательского хранилища для ASP.NET Identity](../extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md) по Tom FitzMacken
 - Блог: [реализации ASP.NET Identity](http://odetocode.com/blogs/scott/archive/2014/01/20/implementing-asp-net-identity.aspx)
-- Учебник:[установить основные учетные записи удостоверения и обращены внешних DB](http://typecastexception.com/post/2013/10/27/Configuring-Db-Connection-and-Code-First-Migration-for-Identity-Accounts-in-ASPNET-MVC-5-and-Visual-Studio-2013.aspx). По [ @xivSolutions ](https://twitter.com/xivSolutions).
+- Учебник:[установить основные учетные записи удостоверения и обращены внешних DB](http://typecastexception.com/post/2013/10/27/Configuring-Db-Connection-and-Code-First-Migration-for-Identity-Accounts-in-ASPNET-MVC-5-and-Visual-Studio-2013.aspx). By [@xivSolutions](https://twitter.com/xivSolutions).
 - Учебник по[: реализация поставщика хранилища ASP.NET Identity пользовательских MySQL](../extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider.md)
 - [Сущности CodeFluent](http://blog.codefluententities.com/2014/04/30/asp-net-identity-v2-and-codefluent-entities/) по [SoftFluent](http://www.softfluent.com/)
 - [Хранилище таблиц Azure](https://www.nuget.org/packages/accidentalfish.aspnet.identity.azure/) , Джеймс Randall @@.

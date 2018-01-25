@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: aaa061e61b9bab5b33083851624f0487b2cf6473
-ms.sourcegitcommit: ccf08615ad59bc6f654560de33b93396113a2eb0
+ms.openlocfilehash: ccf4329e6684d07570bfaabfaa1a570664fb2ca3
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Создание приложения ASP.NET MVC 5 с Facebook, Twitter, LinkedIn и Google OAuth2 единого входа (C#)
 ====================
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/11/2017
 6. Выберите **Web** вкладку, а затем вставьте URL-адрес SSL в **URL-адрес проекта** поле. Сохраните файл (Ctl + S). Вам потребуется этот URL-адрес для настройки проверки подлинности приложения Facebook и Google.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image10.png)
-7. Добавить [RequireHttps](https://msdn.microsoft.com/en-us/library/system.web.mvc.requirehttpsattribute.aspx) атрибут `Home` контроллера требовать все запросы должны использовать HTTPS. Более безопасный подход — добавить [RequireHttps](https://msdn.microsoft.com/en-us/library/system.web.mvc.requirehttpsattribute.aspx) фильтра в приложение. См. в разделе &quot;защиты приложения с SSL и авторизовать атрибутом&quot; в моей tutoral [создать приложение ASP.NET MVC с помощью проверки подлинности и баз данных SQL Server и развернуть в службе приложений Azure](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Ниже приведен фрагмент контроллера Home.
+7. Добавить [RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) атрибут `Home` контроллера требовать все запросы должны использовать HTTPS. Более безопасный подход — добавить [RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) фильтра в приложение. См. в разделе &quot;защиты приложения с SSL и авторизовать атрибутом&quot; в моей tutoral [создать приложение ASP.NET MVC с помощью проверки подлинности и баз данных SQL Server и развернуть в службе приложений Azure](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Ниже приведен фрагмент контроллера Home.
 
     [!code-csharp[Main](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/samples/sample1.cs?highlight=1)]
 8. Нажмите CTRL+F5, чтобы запустить приложение. Если вы уже установили сертификат в прошлом, можно пропустить оставшейся части этого раздела и перехода к [Создание приложения Google OAuth 2 и подключение приложения к проекту](#goog), в противном случае следуйте инструкциям, чтобы доверять собственной подписью сертификат, созданный IIS Express.  
@@ -278,7 +278,7 @@ ms.lasthandoff: 11/11/2017
 
 Если вход в приложение с Facebook и затем выйдите из системы и попробуйте войти снова под другой учетной записью Facebook (используя тот же браузер), вам будет немедленно вход в систему предыдущей учетной записи Facebook, который использовался. Чтобы использовать другую учетную запись, необходимо перейти к Facebook и выйдите из системы на Facebook. Это же правило применяется к любой другой стороннего проверки подлинности поставщика. Кроме того можно войти под другой учетной записью, используя другой браузер.
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 В разделе [введение Yahoo и LinkedIn OAuth поставщиков безопасности для OWIN](http://www.jerriepelser.com/blog/introducing-the-yahoo-linkedin-oauth-security-providers-for-owin/) по Jerrie Pelser Yahoo и LinkedIn инструкции. См. в Jerrie довольно кнопки входа социальных сетей для ASP.NET MVC 5 для получения enable кнопки входа социальных сетей.
 
@@ -286,7 +286,7 @@ ms.lasthandoff: 11/11/2017
 
 1. Как развернуть приложение в Azure.
 2. Как защитить приложение с ролями.
-3. Как защитить приложение с [RequireHttps](https://msdn.microsoft.com/en-us/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx) и [авторизовать](https://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) фильтры.
+3. Как защитить приложение с [RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx) и [авторизовать](https://msdn.microsoft.com/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) фильтры.
 4. Инструкции по использованию API членства для добавления пользователей и ролей.
 
 Оставьте отзыв на том, как вам понравилось этого учебника и что можно улучшить. Можно также запросить новые разделы на [показать мне как с код](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code). Можно даже запрашивает и голосовать о новых функциях, добавляемых к ASP.NET. Например, смогут проголосовать за это средство, [Создание и управление пользователями и ролями.](http://aspnet.uservoice.com/forums/41199-general-asp-net/suggestions/5646857-asp-net-identity-membership-db-tool-to-mangage-use)

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 3d6cc52f7fa3089f30f1a6bbd76593f1eca95009
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 85276377671b96e65406639c8584d9ebf8d77ff7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="advanced-entity-framework-6-scenarios-for-an-mvc-5-web-application-12-of-12"></a>Дополнительно Entity Framework 6 сценариев 5 веб-приложения MVC (12 12)
 ====================
@@ -58,9 +58,9 @@ ms.lasthandoff: 11/10/2017
 
 API первый Entity Framework кода включает методы, которые позволяют передавать команды SQL непосредственно к базе данных. Можно выбрать один из следующих параметров.
 
-- Используйте [DbSet.SqlQuery](https://msdn.microsoft.com/en-us/library/system.data.entity.dbset.sqlquery.aspx) метод для запросов, возвращающих типы сущностей. Возвращаемые объекты должно относится к типу, ожидаемому `DbSet` объекта и они, автоматически отслеживаются контекстом контекст базы данных, если не отключить отслеживание. (См. в разделе [AsNoTracking](https://msdn.microsoft.com/en-us/library/system.data.entity.dbextensions.asnotracking.aspx) метод.)
-- Используйте [Database.SqlQuery](https://msdn.microsoft.com/en-us/library/system.data.entity.database.sqlquery.aspx) метод для запросов, возвращающих типы, которые не являются сущностями. Возвращаемые данные не отслеживается контекст базы данных, даже при использовании этого метода на получение типов сущностей.
-- Используйте [Database.ExecuteSqlCommand](https://msdn.microsoft.com/en-us/library/gg679456.aspx) для команды без запроса.
+- Используйте [DbSet.SqlQuery](https://msdn.microsoft.com/library/system.data.entity.dbset.sqlquery.aspx) метод для запросов, возвращающих типы сущностей. Возвращаемые объекты должно относится к типу, ожидаемому `DbSet` объекта и они, автоматически отслеживаются контекстом контекст базы данных, если не отключить отслеживание. (См. в разделе [AsNoTracking](https://msdn.microsoft.com/library/system.data.entity.dbextensions.asnotracking.aspx) метод.)
+- Используйте [Database.SqlQuery](https://msdn.microsoft.com/library/system.data.entity.database.sqlquery.aspx) метод для запросов, возвращающих типы, которые не являются сущностями. Возвращаемые данные не отслеживается контекст базы данных, даже при использовании этого метода на получение типов сущностей.
+- Используйте [Database.ExecuteSqlCommand](https://msdn.microsoft.com/library/gg679456.aspx) для команды без запроса.
 
 Одним из преимуществ использования платформы Entity Framework является позволяет избежать прерывания кода слишком близко к конкретного метода хранения данных. Это делается путем создания SQL-запросов и команд, который избавляет от необходимости записывать их. Но существует исключительных сценариев, при необходимости выполнения конкретных запросов SQL, созданных вручную, и эти методы позволяют обрабатывать такие исключения.
 
@@ -68,7 +68,7 @@ API первый Entity Framework кода включает методы, кот
 
 ### <a name="calling-a-query-that-returns-entities"></a>Вызов запроса, которая возвращает сущности
 
-[DbSet&lt;TEntity&gt; ](https://msdn.microsoft.com/en-us/library/gg696460.aspx) класс предоставляет метод, который можно использовать для выполнения запроса, возвращающее сущность типа `TEntity`. Чтобы увидеть, как это работает, можно будет изменить код в `Details` метод `Department` контроллера.
+[DbSet&lt;TEntity&gt; ](https://msdn.microsoft.com/library/gg696460.aspx) класс предоставляет метод, который можно использовать для выполнения запроса, возвращающее сущность типа `TEntity`. Чтобы увидеть, как это работает, можно будет изменить код в `Details` метод `Department` контроллера.
 
 В *DepartmentController.cs*в `Details` метод, замените `db.Departments.FindAsync` вызов метода с `db.Departments.SqlQuery` вызова метода, как показано в следующий выделенный код:
 
@@ -84,7 +84,7 @@ API первый Entity Framework кода включает методы, кот
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample2.cs)]
 
-Предположим, что необходимо написать код, который получает эти данные непосредственно в SQL, а не с помощью LINQ. Чтобы сделать, необходимо запустить запрос, который возвращает нечто, отличное от объектов сущностей, означающее, что необходимо использовать [Database.SqlQuery](https://msdn.microsoft.com/en-us/library/system.data.entity.database.sqlquery(v=VS.103).aspx) метод.
+Предположим, что необходимо написать код, который получает эти данные непосредственно в SQL, а не с помощью LINQ. Чтобы сделать, необходимо запустить запрос, который возвращает нечто, отличное от объектов сущностей, означающее, что необходимо использовать [Database.SqlQuery](https://msdn.microsoft.com/library/system.data.entity.database.sqlquery(v=VS.103).aspx) метод.
 
 В *HomeController.cs*, замените оператор LINQ в `About` метод с инструкцией SQL, как показано в следующий выделенный код:
 
@@ -130,19 +130,19 @@ API первый Entity Framework кода включает методы, кот
 
 ![Courses_Index_page_showing_revised_credits](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image9.png)
 
-Дополнительные сведения о необработанных запросов SQL см. в разделе [необработанные запросы SQL](https://msdn.microsoft.com/en-us/data/jj592907) на сайте MSDN.
+Дополнительные сведения о необработанных запросов SQL см. в разделе [необработанные запросы SQL](https://msdn.microsoft.com/data/jj592907) на сайте MSDN.
 
 <a id="notracking"></a>
 ## <a name="no-tracking-queries"></a>Нет отслеживания запросов
 
 Если контекст базы данных получает строки таблицы и создает объекты сущности, представляющие их, по умолчанию он хранит информацию о ли сущностей в памяти синхронизированы с папкой базы данных. Данные в памяти действует как кэш и используется, если вы обновили сущность. Это кэширование необязательно, часто в веб-приложение, так как контекста экземпляров обычно кратковременных (новый один создается и удаляется для каждого запроса), а в контексте, осуществляющий чтение сущности обычно удаляется, прежде чем снова используется этой сущности.
 
-Отслеживание объектов сущностей в памяти можно отключить с помощью [AsNoTracking](https://msdn.microsoft.com/en-us/library/gg679352(v=vs.103).aspx) метод. Ниже приведены типичные сценарии, в которых может потребоваться сделать:
+Отслеживание объектов сущностей в памяти можно отключить с помощью [AsNoTracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx) метод. Ниже приведены типичные сценарии, в которых может потребоваться сделать:
 
 - Запрос получает таких больших объемов данных, отключение трассировка может заметно повысить производительность.
 - Необходимо присоединить сущности, чтобы обновить его, но ранее полученные той же сущности для другой цели. Поскольку сущность уже отслеживается контекстом базы данных, не удается присоединить сущности, который требуется изменить. Один из способов обработки этой ситуации является использование `AsNoTracking` параметр с приведенный выше запрос.
 
-Пример, демонстрирующий способ использования [AsNoTracking](https://msdn.microsoft.com/en-us/library/gg679352(v=vs.103).aspx) метода, в разделе [более ранней версии этого учебника](../../older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application.md). Данной версии учебника не задан флаг изменено на сущности, созданные связыватель модели, в метод Edit, для нее не требуется `AsNoTracking`.
+Пример, демонстрирующий способ использования [AsNoTracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx) метода, в разделе [более ранней версии этого учебника](../../older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application.md). Данной версии учебника не задан флаг изменено на сущности, созданные связыватель модели, в метод Edit, для нее не требуется `AsNoTracking`.
 
 <a id="sql"></a>
 ## <a name="examining-sql-sent-to-the-database"></a>Изучение SQL отправляемые в базу данных
@@ -204,8 +204,8 @@ API первый Entity Framework кода включает методы, кот
 Дополнительные сведения о реализации репозитория и единицы шаблонов рабочих элементов см. в разделе [версию Entity Framework 5 этого учебника ряда](../../older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application.md). Сведения о способах реализации TDD в Entity Framework 6 см. следующие ресурсы:
 
 - [Как EF6 позволяет Mocking DbSets проще](http://thedatafarm.com/data-access/how-ef6-enables-mocking-dbsets-more-easily/)
-- [Тестирование с помощью платформа имитации](https://msdn.microsoft.com/en-us/data/dn314429)
-- [Тестирование с помощью собственных тестовых дублей](https://msdn.microsoft.com/en-us/data/dn314431)
+- [Тестирование с помощью платформа имитации](https://msdn.microsoft.com/data/dn314429)
+- [Тестирование с помощью собственных тестовых дублей](https://msdn.microsoft.com/data/dn314431)
 
 <a id="proxies"></a>
 ## <a name="proxy-classes"></a>Прокси-классы
@@ -220,11 +220,11 @@ API первый Entity Framework кода включает методы, кот
 
 В большинстве случаев не требуется учитывать такое использование учетных записей-посредников, однако существуют исключения:
 
-- В некоторых сценариях может потребоваться запретить Entity Framework создавать экземпляры прокси-сервера. Например при сериализации сущностей обычно требуется классов POCO, не прокси-классы. Один из способов избежать проблем при сериализации является сериализовать объекты передачи данных (DTO) вместо объекта сущности, как показано в [с помощью веб-API с Entity Framework](../../../../web-api/overview/data/using-web-api-with-entity-framework/part-1.md) учебника. Другим способом является [отключить создание прокси-сервера](https://msdn.microsoft.com/en-US/data/jj592886.aspx).
-- При создании экземпляра класса сущностей с помощью `new` оператора, можно не получить экземпляр прокси-сервера. Это означает, что вы не получаете функциональные возможности, например отложенную загрузку и автоматическое отслеживание изменений. Как правило, это хорошо; обычно не требуется отложенную загрузку, поскольку вы создаете новую сущность, которая не находится в базе данных и обычно не требуется отслеживания изменений, если явным образом пометить сущности как `Added`. Тем не менее, если вам нужен отложенную загрузку и требуется отслеживание изменений, можно создать экземпляры этой сущности с прокси-серверов с помощью [создать](https://msdn.microsoft.com/en-us/library/gg679504.aspx) метод `DbSet` класса.
-- Можно получить фактический тип сущности из прокси-типа. Можно использовать [GetObjectType](https://msdn.microsoft.com/en-us/library/system.data.objects.objectcontext.getobjecttype.aspx) метод `ObjectContext` класса, чтобы получить фактический тип сущности экземпляра типа прокси-сервера.
+- В некоторых сценариях может потребоваться запретить Entity Framework создавать экземпляры прокси-сервера. Например при сериализации сущностей обычно требуется классов POCO, не прокси-классы. Один из способов избежать проблем при сериализации является сериализовать объекты передачи данных (DTO) вместо объекта сущности, как показано в [с помощью веб-API с Entity Framework](../../../../web-api/overview/data/using-web-api-with-entity-framework/part-1.md) учебника. Другим способом является [отключить создание прокси-сервера](https://msdn.microsoft.com/data/jj592886.aspx).
+- При создании экземпляра класса сущностей с помощью `new` оператора, можно не получить экземпляр прокси-сервера. Это означает, что вы не получаете функциональные возможности, например отложенную загрузку и автоматическое отслеживание изменений. Как правило, это хорошо; обычно не требуется отложенную загрузку, поскольку вы создаете новую сущность, которая не находится в базе данных и обычно не требуется отслеживания изменений, если явным образом пометить сущности как `Added`. Тем не менее, если вам нужен отложенную загрузку и требуется отслеживание изменений, можно создать экземпляры этой сущности с прокси-серверов с помощью [создать](https://msdn.microsoft.com/library/gg679504.aspx) метод `DbSet` класса.
+- Можно получить фактический тип сущности из прокси-типа. Можно использовать [GetObjectType](https://msdn.microsoft.com/library/system.data.objects.objectcontext.getobjecttype.aspx) метод `ObjectContext` класса, чтобы получить фактический тип сущности экземпляра типа прокси-сервера.
 
-Дополнительные сведения см. в разделе [работа с прокси-серверы](https://msdn.microsoft.com/en-us/data/JJ592886.aspx) на сайте MSDN.
+Дополнительные сведения см. в разделе [работа с прокси-серверы](https://msdn.microsoft.com/data/JJ592886.aspx) на сайте MSDN.
 
 <a id="changedetection"></a>
 ## <a name="automatic-change-detection"></a>Изменение автоматического обнаружения
@@ -241,12 +241,12 @@ API первый Entity Framework кода включает методы, кот
 - `DbContext.Entry`
 - `DbChangeTracker.Entries`
 
-Если вы отслеживаете большого числа сущностей и вызовите один из этих методов много раз в цикле, может появиться значительное повышение производительности, временно отключив автоматическое изменение отслеживания с помощью [AutoDetectChangesEnabled](https://msdn.microsoft.com/en-us/library/system.data.entity.infrastructure.dbcontextconfiguration.autodetectchangesenabled.aspx) свойство. Дополнительные сведения см. в разделе [автоматическое обнаружение изменения](https://msdn.microsoft.com/en-us/data/jj556205) в библиотеке MSDN.
+Если вы отслеживаете большого числа сущностей и вызовите один из этих методов много раз в цикле, может появиться значительное повышение производительности, временно отключив автоматическое изменение отслеживания с помощью [AutoDetectChangesEnabled](https://msdn.microsoft.com/library/system.data.entity.infrastructure.dbcontextconfiguration.autodetectchangesenabled.aspx) свойство. Дополнительные сведения см. в разделе [автоматическое обнаружение изменения](https://msdn.microsoft.com/data/jj556205) в библиотеке MSDN.
 
 <a id="validation"></a>
 ## <a name="automatic-validation"></a>Автоматическая проверка
 
-При вызове `SaveChanges` метода по умолчанию платформа Entity Framework проверяет данные в все свойства сущности все измененные перед обновлением базы данных. Если вы обновили большого числа сущностей и вы уже проверены данные, эта работа не требуется и может сделать процесс сохранения изменений требуется меньше времени, временно отключив проверки. Можно сделать при помощи этого [ValidateOnSaveEnabled](https://msdn.microsoft.com/en-us/library/system.data.entity.infrastructure.dbcontextconfiguration.validateonsaveenabled.aspx) свойство. Дополнительные сведения см. в разделе [проверки](https://msdn.microsoft.com/en-us/data/gg193959) на сайте MSDN.
+При вызове `SaveChanges` метода по умолчанию платформа Entity Framework проверяет данные в все свойства сущности все измененные перед обновлением базы данных. Если вы обновили большого числа сущностей и вы уже проверены данные, эта работа не требуется и может сделать процесс сохранения изменений требуется меньше времени, временно отключив проверки. Можно сделать при помощи этого [ValidateOnSaveEnabled](https://msdn.microsoft.com/library/system.data.entity.infrastructure.dbcontextconfiguration.validateonsaveenabled.aspx) свойство. Дополнительные сведения см. в разделе [проверки](https://msdn.microsoft.com/data/gg193959) на сайте MSDN.
 
 <a id="tools"></a>
 ## <a name="entity-framework-power-tools"></a>Entity Framework Power Tools
@@ -267,7 +267,7 @@ API первый Entity Framework кода включает методы, кот
 <a id="summary"></a>
 ## <a name="summary"></a>Сводка
 
-На этом завершается, серию учебники по использованию платформы Entity Framework в приложении ASP.NET MVC. Дополнительные сведения о работе с данными с помощью платформы Entity Framework см. в разделе [EF страницы документации в библиотеке MSDN](https://msdn.microsoft.com/en-us/data/ee712907) и [доступа к данным ASP.NET - рекомендуется использовать ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
+На этом завершается, серию учебники по использованию платформы Entity Framework в приложении ASP.NET MVC. Дополнительные сведения о работе с данными с помощью платформы Entity Framework см. в разделе [EF страницы документации в библиотеке MSDN](https://msdn.microsoft.com/data/ee712907) и [доступа к данным ASP.NET - рекомендуется использовать ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 
 Дополнительные сведения о развертывании веб-приложения после его построения см. в разделе [ASP.NET веб-развертывание - рекомендуется использовать ресурсы](../../../../whitepapers/aspnet-web-deployment-content-map.md) в библиотеке MSDN.
 

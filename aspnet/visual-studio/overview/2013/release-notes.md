@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/release-notes
 msc.type: authoredcontent
-ms.openlocfilehash: 10835c39d3bca752ed3068a23fecaaab56449e41
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7f38a0f2693aeb2a4884b9c03719b583423957a8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-and-web-tools-for-visual-studio-2013-release-notes"></a>ASP.NET и веб-инструменты Visual Studio 2013 заметки о выпуске
 ====================
@@ -36,11 +36,11 @@ ms.lasthandoff: 11/10/2017
 - [Один ASP.NET](#TOC6)
 - [Новые возможности веб-проекта](#newproj)
 - [Формирование шаблонов ASP.NET](#scaffold)
-- [Связь с браузером](#browser-link)
+- [Привязывание к браузеру](#browser-link)
 - [Усовершенствования редактора Visual Studio Web](#web-editor)
 - [Поддержка приложений веб-службы приложений Azure в Visual Studio](#waws)
 - [Веб-публикация усовершенствования](#publish)
-- [NuGet 2.7](#nuget)
+- [NuGet 2.7](#nuget)
 - [Веб-форм ASP.NET](#TOC9)
 - [ASP.NET MVC 5](#TOC10)
 - [ASP.NET Web API 2](#TOC11)
@@ -137,8 +137,8 @@ Visual Studio 2013 включает новый редактор HTML для Razo
 
 Дополнительные сведения см. в следующих ресурсах:
 
-- [Создать веб-приложение ASP.NET в службе приложений Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-get-started/)
-- [Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
+- [Создать веб-приложение ASP.NET в службе приложений Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/)
+- [Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
 
 <a id="publish"></a>
 ## <a name="web-publish-enhancements"></a>Веб-публикация усовершенствования
@@ -185,7 +185,7 @@ NuGet 2.7 включает широкий набор новых функций, 
 
 ### <a name="aspnet-identity"></a>ASP.NET Identity
 
-Шаблоны проектов MVC были обновлены для использования ASP.NET Identity для проверки подлинности и управления удостоверениями. Учебник, проверки подлинности Facebook и Google и нового членства API можно найти в [создать приложение ASP.NET MVC 5 с Facebook и Google OAuth2 и входа OpenID](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) и [Создание приложения ASP.NET MVC с помощью проверки подлинности и База данных SQL и развертывания в службе приложений Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/).
+Шаблоны проектов MVC были обновлены для использования ASP.NET Identity для проверки подлинности и управления удостоверениями. Учебник, проверки подлинности Facebook и Google и нового членства API можно найти в [создать приложение ASP.NET MVC 5 с Facebook и Google OAuth2 и входа OpenID](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) и [Создание приложения ASP.NET MVC с помощью проверки подлинности и База данных SQL и развертывания в службе приложений Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/).
 
 ### <a name="bootstrap"></a>начальной загрузки
 
@@ -666,7 +666,7 @@ ASP.NET Razor 3 включает следующие новые функции:
     В:
 
     `@Html.TextBoxFor(person => person.Age)`
-4. ASP.NET MVC 5 больше не поддерживает частичное доверие. Связывание с MVC или WebAPI двоичные файлы проектов необходимо удалить [SecurityTransparent](https://msdn.microsoft.com/en-us/library/system.security.securitytransparentattribute.aspx) атрибута и [AllowPartiallyTrustedCallers](https://msdn.microsoft.com/en-us/library/system.security.allowpartiallytrustedcallersattribute.aspx) атрибута. Удаление этих атрибутов исключит следующие ошибки компилятора.
+4. ASP.NET MVC 5 больше не поддерживает частичное доверие. Связывание с MVC или WebAPI двоичные файлы проектов необходимо удалить [SecurityTransparent](https://msdn.microsoft.com/library/system.security.securitytransparentattribute.aspx) атрибута и [AllowPartiallyTrustedCallers](https://msdn.microsoft.com/library/system.security.allowpartiallytrustedcallersattribute.aspx) атрибута. Удаление этих атрибутов исключит следующие ошибки компилятора.
 
     `Attempt by security transparent method ‘MyComponent' to access security critical type 'System.Web.Mvc.MvcHtmlString' failed. Assembly 'PagedList.Mvc, Version=4.3.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1' is marked with the AllowPartiallyTrustedCallersAttribute, and uses the level 2 security transparency model. Level 2 transparency causes all methods in AllowPartiallyTrustedCallers assemblies to become security transparent by default, which may be the cause of this exception.`
 
@@ -692,7 +692,7 @@ ASP.NET Razor 3 включает следующие новые функции:
 
 Если возникает ошибка при добавлении элемента формирования шаблонов в проект, возможно, проект может остаться в несогласованном состоянии. Некоторые изменения, внесенные быть формирование шаблонов будет выполнен откат, но другие изменения, например установленные пакеты NuGet, не будет выполнен откат. Если откат изменения конфигурации маршрутизации, пользователи получат ошибку HTTP 404 при навигации для формирования шаблонов элементов.
 
-Инструкции по решению:
+Решение
 
 - Чтобы устранить эту ошибку для MVC, добавить новый элемент формирования шаблонов и выберите зависимостей MVC 5 (минимум или полный). Этот процесс будет добавить все необходимые изменения в проект.
 - Чтобы устранить эту ошибку для веб-API:

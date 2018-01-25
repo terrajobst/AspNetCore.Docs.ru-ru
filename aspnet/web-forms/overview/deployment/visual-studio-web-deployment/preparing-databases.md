@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
 msc.type: authoredcontent
-ms.openlocfilehash: 1f19d54a5f2679f790575d520b28472d4ff3233f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: caa79725ede320c4bd3e87ac246966c57175eb8e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>ASP.NET веб-развертывания с помощью Visual Studio: Подготовка к развертыванию базы данных
 ====================
@@ -52,7 +52,7 @@ LocalDB — это режим выполнения специальных SQL Se
 Для доступа к базе данных приложение Contoso университета требуется следующее программное обеспечение, должны быть развернуты вместе с приложением, так как он не включен в .NET Framework:
 
 - [Универсальные поставщики ASP.NET](http://www.hanselman.com/blog/IntroducingSystemWebProvidersASPNETUniversalProvidersForSessionMembershipRolesAndUserProfileOnSQLCompactAndSQLAzure.aspx) (включает систему членства ASP.NET для использования базы данных SQL Azure)
-- [Entity Framework](https://msdn.microsoft.com/en-us/library/gg696172.aspx)
+- [Entity Framework](https://msdn.microsoft.com/library/gg696172.aspx)
 
 Так как это программное обеспечение включаются в пакеты NuGet, проект уже настроен, чтобы нужные сборки развертываются вместе с проектом. (Эти ссылки указывают на текущие версии этих пакетов, которые могут быть более новой версии установленных в начальный проект, загруженный в этом учебнике).
 
@@ -171,12 +171,12 @@ LocalDB — это режим выполнения специальных SQL Se
 Используется для развертывания пользователи разработки в тестовой среде и конечных пользователей в промежуточной и производственной сред. Для этого вы создадите два скрипта SQL в этом учебнике, для разработки и для рабочей среды, и на следующих занятиях рассматривается следует настроить процесс публикации, для их запуска.
 
 > [!NOTE]
-> База данных членства сохраняет хэш паролей учетных записей. Чтобы развернуть учетные записи с одного компьютера на другой, необходимо убедиться, что хэширования подпрограммы не создавать разные хэши на конечном сервере не на исходном компьютере. Генераторы будут получать одинаковые хэш-коды при использовании универсальные поставщики ASP.NET до тех пор, пока не будет изменять алгоритм по умолчанию. По умолчанию алгоритм HMACSHA256 и определен в **проверки** атрибут  **[machineKey](https://msdn.microsoft.com/en-us/library/system.web.configuration.machinekeysection.aspx)**  в файле Web.config.
+> База данных членства сохраняет хэш паролей учетных записей. Чтобы развернуть учетные записи с одного компьютера на другой, необходимо убедиться, что хэширования подпрограммы не создавать разные хэши на конечном сервере не на исходном компьютере. Генераторы будут получать одинаковые хэш-коды при использовании универсальные поставщики ASP.NET до тех пор, пока не будет изменять алгоритм по умолчанию. По умолчанию алгоритм HMACSHA256 и определен в **проверки** атрибут  **[machineKey](https://msdn.microsoft.com/library/system.web.configuration.machinekeysection.aspx)**  в файле Web.config.
 
 
 Можно создать скрипты развертывания данных вручную, с помощью SQL Server Management Studio (SSMS) или с помощью стороннего средства. В остальной части этого учебника будет показано, как это можно сделать в SSMS, но если вы не хотите установить и использовать SSMS можно получить скрипты из полную версию проекта и перейдите к разделу, где они хранятся в папке решения.
 
-Чтобы установить SSMS, установите его из [центра загрузки Майкрософт: Microsoft SQL Server 2012 Express](https://www.microsoft.com/en-us/download/details.aspx?id=29062) , щелкнув [ENU\x64\SQLManagementStudio\_x64\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x64/SQLManagementStudio_x64_ENU.exe) или [ ENU\x86\SQLManagementStudio\_x86\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x86/SQLManagementStudio_x86_ENU.exe). При выборе тот для вашей системы его не удастся установить, и вы можете попробовать использовать другой.
+Чтобы установить SSMS, установите его из [центра загрузки Майкрософт: Microsoft SQL Server 2012 Express](https://www.microsoft.com/download/details.aspx?id=29062) , щелкнув [ENU\x64\SQLManagementStudio\_x64\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x64/SQLManagementStudio_x64_ENU.exe) или [ ENU\x86\SQLManagementStudio\_x86\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x86/SQLManagementStudio_x86_ENU.exe). При выборе тот для вашей системы его не удастся установить, и вы можете попробовать использовать другой.
 
 (Обратите внимание, что для загрузки размером 600 мегабайт. Он может занять много времени для установки и требуют перезагрузки компьютера.)
 
@@ -231,7 +231,7 @@ LocalDB — это режим выполнения специальных SQL Se
 
 ## <a name="more-information"></a>Дополнительные сведения
 
-Дополнительные сведения о NuGet см. в разделе [Управление библиотеками проектов с помощью NuGet](https://msdn.microsoft.com/en-us/magazine/hh547106.aspx) и [документации по NuGet](http://docs.nuget.org/docs/start-here/overview). Если вы не хотите использовать NuGet, необходимо узнать, как анализировать пакет NuGet, чтобы определить, что делает при установке. (Например, она может настроить *Web.config* преобразования, настраивать сценарии PowerShell для выполнения во время сборки и т. д.) Дополнительные сведения о работе NuGet см. в разделе [создания и публикации пакета](http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package) и [файла конфигурации и преобразования кода источника](http://docs.nuget.org/docs/creating-packages/configuration-file-and-source-code-transformations).
+Дополнительные сведения о NuGet см. в разделе [Управление библиотеками проектов с помощью NuGet](https://msdn.microsoft.com/magazine/hh547106.aspx) и [документации по NuGet](http://docs.nuget.org/docs/start-here/overview). Если вы не хотите использовать NuGet, необходимо узнать, как анализировать пакет NuGet, чтобы определить, что делает при установке. (Например, она может настроить *Web.config* преобразования, настраивать сценарии PowerShell для выполнения во время сборки и т. д.) Дополнительные сведения о работе NuGet см. в разделе [создания и публикации пакета](http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package) и [файла конфигурации и преобразования кода источника](http://docs.nuget.org/docs/creating-packages/configuration-file-and-source-code-transformations).
 
 >[!div class="step-by-step"]
 [Назад](introduction.md)

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 5b4904037838441942ea266ce71d735642d0a717
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7412b32ac29179dfa319544781d4c7165c58196b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="async-and-stored-procedures-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Async и хранимых процедур с платформой Entity Framework в приложении ASP.NET MVC
 ====================
@@ -128,11 +128,11 @@ ms.lasthandoff: 11/10/2017
 
     ![Отдел Insert SP](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
-Код сначала создает имена по умолчанию хранимых процедур. При использовании существующей базы данных, может потребоваться настроить имен хранимых процедур для использования хранимых процедур в базе данных уже определен. Сведения о том, как это сделать, см. в разделе [Entity Framework код первого вставки/обновления/удаления хранимых процедур](https://msdn.microsoft.com/en-us/data/dn468673).
+Код сначала создает имена по умолчанию хранимых процедур. При использовании существующей базы данных, может потребоваться настроить имен хранимых процедур для использования хранимых процедур в базе данных уже определен. Сведения о том, как это сделать, см. в разделе [Entity Framework код первого вставки/обновления/удаления хранимых процедур](https://msdn.microsoft.com/data/dn468673).
 
 Если вы хотите настроить, что созданный хранимых процедур не, можно редактировать формирования шаблонов код для миграций `Up` метод, который создает хранимую процедуру. В этом случае изменения будут отражены каждый раз, когда, выполняется миграция и будут применяться в производственной базе данных, миграция выполняется автоматически в производственной среде после развертывания.
 
-Чтобы изменить существующую хранимую процедуру, которая была создана в предыдущей миграции можно использовать для создания пустого миграции команды Add-Migration и вручную написать код, вызывающий [AlterStoredProcedure](https://msdn.microsoft.com/en-us/library/system.data.entity.migrations.dbmigration.alterstoredprocedure.aspx) метод .
+Чтобы изменить существующую хранимую процедуру, которая была создана в предыдущей миграции можно использовать для создания пустого миграции команды Add-Migration и вручную написать код, вызывающий [AlterStoredProcedure](https://msdn.microsoft.com/library/system.data.entity.migrations.dbmigration.alterstoredprocedure.aspx) метод .
 
 ## <a name="deploy-to-azure"></a>Развертывание в Azure
 

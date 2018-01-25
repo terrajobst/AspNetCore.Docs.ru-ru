@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: d36ce4e2735bdc73e8731eae27346edec47998cf
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a58b4a4893fca66800c012bebae4a8bbfedf7a6a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-validation-to-the-model-vb"></a>Добавление проверки для модели (Visual Basic)
 ====================
@@ -47,13 +47,13 @@ ms.lasthandoff: 11/10/2017
 
 Сначала добавить некоторую логику проверки для `Movie` класса.
 
-Откройте *Movie.vb* файла. Добавить `Imports` инструкции в верхней части файла, который ссылается на [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) пространство имен:
+Откройте *Movie.vb* файла. Добавить `Imports` инструкции в верхней части файла, который ссылается на [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) пространство имен:
 
 [!code-vb[Main](adding-validation-to-the-model/samples/sample1.vb)]
 
 Пространство имен является частью .NET Framework. Она предоставляет встроенные набор атрибутов проверки, которые декларативно применяются к любому классу или свойству.
 
-Теперь обновите `Movie` класса, чтобы воспользоваться преимуществами встроенной [ `Required` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx), [ `StringLength` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx), и [ `Range` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.rangeattribute.aspx) атрибутов проверки . В качестве примера для применения атрибутов, используйте следующий код.
+Теперь обновите `Movie` класса, чтобы воспользоваться преимуществами встроенной [ `Required` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx), [ `StringLength` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx), и [ `Range` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx) атрибутов проверки . В качестве примера для применения атрибутов, используйте следующий код.
 
 [!code-vb[Main](adding-validation-to-the-model/samples/sample2.vb)]
 
@@ -101,11 +101,11 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="adding-formatting-to-the-movie-model"></a>Добавление форматирования к модели фильма
 
-Откройте *Movie.vb* файла. [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) Пространство имен содержит атрибуты форматирования помимо встроенный набор атрибутов проверки. Примените [ `DisplayFormat` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx) атрибута и [ `DataType` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx) значение перечисления для даты выпуска и поля цены. В следующем коде показано `ReleaseDate` и `Price` свойства с помощью соответствующих [ `DisplayFormat` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx) атрибута.
+Откройте *Movie.vb* файла. [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) Пространство имен содержит атрибуты форматирования помимо встроенный набор атрибутов проверки. Примените [ `DisplayFormat` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) атрибута и [ `DataType` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) значение перечисления для даты выпуска и поля цены. В следующем коде показано `ReleaseDate` и `Price` свойства с помощью соответствующих [ `DisplayFormat` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) атрибута.
 
 [!code-vb[Main](adding-validation-to-the-model/samples/sample7.vb)]
 
-Кроме того, можно явно задать [ `DataFormatString` ](https://msdn.microsoft.com/en-us/library/system.string.format.aspx) значение. В следующем коде показано свойство даты выпуска с помощью строки формата даты (а именно, «d»). Это будет использовать для указания, что вы не хотите времени как часть даты выпуска.
+Кроме того, можно явно задать [ `DataFormatString` ](https://msdn.microsoft.com/library/system.string.format.aspx) значение. В следующем коде показано свойство даты выпуска с помощью строки формата даты (а именно, «d»). Это будет использовать для указания, что вы не хотите времени как часть даты выпуска.
 
 [!code-vb[Main](adding-validation-to-the-model/samples/sample8.vb)]
 

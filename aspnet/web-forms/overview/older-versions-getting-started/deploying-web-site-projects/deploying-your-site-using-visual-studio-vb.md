@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-visual-studio-vb
 msc.type: authoredcontent
-ms.openlocfilehash: af4257a91c08efc498c86aceac6fa7f64e527a74
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 362f8391f3352b3abf00045bca0c212cd850b17f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-your-site-using-visual-studio-vb"></a>Развертывание узла с помощью Visual Studio (Visual Basic)
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 
 > [!NOTE]
-> Другие средства, связанных с развертыванием, предоставляемые Visual Studio включают [веб-проекты установки](https://msdn.microsoft.com/en-us/library/wx3b589t.aspx) и [веб-развертывания проектов](https://www.microsoft.com/downloads/details.aspx?FamilyId=0AA30AE8-C73B-4BDD-BB1B-FE697256C459&amp;displaylang=en) надстройки. Веб-проекты установки пакета содержимого веб-сайта и сведения о конфигурации в единый файл MSI. Этот параметр наиболее полезен для веб-сайтов, которые развертываются в локальной сети или для компаний, торгующих предварительно упакованные веб-приложения, Установка клиентов на своих собственных веб-серверах. Надстройка Web развертывания проектов является Visual Studio надстройки, которая позволяет указывать конфигурации различия между построений для сред разработки и рабочих средах. Веб-проекты установки не рассматриваются в данной серии учебных курсов; Развертывание веб-проектов, приведены в [ *распространенные конфигурации различия между разработки и эксплуатации* ](common-configuration-differences-between-development-and-production-vb.md) учебника.
+> Другие средства, связанных с развертыванием, предоставляемые Visual Studio включают [веб-проекты установки](https://msdn.microsoft.com/library/wx3b589t.aspx) и [веб-развертывания проектов](https://www.microsoft.com/downloads/details.aspx?FamilyId=0AA30AE8-C73B-4BDD-BB1B-FE697256C459&amp;displaylang=en) надстройки. Веб-проекты установки пакета содержимого веб-сайта и сведения о конфигурации в единый файл MSI. Этот параметр наиболее полезен для веб-сайтов, которые развертываются в локальной сети или для компаний, торгующих предварительно упакованные веб-приложения, Установка клиентов на своих собственных веб-серверах. Надстройка Web развертывания проектов является Visual Studio надстройки, которая позволяет указывать конфигурации различия между построений для сред разработки и рабочих средах. Веб-проекты установки не рассматриваются в данной серии учебных курсов; Развертывание веб-проектов, приведены в [ *распространенные конфигурации различия между разработки и эксплуатации* ](common-configuration-differences-between-development-and-production-vb.md) учебника.
 
 
 ## <a name="deploying-your-site-using-the-copy-web-site-tool"></a>Развертывание узла с помощью средства копирования веб-сайта
@@ -150,11 +150,11 @@ ms.lasthandoff: 11/10/2017
 
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
-- [Копирование веб-сайта с помощью средства копирования веб-сайта](https://msdn.microsoft.com/en-us/library/1cc82atw.aspx)
+- [Копирование веб-сайта с помощью средства копирования веб-сайта](https://msdn.microsoft.com/library/1cc82atw.aspx)
 - [Как I: следует развертывать веб-сайта с помощью средства копирования веб-сайта](../../../videos/how-do-i/how-do-i-deploy-a-web-site-using-the-copy-web-site-tool.md) (видео)
-- [Практическое руководство: Публикация проектов веб-приложений](https://msdn.microsoft.com/en-us/library/aa983453.aspx)
-- [Практическое руководство: Публикация веб-сайтов](https://msdn.microsoft.com/en-us/library/20yh9f1b.aspx)
-- [Проекты установки и развертывания в Visual Studio](https://msdn.microsoft.com/en-us/library/wx3b589t.aspx)
+- [Практическое руководство: Публикация проектов веб-приложений](https://msdn.microsoft.com/library/aa983453.aspx)
+- [Практическое руководство: Публикация веб-сайтов](https://msdn.microsoft.com/library/20yh9f1b.aspx)
+- [Проекты установки и развертывания в Visual Studio](https://msdn.microsoft.com/library/wx3b589t.aspx)
 
 >[!div class="step-by-step"]
 [Назад](deploying-your-site-using-an-ftp-client-vb.md)

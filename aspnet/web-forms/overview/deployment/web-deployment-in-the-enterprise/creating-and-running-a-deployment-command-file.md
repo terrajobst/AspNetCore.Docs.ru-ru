@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file
 msc.type: authoredcontent
-ms.openlocfilehash: 729b4fa4c461eedbd0447371102010451eb51586
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bc31bf55b29661816e0ca9a50b51b0abc3eb2c98
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-and-running-a-deployment-command-file"></a>Создание и запуск командный файл развертывания
 ====================
@@ -116,7 +116,7 @@ ms.lasthandoff: 11/10/2017
 > Рекомендации по настройке файлы проекта, относящихся к среде для серверных сред см. в разделе [настройки свойств развертывания для целевой среды](../configuring-server-environments-for-web-deployment/configuring-deployment-properties-for-a-target-environment.md).
 
 
-Можно также настроить процесс построения для каждой среды путем переопределения свойств, а также другими параметрами в команде MSBuild. Дополнительные сведения см. в разделе [Справочник по командной строке MSBuild](https://msdn.microsoft.com/en-us/library/ms164311.aspx).
+Можно также настроить процесс построения для каждой среды путем переопределения свойств, а также другими параметрами в команде MSBuild. Дополнительные сведения см. в разделе [Справочник по командной строке MSBuild](https://msdn.microsoft.com/library/ms164311.aspx).
 
 >[!div class="step-by-step"]
 [Назад](deploying-database-projects.md)

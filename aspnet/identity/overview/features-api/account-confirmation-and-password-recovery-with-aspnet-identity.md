@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 5fa7b6227eb88aa6766ab8776bc8a3cc1111b942
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 548baaaa06980fb793c079b66b6edc34422eb579
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>Подтверждение учетной записи и пароль восстановления в ASP.NET Identity (C#)
 ====================
@@ -78,7 +78,7 @@ ms.lasthandoff: 11/10/2017
 
 1. Создайте новый проект веб-ASP.NET и выберите шаблон MVC. Web Forms также поддерживает ASP.NET Identity, так что можно выполнить аналогичные шаги в приложении web forms.
 2. Оставить как проверку подлинности по умолчанию **индивидуальные учетные записи**.
-3. Запустите приложение, нажмите кнопку **зарегистрировать** ссылку и регистрации пользователя. На этом этапе является проверку только в электронном письме с [[EmailAddress]](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx) атрибута.
+3. Запустите приложение, нажмите кнопку **зарегистрировать** ссылку и регистрации пользователя. На этом этапе является проверку только в электронном письме с [[EmailAddress]](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx) атрибута.
 4. В обозревателе серверов, перейдите к **Connections\DefaultConnection\Tables\AspNetUsers данные**, щелкните правой кнопкой мыши и выберите **откройте определение таблицы**.
 
     На следующем рисунке показана `AspNetUsers` схемы:
@@ -94,7 +94,7 @@ ms.lasthandoff: 11/10/2017
 
 [Класс запуска OWIN](../../../aspnet/overview/owin-and-katana/owin-startup-class-detection.md) ( *файла Startup.cs* ) вызывается, когда приложение запускается и вызывает `ConfigureAuth` метод в *приложения\_Start\Startup.Auth.cs*, который настраивает конвейер OWIN и инициализирует ASP.NET Identity. Изучите `ConfigureAuth` метод. Каждый `CreatePerOwinContext` вызов регистрирует обратный вызов (сохранен в `OwinContext`), будет вызван один раз на каждый запрос для создания экземпляра заданного типа. Можно установить точку останова в конструкторе и `Create` метод каждого типа (`ApplicationDbContext, ApplicationUserManager`) и проверьте, они вызываются при каждом запросе. Экземпляр `ApplicationDbContext` и `ApplicationUserManager` хранится в контекст OWIN, который можно вызвать в приложении. ASP.NET Identity перехватчиков событий в конвейер OWIN по промежуточного слоя файлов cookie. Дополнительные сведения см. в разделе [за управление временем существования запроса для класса UserManager в ASP.NET Identity](https://blogs.msdn.com/b/webdev/archive/2014/02/12/per-request-lifetime-management-for-usermanager-class-in-asp-net-identity.aspx).
 
-При изменении профиля безопасности новой метки безопасности создается и сохраняется в `SecurityStamp` поле *AspNetUsers* таблицы. Следует отметить, что `SecurityStamp` поля отличается от безопасности cookie. Файл cookie безопасности не хранятся в `AspNetUsers` таблицы (или любом другом месте в базе данных удостоверений). Маркер безопасности cookie самостоятельно подписывается с помощью [DPAPI](https://msdn.microsoft.com/en-us/library/system.security.cryptography.protecteddata.aspx) и создается `UserId, SecurityStamp` и сведения о времени истечения срока действия.
+При изменении профиля безопасности новой метки безопасности создается и сохраняется в `SecurityStamp` поле *AspNetUsers* таблицы. Следует отметить, что `SecurityStamp` поля отличается от безопасности cookie. Файл cookie безопасности не хранятся в `AspNetUsers` таблицы (или любом другом месте в базе данных удостоверений). Маркер безопасности cookie самостоятельно подписывается с помощью [DPAPI](https://msdn.microsoft.com/library/system.security.cryptography.protecteddata.aspx) и создается `UserId, SecurityStamp` и сведения о времени истечения срока действия.
 
 По промежуточного слоя файлов cookie проверяет куки-файл для каждого запроса. `SecurityStampValidator` Метод в `Startup` класс обращений к базе данных и периодически проверяет метку безопасности в соответствии с `validateInterval`. Это происходит каждые 30 минут (в нашем примере) только изменения профиля безопасности. Чтобы свести к минимуму обращений к базе данных был выбран интервал 30 минут. В разделе Мои [учебника двухфакторной проверки подлинности](index.md) для получения дополнительных сведений.
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 11/10/2017
 - Двухфакторная проверка подлинности (2FA). В следующем учебнике будет рассмотрена 2FA и SMS.
 - Подключении к электронной почте и службам SMS. (SMS будет рассмотрена в следующем учебнике).
 
-`ApplicationUserManager` Класс является производным от универсального `UserManager<ApplicationUser>` класса. `ApplicationUser`является производным от [IdentityUser](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.identity.entityframework.identityuser.aspx). `IdentityUser`является производным от универсального `IdentityUser` класса:
+`ApplicationUserManager` Класс является производным от универсального `UserManager<ApplicationUser>` класса. `ApplicationUser`является производным от [IdentityUser](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework.identityuser.aspx). `IdentityUser`является производным от универсального `IdentityUser` класса:
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample1.cs)]
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample2.cs?highlight=8-9)]
 
-Выделенный код выше приводит к возникновению ошибки [ClaimsIdentity](https://msdn.microsoft.com/en-us/library/system.security.claims.claimsidentity.aspx). ASP.NET Identity и проверки подлинности файла Cookie OWIN на основе утверждений, поэтому платформа требует приложение, чтобы создать `ClaimsIdentity` для пользователя. `ClaimsIdentity`содержит сведения о всех утверждений для пользователя, такие как имя пользователя, срок действия и какие роли принадлежит пользователь. На этом этапе также можно добавить дополнительные утверждения для пользователя.
+Выделенный код выше приводит к возникновению ошибки [ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx). ASP.NET Identity и проверки подлинности файла Cookie OWIN на основе утверждений, поэтому платформа требует приложение, чтобы создать `ClaimsIdentity` для пользователя. `ClaimsIdentity`содержит сведения о всех утверждений для пользователя, такие как имя пользователя, срок действия и какие роли принадлежит пользователь. На этом этапе также можно добавить дополнительные утверждения для пользователя.
 
 OWIN `AuthenticationManager.SignIn` метод передает в `ClaimsIdentity` и выполняет вход пользователя:
 
@@ -179,13 +179,13 @@ OWIN `AuthenticationManager.SignIn` метод передает в `ClaimsIdenti
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample6.cs)]
 
-Приведенный выше код использует данные модели для создания учетной записи пользователя с помощью электронной почты и пароль. Если псевдоним электронной почты находится в хранилище данных, происходит сбой создания учетной записи и отображается форма. `GenerateEmailConfirmationTokenAsync` Метод создает токен безопасности подтверждения и сохраняет его в хранилище данных ASP.NET Identity. [Url.Action](https://msdn.microsoft.com/en-us/library/dd505232(v=vs.118).aspx) метод Создание ссылки, содержащей `UserId` и токена подтверждения. Эта ссылка затем отправляется сообщение для пользователя, пользователь может щелкнуть ссылку в свое приложение электронной почты, чтобы подтвердить свою учетную запись.
+Приведенный выше код использует данные модели для создания учетной записи пользователя с помощью электронной почты и пароль. Если псевдоним электронной почты находится в хранилище данных, происходит сбой создания учетной записи и отображается форма. `GenerateEmailConfirmationTokenAsync` Метод создает токен безопасности подтверждения и сохраняет его в хранилище данных ASP.NET Identity. [Url.Action](https://msdn.microsoft.com/library/dd505232(v=vs.118).aspx) метод Создание ссылки, содержащей `UserId` и токена подтверждения. Эта ссылка затем отправляется сообщение для пользователя, пользователь может щелкнуть ссылку в свое приложение электронной почты, чтобы подтвердить свою учетную запись.
 
 <a id="email"></a>
 
 ## <a name="set-up-email-confirmation"></a>Настройка подтверждение по электронной почте
 
-Последовательно выберите пункты [страницу регистрации Azure SendGrid](https://azure.microsoft.com/en-us/gallery/store/sendgrid/sendgrid-azure/) и зарегистрировать для получения бесплатной учетной записи. Добавьте код, аналогичный приведенному ниже, чтобы настроить SendGrid:
+Последовательно выберите пункты [страницу регистрации Azure SendGrid](https://azure.microsoft.com/gallery/store/sendgrid/sendgrid-azure/) и зарегистрировать для получения бесплатной учетной записи. Добавьте код, аналогичный приведенному ниже, чтобы настроить SendGrid:
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample7.cs?highlight=5)]
 
@@ -193,7 +193,7 @@ OWIN `AuthenticationManager.SignIn` метод передает в `ClaimsIdenti
 > Клиенты электронной почты часто принимают только текстовые сообщения (HTML). Необходимо предоставить сообщение в текст или HTML. В приведенном выше примере SendGrid это делается с `myMessage.Text` и `myMessage.Html` приведенного выше кода.
 
 
-Ниже показано, как отправить по электронной почте с помощью [MailMessage](https://msdn.microsoft.com/en-us/library/system.net.mail.mailmessage.aspx) класса where `message.Body` возвращает только по ссылке.
+Ниже показано, как отправить по электронной почте с помощью [MailMessage](https://msdn.microsoft.com/library/system.net.mail.mailmessage.aspx) класса where `message.Body` возвращает только по ссылке.
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample8.cs)]
 
@@ -238,7 +238,7 @@ OWIN `AuthenticationManager.SignIn` метод передает в `ClaimsIdenti
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Обзор поставщиков пользовательского хранилища для ASP.NET Identity](../extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md)
+- [Обзор пользовательских поставщиков хранилищ для ASP.NET Identity](../extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md)
 - [Приложение MVC 5 с Facebook, Twitter, LinkedIn и входа в Google OAuth2](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) также показано, как добавить данные профиля в таблицу пользователей.
 - [ASP.NET MVC и удостоверение 2.0: представление об основах](http://typecastexception.com/post/2014/04/20/ASPNET-MVC-and-Identity-20-Understanding-the-Basics.aspx) , Джон Atten.
 - [Введение в ASP.NET Identity](../getting-started/introduction-to-aspnet-identity.md)

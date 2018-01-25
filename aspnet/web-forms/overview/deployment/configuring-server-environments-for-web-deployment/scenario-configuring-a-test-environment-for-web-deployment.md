@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-test-environment-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 008b9cd081152e6a378d0fa2e08497a6771fd9b5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 23e317c6e0b6daf2d7937b73738e5cb6fa32cde2
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="scenario-configuring-a-test-environment-for-web-deployment"></a>Сценарий: Настройка тестовой среды для веб-развертывания
 ====================
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/10/2017
 - Настройка тестов веб-сервера для поддержки развертывания с помощью обработчика веб-развертывания.
 
 > [!NOTE]
-> Можно также использовать [развертывание Web по запросу](https://technet.microsoft.com/en-us/library/ee517345(WS.10).aspx) («временной агент»). Это похоже на подход с использованием удаленного агента с точки зрения требований и ограничений.
+> Можно также использовать [развертывание Web по запросу](https://technet.microsoft.com/library/ee517345(WS.10).aspx) («временной агент»). Это похоже на подход с использованием удаленного агента с точки зрения требований и ограничений.
 
 
 В этом случае разработчики имеют права администратора на целевых серверах, и тестовой среды не могут применяться ограничения безопасности, поэтому логичным выбором для тестирования веб-сервер для поддержки развертывания с использованием удаленного агента. Это менее сложна и требует меньше начальной настройки, чем веб-развертывания обработчик подход. Кроме того, потребуется настройка сервера базы данных для поддержки удаленного доступа и развертывания.

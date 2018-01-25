@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/working-with-ssl-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 8c631900c8c5ab6097e0cb9fd4a71abbcba1c88b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 127b336cb628e55bd59481ecb1c4df83960dc25b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="working-with-ssl-in-web-api"></a>Работа с SSL в веб-API
 ====================
@@ -72,7 +72,7 @@ SSL обеспечивает проверку подлинности с помо
 
 ### <a name="creating-a-client-certificate-for-testing"></a>Создание сертификата клиента для проверки
 
-В целях тестирования можно использовать [MakeCert.exe](https://msdn.microsoft.com/en-US/library/bfsktky3.aspx) Создание сертификата клиента. Сначала создайте тестовым корневым центром.
+В целях тестирования можно использовать [MakeCert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx) Создание сертификата клиента. Сначала создайте тестовым корневым центром.
 
 [!code-console[Main](working-with-ssl-in-web-api/samples/sample4.cmd)]
 
@@ -95,6 +95,6 @@ Makecert предложит ввести пароль для закрытого 
 
 ### <a name="using-client-certificates-in-web-api"></a>Использование сертификатов клиентов в веб-API
 
-На стороне сервера можно получить сертификат клиента, вызвав [GetClientCertificate](https://msdn.microsoft.com/en-us/library/system.net.http.httprequestmessageextensions.getclientcertificate.aspx) в сообщении запроса. Метод возвращает значение null, если нет сертификата клиента. В противном случае он возвращает **X509Certificate2** экземпляра. Этот объект можно используйте для получения сведений из сертификатов, такие как издатель и субъект. Затем эти сведения можно использовать для проверки подлинности или авторизации.
+На стороне сервера можно получить сертификат клиента, вызвав [GetClientCertificate](https://msdn.microsoft.com/library/system.net.http.httprequestmessageextensions.getclientcertificate.aspx) в сообщении запроса. Метод возвращает значение null, если нет сертификата клиента. В противном случае он возвращает **X509Certificate2** экземпляра. Этот объект можно используйте для получения сведений из сертификатов, такие как издатель и субъект. Затем эти сведения можно использовать для проверки подлинности или авторизации.
 
 [!code-csharp[Main](working-with-ssl-in-web-api/samples/sample6.cs)]

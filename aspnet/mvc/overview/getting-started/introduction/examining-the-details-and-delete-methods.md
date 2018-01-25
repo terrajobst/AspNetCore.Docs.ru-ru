@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: 6d7d0fe5bd2f6a6bd7f9c7ca04a8f142223ccf8e
-ms.sourcegitcommit: d1d8071d4093bf2444b5ae19d6e45c3d187e338b
+ms.openlocfilehash: a4e2b075497e08334183519bf8942e4af6f7a727
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/19/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="examining-the-details-and-delete-methods"></a>Изучение сведений и методы удаления
 ====================
@@ -62,9 +62,9 @@ ms.lasthandoff: 11/19/2017
 
 ![](examining-the-details-and-delete-methods/_static/image2.png)
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
-После построения и тестирования веб-приложения, следующим шагом является предоставление другим пользователям для использования в Интернете. Чтобы сделать это, необходимо развернуть его на веб-поставщик услуг размещения. Корпорация Майкрософт предлагает бесплатные веб-размещения для до 10 веб-сайтов в [освободить пробной учетной записи Azure](https://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A443DD604). Я рекомендую вы выполните my учебника [развернуть приложение для защиты ASP.NET MVC с членством, OAuth и базы данных SQL на Azure](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Отлично учебник — Tom Dykstra промежуточного уровня [Создание модели данных Entity Framework для приложения ASP.NET MVC](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). [StackOverflow](http://stackoverflow.com/help) и [форумы по ASP.NET MVC](https://forums.asp.net/1146.aspx) являются лучшие помещает задавать вопросы. Выполните [мне](https://twitter.com/RickAndMSFT) в twitter, поэтому можно получить обновления на Мои последние учебники.
+После построения и тестирования веб-приложения, следующим шагом является предоставление другим пользователям для использования в Интернете. Чтобы сделать это, необходимо развернуть его на веб-поставщик услуг размещения. Корпорация Майкрософт предлагает бесплатные веб-размещения для до 10 веб-сайтов в [освободить пробной учетной записи Azure](https://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A443DD604). Я рекомендую вы выполните my учебника [развернуть приложение для защиты ASP.NET MVC с членством, OAuth и базы данных SQL на Azure](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Отлично учебник — Tom Dykstra промежуточного уровня [Создание модели данных Entity Framework для приложения ASP.NET MVC](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). [StackOverflow](http://stackoverflow.com/help) и [форумы по ASP.NET MVC](https://forums.asp.net/1146.aspx) являются лучшие помещает задавать вопросы. Выполните [мне](https://twitter.com/RickAndMSFT) в twitter, поэтому можно получить обновления на Мои последние учебники.
 
 Отзыв приветствия.
 

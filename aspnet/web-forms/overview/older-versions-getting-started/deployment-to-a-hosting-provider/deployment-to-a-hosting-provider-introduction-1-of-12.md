@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 7c03453e64cfc065d9f424702cc5af373e9bf536
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9c0edb301de85d15b9a3527382b72211f6f3d3ec
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-introduction---1-of-12"></a>Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio: введение - 1, 12
 ====================
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="deploying-web-site-projects"></a>Развертывание проектов веб-сайтов
 
-Университет Contoso является проект веб-приложения Visual Studio. Большинство методов развертывания и средства, которые демонстрируются в данном учебнике не применяются к [проектов веб-сайтов](https://msdn.microsoft.com/en-us/library/dd547590.aspx). Сведения о развертывании проектов веб-сайтов см. в разделе [Карта содержимого развертывания ASP.NET](https://msdn.microsoft.com/en-us/library/bb386521.aspx#deployment_for_web_site_projects).
+Университет Contoso является проект веб-приложения Visual Studio. Большинство методов развертывания и средства, которые демонстрируются в данном учебнике не применяются к [проектов веб-сайтов](https://msdn.microsoft.com/library/dd547590.aspx). Сведения о развертывании проектов веб-сайтов см. в разделе [Карта содержимого развертывания ASP.NET](https://msdn.microsoft.com/library/bb386521.aspx#deployment_for_web_site_projects).
 
 ## <a name="deploying-aspnet-mvc-projects"></a>Развертывание проектов ASP.NET MVC
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 11/10/2017
 
 Запустите Visual Studio, откройте проект и нажмите клавиши CTRL + F5, чтобы запустить его.
 
-[![Home_Page](deployment-to-a-hosting-provider-introduction-1-of-12/_static/image2.png)](deployment-to-a-hosting-provider-introduction-1-of-12/_static/image1.png)
+[![Home_page](deployment-to-a-hosting-provider-introduction-1-of-12/_static/image2.png)](deployment-to-a-hosting-provider-introduction-1-of-12/_static/image1.png)
 
 Страницы веб-сайта, доступны в строке меню и позволяют выполнять следующие функции:
 

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: 5054f932d05fb612a6e18a81274719d7e249b77b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4de0b52e0b4ae7ce00e7b07bce2decfc5068964a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="building-real-world-cloud-apps-with-azure"></a>Создание реальных облачных приложений в Azure
 ====================
@@ -103,7 +103,7 @@ ms.lasthandoff: 11/10/2017
     - Включение высокой доступности и повышения масштабируемости путем слабо взаимозависимость рабочих и веб-уровни.
     - Демонстрация: Очереди хранилища Azure в приложении ее исправить.
 - [Несколько облачных приложений шаблоны и рекомендации](more-patterns-and-guidance.md).
-- [Приложение: Исправление его образец приложения](the-fix-it-sample-application.md)
+- [Приложение. Пример приложения для устранения проблем](the-fix-it-sample-application.md)
 
     - Известные проблемы
     - Рекомендации
@@ -155,7 +155,7 @@ ms.lasthandoff: 11/10/2017
 
 Все это выполняется автоматически. Все, что нужно сделать — создать веб-сайт и развертывания приложения, с помощью Windows PowerShell, Visual Studio или портала управления Azure.
 
-Быстрый и простой пошаговый учебник, показано, как создать веб-приложение в Visual Studio и развернуть ее на веб-сайте Azure см. в разделе [приступить к работе с Azure и ASP.NET](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-get-started/).
+Быстрый и простой пошаговый учебник, показано, как создать веб-приложение в Visual Studio и развернуть ее на веб-сайте Azure см. в разделе [приступить к работе с Azure и ASP.NET](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/).
 
 <a id="summary"></a>
 ## <a name="summary"></a>Сводка
@@ -168,13 +168,13 @@ ms.lasthandoff: 11/10/2017
 
 Документация:
 
-- [Веб-приложений в службе приложений Azure](https://azure.microsoft.com/en-us/services/app-service/web/). Страница портала Azure сведения о развертывании веб-приложений.
-- [Веб-приложений, облачных служб и виртуальных машин: когда использовать различные?](https://azure.microsoft.com/en-us/documentation/articles/choose-web-site-cloud-service-vm/) WAWS, как показано в этой главе — лишь одна из трех способов могут запускать веб-приложения в Azure. В этой статье описаны различия между тремя способами и дает рекомендации по выбору, которая лучше подходит для вашего сценария. Как веб-сайты облачные службы — это функция PaaS из Azure. Виртуальные машины — компонент IaaS. Объяснение PaaS и IaaS. в разделе [параметры данных](data-storage-options.md#paasiaas) главы.
+- [Веб-приложений в службе приложений Azure](https://azure.microsoft.com/services/app-service/web/). Страница портала Azure сведения о развертывании веб-приложений.
+- [Веб-приложений, облачных служб и виртуальных машин: когда использовать различные?](https://azure.microsoft.com/documentation/articles/choose-web-site-cloud-service-vm/) WAWS, как показано в этой главе — лишь одна из трех способов могут запускать веб-приложения в Azure. В этой статье описаны различия между тремя способами и дает рекомендации по выбору, которая лучше подходит для вашего сценария. Как веб-сайты облачные службы — это функция PaaS из Azure. Виртуальные машины — компонент IaaS. Объяснение PaaS и IaaS. в разделе [параметры данных](data-storage-options.md#paasiaas) главы.
 
 Видеоролики:
 
-- [Скотт Гатри начинается этап 0 — что облачной операционной системы Azure?](https://azure.microsoft.com/en-us/documentation/videos/what-is-the-cloud-os-scottgu/)
-- [Архитектура веб-сайтов — с (Stefan Schackow)](https://azure.microsoft.com/en-us/documentation/videos/why-azure-web-sites-plus-architecture/).
+- [Скотт Гатри начинается этап 0 — что облачной операционной системы Azure?](https://azure.microsoft.com/documentation/videos/what-is-the-cloud-os-scottgu/)
+- [Архитектура веб-сайтов — с (Stefan Schackow)](https://azure.microsoft.com/documentation/videos/why-azure-web-sites-plus-architecture/).
 - [Внутренние компоненты веб-сайты Azure с Нир Машковски](https://channel9.msdn.com/Shows/Web+Camps+TV/Windows-Azure-Web-Sites-Internals-with-Nir-Mashkowski).
 
 >[!div class="step-by-step"]

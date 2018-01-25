@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/using-page-inspector-in-a-visual-studio-11-beta-web-forms-project
 msc.type: authoredcontent
-ms.openlocfilehash: a2ac8334e62e6ab7af7042572cfd5950c687001b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ca8a3c194577766e56d0604323fef567d539316c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-page-inspector-for-visual-studio-2012-in-aspnet-web-forms"></a>С помощью инспектора страниц для Visual Studio 2012 в веб-форм ASP.NET
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- [Visual Studio 2012](https://www.microsoft.com/visualstudio/11/en-us) или [Visual Studio Express 2012 для Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web).
+- [Visual Studio 2012](https://www.microsoft.com/visualstudio/11) или [Visual Studio Express 2012 для Web](https://www.microsoft.com/visualstudio/11/downloads#express-web).
 
 > [!NOTE]
 > Чтобы получить последнюю версию инспектор страниц, используйте [Web Platform Installer](https://go.microsoft.com/fwlink/?LinkId=255386) для установки пакета Azure SDK для .NET 2.0.
@@ -91,7 +91,7 @@ ms.lasthandoff: 11/10/2017
 
 ![Снимите флажок с плавающей запятой средство windows ALT + TAB между Visual Studio и Незакрепленное окно инспектора страниц](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image5.png)
 
-В верхней области окна инспектора страниц показываются текущей страницы в окне браузера. На нижней панели отображаются страницы в разметке HTML в левой части экрана, а некоторые вкладки справа, где можно просмотреть различные аспекты страницы. На нижней панели аналогичен [средств разработчика F12](https://msdn.microsoft.com/en-us/ie/aa740478) в Internet Explorer. (Тем не менее, в отличие от средства разработчика можно использовать инспектор страниц непосредственно в Visual Studio.)
+В верхней области окна инспектора страниц показываются текущей страницы в окне браузера. На нижней панели отображаются страницы в разметке HTML в левой части экрана, а некоторые вкладки справа, где можно просмотреть различные аспекты страницы. На нижней панели аналогичен [средств разработчика F12](https://msdn.microsoft.com/ie/aa740478) в Internet Explorer. (Тем не менее, в отличие от средства разработчика можно использовать инспектор страниц непосредственно в Visual Studio.)
 
 ![Инспектор страниц](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image6.png)
 

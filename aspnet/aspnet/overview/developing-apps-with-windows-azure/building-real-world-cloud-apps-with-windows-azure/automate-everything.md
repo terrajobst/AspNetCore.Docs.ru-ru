@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
-ms.openlocfilehash: cf1cb7b07ffe8750724e58e4fb66854c9a033a54
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aa8bb895ed6eaa0ef4c5752f475ea7c911544ef2
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>Автоматизация все компоненты (Создание реальных облачных приложений с Azure)
 ====================
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 
 В [введение в электронных книг](introduction.md), вы видели, веб-консоли, портала управления Azure. На портале управления позволяет отслеживать и контролировать все ресурсы, которые были развернуты в Azure. Это простой способ создания и удаления службы, такие как веб-приложениями и виртуальными машинами, настройте эти службы, наблюдения за работой службы и пр. Это мощный инструмент, но с его помощью выполняется вручную. Если вы собираетесь разработки производственного приложения любого размера, и особенно в среде рабочей группы, мы рекомендуем перейти на портале пользовательского интерфейса для изучения и исследовать Azure и затем автоматизировать процессы, которые вы будете делать несколько раз.
 
-Практически все, что можно сделать вручную на портале управления или из Visual Studio можно сделать путем вызова API управления REST. Можно записать сценарии, с помощью [Windows PowerShell](https://msdn.microsoft.com/en-us/library/windowsazure/jj156055.aspx), или можно использовать это платформа с открытым исходным кодом, такие как [Chef](http://www.opscode.com/chef/) или [Puppet](http://puppetlabs.com/puppet/what-is-puppet). Можно также использовать средство командной строки Bash в среде Mac или Linux. Azure имеет сценариев API-интерфейсы для этих различных сред и его [API-интерфейса управления .NET](http://www.hanselman.com/blog/PennyPinchingInTheCloudAutomatingEverythingWithTheWindowsAzureManagementLibrariesAndNET.aspx) в случае, если требуется написать код, а не скрипт.
+Практически все, что можно сделать вручную на портале управления или из Visual Studio можно сделать путем вызова API управления REST. Можно записать сценарии, с помощью [Windows PowerShell](https://msdn.microsoft.com/library/windowsazure/jj156055.aspx), или можно использовать это платформа с открытым исходным кодом, такие как [Chef](http://www.opscode.com/chef/) или [Puppet](http://puppetlabs.com/puppet/what-is-puppet). Можно также использовать средство командной строки Bash в среде Mac или Linux. Azure имеет сценариев API-интерфейсы для этих различных сред и его [API-интерфейса управления .NET](http://www.hanselman.com/blog/PennyPinchingInTheCloudAutomatingEverythingWithTheWindowsAzureManagementLibrariesAndNET.aspx) в случае, если требуется написать код, а не скрипт.
 
 Для приложения исправить мы создали некоторые сценарии Windows PowerShell для автоматизации процессов Создание тестовой среде и развертывание проекта в этой среде, и мы рассмотрим некоторые содержимое этих сценариев.
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/10/2017
 
 По завершении сценария вы увидите в на портале управления, что было создано. Вы найдете две базы данных:
 
-![Базы данных](automate-everything/_static/image3.png)
+![Databases](automate-everything/_static/image3.png)
 
 Учетная запись хранения:
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: dadc1641e427b025d71ef567a626fa7c37c9fc08
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4f2a31f406bb1ed98e3620e216b4ad14fe59b32f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-and-responding-to-buttons-to-a-gridview-c"></a>Добавление и реагирование на кнопок в элементе управления GridView (C#)
 ====================
@@ -194,7 +194,7 @@ ms.lasthandoff: 11/10/2017
 **Рис. 15**: Добавление прекратить все продукты кнопку веб-элемент управления FormView `ItemTemplate` ([Просмотр полноразмерное изображение](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image41.png))
 
 
-При нажатии кнопки, посетив пользователя, затем следует странице обратной передачи и FormView [ `ItemCommand` событие](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.formview.itemcommand.aspx) активируется. Для выполнения пользовательского кода в ответ на эту кнопку, выбираемой, можно создать обработчик событий для этого события. Понять, однако, `ItemCommand` событие вызывается каждый раз, когда *любой* щелчке элемента управления Button, LinkButton или ImageButton Web в FormView. Это означает, что при перемещении с одной страницы на другую в FormView `ItemCommand` события; одинаково, когда пользователь нажимает кнопку Создать, изменить, или удалить в FormView, который поддерживает вставку, обновление или удаление.
+При нажатии кнопки, посетив пользователя, затем следует странице обратной передачи и FormView [ `ItemCommand` событие](https://msdn.microsoft.com/library/system.web.ui.webcontrols.formview.itemcommand.aspx) активируется. Для выполнения пользовательского кода в ответ на эту кнопку, выбираемой, можно создать обработчик событий для этого события. Понять, однако, `ItemCommand` событие вызывается каждый раз, когда *любой* щелчке элемента управления Button, LinkButton или ImageButton Web в FormView. Это означает, что при перемещении с одной страницы на другую в FormView `ItemCommand` события; одинаково, когда пользователь нажимает кнопку Создать, изменить, или удалить в FormView, который поддерживает вставку, обновление или удаление.
 
 Поскольку `ItemCommand` возникает независимо от того, какая кнопка нажата в случае, когда обработчик мы должны определять, если отказаться от всех продуктов была нажата кнопка или если он был некоторые другие кнопки. Чтобы сделать это, можно задать кнопку веб-элемента управления `CommandName` некоторые отличительные значение свойства. При нажатии кнопки, это `CommandName` значение передается в `ItemCommand` обработчика событий, позволяющие определить, успешно ли кнопку Прекратить все продукты кнопки, нажатой. Задать прекратить все продукты кнопки `CommandName` свойства DiscontinueProducts.
 
@@ -208,7 +208,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](adding-and-responding-to-buttons-to-a-gridview-cs/samples/sample7.cs)]
 
-Обратите внимание, что `SupplierID` текущего выбранного поставщика в FormView возможен доступ с помощью FormView [ `SelectedValue` свойства](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.formview.selectedvalue.aspx). `SelectedValue` Свойство возвращает значение для записи, отображаемых в FormView ключа первых данных. FormView [ `DataKeyNames` свойство](https://msdn.microsoft.com/en-us/system.web.ui.webcontrols.formview.datakeynames.aspx), указывающая данные полей, из которых данные ключевые значения извлекаются из, автоматически присвоено `SupplierID` средой Visual Studio, когда привязка ObjectDataSource FormView в шаге 2.
+Обратите внимание, что `SupplierID` текущего выбранного поставщика в FormView возможен доступ с помощью FormView [ `SelectedValue` свойства](https://msdn.microsoft.com/library/system.web.ui.webcontrols.formview.selectedvalue.aspx). `SelectedValue` Свойство возвращает значение для записи, отображаемых в FormView ключа первых данных. FormView [ `DataKeyNames` свойство](https://msdn.microsoft.com/system.web.ui.webcontrols.formview.datakeynames.aspx), указывающая данные полей, из которых данные ключевые значения извлекаются из, автоматически присвоено `SupplierID` средой Visual Studio, когда привязка ObjectDataSource FormView в шаге 2.
 
 С `ItemCommand` обработчик событий создан, теперь пора проверить страницу. Перейдите к Cooperativa de Quesos поставщика «Las Cabras» (Это пятая поставщика в FormView для меня). Этот поставщик предоставляет два продукта, Queso Cabrales и Queso Manchego La Pastora, которые являются *не* более не поддерживается.
 
@@ -244,7 +244,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-7-adding-the-increase-and-decrease-buttons-to-the-gridview"></a>Шаг 7: Добавление увеличение и уменьшение кнопок в GridView
 
-GridView (и DetailsView) оба состоят из коллекции полей. В дополнение к стояли CheckBoxFields и TemplateFields ASP.NET включает ButtonField, который, как и предполагает его имя, отображается в виде столбца с кнопкой, LinkButton или ImageButton для каждой строки. Аналогично FormView, щелкнув *любой* кнопки в GridView кнопки разбиения по страницам, изменить или удалить кнопки, кнопки сортировки и т. д обратную передачу, вызывает GridView [ `RowCommand` событие](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.rowcommand.aspx).
+GridView (и DetailsView) оба состоят из коллекции полей. В дополнение к стояли CheckBoxFields и TemplateFields ASP.NET включает ButtonField, который, как и предполагает его имя, отображается в виде столбца с кнопкой, LinkButton или ImageButton для каждой строки. Аналогично FormView, щелкнув *любой* кнопки в GridView кнопки разбиения по страницам, изменить или удалить кнопки, кнопки сортировки и т. д обратную передачу, вызывает GridView [ `RowCommand` событие](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rowcommand.aspx).
 
 Имеет ButtonField `CommandName` свойство, которое присваивает указанное значение для каждого из ее кнопок `CommandName` свойства. Как и с FormView `CommandName` значение используется `RowCommand` обработчик событий, чтобы определить, какая кнопка была нажата.
 
@@ -256,7 +256,7 @@ GridView (и DetailsView) оба состоят из коллекции поле
 **На рисунке 18**: добавление двух ButtonFields GridView
 
 
-Переместите два ButtonFields, чтобы они отображались как первые два поля GridView. Затем задайте `Text` свойства этих двух ButtonFields цену + 10% и цена -10% и `CommandName` свойства IncreasePrice и DecreasePrice, соответственно. По умолчанию ButtonField подготавливает его столбец кнопок элементов управления LinkButton. Это можно изменить, однако через ButtonField [ `ButtonType` свойства](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.buttonfieldbase.buttontype.aspx). Давайте у этих двух ButtonFields к просмотру в виде обычных кнопок; Таким образом, задать `ButtonType` свойства `Button`. На рисунке 19 диалоговое окно показывает поля, после внесения этих изменений; Далее приведен декларативная разметка GridView.
+Переместите два ButtonFields, чтобы они отображались как первые два поля GridView. Затем задайте `Text` свойства этих двух ButtonFields цену + 10% и цена -10% и `CommandName` свойства IncreasePrice и DecreasePrice, соответственно. По умолчанию ButtonField подготавливает его столбец кнопок элементов управления LinkButton. Это можно изменить, однако через ButtonField [ `ButtonType` свойства](https://msdn.microsoft.com/library/system.web.ui.webcontrols.buttonfieldbase.buttontype.aspx). Давайте у этих двух ButtonFields к просмотру в виде обычных кнопок; Таким образом, задать `ButtonType` свойства `Button`. На рисунке 19 диалоговое окно показывает поля, после внесения этих изменений; Далее приведен декларативная разметка GridView.
 
 
 ![Настройка свойств ButtonType, CommandName и ButtonFields текста](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image49.png)

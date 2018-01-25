@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4122f55c09f94d41f7caa3f86d1fbd5870417a20
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 43aed94fe5b1095af37abdae2cb4c9e67b7d7f6f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="custom-formatting-based-upon-data-vb"></a>Настраиваемое форматирование на основе данных (Visual Basic)
 ====================
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/10/2017
 [!code-vb[Main](custom-formatting-based-upon-data-vb/samples/sample3.vb)]
 
 > [!NOTE]
-> Так как `UnitPrice` может иметь `NULL` значение в в базе данных, сначала проверьте, чтобы убедиться в том, что мы не дело с `NULL` значение перед обращением к `ProductsRow`в `UnitPrice` свойство. Эта проверка важна так как при попытке доступа к `UnitPrice` со `NULL` значение `ProductsRow` выдаст исключение [StrongTypingException исключение](https://msdn.microsoft.com/en-us/library/system.data.strongtypingexception.aspx).
+> Так как `UnitPrice` может иметь `NULL` значение в в базе данных, сначала проверьте, чтобы убедиться в том, что мы не дело с `NULL` значение перед обращением к `ProductsRow`в `UnitPrice` свойство. Эта проверка важна так как при попытке доступа к `UnitPrice` со `NULL` значение `ProductsRow` выдаст исключение [StrongTypingException исключение](https://msdn.microsoft.com/library/system.data.strongtypingexception.aspx).
 
 
 ## <a name="step-3-formatting-the-unitprice-value-in-the-detailsview"></a>Шаг 3: Форматирование значения UnitPrice в DetailsView
@@ -193,7 +193,7 @@ FormView не содержит любые стояли и поэтому не и
 [!code-vb[Main](custom-formatting-based-upon-data-vb/samples/sample12.vb)]
 
 > [!NOTE]
-> Синтаксис для форматирования программный доступ к веб-элемента управления с помощью шаблона `FindControl("controlID")` и задание его свойств, относящихся к стилю может также использоваться при использовании [TemplateFields](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.templatefield(VS.80).aspx) в DetailsView или GridView элементы управления. В следующем учебном курсе мы изучим TemplateFields.
+> Синтаксис для форматирования программный доступ к веб-элемента управления с помощью шаблона `FindControl("controlID")` и задание его свойств, относящихся к стилю может также использоваться при использовании [TemplateFields](https://msdn.microsoft.com/library/system.web.ui.webcontrols.templatefield(VS.80).aspx) в DetailsView или GridView элементы управления. В следующем учебном курсе мы изучим TemplateFields.
 
 
 Фигуры. 7 показана FormView при отображении продукта которого `UnitsInStock` значение больше 10, а продукт на рис. 8 имеет его значение меньше 10.

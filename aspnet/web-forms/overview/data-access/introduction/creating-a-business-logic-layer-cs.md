@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-business-logic-layer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d117456521442972f1bfcfc15a4e8e7253e07e53
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7518ddd11a05a9e3d5df85e3cf6ceffa09a25060
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-business-logic-layer-c"></a>Создание уровня бизнес-логики (C#)
 ====================
@@ -56,7 +56,7 @@ ms.lasthandoff: 11/10/2017
 Далее добавим методы для всех классов, чтобы просто перенести методы, определенные для адаптеров таблиц из первого руководства. Теперь эти методы будут вызывать метод непосредственно в DAL; впоследствии мы вернемся для добавления необходимых бизнес-логика.
 
 > [!NOTE]
-> Если вы используете Visual Studio Standard Edition или более поздней версии (то есть вы *не* с помощью Visual Web Developer), при необходимости можно создать визуально с помощью классов [конструктор классов](https://msdn.microsoft.com/library/default.asp?url=/library/en-us/dv_vstechart/html/clssdsgnr.asp). Ссылаться на [блога конструктор класса](https://blogs.msdn.com/classdesigner/default.aspx) Дополнительные сведения об этой новой функции в Visual Studio.
+> Если вы используете Visual Studio Standard Edition или более поздней версии (то есть вы *не* с помощью Visual Web Developer), при необходимости можно создать визуально с помощью классов [конструктор классов](https://msdn.microsoft.com/library/default.asp?url=/library/dv_vstechart/html/clssdsgnr.asp). Ссылаться на [блога конструктор класса](https://blogs.msdn.com/classdesigner/default.aspx) Дополнительные сведения об этой новой функции в Visual Studio.
 
 
 Для `ProductsBLL` класса, необходимо добавить целых семь методов:
@@ -76,7 +76,7 @@ ProductsBLL.cs
 
 Методы, которые просто возвращают данные `GetProducts`, `GetProductByProductID`, `GetProductsByCategoryID`, и `GetProductBySuppliersID` довольно просты, как они напрямую обращаются к слою DAL. Хотя в некоторых сценариях может быть бизнес-правила, которые должны быть реализованы на этом уровне (например, правила авторизации на основе текущего пользователя или роли, к которой принадлежит пользователь), мы просто оставим эти методы, как-является. Для этих методов после этого МЕТОДА служит в качестве прокси-сервера, через который уровень представления обращается к данным из уровня доступа к данным.
 
-`AddProduct` И `UpdateProduct` методы и принимают в качестве параметров значения различных полей продукта и добавить новый продукт или обновить существующий, соответственно. Поскольку многие из `Product` столбцы таблицы могут принимать `NULL` значения (`CategoryID`, `SupplierID`, и `UnitPrice`, Вот некоторые из них), для тех входных параметров `AddProduct` и `UpdateProduct` , сопоставленные с такого использования столбцов [типы nullable](https://msdn.microsoft.com/en-us/library/1t3y8s4s(v=vs.80).aspx). Типы, допускающие значения NULL не знакомы с .NET 2.0 и дают, указывающее, является ли тип значения должен, вместо этого быть `null`. В C# можно пометить тип значения как тип, допускающий значение NULL, добавление `?` после типа (например `int? x;`). Ссылаться на [типы Nullable](https://msdn.microsoft.com/en-us/library/1t3y8s4s.aspx) статьи [руководство по программированию C#](https://msdn.microsoft.com/en-us/library/67ef8sbd%28VS.80%29.aspx) для получения дополнительной информации.
+`AddProduct` И `UpdateProduct` методы и принимают в качестве параметров значения различных полей продукта и добавить новый продукт или обновить существующий, соответственно. Поскольку многие из `Product` столбцы таблицы могут принимать `NULL` значения (`CategoryID`, `SupplierID`, и `UnitPrice`, Вот некоторые из них), для тех входных параметров `AddProduct` и `UpdateProduct` , сопоставленные с такого использования столбцов [типы nullable](https://msdn.microsoft.com/library/1t3y8s4s(v=vs.80).aspx). Типы, допускающие значения NULL не знакомы с .NET 2.0 и дают, указывающее, является ли тип значения должен, вместо этого быть `null`. В C# можно пометить тип значения как тип, допускающий значение NULL, добавление `?` после типа (например `int? x;`). Ссылаться на [типы Nullable](https://msdn.microsoft.com/library/1t3y8s4s.aspx) статьи [руководство по программированию C#](https://msdn.microsoft.com/library/67ef8sbd%28VS.80%29.aspx) для получения дополнительной информации.
 
 Все три метода возвращают логическое значение, указывающее, была ли строка вставки, обновления или удалить, поскольку операция не может привести к затронутые строки. Например, если разработчик страницы вызывает `DeleteProduct` передав `ProductID` для несуществующего продукта, `DELETE` инструкция выполняется в базе данных не оказывает влияния и, следовательно, `DeleteProduct` метод будет возвращать `false`.
 
@@ -86,7 +86,7 @@ ProductsBLL.cs
 
 В `UpdateProduct` сначала загружается в продукт с помощью `GetProductByProductID(productID)`. Хотя может показаться необязательным обращением к базе данных, будет подтвердить оправдан в будущих учебниках, посвященные оптимистичного параллелизма этого обращения. Чтобы убедиться, что случайно двух пользователей, которые одновременно работают на тех же данных не перезаписать изменения, выполненные другой методика оптимистичного параллелизма. Захват записи целиком также упрощает создание методов обновления в МЕТОДА, изменяющих только подмножество столбцов DataRow. При изучении `SuppliersBLL` мы рассмотрим этот пример класса.
 
-Наконец, обратите внимание, что `ProductsBLL` класс имеет [DataObject атрибут](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataobjectattribute.aspx) применяемый к нему ( `[System.ComponentModel.DataObject]` непосредственно предшествующий оператор class в верхней части файла) и методы имеют [ Атрибуты DataObjectMethodAttribute](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataobjectmethodattribute.aspx). `DataObject` Помечает класс как объект, подходящий для привязки к [управления ObjectDataSource](https://msdn.microsoft.com/en-us/library/9a4kyhcx.aspx), тогда как `DataObjectMethodAttribute` указывает назначение метода. Как будет видно в будущих учебниках, ObjectDataSource ASP.NET 2.0 позволяет легко декларативно доступа к данным из класса. Чтобы отфильтровать список возможных классов для привязки к в мастере ObjectDataSource, по умолчанию только классы, помеченные как `DataObjects` отображаются в раскрывающемся списке мастера. `ProductsBLL` Класса будет работать точно так же без этих атрибутов, но их добавления для упрощения работы в мастере ObjectDataSource.
+Наконец, обратите внимание, что `ProductsBLL` класс имеет [DataObject атрибут](https://msdn.microsoft.com/library/system.componentmodel.dataobjectattribute.aspx) применяемый к нему ( `[System.ComponentModel.DataObject]` непосредственно предшествующий оператор class в верхней части файла) и методы имеют [ Атрибуты DataObjectMethodAttribute](https://msdn.microsoft.com/library/system.componentmodel.dataobjectmethodattribute.aspx). `DataObject` Помечает класс как объект, подходящий для привязки к [управления ObjectDataSource](https://msdn.microsoft.com/library/9a4kyhcx.aspx), тогда как `DataObjectMethodAttribute` указывает назначение метода. Как будет видно в будущих учебниках, ObjectDataSource ASP.NET 2.0 позволяет легко декларативно доступа к данным из класса. Чтобы отфильтровать список возможных классов для привязки к в мастере ObjectDataSource, по умолчанию только классы, помеченные как `DataObjects` отображаются в раскрывающемся списке мастера. `ProductsBLL` Класса будет работать точно так же без этих атрибутов, но их добавления для упрощения работы в мастере ObjectDataSource.
 
 ## <a name="adding-the-other-classes"></a>Добавление других классов
 
@@ -144,7 +144,7 @@ ProductsBLL.cs
 - `ProductID`, `ProductName`, И `Discontinued` поля являются обязательными, но все остальные поля являются необязательными
 - `UnitPrice`, `UnitsInStock`, `UnitsOnOrder`, И `ReorderLevel` поля должны быть больше или равно нулю
 
-Эти правила могут и должны быть выражены на уровне базы данных. Ограничение символов на `ProductName` и `QuantityPerUnit` определяются типы данных этих столбцов в `Products` таблицы (`nvarchar(40)` и `nvarchar(20)`соответственно). Поля, являются ли обязательных и необязательных выражаются Если столбец таблицы базы данных позволяет `NULL` s. Четыре [проверочные ограничения](https://msdn.microsoft.com/en-us/library/ms188258.aspx) существует, убедитесь, что только значения больше или равно нулю можно выполняете его в `UnitPrice`, `UnitsInStock`, `UnitsOnOrder`, или `ReorderLevel` столбцов.
+Эти правила могут и должны быть выражены на уровне базы данных. Ограничение символов на `ProductName` и `QuantityPerUnit` определяются типы данных этих столбцов в `Products` таблицы (`nvarchar(40)` и `nvarchar(20)`соответственно). Поля, являются ли обязательных и необязательных выражаются Если столбец таблицы базы данных позволяет `NULL` s. Четыре [проверочные ограничения](https://msdn.microsoft.com/library/ms188258.aspx) существует, убедитесь, что только значения больше или равно нулю можно выполняете его в `UnitPrice`, `UnitsInStock`, `UnitsOnOrder`, или `ReorderLevel` столбцов.
 
 Помимо применения этих правил в базе данных они также применяется на уровне набора данных. На самом деле для каждого объекта DataTable набора DataColumns уже записали длины поля и является ли значение обязательными или необязательными. Для просмотра существующих проверки уровня полей автоматически предоставляется, перейдите в конструкторе наборов данных, выберите поле из одного из DataTable, а затем перейдите в окно «Свойства». Как показано на рис. 4, `QuantityPerUnit` DataColumn в `ProductsDataTable` имеет максимальную длину 20 символов и разрешить `NULL` значения. При попытке задать `ProductsDataRow` `QuantityPerUnit` длиннее 20 символов строки значение свойства `ArgumentException` будет создано.
 
@@ -154,7 +154,7 @@ ProductsBLL.cs
 **Рис. 4**: DataColumn обеспечивает базовую уровня полей проверку ([Просмотр полноразмерное изображение](creating-a-business-logic-layer-cs/_static/image8.png))
 
 
-К сожалению, мы не может указать проверок границ, например `UnitPrice` значение должно быть больше или равно нулю, в окне «Свойства». Чтобы предоставить такой тип проверки уровня полей необходимо создать обработчик событий для объекта DataTable [ColumnChanging](https://msdn.microsoft.com/en-us/library/system.data.datatable.columnchanging%28VS.80%29.aspx) событий. Как упоминалось в [предыдущего учебника](creating-a-data-access-layer-cs.md), объекты DataSet, DataTables и DataRow, созданные типизированного набора данных, которые могут быть расширены за счет использования разделяемых классов. При использовании этого метода можно создать `ColumnChanging` обработчик событий для `ProductsDataTable` класса. Начните с создания класса в `App_Code` папку с именем `ProductsDataTable.ColumnChanging.cs`.
+К сожалению, мы не может указать проверок границ, например `UnitPrice` значение должно быть больше или равно нулю, в окне «Свойства». Чтобы предоставить такой тип проверки уровня полей необходимо создать обработчик событий для объекта DataTable [ColumnChanging](https://msdn.microsoft.com/library/system.data.datatable.columnchanging%28VS.80%29.aspx) событий. Как упоминалось в [предыдущего учебника](creating-a-data-access-layer-cs.md), объекты DataSet, DataTables и DataRow, созданные типизированного набора данных, которые могут быть расширены за счет использования разделяемых классов. При использовании этого метода можно создать `ColumnChanging` обработчик событий для `ProductsDataTable` класса. Начните с создания класса в `App_Code` папку с именем `ProductsDataTable.ColumnChanging.cs`.
 
 
 [![Добавьте новый класс в папку App_Code](creating-a-business-logic-layer-cs/_static/image10.png)](creating-a-business-logic-layer-cs/_static/image9.png)
@@ -188,7 +188,7 @@ ProductsDataTable.ColumnChanging.cs
 
 ## <a name="responding-to-validation-errors-in-the-presentation-tier"></a>Реакция на ошибки проверки в слое представления
 
-Если вызов МЕТОДА из уровня представления мы можно принять решение для обработки исключений, которые могут вызываться или оставить их передаваясь вверх к ASP.NET (который будет вызывать `HttpApplication`в `Error` событий). Для обработки исключения, при работе с МЕТОДА программным образом, можно использовать [try... catch](https://msdn.microsoft.com/en-us/library/0yd65esw.aspx) блока, как показано в следующем примере:
+Если вызов МЕТОДА из уровня представления мы можно принять решение для обработки исключений, которые могут вызываться или оставить их передаваясь вверх к ASP.NET (который будет вызывать `HttpApplication`в `Error` событий). Для обработки исключения, при работе с МЕТОДА программным образом, можно использовать [try... catch](https://msdn.microsoft.com/library/0yd65esw.aspx) блока, как показано в следующем примере:
 
 
 [!code-csharp[Main](creating-a-business-logic-layer-cs/samples/sample7.cs)]

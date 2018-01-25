@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fa0a0f1f80a407f8f68d5fe081b5b144e2945700
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ce0daabf8d68614c530115cc37b4f088f75dba4d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="caching-data-with-the-objectdatasource-vb"></a>Кэширование данных с помощью ObjectDataSource (Visual Basic)
 ====================
@@ -44,7 +44,7 @@ ASP.NET 2.0 предлагает широкий набор параметров 
 
 Независимо от того, заданным критериям вытеснения элемента в кэше может быть *очистки для* перед выполнены условия на основе времени или на основе зависимостей. Если кэш достигнут максимальный объем, необходимо удалить существующие элементы, перед добавлением новых. Следовательно при программно работа с кэшированными данными s важных всегда предполагается, кэшированных данных может отсутствовать. Мы рассмотрим шаблон, используемый при доступе к данным из кэша программными средствами в далее в этом руководстве *кэширование данных в архитектуре*.
 
-Кэширование предоставляет экономичный способ для сжатие дополнительные производительности из приложения. Как [Smith Стивен](http://aspadvice.com/blogs/ssmith/) articulates в его статье [кэширование ASP.NET: методики и рекомендации](https://msdn.microsoft.com/en-us/library/aa478965.aspx):
+Кэширование предоставляет экономичный способ для сжатие дополнительные производительности из приложения. Как [Smith Стивен](http://aspadvice.com/blogs/ssmith/) articulates в его статье [кэширование ASP.NET: методики и рекомендации](https://msdn.microsoft.com/library/aa478965.aspx):
 
 Кэширование может быть хороший способ получения хорошей производительности достаточно не требует много времени и анализа. Требует больших затрат памяти, поэтому, если вы можете получить производительности, путем кэширования выходных данных для 30 секунд, вместо того чтобы тратить дня или недели, пытаясь оптимизировать свой код или базы данных, выполните решение для кэширования (при условии, что 30 - старых секунду данных — ОК) и перейти. Со временем плохое проектирование будут, вероятно, догонит, разумеется, следует попытаться правильно проектировать свои приложения. Но если необходимо получить хорошее достаточно производительности сегодня, кэширование может быть отличным [подход] покупки время рефакторинг впоследствии при наличии времени для этого приложения.
 
@@ -175,10 +175,10 @@ ASP.NET 2.0 предлагает широкий набор параметров 
 
 Просто задать несколько свойств, можно настроить элемент управления ObjectDataSource автоматически кэшировать его полученных данных в кэше данных ASP.NET. В следующем списке перечислены относящиеся к кэшированию свойства ObjectDataSource:
 
-- [EnableCaching](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.enablecaching.aspx) должно быть присвоено `True` для включения кэширования. Значение по умолчанию — `False`.
-- [CacheDuration](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.cacheduration.aspx) время в секундах, кэширование данных. Значение по умолчанию — 0. ObjectDataSource будет кэшировать данные, только если `EnableCaching` — `True` и `CacheDuration` задано значение больше нуля.
-- [CacheExpirationPolicy](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.cacheexpirationpolicy.aspx) может быть присвоено `Absolute` или `Sliding`. Если `Absolute`, ObjectDataSource кэширует его полученные данные для `CacheDuration` секунды; Если `Sliding`, истечения срока действия данных только после того, что не осуществлялся для `CacheDuration` секунд. Значение по умолчанию — `Absolute`.
-- [CacheKeyDependency](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.cachekeydependency.aspx) это свойство используется для связывания записей кэша ObjectDataSource s с существующие зависимости в кэше. Записи данных s ObjectDataSource может быть преждевременно извлекается из кэша, пометив его связанными `CacheKeyDependency`. Это свойство чаще всего используется для связи с кэшем s ObjectDataSource зависимость кэша SQL, раздел будет рассматриваться в будущем [с помощью кэш-зависимости SQL](using-sql-cache-dependencies-vb.md) учебника.
+- [EnableCaching](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.enablecaching.aspx) должно быть присвоено `True` для включения кэширования. Значение по умолчанию — `False`.
+- [CacheDuration](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheduration.aspx) время в секундах, кэширование данных. Значение по умолчанию — 0. ObjectDataSource будет кэшировать данные, только если `EnableCaching` — `True` и `CacheDuration` задано значение больше нуля.
+- [CacheExpirationPolicy](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheexpirationpolicy.aspx) может быть присвоено `Absolute` или `Sliding`. Если `Absolute`, ObjectDataSource кэширует его полученные данные для `CacheDuration` секунды; Если `Sliding`, истечения срока действия данных только после того, что не осуществлялся для `CacheDuration` секунд. Значение по умолчанию — `Absolute`.
+- [CacheKeyDependency](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cachekeydependency.aspx) это свойство используется для связывания записей кэша ObjectDataSource s с существующие зависимости в кэше. Записи данных s ObjectDataSource может быть преждевременно извлекается из кэша, пометив его связанными `CacheKeyDependency`. Это свойство чаще всего используется для связи с кэшем s ObjectDataSource зависимость кэша SQL, раздел будет рассматриваться в будущем [с помощью кэш-зависимости SQL](using-sql-cache-dependencies-vb.md) учебника.
 
 Позволяет настроить s `ProductsDataSource` ObjectDataSource кэширования данных на 30 секунд на абсолютной шкале. Набор ObjectDataSource s `EnableCaching` свойства `True` и его `CacheDuration` свойство до 30. Оставить `CacheExpirationPolicy` свойства, значение по умолчанию `Absolute`.
 
@@ -206,7 +206,7 @@ ASP.NET 2.0 предлагает широкий набор параметров 
 
 Каждое приложение ASP.NET имеет свой собственный кэш данных экземпляра, s, общими для всех страниц и посетителей. Это означает, что данные, хранящиеся в кэше данных ObjectDataSource аналогично совместно всех пользователей, посетите веб-сайт. Чтобы проверить это, откройте `ObjectDataSource.aspx` страницы в браузере. При первом просмотре страницы, будет отображаться текст сработавшего события Selecting (предполагается, что данные, добавленные в кэш с предыдущих тестов к этому моменту исключен). Откройте второй экземпляр браузера и скопируйте и вставьте URL-адрес из первого экземпляра браузера на второй. Во втором экземпляре браузера сработавшего события Selecting текст не отображается, поскольку он s, используя те же кэшированные данные, что и первый.
 
-При вставке его полученных данных в кэше, ObjectDataSource использует значения ключа кэша, содержащего: `CacheDuration` и `CacheExpirationPolicy` значения свойств; тип базовой бизнес-объекта, используемого ObjectDataSource, который указывается через [ `TypeName` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.typename.aspx) (`ProductsBLL`, в этом примере); значение `SelectMethod` свойства, а также имени и значения параметров в `SelectParameters` коллекции; и значения его `StartRowIndex`и `MaximumRows` свойств, которые используются при реализации [пользовательское разбиение по страницам](../paging-and-sorting/paging-and-sorting-report-data-vb.md).
+При вставке его полученных данных в кэше, ObjectDataSource использует значения ключа кэша, содержащего: `CacheDuration` и `CacheExpirationPolicy` значения свойств; тип базовой бизнес-объекта, используемого ObjectDataSource, который указывается через [ `TypeName` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.typename.aspx) (`ProductsBLL`, в этом примере); значение `SelectMethod` свойства, а также имени и значения параметров в `SelectParameters` коллекции; и значения его `StartRowIndex`и `MaximumRows` свойств, которые используются при реализации [пользовательское разбиение по страницам](../paging-and-sorting/paging-and-sorting-report-data-vb.md).
 
 Значение ключа кэша, дополнительно как сочетание этих свойств гарантирует уникальных записей кэша, как изменить эти значения. Например, в предыдущих учебниках мы рассмотрели применение хранить `ProductsBLL` класса s `GetProductsByCategoryID(categoryID)`, возвращающий всех продуктов для определенной категории. Один пользователь можете прийти к Напитки страницы и представления, который имеет `CategoryID` 1. Если элемент управления ObjectDataSource кэшированные результаты без учета `SelectParameters` значений, когда другого пользователя на страницу для просмотра приправы при Напитки продукты были в кэше, d увидят кэшированный напитков продуктов, а не приправы. Изменив ключ кэша для этих свойств, которые включают значения `SelectParameters`, ObjectDataSource обслуживает отдельную запись кэша для напитков и приправы.
 
@@ -230,8 +230,8 @@ ObjectDataSource автоматически исключает его элеме
 
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
-- [Кэширование ASP.NET: Методики и рекомендации](https://msdn.microsoft.com/en-us/library/aa478965.aspx)
-- [Кэширования руководство по архитектуре для приложений .NET Framework](https://msdn.microsoft.com/en-us/library/ee817645.aspx)
+- [Кэширование ASP.NET: Методики и рекомендации](https://msdn.microsoft.com/library/aa478965.aspx)
+- [Кэширования руководство по архитектуре для приложений .NET Framework](https://msdn.microsoft.com/library/ee817645.aspx)
 - [Кэширование вывода в ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/121306-1.aspx)
 
 ## <a name="about-the-author"></a>Об авторе

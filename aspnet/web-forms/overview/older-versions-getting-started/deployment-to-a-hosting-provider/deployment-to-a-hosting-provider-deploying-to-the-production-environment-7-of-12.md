@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: ad44968975b7929f5b0f70334deabc7238797402
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4aa6766c2c7765f499f5c5380962a5fe443e8c9d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-to-the-production-environment---7-of-12"></a>Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: развертывание в рабочей среде - 7 12
 ====================
@@ -190,7 +190,7 @@ ms.lasthandoff: 11/10/2017
 
 Убедитесь, что Elmah имеет доступ на запись к *Elmah* папку, что вызывает ошибку и отображения Elmah отчет об ошибке. Недопустимый URL-адрес, например запроса *Studentsxxx.aspx*. Как и прежде, можно увидеть *GenericErrorPage.aspx* страницы. Нажмите кнопку **Выход** связь, а затем запустите *Elmah.axd*. Вы получаете **входа в** страницы во-первых, проверяющее, что *Web.config* преобразования успешно добавлен Elmah авторизации. После входа появится отчет, отображающий только причиной ошибки.
 
-[![ELMAH.axd_Prod](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image41.png)](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image40.png)
+[![Elmah.axd_Prod](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image41.png)](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image40.png)
 
 ## <a name="testing-in-the-production-environment"></a>Тестирование в рабочей среде
 
@@ -246,7 +246,7 @@ ms.lasthandoff: 11/10/2017
 
 `User-agent` Укажет поисковые системы, в файле правила применяются все search engine поисковые (роботов) и `Disallow` строка указывает, следует для обхода нет страниц на сайте.
 
-Возможно, требуется поисковые системы для создания каталога на рабочем сайте, поэтому необходимо исключить этот файл из рабочего развертывания. Чтобы сделать это, в разделе **можно ли исключить определенные файлы или папки из развертывания?** в [вопросы и ответы ASP.NET Web приложения проекта развертывания](https://msdn.microsoft.com/en-us/library/ee942158.aspx#can_i_exclude_specific_files_or_folders_from_deployment). Убедитесь, что указан исключения, только для профиля публикации рабочей среды.
+Возможно, требуется поисковые системы для создания каталога на рабочем сайте, поэтому необходимо исключить этот файл из рабочего развертывания. Чтобы сделать это, в разделе **можно ли исключить определенные файлы или папки из развертывания?** в [вопросы и ответы ASP.NET Web приложения проекта развертывания](https://msdn.microsoft.com/library/ee942158.aspx#can_i_exclude_specific_files_or_folders_from_deployment). Убедитесь, что указан исключения, только для профиля публикации рабочей среды.
 
 Создание учетной записи второго размещения — подход к работе с тестовую среду, которая не является обязательным, но может иметь смысл дополнительную нагрузку. В этих учебниках вы перейдете для использования IIS в качестве тестовой среды.
 

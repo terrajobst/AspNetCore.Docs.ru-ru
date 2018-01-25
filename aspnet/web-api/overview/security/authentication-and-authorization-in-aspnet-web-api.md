@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/authentication-and-authorization-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 137ac45166be03ae3c4864f41666d2acd1a37dc2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2a4b5ed8a712b061b4afdf5a3adc9378dd72b37f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="authentication-and-authorization-in-aspnet-web-api"></a>Проверка подлинности и авторизация веб-API ASP.NET
 ====================
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 
 Веб-API предполагает, что происходит, проверку подлинности на узле. Для веб-размещения узел представляет IIS, который использует HTTP-модули для проверки подлинности. Можно настроить проект для использования этих модулей проверки подлинности, встроенной в IIS или ASP.NET, или написать собственный модуль HTTP для настраиваемой аутентификации.
 
-Когда узел выполняет проверку подлинности пользователя, он создает *основной*, который является [IPrincipal](https://msdn.microsoft.com/en-us/library/System.Security.Principal.IPrincipal.aspx) , представляющий контекст безопасности, в котором работает код. Узел присоединяет участника к текущему потоку, задав **Thread.CurrentPrincipal**. Участник содержит связанный **удостоверение** объект, содержащий сведения о пользователе. Если пользователь прошел проверку подлинности, **Identity.IsAuthenticated** возвращает **true**. Для анонимных запросов **свойство IsAuthenticated** возвращает **false**. Дополнительные сведения об участниках см. в разделе [безопасности на основе ролей](https://msdn.microsoft.com/en-us/library/shz8h065.aspx).
+Когда узел выполняет проверку подлинности пользователя, он создает *основной*, который является [IPrincipal](https://msdn.microsoft.com/library/System.Security.Principal.IPrincipal.aspx) , представляющий контекст безопасности, в котором работает код. Узел присоединяет участника к текущему потоку, задав **Thread.CurrentPrincipal**. Участник содержит связанный **удостоверение** объект, содержащий сведения о пользователе. Если пользователь прошел проверку подлинности, **Identity.IsAuthenticated** возвращает **true**. Для анонимных запросов **свойство IsAuthenticated** возвращает **false**. Дополнительные сведения об участниках см. в разделе [безопасности на основе ролей](https://msdn.microsoft.com/library/shz8h065.aspx).
 
 ### <a name="http-message-handlers-for-authentication"></a>Обработчики сообщений HTTP для проверки подлинности
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 11/10/2017
 <a id="auth3"></a>
 ### <a name="using-the-authorize-attribute"></a>С помощью [авторизовать] атрибута
 
-Веб-API предоставляет фильтр встроенной авторизации [AuthorizeAttribute](https://msdn.microsoft.com/en-us/library/system.web.http.authorizeattribute.aspx). Этот фильтр проверяет, является ли пользователь проверку подлинности. В противном случае возвращается код состояния HTTP 401 (не санкционировано) без вызова действия.
+Веб-API предоставляет фильтр встроенной авторизации [AuthorizeAttribute](https://msdn.microsoft.com/library/system.web.http.authorizeattribute.aspx). Этот фильтр проверяет, является ли пользователь проверку подлинности. В противном случае возвращается код состояния HTTP 401 (не санкционировано) без вызова действия.
 
 Можно применить фильтр глобально, на уровне контроллера или на уровне inidivual действий.
 

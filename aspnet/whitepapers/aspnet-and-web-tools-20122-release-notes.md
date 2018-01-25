@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet-and-web-tools-20122-release-notes
 msc.type: content
-ms.openlocfilehash: e6c940aa507d72928d71019070ded5197458a763
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 52559a47f86e572f873d4eaaab50e87eb51722fd
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-and-web-tools-20122-release-notes"></a>ASP.NET и веб-инструменты 2012.2 заметки о выпуске
 ====================
@@ -152,7 +152,7 @@ ASP.NET Web API OData в настоящее время поддерживает 
 
 #### <a name="aspnet-web-api-tracing"></a>Трассировка ASP.NET Web API
 
-Веб-API ASP.NET трассировки данные трассировки из веб-API-интерфейсы интегрируется с трассировку .NET. Теперь включен по умолчанию в шаблоне проекта веб-API. Трассировка запросов для вашего веб-API отправляется в окно вывода и становятся доступными через IntelliTrace. ASP.NET Web API Tracing позволяет трассировке сведения о веб-API при размещении в Windows Azure через интеграцию с [диагностики Windows Azure](https://msdn.microsoft.com/en-us/library/windowsazure/hh411529.aspx). Можно также установить и включить в любом приложении, с помощью пакета NuGet для трассировки ASP.NET Web API ASP.NET Web API Tracing ([http://www.nuget.org/packages/microsoft.aspnet.webapi.tracing](http://www.nuget.org/packages/microsoft.aspnet.webapi.tracing)).
+Веб-API ASP.NET трассировки данные трассировки из веб-API-интерфейсы интегрируется с трассировку .NET. Теперь включен по умолчанию в шаблоне проекта веб-API. Трассировка запросов для вашего веб-API отправляется в окно вывода и становятся доступными через IntelliTrace. ASP.NET Web API Tracing позволяет трассировке сведения о веб-API при размещении в Windows Azure через интеграцию с [диагностики Windows Azure](https://msdn.microsoft.com/library/windowsazure/hh411529.aspx). Можно также установить и включить в любом приложении, с помощью пакета NuGet для трассировки ASP.NET Web API ASP.NET Web API Tracing ([http://www.nuget.org/packages/microsoft.aspnet.webapi.tracing](http://www.nuget.org/packages/microsoft.aspnet.webapi.tracing)).
 
 Дополнительные сведения о настройке и использовании ASP.NET Web API Tracing разделе [https://go.microsoft.com/fwlink/?LinkID=269874](https://go.microsoft.com/fwlink/?LinkID=269874).
 
@@ -240,8 +240,8 @@ ASP.NET и 2012.2 средства Web поставляется NuGet 2.1 и б�
 
 OData не поддерживает имена свойств, без учета регистра в запросах OData и пути odata. Рабочие элементы в разделе:
 
-- [http://aspnetwebstack.CodePlex.com/WorkItem/366](http://aspnetwebstack.codeplex.com/workitem/366)
-- [http://aspnetwebstack.CodePlex.com/WorkItem/704](http://aspnetwebstack.codeplex.com/workitem/704)
+- [http://aspnetwebstack.codeplex.com/workitem/366](http://aspnetwebstack.codeplex.com/workitem/366)
+- [http://aspnetwebstack.codeplex.com/workitem/704](http://aspnetwebstack.codeplex.com/workitem/704)
 
 Если пользователи имеют другой регистр символов в javascript на стороне клиента и на стороне сервера, они, скорее всего, эта проблема возникает. Эта проблема присуща протокол odata. Однако многие пользователи сообщает эту проблему. Чтобы обойти ее, пользователям необходимо исправить их вариантов в URL-адрес.
 
@@ -283,7 +283,7 @@ OData не поддерживает имена свойств, без учета
 
 функция todoList.prototype.addTodo, добавьте следующий текст blacked:  
  **self.isSelected(true);**  
- self.newTodoTitle (&quot;&quot;);
+ self.newTodoTitle(&quot;&quot;);
 
 Файл index.cshtml, добавьте следующий текст blacked:  
  &lt;формы связывания данных =&quot;отправки: addTodo&quot;&gt;  

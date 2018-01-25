@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/aspnet-core-module
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 153c40f0e825ff5826e916c7ea877a25d81954f1
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 9dc2183ebbdf8b74106fe57a1dd191a57ba5d1bc
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-aspnet-core-module"></a>Введение в ASP.NET Core модуля
 
@@ -38,9 +38,9 @@ ANCM имеет собственный модуль IIS, который подк
 
 ![Модуль ASP.NET Core](aspnet-core-module/_static/ancm.png)
 
-Запросы поступают из Интернета и попадания драйвер Http.Sys режима ядра, который направляет их в службы IIS на основном порту (80) или SSL-порта (443). ANCM направляет запросы к приложению ASP.NET Core на HTTP-порта, настроенного для приложения, который не используется порт 80 или 443.
+Запросы поступают из Интернета и попадания драйвер Http.Sys режима ядра, который направляет их в службы IIS на основном порту (80) или SSL-порта (443). ANCM направляет запросы к приложению ASP.NET Core на HTTP-порт, настроенного для приложения, который не является порт 80 или 443.
 
-Kestrel прослушивает трафик, поступающий из ANCM.  ANCM указывает порт, через переменную среды во время запуска и [UseIISIntegration](#call-useiisintegration) метод настраивает сервер на прослушивание `http://localhost:{port}`. Существуют дополнительные проверки, чтобы отклонять запросы не ANCM. (ANCM не поддерживает пересылка HTTPS, поэтому запросы направляются по протоколу HTTP, даже если получен службой IIS, по протоколу HTTPS.)
+Kestrel прослушивает трафик, поступающий из ANCM.  ANCM указывает порт, через переменную среды во время запуска и [UseIISIntegration](#call-useiisintegration) метод настраивает сервер на прослушивание `http://localhost:{port}`. Существуют дополнительные проверки, чтобы отклонять запросы не ANCM. (ANCM не поддерживает пересылку по HTTPS, поэтому запросы направляются по протоколу HTTP, даже если получен службой IIS, по протоколу HTTPS.)
 
 Kestrel принимает запросы от ANCM и помещает их в конвейере ASP.NET Core по промежуточного слоя, который их обрабатывает и передает их в качестве `HttpContext` экземпляров для логики приложения. Ответы приложений, затем передаются обратно в IIS, какие отправлений их обратно в HTTP-клиента, который инициировал запросы.
 

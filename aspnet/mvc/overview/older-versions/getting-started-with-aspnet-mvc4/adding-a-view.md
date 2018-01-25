@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-view
 msc.type: authoredcontent
-ms.openlocfilehash: 4309290294b28d4c177e0193719bcff4b3f2a8cf
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 60374ddc6754f7e312ad08b420268308a9935bb4
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-a-view"></a>Добавление представления
 ====================
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](adding-a-view/samples/sample1.cs)]
 
-`Index` Описанный выше метод использует Просмотр шаблона для создания HTML-ответа в браузер. Методы контроллера (также известный как [методы действий](http://rachelappel.com/asp.net-mvc-actionresults-explained)), такие как `Index` метод выше, обычно возвращают [ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult.aspx) (или класс, производный от [ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult.aspx)), не простых типов, таких как строка.
+`Index` Описанный выше метод использует Просмотр шаблона для создания HTML-ответа в браузер. Методы контроллера (также известный как [методы действий](http://rachelappel.com/asp.net-mvc-actionresults-explained)), такие как `Index` метод выше, обычно возвращают [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult.aspx) (или класс, производный от [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult.aspx)), не простых типов, таких как строка.
 
 Добавьте в проект, Просмотр шаблона, который можно использовать с `Index` метод. Для этого щелкните правой кнопкой мыши внутри `Index` метода и нажмите кнопку **добавить представление**.
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 11/10/2017
 
 Теперь изменим название индекс представления.
 
-Откройте *MvcMovie\Views\HelloWorld\Index.cshtml*. Есть два места для внесения изменений: во-первых, текст, расположенный в заголовке обозревателя, а затем в заголовке получателя ( `<h2>` элемент). Сделайте их немного разными, чтобы видеть, какой именно фрагмент кода изменяет соответствующую часть приложения.
+Open *MvcMovie\Views\HelloWorld\Index.cshtml*. Есть два места для внесения изменений: во-первых, текст, расположенный в заголовке обозревателя, а затем в заголовке получателя ( `<h2>` элемент). Сделайте их немного разными, чтобы видеть, какой именно фрагмент кода изменяет соответствующую часть приложения.
 
 [!code-cshtml[Main](adding-a-view/samples/sample6.cshtml)]
 

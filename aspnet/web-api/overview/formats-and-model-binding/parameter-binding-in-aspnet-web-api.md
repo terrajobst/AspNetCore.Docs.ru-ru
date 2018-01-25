@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/formats-and-model-binding/parameter-binding-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: ad052570fb2f168da657cd1263d8342a59d4cab0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5aa532137436922519c86246ebfa834910ac0d86
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="parameter-binding-in-aspnet-web-api"></a>Параметр привязки веб-API ASP.NET
 ====================
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/10/2017
 
 По умолчанию веб-API использует следующие правила для привязки параметров:
 
-- Если параметр имеет тип «простой», веб-API пытается получить значение из URI. Простые типы включают .NET [типы-примитивы](https://msdn.microsoft.com/en-us/library/system.type.isprimitive.aspx) (**int**, **bool**, **двойные**, и так далее), плюс **TimeSpan**, **DateTime**, **Guid**, **десятичное**, и **строка**, *, а также* все тип с преобразователь типов для преобразования из строки. (Дополнительные сведения о преобразователях типов более поздней версии.)
+- Если параметр имеет тип «простой», веб-API пытается получить значение из URI. Простые типы включают .NET [типы-примитивы](https://msdn.microsoft.com/library/system.type.isprimitive.aspx) (**int**, **bool**, **двойные**, и так далее), плюс **TimeSpan**, **DateTime**, **Guid**, **десятичное**, и **строка**, *, а также* все тип с преобразователь типов для преобразования из строки. (Дополнительные сведения о преобразователях типов более поздней версии.)
 - Для сложных типов веб-API пытается считать значение из тела сообщения, с помощью [форматирования типа мультимедиа](media-formatters.md).
 
 Например ниже приведен типичный метод контроллера веб-API:
@@ -102,7 +102,7 @@ ms.lasthandoff: 11/10/2017
 
 Поставщик значений по умолчанию в веб-API возвращает значения из данных маршрута и строку запроса. Например, если URL-адрес является `http://localhost/api/values/1?location=48,-122`, поставщик значений создает следующие пары ключ значение:
 
-- Идентификатор = &quot;1&quot;
+- id = &quot;1&quot;
 - расположение = &quot;48,122&quot;
 
 (Я буду предполагать шаблон маршрута по умолчанию, который является &quot;api / {controller} / {id}&quot;.)
@@ -121,7 +121,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample11.cs)]
 
-Наконец, можно добавить поставщик связывателей модели для **HttpConfiguration**. Поставщик связывателей модели является просто класс фабрики, который создает связыватель модели. Можно создать путем наследования от поставщика [ModelBinderProvider](https://msdn.microsoft.com/en-us/library/system.web.http.modelbinding.modelbinderprovider.aspx) класса. Тем не менее, если ваш связыватель модели обработки одного типа, проще использовать встроенные **SimpleModelBinderProvider**, разработанный для этой цели. В следующем примере кода показано, как это сделать:
+Наконец, можно добавить поставщик связывателей модели для **HttpConfiguration**. Поставщик связывателей модели является просто класс фабрики, который создает связыватель модели. Можно создать путем наследования от поставщика [ModelBinderProvider](https://msdn.microsoft.com/library/system.web.http.modelbinding.modelbinderprovider.aspx) класса. Тем не менее, если ваш связыватель модели обработки одного типа, проще использовать встроенные **SimpleModelBinderProvider**, разработанный для этой цели. В следующем примере кода показано, как это сделать:
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample12.cs)]
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: db2b39fab9c0701c8792d48f2ed0a059b9e450ad
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9a933324b48d4117d5d4c806920f1691a7ef7849
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view-vb"></a>Изучение методы изменения и представления изменения (Visual Basic)
 ====================
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/10/2017
 
 Обратите внимание, как Просмотр шаблона `@ModelType MvcMovie.Models.Movie` инструкции в верхней части файла — это указывает, что представление ожидает модели для представления шаблона типа `Movie`.
 
-Код формирования шаблонов использует несколько *вспомогательные методы* упрощение разметки HTML. [ `Html.LabelFor` ](https://msdn.microsoft.com/en-us/library/gg401864(VS.98).aspx) Вспомогательный объект отображает имя поля (&quot;заголовок&quot;, &quot;ReleaseDate&quot;, &quot;жанр&quot;, или &quot;цены &quot;). [ `Html.EditorFor` ](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) Вспомогательный объект отображает HTML `<input>` элемента. [ `Html.ValidationMessageFor` ](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) Вспомогательный объект отображает все сообщения проверки, связанные с этим свойством.
+Код формирования шаблонов использует несколько *вспомогательные методы* упрощение разметки HTML. [ `Html.LabelFor` ](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) Вспомогательный объект отображает имя поля (&quot;заголовок&quot;, &quot;ReleaseDate&quot;, &quot;жанр&quot;, или &quot;цены &quot;). [ `Html.EditorFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) Вспомогательный объект отображает HTML `<input>` элемента. [ `Html.ValidationMessageFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) Вспомогательный объект отображает все сообщения проверки, связанные с этим свойством.
 
 Запустите приложение и перейдите к */Movies* URL-адрес. Щелкните ссылку **Edit** (Изменить). Просмотрите исходный код страницы в окне браузера. На странице HTML выглядит как следующий пример. (Меню разметки был исключен для ясности).
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/10/2017
 
 [![abcNotValid](examining-the-edit-methods-and-edit-view/_static/image7.png)](examining-the-edit-methods-and-edit-view/_static/image6.png)
 
-> **Примечание о локалях** Если обычно вы работаете с языковым стандартом, отличный от английского, см. раздел [поддержкой ASP.NET MVC 3 проверки с языковыми стандартами, отличные от английского.](https://msdn.microsoft.com/en-us/library/gg674880(VS.98).aspx)
+> **Примечание о локалях** Если обычно вы работаете с языковым стандартом, отличный от английского, см. раздел [поддержкой ASP.NET MVC 3 проверки с языковыми стандартами, отличные от английского.](https://msdn.microsoft.com/library/gg674880(VS.98).aspx)
 
 
 ## <a name="making-the-edit-method-more-robust"></a>Сделать более надежный метод редактирования
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-vb[Main](examining-the-edit-methods-and-edit-view/samples/sample8.vb)]
 
-Первая строка `SearchIndex` метод создает следующие [LINQ](https://msdn.microsoft.com/en-us/library/bb397926.aspx) запрос, чтобы выбрать фильмы:
+Первая строка `SearchIndex` метод создает следующие [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) запрос, чтобы выбрать фильмы:
 
 [!code-vb[Main](examining-the-edit-methods-and-edit-view/samples/sample9.vb)]
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 11/10/2017
  фильмы = фильмов. Где (функции s.Title.Contains(searchString))   
  End If
 
-LINQ запросы не выполняются при их определении либо изменении путем вызова метода, например `Where` или `OrderBy`. Вместо этого выполнение запроса отложено, это означает, что вычисление выражения откладывается до его реализованных значение фактически итерации или [ `ToList` ](https://msdn.microsoft.com/en-us/library/bb342261.aspx) вызывается метод. В `SearchIndex` примера запрос выполняется в режиме SearchIndex. Дополнительные сведения об отложенном и немедленном выполнении запросов см. в разделе [Выполнение запроса](https://msdn.microsoft.com/en-us/library/bb738633.aspx).
+LINQ запросы не выполняются при их определении либо изменении путем вызова метода, например `Where` или `OrderBy`. Вместо этого выполнение запроса отложено, это означает, что вычисление выражения откладывается до его реализованных значение фактически итерации или [ `ToList` ](https://msdn.microsoft.com/library/bb342261.aspx) вызывается метод. В `SearchIndex` примера запрос выполняется в режиме SearchIndex. Дополнительные сведения об отложенном и немедленном выполнении запросов см. в разделе [Выполнение запроса](https://msdn.microsoft.com/library/bb738633.aspx).
 
 Теперь вы можете реализовать `SearchIndex` представление, которое будет отображать формы для пользователя. Щелкните правой кнопкой мыши внутри `SearchIndex` метода и нажмите кнопку **добавить представление**. В **добавить представление** диалоговом окне укажите, что вы собираетесь передать `Movie` объект в шаблоне представления, как и класс модели. В **шаблон формирования** выберите **списка**, нажмите кнопку **добавить**.
 

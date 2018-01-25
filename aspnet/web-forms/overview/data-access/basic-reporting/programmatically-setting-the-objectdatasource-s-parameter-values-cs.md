@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7a009d57f97838feb5b4a3253c6de9a872a9e9ee
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7694c56fa5c50ff75db931e88c2334f560631d74
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="programmatically-setting-the-objectdatasources-parameter-values-c"></a>Программное задание значений параметров ObjectDataSource (C#)
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 Иногда, тем не менее, когда значение параметра поступает из источника, не учитываемого одним из источника данных, встроенные `Parameter` объектов. Если узел поддерживает учетные записи пользователей может потребоваться присвоить параметру, основанному на текущего выполнившего вход пользователя посетителя по идентификатору. Или же может потребоваться настройка значения параметра перед его отправкой методу базового объекта ObjectDataSource.
 
-Каждый раз, когда элемент управления ObjectDataSource `Select` вызывается метод сначала вызывает ObjectDataSource его [события Selecting](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.objectdatasource.selecting%28VS.80%29.aspx). Затем вызывается метод ObjectDataSource базового объекта. Завершении ObjectDataSource [выбранные события](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.objectdatasource.selected%28VS.80%29.aspx) активируется (рис. 1 иллюстрирует эту последовательность событий). Можно задать или настроить в обработчик событий для значений параметров, передаваемых в метод базового объекта ObjectDataSource `Selecting` событий.
+Каждый раз, когда элемент управления ObjectDataSource `Select` вызывается метод сначала вызывает ObjectDataSource его [события Selecting](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selecting%28VS.80%29.aspx). Затем вызывается метод ObjectDataSource базового объекта. Завершении ObjectDataSource [выбранные события](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selected%28VS.80%29.aspx) активируется (рис. 1 иллюстрирует эту последовательность событий). Можно задать или настроить в обработчик событий для значений параметров, передаваемых в метод базового объекта ObjectDataSource `Selecting` событий.
 
 
 [![Выбранные ObjectDataSource и выбрав события возникают до и после нижележащего объекта метод вызывается](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image2.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image1.png)
@@ -55,7 +55,7 @@ ms.lasthandoff: 11/10/2017
 **На рисунке 2**: Добавление нового запроса к `EmployeesTableAdapter` ([Просмотр полноразмерное изображение](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image6.png))
 
 
-Выберите добавление инструкции SQL, возвращающей строки. По достижении укажите `SELECT` инструкции на экране по умолчанию `SELECT` инструкции для `EmployeesTableAdapter` уже будет загружен. Просто добавьте в `WHERE` предложение: `WHERE DATEPART(m, HireDate) = @Month`. [DATEPART](https://msdn.microsoft.com/en-us/library/ms174420.aspx) — функция T-SQL, которая возвращает конкретную дату часть `datetime` тип; в этом случае мы используем `DATEPART` для возврата месяц `HireDate` столбца.
+Выберите добавление инструкции SQL, возвращающей строки. По достижении укажите `SELECT` инструкции на экране по умолчанию `SELECT` инструкции для `EmployeesTableAdapter` уже будет загружен. Просто добавьте в `WHERE` предложение: `WHERE DATEPART(m, HireDate) = @Month`. [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx) — функция T-SQL, которая возвращает конкретную дату часть `datetime` тип; в этом случае мы используем `DATEPART` для возврата месяц `HireDate` столбца.
 
 
 [![Возврат только тех строк где HireDate столбца меньше или равно @HiredBeforeDate параметр](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image8.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image7.png)

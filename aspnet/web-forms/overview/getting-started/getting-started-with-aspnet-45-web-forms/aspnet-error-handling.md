@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: d5d89a6a82c91b915d61ddc3c350ea0935511c07
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c5ec43ac78be4a9452ebaa6495a6883506ac162f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-error-handling"></a>Обработка ошибок ASP.NET
 ====================
@@ -313,11 +313,11 @@ ELMAH готов для хранения необработанных возни
 
 ## <a name="tutorial-series-conclusion"></a>Серия учебников по выводу
 
-*Благодарим вас за просматривая. Я надеюсь, что этот набор учебников помогла подробного знакомства с веб-форм ASP.NET. Если требуются дополнительные сведения о функциях веб-форм в ASP.NET 4.5 и Visual Studio 2013, см. раздел* [ *ASP.NET и веб-инструменты Visual Studio 2013 заметки о выпуске* ](../../../../visual-studio/overview/2013/release-notes.md)  *. Кроме того, убедитесь, что взгляните на учебник, упомянутые в*   ***следующие шаги *** опробовать раздел и defintely* [ *бесплатной пробной версии Azure* ](https://azure.microsoft.com/pricing/free-trial/)*.*
+*Благодарим вас за просматривая. Я надеюсь, что этот набор учебников помогла подробного знакомства с веб-форм ASP.NET. Если требуются дополнительные сведения о функциях веб-форм в ASP.NET 4.5 и Visual Studio 2013, см. раздел* [ *ASP.NET и веб-инструменты Visual Studio 2013 заметки о выпуске* ](../../../../visual-studio/overview/2013/release-notes.md)  *. Кроме того, убедитесь, что взгляните на учебник, упомянутые в* ***следующие шаги *** опробовать раздел и defintely* [ *бесплатной пробной версии Azure* ](https://azure.microsoft.com/pricing/free-trial/)*.*
 
 ![Спасибо - Эрик](aspnet-error-handling/_static/image10.png)  
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 Дополнительные сведения о развертывании веб-приложения Microsoft Azure см. в разделе [развертывание веб-сайта Azure Secure ASP.NET веб-форм приложения с членством, OAuth и базы данных SQL](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/).
 
@@ -335,7 +335,7 @@ ELMAH готов для хранения необработанных возни
 
 Я хочу поблагодарить следующих людям, которые вносили свой вклад значительные к содержимому этого учебника ряда:
 
-- [Alberto Poblacion, MVP &amp; MCT, Испания](https://mvp.microsoft.com/en-us/mvp/Alberto%20Poblacion%20Bolano-36772)
+- [Alberto Poblacion, MVP &amp; MCT, Испания](https://mvp.microsoft.com/mvp/Alberto%20Poblacion%20Bolano-36772)
 - [Алекс Thissen, Нидерланды](http://blog.alexthissen.nl/) (twitter: [ @alexthissen ](http://twitter.com/alexthissen))
 - [Андре Tournier, США](http://andret503.wordpress.com/)
 - Apurva Joshi, корпорация Майкрософт

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: fb20c98283bfd46e62d56252bbec4f4b4b08b1c3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a20693f3e83053dd99499d486412b66777189f1d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>Изучение методы изменения и представления изменения
 ====================
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/10/2017
 
 ![Html.ActionLink](examining-the-edit-methods-and-edit-view/_static/image2.png)
 
-`Html` Объект является вспомогательный класс, который предоставляется с помощью свойства на [System.Web.Mvc.WebViewPage](https://msdn.microsoft.com/en-us/library/gg402107(VS.98).aspx) базового класса. `ActionLink` Метод вспомогательного метода упрощает для динамического создания гиперссылки HTML, которые ссылаются на методы действий на контроллерах. Первый аргумент `ActionLink` метод является текст ссылки для подготовки к просмотру (например, `<a>Edit Me</a>`). Второй аргумент — имя вызываемого метода действия. Последний аргумент является [анонимный объект](https://weblogs.asp.net/scottgu/archive/2007/05/15/new-orcas-language-feature-anonymous-types.aspx) , приводит к возникновению ошибки (в данном случае идентификатор 4) данные маршрута.
+`Html` Объект является вспомогательный класс, который предоставляется с помощью свойства на [System.Web.Mvc.WebViewPage](https://msdn.microsoft.com/library/gg402107(VS.98).aspx) базового класса. `ActionLink` Метод вспомогательного метода упрощает для динамического создания гиперссылки HTML, которые ссылаются на методы действий на контроллерах. Первый аргумент `ActionLink` метод является текст ссылки для подготовки к просмотру (например, `<a>Edit Me</a>`). Второй аргумент — имя вызываемого метода действия. Последний аргумент является [анонимный объект](https://weblogs.asp.net/scottgu/archive/2007/05/15/new-orcas-language-feature-anonymous-types.aspx) , приводит к возникновению ошибки (в данном случае идентификатор 4) данные маршрута.
 
 Созданная ссылка, показанный на предыдущем рисунке — `http://localhost:xxxxx/Movies/Edit/4`. Маршрут по умолчанию (в *приложения\_Start\RouteConfig.cs*) принимает шаблон URL-адреса `{controller}/{action}/{id}`. Таким образом, преобразует ASP.NET `http://localhost:xxxxx/Movies/Edit/4` в запрос на `Edit` метод действия `Movies` контроллера с помощью параметра `ID` равно 4. Изучите следующий код из *приложения\_Start\RouteConfig.cs* файла.
 
@@ -54,13 +54,13 @@ ms.lasthandoff: 11/10/2017
 
 Обратите внимание на второй метод действия `Edit`, которому предшествует атрибут `HttpPost`. Этот атрибут указывает, что перегрузка `Edit` метод может вызываться только для запросов POST. Можно применить `HttpGet` изменение атрибута для первого метода, но это необязательно, так как он используется по умолчанию. (Мы будем называть методы действий, назначенных неявно `HttpGet` атрибута `HttpGet` методов.)
 
-`HttpGet` `Edit` Метод принимает параметр ID фильм, ищет фильм, использующий Entity Framework `Find` метод и возвращает представление изменения выбранного фрагмента. Указывает параметр ID [значение по умолчанию](https://msdn.microsoft.com/en-us/library/dd264739.aspx) нуль, если `Edit` метод вызывается без параметров. Если не удается найти фильм, [HttpNotFound](https://msdn.microsoft.com/en-us/library/gg453938(VS.98).aspx) возвращается. Если в представлении редактирования создана система формирования шаблонов, она проверяет класс `Movie` и создает код для отображения элементов `<label>` и `<input>` для каждого свойства класса. В следующем примере показано представление изменения, который был создан:
+`HttpGet` `Edit` Метод принимает параметр ID фильм, ищет фильм, использующий Entity Framework `Find` метод и возвращает представление изменения выбранного фрагмента. Указывает параметр ID [значение по умолчанию](https://msdn.microsoft.com/library/dd264739.aspx) нуль, если `Edit` метод вызывается без параметров. Если не удается найти фильм, [HttpNotFound](https://msdn.microsoft.com/library/gg453938(VS.98).aspx) возвращается. Если в представлении редактирования создана система формирования шаблонов, она проверяет класс `Movie` и создает код для отображения элементов `<label>` и `<input>` для каждого свойства класса. В следующем примере показано представление изменения, который был создан:
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample4.cshtml)]
 
 Обратите внимание, как Просмотр шаблона `@model MvcMovie.Models.Movie` инструкции в верхней части файла — это указывает, что представление ожидает модели для представления шаблона типа `Movie`.
 
-Код формирования шаблонов использует несколько *вспомогательные методы* упрощение разметки HTML. [ `Html.LabelFor` ](https://msdn.microsoft.com/en-us/library/gg401864(VS.98).aspx) Вспомогательный объект отображает имя поля (&quot;заголовок&quot;, &quot;ReleaseDate&quot;, &quot;жанр&quot;, или &quot;цены &quot;). [ `Html.EditorFor` ](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) Вспомогательный отображает HTML- `<input>` элемента. [ `Html.ValidationMessageFor` ](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) Вспомогательный объект отображает все сообщения проверки, связанные с этим свойством.
+Код формирования шаблонов использует несколько *вспомогательные методы* упрощение разметки HTML. [ `Html.LabelFor` ](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) Вспомогательный объект отображает имя поля (&quot;заголовок&quot;, &quot;ReleaseDate&quot;, &quot;жанр&quot;, или &quot;цены &quot;). [ `Html.EditorFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) Вспомогательный отображает HTML- `<input>` элемента. [ `Html.ValidationMessageFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) Вспомогательный объект отображает все сообщения проверки, связанные с этим свойством.
 
 Запустите приложение и перейдите к */Movies* URL-адрес. Щелкните ссылку **Edit** (Изменить). Просмотрите исходный код страницы в окне браузера. Ниже приведен код HTML для элемента form.
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample6.cs)]
 
-[Связыватель модели ASP.NET MVC](https://msdn.microsoft.com/en-us/magazine/hh781022.aspx) принимает значения из отправленной формы и создает `Movie` объекта, переданного в качестве `movie` параметра. Метод `ModelState.IsValid` проверяет, можно ли использовать переданные в форме данные для изменения (редактирования или обновления) объекта `Movie`. Если данные являются допустимыми, данным фильма сохраняется `Movies` коллекцию `db(MovieDBContext` экземпляра). Новые данные фильма сохраняется в базе данных путем вызова `SaveChanges` метод `MovieDBContext`. После сохранения данных, код выполняет перенаправление пользователю `Index` метод действия `MoviesController` класса, который отображает коллекции фильмов, включая только что внесли изменения.
+[Связыватель модели ASP.NET MVC](https://msdn.microsoft.com/magazine/hh781022.aspx) принимает значения из отправленной формы и создает `Movie` объекта, переданного в качестве `movie` параметра. Метод `ModelState.IsValid` проверяет, можно ли использовать переданные в форме данные для изменения (редактирования или обновления) объекта `Movie`. Если данные являются допустимыми, данным фильма сохраняется `Movies` коллекцию `db(MovieDBContext` экземпляра). Новые данные фильма сохраняется в базе данных путем вызова `SaveChanges` метод `MovieDBContext`. После сохранения данных, код выполняет перенаправление пользователю `Index` метод действия `MoviesController` класса, который отображает коллекции фильмов, включая только что внесли изменения.
 
 Если переданные значения не являются допустимыми, они снова отображаются в форме. `Html.ValidationMessageFor` Помощников в *Edit.cshtml* представление шаблона аккуратно отображения соответствующие сообщения об ошибках.
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample9.cs)]
 
-Первая строка `SearchIndex` метод создает следующие [LINQ](https://msdn.microsoft.com/en-us/library/bb397926.aspx) запрос, чтобы выбрать фильмы:
+Первая строка `SearchIndex` метод создает следующие [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) запрос, чтобы выбрать фильмы:
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample10.cs)]
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample11.cs)]
 
-Приведенный выше код `s => s.Title` представляет собой [лямбда-выражение](https://msdn.microsoft.com/en-us/library/bb397687.aspx). Лямбда-выражения, используемые в основе метода [LINQ](https://msdn.microsoft.com/en-us/library/bb397926.aspx) запрашивает качестве аргументов стандартных методов операторов запроса, таких как [где](https://msdn.microsoft.com/en-us/library/system.linq.enumerable.where.aspx) метод, используемый в приведенном выше коде. LINQ запросы не выполняются при их определении либо изменении путем вызова метода, например `Where` или `OrderBy`. Вместо этого выполнение запроса отложено, это означает, что вычисление выражения откладывается до его реализованных значение фактически итерации или [ `ToList` ](https://msdn.microsoft.com/en-us/library/bb342261.aspx) вызывается метод. В `SearchIndex` примера запрос выполняется в режиме SearchIndex. Дополнительные сведения об отложенном и немедленном выполнении запросов см. в разделе [Выполнение запроса](https://msdn.microsoft.com/en-us/library/bb738633.aspx).
+Приведенный выше код `s => s.Title` представляет собой [лямбда-выражение](https://msdn.microsoft.com/library/bb397687.aspx). Лямбда-выражения, используемые в основе метода [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) запрашивает качестве аргументов стандартных методов операторов запроса, таких как [где](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx) метод, используемый в приведенном выше коде. LINQ запросы не выполняются при их определении либо изменении путем вызова метода, например `Where` или `OrderBy`. Вместо этого выполнение запроса отложено, это означает, что вычисление выражения откладывается до его реализованных значение фактически итерации или [ `ToList` ](https://msdn.microsoft.com/library/bb342261.aspx) вызывается метод. В `SearchIndex` примера запрос выполняется в режиме SearchIndex. Дополнительные сведения об отложенном и немедленном выполнении запросов см. в разделе [Выполнение запроса](https://msdn.microsoft.com/library/bb738633.aspx).
 
 Теперь вы можете реализовать `SearchIndex` представление, которое будет отображать формы для пользователя. Щелкните правой кнопкой мыши внутри `SearchIndex` метода и нажмите кнопку **добавить представление**. В **добавить представление** диалоговом окне укажите, что вы собираетесь передать `Movie` объект в шаблоне представления, как и класс модели. В **шаблон формирования** выберите **списка**, нажмите кнопку **добавить**.
 

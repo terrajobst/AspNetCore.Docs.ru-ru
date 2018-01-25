@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 271c244ab0b9e2524a33ea6ff4d41893ce22472f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 69fbaa7761c97895ffee770f6feb9ce6b745d186
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-2"></a>Использование HTML5 и раскрывающегося календаря с выбором дат jQuery с ASP.NET MVC — часть 2
 ====================
@@ -27,15 +27,15 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="adding-an-automatic-datetime-template"></a>Добавление шаблона даты и времени автоматического
 
-В первой части этого учебника было показано, как можно добавить атрибуты модели, чтобы явно указать форматирование и как можно явно указать шаблон, который используется для отображения модели. Например [DisplayFormat](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx) в следующий код явно задает форматирование для `ReleaseDate` свойства.
+В первой части этого учебника было показано, как можно добавить атрибуты модели, чтобы явно указать форматирование и как можно явно указать шаблон, который используется для отображения модели. Например [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) в следующий код явно задает форматирование для `ReleaseDate` свойства.
 
 [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/samples/sample1.cs)]
 
-В следующем примере [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx) атрибута с помощью `Date` перечисление, указывает, что шаблон даты следует использовать для отображения модели. Если в проекте отсутствует шаблон даты, используется шаблон даты.
+В следующем примере [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) атрибута с помощью `Date` перечисление, указывает, что шаблон даты следует использовать для отображения модели. Если в проекте отсутствует шаблон даты, используется шаблон даты.
 
 [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/samples/sample2.cs)]
 
-Тем не менее ASP. MVC можно выполнить сопоставление типов с помощью соглашение over конфигурации путем поиска для шаблона, который соответствует имени типа. Это позволяет создавать шаблон, который автоматически форматирует данные без использования во всех атрибутов или кода. Для этой части учебника вы создадите шаблон, который автоматически применяется к свойствам модели типа [DateTime](https://msdn.microsoft.com/en-us/library/system.datetime.aspx). Не требуется использовать атрибут или для других конфигураций, чтобы указать, что шаблон должен использоваться для отображения всех свойств типа модели [DateTime](https://msdn.microsoft.com/en-us/library/system.datetime.aspx).
+Тем не менее ASP. MVC можно выполнить сопоставление типов с помощью соглашение over конфигурации путем поиска для шаблона, который соответствует имени типа. Это позволяет создавать шаблон, который автоматически форматирует данные без использования во всех атрибутов или кода. Для этой части учебника вы создадите шаблон, который автоматически применяется к свойствам модели типа [DateTime](https://msdn.microsoft.com/library/system.datetime.aspx). Не требуется использовать атрибут или для других конфигураций, чтобы указать, что шаблон должен использоваться для отображения всех свойств типа модели [DateTime](https://msdn.microsoft.com/library/system.datetime.aspx).
 
 Вы также узнаете способ настроить внешний вид отдельных свойств или даже отдельные поля.
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/10/2017
 
 ![](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/_static/image3.png)
 
-Откройте *Views\Shared\DisplayTemplates\DateTime.cshtml* и добавьте следующую разметку, которая использует [String.Format](https://msdn.microsoft.com/en-us/library/system.string.format.aspx) метод для форматирования свойства как дата без времени. ( `{0:d}` Формат указывает на короткий формат даты.)
+Откройте *Views\Shared\DisplayTemplates\DateTime.cshtml* и добавьте следующую разметку, которая использует [String.Format](https://msdn.microsoft.com/library/system.string.format.aspx) метод для форматирования свойства как дата без времени. ( `{0:d}` Формат указывает на короткий формат даты.)
 
 [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/samples/sample5.cs)]
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="using-uihint-to-specify-a-display-template"></a>Использование UIHint для указания шаблона отображения
 
-Если веб-приложение содержит много `DateTime` поля и по умолчанию будет отображаться в формате только даты, все или большинство из них *DateTime.cshtml* шаблона является хорошим подходом. Но что делать, если имеется несколько дат место для отображения полной даты и времени? Без проблем. Можно создавать дополнительные шаблоны и использовать [UIHint](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx) атрибут, чтобы задать формат для полной даты и времени. Затем можно выборочно применять этот шаблон. Можно использовать [UIHint](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx) атрибут на уровне модели, либо можно указать шаблон внутри представления. В этом разделе вы увидите, как использовать `UIHint` атрибут, чтобы выборочно менять параметры форматирования для поля даты и времени для некоторых экземпляров.
+Если веб-приложение содержит много `DateTime` поля и по умолчанию будет отображаться в формате только даты, все или большинство из них *DateTime.cshtml* шаблона является хорошим подходом. Но что делать, если имеется несколько дат место для отображения полной даты и времени? Без проблем. Можно создавать дополнительные шаблоны и использовать [UIHint](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx) атрибут, чтобы задать формат для полной даты и времени. Затем можно выборочно применять этот шаблон. Можно использовать [UIHint](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx) атрибут на уровне модели, либо можно указать шаблон внутри представления. В этом разделе вы увидите, как использовать `UIHint` атрибут, чтобы выборочно менять параметры форматирования для поля даты и времени для некоторых экземпляров.
 
 Откройте *Views\Movies\DisplayTemplates\LoudDateTime.cshtml* файл и замените существующий код следующим:
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 11/10/2017
 
 Это вызывает полной даты и времени для отображения и добавляет класс CSS, который делает текст зеленый и большой.
 
-Откройте *Movie.cs* и добавьте [UIHint](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx) атрибут `ReleaseDate` свойства, как показано в следующем примере:
+Откройте *Movie.cs* и добавьте [UIHint](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx) атрибут `ReleaseDate` свойства, как показано в следующем примере:
 
 [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/samples/sample8.cs)]
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/10/2017
 
 Вернитесь к `UIHint` атрибута в *Movie.cs* файла и закомментируйте его таким образом *LoudDateTime.cshtml* не будет использоваться шаблон. Снова запустите приложение. Дата выпуска не отображается, большими и зеленый. Проверяет, что *Views\Shared\DisplayTemplates\DateTime.cshtml* шаблон используется в индексе и сведения о представлениях.
 
-Как упоминалось ранее, также можно применить шаблон в представлении, которое позволяет применить шаблон к экземпляру отдельных некоторые данные. Откройте *Views\Movies\Details.cshtml* представления. Добавить `"LoudDateTime"` в качестве второго параметра [Html.DisplayFor](https://msdn.microsoft.com/en-us/library/ee407420.aspx) вызова для `ReleaseDate` поля. Полный код выглядит следующим образом:
+Как упоминалось ранее, также можно применить шаблон в представлении, которое позволяет применить шаблон к экземпляру отдельных некоторые данные. Откройте *Views\Movies\Details.cshtml* представления. Добавить `"LoudDateTime"` в качестве второго параметра [Html.DisplayFor](https://msdn.microsoft.com/library/ee407420.aspx) вызова для `ReleaseDate` поля. Полный код выглядит следующим образом:
 
 [!code-cshtml[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/samples/sample9.cshtml)]
 

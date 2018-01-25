@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: dotnet-mvc
 ms.prod: .net-framework
 uid: mvc/overview/getting-started/introduction/adding-a-view
-ms.openlocfilehash: d273eb5e99da6c6b7678e03b1a8973041113744c
-ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
+ms.openlocfilehash: 86887f0dafa31ff3eb6597284c469c4b3053b6b7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-a-view"></a>Добавление представления
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/09/2018
 
 [!code-csharp[Main](adding-a-view/samples/sample1.cs?highlight=1,3)]
 
-`Index` Описанный выше метод использует Просмотр шаблона для создания HTML-ответа в браузер. Методы контроллера (также известный как [методы действий](http://rachelappel.com/asp.net-mvc-actionresults-explained)), такие как `Index` метод выше, обычно возвращают [ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult.aspx) (или класс, производный от [ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult.aspx)), не простых типов, таких как строка.
+`Index` Описанный выше метод использует Просмотр шаблона для создания HTML-ответа в браузер. Методы контроллера (также известный как [методы действий](http://rachelappel.com/asp.net-mvc-actionresults-explained)), такие как `Index` метод выше, обычно возвращают [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult.aspx) (или класс, производный от [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult.aspx)), не простых типов, таких как строка.
 
 Щелкните правой кнопкой мыши *Views\HelloWorld* папку и нажмите кнопку **добавить**, нажмите кнопку **страница представления MVC 5 с макетом (Razor)**.
   
@@ -73,7 +73,7 @@ ms.lasthandoff: 01/09/2018
 
 Шаблоны макета позволяют указать HTML-разметку контейнера узла в одном месте, а затем применять их на нескольких страницах на сайте. Найдите строку `@RenderBody()`. `RenderBody` — это заполнитель, в котором отображаются все создаваемые страницы для определенных представлений, &quot;упакованные&quot; на странице макета. Например, при выборе **о** ссылку, *Views\Home\About.cshtml* представление отображается внутри `RenderBody` метод.
 
-Измените содержимое элемента title. Изменение [ActionLink](https://msdn.microsoft.com/en-us/library/dd504972(v=vs.108).aspx) в шаблон макета из &quot;имя_приложения&quot; для &quot;фильма MVC&quot; контроллерах и `Home` для `Movies`. Завершить структуру файла показан ниже:
+Измените содержимое элемента title. Изменение [ActionLink](https://msdn.microsoft.com/library/dd504972(v=vs.108).aspx) в шаблон макета из &quot;имя_приложения&quot; для &quot;фильма MVC&quot; контроллерах и `Home` для `Movies`. Завершить структуру файла показан ниже:
 
 [!code-cshtml[Main](adding-a-view/samples/sample3.cshtml?highlight=6,20)]
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 01/09/2018
 
 [!code-cshtml[Main](adding-a-view/samples/sample4.cshtml)]
 
-Приведенный выше код Razor явным образом выполняется задание страницы макета. Изучите *представления\\файл _ViewStart.cshtml* файл, он содержит точное же разметки Razor.  *[Представления\\файл _ViewStart.cshtml](https://weblogs.asp.net/scottgu/archive/2010/10/22/asp-net-mvc-3-layouts.aspx)*  файл определяет общий макет, который будет использовать все представления, поэтому можно комментарий out или удалите этот код из *Views\HelloWorld\ Index.cshtml* файл.
+Приведенный выше код Razor явным образом выполняется задание страницы макета. Изучите *представления\\файл _ViewStart.cshtml* файл, он содержит точное же разметки Razor. *[Представления\\файл _ViewStart.cshtml](https://weblogs.asp.net/scottgu/archive/2010/10/22/asp-net-mvc-3-layouts.aspx)*  файл определяет общий макет, который будет использовать все представления, поэтому можно комментарий out или удалите этот код из *Views\HelloWorld\ Index.cshtml* файл.
 
 [!code-cshtml[Main](adding-a-view/samples/sample5.cshtml?highlight=1-3)]
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 01/09/2018
 
 Теперь изменим название индекс представления.
 
-Откройте *MvcMovie\Views\HelloWorld\Index.cshtml*. Есть два места для внесения изменений: во-первых, текст, расположенный в заголовке обозревателя, а затем в заголовке получателя ( `<h2>` элемент). Сделайте их немного разными, чтобы видеть, какой именно фрагмент кода изменяет соответствующую часть приложения.
+Open *MvcMovie\Views\HelloWorld\Index.cshtml*. Есть два места для внесения изменений: во-первых, текст, расположенный в заголовке обозревателя, а затем в заголовке получателя ( `<h2>` элемент). Сделайте их немного разными, чтобы видеть, какой именно фрагмент кода изменяет соответствующую часть приложения.
 
 [!code-cshtml[Main](adding-a-view/samples/sample6.cshtml?highlight=2,5)]
 

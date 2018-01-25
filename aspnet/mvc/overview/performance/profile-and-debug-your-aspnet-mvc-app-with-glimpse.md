@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
 msc.type: authoredcontent
-ms.openlocfilehash: 98b21a54ba00a8c82c3be7ba4e39d44041ed42c6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9cfdced21251b482ca527dda9c3a698de77cc8ca
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a>Профилирование и отладке приложения ASP.NET MVC с помощью Glimpse
 ====================
 По [Рик Андерсон](https://github.com/Rick-Anderson)
 
-> Обзор — это бурно и семейству пакетов NuGet открытым исходным кодом, предоставляющий подробные производительности, отладки и диагностические сведения для приложений ASP.NET. Тривиальное для установки, простой и высокоскоростные и отображает ключевые показатели производительности в нижней части каждой страницы. Он позволяет углубляться в приложения, если необходимо узнать, что происходит на сервере. Обзор предоставляет намного ценную информацию, мы рекомендуем использовать ее в течение всего цикла разработки, включая Azure тестовой среды. Во время [Fiddler](http://www.telerik.com/fiddler) и [средства разработки F-12](https://msdn.microsoft.com/en-us/library/ie/gg589512(v=vs.85).aspx) предоставляют стороны клиента представления, Glimpse предоставляет подробную информацию с сервера. Этот учебник основное внимание уделяется с помощью Glimpse ASP.NET MVC и EF пакеты, но доступны другие пакеты. По возможности будет связывать к соответствующему [знакомы docs](http://getglimpse.com/Docs/) поддерживать все помогающий. Представление является проекта с открытым кодом, слишком можно взаимодействовать с исходным кодом и документы.
+> Обзор — это бурно и семейству пакетов NuGet открытым исходным кодом, предоставляющий подробные производительности, отладки и диагностические сведения для приложений ASP.NET. Тривиальное для установки, простой и высокоскоростные и отображает ключевые показатели производительности в нижней части каждой страницы. Он позволяет углубляться в приложения, если необходимо узнать, что происходит на сервере. Обзор предоставляет намного ценную информацию, мы рекомендуем использовать ее в течение всего цикла разработки, включая Azure тестовой среды. Во время [Fiddler](http://www.telerik.com/fiddler) и [средства разработки F-12](https://msdn.microsoft.com/library/ie/gg589512(v=vs.85).aspx) предоставляют стороны клиента представления, Glimpse предоставляет подробную информацию с сервера. Этот учебник основное внимание уделяется с помощью Glimpse ASP.NET MVC и EF пакеты, но доступны другие пакеты. По возможности будет связывать к соответствующему [знакомы docs](http://getglimpse.com/Docs/) поддерживать все помогающий. Представление является проекта с открытым кодом, слишком можно взаимодействовать с исходным кодом и документы.
 
 
 - [Обзор установки](#ig)
@@ -113,7 +113,7 @@ ms.lasthandoff: 11/10/2017
 
 Только после этого изменения любой пользователь может видеть данные краткого описания на удаленном узле. Рассмотрите возможность добавления разметки выше профиль публикации, поэтому она развернута только примененного при использовании этого профиля публикации (например, ваш Azure теста proifle.) Чтобы ограничить представление данных, мы добавим `canViewGlimpseData` роли и только пользователи с этой ролью, для просмотра краткого описания данных.
 
-Удаление комментариев из *GlimpseSecurityPolicy.cs* и измените [IsInRole](https://msdn.microsoft.com/en-us/library/system.security.principal.iprincipal.isinrole(v=vs.110).aspx) вызов из `Administrator` для `canViewGlimpseData` роли:
+Удаление комментариев из *GlimpseSecurityPolicy.cs* и измените [IsInRole](https://msdn.microsoft.com/library/system.security.principal.iprincipal.isinrole(v=vs.110).aspx) вызов из `Administrator` для `canViewGlimpseData` роли:
 
 [!code-csharp[Main](profile-and-debug-your-aspnet-mvc-app-with-glimpse/samples/sample4.cs?highlight=6)]
 
@@ -121,10 +121,10 @@ ms.lasthandoff: 11/10/2017
 > Безопасность – большого объема данных, предоставляемые краткого описания может предоставить доступ к безопасности приложения. Корпорация Майкрософт не выполнил аудита безопасности компонента Glimpse для использования в приложениях производства.
 
 
-Сведения о добавлении ролей см. в разделе Мои [развернуть веб-приложении Secure ASP.NET MVC 5 с членством, OAuth и базы данных SQL Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/) учебника.
+Сведения о добавлении ролей см. в разделе Мои [развернуть веб-приложении Secure ASP.NET MVC 5 с членством, OAuth и базы данных SQL Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/) учебника.
 
 <a id="addRes"></a>
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Развертывание приложения безопасного ASP.NET MVC 5 с членством, OAuth и базы данных SQL в Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)
+- [Развертывание приложения безопасного ASP.NET MVC 5 с членством, OAuth и базы данных SQL в Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)
 - [Знакомы конфигурации](http://getglimpse.com/Docs/Configuration) -Doc страницы о настройке вкладки, политику среды выполнения, ведение журнала и многое другое.

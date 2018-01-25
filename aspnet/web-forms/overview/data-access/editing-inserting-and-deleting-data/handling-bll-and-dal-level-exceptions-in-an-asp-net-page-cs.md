@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 17157d595e8283628371ff6ad39fe71879e96a56
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5a0ffde90aa85383d87bd48e16a1c16433465cbf
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-c"></a>Обработка исключений уровня DAL и уровень бизнес-ЛОГИКИ на странице ASP.NET (C#)
 ====================
@@ -101,9 +101,9 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-2-gracefully-handling-dal-level-exceptions"></a>Шаг 2: Корректно обработка исключений уровня DAL
 
-Хотя наши изменяемого элемента управления GridView прекрасно работает, когда пользователи вводят допустимые значения для имени измененного продукта, цену и единиц на складе, введя недопустимые значения приводит к возникновению исключения. Например, пропуск `ProductName` приводит [NoNullAllowedException](https://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemdatanonullallowedexceptionclasstopic.asp) поскольку у `ProductName` свойство в `ProdcutsRow` класс имеет его `AllowDBNull` свойство `false`; Если База данных не работает, `SqlException` будут созданы методом адаптера таблицы, при попытке подключения к базе данных. Без выполнения действий, эти исключения поднимаются с уровня доступа к данным на уровне бизнес-логики, а затем на страницу ASP.NET и, наконец, чтобы среда выполнения ASP.NET.
+Хотя наши изменяемого элемента управления GridView прекрасно работает, когда пользователи вводят допустимые значения для имени измененного продукта, цену и единиц на складе, введя недопустимые значения приводит к возникновению исключения. Например, пропуск `ProductName` приводит [NoNullAllowedException](https://msdn.microsoft.com/library/default.asp?url=/library/cpref/html/frlrfsystemdatanonullallowedexceptionclasstopic.asp) поскольку у `ProductName` свойство в `ProdcutsRow` класс имеет его `AllowDBNull` свойство `false`; Если База данных не работает, `SqlException` будут созданы методом адаптера таблицы, при попытке подключения к базе данных. Без выполнения действий, эти исключения поднимаются с уровня доступа к данным на уровне бизнес-логики, а затем на страницу ASP.NET и, наконец, чтобы среда выполнения ASP.NET.
 
-В зависимости от того, как настроить веб-приложение и посещается ли приложение от `localhost`, необработанное исключение может привести к странице универсального ошибка сервера, отчет подробные сведения об ошибке или удобной веб-страницы. В разделе [приложения Web Error Handling in ASP.NET](http://www.15seconds.com/issue/030102.htm) и [customErrors элемент](https://msdn.microsoft.com/en-US/library/h0hfz6fc(VS.80).aspx) Дополнительные сведения о том, как среда выполнения ASP.NET отвечает на неперехваченное исключение.
+В зависимости от того, как настроить веб-приложение и посещается ли приложение от `localhost`, необработанное исключение может привести к странице универсального ошибка сервера, отчет подробные сведения об ошибке или удобной веб-страницы. В разделе [приложения Web Error Handling in ASP.NET](http://www.15seconds.com/issue/030102.htm) и [customErrors элемент](https://msdn.microsoft.com/library/h0hfz6fc(VS.80).aspx) Дополнительные сведения о том, как среда выполнения ASP.NET отвечает на неперехваченное исключение.
 
 Рис. 6 показан экран, при попытке обновления продукта без указания `ProductName` значение. Это значение по умолчанию подробный отчет об ошибках, отображаемый при проходе через `localhost`.
 
@@ -153,7 +153,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/samples/sample4.cs)]
 
-Этот обработчик событий второй входной параметр — это объект типа [GridViewUpdatedEventArgs](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.gridviewupdatedeventargs.aspx), который имеет три свойства важными для обработки исключений:
+Этот обработчик событий второй входной параметр — это объект типа [GridViewUpdatedEventArgs](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridviewupdatedeventargs.aspx), который имеет три свойства важными для обработки исключений:
 
 - `Exception`ссылку на созданное исключение; Если исключение не создано, это свойство будет иметь значение`null`
 - `ExceptionHandled`Логическое значение, указывающее, было ли обработано исключение в `RowUpdated` обработчик событий; Если `false` (по умолчанию), исключение выдается заново, проходя до среды выполнения ASP.NET

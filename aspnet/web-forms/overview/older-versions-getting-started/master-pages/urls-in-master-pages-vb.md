@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 603457655e2490e1685f53d2cec643cb9382a59d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8aa0ed2fbf385e4b8dbb7e7a3bdb152f1e016e67
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="urls-in-master-pages-vb"></a>URL-адреса в главных страниц (Visual Basic)
 ====================
@@ -108,7 +108,7 @@ URL-адрес веб-страницы, называется *относител
 
 А чем вписывать абсолютный URL-адрес, ASP.NET позволяет разработчикам страниц использовать тильда (`~`) для указания корневого веб-приложения. Например, ранее в этом учебнике использовался нотации `~/Admin/Default.aspx` в тексте для ссылки на `Default.aspx` страницы в `Admin` папки. `~` Указывает, что `Admin` папка является вложенной корневого веб-приложения.
 
-`Control` Класса [ `ResolveClientUrl` метод](https://msdn.microsoft.com/en-us/library/system.web.ui.control.resolveclienturl.aspx) принимает URL-адрес и изменяет его на относительный URL-адрес для веб-страницы, на котором находится элемент управления. Например, вызов `ResolveClientUrl("~/Images/PoweredByASPNET.gif")` из `About.aspx` возвращает `Images/PoweredByASPNET.gif`. Вызов его из `~/Admin/Default.aspx`, однако возвращает `../Images/PoweredByASPNET.gif`.
+`Control` Класса [ `ResolveClientUrl` метод](https://msdn.microsoft.com/library/system.web.ui.control.resolveclienturl.aspx) принимает URL-адрес и изменяет его на относительный URL-адрес для веб-страницы, на котором находится элемент управления. Например, вызов `ResolveClientUrl("~/Images/PoweredByASPNET.gif")` из `About.aspx` возвращает `Images/PoweredByASPNET.gif`. Вызов его из `~/Admin/Default.aspx`, однако возвращает `../Images/PoweredByASPNET.gif`.
 
 > [!NOTE]
 > Поскольку все серверные элементы управления ASP.NET, являются производными от `Control` класса, все серверные элементы управления имеют доступ к `ResolveClientUrl` метод. Даже `Page` класс является производным от `Control` класса, то есть можно использовать этот метод напрямую из кода классы страниц ASP.NET.
@@ -148,7 +148,7 @@ URL-адрес веб-страницы, называется *относител
 
 [!code-aspx[Main](urls-in-master-pages-vb/samples/sample8.aspx)]
 
-Ну вот! На этом этапе все, что URL-адреса в нашей главной страницы правильно на основе при отрисовке страницы содержимого, независимо от того, какие папки главной страницы и страницы содержимого, находятся в.
+Вот и все! На этом этапе все, что URL-адреса в нашей главной страницы правильно на основе при отрисовке страницы содержимого, независимо от того, какие папки главной страницы и страницы содержимого, находятся в.
 
 ### <a name="automatic-url-resolution-in-theheadsection"></a>URL-адреса автоматического разрешения в`<head>`раздела
 

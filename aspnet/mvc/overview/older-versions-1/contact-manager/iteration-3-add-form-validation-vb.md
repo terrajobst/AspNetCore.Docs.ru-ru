@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-3-add-form-validation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ffb502be3037e787d79bbd1e83b93cd0b34dca6a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e9ed182fb58addd8c5dadbe6e3d09c391840ca00
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="iteration-3--add-form-validation-vb"></a>Итерации #3 – добавить проверку формы (Visual Basic)
 ====================
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/10/2017
 
 В этой итерации чтобы не усложнять, мы писать весь код проверки вручную. Вместо написания кода проверки сами, мы может воспользоваться преимуществами структуры проверки. Например Microsoft Enterprise библиотеки проверки приложения блока (VAB) можно использовать для реализации логики проверки для приложения ASP.NET MVC. Дополнительные сведения о блокировке приложения проверки см. в разделе:
 
-[*http://MSDN.Microsoft.com/en-us/library/dd203099.aspx*](https://msdn.microsoft.com/en-us/library/dd203099.aspx)
+[*http://msdn.microsoft.com/library/dd203099.aspx*](https://msdn.microsoft.com/library/dd203099.aspx)
 
 ## <a name="adding-validation-to-the-create-view"></a>Добавление проверки для представления создания
 

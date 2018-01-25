@@ -2,7 +2,7 @@
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application
 title: "Максимальную производительность с платформой Entity Framework 4.0 в 4 веб-приложение ASP.NET | Документы Microsoft"
 author: tdykstra
-description: "Этот учебник ряд строится на веб-приложение Contoso университета, созданный Приступая к работе с рядами учебника Entity Framework 4.0. Я..."
+description: "Этот учебник ряд строится на веб-приложение Contoso университета, созданный Приступая к работе с рядами учебника Entity Framework 4.0. I..."
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9e257f5061f6bdf14ad0776ff6385fb526d6dcb1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 40a53a110115e5f6342d2a97d21b64470450fd3c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="maximizing-performance-with-the-entity-framework-40-in-an-aspnet-4-web-application"></a>Повышение производительности с платформой Entity Framework 4.0 в 4 веб-приложение ASP.NET
 ====================
@@ -245,23 +245,23 @@ ms.lasthandoff: 11/10/2017
 
 Visual Studio создает файл кода, создает представления, который называется *SchoolModel.Views.cs* на основе шаблона. (Вы могли заметить, что создается файл кода, даже в том случае, прежде чем выбрать **запустить пользовательский инструмент**, сразу после сохранения файла шаблона.)
 
-[!["Image01"](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/_static/image28.png)](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/_static/image27.png)
+[![Image01](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/_static/image28.png)](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/_static/image27.png)
 
 Теперь можно запустить приложение и убедиться, что он работает, как раньше.
 
 Дополнительные сведения о заранее сформированные представления см. следующие ресурсы:
 
-- [Как: заранее создать представления для повышения производительности запросов](https://msdn.microsoft.com/en-us/library/bb896240.aspx) на веб-сайте MSDN. Описание способов использования `EdmGen.exe` средство командной строки для предварительного формирования представления.
+- [Как: заранее создать представления для повышения производительности запросов](https://msdn.microsoft.com/library/bb896240.aspx) на веб-сайте MSDN. Описание способов использования `EdmGen.exe` средство командной строки для предварительного формирования представления.
 - [Изолирование производительности с помощью предкомпилированный/предварительное-generated представлений в Entity Framework 4](https://blogs.msdn.com/b/appfabriccat/archive/2010/08/06/isolating-performance-with-precompiled-pre-generated-views-in-the-entity-framework-4.aspx) в блоге Windows Server AppFabric группа консультантов по.
 
 На этом завершается введение в повышение производительности в веб-приложение ASP.NET, использующего платформу Entity Framework. Дополнительные сведения см. в следующих ресурсах:
 
-- [Вопросы производительности (Entity Framework)](https://msdn.microsoft.com/en-us/library/cc853327.aspx) на веб-сайте MSDN.
+- [Вопросы производительности (Entity Framework)](https://msdn.microsoft.com/library/cc853327.aspx) на веб-сайте MSDN.
 - [Сообщения, связанные с производительностью, блоге группы разработчиков Entity Framework](https://blogs.msdn.com/b/adonet/archive/tags/performance/).
 - [EF параметры слияния и скомпилированные запросы](https://blogs.msdn.com/b/dsimmons/archive/2010/01/12/ef-merge-options-and-compiled-queries.aspx). Запись блога, объясняющее непредсказуемого поведения скомпилированных запросов и слияния такие параметры, как `NoTracking`. Если вы планируете использовать скомпилированные запросы или работают с ними параметров слияния в приложении, сначала прочтите следующее.
 - [Сущности, связанной с Framework публикации в блоге данных и моделирование группа консультантов по](https://blogs.msdn.com/b/dmcat/archive/tags/entity+framework/). Включает в себя записи об скомпилированных запросов и обнаружить проблемы с производительностью с помощью профилировщика Visual Studio 2010.
-- [Entity Framework форум потока с рекомендации по увеличению производительности очень сложных запросов](https://social.msdn.microsoft.com/Forums/en-US/adodotnetentityframework/thread/ffe8b2ab-c5b5-4331-8988-33a872d0b5f6).
-- [Управления состоянием ASP.NET](https://msdn.microsoft.com/en-us/library/z1hkazw7.aspx).
+- [Entity Framework форум потока с рекомендации по увеличению производительности очень сложных запросов](https://social.msdn.microsoft.com/Forums/adodotnetentityframework/thread/ffe8b2ab-c5b5-4331-8988-33a872d0b5f6).
+- [Управления состоянием ASP.NET](https://msdn.microsoft.com/library/z1hkazw7.aspx).
 - [С помощью платформы Entity Framework и ObjectDataSource: пользовательское разбиение по страницам](http://geekswithblogs.net/Frez/articles/using-the-entity-framework-and-the-objectdatasource-custom-paging.aspx). Запись блога, созданный в приложении ContosoUniversity, созданных в этих учебниках объясняется, как реализовать разбиение по страницам в *Departments.aspx* страницы.
 
 Следующее руководство рассматриваются некоторые важные улучшения на платформу Entity Framework, которые появились в версии 4.

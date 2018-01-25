@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 42beb4ffcff9974230ba0c4a2f243020bcd4f99d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8f5d223a5944d8adb9fe65c89e87829d18d1c7ee
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-visual-basic"></a>Введение в программирование веб-ASP.NET с использованием синтаксиса Razor (Visual Basic)
 ====================
@@ -318,7 +318,7 @@ ms.lasthandoff: 11/10/2017
 | Полный URL-адрес | `http://mycompanyserver/humanresources/CompanyPolicy.htm` |
 | --- | --- |
 | Имя сервера | *mycompanyserver* |
-| Виртуальный путь | */HumanResources/CompanyPolicy.htm* |
+| Виртуальный путь | */humanresources/CompanyPolicy.htm* |
 | Физический путь | *C:\mywebsites\humanresources\CompanyPolicy.htm* |
 
 Виртуальный корневой каталог — / так же, как и корневом каталоге диска — диск \. (Виртуальная папка пути всегда использовать символы косой черты). Виртуальный путь к папке не нужно иметь то же имя, как физическая папка; Это может быть псевдоним. (На производственных серверах виртуальный путь редко соответствует как полный физический путь.)
@@ -518,5 +518,5 @@ ASP.NET серверный код позволяет выполнять зада
 
 ### <a name="reference-documentation"></a>Справочная документация
 
-- [ASP.NET](https://msdn.microsoft.com/en-us/library/ee532866.aspx)
-- [Язык Visual Basic](https://msdn.microsoft.com/en-us/library/2x7h1hfk.aspx)
+- [ASP.NET](https://msdn.microsoft.com/library/ee532866.aspx)
+- [Язык Visual Basic](https://msdn.microsoft.com/library/2x7h1hfk.aspx)

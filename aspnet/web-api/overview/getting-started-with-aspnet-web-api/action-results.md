@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/action-results
 msc.type: authoredcontent
-ms.openlocfilehash: 68b82661b97434795e1c306b168033dfcde529bc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d0db5c6d45020861d7295ab1db989caee525fff9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="action-results-in-web-api-2"></a>Результаты действий в веб-API 2
 ====================
@@ -56,7 +56,7 @@ HTTP-ответа:
 
 ## <a name="httpresponsemessage"></a>HttpResponseMessage
 
-Если действие возвращает [HttpResponseMessage](https://msdn.microsoft.com/en-us/library/system.net.http.httpresponsemessage.aspx), веб-API преобразует возвращаемое значение непосредственно в сообщение ответа HTTP с помощью свойств **HttpResponseMessage** объекта для заполнения ответ.
+Если действие возвращает [HttpResponseMessage](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.aspx), веб-API преобразует возвращаемое значение непосредственно в сообщение ответа HTTP с помощью свойств **HttpResponseMessage** объекта для заполнения ответ.
 
 Этот параметр обеспечивает большую контроля над ответное сообщение. Например следующее действие контроллера задает заголовок Cache-Control.
 
@@ -98,9 +98,9 @@ HTTP-ответа:
 
 [!code-console[Main](action-results/samples/sample9.cmd)]
 
-Как правило, используется **IHttpActionResult** реализации, определенные в  **[System.Web.Http.Results](https://msdn.microsoft.com/en-us/library/system.web.http.results.aspx)**  пространства имен. **ApiController** класс определяет вспомогательные методы, которые возвращают результаты этих встроенных действий.
+Как правило, используется **IHttpActionResult** реализации, определенные в  **[System.Web.Http.Results](https://msdn.microsoft.com/library/system.web.http.results.aspx)**  пространства имен. **ApiController** класс определяет вспомогательные методы, которые возвращают результаты этих встроенных действий.
 
-В следующем примере, если запрос не соответствует существующей код продукта, контроллер вызывает [ApiController.NotFound](https://msdn.microsoft.com/en-us/library/system.web.http.apicontroller.notfound.aspx) для создания ответа 404 (не найдено). В противном случае вызывает контроллер [ApiController.OK](https://msdn.microsoft.com/en-us/library/dn314591.aspx), который создает ответ 200 (ОК), который содержит результат.
+В следующем примере, если запрос не соответствует существующей код продукта, контроллер вызывает [ApiController.NotFound](https://msdn.microsoft.com/library/system.web.http.apicontroller.notfound.aspx) для создания ответа 404 (не найдено). В противном случае вызывает контроллер [ApiController.OK](https://msdn.microsoft.com/library/dn314591.aspx), который создает ответ 200 (ОК), который содержит результат.
 
 [!code-csharp[Main](action-results/samples/sample10.cs)]
 

@@ -2,7 +2,7 @@
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests
 title: "Использование Entity Framework 4.0 и управления ObjectDataSource, часть 2: Добавление слой бизнес-логики и модульные тесты | Документы Microsoft"
 author: tdykstra
-description: "Этот учебник ряд строится на веб-приложение Contoso университета, созданный Приступая к работе с рядами учебника Entity Framework 4.0. Я..."
+description: "Этот учебник ряд строится на веб-приложение Contoso университета, созданный Приступая к работе с рядами учебника Entity Framework 4.0. I..."
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests
 msc.type: authoredcontent
-ms.openlocfilehash: 0440f807c7baa7b92e5f05590eca9cc237b5aef9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: df37acd8901b457f7887afe767d42d53e45e4815
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests"></a>Использование Entity Framework 4.0 и управления ObjectDataSource, часть 2: Добавление слой бизнес-логики и модульные тесты
 ====================
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/10/2017
 Методы CRUD, которые вызывают класс репозитория и два конструктора позволяют с хранилищем независимо от внутренних данных, можно выбрать с помощью класса бизнес логики. Класс бизнес логики необходимо помните о том, как класс, он вызывает хранит данные. (Это часто называется *сохраняемости*.) Это облегчает модульного тестирования, поскольку класс бизнес логики могут подключаться к реализации репозитория, что-нибудь используется в качестве простого как в памяти `List` коллекции для хранения данных.
 
 > [!NOTE]
-> С технической точки зрения будут по-прежнему не игнорирующие сохраняемость, объекты сущности так, как их все экземпляры из классов, наследующих Entity Framework `EntityObject` класса. Для завершения сохраняемости, можно использовать *старые объекты CLR*, или *POCO*, вместо объектов, наследующих от `EntityObject` класса. С помощью POCO выходит за рамки данного руководства. Дополнительные сведения см. в разделе [возможностей тестирования и Entity Framework 4.0](https://msdn.microsoft.com/en-us/library/ff714955.aspx) на веб-сайте MSDN.)
+> С технической точки зрения будут по-прежнему не игнорирующие сохраняемость, объекты сущности так, как их все экземпляры из классов, наследующих Entity Framework `EntityObject` класса. Для завершения сохраняемости, можно использовать *старые объекты CLR*, или *POCO*, вместо объектов, наследующих от `EntityObject` класса. С помощью POCO выходит за рамки данного руководства. Дополнительные сведения см. в разделе [возможностей тестирования и Entity Framework 4.0](https://msdn.microsoft.com/library/ff714955.aspx) на веб-сайте MSDN.)
 
 
 Теперь можно подключиться `ObjectDataSource` элементы управления бизнес логики вместо класса в репозиторий и проверьте, что все работает, как раньше.
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/10/2017
 
 Запустите *Departments.aspx* и *DepartmentsAdd.aspx* страницы, чтобы убедиться, что они по-прежнему работать как раньше.
 
-[!["Image01"](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests/_static/image6.png)](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests/_static/image5.png)
+[![Image01](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests/_static/image6.png)](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests/_static/image5.png)
 
 [![Image02](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests/_static/image8.png)](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests/_static/image7.png)
 
@@ -221,7 +221,7 @@ ms.lasthandoff: 11/10/2017
 
 Теперь можно проверить *DepartmentsAdd.aspx.cs* страницу, чтобы убедиться, что также правильно обрабатывает пытается сделать администратор отдела несколько человек.
 
-На этом завершается введение в реализации шаблон репозитория для использования `ObjectDataSource` управления с платформой Entity Framework. Дополнительные сведения о шаблон репозитория и тестирования см. в документе MSDN [возможностей тестирования и Entity Framework 4.0](https://msdn.microsoft.com/en-us/library/ff714955.aspx).
+На этом завершается введение в реализации шаблон репозитория для использования `ObjectDataSource` управления с платформой Entity Framework. Дополнительные сведения о шаблон репозитория и тестирования см. в документе MSDN [возможностей тестирования и Entity Framework 4.0](https://msdn.microsoft.com/library/ff714955.aspx).
 
 В этом руководстве вы увидите, как добавить, сортировку и фильтрацию функциональные возможности для приложения.
 

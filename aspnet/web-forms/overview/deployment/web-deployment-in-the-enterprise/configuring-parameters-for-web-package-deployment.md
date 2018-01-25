@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: dd1ae266740ea4728c0624b1833a98ac262e0e5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 12a4ba8ad30df43e7192500ad4514dfa9679f899
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuring-parameters-for-web-package-deployment"></a>Настройка параметров для развертывания веб-пакета
 ====================
@@ -88,7 +88,7 @@ ms.lasthandoff: 11/10/2017
 
 Если вручную установить пакет развертывания диспетчера служб IIS предложит ввести адрес конечной точки службы наряду с свойства, которые были параметризованы автоматически. Если установить пакет развертывания, запустив *. deploy.cmd* файл, можно изменить *SetParameters.xml* файл, чтобы предоставить значение для адрес конечной точки службы, а также значения для свойства, которые были параметризованы автоматически.
 
-Полные сведения о создании *parameters.xml* файла см. в разделе [как: используются параметры для настройки параметров при пакет развертывания установлен](https://msdn.microsoft.com/en-us/library/ff398068.aspx). Процедура, с именем **использование параметров развертывания для параметров файла Web.config** пошаговые инструкции.
+Полные сведения о создании *parameters.xml* файла см. в разделе [как: используются параметры для настройки параметров при пакет развертывания установлен](https://msdn.microsoft.com/library/ff398068.aspx). Процедура, с именем **использование параметров развертывания для параметров файла Web.config** пошаговые инструкции.
 
 ## <a name="modifying-the-setparametersxml-file"></a>Изменение файла SetParameters.xml
 
@@ -144,7 +144,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="further-reading"></a>Дополнительные сведения
 
-Сведения по созданию веб-пакетов см. в разделе [построения и упаковки проектов веб-приложений](building-and-packaging-web-application-projects.md). Руководство для фактического развертывания веб-пакета см. в разделе [веб-развертывание пакетов](deploying-web-packages.md). Пошаговое руководство по созданию *parameters.xml* файла см. в разделе [как: используются параметры для настройки параметров при пакет развертывания установлен](https://msdn.microsoft.com/en-us/library/ff398068.aspx).
+Сведения по созданию веб-пакетов см. в разделе [построения и упаковки проектов веб-приложений](building-and-packaging-web-application-projects.md). Руководство для фактического развертывания веб-пакета см. в разделе [веб-развертывание пакетов](deploying-web-packages.md). Пошаговое руководство по созданию *parameters.xml* файла см. в разделе [как: используются параметры для настройки параметров при пакет развертывания установлен](https://msdn.microsoft.com/library/ff398068.aspx).
 
 Дополнительные общие сведения о параметризации в веб-развертывания см. в разделе [Web развертывание параметризации в действии](https://go.microsoft.com/?linkid=9805119) (запись блога).
 

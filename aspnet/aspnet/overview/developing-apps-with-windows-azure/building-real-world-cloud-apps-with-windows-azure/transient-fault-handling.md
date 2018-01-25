@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling
 msc.type: authoredcontent
-ms.openlocfilehash: 3caeeb83e4c074ae0ffc30f035d793a821eb6be2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b743b04789c5e5ebf5ab922cf34a516a16a6d356
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="transient-fault-handling-building-real-world-cloud-apps-with-azure"></a>Transient Fault Handling (Создание реальных облачных приложений с Azure)
 ====================
@@ -39,11 +39,11 @@ ms.lasthandoff: 11/10/2017
 
 Можно реализовать логику повторных попыток смарт-несколькими способами.
 
-- Шаблоны Microsoft &amp; рекомендациям группа имеет [временных Fault Handling Application Block](https://msdn.microsoft.com/en-us/library/dn440719(v=pandp.60).aspx) , который выполняет все автоматически при использовании ADO.NET для доступа к базе данных SQL (не через Entity Framework). Можно просто задать политику для повторных попыток — сколько раз, чтобы повторить попытку запроса или команды и длительность ожидания между попытками — и переноса кода SQL в *с помощью* блока.
+- Шаблоны Microsoft &amp; рекомендациям группа имеет [временных Fault Handling Application Block](https://msdn.microsoft.com/library/dn440719(v=pandp.60).aspx) , который выполняет все автоматически при использовании ADO.NET для доступа к базе данных SQL (не через Entity Framework). Можно просто задать политику для повторных попыток — сколько раз, чтобы повторить попытку запроса или команды и длительность ожидания между попытками — и переноса кода SQL в *с помощью* блока.
 
     [!code-csharp[Main](transient-fault-handling/samples/sample1.cs)]
 
-    Также поддерживает TFH [кэша роли Azure](https://msdn.microsoft.com/en-us/library/windowsazure/dn386103.aspx) и [Service Bus](https://azure.microsoft.com/services/service-bus/).
+    Также поддерживает TFH [кэша роли Azure](https://msdn.microsoft.com/library/windowsazure/dn386103.aspx) и [Service Bus](https://azure.microsoft.com/services/service-bus/).
 - При использовании платформы Entity Framework вы обычно не работают непосредственно с подключениями SQL, поэтому нельзя использовать этот пакет, шаблоны и рекомендации, но Entity Framework 6 строит такая логика повторных попыток прямо в framework. Аналогичным образом укажите стратегию повторных попыток, а затем EF использует эта стратегия, каждый раз, когда он получает доступ к базе данных.
 
     Для использования этой функции в приложении устранения, что нужно сделать всего добавить класс, производный от *DbConfiguration* и включите логику повторных попыток.
@@ -88,11 +88,11 @@ ms.lasthandoff: 11/10/2017
 
 Документация
 
-- [Советы и рекомендации по проектированию крупномасштабных служб в облачных службах Azure](https://msdn.microsoft.com/en-us/library/windowsazure/jj717232.aspx). Технический документ, Марк Симмс и Майкл Томасси. Аналогично Безаварийность рядов, но переход в Дополнительные практические сведения. В разделе телеметрии и диагностики.
-- [Отказоустойчивость: Руководство по гибкой облачной архитектуре](https://msdn.microsoft.com/en-us/library/windowsazure/jj853352.aspx). Технический документ по Marc Mercuri, Ульрих Хоманн и Эндрю Таунхилл. Версия веб-страницы серия видеоматериалов Безаварийность.
-- [Шаблоны и методики - руководство по Azure Майкрософт](https://msdn.microsoft.com/en-us/library/dn568099.aspx). В разделе "Повторить" шаблона, шаблон начальника агента планировщика.
+- [Советы и рекомендации по проектированию крупномасштабных служб в облачных службах Azure](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx). Технический документ, Марк Симмс и Майкл Томасси. Аналогично Безаварийность рядов, но переход в Дополнительные практические сведения. В разделе телеметрии и диагностики.
+- [Отказоустойчивость: Руководство по гибкой облачной архитектуре](https://msdn.microsoft.com/library/windowsazure/jj853352.aspx). Технический документ по Marc Mercuri, Ульрих Хоманн и Эндрю Таунхилл. Версия веб-страницы серия видеоматериалов Безаварийность.
+- [Шаблоны и методики - руководство по Azure Майкрософт](https://msdn.microsoft.com/library/dn568099.aspx). В разделе "Повторить" шаблона, шаблон начальника агента планировщика.
 - [Отказоустойчивость в базе данных Azure SQL](https://blogs.msdn.com/b/windowsazure/archive/2012/07/30/fault-tolerance-in-windows-azure-sql-database.aspx). Запись блога по Tony Petrossian.
-- [Entity Framework — устойчивость подключений и логика повторных попыток](https://msdn.microsoft.com/en-us/data/dn456835). Как использовать и настраивать transient fault handling функции Entity Framework 6.
+- [Entity Framework — устойчивость подключений и логика повторных попыток](https://msdn.microsoft.com/data/dn456835). Как использовать и настраивать transient fault handling функции Entity Framework 6.
 - [Устойчивость подключения и команды перехвата с платформой Entity Framework в приложении ASP.NET MVC](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md). Четвертый в ряде девять частей учебника показано, как настроить EF 6 функция устойчивости подключений для базы данных SQL.
 
 Видеоролики

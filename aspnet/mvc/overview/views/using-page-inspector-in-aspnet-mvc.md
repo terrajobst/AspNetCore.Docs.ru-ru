@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/views/using-page-inspector-in-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 6aa9f16f166ecf5529ae33a17951eb5ea425e7af
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5b443963a089f96a9dab11b7db4a25451075d6be
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-page-inspector-in-aspnet-mvc"></a>Использование инспектора страниц в ASP.NET MVC
 ====================
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- [Visual Studio 2012](https://www.microsoft.com/visualstudio/11/en-us) или [Visual Studio Express 2012 для Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web).
+- [Visual Studio 2012](https://www.microsoft.com/visualstudio/11) или [Visual Studio Express 2012 для Web](https://www.microsoft.com/visualstudio/11/downloads#express-web).
 
 > [!NOTE]
 > Чтобы получить последнюю версию инспектор страниц, используйте [Web Platform Installer](https://go.microsoft.com/fwlink/?LinkId=255386) установке Windows Azure SDK для .NET 2.0.
@@ -84,9 +84,9 @@ ms.lasthandoff: 11/10/2017
 
 ![Index.cshtml Просмотр в инспекторе страниц](using-page-inspector-in-aspnet-mvc/_static/image8.png)
 
-По умолчанию инспектор страниц закреплен в окне слева от среды Visual Studio. При желании можно закрепить его в другом месте или открепить окно. В разделе [как: размещение и закрепление окон](https://msdn.microsoft.com/en-us/library/z4y0hsax.aspx).
+По умолчанию инспектор страниц закреплен в окне слева от среды Visual Studio. При желании можно закрепить его в другом месте или открепить окно. В разделе [как: размещение и закрепление окон](https://msdn.microsoft.com/library/z4y0hsax.aspx).
 
-В верхней области окна инспектора страниц показываются текущей страницы в окне браузера. На нижней панели отображаются страницы в разметке HTML, а также некоторые вкладки, где можно просмотреть различные аспекты страницы. На нижней панели аналогичен [средств разработчика F12](https://msdn.microsoft.com/en-us/ie/aa740478) в Internet Explorer.
+В верхней области окна инспектора страниц показываются текущей страницы в окне браузера. На нижней панели отображаются страницы в разметке HTML, а также некоторые вкладки, где можно просмотреть различные аспекты страницы. На нижней панели аналогичен [средств разработчика F12](https://msdn.microsoft.com/ie/aa740478) в Internet Explorer.
 
 ![Приложение ASP.NET MVC в инспекторе страниц](using-page-inspector-in-aspnet-mvc/_static/image10.png)
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 989bd80bf2d8b6548fd8e4abd492408a72104070
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 46db3c5d733b9c8b6e749a9b8ff1aa9a061c36df
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="performing-batch-updates-c"></a>Выполнение пакетных обновлений (C#)
 ====================
@@ -116,7 +116,7 @@ ms.lasthandoff: 11/10/2017
 
 На все элементы s DataList отображение интерфейс редактирования и с добавлением обновления всех кнопок все, что остается написание кода для выполнения пакетного обновления. В частности, нам нужно перебор элементов DataList s и вызовите `SuppliersBLL` класса s `UpdateSupplierAddress` метод для каждого из них.
 
-Коллекция `DataListItem` экземпляров этого состава DataList может осуществляться через DataList s [ `Items` свойства](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.items.aspx). Со ссылкой на `DataListItem`, мы можно захватить соответствующего `SupplierID` из `DataKeys` коллекции программным образом справочник и элементов управления в Интернете текстовое поле внутри `ItemTemplate` как показано в следующем коде:
+Коллекция `DataListItem` экземпляров этого состава DataList может осуществляться через DataList s [ `Items` свойства](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.items.aspx). Со ссылкой на `DataListItem`, мы можно захватить соответствующего `SupplierID` из `DataKeys` коллекции программным образом справочник и элементов управления в Интернете текстовое поле внутри `ItemTemplate` как показано в следующем коде:
 
 
 [!code-csharp[Main](performing-batch-updates-cs/samples/sample4.cs)]
@@ -131,7 +131,7 @@ ms.lasthandoff: 11/10/2017
 
 Алгоритм обновления пакета, используемый для этого учебника вызовов `UpdateSupplierAddress` метод *каждого* поставщика в DataList, независимо от того, менялся ли их адресную информацию. Хотя такие blind обновляет упорядочивая t обычно проблемы с производительностью, они могут привести к неиспользуемых записей, если вы повторно аудит изменений в таблице базы данных. Например, если используются триггеры для записи всех `UPDATE` s, чтобы `Suppliers` таблицы в таблицу аудита, каждый раз при нажатии кнопки Обновить все новые записи аудита будет создаваться для каждого поставщика в системе, независимо от того, является ли пользователь внесла изменения.
 
-Классы ADO.NET DataTable и DataAdapter предназначены для поддержки пакетные обновления, сохранения результатов только измененные, удаленных и новых записей в взаимодействия с базой данных. Каждая строка в объекте DataTable имеет [ `RowState` свойство](https://msdn.microsoft.com/en-us/library/system.data.datarow.rowstate.aspx) , указывающее, был добавлен в таблицу DataTable, удалены из него, изменен, или остается без изменений строки. Когда DataTable изначально заполнен, все строки помечаются без изменений. Изменение значения всех столбцов s строк при этом строка помечается как измененный.
+Классы ADO.NET DataTable и DataAdapter предназначены для поддержки пакетные обновления, сохранения результатов только измененные, удаленных и новых записей в взаимодействия с базой данных. Каждая строка в объекте DataTable имеет [ `RowState` свойство](https://msdn.microsoft.com/library/system.data.datarow.rowstate.aspx) , указывающее, был добавлен в таблицу DataTable, удалены из него, изменен, или остается без изменений строки. Когда DataTable изначально заполнен, все строки помечаются без изменений. Изменение значения всех столбцов s строк при этом строка помечается как измененный.
 
 В `SuppliersBLL` мы обновление информации об адресе указанного поставщика s путем чтения первой записи одного поставщика в класс `SuppliersDataTable` и задайте `Address`, `City`, и `Country` значения столбцов, используя следующий код:
 

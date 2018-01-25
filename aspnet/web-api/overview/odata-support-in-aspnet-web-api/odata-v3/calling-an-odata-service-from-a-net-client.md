@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/calling-an-odata-service-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: f6266045ebf55fb7ae691bfb55e9c90cd4edcc96
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 497102cfa98680f2156a56ff9e36d84b7c820020
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="calling-an-odata-service-from-a-net-client-c"></a>Вызов службы OData из клиента .NET (C#)
 ====================
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > 
 > - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads) (работает с Visual Studio 2012)
-> - [Библиотека клиентов служб данных WCF](https://msdn.microsoft.com/en-us/library/cc668772.aspx)
+> - [Библиотека клиентов служб данных WCF](https://msdn.microsoft.com/library/cc668772.aspx)
 > - Веб-API 2. (Пример службы OData построена на основе веб-API 2, но клиентское приложение не зависит от веб-API).
 
 
@@ -118,7 +118,7 @@ ms.lasthandoff: 11/10/2017
 
 OData определяет [параметры запроса](../supporting-odata-query-options.md) может использоваться для фильтрации, сортировки, страницы данных и т. д. В прокси-службы можно применить эти параметры с помощью разных выражений LINQ.
 
-В этом разделе мы рассмотрим краткие примеры. Дополнительные сведения см. в разделе [рекомендации по LINQ (службы данных WCF)](https://msdn.microsoft.com/en-us/library/ee622463.aspx) на сайте MSDN.
+В этом разделе мы рассмотрим краткие примеры. Дополнительные сведения см. в разделе [рекомендации по LINQ (службы данных WCF)](https://msdn.microsoft.com/library/ee622463.aspx) на сайте MSDN.
 
 ### <a name="filtering-filter"></a>Фильтрации ($filter)
 
@@ -226,7 +226,7 @@ OData определяет [параметры запроса](../supporting-oda
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample24.cs)]
 
-Дополнительные сведения см. в разделе[действия и вызова операций службы](https://msdn.microsoft.com/en-us/library/hh230677.aspx).
+Дополнительные сведения см. в разделе[действия и вызова операций службы](https://msdn.microsoft.com/library/hh230677.aspx).
 
 Один из вариантов является расширение **контейнера** класса для предоставления строго типизированный метод, который вызывает действие:
 

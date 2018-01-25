@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: cd800062e87c07a0ef1d8d3d32c910aaf3e683cc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 98a7ce4991d58181177cf56976888e9fd1526987
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="tutorial-server-broadcast-with-signalr-2"></a>Учебник: Сервер вещание с SignalR 2
 ====================
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](tutorial-server-broadcast-with-signalr/samples/sample2.cs)]
 
-    [Концентратора](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hub(v=vs.111).aspx) класс используется для определения методов, клиенты могут вызывать на сервере. Вы определяете один метод: `GetAllStocks()`. Когда клиент изначально подключается к серверу, он вызывает этот метод, чтобы получить список всех акций с их текущей цены. Метод может выполняются синхронно и возвращать `IEnumerable<Stock>` , так как он возвращает данные из памяти. Приходилось получать данные, то, что привело бы к ожидания, например, поиск в базе данных или вызов веб-службы, выполнив метод следует указать `Task<IEnumerable<Stock>>` как возвращаемое значение асинхронной обработки. Дополнительные сведения см. в разделе [ASP.NET руководство по API концентраторов SignalR - Server - если для асинхронного выполнения](../guide-to-the-api/hubs-api-guide-server.md#asyncmethods).
+    [Концентратора](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hub(v=vs.111).aspx) класс используется для определения методов, клиенты могут вызывать на сервере. Вы определяете один метод: `GetAllStocks()`. Когда клиент изначально подключается к серверу, он вызывает этот метод, чтобы получить список всех акций с их текущей цены. Метод может выполняются синхронно и возвращать `IEnumerable<Stock>` , так как он возвращает данные из памяти. Приходилось получать данные, то, что привело бы к ожидания, например, поиск в базе данных или вызов веб-службы, выполнив метод следует указать `Task<IEnumerable<Stock>>` как возвращаемое значение асинхронной обработки. Дополнительные сведения см. в разделе [ASP.NET руководство по API концентраторов SignalR - Server - если для асинхронного выполнения](../guide-to-the-api/hubs-api-guide-server.md#asyncmethods).
 
     Атрибут HubName указывает, как концентратор будет ссылаться в коде JavaScript на стороне клиента. Имя по умолчанию на стороне клиента, если вы не используете этот атрибут — это версия стиле Camel, от имени класса, что в этом случае было бы stockTickerHub.
 
@@ -146,7 +146,7 @@ ms.lasthandoff: 11/10/2017
 
     ### <a name="storing-the-singleton-instance-in-a-static-field"></a>Хранение одноэлементный экземпляр в статическом поле
 
-    Этот код инициализирует статический \_экземпляр поля, поддерживающего свойство экземпляра с экземпляром класса, и это является единственным экземпляром класса, который может быть создан, поскольку конструктор помечен как частный. [Отложенная инициализация](https://msdn.microsoft.com/en-us/library/dd997286.aspx) используется для \_поле экземпляра, а не для повышения производительности, но чтобы убедитесь, что создание экземпляра threadsafe.
+    Этот код инициализирует статический \_экземпляр поля, поддерживающего свойство экземпляра с экземпляром класса, и это является единственным экземпляром класса, который может быть создан, поскольку конструктор помечен как частный. [Отложенная инициализация](https://msdn.microsoft.com/library/dd997286.aspx) используется для \_поле экземпляра, а не для повышения производительности, но чтобы убедитесь, что создание экземпляра threadsafe.
 
     [!code-csharp[Main](tutorial-server-broadcast-with-signalr/samples/sample4.cs)]
 
@@ -160,7 +160,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](tutorial-server-broadcast-with-signalr/samples/sample6.cs)]
 
-    Представляет собой коллекцию акции [ConcurrentDictionary](https://msdn.microsoft.com/en-us/library/dd287191.aspx) тип безопасности потока. В качестве альтернативы можно использовать [словарь](https://msdn.microsoft.com/en-us/library/xfhwa508.aspx) объекта и явно заблокировать словарь при внесении изменений в него.
+    Представляет собой коллекцию акции [ConcurrentDictionary](https://msdn.microsoft.com/library/dd287191.aspx) тип безопасности потока. В качестве альтернативы можно использовать [словарь](https://msdn.microsoft.com/library/xfhwa508.aspx) объекта и явно заблокировать словарь при внесении изменений в него.
 
     Для этого примера приложения что достаточно для хранения данных приложения в памяти и потери данных при удалении экземпляра StockTicker. В реальном приложении будет работать с хранилищем данных серверной части, например к базе данных.
 
@@ -172,7 +172,7 @@ ms.lasthandoff: 11/10/2017
 
     UpdateStockPrices вызывается таймер, который передает значения NULL в параметре state. Перед обновлением цены, устанавливается блокировка \_updateStockPricesLock объекта. Код проверяет, если другой поток уже обновление цен и затем вызывает TryUpdateStockPrice для каждой из них в списке. Метод TryUpdateStockPrice решает, следует ли изменить цены акции и объем, чтобы изменить его. При изменении цены акции BroadcastStockPrice вызывается для вещания акций изменения для всех подключенных клиентов.
 
-    \_UpdatingStockPrices флаг помечен как [volatile](https://msdn.microsoft.com/en-us/library/x13ttww7.aspx) для обеспечения доступа к нему threadsafe.
+    \_UpdatingStockPrices флаг помечен как [volatile](https://msdn.microsoft.com/library/x13ttww7.aspx) для обеспечения доступа к нему threadsafe.
 
     [!code-csharp[Main](tutorial-server-broadcast-with-signalr/samples/sample8.cs)]
 
@@ -192,7 +192,7 @@ ms.lasthandoff: 11/10/2017
 
     Метод updateStockPrice, вызываемой в BroadcastStockPrice не существует; она будет добавлена позже при написании кода, который выполняется на клиенте. Можно ссылаться на updateStockPrice здесь, поскольку Clients.All является динамической, это означает, что выражение будет вычислено во время выполнения. При вызове этого метода выполняется, SignalR отправит имя метода и значение параметра клиента и если у клиента имеется метод с именем updateStockPrice, этот метод будет вызван, и он передается значение параметра.
 
-    Clients.All означает отправить всем клиентам. SignalR предоставляет другие параметры, чтобы указать, какие клиенты или группы клиенты для отправки. Дополнительные сведения см. в разделе [HubConnectionContext](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hubs.hubconnectioncontext(v=vs.111).aspx).
+    Clients.All означает отправить всем клиентам. SignalR предоставляет другие параметры, чтобы указать, какие клиенты или группы клиенты для отправки. Дополнительные сведения см. в разделе [HubConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.hubconnectioncontext(v=vs.111).aspx).
 
 ### <a name="register-the-signalr-route"></a>Регистрация маршрутов SignalR
 
@@ -412,4 +412,4 @@ OpenMarket, CloseMarket и сброс вызываются в ответ на к
 - [SignalR Github и образцы](https://github.com/SignalR/SignalR)
 - [Вики-сайте SignalR](https://github.com/SignalR/SignalR/wiki)
 
-Пошаговое руководство по развертыванию приложения на SignalR для Azure см. в разделе [SignalR с помощью с веб-приложений в службе приложений Azure](../deployment/using-signalr-with-azure-web-sites.md). Подробные сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [создать веб-приложение ASP.NET в службе приложений Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-get-started/).
+Пошаговое руководство по развертыванию приложения на SignalR для Azure см. в разделе [SignalR с помощью с веб-приложений в службе приложений Azure](../deployment/using-signalr-with-azure-web-sites.md). Подробные сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [создать веб-приложение ASP.NET в службе приложений Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/).

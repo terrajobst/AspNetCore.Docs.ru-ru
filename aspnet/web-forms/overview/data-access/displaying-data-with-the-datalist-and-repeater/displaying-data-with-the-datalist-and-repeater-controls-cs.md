@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1f626731e79d83785057498c53cdf49aecb90261
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 42203bdd7c22f3885eecab36dbd710d371107285
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="displaying-data-with-the-datalist-and-repeater-controls-c"></a>Отображение данных с помощью DataList и элементы управления повторителем (C#)
 ====================
@@ -163,7 +163,7 @@ ms.lasthandoff: 11/10/2017
 
 - `HeaderTemplate`Если указано, добавляет строку заголовка в выходные данные и используется для отображения в этой строке
 - `AlternatingItemTemplate`используется для отрисовки чередующихся элементов
-- `SelectedItemTemplate`используется для отрисовки выбранного элемента; Выбранный элемент является элементом, индекс которого соответствует DataList s [ `SelectedIndex` свойство](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.datalist.selectedindex.aspx)
+- `SelectedItemTemplate`используется для отрисовки выбранного элемента; Выбранный элемент является элементом, индекс которого соответствует DataList s [ `SelectedIndex` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.selectedindex.aspx)
 - `EditItemTemplate`использовать для отображения редактируемого элемента
 - `SeparatorTemplate`Если указано, добавляет разделитель между каждым элементом и используется для отрисовки этот разделитель
 - `FooterTemplate`-Если указано, добавляет строку нижнего колонтитула в выходных данных и используется для отображения в этой строке
@@ -222,7 +222,7 @@ ms.lasthandoff: 11/10/2017
 - В `SectionLevelTutorialListing.ascx`, повторитель был использован для отображения маркированного списка разделов дочерние элементы текущего раздела карты сайта
 
 > [!NOTE]
-> ASP.NET 2.0 появился новый [управления маркированный список](https://msdn.microsoft.com/en-us/library/ms228101.aspx), который можно привязать к элементу управления источником данных для отображения простых маркированного списка. С помощью элемента управления BulletedList, нам не нужно указать любой из списка связанных HTML-код; Вместо этого мы просто укажите поле данных для отображения в виде текста для каждого элемента списка.
+> ASP.NET 2.0 появился новый [управления маркированный список](https://msdn.microsoft.com/library/ms228101.aspx), который можно привязать к элементу управления источником данных для отображения простых маркированного списка. С помощью элемента управления BulletedList, нам не нужно указать любой из списка связанных HTML-код; Вместо этого мы просто укажите поле данных для отображения в виде текста для каждого элемента списка.
 
 
 Повторителя служит catch все данные веб-элемента управления. Если не существующего элемента управления, создающий необходимые разметки, можно использовать элементе управления повторителем. Чтобы проиллюстрировать использование повторителя, позволяют s список категорий, отображенный выше DataList сведения продукта, созданный на шаге 2. В частности, позволяющие s должны категорий, отображаемых в HTML одной строки `<table>` с помощью каждой категории отображаются в виде столбца в таблице.

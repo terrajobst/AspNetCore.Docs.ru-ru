@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 6ee3e244c4ed29384d11c7acc1440692d3f9b23e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6ae398f94c0ac3872601bdc8fd935f6d285793db
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>Приступая к работе с 4,5 веб-форм ASP.NET и Visual Studio 2013
 ====================
@@ -150,7 +150,7 @@ PayPal подтвердит вашей учетной записи, порядо
 
 Прежде чем начать, убедитесь, что имеется следующее программное обеспечение на компьютере:
 
-- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/en-us/downloads#vs) или [Microsoft Visual Studio Express 2013 для Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web). Платформа .NET Framework устанавливается автоматически.
+- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs) или [Microsoft Visual Studio Express 2013 для Web](https://www.microsoft.com/visualstudio/11/downloads#express-web). Платформа .NET Framework устанавливается автоматически.
 
 Этот учебник ряд использует Microsoft Visual Studio Express 2013 для Web. Для завершения этого учебника ряда можно использовать либо Microsoft Visual Studio Express 2013 для Web или Microsoft Visual Studio 2013.
 
@@ -163,7 +163,7 @@ PayPal подтвердит вашей учетной записи, порядо
 
 > [!NOTE] 
 > 
-> Это пошаговое руководство предполагает, что выбрана *веб-разработки* набор параметров при первом запуске Visual Studio. Дополнительные сведения см. в разделе [как: выберите параметры среды веб-разработки](https://msdn.microsoft.com/en-us/library/ff521558.aspx).
+> Это пошаговое руководство предполагает, что выбрана *веб-разработки* набор параметров при первом запуске Visual Studio. Дополнительные сведения см. в разделе [как: выберите параметры среды веб-разработки](https://msdn.microsoft.com/library/ff521558.aspx).
 
 
 ## <a name="download-the-sample-application"></a>Загрузить пример приложения
@@ -179,7 +179,7 @@ PayPal подтвердит вашей учетной записи, порядо
 
 Загрузка *.zip* файла. Чтобы просмотреть завершенный проект, создающем этого учебника ряда, найдите и выберите *C#*папки в *.zip* файла. Сохранить *C#* folderto папки, предназначенный для работы с проектами Visual Studio 2013. По умолчанию папку Проекты Visual Studio 2013 выглядит следующим образом:
 
-**C:\Users\*****&lt;username&gt;*** \Documents\Visual Studio 2013\Projects**
+**C:\Users\*****&lt;username&gt;*****\Documents\Visual Studio 2013\Projects**
 
 Переименуйте ***C#*** папки ***WingtipToys***.
 

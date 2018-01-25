@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bc009272df3626402ee4c52578f9b364f70a4e78
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: dbd2f6c8f1e21529da8a0fbffab212a29f615cc1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-customized-sorting-user-interface-c"></a>Создание пользовательского интерфейса настраиваемой сортировки (C#)
 ====================
@@ -187,7 +187,7 @@ ms.lasthandoff: 11/10/2017
 
 
 > [!NOTE]
-> Если продуктов с `NULL` значения для базы данных `CategoryID`, `SupplierID`, или `UnitPrice` поля, эти значения будут отображаться как пустые строки в GridView по умолчанию, то есть текст разделителя строк для этих продуктов с `NULL`будет выглядеть как категория: (то есть отсутствует s нет имя после категории: как с категорией: Напитки). Если требуется, чтобы значения, показанные здесь можно задать либо стояли [ `NullDisplayText` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.boundfield.nulldisplaytext.aspx) текст должен отображаться или условного оператора можно добавить в метод Render, при назначении `currentValue` для разделителя Строка s `Text` свойство.
+> Если продуктов с `NULL` значения для базы данных `CategoryID`, `SupplierID`, или `UnitPrice` поля, эти значения будут отображаться как пустые строки в GridView по умолчанию, то есть текст разделителя строк для этих продуктов с `NULL`будет выглядеть как категория: (то есть отсутствует s нет имя после категории: как с категорией: Напитки). Если требуется, чтобы значения, показанные здесь можно задать либо стояли [ `NullDisplayText` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.boundfield.nulldisplaytext.aspx) текст должен отображаться или условного оператора можно добавить в метод Render, при назначении `currentValue` для разделителя Строка s `Text` свойство.
 
 
 ## <a name="summary"></a>Сводка

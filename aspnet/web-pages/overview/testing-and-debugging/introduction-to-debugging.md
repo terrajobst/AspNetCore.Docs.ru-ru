@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/testing-and-debugging/introduction-to-debugging
 msc.type: authoredcontent
-ms.openlocfilehash: 2bc1f096540d17095ef760eed67b458fcd4e1372
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0b6b5a886efe515b434948dade1ae840ddaecd42
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="introduction-to-debugging-aspnet-web-pages-razor-sites"></a>Общие сведения об отладке ASP.NET Web Pages (Razor) узлов
 ====================
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/10/2017
     - Сведения о времени выполнения HTTP. В этом разделе содержатся сведения об этом версию Microsoft .NET Framework, на которой запущена веб-страницы, путь, сведения о кэше и т. д. (Как вы узнали из [введение в ASP.NET веб-программирование с использованием синтаксиса Razor](https://go.microsoft.com/fwlink/?LinkId=202890), веб-страниц ASP.NET с помощью синтаксиса построены на технологию веб-сервера Microsoft ASP.NET, который сам лежит широко программного обеспечения является Razor библиотеки разработки вызывается .NET Framework).
     - Переменные среды. Этот раздел предоставляет список все локальные переменные среды и их значения на веб-сервере.
 
-    Полное описание всех данных сервера и запроса выходит за рамки данной статьи, но можно видеть, что `ServerInfo` вспомогательный возвращает большой объем диагностических данных. Дополнительные сведения о значениях, `ServerInfo` возвращает, в разделе [распознается переменные среды](https://technet.microsoft.com/en-us/library/dd560744(WS.10).aspx) на веб-сайте Microsoft TechNet и [переменные сервера IIS](https://msdn.microsoft.com/en-us/library/ms524602(VS.90).aspx) на веб-сайте MSDN.
+    Полное описание всех данных сервера и запроса выходит за рамки данной статьи, но можно видеть, что `ServerInfo` вспомогательный возвращает большой объем диагностических данных. Дополнительные сведения о значениях, `ServerInfo` возвращает, в разделе [распознается переменные среды](https://technet.microsoft.com/library/dd560744(WS.10).aspx) на веб-сайте Microsoft TechNet и [переменные сервера IIS](https://msdn.microsoft.com/library/ms524602(VS.90).aspx) на веб-сайте MSDN.
 
 ## <a name="embedding-output-expressions-to-display-page-values"></a>Внедренные выражения выходных данных для отображения значений страницы
 
@@ -139,5 +139,5 @@ ms.lasthandoff: 11/10/2017
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Программирование веб-страниц ASP.NET (Razor) с помощью Visual Studio](https://go.microsoft.com/fwlink/?LinkId=205854)
-- [Переменные сервера IIS](https://msdn.microsoft.com/en-us/library/ms524602(VS.90).aspx) (MSDN)
-- [Распознается переменные среды](https://technet.microsoft.com/en-us/library/dd560744(WS.10).aspx) (TechNet)
+- [Переменные сервера IIS](https://msdn.microsoft.com/library/ms524602(VS.90).aspx) (MSDN)
+- [Распознается переменные среды](https://technet.microsoft.com/library/dd560744(WS.10).aspx) (TechNet)

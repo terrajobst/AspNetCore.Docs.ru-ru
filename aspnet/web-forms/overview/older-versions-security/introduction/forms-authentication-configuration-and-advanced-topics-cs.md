@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8168f2d8431a1f051167dcd2f5123fafa942fa23
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c57722965b510ac4f5cf0c06c7c01c8cea26384f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-c"></a>Настройка проверки подлинности форм и дополнительные разделы (C#)
 ====================
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-1-examining-the-ltformsgt-configuration-settings"></a>Шаг 1: Проверка &lt;forms&gt; параметры конфигурации
 
-Система проверки подлинности форм в ASP.NET обеспечивает множество параметров конфигурации, которые можно настраивать для отдельных приложений по. Сюда входят параметры, такие как: время существования форм проверки подлинности билета; какие виды защита применяется к билета; в разделе какие условия без поддержки файлов cookie проверки подлинности используются билеты; путь к странице входа; и другие сведения. Чтобы изменить значения по умолчанию, добавьте [ &lt;forms&gt; элемент](https://msdn.microsoft.com/en-us/library/1d3t3c61.aspx) как дочерний [ &lt;проверки подлинности&gt; элемент](https://msdn.microsoft.com/en-us/library/532aee0e.aspx), указав эти свойства значения, которые необходимо настроить как атрибуты XML следующим образом:
+Система проверки подлинности форм в ASP.NET обеспечивает множество параметров конфигурации, которые можно настраивать для отдельных приложений по. Сюда входят параметры, такие как: время существования форм проверки подлинности билета; какие виды защита применяется к билета; в разделе какие условия без поддержки файлов cookie проверки подлинности используются билеты; путь к странице входа; и другие сведения. Чтобы изменить значения по умолчанию, добавьте [ &lt;forms&gt; элемент](https://msdn.microsoft.com/library/1d3t3c61.aspx) как дочерний [ &lt;проверки подлинности&gt; элемент](https://msdn.microsoft.com/library/532aee0e.aspx), указав эти свойства значения, которые необходимо настроить как атрибуты XML следующим образом:
 
 [!code-xml[Main](forms-authentication-configuration-and-advanced-topics-cs/samples/sample1.xml)]
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/10/2017
 
 **Таблица 1**: Сводка &lt;forms&gt; атрибутов элемента
 
-В ASP.NET 2.0 и выше, значение по умолчанию значения для проверки подлинности форм жестко запрограммированы в классе FormsAuthenticationConfiguration в .NET Framework. Все изменения должны применяться для отдельных приложений, в файле Web.config. Это отличается от ASP.NET 1.x, где значения по умолчанию для проверки подлинности форм были сохранены в файле machine.config (и таким образом могут быть изменены через редактирования machine.config). Время на темы ASP.NET 1.x, что стоит упомянуть что ряд параметров системы проверки подлинности форм имеют разные значения по умолчанию в ASP.NET 2.0 и дальше, чем в ASP.NET 1.x. При переносе приложения в среде ASP.NET 1.x важно учитывать эти различия. Обратитесь к [ &lt;forms&gt; технической документации элемент](https://msdn.microsoft.com/en-us/library/1d3t3c61.aspx) список различий.
+В ASP.NET 2.0 и выше, значение по умолчанию значения для проверки подлинности форм жестко запрограммированы в классе FormsAuthenticationConfiguration в .NET Framework. Все изменения должны применяться для отдельных приложений, в файле Web.config. Это отличается от ASP.NET 1.x, где значения по умолчанию для проверки подлинности форм были сохранены в файле machine.config (и таким образом могут быть изменены через редактирования machine.config). Время на темы ASP.NET 1.x, что стоит упомянуть что ряд параметров системы проверки подлинности форм имеют разные значения по умолчанию в ASP.NET 2.0 и дальше, чем в ASP.NET 1.x. При переносе приложения в среде ASP.NET 1.x важно учитывать эти различия. Обратитесь к [ &lt;forms&gt; технической документации элемент](https://msdn.microsoft.com/library/1d3t3c61.aspx) список различий.
 
 > [!NOTE]
 > Несколько параметров проверки подлинности форм, такие как время ожидания, домена и пути, укажите сведения для результирующего файла cookie билет проверки подлинности форм. Дополнительные сведения о файлы cookie, как они работают и их различные свойства чтения [этого учебника файлы cookie](http://www.quirksmode.org/js/cookies.html).
@@ -137,7 +137,7 @@ ms.lasthandoff: 11/10/2017
 Автоматическое обнаружение и UseDeviceProfile параметры полагаться на *профиль устройства* в Проверка необходимости использования проверки подлинности на основе файлов cookie или без использования билетов. ASP.NET поддерживает базу данных из различных устройств и их возможности, например, поддерживают ли они файлов cookie, какие версии поддерживают JavaScript и т. д. Каждый раз, устройство запрашивает веб-страницы на веб-сервере, он отправляет вдоль *агент пользователя* заголовка HTTP, который определяет тип устройства. ASP.NET автоматически сопоставляет строки указанного агента пользователя с соответствующей профиля, заданного в своей базе данных.
 
 > [!NOTE]
-> Эта база данных возможностей устройства хранится в XML-файлов число, которое соответствует [файла описания браузера схемы](https://msdn.microsoft.com/en-us/library/ms228122.aspx). Файлы профиля устройства по умолчанию расположены в папке % WINDIR%\Microsoft.Net\Framework\v2.0.50727\CONFIG\Browsers. Можно также добавить пользовательские файлы приложения в приложение\_папку браузеров. Дополнительные сведения см. в разделе [How To: определение типов браузеров, поддерживаемых веб-страницах ASP.NET](https://msdn.microsoft.com/en-us/library/3yekbd5b.aspx).
+> Эта база данных возможностей устройства хранится в XML-файлов число, которое соответствует [файла описания браузера схемы](https://msdn.microsoft.com/library/ms228122.aspx). Файлы профиля устройства по умолчанию расположены в папке % WINDIR%\Microsoft.Net\Framework\v2.0.50727\CONFIG\Browsers. Можно также добавить пользовательские файлы приложения в приложение\_папку браузеров. Дополнительные сведения см. в разделе [How To: определение типов браузеров, поддерживаемых веб-страницах ASP.NET](https://msdn.microsoft.com/library/3yekbd5b.aspx).
 
 
 Поскольку значение по умолчанию — UseDeviceProfile, билетов форм без поддержки файлов cookie проверки подлинности будет использоваться при посещении сайта со стороны устройства, профиль сообщает, что он не поддерживает файлы cookie.
@@ -199,7 +199,7 @@ SomePage.aspx URL-адрес в ссылке автоматически прео
 
 ### <a name="setting-the-validation-and-decryption-keys"></a>Настройка проверки и расшифровки ключей
 
-Шифрование и хеширование алгоритмы, используемые системой проверки подлинности форм для шифрования и проверки билет проверки подлинности можно настроить через [ &lt;machineKey&gt; элемент](https://msdn.microsoft.com/en-us/library/w8h3skw9.aspx) в файле Web.config. В таблице 2 показано &lt;machineKey&gt; атрибутов элемента и их возможные значения.
+Шифрование и хеширование алгоритмы, используемые системой проверки подлинности форм для шифрования и проверки билет проверки подлинности можно настроить через [ &lt;machineKey&gt; элемент](https://msdn.microsoft.com/library/w8h3skw9.aspx) в файле Web.config. В таблице 2 показано &lt;machineKey&gt; атрибутов элемента и их возможные значения.
 
 | **Attribute (XElement Dynamic Property)** (Attribute (динамическое свойство XElement)) | **Описание** |
 | --- | --- |
@@ -223,7 +223,7 @@ SomePage.aspx URL-адрес в ссылке автоматически прео
 
 [!code-xml[Main](forms-authentication-configuration-and-advanced-topics-cs/samples/sample5.xml)]
 
-Для получения дополнительной информации посетите [How To: Настройка MachineKey в ASP.NET 2.0](https://msdn.microsoft.com/en-us/library/ms998288.aspx).
+Для получения дополнительной информации посетите [How To: Настройка MachineKey в ASP.NET 2.0](https://msdn.microsoft.com/library/ms998288.aspx).
 
 > [!NOTE]
 > Значения decryptionKey и validationKey были взяты из [Стив Gibson](http://www.grc.com/stevegibson.htm) [точной пароли веб-странице](https://www.grc.com/passwords.htm), служащего для создания 64 случайные шестнадцатеричные символы при всех. Чтобы уменьшить вероятность того, что эти ключи, делая их передачу в приложении, рекомендуется заменить выше ключи случайным из них на странице точной пароли.
@@ -233,7 +233,7 @@ SomePage.aspx URL-адрес в ссылке автоматически прео
 
 Многие веб-приложения отображения сведений об или базовые отображения страницы для текущего пользователя. Например веб-страницы могут отображаться имя пользователя и дату, которую она последнего входа в систему в верхней части каждой страницы. Билета проверки подлинности форм хранит имя текущего вошедшего в систему пользователя, но при необходимости другие сведения страницы необходимо перейти на хранилище пользователя - как правило, база данных - для поиска информации, не хранятся в билет проверки подлинности.
 
-С помощью небольшого фрагмента кода дополнительные пользовательские сведения могут храниться в билета проверки подлинности форм. Такие данные могут быть выражены через [класс FormsAuthenticationTicket](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthenticationticket.aspx) [UserData свойство](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthenticationticket.userdata.aspx). Это подходит для хранения небольшие объемы информации о пользователе, достаточно часто. Значение, указанное в UserData свойство входит в состав файла Cookie билет проверки подлинности и, подобно поля билет, шифруется и проверки на основе системой проверки подлинности форм конфигурации. По умолчанию UserData является пустой строкой.
+С помощью небольшого фрагмента кода дополнительные пользовательские сведения могут храниться в билета проверки подлинности форм. Такие данные могут быть выражены через [класс FormsAuthenticationTicket](https://msdn.microsoft.com/library/system.web.security.formsauthenticationticket.aspx) [UserData свойство](https://msdn.microsoft.com/library/system.web.security.formsauthenticationticket.userdata.aspx). Это подходит для хранения небольшие объемы информации о пользователе, достаточно часто. Значение, указанное в UserData свойство входит в состав файла Cookie билет проверки подлинности и, подобно поля билет, шифруется и проверки на основе системой проверки подлинности форм конфигурации. По умолчанию UserData является пустой строкой.
 
 Чтобы сохранить данные пользователя в билет проверки подлинности, необходимо написать большой объем кода на странице входа, которое извлекает сведения о пользователе и сохраняет его в билете. Поскольку UserData свойства строкового типа, данные, хранящиеся в нем должны быть правильно сериализованы как строка. Например предположим, что наши хранилища пользователя включаются Дата рождения каждого пользователя и имя работодателя, а, чтобы хранить значения этих двух свойств в билет проверки подлинности. Нам удалось сериализовать эти значения в строку, объединяя пользователя Дата рождения строки с символ вертикальной черты (|), за которым следует имя работодателя. Для пользователя, рождения на 15 августа 1974, который будет работать для Northwind Traders, мы бы присвоить UserData свойство строки: 1974-08-15 | Northwind Traders.
 
@@ -269,7 +269,7 @@ SomePage.aspx URL-адрес в ссылке автоматически прео
 
 HttpCookie authCookie = FormsAuthentication.GetAuthCookie (UserName.Text, RememberMe.Checked);
 
-Для работы с FormAuthenticationTicket, внедренных в файл cookie, нам потребуется вызвать класс FormAuthentication [расшифровать метод](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.decrypt.aspx), передавая значение файла cookie.
+Для работы с FormAuthenticationTicket, внедренных в файл cookie, нам потребуется вызвать класс FormAuthentication [расшифровать метод](https://msdn.microsoft.com/library/system.web.security.formsauthentication.decrypt.aspx), передавая значение файла cookie.
 
 Билет FormsAuthenticationTicket = FormsAuthentication.Decrypt(authCookie.Value);
 
@@ -277,7 +277,7 @@ HttpCookie authCookie = FormsAuthentication.GetAuthCookie (UserName.Text, Rememb
 
 FormsAuthenticationTicket newTicket = новый FormsAuthenticationTicket (билет. Версия билета. Имя билета. IssueDate, билета. Срок действия билета. IsPersistent, userDataString);
 
-Мы затем шифрования (и проверки) новый экземпляр FormsAuthenticationTicket путем вызова [методу шифрования](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.encrypt.aspx)и вернуть эти данные, зашифрованные (и проверенные) в authCookie.
+Мы затем шифрования (и проверки) новый экземпляр FormsAuthenticationTicket путем вызова [методу шифрования](https://msdn.microsoft.com/library/system.web.security.formsauthentication.encrypt.aspx)и вернуть эти данные, зашифрованные (и проверенные) в authCookie.
 
 authCookie.Value = FormsAuthentication.Encrypt(newTicket);
 
@@ -322,7 +322,7 @@ authCookie.Value = FormsAuthentication.Encrypt(newTicket);
 Класс GenericPrincipal подходит для большинства сценариев проверки подлинности на основе форм, где не используются роли. Для тех случаев, когда недостаточно обработку роли по умолчанию или при необходимости свяжите с пользователем, пользовательского объекта IIdentity создания пользовательского объекта IPrincipal во время процесса проверки подлинности и присвоить его свойству HttpContext.User.
 
 > [!NOTE]
-> Как мы увидим в будущих учебниках, когда ASP. Включить ролей в .NET framework создается объект пользовательского основного типа [RolePrincipal создан](https://msdn.microsoft.com/en-us/library/system.web.security.roleprincipal.aspx) и перезаписывает объекта GenericPrincipal создан проверки подлинности форм. Это делается, чтобы настроить метод IsInRole основного сервера для взаимодействия с API платформы ролей.
+> Как мы увидим в будущих учебниках, когда ASP. Включить ролей в .NET framework создается объект пользовательского основного типа [RolePrincipal создан](https://msdn.microsoft.com/library/system.web.security.roleprincipal.aspx) и перезаписывает объекта GenericPrincipal создан проверки подлинности форм. Это делается, чтобы настроить метод IsInRole основного сервера для взаимодействия с API платформы ролей.
 
 
 Поскольку мы имеют не заботиться сами с ролями еще, единственная причина того, мы бы для создания собственного участника безопасности на этом juncture будет связать пользовательский IIdentity объект участнику. На шаге 4 мы рассмотрели хранения дополнительных сведений о пользователях в свойстве UserData билет проверки подлинности, в частности, название компании пользователя и названий. Однако только UserData сведения доступны через билет проверки подлинности и затем только в качестве сериализованной строки, это означает, что каждый раз, когда мы хотим просмотреть эти сведения, хранящиеся в билете нам нужно интерпретировать свойство UserData.
@@ -334,7 +334,7 @@ authCookie.Value = FormsAuthentication.Encrypt(newTicket);
 В этом учебнике, давайте создадим пользовательские объекты principal и identity в приложении\_папки с кодом. Начните с добавления приложений\_папки в проект кода — щелкните правой кнопкой мыши имя проекта в обозревателе решений, выберите параметр Добавить папку ASP.NET и выберите приложение\_кода. Приложение\_папки с кодом является особой папке ASP.NET, который содержит класс файлы для веб-сайта.
 
 > [!NOTE]
-> Приложение\_папку кода следует использовать только при управлении проектами с помощью модели проекта веб-сайта. Если вы используете [модель проекта веб-приложения](https://msdn.microsoft.com/en-us/asp.net/Aa336618.aspx), создание стандартной папки, и добавить классы. Например можно добавить новую папку с именем классы и существует поместить код.
+> Приложение\_папку кода следует использовать только при управлении проектами с помощью модели проекта веб-сайта. Если вы используете [модель проекта веб-приложения](https://msdn.microsoft.com/asp.net/Aa336618.aspx), создание стандартной папки, и добавить классы. Например можно добавить новую папку с именем классы и существует поместить код.
 
 
 Добавьте два новых файла класса приложения\_папки с кодом, один именованный CustomIdentity.cs и один с именем CustomPrincipal.cs.
@@ -359,9 +359,9 @@ authCookie.Value = FormsAuthentication.Encrypt(newTicket);
 
 Теперь у нас есть классом, который расширяет определение IIdentity по умолчанию, чтобы включить свойства CompanyName и Title, а также пользовательские основной класс, который использует пользовательское удостоверение. Мы готовы к действию в конвейере ASP.NET и назначьте нашей пользовательского объекта-участника контекст безопасности входящего запроса.
 
-Конвейер ASP.NET принимает входящий запрос и обрабатывает его через ряд действий. На каждом шаге возникает определенного события, дает разработчикам коснитесь в конвейере ASP.NET и измените запрос на определенных этапах жизненного цикла. FormsAuthenticationModule, например, ожидает ASP.NET для вызова [AuthenticateRequest событие](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authenticaterequest.aspx), после чего он оценивает входящего запроса, для нее билет проверки подлинности. При обнаружении билет проверки подлинности объекта GenericPrincipal создается и назначается свойству HttpContext.User.
+Конвейер ASP.NET принимает входящий запрос и обрабатывает его через ряд действий. На каждом шаге возникает определенного события, дает разработчикам коснитесь в конвейере ASP.NET и измените запрос на определенных этапах жизненного цикла. FormsAuthenticationModule, например, ожидает ASP.NET для вызова [AuthenticateRequest событие](https://msdn.microsoft.com/library/system.web.httpapplication.authenticaterequest.aspx), после чего он оценивает входящего запроса, для нее билет проверки подлинности. При обнаружении билет проверки подлинности объекта GenericPrincipal создается и назначается свойству HttpContext.User.
 
-После события AuthenticateRequest конвейера ASP.NET вызывает [PostAuthenticateRequest событий](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.postauthenticaterequest.aspx), который является, где можно заменить GenericPrincipal объект, созданный с помощью экземпляра FormsAuthenticationModule нашей Объект CustomPrincipal. Рис. 7 показана этот рабочий процесс.
+После события AuthenticateRequest конвейера ASP.NET вызывает [PostAuthenticateRequest событий](https://msdn.microsoft.com/library/system.web.httpapplication.postauthenticaterequest.aspx), который является, где можно заменить GenericPrincipal объект, созданный с помощью экземпляра FormsAuthenticationModule нашей Объект CustomPrincipal. Рис. 7 показана этот рабочий процесс.
 
 
 [![GenericPrincipal заменяется CustomPrincipal в событии PostAuthenticationRequest](forms-authentication-configuration-and-advanced-topics-cs/_static/image20.png)](forms-authentication-configuration-and-advanced-topics-cs/_static/image19.png)
@@ -377,13 +377,13 @@ authCookie.Value = FormsAuthentication.Encrypt(newTicket);
 **На рисунке 08**: добавить файл Global.asax для веб-сайта ([Просмотр полноразмерное изображение](forms-authentication-configuration-and-advanced-topics-cs/_static/image24.png))
 
 
-Шаблон по умолчанию Global.asax содержит обработчики событий для события конвейера ASP.NET, включая начала, окончания и [событие ошибки](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.error.aspx), среди прочего. Вы можете удалить эти обработчики событий, как мы не нужны для этого приложения. Событие, которое мы будем рады получить — PostAuthenticateRequest. Добавьте в файл Global.asax, его разметка выглядит следующим образом:
+Шаблон по умолчанию Global.asax содержит обработчики событий для события конвейера ASP.NET, включая начала, окончания и [событие ошибки](https://msdn.microsoft.com/library/system.web.httpapplication.error.aspx), среди прочего. Вы можете удалить эти обработчики событий, как мы не нужны для этого приложения. Событие, которое мы будем рады получить — PostAuthenticateRequest. Добавьте в файл Global.asax, его разметка выглядит следующим образом:
 
 [!code-aspx[Main](forms-authentication-configuration-and-advanced-topics-cs/samples/sample11.aspx)]
 
 Приложение\_метод OnPostAuthenticateRequest выполняется каждый раз, среда выполнения ASP.NET вызывает событие PostAuthenticateRequest, которое происходит один раз для каждого входящего запроса страницы. Обработчик события начинается с проверки, если пользователь прошел проверку подлинности и была выполнена проверка подлинности посредством проверки подлинности форм. В этом случае новый объект CustomIdentity создается и передается текущий запрос билета проверки подлинности в своем конструкторе. После этого объект CustomPrincipal создается и передается только что созданный объект CustomIdentity в своем конструкторе. Наконец на вновь созданный объект CustomPrincipal назначается контекст безопасности текущего запроса.
 
-Обратите внимание, что последний шаг — связывание объекте CustomPrincipal с контекстом безопасности запроса - назначает участника два свойства: HttpContext.User и Thread.CurrentPrincipal. Эти два назначения необходимы из-за способа обработки контексты безопасности в ASP.NET. Платформа .NET Framework связывает контекста безопасности с каждого выполняемого потока; Эта информация доступна в виде объекта IPrincipal через [объекта потока](https://msdn.microsoft.com/en-us/library/system.threading.thread.aspx) [CurrentPrincipal свойство](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentcontext.aspx). Что такое путать, имеет ASP.NET свои собственные сведения о контексте безопасности (HttpContext.User).
+Обратите внимание, что последний шаг — связывание объекте CustomPrincipal с контекстом безопасности запроса - назначает участника два свойства: HttpContext.User и Thread.CurrentPrincipal. Эти два назначения необходимы из-за способа обработки контексты безопасности в ASP.NET. Платформа .NET Framework связывает контекста безопасности с каждого выполняемого потока; Эта информация доступна в виде объекта IPrincipal через [объекта потока](https://msdn.microsoft.com/library/system.threading.thread.aspx) [CurrentPrincipal свойство](https://msdn.microsoft.com/library/system.threading.thread.currentcontext.aspx). Что такое путать, имеет ASP.NET свои собственные сведения о контексте безопасности (HttpContext.User).
 
 В некоторых сценариях проверяется свойство Thread.CurrentPrincipal при определении контекст безопасности; в других случаях используется HttpContext.User. Например, существуют средства безопасности в .NET, которые позволяют разработчикам декларативно указать, какие пользователи или роли можно создать экземпляр класса или вызова методов, определенных (см. [добавления правила авторизации для бизнеса и данных с помощью слоев PrincipalPermissionAttributes](https://weblogs.asp.net/scottgu/archive/2006/10/04/Tip_2F00_Trick_3A00_-Adding-Authorization-Rules-to-Business-and-Data-Layers-using-PrincipalPermissionAttributes.aspx)). В системе эти методы декларативные определения контекста безопасности через свойство Thread.CurrentPrincipal.
 
@@ -412,23 +412,23 @@ authCookie.Value = FormsAuthentication.Encrypt(newTicket);
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
 - [Разбор форм проверки подлинности](http://aspnet.4guysfromrolla.com/articles/072005-1.aspx)
-- [Объяснение: Проверка подлинности форм в ASP.NET 2.0](https://msdn.microsoft.com/en-us/library/aa480476.aspx)
-- [Практическое руководство: Защита проверки подлинности форм в ASP.NET 2.0](https://msdn.microsoft.com/en-us/library/ms998310.aspx)
+- [Объяснение: Проверка подлинности форм в ASP.NET 2.0](https://msdn.microsoft.com/library/aa480476.aspx)
+- [Практическое руководство: Защита проверки подлинности форм в ASP.NET 2.0](https://msdn.microsoft.com/library/ms998310.aspx)
 - [Профессиональные ASP.NET 2.0 безопасности, членства и управления ролями](http://www.wrox.com/WileyCDA/WroxTitle/productCd-0764596985.html) (ISBN: 978-0-7645-9698-8)
-- [Защита элементов управления входа](https://msdn.microsoft.com/en-us/library/ms178346.aspx)
-- [&lt;Проверки подлинности&gt; элемент](https://msdn.microsoft.com/en-us/library/532aee0e.aspx)
-- [&lt;Forms&gt; элемент для &lt;проверки подлинности&gt;](https://msdn.microsoft.com/en-us/library/1d3t3c61.aspx)
-- [&lt;MachineKey&gt; элемент](https://msdn.microsoft.com/en-us/library/w8h3skw9.aspx)
+- [Защита элементов управления входа](https://msdn.microsoft.com/library/ms178346.aspx)
+- [&lt;Проверки подлинности&gt; элемент](https://msdn.microsoft.com/library/532aee0e.aspx)
+- [&lt;Forms&gt; элемент для &lt;проверки подлинности&gt;](https://msdn.microsoft.com/library/1d3t3c61.aspx)
+- [&lt;MachineKey&gt; элемент](https://msdn.microsoft.com/library/w8h3skw9.aspx)
 - [Основные сведения о билета проверки подлинности форм и файлы Cookie](https://support.microsoft.com/kb/910443)
 
 ### <a name="video-training-on-topics-contained-in-this-tutorial"></a>Видео на разделы, содержащиеся в этом учебнике
 
 - [Как изменить свойства проверки подлинности форм](../../../videos/authentication/how-to-change-the-forms-authentication-properties.md)
 - [Способ установки и использования файла Cookie проверки подлинности в приложении ASP.NET](../../../videos/authentication/how-to-setup-and-use-cookie-less-authentication-in-an-aspnet-application.md)
-- [Перемещение входа форм ASP](../../../videos/authentication/asp-forms-login-relocation.md)
-- [Формы входа пользовательского ключа конфигурации](../../../videos/authentication/forms-login-custom-key-configuration.md)
-- [Добавить пользовательские данные для метода проверки подлинности](../../../videos/authentication/add-custom-data-to-the-authentication-method.md)
-- [Используйте настраиваемый участник объектов](../../../videos/authentication/use-custom-principal-objects.md)
+- [Перемещение входа с проверкой подлинности на основе форм в ASP](../../../videos/authentication/asp-forms-login-relocation.md)
+- [Конфигурация пользовательского ключа для входа](../../../videos/authentication/forms-login-custom-key-configuration.md)
+- [Добавление пользовательских данных в метод проверки подлинности](../../../videos/authentication/add-custom-data-to-the-authentication-method.md)
+- [Использование пользовательских объектов Principal](../../../videos/authentication/use-custom-principal-objects.md)
 
 ### <a name="about-the-author"></a>Об авторе
 

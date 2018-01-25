@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
 msc.type: authoredcontent
-ms.openlocfilehash: 42851cb9b8046ca4f70894b9ec5b671b269da04c
-ms.sourcegitcommit: 97432cbf9b8673bc4ad7012d5b6f2ed273420295
+ms.openlocfilehash: 4e1270f9fb58032d22380117f4ec18b00bd725fc
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="owin-middleware-in-the-iis-integrated-pipeline"></a>По промежуточного слоя OWIN в интегрированном конвейере служб IIS
 ====================
@@ -36,9 +36,9 @@ ms.lasthandoff: 11/17/2017
 
 ## <a name="how-owin-middleware-executes-in-the-iis-integrated-pipeline"></a>Как выполняется по промежуточного слоя OWIN в интегрированном конвейере служб IIS
 
-Для консольных приложений OWIN, созданные в конвейер приложения [начальной конфигурации](owin-startup-class-detection.md) задается порядок добавления компонентов с помощью `IAppBuilder.Use` метод. То есть в конвейер OWIN в [Katana](an-overview-of-project-katana.md) среда выполнения будет обрабатывать OMCs в порядке, они были зарегистрированы с помощью `IAppBuilder.Use`. В интегрированном конвейере служб IIS конвейер запросов состоит из [HttpModules](https://msdn.microsoft.com/en-us/library/ms178468(v=vs.85).aspx) подписка на набор предварительно определенных событий конвейера, таких как [BeginRequest](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.beginrequest.aspx), [AuthenticateRequest](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authenticaterequest.aspx), [AuthorizeRequest](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authorizerequest.aspx)и т. д.
+Для консольных приложений OWIN, созданные в конвейер приложения [начальной конфигурации](owin-startup-class-detection.md) задается порядок добавления компонентов с помощью `IAppBuilder.Use` метод. То есть в конвейер OWIN в [Katana](an-overview-of-project-katana.md) среда выполнения будет обрабатывать OMCs в порядке, они были зарегистрированы с помощью `IAppBuilder.Use`. В интегрированном конвейере служб IIS конвейер запросов состоит из [HttpModules](https://msdn.microsoft.com/library/ms178468(v=vs.85).aspx) подписка на набор предварительно определенных событий конвейера, таких как [BeginRequest](https://msdn.microsoft.com/library/system.web.httpapplication.beginrequest.aspx), [AuthenticateRequest](https://msdn.microsoft.com/library/system.web.httpapplication.authenticaterequest.aspx), [AuthorizeRequest](https://msdn.microsoft.com/library/system.web.httpapplication.authorizerequest.aspx)и т. д.
 
-Сравнив OMC, [HttpModule](https://msdn.microsoft.com/en-us/library/zec9k340(v=vs.85).aspx) в мире ASP.NET OMC должны быть зарегистрированы правильно конвейера предварительно определенных событий. Например, HttpModule `MyModule` вызывается при поступлении запроса [AuthenticateRequest](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authenticaterequest.aspx) этап конвейера:
+Сравнив OMC, [HttpModule](https://msdn.microsoft.com/library/zec9k340(v=vs.85).aspx) в мире ASP.NET OMC должны быть зарегистрированы правильно конвейера предварительно определенных событий. Например, HttpModule `MyModule` вызывается при поступлении запроса [AuthenticateRequest](https://msdn.microsoft.com/library/system.web.httpapplication.authenticaterequest.aspx) этап конвейера:
 
 [!code-csharp[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample2.cs?highlight=10)]
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/17/2017
 
 [!code-console[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample5.cmd)]
 
-Среда выполнения Katana сопоставить каждый из компонентов по промежуточного слоя OWIN для [PreExecuteRequestHandler](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.prerequesthandlerexecute.aspx) по умолчанию, который соответствует событию конвейера IIS [PreRequestHandlerExecute](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.prerequesthandlerexecute.aspx).
+Среда выполнения Katana сопоставить каждый из компонентов по промежуточного слоя OWIN для [PreExecuteRequestHandler](https://msdn.microsoft.com/library/system.web.httpapplication.prerequesthandlerexecute.aspx) по умолчанию, который соответствует событию конвейера IIS [PreRequestHandlerExecute](https://msdn.microsoft.com/library/system.web.httpapplication.prerequesthandlerexecute.aspx).
 
 ## <a name="stage-markers"></a>Маркеры рабочей области
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/17/2017
 
 [!code-csharp[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample6.cs?highlight=13,19)]
 
-`app.UseStageMarker(PipelineStage.Authenticate)` Вызов настраивает все компоненты (в данном случае наших двух компонентов диагностики) ранее зарегистрированного по промежуточного слоя для выполнения на стадии конвейера проверки подлинности. Последний компонент по промежуточного слоя (который отображает диагностики и отвечает на запросы) будут выполняться на `ResolveCache` рабочей области ( [ResolveRequestCache](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.resolverequestcache.aspx) событий).
+`app.UseStageMarker(PipelineStage.Authenticate)` Вызов настраивает все компоненты (в данном случае наших двух компонентов диагностики) ранее зарегистрированного по промежуточного слоя для выполнения на стадии конвейера проверки подлинности. Последний компонент по промежуточного слоя (который отображает диагностики и отвечает на запросы) будут выполняться на `ResolveCache` рабочей области ( [ResolveRequestCache](https://msdn.microsoft.com/library/system.web.httpapplication.resolverequestcache.aspx) событий).
 
 Нажмите клавишу F5 для запуска приложения. В окне вывода содержит следующую информацию:
 

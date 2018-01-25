@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 817bfd48dce94e7dbad96cb6f822494e3adfae1d
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 236589d0202a7f30f1e1a9d69902000fd9a2dd71
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="updating-related-data---ef-core-razor-pages-7-of-8"></a>Обновление связанных данных - страниц Razor EF Core (7, 8)
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 01/19/2018
 * Изменяет заголовок из **DepartmentID** для **отдел**.
 * Заменяет `"ViewBag.DepartmentID"` с `DepartmentNameSL` (от базового класса).
 * Добавлен параметр «Выберите отдела». Это изменение отображает «Select отдела» вместо первого отдела.
-* Добавляет сообщение проверки, если отдел не выбран.
+* Добавляет сообщение проверки, если отдел не выбрана.
 
 На странице Razor используется [выберите тег вспомогательный](xref:mvc/views/working-with-forms#the-select-tag-helper):
 
@@ -91,11 +91,11 @@ ms.lasthandoff: 01/19/2018
 
 Предыдущей разметки вносит следующие изменения:
 
-* Отображает идентификатор курса Обычно первичный ключ (PK) сущности не отображаются. Первичные ключи не обычно имеют смысла для пользователей. В этом случае первичного ключа является номером курса.
+* Отображает идентификатор курса Как правило, первичный ключ (PK) сущность не отображается. Первичные ключи не обычно имеют смысла для пользователей. В этом случае первичного ключа является номером курса.
 * Изменяет заголовок из **DepartmentID** для **отдел**.
 * Заменяет `"ViewBag.DepartmentID"` с `DepartmentNameSL` (от базового класса).
 * Добавлен параметр «Выберите отдела». Это изменение отображает «Select отдела» вместо первого отдела.
-* Добавляет сообщение проверки, если отдел не выбран.
+* Добавляет сообщение проверки, если отдел не выбрана.
 
 На этой странице содержатся скрытое поле (`<input type="hidden">`) для номера курса. Добавление `<label>` тег вспомогательное приложение с помощью `asp-for="Course.CourseID"` не устраняют необходимость в скрытое поле. `<input type="hidden">`требуется для должны быть включены в данные, когда пользователь щелкает номер **Сохранить**.
 
@@ -103,7 +103,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="add-asnotracking-to-the-details-and-delete-page-models"></a>Добавьте сведения об AsNoTracking и удаление моделей страницы
 
-[AsNoTracking](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) может повысить производительность, если трассировка не требуется. Добавить `AsNoTracking` Delete и сведения о модели страницы. В следующем коде показано обновленной модели страницы Delete:
+[AsNoTracking](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) может повысить производительность при отслеживания не требуется. Добавить `AsNoTracking` Delete и сведения о модели страницы. В следующем коде показано обновленной модели страницы Delete:
 
 [!code-csharp[Main](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
 
@@ -164,7 +164,7 @@ ms.lasthandoff: 01/19/2018
 Флажки производить изменения курсов, присвоенного инструктор. Флажок отображается для каждого курса в базе данных. Курсы, которые назначены инструктора проверяются. Пользователь может установите или снимите флажки, чтобы изменить назначения курса. Если количество курсов были гораздо выше:
 
 * Возможно, используется другой пользовательский интерфейс для отображения курсов.
-* Метод управления сущности объединения можно создавать и удалять связи не будут изменяться.
+* Метод управления сущности объединения для создания или удаления связей не изменится.
 
 ### <a name="add-classes-to-support-create-and-edit-instructor-pages"></a>Добавлять классы для поддержки создания и редактирования страниц инструктора
 

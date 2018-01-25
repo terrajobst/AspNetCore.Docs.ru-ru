@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/entity-framework-6
-ms.openlocfilehash: 51445b8c110ad618aeb680148ccf4304a45ee16e
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 7f3c1f28c1e0b3a68db7f6f84c56b18643b56cc8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="getting-started-with-aspnet-core-and-entity-framework-6"></a>Приступая к работе с ASP.NET Core и Entity Framework 6
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="overview"></a>Обзор
 
-Для использования платформы Entity Framework 6, проекта должно выполнять компиляцию для .NET Framework, как Entity Framework 6 не поддерживает .NET Core. Если вам требуются такие функции кросс платформенных необходимо будет обновить до [Entity Framework Core](https://docs.microsoft.com/ef/).
+Для использования платформы Entity Framework 6, проект содержит выполнять компиляцию для .NET Framework, поскольку Entity Framework 6 не поддерживает .NET Core. Если вам требуются такие функции кросс платформенных необходимо будет обновить до [Entity Framework Core](https://docs.microsoft.com/ef/).
 
 Для использования платформы Entity Framework 6 в приложении ASP.NET Core рекомендуется поместить EF6 контекста и классы моделей в библиотеке классов проекта, предназначенного полной платформы. Добавьте ссылку на библиотеку классов из проекта ASP.NET Core. См. в образце [решения Visual Studio с проектами EF6 и ASP.NET Core](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/).
 

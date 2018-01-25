@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/scaleout-in-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: e6230d4d65adb8c9a064545ad761898ca53562bf
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ee3384046bf8a0f363aa6801d7a46f68b2bf125a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="introduction-to-scaleout-in-signalr-1x"></a>Общие сведения о горизонтального масштабирования в SignalR 1.x
 ====================
@@ -45,13 +45,13 @@ ms.lasthandoff: 11/10/2017
 
 В следующих разделах содержатся пошаговые руководства для каждой объединительной платы:
 
-- [SignalR горизонтального масштабирования с Azure Service Bus](scaleout-with-windows-azure-service-bus.md)
-- [SignalR горизонтального масштабирования с Redis](scaleout-with-redis.md)
-- [SignalR горизонтального масштабирования с SQL Server](scaleout-with-sql-server.md)
+- [Масштабирование SignalR с помощью служебной шины Azure](scaleout-with-windows-azure-service-bus.md)
+- [Масштабирование SignalR с помощью Redis](scaleout-with-redis.md)
+- [Масштабирование SignalR с помощью SQL Server](scaleout-with-sql-server.md)
 
 ## <a name="implementation"></a>Реализация
 
-В SignalR каждое сообщение отправляется через канал сообщений. Реализует канал сообщений [IMessageBus](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.messaging.imessagebus(v=vs.100).aspx) интерфейс, который предоставляет абстракцию публикации или подписки. Соединительных панелях работы, заменив значение по умолчанию **IMessageBus** с шиной, предназначенный для этого объединительной платы. Например, канал сообщений для Redis — [RedisMessageBus](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.redis.redismessagebus(v=vs.100).aspx), и использует команды Redis [pub/sub](http://redis.io/topics/pubsub) механизм для отправки и получения сообщений.
+В SignalR каждое сообщение отправляется через канал сообщений. Реализует канал сообщений [IMessageBus](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.imessagebus(v=vs.100).aspx) интерфейс, который предоставляет абстракцию публикации или подписки. Соединительных панелях работы, заменив значение по умолчанию **IMessageBus** с шиной, предназначенный для этого объединительной платы. Например, канал сообщений для Redis — [RedisMessageBus](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.redis.redismessagebus(v=vs.100).aspx), и использует команды Redis [pub/sub](http://redis.io/topics/pubsub) механизм для отправки и получения сообщений.
 
 Каждый экземпляр сервера подключается через шину объединительной плате. При отправке сообщения, он переходит объединительной платы и объединительной плате отправляет его на каждый сервер. Когда сервер получает сообщение от объединительной платы, сообщение помещается в локальный кэш. Затем сервер доставляет сообщения клиентам из своего локального кэша.
 

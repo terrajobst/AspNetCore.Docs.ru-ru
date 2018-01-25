@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 756f1bbba73bd760f780d18c01597642dd1f7216
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: a4ae696bdd114ab9c36d1218f753fa3d515f2300
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="inheritance---ef-core-with-aspnet-core-mvc-tutorial-9-of-10"></a>Наследование - Core EF учебнику ASP.NET Core MVC (9, 10)
 
@@ -106,7 +106,7 @@ dotnet ef migrations add Inheritance
 
 * Делает HireDate допускает значение NULL, поскольку студента строк не будет иметь дат приема на работу.
 
-* Добавление временного поля, которое будет использоваться для обновления внешние ключи, указывающие на учащихся. При копировании студентов в таблице Person, где они могут получить новые значения первичных ключей.
+* Добавление временного поля, которое будет использоваться для обновления внешние ключи, указывающие на учащихся. Скопируйте студентов в таблице Person получат новые значения первичных ключей.
 
 * Копирует данные из таблицы студента в таблицу Person. В этом случае учащихся получить назначения нового значения первичного ключа.
 

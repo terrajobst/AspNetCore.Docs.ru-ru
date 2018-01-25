@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/movie-database/create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4dbb3804bbb0ccb80506a592f1efb585c5748c2f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b87a69df24a410161dfaf055519eb6137fa76c06
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="create-a-movie-database-application-in-15-minutes-with-aspnet-mvc-vb"></a>Создайте приложение фильма базы данных в течение 15 минут с ASP.NET MVC (Visual Basic)
 ====================
@@ -59,21 +59,21 @@ ms.lasthandoff: 11/10/2017
 
 Если вы не являетесь Visual Studio 2008, 90-дневная пробная версия Visual Studio 2008 можно загрузить из этого веб-сайта:
 
-[https://MSDN.Microsoft.com/en-US/VS2008/Products/cc268305.aspx](https://msdn.microsoft.com/en-us/vs2008/products/cc268305.aspx)
+[https://msdn.microsoft.com/vs2008/products/cc268305.aspx](https://msdn.microsoft.com/vs2008/products/cc268305.aspx)
 
 Кроме того создаются ASP.NET MVC приложений с помощью Visual Web Developer Express 2008. Если вы решили использовать Visual Web Developer Express необходимо иметь установленным пакетом обновления 1. Visual Web Developer 2008 Express с пакетом обновления 1 можно загрузить из этого веб-сайта:
 
-[https://www.Microsoft.com/downloads/details.aspx?FamilyId=BDB6391C-05CA-4036-9154-6DF4F6DEBD14&amp;displaylang = en](https://www.microsoft.com/downloads/details.aspx?FamilyId=BDB6391C-05CA-4036-9154-6DF4F6DEBD14&amp;displaylang=en)
+[https://www.microsoft.com/downloads/details.aspx?FamilyId=BDB6391C-05CA-4036-9154-6DF4F6DEBD14&amp;displaylang=en](https://www.microsoft.com/downloads/details.aspx?FamilyId=BDB6391C-05CA-4036-9154-6DF4F6DEBD14&amp;displaylang=en)
 
 После установки Visual Studio 2008 или Visual Web Developer 2008, необходимо установить платформу ASP.NET MVC. Платформа ASP.NET MVC можно загрузить с веб-сайте:
 
-[https://www.ASP.NET/MVC/](../../../index.md)
+[https://www.asp.net/mvc/](../../../index.md)
 
 > [!NOTE] 
 > 
 > Вместо загрузки платформы ASP.NET и платформа ASP.NET MVC по отдельности, можно воспользоваться преимуществами установщика веб-платформы. Установщик веб-платформы является приложение, которое позволяет легко управлять установленных приложений на компьютере:
 > 
-> [https://www.Microsoft.com/Web/Gallery/Install.aspx](https://www.microsoft.com/web/gallery/Install.aspx)
+> [https://www.microsoft.com/web/gallery/Install.aspx](https://www.microsoft.com/web/gallery/Install.aspx)
 
 
 ## <a name="creating-an-aspnet-mvc-web-application-project"></a>Создание проекта веб-приложения ASP.NET MVC

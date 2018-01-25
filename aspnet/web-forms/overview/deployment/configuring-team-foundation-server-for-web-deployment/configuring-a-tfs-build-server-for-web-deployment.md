@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 505cca303b5569b2f676adab767d742cb5cd21a7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: de31a9dffb95b863a4ec38b74fd2c6e03f287a7f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuring-a-tfs-build-server-for-web-deployment"></a>Настройка сервера сборки TFS для развертывания веб-приложения
 ====================
@@ -58,13 +58,13 @@ ms.lasthandoff: 11/10/2017
 - Создание *контроллер построений* и один или несколько *агенты построения*. Каждый контроллер сборки управляет набором агентов сборки. При постановке в очередь построение, контроллер сборки назначает задачу построения агента сборки. Каждой коллекции командных проектов в TFS сопоставляется один контроллер построений.
 - Настройка транзитного каталога для вашего выходные данные сборки. Это общий сетевой ресурс. Любой сборки выходные данные, такие как пакеты веб-развертывания, отправляются в транзитный каталог.
 
-[Администрирование Team Foundation Build](https://msdn.microsoft.com/en-us/library/ms252495.aspx) главе на сайте MSDN содержит все ресурсы, необходимые для выполнения следующих задач:
+[Администрирование Team Foundation Build](https://msdn.microsoft.com/library/ms252495.aspx) главе на сайте MSDN содержит все ресурсы, необходимые для выполнения следующих задач:
 
-- Общие сведения о Team Foundation Build, включая службы построения, контроллеры построений и агентов построения, в разделе [основные сведения о Team Foundation Build System](https://msdn.microsoft.com/en-us/library/dd793166.aspx).
-- Сведения об установке и настройке службы сборки см. в разделе [Настройка компьютера сборки](https://msdn.microsoft.com/en-us/library/ms181712.aspx).
-- Сведения о создании контроллеры сборок см. в разделе [создания и работы с контроллером построения](https://msdn.microsoft.com/en-us/library/ee330987.aspx).
-- Сведения о создании агентов сборки см. в разделе [Создание и работа с агентами сборки](https://msdn.microsoft.com/en-us/library/bb399135.aspx).
-- Сведения о создании и настройке папках сброса см. в разделе [Настройка папок сброса](https://msdn.microsoft.com/en-us/library/bb778394.aspx).
+- Общие сведения о Team Foundation Build, включая службы построения, контроллеры построений и агентов построения, в разделе [основные сведения о Team Foundation Build System](https://msdn.microsoft.com/library/dd793166.aspx).
+- Сведения об установке и настройке службы сборки см. в разделе [Настройка компьютера сборки](https://msdn.microsoft.com/library/ms181712.aspx).
+- Сведения о создании контроллеры сборок см. в разделе [создания и работы с контроллером построения](https://msdn.microsoft.com/library/ee330987.aspx).
+- Сведения о создании агентов сборки см. в разделе [Создание и работа с агентами сборки](https://msdn.microsoft.com/library/bb399135.aspx).
+- Сведения о создании и настройке папках сброса см. в разделе [Настройка папок сброса](https://msdn.microsoft.com/library/bb778394.aspx).
 
 ## <a name="install-required-products-and-components"></a>Установка необходимых продуктов и компонентов
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="further-reading"></a>Дополнительные сведения
 
-Общие рекомендации по работе с Team Build см. в разделе [Администрирование Team Foundation Build](https://msdn.microsoft.com/en-us/library/ms252495.aspx).
+Общие рекомендации по работе с Team Build см. в разделе [Администрирование Team Foundation Build](https://msdn.microsoft.com/library/ms252495.aspx).
 
 >[!div class="step-by-step"]
 [Назад](adding-content-to-source-control.md)

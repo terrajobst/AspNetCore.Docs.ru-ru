@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: 67ab1536b4a72abf8c0d3ed5aa0c48bc79a8fb5f
-ms.sourcegitcommit: 3d512ea991ac36dfd4c800b7d1f8a27bfc50635e
+ms.openlocfilehash: 173add73a150d3e13ae243d6548463da912dadee
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/24/2018
 ---
 <a name="attribute-routing-in-aspnet-web-api-2"></a>Атрибут маршрутизации в ASP.NET Web API 2
 ====================
@@ -261,7 +261,7 @@ ms.lasthandoff: 01/23/2018
     3. Параметры маршрута без ограничений.
     4. Сегменты с подстановочными знаками параметр с ограничениями.
     5. Сегменты с подстановочными знаками параметр без ограничений.
-3. В случае одинаковых значений, маршруты, упорядоченные по сравнения строк по порядковому номеру без учета регистра ([OrdinalIgnoreCase](https://msdn.microsoft.com/en-us/library/system.stringcomparer.ordinalignorecase.aspx)) шаблона маршрута.
+3. В случае одинаковых значений, маршруты, упорядоченные по сравнения строк по порядковому номеру без учета регистра ([OrdinalIgnoreCase](https://msdn.microsoft.com/library/system.stringcomparer.ordinalignorecase.aspx)) шаблона маршрута.
 
 Пример. Предположим, что определение следующего контроллера:
 

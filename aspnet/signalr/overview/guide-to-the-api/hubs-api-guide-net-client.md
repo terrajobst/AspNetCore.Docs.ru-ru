@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: a03c8c42622a768d706acf5ac1f23b37a830d426
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c52a02291e18b1dd8a9d95b33fe466d17aae835f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-signalr-hubs-api-guide---net-client-c"></a>Справочник по API концентраторов ASP.NET SignalR - клиент .NET (C#)
 ====================
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/10/2017
 - [Справочник по API концентраторов SignalR - сервера](hubs-api-guide-server.md)
 - [Справочник по API концентраторов SignalR - клиент JavaScript](hubs-api-guide-javascript-client.md)
 
-Ссылки на разделы справки по API, до версии .NET 4.5 API-интерфейса. Если вы используете .NET 4, см. раздел [версии .NET 4 разделов API](https://msdn.microsoft.com/en-us/library/jj891075(v=vs.100).aspx).
+Ссылки на разделы справки по API, до версии .NET 4.5 API-интерфейса. Если вы используете .NET 4, см. раздел [версии .NET 4 разделов API](https://msdn.microsoft.com/library/jj891075(v=vs.100).aspx).
 
 <a id="clientsetup"></a>
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="cross-domain-connections-from-silverlight-clients"></a>Соединения между доменами от клиентов Silverlight
 
-Сведения о том, как разрешить междоменные подключения от клиентов Silverlight см. в разделе [внесения службы через границы домена](https://msdn.microsoft.com/en-us/library/cc197955(v=vs.95).aspx).
+Сведения о том, как разрешить междоменные подключения от клиентов Silverlight см. в разделе [внесения службы через границы домена](https://msdn.microsoft.com/library/cc197955(v=vs.95).aspx).
 
 <a id="configureconnection"></a>
 
@@ -141,7 +141,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](hubs-api-guide-net-client/samples/sample4.cs?highlight=4)]
 
-Дополнительные сведения см. в разделе [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/en-us/library/system.net.servicepointmanager.defaultconnectionlimit.aspx).
+Дополнительные сведения см. в разделе [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx).
 
 <a id="querystring"></a>
 
@@ -163,12 +163,12 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](hubs-api-guide-net-client/samples/sample7.cs?highlight=4)]
 
-[Microsoft.AspNet.SignalR.Client.Transports](https://msdn.microsoft.com/en-us/library/jj918090(v=vs.111).aspx) пространство имен включает следующие классы, которые можно использовать для указания транспорта.
+[Microsoft.AspNet.SignalR.Client.Transports](https://msdn.microsoft.com/library/jj918090(v=vs.111).aspx) пространство имен включает следующие классы, которые можно использовать для указания транспорта.
 
-- [LongPollingTransport](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.transports.longpollingtransport(v=vs.111).aspx)
-- [ServerSentEventsTransport](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.transports.serversenteventstransport(v=vs.111).aspx)
-- [WebSocketTransport](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.transports.websockettransport(v=vs.111).aspx) (доступен только в том случае, если сервер и клиент используют .NET 4.5.)
-- [AutoTransport](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.transports.autotransport(v=vs.111).aspx) (автоматически выбирает лучший транспорта, поддерживаемые клиентом и сервером. Это стандартный транспорт. Это в для передачи `Start` метод действует так же, как в объекте, не передавая.)
+- [LongPollingTransport](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.transports.longpollingtransport(v=vs.111).aspx)
+- [ServerSentEventsTransport](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.transports.serversenteventstransport(v=vs.111).aspx)
+- [WebSocketTransport](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.transports.websockettransport(v=vs.111).aspx) (доступен только в том случае, если сервер и клиент используют .NET 4.5.)
+- [AutoTransport](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.transports.autotransport(v=vs.111).aspx) (автоматически выбирает лучший транспорта, поддерживаемые клиентом и сервером. Это стандартный транспорт. Это в для передачи `Start` метод действует так же, как в объекте, не передавая.)
 
 ForeverFrame транспорта не включены в этот список, поскольку он используется только в браузерах.
 
@@ -336,7 +336,7 @@ SignalR обеспечивает следующее подключение со�
 - `ConnectionSlow`: Возникает, если клиент обнаруживает подключение медленное или часто удаление.
 - `Reconnecting`: Возникает в случае транспорта начинает повторное подключение.
 - `Reconnected`: Возникает, когда была повторно присоединена транспорта.
-- `StateChanged`: Возникает при изменении состояния подключения. Предоставляет состояния старое и новое состояние. Сведения о подключения содержатся значения состояния [перечисление ConnectionState](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.connectionstate(v=vs.111).aspx).
+- `StateChanged`: Возникает при изменении состояния подключения. Предоставляет состояния старое и новое состояние. Сведения о подключения содержатся значения состояния [перечисление ConnectionState](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.connectionstate(v=vs.111).aspx).
 - `Closed`: Возникает, когда произойдет отключение соединения.
 
 Например, если вы хотите отображать предупреждающие сообщения для ошибок, которые не являются неустранимыми, но нарушить временное подключение, таких как низкая или слишком частой удаление соединения, обрабатывают `ConnectionSlow` событий.

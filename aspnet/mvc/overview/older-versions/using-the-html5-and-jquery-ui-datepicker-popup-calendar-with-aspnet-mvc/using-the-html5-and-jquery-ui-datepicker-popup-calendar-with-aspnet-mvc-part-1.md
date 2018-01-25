@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 9320c8a2aadb3b3c5bd6cd90b59d8a72db384c0c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4b5507021af47d96c29809c9830d0558f5501f87
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-1"></a>Использование HTML5 и раскрывающегося календаря с выбором дат jQuery с ASP.NET MVC — часть 1
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 
 Ниже приведен изучаемого материала.
 
-- Использование атрибутов из [DataAnnotations](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) пространство имен для контроля формата данных, при отображении и когда она находится в режиме редактирования.
+- Использование атрибутов из [DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) пространство имен для контроля формата данных, при отображении и когда она находится в режиме редактирования.
 - Создание шаблонов (изменение и отображение шаблонов) для управления форматированием данных.
 - Добавление [datepicker пользовательского интерфейса jQuery](http://jqueryui.com/demos/datepicker/) образом, чтобы ввести полей дат.
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 11/10/2017
 
 ![](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1/_static/image3.png)
 
-Форматирование даты и ценой является результатом использования [DisplayFormat](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx) атрибута в свойствах `Movie` класса.
+Форматирование даты и ценой является результатом использования [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) атрибута в свойствах `Movie` класса.
 
 Откройте *Movie.cs* файла и закомментируйте `DisplayFormat` атрибут `ReleaseDate` и `Price` свойства. Итоговый `Movie` класса выглядит следующим образом:
 
@@ -79,11 +79,11 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="using-the-dataannotations-datatype-attribute-to-specify-the-data-type"></a>С помощью атрибутов DataAnnotations DataType для указания типа данных
 
-Замените комментарий `DisplayFormat` для атрибута `ReleaseDate` свойство с [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx) атрибута с помощью `Date` перечисления. Замените `DisplayFormat` для атрибута `Price` свойство с [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx) атрибут, это время с помощью `Currency` перечисления. Вот как выглядит готового кода:
+Замените комментарий `DisplayFormat` для атрибута `ReleaseDate` свойство с [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) атрибута с помощью `Date` перечисления. Замените `DisplayFormat` для атрибута `Price` свойство с [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) атрибут, это время с помощью `Currency` перечисления. Вот как выглядит готового кода:
 
 [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1/samples/sample2.cs)]
 
-Запустите приложение. Теперь дата выпуска и свойства цены форматируются правильно (то есть с помощью соответствующих форматов дат и валют). [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx) атрибута предоставляет тип метаданных для встроенных ASP.NET MVC шаблоны, чтобы отображать поля в правильном формате. С помощью `DataType` атрибут предпочтительным является использование `DisplayFormat` атрибута, которое было изначально в коде, так как `DataType` атрибут делает модели более понятные и более гибкие, необходимого, например интернационализации.
+Запустите приложение. Теперь дата выпуска и свойства цены форматируются правильно (то есть с помощью соответствующих форматов дат и валют). [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) атрибута предоставляет тип метаданных для встроенных ASP.NET MVC шаблоны, чтобы отображать поля в правильном формате. С помощью `DataType` атрибут предпочтительным является использование `DisplayFormat` атрибута, которое было изначально в коде, так как `DataType` атрибут делает модели более понятные и более гибкие, необходимого, например интернационализации.
 
 В следующем разделе вы увидите, как создать пользовательские шаблоны для отображения полей даты.
 

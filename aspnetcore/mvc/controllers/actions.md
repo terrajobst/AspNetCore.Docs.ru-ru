@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/actions
-ms.openlocfilehash: cef493fc2010d1c82e5c1dfec85864539252b817
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 99dcf1bd4f0dc4fcb6169f48bd398c9e40c21a35
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="handling-requests-with-controllers-in-aspnet-core-mvc"></a>Обработка запросов с контроллеров в ASP.NET Core MVC
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/19/2018
 
 Контроллер принимает результат модели обработки (если есть) и возвращает правильное представление и его связанного представления данных или результат вызова API. Дополнительные сведения по [Обзор из основных компонентов MVC ASP.NET](xref:mvc/overview) и [Приступая к работе с Visual Studio и ASP.NET Core MVC](xref:tutorials/first-mvc-app/start-mvc).
 
-Контроллер *уровня пользовательского интерфейса* абстракции. Его функции являются убедитесь в допустимости данных запроса и выбрать, какие представления (или результат для API) должны быть возвращены. В хорошо организованную приложения он не включает непосредственно данных access или бизнес-логики. Вместо этого контроллера делегирует служб обработки этих обязанностей.
+Контроллер *уровня пользовательского интерфейса* абстракции. Его функции являются убедитесь в допустимости данных запроса и выбрать, какие представления (или результат для API) должны быть возвращены. В хорошо организованную приложений не включает непосредственно данных access или бизнес-логики. Вместо этого контроллера делегирует служб обработки этих обязанностей.
 
 ## <a name="defining-actions"></a>Определение действий
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/19/2018
 
 ### <a name="controller-helper-methods"></a>Контроллер вспомогательные методы
 
-Контроллеры обычно наследуют от [контроллера](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller), хотя это не является обязательным. Наследование от `Controller` предоставляет доступ к трем категориям вспомогательные методы:
+Контроллеры обычно наследуют от [контроллера](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller), хотя это необязательно. Наследование от `Controller` предоставляет доступ к трем категориям вспомогательные методы:
 
 #### <a name="1-methods-resulting-in-an-empty-response-body"></a>1. Методы, что приводит к пустым телом ответа
 

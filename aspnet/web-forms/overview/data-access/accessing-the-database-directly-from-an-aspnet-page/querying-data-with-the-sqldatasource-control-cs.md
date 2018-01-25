@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e1e9950619dc9d0c8aa2911eb05911cf008989e3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4652e5820e621a7b2ad3b03bb5a1d2cb4968fadd
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="querying-data-with-the-sqldatasource-control-c"></a>Запрос данных с помощью элемента управления SqlDataSource (C#)
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 Во время работы с данными всех руководств в данный момент с помощью архитектуры, также существует возможность доступа к, вставки, обновления и удаления базы данных непосредственно из страницы ASP.NET, минуя архитектуры. Таким образом запросы к определенной базе данных и бизнес-логики помещаются непосредственно в веб-странице. Для достаточно больших или сложных приложений разработке, реализации и использовании многоуровневая архитектура жизненно важна для успеха, возможность обновления и удобства поддержки приложения. Разработка надежной архитектуры, тем не менее, может быть излишним при создании крайне простой, одноразовые приложений.
 
-ASP.NET 2.0 предоставляет элементы управления источником данных пять встроенных [SqlDataSource](https://msdn.microsoft.com/en-us/library/dz12d98w%28vs.80%29.aspx), [AccessDataSource](https://msdn.microsoft.com/en-us/library/8e5545e1.aspx), [ObjectDataSource](https://msdn.microsoft.com/en-us/library/9a4kyhcx.aspx), [XmlDataSource](https://msdn.microsoft.com/en-us/library/e8d8587a%28en-US,VS.80%29.aspx), и [SiteMapDataSource](https://msdn.microsoft.com/en-us/library/5ex9t96x%28en-US,VS.80%29.aspx). SqlDataSource можно использовать для доступа и изменения данных непосредственно из реляционной базы данных, включая Microsoft SQL Server, Microsoft Access, Oracle, MySQL и другим пользователям. В этом учебнике и далее три мы изучим, как работать с помощью элемента управления SqlDataSource, изучение способ запроса и фильтра базы данных, а также как использовать SqlDataSource для вставки, обновления и удаления данных.
+ASP.NET 2.0 предоставляет элементы управления источником данных пять встроенных [SqlDataSource](https://msdn.microsoft.com/library/dz12d98w%28vs.80%29.aspx), [AccessDataSource](https://msdn.microsoft.com/library/8e5545e1.aspx), [ObjectDataSource](https://msdn.microsoft.com/library/9a4kyhcx.aspx), [XmlDataSource](https://msdn.microsoft.com/library/e8d8587a%28en-US,VS.80%29.aspx), и [SiteMapDataSource](https://msdn.microsoft.com/library/5ex9t96x%28en-US,VS.80%29.aspx). SqlDataSource можно использовать для доступа и изменения данных непосредственно из реляционной базы данных, включая Microsoft SQL Server, Microsoft Access, Oracle, MySQL и другим пользователям. В этом учебнике и далее три мы изучим, как работать с помощью элемента управления SqlDataSource, изучение способ запроса и фильтра базы данных, а также как использовать SqlDataSource для вставки, обновления и удаления данных.
 
 
 ![ASP.NET 2.0 включает пять встроенных источников данных](querying-data-with-the-sqldatasource-control-cs/_static/image1.gif)
@@ -144,12 +144,12 @@ SqlDataSource предоставляет те же функциональные 
 
 Чтобы завершить работу мастера, нажмите кнопку "Готово".
 
-Как и с ObjectDataSource мастер s SqlDataSource просто присваивает значения свойства элемента управления s, а именно [ `ConnectionString` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sqldatasource.connectionstring.aspx) и [ `SelectCommand` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sqldatasource.selectcommand.aspx) свойства. По завершении работы мастера в SqlDataSource управления s должна выглядеть следующим образом:
+Как и с ObjectDataSource мастер s SqlDataSource просто присваивает значения свойства элемента управления s, а именно [ `ConnectionString` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.connectionstring.aspx) и [ `SelectCommand` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.selectcommand.aspx) свойства. По завершении работы мастера в SqlDataSource управления s должна выглядеть следующим образом:
 
 
 [!code-aspx[Main](querying-data-with-the-sqldatasource-control-cs/samples/sample2.aspx)]
 
-`ConnectionString` Свойстве содержатся сведения о том, как подключиться к базе данных. Это свойство можно назначить значение строки подключения, полным, жестко или может указывать на строку подключения в `Web.config`. Для ссылки на значение строки подключения в файле Web.config, используйте синтаксис `<%$ expressionPrefix:expressionValue %>`. Как правило *expressionPrefix* — ConnectionStrings и *expressionValue* имя строки подключения в `Web.config` [ `<connectionStrings>` раздел](https://msdn.microsoft.com/en-us/library/bf7sd233.aspx). Тем не менее, можно использовать синтаксис для ссылки `<appSettings>` элементы или содержимое из файлов ресурсов. В разделе [Общие сведения о выражениях ASP.NET](https://msdn.microsoft.com/en-us/library/d5bd1tad.aspx) для получения дополнительных сведений об этом синтаксисе.
+`ConnectionString` Свойстве содержатся сведения о том, как подключиться к базе данных. Это свойство можно назначить значение строки подключения, полным, жестко или может указывать на строку подключения в `Web.config`. Для ссылки на значение строки подключения в файле Web.config, используйте синтаксис `<%$ expressionPrefix:expressionValue %>`. Как правило *expressionPrefix* — ConnectionStrings и *expressionValue* имя строки подключения в `Web.config` [ `<connectionStrings>` раздел](https://msdn.microsoft.com/library/bf7sd233.aspx). Тем не менее, можно использовать синтаксис для ссылки `<appSettings>` элементы или содержимое из файлов ресурсов. В разделе [Общие сведения о выражениях ASP.NET](https://msdn.microsoft.com/library/d5bd1tad.aspx) для получения дополнительных сведений об этом синтаксисе.
 
 `SelectCommand` Свойство указывает нерегламентированные инструкции SQL или хранимую процедуру для выполнения для получения данных.
 
@@ -190,7 +190,7 @@ SqlDataSource предоставляет те же функциональные 
 
 Сортировка и разбиение по страницам работает, поскольку SqlDataSource извлекает базы данных в слабо типизированный набор данных. Возможно установить общее количество записей, возвращаемых запросом важный аспект для реализации подкачки из набора данных. Кроме того можно сортировать результаты s набора данных через объект DataView. Эти возможности автоматически используются SqlDataSource при запросы GridView, разбитых на страницы или отсортированные данные.
 
-SqlDataSource могут быть настроены для возвращения DataReader вместо набора данных, изменив его [ `DataSourceMode` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sqldatasource.datasourcemode.aspx) из `DataSet` (по умолчанию) для `DataReader`. С помощью объекта DataReader может предпочтительный в ситуациях, при передаче результатов s SqlDataSource существующего кода, который ожидает объекта DataReader. Кроме того поскольку объекты DataReader объектов значительно проще, чем наборы данных, они обеспечивают более высокую производительность. Если внести это изменение, веб-управления данными ни можно сортировать и страницы, поскольку SqlDataSource невозможно выяснить, сколько записей возвращаемых запросом, а также DataReader предоставляют все методы для сортировки возвращаемых данных.
+SqlDataSource могут быть настроены для возвращения DataReader вместо набора данных, изменив его [ `DataSourceMode` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.datasourcemode.aspx) из `DataSet` (по умолчанию) для `DataReader`. С помощью объекта DataReader может предпочтительный в ситуациях, при передаче результатов s SqlDataSource существующего кода, который ожидает объекта DataReader. Кроме того поскольку объекты DataReader объектов значительно проще, чем наборы данных, они обеспечивают более высокую производительность. Если внести это изменение, веб-управления данными ни можно сортировать и страницы, поскольку SqlDataSource невозможно выяснить, сколько записей возвращаемых запросом, а также DataReader предоставляют все методы для сортировки возвращаемых данных.
 
 ## <a name="step-4-using-a-custom-sql-statement-or-stored-procedure"></a>Шаг 4: Использование инструкции пользовательские SQL или хранимой процедуры
 
@@ -249,9 +249,9 @@ SqlDataSource могут быть настроены для возвращени
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
 - [Доступ к реляционным базам данных](http://aspnet.4guysfromrolla.com/articles/022206-1.aspx)
-- [Обзор элемента управления SqlDataSource](https://msdn.microsoft.com/en-us/library/dz12d98w.aspx)
+- [Обзор элемента управления SqlDataSource](https://msdn.microsoft.com/library/dz12d98w.aspx)
 - [Примеры использования ASP.NET учебники: Элемент управления SqlDataSource](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/data/sqldatasource.aspx)
-- [Файл Web.config `<connectionStrings>` элемент](https://msdn.microsoft.com/en-us/library/bf7sd233.aspx)
+- [Файл Web.config `<connectionStrings>` элемент](https://msdn.microsoft.com/library/bf7sd233.aspx)
 - [Ссылка строки подключения базы данных](http://www.connectionstrings.com/)
 
 ## <a name="about-the-author"></a>Об авторе

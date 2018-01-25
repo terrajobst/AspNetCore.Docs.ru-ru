@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/formats-and-model-binding/json-and-xml-serialization
 msc.type: authoredcontent
-ms.openlocfilehash: 7aafe4823d3a6090fae4a63f1a66fb2670ecb025
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b1fcaf70cc38d73da0a454764520197b97f34b26
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="json-and-xml-serialization-in-aspnet-web-api"></a>JSON и XML-сериализации в веб-API ASP.NET
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="contents"></a>Описание
 
-- [Модуль форматирования типа мультимедиа JSON](#json_media_type_formatter)
+- [JSON Media-Type Formatter](#json_media_type_formatter)
 
     - [Свойства только для чтения](#json_readonly)
     - [Даты](#json_dates)
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample5.cs)]
 
-Если вы предпочитаете использовать [формат даты Microsoft JSON](https://msdn.microsoft.com/en-us/library/bb299886.aspx#intro_to_json_sidebarb) (`"\/Date(ticks)\/"`) вместо ISO 8601, задать **DateFormatHandling** свойство параметры сериализатора:
+Если вы предпочитаете использовать [формат даты Microsoft JSON](https://msdn.microsoft.com/library/bb299886.aspx#intro_to_json_sidebarb) (`"\/Date(ticks)\/"`) вместо ISO 8601, задать **DateFormatHandling** свойство параметры сериализатора:
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample6.cs)]
 

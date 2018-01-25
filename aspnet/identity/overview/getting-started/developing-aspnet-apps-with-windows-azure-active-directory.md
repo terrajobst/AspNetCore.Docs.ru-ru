@@ -12,28 +12,28 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
 msc.type: authoredcontent
-ms.openlocfilehash: 425f8edff41588db363055d166995d5f563c5a23
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1ef0468d5f5c17480b23ac88983f30fe6f4979c0
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="developing-aspnet-apps-with-azure-active-directory"></a>Разработка приложений ASP.NET с Azure Active Directory
 ====================
 По [Рик Андерсон](https://github.com/Rick-Anderson)
 
-> Средства Microsoft ASP.NET для Azure Active Directory позволяет легко включить проверку подлинности для веб-приложений, размещенных на [Azure](https://www.windowsazure.com/en-us/home/features/web-sites/). Проверка подлинности Azure можно использовать для проверки подлинности пользователей Office 365 в организации, корпоративных учетных записей, синхронизированные из локальной службы Active Directory или пользователей, созданных в собственный домен Azure Active Directory. Включение проверки подлинности Windows Azure настраивает приложение для проверки подлинности пользователей с помощью одного [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) клиента.
+> Средства Microsoft ASP.NET для Azure Active Directory позволяет легко включить проверку подлинности для веб-приложений, размещенных на [Azure](https://www.windowsazure.com/home/features/web-sites/). Проверка подлинности Azure можно использовать для проверки подлинности пользователей Office 365 в организации, корпоративных учетных записей, синхронизированные из локальной службы Active Directory или пользователей, созданных в собственный домен Azure Active Directory. Включение проверки подлинности Windows Azure настраивает приложение для проверки подлинности пользователей с помощью одного [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) клиента.
 > 
 >  Это руководство было написано с Рик Андерсон[@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
 
 
-Этот учебник будет показано, как создать приложение ASP.NET, настроенная для единого входа с [Azure Active Directory](https://msdn.microsoft.com/en-us/library/azure/mt168838.aspx) (Azure AD). Вы также узнаете, как вызвать API Graph для получения сведений о пользователе, выполнившего вход и развертывание приложения в Azure.
+Этот учебник будет показано, как создать приложение ASP.NET, настроенная для единого входа с [Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (Azure AD). Вы также узнаете, как вызвать API Graph для получения сведений о пользователе, выполнившего вход и развертывание приложения в Azure.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 1. [Visual Studio Express 2013 для Web](https://www.microsoft.com/visualstudio/eng/2013-downloads#d-2013-express) или [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads).
-2. [Visual Studio 2013 с обновлением 4](https://www.microsoft.com/en-us/download/details.aspx?id=44921) -требуется обновление 3 или более поздней версии.
-3. Учетная запись Azure. [Щелкните здесь,](https://azure.microsoft.com/en-us/pricing/free-trial/) для получения бесплатной пробной версии, если у вас еще нет учетной записи.
+2. [Visual Studio 2013 с обновлением 4](https://www.microsoft.com/download/details.aspx?id=44921) -требуется обновление 3 или более поздней версии.
+3. Учетная запись Azure. [Щелкните здесь,](https://azure.microsoft.com/pricing/free-trial/) для получения бесплатной пробной версии, если у вас еще нет учетной записи.
 
 ## <a name="add-a-global-administrator-to-your-active-directory"></a>Добавление глобального администратора в Active Directory
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="create-an-aspnet-application"></a>Создание приложения ASP.NET
 
-В следующих шагах используется [Visual Studio Express 2013 для Web](https://www.microsoft.com/en-us/download/details.aspx?id=40747)и требует [Visual Studio 2013 Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=43721).
+В следующих шагах используется [Visual Studio Express 2013 для Web](https://www.microsoft.com/download/details.aspx?id=40747)и требует [Visual Studio 2013 Update 3](https://www.microsoft.com/download/details.aspx?id=43721).
 
 1. В Visual Studio щелкните **файл** и затем **новый проект**. На **новый проект** диалоговое окно, выберите Visual C# веб-проекта в левом меню и нажмите кнопку **ОК**. Можно также снять **добавить Application Insights в проект** Если вы не хотите функциональные возможности для вашего приложения.
 2. В **новый проект ASP.NET** диалогового окна выберите **MVC**, а затем нажмите кнопку **изменить аутентификацию**.   
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/10/2017
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image8.png)  
 
     > [!NOTE]
-    > При необходимости можно настроить URI идентификатора приложения, который будет зарегистрирован в Azure AD, щелкнув **Дополнительно**. URI идентификатора приложения — уникальный идентификатор для приложения, который зарегистрирован в Azure AD, который используется приложением для идентификации при взаимодействии с Azure AD. Дополнительные сведения об URI идентификатора приложения и другие свойства зарегистрированных приложений см. в разделе [в этом разделе](https://msdn.microsoft.com/en-us/library/azure/dn499820.aspx#BKMK_Registering). Установив флажок под полем URI идентификатора приложения, можно перезаписать существующую регистрацию в Azure AD, который использует тот URI ИД приложения.
+    > При необходимости можно настроить URI идентификатора приложения, который будет зарегистрирован в Azure AD, щелкнув **Дополнительно**. URI идентификатора приложения — уникальный идентификатор для приложения, который зарегистрирован в Azure AD, который используется приложением для идентификации при взаимодействии с Azure AD. Дополнительные сведения об URI идентификатора приложения и другие свойства зарегистрированных приложений см. в разделе [в этом разделе](https://msdn.microsoft.com/library/azure/dn499820.aspx#BKMK_Registering). Установив флажок под полем URI идентификатора приложения, можно перезаписать существующую регистрацию в Azure AD, который использует тот URI ИД приложения.
 4. После нажатия кнопки **ОК**, появится диалоговое окно входа в систему, и вам потребуется выполнить вход с использованием учетной записи глобального администратора (не Майкрософт учетной записи, связанной с вашей подпиской). Если ранее вы создали новую учетную запись администратора, будет необходимо изменить пароль, а затем войдите в систему, используя новый пароль.   
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image9.png)
@@ -102,7 +102,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="basics-of-the-graph-api"></a>Основные сведения о API Graph
 
-[Graph API](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) — это программный интерфейс, используемый для выполнения операций CRUD и других операций с объектами в каталоге Azure AD. Если выбран параметр учетной записи организации для проверки подлинности при создании нового проекта в Visual Studio 2013, приложение будет уже настроен для вызова Graph API. В этом разделе кратко показано, как работает Graph API.
+[Graph API](https://msdn.microsoft.com/library/azure/hh974476.aspx) — это программный интерфейс, используемый для выполнения операций CRUD и других операций с объектами в каталоге Azure AD. Если выбран параметр учетной записи организации для проверки подлинности при создании нового проекта в Visual Studio 2013, приложение будет уже настроен для вызова Graph API. В этом разделе кратко показано, как работает Graph API.
 
 1. В запущенном приложении, щелкните имя пользователя, выполнившего вход в верхней правой части страницы. Переходить на страницу профиля пользователя, что действие контроллера Home. Вы заметите, что таблица содержит сведения об учетной записи администратора созданной ранее. Эти сведения хранятся в каталоге и вызывает Graph API для получения этих сведений при загрузке страницы.   
   
@@ -151,6 +151,6 @@ ms.lasthandoff: 11/10/2017
 ## <a name="more-information"></a>Дополнительные сведения
 
 - [Подробное рассмотрение: Веб-сайтов Azure и организации проверку подлинности с помощью Azure AD](http://rickrainey.com/2014/08/19/deep-dive-azure-websites-and-organizational-authentication-using-azure-ad/)
-- [Общие сведения о Azure AD Graph API](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx)
-- [Сценарии проверки подлинности в Azure AD](https://msdn.microsoft.com/en-us/library/azure/dn499820.aspx)
+- [Общие сведения о Azure AD Graph API](https://msdn.microsoft.com/library/azure/hh974476.aspx)
+- [Сценарии проверки подлинности в Azure AD](https://msdn.microsoft.com/library/azure/dn499820.aspx)
 - [Примеры кода Azure AD на GitHub](https://github.com/AzureADSamples)

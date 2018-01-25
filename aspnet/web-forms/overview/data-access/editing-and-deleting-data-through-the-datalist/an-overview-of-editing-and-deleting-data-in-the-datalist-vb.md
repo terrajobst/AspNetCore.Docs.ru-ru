@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3f43001b1980452e95187096cf884778c2970eb5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e08b55f763677a40a03503e54a23dc77a10a34f5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="an-overview-of-editing-and-deleting-data-in-the-datalist-vb"></a>Обзор изменения и удаления данных в DataList (Visual Basic)
 ====================
@@ -86,11 +86,11 @@ ms.lasthandoff: 11/10/2017
 
 К сожалению DataList не поддерживает любой из этих встроенных функциональных возможностей. Наша ответственность, чтобы убедиться, что пользователь s значения присваиваются параметры s ObjectDataSource и его `Update()` вызывается метод. Чтобы помочь нам в эту задачу, DataList предоставляет следующие свойства и события.
 
-- **[ `DataKeyField` Свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.basedatalist.datakeyfield.aspx)**  при обновлении или удалении, мы должны быть способны уникально идентифицировать каждого элемента в DataList. Присвойте этому свойству значение поля первичного ключа отображаемых данных. Таким образом будет заполнять DataList s [ `DataKeys` коллекции](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.basedatalist.datakeys.aspx) с указанным `DataKeyField` значение для каждого элемента DataList.
-- **[ `EditCommand` Событий](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.editcommand.aspx)**  возникает, когда кнопку, LinkButton или ImageButton которого `CommandName` свойству нажатии редактирования.
-- **[ `CancelCommand` Событий](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.cancelcommand.aspx)**  возникает, когда кнопку, LinkButton или ImageButton которого `CommandName` свойству нажатии кнопки отмены.
-- **[ `UpdateCommand` Событий](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.updatecommand.aspx)**  возникает, когда кнопку, LinkButton или ImageButton которого `CommandName` свойству щелчке обновления.
-- **[ `DeleteCommand` Событий](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.deletecommand.aspx)**  возникает, когда кнопку, LinkButton или ImageButton которого `CommandName` свойству нажатии Delete.
+- **[ `DataKeyField` Свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basedatalist.datakeyfield.aspx)**  при обновлении или удалении, мы должны быть способны уникально идентифицировать каждого элемента в DataList. Присвойте этому свойству значение поля первичного ключа отображаемых данных. Таким образом будет заполнять DataList s [ `DataKeys` коллекции](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basedatalist.datakeys.aspx) с указанным `DataKeyField` значение для каждого элемента DataList.
+- **[ `EditCommand` Событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.editcommand.aspx)**  возникает, когда кнопку, LinkButton или ImageButton которого `CommandName` свойству нажатии редактирования.
+- **[ `CancelCommand` Событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.cancelcommand.aspx)**  возникает, когда кнопку, LinkButton или ImageButton которого `CommandName` свойству нажатии кнопки отмены.
+- **[ `UpdateCommand` Событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.updatecommand.aspx)**  возникает, когда кнопку, LinkButton или ImageButton которого `CommandName` свойству щелчке обновления.
+- **[ `DeleteCommand` Событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.deletecommand.aspx)**  возникает, когда кнопку, LinkButton или ImageButton которого `CommandName` свойству нажатии Delete.
 
 С помощью этих свойств и событий, существует четыре подхода, который можно использовать для обновления и удаления данных из DataList.
 
@@ -153,7 +153,7 @@ ms.lasthandoff: 11/10/2017
 >  Проницательный читатель вспомнить, что мы смогли отключить состояние просмотра, при создании редактируемой GridViews DetailsViews и FormViews. Это так, как элементы управления ASP.NET 2.0 Web могут содержать *управления состоянием*, который сохраняется во время обратной передачи, например состояние представления, но если принято решение основные состояния.
 
 
-Отключение просмотра состояния в GridView, просто пропускает сведения о состоянии тривиальный, но сохраняет состояние элемента управления (который включает состояние, необходимое для изменения и удаления). DataList, созданный на период времени 1.x ASP.NET не использует состояние элемента управления и поэтому должно быть включено состояние представления. В разделе [vs состояние элемента управления. Состояние представления](https://msdn.microsoft.com/en-us/library/1whwt1k7.aspx) Дополнительные сведения о назначении состояние элемента управления и его отличий от состояния просмотра.
+Отключение просмотра состояния в GridView, просто пропускает сведения о состоянии тривиальный, но сохраняет состояние элемента управления (который включает состояние, необходимое для изменения и удаления). DataList, созданный на период времени 1.x ASP.NET не использует состояние элемента управления и поэтому должно быть включено состояние представления. В разделе [vs состояние элемента управления. Состояние представления](https://msdn.microsoft.com/library/1whwt1k7.aspx) Дополнительные сведения о назначении состояние элемента управления и его отличий от состояния просмотра.
 
 ## <a name="step-4-adding-an-editing-user-interface"></a>Шаг 4: Добавление пользовательский интерфейс редактирования
 
@@ -225,7 +225,7 @@ ms.lasthandoff: 11/10/2017
 
 Нажав кнопку вызывает обратную передачу, но *не* перевести в режим редактирования списка продукции. Чтобы сделать доступным для редактирования продукт, необходимо:
 
-1. Задать DataList s [ `EditItemIndex` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) индексу `DataListItem` выполнен щелчок, кнопка "Изменить".
+1. Задать DataList s [ `EditItemIndex` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) индексу `DataListItem` выполнен щелчок, кнопка "Изменить".
 2. Привяжите данные к элементу управления DataList. Когда в DataList повторно подготовленных к просмотру `DataListItem` которого `ItemIndex` соответствует DataList s `EditItemIndex` будет отображаться с помощью его `EditItemTemplate`.
 
 Так как элемент управления DataList s `EditCommand` событие вызывается, когда нажата кнопка "Изменить", создайте `EditCommand` обработчик событий следующим кодом:
@@ -249,7 +249,7 @@ ms.lasthandoff: 11/10/2017
 
 Чтобы отобразить все элементы в режиме только для чтения DataList, необходимо:
 
-1. Задать DataList s [ `EditItemIndex` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) в индекс несуществующей `DataListItem` индекса. `-1`является безопасным, поскольку `DataListItem` индексы начинаются с `0`.
+1. Задать DataList s [ `EditItemIndex` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) в индекс несуществующей `DataListItem` индекса. `-1`является безопасным, поскольку `DataListItem` индексы начинаются с `0`.
 2. Привяжите данные к элементу управления DataList. Так как нет `DataListItem` `ItemIndex` es соответствуют DataList s `EditItemIndex`, весь DataList будут отображены в режиме только для чтения.
 
 Эти действия могут быть выполнены с помощью следующего кода обработчика событий:
@@ -263,7 +263,7 @@ ms.lasthandoff: 11/10/2017
 
 1. Программный доступ к имени продукта, введенные пользователем и цена, а также продукта s `ProductID`.
 2. Запуск процесса обновления путем вызова соответствующего `UpdateProduct` перегрузки в `ProductsBLL` класса.
-3. Задать DataList s [ `EditItemIndex` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) в индекс несуществующей `DataListItem` индекса. `-1`является безопасным, поскольку `DataListItem` индексы начинаются с `0`.
+3. Задать DataList s [ `EditItemIndex` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) в индекс несуществующей `DataListItem` индекса. `-1`является безопасным, поскольку `DataListItem` индексы начинаются с `0`.
 4. Привяжите данные к элементу управления DataList. Так как нет `DataListItem` `ItemIndex` es соответствуют DataList s `EditItemIndex`, весь DataList будут отображены в режиме только для чтения.
 
 Шаги 1 и 2 несут ответственность за сохранение пользователь s изменений; После изменения были сохранены и идентичны шагов, выполненных в шагах 3 и 4 возвращать DataList состояние до редактирования `CancelCommand` обработчика событий.

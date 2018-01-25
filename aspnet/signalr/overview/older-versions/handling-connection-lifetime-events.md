@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/handling-connection-lifetime-events
 msc.type: authoredcontent
-ms.openlocfilehash: db29c3382895ef4d7efc3a686fa558189c8788de
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4fe77769c27dd46967da2e1d68791d7142021d99
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="understanding-and-handling-connection-lifetime-events-in-signalr-1x"></a>Понимание и обработка событий время существования подключения SignalR 1.x
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 - [Повторное подключение постоянно](#continuousreconnect)
 - [Отключение клиента в серверном коде](#disconnectclientfromserver)
 
-Ссылки на разделы справки по API, до версии .NET 4.5 API-интерфейса. Если вы используете .NET 4, см. раздел [версии .NET 4 разделов API](https://msdn.microsoft.com/en-us/library/jj891075(v=vs.100).aspx).
+Ссылки на разделы справки по API, до версии .NET 4.5 API-интерфейса. Если вы используете .NET 4, см. раздел [версии .NET 4 разделов API](https://msdn.microsoft.com/library/jj891075(v=vs.100).aspx).
 
 <a id="terminology"></a>
 

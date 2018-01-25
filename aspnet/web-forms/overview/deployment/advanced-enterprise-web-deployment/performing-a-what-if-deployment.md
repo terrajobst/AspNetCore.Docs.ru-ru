@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/performing-a-what-if-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 62be7c9636fb74c40bec812e9ac76b360995da50
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cea805c86f0764c7443ccc5c9f89248860a6a842
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="performing-a-what-if-deployment"></a>Для выполнения развертывания «Что, если»
 ====================
@@ -52,7 +52,7 @@ ms.lasthandoff: 11/10/2017
 Если вы удовлетворены результатами развертывания «что, если», можно удалить **– whatif** флаг выполнения динамической развертывания.
 
 > [!NOTE]
-> Дополнительные сведения о параметрах командной строки для MSDeploy.exe см. в разделе [веб-развертывание параметров операции](https://technet.microsoft.com/en-us/library/dd569089(WS.10).aspx).
+> Дополнительные сведения о параметрах командной строки для MSDeploy.exe см. в разделе [веб-развертывание параметров операции](https://technet.microsoft.com/library/dd569089(WS.10).aspx).
 
 
 Если вы используете *. deploy.cmd* файл, можно запустить развертывания «что, если», включая **/t** флаг флаг (пробный режим), а не **/y** флаг («Да» или режим обновления) в в команду. Например, чтобы оценить, что может произойти, если пакет был развернут на ContactManager.Mvc.zip, запустив *. deploy.cmd* файл, команда должна выглядеть следующим образом:
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/10/2017
 
 
 > [!NOTE]
-> Дополнительные сведения о параметрах командной строки для *. deploy.cmd* файлов, в разделе [как: установка, развертывание пакета с помощью deploy.cmd файл](https://msdn.microsoft.com/en-us/library/ff356104.aspx). При запуске *. deploy.cmd* файл без указания всевозможные флаги, отображает список доступных флагов командной строки.
+> Дополнительные сведения о параметрах командной строки для *. deploy.cmd* файлов, в разделе [как: установка, развертывание пакета с помощью deploy.cmd файл](https://msdn.microsoft.com/library/ff356104.aspx). При запуске *. deploy.cmd* файл без указания всевозможные флаги, отображает список доступных флагов командной строки.
 
 
 ## <a name="performing-a-what-if-deployment-for-databases"></a>Выполнение развертывания «Что, если» для баз данных
@@ -142,7 +142,7 @@ VSDBCMD это средство развертывания разностную 
 
 ## <a name="further-reading"></a>Дополнительные сведения
 
-Дополнительные сведения о синтаксисе командной строки на веб-развертывания см. в разделе [веб-развертывание параметров операции](https://technet.microsoft.com/en-us/library/dd569089(WS.10).aspx). Рекомендации по параметрам командной строки при использовании *. deploy.cmd* файла см. в разделе [как: установка, развертывание пакета с помощью deploy.cmd файл](https://msdn.microsoft.com/en-us/library/ff356104.aspx). Рекомендации по VSDBCMD синтаксис командной строки см. в разделе [Справочник по командной строке для VSDBCMD. EXE (развертывание и импорт схемы)](https://msdn.microsoft.com/en-us/library/dd193283.aspx).
+Дополнительные сведения о синтаксисе командной строки на веб-развертывания см. в разделе [веб-развертывание параметров операции](https://technet.microsoft.com/library/dd569089(WS.10).aspx). Рекомендации по параметрам командной строки при использовании *. deploy.cmd* файла см. в разделе [как: установка, развертывание пакета с помощью deploy.cmd файл](https://msdn.microsoft.com/library/ff356104.aspx). Рекомендации по VSDBCMD синтаксис командной строки см. в разделе [Справочник по командной строке для VSDBCMD. EXE (развертывание и импорт схемы)](https://msdn.microsoft.com/library/dd193283.aspx).
 
 >[!div class="step-by-step"]
 [Назад](advanced-enterprise-web-deployment.md)

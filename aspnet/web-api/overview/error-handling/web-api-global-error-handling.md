@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/error-handling/web-api-global-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: d2bdf04b4da2a099f3a2af100b16682c68f946f2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c593c56ba3d0ee8ebf6dc425408d2c3b91c83f93
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="global-error-handling-in-aspnet-web-api-2"></a>Глобальные обработки ошибок в ASP.NET Web API 2
 ====================
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 1. Мы поддерживаем регистрации несколько средств ведения журнала исключений, но только один обработчик исключений.
 2. Средства ведения журнала исключений всегда вызываться, даже если мы вы собираетесь отменить подключение. Обработчики исключений только получить вызывается, когда мы по-прежнему сможет выбрать какие ответное сообщение для отправки.
 
-Обе службы предоставляют доступ к контексту исключения, содержащий важные сведения из точки, в которой обнаружено исключение, особенно [HttpRequestMessage](https://msdn.microsoft.com/en-us/library/system.net.http.httprequestmessage(v=vs.110).aspx), [HttpRequestContext](https://msdn.microsoft.com/en-us/library/system.web.http.controllers.httprequestcontext(v=vs.118).aspx), возникает исключение и источник исключения (см. ниже).
+Обе службы предоставляют доступ к контексту исключения, содержащий важные сведения из точки, в которой обнаружено исключение, особенно [HttpRequestMessage](https://msdn.microsoft.com/library/system.net.http.httprequestmessage(v=vs.110).aspx), [HttpRequestContext](https://msdn.microsoft.com/library/system.web.http.controllers.httprequestcontext(v=vs.118).aspx), возникает исключение и источник исключения (см. ниже).
 
 ### <a name="design-principles"></a>Принципы разработки
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](web-api-global-error-handling/samples/sample5.cs)]
 
-Обработчик исключений указывает, что она обработала исключение, задав `Result` свойство результат действия (например, [ExceptionResult](https://msdn.microsoft.com/en-us/library/system.web.http.results.exceptionresult(v=vs.118).aspx), [InternalServerErrorResult](https://msdn.microsoft.com/en-us/library/system.web.http.results.internalservererrorresult(v=vs.118).aspx), [ StatusCodeResult](https://msdn.microsoft.com/en-us/library/system.web.http.results.statuscoderesult(v=vs.118).aspx), или пользовательским результатом). Если `Result` свойство имеет значение null, исключение остается необработанным и исходное исключение будет создано повторно.
+Обработчик исключений указывает, что она обработала исключение, задав `Result` свойство результат действия (например, [ExceptionResult](https://msdn.microsoft.com/library/system.web.http.results.exceptionresult(v=vs.118).aspx), [InternalServerErrorResult](https://msdn.microsoft.com/library/system.web.http.results.internalservererrorresult(v=vs.118).aspx), [ StatusCodeResult](https://msdn.microsoft.com/library/system.web.http.results.statuscoderesult(v=vs.118).aspx), или пользовательским результатом). Если `Result` свойство имеет значение null, исключение остается необработанным и исходное исключение будет создано повторно.
 
 Для исключений в верхней части стека вызовов мы воспользовались дополнительный шаг, чтобы убедиться, что ответ подходит для вызова API. Если исключение распространяется до узла, вызывающий объект увидите желтый экрана смерти или других узлах, предоставляемый ответа, как правило, HTML и обычно не соответствующий ответ ошибки API. В этих случаях начинается результат, отличных от null, и только в том случае, если она явно задает пользовательский обработчик исключений обратно в `null` (необрабатываемым) исключение распространяется на узле. Установка `Result` для `null` в таких случаях может оказаться полезным для двух сценариев:
 

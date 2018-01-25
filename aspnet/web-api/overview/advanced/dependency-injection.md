@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: b4cf39c59ed257b0014dbdbecef3eb7bc48f410d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7f64cc83e36c80b0ffd53edfc629557c0847b200
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="dependency-injection-in-aspnet-web-api-2"></a>Внедрение зависимостей в ASP.NET Web API 2
 ====================
@@ -91,7 +91,7 @@ ms.lasthandoff: 11/10/2017
 > «IoC» означает «инверсии элемента управления», который является общий шаблон, когда платформа вызывает в код приложения. Контейнер IoC создает объекты, который «инвертирует «обычного потока управления.
 
 
-В этом учебнике мы будем использовать [Unity](https://msdn.microsoft.com/en-us/library/ff647202.aspx) из шаблонов Microsoft &amp; рекомендации. (Другие популярные библиотеки включают в себя [Castle Windsor](http://www.castleproject.org/), [Spring.Net](http://www.springframework.net/), [Autofac](https://code.google.com/p/autofac/), [Ninject](http://www.ninject.org/), и [StructureMap ](http://docs.structuremap.net/).) Установка Unity можно использовать диспетчер пакетов NuGet. Из **средства** в Visual Studio, выберите пункт меню **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
+В этом учебнике мы будем использовать [Unity](https://msdn.microsoft.com/library/ff647202.aspx) из шаблонов Microsoft &amp; рекомендации. (Другие популярные библиотеки включают в себя [Castle Windsor](http://www.castleproject.org/), [Spring.Net](http://www.springframework.net/), [Autofac](https://code.google.com/p/autofac/), [Ninject](http://www.ninject.org/), и [StructureMap ](http://docs.structuremap.net/).) Установка Unity можно использовать диспетчер пакетов NuGet. Из **средства** в Visual Studio, выберите пункт меню **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
 
 [!code-console[Main](dependency-injection/samples/sample7.cmd)]
 

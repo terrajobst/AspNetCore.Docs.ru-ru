@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/setting-up-database
 msc.type: authoredcontent
-ms.openlocfilehash: 9ecde847841eb727a0440f0483c69d1df6757815
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cb979333131cc6ac87fd640bf7c96931054a1814
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-entity-framework-6-database-first-using-mvc-5"></a>Приступая к работе с Entity Framework 6 Database First MVC 5 с помощью
 ====================
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 
 Простейший пример шаблона разработки Code First, в разделе [Приступая к работе с ASP.NET MVC 5](../introduction/getting-started.md). Более сложный пример, в разделе [Создание модели данных Entity Framework для приложения ASP.NET MVC 4](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 
-Рекомендации по выбору подхода Entity Framework см. в разделе [принципы разработки с использованием Entity Framework](https://msdn.microsoft.com/en-us/library/ms178359.aspx#dbfmfcf).
+Рекомендации по выбору подхода Entity Framework см. в разделе [принципы разработки с использованием Entity Framework](https://msdn.microsoft.com/library/ms178359.aspx#dbfmfcf).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -49,7 +49,7 @@ Visual Studio 2013 или Visual Studio Express 2013 для Web
 
 Этот учебник был разработан с использованием LocalDB с Visual Studio 2013 или Visual Studio Express 2013 для Web. Можно использовать существующий сервер базы данных вместо LocalDB, но в зависимости от установленной версии Visual Studio и тип базы данных, все данные средства в Visual Studio может не поддерживаться. Если средства недоступны для базы данных, может потребоваться выполнить некоторые шаги настройки базы данных в пакет управления для базы данных.
 
-При наличии проблемы с инструменты для баз данных в вашей версии Visual Studio, убедитесь, что вы установили последнюю версию средства базы данных. Сведения об обновлении или установке инструменты для баз данных см. в разделе [Microsoft SQL Server Data Tools](https://msdn.microsoft.com/en-us/data/hh297027).
+При наличии проблемы с инструменты для баз данных в вашей версии Visual Studio, убедитесь, что вы установили последнюю версию средства базы данных. Сведения об обновлении или установке инструменты для баз данных см. в разделе [Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/hh297027).
 
 Запустите Visual Studio и создать **проект базы данных SQL Server**. Назовите проект **ContosoUniversityData**.
 

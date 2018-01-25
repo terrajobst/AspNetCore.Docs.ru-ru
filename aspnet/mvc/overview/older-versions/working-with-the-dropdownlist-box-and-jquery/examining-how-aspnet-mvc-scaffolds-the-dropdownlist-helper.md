@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper
 msc.type: authoredcontent
-ms.openlocfilehash: b5210f9a29f82fbadd0e6dd2d81bd85e7f23ae7e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 737773ab424b3ec3b6139b8c238a60ca23de2e69
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="examining--how--aspnet-mvc-scaffolds-the-dropdownlist-helper"></a>Изучение как scaffolds вспомогательного метода DropDownList в ASP.NET MVC
 ====================
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="the-html-select-tag"></a>Выберите HTML-тег
 
-HTML `<select>` элемент (созданные HTML [DropDownList](https://msdn.microsoft.com/en-us/library/dd492948.aspx) вспомогательный) используется для отображения полного списка значений (например, список жанров). Для изменения формы когда текущее значение известно, список выбора можно отобразить текущее значение. Мы видели этом ранее при рекомендуется задать выбранное значение значение **комедии**. Список выбора идеально подходит для отображения категорий или данные внешнего ключа. `<select>` Элемент внешнего ключа жанра отображает список имен возможных жанра, но обновляется при сохранении формы свойство жанр с Genre значение внешнего ключа, не отображаемых жанр имя. На приведенном ниже рисунке выбран жанр — **Disco** и исполнителя **лето Дарья**.
+HTML `<select>` элемент (созданные HTML [DropDownList](https://msdn.microsoft.com/library/dd492948.aspx) вспомогательный) используется для отображения полного списка значений (например, список жанров). Для изменения формы когда текущее значение известно, список выбора можно отобразить текущее значение. Мы видели этом ранее при рекомендуется задать выбранное значение значение **комедии**. Список выбора идеально подходит для отображения категорий или данные внешнего ключа. `<select>` Элемент внешнего ключа жанра отображает список имен возможных жанра, но обновляется при сохранении формы свойство жанр с Genre значение внешнего ключа, не отображаемых жанр имя. На приведенном ниже рисунке выбран жанр — **Disco** и исполнителя **лето Дарья**.
 
 ![](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/_static/image4.png)
 
@@ -70,11 +70,11 @@ HTML `<select>` элемент (созданные HTML [DropDownList](https://m
 
 [!code-csharp[Main](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/samples/sample5.cs)]
 
-`Create` Метод добавляет два [SelectList](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlist.aspx) объектов `ViewBag`, один для хранения сведений жанр и один для хранения данных исполнителя. [SelectList](https://msdn.microsoft.com/en-us/library/dd505286.aspx) перегрузку конструктора, приведенном выше принимает три аргумента:
+`Create` Метод добавляет два [SelectList](https://msdn.microsoft.com/library/system.web.mvc.selectlist.aspx) объектов `ViewBag`, один для хранения сведений жанр и один для хранения данных исполнителя. [SelectList](https://msdn.microsoft.com/library/dd505286.aspx) перегрузку конструктора, приведенном выше принимает три аргумента:
 
 [!code-csharp[Main](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/samples/sample6.cs)]
 
-1. *элементы*: [IEnumerable](https://msdn.microsoft.com/en-us/library/system.collections.ienumerable.aspx) содержащие элементы в списке. В приведенном выше примере список жанров, возвращаемый методом `db.Genres`.
+1. *элементы*: [IEnumerable](https://msdn.microsoft.com/library/system.collections.ienumerable.aspx) содержащие элементы в списке. В приведенном выше примере список жанров, возвращаемый методом `db.Genres`.
 2. *DataValueField используются*: имя свойства в **IEnumerable** список, содержащий значение ключа. В приведенном выше примере `GenreId` и `ArtistId`.
 3. *dataTextField*: имя свойства в **IEnumerable** список, который содержит сведения для отображения. В таблице жанр и исполнители `name` используется поле.
 
@@ -84,7 +84,7 @@ HTML `<select>` элемент (созданные HTML [DropDownList](https://m
 
 Первая строка показывает, что требуется создать представление `Album` модели. В `Create` в приведенном выше примере, модель не были переданы, поэтому представление возвращает **null** `Album` модели. На этом этапе создается новый альбом, поэтому мы не установлены `Album` данных для него.
 
-[Html.DropDownList](https://msdn.microsoft.com/en-us/library/dd492948.aspx) перегрузка, показанный выше принимает имя поля для привязки модели. Также использует это имя для поиска **ViewBag** объект, содержащий [SelectList](https://msdn.microsoft.com/en-us/library/dd505286.aspx) объекта. С помощью этой перегрузки, не требуется имя **ViewBag SelectList** объекта `GenreId`. Второй параметр (`String.Empty`) — это текст, отображаемый, когда элемент не выбран. Это именно то, что необходимо при создании нового альбома. Если удалить второй параметр и использовать следующий код:
+[Html.DropDownList](https://msdn.microsoft.com/library/dd492948.aspx) перегрузка, показанный выше принимает имя поля для привязки модели. Также использует это имя для поиска **ViewBag** объект, содержащий [SelectList](https://msdn.microsoft.com/library/dd505286.aspx) объекта. С помощью этой перегрузки, не требуется имя **ViewBag SelectList** объекта `GenreId`. Второй параметр (`String.Empty`) — это текст, отображаемый, когда элемент не выбран. Это именно то, что необходимо при создании нового альбома. Если удалить второй параметр и использовать следующий код:
 
 [!code-cshtml[Main](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/samples/sample8.cshtml)]
 

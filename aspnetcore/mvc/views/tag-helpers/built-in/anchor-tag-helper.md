@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 7923876c792544ac4d559eb8de29475d8a4b37e0
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 74609b515936ec7da8bfc133c27cb69f51311924
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="anchor-tag-helper"></a>Вспомогательный тег привязки
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 01/19/2018
 <a href="/Speaker">All Speakers</a>
 ```
 
-Если `asp-controller` указан и `asp-action` не значение по умолчанию `asp-action` будет выполняться в данный момент представления метода контроллера по умолчанию. Что находится в приведенном выше примере, если `asp-action` опущены, и создается на основе этого вспомогательного объекта тег привязки *HomeController* `Index` представление (**/Home**), созданной разметки будет:
+Если `asp-controller` указан и `asp-action` отсутствует, значение по умолчанию `asp-action` будет выполняться в данный момент представления метода контроллера по умолчанию. Что находится в приведенном выше примере, если `asp-action` опущены, и создается на основе этого вспомогательного объекта тег привязки *HomeController* `Index` представление (**/Home**), созданной разметки будет:
 
 ```html
 <a href="/Home">All Speakers</a>
@@ -142,7 +142,7 @@ app.UseMvc(routes =>
 <a href='/Speaker/Detail/12'>SpeakerId: 12</a>
 ```
 
-Если префикс маршрута не является частью маршрутизации найден шаблон, как бывает со следующими **cshtml** файла:
+Если префикс маршрута не входит в состав маршрутизации найден шаблон, как бывает со следующими **cshtml** файла:
 
 ```cshtml
 @model SpeakerData
@@ -164,7 +164,7 @@ app.UseMvc(routes =>
 
 `asp-route`предоставляет способ создания URL-адрес, непосредственно именованный маршрут. Использование атрибутов маршрутизации маршрут, можно назвать как показано в `SpeakerController` и используется в его `Evaluations` метод.
 
-`Name = "speakerevals"`Указывает вспомогательный тег привязки для создания маршрута непосредственно к этому методу контроллера, используя URL-адрес `/Speaker/Evaluations`. Если `asp-controller` или `asp-action` указать в дополнение к `asp-route`, созданный маршрут не может отличаться от ожидаемого. `asp-route`не следует использовать с любой из атрибутов `asp-controller` или `asp-action` во избежание конфликта маршрута.
+`Name = "speakerevals"`Указывает вспомогательный тег привязки для создания маршрута непосредственно к этому методу контроллера, используя URL-адрес `/Speaker/Evaluations`. Если `asp-controller` или `asp-action` указать в дополнение к `asp-route`, созданный маршрут не может отличаться от ожидаемого. `asp-route`не должны использоваться с любой из атрибутов `asp-controller` или `asp-action` во избежание конфликта маршрута.
 
 ### <a name="asp-all-route-data"></a>asp-all-route-data
 

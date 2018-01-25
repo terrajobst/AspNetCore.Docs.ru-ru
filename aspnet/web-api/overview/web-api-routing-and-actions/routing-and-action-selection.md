@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/routing-and-action-selection
 msc.type: authoredcontent
-ms.openlocfilehash: 02c2a01ef8ec2b5a49f2c303ee61f02702a3ba54
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 997582263bd48590b74434ee0ffc6be928fa1e08
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="routing-and-action-selection-in-aspnet-web-api"></a>Маршрутизация и выбор действий в веб-API ASP.NET
 ====================
@@ -121,7 +121,7 @@ URI "`http://localhost/api/products`" будет соответствовать 
 
 Перед рассмотрением алгоритм выбора, мы должны понять следующее о действиях контроллера.
 
-**Какие именно методы на контроллере, считаются «действия»?** При выборе действия, платформа считывает только открытые методы экземпляра на контроллере. Кроме того, он исключает [«специальным именем»](https://msdn.microsoft.com/en-us/library/system.reflection.methodbase.isspecialname) методы (конструкторы, события, перегрузки операторов и т. д.) и методы, унаследованные от **ApiController** класса.
+**Какие именно методы на контроллере, считаются «действия»?** При выборе действия, платформа считывает только открытые методы экземпляра на контроллере. Кроме того, он исключает [«специальным именем»](https://msdn.microsoft.com/library/system.reflection.methodbase.isspecialname) методы (конструкторы, события, перегрузки операторов и т. д.) и методы, унаследованные от **ApiController** класса.
 
 **Методы HTTP.** Платформа выбирает только действий, которые соответствуют метод HTTP запроса определяется следующим образом:
 
@@ -134,7 +134,7 @@ URI "`http://localhost/api/products`" будет соответствовать 
 - Простые типы, взяты из URI.
 - Сложные типы, взяты из текста запроса.
 
-Простые типы включают все [простые типы .NET Framework](https://msdn.microsoft.com/en-us/library/system.type.isprimitive), плюс **DateTime**, **десятичное**, **Guid**, **строки** , и **TimeSpan**. Для каждого действия не более одного параметра может считывать текст запроса.
+Простые типы включают все [простые типы .NET Framework](https://msdn.microsoft.com/library/system.type.isprimitive), плюс **DateTime**, **десятичное**, **Guid**, **строки** , и **TimeSpan**. Для каждого действия не более одного параметра может считывать текст запроса.
 
 > [!NOTE]
 > Это можно переопределить правила привязки по умолчанию. В разделе [привязки параметра WebAPI за кулисами](https://blogs.msdn.com/b/jmstall/archive/2012/05/11/webapi-parameter-binding-under-the-hood.aspx).
@@ -218,7 +218,7 @@ HTTP-запрос — это запрос GET. Действия контролл
 
 `GetById` Побеждает метод, так как он соответствует один параметр и без параметров для `GetAll`. Метод вызывается со следующими значениями параметров:
 
-- *Идентификатор* = 1
+- *id* = 1
 - *версия* = 1.5
 
 Обратите внимание, что даже если *версии* не использовался в алгоритм выбора, значение параметра берется из строки запроса URI.
@@ -227,7 +227,7 @@ HTTP-запрос — это запрос GET. Действия контролл
 
 Веб-API предоставляет точки расширения для некоторых частей процесса маршрутизации.
 
-| Интерфейс | Описание |
+| Интерфейс | Описание: |
 | --- | --- |
 | **IHttpControllerSelector** | Выбирает контроллер. |
 | **IHttpControllerTypeResolver** | Получает список типов контроллеров. **DefaultHttpControllerSelector** выбирает тип контроллера из этого списка. |

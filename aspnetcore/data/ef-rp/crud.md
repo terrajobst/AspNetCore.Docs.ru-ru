@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/crud
-ms.openlocfilehash: c26ba75f6a401d50a6b46bd7ee40500c5736f20f
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: d9b34c141401fbeaafe439fae1a7a75f2fe7b4ae
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-read-update-and-delete---ef-core-with-razor-pages-2-of-8"></a>Создания, чтения, обновления и удаления - Core EF со страницами Razor (2, 8)
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 01/19/2018
 
 ### <a name="add-related-data"></a>Добавление связанных данных
 
-Отсутствует код, формирования шаблонов для страницы индекса учащихся `Enrollments` свойство. В этом разделе содержимого `Enrollments` коллекция отображается на странице «сведения».
+Не включает формирования шаблонов код страницы индекса учащихся `Enrollments` свойство. В этом разделе содержимого `Enrollments` коллекция отображается на странице «сведения».
 
 `OnGetAsync` Метод *Pages/Students/Details.cshtml.cs* использует `FirstOrDefaultAsync` метод для извлечения одной `Student` сущности. Добавьте следующий выделенный код:
 
@@ -132,7 +132,7 @@ ms.lasthandoff: 01/19/2018
 <a id="overpost"></a>
 ### <a name="overposting"></a>Оверпостинга
 
-С помощью `TryUpdateModel` для обновления полей с переданные значения является рекомендации по безопасности, так как он предотвращает overposting. Предположим, например, сущность Student включает `Secret` свойство, которое этой веб-страницы не следует обновить или добавить:
+С помощью `TryUpdateModel` для обновления полей с переданные значения является рекомендации по безопасности, так как он предотвращает overposting. Предположим, например, сущность Student включает `Secret` свойство, которое не следует обновить или добавить эту веб-страницу:
 
 [!code-csharp[Main](intro/samples/cu/Models/StudentZsecret.cs?name=snippet_Intro&highlight=7)]
 

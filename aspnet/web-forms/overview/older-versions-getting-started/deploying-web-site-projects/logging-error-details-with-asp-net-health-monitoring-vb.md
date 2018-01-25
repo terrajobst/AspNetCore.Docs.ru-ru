@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6a1533b80828532b756940d0b08fe4c6dab2d5dd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 95c0b72e3811dc23f8bdea180be5b20800ab3bd8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-vb"></a>Записи сведений об ошибках с состоянием системы ASP.NET мониторинга (Visual Basic)
 ====================
@@ -43,13 +43,13 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="exploring-the-health-monitoring-systems-configuration"></a>Просмотр конфигурации системы наблюдения за работоспособностью
 
-Сведения о конфигурации, который находится в определяется поведение системы наблюдения за работоспособностью [ `<healthMonitoring>` элемент](https://msdn.microsoft.com/en-us/library/2fwh2ss9.aspx) в `Web.config`. Этот раздел конфигурации определяет, помимо прочего, следующие три важных аспекта сведений:
+Сведения о конфигурации, который находится в определяется поведение системы наблюдения за работоспособностью [ `<healthMonitoring>` элемент](https://msdn.microsoft.com/library/2fwh2ss9.aspx) в `Web.config`. Этот раздел конфигурации определяет, помимо прочего, следующие три важных аспекта сведений:
 
 1. События мониторинга работоспособности, когда возникло, должно быть записано
 2. Источники журналов и
 3. Сопоставление каждого события, определенные в (1) мониторинга состояния источников журнала определены в (2).
 
-Эти данные определяются через три дочерние элементы конфигурации: [ `<eventMappings>` ](https://msdn.microsoft.com/en-us/library/yc5yk01w.aspx), [ `<providers>` ](https://msdn.microsoft.com/en-us/library/zaa41kz1.aspx), и [ `<rules>` ](https://msdn.microsoft.com/en-us/library/fe5wyxa0.aspx)соответственно.
+Эти данные определяются через три дочерние элементы конфигурации: [ `<eventMappings>` ](https://msdn.microsoft.com/library/yc5yk01w.aspx), [ `<providers>` ](https://msdn.microsoft.com/library/zaa41kz1.aspx), и [ `<rules>` ](https://msdn.microsoft.com/library/fe5wyxa0.aspx)соответственно.
 
 Сведения о конфигурации системы мониторинга работоспособности по умолчанию можно найти в `Web.config` файла в `%WINDIR%\Microsoft.NET\Framework\version\CONFIG` папки. Данные конфигурации по умолчанию, с некоторую разметку удалены для краткости показан ниже:
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/10/2017
 2. Регистрация поставщика источника журнала по электронной почте в `<providers>` элемент, и
 3. Добавить запись `<rules>` элемент, сопоставленный события «Все ошибки» источник регистратор, добавленный в шаге (2).
 
-Система наблюдения за работоспособностью включает два класса поставщика источника журнала по электронной почте: `SimpleMailWebEventProvider` и `TemplatedMailWebEventProvider`. [ `SimpleMailWebEventProvider` Класса](https://msdn.microsoft.com/en-us/library/system.web.management.simplemailwebeventprovider.aspx) отправляет сообщение электронной почты в виде обычного текста, содержащее события сведений и обеспечивает Настройка сообщения электронной почты. С [ `TemplatedMailWebEventProvider` класса](https://msdn.microsoft.com/en-us/library/system.web.management.templatedmailwebeventprovider.aspx) укажите страницы ASP.NET, отображения разметки используется в теле сообщения электронной почты. [ `TemplatedMailWebEventProvider` Класс](https://msdn.microsoft.com/en-us/library/system.web.management.templatedmailwebeventprovider.aspx) предоставляет гораздо больший контроль над содержимое и формат сообщения электронной почты, но требует больше усилий переднего плана, как требуется, чтобы создать страницу ASP.NET, создающий текст сообщения электронной почты. Этот учебник посвящен использованию `SimpleMailWebEventProvider` класса.
+Система наблюдения за работоспособностью включает два класса поставщика источника журнала по электронной почте: `SimpleMailWebEventProvider` и `TemplatedMailWebEventProvider`. [ `SimpleMailWebEventProvider` Класса](https://msdn.microsoft.com/library/system.web.management.simplemailwebeventprovider.aspx) отправляет сообщение электронной почты в виде обычного текста, содержащее события сведений и обеспечивает Настройка сообщения электронной почты. С [ `TemplatedMailWebEventProvider` класса](https://msdn.microsoft.com/library/system.web.management.templatedmailwebeventprovider.aspx) укажите страницы ASP.NET, отображения разметки используется в теле сообщения электронной почты. [ `TemplatedMailWebEventProvider` Класс](https://msdn.microsoft.com/library/system.web.management.templatedmailwebeventprovider.aspx) предоставляет гораздо больший контроль над содержимое и формат сообщения электронной почты, но требует больше усилий переднего плана, как требуется, чтобы создать страницу ASP.NET, создающий текст сообщения электронной почты. Этот учебник посвящен использованию `SimpleMailWebEventProvider` класса.
 
 Обновление системы наблюдения за работоспособностью `<providers>` элемент в `Web.config` файла следует включить источник журнала для `SimpleMailWebEventProvider` класса:
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 11/10/2017
 
 Система мониторинга работоспособности ASP.NET позволяет администраторам отслеживать работоспособность развернутого веб-приложения. События мониторинга работоспособности вызываются в том случае, когда unfold определенные действия, например, при остановке приложения, когда пользователь успешно входит на сайт или при возникновении необработанного исключения. Эти события могут регистрироваться с любым количеством источников журнала. Этого учебника были рассмотрены способы записи сведений о необработанных исключений в базе данных и в сообщениях электронной почты.
 
-Этот учебник основное внимание уделено с помощью мониторинга для необработанных исключений, но имейте в виду, что наблюдение за работоспособностью предназначена для измерения работоспособности развернутого приложения ASP.NET и содержат множество событий мониторинга работоспособности и войти в систему источники не работоспособности изучена здесь. Дополнительные возможности, можно создать собственные мониторинг событий и источники журналов работоспособности в случае необходимости возникнуть. Если нужны дополнительные сведения об наблюдения за работоспособностью, первым шагом является прочитать [Reitan Эрик](https://blogs.msdn.com/erikreitan/archive/2006/05/22/603586.aspx) [мониторинга часто задаваемые вопросы о работоспособности](https://blogs.msdn.com/erikreitan/archive/2006/05/22/603586.aspx). После этого обратитесь к [How To: наблюдение за работоспособностью используется в ASP.NET 2.0](https://msdn.microsoft.com/en-us/library/ms998306.aspx).
+Этот учебник основное внимание уделено с помощью мониторинга для необработанных исключений, но имейте в виду, что наблюдение за работоспособностью предназначена для измерения работоспособности развернутого приложения ASP.NET и содержат множество событий мониторинга работоспособности и войти в систему источники не работоспособности изучена здесь. Дополнительные возможности, можно создать собственные мониторинг событий и источники журналов работоспособности в случае необходимости возникнуть. Если нужны дополнительные сведения об наблюдения за работоспособностью, первым шагом является прочитать [Reitan Эрик](https://blogs.msdn.com/erikreitan/archive/2006/05/22/603586.aspx) [мониторинга часто задаваемые вопросы о работоспособности](https://blogs.msdn.com/erikreitan/archive/2006/05/22/603586.aspx). После этого обратитесь к [How To: наблюдение за работоспособностью используется в ASP.NET 2.0](https://msdn.microsoft.com/library/ms998306.aspx).
 
 Программирование довольны!
 
@@ -147,11 +147,11 @@ ms.lasthandoff: 11/10/2017
 
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
-- [Общие сведения о мониторинге состояния ASP.NET](https://msdn.microsoft.com/en-us/library/bb398933.aspx)
+- [Общие сведения о мониторинге состояния ASP.NET](https://msdn.microsoft.com/library/bb398933.aspx)
 - [Настройка и изменение системы ASP.NET наблюдения за работоспособностью](http://dotnetslackers.com/articles/aspnet/ConfiguringAndCustomizingTheHealthMonitoringSystemOfASPNET.aspx)
 - [Часто задаваемые вопросы — в ASP.NET 2.0 мониторинга работоспособности](https://blogs.msdn.com/erikreitan/archive/2006/05/22/603586.aspx)
-- [Практическое руководство: Отправка электронной почты для уведомлений мониторинга работоспособности](https://msdn.microsoft.com/en-us/library/ms227553.aspx)
-- [Практическое руководство: Использование, мониторинг работоспособности в ASP.NET](https://msdn.microsoft.com/en-us/library/ms998306.aspx)
+- [Практическое руководство: Отправка электронной почты для уведомлений мониторинга работоспособности](https://msdn.microsoft.com/library/ms227553.aspx)
+- [Практическое руководство: Использование, мониторинг работоспособности в ASP.NET](https://msdn.microsoft.com/library/ms998306.aspx)
 - [В ASP.NET мониторинга работоспособности](http://aspnet.4guysfromrolla.com/articles/031407-1.aspx)
 
 >[!div class="step-by-step"]

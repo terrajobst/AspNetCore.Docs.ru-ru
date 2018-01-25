@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-a-sql-server-database-update-11-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 898259885da8a089db296bd0f400ee8863877d08
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aeec69c7373a111d30e8f32a374a9f02fb4c080a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-a-sql-server-database-update---11-of-12"></a>Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: развертывание обновления базы данных сервера SQL - 11, 12
 ====================
@@ -153,7 +153,7 @@ Code First Migrations обновляет базу данных так же, ка
 
 ## <a name="more-information"></a>Дополнительные сведения
 
-На этом завершается, серию учебников по развертыванию веб-приложению ASP.NET для стороннего поставщика услуг размещения. Дополнительные сведения об этих подразделах, рассматриваемых в этих учебниках см. в разделе [Карта содержимого развертывания ASP.NET](https://msdn.microsoft.com/en-us/library/bb386521(v=vs.110).aspx) на веб-сайте MSDN.
+На этом завершается, серию учебников по развертыванию веб-приложению ASP.NET для стороннего поставщика услуг размещения. Дополнительные сведения об этих подразделах, рассматриваемых в этих учебниках см. в разделе [Карта содержимого развертывания ASP.NET](https://msdn.microsoft.com/library/bb386521(v=vs.110).aspx) на веб-сайте MSDN.
 
 ## <a name="acknowledgements"></a>Благодарности
 

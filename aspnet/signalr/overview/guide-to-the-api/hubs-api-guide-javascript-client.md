@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: 65e369a393a8c5d2d1bba11b5c71347df8f9c69d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 794ab576d3c6600911f331bab7c335476e45a0c9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-signalr-hubs-api-guide---javascript-client"></a>Справочник по API концентраторов ASP.NET SignalR - клиент JavaScript
 ====================
@@ -142,7 +142,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-aspx[Main](hubs-api-guide-javascript-client/samples/sample7.aspx)]
 
-Как правило используется тот же метод для указания URL-адрес «/ signalr/концентраторов», используемого для файлов CSS и JavaScript. При указании URL-адрес без использования тильда в некоторых сценариях приложение будет работать правильно при тестирования в Visual Studio с помощью IIS Express, но завершится с ошибкой 404 при развертывании до полной версии IIS. Дополнительные сведения см. в разделе **разрешения ссылки на ресурсы на корневом уровне** в [веб-серверов в Visual Studio для веб-проектов ASP.NET](https://msdn.microsoft.com/en-us/library/58wxa9w5.aspx) на сайте MSDN.
+Как правило используется тот же метод для указания URL-адрес «/ signalr/концентраторов», используемого для файлов CSS и JavaScript. При указании URL-адрес без использования тильда в некоторых сценариях приложение будет работать правильно при тестирования в Visual Studio с помощью IIS Express, но завершится с ошибкой 404 при развертывании до полной версии IIS. Дополнительные сведения см. в разделе **разрешения ссылки на ресурсы на корневом уровне** в [веб-серверов в Visual Studio для веб-проектов ASP.NET](https://msdn.microsoft.com/library/58wxa9w5.aspx) на сайте MSDN.
 
 При запуске веб-проекта в Visual Studio 2013 в режиме отладки, и при использовании Internet Explorer как браузер, можно просмотреть файл прокси в **обозревателе решений** под **документов скрипта**, как показано в на рисунке.
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-updating-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 02df858a7ad2ccefce4717e9bb7b08fc4c8d6ace
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bcfdf734de0b4a4aa0a11f35bd6e40d6b97719cf
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="batch-updating-vb"></a>Пакет обновления (Visual Basic)
 ====================
@@ -47,7 +47,7 @@ S позволяют начать работу!
 
 ## <a name="examining-the-steps-for-making-all-gridview-rows-editable"></a>Изучение действий по созданию редактируемые все строки в GridView
 
-Как было сказано в [Обзор Вставка, обновление и удаление данных](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb.md) учебнике GridView предлагает встроенную поддержку редактирования свои данные на основе данных в ряду. На внутреннем уровне GridView отмечает какие строки редактируемой через его [ `EditIndex` свойства](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.editindex(VS.80).aspx). Как осуществляется привязка GridView к источнику данных, он проверяет каждую строку, чтобы увидеть, если индекс строки равен значению `EditIndex`. В этом случае интерфейсы этой строки s, которые обрабатываются с помощью их редактирования поля. Для стояли, интерфейс редактирования — текстовое поле, `Text` присваивается значение данных поля, заданные BoundField s `DataField` свойство. Для TemplateFields `EditItemTemplate` используется вместо `ItemTemplate`.
+Как было сказано в [Обзор Вставка, обновление и удаление данных](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb.md) учебнике GridView предлагает встроенную поддержку редактирования свои данные на основе данных в ряду. На внутреннем уровне GridView отмечает какие строки редактируемой через его [ `EditIndex` свойства](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.editindex(VS.80).aspx). Как осуществляется привязка GridView к источнику данных, он проверяет каждую строку, чтобы увидеть, если индекс строки равен значению `EditIndex`. В этом случае интерфейсы этой строки s, которые обрабатываются с помощью их редактирования поля. Для стояли, интерфейс редактирования — текстовое поле, `Text` присваивается значение данных поля, заданные BoundField s `DataField` свойство. Для TemplateFields `EditItemTemplate` используется вместо `ItemTemplate`.
 
 Помните, что редактирования рабочий процесс запускается, когда пользователь нажимает кнопку Правка строк. Это вызывает обратную передачу, задает GridView s `EditIndex` свойств индекса выбранной строки s и повторных привязок данных в сетке. При нажатии кнопки "Отмена" s строк при обратной передаче `EditIndex` присвоено значение `-1` перед повторной привязкой данных к сетке. Так как строки GridView s запустить индексацию с нуля, установка `EditIndex` для `-1` приводит к отображению GridView в режиме только для чтения.
 
@@ -240,7 +240,7 @@ S позволяют начать работу!
 
 [!code-vb[Main](batch-updating-vb/samples/sample5.vb)]
 
-Этот метод начинает работу, получение всех продуктов в `ProductsDataTable` через вызов МЕТОДА s `GetProducts` метод. Затем выполняется перечисление `ProductGrid` GridView s [ `Rows` коллекции](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.rows(VS.80).aspx). `Rows` Коллекция содержит [ `GridViewRow` экземпляр](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridviewrow.aspx) для каждой строки, отображаемой в GridView. Поскольку мы продемонстрируем не более десяти строк на страницу, GridView s `Rows` коллекции будет иметь не более 10 элементов.
+Этот метод начинает работу, получение всех продуктов в `ProductsDataTable` через вызов МЕТОДА s `GetProducts` метод. Затем выполняется перечисление `ProductGrid` GridView s [ `Rows` коллекции](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rows(VS.80).aspx). `Rows` Коллекция содержит [ `GridViewRow` экземпляр](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridviewrow.aspx) для каждой строки, отображаемой в GridView. Поскольку мы продемонстрируем не более десяти строк на страницу, GridView s `Rows` коллекции будет иметь не более 10 элементов.
 
 Для каждой строки `ProductID` извлечен из `DataKeys` коллекции и соответствующего `ProductsRow` выбирается из `ProductsDataTable`. Четыре элемента управления вводом TemplateField программно имеются, а их значения присвоены `ProductsRow` s свойства экземпляра. После каждого GridView значения строк s используется для обновления `ProductsDataTable`, он s передаваемый s уровень бизнес-ЛОГИКИ `UpdateWithTransaction` метод, который, как было показано в предыдущем учебнике просто вызывает DAL s `UpdateWithTransaction` метод.
 
@@ -257,7 +257,7 @@ S позволяют начать работу!
 
 [!code-vb[Main](batch-updating-vb/samples/sample6.vb)]
 
-Сначала выполняется вызов для `BatchUpdate`. Далее, [ `ClientScript` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.page.clientscript(VS.80).aspx) используется для добавления JavaScript, который будет отображать messagebox, который считывает продукты были обновлены.
+Сначала выполняется вызов для `BatchUpdate`. Далее, [ `ClientScript` свойство](https://msdn.microsoft.com/library/system.web.ui.page.clientscript(VS.80).aspx) используется для добавления JavaScript, который будет отображать messagebox, который считывает продукты были обновлены.
 
 Внимательно протестировать этот код. Посетите `BatchUpdate.aspx` через браузер, изменить число строк и нажмите одну из кнопок обновления продуктов. Предположим, что отсутствуют ошибки проверки входных данных, вы увидите messagebox, который считывает продукты были обновлены. Чтобы проверить атомарность обновления, рассмотрите возможность добавления случайный `CHECK` ограничения как один, которая запрещает режим `UnitPrice` значения 1234,56. Затем из `BatchUpdate.aspx`, изменить количество записей, что задайте один продукт s `UnitPrice` значение запрещенное значение (1234,56). Это должно приведет к ошибке при щелкнув обновления продуктов с другими изменениями во время этой операции пакетного откат к исходным значениям.
 
@@ -270,7 +270,7 @@ S позволяют начать работу!
 
 [!code-vb[Main](batch-updating-vb/samples/sample7.vb)]
 
-`BatchMethodAlternate`начинается, создав новый пустой `ProductsDataTable` с именем `products`. Затем шаги по GridView s `Rows` коллекции и для каждой строки возвращает сведения о конкретного продукта, с помощью МЕТОДА s `GetProductByProductID(productID)` метод. Полученный `ProductsRow` экземпляр имеет его свойства, обновленные в так же, как `BatchUpdate`, но после обновления строки, он импортируется в `products` `ProductsDataTable` через DataTable s [ `ImportRow(DataRow)` метод](https://msdn.microsoft.com/en-us/library/system.data.datatable.importrow(VS.80).aspx).
+`BatchMethodAlternate`начинается, создав новый пустой `ProductsDataTable` с именем `products`. Затем шаги по GridView s `Rows` коллекции и для каждой строки возвращает сведения о конкретного продукта, с помощью МЕТОДА s `GetProductByProductID(productID)` метод. Полученный `ProductsRow` экземпляр имеет его свойства, обновленные в так же, как `BatchUpdate`, но после обновления строки, он импортируется в `products` `ProductsDataTable` через DataTable s [ `ImportRow(DataRow)` метод](https://msdn.microsoft.com/library/system.data.datatable.importrow(VS.80).aspx).
 
 После `For Each` завершения цикла, `products` содержит один `ProductsRow` экземпляра для каждой строки в GridView. Поскольку каждое из `ProductsRow` были добавлены экземпляры `products` (а не обновление), если мы просто передать его в `UpdateWithTransaction` метод `ProductsTableAdatper` попытается вставить каждой записи в базе данных. Вместо этого необходимо указать, что каждая из этих строк был изменен (не добавлен).
 

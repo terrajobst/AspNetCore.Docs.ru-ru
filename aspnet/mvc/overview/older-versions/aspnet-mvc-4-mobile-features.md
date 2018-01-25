@@ -12,30 +12,30 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: e660595d66d81069fa47b77387509e73b1ec834e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d47d8f61dc7af6e1dc5887338be862ea81d7bb17
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>Возможности ASP.NET MVC 4 для мобильных приложений
 ====================
 По [Рик Андерсон](https://github.com/Rick-Anderson)
 
-> Теперь имеется версии MVC 5 данного руководства с примерами кода в [развертывания ASP.NET MVC 5 мобильного веб-приложения на веб-сайтов Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/).
+> Теперь имеется версии MVC 5 данного руководства с примерами кода в [развертывания ASP.NET MVC 5 мобильного веб-приложения на веб-сайтов Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/).
 
 
-Этот учебник поможет узнать основные принципы работы с функциями мобильных устройств в ASP.NET MVC 4, веб-приложения. В этом учебнике, можно использовать [Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/en-us/products/express) или Visual Web Developer 2010 Express пакетом обновления 1 (&quot;Visual Web Developer или VWD&quot;). Если у вас уже есть, можно использовать профессиональные версии Visual Studio.
+Этот учебник поможет узнать основные принципы работы с функциями мобильных устройств в ASP.NET MVC 4, веб-приложения. В этом учебнике, можно использовать [Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/products/express) или Visual Web Developer 2010 Express пакетом обновления 1 (&quot;Visual Web Developer или VWD&quot;). Если у вас уже есть, можно использовать профессиональные версии Visual Studio.
 
 Прежде чем начать, убедитесь, что вы установили необходимые компоненты, перечисленные ниже.
 
-- [Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/en-us/products/express) (рекомендуется) или Visual Studio Web Developer Express с пакетом обновления 1. Visual Studio 2012 содержит ASP.NET MVC 4. Если вы используете Visual Web Developer 2010, необходимо установить [ASP.NET MVC 4](https://go.microsoft.com/fwlink/?LinkId=243392).
+- [Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/products/express) (рекомендуется) или Visual Studio Web Developer Express с пакетом обновления 1. Visual Studio 2012 содержит ASP.NET MVC 4. Если вы используете Visual Web Developer 2010, необходимо установить [ASP.NET MVC 4](https://go.microsoft.com/fwlink/?LinkId=243392).
 
 Необходимо также эмулятор мобильных браузеров. Будет работать любой из следующих:
 
-- [Эмулятор Windows 7 Phone](https://msdn.microsoft.com/en-us/library/ff402563(VS.92).aspx). (Это эмулятор, используемый в большинстве снимков экрана в этом учебнике).
+- [Эмулятор Windows 7 Phone](https://msdn.microsoft.com/library/ff402563(VS.92).aspx). (Это эмулятор, используемый в большинстве снимков экрана в этом учебнике).
 - Измените строку пользовательского агента для эмуляции iPhone. В разделе [это](http://www.howtogeek.com/113439/how-to-change-your-browsers-user-agent-without-installing-any-extensions/) запись в блоге.
-- [Opera мобильном эмуляторе](http://www.opera.com/developer/tools/mobile/)
+- [Opera Mobile Emulator](http://www.opera.com/developer/tools/mobile/)
 - [Apple Safari](http://www.apple.com/safari/download/) с агентом пользователя, задайте для iPhone. Инструкции по установке агента пользователя в Safari на «iPhone» см. в разделе [как предоставить Safari представьте это IE](http://www.davidalison.com/2008/05/how-to-let-safari-pretend-its-ie.html) в блоге Дэвида Alison.
 
 Проекты Visual Studio с исходным кодом C# доступны по следующему адресу:
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="what-youll-build"></a>Что мы создадим
 
-В этом учебнике вы добавите мобильные функции простое приложение листинг конференции, которая предоставляется в [начальный проект](https://go.microsoft.com/fwlink/?LinkId=228307). На следующем рисунке показан страницы теги готового приложения как видно в [эмулятор Windows Phone 7](https://msdn.microsoft.com/en-us/library/ff402563(VS.92).aspx). В разделе [клавиатуры сопоставления для Windows Phone Emulator](https://msdn.microsoft.com/en-us/library/ff754352(v=vs.92).aspx) для упрощения ввода с клавиатуры.
+В этом учебнике вы добавите мобильные функции простое приложение листинг конференции, которая предоставляется в [начальный проект](https://go.microsoft.com/fwlink/?LinkId=228307). На следующем рисунке показан страницы теги готового приложения как видно в [эмулятор Windows Phone 7](https://msdn.microsoft.com/library/ff402563(VS.92).aspx). В разделе [клавиатуры сопоставления для Windows Phone Emulator](https://msdn.microsoft.com/library/ff754352(v=vs.92).aspx) для упрощения ввода с клавиатуры.
 
 [![p1_Tags_CompletedProj](aspnet-mvc-4-mobile-features/_static/image2.png)](aspnet-mvc-4-mobile-features/_static/image1.png)
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 11/10/2017
 
 Перейти на страницу "теги", используя браузер для настольных компьютеров и мобильных браузеров эмулятора. Эмулятор мобильных браузеров показано два внесенные изменения.
 
-[![p2m_layoutTags.Mobile](aspnet-mvc-4-mobile-features/_static/image12.png)](aspnet-mvc-4-mobile-features/_static/image11.png)
+[![p2m_layoutTags.mobile](aspnet-mvc-4-mobile-features/_static/image12.png)](aspnet-mvc-4-mobile-features/_static/image11.png)
 
 Напротив отображения рабочего стола не изменилась.
 
@@ -215,7 +215,7 @@ ms.lasthandoff: 11/10/2017
 [!code-csharp[Main](aspnet-mvc-4-mobile-features/samples/sample11.cs?highlight=26)]
 
 > [!NOTE]
-> Если вы используете Internet Explorer 9, и вы не видите `BundleMobileConfig` строка выше в желтой выделение, нажмите кнопку [кнопки представления совместимости](https://windows.microsoft.com/en-US/windows7/How-to-use-Compatibility-View-in-Internet-Explorer-9)![изображение кнопки «Просмотр в режиме совместимости» (отключено)] (http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg " Изображение кнопки «Просмотр в режиме совместимости» (отключено)") в IE, чтобы она стала измените с контуром ![изображение кнопки «Просмотр в режиме совместимости» (отключено)](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "изображение кнопки «Просмотр в режиме совместимости» (отключено) ") сплошной цвет ![изображение кнопки представления совместимости (on)](http://res1.windows.microsoft.com/resbox/en/Windows 7/main/156805ff-3130-481b-a12d-4d3a96470f36_14.jpg "изображение кнопки представления совместимости (on)"). Вместо этого учебника можно просмотреть в FireFox или Chrome.
+> Если вы используете Internet Explorer 9, и вы не видите `BundleMobileConfig` строка выше в желтой выделение, нажмите кнопку [кнопки представления совместимости](https://windows.microsoft.com/windows7/How-to-use-Compatibility-View-in-Internet-Explorer-9)![изображение кнопки «Просмотр в режиме совместимости» (отключено)] (http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg " Изображение кнопки «Просмотр в режиме совместимости» (отключено)") в IE, чтобы она стала измените с контуром ![изображение кнопки «Просмотр в режиме совместимости» (отключено)](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "изображение кнопки «Просмотр в режиме совместимости» (отключено) ") сплошной цвет ![изображение кнопки представления совместимости (on)](http://res1.windows.microsoft.com/resbox/en/Windows 7/main/156805ff-3130-481b-a12d-4d3a96470f36_14.jpg "изображение кнопки представления совместимости (on)"). Вместо этого учебника можно просмотреть в FireFox или Chrome.
 
 
 Откройте *MvcMobile\Views\Shared\\_Layout.Mobile.cshtml* и добавьте следующий код непосредственно после `Html.Partial` вызова:
@@ -270,7 +270,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-cshtml[Main](aspnet-mvc-4-mobile-features/samples/sample17.cshtml)]
 
-При `RequireConsistentDisplayMode` равно `true`, мобильных макета (*\_Layout.Mobile.cshtml*) используется только для мобильных представлений. (Файл представления является формы  ***ViewName**. Mobile.cshtml*.) Может потребоваться задать `RequireConsistentDisplayMode` для `true` Если мобильных макет плохо работает с вашим представлениям не для мобильных устройств. На снимке экрана ниже показано как *динамики* при отображении страницы `RequireConsistentDisplayMode` равно `true`.
+При `RequireConsistentDisplayMode` равно `true`, мобильных макета (*\_Layout.Mobile.cshtml*) используется только для мобильных представлений. (Файл представления является формы ***ViewName**. Mobile.cshtml*). Может потребоваться задать `RequireConsistentDisplayMode` для `true` Если мобильных макет плохо работает с вашим представлениям не для мобильных устройств. На снимке экрана ниже показано как *динамики* при отображении страницы `RequireConsistentDisplayMode` равно `true`.
 
 [![p3_speakersConsistent](aspnet-mvc-4-mobile-features/_static/image33.png)](aspnet-mvc-4-mobile-features/_static/image32.png)
 

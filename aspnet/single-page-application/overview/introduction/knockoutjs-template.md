@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/introduction/knockoutjs-template
 msc.type: authoredcontent
-ms.openlocfilehash: 6e84dcc16345e33fcd3a3f83c4b35bc993c03ca6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e6c0c45bed098a8a1160ff11e4f77244bf55ffd3
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="single-page-application-knockoutjs-template"></a>Одностраничного приложения: Использованием KnockoutJS шаблон
 ====================
@@ -117,7 +117,7 @@ Entity Framework (EF) — это уровень O/надежный обмен С
 
 ## <a name="entity-framework"></a>Entity Framework
 
-Шаблон SPA использует EF Code First. В шаблон разработки Code First определяющие модели сначала в коде и затем EF использует модель для создания базы данных. Можно также использовать EF с существующей базы данных ([Database First](https://msdn.microsoft.com/en-us/data/jj206878.aspx)).
+Шаблон SPA использует EF Code First. В шаблон разработки Code First определяющие модели сначала в коде и затем EF использует модель для создания базы данных. Можно также использовать EF с существующей базы данных ([Database First](https://msdn.microsoft.com/data/jj206878.aspx)).
 
 `TodoItemContext` Класс в папке «Models» является производным от **DbContext**. Этот класс предоставляет между моделями и EF «связующего». `TodoItemContext` Содержит `ToDoItem` коллекции и `TodoList` коллекции. Запрос в базу данных, просто написать запрос LINQ на этих коллекций. Например Вот как можно выбрать все списки задач для пользователя «Alice».
 
@@ -142,7 +142,7 @@ Entity Framework (EF) — это уровень O/надежный обмен С
 
 `TodoItemContext` Используется для связи с EF, как описано выше. Методы контроллера реализации операций CRUD. Веб-API сопоставляет HTTP-запросы от клиента к методам контроллера, как показано ниже:
 
-| HTTP-запроса | Метод контроллера | Описание |
+| HTTP-запроса | Метод контроллера | Описание: |
 | --- | --- | --- |
 | GET/api/todo | `GetTodoLists` | Получает коллекцию списков действий. |
 | GET/api/todo/*идентификатор* | `GetTodoList` | Возвращает список дел по Идентификатору |
@@ -229,7 +229,7 @@ Entity Framework (EF) — это уровень O/надежный обмен С
 
 Маркеров защиты от подделки работать, поскольку вредоносный страницы не удается прочитать токенов пользователя, из-за политики для одного источника. (Политика одного источника не документы, размещенные на двух разных сайтах доступ друг к другу с).
 
-ASP.NET MVC предоставляет встроенную поддержку для маркеров защиты от подделки через [AntiForgery](https://msdn.microsoft.com/en-us/library/system.web.helpers.antiforgery.aspx) класса и [[ValidateAntiForgeryToken]](https://msdn.microsoft.com/en-us/library/system.web.mvc.validateantiforgerytokenattribute.aspx) атрибута. В настоящее время эта функция не встроена в веб-API. Однако шаблон SPA включает пользовательскую реализацию для веб-API. Этот код, определенный в `ValidateHttpAntiForgeryTokenAttribute` класс, который находится в папке фильтры решения. Дополнительные сведения о противодействия CSRF в веб-API см. в разделе [атак Предотвращение межсайтовой подделки запросов (CSRF)](../../../web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks.md).
+ASP.NET MVC предоставляет встроенную поддержку для маркеров защиты от подделки через [AntiForgery](https://msdn.microsoft.com/library/system.web.helpers.antiforgery.aspx) класса и [[ValidateAntiForgeryToken]](https://msdn.microsoft.com/library/system.web.mvc.validateantiforgerytokenattribute.aspx) атрибута. В настоящее время эта функция не встроена в веб-API. Однако шаблон SPA включает пользовательскую реализацию для веб-API. Этот код, определенный в `ValidateHttpAntiForgeryTokenAttribute` класс, который находится в папке фильтры решения. Дополнительные сведения о противодействия CSRF в веб-API см. в разделе [атак Предотвращение межсайтовой подделки запросов (CSRF)](../../../web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks.md).
 
 ## <a name="conclusion"></a>Заключение
 

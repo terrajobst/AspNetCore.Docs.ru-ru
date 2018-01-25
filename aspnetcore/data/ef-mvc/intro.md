@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: df13726689c430ab19786e104ea7404051107aa9
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: c30556368ba24fb38cf3347dd49f171b5246514c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>Приступая к работе с ASP.NET MVC ядра и Entity Framework Core, с помощью Visual Studio (1, 10)
 
@@ -27,7 +27,7 @@ Contoso университета примера веб-приложения по
 
 [Загрузить или просмотреть завершенное приложение.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-EF Core 2.0 — это последняя версия EF, но еще не все возможности EF 6.x. Сведения о том, как выбрать между EF 6.x и EF Core см [EF Core vs. EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/). При выборе EF 6.x. в разделе [предыдущей версии этого учебника ряда](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
+EF Core 2.0 — это последняя версия EF, но еще не определен все возможности EF 6.x. Сведения о том, как выбрать между EF 6.x и EF Core см [EF Core vs. EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/). При выборе EF 6.x. в разделе [предыдущей версии этого учебника ряда](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
 > [!NOTE]
 > * Версии ASP.NET Core 1.1 этого учебника, см. [VS 2017 г. с обновлением 2 версии этого учебника в формате PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf).
@@ -74,7 +74,7 @@ EF Core 2.0 — это последняя версия EF, но еще не вс
 
 * Выберите **ASP.NET Core 2.0** и **веб-приложения (Model-View-Controller)** шаблона.
 
-  **Примечание:** упражнений этого учебника требуется ASP.NET 2.0 основных компонентов и Core EF 2.0 или более поздней — убедитесь, что **ASP.NET Core 1.1** не выбран.
+  **Примечание:** упражнений этого учебника требуется ASP.NET 2.0 основных компонентов и Core EF 2.0 или более поздней — убедитесь, что **ASP.NET Core 1.1** не выбрана.
 
 * Убедитесь, что **проверки подлинности** равно **без проверки подлинности**.
 
@@ -178,7 +178,7 @@ Entity Framework интерпретирует свойство как свойс
 
 Этот код создает `DbSet` свойство для каждого набора сущностей. В терминологии Entity Framework набор сущностей обычно соответствует таблице базы данных, а сущность — строке в этой таблице.
 
-Может опущен `DbSet<Enrollment>` и `DbSet<Course>` инструкций и он будет работать так же. Платформа Entity Framework будет включать их неявно поскольку `Student` ссылки на сущности `Enrollment` сущности и `Enrollment` ссылки на сущности `Course` сущности.
+Удалось опустил `DbSet<Enrollment>` и `DbSet<Course>` инструкций и он будет работать так же. Платформа Entity Framework будет включать их неявно поскольку `Student` ссылки на сущности `Enrollment` сущности и `Enrollment` ссылки на сущности `Course` сущности.
 
 При создании базы данных, EF создает таблицы, которые имеют имена, то же, что `DbSet` имена свойств. Имена свойств для коллекций, обычно являются множественного числа (учащихся вместо студента), но разработчики не соглашаться ли имена таблиц должны быть имена во множественном числе или нет. Для этих учебников вы переопределить поведение по умолчанию, указав имена таблиц в единственном числе в класс DbContext. Чтобы сделать это, добавьте следующий выделенный код после последнего DbSet свойства.
 
@@ -204,7 +204,7 @@ Entity Framework интерпретирует свойство как свойс
 
 ### <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-Строка подключения указывает на базу данных SQL Server LocalDB. LocalDB — это облегченная версия SQL Server Express Database Engine и предназначен для разработки приложений, а не использования в рабочей среде. LocalDB запускается по требованию в пользовательском режиме, поэтому настройки не слишком сложны. По умолчанию создает LocalDB *.mdf* файлов баз данных в `C:/Users/<user>` каталога.
+Строка подключения указывает на базу данных SQL Server LocalDB. LocalDB — это облегченная версия SQL Server Express Database Engine и предназначен для разработки приложений, а не использования в рабочей среде. LocalDB запускает по запросу и в пользовательском режиме, поэтому нет сложные конфигурации. По умолчанию создает LocalDB *.mdf* файлов баз данных в `C:/Users/<user>` каталога.
 
 ## <a name="add-code-to-initialize-the-database-with-test-data"></a>Добавьте код для инициализации базы данных с тестовыми данными
 
@@ -351,9 +351,9 @@ Entity Framework интерпретирует свойство как свойс
 
 Некоторые аспекты, которые следует учитывать при написании асинхронного кода, использующего платформу Entity Framework.
 
-* Только инструкции, вызывающие запросов или команд, отправляемых в базе данных выполняются асинхронно. Содержащий, например, `ToListAsync`, `SingleOrDefaultAsync`, и `SaveChangesAsync`. Он содержит, например, инструкции, которые просто изменить `IQueryable`, такие как `var students = context.Students.Where(s => s.LastName == "Davolio")`.
+* Только инструкции, вызывающие запросов или команд, отправляемых в базе данных выполняются асинхронно. Содержащий, например, `ToListAsync`, `SingleOrDefaultAsync`, и `SaveChangesAsync`. Они не включают, например, инструкции, которые просто изменить `IQueryable`, такие как `var students = context.Students.Where(s => s.LastName == "Davolio")`.
 
-* Контекст EF не является потокобезопасным: не пытайтесь выполнить несколько операций параллельно. При вызове любого метода async EF, всегда используйте `await` ключевое слово.
+* Контекст EF не потокобезопасным: не пытайтесь выполнить несколько операций параллельно. При вызове любого метода async EF, всегда используйте `await` ключевое слово.
 
 * Если вы хотите использовать преимущества производительности асинхронного кода, убедитесь, что ни одну библиотеку пакеты, которые вы используете (например, для разбиения на страницы), также используют асинхронный, вызывающие методы Entity Framework, которые запросы, отправляемые в базу данных.
 

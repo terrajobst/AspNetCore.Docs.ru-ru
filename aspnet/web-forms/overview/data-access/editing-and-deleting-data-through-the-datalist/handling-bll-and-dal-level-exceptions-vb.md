@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/handling-bll-and-dal-level-exceptions-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 245e381eca2aca61be5f860d1ec9994b482a9863
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2bd2ccb13c44d104e8945840705a21738d8abd5c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="handling-bll--and-dal-level-exceptions-vb"></a>Обработка исключений уровня DAL и уровень бизнес-ЛОГИКИ (Visual Basic)
 ====================
@@ -101,7 +101,7 @@ DataList учебные видеоматериалы, однако нельзя 
 
 При возникновении исключения, мы будем назначить сведения исключения, чтобы `ExceptionDetails` метки элемента управления s `Text` свойство. Так как состояние просмотра отключено, при последующих обратных передачах `Text` свойство s программного изменения будут потеряны, вернитесь к текст по умолчанию (пустая строка), таким образом скрывая предупреждающее сообщение.
 
-Чтобы определить, когда возникает ошибка для отображения на странице отображается информационное сообщение, необходимо добавить `Try ... Catch` блока `UpdateCommand` обработчика событий. `Try` Часть содержит код, который может привести к возникновению исключения при `Catch` блок содержит код, выполняемый при возникновении исключения. Извлечение [основы обработки исключений](https://msdn.microsoft.com/en-us/library/2w8f0bss.aspx) раздела документации по .NET Framework для получения дополнительной информации о `Try ... Catch` блока.
+Чтобы определить, когда возникает ошибка для отображения на странице отображается информационное сообщение, необходимо добавить `Try ... Catch` блока `UpdateCommand` обработчика событий. `Try` Часть содержит код, который может привести к возникновению исключения при `Catch` блок содержит код, выполняемый при возникновении исключения. Извлечение [основы обработки исключений](https://msdn.microsoft.com/library/2w8f0bss.aspx) раздела документации по .NET Framework для получения дополнительной информации о `Try ... Catch` блока.
 
 
 [!code-vb[Main](handling-bll-and-dal-level-exceptions-vb/samples/sample5.vb)]
@@ -142,7 +142,7 @@ GridView и ObjectDataSource предоставить обработчики, с
 
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
-- [Правила разработки исключений](https://msdn.microsoft.com/en-us/library/ms298399.aspx)
+- [Правила разработки исключений](https://msdn.microsoft.com/library/ms298399.aspx)
 - [Модули ведения журнала ошибок и обработчики (ELMAH)](http://workspaces.gotdotnet.com/elmah) (библиотека открытым исходным кодом для ведения журнала ошибок)
 - [Enterprise Library для .NET Framework 2.0](https://www.microsoft.com/downloads/details.aspx?familyid=5A14E870-406B-4F2A-B723-97BA84AE80B5&amp;displaylang=en) (включает блок управления исключений)
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-3
 msc.type: authoredcontent
-ms.openlocfilehash: df75a69644033cc76fee86b5a9692ab65beb4d01
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1ca627397f0f100d13388f9afc27ff481886e098
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="use-code-first-migrations-to-seed-the-database"></a>Использовать Code First Migrations для инициализации базы данных
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/10/2017
 
 [Загрузка завершенного проекта](https://github.com/MikeWasson/BookService)
 
-В этом разделе используется [Code First Migrations](https://msdn.microsoft.com/en-us/data/jj591621) в EF в качестве начального базы данных с тестовыми данными.
+В этом разделе используется [Code First Migrations](https://msdn.microsoft.com/data/jj591621) в EF в качестве начального базы данных с тестовыми данными.
 
 Из **средства** последовательно выберите пункты **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-console[Main](part-3/samples/sample4.cmd)]
 
-Первая команда создает код, который создает базу данных, а вторая команда выполняет этот код. База данных создается локально, с помощью [LocalDB](https://msdn.microsoft.com/en-us/library/hh510202.aspx).
+Первая команда создает код, который создает базу данных, а вторая команда выполняет этот код. База данных создается локально, с помощью [LocalDB](https://msdn.microsoft.com/library/hh510202.aspx).
 
 ![](part-3/_static/image2.png)
 

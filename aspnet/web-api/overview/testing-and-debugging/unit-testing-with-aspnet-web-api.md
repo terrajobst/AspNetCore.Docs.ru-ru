@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 13211ee4543e17a4bfb2f83495f4041880f37df2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4d6102dd81589e41894d8ecd95bf9ddd761a65bd
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="unit-testing-aspnet-web-api-2"></a>Модульное тестирование ASP.NET Web API 2
 ====================
@@ -118,7 +118,7 @@ Visual Studio 2017 г Community, Professional или Enterprise edition
 
 [!code-csharp[Main](unit-testing-with-aspnet-web-api/samples/sample2.cs)]
 
-Метод GetProduct возвращает экземпляр **IHttpActionResult** интерфейса. IHttpActionResult является одним из новых функций в веб-API 2, и он упрощает разработки модульных тестов. Классы, реализующие интерфейс IHttpActionResult находятся в [System.Web.Http.Results](https://msdn.microsoft.com/en-us/library/system.web.http.results.aspx) пространства имен. Эти классы представляют возможные ответы из действия запроса, и они соответствуют коды состояния HTTP.
+Метод GetProduct возвращает экземпляр **IHttpActionResult** интерфейса. IHttpActionResult является одним из новых функций в веб-API 2, и он упрощает разработки модульных тестов. Классы, реализующие интерфейс IHttpActionResult находятся в [System.Web.Http.Results](https://msdn.microsoft.com/library/system.web.http.results.aspx) пространства имен. Эти классы представляют возможные ответы из действия запроса, и они соответствуют коды состояния HTTP.
 
 Постройте решение.
 

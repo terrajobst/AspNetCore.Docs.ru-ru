@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/creating-a-connection-string
 msc.type: authoredcontent
-ms.openlocfilehash: 41f1f30d86406580ab9fc7278a94d9c291913f9a
-ms.sourcegitcommit: d1d8071d4093bf2444b5ae19d6e45c3d187e338b
+ms.openlocfilehash: 25d1c1c9954baaca9ef91eff3dd3c853930a5893
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/19/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-connection-string-and-working-with-sql-server-localdb"></a>Создание строки подключения и работе с SQL Server LocalDB
 ====================
@@ -36,7 +36,7 @@ SQL Server Express не рекомендуется для использован
 
 В Visual Studio 2017 г. LocalDB устанавливается по умолчанию вместе с Visual Studio.
 
-По умолчанию, Entity Framework ищет строку подключения, называются так же, как класс контекста объекта (`MovieDBContext` для этого проекта). Дополнительные сведения см. [строки подключения SQL Server для веб-приложений ASP.NET](https://msdn.microsoft.com/en-us/library/jj653752.aspx).
+По умолчанию, Entity Framework ищет строку подключения, называются так же, как класс контекста объекта (`MovieDBContext` для этого проекта). Дополнительные сведения см. [строки подключения SQL Server для веб-приложений ASP.NET](https://msdn.microsoft.com/library/jj653752.aspx).
 
 Откройте корневой каталог приложения *Web.config* файл приведенный ниже. (Не *Web.config* файла в *представления* папки.)
 
@@ -56,11 +56,11 @@ SQL Server Express не рекомендуется для использован
 
 Строки соединения двух очень похожи. Первая строка подключения с именем `DefaultConnection` и используется для базы данных членства для управления доступом приложения. В строке подключения, вы добавили указан с именем базы данных LocalDB *Movie.mdf* в *приложения\_данные* папки. Мы не будет использовать базу данных членства в этом учебнике, Дополнительные сведения о членстве, проверку подлинности и безопасности см. в разделе Мои учебника [создать приложение ASP.NET MVC с помощью проверки подлинности и баз данных SQL Server и развернуть в службе приложений Azure](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data).
 
-Имя строки подключения должно соответствовать имя [DbContext](https://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext(v=vs.103).aspx) класса.
+Имя строки подключения должно соответствовать имя [DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.103).aspx) класса.
 
 [!code-csharp[Main](creating-a-connection-string/samples/sample3.cs?highlight=15)]
 
-Не требуется фактически добавить `MovieDBContext` строку подключения. Если не указать строку соединения, Entity Framework будет создать базу данных LocalDB в каталоге пользователи с полным именем [DbContext](https://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext(v=vs.103).aspx) класса (в данном случае `MvcMovie.Models.MovieDBContext`). Базы данных любое имя вам нравится, при условии, что он имеет *. MDF* суффикс. Например, мы имя базы данных *MyFilms.mdf*.
+Не требуется фактически добавить `MovieDBContext` строку подключения. Если не указать строку соединения, Entity Framework будет создать базу данных LocalDB в каталоге пользователи с полным именем [DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.103).aspx) класса (в данном случае `MvcMovie.Models.MovieDBContext`). Базы данных любое имя вам нравится, при условии, что он имеет *. MDF* суффикс. Например, мы имя базы данных *MyFilms.mdf*.
 
 Далее мы создадим новый `MoviesController` класс, который можно использовать для отображения данных фильма и позволяют пользователям создавать новые вхождения фильма.
 

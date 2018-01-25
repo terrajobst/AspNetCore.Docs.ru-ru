@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/mapping-users-to-connections
 msc.type: authoredcontent
-ms.openlocfilehash: 561c5739c4e8465efeb4b5d1eaf8a196dab8673f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 896bf4142ce090e39ed5697ff053cd56728318ed
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="mapping-signalr-users-to-connections-in-signalr-1x"></a>Сопоставление пользователей SignalR с подключениями в SignalR 1.x
 ====================
@@ -98,7 +98,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="azure-table-storage"></a>Хранилище таблиц Azure
 
-В следующем примере хранилища Azure таблицы как в примере базы данных. Он не включает все данные, что необходимо начать работу со службой хранилища Azure таблицы. Сведения см. в разделе [как использовать хранилище таблиц из .NET](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-tables/).
+В следующем примере хранилища Azure таблицы как в примере базы данных. Он не включает все данные, что необходимо начать работу со службой хранилища Azure таблицы. Сведения см. в разделе [как использовать хранилище таблиц из .NET](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-tables/).
 
 В следующем примере показано сущности таблицы для хранения сведений о соединении. Секционирование данных по имени пользователя и идентифицирует каждую сущность, идентификатор подключения, пользователь может иметь несколько подключений в любое время.
 

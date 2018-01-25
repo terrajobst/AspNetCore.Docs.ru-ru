@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/implementing-optimistic-concurrency-with-the-sqldatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 69ba9e47071956385e96a28372454a3ae93ccc89
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b089a0b25aa5a520f3e20af8ec5212072ad7c7bf
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="implementing-optimistic-concurrency-with-the-sqldatasource-c"></a>Реализация оптимистической блокировки в SqlDataSource (C#)
 ====================
@@ -116,8 +116,8 @@ ms.lasthandoff: 11/10/2017
 
 Помимо расширения `WHERE` предложения `UpdateCommand` и `DeleteCommand` свойства (и добавление дополнительных параметров в коллекции соответствующего параметра), выбрав использование оптимистичного параллелизма параметр регулирует двух других Свойства:
 
-- Изменения [ `ConflictDetection` свойство](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.sqldatasource.conflictdetection.aspx) из `OverwriteChanges` (по умолчанию) для`CompareAllValues`
-- Изменения [ `OldValuesParameterFormatString` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sqldatasource.oldvaluesparameterformatstring.aspx) из {0} (по умолчанию) исходный\_{0}.
+- Изменения [ `ConflictDetection` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.conflictdetection.aspx) из `OverwriteChanges` (по умолчанию) для`CompareAllValues`
+- Изменения [ `OldValuesParameterFormatString` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.oldvaluesparameterformatstring.aspx) из {0} (по умолчанию) исходный\_{0}.
 
 Когда данные веб-элемент управления вызывает SqlDataSource s `Update()` или `Delete()` метод, он передает исходные значения. Если SqlDataSource s `ConflictDetection` свойству `CompareAllValues`, эти исходные значения добавляются в команду. `OldValuesParameterFormatString` Свойство предоставляет шаблон именования, использовать эти исходные значения параметров. Мастер настройки источника данных использует исходное\_{0} и имена каждого исходного параметра `UpdateCommand` и `DeleteCommand` свойства и `UpdateParameters` и `DeleteParameters` коллекций соответствующим образом.
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
 msc.type: authoredcontent
-ms.openlocfilehash: cd24a85a05e427f83d28cae876431d04cc295f17
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0ab99dd443040b90ffefd2f5b9261a63b91e9463
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="routing-conventions-in-aspnet-web-api-2-odata"></a>Соглашение о маршрутизации в ASP.NET Web API 2 Odata
 ====================
@@ -88,7 +88,7 @@ ms.lasthandoff: 11/10/2017
 | Запрос | Пример URI | Имя действия | Пример действия |
 | --- | --- | --- | --- |
 | GET /entityset (ключ) и навигации | И продукты (1) или поставщика | GetNavigationFromEntityType или GetNavigation | GetSupplierFromProduct |
-| ПОЛУЧИТЬ /entityset (ключ) и приведения и навигация | / /Models.Book/Author продуктов (1) | GetNavigationFromEntityType или GetNavigation | GetAuthorFromBook |
+| ПОЛУЧИТЬ /entityset (ключ) и приведения и навигация | /Products(1)/Models.Book/Author | GetNavigationFromEntityType или GetNavigation | GetAuthorFromBook |
 
 Дополнительные сведения см. в разделе [работа с отношениями сущностей](odata-v3/working-with-entity-relations.md).
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 11/10/2017
 | Запрос | Пример URI | Имя действия | Пример действия |
 | --- | --- | --- | --- |
 | GET /entityset (ключ) и свойства | И продукты (1) или имя | GetPropertyFromEntityType или GetProperty | GetNameFromProduct |
-| ПОЛУЧИТЬ /entityset (ключ) и приведения или свойства | / /Models.Book/Author продуктов (1) | GetPropertyFromEntityType или GetProperty | GetTitleFromBook |
+| ПОЛУЧИТЬ /entityset (ключ) и приведения или свойства | /Products(1)/Models.Book/Author | GetPropertyFromEntityType или GetProperty | GetTitleFromBook |
 
 **Действия**
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 11/10/2017
 
 Для обоих методов Если соглашение не применяется на этот запрос, метод должен возвращать значение null.
 
-**ODataPath** представляет параметр синтаксического анализа пути ресурса OData. Он содержит список  **[ODataPathSegment](https://msdn.microsoft.com/en-us/library/system.web.http.odata.routing.odatapathsegment.aspx)**  экземпляров, по одному для каждого сегмента пути к ресурсу. **ODataPathSegment** класс является абстрактным; каждого типа сегмента представляется с помощью класса, производного от **ODataPathSegment**.
+**ODataPath** представляет параметр синтаксического анализа пути ресурса OData. Он содержит список  **[ODataPathSegment](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatapathsegment.aspx)**  экземпляров, по одному для каждого сегмента пути к ресурсу. **ODataPathSegment** класс является абстрактным; каждого типа сегмента представляется с помощью класса, производного от **ODataPathSegment**.
 
 **ODataPath.TemplatePath** свойство является строка, представляющая результат объединения всех сегментов пути. Например, если URL-адрес является `/Products(1)/Supplier`, является шаблон пути &quot;~/entityset/key/navigation&quot;. Обратите внимание, что сегменты не соответствуют напрямую сегментов URI-адреса. Например, ключ сущности (1) представляется как собственные **ODataPathSegment**.
 
@@ -170,7 +170,7 @@ ms.lasthandoff: 11/10/2017
 1. Я являются производными от **EntitySetRoutingConvention**, так как **SelectController** метода этого класса подходит для этой новой соглашение о маршрутизации. Это означает, что нет необходимости в повторной реализации **SelectController**.
 2. Соглашение о применяется только для запросов GET, а только в том случае, когда шаблон пути будет &quot;~/entityset/key/navigation/key&quot;.
 3. Имя действия &quot;получить {EntityType}&quot;, где *{EntityType}* тип навигации коллекции. Например &quot;GetSupplier&quot;. Можно использовать любое соглашение об именовании, что вам нравится &#8212; просто убедитесь, что соответствует действий контроллера.
-4. Действие принимает два параметра с именем *ключ* и *relatedKey*. (Список некоторые имена стандартных параметров см. в разделе [ODataRouteConstants](https://msdn.microsoft.com/en-us/library/system.web.http.odata.routing.odatarouteconstants.aspx).)
+4. Действие принимает два параметра с именем *ключ* и *relatedKey*. (Список некоторые имена стандартных параметров см. в разделе [ODataRouteConstants](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatarouteconstants.aspx).)
 
 Следующим шагом является добавление новое соглашение список соглашений о маршрутизации. Это происходит во время настройки, как показано в следующем коде:
 

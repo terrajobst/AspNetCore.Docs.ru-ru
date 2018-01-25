@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0db9bf25ce61c31dd8258aaebadf42e7738473ab
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: eae9c07eff7780aab18346815ca410d687789d17
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="masterdetail-using-a-selectable-master-gridview-with-a-details-detailview-vb"></a>Главного и подчиненного представлений с помощью выбираемого основного элемента GridView с DetailView (Visual Basic)
 ====================
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-1-creating-a-selectable-gridview"></a>Шаг 1: Создание выбираемым GridView
 
-Напомним, что две страницы главного и подчиненного представлений отчета, каждый главный запись включена гиперссылка, при нажатии отправлено пользователя на страницу сведений, передав имя выбранной строки `SupplierID` значение в строке запроса. Такие гиперссылки был добавлен к каждой строке GridView, с помощью HyperLinkField. Для одной страницы основной/подробности отчета, мы должны кнопка для каждого GridView строк, при нажатии показывает подробные сведения. Чтобы включить кнопку выбора для каждой строки, которая вызывает обратную передачу и помечает эту строку как GridView можно настроить элемента управления GridView [SelectedRow](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selectedrow.aspx).
+Напомним, что две страницы главного и подчиненного представлений отчета, каждый главный запись включена гиперссылка, при нажатии отправлено пользователя на страницу сведений, передав имя выбранной строки `SupplierID` значение в строке запроса. Такие гиперссылки был добавлен к каждой строке GridView, с помощью HyperLinkField. Для одной страницы основной/подробности отчета, мы должны кнопка для каждого GridView строк, при нажатии показывает подробные сведения. Чтобы включить кнопку выбора для каждой строки, которая вызывает обратную передачу и помечает эту строку как GridView можно настроить элемента управления GridView [SelectedRow](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedrow.aspx).
 
 Начните с добавления элемента управления GridView для `DetailsBySelecting.aspx` страницы в `Filtering` папки, установка его `ID` свойства `ProductsGrid`. Добавьте новый элемент управления ObjectDataSource с именем `AllProductsDataSource` , вызывающий `ProductsBLL` класса `GetProducts()` метод.
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-aspx[Main](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/samples/sample2.aspx)]
 
-При нажатии кнопки выберите строке GridView выполняется обратная и GridView `SelectedRow` свойство обновляется. В дополнение к `SelectedRow` предоставляет свойство, GridView [SelectedIndex](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selectedindex%28VS.80%29.aspx), [SelectedValue](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selectedvalue%28VS.80%29.aspx), и [SelectedDataKey](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selecteddatakey%28VS.80%29.aspx) свойства. `SelectedIndex` Свойство возвращает индекс выбранной строки, тогда как `SelectedValue` и `SelectedDataKey` свойства возвращают значений на основе GridView [свойство DataKeyNames](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.datakeynames%28VS.80%29.aspx).
+При нажатии кнопки выберите строке GridView выполняется обратная и GridView `SelectedRow` свойство обновляется. В дополнение к `SelectedRow` предоставляет свойство, GridView [SelectedIndex](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedindex%28VS.80%29.aspx), [SelectedValue](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedvalue%28VS.80%29.aspx), и [SelectedDataKey](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selecteddatakey%28VS.80%29.aspx) свойства. `SelectedIndex` Свойство возвращает индекс выбранной строки, тогда как `SelectedValue` и `SelectedDataKey` свойства возвращают значений на основе GridView [свойство DataKeyNames](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.datakeynames%28VS.80%29.aspx).
 
 `DataKeyNames` Свойство используется для связывания одного или несколько полей данных значения с каждой строкой и обычно используется для атрибута, однозначно идентифицирующие сведения из базовых данных с каждой строки в GridView. `SelectedValue` Свойство возвращает значение первого `DataKeyNames` поля данных для выбранной строки при этом `SelectedDataKey` свойство возвращает выбранную строку `DataKey` объект, который содержит все значения для ключевых полей, указанные данные для этой строки.
 

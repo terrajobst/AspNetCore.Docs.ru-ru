@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/performance/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: 965c32a4e2f2c9c4bd457d0c13ae99c1378c22c9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2ef161f35e69ef4a754d2740199166ee48c3fbab
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="signalr-scaleout-with-redis"></a>SignalR горизонтального масштабирования с Redis
 ====================
@@ -150,7 +150,7 @@ Redis представляет хранилищу ключей и значени
 
 Проверьте, что запущена служба управления. В противном случае запустите службу. (Если вы не видите управления веб-службы в списке служб Windows, убедитесь, что установлена служба управления, при добавлении роли IIS.)
 
-Управление веб-службы по умолчанию прослушивает TCP-порт 8172. В брандмауэре Windows создайте новое правило входящего трафика, разрешающее трафик TCP через порт 8172. Дополнительные сведения см. в разделе [Настройка правил брандмауэра](https://technet.microsoft.com/en-us/library/dd448559(WS.10).aspx). (При размещении виртуальных машин в Azure, это можно сделать непосредственно на портале Azure. В разделе [Настройка конечных точек для виртуальной машины](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-set-up-endpoints/).)
+Управление веб-службы по умолчанию прослушивает TCP-порт 8172. В брандмауэре Windows создайте новое правило входящего трафика, разрешающее трафик TCP через порт 8172. Дополнительные сведения см. в разделе [Настройка правил брандмауэра](https://technet.microsoft.com/library/dd448559(WS.10).aspx). (При размещении виртуальных машин в Azure, это можно сделать непосредственно на портале Azure. В разделе [Настройка конечных точек для виртуальной машины](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/).)
 
 Теперь вы готовы к развертыванию проекта Visual Studio с компьютера разработки на сервер. В обозревателе решений щелкните правой кнопкой мыши решение и выберите **публикации**.
 

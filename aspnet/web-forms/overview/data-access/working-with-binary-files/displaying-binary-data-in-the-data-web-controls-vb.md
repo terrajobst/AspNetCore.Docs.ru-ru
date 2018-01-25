@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1b9dadbfb82790a08a25a5c0f759b733cb59eb60
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: df79748bf5734ffcb9eb81ca089aeded0e63bdc5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="displaying-binary-data-in-the-data-web-controls-vb"></a>Отображение двоичных данных в данных веб-элементов управления (Visual Basic)
 ====================
@@ -129,7 +129,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-vb[Main](displaying-binary-data-in-the-data-web-controls-vb/samples/sample3.vb)]
 
-Этот метод определяет, если переданный `Object` значение — это база данных `NULL` и, если это так, возвращает сообщение, указывающее, что категория отсутствуют брошюр. В противном случае, если имеется `BrochurePath` значение, он s, отображаемых в гиперссылку. Обратите внимание, что если `BrochurePath` значение представить его s, переданные в [ `ResolveUrl(url)` метод](https://msdn.microsoft.com/en-us/library/system.web.ui.control.resolveurl.aspx). Этот метод разрешает переданный *URL-адрес*, заменив `~` символ с соответствующий виртуальный путь. Например, если приложение находится в папке `/Tutorial55`, `ResolveUrl("~/Brochures/Meats.pdf")` вернет `/Tutorial55/Brochures/Meat.pdf`.
+Этот метод определяет, если переданный `Object` значение — это база данных `NULL` и, если это так, возвращает сообщение, указывающее, что категория отсутствуют брошюр. В противном случае, если имеется `BrochurePath` значение, он s, отображаемых в гиперссылку. Обратите внимание, что если `BrochurePath` значение представить его s, переданные в [ `ResolveUrl(url)` метод](https://msdn.microsoft.com/library/system.web.ui.control.resolveurl.aspx). Этот метод разрешает переданный *URL-адрес*, заменив `~` символ с соответствующий виртуальный путь. Например, если приложение находится в папке `/Tutorial55`, `ResolveUrl("~/Brochures/Meats.pdf")` вернет `/Tutorial55/Brochures/Meat.pdf`.
 
 Рис. 10 показана страница после внесения этих изменений. Обратите внимание, что категория Морепродукты s `BrochurePath` поле теперь отображает текст брошюр недоступно.
 
@@ -164,7 +164,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-vb[Main](displaying-binary-data-in-the-data-web-controls-vb/samples/sample6.vb)]
 
-Этот код запускает посредством считывания `CategoryID` значение строки запроса в переменную с именем `categoryID`. Далее рисунок данные извлекаются через вызов `CategoriesBLL` класса s `GetCategoryWithBinaryDataByCategoryID(categoryID)` метод. Эти данные возвращаются клиенту с помощью `Response.BinaryWrite(data)` метода, но до вызова этого `Picture` заголовка OLE значение s столбца должны быть удалены. Это достигается путем создания `Byte` массив с именем `strippedImageData` , будет содержать точно 78 символов меньше, чем возможности `Picture` столбца. [ `Array.Copy` Метод](https://msdn.microsoft.com/en-us/library/z50k9bft.aspx) используется для копирования данных из `category.Picture` начиная с позиции 78 через для `strippedImageData`.
+Этот код запускает посредством считывания `CategoryID` значение строки запроса в переменную с именем `categoryID`. Далее рисунок данные извлекаются через вызов `CategoriesBLL` класса s `GetCategoryWithBinaryDataByCategoryID(categoryID)` метод. Эти данные возвращаются клиенту с помощью `Response.BinaryWrite(data)` метода, но до вызова этого `Picture` заголовка OLE значение s столбца должны быть удалены. Это достигается путем создания `Byte` массив с именем `strippedImageData` , будет содержать точно 78 символов меньше, чем возможности `Picture` столбца. [ `Array.Copy` Метод](https://msdn.microsoft.com/library/z50k9bft.aspx) используется для копирования данных из `category.Picture` начиная с позиции 78 через для `strippedImageData`.
 
 `Response.ContentType` Указывает свойство [тип MIME](http://en.wikipedia.org/wiki/MIME) возврата, чтобы браузер умеет отображать его содержимого. Поскольку `Categories` таблицу s `Picture` столбца растрового изображения, растровое изображение, тип MIME здесь (изображения и bmp). Если не указан тип MIME, большинство браузеров по-прежнему выводится изображение правильно, так как они могут определять тип на основе содержимого двоичных данных s файла изображения. Тем не менее он s, разумным шагом будет включать MIME типа по возможности. В разделе [веб-сайта Internet Assigned Numbers Authority s](http://www.iana.org/) полный список [типы мультимедиа MIME](http://www.iana.org/assignments/media-types/).
 

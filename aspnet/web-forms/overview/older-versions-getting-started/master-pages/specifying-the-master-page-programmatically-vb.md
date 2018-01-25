@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 090d0777b9d541003c3115d0da7cd974820c2939
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 191de7546e2ba913fda0c8c8a8bfd3531b53336e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="specifying-the-master-page-programmatically-vb"></a>Указание на главной странице программным путем (Visual Basic)
 ====================
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-aspx[Main](specifying-the-master-page-programmatically-vb/samples/sample1.aspx)]
 
-[ `Page` Класса](https://msdn.microsoft.com/en-us/library/system.web.ui.page.aspx) в `System.Web.UI` пространство имен включает [ `MasterPageFile` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.page.masterpagefile.aspx) возвращает путь к странице содержимого главной страницы; это — это свойство, которое задается параметром `@Page` директивы. Это свойство также может использоваться для программно задать страницы содержимого главной страницы. Этот подход полезен, если требуется динамическое назначение главной страницы, в зависимости от внешних факторов, таких как пользователя, посетив страницу.
+[ `Page` Класса](https://msdn.microsoft.com/library/system.web.ui.page.aspx) в `System.Web.UI` пространство имен включает [ `MasterPageFile` свойство](https://msdn.microsoft.com/library/system.web.ui.page.masterpagefile.aspx) возвращает путь к странице содержимого главной страницы; это — это свойство, которое задается параметром `@Page` директивы. Это свойство также может использоваться для программно задать страницы содержимого главной страницы. Этот подход полезен, если требуется динамическое назначение главной страницы, в зависимости от внешних факторов, таких как пользователя, посетив страницу.
 
 В этом учебнике мы добавить второй главную страницу на наш веб-сайт и динамически решать, какие главной страницы, используемой во время выполнения.
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 
 Partakes главную страницу в этом fusion зависит от значения `Page` объекта `MasterPageFile` свойство. Установка `MasterPageFile` атрибута в `@Page` директива имеет результатом применения назначение `Page` `MasterPageFile` свойства на этапе инициализации, который является самый первый этап жизненного цикла страницы. Мы также это свойство можно задать программным образом. Тем не менее важно задать это свойство перед fusion на рис. 1.
 
-В начале этапа PreInit `Page` объекта вызывает его [ `PreInit` событий](https://msdn.microsoft.com/en-us/library/system.web.ui.page.preinit.aspx) и вызывает его [ `OnPreInit` метод](https://msdn.microsoft.com/en-us/library/system.web.ui.page.onpreinit.aspx). Установка на главную страницу программным способом, затем можно либо создать обработчик событий для `PreInit` событий или переопределение `OnPreInit` метод. Давайте взглянем на оба подхода.
+В начале этапа PreInit `Page` объекта вызывает его [ `PreInit` событий](https://msdn.microsoft.com/library/system.web.ui.page.preinit.aspx) и вызывает его [ `OnPreInit` метод](https://msdn.microsoft.com/library/system.web.ui.page.onpreinit.aspx). Установка на главную страницу программным способом, затем можно либо создать обработчик событий для `PreInit` событий или переопределение `OnPreInit` метод. Давайте взглянем на оба подхода.
 
 Сначала откройте `Default.aspx.vb`, файл кода класса для домашней страницы в нашем сайте. Добавить обработчик событий для этой страницы `PreInit` событий, введя в следующем коде:
 
@@ -275,8 +275,8 @@ Partakes главную страницу в этом fusion зависит от 
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
 - [Схема жизненного цикла страницы ASP.NET](http://emanish.googlepages.com/Asp.Net2.0Lifecycle.PNG)
-- [Общие сведения о жизненного цикла страницы ASP.NET](https://msdn.microsoft.com/en-us/library/ms178472.aspx)
-- [Обзор обложки и темы ASP.NET](https://msdn.microsoft.com/en-us/library/ykzx33wh.aspx)
+- [Общие сведения о жизненного цикла страницы ASP.NET](https://msdn.microsoft.com/library/ms178472.aspx)
+- [Обзор обложки и темы ASP.NET](https://msdn.microsoft.com/library/ykzx33wh.aspx)
 - [Главных страниц: Советы, рекомендации и ловушек](http://www.odetocode.com/articles/450.aspx)
 - [Темы в ASP.NET](http://www.odetocode.com/articles/423.aspx)
 

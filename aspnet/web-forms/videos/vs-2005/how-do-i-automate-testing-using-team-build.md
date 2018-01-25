@@ -12,17 +12,17 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-automate-testing-using-team-build
 msc.type: video
-ms.openlocfilehash: af74961ea9fcb463ea4902b59847bf67776a4d69
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5f64d4226089a9fa26886d75f5584afb4d87617f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="how-do-i-automate-testing-using-team-build"></a>[Инструкции:] Автоматизация тестирования с помощью Team Build?
 ====================
 по [Криса Менегэй](https://twitter.com/CMenegay)
 
-В этом видеоролике рассказано, как использовать Visual Studio Team System для определения автоматических тестов, которые будут выполняться во время построения team и как мы может перейти результаты этих тестов. Мы узнаем, [задачи построения для тестирования средств](https://msdn.microsoft.com/en-us/vstudio/aa718351.aspx#bttt) предоставляет альтернативный способ указания тесты для выполнения во время построения команды.
+В этом видеоролике рассказано, как использовать Visual Studio Team System для определения автоматических тестов, которые будут выполняться во время построения team и как мы может перейти результаты этих тестов. Мы узнаем, [задачи построения для тестирования средств](https://msdn.microsoft.com/vstudio/aa718351.aspx#bttt) предоставляет альтернативный способ указания тесты для выполнения во время построения команды.
 
 [&#9654; Посмотрите видео (6 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-automate-testing-using-team-build)
 

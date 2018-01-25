@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: 438c5afb96dce6d8978d26159a3b460614111988
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: d0857e1926c341b2357bc824fa379c4fc30affbc
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="imagetaghelper"></a>ImageTagHelper
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 01/19/2018
 Чтобы активировать вспомогательный тег изображения, атрибут src необходим для `<img>` элемента. 
 
 > [!NOTE]
-> Использует вспомогательный тег изображения `Cache` поставщика на локальном веб-сервере для хранения вычисляемого `Sha512` для заданного файла. Если снова запрошенный файл `Sha512` не требуется повторное вычисление. Кэш становится недействительным, файл наблюдатель, который присоединяется к файлу при его `Sha512` вычисляется.
+> Использует вспомогательный тег изображения `Cache` поставщика на локальном веб-сервере для хранения вычисляемого `Sha512` для заданного файла. Если снова запрошенный файл `Sha512` может не быть пересчитаны. Кэш становится недействительным, файл наблюдатель, который присоединяется к файлу при его `Sha512` вычисляется.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

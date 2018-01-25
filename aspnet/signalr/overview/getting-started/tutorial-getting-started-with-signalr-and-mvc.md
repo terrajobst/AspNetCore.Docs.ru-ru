@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 96a6f6446b26d96b2bcffe4354375ab9c444bbbb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ca0471114da7363c5df9d459308708e7ab4f8b84
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="tutorial-getting-started-with-signalr-2-and-mvc-5"></a>Учебник: Приступая к работе с SignalR 2 и MVC 5
 ====================
@@ -75,7 +75,7 @@ ms.lasthandoff: 11/10/2017
 - [Настройка проекта](#setup)
 - [Выполнение образца](#run)
 - [Анализ кода](#code)
-- [Дальнейшие действия](#next)
+- [Следующие шаги](#next)
 
 <a id="setup"></a>
 
@@ -196,11 +196,11 @@ ms.lasthandoff: 11/10/2017
 
 <a id="next"></a>
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 Вы узнали, что SignalR — это платформа для построения в режиме реального времени веб-приложений. Вы также узнали несколько задач разработки SignalR: Добавление приложения ASP.NET SignalR, как создать класс концентратора и как отправлять и получать сообщения от концентратора.
 
-Пошаговое руководство по развертыванию SignalR примера приложения в Azure см. в разделе [SignalR с помощью с веб-приложений в службе приложений Azure](../deployment/using-signalr-with-azure-web-sites.md). Подробные сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [создать веб-приложение ASP.NET в службе приложений Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-get-started/).
+Пошаговое руководство по развертыванию SignalR примера приложения в Azure см. в разделе [SignalR с помощью с веб-приложений в службе приложений Azure](../deployment/using-signalr-with-azure-web-sites.md). Подробные сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [создать веб-приложение ASP.NET в службе приложений Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/).
 
 Для получения более сложных понятиях новинках SignalR, посетите следующие сайты для SignalR исходный код и ресурсы:
 

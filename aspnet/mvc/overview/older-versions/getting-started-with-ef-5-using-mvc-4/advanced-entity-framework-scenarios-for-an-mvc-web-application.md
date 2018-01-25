@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: d58a745896b29317c1d1049e3bf1a5ec2e628820
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 148a1aa33f6f713ae471ab14c7180f6c08a8679a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="advanced-entity-framework-scenarios-for-an-mvc-web-application-10-of-10"></a>Сценарии Framework дополнительные сущности для веб-приложения MVC (10, 10)
 ====================
@@ -55,7 +55,7 @@ API первый Entity Framework кода включает методы, кот
 
 - Используйте `DbSet.SqlQuery` метод для запросов, возвращающих типы сущностей. Возвращаемые объекты должно относится к типу, ожидаемому `DbSet` объекта и они, автоматически отслеживаются контекстом контекст базы данных, если не отключить отслеживание. (См. в разделе `AsNoTracking` метод.)
 - Используйте `Database.SqlQuery` метод для запросов, возвращающих типы, которые не являются сущностями. Возвращаемые данные не отслеживается контекст базы данных, даже при использовании этого метода на получение типов сущностей.
-- Используйте [Database.ExecuteSqlCommand](https://msdn.microsoft.com/en-us/library/gg679456(v=vs.103).aspx) для команды без запроса.
+- Используйте [Database.ExecuteSqlCommand](https://msdn.microsoft.com/library/gg679456(v=vs.103).aspx) для команды без запроса.
 
 Одним из преимуществ использования платформы Entity Framework является позволяет избежать прерывания кода слишком близко к конкретного метода хранения данных. Это делается путем создания SQL-запросов и команд, который избавляет от необходимости записывать их. Но существует исключительных сценариев, при необходимости выполнения конкретных запросов SQL, созданных вручную, и эти методы позволяют обрабатывать такие исключения.
 
@@ -255,17 +255,17 @@ API первый Entity Framework кода включает методы, кот
 - `DbContext.Entry`
 - `DbChangeTracker.Entries`
 
-Если вы отслеживаете большого числа сущностей и вызовите один из этих методов много раз в цикле, может появиться значительное повышение производительности, временно отключив автоматическое изменение отслеживания с помощью [AutoDetectChangesEnabled](https://msdn.microsoft.com/en-us/library/system.data.entity.infrastructure.dbcontextconfiguration.autodetectchangesenabled(VS.103).aspx) свойство. Дополнительные сведения см. в разделе [автоматическое обнаружение изменений](https://blogs.msdn.com/b/adonet/archive/2011/02/06/using-dbcontext-in-ef-feature-ctp5-part-12-automatically-detecting-changes.aspx).
+Если вы отслеживаете большого числа сущностей и вызовите один из этих методов много раз в цикле, может появиться значительное повышение производительности, временно отключив автоматическое изменение отслеживания с помощью [AutoDetectChangesEnabled](https://msdn.microsoft.com/library/system.data.entity.infrastructure.dbcontextconfiguration.autodetectchangesenabled(VS.103).aspx) свойство. Дополнительные сведения см. в разделе [автоматическое обнаружение изменений](https://blogs.msdn.com/b/adonet/archive/2011/02/06/using-dbcontext-in-ef-feature-ctp5-part-12-automatically-detecting-changes.aspx).
 
 ## <a name="disabling-validation-when-saving-changes"></a>Отключение проверки при сохранении изменения
 
-При вызове `SaveChanges` метода по умолчанию платформа Entity Framework проверяет данные в все свойства сущности все измененные перед обновлением базы данных. Если вы обновили большого числа сущностей и вы уже проверены данные, эта работа не требуется и может сделать процесс сохранения изменений требуется меньше времени, временно отключив проверки. Можно сделать при помощи этого [ValidateOnSaveEnabled](https://msdn.microsoft.com/en-us/library/system.data.entity.infrastructure.dbcontextconfiguration.validateonsaveenabled(VS.103).aspx) свойство. Дополнительные сведения см. в разделе [проверки](https://blogs.msdn.com/b/adonet/archive/2010/12/15/ef-feature-ctp5-validation.aspx).
+При вызове `SaveChanges` метода по умолчанию платформа Entity Framework проверяет данные в все свойства сущности все измененные перед обновлением базы данных. Если вы обновили большого числа сущностей и вы уже проверены данные, эта работа не требуется и может сделать процесс сохранения изменений требуется меньше времени, временно отключив проверки. Можно сделать при помощи этого [ValidateOnSaveEnabled](https://msdn.microsoft.com/library/system.data.entity.infrastructure.dbcontextconfiguration.validateonsaveenabled(VS.103).aspx) свойство. Дополнительные сведения см. в разделе [проверки](https://blogs.msdn.com/b/adonet/archive/2010/12/15/ef-feature-ctp5-validation.aspx).
 
 ## <a name="summary"></a>Сводка
 
 На этом завершается, серию учебники по использованию платформы Entity Framework в приложении ASP.NET MVC. Ссылки на другие ресурсы Entity Framework можно найти в [Карта содержимого для доступа к данным ASP.NET](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-Дополнительные сведения о развертывании веб-приложения после его построения см. в разделе [Карта содержимого развертывания ASP.NET](https://msdn.microsoft.com/en-us/library/bb386521.aspx) в библиотеке MSDN.
+Дополнительные сведения о развертывании веб-приложения после его построения см. в разделе [Карта содержимого развертывания ASP.NET](https://msdn.microsoft.com/library/bb386521.aspx) в библиотеке MSDN.
 
 Сведения о других разделов, связанных с MVC, таких как проверка подлинности и авторизации, в разделе [MVC рекомендуется использовать ресурсы](../../getting-started/recommended-resources-for-mvc.md).
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/testing-and-debugging/aspnet-web-pages-razor-troubleshooting-guide
 msc.type: authoredcontent
-ms.openlocfilehash: e507d97903583c7233456e9139e1a869f8bf75bd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 72c49ed8b76b5fb5eb15bf01f57980b382607496
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-pages-razor-troubleshooting-guide"></a>Веб-страницы ASP.NET руководство по устранению неполадок (Razor)
 ====================
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/10/2017
 
 Если вы видите эту ошибку при веб-сервера на удаленном сервере, обратитесь к администратору сервера. Убедитесь, что сервер имеет .NET Framework 4 или более поздней версии. Убедитесь, что приложение запущено в пуле приложений, настроенный для использования этой версии платформы.NET Framework.
 
-Если у вас есть контроль над сервером, убедитесь, что она запущена правильная версия платформы .NET Framework. Можно также попытаться восстановить установку, запустив `aspnet_regiis -iru` команды. (Например, если IIS устанавливается после установки .NET Framework, службы IIS не настраивается правильно для запуска страницы ASP.NET.) Дополнительные сведения см. в разделе [средство регистрации IIS ASP.NET (Aspnet\_regiis.exe)](https://msdn.microsoft.com/en-US/library/k6h9cz8h(v=vs.100).aspx).
+Если у вас есть контроль над сервером, убедитесь, что она запущена правильная версия платформы .NET Framework. Можно также попытаться восстановить установку, запустив `aspnet_regiis -iru` команды. (Например, если IIS устанавливается после установки .NET Framework, службы IIS не настраивается правильно для запуска страницы ASP.NET.) Дополнительные сведения см. в разделе [средство регистрации IIS ASP.NET (Aspnet\_regiis.exe)](https://msdn.microsoft.com/library/k6h9cz8h(v=vs.100).aspx).
 
 ### <a name="http-error-40314---forbidden"></a>Ошибка HTTP 403.14 - запрещено
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 11/10/2017
 
 - *Сбой при отправке электронной почты.*
 
-    -или-
+    - или -
 
     *Попытка подключения не удалась, поскольку подключившейся стороне не ответил должным образом после определенного времени или сбой, так как подключенного узла подключения, не удалось получить отклик*
 
@@ -158,6 +158,6 @@ ms.lasthandoff: 11/10/2017
 <a id="AdditionalResources"></a>
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-[Веб-страницы ASP.NET (Razor) часто задаваемые вопросы](https://go.microsoft.com/fwlink/?LinkId=253000)
+[Вопросы и ответы по веб-страницам ASP.NET (Razor)](https://go.microsoft.com/fwlink/?LinkId=253000)
 
 [WebMatrix и ASP.NET Web Pages](https://forums.asp.net/1224.aspx/1?WebMatrix) форума на веб-сайта ASP.NET

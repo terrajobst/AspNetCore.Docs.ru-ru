@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 91b8139f082704c5b5964087cc1887454c081f09
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cb943941ea4dbfbdc9230df4598ad406d4dee0b6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="masterdetail-using-a-bulleted-list-of-master-records-with-a-details-datalist-c"></a>Главного и подчиненного представлений с помощью маркированного списка основных записей с помощью DataList сведения (C#)
 ====================
@@ -210,7 +210,7 @@ DAL и уровень бизнес-ЛОГИКИ завершения, мы re г
 
 На этом этапе у нас есть `Categories` повторителя со списком категорий, а также количество продуктов в каждой категории. Повторителя использует LinkButton для каждой категории, что при нажатии вызывает обратную передачу, с которой указывают мы должны отображать эти продукты для выбранной категории в `CategoryProducts` DataList.
 
-Одна из проблем с выходом нам описана настройка DataList отобразить только те продукты, для выбранной категории. В [главный/Detail, с помощью выбираемого основного элемента GridView с DetailsView сведения](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md) учебника мы узнали, как построить GridView, строки которого может быть выбрана, с выбранной строки s сведений, отображаемых в элементе управления DetailsView на одной странице. GridView s ObjectDataSource возвращаются сведения обо всех приложениях с помощью `ProductsBLL` s `GetProducts()` метод при DetailsView s ObjectDataSource получить сведения об использовании выбранного продукта `GetProductsByProductID(productID)` метод.  *`productID`*  Декларативно указано значение параметра, связав ее со значением GridView s `SelectedValue` свойство. К сожалению, нет повторителя `SelectedValue` свойство и не может выступать в качестве источника параметра.
+Одна из проблем с выходом нам описана настройка DataList отобразить только те продукты, для выбранной категории. В [главный/Detail, с помощью выбираемого основного элемента GridView с DetailsView сведения](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md) учебника мы узнали, как построить GridView, строки которого может быть выбрана, с выбранной строки s сведений, отображаемых в элементе управления DetailsView на одной странице. GridView s ObjectDataSource возвращаются сведения обо всех приложениях с помощью `ProductsBLL` s `GetProducts()` метод при DetailsView s ObjectDataSource получить сведения об использовании выбранного продукта `GetProductsByProductID(productID)` метод. *`productID`*  Декларативно указано значение параметра, связав ее со значением GridView s `SelectedValue` свойство. К сожалению, нет повторителя `SelectedValue` свойство и не может выступать в качестве источника параметра.
 
 > [!NOTE]
 > Это одна из этих проблем, появляющихся при использовании LinkButton в повторитель. Мы использовали гиперссылки для передачи в `CategoryID` через строку запроса вместо этого можно использовать это поле QueryString как источник для значения параметра s.
@@ -243,9 +243,9 @@ DAL и уровень бизнес-ЛОГИКИ завершения, мы re г
 
 В настоящее время `CategoryProductsDataSource` ObjectDataSource s  *`categoryID`*  никогда не установлено, поэтому продукты не отображаются при просмотре страницы. Нам нужно выполнить будет иметь значение параметра, установленное на основе `CategoryID` выбранной категории в Повторителе. Это возникают две проблемы: во-первых, как мы определяем при LinkButton в повторителя s `ItemTemplate` пользователь щелкнул; и второй, как мы определить `CategoryID` выполнен щелчок LinkButton которого соответствующей категории?
 
-LinkButton как элементы управления кнопок имеет `Click` событий и [ `Command` событие](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.linkbutton.command.aspx). `Click` Позволяет просто Обратите внимание, что был выполнен щелчок LinkButton событий. Время от времени Однако помимо отметить, что был выполнен щелчок LinkButton мы также необходимо передать некоторыми дополнительными сведениями в обработчик событий. Если это так, LinkButton s [ `CommandName` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.linkbutton.commandname.aspx) и [ `CommandArgument` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.linkbutton.commandargument.aspx) свойств можно назначить эти дополнительные данные. Затем, при нажатии элемента управления LinkButton его `Command` события (вместо его `Click` событий) и обработчик событий передается значения `CommandName` и `CommandArgument` свойства.
+LinkButton как элементы управления кнопок имеет `Click` событий и [ `Command` событие](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.command.aspx). `Click` Позволяет просто Обратите внимание, что был выполнен щелчок LinkButton событий. Время от времени Однако помимо отметить, что был выполнен щелчок LinkButton мы также необходимо передать некоторыми дополнительными сведениями в обработчик событий. Если это так, LinkButton s [ `CommandName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.commandname.aspx) и [ `CommandArgument` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.commandargument.aspx) свойств можно назначить эти дополнительные данные. Затем, при нажатии элемента управления LinkButton его `Command` события (вместо его `Click` событий) и обработчик событий передается значения `CommandName` и `CommandArgument` свойства.
 
-При `Command` события из шаблона на повторителя s повторителя [ `ItemCommand` событий](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeater.itemcommand.aspx) срабатывает и передается `CommandName` и `CommandArgument` значения выбранной LinkButton (или кнопки или ImageButton). Таким образом чтобы определить, когда был выполнен щелчок LinkButton в повторителя категории, необходимо сделать следующее:
+При `Command` события из шаблона на повторителя s повторителя [ `ItemCommand` событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeater.itemcommand.aspx) срабатывает и передается `CommandName` и `CommandArgument` значения выбранной LinkButton (или кнопки или ImageButton). Таким образом чтобы определить, когда был выполнен щелчок LinkButton в повторителя категории, необходимо сделать следующее:
 
 1. Задать `CommandName` свойство LinkButton в повторителя s `ItemTemplate` с некоторым значением (я открывалось ListProducts). Установив это `CommandName` значение LinkButton s `Command` событие возникает при щелчке элемента управления LinkButton.
 2. Набор LinkButton s `CommandArgument` значение текущего элемента s `CategoryID`.

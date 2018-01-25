@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: c61be6f7a64c000c8d9489f35eea520fd0bb32dd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ce4953a0abf64af28ef4dbc5a62bb2d989343d99
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="tutorial-getting-started-with-signalr-1x"></a>Учебник: Приступая к работе с SignalR 1.x
 ====================
@@ -51,7 +51,7 @@ SignalR упрощает процесс создания приложений в
 - [Настройка проекта](#setup)
 - [Выполнение образца](#run)
 - [Анализ кода](#code)
-- [Дальнейшие действия](#next)
+- [Следующие шаги](#next)
 
 <a id="setup"></a>
 
@@ -164,11 +164,11 @@ HTML-страницы в следующем образце кода показа
 
 <a id="next"></a>
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 Вы узнали, что SignalR — это платформа для построения в режиме реального времени веб-приложений. Вы также узнали несколько задач разработки SignalR: Добавление приложения ASP.NET SignalR, как создать класс концентратора и как отправлять и получать сообщения от концентратора.
 
-Выполненные примера приложения в этом учебнике или других приложений SignalR доступны через Интернет с их развертыванием на поставщике услуг размещения. Корпорация Майкрософт предлагает бесплатные услуг хостинга до 10 веб-сайтов в бесплатной [пробную учетную запись Windows Azure](https://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A443DD604). Пошаговое руководство по развертыванию SignalR пример приложения см. в разделе [публикации SignalR примере для начала работы как веб-сайта Windows Azure](https://blogs.msdn.com/b/timlee/archive/2013/02/27/deploy-the-signalr-getting-started-sample-as-a-windows-azure-web-site.aspx). Подробные сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [развертывание приложения ASP.NET для веб-сайта Windows Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet). (Примечание: транспорт WebSocket в настоящее время не поддерживается для Windows Azure веб-сайтов. Транспорт WebSocket при недоступна, SignalR использует другие доступные типы транспорта, как описано в разделе транспортов [введение в раздел SignalR](index.md).)
+Выполненные примера приложения в этом учебнике или других приложений SignalR доступны через Интернет с их развертыванием на поставщике услуг размещения. Корпорация Майкрософт предлагает бесплатные услуг хостинга до 10 веб-сайтов в бесплатной [пробную учетную запись Windows Azure](https://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A443DD604). Пошаговое руководство по развертыванию SignalR пример приложения см. в разделе [публикации SignalR примере для начала работы как веб-сайта Windows Azure](https://blogs.msdn.com/b/timlee/archive/2013/02/27/deploy-the-signalr-getting-started-sample-as-a-windows-azure-web-site.aspx). Подробные сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure см. в разделе [развертывание приложения ASP.NET для веб-сайта Windows Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet). (Примечание: транспорт WebSocket в настоящее время не поддерживается для Windows Azure веб-сайтов. Транспорт WebSocket при недоступна, SignalR использует другие доступные типы транспорта, как описано в разделе транспортов [введение в раздел SignalR](index.md).)
 
 Для получения более сложных понятиях новинках SignalR, посетите следующие сайты для SignalR исходный код и ресурсы:
 

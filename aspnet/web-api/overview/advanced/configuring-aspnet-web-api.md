@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/configuring-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 1c007c4c327b7cde6ff52c6b0022acdff3c9b137
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f9b471fe2afdce278869a2e4d9b693a78030324b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuring-aspnet-web-api-2"></a>Настройка ASP.NET Web API 2
 ====================
@@ -33,14 +33,14 @@ ms.lasthandoff: 11/10/2017
 <a id="settings"></a>
 ## <a name="configuration-settings"></a>Параметры конфигурации
 
-Определенные параметры конфигурации веб-API в [HttpConfiguration](https://msdn.microsoft.com/en-us/library/system.web.http.httpconfiguration.aspx) класса.
+Определенные параметры конфигурации веб-API в [HttpConfiguration](https://msdn.microsoft.com/library/system.web.http.httpconfiguration.aspx) класса.
 
-| Член | Описание |
+| Член | Описание: |
 | --- | --- |
 | **DependencyResolver** | Позволяет внедрения зависимостей для контроллеров. В разделе [с помощью сопоставителя зависимостей веб-API](dependency-injection.md). |
 | **Фильтры** | Фильтры действий. |
-| **Модули форматирования** | [Модули форматирования типа мультимедиа](../formats-and-model-binding/media-formatters.md). |
-| **IncludeErrorDetailPolicy** | Указывает, должен ли сервер включать сведения об ошибке, например сообщения исключений и трассировки стека в сообщений ответов HTTP. В разделе [IncludeErrorDetailPolicy](https://msdn.microsoft.com/en-us/library/system.web.http.includeerrordetailpolicy(v=vs.108)). |
+| **Formatters** | [Модули форматирования типа мультимедиа](../formats-and-model-binding/media-formatters.md). |
+| **IncludeErrorDetailPolicy** | Указывает, должен ли сервер включать сведения об ошибке, например сообщения исключений и трассировки стека в сообщений ответов HTTP. В разделе [IncludeErrorDetailPolicy](https://msdn.microsoft.com/library/system.web.http.includeerrordetailpolicy(v=vs.108)). |
 | **Инициализатор** | Функция, которая выполняет окончательной инициализации **HttpConfiguration**. |
 | **MessageHandlers** | [Обработчики сообщений HTTP](http-message-handlers.md). |
 | **ParameterBindingRules** | Коллекции правил привязки параметров действий контроллера. |
@@ -56,7 +56,7 @@ ms.lasthandoff: 11/10/2017
 <a id="webhost"></a>
 ## <a name="configuring-web-api-with-aspnet-hosting"></a>Настройка веб-API с размещением ASP.NET
 
-В приложении ASP.NET настроить веб-API путем вызова [GlobalConfiguration.Configure](https://msdn.microsoft.com/en-us/library/system.web.http.globalconfiguration.configure.aspx) в **приложения\_запустить** метод. **Настройка** метод принимает делегат с одним параметром типа **HttpConfiguration**. Выполните все вашей конфигурации внутри делегата.
+В приложении ASP.NET настроить веб-API путем вызова [GlobalConfiguration.Configure](https://msdn.microsoft.com/library/system.web.http.globalconfiguration.configure.aspx) в **приложения\_запустить** метод. **Настройка** метод принимает делегат с одним параметром типа **HttpConfiguration**. Выполните все вашей конфигурации внутри делегата.
 
 Ниже приведен пример использования анонимного делегата:
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 11/10/2017
 Один экземпляр службы
 
 
-| Служба | Описание |
+| Служба | Описание: |
 | --- | --- |
 | **IActionValueBinder** | Возвращает привязку для параметра. |
 | **IApiExplorer** | Получает описания API-интерфейсы, предоставляемые приложением. В разделе [Создание страницы справки для веб-API](../getting-started-with-aspnet-web-api/creating-api-help-pages.md). |
@@ -120,7 +120,7 @@ ms.lasthandoff: 11/10/2017
 Нескольких экземпляров служб
 
 
-| Служба | Описание |
+| Служба | Описание: |
 | --- | --- |
 | **IFilterProvider** | Возвращает список фильтров для действия контроллера. |
 | **ModelBinderProvider** | Возвращает связыватель модели для данного типа. |

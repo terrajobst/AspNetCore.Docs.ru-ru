@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: dfdd86b4706a1fb8e313c24ba830ec996fe09225
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: ad68c8a7df5a8ea0f7ef42137c29cd3b37657052
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="configure-portable-object-localization-with-orchard-core"></a>Настройка объекта переносимой локализации с основными Orchard
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 01/19/2018
 
 В этой статье рассматриваются действия по использованию файлов переносимой объекта (PO) в приложении ASP.NET Core с [Orchard Core](https://github.com/OrchardCMS/OrchardCore) framework.
 
-**Примечание:** Orchard Core не является продуктом корпорации Майкрософт. Следовательно Корпорация Майкрософт не поддерживает эту функцию.
+**Примечание:** Orchard ядра не продуктов корпорации Майкрософт. Следовательно Корпорация Майкрософт не поддерживает эту функцию.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 

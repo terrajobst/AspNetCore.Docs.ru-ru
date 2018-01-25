@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/areas
-ms.openlocfilehash: 666be2da6b38ffb538ae3888ea879a4104c8fd12
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 87bf2eaad1c13d21412051be769992411f685e2e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="areas"></a>Области
 
@@ -153,7 +153,7 @@ services.Configure<RazorViewEngineOptions>(options =>
 
   Синтаксис вспомогательной функции тегов:`<a asp-action="Index">Go to Product's Home Page</a>`
 
-  Обратите внимание, что мы не должны предоставлять значения «область» и «контроллер» здесь уже доступны в контексте текущего запроса. Эти типы значений, называются `ambient` значения.
+  Обратите внимание, что мы не должны предоставлять значения «область» и «контроллер» здесь они уже доступны в контексте текущего запроса. Эти типы значений, называются `ambient` значения.
 
 * Создание ссылок из действия в пределах одной области на основе контроллера в другое действие на другой контроллер
 

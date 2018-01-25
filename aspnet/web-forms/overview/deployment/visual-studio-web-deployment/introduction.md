@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: e14f3bed001592c85bdbba868f51141bc52a9470
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 51344535e7ff42f1bd6641aeaaf043be6423f1b7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-introduction"></a>ASP.NET веб-развертывания с помощью Visual Studio: введение
 ====================
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/10/2017
 Развертывание из [система управления версиями](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control.md) с помощью [непрерывной поставки](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery.md) процесс не рассматривается в этих учебниках, за исключением одного учебник, в котором показано, как развертывание из командной строки. Сведения о непрерывной поставки см. следующие ресурсы:
 
 - [Непрерывной интеграции и непрерывного доставки (Создание реальных облачных приложений в Windows Azure)](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery.md)
-- [Развертывание веб-приложения в службе приложений Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-deploy/)
+- [Развертывание веб-приложения в службе приложений Azure](https://azure.microsoft.com/documentation/articles/web-sites-deploy/)
 - [Развертывание веб-приложений в корпоративных сценариях](../deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md) (старые набор учебников, написанные для Visual Studio 2010, которые по-прежнему содержит полезные сведения для корпоративных сред.)
 
 ## <a name="using-a-third-party-hosting-provider"></a>С помощью стороннего поставщика услуг размещения
@@ -130,7 +130,7 @@ Visual Studio не выполняет никаких действий с баз�
 
 - [Пакет Azure SDK для Visual Studio 2010](https://go.microsoft.com/fwlink/?LinkID=254269)
 - [SQL Server Express LocalDB](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=SQLLocalDBOnly_11_0)
-- [SQL Server Data Tools](https://msdn.microsoft.com/en-us/library/hh500335.aspx).
+- [SQL Server Data Tools](https://msdn.microsoft.com/library/hh500335.aspx).
 
 В зависимости от того, сколько зависимостей SDK уже имеется на компьютере установка пакета SDK для Azure может занять от нескольких минут до полчаса или более длительное время. Даже если вы планируете опубликовать стороннего поставщика услуг размещения вместо в Azure, так как пакет SDK включает последние обновления Visual Studio веб-публикации компонентов необходимо пакета Azure SDK.
 

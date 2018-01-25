@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 86ec6454313f5a6e78c0f64433ef4e5a4f8461ee
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6e09951be5483ed098b8cab6517335f9962a5d95
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="master-pages-and-aspnet-ajax-c"></a>Главные страницы и ASP.NET AJAX (C#)
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/10/2017
 
 За последние несколько лет, построение больше разработчиков [AJAX](http://en.wikipedia.org/wiki/Ajax_(programming))-включен веб-приложений. Веб-сайта с поддержкой AJAX предусматривает ряд связанных веб-технологии для обеспечения отклика взаимодействие с пользователем. Создание приложения ASP.NET с поддержкой AJAX — гораздо проще благодаря корпорации Майкрософт [ASP.NET AJAX framework](../../../../ajax/index.md). Встроенное ASP.NET AJAX в ASP.NET 3.5 и Visual Studio 2008; Он также доступна как отдельный загружаемый компонент для приложений ASP.NET 2.0.
 
-При построении веб-странице с поддержкой AJAX с помощью платформы ASP.NET AJAX, необходимо добавить точно один [управления ScriptManager](https://msdn.microsoft.com/en-us/library/bb398863.aspx) каждую страницу, которая использует платформу. Как и предполагает его имя, которую диспетчер ScriptManager управляет клиентский сценарий, используемый в веб-страницы с поддержкой AJAX. Как минимум которую диспетчер ScriptManager выдает HTML, которая заставляет браузер, чтобы загрузить файлы JavaScript, состав клиентской библиотеки AJAX ASP.NET. Он также может использоваться для регистрации пользовательские файлы JavaScript, сценарии веб-службы и функции пользовательского приложения службы.
+При построении веб-странице с поддержкой AJAX с помощью платформы ASP.NET AJAX, необходимо добавить точно один [управления ScriptManager](https://msdn.microsoft.com/library/bb398863.aspx) каждую страницу, которая использует платформу. Как и предполагает его имя, которую диспетчер ScriptManager управляет клиентский сценарий, используемый в веб-страницы с поддержкой AJAX. Как минимум которую диспетчер ScriptManager выдает HTML, которая заставляет браузер, чтобы загрузить файлы JavaScript, состав клиентской библиотеки AJAX ASP.NET. Он также может использоваться для регистрации пользовательские файлы JavaScript, сценарии веб-службы и функции пользовательского приложения службы.
 
 Если образце использует узел страницы (как должно), то не обязательно Добавление элемента управления ScriptManager для каждой из одной страницы содержимого. Вместо этого можно добавить элемент управления ScriptManager на главную страницу. Этот учебник демонстрирует добавление элемента управления ScriptManager на главную страницу. Он также рассказывается, как использовать элемент управления ScriptManagerProxy для регистрации пользовательских сценариев и служб сценариев на определенной странице содержимого.
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-sql[Main](master-pages-and-asp-net-ajax-cs/samples/sample3.sql)]
 
-`TOP 1` Ключевое слово в `SELECT` предложение возвращает первая запись, возвращенных запросом. [ `NEWID()` Функция](https://msdn.microsoft.com/en-us/library/ms190348.aspx) создает новую [значение глобальный уникальный идентификатор (GUID)](http://en.wikipedia.org/wiki/Globally_Unique_Identifier) и может использоваться в `ORDER BY` предложения для возврата записей в таблице в случайном порядке.
+`TOP 1` Ключевое слово в `SELECT` предложение возвращает первая запись, возвращенных запросом. [ `NEWID()` Функция](https://msdn.microsoft.com/library/ms190348.aspx) создает новую [значение глобальный уникальный идентификатор (GUID)](http://en.wikipedia.org/wiki/Globally_Unique_Identifier) и может использоваться в `ORDER BY` предложения для возврата записей в таблице в случайном порядке.
 
 
 [![Настройка SqlDataSource для возврата одной, случайно выбранных записи](master-pages-and-asp-net-ajax-cs/_static/image11.png)](master-pages-and-asp-net-ajax-cs/_static/image10.png)

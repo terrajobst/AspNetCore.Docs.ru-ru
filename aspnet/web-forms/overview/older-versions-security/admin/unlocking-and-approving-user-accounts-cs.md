@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 65d32309cbd8bed6decbba4c5027d8e10a558ae8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f22a745f42dae66cd64dc38df28c59b910c17070
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="unlocking-and-approving-user-accounts-c"></a>Снятие блокировки и утверждение учетных записей пользователей (C#)
 ====================
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/10/2017
 **Рис. 1**: HyperLinkField добавляет ссылку «Управление» для каждой учетной записи пользователя ([Просмотр полноразмерное изображение](unlocking-and-approving-user-accounts-cs/_static/image3.png))
 
 
-Она будет создана пользовательского интерфейса и кода для `UserInformation.aspx` страницы в момент, но сначала давайте поговорим о том, как программно изменить пользователя заблокирована и утвержденные состояния. [ `MembershipUser` Класса](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.aspx) имеет [ `IsLockedOut` ](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.islockedout.aspx) и [ `IsApproved` свойства](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.isapproved.aspx). `IsLockedOut` Свойство доступно только для чтения. Отсутствует механизм для программно блокировки пользователя. Чтобы разблокировать пользователя, используйте `MembershipUser` класса [ `UnlockUser` метод](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.unlockuser.aspx). `IsApproved` Свойство доступно для чтения и записи. Чтобы сохранить любые изменения этого свойства, нам потребуется вызвать `Membership` класса [ `UpdateUser` метод](https://msdn.microsoft.com/en-us/library/system.web.security.membership.updateuser.aspx), передав в измененной `MembershipUser` объекта.
+Она будет создана пользовательского интерфейса и кода для `UserInformation.aspx` страницы в момент, но сначала давайте поговорим о том, как программно изменить пользователя заблокирована и утвержденные состояния. [ `MembershipUser` Класса](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx) имеет [ `IsLockedOut` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.islockedout.aspx) и [ `IsApproved` свойства](https://msdn.microsoft.com/library/system.web.security.membershipuser.isapproved.aspx). `IsLockedOut` Свойство доступно только для чтения. Отсутствует механизм для программно блокировки пользователя. Чтобы разблокировать пользователя, используйте `MembershipUser` класса [ `UnlockUser` метод](https://msdn.microsoft.com/library/system.web.security.membershipuser.unlockuser.aspx). `IsApproved` Свойство доступно для чтения и записи. Чтобы сохранить любые изменения этого свойства, нам потребуется вызвать `Membership` класса [ `UpdateUser` метод](https://msdn.microsoft.com/library/system.web.security.membership.updateuser.aspx), передав в измененной `MembershipUser` объекта.
 
 Поскольку `IsApproved` свойство доступно для чтения и записи, элемент управления CheckBox, скорее всего, является лучшим элемента пользовательского интерфейса по настройке этого свойства. Тем не менее, флажок не будет работать для `IsLockedOut` свойства так, как администратор не может заблокировать пользователя, она может разблокировать только пользователь. Подходящий пользовательский интерфейс для `IsLockedOut` свойство — это кнопка, при нажатии разблокировки учетной записи пользователя. Нажмите эту кнопку следует включить только в том случае, если пользователь заблокирован.
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 11/10/2017
 
 `MembershipUser` Объекта `UserName` значение отображается в `UserNameLabel` и `IsApproved` флажок на основе `IsApproved` значение свойства.
 
-`MembershipUser` Объекта [ `LastLockoutDate` свойство](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.lastlockoutdate.aspx) возвращает `DateTime` значение, указывающее, когда пользователь последний раз заблокирована. Если пользователь никогда не был заблокирован, возвращаемое значение зависит от поставщика членства. При создании новой учетной записи `SqlMembershipProvider` задает `aspnet_Membership` таблицы `LastLockoutDate` на `1754-01-01 12:00:00 AM`. Этот код отображает пустую строку в `LastLockoutDateLabel` Если `LastLockoutDate` свойство предшествует год 2000, в противном случае — часть даты `LastLockoutDate` свойство отображается в метке. `UnlockUserButton'` s `Enabled` свойству пользователя заблокирована состояния, это означает, что эта кнопка будет включить, только если пользователь заблокирован.
+`MembershipUser` Объекта [ `LastLockoutDate` свойство](https://msdn.microsoft.com/library/system.web.security.membershipuser.lastlockoutdate.aspx) возвращает `DateTime` значение, указывающее, когда пользователь последний раз заблокирована. Если пользователь никогда не был заблокирован, возвращаемое значение зависит от поставщика членства. При создании новой учетной записи `SqlMembershipProvider` задает `aspnet_Membership` таблицы `LastLockoutDate` на `1754-01-01 12:00:00 AM`. Этот код отображает пустую строку в `LastLockoutDateLabel` Если `LastLockoutDate` свойство предшествует год 2000, в противном случае — часть даты `LastLockoutDate` свойство отображается в метке. `UnlockUserButton'` s `Enabled` свойству пользователя заблокирована состояния, это означает, что эта кнопка будет включить, только если пользователь заблокирован.
 
 Теперь пора проверить `UserInformation.aspx` страницу в обозревателе. Конечно, необходимо начать с `ManageUsers.aspx` и выберите учетную запись пользователя для управления. После поступающих в `UserInformation.aspx`, обратите внимание, что `IsApproved` флажок проверяется только в том случае, если пользователь утвердил. Если пользователь никогда не был заблокирован, отображается заблокирована Дата последней. Кнопки разблокировки пользователя становится доступен только в том случае, если пользователь в данный момент заблокирована. Устанавливая или снимая `IsApproved` CheckBox или нажав кнопку Разблокировать пользователя вызывает обратную передачу, но не было изменений учетной записи пользователя, так как еще не знаем Создание обработчиков событий для этих событий.
 
@@ -146,7 +146,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="sending-a-verification-email-to-new-users"></a>Отправка письмо с подтверждением новым пользователям
 
-Чтобы отправить сообщение электронной почты из элемента управления CreateUserWizard, настройте его `MailDefinition` свойство соответствующим образом. Как было сказано в <a id="Tutorial13"> </a> [с предыдущим учебником](recovering-and-changing-passwords-cs.md), элементы управления ChangePassword и PasswordRecovery включают [ `MailDefinition` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.maildefinition.aspx) , работает так же, как CreateUserWizard элемента управления.
+Чтобы отправить сообщение электронной почты из элемента управления CreateUserWizard, настройте его `MailDefinition` свойство соответствующим образом. Как было сказано в <a id="Tutorial13"> </a> [с предыдущим учебником](recovering-and-changing-passwords-cs.md), элементы управления ChangePassword и PasswordRecovery включают [ `MailDefinition` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.maildefinition.aspx) , работает так же, как CreateUserWizard элемента управления.
 
 > [!NOTE]
 > Для использования `MailDefinition` свойства, необходимо указать доставки почты параметры в `Web.config`. Дополнительные сведения см. в [отправки электронной почты в ASP.NET](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx).
@@ -160,7 +160,7 @@ ms.lasthandoff: 11/10/2017
 
 Обратите внимание, что `CreateUserWizard.txt` шаблона сообщения электронной почты содержит `<%VerificationUrl%>` заполнителя. Это место, куда URL-адрес `Verification.aspx` страницы будут размещены. Автоматически заменяет CreateUserWizard `<%UserName%>` и `<%Password%>` местозаполнителей новой учетной записи имя пользователя и пароль, но нет встроенного `<%VerificationUrl%>` заполнитель. Необходимо вручную заменить его на соответствующие URL-адрес.
 
-Чтобы сделать это, создайте обработчик событий для CreateUserWizard [ `SendingMail` событие](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.sendingmail.aspx) и добавьте следующий код:
+Чтобы сделать это, создайте обработчик событий для CreateUserWizard [ `SendingMail` событие](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.sendingmail.aspx) и добавьте следующий код:
 
 [!code-csharp[Main](unlocking-and-approving-user-accounts-cs/samples/sample4.cs)]
 

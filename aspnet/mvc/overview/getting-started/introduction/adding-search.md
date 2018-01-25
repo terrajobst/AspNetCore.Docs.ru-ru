@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: 10457d154f5fda875f7d1054d48daeeba3a50b7c
-ms.sourcegitcommit: 2b263e87217658caa42eedc4f9d2d21ef0ab5d59
+ms.openlocfilehash: 116f681e14af0a09a4eb1502ef9f057c5db2f97d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 <a name="search"></a>Поиск
 ====================
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/12/2018
 
 [!code-csharp[Main](adding-search/samples/sample1.cs?highlight=1,6-9)]
 
-Первая строка `Index` метод создает следующие [LINQ](https://msdn.microsoft.com/en-us/library/bb397926.aspx) запрос, чтобы выбрать фильмы:
+Первая строка `Index` метод создает следующие [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) запрос, чтобы выбрать фильмы:
 
 [!code-csharp[Main](adding-search/samples/sample2.cs)]
 
@@ -44,10 +44,10 @@ ms.lasthandoff: 01/12/2018
 
 [!code-csharp[Main](adding-search/samples/sample3.cs)]
 
-Приведенный выше код `s => s.Title` представляет собой [лямбда-выражение](https://msdn.microsoft.com/en-us/library/bb397687.aspx). Лямбда-выражения, используемые в основе метода [LINQ](https://msdn.microsoft.com/en-us/library/bb397926.aspx) запрашивает качестве аргументов стандартных методов операторов запроса, таких как [где](https://msdn.microsoft.com/en-us/library/system.linq.enumerable.where.aspx) метод, используемый в приведенном выше коде. LINQ запросы не выполняются при их определении либо изменении путем вызова метода, например `Where` или `OrderBy`. Вместо этого выполнение запроса отложено, это означает, что вычисление выражения откладывается до его реализованных значение фактически итерации или [ `ToList` ](https://msdn.microsoft.com/en-us/library/bb342261.aspx) вызывается метод. В `Search` образца, запрос выполняется в *Index.cshtml* представления. Дополнительные сведения об отложенном и немедленном выполнении запросов см. в разделе [Выполнение запроса](https://msdn.microsoft.com/en-us/library/bb738633.aspx).
+Приведенный выше код `s => s.Title` представляет собой [лямбда-выражение](https://msdn.microsoft.com/library/bb397687.aspx). Лямбда-выражения, используемые в основе метода [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) запрашивает качестве аргументов стандартных методов операторов запроса, таких как [где](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx) метод, используемый в приведенном выше коде. LINQ запросы не выполняются при их определении либо изменении путем вызова метода, например `Where` или `OrderBy`. Вместо этого выполнение запроса отложено, это означает, что вычисление выражения откладывается до его реализованных значение фактически итерации или [ `ToList` ](https://msdn.microsoft.com/library/bb342261.aspx) вызывается метод. В `Search` образца, запрос выполняется в *Index.cshtml* представления. Дополнительные сведения об отложенном и немедленном выполнении запросов см. в разделе [Выполнение запроса](https://msdn.microsoft.com/library/bb738633.aspx).
 
 > [!NOTE]
-> [Contains](https://msdn.microsoft.com/en-us/library/bb155125.aspx) метод выполняется в базе данных, а не в коде c# выше. В базе данных [Contains](https://msdn.microsoft.com/en-us/library/bb155125.aspx) сопоставляется [SQL LIKE](https://msdn.microsoft.com/en-us/library/ms179859.aspx), которая не учитывает регистр.
+> [Contains](https://msdn.microsoft.com/library/bb155125.aspx) метод выполняется в базе данных, а не в коде c# выше. В базе данных [Contains](https://msdn.microsoft.com/library/bb155125.aspx) сопоставляется [SQL LIKE](https://msdn.microsoft.com/library/ms179859.aspx), которая не учитывает регистр.
 
 Теперь вы можете обновить `Index` представление, которое будет отображать формы для пользователя.
 
@@ -123,7 +123,7 @@ Visual Studio 2013 имеет значительное улучшение раб
 
 [!code-csharp[Main](adding-search/samples/sample12.cs)]
 
-Код использует `AddRange` метод универсального `List` коллекции для добавления в список всех уникальных жанров. (Без `Distinct` модификатор, следует добавить повторяющийся жанров — например, комедия добавляется дважды в нашем примере). Код сохраняет список жанров в `ViewBag.MovieGenre` объекта. Хранение данных категории (такие фильма жанра) как [SelectList](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlist(v=vs.108).aspx) объекта в `ViewBag`, то доступ к данным категории в раскрывающемся списке — типичный подход для приложений MVC.
+Код использует `AddRange` метод универсального `List` коллекции для добавления в список всех уникальных жанров. (Без `Distinct` модификатор, следует добавить повторяющийся жанров — например, комедия добавляется дважды в нашем примере). Код сохраняет список жанров в `ViewBag.MovieGenre` объекта. Хранение данных категории (такие фильма жанра) как [SelectList](https://msdn.microsoft.cus/library/system.web.mvc.selectlist(v=vs.108).aspx) объекта в `ViewBag`, то доступ к данным категории в раскрывающемся списке — типичный подход для приложений MVC.
 
 В следующем коде показано, как проверить `movieGenre` параметра. Если она не пустая, код далее ограничивает запрос фильмов с целью ограничения фильмы, выбранных для заданного жанра.
 

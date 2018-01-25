@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 60301e1e3eb96f51e86ef9f8be61f5fd8a4c009c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 6fc356d8ecc1b699269286f244000b493e48a2c5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера, HTTP.sys, в ASP.NET Core
 
@@ -140,7 +140,7 @@ public IActionResult MyActionMethod()
 
 ## <a name="preregister-url-prefixes-and-configure-ssl"></a>Предварительной регистрации префиксы URL-адреса и настроить протокол SSL
 
-Службы IIS и HTTP.sys основаны на базовый драйвер режима ядра Http.Sys для прослушивания запросов и первоначального обработки. В службах IIS пользовательский Интерфейс управления позволяет сравнительно легко настраивать все. Тем не менее необходимо настроить Http.Sys самостоятельно. Встроенное средство для выполнения, то есть *netsh.exe*. 
+Службы IIS и HTTP.sys основаны на базовый драйвер режима ядра Http.Sys для прослушивания запросов и первоначального обработки. В службах IIS пользовательский Интерфейс управления позволяет сравнительно легко настраивать все. Тем не менее необходимо настроить Http.Sys самостоятельно. Встроенное средство для соответствующей его *netsh.exe*. 
 
 С *netsh.exe* можно зарезервировать префиксы URL-адрес и назначьте SSL-сертификаты. Средство требуются права администратора.
 

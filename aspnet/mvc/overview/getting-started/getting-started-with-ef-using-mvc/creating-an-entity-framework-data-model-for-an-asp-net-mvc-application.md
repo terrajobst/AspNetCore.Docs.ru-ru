@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 84ca4bbaebe401d14233131bcaa027debf7ea0f9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 46f53279e2e6daa4266c06feb4ba544e14b68a03
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-entity-framework-6-code-first-using-mvc-5"></a>Начало работы с Entity Framework 6 Code First с помощью MVC 5
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > > Доступна более новая версия этого учебника рядов: [приступить к работе с ASP.NET Core и Entity Framework с помощью Visual Studio 2015](https://docs.asp.net/en/latest/data/ef-mvc/intro.html).
 > 
 > 
-> Contoso университета примера веб-приложения показано, как создавать приложения ASP.NET MVC 5 с помощью платформы Entity Framework 6 и Visual Studio 2013. В этом учебнике используется Code First рабочего процесса. Сведения о выборе между Code First, Database First и Model First см. в разделе [процессов разработки Entity Framework](https://msdn.microsoft.com/en-us/library/ms178359.aspx#dbfmfcf).
+> Contoso университета примера веб-приложения показано, как создавать приложения ASP.NET MVC 5 с помощью платформы Entity Framework 6 и Visual Studio 2013. В этом учебнике используется Code First рабочего процесса. Сведения о выборе между Code First, Database First и Model First см. в разделе [процессов разработки Entity Framework](https://msdn.microsoft.com/library/ms178359.aspx#dbfmfcf).
 > 
 > Образец приложения является веб-сайт для вымышленной компании Contoso университета. Он включает функции, такие как допуском студента, создание курса и инструктора назначения. Этот учебник ряд объясняется, как создать пример приложения Contoso университета. Вы можете [загрузка завершенного приложения](https://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8).
 > 
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
 > 
-> Оставьте отзыв на том, как вам понравилось этого учебника и что можно улучшить в комментарии в нижней части страницы. Если у вас есть вопросы, которые не связаны непосредственно для работы с учебником, их можно разместить [форум по ASP.NET Entity Framework](https://forums.asp.net/1227.aspx), [Entity Framework и LINQ to Entities форум](https://social.msdn.microsoft.com/forums/en-US/adodotnetentityframework/threads/), или [ StackOverflow.com](http://stackoverflow.com/).
+> Оставьте отзыв на том, как вам понравилось этого учебника и что можно улучшить в комментарии в нижней части страницы. Если у вас есть вопросы, которые не связаны непосредственно для работы с учебником, их можно разместить [форум по ASP.NET Entity Framework](https://forums.asp.net/1227.aspx), [Entity Framework и LINQ to Entities форум](https://social.msdn.microsoft.com/forums/adodotnetentityframework/threads/), или [ StackOverflow.com](http://stackoverflow.com/).
 > 
 > Если возникли проблемы, которую не удается устранить, обычно можно найти решение проблемы путем сравнения код для завершенного проекта, который можно загрузить. Некоторые распространенные ошибки и способы их устранения см. в разделе [распространенные ошибки и решения или обходные пути для них.](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors)
 
@@ -169,7 +169,7 @@ ms.lasthandoff: 11/10/2017
 
 `EnrollmentID` Свойство будет иметь первичный ключ, использует эту сущность *classname* `ID` шаблона вместо `ID` сам по себе, как вы видели в `Student` сущности. Обычно следует выбрать один шаблон и использовать его во всей модели данных. Здесь значение варианта иллюстрирует, которые можно использовать либо шаблон. В этом руководстве, вы увидите том, каким образом `ID` без `classname` упрощает реализацию наследования в модели данных.
 
-`Grade` Свойство [перечисления](https://msdn.microsoft.com/en-us/data/hh859576.aspx). Знак вопроса после `Grade` объявление типа указывает, что `Grade` свойство [nullable](https://msdn.microsoft.com/en-us/library/2cf62fcy.aspx). Степень, которую имеет значение null отличается от нуля оценку — значение null означает оценку не известен или еще не назначена.
+`Grade` Свойство [перечисления](https://msdn.microsoft.com/data/hh859576.aspx). Знак вопроса после `Grade` объявление типа указывает, что `Grade` свойство [nullable](https://msdn.microsoft.com/library/2cf62fcy.aspx). Степень, которую имеет значение null отличается от нуля оценку — значение null означает оценку не известен или еще не назначена.
 
 `StudentID` Свойство внешнего ключа, и соответствующее свойство навигации `Student`. `Enrollment` Сущности связан с одним `Student` сущности, поэтому свойство может содержать только один `Student` сущности (в отличие от `Student.Enrollments` свойство навигации вы видели ранее, который может содержать несколько `Enrollment` сущностей).
 
@@ -187,11 +187,11 @@ Entity Framework интерпретирует свойство как свойс
 
 `Enrollments` Свойство является свойством навигации. Объект `Course` сущности могут быть связаны с любым количеством `Enrollment` сущностей.
 
-Допустим, что больше о [DatabaseGenerated](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.schema.databasegeneratedattribute(v=vs.110).aspx) атрибут позднее в этом учебнике этой серии. По сути этот атрибут позволяет ввести первичный ключ для курса вместо формирования базы данных.
+Допустим, что больше о [DatabaseGenerated](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedattribute(v=vs.110).aspx) атрибут позднее в этом учебнике этой серии. По сути этот атрибут позволяет ввести первичный ключ для курса вместо формирования базы данных.
 
 ## <a name="create-the-database-context"></a>Создать контекст базы данных
 
-Основной класс, который координирует функции в заданной модели данных Entity Framework является *контекст базы данных* класса. Создание этого класса путем наследования от [System.Data.Entity.DbContext](https://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext(v=VS.103).aspx) класса. В коде указывается, какие сущности включаются в модель данных. Можно также настроить некоторые параметры поведения Entity Framework. В этом проекте класс с именем `SchoolContext`.
+Основной класс, который координирует функции в заданной модели данных Entity Framework является *контекст базы данных* класса. Создание этого класса путем наследования от [System.Data.Entity.DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=VS.103).aspx) класса. В коде указывается, какие сущности включаются в модель данных. Можно также настроить некоторые параметры поведения Entity Framework. В этом проекте класс с именем `SchoolContext`.
 
 Создание папки в проекте ContosoUniversity, щелкните правой кнопкой мыши проект в **обозревателе решений** и нажмите кнопку **добавить**, а затем нажмите кнопку **новую папку**. Имя новой папки *DAL* (для доступа к данным). В этой папке создайте новый файл класса с именем *SchoolContext.cs*и замените код шаблона с помощью следующего кода:
 
@@ -199,7 +199,7 @@ Entity Framework интерпретирует свойство как свойс
 
 ### <a name="specifying-entity-sets"></a>Указание наборов сущностей
 
-Этот код создает [DbSet](https://msdn.microsoft.com/en-us/library/system.data.entity.dbset(v=VS.103).aspx) свойство для каждого набора сущностей. В терминологии Entity Framework *набора сущностей* обычно соответствует таблице базы данных и *сущности* соответствует строке таблицы.
+Этот код создает [DbSet](https://msdn.microsoft.com/library/system.data.entity.dbset(v=VS.103).aspx) свойство для каждого набора сущностей. В терминологии Entity Framework *набора сущностей* обычно соответствует таблице базы данных и *сущности* соответствует строке таблицы.
 
 > [!NOTE] 
 > 
@@ -212,13 +212,13 @@ Entity Framework интерпретирует свойство как свойс
 
 [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample7.cs?highlight=1)]
 
-Можно также передавать в строке подключения вместо имени он хранится в файле Web.config. Дополнительные сведения о параметрах для указания базы данных для использования см. в разделе [Entity Framework - подключений и модели](https://msdn.microsoft.com/en-us/data/jj592674).
+Можно также передавать в строке подключения вместо имени он хранится в файле Web.config. Дополнительные сведения о параметрах для указания базы данных для использования см. в разделе [Entity Framework - подключений и модели](https://msdn.microsoft.com/data/jj592674).
 
 Если не указать строку соединения или имя одного явным образом, Entity Framework предполагает, что имя строки соединения является совпадает с именем класса. Имя строки подключения по умолчанию в этом примере будет `SchoolContext`, таким же, как то, что было указано явно.
 
 ### <a name="specifying-singular-table-names"></a>Указание имен таблицы в единственном числе
 
-`modelBuilder.Conventions.Remove` Инструкции в [OnModelCreating](https://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext.onmodelcreating(v=vs.103).aspx) метод запрещает имена таблиц имена во множественном числе. Если это не сделать, созданные таблицы в базе данных будет назван `Students`, `Courses`, и `Enrollments`. Вместо этого имена таблиц будут `Student`, `Course`, и `Enrollment`. В среде разработчиков нет единого мнения о том, следует ли использовать имена таблиц во множественном числе. В этом учебнике используется существительные в единственном числе, но важно то, что вы можете выбрать любой формы, вы предпочитаете, включая или исключая эту строку кода.
+`modelBuilder.Conventions.Remove` Инструкции в [OnModelCreating](https://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating(v=vs.103).aspx) метод запрещает имена таблиц имена во множественном числе. Если это не сделать, созданные таблицы в базе данных будет назван `Students`, `Courses`, и `Enrollments`. Вместо этого имена таблиц будут `Student`, `Course`, и `Enrollment`. В среде разработчиков нет единого мнения о том, следует ли использовать имена таблиц во множественном числе. В этом учебнике используется существительные в единственном числе, но важно то, что вы можете выбрать любой формы, вы предпочитаете, включая или исключая эту строку кода.
 
 ## <a name="set-up-ef-to-initialize-the-database-with-test-data"></a>Настройка EF для инициализации базы данных с тестовыми данными
 
@@ -241,7 +241,7 @@ Entity Framework интерпретирует свойство как свойс
 
 [!code-xml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample9.xml?highlight=2-6)]
 
-`context type` Указывает контекст полное имя класса и сборки, он находится, и `databaseinitializer type` указывает инициализатор класса и сборки, он находится в полное имя. (Если вы не хотите EF использовать инициализатор, можно задать атрибут на `context` элемент: `disableDatabaseInitialization="true"`.) Дополнительные сведения см. в разделе [Entity Framework — параметры файла конфигурации](https://msdn.microsoft.com/en-us/data/jj556606).
+`context type` Указывает контекст полное имя класса и сборки, он находится, и `databaseinitializer type` указывает инициализатор класса и сборки, он находится в полное имя. (Если вы не хотите EF использовать инициализатор, можно задать атрибут на `context` элемент: `disableDatabaseInitialization="true"`.) Дополнительные сведения см. в разделе [Entity Framework — параметры файла конфигурации](https://msdn.microsoft.com/data/jj556606).
 
 В качестве альтернативы для задания инициализатора в *Web.config* файл — это в коде, добавив `Database.SetInitializer` инструкции `Application_Start` метод в *Global.asax.cs* файла. Дополнительные сведения см. в разделе [инициализаторы основные сведения о базе данных в Entity Framework Code First](http://www.codeguru.com/csharp/article.php/c19999/Understanding-Database-Initializers-in-Entity-Framework-Code-First.htm).
 
@@ -264,9 +264,9 @@ Entity Framework интерпретирует свойство как свойс
 
 [!code-xml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample10.xml?highlight=1-3)]
 
-Строка подключения, вы добавили задает использование Entity Framework с именем базы данных LocalDB *ContosoUniversity1.mdf*. (Базы данных еще не существует; EF создаст ее.) Если требуется, чтобы база данных будет создан в вашей *приложения\_данные* папки, можно добавить `AttachDBFilename=|DataDirectory|\ContosoUniversity1.mdf` в строку подключения. Дополнительные сведения о строках соединения см. в разделе [строки подключения SQL Server для веб-приложений ASP.NET](https://msdn.microsoft.com/en-us/library/jj653752.aspx).
+Строка подключения, вы добавили задает использование Entity Framework с именем базы данных LocalDB *ContosoUniversity1.mdf*. (Базы данных еще не существует; EF создаст ее.) Если требуется, чтобы база данных будет создан в вашей *приложения\_данные* папки, можно добавить `AttachDBFilename=|DataDirectory|\ContosoUniversity1.mdf` в строку подключения. Дополнительные сведения о строках соединения см. в разделе [строки подключения SQL Server для веб-приложений ASP.NET](https://msdn.microsoft.com/library/jj653752.aspx).
 
-Не обязательно должны иметь строку соединения *Web.config* файла. Если не указать строку подключения, Entity Framework будет использовать значение по умолчанию на класс контекста основе один. Дополнительные сведения см. в разделе [Code First в новой базе данных](https://msdn.microsoft.com/en-us/data/jj193542).
+Не обязательно должны иметь строку соединения *Web.config* файла. Если не указать строку подключения, Entity Framework будет использовать значение по умолчанию на класс контекста основе один. Дополнительные сведения см. в разделе [Code First в новой базе данных](https://msdn.microsoft.com/data/jj193542).
 
 ## <a name="creating-a-student-controller-and-views"></a>Создание контроллера студентов и представлений
 
@@ -334,7 +334,7 @@ Entity Framework интерпретирует свойство как свойс
 - Свойства сущности, которые именуются `ID` или *classname* `ID` распознаются как свойства основного ключа.
 - Свойство интерпретируется как свойство внешнего ключа, если он называется  *&lt;имя свойства навигации&gt;&lt;имя свойство первичного ключа&gt;*  (например, `StudentID` для `Student` свойство навигации с момента `Student` первичного ключа сущности является `ID`). Свойства внешнего ключа можно также совпадать с именем просто &lt;имя свойство первичного ключа&gt; (например, `EnrollmentID` с момента `Enrollment` первичного ключа сущности является `EnrollmentID`).
 
-Вы знаете, что соглашения могут быть переопределены. Например, указывать имена таблиц не должны иметь имена во множественном числе, что вы увидите Далее как явным образом пометить свойство как свойство внешнего ключа. Дополнительные сведения о условные обозначения и переопределить их в [создания более сложной модели данных](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md) учебника далее в этой серии. Дополнительные сведения о соглашениях см. в разделе [соглашения о написании кода для первого](https://msdn.microsoft.com/en-us/data/jj679962).
+Вы знаете, что соглашения могут быть переопределены. Например, указывать имена таблиц не должны иметь имена во множественном числе, что вы увидите Далее как явным образом пометить свойство как свойство внешнего ключа. Дополнительные сведения о условные обозначения и переопределить их в [создания более сложной модели данных](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md) учебника далее в этой серии. Дополнительные сведения о соглашениях см. в разделе [соглашения о написании кода для первого](https://msdn.microsoft.com/data/jj679962).
 
 ## <a name="summary"></a>Сводка
 

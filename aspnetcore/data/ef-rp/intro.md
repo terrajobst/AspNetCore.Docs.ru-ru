@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/intro
-ms.openlocfilehash: bea3b12ebe476c4b59abe117393b0ec8bb7f0306
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 6d36c0f0cabaf99195470a212091bd5e35c8eb30
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio-1-of-8"></a>Приступая к работе со страницами Razor и Entity Framework Core, с помощью Visual Studio (1, 8)
 
@@ -179,7 +179,7 @@ EF Core интерпретирует свойство как внешний кл
 
 ### <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-В строке соединения указывается база данных LocalDB SQL Server. LocalDB — это облегченная версия SQL Server Express Database Engine и предназначен для разработки приложений, а не использования в рабочей среде. LocalDB запускается по требованию в пользовательском режиме, поэтому настройки не слишком сложны. По умолчанию создает LocalDB *.mdf* DB файлы в `C:/Users/<user>` каталога.
+В строке соединения указывается база данных LocalDB SQL Server. LocalDB — это облегченная версия SQL Server Express Database Engine и предназначен для разработки приложений, а не использования в рабочей среде. LocalDB запускает по запросу и в пользовательском режиме, поэтому нет сложные конфигурации. По умолчанию создает LocalDB *.mdf* DB файлы в `C:/Users/<user>` каталога.
 
 ## <a name="add-code-to-initialize-the-db-with-test-data"></a>Добавьте код для инициализации базы данных с тестовыми данными
 
@@ -337,9 +337,9 @@ No executable found matching command "dotnet-aspnet-codegenerator"
 
 Некоторые аспекты, которые следует учитывать при написании асинхронного кода, использующего EF ядра:
 
-* Только инструкции, вызывающие запросов или команд, отправляемых в базе данных выполняются асинхронно. Содержащий, `ToListAsync`, `SingleOrDefaultAsync`, `FirstOrDefaultAsync`, и `SaveChangesAsync`. Сюда не входят инструкции, которые просто изменить `IQueryable`, такие как `var students = context.Students.Where(s => s.LastName == "Davolio")`.
+* Только инструкции, вызывающие запросов или команд, отправляемых в базе данных выполняются асинхронно. Содержащий, `ToListAsync`, `SingleOrDefaultAsync`, `FirstOrDefaultAsync`, и `SaveChangesAsync`. Оно не содержит инструкций, которые просто изменяют `IQueryable`, такие как `var students = context.Students.Where(s => s.LastName == "Davolio")`.
 
-* EF контекста не является однопоточным безопасный: не пытайтесь выполнить несколько операций параллельно. 
+* EF контекста не потокобезопасным: не пытайтесь выполнить несколько операций параллельно. 
 
 * Чтобы воспользоваться преимуществами повышение производительности для асинхронного кода, убедитесь, что библиотека пакетов (например, для разбиения на страницы) используют async вызывающие EF основные методы, которые отправляют запросы к базе данных.
 

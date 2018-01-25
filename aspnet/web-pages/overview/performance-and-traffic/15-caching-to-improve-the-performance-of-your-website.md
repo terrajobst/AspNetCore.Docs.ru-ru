@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/performance-and-traffic/15-caching-to-improve-the-performance-of-your-website
 msc.type: authoredcontent
-ms.openlocfilehash: c747fef33a6d1db19f09fd0303c47d689b956687
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 742409219bd3b05f8ddf2c0d5034919fc9bf1d26
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="caching-data-in-an-aspnet-web-pages-razor-site-for-better-performance"></a>Кэширование данных в веб-страницы (Razor) узле ASP.NET для повышения производительности
 ====================
@@ -83,4 +83,4 @@ ms.lasthandoff: 11/10/2017
 
 
 - [Отображение данных в диаграмме](https://go.microsoft.com/fwlink/?LinkId=202895)
-- [Справочник по WebCache API](https://msdn.microsoft.com/en-us/library/system.web.helpers.webcache(v=vs.99).aspx) (MSDN)
+- [Справочник по WebCache API](https://msdn.microsoft.com/library/system.web.helpers.webcache(v=vs.99).aspx) (MSDN)

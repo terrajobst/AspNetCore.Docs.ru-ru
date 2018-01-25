@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-production-environment-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: d5574ee353ff41205e9029e4aa5d139a5aa0e959
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cdd13f96ddf08ff86b01ef9de17ea82cf038ab28
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="scenario-configuring-a-production-environment-for-web-deployment"></a>Сценарий: Настройка рабочей среде для веб-развертывания
 ====================
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/10/2017
 - Внесения изменений в приложения развертываются на реже, чем теста или промежуточного развертывания.
 
 > [!NOTE]
-> Масштабирование развертывания базы данных по нескольким серверам выходит за рамки данного руководства. Дополнительные сведения об этой области, обратитесь к [электронной документации по SQL Server](https://technet.microsoft.com/en-us/library/ms130214.aspx).
+> Масштабирование развертывания базы данных по нескольким серверам выходит за рамки данного руководства. Дополнительные сведения об этой области, обратитесь к [электронной документации по SQL Server](https://technet.microsoft.com/library/ms130214.aspx).
 
 
 Например, в нашем [сценарий учебника](../deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md), Team Build сервера включает в себя определения сборок, которые позволяют пользователям построить решение диспетчера контактов и развернуть его в промежуточной среде, в один шаг. Когда приложение готово к развертыванию в рабочей среде, из-за ограничений, налагаемых требований к безопасности и сетевой инфраструктурой, администратор производственной среде необходимо вручную скопировать веб-пакета на рабочий веб-сервер и импорт его через диспетчер Internet Information Services (IIS).

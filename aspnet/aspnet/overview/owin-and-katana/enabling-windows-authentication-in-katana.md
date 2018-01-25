@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/enabling-windows-authentication-in-katana
 msc.type: authoredcontent
-ms.openlocfilehash: cc23a053fb1ba60ea84eca59e99f0e375fefc4cd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8a26d356f7abafba021199761f9a49dcb81765c5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="enabling-windows-authentication-in-katana"></a>Включение проверки подлинности Windows в Katana
 ====================
@@ -34,7 +34,7 @@ Katana является реализацией Майкрософт [OWIN](http:
 В настоящее время Katana предоставляет два сервера, которые поддерживают как встроенная проверка подлинности Windows.
 
 - **Microsoft.Owin.Host.SystemWeb**. Использует службы IIS с помощью конвейера ASP.NET.
-- **Microsoft.Owin.Host.HttpListener**. Использует [System.Net.HttpListener](https://msdn.microsoft.com/en-us/library/system.net.httplistener.aspx). Этот сервер в настоящее время является параметром по умолчанию, при размещении Katana.
+- **Microsoft.Owin.Host.HttpListener**. Использует [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener.aspx). Этот сервер в настоящее время является параметром по умолчанию, при размещении Katana.
 
 > [!NOTE]
 > Katana не предоставляет в настоящее время по промежуточного слоя OWIN для проверки подлинности Windows, так как эта функция уже доступна на серверах.
@@ -96,10 +96,10 @@ Katana является реализацией Майкрософт [OWIN](http:
 
 [!code-console[Main](enabling-windows-authentication-in-katana/samples/sample7.cmd?highlight=1,4-5)]
 
-## <a name="related-topics"></a>Связанные разделы
+## <a name="related-topics"></a>См. также
 
-[Общие сведения о проекте Katana](an-overview-of-project-katana.md)
+[Обзор проекта Katana](an-overview-of-project-katana.md)
 
-[System.Net.HttpListener](https://msdn.microsoft.com/en-us/library/system.net.httplistener.aspx)
+[System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener.aspx)
 
 [Основные сведения об OWIN проверки подлинности форм в MVC 5](https://blogs.msdn.com/b/webdev/archive/2013/07/03/understanding-owin-forms-authentication-in-mvc-5.aspx)

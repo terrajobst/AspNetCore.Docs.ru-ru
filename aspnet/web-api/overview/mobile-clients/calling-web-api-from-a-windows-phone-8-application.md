@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
 msc.type: authoredcontent
-ms.openlocfilehash: 1637af40613f1384bd4adec707a5b1a8a07c704b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6e5a936decb27fd2e3b8cdcea44db8db822c98eb
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="calling-web-api-from-a-windows-phone-8-application-c"></a>Вызов веб-API из приложения Windows Phone 8 (C#)
 ====================
@@ -37,7 +37,7 @@ RESTful служб, таких как веб-API ASP.NET упрощают соз
 
 - Visual Studio 2013 с Windows Phone 8 установленный пакет SDK
 - Windows 8 или более поздней версии на 64-разрядной системы с Hyper-V установлено
-- Список дополнительных требованиях см. в разделе *требования к системе для* статьи на [Windows Phone SDK 8.0](https://www.microsoft.com/en-us/download/details.aspx?id=35471) странице загрузки.
+- Список дополнительных требованиях см. в разделе *требования к системе для* статьи на [Windows Phone SDK 8.0](https://www.microsoft.com/download/details.aspx?id=35471) странице загрузки.
 
 > [!NOTE]
 > Если проверка подключения между веб-API и проектов Windows Phone 8 в локальной системе, необходимо будет следуйте инструкциям в  *[подключение к веб-API приложения на локальном эмуляторе Windows Phone 8 Компьютер](https://go.microsoft.com/fwlink/?LinkId=324014)*  статьи для настройки тестовой среды.

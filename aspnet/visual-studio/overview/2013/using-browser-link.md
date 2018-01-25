@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/using-browser-link
 msc.type: authoredcontent
-ms.openlocfilehash: 14f67d81a5b460da591b8fb27fedf53d228e7717
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e5a13405a303580ec8c1d4cdacafc26c6f8ff34a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-browser-link-in-visual-studio-2013"></a>С помощью браузера ссылки в Visual Studio 2013
 ====================
@@ -69,7 +69,7 @@ ms.lasthandoff: 11/10/2017
 
 **Примечания**
 
-- Чтобы включить связь с браузером, задайте `debug=true` в [ &lt;компиляции&gt; ](https://msdn.microsoft.com/en-us/library/s10awwz0(v=vs.85).aspx) в файле Web.config проекта.
+- Чтобы включить связь с браузером, задайте `debug=true` в [ &lt;компиляции&gt; ](https://msdn.microsoft.com/library/s10awwz0(v=vs.85).aspx) в файле Web.config проекта.
 - Приложения должны быть запущены на localhost.
 - Приложение должно использовать .NET 4.0 или более поздней версии.
 

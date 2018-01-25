@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/improving-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: d23110944642686b3e62aef1c324847de57a07c4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e46616d45ad0e4a0ab861e6fb53f33bc567cbdea
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="improving-the-details-and-delete-methods-c"></a>Улучшение сведения и удаления методы (C#)
 ====================
@@ -77,13 +77,13 @@ ms.lasthandoff: 11/10/2017
 
 Если вы хотите развернуть приложение, полезно для тестирования приложения на локальном сервере IIS 7. Эту функцию можно использовать [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=ASPNET;) ссылку, чтобы включить параметр IIS для приложений ASP.NET. См. по следующим ссылкам развертывания:
 
-- [Карта содержимого развертывания ASP.NET](https://msdn.microsoft.com/en-us/library/dd394698.aspx)
+- [Карта содержимого развертывания ASP.NET](https://msdn.microsoft.com/library/dd394698.aspx)
 - [Включение IIS 7.x](https://blogs.msdn.com/b/rickandy/archive/2011/03/14/enabling-iis-7-x-on-windows-7-vista-sp1-windows-2008-windows-2008-r2.aspx)
-- [Развертывание проектов веб-приложений](https://msdn.microsoft.com/en-us/library/dd394698.aspx)
+- [Развертывание проектов веб-приложений](https://msdn.microsoft.com/library/dd394698.aspx)
 
-Читателю теперь можно переходить к нашей промежуточного уровня [Создание модели данных Entity Framework для приложения ASP.NET MVC](../../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) и [MVC Music Store](../../mvc-music-store/mvc-music-store-part-1.md) учебники для изучения [ASP.NET статьи в библиотеке MSDN](https://msdn.microsoft.com/en-us/library/gg416514(VS.98).aspx)и многие видеоролики и ресурсы на [https://asp.net/mvc](https://asp.net/mvc) , чтобы получить дополнительные сведения о ASP.NET MVC! [Форумы по ASP.NET MVC](https://forums.asp.net/1146.aspx) — это отличное место для вопросов.
+Читателю теперь можно переходить к нашей промежуточного уровня [Создание модели данных Entity Framework для приложения ASP.NET MVC](../../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) и [MVC Music Store](../../mvc-music-store/mvc-music-store-part-1.md) учебники для изучения [ASP.NET статьи в библиотеке MSDN](https://msdn.microsoft.com/library/gg416514(VS.98).aspx)и многие видеоролики и ресурсы на [https://asp.net/mvc](https://asp.net/mvc) , чтобы получить дополнительные сведения о ASP.NET MVC! [Форумы по ASP.NET MVC](https://forums.asp.net/1146.aspx) — это отличное место для вопросов.
 
-Теперь!
+Желаем удачи!
 
 — Скотт Хансельман ([http://hanselman.com](http://hanselman.com) и [ @shanselman ](http://twitter.com/shanselman) в Twitter) и Рик Андерсон [blogs.msdn.com/rickAndy](https://blogs.msdn.com/rickAndy)
 

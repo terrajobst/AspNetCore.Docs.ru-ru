@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 9294da7cd5b7a362d4ade9d1bf7e7747e20ee1a8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 58a9dfb621630f23b37247b96ed3a19a661857f1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="handling-entity-relations"></a>Обработка отношениями сущностей
 ====================
@@ -86,7 +86,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="explicit-loading"></a>Явная загрузка
 
-Явная загрузка похожа на отложенную загрузку, за исключением того, что явным образом получать взаимосвязанные данные в коде; Это не происходит автоматически при доступе к свойству навигации. Явная загрузка обеспечивает больший контроль над тем, когда для загрузки связанных данных, но требует дополнительного кода. Дополнительные сведения о явная загрузка см. в разделе [загрузка связанных сущностей](https://msdn.microsoft.com/en-us/data/jj574232#explicit).
+Явная загрузка похожа на отложенную загрузку, за исключением того, что явным образом получать взаимосвязанные данные в коде; Это не происходит автоматически при доступе к свойству навигации. Явная загрузка обеспечивает больший контроль над тем, когда для загрузки связанных данных, но требует дополнительного кода. Дополнительные сведения о явная загрузка см. в разделе [загрузка связанных сущностей](https://msdn.microsoft.com/data/jj574232#explicit).
 
 ## <a name="navigation-properties-and-circular-references"></a>Свойства навигации и циклические ссылки
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/using-data-protection
-ms.openlocfilehash: 54976a7f2ac13fe445eb2eea204f4f781813030f
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: c6a631b6dc4a7855b11031dfcef42b17906754b0
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="getting-started-with-the-data-protection-apis"></a>Приступая к работе с API защиты данных
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/19/2018
 
 [!code-csharp[Main](../../security/data-protection/using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
 
-При создании предохранителя необходимо указать один или несколько [строки цели](consumer-apis/purpose-strings.md). Строка цели обеспечивает изоляцию между потребителей. Например предохранителя, созданные с целью строку «зеленый» не сможет снять защиту данных, предоставленных предохранитель с целью «фиолетовый».
+При создании предохранителя необходимо указать один или несколько [строки цели](consumer-apis/purpose-strings.md). Строка цели обеспечивает изоляцию между потребителей. Например предохранителя, созданные с целью строку «зеленый» не смогут снять защиту данных, предоставленных предохранитель с целью «фиолетовый».
 
 >[!TIP]
 > Экземпляры `IDataProtectionProvider` и `IDataProtector` потокобезопасны для нескольких клиентов. Он предназначен, когда компонент получает ссылку на `IDataProtector` через вызов `CreateProtector`, он будет использовать эту ссылку для нескольких вызовов `Protect` и `Unprotect`.

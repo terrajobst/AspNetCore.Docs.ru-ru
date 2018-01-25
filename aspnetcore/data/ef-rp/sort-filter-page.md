@@ -8,11 +8,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 08f00e183dd8a8daa883d0b9ff15698b3a39f625
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 24649374b71da39d638d943617a219d45f064846
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-razor-pages-3-of-8"></a>Сортировка, фильтрация, разбиение по страницам и группирование - Core EF со страницами Razor (3 8)
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 01/19/2018
 
 [!code-html[](intro/samples/cu/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
-В предыдущем коде используется `<form>` [тег вспомогательный](xref:mvc/views/tag-helpers/intro) Добавление поиска текстовое поле и кнопку. По умолчанию `<form>` тег вспомогательный отправки данных с помощью POST. С помощью запроса POST передачи параметров в тексте сообщения HTTP, а не в URL-адрес. При использовании HTTP GET данные формы передается как строки запроса в URL-АДРЕСЕ. Передача данных со строками запроса позволяет пользователям bookmark URL-адрес. [Рекомендации W3C](https://www.w3.org/2001/tag/doc/whenToUseGet.html) Майкрософт рекомендует использовать GET, если действие не приводит к появлению обновления.
+В предыдущем коде используется `<form>` [тег вспомогательный](xref:mvc/views/tag-helpers/intro) Добавление поиска текстовое поле и кнопку. По умолчанию `<form>` тег вспомогательный отправки данных с помощью POST. С помощью запроса POST передачи параметров в тексте сообщения HTTP, а не в URL-адрес. При использовании HTTP GET данные формы передается как строки запроса в URL-АДРЕСЕ. Передача данных со строками запроса позволяет пользователям bookmark URL-адрес. [Рекомендации W3C](https://www.w3.org/2001/tag/doc/whenToUseGet.html) Майкрософт рекомендует использовать GET при действия не приведут к обновления.
 
 Проверьте работу приложения:
 

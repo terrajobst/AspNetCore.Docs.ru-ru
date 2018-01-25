@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/user-based-authorization-cs
 msc.type: authoredcontent
-ms.openlocfilehash: da03a9c3e22f5a2164534ef7896b5558beb8b6f4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5bee98878b5191a096b851c65aaea19ad989f608
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="user-based-authorization-c"></a>Авторизация на основе пользователя (C#)
 ====================
@@ -39,9 +39,9 @@ ASP.NET позволяет легко определить правила авт
 
 Как было сказано в [ *Общие сведения для проверки подлинности форм* ](../introduction/an-overview-of-forms-authentication-cs.md) учебник, когда среда выполнения ASP.NET обрабатывает запрос для ресурса запроса ASP.NET Возводит число событий в течение его жизненного цикла. *Модули HTTP* — управляемые классы, в которых код выполняется в ответ на определенное событие в жизненном цикле запроса. ASP.NET поставляется с ряд модулей HTTP, выполнять основные задачи в фоновом.
 
-Один такой модуль HTTP является [ `FormsAuthenticationModule` ](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthenticationmodule.aspx). Как описано в предыдущих занятий, основная функция `FormsAuthenticationModule` определяет удостоверение текущего запроса. Это достигается путем проверки билета проверки подлинности форм, которая находится в файле cookie или внедрен в URL-адрес. Этот код выполняется во время [ `AuthenticateRequest` событие](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authenticaterequest.aspx).
+Один такой модуль HTTP является [ `FormsAuthenticationModule` ](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx). Как описано в предыдущих занятий, основная функция `FormsAuthenticationModule` определяет удостоверение текущего запроса. Это достигается путем проверки билета проверки подлинности форм, которая находится в файле cookie или внедрен в URL-адрес. Этот код выполняется во время [ `AuthenticateRequest` событие](https://msdn.microsoft.com/library/system.web.httpapplication.authenticaterequest.aspx).
 
-Является другим важным HTTP-модуля [ `UrlAuthorizationModule` ](https://msdn.microsoft.com/en-us/library/system.web.security.urlauthorizationmodule.aspx), который вызывается в ответ на [ `AuthorizeRequest` событий](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authorizerequest.aspx) (которого будет происходить после `AuthenticateRequest` событий). `UrlAuthorizationModule` Проверяет разметку настройки в `Web.config` для определения, имеет ли текущее удостоверение полномочия на указанной странице. Этот процесс называется *Авторизация URL-адреса*.
+Является другим важным HTTP-модуля [ `UrlAuthorizationModule` ](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx), который вызывается в ответ на [ `AuthorizeRequest` событий](https://msdn.microsoft.com/library/system.web.httpapplication.authorizerequest.aspx) (которого будет происходить после `AuthenticateRequest` событий). `UrlAuthorizationModule` Проверяет разметку настройки в `Web.config` для определения, имеет ли текущее удостоверение полномочия на указанной странице. Этот процесс называется *Авторизация URL-адреса*.
 
 Мы рассмотрим синтаксис для правила авторизации URL-адреса на шаге 1, но сначала давайте рассмотрим, что `UrlAuthorizationModule` в зависимости от того, авторизован ли запрос или нет. Если `UrlAuthorizationModule` определяет, что запрос имеет такое разрешение, то он не выполняет никаких действий и запроса продолжается по жизненному циклу. Тем не менее если запрос является *не* прав, то `UrlAuthorizationModule` прерывает жизненный цикл и указывает, что `Response` возвращаемого объекта [HTTP 401 несанкционированный](http://www.checkupdown.com/status/E401.html) состояния. При использовании проверки подлинности форм это состояние HTTP 401 никогда не возвращается клиенту, поскольку если `FormsAuthenticationModule` обнаруживает ошибку HTTP 401, находится в состоянии изменяет его [перенаправления HTTP 302](http://www.checkupdown.com/status/E302.html) на страницу входа.
 
@@ -70,7 +70,7 @@ ASP.NET позволяет легко определить правила авт
 Рабочий процесс, показанная на рисунке 2 можно быстро befuddle даже большинство компьютера грамотный посетителя. Мы рассмотрим способы во избежание этого путать цикла на шаге 2.
 
 > [!NOTE]
-> ASP.NET использует два механизма, чтобы определить, может ли текущий пользователь доступ к определенной веб-страницы: авторизация URL-адреса и авторизация файла. Авторизация файла реализуется [ `FileAuthorizationModule` ](https://msdn.microsoft.com/en-us/library/system.web.security.fileauthorizationmodule.aspx), определяющий центр по журналу запрошенного файлы списки управления доступом. Авторизация файла чаще всего используется с проверкой подлинности Windows, так как ACL представляют собой разрешения, которые применяются к учетным записям Windows. При использовании проверки подлинности форм, все запросы системного уровня операционной системы и файл выполняемых учетную запись Windows, независимо от пользователя на узле. После этого учебника посвящены форм проверки подлинности, мы не будем рассматривать авторизация файла.
+> ASP.NET использует два механизма, чтобы определить, может ли текущий пользователь доступ к определенной веб-страницы: авторизация URL-адреса и авторизация файла. Авторизация файла реализуется [ `FileAuthorizationModule` ](https://msdn.microsoft.com/library/system.web.security.fileauthorizationmodule.aspx), определяющий центр по журналу запрошенного файлы списки управления доступом. Авторизация файла чаще всего используется с проверкой подлинности Windows, так как ACL представляют собой разрешения, которые применяются к учетным записям Windows. При использовании проверки подлинности форм, все запросы системного уровня операционной системы и файл выполняемых учетную запись Windows, независимо от пользователя на узле. После этого учебника посвящены форм проверки подлинности, мы не будем рассматривать авторизация файла.
 
 
 ### <a name="the-scope-of-url-authorization"></a>Область авторизации URL-адрес
@@ -87,7 +87,7 @@ IIS 7, однако позволяет для интеграции служб II
 
 ## <a name="step-1-defining-url-authorization-rules-inwebconfig"></a>Шаг 1: Определение правила авторизации URL-адреса в`Web.config`
 
-`UrlAuthorizationModule` Определяет, следует ли предоставить или запретить доступ к ресурсу для конкретное удостоверение на основе правил авторизации URL-адреса, определенные в конфигурации приложения. Правила авторизации выраженная в [ `<authorization>` элемент](https://msdn.microsoft.com/en-us/library/8d82143t.aspx) в виде `<allow>` и `<deny>` дочерних элементов. Каждый `<allow>` и `<deny>` можно задать дочерний элемент:
+`UrlAuthorizationModule` Определяет, следует ли предоставить или запретить доступ к ресурсу для конкретное удостоверение на основе правил авторизации URL-адреса, определенные в конфигурации приложения. Правила авторизации выраженная в [ `<authorization>` элемент](https://msdn.microsoft.com/library/8d82143t.aspx) в виде `<allow>` и `<deny>` дочерних элементов. Каждый `<allow>` и `<deny>` можно задать дочерний элемент:
 
 - Конкретного пользователя
 - Разделенный запятыми список пользователей
@@ -230,10 +230,10 @@ ASP.NET позволяет легко определить правила авт
 
 [!code-csharp[Main](user-based-authorization-cs/samples/sample10.cs)]
 
-Приведенный выше код использует [ `DirectoryInfo` класса](https://msdn.microsoft.com/en-us/library/system.io.directoryinfo.aspx) для получения списка файлов в корневой папке приложения. [ `GetFiles()` Метод](https://msdn.microsoft.com/en-us/library/system.io.directoryinfo.getfiles.aspx) возвращает все файлы в каталоге как массив [ `FileInfo` объектов](https://msdn.microsoft.com/en-us/library/system.io.fileinfo.aspx), который затем привязывается к GridView. `FileInfo` Объект имеет целый ряд свойств, таких как `Name`, `Length`, и `IsReadOnly`, среди прочего. Как видно из его декларативная разметка GridView выведет на экран только `Name` и `Length` свойства.
+Приведенный выше код использует [ `DirectoryInfo` класса](https://msdn.microsoft.com/library/system.io.directoryinfo.aspx) для получения списка файлов в корневой папке приложения. [ `GetFiles()` Метод](https://msdn.microsoft.com/library/system.io.directoryinfo.getfiles.aspx) возвращает все файлы в каталоге как массив [ `FileInfo` объектов](https://msdn.microsoft.com/library/system.io.fileinfo.aspx), который затем привязывается к GridView. `FileInfo` Объект имеет целый ряд свойств, таких как `Name`, `Length`, и `IsReadOnly`, среди прочего. Как видно из его декларативная разметка GridView выведет на экран только `Name` и `Length` свойства.
 
 > [!NOTE]
-> `DirectoryInfo` И `FileInfo` классы находятся в [ `System.IO` пространства имен](https://msdn.microsoft.com/en-us/library/system.io.aspx). Таким образом, потребуются либо в начале эти имена классов с именами пространства имен или пространства имен, импортированные в файл класса (через `using System.IO`).
+> `DirectoryInfo` И `FileInfo` классы находятся в [ `System.IO` пространства имен](https://msdn.microsoft.com/library/system.io.aspx). Таким образом, потребуются либо в начале эти имена классов с именами пространства имен или пространства имен, импортированные в файл класса (через `using System.IO`).
 
 
 Занять некоторое время на эту страницу через браузер. Появится список файлов, находящихся в корневом каталоге приложения. Щелкнув любой из представления или удаления элементов управления LinkButton вызовет обратную передачу, но никаких действий не будет возникать, если еще не знаем создать необходимые обработчики событий.
@@ -248,11 +248,11 @@ ASP.NET позволяет легко определить правила авт
 
 [!code-aspx[Main](user-based-authorization-cs/samples/sample11.aspx)]
 
-Создайте обработчик событий для элемента GridView [ `SelectedIndexChanged` событие](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selectedindexchanged.aspx) и добавьте следующий код:
+Создайте обработчик событий для элемента GridView [ `SelectedIndexChanged` событие](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedindexchanged.aspx) и добавьте следующий код:
 
 [!code-csharp[Main](user-based-authorization-cs/samples/sample12.cs)]
 
-Этот код использует GridView `SelectedValue` свойства, чтобы определить полное имя выбранного файла. На внутреннем уровне `DataKeys` Коллекция указывается для получения `SelectedValue`, поэтому крайне важно установить GridView `DataKeyNames` на имя, как описано ранее в этом шаге. [ `File` Класса](https://msdn.microsoft.com/en-us/library/system.io.file.aspx) используется для считывания содержимое выбранного файла в строку, которая затем присваивается `FileContents` текстового поля `Text` свойства, поэтому отображается содержимое файла, выбранного на странице.
+Этот код использует GridView `SelectedValue` свойства, чтобы определить полное имя выбранного файла. На внутреннем уровне `DataKeys` Коллекция указывается для получения `SelectedValue`, поэтому крайне важно установить GridView `DataKeyNames` на имя, как описано ранее в этом шаге. [ `File` Класса](https://msdn.microsoft.com/library/system.io.file.aspx) используется для считывания содержимое выбранного файла в строку, которая затем присваивается `FileContents` текстового поля `Text` свойства, поэтому отображается содержимое файла, выбранного на странице.
 
 
 [![Содержимое выбранного файла отображаются в текстовом поле](user-based-authorization-cs/_static/image23.png)](user-based-authorization-cs/_static/image22.png)
@@ -264,7 +264,7 @@ ASP.NET позволяет легко определить правила авт
 > Если просмотреть содержимое файла, содержащего разметку HTML, а затем попытаться просмотреть или удалить файл, вы получите `HttpRequestValidationException` ошибки. Это происходит потому, что при обратной передаче содержимого текстового поля отправляются обратно в веб-сервере. По умолчанию ASP.NET вызывает `HttpRequestValidationException` ошибка при обнаружении потенциально опасные обратной передачи содержимого, например HTML-разметка. Чтобы отключить Эта ошибка возникнет, отключить проверку запросов страницы, добавив `ValidateRequest="false"` для `@Page` директивы. Дополнительные сведения о преимуществах проверки запроса в виде, а также какие меры предосторожности необходимо предпринять при отключении, чтение [проверки запроса - предотвращение атак скрипт](https://asp.net/learn/whitepapers/request-validation/).
 
 
-Наконец, добавьте обработчик событий следующим кодом для GridView [ `RowDeleting` событие](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.rowdeleting.aspx):
+Наконец, добавьте обработчик событий следующим кодом для GridView [ `RowDeleting` событие](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rowdeleting.aspx):
 
 [!code-csharp[Main](user-based-authorization-cs/samples/sample13.cs)]
 
@@ -358,7 +358,7 @@ ASP.NET позволяет легко определить правила авт
 
 На шаге 3 мы анонимным пользователям просматривать содержимое файла не разрешено и запрещено все пользователи, но Tito удаление файлов. Это выполнялось, скрывая элементы интерфейса пользователя для несанкционированного посетителей через декларативные и программные методы. В нашем примере простой правильно скрытие элементов пользовательского интерфейса был простые, но как обстоят дела сложнее, узлы которых может быть много различных способов выполнения той же функциональности? В ограничивает использование этой функции неправомочным пользователям, что произойдет, если забыть скрыть или отключить все элементы интерфейса пользователя?
 
-Использовать, чтобы гарантировать, что определенную часть функциональные возможности не доступны для неавторизованный пользователь имеет для оформления класса или метода с [ `PrincipalPermission` атрибут](https://msdn.microsoft.com/en-us/library/system.security.permissions.principalpermissionattribute.aspx). Когда среда выполнения .NET используется класс или выполняет одну из его методов, он проверяет убедитесь в наличии разрешений на использование класса или выполнить метод текущего контекста безопасности. `PrincipalPermission` Атрибут предоставляет механизм, по которому можно определить эти правила.
+Использовать, чтобы гарантировать, что определенную часть функциональные возможности не доступны для неавторизованный пользователь имеет для оформления класса или метода с [ `PrincipalPermission` атрибут](https://msdn.microsoft.com/library/system.security.permissions.principalpermissionattribute.aspx). Когда среда выполнения .NET используется класс или выполняет одну из его методов, он проверяет убедитесь в наличии разрешений на использование класса или выполнить метод текущего контекста безопасности. `PrincipalPermission` Атрибут предоставляет механизм, по которому можно определить эти правила.
 
 Давайте демонстрируют использование `PrincipalPermission` атрибута в GridView `SelectedIndexChanged` и `RowDeleting` обработчики событий, чтобы запретить выполнение анонимные пользователи и пользователи, не являющиеся Tito, соответственно. Нам нужно всего лишь добавить соответствующий атрибут поверх каждого определения функции:
 
@@ -397,13 +397,13 @@ ASP.NET позволяет легко определить правила авт
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
 - [Добавление правила авторизации для бизнеса и уровни данных с помощью`PrincipalPermissionAttributes`](https://weblogs.asp.net/scottgu/archive/2006/10/04/Tip_2F00_Trick_3A00_-Adding-Authorization-Rules-to-Business-and-Data-Layers-using-PrincipalPermissionAttributes.aspx)
-- [Проверки подлинности ASP.NET](https://msdn.microsoft.com/en-us/library/wce3kxhd.aspx)
+- [Проверки подлинности ASP.NET](https://msdn.microsoft.com/library/wce3kxhd.aspx)
 - [Изменения между безопасности служб IIS 7 и IIS 6](https://www.iis.net/articles/view.aspx/IIS7/Managing-IIS7/Configuring-Security/Changes-between-IIS6-and-IIS7-Security)
-- [Настройка отдельных файлов и подкаталогов](https://msdn.microsoft.com/en-us/library/6hbkh9s7.aspx)
+- [Настройка отдельных файлов и подкаталогов](https://msdn.microsoft.com/library/6hbkh9s7.aspx)
 - [Ограничение функций изменения данных на основе пользователя](../../data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-cs.md)
 - [Примеры использования элемента управления LoginView](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/loginview.aspx)
 - [Основные сведения об авторизации URL-адресов для IIS7](https://www.iis.net/articles/view.aspx/IIS7/Managing-IIS7/Configuring-Security/URL-Authorization/Understanding-IIS7-URL-Authorization)
-- [`UrlAuthorizationModule`Техническая документация](https://msdn.microsoft.com/en-us/library/system.web.security.urlauthorizationmodule.aspx)
+- [`UrlAuthorizationModule`Техническая документация](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx)
 - [Работа с данными в ASP.NET 2.0](../../data-access/index.md)
 
 ### <a name="about-the-author"></a>Об авторе

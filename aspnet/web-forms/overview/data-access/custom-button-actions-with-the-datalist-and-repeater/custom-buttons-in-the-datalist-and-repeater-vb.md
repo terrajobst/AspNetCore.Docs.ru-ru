@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 14e245f5fd25079b4ee1dee566ca451f955a8b25
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fc6c297f08790cdcc74867df21e32258017c5a7d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="custom-buttons-in-the-datalist-and-repeater-vb"></a>Пользовательские кнопки в DataList и повторителя (Visual Basic)
 ====================
@@ -114,17 +114,17 @@ ms.lasthandoff: 11/10/2017
 
 При нажатии кнопки, обратная передача и s DataList или повторителя `ItemCommand` вызывается событие. Обработчик событий передается кнопку s `CommandName` и `CommandArgument` значения.
 
-Создайте обработчик событий для повторителя s `ItemCommand` событий и обратите внимание на второй параметр, переданный в обработчик событий (с именем `e`). Этот второй параметр имеет тип [ `RepeaterCommandEventArgs` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeatercommandeventargs.aspx) и имеет следующие четыре свойства:
+Создайте обработчик событий для повторителя s `ItemCommand` событий и обратите внимание на второй параметр, переданный в обработчик событий (с именем `e`). Этот второй параметр имеет тип [ `RepeaterCommandEventArgs` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeatercommandeventargs.aspx) и имеет следующие четыре свойства:
 
 - `CommandArgument`значение нажатой кнопке s `CommandArgument` свойство
 - `CommandName`значение кнопки s `CommandName` свойство
 - `CommandSource`ссылку на элемент управления button, который был щелкнут
-- `Item`ссылку на [ `RepeaterItem` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeateritem.aspx) , содержащий кнопки, которая была нажата; каждая запись, привязанный к повторителя представляется в виде`RepeaterItem`
+- `Item`ссылку на [ `RepeaterItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeateritem.aspx) , содержащий кнопки, которая была нажата; каждая запись, привязанный к повторителя представляется в виде`RepeaterItem`
 
 С момента выбранной категории s `CategoryID` переданными в виде `CommandArgument` свойства, мы можем получить набор продукты, связанные с выбранной категории в `ItemCommand` обработчика событий. Эти продукты затем могут быть привязаны к элементу управления BulletedList в `ItemTemplate` (который мы хранять еще для добавления). Все остается, затем — добавление маркированный список ссылок на него в `ItemCommand` обработчик событий и привязать к нему набор продуктов для выбранной категории, мы исследуем в этом выпуске на шаге 4.
 
 > [!NOTE]
-> Элемент управления DataList s `ItemCommand` обработчик событий передается объект типа [ `DataListCommandEventArgs` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalistcommandeventargs.aspx), который предоставляет те же четыре свойства, как `RepeaterCommandEventArgs` класса.
+> Элемент управления DataList s `ItemCommand` обработчик событий передается объект типа [ `DataListCommandEventArgs` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistcommandeventargs.aspx), который предоставляет те же четыре свойства, как `RepeaterCommandEventArgs` класса.
 
 
 ## <a name="step-4-displaying-the-selected-category-s-products-in-a-bulleted-list"></a>Шаг 4: Отображение s выбранной категории продуктов в виде маркированного списка

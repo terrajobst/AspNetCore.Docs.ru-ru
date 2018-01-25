@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2f5cb1712922c355c99bde9f8252dc84f1f590ec
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a9020115e6348d30350f8fff493efe88bd0d4c37
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="interacting-with-the-master-page-from-the-content-page-vb"></a>Взаимодействие с главной страницы на странице содержимого (Visual Basic)
 ====================
@@ -192,9 +192,9 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="using-the-loosely-typedpagemasterproperty"></a>С помощью слабо типизированной`Page.Master`свойство
 
-Все веб-страницах ASP.NET должны быть производными от `Page` класс, который находится в `System.Web.UI` пространства имен. `Page` Класс включает [ `Master` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.page.master.aspx) , возвращающее ссылку на главную страницу. Если страница не имеет главной страницы `Master` возвращает `Nothing`.
+Все веб-страницах ASP.NET должны быть производными от `Page` класс, который находится в `System.Web.UI` пространства имен. `Page` Класс включает [ `Master` свойство](https://msdn.microsoft.com/library/system.web.ui.page.master.aspx) , возвращающее ссылку на главную страницу. Если страница не имеет главной страницы `Master` возвращает `Nothing`.
 
-`Master` Свойство возвращает объект типа [ `MasterPage` ](https://msdn.microsoft.com/en-us/library/system.web.ui.masterpage.aspx) (также расположен в `System.Web.UI` пространства имен) которого является базовым типом, от которого наследуют все главные страницы. Таким образом, чтобы использовать открытые свойства или методы, определенные в нашем сайте главной страницы, нам необходимо привести `MasterPage` объект, возвращенный из `Master` свойство к соответствующему типу. Так как мы назвали наш файл главной страницы `Site.master`, класс кода `Site`. Таким образом, следующий пример кода преобразует `Page.Master` свойства к экземпляру `Site` класса.
+`Master` Свойство возвращает объект типа [ `MasterPage` ](https://msdn.microsoft.com/library/system.web.ui.masterpage.aspx) (также расположен в `System.Web.UI` пространства имен) которого является базовым типом, от которого наследуют все главные страницы. Таким образом, чтобы использовать открытые свойства или методы, определенные в нашем сайте главной страницы, нам необходимо привести `MasterPage` объект, возвращенный из `Master` свойство к соответствующему типу. Так как мы назвали наш файл главной страницы `Site.master`, класс кода `Site`. Таким образом, следующий пример кода преобразует `Page.Master` свойства к экземпляру `Site` класса.
 
 
 [!code-vb[Main](interacting-with-the-master-page-from-the-content-page-vb/samples/sample8.vb)]
@@ -217,7 +217,7 @@ ms.lasthandoff: 11/10/2017
 
 Автоматическое генерирование кода, выполняемую при посещении страницы ASP.NET создает условия для некоторых вместо источником интересных и полезных возможностей. В случае главные страницы, если мы сообщаем ядро ASP.NET главную страницу используется нашу страницу содержимого он создает строго типизированной `Master` свойство для нас.
 
-Используйте [ `@MasterType` директивы](https://msdn.microsoft.com/en-us/library/ms228274.aspx) для оповещения подсистемы тип страницы содержимого главной страницы ASP.NET. `@MasterType` Директива может принимать либо имя типа главной страницы или пути к файлу. Чтобы указать, что `AddProduct.aspx` страница использует `Site.master` как его Главная страница, добавьте следующую директиву в начало `AddProduct.aspx`:
+Используйте [ `@MasterType` директивы](https://msdn.microsoft.com/library/ms228274.aspx) для оповещения подсистемы тип страницы содержимого главной страницы ASP.NET. `@MasterType` Директива может принимать либо имя типа главной страницы или пути к файлу. Чтобы указать, что `AddProduct.aspx` страница использует `Site.master` как его Главная страница, добавьте следующую директиву в начало `AddProduct.aspx`:
 
 
 [!code-aspx[Main](interacting-with-the-master-page-from-the-content-page-vb/samples/sample9.aspx)]

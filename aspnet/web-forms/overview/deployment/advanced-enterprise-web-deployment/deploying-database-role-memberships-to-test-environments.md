@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-database-role-memberships-to-test-environments
 msc.type: authoredcontent
-ms.openlocfilehash: ac780c6cd522f9216cafe3b5f23772ef6ebf5d11
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 226c28622f76e866fba1fc33cf9b9b7a01e5295b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-database-role-memberships-to-test-environments"></a>Развертывание членства в роли базы данных в тестовой среде
 ====================
@@ -87,7 +87,7 @@ ms.lasthandoff: 11/10/2017
 
 
 > [!NOTE]
-> Дополнительные сведения о параметрах командной строки sqlcmd см. в разделе [программы sqlcmd](https://msdn.microsoft.com/en-us/library/ms162773.aspx).
+> Дополнительные сведения о параметрах командной строки sqlcmd см. в разделе [программы sqlcmd](https://msdn.microsoft.com/library/ms162773.aspx).
 
 
 Прежде чем внедрять этой команды в целевой объект MSBuild, следует принять во внимание при каких условиях требуется для выполнения сценария:
@@ -130,7 +130,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="further-reading"></a>Дополнительные сведения
 
-Дополнительные сведения об использовании VSDBCMD для развертывания проектов базы данных см. в разделе [развертывание проектов базы данных](../web-deployment-in-the-enterprise/deploying-database-projects.md). Рекомендации по настройке развертывания базы данных для различных целевых средах см. в разделе [Настройка развертывания базы данных для нескольких сред](customizing-database-deployments-for-multiple-environments.md). Дополнительные сведения об использовании пользовательские файлы проекта MSBuild для управления процессом развертывания см. в разделе [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md) и [основные сведения о процессе построения](../web-deployment-in-the-enterprise/understanding-the-build-process.md). Дополнительные сведения о параметрах командной строки sqlcmd см. в разделе [программы sqlcmd](https://msdn.microsoft.com/en-us/library/ms162773.aspx).
+Дополнительные сведения об использовании VSDBCMD для развертывания проектов базы данных см. в разделе [развертывание проектов базы данных](../web-deployment-in-the-enterprise/deploying-database-projects.md). Рекомендации по настройке развертывания базы данных для различных целевых средах см. в разделе [Настройка развертывания базы данных для нескольких сред](customizing-database-deployments-for-multiple-environments.md). Дополнительные сведения об использовании пользовательские файлы проекта MSBuild для управления процессом развертывания см. в разделе [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md) и [основные сведения о процессе построения](../web-deployment-in-the-enterprise/understanding-the-build-process.md). Дополнительные сведения о параметрах командной строки sqlcmd см. в разделе [программы sqlcmd](https://msdn.microsoft.com/library/ms162773.aspx).
 
 >[!div class="step-by-step"]
 [Назад](customizing-database-deployments-for-multiple-environments.md)

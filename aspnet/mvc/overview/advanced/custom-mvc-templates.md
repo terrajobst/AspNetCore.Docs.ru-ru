@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/advanced/custom-mvc-templates
 msc.type: authoredcontent
-ms.openlocfilehash: a1fe1844e582f402a1eed9ddf10ee249e856b083
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c3ddd4e341511f520927e924b25d890088adb69e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="custom-mvc-template"></a>Пользовательский шаблон
 ====================
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/10/2017
 
 Добавление настраиваемых шаблонов было достаточно сложный процесс, который полагается на отображение новых шаблонов в мастере проекта MVC путем изменения реестра. Автор шаблона было включите его в MSI-ФАЙЛ, убедитесь, что необходимые записи реестра будет создана во время установки. Вместо этого было сделать ZIP-файл, содержащий шаблон, доступный и позволить конечным пользователем вручную создать необходимые записи реестра.
 
-Ни один из упомянутых выше подходов является идеальным, мы решили использовать некоторые из существующей инфраструктуры, предоставляемый [VSIX](https://msdn.microsoft.com/en-us/library/ff363239.aspx) расширения, чтобы упростить автора, распространения и установки пользовательских шаблонов MVC, начиная с MVC 4 для Visual Studio 2012. Ниже приведены некоторые преимущества этого подхода.
+Ни один из упомянутых выше подходов является идеальным, мы решили использовать некоторые из существующей инфраструктуры, предоставляемый [VSIX](https://msdn.microsoft.com/library/ff363239.aspx) расширения, чтобы упростить автора, распространения и установки пользовательских шаблонов MVC, начиная с MVC 4 для Visual Studio 2012. Ниже приведены некоторые преимущества этого подхода.
 
 - Расширение VSIX может содержать несколько шаблонов, поддержки различных языков (C# и Visual Basic) и несколько обработчиков представлений (ASPX- и Razor).
 - Расширение VSIX можно назначить несколько номеров SKU Visual Studio Express SKU включая.
@@ -63,15 +63,15 @@ ms.lasthandoff: 11/10/2017
 
 **Активы** вкладка используется для добавления всех файлов содержимого в VSIX. Так как MVC требует пользовательские метаданные будут изменять исходные XML-файл манифеста VSIX вместо использования **активы** можно добавлять содержимое. Начните с добавления содержимого шаблона в проект VSIX. Очень важно, что структура папок и содержимого отражает проекта. В приведенном ниже примере содержит четыре шаблонов проектов, которые были получены на основе шаблона проекта Basic MVC. Убедитесь, что все файлы, составляющие шаблон проекта (все элементы, под папка Шаблоны_проекта) добавляются **содержимого** itemgroup в VSIX-ФАЙЛ проекта файл и что каждый элемент содержит  **CopyToOutputDirectory** и **IncludeInVsix** метаданные набора, как показано в следующем примере.
 
-&lt;Содержимое включать =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicWeb.config&quot;&gt;
+&lt;Content Include=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicWeb.config&quot;&gt;
 
 &lt;CopyToOutputDirectory&gt;всегда&lt;/CopyToOutputDirectory&gt;
 
 &lt;IncludeInVSIX&gt;true&lt;/IncludeInVSIX&gt;
 
-&lt;/ Содержимого&gt;
+&lt;/Content&gt;
 
-В противном случае IDE попытается скомпилировать содержимое шаблона при создании VSIX и скорее всего появится сообщение об ошибке. Файлы кода в шаблонах часто содержат специальные [параметров шаблона](https://msdn.microsoft.com/en-us/library/eehb4faa(v=vs.110).aspx) используется в Visual Studio, когда шаблон проекта создается и поэтому не может быть скомпилирован в Интегрированной среде разработки.
+В противном случае IDE попытается скомпилировать содержимое шаблона при создании VSIX и скорее всего появится сообщение об ошибке. Файлы кода в шаблонах часто содержат специальные [параметров шаблона](https://msdn.microsoft.com/library/eehb4faa(v=vs.110).aspx) используется в Visual Studio, когда шаблон проекта создается и поэтому не может быть скомпилирован в Интегрированной среде разработки.
 
 ![обозреватель решений](custom-mvc-templates/_static/image6.jpg)
 
@@ -83,19 +83,19 @@ ms.lasthandoff: 11/10/2017
 
 Только добавление файлов VSIX недостаточно для регистрации шаблонов с помощью мастера MVC. Необходимо предоставить сведения, например имя шаблона, описание, обработчиков представлений, поддерживаемых и язык программирования, мастер MVC. Эта информация передается в настраиваемые атрибуты, связанные с  **&lt;активов&gt;**  для каждого элемента **vstemplate** файла.
 
-&lt;Средства d:VsixSubPath =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx&quot;
+&lt;Asset d:VsixSubPath=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx&quot;
 
-Тип =&quot;Microsoft.VisualStudio.Mvc.Template&quot;
+Type=&quot;Microsoft.VisualStudio.Mvc.Template&quot;
 
-d:Source =&quot;файла&quot;
+d:Source=&quot;File&quot;
 
-Путь =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicMvcWebApplicationProjectTemplate.11.csaspx.vstemplate&quot;
+Path=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicMvcWebApplicationProjectTemplate.11.csaspx.vstemplate&quot;
 
-ProjectType =&quot;MVC&quot;
+ProjectType=&quot;MVC&quot;
 
-Language =&quot;C#&quot;
+Language=&quot;C#&quot;
 
-ViewEngine =&quot;Aspx&quot;
+ViewEngine=&quot;Aspx&quot;
 
 Идентификатор шаблона =&quot;MyMvcApplication&quot;
 

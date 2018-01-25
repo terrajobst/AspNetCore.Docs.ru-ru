@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/samples-list
 msc.type: content
-ms.openlocfilehash: 2f40cd4bebdd64c3a4b94cfc1e717fa4b304e57e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1e1f43bbeedfc052f0b3a3924f51b544a5a79dca
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="web-api-samples-list"></a>Список примеров веб-API
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/10/2017
 
 **Пример преобразования Bing** | [источника Visual STUDIO 2012](http://aspnet.codeplex.com/SourceControl/changeset/view/15dfe7e0759f#Samples%2fNet45%2fCS%2fHttpClient%2fBingTranslateSample%2fReadMe.txt)
 
-Показано, как вызвать [службы Microsoft Translator](https://msdn.microsoft.com/en-us/library/ff512419.aspx) с помощью **HttpClient** класса. API службы Microsoft Translator требует токена OAuth, который получает приложение, отправляя запрос к серверу Azure маркера для каждого запроса к службе преобразователя. Результат на сервере маркера передавались в запрос, отправляемый службе перевода. Перед запуском этого образца необходимо получить [ключ приложения из Azure Marketplace](https://msdn.microsoft.com/en-us/library/hh454950.aspx) и введите сведения в AccessTokenMessageHandler пример класса.
+Показано, как вызвать [службы Microsoft Translator](https://msdn.microsoft.com/library/ff512419.aspx) с помощью **HttpClient** класса. API службы Microsoft Translator требует токена OAuth, который получает приложение, отправляя запрос к серверу Azure маркера для каждого запроса к службе преобразователя. Результат на сервере маркера передавались в запрос, отправляемый службе перевода. Перед запуском этого образца необходимо получить [ключ приложения из Azure Marketplace](https://msdn.microsoft.com/library/hh454950.aspx) и введите сведения в AccessTokenMessageHandler пример класса.
 
 **Пример сопоставления Google** | [подробное описание](https://blogs.msdn.com/b/henrikn/archive/2012/02/17/downloading-a-google-map-to-local-file.aspx) | [источника Visual STUDIO 2012](http://aspnet.codeplex.com/SourceControl/changeset/view/15dfe7e0759f#Samples%2fNet45%2fCS%2fHttpClient%2fGoogleMapsSample%2fReadMe.txt)
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/10/2017
 
 **Отправка в образце хранилища больших двоичных объектов Azure файла** | [подробное описание](https://blogs.msdn.com/b/yaohuang1/archive/2012/07/02/asp-net-web-api-and-azure-blob-storage.aspx) | [источника Visual STUDIO 2012](http://aspnet.codeplex.com/SourceControl/changeset/view/61dfed023e50#Samples%2fNet45%2fCS%2fWebApi%2fAzureBlobsFileUploadSample%2fReadMe.txt)
 
-Этот пример аналогичен образец отправки файла, но вместо сохранение переданные файлы на локальном диске, он асинхронно передает файлы в [хранилища больших двоичных объектов Azure](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs) с помощью [Windows Azure SDK для .NET](https://www.windowsazure.com/en-us/develop/net/). Он также предоставляет механизм для перечисления больших двоичных объектов, находящихся в данный момент в [контейнера хранилища больших двоичных объектов Azure](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs). Попробуйте выполнить пример, запущенным по отношению к **эмулятор хранилища Azure** , который поставляется вместе с Azure SDK. Если у вас есть [учетной записи хранилища Azure](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs), можно выполнять на службу действительное хранилище.
+Этот пример аналогичен образец отправки файла, но вместо сохранение переданные файлы на локальном диске, он асинхронно передает файлы в [хранилища больших двоичных объектов Azure](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs) с помощью [Windows Azure SDK для .NET](https://www.windowsazure.com/develop/net/). Он также предоставляет механизм для перечисления больших двоичных объектов, находящихся в данный момент в [контейнера хранилища больших двоичных объектов Azure](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs). Попробуйте выполнить пример, запущенным по отношению к **эмулятор хранилища Azure** , который поставляется вместе с Azure SDK. Если у вас есть [учетной записи хранилища Azure](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs), можно выполнять на службу действительное хранилище.
 
 **Пример конвейера обработчик сообщений HTTP** | [подробное описание](https://blogs.msdn.com/b/henrikn/archive/2012/08/07/httpclient-httpclienthandler-and-httpwebrequesthandler.aspx) | [источника VS 2010](http://aspnet.codeplex.com/SourceControl/changeset/view/15dfe7e0759f#Samples%2fNet4%2fCS%2fWebApi%2fHttpMessageHandlerPipelineSample%2fReadMe.txt)
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: 56931827a1a1edf003d2662b2d36964b9b6f3761
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f92470b2022f343cfd6d822abb255dc19947b4d1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="signalr-1x-hubs-api-guide---javascript-client"></a>Руководство API концентраторов 1.x SignalR - клиент JavaScript
 ====================
@@ -61,7 +61,7 @@ ms.lasthandoff: 11/10/2017
 - [Справочник по API концентраторов SignalR - сервера](../guide-to-the-api/hubs-api-guide-server.md)
 - [Справочник по API концентраторов SignalR - клиент .NET](../guide-to-the-api/hubs-api-guide-net-client.md)
 
-Ссылки на разделы справки по API, до версии .NET 4.5 API-интерфейса. Если вы используете .NET 4, см. раздел [версии .NET 4 разделов API](https://msdn.microsoft.com/en-us/library/jj891075(v=vs.100).aspx).
+Ссылки на разделы справки по API, до версии .NET 4.5 API-интерфейса. Если вы используете .NET 4, см. раздел [версии .NET 4 разделов API](https://msdn.microsoft.com/library/jj891075(v=vs.100).aspx).
 
 <a id="genproxy"></a>
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-aspx[Main](signalr-1x-hubs-api-guide-javascript-client/samples/sample7.aspx)]
 
-Как правило используется тот же метод для указания URL-адрес «/ signalr/концентраторов», используемого для файлов CSS и JavaScript. При указании URL-адрес без использования тильда в некоторых сценариях приложение будет работать правильно при тестирования в Visual Studio с помощью IIS Express, но завершится с ошибкой 404 при развертывании до полной версии IIS. Дополнительные сведения см. в разделе **разрешения ссылки на ресурсы на корневом уровне** в [веб-серверов в Visual Studio для веб-проектов ASP.NET](https://msdn.microsoft.com/en-us/library/58wxa9w5.aspx) на сайте MSDN.
+Как правило используется тот же метод для указания URL-адрес «/ signalr/концентраторов», используемого для файлов CSS и JavaScript. При указании URL-адрес без использования тильда в некоторых сценариях приложение будет работать правильно при тестирования в Visual Studio с помощью IIS Express, но завершится с ошибкой 404 при развертывании до полной версии IIS. Дополнительные сведения см. в разделе **разрешения ссылки на ресурсы на корневом уровне** в [веб-серверов в Visual Studio для веб-проектов ASP.NET](https://msdn.microsoft.com/library/58wxa9w5.aspx) на сайте MSDN.
 
 При запуске веб-проекта в Visual Studio 2012 в режиме отладки, и при использовании Internet Explorer как браузер, можно просмотреть файл прокси в **обозревателе решений** под **документов скрипта**, как показано в на рисунке.
 

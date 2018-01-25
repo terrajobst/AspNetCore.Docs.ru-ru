@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 3c5abe84a5c7cc399e0586e680a414fab7a26c1d
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: bc1cfe0d6ee88a0af49cdff9ce77ad42f57b95f7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="file-uploads-in-aspnet-core"></a>В ASP.NET Core передачи файлов
 
@@ -199,4 +199,4 @@ The request filtering module is configured to deny a request that exceeds the re
 
 ### <a name="null-reference-exception-with-iformfile"></a>Пустая ссылка на исключение IFormFile
 
-Если ваш контроллер принимает передать файлы с помощью `IFormFile` , но вы можете найти значение всегда равно null, убедитесь, что формы HTML: необходимо указать `enctype` значение `multipart/form-data`. Если этот атрибут не задан для `<form>` элемент, не происходит отправка файла и любую границу `IFormFile` аргументы будут иметь значение null.
+Если ваш контроллер принимает передать файлы с помощью `IFormFile` , но вы можете найти значение всегда равно null, убедитесь, что формы HTML: необходимо указать `enctype` значение `multipart/form-data`. Если этот атрибут не задан на `<form>` элемент, отправки файла не произойдет и любую границу `IFormFile` аргументы будут иметь значение null.

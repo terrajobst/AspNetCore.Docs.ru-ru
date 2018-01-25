@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 7697763b97e36304d686c77e8cedd060d630c530
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aeea122636f5235364e6a40cb6e041b1fe221317
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-7"></a>Приступая к работе с базой данных Entity Framework 4.0 сначала и форм ASP.NET 4 веб - часть 7
 ====================
@@ -93,7 +93,7 @@ ms.lasthandoff: 11/10/2017
 
 В том же **сведения о сопоставлении** окна, карты `Update` функция `UpdateStudent` хранимой процедуры (Убедитесь, что указан `FirstMidName` как значение параметра для `FirstName`, как это было сделано для `Insert` Хранимая процедура) и `Delete` функция `DeletePerson` хранимой процедуры.
 
-[!["Image01"](the-entity-framework-and-aspnet-getting-started-part-7/_static/image14.png)](the-entity-framework-and-aspnet-getting-started-part-7/_static/image13.png)
+[![image01](the-entity-framework-and-aspnet-getting-started-part-7/_static/image14.png)](the-entity-framework-and-aspnet-getting-started-part-7/_static/image13.png)
 
 Выполните ту же процедуру, чтобы сопоставить insert, update и delete хранимых процедур для инструкторов для `Instructor` сущности.
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 11/10/2017
 
 На странице теперь используется `GetCourses` хранимой процедуры для получения списка всех курсов. Запустите страницу, чтобы убедиться, что он работает, как раньше.
 
-(Свойства навигации сущностей, полученные с помощью хранимой процедуры может не будут заполнены автоматически данные, связанные с этими сущностями, в зависимости от `ObjectContext` параметры по умолчанию. Дополнительные сведения см. в разделе [загрузка связанных объектов](https://msdn.microsoft.com/en-us/library/bb896272.aspx) в библиотеке MSDN.)
+(Свойства навигации сущностей, полученные с помощью хранимой процедуры может не будут заполнены автоматически данные, связанные с этими сущностями, в зависимости от `ObjectContext` параметры по умолчанию. Дополнительные сведения см. в разделе [загрузка связанных объектов](https://msdn.microsoft.com/library/bb896272.aspx) в библиотеке MSDN.)
 
 В следующем уроке будет рассмотрено использование функциональных возможностей платформы динамических данных для упрощения правила программы и тестирования данных форматирования и проверки. Вместо указания для каждого правила веб-страницы, такие как строки формата данных и ли поле является обязательным, можно указать такие правила в метаданных модели данных и выполняется автоматически, они применены на каждой странице.
 

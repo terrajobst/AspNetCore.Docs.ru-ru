@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 9ecc233e595716a167ad800a0a21a6162b051648
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c1d0b3e1644ef7f9ebb4be74c3fdf3df90cf3537
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>Создание интерфейса API REST с атрибутом маршрутизации в ASP.NET Web API 2
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 | Действие | Пример URI |
 | --- | --- |
 | Получение списка всех книг. | / api/книг |
-| Получение книги по идентификатору. | /API/Books/1 |
+| Получение книги по идентификатору. | /api/books/1 |
 | Получите сведения о книге. | /API/Books/1/Details |
 | Получение списка книг по жанру. | /API/Books/FANTASY |
 | Получите список книг, дата публикации. | /API/Books/Date/2013-02-16 /api/books/date/2013/02/16 (альтернативный способ) |
@@ -37,12 +37,12 @@ ms.lasthandoff: 11/10/2017
 
 Для уровня данных мы будем использовать Entity Framework. Записи книги будут иметь следующие поля:
 
-- Идентификатор
+- ID
 - Заголовок
 - Жанр
 - Дата публикации.
 - Цены
-- Описание
+- Описание:
 - AuthorID (внешний ключ к таблице Authors)
 
 Для большинства запросов тем не менее, API вернет подмножество этих данных (название, автор и жанр). Чтобы получить полную запись клиента запросы `/api/books/{id}/details`.
@@ -141,7 +141,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample8.cs)]
 
-Затем обновите `BooksController` класса, чтобы вернуть `BookDto` экземпляров. Мы будем использовать [Queryable.Select](https://msdn.microsoft.com/en-us/library/system.linq.queryable.select.aspx) метод проект `Book` экземпляры `BookDto` экземпляров. Вот обновленный код для класса контроллера.
+Затем обновите `BooksController` класса, чтобы вернуть `BookDto` экземпляров. Мы будем использовать [Queryable.Select](https://msdn.microsoft.com/library/system.linq.queryable.select.aspx) метод проект `Book` экземпляры `BookDto` экземпляров. Вот обновленный код для класса контроллера.
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample9.cs)]
 

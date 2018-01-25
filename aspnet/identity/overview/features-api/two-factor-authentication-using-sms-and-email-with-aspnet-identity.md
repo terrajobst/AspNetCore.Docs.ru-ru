@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: ecb1fc693063995a3a05a7af5db64554c9f595e2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0f9ff7cf74048a008b150da1e843ff15333269ab
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="two-factor-authentication-using-sms-and-email-with-aspnet-identity"></a>Двухфакторная проверка подлинности с помощью SMS и электронной почты с ASP.NET Identity
 ====================
@@ -168,7 +168,7 @@ ms.lasthandoff: 11/10/2017
 
 `isPersistent` Параметр задает ли сеанс проверки подлинности сохраняется в нескольких запросах.
 
-При изменении профиля безопасности новой метки безопасности создается и сохраняется в `SecurityStamp` поле *AspNetUsers* таблицы. Следует отметить, что `SecurityStamp` поля отличается от безопасности cookie. Файл cookie безопасности не хранятся в `AspNetUsers` таблицы (или любом другом месте в базе данных удостоверений). Маркер безопасности cookie самостоятельно подписывается с помощью [DPAPI](https://msdn.microsoft.com/en-us/library/system.security.cryptography.protecteddata.aspx) и создается `UserId, SecurityStamp` и сведения о времени истечения срока действия.
+При изменении профиля безопасности новой метки безопасности создается и сохраняется в `SecurityStamp` поле *AspNetUsers* таблицы. Следует отметить, что `SecurityStamp` поля отличается от безопасности cookie. Файл cookie безопасности не хранятся в `AspNetUsers` таблицы (или любом другом месте в базе данных удостоверений). Маркер безопасности cookie самостоятельно подписывается с помощью [DPAPI](https://msdn.microsoft.com/library/system.security.cryptography.protecteddata.aspx) и создается `UserId, SecurityStamp` и сведения о времени истечения срока действия.
 
 По промежуточного слоя файлов cookie проверяет куки-файл для каждого запроса. `SecurityStampValidator` Метод в `Startup` класс обращений к базе данных и периодически проверяет метку безопасности в соответствии с `validateInterval`. Это происходит каждые 30 минут (в нашем примере) только изменения профиля безопасности. Чтобы свести к минимуму обращений к базе данных был выбран интервал 30 минут.
 
@@ -264,7 +264,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](two-factor-authentication-using-sms-and-email-with-aspnet-identity/samples/sample17.cs?highlight=10-11,17-18)]
 
-В следующем коде показано `SendCode` метода действия. Объект [SelectListItem](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlistitem.aspx) создается со всеми методами 2FA, разрешенных для текущего пользователя. [SelectListItem](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlistitem.aspx) передается [DropDownListFor](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.dropdownlist.aspx) вспомогательного приложения, который позволяет пользователю выбрать подход 2FA (обычно электронной почты и SMS).
+В следующем коде показано `SendCode` метода действия. Объект [SelectListItem](https://msdn.microsoft.com/library/system.web.mvc.selectlistitem.aspx) создается со всеми методами 2FA, разрешенных для текущего пользователя. [SelectListItem](https://msdn.microsoft.com/library/system.web.mvc.selectlistitem.aspx) передается [DropDownListFor](https://msdn.microsoft.com/library/system.web.ui.webcontrols.dropdownlist.aspx) вспомогательного приложения, который позволяет пользователю выбрать подход 2FA (обычно электронной почты и SMS).
 
 [!code-csharp[Main](two-factor-authentication-using-sms-and-email-with-aspnet-identity/samples/sample18.cs)]
 

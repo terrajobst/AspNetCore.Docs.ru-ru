@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: b6f3821a8022daa26f5efcc009ab3e6283a76a19
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ed39295ed1bcaa924336a1faf52049e291abeadb
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Создание безопасных приложений веб-форм ASP.NET при регистрации пользователя электронной почты для сброса пароля и подтверждение (C#)
 ====================
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/10/2017
  Нажмите кнопку **ОК** для создания нового проекта.  
     ![Диалоговое окно Новый проект ASP.NET](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/_static/image1.png)
 3. Включите протокол Secure Sockets Layer (SSL) для проекта. Выполните действия, доступные в **включить SSL для проекта** раздел [Приступая к работе с Web Forms учебные курсы](../getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal.md#SSLWebForms).
-4. Запустите приложение, нажмите кнопку **зарегистрировать** ссылку и регистрации нового пользователя. На этом этапе на основе проверку только в электронном письме [[EmailAddress]](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx) атрибута, чтобы гарантировать правильность адреса электронной почты. Код для добавления подтверждение по электронной почте будет изменен. Закройте окно браузера.
+4. Запустите приложение, нажмите кнопку **зарегистрировать** ссылку и регистрации нового пользователя. На этом этапе на основе проверку только в электронном письме [[EmailAddress]](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx) атрибута, чтобы гарантировать правильность адреса электронной почты. Код для добавления подтверждение по электронной почте будет изменен. Закройте окно браузера.
 5. В **обозревателя серверов** из Visual Studio (**представление**  - &gt; **обозревателя серверов**), перейдите к **Connections\ данных DefaultConnection\Tables\AspNetUsers**, щелкните правой кнопкой мыши и выберите **откройте определение таблицы**. 
 
     На следующем рисунке показана `AspNetUsers` схема таблицы:
@@ -78,7 +78,7 @@ ms.lasthandoff: 11/10/2017
 
 1. В Visual Studio откройте **консоль диспетчера пакетов** (**средства**  - &gt; **диспетчера пакетов NuGet**  - &gt; **Консоль диспетчера пакетов**) и введите следующую команду:  
     `Install-Package SendGrid`
-2. Последовательно выберите пункты [страницу регистрации Azure SendGrid](https://azure.microsoft.com/en-us/gallery/store/sendgrid/sendgrid-azure/) и зарегистрировать для получения бесплатной учетной записи SendGrid. Вы можете также регистрации для бесплатной учетной записи SendGrid с непосредственно на [SendGrid на сайте](http://www.sendgrid.com).
+2. Последовательно выберите пункты [страницу регистрации Azure SendGrid](https://azure.microsoft.com/gallery/store/sendgrid/sendgrid-azure/) и зарегистрировать для получения бесплатной учетной записи SendGrid. Вы можете также регистрации для бесплатной учетной записи SendGrid с непосредственно на [SendGrid на сайте](http://www.sendgrid.com).
 3. Из **обозревателе решений** откройте *IdentityConfig.cs* файла в *приложения\_запустить* папки и добавьте следующий код, выделены желтым цветом, позволяя `EmailService` класса, чтобы настроить **SendGrid**:
 
     [!code-csharp[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample1.cs?highlight=3,5,8-37)]
@@ -186,5 +186,5 @@ ms.lasthandoff: 11/10/2017
 - [Ссылки на ASP.NET Identity, рекомендуется использовать ресурсы](../../../identity/overview/getting-started/aspnet-identity-recommended-resources.md)
 - [Подтверждение учетной записи и пароль восстановления в ASP.NET Identity](../../../identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md)
 - [Серия учебников по веб-форм ASP.NET - добавить поставщика OAuth 2.0](../getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal.md#OAuthWebForms)
-- [Развертывание приложения безопасного ASP.NET Web Forms членства, OAuth и базы данных SQL в службе приложений Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)
+- [Развертывание приложения безопасного ASP.NET Web Forms членства, OAuth и базы данных SQL в службе приложений Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)
 - [Учебник ряда веб-форм ASP.NET - включить SSL для проекта](../getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal.md#SSLWebForms)

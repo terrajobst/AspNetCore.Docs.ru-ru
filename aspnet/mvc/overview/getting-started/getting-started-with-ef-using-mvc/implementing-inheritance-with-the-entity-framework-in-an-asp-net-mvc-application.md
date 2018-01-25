@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: e6ee3f9c055a15b13c27f94675006b9a7e804f1b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 118233338112a71216b909b1dabed2333bfa235e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="implementing-inheritance-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-11-of-12"></a>Реализация наследования с использованием Entity Framework 6 в приложении ASP.NET MVC 5 (11, 12)
 ====================
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/10/2017
 
 TPC и схемы наследования TPH обычно работы с большей производительностью на платформе Entity Framework, чем TPT схемы наследования, поскольку шаблоны TPT может привести к сложного соединения запросов.
 
-Этот учебник демонстрирует реализацию TPH наследования. TPH является шаблон наследование по умолчанию в платформе Entity Framework, поэтому все, нужно сделать — создать `Person` класса, измените `Instructor` и `Student` классы являются производными от `Person`, добавьте новый класс `DbContext`и создать Миграция. (Сведения о способах реализации других шаблонах наследования. в разделе [сопоставление наследования таблица на тип (TPT)](https://msdn.microsoft.com/en-us/data/jj591617#2.5) и [сопоставление наследования таблицы каждой конкретной реализацией класса Отправляемых](https://msdn.microsoft.com/en-us/data/jj591617#2.6) в MSDN Entity Framework документации.)
+Этот учебник демонстрирует реализацию TPH наследования. TPH является шаблон наследование по умолчанию в платформе Entity Framework, поэтому все, нужно сделать — создать `Person` класса, измените `Instructor` и `Student` классы являются производными от `Person`, добавьте новый класс `DbContext`и создать Миграция. (Сведения о способах реализации других шаблонах наследования. в разделе [сопоставление наследования таблица на тип (TPT)](https://msdn.microsoft.com/data/jj591617#2.5) и [сопоставление наследования таблицы каждой конкретной реализацией класса Отправляемых](https://msdn.microsoft.com/data/jj591617#2.6) в MSDN Entity Framework документации.)
 
 ## <a name="create-the-person-class"></a>Создание класса Person
 
@@ -159,7 +159,7 @@ TPC и схемы наследования TPH обычно работы с бо
 
 ## <a name="summary"></a>Сводка
 
-Таблица на иерархию наследования для реализации `Person`, `Student`, и `Instructor` классы. Дополнительные сведения об этом и других структур наследования см. в разделе [шаблон наследования TPT](https://msdn.microsoft.com/en-us/data/jj618293) и [шаблон наследования TPH](https://msdn.microsoft.com/en-us/data/jj618292) на сайте MSDN. В следующем уроке вы увидите, как обрабатывать разнообразные относительно сложных сценариев Entity Framework.
+Таблица на иерархию наследования для реализации `Person`, `Student`, и `Instructor` классы. Дополнительные сведения об этом и других структур наследования см. в разделе [шаблон наследования TPT](https://msdn.microsoft.com/data/jj618293) и [шаблон наследования TPH](https://msdn.microsoft.com/data/jj618292) на сайте MSDN. В следующем уроке вы увидите, как обрабатывать разнообразные относительно сложных сценариев Entity Framework.
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступа к данным ASP.NET - рекомендуется использовать ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 

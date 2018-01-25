@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: d0cdb5aaa4b1129c3f2404d069e9781ca16260b7
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 532020a8fe4c5a0312cbd89278e61f614b1825f8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="reading-related-data---ef-core-with-razor-pages-6-of-8"></a>Чтение связанных данных - Core EF со страницами Razor (6, 8)
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/19/2018
 
  ![Пример явная загрузка](read-related-data/_static/explicit-loading.png)
 
-* [Отложенная загрузка](https://docs.microsoft.com/ef/core/querying/related-data#lazy-loading). [EF Core в настоящее время не поддерживает отложенную загрузку](https://github.com/aspnet/EntityFrameworkCore/issues/3797). При считывании сущности связанные данные не получены. Время первого обращения к свойству навигации, автоматически извлекается данные, необходимые для этого свойства навигации. Запрос отправляется в базу данных, каждый раз к свойству навигации в первый раз.
+* [Отложенная загрузка](https://docs.microsoft.com/ef/core/querying/related-data#lazy-loading). [Основные EF в настоящее время не поддерживает отложенную загрузку](https://github.com/aspnet/EntityFrameworkCore/issues/3797). При считывании сущности связанные данные не получены. Время первого обращения к свойству навигации, автоматически извлекается данные, необходимые для этого свойства навигации. Запрос отправляется в базу данных, каждый раз к свойству навигации в первый раз.
 
 * `Select` Оператор загружает связанные данные, необходимые.
 
@@ -99,7 +99,7 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 
 [!code-csharp[Main](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod)]
 
-Предыдущий код добавляет `AsNoTracking`. `AsNoTracking`повышает производительность, поскольку сущностей, возвращаемых не отслеживаются. Сущности, не отслеживаются, так как они не обновляются в текущем контексте.
+Предыдущий код добавляет `AsNoTracking`. `AsNoTracking`повышает производительность, поскольку сущностей, возвращаемых не отслеживаются. Сущности, не отслеживаются, так как они не обновлялись в текущем контексте.
 
 Обновление *Views/Courses/Index.cshtml* с следующую выделенную разметку:
 
@@ -108,7 +108,7 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 Для формирования шаблонов код были внесены следующие изменения:
 
 * Изменить заголовок из индекса к курсам.
-* Добавлен **номер** столбца, отображающего `CourseID` значение свойства. По умолчанию первичные ключи не являются формирования шаблонов, так как обычно они не имеют смысла для конечных пользователей. Однако в этом случае первичный ключ имеет значение.
+* Добавлен **номер** столбца, отображающего `CourseID` значение свойства. По умолчанию первичные ключи не являются формирования шаблонов, так как обычно они имеют смысла для конечных пользователей. Однако в этом случае первичный ключ имеет значение.
 * Изменить **отдел** столбец, отображающий название отдела. Код отображает `Name` свойство `Department` сущность, которая загружается в `Department` свойство навигации:
 
   ```html
@@ -210,7 +210,7 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
     `http://localhost:1234/Instructors/2`
 
 * Заголовок страницы является **инструкторов**.
-* Добавлен **Office** столбец, отображающий `item.OfficeAssignment.Location` только тогда, когда `item.OfficeAssignment` не имеет значение null. Так как один к нулю или одному связь, могут не существовать OfficeAssignment связанной сущности.
+* Добавлен **Office** столбец, отображающий `item.OfficeAssignment.Location` только тогда, когда `item.OfficeAssignment` не равно null. Так как один к нулю или одному связь, могут не существовать OfficeAssignment связанной сущности.
 
   ```html
   @if (item.OfficeAssignment != null)

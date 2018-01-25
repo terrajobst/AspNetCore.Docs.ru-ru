@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 57a729501d15ebf9a533716b2a1767766954bb4c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6c9c3bf004b13677728c7c6bf2f5adf6a264dc49
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-aspnet-mvc-with-different-versions-of-iis-vb"></a>С помощью ASP.NET MVC с разными версиями IIS (Visual Basic)
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 - IIS 7.0 (классический режим) — необходимо выполнить специальные конфигурации для использования маршрутизации ASP.NET.
 - IIS 6.0 или ниже — необходимо выполнить специальные конфигурации для использования маршрутизации ASP.NET.
 
-Последняя версия служб IIS — версии 7.5 (на Win7). IIS 7 IIS включены с Windows Server 2008 и VISTA/SP1 и более поздних версий. IIS 7.0 можно установить в любой версии операционной системы Vista, кроме Home Basic (в разделе [https://technet.microsoft.com/en-us/library/cc731179%28WS.10%29.aspx](https://technet.microsoft.com/en-us/library/cc731179%28WS.10%29.aspx)).
+Последняя версия служб IIS — версии 7.5 (на Win7). IIS 7 IIS включены с Windows Server 2008 и VISTA/SP1 и более поздних версий. IIS 7.0 можно установить в любой версии операционной системы Vista, кроме Home Basic (в разделе [https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx](https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx)).
 
 IIS 7.0 поддерживает два режима для обработки запросов. Можно использовать в режиме интеграции с или классического режима. Нет необходимости выполнять все специальные шаги настройки при использовании IIS 7.0 в интегрированном режиме. Тем не менее, необходимо выполнить дополнительную настройку, при использовании IIS 7.0 в классическом режиме.
 
@@ -129,7 +129,7 @@ IIS 7.0 может обрабатывать запросы, с помощью д
 
 Добавление расширения MVC было связано изменяет тип файлов, которые перехватывает модуль маршрутизации ASP.NET. После этого изменения приложение ASP.NET MVC теперь направляет запросы следующим образом:
 
-/Home.MVC/index/
+/Home.mvc/Index/
 
 /Product.MVC/Details/3
 

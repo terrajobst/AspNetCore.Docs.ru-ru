@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/http-modules
-ms.openlocfilehash: 44b2b38c284e678344432d4473162404b4bb75a5
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: a38ddc64583de05b4088cd31d48fbd7ee949d4e5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="migrating-http-handlers-and-modules-to-aspnet-core-middleware"></a>Миграция обработчики HTTP-данных и модули в по промежуточного слоя ASP.NET Core 
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/19/2018
 
    1. [Жизненного цикла приложения](https://msdn.microsoft.com/library/ms227673.aspx), который является ряда событий, произошедших в ASP.NET: [BeginRequest](https://docs.microsoft.com/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](https://docs.microsoft.com/dotnet/api/system.web.httpapplication.authenticaterequest)и т. д. Каждый модуль можно создать обработчик для одного или нескольких событий.
 
-   2. Для одного события в порядке, в котором они были заданы на *Web.config*.
+   2. Для одного события в порядке, в котором они настроены в *Web.config*.
 
 В дополнение к модули, можно добавить обработчики событий жизненного цикла для вашего *Global.asax.cs* файла. Эти обработчики запускать после обработчики в настроенные модули.
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 01/19/2018
 
 **По промежуточного слоя и модули, обрабатываются в другом порядке:**
 
-   * Порядок по промежуточного слоя основан на порядке, в котором они вставляются в конвейер запросов, хотя порядок модулей главным образом основан на [жизненного цикла приложения](https://msdn.microsoft.com/library/ms227673.aspx) события
+   * Порядок по промежуточного слоя основан на порядке, в котором их вставки в конвейер запросов, хотя порядок модулей главным образом основан на [жизненного цикла приложения](https://msdn.microsoft.com/library/ms227673.aspx) события
 
    * Порядок по промежуточного слоя для ответов — обратное из того, что для запросов, а порядок модулей является одинаковым для запросов и ответов
 
@@ -105,11 +105,11 @@ ms.lasthandoff: 01/19/2018
 
 <a name="http-modules-shortcircuiting-middleware"></a>
 
-Модуль может вызвать завершение запроса, например, если пользователь не авторизован:
+Модуль может вызвать завершение запроса, например, если пользователь не имеет разрешения:
 
 [!code-csharp[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyTerminatingModule.cs?highlight=9,10,11,12,13&name=snippet_Terminate)]
 
-Обрабатывает это по промежуточного слоя, не вызвав `Invoke` на следующее по промежуточного слоя в конвейере. Имейте в виду, что это не завершает полностью запроса, из-за предыдущих middlewares по-прежнему вызываться, когда ответ проходит обратно через конвейер.
+Обрабатывает это по промежуточного слоя, не вызвав `Invoke` на следующее по промежуточного слоя в конвейере. Имейте в виду, что это не завершить полностью запроса, из-за предыдущих middlewares по-прежнему вызываться, когда ответ проходит обратно через конвейер.
 
 [!code-csharp[Main](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyTerminatingMiddleware.cs?highlight=7,8&name=snippet_Terminate)]
 
@@ -319,7 +319,7 @@ public async Task Invoke(HttpContext context)
 >
 >Можно считывать необработанный текст, как показано выше только один раз для каждого запроса. Попытка чтения после первого чтения тела запроса по промежуточного слоя будет считывать пустой текст.
 >
->Это не относится к чтению формы, как показано выше, из-за этого из буфера.
+>Это не применимо к чтению формы, как показано выше, из-за этого из буфера.
 
 ### <a name="httpcontextresponse"></a>HttpContext.Response
 

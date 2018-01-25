@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5d250a7fb868d712e8039e65f7219f80ccaa780c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b2262df1a56ffa88a22d9dc8000bd0c300fea72e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-new-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>Создание новых хранимых процедур для адаптеров таблиц типизированного набора данных (Visual Basic)
 ====================
@@ -47,7 +47,7 @@ ms.lasthandoff: 11/10/2017
 > Хранимые процедуры, часто называют sprocs или SPs.
 
 
-Хранимые процедуры создаются с помощью [ `CREATE PROCEDURE` ](https://msdn.microsoft.com/en-us/library/aa258259(SQL.80).aspx) инструкции T-SQL. Например, следующий скрипт T-SQL создает хранимую процедуру с именем `GetProductsByCategoryID` , принимает один параметр с именем `@CategoryID` и возвращает `ProductID`, `ProductName`, `UnitPrice`, и `Discontinued` поля этих столбцов в `Products` таблицу, которая имеет соответствующего `CategoryID` значение:
+Хранимые процедуры создаются с помощью [ `CREATE PROCEDURE` ](https://msdn.microsoft.com/library/aa258259(SQL.80).aspx) инструкции T-SQL. Например, следующий скрипт T-SQL создает хранимую процедуру с именем `GetProductsByCategoryID` , принимает один параметр с именем `@CategoryID` и возвращает `ProductID`, `ProductName`, `UnitPrice`, и `Discontinued` поля этих столбцов в `Products` таблицу, которая имеет соответствующего `CategoryID` значение:
 
 
 [!code-sql[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/samples/sample1.sql)]
@@ -384,7 +384,7 @@ ms.lasthandoff: 11/10/2017
 
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
-- [Создание и обслуживание хранимых процедур](https://msdn.microsoft.com/en-us/library/aa214299(SQL.80).aspx)
+- [Создание и обслуживание хранимых процедур](https://msdn.microsoft.com/library/aa214299(SQL.80).aspx)
 - [Извлечение скалярных данных из хранимой процедуры](http://aspnet.4guysfromrolla.com/articles/062905-1.aspx)
 - [SQL Server хранимые процедуры основы](http://www.awprofessional.com/articles/article.asp?p=25288&amp;rl=1)
 - [Хранимые процедуры: Обзор](http://www.sqlteam.com/item.asp?ItemID=563)

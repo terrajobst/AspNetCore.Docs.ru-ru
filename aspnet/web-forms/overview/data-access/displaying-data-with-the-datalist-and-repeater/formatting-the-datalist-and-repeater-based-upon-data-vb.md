@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 48e0f2bad8c048e943ec2a3ce72cc0f7ca4d34d9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 460fc36062f3338ffd178aceda2b3b224752a089
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="formatting-the-datalist-and-repeater-based-upon-data-vb"></a>Форматирование DataList и повторителя на основе данных (Visual Basic)
 ====================
@@ -40,25 +40,25 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="using-theitemdataboundevent-handler"></a>С помощью`ItemDataBound`обработчика событий
 
-При привязке данных к DataList, из элемента управления источником данных, либо путем программного связывания данных к элементу управления s `DataSource` и вызова его `DataBind()` метод DataList s `DataBinding` инициирует событие, перечисления, источник данных и каждая запись данных привязан к элементу управления DataList. Для каждой записи в источнике данных, создает DataList [ `DataListItem` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalistitem.aspx) объект, то связан с текущей записью. Во время этого процесса DataList вызывает два события:
+При привязке данных к DataList, из элемента управления источником данных, либо путем программного связывания данных к элементу управления s `DataSource` и вызова его `DataBind()` метод DataList s `DataBinding` инициирует событие, перечисления, источник данных и каждая запись данных привязан к элементу управления DataList. Для каждой записи в источнике данных, создает DataList [ `DataListItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistitem.aspx) объект, то связан с текущей записью. Во время этого процесса DataList вызывает два события:
 
 - **`ItemCreated`**срабатывает после `DataListItem` был создан
 - **`ItemDataBound`**вызывается после привязано к текущей записи`DataListItem`
 
 Ниже описан процесс привязки данных для элемента управления DataList.
 
-1. Элемент управления DataList s [ `DataBinding` событие](https://msdn.microsoft.com/en-us/library/system.web.ui.control.databinding.aspx) активируется
+1. Элемент управления DataList s [ `DataBinding` событие](https://msdn.microsoft.com/library/system.web.ui.control.databinding.aspx) активируется
 2. Данные, привязанные к элементу управления DataList  
   
  Для каждой записи в источнике данных 
 
     1. Создание `DataListItem` объекта
-    2. Пожара [ `ItemCreated` событий](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.itemcreated.aspx)
+    2. Пожара [ `ItemCreated` событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.itemcreated.aspx)
     3. Запись привязывается к`DataListItem`
-    4. Пожара [ `ItemDataBound` событий](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.itemdatabound.aspx)
+    4. Пожара [ `ItemDataBound` событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.itemdatabound.aspx)
     5. Добавить `DataListItem` для `Items` коллекции
 
-Привязка данных к элементу управления повторителем, продвижения через ту же последовательность шагов. Единственным различием является вместо `DataListItem` использует повторителя создания экземпляров, [ `RepeaterItem` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeateritem(VS.80).aspx)s.
+Привязка данных к элементу управления повторителем, продвижения через ту же последовательность шагов. Единственным различием является вместо `DataListItem` использует повторителя создания экземпляров, [ `RepeaterItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeateritem(VS.80).aspx)s.
 
 > [!NOTE]
 > Проницательный читатель заметить небольшие аномалий между последовательность шагов, которые происходят при DataList и повторителя привязанных к данным и при привязке к данным GridView упорядочении. В конце заключительного процесса привязки данных вызывает GridView `DataBound` события; тем не менее, элемент управления DataList ни повторителя имеет такого события. Это так, как элементы управления DataList и повторителя созданных обратно в ASP.NET 1.x временные рамки, до шаблон обработчик событий до и после уровня становится популярным.
@@ -93,7 +93,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-vb[Main](formatting-the-datalist-and-repeater-based-upon-data-vb/samples/sample1.vb)]
 
-Во время концепции и семантикой DataList s `ItemDataBound` обработчик событий совпадают с используемыми GridView s `RowDataBound` обработчик событий в *форматирование на основе по данным* учебнике ее синтаксис отличается немного. При `ItemDataBound` события `DataListItem` только с привязкой к данным, передается в соответствующий обработчик событий через `e.Item` (вместо `e.Row`, как и в случае с GridView s `RowDataBound` обработчика событий). Элемент управления DataList s `ItemDataBound` запускает обработчик событий для *каждого* строки, добавляемой в DataList, включая строки верхнего колонтитула, нижнего колонтитула и разделитель строк. Тем не менее сведения о продукте ограничена только на строки данных. Таким образом при использовании `ItemDataBound` события, чтобы проверить данные привязаны к DataList, нам нужно убедиться, что мы re работа с элементом данных. Это можно сделать, проверив `DataListItem` s [ `ItemType` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalistitem.itemtype.aspx), который может иметь одно из [следующих восьми значений](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.listitemtype.aspx):
+Во время концепции и семантикой DataList s `ItemDataBound` обработчик событий совпадают с используемыми GridView s `RowDataBound` обработчик событий в *форматирование на основе по данным* учебнике ее синтаксис отличается немного. При `ItemDataBound` события `DataListItem` только с привязкой к данным, передается в соответствующий обработчик событий через `e.Item` (вместо `e.Row`, как и в случае с GridView s `RowDataBound` обработчика событий). Элемент управления DataList s `ItemDataBound` запускает обработчик событий для *каждого* строки, добавляемой в DataList, включая строки верхнего колонтитула, нижнего колонтитула и разделитель строк. Тем не менее сведения о продукте ограничена только на строки данных. Таким образом при использовании `ItemDataBound` события, чтобы проверить данные привязаны к DataList, нам нужно убедиться, что мы re работа с элементом данных. Это можно сделать, проверив `DataListItem` s [ `ItemType` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistitem.itemtype.aspx), который может иметь одно из [следующих восьми значений](https://msdn.microsoft.com/library/system.web.ui.webcontrols.listitemtype.aspx):
 
 - `AlternatingItem`
 - `EditItem`
@@ -104,7 +104,7 @@ ms.lasthandoff: 11/10/2017
 - `SelectedItem`
 - `Separator`
 
-Оба `Item` и `AlternatingItem``DataListItem` элементов данных s состава DataList s. При условии, что мы re работа с `Item` или `AlternatingItem`, мы доступа к самим `ProductsRow` экземпляр, который был связан с текущим `DataListItem`. `DataListItem` s [ `DataItem` свойство](https://msdn.microsoft.com/en-us/system.web.ui.webcontrols.datalistitem.dataitem.aspx) содержит ссылку на `DataRowView` объекта, в которых `Row` свойство предоставляет ссылку на фактический `ProductsRow` объекта.
+Оба `Item` и `AlternatingItem``DataListItem` элементов данных s состава DataList s. При условии, что мы re работа с `Item` или `AlternatingItem`, мы доступа к самим `ProductsRow` экземпляр, который был связан с текущим `DataListItem`. `DataListItem` s [ `DataItem` свойство](https://msdn.microsoft.com/system.web.ui.webcontrols.datalistitem.dataitem.aspx) содержит ссылку на `DataRowView` объекта, в которых `Row` свойство предоставляет ссылку на фактический `ProductsRow` объекта.
 
 Далее мы проверяем, `ProductsRow` экземпляра s `UnitPrice` свойство. Поскольку для таблицы Products s `UnitPrice` поле позволяет `NULL` значения, прежде чем пытаться получить доступ к `UnitPrice` свойство нам необходимо проверить, имеет ли `NULL` с использованием `IsUnitPriceNull()` метод. Если `UnitPrice` значение не `NULL`, затем проверьте ли его s меньше $20,00. Если это действительно в разделе 20,00 долларов, нам потребуется применения пользовательских форматов.
 

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: 1e4ee8eb4901305bf6a8c9c5b949dc4ee10290e5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c11e2ef9c33b0cae1f196690533094ce1c342da5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="release-notes-for-aspnet-and-web-tools-20131-for-visual-studio-2012"></a>Заметки о выпуске для ASP.NET и веб-инструменты 2013.1 для Visual Studio 2012
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/10/2017
 - [Требования к программному обеспечению](#requirements)
 - Новые возможности в ASP.NET и веб-инструменты 2013.1 для Visual Studio 2012
 
-    - [Начальной загрузки](#bootstrap)
+    - [Bootstrap](#bootstrap)
     - [Шаблоны](#templates)
 
         - [Шаблон ASP.NET MVC 5](#mvc5template)
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/10/2017
     - [Entity Framework 6](#ef6)
     - [Формирование шаблонов ASP.NET](#scaffold)
     - [Редактор Razor](#razor)
-    - [NuGet 2.7](#nuget)
+    - [NuGet 2.7](#nuget)
 - Известные проблемы и критические изменения
 
     - [Формирование шаблонов ASP.NET](#issuescaffolding)
@@ -190,7 +190,7 @@ NuGet 2.7 включает широкий набор новых функций, 
 
 ![Ошибка конфигурации](aspnet-and-web-tools-20131-for-visual-studio-2012/_static/image2.png)
 
-Эта ошибка возникает, поскольку Visual Studio 2012 не поддерживает компонент ASP.NET 4.5, установленные в этих версиях Windows. Чтобы включить ASP.NET 4.5, выполните действия, описанные в [Включение или отключение компонентов](https://windows.microsoft.com/en-us/windows-8/turn-windows-features-on-off).
+Эта ошибка возникает, поскольку Visual Studio 2012 не поддерживает компонент ASP.NET 4.5, установленные в этих версиях Windows. Чтобы включить ASP.NET 4.5, выполните действия, описанные в [Включение или отключение компонентов](https://windows.microsoft.com/windows-8/turn-windows-features-on-off).
 
 ![Включение и отключение компонентов Windows](aspnet-and-web-tools-20131-for-visual-studio-2012/_static/image3.png)
 

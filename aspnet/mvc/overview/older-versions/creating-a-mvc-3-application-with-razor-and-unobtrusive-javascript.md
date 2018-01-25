@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript
 msc.type: authoredcontent
-ms.openlocfilehash: 68870caf1608e596962650cf653e5b455b82382a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 29b45c07b5498542abbf22c4c3001b1cee41edc9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a>Создание MVC 3 Application with Razor and Unobtrusive JavaScript
 ====================
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/10/2017
 
 - *Controllers\AccountController*
 - *Models\AccountModels*
-- *Одну\\_LogOnPartial*
+- *Views\Shared\\_LogOnPartial*
 - *Views\Account* (и все файлы в этом каталоге)
 
 ![Soln Exp](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image5.png)
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample2.cs)]
 
-`UserModel` Класс представляет пользователей. Каждый член класса помечается с помощью [необходимые](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx) атрибута из [DataAnnotations](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) пространства имен. Атрибуты в [DataAnnotations](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) пространства имен обеспечивают проверку автоматического клиента и стороне сервера для веб-приложений.
+`UserModel` Класс представляет пользователей. Каждый член класса помечается с помощью [необходимые](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx) атрибута из [DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) пространства имен. Атрибуты в [DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) пространства имен обеспечивают проверку автоматического клиента и стороне сервера для веб-приложений.
 
 Откройте `HomeController` и добавьте `using` директив, так что можно получить доступ к `UserModel` и `Users` классы:
 
@@ -172,7 +172,7 @@ ms.lasthandoff: 11/10/2017
 
 Первые два скриптов jQuery размещаются с Microsoft Ajax доставки содержимого сети (CDN). Используя преимущества сети Microsoft Ajax CDN, может значительно повысить первого нажатия производительность приложений.
 
-Запустите приложение и щелкните ссылку Изменить. Просмотрите исходный код страницы в браузере. Исходный браузера содержит множество атрибутов формы `data-val` (для проверки данных). Если включена клиентская проверка и ненавязчивый JavaScript, содержат поля ввода с помощью правила клиентской проверки `data-val="true"` атрибут для запуска ненавязчивой клиентской проверки. Например `City` декорированных поля в модели [необходимые](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx) атрибут, который приводит к HTML-код, показанный в следующем примере:
+Запустите приложение и щелкните ссылку Изменить. Просмотрите исходный код страницы в браузере. Исходный браузера содержит множество атрибутов формы `data-val` (для проверки данных). Если включена клиентская проверка и ненавязчивый JavaScript, содержат поля ввода с помощью правила клиентской проверки `data-val="true"` атрибут для запуска ненавязчивой клиентской проверки. Например `City` декорированных поля в модели [необходимые](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx) атрибут, который приводит к HTML-код, показанный в следующем примере:
 
 [!code-cshtml[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample15.cshtml)]
 
@@ -180,7 +180,7 @@ ms.lasthandoff: 11/10/2017
 
 ![Требуется Город](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image14.png)
 
-Аналогичным образом, для каждого параметра в правила клиентской проверки, добавляется атрибут, имеет форму `data-val-rulename-paramname=paramvalue`. Например `FirstName` свойство помечается с помощью [StringLength](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx) атрибут и указывает длину не менее 3 и максимальной длиной 8. Правила проверки данных с именем `length` имеет имя параметра `max` и значение параметра 8. В следующем примере показаны HTML, который создается для `FirstName` поля при изменении одного из пользователей:
+Аналогичным образом, для каждого параметра в правила клиентской проверки, добавляется атрибут, имеет форму `data-val-rulename-paramname=paramvalue`. Например `FirstName` свойство помечается с помощью [StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx) атрибут и указывает длину не менее 3 и максимальной длиной 8. Правила проверки данных с именем `length` имеет имя параметра `max` и значение параметра 8. В следующем примере показаны HTML, который создается для `FirstName` поля при изменении одного из пользователей:
 
 [!code-cshtml[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample16.cshtml)]
 

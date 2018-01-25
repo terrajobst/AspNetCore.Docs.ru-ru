@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/security/16-adding-security-and-membership
 msc.type: authoredcontent
-ms.openlocfilehash: f0cee96005416bd9ef8befaf34890f415cf5ff3c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: af2eeb128cff554e7ae3d903e2117861087344e9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-security-and-membership-to-an-aspnet-web-pages-razor-site"></a>Добавление безопасности и членство в ASP.NET веб-сайт страниц (Razor)
 ====================
@@ -170,7 +170,7 @@ ms.lasthandoff: 11/10/2017
 Чтобы обеспечить безопасный доступ к нескольким страницам, это можно сделать:
 
 - Добавьте проверку безопасности на каждой странице.
-- Создание  *\_PageStart.cshtml* страницы в папке, где сохранить защищенные страницы и добавить существует проверки безопасности.  *\_PageStart.cshtml* страницы действует в качестве глобального страницы для всех страниц в папке. Этот способ является более подробно в [поведение Настройка сайта для веб-страниц ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906#Using__PageStart.cshtml_to_Restrict_Folder_Access).
+- Создание  *\_PageStart.cshtml* страницы в папке, где сохранить защищенные страницы и добавить существует проверки безопасности. *\_PageStart.cshtml* страницы действует в качестве глобального страницы для всех страниц в папке. Этот способ является более подробно в [поведение Настройка сайта для веб-страниц ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906#Using__PageStart.cshtml_to_Restrict_Folder_Access).
 
 ## <a name="creating-security-for-groups-of-users-roles"></a>Создание системы безопасности для групп пользователей (роли)
 
@@ -212,7 +212,7 @@ ms.lasthandoff: 11/10/2017
 
 Страницы входа не будет останавливать автоматические программы (иногда называют *веб-роботов* или *программы-роботы*) регистрироваться в веб-сайта. Эта процедура описывает Включение ReCaptcha тест для страницы регистрации.
 
-![/Media/38777/ch16securitymembership-18.jpg](16-adding-security-and-membership/_static/image1.jpg)
+![/media/38777/ch16securitymembership-18.jpg](16-adding-security-and-membership/_static/image1.jpg)
 
 1. Регистрация веб-сайта в ReCaptcha.Net ([http://recaptcha.net](http://recaptcha.net)). После завершения регистрации, вы сможете получить открытый ключ и закрытый ключ.
 2. Добавить библиотека вспомогательных методов ASP.NET Web веб-сайта, как описано в [Установка помощников в узел веб-страниц ASP.NET](https://go.microsoft.com/fwlink/?LinkId=252372), если это еще не сделано.
@@ -254,20 +254,20 @@ ms.lasthandoff: 11/10/2017
 
 Это основная процедура описана в записи блога [самый простой способ реализации безопасности ASP.NET Razor](http://mikepope.com/blog/DisplayBlog.aspx?permalink=2240). Большая часть работы выполняется с помощью следующих методов и свойств `WebSecurity` поддержки:
 
-- [WebSecurty.UserExists](https://msdn.microsoft.com/en-us/library/webmatrix.webdata.websecurity.userexists(v=vs.99).aspx), [WebSecurity.CreateUserAndAccount](https://msdn.microsoft.com/en-us/library/webmatrix.webdata.websecurity.createuserandaccount(v=vs.99).aspx). Эти методы позволяют определить, является ли кто-то уже зарегистрирован и зарегистрировать их.
-- [WebSecurty.IsAuthenticated](https://msdn.microsoft.com/en-us/library/webmatrix.webdata.websecurity.isauthenticated(v=vs.99).aspx). Это свойство позволяет определить, вошел ли текущий пользователь. Это полезно для перенаправления пользователей на страницу входа, если они еще не зарегистрировались.
-- [WebSecurity.Login](https://msdn.microsoft.com/en-us/library/webmatrix.webdata.websecurity.login(v=vs.99).aspx), [WebSecurity.Logout](https://msdn.microsoft.com/en-us/library/webmatrix.webdata.websecurity.logout(v=vs.99).aspx). Эти методы входа пользователя in или out.
-- [WebSecurity.CurrentUserName](https://msdn.microsoft.com/en-us/library/webmatrix.webdata.websecurity.currentusername(v=vs.99).aspx). Это свойство можно использовать для отображения имени текущего пользователя вошедшего в систему (если пользователь вошел в).
-- [WebSecurity.ConfirmAccount](https://msdn.microsoft.com/en-us/library/gg569286(v=vs.99).aspx). Этот метод полезен, если вы настроили подтверждение по электронной почте для регистрации. (Сведения приводятся в записи блога [с помощью подтверждения для безопасности веб-страниц ASP.NET](http://mikepope.com/blog/DisplayBlog.aspx?permalink=2267).)
+- [WebSecurty.UserExists](https://msdn.microsoft.com/library/webmatrix.webdata.websecurity.userexists(v=vs.99).aspx), [WebSecurity.CreateUserAndAccount](https://msdn.microsoft.com/library/webmatrix.webdata.websecurity.createuserandaccount(v=vs.99).aspx). Эти методы позволяют определить, является ли кто-то уже зарегистрирован и зарегистрировать их.
+- [WebSecurty.IsAuthenticated](https://msdn.microsoft.com/library/webmatrix.webdata.websecurity.isauthenticated(v=vs.99).aspx). Это свойство позволяет определить, вошел ли текущий пользователь. Это полезно для перенаправления пользователей на страницу входа, если они еще не зарегистрировались.
+- [WebSecurity.Login](https://msdn.microsoft.com/library/webmatrix.webdata.websecurity.login(v=vs.99).aspx), [WebSecurity.Logout](https://msdn.microsoft.com/library/webmatrix.webdata.websecurity.logout(v=vs.99).aspx). Эти методы входа пользователя in или out.
+- [WebSecurity.CurrentUserName](https://msdn.microsoft.com/library/webmatrix.webdata.websecurity.currentusername(v=vs.99).aspx). Это свойство можно использовать для отображения имени текущего пользователя вошедшего в систему (если пользователь вошел в).
+- [WebSecurity.ConfirmAccount](https://msdn.microsoft.com/library/gg569286(v=vs.99).aspx). Этот метод полезен, если вы настроили подтверждение по электронной почте для регистрации. (Сведения приводятся в записи блога [с помощью подтверждения для безопасности веб-страниц ASP.NET](http://mikepope.com/blog/DisplayBlog.aspx?permalink=2267).)
 
-Для управления ролями, можно использовать [ролей](https://msdn.microsoft.com/en-us/library/gg538398(v=vs.99).aspx) и [членства](https://msdn.microsoft.com/en-us/library/gg569035(v=vs.99).aspx) классов, как описано в записи блога.
+Для управления ролями, можно использовать [ролей](https://msdn.microsoft.com/library/gg538398(v=vs.99).aspx) и [членства](https://msdn.microsoft.com/library/gg569035(v=vs.99).aspx) классов, как описано в записи блога.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-- [Настройка поведения сайта](https://go.microsoft.com/fwlink/?LinkId=202906)
+- [Настройка поведения в масштабах сайта](https://go.microsoft.com/fwlink/?LinkId=202906)
 - [Обеспечение безопасности веб-соединений: Сертификаты SSL и https://](https://go.microsoft.com/fwlink/?LinkId=208660)
 - [Самый простой способ реализации безопасности ASP.NET Razor](http://mikepope.com/blog/DisplayBlog.aspx?permalink=2240) и [с помощью подтверждения для безопасности веб-страниц ASP.NET](http://mikepope.com/blog/DisplayBlog.aspx?permalink=2267). Это записи в блогах, описывающие способы реализации возможностей членства ASP.NET без использования **начального сайта** шаблона.
-- [Включение имени входа с внешних сайтов в веб-страниц сайта ASP.NET](https://go.microsoft.com/fwlink/?LinkId=251969)
-- [Справочник по API класс WebSecurity](https://msdn.microsoft.com/en-us/library/webmatrix.webdata.websecurity(v=vs.99)) (MSDN)
-- [Справочник по API класс SimpleRoleProvider](https://msdn.microsoft.com/en-us/library/webmatrix.webdata.simpleroleprovider(v=vs.99)) (MSDN)
-- [Справочник по API класс SimpleMembershipProvider](https://msdn.microsoft.com/en-us/library/webmatrix.webdata.simplemembershipprovider(v=vs.99)) (MSDN)
+- [Включение входа с внешних сайтов на сайте веб-страниц ASP.NET](https://go.microsoft.com/fwlink/?LinkId=251969)
+- [Справочник по API класс WebSecurity](https://msdn.microsoft.com/library/webmatrix.webdata.websecurity(v=vs.99)) (MSDN)
+- [Справочник по API класс SimpleRoleProvider](https://msdn.microsoft.com/library/webmatrix.webdata.simpleroleprovider(v=vs.99)) (MSDN)
+- [Справочник по API класс SimpleMembershipProvider](https://msdn.microsoft.com/library/webmatrix.webdata.simplemembershipprovider(v=vs.99)) (MSDN)

@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: afb2fa9b3dfd80a2aa49fffae71965fc2098442f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3f641b53a9ed568132909114c6cceaa957064fa2
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Учебник: Сервер широковещательных пакетов с помощью ASP.NET SignalR 1.x
 ====================
@@ -123,7 +123,7 @@ SignalR функции можно добавить в проект, устано
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample3.cs)]
 
-    [Концентратора](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hub(v=vs.111).aspx) класс используется для определения методов, клиенты могут вызывать на сервере. Вы определяете один метод: `GetAllStocks()`. Когда клиент изначально подключается к серверу, он вызывает этот метод, чтобы получить список всех акций с их текущей цены. Метод может выполняются синхронно и возвращать `IEnumerable<Stock>` , так как он возвращает данные из памяти. Приходилось получать данные, то, что привело бы к ожидания, например, поиск в базе данных или вызов веб-службы, выполнив метод следует указать `Task<IEnumerable<Stock>>` как возвращаемое значение асинхронной обработки. Дополнительные сведения см. в разделе [ASP.NET руководство по API концентраторов SignalR - Server - если для асинхронного выполнения](index.md).
+    [Концентратора](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hub(v=vs.111).aspx) класс используется для определения методов, клиенты могут вызывать на сервере. Вы определяете один метод: `GetAllStocks()`. Когда клиент изначально подключается к серверу, он вызывает этот метод, чтобы получить список всех акций с их текущей цены. Метод может выполняются синхронно и возвращать `IEnumerable<Stock>` , так как он возвращает данные из памяти. Приходилось получать данные, то, что привело бы к ожидания, например, поиск в базе данных или вызов веб-службы, выполнив метод следует указать `Task<IEnumerable<Stock>>` как возвращаемое значение асинхронной обработки. Дополнительные сведения см. в разделе [ASP.NET руководство по API концентраторов SignalR - Server - если для асинхронного выполнения](index.md).
 
     Атрибут HubName указывает, как концентратор будет ссылаться в коде JavaScript на стороне клиента. Имя по умолчанию на стороне клиента, если вы не используете этот атрибут — это версия стиле Camel, от имени класса, что в этом случае было бы stockTickerHub.
 
@@ -136,7 +136,7 @@ SignalR функции можно добавить в проект, устано
 
     ### <a name="storing-the-singleton-instance-in-a-static-field"></a>Хранение одноэлементный экземпляр в статическом поле
 
-    Этот код инициализирует статический \_экземпляр поля, поддерживающего свойство экземпляра с экземпляром класса, и это является единственным экземпляром класса, который может быть создан, поскольку конструктор помечен как частный. [Отложенная инициализация](https://msdn.microsoft.com/en-us/library/dd997286.aspx) используется для \_поле экземпляра, а не для повышения производительности, но чтобы убедитесь, что создание экземпляра threadsafe.
+    Этот код инициализирует статический \_экземпляр поля, поддерживающего свойство экземпляра с экземпляром класса, и это является единственным экземпляром класса, который может быть создан, поскольку конструктор помечен как частный. [Отложенная инициализация](https://msdn.microsoft.com/library/dd997286.aspx) используется для \_поле экземпляра, а не для повышения производительности, но чтобы убедитесь, что создание экземпляра threadsafe.
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample5.cs)]
 
@@ -150,7 +150,7 @@ SignalR функции можно добавить в проект, устано
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample7.cs)]
 
-    Представляет собой коллекцию акции [ConcurrentDictionary](https://msdn.microsoft.com/en-us/library/dd287191.aspx) тип безопасности потока. В качестве альтернативы можно использовать [словарь](https://msdn.microsoft.com/en-us/library/xfhwa508.aspx) объекта и явно заблокировать словарь при внесении изменений в него.
+    Представляет собой коллекцию акции [ConcurrentDictionary](https://msdn.microsoft.com/library/dd287191.aspx) тип безопасности потока. В качестве альтернативы можно использовать [словарь](https://msdn.microsoft.com/library/xfhwa508.aspx) объекта и явно заблокировать словарь при внесении изменений в него.
 
     Для этого примера приложения что достаточно для хранения данных приложения в памяти и потери данных при удалении экземпляра StockTicker. В реальном приложении будет работать с хранилищем данных серверной части, например к базе данных.
 
@@ -162,7 +162,7 @@ SignalR функции можно добавить в проект, устано
 
     UpdateStockPrices вызывается таймер, который передает значения NULL в параметре state. Перед обновлением цены, устанавливается блокировка \_updateStockPricesLock объекта. Код проверяет, если другой поток уже обновление цен и затем вызывает TryUpdateStockPrice для каждой из них в списке. Метод TryUpdateStockPrice решает, следует ли изменить цены акции и объем, чтобы изменить его. При изменении цены акции BroadcastStockPrice вызывается для вещания акций изменения для всех подключенных клиентов.
 
-    \_UpdatingStockPrices флаг помечен как [volatile](https://msdn.microsoft.com/en-us/library/x13ttww7.aspx) для обеспечения доступа к нему threadsafe.
+    \_UpdatingStockPrices флаг помечен как [volatile](https://msdn.microsoft.com/library/x13ttww7.aspx) для обеспечения доступа к нему threadsafe.
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample9.cs)]
 
@@ -182,7 +182,7 @@ SignalR функции можно добавить в проект, устано
 
     Метод updateStockPrice, вызываемой в BroadcastStockPrice не существует; она будет добавлена позже при написании кода, который выполняется на клиенте. Можно ссылаться на updateStockPrice здесь, поскольку Clients.All является динамической, это означает, что выражение будет вычислено во время выполнения. При вызове этого метода выполняется, SignalR отправит имя метода и значение параметра клиента и если у клиента имеется метод с именем updateStockPrice, этот метод будет вызван, и он передается значение параметра.
 
-    Clients.All означает отправить всем клиентам. SignalR предоставляет другие параметры, чтобы указать, какие клиенты или группы клиенты для отправки. Дополнительные сведения см. в разделе [HubConnectionContext](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hubs.hubconnectioncontext(v=vs.111).aspx).
+    Clients.All означает отправить всем клиентам. SignalR предоставляет другие параметры, чтобы указать, какие клиенты или группы клиенты для отправки. Дополнительные сведения см. в разделе [HubConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.hubconnectioncontext(v=vs.111).aspx).
 
 ### <a name="register-the-signalr-route"></a>Регистрация маршрутов SignalR
 
@@ -196,7 +196,7 @@ SignalR функции можно добавить в проект, устано
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample11.cs)]
 
-    По умолчанию — базовый URL-адрес для всех типов трафика SignalR «/ signalr», и «/ signalr/концентраторов» используется для получения динамически создаваемый файл JavaScript, который определяет прокси-серверы для всех концентраторов в приложении. Метод MapHubs включает перегрузки, которые позволяют задать другой базовый URL-адрес и некоторые параметры SignalR в экземпляре [HubConfiguration](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hubconfiguration(v=vs.111).aspx) класса.
+    По умолчанию — базовый URL-адрес для всех типов трафика SignalR «/ signalr», и «/ signalr/концентраторов» используется для получения динамически создаваемый файл JavaScript, который определяет прокси-серверы для всех концентраторов в приложении. Метод MapHubs включает перегрузки, которые позволяют задать другой базовый URL-адрес и некоторые параметры SignalR в экземпляре [HubConfiguration](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubconfiguration(v=vs.111).aspx) класса.
 4. Добавить с помощью оператора в верхней части файла:
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample12.cs)]

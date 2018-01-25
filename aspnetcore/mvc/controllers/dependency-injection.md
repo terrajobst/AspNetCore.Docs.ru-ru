@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 21cffcd285879fdca81cb7d92d0f079d4bf7756c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 946d695c572379c3ebc2eda1569f186f25ab9bfc
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="dependency-injection-into-controllers"></a>Внедрение зависимостей в контроллерах
 
@@ -87,7 +87,7 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstr
 
 ## <a name="accessing-settings-from-a-controller"></a>Доступ к параметрам из контроллера
 
-Доступ к параметрам приложения или конфигурации из контроллера — это общий шаблон. Такой доступ следует использовать шаблон параметры, описанные в [конфигурации](xref:fundamentals/configuration/index). Обычно следует не запросить параметры непосредственно из вашего контроллера с помощью внедрения зависимости. Оптимальный подход — запрос `IOptions<T>` экземпляра, где `T` класс конфигурации, необходимо.
+Доступ к параметрам приложения или конфигурации из контроллера — это общий шаблон. Такой доступ следует использовать шаблон параметры, описанные в [конфигурации](xref:fundamentals/configuration/index). Параметры обычно не следует запрашивать непосредственно из вашего контроллера с помощью внедрения зависимости. Оптимальный подход — запрос `IOptions<T>` экземпляра, где `T` класс конфигурации, необходимо.
 
 Для работы с параметрами шаблона, необходимо создать класс, который представляет параметры, подобные следующему:
 

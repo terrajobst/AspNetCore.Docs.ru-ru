@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/data/7-displaying-data-in-a-chart
 msc.type: authoredcontent
-ms.openlocfilehash: 15daa5fa94094fb50971514a152312fd81a749a1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f252b74bc42d0ea65b8b1150973c4f3c50cc9cf4
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="displaying-data-in-a-chart-with-aspnet-web-pages-razor"></a>Отображение данных на диаграмме с веб-страниц ASP.NET (Razor)
 ====================
@@ -181,7 +181,7 @@ ms.lasthandoff: 11/10/2017
 
 В следующей таблице перечислены встроенные темы.
 
-| Тема | Описание |
+| Тема | Описание: |
 | --- | --- |
 | `Vanilla` | Отображает красный столбцы на белом фоне. |
 | `Blue` | Отображает синий столбцов на синем фоне градиента. |
@@ -296,4 +296,4 @@ ms.lasthandoff: 11/10/2017
 
 - [Введение в работу с базой данных в ASP.NET Web Pages сайтов](https://go.microsoft.com/fwlink/?LinkId=202893)
 - [Использование кэширования в ASP.NET Web Pages сайты для повышения производительности](https://go.microsoft.com/fwlink/?LinkId=202903)
-- [Класс диаграммы](https://msdn.microsoft.com/en-us/library/system.web.helpers.chart(v=vs.99)) (Справочник по API веб-страниц ASP.NET на сайте MSDN)
+- [Класс диаграммы](https://msdn.microsoft.com/library/system.web.helpers.chart(v=vs.99)) (Справочник по API веб-страниц ASP.NET на сайте MSDN)

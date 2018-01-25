@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f7f6e7e4bc3a8cc7e70911bc22a28d385f762af0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b78469858483a9501a0f73d1c894e29ae0a99122
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="recovering-and-changing-passwords-vb"></a>Восстановление и изменение паролей (Visual Basic)
 ====================
@@ -83,7 +83,7 @@ ASP.NET включает в себя два веб-элементы управл
 
 Перед запуском этой странице имеется Заключительная часть конфигурации, как правило: необходимо указать параметры доставки почты в `Web.config`. Управления PasswordRecovery использует эти параметры для отправки сообщения электронной почты.
 
-Конфигурация доставки почты определяется через [ `<system.net>` элемент](https://msdn.microsoft.com/en-us/library/6484zdc1.aspx) [ `<mailSettings>` элемент](https://msdn.microsoft.com/en-us/library/w355a94k.aspx). Используйте [ `<smtp>` элемент](https://msdn.microsoft.com/en-us/library/ms164240.aspx) для указания метода доставки и адрес отправителя по умолчанию. Приведенный ниже код настраивает параметры почты для использования сетевой SMTP сервера с именем `smtp.example.com` через порт 25 и имя пользователя и пароль учетных данных имени пользователя и пароля.
+Конфигурация доставки почты определяется через [ `<system.net>` элемент](https://msdn.microsoft.com/library/6484zdc1.aspx) [ `<mailSettings>` элемент](https://msdn.microsoft.com/library/w355a94k.aspx). Используйте [ `<smtp>` элемент](https://msdn.microsoft.com/library/ms164240.aspx) для указания метода доставки и адрес отправителя по умолчанию. Приведенный ниже код настраивает параметры почты для использования сетевой SMTP сервера с именем `smtp.example.com` через порт 25 и имя пользователя и пароль учетных данных имени пользователя и пароля.
 
 > [!NOTE]
 > `<system.net>`является дочерним элементом корневого `<configuration>` элемент и одноуровневым `<system.web>`. Таким образом, не следует помещать `<system.net>` элемент в пределах `<system.web>` элемента; вместо этого поместите его на том же уровне.
@@ -93,7 +93,7 @@ ASP.NET включает в себя два веб-элементы управл
 
 Помимо использования SMTP-сервер в сети, можно также указать каталог подбора сообщений, где следует внесен отправку сообщений электронной почты.
 
-После настройки параметров SMTP посетите `RecoverPassword.aspx` страницу в обозревателе. Сначала попробуйте ввести имя пользователя, который не существует в хранилище пользователя. Как показано на рисунке 2, элемент управления PasswordRecovery отображает сообщение о том, что сведения о пользователе будет недоступен. Текст сообщения можно настроить с помощью элемента управления [ `UserNameFailureText` свойства](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.passwordrecovery.usernamefailuretext.aspx).
+После настройки параметров SMTP посетите `RecoverPassword.aspx` страницу в обозревателе. Сначала попробуйте ввести имя пользователя, который не существует в хранилище пользователя. Как показано на рисунке 2, элемент управления PasswordRecovery отображает сообщение о том, что сведения о пользователе будет недоступен. Текст сообщения можно настроить с помощью элемента управления [ `UserNameFailureText` свойства](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.usernamefailuretext.aspx).
 
 
 [![Сообщение об ошибке отображается, если введено неправильное имя пользователя](recovering-and-changing-passwords-vb/_static/image5.png)](recovering-and-changing-passwords-vb/_static/image4.png)
@@ -101,7 +101,7 @@ ASP.NET включает в себя два веб-элементы управл
 **На рисунке 2**: сообщение об ошибке отображается, если введено неправильное имя пользователя ([Просмотр полноразмерное изображение](recovering-and-changing-passwords-vb/_static/image6.png))
 
 
-Теперь можно ввести имя пользователя. Используйте имя пользователя учетной записи в системе с адресом электронной почты, можно открыть и которого безопасности ответить вам известно. После ввода имени пользователя и нажмите кнопку Отправить, элемент управления PasswordRecovery отображает его представления вопроса. Как с представления имени пользователя при вводе неправильного ответа на PasswordRecovery отображает элемент управления, сообщения об ошибке (см. рис. 3). Используйте [ `QuestionFailureText` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.passwordrecovery.questionfailuretext.aspx) для настройки это сообщение об ошибке.
+Теперь можно ввести имя пользователя. Используйте имя пользователя учетной записи в системе с адресом электронной почты, можно открыть и которого безопасности ответить вам известно. После ввода имени пользователя и нажмите кнопку Отправить, элемент управления PasswordRecovery отображает его представления вопроса. Как с представления имени пользователя при вводе неправильного ответа на PasswordRecovery отображает элемент управления, сообщения об ошибке (см. рис. 3). Используйте [ `QuestionFailureText` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.questionfailuretext.aspx) для настройки это сообщение об ошибке.
 
 
 [![Сообщение об ошибке отображается, если пользователь ввел недопустимый ответ на контрольный вопрос](recovering-and-changing-passwords-vb/_static/image8.png)](recovering-and-changing-passwords-vb/_static/image7.png)
@@ -127,15 +127,15 @@ ASP.NET включает в себя два веб-элементы управл
 
 пароль: *пароль*
 
-Это сообщение можно настроить программно через обработчик событий для элемента управления PasswordRecovery [ `SendingMail` событий](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.passwordrecovery.sendingmail.aspx), или декларативно с помощью [ `MailDefinition` свойства](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.passwordrecovery.maildefinition.aspx). Давайте рассмотрим оба варианта.
+Это сообщение можно настроить программно через обработчик событий для элемента управления PasswordRecovery [ `SendingMail` событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.sendingmail.aspx), или декларативно с помощью [ `MailDefinition` свойства](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.maildefinition.aspx). Давайте рассмотрим оба варианта.
 
-`SendingMail` Событие непосредственно перед сообщение электронной почты отправляется и наши последняя возможность программное изменение сообщения электронной почты. Когда происходит событие, обработчик событий передается объект типа [ `MailMessageEventArgs` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.mailmessageeventargs.aspx), чей `Message` свойство содержит ссылку на адреса электронной почты, который будет отправлен.
+`SendingMail` Событие непосредственно перед сообщение электронной почты отправляется и наши последняя возможность программное изменение сообщения электронной почты. Когда происходит событие, обработчик событий передается объект типа [ `MailMessageEventArgs` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.mailmessageeventargs.aspx), чей `Message` свойство содержит ссылку на адреса электронной почты, который будет отправлен.
 
 Создайте обработчик событий для `SendingMail` событий и добавьте следующий код, который программными средствами добавляет `webmaster@example.com` в список "Копия".
 
 [!code-vb[Main](recovering-and-changing-passwords-vb/samples/sample2.vb)]
 
-Сообщения электронной почты также можно настроить через декларативным образом. PasswordRecovery `MailDefinition` является объектом типа [ `MailDefinition` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.maildefinition.aspx). `MailDefinition` Класс предлагает целый ряд свойств, связанных с электронной почтой, включая `From`, `CC`, `Priority`, `Subject`, `IsBodyHtml`, `BodyFileName`и др. Во-первых, задайте [ `Subject` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.maildefinition.subject.aspx) на более описательное имя, отличной от используемых по умолчанию (пароль), такие как сброса пароля...
+Сообщения электронной почты также можно настроить через декларативным образом. PasswordRecovery `MailDefinition` является объектом типа [ `MailDefinition` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.maildefinition.aspx). `MailDefinition` Класс предлагает целый ряд свойств, связанных с электронной почтой, включая `From`, `CC`, `Priority`, `Subject`, `IsBodyHtml`, `BodyFileName`и др. Во-первых, задайте [ `Subject` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.maildefinition.subject.aspx) на более описательное имя, отличной от используемых по умолчанию (пароль), такие как сброса пароля...
 
 Чтобы настроить текст сообщения электронной почты, необходимо создать файл шаблона одно сообщение электронной почты, содержащее содержимое тела. Начните с создания новой папки в веб-сайт с именем `EmailTemplates`. Добавьте новый текстовый файл в эту папку с именем `PasswordRecovery.txt` и добавьте следующее содержимое:
 
@@ -143,7 +143,7 @@ ASP.NET включает в себя два веб-элементы управл
 
 Обратите внимание на использование заполнители `<%UserName%>` и `<%Password%>`. Управления PasswordRecovery автоматически заменяет эти заполнители два пользователя и пароль восстановленные перед отправкой сообщения электронной почты.
 
-Наконец, точки `MailDefinition` [ `BodyFileName` свойство](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.maildefinition.bodyfilename.aspx) в только что созданный шаблон электронной почты (`~/EmailTemplates/PasswordRecovery.txt`).
+Наконец, точки `MailDefinition` [ `BodyFileName` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.maildefinition.bodyfilename.aspx) в только что созданный шаблон электронной почты (`~/EmailTemplates/PasswordRecovery.txt`).
 
 После внесения этих изменений повторное использование `RecoverPassword.aspx` страницы и введите имя пользователя и безопасности ответ. Вы получаете следует сообщение электронной почты, который выглядит как показано на рис. 5. Обратите внимание, что `webmaster@example.com` была бы копия и что поле темы и текст были обновлены.
 
@@ -153,7 +153,7 @@ ASP.NET включает в себя два веб-элементы управл
 **Рис. 5**: Тема, текст и копия список был обновлен ([Просмотр полноразмерное изображение](recovering-and-changing-passwords-vb/_static/image15.png))
 
 
-Чтобы отправить сообщение электронной почты в формате HTML задайте [ `IsBodyHtml` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.maildefinition.isbodyhtml.aspx) в значение True (по умолчанию: False) и обновление шаблона электронной почты для включения HTML.
+Чтобы отправить сообщение электронной почты в формате HTML задайте [ `IsBodyHtml` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.maildefinition.isbodyhtml.aspx) в значение True (по умолчанию: False) и обновление шаблона электронной почты для включения HTML.
 
 `MailDefinition` Свойство не является уникальным для PasswordRecovery класса. Как будет показано в шаге 2, управления ChangePassword также предлагает `MailDefinition` свойство. Кроме того, элемент управления CreateUserWizard включает такие свойства, которые можно настроить для автоматической отправки сообщений приветственное сообщение электронной почты новым пользователям.
 
@@ -163,10 +163,10 @@ ASP.NET включает в себя два веб-элементы управл
 
 ### <a name="programmatically-resetting-a-users-password"></a>Программным образом сбросе пароля пользователя
 
-Если сброс пароля пользователя PasswordRecovery управление вызовы `MembershipUser` объекта [ `ResetPassword` метод](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.resetpassword.aspx). Этот метод имеет две перегрузки:
+Если сброс пароля пользователя PasswordRecovery управление вызовы `MembershipUser` объекта [ `ResetPassword` метод](https://msdn.microsoft.com/library/system.web.security.membershipuser.resetpassword.aspx). Этот метод имеет две перегрузки:
 
-- **[`ResetPassword`](https://msdn.microsoft.com/en-us/library/d94bdzz2.aspx)**-Сбрасывает пароль пользователя. Используйте этот перегруженный метод, если `RequiresQuestionAndAnswer` имеет значение False.
-- **[`ResetPassword(securityAnswer)`](https://msdn.microsoft.com/en-us/library/d90zte4w.aspx)**-Сбрасывает только если пароль пользователя, предоставленного *securityAnswer* указано правильно. Используйте этот перегруженный метод, если `RequiresQuestionAndAnswer` имеет значение True.
+- **[`ResetPassword`](https://msdn.microsoft.com/library/d94bdzz2.aspx)**-Сбрасывает пароль пользователя. Используйте этот перегруженный метод, если `RequiresQuestionAndAnswer` имеет значение False.
+- **[`ResetPassword(securityAnswer)`](https://msdn.microsoft.com/library/d90zte4w.aspx)**-Сбрасывает только если пароль пользователя, предоставленного *securityAnswer* указано правильно. Используйте этот перегруженный метод, если `RequiresQuestionAndAnswer` имеет значение True.
 
 Обе перегрузки возвращают новый созданный случайным образом пароль.
 
@@ -179,7 +179,7 @@ ASP.NET включает в себя два веб-элементы управл
 
 ### <a name="a-word-on-how-the-random-passwords-are-generated"></a>Создаются слово на как случайными паролями
 
-Пароли формируется случайным образом, показанный в сообщениях электронной почты в иллюстрациях 4 и 5 создаются с помощью класса членства [ `GeneratePassword` метод](https://msdn.microsoft.com/en-us/library/system.web.security.membership.generatepassword.aspx). Этот метод принимает два входных параметров целое - *длина* и *numberOfNonAlphanumericCharacters* — и возвращает строку, по крайней мере *длина* символов цифр по бы *numberOfNonAlphanumericCharacters* число не буквенно-цифровых символов. При вызове этого метода в классы членства или связанные с именем входа веб-элементов управления из значения для этих двух параметров определяются конфигурации членства `MinRequiredPasswordLength` и `MinRequiredNonalphanumericCharacters` свойства, которые рекомендуется задать значение 7 и 1, соответственно.
+Пароли формируется случайным образом, показанный в сообщениях электронной почты в иллюстрациях 4 и 5 создаются с помощью класса членства [ `GeneratePassword` метод](https://msdn.microsoft.com/library/system.web.security.membership.generatepassword.aspx). Этот метод принимает два входных параметров целое - *длина* и *numberOfNonAlphanumericCharacters* — и возвращает строку, по крайней мере *длина* символов цифр по бы *numberOfNonAlphanumericCharacters* число не буквенно-цифровых символов. При вызове этого метода в классы членства или связанные с именем входа веб-элементов управления из значения для этих двух параметров определяются конфигурации членства `MinRequiredPasswordLength` и `MinRequiredNonalphanumericCharacters` свойства, которые рекомендуется задать значение 7 и 1, соответственно.
 
 `GeneratePassword` Метод использует криптостойкой генератора случайных чисел для убедитесь, что в выбраны какие случайных символов не учитывается. Кроме того `GeneratePassword` — `Public`, это означает, что можно использовать его непосредственно из приложения ASP.NET для формирования случайных строк или пароли.
 
@@ -194,7 +194,7 @@ ASP.NET включает в себя два веб-элементы управл
 Используйте элемент управления ChangePassword для создания интерфейса пользователя изменить свой пароль. Гораздо как управления PasswordRecovery ChangePassword управления состоит из двух представлений: изменение пароля и успех. Смена пароля представление пользователю старый и новый пароли. После указания старый пароль и новый пароль, который соответствует требованиям к минимальной длине и не буквенно-цифровых символов, управления ChangePassword обновляет пароль пользователя и отображает представления успешного выполнения.
 
 > [!NOTE]
-> Элемент управления ChangePassword изменяет пароль пользователя путем вызова `MembershipUser` объекта [ `ChangePassword` метод](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.changepassword.aspx). Метод ChangePassword принимает два `String` входных параметров - *Старый_пароль* и *newPassword*- и обновляет учетную запись пользователя с *newPassword*, при условии, что предоставленный *Старый_пароль* указано правильно.
+> Элемент управления ChangePassword изменяет пароль пользователя путем вызова `MembershipUser` объекта [ `ChangePassword` метод](https://msdn.microsoft.com/library/system.web.security.membershipuser.changepassword.aspx). Метод ChangePassword принимает два `String` входных параметров - *Старый_пароль* и *newPassword*- и обновляет учетную запись пользователя с *newPassword*, при условии, что предоставленный *Старый_пароль* указано правильно.
 
 
 Откройте `ChangePassword.aspx` и добавьте элемент управления ChangePassword страницу, присвоив ему имя `ChangePwd`. На этом этапе конструктора должны показывать Смена пароля представления (см. рис. 6). Как с помощью элемента управления PasswordRecovery можно переключаться между представлениями через смарт-тег элемента управления. Кроме того эти представления внешний вид настраиваются через свойства различные стиля или путем их преобразования в шаблон.
@@ -207,7 +207,7 @@ ASP.NET включает в себя два веб-элементы управл
 
 Элемент управления ChangePassword можно обновить пароль текущего выполнившего вход пользователя *или* пароль другой, указанного пользователя. Как показано на рис. 6, представление сменить пароль по умолчанию отображает только три элемента управления TextBox: один для старого пароля и два для нового пароля. Этот интерфейс по умолчанию используется для обновления пароля пользователя, выполнившего вход.
 
-Чтобы обновить пароль другого пользователя с помощью элемента управления ChangePassword, задать для элемента управления [ `DisplayUserName` свойства](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.changepassword.displayusername.aspx) значение True. Это добавляет четвертый текстовое поле на страницу, запрашивает имя пользователя, пароль которого для изменения.
+Чтобы обновить пароль другого пользователя с помощью элемента управления ChangePassword, задать для элемента управления [ `DisplayUserName` свойства](https://msdn.microsoft.com/library/system.web.ui.webcontrols.changepassword.displayusername.aspx) значение True. Это добавляет четвертый текстовое поле на страницу, запрашивает имя пользователя, пароль которого для изменения.
 
 Параметр `DisplayUserName` для является полезным, если вы хотите разрешить out вошедшего пользователя сменить пароль без необходимости входить значение True. Лично я считаю, что нет ничего плохого требуют пользователя для входа, прежде чем позволяя ему сменить пароль. Таким образом, оставьте `DisplayUserName` значение False (по умолчанию). При принятии, тем не менее, мы по существу за исключением выполнения анонимным пользователям получать доступ этой страницы. Обновить правила авторизации URL-адрес сайта таким образом, чтобы запретить анонимные пользователи из посетив `ChangePassword.aspx`. Если вам необходимо обновить память на синтаксис правила авторизации URL-адрес, обращаться к <a id="_msoanchor_4"> </a> [ *авторизации на основе пользователя* ](../membership/user-based-authorization-vb.md) учебника.
 
@@ -300,7 +300,7 @@ ASP.NET предоставляет два элемента управления,
 - [Примеры использования элемента управления ChangePassword](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/changepassword.aspx)
 - [Примеры использования элемента управления PasswordRecovery](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/passwordrecovery.aspx)
 - [При отправке сообщения в ASP.NET](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)
-- [`System.Net.Mail`Часто задаваемые вопросы](http://www.systemnetmail.com/)
+- [`System.Net.Mail` FAQs](http://www.systemnetmail.com/)
 
 ### <a name="about-the-author"></a>Об авторе
 

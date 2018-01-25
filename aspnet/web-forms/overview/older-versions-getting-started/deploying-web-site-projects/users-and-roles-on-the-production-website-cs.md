@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0825b6bd6ca8d75f90cb7c4079e3af0213c5c4e9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 68f3a45b6a393f7b6a12b7c296a374536b0d66d6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="users-and-roles-on-the-production-website-c"></a>Пользователи и роли рабочего веб-сайта (C#)
 ====================
@@ -37,7 +37,7 @@ ASP. Службы приложений NET не привязаны к конкр
 
 ## <a name="using-the-aspnet-web-site-administration-tool"></a>С помощью ASP.NET Web Site Administration Tool
 
-В ASP.NET есть [Web Site Administration Tool](https://msdn.microsoft.com/en-us/library/yy40ytx0.aspx) (WSAT), упрощает создание и управление учетными записями пользователей и ролями и указать правила авторизации пользователей и ролей. Для использования WSAT, щелкните значок Конфигурация ASP.NET в обозревателе решений, или перейдите в меню веб-сайт или проект и выберите параметр конфигурации ASP.NET. Любой из этих подходов запускает веб-браузер и указывает его WSAT к адресу, например:`http://localhost:portNumber/asp.netwebadminfiles/default.aspx?applicationPhysicalPath=pathToApplication`
+В ASP.NET есть [Web Site Administration Tool](https://msdn.microsoft.com/library/yy40ytx0.aspx) (WSAT), упрощает создание и управление учетными записями пользователей и ролями и указать правила авторизации пользователей и ролей. Для использования WSAT, щелкните значок Конфигурация ASP.NET в обозревателе решений, или перейдите в меню веб-сайт или проект и выберите параметр конфигурации ASP.NET. Любой из этих подходов запускает веб-браузер и указывает его WSAT к адресу, например:`http://localhost:portNumber/asp.netwebadminfiles/default.aspx?applicationPhysicalPath=pathToApplication`
 
 WSAT состоит из трех разделов:
 
@@ -116,7 +116,7 @@ ASP.NET включает ряд встроенных входа веб-элем�
 
 - [Проверка ASP. NET членства, ролей и профиля](http://aspnet.4guysfromrolla.com/articles/120705-1.aspx)
 - [Последовательное собственные Web Site Administration Tool](http://aspnet.4guysfromrolla.com/articles/052307-1.aspx)
-- [Обзор средства администрирования веб-сайта](https://msdn.microsoft.com/en-us/library/yy40ytx0.aspx)
+- [Обзор средства администрирования веб-сайта](https://msdn.microsoft.com/library/yy40ytx0.aspx)
 - [Учебники по безопасности веб-сайта](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md)
 
 >[!div class="step-by-step"]

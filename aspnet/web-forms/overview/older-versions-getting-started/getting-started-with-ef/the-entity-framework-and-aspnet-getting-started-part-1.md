@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 5a852ec2301e63bde9a5ce99db80224dad7fb258
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ae2fddc81f6f4da866ec0719a0e74516bdd2a4d1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms"></a>Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4 Web Forms
 ====================
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > ## <a name="database-first"></a>Сначала базы данных
 > 
-> Существует три способа, можно работать с данными в Entity Framework: *Database First*, *Model First*, и *Code First*. Этот учебник предназначен для первой базы данных. Сведения о различиях между этими рабочими процессами и рекомендации о том, как выбирать наиболее подходящий для вашего сценария см. в разделе [процессов разработки Entity Framework](https://msdn.microsoft.com/en-us/library/ms178359.aspx#dbfmfcf).
+> Существует три способа, можно работать с данными в Entity Framework: *Database First*, *Model First*, и *Code First*. Этот учебник предназначен для первой базы данных. Сведения о различиях между этими рабочими процессами и рекомендации о том, как выбирать наиболее подходящий для вашего сценария см. в разделе [процессов разработки Entity Framework](https://msdn.microsoft.com/library/ms178359.aspx#dbfmfcf).
 > 
 > ## <a name="web-forms"></a>веб-формы
 > 
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > ## <a name="questions"></a>Вопросы
 > 
-> Если у вас есть вопросы, которые не связаны непосредственно для работы с учебником, их можно разместить [форум по ASP.NET Entity Framework](https://forums.asp.net/1227.aspx), [Entity Framework и LINQ to Entities форум](https://social.msdn.microsoft.com/forums/en-US/adodotnetentityframework/threads/), или [ StackOverflow.com](http://stackoverflow.com/).
+> Если у вас есть вопросы, которые не связаны непосредственно для работы с учебником, их можно разместить [форум по ASP.NET Entity Framework](https://forums.asp.net/1227.aspx), [Entity Framework и LINQ to Entities форум](https://social.msdn.microsoft.com/forums/adodotnetentityframework/threads/), или [ StackOverflow.com](http://stackoverflow.com/).
 
 
 ## <a name="overview"></a>Обзор
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/10/2017
 
 Чтобы запустить учебник, откройте Visual Studio и создайте новый проект веб-приложения ASP.NET с помощью **веб-приложение ASP.NET** шаблона:
 
-[!["Image01"](the-entity-framework-and-aspnet-getting-started-part-1/_static/image12.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image11.png)
+[![Image01](the-entity-framework-and-aspnet-getting-started-part-1/_static/image12.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image11.png)
 
 Этот шаблон создает проект веб-приложения, который уже включает таблицу стилей и главные страницы:
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 11/10/2017
 
 Метод сначала база данных, используемые в этом учебнике следующим шагом является добавление базы данных на сайт. Проще всего сначала загрузить проект, который переходит к этому учебнику. Щелкните правой кнопкой мыши *приложения\_данные* выберите **Добавление существующего элемента**и выберите *файл School.mdf* файла базы данных, загруженном проекте.
 
-Альтернативой является следуйте инструкциям в [Создание образца базы данных School](https://msdn.microsoft.com/en-us/library/bb399731.aspx). Загрузите базу данных или создать его, скопируйте *файл School.mdf* файл из следующей папки приложения *приложения\_данные* папки:
+Альтернативой является следуйте инструкциям в [Создание образца базы данных School](https://msdn.microsoft.com/library/bb399731.aspx). Загрузите базу данных или создать его, скопируйте *файл School.mdf* файл из следующей папки приложения *приложения\_данные* папки:
 
 `%PROGRAMFILES%\Microsoft SQL Server\MSSQL10.SQLEXPRESS\MSSQL\DATA`
 

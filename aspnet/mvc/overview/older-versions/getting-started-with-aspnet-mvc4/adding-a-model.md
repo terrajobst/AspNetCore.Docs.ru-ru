@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-model
 msc.type: authoredcontent
-ms.openlocfilehash: 1d066e4bab866a2195647f43aa886279fee941db
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 304c428b0d787e902f30c1989471c476f54d3b39
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-a-model"></a>Добавление модели
 ====================
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/10/2017
 
 В этом разделе вы добавите некоторые классы для управления фильмов в базе данных. Эти классы будет &quot;модели&quot; частью приложения ASP.NET MVC.
 
-Используемой технологии доступа к данным .NET Framework, известный как [Entity Framework](https://msdn.microsoft.com/en-us/library/bb399572(VS.110).aspx) для определения и работы с этими классами модели. Поддерживает платформы Entity Framework (часто обозначается как EF), который называется парадигмы разработки *Code First*. Код сначала позволяет создавать объекты модели путем написания простых классов. (Они также известны как классов POCO из &quot;объектов plain old CLR.&quot;) Затем можно установить базу данных создан автоматически из классов, который позволяет очень простой и быстрой разработки рабочего процесса.
+Используемой технологии доступа к данным .NET Framework, известный как [Entity Framework](https://msdn.microsoft.com/library/bb399572(VS.110).aspx) для определения и работы с этими классами модели. Поддерживает платформы Entity Framework (часто обозначается как EF), который называется парадигмы разработки *Code First*. Код сначала позволяет создавать объекты модели путем написания простых классов. (Они также известны как классов POCO из &quot;объектов plain old CLR.&quot;) Затем можно установить базу данных создан автоматически из классов, который позволяет очень простой и быстрой разработки рабочего процесса.
 
 ## <a name="adding-model-classes"></a>Добавление классов модели
 

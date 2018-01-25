@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: c0d6fd421dad02298326d1975ae68d1e7cc78d8c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8376c6537d693841a621158358cc8f69cda0a1d6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="signalr-scaleout-with-redis-signalr-1x"></a>SignalR горизонтального масштабирования с помощью Redis (SignalR 1.x)
 ====================
@@ -132,7 +132,7 @@ Redis представляет хранилищу ключей и значени
 
 Проверьте, что запущена служба управления. В противном случае запустите службу. (Если вы не видите управления веб-службы в списке служб Windows, убедитесь, что установлена служба управления, при добавлении роли IIS.)
 
-Управление веб-службы по умолчанию прослушивает TCP-порт 8172. В брандмауэре Windows создайте новое правило входящего трафика, разрешающее трафик TCP через порт 8172. Дополнительные сведения см. в разделе [Настройка правил брандмауэра](https://technet.microsoft.com/en-us/library/dd448559(WS.10).aspx). (При размещении виртуальных машин в Azure, это можно сделать непосредственно на портале Azure. В разделе [Настройка конечных точек для виртуальной машины](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-set-up-endpoints/).)
+Управление веб-службы по умолчанию прослушивает TCP-порт 8172. В брандмауэре Windows создайте новое правило входящего трафика, разрешающее трафик TCP через порт 8172. Дополнительные сведения см. в разделе [Настройка правил брандмауэра](https://technet.microsoft.com/library/dd448559(WS.10).aspx). (При размещении виртуальных машин в Azure, это можно сделать непосредственно на портале Azure. В разделе [Настройка конечных точек для виртуальной машины](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/).)
 
 Теперь вы готовы к развертыванию проекта Visual Studio с компьютера разработки на сервер. В обозревателе решений щелкните правой кнопкой мыши решение и выберите **публикации**.
 

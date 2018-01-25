@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc4-release-notes
 msc.type: content
-ms.openlocfilehash: fb9d2eaa83fe7486279815c21aec204bdfdf122d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 399fbe3fa1e71a9ffa7c5e6dfeca7ccab7294d1b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/10/2017
     - [Миграция базы данных](#_Toc303253818)
     - [Пустой шаблон проекта](#_Toc303253819)
     - [Добавить контроллер в любой папке проекта](#_Toc303253820)
-    - [Объединение и Минификация](#_Toc303253821)
+    - [Объединение и минификация](#_Toc303253821)
     - [Включить имена входа из Facebook, а также других узлов, с помощью OAuth и OpenID](#_Toc303253822)
 - [Обновление проекта ASP.NET MVC 3 до ASP.NET MVC 4](#_Toc303253806)
 - [Изменения с ASP.NET MVC 4, версия-кандидат](#_Toc303253817)
@@ -61,7 +61,7 @@ ASP.NET MVC 4 могут быть установлены и запущены sid
 
 Документация по ASP.NET MVC доступна на веб-сайте MSDN по АДРЕСУ:
 
-[https://go.Microsoft.com/fwlink/?LinkId=243043](https://go.microsoft.com/fwlink/?LinkID=243043)
+[https://go.microsoft.com/fwlink/?LinkID=243043](https://go.microsoft.com/fwlink/?LinkID=243043)
 
 Учебники и другие сведения о ASP.NET MVC доступны на странице веб-сайта ASP.NET MVC 4 ([https://www.asp.net/mvc/mvc4](../mvc/mvc4.md)).
 
@@ -271,7 +271,7 @@ ASP.NET MVC 4 можно установить параллельно с ASP.NET 
     [!code-xml[Main](mvc4-release-notes/samples/sample6.xml)]
 - **Диспетчер пакетов NuGet не устанавливается при установке ASP.NET MVC 4 для параллельная установка Visual Studio 2010 и Visual Web Developer 2010.** Для запуска Visual Studio 2010 и Visual Web Developer 2010 параллельно с ASP.NET MVC 4 ASP.NET MVC 4 необходимо установить обе версии Visual Studio уже после установки.
 - **При удалении ASP.NET MVC 4 завершается ошибкой, если необходимые компоненты уже был удален.** Чтобы полностью удалить ASP.NET MVC 4you необходимо удалить перед удалением Visual Studio ASP.NET MVC 4.
-- **Установка ASP.NET MVC 4 прерывается приложений ASP.NET MVC 3 RTM.** Выпуск приложений ASP.NET MVC 3, которые были созданы с RTM (не с [обновления средств ASP.NET MVC 3](https://www.microsoft.com/en-us/download/details.aspx?id=1491) выпуска) рядом с ASP.NET MVC 4 работы требуются следующие изменения. Построение проекта без внесения результаты этих обновлений в ошибки компиляции. 
+- **Установка ASP.NET MVC 4 прерывается приложений ASP.NET MVC 3 RTM.** Выпуск приложений ASP.NET MVC 3, которые были созданы с RTM (не с [обновления средств ASP.NET MVC 3](https://www.microsoft.com/download/details.aspx?id=1491) выпуска) рядом с ASP.NET MVC 4 работы требуются следующие изменения. Построение проекта без внесения результаты этих обновлений в ошибки компиляции. 
 
     **Необходимые обновления**
 

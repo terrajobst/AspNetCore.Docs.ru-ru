@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: d8b94f53954c5ab63ccf3aab4eb7a7a7dbea487b
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 85d5ca18944e774d1f2577459c6c45acde01e4d9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="custom-model-binding"></a>Привязка пользовательских модели
 
@@ -104,7 +104,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 [!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo1&highlight=2)]
 
-В этом примере, так как не указано имя аргумента, значение по умолчанию `authorId`, он указан на параметр с помощью `ModelBinder` атрибута. Обратите внимание, упрощается метод контроллера и действия по сравнению с поиска сущности в методе действия. Логика для выборки с использованием Entity Framework Core автор перемещается связывателя модели. Это может быть значительное упрощение, если у вас есть несколько методов, которые можно привязать к модели автора и помогут вам выполнить [ТОНЕРА принцип](http://deviq.com/don-t-repeat-yourself/).
+В этом примере, поскольку имя аргумента не значение по умолчанию `authorId`, он указан на параметр с помощью `ModelBinder` атрибута. Обратите внимание, упрощается метод контроллера и действия по сравнению с поиска сущности в методе действия. Логика для выборки с использованием Entity Framework Core автор перемещается связывателя модели. Это может быть значительное упрощение, если у вас есть несколько методов, которые можно привязать к модели автора и помогут вам выполнить [ТОНЕРА принцип](http://deviq.com/don-t-repeat-yourself/).
 
 Можно применить `ModelBinder` атрибут свойства отдельной модели (такие как на viewmodel) или с параметрами метода действия для указания связывателя модели или модели имя для только что такой тип или действие.
 
@@ -133,6 +133,6 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 ## <a name="recommendations-and-best-practices"></a>Рекомендации и советы
 
 Пользовательские связыватели:
-- Не пытайтесь задать коды состояния или возвращать результаты (например, 404 не найдено). При сбое привязки модели, [фильтр действий](xref:mvc/controllers/filters) или логику в сам метод должен обрабатывать ошибку.
+- Не следует пытаться коды состояния и возвращать результаты (например, 404 не найдено). При сбое привязки модели, [фильтр действий](xref:mvc/controllers/filters) или логику в сам метод должен обрабатывать ошибку.
 - Наиболее полезны для исключения повторяющихся частей кода и перекрестные вопросов от методов действий.
-- Обычно не используются для преобразования строки в пользовательский тип [ `TypeConverter` ](https://docs.microsoft.com//dotnet/api/system.componentmodel.typeconverter) обычно является лучшим вариантом.
+- Как правило, не должны использоваться для преобразования строки в пользовательский тип [ `TypeConverter` ](https://docs.microsoft.com//dotnet/api/system.componentmodel.typeconverter) обычно является лучшим вариантом.

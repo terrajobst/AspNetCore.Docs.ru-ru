@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 18d04492529e96b6c0e14f1d7a30378b4832f4c8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 37fd26ebaea192cb540c443eff8a07343ab8c15b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-help-pages-for-aspnet-web-api"></a>Создание страниц справки для веб-API ASP.NET
 ====================
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="adding-api-documentation"></a>Добавление документации по API
 
-По умолчанию с помощью страницы имеют заполнитель строки для документации. Можно использовать [комментарии XML-документации](https://msdn.microsoft.com/en-us/library/b2s063f7.aspx) для создания документации. Чтобы включить эту функцию, откройте файл областей HelpPage приложений и\_Start/HelpPageConfig.cs и раскомментируйте следующую строку:
+По умолчанию с помощью страницы имеют заполнитель строки для документации. Можно использовать [комментарии XML-документации](https://msdn.microsoft.com/library/b2s063f7.aspx) для создания документации. Чтобы включить эту функцию, откройте файл областей HelpPage приложений и\_Start/HelpPageConfig.cs и раскомментируйте следующую строку:
 
 [!code-csharp[Main](creating-api-help-pages/samples/sample3.cs)]
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/10/2017
 
 **ApiExplorer** автоматически вызывает **IDocumentationProvider** интерфейс для получения строк документации для каждого API-интерфейса. Она сохраняет их в **документации** свойство **ApiDescription** и **ApiParameterDescription** объектов.
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 Вы не ограничены страниц справки, показано ниже. На самом деле **ApiExplorer** не только на создание страниц справки. Ло Huang Yao написаны некоторые значительные записи в блогах для получения вы думаете без дополнительной настройки:
 

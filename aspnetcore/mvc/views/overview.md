@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: c0a1f475941f3389e9aa1f5bb7819bef491b2cae
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: dc36c76dbd7d82a926e39d8a8ab3a2a53b65d954
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Представления в ASP.NET Core MVC
 
@@ -186,7 +186,7 @@ namespace WebApplication1.ViewModels
 
 ### <a name="weakly-typed-data-viewdata-and-viewbag"></a>Слабо типизированных данных (ViewData и ViewBag)
 
-Примечание: `ViewBag` доступен не на страницах Razor.
+Примечание: `ViewBag` недоступна на страницах Razor.
 
 Помимо строго типизированного представления представления имеют доступ к *слабо типизированной* (также называемый *слабо типизированной*) сбор данных. В отличие от строгие типы *слабое типы* (или *свободные типы*) означает, что не явно объявить тип данных, которые вы используете. Коллекция слабо типизированных данных можно использовать для передачи небольших объемов данных и из него контроллеры и представления.
 
@@ -245,7 +245,7 @@ public IActionResult SomeAction()
 
 **ViewBag**
 
-Примечание: `ViewBag` доступен не на страницах Razor.
+Примечание: `ViewBag` недоступна на страницах Razor.
 
 `ViewBag`— [DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata) объект, предоставляющий динамический доступ для объектов, хранящихся в `ViewData`. `ViewBag`может быть удобнее работать с, поскольку он не требует приведения. В следующем примере показано, как использовать `ViewBag` с тем же, как с помощью `ViewData` выше:
 
@@ -278,7 +278,7 @@ public IActionResult SomeAction()
 
 **Одновременное использование ViewData и ViewBag**
 
-Примечание: `ViewBag` доступен не на страницах Razor.
+Примечание: `ViewBag` недоступна на страницах Razor.
 
 Поскольку `ViewData` и `ViewBag` ссылаться на тот же базовый `ViewData` коллекции, можно использовать оба `ViewData` и `ViewBag` его смешивать и сопоставление между ними при чтении и записи значения.
 
@@ -318,7 +318,7 @@ public IActionResult SomeAction()
 
 **Представление различий между ViewData и ViewBag**
 
- `ViewBag`доступен не на страницах Razor.
+ `ViewBag`недоступно в страниц Razor.
 
 * `ViewData`
   * Является производным от [ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), поэтому он поддерживает словарь свойств, которые можно использовать, такие как `ContainsKey`, `Add`, `Remove`, и `Clear`.

@@ -12,28 +12,28 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/windows-azure-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: 1cb38d66bd0373159e54abf822fba9c5829774ac
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4deb3536699f1ef3025f8858ee71a76a1c2def18
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="windows-azure-authentication"></a>Windows Azure проверка подлинности
 ====================
 По [Рик Андерсон](https://github.com/Rick-Anderson)
 
-> Средства Microsoft ASP.NET для Windows Azure Active Directory позволяет легко включить проверку подлинности для веб-приложений, размещенных на [веб-сайтов Windows Azure](https://www.windowsazure.com/en-us/home/features/web-sites/). Проверка подлинности Windows Azure можно использовать для проверки подлинности пользователей Office 365 в организации, корпоративных учетных записей, синхронизированные из локальной службы Active Directory или пользователей, созданных в собственный домен Windows Azure Active Directory. Включение проверки подлинности Windows Azure настраивает приложение для проверки подлинности пользователей с помощью одного [Windows Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) клиента.
+> Средства Microsoft ASP.NET для Windows Azure Active Directory позволяет легко включить проверку подлинности для веб-приложений, размещенных на [веб-сайтов Windows Azure](https://www.windowsazure.com/home/features/web-sites/). Проверка подлинности Windows Azure можно использовать для проверки подлинности пользователей Office 365 в организации, корпоративных учетных записей, синхронизированные из локальной службы Active Directory или пользователей, созданных в собственный домен Windows Azure Active Directory. Включение проверки подлинности Windows Azure настраивает приложение для проверки подлинности пользователей с помощью одного [Windows Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) клиента.
 > 
-> Средство проверки подлинности ASP.NET Windows Azure не поддерживается для веб-ролей в облачной службе, но мы планируем в будущем выпуске. [Windows Identity Foundation](https://msdn.microsoft.com/en-us/library/hh291066(v=VS.110).aspx) (WIF) поддерживается в веб-роли Windows Azure.
+> Средство проверки подлинности ASP.NET Windows Azure не поддерживается для веб-ролей в облачной службе, но мы планируем в будущем выпуске. [Windows Identity Foundation](https://msdn.microsoft.com/library/hh291066(v=VS.110).aspx) (WIF) поддерживается в веб-роли Windows Azure.
 > 
-> Дополнительные сведения о том, как настроить синхронизацию между вашей локальной Active Directory и клиент Windows Azure Active Directory см. в разделе [использование AD FS 2.0 для реализации и управления единым входом](https://technet.microsoft.com/en-us/library/jj205462.aspx).
+> Дополнительные сведения о том, как настроить синхронизацию между вашей локальной Active Directory и клиент Windows Azure Active Directory см. в разделе [использование AD FS 2.0 для реализации и управления единым входом](https://technet.microsoft.com/library/jj205462.aspx).
 > 
 > Windows Azure Active Directory в настоящее время доступен в виде [освободить предварительной версии службы](https://azure.microsoft.com/free/?WT.mc_id=A443DD604).
 
 
 ## <a name="requirements"></a>Требования:
 
-- Visual Studio 2012 или [Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/en-us/products/express)
+- Visual Studio 2012 или [Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/products/express)
 - [Веб-средств расширения для Visual Studio 2012](https://go.microsoft.com/fwlink/?LinkID=282228&amp;clcid=0x409) или [расширения веб-средства для Visual Studio Express 2012 г.](https://go.microsoft.com/fwlink/?LinkID=282231&amp;clcid=0x409)
 - [Microsoft ASP.NET Tools для Windows Azure Active Directory — Visual Studio 2012](https://go.microsoft.com/fwlink/?LinkID=282306) или [Microsoft ASP.NET Tools для Windows Azure Active Directory — Visual Studio Express 2012 для Web](https://go.microsoft.com/fwlink/?LinkId=282652)
 
@@ -157,15 +157,15 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="acs20012-the-request-is-not-a-valid-ws-federation-protocol-message-opop"></a>ACS20012: Запрос не является допустимым сообщением протокола WS-Federation < o: p >< / o: p >
 
-Это может произойти, если вы уже вошли с использованием некоторых других Microsoft ID к одной из служб Azure. Окно обозревателя используются закрытые, например InPrivate в браузере IE или анонимный в браузере Chrome или очистить все файлы cookie. < o: p >< / o: p >
+Это может произойти, если вы уже вошли с использованием некоторых других Microsoft ID к одной из служб Azure. Окно обозревателя используются закрытые, например InPrivate в браузере IE или анонимный в браузере Chrome или очистить все файлы cookie. <o:p></o:p>
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - [Microsoft ASP.NET Tools для Windows Azure Active Directory — Visual Studio 2012](https://blogs.msdn.com/b/vbertocci/archive/2013/02/18/microsoft-asp-net-tools-for-windows-azure-active-directory-visual-studio-2012.aspx) — Vittorio Bertocci
 - [Windows Azure функции: удостоверение](https://docs.microsoft.com/azure/active-directory/)
-- [TechNet: Windows Azure Active Directory](https://technet.microsoft.com/en-us/library/hh967619.aspx)
+- [TechNet: Windows Azure Active Directory](https://technet.microsoft.com/library/hh967619.aspx)
 - [Windows Azure Active Directory: разработка приложений для вашей организации](https://activedirectory.windowsazure.com/Develop/Single-Tenant.aspx)
 - [Windows Azure Active Directory: разработка приложений для нескольких организаций](https://activedirectory.windowsazure.com/Develop/Multi-Tenant.aspx)
 - [Как реализовать единый вход в Windows Azure Active Directory](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect)
 - [Единый вход в Windows Azure Active Directory: глубокое погружение](https://blogs.msdn.com/b/vbertocci/archive/2012/07/05/single-sign-on-with-windows-azure-active-directory-a-deep-dive.aspx) — Vittorio Bertocci
-- [Использование AD FS 2.0 для реализации и управления единым входом](https://technet.microsoft.com/en-us/library/jj205462.aspx)
+- [Использование AD FS 2.0 для реализации и управления единым входом](https://technet.microsoft.com/library/jj205462.aspx)

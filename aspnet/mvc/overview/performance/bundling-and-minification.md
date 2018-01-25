@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: e83be2446ef1e3ff1275d06d5b743fb5b9444a6a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7192481de46c36f7de71164766e68afdbba74f6d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="bundling-and-minification"></a>Объединение и Минификация
 ====================
@@ -55,28 +55,28 @@ ms.lasthandoff: 11/10/2017
 
 Помимо удаление комментариев и ненужные пробелы, следующие параметры и имена переменных были переименованы (сокращено) следующим образом:
 
-| **Исходный текст** | **Переименовать** |
+| **Original** | **Renamed** |
 | --- | --- |
 | imageTagAndImageID | n |
-| в пределах изображения | т |
+| imageContext | t |
 | imageElement | i |
 
 ## <a name="impact-of-bundling-and-minification"></a>Влияние объединение и Минификация
 
 Ниже приведены несколько важных различий между все активы по отдельности и объединение и Минификация (B и M) в программу данного образца.
 
-|  | **С помощью B и M** | **Без B и M** | **Изменение** |
+|  | **С помощью B и M** | **Без B и M** | **Change** |
 | --- | --- | --- | --- |
 | **Запросы файлов** | 9 | 34 | 256% |
-| **Отправлено КБ** | 3.26 | 11.92 | 266% |
-| **Получено КБ** | 388.51 | 530 | 36% |
+| **KB Sent** | 3.26 | 11.92 | 266% |
+| **KB Received** | 388.51 | 530 | 36% |
 | **Время загрузки** | 510 MS | 780 MS | 53% |
 
 Отправлено байт было значительное сокращение с объединением как браузеры довольно verbose с заголовками HTTP, к которому они применяются в запросах. Сокращение полученные байты не большего размера из-за самых больших файлов (*Scripts\jquery-ui-1.8.11.min.js* и *Scripts\jquery-1.7.1.min.js*) уже уменьшено. Примечание: Затраты времени на образец программы, используемой [Fiddler](http://www.fiddler2.com/fiddler2/) средства для имитации медленной сети. (Из Fiddler **правила** последовательно выберите пункты **производительности** затем **имитировать скоростей**.)
 
 ## <a name="debugging-bundled-and-minified-javascript"></a>Отладка объединено и уменьшена JavaScript
 
-Можно легко выполнить отладку JavaScript в среде разработки (где [компиляции элемент](https://msdn.microsoft.com/en-us/library/s10awwz0.aspx) в *Web.config* файла задано значение `debug="true"` ) потому, что файлы JavaScript не поставляются в пакете или уменьшена. Можно также отлаживать сборку выпуска, где объединяются в один пакет и уменьшена файлы JavaScript. С помощью средств разработчика IE F12, отладке, функция JavaScript, включенные в уменьшенный пакет, используя следующий подход:
+Можно легко выполнить отладку JavaScript в среде разработки (где [компиляции элемент](https://msdn.microsoft.com/library/s10awwz0.aspx) в *Web.config* файла задано значение `debug="true"` ) потому, что файлы JavaScript не поставляются в пакете или уменьшена. Можно также отлаживать сборку выпуска, где объединяются в один пакет и уменьшена файлы JavaScript. С помощью средств разработчика IE F12, отладке, функция JavaScript, включенные в уменьшенный пакет, используя следующий подход:
 
 1. Выберите **сценарий** и затем выберите **начать отладку** кнопки.
 2. Выберите пакет, в котором необходимо выполнить отладку с помощью кнопки активы функция JavaScript.  
@@ -85,11 +85,11 @@ ms.lasthandoff: 11/10/2017
 4. В **сценария поиска** t поле ввода, выберите имя функции, который требуется отладить. На следующем рисунке **AddAltToImg** был введен в **сценария поиска** t поля ввода.  
     ![](bundling-and-minification/_static/image6.png)
 
-Дополнительные сведения об отладке с помощью средств разработчика F12, см. в статье MSDN [с помощью средств разработчика F12 для отладки ошибок JavaScript](https://msdn.microsoft.com/en-us/library/ie/gg699336(v=vs.85).aspx).
+Дополнительные сведения об отладке с помощью средств разработчика F12, см. в статье MSDN [с помощью средств разработчика F12 для отладки ошибок JavaScript](https://msdn.microsoft.com/library/ie/gg699336(v=vs.85).aspx).
 
 ## <a name="controlling-bundling-and-minification"></a>Управляющий объединение и Минификация
 
-Объединение и Минификация включен или отключен, установив значение атрибута отладки в [компиляции элемент](https://msdn.microsoft.com/en-us/library/s10awwz0.aspx) в *Web.config* файла. В следующем XML `debug` задано значение true, объединение и Минификация отключена.
+Объединение и Минификация включен или отключен, установив значение атрибута отладки в [компиляции элемент](https://msdn.microsoft.com/library/s10awwz0.aspx) в *Web.config* файла. В следующем XML `debug` задано значение true, объединение и Минификация отключена.
 
 [!code-xml[Main](bundling-and-minification/samples/sample3.xml?highlight=2)]
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 11/10/2017
 [!code-csharp[Main](bundling-and-minification/samples/sample4.cs?highlight=7)]
 
 > [!NOTE]
-> Если не `EnableOptimizations` — `true` или атрибут debug в [компиляции элемент](https://msdn.microsoft.com/en-us/library/s10awwz0.aspx) в *Web.config* файла задано значение `false`, файлы не будет включаться или уменьшена. Кроме того не будет использоваться .min версию файлов, будут выбираться полных отладочных версий. `EnableOptimizations`переопределяет атрибут debug в [компиляции элемент](https://msdn.microsoft.com/en-us/library/s10awwz0.aspx) в *Web.config* файла
+> Если не `EnableOptimizations` — `true` или атрибут debug в [компиляции элемент](https://msdn.microsoft.com/library/s10awwz0.aspx) в *Web.config* файла задано значение `false`, файлы не будет включаться или уменьшена. Кроме того не будет использоваться .min версию файлов, будут выбираться полных отладочных версий. `EnableOptimizations`переопределяет атрибут debug в [компиляции элемент](https://msdn.microsoft.com/library/s10awwz0.aspx) в *Web.config* файла
 
 
 ## <a name="using-bundling-and-minification-with-aspnet-web-forms-and-web-pages"></a>С помощью объединение и Минификация с веб-форм ASP.NET и веб-страницы
@@ -137,11 +137,11 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="creating-a-bundle"></a>Создание пакета
 
-[Пакета](https://msdn.microsoft.com/en-us/library/system.web.optimization.bundle(v=VS.110).aspx) класса `Include` метод принимает массив строк, где каждая строка является виртуальный путь к ресурсу. Следующий код в методе RegisterBundles в *приложения\_Start\BundleConfig.cs* файле показано, как несколько файлы добавляются в пакет:
+[Пакета](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) класса `Include` метод принимает массив строк, где каждая строка является виртуальный путь к ресурсу. Следующий код в методе RegisterBundles в *приложения\_Start\BundleConfig.cs* файле показано, как несколько файлы добавляются в пакет:
 
 [!code-csharp[Main](bundling-and-minification/samples/sample8.cs)]
 
-[Пакета](https://msdn.microsoft.com/en-us/library/system.web.optimization.bundle(v=VS.110).aspx) класса `IncludeDirectory` метод предоставляется для добавления необходимых файлов в каталог (и при необходимости все подкаталоги), соответствующих шаблону поиска. [Пакета](https://msdn.microsoft.com/en-us/library/system.web.optimization.bundle(v=VS.110).aspx) класса `IncludeDirectory` API, показано ниже:
+[Пакета](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) класса `IncludeDirectory` метод предоставляется для добавления необходимых файлов в каталог (и при необходимости все подкаталоги), соответствующих шаблону поиска. [Пакета](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) класса `IncludeDirectory` API, показано ниже:
 
 [!code-csharp[Main](bundling-and-minification/samples/sample9.cs)]
 
@@ -170,17 +170,17 @@ ms.lasthandoff: 11/10/2017
 
 | **Call** | **Файлы, добавленные или возникло исключение** |
 | --- | --- |
-| Включить («~/Scripts/Common/\*.js») | *ToggleImg.js AddAltToImg.js ToggleDiv.js,* |
+| Включить («~/Scripts/Common/\*.js») | *AddAltToImg.js, ToggleDiv.js, ToggleImg.js* |
 | Включить («~/Scripts/Common/T\*.js») | Недопустимый шаблон исключение. Подстановочный знак можно использовать только в префиксе или суффиксе. |
 | Включить («~/Scripts/Common/\*og.\*») | Недопустимый шаблон исключение. Допускается только один подстановочный знак. |
-| «Включить («~/Scripts/Common/T\*») | *ToggleDiv.js ToggleImg.js* |
+| «Включить («~/Scripts/Common/T\*») | *ToggleDiv.js, ToggleImg.js* |
 | «Включить («~/Scripts/Common/\*») | Недопустимый шаблон исключение. Сегмент-Подстановка чисто является недопустимым. |
-| IncludeDirectory («~/Scripts/Common», «T\*») | *ToggleDiv.js ToggleImg.js* |
-| IncludeDirectory («~/Scripts/Common», «T\*", true) | *ToggleLinks.js ToggleDiv.js ToggleImg.js,* |
+| IncludeDirectory («~/Scripts/Common», «T\*») | *ToggleDiv.js, ToggleImg.js* |
+| IncludeDirectory («~/Scripts/Common», «T\*", true) | *ToggleDiv.js, ToggleImg.js, ToggleLinks.js* |
 
 Явного добавления каждого файла к пакету рекомендуется через шаблон загрузку файлов по следующим причинам:
 
-- Добавление скриптов по умолчанию подстановочные загружая их в алфавитном порядке, который обычно не нужны. Файлов CSS и JavaScript часто должны быть добавлены в определенном порядке (не являющиеся буквами). Можно уменьшить этот риск путем добавления настраиваемого [IBundleOrderer](https://msdn.microsoft.com/en-us/library/system.web.optimization.ibundleorderer(VS.110).aspx) реализации, но явного добавления каждого файла не менее подвержен ошибкам. Например, можно добавить новые ресурсы в папку в будущем, может потребоваться изменить ваш [IBundleOrderer](https://msdn.microsoft.com/en-us/library/system.web.optimization.ibundleorderer(VS.110).aspx) реализации.
+- Добавление скриптов по умолчанию подстановочные загружая их в алфавитном порядке, который обычно не нужны. Файлов CSS и JavaScript часто должны быть добавлены в определенном порядке (не являющиеся буквами). Можно уменьшить этот риск путем добавления настраиваемого [IBundleOrderer](https://msdn.microsoft.com/library/system.web.optimization.ibundleorderer(VS.110).aspx) реализации, но явного добавления каждого файла не менее подвержен ошибкам. Например, можно добавить новые ресурсы в папку в будущем, может потребоваться изменить ваш [IBundleOrderer](https://msdn.microsoft.com/library/system.web.optimization.ibundleorderer(VS.110).aspx) реализации.
 - Во всех представлениях, ссылающиеся на этот пакет может быть включено представление определенные файлы добавлены в каталог с помощью загрузки подстановочному знаку. Если определенный сценарий представление будет добавлен к пакету, может получить ошибку JavaScript с использованием других представлений, которые ссылаются на пакет.
 - CSS-файлах, которые импортируют другие файлы привести импортированных файлов, загруженных в два раза. Например следующий код создает пакет с большинством jQuery UI темы CSS-файл загружен дважды. 
 
@@ -209,10 +209,10 @@ ms.lasthandoff: 11/10/2017
 1. Создайте папку для меньше содержимого. В следующем примере используется *Content\MyLess* папки.
 2. Добавить [.less](http://www.dotlesscss.org/) пакет NuGet **указывалось** в проект.  
     ![Без точки установки NuGet](bundling-and-minification/_static/image9.png)
-3. Добавьте класс, реализующий [IBundleTransform](https://msdn.microsoft.com/en-us/library/system.web.optimization.ibundletransform(VS.110).aspx) интерфейса. Для преобразования .less добавьте следующий код в проект.
+3. Добавьте класс, реализующий [IBundleTransform](https://msdn.microsoft.com/library/system.web.optimization.ibundletransform(VS.110).aspx) интерфейса. Для преобразования .less добавьте следующий код в проект.
 
     [!code-csharp[Main](bundling-and-minification/samples/sample13.cs)]
-4. Создание пакета меньше файлов с `LessTransform` и [CssMinify](https://msdn.microsoft.com/en-us/library/system.web.optimization.cssminify(VS.110).aspx) преобразования. Добавьте следующий код в `RegisterBundles` метод в *приложения\_Start\BundleConfig.cs* файла.
+4. Создание пакета меньше файлов с `LessTransform` и [CssMinify](https://msdn.microsoft.com/library/system.web.optimization.cssminify(VS.110).aspx) преобразования. Добавьте следующий код в `RegisterBundles` метод в *приложения\_Start\BundleConfig.cs* файла.
 
     [!code-csharp[Main](bundling-and-minification/samples/sample14.cs)]
 5. Добавьте следующий код ко всем представлениям, на которые ссылается меньше пакета.

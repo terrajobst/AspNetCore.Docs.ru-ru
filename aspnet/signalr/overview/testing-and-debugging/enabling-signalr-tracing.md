@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/testing-and-debugging/enabling-signalr-tracing
 msc.type: authoredcontent
-ms.openlocfilehash: 2f01ab5d66e44cd82634f1b3df1ca6c78b7fd9d5
-ms.sourcegitcommit: c07fb5cb5df0a12f9fe6735fcbc90964608fa687
+ms.openlocfilehash: ac979acf162084a195bb769f842e77ad2498c7f3
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="enabling-signalr-tracing"></a>Включение трассировки SignalR
 ====================
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/14/2017
 > 
 > 
 > - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
-> - .NET Framework 4.5
+> - .NET Framework 4,5
 > - SignalR версии 2
 >   
 > 
@@ -61,7 +61,7 @@ ms.lasthandoff: 11/14/2017
 <a id="server"></a>
 ## <a name="enabling-tracing-on-the-server"></a>Включение трассировки на сервере
 
-Для включения трассировки на сервере в файле конфигурации приложения (App.config или Web.config в зависимости от типа проекта.) Укажите, какие категории событий следует заносить в журнал. В файле конфигурации также укажите, требуется ли в журнал события в текстовый файл, журнал событий Windows или имя пользовательского журнала, используя реализацию [TraceListener](https://msdn.microsoft.com/en-us/library/system.diagnostics.tracelistener(v=vs.110).aspx).
+Для включения трассировки на сервере в файле конфигурации приложения (App.config или Web.config в зависимости от типа проекта.) Укажите, какие категории событий следует заносить в журнал. В файле конфигурации также укажите, требуется ли в журнал события в текстовый файл, журнал событий Windows или имя пользовательского журнала, используя реализацию [TraceListener](https://msdn.microsoft.com/library/system.diagnostics.tracelistener(v=vs.110).aspx).
 
 Категории событий сервера включают следующие типы сообщений:
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 11/14/2017
 
 [!code-html[Main](enabling-signalr-tracing/samples/sample1.html)]
 
-В представленном выше коде `SignalRSwitch` запись указывает [TraceLevel](https://msdn.microsoft.com/en-us/library/system.diagnostics.tracelevel(v=vs.110).aspx) используются для отправки в указанном журнале событий. В этом случае оно равно `Verbose` регистрируются означает, что все сообщения отладки и трассировки.
+В представленном выше коде `SignalRSwitch` запись указывает [TraceLevel](https://msdn.microsoft.com/library/system.diagnostics.tracelevel(v=vs.110).aspx) используются для отправки в указанном журнале событий. В этом случае оно равно `Verbose` регистрируются означает, что все сообщения отладки и трассировки.
 
 Ниже показано из записи `transports.log.txt` файл с помощью указанного выше файла конфигурации приложения. Он иллюстрирует создание нового соединения, удаленное подключение и события пульс транспорта.
 
@@ -112,9 +112,9 @@ ms.lasthandoff: 11/14/2017
 <a id="net_client"></a>
 ## <a name="enabling-tracing-in-the-net-client-windows-desktop-apps"></a>Включение трассировки клиента .NET (приложения для Windows Desktop)
 
-Клиент .NET можно вести журнал в консоль, текстовый файл, или пользовательский журнал, используя реализацию [TextWriter](https://msdn.microsoft.com/en-us/library/system.io.textwriter.aspx).
+Клиент .NET можно вести журнал в консоль, текстовый файл, или пользовательский журнал, используя реализацию [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx).
 
-Включение ведения журнала в клиент .NET, задайте соединение с `TraceLevel` свойства [TraceLevels](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.tracelevels(v=vs.118).aspx) значение и `TraceWriter` свойство допустимому [TextWriter](https://msdn.microsoft.com/en-us/library/system.io.textwriter.aspx) экземпляра.
+Включение ведения журнала в клиент .NET, задайте соединение с `TraceLevel` свойства [TraceLevels](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.tracelevels(v=vs.118).aspx) значение и `TraceWriter` свойство допустимому [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) экземпляра.
 
 <a id="desktop_console"></a>
 ### <a name="logging-desktop-client-events-to-the-console"></a>Ведение журнала событий клиента рабочего стола на консоль
@@ -137,23 +137,23 @@ ms.lasthandoff: 11/14/2017
 <a id="phone"></a>
 ## <a name="enabling-tracing-in-windows-phone-8-clients"></a>Включение трассировки в клиентах Windows Phone 8
 
-SignalR приложения для приложений Windows Phone используют один и тот же самый клиент .NET как классические приложения, но [Console.Out](https://msdn.microsoft.com/en-us/library/system.console.out(v=vs.110).aspx) и записи в файл с [StreamWriter](https://msdn.microsoft.com/en-us/library/system.io.streamwriter(v=vs.110).aspx) недоступны. Вместо этого необходимо создать пользовательскую реализацию [TextWriter](https://msdn.microsoft.com/en-us/library/system.io.textwriter(v=vs.110).aspx) для трассировки. 
+SignalR приложения для приложений Windows Phone используют один и тот же самый клиент .NET как классические приложения, но [Console.Out](https://msdn.microsoft.com/library/system.console.out(v=vs.110).aspx) и записи в файл с [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) недоступны. Вместо этого необходимо создать пользовательскую реализацию [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter(v=vs.110).aspx) для трассировки. 
 
 <a id="phone_ui"></a>
 ### <a name="logging-windows-phone-client-events-to-the-ui"></a>Ведение журнала событий клиента Windows Phone к пользовательскому Интерфейсу
 
-[SignalR codebase](https://github.com/SignalR/SignalR/archive/master.zip) представлен образец Windows Phone, записывает выходные данные трассировки в [TextBlock](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.textblock.aspx) с использованием пользовательской [TextWriter](https://msdn.microsoft.com/en-us/library/system.io.textwriter(v=vs.110).aspx) реализация вызван `TextBlockWriter`. Этот класс можно найти в **samples/Microsoft.AspNet.SignalR.Client.WP8.Samples** проекта. При создании экземпляра `TextBlockWriter`, передайте в текущем [SynchronizationContext](https://msdn.microsoft.com/en-us/library/system.threading.synchronizationcontext(v=vs.110).aspx)и [StackPanel](https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.controls.stackpanel.aspx) где создаст [TextBlock](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.textblock.aspx) для трассировки выходные данные:
+[SignalR codebase](https://github.com/SignalR/SignalR/archive/master.zip) представлен образец Windows Phone, записывает выходные данные трассировки в [TextBlock](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.textblock.aspx) с использованием пользовательской [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter(v=vs.110).aspx) реализация вызван `TextBlockWriter`. Этот класс можно найти в **samples/Microsoft.AspNet.SignalR.Client.WP8.Samples** проекта. При создании экземпляра `TextBlockWriter`, передайте в текущем [SynchronizationContext](https://msdn.microsoft.com/library/system.threading.synchronizationcontext(v=vs.110).aspx)и [StackPanel](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.stackpanel.aspx) где создаст [TextBlock](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.textblock.aspx) для трассировки выходные данные:
 
 [!code-csharp[Main](enabling-signalr-tracing/samples/sample7.cs)]
 
-Выходные данные трассировки затем записываются в новый [TextBlock](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.textblock.aspx) в [StackPanel](https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.controls.stackpanel.aspx) передается в:
+Выходные данные трассировки затем записываются в новый [TextBlock](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.textblock.aspx) в [StackPanel](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.stackpanel.aspx) передается в:
 
 ![](enabling-signalr-tracing/_static/image2.png)
 
 <a id="phone_debug"></a>
 ### <a name="logging-windows-phone-client-events-to-the-debug-console"></a>Ведение журнала событий клиента Windows Phone в консоли отладки
 
-Для отправки выходных данных консоли отладки, а не пользовательский Интерфейс, создайте реализацию [TextWriter](https://msdn.microsoft.com/en-us/library/system.io.textwriter(v=vs.110).aspx) , записывает в окно отладки и назначьте его подключение к [TraceWriter](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.connection.tracewriter(v=vs.118).aspx) свойства:
+Для отправки выходных данных консоли отладки, а не пользовательский Интерфейс, создайте реализацию [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter(v=vs.110).aspx) , записывает в окно отладки и назначьте его подключение к [TraceWriter](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.connection.tracewriter(v=vs.118).aspx) свойства:
 
 [!code-csharp[Main](enabling-signalr-tracing/samples/sample8.cs)]
 

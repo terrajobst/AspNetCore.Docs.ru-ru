@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc4-beta-release-notes
 msc.type: content
-ms.openlocfilehash: 4af2df61ab4507b1f100d6bb75777da1168c5a75
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 58ae178a0e6578d8353e1a4e9d67fc1026e99f55
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
@@ -60,7 +60,7 @@ ASP.NET MVC 4, можно установить и выполнять side-by-sid
 
 Документация по ASP.NET MVC доступна на веб-сайте MSDN по АДРЕСУ:
 
-[https://go.Microsoft.com/fwlink/?LinkId=243043](https://go.microsoft.com/fwlink/?LinkID=243043)
+[https://go.microsoft.com/fwlink/?LinkID=243043](https://go.microsoft.com/fwlink/?LinkID=243043)
 
 Учебники и другие сведения о ASP.NET MVC доступны на странице веб-сайта ASP.NET MVC 4 ([https://www.asp.net/mvc/mvc4](../mvc/mvc4.md)).
 
@@ -245,7 +245,7 @@ jQuery Mobile — это библиотека открытым исходным 
 
 Теперь можно написать асинхронные методы действия как один методы, которые возвращают объект типа *задачи* или *задачи&lt;ActionResult&gt;*.
 
-Например, если вы используете Visual C# 5 (или с помощью [Async CTP](https://msdn.microsoft.com/en-us/vstudio/async.aspx)), можно создать асинхронный метод, который выглядит следующим образом:
+Например, если вы используете Visual C# 5 (или с помощью [Async CTP](https://msdn.microsoft.com/vstudio/async.aspx)), можно создать асинхронный метод, который выглядит следующим образом:
 
 [!code-csharp[Main](mvc4-beta-release-notes/samples/sample8.cs)]
 

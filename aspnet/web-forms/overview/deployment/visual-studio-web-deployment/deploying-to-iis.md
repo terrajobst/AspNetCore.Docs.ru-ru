@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis
 msc.type: authoredcontent
-ms.openlocfilehash: 97910940f9de26ca71b111b945581d2de6650b02
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 01f72e0240e84944f8ffece9a2dbc5802be4646b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-test"></a>ASP.NET веб-развертывания с помощью Visual Studio: развертывание в тест
 ====================
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/10/2017
 
 Вариант 2 — наиболее надежный способ проверки, а если этого не нужно обязательно вариант 1. Тем не менее если выполняется развертывание стороннего поставщика вариант размещения 2 может оказаться невозможным или может быть много ресурсов, поэтому этот учебник, показывающие, оба метода. Для параметра 2 описаны в [развертывание в рабочей среде](deploying-to-production.md) учебника.
 
-Дополнительные сведения об использовании веб-серверов в Visual Studio см. в разделе [веб-серверов в Visual Studio для веб-проектов ASP.NET](https://msdn.microsoft.com/en-us/library/58wxa9w5.aspx).
+Дополнительные сведения об использовании веб-серверов в Visual Studio см. в разделе [веб-серверов в Visual Studio для веб-проектов ASP.NET](https://msdn.microsoft.com/library/58wxa9w5.aspx).
 
 Напоминание: Если вы получаете сообщение об ошибке или что-то не работает, как пройти учебник, не забудьте проверить [страницу устранения неполадок](troubleshooting.md).
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/10/2017
     [![Inetmgr_showing_4.0_app_pools](deploying-to-iis/_static/image3.png)](deploying-to-iis/_static/image2.png)
 4. Если вы видите только два пула приложений, а они устанавливаются в .NET Framework 2.0, необходимо установить ASP.NET 4 в службах IIS.
 
-    Для Windows 8 см. инструкции в предыдущем статьи для убедившись, что ASP.NET 4.5 должен быть установлен или в разделе [данной статьи БАЗЫ знаний](https://support.microsoft.com/kb/2736284). Для Windows 7, откройте окно командной строки, щелкнув правой кнопкой мыши **командной строки** в Windows **запустить** , выберите в меню **Запуск от имени администратора**. Затем запустите [aspnet\_regiis.exe](https://msdn.microsoft.com/en-us/library/k6h9cz8h.aspx) для установки ASP.NET 4 в IIS с помощью следующих команд. (В 32-разрядных системах, замените «Framework64» с «Платформы».)
+    Для Windows 8 см. инструкции в предыдущем статьи для убедившись, что ASP.NET 4.5 должен быть установлен или в разделе [данной статьи БАЗЫ знаний](https://support.microsoft.com/kb/2736284). Для Windows 7, откройте окно командной строки, щелкнув правой кнопкой мыши **командной строки** в Windows **запустить** , выберите в меню **Запуск от имени администратора**. Затем запустите [aspnet\_regiis.exe](https://msdn.microsoft.com/library/k6h9cz8h.aspx) для установки ASP.NET 4 в IIS с помощью следующих команд. (В 32-разрядных системах, замените «Framework64» с «Платформы».)
 
     [!code-console[Main](deploying-to-iis/samples/sample1.cmd)]
 
@@ -94,9 +94,9 @@ IIS теперь все готово для публикации веб-прил
 
 LocalDB не предназначен для работы в службах IIS, поэтому для тестовой среды необходимо иметь установки SQL Server Express. Если вы используете Visual Studio 2010 SQL Server Express уже установлены по умолчанию. Если вы используете Visual Studio 2012, необходимо установить его.
 
-Чтобы установить SQL Server Express, установите его из [центра загрузки Майкрософт: Microsoft SQL Server 2012 Express](https://www.microsoft.com/en-us/download/details.aspx?id=29062) , щелкнув [ENU\x64\SQLEXPR\_x64\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x64/SQLEXPR_x64_ENU.exe) или [ ENU\x86\SQLEXPR\_x86\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x86/SQLEXPR_x86_ENU.exe). При выборе тот для вашей системы его не удастся установить, и вы можете попробовать использовать другой.
+Чтобы установить SQL Server Express, установите его из [центра загрузки Майкрософт: Microsoft SQL Server 2012 Express](https://www.microsoft.com/download/details.aspx?id=29062) , щелкнув [ENU\x64\SQLEXPR\_x64\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x64/SQLEXPR_x64_ENU.exe) или [ ENU\x86\SQLEXPR\_x86\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x86/SQLEXPR_x86_ENU.exe). При выборе тот для вашей системы его не удастся установить, и вы можете попробовать использовать другой.
 
-На первой странице Центр установки SQL Server, нажмите кнопку **автономная установка нового SQL Server или добавление компонентов к существующей установке**и следуйте инструкциям, принимающий параметры по умолчанию. В мастере установки примите параметры по умолчанию. Дополнительные сведения о параметрах установки см. в разделе [Установка SQL Server 2012 с помощью мастера установки (программа установки)](https://msdn.microsoft.com/en-us/library/ms143219.aspx).
+На первой странице Центр установки SQL Server, нажмите кнопку **автономная установка нового SQL Server или добавление компонентов к существующей установке**и следуйте инструкциям, принимающий параметры по умолчанию. В мастере установки примите параметры по умолчанию. Дополнительные сведения о параметрах установки см. в разделе [Установка SQL Server 2012 с помощью мастера установки (программа установки)](https://msdn.microsoft.com/library/ms143219.aspx).
 
 ## <a name="create-sql-server-express-databases-for-the-test-environment"></a>Создание баз данных на SQL Server Express для среды тестирования
 
@@ -233,7 +233,7 @@ LocalDB не предназначен для работы в службах IIS,
 
 Когда Visual Studio обнаруживает Entity Framework `DbContext` класса, он создает запись в **баз данных** раздел с **выполнять миграции Code First** флажок вместо  **Обновление базы данных** флажок. В этом учебнике будет использоваться этот флажок для указания Code First Migrations развертывания.
 
-В некоторых случаях, возможно, вы используете `DbContext` базы данных, но вы хотите использовать поставщик dbDacFx вместо миграции для развертывания базы данных. См. в этом случае [как развернуть базу данных Code First без миграции?](https://msdn.microsoft.com/en-us/library/ee942158.aspx#deploy_code_first_without_migrations) в ASP.NET Web развертывания вопросов и Ответов на сайте MSDN.
+В некоторых случаях, возможно, вы используете `DbContext` базы данных, но вы хотите использовать поставщик dbDacFx вместо миграции для развертывания базы данных. См. в этом случае [как развернуть базу данных Code First без миграции?](https://msdn.microsoft.com/library/ee942158.aspx#deploy_code_first_without_migrations) в ASP.NET Web развертывания вопросов и Ответов на сайте MSDN.
 
 Следующие шаги применимы к **SchoolContext** базы данных в **баз данных** раздел диалогового окна.
 
@@ -332,7 +332,7 @@ LocalDB не предназначен для работы в службах IIS,
 
 - [IIS Express Обзор](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview) на сайте IIS.net.
 - [Знакомство с IIS Express](https://weblogs.asp.net/scottgu/archive/2010/06/28/introducing-iis-express.aspx) в блоге Скотта Гатри.
-- [Веб-серверы в Visual Studio для проектов ASP.NET Web](https://msdn.microsoft.com/en-us/library/58wxa9w5.aspx).
+- [Веб-серверы в Visual Studio для проектов ASP.NET Web](https://msdn.microsoft.com/library/58wxa9w5.aspx).
 - [Основные различия между IIS и ASP.NET Development Server](../../older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-cs.md) на веб-сайте ASP.NET.
 
 Сведения о какие проблемы могут возникнуть при запуске приложения на среднем уровне доверия, см. в разделе [размещение приложений ASP.NET в средний уровень доверия](http://www.4guysfromrolla.com/articles/100307-1.aspx) на 4 Guys Rolla сайта.

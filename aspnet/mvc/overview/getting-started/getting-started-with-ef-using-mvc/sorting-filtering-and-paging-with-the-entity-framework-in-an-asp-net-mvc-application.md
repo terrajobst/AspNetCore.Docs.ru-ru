@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 8d11bf47f8c43040ef30d7132f0bb756748dbacd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d54c0e133bc2f6f2021821dc16cdf86cc23a5667
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Сортировку, фильтрацию и разбиение по страницам с платформой Entity Framework в приложении ASP.NET MVC
 ====================
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/10/2017
 | По возрастанию даты | по возрастанию | по убыванию |
 | Дата по убыванию | по возрастанию | по возрастанию |
 
-Этот метод использует [LINQ to Entities](https://msdn.microsoft.com/en-us/library/bb386964.aspx) для указания столбца, по которому выполняется сортировка. Код создает [IQueryable](https://msdn.microsoft.com/en-us/library/bb351562.aspx) переменной перед `switch` инструкции, изменяет его в `switch` инструкции и вызовы `ToList` метод после `switch` инструкции. После создания и изменения `IQueryable` переменные, не отправляется запрос базы данных. Запрос не выполняется до преобразования `IQueryable` объект в коллекции, такие как вызов метода `ToList`. Таким образом, этот код вызывает один запрос, который не выполняется до `return View` инструкции.
+Этот метод использует [LINQ to Entities](https://msdn.microsoft.com/library/bb386964.aspx) для указания столбца, по которому выполняется сортировка. Код создает [IQueryable](https://msdn.microsoft.com/library/bb351562.aspx) переменной перед `switch` инструкции, изменяет его в `switch` инструкции и вызовы `ToList` метод после `switch` инструкции. После создания и изменения `IQueryable` переменные, не отправляется запрос базы данных. Запрос не выполняется до преобразования `IQueryable` объект в коллекции, такие как вызов метода `ToList`. Таким образом, этот код вызывает один запрос, который не выполняется до `return View` инструкции.
 
 Как Альтернативой написанию другой инструкции LINQ для каждого порядка сортировки можно динамически создать инструкции LINQ. Сведения о динамических LINQ см. в разделе [динамических LINQ](https://go.microsoft.com/fwlink/?LinkID=323957).
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample4.cs?highlight=1,7-11)]
 
-Вы добавили `searchString` параметр `Index` метода. Строковое значение поиска получается из текстового поля, который вам предстоит добавить в представление индекс. Вы добавили в инструкции LINQ `where` предложение, которое выбирает только студентов, имя или фамилия содержит строку поиска. Оператор, который добавляет [где](https://msdn.microsoft.com/en-us/library/bb535040.aspx) предложение выполняется только в том случае, если значение для поиска.
+Вы добавили `searchString` параметр `Index` метода. Строковое значение поиска получается из текстового поля, который вам предстоит добавить в представление индекс. Вы добавили в инструкции LINQ `where` предложение, которое выбирает только студентов, имя или фамилия содержит строку поиска. Оператор, который добавляет [где](https://msdn.microsoft.com/library/bb535040.aspx) предложение выполняется только в том случае, если значение для поиска.
 
 > [!NOTE]
 > Во многих случаях можно вызвать тот же метод в наборе сущностей Entity Framework или как метод расширения для коллекции в памяти. Обычно такие же результаты, но в некоторых случаях могут различаться.
@@ -160,7 +160,7 @@ NuGet **PagedList.Mvc** пакет автоматически устанавли
 
 [!code-csharp[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample11.cs)]
 
-`ToPagedList` Метод принимает номер страницы. Два знака вопроса указывают [оператор объединения с null](https://msdn.microsoft.com/en-us/library/ms173224.aspx). Оператор объединения с null определяет значение по умолчанию для типа значения NULL; выражение `(page ?? 1)` означает возвращают значение `page` если он имеет значение, или возвращает 1, если `page` имеет значение null.
+`ToPagedList` Метод принимает номер страницы. Два знака вопроса указывают [оператор объединения с null](https://msdn.microsoft.com/library/ms173224.aspx). Оператор объединения с null определяет значение по умолчанию для типа значения NULL; выражение `(page ?? 1)` означает возвращают значение `page` если он имеет значение, или возвращает 1, если `page` имеет значение null.
 
 ### <a name="add-paging-links-to-the-student-index-view"></a>Добавить разбиение на страницы ссылки на представление Index студента
 
@@ -172,11 +172,11 @@ NuGet **PagedList.Mvc** пакет автоматически устанавли
 
 `using` Инструкции для `PagedList.Mvc` предоставляет доступ к вспомогательным методом MVC для кнопки разбиения по страницам.
 
-В коде используется перегруженная версия [BeginForm](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.formextensions.beginform(v=vs.108).aspx) , позволяющее указать [FormMethod.Get](https://msdn.microsoft.com/en-us/library/system.web.mvc.formmethod(v=vs.100).aspx/css).
+В коде используется перегруженная версия [BeginForm](https://msdn.microsoft.com/library/system.web.mvc.html.formextensions.beginform(v=vs.108).aspx) , позволяющее указать [FormMethod.Get](https://msdn.microsoft.com/library/system.web.mvc.formmethod(v=vs.100).aspx/css).
 
 [!code-cshtml[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample13.cshtml?highlight=1)]
 
-Значение по умолчанию [BeginForm](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.formextensions.beginform(v=vs.108).aspx) отправки данных с помощью запроса POST, это означает, что параметры передаются в тексте сообщения HTTP, а не в URL-адрес как строки запросов. При указании HTTP GET, данные формы переданный URL-адрес как строки запроса, который позволяет пользователям bookmark URL-адрес. [Рекомендации W3C для использования HTTP GET](http://www.w3.org/2001/tag/doc/whenToUseGet.html) рекомендуется, если действие не приводит к появлению обновления следует использовать GET.
+Значение по умолчанию [BeginForm](https://msdn.microsoft.com/library/system.web.mvc.html.formextensions.beginform(v=vs.108).aspx) отправки данных с помощью запроса POST, это означает, что параметры передаются в тексте сообщения HTTP, а не в URL-адрес как строки запросов. При указании HTTP GET, данные формы переданный URL-адрес как строки запроса, который позволяет пользователям bookmark URL-адрес. [Рекомендации W3C для использования HTTP GET](http://www.w3.org/2001/tag/doc/whenToUseGet.html) рекомендуется, если действие не приводит к появлению обновления следует использовать GET.
 
 При нажатии кнопки новую страницу для отображения текущей искомой строки, текстовое поле инициализируется текущей искомой строки.
 

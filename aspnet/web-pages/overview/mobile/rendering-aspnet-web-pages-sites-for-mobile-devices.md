@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/mobile/rendering-aspnet-web-pages-sites-for-mobile-devices
 msc.type: authoredcontent
-ms.openlocfilehash: 08b714eb2ffaefc7c7e2e5c9a7428106b231e5b7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 899bbdef82d689be81cd77ea6805e0484fb614aa
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="rendering-aspnet-web-pages-razor-sites-for-mobile-devices"></a>Подготовка к просмотру веб-страниц (Razor) сайтов ASP.NET для мобильных устройств
 ====================
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/10/2017
 
 Веб-страниц ASP.NET позволяет создавать настраиваемого отображения для отображения содержимого для мобильных устройств или на других устройствах.
 
-— Самый простой способ создать страницу конкретного устройства в узел веб-страниц ASP.NET с помощью имени файла шаблона, следующим образом: *FileName.* *Mobile**.cshtml*. Можно создать две версии страницы (например, один с именем *MyFile.cshtml* и один с именем *MyFile.Mobile.cshtml*). Во время выполнения, когда мобильное устройство запрашивает *MyFile.cshtml*, ASP.NET отображает содержимое, полученное от *MyFile.Mobile.cshtml*. В противном случае *MyFile.cshtml* подготавливается к просмотру.
+— Самый простой способ создать страницу конкретного устройства в узел веб-страниц ASP.NET с помощью имени файла шаблона, следующим образом: *FileName. **Mobile**.cshtml*. Можно создать две версии страницы (например, один с именем *MyFile.cshtml* и один с именем *MyFile.Mobile.cshtml*). Во время выполнения, когда мобильное устройство запрашивает *MyFile.cshtml*, ASP.NET отображает содержимое, полученное от *MyFile.Mobile.cshtml*. В противном случае *MyFile.cshtml* подготавливается к просмотру.
 
 Приведенный ниже показано, как включить подготовки мобильных устройств, добавив страницу содержимого для мобильных устройств. *Page1.cshtml* включает содержимое, а также боковая панель навигации. *Page1.Mobile.cshtml* с тем же содержимым, но пропускает боковой панели.
 
@@ -56,11 +56,11 @@ ms.lasthandoff: 11/10/2017
     ![mobilesites-2](rendering-aspnet-web-pages-sites-for-mobile-devices/_static/image2.png)
 
 > [!NOTE]
-> Для проверки страниц для мобильных устройств, можно использовать симулятор мобильного устройства, запускаемую на настольном компьютере. Это средство позволяет тестировать веб-страницы, как они выглядели на мобильных устройствах (то есть, обычно с намного меньше область). Является одним из примеров симулятора [надстройки переключателя агента пользователя](http://addons.mozilla.org/en-us/firefox/addon/user-agent-switcher/) для Mozilla Firefox, который позволяет моделировать различные браузеры для мобильных устройств с рабочего стола версии Firefox.
+> Для проверки страниц для мобильных устройств, можно использовать симулятор мобильного устройства, запускаемую на настольном компьютере. Это средство позволяет тестировать веб-страницы, как они выглядели на мобильных устройствах (то есть, обычно с намного меньше область). Является одним из примеров симулятора [надстройки переключателя агента пользователя](http://addons.mozilla.org/firefox/addon/user-agent-switcher/) для Mozilla Firefox, который позволяет моделировать различные браузеры для мобильных устройств с рабочего стола версии Firefox.
 
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 
-[Эмулятор Windows Phone](https://msdn.microsoft.com/en-us/library/ff402563(v=VS.92).aspx)
+[Эмулятор Windows Phone](https://msdn.microsoft.com/library/ff402563(v=VS.92).aspx)

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: dc81961094928025e25cf62ce4d51d12bc67b80c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7d4ed67254c2b0fc2aef748cfab1c8f628b25641
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-3"></a>Использование HTML5 и раскрывающегося календаря с выбором дат jQuery с ASP.NET MVC — часть 3
 ====================
@@ -86,14 +86,14 @@ ms.lasthandoff: 11/10/2017
 - Применение `DisplayFormat` атрибут свойства в модели. Например приведенный ниже код вызывает даты для отображения без времени:
 
     [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-3/samples/sample8.cs)]
-- Применение [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx) для свойства в модели, а также указать тип данных атрибута. Например приведенный ниже код вызывает даты для отображения без времени.
+- Применение [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) для свойства в модели, а также указать тип данных атрибута. Например приведенный ниже код вызывает даты для отображения без времени.
 
     [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-3/samples/sample9.cs)]
 
     Если приложение содержит *date.cshtml* шаблона в *Views\Shared\DisplayTemplates* папки или *Views\Movies\DisplayTemplates* папки, этот шаблон будет использоваться для подготовки к просмотру `DateTime` свойство. В противном случае встроенную систему шаблонов ASP.NET отображает свойство как дата.
 - Создание шаблона экрана в *Views\Shared\DisplayTemplates* папки или *Views\Movies\DisplayTemplates* папки, имя которого совпадает с типом данных, которую требуется отформатировать. Например, вы видели, *Views\Shared\DisplayTemplates\DateTime.cshtml* использовался для подготовки к просмотру `DateTime` свойства в модели, без добавления атрибута в модель и Добавление разметки представления.
-- С помощью [UIHint](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx) атрибут для модели, чтобы указать шаблон для отображения свойства модели.
-- Явное добавление отображаемое имя шаблона для [Html.DisplayFor](https://msdn.microsoft.com/en-us/library/ee407420.aspx) вызвать в представлении.
+- С помощью [UIHint](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx) атрибут для модели, чтобы указать шаблон для отображения свойства модели.
+- Явное добавление отображаемое имя шаблона для [Html.DisplayFor](https://msdn.microsoft.com/library/ee407420.aspx) вызвать в представлении.
 
 Используется подход зависит от того, что нужно делать в приложении. Довольно часто для подхода для получения именно такие форматирование, необходимый.
 

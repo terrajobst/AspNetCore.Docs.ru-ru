@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 8f68a85e44389ed17576436a9210c0ca3f414403
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ed78b55d2b0315cf428f137c56ad85b29a95e1c5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-webconfig-file-transformations---3-of-12"></a>Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: преобразования файла Web.Config - 3 12
 ====================
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="webconfig-transformations-versus-web-deploy-parameters"></a>Параметры развертывания преобразования Web.config и Web
 
-Существует два способа для автоматизации процесса изменения *Web.config* параметры: [преобразования Web.config](https://msdn.microsoft.com/en-us/library/dd465326.aspx) и [параметры веб-развертывания](https://msdn.microsoft.com/en-us/library/ff398068.aspx). Объект *Web.config* преобразования файл содержит XML-разметку, которая определяет способ изменения *Web.config* файла при его развертывании. Можно указать различные изменения для конкретной конфигурации построения и для конкретных профилей публикации. По умолчанию конфигурации построения, отладки и выпуска, и можно создать пользовательские конфигурации построения. Профиль публикации обычно соответствует в целевой среде. (Вы узнаете о дополнительных сведений о публикации профилей в [развертывание в IIS в тестовой среде](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md) учебник.)
+Существует два способа для автоматизации процесса изменения *Web.config* параметры: [преобразования Web.config](https://msdn.microsoft.com/library/dd465326.aspx) и [параметры веб-развертывания](https://msdn.microsoft.com/library/ff398068.aspx). Объект *Web.config* преобразования файл содержит XML-разметку, которая определяет способ изменения *Web.config* файла при его развертывании. Можно указать различные изменения для конкретной конфигурации построения и для конкретных профилей публикации. По умолчанию конфигурации построения, отладки и выпуска, и можно создать пользовательские конфигурации построения. Профиль публикации обычно соответствует в целевой среде. (Вы узнаете о дополнительных сведений о публикации профилей в [развертывание в IIS в тестовой среде](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md) учебник.)
 
 Параметры веб-развертывания можно использовать для указания различных параметров, которые должны быть настроены во время развертывания, включая параметры, которые находятся в *Web.config* файлов. Используемый для задания *Web.config* изменения в файле, для настройки параметров веб-развертывание более сложны, но они полезны, если вы не знаете значение для установки, пока не будет развернут. Например, в среде предприятия можно создать *пакета развертывания* и присвойте ему человека в ИТ-отдел для установки в рабочей среде и у другого пользователя есть возможность введите строки подключения или пароли, которые не знаете.
 
@@ -146,7 +146,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="more-information"></a>Дополнительные сведения
 
-Дополнительные сведения о подразделах, рассматриваемых в этом учебнике содержатся в сценарии преобразования Web.config в [Карта содержимого развертывания ASP.NET](https://msdn.microsoft.com/en-us/library/bb386521.aspx).
+Дополнительные сведения о подразделах, рассматриваемых в этом учебнике содержатся в сценарии преобразования Web.config в [Карта содержимого развертывания ASP.NET](https://msdn.microsoft.com/library/bb386521.aspx).
 
 >[!div class="step-by-step"]
 [Назад](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)

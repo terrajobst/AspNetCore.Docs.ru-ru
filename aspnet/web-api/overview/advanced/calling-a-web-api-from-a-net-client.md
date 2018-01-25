@@ -11,11 +11,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 41f014e1d23d46ed28c8c1be5ee92f1a6d878ad9
-ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
+ms.openlocfilehash: 8156bd1c7cfc111a6a121a89d845ca284ee1b7af
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="call-a-web-api-from-a-net-client-c"></a>Вызов веб-API из клиента .NET (C#)
 ====================
@@ -23,16 +23,16 @@ ms.lasthandoff: 12/15/2017
 
 [Загрузка завершенного проекта](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample)
 
-Этого учебника показано, как вызывать из приложения .NET, веб-API с помощью [System.Net.Http.HttpClient.](https://msdn.microsoft.com/en-us/library/system.net.http.httpclient(v=vs.110).aspx)
+Этого учебника показано, как вызывать из приложения .NET, веб-API с помощью [System.Net.Http.HttpClient.](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)
 
 В этом учебнике клиентском приложении записываются, которые используют следующие веб-API:
 
 | Действие | Метод HTTP | Относительный URI |
 | --- | --- | --- |
-| Получение продукта по Идентификатору | GET | /API/продукты/*идентификатор* |
+| Получение продукта по Идентификатору | GET | /api/products/*id* |
 | Создать продукт | ПОМЕСТИТЬ | / api/продуктов |
-| Обновления продукта | PUT | /API/продукты/*идентификатор* |
-| Удаление продукта | DELETE | /API/продукты/*идентификатор* |
+| Обновления продукта | PUT | /api/products/*id* |
+| Удаление продукта | DELETE | /api/products/*id* |
 
 Чтобы узнать, как реализовать этот интерфейс API с веб-API ASP.NET, в разделе [Создание веб-API, поддерживает операции CRUD](xref:web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 ).
@@ -109,7 +109,7 @@ Json.NET — это популярный платформа JSON высокой 
 
 **GetAsync** метод отправляет запрос HTTP GET. Если метод завершается, она возвращает **HttpResponseMessage** , содержащий HTTP-ответа. Если код состояния в ответе код успешного завершения, текст ответа содержит представление JSON продукта. Вызовите **ReadAsAsync** для полезных данных JSON для десериализации `Product` экземпляра. **ReadAsAsync** метод является асинхронным, поскольку текст ответа может быть произвольно большое.
 
-**HttpClient** не вызывает исключение, если HTTP-ответ содержит код ошибки. Вместо этого **IsSuccessStatusCode** свойство **false** Если состояние представляет собой код ошибки. Если вы предпочитаете обрабатывать коды ошибок HTTP как исключения, вызовите [HttpResponseMessage.EnsureSuccessStatusCode](https://msdn.microsoft.com/en-us/library/system.net.http.httpresponsemessage.ensuresuccessstatuscode(v=vs.110).aspx) в объекте отклика. `EnsureSuccessStatusCode`вызывает исключение, если код состояния находится вне диапазона 200&ndash;299. Обратите внимание, что **HttpClient** может создавать исключения по другим причинам &mdash; к примеру, при истечении времени ожидания запроса.
+**HttpClient** не вызывает исключение, если HTTP-ответ содержит код ошибки. Вместо этого **IsSuccessStatusCode** свойство **false** Если состояние представляет собой код ошибки. Если вы предпочитаете обрабатывать коды ошибок HTTP как исключения, вызовите [HttpResponseMessage.EnsureSuccessStatusCode](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.ensuresuccessstatuscode(v=vs.110).aspx) в объекте отклика. `EnsureSuccessStatusCode`вызывает исключение, если код состояния находится вне диапазона 200&ndash;299. Обратите внимание, что **HttpClient** может создавать исключения по другим причинам &mdash; к примеру, при истечении времени ожидания запроса.
 
 <a id="MediaTypeFormatters"></a>
 ### <a name="media-type-formatters-to-deserialize"></a>Модули форматирования типа мультимедиа для десериализации
@@ -167,7 +167,7 @@ resp.Content.ReadAsAsync<IEnumerable<Product>>(formatters);
 
 Для проверки клиентского приложения:
 
-1. [Загрузить](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) и запустить приложение сервера. [Инструкции по загрузке](https://docs.microsoft.com/en-us/aspnet/core/tutorials/#how-to-download-a-sample). Убедитесь, что работа приложения сервера. Для exaxmple `http://localhost:64195/api/products` должен возвращать список продуктов.
+1. [Загрузить](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) и запустить приложение сервера. [Инструкции по загрузке](https://docs.microsoft.com/aspnet/core/tutorials/#how-to-download-a-sample). Убедитесь, что работа приложения сервера. Для exaxmple `http://localhost:64195/api/products` должен возвращать список продуктов.
 2. Задайте базовый универсальный код Ресурса для HTTP-запросов. Измените номер порта к порту, используемому в приложении сервера.
     [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet5&highlight=2)]
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 31d83a11488212ab0ff83494d5e896ffcbeaa8a4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b97834e3e287645151bf927996fde63d93ae8356
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-migrating-to-sql-server---10-of-12"></a>Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: миграция на SQL Server - 10 12
 ====================
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 
 Если вы решили выполнить обновление до SQL Server, может потребоваться использовать SQL Server или SQL Server Express в средах разработки и тестирования. Помимо различий в средства поддержки и в функциях ядра СУБД существуют различия в реализации поставщика SQL Server Compact и других версий SQL Server. Эти отличия могут вызвать один и тот же код для создания различных результатов. Таким образом Если необходимо сохранить в SQL Server Compact, как базы данных разработки, необходимо тщательно протестировать веб-узла в SQL Server или SQL Server Express в тестовой среде, прежде чем каждое развертывание в рабочей среде.
 
-В отличие от SQL Server Compact SQL Server Express является по сути тот же механизм базы данных и использует один и тот же поставщик .NET как полный SQL Server. При тестировании с SQL Server Express, можно быть уверенным начало те же результаты, как будет с помощью SQL Server. Можно использовать большинство тех же средств базы данных с SQL Server Express, который можно использовать вместе с SQL Server (заметным исключением, [SQL Server Profiler](https://msdn.microsoft.com/en-us/library/ms181091.aspx)), и он поддерживает другие возможности SQL Server, как хранимые процедуры, представления, триггеры, и репликация. (Обычно необходимо использовать полную SQL Server в рабочий веб-сайт, однако. SQL Server Express можно запускать в общей среде размещения, но он не предназначен для, и не поддерживают многие поставщики услуг размещения.)
+В отличие от SQL Server Compact SQL Server Express является по сути тот же механизм базы данных и использует один и тот же поставщик .NET как полный SQL Server. При тестировании с SQL Server Express, можно быть уверенным начало те же результаты, как будет с помощью SQL Server. Можно использовать большинство тех же средств базы данных с SQL Server Express, который можно использовать вместе с SQL Server (заметным исключением, [SQL Server Profiler](https://msdn.microsoft.com/library/ms181091.aspx)), и он поддерживает другие возможности SQL Server, как хранимые процедуры, представления, триггеры, и репликация. (Обычно необходимо использовать полную SQL Server в рабочий веб-сайт, однако. SQL Server Express можно запускать в общей среде размещения, но он не предназначен для, и не поддерживают многие поставщики услуг размещения.)
 
 При использовании Visual Studio 2012, обычно выбирается SQL Server Express LocalDB для среды разработки так, как это установленных по умолчанию вместе с Visual Studio. Тем не менее LocalDB не работает в службах IIS, поэтому для тестовой среды следует использовать SQL Server или SQL Server Express.
 
@@ -57,9 +57,9 @@ ms.lasthandoff: 11/10/2017
 
 SQL Server, экспресс-выпуск автоматически устанавливается по умолчанию вместе с Visual Studio 2010, но по умолчанию они не установлены с помощью Visual Studio 2012. Чтобы установить SQL Server 2012 Express, перейдите по следующей ссылке
 
-- [Экспресс-выпуска SQL Server 2012](https://www.microsoft.com/en-us/download/details.aspx?id=29062)
+- [Экспресс-выпуска SQL Server 2012](https://www.microsoft.com/download/details.aspx?id=29062)
 
-Выберите *x64/ENU/SQLEXPR\_x64\_ENU.exe* или *x86/ENU/SQLEXPR\_x86\_ENU.exe*и в мастере установки примите имя по умолчанию Параметры. Дополнительные сведения о параметрах установки см. в разделе [Установка SQL Server 2012 с помощью мастера установки (программа установки)](https://msdn.microsoft.com/en-us/library/ms143219.aspx).
+Выберите *x64/ENU/SQLEXPR\_x64\_ENU.exe* или *x86/ENU/SQLEXPR\_x86\_ENU.exe*и в мастере установки примите имя по умолчанию Параметры. Дополнительные сведения о параметрах установки см. в разделе [Установка SQL Server 2012 с помощью мастера установки (программа установки)](https://msdn.microsoft.com/library/ms143219.aspx).
 
 ## <a name="creating-sql-server-express-databases-for-the-test-environment"></a>Создание баз данных SQL Server Express для среды тестирования
 

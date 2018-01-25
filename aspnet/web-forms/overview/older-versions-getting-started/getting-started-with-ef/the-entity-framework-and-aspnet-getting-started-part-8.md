@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 78a54fb1b0e4c0ebd5445cca175103471925a065
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 323ee44f43f6d4081bd9ba50791755696bc9128f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-8"></a>Приступая к работе с базой данных Entity Framework 4.0 сначала и форм ASP.NET 4 веб - часть 8
 ====================
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/10/2017
 
 Чтобы увидеть, как это работает, изменим элементов управления, использовать для отображения и редактирования поля в существующем *Students.aspx* страницы и вы добавите форматирования и проверки метаданных поля имя и дата `Student` типа сущности.
 
-[!["Image01"](the-entity-framework-and-aspnet-getting-started-part-8/_static/image2.png)](the-entity-framework-and-aspnet-getting-started-part-8/_static/image1.png)
+[![Image01](the-entity-framework-and-aspnet-getting-started-part-8/_static/image2.png)](the-entity-framework-and-aspnet-getting-started-part-8/_static/image1.png)
 
 ## <a name="using-dynamicfield-and-dynamiccontrol-controls"></a>С помощью DynamicField и элементы управления DynamicControl
 
@@ -125,11 +125,11 @@ ms.lasthandoff: 11/10/2017
 
 - [Entity Framework вопросы и ответы](http://www.ef-faq.org/introduction.html)
 - [Блог команды Entity Framework](https://blogs.msdn.com/b/adonet/)
-- [Entity Framework в библиотеке MSDN](https://msdn.microsoft.com/en-us/library/bb399572.aspx)
-- [Entity Framework в центре разработчиков MSDN данных](https://msdn.microsoft.com/en-us/data/ef.aspx)
-- [Обзор элемента управления EntityDataSource веб-сервера в библиотеке MSDN](https://msdn.microsoft.com/en-us/library/cc488502.aspx)
-- [Элемент управления EntityDataSource Справочник по API в библиотеке MSDN](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.entitydatasource.aspx)
-- [Форумы Entity Framework в MSDN](https://social.msdn.microsoft.com/forums/en-US/adodotnetentityframework/)
+- [Entity Framework в библиотеке MSDN](https://msdn.microsoft.com/library/bb399572.aspx)
+- [Entity Framework в центре разработчиков MSDN данных](https://msdn.microsoft.com/data/ef.aspx)
+- [Обзор элемента управления EntityDataSource веб-сервера в библиотеке MSDN](https://msdn.microsoft.com/library/cc488502.aspx)
+- [Элемент управления EntityDataSource Справочник по API в библиотеке MSDN](https://msdn.microsoft.com/library/system.web.ui.webcontrols.entitydatasource.aspx)
+- [Форумы Entity Framework в MSDN](https://social.msdn.microsoft.com/forums/adodotnetentityframework/)
 - [Блог Джули Лерман](http://thedatafarm.com/blog/)
 
 >[!div class="step-by-step"]

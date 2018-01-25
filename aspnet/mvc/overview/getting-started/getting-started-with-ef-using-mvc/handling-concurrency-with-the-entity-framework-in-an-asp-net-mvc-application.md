@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: e7b79503a1d297d40c6824f8b2b7bbc1f42b9fca
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9df5b9c7e955b784bca7a4195b7c9cf3d2bca7a7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="handling-concurrency-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-10-of-12"></a>Обработка параллелизма с платформой Entity Framework 6 в приложении ASP.NET MVC 5 (10, 12)
 ====================
@@ -65,18 +65,18 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="detecting-concurrency-conflicts"></a>Обнаружение конфликтов параллелизма
 
-Конфликты можно разрешать путем обработки [OptimisticConcurrencyException](https://msdn.microsoft.com/en-us/library/system.data.optimisticconcurrencyexception.aspx) исключения, которые выдает Entity Framework. Чтобы определить, когда необходимо создавать эти исключения, Entity Framework необходима возможность обнаружения конфликтов. Таким образом необходимо настроить базу данных и модели данных соответствующим образом. Ниже приведены некоторые параметры для включения обнаружения конфликтов:
+Конфликты можно разрешать путем обработки [OptimisticConcurrencyException](https://msdn.microsoft.com/library/system.data.optimisticconcurrencyexception.aspx) исключения, которые выдает Entity Framework. Чтобы определить, когда необходимо создавать эти исключения, Entity Framework необходима возможность обнаружения конфликтов. Таким образом необходимо настроить базу данных и модели данных соответствующим образом. Ниже приведены некоторые параметры для включения обнаружения конфликтов:
 
 - В таблице базы данных включают столбец отслеживания, который может использоваться для определения момента изменения строки. Затем можно настроить для включения этого столбца в Entity Framework `Where` предложение SQL `Update` или `Delete` команд.
 
-    Тип данных столбца отслеживания обычно является [rowversion](https://msdn.microsoft.com/en-us/library/ms182776(v=sql.110).aspx). [Rowversion](https://msdn.microsoft.com/en-us/library/ms182776(v=sql.110).aspx) значение — это число, увеличивающееся каждый раз при обновлении строки. В `Update` или `Delete` команды `Where` предложение содержит исходное значение столбца отслеживания (версии). Если обновляемой строке был изменен другим пользователем, значение в `rowversion` столбца отличается от исходного значения, поэтому `Update` или `Delete` инструкции не удается найти строку для обновления из-за `Where` предложения. Когда Entity Framework находит, что строки не были обновлены с `Update` или `Delete` команды (то есть, когда количество задействованных строк равно нулю), он интерпретирует как конфликт параллелизма.
+    Тип данных столбца отслеживания обычно является [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx). [Rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) значение — это число, увеличивающееся каждый раз при обновлении строки. В `Update` или `Delete` команды `Where` предложение содержит исходное значение столбца отслеживания (версии). Если обновляемой строке был изменен другим пользователем, значение в `rowversion` столбца отличается от исходного значения, поэтому `Update` или `Delete` инструкции не удается найти строку для обновления из-за `Where` предложения. Когда Entity Framework находит, что строки не были обновлены с `Update` или `Delete` команды (то есть, когда количество задействованных строк равно нулю), он интерпретирует как конфликт параллелизма.
 - Настройка включения исходных значений для каждого из столбцов в таблице в платформе Entity Framework `Where` предложения `Update` и `Delete` команд.
 
     Как и первый вариант, если что-либо в строке изменилась с момента прочтите строки `Where` предложение не возвращает строки для обновления, который Entity Framework интерпретирует как конфликт параллелизма. Для таблиц базы данных, имеющие много столбцов, этот подход может привести к очень больших `Where` предложений и может потребоваться поддерживать большие объемы состояния. Как отмечалось ранее, обслуживание больших объемов состояния может повлиять на производительность приложения. Поэтому этот подход не рекомендуется и не метод, используемый в этом учебнике.
 
-    Если необходимо реализовать этот подход к параллелизма, необходимо пометить все свойства первичного ключа в сущность, которую необходимо отслеживать параллелизм для добавляя [ConcurrencyCheck](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.concurrencycheckattribute.aspx) к ним атрибут. То, что изменение позволяет платформе Entity Framework включают все столбцы в инструкции SQL, `WHERE` предложения `UPDATE` инструкции.
+    Если необходимо реализовать этот подход к параллелизма, необходимо пометить все свойства первичного ключа в сущность, которую необходимо отслеживать параллелизм для добавляя [ConcurrencyCheck](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.concurrencycheckattribute.aspx) к ним атрибут. То, что изменение позволяет платформе Entity Framework включают все столбцы в инструкции SQL, `WHERE` предложения `UPDATE` инструкции.
 
-В оставшейся части этого учебника вам предстоит добавить [rowversion](https://msdn.microsoft.com/en-us/library/ms182776(v=sql.110).aspx) свойство для отслеживания `Department` сущности, создать контроллер и представления и проверить, что все работает правильно.
+В оставшейся части этого учебника вам предстоит добавить [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) свойство для отслеживания `Department` сущности, создать контроллер и представления и проверить, что все работает правильно.
 
 ## <a name="add-an-optimistic-concurrency-property-to-the-department-entity"></a>Добавить свойство оптимистичного параллелизма для сущности «отдел»
 
@@ -84,9 +84,9 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs?highlight=20-22)]
 
-[Timestamp](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.timestampattribute.aspx) атрибут указывает, что этот столбец будет включен в `Where` предложения `Update` и `Delete` команды, отправляемые в базу данных. Атрибут называется [Timestamp](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.timestampattribute.aspx) из-за предыдущих версий SQL Server используется SQL [timestamp](https://msdn.microsoft.com/en-us/library/ms182776(v=SQL.90).aspx) типа данных перед SQL [rowversion](https://msdn.microsoft.com/en-us/library/ms182776(v=sql.110).aspx) заменил его. Тип .net для [rowversion](https://msdn.microsoft.com/en-us/library/ms182776(v=sql.110).aspx) — массив байтов.
+[Timestamp](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.timestampattribute.aspx) атрибут указывает, что этот столбец будет включен в `Where` предложения `Update` и `Delete` команды, отправляемые в базу данных. Атрибут называется [Timestamp](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.timestampattribute.aspx) из-за предыдущих версий SQL Server используется SQL [timestamp](https://msdn.microsoft.com/library/ms182776(v=SQL.90).aspx) типа данных перед SQL [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) заменил его. Тип .net для [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) — массив байтов.
 
-Если вы предпочитаете использовать fluent API, можно использовать [IsConcurrencyToken](https://msdn.microsoft.com/en-us/library/gg679501(v=VS.103).aspx) метод, чтобы задать свойства трассировки, как показано в следующем примере:
+Если вы предпочитаете использовать fluent API, можно использовать [IsConcurrencyToken](https://msdn.microsoft.com/library/gg679501(v=VS.103).aspx) метод, чтобы задать свойства трассировки, как показано в следующем примере:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.cs)]
 
@@ -232,7 +232,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="summary"></a>Сводка
 
-На этом завершается Общие сведения для обработки конфликтов параллелизма. Сведения о других способах обрабатывать различные сценарии параллелизма см. в разделе [оптимистичного параллелизма шаблоны](https://msdn.microsoft.com/en-us/data/jj592904) и [работа со значениями свойств](https://msdn.microsoft.com/en-us/data/jj592677) на сайте MSDN. Далее учебнике показано, как реализовать таблица на иерархию наследования для `Instructor` и `Student` сущности.
+На этом завершается Общие сведения для обработки конфликтов параллелизма. Сведения о других способах обрабатывать различные сценарии параллелизма см. в разделе [оптимистичного параллелизма шаблоны](https://msdn.microsoft.com/data/jj592904) и [работа со значениями свойств](https://msdn.microsoft.com/data/jj592677) на сайте MSDN. Далее учебнике показано, как реализовать таблица на иерархию наследования для `Instructor` и `Student` сущности.
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступа к данным ASP.NET - рекомендуется использовать ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 

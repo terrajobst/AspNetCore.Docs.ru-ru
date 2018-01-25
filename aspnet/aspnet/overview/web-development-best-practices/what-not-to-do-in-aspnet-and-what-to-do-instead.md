@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead
 msc.type: authoredcontent
-ms.openlocfilehash: 6790cd0deb36c9fb297ccd4df371f763dba17844
-ms.sourcegitcommit: 17b025bd33f4474f0deaafc6d0447a4e72bcad87
+ms.openlocfilehash: 829f3a024bc15bec8b60b91193ba9bca37b78009
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/27/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="what-not-to-do-in-aspnet-and-what-to-do-instead"></a>Что не делать в ASP.NET и что нужно делать вместо этого
 ====================
@@ -94,7 +94,7 @@ ms.lasthandoff: 12/27/2017
 
 Рекомендация: Прекратить использование обратных вызовов страниц и элементов управления и вместо этого использовать любой из следующих: AJAX, UpdatePanel, методы действия MVC, веб-API или SignalR.
 
-В более ранних версиях ASP.NET страниц и элементов управления методы обратного вызова включено обновление части веб-страницы без обновления всей страницы. Теперь можно выполнить частичных обновлений через [AJAX](../../../ajax/index.md), [UpdatePanel](https://msdn.microsoft.com/en-US/library/bb386454.aspx), [MVC](../../../mvc/index.md), [веб-API](../../../web-api/index.md) или [SignalR](../../../signalr/index.md). Следует остановить с помощью методов обратного вызова, так как они могут вызвать проблемы с понятные URL-адреса и маршрутизацию. По умолчанию элементы управления, не включайте методы обратного вызова, но если вы включили этот компонент в элементе управления, его следует отключить.
+В более ранних версиях ASP.NET страниц и элементов управления методы обратного вызова включено обновление части веб-страницы без обновления всей страницы. Теперь можно выполнить частичных обновлений через [AJAX](../../../ajax/index.md), [UpdatePanel](https://msdn.microsoft.com/library/bb386454.aspx), [MVC](../../../mvc/index.md), [веб-API](../../../web-api/index.md) или [SignalR](../../../signalr/index.md). Следует остановить с помощью методов обратного вызова, так как они могут вызвать проблемы с понятные URL-адреса и маршрутизацию. По умолчанию элементы управления, не включайте методы обратного вызова, но если вы включили этот компонент в элементе управления, его следует отключить.
 
 <a id="browsercap"></a>
 
@@ -138,7 +138,7 @@ ms.lasthandoff: 12/27/2017
 
 [!code-csharp[Main](what-not-to-do-in-aspnet-and-what-to-do-instead/samples/sample7.cs)]
 
-Для безопасного кодирования значение для команды SQL, используйте параметры команды, например [SqlParameter](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlparameter.aspx). <a id="cookieless"></a>
+Для безопасного кодирования значение для команды SQL, используйте параметры команды, например [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx). <a id="cookieless"></a>
 
 ### <a name="cookieless-forms-authentication-and-session"></a>Проверка подлинности форм без поддержки файлов cookie и сеансов
 
@@ -180,15 +180,15 @@ ms.lasthandoff: 12/27/2017
 
 Элемент appSettings содержит много значений, которые необходимы для обновления для системы безопасности. Нельзя изменить или отключить эти значения. Если эти значения необходимо отключить при развертывании обновления, немедленно повторно включите после завершения развертывания.
 
-Дополнительные сведения см. в разделе [элементу appSettings ASP.NET](https://msdn.microsoft.com/en-us/library/hh975440.aspx).
+Дополнительные сведения см. в разделе [элементу appSettings ASP.NET](https://msdn.microsoft.com/library/hh975440.aspx).
 
 <a id="urlpathencode"></a>
 
 ### <a name="urlpathencode"></a>UrlPathEncode
 
-Рекомендации: Используйте [кодируют](https://msdn.microsoft.com/en-us/library/zttxte6w.aspx) вместо него.
+Рекомендации: Используйте [кодируют](https://msdn.microsoft.com/library/zttxte6w.aspx) вместо него.
 
-Метод UrlPathEncode была добавлена в .NET Framework, чтобы устранить проблему совместимости очень конкретного браузера. Не кодирует адекватно URL-адреса и не обеспечивает дополнительную защиту от межсайтовых сценариев. Он никогда не следует использовать в приложении. Вместо этого используйте [кодируют](https://msdn.microsoft.com/en-us/library/zttxte6w.aspx).
+Метод UrlPathEncode была добавлена в .NET Framework, чтобы устранить проблему совместимости очень конкретного браузера. Не кодирует адекватно URL-адреса и не обеспечивает дополнительную защиту от межсайтовых сценариев. Он никогда не следует использовать в приложении. Вместо этого используйте [кодируют](https://msdn.microsoft.com/library/zttxte6w.aspx).
 
 В следующем примере показано, как передать закодированный URL-адрес в качестве параметра строки запроса для элемента управления hyperlink.
 
@@ -202,9 +202,9 @@ ms.lasthandoff: 12/27/2017
 
 ### <a name="presendrequestheaders-and-presendrequestcontent"></a>PreSendRequestHeaders и PreSendRequestContent
 
-Рекомендация: Не используйте эти события с управляемых модулей. Вместо этого можно напишите собственный модуль IIS для выполнения требуемой задачи. В разделе [создания модулей машинного кода HTTP](https://msdn.microsoft.com/en-us/library/ms693629.aspx).
+Рекомендация: Не используйте эти события с управляемых модулей. Вместо этого можно напишите собственный модуль IIS для выполнения требуемой задачи. В разделе [создания модулей машинного кода HTTP](https://msdn.microsoft.com/library/ms693629.aspx).
 
-Можно использовать [PreSendRequestHeaders](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.presendrequestheaders.aspx) и [PreSendRequestContent](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.presendrequestcontent.aspx) событий с собственные модули IIS.
+Можно использовать [PreSendRequestHeaders](https://msdn.microsoft.com/library/system.web.httpapplication.presendrequestheaders.aspx) и [PreSendRequestContent](https://msdn.microsoft.com/library/system.web.httpapplication.presendrequestcontent.aspx) событий с собственные модули IIS.
 > [!WARNING]
 > Не используйте `PreSendRequestHeaders` и `PreSendRequestContent` с управляемых модулей, которые реализуют `IHttpModule`. Настройка этих свойств может вызвать трудности в асинхронных запросов. Сочетание маршрутизации запрошенный приложений (ARR) и websockets может стать причиной исключения нарушения прав доступа, которые могут вызвать w3wp к сбою. Например, iiscore! W3_CONTEXT_BASE::GetIsLastNotification + 68 в iiscore.dll вызвала нарушение прав доступа (0xC0000005).
 
@@ -212,7 +212,7 @@ ms.lasthandoff: 12/27/2017
 
 ### <a name="asynchronous-page-events-with-web-forms"></a>События асинхронной страницы с веб-форм
 
-Рекомендации: В веб-формы, не используйте запись async void методов, событий жизненного цикла страницы, а вместо этого использовать [Page.RegisterAsyncTask](https://msdn.microsoft.com/en-us/library/system.web.ui.page.registerasynctask.aspx) для асинхронного кода.
+Рекомендации: В веб-формы, не используйте запись async void методов, событий жизненного цикла страницы, а вместо этого использовать [Page.RegisterAsyncTask](https://msdn.microsoft.com/library/system.web.ui.page.registerasynctask.aspx) для асинхронного кода.
 
 Если пометить события страницы с **async** и **void**, не может определить, после завершения асинхронного кода. Вместо этого используйте Page.RegisterAsyncTask для выполнения асинхронного кода в способом, который позволяет отслеживать его выполнение.
 
@@ -244,15 +244,15 @@ ms.lasthandoff: 12/27/2017
 
 Самый ранний лимит должны считываться Request.Form или Request.InputStream во время работы обработчика выполнить событие. В платформе MVC контроллер обработчик а execute события при выполнении метода. В веб-формы страница является обработчик и выполнить событие после возникновения события Page.Init. Если более ранних, чем событие выполнения прочитать тело сущности запроса, помешать обработки запроса.
 
-Если вам нужно прочитать тело сущности запроса, прежде чем событие выполнения, используйте либо [Request.GetBufferlessInputStream](https://msdn.microsoft.com/en-us/library/ff406798.aspx) или [Request.GetBufferedInputStream](https://msdn.microsoft.com/en-us/library/system.web.httprequest.getbufferedinputstream.aspx). При использовании GetBufferlessInputStream, вы получаете исходный поток из запроса и принимают на себя ответственность за обработку всего запроса. После вызова GetBufferlessInputStream, Request.Form и Request.InputStream недоступны, так как они не заполнены в ASP.NET. При использовании GetBufferedInputStream, можно получить копию потока из запроса. Request.Form и Request.InputStream по-прежнему доступны в запрос, так как ASP.NET заполняет другие копии.
+Если вам нужно прочитать тело сущности запроса, прежде чем событие выполнения, используйте либо [Request.GetBufferlessInputStream](https://msdn.microsoft.com/library/ff406798.aspx) или [Request.GetBufferedInputStream](https://msdn.microsoft.com/library/system.web.httprequest.getbufferedinputstream.aspx). При использовании GetBufferlessInputStream, вы получаете исходный поток из запроса и принимают на себя ответственность за обработку всего запроса. После вызова GetBufferlessInputStream, Request.Form и Request.InputStream недоступны, так как они не заполнены в ASP.NET. При использовании GetBufferedInputStream, можно получить копию потока из запроса. Request.Form и Request.InputStream по-прежнему доступны в запрос, так как ASP.NET заполняет другие копии.
 
 <a id="redirect"></a>
 
 ### <a name="responseredirect-and-responseend"></a>Response.Redirect и Response.End
 
-Рекомендация: Следует учитывать различия в обработке потока после вызова [Response.Redirect(String)](https://msdn.microsoft.com/en-us/library/t9dwyts4.aspx).
+Рекомендация: Следует учитывать различия в обработке потока после вызова [Response.Redirect(String)](https://msdn.microsoft.com/library/t9dwyts4.aspx).
 
-[Response.Redirect(String)](https://msdn.microsoft.com/en-us/library/t9dwyts4.aspx) метод вызывает метод Response.End. Синхронного процесса вызов Request.Redirect вызывает немедленно прерывание текущего потока. Тем не менее в асинхронном процессе, вызов Response.Redirect не будет прерываться текущего потока, поэтому выполнение кода продолжается для запроса. В асинхронном процессе необходимо вернуть задачу из метода, для остановки выполнения кода.
+[Response.Redirect(String)](https://msdn.microsoft.com/library/t9dwyts4.aspx) метод вызывает метод Response.End. Синхронного процесса вызов Request.Redirect вызывает немедленно прерывание текущего потока. Тем не менее в асинхронном процессе, вызов Response.Redirect не будет прерываться текущего потока, поэтому выполнение кода продолжается для запроса. В асинхронном процессе необходимо вернуть задачу из метода, для остановки выполнения кода.
 
 В проект MVC не следует вызывать Response.Redirect. Вместо этого возвращает RedirectResult.
 
@@ -286,7 +286,7 @@ ms.lasthandoff: 12/27/2017
 
 ### <a name="long-running-requests-110-seconds"></a>Длительные запросы (> 110 секунд)
 
-Рекомендации: Используйте [WebSockets](https://msdn.microsoft.com/en-us/library/system.net.websockets.websocket.aspx) или [SignalR](../../../signalr/index.md) для подключенных клиентов и используйте асинхронные операции ввода-вывода.
+Рекомендации: Используйте [WebSockets](https://msdn.microsoft.com/library/system.net.websockets.websocket.aspx) или [SignalR](../../../signalr/index.md) для подключенных клиентов и используйте асинхронные операции ввода-вывода.
 
 Длительные запросы может привести к непредсказуемым результатам и снижению производительности веб-приложения. Значение по умолчанию время ожидания для запроса составляет 110 секунд. При использовании состояния сеанса с помощью запроса долго выполняющихся ASP.NET будет снимать блокировку для объекта сеанса через 110 секунд. Однако приложение может находиться в процессе операции в объекте сеанса после снятия блокировки и не может выполнить операцию. Если второй запрос от пользователя блокируется во время первого запроса, второй запрос может получить доступ к объекту сеанса в несогласованном состоянии.
 

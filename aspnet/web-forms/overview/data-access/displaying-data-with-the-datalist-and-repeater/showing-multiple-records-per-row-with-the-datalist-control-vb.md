@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/showing-multiple-records-per-row-with-the-datalist-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d6a9c6aef42d1f165567d1a1802bffa853a320e1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 416178533f022f2a262799e6f042d6009bb9d999
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="showing-multiple-records-per-row-with-the-datalist-control-vb"></a>Отображение нескольких записей на строку с элементом управления DataList (Visual Basic)
 ====================
@@ -67,7 +67,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-2-changing-the-datalist-s-layout-direction"></a>Шаг 2: Изменение направление макета DataList s
 
-При поведение по умолчанию для DataList — для размещения элементов по вертикали в один столбец и нескольких строк таблицы, это поведение можно легко изменить с помощью DataList s [ `RepeatDirection` свойства](https://msdn.microsoft.com/en-us/system.web.ui.webcontrols.datalist.repeatdirection.aspx). `RepeatDirection` Свойство может принимать одно из двух возможных значений: `Horizontal` или `Vertical` (по умолчанию).
+При поведение по умолчанию для DataList — для размещения элементов по вертикали в один столбец и нескольких строк таблицы, это поведение можно легко изменить с помощью DataList s [ `RepeatDirection` свойства](https://msdn.microsoft.com/system.web.ui.webcontrols.datalist.repeatdirection.aspx). `RepeatDirection` Свойство может принимать одно из двух возможных значений: `Horizontal` или `Vertical` (по умолчанию).
 
 Изменив `RepeatDirection` свойство из `Vertical` для `Horizontal`, DataList отображает ее записи в виде одной строки и создание элемента источника данных для одного столбца. Чтобы проиллюстрировать этот эффект, щелкните в DataList в конструкторе и в окне свойств измените `RepeatDirection` свойство из `Vertical` для `Horiztonal`. Сразу после таким образом, конструктор настраивает DataList s макет, создание интерфейса одной строки, несколькими столбцами (см. рис. 3).
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-3-displaying-data-in-a-multi-column-multi-row-table"></a>Шаг 3: Отображение данных в нескольких столбцов, нескольких строк таблицы
 
-Для создания нескольких столбцов, многострочных DataList, нам нужно указать [ `RepeatColumns` свойство](https://msdn.microsoft.com/en-us/system.web.ui.webcontrols.datalist.repeatcolumns.aspx) число столбцов для отображения. По умолчанию `RepeatColumns` задано значение 0, что вызовет DataList отобразить все элементы в виде одной строки или столбца (в зависимости от значения `RepeatDirection` свойство).
+Для создания нескольких столбцов, многострочных DataList, нам нужно указать [ `RepeatColumns` свойство](https://msdn.microsoft.com/system.web.ui.webcontrols.datalist.repeatcolumns.aspx) число столбцов для отображения. По умолчанию `RepeatColumns` задано значение 0, что вызовет DataList отобразить все элементы в виде одной строки или столбца (в зависимости от значения `RepeatDirection` свойство).
 
 В нашем примере позволяют s отображения трех продуктов на каждую строку таблицы. Таким образом, задать `RepeatColumns` значение, равное 3. После этого изменения занять некоторое время для просмотра результатов в браузере. Как показано на рисунке 5, продукты, появятся в трех столбцов, нескольких строк таблицы.
 

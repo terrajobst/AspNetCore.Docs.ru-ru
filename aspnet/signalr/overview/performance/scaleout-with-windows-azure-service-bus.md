@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/performance/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: 857fc8baa61549e2fabbb8da012b1fa23950237d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7cb68d578fee8d6ee036f8fb096ba45e0c8ef3d6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="signalr-scaleout-with-azure-service-bus"></a>SignalR горизонтального масштабирования с Azure Service Bus
 ====================
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/10/2017
 - [Windows Azure SDK](https://go.microsoft.com/fwlink/?linkid=254364&amp;clcid=0x409).
 - Visual Studio 2012 или 2013.
 
-Задняя панель шины службы также совместим с [Service Bus for Windows Server](https://msdn.microsoft.com/en-us/library/windowsazure/dn282144.aspx), версия 1.1. Однако он не совместим с версией 1.0 Service Bus for Windows Server.
+Задняя панель шины службы также совместим с [Service Bus for Windows Server](https://msdn.microsoft.com/library/windowsazure/dn282144.aspx), версия 1.1. Однако он не совместим с версией 1.0 Service Bus for Windows Server.
 
 ## <a name="pricing"></a>Цены
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](scaleout-with-windows-azure-service-bus/samples/sample1.cs)]
 
-Этот код настраивает объединительной плате со значениями по умолчанию для [TopicCount](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.servicebusscaleoutconfiguration.topiccount(v=vs.118).aspx) и [MaxQueueLength](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Сведения об изменении этих значений см. в разделе [производительности SignalR: метрики горизонтального масштабирования](signalr-performance.md#scaleout_metrics).
+Этот код настраивает объединительной плате со значениями по умолчанию для [TopicCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.servicebusscaleoutconfiguration.topiccount(v=vs.118).aspx) и [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Сведения об изменении этих значений см. в разделе [производительности SignalR: метрики горизонтального масштабирования](signalr-performance.md#scaleout_metrics).
 
 Для каждого приложения выберите другое значение для «YourAppName». Не используйте то же значение для нескольких приложений.
 

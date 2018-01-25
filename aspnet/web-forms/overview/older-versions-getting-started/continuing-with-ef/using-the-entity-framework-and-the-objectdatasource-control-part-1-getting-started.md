@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 6f93d6033b68773507d624125936f0a69777e2b7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 83fe815af9030aee10a5204718b00c79925e9126
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-1-getting-started"></a>Использование Entity Framework 4.0 и управления ObjectDataSource, часть 1: Приступая к работе
 ====================
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > ## <a name="database-first"></a>Сначала базы данных
 > 
-> Существует три способа, можно работать с данными в Entity Framework: *Database First*, *Model First*, и *Code First*. Этот учебник предназначен для первой базы данных. Сведения о различиях между этими рабочими процессами и рекомендации о том, как выбирать наиболее подходящий для вашего сценария см. в разделе [процессов разработки Entity Framework](https://msdn.microsoft.com/en-us/library/ms178359.aspx#dbfmfcf).
+> Существует три способа, можно работать с данными в Entity Framework: *Database First*, *Model First*, и *Code First*. Этот учебник предназначен для первой базы данных. Сведения о различиях между этими рабочими процессами и рекомендации о том, как выбирать наиболее подходящий для вашего сценария см. в разделе [процессов разработки Entity Framework](https://msdn.microsoft.com/library/ms178359.aspx#dbfmfcf).
 > 
 > ## <a name="web-forms"></a>веб-формы
 > 
@@ -47,7 +47,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > ## <a name="questions"></a>Вопросы
 > 
-> Если у вас есть вопросы, которые не связаны непосредственно для работы с учебником, их можно разместить [форум по ASP.NET Entity Framework](https://forums.asp.net/1227.aspx), [Entity Framework и LINQ to Entities форум](https://social.msdn.microsoft.com/forums/en-US/adodotnetentityframework/threads/), или [ StackOverflow.com](http://stackoverflow.com/).
+> Если у вас есть вопросы, которые не связаны непосредственно для работы с учебником, их можно разместить [форум по ASP.NET Entity Framework](https://forums.asp.net/1227.aspx), [Entity Framework и LINQ to Entities форум](https://social.msdn.microsoft.com/forums/adodotnetentityframework/threads/), или [ StackOverflow.com](http://stackoverflow.com/).
 
 
 `EntityDataSource` Управления позволяет создавать приложения, очень быстро, но обычно требуется сохранить значительный объем бизнес-логики и логики доступа к данным в вашей *.aspx* страниц. Если ожидается, что ваше приложение к росту сложности и требует текущего обслуживания, можно заранее вкладывать больше времени разработки для создания *n уровневые* или *многоуровневая* структуры приложения Это более простого в сопровождении. Для реализации этой архитектуры, отделить уровень представления из уровня бизнес-логики (уровень бизнес-ЛОГИКИ) и уровня доступа к данным (DAL). Один из способов реализации этой структуры является использование `ObjectDataSource` управления вместо `EntityDataSource` элемента управления. При использовании `ObjectDataSource` управления, можно реализовать собственный код для доступа к данным, а затем вызовите его в *.aspx* страниц с помощью элемента управления, обладающей множеством одной и той же функции, как другие элементы управления источником данных. Это позволяет сочетать преимущества многоуровневого подхода со всеми преимуществами управления веб-форм для доступа к данным.
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/10/2017
 
 Помимо основные операции CRUD, класса, который создан для использования с `ObjectDataSource` управления может потребоваться выполнение бизнес-логики при `ObjectDataSource` чтения или обновления данных. Например при обновлении отдел может потребоваться убедитесь, что нет других отделов есть ту же администратора, так как один пользователь не может быть администратором более одного отдела.
 
-В некоторых `ObjectDataSource` документации, таких как [Общие сведения о классе ObjectDataSource](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.aspx), элемент управления вызывает класс, называемый *бизнес-объекта* бизнес-логики и логики доступа к данным . В этом учебнике вы создадите отдельные классы для бизнес-логики и логики доступа к данным. Класс, инкапсулирующий логики доступа к данным, называется *репозитория*. Бизнес логики класса включает бизнес логики методы и методы доступа к данным, но методы доступа к данным вызова репозитория для выполнения задач, доступ к данным.
+В некоторых `ObjectDataSource` документации, таких как [Общие сведения о классе ObjectDataSource](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.aspx), элемент управления вызывает класс, называемый *бизнес-объекта* бизнес-логики и логики доступа к данным . В этом учебнике вы создадите отдельные классы для бизнес-логики и логики доступа к данным. Класс, инкапсулирующий логики доступа к данным, называется *репозитория*. Бизнес логики класса включает бизнес логики методы и методы доступа к данным, но методы доступа к данным вызова репозитория для выполнения задач, доступ к данным.
 
 Также создается уровень абстракции между уровень бизнес-ЛОГИКИ и DAL, упрощающий автоматических модульных тестов для МЕТОДА. Этот уровень абстракции реализуется путем создания интерфейса и с помощью интерфейса, при создании экземпляра репозитория в классе бизнес логики. Это позволяет предоставить класс бизнес логики со ссылкой на любой объект, реализующий интерфейс репозитория. Для нормальной работы необходимо предоставить объект хранилища, который работает с платформой Entity Framework. Для тестирования, необходимо предоставить объект хранилища, который работает с данными, хранящимися в результате которого можно легко управлять, например класс переменные, определенные в коллекции.
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 11/10/2017
 
 Страницы, создайте в этом учебнике работать в `Departments` набора сущностей модели данных, созданную в [начало учебника ряда](../getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1.md).
 
-[!["Image01"](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image4.png)](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image3.png)
+[![Image01](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image4.png)](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image3.png)
 
 [![Image02](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image6.png)](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image5.png)
 
@@ -192,7 +192,7 @@ ms.lasthandoff: 11/10/2017
 
 Запустите *Departments.aspx* страницы.
 
-[!["Image01"](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image26.png)](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image25.png)
+[![Image01](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image26.png)](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image25.png)
 
 Обратите внимание, что, несмотря на то, что не было указано в строке формата *Departments.aspx* разметку страницы для **бюджета** или **Дата начала** столбцы, по умолчанию, валюты и даты форматирование, примененных к ним, `DynamicField` элементов управления, используя метаданные, предоставленные в *Department.cs* файла.
 

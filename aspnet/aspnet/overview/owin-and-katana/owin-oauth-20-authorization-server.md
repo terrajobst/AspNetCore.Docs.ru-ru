@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server
 msc.type: authoredcontent
-ms.openlocfilehash: 8842f57df84d841df77b34e9645dbf4909f82d85
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e5968f8d19191c3f44e9bd58f8e22a39d8d8faff
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="owin-oauth-20-authorization-server"></a>Сервер авторизации OAuth 2.0 OWIN
 ====================
@@ -57,12 +57,12 @@ ms.lasthandoff: 11/10/2017
 ## <a name="prerequisites"></a>Предварительные требования
 
 - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/downloads#d-2013-editions) или бесплатную [Visual Studio Express 2013](https://www.microsoft.com/visualstudio/eng/downloads#d-2013-express), как указано в **версий программного обеспечения** в верхней части страницы.
-- Знакомство с OWIN. В разделе [Приступая к работе с проектом Katana](https://msdn.microsoft.com/en-us/magazine/dn451439.aspx) и [новые возможности OWIN и Katana](index.md).
+- Знакомство с OWIN. В разделе [Приступая к работе с проектом Katana](https://msdn.microsoft.com/magazine/dn451439.aspx) и [новые возможности OWIN и Katana](index.md).
 - Знакомство с [OAuth](http://tools.ietf.org/html/rfc6749) терминологии, включая [ролей](http://tools.ietf.org/html/rfc6749#section-1.1), [потока протокола](http://tools.ietf.org/html/rfc6749#section-1.2), и [предоставления авторизации](http://tools.ietf.org/html/rfc6749#section-1.3). [Введение OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-1) предоставляет представление.
 
 ## <a name="create-an-authorization-server"></a>Создание сервера авторизации
 
-В этом учебнике мы будет примерно эскиз, как использовать [OWIN](https://msdn.microsoft.com/en-us/magazine/dn451439.aspx) и ASP.NET MVC для создания сервера авторизации. Мы надеемся, что скоро предлагать обновления для полного примера этот учебник содержит каждый шаг. Сначала создайте пустой веб-приложение с именем *AuthorizationServer* и установить следующие пакеты:
+В этом учебнике мы будет примерно эскиз, как использовать [OWIN](https://msdn.microsoft.com/magazine/dn451439.aspx) и ASP.NET MVC для создания сервера авторизации. Мы надеемся, что скоро предлагать обновления для полного примера этот учебник содержит каждый шаг. Сначала создайте пустой веб-приложение с именем *AuthorizationServer* и установить следующие пакеты:
 
 - Microsoft.AspNet.Mvc
 - Microsoft.Owin.Host.SystemWeb
@@ -112,7 +112,7 @@ OAuth безразлично, где и как управлять ими дан�
 
 Просмотрите IETF OAuth 2 [Authorization Code Grant](http://tools.ietf.org/html/rfc6749#section-4.1) теперь статьи. 
 
-**Поставщик** (в таблице ниже) — [OAuthAuthorizationServerOptions](https://msdn.microsoft.com/en-us/library/microsoft.owin.security.oauth.oauthauthorizationserveroptions(v=vs.111).aspx). Поставщик, который относится к типу `OAuthAuthorizationServerProvider`, который содержит все события сервера OAuth. 
+**Поставщик** (в таблице ниже) — [OAuthAuthorizationServerOptions](https://msdn.microsoft.com/library/microsoft.owin.security.oauth.oauthauthorizationserveroptions(v=vs.111).aspx). Поставщик, который относится к типу `OAuthAuthorizationServerProvider`, который содержит все события сервера OAuth. 
 
 | Действия из раздела Authorization Code Grant | Загрузить образец выполняет следующие действия с. |
 | --- | --- |
