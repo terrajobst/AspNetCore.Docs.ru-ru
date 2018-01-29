@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 4dd10430778dc51fef1199315ee02eb2cd4970ba
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 925d659f42496045089ba056e194ac977c37a8de
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4-helpers-forms-and-validation"></a>Вспомогательные объекты ASP.NET MVC 4, форм и проверки
 ====================
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > Эта лаборатория рассматриваются улучшения и новые функции, описанные ранее путем применения незначительные изменения примера веб-приложения в папке исходных файлов.
 > 
-> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [https://www.microsoft.com/en-us/download/29843](https://www.microsoft.com/en-us/download/29843).
+> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843).
 
 
 <a id="Objectives"></a>
@@ -228,7 +228,7 @@ ms.lasthandoff: 11/10/2017
 В этой задаче будет добавлен новый метод **Truncate** для **HTML** объекту, предоставленному в представлениях MVC ASP.NET. Чтобы сделать это, реализовать **метод расширения** на встроенные **System.Web.Mvc.HtmlHelper** класс, предоставляемый ASP.NET MVC.
 
 > [!NOTE]
-> Чтобы узнать подробнее об **методы расширения**, можно найти в этой статье msdn. [https://MSDN.Microsoft.com/en-us/library/bb383977.aspx](https://msdn.microsoft.com/en-us/library/bb383977.aspx).
+> Чтобы узнать подробнее об **методы расширения**, можно найти в этой статье msdn. [https://msdn.microsoft.com/library/bb383977.aspx](https://msdn.microsoft.com/library/bb383977.aspx).
 
 
 1. Откройте **начать** решений, расположенный **источника/Ex2-AddingAnHTMLHelper/начало/** папки. В противном случае можно продолжить использование **окончания** решения получен путем выполнения в предыдущем упражнении.

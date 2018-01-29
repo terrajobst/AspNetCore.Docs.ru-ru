@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: af4967f642ba4615f3392c0c404d2ec62edaaae8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 48a7d7fdb670aebb72450fc4eb12a364ef595c53
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4-dependency-injection"></a>Внедрение зависимостей в ASP.NET MVC 4
 ====================
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/10/2017
 > [!NOTE]
 > Это Практическое лабораторное занятие предполагает иметь базовые знания об **ASP.NET MVC** и **фильтров ASP.NET MVC 4**. Если вы не использовали **фильтров ASP.NET MVC 4** раньше, мы рекомендуем перейти **настраиваемые действия ASP.NET MVC фильтры** Практическое лабораторное занятие.
 > 
-> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [https://www.microsoft.com/en-us/download/29843](https://www.microsoft.com/en-us/download/29843).
+> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843).
 
 
 В **объектно-ориентированное программирование** парадигме, совместной работы объектов в модели совместная работа которых содержится участников и пользователей. Естественно эта модель связи приводит к возникновению ошибки зависимости между объектами и компонентами, становится трудно управлять при увеличении сложности.
@@ -474,7 +474,7 @@ MVC Music Store, предоставляемые в решении begin тепе
 
     ![Music Store](aspnet-mvc-4-dependency-injection/_static/image11.png "Music Store")
 
-    *Music Store*
+    *Приложение Music Store*
 3. Перейдите к **/Trace.axd** для просмотра трассировки приложения и нажмите кнопку **Просмотр сведений о**.
 
     ![Журнал трассировки приложения](aspnet-mvc-4-dependency-injection/_static/image12.png "журнал трассировки приложения")
