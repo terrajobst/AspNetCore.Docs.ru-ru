@@ -1,7 +1,19 @@
 ---
-title: Введение в Razor Pages в ASP.NET Core author: Rick-Anderson description: Руководство по Razor Pages в ASP.NET Core. Включает разделы по MVC Core, ASP.NET Core 2.x, введение в веб-разработку и сведения о Visual Studio 2017.
-Этот документ содержит общие сведения об использовании Razor Pages в ASP.NET Core, которые помогут упростить разработку в сценариях, где используются страницы.
-ms.author: riande manager: wpickett ms.date: 09/12/2017 ms.topic: get-started-article ms.technology: aspnet ms.prod: asp.net-core uid: mvc/razor-pages/index
+title: "Введение в Razor Pages в ASP.NET Core"
+author: Rick-Anderson
+description: "Учебник по ASP.NET Core на страницах Razor. Включает разделы по MVC Core, ASP.NET Core 2.x, введение в веб-разработку и сведения о Visual Studio 2017. Этот документ содержит общие сведения об использовании страниц Razor в ASP.NET Core для упрощения разработки в сценариях, где применяются страницы."
+ms.author: riande
+manager: wpickett
+ms.date: 09/12/2017
+ms.topic: get-started-article
+ms.technology: aspnet
+ms.prod: asp.net-core
+uid: mvc/razor-pages/index
+ms.openlocfilehash: a08c1b59c7be3a27fc11e6737a1cb4b4208f2901
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -336,7 +348,7 @@ public string Message { get; set; }
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml?highlight=12-13)]
 
-<!-- Review: the FormActionTagHelper applies to all <form /> elements on a Razor page, even when there is no `asp-` attribute   -->
+<!-- Review: the FormActionTagHelper applies to all <form /> elements on a Razor page, even when there's no `asp-` attribute   -->
 
 Форма в предыдущем примере включает две кнопки отправки, каждая из которых отправляет данные на отдельный URL-адрес с помощью `FormActionTagHelper`. Атрибут `asp-page-handler` является дополнением к `asp-page`. Атрибут `asp-page-handler` формирует URL-адреса, ,которые используются для отправки данных в каждый из методов обработчиков, определенных страницей. `asp-page` не задается, так как пример сопоставлен с текущей страницей.
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-vb
 msc.type: authoredcontent
-ms.openlocfilehash: efec52c4085c24b1d6227a86f7c435ca657e493c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e30df9ddc094d0390d9e5985ec676713b57feaf4
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-vb"></a>Создание хранимой процедуры и определяемые пользователем функции с помощью управляемого кода (Visual Basic)
 ====================
@@ -33,12 +33,12 @@ ms.lasthandoff: 11/10/2017
 
 По существу SQL предназначен для работы с наборами данных. `SELECT`, `UPDATE`, И `DELETE` инструкций по своей природе применяются ко всем записям в соответствующей таблице и ограничено только объемом их `WHERE` предложения. Тем не менее имеют множество функций языка, для работы с одной записи за раз и для работы с данными, скалярные. [`CURSOR`s](http://www.sqlteam.com/item.asp?ItemID=553) позволяют быть в цикле по одному за раз набор записей. Строковые функции обработки как `LEFT`, `CHARINDEX`, и `PATINDEX` работают со скалярными значениями. SQL также включает операторах потока управления, такие как `IF` и `WHILE`.
 
-До Microsoft SQL Server 2005 хранимые процедуры и определяемые пользователем функции могут определяться только как коллекция инструкций T-SQL. SQL Server 2005, однако был разработан для обеспечения интеграции с [Common Language Runtime (CLR)](https://msdn.microsoft.com/en-us/netframework/aa497266.aspx), передаваемый в среде выполнения все сборки .NET. Следовательно хранимые процедуры и определяемые пользователем функции в базе данных SQL Server 2005 могут создаваться с помощью управляемого кода. То есть хранимой процедуры или определяемой пользователем функции можно создать как метод в класс Visual Basic. Это позволяет эти хранимые процедуры и определяемые пользователем функции, чтобы использовать функциональные возможности в платформе .NET Framework и из пользовательских классов.
+До Microsoft SQL Server 2005 хранимые процедуры и определяемые пользователем функции могут определяться только как коллекция инструкций T-SQL. SQL Server 2005, однако был разработан для обеспечения интеграции с [Common Language Runtime (CLR)](https://msdn.microsoft.com/netframework/aa497266.aspx), передаваемый в среде выполнения все сборки .NET. Следовательно хранимые процедуры и определяемые пользователем функции в базе данных SQL Server 2005 могут создаваться с помощью управляемого кода. То есть хранимой процедуры или определяемой пользователем функции можно создать как метод в класс Visual Basic. Это позволяет эти хранимые процедуры и определяемые пользователем функции, чтобы использовать функциональные возможности в платформе .NET Framework и из пользовательских классов.
 
 В данном руководстве, мы рассмотрим, как создавать управляемые хранимые процедуры и определяемые пользователем функции и как интегрировать их в базе данных "Борей". S позволяют начать работу!
 
 > [!NOTE]
-> Управляемые объекты базы данных обеспечивают ряд преимуществ по сравнению с аналогичными функциями SQL. Набор операторов языка и вы знакомы, а также возможность повторного использования существующего кода и логику перечислены основные преимущества. Но управляемых объектов базы данных могут привести к снижению эффективности при работе с наборами данных, которые не включают в себя много процедурной логики. Более подробные сведения о преимуществах использования управляемого кода или T-SQL, см. [преимущества использования управляемого кода для создания объектов баз данных](https://msdn.microsoft.com/en-us/library/k2e1fb36(VS.80).aspx).
+> Управляемые объекты базы данных обеспечивают ряд преимуществ по сравнению с аналогичными функциями SQL. Набор операторов языка и вы знакомы, а также возможность повторного использования существующего кода и логику перечислены основные преимущества. Но управляемых объектов базы данных могут привести к снижению эффективности при работе с наборами данных, которые не включают в себя много процедурной логики. Более подробные сведения о преимуществах использования управляемого кода или T-SQL, см. [преимущества использования управляемого кода для создания объектов баз данных](https://msdn.microsoft.com/library/k2e1fb36(VS.80).aspx).
 
 
 ## <a name="step-1-moving-the-northwind-database-out-ofappdata"></a>Шаг 1: Перемещение базы данных "Борей" Out of`App_Data`
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-2-creating-a-new-solution-and-sql-server-project-in-visual-studio"></a>Шаг 2: Создание нового решения и проекта SQL Server в Visual Studio
 
-Для создания управляемых хранимых процедур или определяемых пользователем функций в SQL Server 2005 мы напишем хранимых процедур и определяемых пользователем Функций логики в код Visual Basic в классе. После написания кода необходимо скомпилировать этот класс в сборке ( `.dll` файл), Зарегистрируйте сборку с базой данных SQL Server, а затем создайте хранимую процедуру или определяемую пользователем Функцию объекта в базе данных, указывающий на соответствующий метод в сборка. Эти шаги можно будет выполняться вручную. Мы создания кода в любой текстовый редактор, ее компиляция из командной строки, используя компилятор Visual Basic (`vbc.exe`), зарегистрируйте его в базу данных при помощи [ `CREATE ASSEMBLY` ](https://msdn.microsoft.com/en-us/library/ms189524.aspx) команду или из среды Management Studio и добавьте хранимую процедура или определяемая пользователем Функция объект аналогичен процедуре. К счастью Professional и команды системы версий Visual Studio включают тип проекта SQL Server, который автоматизирует следующие задачи. В этом учебнике мы рассмотрим с помощью типа проекта SQL Server для создания управляемой хранимой процедуры и определяемой пользователем функции.
+Для создания управляемых хранимых процедур или определяемых пользователем функций в SQL Server 2005 мы напишем хранимых процедур и определяемых пользователем Функций логики в код Visual Basic в классе. После написания кода необходимо скомпилировать этот класс в сборке ( `.dll` файл), Зарегистрируйте сборку с базой данных SQL Server, а затем создайте хранимую процедуру или определяемую пользователем Функцию объекта в базе данных, указывающий на соответствующий метод в сборка. Эти шаги можно будет выполняться вручную. Мы создания кода в любой текстовый редактор, ее компиляция из командной строки, используя компилятор Visual Basic (`vbc.exe`), зарегистрируйте его в базу данных при помощи [ `CREATE ASSEMBLY` ](https://msdn.microsoft.com/library/ms189524.aspx) команду или из среды Management Studio и добавьте хранимую процедура или определяемая пользователем Функция объект аналогичен процедуре. К счастью Professional и команды системы версий Visual Studio включают тип проекта SQL Server, который автоматизирует следующие задачи. В этом учебнике мы рассмотрим с помощью типа проекта SQL Server для создания управляемой хранимой процедуры и определяемой пользователем функции.
 
 > [!NOTE]
 > Если вы используете Visual Web Developer или стандартный выпуск Visual Studio, необходимо вместо этого использовать ручной. Шаг 13 приведены подробные инструкции для выполнения этих шагов вручную. Я рекомендуем вам ознакомиться шаги 2 до 12 перед чтением шаг 13, так как эти действия включают важные инструкции по настройке SQL Server, должны быть применены независимо от того, какие версии Visual Studio.
@@ -149,14 +149,14 @@ ms.lasthandoff: 11/10/2017
 
 [!code-vb[Main](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb/samples/sample2.vb)]
 
-Обратите внимание, что хранимая процедура реализуется в виде `Shared` метода в `Partial` файл класса с именем `StoredProcedures`. Кроме того `GetDiscontinuedProducts` метод оформлен [ `SqlProcedure` атрибут](https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.server.sqlprocedureattribute.aspx), который помечает метод как хранимую процедуру.
+Обратите внимание, что хранимая процедура реализуется в виде `Shared` метода в `Partial` файл класса с именем `StoredProcedures`. Кроме того `GetDiscontinuedProducts` метод оформлен [ `SqlProcedure` атрибут](https://msdn.microsoft.com/library/microsoft.sqlserver.server.sqlprocedureattribute.aspx), который помечает метод как хранимую процедуру.
 
 В следующем коде создается `SqlCommand` и устанавливает его `CommandText` для `SELECT` запрос, возвращающий все столбцы из `Products` таблица для продуктов, `Discontinued` поля равно 1. Затем выполняется команда и отправляет результаты в клиентское приложение. Добавьте следующий код в `GetDiscontinuedProducts` метод.
 
 
 [!code-vb[Main](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb/samples/sample3.vb)]
 
-Все управляемые объекты базы данных имеют доступ к [ `SqlContext` объекта](https://msdn.microsoft.com/en-us/library/ms131108.aspx) , представляющий контекст вызывающего объекта. `SqlContext` Предоставляет доступ к [ `SqlPipe` объекта](https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.server.sqlpipe.aspx) через его [ `Pipe` свойства](https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.server.sqlcontext.pipe.aspx). Это `SqlPipe` объект используется переносящий информации между базой данных SQL Server и вызывающему приложению. Как и предполагает его имя, [ `ExecuteAndSend` метод](https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.server.sqlpipe.executeandsend.aspx) выполняет переданное `SqlCommand` объекта и отправляет результаты обратно в клиентское приложение.
+Все управляемые объекты базы данных имеют доступ к [ `SqlContext` объекта](https://msdn.microsoft.com/library/ms131108.aspx) , представляющий контекст вызывающего объекта. `SqlContext` Предоставляет доступ к [ `SqlPipe` объекта](https://msdn.microsoft.com/library/microsoft.sqlserver.server.sqlpipe.aspx) через его [ `Pipe` свойства](https://msdn.microsoft.com/library/microsoft.sqlserver.server.sqlcontext.pipe.aspx). Это `SqlPipe` объект используется переносящий информации между базой данных SQL Server и вызывающему приложению. Как и предполагает его имя, [ `ExecuteAndSend` метод](https://msdn.microsoft.com/library/microsoft.sqlserver.server.sqlpipe.executeandsend.aspx) выполняет переданное `SqlCommand` объекта и отправляет результаты обратно в клиентское приложение.
 
 > [!NOTE]
 > Управляемые объекты базы данных лучше всего подходят для хранимых процедур и определяемых пользователем функций, использующих процедурная логика, а не логику, основанную на наборе. Процедурная логика предполагает работа с наборами данных на основе по строкам или работе со скалярными значениями. `GetDiscontinuedProducts` Мы только что создали, тем не менее, метод включает в себя без процедурной логики. Таким образом он будет реализовываться в идеале как T-SQL, хранимая процедура. Оно реализовано как управляемая хранимая процедура для демонстрации действия, необходимые для создания и развертывания управляемых хранимых процедур.
@@ -214,7 +214,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-sql[Main](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb/samples/sample5.sql)]
 
-При повторном запуске `exec sp_configure` вы увидите, что приведенная выше инструкция обновляется значение конфигурации включена среда clr параметр s 1, а, это значение установлено в 0. Для этого изменения конфигурации вступили в силу необходимо выполнить [ `RECONFIGURE` команда](https://msdn.microsoft.com/en-us/library/ms176069.aspx), задающий рабочее значение со значением в текущей конфигурации. Просто введите `RECONFIGURE` в окно запроса и щелкните значок «выполнить» на панели инструментов. При запуске `exec sp_configure` теперь должна отображается значение 1 для параметра включена среда clr s конфигурации и выполнения значения.
+При повторном запуске `exec sp_configure` вы увидите, что приведенная выше инструкция обновляется значение конфигурации включена среда clr параметр s 1, а, это значение установлено в 0. Для этого изменения конфигурации вступили в силу необходимо выполнить [ `RECONFIGURE` команда](https://msdn.microsoft.com/library/ms176069.aspx), задающий рабочее значение со значением в текущей конфигурации. Просто введите `RECONFIGURE` в окно запроса и щелкните значок «выполнить» на панели инструментов. При запуске `exec sp_configure` теперь должна отображается значение 1 для параметра включена среда clr s конфигурации и выполнения значения.
 
 После завершения настройки включена среда clr, мы готовы к выполнению управляемого `GetDiscontinuedProducts` хранимой процедуры. В окне запроса введите и выполните следующую команду `exec` `GetDiscontinuedProducts`. В результате вызова хранимой процедуры на соответствующий управляемый код в `GetDiscontinuedProducts` для выполнения метода. Этот код выдает `SELECT` запрос для возврата всех продуктов, которые не поддерживаются и возвращает эти данные вызывающему приложению, — в этом экземпляре SQL Server Management Studio. Среда Management Studio получает этих результатов и отображает их в окне «результаты».
 
@@ -232,7 +232,7 @@ ms.lasthandoff: 11/10/2017
 
 Чтобы добавить новую хранимую процедуру в проект, щелкните правой кнопкой мыши `ManagedDatabaseConstructs` имя проекта и добавить новую хранимую процедуру. Назовите файл `GetProductsWithPriceLessThan.vb`. Как мы видели в шаге 3, это создаст новый файл класса Visual Basic с методом `GetProductsWithPriceLessThan` помещен в `Partial` класса `StoredProcedures`.
 
-Обновление `GetProductsWithPriceLessThan` определение метода s, чтобы он принимал [ `SqlMoney` ](https://msdn.microsoft.com/en-us/library/system.data.sqltypes.sqlmoney.aspx) входной параметр с именем `price` и писать код для выполнения и возвращает результаты запроса:
+Обновление `GetProductsWithPriceLessThan` определение метода s, чтобы он принимал [ `SqlMoney` ](https://msdn.microsoft.com/library/system.data.sqltypes.sqlmoney.aspx) входной параметр с именем `price` и писать код для выполнения и возвращает результаты запроса:
 
 
 [!code-vb[Main](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb/samples/sample6.vb)]
@@ -400,19 +400,19 @@ ms.lasthandoff: 11/10/2017
 **Рис. 25**: Добавление новых управляемых определяемой пользователем функции для `ManagedDatabaseConstructs` проекта ([Просмотр полноразмерное изображение](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb/_static/image61.png))
 
 
-Создает шаблон пользовательской функции `Partial` класс с именем `UserDefinedFunctions` с методом, имя которого совпадает с именем файла s класса (`udf_ComputeInventoryValue_Managed`, в данном экземпляре). Этот метод, отмеченный с помощью [ `SqlFunction` атрибут](https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.server.sqlfunctionattribute.aspx), какие флаги методу в качестве управляемого определяемой пользователем функции.
+Создает шаблон пользовательской функции `Partial` класс с именем `UserDefinedFunctions` с методом, имя которого совпадает с именем файла s класса (`udf_ComputeInventoryValue_Managed`, в данном экземпляре). Этот метод, отмеченный с помощью [ `SqlFunction` атрибут](https://msdn.microsoft.com/library/microsoft.sqlserver.server.sqlfunctionattribute.aspx), какие флаги методу в качестве управляемого определяемой пользователем функции.
 
 
 [!code-vb[Main](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb/samples/sample13.vb)]
 
-`udf_ComputeInventoryValue` Метод в настоящее время возвращает [ `SqlString` объекта](https://msdn.microsoft.com/en-us/library/system.data.sqltypes.sqlstring.aspx) и не принимает все входные параметры. Необходимо обновить определение метода, чтобы он принимает три входных параметра - `UnitPrice`, `UnitsInStock`, и `Discontinued` — и возвращает `SqlMoney` объекта. Логика для вычисления значения инвентаризации идентична в T-SQL `udf_ComputeInventoryValue` определяемой пользователем функции.
+`udf_ComputeInventoryValue` Метод в настоящее время возвращает [ `SqlString` объекта](https://msdn.microsoft.com/library/system.data.sqltypes.sqlstring.aspx) и не принимает все входные параметры. Необходимо обновить определение метода, чтобы он принимает три входных параметра - `UnitPrice`, `UnitsInStock`, и `Discontinued` — и возвращает `SqlMoney` объекта. Логика для вычисления значения инвентаризации идентична в T-SQL `udf_ComputeInventoryValue` определяемой пользователем функции.
 
 
 [!code-vb[Main](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb/samples/sample14.vb)]
 
-Обратите внимание, что входные параметры метода s определяемой пользователем функции имеют соответствующие типы SQL: `SqlMoney` для `UnitPrice` поля, [ `SqlInt16` ](https://msdn.microsoft.com/en-us/library/system.data.sqltypes.sqlint16.aspx) для `UnitsInStock`, и [ `SqlBoolean` ](https://msdn.microsoft.com/en-us/library/system.data.sqltypes.sqlboolean.aspx) для `Discontinued`. Эти типы данных зависит от типов, определенных в `Products` таблицы: `UnitPrice` столбец имеет тип `money`, `UnitsInStock` столбец типа `smallint`и `Discontinued` столбец типа `bit`.
+Обратите внимание, что входные параметры метода s определяемой пользователем функции имеют соответствующие типы SQL: `SqlMoney` для `UnitPrice` поля, [ `SqlInt16` ](https://msdn.microsoft.com/library/system.data.sqltypes.sqlint16.aspx) для `UnitsInStock`, и [ `SqlBoolean` ](https://msdn.microsoft.com/library/system.data.sqltypes.sqlboolean.aspx) для `Discontinued`. Эти типы данных зависит от типов, определенных в `Products` таблицы: `UnitPrice` столбец имеет тип `money`, `UnitsInStock` столбец типа `smallint`и `Discontinued` столбец типа `bit`.
 
-Код сначала создает `SqlMoney` экземпляр с именем `inventoryValue` , которому присваивается значение 0. `Products` Позволяет таблицы для базы данных `NULL` значения в `UnitsInPrice` и `UnitsInStock` столбцов. Таким образом, нам нужно первая проверка содержат эти значения `NULL` s, что мы делаем через `SqlMoney` объект s [ `IsNull` свойства](https://msdn.microsoft.com/en-us/library/system.data.sqltypes.sqlmoney.isnull.aspx). Если оба `UnitPrice` и `UnitsInStock` содержат отличных`NULL` значения, а затем мы вычислений `inventoryValue` быть произведение двух. Затем, если `Discontinued` имеет значение true, а затем мы сократить значение.
+Код сначала создает `SqlMoney` экземпляр с именем `inventoryValue` , которому присваивается значение 0. `Products` Позволяет таблицы для базы данных `NULL` значения в `UnitsInPrice` и `UnitsInStock` столбцов. Таким образом, нам нужно первая проверка содержат эти значения `NULL` s, что мы делаем через `SqlMoney` объект s [ `IsNull` свойства](https://msdn.microsoft.com/library/system.data.sqltypes.sqlmoney.isnull.aspx). Если оба `UnitPrice` и `UnitsInStock` содержат отличных`NULL` значения, а затем мы вычислений `inventoryValue` быть произведение двух. Затем, если `Discontinued` имеет значение true, а затем мы сократить значение.
 
 > [!NOTE]
 > `SqlMoney` Только обеспечивает два `SqlMoney` экземпляров будет умножено друг с другом. Он не допускает `SqlMoney` экземпляр будет умножено на числовой литерал с плавающей запятой. Таким образом чтобы сократить его `inventoryValue` мы умножьте его на новый `SqlMoney` экземпляру, который имеет значение 0,5.
@@ -559,13 +559,13 @@ Visual Studio s тип проекта SQL Server упрощает создани
 - [Преимущества и недостатки использования определяемых пользователем функций](http://www.samspublishing.com/articles/article.asp?p=31724&amp;rl=1)
 - [Создание объектов SQL Server 2005 в управляемом коде](https://channel9.msdn.com/Showpost.aspx?postid=142413)
 - [Создание триггеров с помощью управляемого кода в SQL Server 2005](http://www.15seconds.com/issue/041006.htm)
-- [Практическое руководство: Создание и запуск CLR SQL Server хранимой процедуры](https://msdn.microsoft.com/en-us/library/5czye81z(VS.80).aspx)
-- [Практическое руководство: Создание и запуск определяемой пользователем функции CLR SQL Server](https://msdn.microsoft.com/en-us/library/w2kae45k(VS.80).aspx)
-- [Практическое руководство: Изменение `Test.sql` сценария, выполняемого объекты SQL](https://msdn.microsoft.com/en-us/library/ms233682(VS.80).aspx)
+- [Практическое руководство: Создание и запуск CLR SQL Server хранимой процедуры](https://msdn.microsoft.com/library/5czye81z(VS.80).aspx)
+- [Практическое руководство: Создание и запуск определяемой пользователем функции CLR SQL Server](https://msdn.microsoft.com/library/w2kae45k(VS.80).aspx)
+- [Практическое руководство: Изменение `Test.sql` сценария, выполняемого объекты SQL](https://msdn.microsoft.com/library/ms233682(VS.80).aspx)
 - [Введение в пользователя пользователем функции](http://www.sqlteam.com/item.asp?ItemID=1955)
 - [Управляемый код и SQL Server 2005 (видео)](https://channel9.msdn.com/Showpost.aspx?postid=142413)
-- [Справочник по Transact-SQL](https://msdn.microsoft.com/en-us/library/aa299742(SQL.80).aspx)
-- [Пошаговое руководство: Создание хранимой процедуры в управляемом коде](https://msdn.microsoft.com/en-us/library/zxsa8hkf(VS.80).aspx)
+- [Справочник по Transact-SQL](https://msdn.microsoft.com/library/aa299742(SQL.80).aspx)
+- [Пошаговое руководство: Создание хранимой процедуры в управляемом коде](https://msdn.microsoft.com/library/zxsa8hkf(VS.80).aspx)
 
 ## <a name="about-the-author"></a>Об авторе
 

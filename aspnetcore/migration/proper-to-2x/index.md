@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 96e645129fa53b10d352dcfda8f1ebb152c4dbac
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 2804b5926f1016efcdfd1f9d1b751040d05ce671
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="migrating-from-aspnet-to-aspnet-core-20"></a>Миграция с ASP.NET на ASP.NET Core 2.0
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="project-structure-differences"></a>Различия в структуре пакетов
 В ASP.NET Core упрощен формат файла *.csproj*. Вот некоторые основные изменения.
-- Для того чтобы файлы считались частью проекта, включать их явно теперь не требуется. Это уменьшает вероятность конфликтов слияния XML при работе в больших командах.
+- Чтобы файлы считались частью проекта, включать их явно теперь не требуется. Это уменьшает вероятность конфликтов слияния XML при работе в больших командах.
 - GUID-ссылки на другие проекты не используются, что повышает удобочитаемость файла.
 - Файл можно редактировать, не выгружая его в Visual Studio.
 
@@ -108,7 +108,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 **Примечание**. Более подробное руководство по конфигурации ASP.NET Core см. в статье [Конфигурация в ASP.NET Core](xref:fundamentals/configuration/index).
 
 ## <a name="native-dependency-injection"></a>Введение зависимостей в собственный код
-При сборке больших, масштабируемых приложений важно обеспечить слабые взаимозависимости между компонентами и службами. [Внедрение зависимостей](xref:fundamentals/dependency-injection) — популярный способ решения этой задачи и собственный компонент ASP.NET Core.
+При сборке больших, масштабируемых приложений важно обеспечить слабые взаимозависимости между компонентами и службами. [Внедрение зависимостей](xref:fundamentals/dependency-injection) — популярный способ решения этой задачи и собственный компонент ASP.NET Core.
 
 В приложениях ASP.NET разработчики используют для внедрения зависимостей стороннюю библиотеку. Одна из таких библиотек, [Unity](https://github.com/unitycontainer/unity), входит в шаблоны и рекомендации Майкрософт. 
 

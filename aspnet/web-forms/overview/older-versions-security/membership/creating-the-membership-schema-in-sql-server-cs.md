@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2155f9b0893a0b1d3cf60bc63d80df4417649beb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 38fc60b79a348ab198069a9a80a085e0dc4bcb88
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-the-membership-schema-in-sql-server-c"></a>Создание схемы членства в SQL Server (C#)
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 До ASP.NET 2.0 разработчикам приходилось обработчик для реализации все эти задачи связанные с учетной записью пользователя. К счастью команда ASP.NET распознан этот недостаток и включает платформу членства в ASP.NET 2.0. Платформа членство — это набор классов в .NET Framework, которые предоставляют программный интерфейс для выполнения основных задач, связанных с учетной записью пользователя. Эта платформа строится поверх [модель поставщика](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx), которая позволяет разработчикам подключите пользовательской реализации стандартизированный API-Интерфейс.
 
-Как было сказано в <a id="Tutorial1"> </a> [ *основы безопасности и поддержкой ASP.NET* ](../introduction/security-basics-and-asp-net-support-cs.md) учебник, .NET Framework поставляется с двумя встроенных поставщиков членства: [ `ActiveDirectoryMembershipProvider` ](https://msdn.microsoft.com/en-us/library/system.web.security.activedirectorymembershipprovider.aspx) и [ `SqlMembershipProvider` ](https://msdn.microsoft.com/en-us/library/system.web.security.sqlmembershipprovider.aspx). Как и предполагает его имя, `SqlMembershipProvider` использует базы данных Microsoft SQL Server в качестве хранилища пользователя. Чтобы использовать этот поставщик в приложение, необходимо указать поставщику, какие базы данных для использования в качестве хранилища. Как можно себе представить, `SqlMembershipProvider` ожидает базу данных хранилища пользователя иметь определенные таблицы базы данных, представления и хранимые процедуры. Необходимо добавить этот ожидаемую схему для выбранной базы данных.
+Как было сказано в <a id="Tutorial1"> </a> [ *основы безопасности и поддержкой ASP.NET* ](../introduction/security-basics-and-asp-net-support-cs.md) учебник, .NET Framework поставляется с двумя встроенных поставщиков членства: [ `ActiveDirectoryMembershipProvider` ](https://msdn.microsoft.com/library/system.web.security.activedirectorymembershipprovider.aspx) и [ `SqlMembershipProvider` ](https://msdn.microsoft.com/library/system.web.security.sqlmembershipprovider.aspx). Как и предполагает его имя, `SqlMembershipProvider` использует базы данных Microsoft SQL Server в качестве хранилища пользователя. Чтобы использовать этот поставщик в приложение, необходимо указать поставщику, какие базы данных для использования в качестве хранилища. Как можно себе представить, `SqlMembershipProvider` ожидает базу данных хранилища пользователя иметь определенные таблицы базы данных, представления и хранимые процедуры. Необходимо добавить этот ожидаемую схему для выбранной базы данных.
 
 Этот учебник начинает проверять методы для добавления необходимую схему для базы данных для использования `SqlMembershipProvider`. После этого мы проверка ключа таблиц в схеме и обсудить их назначении и важность. Этот учебник завершает рассматриваются как определить, какой поставщик членства framework следует использовать приложения ASP.NET.
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 11/10/2017
 Приложение, которое мы строить так как второй учебника еще не обязательно базы данных. Нужно один, однако для хранилища пользователя. Позволяет создать и затем добавить к нему схему, необходимую `SqlMembershipProvider` поставщика (см. шаг 2).
 
 > [!NOTE]
-> На протяжении этого ряда учебника мы будем использовать [Microsoft SQL Server 2005 Express Edition](https://msdn.microsoft.com/en-us/sql/Aa336346.aspx) базу данных для хранения нашими таблицами приложения и `SqlMembershipProvider` схемы. Это было сделано по двум причинам: во-первых, из-за его стоимость - свободных - экспресс-выпуск является наиболее легче читаются доступную версию SQL Server 2005; Во-вторых, можно поместить баз данных SQL Server 2005 Express Edition непосредственно в веб-приложение `App_Data` папку, сделав его несложной упаковка базы данных и веб-приложения в один ZIP-файл и выполнить его повторное развертывание без какие-либо специальная настройка инструкции или параметры конфигурации. Если вы хотите использовать для выполнения этой процедуры с помощью экспресс-выпуск не - версии SQL Server, вы можете. Действия, практически не отличается. `SqlMembershipProvider` Схемы будет работать с любой версии Microsoft SQL Server 2000 и до.
+> На протяжении этого ряда учебника мы будем использовать [Microsoft SQL Server 2005 Express Edition](https://msdn.microsoft.com/sql/Aa336346.aspx) базу данных для хранения нашими таблицами приложения и `SqlMembershipProvider` схемы. Это было сделано по двум причинам: во-первых, из-за его стоимость - свободных - экспресс-выпуск является наиболее легче читаются доступную версию SQL Server 2005; Во-вторых, можно поместить баз данных SQL Server 2005 Express Edition непосредственно в веб-приложение `App_Data` папку, сделав его несложной упаковка базы данных и веб-приложения в один ZIP-файл и выполнить его повторное развертывание без какие-либо специальная настройка инструкции или параметры конфигурации. Если вы хотите использовать для выполнения этой процедуры с помощью экспресс-выпуск не - версии SQL Server, вы можете. Действия, практически не отличается. `SqlMembershipProvider` Схемы будет работать с любой версии Microsoft SQL Server 2000 и до.
 
 
 В обозревателе решений щелкните правой кнопкой мыши `App_Data` папку и выберите команду Добавить новый элемент. (Если вы не видите `App_Data` в папке проекта, правой кнопкой мыши проект в обозревателе решений выберите Добавить папку ASP.NET и выберите `App_Data`.) В диалоговом окне Добавление нового элемента выберите, чтобы добавить новую базу данных SQL с именем `SecurityTutorials.mdf`. В этом учебнике мы будем добавлять `SqlMembershipProvider` схемы для этой базы данных; в последующих учебники, мы создадим дополнительных таблиц для отслеживания наших данных приложения.
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-2-adding-thesqlmembershipproviderschema-to-the-database"></a>Шаг 2: Добавление`SqlMembershipProvider`схемы в базу данных
 
-`SqlMembershipProvider` Требует определенный набор таблиц, представлений и хранимых процедур для установки в базу данных хранилища пользователя. Эти объекты необходимые базы данных могут быть добавлены с помощью [ `aspnet_regsql.exe` средство](https://msdn.microsoft.com/en-us/library/ms229862.aspx). Этот файл находится в `%WINDIR%\Microsoft.Net\Framework\v2.0.50727\` папки.
+`SqlMembershipProvider` Требует определенный набор таблиц, представлений и хранимых процедур для установки в базу данных хранилища пользователя. Эти объекты необходимые базы данных могут быть добавлены с помощью [ `aspnet_regsql.exe` средство](https://msdn.microsoft.com/library/ms229862.aspx). Этот файл находится в `%WINDIR%\Microsoft.Net\Framework\v2.0.50727\` папки.
 
 > [!NOTE]
 > `aspnet_regsql.exe` Средство предлагает функции командной строки и графического интерфейса пользователя. Графический интерфейс — более понятные и что будут рассмотрены в данном учебнике. Интерфейс командной строки используется при добавлении `SqlMembershipProvider` схему необходимо автоматизировать, например построения скрипты или автоматизированные сценарии тестирования.
@@ -204,7 +204,7 @@ ms.lasthandoff: 11/10/2017
 **Рис. 11**: пользователь учетные записи могут быть секционированы по несколько приложений ([Просмотр полноразмерное изображение](creating-the-membership-schema-in-sql-server-cs/_static/image33.png))
 
 
-`aspnet_Applications` Таблица является то, что определяет эти секции. Каждое приложение, использующее базу данных для хранения учетных записей пользователей будет представлен строки в этой таблице. `aspnet_Applications` Таблица содержит четыре столбца: `ApplicationId`, `ApplicationName`, `LoweredApplicationName`, и `Description`. `ApplicationId`относится к типу [ `uniqueidentifier` ](https://msdn.microsoft.com/en-us/library/ms187942.aspx) и является первичным ключом таблицы; `ApplicationName` предоставляет уникальное имя понятную для каждого приложения.
+`aspnet_Applications` Таблица является то, что определяет эти секции. Каждое приложение, использующее базу данных для хранения учетных записей пользователей будет представлен строки в этой таблице. `aspnet_Applications` Таблица содержит четыре столбца: `ApplicationId`, `ApplicationName`, `LoweredApplicationName`, и `Description`. `ApplicationId`относится к типу [ `uniqueidentifier` ](https://msdn.microsoft.com/library/ms187942.aspx) и является первичным ключом таблицы; `ApplicationName` предоставляет уникальное имя понятную для каждого приложения.
 
 Другие таблицы, связанные с членство и роли обратной ссылки на `ApplicationId` в `aspnet_Applications`. Например `aspnet_Users` имеет таблицу, которая содержит запись для каждой учетной записи пользователя, `ApplicationId` поле внешнего ключа, то же относится и `aspnet_Roles` таблицы. `ApplicationId` Поля в этих таблицах указывает раздел приложения учетной записи пользователя или роль.
 
@@ -216,7 +216,7 @@ ms.lasthandoff: 11/10/2017
 - `UserName`
 - `ApplicationId`
 
-`UserId`является первичным ключом (и типа `uniqueidentifier`). `UserName`относится к типу `nvarchar(256)` и наряду с паролем, составляющих учетные данные пользователя. (Пароль хранится в `aspnet_Membership` таблицы.) `ApplicationId` связывает учетной записи пользователя для конкретного приложения в `aspnet_Applications`. Нет составного [ `UNIQUE` ограничение](https://msdn.microsoft.com/en-us/library/ms191166.aspx) на `UserName` и `ApplicationId` столбцов. Это гарантирует, что определенного приложения каждое имя пользователя является уникальным, но он позволяет одним и тем же `UserName` для использования в разных приложениях.
+`UserId`является первичным ключом (и типа `uniqueidentifier`). `UserName`относится к типу `nvarchar(256)` и наряду с паролем, составляющих учетные данные пользователя. (Пароль хранится в `aspnet_Membership` таблицы.) `ApplicationId` связывает учетной записи пользователя для конкретного приложения в `aspnet_Applications`. Нет составного [ `UNIQUE` ограничение](https://msdn.microsoft.com/library/ms191166.aspx) на `UserName` и `ApplicationId` столбцов. Это гарантирует, что определенного приложения каждое имя пользователя является уникальным, но он позволяет одним и тем же `UserName` для использования в разных приложениях.
 
 `aspnet_Membership` Таблица содержит дополнительные сведения, такие как пароль пользователя, адрес электронной почты, последнего входа даты и времени и т. д. Имеется взаимно-однозначное соответствие между записями в `aspnet_Users` и `aspnet_Membership` таблицы. Это отношение гарантируется `UserId` в `aspnet_Membership`, который используется в качестве первичного ключа таблицы. Как `aspnet_Users` таблицы, `aspnet_Membership` включает `ApplicationId` поле, которое связывает эту информацию для определенного раздела приложений.
 
@@ -236,9 +236,9 @@ ms.lasthandoff: 11/10/2017
 
 | **Метод хранения&lt;\_o3a\_p /&gt;** | **Пароль&lt;\_o3a\_p /&gt;** | **PasswordFormat&lt;\_o3a\_p /&gt;** | **PasswordSalt&lt;\_o3a\_p /&gt;** |
 | --- | --- | --- | --- |
-| Clear | MySecret! | 0 | tTnkPlesqissc2y2SMEygA == |
-| На основании хэша | 2oXm6sZHWbTHFgjgkGQsc2Ec9ZM = | 1 | wFgjUfhdUFOCKQiI61vtiQ == |
-| Шифрование | 62RZgDvhxykkqsMchZ0Yly7HS6onhpaoCYaRxV8g0F4CW56OXUU3e7Inza9j9BKp | 2 | LSRzhGS, aa-oqAXGLHJNBw == |
+| Clear | MySecret! | 0 | tTnkPlesqissc2y2SMEygA== |
+| На основании хэша | 2oXm6sZHWbTHFgjgkGQsc2Ec9ZM= | 1 | wFgjUfhdUFOCKQiI61vtiQ== |
+| Шифрование | 62RZgDvhxykkqsMchZ0Yly7HS6onhpaoCYaRxV8g0F4CW56OXUU3e7Inza9j9BKp | 2 | LSRzhGS/aa/oqAXGLHJNBw== |
 
 **Таблица 1**: примеры значений для полей с паролями, при сохранении пароля MySecret!
 
@@ -262,13 +262,13 @@ ms.lasthandoff: 11/10/2017
 
 Все платформы, поддерживающие модель поставщика — например платформ членства и ролей - отсутствуют сведения о реализации сами и вместо этого делегировать ответственность на класс поставщика. В случае платформа членства `Membership` класс определяет API управления учетными записями пользователей, но не взаимодействует непосредственно с любого хранилища пользователя. Вместо этого `Membership` передачи методы класса запроса на настроенный поставщик - мы будем использовать `SqlMembershipProvider`. Когда мы вызвать один из методов в `Membership` класса, как платформа членства узнает, делегировать вызов `SqlMembershipProvider`?
 
-`Membership` Класс имеет [ `Providers` свойство](https://msdn.microsoft.com/en-us/library/system.web.security.membership.providers.aspx) , содержащий ссылку на все классы зарегистрированного поставщика, доступный для использования платформой членства. Каждый зарегистрированный поставщик имеет соответствующее имя и тип. Имя предоставляет понятную возможность ссылаться определенного поставщика в `Providers` коллекции, а тип идентифицирует класс поставщика. Кроме того каждый зарегистрированный поставщик может включать параметры конфигурации. Параметры конфигурации для платформы членства — `passwordFormat` и `requiresUniqueEmail`, многие другие. См. Полный список параметров конфигурации, используемые в таблице 2 `SqlMembershipProvider`.
+`Membership` Класс имеет [ `Providers` свойство](https://msdn.microsoft.com/library/system.web.security.membership.providers.aspx) , содержащий ссылку на все классы зарегистрированного поставщика, доступный для использования платформой членства. Каждый зарегистрированный поставщик имеет соответствующее имя и тип. Имя предоставляет понятную возможность ссылаться определенного поставщика в `Providers` коллекции, а тип идентифицирует класс поставщика. Кроме того каждый зарегистрированный поставщик может включать параметры конфигурации. Параметры конфигурации для платформы членства — `passwordFormat` и `requiresUniqueEmail`, многие другие. См. Полный список параметров конфигурации, используемые в таблице 2 `SqlMembershipProvider`.
 
 `Providers` Содержимое свойства указываются с помощью параметров конфигурации веб-приложения. По умолчанию все веб-приложения имеют поставщик с именем `AspNetSqlMembershipProvider` типа `SqlMembershipProvider`. Этот поставщик членства по умолчанию регистрируется в `machine.config` (расположенный в `%WINDIR%\Microsoft.Net\Framework\v2.0.50727\CONFIG)`:
 
 [!code-xml[Main](creating-the-membership-schema-in-sql-server-cs/samples/sample1.xml)]
 
-Как разметка выше [ `<membership>` элемент](https://msdn.microsoft.com/en-us/library/1b9hw62f.aspx) определяет параметры конфигурации для платформы членства при [ `<providers>` дочерний элемент](https://msdn.microsoft.com/en-us/library/6d4936ht.aspx) указывает зарегистрированный Поставщики. Поставщики могут быть добавлены или удалены с помощью [ `<add>` ](https://msdn.microsoft.com/en-us/library/whae3t94.aspx) или [ `<remove>` ](https://msdn.microsoft.com/en-us/library/aykw9a6d.aspx) элементов; используйте [ `<clear>` ](https://msdn.microsoft.com/en-us/library/t062y6yc.aspx) элемента для удаления всех в настоящее время зарегистрированных поставщиков. Как разметка выше `machine.config` добавляет поставщик с именем `AspNetSqlMembershipProvider` типа `SqlMembershipProvider`.
+Как разметка выше [ `<membership>` элемент](https://msdn.microsoft.com/library/1b9hw62f.aspx) определяет параметры конфигурации для платформы членства при [ `<providers>` дочерний элемент](https://msdn.microsoft.com/library/6d4936ht.aspx) указывает зарегистрированный Поставщики. Поставщики могут быть добавлены или удалены с помощью [ `<add>` ](https://msdn.microsoft.com/library/whae3t94.aspx) или [ `<remove>` ](https://msdn.microsoft.com/library/aykw9a6d.aspx) элементов; используйте [ `<clear>` ](https://msdn.microsoft.com/library/t062y6yc.aspx) элемента для удаления всех в настоящее время зарегистрированных поставщиков. Как разметка выше `machine.config` добавляет поставщик с именем `AspNetSqlMembershipProvider` типа `SqlMembershipProvider`.
 
 В дополнение к `name` и `type` атрибуты, `<add>` элемент содержит атрибуты, определяющие значения для различных настройку параметров. В таблице 2 содержится список имеющихся `SqlMembershipProvider`-определенные параметры конфигурации, а также описание каждого из них.
 
@@ -282,17 +282,17 @@ ms.lasthandoff: 11/10/2017
 | `commandTimeout` | Указывает значение времени ожидания команды SQL (в секундах). Значение по умолчанию — 30. |
 | `connectionStringName` | Имя строки подключения в `<connectionStrings>` элемента, который требуется использовать для подключения к базе данных хранилища пользователя. Это значение является обязательным. |
 | `description` | Содержит описание понятную зарегистрированный поставщик. |
-| `enablePasswordRetrieval` | Указывает, могут ли пользователи получить их забытый пароль. Значение по умолчанию — `false`. |
+| `enablePasswordRetrieval` | Указывает, могут ли пользователи получить их забытый пароль. Значение по умолчанию — `false`. |
 | `enablePasswordReset` | Указывает, разрешено ли пользователям сброс пароля. По умолчанию — `true`. |
 | `maxInvalidPasswordAttempts` | Максимальное число попыток неудачной попытки входа, которые могут возникнуть для данного пользователя в определенное `passwordAttemptWindow` пользователь блокируется. Значение по умолчанию — 5. |
 | `minRequiredNonalphanumericCharacters` | Минимальное число не буквенно-цифровые символы, которые должны находиться в пароль. Это значение должно быть в диапазоне от 0 до 128. значение по умолчанию — 1. |
 | `minRequiredPasswordLength` | Минимальное количество символов, требуемых в пароле. Это значение должно быть в диапазоне от 0 до 128. значение по умолчанию — 7. |
 | `name` | Имя зарегистрированного поставщика. Это значение является обязательным. |
 | `passwordAttemptWindow` | Количество минут в течение которого не отслеживаются попыток входа. Если пользователь предоставляет учетные данные для входа недопустимый `maxInvalidPasswordAttempts` указано время в данном окне, они будут заблокированы. Значение по умолчанию — 10. |
-| `PasswordFormat` | Формат хранения паролей: `Clear`, `Hashed`, или `Encrypted`. Значение по умолчанию — `Hashed`. |
+| `PasswordFormat` | Формат хранения паролей: `Clear`, `Hashed`, или `Encrypted`. Значение по умолчанию — `Hashed`. |
 | `passwordStrengthRegularExpression` | Если указано, это регулярное выражение используется для оценки стойкость пароля выбранного пользователя, при создании новой учетной записи или при изменении пароля. Значение по умолчанию - пустая строка. |
-| `requiresQuestionAndAnswer` | Указывает, является ли пользователь должен ответить на свой вопрос безопасности при извлечении или сбросе пароля. Значение по умолчанию — `true`. |
-| `requiresUniqueEmail` | Указывает, является ли все учетные записи пользователей в разделе данного приложения должен иметь уникальный почтовый адрес. Значение по умолчанию — `true`. |
+| `requiresQuestionAndAnswer` | Указывает, является ли пользователь должен ответить на свой вопрос безопасности при извлечении или сбросе пароля. Значение по умолчанию — `true`. |
+| `requiresUniqueEmail` | Указывает, является ли все учетные записи пользователей в разделе данного приложения должен иметь уникальный почтовый адрес. Значение по умолчанию — `true`. |
 | `type` | Указывает тип поставщика. Это значение является обязательным. |
 
 **В таблице 2**: членства и `SqlMembershipProvider` параметры конфигурации
@@ -329,7 +329,7 @@ ms.lasthandoff: 11/10/2017
 
 Помимо регистрации `SecurityTutorialsSqlMembershipProvider` выше разметка определяет поставщика, `SecurityTutorialsSqlMembershipProvider` как поставщик по умолчанию (через `defaultProvider` атрибута в `<membership>` элемент). Помните, что платформа членства может иметь несколько зарегистрированных поставщиков. Поскольку `AspNetSqlMembershipProvider` регистрируется как первый поставщик в `machine.config`, он служит в качестве поставщика по умолчанию, если не указывается, в противном случае.
 
-В настоящее время наше приложение имеет два зарегистрированных поставщиков: `AspNetSqlMembershipProvider` и `SecurityTutorialsSqlMembershipProvider`. Тем не менее, перед регистрацией `SecurityTutorialsSqlMembershipProvider` поставщика нам удалось очистки всех ранее зарегистрированных поставщиков, добавив [ `<clear />` элемент](https://msdn.microsoft.com/en-us/library/t062y6yc.aspx) непосредственно перед нашей `<add>` элемента. Это будет очистить `AspNetSqlMembershipProvider` из списка зарегистрированных поставщиков, это значит, что `SecurityTutorialsSqlMembershipProvider` бы только зарегистрированного поставщика членства. Если мы использовали этот подход, то мы не нужно пометить `SecurityTutorialsSqlMembershipProvider` поставщика по умолчанию, так как было бы только зарегистрированного поставщика членства. Дополнительные сведения об использовании `<clear />`, в разделе [использование `<clear />` при добавлении поставщиков](https://weblogs.asp.net/scottgu/archive/2006/11/20/common-gotcha-don-t-forget-to-clear-when-adding-providers.aspx).
+В настоящее время наше приложение имеет два зарегистрированных поставщиков: `AspNetSqlMembershipProvider` и `SecurityTutorialsSqlMembershipProvider`. Тем не менее, перед регистрацией `SecurityTutorialsSqlMembershipProvider` поставщика нам удалось очистки всех ранее зарегистрированных поставщиков, добавив [ `<clear />` элемент](https://msdn.microsoft.com/library/t062y6yc.aspx) непосредственно перед нашей `<add>` элемента. Это будет очистить `AspNetSqlMembershipProvider` из списка зарегистрированных поставщиков, это значит, что `SecurityTutorialsSqlMembershipProvider` бы только зарегистрированного поставщика членства. Если мы использовали этот подход, то мы не нужно пометить `SecurityTutorialsSqlMembershipProvider` поставщика по умолчанию, так как было бы только зарегистрированного поставщика членства. Дополнительные сведения об использовании `<clear />`, в разделе [использование `<clear />` при добавлении поставщиков](https://weblogs.asp.net/scottgu/archive/2006/11/20/common-gotcha-don-t-forget-to-clear-when-adding-providers.aspx).
 
 Обратите внимание, что `SecurityTutorialsSqlMembershipProvider` `connectionStringName` задание ссылки на только что добавленные `SecurityTutorialsConnectionString` имя строки подключения и что его `applicationName` параметру было присвоено значение SecurityTutorials. Кроме того `requiresUniqueEmail` параметру было присвоено `true`. Все прочие параметры конфигурации совпадают со значениями в `AspNetSqlMembershipProvider`. Вы можете сделать, любые изменения конфигурации, при необходимости. Например это сделать стойкость пароля, требуя два неалфавитных символов вместо одного или увеличив длину пароля до восьми символов, а не семь.
 
@@ -353,15 +353,15 @@ ms.lasthandoff: 11/10/2017
 - [Настройка ASP.NET 2.0 служб приложений для использования SQL Server 2000 или SQL Server 2005](https://weblogs.asp.net/scottgu/archive/2005/08/25/423703.aspx)
 - [Загрузите SQL Server Management Studio Express Edition](https://www.microsoft.com/downloads/details.aspx?FamilyId=C243A5AE-4BD1-4E3D-94B8-5A0F62BF7796&amp;displaylang=en)
 - [Изучение ASP.NET 2.0 s членства, ролей и профиля](http://aspnet.4guysfromrolla.com/articles/120705-1.aspx)
-- [`<add>` Элемент для поставщиков для членства](https://msdn.microsoft.com/en-us/library/whae3t94.aspx)
-- [`<membership>` Элемент](https://msdn.microsoft.com/en-us/library/1b9hw62f.aspx)
-- [`<providers>` Элемент для членства](https://msdn.microsoft.com/en-us/library/6d4936ht.aspx)
+- [`<add>` Элемент для поставщиков для членства](https://msdn.microsoft.com/library/whae3t94.aspx)
+- [`<membership>` Элемент](https://msdn.microsoft.com/library/1b9hw62f.aspx)
+- [`<providers>` Элемент для членства](https://msdn.microsoft.com/library/6d4936ht.aspx)
 - [С помощью `<clear />` при добавлении поставщиков](https://weblogs.asp.net/scottgu/archive/2006/11/20/common-gotcha-don-t-forget-to-clear-when-adding-providers.aspx)
 - [Непосредственная работа с`SqlMembershipProvider`](http://aspnet.4guysfromrolla.com/articles/091207-1.aspx)
 
 ### <a name="video-training-on-topics-contained-in-this-tutorial"></a>Видео на разделы, содержащиеся в этом учебнике
 
-- [Основные сведения о членства ASP.NET](../../../videos/authentication/understanding-aspnet-memberships.md)
+- [Общие сведения о членствах ASP.NET](../../../videos/authentication/understanding-aspnet-memberships.md)
 - [Настройка SQL для работы со схемами членства](../../../videos/authentication/configuring-sql-to-work-with-membership-schemas.md)
 - [Изменение настроек членства в схеме членства по умолчанию](../../../videos/authentication/changing-membership-settings-in-the-default-membership-schema.md)
 

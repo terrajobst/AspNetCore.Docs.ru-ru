@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/index
-ms.openlocfilehash: 807e60e61d4ce4d5755987cffe65d130c9bbbd42
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 750b81c2c715598dbcfb6671e34016e30c1878d6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Реализации веб-сервера в ASP.NET Core
 
@@ -39,7 +39,7 @@ ASP.NET Core предоставляет две реализации сервер
 
 ## <a name="kestrel"></a>Kestrel
 
-Kestrel — это веб-сервер, который по умолчанию включается в шаблоны новых проектов ASP.NET Core. 
+Kestrel — это веб-сервер, который по умолчанию включается в шаблоны новых проектов ASP.NET Core. 
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
