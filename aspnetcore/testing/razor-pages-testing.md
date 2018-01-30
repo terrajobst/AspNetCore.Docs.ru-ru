@@ -2,19 +2,19 @@
 title: "Единицы страниц Razor и тестирование в ASP.NET Core интеграции"
 author: guardrex
 description: "Описание способов создания модульных тестов и интеграции тестов для приложений страниц Razor."
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.custom: mvc
 ms.date: 11/27/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: testing/razor-pages-testing
-ms.openlocfilehash: 1ecdf010f7c283a0a08b224d570a5bc5cdf536df
-ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
+ms.openlocfilehash: 5891b236306cd3790cbba14919796d6aa894ad53
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="razor-pages-unit-and-integration-testing-in-aspnet-core"></a>Единицы страниц Razor и тестирование в ASP.NET Core интеграции
 
@@ -236,5 +236,5 @@ using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
 * [Модульный тест кода](/visualstudio/test/unit-test-your-code) (Visual Studio)
 * [xUnit.net](https://xunit.github.io/)
 * [Приступая к работе с xUnit.net (Core/ASP.NET .NET Core)](https://xunit.github.io/docs/getting-started-dotnet-core)
-* [Заказа](https://github.com/moq/moq4)
+* [Moq](https://github.com/moq/moq4)
 * [Краткое руководство заказа](https://github.com/Moq/moq4/wiki/Quickstart)

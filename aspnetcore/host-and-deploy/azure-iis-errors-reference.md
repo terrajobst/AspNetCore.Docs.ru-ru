@@ -2,19 +2,19 @@
 title: "Общий Справочник ошибок для службы приложений Azure и IIS с ASP.NET Core"
 author: guardrex
 description: "Следует отличать распространенных ошибок при размещении приложения ASP.NET Core на службы приложений Azure и служб IIS."
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.custom: mvc
 ms.date: 03/13/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: 58c5ec6bb2603499332698fd4225e2fe636256e4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 214f8c616aa65077690757e7805983a77ec4249e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Общий Справочник ошибок для службы приложений Azure и IIS с ASP.NET Core
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/24/2018
 
 * Убедитесь в том, что приложение выполняется локально в Kestrel. Сбой процесса может быть результатом проблемы в приложении. Дополнительные сведения см. в разделе [Устранение неполадок](xref:host-and-deploy/iis/troubleshoot).
 
-* Убедитесь, что `<PlatformTarget>` в *.csproj* не противоречит RID. Например, не указывайте `<PlatformTarget>` из `x86` и публикации с RID `win10-x64`, либо с помощью *dotnet публикации - c - r выпуска Windows 10-x64* или установив `<RuntimeIdentifiers>` в *CSPROJ-файл*  для `win10-x64`. Проект публикуется без предупреждения или сообщения об ошибке, но при запуске в системе происходит сбой, а в журнале регистрируются указанные выше исключения.
+* Убедитесь, что `<PlatformTarget>` в *.csproj* не противоречит RID. Например, не указывайте `<PlatformTarget>` из `x86` и публикации с RID `win10-x64`, либо с помощью *dotnet публикации - c - r выпуска Windows 10-x64* или установив `<RuntimeIdentifiers>` в *CSPROJ-файл * для `win10-x64`. Проект публикуется без предупреждения или сообщения об ошибке, но при запуске в системе происходит сбой, а в журнале регистрируются указанные выше исключения.
 
 * Если это исключение возникает по развертыванию приложения Azure, при обновлении приложения и развертывания новой сборки вручную удалить все файлы из предыдущего развертывания. Если останутся несовместимые сборки, то при развертывании обновленного приложения это может привести к исключению `System.BadImageFormatException`.
 

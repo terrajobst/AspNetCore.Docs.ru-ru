@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/supported-platforms
 msc.type: authoredcontent
-ms.openlocfilehash: 7f41017a2a8c058c01fe6f89a2503eb5fa77048e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1379b9fb638f67896d88d7aa4312d95280ef7318
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="supported-platforms"></a>Поддерживаемые платформы
 ====================
@@ -41,6 +41,7 @@ SignalR поддерживается в разных конфигурации с
 
 - Windows Server 2012
 - Windows Server 2008 r2
+- Windows 10
 - Windows 8
 - Windows 7
 - Microsoft Azure
@@ -126,10 +127,10 @@ SignalR может использоваться в приложениях для
 
 | Transport | Магазин Windows и .NET | Магазин Windows / JavaScript | Windows Phone / IE | Windows Phone и .NET |
 | --- | --- | --- | --- | --- |
-| Протокол WebSocket | Н/Д | Win8 + | 8+ | Н/Д |
-| Рамки | Н/Д | Win8 + | 7.5+ | Н/Д |
-| Сервер отправил события | Win8 + | Н/Д | Н/Д | 8+ |
-| Долго опрашивающего | Win8 + | Win8 + | 7.5+ | 8+ |
+| Протокол WebSocket | Н/Д | Win8+ | 8+ | Н/Д |
+| Рамки | Н/Д | Win8+ | 7.5+ | Н/Д |
+| Сервер отправил события | Win8+ | Н/Д | Н/Д | 8+ |
+| Долго опрашивающего | Win8+ | Win8+ | 7.5+ | 8+ |
 
 <a id="updates"></a>
 

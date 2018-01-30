@@ -2,18 +2,18 @@
 title: "Ответ сжатия по промежуточного слоя ASP.NET Core"
 author: guardrex
 description: "Дополнительные сведения о сжатия ответов и использовании ответа сжатия по промежуточного слоя в приложениях ASP.NET Core."
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 08/20/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: performance/response-compression
-ms.openlocfilehash: 2b39a5105339beb416490db282d4cd8b83d08660
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b93b3fc6c3fafd3e45a5cd42f43aa06dc730db0f
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>Ответ сжатия по промежуточного слоя ASP.NET Core
 

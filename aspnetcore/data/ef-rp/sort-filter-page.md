@@ -4,15 +4,15 @@ author: rick-anderson
 description: "В этом учебнике предстоит добавить сортировку, фильтрацию и разбиение по страницам функциональные возможности для разбиения на страницы с помощью ASP.NET Core и Entity Framework Core."
 ms.author: riande
 ms.date: 10/22/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 24649374b71da39d638d943617a219d45f064846
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9c1ee6f8c00f3cd501ea86fbf73f51ae540a010a
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-razor-pages-3-of-8"></a>Сортировка, фильтрация, разбиение по страницам и группирование - Core EF со страницами Razor (3 8)
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 01/24/2018
 Добавление фильтрации на страницу индекса студентов:
 
 * Текстовое поле и кнопку submit добавляется страница Razor. Текстовое поле предоставляет строку поиска для имени первого или последнего.
-* Файл кода обновляется для использования в качестве значения текстового поля.
+* Модель страницы обновляется для использования в качестве значения текстового поля.
 
 ### <a name="add-filtering-functionality-to-the-index-method"></a>Добавьте функцию фильтра в метод индекса
 
@@ -245,7 +245,7 @@ http://localhost:5000/Students?SearchString=an
 На этом шаге *Pages/About.cshtml* обновляется для отображения количества учащихся регистрации для каждой даты регистрации. Обновление использует группирование и включает следующие шаги:
 
 * Создание класса модели представления для данных, используемых в **о** страницы.
-* Измените файл, страница о Razor и кода.
+* Измените модель о Razor и страницы.
 
 ### <a name="create-the-view-model"></a>Создание модели представления
 
@@ -255,7 +255,7 @@ http://localhost:5000/Students?SearchString=an
 
 [!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
-### <a name="update-the-about-code-behind-page"></a>Страница «обновление» кода о программе
+### <a name="update-the-about-page-model"></a>Обновление модели страницы о программе
 
 Обновление *Pages/About.cshtml.cs* файла следующим кодом:
 

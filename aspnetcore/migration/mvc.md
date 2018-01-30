@@ -1,19 +1,19 @@
 ---
 title: "Миграция из ASP.NET MVC в ASP.NET Core MVC"
 author: ardalis
-description: 
-ms.author: riande
+description: "Узнайте, как начать перенос проекта ASP.NET MVC в ASP.NET Core MVC."
 manager: wpickett
+ms.author: riande
 ms.date: 03/07/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: migration/mvc
-ms.openlocfilehash: e3220fb32900aac42cf96497964936ad5b375a86
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 447b13eccf523cab81590405740bb194112b0dad
+ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>Миграция из ASP.NET MVC в ASP.NET Core MVC
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 01/24/2018
 
 ![Открыть в Microsoft Edge веб-приложения](mvc/_static/hello-world.png)
 
-В разделе [контроллеров](../mvc/controllers/index.md) и [представления](../mvc/views/index.md) для получения дополнительной информации.
+В разделе [контроллеров](xref:mvc/controllers/actions) и [представления](xref:mvc/views/overview) для получения дополнительной информации.
 
 Теперь, когда у нас есть минимальный рабочий проект ASP.NET Core, мы можем запустить перенос функциональные возможности из проекта ASP.NET MVC. Нам потребуется переместить следующее:
 
@@ -156,7 +156,7 @@ ms.lasthandoff: 01/24/2018
 
 * Создание *представления/Общие* папки.
 
-* *Необязательно:* копирования *_ViewImports.cshtml* из *FullAspNetCore* проекта MVC *представления* папки в ASP.NET Core проекта *Представления* папки. Удалите все объявления пространства имен в *_ViewImports.cshtml* файла. *_ViewImports.cshtml* файла предоставляют пространства имен для всех файлов, представления, после чего [вспомогательных функций тегов](../mvc/views/tag-helpers/index.md). В новом файле макета используются вспомогательных функций тегов. *_ViewImports.cshtml* файл впервые ASP.NET Core.
+* *Необязательно:* копирования *_ViewImports.cshtml* из *FullAspNetCore* проекта MVC *представления* папки в ASP.NET Core проекта *Представления* папки. Удалите все объявления пространства имен в *_ViewImports.cshtml* файла. *_ViewImports.cshtml* файла предоставляют пространства имен для всех файлов, представления, после чего [вспомогательных функций тегов](xref:mvc/views/tag-helpers/intro). В новом файле макета используются вспомогательных функций тегов. *_ViewImports.cshtml* файл впервые ASP.NET Core.
 
 * Копировать *_Layout.cshtml* файла из старого проекта ASP.NET MVC *представления/Общие* папки в проект ASP.NET Core *представления/Общие* папки.
 
@@ -191,9 +191,9 @@ ms.lasthandoff: 01/24/2018
 
 Просмотр сайта в браузере. Должны теперь загрузиться правильно, с ожидаемой стили на месте.
 
-* *Необязательно:* может потребоваться попробуйте использовать новый файл макета. Для этого проекта можно скопировать файл из макета *FullAspNetCore* проекта. В новом файле макета используется [вспомогательных функций тегов](../mvc/views/tag-helpers/index.md) и других усовершенствований.
+* *Необязательно:* может потребоваться попробуйте использовать новый файл макета. Для этого проекта можно скопировать файл из макета *FullAspNetCore* проекта. В новом файле макета используется [вспомогательных функций тегов](xref:mvc/views/tag-helpers/intro) и других усовершенствований.
 
-## <a name="configure-bundling--minification"></a>Настройка объединения & Минификации
+## <a name="configure-bundling-and-minification"></a>Настроить объединение и Минификация
 
 Сведения о настройке объединение и Минификация см. в разделе [объединении и Минификация](../client-side/bundling-and-minification.md).
 
@@ -224,6 +224,5 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Клиентская разработка](../client-side/index.md)
-
-* [Вспомогательные функции тегов](../mvc/views/tag-helpers/index.md)
+* [Клиентская разработка](xref:client-side/index)
+* [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro)

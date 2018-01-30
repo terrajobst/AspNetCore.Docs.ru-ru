@@ -2,18 +2,18 @@
 title: "С помощью Grunt в ASP.NET Core"
 author: rick-anderson
 description: 
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: client-side/using-grunt
-ms.openlocfilehash: 527373829754757e52ab84b64e04702d649e9062
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c23f170b36ac1b9623835337020f2b5ac9514971
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="using-grunt-in-aspnet-core"></a>С помощью Grunt в ASP.NET Core 
 
@@ -51,7 +51,7 @@ Grunt-это средство запуска задач JavaScript, которы
 
 4.  Добавить новую папку с именем `TypeScript` в каталог проекта.
 
-5.  Перед добавлением все файлы, убедитесь, что Visual Studio имеет параметр "компиляции при сохранении" для возвращенных файлов TypeScript. *Сервис > Параметры > текстовый редактор > Typescript > проекта*
+5.  Перед добавлением все файлы, убедитесь, что Visual Studio имеет параметр "компиляции при сохранении" для возвращенных файлов TypeScript. Перейдите к **средства** > **параметры** > **текстовый редактор** > **Typescript**  >  **Проекта**:
 
     ![Параметры автоматического compliation файлов TypeScript](using-grunt/_static/typescript-options.png)
 

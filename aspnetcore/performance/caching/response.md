@@ -2,22 +2,25 @@
 title: "Кэширование ответов в ASP.NET Core"
 author: rick-anderson
 description: "Сведения об использовании ответ, кэширование, более низкие требования к пропускной способности и повышения производительности приложений ASP.NET Core."
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 09/20/2017
-ms.topic: article
 ms.prod: asp.net-core
+ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: d7726443dbcc34c21fd6cf0f56c4412863617b9f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c38f9b9a1bf1c523951e2cf1f3070858fe5daf04
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="response-caching-in-aspnet-core"></a>Кэширование ответов в ASP.NET Core
 
 По [Luo Джон](https://github.com/JunTaoLuo), [Рик Андерсон](https://twitter.com/RickAndMSFT), [Стив Смит](https://ardalis.com/), и [Latham Люк](https://github.com/guardrex)
 
+> [!NOTE]
+> Кэширование ответов [не поддерживается на страницах Razor с ASP.NET Core 2.0](https://github.com/aspnet/Mvc/issues/6437). Этот компонент будет поддерживаться в [версии ASP.NET Core 2.1](https://github.com/aspnet/Home/wiki/Roadmap).
+  
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 Кэширование ответов снижает количество запросов, выполненных клиентом или прокси-сервера веб-сервера. Кэширование ответов также сокращает время работы веб-сервер выполняет для формирования ответа. Кэширование ответов управляется заголовки, указывающие способ клиента, прокси-сервера и по промежуточного слоя для кэширования ответов.

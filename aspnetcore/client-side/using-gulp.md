@@ -2,19 +2,19 @@
 title: "Использование Gulp для ASP.NET Core"
 author: rick-anderson
 description: "Сведения об использовании Gulp в ASP.NET Core."
-ms.author: riande
 manager: wpickett
-ms.date: 02/28/2017
-ms.topic: article
-ms.technology: aspnet
-ms.prod: asp.net-core
-uid: client-side/using-gulp
+ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ccfed42d66ea49c5f2745bc8653d8fb12bf707a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.date: 02/28/2017
+ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
+uid: client-side/using-gulp
+ms.openlocfilehash: f091370bc85a37eeaac1291a2fdc6ea85164f148
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="introduction-to-using-gulp-in-aspnet-core"></a>Общие сведения об использовании Gulp в ASP.NET Core 
 
@@ -59,13 +59,13 @@ paths.concatCssDest = paths.webroot + "css/site.min.css";
 
 Приведенный выше код указывает, какой узел модули являются обязательными. `require` Импорта функций каждого модуля, чтобы зависимые задачи можно использовать предоставляемые им возможности. Каждый из импортированных модулей присваивается переменной. Модули могут располагаться по имени или пути. В этом примере имя модули `gulp`, `rimraf`, `gulp-concat`, `gulp-cssmin`, и `gulp-uglify` получить по имени. Кроме того ряд пути создаются, расположения файлов CSS и JavaScript можно использовать повторно и ссылки на задачи. В следующей таблице приведены описания модулей, включенных в *gulpfile.js*.
 
-|Имя модуля|Описание:|
-|---|---|
-|gulp|Gulp потоковой передачи системы сборки. Дополнительные сведения см. в разделе [gulp](https://www.npmjs.com/package/gulp).|
-|rimraf|Модуль удаления узла. Дополнительные сведения см. в разделе [rimraf](https://www.npmjs.com/package/rimraf).|
-|gulp concat|Модуль, который объединяет файлы в зависимости от операционной системы символ перевода строки. Дополнительные сведения см. в разделе [gulp concat](https://www.npmjs.com/package/gulp-concat).|
-|gulp cssmin|Модуль, который уменьшает CSS-файлах. Дополнительные сведения см. в разделе [gulp cssmin](https://www.npmjs.com/package/gulp-cssmin).|
-|gulp uglify|Модуль, который уменьшает *.js* файлов. Дополнительные сведения см. в разделе [gulp uglify](https://www.npmjs.com/package/gulp-uglify).|
+| Имя модуля | Описание: |
+| ----------- | ----------- |
+| gulp        | Gulp потоковой передачи системы сборки. Дополнительные сведения см. в разделе [gulp](https://www.npmjs.com/package/gulp). |
+| rimraf      | Модуль удаления узла. Дополнительные сведения см. в разделе [rimraf](https://www.npmjs.com/package/rimraf). |
+| gulp concat | Модуль, который объединяет файлы в зависимости от операционной системы символ перевода строки. Дополнительные сведения см. в разделе [gulp concat](https://www.npmjs.com/package/gulp-concat). |
+| gulp cssmin | Модуль, который уменьшает CSS-файлах. Дополнительные сведения см. в разделе [gulp cssmin](https://www.npmjs.com/package/gulp-cssmin). |
+| gulp uglify | Модуль, который уменьшает *.js* файлов. Дополнительные сведения см. в разделе [gulp uglify](https://www.npmjs.com/package/gulp-uglify). |
 
 После импорта модулей необходимые задачи может быть указан. Ниже приведены шесть задач зарегистрирован, представленный в следующем примере кода:
 

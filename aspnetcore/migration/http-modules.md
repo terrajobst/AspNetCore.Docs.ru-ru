@@ -2,18 +2,18 @@
 title: "Миграция обработчики HTTP-данных и модули в по промежуточного слоя ASP.NET Core"
 author: rick-anderson
 description: 
-ms.author: tdykstra
 manager: wpickett
+ms.author: tdykstra
 ms.date: 12/07/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: migration/http-modules
-ms.openlocfilehash: a38ddc64583de05b4088cd31d48fbd7ee949d4e5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f104c9116cfaa4a82ac88e4a83b4b6f172eb2aa1
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="migrating-http-handlers-and-modules-to-aspnet-core-middleware"></a>Миграция обработчики HTTP-данных и модули в по промежуточного слоя ASP.NET Core 
 
@@ -380,10 +380,7 @@ public async Task Invoke(HttpContext httpContext)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Обработчики HTTP-данных и общие сведения о модули HTTP](https://docs.microsoft.com/iis/configuration/system.webserver/)
-
+* [Обработчики HTTP-данных и общие сведения о модули HTTP](/iis/configuration/system.webserver/)
 * [Конфигурация](xref:fundamentals/configuration/index)
-
-* [Запуск приложения](../fundamentals/startup.md)
-
-* [ПО промежуточного слоя](../fundamentals/middleware.md)
+* [Запуск приложения](xref:fundamentals/startup)
+* [ПО промежуточного слоя](xref:fundamentals/middleware)

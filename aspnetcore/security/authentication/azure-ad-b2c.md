@@ -2,25 +2,27 @@
 title: "Проверки подлинности в облаке с Azure Active Directory B2C"
 author: camsoper
 description: "Узнайте, как настроить проверку подлинности Azure Active Directory B2C с ASP.NET Core."
-ms.author: casoper
 manager: wpickett
-ms.date: 01/12/2018
+ms.date: 01/25/2018
 ms.topic: tutorial
 ms.technology: aspnet
 ms.prod: asp.net-core
+ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-custom: mvc
-ms.openlocfilehash: 5c4716022c61e33b0301fa0077f911dcc4b3628c
-ms.sourcegitcommit: 459cb3289741a3f46325e605a617dc926ee0563d
+ms.openlocfilehash: d60698b5798e837a5946dbe158a647aae9e149d4
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c"></a>Проверки подлинности в облаке с Azure Active Directory B2C
 
 Автор [Кэм Сопер (Cam Soper)](https://twitter.com/camsoper)
 
-[Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) — это Облачное решение управления удостоверения для веб- и мобильных приложений. Служба обеспечивает проверку подлинности для приложений, размещенных в облаке и в локальной среде. Типы проверки подлинности: включить отдельные учетные записи, учетные записи социальных сетей и федеративные учетные записи предприятия.  Кроме того Azure AD B2C можно указать многофакторной проверки подлинности с минимальной конфигурацией.
+[Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) — это Облачное решение управления удостоверения для веб- и мобильных приложений. Служба обеспечивает проверку подлинности для приложений, размещенных в облаке и в локальной среде. Типы проверки подлинности: включить отдельные учетные записи, учетные записи социальных сетей и федеративные учетные записи предприятия. Кроме того Azure AD B2C можно указать многофакторной проверки подлинности с минимальной конфигурацией.
+
+> [!TIP]
+> Azure Active Directory (Azure AD) Azure AD B2C являются отдельные продукты. Клиент Azure AD представляет организации, а клиент Azure AD B2C представляет коллекцию удостоверений для использования с приложениями проверяющей стороны. Дополнительные сведения см. в разделе [Azure AD B2C: часто задаваемые вопросы (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs).
 
 В этом учебнике показано, как:
 
@@ -34,7 +36,7 @@ ms.lasthandoff: 01/22/2018
 
 Ниже приведены для данного пошагового руководства требуется:
 
-* [Подписка на Microsoft Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+* [Подписка на Microsoft Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * [Visual Studio 2017 г](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) (любой выпуск)
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>Создание клиента Azure Active Directory B2C
@@ -49,7 +51,7 @@ ms.lasthandoff: 01/22/2018
 
 | Параметр                       | Значение                     | Примечания                                                                                                                                                                                              |
 |-------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name**                      | *\<Имя приложения\>*            | Введите **имя** для приложения, описывающих приложение пользователям.                                                                                                                                 |
+| **Name**                      | *&lt;Имя приложения&gt;*        | Введите **имя** для приложения, описывающих приложение пользователям.                                                                                                                                 |
 | **Включить веб-приложения или веб-API** | Да                       |                                                                                                                                                                                                    |
 | **Разрешить неявного потока**       | Да                       |                                                                                                                                                                                                    |
 | **URL-адрес ответа**                 | `https://localhost:44300` | URL-адреса ответа, конечные точки, где Azure AD B2C возвращает токенами, которые запрашивает приложение. Visual Studio предоставляет URL-адрес ответа для использования. Теперь введите `https://localhost:44300` для заполнения формы. |
@@ -59,7 +61,7 @@ ms.lasthandoff: 01/22/2018
 > [!WARNING]
 > Если настройка URL-адреса ответа не localhost, помните о [ограничения на то, что может быть в списке URL-адрес ответа](/azure/active-directory-b2c/active-directory-b2c-app-registration#choosing-a-web-app-or-api-reply-url). 
 
-После регистрации приложения отображается список управляемых приложений в клиенте. Выберите приложение, которое только что было зарегистрировано. Выберите **копирования** значок справа от **идентификатор приложения** поле, чтобы скопировать идентификатор приложения в буфер обмена.
+После регистрации приложения отображается список управляемых приложений в клиенте. Выберите приложение, которое только что было зарегистрировано. Выберите **копирования** значок справа от **идентификатор приложения** поле, чтобы скопировать его в буфер обмена.
 
 Ничего более можно настроить в клиенте Azure AD B2C в данный момент, но не закрывайте окно браузера. После создания приложения ASP.NET Core нет дополнительные конфигурации.
 
@@ -81,15 +83,15 @@ ms.lasthandoff: 01/22/2018
 
 5. Заполните форму со следующими значениями:
     
-    | Параметр                       | Значение                                             |
-    |-------------------------------|---------------------------------------------------|
-    | **Имя домена**               | *\<имя домена клиента B2C\>*          |
-    | **Идентификатор приложения**            | *\<Вставьте идентификатор приложения из буфера обмена\>* |
-    | **Путь обратного вызова**             | *\<использовать значение по умолчанию\>*                       |
-    | **Политики регистрации или входа в систему** | `B2C_1_SiUpIn`                                    |
-    | **Политика сброса пароля**     | `B2C_1_SSPR`                                      |
-    | **Изменение политики профиля**       | *\<не указывайте\>*                                 |
-
+    | Параметр                       | Значение                                                 |
+    |-------------------------------|-------------------------------------------------------|
+    | **Имя домена**               | *&lt;имя домена клиента B2C&gt;*          |
+    | **Идентификатор приложения**            | *&lt;Вставьте идентификатор приложения из буфера обмена&gt;* |
+    | **Путь обратного вызова**             | *&lt;использовать значение по умолчанию&gt;*                       |
+    | **Политики регистрации или входа в систему** | `B2C_1_SiUpIn`                                        |
+    | **Политика сброса пароля**     | `B2C_1_SSPR`                                          |
+    | **Изменение политики профиля**       | *&lt;не указывайте&gt;*                                 |
+    
     Выберите **копирования** ссылку рядом с **ответа Reply URI** для копирования в буфер обмена URI ответа. Выберите **ОК** закрыть **изменить аутентификацию** диалогового окна. Выберите **ОК** для создания веб-приложения.
 
 ## <a name="finish-the-b2c-app-registration"></a>Регистрация приложения B2C Готово
@@ -122,7 +124,7 @@ ms.lasthandoff: 01/22/2018
 
 ## <a name="next-steps"></a>Следующие шаги
 
-В этом учебнике вы узнали как:
+В этом руководстве вы узнали, как:
 
 > [!div class="checklist"]
 > * Создание клиента Azure Active Directory B2C
@@ -137,3 +139,5 @@ ms.lasthandoff: 01/22/2018
 * [Включение многофакторной проверки подлинности](/azure/active-directory-b2c/active-directory-b2c-reference-mfa).
 * Настройка дополнительных поставщиков, такие как [Microsoft](/azure/active-directory-b2c/active-directory-b2c-setup-msa-app), [Facebook](/azure/active-directory-b2c/active-directory-b2c-setup-fb-app), [Google](/azure/active-directory-b2c/active-directory-b2c-setup-goog-app), [Amazon](/azure/active-directory-b2c/active-directory-b2c-setup-amzn-app), [Twitter ](/azure/active-directory-b2c/active-directory-b2c-setup-twitter-app)и др.
 * [Использовать API Azure AD Graph](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) для получения дополнительных сведений, таких как членство в группе из клиента Azure AD B2C.
+* [Защита с помощью Azure AD B2C веб-API ASP.NET Core](xref:security/authentication/azure-ad-b2c-api).
+* [Вызов веб-API .NET из веб-приложения .NET с помощью Azure AD B2C](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-web-api-dotnet).
