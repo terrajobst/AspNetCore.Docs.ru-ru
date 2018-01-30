@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration/index
-ms.openlocfilehash: ee9bdc66d0bfa6433736fbc55126bdd37ba9d080
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1afb32fb6c5fffd38b7028741bfd8199e2e23d21
+ms.sourcegitcommit: 09b342b45e7372ba9ebf17f35eee331e5a08fb26
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/26/2018
 ---
 # <a name="configure-an-aspnet-core-app"></a>Настройка приложения ASP.NET Core
 
@@ -59,7 +59,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}");
 // Output: Gandalf
 ```
 
-Пары "имя-значение", записываемые во встроенные поставщики [конфигурации](/dotnet/api/microsoft.extensions.configuration), **не сохраняются**. Однако можно создать пользовательский поставщик, который сохраняет значения. См. раздел [Пользовательский поставщик конфигурации](xref:fundamentals/configuration/index#custom-config-providers).
+Пары "имя-значение", записываемые во встроенные поставщики [конфигурации](/dotnet/api/microsoft.extensions.configuration), **не сохраняются**. Но вы можете создать настраиваемый поставщик, который сохраняет значения. См. раздел [Пользовательский поставщик конфигурации](xref:fundamentals/configuration/index#custom-config-providers).
 
 В предыдущем примере для считывания значений используется индексатор конфигурации. Для доступа к конфигурации вне `Startup` воспользуйтесь *шаблоном параметров*. Дополнительные сведения см. в разделе [Параметры](xref:fundamentals/configuration/options).
 
@@ -93,8 +93,8 @@ Console.Write($"{Configuration["wizards:0:Name"]}");
 
 * `IOptionsSnapshot` может перезагрузить данные конфигурации после их изменения. Дополнительные сведения: [IOptionsSnapshot](xref:fundamentals/configuration/options#reload-configuration-data-with-ioptionssnapshot).
 * Ключи конфигурации **не учитывают** регистр.
-* **Никогда** не храните пароли и другие конфиденциальные данные в коде поставщика конфигурации или в файлах конфигурации в виде обычного текста. Не используйте секреты производства в средах разработки и тестирования. Указывайте секреты вне проекта, чтобы их нельзя было случайно зафиксировать в репозитории. Узнайте больше о [работе с несколькими средами](xref:fundamentals/environments) и управлении [безопасным хранением секретов приложения во время разработки](xref:security/app-secrets).
-* Если двоеточие (`:`) не может быть используется в переменных среды в вашей системе, замените двоеточием (`:`) с двойным подчеркиванием (`__`).
+* **Никогда** не храните пароли и другие конфиденциальные данные в коде поставщика конфигурации или в файлах конфигурации в виде обычного текста. Не используйте секреты рабочей среды в средах разработки и тестирования. Указывайте секреты вне проекта, чтобы их нельзя было случайно зафиксировать в репозитории с исходным кодом. Узнайте больше о [работе с несколькими средами](xref:fundamentals/environments) и управлении [безопасным хранением секретов приложения во время разработки](xref:security/app-secrets).
+* Если система не позволяет использовать двоеточие (`:`) в переменных среды, замените двоеточие (`:`) двойным подчеркиванием (`__`).
 
 ## <a name="in-memory-provider-and-binding-to-a-poco-class"></a>Поставщик в памяти и привязка к классу POCO
 
@@ -102,7 +102,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}");
 
 [!code-csharp[Main](index/sample/InMemory/Program.cs)]
 
-Значения конфигурации возвращаются в виде строк, но с помощью привязки можно создавать объекты. Привязка позволяет получать объекты POCO или даже графы объектов.
+Значения конфигурации возвращаются в виде строк, но с помощью привязки можно создавать объекты. Привязка позволяет извлекать объекты POCO и даже целые графы объектов.
 
 ### <a name="getvalue"></a>GetValue
 
@@ -110,11 +110,11 @@ Console.Write($"{Configuration["wizards:0:Name"]}");
 
 [!code-csharp[Main](index/sample/InMemoryGetValue/Program.cs?highlight=31)]
 
-Метод `GetValue<T>` ConfigurationBinder позволяет задавать значение по умолчанию (в примере — 80). `GetValue<T>` используется для простых сценариев и не выполняет привязку ко всем разделам. Метод `GetValue<T>` возвращает скалярные значения из `GetSection(key).Value`, преобразованного в конкретный тип.
+Метод `GetValue<T>` из ConfigurationBinder позволяет задавать значение по умолчанию (в примере — 80). `GetValue<T>` используется для простых сценариев и не выполняет привязку ко всем разделам. Метод `GetValue<T>` получает из `GetSection(key).Value` скалярные значения, преобразованные в определенный тип.
 
 ## <a name="bind-to-an-object-graph"></a>Привязка к графу объектов
 
-Можно реализовать рекурсивную привязку к каждому объекту в классе. Рассмотрим следующий класс `AppSettings`:
+Для каждого объекта в классе возможна рекурсивная привязка. Рассмотрим следующий класс `AppSettings`:
 
 [!code-csharp[Main](index/sample/ObjectGraph/AppSettings.cs)]
 
@@ -185,7 +185,7 @@ public void CanBindObjectTree()
 
 При выполнении примера отображаются выделенные значения из базы данных ("value_from_ef_1" и "value_from_ef_2").
 
-Можно добавить метод расширения `EFConfigSource` для добавления источник конфигурации:
+Вы можете использовать метод расширения `EFConfigSource` для добавления источника конфигурации.
 
 [!code-csharp[Main](index/sample/CustomConfigurationProvider/EntityFrameworkExtensions.cs?highlight=12)]
 
@@ -261,7 +261,7 @@ Left: 1979
 
 Если все вышеперечисленное верно, аргументы командной строки переопределяются.
 
-Приложение ASP.NET Core 2.x может использовать WebHostBuilder (/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) вместо ``CreateDefaultBuilder`. When using `WebHostBuilder`, задайте конфигурацию вручную с помощью [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder). Дополнительные сведения см. в разделе о ASP.NET Core 1.x.
+Приложение ASP.NET Core 2.x может использовать [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) вместо `CreateDefaultBuilder`. При использовании `WebHostBuilder` задайте конфигурацию вручную с помощью [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder). Дополнительные сведения см. в разделе о ASP.NET Core 1.x.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -331,7 +331,7 @@ dotnet run -key1 value1 --key2 value2 /key3 value3
 
 ### <a name="switch-mappings"></a>Сопоставления переключений
 
-При построении конфигурации вручную с помощью `ConfigurationBuilder` при необходимости можно предоставить методу `AddCommandLine` словарь сопоставления переключений. Сопоставления переключений позволяют указать логику замены имени ключа.
+При создании конфигурации вручную с помощью `ConfigurationBuilder` вы можете добавить в метод `AddCommandLine` словарь сопоставления параметров. Сопоставление параметров позволяет указать логику замены имен ключей.
 
 В словаре сопоставлений переключений выполняется поиск ключа, который совпадает с ключом, предоставляемым аргументом командной строки. Если ключ командной строки найден, значение словаря (новый ключ) передается обратно, чтобы задать конфигурацию. Сопоставление переключений необходимо для любого ключа командной строки с префиксом из одного дефиса (`-`).
 
@@ -340,7 +340,7 @@ dotnet run -key1 value1 --key2 value2 /key3 value3
 * Переключения должны начинаться с дефиса (`-`) или двойного дефиса (`--`).
 * Словарь сопоставлений переключений не должен содержать повторяющиеся ключи.
 
-В следующем примере метод `GetSwitchMappings` позволяет аргументам командной строки использовать префикс ключа с одним дефисом (`-`) и исключает начальные префиксы подключа.
+В следующем примере метод `GetSwitchMappings` позволяет аргументам командной строки использовать префикс ключа с одним дефисом (`-`) вместо начальных префиксов подключа.
 
 [!code-csharp[Main](index/sample/CommandLine/Program.cs?highlight=10-19,32)]
 
@@ -394,6 +394,10 @@ Left: 1988
 
 Файл *web.config* необходим для размещения приложения в службах IIS или IIS Express. Параметры в файле *web.config* включают [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) для запуска приложения и настройки других параметров и модулей IIS. Если файл *web.config* отсутствует и файл проекта содержит `<Project Sdk="Microsoft.NET.Sdk.Web">`, при публикации проекта файл *web.config* создается в опубликованных выходных данных (папка *publish*). Дополнительные сведения см. в разделе [Размещение ASP.NET Core в Windows со службами IIS](xref:host-and-deploy/iis/index#webconfig).
 
+## <a name="accessing-configuration-during-startup"></a>Доступ к конфигурации во время запуска
+
+Чтобы получить доступ к конфигурации в `ConfigureServices` или `Configure` во время запуска, см. примеры в разделе [Запуск приложения](xref:fundamentals/startup).
+
 ## <a name="additional-notes"></a>Дополнительные сведения
 
 * Внедрение зависимостей (DI) настраивается после вызова `ConfigureServices`.
@@ -401,7 +405,7 @@ Left: 1988
 * `IConfiguration` имеет две специализации:
   * `IConfigurationRoot` используется для корневого узла. Может инициировать перезагрузку.
   * `IConfigurationSection` представляет раздел значений конфигурации. Методы `GetSection` и `GetChildren` возвращают `IConfigurationSection`.
-  * Используйте [IConfigurationRoot](/dotnet/api/microsoft.extensions.configuration.iconfigurationroot) при перезагрузке конфигурации или когда необходим доступ к каждому поставщику. Оба этих случая нетипичные.
+  * Используйте [IConfigurationRoot](/dotnet/api/microsoft.extensions.configuration.iconfigurationroot) при перезагрузке конфигурации или для доступа к каждому поставщику. Оба этих случая нетипичные.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
