@@ -12,21 +12,21 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/begin-modifying-dynamic-data-applications-with-url-routing
 msc.type: video
-ms.openlocfilehash: 304baf00faf297a0f9278dff580c44263131eb5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c23facf151802622eb1b7627378e4a359113ac36
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
-<a name="begin-modifying-dynamic-data-applications-with-url-routing"></a><span data-ttu-id="ed994-103">Приступить к изменению динамических данных приложений с маршрутизацией URL-адрес</span><span class="sxs-lookup"><span data-stu-id="ed994-103">Begin Modifying Dynamic Data Applications with URL Routing</span></span>
+<a name="begin-modifying-dynamic-data-applications-with-url-routing"></a><span data-ttu-id="6f4c2-103">Приступить к изменению динамических данных приложений с маршрутизацией URL-адрес</span><span class="sxs-lookup"><span data-stu-id="6f4c2-103">Begin Modifying Dynamic Data Applications with URL Routing</span></span>
 ====================
-<span data-ttu-id="ed994-104">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="ed994-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="6f4c2-104">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="6f4c2-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="ed994-105">В этом видеоролике представлены маршрутизации ASP.NET динамического URL-адрес данных, а также показано, как настроить параметры маршрутизации URL-адрес приложения.</span><span class="sxs-lookup"><span data-stu-id="ed994-105">This video introduces ASP.NET Dynamic Data URL routing and shows how to configure an application's URL with routing options.</span></span>
+<span data-ttu-id="6f4c2-105">В этом видеоролике представлены маршрутизации ASP.NET динамического URL-адрес данных, а также показано, как настроить параметры маршрутизации URL-адрес приложения.</span><span class="sxs-lookup"><span data-stu-id="6f4c2-105">This video introduces ASP.NET Dynamic Data URL routing and shows how to configure an application's URL with routing options.</span></span>
 
-[<span data-ttu-id="ed994-106">&#9654; Посмотрите видео (5 минут)</span><span class="sxs-lookup"><span data-stu-id="ed994-106">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/begin-modifying-dynamic-data-applications-with-url-routing)
+[<span data-ttu-id="6f4c2-106">&#9654; Посмотрите видео (5 минут)</span><span class="sxs-lookup"><span data-stu-id="6f4c2-106">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/begin-modifying-dynamic-data-applications-with-url-routing)
 
 >[!div class="step-by-step"]
-<span data-ttu-id="ed994-107">[Назад](begin-editing-the-templates-in-aspnet-dynamic-data-applications.md)
-[Вперед](enable-in-line-editing-in-aspnet-dynamic-data-applications.md)</span><span class="sxs-lookup"><span data-stu-id="ed994-107">[Previous](begin-editing-the-templates-in-aspnet-dynamic-data-applications.md)
+<span data-ttu-id="6f4c2-107">[Назад](begin-editing-the-templates-in-aspnet-dynamic-data-applications.md)
+[Вперед](enable-in-line-editing-in-aspnet-dynamic-data-applications.md)</span><span class="sxs-lookup"><span data-stu-id="6f4c2-107">[Previous](begin-editing-the-templates-in-aspnet-dynamic-data-applications.md)
 [Next](enable-in-line-editing-in-aspnet-dynamic-data-applications.md)</span></span>
