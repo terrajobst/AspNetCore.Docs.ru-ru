@@ -2,18 +2,18 @@
 title: "Реализации веб-сервера в ASP.NET Core"
 author: tdykstra
 description: "Статья представляет веб-серверы Kestrel и WebListener для ASP.NET Core. Рекомендации по выбору одного из веб-серверов и информация о том, когда следует использовать веб-сервер с обратным прокси-сервером."
-ms.author: tdykstra
 manager: wpickett
+ms.author: tdykstra
 ms.date: 08/03/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: fundamentals/servers/index
-ms.openlocfilehash: 750b81c2c715598dbcfb6671e34016e30c1878d6
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9e2bea396e50615bd02affad93f0ee55255d299f
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Реализации веб-сервера в ASP.NET Core
 
