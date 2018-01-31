@@ -2,20 +2,18 @@
 title: "Страницы справки по веб-API ASP.NET Core с использованием Swagger"
 author: spboyer
 description: "В этом учебнике приводится пошаговое руководство по добавлению Swagger для составления документации и страниц справки к приложению веб-API."
-keywords: "ASP.NET Core, Swagger, Swashbuckle, страницы справки, веб-API"
 ms.author: spboyer
 manager: wpickett
 ms.date: 09/01/2017
 ms.topic: article
-ms.assetid: 54bb961d-29d9-4dee-8e2c-a93fc33c16f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: 08503b724aaea64ad2d32eaa710378ec77b9a1fe
-ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
+ms.openlocfilehash: 302199bb0b32d4f6610e04455bb28372095e9873
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="aspnet-core-web-api-help-pages-using-swagger"></a>Страницы справки по веб-API ASP.NET Core с использованием Swagger
 

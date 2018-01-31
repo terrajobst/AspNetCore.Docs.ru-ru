@@ -2,18 +2,18 @@
 title: "Работа с SQL Server LocalDB"
 author: rick-anderson
 description: "Использование SQL Server LocalDB с простым приложением MVC"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 03/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: 14b0f04ce904b34a03b3c5160e189e2e6d045734
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: a0aa6fdfa51650628021a4ba6d0533e7e0e39200
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="working-with-sql-server-localdb"></a>Работа с SQL Server LocalDB
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB — это упрощенная версия ядра СУБД SQL Server Express, предназначенная для разработки программ. LocalDB запускается по требованию в пользовательском режиме, поэтому настройки не слишком сложны. По умолчанию база данных LocalDB создает файлы \*.mdf в каталоге *C:/Users/\<пользователь\>*.
+LocalDB — это упрощенная версия ядра СУБД SQL Server Express, предназначенная для разработки программ. LocalDB запускается по запросу в пользовательском режиме, поэтому настройки не слишком сложны. По умолчанию база данных LocalDB создает файлы \*.mdf в каталоге *C:/Users/\<пользователь\>*.
 
 * В меню **Вид** откройте **обозреватель объектов SQL Server** (SSOX).
 

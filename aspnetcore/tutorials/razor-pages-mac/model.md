@@ -2,18 +2,18 @@
 title: "Добавление модели в приложение Razor Pages с помощью Visual Studio для Mac"
 author: rick-anderson
 description: "Добавление модели в приложение Razor Pages в ASP.NET Core с помощью Visual Studio для Mac"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 08/27/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages-mac/model
-ms.openlocfilehash: 7b1b2d54e9c68b0a6f2b1355726d0d1cb484f69e
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: b8e5d65e195f9824602ec15d05dc013faa2a8dc9
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="adding-a-model-to-a-razor-pages-app-in-aspnet-core-with-visual-studio-for-mac"></a>Добавление модели в приложение Razor Pages в ASP.NET Core с помощью Visual Studio для Mac
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/19/2018
 
 ### <a name="entity-framework-core-nuget-packages-for-migrations"></a>Пакеты Entity Framework Core NuGet для миграций
 
-Средства EF для интерфейса командной строки (CLI) доступны в [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet). Чтобы установить этот пакет, добавьте его в коллекцию `DotNetCliToolReference` в файле *.csproj*. **Примечание**. Необходимо установить этот пакет, отредактировав файл *.csproj*; использовать команду `install-package` или графический пользовательский интерфейс диспетчера пакетов нельзя.
+Средства EF для интерфейса командной строки (CLI) доступны в [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet). Щелкните ссылку [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet), чтобы получить номер версии. Чтобы установить этот пакет, добавьте его в коллекцию `DotNetCliToolReference` в файле *.csproj*. **Примечание**. Необходимо установить этот пакет, отредактировав файл *.csproj*; использовать команду `install-package` или графический пользовательский интерфейс диспетчера пакетов нельзя.
 
 Чтобы изменить файл *.csproj*, выполните следующие действия.
 
@@ -52,9 +52,11 @@ ms.lasthandoff: 01/19/2018
 
 ![Изменение файла csproj](model/csproj.png)
 
-Добавьте ссылку на инструмент `Microsoft.EntityFrameworkCore.Tools.DotNet` во вторую группу **\<ItemGroup>**:
+Добавьте ссылку на инструмент `Microsoft.EntityFrameworkCore.Tools.DotNet` во вторую группу **\<ItemGroup>**.
 
-[!code-xml[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?range=12-16&highlight=4)]
+[!code-xml[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?highlight=10)]
+
+Номера версий, показанные в приведенном ниже коде, были правильными на момент написания статьи.
 
 [!INCLUDE[model3](../../includes/RP/model3.md)]
 [!INCLUDE[model 4x](../../includes/RP/model4x.md)]
@@ -73,4 +75,4 @@ ms.lasthandoff: 01/19/2018
 
 >[!div class="step-by-step"]
 [Назад: Начало работы](xref:tutorials/razor-pages-mac/razor-pages-start)
-[Далее: Сформированные страницы Razor Pages](xref:tutorials/razor-pages/page)
+[Далее: Сформированные страницы Razor Pages](xref:tutorials/razor-pages-mac/page)

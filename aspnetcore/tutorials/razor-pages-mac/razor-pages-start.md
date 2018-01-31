@@ -2,18 +2,18 @@
 title: "Начало работы с Razor Pages в ASP.NET Core на Mac"
 author: rick-anderson
 description: "Начало работы с Razor Pages в ASP.NET Core с использованием Visual Studio для Mac"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 07/27/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages-mac/razor-pages-start
-ms.openlocfilehash: ca9fca507096f3f09f19fe0a7f1dc023003649d7
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 9e7d1db47e4cc9d753b1629e20345ca1f4403b2f
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-for-mac"></a>Начало работы с Razor Pages в ASP.NET Core с использованием Visual Studio для Mac
 

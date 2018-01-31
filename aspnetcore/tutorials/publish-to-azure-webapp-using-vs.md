@@ -9,14 +9,12 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: dd31e3a9583a0c152e97ae7cf6b215389298a20c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: d0e64c967ff332365981338809a47faf35d499ab
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
-/ru-ru
-
 # <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>Публикация веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio
 
 Авторы: [Рик Андерсон (Rick Anderson)](https://twitter.com/RickAndMSFT), [Сезар Блум Сильвейра (Cesar Blum Silveira)](https://github.com/cesarbs) и [Рейчел Аппель (Rachel Appel)](https://twitter.com/rachelappel)
@@ -115,7 +113,7 @@ Visual Studio создает решение.
 * Введите имя пользователя и пароль администратора, а затем нажмите кнопку **ОК**. Вы можете сохранить **Имя сервера** по умолчанию. 
 
 > [!NOTE]
-> "admin" не может использоваться в качестве имени пользователя администратора.
+> "admin" запрещено использовать в качестве имени пользователя администратора.
 
 ![Диалоговое окно "Настройка SQL Server"](publish-to-azure-webapp-using-vs/_static/conf_servername.png)
 
@@ -184,6 +182,6 @@ Visual Studio создает веб-приложение и SQL Server в Azure.
 
 ## <a name="additonal-resources"></a>Дополнительные ресурсы
 
-* [служба приложений Azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-overview);
-* [Группа ресурсов Azure](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-groups)
-* [База данных SQL Azure](https://docs.microsoft.com/en-us/azure/sql-database/)
+* [служба приложений Azure](https://docs.microsoft.com/azure/app-service/app-service-web-overview);
+* [Группа ресурсов Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)
+* [База данных SQL Azure](https://docs.microsoft.com/azure/sql-database/)

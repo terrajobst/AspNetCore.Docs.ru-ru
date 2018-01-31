@@ -2,24 +2,24 @@
 title: "Методы и представления контроллера"
 author: rick-anderson
 description: "Работа с методами, представлениями контроллера и DataAnnotations"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 04/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/first-mvc-app-xplat/controller-methods-views
-ms.openlocfilehash: 1d9258d8f52bf7030ae34ac4069b1b02a51de51b
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 34bd73af9bd0e4a7c1e59b491105f959bcbc06c6
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="controller-methods-and-views"></a>Методы и представления контроллера
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-Все готово для приложения Movie, но презентация далеко не идеальна. Мы не хотим видеть время (12:00:00 AM на рисунке ниже), а заголовок **ReleaseDate** (ДатаВыпуска) должен состоять из двух слов.
+Все готово для приложения по работе с фильмами, но презентация далеко не идеальна. Мы не хотим видеть время (12:00:00 AM на рисунке ниже), а заголовок **ReleaseDate** (ДатаВыпуска) должен состоять из двух слов.
 
 ![Представление индекса: заголовок "Release Date" (Дата выпуска) состоит из одного слова (без пробела), и рядом с каждой датой отображается время "12:00 AM".](../../tutorials/first-mvc-app/working-with-sql/_static/m55.png)
 

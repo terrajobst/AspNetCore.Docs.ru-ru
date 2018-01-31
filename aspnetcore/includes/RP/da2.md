@@ -1,53 +1,12 @@
----
-title: "Изменение созданных страниц"
-author: rick-anderson
-description: "Обновление созданных страниц для оптимизации интерфейса."
-ms.author: riande
-manager: wpickett
-ms.date: 08/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
-ms.prod: asp.net-core
-uid: tutorials/razor-pages/da1
-ms.openlocfilehash: abf6839536150f29eaa2d07dafbe0d0c1a08e280
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
----
-# <a name="updating-the-generated-pages"></a>Изменение созданных страниц
-
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
-
-Все готово для приложения по работе с фильмами, но презентация далеко не идеальна. Мы не хотим видеть время (12:00:00 AM на рисунке ниже), а заголовок **ReleaseDate** (ДатаВыпуска) должен состоять из двух слов: **Release Date**.
-
-![Приложение Movie с данными по фильмам, открытое в Chrome](sql/_static/m55.png)
-
-## <a name="update-the-generated-code"></a>Обновление созданного кода
-
-Откройте файл *Models/Movie.cs* и добавьте указанные ниже выделенные строки кода:
-
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDate.cs?name=snippet_1&highlight=10-11)]
-
-Щелкните правой кнопкой мыши строку, подчеркнутую волнистой красной линией, и выберите пункт **Быстрые действия и рефакторинг**.
-
-  ![Контекстное меню с пунктом **Быстрые действия и рефакторинг**.](da1/qa.png)
-
-Выберите `using System.ComponentModel.DataAnnotations;`.
-
-  ![using System.ComponentModel.DataAnnotations в верхней части списка.](da1/da.png)
-
-  Visual Studio добавит `using System.ComponentModel.DataAnnotations;`.
-
 Пространство имен [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) будет рассмотрено в следующем учебнике. Атрибут [Display](https://docs.microsoft.com//aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) определяет отображаемое имя поля (в этом случае "Release Date" вместо "ReleaseDate"). Атрибут [DataType](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) определяет тип данных (Date), поэтому сведения о времени, хранящиеся в поле, не отображаются.
 
 Перейдите к Pages/Movies и наведите указатель мыши на ссылку **Edit**, чтобы увидеть конечный URL-адрес.
 
-![Окно браузера с указателем, наведенным на ссылку "Edit" (Изменить), и URL-адресом ссылки http://localhost:1234/Movies/Edit/5](da1/edit7.png)
+![Окно браузера с указателем, наведенным на ссылку "Edit" (Изменить), и URL-адресом ссылки http://localhost:1234/Movies/Edit/5](../../tutorials/razor-pages/da1/edit7.png)
 
 Ссылки **Edit**, **Details** и **Delete** создаются [вспомогательной функцией тегов привязки](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) в файле *Pages/Movies/Index.cshtml*.
 
-[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
+[!code-cshtml[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
 [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro) позволяют серверному коду участвовать в создании и отображении HTML-элементов в файлах Razor. В приведенном выше коде `AnchorTagHelper` динамически создает значение атрибута HTML `href` на основе страницы Razor (маршрут является относительным), атрибут `asp-page` и идентификатор маршрута (`asp-route-id`). Дополнительные сведения см. в разделе [Формирование URL-адресов для страниц](xref:mvc/razor-pages/index#url-generation-for-pages).
 
@@ -83,7 +42,7 @@ ms.lasthandoff: 01/24/2018
 
 Измените метод `OnPostAsync` в файле *Pages/Movies/Edit.cshtml.cs*. Эти изменения выделены в следующем примере кода:
 
-[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet1&highlight=16-23)]
+[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet1&highlight=16-23)]
 
 Приведенный выше код обнаруживает исключения нежесткой блокировки, только когда один работающий параллельно клиент удаляет фильм, а другой публикует изменения для этого фильма.
 
@@ -98,7 +57,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="posting-and-binding-review"></a>Проверка публикации и привязки
 
-Изучите файл *Pages/Movies/Edit.cshtml.cs*: [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet2)]
+Изучите файл *Pages/Movies/Edit.cshtml.cs*: [!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet2)]
 
 При выполнении HTTP-запроса GET к странице Movies/Edit (например, `http://localhost:5000/Movies/Edit/2`) происходит следующее:
 
@@ -121,7 +80,3 @@ ms.lasthandoff: 01/24/2018
 Методы HTTP GET на страницах Razor Index, Create и Delete работают аналогично. Метод HTTP POST `OnPostAsync` на странице Razor Create работает аналогично методу `OnPostAsync` на странице Razor Edit.
 
 В следующем учебнике будет добавлена функция поиска.
-
->[!div class="step-by-step"]
-[Назад: работа с SQL Server LocalDB](xref:tutorials/razor-pages/sql)
-[Добавление поиска](xref:tutorials/razor-pages/search)

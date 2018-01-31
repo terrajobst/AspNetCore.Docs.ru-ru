@@ -2,24 +2,24 @@
 title: "Создание веб-API с помощью ASP.NET Core и Visual Studio для Windows"
 author: rick-anderson
 description: "Сборка веб-API с помощью MVC ASP.NET Core и Visual Studio для Windows"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 08/15/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/first-web-api
-ms.openlocfilehash: 234dbf73f9751ad4f995d6e7471d94f060fb15bf
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 1146132693681eca8f92beb00ebabd7296534688
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 #<a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>Создание веб-API с помощью ASP.NET Core и Visual Studio для Windows
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Майк Уоссон](https://github.com/mikewasson)
 
-В этом руководстве вы создали веб-API для управления элементами списка дел. Пользовательский интерфейс (UI) не создан.
+В этом руководстве вы создали веб-API для управления элементами списка дел. Пользовательский интерфейс не создан.
 
 Существует 3 версии этого учебника:
 

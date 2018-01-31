@@ -1,20 +1,3 @@
----
-title: "Добавление поиска на страницы Razor ASP.NET Core"
-author: rick-anderson
-description: "Инструкции по добавлению поиска на страницы Razor ASP.NET Core"
-manager: wpickett
-ms.author: riande
-ms.date: 08/07/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
-uid: tutorials/razor-pages/search
-ms.openlocfilehash: 9b0ddb630589374549934a1f0462f54e62af1772
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
----
 # <a name="adding-search-to-a-razor-pages-app"></a>Добавление поиска в приложение Razor Pages
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
@@ -23,7 +6,9 @@ ms.lasthandoff: 01/30/2018
 
 Обновите метод `OnGetAsync` страницы Index, добавив следующий код:
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_1stSearch)]
+[!code-cshtml[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/_ViewStart.cshtml)]
+
+[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_1stSearch)]
 
 В первой строке метода `OnGetAsync` создается запрос [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/) для выбора фильмов:
 
@@ -36,7 +21,7 @@ var movies = from m in _context.Movie
 
 Если параметр `searchString` содержит строку, запрос фильмов изменяется для фильтрации по строке поиска:
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SearchNull)]
+[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SearchNull)]
 
 Код `s => s.Title.Contains()` представляет собой [лямбда-выражение](https://docs.microsoft.com/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions). Лямбда-выражения используются в запросах [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/) на основе методов в качестве аргументов стандартных методов операторов запроса, таких как метод [Where](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) или `Contains` (используется в предшествующем коде). Запросы LINQ не выполняются, если они определяются или изменяются путем вызова метода (например, `Where`, `Contains` или `OrderBy`). Вместо этого выполнение запроса откладывается. Это означает, что вычисление выражения откладывается до тех пор, пока не будет выполнена итерация его реализованного значения или не будет вызван метод `ToListAsync`. Дополнительные сведения см. в разделе [Выполнение запроса](https://docs.microsoft.com/dotnet/framework/data/adonet/ef/language-reference/query-execution).
 
@@ -44,7 +29,7 @@ var movies = from m in _context.Movie
 
 Перейдите на страницу Movies и добавьте строку запроса, такую как `?searchString=Ghost`, к URL-адресу (например, `http://localhost:5000/Movies?searchString=Ghost`). Отображаются отфильтрованные фильмы.
 
-![Представление Index](search/_static/ghost.png)
+![Представление Index](../../tutorials/razor-pages/search/_static/ghost.png)
 
 Если на страницу Index добавлен следующий шаблон маршрута, строку поиска можно передать в виде сегмента URL-адреса (например, `http://localhost:5000/Movies/ghost`).
 
@@ -54,23 +39,23 @@ var movies = from m in _context.Movie
 
 Предыдущее ограничение маршрута разрешало поиск названия в виде данных маршрута (сегмент URL-адреса) вместо значения строки запроса.  Символ `?` в `"{searchString?}"` означает, что этот параметр является необязательным.
 
-![Представление Index, в URL-адрес которого добавлено слово ghost, возвращает два фильма: Ghostbusters и Ghostbusters 2](search/_static/g2.png)
+![Представление Index, в URL-адрес которого добавлено слово ghost, возвращает два фильма: Ghostbusters и Ghostbusters 2](../../tutorials/razor-pages/search/_static/g2.png)
 
 Тем не менее пользователи вряд ли будут изменять URL-адрес для поиска фильмов. На этом шаге добавляется пользовательский интерфейс для поиска фильмов. Если было добавлено ограничение маршрута `"{searchString?}"`, удалите его.
 
 Откройте файл *Pages/Movies/Index.cshtml* и добавьте разметку `<form>`, которая выделена в следующем коде:
 
-[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index2.cshtml?highlight=14-19&range=1-22)]
+[!code-cshtml[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index2.cshtml?highlight=14-19&range=1-22)]
 
 Тег HTML `<form>` использует [вспомогательную функцию тега Form](xref:mvc/views/working-with-forms#the-form-tag-helper). При отправке формы строка фильтра отправляется на страницу *Pages/Movies/Index*. Сохраните изменения и проверьте работу фильтра.
 
-![Представление Index со словом ghost в текстовом поле фильтра по названию](search/_static/filter.png)
+![Представление Index со словом ghost в текстовом поле фильтра по названию](../../tutorials/razor-pages/search/_static/filter.png)
 
 ## <a name="search-by-genre"></a>Поиск по жанру
 
 Добавьте следующие выделенные свойства в файл *Pages/Movies/Index.cshtml.cs*:
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-)]
+[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-)]
 
 Свойство `SelectList Genres` содержит список жанров. В этом списке пользователь может выбрать жанр фильма.
 
@@ -78,20 +63,20 @@ var movies = from m in _context.Movie
 
 Обновите метод `OnGetAsync`, используя следующий код:
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SearchGenre)]
+[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SearchGenre)]
 
 Следующий код определяет запрос LINQ, который извлекает все жанры из базы данных.
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_LINQ)]
+[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_LINQ)]
 
 Список жанров `SelectList` создается путем проецирования отдельных жанров.
 
 <!-- BUG in OPS
-Tag snippet_selectlist's start line '75' should be less than end line '29' when resolving "[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]"
+Tag snippet_selectlist's start line '75' should be less than end line '29' when resolving "[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]"
 
 There's no start line.
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]
+[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]
 -->
 
 ```csharp
@@ -102,7 +87,7 @@ Genres = new SelectList(await genreQuery.Distinct().ToListAsync());
 
 Обновите файл *Index.cshtml* следующим образом:
 
-[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/IndexFormGenreNoRating.cshtml?highlight=16-18&range=1-26)]
+[!code-cshtml[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/IndexFormGenreNoRating.cshtml?highlight=16-18&range=1-26)]
 
 Проверьте работу приложения, выполнив поиск по жанру, по названию фильма и по обоим этим параметрам.
 
