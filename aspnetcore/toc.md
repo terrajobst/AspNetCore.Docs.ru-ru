@@ -28,6 +28,21 @@
 ### [Изучение методов Details и Delete](tutorials/first-mvc-app/details.md)
 
 ## [Руководства по кроссплатформенности](xref:tutorials/xplat)
+### [Создание веб-приложения Razor Pages на компьютере Mac](xref:tutorials/razor-pages-mac/index)
+#### [Начало работы с Razor Pages](xref:tutorials/razor-pages-mac/razor-pages-start)
+#### [Добавление модели](xref:tutorials/razor-pages-mac/model)
+#### [Сформированные страницы Razor Pages](xref:tutorials/razor-pages-mac/page)
+#### [Работа с SQLite](xref:tutorials/razor-pages-mac/sql)
+#### [Обновление страниц](xref:tutorials/razor-pages-mac/da1)
+#### [Добавление поиска](xref:tutorials/razor-pages-mac/search)
+
+
+### [Создание веб-приложения Razor Pages с помощью VS Code](xref:tutorials/razor-pages-vsc/index)
+#### [Начало работы с Razor Pages](xref:tutorials/razor-pages-vsc/razor-pages-start)
+#### [Добавление модели](xref:tutorials/razor-pages-vsc/model)
+#### [Сформированные страницы Razor Pages](xref:tutorials/razor-pages-vsc/page)
+#### [Работа с SQLite](xref:tutorials/razor-pages-vsc/sql)
+#### [Обновление страниц](xref:tutorials/razor-pages-vsc/da1)
 
 ### [Веб-приложение MVC в Visual Studio для Mac](xref:tutorials/first-mvc-app-mac/index)
 #### [Начало работы](xref:tutorials/first-mvc-app-mac/start-mvc)
@@ -41,7 +56,7 @@
 #### [Добавление проверки](xref:tutorials/first-mvc-app-mac/validation)
 #### [Изучение методов Details и Delete](xref:tutorials/first-mvc-app/details)
 
-### [Веб-приложение в Visual Studio Code на Mac или Linux](xref:tutorials/first-mvc-app-xplat/index)
+### [Веб-приложение MVC в Visual Studio Code на Mac или Linux](xref:tutorials/first-mvc-app-xplat/index)
 #### [Начало работы](tutorials/first-mvc-app-xplat/start-mvc.md)
 #### [Добавление контроллера](tutorials/first-mvc-app-xplat/adding-controller.md)
 #### [Добавление представления](tutorials/first-mvc-app-xplat/adding-view.md)
@@ -52,15 +67,6 @@
 #### [Добавление нового поля](tutorials/first-mvc-app-xplat/new-field.md)
 #### [Добавление проверки](tutorials/first-mvc-app-xplat/validation.md)
 #### [Изучение методов Details и Delete](tutorials/first-mvc-app/details.md)
-
-
-### [Создание веб-приложения Razor Pages на компьютере Mac](xref:tutorials/razor-pages-mac/index)
-#### [Начало работы с Razor Pages](xref:tutorials/razor-pages-mac/razor-pages-start)
-#### [Добавление модели](xref:tutorials/razor-pages-mac/model)
-#### [Сформированные страницы Razor Pages](xref:tutorials/razor-pages-mac/page)
-### [Создание веб-приложения Razor Pages с помощью VS Code](xref:tutorials/razor-pages-vsc/index)
-#### [Начало работы с Razor Pages](xref:tutorials/razor-pages-vsc/razor-pages-start)
-#### [Добавление модели](xref:tutorials/razor-pages-vsc/model)
 
 ### [Веб-API в Visual Studio для Mac](xref:tutorials/first-web-api-mac)
 ### [Веб-API в Visual Studio Code](xref:tutorials/web-api-vsc)
@@ -244,6 +250,7 @@
 ### [Azure Active Directory](xref:security/authentication/azure-active-directory/index)
 #### [Интеграция Azure AD в веб-приложение ASP.NET Core](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
 #### [Интеграция Azure AD B2C в веб-приложение ASP.NET Core для клиентов](xref:security/authentication/azure-ad-b2c)
+#### [Интеграция Azure AD B2C в веб-API ASP.NET Core](xref:security/authentication/azure-ad-b2c-webapi)
 #### [Вызов веб-API ASP.NET Core из приложения WPF с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
 #### [Вызов веб-API в веб-приложении ASP.NET Core с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
 ### [Защита приложений ASP.NET Core с помощью IdentityServer4](https://identityserver4.readthedocs.io/)
