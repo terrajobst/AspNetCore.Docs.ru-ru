@@ -2,18 +2,18 @@
 title: "Проверка подлинности"
 author: rick-anderson
 description: "В этом документе приводится перечень различных разделов о проверке подлинности в ASP.NET Core."
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/authentication/index
-ms.openlocfilehash: 017aa939ce4c469c08d1cc3a63002ae24c66c096
-ms.sourcegitcommit: 459cb3289741a3f46325e605a617dc926ee0563d
+ms.openlocfilehash: fbef1545f3cdcbe3887a5dd9ceca0e9b420193f1
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="authentication"></a>Проверка подлинности
 
@@ -38,6 +38,8 @@ ms.lasthandoff: 01/22/2018
   * [Интеграция Azure AD в веб-приложение ASP.NET Core](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
 
   * [Интеграция Azure AD B2C в веб-приложение ASP.NET Core для клиентов](azure-ad-b2c.md)
+
+  * [Интеграция Azure AD B2C в веб-API ASP.NET Core](azure-ad-b2c-webapi.md)
 
   * [Вызов веб-API ASP.NET Core из приложения WPF с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
 

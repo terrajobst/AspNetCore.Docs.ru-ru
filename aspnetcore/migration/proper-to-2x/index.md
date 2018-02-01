@@ -1,19 +1,19 @@
 ---
 title: "Миграция с ASP.NET на ASP.NET Core 2.0"
 author: isaac2004
-description: "Данный документ содержит инструкции по миграции существующих приложений с ASP.NET MVC или веб-API на ASP.NET Core 2.0."
-ms.author: scaddie
+description: "Здесь вы найдете указания по миграции существующих приложений с ASP.NET MVC или веб-API на ASP.NET Core 2.0."
 manager: wpickett
+ms.author: scaddie
 ms.date: 08/27/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 2263f8e9936389cf8cf18ff0c6d1d07018650e14
-ms.sourcegitcommit: 09b342b45e7372ba9ebf17f35eee331e5a08fb26
+ms.openlocfilehash: d6050c7946aa45b4c1b878b96baa1b082d0c8f71
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/26/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="migrating-from-aspnet-to-aspnet-core-20"></a>Миграция с ASP.NET на ASP.NET Core 2.0
 
@@ -107,7 +107,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 **Примечание**. Более подробное руководство по конфигурации ASP.NET Core см. в статье [Конфигурация в ASP.NET Core](xref:fundamentals/configuration/index).
 
-## <a name="native-dependency-injection"></a>Введение зависимостей в собственный код
+## <a name="native-dependency-injection"></a>Собственные функции внедрения зависимостей
 При сборке больших, масштабируемых приложений важно обеспечить слабые взаимозависимости между компонентами и службами. [Внедрение зависимостей](xref:fundamentals/dependency-injection) — популярный способ решения этой задачи и собственный компонент ASP.NET Core.
 
 В приложениях ASP.NET разработчики используют для внедрения зависимостей стороннюю библиотеку. Одна из таких библиотек, [Unity](https://github.com/unitycontainer/unity), входит в шаблоны и рекомендации Майкрософт. 
@@ -148,4 +148,5 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 **Примечание**. Более подробное руководство по обработке статических файлов в ASP.NET Core см. в статье [Введение в работу со статическими файлами в ASP.NET Core](xref:fundamentals/static-files).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-* [Перенос библиотек в .NET Core](https://docs.microsoft.com/dotnet/core/porting/libraries)
+
+* [Перенос библиотек в .NET Core](/dotnet/core/porting/libraries)
