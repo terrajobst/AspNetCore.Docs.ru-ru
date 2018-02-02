@@ -90,7 +90,3 @@ Genres = new SelectList(await genreQuery.Distinct().ToListAsync());
 [!code-cshtml[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/IndexFormGenreNoRating.cshtml?highlight=16-18&range=1-26)]
 
 Проверьте работу приложения, выполнив поиск по жанру, по названию фильма и по обоим этим параметрам.
-
->[!div class="step-by-step"]
-[Предыдущая статья — "Обновление страниц"](xref:tutorials/razor-pages/da1)
-[Следующая статья — "Добавление нового поля"](xref:tutorials/razor-pages/new-field)

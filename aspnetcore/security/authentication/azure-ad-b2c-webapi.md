@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: c79f1152afd2f55f53bf5deb9208fa5b4d5ef64d
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a63bfc26bb6b0f5ea1c64641d6f57a3555d7f401
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c"></a>Облачной проверки подлинности в веб-API с Azure Active Directory B2C
 
@@ -101,7 +101,8 @@ Visual Studio создает веб-API с помощью контроллера
 
 В Visual Studio запустите API. Visual Studio запускает браузер указывали на URL-адрес корня API-Интерфейсов. Запишите URL-адрес в адресной строке, а также оставить API в фоновом режиме.
 
-> [!NOTE] Поскольку ни один контроллер, определенные для корневой URL-адрес, браузер отображает ошибку 404 (страница не найдена). Это нормальная ситуация.
+> [!NOTE]
+> Поскольку ни один контроллер, определенные для корневой URL-адрес, браузер отображает ошибку 404 (страница не найдена). Это нормальная ситуация.
 
 ## <a name="use-postman-to-get-a-token-and-test-the-api"></a>Использование почтальон для получения маркера и проверки API
 

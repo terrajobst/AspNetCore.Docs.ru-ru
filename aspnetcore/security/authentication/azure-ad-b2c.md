@@ -9,11 +9,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: d60698b5798e837a5946dbe158a647aae9e149d4
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4815155ad238c31316e00471cf87beb3dd262613
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c"></a>Проверки подлинности в облаке с Azure Active Directory B2C
 
@@ -139,5 +139,5 @@ ms.lasthandoff: 01/30/2018
 * [Включение многофакторной проверки подлинности](/azure/active-directory-b2c/active-directory-b2c-reference-mfa).
 * Настройка дополнительных поставщиков, такие как [Microsoft](/azure/active-directory-b2c/active-directory-b2c-setup-msa-app), [Facebook](/azure/active-directory-b2c/active-directory-b2c-setup-fb-app), [Google](/azure/active-directory-b2c/active-directory-b2c-setup-goog-app), [Amazon](/azure/active-directory-b2c/active-directory-b2c-setup-amzn-app), [Twitter ](/azure/active-directory-b2c/active-directory-b2c-setup-twitter-app)и др.
 * [Использовать API Azure AD Graph](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) для получения дополнительных сведений, таких как членство в группе из клиента Azure AD B2C.
-* [Защита с помощью Azure AD B2C веб-API ASP.NET Core](xref:security/authentication/azure-ad-b2c-api).
+* [Защита с помощью Azure AD B2C веб-API ASP.NET Core](xref:security/authentication/azure-ad-b2c-webapi).
 * [Вызов веб-API .NET из веб-приложения .NET с помощью Azure AD B2C](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-web-api-dotnet).

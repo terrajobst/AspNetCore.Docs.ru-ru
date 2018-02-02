@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/http-modules
-ms.openlocfilehash: f104c9116cfaa4a82ac88e4a83b4b6f172eb2aa1
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 8aac6c649b22dc8f6cfc916aa78d56efad7821a0
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="migrating-http-handlers-and-modules-to-aspnet-core-middleware"></a>Миграция обработчики HTTP-данных и модули в по промежуточного слоя ASP.NET Core 
 
 По [Мэтт Perdeck](https://www.linkedin.com/in/mattperdeck)
 
-В этой статье показано, как выполнить миграцию существующих ASP.NET [HTTP-модули и обработчики в system.webserver](https://docs.microsoft.com/iis/configuration/system.webserver/) для ASP.NET Core [по промежуточного слоя](../fundamentals/middleware.md).
+В этой статье показано, как выполнить миграцию существующих ASP.NET [HTTP-модули и обработчики в system.webserver](https://docs.microsoft.com/iis/configuration/system.webserver/) для ASP.NET Core [по промежуточного слоя](xref:fundamentals/middleware/index).
 
 ## <a name="modules-and-handlers-revisited"></a>Модули и обработчики продукта
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 01/30/2018
 
    * По промежуточного слоя, настроенные с помощью кода, а не в *Web.config*
 
-   * [Ветвление конвейера](../fundamentals/middleware.md#middleware-run-map-use) позволяет отправлять запросы для определенного по промежуточного слоя, основанный на не только URL, но также и от заголовки запроса, строки запроса, и т. д.
+   * [Ветвление конвейера](xref:fundamentals/middleware/index#middleware-run-map-use) позволяет отправлять запросы для определенного по промежуточного слоя, основанный на не только URL, но также и от заголовки запроса, строки запроса, и т. д.
 
 **По промежуточного слоя очень похожи на модули:**
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 01/30/2018
 
    * Порядок по промежуточного слоя для ответов — обратное из того, что для запросов, а порядок модулей является одинаковым для запросов и ответов
 
-   * В разделе [Создание конвейера по промежуточного слоя с IApplicationBuilder](../fundamentals/middleware.md#creating-a-middleware-pipeline-with-iapplicationbuilder)
+   * В разделе [Создание конвейера по промежуточного слоя с IApplicationBuilder](xref:fundamentals/middleware/index#creating-a-middleware-pipeline-with-iapplicationbuilder)
 
 ![ПО промежуточного слоя](http-modules/_static/middleware.png)
 
@@ -93,13 +93,13 @@ ms.lasthandoff: 01/30/2018
 
 [!code-csharp[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyModule.cs?highlight=6,8,24,31)]
 
-Как показано в [по промежуточного слоя](../fundamentals/middleware.md) , по промежуточного слоя ASP.NET Core используется класс, предоставляющий `Invoke` метод ведения `HttpContext` и возвращая `Task`. Новый по промежуточного слоя будет выглядеть следующим образом:
+Как показано в [по промежуточного слоя](xref:fundamentals/middleware/index) , по промежуточного слоя ASP.NET Core используется класс, предоставляющий `Invoke` метод ведения `HttpContext` и возвращая `Task`. Новый по промежуточного слоя будет выглядеть следующим образом:
 
 <a name="http-modules-usemiddleware"></a>
 
 [!code-csharp[Main](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddleware.cs?highlight=9,13,20,24,28,30,32)]
 
-По промежуточного слоя шаблон был взят из раздела [записи по промежуточного слоя](../fundamentals/middleware.md#middleware-writing-middleware).
+Предыдущий шаблона по промежуточного слоя взят из раздела [записи по промежуточного слоя](xref:fundamentals/middleware/index#middleware-writing-middleware).
 
 *MyMiddlewareExtensions* вспомогательный класс для упрощения настройки по промежуточного слоя в вашей `Startup` класса. `UseMyMiddleware` Метод добавляет по промежуточного слоя класса конвейера запросов. Службы, необходимые по промежуточного слоя получить введенный в конструкторе по промежуточного слоя.
 
@@ -121,7 +121,7 @@ HTTP-модули обычно добавляются конвейера зап�
 
 [!code-xml[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6&range=1-3,32-33,36,43,50,101)]
 
-Преобразование с [Добавление нового по промежуточного слоя](../fundamentals/middleware.md#creating-a-middleware-pipeline-with-iapplicationbuilder) в конвейер обработки запросов в вашей `Startup` класса:
+Преобразование с [Добавление нового по промежуточного слоя](xref:fundamentals/middleware/index#creating-a-middleware-pipeline-with-iapplicationbuilder) в конвейер обработки запросов в вашей `Startup` класса:
 
 [!code-csharp[Main](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=16)]
 
@@ -383,4 +383,4 @@ public async Task Invoke(HttpContext httpContext)
 * [Обработчики HTTP-данных и общие сведения о модули HTTP](/iis/configuration/system.webserver/)
 * [Конфигурация](xref:fundamentals/configuration/index)
 * [Запуск приложения](xref:fundamentals/startup)
-* [ПО промежуточного слоя](xref:fundamentals/middleware)
+* [ПО промежуточного слоя](xref:fundamentals/middleware/index)

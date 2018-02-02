@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/integration-testing
-ms.openlocfilehash: ebae76da01e1b24466174179a9d4bbe826202cc3
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4a5f14e11de6ed91f67808c3ea8c78a7b1d43b03
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="integration-testing-in-aspnet-core"></a>Интеграция тестирования в ASP.NET Core
 
@@ -127,7 +127,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Добавление попробуйте [MVC](xref:mvc/overview) в приложение и создание контроллера для обработки простых проверки. Тем не менее при условии, что в настоящее время не требуются другие MVC функциональные возможности, который немного overkill.
 
-Тем не менее, можно воспользоваться преимуществами ASP.NET Core [по промежуточного слоя](xref:fundamentals/middleware), которое поможет нам инкапсуляции простых, логика в отдельный класс проверки и добиться лучшего [Разделение областей ответственности](http://deviq.com/separation-of-concerns/) в `Configure` метод.
+Тем не менее, можно воспользоваться преимуществами ASP.NET Core [по промежуточного слоя](xref:fundamentals/middleware/index), которое поможет нам инкапсуляции простых, логика в отдельный класс проверки и добиться лучшего [Разделение областей ответственности](http://deviq.com/separation-of-concerns/) в `Configure` метод.
 
 Вы хотите разрешить путь по промежуточного слоя использует, чтобы указать в качестве параметра, поэтому класс по промежуточного слоя ожидает `RequestDelegate` и `PrimeCheckerOptions` экземпляра в своем конструкторе. Если путь запроса не соответствует — это по промежуточного слоя настроен следует ожидать, просто вызвать следующее по промежуточного слоя в цепочке и в дальнейшем ничего. Остальная часть код реализации, которая была `Configure` теперь `Invoke` метод.
 
@@ -150,5 +150,5 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ## <a name="resources"></a>Ресурсы
 
 * [Модульное тестирование](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
-* [ПО промежуточного слоя](xref:fundamentals/middleware)
+* [ПО промежуточного слоя](xref:fundamentals/middleware/index)
 * [Контроллеры тестирования](xref:mvc/controllers/testing)

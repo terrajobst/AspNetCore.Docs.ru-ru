@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 459f1793b1f1f73792bb6537856cb739774c6261
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 8aeb04f772fa687706bd8080b4306ff0040a159f
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Подтверждение учетной записи и пароль восстановления в ASP.NET Core
 
@@ -114,7 +114,7 @@ config.SignIn.RequireConfirmedEmail = true;
 
 ### <a name="configure-email-provider"></a>Настройка поставщика услуг электронной почты
 
-В этом учебнике SendGrid используется для отправки электронной почты. Требуется учетной записи SendGrid и ключ для отправки электронной почты. Можно использовать другие поставщики электронной почты. Включает 2.x ASP.NET Core `System.Net.Mail`, позволяющий отправлять электронную почту из приложения. Мы рекомендуем использовать SendGrid или другая служба электронной почты для отправки электронной почты.
+В этом учебнике SendGrid используется для отправки электронной почты. Требуется учетной записи SendGrid и ключ для отправки электронной почты. Можно использовать другие поставщики электронной почты. Включает 2.x ASP.NET Core `System.Net.Mail`, позволяющий отправлять электронную почту из приложения. Мы рекомендуем использовать SendGrid или другая служба электронной почты для отправки электронной почты. SMTP трудно обеспечить безопасность и правильность настройки.
 
 [Параметры шаблона](xref:fundamentals/configuration/options) используется для доступа к параметрам учетной записи и ключа пользователя. Дополнительные сведения см. в разделе [конфигурации](xref:fundamentals/configuration/index).
 

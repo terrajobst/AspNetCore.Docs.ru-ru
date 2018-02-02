@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Общие сведения об учетных данных ASP.NET Core"
 author: rick-anderson
 description: "Используйте удостоверение с приложением ASP.NET Core. Включает параметр паролей (RequireDigit, RequiredLength, RequiredUniqueChars и многое другое)."
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity
-ms.openlocfilehash: 52b78922da54a2d4e66120552c2ffc9f585f406b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0c05c636a991371b1a1feec88b5393724a6dc629
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об учетных данных ASP.NET Core
 
 По [Pranav Rastogi](https://github.com/rustd), [Рик Андерсон](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra), Джон Гэллоуэй [Reitan Эрик](https://github.com/Erikre), и [Стив Смит](https://ardalis.com/)
 
-ASP.NET Core Identity позволяет реализовать проверку подлинности в приложении. Пользователи могут создавать учетную запись с логином и паролем либо использовать внешнего поставщика, например Facebook, Google, учетную запись Майкрософт, Twitter и другие.
+Удостоверение ASP.NET Core является система членства, в котором можно добавить функциональные возможности входа в приложение. Пользователи могут создавать учетную запись и имя входа с именем пользователя и пароль или их можно использовать поставщик внешней учетной записи, например Facebook, Google, учетной записи Майкрософт, Twitter или другим пользователям.
 
 Вы можете настроить ASP.NET Identity Core использование базы данных SQL Server для хранения имен пользователей, пароли и данные профиля. Кроме того можно использовать собственные постоянное хранилище, например, табличное хранилище Azure. Этот документ содержит инструкции по Visual Studio и с помощью CLI.
 
@@ -27,9 +27,9 @@ ASP.NET Core Identity позволяет реализовать проверку
 
 ## <a name="overview-of-identity"></a>Общие сведения об идентификации
 
-В этом разделе вы узнаете, как использовать ASP.NET Core Identity для реализации регистрации, входа и выхода пользователя. Более подробные инструкции по созданию приложений с помощью ASP.NET Core Identity см. в разделе "Дальнейшие действия" в конце этой статьи.
+В этом разделе будет использование ASP.NET Core Identity Добавление функциональности для регистрации, вход и выход пользователя. Более подробные инструкции по созданию приложений с помощью ASP.NET Core Identity см. в разделе Дальнейшие действия в конце этой статьи.
 
-1.  Создание проекта "Веб-приложение ASP.NET Core" с использованием проверки подлинности "Индивидуальные учетные записи пользователей".
+1.  Создайте проект веб-приложения ASP.NET Core с отдельными учетными записями пользователей.
 
     # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -55,9 +55,9 @@ ASP.NET Core Identity позволяет реализовать проверку
 
     ---
 
-2.  Настройка службы удостоверений и добавление ПО промежуточного слоя в `Startup`.
+2.  Настройка службы удостоверений и добавление по промежуточного слоя в `Startup`.
 
-    Службы проверки подлинности регистрируются в приложении в методе `ConfigureServices` класса `Startup`:
+    Службы удостоверений добавляются к приложению в `ConfigureServices` метод `Startup` класса:
 
     # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
     
@@ -65,7 +65,7 @@ ASP.NET Core Identity позволяет реализовать проверку
     
     Эти службы доступны для приложения с помощью [внедрения зависимостей](xref:fundamentals/dependency-injection).
     
-    Путем вызова для приложения включена удостоверения `UseAuthentication` в `Configure` метод. `UseAuthentication`Добавление проверки подлинности [по промежуточного слоя](xref:fundamentals/middleware) к конвейеру запросов.
+    Путем вызова для приложения включена удостоверения `UseAuthentication` в `Configure` метод. `UseAuthentication`Добавление проверки подлинности [по промежуточного слоя](xref:fundamentals/middleware/index) к конвейеру запросов.
     
     [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
     
@@ -75,38 +75,38 @@ ASP.NET Core Identity позволяет реализовать проверку
     
     Эти службы доступны для приложения с помощью [внедрения зависимостей](xref:fundamentals/dependency-injection).
     
-    Удостоверения для приложения включаются с помощью вызова `UseAuthentication` в методе `Configure`. Метод `UseAuthentication` добавляет [ПО промежуточного слоя](xref:fundamentals/middleware) для проверки подлинности к конвейеру запросов.
+    Путем вызова для приложения включена удостоверения `UseIdentity` в `Configure` метод. `UseIdentity`Добавляет файл cookie проверки подлинности с помощью [по промежуточного слоя](xref:fundamentals/middleware/index) к конвейеру запросов.
         
     [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configure&highlight=21)]
     
     ---
      
-    Дополнительные сведения о запуске приложения см. в разделе [Запуск приложения](xref:fundamentals/startup).
+    Дополнительные сведения о время загрузки приложения см. в разделе [запуска приложения](xref:fundamentals/startup).
 
-3.  Создание пользователя.
+3.  Создайте пользователя.
 
-    Запустите приложение и щелкните ссылку **Register** (Регистрация).
+    Запустите приложение и щелкните на **зарегистрировать** ссылку.
 
     Если при первом выполнении этого действия может потребоваться для выполнения миграции. Приложение предложит **применить миграции**. При необходимости обновите страницу.
     
-    ![Веб-страница применения миграции](identity/_static/apply-migrations.png)
+    ![Применить миграции веб-страницы](identity/_static/apply-migrations.png)
     
-    Кроме того, можно проверить работу удостоверения ASP.NET Core с приложением без постоянной базы данных, а с использованием базы данных в памяти. Для этого добавьте в приложение пакет ``Microsoft.EntityFrameworkCore.InMemory`` и измените вызов метода ``AddDbContext`` в ``ConfigureServices`` следующим образом:
+    Кроме того можно проверить с помощью ASP.NET Core Identity вместе с приложением без постоянных баз данных с помощью базы данных в памяти. Чтобы использовать базу данных в памяти, добавьте ``Microsoft.EntityFrameworkCore.InMemory`` пакета приложения и изменить вызов приложения ``AddDbContext`` в ``ConfigureServices`` следующим образом:
 
     ```csharp
     services.AddDbContext<ApplicationDbContext>(options =>
         options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
     ```
     
-    Когда пользователь нажимает на ссылку **Register** (Регистрация), вызывается метод действия ``Register`` контроллера ``AccountController``. Действие ``Register`` создает пользователя путем вызова метода `CreateAsync` объекта `_userManager` (обеспечивается в ``AccountController`` путем внедрения зависимостей):
+    Когда пользователь щелкает **зарегистрировать** ссылку, ``Register`` при вызове действия на ``AccountController``. ``Register`` Действие создает пользователя путем вызова `CreateAsync` на `_userManager` объекта (для ``AccountController`` путем внедрения зависимостей):
  
     [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_register&highlight=11)]
 
-    Если пользователь создан, происходит вход пользователя путем вызова метода ``_signInManager.SignInAsync``.
+    Если пользователь успешно создан, пользователь вошел вызове ``_signInManager.SignInAsync``.
 
-    **Примечание.** Раздел [подтверждение учетной записи](xref:security/authentication/accconfirm#prevent-login-at-registration) описывает, как предотвратить автоматический вход пользователя при регистрации.
+    **Примечание:** разделе [подтверждение учетной записи](xref:security/authentication/accconfirm#prevent-login-at-registration) для меры по предотвращению немедленно входа при регистрации.
  
-4.  Вход.
+4.  Войти.
  
     Пользователи могут войти, щелкнув **входа** ссылок в верхней части сайта, или может быть переход на страницу входа, если они пытаются получить доступ к части сайта, требующей авторизации. Когда пользователь отправляет форму на странице входа ``AccountController`` ``Login`` вызова действия.
 
@@ -116,7 +116,7 @@ ASP.NET Core Identity позволяет реализовать проверку
  
     Базовый ``Controller`` предоставляемых классами ``User`` свойство, которое можно открыть из методов контроллера. Например, можно перечислить `User.Claims` и принимать решения об авторизации. Дополнительные сведения см. в разделе [авторизации](xref:security/authorization/index).
  
-5.  Выход.
+5.  Выйдите из системы.
  
     Щелкнув **Выход** связывать вызовы `LogOut` действие.
  
