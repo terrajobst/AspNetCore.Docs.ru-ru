@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/secure-data
-ms.openlocfilehash: 944886a7d55af8966dc51424d16bec5ff58dbc05
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6333082a2b2b4f6d3f1ce2afc600b4203a0f5dca
+ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Создание приложения ASP.NET Core пользовательскими данными, защищенных авторизации
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 01/30/2018
 * [Авторизация](xref:security/authorization/index)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
-Версия ASP.NET Core 1.1 этого учебника, [это](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data) папки. 1.1, ASP.NET Core образец находится в [образцы](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2).
+В разделе [этот файл PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_1-16-18.pdf) для версии ASP.NET Core MVC. Версия ASP.NET Core 1.1 этого учебника, [это](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data) папки. 1.1, ASP.NET Core образец находится в [образцы](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2).
 
 ## <a name="the-starter-and-completed-app"></a>Начальная и завершенное приложение
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 01/30/2018
 
 Используйте ASP.NET [удостоверение](xref:security/authentication/identity) идентификатор пользователя, чтобы предоставить пользователям можно изменить свои данные, но не данные других пользователей. Добавить `OwnerID` и `ContactStatus` для `Contact` модели:
 
-[!code-csharp[Main](secure-data/samples/final2/Models/Contact.cs?name=snippet1&highlight=5-6,16-)]
+[!code-csharp[Main](secure-data/samples/final2/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
 `OwnerID`идентификатор пользователя из `AspNetUser` в таблицу [удостоверение](xref:security/authentication/identity) базы данных. `Status` Поле определяет, является ли контакт для просмотра обычными пользователями.
 
@@ -104,7 +104,7 @@ dotnet ef database update
 
 В `ConfigureServices` метод *файла Startup.cs* файл, добавьте [RequireHttpsAttribute](/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute) фильтр авторизации:
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_SSL&highlight=19-)]
+[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_SSL&highlight=19-999)]
 
 Если вы используете Visual Studio, протокол SSL включен.
 
@@ -116,7 +116,7 @@ dotnet ef database update
 
 Задайте политику проверки подлинности по умолчанию, чтобы требовать проверку подлинности пользователей. Можно отключить проверку подлинности на уровне метода действия, контроллера или страница Razor с `[AllowAnonymous]` атрибута. Задание политики проверки подлинности по умолчанию, чтобы требовать проверку подлинности пользователей защищает вновь добавленных страниц Razor и контроллеров. Наличие более безопасна, чем новых контроллеров и страниц Razor для включения проверки подлинности, предусмотренного по умолчанию `[Authorize]` атрибута. Добавьте следующий код в `ConfigureServices` метод *файла Startup.cs* файла:
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_defaultPolicy&highlight=31-)]
+[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_defaultPolicy&highlight=31-999)]
 
 Добавить [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) индекс страницы об и контактов, анонимные пользователи могут получить сведения о веб-сайте, прежде чем они зарегистрировать. 
 
@@ -177,7 +177,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 С помощью Entity Framework Core Services должны быть зарегистрированы для [внедрения зависимостей](xref:fundamentals/dependency-injection) с помощью [AddScoped](/aspnet/core/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions). `ContactIsOwnerAuthorizationHandler` Использует ASP.NET Core [удостоверения](xref:security/authentication/identity), которые построены на Entity Framework Core. Зарегистрировать обработчики с коллекцией служб, они будут доступны для `ContactsController` через [внедрения зависимостей](xref:fundamentals/dependency-injection). Добавьте следующий код в конец `ConfigureServices`:
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=ConfigureServices&highlight=41-)]
+[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=ConfigureServices&highlight=41-999)]
 
 `ContactAdministratorsAuthorizationHandler`и `ContactManagerAuthorizationHandler` добавляются как одноэлементных кортежей. Они единственных экземпляров, так как они не используют EF и все сведения, необходимые возможности `Context` параметр `HandleRequirementAsync` метода.
 
@@ -246,7 +246,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 Обновление **изменить** и **удалить** связывает *Pages/Contacts/Index.cshtml* , только отображаются для пользователей с соответствующими разрешениями:
 
-[!code-cshtml[Main](secure-data/samples/final2/Pages/Contacts/Index.cshtml?highlight=34-36,64-)]
+[!code-cshtml[Main](secure-data/samples/final2/Pages/Contacts/Index.cshtml?highlight=34-36,64-999)]
 
 > [!WARNING]
 > Скрытие ссылок от пользователей, у которых нет разрешения на изменение данных не защищать приложения. Скрытие ссылки позволяет сделать приложение более удобной для пользователей, отображая только допустимые ссылки. Пользователи могут hack созданные URL-адреса, вызывать изменение и удаление операций с данными, которыми они не владеют. Страница Razor или контроллер должен Принудительная проверка доступа для защиты данных.
@@ -255,7 +255,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 Обновление представления сведений, чтобы менеджеры могли утверждать или отклонять контакты:
 
-[!code-cshtml[Main](secure-data/samples/final2/Pages/Contacts/Details.cshtml?range=48-)]
+[!code-cshtml[Main](secure-data/samples/final2/Pages/Contacts/Details.cshtml?range=48-999)]
 
 Обновите модель страницы сведений:
 

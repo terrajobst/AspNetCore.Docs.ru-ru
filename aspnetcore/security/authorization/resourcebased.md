@@ -11,21 +11,21 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 708f306da740870b106cbeeb96879480f8745439
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 723e371e0d0b4877f96898c68cd59b433fa97dc1
+ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="resource-based-authorization"></a>Авторизация на основе ресурсов
-
-Автор: [Скотт Адди](https://twitter.com/Scott_Addie) (Scott Addie)
 
 Зависит от стратегии авторизации доступ к ресурсу. Рассмотрим документ, который имеет свойство автора. Только автор может обновлять документа. Следовательно документа должны извлекаться из хранилища данных для оценки авторизации.
 
 Атрибут оценки происходит перед привязкой данных и до выполнения действия, который загружает документ или обработчику страницы. По этим причинам декларативный авторизации с помощью `[Authorize]` атрибута не будет достаточно. Вместо этого можно вызвать метод настраиваемой авторизации&mdash;стиля называется принудительной авторизации.
 
 Используйте [образец приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples) ([загрузке](xref:tutorials/index#how-to-download-a-sample)) для изучения функций, описанных в этом разделе.
+
+[Создание приложения ASP.NET Core пользовательскими данными, защищенных авторизации](xref:security/authorization/secure-data) содержит пример приложения, использующего авторизации на основе ресурсов.
 
 ## <a name="use-imperative-authorization"></a>Использование принудительной авторизации
 
