@@ -36,13 +36,13 @@
 #### [Обновление страниц](xref:tutorials/razor-pages-mac/da1)
 #### [Добавление поиска](xref:tutorials/razor-pages-mac/search)
 
-
 ### [Создание веб-приложения Razor Pages с помощью VS Code](xref:tutorials/razor-pages-vsc/index)
 #### [Начало работы с Razor Pages](xref:tutorials/razor-pages-vsc/razor-pages-start)
 #### [Добавление модели](xref:tutorials/razor-pages-vsc/model)
 #### [Сформированные страницы Razor Pages](xref:tutorials/razor-pages-vsc/page)
 #### [Работа с SQLite](xref:tutorials/razor-pages-vsc/sql)
 #### [Обновление страниц](xref:tutorials/razor-pages-vsc/da1)
+#### [Добавление поиска](xref:tutorials/razor-pages-vsc/search)
 
 ### [Веб-приложение MVC в Visual Studio для Mac](xref:tutorials/first-mvc-app-mac/index)
 #### [Начало работы](xref:tutorials/first-mvc-app-mac/start-mvc)
@@ -102,7 +102,9 @@
 # [Основы](fundamentals/index.md)
 ## [Запуск приложения](fundamentals/startup.md)
 ## [Введение зависимостей (службы)](fundamentals/dependency-injection.md)
-## [ПО промежуточного слоя](fundamentals/middleware.md)
+## [ПО промежуточного слоя](xref:fundamentals/middleware/index)
+### [ПО промежуточного слоя](xref:fundamentals/middleware/index)
+### [Фабричное ПО промежуточного слоя](xref:fundamentals/middleware/extensibility)
 ## [Работа со статическими файлами](fundamentals/static-files.md)
 ## [Маршрутизация](fundamentals/routing.md)
 ## [ПО промежуточного слоя для переопределения URL-адресов](fundamentals/url-rewriting.md)
