@@ -13,11 +13,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/performance/using-signalr-performance-counters-in-an-azure-web-role
 msc.type: authoredcontent
-ms.openlocfilehash: 0d2717eb318d282e21e9aa8622a205f556e3a4ee
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2f6c6feb030fc17f95e7862c39029569f3d8c5dc
+ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/05/2018
 ---
 # <a name="using-signalr-performance-counters-in-an-azure-web-role"></a>Использование счетчиков производительности SignalR в веб-роли Azure
 
@@ -35,13 +35,13 @@ SignalR счетчики производительности использую
 
 1. Откройте Visual Studio 2015.
 
-2. В Visual Studio 2015 выберите **файл &gt; New &gt; проекта**.
+2. В Visual Studio 2015 выберите **файл** > **New** > **проекта**.
 
 3. В **шаблоны** области **новый проект** под **Visual C#** выберите **облака** , а затем выберите **Облачной службы azure** шаблона. Присвойте приложению имя **SignalRPerfCounters** и выберите **ОК**.
 
    ![Новое приложение в облаке](using-signalr-performance-counters-in-an-azure-web-role/_static/image1.png)
     
-4. В **новой облачной службы Microsoft Azure** диалогового окна выберите **веб-роли ASP.NET** и выберите  **&gt;**  кнопку, чтобы добавить роль в проект. Нажмите кнопку **ОК**.
+4. В **новой облачной службы Microsoft Azure** диалогового окна выберите **веб-роли ASP.NET** и выберите > кнопку, чтобы добавить роль в проект. Нажмите кнопку **ОК**.
 
    ![Добавить веб-роль ASP.NET](using-signalr-performance-counters-in-an-azure-web-role/_static/image2.png)
     
@@ -57,21 +57,21 @@ SignalR счетчики производительности использую
 
    [!code-xml[Main](using-signalr-performance-counters-in-an-azure-web-role/samples/sample1.xml)]
     
-8. Откройте **консоль диспетчера пакетов** из **средства &gt; диспетчера пакетов NuGet**. Введите следующие команды, чтобы установить последнюю версию SignalR и служебные программы пакета SignalR.
+8. Откройте **консоль диспетчера пакетов** из **средства** > **диспетчера пакетов NuGet**. Введите следующие команды, чтобы установить последнюю версию SignalR и служебные программы пакета SignalR.
 
    [!code-powershell[Main](using-signalr-performance-counters-in-an-azure-web-role/samples/sample2.ps1)]
     
-9. Настройка приложения для установки счетчиков производительности SignalR в экземпляре роли при его запуске и перезапускается. В **обозревателе решений**, щелкните правой кнопкой мыши **WebRole1** проект и выберите **добавить &gt; новую папку**. Имя новой папки *запуска*.
+9. Настройка приложения для установки счетчиков производительности SignalR в экземпляре роли при его запуске и перезапускается. В **обозревателе решений**, щелкните правой кнопкой мыши **WebRole1** проект и выберите **добавить** > **новую папку**. Имя новой папки *запуска*.
 
    ![Добавьте папку при запуске](using-signalr-performance-counters-in-an-azure-web-role/_static/image5.png)
     
-10. Копировать *signalr.exe* файла (добавлены с классом **Microsoft.AspNet.SignalR.Utils** пакета) из  **&lt;папки проекта&gt;\SignalRPerfCounters\packages\ Microsoft.AspNet.SignalR.Utils. &lt;версии&gt;\tools** для *запуска* папку, созданную на предыдущем шаге.
+10. Копировать *signalr.exe* файла (добавлены с классом **Microsoft.AspNet.SignalR.Utils** пакета) из \<папки проекта > / SignalRPerfCounters/packages/Microsoft.AspNet.SignalR.Utils.\< версия > / средств для *запуска* папку, созданную на предыдущем шаге.
 
-11. В **обозревателе решений**, щелкните правой кнопкой мыши *запуска* папку и выберите **добавить &gt; существующий элемент**. В диалоговом окне, которое отображается, выберите *signalr.exe* и выберите **добавить**.
+11. В **обозревателе решений**, щелкните правой кнопкой мыши *запуска* папку и выберите **добавить** > **существующий элемент**. В диалоговом окне, которое отображается, выберите *signalr.exe* и выберите **добавить**.
 
     ![Добавление signalr.exe проект](using-signalr-performance-counters-in-an-azure-web-role/_static/image6.png)
     
-12. Щелкните правой кнопкой мыши *запуска* созданную папку. Выберите **добавить &gt; новый элемент**. Выберите **Общие** выберите **текстовый файл**и назовите новый элемент *SignalRPerfCounterInstall.cmd*. Этот командный файл устанавливает счетчиков производительности SignalR в веб-роли.
+12. Щелкните правой кнопкой мыши *запуска* созданную папку. Выберите **Добавить** > **Новый объект**. Выберите **Общие** выберите **текстовый файл**и назовите новый элемент *SignalRPerfCounterInstall.cmd*. Этот командный файл устанавливает счетчиков производительности SignalR в веб-роли.
 
     ![Создание файла пакета установки счетчиков производительности SignalR](using-signalr-performance-counters-in-an-azure-web-role/_static/image7.png)
      
@@ -106,7 +106,7 @@ SignalR счетчики производительности использую
 
     [!code-cshtml[Main](using-signalr-performance-counters-in-an-azure-web-role/samples/sample6.cshtml)]
     
-21. Создайте новую папку в **WebRole1** проект с именем *концентраторов*. Щелкните правой кнопкой мыши *концентраторов* папки в **обозревателе решений**выберите **Web &gt; SignalR**и выберите **класс концентратора SignalR (v2)**. Назовите новый концентратор *MyHub.cs* и выберите **добавить**.
+21. Создайте новую папку в **WebRole1** проект с именем *концентраторов*. Щелкните правой кнопкой мыши *концентраторов* папки в **обозревателе решений**выберите **Web** > **SignalR**и выберите  **Класс концентратора SignalR (v2)**. Назовите новый концентратор *MyHub.cs* и выберите **добавить**.
 
     ![Добавление класса концентратора SignalR в папку концентраторы в диалоговом окне Добавление нового элемента](using-signalr-performance-counters-in-an-azure-web-role/_static/image13.png)
 
@@ -114,7 +114,7 @@ SignalR счетчики производительности использую
 
     [!code-csharp[Main](using-signalr-performance-counters-in-an-azure-web-role/samples/sample7.cs)]
     
-23. *[Crank.exe](signalr-connection-density-testing-with-crank.md)*  является его плотность подключения тестирование, предоставляемый с SignalR базу кода. Поскольку ручки требуется постоянное подключение, его добавить на сайт для использования при тестировании. Добавить новую папку для **WebRole1** проект с именем *PersistentConnections*. Щелкните правой кнопкой мыши эту папку и выберите **добавить &gt; класса**. Назовите новый файл класса *MyPersistentConnections.cs* и выберите **добавить**.
+23. *[Crank.exe](signalr-connection-density-testing-with-crank.md)*  является его плотность подключения тестирование, предоставляемый с SignalR базу кода. Поскольку ручки требуется постоянное подключение, его добавить на сайт для использования при тестировании. Добавить новую папку для **WebRole1** проект с именем *PersistentConnections*. Щелкните правой кнопкой мыши эту папку и выберите **добавить** > **класса**. Назовите новый файл класса *MyPersistentConnections.cs* и выберите **добавить**.
 
 24. Visual Studio откроет *MyPersistentConnections.cs* файл в главном окне. Замените содержимое следующим кодом, а затем сохраните и закройте файл:
 
@@ -133,7 +133,7 @@ SignalR счетчики производительности использую
 
     [!code-xml[Main](using-signalr-performance-counters-in-an-azure-web-role/samples/sample12.xml?highlight=3,7)]
     
-27. Подождите около одной минуты. Откройте окно инструментов Cloud Explorer в Visual Studio (**представление &gt; Cloud Explorer**) и разверните путь `(Local)\Storage Accounts\(Development)\Tables`. Дважды щелкните **WADPerformanceCountersTable**. Вы увидите счетчиков SignalR в таблице данных. Если таблица не отображается, может потребоваться повторно введите учетные данные хранилища Azure. Необходимо выбрать **обновление** кнопку, чтобы просмотреть таблицы в **Cloud Explorer** или выберите **обновление** кнопку в окне Открыть таблицу для просмотра данных в таблице.
+27. Подождите около одной минуты. Откройте окно инструментов Cloud Explorer в Visual Studio (**представление** > **Cloud Explorer**) и разверните путь `(Local)/Storage Accounts/(Development)/Tables`. Дважды щелкните **WADPerformanceCountersTable**. Вы увидите счетчиков SignalR в таблице данных. Если таблица не отображается, может потребоваться повторно введите учетные данные хранилища Azure. Необходимо выбрать **обновление** кнопку, чтобы просмотреть таблицы в **Cloud Explorer** или выберите **обновление** кнопку в окне Открыть таблицу для просмотра данных в таблице.
 
     ![При выборе таблицы счетчиков производительности WAD в Visual Studio Cloud Explorer](using-signalr-performance-counters-in-an-azure-web-role/_static/image11.png)
 
