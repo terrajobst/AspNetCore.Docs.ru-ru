@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/index
-ms.openlocfilehash: 01a804151ad813dbf47ab4b2415076a4e01bf1d9
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: bcfd20fcea1e683bcbef00a9e67bb28add4f23be
+ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="aspnet-core-tutorials"></a>Учебники по ASP.NET Core
 
@@ -52,9 +52,10 @@ ms.lasthandoff: 01/30/2018
 * [Создание серверных служб для собственных мобильных приложений](../mobile/native-mobile-backend.md)
 
 ## <a name="data-access-and-storage"></a>Доступ к данным и хранилища данных
-* [Начало работы с ASP.NET Core и Entity Framework Core в Visual Studio](../data/ef-mvc/index.md)
-* [ASP.NET Core с EF Core — новая база данных](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)
-* [ASP.NET Core с EF Core — существующая база данных](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)
+* [Начало работы с Razor Pages и EF Core в Visual Studio](xref:data/ef-rp/intro)
+* [Начало работы с ASP.NET Core MVC и EF Core в Visual Studio](../data/ef-mvc/index.md)
+* [ASP.NET Core MVC с EF Core — новая база данных](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)
+* [ASP.NET Core MVC с EF Core — существующая база данных](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)
 
 ## <a name="authentication-and-authorization"></a>Аутентификация и авторизация
 * [Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков](../security/authentication/social/index.md)
