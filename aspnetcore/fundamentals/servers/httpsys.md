@@ -1,37 +1,37 @@
 ---
-title: "Реализация веб-сервера, HTTP.sys, в ASP.NET Core"
+title: "Реализации веб-сервера HTTP.sys в ASP.NET Core"
 author: rick-anderson
-description: "Вводит HTTP.sys, веб-сервер для ASP.NET Core в Windows. Основанное на драйвер режима ядра Http.Sys, HTTP.sys — это альтернатива Kestrel, который можно использовать для прямого подключения к Интернету, без IIS."
-ms.author: riande
+description: "Общие сведения о веб-сервере HTTP.sys для ASP.NET Core в Windows. HTTP.sys, основанный на работающем в режиме ядра драйвере Http.Sys, является альтернативой для Kestrel, которую можно использовать для прямого подключения к Интернету без служб IIS."
 manager: wpickett
+ms.author: riande
 ms.date: 08/07/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 6fc356d8ecc1b699269286f244000b493e48a2c5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: f36a86fc67e715165afd0c38992f9767f90cf3b4
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера, HTTP.sys, в ASP.NET Core
+# <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера HTTP.sys в ASP.NET Core
 
-По [Tom Dykstra](https://github.com/tdykstra) и [Ross Крис](https://github.com/Tratcher)
+Авторы: [Том Дикстра](https://github.com/tdykstra) (Tom Dykstra) и [Крис Росс](https://github.com/Tratcher) (Chris Ross)
 
 > [!NOTE]
-> Этот раздел относится только к ASP.NET Core 2.0 и более поздних версий. В более ранних версиях ASP.NET Core, называется HTTP.sys [WebListener](xref:fundamentals/servers/weblistener).
+> Сведения из этого раздела распространяются только на ASP.NET Core 2.0 и более поздних версий. В более ранних версиях ASP.NET Core HTTP.sys называется [WebListener](xref:fundamentals/servers/weblistener).
 
-Компонент HTTP.sys — [веб-сервер для ASP.NET Core](index.md) , которое будет выполняться только в Windows. Она была основана на [драйвер режима ядра Http.Sys](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx). Компонент HTTP.sys — это альтернатива [Kestrel](kestrel.md) , где есть некоторые функции, которые не Kestel. **HTTP.sys не может использоваться с IIS или IIS Express, поскольку он не совместим с [модуль ASP.NET Core](aspnet-core-module.md).**
+HTTP.sys — это [веб-сервер для ASP.NET Core](index.md), который запускается только в Windows. Он основан на [работающем в режиме ядра драйвере Http.Sys](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx). HTTP.sys является альтернативой для [Kestrel](kestrel.md) и предлагает некоторые функции, отсутствующие в Kestel. **HTTP.sys не подходит для использования с IIS или IIS Express, так как он не совместим с [модулем ASP.NET Core](aspnet-core-module.md).**
 
 HTTP.sys поддерживает следующие функции:
 
 - [Проверка подлинности Windows](xref:security/authentication/windowsauth)
-- Совместное использование порта
-- HTTPS с сетевого Адаптера
+- Совместное использование портов
+- HTTPS с SNI
 - HTTP/2 через TLS (Windows 10)
-- Файл прямой передачи данных
-- Кэширование ответов
+- Прямая передача файлов
+- Кэширование откликов
 - WebSockets (Windows 8)
 
 Поддерживаемые версии Windows:
@@ -40,138 +40,138 @@ HTTP.sys поддерживает следующие функции:
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="when-to-use-httpsys"></a>Когда следует использовать HTTP.sys
+## <a name="when-to-use-httpsys"></a>Условия для применения HTTP.sys
 
-HTTP.sys полезен для развертываний, где нужно предоставить сервера к Интернету напрямую без использования служб IIS.
+HTTP.sys удобен для развертываний, где нужно подключить сервер к Интернету напрямую без использования служб IIS.
 
 ![HTTP.sys взаимодействует с Интернетом напрямую.](httpsys/_static/httpsys-to-internet.png)
 
-Так как она была основана на Http.Sys, HTTP.sys не требует обратного прокси-сервера для защиты от атак на систему. Компонент Http.Sys — это надежная технология, которое защищает от атак многих типов, а также обеспечивает надежности, безопасности и масштабируемости полнофункциональное веб-сервера. Сами службы IIS выполняется как HTTP-прослушивателем на базе Http.Sys. 
+Так как HTTP.sys основан на Http.Sys, ему не нужен обратный прокси-сервер для защиты от атак. Http.Sys — это проверенная технология, которая защищает от многих типов атак, а также обеспечивает надежность, безопасность и масштабируемость полнофункционального веб-сервера. Сами службы IIS выполняются в качестве HTTP-прослушивателя поверх Http.Sys. 
 
-Компонент HTTP.sys — хороший выбор для внутреннего развертывания при необходимости компонент, не поддерживаемых Kestrel, такие как проверка подлинности Windows.
+HTTP.sys хорошо подходит для внутренних развертываний, когда нужна функция, отсутствующая в Kestrel, например проверка подлинности Windows.
 
 ![HTTP.sys взаимодействует с вашей внутренней сетью напрямую.](httpsys/_static/httpsys-to-internal.png)
 
-## <a name="how-to-use-httpsys"></a>Как использовать HTTP.sys
+## <a name="how-to-use-httpsys"></a>Способы применения HTTP.sys
 
-Ниже приведен обзор задач установки для ОС и приложения ASP.NET Core.
+Ниже приведен обзор задач установки для ОС узла и приложения ASP.NET Core.
 
 ### <a name="configure-windows-server"></a>Настройка Windows Server
 
-* Установите версию .NET с требованиями приложения, такие как [.NET Core](https://www.microsoft.com/net/download/core) или [.NET Framework](https://www.microsoft.com/net/download/framework).
+* Установите нужную вашему приложению версию платформы .NET, например [.NET Core](https://www.microsoft.com/net/download/core) или [.NET Framework](https://www.microsoft.com/net/download/framework).
 
-* Предварительной регистрации префиксы URL-адрес, привязку к HTTP.sys и настроить сертификаты SSL
+* Предварительно зарегистрируйте префиксы URL-адресов для привязки к HTTP.sys и настройте SSL-сертификаты.
 
-   Если не предварительной регистрации URL-префиксы в Windows, необходимо запустить приложение с правами администратора. Единственное исключение — если привязать к локальному компьютеру с помощью HTTP (не HTTPS) с номерами выше 1024; номер порта в этом случае правами администратора, не являются обязательными.
+   Если вы не выполняете предварительную регистрацию префиксов URL-адресов в Windows, приложение потребуется запустить с правами администратора. Единственным исключением является привязка к localhost через HTTP (не HTTPS) с номером порта больше 1024. В этом случае права администратора не требуются.
 
-   Дополнительные сведения см. в разделе [предварительной регистрации префиксов и настройке SSL](#preregister-url-prefixes-and-configure-ssl) далее в этой статье.
+   Дополнительные сведения см. в разделе [Предварительная регистрация префиксов и настройка SSL](#preregister-url-prefixes-and-configure-ssl) ниже.
 
-* Открыть порты брандмауэра, разрешающее трафик для достижения HTTP.sys.
+* Откройте порты брандмауэра, чтобы разрешить трафик в HTTP.sys.
 
    Можно использовать *netsh.exe* или [командлеты PowerShell](https://technet.microsoft.com/library/jj554906).
 
-Существуют также [параметры реестра Http.Sys](https://support.microsoft.com/kb/820129).
+Кроме того, существуют [параметры реестра Http.Sys](https://support.microsoft.com/kb/820129).
 
 ### <a name="configure-your-aspnet-core-application-to-use-httpsys"></a>Настройка приложения ASP.NET Core для использования HTTP.sys
 
-* Программа установки пакета не требуется, при использовании [Microsoft.AspNetCore.All](xref:fundamentals/metapackage) metapackage. [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/) пакет включен в metapackage.
+* При использовании метапакета [Microsoft.AspNetCore.All](xref:fundamentals/metapackage) установка никаких пакетов не требуется. Пакет [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/) входит в состав метапакета.
 
-* Вызовите `UseHttpSys` метод расширения в `WebHostBuilder` в вашей `Main` метод, указывая любой [параметры HTTP.sys](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs) , требуется, как показано в следующем примере:
+* Вызовите метод расширения `UseHttpSys` для `WebHostBuilder` в вашем методе `Main`, указав все нужные [параметры HTTP.sys](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs), как показано в следующем примере:
 
   [!code-csharp[](httpsys/sample/Program.cs?name=snippet_Main&highlight=11-19)]
 
 ### <a name="configure-httpsys-options"></a>Настройка параметров HTTP.sys
 
-Ниже приведены некоторые параметры HTTP.sys и ограничений, которые можно настроить.
+Ниже приведены некоторые ограничения и параметры HTTP.sys, которые можно настроить.
 
-**Максимальное клиентских подключений**
+**Максимальное число клиентских подключений**
 
-Можно задать максимальное число открытых подключений TCP для всего приложения на следующий код в *Program.cs*:
+Максимальное число одновременно открытых подключений TCP для всего приложения можно задать с помощью следующего кода в файле *Program.cs*:
 
 [!code-csharp[](httpsys/sample/Program.cs?name=snippet_Options&highlight=5)]
 
-Максимальное число подключений — неограниченное (null) по умолчанию.
+По умолчанию максимальное число подключений не ограничено (null).
 
-**Размер максимального запроса**
+**Maximum request body size** (Максимальный размер текста запроса)
 
-Размер максимального запроса текст по умолчанию — 30,000,000 байт которого составляет приблизительно 28.6 МБ.
+По умолчанию максимальный размер текста запроса составляет 30 000 000 байт, что примерно соответствует 28,6 МБ.
 
-Чтобы переопределить ограничение в приложении ASP.NET Core MVC рекомендуется использовать [RequestSizeLimit](https://github.com/aspnet/Mvc/blob/rel/2.0.0/src/Microsoft.AspNetCore.Mvc.Core/RequestSizeLimitAttribute.cs) атрибута в методе действия:
+Чтобы переопределить это ограничение в приложении ASP.NET Core MVC, рекомендуется использовать атрибут [RequestSizeLimit](https://github.com/aspnet/Mvc/blob/rel/2.0.0/src/Microsoft.AspNetCore.Mvc.Core/RequestSizeLimitAttribute.cs) в методе действия:
 
 ```csharp
 [RequestSizeLimit(100000000)]
 public IActionResult MyActionMethod()
 ```
 
-Ниже приведен пример, в котором показано, как настроить ограничения для всего приложения, каждый запрос:
+Приведенный ниже пример показывает, как настроить ограничение для всего приложения и каждого запроса:
 
 [!code-csharp[](httpsys/sample/Program.cs?name=snippet_Options&highlight=6)]
 
-Можно переопределить параметр на конкретный запрос в *файла Startup.cs*:
+Можно переопределить параметр для конкретного запроса в файле *Startup.cs*:
 
 [!code-csharp[](httpsys/sample/Startup.cs?name=snippet_Configure&highlight=9-10)]
  
-Исключение при попытке настроить ограничение на запрос после начала чтение запроса приложением. Отсутствует `IsReadOnly` свойство, определяющее, если `MaxRequestBodySize` свойства находится в состоянии только для чтения, то есть ограничение уже слишком поздно.
+При попытке настроить ограничение для запроса после того, как приложение начало считывать запрос, возникает исключение. Доступно свойство `IsReadOnly`, указывающее, что свойство `MaxRequestBodySize` находится в состоянии только для чтения и настраивать ограничение слишком поздно.
 
-Сведения о других параметрах HTTP.sys см. в разделе [HttpSysOptions](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs). 
+Дополнительные сведения о других параметрах HTTP.sys см. в разделе [HttpSysOptions](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs). 
 
-### <a name="configure-urls-and-ports-to-listen-on"></a>Настройка URL-адреса и порты прослушивания 
+### <a name="configure-urls-and-ports-to-listen-on"></a>Настройка URL-адресов и портов для прослушивания 
 
-По умолчанию ASP.NET Core привязывается к `http://localhost:5000`. Чтобы настроить префиксы URL-адреса и порты, можно использовать `UseUrls` метод расширения `urls` аргумент командной строки, переменной среды ASPNETCORE_URLS или `UrlPrefixes` свойство [HttpSysOptions](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs). Следующий пример кода использует `UrlPrefixes`.
+По умолчанию ASP.NET Core привязан к `http://localhost:5000`. Чтобы настроить префиксы URL-адресов и порты, можно использовать метод расширения `UseUrls`, аргумент командной строки `urls`, переменную среды ASPNETCORE_URLS или свойство `UrlPrefixes` объекта [HttpSysOptions](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs). Приведенный ниже пример кода использует `UrlPrefixes`.
 
 [!code-csharp[](httpsys/sample/Program.cs?name=snippet_Main&highlight=17)]
 
-Преимущество `UrlPrefixes` , могут быть получены сообщение об ошибке сразу же при попытке добавить префикс, который неправильно отформатирован. Преимущество `UseUrls` (совместно используется с `urls` и ASPNETCORE_URLS) — что можно легко переключаться между Kestrel и HTTP.sys.
+Преимуществом `UrlPrefixes` является то, что вы получаете сообщение об ошибке сразу, как только попытаетесь добавить префикс в неправильном формате. Преимуществом `UseUrls` (совместно с `urls` и ASPNETCORE_URLS) является упрощенное переключение между Kestrel и HTTP.sys.
 
-Если используются и `UseUrls` (или `urls` или ASPNETCORE_URLS) и `UrlPrefixes`, параметры в `UrlPrefixes` переопределить значения в `UseUrls`. Дополнительные сведения см. в разделе [Размещение](xref:fundamentals/hosting).
+Если вы используете как `UseUrls` (либо `urls` или ASPNETCORE_URLS), так и `UrlPrefixes`, параметры в `UrlPrefixes` переопределяют значения в `UseUrls`. Дополнительные сведения см. в разделе [Размещение](xref:fundamentals/hosting).
 
-Использует HTTP.sys [HTTP Server API UrlPrefix строковые форматы](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
+HTTP.sys использует [форматы строк UrlPrefix API HTTP-сервера](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
 
 > [!NOTE]
-> Убедитесь, что указан одинаковые строки префикса в `UseUrls` или `UrlPrefixes` , вы предварительной регистрации на сервере. 
+> Убедитесь, что указали одинаковые строки префикса в `UseUrls` или `UrlPrefixes`, предварительно регистрируемых на сервере. 
 
-### <a name="dont-use-iis"></a>Не используйте IIS
+### <a name="dont-use-iis"></a>Отказ от использования IIS
 
-Убедитесь, что приложение не настроено для запуска служб IIS или IIS Express.
+Убедитесь, что приложение не настроено для запуска IIS или IIS Express.
 
-В Visual Studio для IIS Express указан профиль запуска по умолчанию. Чтобы запустить проект как консольное приложение, вручную измените выбранного профиля, как показано на следующем снимке экрана.
+В Visual Studio профиль запуска по умолчанию использует IIS Express. Чтобы запустить проект как консольное приложение, вручную измените выбранный профиль, как показано на следующем снимке экрана.
 
-![Выберите профиль приложения консоли](httpsys/_static/vs-choose-profile.png)
+![Выбор профиля консольного приложения](httpsys/_static/vs-choose-profile.png)
 
-## <a name="preregister-url-prefixes-and-configure-ssl"></a>Предварительной регистрации префиксы URL-адреса и настроить протокол SSL
+## <a name="preregister-url-prefixes-and-configure-ssl"></a>Предварительная регистрация префиксов URL-адресов и настройка SSL
 
-Службы IIS и HTTP.sys основаны на базовый драйвер режима ядра Http.Sys для прослушивания запросов и первоначального обработки. В службах IIS пользовательский Интерфейс управления позволяет сравнительно легко настраивать все. Тем не менее необходимо настроить Http.Sys самостоятельно. Встроенное средство для соответствующей его *netsh.exe*. 
+Как IIS, так и HTTP.sys основаны на работающем в режиме ядра драйвере Http.Sys, который осуществляет прослушивание запросов и первоначальную обработку. В IIS пользовательский интерфейс управления позволяет сравнительно легко настраивать все необходимое. Однако Http.Sys нужно настроить самостоятельно. Для этого служит встроенное средство *netsh.exe*. 
 
-С *netsh.exe* можно зарезервировать префиксы URL-адрес и назначьте SSL-сертификаты. Средство требуются права администратора.
+С помощью*netsh.exe* можно зарезервировать префиксы URL-адресов и назначить SSL-сертификаты. Для этого средства нужны права администратора.
 
-Ниже приведен пример необходимый минимум для резервирования URL-префиксы для портов 80 и 443.
+Следующий пример показывает минимальный код, позволяющий зарезервировать префиксы URL-адресов для портов 80 и 443:
 
 ```console
 netsh http add urlacl url=http://+:80/ user=Users
 netsh http add urlacl url=https://+:443/ user=Users
 ```
 
-Приведенный ниже показано, как назначить SSL-сертификата:
+Следующий пример показывает, как назначить SSL-сертификат:
 
 ```console
 netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={00000000-0000-0000-0000-000000000000}"
 ```
 
-Ниже приведен в справочной документации для *netsh.exe*:
+Ниже указана справочная документация по *netsh.exe*:
 
-* [Команды Netsh для гипертекста передачи протокол (HTTP)](https://technet.microsoft.com/library/cc725882.aspx)
-* [UrlPrefix строк](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
+* [Команды Netsh для протокола HTTP](https://technet.microsoft.com/library/cc725882.aspx)
+* [Строки UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
-Подробные инструкции для нескольких сценариев на следующих ресурсах. Статьи, которые ссылаются на HttpListener применяются при HTTP.sys, как они строятся на Http.Sys.
+Приведенные ниже ресурсы содержат подробные инструкции по нескольким сценариям. Статьи, описывающие HttpListener, в равной степени применимы и к HTTP.sys, так как оба этих компонента основаны на Http.Sys.
 
 * [Практическое руководство. Настройка порта с использованием SSL-сертификата](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
-* [Подключения по протоколу HTTPS - HttpListener и на основе размещения сертификацию клиента](http://sunshaking.blogspot.com/2012/11/https-communication-httplistener-based.html) это является блог сторонних разработчиков и довольно старый, но по-прежнему содержит полезные сведения.
-* [Практическое руководство: Пошаговое руководство с помощью HttpListener или HTTP-сервере неуправляемого типов кода (C++) как простой сервера SSL](https://blogs.msdn.microsoft.com/jpsanders/2009/09/29/how-to-walkthrough-using-httplistener-or-http-server-unmanaged-code-c-as-an-ssl-simple-server/) это тоже старые блог полезные сведения.
+* [Взаимодействие через HTTPS: размещение и сертификация клиента на основе HttpListener](http://sunshaking.blogspot.com/2012/11/https-communication-httplistener-based.html) — это довольно старый блог сторонних разработчиков, однако в нем все равно есть полезные сведения.
+* [Практическое руководство. Пошаговые инструкции по использованию HttpListener или неуправляемого кода HTTP-сервера (C++) в качестве простого сервера SSL](https://blogs.msdn.microsoft.com/jpsanders/2009/09/29/how-to-walkthrough-using-httplistener-or-http-server-unmanaged-code-c-as-an-ssl-simple-server/) — это еще один старый блог с полезными сведениями.
 
-Ниже приведены некоторые сторонних средств, которые могут быть удобнее, чем *netsh.exe* командной строки. Они не предоставляется или не поддерживается корпорацией Майкрософт. Средства Запуск от имени администратора по умолчанию, поскольку *netsh.exe* сам требуются права администратора.
+Ниже приведены некоторые сторонние средства, которые могут быть удобнее, чем командная строка *netsh.exe*. Они не предоставляются и не поддерживаются корпорацией Майкрософт. По умолчанию эти средства запускаются от имени администратора, так как права администратора нужны и *netsh.exe*.
 
-* [HTTP.sys Manager](http://httpsysmanager.codeplex.com/) предоставляет пользовательский Интерфейс для включения в список и Настройка SSL-сертификатов и параметров, префиксов резервирования и списки доверия сертификатов. 
-* [HttpConfig](http://www.stevestechspot.com/ABetterHttpcfg.aspx) позволяет перечислить или настроить сертификаты SSL и префиксы URL-адрес. Пользовательский Интерфейс будет более http.sys Manager предоставляет несколько дополнительных параметров конфигурации, а в противном случае она предоставляет аналогичные функциональные возможности. Не удается создать новый список доверия сертификатов (CTL), но можно назначить уже существующую.
+* [http.sys Manager](http://httpsysmanager.codeplex.com/) предоставляет пользовательский интерфейс для перечисления и настройки SSL-сертификатов и параметров, резервирований префиксов и списков доверия сертификатов. 
+* [HttpConfig](http://www.stevestechspot.com/ABetterHttpcfg.aspx) позволяет перечислить или настроить SSL-сертификаты и префиксы URL-адресов. По сравнению с http.sys Manager пользовательский интерфейс более подробный и предоставляет несколько дополнительных параметров конфигурации, а в остальном аналогичен. В нем невозможно создать список доверия сертификатов (CTL), но можно назначить уже существующий.
 
 [!INCLUDE[How to make an SSL cert](../../includes/make-ssl-cert.md)]
 
@@ -179,6 +179,6 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={000000
 
 Дополнительные сведения см. в следующих ресурсах:
 
-* [Образец приложения для этой статьи](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample)
-* [HTTP.sys исходного кода](https://github.com/aspnet/HttpSysServer/)
+* [Пример приложения для этой статьи](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample)
+* [Исходный код HTTP.sys](https://github.com/aspnet/HttpSysServer/)
 * [Размещение](xref:fundamentals/hosting)

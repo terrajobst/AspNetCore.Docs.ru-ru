@@ -35,11 +35,11 @@
 
 Атрибут `[HttpGet]` задает метод HTTP GET. Путь URL для каждого метода формируется следующим образом:
 
-* Принимают строку шаблона в атрибуте `Route` контроллера:
+* Принимается строка шаблона в атрибуте `Route` контроллера:
 
 [!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=TodoController&highlight=3)]
 
-* Замените `[controller]` именем контроллера (имя класса контроллера без суффикса "Controller"). В этом примере класс контроллера носит имя **Todo**Controller, а сам контроллер, соответственно, — "todo". В ASP.NET Core [маршрутизация](xref:mvc/controllers/routing) реализуется без учета регистра символов.
+* `[controller]` заменяется именем контроллера (имя класса контроллера без суффикса Controller). В этом примере класс контроллера носит имя **Todo**Controller, а сам контроллер, соответственно, — "todo". В ASP.NET Core [маршрутизация](xref:mvc/controllers/routing) реализуется без учета регистра символов.
 * Если атрибут `[HttpGet]` имеет шаблон маршрута (например, `[HttpGet("/products")]`), добавьте его к пути. В этом примере шаблон не используется. Дополнительные сведения см. в разделе [Маршрутизация атрибутов с помощью атрибутов Http[Verb]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
 
 В методе `GetById`:

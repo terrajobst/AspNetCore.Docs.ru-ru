@@ -1,39 +1,39 @@
 ---
-title: "Реализация WebListener веб-сервера в ASP.NET Core"
+title: "Реализации веб-сервера WebListener в ASP.NET Core"
 author: rick-anderson
-description: "Вводит WebListener веб-сервер для ASP.NET Core в Windows. Основанное на драйвер режима ядра Http.Sys, WebListener является альтернативой Kestrel, который можно использовать для прямого подключения к Интернету, без IIS."
-ms.author: riande
+description: "Общие сведения о веб-сервере WebListener для ASP.NET Core в Windows. WebListener, основанный на работающем в режиме ядра драйвере Http.Sys, является альтернативой для Kestrel, которую можно использовать для прямого подключения к Интернету без служб IIS."
 manager: wpickett
+ms.author: riande
 ms.date: 08/07/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: 5073a1663ec99a1b161092d74ab035ee9782becd
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: fb2e0621645a48f4e603d754d8babbc07a78cae4
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="weblistener-web-server-implementation-in-aspnet-core"></a>Реализация WebListener веб-сервера в ASP.NET Core
+# <a name="weblistener-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера WebListener в ASP.NET Core
 
-По [Tom Dykstra](https://github.com/tdykstra) и [Ross Крис](https://github.com/Tratcher)
+Авторы: [Том Дикстра](https://github.com/tdykstra) (Tom Dykstra) и [Крис Росс](https://github.com/Tratcher) (Chris Ross)
 
 > [!NOTE]
-> Этот раздел относится только к ASP.NET Core 1.x. В ASP.NET Core 2.0, называется WebListener [HTTP.sys](httpsys.md).
+> Сведения из этого раздела распространяются только на ASP.NET Core 1.x. В ASP.NET Core 2.0 WebListener называется [HTTP.sys](httpsys.md).
 
-— WebListener [веб-сервер для ASP.NET Core](index.md) , которое будет выполняться только в Windows. Она была основана на [драйвер режима ядра Http.Sys](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx). WebListener является альтернативой [Kestrel](kestrel.md) , можно использовать для прямого подключения к Интернету без использования IIS в качестве обратного прокси-сервера. На самом деле **WebListener не может использоваться с IIS или IIS Express, как оно не совместимо с [модуль ASP.NET Core](aspnet-core-module.md).**
+WebListener — это [веб-сервер для ASP.NET Core](index.md), который запускается только в Windows. Он основан на [работающем в режиме ядра драйвере Http.Sys](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx). WebListener является альтернативой для [Kestrel](kestrel.md), которую можно использовать для прямого подключения к Интернету, не используя IIS в качестве обратного прокси-сервера. Фактически **WebListener не подходит для использования с IIS или IIS Express, так как он не совместим с [модулем ASP.NET Core](aspnet-core-module.md).**
 
-Несмотря на то, что WebListener был разработан для ASP.NET Core, он может использоваться непосредственно в любом приложении .NET Core или .NET Framework, через [Microsoft.Net.Http.Server](https://www.nuget.org/packages/Microsoft.Net.Http.Server/) пакет NuGet.
+Хотя WebListener был разработан для ASP.NET Core, его невозможно использовать напрямую в каком-либо приложении .NET Core или .NET Framework через пакет NuGet [Microsoft.Net.Http.Server](https://www.nuget.org/packages/Microsoft.Net.Http.Server/).
 
 WebListener поддерживает следующие функции:
 
 - [Проверка подлинности Windows](xref:security/authentication/windowsauth)
-- Совместное использование порта
-- HTTPS с сетевого Адаптера
+- Совместное использование портов
+- HTTPS с SNI
 - HTTP/2 через TLS (Windows 10)
-- Файл прямой передачи данных
-- Кэширование ответов
+- Прямая передача файлов
+- Кэширование откликов
 - WebSockets (Windows 8)
 
 Поддерживаемые версии Windows:
@@ -42,68 +42,68 @@ WebListener поддерживает следующие функции:
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="when-to-use-weblistener"></a>Когда следует использовать WebListener
+## <a name="when-to-use-weblistener"></a>Условия использования WebListener
 
-WebListener полезен для развертываний, где нужно предоставить сервера к Интернету напрямую без использования служб IIS.
+WebListener удобен для развертываний, где нужно подключить сервер к Интернету напрямую без использования служб IIS.
 
 ![Weblistener взаимодействует с Интернетом напрямую.](weblistener/_static/weblistener-to-internet.png)
 
-Так как она была основана на Http.Sys, WebListener не требует обратного прокси-сервера для защиты от атак на систему. Компонент Http.Sys — это надежная технология, которое защищает от атак многих типов, а также обеспечивает надежности, безопасности и масштабируемости полнофункциональное веб-сервера. Сами службы IIS выполняется как HTTP-прослушивателем на базе Http.Sys. 
+Так как WebListener основан на Http.Sys, ему не нужен обратный прокси-сервер для защиты от атак. Http.Sys — это проверенная технология, которая защищает от многих типов атак, а также обеспечивает надежность, безопасность и масштабируемость полнофункционального веб-сервера. Сами службы IIS выполняются в качестве HTTP-прослушивателя поверх Http.Sys. 
 
-WebListener при также хорошо подходит для развертываний внутренней требуется одна из возможностей, которой он обеспечивает, что не удается получить с помощью Kestrel.
+WebListener также хорошо подходит для внутренних развертываний, когда нужна функция, отсутствующая в Kestrel.
 
 ![Weblistener взаимодействует с вашей внутренней сетью напрямую.](weblistener/_static/weblistener-to-internal.png)
 
-## <a name="how-to-use-weblistener"></a>Как использовать WebListener
+## <a name="how-to-use-weblistener"></a>Способы использования WebListener
 
-Ниже приведен обзор задач установки для ОС и приложения ASP.NET Core.
+Ниже приведен обзор задач установки для ОС узла и приложения ASP.NET Core.
 
 ### <a name="configure-windows-server"></a>Настройка Windows Server
 
-* Установите версию .NET с требованиями приложения, такие как [.NET Core](https://download.microsoft.com/download/0/A/3/0A372822-205D-4A86-BFA7-084D2CBE9EDF/DotNetCore.1.0.1-SDK.1.0.0.Preview2-003133-x64.exe) или .NET Framework 4.5.1.
+* Установите нужную вашему приложению версию платформы .NET, например [.NET Core](https://download.microsoft.com/download/0/A/3/0A372822-205D-4A86-BFA7-084D2CBE9EDF/DotNetCore.1.0.1-SDK.1.0.0.Preview2-003133-x64.exe) или .NET Framework 4.5.1.
 
-* Предварительной регистрации префиксы URL-адрес, привязку к WebListener и настроить сертификаты SSL
+* Предварительно зарегистрируйте префиксы URL-адресов для привязки к WebListener и настройте SSL-сертификаты.
 
-   Если не предварительной регистрации URL-префиксы в Windows, необходимо запустить приложение с правами администратора. Единственное исключение — если привязать к локальному компьютеру с помощью HTTP (не HTTPS) с номерами выше 1024; номер порта в этом случае правами администратора, не являются обязательными.
+   Если вы не выполняете предварительную регистрацию префиксов URL-адресов в Windows, приложение потребуется запустить с правами администратора. Единственным исключением является привязка к localhost через HTTP (не HTTPS) с номером порта больше 1024. В этом случае права администратора не требуются.
 
-   Дополнительные сведения см. в разделе [предварительной регистрации префиксов и настройке SSL](#preregister-url-prefixes-and-configure-ssl) далее в этой статье.
+   Дополнительные сведения см. в разделе [Предварительная регистрация префиксов и настройка SSL](#preregister-url-prefixes-and-configure-ssl) ниже.
 
-* Открыть порты брандмауэра, разрешающее трафик для достижения WebListener.
+* Откройте порты брандмауэра, чтобы разрешить трафик в WebListener.
 
    Можно использовать netsh.exe или [командлеты PowerShell](https://technet.microsoft.com/library/jj554906).
 
-Существуют также [параметры реестра Http.Sys](https://support.microsoft.com/kb/820129).
+Кроме того, существуют [параметры реестра Http.Sys](https://support.microsoft.com/kb/820129).
 
 ### <a name="configure-your-aspnet-core-application"></a>Настройка приложения ASP.NET Core
 
-* Установка пакета NuGet [Microsoft.AspNetCore.Server.WebListener](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.WebListener/). Также устанавливает [Microsoft.Net.Http.Server](https://www.nuget.org/packages/Microsoft.Net.Http.Server/) как зависимость.
+* Установите пакет NuGet [Microsoft.AspNetCore.Server.WebListener](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.WebListener/). Он также устанавливает [Microsoft.Net.Http.Server](https://www.nuget.org/packages/Microsoft.Net.Http.Server/) в качестве зависимости.
 
-* Вызовите `UseWebListener` метод расширения в [WebHostBuilder](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilder) в вашей `Main` метод, указывая любой WebListener [параметры](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.AspNetCore.Server.WebListener/WebListenerOptions.cs) и [параметры](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.Net.Http.Server/WebListenerSettings.cs) нужно , как показано в следующем примере:
+* Вызовите метод расширения `UseWebListener` для [WebHostBuilder](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilder) в вашем методе `Main`, указав [параметры](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.AspNetCore.Server.WebListener/WebListenerOptions.cs) WebListener и другие нужные [параметры](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.Net.Http.Server/WebListenerSettings.cs), как показано в следующем примере:
 
   [!code-csharp[](weblistener/sample/Program.cs?name=snippet_Main&highlight=13-17)]
 
-* Настройка URL-адреса и порты прослушивания 
+* Настройка URL-адресов и портов для прослушивания 
 
-  По умолчанию ASP.NET Core привязывается к `http://localhost:5000`. Чтобы настроить префиксы URL-адреса и порты, можно использовать `UseURLs` метод расширения `urls` аргумент командной строки или система конфигурации ASP.NET Core. Дополнительные сведения см. в разделе [Размещение](../../fundamentals/hosting.md).
+  По умолчанию ASP.NET Core привязан к `http://localhost:5000`. Чтобы настроить префиксы URL-адресов и порты, можно использовать метод расширения `UseURLs`, аргумент командной строки `urls` или систему конфигурации ASP.NET Core. Дополнительные сведения см. в разделе [Размещение](../../fundamentals/hosting.md).
 
-  Веб-прослушиватель использует [Http.Sys префикс строковые форматы](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx). Требования к формат строки префикса, относящиеся к WebListener отсутствуют.
+  WebListener использует [форматы строк префикса Http.Sys](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx). Для WebListener не предъявляются отдельные требования к формату строк префикса.
 
   > [!NOTE]
-  > Убедитесь, что указан одинаковые строки префикса в `UseUrls` , вы предварительной регистрации на сервере. 
+  > Убедитесь, что указали одинаковые строки префикса в `UseUrls`, предварительно регистрируемого на сервере. 
 
-* Убедитесь, что приложение не настроено для запуска служб IIS или IIS Express.
+* Убедитесь, что приложение не настроено для запуска IIS или IIS Express.
 
-  В Visual Studio для IIS Express указан профиль запуска по умолчанию.  Чтобы запустить проект как консольное приложение необходимо вручную изменить выбранного профиля, как показано на следующем снимке экрана.
+  В Visual Studio профиль запуска по умолчанию использует IIS Express.  Чтобы запустить проект как консольное приложение, вручную измените выбранный профиль, как показано на следующем снимке экрана.
 
-  ![Выберите профиль приложения консоли](weblistener/_static/vs-choose-profile.png)
+  ![Выбор профиля консольного приложения](weblistener/_static/vs-choose-profile.png)
 
-## <a name="how-to-use-weblistener-outside-of-aspnet-core"></a>Как использовать WebListener за пределами ASP.NET Core
+## <a name="how-to-use-weblistener-outside-of-aspnet-core"></a>Использование WebListener за пределами ASP.NET Core
 
-* Установка [Microsoft.Net.Http.Server](https://www.nuget.org/packages/Microsoft.Net.Http.Server/) пакет NuGet.
+* Установите пакет NuGet [Microsoft.Net.Http.Server](https://www.nuget.org/packages/Microsoft.Net.Http.Server/).
 
-* [Префиксы URL-адрес, привязку к WebListener и настроить сертификаты SSL предварительной регистрации](#preregister-url-prefixes-and-configure-ssl) как для использования в ASP.NET Core.
+* [Предварительно зарегистрируйте префиксы URL-адресов для привязки к WebListener и настройте SSL-сертификаты](#preregister-url-prefixes-and-configure-ssl), как и при использовании в ASP.NET Core.
 
-Существуют также [параметры реестра Http.Sys](https://support.microsoft.com/kb/820129).
+Кроме того, существуют [параметры реестра Http.Sys](https://support.microsoft.com/kb/820129).
 
 
 Ниже приведен пример кода, демонстрирующий применение WebListener за пределами ASP.NET Core:
@@ -129,51 +129,51 @@ using (WebListener listener = new WebListener(settings))
 }
 ```
 
-## <a name="preregister-url-prefixes-and-configure-ssl"></a>Предварительной регистрации префиксы URL-адреса и настроить протокол SSL
+## <a name="preregister-url-prefixes-and-configure-ssl"></a>Предварительная регистрация префиксов URL-адресов и настройка SSL
 
-Службы IIS и WebListener основаны на базовый драйвер режима ядра Http.Sys для прослушивания запросов и первоначального обработки. В службах IIS пользовательский Интерфейс управления позволяет сравнительно легко настраивать все. Если вы используете WebListener необходимо настроить Http.Sys самостоятельно. Встроенное средство для выполнения, netsh.exe. 
+Как IIS, так и WebListener основаны на работающем в режиме ядра драйвере Http.Sys, который осуществляет прослушивание запросов и первоначальную обработку. В IIS пользовательский интерфейс управления позволяет сравнительно легко настраивать все необходимое. Однако при использовании WebListener вам нужно настроить Http.Sys самостоятельно. Для этого служит встроенное средство netsh.exe. 
 
-Наиболее распространенные задачи, необходимо использовать netsh.exe для резервирования URL-префиксы и назначение SSL-сертификаты.
+Чаще всего netsh.exe используется для резервирования префиксов URL-адресов и назначения SSL-сертификатов.
 
-NetSh.exe не удобное средство для начинающих. Ниже приведен пример минимальный набор необходимых для резервирования URL-префиксы для портов 80 и 443.
+Средство NetSh.exe не слишком удобно для начинающих. Следующий пример показывает минимальный код, позволяющий зарезервировать префиксы URL-адресов для портов 80 и 443:
 
 ```console
 netsh http add urlacl url=http://+:80/ user=Users
 netsh http add urlacl url=https://+:443/ user=Users
 ```
 
-Приведенный ниже показано, как назначить SSL-сертификата:
+Следующий пример показывает, как назначить SSL-сертификат:
 
 ```console
 netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={00000000-0000-0000-0000-000000000000}".
 ```
 
-Ниже приведен в официальной документации.
+Ниже указана официальная справочная документация:
 
-* [Команды Netsh для гипертекста передачи протокол (HTTP)](https://technet.microsoft.com/library/cc725882.aspx)
-* [UrlPrefix строк](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
+* [Команды Netsh для протокола HTTP](https://technet.microsoft.com/library/cc725882.aspx)
+* [Строки UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
-Подробные инструкции для нескольких сценариев на следующих ресурсах. Статьи, которые ссылаются на `HttpListener` применяются как к `WebListener`, как они строятся на Http.Sys.
+Приведенные ниже ресурсы содержат подробные инструкции по нескольким сценариям. Статьи, описывающие `HttpListener`, в равной степени применимы и к `WebListener`, так как оба этих компонента основаны на Http.Sys.
 
 * [Практическое руководство. Настройка порта с использованием SSL-сертификата](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
-* [Подключения по протоколу HTTPS - HttpListener и на основе размещения сертификацию клиента](http://sunshaking.blogspot.com/2012/11/https-communication-httplistener-based.html) это является блог сторонних разработчиков и довольно старый, но по-прежнему содержит полезные сведения.
-* [Практическое руководство: Пошаговое руководство с помощью HttpListener или HTTP-сервере неуправляемого типов кода (C++) как простой сервера SSL](https://blogs.msdn.microsoft.com/jpsanders/2009/09/29/how-to-walkthrough-using-httplistener-or-http-server-unmanaged-code-c-as-an-ssl-simple-server/) это тоже старые блог полезные сведения.
-* [Как настроить WebListener Core .NET с помощью протокола SSL?](https://blogs.msdn.microsoft.com/timomta/2016/11/04/how-do-i-set-up-a-net-core-weblistener-with-ssl/)
+* [Взаимодействие через HTTPS: размещение и сертификация клиента на основе HttpListener](http://sunshaking.blogspot.com/2012/11/https-communication-httplistener-based.html) — это довольно старый блог сторонних разработчиков, однако в нем все равно есть полезные сведения.
+* [Практическое руководство. Пошаговые инструкции по использованию HttpListener или неуправляемого кода HTTP-сервера (C++) в качестве простого сервера SSL](https://blogs.msdn.microsoft.com/jpsanders/2009/09/29/how-to-walkthrough-using-httplistener-or-http-server-unmanaged-code-c-as-an-ssl-simple-server/) — это еще один старый блог с полезными сведениями.
+* [Как настроить .NET Core WebListener с использованием SSL?](https://blogs.msdn.microsoft.com/timomta/2016/11/04/how-do-i-set-up-a-net-core-weblistener-with-ssl/)
 
-Ниже приведены некоторые сторонних средств, которые могут быть проще в использовании, чем netsh.exe командной строки. Они не предоставляется или не поддерживается корпорацией Майкрософт. Средства Запуск от имени администратора по умолчанию, поскольку сам netsh.exe требуются права администратора.
+Ниже приведены некоторые сторонние средства, которые могут быть удобнее, чем командная строка netsh.exe. Они не предоставляются и не поддерживаются корпорацией Майкрософт. По умолчанию эти средства запускаются от имени администратора, так как права администратора нужны и netsh.exe.
 
-* [HTTP.sys Manager](http://httpsysmanager.codeplex.com/) предоставляет пользовательский Интерфейс для включения в список и Настройка SSL-сертификатов и параметров, префиксов резервирования и списки доверия сертификатов. 
-* [HttpConfig](http://www.stevestechspot.com/ABetterHttpcfg.aspx) позволяет перечислить или настроить сертификаты SSL и префиксы URL-адрес. Пользовательский Интерфейс будет более http.sys Manager предоставляет несколько дополнительных параметров конфигурации, а в противном случае она предоставляет аналогичные функциональные возможности. Не удается создать новый список доверия сертификатов (CTL), но можно назначить уже существующую.
+* [http.sys Manager](http://httpsysmanager.codeplex.com/) предоставляет пользовательский интерфейс для перечисления и настройки SSL-сертификатов и параметров, резервирований префиксов и списков доверия сертификатов. 
+* [HttpConfig](http://www.stevestechspot.com/ABetterHttpcfg.aspx) позволяет перечислить или настроить SSL-сертификаты и префиксы URL-адресов. По сравнению с http.sys Manager пользовательский интерфейс более подробный и предоставляет несколько дополнительных параметров конфигурации, а в остальном аналогичен. В нем невозможно создать список доверия сертификатов (CTL), но можно назначить уже существующий.
 
-Для создания самозаверяющего SSL-сертификаты, корпорация Майкрософт предоставляет средства командной строки: [MakeCert.exe](https://msdn.microsoft.com/library/windows/desktop/aa386968) и командлет PowerShell [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pki/new-selfsignedcertificate). Существуют также сторонние пользовательского интерфейса средства, облегчающие создавать самозаверяющие сертификаты SSL:
+Для создания самозаверяющих SSL-сертификатов корпорация Майкрософт предоставляет средства командной строки: [MakeCert.exe](https://msdn.microsoft.com/library/windows/desktop/aa386968) и командлет PowerShell [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pki/new-selfsignedcertificate). Существуют и сторонние средства пользовательского интерфейса, облегчающие создание самозаверяющих SSL-сертификатов:
 
 * [SelfCert](https://www.pluralsight.com/blog/software-development/selfcert-create-a-self-signed-certificate-interactively-gui-or-programmatically-in-net)
-* [Makecert пользовательского интерфейса](http://makecertui.codeplex.com/)
+* [Makecert UI](http://makecertui.codeplex.com/)
 
 ## <a name="next-steps"></a>Следующие шаги
 
 Дополнительные сведения см. в следующих ресурсах:
 
-* [Образец приложения для этой статьи](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample)
-* [WebListener исходного кода](https://github.com/aspnet/HttpSysServer/)
+* [Пример приложения для этой статьи](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample)
+* [Исходный код WebListener](https://github.com/aspnet/HttpSysServer/)
 * [Размещение](../hosting.md)

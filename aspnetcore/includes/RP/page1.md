@@ -105,9 +105,9 @@ Razor может выполнять переход с HTML на C# или на �
 
 Сохраните изменения и протестируйте приложение, нажав на ссылку **RpMovie**. См. файл [_Layout.cshtml](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/_Layout.cshtml) в GitHub.
 
-### <a name="the-create-code-behind-page"></a>Страница кода программной части Create
+### <a name="the-create-page-model"></a>Страничная модель Create
 
-Изучите файл кода программной части *Pages/Movies/Create.cshtml.cs*:
+Изучите страничную модель *Pages/Movies/Create.cshtml.cs*:
 
 [!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 

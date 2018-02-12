@@ -2,18 +2,18 @@
 title: "Отправка файлов на страницу Razor в ASP.NET Core"
 author: guardrex
 description: "Сведения об отправке файлов на страницу Razor"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 09/12/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages/uploading-files
-ms.openlocfilehash: a29043ac5d28ae8efcbbd6919e73e3774ba22699
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 24eaa0dd9293cc932c51d280300308e835a0840e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="uploading-files-to-a-razor-page-in-aspnet-core"></a>Отправка файлов на страницу Razor в ASP.NET Core
 
@@ -76,9 +76,9 @@ Update-Database
 
 Каждая группа формы включает период проверки **\<span>**. Если введенные пользователем данные не соответствуют атрибутам свойства, заданным в классе `FileUpload`, или какой-либо из этапов проверки файла в методе `ProcessFormFile` завершается с ошибкой, модель не проходит проверку. При сбое проверки модели для пользователя выводится сообщение с полезными данными. Например, для свойства `Title` указаны `[Required]` и `[StringLength(60, MinimumLength = 3)]`. Если пользователь не задает заголовок, он получает сообщение, указывающее на обязательный характер этого значения. Если пользователь вводит значение длиной менее 3 или более 60 символов, он получает сообщение о неправильной длине. Если указан файл без содержимого, появляется сообщение о том, что этот файл пуст.
 
-## <a name="add-the-code-behind-file"></a>Добавление файла кода программной части
+## <a name="add-the-page-model"></a>Добавление страничной модели
 
-Добавьте файл кода программной части (*Index.cshtml.cs*) в папку *Schedules*.
+Добавьте страничную модель (*Index.cshtml.cs*) в папку *Schedules*.
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs)]
 
@@ -110,7 +110,7 @@ Update-Database
 
 [!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml)]
 
-Файл кода программной части (*Delete.cshtml.cs*) загружает отдельное расписание, определяемое идентификатором `id` в данных маршрута запроса. Добавьте файл *Delete.cshtml.cs* в папку *Schedules*.
+Страничная модель (*Delete.cshtml.cs*) загружает отдельное расписание, определяемое идентификатором `id` в данных маршрута запроса. Добавьте файл *Delete.cshtml.cs* в папку *Schedules*.
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml.cs)]
 
