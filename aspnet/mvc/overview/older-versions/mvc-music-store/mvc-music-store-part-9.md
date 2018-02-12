@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-9
 msc.type: authoredcontent
-ms.openlocfilehash: 71f87043be064d24bdfb203380fb6cf651527e30
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 1caf836f8c92cbc9ab95e0aa990f81493e577a27
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="part-9-registration-and-checkout"></a>Часть 9: Регистрация и извлечение
 ====================
@@ -119,7 +119,7 @@ CheckoutController, будет содержать следующие дейст�
 
 ## <a name="adding-the-addressandpayment-view"></a>Добавление представления AddressAndPayment
 
-Теперь давайте создадим AddressAndPayment представления. Щелкните правой кнопкой мыши на одно из действий контроллера AddressAndPayment и добавить представление с именем AddressAndPayment, строго типизируется как заказа и использующему изменить шаблон, как показано ниже.
+Теперь давайте создадим AddressAndPayment представления. Щелкните правой кнопкой мыши на одно из действий контроллера AddressAndPayment и добавьте представление с именем AddressAndPayment, строго типизируется как заказа и использующему изменить шаблон, как показано ниже.
 
 ![](mvc-music-store-part-9/_static/image6.png)
 

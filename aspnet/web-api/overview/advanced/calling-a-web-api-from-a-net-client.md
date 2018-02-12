@@ -11,11 +11,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 8156bd1c7cfc111a6a121a89d845ca284ee1b7af
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 44e02888b53ee372ab93db5f90acb691f26b7519
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="call-a-web-api-from-a-net-client-c"></a>Вызов веб-API из клиента .NET (C#)
 ====================
@@ -116,7 +116,7 @@ Json.NET — это популярный платформа JSON высокой 
 
 Когда **ReadAsAsync** вызывается без параметров, она использует набор по умолчанию *модули форматирования мультимедиа* для чтения текста ответа. Модули форматирования по умолчанию поддерживает JSON, XML и данные в кодировке форма URL-адрес.
 
-Вместо использования модулей форматирования по умолчанию, необходимо предоставить список модулей форматирования для **ReadAsAsync** метод.  С помощью список модулей форматирования полезен, если у вас есть пользовательский модуль форматирования мультимедиа:
+Вместо использования модулей форматирования по умолчанию, необходимо предоставить список модулей форматирования для **ReadAsAsync** метод.  Список модулей форматирования удобно использовать при наличии пользовательский модуль форматирования мультимедиа:
 
 ```csharp
 var formatters = new List<MediaTypeFormatter>() {

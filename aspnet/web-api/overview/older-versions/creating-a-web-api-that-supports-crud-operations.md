@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
 msc.type: authoredcontent
-ms.openlocfilehash: a91bf065c9ce0fc5bd9b7115340edabea975a7e0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 69b7d5453b6ff36d6e28a69428b016cb8cfd06e9
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>Включение операций CRUD в ASP.NET Web API 1
 ====================
@@ -42,11 +42,11 @@ ms.lasthandoff: 11/10/2017
 | Действие | Метод HTTP | Относительный URI |
 | --- | --- | --- |
 | Получить список всех продуктов | GET | / api/продуктов |
-| Получение продукта по Идентификатору | GET | /API/продукты/*идентификатор* |
+| Получение продукта по Идентификатору | GET | /api/products/*id* |
 | Получение продукта по категориям | GET | / api/продуктов? категории =*категории* |
 | Создать продукт | ПОМЕСТИТЬ | / api/продуктов |
-| Обновления продукта | PUT | /API/продукты/*идентификатор* |
-| Удаление продукта | DELETE | /API/продукты/*идентификатор* |
+| Обновления продукта | PUT | /api/products/*id* |
+| Удаление продукта | DELETE | /api/products/*id* |
 
 Обратите внимание, что часть URL-адреса, включают идентификатор продукта в пути. Например, чтобы получить продукта, идентификатор которого — 28, клиент отправляет запрос GET `http://hostname/api/products/28`.
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/10/2017
 | Ресурс | URI |
 | --- | --- |
 | Список всех продуктов. | / api/продуктов |
-| Отдельного продукта. | /API/продукты/*идентификатор* |
+| Отдельного продукта. | /api/products/*id* |
 
 ### <a name="methods"></a>Методы
 
@@ -158,7 +158,7 @@ ms.lasthandoff: 11/10/2017
 | Действие | Метод HTTP | Относительный URI |
 | --- | --- | --- |
 | Получить список всех продуктов | GET | / api/продуктов |
-| Получение продукта по Идентификатору | GET | /API/продукты/*идентификатор* |
+| Получение продукта по Идентификатору | GET | /api/products/*id* |
 | Получение продукта по категориям | GET | / api/продуктов? категории =*категории* |
 
 Чтобы получить список всех продуктов, добавьте этот метод `ProductsController` класса:

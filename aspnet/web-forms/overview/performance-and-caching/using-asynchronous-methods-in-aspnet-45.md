@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/performance-and-caching/using-asynchronous-methods-in-aspnet-45
 msc.type: authoredcontent
-ms.openlocfilehash: 73e46134cfafb9edc4c1888211eab44b8f2bf828
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d3eb588aad592605a8e368d1af6e62ece34b79d0
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="using-asynchronous-methods-in-aspnet-45"></a>Использование асинхронных методов в ASP.NET 4.5
 ====================
@@ -123,7 +123,7 @@ ASP.NET 4.5 веб-страницы в сочетании [.NET 4.5](https://msd
 - `RegisterAsyncTask` Метод используется для регистрации асинхронная задача, содержащая код, который выполняется асинхронно.
 - Новый `GetGizmosSvcAsync` метод помечен атрибутом [async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) ключевое слово, которое указывает компилятору создавать обратные вызовы для частей текста и автоматически создавать `Task` , возвращается.
 - &quot;Асинхронный&quot; был добавлен к имени асинхронного метода. Добавление «Async» не является обязательным, но соглашение, используемое при создании асинхронных методов.
-- Тип возвращаемого значения нового новый `GetGizmosSvcAsync` метод `Task`. Тип возвращаемого значения `Task` представляет выполняющуюся работу и предоставляет этот метод с дескриптором, через который ожидает завершения асинхронной операции.
+- Тип возвращаемого значения нового `GetGizmosSvcAsync` метод `Task`. Тип возвращаемого значения `Task` представляет выполняющуюся работу и предоставляет этот метод с дескриптором, через который ожидает завершения асинхронной операции.
 - [Await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) была применена ключевое слово для вызова веб-службы.
 - Был вызван API асинхронного веб-службы (`GetGizmosAsync`).
 

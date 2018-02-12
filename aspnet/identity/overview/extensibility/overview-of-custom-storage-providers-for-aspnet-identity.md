@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: f43f0a2dd80e26ecff15e5742e18264ddb5b26aa
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: bbc1f6ef291eddd7488531943b146bb67ae7ee02
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="overview-of-custom-storage-providers-for-aspnet-identity"></a>Обзор поставщиков пользовательского хранилища для ASP.NET Identity
 ====================
@@ -128,7 +128,7 @@ ASP.NET Identity состоит из класса с именами менедж
 <a id="userstore"></a>
 ## <a name="customize-the-user-store"></a>Настроить хранилище пользователей
 
-Можно также создать UserStore класс, предоставляющий методы для всех операций с данными пользователя. Этот класс является эквивалентом [UserStore&lt;TUser&gt; ](https://msdn.microsoft.com/library/dn315446(v=vs.108).aspx) класса в [Microsoft.ASP.NET.Identity.EntityFramework](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework(v=vs.108).aspx) пространства имен. В классе UserStore реализовать [IUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx) и любые дополнительные интерфейсы. Выберите необязательные интерфейсы для реализации на основании функциональные возможности, которые требуется предоставить в приложении.
+Можно также создать UserStore класс, предоставляющий методы для всех операций с данными пользователя. Этот класс является эквивалентом [UserStore&lt;TUser&gt; ](https://msdn.microsoft.com/library/dn315446(v=vs.108).aspx) класса в [Microsoft.ASP.NET.Identity.EntityFramework](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework(v=vs.108).aspx) пространства имен. В классе UserStore реализовать [IUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx) и любые дополнительные интерфейсы. Выберите необязательные интерфейсы для реализации на основе функциональности, которую вы хотите предоставить в приложении.
 
 На следующем рисунке UserStore класса, который необходимо создать и соответствующие интерфейсы.
 

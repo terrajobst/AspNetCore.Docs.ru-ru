@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3f78da3898d44cc2cf1db6623ebcaf6a73ebbf3e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0d98177561b72ffbe05455f785e156f91e450d36
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="using-dynamicpopulate-with-a-user-control-and-javascript-c"></a>С помощью DynamicPopulate с пользовательский элемент управления и JavaScript (C#)
 ====================
@@ -67,7 +67,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-aspx[Main](using-dynamicpopulate-with-a-user-control-and-javascript-cs/samples/sample8.aspx)]
 
-Вот и все! Страница работает как ожидалось: пользователь щелкает на переключателей, элемент управления в наборе средств вызывает веб-службу и отображает текущую дату в нужном формате.
+Вот и все! Страница работает как ожидалось: пользователь выбирает один из переключателей, элемент управления в наборе средств вызывает веб-службу и отображает текущую дату в нужном формате.
 
 
 [![Переключатели размещаются в элементе управления пользователя](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image2.png)](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image1.png)

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc4-beta-release-notes
 msc.type: content
-ms.openlocfilehash: 58ae178a0e6578d8353e1a4e9d67fc1026e99f55
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d6797d1dbacff7503f74782d325ff5a9598970c0
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
@@ -295,7 +295,7 @@ jQuery Mobile — это библиотека открытым исходным 
     - *MvcCSharpRazorCodeParser.ParseInheritsStatement(System.Web.Razor.Parser.CodeBlockInfo)*
     - *MvcWebPageRazorHost.DecorateCodeGenerator(System.Web.Razor.Generator.RazorCodeGenerator)*
     - *MvcVBRazorCodeParser.ParseInheritsStatement(System.Web.Razor.Parser.CodeBlockInfo)*
-- **Если WebMatrix.WebData.dll включен в в каталоге/Bin приложения ASP.NET MVC 4, он берет на себя URL-адрес для проверки подлинности форм.** Добавление сборки WebMatrix.WebData.dll приложения (например, выбрав «ASP.NET Web Pages с синтаксисом Razor» при использовании диалогового окна Добавление развертываемых зависимостей) переопределяет перенаправления входа проверки подлинности для входа/account/вместо / учетной записи или имя входа, ожидаемого контроллера учетных записей ASP.NET MVC по умолчанию. Чтобы предотвратить такое поведение и использовать URL-адрес уже указан в разделе проверки подлинности файла Web.config, можно добавить appSetting называется PreserveLoginUrl и присвоено значение true: 
+- **Если WebMatrix.WebData.dll включен в каталоге/Bin приложения ASP.NET MVC 4, он берет на себя URL-адрес для проверки подлинности форм.** Добавление сборки WebMatrix.WebData.dll приложения (например, выбрав «ASP.NET Web Pages с синтаксисом Razor» при использовании диалогового окна Добавление развертываемых зависимостей) переопределяет перенаправления входа проверки подлинности для входа/account/вместо / учетной записи или имя входа, ожидаемого контроллера учетных записей ASP.NET MVC по умолчанию. Чтобы предотвратить такое поведение и использовать URL-адрес уже указан в разделе проверки подлинности файла Web.config, можно добавить appSetting называется PreserveLoginUrl и присвоено значение true: 
 
     [!code-xml[Main](mvc4-beta-release-notes/samples/sample13.xml)]
 - **Диспетчер пакетов NuGet не устанавливается при установке ASP.NET MVC 4 для параллельная установка Visual Studio 2010 и Visual Web Developer 2010.** Для запуска Visual Studio 2010 и Visual Web Developer 2010 параллельно с ASP.NET MVC 4 ASP.NET MVC 4 необходимо установить обе версии Visual Studio уже после установки.

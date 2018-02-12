@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper
 msc.type: authoredcontent
-ms.openlocfilehash: 737773ab424b3ec3b6139b8c238a60ca23de2e69
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: abd9b5c09e942b966eb3eaaebe1b315c30b8e0c0
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="examining--how--aspnet-mvc-scaffolds-the-dropdownlist-helper"></a>Изучение как scaffolds вспомогательного метода DropDownList в ASP.NET MVC
 ====================
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/24/2018
 
 ![](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/_static/image1.png)
 
-Изменить *StoreManager\Index.cshtml* Просмотр и удаление `AlbumArtUrl`. Удаление `AlbumArtUrl` будет сделать презентации более удобочитаемым. Ниже приведен полный код.
+Изменить *StoreManager\Index.cshtml* Просмотр и удаление `AlbumArtUrl`. Удаление `AlbumArtUrl` будет сделать презентации более удобочитаемым. Ниже приведен готовый код.
 
 [!code-cshtml[Main](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/samples/sample1.cshtml)]
 
@@ -112,7 +112,7 @@ HTML `<select>` элемент (созданные HTML [DropDownList](https://m
 
 [!code-csharp[Main](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/samples/sample10.cs)]
 
-Замените две строки, параметр `ViewBag` в каждом из `Create` и `Edit` методов с помощью вызова `SetGenreArtistViewBag` метод. Ниже приведен полный код.
+Замените две строки, параметр `ViewBag` в каждом из `Create` и `Edit` методов с помощью вызова `SetGenreArtistViewBag` метод. Ниже приведен готовый код.
 
 [!code-csharp[Main](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/samples/sample11.cs)]
 
@@ -168,7 +168,7 @@ HTML `<select>` элемент (созданные HTML [DropDownList](https://m
 
 Выполните построение проекта поэтому `AlbumSelectListViewModel` доступен при создании представления на следующем шаге.
 
-Добавить `EditVM` метод `StoreManagerController`. Ниже приведен полный код.
+Добавить `EditVM` метод `StoreManagerController`. Ниже приведен готовый код.
 
 [!code-csharp[Main](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/samples/sample20.cs)]
 
@@ -202,7 +202,7 @@ HTML `<select>` элемент (созданные HTML [DropDownList](https://m
 
 Все три показано из них acceptible. Многие разработчики предпочитают проход explictily `SelectList` для `DropDownList` с помощью `ViewBag`. Данный подход имеет дополнительное преимущество это обеспечивает гибкость применения более подходящее имя для коллекции. Необходимо учитывать — не могут иметь имена `ViewBag SelectList` объекта совпадает с именем свойства модели.
 
-Некоторые разработчики предпочитают ViewModel подход. Рассмотрите возможность более подробных сведений другим пользователям разметки и созданный HTML ViewModel приближаться к отметке недостаток.
+Некоторые разработчики предпочитают ViewModel подход. Другие рассмотрите возможность более подробным разметки и автоматически созданный код HTML подхода ViewModel недостаток.
 
 В этом разделе мы узнали три подхода к использованию **DropDownList** категории данных. В следующем разделе мы покажем, как добавить новую категорию.
 

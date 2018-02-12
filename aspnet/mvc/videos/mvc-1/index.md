@@ -12,46 +12,46 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1
 msc.type: chapter
-ms.openlocfilehash: e2694a0f8e98f0b0ce8da6b1a1f6a98ab811f87b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ad33f7cb81b0124728cfa36c8ff3ba0a473e351f
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="aspnet-mvc-1"></a>ASP.NET MVC 1
 ====================
 > ASP.NET MVC 1
 
 
-- [ASP.NET MVC витрине](aspnet-mvc-storefront/index.md)
+- [Интернет-магазин на ASP.NET MVC](aspnet-mvc-storefront/index.md)
 
-    - [ASP.NET MVC Storefront, часть 1: Описание архитектуры и общие сведения о](aspnet-mvc-storefront/aspnet-mvc-storefront-part-1-architectural-discussion-and-overview.md)
-    - [ASP.NET MVC Storefront, часть 2: Шаблон репозитория](aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-repository-pattern.md)
-    - [Storefront часть ASP.NET MVC 3: Каналы и фильтры](aspnet-mvc-storefront/aspnet-mvc-storefront-part-3-pipes-and-filters.md)
-    - [ASP.NET MVC Storefront, часть 4: Linq To Sql пик](aspnet-mvc-storefront/aspnet-mvc-storefront-part-4-linq-to-sql-spike.md)
-    - [ASP.NET MVC Storefront часть 5: глобализации](aspnet-mvc-storefront/aspnet-mvc-storefront-part-5-globalization.md)
-    - [ASP.NET MVC Storefront, часть 6: Завершения репозитория и работа начального пользовательского интерфейса](aspnet-mvc-storefront/aspnet-mvc-storefront-part-6-finishing-the-repository-and-initial-ui-work.md)
-    - [ASP.NET MVC Storefront, часть 7: Маршрутизация и действия пользовательского интерфейса](aspnet-mvc-storefront/aspnet-mvc-storefront-part-7-routing-and-ui-work.md)
-    - [ASP.NET MVC Storefront часть 8: Тестирование контроллеры, итерация 1 завершения](aspnet-mvc-storefront/aspnet-mvc-storefront-part-8-testing-controllers-iteration-1-complete.md)
-    - [Часть ASP.NET MVC Storefront 9: Корзина](aspnet-mvc-storefront/aspnet-mvc-storefront-part-9-the-shopping-cart.md)
-    - [ASP.NET MVC Storefront часть 10: Корзина для покупок рефакторинга и авторизации](aspnet-mvc-storefront/aspnet-mvc-storefront-part-10-shopping-cart-refactor-and-authorization.md)
-    - [ASP.NET MVC Storefront, часть 11: Прикрепления корзину и с помощью компонентов](aspnet-mvc-storefront/aspnet-mvc-storefront-part-11-hooking-up-the-shopping-cart-and-using-components.md)
-    - [ASP.NET MVC Storefront часть 12: имитации](aspnet-mvc-storefront/aspnet-mvc-storefront-part-12-mocking.md)
-    - [ASP.NET MVC Storefront часть 13: Внедрение зависимостей](aspnet-mvc-storefront/aspnet-mvc-storefront-part-13-dependency-injection.md)
-    - [ASP.NET MVC Storefront, часть 14: Взаимодействие полнофункционального клиента](aspnet-mvc-storefront/aspnet-mvc-storefront-part-14-rich-client-interaction.md)
-    - [ASP.NET MVC витрине часть 15: Просмотр открытого кода](aspnet-mvc-storefront/aspnet-mvc-storefront-part-15-public-code-review.md)
-    - [ASP.NET MVC Storefront часть 16: Возврата членства с помощью OpenID](aspnet-mvc-storefront/aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
-    - [Частей ASP.NET MVC Storefront 17: Извлечение с Джефф Атвуда](aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood.md)
-    - [Часть ASP.NET MVC Storefront 18: Создание качества](aspnet-mvc-storefront/aspnet-mvc-storefront-part-18-creating-an-experience.md)
-    - [ASP.NET, MVC MVC Storefront часть 19: Обработки заказов с рабочим процессом Windows](aspnet-mvc-storefront/aspnet-mvc-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
-    - [ASP.NET MVC Storefront часть ток составляет 19a: отслеживания рабочего процесса Windows](aspnet-mvc-storefront/aspnet-mvc-storefront-part-19a-windows-workflow-followup.md)
-    - [ASP.NET MVC Storefront часть 20: ведение журнала](aspnet-mvc-storefront/aspnet-mvc-storefront-part-20-logging.md)
-    - [ASP.NET MVC Storefront часть 21: Диспетчера заказов и персонализации](aspnet-mvc-storefront/aspnet-mvc-storefront-part-21-order-manager-and-personalization.md)
-    - [ASP.NET MVC Storefront часть 22: Реструктуризации, перенаправления и PayPal](aspnet-mvc-storefront/aspnet-mvc-storefront-part-22-restructuring-rerouting-and-paypal.md)
-    - [ASP.NET MVC Storefront часть 23: Приступая к работе с разработки на основе домена](aspnet-mvc-storefront/aspnet-mvc-storefront-part-23-getting-started-with-domain-driven-design.md)
-    - [ASP.NET MVC Storefront часть 24: чания](aspnet-mvc-storefront/aspnet-mvc-storefront-part-24-finis.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 1. Описание архитектуры и общие сведения](aspnet-mvc-storefront/aspnet-mvc-storefront-part-1-architectural-discussion-and-overview.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 2. Шаблон репозитория](aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-repository-pattern.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 3. Каналы и фильтры](aspnet-mvc-storefront/aspnet-mvc-storefront-part-3-pipes-and-filters.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 4. Потенциал Linq To Sql](aspnet-mvc-storefront/aspnet-mvc-storefront-part-4-linq-to-sql-spike.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 5. Глобализация](aspnet-mvc-storefront/aspnet-mvc-storefront-part-5-globalization.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 6. Завершение репозитория и начало работы над пользовательским интерфейсом](aspnet-mvc-storefront/aspnet-mvc-storefront-part-6-finishing-the-repository-and-initial-ui-work.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 7. Маршрутизация и реализация пользовательского интерфейса](aspnet-mvc-storefront/aspnet-mvc-storefront-part-7-routing-and-ui-work.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 8. Тестирование контроллеров, завершение итерации 1](aspnet-mvc-storefront/aspnet-mvc-storefront-part-8-testing-controllers-iteration-1-complete.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 9. Корзина для покупок](aspnet-mvc-storefront/aspnet-mvc-storefront-part-9-the-shopping-cart.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 10. Рефакторинг корзины для покупок и авторизация](aspnet-mvc-storefront/aspnet-mvc-storefront-part-10-shopping-cart-refactor-and-authorization.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 11. Подключение корзины для покупок и использование компонентов](aspnet-mvc-storefront/aspnet-mvc-storefront-part-11-hooking-up-the-shopping-cart-and-using-components.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 12. Макетирование](aspnet-mvc-storefront/aspnet-mvc-storefront-part-12-mocking.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 13. Внедрение зависимостей](aspnet-mvc-storefront/aspnet-mvc-storefront-part-13-dependency-injection.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 14. Взаимодействие с полнофункциональным клиентом](aspnet-mvc-storefront/aspnet-mvc-storefront-part-14-rich-client-interaction.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 15. Просмотр открытого кода](aspnet-mvc-storefront/aspnet-mvc-storefront-part-15-public-code-review.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 16. Восстановление членства с помощью OpenID](aspnet-mvc-storefront/aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 17. Оформление заказа с Джеффом Этвудом (Jeff Atwood)](aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 18. Формирование единого представления](aspnet-mvc-storefront/aspnet-mvc-storefront-part-18-creating-an-experience.md)
+    - [ASP.NET MVC Storefront часть 19: Обработки заказов с рабочим процессом Windows](aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 19a. Продолжение использования рабочего процесса Windows](aspnet-mvc-storefront/aspnet-mvc-storefront-part-19a-windows-workflow-followup.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 20. Ведение журнала](aspnet-mvc-storefront/aspnet-mvc-storefront-part-20-logging.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 21. Диспетчер заказов и персонализация](aspnet-mvc-storefront/aspnet-mvc-storefront-part-21-order-manager-and-personalization.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 22. Реструктуризация, перенаправление и PayPal](aspnet-mvc-storefront/aspnet-mvc-storefront-part-22-restructuring-rerouting-and-paypal.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 23. Начало работы с проектированием, управляемым предметной областью](aspnet-mvc-storefront/aspnet-mvc-storefront-part-23-getting-started-with-domain-driven-design.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 24. Заключение](aspnet-mvc-storefront/aspnet-mvc-storefront-part-24-finis.md)
 - [Обсуждения](conference-presentations/index.md)
 
-    - [Создание NerdDinner.com с Microsoft ASP.NET Model View Controller (MVC)](conference-presentations/creating-nerddinnercom-with-microsoft-aspnet-model-view-controller-mvc.md)
-    - [Америки Далее Top модели представления контроллера Framework](conference-presentations/americas-next-top-model-view-controller-framework.md)
-    - [Ниндзя на пожара черный пояс советы](conference-presentations/ninja-on-fire-black-belt-tips.md)
+    - [Создание NerdDinner.com с помощью контроллера просмотра модели Microsoft ASP.NET (MVC)](conference-presentations/creating-nerddinnercom-with-microsoft-aspnet-model-view-controller-mvc.md)
+    - [Платформа контроллера представления модели следующего поколения](conference-presentations/americas-next-top-model-view-controller-framework.md)
+    - [Советы и рекомендации по максимально эффективному использованию платформы](conference-presentations/ninja-on-fire-black-belt-tips.md)

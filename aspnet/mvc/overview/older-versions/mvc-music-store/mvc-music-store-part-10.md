@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-10
 msc.type: authoredcontent
-ms.openlocfilehash: af08039de2d810948b9ab64974111b0346c7fa0f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2a65e4b793b615c45cdf31166e0a000ae72ee534
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="part-10-final-updates-to-navigation-and-site-design-conclusion"></a>Часть 10: Окончательный обновления навигации и разработки узла, в заключение
 ====================
@@ -135,7 +135,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="conclusion"></a>Заключение
 
-Видно, что ASP.NET MVC упрощает создание сложных веб-сайта с помощью доступа к базе данных, членство в AJAX, и т. д. довольно быстро. Надеемся, у этого учебника вы получили средства, необходимые для приступить к созданию собственного ASP.NET MVC приложений!
+Мы узнали, что ASP.NET MVC упрощает создание сложных веб-сайта с помощью доступа к базе данных, членство в AJAX, и т. д. довольно быстро. Надеемся, у этого учебника вы получили средства, необходимые для приступить к созданию собственного ASP.NET MVC приложений!
 
 
 >[!div class="step-by-step"]

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider
 msc.type: authoredcontent
-ms.openlocfilehash: ac254abcb756d048d159a9b67967a581f35ac871
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 82341724286a53f7883df324a391beeae3a9e2bd
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider-c"></a>ASP.NET Identity: С помощью MySQL хранилища с поставщиком EntityFramework MySQL (C#)
 ====================
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="update-the-entity-framework-assembly-for-your-project"></a>Обновление сборки платформы Entity Framework для проекта
 
-Приложение MVC, который был создан из шаблона Visual Studio 2013 содержит ссылку на [EntityFramework 6.0.0](http://www.nuget.org/packages/EntityFramework) пакета, но имеют были значительно обновления на эту сборку, с момента выпуска содержащие Повышение производительности. Чтобы использовать эти последние обновления в приложение, выполните следующие действия.
+Приложение MVC, который был создан из шаблона Visual Studio 2013 содержит ссылку на [EntityFramework 6.0.0](http://www.nuget.org/packages/EntityFramework) пакета, но имеют были на эту сборку, с момента выпуска обновлений, которые содержат значительные Повышение производительности. Чтобы использовать эти последние обновления в приложение, выполните следующие действия.
 
 1. Откройте проект MVC в Visual Studio 2013.
 2. Нажмите кнопку **средства**, нажмите кнопку **диспетчер пакетов библиотеки**, а затем нажмите кнопку **консоль диспетчера пакетов**:  
@@ -139,7 +139,7 @@ Entity Framework Code First использует **MigrationHistory** табли
 
 ### <a name="creating-a-custom-entityframework-initializer-for-applicationdbcontext"></a>Создание настраиваемого инициализатора для ApplicationDbContext EntityFramework
 
-Поставщик MySQL, представлено в этом учебнике не поддерживает миграции Entity Framework, вам потребуется использовать инициализаторы модели для подключения к базе данных. Поскольку этот учебник использует экземпляр MySQL в Azure, требуется необходимо создать пользовательский инициализатор Entity Framework.
+Поставщик MySQL, представлено в этом учебнике не поддерживает миграции Entity Framework, вам потребуется использовать инициализаторы модели для подключения к базе данных. Так как этот учебник использует экземпляр MySQL в Azure, необходимо создать настраиваемого инициализатора Entity Framework.
 
 > [!NOTE]
 > Этот шаг не является обязательным при подключении к экземпляру SQL Server на Azure или при использовании базы данных, который размещается на локальном компьютере.

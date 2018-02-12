@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
-ms.openlocfilehash: b59965b2fab00cb64db06574d5ca3c6388daa7c8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8d768727772738264d088315e605cca72db8de0a
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="adding-validation"></a>Добавление проверки
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/24/2018
 
 [!INCLUDE[Tutorial Note](sample/code-location.md)]
 
-В этом в этом разделе вы добавите логику проверки в `Movie` модель и необходимо убедиться, что правила проверки применяются каждый раз при попытке создать или изменить фильм, с помощью приложения.
+В этом разделе вы добавите логику проверки в `Movie` модель и необходимо убедиться, что правила проверки применяются каждый раз при попытке создать или изменить фильм, с помощью приложения.
 
 ## <a name="keeping-things-dry"></a>Чтобы оставить ТОНЕРА
 
