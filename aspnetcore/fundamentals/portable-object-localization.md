@@ -1,42 +1,42 @@
 ---
-title: "Настройка объекта переносимой локализации"
+title: "Настройка локализации переносных объектов"
 author: sebastienros
-description: "В этой статье приведены сведения о файлах переносимый объект и описаны действия по их использованию в приложении ASP.NET Core с помощью платформы Orchard Core."
-ms.author: scaddie
+description: "Эта статья содержит вводные сведения о файлах переносимых объектов и описывает действия по их использованию в приложении ASP.NET Core с помощью платформы Orchard Core."
 manager: wpickett
+ms.author: scaddie
 ms.date: 09/26/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: ad68c8a7df5a8ea0f7ef42137c29cd3b37657052
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: 6fefbd9b28d481184e358e7d66af68d112c63696
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="configure-portable-object-localization-with-orchard-core"></a><span data-ttu-id="f0c8a-103">Настройка объекта переносимой локализации с основными Orchard</span><span class="sxs-lookup"><span data-stu-id="f0c8a-103">Configure portable object localization with Orchard Core</span></span>
+# <a name="configure-portable-object-localization-with-orchard-core"></a><span data-ttu-id="c55df-103">Настройка локализации переносных объектов с помощью Orchard Core</span><span class="sxs-lookup"><span data-stu-id="c55df-103">Configure portable object localization with Orchard Core</span></span>
 
-<span data-ttu-id="f0c8a-104">По [Sébastien Ros](https://github.com/sebastienros) и [Скотт Addie](https://twitter.com/Scott_Addie)</span><span class="sxs-lookup"><span data-stu-id="f0c8a-104">By [Sébastien Ros](https://github.com/sebastienros) and [Scott Addie](https://twitter.com/Scott_Addie)</span></span>
+<span data-ttu-id="c55df-104">Авторы: [Себастьен Рос](https://github.com/sebastienros) (Sébastien Ros) и [Скотт Эдди](https://twitter.com/Scott_Addie) (Scott Addie)</span><span class="sxs-lookup"><span data-stu-id="c55df-104">By [Sébastien Ros](https://github.com/sebastienros) and [Scott Addie](https://twitter.com/Scott_Addie)</span></span>
 
-<span data-ttu-id="f0c8a-105">В этой статье рассматриваются действия по использованию файлов переносимой объекта (PO) в приложении ASP.NET Core с [Orchard Core](https://github.com/OrchardCMS/OrchardCore) framework.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-105">This article walks through the steps for using Portable Object (PO) files in an ASP.NET Core application with the [Orchard Core](https://github.com/OrchardCMS/OrchardCore) framework.</span></span>
+<span data-ttu-id="c55df-105">Эта статья описывает действия по использованию файлов переносимых объектов в приложении ASP.NET Core с помощью платформы [Orchard Core](https://github.com/OrchardCMS/OrchardCore).</span><span class="sxs-lookup"><span data-stu-id="c55df-105">This article walks through the steps for using Portable Object (PO) files in an ASP.NET Core application with the [Orchard Core](https://github.com/OrchardCMS/OrchardCore) framework.</span></span>
 
-<span data-ttu-id="f0c8a-106">**Примечание:** Orchard ядра не продуктов корпорации Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-106">**Note:** Orchard Core isn't a Microsoft product.</span></span> <span data-ttu-id="f0c8a-107">Следовательно Корпорация Майкрософт не поддерживает эту функцию.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-107">Consequently, Microsoft provides no support for this feature.</span></span>
+<span data-ttu-id="c55df-106">**Примечание**. Orchard Core не является продуктом корпорации Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="c55df-106">**Note:** Orchard Core isn't a Microsoft product.</span></span> <span data-ttu-id="c55df-107">Поэтому корпорация Майкрософт не предоставляет поддержку для этого компонента.</span><span class="sxs-lookup"><span data-stu-id="c55df-107">Consequently, Microsoft provides no support for this feature.</span></span>
 
-<span data-ttu-id="f0c8a-108">[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="f0c8a-108">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="c55df-108">[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="c55df-108">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
 
-## <a name="what-is-a-po-file"></a><span data-ttu-id="f0c8a-109">Что такое файл PO?</span><span class="sxs-lookup"><span data-stu-id="f0c8a-109">What is a PO file?</span></span>
+## <a name="what-is-a-po-file"></a><span data-ttu-id="c55df-109">Что такое файл переносимых объектов?</span><span class="sxs-lookup"><span data-stu-id="c55df-109">What is a PO file?</span></span>
 
-<span data-ttu-id="f0c8a-110">Файлы PO распространяются как текстовые файлы, содержащие переведенных строк для данного языка.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-110">PO files are distributed as text files containing the translated strings for a given language.</span></span> <span data-ttu-id="f0c8a-111">Некоторые преимущества использования файлов PO *.resx* файлы включают в себя:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-111">Some advantages of using PO files instead *.resx* files include:</span></span>
-- <span data-ttu-id="f0c8a-112">Файлы PO поддерживают преобразование во множественную форму; *.resx* файлы не поддерживают преобразование во множественную форму.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-112">PO files support pluralization; *.resx* files don't support pluralization.</span></span>
-- <span data-ttu-id="f0c8a-113">Файлы PO не компилируются подобно *.resx* файлов.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-113">PO files aren't compiled like *.resx* files.</span></span> <span data-ttu-id="f0c8a-114">Таким образом специальные действия сборки и оснащения, не являются обязательными.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-114">As such, specialized tooling and build steps aren't required.</span></span>
-- <span data-ttu-id="f0c8a-115">Файлы PO работает со средствами совместной работы сети редактирования.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-115">PO files work well with collaborative online editing tools.</span></span>
+<span data-ttu-id="c55df-110">Файлы переносимых объектов (PO) распространяются как текстовые файлы со строками, переведенными на заданный язык.</span><span class="sxs-lookup"><span data-stu-id="c55df-110">PO files are distributed as text files containing the translated strings for a given language.</span></span> <span data-ttu-id="c55df-111">Файлы PO дают определенные преимущества по сравнению с файлами *RESX*, например:</span><span class="sxs-lookup"><span data-stu-id="c55df-111">Some advantages of using PO files instead *.resx* files include:</span></span>
+- <span data-ttu-id="c55df-112">Файлы PO поддерживают преобразование во множественную форму, файлы *RESX* — нет.</span><span class="sxs-lookup"><span data-stu-id="c55df-112">PO files support pluralization; *.resx* files don't support pluralization.</span></span>
+- <span data-ttu-id="c55df-113">Файлы PO не компилируются подобно файлам *RESX*.</span><span class="sxs-lookup"><span data-stu-id="c55df-113">PO files aren't compiled like *.resx* files.</span></span> <span data-ttu-id="c55df-114">Поэтому потребность в специальных инструментах и действиях сборки отпадает.</span><span class="sxs-lookup"><span data-stu-id="c55df-114">As such, specialized tooling and build steps aren't required.</span></span>
+- <span data-ttu-id="c55df-115">Файлы PO хорошо работают со средствами редактирования, предназначенными для совместной работы по сети.</span><span class="sxs-lookup"><span data-stu-id="c55df-115">PO files work well with collaborative online editing tools.</span></span>
 
-### <a name="example"></a><span data-ttu-id="f0c8a-116">Пример</span><span class="sxs-lookup"><span data-stu-id="f0c8a-116">Example</span></span>
+### <a name="example"></a><span data-ttu-id="c55df-116">Пример</span><span class="sxs-lookup"><span data-stu-id="c55df-116">Example</span></span>
 
-<span data-ttu-id="f0c8a-117">Ниже приведен образец файла PO содержащая перевод для двух строк на французском языке, включая его формы во множественном числе:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-117">Here is a sample PO file containing the translation for two strings in French, including one with its plural form:</span></span>
+<span data-ttu-id="c55df-117">Ниже приведен пример файла PO, содержащего перевод двух строк на французский язык, для одной из которых приведена форма во множественном числе:</span><span class="sxs-lookup"><span data-stu-id="c55df-117">Here is a sample PO file containing the translation for two strings in French, including one with its plural form:</span></span>
 
-<span data-ttu-id="f0c8a-118">*fr.po*</span><span class="sxs-lookup"><span data-stu-id="f0c8a-118">*fr.po*</span></span>
+<span data-ttu-id="c55df-118">*fr.po*</span><span class="sxs-lookup"><span data-stu-id="c55df-118">*fr.po*</span></span>
 
 ```text
 #: Services/EmailService.cs:29
@@ -50,71 +50,71 @@ msgstr[0] "L'adresse email est \"{0}\"."
 msgstr[1] "Les adresses email sont \"{0}\""
 ```
 
-<span data-ttu-id="f0c8a-119">В этом примере используется следующий синтаксис:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-119">This example uses the following syntax:</span></span>
+<span data-ttu-id="c55df-119">В этом примере используется следующий синтаксис:</span><span class="sxs-lookup"><span data-stu-id="c55df-119">This example uses the following syntax:</span></span>
 
-- <span data-ttu-id="f0c8a-120">`#:`: Комментарий, указывающее контекст строки, которые будут преобразованы.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-120">`#:`: A comment indicating the context of the string to be translated.</span></span> <span data-ttu-id="f0c8a-121">Та же строка может быть переведены различным образом в зависимости от того, где он используется.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-121">The same string might be translated differently depending on where it's being used.</span></span>
-- <span data-ttu-id="f0c8a-122">`msgid`: Непреобразованный строка.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-122">`msgid`: The untranslated string.</span></span>
-- <span data-ttu-id="f0c8a-123">`msgstr`: Переведенных строк.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-123">`msgstr`: The translated string.</span></span>
+- <span data-ttu-id="c55df-120">`#:`: комментарий, указывающий контекст переводимой строки.</span><span class="sxs-lookup"><span data-stu-id="c55df-120">`#:`: A comment indicating the context of the string to be translated.</span></span> <span data-ttu-id="c55df-121">Одну и ту же строку можно перевести по-разному в зависимости от характера ее использования.</span><span class="sxs-lookup"><span data-stu-id="c55df-121">The same string might be translated differently depending on where it's being used.</span></span>
+- <span data-ttu-id="c55df-122">`msgid`: непереведенная строка.</span><span class="sxs-lookup"><span data-stu-id="c55df-122">`msgid`: The untranslated string.</span></span>
+- <span data-ttu-id="c55df-123">`msgstr`: переведенная строка.</span><span class="sxs-lookup"><span data-stu-id="c55df-123">`msgstr`: The translated string.</span></span>
 
-<span data-ttu-id="f0c8a-124">В случае поддержки преобразование во множественную форму можно определить дополнительные записи.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-124">In the case of pluralization support, more entries can be defined.</span></span>
+<span data-ttu-id="c55df-124">При поддержке преобразования во множественную форму можно определить дополнительные записи.</span><span class="sxs-lookup"><span data-stu-id="c55df-124">In the case of pluralization support, more entries can be defined.</span></span>
 
-- <span data-ttu-id="f0c8a-125">`msgid_plural`: Непреобразованный во множественном числе строка.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-125">`msgid_plural`: The untranslated plural string.</span></span>
-- <span data-ttu-id="f0c8a-126">`msgstr[0]`: Переведенных строк для варианта 0.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-126">`msgstr[0]`: The translated string for the case 0.</span></span>
-- <span data-ttu-id="f0c8a-127">`msgstr[N]`: Переведенных строк для вариантов N.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-127">`msgstr[N]`: The translated string for the case N.</span></span>
+- <span data-ttu-id="c55df-125">`msgid_plural`: непереведенная строка во множественной форме.</span><span class="sxs-lookup"><span data-stu-id="c55df-125">`msgid_plural`: The untranslated plural string.</span></span>
+- <span data-ttu-id="c55df-126">`msgstr[0]`: переведенная строка для случая 0.</span><span class="sxs-lookup"><span data-stu-id="c55df-126">`msgstr[0]`: The translated string for the case 0.</span></span>
+- <span data-ttu-id="c55df-127">`msgstr[N]`: переведенная строка для случая N.</span><span class="sxs-lookup"><span data-stu-id="c55df-127">`msgstr[N]`: The translated string for the case N.</span></span>
 
-<span data-ttu-id="f0c8a-128">Спецификация файла PO можно найти [здесь](https://www.gnu.org/savannah-checkouts/gnu/gettext/manual/html_node/PO-Files.html).</span><span class="sxs-lookup"><span data-stu-id="f0c8a-128">The PO file specification can be found [here](https://www.gnu.org/savannah-checkouts/gnu/gettext/manual/html_node/PO-Files.html).</span></span>
+<span data-ttu-id="c55df-128">Спецификацию файла PO см. [здесь](https://www.gnu.org/savannah-checkouts/gnu/gettext/manual/html_node/PO-Files.html).</span><span class="sxs-lookup"><span data-stu-id="c55df-128">The PO file specification can be found [here](https://www.gnu.org/savannah-checkouts/gnu/gettext/manual/html_node/PO-Files.html).</span></span>
 
-## <a name="configuring-po-file-support-in-aspnet-core"></a><span data-ttu-id="f0c8a-129">Настройка поддержки файлов заказа на Покупку в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="f0c8a-129">Configuring PO file support in ASP.NET Core</span></span>
+## <a name="configuring-po-file-support-in-aspnet-core"></a><span data-ttu-id="c55df-129">Настройка поддержки файлов PO в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="c55df-129">Configuring PO file support in ASP.NET Core</span></span>
 
-<span data-ttu-id="f0c8a-130">Этот пример основан на основных компонентов MVC-приложениях ASP.NET создан из шаблона проекта Visual Studio 2017 г.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-130">This example is based on an ASP.NET Core MVC application generated from a Visual Studio 2017 project template.</span></span>
+<span data-ttu-id="c55df-130">Этот пример основан на приложении ASP.NET Core MVC, созданном из шаблона проекта Visual Studio 2017.</span><span class="sxs-lookup"><span data-stu-id="c55df-130">This example is based on an ASP.NET Core MVC application generated from a Visual Studio 2017 project template.</span></span>
 
-### <a name="referencing-the-package"></a><span data-ttu-id="f0c8a-131">Ссылка на пакет</span><span class="sxs-lookup"><span data-stu-id="f0c8a-131">Referencing the package</span></span>
+### <a name="referencing-the-package"></a><span data-ttu-id="c55df-131">Указание ссылок на пакет</span><span class="sxs-lookup"><span data-stu-id="c55df-131">Referencing the package</span></span>
 
-<span data-ttu-id="f0c8a-132">Добавьте ссылку на `OrchardCore.Localization.Core` пакет NuGet.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-132">Add a reference to the `OrchardCore.Localization.Core` NuGet package.</span></span> <span data-ttu-id="f0c8a-133">Его можно найти на [MyGet](https://www.myget.org/) источника следующих пакетов: https://www.myget.org/F/orchardcore-preview/api/v3/index.json</span><span class="sxs-lookup"><span data-stu-id="f0c8a-133">It's available on [MyGet](https://www.myget.org/) at the following package source: https://www.myget.org/F/orchardcore-preview/api/v3/index.json</span></span>
+<span data-ttu-id="c55df-132">Добавьте ссылку на пакет NuGet `OrchardCore.Localization.Core`.</span><span class="sxs-lookup"><span data-stu-id="c55df-132">Add a reference to the `OrchardCore.Localization.Core` NuGet package.</span></span> <span data-ttu-id="c55df-133">Он доступен на сайте [MyGet](https://www.myget.org/) в следующем источнике: https://www.myget.org/F/orchardcore-preview/api/v3/index.json</span><span class="sxs-lookup"><span data-stu-id="c55df-133">It's available on [MyGet](https://www.myget.org/) at the following package source: https://www.myget.org/F/orchardcore-preview/api/v3/index.json</span></span>
 
-<span data-ttu-id="f0c8a-134">*.Csproj* файл теперь содержит строку следующего вида (номер версии могут различаться):</span><span class="sxs-lookup"><span data-stu-id="f0c8a-134">The *.csproj* file now contains a line similar to the following (version number may vary):</span></span>
+<span data-ttu-id="c55df-134">Файл *CSPROJ* теперь содержит строку следующего вида (номер версии может отличаться):</span><span class="sxs-lookup"><span data-stu-id="c55df-134">The *.csproj* file now contains a line similar to the following (version number may vary):</span></span>
 
 [!code-xml[Main](localization/sample/POLocalization/POLocalization.csproj?range=9)]
 
-### <a name="registering-the-service"></a><span data-ttu-id="f0c8a-135">Регистрация службы</span><span class="sxs-lookup"><span data-stu-id="f0c8a-135">Registering the service</span></span>
+### <a name="registering-the-service"></a><span data-ttu-id="c55df-135">Регистрация службы</span><span class="sxs-lookup"><span data-stu-id="c55df-135">Registering the service</span></span>
 
-<span data-ttu-id="f0c8a-136">Добавьте необходимые службы, чтобы `ConfigureServices` метод *файла Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-136">Add the required services to the `ConfigureServices` method of *Startup.cs*:</span></span>
+<span data-ttu-id="c55df-136">Добавьте необходимые службы в метод `ConfigureServices` файла *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="c55df-136">Add the required services to the `ConfigureServices` method of *Startup.cs*:</span></span>
 
 [!code-csharp[Main](localization/sample/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
-<span data-ttu-id="f0c8a-137">Добавьте необходимые по промежуточного слоя для `Configure` метод *файла Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-137">Add the required middleware to the `Configure` method of *Startup.cs*:</span></span>
+<span data-ttu-id="c55df-137">Добавьте необходимое ПО промежуточного слоя в метод `Configure` файла *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="c55df-137">Add the required middleware to the `Configure` method of *Startup.cs*:</span></span>
 
 [!code-csharp[Main](localization/sample/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
-<span data-ttu-id="f0c8a-138">Добавьте следующий код для представления Razor по выбору.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-138">Add the following code to your Razor view of choice.</span></span> <span data-ttu-id="f0c8a-139">*About.cshtml* используется в этом примере.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-139">*About.cshtml* is used in this example.</span></span>
+<span data-ttu-id="c55df-138">Добавьте следующий код в нужное представление Razor.</span><span class="sxs-lookup"><span data-stu-id="c55df-138">Add the following code to your Razor view of choice.</span></span> <span data-ttu-id="c55df-139">В этом примере используется *About.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="c55df-139">*About.cshtml* is used in this example.</span></span>
 
 [!code-cshtml[Main](localization/sample/POLocalization/Views/Home/About.cshtml)]
 
-<span data-ttu-id="f0c8a-140">`IViewLocalizer` Экземпляра внедренного и используемый для преобразования текста «Hello world!».</span><span class="sxs-lookup"><span data-stu-id="f0c8a-140">An `IViewLocalizer` instance is injected and used to translate the text "Hello world!".</span></span>
+<span data-ttu-id="c55df-140">Экземпляр `IViewLocalizer` внедряется и используется для перевода текста "Hello world!".</span><span class="sxs-lookup"><span data-stu-id="c55df-140">An `IViewLocalizer` instance is injected and used to translate the text "Hello world!".</span></span>
 
-### <a name="creating-a-po-file"></a><span data-ttu-id="f0c8a-141">Создание файла заказа на Покупку</span><span class="sxs-lookup"><span data-stu-id="f0c8a-141">Creating a PO file</span></span>
+### <a name="creating-a-po-file"></a><span data-ttu-id="c55df-141">Создание файла PO</span><span class="sxs-lookup"><span data-stu-id="c55df-141">Creating a PO file</span></span>
 
-<span data-ttu-id="f0c8a-142">Создайте файл с именем  *<culture code>расширениями* в корневой папке приложения.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-142">Create a file named *<culture code>.po* in your application root folder.</span></span> <span data-ttu-id="f0c8a-143">В этом примере имя файла — *fr.po* так, как используется французский язык:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-143">In this example, the file name is *fr.po* because the French language is used:</span></span>
+<span data-ttu-id="c55df-142">Создайте файл с именем *<culture code>.po* в корневой папке приложения.</span><span class="sxs-lookup"><span data-stu-id="c55df-142">Create a file named *<culture code>.po* in your application root folder.</span></span> <span data-ttu-id="c55df-143">В этом примере файл имеет имя *fr.po*, так как используется французский язык:</span><span class="sxs-lookup"><span data-stu-id="c55df-143">In this example, the file name is *fr.po* because the French language is used:</span></span>
 
 [!code-text[Main](localization/sample/POLocalization/fr.po)]
 
-<span data-ttu-id="f0c8a-144">Файл содержит строку для преобразования и французский перевод строки.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-144">This file stores both the string to translate and the French-translated string.</span></span> <span data-ttu-id="f0c8a-145">Переводы вернуться к их родительский язык и региональные параметры, при необходимости.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-145">Translations revert to their parent culture, if necessary.</span></span> <span data-ttu-id="f0c8a-146">В этом примере *fr.po* файл используется в том случае, если запрошенный язык и региональные параметры `fr-FR` или `fr-CA`.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-146">In this example, the *fr.po* file is used if the requested culture is `fr-FR` or `fr-CA`.</span></span>
+<span data-ttu-id="c55df-144">Данный файл содержит как строку на перевод, так и строку, переведенную на французский язык.</span><span class="sxs-lookup"><span data-stu-id="c55df-144">This file stores both the string to translate and the French-translated string.</span></span> <span data-ttu-id="c55df-145">При необходимости переводы возвращаются к своим родительским языку и региональным параметрам.</span><span class="sxs-lookup"><span data-stu-id="c55df-145">Translations revert to their parent culture, if necessary.</span></span> <span data-ttu-id="c55df-146">В этом примере файл *fr.po* используется, если запрошены язык и региональные параметры `fr-FR` или `fr-CA`.</span><span class="sxs-lookup"><span data-stu-id="c55df-146">In this example, the *fr.po* file is used if the requested culture is `fr-FR` or `fr-CA`.</span></span>
 
-### <a name="testing-the-application"></a><span data-ttu-id="f0c8a-147">Тестирование приложения</span><span class="sxs-lookup"><span data-stu-id="f0c8a-147">Testing the application</span></span>
+### <a name="testing-the-application"></a><span data-ttu-id="c55df-147">Тестирование приложения</span><span class="sxs-lookup"><span data-stu-id="c55df-147">Testing the application</span></span>
 
-<span data-ttu-id="f0c8a-148">Запустите приложение и перейдите по URL-адресу `/Home/About`.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-148">Run your application, and navigate to the URL `/Home/About`.</span></span> <span data-ttu-id="f0c8a-149">Текст **Здравствуй, мир!**</span><span class="sxs-lookup"><span data-stu-id="f0c8a-149">The text **Hello world!**</span></span> <span data-ttu-id="f0c8a-150">отображается.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-150">is displayed.</span></span>
+<span data-ttu-id="c55df-148">Запустите приложение и перейдите по URL-адресу `/Home/About`.</span><span class="sxs-lookup"><span data-stu-id="c55df-148">Run your application, and navigate to the URL `/Home/About`.</span></span> <span data-ttu-id="c55df-149">Отображается текст **Hello world!**</span><span class="sxs-lookup"><span data-stu-id="c55df-149">The text **Hello world!**</span></span> <span data-ttu-id="c55df-150">.</span><span class="sxs-lookup"><span data-stu-id="c55df-150">is displayed.</span></span>
 
-<span data-ttu-id="f0c8a-151">Перейдите на URL-адрес `/Home/About?culture=fr-FR`.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-151">Navigate to the URL `/Home/About?culture=fr-FR`.</span></span> <span data-ttu-id="f0c8a-152">Текст **Bonjour le monde!**</span><span class="sxs-lookup"><span data-stu-id="f0c8a-152">The text **Bonjour le monde!**</span></span> <span data-ttu-id="f0c8a-153">отображается.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-153">is displayed.</span></span>
+<span data-ttu-id="c55df-151">Перейдите по URL-адресу `/Home/About?culture=fr-FR`.</span><span class="sxs-lookup"><span data-stu-id="c55df-151">Navigate to the URL `/Home/About?culture=fr-FR`.</span></span> <span data-ttu-id="c55df-152">Отображается текст **Bonjour le monde!**</span><span class="sxs-lookup"><span data-stu-id="c55df-152">The text **Bonjour le monde!**</span></span> <span data-ttu-id="c55df-153">.</span><span class="sxs-lookup"><span data-stu-id="c55df-153">is displayed.</span></span>
 
-## <a name="pluralization"></a><span data-ttu-id="f0c8a-154">Преобразование во множественную форму</span><span class="sxs-lookup"><span data-stu-id="f0c8a-154">Pluralization</span></span>
+## <a name="pluralization"></a><span data-ttu-id="c55df-154">Преобразование во множественную форму</span><span class="sxs-lookup"><span data-stu-id="c55df-154">Pluralization</span></span>
 
-<span data-ttu-id="f0c8a-155">Файлы PO поддерживает преобразование во множественную форму формы, это полезно, когда та же строка требует перевода различаться в зависимости от количества элементов.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-155">PO files support pluralization forms, which is useful when the same string needs to be translated differently based on a cardinality.</span></span> <span data-ttu-id="f0c8a-156">Эта задача выполняется сложной из-за того, что каждый язык определяет настраиваемые правила, чтобы выбрать строку, используемую в зависимости от количества элементов.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-156">This task is made complicated by the fact that each language defines custom rules to select which string to use based on the cardinality.</span></span>
+<span data-ttu-id="c55df-155">Файлы PO поддерживают преобразование во множественную форму, что удобно, когда одну и ту же строку нужно переводить по-разному в зависимости от кратности.</span><span class="sxs-lookup"><span data-stu-id="c55df-155">PO files support pluralization forms, which is useful when the same string needs to be translated differently based on a cardinality.</span></span> <span data-ttu-id="c55df-156">Эта задача осложняется тем, что каждый язык имеет собственные правила для выбора строк в зависимости от кратности.</span><span class="sxs-lookup"><span data-stu-id="c55df-156">This task is made complicated by the fact that each language defines custom rules to select which string to use based on the cardinality.</span></span>
 
-<span data-ttu-id="f0c8a-157">Пакет Orchard локализации предоставляет API для вызова этих различных форм множественного числа автоматически.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-157">The Orchard Localization package provides an API to invoke these different plural forms automatically.</span></span>
+<span data-ttu-id="c55df-157">Пакет локализации Orchard предоставляет API для автоматического вызова этих различных форм множественного числа.</span><span class="sxs-lookup"><span data-stu-id="c55df-157">The Orchard Localization package provides an API to invoke these different plural forms automatically.</span></span>
 
-### <a name="creating-pluralization-po-files"></a><span data-ttu-id="f0c8a-158">Создание файлов PO преобразование во множественную форму</span><span class="sxs-lookup"><span data-stu-id="f0c8a-158">Creating pluralization PO files</span></span>
+### <a name="creating-pluralization-po-files"></a><span data-ttu-id="c55df-158">Создание файлов PO с множественными формами</span><span class="sxs-lookup"><span data-stu-id="c55df-158">Creating pluralization PO files</span></span>
 
-<span data-ttu-id="f0c8a-159">Добавьте следующее содержимое в ранее упомянутых *fr.po* файла:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-159">Add the following content to the previously mentioned *fr.po* file:</span></span>
+<span data-ttu-id="c55df-159">Добавьте в указанный ранее файл *fr.po* следующее содержимое:</span><span class="sxs-lookup"><span data-stu-id="c55df-159">Add the following content to the previously mentioned *fr.po* file:</span></span>
 
 ```text
 msgid "There is one item."
@@ -123,19 +123,19 @@ msgstr[0] "Il y a un élément."
 msgstr[1] "Il y a {0} éléments."
 ```
 
-<span data-ttu-id="f0c8a-160">В разделе [что такое файл PO?](#what-is-a-po-file) каждая запись в этом примере представляет описание.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-160">See [What is a PO file?](#what-is-a-po-file) for an explanation of what each entry in this example represents.</span></span>
+<span data-ttu-id="c55df-160">Сведения о том, что означает каждая запись в этом примере, см. в разделе [Что такое файл переносимых объектов?](#what-is-a-po-file).</span><span class="sxs-lookup"><span data-stu-id="c55df-160">See [What is a PO file?](#what-is-a-po-file) for an explanation of what each entry in this example represents.</span></span>
 
-### <a name="adding-a-language-using-different-pluralization-forms"></a><span data-ttu-id="f0c8a-161">Добавление языка, с помощью форм разных преобразование во множественную форму</span><span class="sxs-lookup"><span data-stu-id="f0c8a-161">Adding a language using different pluralization forms</span></span>
+### <a name="adding-a-language-using-different-pluralization-forms"></a><span data-ttu-id="c55df-161">Добавление языка с использованием различных форм множественного числа</span><span class="sxs-lookup"><span data-stu-id="c55df-161">Adding a language using different pluralization forms</span></span>
 
-<span data-ttu-id="f0c8a-162">В предыдущем примере были использованы строки английского и французского языков.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-162">English and French strings were used in the previous example.</span></span> <span data-ttu-id="f0c8a-163">Английского и французского имеет только две формы преобразование во множественную форму и совместно использовать те же правила формы это, что количество элементов один сопоставляется первой формы во множественном числе.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-163">English and French have only two pluralization forms and share the same form rules, which is that a cardinality of one is mapped to the first plural form.</span></span> <span data-ttu-id="f0c8a-164">Другие количества элементов сопоставляются с вторая форма множественного числа.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-164">Any other cardinality is mapped to the second plural form.</span></span>
+<span data-ttu-id="c55df-162">В предыдущем примере использовались строки на английском и французском языках.</span><span class="sxs-lookup"><span data-stu-id="c55df-162">English and French strings were used in the previous example.</span></span> <span data-ttu-id="c55df-163">Эти языки имеют всего две формы множественного числа и используют схожие правила. Кратность, равная единице, соответствует первой форме множественного числа.</span><span class="sxs-lookup"><span data-stu-id="c55df-163">English and French have only two pluralization forms and share the same form rules, which is that a cardinality of one is mapped to the first plural form.</span></span> <span data-ttu-id="c55df-164">Любая другая кратность соответствует второй форме множественного числа.</span><span class="sxs-lookup"><span data-stu-id="c55df-164">Any other cardinality is mapped to the second plural form.</span></span>
 
-<span data-ttu-id="f0c8a-165">Не все языки используют те же самые правила.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-165">Not all languages share the same rules.</span></span> <span data-ttu-id="f0c8a-166">Это показано с чешском языке, который имеет три формы во множественном числе.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-166">This is illustrated with the Czech language, which has three plural forms.</span></span>
+<span data-ttu-id="c55df-165">Подобные правила действуют не во всех языках.</span><span class="sxs-lookup"><span data-stu-id="c55df-165">Not all languages share the same rules.</span></span> <span data-ttu-id="c55df-166">Это показано на примере чешского языка, где форм множественного числа три.</span><span class="sxs-lookup"><span data-stu-id="c55df-166">This is illustrated with the Czech language, which has three plural forms.</span></span>
 
-<span data-ttu-id="f0c8a-167">Создание `cs.po` следующим образом и обратите внимание на то, каким образом преобразование во множественную форму должно три различным переводам:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-167">Create the `cs.po` file as follows, and note how the pluralization needs three different translations:</span></span>
+<span data-ttu-id="c55df-167">Создайте файл `cs.po`, как показано ниже, и обратите внимание, что для преобразования во множественную форму нужно три разных перевода:</span><span class="sxs-lookup"><span data-stu-id="c55df-167">Create the `cs.po` file as follows, and note how the pluralization needs three different translations:</span></span>
 
 [!code-text[Main](localization/sample/POLocalization/cs.po)]
 
-<span data-ttu-id="f0c8a-168">Чтобы принять чешский локализации, добавьте `"cs"` в список поддерживаемых языков и региональных параметров в `ConfigureServices` метод:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-168">To accept Czech localizations, add `"cs"` to the list of supported cultures in the `ConfigureServices` method:</span></span>
+<span data-ttu-id="c55df-168">Чтобы принять локализации на чешский язык, добавьте `"cs"` в список поддерживаемых языков и региональных параметров в методе `ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="c55df-168">To accept Czech localizations, add `"cs"` to the list of supported cultures in the `ConfigureServices` method:</span></span>
 
 ```csharp
 var supportedCultures = new List<CultureInfo>
@@ -148,7 +148,7 @@ var supportedCultures = new List<CultureInfo>
 };
 ```
 
-<span data-ttu-id="f0c8a-169">Изменить *Views/Home/About.cshtml* файл для отображения локализованных строк для нескольких мощности во множественном числе:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-169">Edit the *Views/Home/About.cshtml* file to render localized, plural strings for several cardinalities:</span></span>
+<span data-ttu-id="c55df-169">Измените файл *Views/Home/About.cshtml*, чтобы отобразить локализованные строки во множественном числе для разных кратностей:</span><span class="sxs-lookup"><span data-stu-id="c55df-169">Edit the *Views/Home/About.cshtml* file to render localized, plural strings for several cardinalities:</span></span>
 
 ```cshtml
 <p>@Localizer.Plural(1, "There is one item.", "There are {0} items.")</p>
@@ -156,11 +156,11 @@ var supportedCultures = new List<CultureInfo>
 <p>@Localizer.Plural(5, "There is one item.", "There are {0} items.")</p>
 ```
 
-<span data-ttu-id="f0c8a-170">**Примечание:** в реальной ситуации переменной будет использоваться для представления числа.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-170">**Note:** In a real world scenario, a variable would be used to represent the count.</span></span> <span data-ttu-id="f0c8a-171">Здесь мы повторяем один и тот же код с тремя различными значениями для предоставления очень определенный регистр.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-171">Here, we repeat the same code with three different values to expose a very specific case.</span></span>
+<span data-ttu-id="c55df-170">**Примечание**. В реальной ситуации для представления этого числа используется переменная.</span><span class="sxs-lookup"><span data-stu-id="c55df-170">**Note:** In a real world scenario, a variable would be used to represent the count.</span></span> <span data-ttu-id="c55df-171">Здесь мы повторяем один и тот же код с тремя различными значениями, чтобы описать частный случай.</span><span class="sxs-lookup"><span data-stu-id="c55df-171">Here, we repeat the same code with three different values to expose a very specific case.</span></span>
 
-<span data-ttu-id="f0c8a-172">После переключения языков и региональных параметров, см.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-172">Upon switching cultures, you see the following:</span></span>
+<span data-ttu-id="c55df-172">После переключения языка и региональных параметров вы увидите следующее:</span><span class="sxs-lookup"><span data-stu-id="c55df-172">Upon switching cultures, you see the following:</span></span>
 
-<span data-ttu-id="f0c8a-173">Для `/Home/About`:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-173">For `/Home/About`:</span></span>
+<span data-ttu-id="c55df-173">Для `/Home/About`:</span><span class="sxs-lookup"><span data-stu-id="c55df-173">For `/Home/About`:</span></span>
 
 ```html
 There is one item.
@@ -168,7 +168,7 @@ There are 2 items.
 There are 5 items.
 ```
 
-<span data-ttu-id="f0c8a-174">Для `/Home/About?culture=fr`:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-174">For `/Home/About?culture=fr`:</span></span>
+<span data-ttu-id="c55df-174">Для `/Home/About?culture=fr`:</span><span class="sxs-lookup"><span data-stu-id="c55df-174">For `/Home/About?culture=fr`:</span></span>
 
 ```html
 Il y a un élément.
@@ -176,7 +176,7 @@ Il y a 2 éléments.
 Il y a 5 éléments.
 ```
 
-<span data-ttu-id="f0c8a-175">Для `/Home/About?culture=cs`:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-175">For `/Home/About?culture=cs`:</span></span>
+<span data-ttu-id="c55df-175">Для `/Home/About?culture=cs`:</span><span class="sxs-lookup"><span data-stu-id="c55df-175">For `/Home/About?culture=cs`:</span></span>
 
 ```html
 Existuje jedna položka.
@@ -184,17 +184,17 @@ Existují 2 položky.
 Existuje 5 položek.
 ```
 
-<span data-ttu-id="f0c8a-176">Обратите внимание, что для чешского языка и региональных параметров, три переводы отличаются.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-176">Note that for the Czech culture, the three translations are different.</span></span> <span data-ttu-id="f0c8a-177">Языки и региональные параметры французский "и" Английский совместное использование одной конструкции для двух последних переведенных строк.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-177">The French and English cultures share the same construction for the two last translated strings.</span></span>
+<span data-ttu-id="c55df-176">Обратите внимание, что для чешского языка все три перевода различаются.</span><span class="sxs-lookup"><span data-stu-id="c55df-176">Note that for the Czech culture, the three translations are different.</span></span> <span data-ttu-id="c55df-177">На французском и английском языках для двух последних переведенных строк используется одинаковая конструкция.</span><span class="sxs-lookup"><span data-stu-id="c55df-177">The French and English cultures share the same construction for the two last translated strings.</span></span>
 
-## <a name="advanced-tasks"></a><span data-ttu-id="f0c8a-178">Расширенные задачи</span><span class="sxs-lookup"><span data-stu-id="f0c8a-178">Advanced tasks</span></span>
+## <a name="advanced-tasks"></a><span data-ttu-id="c55df-178">Расширенные задачи</span><span class="sxs-lookup"><span data-stu-id="c55df-178">Advanced tasks</span></span>
 
-### <a name="contextualizing-strings"></a><span data-ttu-id="f0c8a-179">Изучение в контексте строк</span><span class="sxs-lookup"><span data-stu-id="f0c8a-179">Contextualizing strings</span></span>
+### <a name="contextualizing-strings"></a><span data-ttu-id="c55df-179">Учет контекста строк</span><span class="sxs-lookup"><span data-stu-id="c55df-179">Contextualizing strings</span></span>
 
-<span data-ttu-id="f0c8a-180">Приложения часто содержат строки, которые будут преобразованы в нескольких местах.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-180">Applications often contain the strings to be translated in several places.</span></span> <span data-ttu-id="f0c8a-181">Та же строка может иметь различные преобразования в определенных местах внутри приложения (представлений Razor или файлы класса).</span><span class="sxs-lookup"><span data-stu-id="f0c8a-181">The same string may have a different translation in certain locations within an app (Razor views or class files).</span></span> <span data-ttu-id="f0c8a-182">Файл PO поддерживает понятие контекста файла, который может использоваться для классификации, представленному в строку.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-182">A PO file supports the notion of a file context, which can be used to categorize the string being represented.</span></span> <span data-ttu-id="f0c8a-183">С помощью контекста файла, строки могут быть переведены по-разному, в зависимости от контекста файла (или отсутствия контекста файла).</span><span class="sxs-lookup"><span data-stu-id="f0c8a-183">Using a file context, a string can be translated differently, depending on the file context (or lack of a file context).</span></span>
+<span data-ttu-id="c55df-180">Приложения часто содержат переводимые строки в нескольких местах.</span><span class="sxs-lookup"><span data-stu-id="c55df-180">Applications often contain the strings to be translated in several places.</span></span> <span data-ttu-id="c55df-181">Одна и та же строка, находящаяся в разных местах приложения (представления Razor или файлы классов), может переводиться по-разному.</span><span class="sxs-lookup"><span data-stu-id="c55df-181">The same string may have a different translation in certain locations within an app (Razor views or class files).</span></span> <span data-ttu-id="c55df-182">Файл PO поддерживает понятие контекста файла, которое можно использовать для классификации представляемых строк.</span><span class="sxs-lookup"><span data-stu-id="c55df-182">A PO file supports the notion of a file context, which can be used to categorize the string being represented.</span></span> <span data-ttu-id="c55df-183">В зависимости от контекста файла (или его отсутствия) строку можно перевести по-разному.</span><span class="sxs-lookup"><span data-stu-id="c55df-183">Using a file context, a string can be translated differently, depending on the file context (or lack of a file context).</span></span>
 
-<span data-ttu-id="f0c8a-184">Службы локализации PO используют имя полный класс или представление, которое используется при преобразовании строки.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-184">The PO localization services use the name of the full class or the view that's used when translating a string.</span></span> <span data-ttu-id="f0c8a-185">Это достигается путем установки значения на `msgctxt` запись.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-185">This is accomplished by setting the value on the `msgctxt` entry.</span></span>
+<span data-ttu-id="c55df-184">Службы локализации PO используют имя полного класса или представление, используемые при переводе строки.</span><span class="sxs-lookup"><span data-stu-id="c55df-184">The PO localization services use the name of the full class or the view that's used when translating a string.</span></span> <span data-ttu-id="c55df-185">Это достигается путем установки значения для записи `msgctxt`.</span><span class="sxs-lookup"><span data-stu-id="c55df-185">This is accomplished by setting the value on the `msgctxt` entry.</span></span>
 
-<span data-ttu-id="f0c8a-186">Рассмотрим незначительным дополнением к предыдущему *fr.po* примере.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-186">Consider a minor addition to the previous *fr.po* example.</span></span> <span data-ttu-id="f0c8a-187">Представления Razor, расположенный *Views/Home/About.cshtml* может определяться как контекст файла, задав зарезервировано `msgctxt` значение этого параметра:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-187">A Razor view located at *Views/Home/About.cshtml* can be defined as the file context by setting the reserved `msgctxt` entry's value:</span></span>
+<span data-ttu-id="c55df-186">Рассмотрим небольшое дополнение к предыдущему примеру *fr.po*.</span><span class="sxs-lookup"><span data-stu-id="c55df-186">Consider a minor addition to the previous *fr.po* example.</span></span> <span data-ttu-id="c55df-187">Представление Razor, расположенное в *Views/Home/About.cshtml*, можно определить в качестве контекста файла, задав зарезервированное значение записи `msgctxt`:</span><span class="sxs-lookup"><span data-stu-id="c55df-187">A Razor view located at *Views/Home/About.cshtml* can be defined as the file context by setting the reserved `msgctxt` entry's value:</span></span>
 
 ```text
 msgctxt "Views.Home.About"
@@ -202,28 +202,28 @@ msgid "Hello world!"
 msgstr "Bonjour le monde!"
 ```
 
-<span data-ttu-id="f0c8a-188">С `msgctxt` задано таким образом, перевод текста происходит при переходе к `/Home/About?culture=fr-FR`.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-188">With the `msgctxt` set as such, text translation occurs when navigating to `/Home/About?culture=fr-FR`.</span></span> <span data-ttu-id="f0c8a-189">Перевод не произойдет при переходе к `/Home/Contact?culture=fr-FR`.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-189">The translation won't occur when navigating to `/Home/Contact?culture=fr-FR`.</span></span>
+<span data-ttu-id="c55df-188">При такой настройке `msgctxt` перевод текста отображается при переходе по адресу `/Home/About?culture=fr-FR`.</span><span class="sxs-lookup"><span data-stu-id="c55df-188">With the `msgctxt` set as such, text translation occurs when navigating to `/Home/About?culture=fr-FR`.</span></span> <span data-ttu-id="c55df-189">При переходе по адресу `/Home/Contact?culture=fr-FR` перевод не отображается.</span><span class="sxs-lookup"><span data-stu-id="c55df-189">The translation won't occur when navigating to `/Home/Contact?culture=fr-FR`.</span></span>
 
-<span data-ttu-id="f0c8a-190">При совпадении с контекстом данный файл не определенной записи резервный механизм Orchard Core ищет в соответствующий файл PO без контекста.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-190">When no specific entry is matched with a given file context, Orchard Core's fallback mechanism looks for an appropriate PO file without a context.</span></span> <span data-ttu-id="f0c8a-191">При отсутствии является контекст не определенный файл, определенный для *Views/Home/Contact.cshtml*, перехода по страницам `/Home/Contact?culture=fr-FR` загружает файл заказа на Покупку, такие как:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-191">Assuming there's no specific file context defined for *Views/Home/Contact.cshtml*, navigating to `/Home/Contact?culture=fr-FR` loads a PO file such as:</span></span>
+<span data-ttu-id="c55df-190">Если с заданным контекстом файла не совпадает ни одна из конкретных записей, резервный механизм Orchard Core ищет соответствующий файл PO без контекста.</span><span class="sxs-lookup"><span data-stu-id="c55df-190">When no specific entry is matched with a given file context, Orchard Core's fallback mechanism looks for an appropriate PO file without a context.</span></span> <span data-ttu-id="c55df-191">Если предположить, что для *Views/Home/Contact.cshtml* не задан никакой контекст, при переходе по адресу `/Home/Contact?culture=fr-FR` загружается файл PO, как показано ниже:</span><span class="sxs-lookup"><span data-stu-id="c55df-191">Assuming there's no specific file context defined for *Views/Home/Contact.cshtml*, navigating to `/Home/Contact?culture=fr-FR` loads a PO file such as:</span></span>
 
 [!code-text[Main](localization/sample/POLocalization/fr.po)]
 
-### <a name="changing-the-location-of-po-files"></a><span data-ttu-id="f0c8a-192">Изменение расположения файлов заказа на Покупку</span><span class="sxs-lookup"><span data-stu-id="f0c8a-192">Changing the location of PO files</span></span>
+### <a name="changing-the-location-of-po-files"></a><span data-ttu-id="c55df-192">Изменение расположения для файлов PO</span><span class="sxs-lookup"><span data-stu-id="c55df-192">Changing the location of PO files</span></span>
 
-<span data-ttu-id="f0c8a-193">Можно изменить расположение по умолчанию файлы заказа на Покупку в `ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="f0c8a-193">The default location of PO files can be changed in `ConfigureServices`:</span></span>
+<span data-ttu-id="c55df-193">Расположение по умолчанию для файлов PO можно изменить в `ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="c55df-193">The default location of PO files can be changed in `ConfigureServices`:</span></span>
 
 ```csharp
 services.AddPortableObjectLocalization(options => options.ResourcesPath = "Localization");
 ```
 
-<span data-ttu-id="f0c8a-194">В этом примере PO файлы загружаются из *локализации* папки.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-194">In this example, the PO files are loaded from the *Localization* folder.</span></span>
+<span data-ttu-id="c55df-194">В этом примере файлы PO загружаются из папки *Localization*.</span><span class="sxs-lookup"><span data-stu-id="c55df-194">In this example, the PO files are loaded from the *Localization* folder.</span></span>
 
-### <a name="implementing-a-custom-logic-for-finding-localization-files"></a><span data-ttu-id="f0c8a-195">Реализация пользовательской логики для поиска файлов локализации</span><span class="sxs-lookup"><span data-stu-id="f0c8a-195">Implementing a custom logic for finding localization files</span></span>
+### <a name="implementing-a-custom-logic-for-finding-localization-files"></a><span data-ttu-id="c55df-195">Реализация настраиваемой логики для поиска файлов локализации</span><span class="sxs-lookup"><span data-stu-id="c55df-195">Implementing a custom logic for finding localization files</span></span>
 
-<span data-ttu-id="f0c8a-196">Когда требуется более сложная логика для поиска файлов PO `OrchardCore.Localization.PortableObject.ILocalizationFileLocationProvider` интерфейс можно реализовать и зарегистрирован как служба.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-196">When more complex logic is needed to locate PO files, the `OrchardCore.Localization.PortableObject.ILocalizationFileLocationProvider` interface can be implemented and registered as a service.</span></span> <span data-ttu-id="f0c8a-197">Это полезно в том случае, когда PO файлы могут храниться в различных местах или когда файлы должны размещаться в иерархии папок.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-197">This is useful when PO files can be stored in varying locations or when the files have to be found within a hierarchy of folders.</span></span>
+<span data-ttu-id="c55df-196">Когда для поиска файлов PO требуется более сложная логика, можно реализовать интерфейс `OrchardCore.Localization.PortableObject.ILocalizationFileLocationProvider` и зарегистрировать его как службу.</span><span class="sxs-lookup"><span data-stu-id="c55df-196">When more complex logic is needed to locate PO files, the `OrchardCore.Localization.PortableObject.ILocalizationFileLocationProvider` interface can be implemented and registered as a service.</span></span> <span data-ttu-id="c55df-197">Это удобно, когда файлы PO могут храниться в различных расположениях или должны находиться в иерархии папок.</span><span class="sxs-lookup"><span data-stu-id="c55df-197">This is useful when PO files can be stored in varying locations or when the files have to be found within a hierarchy of folders.</span></span>
 
-### <a name="using-a-different-default-pluralized-language"></a><span data-ttu-id="f0c8a-198">С помощью языка по умолчанию имена во множественном числе</span><span class="sxs-lookup"><span data-stu-id="f0c8a-198">Using a different default pluralized language</span></span>
+### <a name="using-a-different-default-pluralized-language"></a><span data-ttu-id="c55df-198">Использование языка с другими формами множественного числа по умолчанию</span><span class="sxs-lookup"><span data-stu-id="c55df-198">Using a different default pluralized language</span></span>
 
-<span data-ttu-id="f0c8a-199">В пакете `Plural` метод расширения, относящиеся к две формы во множественном числе.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-199">The package includes a `Plural` extension method that's specific to two plural forms.</span></span> <span data-ttu-id="f0c8a-200">Для языков, требующие другие формы во множественном числе создание метода расширения.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-200">For languages requiring more plural forms, create an extension method.</span></span> <span data-ttu-id="f0c8a-201">С помощью метода расширения не нужно будет вводить любой файл локализации для языка по умолчанию &mdash; исходных строк уже доступны непосредственно в коде.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-201">With an extension method, you won't need to provide any localization file for the default language &mdash; the original strings are already available directly in the code.</span></span>
+<span data-ttu-id="c55df-199">Этот пакет содержит метод расширения `Plural`, характерный для двух форм множественного числа.</span><span class="sxs-lookup"><span data-stu-id="c55df-199">The package includes a `Plural` extension method that's specific to two plural forms.</span></span> <span data-ttu-id="c55df-200">Для языков с большим числом форм множественного числа нужно создать отдельный метод расширения.</span><span class="sxs-lookup"><span data-stu-id="c55df-200">For languages requiring more plural forms, create an extension method.</span></span> <span data-ttu-id="c55df-201">При наличии метода расширения вам не потребуется предоставлять файл локализации для языка по умолчанию &mdash;, исходные строки уже доступны непосредственно в коде.</span><span class="sxs-lookup"><span data-stu-id="c55df-201">With an extension method, you won't need to provide any localization file for the default language &mdash; the original strings are already available directly in the code.</span></span>
 
-<span data-ttu-id="f0c8a-202">Можно использовать более универсальный командлет `Plural(int count, string[] pluralForms, params object[] arguments)` перегрузку, которая принимает строковый массив переводы.</span><span class="sxs-lookup"><span data-stu-id="f0c8a-202">You can use the more generic `Plural(int count, string[] pluralForms, params object[] arguments)` overload which accepts a string array of translations.</span></span>
+<span data-ttu-id="c55df-202">Можно использовать более универсальную перегрузку `Plural(int count, string[] pluralForms, params object[] arguments)`, которая принимает строковый массив переводов.</span><span class="sxs-lookup"><span data-stu-id="c55df-202">You can use the more generic `Plural(int count, string[] pluralForms, params object[] arguments)` overload which accepts a string array of translations.</span></span>
