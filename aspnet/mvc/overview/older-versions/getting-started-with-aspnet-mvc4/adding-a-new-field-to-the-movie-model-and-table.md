@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-new-field-to-the-movie-model-and-table
 msc.type: authoredcontent
-ms.openlocfilehash: 0c094c4d4c99702a5b513717126872a254ca3e5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9965c8a755857a8e8cb8ecbc6c467a6c856aa83d
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/11/2018
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-table"></a>Добавление нового поля в таблице и модели фильма
 ====================
@@ -81,7 +81,7 @@ Visual Studio открывает *Configuration.cs* файла. Замените
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image7.png)
 
-Code First Migrations создает еще один файл класса в *миграций* папку (с именем *{метки даты}\_Initial.cs* ), и этот класс содержит код, создающий схему базы данных. Filename миграции предварительно фиксированной с меткой времени, чтобы помочь с порядком. Изучите *{метки даты}\_Initial.cs* файл, содержащий инструкции для создания таблицы фильмы для DB фильма. При обновлении базы данных в инструкциях ниже это *{метки даты}\_Initial.cs* будет выполняться и создать файл схемы базы данных. Затем **начальное значение** метод работает для заполнения базы данных тестовыми данными.
+Code First Migrations создает еще один файл класса в *миграций* папку (с именем *{метки даты}\_Initial.cs* ), и этот класс содержит код, создающий схему базы данных. Filename миграции предварительно фиксированной с меткой времени, чтобы помочь с порядком. Изучите *{метки даты}\_Initial.cs* файл, содержащий инструкции для создания таблицы фильмы для DB фильма. При обновлении базы данных в инструкциях ниже это *{метки даты}\_Initial.cs* файла будет выполняться и создать схему базы данных. Затем **начальное значение** метод работает для заполнения базы данных тестовыми данными.
 
 В **консоль диспетчера пакетов**, введите команду «update-database» для создания базы данных и выполнения **начальное значение** метод.
 

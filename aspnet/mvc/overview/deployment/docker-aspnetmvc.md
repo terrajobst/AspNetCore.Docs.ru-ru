@@ -11,11 +11,11 @@ ms.prod: .net-framework
 ms.technology: dotnet-mvc
 ms.devlang: dotnet
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: badc1c9b10ac27c3d876e3331c855a9d5904d27d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7a580c6c6236b375ea54ef4e9978fff6993d885a
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>Перенос приложений ASP.NET MVC в контейнеры Windows
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 01/24/2018
 
 Определение образа Docker в Dockerfile. Dockerfile содержит инструкции для базового образа, дополнительные компоненты, приложение, которое нужно запустить, и другие образы конфигурации.  Dockerfile содержит входные параметры для команды `docker build`, которая создает образ.
 
-Вы создадите образ на основе образа `microsft/aspnet`, расположенного на [Docker Hub](https://hub.docker.com/r/microsoft/aspnet/).
+Вы создадите образ на основе образа `microsoft/aspnet`, расположенного на [Docker Hub](https://hub.docker.com/r/microsoft/aspnet/).
 Базовый образ `microsoft/aspnet` — это образ Windows Server. Он содержит Windows Server Core, IIS и ASP.NET 4.6.2. При запуске этого образа в контейнере он автоматически использует IIS и установленные веб-сайты.
 
 Dockerfile, который создает образ, выглядит следующим образом:

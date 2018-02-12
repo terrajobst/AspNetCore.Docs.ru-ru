@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1f469894022e39048154ec1915237e448104b4b6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 86d5d429d9900d4c04391804598626705e6c88b4
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/11/2018
 ---
 <a name="understanding-action-filters-c"></a>Основные сведения о фильтрах действий (C#)
 ====================
@@ -82,7 +82,7 @@ ms.lasthandoff: 11/10/2017
 
 У каждого типа фильтра выполняется в определенном порядке. Если вы хотите управлять порядком, в котором выполняются фильтры того же типа можно задать свойство порядок фильтра.
 
-Базовый класс для всех фильтров действий — `System.Web.Mvc.FilterAttribute` класса. Если необходимо реализовать определенный тип фильтра, то необходимо создать класс, наследующий от базового класса фильтра и реализует один или несколько `IAuthorizationFilter`, `IActionFilter`, `IResultFilter`, или `ExceptionFilter` интерфейсов.
+Базовый класс для всех фильтров действий — `System.Web.Mvc.FilterAttribute` класса. Если необходимо реализовать определенный тип фильтра, то необходимо создать класс, наследующий от базового класса фильтра и реализует один или несколько `IAuthorizationFilter`, `IActionFilter`, `IResultFilter`, или `IExceptionFilter` интерфейсов.
 
 ### <a name="the-base-actionfilterattribute-class"></a>Базовый класс ActionFilterAttribute
 
