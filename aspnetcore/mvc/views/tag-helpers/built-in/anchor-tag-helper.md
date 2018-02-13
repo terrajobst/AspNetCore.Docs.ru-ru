@@ -1,252 +1,274 @@
 ---
-title: "Вспомогательная функция тега привязки в ASP.NET Core MVC"
+title: "Вспомогательная функция тега привязки"
 author: pkellner
-description: "Сведения о работе со вспомогательной функцией тега привязки"
+description: "Обнаруживайте атрибуты вспомогательной функции тега привязки ASP.NET Core и роль, которую играет каждый атрибут в расширении поведения тега привязки HTML."
 manager: wpickett
-ms.author: riande
-ms.date: 12/20/2017
+ms.author: scaddie
+ms.custom: mvc
+ms.date: 01/31/2018
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 404fc7bc3b35114066f035e1ac28d10a8279ccbc
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: f3b704174c3287edda12725b7973a2464e485bac
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="anchor-tag-helper"></a>Вспомогательная функция тега привязки
 
-Автор: [Питер Кельнер (Peter Kellner)](http://peterkellner.net) 
+Авторы: [Питер Кельнер (Peter Kellner)](http://peterkellner.net) и [Скотт Эдди](https://github.com/scottaddie) (Scott Addie).
 
-Вспомогательная функция тега привязки повышает эффективность тега привязки HTML (`<a ... ></a>`) путем добавления новых атрибутов. Ссылка (в теге `href`) создается с использованием новых атрибутов. Этот URL-адрес может включать в себя необязательный протокол, такой как https.
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tag-helpers/built-in/samples/TagHelpersBuiltInAspNetCore) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-В примерах в этом документе используется контроллер говорящего.
+[Вспомогательная функция тега привязки](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper) повышает эффективность стандартного тега привязки HTML (`<a ... ></a>`) путем добавления новых атрибутов. Как правило, все имена атрибутов начинаются с `asp-`. Отображаемое значение атрибута `href` элемента привязки определяется значениями атрибутов `asp-`.
 
-**SpeakerController.cs** 
+В примерах в этом документе используется *SpeakerController*
 
-[!code-csharp[SpeakerController](sample/TagHelpersBuiltInAspNetCore/src/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs)]
+[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs?name=snippet_SpeakerController)]
 
+Ниже перечислены атрибуты `asp-`.
 
-## <a name="anchor-tag-helper-attributes"></a>Атрибуты вспомогательной функция тега привязки
+## <a name="asp-controller"></a>asp-controller
 
-### <a name="asp-controller"></a>asp-controller
+Атрибут [asp-controller](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.controller) назначает контроллер, используемый для создания URL-адреса. Следующий элемент перечисляет всех говорящих:
 
-`asp-controller` используется для связи контроллера, который будет применяться для создания URL-адреса. Указанные контроллеры должны существовать в текущем проекте. В следующем коде перечисляются все говорящие: 
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspController)]
 
-```cshtml
-<a asp-controller="Speaker" asp-action="Index">All Speakers</a>
-```
-
-Созданная разметка будет иметь следующий вид:
+Созданный HTML:
 
 ```html
 <a href="/Speaker">All Speakers</a>
 ```
 
-Если атрибут `asp-controller` указан, а атрибут `asp-action` — нет, методом контроллера по умолчанию текущего представления будет заданный по умолчанию атрибут `asp-action`. То есть если в приведенном выше примере опускается атрибут `asp-action`, а вспомогательная функция тега привязки создается из представления *HomeController* `Index` (**/Home**), полученная разметка будет иметь следующий вид:
+Если атрибут `asp-controller` указан, а атрибут `asp-action` — нет, действием контроллера, связанным с выполняющимся представлением, будет заданное по умолчанию значение `asp-action`. Если `asp-action` исключается из предыдущего исправления, а в представлении *Index* (*/Home*) *HomeController* используется вспомогательная функция тега привязки, создается следующий код HTML:
 
 ```html
 <a href="/Home">All Speakers</a>
 ```
 
-### <a name="asp-action"></a>asp-action
+## <a name="asp-action"></a>asp-action
 
-`asp-action` — это имя метода действия в контроллере, которое будет включено в созданный `href`. Например, следующий код задает созданный `href` для указания на страницу сведений о говорящем:
+Значение атрибута [asp-action](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.action) представляет имя действия контроллера, включенное в созданный атрибут `href`. Следующий элемент задает созданное значение атрибута `href` на странице динамика оценок:
 
-```html
-<a asp-controller="Speaker" asp-action="Detail">Speaker Detail</a>
-```
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspAction)]
 
-Созданная разметка будет иметь следующий вид:
+Созданный HTML:
 
 ```html
-<a href="/Speaker/Detail">Speaker Detail</a>
+<a href="/Speaker/Evaluations">Speaker Evaluations</a>
 ```
 
-Если атрибут `asp-controller` не указан, будет использоваться контроллер по умолчанию, вызывающий представление при выполнении текущего представления.  
- 
-Если атрибут `asp-action` имеет значение `Index`, никакое действие не добавляется к URL-адресу и вызывается метод `Index` по умолчанию. В контроллере, на который есть ссылка в `asp-controller`, должно существовать указанное действие (или заданное по умолчанию).
+Если атрибут `asp-controller` не указан, будет использоваться контроллер по умолчанию, вызывающий представление при выполнении текущего представления.
 
-### <a name="asp-page"></a>asp-page
+Если атрибут `asp-action` имеет значение `Index`, действия не добавляются к URL-адресу и вызывается метод `Index` по умолчанию. В контроллере, на который есть ссылка в `asp-controller`, должно существовать указанное действие (или заданное по умолчанию).
 
-Атрибут `asp-page` в теге привязки используется для задания его URL-адреса, указывающего на определенную страницу. Чтобы создать URL-адрес, перед именем страницы следует ввести символ косой черты "/". В примере ниже URL-адрес указывает на страницу "Speaker" (Говорящий) в текущем каталоге.
+## <a name="asp-route-value"></a>asp-route-{value}
+
+Атрибут [asp-route-{value}](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.routevalues) включает подстановочный префикс маршрута. Любое значение, подставляемое вместо `{value}`, рассматривается как потенциальный параметр маршрута. Если маршрут по умолчанию не найден, этот префикс маршрута будет добавлен к созданному атрибуту `href` в виде параметра запроса и значения. В противном случае он будет заменен в шаблоне маршрута.
+
+Рассмотрим следующее действие контроллера:
+
+[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Controllers/BuiltInTagController.cs?name=snippet_AnchorTagHelperAction)]
+
+С шаблоном маршрута по умолчанию, определенным в *Startup.Configure*:
+
+[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Startup.cs?name=snippet_UseMvc&highlight=8-10)]
+
+Представление MVC использует модель, предоставляемую действием:
 
 ```cshtml
-<a asp-page="/Speakers">All Speakers</a>
-```
-
-Атрибут `asp-page` в приведенном выше примере отображает выходные данные в формате HTML в представлении, аналогичном следующему фрагменту кода:
-
-```html
-<a href="/items?page=%2FSpeakers">Speakers</a>
-```
-
-Атрибут `asp-page` является взаимоисключающим с атрибутами `asp-route`, `asp-controller` и `asp-action`. Однако `asp-page` можно использовать с `asp-route-id` для управления маршрутизацией, как показано в следующем примере кода:
-
-```cshtml
-<a asp-page="/Speaker" asp-route-id="@speaker.Id">View Speaker</a>
-```
-
-`asp-route-id` формирует следующие результаты:
-
-```html
-https://localhost:44399/Speakers/Index/2?page=%2FSpeaker
-```
-
-> [!NOTE]
-> Для использования атрибута `asp-page` на страницах Razor Pages URL-адрес должен быть относительным путем, например `"./Speaker"`. Относительные пути в атрибуте `asp-page` недоступны в представлениях MVC. Вместо этого в представлениях MVC следует использовать синтаксис "/".
-
-### <a name="asp-route-value"></a>asp-route-{value}
-
-`asp-route-` является префиксом маршрута. Любое значение, помещенное после дефиса в конце, рассматривается как потенциальный параметр маршрута. Если маршрут по умолчанию не найден, этот префикс маршрута будет добавлен к созданному href в виде параметра запроса и значения. В противном случае он будет заменен в шаблоне маршрута.
-
-Предположим, что у вас есть метод контроллера, определенный следующим образом:
-
-```csharp
-public IActionResult AnchorTagHelper(string id)
-{
-    var speaker = new SpeakerData()
-    {
-        SpeakerId = 12
-    };
-    return View(viewName, speaker);
-}
-```
-
-И есть шаблон маршрута по умолчанию, определенный в файле *Startup.cs* следующим образом:
-
-```csharp
-app.UseMvc(routes =>
-{
-   routes.MapRoute(
-    name: "default",
-    template: "{controller=Home}/{action=Index}/{id?}");
-});
-
-```
-
-Файл **cshtml**, содержащий вспомогательную функцию тега привязки, необходимую для использования параметра модели **speaker**, переданного из контроллера в представление, имеет следующий вид:
-
-```cshtml
-@model SpeakerData
+@model Speaker
 <!DOCTYPE html>
-<html><body>
-<a asp-controller='Speaker' asp-action='Detail' asp-route-id=@Model.SpeakerId>SpeakerId: @Model.SpeakerId</a>
-<body></html>
+<html>
+<body>
+    <a asp-controller="Speaker"
+       asp-action="Detail" 
+       asp-route-id="@Model.SpeakerId">SpeakerId: @Model.SpeakerId</a>
+</body>
+</html>
 ```
 
-Так как в маршруте по умолчанию был найден **id**, созданный HTML будет иметь следующий вид:
+Заполнитель `{id?}` маршрута по умолчанию соответствует требуемому. Созданный HTML:
 
 ```html
-<a href='/Speaker/Detail/12'>SpeakerId: 12</a>
+<a href="/Speaker/Detail/12">SpeakerId: 12</a>
 ```
 
-Если префикс маршрута не входит в состав обнаруженного шаблона маршрутизации, как, например, в случае со следующим файлом **cshtml**:
+Предположим, префикс маршрута не входит в состав соответствующего шаблона маршрутизации, как в случае со следующим представлением MVC:
 
 ```cshtml
-@model SpeakerData
+@model Speaker
 <!DOCTYPE html>
-<html><body>
-<a asp-controller='Speaker' asp-action='Detail' asp-route-speakerid=@Model.SpeakerId>SpeakerId: @Model.SpeakerId</a>
-<body></html>
+<html>
+<body>
+    <a asp-controller="Speaker" 
+       asp-action="Detail" 
+       asp-route-speakerid="@Model.SpeakerId">SpeakerId: @Model.SpeakerId</a>
+<body>
+</html>
 ```
 
-Так как в соответствующем маршруте не был найден **speakerid**, созданный HTML будет иметь следующий вид:
+Следующий код HTML будет создан, так как элемент `speakerid` не найден в соответствующем маршруте:
 
 ```html
-<a href='/Speaker/Detail?speakerid=12'>SpeakerId: 12</a>
+<a href="/Speaker/Detail?speakerid=12">SpeakerId: 12</a>
 ```
 
-Если атрибут `asp-controller` или `asp-action` не указан, то применяется та же обработка по умолчанию, что и в атрибуте `asp-route`.
+Если атрибут `asp-controller` или `asp-action` не указан, применяется та же обработка по умолчанию, что и в атрибуте `asp-route`.
 
-### <a name="asp-route"></a>asp-route
+## <a name="asp-route"></a>asp-route
 
-`asp-route` позволяет создать URL-адрес, напрямую указывающий на именованный маршрут. С помощью атрибутов маршрутизации маршруту можно присвоить имя, как показано в классе `SpeakerController` и используется в его методе `Evaluations`.
+Атрибут [asp-route](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.route) используется для связывания URL-адреса непосредственно с именованным маршрутом. С помощью [атрибутов маршрутизации](xref:mvc/controllers/routing#attribute-routing) маршруту можно присвоить имя, как показано в классе `SpeakerController` и используется в его действии `Evaluations`:
 
-`Name = "speakerevals"` указывает вспомогательной функции тега привязки на необходимость создания маршрута непосредственно к этому методу контроллера с `/Speaker/Evaluations` в URL-адресе. Если наряду с атрибутом `asp-route` указаны атрибут `asp-controller` или `asp-action`, созданный маршрут может отличаться от ожидаемого. Во избежание конфликта маршрута атрибут `asp-route` нельзя использовать вместе с атрибутом `asp-controller` или `asp-action`.
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs?range=22-24)]
 
-### <a name="asp-all-route-data"></a>asp-all-route-data
+В следующем элементе атрибут `asp-route` ссылается на именованный маршрут:
 
-Атрибут `asp-all-route-data` позволяет создавать словарь пар "ключ-значение", где ключ является именем параметра, а значение — значением, связанным с этим ключом.
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspRoute)]
 
-Как показано в следующем примере, создается встроенный словарь, и данные передаются в представление Razor. Кроме того, данные могут быть переданы с помощью модели.
+Вспомогательная функция тега привязки создает маршрут непосредственно к этому методу контроллера, используя */Speaker/Evaluations* URL-адреса. Созданный HTML:
 
-```cshtml
-@{
-    var dict =
-        new Dictionary<string, string>
-        {
-            {"speakerId", "11"},
-            {"currentYear", "true"}
-        };
-}
-<a asp-route="speakerevalscurrent"
-asp-all-route-data="dict">SpeakerEvals</a>
+```html
+<a href="/Speaker/Evaluations">Speaker Evaluations</a>
 ```
 
-Приведенный выше код создает следующий URL-адрес: http://localhost/Speaker/EvaluationsCurrent?speakerId=11&currentYear=true
+Если наряду с атрибутом `asp-route` указаны атрибут `asp-controller` или `asp-action`, созданный маршрут может отличаться от ожидаемого. Во избежание конфликта маршрута `asp-route` нельзя использовать вместе с атрибутами `asp-controller` или `asp-action`.
 
-При щелчке ссылки вызывается метод контроллера `EvaluationsCurrent`. Это происходит потому, что у этого контроллера есть два строковых параметра, которые соответствуют содержимому, созданному из словаря `asp-all-route-data`.
+## <a name="asp-all-route-data"></a>asp-all-route-data
 
-Если ключи в словаре совпадают с параметрами маршрута, эти значения будут соответствующим образом заменены в маршруте, а в качестве параметров запроса будут созданы другие несовпадающие значения.
+Атрибут [asp-all-route-data](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.routevalues) поддерживает создание словаря пар "ключ-значение". Ключ является именем параметра, а значение — значением параметра.
 
-### <a name="asp-fragment"></a>asp-fragment
+В следующем примере словарь инициализируется и передается в представление Razor. Кроме того, данные могут быть переданы с помощью модели.
 
-`asp-fragment` определяет фрагмент URL-адреса, добавляемый к URL-адресу. Вспомогательная функция тега привязки добавит символ решетки (#). Если создается тег:
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspAllRouteData)]
 
-```cshtml
-<a asp-action="Evaluations" asp-controller="Speaker"  
-   asp-fragment="SpeakerEvaluations">About Speaker Evals</a>
+Предыдущий код вызывает следующий код HTML:
+
+```html
+<a href="/Speaker/EvaluationsCurrent?speakerId=11&currentYear=true">Speaker Evaluations</a>
 ```
 
-Созданный URL-адрес будет иметь следующий вид: http://localhost/Speaker/Evaluations#SpeakerEvaluations
+Словарь `asp-all-route-data` предназначен для создания строки запроса, соответствующей требованиям перегруженного действия `Evaluations`:
+
+[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs?range=26-30)]
+
+Если ключи в словаре совпадают с параметрами маршрута, эти значения будут соответствующим образом заменены в маршруте. В качестве параметров запроса будут созданы другие несовпадающие значения.
+
+## <a name="asp-fragment"></a>asp-fragment
+
+Атрибут [asp-fragment](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.fragment) определяет фрагмент URL-адреса, добавляемый к URL-адресу. Вспомогательная функция тега привязки добавляет символ решетки (#). Рассмотрим следующий элемент:
+
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspFragment)]
+
+Созданный HTML:
+
+```html
+<a href="/Speaker/Evaluations#SpeakerEvaluations">Speaker Evaluations</a>
+```
 
 Хэштеги полезны при создании приложений на стороне клиента. Например, их можно использовать для простоты пометки и поиска на языке JavaScript.
 
-### <a name="asp-area"></a>asp-area
+## <a name="asp-area"></a>asp-area
 
-`asp-area` указывает имя области, используемой платформой ASP.NET Core для задания соответствующего маршрута. Ниже приведены примеры, демонстрирующие, как атрибут области приводит к повторному сопоставлению маршрутов. При установке для атрибута `asp-area` значения Blogs перед маршрутами связанных контроллеров и представлений для этого тега привязки добавляется каталог `Areas/Blogs`.
+Атрибут [asp-area](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.area) указывает имя области, используемое платформой для определения соответствующего маршрута. Ниже приведен пример того, как атрибут области приводит к повторному сопоставлению маршрутов. При установке для атрибута `asp-area` значения Blogs перед маршрутами связанных контроллеров и представлений для этого тега привязки добавляется каталог *Areas/Blogs*.
 
-* Имя проекта
-  * wwwroot
-  * Области
-    * Блоги
-      * Контроллеры
-        * HomeController.cs
-      * Представления
-        * Главная страница
-          * Index.cshtml
-          * AboutBlog.cshtml
-  * Контроллеры
+* **<Имя проекта\>**
+  * **wwwroot**
+  * **Области**
+    * **Блоги**
+      * **Контроллеры**
+        * *HomeController.cs*
+      * **Представления**
+        * **Корневая папка**
+          * *AboutBlog.cshtml*
+          * *Index.cshtml*
+        * *_ViewStart.cshtml*
+  * **Контроллеры**
 
-Указание допустимого тега области, например ```area="Blogs"```, при ссылке на файл ```AboutBlog.cshtml``` будет выглядеть следующим образом при использовании вспомогательной функции тега привязки.
+С учетом предыдущей иерархии каталогов элемент для ссылки на файл *AboutBlog.cshtml* будет таким:
 
-```cshtml
-<a asp-action="AboutBlog" asp-controller="Home" asp-area="Blogs">Blogs About</a>
-```
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspArea)]
 
-Созданный код HTML будет содержать сегмент областей и иметь следующий вид:
+Созданный HTML:
 
 ```html
-<a href="/Blogs/Home/AboutBlog">Blogs About</a>
+<a href="/Blogs/Home/AboutBlog">About Blog</a>
 ```
 
 > [!TIP]
-> Чтобы области MVC работали в веб-приложении, в шаблон маршрута необходимо включить ссылку на область, если она существует. Этот шаблон, который является вторым параметром вызова метода `routes.MapRoute`, будет иметь следующий вид: `template: '"{area:exists}/{controller=Home}/{action=Index}"'`
+> Чтобы в приложении MVC использовались области, в шаблон маршрута необходимо включить ссылку на область, если она существует. Этот шаблон представлен вторым параметром вызова метода `routes.MapRoute` в *Startup.Configure*: [!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
-### <a name="asp-protocol"></a>asp-protocol
+## <a name="asp-protocol"></a>asp-protocol
 
-Атрибут `asp-protocol` предназначен для указания протокола (например, `https`) в URL-адресе. Пример вспомогательной функции тега привязки, содержащей протокол, будет выглядеть следующим образом:
+Атрибут [asp-protocol](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.protocol) предназначен для указания протокола (например, `https`) в URL-адресе. Пример:
 
-```<a asp-protocol="https" asp-action="About" asp-controller="Home">About</a>```
+[!code-cshtml[samples/TagHelpersBuiltInAspNetCore/Views/Index.cshtml?name=snippet_AspProtocol]]
 
-и создаст следующий код HTML:
+Созданный HTML:
 
-```<a href="https://localhost/Home/About">About</a>```
+```html
+<a href="https://localhost/Home/About">About</a>
+```
 
-Доменом в примере является localhost, но при формировании URL-адреса вспомогательная функция тега привязки использует общедоступный домен веб-сайта.
+Именем узла в примере является localhost, но при создании URL-адреса вспомогательная функция тега привязки использует общедоступный домен веб-сайта.
+
+## <a name="asp-host"></a>asp-host
+
+Атрибут [asp-host](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.host) предназначен для определения имени узла в URL-адресе. Пример:
+
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspHost)]
+
+Созданный HTML:
+
+```html
+<a href="https://microsoft.com/Home/About">About</a>
+```
+
+## <a name="asp-page"></a>asp-page
+
+Атрибут [asp-page](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.page) используется со страницами Razor Pages. Используйте его для определения значения атрибута `href` тега привязки для определенной страницы. Чтобы создать URL-адрес, перед именем страницы следует ввести символ косой черты (/).
+
+Следующий пример указывает на страницу Razor Pages участника:
+
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspPage)]
+
+Созданный HTML:
+
+```html
+<a href="/Attendee">All Attendees</a>
+```
+
+Атрибут `asp-page` является взаимоисключающим с атрибутами `asp-route`, `asp-controller` и `asp-action`. Тем не менее `asp-page` можно использовать с `asp-route-{value}` для управления маршрутизацией, как показано в следующем элементе:
+
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspPageAspRouteId)]
+
+Созданный HTML:
+
+```html
+<a href="/Attendee?attendeeid=10">View Attendee</a>
+```
+
+## <a name="asp-page-handler"></a>asp-page-handler
+
+Атрибут [asp-page-handler](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.pagehandler) используется со страницами Razor Pages. Он предназначен для связывания с обработчиками определенных страниц.
+
+Рассмотрим следующий обработчик страниц:
+
+[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Pages/Attendee.cshtml.cs?name=snippet_OnGetProfileHandler)]
+
+Связанный элемент модели страницы ссылается на обработчик страниц `OnGetProfile`. Обратите внимание, что префикс `On<Verb>` имени метода обработчика страниц опущен в значении атрибута `asp-page-handler`. В случае с асинхронным методом суффикс `Async` был бы также опущен.
+
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspPageHandler)]
+
+Созданный HTML:
+
+```html
+<a href="/Attendee?attendeeid=12&handler=Profile">Attendee Profile</a>
+```
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Области](xref:mvc/controllers/areas)
+* [Общие сведения о Razor Pages](xref:mvc/razor-pages/index)

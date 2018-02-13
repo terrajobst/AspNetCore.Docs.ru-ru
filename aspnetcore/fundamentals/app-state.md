@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/app-state
-ms.openlocfilehash: 7aa200d3612f766ab633ccab807421b9c5393975
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: f4ed38f7395e3f4fe939584c1f3f5b0dba93724c
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>Общие сведения о состоянии сеанса и приложения в ASP.NET Core
 
@@ -84,7 +84,7 @@ ASP.NET Core MVC позволяет использовать свойство [T
 
 ---
 
-Для компонентов промежуточного слоя критически важен порядок. В предыдущем примере исключение типа `InvalidOperationException` возникает при вызове `UseSession` после `UseMvcWithDefaultRoute`. Дополнительные сведения см. в разделе [Порядок ПО промежуточного слоя](xref:fundamentals/middleware#ordering).
+Для компонентов промежуточного слоя критически важен порядок. В предыдущем примере исключение типа `InvalidOperationException` возникает при вызове `UseSession` после `UseMvcWithDefaultRoute`. Дополнительные сведения см. в разделе [Порядок ПО промежуточного слоя](xref:fundamentals/middleware/index#ordering).
 
 > [!IMPORTANT]
 > Если вы ориентируетесь на .NET Framework и используете поставщик на основе сеансов, добавьте в проект пакет NuGet [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session).
@@ -189,7 +189,7 @@ ASP.NET Core MVC позволяет использовать свойство [T
 
 Абстракция `HttpContext` обеспечивает поддержку для коллекции словаря типа `IDictionary<object, object>`, называемой `Items`. Эта коллекция доступна с начала *HttpRequest* и удаляется в конце каждого запроса. Вы можете обратиться к ней, присвоив значение записи с ключом или запросив значение для определенного ключа.
 
-В приведенном ниже примере [ПО промежуточного слоя](middleware.md) добавляет `isVerified` в коллекцию `Items`.
+В следующем примере [ПО промежуточного слоя](xref:fundamentals/middleware/index) добавляет `isVerified` в коллекцию `Items`.
 
 ```csharp
 app.Use(async (context, next) =>
