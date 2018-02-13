@@ -1289,7 +1289,7 @@
 ##### [Интернет-магазин на ASP.NET MVC, часть 16. Восстановление членства с помощью OpenID](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
 ##### [Интернет-магазин на ASP.NET MVC, часть 17. Оформление заказа с Джеффом Этвудом (Jeff Atwood)](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood.md)
 ##### [Интернет-магазин на ASP.NET MVC, часть 18. Формирование единого представления](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-18-creating-an-experience.md)
-##### [Интернет-магазин ASP.NET MVC, часть 19. Обработка заказов с помощью рабочего процесса Windows](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
+##### [Интернет-магазин на ASP.NET MVC, часть 19. Обработка заказов с Windows Workflow](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
 ##### [Интернет-магазин на ASP.NET MVC, часть 19a. Продолжение использования рабочего процесса Windows](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19a-windows-workflow-followup.md)
 ##### [Интернет-магазин на ASP.NET MVC, часть 20. Ведение журнала](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-20-logging.md)
 ##### [Интернет-магазин на ASP.NET MVC, часть 21. Диспетчер заказов и персонализация](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-21-order-manager-and-personalization.md)
