@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: be3e3d61a6567da3c2cd696c01661146f2da7131
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6daa0dec764e2e9248cac97ba7d7b6df0da3208f
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-c"></a>Создание хранимой процедуры и определяемые пользователем функции с помощью управляемого кода (C#)
 ====================
@@ -420,7 +420,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="step-11-deploying-the-managed-udf"></a>Шаг 11: Развертывание управляемых определяемой пользователем функции.
 
-Теперь, что управляемый определяемой пользователем функции был создан, мы готовы к развертыванию его к базе данных Northwind. Как было показано в шаге 4, управляемых объектов проекта SQL Server будут развернуты, щелкнув правой кнопкой мыши имя проекта в обозревателе решений и выбрав параметр развернуть в контекстном меню.
+После создания управляемой функции UDF мы готовы развернуть его в базе данных Northwind. Как было показано в шаге 4, управляемых объектов проекта SQL Server будут развернуты, щелкнув правой кнопкой мыши имя проекта в обозревателе решений и выбрав параметр развернуть в контекстном меню.
 
 После развертывания проекта, вернитесь в SQL Server Management Studio и обновите содержимое папки, скалярные функции. Теперь должны отображаться две записи:
 
