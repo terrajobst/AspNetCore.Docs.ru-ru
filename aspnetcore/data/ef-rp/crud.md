@@ -1,7 +1,7 @@
 ---
-title: "Страниц Razor с основными EF - CRUD - 2, 8."
+title: "Razor Pages с EF Core — операции CRUD — 2 из 8"
 author: rick-anderson
-description: "Показано, как создание, чтение, обновление, удаление с основными EF"
+description: "Описание операций создания, чтения, обновления и удаления в EF Core"
 manager: wpickett
 ms.author: riande
 ms.date: 10/15/2017
@@ -10,198 +10,198 @@ ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/crud
 ms.openlocfilehash: 757aeb713b645cea0fe633b150784184d2d3571e
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 01/31/2018
 ---
-# <a name="create-read-update-and-delete---ef-core-with-razor-pages-2-of-8"></a>Создания, чтения, обновления и удаления - Core EF со страницами Razor (2, 8)
+# <a name="create-read-update-and-delete---ef-core-with-razor-pages-2-of-8"></a>Создание, чтение, обновление и удаление — EF Core с Razor Pages (2 из 8)
 
-По [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.com/thereformedprog), и [Рик Андерсон](https://twitter.com/RickAndMSFT)
+Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra), [Йон П. Смит](https://twitter.com/thereformedprog) (Jon P Smith) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 [!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
 
-В этом учебнике формирования шаблонов CRUD (Создание, чтение, обновление и удаление) просматривается и настроить код.
+В этом учебнике описывается проверка и настройка шаблонного кода операций CRUD (создание, чтение, обновление и удаление).
 
-Примечание: Чтобы уменьшить сложность и сохранить эти учебники, основное внимание уделено EF Core, EF основного кода используется в модели страниц страниц Razor. Некоторые разработчики используют шаблон службы уровня или репозитория в создание уровень абстракции между пользовательского интерфейса (страниц Razor) и уровень доступа к данным.
+Примечание. Чтобы максимально упростить этот код и сконцентрироваться на работе с EF Core, в моделях страниц Razor Pages в этих руководствах используется код EF Core. Некоторые разработчики используют уровень служб или шаблон репозитория для создания уровня абстракции между пользовательским интерфейсом (Razor Pages) и уровнем доступа к данным.
 
-В этот учебник, создания, изменения, удаления и страниц Razor сведения в *студента* папки будут изменены.
+В рамках этого учебника изменяются страницы Razor Pages в папке *Student*, предназначенные для создания, редактирования, удаления и просмотра сведений.
 
-Создание, изменение и удаление страниц, формирования шаблонов кода строится по следующему шаблону:
+В шаблонном коде используется следующий шаблон для страниц создания, редактирования и удаления:
 
-* Получение и отображение запрошенные данные с помощью метода HTTP GET `OnGetAsync`.
-* Сохранить изменения в данных с помощью метода HTTP POST `OnPostAsync`.
+* Получение и отображение запрашиваемых данных с помощью метода HTTP GET`OnGetAsync`.
+* Сохранение изменений в данных с помощью метода HTTP POST`OnPostAsync`.
 
-На страницах индекса и сведения, получения и отображения запрошенные данные с помощью метода HTTP GET`OnGetAsync`
+Страницы указателя и сведений получают и отображают запрашиваемые данные с помощью метода HTTP GET`OnGetAsync`
 
-## <a name="replace-singleordefaultasync-with-firstordefaultasync"></a>Замените SingleOrDefaultAsync FirstOrDefaultAsync
+## <a name="replace-singleordefaultasync-with-firstordefaultasync"></a>Замена SingleOrDefaultAsync на FirstOrDefaultAsync
 
-Созданный код использует [SingleOrDefaultAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleordefaultasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleOrDefaultAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_) для выборки Запрошенная сущность. [FirstOrDefaultAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstordefaultasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstOrDefaultAsync__1_System_Linq_IQueryable___0__System_Threading_CancellationToken_) более эффективен при выборке одной сущности:
+В созданном коде для выборки запрашиваемой сущности используется [SingleOrDefaultAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleordefaultasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleOrDefaultAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_). При выборке одной сущности более высокую эффективность демонстрирует [FirstOrDefaultAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstordefaultasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstOrDefaultAsync__1_System_Linq_IQueryable___0__System_Threading_CancellationToken_):
 
-* Если код должен проверить, не более одной сущности, возвращенных запросом. 
-* `SingleOrDefaultAsync`данные извлекаются и выполняет лишнюю работу.
-* `SingleOrDefaultAsync`создает исключение, если имеется более одной сущности, которая соответствует часть фильтра.
-*  `FirstOrDefaultAsync`не создавать при наличии более одной сущности, которая соответствует часть фильтра.
+* Если в коде не требуется проверять, что запрос возвращает не более одной сущности. 
+* `SingleOrDefaultAsync` выбирает больше данных и выполняет ненужные операции.
+* `SingleOrDefaultAsync` вызывает исключение при наличии нескольких сущностей, соответствующих части фильтра.
+*  `FirstOrDefaultAsync` на вызывает исключение при наличии нескольких сущностей, соответствующих части фильтра.
 
-Замените глобально `SingleOrDefaultAsync` с `FirstOrDefaultAsync`. `SingleOrDefaultAsync`используется в 5 местах:
+Выполните глобальную замену `SingleOrDefaultAsync` на `FirstOrDefaultAsync`. `SingleOrDefaultAsync` используется в 5 случаях:
 
-* `OnGetAsync`на странице «сведения».
-* `OnGetAsync`и `OnPostAsync` на страницах, Edit и Delete.
+* `OnGetAsync` на странице сведений.
+* `OnGetAsync` и `OnPostAsync` на страницах редактирования и удаления.
 
 <a name="FindAsync"></a>
 ### <a name="findasync"></a>FindAsync
 
-В основную часть формирования шаблонов кода [FindAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_FindAsync_System_Type_System_Object___) может использоваться вместо `FirstOrDefaultAsync` или `SingleOrDefaultAsync`. 
+Чаще всего в шаблонном коде [FindAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_FindAsync_System_Type_System_Object___) можно использовать вместо `FirstOrDefaultAsync` или `SingleOrDefaultAsync`. 
 
 `FindAsync`:
 
-* Находит сущности с первичным ключом (PK). Если сущность с PK отслеживается контекстом, она возвращается без запроса к базе данных.
-* — Простой и быстрый.
+* Находит сущность с первичным ключом. Если сущность с первичным ключом отслеживается контекстом, она возвращается без запроса к базе данных.
+* Является простым и быстрым.
 * Оптимизирован для поиска одной сущности.
-* Можно иметь преимущества производительности в некоторых ситуациях, но они редко следует учитывать для обычных веб-скриптов.
+* В некоторых ситуациях может давать преимущества в производительности, однако редко используется в обычных веб-сценариях.
 * Неявно использует [FirstAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_) вместо [SingleAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_).
-Но если необходимо включить другие сущности, то поиск больше не подходит. Это означает, что может потребоваться отменить поиск и переместить запрос по мере продвижения вашего приложения.
+Однако если необходимо включить другие сущности, результаты поиска более не будут подходить. Это значит, что по мере работы приложения может потребоваться отменить результаты поиска и перейти к запросу.
 
 ## <a name="customize-the-details-page"></a>Настройка страницы сведений
 
-Перейдите к `Pages/Students` страницы. **Изменить**, **сведения**, и **удаление** ссылки, созданные [вспомогательный тег привязки](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) в *страниц и студенты / Index.cshtml* файл.
+Перейдите на страницу `Pages/Students`. Ссылки **Edit**, **Details** и **Delete** создаются [вспомогательной функцией тегов привязки](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) в файле *Pages/Students/Index.cshtml*.
 
 [!code-cshtml[Main](intro/samples/cu/Pages/Students/Index1.cshtml?range=40-44)]
 
-Выберите ссылку сведения. URL-адрес имеет вид `http://localhost:5000/Students/Details?id=2`. Идентификатор студента передается с помощью строки запроса (`?id=2`).
+Щелкните ссылку Details. URL-адрес имеет вид `http://localhost:5000/Students/Details?id=2`. Идентификатор учащегося передается с помощью строки запроса (`?id=2`).
 
-Обновить редактирования, подробные сведения и удаление страниц Razor для использования `"{id:int}"` шаблон маршрута. Измените директиву страницы для каждой из этих страниц c `@page` на `@page "{id:int}"`.
+Обновите страницы Razor Pages Edit, Details и Delete так, чтобы использовался шаблон маршрута `"{id:int}"`. Измените директиву страницы для каждой из этих страниц c `@page` на `@page "{id:int}"`.
 
-Запрос на странице с помощью шаблона маршрута «{ИД: int}», выполняющий **не** включают целое число со знаком маршрута значение возвращает HTTP 404 (не найдено) ошибку. Например `http://localhost:5000/Students/Details` возвращает ошибку 404. Чтобы сделать идентификатор необязательным, добавьте `?` к ограничению маршрута:
+Запрос к странице с шаблоном маршрута "{id:int}", который **не** включает в себя целочисленное значение маршрута, приводит к ошибке HTTP 404 (не найдено). Например, `http://localhost:5000/Students/Details` возвращает ошибку 404. Чтобы сделать идентификатор необязательным, добавьте `?` к ограничению маршрута:
 
  ```cshtml
 @page "{id:int?}"
 ```
 
-Запустить приложение, щелкните ссылку сведений и проверьте URL-адрес передает идентификатор как данные маршрута (`http://localhost:5000/Students/Details/2`).
+Запустите приложение, щелкните ссылку Details и убедитесь, что в URL-адресе в виде данных маршрута передается идентификатор (`http://localhost:5000/Students/Details/2`).
 
-Не изменяйте глобально `@page` для `@page "{id:int}"`, это нарушит ссылки на корневую папку и создавать страницы.
+Не выполняйте глобальную замену `@page` на `@page "{id:int}"`, поскольку это приведет к нарушению ссылок на страницы Home и Create.
 
 <!-- See https://github.com/aspnet/Scaffolding/issues/590 -->
 
 ### <a name="add-related-data"></a>Добавление связанных данных
 
-Не включает формирования шаблонов код страницы индекса учащихся `Enrollments` свойство. В этом разделе содержимого `Enrollments` коллекция отображается на странице «сведения».
+Шаблонный код страницы указателя учащихся не включает свойство `Enrollments`. В этом разделе на странице Details отображается содержимое коллекции `Enrollments`.
 
-`OnGetAsync` Метод *Pages/Students/Details.cshtml.cs* использует `FirstOrDefaultAsync` метод для извлечения одной `Student` сущности. Добавьте следующий выделенный код:
+Метод `OnGetAsync` в файле *Pages/Students/Details.cshtml.cs* использует метод `FirstOrDefaultAsync` для извлечения одной сущности `Student`. Добавьте выделенный ниже код:
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Details.cshtml.cs?name=snippet_Details&highlight=8-12)]
 
-`Include` И `ThenInclude` методы, которые вызывают контекст загрузки `Student.Enrollments` свойство навигации и в пределах каждой регистрации `Enrollment.Course` свойство навигации. Эти методы являются examinied подробно в учебнике чтение связанных данных.
+Методы `Include` и `ThenInclude` инструктируют контекст для загрузки свойства навигации `Student.Enrollments`, а также свойства навигации `Enrollment.Course` в пределах каждой регистрации. Эти методы более подробно рассматриваются в учебнике, посвященном чтению данных.
 
-`AsNoTracking` Метод позволяет повысить производительность в сценариях, если возвращаются сущности, не обновляются в текущем контексте. `AsNoTracking`рассматривается далее в этом учебнике.
+Метод `AsNoTracking` повышает производительность в тех сценариях, где возвращаемые сущности не обновляются в текущем контексте. `AsNoTracking` рассматривается позднее в этом учебнике.
 
-### <a name="display-related-enrollments-on-the-details-page"></a>Отображение связанных регистраций на этой странице
+### <a name="display-related-enrollments-on-the-details-page"></a>Отображение связанных регистраций на странице Details
 
-Откройте *Pages/Students/Details.cshtml*. Добавьте следующий выделенный код, чтобы отобразить список регистраций.
+Откройте файл *Pages/Students/Details.cshtml*. Добавьте выделенный ниже код, чтобы отобразить список регистраций:
 
  <!--2do ricka. if doesn't change, remove dup -->
 [!code-cshtml[Main](intro/samples/cu/Pages/Students/Details1.cshtml?highlight=32-53)]
 
-Если коду отступ неправильный после вставки кода, нажмите клавиши CTRL-K-D, чтобы исправить его.
+Если после вставки кода нарушаются отступы в нем, нажмите клавиши CTRL-K-D, чтобы исправить это.
 
-Приведенный выше код выполняет цикл по сущности в `Enrollments` свойство навигации. Для каждой регистрации отображает название курса и уровень. Название курса извлекается из курса сущность, которая хранится в `Course` свойства навигации сущности регистраций.
+Приведенный выше код циклически обрабатывает сущности в свойстве навигации `Enrollments`. Для каждой регистрации он отображает название курса и оценку. Название курса извлекается из сущности Course, которая хранится в свойстве навигации `Course` сущности Enrollments.
 
-Запустите приложение, выберите **учащихся** и нажмите кнопку **сведения** ссылку для учащихся. Отображается список курсов и оценок для выбранного учащегося.
+Запустите приложение, выберите вкладку **Students** (Учащиеся) и щелкните ссылку **Details** (Сведения) для учащегося. Отобразится список курсов и оценок для выбранного учащегося.
 
-## <a name="update-the-create-page"></a>Обновление страницы создания
+## <a name="update-the-create-page"></a>Обновление страницы Create
 
-Обновление `OnPostAsync` метод в *Pages/Students/Create.cshtml.cs* следующим кодом:
+Измените метод `OnPostAsync` в файле *Pages/Students/Create.cshtml.cs*, используя следующий код:
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Create.cshtml.cs?name=snippet_OnPostAsync)]
 
 <a name="TryUpdateModelAsync"></a>
 ### <a name="tryupdatemodelasync"></a>TryUpdateModelAsync
 
-Изучите [TryUpdateModelAsync](https://docs.microsoft.com/ dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_ControllerBase_TryUpdateModelAsync_System_Object_System_Type_System_String_) кода:
+Проверьте код [TryUpdateModelAsync](https://docs.microsoft.com/ dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_ControllerBase_TryUpdateModelAsync_System_Object_System_Type_System_String_):
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Create.cshtml.cs?name=snippet_TryUpdateModelAsync)]
 
-В приведенном выше коде `TryUpdateModelAsync<Student>` пытается обновить `emptyStudent` объекта, используя значения из отправленной формы [PageContext](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.pagecontext?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_RazorPages_PageModel_PageContext) свойство в [PageModel](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel?view=aspnetcore-2.0). `TryUpdateModelAsync`обновляет только свойства, перечисленные (`s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate`).
+В приведенном выше коде `TryUpdateModelAsync<Student>` пытается обновить объект `emptyStudent`, используя отправленные значения формы из свойства [PageContext](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.pagecontext?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_RazorPages_PageModel_PageContext) в [PageModel](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel?view=aspnetcore-2.0). `TryUpdateModelAsync` обновляет только перечисленные свойства (`s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate`).
 
 В предыдущем примере:
 
-* Второй аргумент (` "student", // Prefix`) — это префикс использует для поиска значений. Не учитывается регистр символов.
-* Значения из отправленной формы преобразуются в типы в `Student` модели с помощью [привязки модели](xref:mvc/models/model-binding#how-model-binding-works).
+* Второй аргумент (` "student", // Prefix`) представляет собой префикс для поиска значений. Задается без учета регистра символов.
+* Отправленные значения формы преобразуются в типы в модели `Student` с использованием [привязки модели](xref:mvc/models/model-binding#how-model-binding-works).
 
 <a id="overpost"></a>
-### <a name="overposting"></a>Оверпостинга
+### <a name="overposting"></a>Чрезмерная передача данных
 
-С помощью `TryUpdateModel` для обновления полей с переданные значения является рекомендации по безопасности, так как он предотвращает overposting. Предположим, например, сущность Student включает `Secret` свойство, которое не следует обновить или добавить эту веб-страницу:
+В целях повышения безопасности рекомендуется использовать `TryUpdateModel` для обновления полей на основе отправленных значений, поскольку в этом случае исключается чрезмерная передача данных. Например, сущность Student включает свойство `Secret`, которое веб-страница не должна обновлять или добавлять:
 
 [!code-csharp[Main](intro/samples/cu/Models/StudentZsecret.cs?name=snippet_Intro&highlight=7)]
 
-Даже если приложение не имеет `Secret` поля для создания или обновления страниц Razor, злоумышленник может установить `Secret` значение оверпостинга. Злоумышленник может использовать такое средство, как Fiddler или написать сценарий JavaScript для учета `Secret` формирования значения. Исходный код не ограничивать поля, которые использует связыватель модели при создании экземпляра студента.
+Даже если приложение не имеет поля `Secret` на странице создания или обновления Razor Pages, злоумышленник может установить значение `Secret` посредством чрезмерной передачи данных. Злоумышленник может использовать такие средства, как Fiddler, или собственный код JavaScript для отправки значения формы `Secret`. В исходном коде не ограничиваются поля, которые используются при создании экземпляра Student связывателем модели.
 
-Любое другое значение злоумышленнику, указанный для `Secret` поля формы обновляется в базе данных. На следующем рисунке показано добавление средство Fiddler `Secret` поле (со значением «OverPost») для значения из отправленной формы.
+Какое бы значение ни задал злоумышленник для поля формы `Secret`, оно будет обновлено в базе данных. На следующем рисунке показано средство Fiddler, с помощью которого в отправленные значения формы добавляется поле `Secret` (со значением "OverPost").
 
-![При добавлении секретный поля Fiddler](../ef-mvc/crud/_static/fiddler.png)
+![Добавление поля Secret с помощью средства Fiddler](../ef-mvc/crud/_static/fiddler.png)
 
-Значение «OverPost» успешно добавлен `Secret` свойство вставленной строки. Конструктор приложения не предназначены `Secret` установить со страницы создания это свойство.
+Значение "OverPost" успешно добавлено в свойство `Secret` вставленной строки. Разработчик приложения не планировал, что свойство `Secret` будет устанавливаться на странице Create.
 
 <a name="vm"></a>
 ### <a name="view-model"></a>Модель представления
 
-Модель представления обычно содержит подмножество свойств, включенных в модель, используемые приложением. Модель приложения часто называют модели домена. Модель домена обычно содержит все свойства, необходимые для соответствующей сущности в базе данных. Модель представления содержит только свойства, необходимые для уровня пользовательского интерфейса (например, страницы создания). Помимо модели представления некоторые приложения используют привязки модели или модели ввода для передачи данных между класс модели страницы страниц Razor и браузер. Рассмотрим следующий `Student` модель представления:
+Модель представления обычно содержит подмножество свойств, которые включены в модель и используются приложением. Модель приложения часто называют моделью домена. Модель домена обычно содержит все свойства, необходимые для соответствующей сущности в базе данных. Модель представления содержит только те свойства, которые необходимы уровню пользовательского интерфейса (например, на странице Create). Помимо модели представления в некоторых приложениях используется модель привязки или модель ввода для передачи данных между классом модели страницы Razor Pages и браузером. Рассмотрим следующую модель представления `Student`:
 
 [!code-csharp[Main](intro/samples/cu/Models/StudentVM.cs)]
 
-Просмотр моделей предоставляют альтернативный способ предотвратить overposting. Модель представления содержит только свойства для просмотра (отображение) или обновления.
+Модели представления реализуют альтернативный подход к защите от чрезмерной передачи данных. Модель представления содержит только свойства для просмотра (отображения) или обновления.
 
-В следующем коде используется `StudentVM` модель представления для создания нового студента:
+В следующем коде модель представления используется `StudentVM` для создания нового учащегося:
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/CreateVM.cshtml.cs?name=snippet_OnPostAsync)]
 
-[SetValues](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) метод задает значения этого объекта, считывая значения из другого [объекты propertyvalue](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues) объекта. `SetValues`использует сопоставление по имени свойства. Тип модели представления может не быть связанным с типом модели, необходимо иметь свойства, которые соответствуют только.
+Метод [SetValues](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) устанавливает значения этого объекта, считывая значения из другого объекта [PropertyValues](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` использует сопоставление имен свойств. Тип модели представления может быть не связан с типом модели, однако они должны содержать совпадающие свойства.
 
-С помощью `StudentVM` требует [CreateVM.cshtml](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Students/CreateVM.cshtml) обновить для использования `StudentVM` вместо `Student`.
+При использовании `StudentVM` необходимо обновить [CreateVM.cshtml](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Students/CreateVM.cshtml), чтобы использовать `StudentVM` вместо `Student`.
 
-На страницах Razor `PageModel` производный класс является модели представления. 
+В Razor Pages представление модели реализуется с помощью производного класса `PageModel`. 
 
-## <a name="update-the-edit-page"></a>Обновление страницы правки
+## <a name="update-the-edit-page"></a>Обновление страницы редактирования
 
-Обновите модель страницы для страницы правки:
+Обновите модель страницы для страницы Edit:
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Edit.cshtml.cs?name=snippet_OnPostAsync&highlight=20,36)]
 
-Изменения в коде похожи на странице создания за некоторыми исключениями.
+Изменения в коде аналогичны странице Create за некоторыми исключениями:
 
-* `OnPostAsync`имеется необязательный `id` параметра.
-* Текущий студента извлекаются из базы данных, вместо создания пустой студента.
-* `FirstOrDefaultAsync`был заменен [FindAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1.findasync?view=efcore-2.0). `FindAsync`лучше всего подойдет при выборе сущности из первичного ключа. В разделе [FindAsync](#FindAsync) для получения дополнительной информации.
+* `OnPostAsync` имеет необязательный параметр `id`.
+* Текущий учащийся извлекается из базы данных вместо того, чтобы создавать нового учащегося.
+* `FirstOrDefaultAsync` заменен на [FindAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1.findasync?view=efcore-2.0). `FindAsync` лучше использовать при выборе сущности из первичного ключа. Дополнительные сведения см. в разделе [FindAsync](#FindAsync).
 
-### <a name="test-the-edit-and-create-pages"></a>Тестирование редактирования и создания страниц
+### <a name="test-the-edit-and-create-pages"></a>Проверка страниц редактирования и создания
 
-Создание и изменение сущностей несколько учащихся.
+Создайте и измените несколько сущностей учащихся.
 
 ## <a name="entity-states"></a>Состояния сущностей
 
-Сохраняет сведения о контекст базы данных, являются ли сущности в памяти в соответствии с их соответствующих строк в базе данных. Сведения о синхронизации контекста базы данных определяет, что происходит при `SaveChanges` вызывается. Например, при передаче объекта в `Add` метод, который присваивается состояние сущности `Added`. Когда `SaveChanges` вызывается DB контекста выдает команду SQL INSERT.
+Контекст базы данных отслеживает синхронизацию сущностей в памяти с соответствующими им строками в базе данных. Сведения о синхронизации контекста базы данных определяют поведение при вызове метода `SaveChanges`. Например, при передаче новой сущности в метод `Add` ей присваивается состояние `Added`. При вызове метода `SaveChanges` контекст базы данных выполняет команду SQL INSERT.
 
-Сущность может иметь одно из следующих состояний:
+Возможны следующие состояния сущности:
 
-* `Added`: Объект еще не существует в базе данных. `SaveChanges` Метод выдает инструкции INSERT.
+* `Added`: сущность еще не существует в базе данных. Метод `SaveChanges` выполняет инструкцию INSERT.
 
-* `Unchanged`: Никакие изменения должны быть сохранены с этой сущностью. Сущность находится в этом состоянии при чтении данных из базы данных.
+* `Unchanged`: никакие изменения сущности не сохраняются. Сущность находится в этом состоянии при считывании из базы данных.
 
-* `Modified`: Были изменены некоторые или все значения свойств сущности. `SaveChanges` Метод выдает инструкции UPDATE.
+* `Modified`: были изменены значения некоторых или всех свойств сущности. Метод `SaveChanges` выполняет инструкцию UPDATE.
 
-* `Deleted`: Сущность была помечена для удаления. `SaveChanges` Метод выполняет инструкцию DELETE.
+* `Deleted`: сущность отмечена для удаления. Метод `SaveChanges` выполняет инструкцию DELETE.
 
-* `Detached`: Объект не отслеживается контекст базы данных.
+* `Detached`: сущность не отслеживается контекстом базы данных.
 
-В приложении рабочего стола изменения состояния обычно устанавливаются автоматически. Сущность для чтения, изменения и состояние сущности автоматически меняется на `Modified`. Вызов `SaveChanges` создает инструкцию SQL UPDATE, которая обновляет только измененных свойств.
+В классическом приложении изменения состояния обычно осуществляются автоматически. После считывания сущности и ее изменения ей автоматически присваивается состояние `Modified`. При вызове метода `SaveChanges` создается инструкция SQL UPDATE, которая обновляет только измененные свойства.
 
-В веб-приложении `DbContext` , осуществляющий чтение сущности и отображает данные удаляется после отрисовки страницы. Если страницы `OnPostAsync` вызывается метод, новый веб-запроса и для нового экземпляра `DbContext`. Повторное чтение сущности в этот новый контекст имитирует обработки рабочего стола.
+В веб-приложении объект `DbContext`, который считывает сущность и отображает ее данные, ликвидируется после отрисовки страницы. При вызове метода страниц `OnPostAsync` выполняется новый веб-запрос с новым экземпляром `DbContext`. Если повторно считать сущность в этот новый контекст, таким образом будет смоделирована обработка в классическом приложении.
 
 ## <a name="update-the-delete-page"></a>Обновление страницы удаления
 
-В этом разделе добавляется код для реализации пользовательской ошибки сообщение при вызове `SaveChanges` завершается ошибкой. Добавьте строку к возможные сообщения об ошибках:
+В этом разделе добавляется код, реализующий настраиваемое сообщение ошибки на случай сбоя при вызове `SaveChanges`. Добавьте строку, содержащую возможные сообщения об ошибке:
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Delete.cshtml.cs?name=snippet1&highlight=12)]
 
@@ -209,38 +209,38 @@ ms.lasthandoff: 01/30/2018
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Delete.cshtml.cs?name=snippet_OnGetAsync&highlight=1,9,17-20)]
 
-Предыдущий код содержит необязательный параметр `saveChangesError`. `saveChangesError`Указывает, является ли метод был вызван после сбоя, чтобы удалить объект student. Операция удаления может завершиться ошибкой из-за временных проблем с сетью. В облаке скорее временный сетевой ошибки. `saveChangesError`ложно, когда страница удаления `OnGetAsync` вызывается из пользовательского интерфейса. Когда `OnGetAsync` вызывается `OnPostAsync` (из-за сбоя операции удаления), `saveChangesError` параметр имеет значение true.
+Приведенный выше код содержит необязательный параметр `saveChangesError`. `saveChangesError` указывает, был ли метод вызван после того, как произошел сбой при удалении объекта учащегося. Операция удаления может завершиться сбоем из-за временных проблем с сетью. Вероятность возникновения временных проблем с сетью выше в облаке. `saveChangesError` имеет значение false при вызове `OnGetAsync` страницы Delete из пользовательского интерфейса. Если `OnGetAsync` вызывается методом `OnPostAsync` (из-за сбоя операции удаления), параметру `saveChangesError` присваивается значение true.
 
-### <a name="the-delete-pages-onpostasync-method"></a>Метод OnPostAsync удаления страницы
+### <a name="the-delete-pages-onpostasync-method"></a>Метод OnPostAsync страницы Delete
 
 Замените `OnPostAsync` следующим кодом:
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Delete.cshtml.cs?name=snippet_OnPostAsync)]
 
-Приведенный выше код извлекает выбранную сущность, затем вызывает метод `Remove` метод, чтобы задать состояния сущности `Deleted`. При `SaveChanges` вызове SQL DELETE команда создается. Если `Remove` завершается ошибкой:
+Приведенный выше код извлекает выбранную сущность и вызывает метод `Remove`, чтобы присвоить ей состояние `Deleted`. При вызове метода `SaveChanges` создается инструкция SQL DELETE. В случае сбоя `Remove`:
 
-* Порождено исключение базы данных.
-* Удаление страниц `OnGetAsync` метод вызывается с `saveChangesError=true`.
+* Вызывается исключение базы данных.
+* Вызывается метод `OnGetAsync` страницы Delete с параметром `saveChangesError=true`.
 
-### <a name="update-the-delete-razor-page"></a>Страница «обновление» Razor Delete
+### <a name="update-the-delete-razor-page"></a>Обновление страницы удаления Razor Pages
 
-Добавьте сообщение об ошибке выделенный страницу удалить Razor.
+Добавьте выделенное ниже сообщение об ошибке на страницу Delete Razor Pages.
 
 [!code-cshtml[Main](intro/samples/cu/Pages/Students/Delete.cshtml?range=1-13&highlight=10)]
 
-Проверка удаления.
+Проверьте удаление.
 
 ## <a name="common-errors"></a>Распространенные ошибки
 
-Домашние студентов или другие ссылки не поддерживаются.
+Не работает ссылка Student/Home или другие ссылки:
 
-Проверьте страницу Razor содержит правильное `@page` директивы. Например, студентов или домашней странице Razor следует **не** содержать шаблон маршрута:
+Убедитесь, что на странице Razor Pages содержится правильная директива `@page`. Например, страница Razor Pages Student/Home **не должна** содержать шаблон маршрута:
 
 ```cshtml
 @page "{id:int}"
 ```
 
-Каждая страница Razor должна включать `@page` директивы.
+Каждая страница Razor Pages должна содержать директиву `@page`.
 
 >[!div class="step-by-step"]
 [Назад](xref:data/ef-rp/intro)

@@ -1,3 +1,3 @@
-# <a name="aspnet-using-options-sample"></a>Использование образца параметры ASP.NET
+# <a name="aspnet-using-options-sample"></a>Пример использования параметров ASP.NET
 
-В этом примере показано использование параметров шаблона в приложении страниц Razor ASP.NET Core. В этом примере демонстрируется функции, описанные в [параметры шаблона](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) раздела.
+В этом примере демонстрируется использование шаблона параметров в приложении ASP.NET Core Razor Pages. В этом примере демонстрируются функции, описываемые в разделе [Шаблон параметров](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).

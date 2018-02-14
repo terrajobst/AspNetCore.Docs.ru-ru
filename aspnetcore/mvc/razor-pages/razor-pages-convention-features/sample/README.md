@@ -1,12 +1,12 @@
-# <a name="aspnet-core-model-providers-sample"></a>Пример поставщиков ASP.NET Core модели
+# <a name="aspnet-core-model-providers-sample"></a>Пример поставщиков модели ASP.NET Core
 
-В этом примере описывается использование страниц Razor настраиваемых маршрутов и страницы поставщиков модели. В этом примере демонстрируется функции, описанные в [страниц Razor маршрута и приложения соглашение о возможности](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features) раздела.
+В этом примере показано применение пользовательских поставщиков моделей маршрутов и страниц Razor Pages. В этом примере демонстрируются возможности, описываемые в разделе [Функции соглашений для маршрутов и приложений Razor Pages](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features).
 
-## <a name="examples-in-this-sample"></a>Примеры в этом образце
+## <a name="examples-in-this-sample"></a>Включенные примеры
 
-| Функции | Пример demo |
+| Функции | Демонстрационный пример |
 | -------- | ----------- |
-| [Добавить соглашения модели маршрута и приложения](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features#add-route-and-app-model-conventions) | Добавьте атрибут маршрута и заголовок страницы приложения. |
-| [Добавьте маршрут страницы с помощью AddPageRoute](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features#configure-a-page-route) | Добавляет указанный маршрут к странице на указанной странице. |
-| [Страница модели действия соглашения](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features#page-model-action-conventions) | Добавить заголовок страницы в папке, добавьте заголовок на одной странице и настройте фабрику фильтр для добавления заголовка для страницы приложения. |
-| [Замените поставщик модели приложения страницы по умолчанию](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features#replace-the-default-page-app-model-provider) | Изменение соглашения об именовании обработчика. |
+| [Добавление соглашений для модели маршрутов и приложений](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features#add-route-and-app-model-conventions) | Добавляет атрибут и заголовок маршрута на страницы приложения. |
+| [Добавление маршрута страницы с помощью AddPageRoute](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features#configure-a-page-route) | Добавляет заданный маршрут к странице на указанную страницу. |
+| [Соглашения для действий модели страниц](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features#page-model-action-conventions) | Добавляет заголовок к страницам в папке, добавляет заголовок к одной странице и настраивает фабрику фильтров для добавления заголовка к страницам приложения. |
+| [Замена поставщика модели приложений страниц по умолчанию](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features#replace-the-default-page-app-model-provider) | Изменяет соглашения о присвоении имен обработчикам. |

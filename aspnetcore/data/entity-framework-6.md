@@ -1,7 +1,7 @@
 ---
-title: "Приступая к работе с ASP.NET Core и Entity Framework 6"
+title: "Начало работы с ASP.NET Core и Entity Framework 6"
 author: tdykstra
-description: "В этой статье показано, как использовать Entity Framework 6 в приложении ASP.NET Core."
+description: "В этой статье показано, как использовать платформу Entity Framework 6 в приложении ASP.NET Core."
 manager: wpickett
 ms.author: tdykstra
 ms.date: 02/24/2017
@@ -10,87 +10,87 @@ ms.technology: aspnet
 ms.topic: article
 uid: data/entity-framework-6
 ms.openlocfilehash: 7407fe8a976978d7d5077d5e5ac6cc264565621d
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 01/31/2018
 ---
-# <a name="getting-started-with-aspnet-core-and-entity-framework-6"></a>Приступая к работе с ASP.NET Core и Entity Framework 6
+# <a name="getting-started-with-aspnet-core-and-entity-framework-6"></a>Начало работы с ASP.NET Core и Entity Framework 6
 
-По [Paweł Grudzień](https://github.com/pgrudzien12), [Pontifex Дэмьен](https://github.com/DamienPontifex), и [Tom Dykstra](https://github.com/tdykstra)
+Авторы: [Павел Грудзень](https://github.com/pgrudzien12) (Paweł Grudzień), [Дэмиен Понтифекс](https://github.com/DamienPontifex) (Damien Pontifex) и [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra)
 
-В этой статье показано, как использовать Entity Framework 6 в приложении ASP.NET Core.
+В этой статье показано, как использовать платформу Entity Framework 6 в приложении ASP.NET Core.
 
 ## <a name="overview"></a>Обзор
 
-Для использования платформы Entity Framework 6, проект содержит выполнять компиляцию для .NET Framework, поскольку Entity Framework 6 не поддерживает .NET Core. Если вам требуются такие функции кросс платформенных необходимо будет обновить до [Entity Framework Core](https://docs.microsoft.com/ef/).
+Чтобы использовать платформу Entity Framework 6, проект необходимо компилировать на основе .NET Framework, поскольку Entity Framework 6 не поддерживает .NET Core. Если вам требуются какие-либо кроссплатформенные функции, необходимо выполнить обновление до [Entity Framework Core](https://docs.microsoft.com/ef/).
 
-Для использования платформы Entity Framework 6 в приложении ASP.NET Core рекомендуется поместить EF6 контекста и классы моделей в библиотеке классов проекта, предназначенного полной платформы. Добавьте ссылку на библиотеку классов из проекта ASP.NET Core. См. в образце [решения Visual Studio с проектами EF6 и ASP.NET Core](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/).
+Рекомендуемый способ использования платформы Entity Framework 6 в приложении ASP.NET Core заключается в помещении контекста и классов модели EF6 в проект библиотеки классов, который предназначен для полной платформы. Добавьте ссылку на библиотеку классов из проекта ASP.NET Core. См. пример [решения Visual Studio с проектами EF6 и ASP.NET Core](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/).
 
-Контекст EF6 нельзя поместить в проекте ASP.NET Core, потому что .NET Core проектов не поддерживают все функциональные возможности, EF6 команды, такие как *Enable-Migrations* требуется.
+Контекст EF6 нельзя поместить в проект ASP.NET Core, поскольку проекты .NET Core поддерживают не все функции, используемые командами EF6, например *Enable-Migrations*.
 
-Независимо от типа проекта найдите контекстом EF6 средства EF6 командной строки работают с EF6 контекстом. Например `Scaffold-DbContext` доступна только в Entity Framework Core. Если необходимо выполнить реконструирование базы данных в модель EF6, см. раздел [Code First для существующей базы данных](https://msdn.microsoft.com/jj200620).
+Независимо от типа проекта, в котором размещается контекст EF6, в этом контексте работают только средства командной строки EF6. Например, команда `Scaffold-DbContext` доступна только в Entity Framework Core. Дополнительные сведения о реконструировании базы данных в модель EF6 см. в разделе [Code First для существующей базы данных](https://msdn.microsoft.com/jj200620).
 
-## <a name="reference-full-framework-and-ef6-in-the-aspnet-core-project"></a>Справочник по полной версии .NET framework и EF6 в проекте ASP.NET Core
+## <a name="reference-full-framework-and-ef6-in-the-aspnet-core-project"></a>Использование ссылок на полную платформу и EF6 в проекте ASP.NET Core
 
-Проект ASP.NET Core должен ссылаться на .NET framework и EF6. Например *.csproj* файл проекта ASP.NET Core будет выглядеть примерно следующим образом (показаны только значимые части файла).
+В проекте ASP.NET Core необходимо использовать ссылки на платформу .NET Framework и EF6. Например, файл *CSPROJ* вашего проекта ASP.NET Core будет иметь вид, схожий с показанным в следующем примере (показаны только соответствующие части файла).
 
 [!code-xml[](entity-framework-6/sample/MVCCore/MVCCore.csproj?range=3-9&highlight=2)]
 
-При создании нового проекта используйте **веб-приложения ASP.NET Core (.NET Framework)** шаблона.
+При создании нового проекта используйте шаблон **Веб-приложение ASP.NET Core (.NET Framework)**.
 
-## <a name="handle-connection-strings"></a>Дескриптор строки подключения
+## <a name="handle-connection-strings"></a>Обработка строк подключения
 
-EF6 средства командной строки, которые будут использоваться в проекте библиотеки классов EF6 требуется конструктор по умолчанию, поэтому можно создать экземпляр контекста. Но, возможно, потребуется указать строку подключения для использования в проекте ASP.NET Core, в этом случае в контексте конструктор должен иметь параметр, который позволяет передавать в строке подключения. Ниже приведен пример.
+Средства командной строки EF6, которые используются в проекте библиотеки классов EF6, требуют наличия конструктора по умолчанию, с помощью которого они могут создавать экземпляр контекста. Тем не менее, возможно, вам потребуется задать строку подключения для использования в проекте ASP.NET Core. В этом случае конструктор контекста должен иметь параметр, в котором передается строка подключения. Ниже приведен пример.
 
 [!code-csharp[](entity-framework-6/sample/EF6/SchoolContext.cs?name=snippet_Constructor)]
 
-Поскольку EF6 контекст не имеет конструктора без параметров, EF6 проект должен предоставить реализацию [IDbContextFactory](https://msdn.microsoft.com/library/hh506876). Средства командной строки EF6 находит и использовать эту реализацию, поэтому можно создать экземпляр контекста. Ниже приведен пример.
+Поскольку в контексте EF6 отсутствует конструктор без параметров, в проекте EF6 необходимо предоставить реализацию [IDbContextFactory](https://msdn.microsoft.com/library/hh506876). Средства командной строки EF6 будут находить и использовать эту реализацию для создания экземпляра контекста. Ниже приведен пример.
 
 [!code-csharp[](entity-framework-6/sample/EF6/SchoolContextFactory.cs?name=snippet_IDbContextFactory)]
 
-В этом образце кода `IDbContextFactory` реализация передает в строку подключения, жестко. Это строка подключения, который будет использовать средства командной строки. Может потребоваться реализовать стратегию, чтобы гарантировать, что библиотека классов используется та же строка подключения, которая использует вызывающему приложению. Например может получить значение из переменной среды в обоих проектах.
+В этом примере кода реализация `IDbContextFactory` передает жестко запрограммированную строку подключения. Эта строка подключения будет использоваться средствами командной строки. В некоторых случаях требуется реализовать стратегию, в которой библиотека классов использует ту же строку подключения, что и вызывающее приложение. Например, вы можете получать значение из переменной среды в обоих проектах.
 
-## <a name="set-up-dependency-injection-in-the-aspnet-core-project"></a>Настройка внедрение зависимостей в проекте ASP.NET Core
+## <a name="set-up-dependency-injection-in-the-aspnet-core-project"></a>Настройка внедрения зависимостей в проекте ASP.NET Core
 
-В проекте Core *файла Startup.cs* файл, настроить контекст EF6 для внедрения зависимости (DI) в `ConfigureServices`. Объекты контекста EF следует задавать для времени жизни для каждого запроса.
+В файле *Startup.cs* проекта Core настройте контекст EF6 для внедрения зависимостей в `ConfigureServices`. Объекты контекста EF должны иметь время существования, соответствующее запросу.
 
 [!code-csharp[](entity-framework-6/sample/MVCCore/Startup.cs?name=snippet_ConfigureServices&highlight=5)]
 
-Затем можно получить экземпляр контекста в контроллеры с помощью DI. Код похожа на то, что можно написать для контекста EF:
+После этого можно получить экземпляр контекста в контроллерах посредством внедрения зависимостей. Этот код похож на тот, который вы написали для контекста EF Core:
 
 [!code-csharp[](entity-framework-6/sample/MVCCore/Controllers/StudentsController.cs?name=snippet_ContextInController)]
 
-## <a name="sample-application"></a>Образец приложения
+## <a name="sample-application"></a>Пример приложения
 
-Рабочий пример приложения см. в разделе [образец решения Visual Studio](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/) , прилагаемый к данной статье.
+Рабочий пример приложения см. в разделе [пример решения Visual Studio](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/), который прилагается к этой статье.
 
-В этом примере можно создать с нуля в Visual Studio выполните следующие действия:
+Этот пример можно создать с нуля, выполнив следующие действия в Visual Studio:
 
 * Создайте решение.
 
-* **Добавление нового проекта > Web > веб-приложения ASP.NET Core (.NET Framework)**
+* **Добавить новый проект > Интернет > Веб-приложение ASP.NET Core (.NET Framework)**
 
-* **Добавить новый проект > Windows классического > Библиотека (.NET Framework) классов**
+* **Добавить новый проект > Классический рабочий стол Windows > Библиотека классов (.NET Framework)**
 
-* В **консоль диспетчера пакетов** (PMC) для обоих проектов, выполните команду `Install-Package Entityframework`.
+* В **консоли диспетчера пакетов** для обоих проектов выполните команду `Install-Package Entityframework`.
 
-* В проекте библиотеки классов, создать классы модели данных, класс контекста и реализация `IDbContextFactory`.
+* В проекте библиотеки классов создайте классы модели данных и класс контекста, а также реализацию `IDbContextFactory`.
 
-* В PMC проект библиотеки классов, выполните команды `Enable-Migrations` и `Add-Migration Initial`. Если проект ASP.NET Core установлен как автозагружаемый проект, добавить `-StartupProjectName EF6` для этих команд.
+* В консоли диспетчера пакетов для проекта библиотеки классов выполните команды `Enable-Migrations` и `Add-Migration Initial`. Если проект ASP.NET Core настроен как запускаемый, добавьте `-StartupProjectName EF6` в эти команды.
 
-* В проекте Core добавьте ссылку на проект в проект библиотеки классов.
+* В проекте Core добавьте ссылку на проект библиотеки классов.
 
-* В проекте ядра в *файла Startup.cs*, Регистрация контекста для DI.
+* В проекте Core в файле *Startup.cs* зарегистрируйте контекст для внедрения зависимостей.
 
-* В проекте ядра в *appsettings.json*, добавьте строку подключения.
+* В проекте Core в файле *appsettings.json* добавьте строку подключения.
 
-* Добавьте в проект Core, контроллера и представлений, чтобы убедиться, что могут читать и записывать данные. (Обратите внимание, что ASP.NET Core MVC функции формирования шаблонов не будет работать с EF6 контекст ссылки из библиотеки классов.)
+* В проекте Core добавьте контроллер и представление (или представления), чтобы проверить возможность чтения и записи данных. (Обратите внимание, что функция формирования шаблонов ASP.NET Core MVC не будет работать с контекстом EF6, на который указывает ссылка из библиотеки классов.)
 
 ## <a name="summary"></a>Сводка
 
-В этой статье был дан основные рекомендации по использованию платформы Entity Framework 6 в приложении ASP.NET Core.
+В этой статье приводятся общие рекомендации по использованию платформы Entity Framework 6 в приложении ASP.NET Core.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Entity Framework — конфигурация на основе кода](https://msdn.microsoft.com/data/jj680699.aspx)
+* [Entity Framework — конфигурация на основе кода](https://msdn.microsoft.com/data/jj680699.aspx)

@@ -1,3 +1,3 @@
-# <a name="aspnet-core-logging-sample-application"></a>Пример приложения ASP.NET Core ведения журнала
+# <a name="aspnet-core-logging-sample-application"></a>Пример приложения для ведения журналов ASP.NET Core
 
-В этом образце приложения — для [ASP.NET Core ведения журнала](https://docs.microsoft.com/aspnet/core/fundamentals/logging/index) статью и основан на образце, созданных для [первый веб-API с ASP.NET Core MVC](https://docs.microsoft.com/aspnet/core/tutorials/first-web-api) учебника.
+Этот пример приложения относится к статье [Ведение журналов в ASP.NET Core Logging](https://docs.microsoft.com/aspnet/core/fundamentals/logging/index) и построен на основе примера, созданного для учебника [Создание веб-API с помощью ASP.NET Core MVC](https://docs.microsoft.com/aspnet/core/tutorials/first-web-api).

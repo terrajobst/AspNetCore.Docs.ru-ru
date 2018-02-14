@@ -1,5 +1,5 @@
-# <a name="aspnet-core-change-token-sample"></a>Пример маркера изменения ASP.NET Core
+# <a name="aspnet-core-change-token-sample"></a>Пример токена изменения ASP.NET Core
 
-В этом примере описывается использование [маркер изменения](https://docs.microsoft.com/dotnet/api/microsoft.extensions.primitives.changetoken). В этом примере демонстрируется функции, описанные в [обнаружения изменений с маркерами изменения](https://docs.microsoft.com/aspnet/core/fundamentals/primitives/change-tokens) раздела.
+Этот пример демонстрирует использование [ChangeToken](https://docs.microsoft.com/dotnet/api/microsoft.extensions.primitives.changetoken). Этот пример демонстрирует функции, описанные в разделе [Обнаружение изменений с помощью токенов изменений](https://docs.microsoft.com/aspnet/core/fundamentals/primitives/change-tokens).
 
-Запуск образца и следуйте инструкциям на странице индекса.
+Запустите пример и следуйте инструкциям на странице индекса.

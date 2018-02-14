@@ -1,7 +1,7 @@
 ---
-title: "Работа с файлами статического в ASP.NET Core"
+title: "Работа со статическими файлами в ASP.NET Core"
 author: rick-anderson
-description: "Узнайте, как для обслуживания и защитить статические файлы и настройки размещения веб-приложение ASP.NET Core поведением по промежуточного слоя статических файлов."
+description: "Узнайте, как в веб-приложениях ASP.NET Core обслуживать и защищать статические файлы, а также как настраивать ПО промежуточного слоя по размещению статических файлов."
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -11,74 +11,74 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/static-files
-ms.openlocfilehash: 60b205bf0a45e2965f9dab46f46956947ae513fd
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
-ms.translationtype: MT
+ms.openlocfilehash: 7b156830ab59db3c08fbff6b2c4180d8765a113b
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="work-with-static-files-in-aspnet-core"></a>Работа с файлами статического в ASP.NET Core
+# <a name="work-with-static-files-in-aspnet-core"></a>Работа со статическими файлами в ASP.NET Core
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Скотт Addie](https://twitter.com/Scott_Addie)
+Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Скотт Адди](https://twitter.com/Scott_Addie) (Scott Addie)
 
-Статические файлы, например HTML, CSS, изображения и JavaScript, являются активы приложения ASP.NET Core предоставляет клиентам напрямую. Некоторые Настройка не требуется, чтобы включить для обслуживания этих файлов.
+Статические файлы, такие как HTML, CSS, изображения и JavaScript, являются ресурсами, которые приложения ASP.NET Core предоставляют клиентам напрямую. В некоторых случаях необходима возможность обслуживания таких файлов.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="serve-static-files"></a>Обрабатывать статические файлы
+## <a name="serve-static-files"></a>Обслуживание статических файлов
 
-Статические файлы хранятся в корневом каталоге проекта web. Каталог по умолчанию —  *\<content_root > / wwwroot*, но его можно изменить через [UseWebRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usewebroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseWebRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_) метод. В разделе [содержимое корневого](xref:fundamentals/index#content-root) и [корневого веб-каталога](xref:fundamentals/index#web-root) для получения дополнительной информации.
+Статические файлы хранятся в корневом веб-каталоге проекта. Каталог по умолчанию — *\<корневой_каталог_содержимого>/wwwroot*, но его можно изменить через метод [UseWebRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usewebroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseWebRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_). Дополнительные сведения см. в разделах [Корневой каталог содержимого](xref:fundamentals/index#content-root) и [Корневой веб-каталог](xref:fundamentals/index#web-root).
 
-Приложения веб-узел должен быть в курсе содержимого корневого каталога.
+Веб-узел приложения должен знать о расположении корневого каталога содержимого.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-`WebHost.CreateDefaultBuilder` Метод задает содержимое корневого в текущем каталоге:
+Метод `WebHost.CreateDefaultBuilder` устанавливает текущий каталог в качестве корневого каталога содержимого:
 
 [!code-csharp[](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=9)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Задайте корневой содержимого в текущем каталоге путем вызова [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseContentRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_) внутри `Program.Main`:
+Установите текущий каталог в качестве корневого каталога содержимого, вызвав [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseContentRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_) в методе `Program.Main`:
 
 [!code-csharp[](static-files/samples/1x/Program.cs?name=snippet_ProgramClass&highlight=7)]
 
 ---
 
-Статические файлы будут доступны с помощью путь относительно корневого веб-каталога. Например **веб-приложение** шаблон проекта содержит несколько папок в *wwwroot* папки:
+Статические файлы доступны по относительному пути от корневого веб-каталога. Например, шаблон проекта **Web Application** содержит несколько папок в папке *wwwroot*:
 
 * **wwwroot**
   * **css**
   * **images**
   * **js**
 
-Для доступа к файлу в формате URI *изображения* вложенной *http://\<server_address > /images/\<image_file_name >*. Например *http://localhost:9189/images/banner3.svg*.
+Формат URI для доступа к файлу во вложенной папке *images* следующий: *http://\<адрес_сервера>/images/\<имя_файла_изображения>*. Например: *http://localhost:9189/images/banner3.svg*.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Если для различных версий платформы .NET Framework, добавьте [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) пакета в проект. Если код предназначен для .NET Core [Microsoft.AspNetCore.All metapackage](xref:fundamentals/metapackage) включает этот пакет.
+Если код предназначен для .NET Framework, то добавьте в проект пакет [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/). Если код предназначен для .NET Core, то этот пакет уже включен в метапакет [Microsoft.AspNetCore.All](xref:fundamentals/metapackage).
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Добавить [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) пакета в проект.
+Добавьте пакет [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) в проект.
 
 ---
 
-Настройка [по промежуточного слоя](xref:fundamentals/middleware) позволяющее обслуживанием статических файлов.
+Настройте [ПО промежуточного слоя](xref:fundamentals/middleware/index), позволяющее обслуживать статические файлы.
 
-### <a name="serve-files-inside-of-web-root"></a>Обрабатывать файлы внутри корневого веб-каталога
+### <a name="serve-files-inside-of-web-root"></a>Обслуживание файлов в корневом веб-каталоге
 
-Вызвать [UseStaticFiles](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) метода в `Startup.Configure`:
+Вызовите метод [UseStaticFiles](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) в `Startup.Configure`:
 
 [!code-csharp[](static-files/samples/1x/StartupStaticFiles.cs?name=snippet_ConfigureMethod&highlight=3)]
 
-Без параметров `UseStaticFiles` перегруженный метод помечает файлы в корневой веб как servable. Следующие ссылки разметки *wwwroot/images/banner1.svg*:
+Эта перегрузка метода `UseStaticFiles` не принимает параметров, она помечает файлы в корневой веб-каталог как обслуживаемые. Следующая разметка ссылается на *wwwroot/images/banner1.svg*:
 
 [!code-cshtml[](static-files/samples/1x/Views/Home/Index.cshtml?name=snippet_static_file_wwwroot)]
 
-### <a name="serve-files-outside-of-web-root"></a>Обрабатывать файлы за пределами корневого веб-каталога
+### <a name="serve-files-outside-of-web-root"></a>Обслуживание файлов вне корневого веб-каталога
 
-Рассмотрим Иерархия каталогов, в которой статические файлы обслуживать находятся за пределами корневого веб.
+Пусть имеется иерархия каталогов, в которой статические файлы обслуживаются вне корневого веб-каталога:
 
 * **wwwroot**
   * **css**
@@ -88,96 +88,96 @@ ms.lasthandoff: 01/19/2018
   * **images**
       * *banner1.svg*
 
-Запрос можно получить доступ к *banner1.svg* файла путем настройки по промежуточного слоя статических файлов следующим образом:
+В запросе можно получить доступ к файлу *banner1.svg*, настроив ПО промежуточного слоя для статических файлов следующим образом:
 
 [!code-csharp[](static-files/samples/1x/StartupTwoStaticFiles.cs?name=snippet_ConfigureMethod&highlight=5-10)]
 
-В приведенном выше коде *MyStaticFiles* Иерархия каталогов выполняется через публично *StaticFiles* сегмент URI. Запрос на *http://\<server_address > /StaticFiles/images/banner1.svg* служит *banner1.svg* файла.
+В приведенном выше коде доступ к иерархии каталога *MyStaticFiles* представляется через сегмент URI *StaticFiles*. Запрос *http://\<адрес_сервера> /StaticFiles/images/banner1.svg* обслуживает файлы *banner1.svg*.
 
-Следующие ссылки разметки *MyStaticFiles/images/banner1.svg*:
+Следующая разметка ссылается на *MyStaticFiles/images/banner1.svg*:
 
 [!code-cshtml[](static-files/samples/1x/Views/Home/Index.cshtml?name=snippet_static_file_outside)]
 
-### <a name="set-http-response-headers"></a>Задать заголовки ответов HTTP
+### <a name="set-http-response-headers"></a>Установка заголовков HTTP-ответов
 
-Объект [StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions) объект может использоваться для задания заголовков HTTP-ответов. Кроме настройки обслуживание статических файлов от корня веб-, следующий код задает `Cache-Control` заголовка:
+Для установки заголовков HTTP-ответов можно использовать объект [StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions). Кроме настройки обслуживания статических файлов в корне веб-каталога, следующий код также устанавливает заголовок `Cache-Control`:
 
 [!code-csharp[](static-files/samples/1x/StartupAddHeader.cs?name=snippet_ConfigureMethod)]
 
-[HeaderDictionaryExtensions.Append](/dotnet/api/microsoft.aspnetcore.http.headerdictionaryextensions.append) существует метод [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/) пакета.
+Метод [HeaderDictionaryExtensions.Append](/dotnet/api/microsoft.aspnetcore.http.headerdictionaryextensions.append) содержится в пакете [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/).
 
-Файлы были сделаны публично кэшируемый 10 минут (600 секунд):
+Файлы, к которым был предоставлен доступ, кэшируются в течение 10 минут (600 секунд):
 
-![Отображение заголовка Cache-Control заголовки ответа были добавлены](static-files/_static/add-header.png)
+![Добавлены заголовки ответов, включая заголовок Cache-Control](static-files/_static/add-header.png)
 
 ## <a name="static-file-authorization"></a>Авторизация статических файлов
 
-По промежуточного слоя статических файлов не предоставляет возможность проверки авторизации. Все файлы, обслуживаемых, включая те, в разделе *wwwroot*, являются открытыми. Чтобы обрабатывать файлы на основе авторизации:
+ПО промежуточного слоя для статических файлов не предоставляет возможности авторизации. Все обслуживаемые им файлы, включая расположенные в *wwwroot*, находятся в открытом доступе. Для обслуживания файлов с авторизацией:
 
-* Сохраните их за пределами *wwwroot* и любой каталог, доступный для по промежуточного слоя статических файлов **и**
-* Обслуживает их через метод действия, к которому применяется авторизации. Вернуть [FileResult](/dotnet/api/microsoft.aspnetcore.mvc.fileresult) объекта:
+* Сохраните файлы в любом каталоге за пределами каталога *wwwroot*, к которому имеет доступ ПО промежуточного слоя для статических файлов **и**
+* Обслуживайте их через метод действия, к которому применима авторизация. Возвращайте объект [FileResult](/dotnet/api/microsoft.aspnetcore.mvc.fileresult):
 
 [!code-csharp[](static-files/samples/1x/Controllers/HomeController.cs?name=snippet_BannerImageAction)]
 
-## <a name="enable-directory-browsing"></a>Включение просмотра каталогов
+## <a name="enable-directory-browsing"></a>Просмотр каталогов
 
-Просмотр каталогов позволяет пользователям веб-приложения см. список каталогов и файлов в указанном каталоге. Обзор каталогов отключен по умолчанию, по соображениям безопасности (см. [вопросы](#considerations)). Просмотр с помощью вызова каталогов включения [UseDirectoryBrowser](/dotnet/api/microsoft.aspnetcore.builder.directorybrowserextensions.usedirectorybrowser#Microsoft_AspNetCore_Builder_DirectoryBrowserExtensions_UseDirectoryBrowser_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Builder_DirectoryBrowserOptions_) метод в `Startup.Configure`:
+Просмотр каталогов позволяет пользователям веб-приложениям просматривать файлы и каталоги внутри определенного каталога. По соображениям безопасности просмотр каталогов отключен по умолчанию (см. раздел [Особенности](#considerations)). Разрешить просмотр каталогов можно вызвав метод [UseDirectoryBrowser](/dotnet/api/microsoft.aspnetcore.builder.directorybrowserextensions.usedirectorybrowser#Microsoft_AspNetCore_Builder_DirectoryBrowserExtensions_UseDirectoryBrowser_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Builder_DirectoryBrowserOptions_) в `Startup.Configure`:
 
 [!code-csharp[](static-files/samples/1x/StartupBrowse.cs?name=snippet_ConfigureMethod&highlight=12-17)]
 
-Добавить требуемые службы путем вызова [AddDirectoryBrowser](/dotnet/api/microsoft.extensions.dependencyinjection.directorybrowserserviceextensions.adddirectorybrowser#Microsoft_Extensions_DependencyInjection_DirectoryBrowserServiceExtensions_AddDirectoryBrowser_Microsoft_Extensions_DependencyInjection_IServiceCollection_) метод `Startup.ConfigureServices`:
+Добавим необходимые службы путем вызова метода [AddDirectoryBrowser](/dotnet/api/microsoft.extensions.dependencyinjection.directorybrowserserviceextensions.adddirectorybrowser#Microsoft_Extensions_DependencyInjection_DirectoryBrowserServiceExtensions_AddDirectoryBrowser_Microsoft_Extensions_DependencyInjection_IServiceCollection_) из `Startup.ConfigureServices`:
 
 [!code-csharp[](static-files/samples/1x/StartupBrowse.cs?name=snippet_ConfigureServicesMethod&highlight=3)]
 
-Предыдущий код позволяет просматривать каталог *wwwroot/images* папки с помощью URL-адрес *http://\<server_address > / MyImages*, со ссылками на всех файлов и папок:
+Приведенный выше код разрешает просмотр папки *wwwroot/images* с помощью URL-адреса *http://\<адрес_сервера>/MyImages*, со ссылками на все файлы и папки:
 
-![Просмотр каталогов](static-files/_static/dir-browse.png)
+![просмотр каталогов](static-files/_static/dir-browse.png)
 
-В разделе [вопросы](#considerations) на угрозы безопасности при включении просмотра.
+Информацию об угрозе безопасности при включении просмотра каталогов см. в разделе [Особенности](#considerations).
 
-Обратите внимание на два `UseStaticFiles` вызывает в следующем примере. Первый вызов включает обслуживанием статических файлов в *wwwroot* папки. Второй вызов включает просмотр каталогов из *wwwroot/images* папки с помощью URL-адрес *http://\<server_address > / MyImages*:
+Обратите внимание на два вызова метода `UseStaticFiles` в следующем примере. Первый вызов включает обслуживание статических файлов в папке *wwwroot*. Второй вызов включает просмотр каталогов в папке *wwwroot/images* с помощью URL-адреса *http://\<адрес_сервера>/MyImages*:
 
 [!code-csharp[](static-files/samples/1x/StartupBrowse.cs?name=snippet_ConfigureMethod&highlight=3,5)]
 
-## <a name="serve-a-default-document"></a>Обслуживать документ по умолчанию
+## <a name="serve-a-default-document"></a>Обслуживание документа по умолчанию
 
-Настройка домашней страницы по умолчанию служит посетители логических отправной точкой при посещении веб-узла. Чтобы обслуживать страницы по умолчанию без полного указания имен URI пользователь, вызовите [UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) метод `Startup.Configure`:
+Домашняя страница по умолчанию является для посетителей логической отправной точкой при посещении веб-сайта. Для обслуживания страницы по умолчанию без указания полного имени URI вызовите метод [UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) из `Startup.Configure`:
 
 [!code-csharp[](static-files/samples/1x/StartupEmpty.cs?name=snippet_ConfigureMethod&highlight=3)]
 
 > [!IMPORTANT]
-> `UseDefaultFiles`должен быть вызван перед `UseStaticFiles` для обслуживания файла по умолчанию. `UseDefaultFiles`является перезаписи URL-адрес, который фактически не использовать файл. Включение по промежуточного слоя статических файлов через `UseStaticFiles` для обслуживания файла.
+> Для обслуживания файла по умолчанию метод `UseDefaultFiles`должен быть вызван до метода `UseStaticFiles`. Метод `UseDefaultFiles` фактически не обслуживает файл, а только перезаписывает URL-адрес. Для обслуживания файла включите ПО промежуточного слоя для статических файлов, вызвав метод `UseStaticFiles`.
 
-С `UseDefaultFiles`, запросы для поиска папки:
+При вызове метода `UseDefaultFiles` запросы к папке будут искать следующие файлы:
 
 * *default.htm*
 * *default.html*
 * *index.htm*
 * *index.html*
 
-Первый файл найден в списке обслуживается, как будто полный URI запроса. URL-адрес браузера продолжает отражают запрошенного URI.
+Первый найденный файл из списка будет обслужен, как будто был введен полный URI. URL-адрес в браузере будет соответствовать запрошенному URI.
 
-Следующий код позволяет изменить имя файла по умолчанию для *mydefault.html*:
+Следующий код позволяет изменить имя файла по умолчанию на *mydefault.html*:
 
 [!code-csharp[](static-files/samples/1x/StartupDefault.cs?name=snippet_ConfigureMethod)]
 
 ## <a name="usefileserver"></a>UseFileServer
 
-[UseFileServer](/dotnet/api/microsoft.aspnetcore.builder.fileserverextensions.usefileserver#Microsoft_AspNetCore_Builder_FileServerExtensions_UseFileServer_Microsoft_AspNetCore_Builder_IApplicationBuilder_) объединяет функциональные возможности `UseStaticFiles`, `UseDefaultFiles`, и `UseDirectoryBrowser`.
+Метод [UseFileServer](/dotnet/api/microsoft.aspnetcore.builder.fileserverextensions.usefileserver#Microsoft_AspNetCore_Builder_FileServerExtensions_UseFileServer_Microsoft_AspNetCore_Builder_IApplicationBuilder_) объединяет в себе функции `UseStaticFiles`, `UseDefaultFiles` и `UseDirectoryBrowser`.
 
-Следующий пример кода позволяет обслуживанием статические файлы и файл по умолчанию. Просмотр каталогов не включена.
+Следующий пример кода позволяет обслуживать статические файлы и файл по умолчанию. Просмотр каталогов отключен.
 
 ```csharp
 app.UseFileServer();
 ```
 
-Следующий код основан перегрузки без параметров, позволяя просмотр каталогов:
+Следующий код отличается от предыдущей перегрузки метода без параметров включением просмотра каталогов:
 
 ```csharp
 app.UseFileServer(enableDirectoryBrowsing: true);
 ```
 
-Примите во внимание следующие иерархии каталога.
+Пусть имеется следующая иерархия каталогов:
 
 * **wwwroot**
   * **css**
@@ -188,70 +188,69 @@ app.UseFileServer(enableDirectoryBrowsing: true);
       * *banner1.svg*
   * *default.html*
 
-Следующий пример кода позволяет статические файлы, файлы по умолчанию и просмотр каталога из `MyStaticFiles`:
+Следующий пример кода включает обслуживание статических файлов, файлы по умолчанию и просмотр каталога `MyStaticFiles`:
 
 [!code-csharp[](static-files/samples/1x/StartupUseFileServer.cs?name=snippet_ConfigureMethod&highlight=5-11)]
 
-`AddDirectoryBrowser`должно вызываться при `EnableDirectoryBrowsing` значение свойства `true`:
+Метод `AddDirectoryBrowser` должен вызываться при значении `true` свойства `EnableDirectoryBrowsing`:
 
 [!code-csharp[](static-files/samples/1x/StartupUseFileServer.cs?name=snippet_ConfigureServicesMethod)]
 
-С помощью иерархии файлов и предшествующий код, URL-адреса устранить следующим образом:
+При указанных выше коде и иерархии файлов URL-адреса будут разрешаться следующим образом:
 
 | URI            |                             Ответ  |
 | ------- | ------|
-| *http://\<server_address>/StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
-| *http://\<server_address>/StaticFiles*             |     MyStaticFiles/default.html |
+| *http://\<адрес_сервера>/StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
+| *http://\<адрес_сервера>/StaticFiles*             |     MyStaticFiles/default.html |
 
-Если нет файла с именем по умолчанию в *MyStaticFiles* каталога, *http://\<server_address > / StaticFiles* возвращает каталога с интерактивными ссылками:
+Если в каталоге *MyStaticFiles* отсутствует файл с именем по умолчанию, то *http://\<адрес_сервера>/StaticFiles* возвращает список содержимого каталога с доступными для перехода ссылками:
 
 ![Список статических файлов](static-files/_static/db2.png)
 
 > [!NOTE]
-> `UseDefaultFiles`и `UseDirectoryBrowser` URL-адрес *http://\<server_address > / StaticFiles* без завершающей косой черты для запуска на стороне клиента перенаправления *http://\<server_address > / StaticFiles /*. Обратите внимание на добавленную конечную косую черту. Относительные URL-адреса в документах, считаются недопустимый без косую черту в конце.
+> Методы `UseDefaultFiles` и `UseDirectoryBrowser` используют URL-адрес *http://\<адрес_сервера>/StaticFiles* без завершающей косой черты, чтобы вызвать перенаправление на стороне клиента на адрес *http://\<адрес_сервера>/StaticFiles/*. Обратите внимание на добавление завершающей косой черты. Относительные URL-адреса в документах считаются недопустимыми без косой черты в конце.
 
 ## <a name="fileextensioncontenttypeprovider"></a>FileExtensionContentTypeProvider
 
-[FileExtensionContentTypeProvider](/dotnet/api/microsoft.aspnetcore.staticfiles.fileextensioncontenttypeprovider) класс содержит `Mappings` свойство, служащее сопоставление расширений файлов для типов содержимого MIME. В следующем примере несколько расширений файлов, регистрируются в известные типы MIME. *.Rtf* заменяется расширения, и *.mp4* удаляется.
+Класс [FileExtensionContentTypeProvider](/dotnet/api/microsoft.aspnetcore.staticfiles.fileextensioncontenttypeprovider) содержит свойство `Mappings`, которое служит для сопоставления расширений файлов и типов содержимого MIME. В следующем примере несколько расширений файлов регистрируются в известные типы MIME. Расширение *.rtf* заменяется, а *.mp4* удаляется.
 
 [!code-csharp[](static-files/samples/1x/StartupFileExtensionContentTypeProvider.cs?name=snippet_ConfigureMethod&highlight=3-12,19)]
 
-В разделе [типы содержимого MIME](http://www.iana.org/assignments/media-types/media-types.xhtml).
+См. раздел [Типы содержимого MIME](http://www.iana.org/assignments/media-types/media-types.xhtml).
 
 ## <a name="non-standard-content-types"></a>Нестандартные типы содержимого
 
-По промежуточного слоя статических файлов, которые понимает почти 400 типы содержимого файлов. Если пользователь запрашивает файл неизвестного типа, по промежуточного слоя статических файлов возвращает ответ HTTP 404 (не найдено). Если просмотр каталогов включен, отображается ссылка на файл. URI возвращает ошибку HTTP 404.
+ПО промежуточного слоя для статических файлов воспринимает почти 400 известных типов содержимого файлов. Если пользователь запрашивает файл неизвестного типа, ПО промежуточного слоя для статических файлов возвращает ответ HTTP 404 (не найдено). Если просмотр каталогов разрешен, то отображается ссылка на файл. URI возвращает ошибку HTTP 404.
 
-Следующий код позволяет обслуживает неизвестные типы, а также преобразование Неизвестный файл как изображение:
+Следующий код включает обслуживание неизвестных типов и обслуживает неизвестные файлы как изображения:
 
 [!code-csharp[](static-files/samples/1x/StartupServeUnknownFileTypes.cs?name=snippet_ConfigureMethod)]
 
-В вышеописанном примере кода запрос файл неизвестного типа содержимого возвращается в виде изображения.
+При выполнении вышеописанного кода ответ на запрос файла с неизвестным типом содержимого вернется в виде изображения.
 
 > [!WARNING]
-> Включение [ServeUnknownFileTypes](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions.serveunknownfiletypes#Microsoft_AspNetCore_Builder_StaticFileOptions_ServeUnknownFileTypes) представляет угрозу безопасности. По умолчанию оно отключено, и его использование не рекомендуется. [FileExtensionContentTypeProvider](#fileextensioncontenttypeprovider) предоставляет более безопасная альтернатива обслужить файлы с нестандартные расширения.
+> Включение параметра [ServeUnknownFileTypes](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions.serveunknownfiletypes#Microsoft_AspNetCore_Builder_StaticFileOptions_ServeUnknownFileTypes) представляет угрозу безопасности. По умолчанию он отключен, и его использование не рекомендуется. Использование класса [FileExtensionContentTypeProvider](#fileextensioncontenttypeprovider) является более безопасной альтернативой для обслуживания файлов с нестандартными расширениями.
 
 ### <a name="considerations"></a>Особенности
 
 > [!WARNING]
-> `UseDirectoryBrowser`и `UseStaticFiles` может вызвать утечку секретные данные. Настоятельно рекомендуется отключить просмотр в рабочей среде каталогов. Внимательно просмотрите, какие каталоги включаются посредством `UseStaticFiles` или `UseDirectoryBrowser`. Весь каталог и его подкаталогах становятся доступен из Интернета. Хранилище файлов подходит для выступают в роли Public в выделенный каталог, например  *\<content_root > / wwwroot*. Эти файлы отдельные представления MVC, страниц Razor (только 2.x), файлы конфигурации и т. д.
+> Использование `UseDirectoryBrowser` и `UseStaticFiles` может привести к утечке конфиденциальной информации. Настоятельно рекомендуется отключать просмотр каталогов в рабочей среде. Тщательно проверьте, просмотр каких каталогов разрешен посредством `UseStaticFiles` или `UseDirectoryBrowser`. Весь каталог и его подкаталоги становятся общедоступными. Храните файлы, предназначенные для общего доступа, в выделенных каталогах, таких как *\<корневой_каталог_содержимого>/wwwroot*. Отделите эти файлы от представлений MVC, страниц Razor (только для версии 2.x), файлов конфигурации и т.д.
 
-* URL-адреса для содержимого, представлены `UseDirectoryBrowser` и `UseStaticFiles` чувствительность к регистру и ограничения на символы базовой файловой системы. Например, без учета регистра Windows&mdash;не Mac и Linux.
+* К URL-адресам содержимого, к которому предоставлен доступ методами `UseDirectoryBrowser` и `UseStaticFiles`, применяются те же требования по регистрозависимости и запрещенным символам, что и к базовой файловой системе. Например, в Windows не учитывается регистр &mdash;, а в Mac и Linux учитывается.
 
-* Приложения ASP.NET Core, размещенные в IIS, воспользуйтесь [модуля ASP.NET Core (ANCM)](xref:fundamentals/servers/aspnet-core-module) для перенаправления всех запросов приложений, включая запросы статических файлов. Обработчик файла статистики IIS не используется. Он имеет не может обработать запросы, прежде чем вы обрабатываются ANCM.
+* Приложения ASP.NET Core, размещенные в IIS, используют [Модуль Core ASP.NET (ANCM)](xref:fundamentals/servers/aspnet-core-module) для перенаправления всех запросов к приложению, включая запросы статических файлов. Обработчик статических файлов IIS не используется. Не существует возможности обработать запросы до того, как их обработает ANCM.
 
-* Выполните следующие действия в диспетчере служб IIS для удаления обработчику файла статистики на уровне сервера или веб-сайт IIS.
-    1. Перейдите к **модули** компонентов.
-    1. Выберите **StaticFileModule** в списке.
-    1. Нажмите кнопку **удалить** в **действия** боковой панели.
+* Выполните следующие шаги в диспетчере служб IIS для удаления обработчика статических файлов IIS на уровне сервера или веб-сайта:
+    1. Перейдите к компоненту **Модули**.
+    1. Выберите в списке модуль **StaticFileModule**.
+    1. Нажмите кнопку **Удалить** в боковой панели **Действия**.
 
 > [!WARNING]
-> Если обработчик файла статистики IIS включена **и** ANCM настроен неправильно, обслуживаются статических файлов. Это происходит, например, если *web.config* файл не развернут.
+> Если обработчик статических файлов IIS включен **и** ANCM настроен неправильно, то статические файлы будут обслуживаться. Это может случиться, если, например, не был развернут файл *web.config*.
 
-* Поместите файлы кода (включая *.cs* и *.cshtml*) за пределами корневого веб-каталога проекта приложения. Логическое разделение таким образом создается между содержимым клиентского и серверного кода приложения. Это предотвращает утечку серверный код.
+* Размещайте файлы с кодом (включая *.cs* и *.cshtml*) за пределами корневого веб-каталога проекта приложения. Таким образом, в приложении создается логическое разделение между клиентским содержимым и серверным кодом. Это предотвращает утечку серверного кода.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [ПО промежуточного слоя](xref:fundamentals/middleware)
-
+* [ПО промежуточного слоя](xref:fundamentals/middleware/index)
 * [Введение в ASP.NET Core](xref:index)

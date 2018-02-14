@@ -1,7 +1,7 @@
 ---
-title: "Обнаружения изменений с маркерами изменения в ASP.NET Core"
+title: "Обнаружение изменений с помощью токенов изменений в ASP.NET Core"
 author: guardrex
-description: "Сведения об использовании маркеров изменений для отслеживания изменений."
+description: "Сведения об использовании токенов изменений для отслеживания изменений."
 manager: wpickett
 ms.author: riande
 ms.date: 11/10/2017
@@ -11,170 +11,170 @@ ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/primitives/change-tokens
 ms.openlocfilehash: 94bf356fcbfab3930804485c1b65e4a0f4c52b8e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/31/2018
 ---
-# <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Обнаружения изменений с маркерами изменения в ASP.NET Core
+# <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Обнаружение изменений с помощью токенов изменений в ASP.NET Core
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-Объект *изменить маркер* является общего назначения, низкоуровневые стандартного блока, используемый для отслеживания изменений.
+*Токен изменений* является низкоуровневым стандартным блоком общего назначения, используемым для отслеживания изменений.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/primitives/change-tokens/sample/) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>Интерфейс IChangeToken
 
-[IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken) распространяет уведомления о том, что произошло изменение. `IChangeToken`находится в [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives) пространства имен. Для приложений, которые не используют [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) metapackage ссылки [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) пакета NuGet в файле проекта.
+[IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken) распространяет уведомления о том, что произошло изменение. `IChangeToken` находится в пространстве имен [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives). Для приложений, которые не используют метапакет [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/), сошлитесь на пакет NuGet [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) в файле проекта.
 
-`IChangeToken`имеет два свойства:
+`IChangeToken` имеет два свойства:
 
-* [ActiveChangedCallbacks](/dotnet/api/microsoft.extensions.primitives.ichangetoken.activechangecallbacks) указывать, если маркер заранее вызывает обратных вызовов. Если `ActiveChangedCallbacks` равно `false`, никогда не вызывается, обратный вызов, и приложения должен опросить `HasChanged` для изменения. Можно также маркер никогда не будут отменены, если изменения не происходят или базовый прослушиватель изменений удален или отключен.
-* [HasChanged](/dotnet/api/microsoft.extensions.primitives.ichangetoken.haschanged) возвращает значение, указывающее, если произошло изменение.
+* [ActiveChangedCallbacks](/dotnet/api/microsoft.extensions.primitives.ichangetoken.activechangecallbacks) указывает, выполняет ли токен обратные вызовы с упреждением. Если для `ActiveChangedCallbacks` задано значение `false`, обратный вызов не выполняется, а приложению нужно опросить `HasChanged` на предмет изменений. Кроме того, отмена токена может никогда не произойти в случае отсутствия изменений или отключения либо удаления базового прослушивателя изменений.
+* [HasChanged](/dotnet/api/microsoft.extensions.primitives.ichangetoken.haschanged) возвращает значение, указывающее, произошло ли изменение.
 
-Этот интерфейс содержит один метод [RegisterChangeCallback (действие&lt;объекта&gt;, объект)](/dotnet/api/microsoft.extensions.primitives.ichangetoken.registerchangecallback), который регистрирует обратный вызов, вызываемый при изменении маркер. `HasChanged`необходимо задать до вызова функции обратного вызова.
+Интерфейс имеет один метод — [RegisterChangeCallback(Action&lt;Object&gt;, Object)](/dotnet/api/microsoft.extensions.primitives.ichangetoken.registerchangecallback), который регистрирует обратный вызов, выполняемый при изменении токена. Перед выполнением обратного вызова нужно задать `HasChanged`.
 
-## <a name="changetoken-class"></a>Класс маркер изменения
+## <a name="changetoken-class"></a>Класс ChangeToken
 
-`ChangeToken`статический класс, используемый для распространения уведомления о том, что произошло изменение. `ChangeToken`находится в [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives) пространства имен. Для приложений, которые не используют [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) metapackage ссылки [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) пакета NuGet в файле проекта.
+`ChangeToken` — это статический класс, который распространяет уведомления о том, что произошло изменение. `ChangeToken` находится в пространстве имен [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives). Для приложений, которые не используют метапакет [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/), сошлитесь на пакет NuGet [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) в файле проекта.
 
-`ChangeToken` [OnChange (Func&lt;IChangeToken&gt;, действия)](/dotnet/api/microsoft.extensions.primitives.changetoken.onchange?view=aspnetcore-2.0#Microsoft_Extensions_Primitives_ChangeToken_OnChange_System_Func_Microsoft_Extensions_Primitives_IChangeToken__System_Action_) регистры метод `Action` вызывается при каждом изменении токен:
-* `Func<IChangeToken>`Создает маркер.
-* `Action`вызывается при изменении маркер.
+Метод `ChangeToken` [OnChange(Func&lt;IChangeToken&gt;, Action)](/dotnet/api/microsoft.extensions.primitives.changetoken.onchange?view=aspnetcore-2.0#Microsoft_Extensions_Primitives_ChangeToken_OnChange_System_Func_Microsoft_Extensions_Primitives_IChangeToken__System_Action_) регистрирует `Action`, вызываемый при изменении токена:
+* `Func<IChangeToken>` создает токен.
+* `Action` вызывается при изменении токена.
 
-`ChangeToken`имеет [OnChange&lt;температурного состояния&gt;(Func&lt;IChangeToken&gt;, действие&lt;температурного состояния&gt;, температурного состояния)](/dotnet/api/microsoft.extensions.primitives.changetoken.onchange?view=aspnetcore-2.0#Microsoft_Extensions_Primitives_ChangeToken_OnChange__1_System_Func_Microsoft_Extensions_Primitives_IChangeToken__System_Action___0____0_) перегрузка, которая принимает дополнительные `TState`параметра, передаваемого в токен потребитель `Action`.
+`ChangeToken` имеет перегрузку [OnChange&lt;TState&gt;(Func&lt;IChangeToken&gt;, Action&lt;TState&gt;, TState)](/dotnet/api/microsoft.extensions.primitives.changetoken.onchange?view=aspnetcore-2.0#Microsoft_Extensions_Primitives_ChangeToken_OnChange__1_System_Func_Microsoft_Extensions_Primitives_IChangeToken__System_Action___0____0_), которая принимает дополнительный параметр `TState`, передаваемый в объект-получатель токена `Action`.
 
-`OnChange`Возвращает [IDisposable](/dotnet/api/system.idisposable). Вызов [Dispose](/dotnet/api/system.idisposable.dispose) останавливает маркер от прослушивания для дальнейших изменений и освобождает ресурсы, маркер.
+`OnChange` возвращает [IDisposable](/dotnet/api/system.idisposable). При вызове [Dispose](/dotnet/api/system.idisposable.dispose) токен прекращает прослушивать дальнейшие изменения и освобождает свои ресурсы.
 
-## <a name="example-uses-of-change-tokens-in-aspnet-core"></a>Пример использует токены изменений в ASP.NET Core
+## <a name="example-uses-of-change-tokens-in-aspnet-core"></a>Примеры использования токенов изменений в ASP.NET Core
 
-Маркеры изменения используются в Показательным областей ASP.NET Core, отслеживание изменений в объекты:
+Токены изменений используются в ключевых областях ASP.NET Core для отслеживания изменений в объектах:
 
-* Для отслеживания изменений в файлы, [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider) [Контрольные значения](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch) метод создает `IChangeToken` для указанных файлов или папку для наблюдения.
-* `IChangeToken`Токены можно добавить для записей кэша для запуска вытеснений кэш при изменении.
-* Для `TOptions` изменяет значение по умолчанию [OptionsMonitor](/dotnet/api/microsoft.extensions.options.optionsmonitor-1) реализация [IOptionsMonitor](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) имеет перегрузку, которая принимает один или несколько [IOptionsChangeTokenSource](/dotnet/api/microsoft.extensions.options.ioptionschangetokensource-1)экземпляры. Возвращает каждый экземпляр `IChangeToken` для регистрации обратного вызова уведомления изменений для изменения параметров отслеживания.
+* Чтобы отслеживать изменения в файлах, метод [Watch](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch) интерфейса [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider) создает `IChangeToken` для указанных файлов или папки.
+* Токены `IChangeToken` можно добавлять в записи кэша, чтобы активировать вытеснения кэша при изменении.
+* Для изменений `TOptions` используемая по умолчанию реализация [OptionsMonitor](/dotnet/api/microsoft.extensions.options.optionsmonitor-1) интерфейса [IOptionsMonitor](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) имеет перегрузку, которая принимает один или несколько экземпляров [IOptionsChangeTokenSource](/dotnet/api/microsoft.extensions.options.ioptionschangetokensource-1). Каждый экземпляр возвращает `IChangeToken`, чтобы зарегистрировать обратный вызов уведомления об изменении для отслеживания изменений параметров.
 
-## <a name="monitoring-for-configuration-changes"></a>Наблюдение за изменения конфигурации
+## <a name="monitoring-for-configuration-changes"></a>Отслеживание изменений конфигурации
 
-По умолчанию используют шаблоны ASP.NET Core [файлы конфигурации JSON](xref:fundamentals/configuration/index#json-configuration) (*appsettings.json*, *appsettings. Development.JSON*, и *appsettings. Production.JSON*) для загрузки параметров конфигурации приложения.
+По умолчанию шаблоны ASP.NET Core используют [файлы конфигурации JSON](xref:fundamentals/configuration/index#json-configuration) (*appsettings.json*, *appsettings.Development.json* и *appsettings.Production.json*) для загрузки параметров конфигурации приложения.
 
-Эти файлы настраиваются с помощью [AddJsonFile (IConfigurationBuilder, String, Boolean, Boolean)](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions.addjsonfile?view=aspnetcore-2.0#Microsoft_Extensions_Configuration_JsonConfigurationExtensions_AddJsonFile_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_System_Boolean_System_Boolean_) метод расширения в [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder) , принимающий `reloadOnChange` параметра (ASP.NET Базовая 1.1 и более поздние версии). `reloadOnChange`Указывает, следует перезагружена на изменения в файле конфигурации. Этот параметр в разделе [WebHost](/dotnet/api/microsoft.aspnetcore.webhost) удобный метод [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) ([ссылки на источник](https://github.com/aspnet/MetaPackages/blob/rel/2.0.3/src/Microsoft.AspNetCore/WebHost.cs#L152-L193)):
+Эти файлы настраиваются с помощью метода расширения [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions.addjsonfile?view=aspnetcore-2.0#Microsoft_Extensions_Configuration_JsonConfigurationExtensions_AddJsonFile_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_System_Boolean_System_Boolean_) в [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder), который принимает параметр `reloadOnChange` (ASP.NET Core 1.1 и более поздней версии). `reloadOnChange` указывает, нужно ли перезагружать конфигурацию при изменении файла. Просмотрите этот параметр в удобном методе [WebHost](/dotnet/api/microsoft.aspnetcore.webhost) [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) ([источник ссылки](https://github.com/aspnet/MetaPackages/blob/rel/2.0.3/src/Microsoft.AspNetCore/WebHost.cs#L152-L193)):
 
 ```csharp
 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
       .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
 ```
 
-Конфигурация на основе файла, представленного [FileConfigurationSource](/dotnet/api/microsoft.extensions.configuration.fileconfigurationsource). `FileConfigurationSource`использует [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider) ([ссылки на источник](https://github.com/aspnet/FileSystem/blob/patch/2.0.1/src/Microsoft.Extensions.FileProviders.Abstractions/IFileProvider.cs)) для наблюдения за файлами.
+Конфигурация на основе файла представлена [FileConfigurationSource](/dotnet/api/microsoft.extensions.configuration.fileconfigurationsource). `FileConfigurationSource` использует [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider) ([источник ссылки](https://github.com/aspnet/FileSystem/blob/patch/2.0.1/src/Microsoft.Extensions.FileProviders.Abstractions/IFileProvider.cs)) для отслеживания файлов.
 
-По умолчанию `IFileMonitor` обеспечивается [PhysicalFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider) ([ссылки на источник](https://github.com/aspnet/Configuration/blob/patch/2.0.1/src/Microsoft.Extensions.Configuration.FileExtensions/FileConfigurationSource.cs#L82)), которая использует [FileSystemWatcher](/dotnet/api/system.io.filesystemwatcher) для отслеживания для файла конфигурации изменения.
+По умолчанию `IFileMonitor` предоставляется [PhysicalFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider) ([источник ссылки](https://github.com/aspnet/Configuration/blob/patch/2.0.1/src/Microsoft.Extensions.Configuration.FileExtensions/FileConfigurationSource.cs#L82)), который использует [FileSystemWatcher](/dotnet/api/system.io.filesystemwatcher) для отслеживания изменений в файле конфигурации.
 
-В примере приложения показано две реализации для наблюдения за изменениями конфигурации. Если параметр *appsettings.json* изменения в файле или версия среды файла изменяется, каждая реализация выполняет пользовательский код. Пример приложения записывает сообщение на консоль.
+Этот пример приложения демонстрирует две реализации для отслеживания изменений конфигурации. Если изменяется файл *appsettings.json* или его версия среды, каждая реализация выполняет пользовательский код. Этот пример приложения записывает сообщение в консоль.
 
-Файл конфигурации `FileSystemWatcher` может активировать несколько маркеров обратные вызовы для изменения файла одной конфигурации. Пример реализации помогает защититься от этой проблемы, проверьте хэшей файлов для файлов конфигурации. Проверка хэшей файлов обеспечивает, по крайней мере один из файлов конфигурации изменилась перед запуском пользовательского кода. В этом образце используется хэширования SHA1 файла (*Utilities/Utilities.cs*):
+`FileSystemWatcher` файла конфигурации может активировать несколько обратных вызовов токена для одного изменения файла конфигурации. Реализация в примере защищает от этой проблемы, проверяя хэши для файлов конфигурации. Проверка хэшей файлов позволяет убедиться, что изменился по меньшей мере один из файлов конфигурации, прежде чем запускать пользовательский код. Этот пример использует хэширование файлов SHA1 (*Utilities/Utilities.cs*):
 
    [!code-csharp[Main](change-tokens/sample/Utilities/Utilities.cs?name=snippet1)]
 
-   Повторная попытка реализуется с помощью экспоненциальной отсрочки. Повторите попытку присутствует, так как блокировка файлов может возникать, предотвращающего вычисление нового хэша на один из файлов.
+   Повторная попытка реализуется посредством экспоненциальной задержки. Повторная попытка нужна, так как может возникать блокировка файлов, препятствующая вычислению нового хэша для одного из файлов.
 
-### <a name="simple-startup-change-token"></a>Маркер изменений простого запуска
+### <a name="simple-startup-change-token"></a>Токен изменений для простого запуска
 
-Регистрация маркера потребителя `Action` обратный вызов для получения уведомлений об изменениях к маркеру перезагрузку конфигурации (*файла Startup.cs*):
+Зарегистрируйте обратный вызов `Action` объекта-получателя токена для уведомлений об изменениях в токене перезагрузки конфигурации (*Startup.cs*):
 
 [!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet2)]
 
-`config.GetReloadToken()`Возвращает токен. Обратный вызов `InvokeChanged` метод:
+`config.GetReloadToken()` предоставляет токен. Обратный вызов является методом `InvokeChanged`:
 
 [!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet3)]
 
-`state` Обратного вызова, используемый для передачи в `IHostingEnvironment`. Это полезно для определения правильного *appsettings* JSON-файл конфигурации для мониторинга, *appsettings.&lt; Среда&gt;.json*. Хэшей файлов используются для предотвращения `WriteConsole` инструкции запуска несколько раз из-за нескольких токенов обратных вызовов при изменении файла конфигурации только один раз.
+`state` обратного вызова используется для передачи `IHostingEnvironment`. Это удобно для определения правильного JSON-файла конфигурации *appsettings*, который требуется отслеживать, *appsettings.&lt;среда&gt;.json*. Хэши файлов используются для предотвращения многократного выполнения оператора `WriteConsole` из-за нескольких обратных вызовов токена при всего одном изменении файла конфигурации.
 
-Эта система выполняется при условии, что приложение работает и не может быть отключено пользователем.
+Эта система выполняется, пока запущено приложение, и не может быть отключена пользователем.
 
-### <a name="monitoring-configuration-changes-as-a-service"></a>Отслеживание изменений конфигурации, как служба
+### <a name="monitoring-configuration-changes-as-a-service"></a>Отслеживание изменений конфигурации как служба
 
-В этом образце реализуется:
+Этот пример реализует следующее:
 
-* Основные маркера наблюдение за запуском.
-* Мониторинг в качестве службы.
-* Механизм для включения и отключения наблюдения.
+* Базовое отслеживание токена запуска.
+* Отслеживание как служба.
+* Механизм для включения и отключения отслеживания.
 
-Образец устанавливает `IConfigurationMonitor` интерфейса (*Extensions/ConfigurationMonitor.cs*):
+Этот пример задает интерфейс `IConfigurationMonitor` (*Extensions/ConfigurationMonitor.cs*):
 
 [!code-csharp[Main](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet1)]
 
-Конструктор реализованный класс `ConfigurationMonitor`, регистрирует обратный вызов уведомления об изменениях:
+Конструктор реализованного класса `ConfigurationMonitor` регистрирует обратный вызов для уведомлений об изменениях:
 
 [!code-csharp[Main](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet2)]
 
-`config.GetReloadToken()`предоставляет токен. `InvokeChanged`Представляет метод обратного вызова. `state` В этом примере — строка, описывающая состояние мониторинга. Используются два свойства:
+`config.GetReloadToken()` предоставляет токен. `InvokeChanged` является методом обратного вызова. `state` в этом экземпляре является строкой, описывающей состояние отслеживания. Используются два свойства:
 
-* `MonitoringEnabled`Указывает, если обратный вызов необходимо выполнить его пользовательский код.
-* `CurrentState`Описывает текущее состояние мониторинга для использования в пользовательском Интерфейсе.
+* `MonitoringEnabled` указывает, нужно ли обратному вызову выполнять свой пользовательский код.
+* `CurrentState` описывает текущее состояние отслеживания для использования в пользовательском интерфейсе.
 
-`InvokeChanged` Метод похож на более ранних подход, за исключением того, что он:
+Метод `InvokeChanged` похож на описанный ранее подход, за исключением того, что он:
 
-* Его код не запускается, если не `MonitoringEnabled` — `true`.
-* Наборы `CurrentState` строки свойства описательного сообщения, которое записывает время выполнения кода.
-* Заметки о текущего `state` в его `WriteConsole` выходных данных.
+* не выполняет свой код, если только `MonitoringEnabled` не имеет значение `true`;
+* задает для строки свойства `CurrentState` описательное сообщение, регистрирующее время выполнения кода;
+* записывает текущее значение `state` в своих выходных данных `WriteConsole`.
 
 [!code-csharp[Main](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet3)]
 
-Экземпляр `ConfigurationMonitor` зарегистрирован как служба в `ConfigureServices` из *файла Startup.cs*:
+Экземпляр `ConfigurationMonitor` регистрируется как служба в `ConfigureServices` в файле *Startup.cs*:
 
 [!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet1)]
 
-Страница индекса обеспечивает контроль пользователя мониторинг конфигурации. Экземпляр `IConfigurationMonitor` вставляется в `IndexModel`:
+Страница индекса позволяет пользователю управлять отслеживанием конфигурации. Экземпляр `IConfigurationMonitor` внедряется в `IndexModel`:
 
 [!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet1)]
 
-Кнопка включает и отключает наблюдение за:
+Кнопка включает и отключает отслеживание:
 
 [!code-cshtml[Main](change-tokens/sample/Pages/Index.cshtml?range=35)]
 
 [!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet2)]
 
-Если `OnPostStartMonitoring` является, мониторинг включен, а также текущее состояние будет очищено. Когда `OnPostStopMonitoring` будет запущен, мониторинг отключен и переходит в состояние для отражения, что мониторинг не происходит.
+При активации `OnPostStartMonitoring` отслеживание включается, а текущее состояние сбрасывается. При активации `OnPostStopMonitoring` отслеживание отключается, а состояние указывает на отсутствие отслеживания.
 
-## <a name="monitoring-cached-file-changes"></a>Наблюдение за изменениями кэшированных файлов
+## <a name="monitoring-cached-file-changes"></a>Отслеживание изменений кэшированных файлов
 
-Содержимое файла может быть в кэшированные в памяти с помощью [IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache). Кэширование в памяти описывается в [кэширование в памяти](xref:performance/caching/memory) раздела. Без учета дополнительные действия, как описано ниже, реализация *устаревших* (устаревшие) данные возвращаются из кэша при изменении источника данных.
+Содержимое файла можно кэшировать в памяти с помощью [IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache). Кэширование в памяти описано в разделе [Кэширование в памяти](xref:performance/caching/memory). *Устаревшие* (просроченные) данные возвращаются из кэша при изменении источника исходных данных без каких-либо дополнительных действий, таких как описанная ниже реализация.
 
-Без учета состояния кэшированный исходный файл при обновлении [скользящий срок действия](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.slidingexpiration) периода приводит к устаревшие данные из кэша. Каждый запрос данных обновляет скользящего срока действия, но файл никогда не загружается в кэш. Все функции приложения, использующие кэшированное содержимое файла подвержены возможно получение устаревших содержимого.
+Если не учитывать состояние кэшированного исходного файла при продлении [скользящего срока действия](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.slidingexpiration), это приведет к устаревшим данным кэша. Каждый запрос к данным продляет скользящий срок действия, но этот файл никогда не загружается в кэш. Любые функции приложения, использующие кэшированное содержимое, могут получить устаревшее содержимое.
 
-При использовании маркеров изменения в сценарий кэширования файлов не устаревших файлов содержимого в кэше. Пример приложения демонстрирует реализацию подхода.
+Использование токенов изменений в сценарий кэширования файлов предотвращает появление устаревшего содержимого файлов в кэше. Этот пример демонстрирует реализацию данного подхода.
 
-В этом образце используется `GetFileContent` для:
+`GetFileContent` в примере используется для:
 
-* Возвращает содержимое файла.
-* Реализуйте алгоритм повторения с экспоненциальная титульных случаи, где блокировка файла временно препятствует файл выполняется чтение.
+* возврата содержимого файла;
+* реализации алгоритма повторных попыток с экспоненциальной задержкой, чтобы охватить ситуации, когда блокировка файла временно препятствует его чтению.
 
 *Utilities/Utilities.cs*:
 
 [!code-csharp[Main](change-tokens/sample/Utilities/Utilities.cs?name=snippet2)]
 
-Объект `FileService` создается для обработки поиск кэшированных файлов. `GetFileContent` Вызова метода службы пытается получить содержимое файла из кэша в памяти и возвращается вызывающему объекту (*Services/FileService.cs*).
+Для обработки поиска кэшированных файлов создается `FileService`. Направленный в службу вызов метода `GetFileContent` пытается получить содержимое файла из кэша в памяти и вернуть его вызывающему объекту (*Services/FileService.cs*).
 
-Если кэшированное содержимое не будет найден с помощью ключа кэша, выполняются следующие действия.
+Если кэшированное содержимое не удается найти по ключу кэша, выполняются следующие действия:
 
-1. Содержимое файла будет получен с использованием `GetFileContent`.
-1. Маркер изменений извлекается из файла поставщика с [IFileProviders.Watch](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch). Токен обратного вызова активируется при изменении файла.
-1. Содержимое файла кэшируется с [скользящий срок действия](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.slidingexpiration) период. Маркер изменений, присоединенной к [MemoryCacheEntryExtensions.AddExpirationToken](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryextensions.addexpirationtoken) удаления записи кэша, если файл изменяется, пока он кэшируется.
+1. Содержимое файла получается с помощью `GetFileContent`.
+1. Токен изменений извлекается из файла поставщика с помощью [IFileProviders.Watch](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch). При изменении файла активируется обратный вызов токена.
+1. Содержимое файла кэшируется с использованием [скользящего срока действия](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.slidingexpiration). Токен изменений подключается к [MemoryCacheEntryExtensions.AddExpirationToken](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryextensions.addexpirationtoken) для исключения записи кэша, если файл изменяется во время его кэширования.
 
 [!code-csharp[Main](change-tokens/sample/Services/FileService.cs?name=snippet1)]
 
-`FileService` Регистрируется в контейнере службы вместе с кэширование службы памяти (*файла Startup.cs*):
+`FileService` регистрируется в контейнере службы вместе со службой кэширования памяти (*Startup.cs*):
 
 [!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet4)]
 
-Модель страницы с загружает содержимое файла с помощью службы (*Pages/Index.cshtml.cs*):
+Страничная модель загружает содержимое файла с помощью службы (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet3)]
 
 ## <a name="compositechangetoken-class"></a>Класс CompositeChangeToken
 
-Для представления одного или нескольких `IChangeToken` экземпляры в одном объекте используют [CompositeChangeToken](/dotnet/api/microsoft.extensions.primitives.compositechangetoken) класса ([ссылки на источник](https://github.com/aspnet/Common/blob/patch/2.0.1/src/Microsoft.Extensions.Primitives/CompositeChangeToken.cs)).
+Чтобы представить один или несколько экземпляров `IChangeToken` в одном объекте, используйте класс [CompositeChangeToken](/dotnet/api/microsoft.extensions.primitives.compositechangetoken) ([источник ссылки](https://github.com/aspnet/Common/blob/patch/2.0.1/src/Microsoft.Extensions.Primitives/CompositeChangeToken.cs)).
 
 ```csharp
 var firstCancellationTokenSource = new CancellationTokenSource();
@@ -195,7 +195,7 @@ var compositeChangeToken =
         });
 ```
 
-`HasChanged`для составного маркера отчетов `true` Если любой представить маркер `HasChanged` — `true`. `ActiveChangeCallbacks`для составного маркера отчетов `true` Если любой представить маркер `ActiveChangeCallbacks` — `true`. Если несколько одновременных изменений события происходят, составного изменение обратный вызов выполняется только один раз.
+`HasChanged` для составного токена указывает `true`, если `HasChanged` любой из представленных токенов имеет значение `true`. `ActiveChangeCallbacks` для составного токена указывает `true`, если `ActiveChangeCallbacks` любой из представленных токенов имеет значение `true`. Если возникает несколько одновременных событий изменения, обратный вызов составного изменения выполняется всего один раз.
 
 ## <a name="see-also"></a>См. также
 
