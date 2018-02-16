@@ -1,7 +1,7 @@
 ---
 title: "Создание приложения ASP.NET Core пользовательскими данными, защищенных авторизации"
 author: rick-anderson
-description: "Узнайте, как для создания приложения страниц Razor с данными пользователя, защищен авторизации. Включает SSL, проверки подлинности, безопасность ASP.NET Core Identity."
+description: "Узнайте, как для создания приложения страниц Razor с данными пользователя, защищен авторизации. Включает в себя HTTPS, проверки подлинности, безопасность ASP.NET Core Identity."
 manager: wpickett
 ms.author: riande
 ms.date: 01/24/2018
@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/secure-data
-ms.openlocfilehash: 6333082a2b2b4f6d3f1ce2afc600b4203a0f5dca
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: e186adef2e72f852543a92ddce0e82be2a3bcd12
+ms.sourcegitcommit: 809ee4baf8bf7b4cae9e366ecae29de1037d2bbb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/15/2018
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Создание приложения ASP.NET Core пользовательскими данными, защищенных авторизации
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/03/2018
 
 [!code-csharp[Main](secure-data/samples/final2/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
-`OwnerID`идентификатор пользователя из `AspNetUser` в таблицу [удостоверение](xref:security/authentication/identity) базы данных. `Status` Поле определяет, является ли контакт для просмотра обычными пользователями.
+`OwnerID` идентификатор пользователя из `AspNetUser` в таблицу [удостоверение](xref:security/authentication/identity) базы данных. `Status` Поле определяет, является ли контакт для просмотра обычными пользователями.
 
 Создание нового миграции и обновления базы данных:
 
@@ -96,7 +96,7 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="require-ssl-and-authenticated-users"></a>Требовать SSL и проверку подлинности пользователей
+### <a name="require-https-and-authenticated-users"></a>Требовать HTTPS и проверку подлинности пользователей
 
 Добавить [IHostingEnvironment](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment) для `Startup`:
 
@@ -104,19 +104,26 @@ dotnet ef database update
 
 В `ConfigureServices` метод *файла Startup.cs* файл, добавьте [RequireHttpsAttribute](/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute) фильтр авторизации:
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_SSL&highlight=19-999)]
+[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_SSL&highlight=10-999)]
 
-Если вы используете Visual Studio, протокол SSL включен.
+Если вы используете Visual Studio, необходимо включите HTTPS.
 
-Для перенаправления HTTP-запросы HTTPS, в разделе [по промежуточного слоя перезаписи URL-адрес](xref:fundamentals/url-rewriting). Если с помощью кода Visual Studio или тестирование на локальном платформу, которая не включает тестового сертификата для SSL.
+Для перенаправления HTTP-запросы HTTPS, в разделе [по промежуточного слоя перезаписи URL-адрес](xref:fundamentals/url-rewriting). Если с помощью кода Visual Studio или тестирование на локальном платформу, которая не включает тестовый сертификат для использования протокола HTTPS.
 
   Задать `"LocalTest:skipSSL": true` в *appsettings. Developement.JSON* файл.
 
 ### <a name="require-authenticated-users"></a>Требовать проверку подлинности пользователей
 
-Задайте политику проверки подлинности по умолчанию, чтобы требовать проверку подлинности пользователей. Можно отключить проверку подлинности на уровне метода действия, контроллера или страница Razor с `[AllowAnonymous]` атрибута. Задание политики проверки подлинности по умолчанию, чтобы требовать проверку подлинности пользователей защищает вновь добавленных страниц Razor и контроллеров. Наличие более безопасна, чем новых контроллеров и страниц Razor для включения проверки подлинности, предусмотренного по умолчанию `[Authorize]` атрибута. Добавьте следующий код в `ConfigureServices` метод *файла Startup.cs* файла:
+Задайте политику проверки подлинности по умолчанию, чтобы требовать проверку подлинности пользователей. Можно отключить проверку подлинности на уровне метода действия, контроллера или страница Razor с `[AllowAnonymous]` атрибута. Задание политики проверки подлинности по умолчанию, чтобы требовать проверку подлинности пользователей защищает вновь добавленных страниц Razor и контроллеров. Наличие более безопасна, чем новых контроллеров и страниц Razor для включения проверки подлинности, предусмотренного по умолчанию `[Authorize]` атрибута. 
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_defaultPolicy&highlight=31-999)]
+С требованием проверки подлинности все пользователи [AuthorizeFolder](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizefolder?view=aspnetcore-2.0#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_AuthorizeFolder_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_String_System_String_) и [AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage?view=aspnetcore-2.0) вызовы не являются обязательными.
+
+Обновление `ConfigureServices` со следующими изменениями:
+
+* Закомментируйте `AuthorizeFolder` и `AuthorizePage`.
+* Задайте политику проверки подлинности по умолчанию, чтобы требовать проверку подлинности пользователей.
+
+[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_defaultPolicy&highlight=23-27,31-999)]
 
 Добавить [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) индекс страницы об и контактов, анонимные пользователи могут получить сведения о веб-сайте, прежде чем они зарегистрировать. 
 
@@ -155,11 +162,11 @@ dotnet user-secrets set SeedUserPW <PW>
 `ContactIsOwnerAuthorizationHandler` Вызовы [контекста. Успешно](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_) Если контактные владельцем текущего пользователя, прошедшего проверку подлинности. Обработчики авторизации обычно:
 
 * Возвращает `context.Succeed` при выполнение требований.
-* Возвращает `Task.CompletedTask` Если требования не выполнены. `Task.CompletedTask`— ни об успешном или неуспешном&mdash;она позволяет другим обработчикам авторизации для выполнения.
+* Возвращает `Task.CompletedTask` Если требования не выполнены. `Task.CompletedTask` — ни об успешном или неуспешном&mdash;она позволяет другим обработчикам авторизации для выполнения.
 
 Если необходимо выполнить явную ошибку, возвратить [контекста. Сбой](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail).
 
-Данное приложение позволяет контакта владельцев, изменение или удаление и создание собственных данных. `ContactIsOwnerAuthorizationHandler`не требуется для операции, передаваемые в качестве параметра требование проверки.
+Данное приложение позволяет контакта владельцев, изменение или удаление и создание собственных данных. `ContactIsOwnerAuthorizationHandler` не требуется для операции, передаваемые в качестве параметра требование проверки.
 
 ### <a name="create-a-manager-authorization-handler"></a>Создание обработчика диспетчера авторизации
 
@@ -179,7 +186,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=ConfigureServices&highlight=41-999)]
 
-`ContactAdministratorsAuthorizationHandler`и `ContactManagerAuthorizationHandler` добавляются как одноэлементных кортежей. Они единственных экземпляров, так как они не используют EF и все сведения, необходимые возможности `Context` параметр `HandleRequirementAsync` метода.
+`ContactAdministratorsAuthorizationHandler` и `ContactManagerAuthorizationHandler` добавляются как одноэлементных кортежей. Они единственных экземпляров, так как они не используют EF и все сведения, необходимые возможности `Context` параметр `HandleRequirementAsync` метода.
 
 ## <a name="support-authorization"></a>Поддержка авторизации
 
@@ -263,9 +270,9 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="test-the-completed-app"></a>Тестирование завершенного приложения
 
-Если с помощью кода Visual Studio или тестирование на локальном платформу, которая не включает тестового сертификата для SSL.
+Если с помощью кода Visual Studio или тестирование на локальном платформу, которая не включает тестовый сертификат для использования протокола HTTPS.
 
-* Задать `"LocalTest:skipSSL": true` в *appsettings. Developement.JSON* файл, чтобы пропустить требование SSL. Пропустить SSL только на компьютере разработки.
+* Задать `"LocalTest:skipSSL": true` в *appsettings. Developement.JSON* файл, чтобы пропустить обязательное использование протокола HTTPS. Пропустить HTTPS только на компьютере разработки.
 
 Если приложение имеет контактов:
 
@@ -300,7 +307,7 @@ dotnet user-secrets set SeedUserPW <PW>
   dotnet new razor -o ContactManager -au Individual -uld
   ```
 
-  * `-uld`Указывает LocalDB вместо SQLite
+  * `-uld` Указывает LocalDB вместо SQLite
 
 * Добавьте следующие `Contact` модели:
 

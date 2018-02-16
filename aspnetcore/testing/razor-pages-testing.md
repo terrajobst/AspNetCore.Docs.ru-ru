@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/razor-pages-testing
-ms.openlocfilehash: 5891b236306cd3790cbba14919796d6aa894ad53
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6f9e986c34f41fe96beb492680106f725bc1e2f9
+ms.sourcegitcommit: 809ee4baf8bf7b4cae9e366ecae29de1037d2bbb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/15/2018
 ---
 # <a name="razor-pages-unit-and-integration-testing-in-aspnet-core"></a>Единицы страниц Razor и тестирование в ASP.NET Core интеграции
 
@@ -69,9 +69,9 @@ dotnet test
 
 | Папка тестового приложения    | Описание: |
 | ------------------ | ----------- |
-| *IntegrationTests* | <ul><li>*IndexPageTest.cs* содержит тесты интеграции для страницы индекса.</li><li>*TestFixture.cs* создает узел теста для проверки сообщений приложения.</li></ul> |
+| IntegrationTests | <ul><li>*IndexPageTest.cs* содержит тесты интеграции для страницы индекса.</li><li>*TestFixture.cs* создает узел теста для проверки сообщений приложения.</li></ul> |
 | *UnitTests*        | <ul><li>*DataAccessLayerTest.cs* содержит модульные тесты для DAL.</li><li>*IndexPageTest.cs* содержит модульные тесты для модели страницы индекса.</li></ul> |
-| *Служебные программы*        | *Utilities.cs* содержит:<ul><li>`TestingDbContextOptions`метод, используемый для создания новой базы данных, параметры контекста для каждого модульного теста DAL, чтобы база данных будет переведена в состояние базового плана для каждого теста.</li><li>`GetRequestContentAsync`метод, используемый для подготовки `HttpClient` и содержимого для запросов, отправленных сообщений приложение во время тестирования интеграции.</li></ul>
+| *Служебные программы*        | *Utilities.cs* содержит:<ul><li>`TestingDbContextOptions` метод, используемый для создания новой базы данных, параметры контекста для каждого модульного теста DAL, чтобы база данных будет переведена в состояние базового плана для каждого теста.</li><li>`GetRequestContentAsync` метод, используемый для подготовки `HttpClient` и содержимого для запросов, отправленных сообщений приложение во время тестирования интеграции.</li></ul>
 
 Платформа тестирования — [xUnit](https://xunit.github.io/). Объект имитации framework [заказа](https://github.com/moq/moq4). Интеграционные тесты выполняются с помощью [тестового узла ASP.NET Core](xref:testing/integration-testing#the-test-host).
 
@@ -102,7 +102,7 @@ using (var db = new AppDbContext(optionsBuilder.Options))
 
 [!code-csharp[Main](razor-pages-testing/sample/tests/RazorPagesTestingSample.Tests/Utilities/Utilities.cs?name=snippet1)]
 
-С помощью `DbContextOptions` DAL модульных тестов позволяет каждый тест, атомарным образом с помощью экземпляра свежей базы данных:
+С помощью `DbContextOptions` DAL модульных тестов позволяет каждый тест, атомарным образом с экземпляром свежей базы данных:
 
 ```csharp
 using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
@@ -176,7 +176,7 @@ using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
 
 [!code-csharp[Main](razor-pages-testing/sample/tests/RazorPagesTestingSample.Tests/UnitTests/IndexPageTest.cs?name=snippet2)]
 
-`IndexPage`модель страницы `OnGetAsync` метод (*src/RazorPagesTestingSample/Pages/Index.cshtml.cs*):
+`IndexPage` модель страницы `OnGetAsync` метод (*src/RazorPagesTestingSample/Pages/Index.cshtml.cs*):
 
 [!code-csharp[Main](razor-pages-testing/sample/src/RazorPagesTestingSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3)]
 
@@ -212,7 +212,7 @@ using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
 * Отправляет запрос POST в приложение.
 * Проверяет ответ перенаправление обратно на страницу индекса.
 
-`Post_AddMessageHandler_ReturnsRedirectToRoot `метод (*tests/RazorPagesTestingSample.Tests/IntegrationTests/IndexPageTest.cs*):
+`Post_AddMessageHandler_ReturnsRedirectToRoot ` метод (*tests/RazorPagesTestingSample.Tests/IntegrationTests/IndexPageTest.cs*):
 
 [!code-csharp[Main](razor-pages-testing/sample/tests/RazorPagesTestingSample.Tests/IntegrationTests/IndexPageTest.cs?name=snippet2)]
 
