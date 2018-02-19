@@ -233,7 +233,7 @@
 ## [Профили публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles)
 ## [Структура каталогов](xref:host-and-deploy/directory-structure)
 ## [Справочник по общим ошибкам для службы приложений Azure и служб IIS](xref:host-and-deploy/azure-iis-errors-reference)
-## [Добавление функций приложения из внешней сборки с помощью IHostingStartup](xref:host-and-deploy/ihostingstartup)
+## [Добавление компонентов приложения с использованием конфигурации для конкретной платформы](xref:host-and-deploy/platform-specific-configuration)
 
 # [Безопасность](xref:security/index)
 ## [Проверка подлинности](xref:security/authentication/index)
