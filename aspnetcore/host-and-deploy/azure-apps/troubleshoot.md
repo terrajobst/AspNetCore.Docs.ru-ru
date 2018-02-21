@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 144af8e93bb935d07fd064d5f45b40faea4a2664
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: 150603d17f3bed983f9871fe7665748a70177f89
+ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Устранение неполадок ASP.NET Core в службе приложений Azure
 
@@ -37,6 +37,14 @@ ms.lasthandoff: 02/03/2018
 Приложение запускается, но ошибка не позволяет выполнить запрос сервера.
 
 Эта ошибка возникает в коде приложения при запуске или при создании ответа. Ответ может содержать отсутствует содержимое или ответ может выглядеть как *500 Внутренняя ошибка сервера* в браузере. Журнал событий приложений обычно состояний обычном запуске приложения. С точки зрения сервера верно. Приложения был запущен, но его не удается создать допустимый ответ. [Запуск приложения в консоли Kudu](#run-the-app-in-the-kudu-console) или [включите журнал stdout модуль ASP.NET Core](#aspnet-core-module-stdout-log) для устранения неполадок.
+
+**Сброс подключения**
+
+Если ошибка возникает после отправки заголовков, уже слишком поздно для сервера для отправки **500 Внутренняя ошибка сервера** при возникновении ошибки. Это часто происходит при возникновении ошибки во время сериализации ответа сложных объектов. Ошибки такого типа отображается как *Сброс соединения* ошибки на стороне клиента. [Ведение журналов для приложений](xref:fundamentals/logging/index) устранения таких ошибок.
+
+## <a name="default-startup-limits"></a>Ограничения по умолчанию при запуске
+
+Значение по умолчанию настроен модуль ASP.NET Core *startupTimeLimit* 120 секунд. Если оставить значение по умолчанию, приложение может занять до двух минут для запуска до ошибки в процессе входа модуля. Сведения о настройке модуля см. в разделе [атрибуты элемента aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
 
 ## <a name="troubleshoot-app-startup-errors"></a>Устранение ошибок при запуске приложения
 
@@ -65,10 +73,9 @@ ms.lasthandoff: 02/03/2018
 1. Выберите **дополнительные средства** колонки в **средства разработки** области. Выберите **Go&rarr;**  кнопки. Консоль Kudu открывает новую вкладку браузера или в окне.
 1. С помощью панели навигации в верхней части страницы откройте **консоли отладки** и выберите **CMD**.
 1. Откройте папки в папку **сайта** > **wwwroot**.
-1. В консоли, можно запустить приложение, выполнив сборку приложения с *dotnet.exe*. В следующей команде замените имя сборки приложения для `<assembly_name>`:
-   ```console
-   dotnet .\<assembly_name>.dll
-   ```
+1. В консоли запустите приложение, выполнив сборку приложения.
+   * Если приложение является [развертывания зависит от framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd), выполнить сборку приложения с *dotnet.exe*. В следующей команде замените имя сборки приложения для `<assembly_name>`: `dotnet .\<assembly_name>.dll`
+   * Если приложение является [автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd), запустите приложение в исполняемый файл. В следующей команде замените имя сборки приложения для `<assembly_name>`: `<assembly_name>.exe`
 1. Выходные данные из приложения, отображение ошибок, консоли, будет выведен на консоль Kudu.
 
 ### <a name="aspnet-core-module-stdout-log"></a>Журнал stdout модуль Core ASP.NET
@@ -104,13 +111,16 @@ ms.lasthandoff: 02/03/2018
 
 В разделе [общую ссылку ошибки ASP.NET Core](xref:host-and-deploy/azure-iis-errors-reference). В справочном разделе рассматриваются наиболее распространенных проблем, препятствующих запуск приложений.
 
-## <a name="process-dump-for-a-slow-or-hanging-app"></a>Дамп процесса для медленных или изменение приложения
+## <a name="slow-or-hanging-app"></a>Приложение медленно или красная
 
 Когда приложение медленно реагирует или зависает на запрос, в разделе [проблем с производительностью приложения диагностика медленно web в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation) для отладки рекомендации.
 
 ## <a name="remote-debugging"></a>Удаленная отладка
 
-В разделе [удаленную отладку приложений разделе Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio web](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug) в документации Azure.
+См. указанные ниже разделы.
+
+* [Удаленная отладка приложений разделе Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio web](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug) (документация Azure)
+* [Удаленной отладки ASP.NET Core на сервере IIS в Azure в Visual Studio 2017 г](/visualstudio/debugger/remote-debugging-azure) (документация по Visual Studio)
 
 ## <a name="application-insights"></a>Application Insights
 
@@ -166,10 +176,10 @@ ms.lasthandoff: 02/03/2018
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Введение в обработку ошибок в ASP.NET Core](xref:fundamentals/error-handling)
+* [Общие сведения об обработке ошибок в ASP.NET Core](xref:fundamentals/error-handling)
 * [Справочник по общим ошибкам для службы приложений Azure и служб IIS с ASP.NET Core](xref:host-and-deploy/azure-iis-errors-reference)
 * [Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio)
 * [Устранение ошибок HTTP «502 — неправильный шлюз» и «503 — Служба недоступна» в Azure веб-приложения](/app-service/app-service-web-troubleshoot-http-502-http-503)
 * [Устранение неполадок производительности медленных веб приложения в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
 * [Вопросы и ответы о производительности приложений для веб-приложений в Azure](/azure/app-service/app-service-web-availability-performance-application-issues-faq)
-* [Azure пятница: Azure приложение службы диагностики и устранения неполадок взаимодействия (12 минут видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
+* [Azure, пятница: практики диагностики и устранения неполадок в службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)

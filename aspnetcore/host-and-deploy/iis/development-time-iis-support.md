@@ -1,7 +1,7 @@
 ---
 title: "Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core"
 author: shirhatti
-description: "Узнайте о поддерживаемых возможностях для отладки приложений ASP.NET Core при запуске в IIS на Windows Server."
+description: "Обнаружение поддержки для отладки приложений ASP.NET Core при запуске за IIS на сервере Windows."
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,17 +10,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: a5f727dd21ac0c6702691df2215c42f4adc0ec27
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a8bdf4c0c0399c62666e6e61e70c0298a42c2c12
+ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
 
 Автор: [Sourabh Shirhatti](https://twitter.com/sshirhatti) (Сурабх Ширхатти)
 
-В этой статье описываются поддерживаемые в [Visual Studio](https://www.visualstudio.com/vs/) возможности для отладки приложений ASP.NET Core, запускаемых в IIS на Windows Server. В этом разделе описывается включение этой функции и настройка проекта.
+В этой статье описывается [Visual Studio](https://www.visualstudio.com/vs/) поддержка отладки приложений ASP.NET Core, работающие за IIS в Windows Server. В этом разделе описывается включение этой функции и настройка проекта.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="enable-development-time-iis-support"></a>Включение поддержки IIS во время разработки
 
-После установки IIS, запустите установщик Visual Studio, чтобы изменить существующую установку Visual Studio. В установщике выберите компонент **Поддержка IIS во время разработки**. Компонент находится в списке дополнительных компонентов на панели **Сводка** для рабочей нагрузки **ASP.NET и веб-разработка**. Будет выполнена установка [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module), который является собственным модулем IIS, необходимым для запуска приложений ASP.NET Core.
+Запустите установщик Visual Studio. Выберите **времени разработки, IIS поддерживает** компонента. Компонент указан как необязательные в **Сводка** панели для **ASP.NET и веб-разработки** рабочей нагрузки. При этом устанавливаются [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module), который является собственный модуль IIS, необходимые для запуска приложений ASP.NET Core.
 
 ![Изменение функций Visual Studio: выбрана вкладка "Рабочие нагрузки". В разделе "Интернет и облако" выбрана панель "ASP.NET и веб-разработка". В правой области необязательно панель «Сводка» есть флажок для времени разработки, поддерживаемых IIS.](development-time-iis-support/_static/development_time_support.png)
 
@@ -73,8 +73,6 @@ ms.lasthandoff: 01/30/2018
 ```
 
 Visual Studio могут потребовать перезапуска, если не запущена с правами администратора. Перезапустите Visual Studio при появлении соответствующего запроса.
-
-Поздравляем! На этом этапе проект настроен для поддержки IIS во время разработки. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
