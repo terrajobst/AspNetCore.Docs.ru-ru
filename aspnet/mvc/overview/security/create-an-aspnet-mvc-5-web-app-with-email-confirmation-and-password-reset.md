@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: 5689031015279484cc616090a767a8c25eefa3c1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d55b34135d5bab98ab8de31cc4b12dcc272cbc0a
+ms.sourcegitcommit: d43c84c4c80527c85e49d53691b293669557a79d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/20/2018
 ---
 <a name="create-a-secure-aspnet-mvc-5-web-app-with-log-in-email-confirmation-and-password-reset-c"></a>Создание безопасного веб-приложения ASP.NET MVC 5 с журналом, электронной почты, пароль и подтверждение сброса (C#)
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Этого учебника показано, как построить веб-приложение ASP.NET MVC 5 с подтверждения электронной почты и пароль, с помощью системы членства ASP.NET Identity. Завершенное приложение можно загрузить [здесь](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952). Загружаемый файл содержит отладки вспомогательные методы, которые позволяют тестировать подтверждения электронной почты и SMS без настройки электронной почты или поставщика SMS.
 > 
@@ -65,7 +65,7 @@ ms.lasthandoff: 01/24/2018
 1. В консоли диспетчера пакетов введите следующую команду: 
 
     [!code-console[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample1.cmd)]
-2. Последовательно выберите пункты [страницу регистрации Azure SendGrid](https://go.microsoft.com/fwlink/?linkid=271033&clcid=0x409) и зарегистрировать для получения бесплатной учетной записи SendGrid. Добавьте код, аналогичный приведенному ниже, чтобы настроить SendGrid:
+2. Последовательно выберите пункты [страницу регистрации Azure SendGrid](https://go.microsoft.com/fwlink/?linkid=271033&clcid=0x409) и зарегистрироваться для получения бесплатной учетной записи SendGrid. Настройте SendGrid, добавив код, аналогичный следующему *App_Start/IdentityConfig.cs*:
 
     [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample2.cs?highlight=3,5)]
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample7.cs?highlight=14-15,23-30)]
 
-Комментарием `SignInAsync` метод, пользователь не будет подписано путем регистрации. `TempData["ViewBagLink"] = callbackUrl;` Строки можно использовать для [выполнить отладку приложения](#dbg) и проверки регистрации без отправки по электронной почте. `ViewBag.Message`используется для отображения инструкции подтверждение. [Загрузить образец](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952) содержит код для проверки по электронной почте подтверждение без настройки электронной почты, а также может использоваться для отладки приложения.
+Комментарием `SignInAsync` метод, пользователь не будет подписано путем регистрации. `TempData["ViewBagLink"] = callbackUrl;` Строки можно использовать для [выполнить отладку приложения](#dbg) и проверки регистрации без отправки по электронной почте. `ViewBag.Message` используется для отображения инструкции подтверждение. [Загрузить образец](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952) содержит код для проверки по электронной почте подтверждение без настройки электронной почты, а также может использоваться для отладки приложения.
 
 Создание `Views\Shared\Info.cshtml` и добавьте следующую разметку razor файла:
 

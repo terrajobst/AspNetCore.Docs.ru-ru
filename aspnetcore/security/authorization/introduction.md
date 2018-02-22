@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/introduction
-ms.openlocfilehash: a6bd81a4e5796c1d0a0033c2b8d5a6ba9282564c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3fef6d38672af8871c04b65834789a39a7df8487
+ms.sourcegitcommit: d43c84c4c80527c85e49d53691b293669557a79d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/20/2018
 ---
 # <a name="introduction"></a>Вступление
 
@@ -25,8 +25,10 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="authorization-types"></a>Типы проверки подлинности
 
-Авторизации ASP.NET Core предоставляет декларативный простой [роли](roles.md) и [широкие возможности на основе политики](policies.md) модели. Авторизации представляется в формате требований и обработчики оценки утверждения пользователя соответствие требованиям. В простых политик или политик, что оценка удостоверение пользователя и свойства ресурса, который пользователь пытается получить доступ к может основываться принудительных проверок.
+Авторизации ASP.NET Core предоставляет простой, декларативный [роли](roles.md) и форматированного [на основе политики](policies.md) модели. Авторизации представляется в формате требований и обработчики оценки утверждения пользователя соответствие требованиям. В простых политик или политик, что оценка удостоверение пользователя и свойства ресурса, который пользователь пытается получить доступ к может основываться принудительных проверок.
 
 ## <a name="namespaces"></a>Пространства имен
 
-Компоненты авторизации, включая `AuthorizeAttribute` и `AllowAnonymousAttribute` атрибуты найдены в `Microsoft.AspNetCore.Authorization` пространства имен.
+Компоненты авторизации, включая `AuthorizeAttribute` и `AllowAnonymousAttribute` атрибуты, найдены в `Microsoft.AspNetCore.Authorization` пространства имен.
+
+Обратитесь к документации на [простой авторизации](xref:security/authorization/simple).
