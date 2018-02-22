@@ -48,7 +48,7 @@ ms.lasthandoff: 02/11/2018
 
 Первый делегат [app.Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions) завершает конвейер.
 
-Несколько делегатов запроса можно соединить в цепочку с помощью [app.Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Параметр `next` представляет следующий делегат в конвейере. (Помните, что замкнуть конвейер, *не* вызывая параметр *next*, невозможно.) Обычно действия можно выполнять как до, так и после следующего делегата, как показано в этом примере.
+Несколько делегатов запроса можно соединить в цепочку с помощью [app.Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Параметр `next` представляет следующий делегат в конвейере. (Помните, что замыкать конвейер можно *не* вызывая параметр *next*.) Обычно действия можно выполнять как до, так и после следующего делегата, как показано в этом примере.
 
 [!code-csharp[Main](index/sample/Chain/Startup.cs?name=snippet1)]
 
