@@ -1,38 +1,41 @@
 ---
 title: "Авторизация в ASP.NET Core"
 author: rick-anderson
-description: "В этом документе приводится перечень различных разделов об авторизации в ASP.NET Core."
+description: "Раздел посвящен авторизации ASP.NET Core и поясняет, как предоставлять права и привилегии пользователям приложения."
 manager: wpickett
 ms.author: riande
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 02/19/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/index
-ms.openlocfilehash: ee408afab55a80d28291a3a44e0fd1513ff34e45
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 652a01d58f7a7d19faa8531b61ea780bc379c428
+ms.sourcegitcommit: d43c84c4c80527c85e49d53691b293669557a79d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/20/2018
 ---
-# <a name="authorization-in-aspnet-core-simple-role-claims-based-and-custom"></a><span data-ttu-id="e7cec-103">Авторизация в ASP.NET Core: простая, на основе ролей, на основе утверждений и пользовательская</span><span class="sxs-lookup"><span data-stu-id="e7cec-103">Authorization in ASP.NET Core: Simple, role, claims-based, and custom</span></span>
+# <a name="authorization-in-aspnet-core"></a><span data-ttu-id="357e0-103">Авторизация в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="357e0-103">Authorization in ASP.NET Core</span></span>
 
-* [<span data-ttu-id="e7cec-104">Введение</span><span class="sxs-lookup"><span data-stu-id="e7cec-104">Introduction</span></span>](introduction.md)
+* [<span data-ttu-id="357e0-104">Введение</span><span class="sxs-lookup"><span data-stu-id="357e0-104">Introduction</span></span>](xref:security/authorization/introduction)
 
-* [<span data-ttu-id="e7cec-105">Авторизация страниц Razor</span><span class="sxs-lookup"><span data-stu-id="e7cec-105">Razor Pages authorization</span></span>](xref:security/authorization/razor-pages-authorization)
+* [<span data-ttu-id="357e0-105">Создание приложения с защитой данных пользователя с помощью авторизации</span><span class="sxs-lookup"><span data-stu-id="357e0-105">Create an app with user data protected by authorization</span></span>](xref:security/authorization/secure-data)
 
-* [<span data-ttu-id="e7cec-106">Простая авторизация</span><span class="sxs-lookup"><span data-stu-id="e7cec-106">Simple authorization</span></span>](simple.md)
+* [<span data-ttu-id="357e0-106">Авторизация страниц Razor</span><span class="sxs-lookup"><span data-stu-id="357e0-106">Razor Pages authorization</span></span>](xref:security/authorization/razor-pages-authorization)
 
-* [<span data-ttu-id="e7cec-107">Авторизация на основе ролей</span><span class="sxs-lookup"><span data-stu-id="e7cec-107">Role-based authorization</span></span>](roles.md)
+* [<span data-ttu-id="357e0-107">Простая авторизация</span><span class="sxs-lookup"><span data-stu-id="357e0-107">Simple authorization</span></span>](xref:security/authorization/simple)
 
-* [<span data-ttu-id="e7cec-108">Авторизация на основе утверждений</span><span class="sxs-lookup"><span data-stu-id="e7cec-108">Claims-based authorization</span></span>](claims.md)
+* [<span data-ttu-id="357e0-108">Авторизация на основе ролей</span><span class="sxs-lookup"><span data-stu-id="357e0-108">Role-based authorization</span></span>](xref:security/authorization/roles)
 
-* [<span data-ttu-id="e7cec-109">Авторизация на основе политик</span><span class="sxs-lookup"><span data-stu-id="e7cec-109">Policy-based authorization</span></span>](policies.md)
+* [<span data-ttu-id="357e0-109">Авторизация на основе утверждений</span><span class="sxs-lookup"><span data-stu-id="357e0-109">Claims-based authorization</span></span>](xref:security/authorization/claims)
 
-* [<span data-ttu-id="e7cec-110">Внедрение зависимостей в обработчики требований</span><span class="sxs-lookup"><span data-stu-id="e7cec-110">Dependency injection in requirement handlers</span></span>](dependencyinjection.md)
+* [<span data-ttu-id="357e0-110">Авторизация на основе политик</span><span class="sxs-lookup"><span data-stu-id="357e0-110">Policy-based authorization</span></span>](xref:security/authorization/policies)
 
-* [<span data-ttu-id="e7cec-111">Авторизация на основе ресурсов</span><span class="sxs-lookup"><span data-stu-id="e7cec-111">Resource-based authorization</span></span>](resourcebased.md)
+* [<span data-ttu-id="357e0-111">Внедрение зависимостей в обработчики требований</span><span class="sxs-lookup"><span data-stu-id="357e0-111">Dependency injection in requirement handlers</span></span>](xref:security/authorization/dependencyinjection)
 
-* [<span data-ttu-id="e7cec-112">Авторизация на основе представлений</span><span class="sxs-lookup"><span data-stu-id="e7cec-112">View-based authorization</span></span>](views.md)
+* [<span data-ttu-id="357e0-112">Авторизация на основе ресурсов</span><span class="sxs-lookup"><span data-stu-id="357e0-112">Resource-based authorization</span></span>](xref:security/authorization/resourcebased)
 
-* [<span data-ttu-id="e7cec-113">Ограничение идентификаторов по схеме</span><span class="sxs-lookup"><span data-stu-id="e7cec-113">Limiting identity by scheme</span></span>](limitingidentitybyscheme.md)
+* [<span data-ttu-id="357e0-113">Авторизация на основе представлений</span><span class="sxs-lookup"><span data-stu-id="357e0-113">View-based authorization</span></span>](xref:security/authorization/views)
+
+* [<span data-ttu-id="357e0-114">Авторизация с определенной схемой</span><span class="sxs-lookup"><span data-stu-id="357e0-114">Authorize with a specific scheme</span></span>](xref:security/authorization/limitingidentitybyscheme)
