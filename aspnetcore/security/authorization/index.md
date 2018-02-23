@@ -1,38 +1,41 @@
 ---
 title: "Авторизация в ASP.NET Core"
 author: rick-anderson
-description: "В этом документе приводится перечень различных разделов об авторизации в ASP.NET Core."
+description: "Раздел посвящен авторизации ASP.NET Core и поясняет, как предоставлять права и привилегии пользователям приложения."
 manager: wpickett
 ms.author: riande
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 02/19/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/index
-ms.openlocfilehash: ee408afab55a80d28291a3a44e0fd1513ff34e45
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 652a01d58f7a7d19faa8531b61ea780bc379c428
+ms.sourcegitcommit: d43c84c4c80527c85e49d53691b293669557a79d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/20/2018
 ---
-# <a name="authorization-in-aspnet-core-simple-role-claims-based-and-custom"></a>Авторизация в ASP.NET Core: простая, на основе ролей, на основе утверждений и пользовательская
+# <a name="authorization-in-aspnet-core"></a>Авторизация в ASP.NET Core
 
-* [Введение](introduction.md)
+* [Введение](xref:security/authorization/introduction)
+
+* [Создание приложения с защитой данных пользователя с помощью авторизации](xref:security/authorization/secure-data)
 
 * [Авторизация страниц Razor](xref:security/authorization/razor-pages-authorization)
 
-* [Простая авторизация](simple.md)
+* [Простая авторизация](xref:security/authorization/simple)
 
-* [Авторизация на основе ролей](roles.md)
+* [Авторизация на основе ролей](xref:security/authorization/roles)
 
-* [Авторизация на основе утверждений](claims.md)
+* [Авторизация на основе утверждений](xref:security/authorization/claims)
 
-* [Авторизация на основе политик](policies.md)
+* [Авторизация на основе политик](xref:security/authorization/policies)
 
-* [Внедрение зависимостей в обработчики требований](dependencyinjection.md)
+* [Внедрение зависимостей в обработчики требований](xref:security/authorization/dependencyinjection)
 
-* [Авторизация на основе ресурсов](resourcebased.md)
+* [Авторизация на основе ресурсов](xref:security/authorization/resourcebased)
 
-* [Авторизация на основе представлений](views.md)
+* [Авторизация на основе представлений](xref:security/authorization/views)
 
-* [Ограничение идентификаторов по схеме](limitingidentitybyscheme.md)
+* [Авторизация с определенной схемой](xref:security/authorization/limitingidentitybyscheme)

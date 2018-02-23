@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: 7f0e30b3ac7f9cc3a32bd96f45d83ba13505a475
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 85d3eaf033eafbd24c71110ccd7f21ffcc8b0c82
+ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>Основы ASP.NET Core
 
@@ -180,6 +180,12 @@ ASP.NET Core ограничивает доступ к файловой сист�
 Сведения о реализации веб-сервера, связанные с HTTP-запросами и ответами, определяются в интерфейсах. Эти интерфейсы используются реализациями сервера и ПО промежуточного слоя для создания и изменения конвейера размещения приложений.
 
 Дополнительные сведения см. в разделе [Параметры запроса](xref:fundamentals/request-features).
+
+## <a name="background-tasks"></a>Фоновые задачи
+
+Фоновые задачи реализуются как *размещенные службы*. Размещенная служба — это класс с логикой фоновой задачи, реализующий интерфейс [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice).
+
+Дополнительные сведения см. в статье [Background tasks with hosted services in ASP.NET Core](xref:fundamentals/hosted-services) (Фоновые задачи с размещенными службами в ASP.NET Core).
 
 ## <a name="open-web-interface-for-net-owin"></a>Открытый веб-интерфейс для .NET (OWIN)
 
