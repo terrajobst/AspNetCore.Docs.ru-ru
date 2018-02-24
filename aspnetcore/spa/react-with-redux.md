@@ -1,26 +1,26 @@
 ---
 title: "Используйте шаблон проекта реагирование на них с локализации"
 author: SteveSandersonMS
-description: "Сведения о начале работы с использованием шаблона проекта ASP.NET Core одностраничного приложения (SPA) версии кандидата для действия с Redux и создание-реагирование на них приложения."
+description: "Сведения о начале работы с использованием шаблона проекта ASP.NET Core одной страницы приложений (SPA) для действия с Redux и создание-реагирование на них приложения."
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/06/2017
+ms.date: 02/21/2018
 ms.devlang: csharp
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/react-with-redux
-ms.openlocfilehash: 71a8702b9f6e9a2b40f150026f1955450e0fa7a3
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f52f4a866b8bb2adeee19548df32f3e7a91761d1
+ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/23/2018
 ---
-# <a name="use-the-react-with-redux-project-template-release-candidate"></a>Используйте действия с локализации шаблон проекта (версия-кандидат)
+# <a name="use-the-react-with-redux-project-template"></a>Используйте шаблон проекта реагирование на них с локализации
 
 > [!NOTE]
-> В этой документации не о выпущенных реагирование на них с локализации шаблона проекта. **Данная документация является о версии-кандидате реагирование на них с локализации шаблона.** Мы надеемся, что для отправки в начале 2018 выпущенной версии.
+> В этой документации о шаблоне реагирование на них с локализации проекта отсутствует в ASP.NET Core 2.0. Дело новым шаблоном реагирование на них с локализации, к которому можно обновить вручную. Шаблон по умолчанию включены в ASP.NET Core 2.1.
 
 Обновленный шаблон проекта реагирование на них с Redux предоставляет удобную начальную точку для приложений ASP.NET Core с помощью реагировать, Redux, и [создать реагирование на них приложении](https://github.com/facebookincubator/create-react-app) (CRA) соглашения для реализации полнофункционального клиентского пользовательского интерфейса (UI).
 

@@ -9,15 +9,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/windowsauth
-ms.openlocfilehash: aaa14e2f2704a7cfa836c5524642d2138a3ae7c8
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c229537e7f533eea2173dbc51b8d0d0e097d434a
+ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="configure-windows-authentication-in-an-aspnet-core-app"></a>Настройка проверки подлинности Windows в приложении ASP.NET Core
 
-По [Стив Смит](https://ardalis.com) и [Скотт Addie](https://twitter.com/Scott_Addie)
+Авторы: [Стив Смит](https://ardalis.com) (Steve Smith) и [Скотт Эдди](https://twitter.com/Scott_Addie) (Scott Addie)
 
 Проверка подлинности Windows можно настроить для приложения ASP.NET Core, размещенные в IIS, [HTTP.sys](xref:fundamentals/servers/httpsys), или [WebListener](xref:fundamentals/servers/weblistener).
 
@@ -111,6 +111,9 @@ ms.lasthandoff: 01/30/2018
 При включении проверки подлинности Windows и анонимный доступ, используйте `[Authorize]` и `[AllowAnonymous]` атрибуты. `[Authorize]` Атрибут позволяет защищать части приложения, которые действительно требуется проверка подлинности Windows. `[AllowAnonymous]` Переопределения атрибутов `[Authorize]` атрибута для использования в приложениях, в которых разрешен анонимный доступ. В разделе [простой авторизации](xref:security/authorization/simple) сведения об использовании атрибутов.
 
 В ASP.NET Core 2.x `[Authorize]` атрибут требует дополнительной настройки в *файла Startup.cs* проверку анонимные запросы на проверку подлинности Windows. Рекомендуемая конфигурация немного различается в зависимости от используемого веб-сервера.
+
+> [!NOTE]
+> По умолчанию пользователи, для которых отсутствует разрешение на доступ к странице представлены с пустой документ. [StatusCodePages по промежуточного слоя](xref:fundamentals/error-handling#configuring-status-code-pages) можно настроить для предоставления пользователям возможности для повышения удобства «Доступ запрещен».
 
 #### <a name="iis"></a>IIS
 
