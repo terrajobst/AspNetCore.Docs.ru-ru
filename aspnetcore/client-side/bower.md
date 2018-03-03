@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bower
-ms.openlocfilehash: ee628ee14aa38969cdb4443718c378fd36192596
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: 67695843846cfaf1619db11a7bffcc65802e0f69
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Управление пакетами стороне клиента с помощью Bower в ASP.NET Core
 
@@ -67,13 +67,13 @@ Bower использует [семантического управления в
 
 Откройте *одну\_Layout.cshtml* и добавьте здорово шрифта CSS-файл в среде [вспомогательный тег](xref:mvc/views/tag-helpers/intro) для `Development`. В обозревателе решений, перетаскивание *шрифта awesome.css* внутри `<environment names="Development">` элемента.
 
-[!code-html[Main](bower/sample/_Layout.cshtml?highlight=4&range=9-13)]
+[!code-html[](bower/sample/_Layout.cshtml?highlight=4&range=9-13)]
 
 В рабочем приложении необходимо добавить *шрифта awesome.min.css* помощникам тега среды для `Staging,Production`.
 
 Замените содержимое *Views\Home\About.cshtml* файл Razor с следующую разметку:
 
-[!code-html[Main](bower/sample/About.cshtml)]
+[!code-html[](bower/sample/About.cshtml)]
 
 Запустите приложение и перейдите в представление о программе порядок проверки работы пакета здорово шрифта.
 
@@ -96,7 +96,7 @@ Bower использует [семантического управления в
 
 * Откройте *bower.json*, добавление jquery и начальной загрузки для `dependencies` раздела. Итоговый *bower.json* файла будет выглядеть как в следующем примере. Версии будет меняться со временем и может не совпадать на рисунке ниже.
 
-[!code-json[Main](bower/sample/bower.json?highlight=5,6)]
+[!code-json[](bower/sample/bower.json?highlight=5,6)]
 
 * Сохранить *bower.json* файла.
 
@@ -109,7 +109,7 @@ Bower использует [семантического управления в
 * Добавить `Microsoft.AspNetCore.StaticFiles` пакет NuGet для проекта.
 * Включение статических файлов предоставляется с [по промежуточного слоя статических файлов](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions). Добавьте вызов [UseStaticFiles](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions) для `Configure` метод `Startup`.
 
-[!code-csharp[Main](bower/sample/Startup.cs?highlight=9)]
+[!code-csharp[](bower/sample/Startup.cs?highlight=9)]
 
 ### <a name="reference-packages"></a>Справочник по пакетам
 
@@ -119,7 +119,7 @@ Bower использует [семантического управления в
 
  Замените содержимое *Index.html* следующей разметкой:
 
-[!code-html[Main](bower/sample/Index.html)]
+[!code-html[](bower/sample/Index.html)]
 
 * Запустите приложение и перейдите к `http://localhost:<port>/Index.html`. Кроме того, с *Index.html* открыт, нажмите клавишу `Ctrl+Shift+W`. Проверка применения стилей jumbotron, код jQuery реагирует при нажатии кнопки и что начальной загрузки кнопка меняет состояние.
 

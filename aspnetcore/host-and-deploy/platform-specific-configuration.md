@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/platform-specific-configuration
-ms.openlocfilehash: 2663cd1e05be9e8695966df959082e6e574d0b4a
-ms.sourcegitcommit: 809ee4baf8bf7b4cae9e366ecae29de1037d2bbb
+ms.openlocfilehash: c36b8acd6f7fcb4e4d11e43013ccaf5ca6d1b0ab
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/15/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="add-app-features-using-a-platform-specific-configuration-in-aspnet-core"></a>Добавление компонентов приложения, с помощью конфигурации конкретной платформы в ASP.NET Core
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/15/2018
 
 Образец приложения чтения [HostingStartupAssembliesKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.hostingstartupassemblieskey) в `string` массива и отображает результат в страницу индекса приложения:
 
-[!code-csharp[Main](platform-specific-configuration/sample/HostingStartupSample/Pages/Index.cshtml.cs?name=snippet1&highlight=14-16)]
+[!code-csharp[](platform-specific-configuration/sample/HostingStartupSample/Pages/Index.cshtml.cs?name=snippet1&highlight=14-16)]
 
 ## <a name="disable-automatic-loading-of-hosting-startup-assemblies"></a>Отключить загрузку автоматическое размещение загрузки сборок
 
@@ -49,19 +49,19 @@ ms.lasthandoff: 02/15/2018
 
 `IHostingStartup` Функция развертывается как сборки с консольного приложения без точки входа. Ссылки на сборку [Microsoft.AspNetCore.Hosting.Abstractions](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.Abstractions/) пакета:
 
-[!code-xml[Main](platform-specific-configuration/snapshot_sample/StartupFeature.csproj)]
+[!code-xml[](platform-specific-configuration/snapshot_sample/StartupFeature.csproj)]
 
 Объект [HostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.hostingstartupattribute) атрибут идентифицирует класс как реализация `IHostingStartup` для загрузки и выполнения при построении [IWebHost](/dotnet/api/microsoft.aspnetcore.hosting.iwebhost). В следующем примере пространство имен является `StartupFeature`, а класс является `StartupFeatureHostingStartup`:
 
-[!code-csharp[Main](platform-specific-configuration/snapshot_sample/StartupFeature.cs?name=snippet1)]
+[!code-csharp[](platform-specific-configuration/snapshot_sample/StartupFeature.cs?name=snippet1)]
 
 Класс реализует `IHostingStartup`. Класс [Настройка](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) использует метод [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) для добавления в приложение функций:
 
-[!code-csharp[Main](platform-specific-configuration/snapshot_sample/StartupFeature.cs?name=snippet2&highlight=3,5)]
+[!code-csharp[](platform-specific-configuration/snapshot_sample/StartupFeature.cs?name=snippet2&highlight=3,5)]
 
 При построении `IHostingStartup` зависимости файла проекта (*\*. deps.json*) задает `runtime` расположение сборки для *bin* папки:
 
-[!code-json[Main](platform-specific-configuration/snapshot_sample/StartupFeature1.deps.json?range=2-13&highlight=8)]
+[!code-json[](platform-specific-configuration/snapshot_sample/StartupFeature1.deps.json?range=2-13&highlight=8)]
 
 Показана только часть файла. Имя сборки, в примере является `StartupFeature`.
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 02/15/2018
 
 Среда выполнения расположение указывается в  *\*. deps.json* файл. Активный компонент `runtime` элемент должен указывать расположение сборки среды выполнения компонента. Префикс `runtime` расположение с `lib/netcoreapp2.0/`:
 
-[!code-json[Main](platform-specific-configuration/snapshot_sample/StartupFeature2.deps.json?range=2-13&highlight=8)]
+[!code-json[](platform-specific-configuration/snapshot_sample/StartupFeature2.deps.json?range=2-13&highlight=8)]
 
 В примере приложения, изменения  *\*. deps.json* файла выполняется путем [PowerShell](/powershell/scripting/powershell-scripting) сценария. Сценарий PowerShell автоматически запускается целевой объект сборки в файле проекта.
 

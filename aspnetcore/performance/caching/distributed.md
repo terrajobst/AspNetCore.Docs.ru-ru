@@ -1,7 +1,7 @@
 ---
 title: "Работа с распределенного кэша в ASP.NET Core"
 author: ardalis
-description: "Сведения об использовании распределенное кэширование для повышения производительности и масштабируемости приложений ASP.NET Core, особенно в том случае, если размещенные в среде фермы облако или сервера."
+description: "Сведения об использовании ASP.NET Core распределенного кэширования для повышения производительности приложения и масштабируемость, особенно в среде фермы облако или сервера."
 manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
@@ -9,15 +9,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/distributed
-ms.openlocfilehash: 877a3e1f8c3282fdd67a389ddf5b4ff49dea3b42
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 635c61cbb72a6a9eb822307bbc80936ee73bedc8
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="working-with-a-distributed-cache-in-aspnet-core"></a>Работа с распределенного кэша в ASP.NET Core
 
-По [Стив Смит](https://ardalis.com/)
+Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
 Распределенные кэши могут улучшить производительность и масштабируемость приложений ASP.NET Core, особенно в том случае, если размещенные в среде фермы облако или сервера. В этой статье объясняется, как работать с ASP.NET Core встроенных распределенного кэша абстракции и реализации.
 
@@ -73,13 +73,13 @@ ms.lasthandoff: 02/01/2018
 
 В следующем примере показано, как использовать экземпляр `IDistributedCache` в простой программный компонент:
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/StartTimeHeader.cs?highlight=15,18,21,27,28,29,30,31)]
+[!code-csharp[](./distributed/sample/src/DistCacheSample/StartTimeHeader.cs?highlight=15,18,21,27,28,29,30,31)]
 
 В приведенном выше коде кэшированное значение является считываются, но никогда не записываются. В этом примере значение устанавливается только при запуске сервера, а также не изменяется. В случае многосерверной последний сервер запуск перезапишет все предыдущие значения, заданные на других серверах. `Get` И `Set` методы используют `byte[]` типа. Таким образом, строковое значение необходимо преобразовывать с помощью `Encoding.UTF8.GetString` (для `Get`) и `Encoding.UTF8.GetBytes` (для `Set`).
 
 В следующем примере кода из *файла Startup.cs* показывает, что будет задаваться значение:
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=2,4,5,6&range=58-66)]
+[!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=2,4,5,6&range=58-66)]
 
 > [!NOTE]
 > Поскольку `IDistributedCache` настраивается в `ConfigureServices` метода, она доступна для `Configure` методу в качестве параметра. Добавив его в качестве параметра позволит настроенный экземпляр должен предоставляться через DI.
@@ -92,7 +92,7 @@ ms.lasthandoff: 02/01/2018
 
 В образце кода `RedisCache` реализация используется в том случае, если сервер настроен для `Staging` среды. Таким образом `ConfigureStagingServices` настраивает метод `RedisCache`:
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13&range=27-40)]
+[!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13&range=27-40)]
 
 > [!NOTE]
 > Чтобы установить Redis на локальном компьютере, необходимо установить пакет chocolatey [https://chocolatey.org/packages/redis-64/](https://chocolatey.org/packages/redis-64/) и запустите `redis-server` из командной строки.
@@ -103,7 +103,7 @@ ms.lasthandoff: 02/01/2018
 
 Чтобы использовать средство кэша sql, добавьте `SqlConfig.Tools` для `<ItemGroup>` элемент *.csproj* файл и запустите восстановление dotnet.
 
-[!code-xml[Main](./distributed/sample/src/DistCacheSample/DistCacheSample.csproj?range=23-25)]
+[!code-xml[](./distributed/sample/src/DistCacheSample/DistCacheSample.csproj?range=23-25)]
 
 Протестируйте SqlConfig.Tools, выполнив следующую команду
 
@@ -125,7 +125,7 @@ C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(loc
 
 Как и все реализации кэша приложения следует получать и задавать значения кэша, используя экземпляр `IDistributedCache`, а не `SqlServerCache`. В этом образце реализуется `SqlServerCache` в `Production` среды (поэтому оно настроено в `ConfigureProductionServices`).
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=7,8,9,10,11,12&range=42-56)]
+[!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=7,8,9,10,11,12&range=42-56)]
 
 > [!NOTE]
 > `ConnectionString` (И при необходимости `SchemaName` и `TableName`) обычно должны храниться вне системы управления версиями (например, объектов UserSecrets), так как они могут содержать учетные данные.

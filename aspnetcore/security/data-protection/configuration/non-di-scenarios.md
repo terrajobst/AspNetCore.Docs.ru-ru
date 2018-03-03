@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/configuration/non-di-scenarios
-ms.openlocfilehash: eccf914d20e04adbb113f17e262766ed2dd1a554
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: d878bd20489876f919f2a8e0149f3f000cbf72d8
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="non-di-aware-scenarios-for-data-protection-in-aspnet-core"></a>DI не зависимые сценарии для защиты данных в ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 01/30/2018
 
 Для поддержки следующих сценариев [Microsoft.AspNetCore.DataProtection.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) пакет содержит конкретный тип [DataProtectionProvider](/dotnet/api/Microsoft.AspNetCore.DataProtection.DataProtectionProvider), который предоставляет простой способ использования защиты данных не полагаться на DI. `DataProtectionProvider` Тип реализует [IDataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionprovider). Создав `DataProtectionProvider` только требует предоставления [DirectoryInfo](/dotnet/api/system.io.directoryinfo) экземпляра для указания места хранения криптографических ключей поставщика, как показано в следующем образце кода:
 
-[!code-none[Main](non-di-scenarios/_static/nodisample1.cs)]
+[!code-none[](non-di-scenarios/_static/nodisample1.cs)]
 
 По умолчанию `DataProtectionProvider` конкретный тип не шифровать необработанные материал ключа перед его сохранении в файловой системе. Это необходимо для поддержки сценариев, где точки разработчика для общей сетевой папке и системы защиты данных не может вывести автоматически механизм шифрования ключа соответствующие статических.
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/30/2018
 
 [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider) конструктор принимает обратный дополнительной конфигурации, который можно использовать для настройки поведения системы. В следующем примере показано восстановление изоляции для явного вызова [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname). В примере также демонстрируется настройка системы для автоматического шифрования материализованного ключа с помощью Windows DPAPI. Если каталог указывает на общий ресурс UNC, вы можете распределять общий сертификат на всех соответствующих компьютерах и для настройки системы для использования шифрования на основе сертификатов с помощью вызова [ProtectKeysWithCertificate](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.protectkeyswithcertificate).
 
-[!code-none[Main](non-di-scenarios/_static/nodisample2.cs)]
+[!code-none[](non-di-scenarios/_static/nodisample2.cs)]
 
 > [!TIP]
 > Экземпляры `DataProtectionProvider` сопряжено создать конкретный тип. Если приложение поддерживает несколько экземпляров этого типа, и они все используют один и тот же каталог хранилища ключей, может привести к снижению производительности приложения. Если вы используете `DataProtectionProvider` типа, мы рекомендуем создать такую один раз и использовать его максимальной. `DataProtectionProvider` Типа и все [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) экземпляры, созданные из этого являются потокобезопасными для нескольких клиентов.

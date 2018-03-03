@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 8cadb550eaa2dbc4541f945dc8d8d49fa757d4d3
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 559c5c58b416912b1caef1964ff8d7532bd98439
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Поставщики пользовательского хранилища для ASP.NET Core Identity
 
@@ -112,7 +112,7 @@ ASP.NET Core Identity состоит из класса с именами мен�
 
 В классы доступа к данным предоставляют код для выполнения операций с данными для вашего механизма сохраняемости. Например, в пределах пользовательского поставщика может иметь следующий код, чтобы создать нового пользователя в *хранения* класса:
 
-[!code-csharp[Main](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs?name=createuser&highlight=7)]
+[!code-csharp[](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs?name=createuser&highlight=7)]
 
 Логика реализации для создания пользователя находится в ``_usersTable.CreateAsync`` метод, показанный ниже.
 
@@ -133,7 +133,7 @@ ASP.NET Core Identity состоит из класса с именами мен�
 - IUserRoleStore https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserrolestore-1
 - IUserClaimStore https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserclaimstore-1
 - IUserPasswordStore https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserpasswordstore-1
-- IUserSecurityStampStore<!-- make these all links and remove / -->
+- IUserSecurityStampStore <!-- make these all links and remove / -->
 - IUserEmailStore
 - IPhoneNumberStore
 - IQueryableUserStore
@@ -145,7 +145,7 @@ ASP.NET Core Identity состоит из класса с именами мен�
 
 В пределах `UserStore` , использовать классов доступа к данным, которые созданы для выполнения операций. Они передаются в с помощью внедрения зависимости. Например, в SQL Server с Dapper реализацию `UserStore` класс имеет `CreateAsync` метода, использующего экземпляр `DapperUsersTable` для вставки новой записи:
 
-[!code-csharp[Main](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/DapperUsersTable.cs?name=createuser&highlight=7)]
+[!code-csharp[](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/DapperUsersTable.cs?name=createuser&highlight=7)]
 
 ### <a name="interfaces-to-implement-when-customizing-user-store"></a>Интерфейсы для реализации при настройке хранилища пользователя
 
@@ -159,7 +159,7 @@ ASP.NET Core Identity состоит из класса с именами мен�
  [IUserRoleStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserrolestore-1) интерфейса определяются методы, которые можно реализовать, чтобы сопоставить пользователя с ролью. Содержит методы для добавления, удаления и извлечения роли пользователя, а также метод для проверки, если пользователь назначен роли.
 - **IUserPasswordStore**  
  [IUserPasswordStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserpasswordstore-1) интерфейса определяются методы, которые можно реализовать для сохранения Хешированные пароли. Содержит методы для получения и задания хэшированный пароль и метод, который указывает, ли пользователь использовать пароль.
-- **IUserSecurityStampStore**  
+- IUserSecurityStampStore **  
  [IUserSecurityStampStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iusersecuritystampstore-1) интерфейса определяются методы, которые реализуют использовать метку безопасности для, указывающее, изменилось ли учетная запись пользователя. Это метка обновляется, когда пользователь изменяет пароль, или добавляет или удаляет имена входа. Содержит методы для получения и задания метку безопасности.
 - **IUserTwoFactorStore**  
  [IUserTwoFactorStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iusertwofactorstore-1) интерфейса определяются методы, реализуемые для поддержки двухфакторная проверка подлинности. Содержит методы для получения и задания двухфакторная проверка подлинности включена ли для пользователя.
@@ -196,7 +196,7 @@ public class UserStore : IUserStore<IdentityUser>,
 
 Ниже приведен пример класса роли.
 
-[!code-csharp[Main](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/ApplicationRole.cs)]
+[!code-csharp[](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/ApplicationRole.cs)]
 
 ## <a name="customize-the-role-store"></a>Настройка хранилища ролей
 

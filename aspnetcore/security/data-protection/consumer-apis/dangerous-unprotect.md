@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/dangerous-unprotect
-ms.openlocfilehash: 584dbb545c15add4401086b9160d4bf30caf41b5
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 37332dda794f898fb866424b38394f5d4441e166
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="unprotecting-payloads-whose-keys-have-been-revoked"></a>Снятие защиты полезных данных, ключи которых были отозваны
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/30/2018
 > [!NOTE]
 > Не все `IDataProtector` экземпляры могут быть приведены к `IPersistedDataProtector`. Разработчикам следует использовать в C# как оператор или аналогичные, чтобы избежать исключений среды выполнения причиной недопустимые приведения, они должны быть подготовлены к соответствующим образом обрабатывать случаи сбоя.
 
-`IPersistedDataProtector`предоставляет поверхность следующие API:
+`IPersistedDataProtector` предоставляет поверхность следующие API:
 
 ```csharp
 DangerousUnprotect(byte[] protectedData, bool ignoreRevocationErrors,
@@ -46,4 +46,4 @@ DangerousUnprotect(byte[] protectedData, bool ignoreRevocationErrors,
 >[!WARNING]
 > Соблюдайте осторожность при передаче `ignoreRevocationErrors: true` для `DangerousUnprotect` метод. Если после вызова этого метода `wasRevoked` имеет значение true, то ключ, используемый для защиты этого полезных данных был отозван и подлинность полезных данных, которые должны рассматриваться как подозрительная. В этом случае только продолжают работать на незащищенных полезных данных при наличии отдельных некоторую уверенность в том, что это подлинный, например, он поступает из защищенную базу данных, а не отправки клиентом ненадежных веб.
 
-[!code-csharp[Main](dangerous-unprotect/samples/dangerous-unprotect.cs)]
+[!code-csharp[](dangerous-unprotect/samples/dangerous-unprotect.cs)]

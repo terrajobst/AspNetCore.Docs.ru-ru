@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: 337782a0530a37916b04aa562174b5921ddbc46b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 489c53c066af87e02e43ab0b42b0712d80d5ee5a
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="safe-storage-of-app-secrets-during-development-in-aspnet-core"></a>Безопасного хранения секрета приложения во время разработки в ASP.NET Core
 
@@ -45,11 +45,11 @@ ms.lasthandoff: 01/30/2018
 
 Щелкните правой кнопкой мыши проект в обозревателе решений и выберите **изменить \<project_name\>.csproj** в контекстном меню. Добавьте в выделенной строке *.csproj* и сохранение файлов для восстановления, связанный с ним пакет NuGet:
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
+[!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
 Щелкните правой кнопкой мыши проект в обозревателе решений и выберите **управление секретами пользователя** в контекстном меню. Это жест добавляет новый `UserSecretsId` узла в `PropertyGroup` из *.csproj* файла, как видно из следующего примера:
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
+[!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
 Сохранение измененного *.csproj* также файл откроется `secrets.json` файл в текстовом редакторе. Замените содержимое `secrets.json` файла следующим кодом:
 
@@ -61,9 +61,9 @@ ms.lasthandoff: 01/30/2018
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
-Добавить `Microsoft.Extensions.SecretManager.Tools` для *.csproj* файл и запустите `dotnet restore`. Можно использовать те же действия для установки средства диспетчера секрета, используемого для командной строки.
+Добавить `Microsoft.Extensions.SecretManager.Tools` для *.csproj* файл и запустите [восстановления dotnet](/dotnet/core/tools/dotnet-restore). Можно использовать те же действия для установки средства диспетчера секрета, используемого для командной строки.
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
+[!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
 Тестирование диспетчера секрет, выполнив следующую команду:
 
@@ -80,7 +80,7 @@ dotnet user-secrets -h
 
 Добавить `UserSecretsId` проекта в *.csproj* файла:
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
+[!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
 Использование диспетчера секрет, чтобы задать секрет. Например в окно командной строки от каталога проекта, введите следующую команду:
 
@@ -100,25 +100,25 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 
 ## <a name="accessing-user-secrets-via-configuration"></a>Доступ к секретной информации пользователя через конфигурацию
 
-Секреты Manager секрет доступ через систему конфигурации. Добавить `Microsoft.Extensions.Configuration.UserSecrets` упаковка и запуск `dotnet restore`.
+Секреты Manager секрет доступ через систему конфигурации. Добавить `Microsoft.Extensions.Configuration.UserSecrets` упаковка и запуск [восстановления dotnet](/dotnet/core/tools/dotnet-restore).
 
 Добавить источник конфигурации секретные данные пользователя для `Startup` метод:
 
-[!code-csharp[Main](app-secrets/sample/UserSecrets/Startup.cs?highlight=16-19)]
+[!code-csharp[](app-secrets/sample/UserSecrets/Startup.cs?highlight=16-19)]
 
 Вы можете использовать секретные данные пользователей через API-Интерфейс настройки:
 
-[!code-csharp[Main](app-secrets/sample/UserSecrets/Startup.cs?highlight=26-29)]
+[!code-csharp[](app-secrets/sample/UserSecrets/Startup.cs?highlight=26-29)]
 
 ## <a name="how-the-secret-manager-tool-works"></a>Как работает диспетчер секрет
 
 Секрет диспетчера абстрагирует детали реализации, например, где и как значения сохраняются. Можно использовать средство, не зная эти детали реализации. В текущей версии значения хранятся в [JSON](http://json.org/) файл конфигурации в папке профиля пользователя:
 
-* Windows:`%APPDATA%\microsoft\UserSecrets\<userSecretsId>\secrets.json`
+* Windows: `%APPDATA%\microsoft\UserSecrets\<userSecretsId>\secrets.json`
 
-* Linux:`~/.microsoft/usersecrets/<userSecretsId>/secrets.json`
+* Linux: `~/.microsoft/usersecrets/<userSecretsId>/secrets.json`
 
-* MAC:`~/.microsoft/usersecrets/<userSecretsId>/secrets.json`
+* MAC: `~/.microsoft/usersecrets/<userSecretsId>/secrets.json`
 
 Значение `userSecretsId` берется из значения, указанного в *.csproj* файла.
 

@@ -10,15 +10,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 150603d17f3bed983f9871fe7665748a70177f89
-ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
+ms.openlocfilehash: 27a46446e9bf63e96eecc392e6d6863e27b34730
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Устранение неполадок ASP.NET Core в службе приложений Azure
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
+
+[!INCLUDE[Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
 
 Эта статья содержит инструкции для ASP.NET Core диагностики проблемы при запуске приложения с помощью средств диагностики службы приложений Azure. Дополнительные советы по устранению неполадок, в разделе [Общие сведения о службе приложений Azure diagnostics](/azure/app-service/app-service-diagnostics) и [как: мониторинг приложений в службе приложений Azure](/azure/app-service/web-sites-monitor) в документации Azure.
 
@@ -103,7 +105,7 @@ ms.lasthandoff: 02/19/2018
 1. Выберите **Сохранить** для сохранения файла.
 
 > [!WARNING]
-> Неудача при отключении журнала stdout может привести к сбоям приложения или сервера. Нет ограничения на размер файла журнала или количество созданных файлов журналов.
+> Неудача при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены.
 >
 > Для процедуры входа в приложение ASP.NET Core, используйте библиотеку ведения журнала, которая ограничивает размер файла журнала и поворачивает журналы. Дополнительные сведения см. в разделе [сторонних регистраторов](xref:fundamentals/logging/index#third-party-logging-providers).
 
@@ -170,7 +172,7 @@ ms.lasthandoff: 02/19/2018
 Дополнительные сведения см. в разделе [включить ведение журнала диагностики для веб-приложений в службе приложений Azure](/azure/app-service/web-sites-enable-diagnostic-log).
 
 > [!WARNING]
-> Неудача при отключении журнала stdout может привести к сбоям приложения или сервера. Нет ограничения на размер файла журнала или количество созданных файлов журналов.
+> Неудача при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены.
 >
 > Для процедуры входа в приложение ASP.NET Core, используйте библиотеку ведения журнала, которая ограничивает размер файла журнала и поворачивает журналы. Дополнительные сведения см. в разделе [сторонних регистраторов](xref:fundamentals/logging/index#third-party-logging-providers).
 

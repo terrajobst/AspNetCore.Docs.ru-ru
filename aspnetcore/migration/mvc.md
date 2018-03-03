@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/mvc
-ms.openlocfilehash: 447b13eccf523cab81590405740bb194112b0dad
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: c9c9f63cd635f364d9b2e081dc051a46a44d3e4f
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>Миграция из ASP.NET MVC в ASP.NET Core MVC
 
@@ -48,17 +48,17 @@ ms.lasthandoff: 01/30/2018
 
 * Установка `Microsoft.AspNetCore.Mvc` и `Microsoft.AspNetCore.StaticFiles` пакеты NuGet.
 
-  `Microsoft.AspNetCore.Mvc`— Это платформа ASP.NET Core MVC. `Microsoft.AspNetCore.StaticFiles`метод является обработчиком статических файлов. Среда выполнения ASP.NET является модульной средой, и необходимо явно включить обновление через обрабатывать статические файлы (в разделе [работа с статические файлы](../fundamentals/static-files.md)).
+  `Microsoft.AspNetCore.Mvc` — Это платформа ASP.NET Core MVC. `Microsoft.AspNetCore.StaticFiles` метод является обработчиком статических файлов. Среда выполнения ASP.NET является модульной средой, и необходимо явно включить обновление через обрабатывать статические файлы (в разделе [работа с статические файлы](../fundamentals/static-files.md)).
 
 * Откройте *.csproj* файла (щелкните правой кнопкой мыши проект в **обозревателе решений** и выберите **изменить WebApp1.csproj**) и добавьте `PrepareForPublish` целевой:
 
-  [!code-xml[Main](mvc/sample/WebApp1.csproj?range=21-23)]
+  [!code-xml[](mvc/sample/WebApp1.csproj?range=21-23)]
 
   `PrepareForPublish` Целевой необходим для получения клиентские библиотеки с помощью Bower. Мы рассмотрим это более поздней версии.
 
 * Откройте *файла Startup.cs* и измените код в соответствии со следующим:
 
-  [!code-csharp[Main](mvc/sample/Startup.cs?highlight=14,27-34)]
+  [!code-csharp[](mvc/sample/Startup.cs?highlight=14,27-34)]
 
   `UseStaticFiles` Метод расширения добавляет обработчик файла статистики. Как упоминалось ранее, среда выполнения ASP.NET является модульной средой, и необходимо явно включить обновление через обрабатывать статические файлы. `UseMvc` Добавляет метод расширения маршрутизации. Дополнительные сведения см. в разделе [запуска приложения](../fundamentals/startup.md) и [маршрутизации](../fundamentals/routing.md).
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="controllers-and-views"></a>Контроллеры и представления
 
-* Копирование всех методов из ASP.NET MVC `HomeController` к новому `HomeController`. Обратите внимание, что в ASP.NET MVC, возвращаемый тип метода действия встроенного шаблона контроллера [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); в ASP.NET MVC Core, возвращаемого методами `IActionResult` вместо него. `ActionResult`реализует `IActionResult`, поэтому нет необходимости изменять тип возвращаемого значения методов действия.
+* Копирование всех методов из ASP.NET MVC `HomeController` к новому `HomeController`. Обратите внимание, что в ASP.NET MVC, возвращаемый тип метода действия встроенного шаблона контроллера [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); в ASP.NET MVC Core, возвращаемого методами `IActionResult` вместо него. `ActionResult` реализует `IActionResult`, поэтому нет необходимости изменять тип возвращаемого значения методов действия.
 
 * Копировать *About.cshtml*, *Contact.cshtml*, и *Index.cshtml* Razor Просмотр файлов из проекта ASP.NET MVC в проект ASP.NET Core.
 
@@ -140,7 +140,7 @@ ms.lasthandoff: 01/30/2018
 
 * Добавить [Bower](https://bower.io/) файл конфигурации с именем *bower.json* с корнем проекта (правой кнопкой мыши проект, а затем **Добавить > новый элемент > файла конфигурации для Bower**). Добавить [начальной загрузки](http://getbootstrap.com/) и [jQuery](https://jquery.com/) в файл (см. выделенные строки ниже).
 
-  [!code-json[Main](mvc/sample/bower.json?highlight=5-6)]
+  [!code-json[](mvc/sample/bower.json?highlight=5-6)]
 
 После сохранения файла, Bower автоматически загрузит зависимости, чтобы *wwwroot/lib* папки. Можно использовать **поиск в обозревателе решений** флажок, чтобы найти путь к папке средств:
 
@@ -156,7 +156,7 @@ ms.lasthandoff: 01/30/2018
 
 * Создание *представления/Общие* папки.
 
-* *Необязательно:* копирования *_ViewImports.cshtml* из *FullAspNetCore* проекта MVC *представления* папки в ASP.NET Core проекта *Представления* папки. Удалите все объявления пространства имен в *_ViewImports.cshtml* файла. *_ViewImports.cshtml* файла предоставляют пространства имен для всех файлов, представления, после чего [вспомогательных функций тегов](xref:mvc/views/tag-helpers/intro). В новом файле макета используются вспомогательных функций тегов. *_ViewImports.cshtml* файл впервые ASP.NET Core.
+* *Необязательно:* копирования *_ViewImports.cshtml* из *FullAspNetCore* проекта MVC *представления* папки в проект ASP.NET Core  *Представления* папки. Удалите все объявления пространства имен в *_ViewImports.cshtml* файла. *_ViewImports.cshtml* файла предоставляют пространства имен для всех файлов, представления, после чего [вспомогательных функций тегов](xref:mvc/views/tag-helpers/intro). В новом файле макета используются вспомогательных функций тегов. *_ViewImports.cshtml* файл впервые ASP.NET Core.
 
 * Копировать *_Layout.cshtml* файла из старого проекта ASP.NET MVC *представления/Общие* папки в проект ASP.NET Core *представления/Общие* папки.
 
@@ -187,7 +187,7 @@ ms.lasthandoff: 01/30/2018
 
 Обновленный *_Layout.cshtml* файла показан ниже:
 
-[!code-html[Main](mvc/sample/Views/Shared/_Layout.cshtml?highlight=7,27,39-40)]
+[!code-html[](mvc/sample/Views/Shared/_Layout.cshtml?highlight=7,27,39-40)]
 
 Просмотр сайта в браузере. Должны теперь загрузиться правильно, с ожидаемой стили на месте.
 

@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: 68f590dffe8bb98813f974a5ecb9b270a5419ddf
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: bcc4984efcee9a6ffd0f3b503a38089c78adf5e8
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="key-management-extensibility"></a>Управление ключами расширяемости
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 01/30/2018
 
 `XmlKeyManager` Тип — входящие в конкретную реализацию `IKeyManager`. Она предоставляет несколько полезных средств, включая переноса ключей и шифрования ключей при хранении. Ключи в этой системе представляются в виде XML-элементы (в частности, [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)).
 
-`XmlKeyManager`зависит от других компонентов во время выполнения своих задач.
+`XmlKeyManager` зависит от других компонентов во время выполнения своих задач.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -75,17 +75,17 @@ ms.lasthandoff: 01/30/2018
 
 * `IXmlRepository`, какие элементы управления, где ключи сохраняются в хранилище.
 
-* `IXmlEncryptor`[необязательно], который позволяет шифровать ключи хранятся.
+* `IXmlEncryptor` [необязательно], который позволяет шифровать ключи хранятся.
 
-* `IKeyEscrowSink`[необязательно], который предоставляет перенос ключа службы.
+* `IKeyEscrowSink` [необязательно], который предоставляет перенос ключа службы.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 * `IXmlRepository`, какие элементы управления, где ключи сохраняются в хранилище.
 
-* `IXmlEncryptor`[необязательно], который позволяет шифровать ключи хранятся.
+* `IXmlEncryptor` [необязательно], который позволяет шифровать ключи хранятся.
 
-* `IKeyEscrowSink`[необязательно], который предоставляет перенос ключа службы.
+* `IKeyEscrowSink` [необязательно], который предоставляет перенос ключа службы.
 
 ---
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 01/30/2018
 
    *Получение ключа / GetAllKeys*
 
-В реализации `GetAllKeys`, представляющих ключи документы XML и выдачу считываются из основного `IXmlRepository`. Если эти документы шифруются, система автоматически расшифровать их. `XmlKeyManager`создает соответствующий `IAuthenticatedEncryptorDescriptorDeserializer` экземпляров для десериализации документов обратно в `IAuthenticatedEncryptorDescriptor` экземпляров, которые затем помещается в отдельных `IKey` экземпляров. Эта коллекция `IKey` экземпляров возвращается вызывающему объекту.
+В реализации `GetAllKeys`, представляющих ключи документы XML и выдачу считываются из основного `IXmlRepository`. Если эти документы шифруются, система автоматически расшифровать их. `XmlKeyManager` создает соответствующий `IAuthenticatedEncryptorDescriptorDeserializer` экземпляров для десериализации документов обратно в `IAuthenticatedEncryptorDescriptor` экземпляров, которые затем помещается в отдельных `IKey` экземпляров. Эта коллекция `IKey` экземпляров возвращается вызывающему объекту.
 
 Дополнительные сведения об отдельных элементов XML, которые можно найти в [хранилища ключей форматировать документ](../implementation/key-storage-format.md#data-protection-implementation-key-storage-format).
 
@@ -222,4 +222,4 @@ ms.lasthandoff: 01/30/2018
 > [!NOTE]
 > Чтобы запустить этот образец, должен быть на Windows 8, присоединенном к домену / компьютера Windows Server 2012 и контроллер домена должен быть Windows Server 2012 или более поздней версии.
 
-[!code-csharp[Main](key-management/samples/key-management-extensibility.cs)]
+[!code-csharp[](key-management/samples/key-management-extensibility.cs)]

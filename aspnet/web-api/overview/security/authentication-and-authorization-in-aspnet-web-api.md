@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/authentication-and-authorization-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 2a4b5ed8a712b061b4afdf5a3adc9378dd72b37f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9d7cbb9505afb6461ba4c2087d57e9ea0da38ede
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 <a name="authentication-and-authorization-in-aspnet-web-api"></a>Проверка подлинности и авторизация веб-API ASP.NET
 ====================
@@ -80,7 +80,7 @@ ms.lasthandoff: 01/24/2018
 
 Веб-API предоставляет фильтр встроенной авторизации [AuthorizeAttribute](https://msdn.microsoft.com/library/system.web.http.authorizeattribute.aspx). Этот фильтр проверяет, является ли пользователь проверку подлинности. В противном случае возвращается код состояния HTTP 401 (не санкционировано) без вызова действия.
 
-Можно применить фильтр глобально, на уровне контроллера или на уровне inidivual действий.
+Вы можете применить фильтр глобально, на уровне контроллера или на уровне отдельных действий.
 
 **Глобально**: чтобы ограничить доступ для каждого контроллера веб-API, добавьте **AuthorizeAttribute** фильтра в список глобальных фильтров:
 

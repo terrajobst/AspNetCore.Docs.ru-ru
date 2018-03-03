@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/cors
-ms.openlocfilehash: 1c0d87b61882f69dbf2aeb0a896d9294bd029374
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ee61798fc1bde89ca3712eae9b7c4413e58cf70d
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="enabling-cross-origin-requests-cors"></a>Включение запросы независимо от источника (CORS)
 
@@ -35,13 +35,13 @@ ms.lasthandoff: 01/30/2018
 
 Эти URL-адреса имеют различные источники, чем предыдущий два:
 
-* `http://example.net`-Другой домен
+* `http://example.net` -Другой домен
 
-* `http://www.example.com/foo.html`-Другой поддомен
+* `http://www.example.com/foo.html` -Другой поддомен
 
-* `https://example.com/foo.html`-Другой схемы
+* `https://example.com/foo.html` -Другой схемы
 
-* `http://example.com:9000/foo.html`-Другой порт
+* `http://example.com:9000/foo.html` -Другой порт
 
 > [!NOTE]
 > Internet Explorer не рассматривает порт, при сравнении источников.
@@ -52,7 +52,7 @@ ms.lasthandoff: 01/30/2018
 
 Добавление служб CORS в файле Startup.cs:
 
-[!code-csharp[Main](cors/sample/CorsExample1/Startup.cs?name=snippet_addcors)]
+[!code-csharp[](cors/sample/CorsExample1/Startup.cs?name=snippet_addcors)]
 
 ## <a name="enabling-cors-with-middleware"></a>Включение CORS с по промежуточного слоя
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 01/30/2018
 
 Можно задать политику независимо от источника, при добавлении по промежуточного слоя CORS с помощью `CorsPolicyBuilder` класса. Это можно сделать двумя способами. Первый — вызов UseCors с лямбда-выражения:
 
-[!code-csharp[Main](cors/sample/CorsExample1/Startup.cs?highlight=11,12&range=22-38)]
+[!code-csharp[](cors/sample/CorsExample1/Startup.cs?highlight=11,12&range=22-38)]
 
 **Примечание:** URL-адрес должен быть указан без косой чертой (`/`). Если URL-адрес завершается с `/`, сравнение будет возвращать `false` и будет возвращаться без заголовка.
 
@@ -68,11 +68,11 @@ ms.lasthandoff: 01/30/2018
 
 Обратите внимание, что CorsPolicyBuilder fluent API, поэтому можно соединить в цепочку вызовы методов:
 
-[!code-csharp[Main](../security/cors/sample/CorsExample3/Startup.cs?highlight=3&range=29-32)]
+[!code-csharp[](../security/cors/sample/CorsExample3/Startup.cs?highlight=3&range=29-32)]
 
 Второй подход заключается в том, чтобы определить именованный политики CORS, а затем выберите политику по имени во время выполнения.
 
-[!code-csharp[Main](cors/sample/CorsExample2/Startup.cs?name=snippet_begin)]
+[!code-csharp[](cors/sample/CorsExample2/Startup.cs?name=snippet_begin)]
 
 В этом примере добавляется политика CORS с именем «AllowSpecificOrigin». Чтобы выбрать политику, передать имя для `UseCors`.
 
@@ -84,19 +84,19 @@ ms.lasthandoff: 01/30/2018
 
 Чтобы задать политику CORS для определенных действий добавьте `[EnableCors]` атрибут действия. Укажите имя политики.
 
-[!code-csharp[Main](cors/sample/CorsMVC/Controllers/ValuesController.cs?name=EnableOnAction)]
+[!code-csharp[](cors/sample/CorsMVC/Controllers/ValuesController.cs?name=EnableOnAction)]
 
 ### <a name="per-controller"></a>На каждый контроллер
 
 Чтобы задать политику CORS для определенного контроллера добавьте `[EnableCors]` атрибут в класс контроллера. Укажите имя политики.
 
-[!code-csharp[Main](cors/sample/CorsMVC/Controllers/ValuesController.cs?name=EnableOnController)]
+[!code-csharp[](cors/sample/CorsMVC/Controllers/ValuesController.cs?name=EnableOnController)]
 
 ### <a name="globally"></a>Глобально
 
 Можно включить CORS глобально для всех контроллеров, добавив `CorsAuthorizationFilterFactory` фильтр в глобальную коллекцию фильтров:
 
-[!code-csharp[Main](cors/sample/CorsMVC/Startup2.cs?name=snippet_configureservices)]
+[!code-csharp[](cors/sample/CorsMVC/Startup2.cs?name=snippet_configureservices)]
 
 Очередность выполнения:: действия контроллера, глобальные. Политики на уровне действия имеют приоритет над политиками уровня контроллера, и уровня контроллера политики имеют приоритет над глобальные политики.
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 01/30/2018
 
 Чтобы отключить CORS для контроллера или действия, используйте `[DisableCors]` атрибута.
 
-[!code-csharp[Main](cors/sample/CorsMVC/Controllers/ValuesController.cs?name=DisableOnAction)]
+[!code-csharp[](cors/sample/CorsMVC/Controllers/ValuesController.cs?name=DisableOnAction)]
 
 ## <a name="cors-policy-options"></a>Параметры политики CORS
 
@@ -128,11 +128,11 @@ ms.lasthandoff: 01/30/2018
 
 Чтобы разрешить один или несколько конкретных источников:
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=19-23)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=19-23)]
 
 Чтобы разрешить все источники:
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs??range=27-31)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs??range=27-31)]
 
 Внимательно рассмотрите перед предоставлением запросов из любого источника. Он означает, что практически любой веб-сайта можно вносить вызовы AJAX к вашему API.
 
@@ -140,7 +140,7 @@ ms.lasthandoff: 01/30/2018
 
 Чтобы разрешить все методы HTTP:
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=44-49)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=44-49)]
 
 Это влияет на возможность предварительного запросов и -методы управления доступом — разрешить заголовок.
 
@@ -150,11 +150,11 @@ ms.lasthandoff: 01/30/2018
 
 Белый список указанные заголовки:
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=53-58)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=53-58)]
 
 Чтобы разрешить все создавать заголовки запроса:
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=62-67)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=62-67)]
 
 Браузеры не полностью соответствуют в установке Access-Control-Request-Headers. Если задать заголовки на что-либо отличное от «*», следует включать по крайней мере «принять,» «content-type» и «источник», а также любые пользовательские заголовки, которые требуется поддерживать.
 
@@ -176,7 +176,7 @@ ms.lasthandoff: 01/30/2018
 
 Спецификация CORS вызывает эти *заголовки ответа на простой*. Чтобы сделать другие заголовки, доступны для приложения.
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=71-76)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=71-76)]
 
 ### <a name="credentials-in-cross-origin-requests"></a>Учетные данные в запросы независимо от источника
 
@@ -203,7 +203,7 @@ $.ajax({
 
 Кроме того сервер необходимо разрешить учетные данные. Чтобы разрешить учетные данные независимо от источника:
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=80-85)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=80-85)]
 
 Теперь в HTTP-ответе будет включать доступ-элемент управления-Allow-Credentials заголовок, который предписывает браузеру, поддерживает ли сервер учетные данные для запроса независимо от источника.
 
@@ -215,7 +215,7 @@ $.ajax({
 
 Заголовок доступа-элемент управления-Max-Age указывает, как долго ответ на Предварительный запрос может быть кэширован. Для установки этого заголовка:
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=89-94)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=89-94)]
 
 <a name="cors-how-cors-works"></a>
 

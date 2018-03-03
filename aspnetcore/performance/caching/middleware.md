@@ -9,11 +9,11 @@ ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: 29ef3cf3d8bcd6b4ebbf08d831dc146e830fa1ac
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: e9a74d8f6c3945b1bc8c62d0ab21145a7c5717fb
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Кэширование по промежуточного слоя в ASP.NET Core ответов
 
@@ -31,11 +31,11 @@ ms.lasthandoff: 02/11/2018
 
 В `ConfigureServices`, добавление в коллекцию службы по промежуточного слоя.
 
-[!code-csharp[Main](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
+[!code-csharp[](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
 
 Настройка приложения для использования по промежуточного слоя с `UseResponseCaching` метод расширения, который добавляет по промежуточного слоя в конвейер обработки запросов. Добавляет в пример приложения [ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2) заголовок в ответ, который кэширует кэшируемых ответов на срок до 10 секунд. Образец отправляет [ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4) заголовок для настройки по промежуточного слоя для обслуживания только если кэшированный ответ [ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4) заголовок последующих запросов таковыми исходного запроса.
 
-[!code-csharp[Main](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
+[!code-csharp[](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
 
 По промежуточного слоя, кэширование ответа только кэширует ответы сервера, которые приводят к код состояния 200 (ОК). Все другие ответы, включая [страницы ошибок](xref:fundamentals/error-handling), учитываются по промежуточного слоя.
 
@@ -125,10 +125,10 @@ if (responseCachingFeature != null)
 * Метод запроса должно быть GET или HEAD.
 * Терминалов по промежуточного слоя, таких как [по промежуточного слоя статических файлов](xref:fundamentals/static-files), не должен обработать ответ перед по промежуточного слоя кэширования ответа.
 * `Authorization` Заголовок не должен присутствовать.
-* `Cache-Control`Параметры заголовка должен быть допустимым, а ответ должен быть помечен `public` и не помечен `private`.
+* `Cache-Control` Параметры заголовка должен быть допустимым, а ответ должен быть помечен `public` и не помечен `private`.
 * `Pragma: no-cache` Заголовок не должно быть Если `Cache-Control` заголовок отсутствует, как `Cache-Control` переопределяет заголовок `Pragma` заголовка, если они есть.
 * `Set-Cookie` Заголовок не должен присутствовать.
-* `Vary`Параметры заголовка должно быть допустимым и не равно `*`.
+* `Vary` Параметры заголовка должно быть допустимым и не равно `*`.
 * `Content-Length` Значение заголовка (если задать) должно соответствовать размеру текста ответа.
 * [IHttpSendFileFeature](/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature) не используется.
 * Ответ не должно быть устаревшей в соответствии с `Expires` заголовок и `max-age` и `s-maxage` кэшировать директивы.

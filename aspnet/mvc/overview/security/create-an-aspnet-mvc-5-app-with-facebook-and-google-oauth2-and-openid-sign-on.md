@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: ccf4329e6684d07570bfaabfaa1a570664fb2ca3
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8dc2221ea19a33f1d34ba3aae8c60e365423e140
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Создание приложения ASP.NET MVC 5 с Facebook, Twitter, LinkedIn и Google OAuth2 единого входа (C#)
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Этого учебника показано, как построить веб-приложение ASP.NET MVC 5, который позволяет пользователям входить в систему с помощью [OAuth 2.0](http://oauth.net/2/) с учетными данными из внешнего поставщика аутентификации, например Facebook, Twitter, LinkedIn, Microsoft или Google. Для простоты учебнике рассматривается работа с учетными данными с Facebook и Google.
 > 
@@ -114,6 +114,9 @@ ms.lasthandoff: 01/24/2018
 <a id="goog"></a>
 ## <a name="creating-a-google-app-for-oauth-2-and-connecting-the-app-to-the-project"></a>Создание приложения Google OAuth 2 и подключение приложения в проект
 
+> [!WARNING]
+> Текущий Google OAuth инструкции см. [Google Настройка проверки подлинности в ASP.NET Core](/aspnet/core/security/authentication/social/google-logins).
+
 1. Перейдите к [Google Developers Console](https://console.developers.google.com/).
 1. Если проект перед еще не создан, выберите **учетные данные** левой вкладке, а затем выберите **создать**.
 1. На левой вкладке нажмите кнопку **учетные данные**.
@@ -158,6 +161,9 @@ ms.lasthandoff: 01/24/2018
 
 <a id="fb"></a>
 ## <a name="creating-the-app-in-facebook-and-connecting-the-app-to-the-project"></a>Создать приложение в Facebook и подключить приложения в проект
+
+> [!WARNING]
+> Текущей инструкции проверки подлинности Facebook OAuth2 см [проверки подлинности Facebook, Настройка](/aspnet/core/security/authentication/social/facebook-logins)
 
 Для проверки подлинности Facebook OAuth2 необходимо скопировать в проект некоторые параметры из приложения, создаваемые в Facebook.
 

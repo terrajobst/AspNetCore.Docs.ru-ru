@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bootstrap
-ms.openlocfilehash: dfed5c7a8e103973048295b7607008ecc7e90eeb
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: e2ade6223cdc56a4f0f00ff0b985ceda4ab5484a
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="building-beautiful-responsive-sites-with-bootstrap"></a>Создание привлекательных, быстро реагирующих узлов с начальной загрузки
 
 <a name="bootstrap-index"></a>
 
-По [Стив Смит](https://ardalis.com/)
+Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
 Bootstrap сейчас наиболее популярных веб-платформа для разработки отвечать на запросы веб-приложений. Он предлагает ряд функций и преимуществ, которые могут упростить работу пользователей с веб-сайте ли вы новичок в переднего плана проектирования и разработки или экспертом. Bootstrap развертывается как набор файлов CSS и JavaScript и призван помочь масштаба веб-сайта или приложения эффективно от телефонов для планшетных ПК для настольных компьютеров.
 
@@ -31,7 +31,7 @@ Bootstrap сейчас наиболее популярных веб-платфо
 
 Добавление начальной загрузки в ASP.NET Core проекта — это просто добавляя его в *bower.json* как зависимость:
 
-[!code-json[Main](../common/samples/WebApplication1/bower.json?highlight=5)]
+[!code-json[](../common/samples/WebApplication1/bower.json?highlight=5)]
 
 Это рекомендуемый способ добавить в проект ASP.NET Core начальной загрузки.
 
@@ -60,7 +60,7 @@ Install-Package bootstrap
 
 Если ссылаетесь на свои собственные локальные версии начальной загрузки, необходимо ссылаться на них в все страницы, которые будут использовать его. В рабочей среде следует ссылаться начальной загрузки с помощью CDN. В шаблоне сайта ASP.NET по умолчанию *_Layout.cshtml* файл таким образом следующим образом:
 
-[!code-html[Main](../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=9,13,51,59)]
+[!code-html[](../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=9,13,51,59)]
 
 > [!NOTE]
 > Если вы собираетесь использовать любой из подключаемых модулей начальной загрузки jQuery, также необходимо будет ссылаться на jQuery.

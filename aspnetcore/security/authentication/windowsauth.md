@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/windowsauth
-ms.openlocfilehash: c229537e7f533eea2173dbc51b8d0d0e097d434a
-ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
+ms.openlocfilehash: f6efd838d7b6c837c75f36591a49eab812f9d54c
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="configure-windows-authentication-in-an-aspnet-core-app"></a>Настройка проверки подлинности Windows в приложении ASP.NET Core
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 02/23/2018
 
 ## <a name="enable-windows-authentication-with-iis"></a>Включение проверки подлинности Windows в службах IIS
 
-Службы IIS используют [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) (ANCM) для размещения приложений ASP.NET Core. ANCM потоки проверки подлинности Windows для служб IIS по умолчанию. Настройка проверки подлинности Windows осуществляется в службах IIS, не проекта приложения. Ниже показано, как использовать диспетчер служб IIS для настройки приложения ASP.NET Core, чтобы использовать проверку подлинности Windows.
+Службы IIS используют [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) для приложений ASP.NET Core узла. Модуль потоки проверки подлинности Windows для служб IIS по умолчанию. В службах IIS, приложение не настроена проверка подлинности Windows. Ниже показано, как использовать диспетчер служб IIS для настройки приложения ASP.NET Core, чтобы использовать проверку подлинности Windows.
 
 ### <a name="create-a-new-iis-site"></a>Создать новый сайт IIS
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 02/23/2018
 В ASP.NET Core 2.x `[Authorize]` атрибут требует дополнительной настройки в *файла Startup.cs* проверку анонимные запросы на проверку подлинности Windows. Рекомендуемая конфигурация немного различается в зависимости от используемого веб-сервера.
 
 > [!NOTE]
-> По умолчанию пользователи, для которых отсутствует разрешение на доступ к странице представлены с пустой документ. [StatusCodePages по промежуточного слоя](xref:fundamentals/error-handling#configuring-status-code-pages) можно настроить для предоставления пользователям возможности для повышения удобства «Доступ запрещен».
+> По умолчанию пользователи, для которых отсутствует разрешение на доступ к странице представлены с пустым ответом HTTP 403. [StatusCodePages по промежуточного слоя](xref:fundamentals/error-handling#configuring-status-code-pages) можно настроить для предоставления пользователям возможности для повышения удобства «Доступ запрещен».
 
 #### <a name="iis"></a>IIS
 

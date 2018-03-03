@@ -11,11 +11,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/react
-ms.openlocfilehash: e093a47159fd8278ff3705bb2c53571a8e27fab8
-ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
+ms.openlocfilehash: cda9f52d1f5fa1d240e210488bf1bd5c76e49be7
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-the-react-project-template"></a>Используйте шаблон проекта реагирование на них
 
@@ -49,9 +49,9 @@ cd my-new-app
 
 Убедитесь в наличии переменной среды `ASPNETCORE_Environment` со значением `Development`. В Windows (в запросах не PowerShell) запускаются `SET ASPNETCORE_Environment=Development`. В Linux или macOS, запустите `export ASPNETCORE_Environment=Development`.
 
-Запустите `dotnet build` для проверки приложения правильно ли выполняется сборка. Во время первого выполнения процесса построения восстанавливает npm зависимости, что может занять несколько минут. Последующие сборки выполняется гораздо быстрее.
+Запустите [dotnet построения](/dotnet/core/tools/dotnet-build) для проверки приложения правильно ли выполняется сборка. Во время первого выполнения процесса построения восстанавливает npm зависимости, что может занять несколько минут. Последующие сборки выполняется гораздо быстрее.
 
-Запустите `dotnet run` для запуска приложения.
+Запустите [dotnet запуска](/dotnet/core/tools/dotnet-run) для запуска приложения.
 
 ---
 
@@ -65,7 +65,7 @@ cd my-new-app
 
 ## <a name="install-npm-packages"></a>Установка пакета npm
 
-Для установки пакета npm сторонних разработчиков, используйте в командной *ClientApp* подкаталог. Например:
+Для установки пакета npm сторонних разработчиков, используйте в командной *ClientApp* подкаталог. Пример:
 
 ```console
 cd ClientApp

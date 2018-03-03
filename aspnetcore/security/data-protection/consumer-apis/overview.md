@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/overview
-ms.openlocfilehash: 7f335681581b73e36e5b4deaf513255770900965
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3aa0c4bc8d009147dd15571da4d7d63402e4c512
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="consumer-apis-overview"></a>Общие сведения об API-интерфейсы потребителя
 
@@ -48,11 +48,11 @@ ms.lasthandoff: 01/30/2018
 
 3. Создание `IDataProtector` из `IDataProtectionProvider` и использовать его для установки и снятия защиты данных.
 
-[!code-csharp[Main](../using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
+[!code-csharp[](../using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
 
 Пакет Microsoft.AspNetCore.DataProtection.Abstractions содержит метод расширения `IServiceProvider.GetDataProtector` для удобства разработчиков. Он инкапсулирует единственную операцию обоих получение `IDataProtectionProvider` из поставщика служб и вызова `IDataProtectionProvider.CreateProtector`. Следующий пример демонстрирует его использование.
 
-[!code-csharp[Main](./overview/samples/getdataprotector.cs?highlight=15)]
+[!code-csharp[](./overview/samples/getdataprotector.cs?highlight=15)]
 
 >[!TIP]
 > Экземпляры `IDataProtectionProvider` и `IDataProtector` потокобезопасны для нескольких клиентов. Он предназначен, когда компонент получает ссылку на `IDataProtector` через вызов `CreateProtector`, он будет использовать эту ссылку для нескольких вызовов `Protect` и `Unprotect`. Вызов `Unprotect` CryptographicException вызывает исключение, если защищенный полезных данных не может быть проверена или расшифровать. Некоторые компоненты нужна возможность пропускать ошибки во время снятия защиты операций; компонент, который считывает файлы cookie проверки подлинности может обработать эту ошибку и обрабатывать запрос, как если бы объекты cookie не на всех, а не ошибкой запроса сразу. В частности, компонентами, которые хотите такого поведения следует перехватывать CryptographicException вместо подавление всех исключений.

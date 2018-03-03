@@ -8,11 +8,11 @@ ms.date: 09/20/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: 37592c3b2099c2cb74dc42ad4a7937b32c281f65
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: c654cfd7c2d291849067bfd3297f940018ccb3d8
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="response-caching-in-aspnet-core"></a>Кэширование ответов в ASP.NET Core
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 02/11/2018
 
 Дополнительные сведения см. в разделе [вспомогательный тег кэша в ASP.NET Core MVC](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper).
 
-### <a name="distributed-cache-tag-helper"></a>Вспомогательный тег распределенного кэша
+### <a name="distributed-cache-tag-helper"></a>Вспомогательная функция тега распределенного кэша
 
 Можно кэшировать содержимое из страницы Razor в распределенных облачных или в сценариях веб-ферм или представление MVC со вспомогательным методом тег распределенного кэша. Вспомогательный распределенного кэша тег использует SQL Server или Redis для хранения данных.
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 02/11/2018
 > [!WARNING]
 > Отключение кэширования для содержимого, которое содержит сведения о прошедших проверку подлинности клиентов. Кэширование должны включаться только для содержимого, которое не меняется на основе удостоверения пользователя или ли пользователь выполнил вход.
 
-[VaryByQueryKeys](/dotnet/api/microsoft.aspnetcore.mvc.responsecacheattribute.varybyquerykeys) хранимых ответа зависит от значения из заданного списка ключей запроса. Если отдельное значение `*` не предоставлен, зависит от по промежуточного слоя ответов для всех запросов параметров строки запроса. `VaryByQueryKeys`требуется ASP.NET Core 1.1 или более поздней версии.
+[VaryByQueryKeys](/dotnet/api/microsoft.aspnetcore.mvc.responsecacheattribute.varybyquerykeys) хранимых ответа зависит от значения из заданного списка ключей запроса. Если отдельное значение `*` не предоставлен, зависит от по промежуточного слоя ответов для всех запросов параметров строки запроса. `VaryByQueryKeys` требуется ASP.NET Core 1.1 или более поздней версии.
 
 По промежуточного слоя кэширования ответа необходимо включить, чтобы задать `VaryByQueryKeys` свойства; в противном случае создается исключение времени выполнения. Нет соответствующего заголовка HTTP для `VaryByQueryKeys` свойства. Свойство является функцией HTTP, обрабатываемых по промежуточного слоя кэширования ответа. По промежуточного слоя обслуживать кэшированный ответ строка запроса и значение строки запроса должно соответствовать предыдущего запроса. Например рассмотрим последовательности запросов и результаты, показанные в следующей таблице.
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 02/11/2018
 
 Этот заголовок записывается только когда `VaryByHeader` свойству. Ему присваивается `Vary` значение свойства. В следующем примере используется `VaryByHeader` свойство:
 
-[!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
+[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
 
 Можно просматривать заголовки ответа с помощью средства сетевой вашего браузера. На следующем рисунке показаны границы F12, выведенных в **сети** вкладке при `About2` обновляется метода действия:
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 02/11/2018
 
 ### <a name="nostore-and-locationnone"></a>NoStore и Location.None
 
-`NoStore`переопределяет большинство других свойств. Если значение этого свойства `true`, `Cache-Control` заголовок имеет значение `no-store`. Если `Location` равно `None`:
+`NoStore` переопределяет большинство других свойств. Если значение этого свойства `true`, `Cache-Control` заголовок имеет значение `no-store`. Если `Location` равно `None`:
 
 * Параметру `Cache-Control` задается значение `no-store,no-cache`.
 * Параметру `Pragma` задается значение `no-cache`.
@@ -130,7 +130,7 @@ ms.lasthandoff: 02/11/2018
 
 Обычно устанавливается `NoStore` для `true` на страницы ошибок. Пример:
 
-[!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
+[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
 
 Это приводит к следующие заголовки:
 
@@ -148,7 +148,7 @@ Pragma: no-cache
 
 Ниже приведен пример заголовки создается, задав `Duration` и оставить значение по умолчанию `Location` значение:
 
-[!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
+[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
 
 Получается следующий заголовок.
 
@@ -162,11 +162,11 @@ Cache-Control: public,max-age=60
 
 Настройка профиля кэша.
 
-[!code-csharp[Main](response/sample/Startup.cs?name=snippet1)] 
+[!code-csharp[](response/sample/Startup.cs?name=snippet1)] 
 
 Ссылка на профиль кэша:
 
-[!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
+[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
 
 `ResponseCache` Атрибут может применяться к действия (методы) и контроллеры (классы). Атрибуты на уровне метода переопределяют параметры, указанные в атрибуты уровня класса.
 
