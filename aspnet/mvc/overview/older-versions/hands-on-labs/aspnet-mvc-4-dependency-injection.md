@@ -12,21 +12,22 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: 48a7d7fdb670aebb72450fc4eb12a364ef595c53
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c735bbdafe4b8f0423abb6bacd076f173a1be9d8
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
-<a name="aspnet-mvc-4-dependency-injection"></a>Внедрение зависимостей в ASP.NET MVC 4
-====================
-по [Web лагеря команды](https://twitter.com/webcamps)
+# <a name="aspnet-mvc-4-dependency-injection"></a>Внедрение зависимостей в ASP.NET MVC 4
+
+По [Web лагеря команды](https://twitter.com/webcamps)
+
+[Загрузите комплект учебных материалов лагеря Web](https://aka.ms/webcamps-training-kit)
+
+Это Практическое лабораторное занятие предполагает иметь базовые знания об **ASP.NET MVC** и **фильтров ASP.NET MVC 4**. Если вы не использовали **фильтров ASP.NET MVC 4** раньше, мы рекомендуем перейти **настраиваемые действия ASP.NET MVC фильтры** Практическое лабораторное занятие.
 
 > [!NOTE]
-> Это Практическое лабораторное занятие предполагает иметь базовые знания об **ASP.NET MVC** и **фильтров ASP.NET MVC 4**. Если вы не использовали **фильтров ASP.NET MVC 4** раньше, мы рекомендуем перейти **настраиваемые действия ASP.NET MVC фильтры** Практическое лабораторное занятие.
-> 
-> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843).
-
+> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступные в [выпуски Microsoft Web/WebCampTrainingKit](https://aka.ms/webcamps-training-kit). Проект для этой лаборатории доступен на [внедрения зависимостей ASP.NET MVC 4](https://github.com/Microsoft-Web/HOL-MVC4DependencyInjection).
 
 В **объектно-ориентированное программирование** парадигме, совместной работы объектов в модели совместная работа которых содержится участников и пользователей. Естественно эта модель связи приводит к возникновению ошибки зависимости между объектами и компонентами, становится трудно управлять при увеличении сложности.
 
@@ -91,7 +92,7 @@ ms.lasthandoff: 01/24/2018
 
 Для удобства большая часть кода, который вы планируете управлять вдоль этой лаборатории доступна как фрагменты кода Visual Studio. Чтобы установить фрагменты кода запуска **.\Source\Setup\CodeSnippets.vsi** файла.
 
-Если вы не знакомы с фрагментов кода Visual Studio и хотите узнать о способах их использования, можно ссылаться в приложение из этого документа &quot; [с помощью фрагментов кода в приложении б.](#AppendixB)&quot;.
+Если вы не знакомы с фрагментов кода Visual Studio и хотите узнать о способах их использования, можно ссылаться в приложение из этого документа &quot;[с помощью фрагментов кода в приложении б](#AppendixB)&quot;.
 
 * * *
 
