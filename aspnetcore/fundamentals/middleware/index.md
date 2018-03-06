@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 158f11875f22f8f9dba6f7f109123717b9da8d18
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: 5d236c79120d79195c1970cc87d164002b56d0f1
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="aspnet-core-middleware"></a>ПО промежуточного слоя ASP.NET Core
 
@@ -44,13 +44,13 @@ ms.lasthandoff: 02/11/2018
 
 Простейшее приложение ASP.NET Core задает один делегат запроса, обрабатывающий все запросы. В этом случае конвейер запросов как таковой отсутствует. Вместо этого в ответ на каждый HTTP-запрос вызывается одна анонимная функция.
 
-[!code-csharp[Main](index/sample/Middleware/Startup.cs)]
+[!code-csharp[](index/sample/Middleware/Startup.cs)]
 
 Первый делегат [app.Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions) завершает конвейер.
 
-Несколько делегатов запроса можно соединить в цепочку с помощью [app.Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Параметр `next` представляет следующий делегат в конвейере. (Помните, что замыкать конвейер можно *не* вызывая параметр *next*.) Обычно действия можно выполнять как до, так и после следующего делегата, как показано в этом примере.
+Несколько делегатов запроса можно соединить в цепочку с помощью [app.Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Параметр `next` представляет следующий делегат в конвейере. (Помните, что замкнуть конвейер, *не* вызывая параметр *next*, невозможно.) Обычно действия можно выполнять как до, так и после следующего делегата, как показано в этом примере.
 
-[!code-csharp[Main](index/sample/Chain/Startup.cs?name=snippet1)]
+[!code-csharp[](index/sample/Chain/Startup.cs?name=snippet1)]
 
 >[!WARNING]
 > Не вызывайте `next.Invoke` после отправки отклика клиенту. Изменения `HttpResponse` после запуска отклика приведут к возникновению исключения. Например, таким изменением может быть задание заголовков, кода состояние и т. п. Запись в тело отклика после вызова `next`:
@@ -142,7 +142,7 @@ public void Configure(IApplicationBuilder app)
 
 Расширения `Map*` используются в качестве соглашения для ветвления конвейера. [Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) осуществляет ветвление конвейера запросов на основе совпадений для заданного пути запроса. Если путь запроса начинается с заданного пути, данная ветвь выполняется.
 
-[!code-csharp[Main](index/sample/Chain/StartupMap.cs?name=snippet1)]
+[!code-csharp[](index/sample/Chain/StartupMap.cs?name=snippet1)]
 
 Ниже приведены запросы и отклики `http://localhost:1234` на базе предыдущего кода.
 
@@ -157,7 +157,7 @@ public void Configure(IApplicationBuilder app)
 
 [MapWhen](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapwhenextensions) осуществляет ветвление конвейера запросов на основе результата заданного предиката. Любой предикат типа `Func<HttpContext, bool>` можно использовать для сопоставления запросов с новой ветвью конвейера. В следующем примере предикат служит для определения наличия переменной строки запроса `branch`.
 
-[!code-csharp[Main](index/sample/Chain/StartupMapWhen.cs?name=snippet1)]
+[!code-csharp[](index/sample/Chain/StartupMapWhen.cs?name=snippet1)]
 
 Ниже приведены запросы и отклики `http://localhost:1234` на базе предыдущего кода.
 
@@ -212,7 +212,7 @@ ASP.NET Core содержит следующие компоненты проме
 
 ПО промежуточного слоя обычно инкапсулируется в класс и предоставляется с помощью метода расширения. Рассмотрим следующее ПО промежуточного слоя, которое задает язык и региональные параметры для текущего запроса из строки запроса.
 
-[!code-csharp[Main](index/sample/Culture/StartupCulture.cs?name=snippet1)]
+[!code-csharp[](index/sample/Culture/StartupCulture.cs?name=snippet1)]
 
 Примечание. Приведенный выше пример кода демонстрирует создание компонента промежуточного слоя. Сведения о встроенной поддержке локализации ASP.NET Core см. в разделе [ Глобализация и локализация](xref:fundamentals/localization).
 
@@ -220,15 +220,15 @@ ASP.NET Core содержит следующие компоненты проме
 
 Следующий код перемещает делегат ПО промежуточного слоя в класс.
 
-[!code-csharp[Main](index/sample/Culture/RequestCultureMiddleware.cs)]
+[!code-csharp[](index/sample/Culture/RequestCultureMiddleware.cs)]
 
 Следующий метод расширения предоставляет ПО промежуточного слоя посредством [IApplicationBuilder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.iapplicationbuilder).
 
-[!code-csharp[Main](index/sample/Culture/RequestCultureMiddlewareExtensions.cs)]
+[!code-csharp[](index/sample/Culture/RequestCultureMiddlewareExtensions.cs)]
 
 Следующий код вызывает ПО промежуточного слоя из `Configure`.
 
-[!code-csharp[Main](index/sample/Culture/Startup.cs?name=snippet1&highlight=5)]
+[!code-csharp[](index/sample/Culture/Startup.cs?name=snippet1&highlight=5)]
 
 ПО промежуточного слоя должно соответствовать [принципу явных зависимостей](http://deviq.com/explicit-dependencies-principle/), предоставляя свои зависимости в своем конструкторе. ПО промежуточного слоя создается один раз за *время существования приложения*. В разделе *Зависимости отдельных запросов* ниже приведены сведения о том, как использовать службы совместно с ПО промежуточного слоя внутри запроса.
 
@@ -262,4 +262,4 @@ public class MyMiddleware
 * [Запуск приложения](xref:fundamentals/startup)
 * [Параметры запроса](xref:fundamentals/request-features)
 * [Активация фабричного ПО промежуточного слоя](xref:fundamentals/middleware/extensibility)
-* [Активация фабричного ПО промежуточного слоя со сторонним контейнером](xref:fundamentals/middleware/extensibility-third-party-container)
+* [Активация ПО промежуточного слоя со сторонним контейнером](xref:fundamentals/middleware/extensibility-third-party-container)

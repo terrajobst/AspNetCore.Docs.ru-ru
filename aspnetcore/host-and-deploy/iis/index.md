@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 620bfefa625f4b39cb2731b4f553caaa4526c71b
-ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
+ms.openlocfilehash: b1ca9303c620597f7844c401048129044e99d7be
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -45,6 +45,8 @@ public static IWebHost BuildWebHost(string[] args) =>
         ...
 ```
 
+Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. Метод `UseIISIntegration` принимает этот динамический порт и настраивает Kestrel для прослушивания адресу `http://locahost:{dynamicPort}/`. Это переопределяет другие конфигурации URL-адресов, такие как вызовы `UseUrls` или [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). Таким образом, вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel прослушивает порт, указанный при выполнении приложения без IIS.
+
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Включите в зависимости приложения зависимость от пакета [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/). Используйте ПО промежуточного слоя для интеграции IIS, добавив метод расширения [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration) в [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder).
@@ -57,6 +59,10 @@ var host = new WebHostBuilder()
 ```
 
 Оба метода, [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel) и [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration), — обязательные. Код, вызывающий `UseIISIntegration`, не влияет на переносимость кода. Если приложение запускается не в IIS (например, запускается непосредственно в Kestrel), `UseIISIntegration` не работает.
+
+Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. Метод `UseIISIntegration` принимает этот динамический порт и настраивает Kestrel для прослушивания адресу `http://locahost:{dynamicPort}/`. Это переопределяет другие конфигурации URL-адресов, такие как вызовы `UseUrls`. Таким образом, при использовании этого модуля вызов `UseUrls` не требуется. При вызове `UseUrls` Kestrel прослушивает порт, указанный при выполнении приложения без IIS.
+
+При вызове `UseUrls` в приложении ASP.NET Core 1.0 следует выполнять вызов **до** вызова `UseIISIntegration`, чтобы исключить перезапись порта, настроенного в модуле. В ASP.NET Core 1.1 соблюдать этот порядок вызовов не требуется, так как параметр модуля переопределяет `UseUrls`.
 
 ---
 
@@ -164,6 +170,8 @@ services.Configure<IISOptions>(options =>
 1. Установите [пакет размещения .NET Core для Windows Server](https://aka.ms/dotnetcore-2-windowshosting) в размещающей системе. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратный прокси-сервер между службами IIS и сервером Kestrel. Если система не подключена к Интернету, перед установкой пакета размещения .NET Core для Windows Server получите и установите [Распространяемый компонент Microsoft Visual C++ 2015](https://www.microsoft.com/download/details.aspx?id=53840).
 
    **Важно!** Если пакет размещения был установлен до установки служб IIS, пакет необходимо восстановить. После установки служб IIS запустите установщик пакета размещения еще раз.
+   
+   Чтобы запретить установщику установку пакетов x86 в операционной системе x64, запускать установщик следует из командной строки с правами администратора с параметром `OPT_NO_X86=1`.
 
 1. Перезагрузите систему или в командой строке выполните команду **net stop was /y**, а затем — команду **net start w3svc**. Перезапуск служб IIS позволит обнаружить изменения в системном пути, которые внес установщик.
 
@@ -266,7 +274,7 @@ services.Configure<IISOptions>(options =>
 Если набор ключей хранится в памяти, при перезапуске приложения происходит следующее:
 
 * Все токены аутентификации, использующие файлы cookie, становятся недействительными. 
-* При выполнении последующего запроса пользователю требуется выполнить вход снова. 
+* При выполнении следующего запроса пользователю требуется выполнить вход снова. 
 * Все данные, защищенные с помощью набора ключей, больше не могут быть расшифрованы. Это могут быть [токены CSRF](xref:security/anti-request-forgery#how-does-aspnet-core-mvc-address-csrf) и [файлы cookie временных данных ASP.NET Core MVC](xref:fundamentals/app-state#tempdata).
 
 Чтобы настроить защиту данных в службах IIS для хранения набора ключей, воспользуйтесь **одним** из следующих методов:
