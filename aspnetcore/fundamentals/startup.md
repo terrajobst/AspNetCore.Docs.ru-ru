@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/startup
-ms.openlocfilehash: cf9e6a25f5b9cc8395c803a11c15622349620a07
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c324918b33af82b619bb2251f32308e4a57c27e5
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="application-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
@@ -24,20 +24,20 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="the-startup-class"></a>Класс Startup
 
-Приложения ASP.NET Core используют класс `Startup`, который по соглашению называется `Startup`. Класс `Startup`:
+Приложения ASP.NET Core используют класс `Startup`, который называется `Startup` по соглашению . Класс `Startup`:
 
-* При необходимости может включать метод [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) для настройки служб приложения.
+* При необходимости может содержать метод [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) ддля настройки служб приложения.
 * Должен включать метод [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) для создания конвейера обработки запросов приложения.
 
 `ConfigureServices` и `Configure` вызываются средой выполнения при запуске приложения:
 
 [!code-csharp[Main](startup/snapshot_sample/Startup1.cs)]
 
-Укажите класс `Startup` с методом [WebHostBuilderExtensions](/dotnet/api/Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions) [UseStartup&lt;TStartup&gt;](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_):
+Укажите класс `Startup` в методе [WebHostBuilderExtensions](/dotnet/api/Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions) [UseStartup&lt;TStartup&gt;](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_):
 
 [!code-csharp[Main](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=10)]
 
-Конструктор классов `Startup` принимает зависимости, определенные узлом. Типичным применением [внедрения зависимостей](xref:fundamentals/dependency-injection) в класс `Startup` является внедрение:
+Конструктор класса `Startup` принимает зависимости, определенные средой размещения. Типичным применением [внедрения зависимостей](xref:fundamentals/dependency-injection) в класс `Startup` является внедрение:
 
 * [IHostingEnvironment](/dotnet/api/Microsoft.AspNetCore.Hosting.IHostingEnvironment) для настройки служб средой.
 * [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration) для настройки приложения во время запуска.
@@ -56,7 +56,7 @@ ms.lasthandoff: 01/30/2018
 * Вызывается веб-узлом перед методом `Configure` для настройки служб приложения.
 * По соглашению используется для задания [параметров конфигурации](xref:fundamentals/configuration/index).
 
-Добавление служб в контейнер службы делает их доступными в приложении и методе `Configure`. Службы разрешаются посредством [внедрения зависимостей](xref:fundamentals/dependency-injection) или из [IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices).
+Добавление служб в контейнер служб делает их доступными в приложении и в методе `Configure`. Службы разрешаются посредством [внедрения зависимостей](xref:fundamentals/dependency-injection) или из [IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices).
 
 Веб-узел может настраивать некоторые службы перед вызовом методов `Startup`. Дополнительные сведения см. в разделе [Размещение](xref:fundamentals/hosting). 
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="the-configure-method"></a>Метод конфигурации
 
-Метод [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) используется для указания того, как приложение реагирует на HTTP-запросы. Конвейер запросов настраивается путем добавления компонентов [ПО промежуточного слоя](xref:fundamentals/middleware) в экземпляр [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder). `IApplicationBuilder` доступен для метода `Configure`, но он не зарегистрирован в контейнере службы. Размещение создает `IApplicationBuilder` и передает его непосредственно в `Configure` ([источник ссылки](https://github.com/aspnet/Hosting/blob/release/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/WebHost.cs#L179-L192)).
+Метод [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) используется для указания того, как приложение реагирует на HTTP-запросы. Конвейер запросов настраивается путем добавления компонентов [ПО промежуточного слоя](xref:fundamentals/middleware/index) в экземпляр [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder). `IApplicationBuilder` доступен для метода `Configure`, но он не зарегистрирован в контейнере службы. Размещение создает `IApplicationBuilder` и передает его непосредственно в `Configure` ([источник ссылки](https://github.com/aspnet/Hosting/blob/release/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/WebHost.cs#L179-L192)).
 
 [Шаблоны ASP.NET Core](/dotnet/core/tools/dotnet-new) настраивают конвейер, добавляя поддержку страницы исключений разработчика, [BrowserLink](http://vswebessentials.com/features/browserlink), страниц ошибок, статических файлов и ASP.NET MVC:
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 01/30/2018
 
 В сигнатуре метода также могут быть указаны дополнительные службы, такие как `IHostingEnvironment` и `ILoggerFactory`. Когда дополнительные службы указаны, они внедряются, если доступны.
 
-Дополнительные сведения об использовании `IApplicationBuilder` см. в разделе [ПО промежуточного слоя](xref:fundamentals/middleware).
+Дополнительные сведения об использовании `IApplicationBuilder` см. в разделе [ПО промежуточного слоя](xref:fundamentals/middleware/index).
 
 ## <a name="convenience-methods"></a>Удобный метод
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 01/30/2018
 
 Используйте [IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) для настройки ПО промежуточного слоя в начале или конце конвейера ПО промежуточного слоя [Configure](#the-configure-method) приложения. `IStartupFilter` удобно использовать, чтобы обеспечить запуск ПО промежуточного слоя до или после ПО промежуточного слоя, добавляемого библиотеками в начале или в конце конвейера обработки запросов приложения.
 
-`IStartupFilter` реализует отдельный метод [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter.configure), который принимает и возвращает `Action<IApplicationBuilder>`. [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) определяет класс для настройки конвейера запросов приложения. Дополнительные сведения см. в разделе [Создание конвейера ПО промежуточного слоя с помощью IApplicationBuilder](xref:fundamentals/middleware#creating-a-middleware-pipeline-with-iapplicationbuilder).
+`IStartupFilter` реализует отдельный метод [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter.configure), который принимает и возвращает `Action<IApplicationBuilder>`. [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) определяет класс для настройки конвейера запросов приложения. Дополнительные сведения см. в разделе [Создание конвейера ПО промежуточного слоя с помощью IApplicationBuilder](xref:fundamentals/middleware/index#creating-a-middleware-pipeline-with-iapplicationbuilder).
 
 Каждый `IStartupFilter` реализует один или несколько компонентов ПО промежуточного слоя в конвейере запросов. Фильтры вызываются в том порядке, в котором они были добавлены в контейнер службы. Фильтры могут добавлять ПО промежуточного слоя до или после передачи управления следующему фильтру, поэтому они добавляются в начало или конец конвейера приложения.
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 01/30/2018
 
 * [Размещение](xref:fundamentals/hosting)
 * [Работа с несколькими средами](xref:fundamentals/environments)
-* [ПО промежуточного слоя](xref:fundamentals/middleware)
+* [ПО промежуточного слоя](xref:fundamentals/middleware/index)
 * [Ведение журнала](xref:fundamentals/logging/index)
 * [Конфигурация](xref:fundamentals/configuration/index)
 * [Класс StartupLoader: метод FindStartupType (источник ссылки)](https://github.com/aspnet/Hosting/blob/rel/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs#L66-L116)
