@@ -68,11 +68,11 @@ ms.lasthandoff: 02/01/2018
 
 Веб-узел предоставляет несколько служб, которые доступны конструктору классов `Startup`. Приложение добавляет дополнительные службы через `ConfigureServices`. Как службы узла, так и службы приложения доступны в `Configure` и во всем приложении.
 
-## <a name="the-configure-method"></a>Метод конфигурации
+## <a name="the-configure-method"></a>Метод Configure 
 
 Метод [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) используется для указания того, как приложение реагирует на HTTP-запросы. Конвейер запросов настраивается путем добавления компонентов [ПО промежуточного слоя](xref:fundamentals/middleware/index) в экземпляр [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder). `IApplicationBuilder` доступен для метода `Configure`, но он не зарегистрирован в контейнере службы. Размещение создает `IApplicationBuilder` и передает его непосредственно в `Configure` ([источник ссылки](https://github.com/aspnet/Hosting/blob/release/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/WebHost.cs#L179-L192)).
 
-[Шаблоны ASP.NET Core](/dotnet/core/tools/dotnet-new) настраивают конвейер, добавляя поддержку страницы исключений разработчика, [BrowserLink](http://vswebessentials.com/features/browserlink), страниц ошибок, статических файлов и ASP.NET MVC:
+[Шаблоны ASP.NET Core](/dotnet/core/tools/dotnet-new) имеют настройки конвейера с поддержкой страниц исключения для разработки, [BrowserLink](http://vswebessentials.com/features/browserlink), страниц ошибок, статических файлов и ASP.NET MVC:
 
 [!code-csharp[Main](../common/samples/WebApplication1DotNetCore2.0App/Startup.cs?range=28-48&highlight=5,6,10,13,15)]
 
