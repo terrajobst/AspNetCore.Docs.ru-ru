@@ -4,16 +4,16 @@ author: AdrienTorris
 description: "Обзор ASP.NET Core Identity значения по умолчанию и подробные сведения о настройке свойства удостоверения для использования пользовательских значений."
 manager: wpickett
 ms.author: scaddie
-ms.date: 02/21/2018
+ms.date: 03/06/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 6aeb85063b4b6f97822062b523a0c1f7ee6b595c
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 469068af2fc12627a0a5d1c5623eb60bef51cea0
+ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="configure-identity"></a>Настройка удостоверения
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/02/2018
 
 [IdentityOptions.ClaimsIdentity](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity) указывает [ClaimsIdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions) с свойства, показанные в таблице.
 
-| Свойство. | Описание: | По умолчанию |
+| Свойство. | Описание | Значение по умолчанию |
 | -------- | ----------- | :-----: |
 | [RoleClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.roleclaimtype) | Возвращает или задает тип утверждения, используемый для утверждения роли. | [ClaimTypes.Role](/dotnet/api/system.security.claims.claimtypes.role) |
 | [SecurityStampClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.securitystampclaimtype) | Возвращает или задает тип утверждения, используемый для отметки утверждения безопасности. | `AspNet.Identity.SecurityStamp` |
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/02/2018
 
 [IdentityOptions.Lockout](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout) указывает [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) с свойства, показанные в таблице.
 
-| Свойство. | Описание: | По умолчанию |
+| Свойство. | Описание | Значение по умолчанию |
 | -------- | ----------- | :-----: |
 | [AllowedForNewUsers](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.allowedfornewusers) | Определяет, если новый пользователь может быть заблокирован. | `true` |
 | [DefaultLockoutTimeSpan](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan) | Количество времени, пользователь будет заблокирован при возникновении блокировки. | 5 минут |
@@ -64,7 +64,7 @@ ASP.NET Core 2.0 добавлен [RequiredUniqueChars](/dotnet/api/microsoft.as
 
 [IdentityOptions.Password](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password) указывает [PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) с свойства, показанные в таблице.
 
-| Свойство. | Описание: | По умолчанию |
+| Свойство. | Описание | Значение по умолчанию |
 | -------- | ----------- | :-----: |
 | [RequireDigit](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredigit) | Необходимо указать число от 0-9 и пароль. | `true` |
 | [RequiredLength](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredlength) | Минимальная длина пароля. | 6 |
@@ -79,7 +79,7 @@ ASP.NET Core 2.0 добавлен [RequiredUniqueChars](/dotnet/api/microsoft.as
 
 [IdentityOptions.SignIn](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.signin) указывает [SignInOptions](/dotnet/api/microsoft.aspnetcore.identity.signinoptions) с свойства, показанные в таблице.
 
-| Свойство. | Описание: | По умолчанию |
+| Свойство. | Описание | Значение по умолчанию |
 | -------- | ----------- | :-----: |
 | [RequireConfirmedEmail](/dotnet/api/microsoft.aspnetcore.identity.signinoptions.requireconfirmedemail) | Требует подтверждения электронной почты для входа. | `false` |
 | [RequireConfirmedPhoneNumber](/dotnet/api/microsoft.aspnetcore.identity.signinoptions.requireconfirmedphonenumber) | Требуется номер телефона, подтвержденной для входа. | `false` |
@@ -103,7 +103,7 @@ ASP.NET Core 2.0 добавлен [RequiredUniqueChars](/dotnet/api/microsoft.as
 
 [IdentityOptions.User](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.user) указывает [UserOptions](/dotnet/api/microsoft.aspnetcore.identity.useroptions) с свойства, показанные в таблице.
 
-| Свойство. | Описание: | По умолчанию |
+| Свойство. | Описание | Значение по умолчанию |
 | -------- | ----------- | :-----: |
 | [AllowedUserNameCharacters](/dotnet/api/microsoft.aspnetcore.identity.useroptions.allowedusernamecharacters) | Допустимые символы в имени пользователя. | abcdefghijklmnopqrstuvwxyz<br>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789<br>-._@+ |
 | [RequireUniqueEmail](/dotnet/api/microsoft.aspnetcore.identity.useroptions.requireuniqueemail) | Требуется иметь уникальный адрес электронной почты пользователя. | `false` |
@@ -132,7 +132,7 @@ ASP.NET Core 2.0 добавлен [RequiredUniqueChars](/dotnet/api/microsoft.as
 | [AutomaticChallenge](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.automaticchallenge) | Применяется только к ASP.NET Core 1.x.<br><br> Значение true, если по промежуточного слоя проверки подлинности обрабатывает автоматического проблем. Если значение равно false, проверка подлинности по промежуточного слоя лишь изменяет ответы, если они явным образом указано `AuthenticationScheme`. |
 | [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.claimsissuer) | Возвращает или задает поставщик, который должен использоваться для любые утверждения, которые создаются (наследуется от [AuthenticationSchemeOptions](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions)). |
 | [Cookie.Domain](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.domain) | Домен, связанный с cookie. |
-| [Cookie.Expiration](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.expiration) | Возвращает или задает время существования куки-файла. |
+| [Cookie.Expiration](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.expiration) | Возвращает или задает время существования файлов cookie HTTP (не файл cookie проверки подлинности). Это свойство переопределено с [ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.expiretimespan). Не должны использоваться в контексте CookieAuthentication. |
 | [Cookie.HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) | Указывает, доступен ли cookie клиентским сценариям.<br><br>Значение по умолчанию — `true`. |
 | [Cookie.Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name) | Имя файла cookie.<br><br>Значение по умолчанию — `.AspNetCore.Cookies`. |
 | [Cookie.Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path) | Путь к файлу cookie. |

@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 223dd48bb996de527f20291e4701e7d1b60a539d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8c9971ccc70cb4b966abb64086b1b5420fc6c72a
+ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 <a name="creating-an-entity-framework-data-model-for-an-aspnet-mvc-application-1-of-10"></a>Создание модели данных Entity Framework для приложения ASP.NET MVC (часть 1 из 10)
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузка завершенного проекта](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/24/2018
 > > Объект [более новой версии этого учебника ряда](../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) доступно для Visual Studio 2013, Entity Framework 6 и MVC 5.
 > 
 > 
-> Contoso университета примера веб-приложения показано, как создавать приложения ASP.NET MVC 4, с помощью Entity Framework 5 и Visual Studio 2012. Образец приложения является веб-сайт для вымышленной компании Contoso университета. Он включает функции, такие как допуском студента, создание курса и инструктора назначения. Этот учебник ряд объясняется, как создать пример приложения Contoso университета. Вы можете [загрузка завершенного приложения](https://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8).
+> Contoso университета примера веб-приложения показано, как создавать приложения ASP.NET MVC 4, с помощью Entity Framework 5 и Visual Studio 2012. В этом примере приложения реализуется веб-сайт вымышленного университета Contoso. На нем предусмотрены различные функции, в том числе прием учащихся, создание курсов и назначение преподавателей. Этот учебник ряд объясняется, как создать пример приложения Contoso университета. Вы можете [загрузка завершенного приложения](https://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8).
 > 
 > ## <a name="code-first"></a>Code First
 > 
@@ -53,7 +53,7 @@ ms.lasthandoff: 01/24/2018
 > 
 > Если у вас есть вопросы, которые не связаны непосредственно для работы с учебником, их можно разместить [форум по ASP.NET Entity Framework](https://forums.asp.net/1227.aspx), [Entity Framework и LINQ to Entities форум](https://social.msdn.microsoft.com/forums/adodotnetentityframework/threads/), или [ StackOverflow.com](http://stackoverflow.com/).
 > 
-> ## <a name="acknowledgments"></a>Подтверждения
+> ## <a name="acknowledgments"></a>Благодарности
 > 
 > См. в учебнике последней в серии для [подтверждений и заметки о VB](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#acknowledgments).
 > 
@@ -64,15 +64,15 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="the-contoso-university-web-application"></a>Веб-приложение Contoso университета
 
-Приложение, которое вы будете построения в этих учебниках является простой университета веб-сайта.
+В рамках этих учебников вы будете создавать приложение, которое представляет собой простой веб-сайт университета.
 
-Пользователи могут просматривать и обновлять студента курса и инструктора сведения. Ниже представлены несколько экранов, которые будут созданы.
+Пользователи приложения могут просматривать и обновлять сведения об учащихся, курсах и преподавателях. Будет создано несколько экранов.
 
 ![Students_Index_page](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image1.png)
 
 ![](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image2.png)
 
-Стиль пользовательского интерфейса этого сайта была сохранена близко к создаваемой с помощью встроенных шаблонов учебника можно сосредоточиться на том, как использовать платформу Entity Framework.
+Стиль пользовательского интерфейса этого сайта практически полностью основан на встроенных шаблонах, поскольку это позволяет сосредоточиться на изучении и использовании возможностей платформы Entity Framework.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -98,13 +98,13 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="set-up-the-site-style"></a>Настройка стиля узла
 
-Несколько простых изменений будет установлен сайт меню, макета и домашнюю страницу.
+Выполните незначительную настройку меню, макета и домашней страницы сайта.
 
 Откройте *представления\общие\\_Layout.cshtml*и замените содержимое файла следующим кодом. Изменения выделены.
 
 [!code-cshtml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample1.cshtml?highlight=5,15,25-28,43)]
 
-Этот код выполняет следующие изменения:
+Этот код вносит следующие изменения:
 
 - Заменяет экземпляры шаблона «My ASP.NET MVC Application» и «ваша эмблема здесь» «Contoso университета».
 - Добавляет несколько ссылок действий, которые будут использоваться позже в этом учебнике.
@@ -123,13 +123,13 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="create-the-data-model"></a>Создание модели данных
 
-Затем вы создадите классы сущностей для приложения Contoso университета. Начните с тремя следующими сущностями:
+Теперь необходимо создать классы сущностей для приложения университета Contoso. Начните с тремя следующими сущностями:
 
 ![Class_diagram](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image6.png)
 
-Имеется отношение "один ко многим" между `Student` и `Enrollment` сущностями, и имеется отношение "один ко многим" между `Course` и `Enrollment` сущности. Другими словами студент может быть зарегистрированы в любое количество курсы и курс может иметь любое количество студентов, зарегистрированных в нем.
+Между сущностями `Student` и `Enrollment`, а также между сущностями `Course` и `Enrollment` существует отношение "один ко многим". Другими словами, учащийся может быть зарегистрирован в любом количестве курсов, а в отдельном курсе может быть зарегистрировано любое количество учащихся.
 
-В следующих разделах вы создадите класса для каждого из этих сущностей.
+В следующих разделах создаются классы для каждой из этих сущностей.
 
 > [!NOTE]
 > При попытке скомпилировать проект до завершения создания всех этих классов сущностей, то возникнут ошибки компилятора.
@@ -143,27 +143,27 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample4.cs)]
 
-`StudentID` Свойство станет столбец первичного ключа таблицы базы данных, соответствующий этому классу. По умолчанию платформа Entity Framework интерпретирует свойство, которое называется `ID` или *classname* `ID` как первичный ключ.
+Свойство `StudentID` будет использоваться в качестве столбца первичного ключа в таблице базы данных, соответствующей этому классу. По умолчанию платформа Entity Framework интерпретирует свойство, которое называется `ID` или *classname* `ID` как первичный ключ.
 
-`Enrollments` Свойство *свойство навигации*. Свойства навигации хранения других сущностей, которые относятся к этой сущности. В этом случае `Enrollments` свойство `Student` сущность будет содержать все `Enrollment` сущностей, которые относятся к, `Student` сущности. Другими словами Если данной `Student` строк в базе данных есть две связанные `Enrollment` строк (значение строки, содержащие этого студента первичного ключа в их `StudentID` столбец внешнего ключа), которая `Student` сущности `Enrollments` свойство навигации будет содержать этих двух `Enrollment` сущностей.
+`Enrollments` Свойство *свойство навигации*. Свойства навигации содержат другие сущности, связанные с этой сущностью. В этом случае `Enrollments` свойство `Student` сущность будет содержать все `Enrollment` сущностей, которые относятся к, `Student` сущности. Другими словами Если данной `Student` строк в базе данных есть две связанные `Enrollment` строк (значение строки, содержащие этого студента первичного ключа в их `StudentID` столбец внешнего ключа), которая `Student` сущности `Enrollments` свойство навигации будет содержать этих двух `Enrollment` сущностей.
 
 Свойства навигации, обычно определяются как `virtual` так, чтобы такие как воспользоваться преимуществами некоторых возможностей Entity Framework *отложенную загрузку*. (Отложенная загрузка будут описаны далее в [чтение связанных данных](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) учебника далее в этой серии.
 
-Если свойство навигации может содержать несколько сущностей (как отношения "многие ко многим" или "один ко многим"), его тип должен быть список, в котором записи могут быть добавлены, удаленные и обновления, такие как `ICollection`.
+Если свойство навигации может содержать несколько сущностей (как в отношениях "многие ко многим" или "один ко многим"), оно должно иметь тип списка, допускающий добавление, удаление и обновление записей, такой как `ICollection`.
 
 ### <a name="the-enrollment-entity"></a>Сущность регистрации
 
 ![Enrollment_entity](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image8.png)
 
-В *моделей* папке создайте *«Enrollment.cs» в качестве* и замените существующий код следующим кодом:
+В папке *Models* создайте файл *Enrollment.cs* и замените существующий код следующим кодом:
 
 [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample5.cs)]
 
 Свойство уровень [перечисления](https://msdn.microsoft.com/data/hh859576.aspx). Знак вопроса после `Grade` объявление типа указывает, что `Grade` свойство [nullable](https://msdn.microsoft.com/library/2cf62fcy.aspx). Степень, которую имеет значение null отличается от нуля оценку — значение null означает оценку не известен или еще не назначена.
 
-`StudentID` Свойство внешнего ключа, и соответствующее свойство навигации `Student`. `Enrollment` Сущности связан с одним `Student` сущности, поэтому свойство может содержать только один `Student` сущности (в отличие от `Student.Enrollments` свойство навигации вы видели ранее, который может содержать несколько `Enrollment` сущностей).
+Свойство `StudentID` представляет собой внешний ключ. Ему соответствует свойство навигации `Student`. Сущность `Enrollment` связана с одной сущностью `Student`, поэтому это свойство может содержать одну сущность `Student` (в отличие от представленного ранее свойства навигации `Student.Enrollments`, которое может содержать несколько сущностей `Enrollment`).
 
-`CourseID` Свойство внешнего ключа, и соответствующее свойство навигации `Course`. `Enrollment` Сущности связан с одним `Course` сущности.
+Свойство `CourseID` представляет собой внешний ключ. Ему соответствует свойство навигации `Course`. Сущность `Enrollment` связана с одной сущностью `Course`.
 
 ### <a name="the-course-entity"></a>Сущность курса
 
@@ -173,13 +173,13 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample6.cs)]
 
-`Enrollments` Свойство является свойством навигации. Объект `Course` сущности могут быть связаны с любым количеством `Enrollment` сущностей.
+Свойство `Enrollments` является свойством навигации. Сущность `Course` может быть связана с любым числом сущностей `Enrollment`.
 
-Допустим, что больше о [[DatabaseGenerated](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedattribute(v=vs.110).aspx)([параметр DatabaseGeneratedOption](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedoption(v=vs.95).aspx). Нет)] атрибута в следующем уроке. По сути этот атрибут позволяет ввести первичный ключ для курса вместо формирования базы данных.
+Допустим, что больше о [[DatabaseGenerated](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedattribute(v=vs.110).aspx)([параметр DatabaseGeneratedOption](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedoption(v=vs.95).aspx). Нет)] атрибута в следующем уроке. Фактически, этот атрибут позволяет ввести первичный ключ для курса, а не использовать базу данных, чтобы создать его.
 
-## <a name="create-the-database-context"></a>Создать контекст базы данных
+## <a name="create-the-database-context"></a>Создание контекста базы данных
 
-Основной класс, который координирует функции в заданной модели данных Entity Framework является *контекст базы данных* класса. Создание этого класса путем наследования от [System.Data.Entity.DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=VS.103).aspx) класса. В коде указывается, какие сущности включаются в модель данных. Можно также настроить некоторые параметры поведения Entity Framework. В этом проекте класс с именем `SchoolContext`.
+Основной класс, который координирует функции в заданной модели данных Entity Framework является *контекст базы данных* класса. Создание этого класса путем наследования от [System.Data.Entity.DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=VS.103).aspx) класса. В коде указываются сущности, которые включаются в модель данных. Также вы можете настроить реакцию платформы Entity Framework на некоторые события. В этом проекте соответствующий класс называется `SchoolContext`.
 
 Создайте папку с именем *DAL* (для доступа к данным). В этой папке создайте новый файл класса с именем *SchoolContext.cs*и замените существующий код следующим кодом:
 
@@ -277,7 +277,7 @@ ms.lasthandoff: 01/24/2018
 
     ![Папка миграции с первоначальной миграции](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image14.png)
 
-    `Up` Метод `InitialCreate` класс создает таблицы базы данных, которые соответствуют наборов сущностей модели данных, и `Down` метод удаляет их. Миграция вызовы `Up` метод для реализации изменений модели данных для миграции. При вводе команды для отката обновления, вызывает миграции `Down` метод. В следующем коде показано содержимое `InitialCreate` файла:
+    `Up` Метод `InitialCreate` класс создает таблицы базы данных, которые соответствуют наборов сущностей модели данных, и `Down` метод удаляет их. Функция миграций вызывает метод `Up`, чтобы реализовать изменения модели данных для миграции. При вводе команды для отката обновления функция миграций вызывает метод `Down`. В следующем коде показано содержимое `InitialCreate` файла:
 
     [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample15.cs)]
 
@@ -340,7 +340,7 @@ ms.lasthandoff: 01/24/2018
 Из-за использования объем кода, вы должны были написать в порядке иметь возможность создавать всей базы данных автоматически Entity Framework сводится к минимуму *соглашения*, или предположения, что позволяет платформе Entity Framework. Некоторые из них уже было отмечено:
 
 - Pluralized формы имен классов сущностей, которые используются как имена таблиц.
-- Имена свойств сущности используются для имен столбцов.
+- В качестве имен столбцов используются имена свойств сущностей.
 - Свойства сущности, которые именуются `ID` или *classname* `ID` распознаются как свойства основного ключа.
 
 Вы уже видели, что может быть переопределен соглашения (например, вы указали, имена таблиц не должны быть имена во множественном числе), и вы узнаете о условные обозначения и переопределить их в [создания более сложной модели данных](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md) учебника Далее в этой серии. Дополнительные сведения см. в разделе [соглашения о написании кода для первого](https://msdn.microsoft.com/data/jj679962).

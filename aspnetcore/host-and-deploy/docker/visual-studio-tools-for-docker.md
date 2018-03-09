@@ -10,11 +10,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: caf0e423d8e6f61fd2470d1f4ea2dd93909c3696
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 590d32342b1724a0cbc937655c35631938eb09b2
+ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="visual-studio-tools-for-docker-with-aspnet-core"></a>Использование средств Visual Studio для Docker с ASP.NET Core
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="add-docker-support-to-an-app"></a>Добавление поддержки Docker в приложение
 
-Целевая платформа проекта ASP.NET Core определяет поддерживаемые типы контейнеров. Проекты, предназначенные для .NET Core, поддерживают контейнеры Windows и Linux. Проекты, предназначенные для .NET Framework, поддерживают только контейнеры Windows.
+Чтобы добавить поддержку Docker в проекте ASP.NET Core, проекта должны быть предназначены для .NET Core. Поддерживаются контейнерами Windows и Linux.
 
 При добавлении поддержки Docker в проект, выберите Windows или Linux контейнера. Узел Docker должен работать на контейнерах такого же типа. Чтобы изменить тип контейнера для работающего экземпляра Docker, щелкните правой кнопкой мыши значок Docker в области уведомлений и выберите **Переключение на контейнеры Windows** или **Переключение на контейнеры Linux**.
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 01/24/2018
 
 *Dockerfile* с инструкциями по созданию окончательного образа Docker добавляется в корень проекта. См. [справочник по Dockerfile](https://docs.docker.com/engine/reference/builder/) для получения сведений о других доступных в нем командах. Этот конкретный *Dockerfile* использует [многоэтапную сборку](https://docs.docker.com/engine/userguide/eng-image/multistage-build/) из четырех раздельных именованных этапов:
 
-[!code-text[](visual-studio-tools-for-docker/samples/HelloDockerTools/HelloDockerTools/Dockerfile?highlight=1,5,14,17)]
+[!code-dockerfile[](visual-studio-tools-for-docker/samples/HelloDockerTools/HelloDockerTools/Dockerfile?highlight=1,5,14,17)]
 
 *Dockerfile* основан на образе [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore). Этот базовый образ включает пакеты NuGet платформы ASP.NET Core, которые были предварительно скомпилированы JIT-компилятором для повышения производительности запуска.
 

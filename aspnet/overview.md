@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: 
 msc.type: content
-ms.openlocfilehash: 3d4c34a35e2e34ed78f481c759eda3718edb4da6
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0ba7814d4004b17e678eab9a2a41a6d6f34773e1
+ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="aspnet-overview"></a>Общие сведения о ASP.NET
 
@@ -26,7 +26,7 @@ ASP.NET является бесплатная Интернет-платформ�
 
 ## <a name="get-started"></a>Начало работы
 
-[Загрузите Visual Studio 2015](https://go.microsoft.com/fwlink/?LinkId=826064), бесплатно интегрированной среды разработки ASP.NET в Windows.
+[2017 г. для Visual Studio Community](https://www.visualstudio.com/downloads/), бесплатно интегрированной среды разработки ASP.NET в Windows.
 
 ## <a name="websites-and-web-applications"></a>Веб-сайтов и веб-приложений
 

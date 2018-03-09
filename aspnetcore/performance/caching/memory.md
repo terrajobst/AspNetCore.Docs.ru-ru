@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/memory
-ms.openlocfilehash: ef5dba655a8b6332bf0b6f21c678481a1c55aecf
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 64635235c11b55818da02d63d044334f4b2cdb08
+ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="in-memory-caching-in-aspnet-core"></a>Кэширование в памяти в ASP.NET Core
 
@@ -46,15 +46,15 @@ Non прикрепленных сеансов в веб-ферме требуе�
 
 `IMemoryCache` требуется пакет NuGet «Microsoft.Extensions.Caching.Memory».
 
-В следующем коде используется [TryGetValue](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__) проверки, если текущее время в кэше. Если элемент не кэшируется, новая запись создается и добавляется в кэш с [задать](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_).
+В следующем коде используется [TryGetValue](/dotnet/api/microsoft.extensions.caching.memory.imemorycache.trygetvalue?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__) проверки, если время в кэше. Если время не кэшируется, новая запись создается и добавляется в кэш с [задать](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.set?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_).
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet1)]
 
 Отображается текущее время и время кэширования:
 
-[!code-html[](memory/sample/WebCache/Views/Home/Cache.cshtml)]
+[!code-cshtml[](memory/sample/WebCache/Views/Home/Cache.cshtml)]
 
-Кэшированные `DateTime` значение будет оставаться в кэше, пока имеются запросы в течение периода ожидания (и без вытеснения, из-за нехватки памяти). На следующем рисунке показано текущее время и время извлечен из кэша:
+Кэшированные `DateTime` значение остается в кэше, пока имеются запросы в течение периода ожидания (и без вытеснения, из-за нехватки памяти). На следующем рисунке показана текущего времени и получить из кэша, время:
 
 ![Индекс представления с помощью двух разных времени отображаются в](memory/_static/time.png)
 
