@@ -213,6 +213,9 @@
 # [Мобильные приложения](xref:mobile/index)
 ## [Создание серверных служб для собственных мобильных приложений](xref:mobile/native-mobile-backend)
 
+# [SignalR](xref:signalr/index)
+## [Начало работы](xref:signalr/get-started-signalr-core)
+
 # [Размещение и развертывание](xref:host-and-deploy/index)
 ## [Размещение в службе приложений Azure](xref:host-and-deploy/azure-apps/index)
 ### [Опубликовать в Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs)
