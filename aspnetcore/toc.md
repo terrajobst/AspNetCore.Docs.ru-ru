@@ -210,6 +210,9 @@
 ### [Шаблон проекта React](xref:spa/react)
 ### [Шаблон проекта React с Redux](xref:spa/react-with-redux)
 
+# [SignalR](xref:signalr/introduction-signalr-core)
+## [Введение](xref:signalr/introduction-signalr-core)
+
 # [Мобильные приложения](xref:mobile/index)
 ## [Создание серверных служб для собственных мобильных приложений](xref:mobile/native-mobile-backend)
 
