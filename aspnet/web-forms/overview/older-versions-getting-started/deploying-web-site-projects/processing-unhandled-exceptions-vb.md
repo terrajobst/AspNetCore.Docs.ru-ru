@@ -12,17 +12,17 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c5a4d2e3468c9b7db5d3acf9f59fc13a6b791497
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: f5bf39bc2433a2fb277cb56554ddf39bea7a9c79
+ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/12/2018
 ---
 <a name="processing-unhandled-exceptions-vb"></a>Обработка необработанных исключений (Visual Basic)
 ====================
 по [Скотт Митчелл](https://twitter.com/ScottOnWriting)
 
-[Загрузить код](http://download.microsoft.com/download/1/0/C/10CC829F-A808-4302-97D3-59989B8F9C01/ASPNET_Hosting_Tutorial_12_VB.zip) или [скачать PDF](http://download.microsoft.com/download/5/C/5/5C57DB8C-5DEA-4B3A-92CA-4405544D313B/aspnet_tutorial12_ErrorHandling_vb.pdf)
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnet/web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb/samples) ([как скачивать](/aspnet/core/tutorials/index#how-to-download-a-sample))
 
 > При возникновении ошибки времени выполнения веб-приложения в рабочей среде, важно для уведомления разработчик и ошибку в журнале, чтобы он может обнаружить позднее времени. Этот учебник содержит общие сведения о том, как ASP.NET обрабатывает ошибки времени выполнения и рассматривает один способ выполнения каждый раз, когда необработанное исключение пузырьки ASP.NET во время выполнения пользовательского кода.
 
@@ -159,7 +159,7 @@ ms.lasthandoff: 01/30/2018
 
 - [HTTP-модули ASP.NET и обзор обработчиков HTTP](https://support.microsoft.com/kb/307985)
 - [Правильно отвечать на необработанные исключения - обработки необработанных исключений](http://aspnet.4guysfromrolla.com/articles/091306-1.aspx)
-- [`HttpApplication`Класс и объект приложения ASP.NET](http://www.eggheadcafe.com/articles/20030211.asp)
+- [`HttpApplication` Класс и объект приложения ASP.NET](http://www.eggheadcafe.com/articles/20030211.asp)
 - [Обработчики HTTP-данных и модули HTTP в ASP.NET](http://www.15seconds.com/Issue/020417.htm)
 - [При отправке сообщения в ASP.NET](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)
 - [Основные сведения о `Global.asax` файла](http://aspalliance.com/1114_Understanding_the_Globalasax_file.all)

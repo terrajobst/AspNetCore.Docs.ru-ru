@@ -10,11 +10,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/introduction-signalr-core
-ms.openlocfilehash: 0e26ecf913bbe6d24da96c1ece8b13aa5240818f
-ms.sourcegitcommit: 6fa546140575b3eb279eabae12d9acad966f70e0
+ms.openlocfilehash: d4ad9bb1910a3339ac8d0d8ff740417f4e7262b7
+ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="introduction-to-signalr"></a>Общие сведения о SignalR
 
@@ -38,7 +38,7 @@ SignalR для ASP.NET Core:
 * Автоматически обрабатывает управление соединениями.
 * Включает широковещательная рассылка сообщений для всех подключенных клиентов одновременно. Например участников чата.
 * Разрешает передачу сообщений для конкретных клиентов или групп клиентов.
-* Имеет открытый исходный код в [GitHub](https://github.com/aspnet/SignalR).
+* Имеет открытый исходный код в [GitHub](https://github.com/aspnet/signalr).
 * Хорошо масштабируется.
 
 Соединение между клиентом и сервером является постоянным, в отличие от HTTP-соединение.
@@ -63,4 +63,4 @@ SignalR использует концентраторы и конечные то
 
 ## <a name="related-resources"></a>Связанные ресурсы
 
-[Начало работы с SignalR для ASP.NET Core](get-started-signalr-core)
+[Начало работы с SignalR для ASP.NET Core](xref:signalr/get-started-signalr-core)
