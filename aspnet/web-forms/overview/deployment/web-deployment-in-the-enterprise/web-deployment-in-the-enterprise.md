@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise
 msc.type: authoredcontent
 ms.openlocfilehash: 6210d01f65bcadf8ae4209e372d5aac68861bd7a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="web-deployment-in-the-enterprise"></a>Веб-развертывания в организации
 ====================
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/10/2017
 
 > Этот учебник описывает соответствуют большое количество задач, с которыми можно столкнуться при управлении развертывания веб-приложений корпоративного уровня для разработки, тестирования, промежуточного хранения и рабочей средах. Учебник включает эталонного решения, а также как общие и ориентированные на задачи содержимое инструкции по различных типовых задач и процедур.
 > 
-> Итальянский преобразования этих учебников, посетите [http://www.lucamorelli.it](http://www.lucamorelli.it).
+> Итальянский преобразования этих учебников, посетите [ http://www.lucamorelli.it ](http://www.lucamorelli.it).
 
 
 ## <a name="enterprise-deployment-challenges"></a>Проблем при развертывании Enterprise
@@ -73,14 +73,14 @@ ms.lasthandoff: 11/10/2017
 
 В этих разделах предоставляет файлы проекта MSBuild, описывают, как создать и использовать файлы пользовательского проекта и изучите процесс развертывания для решения диспетчера контактов:
 
-- [Основные сведения о файле проекта](understanding-the-project-file.md)
-- [Основные сведения о процессе построения](understanding-the-build-process.md)
+- [Общие сведения о файле проекта](understanding-the-project-file.md)
+- [Общие сведения о процессе сборки](understanding-the-build-process.md)
 
 В этих разделах описывается развертывание веб-приложений, включая способ построения и упаковки процесс, как процесс построения интегрируется с конвейера публикации в Интернете, изменение параметров развертывания и развертывание веб-пакетов в место назначения среды:
 
-- [Построения и упаковки проектов веб-приложений](building-and-packaging-web-application-projects.md)
+- [Сборка и упаковка проектов веб-приложений](building-and-packaging-web-application-projects.md)
 - [Настройка параметров для развертывания веб-пакета](configuring-parameters-for-web-package-deployment.md)
-- [Развертывание веб-пакеты](deploying-web-packages.md)
+- [Развертывание веб-пакетов](deploying-web-packages.md)
 
 - [Развертывание проектов базы данных](deploying-database-projects.md) описаны различные методы можно использовать для развертывания проектов базы данных Visual Studio, а также преимущества и недостатки каждого подхода. [Создание и запуск командный файл развертывания](creating-and-running-a-deployment-command-file.md) описывается создание простого командный файл, который инкапсулирует логику развертывания и позволяет развертывать сложные решения как один шаг процесса.
 - Наконец [вручную Установка веб-пакеты](manually-installing-web-packages.md) завершается работа с учебником, отображая для импорта веб-пакетов в службах IIS.

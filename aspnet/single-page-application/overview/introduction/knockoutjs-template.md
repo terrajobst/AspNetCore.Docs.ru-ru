@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/introduction/knockoutjs-template
 msc.type: authoredcontent
 ms.openlocfilehash: e6c0c45bed098a8a1160ff11e4f77244bf55ffd3
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="single-page-application-knockoutjs-template"></a>Одностраничного приложения: Использованием KnockoutJS шаблон
 ====================
@@ -94,7 +94,7 @@ Entity Framework (EF) — это уровень O/надежный обмен С
 
 **TodoItem TodoList**
 
-Это модели Entity Framework Code First для базы данных. Обратите внимание, что эти модели свойства, указывающие на друг с другом. `ToDoList`содержит коллекцию ToDoItems и каждый `ToDoItem` имеет ссылку родительского ToDoList. Эти свойства называются свойства навигации, и они представляют отношение один ко многим список дел и его элементы задачи.
+Это модели Entity Framework Code First для базы данных. Обратите внимание, что эти модели свойства, указывающие на друг с другом. `ToDoList` содержит коллекцию ToDoItems и каждый `ToDoItem` имеет ссылку родительского ToDoList. Эти свойства называются свойства навигации, и они представляют отношение один ко многим список дел и его элементы задачи.
 
 `ToDoItem` Класс также использует **[ForeignKey]** атрибут, чтобы указать, что `ToDoListId` является внешним ключом в `ToDoList` таблицы. Это заставляет EF, чтобы добавить ограничение внешнего ключа к базе данных.
 
@@ -162,7 +162,7 @@ Entity Framework (EF) — это уровень O/надежный обмен С
 
 ## <a name="mvc-controllers-and-views"></a>MVC контроллеры и представления
 
-Контроллеров MVC также находятся в папке Controllers находится решения. `HomeController`Отображает основной HTML для приложения. Для контроллера Home оно определено в Views/Home/Index.cshtml. Домашняя страница отображает различное содержимое в зависимости от того, вошел ли пользователь:
+Контроллеров MVC также находятся в папке Controllers находится решения. `HomeController` Отображает основной HTML для приложения. Для контроллера Home оно определено в Views/Home/Index.cshtml. Домашняя страница отображает различное содержимое в зависимости от того, вошел ли пользователь:
 
 [!code-cshtml[Main](knockoutjs-template/samples/sample4.cshtml)]
 

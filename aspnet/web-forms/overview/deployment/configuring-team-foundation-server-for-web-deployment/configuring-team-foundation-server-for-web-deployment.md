@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: 72f60841a1381380c0ea6167077420f960180dc7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="configuring-team-foundation-server-for-web-deployment"></a>Настройка Team Foundation Server для развертывания веб-приложения
 ====================
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/10/2017
 > - Как создать определение сборки, включающее логики развертывания.
 > - Сведения о настройке разрешений для автоматического развертывания.
 > 
-> Итальянский преобразования этих учебников, посетите [http://www.lucamorelli.it](http://www.lucamorelli.it).
+> Итальянский преобразования этих учебников, посетите [ http://www.lucamorelli.it ](http://www.lucamorelli.it).
 
 
 В учебнике предполагается, что вы установили TFS 2010 и создания коллекции командных проектов в процессе начальной настройки. [Руководство по установке Team Foundation для Visual Studio 2010](https://go.microsoft.com/?linkid=9805132) предоставляет подробные рекомендации для этих задач.

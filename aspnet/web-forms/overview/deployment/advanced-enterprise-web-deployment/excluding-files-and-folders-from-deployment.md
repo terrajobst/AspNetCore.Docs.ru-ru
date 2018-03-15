@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: 80810415bac473a58f60110fb9d08772e0627bd5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="excluding-files-and-folders-from-deployment"></a>Исключение файлов и папок из развертывания
 ====================
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/10/2017
 1. Откройте решение в Visual Studio 2010.
 2. В **обозревателе решений** окно, щелкните правой кнопкой мыши узел проекта приложения web (например, **ContactManager.Mvc**), пункты **добавить**и нажмите кнопку **Новый элемент**.
 3. В **Добавление нового элемента** выберите **XML-файл** шаблона.
-4. В **имя** введите *[имя проекта]***. wpp.targets** (например, **ContactManager.Mvc.wpp.targets**), а затем нажмите кнопку  **Добавить**.
+4. В **имя** введите *[имя проекта] ***.wpp.targets** (например, **ContactManager.Mvc.wpp.targets**), а затем нажмите кнопку **добавить**.
 
     ![](excluding-files-and-folders-from-deployment/_static/image3.png)
 
