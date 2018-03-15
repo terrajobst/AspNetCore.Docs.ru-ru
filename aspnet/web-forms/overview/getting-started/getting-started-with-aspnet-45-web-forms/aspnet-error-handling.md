@@ -13,14 +13,14 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
 ms.openlocfilehash: 3f732ae6f1b7845bcae88912b4a4fe26574c10de
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="aspnet-error-handling"></a>Обработка ошибок ASP.NET
 ====================
-По [Эрик Reitan](https://github.com/Erikre)
+по [Эрик Reitan](https://github.com/Erikre)
 
 [Загрузите образец проекта Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) или [загрузить электронную (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -250,7 +250,7 @@ ms.lasthandoff: 01/30/2018
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample13.cs?highlight=20,22-23)]
 
-Выше код вызывает метод `LogException` метод, который содержится в `ExceptionUtility` класса. Вы добавили *ExceptionUtility.cs* файл класса, чтобы *логику* папку ранее в этом учебнике. `LogException` Метод принимает два параметра. Первый параметр представляет собой объект исключения. Второй параметр является строкой, используемой для распознавания источник ошибки.
+Выше код вызывает метод `LogException` метод, который содержится в `ExceptionUtility` класса. Вы добавили *ExceptionUtility.cs* файл класса, чтобы *логику* папку ранее в этом учебнике. Метод `LogException` принимает два параметра. Первый параметр представляет собой объект исключения. Второй параметр является строкой, используемой для распознавания источник ошибки.
 
 ### <a name="inspecting-the-error-logging-information"></a>Проверка ведения журнала сведения об ошибках
 
@@ -301,7 +301,7 @@ ELMAH готов для хранения необработанных возни
 
 1. Нажмите клавишу **CTRL + F5** для запуска образца приложения Wingtip Toys.
 2. Для записи в журнале ELMAH необработанное исключение, перейдите в браузере следующий URL-адрес (используя свой номер порта):  
-    `https://localhost:44300/NoPage.aspx`Отображается страница «ошибка».
+    `https://localhost:44300/NoPage.aspx` Отображается страница «ошибка».
 3. Чтобы отобразить журнал ELMAH, перейдите в браузере следующий URL-адрес (используя свой номер порта):  
     `https://localhost:44300/elmah.axd`
 

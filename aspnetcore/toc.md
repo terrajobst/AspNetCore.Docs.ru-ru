@@ -313,7 +313,6 @@
 #### [Формат хранилища ключей](xref:security/data-protection/implementation/key-storage-format)
 #### [Временные поставщики защиты данных](xref:security/data-protection/implementation/key-storage-ephemeral)
 ### [Совместимость](xref:security/data-protection/compatibility/index)
-#### [Совместное использование приложениями файлов cookie](xref:security/data-protection/compatibility/cookie-sharing)
 #### [Замена <machineKey> в ASP.NET](xref:security/data-protection/compatibility/replacing-machinekey)
 ## [Принудительное использование HTTPS](xref:security/enforcing-ssl)
 ## [Безопасное хранение секретов приложений во время разработки](xref:security/app-secrets)
@@ -322,6 +321,7 @@
 ## [Предотвращение атак с открытой переадресацией](xref:security/preventing-open-redirects)
 ## [Предотвращайте использование межузловых сценариев](xref:security/cross-site-scripting)
 ## [Включение запросов о происхождении (CORS)](xref:security/cors)
+## [Совместное использование приложениями файлов cookie](xref:security/cookie-sharing)
 
 # [Производительность](xref:performance/index)
 ## [Кэширование](xref:performance/caching/index)

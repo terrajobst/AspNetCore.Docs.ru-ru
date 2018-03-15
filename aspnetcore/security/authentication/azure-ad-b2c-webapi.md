@@ -1,5 +1,5 @@
 ---
-title: "Облачной проверки подлинности в веб-API с Azure Active Directory B2C"
+title: "Облачной проверки подлинности в веб-API с Azure Active Directory B2C в ASP.NET Core"
 author: camsoper
 description: "Узнайте, как настроить проверку подлинности Azure Active Directory B2C с веб-API ASP.NET Core. Протестируйте проверку подлинности веб-API с почтальон."
 ms.author: casoper
@@ -10,13 +10,13 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: d768e2daf2464b282b097e935ef6c5f85e8705f5
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 1213f7eb25fb6525f98d83dff0956a841ae686a7
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c"></a>Облачной проверки подлинности в веб-API с Azure Active Directory B2C
+# <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Облачной проверки подлинности в веб-API с Azure Active Directory B2C в ASP.NET Core
 
 Автор [Кэм Сопер (Cam Soper)](https://twitter.com/camsoper)
 
@@ -120,7 +120,7 @@ Visual Studio создает веб-API с помощью контроллера
 | **Включить веб-приложения или веб-API** | Да                              |                                 |
 | **Разрешить неявного потока**       | Да                              |                                 |
 | **URL-адрес ответа**                 | `https://getpostman.com/postman` |                                 |
-| **URI ИД приложения**                | *&lt;не указывайте&gt;*            | Не требуется для этого учебника. |
+| **URI ИД приложения**                | *&lt;Не указывайте&gt;*            | Не требуется для этого учебника. |
 | **Включить собственный клиент**     | Нет                               |                                 |
 
 Вновь зарегистрированного веб-приложения необходимо предоставить разрешение на доступ к веб-API от имени пользователя.  
@@ -177,7 +177,7 @@ Visual Studio создает веб-API с помощью контроллера
     | **URL-адрес обратного вызова**          | `https://getpostman.com/postman`                                                              |                                                                                            |
     | **URL-адрес проверки подлинности**              | `https://login.microsoftonline.com/<tenant domain name>/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` | Замените  *&lt;доменное имя клиента&gt;*  с доменным именем клиента без угловых скобок. |
     | **Идентификатор клиента**             | *&lt;Введите приложения почтальон <b>идентификатор приложения</b>&gt;*                                       |                                                                                            |
-    | **Секрет клиента**         | *&lt;не указывайте&gt;*                                                                         |                                                                                            |
+    | **Секрет клиента**         | *&lt;Не указывайте&gt;*                                                                         |                                                                                            |
     | **Область**                 | `https://<tenant domain name>/api/user_impersonation openid offline_access`                   | Замените  *&lt;доменное имя клиента&gt;*  с доменным именем клиента без угловых скобок. |
     | **Проверка подлинности клиента** | Отправлять учетные данные клиента в текст                                                               |                                                                                            |
     

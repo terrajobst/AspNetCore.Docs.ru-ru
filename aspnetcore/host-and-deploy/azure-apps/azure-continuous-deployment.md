@@ -1,5 +1,5 @@
 ---
-title: "Непрерывное развертывание в Azure с помощью Visual Studio и Git"
+title: "Непрерывное развертывание в Azure с помощью Visual Studio и Git с помощью ASP.NET Core"
 author: rick-anderson
 description: "Сведения о создании веб-приложения ASP.NET Core с помощью Visual Studio и его развертывании в службе приложений Azure с использованием Git для непрерывного развертывания."
 manager: wpickett
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: ea4788b5daead9e355e13b963c025dd110eb2bff
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 7302de1ace62dba53b317039aac7f4763314aa19
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="continuous-deployment-to-azure-for-aspnet-core-with-visual-studio-and-git"></a>Непрерывное развертывание в Azure ASP.NET Core с Visual Studio и Git
+# <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Непрерывное развертывание в Azure с помощью Visual Studio и Git с помощью ASP.NET Core
 
 Автор: [Эрик Рейтан](https://github.com/Erikre) (Erik Reitan)
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/02/2018
 
 1. В меню **Файл** выберите пункт **Создать** > **Проект**.
 
-1. Выберите шаблон проекта **Веб-приложение ASP.NET Core**. Он находится в разделе **Installed** (Установлено) > **Templates** (Шаблоны) > **Visual C#** > **.NET Core**. Задайте для проекта имя `SampleWebAppDemo`. Выберите параметр **Создать репозиторий Git** и нажмите кнопку **ОК**.
+1. Выберите шаблон проекта **Веб-приложение ASP.NET Core**. Он находится в разделе **Installed** (Установлено) > **Templates** (Шаблоны) > **Visual C#** > **.NET Core**. Задайте для проекта имя `SampleWebAppDemo`. Выберите **создать новый репозиторий Git** и нажмите кнопку **ОК**.
 
    ![Диалоговое окно создания нового проекта](azure-continuous-deployment/_static/01-new-project.png)
 

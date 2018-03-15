@@ -1,5 +1,5 @@
 ---
-title: "Узел в службе Windows"
+title: "Узел ASP.NET Core в службе Windows"
 author: tdykstra
 description: "Узнайте, как для размещения приложения ASP.NET Core в службе Windows."
 manager: wpickett
@@ -10,19 +10,19 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: c14a1f62bce4d06be3b8e6356f45cd5e330a0751
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: f3455e47cfc06a4492dc4e34871b348184c6ecfb
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="host-an-aspnet-core-app-in-a-windows-service"></a>Узел приложения ASP.NET Core в службе Windows
+# <a name="host-aspnet-core-in-a-windows-service"></a>Узел ASP.NET Core в службе Windows
 
-По [Tom Dykstra](https://github.com/tdykstra)
+Автор: [Том Дикстра](https://github.com/tdykstra) (Tom Dykstra)
 
 Рекомендуется размещать приложения ASP.NET Core в Windows без с помощью служб IIS для запуска в [службы Windows](/dotnet/framework/windows-services/introduction-to-windows-service-applications). Когда в качестве службы Windows, приложение может автоматически запуск после перезагрузки и аварийно завершает работу без необходимости вмешательства человека.
 
-[Просмотреть или загрузить образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/sample) ([загрузке](xref:tutorials/index#how-to-download-a-sample)). Инструкции по запуску примера приложения, см. пример *README.md* файла.
+[Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/sample) ([описание скачивания](xref:tutorials/index#how-to-download-a-sample)). Инструкции по запуску примера приложения, см. пример *README.md* файла.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/01/2018
 
 * Если приложение получает запросы из Интернета (не только из внутренней сети), он должен использовать [HTTP.sys](xref:fundamentals/servers/httpsys) веб-сервера (ранее называвшейся [WebListener](xref:fundamentals/servers/weblistener) для приложений ASP.NET Core 1.x) вместо [Kestrel](xref:fundamentals/servers/kestrel). IIS рекомендуется для использования в качестве обратного прокси-сервера с Kestrel для развертываний edge. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
 
-## <a name="getting-started"></a>Начало работы
+## <a name="get-started"></a>Начало работы
 
 В этом разделе описывается минимальный набор изменений, необходимых для настройки существующего проекта ASP.NET Core для запуска в службе.
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 02/01/2018
 
 [!code-csharp[](windows-service/sample/CustomWebHostService.cs?name=Logging&highlight=7)]
 
-## <a name="acknowledgments"></a>Подтверждения
+## <a name="acknowledgments"></a>Благодарности
 
 В этой статье было написано с помощью опубликованных источников:
 

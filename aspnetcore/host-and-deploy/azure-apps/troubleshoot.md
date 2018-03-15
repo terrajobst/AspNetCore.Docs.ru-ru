@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 27a46446e9bf63e96eecc392e6d6863e27b34730
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e6a8404d3fe96a0136d7f874107b2cdf63e8e890
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Устранение неполадок ASP.NET Core в службе приложений Azure
 
@@ -184,4 +184,5 @@ ms.lasthandoff: 03/02/2018
 * [Устранение ошибок HTTP «502 — неправильный шлюз» и «503 — Служба недоступна» в Azure веб-приложения](/app-service/app-service-web-troubleshoot-http-502-http-503)
 * [Устранение неполадок производительности медленных веб приложения в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
 * [Вопросы и ответы о производительности приложений для веб-приложений в Azure](/azure/app-service/app-service-web-availability-performance-application-issues-faq)
+* [Azure веб-приложение "песочницы" (ограничения выполнения среды выполнения службы приложений)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)
 * [Azure, пятница: практики диагностики и устранения неполадок в службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)

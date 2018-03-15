@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 21eac6a4d829795f02eeeca5f9870b1ab8132d08
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="configuring-the-production-web-application-to-use-the-production-database-c"></a>Настройка рабочего веб-приложение для использования рабочей базы данных (C#)
 ====================
@@ -37,16 +37,16 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="examining-the-connection-string-information"></a>Анализ данных строки подключения
 
-Строка подключения, используемая веб-приложением рецензий хранится в файле конфигурации приложения s `Web.config`. `Web.config`включает в себя специальный раздел для хранения строки подключения, соответствующее имя [ &lt;connectionStrings&gt;](https://msdn.microsoft.com/library/bf7sd233.aspx). `Web.config` -Файле для веб-сайта рецензий одну строку соединения, заданные в этом разделе с именем `ReviewsConnectionString`:
+Строка подключения, используемая веб-приложением рецензий хранится в файле конфигурации приложения s `Web.config`. `Web.config` включает в себя специальный раздел для хранения строки подключения, соответствующее имя [ &lt;connectionStrings&gt;](https://msdn.microsoft.com/library/bf7sd233.aspx). `Web.config` -Файле для веб-сайта рецензий одну строку соединения, заданные в этом разделе с именем `ReviewsConnectionString`:
 
 [!code-xml[Main](configuring-the-production-web-application-to-use-the-production-database-cs/samples/sample1.xml)]
 
 Строка подключения - источник данных =. \SQLEXPRESS; AttachDbFilename = | Безопасность DataDirectory|\Reviews.mdf;Integrated = True; User Instance = True — состоит из числа возможностей и значения, с помощью пары параметр и значений, разделенных точкой с запятой и каждого параметра и значения, разделенные знаком равенства. Приведены четыре параметры, используемые в этой строке подключения.
 
-- `Data Source`— Указывает расположение сервера базы данных и имя экземпляра сервера базы данных (если таковые имеются). Значение, `.\SQLEXPRESS`, пример которого сервер базы данных и имя экземпляра. Срок указывает, что сервер базы данных на том же компьютере, что приложение; Имя экземпляра является `SQLEXPRESS`.
-- `AttachDbFilename`— Указывает расположение файла базы данных. Значение содержит заполнитель `|DataDirectory|`, который разрешается в полное приложение s `App_Data` папку во время выполнения.
-- `Integrated Security`-Логическое значение, указывающее, следует ли использовать указанного имени пользователя и пароля при подключении к базе данных (false) или текущий Windows учетные данные учетной записи (true).
-- `User Instance`— параметр конфигурации, относящиеся к SQL Server экспресс-выпусков, указывающее, следует ли разрешить пользователям без прав администратора на локальном компьютере присоединяться и подключаться к базе данных SQL Server, экспресс-выпуск. В разделе [экземпляров SQL Server Express пользователя](https://msdn.microsoft.com/library/ms254504.aspx) Дополнительные сведения об этом параметре.
+- `Data Source` — Указывает расположение сервера базы данных и имя экземпляра сервера базы данных (если таковые имеются). Значение, `.\SQLEXPRESS`, пример которого сервер базы данных и имя экземпляра. Срок указывает, что сервер базы данных на том же компьютере, что приложение; Имя экземпляра является `SQLEXPRESS`.
+- `AttachDbFilename` — Указывает расположение файла базы данных. Значение содержит заполнитель `|DataDirectory|`, который разрешается в полное приложение s `App_Data` папку во время выполнения.
+- `Integrated Security` -Логическое значение, указывающее, следует ли использовать указанного имени пользователя и пароля при подключении к базе данных (false) или текущий Windows учетные данные учетной записи (true).
+- `User Instance` — параметр конфигурации, относящиеся к SQL Server экспресс-выпусков, указывающее, следует ли разрешить пользователям без прав администратора на локальном компьютере присоединяться и подключаться к базе данных SQL Server, экспресс-выпуск. В разделе [экземпляров SQL Server Express пользователя](https://msdn.microsoft.com/library/ms254504.aspx) Дополнительные сведения об этом параметре.
   
 
 Параметры строки подключения допустимый зависят от базы данных, которую вы подключаетесь и используемого поставщика ADO.NET базы данных. Например строка подключения для подключения к Microsoft SQL Server базы данных отличается от используемого для подключения к базе данных Oracle. Аналогично подключение к базе данных Microsoft SQL Server с помощью поставщика SqlClient использует другую строку соединения, чем при использовании поставщика OLE DB.
@@ -125,7 +125,7 @@ ms.lasthandoff: 01/24/2018
 **Рис. 4**: ConfigSections ([Просмотр полноразмерное изображение](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image12.jpg))
 
 
-Теперь нам нужно указать `Web.config` для использования файла databaseConnectionStrings.config для его хранилища строк подключения. Откройте `Web.config` и замените существующий `<connectionStrings>` элемент со следующим:
+Теперь нам нужно указать `Web.config` для использования файла databaseConnectionStrings.config для его хранилища строк подключения. Откройте файл `Web.config` и замените существующий элемент `<connectionStrings>` следующим кодом:
 
 [!code-xml[Main](configuring-the-production-web-application-to-use-the-production-database-cs/samples/sample4.xml)]
 

@@ -5,16 +5,16 @@ author: spboyer
 manager: wpickett
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 10/19/2016
+ms.date: 03/13/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: b11bc811b6aefce22b60a28afd72c2a2d0b26955
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 033adddc586b60c9f7453df5434617aa838737f8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -112,27 +112,32 @@ Complete!
 ```
 
 > [!NOTE]
-> В этом примере выходных данных отражает httpd.86_64, так как 64-разрядные версии CentOS 7. Чтобы проверить, где установлен Apache, выполните `whereis httpd` из командной строки. 
+> В этом примере выходных данных отражает httpd.86_64, так как 64-разрядные версии CentOS 7. Чтобы проверить, где установлен Apache, выполните `whereis httpd` из командной строки.
 
 ### <a name="configure-apache-for-reverse-proxy"></a>Настройка Apache в качестве обратного прокси-сервера
 
 Файлы конфигурации для Apache находятся в каталоге `/etc/httpd/conf.d/`. Все файлы с *.conf* расширения обрабатывается в алфавитном порядке, кроме файлов конфигурации модуля в `/etc/httpd/conf.modules.d/`, содержащий какой-либо настройки файлы для загрузки модулей.
 
-Создайте файл конфигурации для приложения с именем `hellomvc.conf`:
+Создайте файл конфигурации с именем *hellomvc.conf*, для приложения:
 
 ```
 <VirtualHost *:80>
     ProxyPreserveHost On
     ProxyPass / http://127.0.0.1:5000/
     ProxyPassReverse / http://127.0.0.1:5000/
-    ErrorLog /var/log/httpd/hellomvc-error.log
-    CustomLog /var/log/httpd/hellomvc-access.log common
+    ServerName www.example.com
+    ServerAlias *.example.com
+    ErrorLog ${APACHE_LOG_DIR}hellomvc-error.log
+    CustomLog ${APACHE_LOG_DIR}hellomvc-access.log common
 </VirtualHost>
 ```
 
-**VirtualHost** узел может отображаться несколько раз в один или несколько файлов на сервере. **VirtualHost** равно прослушивать все IP-адрес, который использует порт 80. Следующие две строки, задаются на запросы прокси-сервера в корневом каталоге, чтобы на сервер по адресу 127.0.0.1 на порт 5000. Для двусторонней связи *ProxyPass* и *ProxyPassReverse* являются обязательными.
+`VirtualHost` Блок может встречаться несколько раз в один или несколько файлов на сервере. В файле конфигурации выше Apache принимает общего трафика через порт 80. Домен `www.example.com` предоставляется и `*.example.com` псевдоним разрешается в веб-сайта. В разделе [поддержки на основании имени виртуального узла](https://httpd.apache.org/docs/current/vhosts/name-based.html) для получения дополнительной информации. Запросы выполняются через прокси, в корне порт 5000 сервера на 127.0.0.1. Для двусторонней связи `ProxyPass` и `ProxyPassReverse` являются обязательными.
 
-Можно настроить ведение журнала для каждого **VirtualHost** с помощью **ErrorLog** и **CustomLog** директивы. **ErrorLog** — это расположение, где сервер регистрирует ошибки, и **CustomLog** задает имя файла и формат файла журнала. В этом случае это где записываются сведения запроса. Имеется одна строка для каждого запроса.
+> [!WARNING]
+> Если не задать строгим [директива ServerName](https://httpd.apache.org/docs/current/mod/core.html#servername) в **VirtualHost** блок предоставляет доступ приложения к уязвимостям системы безопасности. Привязки поддомен подстановочный знак (например, `*.example.com`) не вызывает риск безопасности, если вы можете управлять всей родительского домена (в отличие от `*.com`, которой уязвима). В разделе [rfc7230 раздел-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) для получения дополнительной информации.
+
+Можно настроить ведение журнала для каждого `VirtualHost` с помощью `ErrorLog` и `CustomLog` директивы. `ErrorLog` расположение, где сервер регистрирует ошибки, и `CustomLog` задает имя файла и формат файла журнала. В этом случае это где записываются сведения запроса. Имеется одна строка для каждого запроса.
 
 Сохраните файл и протестировать конфигурацию. Если проверка выполнена успешно, ответ должен быть `Syntax [OK]`.
 

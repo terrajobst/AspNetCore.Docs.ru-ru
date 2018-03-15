@@ -1,5 +1,5 @@
 ---
-title: "С помощью JavaScriptServices для создания приложений на одной странице"
+title: "Используйте JavaScriptServices для создания приложений на одной странице в ASP.NET Core"
 author: scottaddie
 description: "Узнайте о преимуществах использования JavaScriptServices для создания одной страницы приложений (SPA) поддерживаемый ASP.NET Core."
 manager: wpickett
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/spa-services
-ms.openlocfilehash: c617f1a563b0eeccea0ab313bba8b90a4c947e28
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: c962fc160cf39ad1c69f4269616c993fde420035
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="using-javascriptservices-for-creating-single-page-applications-with-aspnet-core"></a>С помощью JavaScriptServices для создания приложений на одной странице с помощью ASP.NET Core
+# <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>Используйте JavaScriptServices для создания приложений на одной странице в ASP.NET Core
 
 По [Scott Addie](https://github.com/scottaddie) и [Fiyaz Hasan](http://fiyazhasan.me/)
 

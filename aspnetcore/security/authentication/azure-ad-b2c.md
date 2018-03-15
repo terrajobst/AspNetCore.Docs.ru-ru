@@ -1,5 +1,5 @@
 ---
-title: "Проверки подлинности в облаке с Azure Active Directory B2C"
+title: "Проверки подлинности в облаке с Azure Active Directory B2C в ASP.NET Core"
 author: camsoper
 description: "Узнайте, как настроить проверку подлинности Azure Active Directory B2C с ASP.NET Core."
 manager: wpickett
@@ -9,13 +9,13 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 65372020ef6554476fb95549f13d110a748b5863
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: a7bad452a68cf7fe7aa81645d79a0ee9e7719fe7
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="cloud-authentication-with-azure-active-directory-b2c"></a>Проверки подлинности в облаке с Azure Active Directory B2C
+# <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Проверки подлинности в облаке с Azure Active Directory B2C в ASP.NET Core
 
 Автор [Кэм Сопер (Cam Soper)](https://twitter.com/camsoper)
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 02/12/2018
     | **Путь обратного вызова**             | *&lt;использовать значение по умолчанию&gt;*                       |
     | **Политики регистрации или входа в систему** | `B2C_1_SiUpIn`                                        |
     | **Политика сброса пароля**     | `B2C_1_SSPR`                                          |
-    | **Изменение политики профиля**       | *&lt;не указывайте&gt;*                                 |
+    | **Изменение политики профиля**       | *&lt;Не указывайте&gt;*                                 |
     
     Выберите **копирования** ссылку рядом с **ответа Reply URI** для копирования в буфер обмена URI ответа. Выберите **ОК** закрыть **изменить аутентификацию** диалогового окна. Выберите **ОК** для создания веб-приложения.
 

@@ -5,16 +5,16 @@ description: "Описание процедуры настройки Nginx в к
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/21/2017
+ms.date: 03/13/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 5e85cf909c1a360f245bcc83233ccc1347735b26
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: a1de177fcd41c925a85e5aab9a0d236249b7da0b
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -22,7 +22,8 @@ ms.lasthandoff: 03/02/2018
 
 В этом руководстве описывается настройка готовой к работе среды ASP.NET Core на сервере 16.04 Ubuntu.
 
-**Примечание:** для Ubuntu 14.04 *supervisord* рекомендуется в качестве решения для мониторинга процесса Kestrel. *systemd* не доступен на Ubuntu 14.04. [См. предыдущую версию этого документа](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md)
+> [!NOTE]
+> Для Ubuntu 14.04 *supervisord* рекомендуется в качестве решения для мониторинга процесса Kestrel. *systemd* не доступен на Ubuntu 14.04. [См. предыдущую версию этого документа](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md).
 
 В этом руководстве рассматривается
 
@@ -113,23 +114,37 @@ sudo service nginx start
 
 ### <a name="configure-nginx"></a>Настройка Nginx
 
-Чтобы настроить в качестве обратного прокси-сервера для пересылки запросов нашего приложения ASP.NET Core Nginx, измените `/etc/nginx/sites-available/default`. Откройте этот файл в текстовом редакторе и замените его содержимое на следующий код.
+Чтобы настроить в качестве обратного прокси-сервера для пересылки запросов приложения ASP.NET Core Nginx, измените */etc/nginx/sites-available/default*. Откройте этот файл в текстовом редакторе и замените его содержимое на следующий код.
 
-```
+```nginx
 server {
-    listen 80;
+    listen        80;
+    server_name   example.com *.example.com;
     location / {
-        proxy_pass http://localhost:5000;
+        proxy_pass         http://localhost:5000;
         proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection keep-alive;
-        proxy_set_header Host $http_host;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $http_host;
         proxy_cache_bypass $http_upgrade;
     }
 }
 ```
 
-Этот файл конфигурации Nginx перенаправляет входящий публичный трафик с порта `80` на порт `5000`.
+Если аргумент `server_name` совпадений, Nginx использует сервер по умолчанию. Если сервер по умолчанию не определен, первый сервер в файле конфигурации является сервером по умолчанию. Рекомендуется добавьте указанный основной сервер, который возвращает код состояния 444 в файле конфигурации. Пример конфигурации сервера по умолчанию является:
+
+```nginx
+server {
+    listen   80 default_server;
+    # listen [::]:80 default_server deferred;
+    return   444;
+}
+```
+
+Предыдущий файл и по умолчанию сервер конфигурации, Nginx принимает общего трафика через порт 80 с заголовком узла `example.com` или `*.example.com`. Запросы, не соответствующие эти узлы не получить пересылаются Kestrel. Nginx перенаправляет запросы сопоставления Kestrel на `http://localhost:5000`. В разделе [как nginx обрабатывает запрос](https://nginx.org/docs/http/request_processing.html) для получения дополнительной информации.
+
+> [!WARNING]
+> Если не задать строгим [директива имя_сервера](https://nginx.org/docs/http/server_names.html) предоставляет доступ приложения к уязвимостям системы безопасности. Привязки поддомен подстановочный знак (например, `*.example.com`) не вызывает риск безопасности, если вы можете управлять всей родительского домена (в отличие от `*.com`, которой уязвима). В разделе [rfc7230 раздел-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) для получения дополнительной информации.
 
 После установления Nginx конфигурации запуска `sudo nginx -t` проверить синтаксис файлов конфигурации. Если проверка файла конфигурации прошла успешно, принудительно Nginx, чтобы принять изменения, запустив `sudo nginx -s reload`.
 

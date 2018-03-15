@@ -13,14 +13,14 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-5
 msc.type: authoredcontent
 ms.openlocfilehash: 5efc5ff367d5da5df060eba0028399af898a69fa
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-5"></a>Приступая к работе с базой данных Entity Framework 4.0 сначала и форм ASP.NET 4 веб - часть 5
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 > Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, с помощью Entity Framework 4.0 и Visual Studio 2010. Сведения о учебника серии см [в первом учебнике ряда](the-entity-framework-and-aspnet-getting-started-part-1.md)
 

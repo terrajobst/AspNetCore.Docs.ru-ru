@@ -13,14 +13,14 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
 ms.openlocfilehash: 6ae398f94c0ac3872601bdc8fd935f6d285793db
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>Приступая к работе с 4,5 веб-форм ASP.NET и Visual Studio 2013
 ====================
-По [Эрик Reitan](https://github.com/Erikre)
+по [Эрик Reitan](https://github.com/Erikre)
 
 [Загрузите образец проекта Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) или [загрузить электронную (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 

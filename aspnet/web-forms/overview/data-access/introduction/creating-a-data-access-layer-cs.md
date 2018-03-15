@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 927b2490b5c539a79bb9939b88942499b23cc464
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="creating-a-data-access-layer-c"></a>Создание уровня доступа к данным (C#)
 ====================
@@ -233,7 +233,7 @@ AllProducts.aspx.cs
 **Рис. 15**: выберите, чтобы создать **ВЫБЕРИТЕ** инструкции которого возвращает строки ([Просмотр полноразмерное изображение](creating-a-data-access-layer-cs/_static/image41.png))
 
 
-Следующим шагом является определение SQL-запрос, используемый для доступа к данным. Поскольку нам требуется возвратить только те продукты, которые принадлежат определенной категории, используйте тот же **ВЫБЕРИТЕ** инструкции от **GetProducts()**, но с добавлением следующего **ГДЕ** предложение: **ГДЕ CategoryID = @CategoryID** . **@CategoryID**  Параметр указывает Мастер TableAdapter, что мы создаем метод будет требуется входной параметр соответствующего типа (а именно неотрицательного целого).
+Следующим шагом является определение SQL-запрос, используемый для доступа к данным. Поскольку нам требуется возвратить только те продукты, которые принадлежат определенной категории, используйте тот же **ВЫБЕРИТЕ** инструкции от **GetProducts()**, но с добавлением следующего **ГДЕ** предложение: **ГДЕ CategoryID = @CategoryID** .  **@CategoryID**  Параметр указывает Мастер TableAdapter, что мы создаем метод будет требуется входной параметр соответствующего типа (а именно неотрицательного целого).
 
 
 [![Введите запрос, чтобы возвращать только продуктов в указанной категории](creating-a-data-access-layer-cs/_static/image43.png)](creating-a-data-access-layer-cs/_static/image42.png)
@@ -308,7 +308,7 @@ Beverages.aspx.cs
 
 [![Адаптер таблицы имеет InsertCommand, UpdateCommand и DeleteCommand свойства](creating-a-data-access-layer-cs/_static/image62.png)](creating-a-data-access-layer-cs/_static/image61.png)
 
-**На рисунке 23**: имеет TableAdapter **InsertCommand**, **UpdateCommand**, и **DeleteCommand** свойства ([Просмотр Полноразмерное изображение](creating-a-data-access-layer-cs/_static/image63.png))
+**На рисунке 23**: имеет TableAdapter **InsertCommand**, **UpdateCommand**, и **DeleteCommand** свойства ([щелкните представление полного размера изображение](creating-a-data-access-layer-cs/_static/image63.png))
 
 
 Чтобы просмотреть или изменить любые из этих свойств команды базы данных, нажмите кнопку **CommandText** вложенное свойство, чтобы открыть построитель запросов.
@@ -316,7 +316,7 @@ Beverages.aspx.cs
 
 [![Настройка в построителе запросов INSERT, UPDATE и DELETE инструкции](creating-a-data-access-layer-cs/_static/image65.png)](creating-a-data-access-layer-cs/_static/image64.png)
 
-**Рис. 24**: Настройка **вставить**, **обновление**, и **удаление** операторы в построителе запросов ([Просмотр полноразмерное изображение ](creating-a-data-access-layer-cs/_static/image66.png))
+**Рис. 24**: Настройка **вставить**, **обновление**, и **удаление** операторы в построителе запросов ([Просмотр полноразмерное изображение](creating-a-data-access-layer-cs/_static/image66.png))
 
 
 В следующем примере кода показано, как использовать схему пакетного обновления выполнить удвоение цены всех продуктов, не поддерживаются и имеют 25 единиц на складе или менее:
@@ -537,7 +537,7 @@ SuppliersAndProducts.aspx.cs
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 

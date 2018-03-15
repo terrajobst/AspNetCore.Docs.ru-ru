@@ -1,7 +1,7 @@
 ---
-title: "Миграция из веб-API ASP.NET"
+title: "Миграция из веб-API ASP.NET в ASP.NET Core"
 author: ardalis
-description: 
+description: "Дополнительные сведения о миграции реализация веб-API из веб-API ASP.NET ASP.NET Core MVC."
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/webapi
-ms.openlocfilehash: 9eb5f4dfec82ec1c60d33bff94d35857a4c0cfd6
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 929fab90aa88745807761e824a2cf614f078ea36
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="migrating-from-aspnet-web-api"></a>Миграция из веб-API ASP.NET
+# <a name="migrating-from-aspnet-web-api-to-aspnet-core"></a>Миграция из веб-API ASP.NET в ASP.NET Core
 
 Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith) и [Скотт Эдди](https://scottaddie.com) (Scott Addie)
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="review-aspnet-web-api-project"></a>Просмотр ASP.NET Web API проекта
 
-В этой статье используется пример проекта *ProductsApp*, созданный в статье [Приступая к работе с веб-API ASP.NET](https://docs.microsoft.com/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) начальной точкой. В этом проекте простого проекта веб-API ASP.NET настраивается следующим образом.
+В этой статье используется пример проекта *ProductsApp*, созданный в статье [Приступая к работе с ASP.NET Web API 2](/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) начальной точкой. В этом проекте простого проекта веб-API ASP.NET настраивается следующим образом.
 
 В *Global.asax.cs*, выполняется вызов `WebApiConfig.Register`:
 

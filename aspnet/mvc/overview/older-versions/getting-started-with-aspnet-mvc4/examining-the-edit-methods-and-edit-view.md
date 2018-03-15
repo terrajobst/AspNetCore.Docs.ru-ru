@@ -13,14 +13,14 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
 ms.openlocfilehash: 315914056c0a666fdf23cf82a314a999e03114b6
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>Изучение методы изменения и представления изменения
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Доступна обновленная версия этого учебника [здесь](../../getting-started/introduction/getting-started.md) , с использованием ASP.NET MVC 5 и Visual Studio 2013. Он является более безопасны, выполните гораздо проще и показаны дополнительные возможности.
@@ -81,7 +81,7 @@ ms.lasthandoff: 02/12/2018
 ![abcNotValid](examining-the-edit-methods-and-edit-view/_static/image4.png)
 
 > [!NOTE]
-> Поддержка проверки jQuery для языков, кроме английского, используйте запятую (&quot;,&quot;) для десятичной запятой, необходимо включить *globalize.js* и конкретных *cultures/globalize.cultures.js* файл (из [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) и JavaScript, чтобы использовать `Globalize.parseFloat`. В следующем коде показано изменения в файле Views\Movies\Edit.cshtml для работы с &quot;fr-FR&quot; языка и региональных параметров:
+> Поддержка проверки jQuery для языков, кроме английского, используйте запятую (&quot;,&quot;) для десятичной запятой, необходимо включить *globalize.js* и конкретных *cultures/globalize.cultures.js* файл (из [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) и JavaScript, чтобы использовать `Globalize.parseFloat`. В следующем коде показано изменения в файле Views\Movies\Edit.cshtml для работы с &quot;fr-FR&quot; языка и региональных параметров:
 
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample7.cshtml)]

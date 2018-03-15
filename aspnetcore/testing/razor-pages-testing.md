@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/razor-pages-testing
-ms.openlocfilehash: 3f53924e0b36b7924d82f97a8702aa461d9ebd78
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e4f87a8151e378717aa9198e4629711c4ea6ef77
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="razor-pages-unit-and-integration-testing-in-aspnet-core"></a>Единицы страниц Razor и тестирование в ASP.NET Core интеграции
 
@@ -59,7 +59,7 @@ dotnet test
 * Приложение содержит слой доступа к данным (DAL) в своем классе контекст базы данных, `AppDbContext` (*Data/AppDbContext.cs*). Эти методы DAL отмечены `virtual`, что позволяет макетирование методы для использования в тестах.
 * Если база данных пуста при запуске приложения, три сообщения инициализирован хранилище сообщений. Эти *заполнена сообщения* также используются при тестировании.
 
-&#8224; В разделе EF [тестирование с помощью InMemory](/ef/core/miscellaneous/testing/in-memory), объясняется, как использовать базу данных в памяти для тестирования MSTest. В этом разделе используется [xUnit](https://xunit.github.io/) модульного тестирования. Тестирование основные понятия и реализации теста для различных платформ тестирования похожие, но не идентичен.
+&#8224;В разделе EF [тестирование с помощью InMemory](/ef/core/miscellaneous/testing/in-memory), объясняется, как использовать базу данных в памяти для тестирования MSTest. В этом разделе используется [xUnit](https://xunit.github.io/) модульного тестирования. Тестирование основные понятия и реализации теста для различных платформ тестирования похожие, но не идентичен.
 
 Несмотря на то, что приложение не использует [шаблон репозитория](http://martinfowler.com/eaaCatalog/repository.html) и не действующие примером [единицы работы (UoW) шаблон](https://martinfowler.com/eaaCatalog/unitOfWork.html), эти шаблоны разработки поддерживает страниц Razor. Дополнительные сведения см. в разделе [проектирование уровень сохраняемости инфраструктуры](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design), [реализации репозитория и шаблоны единицы работы в приложении MVC ASP.NET](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application), и [тестирования Логика контроллера](/aspnet/core/mvc/controllers/testing) (в этом образце реализуется шаблон репозитория).
 

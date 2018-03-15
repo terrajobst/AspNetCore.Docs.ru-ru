@@ -1,7 +1,7 @@
 ---
 title: "Включение создания QR-код для приложения для проверки подлинности в ASP.NET Core"
 author: rick-anderson
-description: "Включение создания QR-код для приложения для проверки подлинности в ASP.NET Core"
+description: "Узнайте, как включить QR создание кода для приложения, работающие с ASP.NET Core двухфакторной проверки подлинности для проверки подлинности."
 manager: wpickett
 ms.author: riande
 ms.date: 09/24/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: cf941314d54aa4a7bd1724805dc62c763ca71dfb
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: dd326bb32565b743d21e196bcb616a716d7994bf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="enabling-qr-code-generation-for-authenticator-apps-in-aspnet-core"></a>Включение создания QR-код для приложения для проверки подлинности в ASP.NET Core
 
@@ -25,7 +25,7 @@ ASP.NET Core поставляется с поддержки проверки п�
 
 ## <a name="adding-qr-codes-to-the-2fa-configuration-page"></a>Добавление на страницу настройки 2FA QR-коды
 
-В этих инструкциях используется *qrcode.js* из репозитория https://davidshimjs.github.io/qrcodejs/.
+В этих инструкциях используется *qrcode.js* из https://davidshimjs.github.io/qrcodejs/ репозитория.
 
 * Загрузить [библиотека javascript qrcode.js](https://davidshimjs.github.io/qrcodejs/) для `wwwroot\lib` в папке проекта.
 
@@ -84,8 +84,8 @@ private string GenerateQrCodeUri(string email, string unformattedKey)
 
 Правильно отформатированный URL-адрес для QR-код доступен в:
 
-* `AuthenticatorUri`Свойства модели.
-* `data-url`свойство в `qrCodeData` элемент. 
+* `AuthenticatorUri` Свойства модели.
+* `data-url` свойство в `qrCodeData` элемент. 
 
 ## <a name="totp-client-and-server-time-skew"></a>Отклонение по времени клиента и сервера TOTP
 

@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/index
-ms.openlocfilehash: 7e5f6bc44241dc6fc11569a145a04340f1b3ee7f
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e03256d7b8b442569b0b0126983732c10817e20f
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="aspnet-core-security-overview"></a>Общие сведения о безопасности ASP.NET Core
 
@@ -97,7 +97,6 @@ ASP.NET Core и EF содержат средства, помогающие за�
         *   [Формат хранилища ключей](data-protection/implementation/key-storage-format.md)
         *   [Временные поставщики защиты данных](data-protection/implementation/key-storage-ephemeral.md)
     *   [Совместимость](data-protection/compatibility/index.md)
-        *   [Совместное использование приложениями файлов cookie](data-protection/compatibility/cookie-sharing.md)
         *   [Замена <machineKey> в ASP.NET](data-protection/compatibility/replacing-machinekey.md)
 *   [Создание приложения с защитой данных пользователя с помощью авторизации](xref:security/authorization/secure-data)
 *   [Безопасное хранение секретов приложений во время разработки](app-secrets.md)
@@ -107,3 +106,4 @@ ASP.NET Core и EF содержат средства, помогающие за�
 *   [Предотвращение атак с открытой переадресацией](preventing-open-redirects.md)
 *   [Предотвращайте использование межузловых сценариев](cross-site-scripting.md)
 *   [Включение запросов о происхождении (CORS)](cors.md)
+*   [Совместное использование приложениями файлов cookie](cookie-sharing.md)

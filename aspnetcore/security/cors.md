@@ -1,7 +1,7 @@
 ---
-title: "Включение запросы независимо от источника (CORS)"
+title: "Включение запросов независимо от источника (CORS) в ASP.NET Core"
 author: rick-anderson
-description: "В этом документе представлены CORS как стандарт для предоставления или отклонения запросов независимо от источника в приложении ASP.NET Core."
+description: "Узнайте, как CORS как стандарт для предоставления или отклонения запросов независимо от источника в приложении ASP.NET Core."
 manager: wpickett
 ms.author: riande
 ms.date: 05/17/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/cors
-ms.openlocfilehash: ee61798fc1bde89ca3712eae9b7c4413e58cf70d
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 64d939033fee14fad37a08c60da608898e20c01b
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="enabling-cross-origin-requests-cors"></a>Включение запросы независимо от источника (CORS)
+# <a name="enabling-cross-origin-requests-cors-in-aspnet-core"></a>Включение запросов независимо от источника (CORS) в ASP.NET Core
 
 По [Mike Wasson](https://github.com/mikewasson), [Бойера Shayne](https://twitter.com/spboyer), и [Tom Dykstra](https://github.com/tdykstra)
 
@@ -160,7 +160,7 @@ ms.lasthandoff: 03/02/2018
 
 ### <a name="set-the-exposed-response-headers"></a>Задать заголовки ответа предоставляется
 
-По умолчанию браузер не предоставляет все заголовки ответа для приложения. (See [http://www.w3.org/TR/cors/#simple-response-header](http://www.w3.org/TR/cors/#simple-response-header).) Заголовки ответа, которые доступны по умолчанию являются:
+По умолчанию браузер не предоставляет все заголовки ответа для приложения. (См. [ http://www.w3.org/TR/cors/#simple-response-header ](http://www.w3.org/TR/cors/#simple-response-header).) Заголовки ответа, которые доступны по умолчанию являются:
 
 * Cache-Control
 

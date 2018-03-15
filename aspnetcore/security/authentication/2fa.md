@@ -1,7 +1,7 @@
 ---
-title: "Двухфакторная проверка подлинности с помощью SMS"
+title: "Двухфакторная проверка подлинности с помощью SMS в ASP.NET Core"
 author: rick-anderson
-description: "Показано, как настроить двухфакторную проверку подлинности (2FA) с ASP.NET Core"
+description: "Узнайте, как настроить двухфакторную проверку подлинности (2FA) с приложением ASP.NET Core."
 manager: wpickett
 ms.author: riande
 ms.date: 08/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/2fa
-ms.openlocfilehash: 721c4c20234c7232b509a0cff444538c2cfeb166
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: c328c6f4b674695dd1f2db8145a7ac1b8f12d36d
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="two-factor-authentication-with-sms"></a>Двухфакторная проверка подлинности с помощью SMS
+# <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Двухфакторная проверка подлинности с помощью SMS в ASP.NET Core
 
 По [Рик Андерсон](https://twitter.com/RickAndMSFT) и [разработчики швейцарский](https://github.com/Swiss-Devs)
 
@@ -128,7 +128,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 * Выйдите из системы.
 
-* Войти.
+* Вход.
 
 * Учетная запись пользователя включена двухфакторной проверки подлинности, поэтому вы должны предоставить второй фактор проверки подлинности. В этом учебнике вы включили Проверка телефона. Встроенные шаблоны также можно настроить электронную почту в качестве второго фактора. Можно настроить дополнительные факторы проверки подлинности, такие как QR-коды, второй. Коснитесь **отправить**.
 
@@ -142,6 +142,13 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ## <a name="account-lockout-for-protecting-against-brute-force-attacks"></a>Блокировки учетных записей для защиты от атак методом подбора
 
-Мы рекомендуем использовать блокировки учетных записей с 2FA. Как только пользователь вошел в систему (с помощью локальной учетной записи или учетной записи социальных сетей), сохранения каждого Неудачная попытка 2FA и если достигается максимальное попыток, (по умолчанию — 5), пользователь будет заблокирован на пять минут (можно задать блокировка времени с `DefaultAccountLockoutTimeSpan`). Следующие настраивает учетную запись будет заблокирован на 10 минут после 10 неудачных попыток входа.
+С 2FA рекомендуется блокировки учетной записи. Когда пользователь входит через локальной учетной записи или учетной записи социальных сетей, каждого Неудачная попытка 2FA сохраняется. При достижении максимального неудачных попыток доступа пользователя блокируется (по умолчанию: 5-минутного блокировки после 5 неудачных попыток доступа). Сбрасывает счетчик неудачных доступов попыток прошли проверку подлинности и сбрасывает часы. Максимально неудачных попыток доступа и время блокировки может быть задано с [MaxFailedAccessAttempts](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.maxfailedaccessattempts) и [DefaultLockoutTimeSpan](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan). Следующие настраивает блокировки учетных записей на 10 минут после 10 неудачных попыток доступа:
 
-[!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet2&highlight=13-17)] 
+[!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet2&highlight=13-17)]
+
+Убедитесь, что [PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync) задает `lockoutOnFailure` для `true`:
+
+```csharp
+var result = await _signInManager.PasswordSignInAsync(
+                 Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+```
