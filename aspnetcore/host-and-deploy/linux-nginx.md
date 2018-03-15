@@ -5,63 +5,64 @@ description: "Описание процедуры настройки Nginx в к
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/21/2017
+ms.date: 03/13/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 5e85cf909c1a360f245bcc83233ccc1347735b26
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: a1de177fcd41c925a85e5aab9a0d236249b7da0b
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="host-aspnet-core-on-linux-with-nginx"></a><span data-ttu-id="4105b-103">Среда размещения ASP.NET Core в операционной системе Linux с Nginx</span><span class="sxs-lookup"><span data-stu-id="4105b-103">Host ASP.NET Core on Linux with Nginx</span></span>
+# <a name="host-aspnet-core-on-linux-with-nginx"></a><span data-ttu-id="739c9-103">Среда размещения ASP.NET Core в операционной системе Linux с Nginx</span><span class="sxs-lookup"><span data-stu-id="739c9-103">Host ASP.NET Core on Linux with Nginx</span></span>
 
-<span data-ttu-id="4105b-104">Автор [Сурабх Ширхатти](https://twitter.com/sshirhatti)</span><span class="sxs-lookup"><span data-stu-id="4105b-104">By [Sourabh Shirhatti](https://twitter.com/sshirhatti)</span></span>
+<span data-ttu-id="739c9-104">Автор [Сурабх Ширхатти](https://twitter.com/sshirhatti)</span><span class="sxs-lookup"><span data-stu-id="739c9-104">By [Sourabh Shirhatti](https://twitter.com/sshirhatti)</span></span>
 
-<span data-ttu-id="4105b-105">В этом руководстве описывается настройка готовой к работе среды ASP.NET Core на сервере 16.04 Ubuntu.</span><span class="sxs-lookup"><span data-stu-id="4105b-105">This guide explains setting up a production-ready ASP.NET Core environment on an Ubuntu 16.04 Server.</span></span>
+<span data-ttu-id="739c9-105">В этом руководстве описывается настройка готовой к работе среды ASP.NET Core на сервере 16.04 Ubuntu.</span><span class="sxs-lookup"><span data-stu-id="739c9-105">This guide explains setting up a production-ready ASP.NET Core environment on an Ubuntu 16.04 Server.</span></span>
 
-<span data-ttu-id="4105b-106">**Примечание:** для Ubuntu 14.04 *supervisord* рекомендуется в качестве решения для мониторинга процесса Kestrel.</span><span class="sxs-lookup"><span data-stu-id="4105b-106">**Note:** For Ubuntu 14.04, *supervisord* is recommended as a solution for monitoring the Kestrel process.</span></span> <span data-ttu-id="4105b-107">*systemd* не доступен на Ubuntu 14.04.</span><span class="sxs-lookup"><span data-stu-id="4105b-107">*systemd* isn't available on Ubuntu 14.04.</span></span> [<span data-ttu-id="4105b-108">См. предыдущую версию этого документа</span><span class="sxs-lookup"><span data-stu-id="4105b-108">See previous version of this document</span></span>](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md)
+> [!NOTE]
+> <span data-ttu-id="739c9-106">Для Ubuntu 14.04 *supervisord* рекомендуется в качестве решения для мониторинга процесса Kestrel.</span><span class="sxs-lookup"><span data-stu-id="739c9-106">For Ubuntu 14.04, *supervisord* is recommended as a solution for monitoring the Kestrel process.</span></span> <span data-ttu-id="739c9-107">*systemd* не доступен на Ubuntu 14.04.</span><span class="sxs-lookup"><span data-stu-id="739c9-107">*systemd* isn't available on Ubuntu 14.04.</span></span> <span data-ttu-id="739c9-108">[См. предыдущую версию этого документа](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md).</span><span class="sxs-lookup"><span data-stu-id="739c9-108">[See previous version of this document](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md).</span></span>
 
-<span data-ttu-id="4105b-109">В этом руководстве рассматривается</span><span class="sxs-lookup"><span data-stu-id="4105b-109">This guide:</span></span>
+<span data-ttu-id="739c9-109">В этом руководстве рассматривается</span><span class="sxs-lookup"><span data-stu-id="739c9-109">This guide:</span></span>
 
-* <span data-ttu-id="4105b-110">Помещает существующего приложения ASP.NET Core за обратного прокси-сервера.</span><span class="sxs-lookup"><span data-stu-id="4105b-110">Places an existing ASP.NET Core app behind a reverse proxy server.</span></span>
-* <span data-ttu-id="4105b-111">Настраивает обратного прокси-сервера для перенаправления запросов на Kestrel веб-сервера.</span><span class="sxs-lookup"><span data-stu-id="4105b-111">Sets up the reverse proxy server to forward requests to the Kestrel web server.</span></span>
-* <span data-ttu-id="4105b-112">Гарантирует, что веб-приложение запускается при запуске как управляющая программа.</span><span class="sxs-lookup"><span data-stu-id="4105b-112">Ensures the web app runs on startup as a daemon.</span></span>
-* <span data-ttu-id="4105b-113">Настраивает средство управления процессами, чтобы перезапустить веб-приложение.</span><span class="sxs-lookup"><span data-stu-id="4105b-113">Configures a process management tool to help restart the web app.</span></span>
+* <span data-ttu-id="739c9-110">Помещает существующего приложения ASP.NET Core за обратного прокси-сервера.</span><span class="sxs-lookup"><span data-stu-id="739c9-110">Places an existing ASP.NET Core app behind a reverse proxy server.</span></span>
+* <span data-ttu-id="739c9-111">Настраивает обратного прокси-сервера для перенаправления запросов на Kestrel веб-сервера.</span><span class="sxs-lookup"><span data-stu-id="739c9-111">Sets up the reverse proxy server to forward requests to the Kestrel web server.</span></span>
+* <span data-ttu-id="739c9-112">Гарантирует, что веб-приложение запускается при запуске как управляющая программа.</span><span class="sxs-lookup"><span data-stu-id="739c9-112">Ensures the web app runs on startup as a daemon.</span></span>
+* <span data-ttu-id="739c9-113">Настраивает средство управления процессами, чтобы перезапустить веб-приложение.</span><span class="sxs-lookup"><span data-stu-id="739c9-113">Configures a process management tool to help restart the web app.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="4105b-114">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="4105b-114">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="739c9-114">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="739c9-114">Prerequisites</span></span>
 
-1. <span data-ttu-id="4105b-115">Доступ к серверу Ubuntu 16.04 под учетной записи обычного пользователя с правами sudo</span><span class="sxs-lookup"><span data-stu-id="4105b-115">Access to an Ubuntu 16.04 Server with a standard user account with sudo privilege</span></span>
-1. <span data-ttu-id="4105b-116">Существующие приложения ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4105b-116">An existing ASP.NET Core app</span></span>
+1. <span data-ttu-id="739c9-115">Доступ к серверу Ubuntu 16.04 под учетной записи обычного пользователя с правами sudo</span><span class="sxs-lookup"><span data-stu-id="739c9-115">Access to an Ubuntu 16.04 Server with a standard user account with sudo privilege</span></span>
+1. <span data-ttu-id="739c9-116">Существующие приложения ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="739c9-116">An existing ASP.NET Core app</span></span>
 
-## <a name="copy-over-the-app"></a><span data-ttu-id="4105b-117">Скопировать приложение</span><span class="sxs-lookup"><span data-stu-id="4105b-117">Copy over the app</span></span>
+## <a name="copy-over-the-app"></a><span data-ttu-id="739c9-117">Скопировать приложение</span><span class="sxs-lookup"><span data-stu-id="739c9-117">Copy over the app</span></span>
 
-<span data-ttu-id="4105b-118">Запустите [публикации dotnet](/dotnet/core/tools/dotnet-publish) из среды разработки для упаковки приложения в автономной каталог, который можно запустить на сервере.</span><span class="sxs-lookup"><span data-stu-id="4105b-118">Run [dotnet publish](/dotnet/core/tools/dotnet-publish) from the dev environment to package an app into a self-contained directory that can run on the server.</span></span>
+<span data-ttu-id="739c9-118">Запустите [публикации dotnet](/dotnet/core/tools/dotnet-publish) из среды разработки для упаковки приложения в автономной каталог, который можно запустить на сервере.</span><span class="sxs-lookup"><span data-stu-id="739c9-118">Run [dotnet publish](/dotnet/core/tools/dotnet-publish) from the dev environment to package an app into a self-contained directory that can run on the server.</span></span>
 
-<span data-ttu-id="4105b-119">Скопируйте приложения ASP.NET Core на сервер с помощью того средства, интегрируется в рабочий процесс в организации (например, точка подключения службы, FTP).</span><span class="sxs-lookup"><span data-stu-id="4105b-119">Copy the ASP.NET Core app to the server using whatever tool integrates into the organization's workflow (for example, SCP, FTP).</span></span> <span data-ttu-id="4105b-120">Протестируйте приложение, например</span><span class="sxs-lookup"><span data-stu-id="4105b-120">Test the app, for example:</span></span>
+<span data-ttu-id="739c9-119">Скопируйте приложения ASP.NET Core на сервер с помощью того средства, интегрируется в рабочий процесс в организации (например, точка подключения службы, FTP).</span><span class="sxs-lookup"><span data-stu-id="739c9-119">Copy the ASP.NET Core app to the server using whatever tool integrates into the organization's workflow (for example, SCP, FTP).</span></span> <span data-ttu-id="739c9-120">Протестируйте приложение, например</span><span class="sxs-lookup"><span data-stu-id="739c9-120">Test the app, for example:</span></span>
 
-* <span data-ttu-id="4105b-121">Запустите из командной строки, `dotnet <app_assembly>.dll`.</span><span class="sxs-lookup"><span data-stu-id="4105b-121">From the command line, run `dotnet <app_assembly>.dll`.</span></span>
-* <span data-ttu-id="4105b-122">В браузере откройте страницу `http://<serveraddress>:<port>`, чтобы убедиться, что приложение работает на платформе Linux.</span><span class="sxs-lookup"><span data-stu-id="4105b-122">In a browser, navigate to `http://<serveraddress>:<port>` to verify the app works on Linux.</span></span> 
+* <span data-ttu-id="739c9-121">Запустите из командной строки, `dotnet <app_assembly>.dll`.</span><span class="sxs-lookup"><span data-stu-id="739c9-121">From the command line, run `dotnet <app_assembly>.dll`.</span></span>
+* <span data-ttu-id="739c9-122">В браузере откройте страницу `http://<serveraddress>:<port>`, чтобы убедиться, что приложение работает на платформе Linux.</span><span class="sxs-lookup"><span data-stu-id="739c9-122">In a browser, navigate to `http://<serveraddress>:<port>` to verify the app works on Linux.</span></span> 
  
-## <a name="configure-a-reverse-proxy-server"></a><span data-ttu-id="4105b-123">Настройка обратного прокси-сервера</span><span class="sxs-lookup"><span data-stu-id="4105b-123">Configure a reverse proxy server</span></span>
+## <a name="configure-a-reverse-proxy-server"></a><span data-ttu-id="739c9-123">Настройка обратного прокси-сервера</span><span class="sxs-lookup"><span data-stu-id="739c9-123">Configure a reverse proxy server</span></span>
 
-<span data-ttu-id="4105b-124">Обратный прокси-сервер общих настроен для обслуживания динамических веб-приложений.</span><span class="sxs-lookup"><span data-stu-id="4105b-124">A reverse proxy is a common setup for serving dynamic web apps.</span></span> <span data-ttu-id="4105b-125">Обратный прокси-сервер завершает HTTP-запроса и отправляет его в приложение ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="4105b-125">A reverse proxy terminates the HTTP request and forwards it to the ASP.NET Core app.</span></span>
+<span data-ttu-id="739c9-124">Обратный прокси-сервер общих настроен для обслуживания динамических веб-приложений.</span><span class="sxs-lookup"><span data-stu-id="739c9-124">A reverse proxy is a common setup for serving dynamic web apps.</span></span> <span data-ttu-id="739c9-125">Обратный прокси-сервер завершает HTTP-запроса и отправляет его в приложение ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="739c9-125">A reverse proxy terminates the HTTP request and forwards it to the ASP.NET Core app.</span></span>
 
-### <a name="why-use-a-reverse-proxy-server"></a><span data-ttu-id="4105b-126">Для чего нужен обратный прокси-сервер?</span><span class="sxs-lookup"><span data-stu-id="4105b-126">Why use a reverse proxy server?</span></span>
+### <a name="why-use-a-reverse-proxy-server"></a><span data-ttu-id="739c9-126">Для чего нужен обратный прокси-сервер?</span><span class="sxs-lookup"><span data-stu-id="739c9-126">Why use a reverse proxy server?</span></span>
 
-<span data-ttu-id="4105b-127">Kestrel отлично подходит для обслуживания динамического содержимого из ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="4105b-127">Kestrel is great for serving dynamic content from ASP.NET Core.</span></span> <span data-ttu-id="4105b-128">Однако возможности обслуживания web не обладая такими широкими возможностями функции в качестве серверов, таких как IIS, Apache или Nginx.</span><span class="sxs-lookup"><span data-stu-id="4105b-128">However, the web serving capabilities aren't as feature rich as servers such as IIS, Apache, or Nginx.</span></span> <span data-ttu-id="4105b-129">Обратного прокси-сервера можно перенаправить работу работы, такие как обслуживание статического содержимого, кэширование запросов, сжатие запросов и завершения запросов SSL с HTTP-сервера.</span><span class="sxs-lookup"><span data-stu-id="4105b-129">A reverse proxy server can offload work such as serving static content, caching requests, compressing requests, and SSL termination from the HTTP server.</span></span> <span data-ttu-id="4105b-130">Обратный прокси-сервер можно разместить на отдельном компьютере или развернуть параллельно с HTTP-сервером.</span><span class="sxs-lookup"><span data-stu-id="4105b-130">A reverse proxy server may reside on a dedicated machine or may be deployed alongside an HTTP server.</span></span>
+<span data-ttu-id="739c9-127">Kestrel отлично подходит для обслуживания динамического содержимого из ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="739c9-127">Kestrel is great for serving dynamic content from ASP.NET Core.</span></span> <span data-ttu-id="739c9-128">Однако возможности обслуживания web не обладая такими широкими возможностями функции в качестве серверов, таких как IIS, Apache или Nginx.</span><span class="sxs-lookup"><span data-stu-id="739c9-128">However, the web serving capabilities aren't as feature rich as servers such as IIS, Apache, or Nginx.</span></span> <span data-ttu-id="739c9-129">Обратного прокси-сервера можно перенаправить работу работы, такие как обслуживание статического содержимого, кэширование запросов, сжатие запросов и завершения запросов SSL с HTTP-сервера.</span><span class="sxs-lookup"><span data-stu-id="739c9-129">A reverse proxy server can offload work such as serving static content, caching requests, compressing requests, and SSL termination from the HTTP server.</span></span> <span data-ttu-id="739c9-130">Обратный прокси-сервер можно разместить на отдельном компьютере или развернуть параллельно с HTTP-сервером.</span><span class="sxs-lookup"><span data-stu-id="739c9-130">A reverse proxy server may reside on a dedicated machine or may be deployed alongside an HTTP server.</span></span>
 
-<span data-ttu-id="4105b-131">В контексте данного руководства используется отдельный экземпляр Nginx.</span><span class="sxs-lookup"><span data-stu-id="4105b-131">For the purposes of this guide, a single instance of Nginx is used.</span></span> <span data-ttu-id="4105b-132">Он выполняется на том же сервере, что и HTTP-сервер.</span><span class="sxs-lookup"><span data-stu-id="4105b-132">It runs on the same server, alongside the HTTP server.</span></span> <span data-ttu-id="4105b-133">Исходя из требований, можно выбрать различные настройки.</span><span class="sxs-lookup"><span data-stu-id="4105b-133">Based on requirements, a different setup may be chosen.</span></span>
+<span data-ttu-id="739c9-131">В контексте данного руководства используется отдельный экземпляр Nginx.</span><span class="sxs-lookup"><span data-stu-id="739c9-131">For the purposes of this guide, a single instance of Nginx is used.</span></span> <span data-ttu-id="739c9-132">Он выполняется на том же сервере, что и HTTP-сервер.</span><span class="sxs-lookup"><span data-stu-id="739c9-132">It runs on the same server, alongside the HTTP server.</span></span> <span data-ttu-id="739c9-133">Исходя из требований, можно выбрать различные настройки.</span><span class="sxs-lookup"><span data-stu-id="739c9-133">Based on requirements, a different setup may be chosen.</span></span>
 
-<span data-ttu-id="4105b-134">Поскольку запросы перенаправляются обратного прокси-сервера, с помощью перенаправленных заголовки по промежуточного слоя из [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) пакета.</span><span class="sxs-lookup"><span data-stu-id="4105b-134">Because requests are forwarded by reverse proxy, use the Forwarded Headers Middleware from the [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) package.</span></span> <span data-ttu-id="4105b-135">Обновления по промежуточного слоя `Request.Scheme`, с использованием `X-Forwarded-Proto` заголовок, чтобы правильно работать, идентификаторы URI перенаправления и другие политики безопасности.</span><span class="sxs-lookup"><span data-stu-id="4105b-135">The middleware updates the `Request.Scheme`, using the `X-Forwarded-Proto` header, so that redirect URIs and other security policies work correctly.</span></span>
+<span data-ttu-id="739c9-134">Поскольку запросы перенаправляются обратного прокси-сервера, с помощью перенаправленных заголовки по промежуточного слоя из [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) пакета.</span><span class="sxs-lookup"><span data-stu-id="739c9-134">Because requests are forwarded by reverse proxy, use the Forwarded Headers Middleware from the [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) package.</span></span> <span data-ttu-id="739c9-135">Обновления по промежуточного слоя `Request.Scheme`, с использованием `X-Forwarded-Proto` заголовок, чтобы правильно работать, идентификаторы URI перенаправления и другие политики безопасности.</span><span class="sxs-lookup"><span data-stu-id="739c9-135">The middleware updates the `Request.Scheme`, using the `X-Forwarded-Proto` header, so that redirect URIs and other security policies work correctly.</span></span>
 
-<span data-ttu-id="4105b-136">При использовании любого типа проверки подлинности по промежуточного слоя, необходимо запустить сначала по промежуточного слоя перенаправленных заголовки.</span><span class="sxs-lookup"><span data-stu-id="4105b-136">When using any type of authentication middleware, the Forwarded Headers Middleware must run first.</span></span> <span data-ttu-id="4105b-137">Этот гарантирует, что по промежуточного слоя проверки подлинности можно использовать значения заголовка и создавать правильный перенаправления идентификаторы URI.</span><span class="sxs-lookup"><span data-stu-id="4105b-137">This ordering ensures that the authentication middleware can consume the header values and generate correct redirect URIs.</span></span>
+<span data-ttu-id="739c9-136">При использовании любого типа проверки подлинности по промежуточного слоя, необходимо запустить сначала по промежуточного слоя перенаправленных заголовки.</span><span class="sxs-lookup"><span data-stu-id="739c9-136">When using any type of authentication middleware, the Forwarded Headers Middleware must run first.</span></span> <span data-ttu-id="739c9-137">Этот гарантирует, что по промежуточного слоя проверки подлинности можно использовать значения заголовка и создавать правильный перенаправления идентификаторы URI.</span><span class="sxs-lookup"><span data-stu-id="739c9-137">This ordering ensures that the authentication middleware can consume the header values and generate correct redirect URIs.</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="4105b-138">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="4105b-138">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="739c9-138">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="739c9-138">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-<span data-ttu-id="4105b-139">Вызвать [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) метод в `Startup.Configure` перед вызовом [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) или аналогичные схему проверки подлинности по промежуточного слоя:</span><span class="sxs-lookup"><span data-stu-id="4105b-139">Invoke the [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) method in `Startup.Configure` before calling [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) or similar authentication scheme middleware:</span></span>
+<span data-ttu-id="739c9-139">Вызвать [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) метод в `Startup.Configure` перед вызовом [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) или аналогичные схему проверки подлинности по промежуточного слоя:</span><span class="sxs-lookup"><span data-stu-id="739c9-139">Invoke the [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) method in `Startup.Configure` before calling [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) or similar authentication scheme middleware:</span></span>
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -72,9 +73,9 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 app.UseAuthentication();
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="4105b-140">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="4105b-140">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="739c9-140">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="739c9-140">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-<span data-ttu-id="4105b-141">Вызвать [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) метод в `Startup.Configure` перед вызовом [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity) и [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) или аналогичные схему проверки подлинности по промежуточного слоя:</span><span class="sxs-lookup"><span data-stu-id="4105b-141">Invoke the [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) method in `Startup.Configure` before calling [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity) and [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) or similar authentication scheme middleware:</span></span>
+<span data-ttu-id="739c9-141">Вызвать [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) метод в `Startup.Configure` перед вызовом [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity) и [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) или аналогичные схему проверки подлинности по промежуточного слоя:</span><span class="sxs-lookup"><span data-stu-id="739c9-141">Invoke the [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) method in `Startup.Configure` before calling [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity) and [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) or similar authentication scheme middleware:</span></span>
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -92,60 +93,74 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 ---
 
-<span data-ttu-id="4105b-142">Если не [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) для указания по промежуточного слоя, заголовки по умолчанию для пересылки `None`.</span><span class="sxs-lookup"><span data-stu-id="4105b-142">If no [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) are specified to the middleware, the default headers to forward are `None`.</span></span>
+<span data-ttu-id="739c9-142">Если не [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) для указания по промежуточного слоя, заголовки по умолчанию для пересылки `None`.</span><span class="sxs-lookup"><span data-stu-id="739c9-142">If no [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) are specified to the middleware, the default headers to forward are `None`.</span></span>
 
-### <a name="install-nginx"></a><span data-ttu-id="4105b-143">Установка Nginx</span><span class="sxs-lookup"><span data-stu-id="4105b-143">Install Nginx</span></span>
+### <a name="install-nginx"></a><span data-ttu-id="739c9-143">Установка Nginx</span><span class="sxs-lookup"><span data-stu-id="739c9-143">Install Nginx</span></span>
 
 ```bash
 sudo apt-get install nginx
 ```
 
 > [!NOTE]
-> <span data-ttu-id="4105b-144">Если дополнительных модулей Nginx будут установлены, может потребоваться создание Nginx из источника.</span><span class="sxs-lookup"><span data-stu-id="4105b-144">If optional Nginx modules will be installed, building Nginx from source might be required.</span></span>
+> <span data-ttu-id="739c9-144">Если дополнительных модулей Nginx будут установлены, может потребоваться создание Nginx из источника.</span><span class="sxs-lookup"><span data-stu-id="739c9-144">If optional Nginx modules will be installed, building Nginx from source might be required.</span></span>
 
-<span data-ttu-id="4105b-145">Установите Nginx с помощью команды `apt-get`.</span><span class="sxs-lookup"><span data-stu-id="4105b-145">Use `apt-get` to install Nginx.</span></span> <span data-ttu-id="4105b-146">Программа установки создает сценарий инициализации System V, который запускает Nginx как управляющую программу Nginx при запуске системы.</span><span class="sxs-lookup"><span data-stu-id="4105b-146">The installer creates a System V init script that runs Nginx as daemon on system startup.</span></span> <span data-ttu-id="4105b-147">Так как Nginx устанавливается впервые, запустите его напрямую, выполнив следующую команду.</span><span class="sxs-lookup"><span data-stu-id="4105b-147">Since Nginx was installed for the first time, explicitly start it by running:</span></span>
+<span data-ttu-id="739c9-145">Установите Nginx с помощью команды `apt-get`.</span><span class="sxs-lookup"><span data-stu-id="739c9-145">Use `apt-get` to install Nginx.</span></span> <span data-ttu-id="739c9-146">Программа установки создает сценарий инициализации System V, который запускает Nginx как управляющую программу Nginx при запуске системы.</span><span class="sxs-lookup"><span data-stu-id="739c9-146">The installer creates a System V init script that runs Nginx as daemon on system startup.</span></span> <span data-ttu-id="739c9-147">Так как Nginx устанавливается впервые, запустите его напрямую, выполнив следующую команду.</span><span class="sxs-lookup"><span data-stu-id="739c9-147">Since Nginx was installed for the first time, explicitly start it by running:</span></span>
 
 ```bash
 sudo service nginx start
 ```
 
-<span data-ttu-id="4105b-148">В браузере должна открыться стартовая страница Nginx по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="4105b-148">Verify a browser displays the default landing page for Nginx.</span></span>
+<span data-ttu-id="739c9-148">В браузере должна открыться стартовая страница Nginx по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="739c9-148">Verify a browser displays the default landing page for Nginx.</span></span>
 
-### <a name="configure-nginx"></a><span data-ttu-id="4105b-149">Настройка Nginx</span><span class="sxs-lookup"><span data-stu-id="4105b-149">Configure Nginx</span></span>
+### <a name="configure-nginx"></a><span data-ttu-id="739c9-149">Настройка Nginx</span><span class="sxs-lookup"><span data-stu-id="739c9-149">Configure Nginx</span></span>
 
-<span data-ttu-id="4105b-150">Чтобы настроить в качестве обратного прокси-сервера для пересылки запросов нашего приложения ASP.NET Core Nginx, измените `/etc/nginx/sites-available/default`.</span><span class="sxs-lookup"><span data-stu-id="4105b-150">To configure Nginx as a reverse proxy to forward requests to our ASP.NET Core app, modify `/etc/nginx/sites-available/default`.</span></span> <span data-ttu-id="4105b-151">Откройте этот файл в текстовом редакторе и замените его содержимое на следующий код.</span><span class="sxs-lookup"><span data-stu-id="4105b-151">Open it in a text editor, and replace the contents with the following:</span></span>
+<span data-ttu-id="739c9-150">Чтобы настроить в качестве обратного прокси-сервера для пересылки запросов приложения ASP.NET Core Nginx, измените */etc/nginx/sites-available/default*.</span><span class="sxs-lookup"><span data-stu-id="739c9-150">To configure Nginx as a reverse proxy to forward requests to your ASP.NET Core app, modify */etc/nginx/sites-available/default*.</span></span> <span data-ttu-id="739c9-151">Откройте этот файл в текстовом редакторе и замените его содержимое на следующий код.</span><span class="sxs-lookup"><span data-stu-id="739c9-151">Open it in a text editor, and replace the contents with the following:</span></span>
 
-```
+```nginx
 server {
-    listen 80;
+    listen        80;
+    server_name   example.com *.example.com;
     location / {
-        proxy_pass http://localhost:5000;
+        proxy_pass         http://localhost:5000;
         proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection keep-alive;
-        proxy_set_header Host $http_host;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $http_host;
         proxy_cache_bypass $http_upgrade;
     }
 }
 ```
 
-<span data-ttu-id="4105b-152">Этот файл конфигурации Nginx перенаправляет входящий публичный трафик с порта `80` на порт `5000`.</span><span class="sxs-lookup"><span data-stu-id="4105b-152">This Nginx configuration file forwards incoming public traffic from port `80` to port `5000`.</span></span>
+<span data-ttu-id="739c9-152">Если аргумент `server_name` совпадений, Nginx использует сервер по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="739c9-152">When no `server_name` matches, Nginx uses the default server.</span></span> <span data-ttu-id="739c9-153">Если сервер по умолчанию не определен, первый сервер в файле конфигурации является сервером по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="739c9-153">If no default server is defined, the first server in the configuration file is the default server.</span></span> <span data-ttu-id="739c9-154">Рекомендуется добавьте указанный основной сервер, который возвращает код состояния 444 в файле конфигурации.</span><span class="sxs-lookup"><span data-stu-id="739c9-154">As a best practice, add a specific default server which returns a status code of 444 in your configuration file.</span></span> <span data-ttu-id="739c9-155">Пример конфигурации сервера по умолчанию является:</span><span class="sxs-lookup"><span data-stu-id="739c9-155">A default server configuration example is:</span></span>
 
-<span data-ttu-id="4105b-153">После установления Nginx конфигурации запуска `sudo nginx -t` проверить синтаксис файлов конфигурации.</span><span class="sxs-lookup"><span data-stu-id="4105b-153">Once the Nginx configuration is established, run `sudo nginx -t` to verify the syntax of the configuration files.</span></span> <span data-ttu-id="4105b-154">Если проверка файла конфигурации прошла успешно, принудительно Nginx, чтобы принять изменения, запустив `sudo nginx -s reload`.</span><span class="sxs-lookup"><span data-stu-id="4105b-154">If the configuration file test is successful, force Nginx to pick up the changes by running `sudo nginx -s reload`.</span></span>
+```nginx
+server {
+    listen   80 default_server;
+    # listen [::]:80 default_server deferred;
+    return   444;
+}
+```
 
-## <a name="monitoring-the-app"></a><span data-ttu-id="4105b-155">Мониторинг приложений</span><span class="sxs-lookup"><span data-stu-id="4105b-155">Monitoring the app</span></span>
+<span data-ttu-id="739c9-156">Предыдущий файл и по умолчанию сервер конфигурации, Nginx принимает общего трафика через порт 80 с заголовком узла `example.com` или `*.example.com`.</span><span class="sxs-lookup"><span data-stu-id="739c9-156">With the preceding configuration file and default server, Nginx accepts public traffic on port 80 with host header `example.com` or `*.example.com`.</span></span> <span data-ttu-id="739c9-157">Запросы, не соответствующие эти узлы не получить пересылаются Kestrel.</span><span class="sxs-lookup"><span data-stu-id="739c9-157">Requests not matching these hosts won't get forwarded to Kestrel.</span></span> <span data-ttu-id="739c9-158">Nginx перенаправляет запросы сопоставления Kestrel на `http://localhost:5000`.</span><span class="sxs-lookup"><span data-stu-id="739c9-158">Nginx forwards the matching requests to Kestrel at `http://localhost:5000`.</span></span> <span data-ttu-id="739c9-159">В разделе [как nginx обрабатывает запрос](https://nginx.org/docs/http/request_processing.html) для получения дополнительной информации.</span><span class="sxs-lookup"><span data-stu-id="739c9-159">See [How nginx processes a request](https://nginx.org/docs/http/request_processing.html) for more information.</span></span>
 
-<span data-ttu-id="4105b-156">Сервер настроен для пересылки запросов к `http://<serveraddress>:80` на ASP.NET Core приложение, работающее на Kestrel на `http://127.0.0.1:5000`.</span><span class="sxs-lookup"><span data-stu-id="4105b-156">The server is setup to forward requests made to `http://<serveraddress>:80` on to the ASP.NET Core app running on Kestrel at `http://127.0.0.1:5000`.</span></span> <span data-ttu-id="4105b-157">Однако Nginx настроена для управления процессом Kestrel.</span><span class="sxs-lookup"><span data-stu-id="4105b-157">However, Nginx isn't set up to manage the Kestrel process.</span></span> <span data-ttu-id="4105b-158">*systemd* можно использовать для создания файла службы для запуска и наблюдения за базовой веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="4105b-158">*systemd* can be used to create a service file to start and monitor the underlying web app.</span></span> <span data-ttu-id="4105b-159">*systemd* — это система инициализации, предоставляющая различные функции для запуска и остановки процессов, а также управления ими.</span><span class="sxs-lookup"><span data-stu-id="4105b-159">*systemd* is an init system that provides many powerful features for starting, stopping, and managing processes.</span></span> 
+> [!WARNING]
+> <span data-ttu-id="739c9-160">Если не задать строгим [директива имя_сервера](https://nginx.org/docs/http/server_names.html) предоставляет доступ приложения к уязвимостям системы безопасности.</span><span class="sxs-lookup"><span data-stu-id="739c9-160">Failure to specify a proper [server_name directive](https://nginx.org/docs/http/server_names.html) exposes your app to security vulnerabilities.</span></span> <span data-ttu-id="739c9-161">Привязки поддомен подстановочный знак (например, `*.example.com`) не вызывает риск безопасности, если вы можете управлять всей родительского домена (в отличие от `*.com`, которой уязвима).</span><span class="sxs-lookup"><span data-stu-id="739c9-161">Subdomain wildcard binding (for example, `*.example.com`) doesn't pose this security risk if you control the entire parent domain (as opposed to `*.com`, which is vulnerable).</span></span> <span data-ttu-id="739c9-162">В разделе [rfc7230 раздел-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) для получения дополнительной информации.</span><span class="sxs-lookup"><span data-stu-id="739c9-162">See [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) for more information.</span></span>
 
-### <a name="create-the-service-file"></a><span data-ttu-id="4105b-160">Создание файла службы</span><span class="sxs-lookup"><span data-stu-id="4105b-160">Create the service file</span></span>
+<span data-ttu-id="739c9-163">После установления Nginx конфигурации запуска `sudo nginx -t` проверить синтаксис файлов конфигурации.</span><span class="sxs-lookup"><span data-stu-id="739c9-163">Once the Nginx configuration is established, run `sudo nginx -t` to verify the syntax of the configuration files.</span></span> <span data-ttu-id="739c9-164">Если проверка файла конфигурации прошла успешно, принудительно Nginx, чтобы принять изменения, запустив `sudo nginx -s reload`.</span><span class="sxs-lookup"><span data-stu-id="739c9-164">If the configuration file test is successful, force Nginx to pick up the changes by running `sudo nginx -s reload`.</span></span>
 
-<span data-ttu-id="4105b-161">Создайте файл определения службы.</span><span class="sxs-lookup"><span data-stu-id="4105b-161">Create the service definition file:</span></span>
+## <a name="monitoring-the-app"></a><span data-ttu-id="739c9-165">Мониторинг приложений</span><span class="sxs-lookup"><span data-stu-id="739c9-165">Monitoring the app</span></span>
+
+<span data-ttu-id="739c9-166">Сервер настроен для пересылки запросов к `http://<serveraddress>:80` на ASP.NET Core приложение, работающее на Kestrel на `http://127.0.0.1:5000`.</span><span class="sxs-lookup"><span data-stu-id="739c9-166">The server is setup to forward requests made to `http://<serveraddress>:80` on to the ASP.NET Core app running on Kestrel at `http://127.0.0.1:5000`.</span></span> <span data-ttu-id="739c9-167">Однако Nginx настроена для управления процессом Kestrel.</span><span class="sxs-lookup"><span data-stu-id="739c9-167">However, Nginx isn't set up to manage the Kestrel process.</span></span> <span data-ttu-id="739c9-168">*systemd* можно использовать для создания файла службы для запуска и наблюдения за базовой веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="739c9-168">*systemd* can be used to create a service file to start and monitor the underlying web app.</span></span> <span data-ttu-id="739c9-169">*systemd* — это система инициализации, предоставляющая различные функции для запуска и остановки процессов, а также управления ими.</span><span class="sxs-lookup"><span data-stu-id="739c9-169">*systemd* is an init system that provides many powerful features for starting, stopping, and managing processes.</span></span> 
+
+### <a name="create-the-service-file"></a><span data-ttu-id="739c9-170">Создание файла службы</span><span class="sxs-lookup"><span data-stu-id="739c9-170">Create the service file</span></span>
+
+<span data-ttu-id="739c9-171">Создайте файл определения службы.</span><span class="sxs-lookup"><span data-stu-id="739c9-171">Create the service definition file:</span></span>
 
 ```bash
 sudo nano /etc/systemd/system/kestrel-hellomvc.service
 ```
 
-<span data-ttu-id="4105b-162">Ниже приведен пример файла службы для приложения.</span><span class="sxs-lookup"><span data-stu-id="4105b-162">The following is an example service file for the app:</span></span>
+<span data-ttu-id="739c9-172">Ниже приведен пример файла службы для приложения.</span><span class="sxs-lookup"><span data-stu-id="739c9-172">The following is an example service file for the app:</span></span>
 
 ```ini
 [Unit]
@@ -165,16 +180,16 @@ Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
 WantedBy=multi-user.target
 ```
 
-<span data-ttu-id="4105b-163">**Примечание:** Если пользователь *www данных* не используется в конфигурации пользовательские необходимо сначала создать и получает соответствующие права владения для файлов.</span><span class="sxs-lookup"><span data-stu-id="4105b-163">**Note:** If the user *www-data* isn't used by the configuration, the user defined here must be created first and given proper ownership for files.</span></span>
-<span data-ttu-id="4105b-164">**Примечание:** Linux содержит с учетом регистра файловую систему.</span><span class="sxs-lookup"><span data-stu-id="4105b-164">**Note:** Linux has a case-sensitive file system.</span></span> <span data-ttu-id="4105b-165">Параметр ASPNETCORE_ENVIRONMENT поиск файла конфигурации приводит к «Production» *appsettings. Production.JSON*, а не *appsettings.production.json*.</span><span class="sxs-lookup"><span data-stu-id="4105b-165">Setting ASPNETCORE_ENVIRONMENT to "Production" results in searching for the configuration file *appsettings.Production.json*, not *appsettings.production.json*.</span></span>
+<span data-ttu-id="739c9-173">**Примечание:** Если пользователь *www данных* не используется в конфигурации пользовательские необходимо сначала создать и получает соответствующие права владения для файлов.</span><span class="sxs-lookup"><span data-stu-id="739c9-173">**Note:** If the user *www-data* isn't used by the configuration, the user defined here must be created first and given proper ownership for files.</span></span>
+<span data-ttu-id="739c9-174">**Примечание:** Linux содержит с учетом регистра файловую систему.</span><span class="sxs-lookup"><span data-stu-id="739c9-174">**Note:** Linux has a case-sensitive file system.</span></span> <span data-ttu-id="739c9-175">Параметр ASPNETCORE_ENVIRONMENT поиск файла конфигурации приводит к «Production» *appsettings. Production.JSON*, а не *appsettings.production.json*.</span><span class="sxs-lookup"><span data-stu-id="739c9-175">Setting ASPNETCORE_ENVIRONMENT to "Production" results in searching for the configuration file *appsettings.Production.json*, not *appsettings.production.json*.</span></span>
 
-<span data-ttu-id="4105b-166">Сохраните файл и включите службу.</span><span class="sxs-lookup"><span data-stu-id="4105b-166">Save the file and enable the service.</span></span>
+<span data-ttu-id="739c9-176">Сохраните файл и включите службу.</span><span class="sxs-lookup"><span data-stu-id="739c9-176">Save the file and enable the service.</span></span>
 
 ```bash
 systemctl enable kestrel-hellomvc.service
 ```
 
-<span data-ttu-id="4105b-167">Запустите службу и убедитесь, что он работает.</span><span class="sxs-lookup"><span data-stu-id="4105b-167">Start the service and verify that it's running.</span></span>
+<span data-ttu-id="739c9-177">Запустите службу и убедитесь, что он работает.</span><span class="sxs-lookup"><span data-stu-id="739c9-177">Start the service and verify that it's running.</span></span>
 
 ```
 systemctl start kestrel-hellomvc.service
@@ -188,7 +203,7 @@ Main PID: 9021 (dotnet)
             └─9021 /usr/local/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
 ```
 
-<span data-ttu-id="4105b-168">Обратный прокси-сервер настроен и управляемых с помощью systemd Kestrel, веб-приложения, полностью настроена и может осуществляться из браузера на локальном компьютере, на `http://localhost`.</span><span class="sxs-lookup"><span data-stu-id="4105b-168">With the reverse proxy configured and Kestrel managed through systemd, the web app is fully configured and can be accessed from a browser on the local machine at `http://localhost`.</span></span> <span data-ttu-id="4105b-169">Он также доступен с удаленного компьютера, за исключением выполнения любой брандмауэр может блокировать.</span><span class="sxs-lookup"><span data-stu-id="4105b-169">It's also accessible from a remote machine, barring any firewall that might be blocking.</span></span> <span data-ttu-id="4105b-170">Проверка заголовки ответа `Server` заголовок показывает предоставляемый Kestrel приложения ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="4105b-170">Inspecting the response headers, the `Server` header shows the ASP.NET Core app being served by Kestrel.</span></span>
+<span data-ttu-id="739c9-178">Обратный прокси-сервер настроен и управляемых с помощью systemd Kestrel, веб-приложения, полностью настроена и может осуществляться из браузера на локальном компьютере, на `http://localhost`.</span><span class="sxs-lookup"><span data-stu-id="739c9-178">With the reverse proxy configured and Kestrel managed through systemd, the web app is fully configured and can be accessed from a browser on the local machine at `http://localhost`.</span></span> <span data-ttu-id="739c9-179">Он также доступен с удаленного компьютера, за исключением выполнения любой брандмауэр может блокировать.</span><span class="sxs-lookup"><span data-stu-id="739c9-179">It's also accessible from a remote machine, barring any firewall that might be blocking.</span></span> <span data-ttu-id="739c9-180">Проверка заголовки ответа `Server` заголовок показывает предоставляемый Kestrel приложения ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="739c9-180">Inspecting the response headers, the `Server` header shows the ASP.NET Core app being served by Kestrel.</span></span>
 
 ```text
 HTTP/1.1 200 OK
@@ -199,29 +214,29 @@ Connection: Keep-Alive
 Transfer-Encoding: chunked
 ```
 
-### <a name="viewing-logs"></a><span data-ttu-id="4105b-171">Просмотр журналов</span><span class="sxs-lookup"><span data-stu-id="4105b-171">Viewing logs</span></span>
+### <a name="viewing-logs"></a><span data-ttu-id="739c9-181">Просмотр журналов</span><span class="sxs-lookup"><span data-stu-id="739c9-181">Viewing logs</span></span>
 
-<span data-ttu-id="4105b-172">Поскольку веб-приложения с помощью Kestrel управляется с помощью `systemd`, для централизованного журнала регистрируются все события и процессов.</span><span class="sxs-lookup"><span data-stu-id="4105b-172">Since the web app using Kestrel is managed using `systemd`, all events and processes are logged to a centralized journal.</span></span> <span data-ttu-id="4105b-173">При этом журнал содержит все записи обо всех службах и процессах, управляемых `systemd`.</span><span class="sxs-lookup"><span data-stu-id="4105b-173">However, this journal includes all entries for all services and processes managed by `systemd`.</span></span> <span data-ttu-id="4105b-174">Чтобы просмотреть элементы, связанные с `kestrel-hellomvc.service`, используйте следующую команду.</span><span class="sxs-lookup"><span data-stu-id="4105b-174">To view the `kestrel-hellomvc.service`-specific items, use the following command:</span></span>
+<span data-ttu-id="739c9-182">Поскольку веб-приложения с помощью Kestrel управляется с помощью `systemd`, для централизованного журнала регистрируются все события и процессов.</span><span class="sxs-lookup"><span data-stu-id="739c9-182">Since the web app using Kestrel is managed using `systemd`, all events and processes are logged to a centralized journal.</span></span> <span data-ttu-id="739c9-183">При этом журнал содержит все записи обо всех службах и процессах, управляемых `systemd`.</span><span class="sxs-lookup"><span data-stu-id="739c9-183">However, this journal includes all entries for all services and processes managed by `systemd`.</span></span> <span data-ttu-id="739c9-184">Чтобы просмотреть элементы, связанные с `kestrel-hellomvc.service`, используйте следующую команду.</span><span class="sxs-lookup"><span data-stu-id="739c9-184">To view the `kestrel-hellomvc.service`-specific items, use the following command:</span></span>
 
 ```bash
 sudo journalctl -fu kestrel-hellomvc.service
 ```
 
-<span data-ttu-id="4105b-175">Кроме того, количество возвращаемых записей можно уменьшить, указав параметры времени, например `--since today`, `--until 1 hour ago` или их комбинацию.</span><span class="sxs-lookup"><span data-stu-id="4105b-175">For further filtering, time options such as `--since today`, `--until 1 hour ago` or a combination of these can reduce the amount of entries returned.</span></span>
+<span data-ttu-id="739c9-185">Кроме того, количество возвращаемых записей можно уменьшить, указав параметры времени, например `--since today`, `--until 1 hour ago` или их комбинацию.</span><span class="sxs-lookup"><span data-stu-id="739c9-185">For further filtering, time options such as `--since today`, `--until 1 hour ago` or a combination of these can reduce the amount of entries returned.</span></span>
 
 ```bash
 sudo journalctl -fu kestrel-hellomvc.service --since "2016-10-18" --until "2016-10-18 04:00"
 ```
 
-## <a name="securing-the-app"></a><span data-ttu-id="4105b-176">Обеспечение безопасности приложения</span><span class="sxs-lookup"><span data-stu-id="4105b-176">Securing the app</span></span>
+## <a name="securing-the-app"></a><span data-ttu-id="739c9-186">Обеспечение безопасности приложения</span><span class="sxs-lookup"><span data-stu-id="739c9-186">Securing the app</span></span>
 
-### <a name="enable-apparmor"></a><span data-ttu-id="4105b-177">Включение AppArmor</span><span class="sxs-lookup"><span data-stu-id="4105b-177">Enable AppArmor</span></span>
+### <a name="enable-apparmor"></a><span data-ttu-id="739c9-187">Включение AppArmor</span><span class="sxs-lookup"><span data-stu-id="739c9-187">Enable AppArmor</span></span>
 
-<span data-ttu-id="4105b-178">Модули безопасности Linux (LSM) — это платформа, который является частью ядро Linux с момента Linux 2.6.</span><span class="sxs-lookup"><span data-stu-id="4105b-178">Linux Security Modules (LSM) is a framework that's part of the Linux kernel since Linux 2.6.</span></span> <span data-ttu-id="4105b-179">LSM поддерживают различные реализации модулей безопасности.</span><span class="sxs-lookup"><span data-stu-id="4105b-179">LSM supports different implementations of security modules.</span></span> <span data-ttu-id="4105b-180">[AppArmor](https://wiki.ubuntu.com/AppArmor) — это LSM, который реализует систему обязательного контроля доступа, позволяющую ограничивать программу определенным набором ресурсов.</span><span class="sxs-lookup"><span data-stu-id="4105b-180">[AppArmor](https://wiki.ubuntu.com/AppArmor) is a LSM that implements a Mandatory Access Control system which allows confining the program to a limited set of resources.</span></span> <span data-ttu-id="4105b-181">Убедитесь, что AppArmor включен и правильно настроен.</span><span class="sxs-lookup"><span data-stu-id="4105b-181">Ensure AppArmor is enabled and properly configured.</span></span>
+<span data-ttu-id="739c9-188">Модули безопасности Linux (LSM) — это платформа, который является частью ядро Linux с момента Linux 2.6.</span><span class="sxs-lookup"><span data-stu-id="739c9-188">Linux Security Modules (LSM) is a framework that's part of the Linux kernel since Linux 2.6.</span></span> <span data-ttu-id="739c9-189">LSM поддерживают различные реализации модулей безопасности.</span><span class="sxs-lookup"><span data-stu-id="739c9-189">LSM supports different implementations of security modules.</span></span> <span data-ttu-id="739c9-190">[AppArmor](https://wiki.ubuntu.com/AppArmor) — это LSM, который реализует систему обязательного контроля доступа, позволяющую ограничивать программу определенным набором ресурсов.</span><span class="sxs-lookup"><span data-stu-id="739c9-190">[AppArmor](https://wiki.ubuntu.com/AppArmor) is a LSM that implements a Mandatory Access Control system which allows confining the program to a limited set of resources.</span></span> <span data-ttu-id="739c9-191">Убедитесь, что AppArmor включен и правильно настроен.</span><span class="sxs-lookup"><span data-stu-id="739c9-191">Ensure AppArmor is enabled and properly configured.</span></span>
 
-### <a name="configuring-the-firewall"></a><span data-ttu-id="4105b-182">Настройка брандмауэра</span><span class="sxs-lookup"><span data-stu-id="4105b-182">Configuring the firewall</span></span>
+### <a name="configuring-the-firewall"></a><span data-ttu-id="739c9-192">Настройка брандмауэра</span><span class="sxs-lookup"><span data-stu-id="739c9-192">Configuring the firewall</span></span>
 
-<span data-ttu-id="4105b-183">Закройте все внешние порты, которые не используются.</span><span class="sxs-lookup"><span data-stu-id="4105b-183">Close off all external ports that are not in use.</span></span> <span data-ttu-id="4105b-184">Незамысловатый межсетевой экран (ufw) позволяет взаимодействовать с `iptables`, предоставляя интерфейс командной строки для настройки межсетевого экрана.</span><span class="sxs-lookup"><span data-stu-id="4105b-184">Uncomplicated firewall (ufw) provides a front end for `iptables` by providing a command line interface for configuring the firewall.</span></span> <span data-ttu-id="4105b-185">Убедитесь, что `ufw` настроен для разрешения трафика на все необходимые порты.</span><span class="sxs-lookup"><span data-stu-id="4105b-185">Verify that `ufw` is configured to allow traffic on any ports needed.</span></span>
+<span data-ttu-id="739c9-193">Закройте все внешние порты, которые не используются.</span><span class="sxs-lookup"><span data-stu-id="739c9-193">Close off all external ports that are not in use.</span></span> <span data-ttu-id="739c9-194">Незамысловатый межсетевой экран (ufw) позволяет взаимодействовать с `iptables`, предоставляя интерфейс командной строки для настройки межсетевого экрана.</span><span class="sxs-lookup"><span data-stu-id="739c9-194">Uncomplicated firewall (ufw) provides a front end for `iptables` by providing a command line interface for configuring the firewall.</span></span> <span data-ttu-id="739c9-195">Убедитесь, что `ufw` настроен для разрешения трафика на все необходимые порты.</span><span class="sxs-lookup"><span data-stu-id="739c9-195">Verify that `ufw` is configured to allow traffic on any ports needed.</span></span>
 
 ```bash
 sudo apt-get install ufw
@@ -231,11 +246,11 @@ sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 ```
 
-### <a name="securing-nginx"></a><span data-ttu-id="4105b-186">Защита Nginx</span><span class="sxs-lookup"><span data-stu-id="4105b-186">Securing Nginx</span></span>
+### <a name="securing-nginx"></a><span data-ttu-id="739c9-196">Защита Nginx</span><span class="sxs-lookup"><span data-stu-id="739c9-196">Securing Nginx</span></span>
 
-<span data-ttu-id="4105b-187">В дистрибутиве Nginx по умолчанию SSL не включен.</span><span class="sxs-lookup"><span data-stu-id="4105b-187">The default distribution of Nginx doesn't enable SSL.</span></span> <span data-ttu-id="4105b-188">Чтобы включить дополнительные функции безопасности, выполните сборку из исходного файла.</span><span class="sxs-lookup"><span data-stu-id="4105b-188">To enable additional security features, build from source.</span></span>
+<span data-ttu-id="739c9-197">В дистрибутиве Nginx по умолчанию SSL не включен.</span><span class="sxs-lookup"><span data-stu-id="739c9-197">The default distribution of Nginx doesn't enable SSL.</span></span> <span data-ttu-id="739c9-198">Чтобы включить дополнительные функции безопасности, выполните сборку из исходного файла.</span><span class="sxs-lookup"><span data-stu-id="739c9-198">To enable additional security features, build from source.</span></span>
 
-#### <a name="download-the-source-and-install-the-build-dependencies"></a><span data-ttu-id="4105b-189">Загрузка исходного файла и установка зависимостей сборки</span><span class="sxs-lookup"><span data-stu-id="4105b-189">Download the source and install the build dependencies</span></span>
+#### <a name="download-the-source-and-install-the-build-dependencies"></a><span data-ttu-id="739c9-199">Загрузка исходного файла и установка зависимостей сборки</span><span class="sxs-lookup"><span data-stu-id="739c9-199">Download the source and install the build dependencies</span></span>
 
 ```bash
 # Install the build dependencies
@@ -247,20 +262,20 @@ wget http://www.nginx.org/download/nginx-1.10.0.tar.gz
 tar zxf nginx-1.10.0.tar.gz
 ```
 
-#### <a name="change-the-nginx-response-name"></a><span data-ttu-id="4105b-190">Изменение имени ответа Nginx</span><span class="sxs-lookup"><span data-stu-id="4105b-190">Change the Nginx response name</span></span>
+#### <a name="change-the-nginx-response-name"></a><span data-ttu-id="739c9-200">Изменение имени ответа Nginx</span><span class="sxs-lookup"><span data-stu-id="739c9-200">Change the Nginx response name</span></span>
 
-<span data-ttu-id="4105b-191">Внесите изменения в файл *src/http/ngx_http_header_filter_module.c*:</span><span class="sxs-lookup"><span data-stu-id="4105b-191">Edit *src/http/ngx_http_header_filter_module.c*:</span></span>
+<span data-ttu-id="739c9-201">Внесите изменения в файл *src/http/ngx_http_header_filter_module.c*:</span><span class="sxs-lookup"><span data-stu-id="739c9-201">Edit *src/http/ngx_http_header_filter_module.c*:</span></span>
 
 ```c
 static char ngx_http_server_string[] = "Server: Web Server" CRLF;
 static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 ```
 
-#### <a name="configure-the-options-and-build"></a><span data-ttu-id="4105b-192">Настройка параметров и сборки</span><span class="sxs-lookup"><span data-stu-id="4105b-192">Configure the options and build</span></span>
+#### <a name="configure-the-options-and-build"></a><span data-ttu-id="739c9-202">Настройка параметров и сборки</span><span class="sxs-lookup"><span data-stu-id="739c9-202">Configure the options and build</span></span>
 
-<span data-ttu-id="4105b-193">Для регулярных выражений требуется библиотека PCRE.</span><span class="sxs-lookup"><span data-stu-id="4105b-193">The PCRE library is required for regular expressions.</span></span> <span data-ttu-id="4105b-194">Регулярные выражения используются в директиве местонахождения для модуля ngx_http_rewrite_module.</span><span class="sxs-lookup"><span data-stu-id="4105b-194">Regular expressions are used in the location directive for the ngx_http_rewrite_module.</span></span> <span data-ttu-id="4105b-195">Модуль http_ssl_module добавляет поддержку протокола HTTPS.</span><span class="sxs-lookup"><span data-stu-id="4105b-195">The http_ssl_module adds HTTPS protocol support.</span></span>
+<span data-ttu-id="739c9-203">Для регулярных выражений требуется библиотека PCRE.</span><span class="sxs-lookup"><span data-stu-id="739c9-203">The PCRE library is required for regular expressions.</span></span> <span data-ttu-id="739c9-204">Регулярные выражения используются в директиве местонахождения для модуля ngx_http_rewrite_module.</span><span class="sxs-lookup"><span data-stu-id="739c9-204">Regular expressions are used in the location directive for the ngx_http_rewrite_module.</span></span> <span data-ttu-id="739c9-205">Модуль http_ssl_module добавляет поддержку протокола HTTPS.</span><span class="sxs-lookup"><span data-stu-id="739c9-205">The http_ssl_module adds HTTPS protocol support.</span></span>
 
-<span data-ttu-id="4105b-196">Рассмотрите возможность использования брандмауэра web app как *ModSecurity* для усиления защиты приложения.</span><span class="sxs-lookup"><span data-stu-id="4105b-196">Consider using a web app firewall like *ModSecurity* to harden the app.</span></span>
+<span data-ttu-id="739c9-206">Рассмотрите возможность использования брандмауэра web app как *ModSecurity* для усиления защиты приложения.</span><span class="sxs-lookup"><span data-stu-id="739c9-206">Consider using a web app firewall like *ModSecurity* to harden the app.</span></span>
 
 ```bash
 ./configure
@@ -271,43 +286,43 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 --with-mail=dynamic
 ```
 
-#### <a name="configure-ssl"></a><span data-ttu-id="4105b-197">Настройка SSL</span><span class="sxs-lookup"><span data-stu-id="4105b-197">Configure SSL</span></span>
+#### <a name="configure-ssl"></a><span data-ttu-id="739c9-207">Настройка SSL</span><span class="sxs-lookup"><span data-stu-id="739c9-207">Configure SSL</span></span>
 
-* <span data-ttu-id="4105b-198">Настройка сервера для прослушивания трафика HTTPS на порте `443` , указав действительный сертификат, выпущенный доверенного центра сертификации (ЦС).</span><span class="sxs-lookup"><span data-stu-id="4105b-198">Configure the server to listen to HTTPS traffic on port `443` by specifying a valid certificate issued by a trusted Certificate Authority (CA).</span></span>
+* <span data-ttu-id="739c9-208">Настройка сервера для прослушивания трафика HTTPS на порте `443` , указав действительный сертификат, выпущенный доверенного центра сертификации (ЦС).</span><span class="sxs-lookup"><span data-stu-id="739c9-208">Configure the server to listen to HTTPS traffic on port `443` by specifying a valid certificate issued by a trusted Certificate Authority (CA).</span></span>
 
-* <span data-ttu-id="4105b-199">Улучшение безопасности при использовании некоторые рекомендации, приведенные в следующей */etc/nginx/nginx.conf* файла.</span><span class="sxs-lookup"><span data-stu-id="4105b-199">Harden the security by employing some of the practices depicted in the following */etc/nginx/nginx.conf* file.</span></span> <span data-ttu-id="4105b-200">Это может быть выбор более строгого шифра и перенаправление всего HTTP-трафика в HTTPS.</span><span class="sxs-lookup"><span data-stu-id="4105b-200">Examples include choosing a stronger cipher and redirecting all traffic over HTTP to HTTPS.</span></span>
+* <span data-ttu-id="739c9-209">Улучшение безопасности при использовании некоторые рекомендации, приведенные в следующей */etc/nginx/nginx.conf* файла.</span><span class="sxs-lookup"><span data-stu-id="739c9-209">Harden the security by employing some of the practices depicted in the following */etc/nginx/nginx.conf* file.</span></span> <span data-ttu-id="739c9-210">Это может быть выбор более строгого шифра и перенаправление всего HTTP-трафика в HTTPS.</span><span class="sxs-lookup"><span data-stu-id="739c9-210">Examples include choosing a stronger cipher and redirecting all traffic over HTTP to HTTPS.</span></span>
 
-* <span data-ttu-id="4105b-201">При добавлении заголовка `HTTP Strict-Transport-Security` (HSTS) все последующие запросы клиента будут проходить только по протоколу HTTPS.</span><span class="sxs-lookup"><span data-stu-id="4105b-201">Adding an `HTTP Strict-Transport-Security` (HSTS) header ensures all subsequent requests made by the client are over HTTPS only.</span></span>
+* <span data-ttu-id="739c9-211">При добавлении заголовка `HTTP Strict-Transport-Security` (HSTS) все последующие запросы клиента будут проходить только по протоколу HTTPS.</span><span class="sxs-lookup"><span data-stu-id="739c9-211">Adding an `HTTP Strict-Transport-Security` (HSTS) header ensures all subsequent requests made by the client are over HTTPS only.</span></span>
 
-* <span data-ttu-id="4105b-202">Не добавляйте в заголовке безопасности для транспорта Strict или с соответствующей `max-age` Если SSL будет отключена в будущем.</span><span class="sxs-lookup"><span data-stu-id="4105b-202">Don't add the Strict-Transport-Security header or chose an appropriate `max-age` if SSL will be disabled in the future.</span></span>
+* <span data-ttu-id="739c9-212">Не добавляйте в заголовке безопасности для транспорта Strict или с соответствующей `max-age` Если SSL будет отключена в будущем.</span><span class="sxs-lookup"><span data-stu-id="739c9-212">Don't add the Strict-Transport-Security header or chose an appropriate `max-age` if SSL will be disabled in the future.</span></span>
 
-<span data-ttu-id="4105b-203">Добавьте файл конфигурации */etc/nginx/proxy.conf*:</span><span class="sxs-lookup"><span data-stu-id="4105b-203">Add the */etc/nginx/proxy.conf* configuration file:</span></span>
+<span data-ttu-id="739c9-213">Добавьте файл конфигурации */etc/nginx/proxy.conf*:</span><span class="sxs-lookup"><span data-stu-id="739c9-213">Add the */etc/nginx/proxy.conf* configuration file:</span></span>
 
 [!code-nginx[](linux-nginx/proxy.conf)]
 
-<span data-ttu-id="4105b-204">Измените файл конфигурации */etc/nginx/proxy.conf*.</span><span class="sxs-lookup"><span data-stu-id="4105b-204">Edit the */etc/nginx/nginx.conf* configuration file.</span></span> <span data-ttu-id="4105b-205">В этом примере показаны разделы `http` и `server` одного и того же файла конфигурации.</span><span class="sxs-lookup"><span data-stu-id="4105b-205">The example contains both `http` and `server` sections in one configuration file.</span></span>
+<span data-ttu-id="739c9-214">Измените файл конфигурации */etc/nginx/proxy.conf*.</span><span class="sxs-lookup"><span data-stu-id="739c9-214">Edit the */etc/nginx/nginx.conf* configuration file.</span></span> <span data-ttu-id="739c9-215">В этом примере показаны разделы `http` и `server` одного и того же файла конфигурации.</span><span class="sxs-lookup"><span data-stu-id="739c9-215">The example contains both `http` and `server` sections in one configuration file.</span></span>
 
 [!code-nginx[](linux-nginx/nginx.conf?highlight=2)]
 
-#### <a name="secure-nginx-from-clickjacking"></a><span data-ttu-id="4105b-206">Защита Nginx от кликджекинга</span><span class="sxs-lookup"><span data-stu-id="4105b-206">Secure Nginx from clickjacking</span></span>
-<span data-ttu-id="4105b-207">Кликджекинг — это способ обмана, предназначенный для перехвата кликов пострадавшего пользователя.</span><span class="sxs-lookup"><span data-stu-id="4105b-207">Clickjacking is a malicious technique to collect an infected user's clicks.</span></span> <span data-ttu-id="4105b-208">Кликджекинг обманом заставляет пользователей (посетителей) щелкать зараженные сайты.</span><span class="sxs-lookup"><span data-stu-id="4105b-208">Clickjacking tricks the victim (visitor) into clicking on an infected site.</span></span> <span data-ttu-id="4105b-209">Использование X-FRAME-OPTIONS для защиты узла.</span><span class="sxs-lookup"><span data-stu-id="4105b-209">Use X-FRAME-OPTIONS to secure the site.</span></span>
+#### <a name="secure-nginx-from-clickjacking"></a><span data-ttu-id="739c9-216">Защита Nginx от кликджекинга</span><span class="sxs-lookup"><span data-stu-id="739c9-216">Secure Nginx from clickjacking</span></span>
+<span data-ttu-id="739c9-217">Кликджекинг — это способ обмана, предназначенный для перехвата кликов пострадавшего пользователя.</span><span class="sxs-lookup"><span data-stu-id="739c9-217">Clickjacking is a malicious technique to collect an infected user's clicks.</span></span> <span data-ttu-id="739c9-218">Кликджекинг обманом заставляет пользователей (посетителей) щелкать зараженные сайты.</span><span class="sxs-lookup"><span data-stu-id="739c9-218">Clickjacking tricks the victim (visitor) into clicking on an infected site.</span></span> <span data-ttu-id="739c9-219">Использование X-FRAME-OPTIONS для защиты узла.</span><span class="sxs-lookup"><span data-stu-id="739c9-219">Use X-FRAME-OPTIONS to secure the site.</span></span>
 
-<span data-ttu-id="4105b-210">Измените файл *nginx.conf*.</span><span class="sxs-lookup"><span data-stu-id="4105b-210">Edit the *nginx.conf* file:</span></span>
-
-```bash
-sudo nano /etc/nginx/nginx.conf
-```
-
-<span data-ttu-id="4105b-211">Добавьте строку `add_header X-Frame-Options "SAMEORIGIN";` и сохраните файл, а затем перезапустите Nginx.</span><span class="sxs-lookup"><span data-stu-id="4105b-211">Add the line `add_header X-Frame-Options "SAMEORIGIN";` and save the file, then restart Nginx.</span></span>
-
-#### <a name="mime-type-sniffing"></a><span data-ttu-id="4105b-212">Сканирование типа MIME</span><span class="sxs-lookup"><span data-stu-id="4105b-212">MIME-type sniffing</span></span>
-
-<span data-ttu-id="4105b-213">Этот заголовок предотвращает MIME-сканирование ответов с указанным типом содержимого в большинстве браузеров, запрещая браузеру переопределять тип содержимого ответа.</span><span class="sxs-lookup"><span data-stu-id="4105b-213">This header prevents most browsers from MIME-sniffing a response away from the declared content type, as the header instructs the browser not to override the response content type.</span></span> <span data-ttu-id="4105b-214">Параметр `nosniff` означает, что, если сервер определяет содержимое как text/html, браузер будет обрабатывать его как text/html.</span><span class="sxs-lookup"><span data-stu-id="4105b-214">With the `nosniff` option, if the server says the content is "text/html", the browser renders it as "text/html".</span></span>
-
-<span data-ttu-id="4105b-215">Измените файл *nginx.conf*.</span><span class="sxs-lookup"><span data-stu-id="4105b-215">Edit the *nginx.conf* file:</span></span>
+<span data-ttu-id="739c9-220">Измените файл *nginx.conf*.</span><span class="sxs-lookup"><span data-stu-id="739c9-220">Edit the *nginx.conf* file:</span></span>
 
 ```bash
 sudo nano /etc/nginx/nginx.conf
 ```
 
-<span data-ttu-id="4105b-216">Добавьте строку `add_header X-Content-Type-Options "nosniff";` и сохраните файл, а затем перезапустите Nginx.</span><span class="sxs-lookup"><span data-stu-id="4105b-216">Add the line `add_header X-Content-Type-Options "nosniff";` and save the file, then restart Nginx.</span></span>
+<span data-ttu-id="739c9-221">Добавьте строку `add_header X-Frame-Options "SAMEORIGIN";` и сохраните файл, а затем перезапустите Nginx.</span><span class="sxs-lookup"><span data-stu-id="739c9-221">Add the line `add_header X-Frame-Options "SAMEORIGIN";` and save the file, then restart Nginx.</span></span>
+
+#### <a name="mime-type-sniffing"></a><span data-ttu-id="739c9-222">Сканирование типа MIME</span><span class="sxs-lookup"><span data-stu-id="739c9-222">MIME-type sniffing</span></span>
+
+<span data-ttu-id="739c9-223">Этот заголовок предотвращает MIME-сканирование ответов с указанным типом содержимого в большинстве браузеров, запрещая браузеру переопределять тип содержимого ответа.</span><span class="sxs-lookup"><span data-stu-id="739c9-223">This header prevents most browsers from MIME-sniffing a response away from the declared content type, as the header instructs the browser not to override the response content type.</span></span> <span data-ttu-id="739c9-224">Параметр `nosniff` означает, что, если сервер определяет содержимое как text/html, браузер будет обрабатывать его как text/html.</span><span class="sxs-lookup"><span data-stu-id="739c9-224">With the `nosniff` option, if the server says the content is "text/html", the browser renders it as "text/html".</span></span>
+
+<span data-ttu-id="739c9-225">Измените файл *nginx.conf*.</span><span class="sxs-lookup"><span data-stu-id="739c9-225">Edit the *nginx.conf* file:</span></span>
+
+```bash
+sudo nano /etc/nginx/nginx.conf
+```
+
+<span data-ttu-id="739c9-226">Добавьте строку `add_header X-Content-Type-Options "nosniff";` и сохраните файл, а затем перезапустите Nginx.</span><span class="sxs-lookup"><span data-stu-id="739c9-226">Add the line `add_header X-Content-Type-Options "nosniff";` and save the file, then restart Nginx.</span></span>
