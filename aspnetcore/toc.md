@@ -29,7 +29,9 @@
 
 ## [Создание веб-API](mvc/web-api/index.md)
 ### [Создание веб-API на Mac](xref:tutorials/first-web-api-mac)
-### [Страницы справки по веб-API ASP.NET Core с использованием Swagger](tutorials/web-api-help-pages-using-swagger.md)
+### [Страницы справки по веб-API ASP.NET Core с использованием Swagger](xref:tutorials/web-api-help-pages-using-swagger)
+#### [Начало работы с NSwag](xref:tutorials/get-started-with-nswag)
+#### [Начало работы с Swashbuckle](xref:tutorials/get-started-with-swashbuckle)
 ### [Создание серверных служб для собственных мобильных приложений](mobile/native-mobile-backend.md)
 
 ## [Доступ к данным с помощью EF Core](xref:data/index)
@@ -212,12 +214,10 @@
 
 # [SignalR](xref:signalr/introduction-signalr-core)
 ## [Введение](xref:signalr/introduction-signalr-core)
+## [Начало работы](xref:signalr/get-started-signalr-core)
 
 # [Мобильные приложения](xref:mobile/index)
 ## [Создание серверных служб для собственных мобильных приложений](xref:mobile/native-mobile-backend)
-
-# [SignalR](xref:signalr/index)
-## [Начало работы](xref:signalr/get-started-signalr-core)
 
 # [Размещение и развертывание](xref:host-and-deploy/index)
 ## [Размещение в службе приложений Azure](xref:host-and-deploy/azure-apps/index)
