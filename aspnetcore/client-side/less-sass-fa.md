@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/less-sass-fa
-ms.openlocfilehash: e00a0929db9dff6c97c4b22468156f621a1a3820
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 979f5639e382560d952df45ba6e0b8af3b132c2d
+ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="introduction-to-styling-applications-with-less-sass-and-font-awesome-in-aspnet-core"></a>Общие сведения о стилях приложений с меньшим, Sass и здорово шрифта в ASP.NET Core
 
@@ -323,7 +323,7 @@ nav {
 
 Sass аналогична меньше, предоставляя поддержку для многих функций, но с небольшими различиями в синтаксисе. Она построена на основе Ruby, а не JavaScript и поэтому имеет требования к настройке различных. Исходный язык Sass не использовать фигурные скобки или точкой с запятой, но вместо определенные области с помощью пробелов и отступов. В версии 3 Sass был представлен новый синтаксис, **SCSS** («Sassy CSS»). SCSS аналогична CSS, поскольку она уровней отступа и пробелы не учитываются и вместо этого использует точки с запятой и фигурные скобки.
 
-Чтобы установить Sass, обычно сначала установить Ruby (предустановлен на Mac) и затем запустите:
+Чтобы установить Sass, обычно сначала установить Ruby (предварительно установлены в macOS) и затем запустите:
 
 ```console
 gem install sass
