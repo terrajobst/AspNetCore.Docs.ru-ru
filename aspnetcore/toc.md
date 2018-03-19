@@ -28,7 +28,7 @@
 ### [Изучение методов Details и Delete](tutorials/first-mvc-app/details.md)
 
 ## [Создание веб-API](mvc/web-api/index.md)
-### [Создание веб-API на Mac](xref:tutorials/first-web-api-mac)
+### [Создание веб-API на macOS](xref:tutorials/first-web-api-mac)
 ### [Страницы справки по веб-API ASP.NET Core с использованием Swagger](xref:tutorials/web-api-help-pages-using-swagger)
 #### [Начало работы с NSwag](xref:tutorials/get-started-with-nswag)
 #### [Начало работы с Swashbuckle](xref:tutorials/get-started-with-swashbuckle)
@@ -59,7 +59,7 @@
 #### [Дополнительные разделы](data/ef-mvc/advanced.md)
 
 ## [Руководства по кроссплатформенности](xref:tutorials/xplat)
-### [Создание веб-приложения Razor Pages на компьютере Mac](xref:tutorials/razor-pages-mac/index)
+### [Создание веб-приложения Razor Pages на macOS](xref:tutorials/razor-pages-mac/index)
 #### [Начало работы с Razor Pages](xref:tutorials/razor-pages-mac/razor-pages-start)
 #### [Добавление модели](xref:tutorials/razor-pages-mac/model)
 #### [Сформированные страницы Razor Pages](xref:tutorials/razor-pages-mac/page)
@@ -87,7 +87,7 @@
 #### [Добавление проверки](xref:tutorials/first-mvc-app-mac/validation)
 #### [Изучение методов Details и Delete](xref:tutorials/first-mvc-app/details)
 
-### [Веб-приложение MVC в Visual Studio Code на Mac или Linux](xref:tutorials/first-mvc-app-xplat/index)
+### [Веб-приложение MVC в Visual Studio Code на macOS или Linux](xref:tutorials/first-mvc-app-xplat/index)
 #### [Начало работы](tutorials/first-mvc-app-xplat/start-mvc.md)
 #### [Добавление контроллера](tutorials/first-mvc-app-xplat/adding-controller.md)
 #### [Добавление представления](tutorials/first-mvc-app-xplat/adding-view.md)

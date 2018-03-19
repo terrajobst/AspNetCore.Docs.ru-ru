@@ -1,5 +1,5 @@
 ---
-title: "Создание веб-приложения ASP.NET Core MVC для Mac"
+title: "Создание веб-приложения ASP.NET Core MVC на macOS"
 author: rick-anderson
 description: "Создание приложения ASP.NET MVC или Entity Framework с помощью Visual Studio для Mac"
 manager: wpickett
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: tutorials/first-mvc-app-mac/index
-ms.openlocfilehash: 554dda7ad7f20f90fd0a73b51eac508f99877683
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 51d62043592fbb7e1edd377c4f3ef3c1693b666a
+ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-web-app-with-aspnet-core-mvc-using-visual-studio-for-mac"></a>Создание веб-приложения ASP.NET Core MVC с помощью Visual Studio для Mac
 

@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/index
-ms.openlocfilehash: 45b00fbc15740fad60202bb7e5ab14beb9ebe495
-ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
+ms.openlocfilehash: fd58a6a3e35a706d503603790fa1c726e6c865d6
+ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="aspnet-core-tutorials"></a>Учебники по ASP.NET Core
 
@@ -27,14 +27,14 @@ ms.lasthandoff: 03/12/2018
 * Создание веб-приложения Razor Pages с помощью ASP.NET Core
 
    * [Razor Pages в Windows](xref:tutorials/razor-pages/index)
-   * [Razor Pages на Mac](xref:tutorials/razor-pages-mac/index)
+   * [Razor Pages на macOS](xref:tutorials/razor-pages-mac/index)
    * [Razor Pages и VS Code](xref:tutorials/razor-pages-vsc/index)  
 
 * Создание веб-приложения ASP.NET Core MVC
 
    * [Веб-приложение в Visual Studio для Windows](first-mvc-app/index.md)
    * [Веб-приложение в Visual Studio для Mac](first-mvc-app-mac/index.md)
-   * [Веб-приложение в Visual Studio Code на Mac или Linux](first-mvc-app-xplat/index.md)
+   * [Веб-приложение в Visual Studio Code на macOS или Linux](first-mvc-app-xplat/index.md)
 
 * [Начало работы с ASP.NET Core и Entity Framework Core в Visual Studio](../data/ef-mvc/index.md)
 * [Создание вспомогательных функций тегов](../mvc/views/tag-helpers/authoring.md)
