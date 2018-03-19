@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/index
-ms.openlocfilehash: ea3a8d88a202028890cdf6ffbbd0151fba7e0a65
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 8ea847c760d2b09210ffc209b5331c6153f0a512
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio"></a>Начало работы с Razor Pages и Entity Framework Core в Visual Studio
+# <a name="get-started-with-razor-pages-and-entity-framework-core-using-visual-studio"></a>Начало работы с Razor Pages и Entity Framework Core с использованием Visual Studio
 
 В этой серии учебников вы узнаете, как создавать веб-приложения ASP.NET Razor Pages, использующие Entity Framework (EF) Core для доступа к данным. Для работы с учебниками требуется Visual Studio 2017.
 

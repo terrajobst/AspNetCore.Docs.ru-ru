@@ -9,23 +9,23 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/index
-ms.openlocfilehash: cbe68f6928e1d73d8e2f7f79075043dcef8ea888
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: 72ac1064b597a300d660236ff35f842b6959d4ef
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio"></a>Начало работы с ASP.NET Core MVC и Entity Framework Core с использованием Visual Studio
+# <a name="get-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio"></a>Начало работы с моделью MVC в ASP.NET Core и с Entity Framework Core в Visual Studio
 
 [!INCLUDE[RP better than MVC](../../includes/RP-EF/rp-over-mvc.md)]
 
-1. [Начало работы](intro.md)
-2. [Операции создания, чтения, обновления и удаления](crud.md)
-3. [Сортировка, фильтрация, разбиение на страницы и группирование данных](sort-filter-page.md)
-4. [Миграции](migrations.md)
-5. [Создание сложной модели данных](complex-data-model.md)
-6. [Чтение связанных данных](read-related-data.md)
-7. [Обновление связанных данных](update-related-data.md)
-8. [Обработка конфликтов параллелизма](concurrency.md)
-9. [Наследование](inheritance.md)
-10. [Дополнительные разделы](advanced.md)
+1. [Начало работы](xref:data/ef-mvc/intro)
+1. [Операции создания, чтения, обновления и удаления](xref:data/ef-mvc/crud)
+1. [Сортировка, фильтрация, разбиение на страницы и группирование данных](xref:data/ef-mvc/sort-filter-page)
+1. [Миграции](xref:data/ef-mvc/migrations)
+1. [Создание сложной модели данных](xref:data/ef-mvc/complex-data-model)
+1. [Чтение связанных данных](xref:data/ef-mvc/read-related-data)
+1. [Обновление связанных данных](xref:data/ef-mvc/update-related-data)
+1. [Обработка конфликтов параллелизма](xref:data/ef-mvc/concurrency)
+1. [Наследование](xref:data/ef-mvc/inheritance)
+1. [Дополнительные разделы](xref:data/ef-mvc/advanced)

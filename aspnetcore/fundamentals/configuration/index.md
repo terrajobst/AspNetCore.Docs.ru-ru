@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 8f52f2dc9515761510de870f10ad0975401db74a
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 7c41621db835b452c9aad9463a9ffccdf0c06484
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="configure-an-aspnet-core-app"></a>Настройка приложения ASP.NET Core
 
@@ -24,13 +24,13 @@ API конфигурации позволяет настраивать веб-п
 
 Существуют следующие поставщики конфигурации:
 
-* форматов файлов (INI, JSON и XML);
-* аргументов командной строки;
-* Переменные среды
-* объектов .NET в памяти;
-* зашифрованного пользовательского хранилища;
-* [Azure Key Vault](xref:security/key-vault-configuration);
-* а также пользовательские поставщики (устанавливаемые или создаваемые).
+* Форматы файлов (INI, JSON и XML).
+* аргументы командной строки.
+* Переменные среды.
+* Объекты .NET в памяти.
+* Незашифрованное хранилище [Secret Manager](xref:security/app-secrets) (Диспетчер секретов).
+* Зашифрованное пользовательское хранилище, например [Azure Key Vault](xref:security/key-vault-configuration).
+* Пользовательские поставщики (установленные или созданные).
 
 Каждое значение конфигурации сопоставляется строковому ключу. Имеется встроенная поддержка привязки для десериализации параметров в пользовательский объект [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) (простой класс .NET со свойствами).
 

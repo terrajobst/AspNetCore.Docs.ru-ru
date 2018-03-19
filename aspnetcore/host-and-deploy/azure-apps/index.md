@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 8da97b2148c0a784e3b1fdfe210db35e3fcceade
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: cefbc27c8091a2ed1441663e3779d67aae2c64dd
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>Размещение ASP.NET Core в службе приложений Azure
 
@@ -45,6 +45,9 @@ ms.lasthandoff: 03/02/2018
 
 [Непрерывное развертывание в Azure с помощью VSTS](https://www.visualstudio.com/docs/build/aspnet/core/quick-to-azure)  
 Сведения о настройке сборки CI для приложения ASP.NET Core и последующем создании выпуска непрерывного развертывания в службе приложений Azure.
+
+[Песочница веб-приложений Azure](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  
+Сведения об ограничениях среды выполнения службы приложений Azure, создаваемых платформой приложений Azure.
 
 ## <a name="application-configuration"></a>Настройка приложения
 
@@ -99,4 +102,4 @@ ms.lasthandoff: 03/02/2018
 * [Введение в модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
 * [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 * [Использование модулей IIS с ASP.NET Core](xref:host-and-deploy/iis/modules)
-* [Библиотека Microsoft TechNet: Windows Server](https://docs.microsoft.com/windows-server/windows-server-versions)
+* [Библиотека Microsoft TechNet: Windows Server](/windows-server/windows-server-versions)

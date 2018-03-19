@@ -5,16 +5,16 @@ description: "Сведения о размещении приложений ASP.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/08/2018
+ms.date: 03/13/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: b1ca9303c620597f7844c401048129044e99d7be
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: fa9e60c52f143b20dbf179679fc4932e838a9137
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 03/02/2018
 
 Поддерживаются следующие операционные системы:
 
-* Windows 7 и более поздние версии;
+* Windows 7 и более поздние версии
 * Windows Server 2008 R2 и более поздние версии.&#8224;
 
 &#8224; В принципе, конфигурация IIS, описанная в этом документе, также подходит для размещения приложений ASP.NET Core в службах IIS на сервере Nano Server. Инструкции для Nano Server см. в руководстве [ASP.NET Core с IIS в Nano Server](xref:tutorials/nano-server).
@@ -79,7 +79,7 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| Параметр                         | По умолчанию | Параметр |
+| Параметр                         | Значение по умолчанию | Параметр |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Если значение — `true`, ПО промежуточного слоя для интеграции IIS задает свойство `HttpContext.User`, которое прошло [проверку подлинности Windows](xref:security/authentication/windowsauth). Если значение — `false`, ПО промежуточного слоя только предоставляет идентификатор для `HttpContext.User` и отвечает на явные запросы защиты от `AuthenticationScheme`. Для работы `AutomaticAuthentication` необходимо включить в службах IIS проверку подлинности Windows. Дополнительные сведения см. в статье о [проверке подлинности Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Задает отображаемое имя для пользователей на страницах входа. |
@@ -195,6 +195,9 @@ services.Configure<IISOptions>(options =>
 1. Укажите имя в поле **Имя сайта** и задайте значение в поле **Физический путь** для созданной папки развертывания приложения. Укажите конфигурацию **привязки** и нажмите кнопку **ОК**, чтобы создать веб-сайт.
 
    ![В окне "Добавить веб-сайт" укажите имя сайта, физический путь и имя узла.](index/_static/add-website-ws2016.png)
+
+   > [!WARNING]
+   > **Не используйте** привязки с подстановочными знаками (`http://*:80/` и `http://+:80`) на верхнем уровне. Это может создать уязвимость и поставить ваше приложение под угрозу. Сюда относятся и строгие, и нестрогие подстановочные знаки. Вместо этого используйте имена узлов в явном виде. Привязки с подстановочными знаками на уровне дочерних доменов (например `*.mysub.com`) не создают таких угроз безопасности, если вы полностью контролируете родительский домен (в отличие от варианта `*.com`, создающего уязвимость). Дополнительные сведения см. в документе [rfc7230, раздел 5.4](https://tools.ietf.org/html/rfc7230#section-5.4).
 
 1. Разверните узел сервера и выберите **Пулы приложений**.
 
