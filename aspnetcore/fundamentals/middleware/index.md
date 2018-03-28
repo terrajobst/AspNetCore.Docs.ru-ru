@@ -1,7 +1,7 @@
 ---
-title: "ПО промежуточного слоя ASP.NET Core"
+title: ПО промежуточного слоя ASP.NET Core
 author: rick-anderson
-description: "Сведения о ПО промежуточного слоя ASP.NET Core и конвейере запросов."
+description: Сведения о ПО промежуточного слоя ASP.NET Core и конвейере запросов.
 manager: wpickett
 ms.author: riande
 ms.date: 01/22/2018
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/05/2018
 
 Первый делегат [app.Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions) завершает конвейер.
 
-Несколько делегатов запроса можно соединить в цепочку с помощью [app.Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Параметр `next` представляет следующий делегат в конвейере. (Помните, что замкнуть конвейер, *не* вызывая параметр *next*, невозможно.) Обычно действия можно выполнять как до, так и после следующего делегата, как показано в этом примере.
+Несколько делегатов запроса можно соединить в цепочку с помощью [app.Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Параметр `next` представляет следующий делегат в конвейере. (Помните, что замыкать конвейер можно*не*  вызывая параметр *next*) Обычно действия можно выполнять как до, так и после следующего делегата, как показано в этом примере.
 
 [!code-csharp[](index/sample/Chain/Startup.cs?name=snippet1)]
 
