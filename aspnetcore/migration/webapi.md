@@ -1,7 +1,7 @@
 ---
-title: "Миграция из веб-API ASP.NET в ASP.NET Core"
+title: Миграция с веб-API ASP.NET на ASP.NET Core
 author: ardalis
-description: "Дополнительные сведения о миграции реализация веб-API из веб-API ASP.NET ASP.NET Core MVC."
+description: Дополнительные сведения о миграции реализация веб-API из веб-API ASP.NET ASP.NET Core MVC.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/webapi
-ms.openlocfilehash: 929fab90aa88745807761e824a2cf614f078ea36
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 2b9d6ac41266e0e6085153e1302d84a34ee85257
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="migrating-from-aspnet-web-api-to-aspnet-core"></a>Миграция из веб-API ASP.NET в ASP.NET Core
+# <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>Миграция с веб-API ASP.NET на ASP.NET Core
 
 Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith) и [Скотт Эдди](https://scottaddie.com) (Scott Addie)
 

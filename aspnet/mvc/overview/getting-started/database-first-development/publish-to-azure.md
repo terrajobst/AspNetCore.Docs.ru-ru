@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/publish-to-azure
-title: "Опубликовать MVC базы данных первого сайта в Azure | Документы Microsoft"
+title: Опубликовать MVC базы данных первого сайта в Azure | Документы Microsoft
 author: tfitzmac
-description: "С помощью MVC, Entity Framework и формирование шаблонов ASP.NET, можно создать веб-приложения, который предоставляет интерфейс для существующей базы данных. Этот учебник seri..."
+description: С помощью MVC, Entity Framework и формирование шаблонов ASP.NET, можно создать веб-приложения, который предоставляет интерфейс для существующей базы данных. Этот учебник seri...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/22/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/publish-to-azure
 msc.type: authoredcontent
-ms.openlocfilehash: eadc0f2b08df29f80fe53d03cf88cd3cdcecfb12
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 839bbceba6f0e098303facd40dbb1496bd449ba3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="publish-mvc-database-first-site-to-azure"></a>Опубликовать MVC базы данных первого сайта в Azure
 ====================
@@ -166,5 +166,5 @@ ms.lasthandoff: 01/24/2018
 
 Более сложный пример, в разделе [Создание модели данных Entity Framework для приложения ASP.NET MVC 4](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Обратите внимание, что DbContext API, который используется для работы с данными в первой базы данных совпадает с API, можно использовать для работы с данными в Code First. Даже если вы планируете использовать первой базы данных, можно узнать, как обрабатывать более сложные сценарии, такие как чтение и обновление связанных данных обработки конфликтов параллелизма, и так далее из учебника Code First. Единственное отличие заключается в том, как были созданы базы данных, класс контекста и классы сущностей.
 
->[!div class="step-by-step"]
-[Назад](enhancing-data-validation.md)
+> [!div class="step-by-step"]
+> [Назад](enhancing-data-validation.md)

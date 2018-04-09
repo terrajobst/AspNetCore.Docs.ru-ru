@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-cs
-title: "Использование нескольких элементов управления всплывающее окно (C#) | Документы Microsoft"
+title: Использование нескольких элементов управления всплывающее окно (C#) | Документы Microsoft
 author: wenz
-description: "Расширитель PopupControl в наборе элементов управления AJAX предлагает простой способ запуска всплывающего окна при активации любого другого элемента управления. Можно также использовать m..."
+description: Расширитель PopupControl в наборе элементов управления AJAX предлагает простой способ запуска всплывающего окна при активации любого другого элемента управления. Можно также использовать m...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d8c9742bb39b655115cb1862ff6e867989e63665
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7acd1b53e1b3e3e0d09d248b68941b166da3e81e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-multiple-popup-controls-c"></a>Использование нескольких элементов управления всплывающее окно (C#)
 ====================
@@ -56,5 +56,5 @@ ms.lasthandoff: 11/10/2017
 
 Календарь появляется, когда пользователь щелкает в текстовое поле ([Просмотр полноразмерное изображение](using-multiple-popup-controls-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Вперед](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)

@@ -1,7 +1,7 @@
 ---
-title: "Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core"
+title: Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
 author: shirhatti
-description: "Обнаружение поддержки для отладки приложений ASP.NET Core при запуске за IIS на сервере Windows."
+description: Обнаружение поддержки для отладки приложений ASP.NET Core при запуске за IIS на сервере Windows.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,22 +10,21 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: a8bdf4c0c0399c62666e6e61e70c0298a42c2c12
-ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
+ms.openlocfilehash: 218bb2653b92cd7b1cf2c6726b2d4bedbf307a62
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
 
-Автор: [Sourabh Shirhatti](https://twitter.com/sshirhatti) (Сурабх Ширхатти)
+Автор [Сурабх Ширхатти](https://twitter.com/sshirhatti)
 
 В этой статье описывается [Visual Studio](https://www.visualstudio.com/vs/) поддержка отладки приложений ASP.NET Core, работающие за IIS в Windows Server. В этом разделе описывается включение этой функции и настройка проекта.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* Visual Studio (2017/версия 15.3 или более поздняя)
-* ASP.NET и рабочая нагрузка веб-разработки *ИЛИ* рабочая нагрузка кроссплатформенной разработки .NET Core
+[!INCLUDE [](~/includes/net-core-prereqs-windows.md)]
 
 ## <a name="enable-iis"></a>Активация IIS
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 02/19/2018
 
 ![Показаны компоненты Windows, где флажок "Службы IIS" отображен в виде черного квадрата (не галочки), что означает, что некоторые функции IIS включены](development-time-iis-support/_static/enable_iis.png)
 
-При установке IIS требует перезагрузки, перезагрузите систему.
+Если во время установки IIS потребуется перезагрузка, перезагрузите систему.
 
 ## <a name="enable-development-time-iis-support"></a>Включение поддержки IIS во время разработки
 
@@ -45,7 +44,7 @@ ms.lasthandoff: 02/19/2018
 
 Создайте новый профиль запуска, чтобы добавить поддержку IIS во время разработки. В **Обозревателе решений** Visual Studio щелкните проект правой кнопкой мыши и выберите **Свойства**. Выберите вкладку **Отладка**. Выберите **IIS** в раскрывающемся списке **Запуск**. Проверьте, что функция **Запуск браузера** включена и для нее указан корректный URL-адрес.
 
-![Окно свойств проекта с выбранной вкладкой "Отладка". В качестве параметров профиля и запуска задано IIS. Функция "Запуск браузера" включена и имеет адрес http://localhost/WebApplication2. Этот же адрес указан в поле "URL-адрес приложения" области "Параметры веб-сервера". Там же активирован параметр "Включить анонимный доступ".](development-time-iis-support/_static/project_properties.png)
+![Окно свойств проекта с выбранной вкладкой "Отладка". В качестве параметров профиля и запуска задано IIS. Запуск браузера включена с адресом http://localhost/WebApplication2. Этот же адрес указан в поле "URL-адрес приложения" области "Параметры веб-сервера". Там же активирован параметр "Включить анонимный доступ".](development-time-iis-support/_static/project_properties.png)
 
 Можно также вручную добавить профиль запуска для [launchSettings.json](http://json.schemastore.org/launchsettings) файл в приложении:
 

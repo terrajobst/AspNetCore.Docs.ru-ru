@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started
-title: "Использование Entity Framework 4.0 и управления ObjectDataSource, часть 1: Приступая к работе | Документы Microsoft"
+title: 'Использование Entity Framework 4.0 и управления ObjectDataSource, часть 1: Приступая к работе | Документы Microsoft'
 author: tdykstra
-description: "Этот учебник ряд строится на веб-приложение Contoso университета, созданный Приступая к работе с рядами учебника Entity Framework. Если ё..."
+description: Этот учебник ряд строится на веб-приложение Contoso университета, созданный Приступая к работе с рядами учебника Entity Framework. Если ё...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,19 +12,19 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 83fe815af9030aee10a5204718b00c79925e9126
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6584767418c898913777b3b1549a816679c8430d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-1-getting-started"></a>Использование Entity Framework 4.0 и управления ObjectDataSource, часть 1: Приступая к работе
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 > Этот учебник ряд основан на веб-приложение Contoso университета, созданный [Приступая к работе с Entity Framework 4.0](../getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1.md) учебника рядов. Если не была завершена ранее учебники, в качестве отправной точки для этого учебника вы можете [загрузить приложение](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a) , будет создана. Вы также можете [загрузить приложение](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) , создаваемый для завершения учебника ряда.
 > 
-> Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, с помощью Entity Framework 4.0 и Visual Studio 2010. Образец приложения это веб-сайт для вымышленной компании Contoso университета. Он включает функции, такие как допуском студента, создание курса и инструктора назначения.
+> Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, с помощью Entity Framework 4.0 и Visual Studio 2010. Образец приложения это веб-сайт для вымышленной компании Contoso университета. На нем предусмотрены различные функции, в том числе прием учащихся, создание курсов и назначение преподавателей.
 > 
 > Учебник показаны примеры на языке C#. [Загружаемые примеры](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) содержит код на C# и Visual Basic.
 > 
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/24/2018
 > 
 > Существует три способа, можно работать с данными в Entity Framework: *Database First*, *Model First*, и *Code First*. Этот учебник предназначен для первой базы данных. Сведения о различиях между этими рабочими процессами и рекомендации о том, как выбирать наиболее подходящий для вашего сценария см. в разделе [процессов разработки Entity Framework](https://msdn.microsoft.com/library/ms178359.aspx#dbfmfcf).
 > 
-> ## <a name="web-forms"></a>веб-формы
+> ## <a name="web-forms"></a>Веб-формы
 > 
 > Как и ряда Приступая к работе этого учебника ряда использует модель веб-форм ASP.NET и предполагается, что вы знаете, как работать с веб-форм ASP.NET в Visual Studio. Если отсутствует [Приступая к работе с веб-форм ASP.NET 4.5](../../getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview.md). Если вы предпочитаете работать с ASP.NET MVC, см. раздел [Приступая к работе с платформой Entity Framework, с помощью ASP.NET MVC](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 > 
@@ -311,7 +311,7 @@ ms.lasthandoff: 01/24/2018
 Используйте *DepartmentsAdd.aspx* страницы для добавления нового отдела, а затем запустите *Departments.aspx* и нажмите кнопку **изменить** на строку, которая была добавлена.
 
 > [!NOTE]
-> Вы не сможете изменить строки, которые вы не добавляли (то есть, уже есть в базе данных), из-за недопустимых данных в базе данных. Администраторы для строк, которые были созданы с базой данных, являются учащихся. При попытке изменить один из них, вы получите страницу ошибки, который сообщает об ошибке`'InstructorsDropDownList' has a SelectedValue which is invalid because it does not exist in the list of items.`
+> Вы не сможете изменить строки, которые вы не добавляли (то есть, уже есть в базе данных), из-за недопустимых данных в базе данных. Администраторы для строк, которые были созданы с базой данных, являются учащихся. При попытке изменить один из них, вы получите страницу ошибки, который сообщает об ошибке `'InstructorsDropDownList' has a SelectedValue which is invalid because it does not exist in the list of items.`
 
 
 [![Image10](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image36.png)](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image35.png)
@@ -324,5 +324,5 @@ ms.lasthandoff: 01/24/2018
 
 На этом завершается сведения об использовании `ObjectDataSource` элемента управления для основных CRUD (Создание, чтение, обновление и удаление) операций с платформой Entity Framework. После создания простого n уровневого приложения, но по-прежнему тесно связана бизнес-логики на уровень доступа к данным, что осложняет автоматическое тестирование модулей. В этом руководстве вы увидите, как реализовать шаблон репозитория для применения модульного тестирования.
 
->[!div class="step-by-step"]
-[Вперед](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
+> [!div class="step-by-step"]
+> [Вперед](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)

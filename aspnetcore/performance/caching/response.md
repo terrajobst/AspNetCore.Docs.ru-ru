@@ -1,18 +1,18 @@
 ---
-title: "Кэширование ответов в ASP.NET Core"
+title: Кэширование ответов в ASP.NET Core
 author: rick-anderson
-description: "Сведения об использовании ответ, кэширование, более низкие требования к пропускной способности и повышения производительности приложений ASP.NET Core."
+description: Сведения об использовании ответ, кэширование, более низкие требования к пропускной способности и повышения производительности приложений ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 09/20/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: c654cfd7c2d291849067bfd3297f940018ccb3d8
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: cc1ec50155398ba4143a2bf697ca26435c228c49
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="response-caching-in-aspnet-core"></a>Кэширование ответов в ASP.NET Core
 
@@ -64,13 +64,13 @@ ms.lasthandoff: 03/02/2018
 
 Кэширование в памяти использует память сервера для хранения кэшированных данных. Этот тип кэширования подходит для одного или нескольких серверов с использованием *прикрепленные сеансы*. Прикрепленные сеансы означает, что запросы от клиента всегда направляются на один и тот же сервер для обработки.
 
-Дополнительные сведения см. в разделе [введение кэширования в памяти в ASP.NET Core](xref:performance/caching/memory).
+Дополнительные сведения см. в разделе [кэша в памяти](xref:performance/caching/memory).
 
 ### <a name="distributed-cache"></a>Распределенного кэша
 
 Используйте распределенный кэш для хранения данных в памяти, когда приложение размещается в облаке или сервер фермы. Кэш распределяется по всем серверам, которые обрабатывают запросы. Клиент может отправить запрос, обрабатываемый любой сервер в группе, при наличии кэшированных данных для клиента. ASP.NET Core предлагает SQL Server и Redis распределенного кэша.
 
-Дополнительные сведения см. в разделе [работа с распределенным кэшем](xref:performance/caching/distributed).
+Дополнительные сведения см. в разделе [работать с распределенным кэшем](xref:performance/caching/distributed).
 
 ### <a name="cache-tag-helper"></a>Вспомогательный тег кэша
 
@@ -180,9 +180,9 @@ Cache-Control: public,max-age=60
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Кэширование в HTTP из спецификации](https://tools.ietf.org/html/rfc7234#section-3)
+* [Хранение ответы в кэше](https://tools.ietf.org/html/rfc7234#section-3)
 * [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
-* [Кэширование в памяти](xref:performance/caching/memory)
+* [Кэш в памяти](xref:performance/caching/memory)
 * [Работа с распределенным кэшем](xref:performance/caching/distributed)
 * [Обнаружение изменений с помощью маркеров изменений](xref:fundamentals/primitives/change-tokens)
 * [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-vb
-title: "Создание классов модели с платформой Entity Framework (Visual Basic) | Документы Microsoft"
+title: Создание классов модели с платформой Entity Framework (Visual Basic) | Документы Microsoft
 author: microsoft
-description: "В этом учебнике вы узнаете, как использовать ASP.NET MVC с платформой Entity Framework корпорации Майкрософт. Вы научитесь использовать мастер для создания сущности ADO.NET Da..."
+description: В этом учебнике вы узнаете, как использовать ASP.NET MVC с платформой Entity Framework корпорации Майкрософт. Вы научитесь использовать мастер для создания сущности ADO.NET Da...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-vb
 msc.type: authoredcontent
-ms.openlocfilehash: efc190d856fe9ebf1c09e0ae4758aabb1e3254dc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3442435c7b2b9ce2ce6bd016ba74fe671eb76f62
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-model-classes-with-the-entity-framework-vb"></a>Создание классов модели с платформой Entity Framework (Visual Basic)
 ====================
@@ -38,7 +38,7 @@ Microsoft Entity Framework является средство объекта ре
 
 Этот учебник предполагается, что Visual Studio 2008 или Visual Web Developer 2008 с пакетом обновления 1. Требуется пакет обновления 1 для использования платформы Entity Framework. Пакет обновления 1 для Visual Studio 2008 или Visual Web Developer с пакетом обновления 1 можно загрузить из следующий адрес:
 
-> [https://www.ASP.NET/downloads/](https://www.asp.net/downloads)
+> [https://www.asp.net/downloads/](https://www.asp.net/downloads)
 
 
 ## <a name="creating-the-movie-sample-database"></a>Создание образца базы данных фильма
@@ -47,7 +47,7 @@ Microsoft Entity Framework является средство объекта ре
 
 | Имя столбца | Тип данных | Разрешить значения NULL? | Является первичным ключом? |
 | --- | --- | --- | --- |
-| Идентификатор | int | False | True |
+| Идентификатор | int | False | Да |
 | Заголовок | Nvarchar(100) | False | False |
 | Директор | Nvarchar(100) | False | False |
 
@@ -217,6 +217,6 @@ Entity Framework позволяет упростить процесс для в�
 
 Во-первых мы рассмотрели, как можно использовать мастер моделей EDM для создания модели EDM из среды Visual Studio. Далее вы узнаете, как использовать LINQ to Entities для получения набора записей базы данных из таблицы базы данных. Наконец мы использовали Entity Framework для вставки, обновления и удаления записей базы данных.
 
->[!div class="step-by-step"]
-[Назад](validation-with-the-data-annotation-validators-cs.md)
-[Вперед](creating-model-classes-with-linq-to-sql-vb.md)
+> [!div class="step-by-step"]
+> [Назад](validation-with-the-data-annotation-validators-cs.md)
+> [Вперед](creating-model-classes-with-linq-to-sql-vb.md)

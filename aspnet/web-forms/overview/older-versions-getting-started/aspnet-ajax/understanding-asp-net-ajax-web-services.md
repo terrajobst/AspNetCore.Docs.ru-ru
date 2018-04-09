@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-web-services
-title: "Основные сведения о веб-служб ASP.NET AJAX | Документы Microsoft"
+title: Основные сведения о веб-служб ASP.NET AJAX | Документы Microsoft
 author: scottcate
-description: "Веб-службы являются неотъемлемой частью .NET framework, которую обеспечивают кросс платформенных решение для обмена данными между распределенных систем. Несмотря на то что Web..."
+description: Веб-службы являются неотъемлемой частью .NET framework, которую обеспечивают кросс платформенных решение для обмена данными между распределенных систем. Несмотря на то что Web...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/28/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-web-services
 msc.type: authoredcontent
-ms.openlocfilehash: 8eb3486c9b3f4ddb6a8bc2c1cdcac774a6852574
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0b9f61f895fea1960ebd25780454b86d5c3ba1bb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-aspnet-ajax-web-services"></a>Основные сведения о веб-служб ASP.NET AJAX
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-json[Main](understanding-asp-net-ajax-web-services/samples/sample2.json)]
 
-> *>[!NOTE] имя операции, определяется как часть URL-адрес веб-службы; Кроме того, сообщения запроса не всегда передаются через JSON. Веб-службы можно использовать атрибут ScriptMethod с параметром UseHttpGet, равным true, вследствие чего параметры для передачи через параметры строки запроса.*
+> *> [!NOTE] Имя операции, определяется как часть URL-адрес веб-службы; Кроме того сообщения запроса не всегда передаются через JSON. Веб-службы можно использовать атрибут ScriptMethod с параметром UseHttpGet, равным true, вследствие чего параметры для передачи через параметры строки запроса.*
 
 
 **Пример 3. Ответ веб-службы сообщение, преобразуется в формат JSON**
@@ -160,7 +160,7 @@ UseHttpGet, свойство может использоваться при ве
 
 [!code-html[Main](understanding-asp-net-ajax-web-services/samples/sample14.html)]
 
-> *>[!NOTE] Если вы хотите получить фактический код прокси-сервера JavaScript, который создается можно ввести URL-адрес для нужного веб-службы .NET в поле адреса Internet Explorer и добавьте в конец /js.*
+> *> [!NOTE] Если вы хотите получить фактический код прокси-сервера JavaScript, который создается можно ввести URL-адрес для нужного веб-службы .NET в поле адреса Internet Explorer и добавьте в конец /js.*
 
 
 Если отладка включена в файле web.config, отладочная версия прокси-сервера JavaScript будет внедрен в страницу, как показано далее:
@@ -263,7 +263,7 @@ ASP.NET AJAX предоставляет еще один механизм для 
 
 ## <a name="the-autocompleteextender-and-the-aspnet-ajax-toolkit"></a>AutoCompleteExtender и набора средств ASP.NET AJAX
 
-Набор средств ASP.NET AJAX (доступные из [http://ajax.asp.net](http://ajax.asp.net)) предлагает несколько элементов управления, которые могут использоваться для доступа к веб-служб. В частности, этот набор содержит полезные элемент управления с именем `AutoCompleteExtender` может использоваться для вызова веб-служб и отображение данных на страницах вообще без написания никакой код JavaScript.
+Набор средств ASP.NET AJAX (доступные из [ http://ajax.asp.net ](http://ajax.asp.net)) предлагает несколько элементов управления, которые могут использоваться для доступа к веб-служб. В частности, этот набор содержит полезные элемент управления с именем `AutoCompleteExtender` может использоваться для вызова веб-служб и отображение данных на страницах вообще без написания никакой код JavaScript.
 
 AutoCompleteExtender управления можно использовать для расширения существующих функциональных возможностей текстового поля и помогают пользователям дополнительные упрощает поиск данных, которые они ищете. Вводе в текстовое поле элемента управления можно использовать для запроса веб-службе и динамически показывает результаты под текстовым полем. Рис. 4 приведен пример использования элемента управления AutoCompleteExtender, чтобы просмотреть идентификаторы клиента для поддержки приложения. Как пользователь вводит различные символы в текстовое поле, различных элементов отображается под ней на основе их входных данных. Затем пользователи могут выбрать идентификатор нужного клиента.
 
@@ -309,6 +309,6 @@ ASP.NET AJAX предоставляет отличную поддержку дл
 
 Скотт кате работает с веб-технологиями Майкрософт с 1997 и – президент myKB.com ([www.myKB.com](http://www.myKB.com)) приложений, основное внимание уделено базы знаний программные решения, где он специализируется на написание ASP.NET на основе. Скотт можно обратиться по электронной почте [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) или его блог по [ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[Назад](understanding-asp-net-ajax-localization.md)
-[Вперед](understanding-asp-net-ajax-debugging-capabilities.md)
+> [!div class="step-by-step"]
+> [Назад](understanding-asp-net-ajax-localization.md)
+> [Вперед](understanding-asp-net-ajax-debugging-capabilities.md)

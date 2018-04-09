@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/numericupdown/creating-a-numeric-up-down-control-with-a-web-service-backend-vb
-title: "Создание числового вверх или вниз элемента управления с серверной службы Web (Visual Basic) | Документы Microsoft"
+title: Создание числового вверх или вниз элемента управления с серверной службы Web (Visual Basic) | Документы Microsoft
 author: wenz
-description: "Вместо позволить пользователю ввести значение в поле Проверка, числовой вверх и вниз (то есть в Windows и других операционных системах) может оказаться как дополнительные c..."
+description: Вместо позволить пользователю ввести значение в поле Проверка, числовой вверх и вниз (то есть в Windows и других операционных системах) может оказаться как дополнительные c...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/numericupdown/creating-a-numeric-up-down-control-with-a-web-service-backend-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5ceefd6c18761c2abe3f3a4298d340642a0951d6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 690fd89c552407ec5d77419aae2488e4832efe44
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-numeric-updown-control-with-a-web-service-backend-vb"></a>Создание числового элемента управления вверх/вниз с серверной службы Web (Visual Basic)
 ====================
@@ -45,10 +45,10 @@ ms.lasthandoff: 11/10/2017
 
 Наконец создайте новую страницу ASP.NET. Как обычно требуется `ScriptManager` управления `TextBox` управления и `NumericUpDownExtender` элемента управления. Для второго вы должны предоставить информации веб-службы:
 
-- `ServiceDownMethod`Имя списка веб-метод или метод страницы
-- `ServiceDownPath`путь к веб-службы с вниз метода службы; пропустить, если вы используете метод страницы
-- `ServiceUpMethod`Имя вверх веб-метод или метод страницы
-- `ServiceUpPath`путь к веб-службы с вверх метода службы; пропустить, если вы используете метод страницы
+- `ServiceDownMethod` Имя списка веб-метод или метод страницы
+- `ServiceDownPath` путь к веб-службы с вниз метода службы; пропустить, если вы используете метод страницы
+- `ServiceUpMethod` Имя вверх веб-метод или метод страницы
+- `ServiceUpPath` путь к веб-службы с вверх метода службы; пропустить, если вы используете метод страницы
 
 Ниже приведен полный разметку страницы.
 
@@ -61,5 +61,5 @@ ms.lasthandoff: 11/10/2017
 
 Отображаются только те числа, которые являются степенью числа 2 ([Просмотр полноразмерное изображение](creating-a-numeric-up-down-control-with-a-web-service-backend-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](creating-a-numeric-up-down-control-with-a-web-service-backend-cs.md)
+> [!div class="step-by-step"]
+> [Назад](creating-a-numeric-up-down-control-with-a-web-service-backend-cs.md)

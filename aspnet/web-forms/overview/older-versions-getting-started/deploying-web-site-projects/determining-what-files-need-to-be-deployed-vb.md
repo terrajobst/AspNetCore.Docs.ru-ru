@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-vb
-title: "Определение файлов, которые должны быть развернуты (VB) | Документы Microsoft"
+title: Определение файлов, которые должны быть развернуты (VB) | Документы Microsoft
 author: rick-anderson
-description: "Файлы должны выполнять развертывание из среды разработки в рабочую среду отчасти зависит ли нам было создано приложение ASP.NET..."
+description: Файлы должны выполнять развертывание из среды разработки в рабочую среду отчасти зависит ли нам было создано приложение ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-vb
 msc.type: authoredcontent
-ms.openlocfilehash: aad0d4d4f7db5942c51255c34f36be73ed0e1f2d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4b9fcdbaaa0c2a6d7610339ecb6018a0fe6895f4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="determining-what-files-need-to-be-deployed-vb"></a>Определение файлов, которые должны быть развернуты (Visual Basic)
 ====================
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-vb[Main](determining-what-files-need-to-be-deployed-vb/samples/sample1.vb)]
 
-В порядке для обработчика ASP.NET для обслуживания запроса для этой страницы в коде страницы (  *`WebPage`*  `.aspx.vb` файл) сначала необходимо скомпилировать. Этой компиляции может произойти явным образом или автоматически.
+В порядке для обработчика ASP.NET для обслуживания запроса для этой страницы в коде страницы ( *`WebPage`* `.aspx.vb` файл) сначала необходимо скомпилировать. Этой компиляции может произойти явным образом или автоматически.
 
 Если компиляция происходит явно, то все приложение исходный код компилируется в одну или несколько сборок (`.dll` файлы) найдены в тестируемом приложении `Bin` каталога. Если компиляция происходит автоматически, а затем полученный автоматически сгенерированный сборка является, по умолчанию расположены в `Temporary ASP.NET Files` папку, в которой можно найти в `%WINDOWS%\Microsoft.NET\Framework\<version>`, несмотря на то, что это расположение настраивается через [ &lt; Компиляция&gt; элемент](https://msdn.microsoft.com/library/s10awwz0.aspx) в `Web.config`. Явную компиляцию необходимо предпринимать какие-либо действия для приложения ASP.NET код компилируется в сборку, и этот шаг выполняется перед их развертыванием. С автоматическую компиляцию процесс компиляции происходит на веб-сервере, при первом доступе к ресурсу.
 
@@ -79,15 +79,15 @@ Microsoft восстановлен модели проекта веб-прило
 - Главная страница (`Site.master`).
 - Семь другие страницы ASP.NET:
 
-    - ~/`Default.aspx`-домашнюю страницу сайта.
-    - ~/`About.aspx`-на страницу «О Site».
-    - ~/`Fiction/Default.aspx`-страницы со списком фантастики книг, которые проверены.
+    - ~/`Default.aspx` -домашнюю страницу сайта.
+    - ~/`About.aspx` -на страницу «О Site».
+    - ~/`Fiction/Default.aspx` -страницы со списком фантастики книг, которые проверены.
 
-        - ~/`Fiction/Blaze.aspx`-Обзор novel Ричард Bachman *Blaze*.
-    - ~/`Tech/Default.aspx`-страницы со списком книг технологии, которые проверены.
+        - ~/`Fiction/Blaze.aspx` -Обзор novel Ричард Bachman *Blaze*.
+    - ~/`Tech/Default.aspx` -страницы со списком книг технологии, которые проверены.
 
-        - ~/`Tech/CYOW.aspx`-ознакомиться с *Создание веб-узла*.
-        - ~/`Tech/TYASP35.aspx`-ознакомиться с *обучение самостоятельно ASP.NET 3.5 в течение 24 часов*.
+        - ~/`Tech/CYOW.aspx` -ознакомиться с *Создание веб-узла*.
+        - ~/`Tech/TYASP35.aspx` -ознакомиться с *обучение самостоятельно ASP.NET 3.5 в течение 24 часов*.
 - Три разных файла CSS в `Styles` папки.
 - Четыре изображения - на базе технологий ASP.NET логотип и изображения покрытий три проверенные книг — всех файлов в `Images` папки.
 - Объект `Web.sitemap` файл, который определяет карты веб-узла и используется для отображения меню в `Default.aspx` страниц в корневом каталоге и `Fiction` и `Tech` папки.
@@ -189,6 +189,6 @@ Microsoft восстановлен модели проекта веб-прило
 - [Система проектов Visual Studio 2005 веб-сайт: что это такое и зачем мы сделали его?](https://weblogs.asp.net/scottgu/archive/2005/08/21/423201.aspx)
 - [Пошаговое руководство: Преобразование проекта веб-сайта в проект веб-приложения в Visual Studio](https://msdn.microsoft.com/library/aa983476.aspx)
 
->[!div class="step-by-step"]
-[Назад](asp-net-hosting-options-vb.md)
-[Вперед](deploying-your-site-using-an-ftp-client-vb.md)
+> [!div class="step-by-step"]
+> [Назад](asp-net-hosting-options-vb.md)
+> [Вперед](deploying-your-site-using-an-ftp-client-vb.md)

@@ -1,7 +1,7 @@
 ---
-title: "Авторизация на основе представления в ASP.NET Core MVC"
+title: Авторизация на основе представления в ASP.NET Core MVC
 author: rick-anderson
-description: "В этом документе показано, как внедрить и использовать службы авторизации внутри представления ASP.NET Core Razor."
+description: В этом документе показано, как внедрить и использовать службы авторизации внутри представления ASP.NET Core Razor.
 manager: wpickett
 ms.author: riande
 ms.date: 10/30/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/views
-ms.openlocfilehash: 22754d07882cd704309a4e1a28ad0bf6f69432ea
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: dad59a297efb4648755436fbd07742f95af97fb2
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="view-based-authorization"></a>Авторизация на основе представления
+# <a name="view-based-authorization-in-aspnet-core-mvc"></a>Авторизация на основе представления в ASP.NET Core MVC
 
 Часто разработчику для отображения, скрытия или изменения пользовательского интерфейса на основе идентификатора текущего пользователя. Служба авторизации в представлениях MVC через доступна [внедрения зависимостей](xref:fundamentals/dependency-injection#fundamentals-dependency-injection). Чтобы внедрить службы авторизации в представления Razor, используйте `@inject` директиву:
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/30/2018
 @inject IAuthorizationService AuthorizationService
 ```
 
-Служба авторизации в каждом представлении, установите `@inject` директив в *_ViewImports.cshtml* файл *представления* каталога. Дополнительные сведения см. в разделе [внедрение зависимостей в представления](xref:mvc/views/dependency-injection).
+Служба авторизации в каждом представлении, установите `@inject` директив в *_ViewImports.cshtml* файл *представления* каталога. Дополнительные сведения: [Внедрение зависимостей в представления](xref:mvc/views/dependency-injection).
 
 Использовать для вызова службы подставляемого авторизации `AuthorizeAsync` точно таким же образом проводится проверка во время [авторизации на основе ресурсов](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):
 

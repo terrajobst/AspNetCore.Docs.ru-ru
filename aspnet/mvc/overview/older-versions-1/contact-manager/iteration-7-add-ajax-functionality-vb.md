@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-vb
-title: "Итерации #7 — функций Add Ajax (VB) | Документы Microsoft"
+title: 'Итерации #7 — функций Add Ajax (VB) | Документы Microsoft'
 author: microsoft
-description: "В седьмой итерации мы повысить скорость реагирования и производительности приложения, добавляя поддержку Ajax."
+description: В седьмой итерации мы повысить скорость реагирования и производительности приложения, добавляя поддержку Ajax.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fa50fdea8ac165be3f8e96322ec049196a511ebe
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 35d961ee39d7b87a31c7208645148b45c7b0c563
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-7--add-ajax-functionality-vb"></a>Итерации #7 — функций Add Ajax (Visual Basic)
 ====================
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/10/2017
 
 - Итерации #5 - Создание модульных тестов. В пятой итерации сделан нашего приложения проще в обслуживании и изменить, добавив модульных тестов. Мы макета наших классов модели данных и создания модульных тестов для наших контроллеров и логику проверки.
 
-- Итерация &#6; — с помощью управляемой тестами разработки. В итерации этого шестой мы добавим новые функциональные возможности наше приложение, сначала написание модульных тестов и писать код для модульных тестов. В этой итерации добавим групп контактов.
+- Итерация 6 # — с помощью управляемой тестами разработки. В итерации этого шестой мы добавим новые функциональные возможности наше приложение, сначала написание модульных тестов и писать код для модульных тестов. В этой итерации добавим групп контактов.
 
 - Итерации #7. Добавление функциональности Ajax. В седьмой итерации мы повысить скорость реагирования и производительности приложения, добавляя поддержку Ajax.
 
@@ -243,5 +243,5 @@ ms.lasthandoff: 11/10/2017
 
 Наконец мы создали удалить ссылку, которая поддерживает операции HTTP DELETE. Путем удаления Ajax, мы позволяют пользователям удалять записи базы данных без пользователя для запроса дополнительных delete страница подтверждения.
 
->[!div class="step-by-step"]
-[Назад](iteration-6-use-test-driven-development-vb.md)
+> [!div class="step-by-step"]
+> [Назад](iteration-6-use-test-driven-development-vb.md)

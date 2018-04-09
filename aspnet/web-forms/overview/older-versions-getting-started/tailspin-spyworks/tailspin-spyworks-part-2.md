@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2
-title: "Часть 2: Уровень доступа к данным | Документы Microsoft"
+title: 'Часть 2: Уровень доступа к данным | Документы Microsoft'
 author: JoeStagner
-description: "Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Вторая часть посвящена Добавление доступа к данным."
+description: Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Вторая часть посвящена Добавление доступа к данным.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 8b07b320640c1bb0074a4d3a04ca7c5b7e7bb6cd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9f734b04a0f4cec3c33bc5b42ef283ea64cdb463
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-2-data-access-layer"></a>Часть 2: Уровень доступа к данным
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Вторая часть посвящена Добавление доступа к данным.
 
 
-## <a id="_Toc260221668"></a>Добавление доступа к данным
+## <a id="_Toc260221668"></a>  Добавление доступа к данным
 
 Наше приложение электронной коммерции будет зависеть от двух баз данных.
 
@@ -57,6 +57,6 @@ ms.lasthandoff: 11/10/2017
 
 Теперь мы готовы к добавьте наш первый компонент — меню категории продукта.
 
->[!div class="step-by-step"]
-[Назад](tailspin-spyworks-part-1.md)
-[Вперед](tailspin-spyworks-part-3.md)
+> [!div class="step-by-step"]
+> [Назад](tailspin-spyworks-part-1.md)
+> [Вперед](tailspin-spyworks-part-3.md)

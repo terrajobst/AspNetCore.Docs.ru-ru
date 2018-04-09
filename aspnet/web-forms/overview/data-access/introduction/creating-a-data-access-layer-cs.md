@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/introduction/creating-a-data-access-layer-cs
-title: "Создание уровня доступа к данным (C#) | Документы Microsoft"
+title: Создание уровня доступа к данным (C#) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы будем запустите с самого начала и создайте данных Access Layer (DAL), с помощью типизированных наборов данных, доступ к сведениям в базе данных."
+description: В этом учебнике мы будем запустите с самого начала и создайте данных Access Layer (DAL), с помощью типизированных наборов данных, доступ к сведениям в базе данных.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/05/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 927b2490b5c539a79bb9939b88942499b23cc464
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 7e1a457c23ef659bf7ee9c15b66dc5c2d8a31416
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-data-access-layer-c"></a>Создание уровня доступа к данным (C#)
 ====================
@@ -84,7 +84,7 @@ ms.lasthandoff: 03/15/2018
 
 При вызове этих методов подключения к базе данных, создать соответствующий запрос и возвращают результаты. Важно способ возврата результатов. Эти методы могут просто вернуть набор данных или DataReader, заполненный посредством запроса к базе данных, но в идеале данные должны быть возвращены результаты с помощью *строго типизированных объектов*. Строго типизированный объект является одним, схема которого жестко определяется во время компиляции, в то время как противоположность слабо типизированный объект является одним, схема которой не известен до времени выполнения.
 
-Например DataReader и DataSet (по умолчанию) являются слабо типизированных объектов, поскольку их схема определяется столбцов, возвращаемых запросом к базе данных, используемые для их заполнения. Для доступа к определенному столбцу из слабо типизированный объект DataTable, необходимо использовать следующий синтаксис: ***DataTable*. Строки [*индекс*] [»*columnName *»]**. В этом примере нестрогая типизация объекта DataTable проявляется тот факт, что нам нужно получить доступ к имени столбца, с помощью строка или порядковый номер. Строго типизированный объект DataTable, с другой стороны, будут иметь все его столбцы реализованы в виде свойств, возникающие в коде, который выглядит следующим образом: ***DataTable*. Строки [*индекс*].* columnName***.
+Например DataReader и DataSet (по умолчанию) являются слабо типизированных объектов, поскольку их схема определяется столбцов, возвращаемых запросом к базе данных, используемые для их заполнения. Для доступа к определенному столбцу из слабо типизированный объект DataTable, необходимо использовать следующий синтаксис:  <strong><em>DataTable</em>. Строки [<em>индекс</em>] [»<em>columnName</em>«]</strong>. В этом примере нестрогая типизация объекта DataTable проявляется тот факт, что нам нужно получить доступ к имени столбца, с помощью строка или порядковый номер. Строго типизированный объект DataTable, с другой стороны, будут иметь все его столбцы реализованы в виде свойств, возникающие в коде, который выглядит следующим образом:  <strong><em>DataTable</em>. Строки [<em>индекс</em>]. *columnName</strong>*.
 
 Чтобы вернуть строго типизированных объектов, разработчики можно создать собственные настраиваемые бизнес-объекты или использовать типизированные наборы данных. Бизнес-объект реализуется разработчиком как представляет класс, как правило, свойства которого отражают столбцы базовой таблицы базы данных бизнес-объекта. Типизированный набор данных — это класс, созданный Visual Studio, на основе схемы базы данных и, члены которого являются строго типизированными в соответствии с этой схемы. Типизированные сам набор данных состоит из классов, расширяющих классы ADO.NET DataSet, DataTable и DataRow. Помимо строго типизированных объектов DataTable типизированные наборы данных теперь также включают адаптеры таблиц TableAdapter, которые являются классы, методы для заполнения таблицы данных набора данных и внесения изменений, сделанных в объектах DataTable в базе данных.
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 03/15/2018
 **Рис. 5**: выберите из раскрывающегося списка базу данных Northwind ([Просмотр полноразмерное изображение](creating-a-data-access-layer-cs/_static/image13.png))
 
 
-После выбора базы данных и нажмите кнопку Далее, запрашивается Если вы хотите сохранить строку подключения в **Web.config** файла. Сохранение строки подключения позволяет избежать внесения ее жестких закодированных классов TableAdapter, что упрощает ситуацию, если в будущем изменяет строку подключения. Если вы решили сохранить строку подключения в файле конфигурации, он помещается в  **&lt;connectionStrings&gt;**  секции, которая может быть [при необходимости зашифрованные](http://aspnet.4guysfromrolla.com/articles/021506-1.aspx) для улучшения безопасность или изменены позднее в новую страницу свойств ASP.NET 2.0 в рамках средства графического пользовательского интерфейса администрирования IIS, которое более идеально подходит для администраторов.
+После выбора базы данных и нажмите кнопку Далее, запрашивается Если вы хотите сохранить строку подключения в **Web.config** файла. Сохранение строки подключения позволяет избежать внесения ее жестких закодированных классов TableAdapter, что упрощает ситуацию, если в будущем изменяет строку подключения. Если вы решили сохранить строку подключения в файле конфигурации, он помещается в **&lt;connectionStrings&gt;** секции, которая может быть [при необходимости зашифрованные](http://aspnet.4guysfromrolla.com/articles/021506-1.aspx) для улучшения безопасность или изменены позднее в новую страницу свойств ASP.NET 2.0 в рамках средства графического пользовательского интерфейса администрирования IIS, которое более идеально подходит для администраторов.
 
 
 [![Сохранение строки подключения в файле Web.config](creating-a-data-access-layer-cs/_static/image15.png)](creating-a-data-access-layer-cs/_static/image14.png)
@@ -233,7 +233,7 @@ AllProducts.aspx.cs
 **Рис. 15**: выберите, чтобы создать **ВЫБЕРИТЕ** инструкции которого возвращает строки ([Просмотр полноразмерное изображение](creating-a-data-access-layer-cs/_static/image41.png))
 
 
-Следующим шагом является определение SQL-запрос, используемый для доступа к данным. Поскольку нам требуется возвратить только те продукты, которые принадлежат определенной категории, используйте тот же **ВЫБЕРИТЕ** инструкции от **GetProducts()**, но с добавлением следующего **ГДЕ** предложение: **ГДЕ CategoryID = @CategoryID** .  **@CategoryID**  Параметр указывает Мастер TableAdapter, что мы создаем метод будет требуется входной параметр соответствующего типа (а именно неотрицательного целого).
+Следующим шагом является определение SQL-запрос, используемый для доступа к данным. Поскольку нам требуется возвратить только те продукты, которые принадлежат определенной категории, используйте тот же <strong>ВЫБЕРИТЕ</strong> инструкции от <strong>GetProducts()</strong>, но с добавлением следующего <strong>ГДЕ</strong> предложение: <strong>ГДЕ CategoryID = @CategoryID</strong> . <strong>@CategoryID</strong> Параметр указывает Мастер TableAdapter, что мы создаем метод будет требуется входной параметр соответствующего типа (а именно неотрицательного целого).
 
 
 [![Введите запрос, чтобы возвращать только продуктов в указанной категории](creating-a-data-access-layer-cs/_static/image43.png)](creating-a-data-access-layer-cs/_static/image42.png)
@@ -241,7 +241,7 @@ AllProducts.aspx.cs
 **На рисунке 16**: Введите запрос только возвращают продукты в категории указано ([Просмотр полноразмерное изображение](creating-a-data-access-layer-cs/_static/image44.png))
 
 
-На последнем шаге можно выбрать которой шаблоны для использования, а также настроить имена создаваемых методов доступа к данным. Для шаблона Fill изменим имя на **FillByCategoryID** и для возврата объекта DataTable возвращенное шаблон ( **получить * X*** методы), воспользуемся **GetProductsByCategoryID**.
+На последнем шаге можно выбрать которой шаблоны для использования, а также настроить имена создаваемых методов доступа к данным. Для шаблона Fill изменим имя <strong>FillByCategoryID</strong> и для возврата объекта DataTable возвращенное шаблон ( <strong>получить*X</strong>*  методы), воспользуемся  <strong>GetProductsByCategoryID</strong>.
 
 
 [![Выберите имена для методы адаптера таблицы](creating-a-data-access-layer-cs/_static/image46.png)](creating-a-data-access-layer-cs/_static/image45.png)
@@ -403,48 +403,48 @@ Beverages.aspx.cs
 
 - **ProductsTableAdapter**
 
-    - **GetProducts**: 
+  - **GetProducts**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample10.sql)]
-    - **GetProductsByCategoryID**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample10.sql)]
+  - **GetProductsByCategoryID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample11.sql)]
-    - **GetProductsBySupplierID**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample11.sql)]
+  - **GetProductsBySupplierID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample12.sql)]
-    - **GetProductByProductID**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample12.sql)]
+  - **GetProductByProductID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample13.sql)]
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample13.sql)]
 - **CategoriesTableAdapter**
 
-    - **GetCategories**: 
+  - **GetCategories**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample14.sql)]
-    - **GetCategoryByCategoryID**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample14.sql)]
+  - **GetCategoryByCategoryID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample15.sql)]
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample15.sql)]
 - **SuppliersTableAdapter**
 
-    - **GetSuppliers**: 
+  - **GetSuppliers**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample16.sql)]
-    - **GetSuppliersByCountry**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample16.sql)]
+  - **GetSuppliersByCountry**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample17.sql)]
-    - **GetSupplierBySupplierID**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample17.sql)]
+  - **GetSupplierBySupplierID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample18.sql)]
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample18.sql)]
 - **EmployeesTableAdapter**
 
-    - **GetEmployees**: 
+  - **GetEmployees**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample19.sql)]
-    - **GetEmployeesByManager**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample19.sql)]
+  - **GetEmployeesByManager**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample20.sql)]
-    - **GetEmployeeByEmployeeID**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample20.sql)]
+  - **GetEmployeeByEmployeeID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample21.sql)]
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample21.sql)]
 
 
 [![Конструктор наборов данных после добавления четырех адаптеров таблиц](creating-a-data-access-layer-cs/_static/image84.png)](creating-a-data-access-layer-cs/_static/image83.png)
@@ -543,5 +543,5 @@ SuppliersAndProducts.aspx.cs
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Николай зеленый, – Хилтон Гизнау, Деннис Патерсона, (Liz Shulok), метка Gomez и Карлос Сантос. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Вперед](creating-a-business-logic-layer-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](creating-a-business-logic-layer-cs.md)

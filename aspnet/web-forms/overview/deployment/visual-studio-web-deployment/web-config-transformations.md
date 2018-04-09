@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations
-title: "ASP.NET веб-развертывания с помощью Visual Studio: преобразования файлов Web.config | Документы Microsoft"
+title: 'ASP.NET веб-развертывания с помощью Visual Studio: преобразования файлов Web.config | Документы Microsoft'
 author: tdykstra
-description: "Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол..."
+description: Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations
 msc.type: authoredcontent
-ms.openlocfilehash: a526275d76618c325a6b00f33cc550f28ab0cc00
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 77ed0d8b2fe85adb009a3f4759030b7fba8fb9d7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-webconfig-file-transformations"></a>ASP.NET веб-развертывания с помощью Visual Studio: файл преобразования Web.config
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузите начальный проект](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -152,6 +152,6 @@ ms.lasthandoff: 01/24/2018
 
 Дополнительные сведения о подразделах, рассматриваемых в этом учебнике см. в разделе [преобразования с помощью Web.config, чтобы изменить параметры в файле app.config или в файл Web.config во время развертывания](https://go.microsoft.com/fwlink/p/?LinkId=282413#transforms) в Web Карта содержимого развертывания для Visual Studio и ASP.NET.
 
->[!div class="step-by-step"]
-[Назад](preparing-databases.md)
-[Вперед](project-properties.md)
+> [!div class="step-by-step"]
+> [Назад](preparing-databases.md)
+> [Вперед](project-properties.md)

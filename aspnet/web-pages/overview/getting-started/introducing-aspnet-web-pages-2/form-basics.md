@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
-title: "Введение в ASP.NET Web Pages — основы HTML-формы | Документы Microsoft"
+title: Введение в ASP.NET Web Pages — основы HTML-формы | Документы Microsoft
 author: tfitzmac
-description: "Этот учебник показывает основные сведения о том, как создать форму ввода и как обрабатывать введенные пользователем данные, при использовании веб-страниц ASP.NET (Razor). И теперь, которые..."
+description: Этот учебник показывает основные сведения о том, как создать форму ввода и как обрабатывать введенные пользователем данные, при использовании веб-страниц ASP.NET (Razor). И теперь, которые...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
 msc.type: authoredcontent
-ms.openlocfilehash: 68056759b2e80230e5fd2c0f9b2d2a89b549cf37
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6f44f74774c2fa6338524987779e15f3940d1830
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---html-form-basics"></a>Общие сведения о веб-страницах ASP.NET — основы HTML-формы
 ====================
@@ -88,11 +88,11 @@ ms.lasthandoff: 01/24/2018
 
 Большинство элементов ввода пользователя находятся HTML `<input>` элементов. Они выглядят `<input type="type" name="name">,` где *тип* указывает тип элемента управления вводом пользователя, необходимо. Эти элементы являются наиболее частых из них:
 
-- Текстовое поле:`<input type="text">`
-- Флажок:`<input type="check">`
-- Переключатель:`<input type="radio">`
-- Кнопки:`<input type="button">`
-- Кнопка отправки:`<input type="submit">`
+- Текстовое поле: `<input type="text">`
+- Флажок: `<input type="check">`
+- Переключатель: `<input type="radio">`
+- кнопки: `<input type="button">`
+- Кнопка отправки: `<input type="submit">`
 
 Можно также использовать `<textarea>` элемент для создания многострочного текстового поля и `<select>` элемент для создания раскрывающегося списка или прокручиваемого списка. (Дополнительные сведения о HTML элементах form, см. в разделе [HTML-формы и ввода](http://www.w3schools.com/html/html_forms.asp) на сайте W3Schools.)
 
@@ -169,9 +169,9 @@ ms.lasthandoff: 01/24/2018
 > 
 > `Request` Объект фактически предоставляет несколько подмножеств. Пример:
 > 
-> - `Request.Form`Предоставляет значения из элементов в указанной `<form>` элемент, если запрос является `POST` запроса.
-> - `Request.QueryString`предоставляет только значения в строке запроса URL-адрес. (В URL-адрес: `http://mysite/myapp/page?searchGenre=action&page=2`, `?searchGenre=action&page=2` раздел URL-адрес является строка запроса.)
-> - `Request.Cookies`Коллекция предоставляет доступ к файлам cookie, отправленных браузер.
+> - `Request.Form` Предоставляет значения из элементов в указанной `<form>` элемент, если запрос является `POST` запроса.
+> - `Request.QueryString` предоставляет только значения в строке запроса URL-адрес. (В URL-адрес: `http://mysite/myapp/page?searchGenre=action&page=2`, `?searchGenre=action&page=2` раздел URL-адрес является строка запроса.)
+> - `Request.Cookies` Коллекция предоставляет доступ к файлам cookie, отправленных браузер.
 > 
 > Чтобы получить значение, которое известно в отправленной формы, можно использовать `Request["name"]`. Кроме того, можно использовать более конкретные версии `Request.Form["name"]` (для `POST` запросов) или `Request.QueryString["name"]` (для `GET` запросов). Конечно *имя* имя элемента.
 > 
@@ -363,6 +363,6 @@ ms.lasthandoff: 01/24/2018
 - [Предложение WHERE SQL](http://www.w3schools.com/sql/sql_where.asp) на сайте W3Schools
 - [Метод определения](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) статье на сайте W3C
 
->[!div class="step-by-step"]
-[Назад](displaying-data.md)
-[Вперед](entering-data.md)
+> [!div class="step-by-step"]
+> [Назад](displaying-data.md)
+> [Вперед](entering-data.md)

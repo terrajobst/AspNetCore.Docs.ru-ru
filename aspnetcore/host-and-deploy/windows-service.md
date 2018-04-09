@@ -1,7 +1,7 @@
 ---
-title: "Узел ASP.NET Core в службе Windows"
+title: Узел ASP.NET Core в службе Windows
 author: tdykstra
-description: "Узнайте, как для размещения приложения ASP.NET Core в службе Windows."
+description: Узнайте, как для размещения приложения ASP.NET Core в службе Windows.
 manager: wpickett
 ms.author: tdykstra
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: f3455e47cfc06a4492dc4e34871b348184c6ecfb
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: b0b27f274de1ca88b20bf582127132527b553ce0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Узел ASP.NET Core в службе Windows
 
@@ -40,25 +40,23 @@ ms.lasthandoff: 03/15/2018
 
 1. Установка пакета NuGet [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices/).
 
-1. Внесите следующие изменения в `Program.Main`:
-  
+2. Внесите следующие изменения в `Program.Main`:
+
    * Вызовите `host.RunAsService` вместо `host.Run`.
-  
+
    * Если код вызывает `UseContentRoot`, используйте путь в расположение публикации вместо `Directory.GetCurrentDirectory()`.
 
-   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+   #### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
    [!code-csharp[](windows-service/sample/Program.cs?name=ServiceOnly&highlight=3-4,7,12)]
 
-   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+   #### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
    [!code-csharp[](windows-service/sample_snapshot/Program.cs?name=ServiceOnly&highlight=3-4,8,14)]
 
-   ---
+   * * *
 
-1. Публикация приложения в папке. Используйте [публикации dotnet](/dotnet/articles/core/tools/dotnet-publish) или [профиль публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles) , публикует в папку.
+3. Публикация приложения в папке. Используйте [публикации dotnet](/dotnet/articles/core/tools/dotnet-publish) или [профиль публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles) , публикует в папку.
 
-1. Тестирование путем создания и запуска службы.
+4. Тестирование путем создания и запуска службы.
 
    Откройте командную строку с правами администратора для использования [sc.exe](https://technet.microsoft.com/library/bb490995) средство командной строки для создания и запуска службы. Если служба называется MyService, опубликованы `c:\svc`, и с именем AspNetCoreService, команды, являются:
 
@@ -79,16 +77,13 @@ ms.lasthandoff: 03/15/2018
 
 Проще тестирования и отладки при работе вне службы, поэтому обычно добавьте код, вызывающий `RunAsService` только при определенных условиях. Например, приложение может выполняться как консольное приложение с `--console` аргумент командной строки или при присоединении отладчика:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-csharp[](windows-service/sample/Program.cs?name=ServiceOrConsole)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-csharp[](windows-service/sample_snapshot/Program.cs?name=ServiceOrConsole)]
 
----
-
+* * *
 ## <a name="handle-stopping-and-starting-events"></a>Остановка и запуск событий
 
 Для обработки `OnStarting`, `OnStarted`, и `OnStopping` события, выполните следующие дополнительные изменения:
@@ -97,25 +92,26 @@ ms.lasthandoff: 03/15/2018
 
    [!code-csharp[](windows-service/sample/CustomWebHostService.cs?name=NoLogging)]
 
-1. Создание метода расширения для `IWebHost` , проходящего пользовательский `WebHostService` для `ServiceBase.Run`:
+2. Создание метода расширения для `IWebHost` , проходящего пользовательский `WebHostService` для `ServiceBase.Run`:
 
    [!code-csharp[](windows-service/sample/WebHostServiceExtensions.cs?name=ExtensionsClass)]
 
-1. В `Program.Main`, вызовите новый метод расширения, `RunAsCustomService`, а не `RunAsService`:
+3. В `Program.Main`, вызовите новый метод расширения, `RunAsCustomService`, а не `RunAsService`:
 
-   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+   #### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
    [!code-csharp[](windows-service/sample/Program.cs?name=HandleStopStart&highlight=24)]
 
-   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+   #### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
    [!code-csharp[](windows-service/sample_snapshot/Program.cs?name=HandleStopStart&highlight=26)]
 
-   ---
-
+   * * *
 Если пользовательский `WebHostService` кода требует службы из внедрения зависимости (например, средства ведения журнала), получить его из `Services` свойства `IWebHost`:
 
 [!code-csharp[](windows-service/sample/CustomWebHostService.cs?name=Logging&highlight=7)]
+
+## <a name="proxy-server-and-load-balancer-scenarios"></a>Прокси-сервер и сценарии подсистемы балансировки нагрузки
+
+Служб, взаимодействовать с запросы из Интернета или корпоративной сети и через прокси или Подсистема балансировки нагрузки может потребовать дополнительной настройки. Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверы и подсистем балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).
 
 ## <a name="acknowledgments"></a>Благодарности
 

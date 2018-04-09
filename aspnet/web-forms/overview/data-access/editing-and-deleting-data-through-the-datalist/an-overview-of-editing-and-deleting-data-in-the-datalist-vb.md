@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-vb
-title: "Обзор изменения и удаления данных в DataList (VB) | Документы Microsoft"
+title: Обзор изменения и удаления данных в DataList (VB) | Документы Microsoft
 author: rick-anderson
-description: "Когда элемент управления DataList нет встроенной редактирование и удаление возможностей, в этом учебнике будет показано, как создать DataList, который поддерживает изменение и удаление o..."
+description: Когда элемент управления DataList нет встроенной редактирование и удаление возможностей, в этом учебнике будет показано, как создать DataList, который поддерживает изменение и удаление o...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/30/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e08b55f763677a40a03503e54a23dc77a10a34f5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6956777e91184a92e189db7aa716a4bd7dbbfccd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="an-overview-of-editing-and-deleting-data-in-the-datalist-vb"></a>Обзор изменения и удаления данных в DataList (Visual Basic)
 ====================
@@ -249,7 +249,7 @@ ms.lasthandoff: 01/24/2018
 
 Чтобы отобразить все элементы в режиме только для чтения DataList, необходимо:
 
-1. Задать DataList s [ `EditItemIndex` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) в индекс несуществующей `DataListItem` индекса. `-1`является безопасным, поскольку `DataListItem` индексы начинаются с `0`.
+1. Задать DataList s [ `EditItemIndex` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) в индекс несуществующей `DataListItem` индекса. `-1` является безопасным, поскольку `DataListItem` индексы начинаются с `0`.
 2. Привяжите данные к элементу управления DataList. Так как нет `DataListItem` `ItemIndex` es соответствуют DataList s `EditItemIndex`, весь DataList будут отображены в режиме только для чтения.
 
 Эти действия могут быть выполнены с помощью следующего кода обработчика событий:
@@ -263,7 +263,7 @@ ms.lasthandoff: 01/24/2018
 
 1. Программный доступ к имени продукта, введенные пользователем и цена, а также продукта s `ProductID`.
 2. Запуск процесса обновления путем вызова соответствующего `UpdateProduct` перегрузки в `ProductsBLL` класса.
-3. Задать DataList s [ `EditItemIndex` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) в индекс несуществующей `DataListItem` индекса. `-1`является безопасным, поскольку `DataListItem` индексы начинаются с `0`.
+3. Задать DataList s [ `EditItemIndex` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) в индекс несуществующей `DataListItem` индекса. `-1` является безопасным, поскольку `DataListItem` индексы начинаются с `0`.
 4. Привяжите данные к элементу управления DataList. Так как нет `DataListItem` `ItemIndex` es соответствуют DataList s `EditItemIndex`, весь DataList будут отображены в режиме только для чтения.
 
 Шаги 1 и 2 несут ответственность за сохранение пользователь s изменений; После изменения были сохранены и идентичны шагов, выполненных в шагах 3 и 4 возвращать DataList состояние до редактирования `CancelCommand` обработчика событий.
@@ -339,12 +339,12 @@ DataList не имеет точки, и нажмите кнопку редакт
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Зак Джонс, Алексей Pespisa и Рэнди Шмидт. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](customizing-the-datalist-s-editing-interface-cs.md)
-[Вперед](performing-batch-updates-vb.md)
+> [!div class="step-by-step"]
+> [Назад](customizing-the-datalist-s-editing-interface-cs.md)
+> [Вперед](performing-batch-updates-vb.md)

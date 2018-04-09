@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-vb
-title: "Обработка операций обратной передачи из контекстного меню элемента управления с помощью элемента управления UpdatePanel (Visual Basic) | Документы Microsoft"
+title: Обработка операций обратной передачи из контекстного меню элемента управления с помощью элемента управления UpdatePanel (Visual Basic) | Документы Microsoft
 author: wenz
-description: "Расширитель PopupControl в наборе элементов управления AJAX предлагает простой способ запуска всплывающего окна при активации любого другого элемента управления. Особое внимание не надо..."
+description: Расширитель PopupControl в наборе элементов управления AJAX предлагает простой способ запуска всплывающего окна при активации любого другого элемента управления. Особое внимание не надо...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4445437f25925429d240b7fe2d019855afc52fe0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 312927e01911ea705d0614eac462cd034820c7b4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="handling-postbacks-from-a-popup-control-with-an-updatepanel-vb"></a>Обработка операций обратной передачи из контекстного меню элемента управления с помощью элемента управления UpdatePanel (Visual Basic)
 ====================
@@ -61,6 +61,6 @@ ms.lasthandoff: 11/10/2017
 
 Щелкните дату помещает его в текстовое поле ([Просмотр полноразмерное изображение](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb/_static/image6.png))
 
->[!div class="step-by-step"]
-[Назад](using-multiple-popup-controls-vb.md)
-[Вперед](handling-postbacks-from-a-popup-control-without-an-updatepanel-vb.md)
+> [!div class="step-by-step"]
+> [Назад](using-multiple-popup-controls-vb.md)
+> [Вперед](handling-postbacks-from-a-popup-control-without-an-updatepanel-vb.md)

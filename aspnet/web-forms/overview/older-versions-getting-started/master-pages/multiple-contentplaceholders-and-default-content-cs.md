@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/multiple-contentplaceholders-and-default-content-cs
-title: "Несколько ContentPlaceHolders и содержимого по умолчанию (C#) | Документы Microsoft"
+title: Несколько ContentPlaceHolders и содержимого по умолчанию (C#) | Документы Microsoft
 author: rick-anderson
-description: "Проверяет, как добавить несколько владельцев содержимого месте главной страницы, а также способ указания содержимого по умолчанию в Владельцы содержимого месте."
+description: Проверяет, как добавить несколько владельцев содержимого месте главной страницы, а также способ указания содержимого по умолчанию в Владельцы содержимого месте.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/21/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/multiple-contentplaceholders-and-default-content-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 24bfb85b09b8bd5a60e51f57db79544bea7af22b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b60017c21b4cf45081893af08e68186009475fd2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="multiple-contentplaceholders-and-default-content-c"></a>Несколько ContentPlaceHolders и содержимого по умолчанию (C#)
 ====================
@@ -179,12 +179,12 @@ ASP.NET не требуется включение всех страниц со�
 
 ### <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор по ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 3.5 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Скотт может быть достигнута по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) или через его блог по [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор по ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 3.5 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Скотт может быть достигнута по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) или через его блог по [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Банерджи Suchi. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Назад](creating-a-site-wide-layout-using-master-pages-cs.md)
-[Вперед](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md)
+> [!div class="step-by-step"]
+> [Назад](creating-a-site-wide-layout-using-master-pages-cs.md)
+> [Вперед](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md)

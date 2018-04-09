@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/introduction
-title: "ASP.NET веб-развертывания с помощью Visual Studio: введение | Документы Microsoft"
+title: 'ASP.NET веб-развертывания с помощью Visual Studio: введение | Документы Microsoft'
 author: tdykstra
-description: "Этой серии учебника показано, как развернуть ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, с помощью V..."
+description: Этой серии учебника показано, как развернуть ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, с помощью V...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: a7c5b348e44a88a56680237b0cac75c999901ec3
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 1ff4cc3b0fa6ce7e6cdc833a0c2f7fea2050c4e6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-introduction"></a>ASP.NET веб-развертывания с помощью Visual Studio: введение
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузите начальный проект](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -202,5 +202,5 @@ Visual Studio не выполняет никаких действий с баз�
 
 В этом учебнике первого ряда загружен пример проекта Visual Studio и проверить компоненты веб-сайтов, которые влияют на способ развертывания приложения. В следующих учебниках Подготовка развертывания с помощью настройки некоторые из этих действий автоматически обрабатываться. Другие позволяет устранить вручную.
 
->[!div class="step-by-step"]
-[Вперед](preparing-databases.md)
+> [!div class="step-by-step"]
+> [Вперед](preparing-databases.md)

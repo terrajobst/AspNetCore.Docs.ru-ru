@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-content-to-a-cached-page-vb
-title: "Добавление динамического контента в кэшированные страницы (Visual Basic) | Документы Microsoft"
+title: Добавление динамического контента в кэшированные страницы (Visual Basic) | Документы Microsoft
 author: microsoft
-description: "Дополнительные сведения о смешивать динамических и кэшированное содержимое на одной странице. Подстановки после кэширования позволяет отображать динамическое содержимое, например o объявления баннер..."
+description: Дополнительные сведения о смешивать динамических и кэшированное содержимое на одной странице. Подстановки после кэширования позволяет отображать динамическое содержимое, например o объявления баннер...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-content-to-a-cached-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f07f4ecec36e71679dbc471b65f26d260349a07e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 89421b4bec2170e408ded87ccc918a7a16844a98
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-dynamic-content-to-a-cached-page-vb"></a>Добавление динамического контента в кэшированные страницы (Visual Basic)
 ====================
@@ -97,6 +97,6 @@ ms.lasthandoff: 11/10/2017
 
 Преимущества кэширования по возможности — он может оказывать значительное влияние на производительность веб-приложений. Как описано в этом учебнике, можно воспользоваться преимуществами кэширования даже в том случае, если необходимо отобразить динамическое содержимое на страницах.
 
->[!div class="step-by-step"]
-[Назад](improving-performance-with-output-caching-vb.md)
-[Вперед](creating-a-controller-vb.md)
+> [!div class="step-by-step"]
+> [Назад](improving-performance-with-output-caching-vb.md)
+> [Вперед](creating-a-controller-vb.md)

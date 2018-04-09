@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/display_data_items_and_details
-title: "Отображать данные элементы и подробное описание | Документы Microsoft"
+title: Отображать данные элементы и подробное описание | Документы Microsoft
 author: Erikre
-description: "Этот учебник ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы..."
+description: Этот учебник ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/display_data_items_and_details
 msc.type: authoredcontent
-ms.openlocfilehash: 809d7a9c21a3ddf5dfd07d079eb8fe0d1d81712d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5fea654aa5116193cb7496c1b9020ed8e25fc06f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="display-data-items-and-details"></a>Отображать данные элементов и сведения
 ====================
-По [Эрик Reitan](https://github.com/Erikre)
+по [Эрик Reitan](https://github.com/Erikre)
 
 [Загрузите образец проекта Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) или [загрузить электронную (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 11/10/2017
 Чтобы соединиться с базой данных выше разметки, необходимо добавить дополнительный код для *ProductDetails.aspx* кода.
 
 1. В **обозревателе решений**, щелкните правой кнопкой мыши *ProductDetails.aspx* и нажмите кнопку **Просмотр кода**.  
- *ProductDetails.aspx.cs* будет отображен файл.
+   *ProductDetails.aspx.cs* будет отображен файл.
 2. Замените существующий код следующим кодом:   
 
     [!code-csharp[Main](display_data_items_and_details/samples/sample6.cs)]
@@ -160,6 +160,6 @@ ms.lasthandoff: 11/10/2017
 
 [Извлечение и отображение данных с помощью привязки модели и веб-форм](../../presenting-and-managing-data/model-binding/retrieving-data.md)
 
->[!div class="step-by-step"]
-[Назад](ui_and_navigation.md)
-[Вперед](shopping-cart.md)
+> [!div class="step-by-step"]
+> [Назад](ui_and_navigation.md)
+> [Вперед](shopping-cart.md)

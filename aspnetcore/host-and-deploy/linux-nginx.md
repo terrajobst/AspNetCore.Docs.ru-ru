@@ -1,7 +1,7 @@
 ---
-title: "Среда размещения ASP.NET Core в операционной системе Linux с Nginx"
+title: Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 author: rick-anderson
-description: "Описание процедуры настройки Nginx в качестве обратного прокси-сервера на 16.04 Ubuntu для пересылки трафика HTTP в веб-приложение ASP.NET Core ОС Kestrel."
+description: Описание процедуры настройки Nginx в качестве обратного прокси-сервера на 16.04 Ubuntu для пересылки трафика HTTP в веб-приложение ASP.NET Core ОС Kestrel.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: a1de177fcd41c925a85e5aab9a0d236249b7da0b
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 64093b9fcfa9047145de8f8b142f72fa1515f248
+ms.sourcegitcommit: d45d766504c2c5aad2453f01f089bc6b696b5576
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -62,7 +62,7 @@ Kestrel отлично подходит для обслуживания дина
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Вызвать [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) метод в `Startup.Configure` перед вызовом [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) или аналогичные схему проверки подлинности по промежуточного слоя:
+Вызвать [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) метод в `Startup.Configure` перед вызовом [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) или аналогичные схему проверки подлинности по промежуточного слоя. Настройки по промежуточного слоя для пересылки `X-Forwarded-For` и `X-Forwarded-Proto` заголовки:
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -75,7 +75,7 @@ app.UseAuthentication();
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Вызвать [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) метод в `Startup.Configure` перед вызовом [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity) и [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) или аналогичные схему проверки подлинности по промежуточного слоя:
+Вызвать [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) метод в `Startup.Configure` перед вызовом [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity) и [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) или аналогичные схему проверки подлинности по промежуточного слоя. Настройки по промежуточного слоя для пересылки `X-Forwarded-For` и `X-Forwarded-Proto` заголовки:
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -94,6 +94,8 @@ app.UseFacebookAuthentication(new FacebookOptions()
 ---
 
 Если не [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) для указания по промежуточного слоя, заголовки по умолчанию для пересылки `None`.
+
+Для приложений, размещенных за прокси-серверы и подсистемы балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверы и подсистем балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).
 
 ### <a name="install-nginx"></a>Установка Nginx
 
@@ -144,7 +146,7 @@ server {
 Предыдущий файл и по умолчанию сервер конфигурации, Nginx принимает общего трафика через порт 80 с заголовком узла `example.com` или `*.example.com`. Запросы, не соответствующие эти узлы не получить пересылаются Kestrel. Nginx перенаправляет запросы сопоставления Kestrel на `http://localhost:5000`. В разделе [как nginx обрабатывает запрос](https://nginx.org/docs/http/request_processing.html) для получения дополнительной информации.
 
 > [!WARNING]
-> Если не задать строгим [директива имя_сервера](https://nginx.org/docs/http/server_names.html) предоставляет доступ приложения к уязвимостям системы безопасности. Привязки поддомен подстановочный знак (например, `*.example.com`) не вызывает риск безопасности, если вы можете управлять всей родительского домена (в отличие от `*.com`, которой уязвима). В разделе [rfc7230 раздел-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) для получения дополнительной информации.
+> Если не задать строгим [директива имя_сервера](https://nginx.org/docs/http/server_names.html) предоставляет доступ приложения к уязвимостям системы безопасности. Привязки поддомен подстановочный знак (например, `*.example.com`) не вызывает риск безопасности, если вы можете управлять всей родительского домена (в отличие от `*.com`, которой уязвима). Дополнительные сведения см. в документе [rfc7230, раздел 5.4](https://tools.ietf.org/html/rfc7230#section-5.4).
 
 После установления Nginx конфигурации запуска `sudo nginx -t` проверить синтаксис файлов конфигурации. Если проверка файла конфигурации прошла успешно, принудительно Nginx, чтобы принять изменения, запустив `sudo nginx -s reload`.
 

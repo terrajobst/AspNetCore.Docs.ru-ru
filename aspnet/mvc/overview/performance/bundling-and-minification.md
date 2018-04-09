@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/performance/bundling-and-minification
-title: "Объединение и Минификация | Документы Microsoft"
+title: Объединение и Минификация | Документы Microsoft
 author: Rick-Anderson
-description: "Объединение и Минификация — это два метода можно использовать в ASP.NET 4.5 для уменьшения времени загрузки для запроса. Объединение и Минификация сокращает время загрузки reducin..."
+description: Объединение и Минификация — это два метода можно использовать в ASP.NET 4.5 для уменьшения времени загрузки для запроса. Объединение и Минификация сокращает время загрузки reducin...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/23/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: 7192481de46c36f7de71164766e68afdbba74f6d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 001ebf89cda66a50cddcd7e4944f27b9396d4450
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="bundling-and-minification"></a>Объединение и Минификация
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Объединение и Минификация — это два метода можно использовать в ASP.NET 4.5 для уменьшения времени загрузки для запроса. Объединение и Минификация повышает время загрузки, уменьшая число запросов к серверу и уменьшения размера запрошенных ресурсов (например, CSS и JavaScript.)
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 01/24/2018
 [!code-csharp[Main](bundling-and-minification/samples/sample4.cs?highlight=7)]
 
 > [!NOTE]
-> Если не `EnableOptimizations` — `true` или атрибут debug в [компиляции элемент](https://msdn.microsoft.com/library/s10awwz0.aspx) в *Web.config* файла задано значение `false`, файлы не будет включаться или уменьшена. Кроме того не будет использоваться .min версию файлов, будут выбираться полных отладочных версий. `EnableOptimizations`переопределяет атрибут debug в [компиляции элемент](https://msdn.microsoft.com/library/s10awwz0.aspx) в *Web.config* файла
+> Если не `EnableOptimizations` — `true` или атрибут debug в [компиляции элемент](https://msdn.microsoft.com/library/s10awwz0.aspx) в *Web.config* файла задано значение `false`, файлы не будет включаться или уменьшена. Кроме того не будет использоваться .min версию файлов, будут выбираться полных отладочных версий. `EnableOptimizations` переопределяет атрибут debug в [компиляции элемент](https://msdn.microsoft.com/library/s10awwz0.aspx) в *Web.config* файла
 
 
 ## <a name="using-bundling-and-minification-with-aspnet-web-forms-and-web-pages"></a>С помощью объединение и Минификация с веб-форм ASP.NET и веб-страницы
@@ -186,7 +186,7 @@ ms.lasthandoff: 01/24/2018
 
     [!code-csharp[Main](bundling-and-minification/samples/sample12.cs)]
 
- Селектор подстановочными»\*.css» объединяет в каждой CSS-файл в папке, включая *Content\themes\base\jquery.ui.all.css* файла. *Jquery.ui.all.css* файл импортирует других файлов CSS.
+  Селектор подстановочными»\*.css» объединяет в каждой CSS-файл в папке, включая *Content\themes\base\jquery.ui.all.css* файла. *Jquery.ui.all.css* файл импортирует других файлов CSS.
 
 ## <a name="bundle-caching"></a>Объединить кэширования
 
@@ -233,15 +233,15 @@ ms.lasthandoff: 01/24/2018
 
 `System.Web.Optimization` Реализован в System.Web.Optimization.DLL пространства имен. Он использует библиотеки WebGrease (WebGrease.dll) минификации возможностей, который в свою очередь использует Antlr3.Runtime.dll.
 
-*Использовать ли быстрый блогах общего ссылки Twitter. Мой дескриптор Twitter*:[@RickAndMSFT](http://twitter.com/RickAndMSFT)
+*Использовать ли быстрый блогах общего ссылки Twitter. Мой дескриптор Twitter*: [@RickAndMSFT](http://twitter.com/RickAndMSFT)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 - Видео:[объединение и оптимизация](https://channel9.msdn.com/Events/aspConf/aspConf/Bundling-and-Optimizing) по [Говард Дайеркинг](https://twitter.com/#!/howard_dierking)
 - [Добавление веб-оптимизация веб-страниц сайта](https://blogs.msdn.com/b/rickandy/archive/2012/08/15/adding-web-optimization-to-a-web-pages-site.aspx).
 - [Добавление объединение и Минификация для веб-форм](https://blogs.msdn.com/b/rickandy/archive/2012/08/14/adding-bundling-and-minification-to-web-forms.aspx).
-- [Влияние на производительность объединение и Минификация на просмотр веб-страниц](https://blogs.msdn.com/b/henrikn/archive/2012/06/17/performance-implications-of-bundling-and-minification-on-http.aspx) по [Nielsen F Хенрик](http://en.wikipedia.org/wiki/Henrik_Frystyk_Nielsen)[@frystyk](https://twitter.com/frystyk)
-- [С помощью CDN и истечения срока действия для повышения производительности веб-сайте](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx) по Рик Андерсон[@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
+- [Влияние на производительность объединение и Минификация на просмотр веб-страниц](https://blogs.msdn.com/b/henrikn/archive/2012/06/17/performance-implications-of-bundling-and-minification-on-http.aspx) по [Nielsen Хенрик F](http://en.wikipedia.org/wiki/Henrik_Frystyk_Nielsen) [@frystyk](https://twitter.com/frystyk)
+- [С помощью CDN и истечения срока действия для повышения производительности веб-сайте](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx) по Рик Андерсон [@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
 - [Свести к минимуму время приема-Передачи (времени приема-передачи)](https://developers.google.com/speed/docs/best-practices/rtt)
 
 ## <a name="contributors"></a>Авторы

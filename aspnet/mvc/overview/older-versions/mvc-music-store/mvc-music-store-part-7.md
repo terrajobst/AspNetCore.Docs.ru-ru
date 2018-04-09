@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-7
-title: "Часть 7: Членство и авторизации | Документы Microsoft"
+title: 'Часть 7: Членство и авторизации | Документы Microsoft'
 author: jongalloway
-description: "Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения ASP.NET MVC Music Store. Часть 7 охватывает членства и авторизации."
+description: Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения ASP.NET MVC Music Store. Часть 7 охватывает членства и авторизации.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/13/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: db459de687db862be00a9b59ff5b1b238fa75061
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a0f599da4691c5bb7c8e6f01625fc0e94ce0eac8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-7-membership-and-authorization"></a>Часть 7: Членство и авторизации
 ====================
@@ -110,6 +110,6 @@ ms.lasthandoff: 01/30/2018
 
 После входа в систему с нашей новой учетной записи администратора, мы можем перейти к экрану альбом изменять как до.
 
->[!div class="step-by-step"]
-[Назад](mvc-music-store-part-6.md)
-[Вперед](mvc-music-store-part-8.md)
+> [!div class="step-by-step"]
+> [Назад](mvc-music-store-part-6.md)
+> [Вперед](mvc-music-store-part-8.md)

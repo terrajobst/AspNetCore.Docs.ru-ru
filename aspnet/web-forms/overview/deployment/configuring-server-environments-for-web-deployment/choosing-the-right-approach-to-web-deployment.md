@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment
-title: "Выбор правильного подхода к веб-развертывание | Документы Microsoft"
+title: Выбор правильного подхода к веб-развертывание | Документы Microsoft
 author: jrjlee
-description: "При работе с Internet Information Services (IIS) средство веб-развертывания (Web Deploy) 2.0 или более поздней версии, существует три основных подходов, которые можно использовать для получения..."
+description: При работе с Internet Information Services (IIS) средство веб-развертывания (Web Deploy) 2.0 или более поздней версии, существует три основных подходов, которые можно использовать для получения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: b77aa37160f3822f58908866e44497aea3d3bdc8
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 2d690744687af93a69743dc6ce6c853629f61f5d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="choosing-the-right-approach-to-web-deployment"></a>Выбор правильного подхода к веб-развертывания
 ====================
@@ -118,7 +118,7 @@ ms.lasthandoff: 03/15/2018
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample6.cmd)]
 
 
-Например предположим, что процесс построения настроена для автоматического развертывания веб-приложения в промежуточной среде при каждом успешном построении. Если используется подход с использованием удаленного агента, необходимо сделать удостоверение процесса построения администратором на конечном серверах. В отличие от этого с помощью веб-развертывания обработчик подход можно присвоить пользователя без прав администратора & #x 2014; **FABRIKAM\stagingdeployer** в этом случае & #x 2014; разрешение для определенного веб-сайта IIS только и процессом сборки можно предоставить эти учетные данные для развертывания веб-пакета.
+Например предположим, что процесс построения настроена для автоматического развертывания веб-приложения в промежуточной среде при каждом успешном построении. Если используется подход с использованием удаленного агента, необходимо сделать удостоверение процесса построения администратором на конечном серверах. В отличие от этого, с помощью веб-развертывания обработчик подход можно присвоить пользователя без прав администратора&#x2014;**FABRIKAM\stagingdeployer** в этом случае&#x2014;разрешения для определенного веб-сайта IIS только и процесс построения можно указать их в учетные данные для развертывания веб-пакета.
 
 
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample7.cmd)]
@@ -150,6 +150,6 @@ ms.lasthandoff: 03/15/2018
 
 Общие рекомендации по различными способами, в котором можно развернуть веб-пакеты с удаленного компьютера см. в разделе [с помощью Web развертывание удаленно](https://technet.microsoft.com/library/ee461175(WS.10).aspx). Дополнительные сведения об использовании развертывания Web по запросу см. в разделе [развертывание Web по запросу](https://technet.microsoft.com/library/ee517345(WS.10).aspx).
 
->[!div class="step-by-step"]
-[Назад](configuring-server-environments-for-web-deployment.md)
-[Вперед](scenario-configuring-a-test-environment-for-web-deployment.md)
+> [!div class="step-by-step"]
+> [Назад](configuring-server-environments-for-web-deployment.md)
+> [Вперед](scenario-configuring-a-test-environment-for-web-deployment.md)

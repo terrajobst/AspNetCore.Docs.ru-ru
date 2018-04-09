@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-cs
-title: "Создание действия (C#) | Документы Microsoft"
+title: Создание действия (C#) | Документы Microsoft
 author: microsoft
-description: "Дополнительные сведения о добавлении нового действия для контроллера ASP.NET MVC. Дополнительные сведения о требованиях для метода для действия."
+description: Дополнительные сведения о добавлении нового действия для контроллера ASP.NET MVC. Дополнительные сведения о требованиях для метода для действия.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8b751dc7e34951be33e7c27a3429c383a3e1e1c7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7c6145902db59b07e96a5563b138c1a6323946b2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-an-action-c"></a>Создание действия (C#)
 ====================
@@ -64,6 +64,6 @@ ms.lasthandoff: 11/10/2017
 
 **На рисунке 01**: вызов метода NonAction ([Просмотр полноразмерное изображение](creating-an-action-cs/_static/image2.png))
 
->[!div class="step-by-step"]
-[Назад](creating-a-controller-cs.md)
-[Вперед](asp-net-mvc-routing-overview-vb.md)
+> [!div class="step-by-step"]
+> [Назад](creating-a-controller-cs.md)
+> [Вперед](asp-net-mvc-routing-overview-vb.md)

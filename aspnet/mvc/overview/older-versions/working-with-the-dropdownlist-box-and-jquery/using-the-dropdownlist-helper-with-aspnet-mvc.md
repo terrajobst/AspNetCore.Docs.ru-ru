@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
-title: "Использование вспомогательного метода DropDownList в ASP.NET MVC | Документы Microsoft"
+title: Использование вспомогательного метода DropDownList в ASP.NET MVC | Документы Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2012
@@ -12,19 +12,19 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 278d04aec68e93f3ebfd12d06a96b59f3bcbef4b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 21373deeded801c5cea9e89f6dac0f3542a55ca5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a>Использование вспомогательного метода DropDownList в ASP.NET MVC
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 Этот учебник поможет узнать основы работы с [DropDownList](https://msdn.microsoft.com/library/dd492948.aspx) вспомогательный и [ListBox](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.listbox.aspx) вспомогательный в приложении MVC ASP.NET. Можно использовать Microsoft Visual Web Developer 2010 Express пакетом обновления 1, которой — это бесплатная версия Microsoft Visual Studio, чтобы следовать учебнику. Прежде чем начать, убедитесь, что вы установили необходимые компоненты, перечисленные ниже. Все из них можно установить, щелкнув по следующей ссылке: [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Кроме того можно установить отдельно предварительные требования, используя следующие ссылки:
 
-- [Необходимые компоненты Visual Studio Web Developer Express SP1](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)<a id="post"></a>
+- [Необходимые компоненты Visual Studio Web Developer Express SP1](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack) <a id="post"></a>
 - [Обновление средств ASP.NET MVC 3](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
 - [SQL Server Compact 4.0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)(среда выполнения + средства поддержки)
 
@@ -193,7 +193,7 @@ HTML-формы, обычно используются для отправки �
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample12.cshtml)]
 
-В приведенном выше коде мы добавляем атрибут HTML и значение атрибута `class = "chzn-select"`. Символ @ перед класса никак не связано с представлений Razor. `class`— [ключевого слова C#](https://msdn.microsoft.com/library/x53a06bb.aspx). Ключевые слова C# не может использоваться как идентификаторы, если они содержат префикс. В приведенном выше примере `@class` является допустимым идентификатором, но **класса** не, так как **класс** является ключевым словом.
+В приведенном выше коде мы добавляем атрибут HTML и значение атрибута `class = "chzn-select"`. Символ @ перед класса никак не связано с представлений Razor. `class` — [ключевого слова C#](https://msdn.microsoft.com/library/x53a06bb.aspx). Ключевые слова C# не может использоваться как идентификаторы, если они содержат префикс. В приведенном выше примере `@class` является допустимым идентификатором, но **класса** не, так как **класс** является ключевым словом.
 
 Добавьте ссылки на *Chosen/chosen.jquery.js* и *Chosen/chosen.css* файлов. *Chosen/chosen.jquery.js* и реализует функционально из выбранного подключаемого модуля. *Chosen/chosen.css* файл предоставляет стили. Добавьте эти ссылки в нижней части *Views\Home\MultiSelectCountry.cshtml* файла. Следующий код показано, как ссылаться на выбранный подключаемый модуль.
 
@@ -217,5 +217,5 @@ HTML-формы, обычно используются для отправки �
 
 В следующем разделе вы увидите, как работает механизм формирование шаблонов ASP.NET MVC с **DropDownList** вспомогательный.
 
->[!div class="step-by-step"]
-[Вперед](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)
+> [!div class="step-by-step"]
+> [Вперед](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)

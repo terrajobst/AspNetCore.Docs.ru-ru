@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-cs
-title: "Определяет отображение двоичных данных в веб-данных (C#) | Документы Microsoft"
+title: Определяет отображение двоичных данных в веб-данных (C#) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы рассмотрим параметры для представления двоичных данных в веб-страницы, включая отображение файла изображения и предоставление ссылка «Загрузки» f..."
+description: В этом учебнике мы рассмотрим параметры для представления двоичных данных в веб-страницы, включая отображение файла изображения и предоставление ссылка «Загрузки» f...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/27/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d66079f784792a2514eefabf57f70826aab5dcf1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c5b56fc45ea8fb5aee934530fc62e23b9d364242
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-binary-data-in-the-data-web-controls-c"></a>Отображение двоичных данных в веб-элементы управления данными (C#)
 ====================
@@ -89,7 +89,7 @@ ms.lasthandoff: 01/24/2018
 
 ![Добавление HyperLinkField для BrochurePath](displaying-binary-data-in-the-data-web-controls-cs/_static/image6.gif)
 
-**Рис. 6**: HyperLinkField для добавления`BrochurePath`
+**Рис. 6**: HyperLinkField для добавления `BrochurePath`
 
 
 Это добавит столбец ссылок к GridView, как показано на рис. 7. Щелчком по ссылке брошюр представления будут отображаться PDF-ФАЙЛ непосредственно в браузере или запрашивать пользователя, чтобы загрузить файл, в зависимости от того, установлено ли средство чтения PDF и параметры браузера s.
@@ -226,12 +226,12 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Мерфи Тереза д и Dave Gardner. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](uploading-files-cs.md)
-[Вперед](including-a-file-upload-option-when-adding-a-new-record-cs.md)
+> [!div class="step-by-step"]
+> [Назад](uploading-files-cs.md)
+> [Вперед](including-a-file-upload-option-when-adding-a-new-record-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-vb
-title: "Предварительная компиляция веб-сайта (VB) | Документы Microsoft"
+title: Предварительная компиляция веб-сайта (VB) | Документы Microsoft
 author: rick-anderson
-description: "Visual Studio предлагает разработчикам ASP.NET два типа проектов: проекты веб-приложений (WAPs) и веб-сайтов (WSPs). Одно из ключевых различий betwe..."
+description: 'Visual Studio предлагает разработчикам ASP.NET два типа проектов: проекты веб-приложений (WAPs) и веб-сайтов (WSPs). Одно из ключевых различий betwe...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7cc487aa5276c601fed632e82d7b6d32d1b53b58
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7296808480fa48b4afd0b308cd27707378519747
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="precompiling-your-website-vb"></a>Предварительная компиляция веб-сайта (Visual Basic)
 ====================
@@ -97,7 +97,7 @@ WSPs и автоматическую компиляцию еще не явную
 
 [![](precompiling-your-website-vb/_static/image5.png)](precompiling-your-website-vb/_static/image4.png)
 
-**На рисунке 2**: В каталоге проекта `.aspx` и `.aspx.cs` файлы; `Bin` папка содержит только`Elmah.dll`  
+**На рисунке 2**: В каталоге проекта `.aspx` и `.aspx.cs` файлы; `Bin` папка содержит только `Elmah.dll`  
  ([Просмотр полноразмерное изображение](precompiling-your-website-vb/_static/image6.png))
 
 **Рис. 3** показано расположение папку, содержимое которого были созданы с помощью средства компиляции ASP.NET. Эта папка содержит все файлы кода. Кроме того эта папка `Bin` каталог содержит несколько сборок и два `.compiled` файлы в дополнение к `Elmah.dll` сборки.
@@ -190,6 +190,6 @@ ASP.NET поддерживает две компиляции: автоматич
 - [Предварительная компиляция в ASP.NET](http://www.odetocode.com/Articles/417.aspx)
 - [Параметры предварительно скомпилированного узла в ASP.NET](http://www.dotnetperls.com/precompiled)
 
->[!div class="step-by-step"]
-[Назад](logging-error-details-with-elmah-vb.md)
-[Вперед](users-and-roles-on-the-production-website-vb.md)
+> [!div class="step-by-step"]
+> [Назад](logging-error-details-with-elmah-vb.md)
+> [Вперед](users-and-roles-on-the-production-website-vb.md)

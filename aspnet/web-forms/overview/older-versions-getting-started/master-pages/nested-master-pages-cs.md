@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-cs
-title: "Вложенные главные страницы (C#) | Документы Microsoft"
+title: Вложенные главные страницы (C#) | Документы Microsoft
 author: rick-anderson
-description: "Показано, как вложить одну главную страницу в другом."
+description: Показано, как вложить одну главную страницу в другом.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/28/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 97513a5a6ac7a958a03626f16a328ecb0b85c03f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c9497659e0b8ff8164f122e6e3cb382ac0355a32
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="nested-master-pages-c"></a>Вложенные главные страницы (C#)
 ====================
@@ -94,7 +94,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="step-2-creating-a-simple-nested-master-page"></a>Шаг 2: Создание простого вложенной главной страницы
 
-`Simple.master`содержит два элемента управления ContentPlaceHolder: `MainContent` ContentPlaceHolder, мы добавили в веб-форма, вместе с `head` ContentPlaceHolder `<head>` элемента. Если страница содержимого и привяжите его к `Simple.master` страницы содержимого будет иметь двух элементов управления содержимым, ссылающиеся на два ContentPlaceHolders. Аналогично Если мы Создание вложенной главной страницы и привяжите его к `Simple.master` вложенном шаблоне страницы будет иметь два элемента управления содержимым.
+`Simple.master` содержит два элемента управления ContentPlaceHolder: `MainContent` ContentPlaceHolder, мы добавили в веб-форма, вместе с `head` ContentPlaceHolder `<head>` элемента. Если страница содержимого и привяжите его к `Simple.master` страницы содержимого будет иметь двух элементов управления содержимым, ссылающиеся на два ContentPlaceHolders. Аналогично Если мы Создание вложенной главной страницы и привяжите его к `Simple.master` вложенном шаблоне страницы будет иметь два элемента управления содержимым.
 
 Давайте добавим новый вложенном шаблоне страницы для `NestedMasterPages` папку с именем `SimpleNested.master`. Щелкните правой кнопкой мыши `NestedMasterPages` папку и выберите команду Добавить новый элемент. Откроется диалоговое окно Добавление нового элемента, показанный на рисунке 2. Выберите тип шаблона главной страницы и введите имя новой главной страницы. Для указания вызова новой главной страницы вложенном шаблоне страницы, установите флажок «Выбрать главную страницу».
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-aspx[Main](nested-master-pages-cs/samples/sample4.aspx)]
 
-После внесения это дополнение, сохранить вложенном шаблоне страницы и затем добавьте новую страницу содержимого `NestedMasterPages` папку с именем `Default.aspx`и привяжите его к `SimpleNested.master` главной страницы. После добавления этой страницы читателей может удивить увидеть, что в нем нет элементов управления содержимым (см. рис. 4)! Страница содержимого доступны только его *родительского* главные страницы ContentPlaceHolders. `SimpleNested.master`не содержит все элементы ContentPlaceHolder; Таким образом все страницы содержимого, связанные с этой главной страницей, не может содержать любые элементы управления содержимым.
+После внесения это дополнение, сохранить вложенном шаблоне страницы и затем добавьте новую страницу содержимого `NestedMasterPages` папку с именем `Default.aspx`и привяжите его к `SimpleNested.master` главной страницы. После добавления этой страницы читателей может удивить увидеть, что в нем нет элементов управления содержимым (см. рис. 4)! Страница содержимого доступны только его *родительского* главные страницы ContentPlaceHolders. `SimpleNested.master` не содержит все элементы ContentPlaceHolder; Таким образом все страницы содержимого, связанные с этой главной страницей, не может содержать любые элементы управления содержимым.
 
 
 [![Новая страница содержимого не содержит содержимого элементов управления](nested-master-pages-cs/_static/image11.png)](nested-master-pages-cs/_static/image10.png)
@@ -258,7 +258,7 @@ ms.lasthandoff: 01/24/2018
 
 Каждый раз, когда мы добавьте новую страницу содержимого в разделе "Администрирование" необходимо привязать его к `AdminNested.master` главной страницы, мы только что создали. Но что делать с существующие содержимого страницы? В настоящее время являются производными от всех страниц содержимого на сайте `BasePage` класс, который программно задает страницы содержимого главной страницы во время выполнения. Это не ожидаемому поведению для содержимого страницы в разделе "Администрирование". Вместо этого мы хотим, чтобы эти страницы содержимого, следует всегда использовать `AdminNested.master` страницы. Он будет иметь ответственность за вложенном шаблоне страницы, выбрать страницу вправо верхнего уровня содержимого во время выполнения.
 
-Лучший способ добиться этого требуемой поведение является создание новой пользовательской страницы базовый класс с именем `AdminBasePage` , расширяющий `BasePage` класса. `AdminBasePage`Затем можно переопределить `SetMasterPageFile` и задайте `Page` объекта `MasterPageFile` для жестко запрограммированных значений «~ / Admin/AdminNested.master». Таким образом, любой страницы, производный от `AdminBasePage` будет использовать `AdminNested.master`, тогда как любую страницу, производный от `BasePage` будет иметь его `MasterPageFile` свойство динамически принимать значение «~ / Site.master» или «~ / Alternate.master» на основе значения `MyMasterPage` Переменной сеанса.
+Лучший способ добиться этого требуемой поведение является создание новой пользовательской страницы базовый класс с именем `AdminBasePage` , расширяющий `BasePage` класса. `AdminBasePage` Затем можно переопределить `SetMasterPageFile` и задайте `Page` объекта `MasterPageFile` для жестко запрограммированных значений «~ / Admin/AdminNested.master». Таким образом, любой страницы, производный от `AdminBasePage` будет использовать `AdminNested.master`, тогда как любую страницу, производный от `BasePage` будет иметь его `MasterPageFile` свойство динамически принимать значение «~ / Site.master» или «~ / Alternate.master» на основе значения `MyMasterPage` Переменной сеанса.
 
 Начните с добавления новый файл класса для `App_Code` папку с именем `AdminBasePage.cs`. У `AdminBasePage` расширить `BasePage` и затем переопределить `SetMasterPageFile` метод. В этом методе назначить `MasterPageFile` значение «~ / Admin/AdminNested.master». После внесения этих изменений ваш класс файл должен выглядеть следующим образом:
 
@@ -358,12 +358,12 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор по ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 3.5 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Скотт может быть достигнута по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) или через его блог по [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор по ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 3.5 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Скотт может быть достигнута по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) или через его блог по [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Благодарности
 
-Этот учебник ряд прошел проверку многие полезные рецензентов. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Этот учебник ряд прошел проверку многие полезные рецензентов. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](specifying-the-master-page-programmatically-cs.md)
-[Вперед](creating-a-site-wide-layout-using-master-pages-vb.md)
+> [!div class="step-by-step"]
+> [Назад](specifying-the-master-page-programmatically-cs.md)
+> [Вперед](creating-a-site-wide-layout-using-master-pages-vb.md)

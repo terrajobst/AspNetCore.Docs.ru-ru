@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-7
-title: "Часть 7: Создание основной страницы | Документы Microsoft"
+title: 'Часть 7: Создание основной страницы | Документы Microsoft'
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 4d06e72bc664f707bbbe4603be41347158c58903
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2c378e68a1e6600daf655c19afbfe355e89496d4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-7-creating-the-main-page"></a>Часть 7: Создание основной страницы
 ====================
@@ -59,13 +59,13 @@ ms.lasthandoff: 01/24/2018
 
 `OrderDetailsViewModel` Инициализируется с заказом, и он извлекает сведения о заказе, отправив запрос AJAX на сервер.
 
-Кроме того, обратите внимание, `total` свойство `OrderDetailsViewModel`. Это свойство имеет специальный вид наблюдаемый объект называется [вычисляемые наблюдаемый объект](http://knockoutjs.com/documentation/computedObservables.html). Как следует из имен, вычисляемых наблюдаемым позволяет привязки данных к вычисляемым значением & #8212, в этом случае общее стоимость заказа.
+Кроме того, обратите внимание, `total` свойство `OrderDetailsViewModel`. Это свойство имеет специальный вид наблюдаемый объект называется [вычисляемые наблюдаемый объект](http://knockoutjs.com/documentation/computedObservables.html). Как следует из имен, вычисляемых наблюдаемым позволяет привязки данных к вычисляемым значением&#8212;в этом случае общее стоимость заказа.
 
 Добавьте эти функции для `AppViewModel`:
 
-- `resetCart`Удаляет все элементы из корзины.
-- `getDetails`Получает сведения для заказа (с pusing новый `OrderDetailsViewModel` на `details` списка).
-- `createOrder`Создает новый порядок и очистке корзины для покупок.
+- `resetCart` Удаляет все элементы из корзины.
+- `getDetails` Получает сведения для заказа (с pusing новый `OrderDetailsViewModel` на `details` списка).
+- `createOrder` Создает новый порядок и очистке корзины для покупок.
 
 
 [!code-javascript[Main](using-web-api-with-entity-framework-part-7/samples/sample6.js?highlight=4)]
@@ -119,5 +119,5 @@ ms.lasthandoff: 01/24/2018
 - [Карта содержимого для доступа к данных ASP.NET](https://msdn.microsoft.com/library/6759sth4.aspx)
 - [Центр разработчиков Entity Framework](https://msdn.microsoft.com/data/ef)
 
->[!div class="step-by-step"]
-[Назад](using-web-api-with-entity-framework-part-6.md)
+> [!div class="step-by-step"]
+> [Назад](using-web-api-with-entity-framework-part-6.md)

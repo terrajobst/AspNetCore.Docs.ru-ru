@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/18-customizing-site-wide-behavior
-title: "Настройка поведения сайта для веб-страниц ASP.NET (Razor) узлов | Документы Microsoft"
+title: Настройка поведения сайта для веб-страниц ASP.NET (Razor) узлов | Документы Microsoft
 author: tfitzmac
-description: "В этой главе объясняется, как сделать параметры вашего веб-сайты или всю папку, а не только страницы."
+description: В этой главе объясняется, как сделать параметры вашего веб-сайты или всю папку, а не только страницы.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/17/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/18-customizing-site-wide-behavior
 msc.type: authoredcontent
-ms.openlocfilehash: b1caa26a23517bd976addfefac89375ae965eb91
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4457318bcf1d2886eb8ed68fdd795eea7905368b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="customizing-site-wide-behavior-for-aspnet-web-pages-razor-sites"></a>Настройка поведения сайта для веб-страниц (Razor) узлов ASP.NET
 ====================
@@ -93,20 +93,20 @@ ms.lasthandoff: 11/10/2017
 
     Изменить связанные параметры в коде, электронной почты следующие:
 
-    - Задать `your-SMTP-host` имя SMTP-сервера, у вас есть право.
-    - Задать `your-user-name-here` к имени пользователя для учетной записи сервера SMTP.
-    - Задать `your-account-password` пароль пользователя для учетной записи сервера SMTP.
-    - Задать `your-email-address-here` на собственный адрес электронной почты. Это адрес электронной почты отправителя сообщения. (Некоторые поставщики электронной почты не позволяют задать другую `From` адреса и будет использовать имя пользователя как `From` адрес.)
+   - Задать `your-SMTP-host` имя SMTP-сервера, у вас есть право.
+   - Задать `your-user-name-here` к имени пользователя для учетной записи сервера SMTP.
+   - Задать `your-account-password` пароль пользователя для учетной записи сервера SMTP.
+   - Задать `your-email-address-here` на собственный адрес электронной почты. Это адрес электронной почты отправителя сообщения. (Некоторые поставщики электронной почты не позволяют задать другую `From` адреса и будет использовать имя пользователя как `From` адрес.)
 
-    Дополнительные сведения о параметрах SMTP см. в разделе [Настройка параметров электронной почты](https://go.microsoft.com/fwlink/?LinkID=202899#configuring_email_settings) в статье [отправки электронной почты из веб-узла ASP.NET Web Pages (Razor)](https://go.microsoft.com/fwlink/?LinkID=202899) и [проблемы с отправкой сообщения электронной почты](https://go.microsoft.com/fwlink/?LinkId=253001#email)в [веб-страниц ASP.NET (Razor) Troubleshooting Guide](https://go.microsoft.com/fwlink/?LinkId=253001).
-- Сохранить  *\_AppStart.cshtml* файл и закройте его.
-- В корневой папке веб-сайта, создайте новую страницу с именем *TestEmail.cshtml*.
-- Замените существующее содержимое следующим кодом: 
+     Дополнительные сведения о параметрах SMTP см. в разделе [Настройка параметров электронной почты](https://go.microsoft.com/fwlink/?LinkID=202899#configuring_email_settings) в статье [отправки электронной почты из веб-узла ASP.NET Web Pages (Razor)](https://go.microsoft.com/fwlink/?LinkID=202899) и [проблемы с отправкой сообщения электронной почты](https://go.microsoft.com/fwlink/?LinkId=253001#email)в [веб-страниц ASP.NET (Razor) Troubleshooting Guide](https://go.microsoft.com/fwlink/?LinkId=253001).
+4. Сохранить  *\_AppStart.cshtml* файл и закройте его.
+5. В корневой папке веб-сайта, создайте новую страницу с именем *TestEmail.cshtml*.
+6. Замените существующее содержимое следующим кодом: 
 
-    [!code-cshtml[Main](18-customizing-site-wide-behavior/samples/sample4.cshtml)]
-- Запустите *TestEmail.cshtml* страницы в браузере.
-- Заполните поля Отправьте себе электронное сообщение, а затем нажмите кнопку **отправки**.
-- Проверьте свою электронную почту, чтобы убедиться в том, что вы получили сообщение.
+     [!code-cshtml[Main](18-customizing-site-wide-behavior/samples/sample4.cshtml)]
+7. Запустите *TestEmail.cshtml* страницы в браузере.
+8. Заполните поля Отправьте себе электронное сообщение, а затем нажмите кнопку **отправки**.
+9. Проверьте свою электронную почту, чтобы убедиться в том, что вы получили сообщение.
 
 Важной частью в этом примере это параметры, которые не изменяют обычно — имя SMTP-сервера и учетные данные электронной почты, например — устанавливаются в  *\_AppStart.cshtml* файла. В этом случае не нужно повторно устанавливать их на каждой странице, куда отправить по электронной почте. (Несмотря на то, что если какой-либо причине необходимо изменить эти параметры, можно задать их по отдельности на странице.) На странице только задания значений, которые обычно изменяется каждый раз, как и получателе, а текст сообщения электронной почты.
 

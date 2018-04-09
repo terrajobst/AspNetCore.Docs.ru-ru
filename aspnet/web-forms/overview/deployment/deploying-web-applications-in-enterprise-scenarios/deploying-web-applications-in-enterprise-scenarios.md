@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios
-title: "Развертывание веб-приложений в корпоративных сценариях с помощью Visual Studio 2010 | Документы Microsoft"
+title: Развертывание веб-приложений в корпоративных сценариях с помощью Visual Studio 2010 | Документы Microsoft
 author: jrjlee
-description: "Этот набор учебников описываются средства и методы, которые можно использовать для развертывания веб-приложений в различных сценариях предприятия. Здесь объясняется, как лучше всего использовать..."
+description: Этот набор учебников описываются средства и методы, которые можно использовать для развертывания веб-приложений в различных сценариях предприятия. Здесь объясняется, как лучше всего использовать...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/03/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios
 msc.type: authoredcontent
-ms.openlocfilehash: 99bab371dd34b30f3554843e49bbec7f57c3f96c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 921b1ccd8a1f2109a51f3f75149588422fefb91d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-web-applications-in-enterprise-scenarios-using-visual-studio-2010"></a>Развертывание веб-приложений в корпоративных сценариях с помощью Visual Studio 2010
 ====================
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/10/2017
 > > Хотя в этих учебниках описывают использование TFS в качестве сервера CI, рекомендации легко адаптировать к любому серверу элемента конфигурации. Не требуется детальных знаний о TFS для понимания и использования учебники.
 > 
 > 
-> Итальянский преобразования этих учебников, посетите [http://www.lucamorelli.it](http://www.lucamorelli.it).
+> Итальянский преобразования этих учебников, посетите [ http://www.lucamorelli.it ](http://www.lucamorelli.it).
 
 
 ## <a name="about-the-authors"></a>Об авторах
@@ -80,5 +80,5 @@ ms.lasthandoff: 11/10/2017
 
 Этот набор учебников использует образец решения с реалистичных уровень сложности, а также вымышленной корпоративный сценарий развертывания, для реализации ссылки и определяют задачи и пошаговые руководства общий контекст. Следующий раздел [корпоративного веб-развертывания: Обзор сценария](enterprise-web-deployment-scenario-overview.md), представлены в сценарии и образец решения. Отсюда можно передвигаться по учебники и разделы, наиболее полно соответствует вашим потребностям.
 
->[!div class="step-by-step"]
-[Вперед](enterprise-web-deployment-scenario-overview.md)
+> [!div class="step-by-step"]
+> [Вперед](enterprise-web-deployment-scenario-overview.md)

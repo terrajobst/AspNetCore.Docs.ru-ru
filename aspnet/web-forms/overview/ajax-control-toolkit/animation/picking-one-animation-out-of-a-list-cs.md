@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/picking-one-animation-out-of-a-list-cs
-title: "Подбор одна анимация из списка (C#) | Документы Microsoft"
+title: Подбор одна анимация из списка (C#) | Документы Microsoft
 author: wenz
-description: "Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Платформа также р..."
+description: Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Платформа также р...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/picking-one-animation-out-of-a-list-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a24c4ffe49df4eb663f833eb1814f7cbcf15e07e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2d4aac447fcdfbf296560091cfcdf5eb51997a7b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="picking-one-animation-out-of-a-list-c"></a>Подбор одна анимация из списка (C#)
 ====================
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-css[Main](picking-one-animation-out-of-a-list-cs/samples/sample3.css)]
 
-Затем добавьте `AnimationExtender` страницу, предоставляя `ID`, `TargetControlID` атрибута и обязательным`runat="server":`
+Затем добавьте `AnimationExtender` страницу, предоставляя `ID`, `TargetControlID` атрибута и обязательным `runat="server":`
 
 [!code-aspx[Main](picking-one-animation-out-of-a-list-cs/samples/sample4.aspx)]
 
@@ -60,6 +60,6 @@ ms.lasthandoff: 11/10/2017
 
 Одно из возможных три анимации: Получает ширину панели ([Просмотр полноразмерное изображение](picking-one-animation-out-of-a-list-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](animation-depending-on-a-condition-cs.md)
-[Вперед](animating-in-response-to-user-interaction-cs.md)
+> [!div class="step-by-step"]
+> [Назад](animation-depending-on-a-condition-cs.md)
+> [Вперед](animating-in-response-to-user-interaction-cs.md)

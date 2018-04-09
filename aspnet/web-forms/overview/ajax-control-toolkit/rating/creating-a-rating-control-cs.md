@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-cs
-title: "Создание элемента управления оценки (C#) | Документы Microsoft"
+title: Создание элемента управления оценки (C#) | Документы Microsoft
 author: wenz
-description: "Многие веб-сайты из электронной коммерции на сайты сообщества предлагают пользователям скорость статей или элементы. Это обычно требует некоторых кодирование, но у нас есть..."
+description: Многие веб-сайты из электронной коммерции на сайты сообщества предлагают пользователям скорость статей или элементы. Это обычно требует некоторых кодирование, но у нас есть...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7c004522ac72b848e42320862d77bced0c11ca15
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a48cf0ed9402e2875e87ba7bdb76afc5f501a670
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-rating-control-c"></a>Создание элемента управления оценки (C#)
 ====================
@@ -41,12 +41,12 @@ ms.lasthandoff: 11/10/2017
 
 Затем добавьте `Rating` управления из набора элементов управления ASP.NET AJAX. Следующие атрибуты должны быть заданы в этом примере:
 
-- `CurrentRating`для использования первоначальной оценка
-- `MaxRating`Максимальное ограничение
-- `EmptyStarCssClass`класс CSS для использования при пустом элементе оценку (звездочка)
-- `FilledStarCssClass`класс CSS для использования при заполнении элемента оценку (звездочка)
-- `StarCssClass`класс CSS для видимой stat
-- `WaitingStarCssClass`класс CSS для использования в процессе оценку отправляется обратно на сервер
+- `CurrentRating` для использования первоначальной оценка
+- `MaxRating` Максимальное ограничение
+- `EmptyStarCssClass` класс CSS для использования при пустом элементе оценку (звездочка)
+- `FilledStarCssClass` класс CSS для использования при заполнении элемента оценку (звездочка)
+- `StarCssClass` класс CSS для видимой stat
+- `WaitingStarCssClass` класс CSS для использования в процессе оценку отправляется обратно на сервер
 
 А вот разметка, которая создает элемент управления оценок с пятью элементами (smileys), которых нет заполняется изначально:
 
@@ -73,5 +73,5 @@ ms.lasthandoff: 11/10/2017
 
 Создание систему оценок с помощью минимального программного кода ([Просмотр полноразмерное изображение](creating-a-rating-control-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Вперед](creating-a-rating-control-vb.md)
+> [!div class="step-by-step"]
+> [Вперед](creating-a-rating-control-vb.md)

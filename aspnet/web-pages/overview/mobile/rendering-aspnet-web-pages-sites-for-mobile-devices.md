@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/mobile/rendering-aspnet-web-pages-sites-for-mobile-devices
 msc.type: authoredcontent
-ms.openlocfilehash: 899bbdef82d689be81cd77ea6805e0484fb614aa
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 641798c5b835be959d02dd0d854b61ca21d83016
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="rendering-aspnet-web-pages-razor-sites-for-mobile-devices"></a>Подготовка к просмотру веб-страниц (Razor) сайтов ASP.NET для мобильных устройств
 ====================
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/15/2018
 
 Веб-страниц ASP.NET позволяет создавать настраиваемого отображения для отображения содержимого для мобильных устройств или на других устройствах.
 
-— Самый простой способ создать страницу конкретного устройства в узел веб-страниц ASP.NET с помощью имени файла шаблона, следующим образом: *FileName.**Mobile**.cshtml*. Можно создать две версии страницы (например, один с именем *MyFile.cshtml* и один с именем *MyFile.Mobile.cshtml*). Во время выполнения, когда мобильное устройство запрашивает *MyFile.cshtml*, ASP.NET отображает содержимое, полученное от *MyFile.Mobile.cshtml*. В противном случае *MyFile.cshtml* подготавливается к просмотру.
+— Самый простой способ создать страницу конкретного устройства в узел веб-страниц ASP.NET с помощью имени файла шаблона, следующим образом: <em>FileName.</em> <em>Mobile</em><em>.cshtml</em>. Можно создать две версии страницы (например, один с именем <em>MyFile.cshtml</em> и один с именем <em>MyFile.Mobile.cshtml</em>). Во время выполнения, когда мобильное устройство запрашивает <em>MyFile.cshtml</em>, ASP.NET отображает содержимое, полученное от <em>MyFile.Mobile.cshtml</em>. В противном случае <em>MyFile.cshtml</em> подготавливается к просмотру.
 
 Приведенный ниже показано, как включить подготовки мобильных устройств, добавив страницу содержимого для мобильных устройств. *Page1.cshtml* включает содержимое, а также боковая панель навигации. *Page1.Mobile.cshtml* с тем же содержимым, но пропускает боковой панели.
 

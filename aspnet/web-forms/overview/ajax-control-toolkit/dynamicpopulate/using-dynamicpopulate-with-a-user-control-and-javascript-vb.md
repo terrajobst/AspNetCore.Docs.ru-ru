@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-vb
-title: "Использование DynamicPopulate с пользовательского элемента управления и JavaScript (VB) | Документы Microsoft"
+title: Использование DynamicPopulate с пользовательского элемента управления и JavaScript (VB) | Документы Microsoft
 author: wenz
-description: "Элемент управления DynamicPopulate в наборе элементов управления ASP.NET AJAX вызывает веб-службы (или метод страницы) и заполняет результирующее значение в целевой элемент управления на t..."
+description: Элемент управления DynamicPopulate в наборе элементов управления ASP.NET AJAX вызывает веб-службы (или метод страницы) и заполняет результирующее значение в целевой элемент управления на t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 495a3917ca5fa28bc833ccc666b1a5e6db7bf7f2
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 715973ef4923e635ec2a860d00d55f13a5f8b2d4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-dynamicpopulate-with-a-user-control-and-javascript-vb"></a>Использование DynamicPopulate с пользовательского элемента управления и JavaScript (Visual Basic)
 ====================
@@ -74,5 +74,5 @@ ms.lasthandoff: 02/12/2018
 
 Переключатели размещаются в пользовательском элементе управления ([Просмотр полноразмерное изображение](using-dynamicpopulate-with-a-user-control-and-javascript-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](dynamically-populating-a-control-using-javascript-code-vb.md)
+> [!div class="step-by-step"]
+> [Назад](dynamically-populating-a-control-using-javascript-code-vb.md)

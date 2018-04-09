@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4
-title: "Введение в ASP.NET MVC 4 | Документы Microsoft"
+title: Введение в ASP.NET MVC 4 | Документы Microsoft
 author: Rick-Anderson
-description: "Обновленная версия, если этот учебник доступен с помощью Visual Studio 2013. Новое в этом учебнике используется ASP.NET MVC 5 обеспечивает множество улучшений t..."
+description: Обновленная версия, если этот учебник доступен с помощью Visual Studio 2013. Новое в этом учебнике используется ASP.NET MVC 5 обеспечивает множество улучшений t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 92d9e583b6c26fa8c928d33e14593d280702a269
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 519bac22ba2607931c5f3123b9b567859a2b3d1c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="intro-to-aspnet-mvc-4"></a>Введение в ASP.NET MVC 4
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Обновленная версия, если этот учебник доступен [здесь](../../getting-started/introduction/getting-started.md) с помощью [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads). Новое учебное использует ASP.NET MVC 5 обеспечивает множество преимуществ по сравнению этого учебника.
 > 
@@ -88,5 +88,5 @@ F5 в результате Visual Studio для запуска IIS Express и в
 
 Сразу после распаковки этот шаблон по умолчанию дает дома, контактов и о страницы. Он также обеспечивает поддержку для регистрации и входа и ссылки на Facebook и Twitter. Следующий шаг — изменить работу этого приложения и немного узнать о ASP.NET MVC. Закройте браузер и изменим некоторый код.
 
->[!div class="step-by-step"]
-[Вперед](adding-a-controller.md)
+> [!div class="step-by-step"]
+> [Вперед](adding-a-controller.md)

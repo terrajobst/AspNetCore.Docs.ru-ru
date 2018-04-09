@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
-title: "Подтверждение и восстановления пароля с ASP.NET Identity (C#) учетной записи | Документы Microsoft"
+title: Подтверждение и восстановления пароля с ASP.NET Identity (C#) учетной записи | Документы Microsoft
 author: HaoK
-description: "Перед выполнением этого учебника, следует сначала выполнить создание безопасных веб-приложения ASP.NET MVC 5 с журналом в сбросить пароль и подтверждение по электронной почте. Этот учебник..."
+description: Перед выполнением этого учебника, следует сначала выполнить создание безопасных веб-приложения ASP.NET MVC 5 с журналом в сбросить пароль и подтверждение по электронной почте. Этот учебник...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/26/2015
 ms.topic: article
 ms.assetid: 8d54180d-f826-4df7-b503-7debf5ed9fb3
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 548baaaa06980fb793c079b66b6edc34422eb579
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 0167388cf6b488b72ca36f583a7794690dbf9900
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>Подтверждение учетной записи и пароль восстановления в ASP.NET Identity (C#)
 ====================
@@ -88,7 +88,7 @@ ms.lasthandoff: 01/24/2018
   
     ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image10.png)  
   
- На этом этапе сообщение электронной почты не подтвержден.
+   На этом этапе сообщение электронной почты не подтвержден.
 
 Хранилище данных по умолчанию для ASP.NET Identity является Entity Framework, но его можно настроить для использования других хранилищ данных и добавить дополнительные поля. В разделе [дополнительные ресурсы](#addRes) в конце данного руководства.
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 01/24/2018
 - Двухфакторная проверка подлинности (2FA). В следующем учебнике будет рассмотрена 2FA и SMS.
 - Подключении к электронной почте и службам SMS. (SMS будет рассмотрена в следующем учебнике).
 
-`ApplicationUserManager` Класс является производным от универсального `UserManager<ApplicationUser>` класса. `ApplicationUser`является производным от [IdentityUser](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework.identityuser.aspx). `IdentityUser`является производным от универсального `IdentityUser` класса:
+`ApplicationUserManager` Класс является производным от универсального `UserManager<ApplicationUser>` класса. `ApplicationUser` является производным от [IdentityUser](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework.identityuser.aspx). `IdentityUser` является производным от универсального `IdentityUser` класса:
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample1.cs)]
 
@@ -127,11 +127,11 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="applicationuser"></a>ApplicationUser
 
-`ApplicationUser`(`public class ApplicationUserManager : UserManager<ApplicationUser>`) определяется в *Models\IdentityModels.cs* как:
+`ApplicationUser` (`public class ApplicationUserManager : UserManager<ApplicationUser>`) определяется в *Models\IdentityModels.cs* как:
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample2.cs?highlight=8-9)]
 
-Выделенный код выше приводит к возникновению ошибки [ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx). ASP.NET Identity и проверки подлинности файла Cookie OWIN на основе утверждений, поэтому платформа требует приложение, чтобы создать `ClaimsIdentity` для пользователя. `ClaimsIdentity`содержит сведения о всех утверждений для пользователя, такие как имя пользователя, срок действия и какие роли принадлежит пользователь. На этом этапе также можно добавить дополнительные утверждения для пользователя.
+Выделенный код выше приводит к возникновению ошибки [ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx). ASP.NET Identity и проверки подлинности файла Cookie OWIN на основе утверждений, поэтому платформа требует приложение, чтобы создать `ClaimsIdentity` для пользователя. `ClaimsIdentity` содержит сведения о всех утверждений для пользователя, такие как имя пользователя, срок действия и какие роли принадлежит пользователь. На этом этапе также можно добавить дополнительные утверждения для пользователя.
 
 OWIN `AuthenticationManager.SignIn` метод передает в `ClaimsIdentity` и выполняет вход пользователя:
 
@@ -152,7 +152,7 @@ OWIN `AuthenticationManager.SignIn` метод передает в `ClaimsIdenti
 
     [!code-console[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample4.cmd)]
 
- В этом учебнике мы будем использовать [SendGrid](http://sendgrid.com/) для отправки электронной почты. `Identity.Samples` Пакет устанавливает код, мы будем работать с.
+   В этом учебнике мы будем использовать [SendGrid](http://sendgrid.com/) для отправки электронной почты. `Identity.Samples` Пакет устанавливает код, мы будем работать с.
 3. Задать [проекта для использования SSL](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md).
 4. Создания локальной учетной записи тестового путем запуска приложения, щелкнув **зарегистрировать** связь и передачу форму регистрации.
 5. Щелкните ссылку по электронной почте Демонстрация имитирует подтверждение по электронной почте.
@@ -198,7 +198,7 @@ OWIN `AuthenticationManager.SignIn` метод передает в `ClaimsIdenti
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample8.cs)]
 
 > [!WARNING]
-> Безопасность — никогда не конфиденциальных данных в хранилище в исходном коде. Учетная запись и учетные данные хранятся в appSetting. В Azure, можно безопасно хранить эти значения на  **[Настройка](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)**  на портале Azure. В разделе [советы и рекомендации по развертыванию пароли и другие конфиденциальные данные в ASP.NET и Azure](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md).
+> Безопасность — никогда не конфиденциальных данных в хранилище в исходном коде. Учетная запись и учетные данные хранятся в appSetting. В Azure, можно безопасно хранить эти значения на **[Настройка](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** на портале Azure. В разделе [советы и рекомендации по развертыванию пароли и другие конфиденциальные данные в ASP.NET и Azure](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md).
 
 
 Введите учетные данные SendGrid, запустить приложение, регистрация псевдоним электронной почты можно щелкнуть ссылку подтверждение электронной почты. Чтобы узнать, как это сделать с помощью вашей [Outlook.com](http://outlook.com) учетную запись электронной почты см. в разделе Джон Atten [конфигурацию SMTP C# для узла SMTP Outlook.Com](http://typecastexception.com/post/2013/12/20/C-SMTP-Configuration-for-OutlookCom-SMTP-Host.aspx) и его[удостоверения ASP.NET 2.0: параметр вверх проверка учетной записи и авторизации двухфакторной](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx) в блогах.

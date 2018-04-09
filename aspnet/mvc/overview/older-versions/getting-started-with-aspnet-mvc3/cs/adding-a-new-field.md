@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-new-field
-title: "Добавление нового поля в таблице (C#) и модели фильма | Документы Microsoft"
+title: Добавление нового поля в таблице (C#) и модели фильма | Документы Microsoft
 author: Rick-Anderson
-description: "Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся..."
+description: Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: c10f3be30a92a605c34fa1c56fa3691389374beb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f6364e438bbb7e128945255a5150e1e84e593ac4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-table-c"></a>Добавление нового поля в таблице (C#) и модели фильма
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Доступна обновленная версия этого учебника [здесь](../../../getting-started/introduction/getting-started.md) , с использованием ASP.NET MVC 5 и Visual Studio 2013. Он является более безопасны, выполните гораздо проще и показаны дополнительные возможности.
@@ -133,6 +133,6 @@ ms.lasthandoff: 11/10/2017
 
 В этом разделе вы узнали, как можно изменять объекты модели и синхронизировать базу данных с изменениями. Вы также узнали способ заполнения вновь созданной базы данных с образцами данных, можно опробовать сценариев. Теперь давайте взглянем на как можно добавить расширенные логику проверки в классы модели и включить некоторые бизнес-правила для применения.
 
->[!div class="step-by-step"]
-[Назад](examining-the-edit-methods-and-edit-view.md)
-[Вперед](adding-validation-to-the-model.md)
+> [!div class="step-by-step"]
+> [Назад](examining-the-edit-methods-and-edit-view.md)
+> [Вперед](adding-validation-to-the-model.md)

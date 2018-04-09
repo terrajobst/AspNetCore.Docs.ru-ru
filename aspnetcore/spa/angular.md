@@ -1,7 +1,7 @@
 ---
-title: "Используйте шаблон проекта углового"
+title: Используйте шаблон проекта углового с ASP.NET Core
 author: SteveSandersonMS
-description: "Сведения о начале работы с использованием шаблона проекта ASP.NET Core одной страницы приложений (SPA) для угловой и углового CLI."
+description: Сведения о начале работы с использованием шаблона проекта ASP.NET Core одной страницы приложений (SPA) для угловой и углового CLI.
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,13 +11,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/angular
-ms.openlocfilehash: 07cfd20809acb67bdae6561b6ccd6edf1e70a3fe
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e3956bedbc243578f6dfdc09f5f043327de7c66b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="use-the-angular-project-template"></a>Используйте шаблон проекта углового
+# <a name="use-the-angular-project-template-with-aspnet-core"></a>Используйте шаблон проекта углового с ASP.NET Core
 
 > [!NOTE]
 > В этой документации о шаблоне углового проекта отсутствует в ASP.NET Core 2.0. Дело новым шаблоном углового, к которому можно обновить вручную. Шаблон по умолчанию включены в ASP.NET Core 2.1.
@@ -39,14 +39,12 @@ cd my-new-app
 
 Запустите приложение из Visual Studio или .NET Core CLI:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
+#### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 Откройте созданный *.csproj* файл и запустить приложение в обычном режиме оттуда.
 
 Процесс построения восстанавливает npm зависимостей при первом выполнении может занять несколько минут. Последующие сборки выполняется гораздо быстрее.
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
-
+#### <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli/)
 Убедитесь в наличии переменной среды `ASPNETCORE_Environment` со значением `Development`. В Windows (в запросах не PowerShell) запускаются `SET ASPNETCORE_Environment=Development`. В Linux или macOS, запустите `export ASPNETCORE_Environment=Development`.
 
 Запустите [dotnet построения](/dotnet/core/tools/dotnet-build) для проверки приложения правильно ли выполняется сборка. Во время первого выполнения процесса построения восстанавливает npm зависимости, что может занять несколько минут. Последующие сборки выполняется гораздо быстрее.
@@ -59,10 +57,9 @@ Now listening on: http://localhost:<port>
 
 Перейдите в этот URL-адрес в браузере.
 
-Приложение запускается экземпляр сервера углового CLI в фоновом режиме. Записывается сообщение следующего вида: *NG Live Development Server прослушивает localhost:&lt;otherport&gt;, откройте в браузере на http://localhost:&lt;otherport&gt; /* . Игнорировать это сообщение&mdash;имеет **не** URL-адрес для объединенных приложения ASP.NET Core и углового CLI.
+Приложение запускается экземпляр сервера углового CLI в фоновом режиме. Записывается сообщение следующего вида: <em>NG Live Development Server прослушивает localhost:&lt;otherport&gt;, откройте в браузере на http://localhost: &lt;otherport&gt; /</em> . Игнорировать это сообщение&mdash;имеет <strong>не</strong> URL-адрес для объединенных приложения ASP.NET Core и углового CLI.
 
----
-
+* * *
 Шаблон проекта создает приложение ASP.NET Core и углового приложения. Приложения ASP.NET Core предназначен для использования для доступа к данным, авторизации и других проблем на стороне сервера. Угловое приложения, размещенные в *ClientApp* подкаталог, предназначен для использования все проблемы пользовательского интерфейса.
 
 ## <a name="add-pages-images-styles-modules-etc"></a>Добавление страниц, изображений, стили, модули, и т. д.
@@ -83,7 +80,7 @@ cd ClientApp
 
 Если у вас нет `ng` средство установлена, запустите `npm run ng` вместо. Например, можно запустить `npm run ng lint` или `npm run ng test`.
 
-## <a name="install-npm-packages"></a>Установка пакета npm
+## <a name="install-npm-packages"></a>Установка пакетов npm
 
 Для установки пакета npm сторонних разработчиков, используйте в командной *ClientApp* подкаталог. Пример:
 

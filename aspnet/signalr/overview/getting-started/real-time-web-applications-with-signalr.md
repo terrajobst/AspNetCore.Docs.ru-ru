@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/real-time-web-applications-with-signalr
-title: "Практическое лабораторное занятие: В режиме реального времени веб-приложений с помощью SignalR | Документы Microsoft"
+title: 'Практическое лабораторное занятие: В режиме реального времени веб-приложений с помощью SignalR | Документы Microsoft'
 author: rick-anderson
-description: "Возможности передачи содержимого для подключенных клиентов, как это происходит в режиме реального времени серверных возможностей, в реальном времени веб-приложений. Для разработчиков ASP.NET, ASP..."
+description: Возможности передачи содержимого для подключенных клиентов, как это происходит в режиме реального времени серверных возможностей, в реальном времени веб-приложений. Для разработчиков ASP.NET, ASP...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/16/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/real-time-web-applications-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 22123a9c61e6830f3f9f66a45182e1e923950341
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5a2bc120ded18ad2302fd6c5cde65a5323e86ca8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="hands-on-lab-real-time-web-applications-with-signalr"></a>Практическое лабораторное занятие: В режиме реального времени веб-приложений с помощью SignalR
 ====================
-по [Web лагеря команды](https://twitter.com/webcamps)
+По [Web лагеря команды](https://twitter.com/webcamps)
 
 [Загрузите комплект учебных материалов лагеря Web](http://aka.ms/webcamps-training-kit)
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/24/2018
 > 
 > ![Архитектура SignalR](real-time-web-applications-with-signalr/_static/image1.png)
 > 
-> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit).
+> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
 
 
 <a id="Overview"></a>
@@ -160,12 +160,12 @@ ms.lasthandoff: 01/24/2018
 
     *Установка пакета SignalR*
 
-    > [!NOTE]
-    > При установке **SignalR** NuGet пакеты версии 2.0.2 из нового приложения MVC 5, необходимо будет вручную обновить **OWIN** пакетов версию 2.0.1 (или более поздней версии) перед установкой SignalR. Чтобы сделать это, можно выполнить следующий сценарий в **консоль диспетчера пакетов**:
-    > 
-    > [!code-powershell[Main](real-time-web-applications-with-signalr/samples/sample2.ps1)]
-    > 
-    > В следующем выпуске SignalR OWIN зависимости автоматически обновляется.
+   > [!NOTE]
+   > При установке **SignalR** NuGet пакеты версии 2.0.2 из нового приложения MVC 5, необходимо будет вручную обновить **OWIN** пакетов версию 2.0.1 (или более поздней версии) перед установкой SignalR. Чтобы сделать это, можно выполнить следующий сценарий в **консоль диспетчера пакетов**:
+   > 
+   > [!code-powershell[Main](real-time-web-applications-with-signalr/samples/sample2.ps1)]
+   > 
+   > В следующем выпуске SignalR OWIN зависимости автоматически обновляется.
 3. В **обозревателе решений**, разверните **сценариев** папки и обратите внимание, SignalR *js* файлы были добавлены в решение.
 
     ![SignalR JavaScript ссылается на](real-time-web-applications-with-signalr/_static/image10.png "SignalR JavaScript ссылается на")
@@ -349,7 +349,7 @@ ms.lasthandoff: 01/24/2018
     ![Запрос состояния компонента Broker Service](real-time-web-applications-with-signalr/_static/image25.png "запросе состояния службы брокера")
 
     *Запрос состояния брокера службы*
-8. Если значение **—\_broker\_включен** столбец базы данных является &quot;0&quot;, используйте следующую команду, чтобы включить его. Замените  **&lt;базы данных ВАШЕГО&gt;**  с именем, заданным при создании базы данных (например: SignalR).
+8. Если значение **—\_broker\_включен** столбец базы данных является &quot;0&quot;, используйте следующую команду, чтобы включить его. Замените **&lt;базы данных ВАШЕГО&gt;** с именем, заданным при создании базы данных (например: SignalR).
 
     [!code-sql[Main](real-time-web-applications-with-signalr/samples/sample12.sql)]
 
@@ -369,7 +369,7 @@ ms.lasthandoff: 01/24/2018
 
     [!code-powershell[Main](real-time-web-applications-with-signalr/samples/sample13.ps1)]
 2. Повторите предыдущий шаг, но это время для проекта **GeekQuiz2**.
-3. Чтобы настроить на задней стороне SQL Server, откройте **файла Startup.cs** файл **GeekQuiz** проекта и добавьте следующий код в **Настройка** метод. Замените  **&lt;базы данных ВАШЕГО&gt;**  именем вашей базы данных, используемый при создании на задней стороне SQL Server. Повторите этот шаг для **GeekQuiz2** проекта.
+3. Чтобы настроить на задней стороне SQL Server, откройте **файла Startup.cs** файл **GeekQuiz** проекта и добавьте следующий код в **Настройка** метод. Замените **&lt;базы данных ВАШЕГО&gt;** именем вашей базы данных, используемый при создании на задней стороне SQL Server. Повторите этот шаг для **GeekQuiz2** проекта.
 
     (Фрагмент - кода *StartupConfiguration RealTimeSignalR - Ex2 -*)
 

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/accessing-your-models-data-from-a-controller
-title: "Доступ к данным вашей модели из контроллера (C#) | Документы Microsoft"
+title: Доступ к данным вашей модели из контроллера (C#) | Документы Microsoft
 author: Rick-Anderson
-description: "Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся..."
+description: Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 5ee29dbc5b4566273592041d94458104e6e0f65e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4218116eec6f177730087955b8fb69e5ecc0022f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="accessing-your-models-data-from-a-controller-c"></a>Доступ к данным вашей модели из контроллера (C#)
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Доступна обновленная версия этого учебника [здесь](../../../getting-started/introduction/getting-started.md) , с использованием ASP.NET MVC 5 и Visual Studio 2013. Он является более безопасны, выполните гораздо проще и показаны дополнительные возможности.
@@ -142,6 +142,6 @@ Entity Framework Code First обнаружил, что указывает стр
 
 Теперь у вас есть базы данных и страницу простого списка для отображения содержимого из него. В следующем уроке мы изучите остальной части кода формирования шаблонов и добавьте `SearchIndex` метод и `SearchIndex` представление, позволяющее искать фильмов в этой базе данных.
 
->[!div class="step-by-step"]
-[Назад](adding-a-model.md)
-[Вперед](examining-the-edit-methods-and-edit-view.md)
+> [!div class="step-by-step"]
+> [Назад](adding-a-model.md)
+> [Вперед](examining-the-edit-methods-and-edit-view.md)

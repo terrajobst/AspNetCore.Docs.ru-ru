@@ -1,7 +1,7 @@
 ---
-title: "Добавление представления приложения MVC"
+title: Добавление представления приложения MVC
 author: Rick-Anderson
-description: "Добавление представления приложения MVC"
+description: Добавление представления приложения MVC
 ms.author: riande
 manager: wpickett
 ms.date: 09/1721/2017
@@ -9,17 +9,17 @@ ms.topic: article
 ms.technology: dotnet-mvc
 ms.prod: .net-framework
 uid: mvc/overview/getting-started/introduction/adding-a-view
-ms.openlocfilehash: 86887f0dafa31ff3eb6597284c469c4b3053b6b7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 21db97e635b5db580df31f46ca7f8b60a80d6f94
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-view"></a>Добавление представления
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 В этом разделе вы собираетесь изменить `HelloWorldController` класса для использования представления файлы шаблонов для четко инкапсулировать процесс создания HTML ответов клиенту. 
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-cshtml[Main](adding-a-view/samples/sample4.cshtml)]
 
-Приведенный выше код Razor явным образом выполняется задание страницы макета. Изучите *представления\\файл _ViewStart.cshtml* файл, он содержит точное же разметки Razor. *[Представления\\файл _ViewStart.cshtml](https://weblogs.asp.net/scottgu/archive/2010/10/22/asp-net-mvc-3-layouts.aspx)*  файл определяет общий макет, который будет использовать все представления, поэтому можно комментарий out или удалите этот код из *Views\HelloWorld\ Index.cshtml* файл.
+Приведенный выше код Razor явным образом выполняется задание страницы макета. Изучите *представления\\файл _ViewStart.cshtml* файл, он содержит точное же разметки Razor. *[Представления\\файл _ViewStart.cshtml](https://weblogs.asp.net/scottgu/archive/2010/10/22/asp-net-mvc-3-layouts.aspx)* файл определяет общий макет, который будет использовать все представления, поэтому можно комментарий out или удалите этот код из *Views\HelloWorld\ Index.cshtml* файл.
 
 [!code-cshtml[Main](adding-a-view/samples/sample5.cshtml?highlight=1-3)]
 
@@ -119,7 +119,7 @@ Open *MvcMovie\Views\HelloWorld\Index.cshtml*. Есть два места для
 
 В настоящее время `Welcome` метода действия в `HelloWorldController` класса принимает `name` и `numTimes` параметра, а затем выходные данные значения непосредственно в браузере. Вместо контроллера отрисовки этот ответ в виде строки, изменим на контроллере, чтобы вместо этого используйте представление шаблона. Шаблон представления создаст динамический ответ, для получения которого необходимо передать соответствующие фрагменты данных из контроллера в представление. Это можно сделать, используя контроллер поместить динамических данных (параметры), который необходим Просмотр шаблона `ViewBag` , Просмотр шаблона можно получить доступ к объекту.
 
-Вернитесь к *HelloWorldController.cs* и измените `Welcome` метод, чтобы добавить `Message` и `NumTimes` значение `ViewBag` объекта. `ViewBag`является динамическим объектом, это означает, что любые необходимые можно поместить в него; `ViewBag` объект не имеет определенных свойств, пока не будет помещен внутри него. [Система привязки модели ASP.NET MVC](http://odetocode.com/Blogs/scott/archive/2009/04/27/6-tips-for-asp-net-mvc-model-binding.aspx) автоматически сопоставляет именованные параметры (`name` и `numTimes`) из строки запроса в адресной строке параметров в методе. Полный файл *HelloWorldController.cs* выглядит следующим образом:
+Вернитесь к *HelloWorldController.cs* и измените `Welcome` метод, чтобы добавить `Message` и `NumTimes` значение `ViewBag` объекта. `ViewBag` является динамическим объектом, это означает, что любые необходимые можно поместить в него; `ViewBag` объект не имеет определенных свойств, пока не будет помещен внутри него. [Система привязки модели ASP.NET MVC](http://odetocode.com/Blogs/scott/archive/2009/04/27/6-tips-for-asp-net-mvc-model-binding.aspx) автоматически сопоставляет именованные параметры (`name` и `numTimes`) из строки запроса в адресной строке параметров в методе. Полный файл *HelloWorldController.cs* выглядит следующим образом:
 
 [!code-csharp[Main](adding-a-view/samples/sample8.cs)]
 
@@ -151,6 +151,6 @@ Open *MvcMovie\Views\HelloWorld\Index.cshtml*. Есть два места для
 
 Контейнер, который был тип из &quot;M&quot; для модели, но не тип базы данных. Итак, обобщим все полученные данные и попробуем создать базу данных фильмов.
 
->[!div class="step-by-step"]
-[Назад](adding-a-controller.md)
-[Вперед](adding-a-model.md)
+> [!div class="step-by-step"]
+> [Назад](adding-a-controller.md)
+> [Вперед](adding-a-model.md)

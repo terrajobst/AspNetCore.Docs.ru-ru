@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-updatepanel-triggers
-title: "Основные сведения о триггерах UpdatePanel ASP.NET AJAX | Документы Microsoft"
+title: Основные сведения о триггерах UpdatePanel ASP.NET AJAX | Документы Microsoft
 author: scottcate
-description: "При работе в редакторе разметки в Visual Studio можно заметить (из IntelliSense), два дочерних элементов управления UpdatePanel. Одно из ч..."
+description: При работе в редакторе разметки в Visual Studio можно заметить (из IntelliSense), два дочерних элементов управления UpdatePanel. Одно из ч...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/12/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-updatepanel-triggers
 msc.type: authoredcontent
-ms.openlocfilehash: 1338ef0763d9bfab451bc30cafa39f715200153d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f30f2ead402d2f49a89b2caf47cc30b6445d4cfb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-aspnet-ajax-updatepanel-triggers"></a>Основные сведения о триггерах UpdatePanel ASP.NET AJAX
 ====================
@@ -57,10 +57,10 @@ ms.lasthandoff: 11/10/2017
 
 *Потомки разметку:*
 
-| **Тег** | **Описание** |
+| **Tag** | **Описание** |
 | --- | --- |
-| &lt;ASP: AsyncPostBackTrigger&gt; | Указывает элемент управления и событий, приведут к частичное обновление страницы в течение UpdatePanel, содержащий ссылку на этот триггер. |
-| &lt;ASP: PostBackTrigger&gt; | Указывает элемент управления и события, которое приведет к ее полного обновления (обновление всей странице). Этот тег используется для принудительного полного обновления, когда элемент управления, в противном случае приведет к запуску частичную отрисовку. |
+| &lt;asp:AsyncPostBackTrigger&gt; | Указывает элемент управления и событий, приведут к частичное обновление страницы в течение UpdatePanel, содержащий ссылку на этот триггер. |
+| &lt;asp:PostBackTrigger&gt; | Указывает элемент управления и события, которое приведет к ее полного обновления (обновление всей странице). Этот тег используется для принудительного полного обновления, когда элемент управления, в противном случае приведет к запуску частичную отрисовку. |
 
 ## <a name="walkthrough-cross-updatepanel-triggers"></a>*Пошаговое руководство: Триггеры между UpdatePanel*
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/10/2017
 ([Просмотр полноразмерное изображение](understanding-asp-net-ajax-updatepanel-triggers/_static/image3.png))
 
 
-## <a name="under-the-hood"></a>*Взгляд изнутри*
+## <a name="under-the-hood"></a>*Внутренняя структура*
 
 Используя пример, который мы только что создан, мы можем рассмотрим действия ASP.NET AJAX и принципы работы нашей триггеры между панели UpdatePanel. В этом случае мы работаем над источника созданный страницы HTML, а также модуль Mozilla Firefox, называемый FireBug - с его помощью можно легко проверить AJAX операций обратной передачи. Также мы воспользуемся средством .NET Reflector с программой. Оба эти средства доступны через Интернет, а также можно найти, и поиск в Интернете.
 
@@ -151,10 +151,10 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="bio"></a>Биография
 
-Вадим Paveza имеет старший разработчик приложения .NET в Terralever ([www.terralever.com](http://www.terralever.com)), начальные интерактивный маркетинга компании в Tempe, AZ. Он может быть достигнута по [ robpaveza@gmail.com ](mailto:robpaveza@gmail.com), и в своем блоге находится в [http://geekswithblogs.net/robp/](http://geekswithblogs.net/robp/).
+Вадим Paveza имеет старший разработчик приложения .NET в Terralever ([www.terralever.com](http://www.terralever.com)), начальные интерактивный маркетинга компании в Tempe, AZ. Он может быть достигнута по [ robpaveza@gmail.com ](mailto:robpaveza@gmail.com), и в своем блоге находится в [ http://geekswithblogs.net/robp/ ](http://geekswithblogs.net/robp/).
 
 Скотт кате работает с веб-технологиями Майкрософт с 1997 и – президент myKB.com ([www.myKB.com](http://www.myKB.com)) приложений, основное внимание уделено базы знаний программные решения, где он специализируется на написание ASP.NET на основе. Скотт можно обратиться по электронной почте [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) или его блог по [ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[Назад](understanding-partial-page-updates-with-asp-net-ajax.md)
-[Вперед](understanding-asp-net-ajax-authentication-and-profile-application-services.md)
+> [!div class="step-by-step"]
+> [Назад](understanding-partial-page-updates-with-asp-net-ajax.md)
+> [Вперед](understanding-asp-net-ajax-authentication-and-profile-application-services.md)

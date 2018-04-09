@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-view
-title: "Добавление представления | Документы Microsoft"
+title: Добавление представления | Документы Microsoft
 author: Rick-Anderson
-description: "Примечание: Обновленную версию этого учебника доступен здесь, использующий ASP.NET MVC 5 и Visual Studio 2013. Это более безопасный, гораздо проще выполните и демонстрационных..."
+description: 'Примечание: Обновленную версию этого учебника доступен здесь, использующий ASP.NET MVC 5 и Visual Studio 2013. Это более безопасный, гораздо проще выполните и демонстрационных...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/28/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-view
 msc.type: authoredcontent
-ms.openlocfilehash: 60374ddc6754f7e312ad08b420268308a9935bb4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 61a93c1430e9e39543c69b84901a50ceb710a5ae
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-view"></a>Добавление представления
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Доступна обновленная версия этого учебника [здесь](../../getting-started/introduction/getting-started.md) , с использованием ASP.NET MVC 5 и Visual Studio 2013. Он является более безопасны, выполните гораздо проще и показаны дополнительные возможности.
@@ -116,7 +116,7 @@ Open *MvcMovie\Views\HelloWorld\Index.cshtml*. Есть два места для
 
 В настоящее время `Welcome` метода действия в `HelloWorldController` класса принимает `name` и `numTimes` параметра, а затем выходные данные значения непосредственно в браузере. Вместо контроллера отрисовки этот ответ в виде строки, изменим на контроллере, чтобы вместо этого используйте представление шаблона. Шаблон представления создаст динамический ответ, для получения которого необходимо передать соответствующие фрагменты данных из контроллера в представление. Это можно сделать, используя контроллер поместить динамических данных (параметры), который необходим Просмотр шаблона `ViewBag` , Просмотр шаблона можно получить доступ к объекту.
 
-Вернитесь к *HelloWorldController.cs* и измените `Welcome` метод, чтобы добавить `Message` и `NumTimes` значение `ViewBag` объекта. `ViewBag`является динамическим объектом, это означает, что любые необходимые можно поместить в него; `ViewBag` объект не имеет определенных свойств, пока не будет помещен внутри него. [Система привязки модели ASP.NET MVC](http://odetocode.com/Blogs/scott/archive/2009/04/27/6-tips-for-asp-net-mvc-model-binding.aspx) автоматически сопоставляет именованные параметры (`name` и `numTimes`) из строки запроса в адресной строке параметров в методе. Полный файл *HelloWorldController.cs* выглядит следующим образом:
+Вернитесь к *HelloWorldController.cs* и измените `Welcome` метод, чтобы добавить `Message` и `NumTimes` значение `ViewBag` объекта. `ViewBag` является динамическим объектом, это означает, что любые необходимые можно поместить в него; `ViewBag` объект не имеет определенных свойств, пока не будет помещен внутри него. [Система привязки модели ASP.NET MVC](http://odetocode.com/Blogs/scott/archive/2009/04/27/6-tips-for-asp-net-mvc-model-binding.aspx) автоматически сопоставляет именованные параметры (`name` и `numTimes`) из строки запроса в адресной строке параметров в методе. Полный файл *HelloWorldController.cs* выглядит следующим образом:
 
 [!code-csharp[Main](adding-a-view/samples/sample7.cs)]
 
@@ -148,6 +148,6 @@ Open *MvcMovie\Views\HelloWorld\Index.cshtml*. Есть два места для
 
 Контейнер, который был тип из &quot;M&quot; для модели, но не тип базы данных. Итак, обобщим все полученные данные и попробуем создать базу данных фильмов.
 
->[!div class="step-by-step"]
-[Назад](adding-a-controller.md)
-[Вперед](adding-a-model.md)
+> [!div class="step-by-step"]
+> [Назад](adding-a-controller.md)
+> [Вперед](adding-a-model.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/building-and-packaging-web-application-projects
-title: "Построения и упаковки проектов веб-приложений | Документы Microsoft"
+title: Построения и упаковки проектов веб-приложений | Документы Microsoft
 author: jrjlee
-description: "Если вы хотите развернуть проект веб-приложения в среде удаленного сервера, вашей первой задачей является построение проекта и сформировать packa развертывание web..."
+description: Если вы хотите развернуть проект веб-приложения в среде удаленного сервера, вашей первой задачей является построение проекта и сформировать packa развертывание web...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/building-and-packaging-web-application-projects
 msc.type: authoredcontent
-ms.openlocfilehash: c05f725c9e6b493a6af8f5b5d20dbc9ff73a1ef8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d630e1776607bd0bd7c61e1f0f7234ef58c7533b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="building-and-packaging-web-application-projects"></a>Построения и упаковки проектов веб-приложений
 ====================
@@ -59,8 +59,8 @@ ms.lasthandoff: 11/10/2017
 **Пакета** целевой объект определен в *Microsoft.Web.Publishing.targets* файла. По сути этот целевой объект принимает выходные данные построения проекта веб-приложения и преобразует его в пакет веб-развертывания, которые могут быть опубликованы на веб-сервере IIS.
 
 > [!NOTE]
-> Чтобы просмотреть файл проекта (например, *ContactManager.Mvc.csproj*) в Visual Studio 2010, сначала необходимо выгрузить проект из решения. В **обозревателе решений** окно, щелкните правой кнопкой мыши узел проекта, затем щелкните **выгрузить проект**. Щелкните правой кнопкой мыши узел проекта и нажмите кнопку **изменить***[файл проекта]*). Файл проекта будет открыт в необработанном виде XML. Не забудьте перезагрузить проект после завершения.  
-> Дополнительные сведения о целевых объектов MSBuild, задачи, и **импорта** см. инструкции, [основные сведения о файле проекта](understanding-the-project-file.md). Более подробные сведения о файлы проекта и WPP см. в разделе [внутри Microsoft Build Engine: с помощью MSBuild и Team Foundation Build](http://amzn.com/0735645248) Sayed Ibrahim Hashimi и Bartholomew Уильям, ISBN: 978-0-7356-4524-0.
+> Чтобы просмотреть файл проекта (например, <em>ContactManager.Mvc.csproj</em>) в Visual Studio 2010, сначала необходимо выгрузить проект из решения. В <strong>обозревателе решений</strong> окно, щелкните правой кнопкой мыши узел проекта, затем щелкните <strong>выгрузить проект</strong>. Щелкните правой кнопкой мыши узел проекта и нажмите кнопку <strong>изменить</strong><em>[файл проекта]</em>). Файл проекта будет открыт в необработанном виде XML. Не забудьте перезагрузить проект после завершения.  
+> Дополнительные сведения о целевых объектов MSBuild, задачи, и <strong>импорта</strong> см. инструкции, [основные сведения о файле проекта](understanding-the-project-file.md). Более подробные сведения о файлы проекта и WPP см. в разделе [внутри Microsoft Build Engine: с помощью MSBuild и Team Foundation Build](http://amzn.com/0735645248) Sayed Ibrahim Hashimi и Bartholomew Уильям, ISBN: 978-0-7356-4524-0.
 
 
 ## <a name="what-is-a-web-deployment-package"></a>Что такое пакет веб-развертывания
@@ -104,6 +104,6 @@ ms.lasthandoff: 11/10/2017
 
 Более подробные сведения о файлы проекта и WPP см. в разделе [внутри Microsoft Build Engine: с помощью MSBuild и Team Foundation Build](http://amzn.com/0735645248) Sayed Ibrahim Hashimi и Bartholomew Уильям, ISBN: 978-0-7356-4524-0.
 
->[!div class="step-by-step"]
-[Назад](understanding-the-build-process.md)
-[Вперед](configuring-parameters-for-web-package-deployment.md)
+> [!div class="step-by-step"]
+> [Назад](understanding-the-build-process.md)
+> [Вперед](configuring-parameters-for-web-package-deployment.md)

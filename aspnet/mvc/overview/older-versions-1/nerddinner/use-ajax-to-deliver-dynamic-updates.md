@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/use-ajax-to-deliver-dynamic-updates
-title: "Использование AJAX для динамического обновления | Документы Microsoft"
+title: Использование AJAX для динамического обновления | Документы Microsoft
 author: microsoft
-description: "Шаг 10 реализует поддержку вошедшего в систему пользователям RSVP их интересуют посещение dinner, использование подхода на основе Ajax интегрировано в подробности dinner..."
+description: Шаг 10 реализует поддержку вошедшего в систему пользователям RSVP их интересуют посещение dinner, использование подхода на основе Ajax интегрировано в подробности dinner...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-ajax-to-deliver-dynamic-updates
 msc.type: authoredcontent
-ms.openlocfilehash: 7b75f8c6cf08112eb77d1a9a40222ed1425ef3a7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7cea3ee2ec52261521941efac484e91a53f6310b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="use-ajax-to-deliver-dynamic-updates"></a>Использование AJAX для динамического обновления.
 ====================
@@ -117,7 +117,7 @@ Details(), метод действия реализуется следующим
 
 *Совет: Убедитесь в том, что вы установили исправление JavaScript intellisense для VS 2008 с пакетом обновления 1, обеспечивает более широкую поддержку intellisense для JavaScript файлов (включая jQuery). Его можно загрузить из: http://tinyurl.com/vs2008javascripthotfix*
 
-Код, написанный с помощью JQuery часто использует глобальный «$ ()» метод JavaScript, который получает один или несколько элементов HTML, с помощью селектора CSS. Например *$("#rsvpmsg")* выбирает любой HTML-элемент с идентификатором rsvpmsg, пока *$(".something")* выбрать все элементы с «текст» CSS имя класса. Можно также написать более сложные запросы, как «возвращать все отмеченные переключателей» с помощью селектора запрос наподобие: *$(«входных данных [@type= переключателей] [@checked]»)*.
+Код, написанный с помощью JQuery часто использует глобальный «$ ()» метод JavaScript, который получает один или несколько элементов HTML, с помощью селектора CSS. Например <em>$("#rsvpmsg")</em> выбирает любой HTML-элемент с идентификатором rsvpmsg, пока <em>$(".something")</em> выбрать все элементы с «текст» CSS имя класса. Можно также написать более сложные запросы, как «возвращать все отмеченные переключателей» с помощью селектора запрос наподобие: <em>$(«входных данных [@type= переключателей] [@checked]»)</em>.
 
 После выбора элементов для возможность выполнения действий, таких как скрытие их можно вызывать методы: *$(«#rsvpmsg").hide();*
 
@@ -153,6 +153,6 @@ Details(), метод действия реализуется следующим
 
 Давайте теперь взглянем на как можно еще более используется AJAX и добавить поддержку интерактивного сопоставления для нашего приложения.
 
->[!div class="step-by-step"]
-[Назад](secure-applications-using-authentication-and-authorization.md)
-[Вперед](use-ajax-to-implement-mapping-scenarios.md)
+> [!div class="step-by-step"]
+> [Назад](secure-applications-using-authentication-and-authorization.md)
+> [Вперед](use-ajax-to-implement-mapping-scenarios.md)

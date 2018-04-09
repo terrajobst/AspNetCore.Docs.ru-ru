@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
-title: "Реализация поставщика хранилища пользовательских MySQL ASP.NET Identity | Документы Microsoft"
+title: Реализация поставщика хранилища пользовательских MySQL ASP.NET Identity | Документы Microsoft
 author: raquelsa
-description: "ASP.NET Identity является расширяемой системой, что дает возможность создать собственный поставщик хранилища и вставьте его в приложение без переработки приложения..."
+description: ASP.NET Identity является расширяемой системой, что дает возможность создать собственный поставщик хранилища и вставьте его в приложение без переработки приложения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2015
 ms.topic: article
 ms.assetid: 248f5fe7-39ba-40ea-ab1e-71a69b0bd649
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
 msc.type: authoredcontent
-ms.openlocfilehash: 3bfbccd91705755fc24bb8305fff171baa26f370
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d843b31e011fe520aad6cfdab0beca2d12477f12
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-a-custom-mysql-aspnet-identity-storage-provider"></a>Реализация поставщика хранилища ASP.NET Identity пользовательских MySQL
 ====================
@@ -124,7 +124,7 @@ ms.lasthandoff: 11/10/2017
 5. Щелкните правой кнопкой мыши проект IdentityMySQLDemo, выберите **добавить**, **ссылку, решения, проекты;** выберите AspNet.Identity.MySQL проекта и нажмите кнопку **ОК**.
 6. В проекте IdentityMySQLDemo замените все вхождения  
     `using Microsoft.AspNet.Identity.EntityFramework;`  
- на  
+   на  
      `using AspNet.Identity.MySQL;`
 7. В IdentityModels.cs, задайте **ApplicationDbContext** для наследования от **MySqlDatabase** и включает конструктор, который принимает один параметр с именем подключения.  
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 11/10/2017
   
     ![](implementing-a-custom-mysql-aspnet-identity-storage-provider/_static/image10.png)
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 Дополнительные сведения о включении других методов проверки подлинности на это приложение посвящены [создать приложение ASP.NET MVC 5 с Facebook и Google OAuth2 и входа OpenID](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md).
 

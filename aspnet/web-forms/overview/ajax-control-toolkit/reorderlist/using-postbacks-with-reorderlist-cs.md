@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-cs
-title: "Использование обратных передач с ReorderList (C#) | Документы Microsoft"
+title: Использование обратных передач с ReorderList (C#) | Документы Microsoft
 author: wenz
-description: "Элемент управления ReorderList в наборе элементов управления AJAX предоставляет список, который можно переупорядочить пользователем с помощью операции перетаскивания. Каждый раз, когда список переупорядочивается, po..."
+description: Элемент управления ReorderList в наборе элементов управления AJAX предоставляет список, который можно переупорядочить пользователем с помощью операции перетаскивания. Каждый раз, когда список переупорядочивается, po...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5f5c5e253f6d85203a488152c5ad908157e6ee0c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ed01c30c0721c8f1cd8ccb3fea0735ea8fa4f0a1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-postbacks-with-reorderlist-c"></a>Использование обратных передач с ReorderList (C#)
 ====================
@@ -69,5 +69,5 @@ ms.lasthandoff: 11/10/2017
 
 Каждый переупорядочение вызывает обратную передачу ([Просмотр полноразмерное изображение](using-postbacks-with-reorderlist-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Вперед](drag-and-drop-via-reorderlist-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](drag-and-drop-via-reorderlist-cs.md)

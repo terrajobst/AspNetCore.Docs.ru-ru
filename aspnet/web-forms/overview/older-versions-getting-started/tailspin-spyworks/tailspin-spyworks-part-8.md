@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8
-title: "Часть 8: Последней страницы, обработки исключений и выводу | Документы Microsoft"
+title: 'Часть 8: Последней страницы, обработки исключений и выводу | Документы Microsoft'
 author: JoeStagner
-description: "Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 8 добавляет страницы контактов, о странице и исключение..."
+description: Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 8 добавляет страницы контактов, о странице и исключение...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: fce1a20f9d1093b6c60542d8a786ddf54fdc922c
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: f82294aab0616012393cf3e10f932f6d1ad0cdb6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-8-final-pages-exception-handling-and-conclusion"></a>Часть 8: Последней страницы, обработки исключений и выводу
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/12/2018
 > Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 8 добавляет страницы контактов, о странице и обработка исключений. Это заключение ряда.
 
 
-## <a id="_Toc260221680"></a>Обратитесь к странице (отправка по электронной почте из ASP.NET)
+## <a id="_Toc260221680"></a>  Обратитесь к странице (отправка по электронной почте из ASP.NET)
 
 Создание новой страницы с именем ContactUs.aspx
 
@@ -43,11 +43,11 @@ ms.lasthandoff: 02/12/2018
 
 [!code-xml[Main](tailspin-spyworks-part-8/samples/sample2.xml)]
 
-## <a id="_Toc260221681"></a>О странице
+## <a id="_Toc260221681"></a>  О странице
 
 Создайте страницу с именем AboutUs.aspx и добавьте любое содержимое, вам нравится.
 
-## <a id="_Toc260221682"></a>Глобального обработчика исключений
+## <a id="_Toc260221682"></a>  Глобального обработчика исключений
 
 Наконец в приложении возникает исключения при этом непредвиденных обстоятельств, холодного причина необработанных исключений в наш веб-приложения.
 
@@ -75,11 +75,11 @@ ms.lasthandoff: 02/12/2018
 
 [!code-csharp[Main](tailspin-spyworks-part-8/samples/sample6.cs)]
 
-## <a id="_Toc260221683"></a>Заключение
+## <a id="_Toc260221683"></a>  Заключение
 
 Мы узнали, что веб-форм ASP.NET упрощает создание сложных веб-сайта с помощью доступа к базе данных, членство в AJAX, и т. д. довольно быстро.
 
 Надеемся, у этого учебника вы получили средства, необходимые для начала создания приложений для собственных веб-форм ASP.NET!
 
->[!div class="step-by-step"]
-[Назад](tailspin-spyworks-part-7.md)
+> [!div class="step-by-step"]
+> [Назад](tailspin-spyworks-part-7.md)

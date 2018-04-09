@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-cs
-title: "Обновление адаптера таблицы для использования соединения (C#) | Документы Microsoft"
+title: Обновление адаптера таблицы для использования соединения (C#) | Документы Microsoft
 author: rick-anderson
-description: "При работе с базой данных вполне запрашивать данные, распределены по нескольким таблицам. Для получения данных из двух различных таблиц можно использовать либо..."
+description: При работе с базой данных вполне запрашивать данные, распределены по нескольким таблицам. Для получения данных из двух различных таблиц можно использовать либо...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/18/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1a24245a3c846d061a528d520f915b8eac3ff475
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: be74be8865b021be1f2e2d8181d2eb42cb74eb75
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="updating-the-tableadapter-to-use-joins-c"></a>Обновление адаптера таблицы для использования соединения (C#)
 ====================
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/24/2018
 Объект `JOIN` объединяет записи из одной таблицы с записями из другой таблицы, в зависимости от некоторых условий. В указанном выше запросе, например `LEFT JOIN Categories ON Categories.CategoryID = Products.CategoryID` указывает, что SQL Server для слияния каждой записи продукта с категорией запись которого `CategoryID` значение соответствует продукту s `CategoryID` значение. Результаты слияния позволяет работать с в соответствующие поля категории для каждого продукта (например, `CategoryName`).
 
 > [!NOTE]
-> `JOIN`s обычно используются при запросе данных из реляционных баз данных. Если вы не знакомы с `JOIN` синтаксиса или нужно немного подтянуть свои навыки по его использованию, d рекомендуется [SQL Join учебника](http://www.w3schools.com/sql/sql_join.asp) в [школы W3](http://www.w3schools.com/). Также следует ознакомиться, [ `JOIN` основы](https://msdn.microsoft.com/library/ms191517.aspx) и [запросах](https://msdn.microsoft.com/library/ms189575.aspx) разделы [электронной документации по SQL](https://msdn.microsoft.com/library/ms130214.aspx).
+> `JOIN` s обычно используются при запросе данных из реляционных баз данных. Если вы не знакомы с `JOIN` синтаксиса или нужно немного подтянуть свои навыки по его использованию, d рекомендуется [SQL Join учебника](http://www.w3schools.com/sql/sql_join.asp) в [школы W3](http://www.w3schools.com/). Также следует ознакомиться, [ `JOIN` основы](https://msdn.microsoft.com/library/ms191517.aspx) и [запросах](https://msdn.microsoft.com/library/ms189575.aspx) разделы [электронной документации по SQL](https://msdn.microsoft.com/library/ms130214.aspx).
 
 
 Поскольку `JOIN` s и коррелированные вложенные запросы могут использоваться для получения взаимосвязанных данных из других таблиц, многие разработчики остаются затруднения, их заголовки и узнать, какие подходы использовать. Все специалистами SQL я хранить общались сказать примерно то же самое, что он t важны с точки как SQL Server будет создавать планы выполнения примерно идентичными. Его советам, будет использовать метод, при котором вы и ваша команда наиболее удобен. Заслуживает, отметить, что после imparting это требование экспертам немедленно express их предпочтения `JOIN` s через коррелированные вложенные запросы.
@@ -260,12 +260,12 @@ Visual Studio добавит поле BoundField GridView для каждого 
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Хилтон Geisenow, Дэвид Suru и Мерфи Тереза д. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
-[Вперед](adding-additional-datatable-columns-cs.md)
+> [!div class="step-by-step"]
+> [Назад](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
+> [Вперед](adding-additional-datatable-columns-cs.md)

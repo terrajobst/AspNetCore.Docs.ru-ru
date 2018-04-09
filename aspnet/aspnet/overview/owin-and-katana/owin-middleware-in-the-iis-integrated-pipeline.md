@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
-title: "По промежуточного слоя OWIN в IIS интегрированном конвейере | Документы Microsoft"
+title: По промежуточного слоя OWIN в IIS интегрированном конвейере | Документы Microsoft
 author: Praburaj
-description: "В этой статье показано, как выполнять компонентов по промежуточного слоя OWIN (OMCs) в интегрированном конвейере служб IIS и работает как задать события конвейера OMC на. Вы должны..."
+description: В этой статье показано, как выполнять компонентов по промежуточного слоя OWIN (OMCs) в интегрированном конвейере служб IIS и работает как задать события конвейера OMC на. Вы должны...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/07/2013
 ms.topic: article
 ms.assetid: d031c021-33c2-45a5-bf9f-98f8fa78c2ab
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
 msc.type: authoredcontent
-ms.openlocfilehash: 5f6ed1ae0309e9bdd3ca4ae229195835f20bc729
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 5df70c80084a32c5f61ac9288c8cdbfaaa47f124
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="owin-middleware-in-the-iis-integrated-pipeline"></a>По промежуточного слоя OWIN в интегрированном конвейере служб IIS
 ====================
@@ -83,13 +83,13 @@ ms.lasthandoff: 01/30/2018
 
     [!code-console[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample9.cmd)]
 
- вызовы `app.UseStageMarker` передачи `Authenticate` или `PostAuthenticate` не удается обработать, а не исключение. Выполняются на последнюю этапе, который по умолчанию является OMCs `PreHandlerExecute`. Чтобы сделать их для выполнения ранее используются маркеры рабочей области. При указании маркеры этапа по порядку, мы округление до более ранней маркера. Другими словами Добавление метку этапа говорится «Запуск не позднее чем этап X». OMC его выполнения в ранняя метка этапа добавлен после их в конвейер OWIN.
+   вызовы `app.UseStageMarker` передачи `Authenticate` или `PostAuthenticate` не удается обработать, а не исключение. Выполняются на последнюю этапе, который по умолчанию является OMCs `PreHandlerExecute`. Чтобы сделать их для выполнения ранее используются маркеры рабочей области. При указании маркеры этапа по порядку, мы округление до более ранней маркера. Другими словами Добавление метку этапа говорится «Запуск не позднее чем этап X». OMC его выполнения в ранняя метка этапа добавлен после их в конвейер OWIN.
 4. Самым ранним этапом вызовы `app.UseStageMarker` wins. Например, если поменять местами `app.UseStageMarker` вызовы из предыдущего примера:
 
     [!code-csharp[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample10.cs?highlight=13,19)]
 
- Для отображения в окне вывода: 
+   Для отображения в окне вывода: 
 
     [!code-console[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample11.cmd)]
 
- Работать в OMCs `AuthenticateRequest` этап, так как последний OMC зарегистрирован с `Authenticate` события и `Authenticate` событие предшествует все события.
+   Работать в OMCs `AuthenticateRequest` этап, так как последний OMC зарегистрирован с `Authenticate` события и `Authenticate` событие предшествует все события.

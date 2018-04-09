@@ -1,8 +1,8 @@
 ---
 uid: aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio
-title: "Программирование веб-страниц ASP.NET (Razor) с помощью Visual Studio | Документы Microsoft"
+title: Программирование веб-страниц ASP.NET (Razor) с помощью Visual Studio | Документы Microsoft
 author: tfitzmac
-description: "В этом приложении объясняется, как можно использовать Visual Studio 2010 или Visual Web Developer 2010 Express программу веб-страниц ASP.NET с синтаксисом Razor."
+description: В этом приложении объясняется, как можно использовать Visual Studio 2010 или Visual Web Developer 2010 Express программу веб-страниц ASP.NET с синтаксисом Razor.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/13/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio
 msc.type: authoredcontent
-ms.openlocfilehash: 5cfeda206eda8fb3fd769d34fb40bae2c3b65093
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: eb17c8cc1fab5b552c8495e74bb86ae9dbc5b972
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="programming-aspnet-web-pages-razor-using-visual-studio"></a>Программирование веб-страниц ASP.NET (Razor) с помощью Visual Studio
 ====================
@@ -47,7 +47,7 @@ ms.lasthandoff: 11/10/2017
 Две функции особенно полезна, предоставляемых Visual Studio для программирования веб-страниц ASP.NET Razor
 
 - *IntelliSense*. Функции IntelliSense, встроенные в Visual Studio является мощным, чем технология IntelliSense в WebMatrix.
-- *Отладчик*. Отладчик позволяет устранить путем остановки программы, пока он работает, проверки переменных и пошаговое выполнение кода по одной строке кода.
+- *Debugger*. Отладчик позволяет устранить путем остановки программы, пока он работает, проверки переменных и пошаговое выполнение кода по одной строке кода.
 
 ## <a name="using-visual-studio-with-different-versions-of-aspnet-web-pages"></a>С помощью Visual Studio с разными версиями веб-страниц ASP.NET
 
@@ -95,9 +95,9 @@ Visual Studio 2010 не поддерживает по умолчанию для 
 1. Откройте в веб-сайт, вы только что создали, *Default.cshtml* страницы.
 2. После `<h3>` теги на странице введите `@ServerInfo.` (включая точку). Обратите внимание на то, как IntelliSense отображает доступные методы `ServerInfo` вспомогательный в раскрывающемся списке. 
 
-    ![IntelliSense](program-asp-net-web-pages-in-visual-studio/_static/image4.png)
+    ![intellisense](program-asp-net-web-pages-in-visual-studio/_static/image4.png)
 3. Выберите `GetHtml` метод из списка и нажмите клавишу ВВОД. IntelliSense автоматически заполняет метод. (Как с любым методом в C# необходимо добавить `()` символов после метода.)  
- Полный код `GetHtml` метод выглядит как в следующем примере:  
+   Полный код `GetHtml` метод выглядит как в следующем примере:  
 
     [!code-cshtml[Main](program-asp-net-web-pages-in-visual-studio/samples/sample1.cshtml)]
 4. Нажмите клавиши Ctrl + F5, чтобы запустить страницу. Это выглядит страницы при отображению в браузере: 
@@ -138,7 +138,7 @@ Visual Studio 2010 не поддерживает по умолчанию для 
 
 1. Если у вас еще нет установщика веб-платформы, загрузите его со следующего URL:
 
-    [https://www.Microsoft.com/Web/downloads/Platform.aspx](https://www.microsoft.com/web/downloads/platform.aspx)
+    [https://www.microsoft.com/web/downloads/platform.aspx](https://www.microsoft.com/web/downloads/platform.aspx)
 2. Запустите установщик веб-платформы.
 3. Нажмите кнопку **продуктов** вкладки.
 

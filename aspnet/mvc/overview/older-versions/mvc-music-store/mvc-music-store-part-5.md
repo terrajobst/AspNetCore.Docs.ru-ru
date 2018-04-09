@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-5
-title: "Часть 5: Изменение формы и шаблонов. | Документы Microsoft"
+title: 'Часть 5: Изменение формы и шаблонов. | Документы Microsoft'
 author: jongalloway
-description: "Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения ASP.NET MVC Music Store. Часть 5 описываются изменения форм и шаблонов."
+description: Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения ASP.NET MVC Music Store. Часть 5 описываются изменения форм и шаблонов.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: cde6fe133291254531a797a434a4b2cdd226dd5f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d584e614b5a4124044cd9decd2272192ca164643
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-5-edit-forms-and-templating"></a>Часть 5: Изменение формы и шаблонов.
 ====================
@@ -262,9 +262,9 @@ Entity Framework создает соответствующие команды SQ
 
 ![](mvc-music-store-part-5/_static/image18.png)
 
-Примечание: Здесь показан простой пример создания и использования вспомогательного класса в одном представлении. Дополнительные сведения о создании вспомогательные методы, которые можно использовать в веб-узла см. в разделе Мои записи блога: [http://bit.ly/mvc3-helper-options](http://bit.ly/mvc3-helper-options)
+Примечание: Здесь показан простой пример создания и использования вспомогательного класса в одном представлении. Дополнительные сведения о создании вспомогательные методы, которые можно использовать в веб-узла см. Мои записи блога: [http://bit.ly/mvc3-helper-options](http://bit.ly/mvc3-helper-options)
 
 
->[!div class="step-by-step"]
-[Назад](mvc-music-store-part-4.md)
-[Вперед](mvc-music-store-part-6.md)
+> [!div class="step-by-step"]
+> [Назад](mvc-music-store-part-4.md)
+> [Вперед](mvc-music-store-part-6.md)

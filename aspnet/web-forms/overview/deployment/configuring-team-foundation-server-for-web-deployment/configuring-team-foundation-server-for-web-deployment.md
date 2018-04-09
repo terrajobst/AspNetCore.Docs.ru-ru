@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment
-title: "Настройка Team Foundation Server для веб-развертывание | Документы Microsoft"
+title: Настройка Team Foundation Server для веб-развертывание | Документы Microsoft
 author: jrjlee
-description: "Этого учебника показано, как настроить Team Foundation Server (TFS) 2010 для построения решений и развертывания веб-содержимого на различных целевых средах. Это..."
+description: Этого учебника показано, как настроить Team Foundation Server (TFS) 2010 для построения решений и развертывания веб-содержимого на различных целевых средах. Это...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 72f60841a1381380c0ea6167077420f960180dc7
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: c4cfac333c9400d9ee613ba88520b0b0439873f5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-team-foundation-server-for-web-deployment"></a>Настройка Team Foundation Server для развертывания веб-приложения
 ====================
@@ -39,9 +39,9 @@ ms.lasthandoff: 03/15/2018
 
 ## <a name="context"></a>Контекст
 
-Это формирует часть серию учебников, в зависимости от требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения & #x 2014; [диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md) решения & #x 2014; для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Службы Communication Foundation (WCF) и проект базы данных.
+Это формирует часть серию учебников, в зависимости от требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения&#x2014; [диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md) решения&#x2014;для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Communication Служба Foundation (WCF) и проект базы данных.
 
-Метод развертывания, в основе этих учебников основан на разбиение проекта файл подход, описанный в [основные сведения о процессе сборки](../web-deployment-in-the-enterprise/understanding-the-build-process.md), в которой процесс построения управляется двух проектов файлы & #x 2014; один с построение инструкции, которые применяются для каждой целевой среде и, содержащий параметры построения и развертывания конкретной среды. Во время построения файла проекта среды объединяется в файл проекта зависит от среды, образуют полный набор инструкций построения.
+Метод развертывания, в основе этих учебников основан на разбиение проекта файл подход, описанный в [основные сведения о процессе построения](../web-deployment-in-the-enterprise/understanding-the-build-process.md), в которой процесс построения управляется двух файлов проекта&#x2014;один с построение инструкции, которые применяются для каждой целевой среде и, содержащий параметры построения и развертывания конкретной среды. Во время построения файла проекта среды объединяется в файл проекта зависит от среды, образуют полный набор инструкций построения.
 
 ## <a name="scenario-overview"></a>Общие сведения о сценарии
 
@@ -77,5 +77,5 @@ ms.lasthandoff: 03/15/2018
 - [Настройка серверов для развертывания веб-](../configuring-server-environments-for-web-deployment/configuring-server-environments-for-web-deployment.md). Этот учебник описывается настройка серверов Windows для поддержки различных сценариев развертывания, включая удаленный веб-развертывания пакета, используя службу агента веб-развертывания (удаленный агент) или веб-обработчик развертывания и развертывания удаленной базы данных. Оно содержит инструкции о выборе метода соответствующие развертывания для вашей рабочей среде и описываются способы использования веб-фермы (WFF) реплицировать развернутых веб-приложений на веб-серверах в ферме серверов.
 - [Расширенный корпоративного веб-развертывания](../advanced-enterprise-web-deployment/advanced-enterprise-web-deployment.md). Этот учебник описывает, как выполнять различные более сложных задач развертывания, таких как Настройка развертывания базы данных для нескольких сред, за исключением файлов и папок из развертывания и получение веб-приложения в автономный режим во время развертывания .
 
->[!div class="step-by-step"]
-[Вперед](creating-a-team-project-in-tfs.md)
+> [!div class="step-by-step"]
+> [Вперед](creating-a-team-project-in-tfs.md)

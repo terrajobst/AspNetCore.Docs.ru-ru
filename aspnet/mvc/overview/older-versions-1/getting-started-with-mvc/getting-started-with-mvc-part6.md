@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part6
-title: "Добавление Create-метод и создать представление | Документы Microsoft"
+title: Добавление Create-метод и создать представление | Документы Microsoft
 author: shanselman
-description: "Это руководство для новичков, в котором представлены основные сведения по ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных."
+description: Это руководство для новичков, в котором представлены основные сведения по ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part6
 msc.type: authoredcontent
-ms.openlocfilehash: 36b3d6ef0432292f21ecd8f29ea2d88ee8867436
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 48e656a0c394b9db5baaec9c557ec38c4020d41b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-create-method-and-create-view"></a>Добавление создайте метод и создание представления
 ====================
@@ -65,6 +65,6 @@ ms.lasthandoff: 01/30/2018
 
 Мы не проверки, если нашей фильмы указаны правильно, однако, а базы данных не позволяет сохранить с без названия фильма. Было бы неплохо, если мы может уведомить пользователя, что перед базы данных возникла ошибка. Дальнейшие действия будут выполнены, добавляя поддержку проверки для нашего приложения.
 
->[!div class="step-by-step"]
-[Назад](getting-started-with-mvc-part5.md)
-[Вперед](getting-started-with-mvc-part7.md)
+> [!div class="step-by-step"]
+> [Назад](getting-started-with-mvc-part5.md)
+> [Вперед](getting-started-with-mvc-part7.md)

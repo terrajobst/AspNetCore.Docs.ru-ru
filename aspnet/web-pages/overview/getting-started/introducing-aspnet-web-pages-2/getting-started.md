@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
-title: "Введение в ASP.NET Web Pages — начало работы | Документы Microsoft"
+title: Введение в ASP.NET Web Pages — начало работы | Документы Microsoft
 author: tfitzmac
-description: "WebMatrix не рекомендуется использовать в интегрированной среде разработки для веб-страниц ASP.NET. Используйте Visual Studio или Visual Studio Code. В этом руководстве..."
+description: WebMatrix не рекомендуется использовать в интегрированной среде разработки для веб-страниц ASP.NET. Используйте Visual Studio или Visual Studio Code. В этом руководстве...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: a6789ee75b4ca6e9443681cc7ec0bd3ab94cedcd
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5fd67a230f76774e102094f42426b8bb126c0cc6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---getting-started"></a>Знакомство с приложением ASP.NET Web Pages — начало работы
 ====================
@@ -289,5 +289,5 @@ WebMatrix запускает встроенных веб-сервера (IIS Exp
 
 [Создание веб-сайта ASP.NET с нуля](https://www.microsoft.com/web/post/create-an-aspnet-website-from-scratch). Это учебник, в частности об использовании WebMatrix (не веб-страниц ASP.NET). Оно перемещается в немного более подробные сведения о некоторые дополнительные возможности, не рассматриваются в этом наборе данных учебника по WebMatrix.
 
->[!div class="step-by-step"]
-[Вперед](intro-to-web-pages-programming.md)
+> [!div class="step-by-step"]
+> [Вперед](intro-to-web-pages-programming.md)

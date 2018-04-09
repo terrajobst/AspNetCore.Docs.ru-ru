@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/vs-2005/how-do-i-run-unit-tests-against-a-deployed-database
-title: "[Инструкции:] Выполнить модульные тесты для развернутой базы данных? | Документы Майкрософт"
+title: '[Инструкции:] Выполнить модульные тесты для развернутой базы данных? | Документы Майкрософт'
 author: pjhacker
-description: "Если приложения ASP.NET настроена для развертывания базы данных вместе с веб-сайта, как можно можно проверить, был развернут экземпляр допустимую базу данных?..."
+description: Если приложения ASP.NET настроена для развертывания базы данных вместе с веб-сайта, как можно можно проверить, был развернут экземпляр допустимую базу данных?...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/22/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-run-unit-tests-against-a-deployed-database
 msc.type: video
-ms.openlocfilehash: ae8dfef7fe46634adf7a4968c8a663206987f620
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6e06046b9d0b70de89628c804c4429ed5c9134e4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-run-unit-tests-against-a-deployed-database"></a>[Инструкции:] Выполнить модульные тесты для развернутой базы данных?
 ====================
@@ -24,8 +24,8 @@ ms.lasthandoff: 11/10/2017
 
 Если приложения ASP.NET настроена для развертывания базы данных вместе с веб-сайта, как можно можно проверять, был развернут экземпляр допустимую базу данных? В этом видеоролике рассказано, как выполнить модульные тесты для развернутой базы данных, проверку существования значения, которое известно согласованность всех экземпляров базы данных.
 
-[&#9654; Посмотрите видео (3 минуты)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-run-unit-tests-against-a-deployed-database)
+[&#9654;Посмотрите видео (3 минуты)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-run-unit-tests-against-a-deployed-database)
 
->[!div class="step-by-step"]
-[Назад](how-do-i-deploy-a-web-application-during-a-team-build.md)
-[Вперед](how-do-i-enable-code-coverage-and-profiling-in-production-applications.md)
+> [!div class="step-by-step"]
+> [Назад](how-do-i-deploy-a-web-application-during-a-team-build.md)
+> [Вперед](how-do-i-enable-code-coverage-and-profiling-in-production-applications.md)

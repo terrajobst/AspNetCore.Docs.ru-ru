@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
-title: "Автоматизация все компоненты (Создание реальных облачных приложений с Azure) | Документы Microsoft"
+title: Автоматизация все компоненты (Создание реальных облачных приложений с Azure) | Документы Microsoft
 author: MikeWasson
-description: "Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может..."
+description: Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: ba6e6baa-9b9f-471f-b39d-b007a3addadc
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
-ms.openlocfilehash: aa8bb895ed6eaa0ef4c5752f475ea7c911544ef2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2e30ab7831a10f215a08f74e61adf2d147e76543
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>Автоматизация все компоненты (Создание реальных облачных приложений с Azure)
 ====================
@@ -128,7 +128,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="create-the-storage-account"></a>Создать учетную запись хранения
 
-Основной скрипт выполняет *New AzureStorage.ps1* скрипта, указав "*&lt;websitename&gt;*хранилища» для имени учетной записи хранилища и те же данные цеха как веб-приложения.
+Основной скрипт выполняет <em>New AzureStorage.ps1</em> скрипта, указав "<em>&lt;websitename&gt;</em>хранилища» для имени учетной записи хранилища и те же данные цеха как веб-приложения.
 
 [!code-powershell[Main](automate-everything/samples/sample4.ps1?highlight=3)]
 
@@ -158,7 +158,7 @@ ms.lasthandoff: 01/24/2018
 
     [!code-powershell[Main](automate-everything/samples/sample10.ps1?highlight=4)]
 
-    `New-PSCredentialFromPlainText`Это функция в скрипт, который вызывает `ConvertTo-SecureString` командлет для шифрования пароля и возвращает `PSCredential` объект того же типа, который `Get-Credential` командлетом.
+    `New-PSCredentialFromPlainText` Это функция в скрипт, который вызывает `ConvertTo-SecureString` командлет для шифрования пароля и возвращает `PSCredential` объект того же типа, который `Get-Credential` командлетом.
 - Создает базу данных приложения и базы данных членства с помощью `New-AzureSqlDatabase` командлета.
 
     [!code-powershell[Main](automate-everything/samples/sample11.ps1?highlight=2,5)]
@@ -264,6 +264,6 @@ Azure имеется функция, которая позволяет хран�
 - [С помощью скриптов Windows PowerShell для публикации в среды разработки и тестирования](https://msdn.microsoft.com/library/azure/dn642480.aspx). Содержит сведения об использовании документации MSDN публикации скриптов, которые Visual Studio автоматически создает для веб-проектов.
 - [Инструменты PowerShell для Visual Studio 2013](https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597). Расширение Visual Studio добавляет поддержку языка для Windows PowerShell в Visual Studio.
 
->[!div class="step-by-step"]
-[Назад](introduction.md)
-[Вперед](source-control.md)
+> [!div class="step-by-step"]
+> [Назад](introduction.md)
+> [Вперед](source-control.md)

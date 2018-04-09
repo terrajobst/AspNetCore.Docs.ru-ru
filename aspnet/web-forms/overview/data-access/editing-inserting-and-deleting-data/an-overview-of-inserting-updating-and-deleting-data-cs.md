@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs
-title: "Общие сведения о вставки, обновления и удаления данных (C#) | Документы Microsoft"
+title: Общие сведения о вставки, обновления и удаления данных (C#) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике будет показано, как сопоставить Insert() ObjectDataSource, Update(), и классы методы Delete() методам уровень бизнес-ЛОГИКИ, а также как допустимости конфигурации..."
+description: В этом учебнике будет показано, как сопоставить Insert() ObjectDataSource, Update(), и классы методы Delete() методам уровень бизнес-ЛОГИКИ, а также как допустимости конфигурации...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e483c37cc773a7255f18c26bc3609d68f71dff7d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: dbd111f79eda6006cb9aed59d8fd0b0342415833
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="an-overview-of-inserting-updating-and-deleting-data-c"></a>Общие сведения о вставки, обновления и удаления данных (C#)
 ====================
@@ -238,7 +238,7 @@ CommandField содержит ряд `ShowXButton` свойств, которы�
 - Дополнять `DeleteProduct` метод логику, чтобы удалить сведения о заказе указанного продукта
 - Изменить запрос SQL, используемые адаптера таблицы для включения удаление указанного продукта сведения о заказе
 
-Давайте просто удалите все записи из `Order Details` таблицы, чтобы обойти ограничение внешнего ключа. Перейдите в обозреватель серверов в Visual Studio, щелкните правой кнопкой мыши `NORTHWND.MDF` узел и выберите новый запрос. В окне запроса выполните приведенную ниже инструкцию SQL:`DELETE FROM [Order Details]`
+Давайте просто удалите все записи из `Order Details` таблицы, чтобы обойти ограничение внешнего ключа. Перейдите в обозреватель серверов в Visual Studio, щелкните правой кнопкой мыши `NORTHWND.MDF` узел и выберите новый запрос. В окне запроса выполните приведенную ниже инструкцию SQL: `DELETE FROM [Order Details]`
 
 
 [![Удалите все записи из таблицы Order подробные сведения](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image35.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image34.png)
@@ -440,7 +440,7 @@ FormView обеспечивает встроенную поддержку для
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Вперед](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md)

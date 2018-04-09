@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-cs
-title: "Разрешение только для некоторых символов в текстовом поле (C#) | Документы Microsoft"
+title: Разрешение только для некоторых символов в текстовом поле (C#) | Документы Microsoft
 author: wenz
-description: "Проверяющие элементы управления ASP.NET гарантирует, что вводимые пользователем данные разрешены только определенные символы. Однако это по-прежнему не препятствует пользователям вводить недопустимые..."
+description: Проверяющие элементы управления ASP.NET гарантирует, что вводимые пользователем данные разрешены только определенные символы. Однако это по-прежнему не препятствует пользователям вводить недопустимые...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 246c3b5dd55ceb0f47ad1f4982ae5b3bf855e747
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d2ffc4b741bd0c7f9c456b6e76017f5350ab6378
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="allowing-only-certain-characters-in-a-text-box-c"></a>Разрешение только для некоторых символов в текстовом поле (C#)
 ====================
@@ -45,10 +45,10 @@ ms.lasthandoff: 11/10/2017
 
 Наконец `FilteredTextBoxExtender` управления отвечает за ограничение символы разрешены для ввода пользователя. Сначала следует задать `TargetControlID` атрибут `ID` из `TextBox` элемента управления. Выберите один из доступных `FilterType` значений:
 
-- `Custom`по умолчанию; Вы должны предоставить список допустимых символов
-- `LowercaseLetters`только строчные буквы
-- `Numbers`только цифры
-- `UppercaseLetters`только прописные буквы
+- `Custom` по умолчанию; Вы должны предоставить список допустимых символов
+- `LowercaseLetters` только строчные буквы
+- `Numbers` только цифры
+- `UppercaseLetters` только прописные буквы
 
 Если `Custom FilterType` используется, `ValidChars` свойства должен быть задан и указать список символов, которые могут быть типизированы. Кстати: при попытке вставить текст в текстовом поле, будут удалены все недопустимые символы.
 
@@ -63,5 +63,5 @@ ms.lasthandoff: 11/10/2017
 
 Можно вводить только цифры ([Просмотр полноразмерное изображение](allowing-only-certain-characters-in-a-text-box-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Вперед](allowing-only-certain-characters-in-a-text-box-vb.md)
+> [!div class="step-by-step"]
+> [Вперед](allowing-only-certain-characters-in-a-text-box-vb.md)

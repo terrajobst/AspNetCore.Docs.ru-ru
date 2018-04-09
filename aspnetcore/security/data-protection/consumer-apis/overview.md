@@ -1,7 +1,7 @@
 ---
-title: "Общие сведения об API-интерфейсы потребителя"
+title: Общие сведения об API-интерфейсы потребителя для ASP.NET Core
 author: rick-anderson
-description: "Этот документ содержит краткий обзор различных интерфейсов API, доступные в библиотеке защиты данных ASP.NET Core потребителя."
+description: Получите краткий обзор различных интерфейсов API, доступные в библиотеке защиты данных ASP.NET Core потребителя.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,19 +9,19 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/overview
-ms.openlocfilehash: 3aa0c4bc8d009147dd15571da4d7d63402e4c512
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 5d161ed8fbc39bcf4a970644480b4e909810b555
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="consumer-apis-overview"></a>Общие сведения об API-интерфейсы потребителя
+# <a name="consumer-apis-overview-for-aspnet-core"></a>Общие сведения об API-интерфейсы потребителя для ASP.NET Core
 
 `IDataProtectionProvider` И `IDataProtector` интерфейсы являются базовые интерфейсы, через которые потребители используют система защиты данных. Они находятся в [Microsoft.AspNetCore.DataProtection.Abstractions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Abstractions/) пакета.
 
 ## <a name="idataprotectionprovider"></a>IDataProtectionProvider
 
-Интерфейс поставщика представляет в корневом каталоге системы защиты данных. Он не может использоваться непосредственно для защиты или снять защиту данных. Вместо этого пользователь должен получить ссылку на `IDataProtector` путем вызова `IDataProtectionProvider.CreateProtector(purpose)`, где цель — строка, описывающая вариант использования предполагаемого получателя. В разделе [строки цели](purpose-strings.md) гораздо Дополнительные сведения о назначение этого параметра и выборе подходящего значения.
+Интерфейс поставщика представляет в корневом каталоге системы защиты данных. Он не может использоваться непосредственно для защиты или снять защиту данных. Вместо этого пользователь должен получить ссылку на `IDataProtector` путем вызова `IDataProtectionProvider.CreateProtector(purpose)`, где цель — строка, описывающая вариант использования предполагаемого получателя. В разделе [строки цели](xref:security/data-protection/consumer-apis/purpose-strings) гораздо Дополнительные сведения о назначение этого параметра и выборе подходящего значения.
 
 ## <a name="idataprotector"></a>IDataProtector
 
@@ -31,18 +31,18 @@ ms.lasthandoff: 03/02/2018
 
 Чтобы снять защиту с защищенными фрагмента данных, передайте защищенных данных в `Unprotect` метод. (Существует byte []-перегрузки на основе и на основе строк для удобства разработчиков.) Если защищенные полезных данных, созданных предыдущими вызовами метода `Protect` на этом же `IDataProtector`, `Unprotect` метод вернет исходный незащищенный полезных данных. Если защищенный полезные данные подделки или был создан с помощью другой `IDataProtector`, `Unprotect` метод вызывает исключение CryptographicException.
 
-Понятие таким же или разных `IDataProtector` WITH ties обратно в понятие цели. Если два `IDataProtector` экземпляров формировались с таким же корнем `IDataProtectionProvider` , но через строк в разных целях в вызове `IDataProtectionProvider.CreateProtector`, то все они считаются [предохранители разных](purpose-strings.md), и одно не сможет снять защиту полезные данные, созданные другим.
+Понятие таким же или разных `IDataProtector` WITH ties обратно в понятие цели. Если два `IDataProtector` экземпляров формировались с таким же корнем `IDataProtectionProvider` , но через строк в разных целях в вызове `IDataProtectionProvider.CreateProtector`, то все они считаются [предохранители разных](xref:security/data-protection/consumer-apis/purpose-strings), и одно не сможет снять защиту полезные данные, созданные другим.
 
 ## <a name="consuming-these-interfaces"></a>Использование этих интерфейсов
 
 Для компонента поддержкой DI предполагаемого использования является, компонент предпринять `IDataProtectionProvider` параметр в конструкторе и что DI система автоматически предоставляет этой службы, при создании экземпляра компонента.
 
 > [!NOTE]
-> Некоторые приложения (например, консольные приложения или приложения ASP.NET 4.x) может быть DI поддержкой, нельзя использовать механизм описанных здесь. Для этих сценариев, обратитесь к [не зависимые сценарии DI](../configuration/non-di-scenarios.md) Дополнительные сведения о получении экземпляром `IDataProtection` поставщика, минуя DI.
+> Некоторые приложения (например, консольные приложения или приложения ASP.NET 4.x) может быть DI поддержкой, нельзя использовать механизм описанных здесь. Для этих сценариев, обратитесь к [не зависимые сценарии DI](xref:security/data-protection/configuration/non-di-scenarios) Дополнительные сведения о получении экземпляром `IDataProtection` поставщика, минуя DI.
 
 В следующем примере показано три понятия:
 
-1. [Добавление в систему защиты данных](../configuration/overview.md) в контейнер службы
+1. [Добавить в систему защиты данных](xref:security/data-protection/configuration/overview) в контейнер службы
 
 2. С помощью DI для получения экземпляра `IDataProtectionProvider`, и
 

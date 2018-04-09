@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-vb
-title: "Стратегии разработки баз данных и развертывания (VB) | Документы Microsoft"
+title: Стратегии разработки баз данных и развертывания (VB) | Документы Microsoft
 author: rick-anderson
-description: "При развертывании приложения на основе данных в первый раз, можно просто скопируйте базу данных в среде разработки в рабочую среду. B..."
+description: При развертывании приложения на основе данных в первый раз, можно просто скопируйте базу данных в среде разработки в рабочую среду. B...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/23/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 877056dc74e0b5a64d6e0f11d63ed9f642b0a2cd
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 26e6537b7cba704d3513a2e4ae32f9266834e6d3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="strategies-for-database-development-and-deployment-vb"></a>Стратегии разработки баз данных и развертывания (Visual Basic)
 ====================
@@ -160,6 +160,6 @@ ms.lasthandoff: 01/24/2018
 
 Программирование довольны!
 
->[!div class="step-by-step"]
-[Назад](configuring-a-website-that-uses-application-services-vb.md)
-[Вперед](displaying-a-custom-error-page-vb.md)
+> [!div class="step-by-step"]
+> [Назад](configuring-a-website-that-uses-application-services-vb.md)
+> [Вперед](displaying-a-custom-error-page-vb.md)

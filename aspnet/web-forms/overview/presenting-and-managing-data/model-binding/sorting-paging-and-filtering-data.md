@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/sorting-paging-and-filtering-data
-title: "Сортировка, разбиение по страницам и фильтрация данных с помощью модели привязки и веб-форм | Документы Microsoft"
+title: Сортировка, разбиение по страницам и фильтрация данных с помощью модели привязки и веб-форм | Документы Microsoft
 author: tfitzmac
-description: "Этот учебник ряд демонстрирует основные аспекты использования привязки модели в проекте веб-форм ASP.NET. Привязка модели позволяет взаимодействия с данными дополнительные прямые-..."
+description: Этот учебник ряд демонстрирует основные аспекты использования привязки модели в проекте веб-форм ASP.NET. Привязка модели позволяет взаимодействия с данными дополнительные прямые-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/sorting-paging-and-filtering-data
 msc.type: authoredcontent
-ms.openlocfilehash: 94fc84533be5fcbcf0612fcdcabea7dee738d89b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d63ebecadd392877e4cb1d1dffe9db2d1d231190
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="sorting-paging-and-filtering-data-with-model-binding-and-web-forms"></a>Сортировка, разбиение по страницам и фильтрация данных с помощью модели привязки и веб-форм
 ====================
@@ -48,7 +48,7 @@ ms.lasthandoff: 11/10/2017
 
 ![Студенты сортировки](sorting-paging-and-filtering-data/_static/image2.png)
 
-## <a name="add-paging"></a>Добавить разбиение на страницы
+## <a name="add-paging"></a>добавить разбиение на страницы
 
 Включение разбиения также является очень простым. В GridView, задайте **AllowPaging** свойства **true** и задайте **PageSize** количество записей, которые нужно отобразить на каждой странице. В этом учебнике можно задать значение 4.
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 11/10/2017
 
 Привязка модели добавляет несколько атрибутов, которые позволяют определить, как задать значение для параметра в методе привязки модели. Эти атрибуты являются в **System.Web.ModelBinding** пространства имен. В их число входят следующее.
 
-- Control
+- Элемент управления
 - Куки-файл
 - Form
 - Профиль
@@ -72,7 +72,7 @@ ms.lasthandoff: 11/10/2017
 - RouteData
 - Сеанс
 - Профиль пользователя
-- Состояние просмотра
+- ViewState
 
 В этом учебнике будет использоваться значение элемента управления для фильтрации отображаемых записей в GridView. Вы добавите **управления** атрибут для метода запроса, который был создан ранее. В [позже](using-query-string-values-to-retrieve-data.md) учебника вы научитесь применять **QueryString** атрибут к параметру, чтобы указать, что значение параметра берется из значение строки запроса.
 
@@ -100,6 +100,6 @@ ms.lasthandoff: 11/10/2017
 
 В следующем [учебника](integrating-jquery-ui.md) будет улучшения пользовательского интерфейса интегрируя графического пользовательского интерфейса JQuery в шаблон динамических данных.
 
->[!div class="step-by-step"]
-[Назад](updating-deleting-and-creating-data.md)
-[Вперед](integrating-jquery-ui.md)
+> [!div class="step-by-step"]
+> [Назад](updating-deleting-and-creating-data.md)
+> [Вперед](integrating-jquery-ui.md)

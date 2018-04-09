@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-cs
-title: "Параметры (C#) на размещение ASP.NET | Документы Microsoft"
+title: Параметры (C#) на размещение ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "Веб-приложений ASP.NET обычно разрабатываются, создания и тестирования в локальной среде разработки и должны быть развернуты в производственной среде o..."
+description: Веб-приложений ASP.NET обычно разрабатываются, создания и тестирования в локальной среде разработки и должны быть развернуты в производственной среде o...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 34e1f9c7ee1ae22bceb614eeeaa1ebe286c1ccad
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6f8bb0e5a34d84d448af56285e8761c447229f7d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-hosting-options-c"></a>Параметры размещения ASP.NET (C#)
 ====================
@@ -95,5 +95,5 @@ Web хостинг-компании обычно обеспечивают общ
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Мерфи Тереза д. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Вперед](determining-what-files-need-to-be-deployed-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](determining-what-files-need-to-be-deployed-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-vb
-title: "Использование нескольких элементов управления всплывающее окно (Visual Basic) | Документы Microsoft"
+title: Использование нескольких элементов управления всплывающее окно (Visual Basic) | Документы Microsoft
 author: wenz
-description: "Расширитель PopupControl в наборе элементов управления AJAX предлагает простой способ запуска всплывающего окна при активации любого другого элемента управления. Можно также использовать m..."
+description: Расширитель PopupControl в наборе элементов управления AJAX предлагает простой способ запуска всплывающего окна при активации любого другого элемента управления. Можно также использовать m...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 32e170ebd78a6f849004e789f53c03d9cd40be01
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7c57aab3ecf2c02a8488b5ea4e3e0ed33ac5e7fe
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-multiple-popup-controls-vb"></a>Использование нескольких элементов управления всплывающее окно (Visual Basic)
 ====================
@@ -56,6 +56,6 @@ ms.lasthandoff: 11/10/2017
 
 Календарь появляется, когда пользователь щелкает в текстовое поле ([Просмотр полноразмерное изображение](using-multiple-popup-controls-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs.md)
-[Вперед](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb.md)
+> [!div class="step-by-step"]
+> [Назад](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs.md)
+> [Вперед](handling-postbacks-from-a-popup-control-with-an-updatepanel-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7
-title: "Часть 7: Добавление функций | Документы Microsoft"
+title: 'Часть 7: Добавление функций | Документы Microsoft'
 author: JoeStagner
-description: "Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 7 добавляет дополнительные компоненты, например росмотреть учетной записи..."
+description: Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 7 добавляет дополнительные компоненты, например росмотреть учетной записи...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 5280de44b3e75f9d1ae85e0248bc3ef6d5444f6d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 17f068155f6726047901e2f7d580d375a4e07c87
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-7-adding-features"></a>Часть 7: Добавление функции
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 7 добавляет дополнительные функции, такие как проверка учетной записи, обзоров продуктов и «популярных элементов» и «также приобретенных» пользовательские элементы управления.
 
 
-## <a id="_Toc260221673"></a>Добавление компонентов
+## <a id="_Toc260221673"></a>  Добавление компонентов
 
 Пользователи могут просматривать наш каталог, поместите элементы в его корзине и завершить процесс извлечения, но существует ряд вспомогательных функций, чтобы улучшить наш сайт будет включено.
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/10/2017
 7. Добавить о странице.
 8. Глобальные ошибки
 
-## <a id="_Toc260221674"></a>Проверка учетной записи
+## <a id="_Toc260221674"></a>  Проверка учетной записи
 
 В папке «Учетная запись» создайте две страницы ASPX один именованный OrderList.aspx и именованные OrderDetails.aspx
 
@@ -56,7 +56,7 @@ EntityDataSoure Выбор записей из таблицы заказов, о
 
 Они указывают ссылку, чтобы Просмотр подробностей заказа для каждого продукта, указывая в качестве параметра строки запроса к странице OrderDetails.aspx поле OrderID.
 
-## <a id="_Toc260221675"></a>OrderDetails.aspx
+## <a id="_Toc260221675"></a>  OrderDetails.aspx
 
 Мы будем использовать элемент управления EntityDataSource для доступа к заказов и FormView для отображения данных о заказе и другой EntityDataSource, с помощью GridView для отображения строк элементов заказа.
 
@@ -72,7 +72,7 @@ EntityDataSoure Выбор записей из таблицы заказов, о
 
 [!code-csharp[Main](tailspin-spyworks-part-7/samples/sample5.cs)]
 
-## <a id="_Toc260221676"></a>Домашняя страница
+## <a id="_Toc260221676"></a>  Домашняя страница
 
 Давайте добавим некоторые статическое содержимое на страницу Default.aspx.
 
@@ -82,7 +82,7 @@ EntityDataSoure Выбор записей из таблицы заказов, о
 
 [!code-aspx[Main](tailspin-spyworks-part-7/samples/sample6.aspx)]
 
-## <a id="_Toc260221677"></a>Обзоров продуктов
+## <a id="_Toc260221677"></a>  Обзоров продуктов
 
 Сначала мы добавим кнопки со ссылкой на форму, можно использовать для ввода Обзор продукта.
 
@@ -94,7 +94,7 @@ EntityDataSoure Выбор записей из таблицы заказов, о
 
 Далее добавим страницу с именем ReviewAdd.aspx
 
-Эта страница будет использовать набор элементов управления ASP.NET AJAX. Если вы еще не сделали, загрузите ее с [DevExpress](http://devexpress.com/act) и рекомендации по настройке в набор инструментов для использования с Visual Studio здесь [https://www.asp.net/learn/ajax-videos/video-76.aspx](../../../videos/ajax-control-toolkit/how-do-i-get-started-with-the-aspnet-ajax-control-toolkit.md).
+Эта страница будет использовать набор элементов управления ASP.NET AJAX. Если вы еще не сделали, загрузите ее с [DevExpress](http://devexpress.com/act) и рекомендации по настройке в набор инструментов для использования с Visual Studio здесь [ https://www.asp.net/learn/ajax-videos/video-76.aspx ](../../../videos/ajax-control-toolkit/how-do-i-get-started-with-the-aspnet-ajax-control-toolkit.md).
 
 В режиме конструктора перетащите элементы управления и проверяющие элементы управления из области элементов и создания формы, аналогичный приведенному ниже.
 
@@ -114,7 +114,7 @@ EntityDataSoure Выбор записей из таблицы заказов, о
 
 ![](tailspin-spyworks-part-7/_static/image3.jpg)
 
-## <a id="_Toc260221678"></a>Популярные элементов управления (создания пользовательских элементов управления)
+## <a id="_Toc260221678"></a>  Популярные элементов управления (создания пользовательских элементов управления)
 
 Чтобы увеличить продажи на веб-сайте мы добавим ваши возможности популярных или связанные продукты «непристойные продаж».
 
@@ -156,7 +156,7 @@ EntityDataSoure Выбор записей из таблицы заказов, о
 
 ![](tailspin-spyworks-part-7/_static/image6.jpg)
 
-## <a id="_Toc260221679"></a>«Также Куплено» управляют (пользовательские элементы управления с параметрами)
+## <a id="_Toc260221679"></a>  «Также Куплено» управляют (пользовательские элементы управления с параметрами)
 
 Второй пользовательский элемент управления, который мы создадим займет непристойные продаж на следующий уровень, добавив специфичность контекста.
 
@@ -236,6 +236,6 @@ EntityDataSoure Выбор записей из таблицы заказов, о
 
 ![](tailspin-spyworks-part-7/_static/image7.jpg)
 
->[!div class="step-by-step"]
-[Назад](tailspin-spyworks-part-6.md)
-[Вперед](tailspin-spyworks-part-8.md)
+> [!div class="step-by-step"]
+> [Назад](tailspin-spyworks-part-6.md)
+> [Вперед](tailspin-spyworks-part-8.md)

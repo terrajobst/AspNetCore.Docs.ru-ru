@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
-title: "Изучение методы изменения и представления изменения | Документы Microsoft"
+title: Изучение методы изменения и представления изменения | Документы Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2015
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: d7e1ba503b8aa815cebf431d2f5ffc9436b3575b
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: a3baa8e9af572d4c21813218ba394715a6db65cb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>Изучение методы изменения и представления изменения
 ====================
 по [Рик Андерсон](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 В этом разделе вы изучим созданный `Edit` методы действий и представления для контроллера фильма. Но сначала потребуется короткий переадресация вносить улучшения отображения даты выпуска. Откройте *Models\Movie.cs* файл и добавьте выделенные строки, показано ниже:
 
@@ -106,12 +106,12 @@ ms.lasthandoff: 03/15/2018
 1. Из **средства** меню **NuGetLibrary диспетчера пакетов**, а затем нажмите кнопку **управление пакетами NuGet для решения**.  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image5.png)
-2. На левой панели выберите **Обзор*. *** (см. на рисунке ниже).
+2. На левой панели выберите <strong>Обзор*.</strong>* (См. на рисунке ниже).
 3. В поле ввода введите * Globalize **.  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image6.png) Выберите `jQuery.Validation.Globalize`, выберите `MvcMovie` и нажмите кнопку **установить**. *Scripts\jquery.globalize\globalize.js* файл будет добавлен в проект. *Scripts\jquery.globalize\cultures\* папка будет содержать большое количество файлов JavaScript языка и региональных параметров. Обратите внимание, что может потребоваться пять минут для установки этого пакета.
 
- В следующем коде показано изменения в файле Views\Movies\Edit.cshtml: 
+   В следующем коде показано изменения в файле Views\Movies\Edit.cshtml: 
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample10.cshtml)]
 
@@ -125,6 +125,6 @@ ms.lasthandoff: 03/15/2018
 
 <a id="gettingstarted"></a><a id="jQueryAjaxJSON"></a> В следующем уроке мы реализуется функция поиска.
 
->[!div class="step-by-step"]
-[Назад](accessing-your-models-data-from-a-controller.md)
-[Вперед](adding-search.md)
+> [!div class="step-by-step"]
+> [Назад](accessing-your-models-data-from-a-controller.md)
+> [Вперед](adding-search.md)

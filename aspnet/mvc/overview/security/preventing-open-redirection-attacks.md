@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/security/preventing-open-redirection-attacks
-title: "Предотвращение атак путем перенаправления Open (C#) | Документы Microsoft"
+title: Предотвращение атак путем перенаправления Open (C#) | Документы Microsoft
 author: jongalloway
-description: "В этом учебнике описано, как может помешать атак путем перенаправления с открытым в приложениях ASP.NET MVC. Этот учебник описывает изменения, которые были сделаны..."
+description: В этом учебнике описано, как может помешать атак путем перенаправления с открытым в приложениях ASP.NET MVC. Этот учебник описывает изменения, которые были сделаны...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/preventing-open-redirection-attacks
 msc.type: authoredcontent
-ms.openlocfilehash: 17944c0600a174176e3e9940f414b34f0835b800
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ec1cd1791eb6d32e7c1ea50bc6626929cad2960e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="preventing-open-redirection-attacks-c"></a>Предотвращение атак путем перенаправления Open (C#)
 ====================
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/30/2018
 
 **На рисунке 01**: страницы входа с помощью открытые перенаправления
 
-Так как параметр строки запроса ReturnUrl не проверяется, злоумышленник может изменить его внедрить любой URL-адрес в качестве параметра провести атаку откройте перенаправления. Чтобы продемонстрировать это, можно изменить параметр ReturnUrl [http://bing.com](http://bing.com), таким образом, полученный URL-адрес входа или учетной записи и входа в систему? ReturnUrl = http://www.bing.com/. После успешного входа в систему на сайт, то будут перенаправлены в [http://bing.com](http://bing.com). Так как это перенаправление является недопустимым, он может вместо точки вредоносный сайт, в которой предпринимается попытка сбить с толку пользователя.
+Так как параметр строки запроса ReturnUrl не проверяется, злоумышленник может изменить его внедрить любой URL-адрес в качестве параметра провести атаку откройте перенаправления. Чтобы продемонстрировать это, можно изменить параметр ReturnUrl [ http://bing.com ](http://bing.com), таким образом, полученный URL-адрес входа или учетной записи и входа в систему? ReturnUrl =<http://www.bing.com/>. После успешного входа в систему на сайт, то будут перенаправлены в [ http://bing.com ](http://bing.com). Так как это перенаправление является недопустимым, он может вместо точки вредоносный сайт, в которой предпринимается попытка сбить с толку пользователя.
 
 ### <a name="a-more-complex-open-redirection-attack"></a>Более сложные откройте Атака перенаправления
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 01/30/2018
 
 **На рисунке 02**: обновление NerdDinner страницу входа с помощью открытые перенаправления
 
-Когда мы правильно войти, действия входа ASP.NET MVC AccountController перенаправляет нам URL-адрес, указанный в параметре строки запроса returnUrl. В данном случае это URL-адрес, он укажет, что является [http://nerddiner.com/Account/LogOn](http://nerddiner.com/Account/LogOn). Если мы очень watchful, это скорее всего мы не заметить этого, особенно потому, что он был осторожность, чтобы убедиться, что их поддельного страница выглядит так же, как страницы законный входа. Эта страница входа — это сообщение Ошибка, запрос, что мы войти снова. Неловкий (США), мы ввели пароль.
+Когда мы правильно войти, действия входа ASP.NET MVC AccountController перенаправляет нам URL-адрес, указанный в параметре строки запроса returnUrl. В данном случае это URL-адрес, он укажет, что является [ http://nerddiner.com/Account/LogOn ](http://nerddiner.com/Account/LogOn). Если мы очень watchful, это скорее всего мы не заметить этого, особенно потому, что он был осторожность, чтобы убедиться, что их поддельного страница выглядит так же, как страницы законный входа. Эта страница входа — это сообщение Ошибка, запрос, что мы войти снова. Неловкий (США), мы ввели пароль.
 
 [![](preventing-open-redirection-attacks/_static/image6.png)](preventing-open-redirection-attacks/_static/image5.png)
 
@@ -67,13 +67,13 @@ ms.lasthandoff: 01/30/2018
 
 Ниже приведен код для действия входа в приложение ASP.NET MVC 2. Обратите внимание, что после успешного входа, возвращает ли контроллер перенаправление на returnUrl. Вы увидите, проверка не выполняется для параметра returnUrl.
 
-**1 — ASP.NET MVC 2 входа действие в список`AccountController.cs`**
+**1 — ASP.NET MVC 2 входа действие в список `AccountController.cs`**
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample1.cs)]
 
 Теперь давайте взглянем на изменения в ASP.NET MVC 3 входа действия. Этот код был изменен для проверки параметра returnUrl путем вызова нового метода System.Web.Mvc.Url вспомогательный класс с именем `IsLocalUrl()`.
 
-**2 — ASP.NET MVC 3 входа действие в список`AccountController.cs`**
+**2 — ASP.NET MVC 3 входа действие в список `AccountController.cs`**
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample2.cs)]
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 01/30/2018
 
 Метод UrlHelper IsLocalUrl(), просто вызов метода в System.Web.WebPages, как эта проверка также используется приложениями веб-страниц ASP.NET.
 
-**Листинг 3 – метод IsLocalUrl() из ASP.NET MVC 3 UrlHelper`class`**
+**Листинг 3 – метод IsLocalUrl() из ASP.NET MVC 3 UrlHelper `class`**
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample3.cs)]
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 01/30/2018
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample6.cs)]
 
-Теперь можно проверить атака откройте перенаправления, попробуйте выполнить вход с использованием URL-адрес внешнего возврата. Воспользуемся/Account/входа? ReturnUrl = http://www.bing.com/ еще раз.
+Теперь можно проверить атака откройте перенаправления, попробуйте выполнить вход с использованием URL-адрес внешнего возврата. Воспользуемся /Account/LogOn? ReturnUrl =<http://www.bing.com/> еще раз.
 
 [![](preventing-open-redirection-attacks/_static/image8.png)](preventing-open-redirection-attacks/_static/image7.png)
 

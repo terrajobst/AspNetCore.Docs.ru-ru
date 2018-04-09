@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-vb
-title: "Создание макетов страниц с главными страницами представлений (VB) | Документы Microsoft"
+title: Создание макетов страниц с главными страницами представлений (VB) | Документы Microsoft
 author: microsoft
-description: "В этом учебнике вы научитесь создавать общий макет страницы для нескольких страниц в приложении, используя преимущества представления главных страниц. Можно использовать..."
+description: В этом учебнике вы научитесь создавать общий макет страницы для нескольких страниц в приложении, используя преимущества представления главных страниц. Можно использовать...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5466ea8a33bd2ccfe36c0f01b6b474bbb8d540a3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5208cedd8d24a290a0227bdcbaa84ae6210cd969
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-page-layouts-with-view-master-pages-vb"></a>Создание макетов страниц с главными страницами представлений (Visual Basic)
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 
 Например главной страницы представления в список 1 определяет макета с двумя столбцами. Он содержит два `<contentplaceholder>` тегов. Один `<ContentPlaceHolder>` для каждого столбца.
 
-**Листинг 1.`Views\Shared\Site.master`**
+**Листинг 1. `Views\Shared\Site.master`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample1.aspx)]
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/10/2017
 
 После создания новой страницы содержимого представления, основанные на главной странице Site.master, вы получаете файл в списке 2.
 
-**Листинг 2.`Views\Home\Index.aspx`**
+**Листинг 2. `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample2.aspx)]
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/10/2017
 
 Например, представление изменения индекса в списке 3 содержит только две `<asp:Content>` тегов. Каждый из `<asp:Content>` тегов содержит некоторый текст.
 
-**Листинг 3.`Views\Home\Index.aspx (modified)`**
+**Листинг 3. `Views\Home\Index.aspx (modified)`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample3.aspx)]
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 11/10/2017
 
 Альтернативный подход к изменению содержимого главной страницы на странице содержимого отдельные представления — программы-оболочки для региона, в который требуется внести изменения в `<asp:ContentPlaceHolder>` тег. Например предположим, вы хотите изменить не только название, но мета-теги, подготовки к просмотру в главной страницы представления. Страница главного представления в листинге 4 содержит `<asp:ContentPlaceHolder>` тег в его `<head>` тег.
 
-**Листинг 4.`Views\Shared\Site2.master`**
+**Листинг 4. `Views\Shared\Site2.master`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample5.aspx)]
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 11/10/2017
 
 Страница содержимого представления в листинге 5 переопределяет `<asp:ContentPlaceHolder>` тег, чтобы отобразить пользовательский заголовок и пользовательские мета-теги.
 
-**Листинг 5.`Views\Home\Index2.aspx`**
+**Листинг 5. `Views\Home\Index2.aspx`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample6.aspx)]
 
@@ -143,6 +143,6 @@ ms.lasthandoff: 11/10/2017
 
 Этот учебник предоставлен основные сведения можно просмотреть главные страницы и страницы содержимого. Вы узнали, как создать новое представление, главные страницы и создавать представления страницы содержимого, на их основе. Также мы рассмотрели, как можно изменить содержимое из отдельного представления страницы содержимого главной страницы представления.
 
->[!div class="step-by-step"]
-[Назад](using-the-tagbuilder-class-to-build-html-helpers-vb.md)
-[Вперед](passing-data-to-view-master-pages-vb.md)
+> [!div class="step-by-step"]
+> [Назад](using-the-tagbuilder-class-to-build-html-helpers-vb.md)
+> [Вперед](passing-data-to-view-master-pages-vb.md)

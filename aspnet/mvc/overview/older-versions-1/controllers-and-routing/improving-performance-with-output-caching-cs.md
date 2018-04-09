@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs
-title: "Повышение производительности с помощью вывода кэширования (C#) | Документы Microsoft"
+title: Повышение производительности с помощью вывода кэширования (C#) | Документы Microsoft
 author: microsoft
-description: "В этом учебнике вы узнаете, как можно существенно повысить производительность веб-приложений ASP.NET MVC, используя преимущества кэширования вывода. Вы..."
+description: В этом учебнике вы узнаете, как можно существенно повысить производительность веб-приложений ASP.NET MVC, используя преимущества кэширования вывода. Вы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 47f0aa976c5876991ccc2406fb8f7402e59ec556
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8958caa5a0ccad669ca861bed261102625be5cb6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="improving-performance-with-output-caching-c"></a>Повышение производительности с выводом (C#)
 ====================
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](improving-performance-with-output-caching-cs/samples/sample1.cs)]
 
-В бета-версии ASP.NET MVC, кэширование вывода не работает для URL-адрес: [http://www.MySite.com/](http://www.mysite.com/). Вместо этого необходимо ввести URL-адрес: [http://www.MySite.com/Home/Index](http://www.mysite.com/Home/Index). 
+В бета-версии ASP.NET MVC, кэширование вывода не работает для URL-адрес: [ http://www.MySite.com/ ](http://www.mysite.com/). Вместо этого необходимо ввести URL-адрес: [ http://www.MySite.com/Home/Index ](http://www.mysite.com/Home/Index). 
 
 В список 1 выходные данные действия Index() кэшируется на 10 секунд. При желании можно указать существенно превышает длительность кэширования. Например, если требуется кэшировать вывод действия контроллера за один день затем можно указать длительность кэширования 86400 секунд (60 секунд \* 60 минут \* 24 часа).
 
@@ -132,7 +132,7 @@ ms.lasthandoff: 11/10/2017
 
 Свойству VaryByParam следующие значения:
 
-> \*= Создайте другой кэшированная версия всякий раз, когда изменяется формы или параметром строки запроса.
+> \* = Создайте другой кэшированная версия всякий раз, когда изменяется формы или параметром строки запроса.
 > 
 > Нет = не Создание различных резервных копий
 > 
@@ -165,6 +165,6 @@ ms.lasthandoff: 11/10/2017
 
 Кэширование вывода обеспечивает очень простой метод значительно повышая производительность приложений ASP.NET MVC. В этом учебнике вы узнали, как использовать атрибут [OutputCache] для кэширования выходных данных действия контроллера. Вы также узнали, как изменить свойства атрибута [OutputCache], например длительность и VaryByParam свойства для изменения кэширования содержимого возвращает. Наконец вы узнали, как для определения профилей кэша в файл веб-конфигурации.
 
->[!div class="step-by-step"]
-[Назад](understanding-action-filters-cs.md)
-[Вперед](adding-dynamic-content-to-a-cached-page-cs.md)
+> [!div class="step-by-step"]
+> [Назад](understanding-action-filters-cs.md)
+> [Вперед](adding-dynamic-content-to-a-cached-page-cs.md)

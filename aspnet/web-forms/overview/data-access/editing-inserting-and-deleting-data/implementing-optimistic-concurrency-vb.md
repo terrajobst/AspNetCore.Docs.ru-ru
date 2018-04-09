@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-vb
-title: "Реализация оптимистической блокировки (Visual Basic) | Документы Microsoft"
+title: Реализация оптимистической блокировки (Visual Basic) | Документы Microsoft
 author: rick-anderson
-description: "Для веб-приложения, который позволяет нескольким пользователям изменять данные есть риск, что два пользователя могут редактирование те же данные одновременно. В этом tutori..."
+description: Для веб-приложения, который позволяет нескольким пользователям изменять данные есть риск, что два пользователя могут редактирование те же данные одновременно. В этом tutori...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a31ce101c3264d10ec80a45718d9222fc18c093c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 056d907e80b5bdfa1848b4b31cb03702ca823583
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-optimistic-concurrency-vb"></a>Реализация оптимистической блокировки (Visual Basic)
 ====================
@@ -259,8 +259,8 @@ DAL и уровень бизнес-ЛОГИКИ завершения все, ч�
 
 Имеется один параметр последнее свойство, которое должно выполняться в порядке для ObjectDataSource верно передавал исходные значения в методы уровень бизнес-ЛОГИКИ. ObjectDataSource имеет [ConflictDetection свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.conflictdetection.aspx) , могут быть назначены [одно из двух значений](https://msdn.microsoft.com/library/system.web.ui.conflictoptions.aspx):
 
-- `OverwriteChanges`-значение по умолчанию; уровень бизнес-ЛОГИКИ исходного входных параметров не отправляет исходные значения
-- `CompareAllValues`-исходные значения передаются методам уровень бизнес-ЛОГИКИ; Выберите этот параметр при использовании оптимистичного параллелизма
+- `OverwriteChanges` -значение по умолчанию; уровень бизнес-ЛОГИКИ исходного входных параметров не отправляет исходные значения
+- `CompareAllValues` -исходные значения передаются методам уровень бизнес-ЛОГИКИ; Выберите этот параметр при использовании оптимистичного параллелизма
 
 Теперь пора установить `ConflictDetection` свойства `CompareAllValues`.
 
@@ -429,8 +429,8 @@ DAL и уровень бизнес-ЛОГИКИ завершения все, ч�
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Назад](customizing-the-data-modification-interface-vb.md)
-[Вперед](adding-client-side-confirmation-when-deleting-vb.md)
+> [!div class="step-by-step"]
+> [Назад](customizing-the-data-modification-interface-vb.md)
+> [Вперед](adding-client-side-confirmation-when-deleting-vb.md)
