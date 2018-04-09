@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/color-picker
-title: "Палитра цветов | Документы Microsoft"
+title: Палитра цветов | Документы Microsoft
 author: JoeStagner
-description: "В этом видеоролике демонстрируют использование нового элемента управления палитра цветов из элементов управления Microsoft AJAX."
+description: В этом видеоролике демонстрируют использование нового элемента управления палитра цветов из элементов управления Microsoft AJAX.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/13/2009
@@ -12,21 +12,21 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/color-picker
 msc.type: video
-ms.openlocfilehash: 863f004cdf1ddd58729a376e49b2c2c576df766b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d314fcd3053e8ab7eef8a21b8c17e6a30ce8c1a4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
-<a name="color-picker"></a><span data-ttu-id="18aef-103">Палитра</span><span class="sxs-lookup"><span data-stu-id="18aef-103">Color Picker</span></span>
+<a name="color-picker"></a><span data-ttu-id="a401f-103">Палитра</span><span class="sxs-lookup"><span data-stu-id="a401f-103">Color Picker</span></span>
 ====================
-<span data-ttu-id="18aef-104">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="18aef-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="a401f-104">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="a401f-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="18aef-105">В этом видеоролике демонстрируют использование нового элемента управления палитра цветов из элементов управления Microsoft AJAX.</span><span class="sxs-lookup"><span data-stu-id="18aef-105">This video will demonstrate how to use the new Color Picker control from the Microsoft AJAX Control Toolkit.</span></span>
+<span data-ttu-id="a401f-105">В этом видеоролике демонстрируют использование нового элемента управления палитра цветов из элементов управления Microsoft AJAX.</span><span class="sxs-lookup"><span data-stu-id="a401f-105">This video will demonstrate how to use the new Color Picker control from the Microsoft AJAX Control Toolkit.</span></span>
 
-[<span data-ttu-id="18aef-106">&#9654; Посмотрите видео (9 минут)</span><span class="sxs-lookup"><span data-stu-id="18aef-106">&#9654; Watch video (9 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/color-picker)
+[<span data-ttu-id="a401f-106">&#9654;Посмотрите видео (9 минут)</span><span class="sxs-lookup"><span data-stu-id="a401f-106">&#9654; Watch video (9 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/color-picker)
 
->[!div class="step-by-step"]
-<span data-ttu-id="18aef-107">[Назад](control-extenders.md)
-[Вперед](combo-box.md)</span><span class="sxs-lookup"><span data-stu-id="18aef-107">[Previous](control-extenders.md)
+> [!div class="step-by-step"]
+> <span data-ttu-id="a401f-107">[Назад](control-extenders.md)
+> [Вперед](combo-box.md)</span><span class="sxs-lookup"><span data-stu-id="a401f-107">[Previous](control-extenders.md)
 [Next](combo-box.md)</span></span>

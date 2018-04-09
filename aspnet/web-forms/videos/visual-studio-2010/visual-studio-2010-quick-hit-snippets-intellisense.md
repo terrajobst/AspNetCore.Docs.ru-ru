@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/visual-studio-2010/visual-studio-2010-quick-hit-snippets-intellisense
-title: "Visual Studio 2010 быстрого попадание - фрагменты кода IntelliSense | Документы Microsoft"
+title: Visual Studio 2010 быстрого попадание - фрагменты кода IntelliSense | Документы Microsoft
 author: JoeStagner
-description: "В этом видео будет рассказано о поддержке Visual Studio фрагмент кода HTML разметки ASP.NET и JavaScript."
+description: В этом видео будет рассказано о поддержке Visual Studio фрагмент кода HTML разметки ASP.NET и JavaScript.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/11/2009
@@ -12,19 +12,19 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/visual-studio-2010/visual-studio-2010-quick-hit-snippets-intellisense
 msc.type: video
-ms.openlocfilehash: 630d91d9a06c4b5dee137f7a004cb6e2caf05773
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0b89c0b817df9cfe0dff36d728492736ab19bebe
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
-<a name="visual-studio-2010-quick-hit---snippets-intellisense"></a><span data-ttu-id="444f8-103">Visual Studio 2010 «Быстрый Hit» - фрагменты кода IntelliSense</span><span class="sxs-lookup"><span data-stu-id="444f8-103">Visual Studio 2010 "Quick Hit" - Snippets IntelliSense</span></span>
+<a name="visual-studio-2010-quick-hit---snippets-intellisense"></a><span data-ttu-id="f0e8b-103">Visual Studio 2010 «Быстрый Hit» - фрагменты кода IntelliSense</span><span class="sxs-lookup"><span data-stu-id="f0e8b-103">Visual Studio 2010 "Quick Hit" - Snippets IntelliSense</span></span>
 ====================
-<span data-ttu-id="444f8-104">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="444f8-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="f0e8b-104">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="f0e8b-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="444f8-105">В этом видео будет рассказано о поддержке Visual Studio фрагмент кода HTML разметки ASP.NET и JavaScript.</span><span class="sxs-lookup"><span data-stu-id="444f8-105">In this video you will learn about Visual Studio's snippet support of HTML, ASP.NET markup and JavaScript.</span></span>
+<span data-ttu-id="f0e8b-105">В этом видео будет рассказано о поддержке Visual Studio фрагмент кода HTML разметки ASP.NET и JavaScript.</span><span class="sxs-lookup"><span data-stu-id="f0e8b-105">In this video you will learn about Visual Studio's snippet support of HTML, ASP.NET markup and JavaScript.</span></span>
 
-[<span data-ttu-id="444f8-106">&#9654; Посмотрите видео (4 минуты)</span><span class="sxs-lookup"><span data-stu-id="444f8-106">&#9654; Watch video (4 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/visual-studio-2010-quick-hit-snippets-intellisense)
+[<span data-ttu-id="f0e8b-106">&#9654;Посмотрите видео (4 минуты)</span><span class="sxs-lookup"><span data-stu-id="f0e8b-106">&#9654; Watch video (4 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/visual-studio-2010-quick-hit-snippets-intellisense)
 
->[!div class="step-by-step"]
-[<span data-ttu-id="444f8-107">Назад</span><span class="sxs-lookup"><span data-stu-id="444f8-107">Previous</span></span>](visual-studio-2010-quick-hit-websites-instead-of-web-projects.md)
+> [!div class="step-by-step"]
+> [<span data-ttu-id="f0e8b-107">Назад</span><span class="sxs-lookup"><span data-stu-id="f0e8b-107">Previous</span></span>](visual-studio-2010-quick-hit-websites-instead-of-web-projects.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control
-title: "[Инструкции:] Приступая к работе с ASP.NET AJAX анимации управляющего элемента-расширителя? | Документы Майкрософт"
+title: '[Инструкции:] Приступая к работе с ASP.NET AJAX анимации управляющего элемента-расширителя? | Документы Майкрософт'
 author: JoeStagner
-description: "В этом видеоролике вводит элемент-расширитель анимации из набор элементов управления ASP.NET AJAX, который предоставляет разработчикам является полностью расширяемой платформой, для..."
+description: В этом видеоролике вводит элемент-расширитель анимации из набор элементов управления ASP.NET AJAX, который предоставляет разработчикам является полностью расширяемой платформой, для...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2007
@@ -12,21 +12,21 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control
 msc.type: video
-ms.openlocfilehash: ae7d584fb00a838cdaeef1fc242a56fa2497dfec
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aeb72c4df02575999e2e1e60bb8306c18e9543da
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
-<a name="how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control"></a><span data-ttu-id="e8c9e-104">[Инструкции:] Приступая к работе с ASP.NET AJAX анимации управляющего элемента-расширителя?</span><span class="sxs-lookup"><span data-stu-id="e8c9e-104">[How Do I:] Get Started with the ASP.NET AJAX Animation Extender Control?</span></span>
+<a name="how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control"></a><span data-ttu-id="0bc32-104">[Инструкции:] Приступая к работе с ASP.NET AJAX анимации управляющего элемента-расширителя?</span><span class="sxs-lookup"><span data-stu-id="0bc32-104">[How Do I:] Get Started with the ASP.NET AJAX Animation Extender Control?</span></span>
 ====================
-<span data-ttu-id="e8c9e-105">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="e8c9e-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="0bc32-105">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="0bc32-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="e8c9e-106">В этом видеоролике представлены расширитель анимации из набора элементов управления ASP.NET AJAX, который предоставляет разработчикам полностью расширяемую платформу для добавления эффектов анимации в веб-страницу ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="e8c9e-106">This video introduces the Animation extender control from the ASP.NET AJAX Control Toolkit, which provides developers with a fully-extensible framework for adding animation effects to an ASP.NET Web page.</span></span>
+<span data-ttu-id="0bc32-106">В этом видеоролике представлены расширитель анимации из набора элементов управления ASP.NET AJAX, который предоставляет разработчикам полностью расширяемую платформу для добавления эффектов анимации в веб-страницу ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="0bc32-106">This video introduces the Animation extender control from the ASP.NET AJAX Control Toolkit, which provides developers with a fully-extensible framework for adding animation effects to an ASP.NET Web page.</span></span>
 
-[<span data-ttu-id="e8c9e-107">&#9654; Посмотрите видео (20 минут)</span><span class="sxs-lookup"><span data-stu-id="e8c9e-107">&#9654; Watch video (20 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control)
+[<span data-ttu-id="0bc32-107">&#9654;Посмотрите видео (20 минут)</span><span class="sxs-lookup"><span data-stu-id="0bc32-107">&#9654; Watch video (20 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control)
 
->[!div class="step-by-step"]
-<span data-ttu-id="e8c9e-108">[Назад](how-do-i-use-the-aspnet-ajax-passwordstrength-extender.md)
-[Вперед](how-do-i-use-the-aspnet-ajax-confirmbutton-extender.md)</span><span class="sxs-lookup"><span data-stu-id="e8c9e-108">[Previous](how-do-i-use-the-aspnet-ajax-passwordstrength-extender.md)
+> [!div class="step-by-step"]
+> <span data-ttu-id="0bc32-108">[Назад](how-do-i-use-the-aspnet-ajax-passwordstrength-extender.md)
+> [Вперед](how-do-i-use-the-aspnet-ajax-confirmbutton-extender.md)</span><span class="sxs-lookup"><span data-stu-id="0bc32-108">[Previous](how-do-i-use-the-aspnet-ajax-passwordstrength-extender.md)
 [Next](how-do-i-use-the-aspnet-ajax-confirmbutton-extender.md)</span></span>

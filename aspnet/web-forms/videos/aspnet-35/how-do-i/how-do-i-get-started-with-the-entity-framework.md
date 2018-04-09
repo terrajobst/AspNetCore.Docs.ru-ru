@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-35/how-do-i/how-do-i-get-started-with-the-entity-framework
-title: "[Инструкции:] Начало работы с платформой Entity Framework | Документы Microsoft"
+title: '[Инструкции:] Начало работы с платформой Entity Framework | Документы Microsoft'
 author: adjames
-description: "В этом видеоролике Джеймс Алекс Показать как создать простую модель данных сущности в течение короткого времени."
+description: В этом видеоролике Джеймс Алекс Показать как создать простую модель данных сущности в течение короткого времени.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2008
@@ -12,21 +12,21 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-35/how-do-i/how-do-i-get-started-with-the-entity-framework
 msc.type: video
-ms.openlocfilehash: 0304ee74d2137b3d7463eef677bc34ccdd8d4930
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0e05fb4783e0980e64c151b894eec5e451fc2384
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
-<a name="how-do-i-get-started-with-the-entity-framework"></a><span data-ttu-id="7a78c-103">[Инструкции:] Начало работы с платформой Entity Framework</span><span class="sxs-lookup"><span data-stu-id="7a78c-103">[How Do I:] Get Started with the Entity Framework</span></span>
+<a name="how-do-i-get-started-with-the-entity-framework"></a><span data-ttu-id="a1108-103">[Инструкции:] Начало работы с платформой Entity Framework</span><span class="sxs-lookup"><span data-stu-id="a1108-103">[How Do I:] Get Started with the Entity Framework</span></span>
 ====================
-<span data-ttu-id="7a78c-104">по [Джеймс Алекс](https://github.com/adjames)</span><span class="sxs-lookup"><span data-stu-id="7a78c-104">by [Alex James](https://github.com/adjames)</span></span>
+<span data-ttu-id="a1108-104">по [Джеймс Алекс](https://github.com/adjames)</span><span class="sxs-lookup"><span data-stu-id="a1108-104">by [Alex James](https://github.com/adjames)</span></span>
 
-<span data-ttu-id="7a78c-105">В этом видеоролике Джеймс Алекс Показать как создать простую модель данных сущности в течение короткого времени.</span><span class="sxs-lookup"><span data-stu-id="7a78c-105">In this introductory video, Alex James will show you how to build a simple Entity Data Model in a short amount of time.</span></span>
+<span data-ttu-id="a1108-105">В этом видеоролике Джеймс Алекс Показать как создать простую модель данных сущности в течение короткого времени.</span><span class="sxs-lookup"><span data-stu-id="a1108-105">In this introductory video, Alex James will show you how to build a simple Entity Data Model in a short amount of time.</span></span>
 
-[<span data-ttu-id="7a78c-106">&#9654; Посмотрите видео (9 минут)</span><span class="sxs-lookup"><span data-stu-id="7a78c-106">&#9654; Watch video (9 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-get-started-with-the-entity-framework)
+[<span data-ttu-id="a1108-106">&#9654;Посмотрите видео (9 минут)</span><span class="sxs-lookup"><span data-stu-id="a1108-106">&#9654; Watch video (9 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-get-started-with-the-entity-framework)
 
->[!div class="step-by-step"]
-<span data-ttu-id="7a78c-107">[Назад](how-do-i-converting-a-net-20-windows-forms-application-to-net-35.md)
-[Вперед](how-do-i-use-the-new-entity-data-source.md)</span><span class="sxs-lookup"><span data-stu-id="7a78c-107">[Previous](how-do-i-converting-a-net-20-windows-forms-application-to-net-35.md)
+> [!div class="step-by-step"]
+> <span data-ttu-id="a1108-107">[Назад](how-do-i-converting-a-net-20-windows-forms-application-to-net-35.md)
+> [Вперед](how-do-i-use-the-new-entity-data-source.md)</span><span class="sxs-lookup"><span data-stu-id="a1108-107">[Previous](how-do-i-converting-a-net-20-windows-forms-application-to-net-35.md)
 [Next](how-do-i-use-the-new-entity-data-source.md)</span></span>

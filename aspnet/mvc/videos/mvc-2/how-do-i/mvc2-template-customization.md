@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/mvc2-template-customization
-title: "MVC2 - настройку шаблона | Документы Microsoft"
+title: MVC2 - настройку шаблона | Документы Microsoft
 author: microsoft
-description: "В этом видео будет рассказано о возможности настройки шаблона в ASP.NET MVC 2. Мы рассмотрим Html.EditorForModel, Html.DisplayForModel, Templ модели..."
+description: В этом видео будет рассказано о возможности настройки шаблона в ASP.NET MVC 2. Мы рассмотрим Html.EditorForModel, Html.DisplayForModel, Templ модели...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/23/2010
@@ -12,21 +12,21 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/mvc2-template-customization
 msc.type: video
-ms.openlocfilehash: ab1ff66c02e6ff64e68d2bdbcc4ace4684fbb5e9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 68828f7c4313ff6029329d43d7403d3523de7651
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
-<a name="mvc2---template-customization"></a><span data-ttu-id="b8f84-104">MVC2 - Настройка шаблона</span><span class="sxs-lookup"><span data-stu-id="b8f84-104">MVC2 - Template Customization</span></span>
+<a name="mvc2---template-customization"></a><span data-ttu-id="9801a-104">MVC2 - Настройка шаблона</span><span class="sxs-lookup"><span data-stu-id="9801a-104">MVC2 - Template Customization</span></span>
 ====================
-<span data-ttu-id="b8f84-105">по [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="b8f84-105">by [Microsoft](https://github.com/microsoft)</span></span>
+<span data-ttu-id="9801a-105">по [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="9801a-105">by [Microsoft](https://github.com/microsoft)</span></span>
 
-<span data-ttu-id="b8f84-106">В этом видео будет рассказано о возможности настройки шаблона в ASP.NET MVC 2.</span><span class="sxs-lookup"><span data-stu-id="b8f84-106">In this video you will learn about the template customization features in ASP.NET MVC 2.</span></span> <span data-ttu-id="b8f84-107">Мы рассмотрим Html.EditorForModel Html.DisplayForModel, настройку шаблона модели и типа данных настройки.</span><span class="sxs-lookup"><span data-stu-id="b8f84-107">We'll look at Html.EditorForModel, Html.DisplayForModel, Model Template customization, and DataType customization.</span></span>
+<span data-ttu-id="9801a-106">В этом видео будет рассказано о возможности настройки шаблона в ASP.NET MVC 2.</span><span class="sxs-lookup"><span data-stu-id="9801a-106">In this video you will learn about the template customization features in ASP.NET MVC 2.</span></span> <span data-ttu-id="9801a-107">Мы рассмотрим Html.EditorForModel Html.DisplayForModel, настройку шаблона модели и типа данных настройки.</span><span class="sxs-lookup"><span data-stu-id="9801a-107">We'll look at Html.EditorForModel, Html.DisplayForModel, Model Template customization, and DataType customization.</span></span>
 
-[<span data-ttu-id="b8f84-108">&#9654; Посмотрите видео (3 минуты)</span><span class="sxs-lookup"><span data-stu-id="b8f84-108">&#9654; Watch video (3 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/mvc2-template-customization)
+[<span data-ttu-id="9801a-108">&#9654;Посмотрите видео (3 минуты)</span><span class="sxs-lookup"><span data-stu-id="9801a-108">&#9654; Watch video (3 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/mvc2-template-customization)
 
->[!div class="step-by-step"]
-<span data-ttu-id="b8f84-109">[Назад](mvc2-model-validation.md)
-[Вперед](aspnet-mvc-2-areas.md)</span><span class="sxs-lookup"><span data-stu-id="b8f84-109">[Previous](mvc2-model-validation.md)
+> [!div class="step-by-step"]
+> <span data-ttu-id="9801a-109">[Назад](mvc2-model-validation.md)
+> [Вперед](aspnet-mvc-2-areas.md)</span><span class="sxs-lookup"><span data-stu-id="9801a-109">[Previous](mvc2-model-validation.md)
 [Next](aspnet-mvc-2-areas.md)</span></span>
