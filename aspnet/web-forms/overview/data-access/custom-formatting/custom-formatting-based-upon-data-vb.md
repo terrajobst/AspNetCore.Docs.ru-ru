@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-vb
-title: "Настраиваемое форматирование на основе данных (Visual Basic) | Документы Microsoft"
+title: Настраиваемое форматирование на основе данных (Visual Basic) | Документы Microsoft
 author: rick-anderson
-description: "Настройка формата элементов GridView, DetailsView и FormView на основе данных, привязанное к нему может осуществляться несколькими способами. В этом учебнике мы будем l..."
+description: Настройка формата элементов GridView, DetailsView и FormView на основе данных, привязанное к нему может осуществляться несколькими способами. В этом учебнике мы будем l...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 43aed94fe5b1095af37abdae2cb4c9e67b7d7f6f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a5c7f99b863697cc49a5bc9831dae861f51e129d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="custom-formatting-based-upon-data-vb"></a>Настраиваемое форматирование на основе данных (Visual Basic)
 ====================
@@ -221,19 +221,19 @@ FormView не содержит любые стояли и поэтому не и
 
 На шаге 2 GridView перечисляет источник данных и создает для каждой записи `GridViewRow` и привязывает текущую запись в него. Для каждого `GridViewRow` добавлен к GridView, возникают два события:
 
-- **`RowCreated`**срабатывает после `GridViewRow` был создан
-- **`RowDataBound`**вызывается после привязки текущей записи к `GridViewRow`.
+- **`RowCreated`** срабатывает после `GridViewRow` был создан
+- **`RowDataBound`** вызывается после привязки текущей записи к `GridViewRow`.
 
 Для GridView затем, привязка данных является более точно описанные следующую последовательность шагов:
 
 1. GridView `DataBinding` вызывается событие.
 2. Данные будут привязаны к GridView.   
   
- Для каждой записи в источнике данных 
+   Для каждой записи в источнике данных 
 
     1. Создание `GridViewRow` объекта
     2. Пожара `RowCreated` событий
-    3. Запись привязывается к`GridViewRow`
+    3. Запись привязывается к `GridViewRow`
     4. Пожара `RowDataBound` событий
     5. Добавить `GridViewRow` для `Rows` коллекции
 3. GridView `DataBound` вызывается событие.
@@ -279,12 +279,12 @@ FormView не содержит любые стояли и поэтому не и
 
 При работе с `RowDataBound` обработчик событий, важно помнить, что GridView состоит из различных типов строк и что это событие вызывается для *все* типов строк. Объект `GridViewRow`на тип можно определить с помощью его `RowType` свойство и может иметь одно из значений:
 
-- `DataRow`строку, которая привязана к записи из GridView`DataSource`
-- `EmptyDataRow`строки, отображаемой, если GridView `DataSource` пуст
-- `Footer`строки нижнего колонтитула; отображается, если GridView `ShowFooter` свойству`True`
-- `Header`Строка заголовка; отображается, если GridView ShowHeader задано значение `True` (по умолчанию)
-- `Pager`для элемента GridView, которые реализуют разбиение по страницам, строку, отображающую интерфейс разбиения по страницам
-- `Separator`не используется для управления GridView, однако используется `RowType` Свойства DataList и повторителя управляет двумя данных веб-элементов управления, мы обсудим в будущих учебниках
+- `DataRow` строку, которая привязана к записи из GridView `DataSource`
+- `EmptyDataRow` строки, отображаемой, если GridView `DataSource` пуст
+- `Footer` строки нижнего колонтитула; отображается, если GridView `ShowFooter` свойству `True`
+- `Header` Строка заголовка; отображается, если GridView ShowHeader задано значение `True` (по умолчанию)
+- `Pager` для элемента GridView, которые реализуют разбиение по страницам, строку, отображающую интерфейс разбиения по страницам
+- `Separator` не используется для управления GridView, однако используется `RowType` Свойства DataList и повторителя управляет двумя данных веб-элементов управления, мы обсудим в будущих учебниках
 
 Поскольку `EmptyDataRow`, `Header`, `Footer`, и `Pager` не связаны с `DataSource` записей, они будут всегда иметь значение `Nothing` для их `DataItem` свойство. По этой причине, прежде чем работать с текущим `GridViewRow` `DataItem` свойства, нам нужно убедиться, что мы имеем дело с `DataRow`. Это можно сделать, проверив `GridViewRow` `RowType` свойства следующим образом:
 
@@ -323,12 +323,12 @@ FormView не содержит любые стояли и поэтому не и
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были E.R. Gilmore, Деннис Патерсона и (Dan Jagers). Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](displaying-summary-information-in-the-gridview-s-footer-cs.md)
-[Вперед](using-templatefields-in-the-gridview-control-vb.md)
+> [!div class="step-by-step"]
+> [Назад](displaying-summary-information-in-the-gridview-s-footer-cs.md)
+> [Вперед](using-templatefields-in-the-gridview-control-vb.md)

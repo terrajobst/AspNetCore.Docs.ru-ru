@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
-title: "Конструктор выдержать сбои (Создание реальных облачных приложений в Azure) | Документы Microsoft"
+title: Конструктор выдержать сбои (Создание реальных облачных приложений в Azure) | Документы Microsoft
 author: MikeWasson
-description: "Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может..."
+description: Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 364ce84e-5af8-4e08-afc9-75a512b01f84
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
 msc.type: authoredcontent
-ms.openlocfilehash: 62a16e9a99cd1298b0db5f8099092212f9f6850b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 01883cb0be3e7c7b5dc8d32b784ccb3a28652f1e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="design-to-survive-failures-building-real-world-cloud-apps-with-azure"></a>Разработка выдержать сбои (Создание реальных облачных приложений в Azure)
 ====================
@@ -131,6 +131,6 @@ ms.lasthandoff: 01/24/2018
 - [Отказоустойчивость: Построение масштабируемых, надежных облачные службы](https://channel9.msdn.com/Series/FailSafe). Девять выпусков, Ульрих Хоманн, Marc Mercuri и Марк Симмс. Представляет высокоуровневых концепциях и принципов архитектуры в виде очень доступна и интересные истории, полученными в результате Advisory Team Microsoft клиентов (CAT) опыт работы с фактических клиентов. Эпизодов 1 до 8 углубляться в глубину причинами разработки облачных приложений выдержать сбои. Также в описании дальнейших регулирования количества запросов в серии 2, начиная с 49:57 обсуждение точек и режимов сбоя в серии 2, начиная с 56:05 и обсуждение выключатели в серии 3, начиная с 40:55.
 - [Построение Big: Уроках, извлеченных из клиентам Azure — часть II](https://channel9.msdn.com/Events/Build/2012/3-030). Марк Симмс рассказывает о разработке для сбоя и все данные инструментирования. Аналогично Безаварийность рядов, но переход в Дополнительные практические сведения.
 
->[!div class="step-by-step"]
-[Назад](unstructured-blob-storage.md)
-[Вперед](monitoring-and-telemetry.md)
+> [!div class="step-by-step"]
+> [Назад](unstructured-blob-storage.md)
+> [Вперед](monitoring-and-telemetry.md)

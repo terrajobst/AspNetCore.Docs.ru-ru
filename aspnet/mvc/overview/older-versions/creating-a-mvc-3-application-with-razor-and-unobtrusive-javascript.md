@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript
-title: "Создание MVC 3 Application with Razor and Unobtrusive JavaScript | Документы Microsoft"
+title: Создание MVC 3 Application with Razor and Unobtrusive JavaScript | Документы Microsoft
 author: microsoft
-description: "Список пользователей примера веб-приложения показано, как простой является создание приложения ASP.NET MVC 3 с помощью представлений Razor. В образце приложения s..."
+description: Список пользователей примера веб-приложения показано, как простой является создание приложения ASP.NET MVC 3 с помощью представлений Razor. В образце приложения s...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/01/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript
 msc.type: authoredcontent
-ms.openlocfilehash: 29b45c07b5498542abbf22c4c3001b1cee41edc9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9b273f6827cad2078b581d6da7b127198dfddaa5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a>Создание MVC 3 Application with Razor and Unobtrusive JavaScript
 ====================
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/24/2018
 
 ![Soln Exp](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image5.png)
 
-Изменить  *\_Layout.cshtml* и замените разметку в `<div>` элемента с именем `logindisplay` с сообщением  *&quot;* входа отключено&quot;. В следующем примере показано новый разметку:
+Изменить  <em>\_Layout.cshtml</em> и замените разметку в `<div>` элемента с именем `logindisplay` с сообщением <em>&quot;</em>входа отключено&quot;. В следующем примере показано новый разметку:
 
 [!code-cshtml[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample1.cshtml)]
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample8.cs)]
 
-Щелкните правой кнопкой мыши внутри `Details` метода, а затем выберите **добавить представление**. Убедитесь, что **просматривать данные класс** поле содержит **Mvc3Razor.Models.UserModel***.* Задать **просматривать содержимое** для **сведения** и нажмите кнопку **добавить**.
+Щелкните правой кнопкой мыши внутри `Details` метода, а затем выберите <strong>добавить представление</strong>. Убедитесь, что <strong>просматривать данные класс</strong> поле содержит <strong>Mvc3Razor.Models.UserModel</strong><em>.</em> Задать <strong>просматривать содержимое</strong> для <strong>сведения</strong> и нажмите кнопку <strong>добавить</strong>.
 
 ![Добавление представления сведений](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image11.png)
 

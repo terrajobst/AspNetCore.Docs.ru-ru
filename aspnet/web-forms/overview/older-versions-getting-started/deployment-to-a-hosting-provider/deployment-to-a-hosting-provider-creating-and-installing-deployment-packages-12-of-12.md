@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-creating-and-installing-deployment-packages-12-of-12
-title: "Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: Устранение неполадок (12 12) | Документы Microsoft"
+title: 'Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: Устранение неполадок (12 12) | Документы Microsoft'
 author: tdykstra
-description: "Ряд учебниках показано развертывание ASP.NET (публикации) проекта веб-приложения, который содержит базу данных SQL Server Compact с помощью Visual Stu..."
+description: Ряд учебниках показано развертывание ASP.NET (публикации) проекта веб-приложения, который содержит базу данных SQL Server Compact с помощью Visual Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-creating-and-installing-deployment-packages-12-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: d8c4931a1d26af49ee61c896897fa6ddf12fccea
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2a8342f026498a7cf3ff4a3c158ed177c15b7111
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-troubleshooting-12-of-12"></a>Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: Устранение неполадок (12 12)
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузите начальный проект](http://code.msdn.microsoft.com/Deploying-an-ASPNET-Web-4e31366b)
 
@@ -290,7 +290,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="possible-cause-and-solution"></a>Возможная причина и решение
 
-По умолчанию Visual Studio задает разрешения для корневой папки сайта разрешения чтения и записи в приложении\_папки данных. Если вы знаете, что указаны правильные разрешения по умолчанию для папки сайта и не требуется задать, это поведение можно отключить, добавив  **&lt;назначения IncludeSetACLProviderOn&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;**  файл профиля публикации (устанавливаемого в одном профиле) или файл wpp.targets (чтобы влияет на все профили). Сведения о редактировании этих файлов см. в разделе [как: изменение параметров развертывания в файлах профиля (.pubxml)](https://msdn.microsoft.com/library/ff398069.aspx). 
+По умолчанию Visual Studio задает разрешения для корневой папки сайта разрешения чтения и записи в приложении\_папки данных. Если вы знаете, что указаны правильные разрешения по умолчанию для папки сайта и не требуется задать, это поведение можно отключить, добавив **&lt;назначения IncludeSetACLProviderOn&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;** файл профиля публикации (устанавливаемого в одном профиле) или файл wpp.targets (чтобы влияет на все профили). Сведения о редактировании этих файлов см. в разделе [как: изменение параметров развертывания в файлах профиля (.pubxml)](https://msdn.microsoft.com/library/ff398069.aspx). 
 
 ## <a name="access-denied-errors-when-the-application-tries-to-write-to-an-application-folder"></a>Когда приложение пытается выполнить запись в папку приложения, ошибок отказа в доступе
 
@@ -300,7 +300,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="possible-cause-and-solution"></a>Возможная причина и решение
 
-По умолчанию Visual Studio задает разрешения для корневой папки сайта разрешения чтения и записи в приложении\_папки данных. Если приложению требуется доступ на запись к вложенной папке, можно задать разрешения для этой папки, как показано в [задании разрешений для папок](deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12.md) и [развертывание в рабочей среде](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md) учебники. Если приложению требуется доступ на запись к корневой папке сайта, необходимо предотвратить доступ только для чтения установлен на корневую папку путем добавления  **&lt;назначения IncludeSetACLProviderOn&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;**  файл профиля публикации (устанавливаемого в одном профиле) или файл wpp.targets (чтобы влияет на все профили). Сведения о редактировании этих файлов см. в разделе [как: изменение параметров развертывания в файлах профиля (.pubxml)](https://msdn.microsoft.com/library/ff398069.aspx). <a id="aspnet45error"></a>
+По умолчанию Visual Studio задает разрешения для корневой папки сайта разрешения чтения и записи в приложении\_папки данных. Если приложению требуется доступ на запись к вложенной папке, можно задать разрешения для этой папки, как показано в [задании разрешений для папок](deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12.md) и [развертывание в рабочей среде](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md) учебники. Если приложению требуется доступ на запись к корневой папке сайта, необходимо предотвратить доступ только для чтения установлен на корневую папку путем добавления **&lt;назначения IncludeSetACLProviderOn&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;** файл профиля публикации (устанавливаемого в одном профиле) или файл wpp.targets (чтобы влияет на все профили). Сведения о редактировании этих файлов см. в разделе [как: изменение параметров развертывания в файлах профиля (.pubxml)](https://msdn.microsoft.com/library/ff398069.aspx). <a id="aspnet45error"></a>
 
 ## <a name="configuration-error---targetframework-attribute-references-a-version-that-is-later-than-the-installed-version-of-the-net-framework"></a>Ошибка конфигурации - атрибут targetFramework ссылается на версию, которая является более поздней, чем установленная версия платформы .NET Framework
 
@@ -320,5 +320,5 @@ ms.lasthandoff: 01/24/2018
 
 Проект **свойства** windows включает Target framework раскрывающегося списка, но не устраняет эту проблему, просто изменив, из **.NET Framework 4.5** для **платформы.NETFramework4**. Если изменить целевую платформу на более ранней версии framework, проект будет по-прежнему иметь ссылки на сборки в более поздней версии framework и не будет выполняться. Необходимо вручную изменить эти ссылки или создайте новый проект, в платформе .NET Framework 4 или более ранней версии. Дополнительные сведения см. в разделе [.NET Framework для различных версий для веб-сайтов](https://msdn.microsoft.com/library/bb398791(v=vs.100).aspx).
 
->[!div class="step-by-step"]
-[Назад](deployment-to-a-hosting-provider-deploying-a-sql-server-database-update-11-of-12.md)
+> [!div class="step-by-step"]
+> [Назад](deployment-to-a-hosting-provider-deploying-a-sql-server-database-update-11-of-12.md)

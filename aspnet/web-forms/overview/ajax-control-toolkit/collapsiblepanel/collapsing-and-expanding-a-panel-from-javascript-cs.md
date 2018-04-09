@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-cs
-title: "Свертывание и развертывание панели из кода JavaScript (C#) | Документы Microsoft"
+title: Свертывание и развертывание панели из кода JavaScript (C#) | Документы Microsoft
 author: wenz
-description: "Предоставляет ему возможность свернуть его содержимое и разверните его и расширяет их возможности панели управления CollapsiblePanel в наборе элементов управления ASP.NET AJAX..."
+description: Предоставляет ему возможность свернуть его содержимое и разверните его и расширяет их возможности панели управления CollapsiblePanel в наборе элементов управления ASP.NET AJAX...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 666f3e212ccdd5b26b466f4672134ce751dc5dd1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7baa3be7144946bde7d11afd9b1cb5f14ad9dede
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="collapsing-and-expanding-a-panel-from-javascript-c"></a>Свертывание и развертывание панели из кода JavaScript (C#)
 ====================
@@ -53,7 +53,7 @@ CollapsiblePanel управления в наборе элементов упр�
 
 [!code-aspx[Main](collapsing-and-expanding-a-panel-from-javascript-cs/samples/sample5.aspx)]
 
-В код JavaScript на стороне клиента (работы с `<script type="text/javascript">`), `$find()` метод должен использоваться для доступа к `CollapsiblePanelExtender`. `$find("cpe")`Возвращает ссылку на него. Оттуда на определенных методов будет решения поставленной задачи.
+В код JavaScript на стороне клиента (работы с `<script type="text/javascript">`), `$find()` метод должен использоваться для доступа к `CollapsiblePanelExtender`. `$find("cpe")` Возвращает ссылку на него. Оттуда на определенных методов будет решения поставленной задачи.
 
 Метод для открытия (расширение) называется панели `_doOpen()`; в следующем коде реализуется `doOpen()` функция, вызываемая при нажатии кнопки первой:
 
@@ -72,5 +72,5 @@ CollapsiblePanel управления в наборе элементов упр�
 
 Третья кнопка изменяет состояние панели: из свернуть, чтобы развернутые и задней ([Просмотр полноразмерное изображение](collapsing-and-expanding-a-panel-from-javascript-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Вперед](collapsing-and-expanding-a-panel-from-javascript-vb.md)
+> [!div class="step-by-step"]
+> [Вперед](collapsing-and-expanding-a-panel-from-javascript-vb.md)

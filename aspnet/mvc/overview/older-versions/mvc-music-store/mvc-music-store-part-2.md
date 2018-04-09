@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-2
-title: "Часть 2: Контроллеры | Документы Microsoft"
+title: 'Часть 2: Контроллеры | Документы Microsoft'
 author: jongalloway
-description: "Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения ASP.NET MVC Music Store. Вторая часть посвящена контроллеров."
+description: Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения ASP.NET MVC Music Store. Вторая часть посвящена контроллеров.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: bdafd751e996e759d516d0fa25b09eff21241ed7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 680cdea388d9b01961bd626643c0fd91c9205ed7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-2-controllers"></a>Часть 2: контроллеры
 ====================
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/10/2017
 Теперь давайте запуска сайта. Мы можно запустить наш веб сервера и испытать сайта, с помощью любого из следующих действий:
 
 - Выберите элемент меню отладки начать отладку ⇨
-- Нажмите кнопку с зеленой стрелкой на панели инструментов![](mvc-music-store-part-2/_static/image2.jpg)
+- Нажмите кнопку с зеленой стрелкой на панели инструментов ![](mvc-music-store-part-2/_static/image2.jpg)
 - Используйте сочетание клавиш F5.
 
 С помощью любого из приведенных выше пунктов компиляции проекта и затем вызвать ASP.NET Development Server, встроены в Visual Web Developer для запуска. Уведомление будет отображаться в нижнем углу экрана, чтобы указать, что ASP.NET Development Server начал а отображается номер порта работает в группе.
@@ -116,7 +116,7 @@ Visual Web Developer будет автоматически откройте ок
 
 [!code-csharp[Main](mvc-music-store-part-2/samples/sample4.cs)]
 
-*Примечание: Используется вспомогательный метод HttpUtility.HtmlEncode чистку ввод данных пользователем. Это предотвращает добавление Javascript в нашем представления с помощью ссылки, например /Store/Browse пользователями? Жанр =&lt;сценарий&gt;window.location= «http://hackersite.com»&lt;/script&gt;.*
+*Примечание: Используется вспомогательный метод HttpUtility.HtmlEncode чистку ввод данных пользователем. Это предотвращает добавление Javascript в нашем представления с помощью ссылки, например /Store/Browse пользователями? Жанр =&lt;сценарий&gt;window.location= "http://hackersite.com"&lt;/script&gt;.*
 
 Теперь давайте найдите/Store/обзора? Жанр = Disco
 
@@ -141,6 +141,6 @@ ASP.NET MVC позволяет легко реализовать без необ
 - Мы добавили методы действий в нашей контроллеров, которые отвечают на запросы на URL-адрес и возвращают текст в браузере
 
 
->[!div class="step-by-step"]
-[Назад](mvc-music-store-part-1.md)
-[Вперед](mvc-music-store-part-3.md)
+> [!div class="step-by-step"]
+> [Назад](mvc-music-store-part-1.md)
+> [Вперед](mvc-music-store-part-3.md)

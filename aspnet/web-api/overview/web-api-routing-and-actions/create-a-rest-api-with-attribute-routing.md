@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
-title: "Создать REST API с маршрутизацией атрибутов в ASP.NET Web API 2 | Документы Microsoft"
+title: Создать REST API с маршрутизацией атрибутов в ASP.NET Web API 2 | Документы Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: c1d0b3e1644ef7f9ebb4be74c3fdf3df90cf3537
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1f1e90544c9dd8439a522f2196d81d020ea2f4f2
+ms.sourcegitcommit: 7f92990bad6a6cb901265d621dcbc136794f5f3f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>Создание интерфейса API REST с атрибутом маршрутизации в ASP.NET Web API 2
 ====================
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/24/2018
 - Жанр
 - Дата публикации.
 - Цены
-- Описание:
+- Описание
 - AuthorID (внешний ключ к таблице Authors)
 
 Для большинства запросов тем не менее, API вернет подмножество этих данных (название, автор и жанр). Чтобы получить полную запись клиента запросы `/api/books/{id}/details`.
@@ -184,7 +184,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="get-books-by-genre"></a>Получение книги по жанру
 
-Чтобы получить список книг определенного жанра, клиент отправит запрос GET к `/api/books/genre`, где *жанр* имя жанр. (Например, `/get/books/fantasy`.)
+Чтобы получить список книг определенного жанра, клиент отправит запрос GET к `/api/books/genre`, где *жанр* имя жанр. (Например, `/api/books/fantasy`.)
 
 Добавьте следующий метод `BooksController`.
 

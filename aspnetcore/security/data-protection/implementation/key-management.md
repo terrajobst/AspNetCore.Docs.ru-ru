@@ -1,7 +1,7 @@
 ---
-title: "Управление ключами"
+title: Управление ключами в ASP.NET Core
 author: rick-anderson
-description: "В этом документе перечислены сведения о реализации ASP.NET Core данных защиты ключа API управления."
+description: Узнайте подробности реализации API защиты данных ASP.NET Core ключа управления.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-management
-ms.openlocfilehash: a1fd7c55ec94d5def569bb407c064f4fd2fe9695
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 1b073d8779547a828c17e825b0663b26efb61d14
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-management"></a>Управление ключами
+# <a name="key-management-in-aspnet-core"></a>Управление ключами в ASP.NET Core
 
 <a name="data-protection-implementation-key-management"></a>
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/02/2018
 
 * Был отозван - ключ скомпрометирован и не должны использоваться для новых операций защитить.
 
-Ключи созданный active и истекшим сроком действия может использовать для снятия защиты входящих полезных данных. Отозванные ключей по умолчанию не может использоваться для снятия защиты полезных данных, но разработчик приложения может [переопределить это поведение](../consumer-apis/dangerous-unprotect.md#data-protection-consumer-apis-dangerous-unprotect) при необходимости.
+Ключи созданный active и истекшим сроком действия может использовать для снятия защиты входящих полезных данных. Отозванные ключей по умолчанию не может использоваться для снятия защиты полезных данных, но разработчик приложения может [переопределить это поведение](xref:security/data-protection/consumer-apis/dangerous-unprotect#data-protection-consumer-apis-dangerous-unprotect) при необходимости.
 
 >[!WARNING]
 > Разработчик может возникнуть желание удаления ключа из ключа обмена (например, при удалении соответствующего файла из файловой системы). На этом этапе окончательно получить все данные, защищенные с помощью ключа и не аварийный переопределение как отозванных ключи. Удаление ключа является действительно разрушительных поведение и в результате система защиты данных обеспечивает доступ без первого класса API для выполнения данной операции.
@@ -83,6 +83,6 @@ services.AddDataProtection()
 
 Система защиты данных имеет эвристики, при котором он пытается автоматически определить расположение соответствующего хранилища ключей и шифрование на механизм rest. Это также можно настроить разработчиком приложения. Следующие документы рассматриваются в реализации этих механизмов:
 
-* [Поле поставщиков хранилища ключей](key-storage-providers.md#data-protection-implementation-key-storage-providers)
+* [Поле поставщиков хранилища ключей](xref:security/data-protection/implementation/key-storage-providers#data-protection-implementation-key-storage-providers)
 
-* [В поле ключа шифрования поставщиков rest](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers)
+* [В поле ключа шифрования поставщиков rest](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest-providers)

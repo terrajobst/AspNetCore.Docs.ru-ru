@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb
-title: "Главного и подчиненного представлений с помощью выбираемого основного элемента GridView с DetailView (VB) | Документы Microsoft"
+title: Главного и подчиненного представлений с помощью выбираемого основного элемента GridView с DetailView (VB) | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник будет GridView, строки которого необходимо указать имя и цены каждого продукта, а также кнопка выбора. При нажатии кнопки Select для particu..."
+description: Этот учебник будет GridView, строки которого необходимо указать имя и цены каждого продукта, а также кнопка выбора. При нажатии кнопки Select для particu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: eae9c07eff7780aab18346815ca410d687789d17
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 80db1589de901f7364c05c5bb67829145579b6c0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-using-a-selectable-master-gridview-with-a-details-detailview-vb"></a>Главного и подчиненного представлений с помощью выбираемого основного элемента GridView с DetailView (Visual Basic)
 ====================
@@ -131,12 +131,12 @@ ms.lasthandoff: 01/24/2018
 **Рис. 9**: вызов `ProductsBLL` класса `GetProductByProductID(productID)` метод ([Просмотр полноразмерное изображение](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image27.png))
 
 
-У  *`productID`*  значение параметра, полученное из элемента управления GridView `SelectedValue` свойство. Как мы уже упоминали, GridView `SelectedValue` свойство возвращает значение для выбранной строки ключа первых данных. Таким образом, важно, GridView `DataKeyNames` свойству `ProductID`, после чего выбранную строку `ProductID` возвращается значение `SelectedValue`.
+У *`productID`* значение параметра, полученное из элемента управления GridView `SelectedValue` свойство. Как мы уже упоминали, GridView `SelectedValue` свойство возвращает значение для выбранной строки ключа первых данных. Таким образом, важно, GridView `DataKeyNames` свойству `ProductID`, после чего выбранную строку `ProductID` возвращается значение `SelectedValue`.
 
 
 [![Значение productID параметра к свойству SelectedValue GridView](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image29.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image28.png)
 
-**Рис. 10**: задать  *`productID`*  параметр к GridView `SelectedValue` свойство ([Просмотр полноразмерное изображение](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image30.png))
+**Рис. 10**: задать *`productID`* параметр к GridView `SelectedValue` свойство ([Просмотр полноразмерное изображение](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image30.png))
 
 
 Один раз `productDetailsDataSource` ObjectDataSource был настроен правильно и привязан к DetailsView, завершения этого учебника! При первом посещении страницы не выбрана строка, поэтому элемента GridView `SelectedValue` возвращает `Nothing`. Поскольку нет ни одного продукта с `NULL` `ProductID` значение, записи не возвращаются `GetProductByProductID(productID)` метод, это означает, что не отображается DetailsView (см. рис. 11). После нажатия кнопки "Select" строке GridView обратная передача и обновлении DetailsView. Это время GridView `SelectedValue` возвращает `ProductID` выбранной строки `GetProductByProductID(productID)` возвращает метод `ProductsDataTable` с информацией об этом конкретного продукта и DetailsView отображает эти подробные сведения (см. рис. 12).
@@ -162,11 +162,11 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было – Хилтон Гизнау. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](master-detail-filtering-across-two-pages-vb.md)
+> [!div class="step-by-step"]
+> [Назад](master-detail-filtering-across-two-pages-vb.md)

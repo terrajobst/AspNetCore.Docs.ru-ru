@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/adding-a-controller
-title: "Добавление контроллера | Документы Microsoft"
+title: Добавление контроллера | Документы Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: c8f317b2ac133f560461917af1588b7a1fa51c4f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3864bab284661b0c44f9e4cb363c2d60eccc7c66
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-controller"></a>Добавление контроллера
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 Обозначает MVC *model-view-controller*. MVC представляет собой шаблон для разработки приложений, которые хорошо архитектурой, тестирования и простые в обслуживании. Содержать MVC-приложений:
 
@@ -95,7 +95,7 @@ ASP.NET MVC вызывает другой контроллер классы (и 
 
 [!code-csharp[Main](adding-a-controller/samples/sample4.cs)]
 
-Запустите приложение и введите следующий URL-адрес:`http://localhost:xxx/HelloWorld/Welcome/1?name=Scott`
+Запустите приложение и введите следующий URL-адрес: `http://localhost:xxx/HelloWorld/Welcome/1?name=Scott`
 
 ![](adding-a-controller/_static/image8.png)
 
@@ -115,6 +115,6 @@ ASP.NET MVC вызывает другой контроллер классы (и 
 
 В этих примерах контроллер предоставляет &quot;VC&quot; часть MVC — то есть, представления и контроллера работы. Контроллер вернул HTML напрямую. Обычно вы не хотите контроллеров, возвращение HTML напрямую, так как становится очень сложно в код. Вместо этого мы обычно используем отдельное представление файла шаблона для создания HTML-ответа. Давайте посмотрим, далее в том, как можно это сделать.
 
->[!div class="step-by-step"]
-[Назад](getting-started.md)
-[Вперед](adding-a-view.md)
+> [!div class="step-by-step"]
+> [Назад](getting-started.md)
+> [Вперед](adding-a-view.md)

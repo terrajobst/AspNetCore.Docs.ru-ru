@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-cs
-title: "Распространенные конфигурации различия между разработки и эксплуатации (C#) | Документы Microsoft"
+title: Распространенные конфигурации различия между разработки и эксплуатации (C#) | Документы Microsoft
 author: rick-anderson
-description: "В предыдущих учебниках мы развернули наш веб-сайт, скопировав все необходимые файлы из среды разработки в рабочую среду. Тем не менее я..."
+description: В предыдущих учебниках мы развернули наш веб-сайт, скопировав все необходимые файлы из среды разработки в рабочую среду. Тем не менее я...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 092362e3811213047820dab08efc16e1a1e75020
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 2694e0dba774a5bca13b9acc6b14c3e47226a064
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="common-configuration-differences-between-development-and-production-c"></a>Распространенные конфигурации различия между разработки и эксплуатации (C#)
 ====================
@@ -53,7 +53,7 @@ ms.lasthandoff: 01/30/2018
 Атрибут debug является одним из наиболее важных атрибутов в `<compilation>` элемент. Если `debug` атрибута задано значение «true», а затем скомпилированных сборках содержатся символы отладки, которые нужны при отладке приложения в Visual Studio. Но символы отладки увеличивают размер сборки и наложить дополнительные требования к памяти при выполнении кода. Кроме того, когда `debug` атрибута задано значение «true» содержимого, возвращаемого `WebResource.axd` не кэшируются, то есть каждый раз пользователь открывает страницу, их необходимо повторно загрузить статического содержимого, возвращаемого `WebResource.axd`.
 
 > [!NOTE]
-> `WebResource.axd`встроенные обработчик HTTP появилась в ASP.NET 2.0, серверные элементы управления используют для извлечения внедренных ресурсов, таких как файлы скриптов, изображений, файлов CSS и другое содержимое. Дополнительные сведения о том, как `WebResource.axd` работает и как ее можно использовать для доступа к внедренных ресурсов из пользовательских серверных элементов управления, в разделе [доступ к внедренные ресурсы через URL-адрес с помощью `WebResource.axd` ](http://aspnet.4guysfromrolla.com/articles/080906-1.aspx).
+> `WebResource.axd` встроенные обработчик HTTP появилась в ASP.NET 2.0, серверные элементы управления используют для извлечения внедренных ресурсов, таких как файлы скриптов, изображений, файлов CSS и другое содержимое. Дополнительные сведения о том, как `WebResource.axd` работает и как ее можно использовать для доступа к внедренных ресурсов из пользовательских серверных элементов управления, в разделе [доступ к внедренные ресурсы через URL-адрес с помощью `WebResource.axd` ](http://aspnet.4guysfromrolla.com/articles/080906-1.aspx).
 
 
 `<compilation>` Элемента `debug` атрибут обычно имеет значение «true» в среде разработки. На самом деле этого атрибута должно быть присвоено «true» для отладки веб-приложения; При попытке отладить приложение ASP.NET из Visual Studio и `debug` атрибута задано значение «false», Visual Studio будет отображать сообщение о том, что приложение не может быть отлажен до `debug` атрибута задано значение «true» и будет предложение для внесения этого изменения для вас.
@@ -136,6 +136,6 @@ ms.lasthandoff: 01/30/2018
 - [VS 2008 веб-развертывания проектов](https://weblogs.asp.net/scottgu/archive/2005/11/06/429723.aspx) | [поддержка VS 2008 веб-развертывания проектов с выпуска](https://weblogs.asp.net/scottgu/archive/2008/01/28/vs-2008-web-deployment-project-support-released.aspx)
 - [Проекты веб-развертываний](https://msdn.microsoft.com/magazine/cc163448.aspx)
 
->[!div class="step-by-step"]
-[Назад](deploying-your-site-using-visual-studio-cs.md)
-[Вперед](core-differences-between-iis-and-the-asp-net-development-server-cs.md)
+> [!div class="step-by-step"]
+> [Назад](deploying-your-site-using-visual-studio-cs.md)
+> [Вперед](core-differences-between-iis-and-the-asp-net-development-server-cs.md)

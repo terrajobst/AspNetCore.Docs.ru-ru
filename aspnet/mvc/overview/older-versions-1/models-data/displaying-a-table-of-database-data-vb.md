@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-vb
-title: "Отображение таблицы базы данных (Visual Basic) | Документы Microsoft"
+title: Отображение таблицы базы данных (Visual Basic) | Документы Microsoft
 author: microsoft
-description: "В этом учебнике я демонстрируются два способа отображения набора записей базы данных. Показать два метода форматирования набора записей базы данных в HTML-ta..."
+description: В этом учебнике я демонстрируются два способа отображения набора записей базы данных. Показать два метода форматирования набора записей базы данных в HTML-ta...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/07/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6dc0aa91cfb68d308ed098f429d3251d424ab778
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: dd871520f98aaae2d7b33d83b1646eb9eee88821
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-a-table-of-database-data-vb"></a>Отображение таблицы базы данных (Visual Basic)
 ====================
@@ -185,6 +185,6 @@ Partial в списке 3 содержит шаблон для одной стр
 
 Целью данного учебника было объясняется, как отображать набора записей базы данных в таблицу HTML. Во-первых вы узнали, как получить набор записей базы данных из действия контроллера, используя преимущества платформы Entity Framework корпорации Майкрософт. Далее вы узнали, как использовать формирование шаблонов Visual Studio для создания представления, автоматически отображается коллекция элементов. Наконец вы узнали, как для упрощения просмотра, используя преимущества частичной. Вы узнали, как использовать разделяемый в качестве шаблона, что можно форматировать каждой записи базы данных.
 
->[!div class="step-by-step"]
-[Назад](creating-model-classes-with-linq-to-sql-vb.md)
-[Вперед](performing-simple-validation-vb.md)
+> [!div class="step-by-step"]
+> [Назад](creating-model-classes-with-linq-to-sql-vb.md)
+> [Вперед](performing-simple-validation-vb.md)

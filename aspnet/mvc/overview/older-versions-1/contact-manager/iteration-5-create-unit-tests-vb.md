@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-5-create-unit-tests-vb
-title: "Итерации #5 – Создание модульных тестов (Visual Basic) | Документы Microsoft"
+title: 'Итерации #5 – Создание модульных тестов (Visual Basic) | Документы Microsoft'
 author: microsoft
-description: "В пятой итерации сделан нашего приложения проще в обслуживании и изменить, добавив модульных тестов. Мы макета наших классов модели данных и создания модульных тестов для o..."
+description: В пятой итерации сделан нашего приложения проще в обслуживании и изменить, добавив модульных тестов. Мы макета наших классов модели данных и создания модульных тестов для o...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-5-create-unit-tests-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ab9ff5629cb468b785f5b82178f9f6247a55cacb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fe59792a1e1a7950a318e7e893b3da12d53a8efa
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-5--create-unit-tests-vb"></a>Итерации #5 – Создание модульных тестов (Visual Basic)
 ====================
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
 - Итерации #5 - Создание модульных тестов. В пятой итерации сделан нашего приложения проще в обслуживании и изменить, добавив модульных тестов. Мы макета наших классов модели данных и создания модульных тестов для наших контроллеров и логику проверки.
 
-- Итерация &#6; — с помощью управляемой тестами разработки. В итерации этого шестой мы добавим новые функциональные возможности наше приложение, сначала написание модульных тестов и писать код для модульных тестов. В этой итерации добавим групп контактов.
+- Итерация 6 # — с помощью управляемой тестами разработки. В итерации этого шестой мы добавим новые функциональные возможности наше приложение, сначала написание модульных тестов и писать код для модульных тестов. В этой итерации добавим групп контактов.
 
 - Итерации #7. Добавление функциональности Ajax. В седьмой итерации мы повысить скорость реагирования и производительности приложения, добавляя поддержку Ajax.
 
@@ -105,9 +105,9 @@ ms.lasthandoff: 11/10/2017
 
 Visual Studio включает платформу для создания объекта. Тем не менее имеются несколько инфраструктур макета объекта коммерческих с открытым исходным кодом для платформы .NET framework:
 
-1. Заказа - эта платформа доступна в соответствии с открытой лицензией BSD. Вы можете загрузить заказа из [https://code.google.com/p/moq/](https://code.google.com/p/moq/).
-2. Фиктивных Rhino - эта платформа доступна в соответствии с открытой лицензией BSD. Вы можете загрузить Rhino фиктивных из [http://ayende.com/projects/rhino-mocks.aspx](http://ayende.com/projects/rhino-mocks.aspx).
-3. Typemock изолятор - это коммерческих framework. Можно загрузить ознакомительную версию с [http://www.typemock.com/](http://www.typemock.com/).
+1. Заказа - эта платформа доступна в соответствии с открытой лицензией BSD. Вы можете загрузить заказа из [ https://code.google.com/p/moq/ ](https://code.google.com/p/moq/).
+2. Фиктивных Rhino - эта платформа доступна в соответствии с открытой лицензией BSD. Вы можете загрузить Rhino фиктивных из [ http://ayende.com/projects/rhino-mocks.aspx ](http://ayende.com/projects/rhino-mocks.aspx).
+3. Typemock изолятор - это коммерческих framework. Можно загрузить ознакомительную версию с [ http://www.typemock.com/ ](http://www.typemock.com/).
 
 В этом учебнике решила использовать заказа. Однако можно легко использовать фиктивных Rhino или изолятор Typemock создание макетов объектов для приложения диспетчера контактов.
 
@@ -238,6 +238,6 @@ Visual Studio включает платформу для создания объ
 
 В следующей итерации мы изменить приложение диспетчера контактов, чтобы он поддерживал группы контактов. Мы добавим эти новые командлеты для нашего приложения с помощью процесса разработки программного обеспечения, называемого управляемой тестами разработки.
 
->[!div class="step-by-step"]
-[Назад](iteration-4-make-the-application-loosely-coupled-vb.md)
-[Вперед](iteration-6-use-test-driven-development-vb.md)
+> [!div class="step-by-step"]
+> [Назад](iteration-4-make-the-application-loosely-coupled-vb.md)
+> [Вперед](iteration-6-use-test-driven-development-vb.md)

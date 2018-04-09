@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-cs
-title: "Обзор событий, связанных с вставки, обновления и удаления (C#) | Документы Microsoft"
+title: Обзор событий, связанных с вставки, обновления и удаления (C#) | Документы Microsoft
 author: rick-anderson
-description: "В данном руководстве, мы изучим, с помощью событий, возникающих до, во время и после выполнения вставки обновления или удаления веб-элемента управления данными ASP.NET. W..."
+description: В данном руководстве, мы изучим, с помощью событий, возникающих до, во время и после выполнения вставки обновления или удаления веб-элемента управления данными ASP.NET. W...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 93da23d58d1ba73c5b97f42631d036dd364de24d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 61542f37c9fa3e6c5893aabb0a3116571bd6be5a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-events-associated-with-inserting-updating-and-deleting-c"></a>Обзор событий, связанных с вставки, обновления и удаления (C#)
 ====================
@@ -329,12 +329,12 @@ GridView `RowUpdating` событий принимает в качестве в�
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Jackie Goor и (Liz Shulok). Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](an-overview-of-inserting-updating-and-deleting-data-cs.md)
-[Вперед](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md)
+> [!div class="step-by-step"]
+> [Назад](an-overview-of-inserting-updating-and-deleting-data-cs.md)
+> [Вперед](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md)

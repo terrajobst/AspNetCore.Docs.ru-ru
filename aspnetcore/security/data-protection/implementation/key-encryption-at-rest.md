@@ -1,7 +1,7 @@
 ---
-title: "Шифрование ключа при хранении"
+title: Шифрование ключа при хранении в ASP.NET Core
 author: rick-anderson
-description: "В этом документе описаны особенности реализации элемента ASP.NET Core данных защиты ключа шифрования."
+description: Узнайте подробности реализации защиты данных ASP.NET Core шифрования ключа при хранении.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,20 +9,20 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: c66430bfe547cf061e9e79a703ac665a968bbe0b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 9247b141a44c958f34529e5a42a0ddc8c8893cb0
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-encryption-at-rest"></a>Шифрование ключа при хранении
+# <a name="key-encryption-at-rest-in-aspnet-core"></a>Шифрование ключа при хранении в ASP.NET Core
 
 <a name="data-protection-implementation-key-encryption-at-rest"></a>
 
 По умолчанию система защиты данных [использует эвристику](xref:security/data-protection/configuration/default-settings) для определения способа шифрования материал ключа должен быть в зашифрованном виде. Разработчик можно переопределить эвристика и вручную задать как ключи должны быть в зашифрованном виде.
 
 > [!NOTE]
-> При указании явную ключа шифрования в механизм rest, система защиты данных будет отменить регистрацию механизм хранилища ключей по умолчанию, предоставленный эвристики. Вы должны [укажите механизм явного хранилища ключей](key-storage-providers.md#data-protection-implementation-key-storage-providers), в противном случае система защиты данных не смогут запуститься.
+> При указании явную ключа шифрования в механизм rest, система защиты данных будет отменить регистрацию механизм хранилища ключей по умолчанию, предоставленный эвристики. Вы должны [укажите механизм явного хранилища ключей](xref:security/data-protection/implementation/key-storage-providers#data-protection-implementation-key-storage-providers), в противном случае система защиты данных не смогут запуститься.
 
 <a name="data-protection-implementation-key-encryption-at-rest-providers"></a>
 
@@ -95,7 +95,7 @@ sc.AddDataProtection()
 
 ## <a name="certificate-based-encryption-with-windows-dpapi-ng"></a>Шифрование на основе сертификата с Windows DPAPI-NG
 
-Если вы работаете на Windows 8.1 или Windows Server 2012 R2 или более поздней версии, Windows DPAPI-NG можно использовать для выполнения шифрования на основе сертификатов, даже если приложение выполняется [.NET Core](https://www.microsoft.com/net/core). Для использования этой возможности, используйте строки дескриптора правило «сертификата = HashId:thumbprint», где отпечаток является шестнадцатеричной кодировке отпечаток SHA1 сертификата для использования. Пример см. ниже.
+Если вы работаете на Windows 8.1 или Windows Server 2012 R2 или более поздней версии, Windows DPAPI-NG можно использовать для выполнения шифрования на основе сертификатов, даже если приложение выполняется на основе .NET Core. Для использования этой возможности, используйте строки дескриптора правило «сертификата = HashId:thumbprint», где отпечаток является шестнадцатеричной кодировке отпечаток SHA1 сертификата для использования. Пример см. ниже.
 
 ```csharp
 sc.AddDataProtection()

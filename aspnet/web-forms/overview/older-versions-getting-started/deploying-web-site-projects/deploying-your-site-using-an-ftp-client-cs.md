@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-cs
-title: "Развертывание узла с помощью FTP-клиента (C#) | Документы Microsoft"
+title: Развертывание узла с помощью FTP-клиента (C#) | Документы Microsoft
 author: rick-anderson
-description: "Самый простой способ развертывания приложения ASP.NET требуется вручную скопировать необходимые файлы из среды разработки в рабочую среду. Этом..."
+description: Самый простой способ развертывания приложения ASP.NET требуется вручную скопировать необходимые файлы из среды разработки в рабочую среду. Этом...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3c53dcf40cde244a9df9afc27b20c9e7ef288198
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3b7add6765374fc3e5dba2c90239102354da3922
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-your-site-using-an-ftp-client-c"></a>Развертывание узла с помощью FTP-клиента (C#)
 ====================
@@ -161,6 +161,6 @@ ms.lasthandoff: 01/30/2018
 - [Приложение\_Offline.htm и обходу компонент «Понятного имени IE ошибок»](https://weblogs.asp.net/scottgu/App_5F00_Offline.htm-and-working-around-the-_2200_IE-Friendly-Errors_2200_-feature)
 - [Режимы состояния сеанса](https://msdn.microsoft.com/library/ms178586.aspx)
 
->[!div class="step-by-step"]
-[Назад](determining-what-files-need-to-be-deployed-cs.md)
-[Вперед](deploying-your-site-using-visual-studio-cs.md)
+> [!div class="step-by-step"]
+> [Назад](determining-what-files-need-to-be-deployed-cs.md)
+> [Вперед](deploying-your-site-using-visual-studio-cs.md)

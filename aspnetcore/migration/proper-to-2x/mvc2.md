@@ -1,7 +1,7 @@
 ---
-title: "Миграция с ASP.NET на ASP.NET Core 2.0"
+title: Перенос из ASP.NET в ASP.NET 2.0 Core
 author: isaac2004
-description: "Получите рекомендации для переноса существующих приложений ASP.NET MVC или веб-API ASP.NET 2.0 Core."
+description: Получите рекомендации для переноса существующих приложений ASP.NET MVC или веб-API ASP.NET 2.0 Core.
 manager: wpickett
 ms.author: scaddie
 ms.date: 08/27/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/mvc2
-ms.openlocfilehash: 9424234011525afdba35824b6b324f5175ba023f
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 58fac7642dbfdad58fef99f04d17de33e7218524
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="migrating-from-aspnet-to-aspnet-core-20"></a>Миграция с ASP.NET на ASP.NET Core 2.0
+# <a name="migrate-from-aspnet-to-aspnet-core-20"></a>Перенос из ASP.NET в ASP.NET 2.0 Core
 
 Автор [Айзек Левин](https://isaaclevin.com) (Isaac Levin)
 
@@ -23,7 +23,12 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [Пакет SDK .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии.
+Установка **один** из следующих параметров из [загрузок .NET: Windows](https://www.microsoft.com/net/download/windows):
+
+* Пакет SDK для .NET Core
+* Visual Studio для Windows
+  * **ASP.NET и веб-разработки** рабочей нагрузки
+  * **Кросс платформенной разработки .NET core** рабочей нагрузки
 
 ## <a name="target-frameworks"></a>Требуемые версии .NET Framework
 Проекты ASP.NET Core 2.0 предлагают разработчикам гибкость работы с .NET Core и .NET Framework. Определить наиболее подходящую платформу поможет статья [Выбор между .NET Core и .NET Framework для серверных приложений](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
@@ -145,7 +150,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 Например, ресурс изображения в папке *wwwroot/images* доступен для браузера в расположении `http://<app>/images/<imageFileName>`.
 
-**Примечание**. Более подробное руководство по обработке статических файлов в ASP.NET Core см. в статье [Введение в работу со статическими файлами в ASP.NET Core](xref:fundamentals/static-files).
+**Примечание:** более подробный справочник для обработки статических файлов в ASP.NET Core см [работать с статических файлов в ASP.NET Core](xref:fundamentals/static-files).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

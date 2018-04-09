@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/creating-a-connection-string
-title: "Создание строки подключения и работе с SQL Server LocalDB | Документы Microsoft"
+title: Создание строки подключения и работе с SQL Server LocalDB | Документы Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/creating-a-connection-string
 msc.type: authoredcontent
-ms.openlocfilehash: 25d1c1c9954baaca9ef91eff3dd3c853930a5893
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: edbd46ef8a03670f0cb7527142babe9bd5846c7a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-connection-string-and-working-with-sql-server-localdb"></a>Создание строки подключения и работе с SQL Server LocalDB
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 ## <a name="creating-a-connection-string-and-working-with-sql-server-localdb"></a>Создание строки подключения и работе с SQL Server LocalDB
 
@@ -64,6 +64,6 @@ SQL Server Express не рекомендуется для использован
 
 Далее мы создадим новый `MoviesController` класс, который можно использовать для отображения данных фильма и позволяют пользователям создавать новые вхождения фильма.
 
->[!div class="step-by-step"]
-[Назад](adding-a-model.md)
-[Вперед](accessing-your-models-data-from-a-controller.md)
+> [!div class="step-by-step"]
+> [Назад](adding-a-model.md)
+> [Вперед](accessing-your-models-data-from-a-controller.md)

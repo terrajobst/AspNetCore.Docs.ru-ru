@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-cs
-title: "Программное задание значений параметров ObjectDataSource (C#) | Документы Microsoft"
+title: Программное задание значений параметров ObjectDataSource (C#) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы рассмотрим добавление метода к DAL и МЕТОДА, который принимает один входной параметр и возвращает данные. В примере будет задан этот параметр..."
+description: В этом учебнике мы рассмотрим добавление метода к DAL и МЕТОДА, который принимает один входной параметр и возвращает данные. В примере будет задан этот параметр...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7694c56fa5c50ff75db931e88c2334f560631d74
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1bd1fd63e5aae74459675d45dd399e449d7897b8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="programmatically-setting-the-objectdatasources-parameter-values-c"></a>Программное задание значений параметров ObjectDataSource (C#)
 ====================
@@ -124,7 +124,7 @@ ms.lasthandoff: 01/24/2018
 **Рис. 9**: щелкните значок молнии в окне свойств, чтобы вывести список событий веб-элемента управления
 
 
-Оба подхода добавить новый обработчик событий для элемента управления ObjectDataSource `Selecting` событий для классов кода страницы. В этом обработчике событий можно чтение и запись значений параметров, с помощью `e.InputParameters[parameterName]`, где  *`parameterName`*  значение `Name` атрибута в `<asp:Parameter>` тег ( `InputParameters` коллекция может также быть индексированные порядковым, как и в `e.InputParameters[index]`). Чтобы задать `month` параметр текущему месяцу, добавьте следующий код в `Selecting` обработчик событий:
+Оба подхода добавить новый обработчик событий для элемента управления ObjectDataSource `Selecting` событий для классов кода страницы. В этом обработчике событий можно чтение и запись значений параметров, с помощью `e.InputParameters[parameterName]`, где *`parameterName`* значение `Name` атрибута в `<asp:Parameter>` тег ( `InputParameters` коллекция может также быть индексированные порядковым, как и в `e.InputParameters[index]`). Чтобы задать `month` параметр текущему месяцу, добавьте следующий код в `Selecting` обработчик событий:
 
 
 [!code-csharp[Main](programmatically-setting-the-objectdatasource-s-parameter-values-cs/samples/sample3.cs)]
@@ -147,12 +147,12 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было – Хилтон Гизнау. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](declarative-parameters-cs.md)
-[Вперед](displaying-data-with-the-objectdatasource-vb.md)
+> [!div class="step-by-step"]
+> [Назад](declarative-parameters-cs.md)
+> [Вперед](displaying-data-with-the-objectdatasource-vb.md)

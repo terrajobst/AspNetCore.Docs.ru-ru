@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-details-and-delete-methods
-title: "Изучение сведений и методы удаления | Документы Microsoft"
+title: Изучение сведений и методы удаления | Документы Microsoft
 author: Rick-Anderson
-description: "Примечание: Обновленную версию этого учебника доступен здесь, использующий ASP.NET MVC 5 и Visual Studio 2013. Это более безопасный, гораздо проще выполните и демонстрационных..."
+description: 'Примечание: Обновленную версию этого учебника доступен здесь, использующий ASP.NET MVC 5 и Visual Studio 2013. Это более безопасный, гораздо проще выполните и демонстрационных...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/28/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: f3c56356aaa595e200a16fe0045a8b00dc5823b7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 00f7e5d6679f1bd8875931e601c8151049f785ac
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-details-and-delete-methods"></a>Изучение сведений и методы удаления
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Доступна обновленная версия этого учебника [здесь](../../getting-started/introduction/getting-started.md) , с использованием ASP.NET MVC 5 и Visual Studio 2013. Он является более безопасны, выполните гораздо проще и показаны дополнительные возможности.
@@ -52,7 +52,7 @@ ms.lasthandoff: 01/24/2018
 
 Требуется, чтобы в среде CLR перегруженные методы имели уникальную сигнатуру параметров (то же имя метода, но другой список параметров). Однако здесь требуется два метода Delete — один для GET--и один для POST, имеют одинаковую сигнатуру параметра. (Они оба должны принимать целочисленное значение в качестве параметра.)
 
-Чтобы отсортировать эту возможность, можно сделать несколько факторов. Одна — предоставить методы разные имена. Именно это было представлено в предыдущем примере механизма формирования шаблонов. Однако в этом случае возникает небольшая проблема: ASP.NET сопоставляет сегменты URL-адреса с методами действий по имени, а при переименовании метода, как правило, маршрутизация не сможет найти этот метод. Решение показано в примере, а именно: в метод `DeleteConfirmed` следует добавить атрибут `ActionName("Delete")`. Это фактически выполняет сопоставление по системе маршрутизации, URL-адрес, включающий */Delete/*для POST запрос найдет `DeleteConfirmed` метод.
+Чтобы отсортировать эту возможность, можно сделать несколько факторов. Одна — предоставить методы разные имена. Именно это было представлено в предыдущем примере механизма формирования шаблонов. Однако в этом случае возникает небольшая проблема: ASP.NET сопоставляет сегменты URL-адреса с методами действий по имени, а при переименовании метода, как правило, маршрутизация не сможет найти этот метод. Решение показано в примере, а именно: в метод `DeleteConfirmed` следует добавить атрибут `ActionName("Delete")`. Это фактически выполняет сопоставление по системе маршрутизации, URL-адрес, включающий <em>/Delete/</em>для POST запрос найдет `DeleteConfirmed` метод.
 
 Другой распространенный способ избежать проблемы с методами, которые имеют одинаковые имена и сигнатуры является искусственно изменить сигнатуру метода POST для включения неиспользуемый параметр. Например, некоторые разработчики добавить тип параметра `FormCollection` , передаваемого в метод POST, а затем просто не использовать параметр:
 
@@ -70,8 +70,8 @@ ms.lasthandoff: 01/24/2018
 
 Отзыв приветствия.
 
-— [Рик Андерсон](https://blogs.msdn.com/rickAndy) twitter:[@RickAndMSFT](https://twitter.com/RickAndMSFT)  
-— [Скотт Хансельман](http://www.hanselman.com/blog/) twitter:[@shanselman](https://twitter.com/shanselman)
+— [Рик Андерсон](https://blogs.msdn.com/rickAndy) twitter: [@RickAndMSFT](https://twitter.com/RickAndMSFT)  
+— [Скотт Хансельман](http://www.hanselman.com/blog/) twitter: [@shanselman](https://twitter.com/shanselman)
 
->[!div class="step-by-step"]
-[Назад](adding-validation-to-the-model.md)
+> [!div class="step-by-step"]
+> [Назад](adding-validation-to-the-model.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part8
-title: "Добавление столбца в модель | Документы Microsoft"
+title: Добавление столбца в модель | Документы Microsoft
 author: shanselman
-description: "Это руководство для новичков, в котором представлены основные сведения по ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных."
+description: Это руководство для новичков, в котором представлены основные сведения по ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part8
 msc.type: authoredcontent
-ms.openlocfilehash: 17ee105f596319423ac83cf718683ed293f952f3
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 7a0b64ce00fc5ee6d49990f1d4d93a154c467bf5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-column-to-the-model"></a>Добавление столбца модели
 ====================
@@ -77,11 +77,11 @@ ms.lasthandoff: 01/30/2018
 
 Это основам получен работы, делая контроллеров, связывая их с представлениями и передачи данных жестко. Затем мы создан и предназначенных базы данных и поместить некоторые данные в. Мы извлекает данные из базы данных и он отображается в HTML-таблицу. Затем мы добавили создать форму, которая позволяют добавлять данные в базу данных сами из веб-приложения. Мы добавлены проверки, а затем сделать проверки используется JavaScript на стороне клиента. Наконец мы изменил базу данных, чтобы включить новый столбец данных, а затем обновлены наши две страницы для создания и отображения новых данных.
 
-Читателю теперь можно переходить к обучении промежуточного уровня «[MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md)», а также многие видеоролики и ресурсы на [https://asp.net/mvc](https://asp.net/mvc) Чтобы получить дополнительные сведения о ASP.NET MVC!
+Читателю теперь можно переходить к обучении промежуточного уровня «[MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md)», а также многие видеоролики и ресурсы на [ https://asp.net/mvc ](https://asp.net/mvc) Чтобы получить дополнительные сведения о ASP.NET MVC!
 
 Желаем удачи!
 
-- Скотт Хансельман - [http://hanselman.com](http://hanselman.com) и [ @shanselman ](http://twitter.com/shanselman) в Twitter.
+- Скотт Хансельман - [ http://hanselman.com ](http://hanselman.com) и [ @shanselman ](http://twitter.com/shanselman) в Twitter.
 
->[!div class="step-by-step"]
-[Назад](getting-started-with-mvc-part7.md)
+> [!div class="step-by-step"]
+> [Назад](getting-started-with-mvc-part7.md)

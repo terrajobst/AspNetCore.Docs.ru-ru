@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/adding-search
-title: "Поиск | Документы Microsoft"
+title: Поиск | Документы Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2015
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: 116f681e14af0a09a4eb1502ef9f057c5db2f97d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8afa72d4dbc4695e7d26c6ef4052be08a7c69080
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="search"></a>Поиск
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 ## <a name="adding-a-search-method-and-search-view"></a>Добавление метода поиска и просмотра поиска
 
@@ -157,6 +157,6 @@ Visual Studio 2013 имеет значительное улучшение раб
 
 В этом разделе вы создали поиск метода действия и представления, которые позволяют пользователям выполнять поиск по название фильма и жанр. В следующем разделе будут рассмотрены способы Добавление свойства `Movie` модели и как добавить инициализатор, который автоматически создает тестовую базу данных.
 
->[!div class="step-by-step"]
-[Назад](examining-the-edit-methods-and-edit-view.md)
-[Вперед](adding-a-new-field.md)
+> [!div class="step-by-step"]
+> [Назад](examining-the-edit-methods-and-edit-view.md)
+> [Вперед](adding-a-new-field.md)

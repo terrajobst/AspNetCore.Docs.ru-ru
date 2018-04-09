@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/roles/assigning-roles-to-users-vb
-title: "Назначение ролей для пользователей (VB) | Документы Microsoft"
+title: Назначение ролей для пользователей (VB) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы построим двух страницах ASP.NET, облегчающие управление которыми пользователи принадлежат роли. Первая страница будет включать средства, чтобы увидеть, что..."
+description: В этом учебнике мы построим двух страницах ASP.NET, облегчающие управление которыми пользователи принадлежат роли. Первая страница будет включать средства, чтобы увидеть, что...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/24/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/assigning-roles-to-users-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c790f5f9b486b6598955459827c07ec9ad33ae38
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 959a73f53d4fdb114f222fe8bc830876b76c9d9e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="assigning-roles-to-users-vb"></a>Назначение ролей для пользователей (Visual Basic)
 ====================
@@ -362,12 +362,12 @@ Framework ролей предоставляет методы для получе
 
 ### <a name="about-the-author"></a>Об авторе
 
-Скотт Митчелл, автор нескольких ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга —  *[диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Скотт может быть достигнута по [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) или через его блог по [http://ScottOnWriting.NET](http://scottonwriting.net/).
+Скотт Митчелл, автор нескольких ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга —  *[диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Скотт может быть достигнута по [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) или через его блог по [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Особая благодарность
 
-Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Мерфи Тереза д. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Мерфи Тереза д. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](creating-and-managing-roles-vb.md)
-[Вперед](role-based-authorization-vb.md)
+> [!div class="step-by-step"]
+> [Назад](creating-and-managing-roles-vb.md)
+> [Вперед](role-based-authorization-vb.md)

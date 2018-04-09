@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-vb
-title: "Отображение сводки в нижнем колонтитуле GridView (VB) | Документы Microsoft"
+title: Отображение сводки в нижнем колонтитуле GridView (VB) | Документы Microsoft
 author: rick-anderson
-description: "Сводная информация часто отображается в нижней части отчета в строки итогов. Элемент управления GridView может включать строкой нижнего колонтитула, в которых ячейки, мы можем pr..."
+description: Сводная информация часто отображается в нижней части отчета в строки итогов. Элемент управления GridView может включать строкой нижнего колонтитула, в которых ячейки, мы можем pr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e5b7e39a44d43a857c62842ea3e1dddcacf05c9b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d9a1a3f3c680f367395f984254da6cdcdd3c08d4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-summary-information-in-the-gridviews-footer-vb"></a>Отображение сводки в нижнем колонтитуле GridView (Visual Basic)
 ====================
@@ -101,7 +101,7 @@ ms.lasthandoff: 11/10/2017
 
 [![Получение categoryID значение параметра из DropDownList выбранных категорий](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image23.png)](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image22.png)
 
-**Рис. 8**: получение  *`categoryID`*  значение параметра в выпадающем выбранной категории ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image24.png))
+**Рис. 8**: получение *`categoryID`* значение параметра в выпадающем выбранной категории ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image24.png))
 
 
 После завершения мастера GridView будет иметь поле BoundField для каждого свойства продукта. Давайте очистить, чтобы только эти стояли `ProductName`, `UnitPrice`, `UnitsInStock`, и `UnitsOnOrder` стояли отображаются. Вы можете добавить все параметры уровня полей оставшиеся стояли (таких как формат `UnitPrice` как денежная единица). После внесения этих изменений, GridView должна выглядеть следующим образом:
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/10/2017
 
 [![Получение categoryID значение параметра из DropDownList выбранных категорий](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image26.png)](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image25.png)
 
-**Рис. 9**: получение  *`categoryID`*  значение параметра в выпадающем выбранной категории ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image27.png))
+**Рис. 9**: получение *`categoryID`* значение параметра в выпадающем выбранной категории ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image27.png))
 
 
 ## <a name="step-2-displaying-a-footer-in-the-gridview"></a>Шаг 2: Отображение нижнего колонтитула в GridView
@@ -177,10 +177,10 @@ ms.lasthandoff: 11/10/2017
 
 Чтобы сохранить текущее общее необходимо определить переменные вне обработчика событий. Создайте следующие четыре переменные уровня страницы:
 
-- `_totalUnitPrice`, тип`Decimal`
-- `_totalNonNullUnitPriceCount`, тип`Integer`
-- `_totalUnitsInStock`, тип`Integer`
-- `_totalUnitsOnOrder`, тип`Integer`
+- `_totalUnitPrice`, тип `Decimal`
+- `_totalNonNullUnitPriceCount`, тип `Integer`
+- `_totalUnitsInStock`, тип `Integer`
+- `_totalUnitsOnOrder`, тип `Integer`
 
 Затем напишите код, чтобы увеличить эти три переменные для каждой строки данных обнаружил в `RowDataBound` обработчика событий.
 
@@ -221,7 +221,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Назад](using-the-formview-s-templates-vb.md)
+> [!div class="step-by-step"]
+> [Назад](using-the-formview-s-templates-vb.md)

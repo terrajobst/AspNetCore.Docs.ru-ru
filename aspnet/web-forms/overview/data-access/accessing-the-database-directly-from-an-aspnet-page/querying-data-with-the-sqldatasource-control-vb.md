@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-vb
-title: "Запрос данных с помощью элемента управления SqlDataSource (VB) | Документы Microsoft"
+title: Запрос данных с помощью элемента управления SqlDataSource (VB) | Документы Microsoft
 author: rick-anderson
-description: "В учебниках по выше мы использовали управления ObjectDataSource для полностью отделить уровень представления из уровня доступа к данным. Начиная с этого учебного..."
+description: В учебниках по выше мы использовали управления ObjectDataSource для полностью отделить уровень представления из уровня доступа к данным. Начиная с этого учебного...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a3832bd9847ec8e789b71d13b30a673c8779f4ac
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6f886ca85a2a4dea5daeff109370bedc1a3f7265
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="querying-data-with-the-sqldatasource-control-vb"></a>Запрос данных с помощью элемента управления SqlDataSource (Visual Basic)
 ====================
@@ -201,7 +201,7 @@ SqlDataSource могут быть настроены для возвращени
 
 ![Создание нового элемента управления SqlDataSource с именем ProductsWithCategoryInfoDataSource](querying-data-with-the-sqldatasource-control-vb/_static/image18.gif)
 
-**Рис. 12**: Создание нового элемента управления SqlDataSource с именем`ProductsWithCategoryInfoDataSource`
+**Рис. 12**: Создание нового элемента управления SqlDataSource с именем `ProductsWithCategoryInfoDataSource`
 
 
 Следующий экран появляется запрос на укажите базу данных. Как это делалось обратно на рис. 7 выберите `NORTHWINDConnectionString` из раскрывающегося списка и нажмите кнопку Далее. В настройки на экране инструкции Select Выбор указать пользовательские инструкции SQL или хранимой процедуры "переключатель" и нажмите кнопку Далее. Появится экран Определите специальные операторы или хранимые процедуры, которая содержит вкладки с меткой SELECT, UPDATE, INSERT и DELETE. На каждой из вкладок можно ввести собственную инструкцию SQL в текстовое поле или выбрать хранимую процедуру из раскрывающегося списка. В этом учебнике мы рассмотрим ввод пользовательские инструкции SQL; Далее учебник содержит пример использования хранимой процедуры.
@@ -256,12 +256,12 @@ SqlDataSource могут быть настроены для возвращени
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Connery Сьюзан, Екатерина Leigh и Дэвид Suru. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](implementing-optimistic-concurrency-with-the-sqldatasource-cs.md)
-[Вперед](using-parameterized-queries-with-the-sqldatasource-vb.md)
+> [!div class="step-by-step"]
+> [Назад](implementing-optimistic-concurrency-with-the-sqldatasource-cs.md)
+> [Вперед](using-parameterized-queries-with-the-sqldatasource-vb.md)

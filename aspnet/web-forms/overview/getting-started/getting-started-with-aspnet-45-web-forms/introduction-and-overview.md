@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
-title: "Приступая к работе с 4,5 веб-форм ASP.NET и Visual Studio 2013 | Документы Microsoft"
+title: Приступая к работе с 4,5 веб-форм ASP.NET и Visual Studio 2013 | Документы Microsoft
 author: Erikre
-description: "Этот пошаговые руководства ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio выражать..."
+description: Этот пошаговые руководства ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio выражать...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 6ae398f94c0ac3872601bdc8fd935f6d285793db
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 572b263a5f968b473457771a1dd4075910218c01
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>Приступая к работе с 4,5 веб-форм ASP.NET и Visual Studio 2013
 ====================
@@ -69,7 +69,7 @@ ms.lasthandoff: 03/15/2018
 Возможности веб-форма ASP.NET, представленных в этой серии:
 
 - Проект веб-приложения (не проект веб-сайта)
-- веб-формы
+- Веб-формы
 - Главные страницы, конфигурации
 - начальной загрузки
 - Платформа Entity Framework Code во-первых, LocalDB
@@ -177,9 +177,9 @@ PayPal подтвердит вашей учетной записи, порядо
 
 [Приступая к работе с ASP.NET 4.5 и Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) 
 
-Загрузка *.zip* файла. Чтобы просмотреть завершенный проект, создающем этого учебника ряда, найдите и выберите *C#*папки в *.zip* файла. Сохранить *C#* folderto папки, предназначенный для работы с проектами Visual Studio 2013. По умолчанию папку Проекты Visual Studio 2013 выглядит следующим образом:
+Загрузка <em>.zip</em> файла. Чтобы просмотреть завершенный проект, создающем этого учебника ряда, найдите и выберите <em>C#</em>папки в <em>.zip</em> файла. Сохранить <em>C#</em> folderto папки, предназначенный для работы с проектами Visual Studio 2013. По умолчанию папку Проекты Visual Studio 2013 выглядит следующим образом:
 
-**C:\Users\*****&lt;username&gt;*****\Documents\Visual Studio 2013\Projects**
+<strong>C:\Users\</strong><strong><em>&lt;username&gt;</em></strong><strong>\Documents\Visual Studio 2013\Projects</strong>
 
 Переименуйте ***C#*** папки ***WingtipToys***.
 
@@ -197,5 +197,5 @@ PayPal подтвердит вашей учетной записи, порядо
 
 При возникновении ошибки во время разработки или веб-сайт работает неправильно, сообщения об ошибках может привести сложные выявить источник проблемы или может приводятся сведения по ее устранению. Чтобы упростить некоторых распространенных проблем, можно также использовать [форумы ASP.NET](https://forums.asp.net/) либо в разделе вопросов и объект, входящий в состав [Приступая к работе с веб-форм ASP.NET 4.5 и Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) () C#) образца. Если вы получаете сообщение об ошибке или что-то не работает, как пройти учебники, убедитесь, что выше расположениях.
 
->[!div class="step-by-step"]
-[Вперед](create-the-project.md)
+> [!div class="step-by-step"]
+> [Вперед](create-the-project.md)

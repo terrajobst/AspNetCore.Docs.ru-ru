@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/releases/whats-new-in-aspnet-web-pages-32
-title: "Новые возможности в ASP.NET Web Pages 3.2 | Документы Microsoft"
+title: Новые возможности в ASP.NET Web Pages 3.2 | Документы Microsoft
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/30/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/releases/whats-new-in-aspnet-web-pages-32
 msc.type: authoredcontent
-ms.openlocfilehash: cdb0e259bbf27d1d3dcf6ada11e6636c9cefcc9c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 80421018e0508d430b6142cd3cee1727d1d17b7e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="whats-new-in-aspnet-web-pages-32"></a>Новые возможности веб-страниц ASP.NET версии 3.2
 ====================
@@ -65,7 +65,8 @@ ms.lasthandoff: 11/10/2017
 | ЦП / запроса (образцы req) | 19.73 | 16.47 | -16.50% |
 
 | Выделение цветом: | <font style="background-color: #00ff00">Улучшения ядра</font> | <font style="background-color: #4bacc6">Положительное влияние на производительность</font> |
-| --- | --- | --- |
+|---------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------|
+|               |                                                                 |                                                                               |
 
 ## <a name="aspnet-web-pages-323-beta1"></a>ASP.NET Web Pages 3.2.3 бета-версия 1
 

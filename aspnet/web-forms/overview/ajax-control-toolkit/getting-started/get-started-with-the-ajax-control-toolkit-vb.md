@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-vb
-title: "Приступая к работе с элементов управления AJAX (VB) | Документы Microsoft"
+title: Приступая к работе с элементов управления AJAX (VB) | Документы Microsoft
 author: microsoft
-description: "Дополнительные сведения, вам нужно знать, чтобы приступить к использованию элементов управления AJAX."
+description: Дополнительные сведения, вам нужно знать, чтобы приступить к использованию элементов управления AJAX.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0bbf6dc0be8a96ecd47b8620a6ba3220b50f10d4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 30653a147bd3bf581af27220e11cdecc2f89fc4a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="get-started-with-the-ajax-control-toolkit-vb"></a>Приступая к работе с элементов управления AJAX (Visual Basic)
 ====================
@@ -89,6 +89,6 @@ ms.lasthandoff: 11/10/2017
 - Двоичные файлы - удалить старую версию файл AjaxControlToolkit.dll сборки из папки Bin веб-сайта.
 - Элементы панели элементов - удаление вкладки элементов управления AJAX и выполните действия, перечисленные выше, чтобы повторно создать вкладку с новой версией сборки, файл AjaxControlToolkit.dll.
 
->[!div class="step-by-step"]
-[Назад](creating-a-custom-ajax-control-toolkit-control-extender-cs.md)
-[Вперед](using-ajax-control-toolkit-controls-and-control-extenders-vb.md)
+> [!div class="step-by-step"]
+> [Назад](creating-a-custom-ajax-control-toolkit-control-extender-cs.md)
+> [Вперед](using-ajax-control-toolkit-controls-and-control-extenders-vb.md)

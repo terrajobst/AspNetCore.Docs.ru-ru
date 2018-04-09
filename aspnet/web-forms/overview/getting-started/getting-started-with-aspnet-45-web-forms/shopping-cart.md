@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/shopping-cart
-title: "Корзина для покупок | Документы Microsoft"
+title: Корзина для покупок | Документы Microsoft
 author: Erikre
-description: "Этот учебник ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы..."
+description: Этот учебник ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/shopping-cart
 msc.type: authoredcontent
-ms.openlocfilehash: 9fe6f28685d6a423b03f9c7abe753283b89344e1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a8e96da7737cdf649575711a464c4f7726cb6ded
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="shopping-cart"></a>Корзина для покупок
 ====================
-По [Эрик Reitan](https://github.com/Erikre)
+по [Эрик Reitan](https://github.com/Erikre)
 
 [Загрузите образец проекта Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) или [загрузить электронную (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 01/24/2018
     ![Корзина для покупок - новое диалоговое окно добавления элемента](shopping-cart/_static/image2.png)
 3. Назовите этот новый класс *CartItem.cs*.
 4. Нажмите кнопку **Добавить**.  
- В редакторе отображается новый файл класса.
+   В редакторе отображается новый файл класса.
 5. Замените код по умолчанию следующим кодом:   
 
     [!code-csharp[Main](shopping-cart/samples/sample1.cs)]
@@ -136,7 +136,7 @@ ms.lasthandoff: 01/24/2018
 #### <a name="to-create-the-add-to-cart-functionality"></a>Для создания Add-To-Cart функциональные возможности:
 
 1. В **обозревателе решений**, щелкните правой кнопкой мыши **WingtipToys**проекта, нажмите кнопку **добавить**  - &gt; **новый элемент**.  
- Откроется диалоговое окно **Добавление нового элемента**.
+   Откроется диалоговое окно **Добавление нового элемента**.
 2. Добавление новой стандартной страницы (веб-формы) в приложение с именем *AddToCart.aspx*. 
 
     ![Корзина для покупок - добавить веб-форму](shopping-cart/_static/image4.png)
@@ -154,7 +154,7 @@ ms.lasthandoff: 01/24/2018
 *ShoppingCart.aspx* странице отобразятся продукты, которые пользователь добавил в его корзине. Кроме того, он предоставляет возможность добавлять, удалять и обновлять элементы в список покупок.
 
 1. В **обозревателе решений**, щелкните правой кнопкой мыши **WingtipToys**, нажмите кнопку **добавить**  - &gt; **новый элемент**.  
- Откроется диалоговое окно **Добавление нового элемента**.
+   Откроется диалоговое окно **Добавление нового элемента**.
 2. Добавление новой страницы (веб-формы), включающий главную страницу, выбрав **веб-форма, использующая главную страницу**. Имя новой страницы *ShoppingCart.aspx*.
 3. Выберите **Site.Master** для присоединения главной страницы в только что созданный *.aspx* страницы.
 4. В *ShoppingCart.aspx* страницы, замените существующую разметку следующей разметкой:   
@@ -323,6 +323,6 @@ ms.lasthandoff: 01/24/2018
 
 [Общие сведения о состоянии сеанса ASP.NET](https://msdn.microsoft.com/library/ms178581.aspx)
 
->[!div class="step-by-step"]
-[Назад](display_data_items_and_details.md)
-[Вперед](checkout-and-payment-with-paypal.md)
+> [!div class="step-by-step"]
+> [Назад](display_data_items_and_details.md)
+> [Вперед](checkout-and-payment-with-paypal.md)

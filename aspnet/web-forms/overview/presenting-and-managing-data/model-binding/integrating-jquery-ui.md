@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/integrating-jquery-ui
-title: "Интеграция Datepicker пользовательского интерфейса JQuery с привязкой модели и веб-форм | Документы Microsoft"
+title: Интеграция Datepicker пользовательского интерфейса JQuery с привязкой модели и веб-форм | Документы Microsoft
 author: tfitzmac
-description: "Этот учебник ряд демонстрирует основные аспекты использования привязки модели в проекте веб-форм ASP.NET. Привязка модели позволяет взаимодействия с данными дополнительные прямые-..."
+description: Этот учебник ряд демонстрирует основные аспекты использования привязки модели в проекте веб-форм ASP.NET. Привязка модели позволяет взаимодействия с данными дополнительные прямые-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/integrating-jquery-ui
 msc.type: authoredcontent
-ms.openlocfilehash: da3c8f347a709a4c9a47fd0ecce5201d9b0cd1b1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 126262b440f3e914a7fac3f0b7eeadb4f648d2bb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="integrating-jquery-ui-datepicker-with-model-binding-and-web-forms"></a>Интеграция Datepicker пользовательского интерфейса JQuery с привязкой модели и веб-форм
 ====================
@@ -115,6 +115,6 @@ Datepicker пользовательского интерфейса JQuery мин
 
 В следующем [учебника](using-query-string-values-to-retrieve-data.md), будет использоваться значение строки запроса при выборке данных.
 
->[!div class="step-by-step"]
-[Назад](sorting-paging-and-filtering-data.md)
-[Вперед](using-query-string-values-to-retrieve-data.md)
+> [!div class="step-by-step"]
+> [Назад](sorting-paging-and-filtering-data.md)
+> [Вперед](using-query-string-values-to-retrieve-data.md)

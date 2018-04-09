@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4
-title: "Часть 4: Листинг продукты | Документы Microsoft"
+title: 'Часть 4: Листинг продукты | Документы Microsoft'
 author: JoeStagner
-description: "Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 4 содержит список продуктов с контракту GridView..."
+description: Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 4 содержит список продуктов с контракту GridView...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 420cdbcc002bcbfff619d399a7a374009999d754
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 69b26344e6dcdbf27e94da90ad5d6cd79f27ccd3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-4-listing-products"></a>Часть 4: Список продуктов
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 4 описывает список продуктов с помощью элемента управления GridView.
 
 
-## <a id="_Toc260221670"></a>Список продуктов с помощью элемента управления GridView
+## <a id="_Toc260221670"></a>  Список продуктов с помощью элемента управления GridView
 
 Давайте начнем реализации нашу страницу ProductsList.aspx «Щелкните правой кнопкой мыши» на наших решений и выбрав пункт «Добавить» и «Новый элемент».
 
@@ -100,6 +100,6 @@ ms.lasthandoff: 11/10/2017
 
 Также стоит отметить, что мы создадим простой покупательской корзины и внедрение покупательской корзины логики с отображением корзину для покупок. Мы также можно реализовать наш никак не связана бизнес-уровне.
 
->[!div class="step-by-step"]
-[Назад](tailspin-spyworks-part-3.md)
-[Вперед](tailspin-spyworks-part-5.md)
+> [!div class="step-by-step"]
+> [Назад](tailspin-spyworks-part-3.md)
+> [Вперед](tailspin-spyworks-part-5.md)

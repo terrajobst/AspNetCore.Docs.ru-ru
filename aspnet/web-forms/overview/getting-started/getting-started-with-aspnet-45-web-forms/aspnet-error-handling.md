@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
-title: "Обработка ошибок ASP.NET | Документы Microsoft"
+title: Обработка ошибок ASP.NET | Документы Microsoft
 author: Erikre
-description: "Этот учебник ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы..."
+description: Этот учебник ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: 3f732ae6f1b7845bcae88912b4a4fe26574c10de
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: ac5508334bf6d471471a719b98618bdcd3214fb5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-error-handling"></a>Обработка ошибок ASP.NET
 ====================
@@ -104,7 +104,7 @@ ms.lasthandoff: 03/15/2018
 Перед добавлением в пример приложения Wingtip Toys обработки ошибок, добавим поддержку ведения журнала ошибок, добавив `ExceptionUtility` класса *логику* папки. Таким образом, каждый раз, приложение обрабатывает ошибку, сведения об ошибке будет добавляться в файл журнала ошибок.
 
 1. Щелкните правой кнопкой мыши *логику* папки, а затем выберите **добавить**  - &gt; **новый элемент**.   
- Откроется диалоговое окно **Добавление нового элемента**.
+   Откроется диалоговое окно **Добавление нового элемента**.
 2. Выберите **Visual C#**  - &gt; **кода** группа шаблонов в левой части экрана. Выберите **класса**из середины списка и назовите его **ExceptionUtility.cs**.
 3. Выберите **Добавить**. Отображается новый файл класса.
 4. Замените существующий код следующим кодом:  
@@ -118,7 +118,7 @@ ms.lasthandoff: 03/15/2018
 В примере приложения Wingtip Toys одну страницу будет использоваться для отображения ошибок. Страница «Ошибка» предназначен для Показывать безопасное сообщение пользователям сайта. Тем не менее если пользователь является разработчика, что HTTP-запроса, который предоставляется локально на компьютере, где размещается код, дополнительную информацию об ошибке отображается на странице ошибки.
 
 1. Щелкните правой кнопкой мыши имя проекта (**Wingtip Toys**) в **обозревателе решений** и выберите **добавить**  - &gt; **новый элемент**.   
- Откроется диалоговое окно **Добавление нового элемента**.
+   Откроется диалоговое окно **Добавление нового элемента**.
 2. Выберите **Visual C#**  - &gt; **Web** группа шаблонов в левой части экрана. В среднем списке выберите **веб-форма с главной страницы**и назовите его **ErrorPage.aspx**.
 3. Нажмите кнопку **Добавить**.
 4. Выберите *Site.Master* файл с именем главной страницы, а затем выберите **ОК**.
@@ -166,7 +166,7 @@ ms.lasthandoff: 03/15/2018
 Чтобы проверить, как приложение будет работать при возникновении ошибки происходит, намеренно можно создать условия ошибок в ASP.NET. В примере приложения Wingtip Toys вызовет исключение при загрузке страницы по умолчанию, чтобы увидеть, что произойдет.
 
 1. Откройте код программной части *Default.aspx* страницы в Visual Studio.   
- *Default.aspx.cs* отображается страница с выделенным кодом.
+   *Default.aspx.cs* отображается страница с выделенным кодом.
 2. В `Page_Load` обработчик, добавьте код, чтобы обработчик имеет следующий вид:   
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample9.cs?highlight=3-4)]
@@ -356,11 +356,11 @@ ELMAH готов для хранения необработанных возни
 ## <a name="community-contributions"></a>Материалы сообщества
 
 - Graham Mendick ([@grahammendick](http://twitter.com/grahammendick))  
- Образец кода в библиотеке MSDN, связанные с Visual Studio 2012: [навигации Wingtip Toys](https://code.msdn.microsoft.com/Navigation-Wingtip-Toys-5f0daba2)
+  Образец кода в библиотеке MSDN, связанные с Visual Studio 2012: [навигации Wingtip Toys](https://code.msdn.microsoft.com/Navigation-Wingtip-Toys-5f0daba2)
 - Джеймс Chaney ([jchaney@agvance.net](mailto:jchaney@agvance.net))  
- Образец кода в библиотеке MSDN, связанные с Visual Studio 2012: [рядов ASP.NET 4.5 Web Forms учебника в Visual Basic](https://code.msdn.microsoft.com/ASPNET-45-Web-Forms-f37f0f63)
+  Образец кода в библиотеке MSDN, связанные с Visual Studio 2012: [рядов ASP.NET 4.5 Web Forms учебника в Visual Basic](https://code.msdn.microsoft.com/ASPNET-45-Web-Forms-f37f0f63)
 - Andrielle Azevedo - технические аудитории сотрудником корпорации Майкрософт (twitter: @driazevedo)  
- Visual Studio 2012 перевода: [Iniciando com Introdução ASP.NET Web Forms 4.5 - Parte 1 - e Visão Geral](https://andrielleazevedo.wordpress.com/2013/01/24/iniciando-com-asp-net-web-forms-4-5-introducao-e-visao-geral/)
+  Visual Studio 2012 перевода: [Iniciando com Introdução ASP.NET Web Forms 4.5 - Parte 1 - e Visão Geral](https://andrielleazevedo.wordpress.com/2013/01/24/iniciando-com-asp-net-web-forms-4-5-introducao-e-visao-geral/)
 
->[!div class="step-by-step"]
-[Назад](url-routing.md)
+> [!div class="step-by-step"]
+> [Назад](url-routing.md)

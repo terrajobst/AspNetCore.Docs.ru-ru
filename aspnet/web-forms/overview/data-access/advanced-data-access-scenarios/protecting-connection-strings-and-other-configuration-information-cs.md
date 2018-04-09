@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-cs
-title: "Защита строки соединения и другие сведения о конфигурации (C#) | Документы Microsoft"
+title: Защита строки соединения и другие сведения о конфигурации (C#) | Документы Microsoft
 author: rick-anderson
-description: "Приложения ASP.NET обычно хранят сведения о конфигурации в файле Web.config. Некоторые из этих сведений является конфиденциальной и гарантирует отсутствие защиты. По умолч..."
+description: Приложения ASP.NET обычно хранят сведения о конфигурации в файле Web.config. Некоторые из этих сведений является конфиденциальной и гарантирует отсутствие защиты. По умолч...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e3782e3d4acc2db0e744128dad64fdfae1e8766d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 20a18a36cb5d1621b0b718f87c05eb3175110143
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="protecting-connection-strings-and-other-configuration-information-c"></a>Защита строки соединения и другие сведения о конфигурации (C#)
 ====================
@@ -60,8 +60,8 @@ ASP.NET 2.0 включает систему защищенной конфигу�
 
 .NET Framework предлагает два поставщика защищенной конфигурации:
 
-- [`RSAProtectedConfigurationProvider`](https://msdn.microsoft.com/library/system.configuration.rsaprotectedconfigurationprovider.aspx)-использует асимметричного [алгоритм RSA](http://en.wikipedia.org/wiki/Rsa) для шифрования и расшифровки.
-- [`DPAPIProtectedConfigurationProvider`](https://msdn.microsoft.com/system.configuration.dpapiprotectedconfigurationprovider.aspx)-использует Windows [API защиты данных (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) для шифрования и расшифровки.
+- [`RSAProtectedConfigurationProvider`](https://msdn.microsoft.com/library/system.configuration.rsaprotectedconfigurationprovider.aspx) -использует асимметричного [алгоритм RSA](http://en.wikipedia.org/wiki/Rsa) для шифрования и расшифровки.
+- [`DPAPIProtectedConfigurationProvider`](https://msdn.microsoft.com/system.configuration.dpapiprotectedconfigurationprovider.aspx) -использует Windows [API защиты данных (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) для шифрования и расшифровки.
 
 Поскольку система защищенной конфигурации реализует шаблон проектирования поставщика, можно создать собственный поставщик защищенной конфигурации и подключить его в приложение. В разделе [реализация поставщика конфигурации защищенных](https://msdn.microsoft.com/library/wfc2t3az(VS.80).aspx) Дополнительные сведения об этом процессе.
 
@@ -228,12 +228,12 @@ ASP.NET 2.0 включает систему защищенной конфигу�
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Мерфи Тереза д и Рэнди Шмидт. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md)
-[Вперед](debugging-stored-procedures-cs.md)
+> [!div class="step-by-step"]
+> [Назад](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md)
+> [Вперед](debugging-stored-procedures-cs.md)

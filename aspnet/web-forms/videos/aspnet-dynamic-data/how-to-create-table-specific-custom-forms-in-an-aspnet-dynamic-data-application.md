@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application
-title: "Создание таблицы определенных пользовательских форм в приложении платформа динамических данных | Документы Microsoft"
+title: Создание таблицы определенных пользовательских форм в приложении платформа динамических данных | Документы Microsoft
 author: JoeStagner
-description: "Иногда нам требуется пользовательский Интерфейс в приложении динамических данных ASP.NET по умолчанию. В этом видеоролике мы рассмотрим, как это можно сделать и как можно отключить..."
+description: Иногда нам требуется пользовательский Интерфейс в приложении динамических данных ASP.NET по умолчанию. В этом видеоролике мы рассмотрим, как это можно сделать и как можно отключить...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/11/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application
 msc.type: video
-ms.openlocfilehash: dadb773064d533aab79dbcd6349dc7a73faaf8de
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7f22ee802996c595e5610a70f7da573a7d6d57c0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application"></a>Создание таблицы определенных пользовательских форм в приложении платформа динамических данных
 ====================
@@ -24,8 +24,8 @@ ms.lasthandoff: 11/10/2017
 
 Иногда нам требуется пользовательский Интерфейс в приложении динамических данных ASP.NET по умолчанию. В этом видеоролике мы рассмотрим, как это можно сделать и как можно отключить автоматическое создание столбцов и создать веб-формы, отображаются только данные, которые специально выбрать.
 
-[&#9654; Посмотрите видео (10 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application)
+[&#9654;Посмотрите видео (10 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application)
 
->[!div class="step-by-step"]
-[Назад](how-to-remove-columns-from-your-dynamicdata-data-grids.md)
-[Вперед](aspnet-dynamic-data-custom-form-formatting.md)
+> [!div class="step-by-step"]
+> [Назад](how-to-remove-columns-from-your-dynamicdata-data-grids.md)
+> [Вперед](aspnet-dynamic-data-custom-form-formatting.md)

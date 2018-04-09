@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-vb
-title: "Фильтрация на двух страницах (VB) иерархического | Документы Microsoft"
+title: Фильтрация на двух страницах (VB) иерархического | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы рассмотрим, как для разделения главного и подчиненного представлений отчета на двух страницах. На странице «master» для отображения списка categ мы используем управления повторителем..."
+description: В этом учебнике мы рассмотрим, как для разделения главного и подчиненного представлений отчета на двух страницах. На странице «master» для отображения списка categ мы используем управления повторителем...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/30/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3f43fa998b81800cb1a2b7796ebb3922fc1caeb8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2afc216de3b6894cfdd112787ab92d7483198ecc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-filtering-across-two-pages-vb"></a>Иерархического фильтрации на двух страницах (Visual Basic)
 ====================
@@ -59,7 +59,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-2-turning-the-category-name-into-a-link-to-the-details-page"></a>Шаг 2: Имя категории превращается в ссылку на страницу сведений
 
-Чтобы предоставить пользователю для отображения информации «подробности» для данной категории, необходимо добавить ссылку к каждому маркированный список элементом, к которому, если он выбран, чтобы начать на вторую страницу (`ProductsForCategoryDetails.aspx`). Второй страницы, будет выведено продуктов для выбранной категории с помощью DataList. Чтобы определить категории, в которой связь была нажата, нам нужно передать выбранной категории `CategoryID` на вторую страницу через некоторый механизм. Простой и самый простой способ передачи скалярные данные из одной страницы в другой — через строку запроса, — параметром, который будет использоваться в этом учебнике. В частности `ProductsForCategoryDetails.aspx` страницы будет ожидать, что выбранный  *`categoryID`*  значение должен передаваться querystring поле с именем `CategoryID`. Например, чтобы просмотреть продукты категории напитков, который имеет `CategoryID` 1, пользователю будет посетить `ProductsForCategoryDetails.aspx?CategoryID=1`.
+Чтобы предоставить пользователю для отображения информации «подробности» для данной категории, необходимо добавить ссылку к каждому маркированный список элементом, к которому, если он выбран, чтобы начать на вторую страницу (`ProductsForCategoryDetails.aspx`). Второй страницы, будет выведено продуктов для выбранной категории с помощью DataList. Чтобы определить категории, в которой связь была нажата, нам нужно передать выбранной категории `CategoryID` на вторую страницу через некоторый механизм. Простой и самый простой способ передачи скалярные данные из одной страницы в другой — через строку запроса, — параметром, который будет использоваться в этом учебнике. В частности `ProductsForCategoryDetails.aspx` страницы будет ожидать, что выбранный *`categoryID`* значение должен передаваться querystring поле с именем `CategoryID`. Например, чтобы просмотреть продукты категории напитков, который имеет `CategoryID` 1, пользователю будет посетить `ProductsForCategoryDetails.aspx?CategoryID=1`.
 
 Создание гиперссылки для каждого элемента маркированного списка в Повторителе, то необходимо либо добавить гиперссылку веб-элемент управления или элемент привязки HTML (`<a>`) для `ItemTemplate`. В сценарии, где гиперссылки отображается одинаково для каждой строки, подойдет любой из этих подходов. Знаки повторения я предпочитаю, с помощью элемента привязки. Чтобы использовать элемент привязки, обновите ItemTemplate повторителя:
 
@@ -170,18 +170,18 @@ ms.lasthandoff: 11/10/2017
 
 Хотя отчеты главного и подчиненного представлений можно отобразить основные и подробные записи на одной странице, на многих веб-сайтах они размещены на двух веб-страниц. В этом учебнике мы рассмотрели способы реализации такого отчета иерархического наличием категорий, перечисленных в виде маркированного списка, используя повторитель «главный» веб-странице и соответствующих продуктов, перечисленные на странице «Подробности». Каждый элемент списка на основной веб-странице содержится ссылка на страницу сведений, который передается строка `CategoryID` значение.
 
-На странице сведений о получении этих продуктов для указанного поставщика выполнялось через `ProductsBLL` класса `GetProductsByCategoryID(categoryID)` метод.  *`categoryID`*  Было указано значение параметра декларативно с помощью `CategoryID` значение строки запроса в виде источника параметра. Также мы рассмотрели способы отображения сведений о категории в странице сведений с помощью FormView и отображать сообщение, если бы не принадлежащие к выбранной категории продуктов.
+На странице сведений о получении этих продуктов для указанного поставщика выполнялось через `ProductsBLL` класса `GetProductsByCategoryID(categoryID)` метод. *`categoryID`* Было указано значение параметра декларативно с помощью `CategoryID` значение строки запроса в виде источника параметра. Также мы рассмотрели способы отображения сведений о категории в странице сведений с помощью FormView и отображать сообщение, если бы не принадлежащие к выбранной категории продуктов.
 
 Программирование довольны!
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Особая благодарность
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Зак Джонс и (Liz Shulok). Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
-[Вперед](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)
+> [!div class="step-by-step"]
+> [Назад](master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
+> [Вперед](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)

@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project
-title: "Добавление ASP.NET Identity пустой или существующий веб-форм проекта | Документы Microsoft"
+title: Добавление ASP.NET Identity пустой или существующий веб-форм проекта | Документы Microsoft
 author: raquelsa
-description: "Этот учебник демонстрирует добавление ASP.NET Identity (новый система членства для ASP.NET) для приложения ASP.NET. При создании нового веб-форм или MVC..."
+description: Этот учебник демонстрирует добавление ASP.NET Identity (новый система членства для ASP.NET) для приложения ASP.NET. При создании нового веб-форм или MVC...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/23/2013
 ms.topic: article
 ms.assetid: 1cbc0ed2-5bd6-4b62-8d34-4c193dcd8b25
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project
 msc.type: authoredcontent
-ms.openlocfilehash: 3ab67b93a32106c0b79f9e8d739d47835391edb5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8961e596f0d6cc4810e2439be1ec2915bddb8c78
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-aspnet-identity-to-an-empty-or-existing-web-forms-project"></a>Добавление ASP.NET Identity пустой или существующий веб-форм проекта
 ====================
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/24/2018
   
     ![](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project/_static/image2.png)  
   
- Обратите внимание **изменить аутентификацию** кнопка становится недоступной, и без проверки подлинности не поддерживается в этом шаблоне. Шаблоны веб-форм, MVC и веб-API позволяют выбрать способ проверки подлинности. Дополнительные сведения см. в разделе [обзор проверки подлинности](../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#auth) .
+   Обратите внимание **изменить аутентификацию** кнопка становится недоступной, и без проверки подлинности не поддерживается в этом шаблоне. Шаблоны веб-форм, MVC и веб-API позволяют выбрать способ проверки подлинности. Дополнительные сведения см. в разделе [обзор проверки подлинности](../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#auth) .
 
 ## <a name="adding-identity-packages-to-your-app"></a>Добавление идентификаторов пакетов для приложения
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 01/24/2018
   
     ![](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project/_static/image4.png)
 2. В **указания имени элемента** диалоговом имя новой веб-формы **зарегистрировать**, а затем нажмите кнопку **ОК**
-3. Замените существующую разметку в созданном *Register.aspx* файла следующим кодом. Изменения в коде, выделяются.   
+3. Замените существующую разметку в созданном *Register.aspx* файла следующим кодом. Изменения в коде выделены.   
 
     [!code-aspx[Main](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project/samples/sample1.aspx?highlight=9,12-40)]
 
@@ -152,20 +152,20 @@ ms.lasthandoff: 01/24/2018
     > - `Page_Load` Теперь проверяет состояние текущего пользователя и выполняет действие на основе его `Context.User.Identity.IsAuthenticated` состояния.  
     >     **Отображения регистрации в имени пользователя** : Microsoft ASP.NET Identity Framework перечислил методы расширения в [System.Security.Principal.IIdentity](https://msdn.microsoft.com/library/system.security.principal.iidentity.aspx) , позволяющий получить `UserName` и `UserId` для Пользователь, вошедший в систему. Эти методы расширения определяются в `Microsoft.AspNet.Identity.Core` сборки. Эти методы расширения являются заменой [HttpContext.User.Identity.Name](https://msdn.microsoft.com/library/system.web.httpcontext.user.aspx) .
     > - Метод входа:   
-    >     `This`метод заменяет предыдущий `CreateUser_Click` метод в этот пример и теперь выполняет вход пользователя после успешного создания пользователя.   
+    >     `This` метод заменяет предыдущий `CreateUser_Click` метод в этот пример и теперь выполняет вход пользователя после успешного создания пользователя.   
     >  Платформа Microsoft OWIN добавил методы расширения `System.Web.HttpContext` , позволяющий получить ссылку на `IOwinContext`. Эти методы расширения определяются в `Microsoft.Owin.Host.SystemWeb` сборки. `OwinContext` Предоставляемых классами `IAuthenticationManager` свойство, которое представляет функциональные возможности по промежуточного слоя проверки подлинности, доступные в текущем запросе.  
     >  Пользователь может войти с помощью `AuthenticationManager` из OWIN и вызывая метод `SignIn` и передача в `ClaimsIdentity` как показано выше.   
     >  Поскольку ASP.NET Identity и проверки подлинности файла Cookie OWIN системы на основе утверждений, платформа требует приложение, чтобы создать `ClaimsIdentity` для пользователя.   
     >  `ClaimsIdentity` Содержит сведения о всех утверждений для пользователя, такие как пользователь принадлежит к роли. На этом этапе также можно добавить дополнительные утверждения для пользователя  
     >  Этот код будет вход пользователя и создавать также файл cookie. Этот вызов является аналогом [FormAuthentication.SetAuthCookie](https://msdn.microsoft.com/library/system.web.security.formsauthentication.setauthcookie.aspx) используемые [FormsAuthentication](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx) модуля.
-    > - `SignOut`метод:   
+    > - `SignOut` метод:   
     >  Возвращает ссылку на `AuthenticationManager` из OWIN и вызывает `SignOut`. Это аналогично [FormsAuthentication.SignOut](https://msdn.microsoft.com/library/system.web.security.formsauthentication.signout.aspx) метод, используемый для [FormsAuthentication](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx) модуля.
 5. Нажмите клавишу **сочетание клавиш Ctrl + F5** для построения и запуска веб-приложения. Введите новое имя пользователя и пароль и нажмите кнопку на **зарегистрировать**.  
   
     ![](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project/_static/image13.png)  
- Примечание: на этом этапе новый пользователь создается и вход.
+   Примечание: на этом этапе новый пользователь создается и вход.
 6. Щелкните **Выход** кнопки. Вы будете перенаправлены в журнале в форме.
 7. Введите на недопустимое имя пользователя или пароль и нажмите кнопку **входа** кнопки.   
- `UserManager.Find` Метод вернет значение null, а сообщение об ошибке: « *недопустимое имя пользователя или пароль* » будет отображаться.  
+   `UserManager.Find` Метод вернет значение null, а сообщение об ошибке: « *недопустимое имя пользователя или пароль* » будет отображаться.  
   
     ![](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project/_static/image14.png)

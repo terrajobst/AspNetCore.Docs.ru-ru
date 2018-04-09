@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c
-title: "Как реализовать проверки настраиваемого поля с принудительной логикой в VB или C# | Документы Microsoft"
+title: Как реализовать проверки настраиваемого поля с принудительной логикой в VB или C# | Документы Microsoft
 author: JoeStagner
-description: "В этом видео мы создаст поле декларативной проверки мы реализована в наших предыдущих динамических данных видео и добавить настраиваемую логику программирования в нашем val..."
+description: В этом видео мы создаст поле декларативной проверки мы реализована в наших предыдущих динамических данных видео и добавить настраиваемую логику программирования в нашем val...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/11/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c
 msc.type: video
-ms.openlocfilehash: 3d76101032f152836ffdadb349d44e1cd1e094ca
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 304e00fcf981972841f1801c425b83fede2f0cba
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c"></a>Как реализовать проверки настраиваемого поля с принудительной логикой в VB или C#
 ====================
@@ -24,8 +24,8 @@ ms.lasthandoff: 11/10/2017
 
 В этом видео мы создаст поле декларативной проверки мы реализована в наших предыдущих динамических данных видео и добавить пользовательскую логику программирования в нашем проверки.
 
-[&#9654; Посмотрите видео (9 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c)
+[&#9654;Посмотрите видео (9 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c)
 
->[!div class="step-by-step"]
-[Назад](how-to-use-attribute-validation-in-aspnet-dynamic-data-applications.md)
-[Вперед](how-to-remove-columns-from-your-dynamicdata-data-grids.md)
+> [!div class="step-by-step"]
+> [Назад](how-to-use-attribute-validation-in-aspnet-dynamic-data-applications.md)
+> [Вперед](how-to-remove-columns-from-your-dynamicdata-data-grids.md)

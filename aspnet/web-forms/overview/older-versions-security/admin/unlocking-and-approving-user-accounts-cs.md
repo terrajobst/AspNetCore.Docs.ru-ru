@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-cs
-title: "Снятие блокировки и утверждения учетных записей пользователей (C#) | Документы Microsoft"
+title: Снятие блокировки и утверждения учетных записей пользователей (C#) | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник показывает, как для создания веб-страницы управления для администраторов заблокирован и утверждены состояния пользователей. Также будет показано, как утвердить новый o пользователей..."
+description: Этот учебник показывает, как для создания веб-страницы управления для администраторов заблокирован и утверждены состояния пользователей. Также будет показано, как утвердить новый o пользователей...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f22a745f42dae66cd64dc38df28c59b910c17070
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8b3d69e96513192bc73a2a6a7cbb4c6e33eb610b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="unlocking-and-approving-user-accounts-c"></a>Снятие блокировки и утверждение учетных записей пользователей (C#)
 ====================
@@ -208,12 +208,12 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="about-the-author"></a>Об авторе
 
-Скотт Митчелл, автор нескольких ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга —  *[диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Скотт может быть достигнута по [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) или через его блог по [http://ScottOnWriting.NET](http://scottonwriting.net/).
+Скотт Митчелл, автор нескольких ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга —  *[диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Скотт может быть достигнута по [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) или через его блог по [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Особая благодарность
 
-Этот учебник ряд прошел проверку многие полезные рецензентов. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Этот учебник ряд прошел проверку многие полезные рецензентов. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](recovering-and-changing-passwords-cs.md)
-[Вперед](building-an-interface-to-select-one-user-account-from-many-vb.md)
+> [!div class="step-by-step"]
+> [Назад](recovering-and-changing-passwords-cs.md)
+> [Вперед](building-an-interface-to-select-one-user-account-from-many-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs
-title: "Записи сведений об ошибках с состоянием системы ASP.NET мониторинга (C#) | Документы Microsoft"
+title: Записи сведений об ошибках с состоянием системы ASP.NET мониторинга (C#) | Документы Microsoft
 author: rick-anderson
-description: "Система мониторинга работоспособности корпорации Майкрософт предоставляет простой и настраиваемый способ входа различных веб-события, включая необработанных исключений. В этом учебнике представлены фи..."
+description: Система мониторинга работоспособности корпорации Майкрософт предоставляет простой и настраиваемый способ входа различных веб-события, включая необработанных исключений. В этом учебнике представлены фи...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5bbba0e4e8660dbc60b9f9ad220c923274144b89
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 370f19b36628a9811a31e263e468453897cb7d92
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-c"></a>Записи сведений об ошибках с состоянием системы ASP.NET мониторинга (C#)
 ====================
@@ -154,6 +154,6 @@ ms.lasthandoff: 01/30/2018
 - [Практическое руководство: Использование, мониторинг работоспособности в ASP.NET](https://msdn.microsoft.com/library/ms998306.aspx)
 - [В ASP.NET мониторинга работоспособности](http://aspnet.4guysfromrolla.com/articles/031407-1.aspx)
 
->[!div class="step-by-step"]
-[Назад](processing-unhandled-exceptions-cs.md)
-[Вперед](logging-error-details-with-elmah-cs.md)
+> [!div class="step-by-step"]
+> [Назад](processing-unhandled-exceptions-cs.md)
+> [Вперед](logging-error-details-with-elmah-cs.md)

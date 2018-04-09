@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise
-title: "Веб-развертывания в организации | Документы Microsoft"
+title: Веб-развертывания в организации | Документы Microsoft
 author: jrjlee
-description: "Этот учебник описывает соответствуют большое количество задач, с которыми можно столкнуться при управлении развертывания веб-приложений масштаба предприятия для devel..."
+description: Этот учебник описывает соответствуют большое количество задач, с которыми можно столкнуться при управлении развертывания веб-приложений масштаба предприятия для devel...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise
 msc.type: authoredcontent
-ms.openlocfilehash: 6210d01f65bcadf8ae4209e372d5aac68861bd7a
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: fc463cb689f4f63a12788b80958c9fc8fe20119d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="web-deployment-in-the-enterprise"></a>Веб-развертывания в организации
 ====================
@@ -66,7 +66,7 @@ ms.lasthandoff: 03/15/2018
 
 Этот учебник содержит разделы, в которых делятся на четыре основных области.
 
-В этих разделах вводят эталонного решения & #x 2014; диспетчера контактов решения & #x 2014; и описывается, как загрузить и настроить его на локальном компьютере:
+В этих разделах вводят эталонного решения&#x2014;решения диспетчера контактов&#x2014;и описывается, как загрузить и настроить его на локальном компьютере:
 
 - [Решение диспетчера контактов](the-contact-manager-solution.md)
 - [Настройка решения диспетчера контактов](setting-up-the-contact-manager-solution.md)
@@ -104,5 +104,5 @@ ms.lasthandoff: 03/15/2018
 - [Настройка Team Foundation Server для развертывания веб-](../configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md). Этот учебник описывается настройка TFS для поддержки различных сценариев развертывания, включая автоматическое развертывание в рамках процесса CI и вручную активации развертываний определенные сборки.
 - [Расширенный корпоративного веб-развертывания](../advanced-enterprise-web-deployment/advanced-enterprise-web-deployment.md). Этот учебник описывает, как выполнять различные более сложных задач развертывания, таких как Настройка развертывания базы данных для нескольких сред, за исключением файлов и папок из развертывания и получение веб-приложения в автономный режим во время развертывания .
 
->[!div class="step-by-step"]
-[Вперед](the-contact-manager-solution.md)
+> [!div class="step-by-step"]
+> [Вперед](the-contact-manager-solution.md)

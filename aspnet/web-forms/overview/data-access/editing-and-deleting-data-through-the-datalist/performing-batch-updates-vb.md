@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-vb
-title: "Выполнение пакетных обновлений (VB) | Документы Microsoft"
+title: Выполнение пакетных обновлений (VB) | Документы Microsoft
 author: rick-anderson
-description: "Сведения о создании полностью редактируемое DataList, где все его элементы находятся в режим редактирования и значения которого можно сохранить, нажав кнопку \"Обновить все\" на..."
+description: Сведения о создании полностью редактируемое DataList, где все его элементы находятся в режим редактирования и значения которого можно сохранить, нажав кнопку "Обновить все" на...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/30/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-vb
 msc.type: authoredcontent
-ms.openlocfilehash: df22a7c4aedb5e5fef183817e9d2b1e4c4a919ee
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4d28a431c2b09de8c46079e888aa191017de4e30
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="performing-batch-updates-vb"></a>Выполнение пакетных обновлений (Visual Basic)
 ====================
@@ -43,8 +43,8 @@ ms.lasthandoff: 01/24/2018
 
 В предыдущем учебнике, где мы создание стандартной, уровне элемента для редактирования DataList, мы использовали два шаблона:
 
-- `ItemTemplate`содержит интерфейс пользователя только для чтения (метка веб-элементы управления для отображения каждого s имя и цену продукта).
-- `EditItemTemplate`содержит пользовательский интерфейс редактирования режиме (два элемента управления TextBox Web).
+- `ItemTemplate` содержит интерфейс пользователя только для чтения (метка веб-элементы управления для отображения каждого s имя и цену продукта).
+- `EditItemTemplate` содержит пользовательский интерфейс редактирования режиме (два элемента управления TextBox Web).
 
 Элемент управления DataList s `EditItemIndex` свойство указывает, что `DataListItem` (если таковые имеются) отображается с помощью `EditItemTemplate`. В частности `DataListItem` которого `ItemIndex` значение соответствует DataList s `EditItemIndex` свойство отображается с помощью `EditItemTemplate`. Эта модель работает также в том случае, если при создании полностью редактируемое DataList можно изменить во время, но возвращается друг от друга только один элемент.
 
@@ -163,12 +163,12 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Зак Джонс и Алексей Pespisa. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](an-overview-of-editing-and-deleting-data-in-the-datalist-vb.md)
-[Вперед](handling-bll-and-dal-level-exceptions-vb.md)
+> [!div class="step-by-step"]
+> [Назад](an-overview-of-editing-and-deleting-data-in-the-datalist-vb.md)
+> [Вперед](handling-bll-and-dal-level-exceptions-vb.md)

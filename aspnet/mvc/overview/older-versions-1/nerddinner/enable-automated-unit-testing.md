@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
-title: "Включение автоматического тестирования модулей | Документы Microsoft"
+title: Включение автоматического тестирования модулей | Документы Microsoft
 author: microsoft
-description: "Шаг 12 показано, как разработать набор автоматических модульных тестов, проверьте нашей обновление NerdDinner функциональность и которое даст нам достоверности для внесения изменений..."
+description: Шаг 12 показано, как разработать набор автоматических модульных тестов, проверьте нашей обновление NerdDinner функциональность и которое даст нам достоверности для внесения изменений...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
 msc.type: authoredcontent
-ms.openlocfilehash: 1a4258054d90b2d5bcc06a63fb6f3b4673a4837d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fede08be7e06327c6d04fa5d36f7dd818d79b380
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="enable-automated-unit-testing"></a>Включить автоматическое тестирование модулей
 ====================
@@ -234,7 +234,7 @@ Visual Studio 2008 Professional (и более поздних версий) вк
 
 Платформы имитации упростить тестирование, позволяющих динамически создать фиктивный версии зависимых объектов, которые поддерживают наших тестов. Например мы используем платформа имитации в нашем тесте действие изменения для динамического создания объекта пользователя, наши DinnersController можно использовать для имитации username уточняющего запроса. Это позволит избежать пустая ссылка вызывается при запуске нашем тесте.
 
-Существует много .NET платформы, которые могут использоваться с ASP.NET MVC имитации (вы увидите список их здесь: [http://www.mockframeworks.com/](http://www.mockframeworks.com/)). Для тестирования приложения обновление NerdDinner мы будем использовать с открытым исходным кодом имитации платформу, которая называется «Заказа», который можно загрузить бесплатно из [http://www.mockframeworks.com/moq](http://www.mockframeworks.com/moq).
+Существует много .NET платформы, которые могут использоваться с ASP.NET MVC имитации (вы увидите список их здесь: [ http://www.mockframeworks.com/ ](http://www.mockframeworks.com/)). Для тестирования приложения обновление NerdDinner мы будем использовать с открытым исходным кодом имитации платформу, которая называется «Заказа», который можно загрузить бесплатно из [ http://www.mockframeworks.com/moq ](http://www.mockframeworks.com/moq).
 
 После загрузки, мы добавим ссылку в данном проекте NerdDinner.Tests Moq.dll сборки:
 
@@ -285,6 +285,6 @@ Visual Studio 2008 Professional (и более поздних версий) вк
 
 Некоторые последний переноса комментариев.
 
->[!div class="step-by-step"]
-[Назад](use-ajax-to-implement-mapping-scenarios.md)
-[Вперед](nerddinner-wrap-up.md)
+> [!div class="step-by-step"]
+> [Назад](use-ajax-to-implement-mapping-scenarios.md)
+> [Вперед](nerddinner-wrap-up.md)

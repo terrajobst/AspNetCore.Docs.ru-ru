@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/troubleshooting-the-packaging-process
-title: "Устранение неполадок в процессе упаковки | Документы Microsoft"
+title: Устранение неполадок в процессе упаковки | Документы Microsoft
 author: jrjlee
-description: "В этом разделе описывается, как собирать подробные сведения о процессе обработки пакетов с помощью свойства EnablePackageProcessLoggingAndAssert м..."
+description: В этом разделе описывается, как собирать подробные сведения о процессе обработки пакетов с помощью свойства EnablePackageProcessLoggingAndAssert м...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/troubleshooting-the-packaging-process
 msc.type: authoredcontent
-ms.openlocfilehash: 977077357eb5774193a40c55fabee9733dd5ab2f
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 816ab77c44b52c6449a139475f2ef8546bd38071
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="troubleshooting-the-packaging-process"></a>Устранение неполадок в процессе упаковки
 ====================
@@ -38,9 +38,9 @@ ms.lasthandoff: 03/15/2018
 > > **EnablePackageProcessLoggingAndAssert** свойство работает только при сборке проекта с помощью **отладки** конфигурации. Свойство учитывается в других конфигурациях.
 
 
-Этот раздел входит в состав серию учебников, исходя из требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения & #x 2014; [решения диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014; для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Службы Communication Foundation (WCF) и проект базы данных.
+Этот раздел входит в состав серию учебников, исходя из требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения&#x2014; [решения диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Communication Служба Foundation (WCF) и проект базы данных.
 
-Метод развертывания, в основе этих учебников основан на разбиение проекта файл подход, описанный в [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md), в которой процесс построения управляется двух проектов файлы & #x 2014; один с построение инструкции, которые применяются для каждой целевой среде и, содержащий параметры построения и развертывания конкретной среды. Во время построения файла проекта среды объединяется в файл проекта зависит от среды, образуют полный набор инструкций построения.
+Метод развертывания, в основе этих учебников основан на разбиение проекта файл подход, описанный в [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md), в которой процесс построения управляется двух файлов проекта&#x2014;один с построение инструкции, которые применяются для каждой целевой среде и, содержащий параметры построения и развертывания конкретной среды. Во время построения файла проекта среды объединяется в файл проекта зависит от среды, образуют полный набор инструкций построения.
 
 ## <a name="understanding-the-enablepackageprocessloggingandassert-property"></a>Основные сведения о свойстве EnablePackageProcessLoggingAndAssert
 
@@ -115,5 +115,5 @@ ms.lasthandoff: 03/15/2018
 
 Дополнительные сведения об использовании пользовательские файлы проекта MSBuild для управления процессом развертывания см. в разделе [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md) и [основные сведения о процессе построения](../web-deployment-in-the-enterprise/understanding-the-build-process.md). Дополнительные сведения о WPP и управлении его упаковку в разделе [построения и упаковки проектов веб-приложений](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md). Рекомендации о том, как исключить определенные файлы и папки из веб-развертывания пакетов см. в разделе [за исключением файлов и папок из развертывания](excluding-files-and-folders-from-deployment.md).
 
->[!div class="step-by-step"]
-[Назад](running-windows-powershell-scripts-from-msbuild-project-files.md)
+> [!div class="step-by-step"]
+> [Назад](running-windows-powershell-scripts-from-msbuild-project-files.md)

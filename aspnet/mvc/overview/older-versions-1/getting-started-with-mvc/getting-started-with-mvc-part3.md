@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part3
-title: "Добавление представления | Документы Microsoft"
+title: Добавление представления | Документы Microsoft
 author: shanselman
-description: "Это руководство для новичков, в котором представлены основные сведения по ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных."
+description: Это руководство для новичков, в котором представлены основные сведения по ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part3
 msc.type: authoredcontent
-ms.openlocfilehash: 8725d054861c857ceac10a42b0cc3f2afe056aea
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 978d7980274c072ed559b54ed69ab86245b6c5a7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-view"></a>Добавление представления
 ====================
@@ -120,6 +120,6 @@ ms.lasthandoff: 01/30/2018
 
 Ведь это было типа «M» для модели, но не тип базы данных. Посмотрим, что мы узнали и создать базу данных фильмов.
 
->[!div class="step-by-step"]
-[Назад](getting-started-with-mvc-part2.md)
-[Вперед](getting-started-with-mvc-part4.md)
+> [!div class="step-by-step"]
+> [Назад](getting-started-with-mvc-part2.md)
+> [Вперед](getting-started-with-mvc-part4.md)

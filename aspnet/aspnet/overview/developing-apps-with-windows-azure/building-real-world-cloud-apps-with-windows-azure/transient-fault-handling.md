@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling
-title: "Transient Fault Handling (Создание реальных облачных приложений с Azure) | Документы Microsoft"
+title: Transient Fault Handling (Создание реальных облачных приложений с Azure) | Документы Microsoft
 author: MikeWasson
-description: "Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может..."
+description: Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/03/2015
 ms.topic: article
 ms.assetid: 7ead83bc-c08c-4b26-8617-00e07292e35c
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling
 msc.type: authoredcontent
-ms.openlocfilehash: b743b04789c5e5ebf5ab922cf34a516a16a6d356
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 86bd67b04931ae2452f6e063e6475a434a0125bc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="transient-fault-handling-building-real-world-cloud-apps-with-azure"></a>Transient Fault Handling (Создание реальных облачных приложений с Azure)
 ====================
@@ -104,6 +104,6 @@ ms.lasthandoff: 01/24/2018
 
 - [Основы облачных служб в Azure](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Образец приложения, созданные в Microsoft Azure группа консультантов по, демонстрирует использование [Enterprise библиотеки блок обработки временных сбоев](http://nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/) (TFH). Дополнительные сведения см. в разделе [облачной службы основы уровня доступа к данным — обработка временных сбоев](https://social.technet.microsoft.com/wiki/contents/articles/18665.cloud-service-fundamentals-data-access-layer-transient-fault-handling.aspx). TFH рекомендуется использовать для доступа к базе данных с помощью ADO.NET напрямую (без использования платформы Entity Framework).
 
->[!div class="step-by-step"]
-[Назад](monitoring-and-telemetry.md)
-[Вперед](distributed-caching.md)
+> [!div class="step-by-step"]
+> [Назад](monitoring-and-telemetry.md)
+> [Вперед](distributed-caching.md)

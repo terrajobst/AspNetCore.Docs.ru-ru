@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
-title: "Пользовательский Интерфейс и навигации | Документы Microsoft"
+title: Пользовательский Интерфейс и навигации | Документы Microsoft
 author: Erikre
-description: "Этот учебник ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы..."
+description: Этот учебник ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
 msc.type: authoredcontent
-ms.openlocfilehash: 7f1d8a1a473820a7c8da4c8086904cc41c86fd2a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d2d4101455a85c53e016e567c0cf1337642f1863
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="ui-and-navigation"></a>Пользовательский Интерфейс и навигации
 ====================
-По [Эрик Reitan](https://github.com/Erikre)
+по [Эрик Reitan](https://github.com/Erikre)
 
 [Загрузите образец проекта Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) или [загрузить электронную (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/24/2018
     [!code-aspx[Main](ui_and_navigation/samples/sample2.aspx)]
 5. Сохранить *Default.aspx* страницу, выбрав **сохранить Default.aspx** из **файл** меню.
 
- Итоговый *Default.aspx* страница будет выглядеть следующим образом: 
+   Итоговый *Default.aspx* страница будет выглядеть следующим образом: 
 
 [!code-aspx[Main](ui_and_navigation/samples/sample3.aspx)]
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 01/24/2018
 
 Пример страницы включает основные элементы, которые составляют веб-страницу ASP.NET. Страница содержит статический текст, возможно, в HTML-страницы, а также элементы, относящиеся к ASP.NET. Содержимое, содержащихся в *Default.aspx* страницы будут интегрированы с главной страницы содержимого, что будут описаны далее в этом учебнике.
 
-### <a name="page-directive"></a>@PageДиректива
+### <a name="page-directive"></a>@Page Директива
 
 Веб-форм ASP.NET обычно содержат директивы, которые дают возможность указать страницу свойств и сведения о конфигурации для страницы. Директивы используются ASP.NET в качестве инструкции способ обработки страницы, но они не отображаются как часть разметки, который отправляется в браузер.
 
@@ -166,8 +166,8 @@ ASP.NET поддерживает две модели написания кода
 2. Щелкните правой кнопкой мыши *bootstrap.css* файл и переименуйте его в *original.css начальной загрузки*.
 3. Переименуйте *bootstrap.min.css* для *original.min.css начальной загрузки*.
 4. В **обозревателе решений**, щелкните правой кнопкой мыши *содержимого* папку и выберите **открыть папку в проводнике**.  
- Будет отображаться в проводнике. На это расположение сохраняется загруженных начальной загрузки файлов CSS.
-5. В браузере перейдите к [http://Bootswatch.com](http://bootswatch.com/).
+   Будет отображаться в проводнике. На это расположение сохраняется загруженных начальной загрузки файлов CSS.
+5. В браузере перейдите к [ http://Bootswatch.com ](http://bootswatch.com/).
 6. Прокрутите окно браузера, пока не увидите Cerulean темы. 
 
     ![Пользовательский Интерфейс и навигации - Cerulean темы](ui_and_navigation/_static/image5.png)
@@ -176,9 +176,9 @@ ASP.NET поддерживает две модели написания кода
 
     ![Пользовательский Интерфейс и навигации - в обозревателе решений](ui_and_navigation/_static/image6.png)
 
- Вы увидите два новых файлов CSS в **содержимого** папки, но Обратите внимание, что отображается серым значок рядом с каждым именем файла. Это означает, что файл еще не была добавлена в проект.
+   Вы увидите два новых файлов CSS в **содержимого** папки, но Обратите внимание, что отображается серым значок рядом с каждым именем файла. Это означает, что файл еще не была добавлена в проект.
 9. Щелкните правой кнопкой мыши *bootstrap.css* и *bootstrap.min.css* -файла и выберите **включить в проект**.   
- При запуске приложения Wingtip Toys далее в этом учебнике будет отображаться новый пользовательский Интерфейс.
+   При запуске приложения Wingtip Toys далее в этом учебнике будет отображаться новый пользовательский Интерфейс.
 
 > [!NOTE] 
 > 
@@ -292,6 +292,6 @@ ASP.NET поддерживает две модели написания кода
 [Обзор элементов управления веб-сервера ASP.NET](https://msdn.microsoft.com/library/zsyt68f1.aspx)   
 [Учебник по CSS](http://www.w3schools.com/css/default.asp)
 
->[!div class="step-by-step"]
-[Назад](create_the_data_access_layer.md)
-[Вперед](display_data_items_and_details.md)
+> [!div class="step-by-step"]
+> [Назад](create_the_data_access_layer.md)
+> [Вперед](display_data_items_and_details.md)

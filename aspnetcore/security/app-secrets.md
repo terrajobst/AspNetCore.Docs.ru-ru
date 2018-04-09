@@ -1,7 +1,7 @@
 ---
-title: "Безопасного хранения секрета приложения во время разработки в ASP.NET Core"
+title: Безопасного хранения секрета приложения при разработке в ASP.NET Core
 author: rick-anderson
-description: "Показано, как безопасно хранить секреты во время разработки"
+description: Показано, как безопасно хранить секреты во время разработки
 manager: wpickett
 ms.author: riande
 ms.date: 09/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: a23c9dc9ee1e20c0e0551a372e1cd706bb82070e
-ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
+ms.openlocfilehash: 166111696a9c4244ede44fca8878dd3725bb3099
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="safe-storage-of-app-secrets-during-development-in-aspnet-core"></a>Безопасного хранения секрета приложения во время разработки в ASP.NET Core
+# <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Безопасного хранения секрета приложения при разработке в ASP.NET Core
 
 По [Рик Андерсон](https://twitter.com/RickAndMSFT), [рот Daniel](https://github.com/danroth27), и [Скотт Addie](https://scottaddie.com) 
 
@@ -34,15 +34,14 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="secret-manager"></a>Диспетчер секрет
 
-Секрет диспетчера сохраняет конфиденциальные данные вне вашего дерева проектов для разработки. Секрет диспетчера — это средство проекта, который может использоваться для хранения конфиденциальных данных для [.NET Core](https://www.microsoft.com/net/core) проекта во время разработки. С помощью средства диспетчера секрет можно связать секрета приложения с конкретным проектом и использовать их совместно в нескольких проектах.
+Секрет диспетчера сохраняет конфиденциальные данные вне вашего дерева проектов для разработки. Секрет диспетчера — это средство проекта, который может использоваться для хранения конфиденциальных данных для проекта .NET Core во время разработки. С помощью средства диспетчера секрет можно связать секрета приложения с конкретным проектом и использовать их совместно в нескольких проектах.
 
 >[!WARNING]
 > Секрет диспетчера не шифрования секретов, хранимых и не должен рассматриваться как доверенного хранилища. Это только в целях разработки. Ключи и значения хранятся в файле конфигурации JSON в папке профиля пользователя.
 
 ## <a name="installing-the-secret-manager-tool"></a>Установка средства диспетчера секрет
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
+#### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 Щелкните правой кнопкой мыши проект в обозревателе решений и выберите **изменить \<project_name\>.csproj** в контекстном меню. Добавьте в выделенной строке *.csproj* и сохранение файлов для восстановления, связанный с ним пакет NuGet:
 
 [!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
@@ -59,8 +58,7 @@ ms.lasthandoff: 03/16/2018
 }
 ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
-
+#### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
 Добавить `Microsoft.Extensions.SecretManager.Tools` для *.csproj* файл и запустите [восстановления dotnet](/dotnet/core/tools/dotnet-restore). Можно использовать те же действия для установки средства диспетчера секрета, используемого для командной строки.
 
 [!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
@@ -89,15 +87,14 @@ dotnet user-secrets set MySecret ValueOfMySecret
 ```
 
 Запустить диспетчер секрет из других каталогов, но необходимо использовать `--project` параметр для передачи в пути к *.csproj* файла:
- 
+
 ```console
 dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\webapp1
 ```
 
 Также можно использовать средство диспетчера секрет для перечисления, удаления и очистите секреты приложения.
 
------
-
+* * *
 ## <a name="accessing-user-secrets-via-configuration"></a>Доступ к секретной информации пользователя через конфигурацию
 
 Секреты Manager секрет доступ через систему конфигурации. Добавить `Microsoft.Extensions.Configuration.UserSecrets` упаковка и запуск [восстановления dotnet](/dotnet/core/tools/dotnet-restore).

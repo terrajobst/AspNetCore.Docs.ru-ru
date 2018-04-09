@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-7
-title: "Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4, веб-формы - часть 7 | Документы Microsoft"
+title: Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4, веб-формы - часть 7 | Документы Microsoft
 author: tdykstra
-description: "Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, использующий Entity Framework. Это образец приложения..."
+description: Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, использующий Entity Framework. Это образец приложения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: aeea122636f5235364e6a40cb6e041b1fe221317
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: cb84f4f3e130fedb3e2f1a17d630767ff65bfa05
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-7"></a>Приступая к работе с базой данных Entity Framework 4.0 сначала и форм ASP.NET 4 веб - часть 7
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 > Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, с помощью Entity Framework 4.0 и Visual Studio 2010. Сведения о учебника серии см [в первом учебнике ряда](the-entity-framework-and-aspnet-getting-started-part-1.md)
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/24/2018
 
 [![image14](the-entity-framework-and-aspnet-getting-started-part-7/_static/image4.png)](the-entity-framework-and-aspnet-getting-started-part-7/_static/image3.png)
 
-`Student`сущности имеют четыре свойства: `PersonID`, `LastName`, `FirstName`, и `EnrollmentDate`. База данных автоматически создает значение идентификатора, а хранимая процедура принимает параметры для других трех. Хранимая процедура возвращает значение ключа записи новой строки, чтобы платформа Entity Framework можно хранить список, в версии сущности, он сохраняет в памяти.
+`Student` сущности имеют четыре свойства: `PersonID`, `LastName`, `FirstName`, и `EnrollmentDate`. База данных автоматически создает значение идентификатора, а хранимая процедура принимает параметры для других трех. Хранимая процедура возвращает значение ключа записи новой строки, чтобы платформа Entity Framework можно хранить список, в версии сущности, он сохраняет в памяти.
 
 Сохраните и закройте окно хранимой процедуры.
 
@@ -139,6 +139,6 @@ ms.lasthandoff: 01/24/2018
 
 В следующем уроке будет рассмотрено использование функциональных возможностей платформы динамических данных для упрощения правила программы и тестирования данных форматирования и проверки. Вместо указания для каждого правила веб-страницы, такие как строки формата данных и ли поле является обязательным, можно указать такие правила в метаданных модели данных и выполняется автоматически, они применены на каждой странице.
 
->[!div class="step-by-step"]
-[Назад](the-entity-framework-and-aspnet-getting-started-part-6.md)
-[Вперед](the-entity-framework-and-aspnet-getting-started-part-8.md)
+> [!div class="step-by-step"]
+> [Назад](the-entity-framework-and-aspnet-getting-started-part-6.md)
+> [Вперед](the-entity-framework-and-aspnet-getting-started-part-8.md)

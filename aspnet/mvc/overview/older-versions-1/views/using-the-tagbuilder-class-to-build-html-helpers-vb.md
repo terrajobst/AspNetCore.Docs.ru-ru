@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-vb
-title: "С помощью класса TagBuilder можно построить вспомогательные методы HTML (VB) | Документы Microsoft"
+title: С помощью класса TagBuilder можно построить вспомогательные методы HTML (VB) | Документы Microsoft
 author: StephenWalther
-description: "Стивен Вальтер приведены полезные служебный класс в платформе ASP.NET MVC с именем класса TagBuilder. Легко можно использовать класс TagBuilder..."
+description: Стивен Вальтер приведены полезные служебный класс в платформе ASP.NET MVC с именем класса TagBuilder. Легко можно использовать класс TagBuilder...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 92c003cf929448d0b03f9de76330e9495ac51d20
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 2b72e08dff646f66252f210543230186cab6e641
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-tagbuilder-class-to-build-html-helpers-vb"></a>С помощью класса TagBuilder можно построить вспомогательные методы HTML (Visual Basic)
 ====================
@@ -79,6 +79,6 @@ ms.lasthandoff: 02/12/2018
 
 В приложениях Visual Basic пространства имен по умолчанию совпадает с именем приложения.
 
->[!div class="step-by-step"]
-[Назад](creating-custom-html-helpers-vb.md)
-[Вперед](creating-page-layouts-with-view-master-pages-vb.md)
+> [!div class="step-by-step"]
+> [Назад](creating-custom-html-helpers-vb.md)
+> [Вперед](creating-page-layouts-with-view-master-pages-vb.md)

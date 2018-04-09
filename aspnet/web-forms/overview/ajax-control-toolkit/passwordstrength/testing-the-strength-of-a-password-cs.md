@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-cs
-title: "Тестирование стойкость пароля (C#) | Документы Microsoft"
+title: Тестирование стойкость пароля (C#) | Документы Microsoft
 author: wenz
-description: "Пароли являются обязательными практически в любом месте, чтобы отложенной пользователей, как правило, выберите простые пароли, которые легко взломать. Элемент управления PasswordStrength в ASP. N...."
+description: Пароли являются обязательными практически в любом месте, чтобы отложенной пользователей, как правило, выберите простые пароли, которые легко взломать. Элемент управления PasswordStrength в ASP. N....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-cs
 msc.type: authoredcontent
-ms.openlocfilehash: eda7baae1833b074ba34d8f10fa434df14cc592e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f5f4a7128f2edbef4fbe95faf9de19bdae5f436e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="testing-the-strength-of-a-password-c"></a>Тестирование стойкость пароля (C#)
 ====================
@@ -35,10 +35,10 @@ ms.lasthandoff: 11/10/2017
 
 `PasswordStrength` Управления расширяет текстовое поле и проверяет, является ли пароль в нем достаточно хорошо. Он предлагает широкий набор функций через атрибуты; Ниже приведены только некоторые из них.
 
-- `MinimumNumericCharacters`Минимальное число цифр в пароле
-- `MinimumSymbolCharacters`Минимальное количество специальных символов (не букв и цифр) в пароле
-- `PreferredPasswordLength`Минимальная длина пароля
-- `RequiresUpperAndLowerCaseCharacters`нужно ли использовать прописные и строчные буквы пароль
+- `MinimumNumericCharacters` Минимальное число цифр в пароле
+- `MinimumSymbolCharacters` Минимальное количество специальных символов (не букв и цифр) в пароле
+- `PreferredPasswordLength` Минимальная длина пароля
+- `RequiresUpperAndLowerCaseCharacters` нужно ли использовать прописные и строчные буквы пароль
 
 `StrengthIndicatorType` Сведения будут отображаться стойкость пароля, как текст (значение `"Text"`) или как тип индикатор хода выполнения (значение `"BarIndicator"`). В `DisplayPosition` атрибут, настройке где отображаются сведения. Ниже приведен полный пример, включая ASP.NET AJAX `ScriptManager` управления `PasswordStrength` управления и, конечно, текстовое поле, где пользователь может ввести пароль. Для примера поле последняя форма является регулярного текстовое поле, а не поле пароля, чтобы во время разработки можно увидеть введя.
 
@@ -51,5 +51,5 @@ ms.lasthandoff: 11/10/2017
 
 Теперь пароль () вполне ([Просмотр полноразмерное изображение](testing-the-strength-of-a-password-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Вперед](testing-the-strength-of-a-password-vb.md)
+> [!div class="step-by-step"]
+> [Вперед](testing-the-strength-of-a-password-vb.md)

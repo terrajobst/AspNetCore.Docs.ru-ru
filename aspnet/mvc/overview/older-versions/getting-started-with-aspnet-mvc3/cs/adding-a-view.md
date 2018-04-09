@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-view
-title: "Добавление представления (C#) | Документы Microsoft"
+title: Добавление представления (C#) | Документы Microsoft
 author: Rick-Anderson
-description: "Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся..."
+description: Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-view
 msc.type: authoredcontent
-ms.openlocfilehash: 46d5494e668dfe156aeb6647ded83e6ce5366714
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 50ce4a2024ffd9e2bbb5526717052d486689ff38
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-view-c"></a>Добавление представления (C#)
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Доступна обновленная версия этого учебника [здесь](../../../getting-started/introduction/getting-started.md) , с использованием ASP.NET MVC 5 и Visual Studio 2013. Он является более безопасны, выполните гораздо проще и показаны дополнительные возможности.
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/10/2017
 
 [![_LayoutCshtml](adding-a-view/_static/image8.png)](adding-a-view/_static/image7.png)
 
-Шаблоны макета позволяют указать HTML-разметку контейнера узла в одном месте, а затем применять их на нескольких страницах на сайте. Примечание `@RenderBody()` строки в нижней части файла. `RenderBody`заполнитель, где все страницы представления, создаваемые вами отображаются, «оболочкой» страница макета. Изменение заголовка в шаблон макета с «My MVC Application» на «Приложение MVC фильма».
+Шаблоны макета позволяют указать HTML-разметку контейнера узла в одном месте, а затем применять их на нескольких страницах на сайте. Примечание `@RenderBody()` строки в нижней части файла. `RenderBody` заполнитель, где все страницы представления, создаваемые вами отображаются, «оболочкой» страница макета. Изменение заголовка в шаблон макета с «My MVC Application» на «Приложение MVC фильма».
 
 [!code-cshtml[Main](adding-a-view/samples/sample3.cshtml)]
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 11/10/2017
 
 Теперь изменим заголовка страницы индекса (представление).
 
-Откройте *MvcMovie\Views\HelloWorld\Index.cshtml*. Есть два места для внесения изменений: во-первых, текст, расположенный в заголовке обозревателя, а затем в заголовке получателя ( `<h2>` элемент). Сделайте их немного разными, чтобы видеть, какой именно фрагмент кода изменяет соответствующую часть приложения.
+Open *MvcMovie\Views\HelloWorld\Index.cshtml*. Есть два места для внесения изменений: во-первых, текст, расположенный в заголовке обозревателя, а затем в заголовке получателя ( `<h2>` элемент). Сделайте их немного разными, чтобы видеть, какой именно фрагмент кода изменяет соответствующую часть приложения.
 
 [!code-cshtml[Main](adding-a-view/samples/sample5.cshtml)]
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 11/10/2017
 
 В настоящее время `Welcome` метода действия в `HelloWorldController` класса принимает `name` и `numTimes` параметра, а затем выходные данные значения непосредственно в браузере. Вместо контроллера отрисовки этот ответ в виде строки, изменим на контроллере, чтобы вместо этого используйте представление шаблона. Шаблон представления создаст динамический ответ, для получения которого необходимо передать соответствующие фрагменты данных из контроллера в представление. Это можно сделать, что контроллер поместить динамические данные, которые требуется Просмотр шаблона в `ViewBag` , Просмотр шаблона можно получить доступ к объекту.
 
-Вернитесь к *HelloWorldController.cs* и измените `Welcome` метод, чтобы добавить `Message` и `NumTimes` значение `ViewBag` объекта. `ViewBag`является динамическим объектом, это означает, что любые необходимые можно поместить в него; `ViewBag` объект не имеет определенных свойств, пока не будет помещен внутри него. Полный файл *HelloWorldController.cs* выглядит следующим образом:
+Вернитесь к *HelloWorldController.cs* и измените `Welcome` метод, чтобы добавить `Message` и `NumTimes` значение `ViewBag` объекта. `ViewBag` является динамическим объектом, это означает, что любые необходимые можно поместить в него; `ViewBag` объект не имеет определенных свойств, пока не будет помещен внутри него. Полный файл *HelloWorldController.cs* выглядит следующим образом:
 
 [!code-csharp[Main](adding-a-view/samples/sample6.cs)]
 
@@ -141,6 +141,6 @@ ms.lasthandoff: 11/10/2017
 
 Этот подход характерен для модели, а не для базы данных. Итак, обобщим все полученные данные и попробуем создать базу данных фильмов.
 
->[!div class="step-by-step"]
-[Назад](adding-a-controller.md)
-[Вперед](adding-a-model.md)
+> [!div class="step-by-step"]
+> [Назад](adding-a-controller.md)
+> [Вперед](adding-a-model.md)

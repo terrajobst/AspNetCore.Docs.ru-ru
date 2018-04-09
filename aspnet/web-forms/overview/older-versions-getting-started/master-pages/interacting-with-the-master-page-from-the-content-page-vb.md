@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-vb
-title: "Взаимодействие с главной страницы на странице содержимого (VB) | Документы Microsoft"
+title: Взаимодействие с главной страницы на странице содержимого (VB) | Документы Microsoft
 author: rick-anderson
-description: "Рассматривается вызывать методы, задайте свойства, т. д., из главной страницы из кода на странице содержимого."
+description: Рассматривается вызывать методы, задайте свойства, т. д., из главной страницы из кода на странице содержимого.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/11/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a9020115e6348d30350f8fff493efe88bd0d4c37
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7e92e7abbc69a0998d7563db0d5b206d7ba3d6be
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="interacting-with-the-master-page-from-the-content-page-vb"></a>Взаимодействие с главной страницы на странице содержимого (Visual Basic)
 ====================
@@ -261,18 +261,18 @@ ms.lasthandoff: 01/24/2018
 
 - [Просмотр и обновление данных в ASP.NET](http://aspnet.4guysfromrolla.com/articles/011106-1.aspx)
 - [Главные страницы ASP.NET: Советы, рекомендации и ловушек](http://www.odetocode.com/articles/450.aspx)
-- [`@MasterType`в ASP.NET 2.0](http://odetocode.com/Blogs/scott/archive/2005/07/16/1944.aspx)
+- [`@MasterType` в ASP.NET 2.0](http://odetocode.com/Blogs/scott/archive/2005/07/16/1944.aspx)
 - [Передача сведений об между содержимым и главных страниц](http://aspnet.4guysfromrolla.com/articles/013107-1.aspx)
 - [Работа с данными в учебниках ASP.NET](../../data-access/index.md)
 
 ### <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор по ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 3.5 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Скотт может быть достигнута по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) или через его блог по [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор по ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 3.5 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Скотт может быть достигнута по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) или через его блог по [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Благодарности
 
-Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Зак Джонс. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Зак Джонс. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](control-id-naming-in-content-pages-vb.md)
-[Вперед](interacting-with-the-content-page-from-the-master-page-vb.md)
+> [!div class="step-by-step"]
+> [Назад](control-id-naming-in-content-pages-vb.md)
+> [Вперед](interacting-with-the-content-page-from-the-master-page-vb.md)

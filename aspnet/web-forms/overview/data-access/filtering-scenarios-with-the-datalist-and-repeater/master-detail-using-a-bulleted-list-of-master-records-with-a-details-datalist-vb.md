@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb
-title: "Главного и подчиненного представлений с помощью маркированного списка основных записей с помощью DataList сведения (Visual Basic) | Документы Microsoft"
+title: Главного и подчиненного представлений с помощью маркированного списка основных записей с помощью DataList сведения (Visual Basic) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы будем сжатие двухстраничный главного и подчиненного представлений отчета предыдущего учебника на одной странице отображения маркированного списка имен категорий на t..."
+description: В этом учебнике мы будем сжатие двухстраничный главного и подчиненного представлений отчета предыдущего учебника на одной странице отображения маркированного списка имен категорий на t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 613ad1fb101a168c79310c9dc7bf731be264f889
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4d87dc7f4fb00e96d9eb2653e6fbc1efb8bb656c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb"></a>Главного и подчиненного представлений с помощью маркированного списка основных записей с помощью DataList сведения (Visual Basic)
 ====================
@@ -74,7 +74,7 @@ ms.lasthandoff: 01/24/2018
 
 С помощью повторителя и DataList s вокруг готова мы готов для привязки данных категории повторителя управлять. Тем не менее как показывает маркированный список категорий на рисунке 1, помимо s имена категорий мы также должны отображать количество продуктов, связанные с категорией. Для доступа к этой информации мы можно:
 
-- **Определите класс кода программной s страницы ASP.NET этих сведений.** Получает определенный  *`categoryID`*  мы можно определить число соответствующих продуктов, вызвав `ProductsBLL` класса s `GetProductsByCategoryID(categoryID)` метод. Этот метод возвращает `ProductsDataTable` которого `Count` свойство указывает, сколько `ProductsRow` существует s, который является количество продуктов для указанного  *`categoryID`* . Мы можем создать `ItemDataBound` обработчика событий, для каждой категории, привязанный к повторителя вызывает повторителя `ProductsBLL` класса s `GetProductsByCategoryID(categoryID)` метод и включает его счетчик в выходных данных.
+- **Определите класс кода программной s страницы ASP.NET этих сведений.** Получает определенный *`categoryID`* мы можно определить число соответствующих продуктов, вызвав `ProductsBLL` класса s `GetProductsByCategoryID(categoryID)` метод. Этот метод возвращает `ProductsDataTable` которого `Count` свойство указывает, сколько `ProductsRow` существует s, который является количество продуктов для указанного *`categoryID`*. Мы можем создать `ItemDataBound` обработчика событий, для каждой категории, привязанный к повторителя вызывает повторителя `ProductsBLL` класса s `GetProductsByCategoryID(categoryID)` метод и включает его счетчик в выходных данных.
 - **Обновление `CategoriesDataTable` типизированного набора данных для включения `NumberOfProducts` столбца.** Затем можно обновить `GetCategories()` метод в `CategoriesDataTable` включить эту информацию, или можно также оставить `GetCategories()` как- и создать новый `CategoriesDataTable` метод с именем `GetCategoriesAndNumberOfProducts()`.
 
 Разрешить просмотр оба этих метода s. Первый подход — проще, так как мы не хотите t необходимость обновить уровень доступа к данным; Однако он требует дополнительные связи с базой данных. Вызов `ProductsBLL` класса s `GetProductsByCategoryID(categoryID)` метод в `ItemDataBound` обработчик событий добавляет вызова дополнительные базы данных для каждой категории отображается в Повторителе. С помощью этого метода есть *N* + вызовы 1 базы данных, где *N* — количество категорий, отображаемых в Повторителе. Во втором подходе возвращается число продуктов со сведениями о каждой категории из `CategoriesBLL` класса s `GetCategories()` (или `GetCategoriesAndNumberOfProducts()`) метода, тем самым возникающие только одно обращение к базе данных.
@@ -210,7 +210,7 @@ DAL и уровень бизнес-ЛОГИКИ завершения, мы re г
 
 На этом этапе у нас есть `Categories` повторителя со списком категорий, а также количество продуктов в каждой категории. Повторителя использует LinkButton для каждой категории, что при нажатии вызывает обратную передачу, с которой указывают мы должны отображать эти продукты для выбранной категории в `CategoryProducts` DataList.
 
-Одна из проблем с выходом нам описана настройка DataList отобразить только те продукты, для выбранной категории. В [главный/Detail, с помощью выбираемого основного элемента GridView с DetailsView сведения](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md) учебника мы узнали, как построить GridView, строки которого может быть выбрана, с выбранной строки s сведений, отображаемых в элементе управления DetailsView на одной странице. GridView s ObjectDataSource возвращаются сведения обо всех приложениях с помощью `ProductsBLL` s `GetProducts()` метод при DetailsView s ObjectDataSource получить сведения об использовании выбранного продукта `GetProductsByProductID(productID)` метод. *`productID`*  Декларативно указано значение параметра, связав ее со значением GridView s `SelectedValue` свойство. К сожалению, нет повторителя `SelectedValue` свойство и не может выступать в качестве источника параметра.
+Одна из проблем с выходом нам описана настройка DataList отобразить только те продукты, для выбранной категории. В [главный/Detail, с помощью выбираемого основного элемента GridView с DetailsView сведения](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md) учебника мы узнали, как построить GridView, строки которого может быть выбрана, с выбранной строки s сведений, отображаемых в элементе управления DetailsView на одной странице. GridView s ObjectDataSource возвращаются сведения обо всех приложениях с помощью `ProductsBLL` s `GetProducts()` метод при DetailsView s ObjectDataSource получить сведения об использовании выбранного продукта `GetProductsByProductID(productID)` метод. *`productID`* Декларативно указано значение параметра, связав ее со значением GridView s `SelectedValue` свойство. К сожалению, нет повторителя `SelectedValue` свойство и не может выступать в качестве источника параметра.
 
 > [!NOTE]
 > Это одна из этих проблем, появляющихся при использовании LinkButton в повторитель. Мы использовали гиперссылки для передачи в `CategoryID` через строку запроса вместо этого можно использовать это поле QueryString как источник для значения параметра s.
@@ -233,7 +233,7 @@ DAL и уровень бизнес-ЛОГИКИ завершения, мы re г
 
 [![Выполните не указан источник параметров для categoryID параметра](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image36.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image35.png)
 
-**Рис. 13**: не указан источник параметров для  *`categoryID`*  параметра ([Просмотр полноразмерное изображение](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image37.png))
+**Рис. 13**: не указан источник параметров для *`categoryID`* параметра ([Просмотр полноразмерное изображение](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image37.png))
 
 
 После завершения работы мастера настройки источника данных Visual Studio автоматически создает элемент управления DataList s `ItemTemplate`. Замените это значение по умолчанию `ItemTemplate` с шаблоном мы используется в предыдущем учебнике; Кроме того, задать DataList s `RepeatColumns` равным 2. После внесения этих изменений декларативная разметка для DataList и связанные методы должны выглядеть следующим образом:
@@ -241,7 +241,7 @@ DAL и уровень бизнес-ЛОГИКИ завершения, мы re г
 
 [!code-aspx[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/samples/sample10.aspx)]
 
-В настоящее время `CategoryProductsDataSource` ObjectDataSource s  *`categoryID`*  никогда не установлено, поэтому продукты не отображаются при просмотре страницы. Нам нужно выполнить будет иметь значение параметра, установленное на основе `CategoryID` выбранной категории в Повторителе. Это возникают две проблемы: во-первых, как мы определяем при LinkButton в повторителя s `ItemTemplate` пользователь щелкнул; и второй, как мы определить `CategoryID` выполнен щелчок LinkButton которого соответствующей категории?
+В настоящее время `CategoryProductsDataSource` ObjectDataSource s *`categoryID`* никогда не установлено, поэтому продукты не отображаются при просмотре страницы. Нам нужно выполнить будет иметь значение параметра, установленное на основе `CategoryID` выбранной категории в Повторителе. Это возникают две проблемы: во-первых, как мы определяем при LinkButton в повторителя s `ItemTemplate` пользователь щелкнул; и второй, как мы определить `CategoryID` выполнен щелчок LinkButton которого соответствующей категории?
 
 LinkButton как элементы управления кнопок имеет `Click` событий и [ `Command` событие](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.command.aspx). `Click` Позволяет просто Обратите внимание, что был выполнен щелчок LinkButton событий. Время от времени Однако помимо отметить, что был выполнен щелчок LinkButton мы также необходимо передать некоторыми дополнительными сведениями в обработчик событий. Если это так, LinkButton s [ `CommandName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.commandname.aspx) и [ `CommandArgument` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.commandargument.aspx) свойств можно назначить эти дополнительные данные. Затем, при нажатии элемента управления LinkButton его `Command` события (вместо его `Click` событий) и обработчик событий передается значения `CommandName` и `CommandArgument` свойства.
 
@@ -296,11 +296,11 @@ LinkButton как элементы управления кнопок имеет 
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Зак Джонс. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](master-detail-filtering-acess-two-pages-datalist-vb.md)
+> [!div class="step-by-step"]
+> [Назад](master-detail-filtering-acess-two-pages-datalist-vb.md)

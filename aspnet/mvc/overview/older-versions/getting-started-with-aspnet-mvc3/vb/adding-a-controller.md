@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-controller
-title: "Добавление контроллера (VB) | Документы Microsoft"
+title: Добавление контроллера (VB) | Документы Microsoft
 author: Rick-Anderson
-description: "Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся..."
+description: Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 74113d76a74b1da27a7f9a33a13038a0c36ad036
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9a433083c31c7929f7599e52800c887f301d7727
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-controller-vb"></a>Добавление контроллера (Visual Basic)
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, которой — это бесплатная версия Microsoft Visual Studio. Прежде чем начать, убедитесь, что вы установили необходимые компоненты, перечисленные ниже. Все из них можно установить, щелкнув по следующей ссылке: [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Кроме того можно установить отдельно предварительные требования, используя следующие ссылки:
 > 
@@ -79,6 +79,6 @@ ASP.NET MVC вызывает другой контроллер классы (и 
 
 В обоих этих примерах контроллер выполнения VC часть MVC — это работа представление и контроллер. Контроллер вернул HTML напрямую. Обычно мы не хотим контроллеров, возвращение HTML напрямую, так как становится очень сложно в код. Вместо этого мы обычно используем отдельное представление файла шаблона для создания HTML-ответа. Давайте взглянем на как можно это сделать.
 
->[!div class="step-by-step"]
-[Назад](intro-to-aspnet-mvc-3.md)
-[Вперед](adding-a-view.md)
+> [!div class="step-by-step"]
+> [Назад](intro-to-aspnet-mvc-3.md)
+> [Вперед](adding-a-view.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/project-properties
-title: "ASP.NET веб-развертывания Visual Studio с помощью: свойства проекта | Документы Microsoft"
+title: 'ASP.NET веб-развертывания Visual Studio с помощью: свойства проекта | Документы Microsoft'
 author: tdykstra
-description: "Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол..."
+description: Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/project-properties
 msc.type: authoredcontent
-ms.openlocfilehash: 85b6dbcc8d40c168a49513ef6b549f9ec7fa5097
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: fba3f089bf1693eec873b08b4bc50e3accba06ee
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-project-properties"></a>ASP.NET веб-развертывания Visual Studio с помощью: свойства проекта
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузите начальный проект](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -68,6 +68,6 @@ ms.lasthandoff: 01/24/2018
 
 Теперь завершения всех задач настройки развертывания. В следующем уроке будет развернуть сайт Contoso университета в тестовой среде и протестируйте его.
 
->[!div class="step-by-step"]
-[Назад](web-config-transformations.md)
-[Вперед](deploying-to-iis.md)
+> [!div class="step-by-step"]
+> [Назад](web-config-transformations.md)
+> [Вперед](deploying-to-iis.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/configuring-aspnet-web-api
-title: "Настройка ASP.NET Web API 2 | Документы Microsoft"
+title: Настройка ASP.NET Web API 2 | Документы Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/configuring-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: f9b471fe2afdce278869a2e4d9b693a78030324b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: de2396710fb9434c84bf14a2faa37b98154f34d8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-aspnet-web-api-2"></a>Настройка ASP.NET Web API 2
 ====================
@@ -35,7 +35,7 @@ ms.lasthandoff: 01/24/2018
 
 Определенные параметры конфигурации веб-API в [HttpConfiguration](https://msdn.microsoft.com/library/system.web.http.httpconfiguration.aspx) класса.
 
-| Член | Описание: |
+| Член | Описание |
 | --- | --- |
 | **DependencyResolver** | Позволяет внедрения зависимостей для контроллеров. В разделе [с помощью сопоставителя зависимостей веб-API](dependency-injection.md). |
 | **Фильтры** | Фильтры действий. |
@@ -99,7 +99,7 @@ ms.lasthandoff: 01/24/2018
 Один экземпляр службы
 
 
-| Служба | Описание: |
+| Служба | Описание |
 | --- | --- |
 | **IActionValueBinder** | Возвращает привязку для параметра. |
 | **IApiExplorer** | Получает описания API-интерфейсы, предоставляемые приложением. В разделе [Создание страницы справки для веб-API](../getting-started-with-aspnet-web-api/creating-api-help-pages.md). |
@@ -120,13 +120,13 @@ ms.lasthandoff: 01/24/2018
 Нескольких экземпляров служб
 
 
-| Служба | Описание: |
-| --- | --- |
-| **IFilterProvider** | Возвращает список фильтров для действия контроллера. |
-| **ModelBinderProvider** | Возвращает связыватель модели для данного типа. |
-| **ModelMetadataProvider** | Предоставляет метаданные для модели. |
-| **ModelValidatorProvider** | Предоставляет проверяющий элемент управления для модели. |
-| **ValueProviderFactory** | Создает поставщик значений. Дополнительные сведения см. в разделе блога Майк стол [Создание поставщика пользовательских значений в WebAPI](https://blogs.msdn.com/b/jmstall/archive/2012/04/23/how-to-create-a-custom-value-provider-in-webapi.aspx) |.
+|                 Служба                 |                                                                                                              Описание                                                                                                               |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|    <strong>IFilterProvider</strong>     |                                                                                           Возвращает список фильтров для действия контроллера.                                                                                           |
+|  <strong>ModelBinderProvider</strong>   |                                                                                                Возвращает связыватель модели для данного типа.                                                                                                |
+| <strong>ModelMetadataProvider</strong>  |                                                                                                     Предоставляет метаданные для модели.                                                                                                     |
+| <strong>ModelValidatorProvider</strong> |                                                                                                   Предоставляет проверяющий элемент управления для модели.                                                                                                    |
+|  <strong>ValueProviderFactory</strong>  | Создает поставщик значений. Дополнительные сведения см. в разделе блога Майк стол [Создание поставщика пользовательских значений в WebAPI](https://blogs.msdn.com/b/jmstall/archive/2012/04/23/how-to-create-a-custom-value-provider-in-webapi.aspx) |
 
 Чтобы добавить пользовательскую реализацию нескольких экземпляров службы, вызовите **добавить** или **вставить** на **служб** коллекции:
 

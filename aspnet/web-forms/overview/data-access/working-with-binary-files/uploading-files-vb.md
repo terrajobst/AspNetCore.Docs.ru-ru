@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-binary-files/uploading-files-vb
-title: "Передача файлов (VB) | Документы Microsoft"
+title: Передача файлов (VB) | Документы Microsoft
 author: rick-anderson
-description: "Узнайте, как разрешить пользователям отправлять двоичных файлов (таких как документы Word или PDF) на веб-сайт, где они могут храниться в файловой системе либо сервера..."
+description: Узнайте, как разрешить пользователям отправлять двоичных файлов (таких как документы Word или PDF) на веб-сайт, где они могут храниться в файловой системе либо сервера...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/27/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/uploading-files-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 69586ade54a40aabb55dd507731a6c2820774c04
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: fbc4aaf80ac7e0f960e140b492055fe35cd2b6ce
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="uploading-files-vb"></a>Передача файлов (Visual Basic)
 ====================
@@ -124,9 +124,9 @@ ms.lasthandoff: 01/24/2018
 
 Как было сказано в *Создание слой доступа к данным*, DataTables типизированного набора данных составляют бизнес-объектов. Адаптеры таблиц отвечают за взаимодействие с базой данных и заполнения бизнес-объектов с результатами запроса. `CategoriesDataTable` Заполняется `CategoriesTableAdapter`, который имеет три метода извлечения данных:
 
-- `GetCategories()`выполняет s основного запроса адаптера таблицы и возвращает `CategoryID`, `CategoryName`, и `Description` поля всех записей в `Categories` таблицы. Основной запрос используется, автоматически сгенерированный `Insert` и `Update` методы.
-- `GetCategoryByCategoryID(categoryID)`Возвращает `CategoryID`, `CategoryName`, и `Description` поля категории которого `CategoryID` равняется *categoryID*.
-- `GetCategoriesAndNumberOfProducts()`— Возвращает `CategoryID`, `CategoryName`, и `Description` поля для всех записей в `Categories` таблицы. Также использует вложенный запрос для возврата количества продуктов, связанных с каждой категории.
+- `GetCategories()` выполняет s основного запроса адаптера таблицы и возвращает `CategoryID`, `CategoryName`, и `Description` поля всех записей в `Categories` таблицы. Основной запрос используется, автоматически сгенерированный `Insert` и `Update` методы.
+- `GetCategoryByCategoryID(categoryID)` Возвращает `CategoryID`, `CategoryName`, и `Description` поля категории которого `CategoryID` равняется *categoryID*.
+- `GetCategoriesAndNumberOfProducts()` — Возвращает `CategoryID`, `CategoryName`, и `Description` поля для всех записей в `Categories` таблицы. Также использует вложенный запрос для возврата количества продуктов, связанных с каждой категории.
 
 Обратите внимание, что ни один из них возвращаемых запросами `Categories` таблицу s `Picture` или `BrochurePath` столбцы; также не `CategoriesDataTable` предоставляют `DataColumn` s для этих полей. Для работы с изображением и `BrochurePath` свойства, необходимо предварительно добавить их в `CategoriesDataTable` и обновите `CategoriesTableAdapter` класса, чтобы вернуть эти столбцы.
 
@@ -287,12 +287,12 @@ FileUpload s `SaveAs(filePath)` сохраняет загруженный фай
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Мерфи Тереза д и Екатерина Leigh. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](updating-and-deleting-existing-binary-data-cs.md)
-[Вперед](displaying-binary-data-in-the-data-web-controls-vb.md)
+> [!div class="step-by-step"]
+> [Назад](updating-and-deleting-existing-binary-data-cs.md)
+> [Вперед](displaying-binary-data-in-the-data-web-controls-vb.md)

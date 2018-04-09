@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/hosting-aspnet-web-api/host-aspnet-web-api-in-an-azure-worker-role
-title: "Размещения ASP.NET Web API 2 в рабочей роли Azure | Документы Microsoft"
+title: Размещения ASP.NET Web API 2 в рабочей роли Azure | Документы Microsoft
 author: MikeWasson
-description: "Этого учебника показано, как разместить веб-API ASP.NET в рабочей роли Azure, с помощью OWIN для самостоятельного размещения платформа веб-API. Открыть веб-интерфейс .NET (OWIN) de..."
+description: Этого учебника показано, как разместить веб-API ASP.NET в рабочей роли Azure, с помощью OWIN для самостоятельного размещения платформа веб-API. Открыть веб-интерфейс .NET (OWIN) de...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/02/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/hosting-aspnet-web-api/host-aspnet-web-api-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: 9a7f8242bf482e81513accfe05e10a64ae0ca0b2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7ba1dc850e2f9d9c88e6ddf263a796e1867a98be
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="host-aspnet-web-api-2-in-an-azure-worker-role"></a>Размещения ASP.NET Web API 2 в рабочей роли Azure
 ====================
@@ -131,7 +131,7 @@ ms.lasthandoff: 01/24/2018
 
 [![](host-aspnet-web-api-in-an-azure-worker-role/_static/image11.png)](host-aspnet-web-api-in-an-azure-worker-role/_static/image10.png)
 
-Поиск IP-адреса в развертываниях службы развертывания [id], сведения о службе. Откройте веб-браузер и перейдите к http://*адрес*/test/1, где *адрес* IP-адрес, назначенный эмулятор вычислений; например, `http://127.0.0.1:80/test/1`. Вы увидите ответа от контроллера веб-API:
+Поиск IP-адреса в развертываниях службы развертывания [id], сведения о службе. Откройте веб-браузер и перейдите к http://<em>адрес</em>/test/1, где <em>адрес</em> IP-адрес, назначенный эмулятор вычислений; например, `http://127.0.0.1:80/test/1`. Вы увидите ответа от контроллера веб-API:
 
 ![](host-aspnet-web-api-in-an-azure-worker-role/_static/image12.png)
 

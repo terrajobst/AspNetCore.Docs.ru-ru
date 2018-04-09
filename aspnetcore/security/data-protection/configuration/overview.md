@@ -1,7 +1,7 @@
 ---
-title: "Настройка защиты данных в ASP.NET Core"
+title: Настройка защиты данных ASP.NET Core
 author: rick-anderson
-description: "Дополнительные сведения о настройке защиты данных в ASP.NET Core."
+description: Дополнительные сведения о настройке защиты данных в ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 07/17/2017
@@ -9,19 +9,19 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 0fe1fd7b81a0e5aa00ae14c7e6fdbd9cc88ec4fe
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3a19cec2ce4387ca44ca120f031a072269b93454
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="configuring-data-protection-in-aspnet-core"></a>Настройка защиты данных в ASP.NET Core
+# <a name="configure-aspnet-core-data-protection"></a>Настройка защиты данных ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 При инициализации системы защиты данных, оно применяется [параметры по умолчанию](xref:security/data-protection/configuration/default-settings) в зависимости от рабочей среды. Эти параметры обычно подходят для приложений, выполняющихся на одном компьютере. Существуют случаи, когда разработчик может потребоваться изменить параметры по умолчанию, возможно, потому что их приложения распределены между несколькими компьютерами или соответствия требованиям. В этих сценариях в системе защиты данных предлагает широкие возможности настройки API.
 
-Является методом расширения [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) , возвращающий [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder`Предоставляет методы расширения, что можно соединить в цепочку вместе для настройки защиты данных параметров.
+Является методом расширения [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) , возвращающий [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` Предоставляет методы расширения, что можно соединить в цепочку вместе для настройки защиты данных параметров.
 
 ## <a name="persistkeystofilesystem"></a>PersistKeysToFileSystem
 

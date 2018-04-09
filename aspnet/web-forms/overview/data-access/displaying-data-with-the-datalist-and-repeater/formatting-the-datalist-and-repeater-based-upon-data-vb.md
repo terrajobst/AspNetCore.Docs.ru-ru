@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-vb
-title: "Форматирование DataList и повторителя на основе данных (Visual Basic) | Документы Microsoft"
+title: Форматирование DataList и повторителя на основе данных (Visual Basic) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике предстоит пошаговый примеры как мы изменить внешний вид элементов управления DataList и повторителя, либо с помощью функции форматирования с..."
+description: В этом учебнике предстоит пошаговый примеры как мы изменить внешний вид элементов управления DataList и повторителя, либо с помощью функции форматирования с...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 460fc36062f3338ffd178aceda2b3b224752a089
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 174a68cf0785b33c85139d57ede9717ce7e135e0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="formatting-the-datalist-and-repeater-based-upon-data-vb"></a>Форматирование DataList и повторителя на основе данных (Visual Basic)
 ====================
@@ -42,19 +42,19 @@ ms.lasthandoff: 01/24/2018
 
 При привязке данных к DataList, из элемента управления источником данных, либо путем программного связывания данных к элементу управления s `DataSource` и вызова его `DataBind()` метод DataList s `DataBinding` инициирует событие, перечисления, источник данных и каждая запись данных привязан к элементу управления DataList. Для каждой записи в источнике данных, создает DataList [ `DataListItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistitem.aspx) объект, то связан с текущей записью. Во время этого процесса DataList вызывает два события:
 
-- **`ItemCreated`**срабатывает после `DataListItem` был создан
-- **`ItemDataBound`**вызывается после привязано к текущей записи`DataListItem`
+- **`ItemCreated`** срабатывает после `DataListItem` был создан
+- **`ItemDataBound`** вызывается после привязано к текущей записи `DataListItem`
 
 Ниже описан процесс привязки данных для элемента управления DataList.
 
 1. Элемент управления DataList s [ `DataBinding` событие](https://msdn.microsoft.com/library/system.web.ui.control.databinding.aspx) активируется
 2. Данные, привязанные к элементу управления DataList  
   
- Для каждой записи в источнике данных 
+   Для каждой записи в источнике данных 
 
     1. Создание `DataListItem` объекта
     2. Пожара [ `ItemCreated` событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.itemcreated.aspx)
-    3. Запись привязывается к`DataListItem`
+    3. Запись привязывается к `DataListItem`
     4. Пожара [ `ItemDataBound` событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.itemdatabound.aspx)
     5. Добавить `DataListItem` для `Items` коллекции
 
@@ -172,7 +172,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-aspx[Main](formatting-the-datalist-and-repeater-based-upon-data-vb/samples/sample5.aspx)]
 
-В DataList s `ItemTemplate` `ProductNameLabel` веб-управления Label в данный момент отображаются имя продукта s, назначив его `Text` свойство результат из `<%# Eval("ProductName") %>`. Чтобы отобразить имя и текст [DISCONTINUED], при необходимости, обновите декларативный синтаксис так, чтобы вместо назначает `Text` свойства значение из `DisplayProductNameAndDiscontinuedStatus` метод. При этом необходимо передать в название продукта s и неподдерживаемые значения, с использованием `Eval("columnName")` синтаксиса. `Eval`Возвращает значение типа `Object`, но `DisplayProductNameAndDiscontinuedStatus` метод ожидает входные параметры типа `String` и `Boolean`; таким образом, мы должны приведены значения, возвращаемые методом `Eval` метод типам ожидаемый входной параметр следующим образом:
+В DataList s `ItemTemplate` `ProductNameLabel` веб-управления Label в данный момент отображаются имя продукта s, назначив его `Text` свойство результат из `<%# Eval("ProductName") %>`. Чтобы отобразить имя и текст [DISCONTINUED], при необходимости, обновите декларативный синтаксис так, чтобы вместо назначает `Text` свойства значение из `DisplayProductNameAndDiscontinuedStatus` метод. При этом необходимо передать в название продукта s и неподдерживаемые значения, с использованием `Eval("columnName")` синтаксиса. `Eval` Возвращает значение типа `Object`, но `DisplayProductNameAndDiscontinuedStatus` метод ожидает входные параметры типа `String` и `Boolean`; таким образом, мы должны приведены значения, возвращаемые методом `Eval` метод типам ожидаемый входной параметр следующим образом:
 
 
 [!code-aspx[Main](formatting-the-datalist-and-repeater-based-upon-data-vb/samples/sample6.aspx)]
@@ -200,12 +200,12 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Yaakov Эллис (Ellis) и Рэнди Шмидт, (Liz Shulok). Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](displaying-data-with-the-datalist-and-repeater-controls-vb.md)
-[Вперед](showing-multiple-records-per-row-with-the-datalist-control-vb.md)
+> [!div class="step-by-step"]
+> [Назад](displaying-data-with-the-datalist-and-repeater-controls-vb.md)
+> [Вперед](showing-multiple-records-per-row-with-the-datalist-control-vb.md)

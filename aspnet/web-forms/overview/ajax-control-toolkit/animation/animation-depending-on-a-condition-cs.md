@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/animation-depending-on-a-condition-cs
-title: "Анимации в зависимости от условия (C#) | Документы Microsoft"
+title: Анимации в зависимости от условия (C#) | Документы Microsoft
 author: wenz
-description: "Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Является ли анимации..."
+description: Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Является ли анимации...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animation-depending-on-a-condition-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 13366a86be01f41e27db1869b93192520190387a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b530239e76654bc68a8fa6ac900a20df1d5699b0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="animation-depending-on-a-condition-c"></a>Анимации в зависимости от условия (C#)
 ====================
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-css[Main](animation-depending-on-a-condition-cs/samples/sample3.css)]
 
-Затем добавьте `AnimationExtender` страницу, предоставляя `ID`, `TargetControlID` атрибута и обязательным`runat="server":`
+Затем добавьте `AnimationExtender` страницу, предоставляя `ID`, `TargetControlID` атрибута и обязательным `runat="server":`
 
 [!code-aspx[Main](animation-depending-on-a-condition-cs/samples/sample4.aspx)]
 
@@ -60,6 +60,6 @@ ms.lasthandoff: 11/10/2017
 
 Панель исчезновение без изменения размера, так не выполняется второй анимации, первый ([Просмотр полноразмерное изображение](animation-depending-on-a-condition-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](executing-several-animations-after-each-other-cs.md)
-[Вперед](picking-one-animation-out-of-a-list-cs.md)
+> [!div class="step-by-step"]
+> [Назад](executing-several-animations-after-each-other-cs.md)
+> [Вперед](picking-one-animation-out-of-a-list-cs.md)

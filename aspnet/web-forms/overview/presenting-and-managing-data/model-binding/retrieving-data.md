@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
-title: "Извлечение и отображение данных с помощью модели привязки и веб-формы | Документы Microsoft"
+title: Извлечение и отображение данных с помощью модели привязки и веб-формы | Документы Microsoft
 author: tfitzmac
-description: "Этот учебник ряд демонстрирует основные аспекты использования привязки модели в проекте веб-форм ASP.NET. Привязка модели позволяет взаимодействия с данными дополнительные прямые-..."
+description: Этот учебник ряд демонстрирует основные аспекты использования привязки модели в проекте веб-форм ASP.NET. Привязка модели позволяет взаимодействия с данными дополнительные прямые-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
 msc.type: authoredcontent
-ms.openlocfilehash: e750250285fcb0088da284588d721ac21e73820c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 26873efa5dbfdbdab39a52cfb9cfd5a65c8231a3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="retrieving-and-displaying-data-with-model-binding-and-web-forms"></a>Извлечение и отображение данных с помощью привязки модели и веб-форм
 ====================
@@ -182,5 +182,5 @@ Visual Studio не только создает метод в коде с пра�
 
 В следующем [учебника](updating-deleting-and-creating-data.md) этой серии будет включить обновление, удаление и создание данных.
 
->[!div class="step-by-step"]
-[Вперед](updating-deleting-and-creating-data.md)
+> [!div class="step-by-step"]
+> [Вперед](updating-deleting-and-creating-data.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-validation-to-the-model
-title: "Добавление проверки для модели | Документы Microsoft"
+title: Добавление проверки для модели | Документы Microsoft
 author: Rick-Anderson
-description: "Примечание: Обновленную версию этого учебника доступен здесь, использующий ASP.NET MVC 5 и Visual Studio 2013. Это более безопасный, гораздо проще выполните и демонстрационных..."
+description: 'Примечание: Обновленную версию этого учебника доступен здесь, использующий ASP.NET MVC 5 и Visual Studio 2013. Это более безопасный, гораздо проще выполните и демонстрационных...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/28/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 6de7d279677c7bbf220b956767a97aaaff8da9a1
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 39d1d9d4cb8b11f7ce5a3a85c51f652115d79db7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-validation-to-the-model"></a>Добавление проверки для модели
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Доступна обновленная версия этого учебника [здесь](../../getting-started/introduction/getting-started.md) , с использованием ASP.NET MVC 5 и Visual Studio 2013. Он является более безопасны, выполните гораздо проще и показаны дополнительные возможности.
@@ -81,7 +81,7 @@ ms.lasthandoff: 02/12/2018
 ![8_validationErrors](adding-validation-to-the-model/_static/image1.png)
 
 > [!NOTE]
-> Поддержка проверки jQuery для языков, кроме английского, используйте запятую (&quot;,&quot;) для десятичной запятой, необходимо включить *globalize.js* и конкретных *cultures/globalize.cultures.js* файл (из [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) и JavaScript, чтобы использовать `Globalize.parseFloat`. В следующем коде показано изменения в файле Views\Movies\Edit.cshtml для работы с &quot;fr-FR&quot; языка и региональных параметров:
+> Поддержка проверки jQuery для языков, кроме английского, используйте запятую (&quot;,&quot;) для десятичной запятой, необходимо включить *globalize.js* и конкретных *cultures/globalize.cultures.js* файл (из [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) и JavaScript, чтобы использовать `Globalize.parseFloat`. В следующем коде показано изменения в файле Views\Movies\Edit.cshtml для работы с &quot;fr-FR&quot; языка и региональных параметров:
 
 
 [!code-cshtml[Main](adding-validation-to-the-model/samples/sample6.cshtml)]
@@ -94,10 +94,10 @@ ms.lasthandoff: 02/12/2018
 
 1. Нажатием клавиши TAB в поле.
 2. Введите любой текст.
-3. Нажатием клавиши TAB out.
+3. Выйдите из поля с помощью клавиши TAB.
 4. Перейти обратно в поле.
 5. Удалите текст.
-6. Нажатием клавиши TAB out.
+6. Выйдите из поля с помощью клавиши TAB.
 
 Порядок операций будет активировать проверку без нажатие кнопки "Отправить". Просто нажатие кнопки "Отправить" без ввода любое поле, запускающих проверки на стороне клиента. Данные формы передаются на сервер только после того, как будут устранены любые ошибки на стороне клиента. Это можно проверить, разместить точки останова в методе HTTP Post или используя [инструмента fiddler](http://fiddler2.com/fiddler2/) или IE 9 [средств разработчика F12](https://msdn.microsoft.com/ie/aa740478).
 
@@ -165,6 +165,6 @@ ms.lasthandoff: 02/12/2018
 
 В следующей части этой серии мы рассмотрим приложение и внесем ряд изменений в автоматически создаваемые методы `Details` и `Delete`.
 
->[!div class="step-by-step"]
-[Назад](adding-a-new-field-to-the-movie-model-and-table.md)
-[Вперед](examining-the-details-and-delete-methods.md)
+> [!div class="step-by-step"]
+> [Назад](adding-a-new-field-to-the-movie-model-and-table.md)
+> [Вперед](examining-the-details-and-delete-methods.md)

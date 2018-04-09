@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/disabling-actions-during-animation-vb
-title: "Отключить действия во время анимации (VB) | Документы Microsoft"
+title: Отключить действия во время анимации (VB) | Документы Microsoft
 author: wenz
-description: "Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Оно также поддерживает действия..."
+description: Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Оно также поддерживает действия...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/disabling-actions-during-animation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0f68d27f60e9b224a7cc0d598962553afeb3f28f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9e2a0517800e90788bb67c1d75482a3d9340674b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="disabling-actions-during-animation-vb"></a>Отключить действия во время анимации (Visual Basic)
 ====================
@@ -62,6 +62,6 @@ ms.lasthandoff: 11/10/2017
 
 Кнопка отключена, как только выполняется анимация ([Просмотр полноразмерное изображение](disabling-actions-during-animation-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](animating-in-response-to-user-interaction-vb.md)
-[Вперед](triggering-an-animation-in-another-control-vb.md)
+> [!div class="step-by-step"]
+> [Назад](animating-in-response-to-user-interaction-vb.md)
+> [Вперед](triggering-an-animation-in-another-control-vb.md)

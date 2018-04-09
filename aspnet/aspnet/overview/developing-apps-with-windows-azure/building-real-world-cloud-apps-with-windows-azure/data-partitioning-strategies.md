@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-partitioning-strategies
-title: "(Создание реальных облачных приложений в Azure) стратегии секционирования данных | Документы Microsoft"
+title: (Создание реальных облачных приложений в Azure) стратегии секционирования данных | Документы Microsoft
 author: MikeWasson
-description: "Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может..."
+description: Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 513837a7-cfea-4568-a4e9-1f5901245d24
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-partitioning-strategies
 msc.type: authoredcontent
-ms.openlocfilehash: dca016cb6293a346f5622cc272e510b182c86d58
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9ff7f37a03d8d3dfab50e8007a6645bb0d88f453
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="data-partitioning-strategies-building-real-world-cloud-apps-with-azure"></a>(Создание реальных облачных приложений в Azure) стратегии секционирования данных
 ====================
@@ -113,6 +113,6 @@ ms.lasthandoff: 01/24/2018
 
 - [Основы облачных служб в Windows Azure](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Образец приложения, который включает сегментированной базы данных. Описание реализации схемы сегментирования см. в разделе [DAL — сегментирования реляционной СУБД](https://blogs.msdn.com/b/windowsazure/archive/2013/09/05/dal-sharding-of-rdbms.aspx) в блоге Windows Azure.
 
->[!div class="step-by-step"]
-[Назад](data-storage-options.md)
-[Вперед](unstructured-blob-storage.md)
+> [!div class="step-by-step"]
+> [Назад](data-storage-options.md)
+> [Вперед](unstructured-blob-storage.md)

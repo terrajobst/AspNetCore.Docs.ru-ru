@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
-title: "Создание проекта | Документы Microsoft"
+title: Создание проекта | Документы Microsoft
 author: Erikre
-description: "Этот учебник ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы..."
+description: Этот учебник ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
 msc.type: authoredcontent
-ms.openlocfilehash: 094733dcbe31486385dda2f8b44ba77a17486c82
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b42e62b560e01d592c9f4cb61ea6199a15dc8bb6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-the-project"></a>Создание проекта
 ====================
-По [Эрик Reitan](https://github.com/Erikre)
+по [Эрик Reitan](https://github.com/Erikre)
 
 [Загрузите образец проекта Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) или [загрузить электронную (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 01/24/2018
 > 
 > **Основные сведения о платформы ASP.NET**
 > 
-> Веб-форм ASP.NET позволяет построения динамических веб-сайтов с помощью знакомую модель и перетащите, управляемые событиями. Область конструирования и сотни элементов управления и компонентов позволяют быстро создавать комплексные сайты пользовательским Интерфейсом с доступом к данным. Магазину игрушек Wingtip основан на веб-форм ASP.NET, но многие основные принципы, которые вы узнаете в данной серии учебных курсов, применимые ко всем ASP.NET.
+> Веб-форм ASP.NET позволяет построения динамических веб-сайтов с помощью знакомую модель и перетащите, управляемые событиями. Область конструирования и сотни элементов управления и компонентов позволяют быстро создавать комплексные сайты с эффективным пользовательским интерфейсом и доступом к данным. Магазину игрушек Wingtip основан на веб-форм ASP.NET, но многие основные принципы, которые вы узнаете в данной серии учебных курсов, применимые ко всем ASP.NET.
 > 
 > ASP.NET предоставляет четыре платформы разработки первичной.
 > 
@@ -77,7 +77,7 @@ ms.lasthandoff: 01/24/2018
 > - [Веб-страницы ASP.NET](../../../../web-pages/index.md)  
 >  Веб-страниц ASP.NET предназначен для разработчиков, которые планируют истории разработки простого web, в соответствии с PHP. В модели веб-страницы Создание HTML-страниц и затем добавить на страницу серверного кода для динамически управлять отрисовкой, разметку. Веб-страницы специально разработан для облегченная платформа и является простым точка входа в ASP.NET для лиц, знать HTML, но не может иметь широкие программные возможности - например, учащихся или любителей. Он также является удобным способом для веб-разработчиков, которые знают, PHP или аналогичные платформ для начала работы с ASP.NET.
 > - [Страницы ASP.NET одного приложения](../../../../single-page-application/index.md)  
->  Приложение ASP.NET одной странице (SPA) позволяет создавать приложения, включающие значительные взаимодействие на стороне клиента, с использованием HTML 5, 3, CSS и JavaScript. ASP.NET и веб-средства 2012.2 обновление поставляется новый шаблон для создания приложений на одной странице с помощью knockout.js и веб-API ASP.NET. Помимо нового шаблона SPA новые шаблоны, созданные сообществом разработчиков SPA также доступны для загрузки.
+>  Одностраничные приложения ASP.NET (SPA) позволяют создавать приложения, включающие значительное взаимодействие на стороне клиента, с использованием HTML 5, CSS 3 и JavaScript. ASP.NET и веб-средства 2012.2 обновление поставляется новый шаблон для создания приложений на одной странице с помощью knockout.js и веб-API ASP.NET. Помимо нового шаблона SPA новые шаблоны, созданные сообществом разработчиков SPA также доступны для загрузки.
 > 
 > Помимо четыре платформы основной разработки ASP.NET также предлагает дополнительные технологии, которые следует учитывать и знаком с, но не описанных в этой серии учебника:
 > 
@@ -195,6 +195,6 @@ Visual Studio создает несколько начальной папок и
 [Проекты веб-приложений, веб-сайтов](https://msdn.microsoft.com/library/dd547590.aspx)   
 [Веб-форм ASP.NET обзор страниц](https://msdn.microsoft.com/library/428509ah.aspx)
 
->[!div class="step-by-step"]
-[Назад](introduction-and-overview.md)
-[Вперед](create_the_data_access_layer.md)
+> [!div class="step-by-step"]
+> [Назад](introduction-and-overview.md)
+> [Вперед](create_the_data_access_layer.md)

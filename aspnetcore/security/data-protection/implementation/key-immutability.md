@@ -1,7 +1,7 @@
 ---
-title: "Неизменность ключа и изменение параметров"
+title: Неизменность ключа и параметры ключа в ASP.NET Core
 author: rick-anderson
-description: "В этом документе перечислены сведения о реализации неизменности защиты ключа API-интерфейсы данных ASP.NET Core."
+description: Узнайте подробности реализации ключа неизменность ASP.NET Core Data Protection API-интерфейсы.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,23 +9,23 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-immutability
-ms.openlocfilehash: 98727c7a0c525edcda4fd8d004e0ac584cf0a5e5
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: e918b00562aca9821de87c38f10242177517d8a5
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-immutability-and-changing-settings"></a>Неизменность ключ и изменение параметров
+# <a name="key-immutability-and-key-settings-in-aspnet-core"></a>Неизменность ключа и параметры ключа в ASP.NET Core
 
 Когда объект сохраняется в резервное хранилище, его представление навсегда исправлена. Новые данные добавляются в резервное хранилище, но никогда не может изменить существующие данные. Основная цель такого поведения — во избежание повреждения данных.
 
 Одним из следствий этого поведения является что после написания резервное хранилище ключа является неизменяемым. Даты его создания, активации и истечения срока действия не может быть изменено, хотя он может быть отменено с помощью `IKeyManager`. Кроме того его алгоритмической данных, материала основного и шифрование на остальные свойства также являются неизменяемыми.
 
-Если разработчик изменяет параметров, которые затрагивает сохраняемость ключа, эти изменения не вступают в силу до следующего ключа формируется, либо через явный вызов `IKeyManager.CreateNewKey` или с помощью данных защиты системы собственные [автоматического ключ Создание](key-management.md#data-protection-implementation-key-management) поведение. Доступны следующие параметры, влияющие на сохраняемость ключа:
+Если разработчик изменяет параметров, которые затрагивает сохраняемость ключа, эти изменения не вступают в силу до следующего ключа формируется, либо через явный вызов `IKeyManager.CreateNewKey` или с помощью данных защиты системы собственные [автоматического ключ Создание](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management) поведение. Доступны следующие параметры, влияющие на сохраняемость ключа:
 
-* [Время жизни ключа по умолчанию](key-management.md#data-protection-implementation-key-management)
+* [Время жизни ключа по умолчанию](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management)
 
-* [Шифрование ключа в механизм rest](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest)
+* [Шифрование ключа в механизм rest](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest)
 
 * [Алгоритмической сведений, содержащихся в ключ](xref:security/data-protection/configuration/overview#changing-algorithms-with-usecryptographicalgorithms)
 

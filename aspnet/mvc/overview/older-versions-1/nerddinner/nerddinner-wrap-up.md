@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/nerddinner-wrap-up
-title: "Обновление NerdDinner Wrap вверх | Документы Microsoft"
+title: Обновление NerdDinner Wrap вверх | Документы Microsoft
 author: microsoft
-description: "Это является заключение учебника обновление NerdDinner и предоставляет сведения о том, как для получения дополнительных сведений."
+description: Это является заключение учебника обновление NerdDinner и предоставляет сведения о том, как для получения дополнительных сведений.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/nerddinner-wrap-up
 msc.type: authoredcontent
-ms.openlocfilehash: bb55668c714532c0a9ff499511b7a47572314194
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8d418f40f6d2911491c1a4f2498a4f711e9c271c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="nerddinner-wrap-up"></a>Обновление NerdDinner Wrap вверх
 ====================
@@ -43,11 +43,11 @@ ms.lasthandoff: 11/10/2017
 
 Можно считывать остальной части книги, чтобы получить дополнительные сведения о ASP.NET MVC.
 
-Можно также найти значительные ASP.NET MVC, учебники и видеоматериалы по: [https://www.asp.net/mvc](../../../index.md) вскоре будет опубликовано другие значительные книги ASP.NET MVC. Я обновлю Эта страница содержит ссылки на дополнительные книги, как только они станут доступны.
+Можно также найти значительные ASP.NET MVC, учебники и видеоматериалы по: [ https://www.asp.net/mvc ](../../../index.md) вскоре будет опубликовано другие значительные книги ASP.NET MVC. Я обновлю Эта страница содержит ссылки на дополнительные книги, как только они станут доступны.
 
 Надеемся, что это помогает
 
 Скотт
 
->[!div class="step-by-step"]
-[Назад](enable-automated-unit-testing.md)
+> [!div class="step-by-step"]
+> [Назад](enable-automated-unit-testing.md)

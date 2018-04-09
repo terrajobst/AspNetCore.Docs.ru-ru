@@ -1,7 +1,7 @@
 ---
-title: "Устранение неполадок ASP.NET Core в службе приложений Azure"
+title: Устранение неполадок ASP.NET Core в службе приложений Azure
 author: guardrex
-description: "Сведения о диагностике проблем с развертываниями ASP.NET Core в службе приложений Azure."
+description: Сведения о диагностике проблем с развертываниями ASP.NET Core в службе приложений Azure.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,17 +10,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: e6a8404d3fe96a0136d7f874107b2cdf63e8e890
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 47056c80c7abf5dd5ad5ae96af7b821d31b21b8b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Устранение неполадок ASP.NET Core в службе приложений Azure
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-[!INCLUDE[Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
+[!INCLUDE [Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
 
 Эта статья содержит инструкции для ASP.NET Core диагностики проблемы при запуске приложения с помощью средств диагностики службы приложений Azure. Дополнительные советы по устранению неполадок, в разделе [Общие сведения о службе приложений Azure diagnostics](/azure/app-service/app-service-diagnostics) и [как: мониторинг приложений в службе приложений Azure](/azure/app-service/web-sites-monitor) в документации Azure.
 
@@ -105,9 +105,9 @@ ms.lasthandoff: 03/15/2018
 1. Выберите **Сохранить** для сохранения файла.
 
 > [!WARNING]
-> Неудача при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены.
+> Неудача при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены. Используйте только stdout ведения журнала для устранения неполадок при запуске приложения.
 >
-> Для процедуры входа в приложение ASP.NET Core, используйте библиотеку ведения журнала, которая ограничивает размер файла журнала и поворачивает журналы. Дополнительные сведения см. в разделе [сторонних регистраторов](xref:fundamentals/logging/index#third-party-logging-providers).
+> Для общих ведения журнала в приложении ASP.NET Core после запуска приложения, используйте библиотеку ведения журнала, которая ограничивает размер файла журнала и поворачивает журналы. Дополнительные сведения см. в разделе [сторонних регистраторов](xref:fundamentals/logging/index#third-party-logging-providers).
 
 ## <a name="common-startup-errors"></a>Распространенные ошибки запуска 
 

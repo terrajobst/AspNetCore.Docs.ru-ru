@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/examining-the-edit-methods-and-edit-view
-title: "Изучение методы изменения и представления изменения (VB) | Документы Microsoft"
+title: Изучение методы изменения и представления изменения (VB) | Документы Microsoft
 author: Rick-Anderson
-description: "Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся..."
+description: Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 25ba5887a9fd179e75a45d4e140592d0ea66184a
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: ab55de16baea3010f95c8f23a093544fb1fd7aa3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view-vb"></a>Изучение методы изменения и представления изменения (Visual Basic)
 ====================
@@ -200,6 +200,6 @@ LINQ запросы не выполняются при их определени
 
 В этом разделе проверяется CRUD методы действий и представления, сформированные платформой. Поиск метода действия и представления, которые позволяют пользователям выполнять поиск по название фильма и жанр созданы. В следующем разделе будут рассмотрены способы Добавление свойства `Movie` модели и как добавить инициализатор, который автоматически создает тестовую базу данных.
 
->[!div class="step-by-step"]
-[Назад](accessing-your-models-data-from-a-controller.md)
-[Вперед](adding-a-new-field.md)
+> [!div class="step-by-step"]
+> [Назад](accessing-your-models-data-from-a-controller.md)
+> [Вперед](adding-a-new-field.md)

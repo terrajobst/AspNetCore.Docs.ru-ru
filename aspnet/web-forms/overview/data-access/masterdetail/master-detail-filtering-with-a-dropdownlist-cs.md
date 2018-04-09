@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-cs
-title: "Фильтрация с помощью DropDownList (C#) иерархического | Документы Microsoft"
+title: Фильтрация с помощью DropDownList (C#) иерархического | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы рассмотрим отображение основных записей в элемент управления DropDownList и сведений для выбранного элемента списка в элементе управления GridView."
+description: В этом учебнике мы рассмотрим отображение основных записей в элемент управления DropDownList и сведений для выбранного элемента списка в элементе управления GridView.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cf3058ac095bc2ed728a716e70f962e260eef5a2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 42a6a76b0b05045bed1ada227b7c32a51600b760
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-filtering-with-a-dropdownlist-c"></a>Иерархического Фильтрация с помощью DropDownList (C#)
 ====================
@@ -87,12 +87,12 @@ ms.lasthandoff: 01/24/2018
 **Рис. 7**: выберите `GetProductsByCategoryID(categoryID)` метод ([Просмотр полноразмерное изображение](master-detail-filtering-with-a-dropdownlist-cs/_static/image21.png))
 
 
-После выбора этого метода мастер ObjectDataSource запрашивает значения для метода  *`categoryID`*  параметра. Чтобы использовать значение выбранного `categories` источника параметра установите элемент DropDownList для элемента управления и ControlID в `Categories`.
+После выбора этого метода мастер ObjectDataSource запрашивает значения для метода *`categoryID`* параметра. Чтобы использовать значение выбранного `categories` источника параметра установите элемент DropDownList для элемента управления и ControlID в `Categories`.
 
 
 [![Присвоено значение из категории DropDownList categoryID параметра](master-detail-filtering-with-a-dropdownlist-cs/_static/image23.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image22.png)
 
-**Рис. 8**: задать  *`categoryID`*  параметр в значение `Categories` DropDownList ([Просмотр полноразмерное изображение](master-detail-filtering-with-a-dropdownlist-cs/_static/image24.png))
+**Рис. 8**: задать *`categoryID`* параметр в значение `Categories` DropDownList ([Просмотр полноразмерное изображение](master-detail-filtering-with-a-dropdownlist-cs/_static/image24.png))
 
 
 Теперь пора просмотрите ход работы в браузере. При первом посещении страницы, эти продукты принадлежат выбранной категории (Напитки) отображаются (как показано на рис. 9), но изменение DropDownList данные не обновляются. Это так, как для GridView для обновления требуется выполнить обратную передачу. Для этого у нас есть два варианта (ни один из которых требует написания кода):
@@ -145,11 +145,11 @@ ms.lasthandoff: 01/24/2018
 **Рис. 13**: на начальной странице нагрузки нет продукты отображаются ([Просмотр полноразмерное изображение](master-detail-filtering-with-a-dropdownlist-cs/_static/image37.png))
 
 
-Продукты не отображаются при, поскольку выбран элемент списка «--выберите категорию--», так как его значение равно `-1` и нет ни одного продукта в базе данных с `CategoryID` из `-1`. Если это поведение необходимо, то в этот момент завершения операции! Если, однако требуется отобразить *все* категорий при выборе элемента списка «--выберите категорию--» вернуться к `ProductsBLL` и настройте `GetProductsByCategoryID(categoryID)` метод, чтобы он вызывал `GetProducts()` метод Если переданный в  *`categoryID`*  меньше нуля:
+Продукты не отображаются при, поскольку выбран элемент списка «--выберите категорию--», так как его значение равно `-1` и нет ни одного продукта в базе данных с `CategoryID` из `-1`. Если это поведение необходимо, то в этот момент завершения операции! Если, однако требуется отобразить *все* категорий при выборе элемента списка «--выберите категорию--» вернуться к `ProductsBLL` и настройте `GetProductsByCategoryID(categoryID)` метод, чтобы он вызывал `GetProducts()` метод Если переданный в *`categoryID`* меньше нуля:
 
 [!code-csharp[Main](master-detail-filtering-with-a-dropdownlist-cs/samples/sample2.cs)]
 
-Методика аналогична приемом, использованным для отображения всех поставщиков в [декларативные параметры](../basic-reporting/declarative-parameters-cs.md) учебника, несмотря на то, что в этом примере мы используем значение `-1` для указания, что все записи должно быть в отличие от получения `null`. Это вызвано  *`categoryID`*  параметр `GetProductsByCategoryID(categoryID)` метод ожидает как целочисленное значение, переданное в, в то время как в этом учебнике декларативные параметры мы передавался строковый входной параметр.
+Методика аналогична приемом, использованным для отображения всех поставщиков в [декларативные параметры](../basic-reporting/declarative-parameters-cs.md) учебника, несмотря на то, что в этом примере мы используем значение `-1` для указания, что все записи должно быть в отличие от получения `null`. Это вызвано *`categoryID`* параметр `GetProductsByCategoryID(categoryID)` метод ожидает как целочисленное значение, переданное в, в то время как в этом учебнике декларативные параметры мы передавался строковый входной параметр.
 
 Снимок экрана показано на рис. 14 `FilterByDropDownList.aspx` при выборе параметра «--выберите категорию--». Здесь по умолчанию отображаются все продукты, и пользователь может сузить отображения, выбрав определенную категорию.
 
@@ -169,7 +169,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Вперед](master-detail-filtering-with-two-dropdownlists-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](master-detail-filtering-with-two-dropdownlists-cs.md)

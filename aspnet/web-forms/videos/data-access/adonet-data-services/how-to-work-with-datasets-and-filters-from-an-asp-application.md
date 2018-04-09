@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/data-access/adonet-data-services/how-to-work-with-datasets-and-filters-from-an-asp-application
-title: "Порядок работы с наборами данных и фильтры приложения ASP | Документы Microsoft"
+title: Порядок работы с наборами данных и фильтры приложения ASP | Документы Microsoft
 author: JoeStagner
-description: "В этом видео, часть 3 из 3, Джо Стэгнер демонстрирует способы возврата отфильтрованный набор данных из набора данных всего приложения. Для дополнительных сведений ab..."
+description: В этом видео, часть 3 из 3, Джо Стэгнер демонстрирует способы возврата отфильтрованный набор данных из набора данных всего приложения. Для дополнительных сведений ab...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/07/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/data-access/adonet-data-services/how-to-work-with-datasets-and-filters-from-an-asp-application
 msc.type: video
-ms.openlocfilehash: cefbb65cf7acadd249a5b870ddb4bbc3ec304d53
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 27f42a4fe5bc05bfc82fd60e81373e5ccc2811cc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-to-work-with-datasets-and-filters-from-an-asp-application"></a>Порядок работы с наборами данных и фильтры приложения ASP
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/10/2017
 
 В этом видео, часть 3 из 3, Джо Стэгнер демонстрирует способы возврата отфильтрованный набор данных из набора данных всего приложения. Дополнительные сведения в этом видео в статье [Создание слой доступа к данным](../../../overview/data-access/introduction/creating-a-data-access-layer-vb.md) учебника доступа к данным.
 
-[&#9654; Посмотрите видео (6 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-to-work-with-datasets-and-filters-from-an-asp-application)
+[&#9654;Посмотрите видео (6 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-to-work-with-datasets-and-filters-from-an-asp-application)
 
->[!div class="step-by-step"]
-[Назад](how-to-manually-bind-a-dataset-to-a-datagrid.md)
+> [!div class="step-by-step"]
+> [Назад](how-to-manually-bind-a-dataset-to-a-datagrid.md)

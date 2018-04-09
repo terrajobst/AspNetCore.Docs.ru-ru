@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5
-title: "Часть 5: Бизнес-логику | Документы Microsoft"
+title: 'Часть 5: Бизнес-логику | Документы Microsoft'
 author: JoeStagner
-description: "Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 5 добавляет некоторые бизнес-логики."
+description: Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 5 добавляет некоторые бизнес-логики.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: e205788e05a2ad94d86d4847c11c40898b1c3113
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e4342e634ef8c4bcf4e0085650a28f414ab23736
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-5-business-logic"></a>Часть 5: Бизнес-логику
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 5 добавляет некоторые бизнес-логики.
 
 
-## <a id="_Toc260221671"></a>Добавление некоторых бизнес-логики
+## <a id="_Toc260221671"></a>  Добавление некоторых бизнес-логики
 
 Мы хотим опыт покупок были доступны при посещении веб-узла. Посетители смогут просматривать и добавлять элементы в корзину покупок, даже если они не зарегистрированы или не вошел в систему. По мере готовности извлечение пользователь получает возможность проверки подлинности и если они не еще члены их можно будет создать учетную запись.
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/10/2017
 
 В настоящее время мы еще не реализована глобального обработчика ошибок, это исключение будет исключен обработанное нашего приложения, но мы будет исправить это чуть ниже.
 
-Также Обратите внимание на использование инструкции (доступно через Debug.Fail()`using System.Diagnostics;)`
+Также Обратите внимание на использование инструкции (доступно через Debug.Fail() `using System.Diagnostics;)`
 
 — Приложение выполняется в отладчике, этот метод отображает подробные сведения о состоянии приложений, а также сообщение об ошибке, мы указываем диалоговое окно.
 
@@ -187,6 +187,6 @@ GetValues() является специальные вспомогательна
 
 Прежде чем таким образом, давайте Visual Studio можно используйте для создания базы данных членства и Добавление пользователя в хранилище данных членства.
 
->[!div class="step-by-step"]
-[Назад](tailspin-spyworks-part-4.md)
-[Вперед](tailspin-spyworks-part-6.md)
+> [!div class="step-by-step"]
+> [Назад](tailspin-spyworks-part-4.md)
+> [Вперед](tailspin-spyworks-part-6.md)

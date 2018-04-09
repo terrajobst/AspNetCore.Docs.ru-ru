@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/colorpicker/using-the-colorpicker-control-extender-vb
-title: "С помощью элемента управления ColorPicker расширения (Visual Basic) | Документы Microsoft"
+title: С помощью элемента управления ColorPicker расширения (Visual Basic) | Документы Microsoft
 author: microsoft
-description: "ColorPicker является расширитель ASP.NET AJAX, который предоставляет клиентские функции выбора цвета с пользовательским Интерфейсом в элементе управления всплывающее окно. Она может быть присоединена к любой ASP.NET..."
+description: ColorPicker является расширитель ASP.NET AJAX, который предоставляет клиентские функции выбора цвета с пользовательским Интерфейсом в элементе управления всплывающее окно. Она может быть присоединена к любой ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/colorpicker/using-the-colorpicker-control-extender-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7453845909b2c0bd8d6b476b19d0fbc5050f7460
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3411119f85d7f5c26703b7df40cff24fdf30b81d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-colorpicker-control-extender-vb"></a>С помощью элемента управления ColorPicker расширения (Visual Basic)
 ====================
@@ -114,5 +114,5 @@ ms.lasthandoff: 11/10/2017
 
 В этом учебнике вы узнали, как использовать расширитель ColorPicker элемента управления для отображения всплывающее диалоговое окно выбора цвета. Во-первых мы рассмотрели, как отобразить диалоговое окно при перемещении фокуса на элемент управления TextBox. Далее вы узнали, как создать кнопку, которая отображает диалоговое окно выбора цвета при нажатии кнопки.
 
->[!div class="step-by-step"]
-[Назад](using-the-colorpicker-control-extender-cs.md)
+> [!div class="step-by-step"]
+> [Назад](using-the-colorpicker-control-extender-cs.md)

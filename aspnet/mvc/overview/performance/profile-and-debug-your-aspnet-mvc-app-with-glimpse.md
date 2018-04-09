@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
-title: "Профилирование и отладке приложения ASP.NET MVC с помощью Glimpse | Документы Microsoft"
+title: Профилирование и отладке приложения ASP.NET MVC с помощью Glimpse | Документы Microsoft
 author: Rick-Anderson
-description: "Обзор — бурно и семейству пакетов NuGet открытым исходным кодом, предоставляющий подробные производительности, отладки и диагностических сведений для ASP.NET..."
+description: Обзор — бурно и семейству пакетов NuGet открытым исходным кодом, предоставляющий подробные производительности, отладки и диагностических сведений для ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/26/2015
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
 msc.type: authoredcontent
-ms.openlocfilehash: 9cfdced21251b482ca527dda9c3a698de77cc8ca
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6ac23256c57116de81c7bf690d5ce743301c75ce
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a>Профилирование и отладке приложения ASP.NET MVC с помощью Glimpse
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Обзор — это бурно и семейству пакетов NuGet открытым исходным кодом, предоставляющий подробные производительности, отладки и диагностические сведения для приложений ASP.NET. Тривиальное для установки, простой и высокоскоростные и отображает ключевые показатели производительности в нижней части каждой страницы. Он позволяет углубляться в приложения, если необходимо узнать, что происходит на сервере. Обзор предоставляет намного ценную информацию, мы рекомендуем использовать ее в течение всего цикла разработки, включая Azure тестовой среды. Во время [Fiddler](http://www.telerik.com/fiddler) и [средства разработки F-12](https://msdn.microsoft.com/library/ie/gg589512(v=vs.85).aspx) предоставляют стороны клиента представления, Glimpse предоставляет подробную информацию с сервера. Этот учебник основное внимание уделяется с помощью Glimpse ASP.NET MVC и EF пакеты, но доступны другие пакеты. По возможности будет связывать к соответствующему [знакомы docs](http://getglimpse.com/Docs/) поддерживать все помогающий. Представление является проекта с открытым кодом, слишком можно взаимодействовать с исходным кодом и документы.
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 01/24/2018
 <a id="eg"></a>
 ## <a name="enable-glimpse-for-localhost"></a>Включить обзор для localhost
 
-Перейдите к http://localhost:&lt;порт #&gt;/glimpse.axd и нажмите кнопку **Включение краткого описания** кнопки.
+Перейдите к http://localhost: &lt;порт #&gt;/glimpse.axd и нажмите кнопку <strong>Включение краткого описания</strong> кнопки.
 
 ![Страница axd краткого описания](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image4.png)
 

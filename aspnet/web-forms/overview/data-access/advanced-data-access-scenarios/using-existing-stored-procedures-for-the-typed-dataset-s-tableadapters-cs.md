@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs
-title: "Использование существующих хранимых процедур для адаптеров таблиц типизированного набора данных (C#) | Документы Microsoft"
+title: Использование существующих хранимых процедур для адаптеров таблиц типизированного набора данных (C#) | Документы Microsoft
 author: rick-anderson
-description: "В предыдущем учебнике мы узнали, как создать новые хранимые процедуры с помощью мастера TableAdapter. В этом учебнике рассказано, как один адаптер таблицы..."
+description: В предыдущем учебнике мы узнали, как создать новые хранимые процедуры с помощью мастера TableAdapter. В этом учебнике рассказано, как один адаптер таблицы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/18/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1f95a6868ccce8ce0dfa16a92486e705c42e1db4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: df8a714325ce99db615eddc3d457da5c926919ba
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-c"></a>Использование существующих хранимых процедур для адаптеров таблиц типизированного набора данных (C#)
 ====================
@@ -56,7 +56,7 @@ Visual Studio позволяет легко добавлять новые хра
 
 Этот скрипт во время выполнения добавит новую хранимую процедуру в базе данных Northwind с именем `Products_SelectByCategoryID`. Эта хранимая процедура принимает один входной параметр (`@CategoryID`, типа `int`) и возвращает все поля для этих продуктов с соответствующим `CategoryID` значение.
 
-Чтобы выполнить этот `CREATE PROCEDURE` скрипта и добавления хранимой процедуры в базу данных, щелкните значок «сохранить» на панели инструментов или нажмите сочетание клавиш Ctrl + S. После этого обновление папки хранимых процедур, отображаются только что созданный хранимой процедуры. Кроме того, сценарий в окне изменится тонкости из `CREATE PROCEDURE dbo.Products_SelectProductByCategoryID` для `ALTER PROCEDURE` `dbo.Products_SelectProductByCategoryID`. `CREATE PROCEDURE`Добавляет новую хранимую процедуру в базе данных, пока `ALTER PROCEDURE` обновляет существующую. С момента запуска скрипта было изменено на `ALTER PROCEDURE`, изменение хранимых процедур входные параметры или инструкций SQL и щелкнув значок сохранения этих изменений обновить хранимую процедуру.
+Чтобы выполнить этот `CREATE PROCEDURE` скрипта и добавления хранимой процедуры в базу данных, щелкните значок «сохранить» на панели инструментов или нажмите сочетание клавиш Ctrl + S. После этого обновление папки хранимых процедур, отображаются только что созданный хранимой процедуры. Кроме того, сценарий в окне изменится тонкости из `CREATE PROCEDURE dbo.Products_SelectProductByCategoryID` для `ALTER PROCEDURE` `dbo.Products_SelectProductByCategoryID`. `CREATE PROCEDURE` Добавляет новую хранимую процедуру в базе данных, пока `ALTER PROCEDURE` обновляет существующую. С момента запуска скрипта было изменено на `ALTER PROCEDURE`, изменение хранимых процедур входные параметры или инструкций SQL и щелкнув значок сохранения этих изменений обновить хранимую процедуру.
 
 На рисунке 2 представлен Visual Studio после `Products_SelectByCategoryID` хранимая процедура была сохранена.
 
@@ -273,12 +273,12 @@ Visual Studio позволяет легко добавлять новые хра
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Хилтон Geisenow, S ren Алексей Lauritsen и Мерфи Тереза д. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
-[Вперед](updating-the-tableadapter-to-use-joins-cs.md)
+> [!div class="step-by-step"]
+> [Назад](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
+> [Вперед](updating-the-tableadapter-to-use-joins-cs.md)

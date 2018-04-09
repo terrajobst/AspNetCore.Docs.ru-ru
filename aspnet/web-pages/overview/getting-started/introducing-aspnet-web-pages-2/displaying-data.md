@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data
-title: "Введение в ASP.NET Web Pages — отображение данных | Документы Microsoft"
+title: Введение в ASP.NET Web Pages — отображение данных | Документы Microsoft
 author: tfitzmac
-description: "Этого учебника показано, как создать базу данных в WebMatrix и способ отображения данных базы данных на странице при использовании веб-страниц ASP.NET (Razor). Предполагается, что y..."
+description: Этого учебника показано, как создать базу данных в WebMatrix и способ отображения данных базы данных на странице при использовании веб-страниц ASP.NET (Razor). Предполагается, что y...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data
 msc.type: authoredcontent
-ms.openlocfilehash: fdb9af0ba87c7802c63451ac7aa422e0020b5719
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6c66e5fb0a1a49da411286e19c7954f83055c3fd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---displaying-data"></a>Общие сведения о веб-страницах ASP.NET - отображение данных
 ====================
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/10/2017
 > Обсуждаются функции и технологии:
 > 
 > - WebMatrix инструменты для баз данных.
-> - `WebGrid`Вспомогательный метод.
+> - `WebGrid` Вспомогательный метод.
 
 
 ## <a name="what-youll-build"></a>Что мы создадим
@@ -338,6 +338,6 @@ WebMatrix создает базу данных SQL Server CE ( *.sdf* файл),
 
 - [Введение в программирование веб-ASP.NET с использованием синтаксиса Razor](https://go.microsoft.com/fwlink/?LinkID=202890)
 
->[!div class="step-by-step"]
-[Назад](intro-to-web-pages-programming.md)
-[Вперед](form-basics.md)
+> [!div class="step-by-step"]
+> [Назад](intro-to-web-pages-programming.md)
+> [Вперед](form-basics.md)

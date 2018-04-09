@@ -1,7 +1,7 @@
 ---
-title: "Visual Studio профилей публикации для развертывания приложения ASP.NET Core"
+title: Visual Studio профилей публикации для развертывания приложения ASP.NET Core
 author: rick-anderson
-description: "Узнайте, как для создания профилей публикации для приложения ASP.NET Core в Visual Studio."
+description: Узнайте, как для создания профилей публикации для приложения ASP.NET Core в Visual Studio.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: d2c4ec317f235c6d042bd130dbf79f6cb5e2d47d
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 64c96f572c42c56480cfe2bd58f926d54eddf35e
+ms.sourcegitcommit: 71b93b42cbce8a9b1a12c4d88391e75a4dfb6162
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/20/2018
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>Visual Studio профилей публикации для развертывания приложения ASP.NET Core
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 03/02/2018
 * вычисление файлов для публикации;
 * публикация файлов в месте назначения;
 
-### <a name="compute-project-items"></a>вычисление элементов проекта.
+## <a name="compute-project-items"></a>вычисление элементов проекта.
 
 После загрузки проекта вычисляются элементы проекта (файлы). Порядок обработки файла определяется атрибутом `item type`. По умолчанию файлы с расширением *.cs* включаются в список элементов `Compile`. Файлы в списке элементов `Compile` компилируются.
 
@@ -197,6 +197,7 @@ dotnet publish -c Release -o C:/MyWebs/test
 Дополнительные сведения см. в статье [Выбор подходящих вариантов публикации](https://docs.microsoft.com/visualstudio/ide/not-in-toc/web-publish-options).
 
 При создании профиля публикации с помощью Visual Studio *свойства/PublishProfiles/\<имя публикации > .pubxml* создается файл MSBuild. Это файл с расширением *.pubxml* представляет собой файл MSBuild, содержащий настройки конфигурации публикации. Этот файл можно изменить для настройки процесса построения и публикации процесс. Этот файл считывается процессом публикации. `<LastUsedBuildConfiguration>` является специальной, так как он является глобальным и не должны быть в любом файле, который импортируется в сборке. Дополнительные сведения см. в статье [MSBuild: how to set the configuration property](http://sedodream.com/2012/10/27/MSBuildHowToSetTheConfigurationProperty.aspx) (MSBuild: настройка свойства конфигурации).
+
 *.Pubxml* файл не следует возвращен в систему управления версиями, так как он зависит от *.user* файла. Файл *.user* ни в коем случае не должен возвращаться в систему управления версиями, так как может содержать конфиденциальные сведения и быть действительным только для одного пользователя и компьютера.
 
 Конфиденциальные данные (такие как пароль публикации) шифруются на уровне пользователя или компьютера и хранятся в файле *Properties/PublishProfiles/\<имя публикации>.pubxml.user*. Так как этот файл может содержать конфиденциальные данные, он **не** должен возвращаться в систему управления версиями.
@@ -444,7 +445,7 @@ MSBuild file.
 
 Дополнительные примеры развертывания см. в файле [WebSDK Readme](https://github.com/aspnet/websdk).
 
-### <a name="run-a-target-before-or-after-publishing"></a>Выполнение целевого объекта до или после публикации
+## <a name="run-a-target-before-or-after-publishing"></a>Выполнение целевого объекта до или после публикации
 
 Встроенная `BeforePublish` и `AfterPublish` целевых объектов можно использовать для выполнения целевого объекта до или после назначения публикации. В профиль публикации можно добавить показанную ниже разметку — в этом случае сообщения будут добавлены в вывод консоли до или после публикации.
 
@@ -455,6 +456,16 @@ MSBuild file.
   <Target Name="CustomActionsAfterPublish" AfterTargets="AfterPublish">
     <Message Text="Inside AfterPublish" Importance="high" />
 </Target>
+```
+
+## <a name="publish-to-a-server-using-an-untrusted-certificate"></a>Опубликовать на сервере, использующий Недоверенный сертификат
+
+Добавить `<AllowUntrustedCertificate>` свойство со значением `True` для профиля публикации:
+
+```xml
+<PropertyGroup>
+  <AllowUntrustedCertificate>True</AllowUntrustedCertificate>
+</PropertyGroup>
 ```
 
 ## <a name="the-kudu-service"></a>Служба Kudu
@@ -471,4 +482,4 @@ MSBuild file.
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Веб-развертывание](https://www.iis.net/downloads/microsoft/web-deploy) (MSDeploy) упрощает развертывание веб-приложений и веб-сайтов на серверах IIS.
-* [https://github.com/aspnet/websdk](https://github.com/aspnet/websdk/issues): проблемы с файлами и особенности запросов для развертывания.
+* [https://github.com/aspnet/websdk](https://github.com/aspnet/websdk/issues): Файл, проблем и запросов возможности развертывания.

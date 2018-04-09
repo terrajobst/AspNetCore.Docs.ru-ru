@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/animating-an-updatepanel-control-vb
-title: "Анимация элемента управления UpdatePanel (VB) | Документы Microsoft"
+title: Анимация элемента управления UpdatePanel (VB) | Документы Microsoft
 author: wenz
-description: "Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Для содержимого..."
+description: Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Для содержимого...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animating-an-updatepanel-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0d1056fc798e22254e94e5cad54436576a297f7d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2c1114b74fd152a4ea85aa10850860f75573adee
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="animating-an-updatepanel-control-vb"></a>Анимация элемента управления UpdatePanel (Visual Basic)
 ====================
@@ -43,8 +43,8 @@ ms.lasthandoff: 11/10/2017
 
 Разметка, необходимые для `UpdatePanelAnimationExtender` очень похожа на разметку, используемую для управления `AnimationExtender`. В `TargetControlID` мы предоставляем атрибут `ID` из `UpdatePanel` для анимации; в `UpdatePanelAnimationExtender` управления `<Animations>` элемент содержит XML-разметку для анимаций. Однако есть одно различие: объем события и обработчики событий ограничен по сравнению с `AnimationExtender`. Для `UpdatePanels`, только два из них существует:
 
-- `<OnUpdated>`При обновлении UpdatePanel
-- `<OnUpdating>`Когда UpdatePanel начинается обновление
+- `<OnUpdated>` При обновлении UpdatePanel
+- `<OnUpdating>` Когда UpdatePanel начинается обновление
 
 В этом случае новое содержимое `UpdatePanel` (после обратной передачи) должны появление. Это необходимой разметки для этого:
 
@@ -57,6 +57,6 @@ ms.lasthandoff: 11/10/2017
 
 Следующий шаг мастера эффект постепенного увеличения ([Просмотр полноразмерное изображение](animating-an-updatepanel-control-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](changing-an-animation-using-client-side-code-vb.md)
-[Вперед](dynamically-controlling-updatepanel-animations-vb.md)
+> [!div class="step-by-step"]
+> [Назад](changing-an-animation-using-client-side-code-vb.md)
+> [Вперед](dynamically-controlling-updatepanel-animations-vb.md)

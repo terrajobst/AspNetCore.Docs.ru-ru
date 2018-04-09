@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/performance/scaleout-with-sql-server
-title: "SignalR горизонтального масштабирования с SQL Server | Документы Microsoft"
+title: SignalR горизонтального масштабирования с SQL Server | Документы Microsoft
 author: MikeWasson
-description: "Версии программного обеспечения используется в этом разделе Visual Studio 2013 .NET 4.5 SignalR предыдущие версии версии 2 в этом разделе сведения о предыдущих версиях..."
+description: Версии программного обеспечения используется в этом разделе Visual Studio 2013 .NET 4.5 SignalR предыдущие версии версии 2 в этом разделе сведения о предыдущих версиях...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/performance/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: 18ce212f5cb7849d522248f9c462b5b48e3487ed
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b3189c36fc076333c0c6007bd039b12e03d63bc8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="signalr-scaleout-with-sql-server"></a>SignalR горизонтального масштабирования с SQL Server
 ====================
@@ -62,7 +62,7 @@ Microsoft SQL Server 2005 или более поздней версии. Зад�
 
     [!code-csharp[Main](scaleout-with-sql-server/samples/sample1.cs)]
 
- Этот код настраивает объединительной плате со значениями по умолчанию для [TableCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.sqlscaleoutconfiguration.tablecount(v=vs.118).aspx) и [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Сведения об изменении этих значений см. в разделе [производительности SignalR: метрики горизонтального масштабирования](signalr-performance.md#scaleout_metrics). 
+   Этот код настраивает объединительной плате со значениями по умолчанию для [TableCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.sqlscaleoutconfiguration.tablecount(v=vs.118).aspx) и [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Сведения об изменении этих значений см. в разделе [производительности SignalR: метрики горизонтального масштабирования](signalr-performance.md#scaleout_metrics). 
 
 ## <a name="configure-the-database"></a>Настройка базы данных
 

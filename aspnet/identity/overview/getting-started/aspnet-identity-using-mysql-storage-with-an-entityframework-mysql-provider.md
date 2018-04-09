@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/getting-started/aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider
-title: "ASP.NET Identity: С помощью MySQL хранилища с поставщиком MySQL EntityFramework (C#) | Документы Microsoft"
+title: 'ASP.NET Identity: С помощью MySQL хранилища с поставщиком MySQL EntityFramework (C#) | Документы Microsoft'
 author: maumar
-description: "Этот учебник показывает, как заменить механизм хранения данных по умолчанию для ASP.NET Identity EntityFramework (поставщик клиента SQL) с обеспечить MySQL..."
+description: Этот учебник показывает, как заменить механизм хранения данных по умолчанию для ASP.NET Identity EntityFramework (поставщик клиента SQL) с обеспечить MySQL...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/10/2013
 ms.topic: article
 ms.assetid: 15253312-a92c-43ba-908e-b5dacd3d08b8
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider
 msc.type: authoredcontent
-ms.openlocfilehash: 82341724286a53f7883df324a391beeae3a9e2bd
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 6018b4f62f95f9abffece536f345d7a16d052aac
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider-c"></a>ASP.NET Identity: С помощью MySQL хранилища с поставщиком EntityFramework MySQL (C#)
 ====================
@@ -42,23 +42,23 @@ ms.lasthandoff: 02/12/2018
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image2.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image1.png)
 3. В **Выбор и надстройки** мастера выберите **базы данных MySQL ClearDB**и нажмите кнопку **Далее** стрелку в нижней части области:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image4.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image3.png)
 4. Оставьте значение по умолчанию **Free** плана, измените **имя** для **IdentityMySQLDatabase**, выберите регион, ближайшего к вам и нажмите кнопку **Далее** стрелку в нижней части области:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image6.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image5.png)
 5. Нажмите кнопку **ПОКУПКИ** флажок для завершения создания базы данных.  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image8.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image7.png)
 6. После создания базы данных можно было управлять из **надстройки** на портале управления. Чтобы получить сведения о соединении для базы данных, щелкните **сведений о СОЕДИНЕНИИ** в нижней части страницы:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image10.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image9.png)
 7. Скопируйте строку подключения, нажав кнопку "Копировать", **CONNECTIONSTRING** поля и сохраните его; эти сведения далее в этом учебнике будет использоваться для приложения MVC:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image12.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image11.png)
 
 ## <a name="creating-an-mvc-application-project"></a>Создав проект приложения MVC
@@ -68,15 +68,15 @@ ms.lasthandoff: 02/12/2018
 1. Откройте Visual Studio 2103.
 2. Нажмите кнопку **новый проект** из **запустить** страницы, или же можно нажать **файл** меню и затем **новый проект**:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image2.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image1.jpg)
 3. При **новый проект** диалоговое окно, разверните узел **Visual C#** в списке шаблонов выберите **Web**и выберите **веб-приложение ASP.NET**. Присвойте проекту имя **IdentityMySQLDemo** и нажмите кнопку **ОК**:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image14.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image13.png)
 4. В **новый проект ASP.NET** диалогового окна выберите **MVC** templatewith значения по умолчанию; при этом будут Настройка **индивидуальные учетные записи** в качестве метода проверки подлинности. Нажмите кнопку **ОК**:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image16.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image15.png)
 
 ## <a name="configure-entityframework-to-work-with-a-mysql-database"></a>Настройка EntityFramework для работы с базой данных MySQL
@@ -88,11 +88,11 @@ ms.lasthandoff: 02/12/2018
 1. Откройте проект MVC в Visual Studio 2013.
 2. Нажмите кнопку **средства**, нажмите кнопку **диспетчер пакетов библиотеки**, а затем нажмите кнопку **консоль диспетчера пакетов**:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image18.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image17.png)
 3. **Консоль диспетчера пакетов** появятся в нижней части окна Visual Studio. Тип &quot; **EntityFramework пакет обновления** &quot; и нажмите клавишу ВВОД:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image20.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image19.png)
 
 ### <a name="install-the-mysql-provider-for-entityframework"></a>Установка MySQL поставщика для EntityFramework
@@ -161,15 +161,15 @@ Entity Framework Code First использует **MigrationHistory** табли
 1. Нажмите клавишу **сочетание клавиш Ctrl + F5** для построения и запуска веб-приложения.
 2. Нажмите кнопку **зарегистрировать** вкладки в верхней части страницы:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image4.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image3.jpg)
 3. Введите новое имя пользователя и пароль, а затем нажмите кнопку **зарегистрировать**:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image24.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image23.png)
 4. На этом этапе ASP.NET Identity таблицы создаются в базе данных MySQL, а пользователь зарегистрирован и входа в приложение:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image6.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image5.jpg)
 
 ### <a name="installing-mysql-workbench-tool-to-verify-the-data"></a>Установка MySQL Workbench средства для проверки данных
@@ -180,9 +180,9 @@ Entity Framework Code First использует **MigrationHistory** табли
 4. После подключения к проверки **ASP.NET Identity** таблицы, созданные на **IdentityMySQLDatabase.**
 5. Вы увидите, что все ASP.NET Identity необходимые таблицы создаются, как показано на рисунке ниже:  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image8.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image7.jpg)
 6. Проверить **aspnetusers** таблицы для экземпляра на наличие записей, по мере регистрации новых пользователей.  
   
- [Щелкните следующие изображение, чтобы развернуть его. ]  
+   [Щелкните следующие изображение, чтобы развернуть его. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image26.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image25.png)

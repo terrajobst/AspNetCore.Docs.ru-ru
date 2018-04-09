@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control
-title: "Добавление содержимого в систему управления версиями | Документы Microsoft"
+title: Добавление содержимого в систему управления версиями | Документы Microsoft
 author: jrjlee
-description: "В этом разделе объясняется, как добавлять содержимое в систему управления версиями в Team Foundation Server (TFS) 2010. Он описывает, как добавление решений и проектов в проекте группы..."
+description: В этом разделе объясняется, как добавлять содержимое в систему управления версиями в Team Foundation Server (TFS) 2010. Он описывает, как добавление решений и проектов в проекте группы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control
 msc.type: authoredcontent
-ms.openlocfilehash: d46e2697d10ca27f8e08533350a6e7f2354b4a43
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: c9c3a506d2745a6793661453a293732429d3e46e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-content-to-source-control"></a>Добавление содержимого в систему управления версиями
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/15/2018
 > В этом разделе объясняется, как добавлять содержимое в систему управления версиями в Team Foundation Server (TFS) 2010. Описывает добавление решений и проектов к командному проекту в TFS, а также описание способов добавления внешние зависимости, такие как .NET Framework или сборках в систему управления версиями.
 
 
-Этот раздел входит в состав серию учебников, исходя из требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения & #x 2014; [решения диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014; для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Службы Communication Foundation (WCF) и проект базы данных.
+Этот раздел входит в состав серию учебников, исходя из требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения&#x2014; [решения диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Communication Служба Foundation (WCF) и проект базы данных.
 
 ## <a name="task-overview"></a>Общие сведения о задаче
 
@@ -157,6 +157,6 @@ ms.lasthandoff: 03/15/2018
 
 Более подробные сведения о работе с системой управления версиями в Team Foundation Server см. в разделе [использование управления версиями](https://msdn.microsoft.com/library/ms181368.aspx).
 
->[!div class="step-by-step"]
-[Назад](creating-a-team-project-in-tfs.md)
-[Вперед](configuring-a-tfs-build-server-for-web-deployment.md)
+> [!div class="step-by-step"]
+> [Назад](creating-a-team-project-in-tfs.md)
+> [Вперед](configuring-a-tfs-build-server-for-web-deployment.md)

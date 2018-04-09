@@ -1,7 +1,7 @@
 ---
-title: "Внедрение зависимостей в обработчиках требование"
+title: Внедрение зависимостей в обработчиках требование в ASP.NET Core
 author: rick-anderson
-description: "В этом документе описано, как для добавления обработчиков требования авторизации в приложение ASP.NET Core с помощью внедрения зависимости."
+description: Узнайте, как внедрить обработчики требование авторизации в приложение ASP.NET Core с помощью внедрения зависимости.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/dependencyinjection
-ms.openlocfilehash: 1b7506b49109264a8c628ea2e39ded9f5ace95d3
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4de7f0e49ade459968f8c30fbad76ce96a65815f
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="dependency-injection-in-requirement-handlers"></a>Внедрение зависимостей в обработчиках требование
+# <a name="dependency-injection-in-requirement-handlers-in-aspnet-core"></a>Внедрение зависимостей в обработчиках требование в ASP.NET Core
 
 <a name="security-authorization-di"></a>
 
-[Необходимо зарегистрировать обработчики авторизации](policies.md#handler-registration) в коллекцию службы во время настройки (с помощью [внедрения зависимостей](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection)).
+[Необходимо зарегистрировать обработчики авторизации](xref:security/authorization/policies#handler-registration) в коллекцию службы во время настройки (с помощью [внедрения зависимостей](xref:fundamentals/dependency-injection#fundamentals-dependency-injection)).
 
 Предположим, что у вас есть репозитория правил, которые вы хотите оценить внутри обработчика авторизации и репозитория зарегистрирован в службе сбора. Авторизация будет решения и вставляют, на ваш конструктор.
 

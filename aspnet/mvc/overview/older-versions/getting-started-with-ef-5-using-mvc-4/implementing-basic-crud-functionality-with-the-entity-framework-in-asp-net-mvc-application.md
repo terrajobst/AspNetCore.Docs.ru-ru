@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
-title: "Реализация функциональности основные CRUD с платформой Entity Framework в приложение ASP.NET MVC (часть 2 из 10) | Документы Microsoft"
+title: Реализация функциональности основные CRUD с платформой Entity Framework в приложение ASP.NET MVC (часть 2 из 10) | Документы Microsoft
 author: tdykstra
-description: "Contoso университета примера веб-приложения демонстрирует создание приложения ASP.NET MVC 4, с помощью Entity Framework 5 Code First и Visual Studio..."
+description: Contoso университета примера веб-приложения демонстрирует создание приложения ASP.NET MVC 4, с помощью Entity Framework 5 Code First и Visual Studio...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/30/2013
@@ -12,19 +12,19 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: d031cd760fb578d29626933eed39fe987ef796d7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: acec5c9641b1de230956478c4396d1d541fcb0eb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-basic-crud-functionality-with-the-entity-framework-in-aspnet-mvc-application-2-of-10"></a>Реализация функциональности основные CRUD с платформой Entity Framework в приложение ASP.NET MVC (часть 2 из 10)
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузка завершенного проекта](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
 
-> Contoso университета примера веб-приложения демонстрирует создание приложения ASP.NET MVC 4, с помощью Entity Framework 5 Code First и Visual Studio 2012. Сведения о учебника серии см [в первом учебнике ряда](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Учебник рядов можно запустить с самого начала или [загрузить начальный проект для этой главы](building-the-ef5-mvc4-chapter-downloads.md) и начните здесь.
+> Contoso университета примера веб-приложения демонстрирует создание приложения ASP.NET MVC 4, с помощью Entity Framework 5 Code First и Visual Studio 2012. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Учебник рядов можно запустить с самого начала или [загрузить начальный проект для этой главы](building-the-ef5-mvc4-chapter-downloads.md) и начните здесь.
 > 
 > > [!NOTE] 
 > > 
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/24/2018
 В предыдущем учебнике вы создали приложение MVC, хранит и отображает данные с помощью платформы Entity Framework и SQL Server LocalDB. В этом учебнике предстоит просмотреть и настроить CRUD (Создание, чтение, обновление и удаление) код, который MVC функции формирования шаблонов автоматически создает для вас в контроллеры и представления.
 
 > [!NOTE]
-> Он часто используется для реализации шаблона репозитория, чтобы создать уровень абстракции между контроллер и уровня доступа к данным. Для простоты в этих учебниках не реализуются репозиторий до более поздней версии учебнике этой серии.
+> Широко распространена практика реализации шаблона репозитория, позволяющего создать уровень абстракции между контроллером и уровнем доступа к данным. Для простоты в этих учебниках не реализуются репозиторий до более поздней версии учебнике этой серии.
 
 
 В этом учебнике вы создадите на следующих сайтах:
@@ -64,8 +64,8 @@ ms.lasthandoff: 01/24/2018
 
     [!code-cshtml[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample3.cshtml?highlight=4-22)]
 
-    Этот код выполняет цикл по сущности в `Enrollments` свойство навигации. Для каждого `Enrollment` сущности в свойстве, оно отображает название курса и уровень. Название курса извлекается из `Course` сущность, которая хранится в `Course` свойство навигации `Enrollments` сущности. Все эти данные извлекаются из базы данных автоматически при необходимости. (Другими словами, вы используете отложенную загрузку, здесь. Вы не указали *упреждающую* для `Courses` свойство навигации, поэтому первый раз, при попытке доступа к этому свойству, отправляется запрос к базе данных для получения данных. Вы можете прочитать больше о отложенную загрузку и упреждающую в [чтение связанных данных](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) учебника далее в этой серии.)
-3. Запустите страницу, выбрав **учащихся** и нажав кнопку **сведения** ссылку для Александр Carson. Просмотреть список курсов и оценок для выбранного учащегося:
+    Этот код циклически обрабатывает сущности в свойстве навигации `Enrollments`. Для каждого `Enrollment` сущности в свойстве, оно отображает название курса и уровень. Название курса извлекается из `Course` сущность, которая хранится в `Course` свойство навигации `Enrollments` сущности. Все эти данные извлекаются из базы данных автоматически при необходимости. (Другими словами, вы используете отложенную загрузку, здесь. Вы не указали *упреждающую* для `Courses` свойство навигации, поэтому первый раз, при попытке доступа к этому свойству, отправляется запрос к базе данных для получения данных. Вы можете прочитать больше о отложенную загрузку и упреждающую в [чтение связанных данных](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) учебника далее в этой серии.)
+3. Запустите страницу, выбрав **учащихся** и нажав кнопку **сведения** ссылку для Александр Carson. Откроется список курсов и оценок для выбранного учащегося:
 
     ![Student_Details_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image5.png)
 
@@ -123,7 +123,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="updating-the-edit-post-page"></a>Обновление страницы правки POST
 
-В *Controllers\StudentController.cs*, `HttpGet` `Edit` метод (один без `HttpPost` атрибут) использует `Find` метод для извлечения выбранного `Student` сущности, как вы узнали в `Details` метод. Измените этот метод не требуется.
+В *Controllers\StudentController.cs*, `HttpGet` `Edit` метод (один без `HttpPost` атрибут) использует `Find` метод для извлечения выбранного `Student` сущности, как вы узнали в `Details` метод. Изменять этот метод не нужно.
 
 Тем не менее, замените `HttpPost` `Edit` метод действия на следующий код, чтобы добавить `try-catch` блока и [атрибута Bind](https://msdn.microsoft.com/library/system.web.mvc.bindattribute(v=vs.108).aspx):
 
@@ -133,17 +133,17 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="entity-states-and-the-attach-and-savechanges-methods"></a>Состояния сущностей и Attach и методы SaveChanges
 
-Отслеживает отслеживания объекта контекст базы данных, будут ли сущностей в памяти, в соответствии с их соответствующих строк в базе данных, и эта информация определяет, что происходит при вызове `SaveChanges` метода. Например, при передаче новую сущность, [добавить](https://msdn.microsoft.com/library/system.data.entity.dbset.add(v=vs.103).aspx) метод, который присваивается состояние сущности `Added`. Затем при вызове [SaveChanges](https://msdn.microsoft.com/library/system.data.entity.dbcontext.savechanges(v=VS.103).aspx) метода, контекст базы данных выдает SQL `INSERT` команды.
+Контекст базы данных отслеживает состояние синхронизации сущностей в памяти с соответствующими им строками в базе данных. Данные отслеживания определяют, что происходит при вызове метода `SaveChanges`. Например, при передаче новую сущность, [добавить](https://msdn.microsoft.com/library/system.data.entity.dbset.add(v=vs.103).aspx) метод, который присваивается состояние сущности `Added`. Затем при вызове [SaveChanges](https://msdn.microsoft.com/library/system.data.entity.dbcontext.savechanges(v=VS.103).aspx) метода, контекст базы данных выдает SQL `INSERT` команды.
 
 Сущность может находиться в одном из[следующие состояния](https://msdn.microsoft.com/library/system.data.entitystate.aspx):
 
 - `Added`. Сущности в базе данных еще не существует. `SaveChanges` Метод должен выдать `INSERT` инструкции.
-- `Unchanged`. Не нужно ничего сделать с помощью этой сущности, `SaveChanges` метод. При чтении из базы данных сущности, сущность начинается с этим состоянием.
-- `Modified`. Были изменены некоторые или все значения свойств сущности. `SaveChanges` Метод должен выдать `UPDATE` инструкции.
-- `Deleted`. Сущность была помечена для удаления. `SaveChanges` Метод должен выдать `DELETE` инструкции.
-- `Detached`. Сущность не отслеживается контекст базы данных.
+- `Unchanged`. С этой сущностью не нужно выполнять никакие действия с помощью метода `SaveChanges`. Это начальный статус сущности, который она имеет при чтении из базы данных.
+- `Modified`. Были изменены значения некоторых или всех свойств сущности. `SaveChanges` Метод должен выдать `UPDATE` инструкции.
+- `Deleted`. Сущность отмечена для удаления. `SaveChanges` Метод должен выдать `DELETE` инструкции.
+- `Detached`. Сущность не отслеживается контекстом базы данных.
 
-В приложении для настольных систем изменения состояния обычно устанавливаются автоматически. В приложении рабочего стола типа чтение сущности и изменить некоторые значения свойств. В результате состояние сущности автоматически меняется на `Modified`. Затем при вызове `SaveChanges`, Entity Framework создает SQL `UPDATE` инструкцию, которая обновляет только фактические свойства, которые были изменены.
+В классическом приложении изменения состояния обычно осуществляются автоматически. В приложении рабочего стола типа чтение сущности и изменить некоторые значения свойств. В этом случае состояние сущности автоматически изменится на `Modified`. Затем при вызове `SaveChanges`, Entity Framework создает SQL `UPDATE` инструкцию, которая обновляет только фактические свойства, которые были изменены.
 
 Для этой непрерывной последовательности не допускает отключены от веб-приложений. [DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=VS.103).aspx) , читающего сущность удаляется после отрисовки страницы. При `HttpPost` `Edit` вызывается метод действия, новый запрос выполняется, и у вас есть новый экземпляр [DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=VS.103).aspx), поэтому необходимо вручную установить состояние сущности `Modified.` , а затем при вызове `SaveChanges`, Платформа Entity Framework обновляет все столбцы, строки базы данных, так как контекст никак не может знать, какие свойства были изменены.
 
@@ -155,15 +155,15 @@ ms.lasthandoff: 01/24/2018
 
 ![Student_Edit_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image10.png)
 
-Изменить некоторые данные, и нажмите кнопку **Сохранить**. Можно видеть данные, измененные страницы индекса.
+Измените определенные данные и нажмите кнопку **Save** (Сохранить). Можно видеть данные, измененные страницы индекса.
 
 ![Students_Index_page_after_edit](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image11.png)
 
 ## <a name="updating-the-delete-page"></a>Обновление страницы удаления
 
-В *Controllers\StudentController.cs*, код шаблона для `HttpGet` `Delete` использует метод `Find` метод для извлечения выбранного `Student` сущности, как вы видели в `Details` и `Edit` методы. Тем не менее, для реализации пользовательской ошибки сообщение при вызове `SaveChanges` завершается ошибкой, мы добавим некоторые функциональные возможности этого метода и его соответствующее представление.
+В *Controllers\StudentController.cs*, код шаблона для `HttpGet` `Delete` использует метод `Find` метод для извлечения выбранного `Student` сущности, как вы видели в `Details` и `Edit` методы. Тем не менее, чтобы реализовать настраиваемое сообщение об ошибке при сбое вызова метода `SaveChanges`, необходимо добавить некоторые функции в этот метод и соответствующее ему представление.
 
-Как показано для обновления и создания операций, операций удаления может потребоваться два метода действия. Метод, который вызывается в ответ на запрос GET отображает представление, которое дает пользователю возможность утверждения или отменить операцию удаления. Если пользователь утверждает его, создается запрос POST. Когда это происходит, `HttpPost` `Delete` вызывается метод, а затем этот метод фактически выполняет операцию удаления.
+Как и в случае с операциями обновления и создания, операции удаления требуют двух методов действия. Метод, который вызывается в ответ на запрос GET отображает представление, которое дает пользователю возможность утверждения или отменить операцию удаления. Если пользователь подтверждает ее, создается запрос POST. Когда это происходит, `HttpPost` `Delete` вызывается метод, а затем этот метод фактически выполняет операцию удаления.
 
 Вы добавите `try-catch` заблокировать к `HttpPost` `Delete` метод для обработки всех ошибок, которые могут возникнуть при обновлении базы данных. При возникновении ошибки `HttpPost` `Delete` вызовы метода `HttpGet` `Delete` метод, передав ему параметр, указывающий, что произошла ошибка. `HttpGet Delete` Метод затем заново отобразит страницу подтверждения и сообщение об ошибке, предоставляя пользователю возможность отменить или повторить попытку.
 
@@ -172,27 +172,27 @@ ms.lasthandoff: 01/24/2018
     [!code-csharp[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample9.cs)]
 
     Этот код принимает [необязательно](https://msdn.microsoft.com/library/dd264739.aspx) логический параметр, указывающий, является ли он был вызван после сбоя, чтобы сохранить изменения. Этот параметр является `false` при `HttpGet` `Delete` метод вызывается без предыдущего сбоя. При вызове `HttpPost` `Delete` в ответ на ошибку обновления базы данных, параметр является `true` и сообщение об ошибке передается в представление.
-- Замените `HttpPost` `Delete` метода действия (с именем `DeleteConfirmed`) следующим кодом, который выполняет операцию удаления фактическое и перехватывает все ошибки обновления базы данных.
+2. Замените `HttpPost` `Delete` метода действия (с именем `DeleteConfirmed`) следующим кодом, который выполняет операцию удаления фактическое и перехватывает все ошибки обновления базы данных.
 
-    [!code-csharp[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample10.cs)]
+     [!code-csharp[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample10.cs)]
 
-    Этот код извлекает выбранную сущность, затем вызывает метод [удалить](https://msdn.microsoft.com/library/system.data.entity.dbset.remove(v=vs.103).aspx) метод, чтобы задать состояния сущности `Deleted`. Когда `SaveChanges` вызывается SQL `DELETE` команда создается. Изменились имя метода действия из `DeleteConfirmed` для `Delete`. Формирования шаблонов код, называемый `HttpPost` `Delete` метод `DeleteConfirmed` для предоставления `HttpPost` метод уникальная сигнатура. (Среда CLR требуется перегруженные методы, чтобы иметь параметры другой метод). Теперь, когда сигнатурах являются уникальными, можно не покидайте соглашение MVC и использовать то же имя для `HttpPost` и `HttpGet` удаления методов.
+     Этот код извлекает выбранную сущность, затем вызывает метод [удалить](https://msdn.microsoft.com/library/system.data.entity.dbset.remove(v=vs.103).aspx) метод, чтобы задать состояния сущности `Deleted`. Когда `SaveChanges` вызывается SQL `DELETE` команда создается. Вы также изменили имя метода действия с `DeleteConfirmed` на `Delete`. Формирования шаблонов код, называемый `HttpPost` `Delete` метод `DeleteConfirmed` для предоставления `HttpPost` метод уникальная сигнатура. (Среда CLR требуется перегруженные методы, чтобы иметь параметры другой метод). Теперь, когда сигнатурах являются уникальными, можно не покидайте соглашение MVC и использовать то же имя для `HttpPost` и `HttpGet` удаления методов.
 
-    Если приоритетом является повышение производительности в приложении большого объема, чтобы избежать ненужных SQL-запрос для получения строки путем замены строки кода, которые вызывают `Find` и `Remove` методов с помощью следующего кода, как показано желтым цветом выделение:
+     Если приоритетом является повышение производительности в приложении большого объема, чтобы избежать ненужных SQL-запрос для получения строки путем замены строки кода, которые вызывают `Find` и `Remove` методов с помощью следующего кода, как показано желтым цветом выделение:
 
-    [!code-csharp[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample11.cs)]
+     [!code-csharp[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample11.cs)]
 
-    Этот код создает экземпляр `Student` сущности с помощью только значения первичного ключа, а затем задает состояние сущности `Deleted`. Это все, что платформа Entity Framework требуется, чтобы удалить сущность.
+     Этот код создает экземпляр `Student` сущности с помощью только значения первичного ключа, а затем задает состояние сущности `Deleted`. Это все, что платформе Entity Framework необходимо для удаления сущности.
 
-    Как уже отмечалось, `HttpGet` `Delete` метода не удаляет данные. Выполнение операции delete в ответ на команду GET запроса (или неважно, выполнение любых операций изменения, создайте операции или любой другой операции, изменяющий данные) создает угрозу безопасности. Дополнительные сведения см. в разделе [46 совет # ASP.NET MVC — не использовать удалить ссылки, так как они создают бреши в системе безопасности](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx) Стивен Вальтер блога.
-- В *Views\Student\Delete.cshtml*, добавить сообщение об ошибке между `h2` заголовок и `h3` заголовок, как показано в следующем примере:
+     Как уже отмечалось, `HttpGet` `Delete` метода не удаляет данные. Выполнение операции delete в ответ на команду GET запроса (или неважно, выполнение любых операций изменения, создайте операции или любой другой операции, изменяющий данные) создает угрозу безопасности. Дополнительные сведения см. в разделе [46 совет # ASP.NET MVC — не использовать удалить ссылки, так как они создают бреши в системе безопасности](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx) Стивен Вальтер блога.
+3. В *Views\Student\Delete.cshtml*, добавить сообщение об ошибке между `h2` заголовок и `h3` заголовок, как показано в следующем примере:
 
-    [!code-cshtml[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample12.cshtml?highlight=2)]
+     [!code-cshtml[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample12.cshtml?highlight=2)]
 
-    Запустите страницу, выбрав **учащихся** и нажав кнопку **удалить** гиперссылки:
+     Запустите страницу, выбрав **учащихся** и нажав кнопку **удалить** гиперссылки:
 
-    ![Student_Delete_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image12.png)
-- Нажмите кнопку **удалить**. Без удаленных студента отображается страница индекса. (Вы увидите пример код обработки ошибок в действие в [обработки параллелизма](../../getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md) учебника далее в этой серии.)
+     ![Student_Delete_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image12.png)
+4. Щелкните **Delete** (Удалить). Отображается страница Index (Указатель), на которой удаленный учащийся будет отсутствовать. (Вы увидите пример код обработки ошибок в действие в [обработки параллелизма](../../getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md) учебника далее в этой серии.)
 
 ## <a name="ensuring-that-database-connections-are-not-left-open"></a>Проверка подключения к базе данных не остаются открытыми
 
@@ -210,6 +210,6 @@ ms.lasthandoff: 01/24/2018
 
 Ссылки на другие ресурсы Entity Framework можно найти в [Карта содержимого для доступа к данным ASP.NET](../../../../whitepapers/aspnet-data-access-content-map.md).
 
->[!div class="step-by-step"]
-[Назад](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)
-[Вперед](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [!div class="step-by-step"]
+> [Назад](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)
+> [Вперед](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)

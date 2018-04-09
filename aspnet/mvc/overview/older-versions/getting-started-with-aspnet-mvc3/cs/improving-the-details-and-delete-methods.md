@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/improving-the-details-and-delete-methods
-title: "Улучшение сведения и удаления методы (C#) | Документы Microsoft"
+title: Улучшение сведения и удаления методы (C#) | Документы Microsoft
 author: Rick-Anderson
-description: "Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся..."
+description: Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/improving-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: e46616d45ad0e4a0ab861e6fb53f33bc567cbdea
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 55945eb373c79fd6ae018fe8f896dc5e6bbe7744
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="improving-the-details-and-delete-methods-c"></a>Улучшение сведения и удаления методы (C#)
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Доступна обновленная версия этого учебника [здесь](../../../getting-started/introduction/getting-started.md) , с использованием ASP.NET MVC 5 и Visual Studio 2013. Он является более безопасны, выполните гораздо проще и показаны дополнительные возможности.
@@ -61,7 +61,7 @@ ms.lasthandoff: 01/24/2018
 
 Общеязыковая среда выполнения (CLR) требует перегруженные методы, имели уникальная сигнатура (таким же именем, другой список параметров). Однако здесь требуется два метода Delete — один для GET--и один для POST требуются такой же сигнатурой. (Они оба должны принимать целочисленное значение в качестве параметра.)
 
-Чтобы отсортировать эту возможность, можно сделать несколько факторов. Одна — предоставить методы разные имена. Это мы сделали он предшествующий пример. Однако в этом случае возникает небольшая проблема: ASP.NET сопоставляет сегменты URL-адреса с методами действий по имени, а при переименовании метода, как правило, маршрутизация не сможет найти этот метод. Решение показано в примере, а именно: в метод `DeleteConfirmed` следует добавить атрибут `ActionName("Delete")`. Это фактически выполняет сопоставление по системе маршрутизации, URL-адрес, включающий */Delete/*для POST запрос найдет `DeleteConfirmed` метод.
+Чтобы отсортировать эту возможность, можно сделать несколько факторов. Одна — предоставить методы разные имена. Это мы сделали он предшествующий пример. Однако в этом случае возникает небольшая проблема: ASP.NET сопоставляет сегменты URL-адреса с методами действий по имени, а при переименовании метода, как правило, маршрутизация не сможет найти этот метод. Решение показано в примере, а именно: в метод `DeleteConfirmed` следует добавить атрибут `ActionName("Delete")`. Это фактически выполняет сопоставление по системе маршрутизации, URL-адрес, включающий <em>/Delete/</em>для POST запрос найдет `DeleteConfirmed` метод.
 
 Другой способ избежать проблемы с методами, которые имеют одинаковые имена и сигнатуры — искусственно изменить сигнатуру метода POST для включения неиспользуемый параметр. Например, некоторые разработчики добавить тип параметра `FormCollection` , передаваемого в метод POST, а затем просто не использовать параметр:
 
@@ -81,11 +81,11 @@ ms.lasthandoff: 01/24/2018
 - [Включение IIS 7.x](https://blogs.msdn.com/b/rickandy/archive/2011/03/14/enabling-iis-7-x-on-windows-7-vista-sp1-windows-2008-windows-2008-r2.aspx)
 - [Развертывание проектов веб-приложений](https://msdn.microsoft.com/library/dd394698.aspx)
 
-Читателю теперь можно переходить к нашей промежуточного уровня [Создание модели данных Entity Framework для приложения ASP.NET MVC](../../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) и [MVC Music Store](../../mvc-music-store/mvc-music-store-part-1.md) учебники для изучения [ASP.NET статьи в библиотеке MSDN](https://msdn.microsoft.com/library/gg416514(VS.98).aspx)и многие видеоролики и ресурсы на [https://asp.net/mvc](https://asp.net/mvc) , чтобы получить дополнительные сведения о ASP.NET MVC! [Форумы по ASP.NET MVC](https://forums.asp.net/1146.aspx) — это отличное место для вопросов.
+Читателю теперь можно переходить к нашей промежуточного уровня [Создание модели данных Entity Framework для приложения ASP.NET MVC](../../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) и [MVC Music Store](../../mvc-music-store/mvc-music-store-part-1.md) учебники для изучения [ASP.NET статьи в библиотеке MSDN](https://msdn.microsoft.com/library/gg416514(VS.98).aspx)и многие видеоролики и ресурсы на [ https://asp.net/mvc ](https://asp.net/mvc) , чтобы получить дополнительные сведения о ASP.NET MVC! [Форумы по ASP.NET MVC](https://forums.asp.net/1146.aspx) — это отличное место для вопросов.
 
 Желаем удачи!
 
-— Скотт Хансельман ([http://hanselman.com](http://hanselman.com) и [ @shanselman ](http://twitter.com/shanselman) в Twitter) и Рик Андерсон [blogs.msdn.com/rickAndy](https://blogs.msdn.com/rickAndy)
+— Скотт Хансельман ([ http://hanselman.com ](http://hanselman.com) и [ @shanselman ](http://twitter.com/shanselman) в Twitter) и Рик Андерсон [blogs.msdn.com/rickAndy](https://blogs.msdn.com/rickAndy)
 
->[!div class="step-by-step"]
-[Назад](adding-validation-to-the-model.md)
+> [!div class="step-by-step"]
+> [Назад](adding-validation-to-the-model.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-vb
-title: "Настройка веб-сайта, использующего службы приложений (Visual Basic) | Документы Microsoft"
+title: Настройка веб-сайта, использующего службы приложений (Visual Basic) | Документы Microsoft
 author: rick-anderson
-description: "ASP.NET версии 2.0 включает ряд служб приложений, которые входят в состав платформы .NET Framework и использовать в качестве стандартного блока набор служб, ё..."
+description: ASP.NET версии 2.0 включает ряд служб приложений, которые входят в состав платформы .NET Framework и использовать в качестве стандартного блока набор служб, ё...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/23/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5f908eb6c6b2d18c6c41870a38bb618737949b0a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 416cc5b3b6ac3c8e7a6c1a99a8b4f8d94b5b3428
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-a-website-that-uses-application-services-vb"></a>Настройка веб-сайта, использующего службы приложений (Visual Basic)
 ====================
@@ -200,6 +200,6 @@ ASP.NET поставляется с низким приоритетом [ *ср�
 - [*Учебники по безопасности веб-сайта*](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md)
 - [*Обзор средства администрирования веб-сайта*](https://msdn.microsoft.com/library/yy40ytx0.aspx)
 
->[!div class="step-by-step"]
-[Назад](configuring-the-production-web-application-to-use-the-production-database-vb.md)
-[Вперед](strategies-for-database-development-and-deployment-vb.md)
+> [!div class="step-by-step"]
+> [Назад](configuring-the-production-web-application-to-use-the-production-database-vb.md)
+> [Вперед](strategies-for-database-development-and-deployment-vb.md)

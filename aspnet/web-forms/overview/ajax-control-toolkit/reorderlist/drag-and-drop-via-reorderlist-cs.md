@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs
-title: "Перетаскивание через ReorderList (C#) | Документы Microsoft"
+title: Перетаскивание через ReorderList (C#) | Документы Microsoft
 author: wenz
-description: "Элемент управления ReorderList в наборе элементов управления AJAX предоставляет список, который можно переупорядочить пользователем с помощью операции перетаскивания. Текущий порядок элементов в списке должны..."
+description: Элемент управления ReorderList в наборе элементов управления AJAX предоставляет список, который можно переупорядочить пользователем с помощью операции перетаскивания. Текущий порядок элементов в списке должны...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6afecfc7330647e6f4944c507e308afec6d2401b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 42464d10f119e0ba51d5eebf2a67e76e3e419bda
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="drag-and-drop-via-reorderlist-c"></a>Перетаскивание через ReorderList (C#)
 ====================
@@ -35,16 +35,16 @@ ms.lasthandoff: 11/10/2017
 
 `ReorderList` Элемент управления поддерживает привязку данных из базы данных в список. Лучше всего оно также поддерживает запись изменений порядку элемент списка в хранилище данных.
 
-Этот образец использует в качестве хранилища данных Microsoft SQL Server 2005 Express Edition. Базы данных является частью необязательно (и бесплатные) установки Visual Studio, включая экспресс-выпуск. Эта схема также доступна как отдельный загружаемый под [https://go.microsoft.com/fwlink/?LinkId=64064](https://go.microsoft.com/fwlink/?LinkId=64064). Для данного образца предполагается, что экземпляр SQL Server 2005 Express Edition вызывается `SQLEXPRESS` и находится на том же компьютере, что веб-сервер; Кроме того, это настройки по умолчанию. Если настройки отличаются, необходимо адаптировать сведения о соединении для базы данных.
+Этот образец использует в качестве хранилища данных Microsoft SQL Server 2005 Express Edition. Базы данных является частью необязательно (и бесплатные) установки Visual Studio, включая экспресс-выпуск. Эта схема также доступна как отдельный загружаемый под [ https://go.microsoft.com/fwlink/?LinkId=64064 ](https://go.microsoft.com/fwlink/?LinkId=64064). Для данного образца предполагается, что экземпляр SQL Server 2005 Express Edition вызывается `SQLEXPRESS` и находится на том же компьютере, что веб-сервер; Кроме того, это настройки по умолчанию. Если настройки отличаются, необходимо адаптировать сведения о соединении для базы данных.
 
 Самый простой способ настроить базу данных будет использовать Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en) ). Подключиться к серверу, дважды щелкните `Databases` и создать новую базу данных (щелкните правой кнопкой мыши и выберите `New Database`) вызывается `Tutorials`.
 
 В этой базе данных, создайте новую таблицу с именем `AJAX` следующие четыре столбца:
 
-- `id`(первичный ключ, целое число со знаком, удостоверение, не ОПРЕДЕЛЕНО)
-- `char`(char(1) NULL)
-- `description`(varchar(50) NULL)
-- `position`(int, NULL)
+- `id` (первичный ключ, целое число со знаком, удостоверение, не ОПРЕДЕЛЕНО)
+- `char` (char(1) NULL)
+- `description` (varchar(50) NULL)
+- `position` (int, NULL)
 
 
 [![Макет таблицы AJAX](drag-and-drop-via-reorderlist-cs/_static/image2.png)](drag-and-drop-via-reorderlist-cs/_static/image1.png)
@@ -90,6 +90,6 @@ ms.lasthandoff: 11/10/2017
 
 Данные в базы данных изменяется в соответствии с новый список элементов заказа ([Просмотр полноразмерное изображение](drag-and-drop-via-reorderlist-cs/_static/image9.png))
 
->[!div class="step-by-step"]
-[Назад](using-postbacks-with-reorderlist-cs.md)
-[Вперед](using-postbacks-with-reorderlist-vb.md)
+> [!div class="step-by-step"]
+> [Назад](using-postbacks-with-reorderlist-cs.md)
+> [Вперед](using-postbacks-with-reorderlist-vb.md)

@@ -1,26 +1,26 @@
 ---
 uid: visual-studio/overview/2012/windows-azure-authentication
-title: "Windows Azure Authentication | Документы Microsoft"
+title: Windows Azure Authentication | Документы Microsoft
 author: Rick-Anderson
-description: "Инструменты Microsoft ASP.NET для Windows Azure Active Directory позволяет легко включить проверку подлинности для веб-приложений, размещенных в Windows Azure веб-сайтов..."
+description: Инструменты Microsoft ASP.NET для Windows Azure Active Directory позволяет легко включить проверку подлинности для веб-приложений, размещенных в Windows Azure веб-сайтов...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2013
 ms.topic: article
 ms.assetid: a3cef801-a54b-4ebd-93c3-55764e2e14b1
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/windows-azure-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: 4deb3536699f1ef3025f8858ee71a76a1c2def18
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 09cb37ceb0132958a48f5f3a5d52dc46c6f0a78d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="windows-azure-authentication"></a>Windows Azure проверка подлинности
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Средства Microsoft ASP.NET для Windows Azure Active Directory позволяет легко включить проверку подлинности для веб-приложений, размещенных на [веб-сайтов Windows Azure](https://www.windowsazure.com/home/features/web-sites/). Проверка подлинности Windows Azure можно использовать для проверки подлинности пользователей Office 365 в организации, корпоративных учетных записей, синхронизированные из локальной службы Active Directory или пользователей, созданных в собственный домен Windows Azure Active Directory. Включение проверки подлинности Windows Azure настраивает приложение для проверки подлинности пользователей с помощью одного [Windows Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) клиента.
 > 
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/24/2018
 
 1. В меню Проект выберите **включить проверку подлинности Windows Azure**:  
   
- ![](windows-azure-authentication/_static/image2.png)
+   ![](windows-azure-authentication/_static/image2.png)
 
 2. Введите имя домена для вашего клиента Windows Azure Active Directory (например, contoso.onmicrosoft.com) и нажмите кнопку **включить**:
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 01/24/2018
 
 3. В веб-проверки подлинности диалоговое окно входа с правами администратора для вашего клиента Windows Azure Active Directory:  
   
- ![](windows-azure-authentication/_static/image4.png)
+   ![](windows-azure-authentication/_static/image4.png)
 
 ![](windows-azure-authentication/_static/image5.png)
 

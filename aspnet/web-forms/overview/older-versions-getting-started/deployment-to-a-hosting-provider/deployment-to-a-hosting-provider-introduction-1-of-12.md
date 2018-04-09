@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
-title: "Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio: введение - 1, 12 | Документы Microsoft"
+title: 'Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio: введение - 1, 12 | Документы Microsoft'
 author: tdykstra
-description: "Ряд учебниках показано развертывание ASP.NET (публикации) проекта веб-приложения, который содержит базу данных SQL Server Compact с помощью Visual Stu..."
+description: Ряд учебниках показано развертывание ASP.NET (публикации) проекта веб-приложения, который содержит базу данных SQL Server Compact с помощью Visual Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: a0f38c83bd9231dbd37d3d505c90316af521b336
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 3f1572bb890ee136cdd746040a5efae2ce537116
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-introduction---1-of-12"></a>Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio: введение - 1, 12
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузите начальный проект](http://code.msdn.microsoft.com/Deploying-an-ASPNET-Web-4e31366b)
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 02/12/2018
 
 В корпоративных средах обычно для реализации непрерывной интеграции процессов и в рабочей среде, как правило, размещенного на серверах компании. Разные люди также обычно выполняют разные роли. Сведения о развертывании предприятия см. в разделе [развертывание веб-приложений в корпоративных сценариях](../../deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md).
 
-Организаций всех размеров можно также развертывать веб-приложения в Azure, и большинство процедур, представленных в этих учебниках применяются также для веб-приложениях службы приложений Azure. Введение Azure см. в разделе [https://azure.microsoft.com](https://azure.microsoft.com).
+Организаций всех размеров можно также развертывать веб-приложения в Azure, и большинство процедур, представленных в этих учебниках применяются также для веб-приложениях службы приложений Azure. Введение Azure см. в разделе [ https://azure.microsoft.com ](https://azure.microsoft.com).
 
 ## <a name="the-hosting-provider-shown-in-the-tutorials"></a>Поставщик услуг размещения, представленных в учебниках
 
@@ -142,5 +142,5 @@ ms.lasthandoff: 02/12/2018
 
 В этом учебнике первого ряда загружен пример проекта Visual Studio и проверить компоненты веб-сайтов, которые влияют на способ развертывания приложения. В следующих учебниках Подготовка развертывания с помощью настройки некоторые из этих действий автоматически обрабатываться. Другие позволяет устранить вручную.
 
->[!div class="step-by-step"]
-[Вперед](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)
+> [!div class="step-by-step"]
+> [Вперед](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-vb
-title: "Создание классов модели с помощью LINQ to SQL (Visual Basic) | Документы Microsoft"
+title: Создание классов модели с помощью LINQ to SQL (Visual Basic) | Документы Microsoft
 author: microsoft
-description: "Целью данного учебника является объясните, один из способов создания классов модели для приложения ASP.NET MVC. В этом учебнике вы узнаете, как для построения модели c..."
+description: Целью данного учебника является объясните, один из способов создания классов модели для приложения ASP.NET MVC. В этом учебнике вы узнаете, как для построения модели c...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/07/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 972d5b11049825e84e070ef1c4b2b90116654397
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5438838123c40d82afbda191a48878d6dca80736
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-model-classes-with-linq-to-sql-vb"></a>Создание классов модели с помощью LINQ to SQL (Visual Basic)
 ====================
@@ -53,9 +53,10 @@ ms.lasthandoff: 11/10/2017
 
 После создания новой базы данных, можно открыть базу данных, дважды щелкнув файл MoviesDB.mdf в приложении\_папки данных. Дважды щелкните файл MoviesDB.mdf открыть окно обозревателя серверов (см. рис. 2).
 
-|  | Окно обозревателя серверов называется окно обозревателя базы данных при использовании Visual Web Developer. |
-| --- | --- |
 
+|   | Окно обозревателя серверов называется окно обозревателя базы данных при использовании Visual Web Developer. |
+|---|----------------------------------------------------------------------------------------------------|
+|   |                                                                                                    |
 
 [![С помощью окна обозревателя серверов](creating-model-classes-with-linq-to-sql-vb/_static/image5.png)](creating-model-classes-with-linq-to-sql-vb/_static/image4.png)
 
@@ -112,7 +113,7 @@ ms.lasthandoff: 11/10/2017
 
 Во-первых необходимо изменить класс HomeController. Этот класс можно найти в папке Controllers находится приложения. Измените класс, чтобы она выглядела как класс в список 1.
 
-**Листинг 1.`Controllers\HomeController.vb`**
+**Листинг 1. `Controllers\HomeController.vb`**
 
 [!code-vb[Main](creating-model-classes-with-linq-to-sql-vb/samples/sample1.vb)]
 
@@ -122,7 +123,7 @@ ms.lasthandoff: 11/10/2017
 
 Чтобы можно было отобразить фильмы, далее, необходимо изменить представление индекса. Представление индекса можно найти в папке Views\Home\. Обновите представление индекса, чтобы он выглядел представление в списке 2.
 
-**Листинг 2.`Views\Home\Index.aspx`**
+**Листинг 2. `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-model-classes-with-linq-to-sql-vb/samples/sample2.aspx)]
 
@@ -164,19 +165,19 @@ ms.lasthandoff: 11/10/2017
 
 Интерфейс в списке 3 называется IMovieRepository и представляет один метод с именем ListAll().
 
-**Листинг 3.`Models\IMovieRepository.vb`**
+**Листинг 3. `Models\IMovieRepository.vb`**
 
 [!code-vb[Main](creating-model-classes-with-linq-to-sql-vb/samples/sample3.vb)]
 
 Класс репозитория в листинге 4 реализует интерфейс IMovieRepository. Обратите внимание, что он содержит метод с именем соответствующего метода, объявленного в интерфейсе IMovieRepository ListAll().
 
-**Листинг 4.`Models\MovieRepository.vb`**
+**Листинг 4. `Models\MovieRepository.vb`**
 
 [!code-vb[Main](creating-model-classes-with-linq-to-sql-vb/samples/sample4.vb)]
 
 Наконец класс MoviesController в листинге 5 использует шаблон репозитория. Больше не используются LINQ для классов SQL непосредственно.
 
-**Листинг 5.`Controllers\MoviesController.vb`**
+**Листинг 5. `Controllers\MoviesController.vb`**
 
 [!code-vb[Main](creating-model-classes-with-linq-to-sql-vb/samples/sample5.vb)]
 
@@ -186,7 +187,7 @@ ms.lasthandoff: 11/10/2017
 
 Класс MoviesController имеет преимущества программного обеспечения шаблон, который называется шаблон внедрения зависимостей. В частности она использует так называемые конструктор внедрения зависимостей. Можно прочитать подробнее об этой модели, считывая в следующей статье по Martin Fowler:
 
-[http://martinfowler.com/articles/injection.HTML](http://martinfowler.com/articles/injection.html)
+[http://martinfowler.com/articles/injection.html](http://martinfowler.com/articles/injection.html)
 
 Обратите внимание, что весь код в классе MoviesController (за исключением первый конструктор) взаимодействует с интерфейс IMovieRepository вместо фактического MovieRepository класса. Код взаимодействует с абстрактный интерфейс вместо конкретную реализацию интерфейса.
 
@@ -200,6 +201,6 @@ ms.lasthandoff: 11/10/2017
 
 Далее мы изучена немного сложнее, но определенно более эффективный путь для отображения данных базы данных. Мы воспользовался шаблон репозитория и разместить все наши логики доступа к базе данных в классе отдельные репозитория. В нашем контроллера мы писали все наши кода по интерфейс вместо конкретного класса. Преимуществом шаблон репозитория является, что позволяет легко изменять технологий доступа к базе данных в будущем, и позволяет легко тестировать наших классов контроллеров.
 
->[!div class="step-by-step"]
-[Назад](creating-model-classes-with-the-entity-framework-vb.md)
-[Вперед](displaying-a-table-of-database-data-vb.md)
+> [!div class="step-by-step"]
+> [Назад](creating-model-classes-with-the-entity-framework-vb.md)
+> [Вперед](displaying-a-table-of-database-data-vb.md)

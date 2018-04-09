@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-cs
-title: "Обзор маршрутизации ASP.NET MVC (C#) | Документы Microsoft"
+title: Обзор маршрутизации ASP.NET MVC (C#) | Документы Microsoft
 author: StephenWalther
-description: "В этом учебнике Стивен Вальтер показано, как платформа ASP.NET MVC сопоставляет запросы браузера действия контроллера."
+description: В этом учебнике Стивен Вальтер показано, как платформа ASP.NET MVC сопоставляет запросы браузера действия контроллера.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 714fd1939ffeba11b84a82e80193ecbbe4b12e09
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fa565d2ef253539844f5224df00bdcdc047bb3f9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-routing-overview-c"></a>Обзор маршрутизации ASP.NET MVC (C#)
 ====================
@@ -109,5 +109,5 @@ URL-адрес/Home также соответствует метод Index() к�
 
 Целью данного учебника было предоставляют краткое введение в маршрутизации ASP.NET. Мы рассмотрели таблицы маршрутов по умолчанию, вы получаете с нового приложения ASP.NET MVC. Вы узнали, как маршрут по умолчанию сопоставление URL-адреса действий контроллера.
 
->[!div class="step-by-step"]
-[Вперед](understanding-action-filters-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](understanding-action-filters-cs.md)

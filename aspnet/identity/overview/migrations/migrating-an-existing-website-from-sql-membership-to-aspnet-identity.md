@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
-title: "Миграция существующего веб-сайта из SQL членства в ASP.NET Identity | Документы Microsoft"
+title: Миграция существующего веб-сайта из SQL членства в ASP.NET Identity | Документы Microsoft
 author: Rick-Anderson
-description: "Этот учебник демонстрирует действия по переносу существующих веб-приложения с именем пользователя и роли данных, созданных с помощью членства SQL для нового удостоверения ASP.NET s..."
+description: Этот учебник демонстрирует действия по переносу существующих веб-приложения с именем пользователя и роли данных, созданных с помощью членства SQL для нового удостоверения ASP.NET s...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/19/2014
 ms.topic: article
 ms.assetid: 220d3d75-16b2-4240-beae-a5b534f06419
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 3638c6779a0fcedaaa49623126b28ecf09a4954f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2790f32bc74cecf450f5a258fc1ff5b280a63923
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>Миграция существующего веб-сайта из SQL членства в ASP.NET Identity
 ====================
@@ -67,14 +67,14 @@ ms.lasthandoff: 01/24/2018
 
 1. В обозревателе решений щелкните правой кнопкой мыши проект &gt; **управление пакетами NuGet**. В поле поиска введите «Asp.net Identity». Выберите пакет, в списке результатов и нажмите кнопку установить. Примите лицензионное соглашение с помощью кнопки «Принимаю». Обратите внимание, что этот пакет будут установлены пакеты зависимостей: EntityFramework и Microsoft ASP.NET Identity Core. Аналогичным образом установите следующие пакеты (Если вы не хотите включить в журнал OAuth, пропустите последние 4 пакеты OWIN):
 
-    - Microsoft.AspNet.Identity.Owin
-    - Microsoft.Owin.Host.SystemWeb
-    - Microsoft.Owin.Security.Facebook
-    - Microsoft.Owin.Security.Google
-    - Microsoft.Owin.Security.MicrosoftAccount
-    - Microsoft.Owin.Security.Twitter
+   - Microsoft.AspNet.Identity.Owin
+   - Microsoft.Owin.Host.SystemWeb
+   - Microsoft.Owin.Security.Facebook
+   - Microsoft.Owin.Security.Google
+   - Microsoft.Owin.Security.MicrosoftAccount
+   - Microsoft.Owin.Security.Twitter
 
-    ![](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/_static/image6.png)
+     ![](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/_static/image6.png)
 
 ### <a name="migrate-database-to-the-new-identity-system"></a>Перенести базу данных в новой системе удостоверений
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 01/24/2018
 
 Мы должны иметь таблиц для каждой из этих моделей с столбцы, соответствующие свойства. Сопоставление между классами и таблиц, определенное в `OnModelCreating` метод `IdentityDBContext`. Этот процесс известен как метод fluent API конфигурации и Дополнительные сведения можно найти [здесь](https://msdn.microsoft.com/data/jj591617.aspx). Конфигурация для классов является описанным ниже
 
-| **Класс** | **Таблица** | **Первичный ключ** | **Внешний ключ** |
+| **Класс** | **Таблица** | **первичный ключ** | **внешний ключ** |
 | --- | --- | --- | --- |
 | IdentityUser | AspnetUsers | Идентификатор |  |
 | IdentityRole | AspnetRoles | Идентификатор |  |
@@ -193,7 +193,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="create-new-account-management-pages"></a>Создать новую учетную запись страницы управления
 
-Следующим шагом в процессе переноса является добавление учетной записи управления страниц, которые будут пользователи могут регистрировать и войдите в систему. Старой учетной записи страниц из членства SQL используйте элементы управления, которые не работают с новой системы удостоверений. Чтобы добавить нового пользователя страницы управления учебнике по этой ссылке [https://www.asp.net/identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project](../getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project.md) начиная с шага " Добавление веб-формы для регистрации пользователей для приложения ", так как мы уже создан проект и добавить пакеты NuGet.
+Следующим шагом в процессе переноса является добавление учетной записи управления страниц, которые будут пользователи могут регистрировать и войдите в систему. Старой учетной записи страниц из членства SQL используйте элементы управления, которые не работают с новой системы удостоверений. Чтобы добавить нового пользователя страницы управления учебнике по этой ссылке [ https://www.asp.net/identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project ](../getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project.md) начиная с шага «Добавление веб-формы для регистрации пользователей для приложения», так как мы уже созданы проект и добавлены NuGet пакеты.
 
 Необходимо внести некоторые изменения для образца для работы с проектом, которая у нас есть здесь.
 

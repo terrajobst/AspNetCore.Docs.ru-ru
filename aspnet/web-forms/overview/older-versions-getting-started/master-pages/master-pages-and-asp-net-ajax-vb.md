@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-vb
-title: "Главные страницы и ASP.NET AJAX (VB) | Документы Microsoft"
+title: Главные страницы и ASP.NET AJAX (VB) | Документы Microsoft
 author: rick-anderson
-description: "Описывает параметры для использования ASP.NET AJAX и главных страниц. Рассматривает использование класса ScriptManagerProxy; Описывает, как различные JS-файлы загружаются dependi..."
+description: Описывает параметры для использования ASP.NET AJAX и главных страниц. Рассматривает использование класса ScriptManagerProxy; Описывает, как различные JS-файлы загружаются dependi...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/11/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b25234f82c46437d853d1ab5b240f8a688995ccc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2c7d8477d6d9d235749d88d0b657d60454298e53
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="master-pages-and-aspnet-ajax-vb"></a>Главные страницы и ASP.NET AJAX (Visual Basic)
 ====================
@@ -184,9 +184,9 @@ ms.lasthandoff: 11/10/2017
 
 Чтобы увидеть прокси диспетчера скриптов в действии, давайте дополнять UpdatePanel в `ShowRandomProduct.aspx` для включения кнопки, которая использует клиентский скрипт, чтобы приостановить или возобновить элемента управления Timer. Элемент управления Timer имеет три клиентского метода, которые можно использовать для достижения этого нужной функции:
 
-- `_startTimer()`-запускает элемента управления Timer
-- `_raiseTick()`-элемент управления таймера «тактов», тем самым, выполнение обратной передачи и вызов событие Tick на сервере
-- `_stopTimer()`— Останавливает элемента управления Timer
+- `_startTimer()` -запускает элемента управления Timer
+- `_raiseTick()` -элемент управления таймера «тактов», тем самым, выполнение обратной передачи и вызов событие Tick на сервере
+- `_stopTimer()` — Останавливает элемента управления Timer
 
 Давайте создадим файл JavaScript с переменной с именем `timerEnabled` и функции с именем `ToggleTimer`. `timerEnabled` Переменной указывает состояние элемента управления Timer в настоящее время включено или отключено; по умолчанию имеет значение true. `ToggleTimer` Функция принимает два входных параметра: ссылку на кнопке приостановки/возобновления и на стороне клиента `id` значение элемента управления Timer. Эта функция переключает `timerEnabled`, возвращает ссылку на элемент управления Timer, запускает или останавливает таймер (в зависимости от значения `timerEnabled`) и обновляет отображаемый текст кнопки «Приостановка» или «Возобновление». Эта функция будет вызываться при нажатии кнопки приостановки или возобновления.
 
@@ -228,7 +228,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-aspx[Main](master-pages-and-asp-net-ajax-vb/samples/sample10.aspx)]
 
-При этом отображаются кнопки с текстом «Приостановка». Каждый раз, когда он выбран, функция JavaScript, которая `ToggleTimer` вызова при передаче в ссылке на кнопку и `id` значение элемента управления Timer (`ProductTimer`). Обратите внимание, синтаксис для получения `id` значение элемента управления Timer. `<%=ProductTimer.ClientID%>`Создает значение `ProductTimer` элемента управления Timer `ClientID` свойство. В именовании Идентификаторов элементов управления страницы содержимого [SKM3] учебника мы рассмотрели различия между серверным `ID` значение и полученный на стороне клиента `id` значение и как `ClientID` возвращает на стороне клиента `id`.
+При этом отображаются кнопки с текстом «Приостановка». Каждый раз, когда он выбран, функция JavaScript, которая `ToggleTimer` вызова при передаче в ссылке на кнопку и `id` значение элемента управления Timer (`ProductTimer`). Обратите внимание, синтаксис для получения `id` значение элемента управления Timer. `<%=ProductTimer.ClientID%>` Создает значение `ProductTimer` элемента управления Timer `ClientID` свойство. В именовании Идентификаторов элементов управления страницы содержимого [SKM3] учебника мы рассмотрели различия между серверным `ID` значение и полученный на стороне клиента `id` значение и как `ClientID` возвращает на стороне клиента `id`.
 
 Рис. 11 показана эта страница при первом посещении через браузер. Таймера выполняется в данный момент и обновляет сведения о продукте отображаемых каждые 15 секунд. Рис. 12 показан экран, после нажатия кнопки «Пауза». Нажмите кнопку Приостановка останавливает таймер и обновляет текст, кнопки «Возобновление». Сведения о продукте обновления (и продолжить обновление каждые 15 секунд), когда пользователь нажимает кнопку возобновления.
 
@@ -264,12 +264,12 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор по ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 3.5 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Скотт может быть достигнута по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) или через его блог по [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор по ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 3.5 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Скотт может быть достигнута по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) или через его блог по [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Благодарности
 
-Этот учебник ряд прошел проверку многие полезные рецензентов. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Этот учебник ряд прошел проверку многие полезные рецензентов. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](interacting-with-the-content-page-from-the-master-page-vb.md)
-[Вперед](specifying-the-master-page-programmatically-vb.md)
+> [!div class="step-by-step"]
+> [Назад](interacting-with-the-content-page-from-the-master-page-vb.md)
+> [Вперед](specifying-the-master-page-programmatically-vb.md)

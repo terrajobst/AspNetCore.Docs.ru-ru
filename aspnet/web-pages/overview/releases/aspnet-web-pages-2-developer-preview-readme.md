@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/releases/aspnet-web-pages-2-developer-preview-readme
-title: "ASP.NET Web Pages 2 разработчика Предварительный просмотр сведений | Документы Microsoft"
+title: ASP.NET Web Pages 2 разработчика Предварительный просмотр сведений | Документы Microsoft
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/14/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/releases/aspnet-web-pages-2-developer-preview-readme
 msc.type: authoredcontent
-ms.openlocfilehash: 119265c62abb3f3110cdc7f0b94a7c9b16b4251c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1a43b2b12af9cd223d8a3622239743f7c431f617
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-pages-2-developer-preview-readme"></a>Веб-страницы ASP.NET 2 Developer Preview ReadMe
 ====================
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="contents"></a>Описание
 
-#### <a id="_Toc303701284"></a>Замечания по установке
+#### <a id="_Toc303701284"></a>  Замечания по установке
 
 Чтобы установить веб-страницы 2 Developer Preview, доступны следующие параметры.
 
@@ -38,15 +38,15 @@ ms.lasthandoff: 11/10/2017
 
 Веб-страниц ASP.NET 2 Developer Preview можно установить и выполнять side-by-side с 1 веб-страниц ASP.NET. <a id="a"></a>Дополнительные сведения см. подраздел «Запущена веб-страниц приложений-параллельных» в [верхней функции в состоянии предварительной версии Web Pages 2](https://go.microsoft.com/fwlink/?LinkID=227824).
 
-#### <a id="_Toc303701285"></a>Документация
+#### <a id="_Toc303701285"></a>  Документация
 
 Учебники и другие сведения о веб-страницы ASP.NET доступны на веб-страницы ASP.NET веб-сайта ([https://www.asp.net/web-pages/](../../index.md)). Сведения о новых возможностях и улучшениях в 2 веб-страниц см. в разделе [верхней функции в состоянии предварительной версии Web Pages 2](https://go.microsoft.com/fwlink/?LinkID=227824).
 
-#### <a id="_Toc303701286"></a>Поддержка
+#### <a id="_Toc303701286"></a>  Support
 
-<a id="_Toc209852135"></a><a id="_Toc255833657"></a>Это является предварительной и официально не поддерживается. При наличии вопросов о работе в этом выпуске, задайте их на форуме ASP.NET Web Pages ([https://forums.asp.net/1224.aspx/1?WebMatrix](https://forums.asp.net/1224.aspx/1?WebMatrix) ), где члены сообщества ASP.NET друг другу, предоставляя полезные сведения.
+<a id="_Toc209852135"></a><a id="_Toc255833657"></a> Это является предварительной и официально не поддерживается. При наличии вопросов о работе в этом выпуске, задайте их на форуме ASP.NET Web Pages ([ https://forums.asp.net/1224.aspx/1?WebMatrix ](https://forums.asp.net/1224.aspx/1?WebMatrix) ), где члены сообщества ASP.NET друг другу, предоставляя полезные сведения.
 
-#### <a id="_Toc303701287"></a>Требования к программному обеспечению
+#### <a id="_Toc303701287"></a>  Требования к программному обеспечению
 
 Веб-страницы ASP.NET 2 требуется .NET Framework 4. Она также работает с версии .NET Framework 4.5 Developer Preview.
 
@@ -67,11 +67,11 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](aspnet-web-pages-2-developer-preview-readme/samples/sample2.cs)]
 
- Однако рекомендуется, если использовать новые методы проверки входных данных, не используйте *ModelState.IsValid*. Вместо этого структурировать код следующим образом: 
+  Однако рекомендуется, если использовать новые методы проверки входных данных, не используйте *ModelState.IsValid*. Вместо этого структурировать код следующим образом: 
 
     [!code-csharp[Main](aspnet-web-pages-2-developer-preview-readme/samples/sample3.cs)]
 - **Проверка на стороне клиента не работают в Internet Explorer 7 и Internet Explorer 8,**. Проверка на стороне клиента не работает из-за несовместимости с jQuery 1.6.2, входящий в состав шаблона проекта по умолчанию. (Работает проверки на стороне сервера.).
 
-#### <a id="_Toc303701289"></a>Отказ от ответственности
+#### <a id="_Toc303701289"></a>  Отказ от ответственности
 
 © Корпорация Майкрософт, 2011. Все права защищены. Данный документ предоставляется «как-—.» Сведения и мнения, содержащиеся в этом документе, включая URL-адреса и ссылки на другие веб-сайта, могут изменяться без предварительного уведомления. Вы принимаете на себя весь риск, связанный с его использованием.

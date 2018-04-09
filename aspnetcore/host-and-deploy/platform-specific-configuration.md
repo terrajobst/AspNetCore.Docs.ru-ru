@@ -1,7 +1,7 @@
 ---
-title: "Добавление компонентов приложения, с помощью конфигурации конкретной платформы в ASP.NET Core"
+title: Добавление компонентов приложения с конфигурацией платформой в ASP.NET Core
 author: guardrex
-description: "Узнайте, как добавить компоненты к приложению ASP.NET Core из внешней сборки, используя реализацию IHostingStartup."
+description: Узнайте, как добавить компоненты к приложению ASP.NET Core из внешней сборки, используя реализацию IHostingStartup.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/platform-specific-configuration
-ms.openlocfilehash: c36b8acd6f7fcb4e4d11e43013ccaf5ca6d1b0ab
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 9dd7774a1885a9c6c702b5b46fa1f88c86f7f7ac
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="add-app-features-using-a-platform-specific-configuration-in-aspnet-core"></a>Добавление компонентов приложения, с помощью конфигурации конкретной платформы в ASP.NET Core
+# <a name="add-app-features-with-a-platform-specific-configuration-in-aspnet-core"></a>Добавление компонентов приложения с конфигурацией платформой в ASP.NET Core
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
@@ -143,7 +143,7 @@ DOTNET\_ДОПОЛНИТЕЛЬНЫЕ\_DEPS
 %UserProfile%\.dotnet\x64\additionalDeps\StartupDiagnostics\
 ```
 
-Примеры для установки переменных среды для различных операционных систем см. в разделе [работа с несколькими средами](xref:fundamentals/environments).
+Примеры для установки переменных среды для различных операционных систем см. в разделе [работать с несколькими средами](xref:fundamentals/environments).
 
 ## <a name="sample-app"></a>Пример приложения
 

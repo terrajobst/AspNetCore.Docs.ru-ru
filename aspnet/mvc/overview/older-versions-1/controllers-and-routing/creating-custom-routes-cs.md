@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-custom-routes-cs
-title: "Создание настраиваемых маршрутов (C#) | Документы Microsoft"
+title: Создание настраиваемых маршрутов (C#) | Документы Microsoft
 author: microsoft
-description: "Дополнительные сведения о добавлении настраиваемых маршрутов для приложения ASP.NET MVC. В этом учебнике вы научитесь изменять таблицы маршрутов по умолчанию в файле Global.asax."
+description: Дополнительные сведения о добавлении настраиваемых маршрутов для приложения ASP.NET MVC. В этом учебнике вы научитесь изменять таблицы маршрутов по умолчанию в файле Global.asax.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-custom-routes-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d1542103298f2fa09dc71706284afb18d8381403
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 573b6a3360124feea92788ff7a3de363840fa1ef
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-custom-routes-c"></a>Создание настраиваемых маршрутов (C#)
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/10/2017
 
 Допустим, что вы создаете приложение блога. Может потребоваться для обработки входящих запросов, которые выглядят следующим образом:
 
-/ Архива-12-25-2009 г.
+/Archive/12-25-2009
 
 Когда пользователь вводит этот запрос, можно вернуться в записи блога, соответствующий дате 12/25/2009. Чтобы обработать этот тип запроса, необходимо создать настраиваемый маршрут.
 
@@ -45,11 +45,11 @@ ms.lasthandoff: 11/10/2017
 
 Настраиваемый маршрут блог соответствует любому запросу, который начинается с/архив /. Таким образом он удовлетворяет всем следующим URL-адресам:
 
-- / Архива-12-25-2009 г.
+- /Archive/12-25-2009
 
-- / Архива-10-6-2004 г.
+- /Archive/10-6-2004
 
-- / Архива или apple
+- /Archive/apple
 
 Настраиваемый маршрут сопоставляется контроллер с именем архива входящего запроса и вызывает действие Entry(). При вызове метода Entry() Дата операции передается как параметр с именем entryDate.
 
@@ -73,6 +73,6 @@ ms.lasthandoff: 11/10/2017
 
 Целью данного учебника было показано, как создать настраиваемый маршрут. Вы узнали, как добавить настраиваемый маршрут к таблице маршрутов в файле Global.asax, представляющий записи в блогах. Мы рассмотрели, как сопоставить запросы для записи в блогах с именем ArchiveController контроллера и действия контроллера, с именем Entry().
 
->[!div class="step-by-step"]
-[Назад](aspnet-mvc-controllers-overview-cs.md)
-[Вперед](creating-a-route-constraint-cs.md)
+> [!div class="step-by-step"]
+> [Назад](aspnet-mvc-controllers-overview-cs.md)
+> [Вперед](creating-a-route-constraint-cs.md)

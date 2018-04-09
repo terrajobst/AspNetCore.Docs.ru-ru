@@ -1,7 +1,7 @@
 ---
-title: "Используйте шаблон проекта реагирование на них с локализации"
+title: Использовать шаблон проекта реагирование на них с локализации с ASP.NET Core
 author: SteveSandersonMS
-description: "Сведения о начале работы с использованием шаблона проекта ASP.NET Core одной страницы приложений (SPA) для действия с Redux и создание-реагирование на них приложения."
+description: Сведения о начале работы с использованием шаблона проекта ASP.NET Core одной страницы приложений (SPA) для действия с Redux и создание-реагирование на них приложения.
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,13 +11,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/react-with-redux
-ms.openlocfilehash: f52f4a866b8bb2adeee19548df32f3e7a91761d1
-ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
+ms.openlocfilehash: 9abfbfe5be69d3145de453d9d9e56ea35eec64ed
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="use-the-react-with-redux-project-template"></a>Используйте шаблон проекта реагирование на них с локализации
+# <a name="use-the-react-with-redux-project-template-with-aspnet-core"></a>Использовать шаблон проекта реагирование на них с локализации с ASP.NET Core
 
 > [!NOTE]
 > В этой документации о шаблоне реагирование на них с локализации проекта отсутствует в ASP.NET Core 2.0. Дело новым шаблоном реагирование на них с локализации, к которому можно обновить вручную. Шаблон по умолчанию включены в ASP.NET Core 2.1.

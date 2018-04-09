@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-cs
-title: "Настройка рабочего веб-приложение для использования рабочей базы данных (C#) | Документы Microsoft"
+title: Настройка рабочего веб-приложение для использования рабочей базы данных (C#) | Документы Microsoft
 author: rick-anderson
-description: "Как отмечалось в предыдущих учебниках, не нередко сведения о конфигурации могут отличаться в средах разработки и эксплуатации. Это es..."
+description: Как отмечалось в предыдущих учебниках, не нередко сведения о конфигурации могут отличаться в средах разработки и эксплуатации. Это es...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/23/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 21eac6a4d829795f02eeeca5f9870b1ab8132d08
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 7fef7ecab0e51790ff7737b16500f6c2bb5eecdf
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-the-production-web-application-to-use-the-production-database-c"></a>Настройка рабочего веб-приложение для использования рабочей базы данных (C#)
 ====================
@@ -71,7 +71,7 @@ ms.lasthandoff: 03/15/2018
 
 Среда рабочей базы данных должны появиться в обозревателе серверов. Выберите базу данных из обозревателя серверов и перейдите в окно «Свойства». Там будет найти свойство с именем строки подключения в строке подключения s базы данных. При условии, что вы используете базы данных Microsoft SQL Server в рабочей среде и Поставщик SqlClient строки подключения должен выглядеть следующим образом:
 
-**Источник данных =*serverName*; Начальный каталог =*databaseName*; Сохранять сведения о безопасности = True; ИД пользователя =*username*; Пароль = * пароль***
+<strong>Источник данных =<em>serverName</em>; Начальный каталог =<em>databaseName</em>; Сохранять сведения о безопасности = True; ИД пользователя =<em>username</em>; Пароль =*пароль</strong>*
 
 Где *serverName*, *databaseName*, *username*, и *пароль* являются значениями для имени сервера базы данных, базы данных имя и имя пользователя и пароль, предоставленные вашей компании узла веб.
 
@@ -152,6 +152,6 @@ ms.lasthandoff: 03/15/2018
 - [Можно вывести параметры из файла Web.config](http://www.asp101.com/tips/index.asp?id=154)
 - [Техническая документация для &lt;connectionStrings&gt; элемент](https://msdn.microsoft.com/library/bf7sd233.aspx)
 
->[!div class="step-by-step"]
-[Назад](deploying-a-database-cs.md)
-[Вперед](configuring-a-website-that-uses-application-services-cs.md)
+> [!div class="step-by-step"]
+> [Назад](deploying-a-database-cs.md)
+> [Вперед](configuring-a-website-that-uses-application-services-cs.md)

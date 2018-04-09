@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/use-ajax-to-implement-mapping-scenarios
-title: "Использование AJAX для реализации сценариев сопоставления | Документы Microsoft"
+title: Использование AJAX для реализации сценариев сопоставления | Документы Microsoft
 author: microsoft
-description: "Шаг 11 показывает, как интегрировать поддержку сопоставления AJAX в приложении обновление NerdDinner Включение пользователей, создание, изменение или просмотр ужинов, чтобы увидеть l..."
+description: Шаг 11 показывает, как интегрировать поддержку сопоставления AJAX в приложении обновление NerdDinner Включение пользователей, создание, изменение или просмотр ужинов, чтобы увидеть l...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-ajax-to-implement-mapping-scenarios
 msc.type: authoredcontent
-ms.openlocfilehash: cc55560ce691826b6d52971b16d0515ed73d72a6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4b3f1e46886c4c1f054e43768b0a44695d71bf09
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="use-ajax-to-implement-mapping-scenarios"></a>Позволяет реализовать сопоставление сценариев AJAX
 ====================
@@ -115,7 +115,7 @@ ms.lasthandoff: 11/10/2017
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image7.png)
 
-Для начала рассмотрим путем реализации поддержки в нашей базу данных и данные репозитория слоя, чтобы эффективно выполнять поиск на основе расположения radius ужинов. Можно использовать новый [геопространственных функций SQL 2008](https://www.microsoft.com/sqlserver/2008/en/us/spatial-data.aspx) реализовать это, или в качестве альтернативы можно использовать подход функции SQL, который Gary Драйден рассматриваемые в статье здесь: [http://www.codeproject.com/KB/cs/ distancebetweenlocations.aspx](http://www.codeproject.com/KB/cs/distancebetweenlocations.aspx) и Conery Роба писал с помощью с помощью LINQ to SQL здесь: [http://blog.wekeroad.com/2007/08/30/linq-and-geocoding/](http://blog.wekeroad.com/2007/08/30/linq-and-geocoding/)
+Для начала рассмотрим путем реализации поддержки в нашей базу данных и данные репозитория слоя, чтобы эффективно выполнять поиск на основе расположения radius ужинов. Можно использовать новый [геопространственных функций SQL 2008](https://www.microsoft.com/sqlserver/2008/en/us/spatial-data.aspx) реализовать это, или в качестве альтернативы можно использовать подход функции SQL, который Gary Драйден рассматриваемые в статье здесь: [ http://www.codeproject.com/KB/cs/distancebetweenlocations.aspx ](http://www.codeproject.com/KB/cs/distancebetweenlocations.aspx) и Роба Conery писал с помощью с помощью LINQ to SQL здесь: [http://blog.wekeroad.com/2007/08/30/linq-and-geocoding/](http://blog.wekeroad.com/2007/08/30/linq-and-geocoding/)
 
 Чтобы реализовать этот метод, мы будет откройте «Обозреватель сервера» в среде Visual Studio, выберите базу данных, обновление NerdDinner и щелкните правой кнопкой мыши на подузел «функции», в нем и выберите Создание нового «скалярные функции»:
 
@@ -193,6 +193,6 @@ ms.lasthandoff: 11/10/2017
 
 Теперь мы реализовали все функции приложения обновление NerdDinner приложения. Теперь давайте рассмотрим, как мы можно включить автоматическое модульного тестирования его.
 
->[!div class="step-by-step"]
-[Назад](use-ajax-to-deliver-dynamic-updates.md)
-[Вперед](enable-automated-unit-testing.md)
+> [!div class="step-by-step"]
+> [Назад](use-ajax-to-deliver-dynamic-updates.md)
+> [Вперед](enable-automated-unit-testing.md)

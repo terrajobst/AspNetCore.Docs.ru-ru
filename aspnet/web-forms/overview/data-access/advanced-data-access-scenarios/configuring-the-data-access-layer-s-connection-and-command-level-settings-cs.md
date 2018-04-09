@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-cs
-title: "Настройка параметров подключения и команды уровень уровня доступа к данным (C#) | Документы Microsoft"
+title: Настройка параметров подключения и команды уровень уровня доступа к данным (C#) | Документы Microsoft
 author: rick-anderson
-description: "Адаптеры таблиц TableAdapter внутри типизированного набора данных автоматически выполняет подключение к базе данных, выполнения команд и Заполнение DataTable с результатами..."
+description: Адаптеры таблиц TableAdapter внутри типизированного набора данных автоматически выполняет подключение к базе данных, выполнения команд и Заполнение DataTable с результатами...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-cs
 msc.type: authoredcontent
-ms.openlocfilehash: be81bde63d66c3a7070f31be830f7d10ba3a5f8e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f5f221fd792956fc21cb6eb5834299d3c5bfa80d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-the-data-access-layers-connection--and-command-level-settings-c"></a>Настройка параметров подключения и команды уровень уровня доступа к данным (C#)
 ====================
@@ -93,7 +93,7 @@ TableAdapter s `Connection` свойства и другие относящие�
 
 ![Добавить вложенную папку с именем ConnectionAndCommandSettings](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image5.png)
 
-**Рис. 3**: добавить вложенную папку с именем`ConnectionAndCommandSettings`
+**Рис. 3**: добавить вложенную папку с именем `ConnectionAndCommandSettings`
 
 
 Добавьте новый файл класса с именем `ProductsTableAdapter.ConnectionAndCommandSettings.cs` и введите следующий код:
@@ -169,12 +169,12 @@ Let s Подведем посмотрите на код, сгенерирова�
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Burnadette Leigh, S ren Lauritsen Алексей Мерфи Тереза д и Хилтон Geisenow. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](working-with-computed-columns-cs.md)
-[Вперед](protecting-connection-strings-and-other-configuration-information-cs.md)
+> [!div class="step-by-step"]
+> [Назад](working-with-computed-columns-cs.md)
+> [Вперед](protecting-connection-strings-and-other-configuration-information-cs.md)

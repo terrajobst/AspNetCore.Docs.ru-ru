@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-vb
-title: "Иерархического фильтрацию с двумя элементами управления DropDownList (VB) | Документы Microsoft"
+title: Иерархического фильтрацию с двумя элементами управления DropDownList (VB) | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник расширяется связь главного и подчиненного представлений для добавления третий уровень, с использованием двух элементов управления DropDownList для выбора нужного recor родительских и прародителя..."
+description: Этот учебник расширяется связь главного и подчиненного представлений для добавления третий уровень, с использованием двух элементов управления DropDownList для выбора нужного recor родительских и прародителя...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c345fbfe5df4d8ce06695c4dd4b88cc099ad7836
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ee0232cf8f7c0533703a51a4629522fd887f216f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-filtering-with-two-dropdownlists-vb"></a>Иерархического фильтрацию с двумя элементами управления DropDownList (Visual Basic)
 ====================
@@ -102,12 +102,12 @@ ms.lasthandoff: 11/10/2017
 **Рис. 9**: Настройка ObjectDataSource для использования `GetProductsByCategoryID(categoryID)` метод ([Просмотр полноразмерное изображение](master-detail-filtering-with-two-dropdownlists-vb/_static/image27.png))
 
 
-На последнем шаге мастера необходимо указать значение  *`categoryID`*  параметра. Назначить этот параметр для выбранного элемента из `Categories` DropDownList.
+На последнем шаге мастера необходимо указать значение *`categoryID`* параметра. Назначить этот параметр для выбранного элемента из `Categories` DropDownList.
 
 
 [![В выпадающем категорий по запросу categoryID значение параметра](master-detail-filtering-with-two-dropdownlists-vb/_static/image29.png)](master-detail-filtering-with-two-dropdownlists-vb/_static/image28.png)
 
-**Рис. 10**: по запросу  *`categoryID`*  значение параметра из `Categories` DropDownList ([Просмотр полноразмерное изображение](master-detail-filtering-with-two-dropdownlists-vb/_static/image30.png))
+**Рис. 10**: по запросу *`categoryID`* значение параметра из `Categories` DropDownList ([Просмотр полноразмерное изображение](master-detail-filtering-with-two-dropdownlists-vb/_static/image30.png))
 
 
 Использование ObjectDataSource настроена все, что остается только указать, какие поля источника данных используются для отображения и значения элементов DropDownList. Отображение `ProductName` поля и использовать `ProductID` поля в качестве значения.
@@ -141,7 +141,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-3-using-a-detailsview-to-display-details-for-the-selected-product"></a>Шаг 3: С помощью DetailsView для отображения подробных сведений для выбранного продукта
 
-Последний шаг — отображение сведений для выбранного продукта в DetailsView. Чтобы выполнить это, добавьте на страницу DetailsView, задайте его `ID` свойства `ProductDetails`и создать новый элемент управления ObjectDataSource для него. Настройте этот элемент управления ObjectDataSource для извлечения данных из `ProductsBLL` класса `GetProductByProductID(productID)` метода с помощью выбранного значения `ProductsByCategory` DropDownList для значения  *`productID`*  параметра.
+Последний шаг — отображение сведений для выбранного продукта в DetailsView. Чтобы выполнить это, добавьте на страницу DetailsView, задайте его `ID` свойства `ProductDetails`и создать новый элемент управления ObjectDataSource для него. Настройте этот элемент управления ObjectDataSource для извлечения данных из `ProductsBLL` класса `GetProductByProductID(productID)` метода с помощью выбранного значения `ProductsByCategory` DropDownList для значения *`productID`* параметра.
 
 
 [![Выберите с помощью класса ProductsBLL](master-detail-filtering-with-two-dropdownlists-vb/_static/image44.png)](master-detail-filtering-with-two-dropdownlists-vb/_static/image43.png)
@@ -156,7 +156,7 @@ ms.lasthandoff: 11/10/2017
 
 [![Значение параметра productID по запросу из ProductsByCategory DropDownList](master-detail-filtering-with-two-dropdownlists-vb/_static/image50.png)](master-detail-filtering-with-two-dropdownlists-vb/_static/image49.png)
 
-**Рисунок 17**: по запросу  *`productID`*  значение параметра из `ProductsByCategory` DropDownList ([Просмотр полноразмерное изображение](master-detail-filtering-with-two-dropdownlists-vb/_static/image51.png))
+**Рисунок 17**: по запросу *`productID`* значение параметра из `ProductsByCategory` DropDownList ([Просмотр полноразмерное изображение](master-detail-filtering-with-two-dropdownlists-vb/_static/image51.png))
 
 
 Вы можете получить сведения о доступных полей в `ProductDetails` DetailsView. Я решил удалить `ProductID`, `SupplierID`, и `CategoryID` полей и изменят порядок, а остальные поля в формате. Кроме того, снят out DetailsView `Height` и `Width` свойства, позволяя DetailsView развернуть по ширине, необходимые для отображения наиболее свои данные вместо того, он ограничен указанного размера. Полная разметка появляется ниже:
@@ -215,12 +215,12 @@ DropDownList является идеальным элементом пользо
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было – Хилтон Гизнау. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](master-detail-filtering-with-a-dropdownlist-vb.md)
-[Вперед](master-detail-filtering-across-two-pages-vb.md)
+> [!div class="step-by-step"]
+> [Назад](master-detail-filtering-with-a-dropdownlist-vb.md)
+> [Вперед](master-detail-filtering-across-two-pages-vb.md)

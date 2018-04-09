@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-vb
-title: "Работа с вычисляемыми столбцами (VB) | Документы Microsoft"
+title: Работа с вычисляемыми столбцами (VB) | Документы Microsoft
 author: rick-anderson
-description: "При создании таблицы базы данных Microsoft SQL Server позволяет определить вычисляемый столбец, значение которого вычисляется из выражения, обычно referen..."
+description: При создании таблицы базы данных Microsoft SQL Server позволяет определить вычисляемый столбец, значение которого вычисляется из выражения, обычно referen...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 52fc0b89343236b70f8a2e013ad8a33431ae3d2d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 04b39902aae05d815eb11ec7b7163988d017f78c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="working-with-computed-columns-vb"></a>Работа с вычисляемыми столбцами (Visual Basic)
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="introduction"></a>Вступление
 
-Microsoft SQL Server позволяет  *[вычисляемые столбцы](https://msdn.microsoft.com/library/ms191250.aspx)*, которые являются столбцы, значения которого вычисляются по выражению, обычно ссылается на значения из других столбцов той же таблицы. Например, времени, отслеживание модели данных может иметь таблицу по имени `ServiceLog` со столбцами, включая `ServicePerformed`, `EmployeeID`, `Rate`, и `Duration`, среди прочего. Хотя сумма из-за каждой службы элементов (частота, умноженному на длительность) может быть вычислено через веб-страницы или другой программный интерфейс, может быть полезно включить столбец в `ServiceLog` таблицу с именем `AmountDue` , сообщила, что это сведения. Этот столбец может быть создан как обычный столбец, но он будет должны быть обновлены в любое время `Rate` или `Duration` изменения значений столбцов. Удачным подходом было бы делать `AmountDue` столбец вычисляемый столбец, с помощью выражения `Rate * Duration`. Это приведет к SQL Server, чтобы автоматически вычислить `AmountDue` значение столбца, каждый раз, когда он указан в запросе.
+Microsoft SQL Server позволяет * [вычисляемые столбцы](https://msdn.microsoft.com/library/ms191250.aspx)*, которые являются столбцы, значения которого вычисляются по выражению, обычно ссылается на значения из других столбцов той же таблицы. Например, времени, отслеживание модели данных может иметь таблицу по имени `ServiceLog` со столбцами, включая `ServicePerformed`, `EmployeeID`, `Rate`, и `Duration`, среди прочего. Хотя сумма из-за каждой службы элементов (частота, умноженному на длительность) может быть вычислено через веб-страницы или другой программный интерфейс, может быть полезно включить столбец в `ServiceLog` таблицу с именем `AmountDue` , сообщила, что это сведения. Этот столбец может быть создан как обычный столбец, но он будет должны быть обновлены в любое время `Rate` или `Duration` изменения значений столбцов. Удачным подходом было бы делать `AmountDue` столбец вычисляемый столбец, с помощью выражения `Rate * Duration`. Это приведет к SQL Server, чтобы автоматически вычислить `AmountDue` значение столбца, каждый раз, когда он указан в запросе.
 
 Поскольку значение вычисляемого столбца s зависит от выражения, такие столбцы доступны только для чтения, и таким образом не может иметь значения присвоены их в `INSERT` или `UPDATE` инструкции. Тем не менее, когда вычисляемые столбцы являются частью основного запроса для TableAdapter, использующего нерегламентированных инструкций SQL, они автоматически включаются в автоматически созданный `INSERT` и `UPDATE` инструкции. Следовательно, s TableAdapter `INSERT` и `UPDATE` запросы и `InsertCommand` и `UpdateCommand` свойства должны обновляться, чтобы удалить ссылки на все вычисляемые столбцы.
 
@@ -51,7 +51,7 @@ S позволяют начать работу!
 Обратите внимание, что строки могут быть объединены в SQL с помощью `+` оператор. `CASE` Инструкции могут быть использованы как разбиений в традиционных языках программирования. В предыдущем выражении `CASE` заявление можно рассматривать как: Если `ContactTitle` не `NULL` вывод `ContactTitle` порождение объединенное с разделителями, в противном случае — значение nothing. Для получения дополнительных сведений об полезность `CASE` инструкции, в разделе [Power SQL `CASE` инструкции](http://www.4guysfromrolla.com/webtech/102704-1.shtml).
 
 > [!NOTE]
-> Вместо использования `CASE` здесь инструкции можно было бы также использовать `ISNULL(ContactTitle, '')`. [`ISNULL(checkExpression, replacementValue)`](https://msdn.microsoft.com/library/ms184325.aspx)Возвращает *checkExpression* , если оно отлично от NULL, в противном случае он возвращает *Заменяющее_значение*. Хотя либо `ISNULL` или `CASE` будет работать в этом случае существует более сложных сценариях где гибкость `CASE` инструкции не могут быть сопоставлены с `ISNULL`.
+> Вместо использования `CASE` здесь инструкции можно было бы также использовать `ISNULL(ContactTitle, '')`. [`ISNULL(checkExpression, replacementValue)`](https://msdn.microsoft.com/library/ms184325.aspx) Возвращает *checkExpression* , если оно отлично от NULL, в противном случае он возвращает *Заменяющее_значение*. Хотя либо `ISNULL` или `CASE` будет работать в этом случае существует более сложных сценариях где гибкость `CASE` инструкции не могут быть сопоставлены с `ISNULL`.
 
 
 После добавления этого вычисляемого столбца экран должен выглядеть как на показанную на рисунке 1.
@@ -261,12 +261,12 @@ S позволяют начать работу!
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Хилтон Geisenow и Мерфи Тереза д. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](adding-additional-datatable-columns-vb.md)
-[Вперед](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb.md)
+> [!div class="step-by-step"]
+> [Назад](adding-additional-datatable-columns-vb.md)
+> [Вперед](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb.md)

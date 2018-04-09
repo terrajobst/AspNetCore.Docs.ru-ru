@@ -1,316 +1,189 @@
 ---
-title: "Предотвратить межсайтовых запросов подделки XSRF-атак в ASP.NET Core"
+title: Предотвратить межсайтовых запросов подделки XSRF-атак в ASP.NET Core
 author: steve-smith
-description: "Узнайте, как предотвратить атаки, направленные на веб-приложений, где вредоносный веб-сайт может повлиять на взаимодействие между веб-браузер клиента и приложения."
+description: Узнайте, как предотвратить атаки, направленные на веб-приложений, где вредоносный веб-сайт может повлиять на взаимодействие между веб-браузер клиента и приложения.
 manager: wpickett
 ms.author: riande
-ms.date: 7/14/2017
+ms.custom: mvc
+ms.date: 03/19/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/anti-request-forgery
-ms.openlocfilehash: 80651a3c3e4c722e0cb96d7cc07de366819f8d1d
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: ad50f8b261447d40ccc24c0ee006239aa976bf20
+ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Предотвратить межсайтовых запросов подделки XSRF-атак в ASP.NET Core
 
-[Стив Смит](https://ardalis.com/), [Fiyaz Hasan](https://twitter.com/FiyazBinHasan), и [Рик Андерсон](https://twitter.com/RickAndMSFT)
+По [Стив Смит](https://ardalis.com/), [Fiyaz Hasan](https://twitter.com/FiyazBinHasan), и [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
-## <a name="what-attack-does-anti-forgery-prevent"></a>Какие атаки предотвращения подделки?
-
-Подделки межсайтовых запросов (также известный как XSRF или CSRF, произносится *путешествие см. в разделе*) — это атака, для приложений веб сервере, при котором вредоносных веб-сайта могут повлиять на взаимодействие между браузером клиента и веб-сайт, которому доверяет Этот браузер. Такие атаки становится возможным, так как веб-браузеры отправку некоторых типов маркеров проверки подлинности автоматически при каждом запросе веб-сайту. Уязвимости в этой форме, также известный как *атаки одним щелчком* или как *riding сеанса*, так как пользуется атаки пользователем прошедшим проверку подлинности сеанса.
+Подделки межсайтовых запросов (также известный как XSRF или CSRF, произносится *путешествие см. в разделе*) — это атака, в приложениях веб сервере, при котором вредоносных веб-приложения могут повлиять на взаимодействие между веб-браузер клиента и веб-приложение, которому доверяет, Обозреватель. Эти атаки возможны, так как веб-браузеры отправляют некоторые типы токены проверки подлинности автоматически при каждом запросе на веб-сайт. Эта форма эксплойта называется также *атаки одним щелчком* или *riding сеанса* так, как атака использует преимущества ранее проверить подлинность пользователя сеанса.
 
 Примером атаки CSRF:
 
-1. Пользователь выполняет вход в `www.example.com`, с помощью проверки подлинности форм.
-2. Сервер проверяет подлинность пользователя и отправляет ответ, который включает файл cookie проверки подлинности.
-3. Пользователь посещает вредоносный сайт.
+1. Пользователь входит в `www.good-banking-site.com` проверки подлинности с помощью форм. Сервер проверяет подлинность пользователя и отправляет ответ, который включает файл cookie проверки подлинности. Этот сайт является уязвимым для атак, так как она доверяет любому запросу, который получает объект cookie проверки подлинности.
+1. Пользователь посещает вредоносный сайт, `www.bad-crook-site.com`.
 
-   Вредоносный сайт с HTML-формой следующего вида:
+   Вредоносный сайт `www.bad-crook-site.com`, содержит HTML-форму следующим образом:
 
    ```html
-   <h1>You Are a Winner!</h1>
-   <form action="http://example.com/api/account" method="post">
+   <h1>Congratulations! You're a Winner!</h1>
+   <form action="http://good-banking-site.com/api/account" method="post">
        <input type="hidden" name="Transaction" value="withdraw">
        <input type="hidden" name="Amount" value="1000000">
-       <input type="submit" value="Click Me">
+       <input type="submit" value="Click to collect your prize!">
    </form>
    ```
 
-Обратите внимание, что действие формы в блогах уязвимым сайте, не вредоносный сайт. Это часть CSRF «между сайтами».
+   Обратите внимание, что формы `action` уязвимым сайта, а не к вредоносный сайт в блогах. Это часть CSRF «между сайтами».
 
-4. При нажатии кнопки "Отправить". Браузер автоматически включает файл cookie проверки подлинности для запрошенного домена (уязвимым сайта в данном случае) с запросом.
-5. Запрос выполняется на сервере с помощью контекста проверки подлинности пользователей и могут выполнять любые действия, прошедшего проверку подлинности пользователя разрешено делать.
+1. Пользователь выбирает кнопку «Отправить». Браузер отправляет запрос и автоматически включает файл cookie проверки подлинности для запрошенного домена `www.good-banking-site.com`.
+1. Запрос выполняется на `www.good-banking-site.com` сервер с контекст проверки подлинности пользователя и может выполнять любое действие, которое может выполнять проверку подлинности пользователя.
 
-В этом примере требуется пользователь, нажав кнопку формы. Удалось вредоносную страницу:
+Когда пользователь выбирает эту кнопку для отправки формы, вредоносный сайт может:
 
 * Запустите скрипт, который автоматически отправляет форму.
 * Отправляет отправки формы в качестве AJAX-запросом. 
 * С помощью CSS с помощью скрытого формы. 
 
-С помощью протокола SSL не предотвращает атаки CSRF, можно отправить вредоносный сайт `https://` запроса. 
+С помощью протокола HTTPS не предотвращает атаки CSRF. Можно отправить вредоносный сайт `https://www.good-banking-site.com/` запроса так же легко, как его можно отправить запрос небезопасен.
 
-Некоторые атаки целевого сайта конечных точек, которые отвечают на `GET` запросы, в которых регистр тег изображения можно использовать для выполнения действия (эту форму атаки проявляется на форуме сайтов, которые обеспечивают изображения, но блокировать JavaScript). Приложения, которые изменяют состояние с `GET` уязвимы запросов от атак злоумышленников.
+Некоторые атаки целевых конечных точек, которые отвечают на запросы GET, в этом случае тег изображения можно использовать для выполнения действия. Эта форма атаки проявляется на форуме сайтов, которые обеспечивают изображения, но блокирует JavaScript. Приложения, которые изменяют состояние для запросов GET, где переменные или ресурсов был изменен, уязвимы для атак злоумышленников. **Запросов GET, которые изменяют состояние, не являются безопасными. Рекомендуется никогда не изменяют состояние на запрос GET.**
 
-Атаки CSRF возможны с веб-сайтов, которые используют файлы cookie для проверки подлинности, так как браузеры отправляют все соответствующие файлы cookie в веб-узел назначения. Тем не менее атаки CSRF ограничены не использовать файлы cookie. Например Basic и дайджест-проверки подлинности также уязвимы. После входа пользователя в систему с обычная или краткая проверка подлинности браузер автоматически отправляет учетные данные до завершения сеанса.
+Для веб-приложений, которые используют файлы cookie для проверки подлинности, так как возможны атаки CSRF:
 
-Примечание: В этом контексте *сеанса* ссылается на клиентский сеанс, во время которого пользователь проходит проверку подлинности. Это не связанные сеансы на стороне сервера или [сеанса по промежуточного слоя](xref:fundamentals/app-state).
+* Браузеры хранения файлов cookie, выданные веб-приложения.
+* Хранимые файлы cookie содержат файлы cookie сеансов для прошедших проверку пользователей.
+* Браузеры отправляют все файлы cookie, связанные с домена к веб-приложению каждого запроса, независимо от того, как был создан запрос на приложение в браузере.
 
-Пользователям организовать защиту от уязвимостей CSRF с:
-* Ведение журнала из веб-сайтов, завершении работы с их помощью.
-* Периодически очистить файлы cookie браузера.
+Тем не менее, не ограничиваясь атаки CSRF использовать файлы cookie. Например Basic и дайджест-проверки подлинности также уязвимы. После пользователь выполняет вход с обычная или краткая проверка подлинности, браузер автоматически отправляет учетные данные до систему&dagger; заканчивается.
+
+&dagger;В этом контексте *сеанса* ссылается на клиентский сеанс, во время которого пользователь проходит проверку подлинности. Это не связанные сеансы на стороне сервера или [по промежуточного слоя сеанса ASP.NET Core](xref:fundamentals/app-state).
+
+Пользователям защититься от уязвимостей CSRF соблюдать меры предосторожности:
+
+* Выйти из веб-приложения после завершения их использования.
+* Очистить файлы cookie в браузере периодически.
 
 Тем не менее уязвимости CSRF фактически являются проблемы с веб-приложения, а не конечным пользователем.
 
-## <a name="how-does-aspnet-core-mvc-address-csrf"></a>Как ASP.NET Core MVC решать CSRF
+## <a name="authentication-fundamentals"></a>Основы проверки подлинности
+
+Проверка подлинности на основе файла Cookie является популярная форма проверки подлинности. Токены проверки подлинности системы рост популярности, особенно для приложений на одной странице (SPAs).
+
+### <a name="cookie-based-authentication"></a>Проверка подлинности на основе файлов cookie
+
+При прохождении пользователем проверки подлинности, используя имя пользователя и пароль, они выполняется выданный маркер, содержащий билет проверки подлинности, который может использоваться для проверки подлинности и авторизации. Маркер сохраняется как файл cookie, который сопровождает каждый запрос клиента. Создание и проверка этот файл cookie осуществляется по промежуточного слоя проверки подлинности файла Cookie. [По промежуточного слоя](xref:fundamentals/middleware/index) сериализует участника-пользователя в зашифрованном файле cookie. При последующих запросах по промежуточного слоя проверяет куки-файл, повторно создает основной и назначает участнику [пользователя](/dotnet/api/microsoft.aspnetcore.http.httpcontext.user) свойство [HttpContext](/dotnet/api/microsoft.aspnetcore.http.httpcontext).
+
+### <a name="token-based-authentication"></a>Токены проверки подлинности
+
+Если пользователь прошел проверку подлинности, выполняется выдаются ли они маркер (не сложные). Токен содержит сведения о пользователе в виде [утверждений](/dotnet/framework/security/claims-based-identity-model) или ссылка маркер, указывающий приложения состояния пользователя в приложении. Когда пользователь пытается получить доступ к ресурсу, требующей проверки подлинности, маркер отправляется в приложении с помощью заголовок дополнительных авторизации в виде токена носителя. Это делает приложение без сохранения состояния. Во все последующие запросы что токен передается в запросе для проверки на стороне сервера. Этот токен не *зашифрованные*; он имеет *кодировке*. На сервере декодирует токен для доступа к информации. Маркер отправляется в последующих запросах, сохранения токена в локальном хранилище браузера. Не стоит беспокоиться о CSRF уязвимости, если маркер хранится в локальном хранилище браузера. CSRF возникает, когда токен хранится в файле cookie.
+
+### <a name="multiple-apps-hosted-at-one-domain"></a>Несколько приложений, размещенных в одном домене
+
+Общими средами размещения уязвимы для захвата сеанса входа CSRF и других атак.
+
+Несмотря на то что `example1.contoso.net` и `example2.contoso.net` разных узлах, которые есть неявные доверительные отношения между узлы на `*.contoso.net` домена. Неявные отношения доверия между позволяет потенциально небезопасных узлам влияет на файлы cookie друг друга (политики одного источника, которые управляют запросы AJAX не относиться к файлы cookie HTTP).
+
+Можно предотвратить атак, использующих доверенных файлов cookie между приложения, размещенные на том же домене, не предоставив доменов. Когда каждое приложение размещается в собственном домене, не задано отношение доверия неявное куки-файл для использования.
+
+## <a name="aspnet-core-antiforgery-configuration"></a>Сложные конфигурации ASP.NET Core
 
 > [!WARNING]
-> ASP.NET Core реализуется с помощью приложения для защиты request подделки [стека защиты данных ASP.NET Core](xref:security/data-protection/introduction). ASP.NET Core защиты данных необходимо настроить для работы в ферме серверов. В разделе [настройки защиты данных](xref:security/data-protection/configuration/overview) для получения дополнительной информации.
+> ASP.NET Core реализует сложные с помощью [защиты данных ASP.NET Core](xref:security/data-protection/introduction). Стек защиты данных должен быть настроен для работы в ферме серверов. В разделе [настройки защиты данных](xref:security/data-protection/configuration/overview) для получения дополнительной информации.
 
-Конфигурация защиты данных по умолчанию защита request подделки ASP.NET Core 
+В ASP.NET Core 2.0 или более поздней версии [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) внедряет сложные токены в форме HTML-элементов. Приведенный ниже код в файле Razor автоматически создает сложные токены:
 
-В ASP.NET Core MVC 2.0 [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) внедряет маркеров защиты от подделки для элементов формы HTML. Например приведенный ниже код в файле Razor автоматически создаст маркеров защиты от подделки:
-
-```html
+```cshtml
 <form method="post">
-  <!-- form markup -->
+    ...
 </form>
 ```
 
-Происходит автоматическое создание маркеров защиты от подделки элементы HTML-формы при:
+Аналогично при попытке [IHtmlHelper.BeginForm](/dotnet/api/microsoft.aspnetcore.mvc.rendering.ihtmlhelper.beginform) создает сложные токенов по умолчанию, если метод формы не GET.
 
-* `form` Тег содержит `method="post"` атрибут AND
+Происходит автоматическое создание сложные маркеров для элементов формы HTML при `<form>` тег содержит `method="post"` верны атрибут и одно из следующих:
 
-  * Атрибут действия пуст. ( `action=""`) ИЛИ
-  * Не указан атрибут действия. (`<form method="post">`)
+  * Действие атрибута пуст (`action=""`).
+  * Не указан атрибут действия (`<form method="post">`).
 
-Можно отключить автоматическое создание маркеров защиты от подделки элементов формы HTML по:
+Можно отключить автоматическое создание сложные маркеров для элементов формы HTML.
 
-* Явное отключение `asp-antiforgery`. Пример
+* Явно отключить сложные токены с `asp-antiforgery` атрибута:
 
-  ```html
+  ```cshtml
   <form method="post" asp-antiforgery="false">
+      ...
   </form>
   ```
 
-* Необязательно элемент формы из вспомогательных функций тегов с помощью вспомогательного тег [! символ отказаться](xref:mvc/views/tag-helpers/intro#opt-out).
+* Элемент form согласился извлечения вспомогательных функций тегов с помощью вспомогательного тег [! символ отказаться](xref:mvc/views/tag-helpers/intro#opt-out):
 
-  ```html
+  ```cshtml
   <!form method="post">
+      ...
   </!form>
   ```
 
-* Удалите `FormTagHelper` из представления. Можно удалить `FormTagHelper` из представления путем добавления представления Razor следующую директиву:
+* Удалите `FormTagHelper` из представления. `FormTagHelper` Можно удалить из представления путем добавления представления Razor следующую директиву:
 
-  ```html
+  ```cshtml
   @removeTagHelper Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper, Microsoft.AspNetCore.Mvc.TagHelpers
   ```
 
 > [!NOTE]
-> [Страниц Razor](xref:mvc/razor-pages/index) автоматически защищены от XSRF-CSRF. Нет необходимости создавать дополнительный код. В разделе [XSRF/CSRF и страниц Razor](xref:mvc/razor-pages/index#xsrf) для получения дополнительной информации.
+> [Страниц Razor](xref:mvc/razor-pages/index) автоматически защищены от XSRF-CSRF. Дополнительные сведения см. в разделе [XSRF/CSRF и страниц Razor](xref:mvc/razor-pages/index#xsrf).
 
-Наиболее распространенным подходом на защиту от атак CSRF является синхронизатор маркера (STP). STP – методика, когда пользователь запрашивает страницу с данными в форме. Сервер отправляет токен отмены, связанный с удостоверением текущего пользователя для клиента. Клиент отправляет маркер на сервер для проверки. Если сервер получает маркер, который не совпадает с удостоверением пользователя, прошедшего проверку подлинности, запрос отклоняется. Маркер является уникальным и непредсказуемым. Маркер может также использоваться для обеспечения правильной последовательности серию запросов (обеспечение страница 1 предшествует страница 2, которая предшествует страница 3). Все формы в ASP.NET Core MVC шаблоны создавать сложные маркеры. Следующие два примера логики представления создавать сложные токены:
+Чтобы защититься от атак CSRF наиболее распространенным подходом является использование *синхронизатор шаблона токена* (STP). STP используется в том случае, если пользователь запрашивает страницу с данными в форме:
 
-```html
+1. Сервер отправляет токен отмены, связанный с удостоверением текущего пользователя для клиента.
+1. Клиент отправляет маркер на сервер для проверки.
+1. Если сервер получает маркер, который не совпадает с удостоверением пользователя, прошедшего проверку подлинности, запрос отклоняется.
+
+Маркер является уникальным и непредсказуемым. Маркер может также использоваться для обеспечения правильной последовательности серию запросов (например, обеспечивая последовательность запроса: страницы 1 &ndash; страницу 2 &ndash; страница 3). Все формы в ASP.NET Core MVC и страниц Razor шаблоны создавать сложные маркеры. В следующей паре примеры режима создавать сложные маркеры:
+
+```cshtml
 <form asp-controller="Manage" asp-action="ChangePassword" method="post">
-
+    ...
 </form>
 
 @using (Html.BeginForm("ChangePassword", "Manage"))
 {
-    
+    ...
 }
 ```
 
-Можно явно добавить сложные токен `<form>` элемент без использования вспомогательных функций тегов с вспомогательный метод HTML `@Html.AntiForgeryToken`:
+Явным образом добавить сложные токен `<form>` элемент без использования вспомогательных функций тегов с вспомогательный метод HTML [ @Html.AntiForgeryToken ](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.htmlhelper.antiforgerytoken):
 
-
-```html
+```cshtml
 <form action="/" method="post">
     @Html.AntiForgeryToken()
 </form>
 ```
 
-Во всех перечисленных случаях ASP.NET Core добавит скрытое поле формы следующего вида:
-```html
-<input name="__RequestVerificationToken" type="hidden" value="CfDJ8NrAkSldwD9CpLRyOtm6FiJB1Jr_F3FQJQDvhlHoLNJJrLA6zaMUmhjMsisu2D2tFkAiYgyWQawJk9vNm36sYP1esHOtamBEPvSk1_x--Sg8Ey2a-d9CV2zHVWIN9MVhvKHOSyKqdZFlYDVd69XYx-rOWPw3ilHGLN6K0Km-1p83jZzF0E4WU5OGg5ns2-m9Yw">
+Во всех перечисленных случаях ASP.NET Core добавляет скрытое поле формы следующего вида:
+
+```cshtml
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8NrAkS ... s2-m9Yw">
 ```
 
-ASP.NET Core включает в себя три [фильтры](xref:mvc/controllers/filters) для работы с сложные токены: `ValidateAntiForgeryToken`, `AutoValidateAntiforgeryToken`, и `IgnoreAntiforgeryToken`.
+ASP.NET Core включает в себя три [фильтры](xref:mvc/controllers/filters) для работы с сложные токены:
 
-### <a name="validateantiforgerytoken"></a>ValidateAntiForgeryToken
+* [ValidateAntiForgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.validateantiforgerytokenattribute)
+* [AutoValidateAntiforgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.autovalidateantiforgerytokenattribute)
+* [IgnoreAntiforgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.ignoreantiforgerytokenattribute)
 
-`ValidateAntiForgeryToken` Является фильтром действий, могут применяться для отдельного действия, контроллера или глобально. Запросы, адресованные действий, имеющих этот фильтр, применяемый будут заблокированы, если запрос содержит сложные допустимый токен.
+## <a name="antiforgery-options"></a>Сложные параметры.
 
-```csharp
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel account)
-{
-    ManageMessageId? message = ManageMessageId.Error;
-    var user = await GetCurrentUserAsync();
-    if (user != null)
-    {
-        var result = await _userManager.RemoveLoginAsync(user, account.LoginProvider, account.ProviderKey);
-        if (result.Succeeded)
-        {
-            await _signInManager.SignInAsync(user, isPersistent: false);
-            message = ManageMessageId.RemoveLoginSuccess;
-        }
-    }
-    return RedirectToAction(nameof(ManageLogins), new { Message = message });
-}
-```
-
-`ValidateAntiForgeryToken` Атрибута требуется маркер для запросов к методам действий, в которой относится, включая `HTTP GET` запросов. При применении широко, его можно переопределить с помощью `IgnoreAntiforgeryToken` атрибута.
-
-### <a name="autovalidateantiforgerytoken"></a>AutoValidateAntiforgeryToken
-
-Приложения ASP.NET Core обычно не создавать сложные маркерах безопасные методы HTTP (GET, HEAD, параметры и ТРАССИРОВКИ). Вместо применения широко `ValidateAntiForgeryToken` атрибута и затем переопределение его с `IgnoreAntiforgeryToken` атрибуты, можно использовать ``AutoValidateAntiforgeryToken`` атрибута. Этот атрибут работает идентично методу `ValidateAntiForgeryToken` атрибута, за исключением того, что он не требует токены для запросов, выполненных с помощью следующих методов HTTP:
-
-* GET
-* HEAD,
-* OPTIONS
-* TRACE
-
-Рекомендуется использовать `AutoValidateAntiforgeryToken` широко для сценариев, отличных от API. Это гарантирует, что ваши действия POST защищены по умолчанию. Вместо этого должен игнорировать сложные токены по умолчанию, если не `ValidateAntiForgeryToken` применяется к методу отдельные действия. Чаще всего в этом сценарии для метода POST действие для левой незащищенными, оставляя приложение уязвимым для атак CSRF. Даже анонимного сообщения, необходимо отправить токен сложные.
-
-Примечание: API не имеют автоматический механизм для отправки не cookie часть маркера; Реализация скорее всего будет зависеть от реализации клиентского кода. Ниже приведены некоторые примеры.
-
-Пример (уровень класса).
-
-```csharp
-[Authorize]
-[AutoValidateAntiforgeryToken]
-public class ManageController : Controller
-{
-```
-
-Пример (глобальные).
-
-```csharp
-services.AddMvc(options => 
-    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
-```
-
-<a name="iaft"></a>
-
-### <a name="ignoreantiforgerytoken"></a>IgnoreAntiforgeryToken
-
-`IgnoreAntiforgeryToken` Фильтр используется для устранения необходимости в сложные маркера должны присутствовать для данного действия (или контроллера). При применении этого фильтра переопределит `ValidateAntiForgeryToken` и/или `AutoValidateAntiforgeryToken` фильтров, указанных на более высоком уровне (глобально или на контроллере).
-
-```csharp
-[Authorize]
-[AutoValidateAntiforgeryToken]
-public class ManageController : Controller
-{
-  [HttpPost]
-  [IgnoreAntiforgeryToken]
-  public async Task<IActionResult> DoSomethingSafe(SomeViewModel model)
-  {
-    // no antiforgery token required
-  }
-}
-```
-
-## <a name="javascript-ajax-and-spas"></a>JavaScript, AJAX и SPAs
-
-В традиционных приложениях на основе HTML сложные токены, передаются на сервер с помощью скрытые поля формы. В современных приложений на базе JavaScript и приложений на одной странице (SPAs) многие запросы выполняются программно. Маркер отправляется в эти запросы AJAX может использовать другие методы (например, заголовки запроса или куки-файлы). Если файлы cookie используются для хранения токенов проверки подлинности и проверки подлинности запросов API на сервере, CSRF будет потенциальных проблем. Однако при использовании локального хранилища для сохранения токена CSRF уязвимость может устранить, так как значения из локального хранилища не отправляются автоматически на сервере каждый новый запрос. Таким образом использует локальное хранилище для хранения сложные маркера на клиенте и отправка маркера как заголовок запроса является рекомендуемым.
-
-### <a name="angularjs"></a>AngularJS
-
-AngularJS используется соглашение по адресу CSRF. Если сервер отправляет куки-файл с именем `XSRF-TOKEN`, угловая `$http` служба добавляет значение из этого файла cookie заголовком при отправке запроса на этот сервер. Этот процесс выполняется автоматически; Нет необходимости явно задавать заголовок. Имя заголовка — `X-XSRF-TOKEN`. Сервер должен обнаружить этот заголовок и проверьте его содержимое.
-
-Для ASP.NET Core API работают с этим соглашением.
-
-* Настройка приложения для предоставления токена в объект `XSRF-TOKEN`
-* Настройте службу сложные поиск заголовка с именем `X-XSRF-TOKEN`
-
-```csharp
-services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
-```
-
-[Просмотр результата](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample).
-
-### <a name="javascript"></a>JavaScript
-
-С представлениями с использованием JavaScript, можно создать токен, используя службу в представлении. Чтобы сделать это, вставьте `Microsoft.AspNetCore.Antiforgery.IAntiforgery` в представлении и вызовите службу `GetAndStoreTokens`, как показано:
-
-[!code-csharp[](anti-request-forgery/sample/MvcSample/Views/Home/Ajax.cshtml?highlight=4-10,12-13,28)]
-
-Этот подход избавляет от необходимости работать напрямую с Установка с сервера файлы cookie или их считывания из клиента.
-
-В предыдущем примере использовался jQuery считать значение скрытого поля заголовка AJAX POST. Чтобы использовать JavaScript для получения маркера значения, используйте `document.getElementById('RequestVerificationToken').value`.
-
-JavaScript можно также получить доступ к токенов, предоставленных в файлах cookie и использовать содержимое файла cookie для создания заголовка значения маркера, как показано ниже.
-
-```csharp
-context.Response.Cookies.Append("CSRF-TOKEN", tokens.RequestToken, 
-  new Microsoft.AspNetCore.Http.CookieOptions { HttpOnly = false });
-```
-
-Затем, при условии, что создания сценария запрашивает Отправка токена в заголовок с именем `X-CSRF-TOKEN`, настройте службу сложные искать `X-CSRF-TOKEN` заголовка:
-
-```csharp
-services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
-```
-
-В следующем примере jQuery AJAX-запросом соответствующий заголовок сделать:
-
-```javascript
-var csrfToken = $.cookie("CSRF-TOKEN");
-
-$.ajax({
-    url: "/api/password/changepassword",
-    contentType: "application/json",
-    data: JSON.stringify({ "newPassword": "ReallySecurePassword999$$$" }),
-    type: "POST",
-    headers: {
-        "X-CSRF-TOKEN": csrfToken
-    }
-});
-```
-
-## <a name="configuring-antiforgery"></a>Настройка Antiforgery
-
-`IAntiforgery` предоставляет API для настройки сложные системы. Это можно выполнить в `Configure` метод `Startup` класса. Следующий пример использует по промежуточного слоя с домашней страницы приложения для создания токена сложные и отправлять их в ответ как куки-файлы (с помощью именования по умолчанию углового описано выше):
-
-
-```csharp
-public void Configure(IApplicationBuilder app, 
-    IAntiforgery antiforgery)
-{
-    app.Use(next => context =>
-    {
-        string path = context.Request.Path.Value;
-        if (
-            string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) ||
-            string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase))
-        {
-            // We can send the request token as a JavaScript-readable cookie, 
-            // and Angular will use it by default.
-            var tokens = antiforgery.GetAndStoreTokens(context);
-            context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken, 
-                new CookieOptions() { HttpOnly = false });
-        }
-
-        return next(context);
-    });
-    //
-}
-```
-
-### <a name="options"></a>Параметры
-
-Вы можете настроить [сложные параметры](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions#fields_summary) в `ConfigureServices`:
+Настройка [сложные параметры](/dotnet/api/Microsoft.AspNetCore.Antiforgery.AntiforgeryOptions) в `Startup.ConfigureServices`:
 
 ```csharp
 services.AddAntiforgery(options => 
 {
-    options.CookieDomain = "mydomain.com";
+    options.CookieDomain = "contoso.com";
     options.CookieName = "X-CSRF-TOKEN-COOKIENAME";
     options.CookiePath = "Path";
     options.FormFieldName = "AntiforgeryFieldname";
@@ -320,44 +193,216 @@ services.AddAntiforgery(options =>
 });
 ```
 
-<!-- QAfix fix table -->
+| Параметр | Описание |
+| ------ | ----------- |
+| [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания сложные файлы cookie. |
+| [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Домен cookie. По умолчанию — `null`. Это свойство является устаревшим и будет удален в будущей версии. Взамен рекомендуется использовать — Cookie.Domain. |
+| [CookieName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Имя файла cookie. Если не задано, система создает уникальное имя которого начинается с [DefaultCookiePrefix](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (». AspNetCore.Antiforgery.»). Это свойство является устаревшим и будет удален в будущей версии. Взамен рекомендуется использовать — Cookie.Name. |
+| [CookiePath](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | Путь задать в файле cookie. Это свойство является устаревшим и будет удален в будущей версии. Взамен рекомендуется использовать — Cookie.Path. |
+| [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Имя скрытое поле формы используются сложные системой для подготовки к просмотру сложные токены в представлениях. |
+| [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Имя заголовка, используемые системой сложные. Если `null`, то система рассматривает только данные формы. |
+| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Указывает, требуется ли SSL сложные системой. Если `true`, без использования SSL не установится. По умолчанию — `false`. Это свойство является устаревшим и будет удален в будущей версии. Взамен рекомендуется использовать является установка Cookie.SecurePolicy. |
+| [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Указывает, следует ли подавлять поколение `X-Frame-Options` заголовок. По умолчанию заголовок создается со значением «SAMEORIGIN». По умолчанию — `false`. |
 
-|Параметр        | Описание: |
-|------------- | ----------- |
-|CookieDomain  | Домен cookie. По умолчанию — `null`. |
-|CookieName    | Имя файла cookie. Если не задано, система будет формировать уникальное имя которого начинается с `DefaultCookiePrefix` (». AspNetCore.Antiforgery.»). |
-|CookiePath    | Путь задать в файле cookie. |
-|FormFieldName | Имя скрытое поле формы используются сложные системой для подготовки к просмотру сложные токены в представлениях. |
-|HeaderName    | Имя заголовка, используемые системой сложные. Если `null`, система будет рассматривать только данные формы. |
-|RequireSsl    | Указывает, требуется ли SSL сложные системой. По умолчанию — `false`. Если `true`, без использования SSL запросы будут завершаться ошибкой. |
-|SuppressXFrameOptionsHeader | Указывает, следует ли подавлять поколение `X-Frame-Options` заголовок. По умолчанию заголовок создается со значением «SAMEORIGIN». По умолчанию — `false`. |
+Дополнительные сведения см. в разделе [CookieAuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.CookieAuthenticationOptions).
 
-В разделе https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.cookieauthenticationoptions Дополнительные сведения.
+## <a name="configure-antiforgery-features-with-iantiforgery"></a>Настроить сложные функции с IAntiforgery
 
-### <a name="extending-antiforgery"></a>Расширение Antiforgery
+[IAntiforgery](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery) предоставляет API, чтобы настроить сложные функции. `IAntiforgery` можно запросить в `Configure` метод `Startup` класса. В следующем примере ПО промежуточного слоя с домашней страницы приложения для создания токена сложные и его отправки в ответ в виде куки-файл (с помощью именования по умолчанию углового описано далее в этом разделе):
 
-[IAntiForgeryAdditionalDataProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider) типа позволяет разработчикам расширять поведение системы защиты от XSRF с циклической обработки дополнительных данных в каждом маркере. [GetAdditionalData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider#Microsoft_AspNetCore_Antiforgery_IAntiforgeryAdditionalDataProvider_GetAdditionalData_Microsoft_AspNetCore_Http_HttpContext_) при каждом вызове метода создается маркер поля, и возвращаемое значение внедряется в созданный токен. Разработчик может возвращать отметку времени, nonce или любое другое значение, а затем вызвать [ValidateAdditionalData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider#Microsoft_AspNetCore_Antiforgery_IAntiforgeryAdditionalDataProvider_ValidateAdditionalData_Microsoft_AspNetCore_Http_HttpContext_System_String_) для проверки данных, если маркер проверяется. Имя пользователя клиента уже внедрена в создаваемые маркеры, поэтому нет необходимости включать эти сведения. Если токен содержит дополнительные данные, но нет `IAntiForgeryAdditionalDataProvider` был настроен, дополнительные данные не проверяются.
+```csharp
+public void Configure(IApplicationBuilder app, IAntiforgery antiforgery)
+{
+    app.Use(next => context =>
+    {
+        string path = context.Request.Path.Value;
 
-## <a name="fundamentals"></a>Основы
+        if (
+            string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase))
+        {
+            // The request token can be sent as a JavaScript-readable cookie, 
+            // and Angular uses it by default.
+            var tokens = antiforgery.GetAndStoreTokens(context);
+            context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken, 
+                new CookieOptions() { HttpOnly = false });
+        }
 
-Атаки CSRF используется поведение по умолчанию браузер отправлять файлы cookie, связанные с доменом с каждый запрос к этому домену. Эти файлы Cookie хранятся в браузере. Они часто включают в себя файлы cookie сеансов для прошедших проверку пользователей. Проверка подлинности на основе файла Cookie является популярная форма проверки подлинности. Токены проверки подлинности систем росли в популярности, особенно для SPAs и других сценариев «смарт-клиент».
+        return next(context);
+    });
+}
+```
 
-### <a name="cookie-based-authentication"></a>Проверка подлинности на основе файлов cookie
+### <a name="require-antiforgery-validation"></a>Требовать проверку сложные
 
-Как только пользователь проверку подлинности с помощью своих имени пользователя и пароль, вы выдаются ли они маркер, который может использоваться для их идентификации и проверки, что они прошли проверку подлинности. Маркер сохраняется как файл cookie, который сопровождает каждый запрос клиента. Создание и проверка этот файл cookie выполняется по промежуточного слоя проверки подлинности файла cookie. ASP.NET Core указывает куки-файл [по промежуточного слоя](xref:fundamentals/middleware/index) которого сериализует участника-пользователя в зашифрованном файле cookie, а затем, при последующих запросах проводится проверка куки-файл, повторно создает основной и присваивает его `User` свойство `HttpContext`.
+[ValidateAntiForgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.validateantiforgerytokenattribute) является фильтром действий, могут применяться для отдельного действия, контроллера или глобально. Запросы, адресованные действий, имеющих этот фильтр, применяемый будут заблокированы, если запрос содержит сложные допустимый токен.
 
-Если используется файл cookie, файл cookie проверки подлинности является просто контейнером для билета проверки подлинности форм. Билет передается как значение файла cookie проверки подлинности форм с каждым запросом и используется проверка подлинности форм на сервере, для идентификации пользователя, прошедшего аутентификацию.
+```csharp
+[HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel account)
+{
+    ManageMessageId? message = ManageMessageId.Error;
+    var user = await GetCurrentUserAsync();
 
-Если пользователь вошел в систему, сеанса пользователя создается на стороне сервера и хранится в базе данных или другое постоянное хранилище. Система создает ключ сеанса, который указывает фактическое сеанса в хранилище данных и отправкой в качестве файла cookie стороны клиента. Веб-сервер будет проверять этот ключ сеанса каждый раз пользователь запрашивает ресурс, который требует авторизации. Система проверяет, имеет ли сеанс пользователя прав для доступа к запрошенному ресурсу. В этом случае запроса продолжается. В противном случае — запрос возвращает как не разрешено. При таком подходе файлы cookie используются для создания приложений, которые могут быть с отслеживанием состояния, так как это «запомнить», который ранее проверка подлинности с сервером.
+    if (user != null)
+    {
+        var result = 
+            await _userManager.RemoveLoginAsync(
+                user, account.LoginProvider, account.ProviderKey);
 
-### <a name="user-tokens"></a>Токены пользователя
+        if (result.Succeeded)
+        {
+            await _signInManager.SignInAsync(user, isPersistent: false);
+            message = ManageMessageId.RemoveLoginSuccess;
+        }
+    }
 
-Токены проверки подлинности не хранятся в сеанс на сервере. Когда пользователь входит в систему, они выполняется выданного маркера (не сложные маркер). Этот маркер содержит данные, необходимые для проверки токена. Он также содержит сведения о пользователе в виде [утверждений](https://docs.microsoft.com/dotnet/framework/security/claims-based-identity-model). Если пользователь хочет получить доступ к ресурсу сервера, проверка подлинности, маркер отправляется на сервер с заголовком дополнительная авторизация в форме {маркер} носителя. Это делает приложение без сохранения состояния, так как в каждом последующем запросе маркер передается в запросе для проверки на стороне сервера. Этот токен не *зашифрованные*; скорее *кодировке*. На стороне сервера можно декодировать токен для доступа к необработанные данные в токен. Чтобы отправить токен в последующих запросах, либо сохранить в локальном хранилище браузера или в файле cookie. Не беспокойтесь о XSRF уязвимости, если маркер сохраняется в локальном хранилище, но это представляет проблему, если маркер хранится в файле cookie.
+    return RedirectToAction(nameof(ManageLogins), new { Message = message });
+}
+```
 
-### <a name="multiple-applications-are-hosted-in-one-domain"></a>Несколько приложений размещаются в одном домене
+`ValidateAntiForgeryToken` Атрибута требуется маркер для запросов к методам действий, в которой относится, включая HTTP-запросы GET. Если `ValidateAntiForgeryToken` атрибут между контроллерами приложения, его можно переопределить с помощью `IgnoreAntiforgeryToken` атрибута.
 
-Несмотря на то что `example1.cloudapp.net` и `example2.cloudapp.net` разных узлах, которые есть неявные доверительные отношения между узлы на `*.cloudapp.net` домена. Неявные отношения доверия между позволяет потенциально небезопасных узлам влияет на файлы cookie друг друга (политики одного источника, которые управляют запросы AJAX не относиться к файлы cookie HTTP). Среда выполнения ASP.NET Core предоставляет некоторые по устранению рисков тем, что имя пользователя, внедряется в токен поля. Даже если вредоносный поддомен возможность перезаписывать маркер сеанса, он не может создать токен допустимого поля для пользователя. При размещении в такой среде подпрограммы встроенной защиты от XSRF по-прежнему не удается защитить от захвата сеанса или имя входа CSRF атак. Общими средами размещения, уязвимы для захвата сеанса входа CSRF и других атак.
+> [!NOTE]
+> ASP.NET Core не поддерживает автоматическое добавление маркеров сложные запросы GET.
 
-### <a name="additional-resources"></a>Дополнительные ресурсы
+### <a name="automatically-validate-antiforgery-tokens-for-unsafe-http-methods-only"></a>Автоматически проверки сложные токенов небезопасный HTTP только для методов
 
-* [XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) на [откройте проект безопасности веб-приложения](https://www.owasp.org/index.php/Main_Page) (OWASP).
+Приложения ASP.NET Core не создавать сложные маркерах безопасные методы HTTP (GET, HEAD, параметры и ТРАССИРОВКИ). Вместо применения широко `ValidateAntiForgeryToken` атрибута и затем переопределение его с `IgnoreAntiforgeryToken` атрибуты, [AutoValidateAntiforgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.autovalidateantiforgerytokenattribute) атрибут может использоваться. Этот атрибут работает идентично методу `ValidateAntiForgeryToken` атрибута, за исключением того, что он не требует токены для запросов, выполненных с помощью следующих методов HTTP:
+
+* GET
+* HEAD,
+* OPTIONS
+* TRACE
+
+Рекомендуется использовать `AutoValidateAntiforgeryToken` широко для сценариев, отличных от API. Это гарантирует, что действия после защищены по умолчанию. Вместо этого должен игнорировать сложные токены по умолчанию, если не `ValidateAntiForgeryToken` применяется для отдельных методов действий. Он более вероятно в этом сценарии для метода POST действие должно быть оставлено незащищенными по ошибке, оставляя приложение уязвимым для атак CSRF. Все сообщения, необходимо отправить токен сложные.
+
+API-интерфейсы не имеют автоматический механизм для отправки не cookie часть маркера. Реализация, скорее всего, зависит от реализации кода клиента. Ниже приведены некоторые примеры:
+
+Пример уровня класса.
+
+```csharp
+[Authorize]
+[AutoValidateAntiforgeryToken]
+public class ManageController : Controller
+{
+```
+
+Пример глобального.
+
+```csharp
+services.AddMvc(options => 
+    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
+```
+
+### <a name="override-global-or-controller-antiforgery-attributes"></a>Переопределение глобальных или сложные атрибутов контроллера
+
+[IgnoreAntiforgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.ignoreantiforgerytokenattribute) фильтр используется для устранения необходимости в сложные маркера для данного действия (или контроллера). При применении этого фильтра переопределяет `ValidateAntiForgeryToken` и `AutoValidateAntiforgeryToken` фильтров, указанных на более высоком уровне (глобально или на контроллере).
+
+```csharp
+[Authorize]
+[AutoValidateAntiforgeryToken]
+public class ManageController : Controller
+{
+    [HttpPost]
+    [IgnoreAntiforgeryToken]
+    public async Task<IActionResult> DoSomethingSafe(SomeViewModel model)
+    {
+        // no antiforgery token required
+    }
+}
+```
+
+## <a name="refresh-tokens-after-authentication"></a>Токенов обновления после проверки подлинности
+
+Маркеры должны обновляться после проверки подлинности пользователя путем перенаправления пользователя на просмотр или страницу страниц Razor.
+
+## <a name="javascript-ajax-and-spas"></a>JavaScript, AJAX и SPAs
+
+В традиционные приложения на основе HTML сложные токены, передаются на сервер с помощью скрытые поля формы. В современных приложений на базе JavaScript и SPAs многие запросы выполняются программно. Маркер отправляется в эти запросы AJAX может использовать другие методы (например, заголовки запроса или куки-файлы).
+
+Если файлы cookie используются для хранения токенов проверки подлинности и проверки подлинности запросов API на сервере, CSRF может стать проблемой. При использовании локального хранилища для сохранения токена CSRF уязвимость может устранить, так как значения из локального хранилища не отправляются автоматически на сервер с каждым запросом. Таким образом использует локальное хранилище для хранения сложные маркера на клиенте и отправка маркера как заголовок запроса является рекомендуемым.
+
+### <a name="javascript"></a>JavaScript
+
+С представлениями с использованием JavaScript, токен можно создать с помощью службы из представления. Вставить [Microsoft.AspNetCore.Antiforgery.IAntiforgery](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery) в представлении и вызовите службу [GetAndStoreTokens](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery.getandstoretokens):
+
+[!code-csharp[](anti-request-forgery/sample/MvcSample/Views/Home/Ajax.cshtml?highlight=4-10,12-13,35-36)]
+
+Этот подход избавляет от необходимости работать напрямую с Установка с сервера файлы cookie или их считывания из клиента.
+
+В предыдущем примере использовался JavaScript для чтения значение скрытого поля заголовка AJAX POST.
+
+JavaScript можно также токенов в файлах cookie доступа и использовать содержимое файла cookie для создания заголовка с значение токена.
+
+```csharp
+context.Response.Cookies.Append("CSRF-TOKEN", tokens.RequestToken, 
+    new Microsoft.AspNetCore.Http.CookieOptions { HttpOnly = false });
+```
+
+При условии, что скрипт запрашивает Отправка токена в заголовок с именем `X-CSRF-TOKEN`, настройте службу сложные искать `X-CSRF-TOKEN` заголовка:
+
+```csharp
+services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
+```
+
+В следующем примере используется JavaScript для выполнения запроса с соответствующий заголовок AJAX:
+
+```javascript
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+var csrfToken = getCookie("CSRF-TOKEN");
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == XMLHttpRequest.DONE) {
+        if (xhttp.status == 200) {
+            alert(xhttp.responseText);
+        } else {
+            alert('There was an error processing the AJAX request.');
+        }
+    }
+};
+xhttp.open('POST', '/api/password/changepassword', true);
+xhttp.setRequestHeader("Content-type", "application/json");
+xhttp.setRequestHeader("X-CSRF-TOKEN", csrfToken);
+xhttp.send(JSON.stringify({ "newPassword": "ReallySecurePassword999$$$" }));
+```
+
+### <a name="angularjs"></a>AngularJS
+
+AngularJS используется соглашение по адресу CSRF. Если сервер отправляет куки-файл с именем `XSRF-TOKEN`, AngularJS `$http` служба добавляет значение файла cookie в заголовок при отправке запроса на сервер. Этот процесс выполняется автоматически. Заголовок не нужно задавать явно. Имя заголовка — `X-XSRF-TOKEN`. Сервер должен обнаружить этот заголовок и проверьте его содержимое.
+
+Для ASP.NET Core API работают с этим соглашением.
+
+* Настройте приложение, чтобы предоставить токен в файле cookie, вызывается `XSRF-TOKEN`.
+* Настройте службу сложные поиск заголовка с именем `X-XSRF-TOKEN`.
+
+```csharp
+services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
+```
+
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+
+## <a name="extend-antiforgery"></a>Расширить antiforgery
+
+[IAntiForgeryAdditionalDataProvider](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider) типа позволяет разработчикам расширять поведение системы защиты CSRF с циклической обработки дополнительных данных в каждом маркере. [GetAdditionalData](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider.getadditionaldata) при каждом вызове метода создается маркер поля, и возвращаемое значение внедряется в созданный токен. Разработчик может возвращать отметку времени, nonce или любое другое значение, а затем вызвать [ValidateAdditionalData](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider.validateadditionaldata) для проверки данных, если маркер проверяется. Имя пользователя клиента уже внедрена в создаваемые маркеры, поэтому нет необходимости включать эти сведения. Если токен содержит дополнительные данные, но нет `IAntiForgeryAdditionalDataProvider` будет настроен, дополнительные данные не проверяются.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) на [откройте проект безопасности веб-приложения](https://www.owasp.org/index.php/Main_Page) (OWASP).

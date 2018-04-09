@@ -1,7 +1,7 @@
 ---
-title: "Совместное использование файлов cookie между приложениями с помощью ASP.NET и ASP.NET Core"
+title: Совместно использовать файлы cookie для приложений с помощью ASP.NET и ASP.NET Core
 author: rick-anderson
-description: "Дополнительные сведения о совместном использовании файлов cookie проверки подлинности между ASP.NET 4.x и приложений ASP.NET Core."
+description: Дополнительные сведения о совместном использовании файлов cookie проверки подлинности между ASP.NET 4.x и приложений ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/cookie-sharing
-ms.openlocfilehash: c2d022d8dc625d479bc690f410d4994a1d7e3d74
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 2c0f5de4ecedb796e85c08fc50d9697947a75a3f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="sharing-cookies-among-apps-with-aspnet-and-aspnet-core"></a>Совместное использование файлов cookie между приложениями с помощью ASP.NET и ASP.NET Core
+# <a name="share-cookies-among-apps-with-aspnet-and-aspnet-core"></a>Совместно использовать файлы cookie для приложений с помощью ASP.NET и ASP.NET Core
 
 По [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Latham Люк](https://github.com/guardrex)
 
@@ -34,26 +34,28 @@ ms.lasthandoff: 03/15/2018
 
 * Общее значение для имени файла cookie проверки подлинности имеет значение `.AspNet.SharedCookie`.
 * `AuthenticationType` Равно `Identity.Application` явно или по умолчанию.
-* [CookieAuthenticationDefaults.AuthenticationScheme](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationdefaults.authenticationscheme) используется в качестве схемы проверки подлинности. Константа разрешается в значение `Cookies`.
-* Файл cookie проверки подлинности по промежуточного слоя использует реализацию [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider). `DataProtectionProvider` предоставляет службы защиты данных для шифрования и расшифровки данных полезные данные файлов cookie проверки подлинности. `DataProtectionProvider` Экземпляр изолирован от системы защиты данных, используемые в других частях приложения.
-  * Обычное [ключа защиты данных](xref:security/data-protection/implementation/key-management) используется расположение хранилища. В примере приложения используется папка с именем *KeyRing* в корень решения для хранения ключей защиты данных.
-  * [DataProtectionProvider.Create(System.IO.DirectoryInfo)](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider.create?view=aspnetcore-2.0#Microsoft_AspNetCore_DataProtection_DataProtectionProvider_Create_System_IO_DirectoryInfo_) принимает [DirectoryInfo](/dotnet/api/system.io.directoryinfo) для использования с файлы cookie проверки подлинности. Пример приложения предоставляет путь *KeyRing* папки `DirectoryInfo`.
+* Общее имя приложения используется для включения системы защиты данных для совместного использования ключей для защиты данных (`SharedCookieApp`).
+* `Identity.Application` используется схема проверки подлинности. Независимо от схемы используется, он должен постоянно использоваться *внутри и между* общего файла cookie приложения, как схема по умолчанию или путем явного задания. Схема используется при шифровании и расшифровки куки-файлов, поэтому необходимо использовать согласованную схему для приложений.
+* Обычное [ключа защиты данных](xref:security/data-protection/implementation/key-management) используется расположение хранилища. В примере приложения используется папка с именем *KeyRing* в корень решения для хранения ключей защиты данных.
+* В приложениях ASP.NET Core [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem) используется для задания расположения хранилища ключей. [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) используется для настройки общее имя общего приложения.
+* В приложении .NET Framework, файл cookie проверки подлинности по промежуточного слоя использует реализацию [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider). `DataProtectionProvider` предоставляет службы защиты данных для шифрования и расшифровки данных полезные данные файлов cookie проверки подлинности. `DataProtectionProvider` Экземпляр изолирован от системы защиты данных, используемые в других частях приложения.
+  * [DataProtectionProvider.Create (System.IO.DirectoryInfo, действие\<IDataProtectionBuilder >)](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider.create?view=aspnetcore-2.0#Microsoft_AspNetCore_DataProtection_DataProtectionProvider_Create_System_IO_DirectoryInfo_System_Action_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder__) принимает [DirectoryInfo](/dotnet/api/system.io.directoryinfo) для указания расположения для хранения ключей для защиты данных. Пример приложения предоставляет путь *KeyRing* папки `DirectoryInfo`. [DataProtectionBuilderExtensions.SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname?view=aspnetcore-2.0#Microsoft_AspNetCore_DataProtection_DataProtectionBuilderExtensions_SetApplicationName_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_) задает общее имя приложения.
   * [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider) требует [Microsoft.AspNetCore.DataProtection.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) пакет NuGet. Чтобы получить этот пакет для основных ASP.NET 2.0 и более поздних версий приложений, ссылаются на [Microsoft.AspNetCore.All](xref:fundamentals/metapackage) metapackage. При разработке для .NET Framework, добавьте ссылку на пакет `Microsoft.AspNetCore.DataProtection.Extensions`.
 
 ## <a name="share-authentication-cookies-among-aspnet-core-apps"></a>Совместно использовать файлы cookie проверки подлинности между приложениями ASP.NET Core
 
 При использовании ASP.NET Core Identity:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 В `ConfigureServices` используйте [ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie) метод расширения, чтобы настроить службу защиты данных файлов cookie.
 
 [!code-csharp[](cookie-sharing/sample/CookieAuthWithIdentity.Core/Startup.cs?name=snippet1)]
 
+Ключи защиты данных и имя приложения должны быть распределены между приложениями. В примерах приложений `GetKeyRingDirInfo` возвращает расположение общей хранилища ключей для [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem) метод. Используйте [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) Настройка общее имя общего приложения (`SharedCookieApp` в образце). Дополнительные сведения см. в разделе [настройке защиты данных](xref:security/data-protection/configuration/overview).
+
 В разделе *CookieAuthWithIdentity.Core* проекта в [пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([загрузке](xref:tutorials/index#how-to-download-a-sample)).
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 В `Configure` используйте [CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions) для настройки:
 
 * Служба защиты данных файлов cookie.
@@ -80,18 +82,17 @@ app.AddIdentity<ApplicationUser, IdentityRole>(options =>
 });
 ```
 
----
-
+* * *
 При использовании файлов cookie напрямую:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-csharp[](cookie-sharing/sample/CookieAuth.Core/Startup.cs?name=snippet1)]
+
+Ключи защиты данных и имя приложения должны быть распределены между приложениями. В примерах приложений `GetKeyRingDirInfo` возвращает расположение общей хранилища ключей для [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem) метод. Используйте [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) Настройка общее имя общего приложения (`SharedCookieApp` в образце). Дополнительные сведения см. в разделе [настройке защиты данных](xref:security/data-protection/configuration/overview). 
 
 В разделе *CookieAuth.Core* проекта в [пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([загрузке](xref:tutorials/index#how-to-download-a-sample)).
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
 {
@@ -101,8 +102,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 });
 ```
 
----
-
+* * *
 ## <a name="encrypting-data-protection-keys-at-rest"></a>Шифрование ключей защиты данных на rest
 
 В производственной среде, настройте `DataProtectionProvider` для шифрования ключей при хранении с помощью DPAPI или X509Certificate. В разделе [ключ шифрования на Rest](xref:security/data-protection/implementation/key-encryption-at-rest) для получения дополнительной информации.
@@ -144,10 +144,9 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
 1. Установите пакет [Microsoft.Owin.Security.Interop](https://www.nuget.org/packages/Microsoft.Owin.Security.Interop/) в каждое приложение ASP.NET 4.x.
 
-2. В *Startup.Auth.cs*, найдите вызов `UseCookieAuthentication` и внесите следующие изменения. Измените имя файла cookie, должно соответствовать имени, используемые по промежуточного слоя ASP.NET Core файла cookie проверки подлинности. Предоставляет экземпляр `DataProtectionProvider` инициализирован в общую папку хранилища ключей защиты данных.
+2. В *Startup.Auth.cs*, найдите вызов `UseCookieAuthentication` и внесите следующие изменения. Измените имя файла cookie, должно соответствовать имени, используемые по промежуточного слоя ASP.NET Core файла cookie проверки подлинности. Предоставляет экземпляр `DataProtectionProvider` инициализирован в общую папку хранилища ключей защиты данных. Убедитесь, что имя приложения присвоено общее имя приложения, используемые все приложения, которые совместно использовать файлы cookie, `SharedCookieApp` в пример приложения.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-csharp[](cookie-sharing/sample/CookieAuthWithIdentity.NETFramework/CookieAuthWithIdentity.NETFramework/App_Start/Startup.Auth.cs?name=snippet1)]
 
 В разделе *CookieAuthWithIdentity.NETFramework* проекта в [пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([загрузке](xref:tutorials/index#how-to-download-a-sample)).
@@ -158,8 +157,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
 [!code-csharp[](cookie-sharing/sample/CookieAuthWithIdentity.NETFramework/CookieAuthWithIdentity.NETFramework/Models/IdentityModels.cs?name=snippet1)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 Задать `CookieManager` с взаимодействием `ChunkingCookieManager` , совместима неверный формат.
 
 ```csharp
@@ -182,8 +180,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 });
 ```
 
----
-
+* * *
 ## <a name="use-a-common-user-database"></a>Использование общей базы данных пользователя
 
 Убедитесь, что система идентификаторов для каждого приложения указывает на одной и той же базе данных пользователя. В противном случае система идентификации выводятся ошибки во время выполнения при попытке соответствует сведениям в файл cookie проверки подлинности со сведениями в своей базе данных.

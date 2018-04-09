@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-cs
-title: "Добавление клиентского подтверждения при удалении (C#) | Документы Microsoft"
+title: Добавление клиентского подтверждения при удалении (C#) | Документы Microsoft
 author: rick-anderson
-description: "В интерфейсах, созданных таким образом пользователь может случайно удалить данные, нажав кнопку «Удалить» не нажмите кнопку \"Изменить\". В этом t..."
+description: В интерфейсах, созданных таким образом пользователь может случайно удалить данные, нажав кнопку «Удалить» не нажмите кнопку "Изменить". В этом t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c5e8ee76224a48d3132597016b81099bd70a1776
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 72b15d498e45cc519a14ecfe39111b224db88c30
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-client-side-confirmation-when-deleting-c"></a>Добавление клиентского подтверждения при удалении (C#)
 ====================
@@ -75,7 +75,7 @@ JavaScript `confirm(string)` функция отображает свой стр
 
 ## <a name="step-2-calling-the-confirmstring-function-from-the-delete-buttons-client-side-onclick-event"></a>Шаг 2: Вызов confirm(string) функции из onclick удаление кнопки клиентских событий
 
-С FormView создан, последний шаг — Настройка кнопка удаления таких что при ее щелчке s посетителем JavaScript `confirm(string)` функция, вызываемая. Добавление клиентского скрипта для кнопки, LinkButton или ImageButton s на стороне клиента `onclick` событий могут быть выполнены использования `OnClientClick property`, которое является новым для ASP.NET 2.0. Поскольку мы хотим использовать значение `confirm(string)` Функция вернула, просто присвойте этому свойству значение:`return confirm('Are you certain that you want to delete this product?');`
+С FormView создан, последний шаг — Настройка кнопка удаления таких что при ее щелчке s посетителем JavaScript `confirm(string)` функция, вызываемая. Добавление клиентского скрипта для кнопки, LinkButton или ImageButton s на стороне клиента `onclick` событий могут быть выполнены использования `OnClientClick property`, которое является новым для ASP.NET 2.0. Поскольку мы хотим использовать значение `confirm(string)` Функция вернула, просто присвойте этому свойству значение: `return confirm('Are you certain that you want to delete this product?');`
 
 После этого изменения удалить LinkButton s должен выглядеть примерно так:
 
@@ -156,8 +156,8 @@ JavaScript `confirm(string)` функция является распростр�
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Назад](implementing-optimistic-concurrency-cs.md)
-[Вперед](limiting-data-modification-functionality-based-on-the-user-cs.md)
+> [!div class="step-by-step"]
+> [Назад](implementing-optimistic-concurrency-cs.md)
+> [Вперед](limiting-data-modification-functionality-based-on-the-user-cs.md)

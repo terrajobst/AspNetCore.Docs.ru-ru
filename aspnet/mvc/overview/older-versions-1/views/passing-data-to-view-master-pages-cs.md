@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-cs
-title: "Передача данных в представления главных страниц (C#) | Документы Microsoft"
+title: Передача данных в представления главных страниц (C#) | Документы Microsoft
 author: microsoft
-description: "Целью данного учебника является объясняется способ передачи данных из контроллера для главной страницы представления. Рассматриваются две стратегии передачи данных в представление m..."
+description: Целью данного учебника является объясняется способ передачи данных из контроллера для главной страницы представления. Рассматриваются две стратегии передачи данных в представление m...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b8bc8ce0690d2e45877be75011d8883facbc74a7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bfb58cbe0c415c092f3a41e518281a7461d2803c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="passing-data-to-view-master-pages-c"></a>Передача данных представления главных страниц (C#)
 ====================
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/10/2017
 
 Рассмотрите возможность контроллера в листинге 1. Он предоставляет два действия с именем `Index()` и `Details()`. `Index()` Метод действия возвращает каждого фильма в таблице базы данных фильмов. `Details()` Метод действия возвращает каждого фильма в категории определенного фильма.
 
-**Листинг 1.`Controllers\HomeController.cs`**
+**Листинг 1. `Controllers\HomeController.cs`**
 
 [!code-csharp[Main](passing-data-to-view-master-pages-cs/samples/sample1.cs)]
 
@@ -69,13 +69,13 @@ ms.lasthandoff: 11/10/2017
 
 Представление индекса содержится в списке 2. Он просто проходит по список фильмов, представленный фильмы элемента в представлении данных.
 
-**Листинг 2.`Views\Home\Index.aspx`**
+**Листинг 2. `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](passing-data-to-view-master-pages-cs/samples/sample2.aspx)]
 
 В списке 3 содержится главной страницы представления. Главной страницы представления выполняет итерацию и отображает все категории фильм, представленный категории элемента из представления данных.
 
-**Листинг 3.`Views\Shared\Site.master`**
+**Листинг 3. `Views\Shared\Site.master`**
 
 [!code-aspx[Main](passing-data-to-view-master-pages-cs/samples/sample3.aspx)]
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/10/2017
 
 Класс ApplicationController содержится в листинге 4.
 
-**Листинг 4.`Controllers\ApplicationController.cs`**
+**Листинг 4. `Controllers\ApplicationController.cs`**
 
 [!code-csharp[Main](passing-data-to-view-master-pages-cs/samples/sample4.cs)]
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 11/10/2017
 
 Контроллер фильмов в листинге 5 наследует от контроллера приложения.
 
-**Листинг 5.`Controllers\MoviesController.cs`**
+**Листинг 5. `Controllers\MoviesController.cs`**
 
 [!code-csharp[Main](passing-data-to-view-master-pages-cs/samples/sample5.cs)]
 
@@ -115,6 +115,6 @@ ms.lasthandoff: 11/10/2017
 
 Далее мы рассмотрели гораздо лучшей стратегией для добавления данных, необходимых для просмотра данных главной страницы представления. Вместо добавления представления данных в каждой действия контроллера, мы добавили данные представления только один раз в течение контроллером приложения. Таким образом можно избежать повторяющийся код, при передаче данных в представления главной страницы в приложении ASP.NET MVC.
 
->[!div class="step-by-step"]
-[Назад](creating-page-layouts-with-view-master-pages-cs.md)
-[Вперед](asp-net-mvc-views-overview-vb.md)
+> [!div class="step-by-step"]
+> [Назад](creating-page-layouts-with-view-master-pages-cs.md)
+> [Вперед](asp-net-mvc-views-overview-vb.md)

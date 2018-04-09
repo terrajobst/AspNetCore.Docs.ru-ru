@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8
-title: "Часть 8: Корзина для покупок с Ajax-обновления | Документы Microsoft"
+title: 'Часть 8: Корзина для покупок с Ajax-обновления | Документы Microsoft'
 author: jongalloway
-description: "Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения ASP.NET MVC Music Store. Часть 8 охватывает корзину для покупок с Ajax-обновления."
+description: Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения ASP.NET MVC Music Store. Часть 8 охватывает корзину для покупок с Ajax-обновления.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 75e1dff96f8b56d74c28ff9d522f4766fbad669f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 195c01ff0d71b2bfd0c00e71244d47a166330921
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-8-shopping-cart-with-ajax-updates"></a>Часть 8: Корзине для покупок с Ajax-обновления
 ====================
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](mvc-music-store-part-8/samples/sample5.cs)]
 
-## <a name="viewmodels"></a>ViewModels
+## <a name="viewmodels"></a>Модели представлений
 
 Наш контроллер корзины покупок необходимо сообщить некоторые сложные сведения для его представления, которой не полностью сопоставлен нашей модели объектов. Мы не хотим изменить наши модели в соответствии с нашей представлений; Классы модели должно представлять нашей домена не пользовательский интерфейс. Одним из решений будет передачи сведений в нашем представления с помощью класса ViewBag, как мы сделали раскрывающийся список сведениями директор магазина, однако передача больших данных через ViewBag возвращает трудности в управлении.
 
@@ -161,6 +161,6 @@ ms.lasthandoff: 11/10/2017
 Мы создали ожидания рабочего Корзина для покупок, что позволяет отменить регистрацию пользователей для добавления элементов в корзину. В следующем разделе будет разрешить им для регистрации и завершить процесс извлечения.
 
 
->[!div class="step-by-step"]
-[Назад](mvc-music-store-part-7.md)
-[Вперед](mvc-music-store-part-9.md)
+> [!div class="step-by-step"]
+> [Назад](mvc-music-store-part-7.md)
+> [Вперед](mvc-music-store-part-9.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/filling-a-list-using-cascadingdropdown-vb
-title: "Заполнение списка, используя CascadingDropDown (VB) | Документы Microsoft"
+title: Заполнение списка, используя CascadingDropDown (VB) | Документы Microsoft
 author: wenz
-description: "CascadingDropDown управления в наборе элементов управления AJAX расширяет элемент управления DropDownList, чтобы изменения в один загружает DropDownList соответствующих значений в anoth..."
+description: CascadingDropDown управления в наборе элементов управления AJAX расширяет элемент управления DropDownList, чтобы изменения в один загружает DropDownList соответствующих значений в anoth...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/filling-a-list-using-cascadingdropdown-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1c5cb23be4366365c73ce4774e6a53e452e2a6c0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e488a30443970d5e2ce825abd96d8e4a027585d1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="filling-a-list-using-cascadingdropdown-vb"></a>Заполнение списка, используя CascadingDropDown (Visual Basic)
 ====================
@@ -68,6 +68,6 @@ CascadingDropDown управления в наборе элементов упр
 
 Список заполняется автоматически ([Просмотр полноразмерное изображение](filling-a-list-using-cascadingdropdown-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](using-auto-postback-with-cascadingdropdown-cs.md)
-[Вперед](using-cascadingdropdown-with-a-database-vb.md)
+> [!div class="step-by-step"]
+> [Назад](using-auto-postback-with-cascadingdropdown-cs.md)
+> [Вперед](using-cascadingdropdown-with-a-database-vb.md)

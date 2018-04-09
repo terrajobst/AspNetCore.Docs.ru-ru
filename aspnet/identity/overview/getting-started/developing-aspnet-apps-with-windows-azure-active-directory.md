@@ -1,30 +1,30 @@
 ---
 uid: identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
-title: "Разработка приложений ASP.NET с Azure Active Directory | Документы Microsoft"
+title: Разработка приложений ASP.NET с Azure Active Directory | Документы Microsoft
 author: Rick-Anderson
-description: "Инструменты Microsoft ASP.NET для Azure Active Directory упрощает Включение проверки подлинности для веб-приложений, размещенных в Azure. Можно использовать предварительная пр Azure..."
+description: Инструменты Microsoft ASP.NET для Azure Active Directory упрощает Включение проверки подлинности для веб-приложений, размещенных в Azure. Можно использовать предварительная пр Azure...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2014
 ms.topic: article
 ms.assetid: 457d7eaf-ee76-4ceb-9082-c7c1721435ad
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
 msc.type: authoredcontent
-ms.openlocfilehash: 1ef0468d5f5c17480b23ac88983f30fe6f4979c0
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 44bf29e099583bf9d49f2715d3ff4f748728ad8b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="developing-aspnet-apps-with-azure-active-directory"></a>Разработка приложений ASP.NET с Azure Active Directory
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Средства Microsoft ASP.NET для Azure Active Directory позволяет легко включить проверку подлинности для веб-приложений, размещенных на [Azure](https://www.windowsazure.com/home/features/web-sites/). Проверка подлинности Azure можно использовать для проверки подлинности пользователей Office 365 в организации, корпоративных учетных записей, синхронизированные из локальной службы Active Directory или пользователей, созданных в собственный домен Azure Active Directory. Включение проверки подлинности Windows Azure настраивает приложение для проверки подлинности пользователей с помощью одного [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) клиента.
 > 
->  Это руководство было написано с Рик Андерсон[@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
+>  Это руководство было написано с Рик Андерсон [@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
 
 
 Этот учебник будет показано, как создать приложение ASP.NET, настроенная для единого входа с [Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (Azure AD). Вы также узнаете, как вызвать API Graph для получения сведений о пользователе, выполнившего вход и развертывание приложения в Azure.
@@ -52,7 +52,7 @@ ms.lasthandoff: 01/24/2018
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image4.png)  
   
- Этот пароль будет необходимо сменить пароль после первого входа в. На следующем рисунке учетной записи администратора. Необходимо использовать Azure Active Directory могли входить в приложение, а не учетной записи Майкрософт, также отображаются на этой странице.  
+   Этот пароль будет необходимо сменить пароль после первого входа в. На следующем рисунке учетной записи администратора. Необходимо использовать Azure Active Directory могли входить в приложение, а не учетной записи Майкрософт, также отображаются на этой странице.  
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image5.png)
 
@@ -65,11 +65,11 @@ ms.lasthandoff: 01/24/2018
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image6.png)
 3. На **изменить аутентификацию** диалогового окна выберите **учетные записи организации**. Эти параметры можно использовать для автоматической регистрации приложения в Azure AD, а также автоматически настроить приложение для интеграции с Azure AD. Нет необходимости в использовании **изменить аутентификацию** диалоговое окно для регистрации и настройки приложения, но он облегчает процесс. Если вы используете Visual Studio 2012. Например, можно вручную зарегистрировать приложение в портале управления Azure и обновите конфигурацию для интеграции с Azure AD.  
- В раскрывающемся меню, выберите **облако — одной организации** и **единый вход, чтение данных каталога**. Введите имя домена для вашего каталога Azure AD (в примере ниже изображения) *aricka0yahoo.onmicrosoft.com*, а затем нажмите кнопку **ОК**. Имя домена можно получить на вкладке «домены» для каталога по умолчанию на портале azure (см. Далее рисунок вниз).   
+   В раскрывающемся меню, выберите **облако — одной организации** и **единый вход, чтение данных каталога**. Введите имя домена для вашего каталога Azure AD (в примере ниже изображения) *aricka0yahoo.onmicrosoft.com*, а затем нажмите кнопку **ОК**. Имя домена можно получить на вкладке «домены» для каталога по умолчанию на портале azure (см. Далее рисунок вниз).   
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image7.png)  
   
- Ниже приведен имя домена на портале Azure.  
+   Ниже приведен имя домена на портале Azure.  
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image8.png)  
 
@@ -94,11 +94,11 @@ ms.lasthandoff: 01/24/2018
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image13.png)  
   
- Если возникает ошибка.  
- Значение не может быть неопределенным или пустым. Имя параметра: linkText   
+   Если возникает ошибка.  
+   Значение не может быть неопределенным или пустым. Имя параметра: linkText   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image14.png)  
   
- в разделе [отладки](#dbg) в конце учебника.
+   в разделе [отладки](#dbg) в конце учебника.
 
 ## <a name="basics-of-the-graph-api"></a>Основные сведения о API Graph
 

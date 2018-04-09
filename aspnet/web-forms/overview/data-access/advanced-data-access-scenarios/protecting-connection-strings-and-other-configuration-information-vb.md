@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-vb
-title: "Защита строки соединения и другие сведения о конфигурации (VB) | Документы Microsoft"
+title: Защита строки соединения и другие сведения о конфигурации (VB) | Документы Microsoft
 author: rick-anderson
-description: "Приложения ASP.NET обычно хранят сведения о конфигурации в файле Web.config. Некоторые из этих сведений является конфиденциальной и гарантирует отсутствие защиты. По умолч..."
+description: Приложения ASP.NET обычно хранят сведения о конфигурации в файле Web.config. Некоторые из этих сведений является конфиденциальной и гарантирует отсутствие защиты. По умолч...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f1514c4b6d041f6bbd83788e2110a95d3d831ff6
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3372416dd9143afbfd442eaffb39cd807fae0de6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="protecting-connection-strings-and-other-configuration-information-vb"></a>Защита строки соединения и другие сведения о конфигурации (Visual Basic)
 ====================
@@ -60,8 +60,8 @@ ASP.NET 2.0 включает систему защищенной конфигу�
 
 .NET Framework предлагает два поставщика защищенной конфигурации:
 
-- [`RSAProtectedConfigurationProvider`](https://msdn.microsoft.com/library/system.configuration.rsaprotectedconfigurationprovider.aspx)-использует асимметричного [алгоритм RSA](http://en.wikipedia.org/wiki/Rsa) для шифрования и расшифровки.
-- [`DPAPIProtectedConfigurationProvider`](https://msdn.microsoft.com/system.configuration.dpapiprotectedconfigurationprovider.aspx)-использует Windows [API защиты данных (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) для шифрования и расшифровки.
+- [`RSAProtectedConfigurationProvider`](https://msdn.microsoft.com/library/system.configuration.rsaprotectedconfigurationprovider.aspx) -использует асимметричного [алгоритм RSA](http://en.wikipedia.org/wiki/Rsa) для шифрования и расшифровки.
+- [`DPAPIProtectedConfigurationProvider`](https://msdn.microsoft.com/system.configuration.dpapiprotectedconfigurationprovider.aspx) -использует Windows [API защиты данных (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) для шифрования и расшифровки.
 
 Поскольку система защищенной конфигурации реализует шаблон проектирования поставщика, можно создать собственный поставщик защищенной конфигурации и подключить его в приложение. В разделе [реализация поставщика конфигурации защищенных](https://msdn.microsoft.com/library/wfc2t3az(VS.80).aspx) Дополнительные сведения об этом процессе.
 
@@ -96,7 +96,7 @@ ASP.NET 2.0 включает систему защищенной конфигу�
 
 [!code-vb[Main](protecting-connection-strings-and-other-configuration-information-vb/samples/sample1.vb)]
 
-`DisplayWebConfig` Использует метод [ `File` класса](https://msdn.microsoft.com/library/system.io.file.aspx) для открытия приложения `Web.config` файл [ `StreamReader` класса](https://msdn.microsoft.com/library/system.io.streamreader.aspx) для прочесть его содержимое в строку и [ `Path` класса](https://msdn.microsoft.com/library/system.io.path.aspx) создаваться физический путь к `Web.config` файла. Эти три классы находятся в [ `System.IO` пространства имен](https://msdn.microsoft.com/library/system.io.aspx). Следовательно, необходимо добавить `Imports``System.IO` в начало кода класса или, кроме того, эти класса имена с префиксом`System.IO.`
+`DisplayWebConfig` Использует метод [ `File` класса](https://msdn.microsoft.com/library/system.io.file.aspx) для открытия приложения `Web.config` файл [ `StreamReader` класса](https://msdn.microsoft.com/library/system.io.streamreader.aspx) для прочесть его содержимое в строку и [ `Path` класса](https://msdn.microsoft.com/library/system.io.path.aspx) создаваться физический путь к `Web.config` файла. Эти три классы находятся в [ `System.IO` пространства имен](https://msdn.microsoft.com/library/system.io.aspx). Следовательно, необходимо добавить `Imports``System.IO` в начало кода класса или, кроме того, эти класса имена с префиксом `System.IO.`
 
 Затем нужно добавить обработчики событий для кнопок панели два `Click` событий и добавить необходимый код для шифрования и расшифровки `<connectionStrings>` статьи с использованием машинного ключа с помощью DPAPI поставщика. В конструкторе, дважды щелкните каждое из кнопок, чтобы добавить `Click` обработчика событий в коде программной класса, а затем добавьте следующий код:
 
@@ -228,12 +228,12 @@ ASP.NET 2.0 включает систему защищенной конфигу�
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Мерфи Тереза д и Рэнди Шмидт. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb.md)
-[Вперед](debugging-stored-procedures-vb.md)
+> [!div class="step-by-step"]
+> [Назад](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb.md)
+> [Вперед](debugging-stored-procedures-vb.md)

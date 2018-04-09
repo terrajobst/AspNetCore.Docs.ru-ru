@@ -1,7 +1,7 @@
 ---
-title: "Управление ключами расширяемости"
+title: Управление ключами расширяемость ASP.NET Core
 author: rick-anderson
-description: "Этот документ посвящен расширения управления ключами для защиты данных ASP.NET Core."
+description: Дополнительные сведения о расширении среды управления ключами для защиты данных ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 11/22/2017
@@ -9,18 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: bcc4984efcee9a6ffd0f3b503a38089c78adf5e8
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e3042b371cf7be8fa0218c1906042d2810b180e3
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-management-extensibility"></a>Управление ключами расширяемости
+# <a name="key-management-extensibility-in-aspnet-core"></a>Управление ключами расширяемость ASP.NET Core
 
 <a name="data-protection-extensibility-key-management"></a>
 
 >[!TIP]
-> Чтение [управление ключами](../implementation/key-management.md#data-protection-implementation-key-management) раздел перед считыванием в этом разделе, как он описаны некоторые основные принципы эти API-интерфейсы.
+> Чтение [управление ключами](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management) раздел перед считыванием в этом разделе, как он описаны некоторые основные принципы эти API-интерфейсы.
 
 >[!WARNING]
 > Типы, реализующие любой из следующих интерфейсов должны быть потокобезопасным для нескольких клиентов.
@@ -37,11 +37,11 @@ ms.lasthandoff: 03/02/2018
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Кроме того `IKey` предоставляет `CreateEncryptor` метод, который может использоваться для создания [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра привязан к данному ключу.
+Кроме того `IKey` предоставляет `CreateEncryptor` метод, который может использоваться для создания [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра привязан к данному ключу.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Кроме того `IKey` предоставляет `CreateEncryptorInstance` метод, который может использоваться для создания [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра привязан к данному ключу.
+Кроме того `IKey` предоставляет `CreateEncryptorInstance` метод, который может использоваться для создания [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра привязан к данному ключу.
 
 ---
 
@@ -123,7 +123,7 @@ ms.lasthandoff: 03/02/2018
 
 В реализации `GetAllKeys`, представляющих ключи документы XML и выдачу считываются из основного `IXmlRepository`. Если эти документы шифруются, система автоматически расшифровать их. `XmlKeyManager` создает соответствующий `IAuthenticatedEncryptorDescriptorDeserializer` экземпляров для десериализации документов обратно в `IAuthenticatedEncryptorDescriptor` экземпляров, которые затем помещается в отдельных `IKey` экземпляров. Эта коллекция `IKey` экземпляров возвращается вызывающему объекту.
 
-Дополнительные сведения об отдельных элементов XML, которые можно найти в [хранилища ключей форматировать документ](../implementation/key-storage-format.md#data-protection-implementation-key-storage-format).
+Дополнительные сведения об отдельных элементов XML, которые можно найти в [хранилища ключей форматировать документ](xref:security/data-protection/implementation/key-storage-format#data-protection-implementation-key-storage-format).
 
 ## <a name="ixmlrepository"></a>IXmlRepository
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 03/02/2018
 
 Реализации `IXmlRepository` не требуется синтаксический анализ XML, проходящие через них. Они должны обрабатывать XML-документов как непрозрачный и позволить волноваться по поводу создания и разбора документы более высокого уровня.
 
-Существуют две встроенные конкретные типы, реализующие `IXmlRepository`: `FileSystemXmlRepository` и `RegistryXmlRepository`. В разделе [документа поставщиков хранилища ключей](../implementation/key-storage-providers.md#data-protection-implementation-key-storage-providers) для получения дополнительной информации. Регистрация пользовательского `IXmlRepository` будет подходящим способом резервных хранилищ, например, использование хранилища больших двоичных объектов.
+Существуют две встроенные конкретные типы, реализующие `IXmlRepository`: `FileSystemXmlRepository` и `RegistryXmlRepository`. В разделе [документа поставщиков хранилища ключей](xref:security/data-protection/implementation/key-storage-providers#data-protection-implementation-key-storage-providers) для получения дополнительной информации. Регистрация пользовательского `IXmlRepository` будет подходящим способом резервных хранилищ, например, использование хранилища больших двоичных объектов.
 
 Чтобы изменить репозиторий по умолчанию уровне приложения, зарегистрируйте пользовательский `IXmlRepository` экземпляр:
 
@@ -169,7 +169,7 @@ ms.lasthandoff: 03/02/2018
 * `DpapiXmlEncryptor`
 * `NullXmlEncryptor`
 
-В разделе [ключа шифрования в документе rest](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) для получения дополнительной информации.
+В разделе [ключа шифрования в документе rest](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest) для получения дополнительной информации.
 
 Чтобы изменить ключ шифрования на rest механизма по умолчанию уровне приложения, зарегистрируйте пользовательский `IXmlEncryptor` экземпляр:
 

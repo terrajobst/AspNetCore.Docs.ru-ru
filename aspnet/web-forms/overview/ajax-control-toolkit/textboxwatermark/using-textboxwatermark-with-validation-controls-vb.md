@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-with-validation-controls-vb
-title: "Проверяющие элементы управления (Visual Basic) при помощи TextBoxWatermark | Документы Microsoft"
+title: Проверяющие элементы управления (Visual Basic) при помощи TextBoxWatermark | Документы Microsoft
 author: wenz
-description: "Элемент управления TextBoxWatermark в наборе элементов управления AJAX расширяет текстовое поле для отображения текста в поле. Когда пользователь щелкает в поле, оно я..."
+description: Элемент управления TextBoxWatermark в наборе элементов управления AJAX расширяет текстовое поле для отображения текста в поле. Когда пользователь щелкает в поле, оно я...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-with-validation-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 09236481b6e51cc22a4034aa22e7c491ce27a510
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0ca1a4af62af1d65525e59d0b7bc47245dd01476
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-textboxwatermark-with-validation-controls-vb"></a>Использование TextBoxWatermark с проверяющие элементы управления (Visual Basic)
 ====================
@@ -56,5 +56,5 @@ ms.lasthandoff: 11/10/2017
 
 Проверяющий элемент управления сообщает, что в поле отсутствует текст ([Просмотр полноразмерное изображение](using-textboxwatermark-with-validation-controls-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](using-textboxwatermark-in-a-formview-vb.md)
+> [!div class="step-by-step"]
+> [Назад](using-textboxwatermark-in-a-formview-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-production-environment-for-web-deployment
-title: "Сценарий: Настройка рабочей среде для веб-развертывание | Документы Microsoft"
+title: 'Сценарий: Настройка рабочей среде для веб-развертывание | Документы Microsoft'
 author: jrjlee
-description: "В этом разделе описываются типичные веб-приложениях развертывания в рабочей среде и описание задачи, которые необходимо выполнить для настройки аналогичное..."
+description: В этом разделе описываются типичные веб-приложениях развертывания в рабочей среде и описание задачи, которые необходимо выполнить для настройки аналогичное...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-production-environment-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: cdd13f96ddf08ff86b01ef9de17ea82cf038ab28
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4de5b1f20f3adcb53765c7cb9765c0d90a80e677
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="scenario-configuring-a-production-environment-for-web-deployment"></a>Сценарий: Настройка рабочей среде для веб-развертывания
 ====================
@@ -59,6 +59,6 @@ ms.lasthandoff: 01/24/2018
 
 Рекомендации по настройке среды тестирования типичного разработчика см. в разделе [сценарий: Настройка тестовой среды для веб-развертывания](scenario-configuring-a-test-environment-for-web-deployment.md). За инструкциями по настройке обычной промежуточной среде. в разделе [сценарий: Настройка в среде промежуточного хранения для развертывания веб-](scenario-configuring-a-staging-environment-for-web-deployment.md).
 
->[!div class="step-by-step"]
-[Назад](scenario-configuring-a-staging-environment-for-web-deployment.md)
-[Вперед](configuring-a-web-server-for-web-deploy-publishing-remote-agent.md)
+> [!div class="step-by-step"]
+> [Назад](scenario-configuring-a-staging-environment-for-web-deployment.md)
+> [Вперед](configuring-a-web-server-for-web-deploy-publishing-remote-agent.md)

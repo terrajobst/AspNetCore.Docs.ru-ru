@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-view
-title: "Добавление представления (VB) | Документы Microsoft"
+title: Добавление представления (VB) | Документы Microsoft
 author: Rick-Anderson
-description: "Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся..."
+description: Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, являющийся...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-view
 msc.type: authoredcontent
-ms.openlocfilehash: 7e8564c743510780b93d56bc1215f4c5b1faeb43
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c9675eb7776116ecbe910d5515abfe9b4391df22
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-view-vb"></a>Добавление представления (Visual Basic)
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Этот учебник поможет узнать основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, которой — это бесплатная версия Microsoft Visual Studio. Прежде чем начать, убедитесь, что вы установили необходимые компоненты, перечисленные ниже. Все из них можно установить, щелкнув по следующей ссылке: [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Кроме того можно установить отдельно предварительные требования, используя следующие ссылки:
 > 
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/10/2017
 
 Во-первых изменим текст &quot;Мое приложение MVC.&quot; Этот текст является общим и отображается на каждой странице. Он фактически не отображаются только в одном месте в данном проекте, даже если он находится на каждой странице в приложении. Последовательно выберите пункты */представления/Общие* папки в **обозревателе решений** и откройте  *\_Layout.vbhtml* файла. Этот файл называется макет страницы и является общей &quot;оболочки&quot; , использовать другие страницы.
 
-Примечание `@RenderBody()` строку кода в нижней части файла. `RenderBody`заполнитель, где все страницы, которые вы создаете отображаются, &quot;оболочку&quot; на странице макета. Изменение `<h1>` заголовок из  **&quot;**  Мое приложение MVC&quot; для &quot;приложения MVC фильма&quot;.
+Примечание `@RenderBody()` строку кода в нижней части файла. `RenderBody` заполнитель, где все страницы, которые вы создаете отображаются, &quot;оболочку&quot; на странице макета. Изменение `<h1>` заголовок из **&quot;** Мое приложение MVC&quot; для &quot;приложения MVC фильма&quot;.
 
 [!code-html[Main](adding-a-view/samples/sample3.html)]
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-vbhtml[Main](adding-a-view/samples/sample5.vbhtml)]
 
-Откройте *MvcMovie\Views\HelloWorld\Index.vbhtml*. Есть два места для внесения изменений: во-первых, текст, расположенный в заголовке обозревателя, а затем в заголовке получателя ( `<h2>` элемент). Мы выполним их немного отличается, можно увидеть, какая часть кода изменяет какие-либо часть приложения.
+Open *MvcMovie\Views\HelloWorld\Index.vbhtml*. Есть два места для внесения изменений: во-первых, текст, расположенный в заголовке обозревателя, а затем в заголовке получателя ( `<h2>` элемент). Мы выполним их немного отличается, можно увидеть, какая часть кода изменяет какие-либо часть приложения.
 
 Запустите приложение и перейдите к`http://localhost:xx/HelloWorld`. Обратите внимание, что основной и дополнительный заголовки браузера изменились. Это легко сделать существенные изменения в приложении с небольшими изменениями в представление. (Если изменения не отображаются, возможно, вы просматриваете кэшированное содержимое. В этом случае нажмите в браузере клавиши CTRL+F5 для принудительной загрузки ответа сервера.)
 
@@ -111,11 +111,11 @@ ms.lasthandoff: 11/10/2017
 
 [![3AddWelcomeView](adding-a-view/_static/image12.png "3AddWelcomeView")](adding-a-view/_static/image11.png)
 
-Добавьте следующий код под `<h2>` элемент в новом *приветствия.* vbhtml-файл. Мы сделать цикл и сказать &quot;Hello&quot; столько раз, сколько пользователь говорит, мы должны!
+Добавьте следующий код под `<h2>` элемент в новом <em>приветствия.</em> vbhtml-файл. Мы сделать цикл и сказать &quot;Hello&quot; столько раз, сколько пользователь говорит, мы должны!
 
 [!code-vbhtml[Main](adding-a-view/samples/sample8.vbhtml)]
 
-Запустите приложение и перейдите к`http://localhost:xx/HelloWorld/Welcome?name=Scott&numtimes=4`
+Запустите приложение и перейдите к `http://localhost:xx/HelloWorld/Welcome?name=Scott&numtimes=4`
 
 Теперь данные получены из URL-адрес и автоматически передается контроллеру. Контроллер упаковывает данные в `Model` объекта и передает объект, в представление. Представление не отображает данные в виде HTML для пользователя.
 
@@ -123,6 +123,6 @@ ms.lasthandoff: 11/10/2017
 
 Контейнер, который был тип из &quot;M&quot; для модели, но не тип базы данных. Итак, обобщим все полученные данные и попробуем создать базу данных фильмов.
 
->[!div class="step-by-step"]
-[Назад](adding-a-controller.md)
-[Вперед](adding-a-model.md)
+> [!div class="step-by-step"]
+> [Назад](adding-a-controller.md)
+> [Вперед](adding-a-model.md)

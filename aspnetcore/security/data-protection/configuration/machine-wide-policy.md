@@ -1,7 +1,7 @@
 ---
-title: "Политика компьютера для защиты данных поддержки в ASP.NET Core"
+title: Политика компьютера для защиты данных поддержки в ASP.NET Core
 author: rick-anderson
-description: "Дополнительные сведения о поддержке задание политики уровня компьютера по умолчанию для всех приложений, использующих защиту данных ASP.NET Core."
+description: Дополнительные сведения о поддержке задание политики уровня компьютера по умолчанию для всех приложений, использующих защиту данных ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/configuration/machine-wide-policy
-ms.openlocfilehash: 53ded37e9fd5f1a2eaa37935d1c52efb1e9231ac
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c2d5760cd18f4e3ecaf0261f36414c9298e3f4c5
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="data-protection-machine-wide-policy-support-in-aspnet-core"></a>Политика компьютера для защиты данных поддержки в ASP.NET Core
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/30/2018
 
 Ниже приведены поддерживаемые значения.
 
-| Значение              | Тип   | Описание: |
+| Значение              | Тип   | Описание |
 | ------------------ | :----: | ----------- |
 | EncryptionType     | string | Указывает, какие алгоритмы, которые следует использовать для защиты данных. Значение должно быть CNG CBC, CNG GCM или управляемый код и описывается более подробно ниже. |
 | DefaultKeyLifetime | DWORD  | Задает время существования для вновь созданных ключей. Значение указывается в днях и должен быть > = 7. |
@@ -44,7 +44,7 @@ ms.lasthandoff: 01/30/2018
 
 Если EncryptionType CNG CBC, система настроен на использование симметричный блочный шифр режим CBC по конфиденциальности и HMAC подлинность с помощью служб, предоставляемых Windows CNG (см. [указание пользовательские алгоритмы Windows CNG](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms) для Дополнительные сведения о). Поддерживаются следующие дополнительные значения, каждое из которых соответствует свойству типа CngCbcAuthenticatedEncryptionSettings.
 
-| Значение                       | Тип   | Описание: |
+| Значение                       | Тип   | Описание |
 | --------------------------- | :----: | ----------- |
 | EncryptionAlgorithm         | string | Имя блока симметричный алгоритм шифрования, поддерживаемая CNG. Этот алгоритм открывается в режиме CBC. |
 | EncryptionAlgorithmProvider | string | Имя может выдавать алгоритм EncryptionAlgorithm реализации поставщика CNG. |
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/30/2018
 
 Если EncryptionType CNG GCM, система настроена используемый симметричный блочный шифр Galois/режим конфиденциальности и подлинность службы, предоставляемые Windows CNG (см. [указание пользовательские алгоритмы Windows CNG](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms) Дополнительные сведения). Поддерживаются следующие дополнительные значения, каждое из которых соответствует свойству типа CngGcmAuthenticatedEncryptionSettings.
 
-| Значение                       | Тип   | Описание: |
+| Значение                       | Тип   | Описание |
 | --------------------------- | :----: | ----------- |
 | EncryptionAlgorithm         | string | Имя блока симметричный алгоритм шифрования, поддерживаемая CNG. Этот алгоритм открывается в режиме Galois (счетчиков). |
 | EncryptionAlgorithmProvider | string | Имя может выдавать алгоритм EncryptionAlgorithm реализации поставщика CNG. |
@@ -62,7 +62,7 @@ ms.lasthandoff: 01/30/2018
 
 Если EncryptionType является управляемым, система настроена для использования управляемых SymmetricAlgorithm по конфиденциальности и KeyedHashAlgorithm подлинность (см. [указание пользовательский управляемый алгоритмы](xref:security/data-protection/configuration/overview#specifying-custom-managed-algorithms) Дополнительные сведения). Поддерживаются следующие дополнительные значения, каждое из которых соответствует свойству типа ManagedAuthenticatedEncryptionSettings.
 
-| Значение                      | Тип   | Описание: |
+| Значение                      | Тип   | Описание |
 | -------------------------- | :----: | ----------- |
 | EncryptionAlgorithmType    | string | Имя типа, реализующего SymmetricAlgorithm сборки. |
 | EncryptionAlgorithmKeySize | DWORD  | Длина (в битах) ключа для формирования алгоритм симметричного шифрования. |
@@ -71,4 +71,4 @@ ms.lasthandoff: 01/30/2018
 Если EncryptionType имеет любое другое значение, отличное от null или пусто, в системе защиты данных возникло исключение во время запуска.
 
 > [!WARNING]
-> При настройке параметр политики по умолчанию, который включает в себя имена типов (EncryptionAlgorithmType, ValidationAlgorithmType, KeyEscrowSinks), типы должны быть доступны для приложения. Это означает, что приложений, работающих в среде CLR рабочего стола, сборок, содержащих эти типы должны присутствовать в глобальный кэш сборок (GAC). Для приложений ASP.NET Core, выполняющихся [.NET Core](https://www.microsoft.com/net/core), следует устанавливать пакеты, содержащие эти типы.
+> При настройке параметр политики по умолчанию, который включает в себя имена типов (EncryptionAlgorithmType, ValidationAlgorithmType, KeyEscrowSinks), типы должны быть доступны для приложения. Это означает, что приложений, работающих в среде CLR рабочего стола, сборок, содержащих эти типы должны присутствовать в глобальный кэш сборок (GAC). Для приложений ASP.NET Core, выполняющихся в .NET Core должны устанавливаться пакеты, содержащие эти типы.

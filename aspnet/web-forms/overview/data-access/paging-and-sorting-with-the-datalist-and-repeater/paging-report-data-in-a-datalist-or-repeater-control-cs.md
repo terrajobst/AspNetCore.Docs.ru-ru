@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-cs
-title: "Разбивка на страницы данных отчета в DataList или управления повторителем (C#) | Документы Microsoft"
+title: Разбивка на страницы данных отчета в DataList или управления повторителем (C#) | Документы Microsoft
 author: rick-anderson
-description: "При повторителя ни DataList предложение автоматическое разбиение по страницам или поддержку сортировки этого учебника показано, как добавить поддержку разбиения на страницы в DataList или повторителя..."
+description: При повторителя ни DataList предложение автоматическое разбиение по страницам или поддержку сортировки этого учебника показано, как добавить поддержку разбиения на страницы в DataList или повторителя...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4952adff752ec834b8be5f190181be98a034ccfd
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 43b1370e1411858cef02bca534d082a3c105e51e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="paging-report-data-in-a-datalist-or-repeater-control-c"></a>Разбиение на страницы данных отчета в DataList или управления повторителем (C#)
 ====================
@@ -100,10 +100,10 @@ ms.lasthandoff: 01/24/2018
 
 Добавьте метод `ProductsBLL` класс с именем `GetProductsAsPagedDataSource` , принимает два входных параметра целое число:
 
-- `pageIndex`индекс страницы для отображения, индексированных с нуля, и
-- `pageSize`число записей, отображаемых на каждой странице.
+- `pageIndex` индекс страницы для отображения, индексированных с нуля, и
+- `pageSize` число записей, отображаемых на каждой странице.
 
-`GetProductsAsPagedDataSource`Запускает, получая *все* записи из `GetProducts()`. Затем он создает `PagedDataSource` объекта, присвоив его `CurrentPageIndex` и `PageSize` свойства к значениям переданный `pageIndex` и `pageSize` параметров. Метод завершается, возвращая настройки `PagedDataSource`:
+`GetProductsAsPagedDataSource` Запускает, получая *все* записи из `GetProducts()`. Затем он создает `PagedDataSource` объекта, присвоив его `CurrentPageIndex` и `PageSize` свойства к значениям переданный `pageIndex` и `pageSize` параметров. Метод завершается, возвращая настройки `PagedDataSource`:
 
 
 [!code-csharp[Main](paging-report-data-in-a-datalist-or-repeater-control-cs/samples/sample2.cs)]
@@ -275,11 +275,11 @@ S позволяют выполнить интерфейс разбиения п
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были (Liz Shulok), Алексей Pespisa и Екатерина Leigh. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Вперед](sorting-data-in-a-datalist-or-repeater-control-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](sorting-data-in-a-datalist-or-repeater-control-cs.md)

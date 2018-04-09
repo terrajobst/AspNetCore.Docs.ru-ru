@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/introduction/creating-a-business-logic-layer-cs
-title: "Создание уровня бизнес-логики (C#) | Документы Microsoft"
+title: Создание уровня бизнес-логики (C#) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы рассмотрим способы централизации бизнес-правила в слой бизнес логики (МЕТОД), выступающем в качестве посредника для обмена данными между t..."
+description: В этом учебнике мы рассмотрим способы централизации бизнес-правила в слой бизнес логики (МЕТОД), выступающем в качестве посредника для обмена данными между t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-business-logic-layer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7518ddd11a05a9e3d5df85e3cf6ceffa09a25060
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6e73e9e68e4abb0d382baa7da925c167809e417a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-business-logic-layer-c"></a>Создание уровня бизнес-логики (C#)
 ====================
@@ -61,13 +61,13 @@ ms.lasthandoff: 01/24/2018
 
 Для `ProductsBLL` класса, необходимо добавить целых семь методов:
 
-- `GetProducts()`Возвращает все продукты
-- `GetProductByProductID(productID)`Возвращает продукт с указанным Идентификатором продукта
-- `GetProductsByCategoryID(categoryID)`Возвращает все продукты указанной категории
-- `GetProductsBySupplier(supplierID)`Возвращает все продукты указанного поставщика
-- `AddProduct(productName, supplierID, categoryID, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reorderLevel, discontinued)`Вставляет новый продукт в базе данных с использованием значений переданное; Возвращает `ProductID` значение поля
-- `UpdateProduct(productName, supplierID, categoryID, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reorderLevel, discontinued, productID)`обновляет существующий продукт в базе данных, используя переданные значения; Возвращает `true` Если точно одна строка была обновлена, `false` в противном случае
-- `DeleteProduct(productID)`Удаляет указанный продукт из базы данных
+- `GetProducts()` Возвращает все продукты
+- `GetProductByProductID(productID)` Возвращает продукт с указанным Идентификатором продукта
+- `GetProductsByCategoryID(categoryID)` Возвращает все продукты указанной категории
+- `GetProductsBySupplier(supplierID)` Возвращает все продукты указанного поставщика
+- `AddProduct(productName, supplierID, categoryID, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reorderLevel, discontinued)` Вставляет новый продукт в базе данных с использованием значений переданное; Возвращает `ProductID` значение поля
+- `UpdateProduct(productName, supplierID, categoryID, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reorderLevel, discontinued, productID)` обновляет существующий продукт в базе данных, используя переданные значения; Возвращает `true` Если точно одна строка была обновлена, `false` в противном случае
+- `DeleteProduct(productID)` Удаляет указанный продукт из базы данных
 
 ProductsBLL.cs
 
@@ -205,12 +205,12 @@ DAL и уровень бизнес-ЛОГИКИ завершения мы гот
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были (Liz Shulok), Деннис Патерсона, Карлос Сантос и – Хилтон Гизнау. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](creating-a-data-access-layer-cs.md)
-[Вперед](master-pages-and-site-navigation-cs.md)
+> [!div class="step-by-step"]
+> [Назад](creating-a-data-access-layer-cs.md)
+> [Вперед](master-pages-and-site-navigation-cs.md)

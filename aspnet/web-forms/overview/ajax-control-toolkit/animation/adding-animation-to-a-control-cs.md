@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-cs
-title: "Добавление анимации в элемент управления (C#) | Документы Microsoft"
+title: Добавление анимации в элемент управления (C#) | Документы Microsoft
 author: wenz
-description: "Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. В этом учебнике показано как..."
+description: Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. В этом учебнике показано как...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7016ae3c92c665136579a8588818e6e4179a102a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ba122660045c3f5dd4b11f118df174a79de814a1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-animation-to-a-control-c"></a>Добавление анимации в элемент управления (C#)
 ====================
@@ -51,22 +51,22 @@ ms.lasthandoff: 11/10/2017
 
 Всего применяется анимация декларативно, используя синтаксис XML, к сожалению в настоящее время не полностью поддерживается технологией IntelliSense в Visual Studio. Корневой узел — `<Animations>;` в этом узле допускается несколько событий определить, когда анимаций take(s) месте:
 
-- `OnClick`(щелчок мыши)
-- `OnHoverOut`(когда указатель мыши покидает элемент управления)
-- `OnHoverOver`(при наведении курсора мыши на элемент управления, остановка `OnHoverOut` анимации)
-- `OnLoad`(если страница загрузки)
-- `OnMouseOut`(когда указатель мыши покидает элемент управления)
-- `OnMouseOver`(при наведении курсора мыши на элемент управления, не останавливая `OnMouseOut` анимации)
+- `OnClick` (щелчок мыши)
+- `OnHoverOut` (когда указатель мыши покидает элемент управления)
+- `OnHoverOver` (при наведении курсора мыши на элемент управления, остановка `OnHoverOut` анимации)
+- `OnLoad` (если страница загрузки)
+- `OnMouseOut` (когда указатель мыши покидает элемент управления)
+- `OnMouseOver` (при наведении курсора мыши на элемент управления, не останавливая `OnMouseOut` анимации)
 
 Платформа поставляется с набором анимации, каждый из представленного собственным XML-элементом. Ниже приведен фрагмент.
 
-- `<Color>`(изменить цвета)
-- `<FadeIn>`(затухание в)
-- `<FadeOut>`(исчезновение)
-- `<Property>`(изменение свойства элемента управления)
-- `<Pulse>`(pulsating)
-- `<Resize>`(изменение размера)
-- `<Scale>`(пропорционально изменять размер)
+- `<Color>` (изменить цвета)
+- `<FadeIn>` (затухание в)
+- `<FadeOut>` (исчезновение)
+- `<Property>` (изменение свойства элемента управления)
+- `<Pulse>` (pulsating)
+- `<Resize>` (изменение размера)
+- `<Scale>` (пропорционально изменять размер)
 
 В этом примере панели должны Исчезание. Анимация должна осуществляться 1,5 секунды (`Duration` атрибут), отображение 24 (шаги анимации) кадров в секунду (`Fps` attributs). Вот полную разметку для `AnimationExtender` управления:
 
@@ -79,5 +79,5 @@ ms.lasthandoff: 11/10/2017
 
 Исчезновение панели ([Просмотр полноразмерное изображение](adding-animation-to-a-control-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Вперед](executing-several-animations-at-the-same-time-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](executing-several-animations-at-the-same-time-cs.md)

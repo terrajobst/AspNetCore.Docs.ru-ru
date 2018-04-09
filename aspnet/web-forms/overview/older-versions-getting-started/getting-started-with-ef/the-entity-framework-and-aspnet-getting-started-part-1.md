@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1
-title: "Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4 Web Forms | Документы Microsoft"
+title: Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4 Web Forms | Документы Microsoft
 author: tdykstra
-description: "Contoso университета примера веб-приложения показано, как создавать приложения веб-форм ASP.NET, с помощью Entity Framework 4.0 и Visual Studio 2010..."
+description: Contoso университета примера веб-приложения показано, как создавать приложения веб-форм ASP.NET, с помощью Entity Framework 4.0 и Visual Studio 2010...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,17 +12,17 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: ae2fddc81f6f4da866ec0719a0e74516bdd2a4d1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ad504b02d801f9513787f9fde1a4d00d7b0afff0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms"></a>Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4 Web Forms
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
-> Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, с помощью Entity Framework 4.0 и Visual Studio 2010. Образец приложения это веб-сайт для вымышленной компании Contoso университета. Он включает функции, такие как допуском студента, создание курса и инструктора назначения.
+> Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, с помощью Entity Framework 4.0 и Visual Studio 2010. Образец приложения это веб-сайт для вымышленной компании Contoso университета. На нем предусмотрены различные функции, в том числе прием учащихся, создание курсов и назначение преподавателей.
 > 
 > Учебник показаны примеры на языке C#. [Загружаемые примеры](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a) содержит код на C# и Visual Basic.
 > 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/24/2018
 > 
 > Существует три способа, можно работать с данными в Entity Framework: *Database First*, *Model First*, и *Code First*. Этот учебник предназначен для первой базы данных. Сведения о различиях между этими рабочими процессами и рекомендации о том, как выбирать наиболее подходящий для вашего сценария см. в разделе [процессов разработки Entity Framework](https://msdn.microsoft.com/library/ms178359.aspx#dbfmfcf).
 > 
-> ## <a name="web-forms"></a>веб-формы
+> ## <a name="web-forms"></a>Веб-формы
 > 
 > Этот учебник ряд использует модель веб-форм ASP.NET и предполагается, что вы знаете, как работать с веб-форм ASP.NET в Visual Studio. Если отсутствует [Приступая к работе с веб-форм ASP.NET 4.5](../../getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview.md). Если вы предпочитаете работать с ASP.NET MVC, см. раздел [Приступая к работе с платформой Entity Framework, с помощью ASP.NET MVC](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 > 
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/24/2018
 
 [![Image03](the-entity-framework-and-aspnet-getting-started-part-1/_static/image2.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image1.png)
 
-Пользователи могут просматривать и обновлять студента курса и инструктора сведения. Ниже приведены несколько экранов, которые будут созданы.
+Пользователи приложения могут просматривать и обновлять сведения об учащихся, курсах и преподавателях. Ниже приведены несколько экранов, которые будут созданы.
 
 [![Image30](the-entity-framework-and-aspnet-getting-started-part-1/_static/image4.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image3.png)
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 01/24/2018
 
     [![Image40](the-entity-framework-and-aspnet-getting-started-part-1/_static/image38.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image37.png)
 
-    В этом случае `Person` сущности могут или не могут быть связаны `StudentGrade` сущностей. Объект `StudentGrade` сущность должна быть связана с одним `Person` сущности. `StudentGrade`сущности представляют фактически зарегистрированных курсов в этой базе данных; Если зарегистрировано студент курсов, а не уровень еще, `Grade` свойство имеет значение null. Другими словами не могут быть зарегистрированы в курсов студент еще, могут быть зарегистрированы в одной курса или могут быть зарегистрированы в нескольких курсах. Каждый уровень в курсе зарегистрированных применяется только один студент.
+    В этом случае `Person` сущности могут или не могут быть связаны `StudentGrade` сущностей. Объект `StudentGrade` сущность должна быть связана с одним `Person` сущности. `StudentGrade` сущности представляют фактически зарегистрированных курсов в этой базе данных; Если зарегистрировано студент курсов, а не уровень еще, `Grade` свойство имеет значение null. Другими словами не могут быть зарегистрированы в курсов студент еще, могут быть зарегистрированы в одной курса или могут быть зарегистрированы в нескольких курсах. Каждый уровень в курсе зарегистрированных применяется только один студент.
 - Представленный ассоциации многие ко многим "\*«и»\*».
 
     [![Image41](the-entity-framework-and-aspnet-getting-started-part-1/_static/image40.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image39.png)
@@ -214,5 +214,5 @@ ms.lasthandoff: 01/24/2018
 
 Теперь вы создали веб-сайт, базы данных и модели данных. В следующем пошаговом руководстве будет приступить к работе с данными с помощью модели данных и ASP.NET `EntityDataSource` элемента управления.
 
->[!div class="step-by-step"]
-[Вперед](the-entity-framework-and-aspnet-getting-started-part-2.md)
+> [!div class="step-by-step"]
+> [Вперед](the-entity-framework-and-aspnet-getting-started-part-2.md)

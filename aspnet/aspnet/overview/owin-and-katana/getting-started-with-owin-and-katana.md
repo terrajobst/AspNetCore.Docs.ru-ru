@@ -1,28 +1,28 @@
 ---
 uid: aspnet/overview/owin-and-katana/getting-started-with-owin-and-katana
-title: "Приступая к работе с OWIN и Katana | Документы Microsoft"
+title: Приступая к работе с OWIN и Katana | Документы Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/27/2013
 ms.topic: article
 ms.assetid: 6dae249f-5ac6-4f6e-bc49-13bcd5a54a70
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/getting-started-with-owin-and-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 8922aada723da9b149ec111902fcd883c8241dfb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ac0302ef1a786f6b1eef8119b3134a965f01c533
+ms.sourcegitcommit: 5ab5c5f4bfdb0150f42ba84c2770eadf540cae48
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/28/2018
 ---
 <a name="getting-started-with-owin-and-katana"></a>Приступая к работе с OWIN и Katana
 ====================
 по [Mike Wasson](https://github.com/MikeWasson)
 
-[Открыть веб-интерфейс .NET (OWIN)](http://owin.org/) определяет абстракцию между .NET веб-серверов и веб-приложений. Посредством разделения веб-сервера из приложения, OWIN упрощает создание по промежуточного слоя для разработки веб-приложений .NET. Кроме того, OWIN для упрощения порт веб-приложений на других узлах &#8212; например, Резидентное размещение в службе Windows или другой процесс.
+[Открыть веб-интерфейс .NET (OWIN)](http://owin.org/) определяет абстракцию между .NET веб-серверов и веб-приложений. Посредством разделения веб-сервера из приложения, OWIN упрощает создание по промежуточного слоя для разработки веб-приложений .NET. Кроме того, OWIN для упрощения порт веб-приложений на другие узлы&#8212;, Резидентное размещение в службе Windows или другой процесс.
 
 OWIN — это спецификация принадлежащие сообщества, не реализацию. Katana проект — это набор компонентов OWIN открытым исходным кодом, разработанная корпорацией Майкрософт. Общие сведения о OWIN и Katana, в разделе [Обзор проекта Katana](an-overview-of-project-katana.md). В этой статье я будет выполнен переход вправо в код, чтобы приступить к работе.
 
@@ -54,7 +54,7 @@ OWIN — это спецификация принадлежащие сообще
 
 ![](getting-started-with-owin-and-katana/_static/image4.png)
 
-Добавьте следующий код в метод `Startup1.Configuration`.
+Добавьте следующий код в метод `Startup1.Configuration`:
 
 [!code-csharp[Main](getting-started-with-owin-and-katana/samples/sample1.cs?highlight=3)]
 
@@ -74,7 +74,7 @@ OWIN — это спецификация принадлежащие сообще
 
 ## <a name="self-host-owin-in-a-console-application"></a>OWIN резидентной в консольном приложении
 
-Можно легко преобразовать это приложение из размещения в службах IIS для размещения на собственном сервере в пользовательском процессе. С размещения в службах IIS, IIS работает и как HTTP-сервер и как процесс, на которых размещены сервером. С резидентной, приложение создает процесс и использует **HttpListener** класс как HTTP-сервера.
+Можно легко преобразовать это приложение из размещения в службах IIS для размещения на собственном сервере в пользовательском процессе. С размещения в службах IIS, IIS работает и как HTTP-сервера и другой процесс, на котором размещена служба. С резидентной, приложение создает процесс и использует **HttpListener** класс как HTTP-сервера.
 
 В Visual Studio создайте новое консольное приложение. В окне консоли диспетчера пакетов введите следующую команду:
 
@@ -106,7 +106,7 @@ OWIN — это спецификация принадлежащие сообще
 
 ![](getting-started-with-owin-and-katana/_static/image7.png)
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 - [Определение класса запуска OWIN](owin-startup-class-detection.md)
 - [Используйте OWIN для самостоятельного размещения веб-API ASP.NET](../../../web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api.md)

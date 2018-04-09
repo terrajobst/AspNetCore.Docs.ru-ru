@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-1
-title: "Использование веб-API 2 с Entity Framework 6 | Документы Microsoft"
+title: Использование веб-API 2 с Entity Framework 6 | Документы Microsoft
 author: MikeWasson
-description: "Этот учебник поможет узнать, что основные принципы создания веб-приложения с ASP.NET Web API серверной части. В этом учебнике используется Entity Framework 6 для макета данных..."
+description: Этот учебник поможет узнать, что основные принципы создания веб-приложения с ASP.NET Web API серверной части. В этом учебнике используется Entity Framework 6 для макета данных...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-1
 msc.type: authoredcontent
-ms.openlocfilehash: cceefa128f90b4c3e23dd31119f44e6ffc55f46f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8e6d381509a121e3036ca3af91ea3b9bd0be33c2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-web-api-2-with-entity-framework-6"></a>Использование веб-API 2 с Entity Framework 6
 ====================
@@ -76,7 +76,7 @@ AJAX не новый, но на сегодняшний день существу
 
 Для размещения проекта в службе приложений Azure, оставьте **узел в облаке** флажок установлен.
 
-Нажмите кнопку **ОК** для создания проекта.
+Нажмите кнопку **ОК**, чтобы создать проект.
 
 ## <a name="configure-azure-settings-optional"></a>Настройте параметры Azure (необязательно)
 
@@ -88,5 +88,5 @@ AJAX не новый, но на сегодняшний день существу
 
 [![](part-1/_static/image10.png)](part-1/_static/image9.png)
 
->[!div class="step-by-step"]
-[Вперед](part-2.md)
+> [!div class="step-by-step"]
+> [Вперед](part-2.md)

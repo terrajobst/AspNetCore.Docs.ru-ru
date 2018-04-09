@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part5
-title: "Доступ к вашей модели данных от контроллера | Документы Microsoft"
+title: Доступ к вашей модели данных от контроллера | Документы Microsoft
 author: shanselman
-description: "Это руководство для новичков, в котором представлены основные сведения по ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных."
+description: Это руководство для новичков, в котором представлены основные сведения по ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part5
 msc.type: authoredcontent
-ms.openlocfilehash: cf81d351aef45af3640f5d113eb3619911e03606
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 2ba1b73f40a920e27e4a03d9f703e62054d3f25c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>Доступ к вашей модели данных из контроллера
 ====================
@@ -63,6 +63,6 @@ ms.lasthandoff: 01/30/2018
 
 Теперь у нас есть простого списка наши данные фильма. Тем не менее если щелкнуть ссылку «Создать», мы получите ошибку, не подключен! Давайте реализовать метод действия Create и дать пользователю возможность ввести новые фильмы в базе данных.
 
->[!div class="step-by-step"]
-[Назад](getting-started-with-mvc-part4.md)
-[Вперед](getting-started-with-mvc-part6.md)
+> [!div class="step-by-step"]
+> [Назад](getting-started-with-mvc-part4.md)
+> [Вперед](getting-started-with-mvc-part6.md)

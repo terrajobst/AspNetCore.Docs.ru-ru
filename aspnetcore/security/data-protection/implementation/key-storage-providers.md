@@ -1,7 +1,7 @@
 ---
-title: "Поставщики хранилища ключей"
+title: Поставщики хранилища ключей в ASP.NET Core
 author: rick-anderson
-description: "Дополнительные сведения о поставщиках хранилища ключей в ASP.NET Core и как настроить расположение хранилища ключей."
+description: Дополнительные сведения о поставщиках хранилища ключей в ASP.NET Core и как настроить расположение хранилища ключей.
 manager: wpickett
 ms.author: riande
 ms.date: 01/14/2017
@@ -9,20 +9,20 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 83e02a19e465b3ff81a0c0c62c2c8b090bfab052
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: e8b7804e93b812c2e710ab15510c2fbaa7c4866d
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-storage-providers"></a>Поставщики хранилища ключей
+# <a name="key-storage-providers-in-aspnet-core"></a>Поставщики хранилища ключей в ASP.NET Core
 
 <a name="data-protection-implementation-key-storage-providers"></a>
 
 По умолчанию система защиты данных [использует эвристику](xref:security/data-protection/configuration/default-settings) для определения, где должны сохраняться материалом ключа шифрования. Разработчик может переопределить эвристика и вручную указать расположение.
 
 > [!NOTE]
-> При указании расположения явную сохраняемость ключа система защиты данных будет отменить регистрацию шифрования ключа по умолчанию в механизм rest, который предоставляется эвристика, поэтому ключи больше не шифруются при хранении. Рекомендуется, можно Дополнительно [укажите механизм явного ключа шифрования](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers) для производственных приложений.
+> При указании расположения явную сохраняемость ключа система защиты данных будет отменить регистрацию шифрования ключа по умолчанию в механизм rest, который предоставляется эвристика, поэтому ключи больше не шифруются при хранении. Рекомендуется, можно Дополнительно [укажите механизм явного ключа шифрования](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest-providers) для производственных приложений.
 
 Система защиты данных поставляется с нескольких поставщиков хранилища ключей в поле.
 
@@ -36,7 +36,7 @@ sc.AddDataProtection()
        .PersistKeysToFileSystem(new DirectoryInfo(@"c:\temp-keys\"));
    ```
 
-`DirectoryInfo` Может указывать на каталог на локальном компьютере или она может указывать на папку на общем сетевом ресурсе. Если каталогу на локальном компьютере (и рекомендуется только приложения на локальном компьютере необходимо использовать этот репозиторий), рассмотрите возможность использования [Windows DPAPI](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) для шифрования ключей при хранении. В противном случае рассмотрите возможность использования [сертификат X.509](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) для шифрования ключей при хранении.
+`DirectoryInfo` Может указывать на каталог на локальном компьютере или она может указывать на папку на общем сетевом ресурсе. Если каталогу на локальном компьютере (и рекомендуется только приложения на локальном компьютере необходимо использовать этот репозиторий), рассмотрите возможность использования [Windows DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest) для шифрования ключей при хранении. В противном случае рассмотрите возможность использования [сертификат X.509](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest) для шифрования ключей при хранении.
 
 ## <a name="azure-and-redis"></a>Azure и Redis
 
@@ -84,7 +84,7 @@ public void ConfigureServices(IServiceCollection services)
        .PersistKeysToRegistry(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Sample\keys"));
    ```
 
-При использовании системного реестра как механизм сохраняемости, рассмотрите возможность использования [Windows DPAPI](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) для шифрования ключей при хранении.
+При использовании системного реестра как механизм сохраняемости, рассмотрите возможность использования [Windows DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest) для шифрования ключей при хранении.
 
 ## <a name="custom-key-repository"></a>Пользовательские хранилища ключей
 

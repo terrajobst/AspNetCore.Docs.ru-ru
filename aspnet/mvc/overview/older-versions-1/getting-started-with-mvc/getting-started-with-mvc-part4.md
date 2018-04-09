@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part4
-title: "Создание базы данных | Документы Microsoft"
+title: Создание базы данных | Документы Microsoft
 author: shanselman
-description: "Это руководство для новичков, в котором представлены основные сведения по ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных."
+description: Это руководство для новичков, в котором представлены основные сведения по ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part4
 msc.type: authoredcontent
-ms.openlocfilehash: 22f1042555d7cdd0ca8d75f1cbde65fbb65d81cc
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ff2a41803cd31ce50bbf79e630d827b6de441ba3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-database"></a>Создание базы данных
 ====================
@@ -87,6 +87,6 @@ ms.lasthandoff: 01/30/2018
 
 Теперь давайте работать с некоторыми реальными данными.
 
->[!div class="step-by-step"]
-[Назад](getting-started-with-mvc-part3.md)
-[Вперед](getting-started-with-mvc-part5.md)
+> [!div class="step-by-step"]
+> [Назад](getting-started-with-mvc-part3.md)
+> [Вперед](getting-started-with-mvc-part5.md)

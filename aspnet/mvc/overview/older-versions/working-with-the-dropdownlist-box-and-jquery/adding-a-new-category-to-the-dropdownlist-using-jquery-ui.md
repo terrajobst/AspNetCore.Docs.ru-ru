@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/adding-a-new-category-to-the-dropdownlist-using-jquery-ui
-title: "Добавление новой категории с помощью jQuery UI DropDownList | Документы Microsoft"
+title: Добавление новой категории с помощью jQuery UI DropDownList | Документы Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/adding-a-new-category-to-the-dropdownlist-using-jquery-ui
 msc.type: authoredcontent
-ms.openlocfilehash: de661616ff3ca83052ae74d3ae6810d014aff764
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 16f7af1d679aace24fff86abb19740beebafe785
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-new-category-to-the-dropdownlist-using-jquery-ui"></a>Добавление новой категории с помощью jQuery UI DropDownList
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 HTML `Select` тег идеально подходит для представления списка основных категории данных, но зачастую необходимо добавить новую категорию. Предположим, что мы хотим добавить жанр «Opera» в категории в базе данных? В этом разделе мы будем использовать jQuery UI, чтобы добавить диалоговое окно, можно использовать для добавления новой категории. На следующем рисунке показано, как пользовательский Интерфейс будет представлять в браузере.
 
@@ -36,7 +36,7 @@ HTML `Select` тег идеально подходит для представл
 2. JavaScript добавляет новые данные жанр к списку выбора.
 3. JavaScript позволяет новой genre выбранного элемента.
 
- На рисунке ниже **Opera** была добавлена в базу данных и выбрать в **жанр** раскрывающегося списка. 
+   На рисунке ниже **Opera** была добавлена в базу данных и выбрать в **жанр** раскрывающегося списка. 
 
 ![](adding-a-new-category-to-the-dropdownlist-using-jquery-ui/_static/image3.png)
 
@@ -60,7 +60,7 @@ HTML `Select` тег идеально подходит для представл
 
 ![](adding-a-new-category-to-the-dropdownlist-using-jquery-ui/_static/image4.png)
 
-Нажмите кнопку **Сохранить** кнопки. Вызов AJAX создается категория Opera заполняет раскрывающийся список с Opera и задает в качестве выбранных жанр Opera.
+Нажмите кнопку **Сохранить**. Вызов AJAX создается категория Opera заполняет раскрывающийся список с Opera и задает в качестве выбранных жанр Opera.
 
 ![](adding-a-new-category-to-the-dropdownlist-using-jquery-ui/_static/image5.png)
 
@@ -102,7 +102,7 @@ JQuery `$.post` строки осуществляет вызов AJAX атриб
 3. В поле поиска введите GenreID.
 4. Используя значок "Далее"   
     ![](adding-a-new-category-to-the-dropdownlist-using-jquery-ui/_static/image9.png)  
- Перейдите к выберите следующий тег:
+   Перейдите к выберите следующий тег:
 
     [!code-html[Main](adding-a-new-category-to-the-dropdownlist-using-jquery-ui/samples/sample9.html)]
 5. Разверните последнее значение параметра.
@@ -141,5 +141,5 @@ Rick.Anderson[at]Microsoft.com
 - Эти протоколы Майк
 - Tom Dykstra
 
->[!div class="step-by-step"]
-[Назад](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)
+> [!div class="step-by-step"]
+> [Назад](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)

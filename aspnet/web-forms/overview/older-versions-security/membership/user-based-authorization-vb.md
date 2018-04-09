@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/membership/user-based-authorization-vb
-title: "Авторизация на основе пользователя (Visual Basic) | Документы Microsoft"
+title: Авторизация на основе пользователя (Visual Basic) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы рассмотрим ограничивая доступ к страницам и ограничить функциональные возможности уровня страницы с помощью разных методов."
+description: В этом учебнике мы рассмотрим ограничивая доступ к страницам и ограничить функциональные возможности уровня страницы с помощью разных методов.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/18/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/user-based-authorization-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5579292930da97b142ff6db5d34d33be77aeea4b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4073f349c7965a89b39a4b1b672f0e84fc96f287
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="user-based-authorization-vb"></a>Авторизация на основе пользователя (Visual Basic)
 ====================
@@ -168,7 +168,7 @@ ASP.NET позволяет легко определить правила авт
 
 ### <a name="a-look-at-how-theurlauthorizationmoduleuses-the-authorization-rules-to-grant-or-deny-access"></a>Рассмотрим как`UrlAuthorizationModule`использует правила авторизации для предоставления или запрета доступа
 
-`UrlAuthorizationModule` Определяет ли авторизовать конкретное удостоверение для конкретного URL-адреса путем анализа авторизации URL-адрес правила по одному, начиная с первого и работа способом его работы. Как только соответствие найдено, пользователю разрешен или запрещен доступ, в зависимости от Если искомый элемент был найден в `<allow>` или `<deny>` элемент. **Если совпадение не найдено, пользователю предоставляется доступ.** Следовательно, если вы хотите ограничить доступ, важно использовать `<deny>` элемент как последний элемент в конфигурации авторизации URL-адрес. **Если опустить ***`<deny>`*** элемента, все пользователи будут иметь доступ.**
+`UrlAuthorizationModule` Определяет ли авторизовать конкретное удостоверение для конкретного URL-адреса путем анализа авторизации URL-адрес правила по одному, начиная с первого и работа способом его работы. Как только соответствие найдено, пользователю разрешен или запрещен доступ, в зависимости от Если искомый элемент был найден в `<allow>` или `<deny>` элемент. <strong>Если совпадение не найдено, пользователю предоставляется доступ.</strong> Следовательно, если вы хотите ограничить доступ, важно использовать `<deny>` элемент как последний элемент в конфигурации авторизации URL-адрес. <strong>Если не указан</strong><strong>`<deny>`</strong><strong>элемента, все пользователи будут иметь доступ.</strong>
 
 Чтобы лучше понять процесс, используемый `UrlAuthorizationModule` для определения центра, рассмотрим пример правила авторизации URL-адрес, мы рассматривали ранее на этом шаге. Первое правило `<allow>` элемент, который обеспечивает доступ к Tito и Скотт. — Второй правила `<deny>` элемент, который запрещает доступ всем пользователям. Если анонимный пользователь посещает, `UrlAuthorizationModule` начинается с запросом, является анонимным Скотт или Tito? Ответ, очевидно, что равно нет, поэтому он переходит к второе правило. Является анонимным, в набор всех пользователей? Так как ответ вот Да, `<deny>` правило помещается в силе и пользователь перенаправляется на страницу входа. Аналогично, если обход Цзисунь, `UrlAuthorizationModule` начинается с запросом, является Цзисунь Скотт или Tito? Так как она не, `UrlAuthorizationModule` переход на второй вопрос — Цзисунь в набор всех пользователей? Она является, поэтому она, а также, отказано в доступе. Наконец, если посещает Tito, первый вопрос вызванных `UrlAuthorizationModule` будет получен утвердительный ответ, поэтому Tito предоставляется доступ.
 
@@ -217,7 +217,7 @@ ASP.NET позволяет легко определить правила авт
 Давайте создадим страницу, которая перечисляет файлы в определенном каталоге, в элементе управления GridView. А также список имя каждого файла, размер и другие сведения, GridView будет включать два столбца элементов управления LinkButton: один под названием представления и удалите раздел. Если щелкнуть представление LinkButton отображается содержимое выбранного файла; Если щелкнуть LinkButton удалить файл будут удалены. Давайте изначально создать эту страницу, таким образом, что его просмотр и удаление функциональность доступна всем пользователям. В с помощью элемента управления LoginView и программным образом ограничивая функциональные возможности разделов, будет показано, как включить или отключить эти функции на основе пользователя, посетив страницу.
 
 > [!NOTE]
-> Страницы ASP.NET, которое мы сборки используется элемент управления GridView для отображения списка файлов. С момента этого учебника посвящены форм проверки подлинности, авторизации, учетные записи пользователей и ролей я не хочу тратить много времени, посвященные внутренней работы элемента управления GridView. Этот учебник обеспечивает определенные пошаговые инструкции по настройке этой страницы, он не подробно рассмотрены почему были внесены некоторые варианты или иметь определенных свойств влияет на выводимых данных. Полное тестирование элемента управления GridView, проконсультируйтесь my  *[работа с данными в ASP.NET 2.0](../../data-access/index.md)*  учебные курсы.
+> Страницы ASP.NET, которое мы сборки используется элемент управления GridView для отображения списка файлов. С момента этого учебника посвящены форм проверки подлинности, авторизации, учетные записи пользователей и ролей я не хочу тратить много времени, посвященные внутренней работы элемента управления GridView. Этот учебник обеспечивает определенные пошаговые инструкции по настройке этой страницы, он не подробно рассмотрены почему были внесены некоторые варианты или иметь определенных свойств влияет на выводимых данных. Полное тестирование элемента управления GridView, проконсультируйтесь my *[работа с данными в ASP.NET 2.0](../../data-access/index.md)* учебные курсы.
 
 
 Сначала откройте `UserBasedAuthorization.aspx` файла в `Membership` папки и добавление элемента управления GridView к странице с именем `FilesGrid`. В смарт-теге элемента GridView нажмите кнопку Правка столбцов ссылку, чтобы открыть диалоговое окно поля. Здесь, снимите флажок автоматически создавать поля в левом нижнем углу. Добавьте кнопку выбора, кнопку «Удалить» и стояли две из верхнего левого угла (кнопки Select и Delete можно найти в CommandField типа). Задать кнопка выбора `SelectText` свойства для просмотра и первый BoundField `HeaderText` и `DataField` свойства имени. Установите второй BoundField `HeaderText` свойство размер в байтах, его `DataField` свойство до длины, его `DataFormatString` свойства {0: N0} и его `HtmlEncode` свойству значение False.
@@ -400,24 +400,24 @@ ASP.NET позволяет легко определить правила авт
 
 Дополнительные сведения по темам, рассматриваемые в этом учебнике см. в следующих ресурсах:
 
-- [Добавление правила авторизации для бизнеса и уровни данных с помощью`PrincipalPermissionAttributes`](https://weblogs.asp.net/scottgu/archive/2006/10/04/Tip_2F00_Trick_3A00_-Adding-Authorization-Rules-to-Business-and-Data-Layers-using-PrincipalPermissionAttributes.aspx)
+- [Добавление правила авторизации для бизнеса и уровни данных с помощью `PrincipalPermissionAttributes`](https://weblogs.asp.net/scottgu/archive/2006/10/04/Tip_2F00_Trick_3A00_-Adding-Authorization-Rules-to-Business-and-Data-Layers-using-PrincipalPermissionAttributes.aspx)
 - [Проверки подлинности ASP.NET](https://msdn.microsoft.com/library/wce3kxhd.aspx)
 - [Изменения между безопасности служб IIS 7 и IIS 6](https://www.iis.net/articles/view.aspx/IIS7/Managing-IIS7/Configuring-Security/Changes-between-IIS6-and-IIS7-Security)
 - [Настройка отдельных файлов и подкаталогов](https://msdn.microsoft.com/library/6hbkh9s7.aspx)
 - [Ограничение функций изменения данных на основе пользователя](../../data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-vb.md)
 - [Примеры использования элемента управления LoginView](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/loginview.aspx)
 - [Основные сведения об авторизации URL-адресов для IIS7](https://www.iis.net/articles/view.aspx/IIS7/Managing-IIS7/Configuring-Security/URL-Authorization/Understanding-IIS7-URL-Authorization)
-- [`UrlAuthorizationModule`Техническая документация](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx)
+- [`UrlAuthorizationModule` Техническая документация](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx)
 - [Работа с данными в ASP.NET 2.0](../../data-access/index.md)
 
 ### <a name="about-the-author"></a>Об авторе
 
-Скотт Митчелл, автор нескольких ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга —  *[диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Скотт может быть достигнута по [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) или через его блог по [http://ScottOnWriting.NET](http://scottonwriting.net/).
+Скотт Митчелл, автор нескольких ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга —  *[диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Скотт может быть достигнута по [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) или через его блог по [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Назад](validating-user-credentials-against-the-membership-user-store-vb.md)
-[Вперед](storing-additional-user-information-vb.md)
+> [!div class="step-by-step"]
+> [Назад](validating-user-credentials-against-the-membership-user-store-vb.md)
+> [Вперед](storing-additional-user-information-vb.md)

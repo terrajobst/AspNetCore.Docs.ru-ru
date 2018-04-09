@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-batched-data/batch-inserting-vb
-title: "Пакетной вставки (VB) | Документы Microsoft"
+title: Пакетной вставки (VB) | Документы Microsoft
 author: rick-anderson
-description: "Дополнительные сведения о вставке нескольких записей базы данных в одной операции. В уровень пользовательского интерфейса, мы расширить GridView, чтобы разрешить пользователям вводить несколько n..."
+description: Дополнительные сведения о вставке нескольких записей базы данных в одной операции. В уровень пользовательского интерфейса, мы расширить GridView, чтобы разрешить пользователям вводить несколько n...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-inserting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3f09b5fd86c1cc6641fb42a466b07da161c1dd35
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a25c889784ccc6cee3ae01df59bd489b48114e74
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="batch-inserting-vb"></a>Пакетная вставка (Visual Basic)
 ====================
@@ -203,7 +203,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-vb[Main](batch-inserting-vb/samples/sample5.vb)]
 
-Оба `Click` просто вызывает обработчики событий `ReturnToDisplayInterface` метода, несмотря на то, что мы вернемся к продуктам добавить из отгрузки `Click` обработчик событий в шаг 4 и добавить код для сохранения продукты. `ReturnToDisplayInterface`Запускает, возвращая `Suppliers` и `Categories` элементами управления DropDownList для их сначала параметров. Две константы `firstControlID` и `lastControlID` пометить начального и конечного значений индекса элемента управления, используемого для именования продукта название и цену за единицу текстовые поля в Вставка интерфейса и используются в границах `For` цикл, который задает `Text`свойства элементов управления TextBox обратно в пустую строку. Наконец, панелей `Visible` свойства сбрасываются, позволяющие интерфейса вставки является скрытым и интерфейса показано.
+Оба `Click` просто вызывает обработчики событий `ReturnToDisplayInterface` метода, несмотря на то, что мы вернемся к продуктам добавить из отгрузки `Click` обработчик событий в шаг 4 и добавить код для сохранения продукты. `ReturnToDisplayInterface` Запускает, возвращая `Suppliers` и `Categories` элементами управления DropDownList для их сначала параметров. Две константы `firstControlID` и `lastControlID` пометить начального и конечного значений индекса элемента управления, используемого для именования продукта название и цену за единицу текстовые поля в Вставка интерфейса и используются в границах `For` цикл, который задает `Text`свойства элементов управления TextBox обратно в пустую строку. Наконец, панелей `Visible` свойства сбрасываются, позволяющие интерфейса вставки является скрытым и интерфейса показано.
 
 Теперь пора проверить эту страницу в браузере. При первом просмотре странице вы увидите интерфейса, как было показано на рис. 5. Нажмите кнопку процесса отгрузки продукции. Будет обратной передачи страницы, и вы увидите интерфейса вставки как показано на рис. 12. Щелкнув либо добавить продукты из отгрузки или "Отмена" снова интерфейса.
 
@@ -269,11 +269,11 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Привести рецензентов для этого учебника были – Хилтон Гизнау и S ren Алексей Lauritsen. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](batch-deleting-vb.md)
+> [!div class="step-by-step"]
+> [Назад](batch-deleting-vb.md)

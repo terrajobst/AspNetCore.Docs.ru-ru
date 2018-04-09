@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-repository-pattern
-title: "ASP.NET MVC Storefront, часть 2: Шаблон репозитория | Документы Microsoft"
+title: 'ASP.NET MVC Storefront, часть 2: Шаблон репозитория | Документы Microsoft'
 author: robconery
-description: "Вадим Conery описывается реализация репозитория и записывает первый основной набор модульных тестов. Он также структура вверх metho слоя начальной службы..."
+description: Вадим Conery описывается реализация репозитория и записывает первый основной набор модульных тестов. Он также структура вверх metho слоя начальной службы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/27/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-repository-pattern
 msc.type: video
-ms.openlocfilehash: 5efa80a6639fab433f921f7495336eeb58f58fdf
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 272a710d05e0d0dd2d358505f54d5fd595ffa41f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-storefront-part-2-the-repository-pattern"></a>ASP.NET MVC Storefront, часть 2: Шаблон репозитория
 ====================
@@ -24,8 +24,8 @@ ms.lasthandoff: 11/10/2017
 
 Вадим Conery описывается реализация репозитория и записывает первый основной набор модульных тестов. Он также структур начальные слоя методы и интерфейсы.
 
-[&#9654; Посмотрите видео (10 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-2-the-repository-pattern)
+[&#9654;Посмотрите видео (10 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-2-the-repository-pattern)
 
->[!div class="step-by-step"]
-[Назад](aspnet-mvc-storefront-part-1-architectural-discussion-and-overview.md)
-[Вперед](aspnet-mvc-storefront-part-3-pipes-and-filters.md)
+> [!div class="step-by-step"]
+> [Назад](aspnet-mvc-storefront-part-1-architectural-discussion-and-overview.md)
+> [Вперед](aspnet-mvc-storefront-part-3-pipes-and-filters.md)

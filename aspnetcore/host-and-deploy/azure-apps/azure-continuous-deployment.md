@@ -1,7 +1,7 @@
 ---
-title: "Непрерывное развертывание в Azure с помощью Visual Studio и Git с помощью ASP.NET Core"
+title: Непрерывное развертывание в Azure с помощью Visual Studio и Git с помощью ASP.NET Core
 author: rick-anderson
-description: "Сведения о создании веб-приложения ASP.NET Core с помощью Visual Studio и его развертывании в службе приложений Azure с использованием Git для непрерывного развертывания."
+description: Сведения о создании веб-приложения ASP.NET Core с помощью Visual Studio и его развертывании в службе приложений Azure с использованием Git для непрерывного развертывания.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,17 +10,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 7302de1ace62dba53b317039aac7f4763314aa19
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 4de1893e8c1f7f2f4d9af7278a110067ea777c61
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Непрерывное развертывание в Azure с помощью Visual Studio и Git с помощью ASP.NET Core
 
 Автор: [Эрик Рейтан](https://github.com/Erikre) (Erik Reitan)
 
-[!INCLUDE[Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
+[!INCLUDE [Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
 
 Этого учебника показано, как создать веб-приложение ASP.NET Core с помощью Visual Studio и развернуть ее на службе приложений Azure из Visual Studio с помощью непрерывного развертывания.
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/15/2018
 В этом учебнике предполагается, что установлено следующее программное обеспечение:
 
 * [Visual Studio](https://www.visualstudio.com)
-* [Пакет SDK для .NET core](https://www.microsoft.com/net/download/core) (среда выполнения и средства)
+* [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 * [Git](https://git-scm.com/downloads) для Windows.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Создание веб-приложения ASP.NET Core

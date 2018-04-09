@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files
-title: "ASP.NET веб-развертывания с помощью Visual Studio: развертывание дополнительных файлов | Документы Microsoft"
+title: 'ASP.NET веб-развертывания с помощью Visual Studio: развертывание дополнительных файлов | Документы Microsoft'
 author: tdykstra
-description: "Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол..."
+description: Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/23/2015
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files
 msc.type: authoredcontent
-ms.openlocfilehash: 46e18ba81c3db8bb04c5cb997bcc1607e4e38bae
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5cefcedde7715844a7d7a9db1455193564ef9805
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-extra-files"></a>ASP.NET веб-развертывания с помощью Visual Studio: развертывание дополнительных файлов
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузите начальный проект](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -104,6 +104,6 @@ ms.lasthandoff: 01/24/2018
 - [Srđan Božović, Сербия](http://msforge.net/blogs/zmajcek/)
 - [Вишал Joshi, корпорация Майкрософт](http://vishaljoshi.blogspot.com/) (twitter: [ @vishalrjoshi ](http://twitter.com/vishalrjoshi))
 
->[!div class="step-by-step"]
-[Назад](command-line-deployment.md)
-[Вперед](troubleshooting.md)
+> [!div class="step-by-step"]
+> [Назад](command-line-deployment.md)
+> [Вперед](troubleshooting.md)

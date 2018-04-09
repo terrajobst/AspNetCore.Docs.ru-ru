@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/secure-applications-using-authentication-and-authorization
-title: "Защита приложений с использованием проверки подлинности и авторизации | Документы Microsoft"
+title: Защита приложений с использованием проверки подлинности и авторизации | Документы Microsoft
 author: microsoft
-description: "Шаг 9 показано добавление проверки подлинности и авторизации для защиты нашего приложения обновление NerdDinner, чтобы пользователи должны зарегистрировать и выполните вход на сайт для создания..."
+description: Шаг 9 показано добавление проверки подлинности и авторизации для защиты нашего приложения обновление NerdDinner, чтобы пользователи должны зарегистрировать и выполните вход на сайт для создания...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/secure-applications-using-authentication-and-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: a23b2cf4d1728624698c0db49c25ea7efd3af67d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4a9b1e6d7d453bd8dc5a61b1f1cec4617af7d693
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="secure-applications-using-authentication-and-authorization"></a>Защита приложений с использованием проверки подлинности и авторизации
 ====================
@@ -151,10 +151,10 @@ ASP.NET MVC поддерживает возможность создания «�
 
 [!code-aspx[Main](secure-applications-using-authentication-and-authorization/samples/sample9.aspx)]
 
-#### <a name="next-steps"></a>Дальнейшие действия
+#### <a name="next-steps"></a>Следующие шаги
 
 Теперь взглянем на как можно включить прошедшим проверку пользователям RSVP для ужинов, с помощью AJAX.
 
->[!div class="step-by-step"]
-[Назад](implement-efficient-data-paging.md)
-[Вперед](use-ajax-to-deliver-dynamic-updates.md)
+> [!div class="step-by-step"]
+> [Назад](implement-efficient-data-paging.md)
+> [Вперед](use-ajax-to-deliver-dynamic-updates.md)

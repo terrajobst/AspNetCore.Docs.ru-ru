@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
-title: "Параметры хранения данных (Создание реальных облачных приложений в Azure) | Документы Microsoft"
+title: Параметры хранения данных (Создание реальных облачных приложений в Azure) | Документы Microsoft
 author: MikeWasson
-description: "Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может..."
+description: Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: e51fcecb-cb33-4f9e-8428-6d2b3d0fe1bf
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
 msc.type: authoredcontent
-ms.openlocfilehash: 88f57244bfbfdf33df3bb265d8aa2c93689b2f24
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d638dca331cb24c340a4471e5964a00b75bb608a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a>Параметры хранения данных (Создание реальных облачных приложений в Azure)
 ====================
@@ -250,7 +250,7 @@ Azure позволяет как простой в использовании Iaa
 | База данных Azure SQL (PaaS) | SQL Server на виртуальной машине (IaaS) |
 | --- | --- |
 | **Специалисты** -не нужно создавать или управление виртуальными машинами, обновления или исправления ОС или SQL; Azure делает это для вас. -Встроенную высокую доступность, с SLA уровня базы данных. -Низкий совокупной стоимости владения (TCO), поскольку вы платите только за то, что используется (лицензия не требуется). -Хорошо подходит для обработки большого количества небольших баз данных (&lt;= 500 ГБ). -Простой для динамического создания новых баз данных, чтобы включить горизонтального масштабирования. | ***Специалисты*** - функция совместимость с SQL Server в локальной среде. -Можно реализовывать SQL Server [высокий уровень доступности через AlwaysOn](https://www.microsoft.com/sqlserver/solutions-technologies/mission-critical-operations/high-availability.aspx) в 2 + ВМ, с уровня виртуальной Машины соглашения об уровне ОБСЛУЖИВАНИЯ. -Имеется полный контроль над управление SQL. -Можно повторно использовать лицензии SQL владельцем, или уже оплаты по часам, по одной. -Хорошо подходит для обработки меньшее число более крупных (1 ТБ) базы данных. |
-| **Недостатки** -некоторых компонентов пропуски по сравнению с локальным SQL Server (отсутствия [интеграция со средой CLR](https://technet.microsoft.com/library/ms131102.aspx), [прозрачного шифрования данных](https://technet.microsoft.com/library/bb934049.aspx), [поддержки сжатия](https://technet.microsoft.com/library/cc280449.aspx), [SQL Службы отчетов сервера](https://technet.microsoft.com/library/ms159106.aspx), т. д.) — максимальный размер базы данных в 500 ГБ. | ***Недостатки*** - исправлений или обновления (OS и SQL) вы несете ответственность за - создание и управление баз данных SQL Server вы несете ответственность за - диск операций ввода-ВЫВОДА (операций ввода вывода в секунду) ограничен около 8000 (с помощью дисков с данными 16). |
+| **Недостатки** -некоторых компонентов пропуски по сравнению с локальным SQL Server (отсутствия [интеграция со средой CLR](https://technet.microsoft.com/library/ms131102.aspx), [прозрачного шифрования данных](https://technet.microsoft.com/library/bb934049.aspx), [поддержки сжатия](https://technet.microsoft.com/library/cc280449.aspx), [SQL Server Службы Reporting Services](https://technet.microsoft.com/library/ms159106.aspx), т. д.) — максимальный размер базы данных в 500 ГБ. | ***Недостатки*** - исправлений или обновления (OS и SQL) вы несете ответственность за - создание и управление баз данных SQL Server вы несете ответственность за - диск операций ввода-ВЫВОДА (операций ввода вывода в секунду) ограничен около 8000 (с помощью дисков с данными 16). |
 
 Если вы хотите использовать SQL Server на виртуальной машине, можно использовать собственную лицензию SQL Server, или можно платить за один час. Например на портале или с помощью API-интерфейса REST можно создать новую виртуальную Машину с помощью образа SQL Server.
 
@@ -301,6 +301,6 @@ HDInsight (Hadoop в Azure):
 - [Hadoop и HDInsight: большие наборы данных в Azure](https://msdn.microsoft.com/magazine/dn385705.aspx). В статье MSDN Magazine Terkaly Бруно и Villalobos Ricardo, знакомство с Hadoop в Azure.
 - [Шаблоны и методики - руководство по Azure Майкрософт](https://msdn.microsoft.com/library/dn568099.aspx). Шаблон MapReduce см. в разделе.
 
->[!div class="step-by-step"]
-[Назад](single-sign-on.md)
-[Вперед](data-partitioning-strategies.md)
+> [!div class="step-by-step"]
+> [Назад](single-sign-on.md)
+> [Вперед](data-partitioning-strategies.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-vb
-title: "Развертывание узла с помощью FTP-клиент (Visual Basic) | Документы Microsoft"
+title: Развертывание узла с помощью FTP-клиент (Visual Basic) | Документы Microsoft
 author: rick-anderson
-description: "Самый простой способ развертывания приложения ASP.NET требуется вручную скопировать необходимые файлы из среды разработки в рабочую среду. Этом..."
+description: Самый простой способ развертывания приложения ASP.NET требуется вручную скопировать необходимые файлы из среды разработки в рабочую среду. Этом...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7792891aed6f0c5e952018dacb36a1d267cb6ae0
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 90ae866d82c4dbfd5c3e209c3d397df42d162515
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-your-site-using-an-ftp-client-vb"></a>Развертывание узла с помощью FTP-клиент (Visual Basic)
 ====================
@@ -77,7 +77,7 @@ ms.lasthandoff: 01/30/2018
 **Рис. 1**: использовать FTP-клиента для копирования необходимых файлов из рабочего стола на веб-сервер на поставщике веб-размещения ([Просмотр полноразмерное изображение](deploying-your-site-using-an-ftp-client-vb/_static/image3.png))
 
 
-После развертывания веб-узла мгновение тестирование сайта. Если вы приобрели имя домена и параметры DNS настроены правильно, посещающие ваш сайт, указав имя домена. Кроме того, поставщика узла веб должен предоставил URL-адрес веб-сайта которого будет выглядеть примерно как *accountname*.* webhostprovider*.com или *webhostprovider*.com /*accountname*. Например, является URL-адрес для моей учетной записи на скидки ASP.NET: `http://httpruntime.web703.discountasp.net`.
+После развертывания веб-узла мгновение тестирование сайта. Если вы приобрели имя домена и параметры DNS настроены правильно, посещающие ваш сайт, указав имя домена. Кроме того, поставщика узла веб должен предоставил URL-адрес веб-сайта которого будет выглядеть примерно как *accountname*. *webhostprovider*.com или *webhostprovider*.com /*accountname*. Например, является URL-адрес для моей учетной записи на скидки ASP.NET: `http://httpruntime.web703.discountasp.net`.
 
 На рисунке 2 показан развернутой рецензий сайт. Обратите внимание, что я просматриваю его на ASP скидки. Серверы в сети в `http://httpruntime.web703.discountasp.net`. На данный момент времени любой пользователь с подключением к Интернету может просматривать веб-узел! Как мы ожидать сайта выглядит и работает так же, как при тестировании в среде разработки.
 
@@ -161,6 +161,6 @@ ms.lasthandoff: 01/30/2018
 - [Приложение\_Offline.htm и обходу компонент «Понятного имени IE ошибок»](https://weblogs.asp.net/scottgu/App_5F00_Offline.htm-and-working-around-the-_2200_IE-Friendly-Errors_2200_-feature)
 - [Режимы состояния сеанса](https://msdn.microsoft.com/library/ms178586.aspx)
 
->[!div class="step-by-step"]
-[Назад](determining-what-files-need-to-be-deployed-vb.md)
-[Вперед](deploying-your-site-using-visual-studio-vb.md)
+> [!div class="step-by-step"]
+> [Назад](determining-what-files-need-to-be-deployed-vb.md)
+> [Вперед](deploying-your-site-using-visual-studio-vb.md)

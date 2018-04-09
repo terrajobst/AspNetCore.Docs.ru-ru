@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-24-finis
-title: "ASP.NET MVC Storefront часть 24: Чания | Документы Microsoft"
+title: 'ASP.NET MVC Storefront часть 24: Чания | Документы Microsoft'
 author: robconery
-description: "Это эпизод последнего ряда MVC витрине, это может показаться немного странным. Это определенно не последнего видеоролике, которую я указываю по отношению к ASP.NET..."
+description: Это эпизод последнего ряда MVC витрине, это может показаться немного странным. Это определенно не последнего видеоролике, которую я указываю по отношению к ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-24-finis
 msc.type: video
-ms.openlocfilehash: fe3d05e4c3d895d376d1ec1083eafa016f0229ab
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 69e6d6c068d8451eeb619967224f4aa4a209c7eb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-storefront-part-24-finis"></a>ASP.NET MVC Storefront часть 24: чания
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/30/2018
 
 Это эпизод последнего ряда MVC витрине, это может показаться немного странным. Это определенно не последнего видеоролике, которую я указываю по отношению к ASP.NET MVC, но я думаю, что я кратким как я могу с этого ряда.
 
-[&#9654; Посмотрите видео (27 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-24-finis)
+[&#9654;Посмотрите видео (27 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-24-finis)
 
->[!div class="step-by-step"]
-[Назад](aspnet-mvc-storefront-part-23-getting-started-with-domain-driven-design.md)
+> [!div class="step-by-step"]
+> [Назад](aspnet-mvc-storefront-part-23-getting-started-with-domain-driven-design.md)

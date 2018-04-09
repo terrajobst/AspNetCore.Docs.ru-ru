@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
-title: "Учебник: Приступая к работе с SignalR 1.x и MVC 4 | Документы Microsoft"
+title: 'Учебник: Приступая к работе с SignalR 1.x и MVC 4 | Документы Microsoft'
 author: pfletcher
-description: "Используйте ASP.NET SignalR и ASP.NET MVC 4 для построения приложения разговора в режиме реального времени."
+description: Используйте ASP.NET SignalR и ASP.NET MVC 4 для построения приложения разговора в режиме реального времени.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/29/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 632e6098a03eae02f2367c6dc1c293dbdb6b6170
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1ae330be5caf00c3cac7451f326398c0958538af
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="tutorial-getting-started-with-signalr-1x-and-mvc-4"></a>Учебник: Приступая к работе с SignalR 1.x и MVC 4
 ====================
@@ -63,17 +63,17 @@ ms.lasthandoff: 01/24/2018
         > В VS 2010 выберите **.NET Framework 4** в раскрывающемся списке версии Framework. SignalR код выполняется на версии платформы .NET Framework 4 и 4.5.
 
         ![Создание веб-mvc](tutorial-getting-started-with-signalr-and-mvc-4/_static/image3.png)
-    2. Выберите шаблон веб-приложение, снимите флажок для **Создание проекта модульного теста**и нажмите кнопку ОК.
+      2. Выберите шаблон веб-приложение, снимите флажок для **Создание проекта модульного теста**и нажмите кнопку ОК.
 
-        ![Создание веб-сайта mvc](tutorial-getting-started-with-signalr-and-mvc-4/_static/image4.png)
-    3. Откройте **инструменты | Диспетчер пакетов библиотеки | Консоль диспетчера пакетов** и выполните следующую команду. Этот шаг добавляет в проект набор файлов сценариев и ссылки на сборки, включить функцию SignalR.
+         ![Создание веб-сайта mvc](tutorial-getting-started-with-signalr-and-mvc-4/_static/image4.png)
+      3. Откройте **инструменты | Диспетчер пакетов библиотеки | Консоль диспетчера пакетов** и выполните следующую команду. Этот шаг добавляет в проект набор файлов сценариев и ссылки на сборки, включить функцию SignalR.
 
-        `install-package Microsoft.AspNet.SignalR -Version 1.1.3`
-    4. В **обозревателе решений** разверните папку «скрипты». Обратите внимание, что библиотеки скриптов для SignalR были добавлены в проект.
+         `install-package Microsoft.AspNet.SignalR -Version 1.1.3`
+      4. В **обозревателе решений** разверните папку «скрипты». Обратите внимание, что библиотеки скриптов для SignalR были добавлены в проект.
 
-        ![Ссылки на библиотеки](tutorial-getting-started-with-signalr-and-mvc-4/_static/image6.png)
-    5. В **обозревателе решений**, щелкните правой кнопкой мыши проект, выберите **добавить | Новая папка**, и добавить новую папку с именем **концентраторов**.
-    6. Щелкните правой кнопкой мыши **концентраторов** папку, нажмите кнопку **добавить | Класс**и создайте новый класс C# с именем **ChatHub.cs**. Этот класс будет использоваться как к концентратору SignalR сервера, который отправляет сообщения для всех клиентов.
+         ![Ссылки на библиотеки](tutorial-getting-started-with-signalr-and-mvc-4/_static/image6.png)
+      5. В **обозревателе решений**, щелкните правой кнопкой мыши проект, выберите **добавить | Новая папка**, и добавить новую папку с именем **концентраторов**.
+      6. Щелкните правой кнопкой мыши **концентраторов** папку, нажмите кнопку **добавить | Класс**и создайте новый класс C# с именем **ChatHub.cs**. Этот класс будет использоваться как к концентратору SignalR сервера, который отправляет сообщения для всех клиентов.
 
 > [!NOTE]
 > Если вы используете Visual Studio 2012 и установили [обновление ASP.NET и 2012.2 средства Web](../../../visual-studio/overview/2012/aspnet-and-web-tools-20122-release-notes-rtw.md#_Installation), новый шаблон элемента SignalR можно использовать для создания класса концентратора. Чтобы сделать это, щелкните правой кнопкой мыши **концентраторов** папку, нажмите кнопку **добавить | Новый элемент**выберите **класс концентратора SignalR (v1)**и имя класса **ChatHub.cs**.

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-vb
-title: "Пользователи и роли рабочего веб-сайта (VB) | Документы Microsoft"
+title: Пользователи и роли рабочего веб-сайта (VB) | Документы Microsoft
 author: rick-anderson
-description: "Средство администрирования веб-сайт ASP.NET (WSAT) предоставляет веб-интерфейс для настройки параметров членства и ролей, а также для создания, редактирования,..."
+description: Средство администрирования веб-сайт ASP.NET (WSAT) предоставляет веб-интерфейс для настройки параметров членства и ролей, а также для создания, редактирования,...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f3bfaa0e14e3e04a7faae1a78b566d7c2067785a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 611a54b9dd5f188fd64c7020bfbf8171fea27a71
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="users-and-roles-on-the-production-website-vb"></a>Пользователи и роли рабочего веб-сайта (Visual Basic)
 ====================
@@ -37,7 +37,7 @@ ASP. Службы приложений NET не привязаны к конкр
 
 ## <a name="using-the-aspnet-web-site-administration-tool"></a>С помощью ASP.NET Web Site Administration Tool
 
-В ASP.NET есть [Web Site Administration Tool](https://msdn.microsoft.com/library/yy40ytx0.aspx) (WSAT), упрощает создание и управление учетными записями пользователей и ролями и указать правила авторизации пользователей и ролей. Для использования WSAT, щелкните значок Конфигурация ASP.NET в обозревателе решений, или перейдите в меню веб-сайт или проект и выберите параметр конфигурации ASP.NET. Любой из этих подходов запускает веб-браузер и указывает его WSAT к адресу, например:`http://localhost:portNumber/asp.netwebadminfiles/default.aspx?applicationPhysicalPath=pathToApplication`
+В ASP.NET есть [Web Site Administration Tool](https://msdn.microsoft.com/library/yy40ytx0.aspx) (WSAT), упрощает создание и управление учетными записями пользователей и ролями и указать правила авторизации пользователей и ролей. Для использования WSAT, щелкните значок Конфигурация ASP.NET в обозревателе решений, или перейдите в меню веб-сайт или проект и выберите параметр конфигурации ASP.NET. Любой из этих подходов запускает веб-браузер и указывает его WSAT к адресу, например: `http://localhost:portNumber/asp.netwebadminfiles/default.aspx?applicationPhysicalPath=pathToApplication`
 
 WSAT состоит из трех разделов:
 
@@ -119,5 +119,5 @@ ASP.NET включает ряд встроенных входа веб-элем�
 - [Обзор средства администрирования веб-сайта](https://msdn.microsoft.com/library/yy40ytx0.aspx)
 - [Учебники по безопасности веб-сайта](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md)
 
->[!div class="step-by-step"]
-[Назад](precompiling-your-website-vb.md)
+> [!div class="step-by-step"]
+> [Назад](precompiling-your-website-vb.md)

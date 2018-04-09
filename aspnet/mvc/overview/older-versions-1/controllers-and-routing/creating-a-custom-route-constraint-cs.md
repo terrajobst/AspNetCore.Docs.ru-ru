@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-a-custom-route-constraint-cs
-title: "Создание ограничения маршрута Custom (C#) | Документы Microsoft"
+title: Создание ограничения маршрута Custom (C#) | Документы Microsoft
 author: StephenWalther
-description: "Стивен Вальтер показано, как можно создать ограничение настраиваемый маршрут. Мы реализуем простой пользовательский ограничение, которое блокирует маршрут соответствует w..."
+description: Стивен Вальтер показано, как можно создать ограничение настраиваемый маршрут. Мы реализуем простой пользовательский ограничение, которое блокирует маршрут соответствует w...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-a-custom-route-constraint-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c31ba3382b9dbe22a6826b9f858944c223efdd9d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4c120a102b117433b6774f2ea7800f1c4a609f8b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-custom-route-constraint-c"></a>Создание ограничения маршрута Custom (C#)
 ====================
@@ -53,6 +53,6 @@ ms.lasthandoff: 11/10/2017
 
 Обратите внимание, что маршрут по умолчанию был закомментирован из файла Global.asax в списке 2. При включении маршрута по умолчанию маршрута по умолчанию будет соответствовать запросов для администрирования контроллера. В этом случае удаленные пользователи по-прежнему удалось вызвать действий администратора контроллера, несмотря на то, что их запросы не соответствует маршруту администратора.
 
->[!div class="step-by-step"]
-[Назад](creating-a-route-constraint-cs.md)
-[Вперед](asp-net-mvc-controller-overview-vb.md)
+> [!div class="step-by-step"]
+> [Назад](creating-a-route-constraint-cs.md)
+> [Вперед](asp-net-mvc-controller-overview-vb.md)

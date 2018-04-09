@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-binary-files/updating-and-deleting-existing-binary-data-vb
-title: "Обновление и удаление существующих двоичных данных (Visual Basic) | Документы Microsoft"
+title: Обновление и удаление существующих двоичных данных (Visual Basic) | Документы Microsoft
 author: rick-anderson
-description: "В предыдущих учебниках мы узнали, как элемент управления GridView упрощает изменение и удаление текстовых данных. В этом учебнике мы видим, как элемент управления GridView также устанавливают..."
+description: В предыдущих учебниках мы узнали, как элемент управления GridView упрощает изменение и удаление текстовых данных. В этом учебнике мы видим, как элемент управления GridView также устанавливают...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/27/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/updating-and-deleting-existing-binary-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 8baf187d484424aeaee57f8c57ac391a0ae9e946
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 37e32167cccd1b9a98b629179cdaeb9e193f88b7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="updating-and-deleting-existing-binary-data-vb"></a>Обновление и удаление существующих двоичных данных (Visual Basic)
 ====================
@@ -264,8 +264,8 @@ ObjectDataSource будут включать значение для его `Upd
 
 Шаги, необходимые для выполнения при RadioButtonList s `SelectedValue` — 3 практически идентичны используемым DetailsView s `ItemInserting` обработчика событий. Этот обработчик событий выполняется при добавлении новой записи категории из элемента управления DetailsView, мы добавили в [с предыдущим учебником](including-a-file-upload-option-when-adding-a-new-record-vb.md). Таким образом он behooves нам рефакторинг этих функциональных возможностей системы в отдельные методы. В частности я перемещения общие функциональные возможности на два метода:
 
-- `ProcessBrochureUpload(FileUpload, out bool)`принимает в качестве входных данных экземпляра элемента управления FileUpload и выходное значение типа Boolean, указывает ли операция удаления или изменения следует продолжить или если его следует отменить связи с ошибкой проверки. Этот метод возвращает путь к сохраненный файл или `null` Если файл не был сохранен.
-- `DeleteRememberedBrochurePath`Удаляет файл, указанный в пути в переменную страницы `deletedCategorysPdfPath` Если `deletedCategorysPdfPath` не `null`.
+- `ProcessBrochureUpload(FileUpload, out bool)` принимает в качестве входных данных экземпляра элемента управления FileUpload и выходное значение типа Boolean, указывает ли операция удаления или изменения следует продолжить или если его следует отменить связи с ошибкой проверки. Этот метод возвращает путь к сохраненный файл или `null` Если файл не был сохранен.
+- `DeleteRememberedBrochurePath` Удаляет файл, указанный в пути в переменную страницы `deletedCategorysPdfPath` Если `deletedCategorysPdfPath` не `null`.
 
 Выполняет код для этих двух методов. Обратите внимание, сходство между `ProcessBrochureUpload` и DetailsView s `ItemInserting` обработчик событий из предыдущего учебника. В этом учебнике я обновили обработчики событий s DetailsView, чтобы использовать эти новые методы. Загрузите код, связанный с данным учебником, чтобы увидеть изменения в обработчики событий s DetailsView.
 
@@ -362,11 +362,11 @@ GridView s `RowUpdating` и `RowUpdated` использовать обработ
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Мерфи Тереза д. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](including-a-file-upload-option-when-adding-a-new-record-vb.md)
+> [!div class="step-by-step"]
+> [Назад](including-a-file-upload-option-when-adding-a-new-record-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/setting-folder-permissions
-title: "ASP.NET веб-развертывания с помощью Visual Studio: задании разрешений для папок | Документы Microsoft"
+title: 'ASP.NET веб-развертывания с помощью Visual Studio: задании разрешений для папок | Документы Microsoft'
 author: tdykstra
-description: "Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол..."
+description: Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/setting-folder-permissions
 msc.type: authoredcontent
-ms.openlocfilehash: 19bef5ff97fd5b79135df8ca9bd6bd316594cc5e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7efe267975835e889950983126088f1b637c28fb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-setting-folder-permissions"></a>ASP.NET веб-развертывания с помощью Visual Studio: параметр разрешения папки
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузите начальный проект](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -77,6 +77,6 @@ ms.lasthandoff: 11/10/2017
 
 Дополнительные сведения о том, как предоставить разрешения для удостоверения пула приложений см. в разделе [удостоверений пула приложений](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) и [безопасный контент в IIS через файл списки управления доступом системы](https://www.iis.net/learn/get-started/planning-for-security/secure-content-in-iis-through-file-system-acls) на сайте IIS.net.
 
->[!div class="step-by-step"]
-[Назад](deploying-to-iis.md)
-[Вперед](deploying-to-production.md)
+> [!div class="step-by-step"]
+> [Назад](deploying-to-iis.md)
+> [Вперед](deploying-to-production.md)

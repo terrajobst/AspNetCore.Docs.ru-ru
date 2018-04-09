@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/aspnet-mvc-4-mobile-features
-title: "Мобильные функции ASP.NET MVC 4 | Документы Microsoft"
+title: Мобильные функции ASP.NET MVC 4 | Документы Microsoft
 author: Rick-Anderson
-description: "Теперь имеется версии MVC 5 данного руководства с примерами кода на развертывание MVC 5 мобильного веб-приложения ASP.NET на веб-сайтов Azure."
+description: Теперь имеется версии MVC 5 данного руководства с примерами кода на развертывание MVC 5 мобильного веб-приложения ASP.NET на веб-сайтов Azure.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: f4e0e4eb558e0c7b9e94fc83ede986fa4c666739
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 5f38fcdd8e71ce12f7899214b6b2133e21f9910c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>Возможности ASP.NET MVC 4 для мобильных приложений
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Теперь имеется версии MVC 5 данного руководства с примерами кода в [развертывания ASP.NET MVC 5 мобильного веб-приложения на веб-сайтов Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/).
 
@@ -190,7 +190,7 @@ ms.lasthandoff: 02/12/2018
 1. Из **средства** последовательно выберите пункты **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**.
 
     [![p3_packageMgr](aspnet-mvc-4-mobile-features/_static/image20.png)](aspnet-mvc-4-mobile-features/_static/image19.png)
-2. В **консоль диспетчера пакетов**, введите`Install-Package jQuery.Mobile.MVC -version 1.0.0`
+2. В **консоль диспетчера пакетов**, введите `Install-Package jQuery.Mobile.MVC -version 1.0.0`
 
 На рисунке показаны файлы, добавленные и измененные в проект MvcMobile jQuery.Mobile.MVC пакет NuGet. Файлы, добавляемые имеют [Добавить] добавленным после имени файла. Изображение не содержит GIF и PNG-файлы добавлены *Content\images* папки.
 
@@ -204,7 +204,7 @@ ms.lasthandoff: 02/12/2018
 - файлы jQuery Mobile JavaScript.
 - Файл jQuery Mobile стиля макета (*представления\общие\\_Layout.Mobile.cshtml*).
 - Просмотреть переключатель частичного представления *(MvcMobile\Views\Shared\\_ViewSwitcher.cshtml*), предоставляющий ссылку в верхней части каждой страницы, чтобы перейти из рабочего стола на представление для мобильных устройств и наоборот.
-- Несколько*.png* и *.gif* файлы изображений в *Content\images* папки.
+- Несколько<em>.png</em> и <em>.gif</em> файлы изображений в <em>Content\images</em> папки.
 
 Откройте *Global.asax* и добавьте следующий код в качестве последней строки файла `Application_Start` метод.
 
@@ -270,7 +270,7 @@ ms.lasthandoff: 02/12/2018
 
 [!code-cshtml[Main](aspnet-mvc-4-mobile-features/samples/sample17.cshtml)]
 
-При `RequireConsistentDisplayMode` равно `true`, мобильных макета (*\_Layout.Mobile.cshtml*) используется только для мобильных представлений. (Файл представления является формы ***ViewName**. Mobile.cshtml*). Может потребоваться задать `RequireConsistentDisplayMode` для `true` Если мобильных макет плохо работает с вашим представлениям не для мобильных устройств. На снимке экрана ниже показано как *динамики* при отображении страницы `RequireConsistentDisplayMode` равно `true`.
+При `RequireConsistentDisplayMode` равно `true`, мобильных макета (<em>\_Layout.Mobile.cshtml</em>) используется только для мобильных представлений. (Файл представления является формы <em>** ViewName</em><em>. Mobile.cshtml</em>.) Может потребоваться задать `RequireConsistentDisplayMode` для `true` Если мобильных макет плохо работает с вашим представлениям не для мобильных устройств. На снимке экрана ниже показано как <em>динамики</em> при отображении страницы `RequireConsistentDisplayMode` равно `true`.
 
 [![p3_speakersConsistent](aspnet-mvc-4-mobile-features/_static/image33.png)](aspnet-mvc-4-mobile-features/_static/image32.png)
 

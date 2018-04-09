@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/membership-and-administration
-title: "Членство и Администрирование | Документы Microsoft"
+title: Членство и Администрирование | Документы Microsoft
 author: Erikre
-description: "Этот учебник ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы..."
+description: Этот учебник ряд описываются основы построения приложения веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/membership-and-administration
 msc.type: authoredcontent
-ms.openlocfilehash: a10dbfe1ca49baee1604aac8dd9a1f93ccfcb7f9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 166bc642ea2083f455be0648e424f0b0ae3b082c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="membership-and-administration"></a>Членство и Администрирование
 ====================
-По [Эрик Reitan](https://github.com/Erikre)
+по [Эрик Reitan](https://github.com/Erikre)
 
 [Загрузите образец проекта Wingtip Toys (C#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) или [загрузить электронную (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -66,14 +66,14 @@ ASP.NET Identity можно добавить пользовательскую р
 
     [!code-csharp[Main](membership-and-administration/samples/sample2.cs?highlight=11,26-28)]
 6. Обратите внимание, что `AddUserAndRole` подчеркнуто красной чертой. Дважды щелкните AddUserAndRole кода.  
- Будет подчеркнуто буква «A» в начале выделенного метода.
+   Будет подчеркнуто буква «A» в начале выделенного метода.
 7. Наведите указатель мыши на буква «A» и нажмите кнопку пользовательский Интерфейс, позволяющий создать заглушку метода `AddUserAndRole` метод. 
 
     ![Членство и Advministration - создать заглушку метода](membership-and-administration/_static/image1.png)
 8. Выберите параметр под названием:  
     `Generate method stub for "AddUserAndRole" in "WingtipToys.Logic.RoleActions"`
 9. Откройте *RoleActions.cs* файл из *логику* папки.  
- `AddUserAndRole` Метод был добавлен в файл класса.
+   `AddUserAndRole` Метод был добавлен в файл класса.
 10. Изменить *RoleActions.cs* файла путем удаления `NotImplementedeException` и добавления кода, выделяются желтым цветом, выглядит следующим образом:  
 
     [!code-csharp[Main](membership-and-administration/samples/sample3.cs?highlight=5-7,15-51)]
@@ -120,8 +120,8 @@ ASP.NET Identity можно добавить пользовательскую р
 1. Щелкните правой кнопкой мыши имя проекта (**Wingtip Toys**) в **обозревателе решений** и выберите **добавить**  - &gt; **новую папку**.
 2. Имя новой папки *администратора*.
 3. Щелкните правой кнопкой мыши *администратора* папки, а затем выберите **добавить**  - &gt; **новый элемент**.   
- Откроется диалоговое окно **Добавление нового элемента**.
-4. Выберите **Visual C#** - &gt; **Web** группа шаблонов в левой части экрана. В среднем списке выберите **веб-форма с главной страницы**, назовите его *AdminPage.aspx***,** , а затем выберите **добавить**.
+   Откроется диалоговое окно **Добавление нового элемента**.
+4. Выберите <strong>Visual C#</strong> - &gt; <strong>Web</strong> группа шаблонов в левой части экрана. В среднем списке выберите <strong>веб-форма с главной страницы</strong>, назовите его <em>AdminPage.aspx</em><strong>,</strong> , а затем выберите <strong>добавить</strong>.
 5. Выберите *Site.Master* файл с именем главной страницы, а затем выберите **ОК**.
 
 #### <a name="add-a-webconfig-file"></a>Добавьте файл Web.config
@@ -129,8 +129,8 @@ ASP.NET Identity можно добавить пользовательскую р
 Добавив *Web.config* файл *администратора* папки, можно ограничить доступ к странице, содержащиеся в папке.
 
 1. Щелкните правой кнопкой мыши *администратора* папку и выберите **добавить**  - &gt; **новый элемент**.  
- Откроется диалоговое окно **Добавление нового элемента**.
-2. В списке веб-шаблонов Visual C# выберите **файл веб-конфигурации**в списке средней примите имя по умолчанию *Web.config***,** , а затем выберите **Добавить**.
+   Откроется диалоговое окно **Добавление нового элемента**.
+2. В списке веб-шаблонов Visual C# выберите <strong>файл веб-конфигурации</strong>в списке средней примите имя по умолчанию <em>Web.config</em><strong>,</strong> , а затем выберите <strong>Добавить</strong>.
 3. Замена существующего содержимого в XML *Web.config* файл со следующим:  
 
     [!code-xml[Main](membership-and-administration/samples/sample4.xml)]
@@ -167,9 +167,9 @@ ASP.NET Identity можно добавить пользовательскую р
 В коде, введенным для *AdminPage.aspx.cs* файл кода программной части класс с именем `AddProducts` осуществляет фактическую деятельность добавления продуктов в базе данных. Этот класс еще не существует, поэтому следует создать ее сейчас.
 
 1. В **обозревателе решений**, щелкните правой кнопкой мыши *логику* папки, а затем выберите **добавить**  - &gt; **новый элемент**.   
- Откроется диалоговое окно **Добавление нового элемента**.
+   Откроется диалоговое окно **Добавление нового элемента**.
 2. Выберите **Visual C#**  - &gt; **кода** группа шаблонов в левой части экрана. Выберите **класса**из середины списка и назовите его *AddProducts.cs*.   
- Отображается новый файл класса.
+   Отображается новый файл класса.
 3. Замените существующий код следующим кодом:  
 
     [!code-csharp[Main](membership-and-administration/samples/sample9.cs)]
@@ -235,15 +235,15 @@ ASP.NET Identity можно добавить пользовательскую р
 Можно запустить приложение теперь, чтобы увидеть, как можно добавить, удаления и обновления элементов в список покупок. Покупательской корзины всего будет отражать стоимость всех элементов в список покупок.
 
 1. В обозревателе решений, нажмите клавишу **F5** для запуска образца приложения Wingtip Toys.  
- Браузер откроется со *Default.aspx* страницы.
+   Браузер откроется со *Default.aspx* страницы.
 2. Нажмите кнопку **входа** ссылку в верхней части страницы. 
 
     ![Членство и администрирование - войдите в ссылке](membership-and-administration/_static/image2.png)
 
- *Login.aspx* -страница.
+   *Login.aspx* -страница.
 3. Используйте следующие имя пользователя и пароль:  
- Имя пользователя:canEditUser@wingtiptoys.com  
- Пароль: Pa$ $слово1 
+   Имя пользователя: canEditUser@wingtiptoys.com  
+   Пароль: Pa$ $слово1 
 
     ![Членство и администрирование - страница входа в](membership-and-administration/_static/image3.png)
 4. Нажмите кнопку **входа** кнопки в нижней части страницы.
@@ -254,7 +254,7 @@ ASP.NET Identity можно добавить пользовательскую р
 
     ![Членство и администрирование - странице администрирования](membership-and-administration/_static/image5.png)
 
- Обратите внимание, что отображаются сообщения обязательное поле.
+   Обратите внимание, что отображаются сообщения обязательное поле.
 7. Добавьте сведения для нового продукта и нажмите кнопку **добавить продукт** кнопки. 
 
     ![Членство и администрирование - добавить продукт](membership-and-administration/_static/image6.png)
@@ -268,7 +268,7 @@ ASP.NET Identity можно добавить пользовательскую р
     ![Членство и администрирование - удаление продукта](membership-and-administration/_static/image8.png)
 12. Выберите **продуктов** меню верхней панели навигации, чтобы убедиться, что продукт был удален.
 13. Нажмите кнопку **выйти** должно храниться в режиме администрирования.   
- Обратите внимание, что больше не отображается на верхней панели навигации панели **администратора** элемента меню.
+    Обратите внимание, что больше не отображается на верхней панели навигации панели **администратора** элемента меню.
 
 ## <a name="summary"></a>Сводка
 
@@ -281,6 +281,6 @@ ASP.NET Identity можно добавить пользовательскую р
 [Развертывание приложения безопасного ASP.NET Web Forms членства, OAuth и базы данных SQL Azure веб-сайт](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)  
 [Microsoft Azure — бесплатная пробная версия](https://azure.microsoft.com/pricing/free-trial/)
 
->[!div class="step-by-step"]
-[Назад](checkout-and-payment-with-paypal.md)
-[Вперед](url-routing.md)
+> [!div class="step-by-step"]
+> [Назад](checkout-and-payment-with-paypal.md)
+> [Вперед](url-routing.md)

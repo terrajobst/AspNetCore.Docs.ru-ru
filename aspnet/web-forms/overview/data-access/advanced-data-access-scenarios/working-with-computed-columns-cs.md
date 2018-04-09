@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-cs
-title: "Работа с вычисляемыми столбцами (C#) | Документы Microsoft"
+title: Работа с вычисляемыми столбцами (C#) | Документы Microsoft
 author: rick-anderson
-description: "При создании таблицы базы данных Microsoft SQL Server позволяет определить вычисляемый столбец, значение которого вычисляется из выражения, обычно referen..."
+description: При создании таблицы базы данных Microsoft SQL Server позволяет определить вычисляемый столбец, значение которого вычисляется из выражения, обычно referen...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 41206f76f9d9ca68971a53d79e84d82349e92333
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7a67abd2a0c140c0503c07f764549a6d90ef7298
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="working-with-computed-columns-c"></a>Работа с вычисляемыми столбцами (C#)
 ====================
@@ -51,7 +51,7 @@ S позволяют начать работу!
 Обратите внимание, что строки могут быть объединены в SQL с помощью `+` оператор. `CASE` Инструкции могут быть использованы как разбиений в традиционных языках программирования. В предыдущем выражении `CASE` заявление можно рассматривать как: Если `ContactTitle` не `NULL` вывод `ContactTitle` порождение объединенное с разделителями, в противном случае — значение nothing. Для получения дополнительных сведений об полезность `CASE` инструкции, в разделе [Power SQL `CASE` инструкции](http://www.4guysfromrolla.com/webtech/102704-1.shtml).
 
 > [!NOTE]
-> Вместо использования `CASE` здесь инструкции можно было бы также использовать `ISNULL(ContactTitle, '')`. [`ISNULL(checkExpression, replacementValue)`](https://msdn.microsoft.com/library/ms184325.aspx)Возвращает *checkExpression* , если оно отлично от NULL, в противном случае он возвращает *Заменяющее_значение*. Хотя либо `ISNULL` или `CASE` будет работать в этом случае существует более сложных сценариях где гибкость `CASE` инструкции не могут быть сопоставлены с `ISNULL`.
+> Вместо использования `CASE` здесь инструкции можно было бы также использовать `ISNULL(ContactTitle, '')`. [`ISNULL(checkExpression, replacementValue)`](https://msdn.microsoft.com/library/ms184325.aspx) Возвращает *checkExpression* , если оно отлично от NULL, в противном случае он возвращает *Заменяющее_значение*. Хотя либо `ISNULL` или `CASE` будет работать в этом случае существует более сложных сценариях где гибкость `CASE` инструкции не могут быть сопоставлены с `ISNULL`.
 
 
 После добавления этого вычисляемого столбца экран должен выглядеть как на показанную на рисунке 1.
@@ -261,12 +261,12 @@ S позволяют начать работу!
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Хилтон Geisenow и Мерфи Тереза д. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](adding-additional-datatable-columns-cs.md)
-[Вперед](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md)
+> [!div class="step-by-step"]
+> [Назад](adding-additional-datatable-columns-cs.md)
+> [Вперед](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md)

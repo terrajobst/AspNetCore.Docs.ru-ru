@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/security/authenticating-users-with-windows-authentication-vb
-title: "Проверка подлинности пользователей с проверкой подлинности Windows (VB) | Документы Microsoft"
+title: Проверка подлинности пользователей с проверкой подлинности Windows (VB) | Документы Microsoft
 author: microsoft
-description: "Узнайте, как использовать проверку подлинности Windows в контексте приложения MVC. Вы узнаете, как включение проверки подлинности Windows в рамках приложения web co..."
+description: Узнайте, как использовать проверку подлинности Windows в контексте приложения MVC. Вы узнаете, как включение проверки подлинности Windows в рамках приложения web co...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-windows-authentication-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 63b1266e03041c4261e71fd25e988c63932b503e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: cf711d44a05d2457493998ed61e86536c65b5984
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="authenticating-users-with-windows-authentication-vb"></a>Проверка подлинности пользователей с проверкой подлинности Windows (Visual Basic)
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/24/2018
 
 > [!NOTE] 
 > 
-> Более подробные сведения различных типов проверки подлинности см. в разделе [https://msdn.microsoft.com/library/aa292114(VS.71).aspx](https://msdn.microsoft.com/library/aa292114(VS.71).aspx).
+> Более подробные сведения различных типов проверки подлинности см. в разделе [ https://msdn.microsoft.com/library/aa292114(VS.71).aspx ](https://msdn.microsoft.com/library/aa292114(VS.71).aspx).
 
 
 Для включения проверки подлинности определенного типа можно использовать диспетчер служб IIS. Имейте в виду, что все типы проверки подлинности недоступны в случае каждой операционной системы. Кроме того Если используется IIS версии 7.0 в Windows Vista, необходимо включить различные типы проверки подлинности Windows, прежде чем они появятся в диспетчере служб IIS. Откройте **панели управления программы, программы и компоненты, включение или отключение компонентов**и разверните узел Internet Information Services (см. рис. 2).
@@ -92,6 +92,6 @@ ms.lasthandoff: 01/24/2018
 
 Этот учебник описано, как можно использовать проверку подлинности Windows в контексте приложения ASP.NET MVC. Вы узнали, как включить проверку подлинности Windows в файл веб-конфигурации приложения и настройка проверки подлинности в службах IIS. Наконец, вы узнали, как использовать &lt;авторизовать&gt; атрибута для ограничения доступа к действиям контроллера для конкретного пользователей или групп Windows.
 
->[!div class="step-by-step"]
-[Назад](authenticating-users-with-forms-authentication-vb.md)
-[Вперед](preventing-javascript-injection-attacks-vb.md)
+> [!div class="step-by-step"]
+> [Назад](authenticating-users-with-forms-authentication-vb.md)
+> [Вперед](preventing-javascript-injection-attacks-vb.md)

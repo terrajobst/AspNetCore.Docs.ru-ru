@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
-title: "Реализация репозитория и единицы шаблонов рабочих элементов в приложении ASP.NET MVC (9, 10) | Документы Microsoft"
+title: Реализация репозитория и единицы шаблонов рабочих элементов в приложении ASP.NET MVC (9, 10) | Документы Microsoft
 author: tdykstra
-description: "Contoso университета примера веб-приложения демонстрирует создание приложения ASP.NET MVC 4, с помощью Entity Framework 5 Code First и Visual Studio..."
+description: Contoso университета примера веб-приложения демонстрирует создание приложения ASP.NET MVC 4, с помощью Entity Framework 5 Code First и Visual Studio...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/30/2013
@@ -12,19 +12,19 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 02b1de31b9513247facc92bc6b72247865d176f9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1f870b61658686769304a7809bde62e66da3bd0c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-the-repository-and-unit-of-work-patterns-in-an-aspnet-mvc-application-9-of-10"></a>Реализация репозитория и единицы шаблонов рабочих элементов в приложении ASP.NET MVC (9, 10)
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузка завершенного проекта](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
 
-> Contoso университета примера веб-приложения демонстрирует создание приложения ASP.NET MVC 4, с помощью Entity Framework 5 Code First и Visual Studio 2012. Сведения о учебника серии см [в первом учебнике ряда](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Учебник рядов можно запустить с самого начала или [загрузить начальный проект для этой главы](building-the-ef5-mvc4-chapter-downloads.md) и начните здесь.
+> Contoso университета примера веб-приложения демонстрирует создание приложения ASP.NET MVC 4, с помощью Entity Framework 5 Code First и Visual Studio 2012. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Учебник рядов можно запустить с самого начала или [загрузить начальный проект для этой главы](building-the-ef5-mvc4-chapter-downloads.md) и начните здесь.
 > 
 > > [!NOTE] 
 > > 
@@ -35,7 +35,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="the-repository-and-unit-of-work-patterns"></a>Репозиторий и единицы шаблонов рабочих элементов
 
-Репозиторий и единицы шаблонов рабочих элементов предназначены для создания уровень абстракции между уровня доступа к данным и бизнес-логики приложения. Реализация этих шаблонов для изоляции приложения от изменений в хранилище данных и может упростить автоматических модульного тестирования или разработки через тестирование (TDD).
+Репозиторий и единицы шаблонов рабочих элементов предназначены для создания уровень абстракции между уровня доступа к данным и бизнес-логики приложения. Реализация таких шаблонов позволяет изолировать приложение от изменений в хранилище данных и упрощает автоматическое модульное тестирование или разработку на основе тестирования.
 
 В этом учебнике необходимо реализовать класс репозитория для каждого типа сущности. Для `Student` типа сущности, вы создадите интерфейс репозитория и класс репозитория. При создании экземпляра репозитория в контроллере, используется интерфейс, чтобы контроллер принимает ссылку на любой объект, реализующий интерфейс репозитория. Если контроллер работает в веб-сервере, он получает репозитории, которая работает с платформой Entity Framework. Если контроллер работает в группе класс модульного теста, он получает репозитории, которая работает с данными, хранящимися в виде, которую можно легко изменять для тестирования, такие как коллекции в памяти.
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 01/24/2018
 
 В исходной версии кода `students` типизируется как `IQueryable` объект. Запрос не отправлены в базу данных, пока не преобразуется в коллекции, такие как с помощью метода `ToList`, которой не возникает, пока представление Index обращается к модели студента. `Where` Метод в приведенный выше код становится `WHERE` предложение в запросе SQL, который отправляется в базу данных. В свою очередь, это означает, что в базе данных возвращаются только выбранные сущности. Тем не менее, в результате изменения `context.Students` для `studentRepository.GetStudents()`, `students` переменной после этой инструкции `IEnumerable` коллекцию, включающую всех студентов в базе данных. В результате применения `Where` метод такой же, но теперь работу в памяти на веб-сервере, а не базы данных. Для запросов, которые возвращают большие объемы данных это может быть неэффективным.
 
-> [!TIP] 
+> [!TIP]
 > 
 > **IQueryable vs. Интерфейс IEnumerable**
 > 
@@ -249,6 +249,6 @@ ms.lasthandoff: 01/24/2018
 
 Ссылки на другие ресурсы Entity Framework можно найти в [Карта содержимого для доступа к данным ASP.NET](../../../../whitepapers/aspnet-data-access-content-map.md).
 
->[!div class="step-by-step"]
-[Назад](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-[Вперед](advanced-entity-framework-scenarios-for-an-mvc-web-application.md)
+> [!div class="step-by-step"]
+> [Назад](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [Вперед](advanced-entity-framework-scenarios-for-an-mvc-web-application.md)

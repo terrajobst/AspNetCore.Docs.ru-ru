@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/build-a-model-with-business-rule-validations
-title: "Построить модель с бизнес-правило проверок | Документы Microsoft"
+title: Построить модель с бизнес-правило проверок | Документы Microsoft
 author: microsoft
-description: "Шаг 3 показано, как создать модель, что мы можно использовать для обоих запросов и обновления базы данных для нашего приложения обновление NerdDinner."
+description: Шаг 3 показано, как создать модель, что мы можно использовать для обоих запросов и обновления базы данных для нашего приложения обновление NerdDinner.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/build-a-model-with-business-rule-validations
 msc.type: authoredcontent
-ms.openlocfilehash: dbe6370979f218988c168df3e80314ef9b338fbd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c5a482474fd2f41836f70952306ada5cd9136455
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="build-a-model-with-business-rule-validations"></a>Построить модель с бизнес-правило проверок
 ====================
@@ -228,6 +228,6 @@ LINQ to SQL будет автоматически обрабатывает зн�
 
 Теперь добавим некоторые контроллеры и представления в проект, который можно использовать для построения пользовательского интерфейса HTML взаимодействие вокруг нее.
 
->[!div class="step-by-step"]
-[Назад](create-a-database.md)
-[Вперед](use-controllers-and-views-to-implement-a-listingdetails-ui.md)
+> [!div class="step-by-step"]
+> [Назад](create-a-database.md)
+> [Вперед](use-controllers-and-views-to-implement-a-listingdetails-ui.md)

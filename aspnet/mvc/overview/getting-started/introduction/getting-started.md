@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/getting-started
-title: "Приступая к работе с ASP.NET MVC 5 | Документы Microsoft"
+title: Приступая к работе с ASP.NET MVC 5 | Документы Microsoft
 author: Rick-Anderson
-description: "Примечание: Обновленную версию этого учебника доступен с помощью Visual Studio 2015. Новое в этом учебнике используется ASP.NET Core MVC 6, которая предоставляет много improvem..."
+description: 'Примечание: Обновленную версию этого учебника доступен с помощью Visual Studio 2015. Новое в этом учебнике используется ASP.NET Core MVC 6, которая предоставляет много improvem...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,26 +12,25 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 1616b238612fa9f519418f583c40a46b9d81d8ce
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 0f1fd2026691d3bc0e81b20a9731879d7a6041bb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-aspnet-mvc-5"></a>Начало работы с ASP.NET MVC 5
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
-[!INCLUDE[consider RP](../../../../includes/razor.md)]
+[!INCLUDE [consider RP](../../../../includes/razor.md)]
 
- 
  Этот учебник поможет узнать основы создания приложений веб-ASP.NET MVC 5 с помощью [2017 г. Visual Studio](https://www.visualstudio.com/). Окончательный источника для учебника, расположенных на [GitHub](https://github.com/aspnet/Docs/tree/master/aspnet/mvc/overview/getting-started/introduction/sample/MvcMovie/MvcMovie)
- 
- 
+
+
  Это руководство было написано с [Скотт Гатри](https://weblogs.asp.net/scottgu/) (twitter[ @scottgu ](https://twitter.com/scottgu) ), [Скотт Хансельман](http://www.hanselman.com/blog/) (twitter: [ @shanselman ](https://twitter.com/shanselman) ) , и [Рик Андерсон](https://twitter.com/RickAndMSFT) ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) )
- 
+
  Требуется учетная запись Azure для развертывания этого приложения в Azure:
- 
+
  - Вы можете [открыть учетную запись Azure бесплатно](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A443DD604) -вы получаете кредиты можно использовать, чтобы испытать оплаты служб Azure и даже после того, они используются до можно хранить учетной записи, и используйте освободить служб Azure.
  - Вы можете [активировать преимущества для подписчиков MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604) -подписка Your MSDN дает кредиты каждого месяца, можно использовать для оплаты служб Azure.
 
@@ -42,9 +41,9 @@ ms.lasthandoff: 01/24/2018
 
 Visual Studio — это интегрированная среда разработки, или интегрированной среды разработки. Так же, как используется Microsoft Word для записи документов, воспользуемся интегрированной среды разработки для создания приложений. В Visual Studio имеется список вдоль нижней отображаются различные параметры, доступные для вас. Кроме того, имеется меню, которое предоставляет еще один способ выполнения задач в Интегрированной среде разработки. (Например, вместо выбора **новый проект** из **запустить** страницы, можно использовать меню и выбрать **файл** &gt; **новый проект**.)
 
-   
+
 ![](getting-started/_static/image1.png)  
- 
+
 
 ## <a name="creating-your-first-application"></a>Создание первого приложения
 
@@ -83,5 +82,5 @@ Visual Studio используется шаблон по умолчанию дл
 - [Открыть учетную запись Azure бесплатно](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A443DD604) -вы получаете кредиты можно использовать, чтобы испытать оплаты служб Azure и даже после того, они используются до можно хранить учетной записи, и используйте освободить служб Azure.
 - [Активировать преимущества для подписчиков MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604) -подписка Your MSDN дает кредиты каждого месяца, можно использовать для оплаты служб Azure.
 
->[!div class="step-by-step"]
-[Вперед](adding-a-controller.md)
+> [!div class="step-by-step"]
+> [Вперед](adding-a-controller.md)

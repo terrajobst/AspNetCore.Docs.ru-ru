@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-authentication-and-profile-application-services
-title: "Основные сведения о проверки подлинности ASP.NET AJAX и служб профилирования приложений | Документы Microsoft"
+title: Основные сведения о проверки подлинности ASP.NET AJAX и служб профилирования приложений | Документы Microsoft
 author: scottcate
-description: "Служба проверки подлинности позволяет пользователям вводить учетные данные для получения файла cookie проверки подлинности и — служба шлюза разрешив пользовательский..."
+description: Служба проверки подлинности позволяет пользователям вводить учетные данные для получения файла cookie проверки подлинности и — служба шлюза разрешив пользовательский...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/14/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-authentication-and-profile-application-services
 msc.type: authoredcontent
-ms.openlocfilehash: 182276f9f91b99beb1ce0fc40dcda1f19376669a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 0bf6538d0c4ae9488e6ac29ccba6d4b243cf070e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-aspnet-ajax-authentication-and-profile-application-services"></a>Основные сведения о проверки подлинности ASP.NET AJAX и служб профилирования приложений
 ====================
@@ -43,7 +43,7 @@ ms.lasthandoff: 01/24/2018
 
 Служба профилей позволяет автоматической интеграции и хранение данных пользователя на основе членства, предоставленный службой проверки подлинности. Хранимые данные указаны в файле web.config и различные поставщики услуг профилирования обрабатывать управление данными. С помощью службы проверки подлинности службы AJAX профиля совместим с стандартной службой профилей ASP.NET, чтобы страницы, в настоящее время Включение функций службы профиля ASP.NET не должен быть поделен путем включения поддержки AJAX.
 
-Включение проверки подлинности ASP.NET и сами службы профилирования в приложении находится за пределами этого технического документа. Дополнительные сведения по этой теме см. в библиотеке MSDN ссылаются статьи Управление пользователями с помощью членства в [https://msdn.microsoft.com/library/tw292whz.aspx](https://msdn.microsoft.com/library/tw292whz.aspx). ASP.NET также включает программу для автоматической настройки членства с SQL Server, который поставщик службы проверки подлинности по умолчанию для членства ASP.NET. Дополнительные сведения см. в статье средство регистрации SQL Server ASP.NET (Aspnet\_regsql.exe) на [https://msdn.microsoft.com/library/ms229862(vs.80).aspx](https://msdn.microsoft.com/library/ms229862(vs.80).aspx).
+Включение проверки подлинности ASP.NET и сами службы профилирования в приложении находится за пределами этого технического документа. Дополнительные сведения по этой теме см. в библиотеке MSDN ссылаются статьи Управление пользователями с помощью членства в [ https://msdn.microsoft.com/library/tw292whz.aspx ](https://msdn.microsoft.com/library/tw292whz.aspx). ASP.NET также включает программу для автоматической настройки членства с SQL Server, который поставщик службы проверки подлинности по умолчанию для членства ASP.NET. Дополнительные сведения см. в статье средство регистрации SQL Server ASP.NET (Aspnet\_regsql.exe) в [ https://msdn.microsoft.com/library/ms229862(vs.80).aspx ](https://msdn.microsoft.com/library/ms229862(vs.80).aspx).
 
 ## <a name="using-the-aspnet-ajax-authentication-service"></a>*С помощью службы проверки подлинности ASP.NET AJAX*
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 01/24/2018
 
 | **Имя параметра** | **Значение** |
 | --- | --- |
-| validCredentials | Указывает, предоставлено ли пользователь действительные учетные данные. `true`Если пользователь успешно вошел в систему; в противном случае `false`. |
+| validCredentials | Указывает, предоставлено ли пользователь действительные учетные данные. `true` Если пользователь успешно вошел в систему; в противном случае `false`. |
 | userContext | Указывает сведения о контексте пользователя, указанный при вызове функции входа. |
 | methodName | Имя вызывающего метода. |
 
@@ -345,6 +345,6 @@ ms.lasthandoff: 01/24/2018
 
 Скотт кате работает с веб-технологиями Майкрософт с 1997 и – президент myKB.com ([www.myKB.com](http://www.myKB.com)) приложений, основное внимание уделено базы знаний программные решения, где он специализируется на написание ASP.NET на основе. Скотт можно обратиться по электронной почте [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) или его блог по [ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[Назад](understanding-asp-net-ajax-updatepanel-triggers.md)
-[Вперед](understanding-asp-net-ajax-localization.md)
+> [!div class="step-by-step"]
+> [Назад](understanding-asp-net-ajax-updatepanel-triggers.md)
+> [Вперед](understanding-asp-net-ajax-localization.md)

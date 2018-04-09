@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-vb
-title: "Использование автоматического выполнения обратной с CascadingDropDown (VB) | Документы Microsoft"
+title: Использование автоматического выполнения обратной с CascadingDropDown (VB) | Документы Microsoft
 author: wenz
-description: "CascadingDropDown управления в наборе элементов управления AJAX расширяет элемент управления DropDownList, чтобы изменения в один загружает DropDownList соответствующих значений в anoth..."
+description: CascadingDropDown управления в наборе элементов управления AJAX расширяет элемент управления DropDownList, чтобы изменения в один загружает DropDownList соответствующих значений в anoth...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f8059f44b4efbf59ebe7b3d2fd5400e886642a90
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e8a48692dd96ee6a647bfb57ce2915b4e85544fe
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-auto-postback-with-cascadingdropdown-vb"></a>Использование автоматического выполнения обратной с CascadingDropDown (Visual Basic)
 ====================
@@ -64,5 +64,5 @@ CascadingDropDown управления в наборе элементов упр
 
 При выборе элемента списка вызывает обратную передачу ([Просмотр полноразмерное изображение](using-auto-postback-with-cascadingdropdown-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](presetting-list-entries-with-cascadingdropdown-vb.md)
+> [!div class="step-by-step"]
+> [Назад](presetting-list-entries-with-cascadingdropdown-vb.md)

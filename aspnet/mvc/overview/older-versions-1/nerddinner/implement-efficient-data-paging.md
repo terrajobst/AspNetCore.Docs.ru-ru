@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/implement-efficient-data-paging
-title: "Разбиение по страницам данных, эффективно реализовать | Документы Microsoft"
+title: Разбиение по страницам данных, эффективно реализовать | Документы Microsoft
 author: microsoft
-description: "Шаг 8 показано, как добавить поддержку разбиения по страницам нашей /Dinners URL-адрес, чтобы вместо отображения ужинов сразу несколько тысяч, мы будет отображаться только 10 предстоящих ужинов на..."
+description: Шаг 8 показано, как добавить поддержку разбиения по страницам нашей /Dinners URL-адрес, чтобы вместо отображения ужинов сразу несколько тысяч, мы будет отображаться только 10 предстоящих ужинов на...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/implement-efficient-data-paging
 msc.type: authoredcontent
-ms.openlocfilehash: 0b0fba604f97d3bb72d2d403e643b422b9ce48bd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0188e21438820adf2adbe05b047fdb772540e1a0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implement-efficient-data-paging"></a>Разбиение по страницам для реализации эффективного данных
 ====================
@@ -139,6 +139,6 @@ IQueryable&lt;Dinner&gt; объект, возвращаемый в данном 
 
 Теперь взглянем на как можно добавить поддержку проверки подлинности и авторизации для нашего приложения.
 
->[!div class="step-by-step"]
-[Назад](re-use-ui-using-master-pages-and-partials.md)
-[Вперед](secure-applications-using-authentication-and-authorization.md)
+> [!div class="step-by-step"]
+> [Назад](re-use-ui-using-master-pages-and-partials.md)
+> [Вперед](secure-applications-using-authentication-and-authorization.md)

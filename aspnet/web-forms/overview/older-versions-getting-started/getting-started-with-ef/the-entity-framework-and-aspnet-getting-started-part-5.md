@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-5
-title: "Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4, веб-формы - часть 5 | Документы Microsoft"
+title: Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4, веб-формы - часть 5 | Документы Microsoft
 author: tdykstra
-description: "Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, использующий Entity Framework. Это образец приложения..."
+description: Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, использующий Entity Framework. Это образец приложения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: 5efc5ff367d5da5df060eba0028399af898a69fa
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 7f351718123e881e832f4ac95af506ed601d3337
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-5"></a>Приступая к работе с базой данных Entity Framework 4.0 сначала и форм ASP.NET 4 веб - часть 5
 ====================
@@ -123,10 +123,10 @@ ms.lasthandoff: 03/15/2018
 
 [![Image01](the-entity-framework-and-aspnet-getting-started-part-5/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-5/_static/image9.png)
 
-Выберите инструктор. **Назначить курса** раскрывающемся списке отображаются курсах, инструктора не предназначено для обучения, и **удалить курс** курсов, которым уже назначен инструктора отображает раскрывающегося списка. В **назначить курса** выберите курс и нажмите кнопку **назначить**. Перемещает курса **удалить курс** раскрывающегося списка. Выберите курс в **удалить курс** и нажмите кнопку **Remove ***.* Перемещает курса **назначить курса** раскрывающегося списка.
+Выберите инструктор. <strong>Назначить курса</strong> раскрывающемся списке отображаются курсах, инструктора не предназначено для обучения, и <strong>удалить курс</strong> курсов, которым уже назначен инструктора отображает раскрывающегося списка. В <strong>назначить курса</strong> выберите курс и нажмите кнопку <strong>назначить</strong>. Перемещает курса <strong>удалить курс</strong> раскрывающегося списка. Выберите курс в <strong>удалить курс</strong> и нажмите кнопку <strong>удалить</strong><em>.</em> Перемещает курса <strong>назначить курса</strong> раскрывающегося списка.
 
 Теперь вы знаете, некоторые дополнительные способы работы со связанными данными. В этом руководстве вы узнаете, как использовать наследование в модели данных для повышения удобства поддержки приложения.
 
->[!div class="step-by-step"]
-[Назад](the-entity-framework-and-aspnet-getting-started-part-4.md)
-[Вперед](the-entity-framework-and-aspnet-getting-started-part-6.md)
+> [!div class="step-by-step"]
+> [Назад](the-entity-framework-and-aspnet-getting-started-part-4.md)
+> [Вперед](the-entity-framework-and-aspnet-getting-started-part-6.md)

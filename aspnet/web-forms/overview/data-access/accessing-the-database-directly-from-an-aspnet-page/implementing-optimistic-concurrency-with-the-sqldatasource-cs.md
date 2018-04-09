@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/implementing-optimistic-concurrency-with-the-sqldatasource-cs
-title: "Реализация оптимистической блокировки в SqlDataSource (C#) | Документы Microsoft"
+title: Реализация оптимистической блокировки в SqlDataSource (C#) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы просмотрите essentials управления оптимистичным параллелизмом и исследуйте его с помощью элемента управления SqlDataSource применение."
+description: В этом учебнике мы просмотрите essentials управления оптимистичным параллелизмом и исследуйте его с помощью элемента управления SqlDataSource применение.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/implementing-optimistic-concurrency-with-the-sqldatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b089a0b25aa5a520f3e20af8ec5212072ad7c7bf
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 246e8d0c2aee7358680fbca7229cc9b05ceca1cb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-optimistic-concurrency-with-the-sqldatasource-c"></a>Реализация оптимистической блокировки в SqlDataSource (C#)
 ====================
@@ -116,7 +116,7 @@ ms.lasthandoff: 01/24/2018
 
 Помимо расширения `WHERE` предложения `UpdateCommand` и `DeleteCommand` свойства (и добавление дополнительных параметров в коллекции соответствующего параметра), выбрав использование оптимистичного параллелизма параметр регулирует двух других Свойства:
 
-- Изменения [ `ConflictDetection` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.conflictdetection.aspx) из `OverwriteChanges` (по умолчанию) для`CompareAllValues`
+- Изменения [ `ConflictDetection` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.conflictdetection.aspx) из `OverwriteChanges` (по умолчанию) для `CompareAllValues`
 - Изменения [ `OldValuesParameterFormatString` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.oldvaluesparameterformatstring.aspx) из {0} (по умолчанию) исходный\_{0}.
 
 Когда данные веб-элемент управления вызывает SqlDataSource s `Update()` или `Delete()` метод, он передает исходные значения. Если SqlDataSource s `ConflictDetection` свойству `CompareAllValues`, эти исходные значения добавляются в команду. `OldValuesParameterFormatString` Свойство предоставляет шаблон именования, использовать эти исходные значения параметров. Мастер настройки источника данных использует исходное\_{0} и имена каждого исходного параметра `UpdateCommand` и `DeleteCommand` свойства и `UpdateParameters` и `DeleteParameters` коллекций соответствующим образом.
@@ -231,8 +231,8 @@ SqlDataSource настроен для поддержки оптимистичн�
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Назад](inserting-updating-and-deleting-data-with-the-sqldatasource-cs.md)
-[Вперед](querying-data-with-the-sqldatasource-control-vb.md)
+> [!div class="step-by-step"]
+> [Назад](inserting-updating-and-deleting-data-with-the-sqldatasource-cs.md)
+> [Вперед](querying-data-with-the-sqldatasource-control-vb.md)

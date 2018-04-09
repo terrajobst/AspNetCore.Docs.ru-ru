@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis
-title: "ASP.NET веб-развертывания с помощью Visual Studio: развертывание тест | Документы Microsoft"
+title: 'ASP.NET веб-развертывания с помощью Visual Studio: развертывание тест | Документы Microsoft'
 author: tdykstra
-description: "Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол..."
+description: Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/23/2015
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis
 msc.type: authoredcontent
-ms.openlocfilehash: 01f72e0240e84944f8ffece9a2dbc5802be4646b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: dc11072e053cbddd089e5df4bcea6d2a7af864fc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-test"></a>ASP.NET веб-развертывания с помощью Visual Studio: развертывание в тест
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузите начальный проект](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -52,15 +52,15 @@ ms.lasthandoff: 01/24/2018
 
     Чтобы запустить установщик веб-платформы для установки IIS и веб-развертывания, используйте следующую ссылку. Если вы уже установили IIS, веб-развертывания или любые их необходимые компоненты, установщик веб-платформы устанавливает только то, что отсутствует.
 
-    - [Установка служб IIS и веб-развертывания с помощью установщика веб-платформы](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=IIS7;ASPNET;NETFramework4;WDeploy)
+   - [Установка служб IIS и веб-развертывания с помощью установщика веб-платформы](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=IIS7;ASPNET;NETFramework4;WDeploy)
 
-    Вы увидите сообщения о том, что будут установлены службы IIS 7. Работу ссылку для IIS 8 в Windows 8, но для Windows 8 убедитесь, что ASP.NET 4.5 установлен, выполнив следующие действия:
+     Вы увидите сообщения о том, что будут установлены службы IIS 7. Работу ссылку для IIS 8 в Windows 8, но для Windows 8 убедитесь, что ASP.NET 4.5 установлен, выполнив следующие действия:
 
-    1. Откройте **панели управления**, **программы и компоненты**, **Включение или отключение компонентов**.
-    2. Разверните **Internet Information Services**, **World Wide Web Services**, и **компоненты разработки приложений**.
-    3. Убедитесь, что **ASP.NET 4.5** выбран.
+   - Откройте **панели управления**, **программы и компоненты**, **Включение или отключение компонентов**.
+   - Разверните **Internet Information Services**, **World Wide Web Services**, и **компоненты разработки приложений**.
+   - Убедитесь, что **ASP.NET 4.5** выбран.
 
-        ![Выберите ASP.NET 4.5](deploying-to-iis/_static/image1.png)
+      ![Выберите ASP.NET 4.5](deploying-to-iis/_static/image1.png)
 
 После установки служб IIS, запустите **диспетчера служб IIS** чтобы убедиться в том, что .NET Framework версии 4 назначен пул приложений по умолчанию.
 
@@ -178,7 +178,7 @@ LocalDB не предназначен для работы в службах IIS,
     Мастер автоматически перейдет к **подключения** вкладки.
 4. В **URL-адрес службы** введите *localhost*.
 5. В **сайт и приложение** введите *веб-сайт по умолчанию/ContosoUniversity*
-6. В **URL-адрес назначения** введите`http://localhost/ContosoUniversity`
+6. В **URL-адрес назначения** введите `http://localhost/ContosoUniversity`
 
     **URL-адрес назначения** параметр не является обязательным. По завершении развертывание приложения Visual Studio автоматически откроется браузер по умолчанию для этого URL-адреса. Если вы не хотите браузер, чтобы автоматически открыть после развертывания, оставьте это поле пустым.
 7. Нажмите кнопку **проверить подключение** Чтобы проверить правильность параметров и можно подключиться к службам IIS на локальном компьютере.
@@ -337,6 +337,6 @@ LocalDB не предназначен для работы в службах IIS,
 
 Сведения о какие проблемы могут возникнуть при запуске приложения на среднем уровне доверия, см. в разделе [размещение приложений ASP.NET в средний уровень доверия](http://www.4guysfromrolla.com/articles/100307-1.aspx) на 4 Guys Rolla сайта.
 
->[!div class="step-by-step"]
-[Назад](project-properties.md)
-[Вперед](setting-folder-permissions.md)
+> [!div class="step-by-step"]
+> [Назад](project-properties.md)
+> [Вперед](setting-folder-permissions.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
-title: "ASP.NET веб-развертывания с помощью Visual Studio: Подготовка к развертыванию базы данных | Документы Microsoft"
+title: 'ASP.NET веб-развертывания с помощью Visual Studio: Подготовка к развертыванию базы данных | Документы Microsoft'
 author: tdykstra
-description: "Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол..."
+description: Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
 msc.type: authoredcontent
-ms.openlocfilehash: caa79725ede320c4bd3e87ac246966c57175eb8e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 61392af322de454687da522055005a670b34f510
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>ASP.NET веб-развертывания с помощью Visual Studio: Подготовка к развертыванию базы данных
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузите начальный проект](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -171,7 +171,7 @@ LocalDB — это режим выполнения специальных SQL Se
 Используется для развертывания пользователи разработки в тестовой среде и конечных пользователей в промежуточной и производственной сред. Для этого вы создадите два скрипта SQL в этом учебнике, для разработки и для рабочей среды, и на следующих занятиях рассматривается следует настроить процесс публикации, для их запуска.
 
 > [!NOTE]
-> База данных членства сохраняет хэш паролей учетных записей. Чтобы развернуть учетные записи с одного компьютера на другой, необходимо убедиться, что хэширования подпрограммы не создавать разные хэши на конечном сервере не на исходном компьютере. Генераторы будут получать одинаковые хэш-коды при использовании универсальные поставщики ASP.NET до тех пор, пока не будет изменять алгоритм по умолчанию. По умолчанию алгоритм HMACSHA256 и определен в **проверки** атрибут  **[machineKey](https://msdn.microsoft.com/library/system.web.configuration.machinekeysection.aspx)**  в файле Web.config.
+> База данных членства сохраняет хэш паролей учетных записей. Чтобы развернуть учетные записи с одного компьютера на другой, необходимо убедиться, что хэширования подпрограммы не создавать разные хэши на конечном сервере не на исходном компьютере. Генераторы будут получать одинаковые хэш-коды при использовании универсальные поставщики ASP.NET до тех пор, пока не будет изменять алгоритм по умолчанию. По умолчанию алгоритм HMACSHA256 и определен в **проверки** атрибут **[machineKey](https://msdn.microsoft.com/library/system.web.configuration.machinekeysection.aspx)** в файле Web.config.
 
 
 Можно создать скрипты развертывания данных вручную, с помощью SQL Server Management Studio (SSMS) или с помощью стороннего средства. В остальной части этого учебника будет показано, как это можно сделать в SSMS, но если вы не хотите установить и использовать SSMS можно получить скрипты из полную версию проекта и перейдите к разделу, где они хранятся в папке решения.
@@ -215,11 +215,11 @@ LocalDB — это режим выполнения специальных SQL Se
 1. В SSMS **обозревателя объектов**, щелкните правой кнопкой мыши **баз данных** и нажмите кнопку **присоединение**.
 
     ![Присоединение SSMS](preparing-databases/_static/image15.png)
-- В **присоединение баз данных** диалоговое окно, нажмите кнопку **добавить** и перейдите к *aspnet ContosoUniversity-Prod.mdf* файла в *приложения\_ Данные* папки.
+2. В **присоединение баз данных** диалоговое окно, нажмите кнопку **добавить** и перейдите к *aspnet ContosoUniversity-Prod.mdf* файла в *приложения\_ Данные* папки.
 
-    ![Добавить SSMS MDF-файл для присоединения](preparing-databases/_static/image16.png)
-- Нажмите кнопку **ОК**.
-- Выполните ту же процедуру, которую вы использовали для создания скрипта для файла рабочей. Имя файла скрипта *aspnet данных prod.sql*.
+     ![Добавить SSMS MDF-файл для присоединения](preparing-databases/_static/image16.png)
+3. Нажмите кнопку **ОК**.
+4. Выполните ту же процедуру, которую вы использовали для создания скрипта для файла рабочей. Имя файла скрипта *aspnet данных prod.sql*.
 
 ## <a name="summary"></a>Сводка
 
@@ -233,6 +233,6 @@ LocalDB — это режим выполнения специальных SQL Se
 
 Дополнительные сведения о NuGet см. в разделе [Управление библиотеками проектов с помощью NuGet](https://msdn.microsoft.com/magazine/hh547106.aspx) и [документации по NuGet](http://docs.nuget.org/docs/start-here/overview). Если вы не хотите использовать NuGet, необходимо узнать, как анализировать пакет NuGet, чтобы определить, что делает при установке. (Например, она может настроить *Web.config* преобразования, настраивать сценарии PowerShell для выполнения во время сборки и т. д.) Дополнительные сведения о работе NuGet см. в разделе [создания и публикации пакета](http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package) и [файла конфигурации и преобразования кода источника](http://docs.nuget.org/docs/creating-packages/configuration-file-and-source-code-transformations).
 
->[!div class="step-by-step"]
-[Назад](introduction.md)
-[Вперед](web-config-transformations.md)
+> [!div class="step-by-step"]
+> [Назад](introduction.md)
+> [Вперед](web-config-transformations.md)

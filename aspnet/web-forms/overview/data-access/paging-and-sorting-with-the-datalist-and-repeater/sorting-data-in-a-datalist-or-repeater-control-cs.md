@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-cs
-title: "Сортировка данных в DataList или управления повторителем (C#) | Документы Microsoft"
+title: Сортировка данных в DataList или управления повторителем (C#) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы рассмотрим, как для включения поддержки в DataList и повторителя сортировки, а также как создать DataList или повторителя, данные которого можно..."
+description: В этом учебнике мы рассмотрим, как для включения поддержки в DataList и повторителя сортировки, а также как создать DataList или повторителя, данные которого можно...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cfd0cdb0afe3bf71686715c0b1891adfbbd5019a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2f31425a46408d6d544c6cdf2ce169b5547a2dd8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="sorting-data-in-a-datalist-or-repeater-control-c"></a>Сортировка данных в DataList или управления повторителем (C#)
 ====================
@@ -231,9 +231,9 @@ ms.lasthandoff: 01/24/2018
 
 В примере DataList проверяются в шаге 5 страниц по данным способом подкачки неэффективным по умолчанию. При разбиении на страницы с большими объемами данных, важно использовать пользовательское разбиение по страницам. В [эффективно подкачки через большие объемы данных](../paging-and-sorting/efficiently-paging-through-large-amounts-of-data-cs.md) и [сортировки пользовательских данных, разбитых на страницы](../paging-and-sorting/sorting-custom-paged-data-cs.md) учебники, мы рассмотрели различия между по умолчанию и пользовательское разбиение по страницам и созданные методы в МЕТОДА для Использование пользовательских разбиение по страницам и сортировка пользовательских разбитых на страницы данных. В частности, в этих двух предыдущих учебниках мы добавили следующие три метода `ProductsBLL` класса:
 
-- `GetProductsPaged(startRowIndex, maximumRows)`Возвращает подмножество записей, начиная с *startRowIndex* и не превышая *maximumRows*.
-- `GetProductsPagedAndSorted(sortExpression, startRowIndex, maximumRows)`Возвращает подмножество записей, отсортированных по указанным *sortExpression* входного параметра.
-- `TotalNumberOfProducts()`предоставляет общее число записей в `Products` таблицы базы данных.
+- `GetProductsPaged(startRowIndex, maximumRows)` Возвращает подмножество записей, начиная с *startRowIndex* и не превышая *maximumRows*.
+- `GetProductsPagedAndSorted(sortExpression, startRowIndex, maximumRows)` Возвращает подмножество записей, отсортированных по указанным *sortExpression* входного параметра.
+- `TotalNumberOfProducts()` предоставляет общее число записей в `Products` таблицы базы данных.
 
 Эти методы можно использовать для эффективного страницы и сортировки данных с помощью элемента управления DataList или повторителя. Чтобы проиллюстрировать это, позволяют s начните с создания управления повторителем с настраиваемую поддержку разбиения на страницы; Затем мы добавим возможности сортировки.
 
@@ -390,12 +390,12 @@ Let s используйте интерфейс же во-первых, наза
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было David Suru. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](paging-report-data-in-a-datalist-or-repeater-control-cs.md)
-[Вперед](paging-report-data-in-a-datalist-or-repeater-control-vb.md)
+> [!div class="step-by-step"]
+> [Назад](paging-report-data-in-a-datalist-or-repeater-control-cs.md)
+> [Вперед](paging-report-data-in-a-datalist-or-repeater-control-vb.md)

@@ -1,7 +1,7 @@
 ---
-title: "Поставщики защиты временных данных"
+title: Защита от поставщиков временных данных в ASP.NET Core
 author: rick-anderson
-description: "В этом документе подробно описывается реализация защиты поставщиков ASP.NET Core временных данных."
+description: Узнайте сведения о реализации поставщиков ASP.NET Core временных данных защиты.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,19 +9,19 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-storage-ephemeral
-ms.openlocfilehash: fe8a020c77bfe614691bfd0f5d403c7d25a0df56
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 9cdd3949826091807f3139f51aa0c05ddaac696a
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="ephemeral-data-protection-providers"></a>Поставщики защиты временных данных
+# <a name="ephemeral-data-protection-providers-in-aspnet-core"></a>Защита от поставщиков временных данных в ASP.NET Core
 
 <a name="data-protection-implementation-key-storage-ephemeral"></a>
 
 Существуют сценарии, если приложению необходима throwaway `IDataProtectionProvider`. Например, разработчик может просто Поэкспериментировав в одноразовые консольное приложение или само приложение является временным (скрипт создается или проект модульного теста). Для поддержки следующих сценариев [Microsoft.AspNetCore.DataProtection](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection/) пакет включает тип `EphemeralDataProtectionProvider`. Этот тип предоставляет базовую реализацию `IDataProtectionProvider` которого ключа репозитория удерживается исключительно в памяти и не записывается в резервное хранилище.
 
-Каждый экземпляр `EphemeralDataProtectionProvider` использует свой собственный уникальный главного ключа. Таким образом Если `IDataProtector` с корнем `EphemeralDataProtectionProvider` приводит к возникновению ошибки защищенных полезных данных, без защиты полезных данных можно только с эквивалентный `IDataProtector` (соответствует заданному [цели](../consumer-apis/purpose-strings.md#data-protection-consumer-apis-purposes) цепочки) корневыми в то же самое `EphemeralDataProtectionProvider` экземпляр.
+Каждый экземпляр `EphemeralDataProtectionProvider` использует свой собственный уникальный главного ключа. Таким образом Если `IDataProtector` с корнем `EphemeralDataProtectionProvider` приводит к возникновению ошибки защищенных полезных данных, без защиты полезных данных можно только с эквивалентный `IDataProtector` (соответствует заданному [цели](xref:security/data-protection/consumer-apis/purpose-strings#data-protection-consumer-apis-purposes) цепочки) корневыми в то же самое `EphemeralDataProtectionProvider` экземпляр.
 
 В следующем примере показано создание экземпляра `EphemeralDataProtectionProvider` и использовать его для установки и снятия защиты данных.
 

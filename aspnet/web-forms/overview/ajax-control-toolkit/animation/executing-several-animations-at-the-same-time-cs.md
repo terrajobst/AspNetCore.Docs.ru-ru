@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-at-the-same-time-cs
-title: "Выполнение нескольких анимации в то же время (C#) | Документы Microsoft"
+title: Выполнение нескольких анимации в то же время (C#) | Документы Microsoft
 author: wenz
-description: "Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Он позволяет выполнять severa..."
+description: Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Он позволяет выполнять severa...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-at-the-same-time-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b7ee9c2da392bed512e259b44237e5ff997dca23
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6ecd822f7fa00a24e97b9aa14888798825624617
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="executing-several-animations-at-the-same-time-c"></a>Выполнение нескольких анимации в то же время (C#)
 ====================
@@ -62,6 +62,6 @@ ms.lasthandoff: 11/10/2017
 
 Исчезновение и изменение размера (в том числе его содержимого, благодаря механизм визуализации в браузере) панели ([Просмотр полноразмерное изображение](executing-several-animations-at-the-same-time-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](adding-animation-to-a-control-cs.md)
-[Вперед](executing-several-animations-after-each-other-cs.md)
+> [!div class="step-by-step"]
+> [Назад](adding-animation-to-a-control-cs.md)
+> [Вперед](executing-several-animations-after-each-other-cs.md)

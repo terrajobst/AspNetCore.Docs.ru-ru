@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/caching-data/caching-data-at-application-startup-vb
-title: "Кэширование данных при запуске приложения (Visual Basic) | Документы Microsoft"
+title: Кэширование данных при запуске приложения (Visual Basic) | Документы Microsoft
 author: rick-anderson
-description: "В любой веб-приложения некоторые данные будут часто использоваться и некоторые данные будут использоваться редко. Мы можем улучшить производительность приложения в нашем ASP.NET..."
+description: В любой веб-приложения некоторые данные будут часто использоваться и некоторые данные будут использоваться редко. Мы можем улучшить производительность приложения в нашем ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/30/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-at-application-startup-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5b84b797bf0c9670ac65a5384b6d95d5df3827eb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f8f322dae89480fc7ed5586d7f8eeb4c67d7839f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="caching-data-at-application-startup-vb"></a>Кэширование данных при запуске приложения (Visual Basic)
 ====================
@@ -129,11 +129,11 @@ Northwind, таблицы базы данных мы хранять реализ
 
 Значение по умолчанию `Global.asax` файл шаблона содержит пять методов на стороне сервера `<script>` тег:
 
-- **`Application_Start`**выполняется при первом запуске веб-приложения
-- **`Application_End`**выполняется, когда приложение завершает работу
-- **`Application_Error`**выполняется всегда, когда приложение встречает необработанное исключение
-- **`Session_Start`**выполняется, когда создается новый сеанс
-- **`Session_End`**выполняется, когда сеанс истек или прервана
+- **`Application_Start`** выполняется при первом запуске веб-приложения
+- **`Application_End`** выполняется, когда приложение завершает работу
+- **`Application_Error`** выполняется всегда, когда приложение встречает необработанное исключение
+- **`Session_Start`** выполняется, когда создается новый сеанс
+- **`Session_End`** выполняется, когда сеанс истек или прервана
 
 `Application_Start` Обработчик событий вызывается только один раз во время жизненного цикла приложения s. Приложение запускается в первый раз ресурса ASP.NET запросе от приложения и продолжает работать до перезапуска приложения, что может произойти, изменяя содержимое `/Bin` папки, изменение `Global.asax`, изменение содержимое в `App_Code` папки или изменение `Web.config` файл, другими причинами. Ссылаться на [Общие сведения о жизненном цикле приложения ASP.NET](https://msdn.microsoft.com/library/ms178473.aspx) более подробные сведения о жизненном цикле приложения.
 
@@ -194,12 +194,12 @@ Northwind, таблицы базы данных мы хранять реализ
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Мерфи Тереза д и Зак Джонс. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](caching-data-in-the-architecture-vb.md)
-[Вперед](using-sql-cache-dependencies-vb.md)
+> [!div class="step-by-step"]
+> [Назад](caching-data-in-the-architecture-vb.md)
+> [Вперед](using-sql-cache-dependencies-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/adding-business-logic-layer
-title: "Добавление бизнес-логики для проекта, использующего привязки модели и веб-форм | Документы Microsoft"
+title: Добавление бизнес-логики для проекта, использующего привязки модели и веб-форм | Документы Microsoft
 author: tfitzmac
-description: "Этот учебник ряд демонстрирует основные аспекты использования привязки модели в проекте веб-форм ASP.NET. Привязка модели позволяет взаимодействия с данными дополнительные прямые-..."
+description: Этот учебник ряд демонстрирует основные аспекты использования привязки модели в проекте веб-форм ASP.NET. Привязка модели позволяет взаимодействия с данными дополнительные прямые-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/adding-business-logic-layer
 msc.type: authoredcontent
-ms.openlocfilehash: ca50690052cca73a718342a9725c8096a72f1187
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 25e887bdc316abf65c780bb6c8d075e938e85064
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-business-logic-layer-to-a-project-that-uses-model-binding-and-web-forms"></a>Добавление бизнес-логики для проекта, использующего привязки модели и веб-форм
 ====================
@@ -98,5 +98,5 @@ ms.lasthandoff: 11/10/2017
 
 В этом учебнике повторно структуру приложения для использования уровня доступа к данным и бизнес-логики. Вы указали, что элементы управления данными использовать объект, который не является текущей страницы для операций с данными.
 
->[!div class="step-by-step"]
-[Назад](using-query-string-values-to-retrieve-data.md)
+> [!div class="step-by-step"]
+> [Назад](using-query-string-values-to-retrieve-data.md)

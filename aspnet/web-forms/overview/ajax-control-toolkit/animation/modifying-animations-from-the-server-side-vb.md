@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/modifying-animations-from-the-server-side-vb
-title: "Изменение анимации со стороны сервера (VB) | Документы Microsoft"
+title: Изменение анимации со стороны сервера (VB) | Документы Microsoft
 author: wenz
-description: "Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Кроме того, можете анимации..."
+description: Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Кроме того, можете анимации...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/modifying-animations-from-the-server-side-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c5b23cce529be24157a8a3f9136de7ad7bafc1ea
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2b9ce85fc5040b2318233b3c553c2cf53dd03555
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="modifying-animations-from-the-server-side-vb"></a>Изменение анимации со стороны сервера (Visual Basic)
 ====================
@@ -62,6 +62,6 @@ ms.lasthandoff: 11/10/2017
 
 Анимация создается с помощью C# и Visual Basic код со стороны сервера ([Просмотр полноразмерное изображение](modifying-animations-from-the-server-side-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](triggering-an-animation-in-another-control-vb.md)
-[Вперед](executing-animations-using-client-side-code-vb.md)
+> [!div class="step-by-step"]
+> [Назад](triggering-an-animation-in-another-control-vb.md)
+> [Вперед](executing-animations-using-client-side-code-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-1-create-the-application-cs
-title: "Итерации #1 – Создание приложения (C#) | Документы Microsoft"
+title: 'Итерации #1 – Создание приложения (C#) | Документы Microsoft'
 author: microsoft
-description: "В первой итерации мы создадим диспетчера контактов простейшим способом невозможно. Добавлена поддержка для основных операций базы данных: создание, чтение, обновление и D...."
+description: 'В первой итерации мы создадим диспетчера контактов простейшим способом невозможно. Добавлена поддержка для основных операций базы данных: создание, чтение, обновление и D....'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-1-create-the-application-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 12927250595a8f3130328d2fe219280a13349787
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 30f626511164363fea2195a05e73aeee5764933b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-1--create-the-application-c"></a>Итерации #1 – Создание приложения (C#)
 ====================
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
 - Итерации #5 - Создание модульных тестов. В пятой итерации сделан нашего приложения проще в обслуживании и изменить, добавив модульных тестов. Мы макета наших классов модели данных и создания модульных тестов для наших контроллеров и логику проверки.
 
-- Итерация &#6; — с помощью управляемой тестами разработки. В итерации этого шестой мы добавим новые функциональные возможности наше приложение, сначала написание модульных тестов и писать код для модульных тестов. В этой итерации добавим групп контактов.
+- Итерация 6 # — с помощью управляемой тестами разработки. В итерации этого шестой мы добавим новые функциональные возможности наше приложение, сначала написание модульных тестов и писать код для модульных тестов. В этой итерации добавим групп контактов.
 
 - Итерации #7. Добавление функциональности Ajax. В седьмой итерации мы повысить скорость реагирования и производительности приложения, добавляя поддержку Ajax.
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 11/10/2017
 
 В приложениях ASP.NET MVC необходимо иметь Visual Studio 2008 или Visual Web Developer 2008 установлены на компьютере (Visual Web Developer — это бесплатная версия Visual Studio, которая содержит не все дополнительные функции Visual Studio). Можно загрузить либо пробной версии Visual Studio 2008 или Visual Web Developer следующий адрес:
 
-[https://www.ASP.NET/downloads/Essential/](https://www.asp.net/downloads/essential)
+[https://www.asp.net/downloads/essential/](https://www.asp.net/downloads/essential)
 
 > [!NOTE] 
 > 
@@ -76,15 +76,15 @@ ms.lasthandoff: 11/10/2017
 
 Платформа ASP.NET MVC. Платформа ASP.NET MVC можно загрузить по следующему адресу:
 
-[https://www.ASP.NET/MVC](../../../index.md)
+[https://www.asp.net/mvc](../../../index.md)
 
 В этом учебнике мы используем Microsoft Entity Framework для доступа к базе данных. Платформа Entity Framework входит в состав .NET Framework 3.5 с пакетом обновления 1. Этот пакет обновления можно загрузить из следующей папки:
 
-[https://www.Microsoft.com/downloads/details.aspx?FamilyId=ab99342f-5d1a-413d-8319-81da479ab0d7&amp;displaylang = en](https://www.microsoft.com/downloads/details.aspx?familyid=ab99342f-5d1a-413d-8319-81da479ab0d7&amp;displaylang=en)
+[https://www.microsoft.com/downloads/details.aspx?familyid=ab99342f-5d1a-413d-8319-81da479ab0d7&amp;displaylang=en](https://www.microsoft.com/downloads/details.aspx?familyid=ab99342f-5d1a-413d-8319-81da479ab0d7&amp;displaylang=en)
 
 В качестве альтернативы для выполнения каждого из этих загружаемых компонентов по одному можно воспользоваться преимуществами установщика веб-платформы (Web PI). Установщик веб-Платформы можно загрузить по следующему адресу:
 
-[https://www.ASP.NET/downloads/Essential/](https://www.asp.net/downloads/essential)
+[https://www.asp.net/downloads/essential/](https://www.asp.net/downloads/essential)
 
 ## <a name="aspnet-mvc-project"></a>Проект ASP.NET MVC
 
@@ -171,11 +171,11 @@ ms.lasthandoff: 11/10/2017
 
 | **Имя столбца** | **Тип данных** | **Разрешить значения NULL** |
 | --- | --- | --- |
-| Идентификатор | int | false |
-| FirstName | nvarchar(50) | false |
-| LastName | nvarchar(50) | false |
-| Phone | nvarchar(50) | false |
-| Адрес эл. почты | nvarchar(255) | false |
+| Идентификатор | int | False |
+| FirstName | nvarchar(50) | False |
+| LastName | nvarchar(50) | False |
+| Номер телефона | nvarchar(50) | False |
+| Адрес эл. почты | nvarchar(255) | False |
 
 
 Первый столбец, столбец идентификатора является специальной. Необходимо пометить как столбец идентификаторов и первичный ключевой столбец со столбцом идентификаторов. Можно указать, что столбец является столбцом идентификаторов, развернув свойств столбца (найдите в нижней части рис. 6) и прокрутка вниз до свойства Спецификация идентификации. Задать **(идентификатор)** значение **Да**.
@@ -490,5 +490,5 @@ Html.ActionLink ({id = элемент. % Идентификатор})&gt;
 
 Наконец и что самое главное текущей итерации приложение диспетчера контактов нельзя легко или изменить сохраняется. Например логики доступа к базе данных является помещенного справа в действия контроллера. Это означает, что не удается изменить наш код доступа к данным без изменения наших контроллеров. В последующих итерациях мы исследуем принципы разработки программного обеспечения, которые мы можно реализовать, чтобы сделать более устойчивым к изменить диспетчера контактов.
 
->[!div class="step-by-step"]
-[Вперед](iteration-2-make-the-application-look-nice-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](iteration-2-make-the-application-look-nice-cs.md)

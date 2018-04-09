@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/accessing-your-models-data-from-a-controller
-title: "Доступ к вашей модели данных от контроллера | Документы Microsoft"
+title: Доступ к вашей модели данных от контроллера | Документы Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 91bfa5fe3c5bd3029b7d7c12c8831e1653fb1d2b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d3dfa079c334e04f368531456ec2ec4e9728f893
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>Доступ к вашей модели данных из контроллера
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 В этом разделе вы создадите новый `MoviesController` класса и написать код, который получает данные фильма и отображает его в браузере, с помощью шаблона представления.
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/24/2018
 - Выберите **MovieDBContext (MvcMovie.Models)** для класса контекста данных.
 - Имя контроллера введите **MoviesController**.
 
- На следующем рисунке показано диалоговое окно завершенной.  
+  На следующем рисунке показано диалоговое окно завершенной.  
   
 ![](accessing-your-models-data-from-a-controller/_static/image3.png)   
 
@@ -64,7 +64,7 @@ Visual Studio автоматически создается [CRUD](http://en.wik
 ![](accessing-your-models-data-from-a-controller/_static/image5.png)
 
 > [!NOTE]
-> Вы не сможете ввести в поле «Цена» десятичной точки и запятые. Поддержка проверки jQuery для языков, кроме английского, используйте запятую (&quot;,&quot;) для десятичной запятой и форматы дат локализованной США, необходимо включить *globalize.js* и конкретных  *cultures/globalize.cultures.js* файла (из [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) и JavaScript, чтобы использовать `Globalize.parseFloat`. Я покажу, как это сделать в следующем уроке. А пока вводите целые числа, такие как 10.
+> Вы не сможете ввести в поле «Цена» десятичной точки и запятые. Поддержка проверки jQuery для языков, кроме английского, используйте запятую (&quot;,&quot;) для десятичной запятой и форматы дат локализованной США, необходимо включить *globalize.js* и конкретных  *cultures/globalize.cultures.js* файла (из [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) и JavaScript, чтобы использовать `Globalize.parseFloat`. Я покажу, как это сделать в следующем уроке. А пока вводите целые числа, такие как 10.
 
 
 Щелкнув **создать** кнопка вызывает отправку формы на сервер, где фильма сведения сохраняются в базе данных. Затем можно будет перенаправлен на */Movies* URL-адрес, где можно просмотреть только что созданный фильма в списке.
@@ -157,6 +157,6 @@ Entity Framework Code First обнаружил, что указывает стр
 
 Теперь у вас есть база данных и страницы для отображения, редактирования, обновления и удаления данных. В следующем уроке мы изучите остальной части кода формирования шаблонов и добавьте `SearchIndex` метод и `SearchIndex` представление, позволяющее искать фильмов в этой базе данных. Дополнительные сведения об использовании платформы Entity Framework с MVC см. в разделе [Создание модели данных Entity Framework для приложения ASP.NET MVC](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 
->[!div class="step-by-step"]
-[Назад](creating-a-connection-string.md)
-[Вперед](examining-the-edit-methods-and-edit-view.md)
+> [!div class="step-by-step"]
+> [Назад](creating-a-connection-string.md)
+> [Вперед](examining-the-edit-methods-and-edit-view.md)

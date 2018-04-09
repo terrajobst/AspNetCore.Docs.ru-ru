@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model
-title: "Добавление проверки для модели (C#) | Документы Microsoft"
+title: Добавление проверки для модели (C#) | Документы Microsoft
 author: Rick-Anderson
-description: "Создание контроллера"
+description: Создание контроллера
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 1e1235972d1e16153faee113af09edaa676d70d8
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: cdfe76f440e34ca7356af193186f90d2231b9db6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-validation-to-the-model-c"></a>Добавление проверки для модели (C#)
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Доступна обновленная версия этого учебника [здесь](../../../getting-started/introduction/getting-started.md) , с использованием ASP.NET MVC 5 и Visual Studio 2013. Он является более безопасны, выполните гораздо проще и показаны дополнительные возможности.
@@ -127,6 +127,6 @@ ms.lasthandoff: 02/12/2018
 
 В следующей части этой серии мы рассмотрим приложение и внесем ряд изменений в автоматически создаваемые методы `Details` и `Delete`.
 
->[!div class="step-by-step"]
-[Назад](adding-a-new-field.md)
-[Вперед](improving-the-details-and-delete-methods.md)
+> [!div class="step-by-step"]
+> [Назад](adding-a-new-field.md)
+> [Вперед](improving-the-details-and-delete-methods.md)

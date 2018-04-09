@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/introduction-to-security
-title: "Общие сведения о безопасности SignalR (SignalR 1.x) | Документы Microsoft"
+title: Общие сведения о безопасности SignalR (SignalR 1.x) | Документы Microsoft
 author: pfletcher
-description: "Описывает вопросы безопасности, которые следует учитывать при разработке приложения SignalR."
+description: Описывает вопросы безопасности, которые следует учитывать при разработке приложения SignalR.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/introduction-to-security
 msc.type: authoredcontent
-ms.openlocfilehash: ebc83098b73902fa3f7a90a38dafc43b413e75fe
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b756d3e71d89b6c826bd497f73d052c4c8f634e8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introduction-to-signalr-security-signalr-1x"></a>Общие сведения о безопасности SignalR (SignalR 1.x)
 ====================
@@ -98,7 +98,7 @@ SignalR уменьшает риск выполнения вредоносных 
 
     [!code-html[Main](introduction-to-security/samples/sample1.html)]
 
- Обратите внимание, что действие формы в блогах уязвимым сайте, не вредоносный сайт. Это часть CSRF «между сайтами».
+   Обратите внимание, что действие формы в блогах уязвимым сайте, не вредоносный сайт. Это часть CSRF «между сайтами».
 4. При нажатии кнопки "Отправить". Браузер включает файл cookie проверки подлинности с запросом.
 5. Запрос выполняется на сервере example.com с контекстом проверки подлинности пользователя и могут выполнять все, что разрешено делать прошедшего проверку подлинности пользователя.
 

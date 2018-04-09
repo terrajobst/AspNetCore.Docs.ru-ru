@@ -1,7 +1,7 @@
 ---
-title: "Формат хранилища ключей"
+title: Формат хранения ключей в ASP.NET Core
 author: tdykstra
-description: "В этом документе подробно описывается реализация формата хранения ключей защиты данных ASP.NET Core."
+description: Узнайте подробности реализации формат хранения ключей защиты данных ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-storage-format
-ms.openlocfilehash: 66783eb7264a4551eafdd9d5c7d99b014701a6de
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: abe23da3de70107aa4f4d84f4da27aadfe7b2061
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-storage-format"></a>Формат хранилища ключей
+# <a name="key-storage-format-in-aspnet-core"></a>Формат хранения ключей в ASP.NET Core
 
 <a name="data-protection-implementation-key-storage-format"></a>
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="the-encryptedsecret-element"></a>\<EncryptedSecret > элемент
 
-<encryptedSecret> Элемент, содержащий зашифрованный секретного ключа могут присутствовать Если [включено шифрование секретов неактивные](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest). Атрибут decryptorType будет квалифицированное имя типа, который реализует IXmlDecryptor. Этот тип является ответственным за чтение внутреннего <encryptedKey> элемент и расшифровки выполнить восстановление исходного открытого текста.
+<encryptedSecret> Элемент, содержащий зашифрованный секретного ключа могут присутствовать Если [включено шифрование секретов неактивные](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest). Атрибут decryptorType будет квалифицированное имя типа, который реализует IXmlDecryptor. Этот тип является ответственным за чтение внутреннего <encryptedKey> элемент и расшифровки выполнить восстановление исходного открытого текста.
 
 Как и в \<дескриптора >, определенный формат <encryptedSecret> элемента зависит от механизма шифрования на rest используется. В приведенном выше примере главный ключ зашифрован с помощью Windows DPAPI согласно комментарий.
 

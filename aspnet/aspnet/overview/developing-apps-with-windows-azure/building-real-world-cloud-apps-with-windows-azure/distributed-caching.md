@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/distributed-caching
-title: "Распределенное кэширование (Создание реальных облачных приложений в Azure) | Документы Microsoft"
+title: Распределенное кэширование (Создание реальных облачных приложений в Azure) | Документы Microsoft
 author: MikeWasson
-description: "Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может..."
+description: Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/20/2015
 ms.topic: article
 ms.assetid: 406518e9-3817-49ce-8b90-e82bc461e2c0
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/distributed-caching
 msc.type: authoredcontent
-ms.openlocfilehash: 24ede9cb9289c84140f6e2573f9d526f19cac64b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3600200f9bb705ccf66c859547668bdf8e89d97a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="distributed-caching-building-real-world-cloud-apps-with-azure"></a>Распределенного кэширования (Создание реальных облачных приложений в Azure)
 ====================
@@ -111,6 +111,6 @@ Azure предлагает следующие службы кэшировани�
 
 - [Основы облачных служб в Azure](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Образец приложения, который реализует распределенное кэширование. См. сопутствующие блога [Основы облачных служб — основы кэширование](https://blogs.msdn.com/b/windowsazure/archive/2013/10/03/cloud-service-fundamentals-caching-basics.aspx).
 
->[!div class="step-by-step"]
-[Назад](transient-fault-handling.md)
-[Вперед](queue-centric-work-pattern.md)
+> [!div class="step-by-step"]
+> [Назад](transient-fault-handling.md)
+> [Вперед](queue-centric-work-pattern.md)

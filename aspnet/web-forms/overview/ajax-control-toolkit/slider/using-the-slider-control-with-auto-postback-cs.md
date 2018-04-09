@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/slider/using-the-slider-control-with-auto-postback-cs
-title: "С помощью элемента управления \"ползунок\" с автоматическая обратная передача (C#) | Документы Microsoft"
+title: С помощью элемента управления "ползунок" с автоматическая обратная передача (C#) | Документы Microsoft
 author: wenz
-description: "Ползунок в наборе элементов управления AJAX имеет графический ползунок, можно управлять с помощью мыши. Это можно делать Автоматическая разноска ползунок..."
+description: Ползунок в наборе элементов управления AJAX имеет графический ползунок, можно управлять с помощью мыши. Это можно делать Автоматическая разноска ползунок...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/slider/using-the-slider-control-with-auto-postback-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f6291f4162b3069a6316a60b4b29f82f55121aac
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e347d20c5c2ee48e6ed801e95459af6f0bcd2667
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-slider-control-with-auto-postback-c"></a>С помощью элемента управления "ползунок" с автоматическая обратная передача (C#)
 ====================
@@ -63,5 +63,5 @@ ms.lasthandoff: 11/10/2017
 
 После этого дата это изменение записывается в метке ([Просмотр полноразмерное изображение](using-the-slider-control-with-auto-postback-cs/_static/image6.png))
 
->[!div class="step-by-step"]
-[Вперед](databinding-the-slider-control-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](databinding-the-slider-control-cs.md)

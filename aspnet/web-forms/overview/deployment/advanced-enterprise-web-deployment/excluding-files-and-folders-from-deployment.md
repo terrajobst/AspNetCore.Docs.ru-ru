@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
-title: "Исключение файлов и папок из развертывания | Документы Microsoft"
+title: Исключение файлов и папок из развертывания | Документы Microsoft
 author: jrjlee
-description: "В этом разделе описывается, как можно исключить файлы и папки из веб-пакета развертывания при построении и упаковать проект веб-приложения."
+description: В этом разделе описывается, как можно исключить файлы и папки из веб-пакета развертывания при построении и упаковать проект веб-приложения.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 80810415bac473a58f60110fb9d08772e0627bd5
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: c435448bf057bbef9127d66ffda24a07729f2322
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="excluding-files-and-folders-from-deployment"></a>Исключение файлов и папок из развертывания
 ====================
@@ -27,9 +27,9 @@ ms.lasthandoff: 03/15/2018
 > В этом разделе описывается, как можно исключить файлы и папки из веб-пакета развертывания при построении и упаковать проект веб-приложения.
 
 
-Этот раздел входит в состав серию учебников, исходя из требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения & #x 2014; [решения диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014; для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Службы Communication Foundation (WCF) и проект базы данных.
+Этот раздел входит в состав серию учебников, исходя из требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения&#x2014; [решения диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Communication Служба Foundation (WCF) и проект базы данных.
 
-Метод развертывания, в основе этих учебников основан на разбиение проекта файл подход, описанный в [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md), в которой процесс построения управляется двух проектов файлы & #x 2014; один с построение инструкции, которые применяются для каждой целевой среде и, содержащий параметры построения и развертывания конкретной среды. Во время построения файла проекта среды объединяется в файл проекта зависит от среды, образуют полный набор инструкций построения.
+Метод развертывания, в основе этих учебников основан на разбиение проекта файл подход, описанный в [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md), в которой процесс построения управляется двух файлов проекта&#x2014;один с построение инструкции, которые применяются для каждой целевой среде и, содержащий параметры построения и развертывания конкретной среды. Во время построения файла проекта среды объединяется в файл проекта зависит от среды, образуют полный набор инструкций построения.
 
 ## <a name="overview"></a>Обзор
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 03/15/2018
 1. Создайте файл пользовательский проект с именем *.wpp.targets [имя проекта]* в одной папке с файлом проекта.
 
     > [!NOTE]
-    > *. Wpp.targets* файл необходимо перейти в той же папке, как ваш файл проекта веб-приложения & #x 2014; например, *ContactManager.Mvc.csproj*& #x 2014; а не в одной папке, что любой файлы проектов, используйте для управления построением и процесса развертывания.
+    > *. Wpp.targets* файл необходимо перейти в той же папке, как файл проекта веб-приложения&#x2014;, *ContactManager.Mvc.csproj*&#x2014;, а не в той же папке настраиваемых файлы проекта, используемого для управления процессом построения и развертывания.
 2. В *. wpp.targets* файл, добавьте **ItemGroup** элемента.
 3. В **ItemGroup** элемента, добавьте **ExcludeFromPackageFolders** и **ExcludeFromPackageFiles** элементы, чтобы исключить определенные файлы и папки при необходимости.
 
@@ -106,16 +106,16 @@ ms.lasthandoff: 03/15/2018
     [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample2.xml)]
 6. Если вы хотите исключить папки из веб-пакета, добавьте **ExcludeFromPackageFolders** элемент **ItemGroup** элемента:
 
-    1. В **Include** атрибута, приводится список разделенных точкой с запятой папки, которую требуется исключить.
-    2. В **FromTarget** элемент метаданных предоставляют значимое значение, указывающее, почему папки исключаются, такие как имя *. wpp.targets* файл.
+   1. В **Include** атрибута, приводится список разделенных точкой с запятой папки, которую требуется исключить.
+   2. В **FromTarget** элемент метаданных предоставляют значимое значение, указывающее, почему папки исключаются, такие как имя *. wpp.targets* файл.
 
-    [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample3.xml)]
+      [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample3.xml)]
 7. Если вы хотите исключить файлы из веб-пакета, добавьте **ExcludeFromPackageFiles** элемент **ItemGroup** элемента:
 
-    1. В **Include** атрибута, приводится список разделенных точкой с запятой файлов, которые требуется исключить.
-    2. В **FromTarget** элемент метаданных предоставляют значимое значение, указывающее, почему файлы исключаются, такие как имя *. wpp.targets* файл.
+   1. В **Include** атрибута, приводится список разделенных точкой с запятой файлов, которые требуется исключить.
+   2. В **FromTarget** элемент метаданных предоставляют значимое значение, указывающее, почему файлы исключаются, такие как имя *. wpp.targets* файл.
 
-    [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample4.xml)]
+      [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample4.xml)]
 8. *.Wpp.targets [имя проекта]* файл должен выглядеть это:
 
     [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample5.xml)]
@@ -131,6 +131,6 @@ ms.lasthandoff: 03/15/2018
 
 Дополнительные сведения об использовании пользовательских файлов проекта Microsoft Build Engine (MSBuild) для управления процессом развертывания см. в разделе [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md) и [основные сведения о процессе построения](../web-deployment-in-the-enterprise/understanding-the-build-process.md). Дополнительные сведения об упаковке и развертывании процесса см. в разделе [построения и упаковки проектов веб-приложений](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md), [Настройка параметров для пакета развертывания веб-](../web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment.md), и [ Развертывание веб-пакеты](../web-deployment-in-the-enterprise/deploying-web-packages.md).
 
->[!div class="step-by-step"]
-[Назад](deploying-membership-databases-to-enterprise-environments.md)
-[Вперед](taking-web-applications-offline-with-web-deploy.md)
+> [!div class="step-by-step"]
+> [Назад](deploying-membership-databases-to-enterprise-environments.md)
+> [Вперед](taking-web-applications-offline-with-web-deploy.md)

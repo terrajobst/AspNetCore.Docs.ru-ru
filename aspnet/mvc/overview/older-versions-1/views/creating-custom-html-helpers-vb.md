@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/creating-custom-html-helpers-vb
-title: "Создание настраиваемых вспомогательных методов HTML (VB) | Документы Microsoft"
+title: Создание настраиваемых вспомогательных методов HTML (VB) | Документы Microsoft
 author: microsoft
-description: "Целью данного учебника является демонстрация способы создания пользовательских вспомогательных методов HTML, который можно использовать в пределах представлений MVC. Используя преимущества вспомогательный метод HTML..."
+description: Целью данного учебника является демонстрация способы создания пользовательских вспомогательных методов HTML, который можно использовать в пределах представлений MVC. Используя преимущества вспомогательный метод HTML...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/07/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-custom-html-helpers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e389a03228995ce0a6926a53af38f26ad51372d5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6980026e2653eacb71697f9b34def9bc38638726
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-custom-html-helpers-vb"></a>Создание настраиваемых вспомогательных методов HTML (Visual Basic)
 ====================
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/10/2017
 **На рисунке 01**: страницы к просмотру с помощью вспомогательных методов HTML ([Просмотр полноразмерное изображение](creating-custom-html-helpers-vb/_static/image3.png))
 
 
-**Листинг 1.`Views\Home\Index.aspx`**
+**Листинг 1. `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-custom-html-helpers-vb/samples/sample1.aspx)]
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 11/10/2017
 
 Платформа ASP.NET MVC содержит небольшой набор вспомогательных методов. Скорее всего потребуется расширить платформу MVC с помощью пользовательских вспомогательных методов HTML. В оставшейся части этого учебника вы узнаете два метода создания пользовательских вспомогательных методов HTML.
 
-**Листинг 2.`Index.aspx Source`**
+**Листинг 2. `Index.aspx Source`**
 
 [!code-aspx[Main](creating-custom-html-helpers-vb/samples/sample2.aspx)]
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 11/10/2017
 
 Самый простой способ создать новый вспомогательный метод HTML является создание общий метод, который возвращает строку. Представьте себе, например, вы решили создать новый вспомогательный метод HTML, который отображает HTML- `<label>` тег. Для подготовки к просмотру, можно использовать класс в списке 2 `<label>`.
 
-**Листинг 2.`Helpers\LabelHelper.vb`**
+**Листинг 2. `Helpers\LabelHelper.vb`**
 
 [!code-vb[Main](creating-custom-html-helpers-vb/samples/sample3.vb)]
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 11/10/2017
 
 Измененный представление индекса в списке 3 использует `LabelHelper` для отрисовки HTML- `<label>` тегов. Обратите внимание, что представление включает `<%@ imports %>` директиву, которая импортирует пространство имен Application1.Helpers.
 
-**Листинг 2.`Views\Home\Index2.aspx`**
+**Листинг 2. `Views\Home\Index2.aspx`**
 
 [!code-aspx[Main](creating-custom-html-helpers-vb/samples/sample4.aspx)]
 
@@ -100,7 +100,7 @@ ms.lasthandoff: 11/10/2017
 
 Во-вторых, обратите внимание, что первый параметр `Label()` представляет метод `HtmlHelper` класса. Первый параметр метода расширения указывает класс, который расширяет метод расширения.
 
-**Листинг 3.`Helpers\LabelExtensions.vb`**
+**Листинг 3. `Helpers\LabelExtensions.vb`**
 
 [!code-vb[Main](creating-custom-html-helpers-vb/samples/sample5.vb)]
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/10/2017
 
 Измененный представление Index в листинге 4 этого метод расширения Html.Label() используется для отображения всех его &lt;метка&gt; тегов.
 
-**Листинг 4.`Views\Home\Index3.aspx`**
+**Листинг 4. `Views\Home\Index3.aspx`**
 
 [!code-aspx[Main](creating-custom-html-helpers-vb/samples/sample6.aspx)]
 
@@ -124,6 +124,6 @@ ms.lasthandoff: 11/10/2017
 
 В этом учебнике уделено построение очень простой метод вспомогательный метод HTML. Имейте в виду, что вспомогательный метод HTML может быть не проще требуется. Можно построить вспомогательных методов HTML, отображения сложных элементов, таких как представления в виде дерева, меню и таблицы базы данных.
 
->[!div class="step-by-step"]
-[Назад](asp-net-mvc-views-overview-vb.md)
-[Вперед](using-the-tagbuilder-class-to-build-html-helpers-vb.md)
+> [!div class="step-by-step"]
+> [Назад](asp-net-mvc-views-overview-vb.md)
+> [Вперед](using-the-tagbuilder-class-to-build-html-helpers-vb.md)

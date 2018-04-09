@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-vb
-title: "Проверка с помощью на уровне службы (Visual Basic) | Документы Microsoft"
+title: Проверка с помощью на уровне службы (Visual Basic) | Документы Microsoft
 author: StephenWalther
-description: "Узнайте, как переместить логику проверки из действия контроллера и в слой отдельной службе. В этом учебнике объясняется Стивен Вальтер как вы..."
+description: Узнайте, как переместить логику проверки из действия контроллера и в слой отдельной службе. В этом учебнике объясняется Стивен Вальтер как вы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5a8f1dd888c7fa6a3353b7b748a0ffa30b94149c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bb1191b663f863bf881def620efab4f2f03edc56
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validating-with-a-service-layer-vb"></a>Проверка с помощью на уровне службы (Visual Basic)
 ====================
@@ -99,6 +99,6 @@ ms.lasthandoff: 11/10/2017
 
 Целью данного учебника было обсудить один из подходов к проверке в приложении ASP.NET MVC. В этом учебнике вы узнали, как перемещение всех логики проверки из контроллеров и отправляются на уровне отдельных службы. Вы также узнали, как изоляция на уровне службы из вашего уровня контроллера, создав класс ModelStateWrapper.
 
->[!div class="step-by-step"]
-[Назад](validating-with-the-idataerrorinfo-interface-vb.md)
-[Вперед](validation-with-the-data-annotation-validators-vb.md)
+> [!div class="step-by-step"]
+> [Назад](validating-with-the-idataerrorinfo-interface-vb.md)
+> [Вперед](validation-with-the-data-annotation-validators-vb.md)

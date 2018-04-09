@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs
-title: "Общие сведения о ASP.NET MVC контроллера (C#) | Документы Microsoft"
+title: Общие сведения о ASP.NET MVC контроллера (C#) | Документы Microsoft
 author: StephenWalther
-description: "В этом учебнике Стивен Вальтер представлены контроллеров ASP.NET MVC. Вы узнаете, как для создания новых контроллеров и возвращать различные типы действий res..."
+description: В этом учебнике Стивен Вальтер представлены контроллеров ASP.NET MVC. Вы узнаете, как для создания новых контроллеров и возвращать различные типы действий res...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9e4ca745fa068b1813e01b131d53a0199cc47d5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 95e7c555a52c8c3b765a6fffab15276491cf5714
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-controller-overview-c"></a>Общие сведения о ASP.NET MVC контроллера (C#)
 ====================
@@ -118,6 +118,6 @@ ms.lasthandoff: 11/10/2017
 
 Цель этого учебника было для ознакомления с основными понятиями контроллеров ASP.NET MVC, действия контроллера и результаты действий контроллера. В первом разделе вы узнали, как добавление новых контроллеров в проект ASP.NET MVC. Далее вы узнали, как открытые методы контроллера доступны вселенной действия контроллера. Наконец мы рассмотрели различные типы результатов действий, которые могут быть возвращены из действия контроллера. В частности мы рассмотрели, как получить ViewResult, RedirectToActionResult и ContentResult из действия контроллера.
 
->[!div class="step-by-step"]
-[Назад](creating-an-action-vb.md)
-[Вперед](creating-custom-routes-cs.md)
+> [!div class="step-by-step"]
+> [Назад](creating-an-action-vb.md)
+> [Вперед](creating-custom-routes-cs.md)

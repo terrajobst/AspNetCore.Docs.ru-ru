@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-cs
-title: "Развертывание базы данных (C#) | Документы Microsoft"
+title: Развертывание базы данных (C#) | Документы Microsoft
 author: rick-anderson
-description: "Развертывание веб-приложения ASP.NET влечет за собой, получение необходимых файлов и ресурсов из среды разработки в рабочую среду. Для приложения..."
+description: Развертывание веб-приложения ASP.NET влечет за собой, получение необходимых файлов и ресурсов из среды разработки в рабочую среду. Для приложения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/23/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f71e3cd1e81644df7b3dfed363b6f2ca826e610d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 203bf64da887f31e5f0727fc57173d6a573095da
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-a-database-c"></a>Развертывание базы данных (C#)
 ====================
@@ -41,10 +41,10 @@ ms.lasthandoff: 11/10/2017
 
 `Reviews.mdf` База данных содержит четыре таблицы:
 
-- `Genres`-содержит запись для каждого жанра, как технология, фантастики и бизнеса.
-- `Books`— включает запись для каждой проверки со столбцами как `Title`, `GenreId`, `ReviewDate`, и `Review`, среди прочего.
-- `Authors`— включает сведения о каждый автор, участвовал проверенные книги.
-- `BooksAuthors`-Соединяемая таблица многие ко многим, указывающее, какие авторы написали какие книг.
+- `Genres` -содержит запись для каждого жанра, как технология, фантастики и бизнеса.
+- `Books` — включает запись для каждой проверки со столбцами как `Title`, `GenreId`, `ReviewDate`, и `Review`, среди прочего.
+- `Authors` — включает сведения о каждый автор, участвовал проверенные книги.
+- `BooksAuthors` -Соединяемая таблица многие ко многим, указывающее, какие авторы написали какие книг.
   
 
 Рисунок 1 демонстрирует схему аварийного восстановления из этих четырех таблиц.
@@ -195,6 +195,6 @@ ms.lasthandoff: 11/10/2017
 - [Загрузка базы данных Microsoft SQL Server, 1.1 мастер публикации](https://www.microsoft.com/downloads/details.aspx?familyid=56E5B1C5-BF17-42E0-A410-371A838E570A&amp;displaylang=en)
 - [Загрузить Microsoft SQL Server Management Studio Express Edition](https://www.microsoft.com/downloads/details.aspx?FamilyId=C243A5AE-4BD1-4E3D-94B8-5A0F62BF7796&amp;displaylang=en)
 
->[!div class="step-by-step"]
-[Назад](core-differences-between-iis-and-the-asp-net-development-server-cs.md)
-[Вперед](configuring-the-production-web-application-to-use-the-production-database-cs.md)
+> [!div class="step-by-step"]
+> [Назад](core-differences-between-iis-and-the-asp-net-development-server-cs.md)
+> [Вперед](configuring-the-production-web-application-to-use-the-production-database-cs.md)

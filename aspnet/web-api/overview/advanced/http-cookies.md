@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/http-cookies
-title: "Файлы cookie HTTP в ASP.NET Web API | Документы Microsoft"
+title: Файлы cookie HTTP в ASP.NET Web API | Документы Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/17/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/http-cookies
 msc.type: authoredcontent
-ms.openlocfilehash: e17c51946a268aa13ec035d18dc516928c9f4419
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 363ca975cf75b635b766a53eeda87cf957eed60c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/22/2018
 ---
 <a name="http-cookies-in-aspnet-web-api"></a>Файлы cookie HTTP в веб-API ASP.NET
 ====================
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-powershell[Main](http-cookies/samples/sample2.ps1)]
 
-Для возврата файла cookie сервера клиента содержит заголовок файла Cookie в последующих запросах.
+Чтобы вернуть куки-файл на сервер, клиент включает заголовок файла Cookie в последующих запросах.
 
 [!code-console[Main](http-cookies/samples/sample3.cmd)]
 
@@ -79,7 +79,7 @@ HTTP-ответа, может включать несколько заголов
 
 ## <a name="structured-cookie-data"></a>Cookie структурированных данных
 
-Большинство браузеров ограничить количество файлов cookie, они будут храниться &#8212; как общее число, так и номер каждого домена. Таким образом его можно использовать для размещения структурированных данных в одном файле cookie, вместо задания нескольких файлов cookie.
+Большинство браузеров ограничить количество файлов cookie, они будут храниться&#8212;общее число и число в домене. Таким образом его можно использовать для размещения структурированных данных в одном файле cookie, вместо задания нескольких файлов cookie.
 
 > [!NOTE]
 > RFC 6265 не определяет структуру данных файлов cookie.

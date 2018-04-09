@@ -1,7 +1,7 @@
 ---
-title: "Используйте JavaScriptServices для создания приложений на одной странице в ASP.NET Core"
+title: Используйте JavaScriptServices для создания приложений на одной странице в ASP.NET Core
 author: scottaddie
-description: "Узнайте о преимуществах использования JavaScriptServices для создания одной страницы приложений (SPA) поддерживаемый ASP.NET Core."
+description: Узнайте о преимуществах использования JavaScriptServices для создания одной страницы приложений (SPA) поддерживаемый ASP.NET Core.
 manager: wpickett
 ms.author: scaddie
 ms.custom: H1Hack27Feb2017
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/spa-services
-ms.openlocfilehash: c962fc160cf39ad1c69f4269616c993fde420035
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 05b0d7f31e167e620f2d168109ffd907ba120a49
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>Используйте JavaScriptServices для создания приложений на одной странице в ASP.NET Core
 
@@ -62,7 +62,7 @@ SpaServices предоставляет полезные инфраструкту
 
 Для работы с SpaServices, установите следующее:
 * [Node.js](https://nodejs.org/) (версии 6 или более поздней версии) с npm
-    * Чтобы проверить эти компоненты установлены и может быть найден, выполните следующую из командной строки:
+  * Чтобы проверить эти компоненты установлены и может быть найден, выполните следующую из командной строки:
 
     ```console
     node -v && npm -v
@@ -70,8 +70,9 @@ SpaServices предоставляет полезные инфраструкту
 
 Примечание: При развертывании веб-сайте Azure не нужно выполнять никаких действий, &mdash; Node.js установлена и доступна в серверных средах.
 
-* [Пакет SDK для .NET core](https://www.microsoft.com/net/download/core) 1.0 (или более поздней версии)
-    * Если вы в Windows, это можно сделать, выбрав Visual Studio 2017 **кросс платформенной разработки .NET Core** рабочей нагрузки.
+* [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
+
+  * Если вы используете Windows с помощью Visual Studio 2017 г., выбрав установлен пакет SDK **кросс платформенной разработки .NET Core** рабочей нагрузки.
 
 * [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) NuGet package
 
@@ -262,7 +263,7 @@ dotnet new angular
     * Исключает исходное сопоставление.
     * Оптимизирует код на стороне клиента через объединение и Минификация.
 
-ASP.NET Core использует переменную среды с именем `ASPNETCORE_ENVIRONMENT` для хранения режим конфигурации. В разделе  **[параметр среды](xref:fundamentals/environments#setting-the-environment)**  для получения дополнительной информации.
+ASP.NET Core использует переменную среды с именем `ASPNETCORE_ENVIRONMENT` для хранения режим конфигурации. В разделе **[параметр среды](xref:fundamentals/environments#setting-the-environment)** для получения дополнительной информации.
 
 ### <a name="running-with-net-core-cli"></a>Запуск с .NET Core CLI
 

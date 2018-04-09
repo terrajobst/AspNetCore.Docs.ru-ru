@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-3
-title: "Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4, веб-формы - часть 3 | Документы Microsoft"
+title: Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4, веб-формы - часть 3 | Документы Microsoft
 author: tdykstra
-description: "Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, использующий Entity Framework. Это образец приложения..."
+description: Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, использующий Entity Framework. Это образец приложения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 1ec8891c4ccf71494389ba562fdfb4b88055d12f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 654f3556af5d05ec186e1811421966bbaffd2e21
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-3"></a>Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4 Web Forms — часть 3
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 > Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, с помощью Entity Framework 4.0 и Visual Studio 2010. Сведения о учебника серии см [в первом учебнике ряда](the-entity-framework-and-aspnet-getting-started-part-1.md)
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 
 Переключитесь в **разработки** просматривать и выбирать `EntityDataSource` элемента управления. В **свойства** задайте `Where` свойства `it.EnrollmentDate is not null`.
 
-[!["Image01"](the-entity-framework-and-aspnet-getting-started-part-3/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image9.png)
+[![Image01](the-entity-framework-and-aspnet-getting-started-part-3/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image9.png)
 
 Синтаксис, который используется в `Where` свойство `EntityDataSource` элемент управления является Entity SQL. Язык Entity SQL является напоминает Transact-SQL, но он настраивается для использования с сущностями, а не объекты базы данных. В выражении `it.EnrollmentDate is not null`, слово `it` представляет ссылку на сущность, возвращенных запросом. Таким образом `it.EnrollmentDate` ссылается на `EnrollmentDate` свойство `Person` сущности, `EntityDataSource` возвращает управление.
 
@@ -184,6 +184,6 @@ ms.lasthandoff: 11/10/2017
 
 Вы теперь отображается, обновить, фильтрации, упорядоченные и сгруппированные данные из отдельных таблиц. В следующем уроке будет начать работу со связанными данными (основной-подробности).
 
->[!div class="step-by-step"]
-[Назад](the-entity-framework-and-aspnet-getting-started-part-2.md)
-[Вперед](the-entity-framework-and-aspnet-getting-started-part-4.md)
+> [!div class="step-by-step"]
+> [Назад](the-entity-framework-and-aspnet-getting-started-part-2.md)
+> [Вперед](the-entity-framework-and-aspnet-getting-started-part-4.md)

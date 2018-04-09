@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part1
-title: "Введение в ASP.NET MVC | Документы Microsoft"
+title: Введение в ASP.NET MVC | Документы Microsoft
 author: shanselman
-description: "Это руководство для новичков, в котором представлены основные сведения по ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных."
+description: Это руководство для новичков, в котором представлены основные сведения по ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part1
 msc.type: authoredcontent
-ms.openlocfilehash: 08c30f4aab77bff64ed3ab874d13cc5dc863fc99
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 476d832e389b9b5a26fe2d552ca648c79b100056
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="intro-to-aspnet-mvc"></a>Введение в ASP.NET MVC
 ====================
@@ -84,5 +84,5 @@ Visual Web Developer — это интегрированная среда раз
 
 Без дополнительной настройки этот шаблон по умолчанию предоставляет основные входа и вы две страницы для перехода. Давайте изменить работу этого приложения и немного узнать о ASP.NET MVC в процессе. Закройте браузер, а также позволяет изменить часть кода.
 
->[!div class="step-by-step"]
-[Вперед](getting-started-with-mvc-part2.md)
+> [!div class="step-by-step"]
+> [Вперед](getting-started-with-mvc-part2.md)

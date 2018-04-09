@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb
-title: "Фильтрация с помощью DropDownList (VB) иерархического | Документы Microsoft"
+title: Фильтрация с помощью DropDownList (VB) иерархического | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике показано, как отображать отчеты главного и подчиненного представлений одной веб-странице с помощью элементами управления DropDownList для вывода записей «master» и DataList displ..."
+description: В этом учебнике показано, как отображать отчеты главного и подчиненного представлений одной веб-странице с помощью элементами управления DropDownList для вывода записей «master» и DataList displ...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/18/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1f480cfcfb3b02c9398b2db3e66cec432152a05d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e4ece466319e268a74bbe8c4ed96ffc33cff432f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-filtering-with-a-dropdownlist-vb"></a>Иерархического Фильтрация с помощью DropDownList (Visual Basic)
 ====================
@@ -103,12 +103,12 @@ ms.lasthandoff: 11/10/2017
 **Рис. 7**: выберите `GetProductsByCategoryID(categoryID)` метод ([Просмотр полноразмерное изображение](master-detail-filtering-with-a-dropdownlist-datalist-vb/_static/image17.png))
 
 
-После нажатия кнопки Далее, мастер ObjectDataSource запрашивает источник значения для `GetProductsByCategoryID(categoryID)` метода  *`categoryID`*  параметра. Чтобы использовать значение выбранного `categories` источника параметра установите элемент DropDownList для элемента управления и ControlID в `Categories`.
+После нажатия кнопки Далее, мастер ObjectDataSource запрашивает источник значения для `GetProductsByCategoryID(categoryID)` метода *`categoryID`* параметра. Чтобы использовать значение выбранного `categories` источника параметра установите элемент DropDownList для элемента управления и ControlID в `Categories`.
 
 
 [![Присвоено значение из категории DropDownList categoryID параметра](master-detail-filtering-with-a-dropdownlist-datalist-vb/_static/image19.png)](master-detail-filtering-with-a-dropdownlist-datalist-vb/_static/image18.png)
 
-**Рис. 8**: задать  *`categoryID`*  параметр в значение `Categories` DropDownList ([Просмотр полноразмерное изображение](master-detail-filtering-with-a-dropdownlist-datalist-vb/_static/image20.png))
+**Рис. 8**: задать *`categoryID`* параметр в значение `Categories` DropDownList ([Просмотр полноразмерное изображение](master-detail-filtering-with-a-dropdownlist-datalist-vb/_static/image20.png))
 
 
 После завершения работы мастера настройки источника данных, Visual Studio автоматически создаст `ItemTemplate` для DataList, в котором отображаются имя и значение каждого поля данных. Давайте улучшения DataList вместо этого использовать `ItemTemplate` , отображается только название продукта, категория, поставщик, количество на единицу и цены вместе с `SeparatorTemplate` , внедряет `<hr>` элемент между каждым элементом. Я буду использовать `ItemTemplate` из примера на [отображение данных с помощью DataList и элементы управления повторителем](../displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-vb.md) учебника, но можно использовать любой шаблон разметки можно найти наиболее привлекательный.
@@ -164,7 +164,7 @@ ms.lasthandoff: 11/10/2017
 **Рис. 13**: при выборе элемента списка «--выберите категорию--» продукты не отображаются ([Просмотр полноразмерное изображение](master-detail-filtering-with-a-dropdownlist-datalist-vb/_static/image31.png))
 
 
-Если вместо этого будет отображать *все* продуктов, при выборе параметра «– выберите категорию –», используйте значение `-1` вместо него. Проницательный читатель будет помните, что назад в *иерархического фильтрации с DropDownList* учебника мы обновили `ProductsBLL` класса `GetProductsByCategoryID(categoryID)` метод, чтобы если  *`categoryID`*  значение `-1` был передан в всех продуктов, возвращенных записей.
+Если вместо этого будет отображать *все* продуктов, при выборе параметра «– выберите категорию –», используйте значение `-1` вместо него. Проницательный читатель будет помните, что назад в *иерархического фильтрации с DropDownList* учебника мы обновили `ProductsBLL` класса `GetProductsByCategoryID(categoryID)` метод, чтобы если *`categoryID`* значение `-1` был передан в всех продуктов, возвращенных записей.
 
 ## <a name="summary"></a>Сводка
 
@@ -176,12 +176,12 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Особая благодарность
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Рэнди Шмидт. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
-[Вперед](master-detail-filtering-acess-two-pages-datalist-vb.md)
+> [!div class="step-by-step"]
+> [Назад](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
+> [Вперед](master-detail-filtering-acess-two-pages-datalist-vb.md)

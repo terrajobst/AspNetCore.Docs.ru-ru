@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-vb
-title: "Создание структуры сайта с помощью главных страниц (Visual Basic) | Документы Microsoft"
+title: Создание структуры сайта с помощью главных страниц (Visual Basic) | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник покажет основы главной страницы. А именно, каковы главные страницы, как работает один Создание главной страницы, каковы содержимого заполнителями, как работает один cr..."
+description: Этот учебник покажет основы главной страницы. А именно, каковы главные страницы, как работает один Создание главной страницы, каковы содержимого заполнителями, как работает один cr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/21/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 29671970dc6f53d0e14170cf6376c02634b7b08e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d18993af7159de552db0c622fbef58e814e36ebb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-site-wide-layout-using-master-pages-vb"></a>Создание структуры сайта с помощью главных страниц (Visual Basic)
 ====================
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/24/2018
 
 [![Www.asp.net веб-сайт использует согласованного внешнего вида и поведения на всех страницах](creating-a-site-wide-layout-using-master-pages-vb/_static/image2.png)](creating-a-site-wide-layout-using-master-pages-vb/_static/image1.png)
 
-**На рисунке 01**: www.asp.net веб-сайт использует согласованные поиска и чувствовать себя через все страницы ([Просмотр полноразмерное изображение](creating-a-site-wide-layout-using-master-pages-vb/_static/image3.png))
+<strong>На рисунке 01</strong>: www.asp.net веб-сайт использует согласованные поиска и чувствовать себя через все страницы ([Просмотр полноразмерное изображение](creating-a-site-wide-layout-using-master-pages-vb/_static/image3.png))
 
 
 Другой атрибут хорошо спроектированной узла заключается в простоте, с помощью которого можно изменить внешний вид веб-узла. На домашней странице www.asp.net марта 2008 г представлена на рисунке 1, но между текущей датой и публикации этого учебника, могло измениться внешний вид. Возможно пунктов меню в верхней расширяться и включать новый раздел для MVC. Или может быть радикально обновленной различные цвета, шрифты и макет будет узнали о нем. Применение таких изменений для всего сайта должно быть быстрой и простой процесс, который не требует изменения для тысяч веб-страницы, входящие в состав сайта.
@@ -281,12 +281,12 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор по ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 3.5 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Скотт может быть достигнута по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) или через его блог по [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор по ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 3.5 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Скотт может быть достигнута по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) или через его блог по [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Благодарности
 
 Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Назад](nested-master-pages-cs.md)
-[Вперед](multiple-contentplaceholders-and-default-content-vb.md)
+> [!div class="step-by-step"]
+> [Назад](nested-master-pages-cs.md)
+> [Вперед](multiple-contentplaceholders-and-default-content-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/validating-user-input-in-aspnet-web-pages-sites
-title: "Проверка пользовательского ввода в ASP.NET Web Pages (Razor) узлов | Документы Microsoft"
+title: Проверка пользовательского ввода в ASP.NET Web Pages (Razor) узлов | Документы Microsoft
 author: tfitzmac
-description: "В этой статье описывается, как для проверки сведений, получаемых от пользователей &mdash; то есть, убедитесь, что пользователь ввел допустимый сведения в формате HTML форм в как..."
+description: В этой статье описывается, как для проверки сведений, получаемых от пользователей &mdash; то есть, убедитесь, что пользователь ввел допустимый сведения в формате HTML форм в как...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/validating-user-input-in-aspnet-web-pages-sites
 msc.type: authoredcontent
-ms.openlocfilehash: 3bde2a4ea69577ebcbe3e9e89a7ee07e6ece8dd1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 34f703e6db70ac79c22f4a50d4cfd4e2326b4c74
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validating-user-input-in-aspnet-web-pages-razor-sites"></a>Проверка пользовательского ввода в веб-страницы (Razor) узлов ASP.NET
 ====================
@@ -83,15 +83,15 @@ ms.lasthandoff: 11/10/2017
     Чтобы проверить наличие обязательных полей, используйте `Validation.RequireField(field, [error message])` (для отдельных полей) или `Validation.RequireFields(field1, field2, ...))` (для получения списка полей). Для других типов проверки, используйте `Validation.Add(field, ValidationType)`. Для `ValidationType`, можно использовать следующие параметры:
 
     `Validator.DateTime ([error message])`  
-`Validator.Decimal([error message])`  
-`Validator.EqualsTo(otherField [, error message])`  
-`Validator.Float([error message])`  
-`Validator.Integer([error message])`  
-`Validator.Range(min, max [, error message])`  
-`Validator.RegEx(pattern [, error message])`  
-`Validator.Required([error message])`  
-`Validator.StringLength(length)`  
-`Validator.Url([error message])`
+   `Validator.Decimal([error message])`  
+   `Validator.EqualsTo(otherField [, error message])`  
+   `Validator.Float([error message])`  
+   `Validator.Integer([error message])`  
+   `Validator.Range(min, max [, error message])`  
+   `Validator.RegEx(pattern [, error message])`  
+   `Validator.Required([error message])`  
+   `Validator.StringLength(length)`  
+   `Validator.Url([error message])`
 3. При отправке страницы проверить, достиг ли проверка, проверив `Validation.IsValid`:
 
     [!code-csharp[Main](validating-user-input-in-aspnet-web-pages-sites/samples/sample1.cs)]
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-html[Main](validating-user-input-in-aspnet-web-pages-sites/samples/sample3.html)]
 
- Двух библиотек могут загружаться из сети доставки содержимого (CDN), поэтому не нужно обязательно иметь их на компьютере или сервере. Тем не менее, необходимо иметь локальную копию *jquery.validate.unobtrusive.js*. Если вы уже работаете не с помощью WebMatrix шаблона (например **начального сайта** ), включает библиотеку, создайте сайт веб-страницы на основе **начального сайта**. Затем скопируйте *.js* файла для текущего веб-узла.
+   Двух библиотек могут загружаться из сети доставки содержимого (CDN), поэтому не нужно обязательно иметь их на компьютере или сервере. Тем не менее, необходимо иметь локальную копию *jquery.validate.unobtrusive.js*. Если вы уже работаете не с помощью WebMatrix шаблона (например **начального сайта** ), включает библиотеку, создайте сайт веб-страницы на основе **начального сайта**. Затем скопируйте *.js* файла для текущего веб-узла.
 2. В разметке для каждого элемента, который проверка, добавьте вызов `Validation.For(field)`. Этот метод создает атрибуты, используемые для проверки на стороне клиента. (Вместо раскрытием фактический код JavaScript, метод выдает такие атрибуты, как `data-val-...`. Эти атрибуты поддерживают ненавязчивой клиентской проверки используется jQuery для выполнения работы.)
 
 Следующая страница демонстрирует добавление функции проверки клиента в примере выше.

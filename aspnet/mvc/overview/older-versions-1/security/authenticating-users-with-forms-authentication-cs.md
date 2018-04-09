@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-cs
-title: "Проверка подлинности пользователей с помощью форм проверки подлинности (C#) | Документы Microsoft"
+title: Проверка подлинности пользователей с помощью форм проверки подлинности (C#) | Документы Microsoft
 author: microsoft
-description: "Узнайте, как использовать атрибут [Authorize] чтобы защитить паролем определенного страниц в приложении MVC. Вы узнаете, как использовать веб-сайт администрирования слишком..."
+description: Узнайте, как использовать атрибут [Authorize] чтобы защитить паролем определенного страниц в приложении MVC. Вы узнаете, как использовать веб-сайт администрирования слишком...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 17bcf02e1351587d64b72ee2b40393e0f748f23e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e1def84bbf48847339e89b239b026d053640b935
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="authenticating-users-with-forms-authentication-c"></a>Проверка подлинности пользователей с помощью форм (C#)
 ====================
@@ -107,7 +107,7 @@ ms.lasthandoff: 11/10/2017
 
 Первым шагом является добавление все необходимые объекты базы данных (таблицы и хранимые процедуры) в производственной базе данных. Чтобы добавить эти объекты в новой базе данных проще всего воспользоваться преимуществами мастер установки SQL Server ASP.NET (см. рис. 8). Вы можете запустить это средство, открыв Командная строка Visual Studio 2008 из программной группы Microsoft Visual Studio 2008 и выполнив следующую команду из командной строки:
 
-ASPNET\_regsql
+aspnet\_regsql
 
 **Рис. 8 — ASP.NET мастер установки SQL Server**
 
@@ -152,5 +152,5 @@ ASPNET\_regsql
 
 В этом учебнике вы узнали, как использовать проверку подлинности форм, при создании приложения ASP.NET MVC. Во-первых вы узнали, как для создания новых пользователей и роли, используя преимущества Web Site Administration Tool. Далее вы узнали, как использовать атрибут [Authorize], чтобы предотвратить несанкционированный вызов действия контроллера. Наконец вы узнали, как настроить приложение MVC, для хранения пользователя и сведения о ролях в производственной базы данных.
 
->[!div class="step-by-step"]
-[Вперед](authenticating-users-with-windows-authentication-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](authenticating-users-with-windows-authentication-cs.md)

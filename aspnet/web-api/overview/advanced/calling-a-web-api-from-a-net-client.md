@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/calling-a-web-api-from-a-net-client
-title: "Вызов веб-API из клиента .NET (C#) | Документы Microsoft"
+title: Вызов веб-API из клиента .NET (C#) | Документы Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/24/2017
@@ -11,11 +11,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 44e02888b53ee372ab93db5f90acb691f26b7519
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: a243eeb982ba581e237263c4e31e130d634aff0e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="call-a-web-api-from-a-net-client-c"></a>Вызов веб-API из клиента .NET (C#)
 ====================
@@ -48,7 +48,7 @@ ms.lasthandoff: 02/12/2018
 
 Приведенный выше код является полный клиентского приложения.
 
-`RunAsync`Запуск и блокируется до ее завершения. Большинство **HttpClient** методы являются async, поскольку они выполняют сетевых операций ввода-вывода. Все асинхронные задачи выполняемые в `RunAsync`. Обычно приложения не блокирует основной поток, но это приложение не допускает каких-либо действий.
+`RunAsync` Запуск и блокируется до ее завершения. Большинство **HttpClient** методы являются async, поскольку они выполняют сетевых операций ввода-вывода. Все асинхронные задачи выполняемые в `RunAsync`. Обычно приложения не блокирует основной поток, но это приложение не допускает каких-либо действий.
 
 [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet_run)]
 
@@ -109,7 +109,7 @@ Json.NET — это популярный платформа JSON высокой 
 
 **GetAsync** метод отправляет запрос HTTP GET. Если метод завершается, она возвращает **HttpResponseMessage** , содержащий HTTP-ответа. Если код состояния в ответе код успешного завершения, текст ответа содержит представление JSON продукта. Вызовите **ReadAsAsync** для полезных данных JSON для десериализации `Product` экземпляра. **ReadAsAsync** метод является асинхронным, поскольку текст ответа может быть произвольно большое.
 
-**HttpClient** не вызывает исключение, если HTTP-ответ содержит код ошибки. Вместо этого **IsSuccessStatusCode** свойство **false** Если состояние представляет собой код ошибки. Если вы предпочитаете обрабатывать коды ошибок HTTP как исключения, вызовите [HttpResponseMessage.EnsureSuccessStatusCode](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.ensuresuccessstatuscode(v=vs.110).aspx) в объекте отклика. `EnsureSuccessStatusCode`вызывает исключение, если код состояния находится вне диапазона 200&ndash;299. Обратите внимание, что **HttpClient** может создавать исключения по другим причинам &mdash; к примеру, при истечении времени ожидания запроса.
+**HttpClient** не вызывает исключение, если HTTP-ответ содержит код ошибки. Вместо этого **IsSuccessStatusCode** свойство **false** Если состояние представляет собой код ошибки. Если вы предпочитаете обрабатывать коды ошибок HTTP как исключения, вызовите [HttpResponseMessage.EnsureSuccessStatusCode](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.ensuresuccessstatuscode(v=vs.110).aspx) в объекте отклика. `EnsureSuccessStatusCode` вызывает исключение, если код состояния находится вне диапазона 200&ndash;299. Обратите внимание, что **HttpClient** может создавать исключения по другим причинам &mdash; к примеру, при истечении времени ожидания запроса.
 
 <a id="MediaTypeFormatters"></a>
 ### <a name="media-type-formatters-to-deserialize"></a>Модули форматирования типа мультимедиа для десериализации
@@ -167,16 +167,16 @@ resp.Content.ReadAsAsync<IEnumerable<Product>>(formatters);
 
 Для проверки клиентского приложения:
 
-1. [Загрузить](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) и запустить приложение сервера. [Инструкции по загрузке](https://docs.microsoft.com/aspnet/core/tutorials/#how-to-download-a-sample). Убедитесь, что работа приложения сервера. Для exaxmple `http://localhost:64195/api/products` должен возвращать список продуктов.
+1. [Загрузить](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) и запустить приложение сервера. [Указания по скачиванию](https://docs.microsoft.com/aspnet/core/tutorials/#how-to-download-a-sample). Убедитесь, что работа приложения сервера. Для exaxmple `http://localhost:64195/api/products` должен возвращать список продуктов.
 2. Задайте базовый универсальный код Ресурса для HTTP-запросов. Измените номер порта к порту, используемому в приложении сервера.
     [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet5&highlight=2)]
 
 3. Запустите клиентское приложение. Выводятся следующие результаты.
 
- ```console
- Created at http://localhost:64195/api/products/4
-Name: Gizmo     Price: 100.0    Category: Widgets
-Updating price...
-Name: Gizmo     Price: 80.0     Category: Widgets
-Deleted (HTTP Status = 204)
-```
+   ```console
+   Created at http://localhost:64195/api/products/4
+   Name: Gizmo     Price: 100.0    Category: Widgets
+   Updating price...
+   Name: Gizmo     Price: 80.0     Category: Widgets
+   Deleted (HTTP Status = 204)
+   ```

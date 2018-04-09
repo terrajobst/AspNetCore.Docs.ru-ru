@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/introducing-the-nerddinner-tutorial
-title: "Введение в учебник обновление NerdDinner | Документы Microsoft"
+title: Введение в учебник обновление NerdDinner | Документы Microsoft
 author: shanselman
-description: "Лучший способ изучения новой платформы является построения каких-то с ним. В этом учебнике представлены пошаговые инструкции для создания приложения с небольшой, но завершенный, с помощью ASP.NE..."
+description: Лучший способ изучения новой платформы является построения каких-то с ним. В этом учебнике представлены пошаговые инструкции для создания приложения с небольшой, но завершенный, с помощью ASP.NE...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/introducing-the-nerddinner-tutorial
 msc.type: authoredcontent
-ms.openlocfilehash: 57eedb224e26867c78cc399b89f91b95f722074d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3d925a7dc89fc0c742468653c5c138a0f1d71231
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-the-nerddinner-tutorial"></a>Введение в учебник обновление NerdDinner
 ====================
@@ -88,5 +88,5 @@ Visual Studio 2008 или произвольным Visual Web Developer 2008 Exp
 
 Начнем с помощью файла -&gt;новый проект в Visual Studio для создания приложения обновление NerdDinner.
 
->[!div class="step-by-step"]
-[Вперед](create-a-new-aspnet-mvc-project.md)
+> [!div class="step-by-step"]
+> [Вперед](create-a-new-aspnet-mvc-project.md)

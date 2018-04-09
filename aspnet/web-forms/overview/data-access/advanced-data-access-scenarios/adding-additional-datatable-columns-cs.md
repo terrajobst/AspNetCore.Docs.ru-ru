@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-cs
-title: "Добавление дополнительных DataTable столбцов (C#) | Документы Microsoft"
+title: Добавление дополнительных DataTable столбцов (C#) | Документы Microsoft
 author: rick-anderson
-description: "При создании типизированного набора данных с помощью мастера TableAdapter, соответствующий объект DataTable содержит столбцы, возвращенные запросом к основной базе данных. Но есть..."
+description: При создании типизированного набора данных с помощью мастера TableAdapter, соответствующий объект DataTable содержит столбцы, возвращенные запросом к основной базе данных. Но есть...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/18/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2982af897b433706889cb4eda79dcb4e76baea62
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9c2232c9867fc605a5b5d3973d4dbe31895841ca
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-additional-datatable-columns-c"></a>Добавление дополнительных DataTable столбцов (C#)
 ====================
@@ -41,9 +41,9 @@ ms.lasthandoff: 01/24/2018
 
 В *создание новых хранимых процедур для типизированного набора данных s адаптеры таблиц TableAdapter* учебника мы создали типизированный набор данных, с именем `NorthwindWithSprocs`. Этот набор данных в настоящее время содержит два DataTables: `ProductsDataTable` и `EmployeesDataTable`. `ProductsTableAdapter` Имеет следующих трех способов:
 
-- `GetProducts`-основной запрос, который возвращает все записи из `Products` таблицы
-- `GetProductsByCategoryID(categoryID)`— Возвращает все продукты с указанным *categoryID*.
-- `GetProductByProductID(productID)`— Возвращает определенный продукт с указанным *productID*.
+- `GetProducts` -основной запрос, который возвращает все записи из `Products` таблицы
+- `GetProductsByCategoryID(categoryID)` — Возвращает все продукты с указанным *categoryID*.
+- `GetProductByProductID(productID)` — Возвращает определенный продукт с указанным *productID*.
 
 Основной запрос и два дополнительных метода возвращают один и тот же набор полей данных, а именно все столбцы из `Products` таблицы. Существуют не коррелированные вложенные запросы или `JOIN` s извлечение связанных данных из `Categories` или `Suppliers` таблицы. Таким образом `ProductsDataTable` имеет соответствующего столбца для каждого поля в `Products` таблицы.
 
@@ -209,12 +209,12 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Рэнди Шмидт, Jacky Goor, Екатерина Leigh и – Хилтон Гизнау. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](updating-the-tableadapter-to-use-joins-cs.md)
-[Вперед](working-with-computed-columns-cs.md)
+> [!div class="step-by-step"]
+> [Назад](updating-the-tableadapter-to-use-joins-cs.md)
+> [Вперед](working-with-computed-columns-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/how-do-i-use-httpverbs-attributes-in-an-mvc-application
-title: "Инструкции: использование HttpVerbs атрибуты в MVC-приложении? | Документы Майкрософт"
+title: 'Инструкции: использование HttpVerbs атрибуты в MVC-приложении? | Документы Майкрософт'
 author: rick-anderson
-description: "В этот видеоролик пиксел Крис показывает, как использовать атрибуты HttpVerbs для управления доступом к действия MVC. Во-первых пример приложения создается с использованием соадминистратора по умолчанию..."
+description: В этот видеоролик пиксел Крис показывает, как использовать атрибуты HttpVerbs для управления доступом к действия MVC. Во-первых пример приложения создается с использованием соадминистратора по умолчанию...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/30/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-use-httpverbs-attributes-in-an-mvc-application
 msc.type: video
-ms.openlocfilehash: 278720a6762bedae357e23b368b6dc34e50568d6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 42817e712db0489f277ac65250b9c0f102088c0a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-use-httpverbs-attributes-in-an-mvc-application"></a>Инструкции: использование HttpVerbs атрибуты в MVC-приложении?
 ====================
@@ -24,8 +24,8 @@ ms.lasthandoff: 11/10/2017
 
 В этот видеоролик пиксел Крис показывает, как использовать атрибуты HttpVerbs для управления доступом к действия MVC. Во-первых пример приложения создается с контроллера по умолчанию и представление для редактирования сведений. Далее второе действие индекс будет добавлен контроллер, который имеет атрибут HttpPost, который ограничивает его вызывается только в том случае, если используется HTTP POST. В дальнейших действий атрибут AcceptVerbs() реализуется как альтернативный синтаксис для Visual Studio 2008. Затем рассматривается использование HttpVerbs для предотвращения угрозу безопасности, связанные с использованием HTTP GET для выполнения инструкции delete по ссылке.
 
-[&#9654; Посмотрите видео (16 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-httpverbs-attributes-in-an-mvc-application)
+[&#9654;Посмотрите видео (16 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-httpverbs-attributes-in-an-mvc-application)
 
->[!div class="step-by-step"]
-[Назад](how-do-i-work-with-model-binders-in-an-mvc-application.md)
-[Вперед](mvc2-html-encoding.md)
+> [!div class="step-by-step"]
+> [Назад](how-do-i-work-with-model-binders-in-an-mvc-application.md)
+> [Вперед](mvc2-html-encoding.md)

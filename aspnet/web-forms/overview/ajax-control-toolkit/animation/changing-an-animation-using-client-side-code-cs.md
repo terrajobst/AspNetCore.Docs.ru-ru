@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/changing-an-animation-using-client-side-code-cs
-title: "Изменения анимации с помощью кода на стороне клиента (C#) | Документы Microsoft"
+title: Изменения анимации с помощью кода на стороне клиента (C#) | Документы Microsoft
 author: wenz
-description: "Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Можно также анимации..."
+description: Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Можно также анимации...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/changing-an-animation-using-client-side-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6dcaeac073f54b0804fe3acf7ec22491b1cbbba5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2f572efeb012d88ab15740bab7b0e4383572f3f7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="changing-an-animation-using-client-side-code-c"></a>Изменения анимации с помощью кода на стороне клиента (C#)
 ====================
@@ -78,6 +78,6 @@ ms.lasthandoff: 11/10/2017
 
 Анимация выполняется немедленно, без щелчок мыши (и с минимальными разметкой) ([Просмотр полноразмерное изображение](changing-an-animation-using-client-side-code-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](executing-animations-using-client-side-code-cs.md)
-[Вперед](animating-an-updatepanel-control-cs.md)
+> [!div class="step-by-step"]
+> [Назад](executing-animations-using-client-side-code-cs.md)
+> [Вперед](animating-an-updatepanel-control-cs.md)

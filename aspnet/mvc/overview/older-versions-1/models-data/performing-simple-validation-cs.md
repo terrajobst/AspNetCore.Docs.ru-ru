@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/performing-simple-validation-cs
-title: "Выполняет простую проверку (C#) | Документы Microsoft"
+title: Выполняет простую проверку (C#) | Документы Microsoft
 author: StephenWalther
-description: "Узнайте, как выполнять проверку в приложении ASP.NET MVC. В этом учебнике Стивен Вальтер вводит вы состояние модели и вспомогательный класс проверки HTML..."
+description: Узнайте, как выполнять проверку в приложении ASP.NET MVC. В этом учебнике Стивен Вальтер вводит вы состояние модели и вспомогательный класс проверки HTML...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/performing-simple-validation-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 005872308d9d4d8ac7feb12dd5ab1fc463d0140e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7fc1dcc6935841382215f67a519cd241ac68931a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="performing-simple-validation-c"></a>Выполняет простую проверку (C#)
 ====================
@@ -130,6 +130,6 @@ Create() действию, предоставляемым контроллеро
 
 Целью данного учебника было описаны основные принципы работы проверки в ASP.NET MVC. Вы узнали, как использовать состояние модели и вспомогательных методов HTML проверки. Также мы рассмотрели различие между prebinding и postbinding проверки. В других учебниках мы обсудим различные стратегии перемещения код проверки из контроллеров в классами модели.
 
->[!div class="step-by-step"]
-[Назад](displaying-a-table-of-database-data-cs.md)
-[Вперед](validating-with-the-idataerrorinfo-interface-cs.md)
+> [!div class="step-by-step"]
+> [Назад](displaying-a-table-of-database-data-cs.md)
+> [Вперед](validating-with-the-idataerrorinfo-interface-cs.md)

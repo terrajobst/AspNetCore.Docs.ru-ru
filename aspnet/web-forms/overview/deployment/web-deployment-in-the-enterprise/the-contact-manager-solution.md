@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/the-contact-manager-solution
-title: "Решение диспетчера контактов | Документы Microsoft"
+title: Решение диспетчера контактов | Документы Microsoft
 author: jrjlee
-description: "Эта серия учебников использует образец решения & #x 2014; диспетчера контактов решения & #x 2014; для представления приложения корпоративного уровня с реалистичных уровень..."
+description: Эта серия учебников использует образец решения&#x2014;решения диспетчера контактов&#x2014;для представления приложения корпоративного уровня с реалистичных уровень...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/the-contact-manager-solution
 msc.type: authoredcontent
-ms.openlocfilehash: b7f691a1ee855788f6a57616aea35d960e4c85c7
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: d7034f800df98747d10401d7e2c7297fea0e46d4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="the-contact-manager-solution"></a>Решение диспетчера контактов
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 03/15/2018
 
 [Скачать PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
-> Это [серию учебников,](web-deployment-in-the-enterprise.md) использует образец решения & #x 2014; диспетчера контактов решения & #x 2014; для представления приложения корпоративного уровня с реалистичных уровень сложности. В этом разделе представлены решения диспетчера контактов, описаны основные компоненты решения и идентифицирует сложностей при развертывании таких приложений на различных платформах назначения в корпоративной среде.
+> Это [серию учебников,](web-deployment-in-the-enterprise.md) использует образец решения&#x2014;решения диспетчера контактов&#x2014;для представления приложения корпоративного уровня с реалистичных уровень сложности. В этом разделе представлены решения диспетчера контактов, описаны основные компоненты решения и идентифицирует сложностей при развертывании таких приложений на различных платформах назначения в корпоративной среде.
 > 
 > Как знакомиться с разделами в этих учебниках можно использовать как Эталонная реализация, в котором показано соответствие конкретных проблем, возникающих в корпоративный сценарий развертывания решения диспетчера контактов. Следующий раздел [параметр вверх диспетчера контактов решения](setting-up-the-contact-manager-solution.md), описывает, как загрузить и запустить решение на компьютере разработчика.
 
@@ -67,6 +67,6 @@ ms.lasthandoff: 03/15/2018
 
 Следующий раздел [параметр вверх диспетчера контактов решения](setting-up-the-contact-manager-solution.md), описывает, как загрузить и запустить решение на компьютере разработчика.
 
->[!div class="step-by-step"]
-[Назад](web-deployment-in-the-enterprise.md)
-[Вперед](setting-up-the-contact-manager-solution.md)
+> [!div class="step-by-step"]
+> [Назад](web-deployment-in-the-enterprise.md)
+> [Вперед](setting-up-the-contact-manager-solution.md)

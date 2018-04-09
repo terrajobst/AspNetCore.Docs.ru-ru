@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-vb
-title: "ASP.NET (Visual Basic) варианты размещения | Документы Microsoft"
+title: ASP.NET (Visual Basic) варианты размещения | Документы Microsoft
 author: rick-anderson
-description: "Веб-приложений ASP.NET обычно разрабатываются, создания и тестирования в локальной среде разработки и должны быть развернуты в производственной среде o..."
+description: Веб-приложений ASP.NET обычно разрабатываются, создания и тестирования в локальной среде разработки и должны быть развернуты в производственной среде o...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 54bac82a96a35d871d764849856c8e31f6570666
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0e99423ec803927d0f621c88f3d814578fec11f5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-hosting-options-vb"></a>ASP.NET (Visual Basic) варианты размещения
 ====================
@@ -61,7 +61,7 @@ ms.lasthandoff: 01/30/2018
 Помимо изменения конфигурации веб-приложения шаг 1 также иногда приводят к конфигурации для веб-сервера и базы данных. Например если страница ASP.NET создает или удаляет файлы из каталога на веб-сервере веб-сервера должна позволять эти изменения файловой системы. Аналогичным образом может быть параметры разрешения или проверки подлинности, которые должны быть выполнены в базе данных.
 
 
-Шаг 2 необходима синхронизация ряд важных страниц ASP.NET и вспомогательные файлы между средами разработки и эксплуатации. Определенный набор ASP. NET связанные файлы, которые должны быть синхронизированы между этими двумя средами зависит от типа проекта, созданных в Visual Studio и обсуждения в следующем уроке  *[определить, какие файлы должны быть развернуты](determining-what-files-need-to-be-deployed-vb.md)*. Третья и четвертая учебники -  *[развертывание вашего сайта с помощью FTP](deploying-your-site-using-an-ftp-client-vb.md)*и  *[развертыванию ваш сайт с помощью Visual Studio](deploying-your-site-using-visual-studio-vb.md)*  -Проверьте различные средства и методы для синхронизации этих файлов.
+Шаг 2 необходима синхронизация ряд важных страниц ASP.NET и вспомогательные файлы между средами разработки и эксплуатации. Определенный набор ASP. NET связанные файлы, которые должны быть синхронизированы между этими двумя средами зависит от типа проекта, созданных в Visual Studio и обсуждения в следующем уроке  <em>[определить, какие файлы должны быть развернуты](determining-what-files-need-to-be-deployed-vb.md)</em>. Третья и четвертая учебники -  <em>[развертывание вашего сайта с помощью FTP](deploying-your-site-using-an-ftp-client-vb.md)</em>и <em>[развертыванию ваш сайт с помощью Visual Studio](deploying-your-site-using-visual-studio-vb.md)</em> -Проверьте различные средства и методы для синхронизации этих файлов.
 
 При создании управляемых данными приложений существуют обычно два используемым базам данных: один для разработки, а другой в производстве. Во время разработки схемы базы данных разработки может быть изменен для включения новых таблиц, столбцов, хранимых процедур и триггеров, или может быть изменен, чтобы удалить или переименовать существующие объекты базы данных. Между моментом внесения изменений и время приложение развертывается в рабочей среде разработки и рабочих баз данных не синхронизированы. Это асинхронности необходимо исправить во время развертывания. Эти проблемы будут проверены в будущих учебниках.
 
@@ -95,6 +95,6 @@ Web хостинг-компании обычно обеспечивают общ
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Мерфи Тереза д. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Назад](users-and-roles-on-the-production-website-cs.md)
-[Вперед](determining-what-files-need-to-be-deployed-vb.md)
+> [!div class="step-by-step"]
+> [Назад](users-and-roles-on-the-production-website-cs.md)
+> [Вперед](determining-what-files-need-to-be-deployed-vb.md)

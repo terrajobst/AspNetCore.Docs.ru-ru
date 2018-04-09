@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
-title: "ASP.NET веб-развертывания с помощью Visual Studio: развертывание в рабочей среде | Документы Microsoft"
+title: 'ASP.NET веб-развертывания с помощью Visual Studio: развертывание в рабочей среде | Документы Microsoft'
 author: tdykstra
-description: "Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол..."
+description: Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: abd3f3f78dd9a9e6394e2f61aa9bd692810ca875
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f3b3898bd003ace100ba05619f2c45ca808462df
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>ASP.NET веб-развертывания с помощью Visual Studio: развертывание в рабочей среде
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузите начальный проект](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -144,10 +144,10 @@ ms.lasthandoff: 01/24/2018
 9. 1. Выберите **обновление базы данных**.
 
         **Строку подключения к удаленному** поле непосредственно под **DefaultConnection** содержит строку подключения из файла PUBLISHSETTINGS. Строка подключения содержит учетные данные SQL Server, которые хранятся в виде обычного текста в *.pubxml* файла. Если вы предпочитаете не храните их там без возможности восстановления, можно удалить их из профиля публикации после развертывания базы данных и хранить их в Azure. Дополнительные сведения см. в разделе [как безопасность ASP.NET базы данных строки подключения при развертывании в Azure из источника](http://www.hanselman.com/blog/HowToKeepYourASPNETDatabaseConnectionStringsSecureWhenDeployingToAzureFromSource.aspx) Скотт Хансельман блога.
-    2. Нажмите кнопку **настроить обновление базы данных**.
-    3. В **Настройка обновления базы данных** диалоговое окно, нажмите кнопку **добавить скрипт SQL**.
-    4. В **добавить скрипт SQL** перейдите к *aspnet данных prod.sql* скрипт, сохраненный ранее в папке решения и нажмите кнопку **откройте**.
-    5. Закрыть **Настройка обновления базы данных** диалоговое окно.
+      2. Нажмите кнопку **настроить обновление базы данных**.
+      3. В **Настройка обновления базы данных** диалоговое окно, нажмите кнопку **добавить скрипт SQL**.
+      4. В **добавить скрипт SQL** перейдите к *aspnet данных prod.sql* скрипт, сохраненный ранее в папке решения и нажмите кнопку **откройте**.
+      5. Закрыть **Настройка обновления базы данных** диалоговое окно.
 10. В разделе **SchoolContext** в **баз данных** выберите **выполнять миграции Code First (запускается при запуске приложения)**.
 
     Visual Studio отображает **выполнять миграции Code First** вместо **обновление базы данных** для `DbContext` классы. Если вы хотите использовать поставщик dbDacFx вместо миграции для развертывания базы данных, можно получить доступ с помощью `DbContext` см. в описании [как развернуть базу данных Code First без миграции?](https://msdn.microsoft.com/library/ee942158.aspx#deploy_code_first_without_migrations) в Web часто задаваемые вопросы развертывания для Visual Studio и ASP.NET на сайте MSDN.
@@ -296,11 +296,11 @@ ms.lasthandoff: 01/24/2018
 
 > [!NOTE]
 > Приложение во время использования в рабочей среде следует реализация плана восстановления. Т. е вы должны периодически резервное копирование баз данных из рабочего приложения безопасное хранилище, и необходимо сохранение нескольких поколений таких резервных копий. При обновлении базы данных, следует сделать резервную копию из непосредственно перед изменением. Затем Если допущена ошибка и не обнаружит его до, после его развертывания в рабочей среде, по-прежнему можно восстановление базы данных в состояние, в котором она находилась до его был поврежден. Дополнительные сведения см. в разделе [резервной копии базы данных SQL Azure и восстановление](https://msdn.microsoft.com/library/windowsazure/jj650016.aspx).
-
-
+> 
+> 
 > [!NOTE]
 > В этом учебнике SQL Server выпуска, который выполняется развертывание является база данных SQL Azure. Пока процесс развертывания сходен с другими выпусками SQL Server, реальные производственного приложения может потребоваться специального кода для базы данных SQL Azure в некоторых сценариях. Дополнительные сведения см. в разделе [работа с базой данных SQL Azure](../../../../whitepapers/aspnet-data-access-content-map.md#ssdb) и [Выбор между SQL Server и базы данных SQL Azure](../../../../whitepapers/aspnet-data-access-content-map.md#ssdbchoosing).
-
->[!div class="step-by-step"]
-[Назад](setting-folder-permissions.md)
-[Вперед](deploying-a-code-update.md)
+> 
+> [!div class="step-by-step"]
+> [Назад](setting-folder-permissions.md)
+> [Вперед](deploying-a-code-update.md)

@@ -1,7 +1,7 @@
 ---
-title: "С помощью Bower в ASP.NET Core"
+title: Управление пакетами стороне клиента с помощью Bower в ASP.NET Core
 author: rick-anderson
-description: "Управление пакетами стороне клиента с помощью Bower."
+description: Управление пакетами стороне клиента с помощью Bower.
 manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bower
-ms.openlocfilehash: 67695843846cfaf1619db11a7bffcc65802e0f69
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 81244cfb71194876071c64899d627c296aad3802
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Управление пакетами стороне клиента с помощью Bower в ASP.NET Core
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/02/2018
 
 * В **Bower: \<имя проекта\>**  окно, перейдите на вкладку «Просмотр» и отфильтруйте список пакетов, введя `font-awesome` в поле поиска:
 
- ![Управление пакетами bower](bower/_static/manage-bower-packages.png)
+  ![Управление пакетами bower](bower/_static/manage-bower-packages.png)
 
 * Убедитесь, что «сохранить изменения в *bower.json*» установлен флажок. Выберите версию в раскрывающемся списке и нажмите кнопку **установить** кнопки. **Выходной** в окне отображаются сведения об установке.
 
@@ -100,9 +100,9 @@ Bower использует [семантического управления в
 
 * Сохранить *bower.json* файла.
 
- Проверить проект включает *начальной загрузки* и *jQuery* каталогов в *wwwroot/lib*. Bower использует *.bowerrc* файл для установки средств в *wwwroot/lib*.
+  Проверить проект включает *начальной загрузки* и *jQuery* каталогов в *wwwroot/lib*. Bower использует *.bowerrc* файл для установки средств в *wwwroot/lib*.
 
- Примечание: «Управление пакетами Bower» пользовательского интерфейса является альтернативой редактирование файлов вручную.
+  Примечание: «Управление пакетами Bower» пользовательского интерфейса является альтернативой редактирование файлов вручную.
 
 ### <a name="enable-static-files"></a>Включение статических файлов
 
@@ -115,12 +115,12 @@ Bower использует [семантического управления в
 
 В этом разделе вы создадите на HTML-странице, чтобы убедиться, что он может обращаться к развернутых пакетов.
 
-* Добавьте новую HTML-страницу с именем *Index.html* для *wwwroot* папки. Примечание: Необходимо добавить HTML-файла для *wwwroot* папки. По умолчанию статического содержимого не может быть выдана за пределами *wwwroot*. В разделе [работа с файлами статического](xref:fundamentals/static-files) для получения дополнительной информации.
+* Добавьте новую HTML-страницу с именем *Index.html* для *wwwroot* папки. Примечание: Необходимо добавить HTML-файла для *wwwroot* папки. По умолчанию статического содержимого не может быть выдана за пределами *wwwroot*. В разделе [работать с статические файлы](xref:fundamentals/static-files) для получения дополнительной информации.
 
- Замените содержимое *Index.html* следующей разметкой:
+  Замените содержимое *Index.html* следующей разметкой:
 
 [!code-html[](bower/sample/Index.html)]
 
 * Запустите приложение и перейдите к `http://localhost:<port>/Index.html`. Кроме того, с *Index.html* открыт, нажмите клавишу `Ctrl+Shift+W`. Проверка применения стилей jumbotron, код jQuery реагирует при нажатии кнопки и что начальной загрузки кнопка меняет состояние.
 
- ![Стиль jumbotron](bower/_static/jumbotron.png)
+  ![Стиль jumbotron](bower/_static/jumbotron.png)

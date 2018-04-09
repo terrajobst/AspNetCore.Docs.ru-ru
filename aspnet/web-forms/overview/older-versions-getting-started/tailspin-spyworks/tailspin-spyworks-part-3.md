@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3
-title: "Часть 3: Макет и меню категории | Документы Microsoft"
+title: 'Часть 3: Макет и меню категории | Документы Microsoft'
 author: JoeStagner
-description: "Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 3 описывает добавление макета и меню категории."
+description: Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 3 описывает добавление макета и меню категории.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 57c0342efb67b94a0d8c8b06dc13a727e7184db8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 27a493173b03f813ee3dcbbfafd8bc52fb0b9771
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-3-layout-and-category-menu"></a>Часть 3: Макет и меню категории
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 3 описывает добавление макета и меню категории.
 
 
-## <a id="_Toc260221669"></a>Добавление некоторых макета и меню категории
+## <a id="_Toc260221669"></a>  Добавление некоторых макета и меню категории
 
 В нашем главной страницы сайта мы добавим div для левой части столбца, который будет содержать нашей меню категории продукта.
 
@@ -77,6 +77,6 @@ ms.lasthandoff: 11/10/2017
 
 Обратите внимание, теперь отображается меню категории наших продуктов и при наведении курсора мыши над одним из пунктов меню категории, можно увидеть меню элемента ссылка указывает на страницу, у нас есть еще для реализации с именем ProductsList.aspx и что мы создали динамического запроса строковый аргумент, содержащий  Идентификатор категории.
 
->[!div class="step-by-step"]
-[Назад](tailspin-spyworks-part-2.md)
-[Вперед](tailspin-spyworks-part-4.md)
+> [!div class="step-by-step"]
+> [Назад](tailspin-spyworks-part-2.md)
+> [Вперед](tailspin-spyworks-part-4.md)

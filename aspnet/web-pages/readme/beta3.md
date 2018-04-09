@@ -1,8 +1,8 @@
 ---
 uid: web-pages/readme/beta3
-title: "Веб-матрицы и ASP.NET Web Pages (Razor) о бета-версии 3 версии | Документы Microsoft"
+title: Веб-матрицы и ASP.NET Web Pages (Razor) о бета-версии 3 версии | Документы Microsoft
 author: rick-anderson
-description: "Web Matrix и ASP.NET Web страницы (Razor) о бета-версии 3 выпуска"
+description: Web Matrix и ASP.NET Web страницы (Razor) о бета-версии 3 выпуска
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/10/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/readme/beta3
 msc.type: content
-ms.openlocfilehash: def2f4b3e54c8de539e10c1b526a1dababeca8fb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5ef7a6f44758cf94fc19d6fbab3cc4b7bce8e8e5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="web-matrix-and-aspnet-web-pages-razor-beta-3-release-readme"></a>Web Matrix и ASP.NET Web страницы (Razor) о бета-версии 3 выпуска
 ====================
@@ -283,9 +283,9 @@ ms.lasthandoff: 01/24/2018
 > Если удалить .NET Framework версии 4, а затем переустановите его, веб-страниц ASP.NET с синтаксисом Razor отключена. Страницы с *.cshtml* расширения работают правильно. Веб-страницы ASP.NET регистрирует сборку в корневой папке машины *Web.config* файла и удаление .NET Framework удаляет этот файл. Повторная установка .NET Framework устанавливает новую версию файла конфигурации, но не добавляет ссылку для сборки веб-страниц ASP.NET.
 > 
 > **Инструкции по решению** после повторной установки .NET Framework, переустановите ASP.NET Web Pages с синтаксисом Razor. При этом добавляется следующий элемент для *Web.config* файл в корне машины, которое обычно находится в следующем расположении:  
->   
+> 
 > `C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config (32-bit)`  
->   
+> 
 > `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config (64-bit)`
 > 
 > [!code-xml[Main](beta3/samples/sample6.xml)]
@@ -302,9 +302,9 @@ ms.lasthandoff: 01/24/2018
 #### <a name="issue-extensionless-urls-do-not-find-cshtmlvbhtml-files-on-iis-7-or-iis-75"></a>Проблема: Без расширений URL-адреса не найдены файлы.cshtml/.vbhtml в IIS 7 или IIS 7.5
 
 > В IIS 7 или IIS 7.5, запросы с URL-адреса следующего вида не удается найти страниц, имеющих *.cshtml* или *.vbhtml* расширения:  
->   
+> 
 > `http://www.example.com/ExampleSite/ExampleFile`  
->   
+> 
 > Проблема возникает из-за перезаписи URL-адресов не включена по умолчанию для IIS 7 или IIS 7.5. Возможная сценарий существует, вы не видите проблемы при тестировании локально с помощью IIS Express, но возникают при развертывании веб-сайта для размещения веб-сайта.
 > 
 > **Workaround**
@@ -344,7 +344,7 @@ ms.lasthandoff: 01/24/2018
 >     - Копировать *C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\x86\\** **для** *\Bin\x86*
 >     - Копировать *C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\amd64\\** **для** *\Bin\amd64*
 > 2. В корневой папке веб-сайта, создайте или откройте *Web.config* файла. (В WebMatrix бета-версии 3, этот тип файлов доступна при выборе **все** в **выберите тип файла** диалоговое окно.)
-> 3. Добавьте следующий элемент в качестве дочернего элемента  **&lt;конфигурации&gt;**  элемента (не внутри  **&lt;system.web&gt;**  элемент):
+> 3. Добавьте следующий элемент в качестве дочернего элемента **&lt;конфигурации&gt;** элемента (не внутри **&lt;system.web&gt;** элемент):
 > 
 > 
 > [!code-xml[Main](beta3/samples/sample10.xml)]
@@ -366,21 +366,21 @@ ms.lasthandoff: 01/24/2018
 > 
 > **Workaround**  
 > Используйте `Encryption Mode` свойство `SqlCeConnection` класса для шифрования файлов базы данных SQL Server Compact 4.0. В следующем примере показано, как создание зашифрованные базы данных SQL Server Compact 4.0 с помощью `Encryption Mode` свойство:
->  
+> 
 > [!code-csharp[Main](beta3/samples/sample11.cs)]
->  
+> 
 > [!code-vb[Main](beta3/samples/sample12.vb)]
 > 
 > Смена режима шифрования существующей базы данных SQL Server Compact 4.0, выполните следующие действия.
->  
+> 
 > [!code-csharp[Main](beta3/samples/sample13.cs)]
->  
+> 
 > [!code-vb[Main](beta3/samples/sample14.vb)]
 > 
 > Шифрование незашифрованной базы данных SQL Server Compact 4.0, выполните следующие действия.
->  
+> 
 > [!code-csharp[Main](beta3/samples/sample15.cs)]
->  
+> 
 > [!code-vb[Main](beta3/samples/sample16.vb)]
 
 
@@ -537,7 +537,7 @@ ms.lasthandoff: 01/24/2018
 > Явно задать тип данных для параметров, таких как `SqlDbType` или `DbType`. Это очень важно в случае с типами данных больших двоичных ОБЪЕКТОВ (`image` и `ntext`). Используйте код, аналогичный следующему:
 > 
 > [!code-sql[Main](beta3/samples/sample20.sql)]
->  
+> 
 > [!code-vb[Main](beta3/samples/sample21.vb)]
 
 

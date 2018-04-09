@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/sql-2005/designing-relational-database-tables
-title: "Конструирование таблиц реляционной базы данных | Документы Microsoft"
+title: Конструирование таблиц реляционной базы данных | Документы Microsoft
 author: microsoft
-description: "Почему являются наиболее популярных реляционных баз данных? Для различения первичного и внешнего ключей реляционной базы данных разработки узнаете начинающих SQL Server..."
+description: Почему являются наиболее популярных реляционных баз данных? Для различения первичного и внешнего ключей реляционной базы данных разработки узнаете начинающих SQL Server...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/29/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/sql-2005/designing-relational-database-tables
 msc.type: video
-ms.openlocfilehash: d932b87905eaad0f68234d64428436f0d3e28fa8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 95fe08217379dc69c3ad08fc394e780527f644d7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="designing-relational-database-tables"></a>Конструирование таблиц реляционной базы данных
 ====================
@@ -24,8 +24,8 @@ ms.lasthandoff: 11/10/2017
 
 Почему являются наиболее популярных реляционных баз данных? Для различения первичные и внешние ключи, проектирования таблиц реляционной базы данных и Дополнительные сведения о правила нормализации и отмены нормализации узнаете начинающих SQL Server.
 
-[&#9654; Посмотрите видео (34 минуты)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/designing-relational-database-tables)
+[&#9654;Посмотрите видео (34 минуты)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/designing-relational-database-tables)
 
->[!div class="step-by-step"]
-[Назад](more-about-column-data-types-and-other-properties.md)
-[Вперед](manipulating-database-data.md)
+> [!div class="step-by-step"]
+> [Назад](more-about-column-data-types-and-other-properties.md)
+> [Вперед](manipulating-database-data.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment
-title: "Настройка параметров для развертывания веб-пакета | Документы Microsoft"
+title: Настройка параметров для развертывания веб-пакета | Документы Microsoft
 author: jrjlee
-description: "Описывается, как задать значения параметров, таких как имена веб-приложений Internet Information Services (IIS), строки подключения и конечные точки службы..."
+description: Описывается, как задать значения параметров, таких как имена веб-приложений Internet Information Services (IIS), строки подключения и конечные точки службы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 12a4ba8ad30df43e7192500ad4514dfa9679f899
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 7be08f1a1fb7232911a44cf64e2e784dbb95ff48
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-parameters-for-web-package-deployment"></a>Настройка параметров для развертывания веб-пакета
 ====================
@@ -92,7 +92,7 @@ ms.lasthandoff: 03/15/2018
 
 ## <a name="modifying-the-setparametersxml-file"></a>Изменение файла SetParameters.xml
 
-Если вы планируете развернуть пакет веб-приложения вручную & #x 2014; либо путем выполнения *. deploy.cmd* файла или путем запуска MSDeploy.exe из командной строки & #x 2014; нет ничего останавливать вручную изменив *SetParameters.xml* файлу до развертывания. Тем не менее если вы работаете в рамках решения корпоративного уровня, может потребоваться развернуть веб-приложение пакет как часть большего размера, автоматизированный процесс построения и развертывания. В этом сценарии, необходимые Microsoft Build Engine (MSBuild), чтобы изменить *SetParameters.xml* файл автоматически. Это можно сделать с помощью MSBuild **XmlPoke** задачи.
+Если планируется развернуть пакет веб-приложения вручную&#x2014;либо путем выполнения *. deploy.cmd* файла или путем запуска из командной строки MSDeploy.exe&#x2014;нет ничего останавливать вручную изменив  *SetParameters.xml* файлу до развертывания. Тем не менее если вы работаете в рамках решения корпоративного уровня, может потребоваться развернуть веб-приложение пакет как часть большего размера, автоматизированный процесс построения и развертывания. В этом сценарии, необходимые Microsoft Build Engine (MSBuild), чтобы изменить *SetParameters.xml* файл автоматически. Это можно сделать с помощью MSBuild **XmlPoke** задачи.
 
 [Диспетчера контактов образец решения](the-contact-manager-solution.md) иллюстрирует этот процесс. Чтобы отобразить только те сведения, которые относятся к этому примеру были изменены приведенных ниже примерах кода.
 
@@ -148,6 +148,6 @@ ms.lasthandoff: 03/15/2018
 
 Дополнительные общие сведения о параметризации в веб-развертывания см. в разделе [Web развертывание параметризации в действии](https://go.microsoft.com/?linkid=9805119) (запись блога).
 
->[!div class="step-by-step"]
-[Назад](building-and-packaging-web-application-projects.md)
-[Вперед](deploying-web-packages.md)
+> [!div class="step-by-step"]
+> [Назад](building-and-packaging-web-application-projects.md)
+> [Вперед](deploying-web-packages.md)

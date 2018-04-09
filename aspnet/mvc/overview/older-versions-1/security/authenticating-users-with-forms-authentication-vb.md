@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-vb
-title: "Проверка подлинности пользователей с помощью форм проверки подлинности (Visual Basic) | Документы Microsoft"
+title: Проверка подлинности пользователей с помощью форм проверки подлинности (Visual Basic) | Документы Microsoft
 author: microsoft
-description: "Узнайте, как использовать атрибут [Authorize] чтобы защитить паролем определенного страниц в приложении MVC. Вы узнаете, как использовать веб-сайт администрирования слишком..."
+description: Узнайте, как использовать атрибут [Authorize] чтобы защитить паролем определенного страниц в приложении MVC. Вы узнаете, как использовать веб-сайт администрирования слишком...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c7d52e51158575c674264efd19c81de9b077d27b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0ff425a4c9728de2eec3d0c94e76cb51a15de487
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="authenticating-users-with-forms-authentication-vb"></a>Проверка подлинности пользователей с помощью форм (Visual Basic)
 ====================
@@ -33,25 +33,25 @@ ms.lasthandoff: 11/10/2017
 
 **Рис. 1 – Запуск Web Site Administration Tool**
 
-![clip_image002 [4]](authenticating-users-with-forms-authentication-vb/_static/image1.jpg)
+![clip_image002[4]](authenticating-users-with-forms-authentication-vb/_static/image1.jpg)
 
 В Web Site Administration Tool создайте новых пользователей и ролей, выбрав вкладку Безопасность. Нажмите кнопку **создать пользователя** ссылку, чтобы создать нового пользователя с именем Стивен (см. рис. 2). Любой пароль, который должен предоставить пользователю Стивен (например, *секрет*).
 
 **Рис. 2 – Создание нового пользователя**
 
-![clip_image004 [4]](authenticating-users-with-forms-authentication-vb/_static/image2.jpg)
+![clip_image004[4]](authenticating-users-with-forms-authentication-vb/_static/image2.jpg)
 
 Создать новые роли путем включения ролей и определения одной или нескольких ролей. Включить роли, щелкнув **включить роли** ссылку. Создайте роль с именем *Администраторы* , щелкнув **Создание и управление ролями** связи (см. рис. 3).
 
 **Рис. 3 – Создание новой роли**
 
-![clip_image006 [4]](authenticating-users-with-forms-authentication-vb/_static/image3.jpg)
+![clip_image006[4]](authenticating-users-with-forms-authentication-vb/_static/image3.jpg)
 
 Наконец, создайте нового пользователя с именем Sally и связать Sally с роли "Администраторы", щелкнув ссылку Создать пользователя администраторов при создании Sally (см. рис. 4).
 
 **Рис. 4 – Добавление пользователя к роли**
 
-![clip_image008 [4]](authenticating-users-with-forms-authentication-vb/_static/image4.jpg)
+![clip_image008[4]](authenticating-users-with-forms-authentication-vb/_static/image4.jpg)
 
 Когда все сказано и сделано, необходимо иметь два новых пользователей с именем Стивен и света. Также необходимо новую роль с именем администраторов. Sally является членом роли "Администраторы" и не является Стивен.
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 11/10/2017
 
 **Рис. 5 – Просмотр имени входа**
 
-![clip_image010 [4]](authenticating-users-with-forms-authentication-vb/_static/image5.jpg)
+![clip_image010[4]](authenticating-users-with-forms-authentication-vb/_static/image5.jpg)
 
 Можно использовать представление имени входа для ввода имени пользователя и пароля. Если вы не зарегистрированы в качестве пользователя, то можно щелкнуть **зарегистрировать** ссылку для перехода к регистр представления (см. рис. 6). Представление регистра можно использовать для создания учетной записи пользователя.
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 11/10/2017
 
 Первым шагом является добавление все необходимые объекты базы данных (таблицы и хранимые процедуры) в производственной базе данных. Чтобы добавить эти объекты в новой базе данных проще всего воспользоваться преимуществами мастер установки SQL Server ASP.NET (см. рис. 8). Вы можете запустить это средство, открыв Командная строка Visual Studio 2008 из программной группы Microsoft Visual Studio 2008 и выполнив следующую команду из командной строки:
 
-ASPNET\_regsql
+aspnet\_regsql
 
 **Рис. 8 — ASP.NET мастер установки SQL Server**
 
@@ -117,8 +117,8 @@ ASPNET\_regsql
 
 > [!NOTE]
 > Если вы не хотите использовать мастер установки SQL Server ASP.NET, можно найти скрипты SQL для добавления объектов базы данных приложения службы в следующей папке:
-
-
+> 
+> 
 > C:\Windows\Microsoft.NET\Framework\v2.0.50727
 
 
@@ -152,6 +152,6 @@ ASPNET\_regsql
 
 В этом учебнике вы узнали, как использовать проверку подлинности форм, при создании приложения ASP.NET MVC. Во-первых вы узнали, как для создания новых пользователей и роли, используя преимущества Web Site Administration Tool. Далее вы узнали, как использовать атрибут [Authorize], чтобы предотвратить несанкционированный вызов действия контроллера. Наконец вы узнали, как настроить приложение MVC, для хранения пользователя и сведения о ролях в производственной базы данных.
 
->[!div class="step-by-step"]
-[Назад](preventing-javascript-injection-attacks-cs.md)
-[Вперед](authenticating-users-with-windows-authentication-vb.md)
+> [!div class="step-by-step"]
+> [Назад](preventing-javascript-injection-attacks-cs.md)
+> [Вперед](authenticating-users-with-windows-authentication-vb.md)

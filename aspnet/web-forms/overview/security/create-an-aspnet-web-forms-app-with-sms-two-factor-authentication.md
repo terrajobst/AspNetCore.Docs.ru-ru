@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-factor-authentication
-title: "Создание ASP.NET Web Forms приложение с SMS двухфакторной проверки подлинности (C#) | Документы Microsoft"
+title: Создание ASP.NET Web Forms приложение с SMS двухфакторной проверки подлинности (C#) | Документы Microsoft
 author: Erikre
-description: "Этого учебника показано, как сборка приложения веб-форм ASP.NET с помощью двухфакторной проверки подлинности. Этот учебник был разработан в дополнение к учебника под названием Cr..."
+description: Этого учебника показано, как сборка приложения веб-форм ASP.NET с помощью двухфакторной проверки подлинности. Этот учебник был разработан в дополнение к учебника под названием Cr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/09/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-factor-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: b1f0ec0fdefa12eb7f7b2714dbc224fef735f4bb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6c040fd3e0592b8cfd230dcd85ed3293f0a22ba7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-an-aspnet-web-forms-app-with-sms-two-factor-authentication-c"></a>Создание ASP.NET Web Forms приложение с SMS двухфакторной проверки подлинности (C#)
 ====================
-По [Эрик Reitan](https://github.com/Erikre)
+по [Эрик Reitan](https://github.com/Erikre)
 
 [Загрузить приложение ASP.NET Web Forms с помощью электронной почты и SMS двухфакторной проверки подлинности](https://code.msdn.microsoft.com/ASPNET-Web-Forms-App-with-5a0ff94e)
 
@@ -63,12 +63,12 @@ ms.lasthandoff: 01/24/2018
 2. Из **мониторинга** вкладка учетной записи Twilio, Копировать **ИД безопасности учетной записи** и **маркер проверки подлинности.** Вы добавите их в приложение позже.
 3. Из **номера** вкладки, скопируйте вашей Twilio **номер телефона** также.
 4. Сделать Twilio **ИД безопасности учетной записи**, **маркер проверки подлинности** и **номер телефона** доступны для приложения. Чтобы не усложнять вы хотите сохранить эти значения в *web.config* файла. При развертывании в Azure можно хранить значения как обеспечить безопасность при **appSettings** вкладка настройки раздел на веб-сайте. Кроме того при добавлении номер телефона, используйте только цифры.   
- Обратите внимание, что можно также добавить учетных данных SendGrid. SendGrid является службой уведомлений по электронной почте. Для сведения о включении SendGrid, обратитесь к разделу «Ловушка вверх SendGrid» учебника под названием [создавать Secure ASP.NET веб-форм приложения с Регистрация пользователя, пароль и подтверждение сброса электронной почты.](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset.md)
+   Обратите внимание, что можно также добавить учетных данных SendGrid. SendGrid является службой уведомлений по электронной почте. Для сведения о включении SendGrid, обратитесь к разделу «Ловушка вверх SendGrid» учебника под названием [создавать Secure ASP.NET веб-форм приложения с Регистрация пользователя, пароль и подтверждение сброса электронной почты.](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset.md)
 
     [!code-xml[Main](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/samples/sample1.xml?highlight=2,6-10)]
 
     > [!WARNING]
-    > Безопасность — никогда не конфиденциальных данных в хранилище в исходном коде. В этом примере учетная запись и учетные данные хранятся в **appSettings** раздел *Web.config* файла. В Azure, можно безопасно хранить эти значения на  **[Настройка](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)**  на портале Azure. Дополнительные сведения см. в разделе Рик Андерсон под названием [советы и рекомендации по развертыванию пароли и другие конфиденциальные данные в ASP.NET и Azure](https://go.microsoft.com/fwlink/?LinkId=513141).
+    > Безопасность — никогда не конфиденциальных данных в хранилище в исходном коде. В этом примере учетная запись и учетные данные хранятся в **appSettings** раздел *Web.config* файла. В Azure, можно безопасно хранить эти значения на **[Настройка](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** на портале Azure. Дополнительные сведения см. в разделе Рик Андерсон под названием [советы и рекомендации по развертыванию пароли и другие конфиденциальные данные в ASP.NET и Azure](https://go.microsoft.com/fwlink/?LinkId=513141).
 5. Настройка `SmsService` класса в *приложения\_Start\IdentityConfig.cs* выделено желтым изменения файлов, сделав следующее: 
 
     [!code-csharp[Main](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/samples/sample2.cs?highlight=5-17)]
@@ -85,7 +85,7 @@ ms.lasthandoff: 01/24/2018
 
     [!code-csharp[Main](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/samples/sample6.cs?highlight=3-4,13)]
 
- Внося изменения кода выше, DropDownList «Поставщики», содержащий параметры проверки подлинности не будут сброшены до первого значения. Это позволит пользователю выбрать все параметры, используемые при проверке подлинности, а не только первую успешно.
+   Внося изменения кода выше, DropDownList «Поставщики», содержащий параметры проверки подлинности не будут сброшены до первого значения. Это позволит пользователю выбрать все параметры, используемые при проверке подлинности, а не только первую успешно.
 10. В **обозревателе решений**, щелкните правой кнопкой мыши *Default.aspx* и выберите **задать в качестве начальной страницы**.
 11. При тестировании приложения, необходимо вначале построить приложение (**Ctrl**+**Shift**+**B**), а затем запустите приложение (**F5**) и Выберите **зарегистрировать** для создания новой учетной записи пользователя или выберите **входа** Если учетная запись пользователя уже зарегистрирован.
 12. После (имени пользователя) входа, щелкните идентификатор пользователя (адрес электронной почты) в панели навигации, чтобы отобразить **Управление учетной записью** страницы (Manage.aspx).  
@@ -94,7 +94,7 @@ ms.lasthandoff: 01/24/2018
     ![](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/_static/image3.png)
 14. Номер телефона (имени пользователя) место для получения SMS-сообщений (текстовых сообщений) и нажмите кнопку Добавить **отправить** кнопки.   
     ![](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/_static/image4.png)  
- На этом этапе приложение будет использовать учетные данные из *Web.config* связаться Twilio. SMS-сообщения (текст сообщения) будут отправляться на телефоне, связанный с учетной записью пользователя. Можно проверить, просмотрев панель мониторинга Twilio было отправлено сообщение Twilio.
+    На этом этапе приложение будет использовать учетные данные из *Web.config* связаться Twilio. SMS-сообщения (текст сообщения) будут отправляться на телефоне, связанный с учетной записью пользователя. Можно проверить, просмотрев панель мониторинга Twilio было отправлено сообщение Twilio.
 15. Через несколько секунд телефон, связанный с учетной записью пользователя получит сообщение, содержащее код проверки. Введите код проверки и нажмите клавишу **отправить**.  
      ![](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/_static/image5.png)
 

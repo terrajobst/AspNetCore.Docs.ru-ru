@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/introduction-to-signalr
-title: "Общие сведения о SignalR | Документы Microsoft"
+title: Общие сведения о SignalR | Документы Microsoft
 author: pfletcher
-description: "В этой статье описывается SignalR и некоторые решения, для которого она была разработана для создания."
+description: В этой статье описывается SignalR и некоторые решения, для которого она была разработана для создания.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/introduction-to-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 5bb49c9c2405d232ba5e067d99f8879b3bc99361
-ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
+ms.openlocfilehash: 0ceca3edc26d35b1155946e60863a84da0bbe592
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introduction-to-signalr"></a>Общие сведения о SignalR
 ====================
@@ -85,11 +85,11 @@ SignalR — это абстракция над некоторые транспо
 2. Если настроен JSONP (т. е `jsonp` параметр имеет значение `true` при запуске соединения), используется много опроса.
 3. (То есть, если конечная точка SignalR не в том же домене, что страница размещения) попытки подключения между доменами, WebSocket будет использован, если выполнены следующие условия:
 
-    - Клиент поддерживает CORS (доступ к ресурсам независимо от источника). Дополнительные сведения, в которых клиенты поддерживают CORS см. в разделе [CORS в caniuse.com](http://www.caniuse.com/CORS).
-    - Клиент поддерживает WebSocket
-    - Сервер поддерживает WebSocket
+   - Клиент поддерживает CORS (доступ к ресурсам независимо от источника). Дополнительные сведения, в которых клиенты поддерживают CORS см. в разделе [CORS в caniuse.com](http://www.caniuse.com/CORS).
+   - Клиент поддерживает WebSocket
+   - Сервер поддерживает WebSocket
 
-    Если любой из этих условий не выполняются, Long опроса будет использоваться. Дополнительные сведения для соединений между доменами см. в разделе [как для установления соединения между доменами](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain).
+     Если любой из этих условий не выполняются, Long опроса будет использоваться. Дополнительные сведения для соединений между доменами см. в разделе [как для установления соединения между доменами](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain).
 4. Если JSONP не настроен и подключение не находится между доменами, WebSocket будет использоваться, если клиент и сервер поддерживают его.
 5. Если клиент или сервер не поддерживает WebSocket, отправки событий сервера используется в том случае, если он доступен.
 6. В случае события отправки сервером недоступно, попытки навсегда кадра.

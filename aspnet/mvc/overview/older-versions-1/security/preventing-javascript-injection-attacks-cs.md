@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs
-title: "Предотвращение атак путем внедрения кода JavaScript (C#) | Документы Microsoft"
+title: Предотвращение атак путем внедрения кода JavaScript (C#) | Документы Microsoft
 author: StephenWalther
-description: "Предотвратить атаки путем внедрения кода JavaScript и межсайтовых сценариев атаки для вас. В этом учебнике Стивен Вальтер объясняется, каким образом вы можете легко de..."
+description: Предотвратить атаки путем внедрения кода JavaScript и межсайтовых сценариев атаки для вас. В этом учебнике Стивен Вальтер объясняется, каким образом вы можете легко de...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 67f53162cb1bb0771d632ba7a3f5960db00e2744
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fbec58c009640164d908db5a45557c9e50041173
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="preventing-javascript-injection-attacks-c"></a>Предотвращение атак путем внедрения кода JavaScript (C#)
 ====================
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
 Веб-сайт отзывов клиентов использует `controller` в листинге 1. Это `controller` содержит два действия с именем `Index()` и `Create()`.
 
-**Листинг 1.`HomeController.cs`**
+**Листинг 1. `HomeController.cs`**
 
 [!code-csharp[Main](preventing-javascript-injection-attacks-cs/samples/sample1.cs)]
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/10/2017
 
 `Index` Представление содержится в списке 2.
 
-**Листинг 2.`Index.aspx`**
+**Листинг 2. `Index.aspx`**
 
 [!code-aspx[Main](preventing-javascript-injection-attacks-cs/samples/sample2.aspx)]
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-html[Main](preventing-javascript-injection-attacks-cs/samples/sample3.html)]
 
-Этот текст представляет сценарий JavaScript, который выводит окно оповещения. После кто-то отправляет этот скрипт в отзывы форме сообщения *Boo!* будет отображаться всякий раз, когда любой пользователь посещает веб-сайт отзывов клиентов в будущем (см. рис. 2).
+Этот текст представляет сценарий JavaScript, который выводит окно оповещения. После кто-то отправляет этот скрипт в отзывы форме сообщения <em>Boo!</em> будет отображаться всякий раз, когда любой пользователь посещает веб-сайт отзывов клиентов в будущем (см. рис. 2).
 
 
 [![Путем внедрения кода JavaScript](preventing-javascript-injection-attacks-cs/_static/image5.png)](preventing-javascript-injection-attacks-cs/_static/image4.png)
@@ -121,6 +121,6 @@ ms.lasthandoff: 11/10/2017
 
 Целью данного учебника было запугивает вас о потенциальных атак путем внедрения кода JavaScript. Этот учебник рассматриваются два подхода для защиты приложений ASP.NET MVC от атак путем внедрения кода JavaScript: вы можете либо HTML кодирования отправлен пользователем данных в представлении или вы можете HTML кодирования отправлен пользователем данных в контроллере.
 
->[!div class="step-by-step"]
-[Назад](authenticating-users-with-windows-authentication-cs.md)
-[Вперед](authenticating-users-with-forms-authentication-vb.md)
+> [!div class="step-by-step"]
+> [Назад](authenticating-users-with-windows-authentication-cs.md)
+> [Вперед](authenticating-users-with-forms-authentication-vb.md)

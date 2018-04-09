@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs
-title: "Обработка исключений уровня DAL и уровень бизнес-ЛОГИКИ на странице ASP.NET (C#) | Документы Microsoft"
+title: Обработка исключений уровня DAL и уровень бизнес-ЛОГИКИ на странице ASP.NET (C#) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике будет показано, как отображение понятное, информативное сообщение исключения во время выполнения вставки, обновления или удаления..."
+description: В этом учебнике будет показано, как отображение понятное, информативное сообщение исключения во время выполнения вставки, обновления или удаления...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5a0ffde90aa85383d87bd48e16a1c16433465cbf
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e7589584f3b0773a739b785c433ec45eeac3607e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-c"></a>Обработка исключений уровня DAL и уровень бизнес-ЛОГИКИ на странице ASP.NET (C#)
 ====================
@@ -155,9 +155,9 @@ ms.lasthandoff: 01/24/2018
 
 Этот обработчик событий второй входной параметр — это объект типа [GridViewUpdatedEventArgs](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridviewupdatedeventargs.aspx), который имеет три свойства важными для обработки исключений:
 
-- `Exception`ссылку на созданное исключение; Если исключение не создано, это свойство будет иметь значение`null`
-- `ExceptionHandled`Логическое значение, указывающее, было ли обработано исключение в `RowUpdated` обработчик событий; Если `false` (по умолчанию), исключение выдается заново, проходя до среды выполнения ASP.NET
-- `KeepInEditMode`Если значение `true` редактируемой строки GridView остается в режиме редактирования; Если `false` (по умолчанию), строки GridView восстанавливает режим только для чтения
+- `Exception` ссылку на созданное исключение; Если исключение не создано, это свойство будет иметь значение `null`
+- `ExceptionHandled` Логическое значение, указывающее, было ли обработано исключение в `RowUpdated` обработчик событий; Если `false` (по умолчанию), исключение выдается заново, проходя до среды выполнения ASP.NET
+- `KeepInEditMode` Если значение `true` редактируемой строки GridView остается в режиме редактирования; Если `false` (по умолчанию), строки GridView восстанавливает режим только для чтения
 
 Код, затем проверить, если `Exception` не `null`, это означает, что исключение возникло при выполнении операции. Если это так, нам нужно:
 
@@ -224,12 +224,12 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было (Liz Shulok). Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md)
-[Вперед](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md)
+> [!div class="step-by-step"]
+> [Назад](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md)
+> [Вперед](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md)

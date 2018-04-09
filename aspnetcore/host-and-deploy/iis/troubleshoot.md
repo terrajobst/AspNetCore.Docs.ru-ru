@@ -1,7 +1,7 @@
 ---
-title: "Устранение неполадок Core ASP.NET в IIS"
+title: Устранение неполадок Core ASP.NET в IIS
 author: guardrex
-description: "Сведения для диагностики проблем с развертыванием приложений ASP.NET Core Internet Information Services (IIS)."
+description: Сведения для диагностики проблем с развертыванием приложений ASP.NET Core Internet Information Services (IIS).
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 65173e0101a17c64f4cde583e5bbb9fb0a9c7718
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: e44892d2022ca1a176cee9d027e220e196c6572d
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Устранение неполадок Core ASP.NET в IIS
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 02/11/2018
 
 1. Перейдите в папку развертывания на сайте на хост-системы.
 1. Если *журналы* папки не существуют, создайте папку. Инструкции по включению MSBuild для создания *журналы* папку в развертывании автоматически, в разделе [структуру каталогов](xref:host-and-deploy/directory-structure) раздела.
-1. Изменить *web.config* файла. Задать **stdoutLogEnabled** для `true` и измените **stdoutLogFile** путь должен указывать *журналы* папку (например, `.\logs\stdout`). `stdout`в пути — это префикс имени файла журнала. Отметка времени, идентификатор процесса и расширение файла добавляются автоматически при создании журнала. С помощью `stdout` как префикс имени файла журнала обычно файл с именем *stdout_20180205184032_5412.log*. 
+1. Изменить *web.config* файла. Задать **stdoutLogEnabled** для `true` и измените **stdoutLogFile** путь должен указывать *журналы* папку (например, `.\logs\stdout`). `stdout` в пути — это префикс имени файла журнала. Отметка времени, идентификатор процесса и расширение файла добавляются автоматически при создании журнала. С помощью `stdout` как префикс имени файла журнала обычно файл с именем *stdout_20180205184032_5412.log*. 
 1. Сохраните Обновленный *web.config* файла.
 1. Сделать запрос к приложению.
 1. Перейдите к *журналы* папки. Найдите и откройте журнал последних stdout.
@@ -109,7 +109,7 @@ ms.lasthandoff: 02/11/2018
 1. Сохраните файл.
 
 > [!WARNING]
-> Неудача при отключении журнала stdout может привести к сбоям приложения или сервера. Нет ограничения на размер файла журнала или количество созданных файлов журналов.
+> Неудача при отключении журнала stdout может привести к сбоям приложения или сервера. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены.
 >
 > Для процедуры входа в приложение ASP.NET Core, используйте библиотеку ведения журнала, которая ограничивает размер файла журнала и поворачивает журналы. Дополнительные сведения см. в разделе [сторонних регистраторов](xref:fundamentals/logging/index#third-party-logging-providers).
 

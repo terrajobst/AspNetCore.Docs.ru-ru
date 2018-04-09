@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-team-project-in-tfs
-title: "Создание командного проекта в Team Foundation Server | Документы Microsoft"
+title: Создание командного проекта в Team Foundation Server | Документы Microsoft
 author: jrjlee
-description: "В этом разделе описывается создание нового командного проекта в Team Foundation Server (TFS) 2010."
+description: В этом разделе описывается создание нового командного проекта в Team Foundation Server (TFS) 2010.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-team-project-in-tfs
 msc.type: authoredcontent
-ms.openlocfilehash: ef8cddb7733c1f8cacd24c5cf341a42741d25a95
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 79c069a601c0eafd84ae142241895428052acd29
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-team-project-in-tfs"></a>Создание командного проекта в Team Foundation Server
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/24/2018
 > В этом разделе описывается создание нового командного проекта в Team Foundation Server (TFS) 2010.
 
 
-Этот раздел входит в состав серию учебников, исходя из требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения & #x 2014; [решения диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014; для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Службы Communication Foundation (WCF) и проект базы данных.
+Этот раздел входит в состав серию учебников, исходя из требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения&#x2014; [решения диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Communication Служба Foundation (WCF) и проект базы данных.
 
 ## <a name="task-overview"></a>Общие сведения о задаче
 
@@ -107,11 +107,11 @@ ms.lasthandoff: 01/24/2018
 
     ![](creating-a-team-project-in-tfs/_static/image9.png)
 
-    > [!NOTE]
-    > Может появиться **HTTP 404 не найдено** ошибка из-за двойной ошибки кодирования HTTP. В этом случае замените URL-адрес с этим:   
-    > [*URL-адрес коллекции сайта*] /\_layouts/permsetup.aspx  
-    > Пример:  
-    > http://tfs/sites/Fabrikam%20Web%20Projects/\_layouts/permsetup.aspx
+   > [!NOTE]
+   > Может появиться <strong>HTTP 404 не найдено</strong> ошибка из-за двойной ошибки кодирования HTTP. В этом случае замените URL-адрес с этим:   
+   > [<em>URL-адрес коллекции сайта</em>] /\_layouts/permsetup.aspx  
+   > Пример:  
+   > http://tfs/sites/Fabrikam%20Web%20Projects/\_layouts/permsetup.aspx
 8. На **настроить группы для этого сайта** страницы, добавьте пользователя, который будет создавать командные проекты для **владельцев** группы, а затем нажмите кнопку **ОК**.
 
     ![](creating-a-team-project-in-tfs/_static/image10.png)
@@ -202,6 +202,6 @@ ms.lasthandoff: 01/24/2018
 
 Более широкой рекомендации по созданию командных проектов в TFS. в разделе [создания командного проекта](https://msdn.microsoft.com/library/ms181477(v=VS.100).aspx). Дополнительные сведения о включении пользователям создавать новые командные проекты в коллекции командных проектов см. в разделе [Установка прав администратора для коллекций командных проектов](https://msdn.microsoft.com/library/dd547204.aspx). Дополнительные сведения о добавлении пользователей в командные проекты, см. в разделе [Добавление пользователей в командные проекты](https://msdn.microsoft.com/library/bb558971.aspx).
 
->[!div class="step-by-step"]
-[Назад](configuring-team-foundation-server-for-web-deployment.md)
-[Вперед](adding-content-to-source-control.md)
+> [!div class="step-by-step"]
+> [Назад](configuring-team-foundation-server-for-web-deployment.md)
+> [Вперед](adding-content-to-source-control.md)

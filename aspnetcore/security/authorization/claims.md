@@ -1,7 +1,7 @@
 ---
-title: "Авторизация на основе утверждений"
+title: Авторизация на основе утверждений в ASP.NET Core
 author: rick-anderson
-description: "В этом документе описывается добавление проверки утверждений для авторизации в приложении ASP.NET Core."
+description: Дополнительные сведения о добавлении проверки утверждений для авторизации в приложении ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/claims
-ms.openlocfilehash: 608aaa469c5ca20fab8250025804e28e7808122d
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: da308b67be046395bb1baa0f272e767cccbc99c8
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="claims-based-authorization"></a>Авторизация на основе утверждений
+# <a name="claims-based-authorization-in-aspnet-core"></a>Авторизация на основе утверждений в ASP.NET Core
 
 <a name="security-authorization-claims-based"></a>
 
@@ -122,4 +122,4 @@ public class SalaryController : Controller
 
 В приведенном выше примере все удостоверения, что удовлетворяет `EmployeeOnly` политики можно получить доступ к `Payslip` действия, что эта политика применяется на контроллере. Однако для вызова `UpdateSalary` действия должны выполняться удостоверение *оба* `EmployeeOnly` политики и `HumanResources` политики.
 
-Если требуется более сложных политик, например переводить Дата рождения утверждения, вычисление age от него, а затем проверка возраст 21 или более ранних версий, а затем нужно написать [обработчики настраиваемой политики](policies.md).
+Если требуется более сложных политик, например переводить Дата рождения утверждения, вычисление age от него, а затем проверка возраст 21 или более ранних версий, а затем нужно написать [обработчики настраиваемой политики](xref:security/authorization/policies).

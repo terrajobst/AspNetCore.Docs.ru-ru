@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/displaying-maps-in-an-aspnet-web-pages-site
-title: "Отображение карты в ASP.NET Web Pages (Razor) сайта | Документы Microsoft"
+title: Отображение карты в ASP.NET Web Pages (Razor) сайта | Документы Microsoft
 author: tfitzmac
-description: "В этой статье объясняется, как отображать интерактивные карты на страницах в зависимости от служб, предоставляемых Bing, Google, Ma сопоставление веб-сайта ASP.NET Web Pages (Razor)..."
+description: В этой статье объясняется, как отображать интерактивные карты на страницах в зависимости от служб, предоставляемых Bing, Google, Ma сопоставление веб-сайта ASP.NET Web Pages (Razor)...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/displaying-maps-in-an-aspnet-web-pages-site
 msc.type: authoredcontent
-ms.openlocfilehash: 6f3e6a0cfb8c08cd971e88986d0f059dd8237aab
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 608dab8760bad7b877ab6fd4f89b21e980f5b1db
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-maps-in-an-aspnet-web-pages-razor-site"></a>Отображение карты в веб-страницы (Razor) узла ASP.NET
 ====================
@@ -89,9 +89,9 @@ ms.lasthandoff: 01/24/2018
         > [!NOTE]
         > Если вы используете другой версии библиотеки jQuery, убедитесь, что вы неправильно указывают этой версии.
     - Вызов `@Maps.GetGoogleHtml` в основной области страницы. Для сопоставления адреса, необходимо передать строка адреса. Методы для других модулей, карты работают аналогичным образом (`@Maps.GetYahooHtml`, `@Maps.GetMapQuestHtml`).
-- Запустите страницу и введите адрес. На странице отображается карта, в зависимости от карты Google, который показывает расположение, указанное.
+3. Запустите страницу и введите адрес. На странице отображается карта, в зависимости от карты Google, который показывает расположение, указанное.
 
-    ![сопоставление 1](displaying-maps-in-an-aspnet-web-pages-site/_static/image2.png)
+     ![сопоставление 1](displaying-maps-in-an-aspnet-web-pages-site/_static/image2.png)
 
 ## <a name="creating-a-map-based-on-latitude-and-longitude-coordinates-using-bing"></a>Создание карты на основе широты и долготы координаты (с помощью Bing)
 
@@ -103,12 +103,12 @@ ms.lasthandoff: 01/24/2018
 2. Замените `your-key-here` значением ключа Bing Maps, созданные в более ранних версий.
 3. Запустите *MapCoordinates.cshtml* введите координаты широты и долготы и нажмите кнопку **Map It!** . (Если вы не знаете все координаты, попробуйте следующее. Это расположение на Microsoft Редмонд).
 
-    - Широта: 47.6781005859375
-    - Долготы:-122.158317565918
+   - Широта: 47.6781005859375
+   - Долготы:-122.158317565918
 
-    Эта страница отображается с помощью координат, заданные вами.
+     Эта страница отображается с помощью координат, заданные вами.
 
-    ![сопоставление 3](displaying-maps-in-an-aspnet-web-pages-site/_static/image3.png)
+     ![сопоставление 3](displaying-maps-in-an-aspnet-web-pages-site/_static/image3.png)
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Дополнительные ресурсы

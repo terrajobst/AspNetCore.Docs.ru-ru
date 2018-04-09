@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-4
-title: "Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4, веб-формы - часть 4 | Документы Microsoft"
+title: Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4, веб-формы - часть 4 | Документы Microsoft
 author: tdykstra
-description: "Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, использующий Entity Framework. Это образец приложения..."
+description: Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, использующий Entity Framework. Это образец приложения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 06d129384fc78db21ad1b9224781deab6a0e91a5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6bea5f4faeb0a9c11a406a7e4e87c4929eda6a18
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-4"></a>Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4 Web Forms — часть 4
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 > Contoso университета примера веб-приложения показано, как для создания приложений веб-форм ASP.NET, с помощью Entity Framework 4.0 и Visual Studio 2010. Сведения о учебника серии см [в первом учебнике ряда](the-entity-framework-and-aspnet-getting-started-part-1.md)
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 Подробные данные в разметке или в коде, можно связать основных данных. В этой части руководства мы используем оба метода.
 
-[!["Image01"](the-entity-framework-and-aspnet-getting-started-part-4/_static/image2.png)](the-entity-framework-and-aspnet-getting-started-part-4/_static/image1.png)
+[![Image01](the-entity-framework-and-aspnet-getting-started-part-4/_static/image2.png)](the-entity-framework-and-aspnet-getting-started-part-4/_static/image1.png)
 
 ## <a name="displaying-and-updating-related-entities-in-a-gridview-control"></a>Отображение и обновление связанных сущностей в элементе управления GridView
 
@@ -165,6 +165,6 @@ ms.lasthandoff: 11/10/2017
 
 Теперь вы знаете несколько способов работы со связанными данными. В этом руководстве вы узнаете, как добавление связей между существующими сущностями, как удалить связи и как добавить новую сущность, имеющий отношение к существующей сущности.
 
->[!div class="step-by-step"]
-[Назад](the-entity-framework-and-aspnet-getting-started-part-3.md)
-[Вперед](the-entity-framework-and-aspnet-getting-started-part-5.md)
+> [!div class="step-by-step"]
+> [Назад](the-entity-framework-and-aspnet-getting-started-part-3.md)
+> [Вперед](the-entity-framework-and-aspnet-getting-started-part-5.md)

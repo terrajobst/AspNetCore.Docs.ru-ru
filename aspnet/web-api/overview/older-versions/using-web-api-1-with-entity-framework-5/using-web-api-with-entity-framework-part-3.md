@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-3
-title: "Часть 3: Создание контроллера Admin | Документы Microsoft"
+title: 'Часть 3: Создание контроллера Admin | Документы Microsoft'
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 6fadfb6e96ae287fc5f81516b7535e03853c7e6a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 588d9d1b5d27759692cd840faabf2c3549c309d6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-3-creating-an-admin-controller"></a>Часть 3: Создание контроллера администратора
 ====================
@@ -71,10 +71,10 @@ ms.lasthandoff: 11/10/2017
 | Метод контроллера | Описание | URI | Метод HTTP |
 | --- | --- | --- | --- |
 | GetProducts | Получает все продукты. | API и продуктов | GET |
-| GetProduct | Выполняет поиск продуктов по идентификатору. | API/продукты/*идентификатор* | GET |
-| PutProduct | Обновления продукта. | API/продукты/*идентификатор* | PUT |
+| GetProduct | Выполняет поиск продуктов по идентификатору. | api/products/*id* | GET |
+| PutProduct | Обновления продукта. | api/products/*id* | PUT |
 | PostProduct | Создает новый продукт. | API и продуктов | ПОМЕСТИТЬ |
-| DeleteProduct | Удаление продукта. | API/продукты/*идентификатор* | DELETE |
+| DeleteProduct | Удаление продукта. | api/products/*id* | DELETE |
 
 Вызывает каждый метод `OrdersContext` запросов к базе данных. Вызовите методы, позволяющие изменять коллекцию (PUT, POST и DELETE) `db.SaveChanges` для сохранения изменений в базу данных. Контроллеры создаются на HTTP-запрос и затем ликвидирован, поэтому это необходимо для сохранения изменений перед возвратом метода.
 
@@ -102,6 +102,6 @@ ms.lasthandoff: 11/10/2017
 
 [!code-console[Main](using-web-api-with-entity-framework-part-3/samples/sample6.cmd)]
 
->[!div class="step-by-step"]
-[Назад](using-web-api-with-entity-framework-part-2.md)
-[Вперед](using-web-api-with-entity-framework-part-4.md)
+> [!div class="step-by-step"]
+> [Назад](using-web-api-with-entity-framework-part-2.md)
+> [Вперед](using-web-api-with-entity-framework-part-4.md)

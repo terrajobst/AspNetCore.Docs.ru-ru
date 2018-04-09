@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
-title: "Настройка развертывания базы данных для нескольких сред | Документы Microsoft"
+title: Настройка развертывания базы данных для нескольких сред | Документы Microsoft
 author: jrjlee
-description: "Описывается, как настроить свойства базы данных для конкретных целевых средах как часть процесса развертывания. Обратите внимание: Предполагается th..."
+description: 'Описывается, как настроить свойства базы данных для конкретных целевых средах как часть процесса развертывания. Обратите внимание: Предполагается th...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
 msc.type: authoredcontent
-ms.openlocfilehash: f3ca344c2466d9d538f55cd8ff0a5bf5b7bac808
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 06f22bc9a3068ee5621df62ee5ed1bea06d7e9e6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="customizing-database-deployments-for-multiple-environments"></a>Настройка развертывания базы данных для нескольких сред
 ====================
@@ -35,9 +35,9 @@ ms.lasthandoff: 03/15/2018
 > Параметры развертывания в проекте базы данных Visual Studio 2010 содержатся в файле конфигурации (.sqldeployment) развертывания. В этом разделе показано, как создать файлы конфигурации конкретной среды развертывания и указать тот, который вы хотите использовать в качестве параметра VSDBCMD.
 
 
-Этот раздел входит в состав серию учебников, исходя из требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения & #x 2014; [решения диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014; для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Службы Communication Foundation (WCF) и проект базы данных.
+Этот раздел входит в состав серию учебников, исходя из требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения&#x2014; [решения диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Communication Служба Foundation (WCF) и проект базы данных.
 
-Метод развертывания, в основе этих учебников основан на разбиение проекта файл подход, описанный в [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md), в которой процесс построения управляется двух проектов файлы & #x 2014; один с построение инструкции, которые применяются для каждой целевой среде и, содержащий параметры построения и развертывания конкретной среды. Во время построения файла проекта среды объединяется в файл проекта зависит от среды, образуют полный набор инструкций построения.
+Метод развертывания, в основе этих учебников основан на разбиение проекта файл подход, описанный в [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md), в которой процесс построения управляется двух файлов проекта&#x2014;один с построение инструкции, которые применяются для каждой целевой среде и, содержащий параметры построения и развертывания конкретной среды. Во время построения файла проекта среды объединяется в файл проекта зависит от среды, образуют полный набор инструкций построения.
 
 ## <a name="task-overview"></a>Общие сведения о задаче
 
@@ -146,6 +146,6 @@ ms.lasthandoff: 03/15/2018
 - [Построение и развертывание баз данных в изолированной среде разработки](https://msdn.microsoft.com/library/dd193409.aspx)
 - [Построение и развертывание баз данных в тестовой или производственной среде](https://msdn.microsoft.com/library/dd193413.aspx)
 
->[!div class="step-by-step"]
-[Назад](performing-a-what-if-deployment.md)
-[Вперед](deploying-database-role-memberships-to-test-environments.md)
+> [!div class="step-by-step"]
+> [Назад](performing-a-what-if-deployment.md)
+> [Вперед](deploying-database-role-memberships-to-test-environments.md)

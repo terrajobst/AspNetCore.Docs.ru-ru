@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-vb
-title: "Основные различия между IIS и ASP.NET Development Server (VB) | Документы Microsoft"
+title: Основные различия между IIS и ASP.NET Development Server (VB) | Документы Microsoft
 author: rick-anderson
-description: "При тестировании приложения ASP.NET локально, скорее всего, вы используете веб-сервера разработки ASP.NET. Рабочий веб-сайт то, скорее всего, pow..."
+description: При тестировании приложения ASP.NET локально, скорее всего, вы используете веб-сервера разработки ASP.NET. Рабочий веб-сайт то, скорее всего, pow...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 8e8ae3c0fd1d67fba6dff965704b550bdc919c6a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 47b1959f9b92d161da0476b274c8154333ad80dc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="core-differences-between-iis-and-the-aspnet-development-server-vb"></a>Основные различия между IIS и ASP.NET Development Server (Visual Basic)
 ====================
@@ -94,7 +94,7 @@ Take немедленно здесь заключается в ASP.NET Developme
 
 [!code-xml[Main](core-differences-between-iis-and-the-asp-net-development-server-vb/samples/sample4.xml)]
 
-С помощью сервера разработки ASP.NET, посетите сайт и введите URL-адрес прямой в один PDF-файлы в адресной строке браузера. Если вы загрузили веб-сайт, связанный с данным учебником, URL-адрес должен выглядеть примерно так:`http://localhost:portNumber/PrivateDocs/aspnet_tutorial01_Basics_vb.pdf`
+С помощью сервера разработки ASP.NET, посетите сайт и введите URL-адрес прямой в один PDF-файлы в адресной строке браузера. Если вы загрузили веб-сайт, связанный с данным учебником, URL-адрес должен выглядеть примерно так: `http://localhost:portNumber/PrivateDocs/aspnet_tutorial01_Basics_vb.pdf`
 
 Этот URL-адрес в адресную строку заставляет браузер для отправки запроса на сервере разработки ASP.NET для файла. ASP.NET Development Server передает в среду выполнения ASP.NET для обработки запроса. Поскольку мы еще не выполнил вход, а `Web.config` в `PrivateDocs` папка настроена для анонимного доступа, среда выполнения ASP.NET автоматически перенаправляет нам на страницу входа `Login.aspx` (см. рис. 3). Когда перенаправления пользователя на страницу входа, ASP.NET включает `ReturnUrl` параметр строки запроса, который показывает страницу, пользователь при попытке просмотра. После успешного входа пользователя могут быть возвращены на эту страницу.
 
@@ -140,6 +140,6 @@ Take немедленно здесь заключается в ASP.NET Developme
 - [С помощью проверки подлинности ASP.NET форумы со всеми типами содержимого на сервере IIS 7](https://blogs.iis.net/bills/archive/2007/05/19/using-asp-net-forms-authentication-with-all-types-of-content-with-iis7-video.aspx) (видео)
 - [Веб-серверы в Visual Web Developer](https://msdn.microsoft.com/library/58wxa9w5.aspx)
 
->[!div class="step-by-step"]
-[Назад](common-configuration-differences-between-development-and-production-vb.md)
-[Вперед](deploying-a-database-vb.md)
+> [!div class="step-by-step"]
+> [Назад](common-configuration-differences-between-development-and-production-vb.md)
+> [Вперед](deploying-a-database-vb.md)

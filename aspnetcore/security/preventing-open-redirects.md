@@ -1,7 +1,7 @@
 ---
-title: "Предотвращение атак перенаправления открыть в приложении ASP.NET Core"
+title: Предотвратить атаки откройте перенаправления в ASP.NET Core
 author: ardalis
-description: "Показано, как предотвратить атаки с открытым перенаправления приложения ASP.NET Core"
+description: Показано, как предотвратить атаки с открытым перенаправления приложения ASP.NET Core
 manager: wpickett
 ms.author: riande
 ms.date: 07/07/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/preventing-open-redirects
-ms.openlocfilehash: d6cd65a2516c4d5e41428f0c1f2dbbe913ac2123
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4a210b8bb8091e7c036d4bc98306e3b3f90d7d46
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="preventing-open-redirect-attacks-in-an-aspnet-core-app"></a>Предотвращение атак перенаправления открыть в приложении ASP.NET Core
+# <a name="prevent-open-redirect-attacks-in-aspnet-core"></a>Предотвратить атаки откройте перенаправления в ASP.NET Core
 
 Веб-приложения, который перенаправляет на URL-адрес, указанный через запрос, например, данные строки запроса или формы потенциально могут быть подменены для перенаправления пользователей на внешний, вредоносные URL-адрес. Это изменение данных называется атака откройте перенаправления.
 
@@ -57,11 +57,11 @@ public IActionResult SomeAction(string redirectUrl)
 }
 ```
 
-``LocalRedirect``Если указан URL-адрес нелокальных вызовет исключение. В противном случае он ведет себя так же, как ``Redirect`` метод.
+``LocalRedirect`` Если указан URL-адрес нелокальных вызовет исключение. В противном случае он ведет себя так же, как ``Redirect`` метод.
 
 ### <a name="islocalurl"></a>IsLocalUrl
 
-Используйте [IsLocalUrl](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iurlhelper#Microsoft_AspNetCore_Mvc_IUrlHelper_IsLocalUrl_System_String_) метод для проверки перед перенаправлением URL-адресов:
+Используйте [IsLocalUrl](/dotnet/api/Microsoft.AspNetCore.Mvc.IUrlHelper?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_IUrlHelper_IsLocalUrl_System_String_) метод для проверки перед перенаправлением URL-адресов:
 
 Приведенный ниже показано, как проверить, является ли URL-адрес локального перед перенаправлением.
 

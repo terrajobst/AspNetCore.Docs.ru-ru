@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs
-title: "Проверка с помощью средства проверки данных заметки (C#) | Документы Microsoft"
+title: Проверка с помощью средства проверки данных заметки (C#) | Документы Microsoft
 author: microsoft
-description: "Воспользуйтесь преимуществами связывателя модели данных заметок для выполнения проверки в приложении ASP.NET MVC. Сведения об использовании различных типов проверяющий элемент управления..."
+description: Воспользуйтесь преимуществами связывателя модели данных заметок для выполнения проверки в приложении ASP.NET MVC. Сведения об использовании различных типов проверяющий элемент управления...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/29/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 306dcb0197dfc9317ea9665dd2b1c058ba8bd712
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0aca9472094e6a54c7b7cb4ad4f12df64fe12db2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validation-with-the-data-annotation-validators-c"></a>Проверка с помощью средства проверки данных заметки (C#)
 ====================
@@ -78,7 +78,7 @@ ms.lasthandoff: 11/10/2017
 
 > [!NOTE] 
 > 
-> Если вы хотите полностью настроить сообщение об ошибке, проверяющий элемент управления можно назначить пользовательское сообщение об ошибке в свойство ErrorMessage проверяющего элемента управления следующим образом:`<Required(ErrorMessage:="This field needs a value!")>`
+> Если вы хотите полностью настроить сообщение об ошибке, проверяющий элемент управления можно назначить пользовательское сообщение об ошибке в свойство ErrorMessage проверяющего элемента управления следующим образом: `<Required(ErrorMessage:="This field needs a value!")>`
 
 
 Можно использовать класс продукта в **список 1** с Create() действия контроллера в **листинг 2**. Это действие контроллера повторно отображает представление создания при состояния модели содержит все ошибки.
@@ -153,6 +153,6 @@ ms.lasthandoff: 11/10/2017
 
 В этом учебнике вы узнали, как пользоваться преимуществами связывателя модели данных заметок для выполнения проверки в приложении ASP.NET MVC. Вы узнали, как использовать различные типы атрибутов проверяющий элемент управления, таких как обязательный и StringLength атрибутов. Вы также узнали, как использовать эти атрибуты при работе с платформой Entity Framework корпорации Майкрософт.
 
->[!div class="step-by-step"]
-[Назад](validating-with-a-service-layer-cs.md)
-[Вперед](creating-model-classes-with-the-entity-framework-vb.md)
+> [!div class="step-by-step"]
+> [Назад](validating-with-a-service-layer-cs.md)
+> [Вперед](creating-model-classes-with-the-entity-framework-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/data/5-working-with-data
-title: "Введение в работу с базой данных в ASP.NET Web Pages (Razor) узлов | Документы Microsoft"
+title: Введение в работу с базой данных в ASP.NET Web Pages (Razor) узлов | Документы Microsoft
 author: tfitzmac
-description: "В этой главе описывается доступ к данным из базы данных и отображения веб-страниц ASP.NET."
+description: В этой главе описывается доступ к данным из базы данных и отображения веб-страниц ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/data/5-working-with-data
 msc.type: authoredcontent
-ms.openlocfilehash: 460af471a1b0650f8d782d582ce6cd9a06664d5c
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 563074cf3e60717c2e6c336a2c282b4203f73b8b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introduction-to-working-with-a-database-in-aspnet-web-pages-razor-sites"></a>Введение в работу с базой данных в ASP.NET Web Pages (Razor) узлов
 ====================
@@ -361,7 +361,7 @@ ms.lasthandoff: 03/15/2018
 6. Нажмите кнопку **удалить** ссылку для одного из этих продуктов. *DeleteProduct.cshtml* -страница подтверждения удаления этой записи.
 7. Нажмите кнопку **удалить** кнопки. Удалить запись о продукте и страница обновляется с перечислением обновленного продукта.
 
-> [!TIP] 
+> [!TIP]
 > 
 > <a id="SB_ConnectingToADatabase"></a>
 > ### <a name="connecting-to-a-database"></a>Подключение к базе данных

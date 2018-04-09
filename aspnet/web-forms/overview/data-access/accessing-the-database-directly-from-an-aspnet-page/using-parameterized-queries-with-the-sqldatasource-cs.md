@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-cs
-title: "Использование параметризованных запросов в SqlDataSource (C#) | Документы Microsoft"
+title: Использование параметризованных запросов в SqlDataSource (C#) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы продолжить внешнего вида элемента управления SqlDataSource и узнайте, как определять параметризованные запросы. Параметры могут быть заданы оба decla..."
+description: В этом учебнике мы продолжить внешнего вида элемента управления SqlDataSource и узнайте, как определять параметризованные запросы. Параметры могут быть заданы оба decla...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b66c68b8306b905a800465ab0ed720ae6f9d16b9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 87abf3029919eb9e3c2c931abfb4beb0b2f92fdb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-parameterized-queries-with-the-sqldatasource-c"></a>Использование параметризованных запросов в SqlDataSource (C#)
 ====================
@@ -235,7 +235,7 @@ SqlDataSource поддерживает параметризованные зап
 
 [!code-sql[Main](using-parameterized-queries-with-the-sqldatasource-cs/samples/sample10.sql)]
 
-`ORDER BY NEWID()`Возвращает записи, отсортированные в случайном порядке (в разделе [использование `NEWID()` случайным образом записи сортировки](http://www.sqlteam.com/item.asp?ItemID=8747)). `SELECT TOP 1`Возвращает первую запись из результирующего набора. Собрать вместе, этот запрос возвращает `CategoryID` и `CategoryName` значения столбцов из одной, случайно выбранных категорий.
+`ORDER BY NEWID()` Возвращает записи, отсортированные в случайном порядке (в разделе [использование `NEWID()` случайным образом записи сортировки](http://www.sqlteam.com/item.asp?ItemID=8747)). `SELECT TOP 1` Возвращает первую запись из результирующего набора. Собрать вместе, этот запрос возвращает `CategoryID` и `CategoryName` значения столбцов из одной, случайно выбранных категорий.
 
 Для отображения категории s `CategoryName` значения, добавить веб-управления Label на страницу, задайте его `ID` свойства `CategoryNameLabel`и очистить его `Text` свойство. Чтобы программным способом извлечения данных из элемента управления SqlDataSource, необходимо вызвать его `Select()` метод. [ `Select()` Метод](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.select.aspx) ожидает один входной параметр типа [ `DataSourceSelectArguments` ](https://msdn.microsoft.com/library/system.web.ui.datasourceselectarguments.aspx), которое указывает, каким образом сообщения регистрируются данные перед возвращением. Это может включать инструкции для сортировки и фильтрации данных и используемые данные, которые веб-элементы управления для сортировки и постраничного просмотра данных из элемента управления SqlDataSource. В нашем примере, мы не хотите t необходимость данные изменяются до возврата и таким образом будет передать в `DataSourceSelectArguments.Empty` объекта.
 
@@ -246,7 +246,7 @@ SqlDataSource поддерживает параметризованные зап
 
 [!code-csharp[Main](using-parameterized-queries-with-the-sqldatasource-cs/samples/sample11.cs)]
 
-`randomCategoryView[0]`Возвращает первый `DataRowView` в DataView. `randomCategoryView[0]["CategoryName"]`Возвращает значение `CategoryName` столбца в первом ряду. Обратите внимание, что DataView слабо типизированной. Для ссылки на значение определенного столбца необходимо передать имя столбца в виде строки (в данном случае «категория»). На рисунке 13 показано сообщение, отображаемое в `CategoryNameLabel` при просмотре страницы. Конечно, фактическое имя категории отображаются выбирается случайным образом по `RandomCategoryDataSource` SqlDataSource на каждом посещении страницы (включая обратные передачи).
+`randomCategoryView[0]` Возвращает первый `DataRowView` в DataView. `randomCategoryView[0]["CategoryName"]` Возвращает значение `CategoryName` столбца в первом ряду. Обратите внимание, что DataView слабо типизированной. Для ссылки на значение определенного столбца необходимо передать имя столбца в виде строки (в данном случае «категория»). На рисунке 13 показано сообщение, отображаемое в `CategoryNameLabel` при просмотре страницы. Конечно, фактическое имя категории отображаются выбирается случайным образом по `RandomCategoryDataSource` SqlDataSource на каждом посещении страницы (включая обратные передачи).
 
 
 [![S случайным образом выбраны категории, имя отображается](using-parameterized-queries-with-the-sqldatasource-cs/_static/image13.gif)](using-parameterized-queries-with-the-sqldatasource-cs/_static/image25.png)
@@ -306,12 +306,12 @@ SqlDataSource позволяет определять параметризова
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Scott Clyde Шмидт Рэнделл и Алексей Pespisa. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](querying-data-with-the-sqldatasource-control-cs.md)
-[Вперед](inserting-updating-and-deleting-data-with-the-sqldatasource-cs.md)
+> [!div class="step-by-step"]
+> [Назад](querying-data-with-the-sqldatasource-control-cs.md)
+> [Вперед](inserting-updating-and-deleting-data-with-the-sqldatasource-cs.md)

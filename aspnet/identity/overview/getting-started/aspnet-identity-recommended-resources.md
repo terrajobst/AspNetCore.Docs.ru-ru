@@ -1,26 +1,26 @@
 ---
 uid: identity/overview/getting-started/aspnet-identity-recommended-resources
-title: "ASP.NET Identity, рекомендуется использовать ресурсы | Документы Microsoft"
+title: ASP.NET Identity, рекомендуется использовать ресурсы | Документы Microsoft
 author: Rick-Anderson
-description: "Этот раздел содержит ссылки на ресурсы документации об использовании ASP.NET Identity. Если вы знаете, в блоге, stackoverflow потока или любые другие ло..."
+description: Этот раздел содержит ссылки на ресурсы документации об использовании ASP.NET Identity. Если вы знаете, в блоге, stackoverflow потока или любые другие ло...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2015
 ms.topic: article
 ms.assetid: 0f78aec2-f509-46fa-b20f-d5208425d8ec
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-recommended-resources
 msc.type: authoredcontent
-ms.openlocfilehash: cb6e378d6b1de7d43bbc4272b64f9029f4e92924
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f2e1693a32fce6956ddb1e095e6f208b9f0faab6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-identity-recommended-resources"></a>ASP.NET Identity, рекомендуется использовать ресурсы
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Этот раздел содержит ссылки на ресурсы документации об использовании ASP.NET Identity.
 > 
@@ -94,7 +94,7 @@ ms.lasthandoff: 01/24/2018
     - [Основные сведения о конвейера Owin внешней проверки подлинности](http://coding.abel.nu/2014/06/understanding-the-owin-external-authentication-pipeline/)
     - [ASP.NET Identity и общие сведения об Owin](http://coding.abel.nu/2014/06/asp-net-identity-and-owin-overview/)
 
- По [к. Скотт Аллен](https://twitter.com/OdeToCode) на оды к коду
+  По [к. Скотт Аллен](https://twitter.com/OdeToCode) на оды к коду
 
     - [ASP.NET Core Identity](http://odetocode.com/blogs/scott/archive/2013/11/25/asp-net-core-identity.aspx) этот блог проверяет базовые абстракции, включая IUser, IUserStore и I\*интерфейсов хранилища.
     - [ASP.NET Identity с платформой Entity Framework](http://odetocode.com/blogs/scott/archive/2014/01/03/asp-net-identity-with-the-entity-framework.aspx) отдельных учетных записей пользователей в приложений MVC 5, веб-API и SPA, строки подключения и управление контексты
@@ -108,7 +108,7 @@ ms.lasthandoff: 01/24/2018
 - [Pranav Rastogi](https://twitter.com/rustd)
 
     - [Получить дополнительные сведения от социальных поставщиков](https://blogs.msdn.com/b/webdev/archive/2013/10/16/get-more-information-from-social-providers-used-in-the-vs-2013-project-templates.aspx)
-- [@beabigrockstar](https://twitter.com/beabigrockstar)(Jerrie Pelser)
+- [@beabigrockstar](https://twitter.com/beabigrockstar) (Jerrie Pelser)
 
     - [2 многофакторной проверки подлинности](http://www.beabigrockstar.com/blog/2-factor-authentication-with-asp-net-identity-2-0-beta-1/)
     - [С помощью Google Authenticator с ASP.NET Identity](http://www.beabigrockstar.com/blog/using-google-authenticator-asp-net-identity/)
@@ -132,7 +132,7 @@ ms.lasthandoff: 01/24/2018
 - Channel 9 [Защита веб-сайта с помощью ASP.NET Identity](https://channel9.msdn.com/Events/TechDays/Techdays-2014-the-Netherlands/Securing-your-website-with-ASP-NET-Identity) по Алекс Thissen
 - [Использовать существующую модель DB ASP.NET Identity](https://www.youtube.com/watch?v=elfqejow5hM) , Александр Шмидт
 - [Один ASP.NET Identity](https://www.youtube.com/watch?v=w8GD-QIusKk) по Ivaylo Kenov от Telerik
-- [Чешский ASP.NET Identity](https://www.youtube.com/watch?v=tVbZp5brcpY) в этом лекции будет показано развертывание обычной проверки подлинности, как добавить поддержку для внешних поставщиков, таких как Twitter или Facebook и как использовать одноразовых паролей (OTP). [Nástupce ј ASP.NET Identity членство в роли поставщика &#367; v ASP.NET tedy knihovna pro zajišt &#283; ní autentizace uživatel &#367;. V této p &#345; ukážeme si ednášce, jak nasad]
+- [Чешский ASP.NET Identity](https://www.youtube.com/watch?v=tVbZp5brcpY) в этом лекции будет показано развертывание обычной проверки подлинности, как добавить поддержку для внешних поставщиков, таких как Twitter или Facebook и как использовать одноразовых паролей (OTP). [Nástupce ј ASP.NET Identity членство в роли поставщика&#367; v ASP.NET tedy knihovna pro zajišt&#283;ní autentizace uživatel&#367;. V této p&#345;ukážeme si ednášce, jak nasad]
 
 <a id="cust"></a>
 ## <a name="custom-storage-providers-for-aspnet-identity"></a>Поставщики пользовательского хранилища для ASP.NET Identity

@@ -1,7 +1,7 @@
 ---
-title: "Ограничение времени существования полезных данных, защищенных"
+title: Ограничить время существования защищенных полезных данных в ASP.NET Core
 author: rick-anderson
-description: "В этом документе объясняется, как ограничить время существования защищенных полезных данных с помощью интерфейсов API защиты данных ASP.NET Core."
+description: Дополнительные сведения о ограничить время существования защищенных полезных данных с помощью API защиты данных ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/limited-lifetime-payloads
-ms.openlocfilehash: d631851b5b933d75c37a308f492840e3442e6f1a
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 324887b3d29de989ad855c4e78fd5a235fdb560e
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="limiting-the-lifetime-of-protected-payloads"></a>Ограничение времени существования полезных данных, защищенных
+# <a name="limit-the-lifetime-of-protected-payloads-in-aspnet-core"></a>Ограничить время существования защищенных полезных данных в ASP.NET Core
 
 Существуют сценарии, где разработчик приложения хочет создать защищенный полезные данные, срок действия истекает через установленный период времени. Например защищенные полезных данных может представлять маркер сброса пароля, которая должна только действовать в течение одного часа. Возможна наверняка разработчикам создавать свои собственные формат полезных данных, который содержит внедренные срок действия, и дополнительно разработчикам может потребоваться это сделать, но для большинства разработчиков управление этих сроков действия может увеличиваться утомительным.
 
@@ -23,11 +23,11 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="api-usage"></a>Использование API
 
-`ITimeLimitedDataProtector` Интерфейс является основной интерфейс для защиты и снятие защиты полезных данных ограниченной по времени и автоматическим истечением срока действия. Для создания экземпляра `ITimeLimitedDataProtector`, вам потребуется сначала экземпляр обычной [IDataProtector](overview.md) создан с определенной цели. Один раз `IDataProtector` экземпляр доступен, вызовите `IDataProtector.ToTimeLimitedDataProtector` метод расширения для получения предохранитель с возможностями встроенных истечение срока действия.
+`ITimeLimitedDataProtector` Интерфейс является основной интерфейс для защиты и снятие защиты полезных данных ограниченной по времени и автоматическим истечением срока действия. Для создания экземпляра `ITimeLimitedDataProtector`, вам потребуется сначала экземпляр обычной [IDataProtector](xref:security/data-protection/consumer-apis/overview) создан с определенной цели. Один раз `IDataProtector` экземпляр доступен, вызовите `IDataProtector.ToTimeLimitedDataProtector` метод расширения для получения предохранитель с возможностями встроенных истечение срока действия.
 
 `ITimeLimitedDataProtector` предоставляет следующие методы API контактную зону и расширения:
 
-* CreateProtector (строка назначение): ITimeLimitedDataProtector - этот API, похожие на существующие `IDataProtectionProvider.CreateProtector` в том, что он может использоваться для создания [цели цепочки](purpose-strings.md) из предохранителя корневой ограниченной по времени.
+* CreateProtector (строка назначение): ITimeLimitedDataProtector - этот API, похожие на существующие `IDataProtectionProvider.CreateProtector` в том, что он может использоваться для создания [цели цепочки](xref:security/data-protection/consumer-apis/purpose-strings) из предохранителя корневой ограниченной по времени.
 
 * Защита (byte [] открытого текста, истечение срока действия DateTimeOffset): byte]
 
@@ -56,6 +56,6 @@ ms.lasthandoff: 03/02/2018
 >[!WARNING]
 > Не рекомендуется использовать эти API-интерфейсы для защиты полезных нагрузок, требующих сохраняемости долгосрочной или не определено. «Я допускают для защищенных нагрузок быть невозможности восстановить после месяца?» может служить хорошим правило; Если ответ не затем разработчики следует рассмотреть альтернативные API-интерфейсы.
 
-Пример ниже, используется [пути кода не DI](../configuration/non-di-scenarios.md) для экземпляров системы защиты данных. Чтобы запустить этот образец, убедитесь, сначала добавили ссылку на пакет Microsoft.AspNetCore.DataProtection.Extensions.
+Пример ниже, используется [пути кода не DI](xref:security/data-protection/configuration/non-di-scenarios) для экземпляров системы защиты данных. Чтобы запустить этот образец, убедитесь, сначала добавили ссылку на пакет Microsoft.AspNetCore.DataProtection.Extensions.
 
 [!code-csharp[](limited-lifetime-payloads/samples/limitedlifetimepayloads.cs)]

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-vb
-title: "Основные сведения о фильтрах действий (VB) | Документы Microsoft"
+title: Основные сведения о фильтрах действий (VB) | Документы Microsoft
 author: microsoft
-description: "Целью данного учебника является объяснить фильтров действий. Фильтр действий является атрибутом, который можно применить к действия контроллера--или контроллер всего..."
+description: Целью данного учебника является объяснить фильтров действий. Фильтр действий является атрибутом, который можно применить к действия контроллера--или контроллер всего...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 483133ec5db27c2fa1ed4b463e37e17efab12e0f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2796b67cba6a2ddaee7a006a170dfb7e5ff89888
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-action-filters-vb"></a>Основные сведения о фильтрах действий (Visual Basic)
 ====================
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 
 Например, контроллер данных в список 1 предоставляет действие с именем `Index()` , возвращает текущее время. Это действие снабжен `OutputCache` фильтра действий. Этот фильтр в результате значение, возвращаемое действие на кэширование в течение 10 секунд.
 
-**Листинг 1.`Controllers\DataController.vb`**
+**Листинг 1. `Controllers\DataController.vb`**
 
 [!code-vb[Main](understanding-action-filters-vb/samples/sample1.vb)]
 
@@ -103,7 +103,7 @@ ms.lasthandoff: 11/10/2017
 
 Чтобы продемонстрировать, как создать настраиваемого фильтра действий, мы создадим пользовательского фильтра действий, записывает в журнал этапы обработки действия контроллера, в окне вывода Visual Studio. Наш `LogActionFilter` содержится в списке 2.
 
-**Листинг 2.`ActionFilters\LogActionFilter.vb`**
+**Листинг 2. `ActionFilters\LogActionFilter.vb`**
 
 [!code-vb[Main](understanding-action-filters-vb/samples/sample2.vb)]
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 11/10/2017
 
 Контроллер Home в списке 3 показано, как применять фильтр журнала действий в класс контроллера целиком. Каждый раз, когда любой из действия, представляемые контроллера Home вызываются — либо `Index()` метода или `About()` метод — этапы обработки действия регистрируются в окне вывода Visual Studio.
 
-**Листинг 3.`Controllers\HomeController.vb`**
+**Листинг 3. `Controllers\HomeController.vb`**
 
 [!code-vb[Main](understanding-action-filters-vb/samples/sample3.vb)]
 
@@ -127,6 +127,6 @@ ms.lasthandoff: 11/10/2017
 
 Наконец вы узнали, как реализовать простой фильтр действий. Мы создали фильтр действий журнала, который записывает в журнал этапы обработки действия контроллера, в окне вывода Visual Studio.
 
->[!div class="step-by-step"]
-[Назад](asp-net-mvc-routing-overview-vb.md)
-[Вперед](improving-performance-with-output-caching-vb.md)
+> [!div class="step-by-step"]
+> [Назад](asp-net-mvc-routing-overview-vb.md)
+> [Вперед](improving-performance-with-output-caching-vb.md)

@@ -1,7 +1,7 @@
 ---
-title: "Двухфакторная проверка подлинности с помощью SMS в ASP.NET Core"
+title: Двухфакторная проверка подлинности с помощью SMS в ASP.NET Core
 author: rick-anderson
-description: "Узнайте, как настроить двухфакторную проверку подлинности (2FA) с приложением ASP.NET Core."
+description: Узнайте, как настроить двухфакторную проверку подлинности (2FA) с приложением ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 08/15/2017
@@ -9,25 +9,25 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/2fa
-ms.openlocfilehash: c328c6f4b674695dd1f2db8145a7ac1b8f12d36d
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 1c4acc4e4be593051d30793b7f73ad90ce727283
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Двухфакторная проверка подлинности с помощью SMS в ASP.NET Core
 
 По [Рик Андерсон](https://twitter.com/RickAndMSFT) и [разработчики швейцарский](https://github.com/Swiss-Devs)
 
-Этот учебник относится только к ASP.NET Core только 1.x. В разделе [Создание Включение QR-код для приложения для проверки подлинности в ASP.NET Core](xref:security/authentication/identity-enable-qrcodes) Core ASP.NET 2.0 и более поздних версий.
+Этот учебник относится только к ASP.NET Core только 1.x. В разделе [Создание включить QR-код для приложения для проверки подлинности в ASP.NET Core](xref:security/authentication/identity-enable-qrcodes) Core ASP.NET 2.0 и более поздних версий.
 
-Этого учебника показано, как настроить двухфакторную проверку подлинности (2FA) с помощью SMS. Инструкции, приведенные для [twilio](https://www.twilio.com/) и [ASPSMS](https://www.aspsms.com/asp.net/identity/core/testcredits/), но можно использовать любой другой поставщик SMS. Рекомендуется [подтверждение учетной записи и пароль восстановления](accconfirm.md) перед запуском этого учебника.
+Этого учебника показано, как настроить двухфакторную проверку подлинности (2FA) с помощью SMS. Инструкции, приведенные для [twilio](https://www.twilio.com/) и [ASPSMS](https://www.aspsms.com/asp.net/identity/core/testcredits/), но можно использовать любой другой поставщик SMS. Рекомендуется [подтверждение учетной записи и пароль восстановления](xref:security/authentication/accconfirm) перед запуском этого учебника.
 
 Представление [полного примера](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/2fa/sample/Web2FA). [Загрузка](xref:tutorials/index#how-to-download-a-sample).
 
 ## <a name="create-a-new-aspnet-core-project"></a>Создайте новый проект ASP.NET Core
 
-Создать новый веб-приложение ASP.NET Core с именем `Web2FA` для каждой учетной записи. Следуйте инструкциям в [реализации SSL в приложении ASP.NET Core](xref:security/enforcing-ssl) для настройки и требовать SSL.
+Создать новый веб-приложение ASP.NET Core с именем `Web2FA` для каждой учетной записи. Следуйте инструкциям в [применять SSL в приложении ASP.NET Core](xref:security/enforcing-ssl) для настройки и требовать SSL.
 
 ### <a name="create-an-sms-account"></a>Создание учетной записи SMS
 

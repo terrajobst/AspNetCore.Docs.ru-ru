@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12
-title: "Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: развертывание в рабочей среде - 7 12 | Документы Microsoft"
+title: 'Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: развертывание в рабочей среде - 7 12 | Документы Microsoft'
 author: tdykstra
-description: "Ряд учебниках показано развертывание ASP.NET (публикации) проекта веб-приложения, который содержит базу данных SQL Server Compact с помощью Visual Stu..."
+description: Ряд учебниках показано развертывание ASP.NET (публикации) проекта веб-приложения, который содержит базу данных SQL Server Compact с помощью Visual Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 4aa6766c2c7765f499f5c5380962a5fe443e8c9d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ab3b7ba332deddae7d04fc37c7aabc72bdb2d17e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-to-the-production-environment---7-of-12"></a>Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: развертывание в рабочей среде - 7 12
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузите начальный проект](http://code.msdn.microsoft.com/Deploying-an-ASPNET-Web-4e31366b)
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 01/24/2018
 
 ![Публикация веб-мастер подключения tab](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image26.png)
 
-Файл PUBLISHSETTINGS помещение плановой постоянных URL-адрес для сайта в поле URL-адрес назначения, но если этот домен еще не приобрела еще, замените значение временного URL-адрес. Например, URL-адрес —  *[http://contosouniversity.com.vserver01.cytanium.com](http://contosouniversity.com.vserver01.cytanium.com).* Единственной целью этого поля является укажите точный URL-адрес, браузер откроет автоматически после успешного после развертывания. Если оставить его пустым, единственным последствием будет, что браузер не будет запускаться автоматически после развертывания.
+Файл PUBLISHSETTINGS помещение плановой постоянных URL-адрес для сайта в поле URL-адрес назначения, но если этот домен еще не приобрела еще, замените значение временного URL-адрес. Например, URL-адрес —  *[ http://contosouniversity.com.vserver01.cytanium.com ](http://contosouniversity.com.vserver01.cytanium.com).* Единственной целью этого поля является укажите точный URL-адрес, браузер откроет автоматически после успешного после развертывания. Если оставить его пустым, единственным последствием будет, что браузер не будет запускаться автоматически после развертывания.
 
 Нажмите кнопку **проверить подключение** Чтобы проверить правильность параметров и могут подключиться к серверу. Как показано выше, зеленая галочка проверяет, что соединение установлено успешно.
 
@@ -137,9 +137,9 @@ ms.lasthandoff: 01/24/2018
 
 В **баз данных** раздел **параметры** вкладке, ввести тот же профиль публикации значения, введенные для теста. Строки подключения, необходимо будет находиться в раскрывающихся списках.
 
-- В поле Строка соединения для **SchoolContext,** выберите`Data Source=|DataDirectory|School-Prod.sdf`
+- В поле Строка соединения для **SchoolContext,** выберите `Data Source=|DataDirectory|School-Prod.sdf`
 - В разделе **SchoolContext**выберите **применить Code First Migrations**.
-- В поле Строка соединения для **DefaultConnection**выберите`Data Source=|DataDirectory|aspnet-Prod.sdf`
+- В поле Строка соединения для **DefaultConnection**выберите `Data Source=|DataDirectory|aspnet-Prod.sdf`
 - В разделе **DefaultConnection**, оставьте **обновление базы данных** очищен.
 
 ![Вкладка параметров мастера Web публикация](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image28.png)
@@ -252,6 +252,6 @@ ms.lasthandoff: 01/24/2018
 
 В следующем уроке будет обновить код приложения и развернуть изменения для тестовой и рабочей сред.
 
->[!div class="step-by-step"]
-[Назад](deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12.md)
-[Вперед](deployment-to-a-hosting-provider-deploying-a-code-only-update-8-of-12.md)
+> [!div class="step-by-step"]
+> [Назад](deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12.md)
+> [Вперед](deployment-to-a-hosting-provider-deploying-a-code-only-update-8-of-12.md)

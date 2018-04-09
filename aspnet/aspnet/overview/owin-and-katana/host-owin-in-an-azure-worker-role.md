@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/owin-and-katana/host-owin-in-an-azure-worker-role
-title: "Разместить OWIN в рабочей роли Azure | Документы Microsoft"
+title: Разместить OWIN в рабочей роли Azure | Документы Microsoft
 author: MikeWasson
-description: "Этот учебник демонстрирует резидентной OWIN в рабочей роли Microsoft Azure. Откройте веб-интерфейс .NET (OWIN) определяет абстракцию между .NET веб-сервера..."
+description: Этот учебник демонстрирует резидентной OWIN в рабочей роли Microsoft Azure. Откройте веб-интерфейс .NET (OWIN) определяет абстракцию между .NET веб-сервера...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/11/2014
 ms.topic: article
 ms.assetid: 07aa855a-92ee-4d43-ba66-5bfd7de20ee6
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/host-owin-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: 8c0fdfdf60ff3bde34b6869adf3f8693b4d9615d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 13bccc4b2d6f1b22c94446deaf6795dab766275b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="host-owin-in-an-azure-worker-role"></a>Узел OWIN в рабочей роли Azure
 ====================
@@ -119,7 +119,7 @@ ms.lasthandoff: 01/24/2018
 
 [![](host-owin-in-an-azure-worker-role/_static/image10.png)](host-owin-in-an-azure-worker-role/_static/image9.png)
 
-Поиск IP-адреса в развертываниях службы развертывания [id], сведения о службе. Откройте веб-браузер и перейдите к http://*адрес*, где *адрес* IP-адрес, назначенный эмулятор вычислений; например, `http://127.0.0.1:80`. Вы увидите страницу приветствия OWIN:
+Поиск IP-адреса в развертываниях службы развертывания [id], сведения о службе. Откройте веб-браузер и перейдите к http://<em>адрес</em>, где <em>адрес</em> IP-адрес, назначенный эмулятор вычислений; например, `http://127.0.0.1:80`. Вы увидите страницу приветствия OWIN:
 
 ![](host-owin-in-an-azure-worker-role/_static/image11.png)
 

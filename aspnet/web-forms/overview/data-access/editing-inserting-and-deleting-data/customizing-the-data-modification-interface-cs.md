@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs
-title: "Настройка интерфейса изменения данных (C#) | Документы Microsoft"
+title: Настройка интерфейса изменения данных (C#) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы рассмотрим способы настройки интерфейса изменяемого элемента управления GridView, заменив стандартные текстовые поля и CheckBox альтернатив..."
+description: В этом учебнике мы рассмотрим способы настройки интерфейса изменяемого элемента управления GridView, заменив стандартные текстовые поля и CheckBox альтернатив...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fb0b20ab25d87eddc0b2f9da786db469b16f861a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f25b265c50870d59721a94c01d78f589a5d5f1c3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="customizing-the-data-modification-interface-c"></a>Настройка интерфейса изменения данных (C#)
 ====================
@@ -236,7 +236,7 @@ ms.lasthandoff: 11/10/2017
 Замените флажок в обоих `ItemTemplate` и `EditItemTemplate` с элементом управления RadioButtonList установка обоих RadioButtonLists `ID` свойства `DiscontinuedChoice`. Далее означает, что RadioButtonLists следует каждого содержаться два переключателя, один с меткой «активный» со значением «False» и надписью «Неподдерживаемые» со значением «True». Для этого можно либо ввести `<asp:ListItem>` элементов непосредственно с помощью декларативного синтаксиса или используйте `ListItem` редактор коллекции из конструктора. На рисунке 13 показано `ListItem` редактор коллекции после двух переключателей кнопку параметры были указаны.
 
 
-[![Добавить](customizing-the-data-modification-interface-cs/_static/image38.png)](customizing-the-data-modification-interface-cs/_static/image37.png)
+[![Add](customizing-the-data-modification-interface-cs/_static/image38.png)](customizing-the-data-modification-interface-cs/_static/image37.png)
 
 **Рис. 13**: Добавление RadioButtonList параметры «Снят с производства» и «Активный» ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-cs/_static/image39.png))
 
@@ -276,8 +276,8 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Назад](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md)
-[Вперед](implementing-optimistic-concurrency-cs.md)
+> [!div class="step-by-step"]
+> [Назад](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md)
+> [Вперед](implementing-optimistic-concurrency-cs.md)

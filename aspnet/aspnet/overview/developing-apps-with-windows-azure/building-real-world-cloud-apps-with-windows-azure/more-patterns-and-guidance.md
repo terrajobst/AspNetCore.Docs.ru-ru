@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/more-patterns-and-guidance
-title: "Дополнительные шаблоны и рекомендации (Создание реальных облачных приложений в Azure) | Документы Microsoft"
+title: Дополнительные шаблоны и рекомендации (Создание реальных облачных приложений в Azure) | Документы Microsoft
 author: MikeWasson
-description: "Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может..."
+description: Построение реального мира облачными приложениями с помощью Azure электронная книга основан на разработанный Скотт Гатри презентации. Объясняет, 13 шаблоны и рекомендации, которые он может...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 7e97cfc3-d830-4002-8ff7-5790d1ff49e6
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/more-patterns-and-guidance
 msc.type: authoredcontent
-ms.openlocfilehash: a388f2e0ca3e1f0ce24a6def2a2b91711a7bf5a7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5da5110afc50fa02fcfae551a18741821f18fcbb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="more-patterns-and-guidance-building-real-world-cloud-apps-with-azure"></a>Дополнительные шаблоны и рекомендации (Создание реальных облачных приложений в Azure)
 ====================
@@ -78,7 +78,7 @@ ms.lasthandoff: 01/24/2018
 И, наконец когда начать построение приложений реального мира и их выполнение в Azure, рано или поздно, возможно, потребуется помощь специалистов. Можно задавать вопросы на веб-узлам сообщества, такие как [форумы Azure или StackOverflow](https://azure.microsoft.com/support/forums/), или можно обратиться в корпорацию Майкрософт непосредственно для поддержки Azure. Корпорация Майкрософт предлагает несколько уровней технической поддержки Azure: Сводка и сравнение вариантов см. в разделе [Azure поддерживает](https://azure.microsoft.com/support/plans/).
 
 <a id="acknowledgments"></a>
-## <a name="acknowledgments"></a>Подтверждения
+## <a name="acknowledgments"></a>Благодарности
 
 Это содержимое было написано с Tom Dykstra Рик Андерсон и Mike Wasson. Большая часть исходного содержимого, откуда [Скотт Гатри](https://weblogs.asp.net/scottgu/), и он в свою очередь, перетащенной в материалы из Марк Симмс и Microsoft Customer Advisory Team (CAT).
 
@@ -132,6 +132,6 @@ ms.lasthandoff: 01/24/2018
 - Роджер Whitehead
 - Pawel Wilkosz
 
->[!div class="step-by-step"]
-[Назад](queue-centric-work-pattern.md)
-[Вперед](the-fix-it-sample-application.md)
+> [!div class="step-by-step"]
+> [Назад](queue-centric-work-pattern.md)
+> [Вперед](the-fix-it-sample-application.md)

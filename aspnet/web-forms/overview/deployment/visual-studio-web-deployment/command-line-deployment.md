@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/command-line-deployment
-title: "ASP.NET веб-развертывания с помощью Visual Studio: развертывание командной строки | Документы Microsoft"
+title: 'ASP.NET веб-развертывания с помощью Visual Studio: развертывание командной строки | Документы Microsoft'
 author: tdykstra
-description: "Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол..."
+description: Этот учебник ряд показано развертывание ASP.NET (публикации) веб-приложения для веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, Пол...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/command-line-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 8446b3fc05e3ef4a5a30c753c989252fd7f1a56f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: acc4a0e7f4744a3759b90e0f1b159da68b7c7362
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-command-line-deployment"></a>ASP.NET веб-развертывания с помощью Visual Studio: развертывание командной строки
 ====================
-По [Tom Dykstra](https://github.com/tdykstra)
+по [Tom Dykstra](https://github.com/tdykstra)
 
 [Загрузите начальный проект](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 
 Запустите проект и выберите **о** страницы.
 
-![О странице](command-line-deployment/_static/image2.png)
+![Страница About](command-line-deployment/_static/image2.png)
 
 ## <a name="deploy-to-test-by-using-the-command-line"></a>Развертывание для тестирования с помощью командной строки
 
@@ -98,9 +98,9 @@ MSBuild выполняется построение решения и разве
 
 Три публикации методы поддерживаются для публикация из командной строки:
 
-- `MSDeploy`-Публикации с помощью веб-развертывания.
-- `Package`-Публикации, создав пакет веб-развертывания. Необходимо отдельно установить пакет с помощью команды MSBuild, который его создал.
-- `FileSystem`-Публикации путем копирования файлов в указанную папку.
+- `MSDeploy` -Публикации с помощью веб-развертывания.
+- `Package` -Публикации, создав пакет веб-развертывания. Необходимо отдельно установить пакет с помощью команды MSBuild, который его создал.
+- `FileSystem` -Публикации путем копирования файлов в указанную папку.
 
 ### <a name="specifying-the-build-configuration-and-platform"></a>Указание конфигурации сборки и платформы
 
@@ -144,6 +144,6 @@ MSBuild выполняется построение решения и разве
 
 В следующем уроке вы увидите пример расширения веб-сайте конвейера публикации. В примере показано, как развернуть файлы, которые не включены в проект.
 
->[!div class="step-by-step"]
-[Назад](deploying-a-database-update.md)
-[Вперед](deploying-extra-files.md)
+> [!div class="step-by-step"]
+> [Назад](deploying-a-database-update.md)
+> [Вперед](deploying-extra-files.md)

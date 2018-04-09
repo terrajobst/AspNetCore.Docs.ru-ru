@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-cs
-title: "Определение файлов, которые должны быть развернуты (C#) | Документы Microsoft"
+title: Определение файлов, которые должны быть развернуты (C#) | Документы Microsoft
 author: rick-anderson
-description: "Файлы должны выполнять развертывание из среды разработки в рабочую среду отчасти зависит ли нам было создано приложение ASP.NET..."
+description: Файлы должны выполнять развертывание из среды разработки в рабочую среду отчасти зависит ли нам было создано приложение ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d58956323275a46b44b36d4f19db4d2f607e3916
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ff5f1d7d156efa12d97382db56211a07c43178fd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="determining-what-files-need-to-be-deployed-c"></a>Определение файлов, которые должны быть развернуты (C#)
 ====================
@@ -80,14 +80,14 @@ Microsoft восстановлен модели проекта веб-прило
 - Семь другие страницы ASP.NET: 
 
     - ~`/Default.aspx`-домашнюю страницу сайта.
-    - ~`/About.aspx`-на страницу «О Site».
-    - ~`/Fiction/Default.aspx`-страницы со списком фантастики книг, которые проверены. 
+    - ~`/About.aspx` -на страницу «О Site».
+    - ~`/Fiction/Default.aspx` -страницы со списком фантастики книг, которые проверены. 
 
-        - ~`/Fiction/Blaze.aspx`-Обзор novel Ричард Bachman *Blaze*.
-    - ~/`Tech/Default.aspx`-страницы со списком книг технологии, которые проверены. 
+        - ~`/Fiction/Blaze.aspx` -Обзор novel Ричард Bachman *Blaze*.
+    - ~/`Tech/Default.aspx` -страницы со списком книг технологии, которые проверены. 
 
         - ~/`Tech/CYOW.aspx`-ознакомиться с *Создание веб-узла*.
-        - ~/`Tech/TYASP35.aspx`-ознакомиться с *обучение самостоятельно ASP.NET 3.5 в течение 24 часов*.
+        - ~/`Tech/TYASP35.aspx` -ознакомиться с *обучение самостоятельно ASP.NET 3.5 в течение 24 часов*.
 - Три разных файла CSS в папке Styles.
 - Четыре изображения - на базе технологий ASP.NET логотип и изображения покрытий три проверенные книг — всех файлов в `Images` папки.
 - Объект `Web.sitemap` файл, который определяет карты веб-узла и используется для отображения меню в `Default.aspx` страниц в корневом каталоге и `Fiction` и `Tech` папки.
@@ -110,7 +110,7 @@ Microsoft восстановлен модели проекта веб-прило
 Этот учебник загрузки имеет две копии веб-приложения, реализованы с другим типом проекта Visual Studio: BookReviewsWAP, проект веб-приложения и BookReviewsWSP проект веб-сайта. Оба проекта были созданы с помощью Visual Web Developer 2008 SP1 и использовать ASP.NET 3.5 SP1. Чтобы работать с эти проекты сначала распаковки содержимого на рабочий стол. Чтобы открыть проект веб-приложения (BookReviewsWAP), перейдите в папку BookReviewsWAP и дважды щелкните файл решения `BookReviewsWAP.sln`. Чтобы открыть проект веб-сайта (BookReviewsWSP), запустите Visual Studio и затем из меню «Файл» выберите параметр открыть веб-сайт, перейдите в `BookReviewsWSP` папки на рабочем столе и нажмите кнопку ОК.
 
 
-Два остальных подразделах этого учебника внимание на то, какие файлы необходимо скопировать в рабочей среде при развертывании приложения. Два следующих учебников -  *[развертывание вашего сайта с помощью FTP](deploying-your-site-using-an-ftp-client-cs.md)*  и  *[развертыванию ваш сайт с помощью Visual Studio](deploying-your-site-using-visual-studio-cs.md)*  -демонстрируют различные способы Скопируйте эти файлы на поставщике узла.
+Два остальных подразделах этого учебника внимание на то, какие файлы необходимо скопировать в рабочей среде при развертывании приложения. Два следующих учебников - *[развертывание вашего сайта с помощью FTP](deploying-your-site-using-an-ftp-client-cs.md)* и *[развертыванию ваш сайт с помощью Visual Studio](deploying-your-site-using-visual-studio-cs.md)* -демонстрируют различные способы Скопируйте эти файлы на поставщике узла.
 
 ## <a name="determining-the-files-to-deploy-for-the-web-application-project"></a>Определение файлов для развертывания для проекта веб-приложения
 
@@ -185,6 +185,6 @@ Microsoft восстановлен модели проекта веб-прило
 - [Система проектов Visual Studio 2005 веб-сайт: что это такое и зачем мы сделали его?](https://weblogs.asp.net/scottgu/archive/2005/08/21/423201.aspx)
 - [Пошаговое руководство: Преобразование проекта веб-сайта в проект веб-приложения в Visual Studio](https://msdn.microsoft.com/library/aa983476.aspx)
 
->[!div class="step-by-step"]
-[Назад](asp-net-hosting-options-cs.md)
-[Вперед](deploying-your-site-using-an-ftp-client-cs.md)
+> [!div class="step-by-step"]
+> [Назад](asp-net-hosting-options-cs.md)
+> [Вперед](deploying-your-site-using-an-ftp-client-cs.md)
