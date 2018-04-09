@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2
-title: "Использование HTML5 и раскрывающегося календаря с выбором дат jQuery с ASP.NET MVC — часть 2 | Документы Microsoft"
+title: Использование HTML5 и раскрывающегося календаря с выбором дат jQuery с ASP.NET MVC — часть 2 | Документы Microsoft
 author: Rick-Anderson
-description: "Этот учебник поможет узнать основные принципы работы с редактор шаблонов, шаблоны отображения и пользовательского интерфейса jQuery datepicker раскрывающегося календаря в MV ASP.NET..."
+description: Этот учебник поможет узнать основные принципы работы с редактор шаблонов, шаблоны отображения и пользовательского интерфейса jQuery datepicker раскрывающегося календаря в MV ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/29/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 69fbaa7761c97895ffee770f6feb9ce6b745d186
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 84112316a9ace732cb7d75d7cbaeb071c72de822
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-2"></a>Использование HTML5 и раскрывающегося календаря с выбором дат jQuery с ASP.NET MVC — часть 2
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Этот учебник поможет узнать основные принципы работы с редактор шаблонов, шаблоны отображения и пользовательского интерфейса jQuery datepicker раскрывающегося календаря в приложении MVC ASP.NET.
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 01/24/2018
 
 Вернитесь к `UIHint` атрибута в *Movie.cs* файла и закомментируйте его таким образом *LoudDateTime.cshtml* не будет использоваться шаблон. Снова запустите приложение. Дата выпуска не отображается, большими и зеленый. Проверяет, что *Views\Shared\DisplayTemplates\DateTime.cshtml* шаблон используется в индексе и сведения о представлениях.
 
-Как упоминалось ранее, также можно применить шаблон в представлении, которое позволяет применить шаблон к экземпляру отдельных некоторые данные. Откройте *Views\Movies\Details.cshtml* представления. Добавить `"LoudDateTime"` в качестве второго параметра [Html.DisplayFor](https://msdn.microsoft.com/library/ee407420.aspx) вызова для `ReleaseDate` поля. Полный код выглядит следующим образом:
+Как упоминалось ранее, также можно применить шаблон в представлении, которое позволяет применить шаблон к экземпляру отдельных некоторые данные. Откройте *Views\Movies\Details.cshtml* представления. Добавить `"LoudDateTime"` в качестве второго параметра [Html.DisplayFor](https://msdn.microsoft.com/library/ee407420.aspx) вызова для `ReleaseDate` поля. Завершенный код выглядит следующим образом:
 
 [!code-cshtml[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/samples/sample9.cshtml)]
 
@@ -147,6 +147,6 @@ ms.lasthandoff: 01/24/2018
 
 В следующем разделе вы создадите шаблон для сложного типа.
 
->[!div class="step-by-step"]
-[Назад](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1.md)
-[Вперед](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-3.md)
+> [!div class="step-by-step"]
+> [Назад](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1.md)
+> [Вперед](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-3.md)

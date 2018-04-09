@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment
-title: "Настройка TFS сервер построения для развертывания веб | Документы Microsoft"
+title: Настройка TFS сервер построения для развертывания веб | Документы Microsoft
 author: jrjlee
-description: "В этом разделе описывается Подготовка сервера сборки Team Foundation Server (TFS) для построения и развертывания решений с помощью Team Build и Интернет сведения..."
+description: В этом разделе описывается Подготовка сервера сборки Team Foundation Server (TFS) для построения и развертывания решений с помощью Team Build и Интернет сведения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: de31a9dffb95b863a4ec38b74fd2c6e03f287a7f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7b3130ca7d36ffec457e1871fa62c1077b5e3174
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-a-tfs-build-server-for-web-deployment"></a>Настройка сервера сборки TFS для развертывания веб-приложения
 ====================
@@ -27,9 +27,9 @@ ms.lasthandoff: 01/24/2018
 > В этом разделе описывается Подготовка сервера сборки Team Foundation Server (TFS) для построения и развертывания решений с помощью Team Build и средство Internet Information Services (IIS) веб-развертывания (Web Deploy).
 
 
-Этот раздел входит в состав серию учебников, исходя из требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения & #x 2014; [решения диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014; для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Службы Communication Foundation (WCF) и проект базы данных.
+Этот раздел входит в состав серию учебников, исходя из требования к развертыванию enterprise вымышленная компания Fabrikam, Inc. Этот учебник ряд использует образец решения&#x2014; [решения диспетчера контактов](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;для представления веб-приложения с реалистичных уровень сложности, включая приложения ASP.NET MVC 3, Windows Communication Служба Foundation (WCF) и проект базы данных.
 
-Метод развертывания, в основе этих учебников основан на разбиение проекта файл подход, описанный в [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md), в которой процесс построения управляется двух проектов файлы & #x 2014; один с построение инструкции, которые применяются для каждой целевой среде и, содержащий параметры построения и развертывания конкретной среды. Во время построения файла проекта среды объединяется в файл проекта зависит от среды, образуют полный набор инструкций построения.
+Метод развертывания, в основе этих учебников основан на разбиение проекта файл подход, описанный в [основные сведения о файле проекта](../web-deployment-in-the-enterprise/understanding-the-project-file.md), в которой процесс построения управляется двух файлов проекта&#x2014;один с построение инструкции, которые применяются для каждой целевой среде и, содержащий параметры построения и развертывания конкретной среды. Во время построения файла проекта среды объединяется в файл проекта зависит от среды, образуют полный набор инструкций построения.
 
 ## <a name="task-overview"></a>Общие сведения о задаче
 
@@ -100,7 +100,7 @@ ms.lasthandoff: 01/24/2018
 7. В **ASP.NET MVC 3 (Visual Studio 2010)** щелкните **добавить**.
 8. В области навигации щелкните **сервера**.
 9. В **2.1 средство развертывания веб** щелкните **добавить**.
-10. Нажмите кнопку **Установить**. Установщик веб-платформы будет отображен список продуктов & #x 2014; а также связанные с ним зависимости & #x 2014; должны быть установлены и попросит принять условия лицензионного соглашения.
+10. Нажмите кнопку **Установить**. Установщик веб-платформы вывести список продуктов&#x2014;совместно с любым связанные зависимости&#x2014;должны быть установлены и попросит принять условия лицензионного соглашения.
 11. Ознакомьтесь с условиями лицензии и, если вы согласны с условиями, щелкните **принимаю**.
 12. После завершения установки нажмите кнопку **Готово**, а затем закройте **веб-платформы 3.0 установщика** окна.
 
@@ -116,6 +116,6 @@ ms.lasthandoff: 01/24/2018
 
 Общие рекомендации по работе с Team Build см. в разделе [Администрирование Team Foundation Build](https://msdn.microsoft.com/library/ms252495.aspx).
 
->[!div class="step-by-step"]
-[Назад](adding-content-to-source-control.md)
-[Вперед](creating-a-build-definition-that-supports-deployment.md)
+> [!div class="step-by-step"]
+> [Назад](adding-content-to-source-control.md)
+> [Вперед](creating-a-build-definition-that-supports-deployment.md)

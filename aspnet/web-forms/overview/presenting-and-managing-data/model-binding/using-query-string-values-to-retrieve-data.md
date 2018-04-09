@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/using-query-string-values-to-retrieve-data
-title: "С помощью значения строки запроса для фильтрации данных с использованием привязки модели и веб-формы | Документы Microsoft"
+title: С помощью значения строки запроса для фильтрации данных с использованием привязки модели и веб-формы | Документы Microsoft
 author: tfitzmac
-description: "Этот учебник ряд демонстрирует основные аспекты использования привязки модели в проекте веб-форм ASP.NET. Привязка модели позволяет взаимодействия с данными дополнительные прямые-..."
+description: Этот учебник ряд демонстрирует основные аспекты использования привязки модели в проекте веб-форм ASP.NET. Привязка модели позволяет взаимодействия с данными дополнительные прямые-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/using-query-string-values-to-retrieve-data
 msc.type: authoredcontent
-ms.openlocfilehash: 2e5328ccda019462163b984da3661f7322b738df
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 03d20decf0eeff6062fbc6f8dd66f644b405c7cc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-query-string-values-to-filter-data-with-model-binding-and-web-forms"></a>С помощью значения строки запроса для фильтрации данных с привязкой модели и веб-форм
 ====================
@@ -85,6 +85,6 @@ ms.lasthandoff: 11/10/2017
 
 В следующем [учебника](adding-business-logic-layer.md), будет переместить код из файлов кода в слой бизнес-логики и доступа к данным.
 
->[!div class="step-by-step"]
-[Назад](integrating-jquery-ui.md)
-[Вперед](adding-business-logic-layer.md)
+> [!div class="step-by-step"]
+> [Назад](integrating-jquery-ui.md)
+> [Вперед](adding-business-logic-layer.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-cs
-title: "Программным путем указания главной страницы (C#) | Документы Microsoft"
+title: Программным путем указания главной страницы (C#) | Документы Microsoft
 author: rick-anderson
-description: "Анализирует задание страницы содержимого главной страницы программно через обработчик событий PreInit."
+description: Анализирует задание страницы содержимого главной страницы программно через обработчик событий PreInit.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/28/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 15efb8e2f38b7a405da0c0e12e447e5c3146f025
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2294ee2e58e55901d77958e7cf45dd74fc2a1187
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="specifying-the-master-page-programmatically-c"></a>Программным путем указания главной страницы (C#)
 ====================
@@ -139,7 +139,7 @@ Partakes главную страницу в этом fusion зависит от 
 
 ### <a name="testing-the-new-master-page"></a>Тестирование новой главной страницей
 
-Чтобы проверить это новое обновление главной страницы `BasePage` класса `OnPreInit` метод, чтобы `MasterPageFile` присваивается значение «~ / Alternate.maser» и посетите веб-сайт. Каждой странице будет работать без ошибок, за исключением двух: `~/Admin/AddProduct.aspx` и `~/Admin/Products.aspx`. Добавление продукта в DetailsView в `~/Admin/AddProduct.aspx` приводит к `NullReferenceException` из строки кода, который пытается установить главной страницы `GridMessageText` свойство. При посещении `~/Admin/Products.aspx` `InvalidCastException` возникает исключение при загрузке страницы со следующим сообщением: «не удалось привести объект типа "ASP.alternate\_master" к типу "ASP.site\_master".»
+Чтобы проверить это новое обновление главной страницы `BasePage` класса `OnPreInit` метод, чтобы `MasterPageFile` присваивается значение «~ / Alternate.master» и посетите веб-сайт. Каждой странице будет работать без ошибок, за исключением двух: `~/Admin/AddProduct.aspx` и `~/Admin/Products.aspx`. Добавление продукта в DetailsView в `~/Admin/AddProduct.aspx` приводит к `NullReferenceException` из строки кода, который пытается установить главной страницы `GridMessageText` свойство. При посещении `~/Admin/Products.aspx` `InvalidCastException` возникает исключение при загрузке страницы со следующим сообщением: «не удалось привести объект типа "ASP.alternate\_master" к типу "ASP.site\_master".»
 
 Эти ошибки возникают из-за `Site.master` кода класс содержит открытые события, свойства и методы, которые не определены в `Alternate.master`. Часть разметки эти две страницы имеют `@MasterType` директиву, которая ссылается на `Site.master` главной страницы.
 
@@ -282,12 +282,12 @@ Partakes главную страницу в этом fusion зависит от 
 
 ### <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор по ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 3.5 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Скотт может быть достигнута по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) или через его блог по [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор по ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 3.5 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Скотт может быть достигнута по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) или через его блог по [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Благодарности
 
-Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Банерджи Suchi. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Банерджи Suchi. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](master-pages-and-asp-net-ajax-cs.md)
-[Вперед](nested-master-pages-cs.md)
+> [!div class="step-by-step"]
+> [Назад](master-pages-and-asp-net-ajax-cs.md)
+> [Вперед](nested-master-pages-cs.md)

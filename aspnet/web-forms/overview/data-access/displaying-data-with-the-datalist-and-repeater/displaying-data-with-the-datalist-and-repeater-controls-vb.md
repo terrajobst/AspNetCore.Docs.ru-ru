@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-vb
-title: "Отображение данных с элементами управления повторителем (Visual Basic) и DataList | Документы Microsoft"
+title: Отображение данных с элементами управления повторителем (Visual Basic) и DataList | Документы Microsoft
 author: rick-anderson
-description: "В учебниках по выше мы использовали элемента управления GridView для отображения данных. Начиная с этого учебника, мы рассмотрим создание общих шаблонов отчетов с..."
+description: В учебниках по выше мы использовали элемента управления GridView для отображения данных. Начиная с этого учебника, мы рассмотрим создание общих шаблонов отчетов с...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 20a092ee2886932664705c22c3aa88d8a2f7f0ef
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6aa7cb76295d18711d88dd9855b43b259b558060
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-data-with-the-datalist-and-repeater-controls-vb"></a>Отображение данных с помощью DataList и элементы управления повторителем (Visual Basic)
 ====================
@@ -161,12 +161,12 @@ ms.lasthandoff: 01/24/2018
 
 В дополнение к `ItemTemplate`, элемент управления DataList поддерживает шесть шаблонов необязательно:
 
-- `HeaderTemplate`Если указано, добавляет строку заголовка в выходные данные и используется для отображения в этой строке
-- `AlternatingItemTemplate`используется для отрисовки чередующихся элементов
-- `SelectedItemTemplate`используется для отрисовки выбранного элемента; Выбранный элемент является элементом, индекс которого соответствует DataList s [ `SelectedIndex` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.selectedindex.aspx)
-- `EditItemTemplate`использовать для отображения редактируемого элемента
-- `SeparatorTemplate`Если указано, добавляет разделитель между каждым элементом и используется для отрисовки этот разделитель
-- `FooterTemplate`-Если указано, добавляет строку нижнего колонтитула в выходных данных и используется для отображения в этой строке
+- `HeaderTemplate` Если указано, добавляет строку заголовка в выходные данные и используется для отображения в этой строке
+- `AlternatingItemTemplate` используется для отрисовки чередующихся элементов
+- `SelectedItemTemplate` используется для отрисовки выбранного элемента; Выбранный элемент является элементом, индекс которого соответствует DataList s [ `SelectedIndex` свойство](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.selectedindex.aspx)
+- `EditItemTemplate` использовать для отображения редактируемого элемента
+- `SeparatorTemplate` Если указано, добавляет разделитель между каждым элементом и используется для отрисовки этот разделитель
+- `FooterTemplate` -Если указано, добавляет строку нижнего колонтитула в выходных данных и используется для отображения в этой строке
 
 При указании `HeaderTemplate` или `FooterTemplate`, DataList добавляется дополнительная строка верхнего или нижнего колонтитула для выводимых данных. Как и с GridView s колонтитулы строки заголовка и нижнего колонтитула в элементе управления DataList не привязанных к данным. Таким образом, любой синтаксис привязки данных в `HeaderTemplate` или `FooterTemplate` , попытки получения доступа к привязанных данных возвратит пустую строку.
 
@@ -210,11 +210,11 @@ ms.lasthandoff: 01/24/2018
 
 Что делать, если вы не хотите t требуется создавать HTML `<table>`, хотя? Для общее и полный контроль над разметку, созданную веб-элементе управления данных воспользуйтесь элементе управления повторителем. Как элемент управления DataList повторителя строится на основе шаблонов. Однако повторителя только дает следующие пять шаблонов.
 
-- `HeaderTemplate`Если указано, добавляет указанный разметки перед элементами
-- `ItemTemplate`используется для отрисовки элементов
-- `AlternatingItemTemplate`Если указано, используется для отрисовки чередующихся элементов
-- `SeparatorTemplate`Если указано, добавляет указанный разметки между каждым элементом
-- `FooterTemplate`-Если указано, добавляет указанный разметки после элементов
+- `HeaderTemplate` Если указано, добавляет указанный разметки перед элементами
+- `ItemTemplate` используется для отрисовки элементов
+- `AlternatingItemTemplate` Если указано, используется для отрисовки чередующихся элементов
+- `SeparatorTemplate` Если указано, добавляет указанный разметки между каждым элементом
+- `FooterTemplate` -Если указано, добавляет указанный разметки после элементов
 
 В ASP.NET 1.x, повторителя управления был обычно используется для отображения маркированного списка которого поступают данные из источников данных. В этом случае `HeaderTemplate` и `FooterTemplates` будет содержать открывающим и закрывающим `<ul>` тегов, соответственно, а `ItemTemplate` будет содержать `<li>` элементов при помощи синтаксиса привязки данных. Такой подход по-прежнему может использоваться в ASP.NET 2.0, как было показано в двух примерах в [главные страницы и переходов](../introduction/master-pages-and-site-navigation-vb.md) учебника:
 
@@ -312,12 +312,12 @@ S существует только один параметр в смарт-те
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Yaakov Эллис (Ellis), (Liz Shulok), Рэнди Шмидт и парк Stacy. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](nested-data-web-controls-cs.md)
-[Вперед](formatting-the-datalist-and-repeater-based-upon-data-vb.md)
+> [!div class="step-by-step"]
+> [Назад](nested-data-web-controls-cs.md)
+> [Вперед](formatting-the-datalist-and-repeater-based-upon-data-vb.md)

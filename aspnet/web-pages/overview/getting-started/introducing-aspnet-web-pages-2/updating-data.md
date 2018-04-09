@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
-title: "Введение в ASP.NET Web Pages — обновление баз данных | Документы Microsoft"
+title: Введение в ASP.NET Web Pages — обновление баз данных | Документы Microsoft
 author: tfitzmac
-description: "Этого учебника показано, как обновить запись (изменение) существующей базы данных при использовании веб-страниц ASP.NET (Razor). Предполагается, что выполнены ряда th..."
+description: Этого учебника показано, как обновить запись (изменение) существующей базы данных при использовании веб-страниц ASP.NET (Razor). Предполагается, что выполнены ряда th...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/02/2018
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 msc.type: authoredcontent
-ms.openlocfilehash: b016231975bf8d359f4c390b0b478edc383117d4
-ms.sourcegitcommit: df2157ae9aeea0075772719c29784425c783e82a
+ms.openlocfilehash: e889cd27e2267a08f7b6ea708c92e35edbdd7a1a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---updating-database-data"></a>Введение в ASP.NET Web Pages — обновление баз данных
 ====================
@@ -108,7 +108,7 @@ ms.lasthandoff: 01/10/2018
 
 Столбец содержит только *только* из разметку, представляющую связь, а также некоторые сведения (идентификатор), извлекается из записи базы данных для строки.
 
-> [!TIP] 
+> [!TIP]
 > 
 > **Именованные параметры и позиционных параметров для метода**
 > 
@@ -173,7 +173,7 @@ ms.lasthandoff: 01/10/2018
 
 Этот код показывает другой способ проверить данные. В предыдущем учебнике вы работали с `Validation` поддержки. Вы зарегистрировали полей для проверки и ASP.NET, автоматически не проверки и отображения ошибок с помощью `Html.ValidationMessage` и `Html.ValidationSummary`. Таким образом тем не менее, вы будете проверка не совсем пользовательского ввода. Вместо этого проверка значение, которое было передано на страницу из другого источника. `Validation` Поддержки, не делает.
 
-Таким образом, можно проверить значения самостоятельно, тестируя его с `if(!Request.QueryString["ID"].IsEmpty()`). Если проблема, ошибки можно отобразить с помощью `Html.ValidationSummary`, как это было сделано с `Validation` поддержки. Чтобы сделать это, следует вызвать `Validation.AddFormError` и передать ему сообщения для отображения. `Validation.AddFormError`— это встроенный метод, который позволяет определять пользовательские сообщения, связывающих вход с помощью системы проверки, которые вы уже знакомы с. (Далее в этом руководстве будет рассказано о том, как сделать этот процесс проверки немного более надежным.)
+Таким образом, можно проверить значения самостоятельно, тестируя его с `if(!Request.QueryString["ID"].IsEmpty()`). Если проблема, ошибки можно отобразить с помощью `Html.ValidationSummary`, как это было сделано с `Validation` поддержки. Чтобы сделать это, следует вызвать `Validation.AddFormError` и передать ему сообщения для отображения. `Validation.AddFormError` — это встроенный метод, который позволяет определять пользовательские сообщения, связывающих вход с помощью системы проверки, которые вы уже знакомы с. (Далее в этом руководстве будет рассказано о том, как сделать этот процесс проверки немного более надежным.)
 
 Убедившись в том, что идентификатор фильм, код считывает базы данных, выполняя только одной базы данных элемента. (Вы, вероятно, заметили общий шаблон для операций базы данных: откройте базу данных, определите инструкцию SQL и выполнить инструкцию.) На этот раз SQL `Select` инструкция включает в себя `WHERE ID = @0`. Поскольку этот идентификатор является уникальным, могут быть возвращены только одна запись.
 
@@ -311,6 +311,6 @@ ms.lasthandoff: 01/10/2018
 - [Введение в программирование веб-ASP.NET с синтаксисом Razor](../../getting-started/introducing-razor-syntax-c.md)
 - [Инструкции SQL UPDATE](http://www.w3schools.com/sql/sql_update.asp) на сайте W3Schools
 
->[!div class="step-by-step"]
-[Назад](entering-data.md)
-[Вперед](deleting-data.md)
+> [!div class="step-by-step"]
+> [Назад](entering-data.md)
+> [Вперед](deleting-data.md)

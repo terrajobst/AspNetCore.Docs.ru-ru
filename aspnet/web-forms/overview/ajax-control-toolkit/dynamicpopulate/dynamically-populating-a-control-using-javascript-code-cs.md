@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-using-javascript-code-cs
-title: "Динамически заполнение элемента управления с помощью кода JavaScript (C#) | Документы Microsoft"
+title: Динамически заполнение элемента управления с помощью кода JavaScript (C#) | Документы Microsoft
 author: wenz
-description: "Элемент управления DynamicPopulate в наборе элементов управления ASP.NET AJAX вызывает веб-службы (или метод страницы) и заполняет результирующее значение в целевой элемент управления на t..."
+description: Элемент управления DynamicPopulate в наборе элементов управления ASP.NET AJAX вызывает веб-службы (или метод страницы) и заполняет результирующее значение в целевой элемент управления на t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-using-javascript-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5b3b23e16f2e4dd26f50eb3e07f35d078dd19a19
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c9fd11ea0348eb7fe9a7634f7b26031339146828
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="dynamically-populating-a-control-using-javascript-code-c"></a>Динамически заполнение элемента управления с помощью кода JavaScript (C#)
 ====================
@@ -62,6 +62,6 @@ ms.lasthandoff: 11/10/2017
 
 Нажмите кнопку извлекает дату с сервера в формате, заданном ([Просмотр полноразмерное изображение](dynamically-populating-a-control-using-javascript-code-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](dynamically-populating-a-control-cs.md)
-[Вперед](using-dynamicpopulate-with-a-user-control-and-javascript-cs.md)
+> [!div class="step-by-step"]
+> [Назад](dynamically-populating-a-control-cs.md)
+> [Вперед](using-dynamicpopulate-with-a-user-control-and-javascript-cs.md)

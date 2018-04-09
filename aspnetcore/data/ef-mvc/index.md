@@ -1,7 +1,7 @@
 ---
-title: "Серия учебников по работе с ASP.NET Core MVC и EF Core"
+title: Серия учебников по работе с ASP.NET Core MVC и EF Core
 author: tdykstra
-description: 
+description: ''
 manager: wpickett
 ms.author: tdykstra
 ms.date: 10/15/2017
@@ -9,15 +9,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/index
-ms.openlocfilehash: 72ac1064b597a300d660236ff35f842b6959d4ef
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: f09773bac67dd2d7462805993bed8609e0b5d767
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="get-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio"></a>Начало работы с моделью MVC в ASP.NET Core и с Entity Framework Core в Visual Studio
+# <a name="aspnet-core-mvc-with-ef-core---tutorial-series"></a>Серия учебников по работе с ASP.NET Core MVC и EF Core
 
-[!INCLUDE[RP better than MVC](../../includes/RP-EF/rp-over-mvc.md)]
+[!INCLUDE [RP better than MVC](../../includes/RP-EF/rp-over-mvc.md)]
 
 1. [Начало работы](xref:data/ef-mvc/intro)
 1. [Операции создания, чтения, обновления и удаления](xref:data/ef-mvc/crud)

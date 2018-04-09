@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-cs
-title: "Перенос базы данных изменения в транзакции (C#) | Документы Microsoft"
+title: Перенос базы данных изменения в транзакции (C#) | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник является первым четырем, который отслеживает обновление, удаление и вставка пакеты данных. В этом учебнике показано, как разрешить транзакций базы данных..."
+description: Этот учебник является первым четырем, который отслеживает обновление, удаление и вставка пакеты данных. В этом учебнике показано, как разрешить транзакций базы данных...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e2dafdf9a9414bddfca37ef942856c94096f35b8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a3f8ec2de7b9259e4bb83f4346bde8abfd643fb4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="wrapping-database-modifications-within-a-transaction-c"></a>Перенос базы данных изменения в транзакции (C#)
 ====================
@@ -117,7 +117,7 @@ ms.lasthandoff: 01/24/2018
 
 ![Добавьте папку с именем TransactionSupport и файл класса с именем ProductsTableAdapter.TransactionSupport.cs](wrapping-database-modifications-within-a-transaction-cs/_static/image4.gif)
 
-**Рис. 4**: добавьте папку с именем `TransactionSupport` и один файл класса с именем`ProductsTableAdapter.TransactionSupport.cs`
+**Рис. 4**: добавьте папку с именем `TransactionSupport` и один файл класса с именем `ProductsTableAdapter.TransactionSupport.cs`
 
 
 Введите следующий код в `ProductsTableAdapter.TransactionSupport.cs` файла:
@@ -127,7 +127,7 @@ ms.lasthandoff: 01/24/2018
 
 `partial` Ключевое слово в объявлении класса указывает компилятору на то, что элементы, добавленные в, должны быть добавлены в `ProductsTableAdapter` класса в `NorthwindTableAdapters` пространства имен. Примечание `using System.Data.SqlClient` инструкции в верхней части файла. С момента настройки адаптера таблицы для использования поставщика SqlClient, внутренне используется [ `SqlDataAdapter` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqldataadapter.aspx) объекта для выдачи команд в базу данных. Следовательно, необходимо использовать `SqlTransaction` класса, чтобы начать транзакцию и последующей его зафиксировать или выполнить откат. При использовании хранилища данных вместо Microsoft SQL Server, необходимо использовать соответствующий поставщик.
 
-Эти методы предоставляют компоненты, необходимые для запуска отката и фиксации транзакции. Они помечены `public`, позволяя использовать изнутри `ProductsTableAdapter`от другого класса в DAL и из другого слоя в архитектуре, таких как уровень бизнес-ЛОГИКИ. `BeginTransaction`Открывает внутренний s TableAdapter `SqlConnection` (при необходимости), начинает транзакцию и присваивает его `Transaction` свойство и прикрепляет транзакцию к внутренней `SqlDataAdapter` s `SqlCommand` объектов. `CommitTransaction`и `RollbackTransaction` вызвать `Transaction` объект s `Commit` и `Rollback` методы, соответственно, перед тем как закрыть внутренний `Connection` объекта.
+Эти методы предоставляют компоненты, необходимые для запуска отката и фиксации транзакции. Они помечены `public`, позволяя использовать изнутри `ProductsTableAdapter`от другого класса в DAL и из другого слоя в архитектуре, таких как уровень бизнес-ЛОГИКИ. `BeginTransaction` Открывает внутренний s TableAdapter `SqlConnection` (при необходимости), начинает транзакцию и присваивает его `Transaction` свойство и прикрепляет транзакцию к внутренней `SqlDataAdapter` s `SqlCommand` объектов. `CommitTransaction` и `RollbackTransaction` вызвать `Transaction` объект s `Commit` и `Rollback` методы, соответственно, перед тем как закрыть внутренний `Connection` объекта.
 
 ## <a name="step-3-adding-methods-to-update-and-delete-data-under-the-umbrella-of-a-transaction"></a>Шаг 3: Добавление методов для обновления и удаления данных в рамках транзакции
 
@@ -247,17 +247,17 @@ ms.lasthandoff: 01/24/2018
 
 - [Обеспечение согласованности базы данных с транзакциями](http://aspnet.4guysfromrolla.com/articles/072705-1.aspx)
 - [Хранимые процедуры для управления транзакциями в SQL Server](http://www.4guysfromrolla.com/webtech/080305-1.shtml)
-- [Транзакции, стало проще:`System.Transactions`](https://blogs.msdn.com/florinlazar/archive/2004/07/23/192239.aspx)
+- [Транзакции, стало проще: `System.Transactions`](https://blogs.msdn.com/florinlazar/archive/2004/07/23/192239.aspx)
 - [TransactionScope и адаптеров обработки данных](http://andyclymer.blogspot.com/2007/01/transactionscope-and-dataadapters.html)
 - [С помощью операций с базой данных Oracle в .NET](http://www.oracle.com/technology/pub/articles/price_dbtrans_dotnet.html)
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Dave Gardner – Хилтон Гизнау и Мерфи Тереза д. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Вперед](batch-updating-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](batch-updating-cs.md)

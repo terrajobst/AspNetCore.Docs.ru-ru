@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-vb
-title: "Восстановление и изменение паролей (VB) | Документы Microsoft"
+title: Восстановление и изменение паролей (VB) | Документы Microsoft
 author: rick-anderson
-description: "ASP.NET включает в себя два веб-элементы управления для соблюдения восстановление и изменение паролей. Элемент управления PasswordRecovery позволяет восстановить его потеряны pa посетитель..."
+description: ASP.NET включает в себя два веб-элементы управления для соблюдения восстановление и изменение паролей. Элемент управления PasswordRecovery позволяет восстановить его потеряны pa посетитель...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b78469858483a9501a0f73d1c894e29ae0a99122
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: cffe07eaea5144df82e56c989b0cde7cfd3d194a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="recovering-and-changing-passwords-vb"></a>Восстановление и изменение паролей (Visual Basic)
 ====================
@@ -86,7 +86,7 @@ ASP.NET включает в себя два веб-элементы управл
 Конфигурация доставки почты определяется через [ `<system.net>` элемент](https://msdn.microsoft.com/library/6484zdc1.aspx) [ `<mailSettings>` элемент](https://msdn.microsoft.com/library/w355a94k.aspx). Используйте [ `<smtp>` элемент](https://msdn.microsoft.com/library/ms164240.aspx) для указания метода доставки и адрес отправителя по умолчанию. Приведенный ниже код настраивает параметры почты для использования сетевой SMTP сервера с именем `smtp.example.com` через порт 25 и имя пользователя и пароль учетных данных имени пользователя и пароля.
 
 > [!NOTE]
-> `<system.net>`является дочерним элементом корневого `<configuration>` элемент и одноуровневым `<system.web>`. Таким образом, не следует помещать `<system.net>` элемент в пределах `<system.web>` элемента; вместо этого поместите его на том же уровне.
+> `<system.net>` является дочерним элементом корневого `<configuration>` элемент и одноуровневым `<system.web>`. Таким образом, не следует помещать `<system.net>` элемент в пределах `<system.web>` элемента; вместо этого поместите его на том же уровне.
 
 
 [!code-xml[Main](recovering-and-changing-passwords-vb/samples/sample1.xml)]
@@ -125,7 +125,7 @@ ASP.NET включает в себя два веб-элементы управл
 
 Имя пользователя: *имя пользователя*
 
-пароль: *пароль*
+Пароль: *пароль*
 
 Это сообщение можно настроить программно через обработчик событий для элемента управления PasswordRecovery [ `SendingMail` событий](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.sendingmail.aspx), или декларативно с помощью [ `MailDefinition` свойства](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.maildefinition.aspx). Давайте рассмотрим оба варианта.
 
@@ -165,8 +165,8 @@ ASP.NET включает в себя два веб-элементы управл
 
 Если сброс пароля пользователя PasswordRecovery управление вызовы `MembershipUser` объекта [ `ResetPassword` метод](https://msdn.microsoft.com/library/system.web.security.membershipuser.resetpassword.aspx). Этот метод имеет две перегрузки:
 
-- **[`ResetPassword`](https://msdn.microsoft.com/library/d94bdzz2.aspx)**-Сбрасывает пароль пользователя. Используйте этот перегруженный метод, если `RequiresQuestionAndAnswer` имеет значение False.
-- **[`ResetPassword(securityAnswer)`](https://msdn.microsoft.com/library/d90zte4w.aspx)**-Сбрасывает только если пароль пользователя, предоставленного *securityAnswer* указано правильно. Используйте этот перегруженный метод, если `RequiresQuestionAndAnswer` имеет значение True.
+- **[`ResetPassword`](https://msdn.microsoft.com/library/d94bdzz2.aspx)** -Сбрасывает пароль пользователя. Используйте этот перегруженный метод, если `RequiresQuestionAndAnswer` имеет значение False.
+- **[`ResetPassword(securityAnswer)`](https://msdn.microsoft.com/library/d90zte4w.aspx)** -Сбрасывает только если пароль пользователя, предоставленного *securityAnswer* указано правильно. Используйте этот перегруженный метод, если `RequiresQuestionAndAnswer` имеет значение True.
 
 Обе перегрузки возвращают новый созданный случайным образом пароль.
 
@@ -304,12 +304,12 @@ ASP.NET предоставляет два элемента управления,
 
 ### <a name="about-the-author"></a>Об авторе
 
-Скотт Митчелл, автор нескольких ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга —  *[диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Скотт может быть достигнута по [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) или через его блог по [http://ScottOnWriting.NET](http://scottonwriting.net/).
+Скотт Митчелл, автор нескольких ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга —  *[диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Скотт может быть достигнута по [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) или через его блог по [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Благодарности
 
-Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника включают Майкл Emmings и Suchi Банерджи. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника включают Майкл Emmings и Suchi Банерджи. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](building-an-interface-to-select-one-user-account-from-many-vb.md)
-[Вперед](unlocking-and-approving-user-accounts-vb.md)
+> [!div class="step-by-step"]
+> [Назад](building-an-interface-to-select-one-user-account-from-many-vb.md)
+> [Вперед](unlocking-and-approving-user-accounts-vb.md)

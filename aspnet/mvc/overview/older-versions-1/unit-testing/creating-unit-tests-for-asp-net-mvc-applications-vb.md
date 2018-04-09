@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-mvc-applications-vb
-title: "Создание модульных тестов для приложений ASP.NET MVC (VB) | Документы Microsoft"
+title: Создание модульных тестов для приложений ASP.NET MVC (VB) | Документы Microsoft
 author: StephenWalther
-description: "Описание способов создания модульных тестов для действий контроллера. Стивен Вальтер в этом учебнике показано, как проверка действия контроллера возвращает parti..."
+description: Описание способов создания модульных тестов для действий контроллера. Стивен Вальтер в этом учебнике показано, как проверка действия контроллера возвращает parti...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-mvc-applications-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d92ee0c26787e5c482e8695001d8809d3ee9ee30
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 299665f45d72fee33f92344ed53c87dfb1a76d60
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-unit-tests-for-aspnet-mvc-applications-vb"></a>Создание модульных тестов для приложений ASP.NET MVC (Visual Basic)
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 Давайте начнем с создания контроллер, к которому мы собираемся тестирования. Контроллер с именем `ProductController`, содержащихся в листинге 1.
 
-**Листинг 1.`ProductController.vb`**
+**Листинг 1. `ProductController.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample1.vb)]
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
 Предположим, что мы хотим проверить ли `ProductController` возвращает правильное представление. Мы хотим, чтобы убедиться, что при `ProductController.Details()` вызове действия возвращается в представлении сведений. Тестовый класс в списке 2 содержит модульный тест для проверки представления, возвращенных `ProductController.Details()` действие.
 
-**Листинг 2.`ProductControllerTest.vb`**
+**Листинг 2. `ProductControllerTest.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample2.vb)]
 
@@ -74,11 +74,11 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="testing-the-view-data-returned-by-a-controller"></a>Тестирование представления данных возвращенных контроллера
 
-Контроллер MVC передает данные в представлении с помощью так называемых  *`View Data`* . Например, предположим, вы хотите отобразить подробные сведения по определенному продукту при вызове `ProductController Details()` действие. В этом случае можно создать экземпляр `Product` класса (определенный в модели) и передать экземпляр для `Details` представление, используя преимущества `View Data`.
+Контроллер MVC передает данные в представлении с помощью так называемых *`View Data`*. Например, предположим, вы хотите отобразить подробные сведения по определенному продукту при вызове `ProductController Details()` действие. В этом случае можно создать экземпляр `Product` класса (определенный в модели) и передать экземпляр для `Details` представление, используя преимущества `View Data`.
 
 Измененный `ProductController` в списке 3 включает в себя обновленные `Details()` действие, которое возвращает продукт.
 
-**Листинг 3.`ProductController.vb`**
+**Листинг 3. `ProductController.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample5.vb)]
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 11/10/2017
 
 Можно создать модульные тесты для проверки, является ли ожидаемый набор данных содержатся в представлении данных. Платформа модульного тестирования в тестах со списком 4 ли продукта, представляющий переносной компьютер возвращается при вызове `ProductController Details()` метода действия.
 
-**Листинг 4.`ProductControllerTest.vb`**
+**Листинг 4. `ProductControllerTest.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample6.vb)]
 
@@ -98,13 +98,13 @@ ms.lasthandoff: 11/10/2017
 
 Например, измененные `Details()` действие в листинге 5 возвращает `Details` просмотра при передаче соответствующим продуктом идентификатор действия. Если передается недопустимый продукта идентификатор со значением идентификатора — меньше 1, то вы будете перенаправлены `Index()` действие.
 
-**Листинг 5.`ProductController.vb`**
+**Листинг 5. `ProductController.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample7.vb)]
 
 Можно проверить поведение `Details()` действие с модульным тестом в 6 со списком. Модульный тест в список 6 проверяет, что вы будете перенаправлены на `Index` просмотра при передаче идентификатора со значением -1 `Details()` метод.
 
-**Перечисление 6.`ProductControllerTest.vb`**
+**Перечисление 6. `ProductControllerTest.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample8.vb)]
 
@@ -118,5 +118,5 @@ ms.lasthandoff: 11/10/2017
 
 Наконец мы рассмотрели, как можно проверить ли различные типы результатов действий возвращаются из действия контроллера. Вы узнали, как проверить ли контроллер возвращает `ViewResult` или `RedirectToRouteResult`.
 
->[!div class="step-by-step"]
-[Назад](creating-unit-tests-for-asp-net-mvc-applications-cs.md)
+> [!div class="step-by-step"]
+> [Назад](creating-unit-tests-for-asp-net-mvc-applications-cs.md)

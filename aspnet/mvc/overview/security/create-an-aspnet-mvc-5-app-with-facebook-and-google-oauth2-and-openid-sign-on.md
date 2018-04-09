@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
-title: "Создать MVC 5 приложения с Facebook, Twitter, LinkedIn и Google OAuth2 единого входа (C#) | Документы Microsoft"
+title: Создать MVC 5 приложения с Facebook, Twitter, LinkedIn и Google OAuth2 единого входа (C#) | Документы Microsoft
 author: Rick-Anderson
-description: "Этот учебник показывает, как для создания веб-приложения ASP.NET MVC 5, позволяющий пользователям выполнять вход с использованием OAuth 2.0 с учетными данными из внешних предварительная пр..."
+description: Этот учебник показывает, как для создания веб-приложения ASP.NET MVC 5, позволяющий пользователям выполнять вход с использованием OAuth 2.0 с учетными данными из внешних предварительная пр...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/03/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: 8dc2221ea19a33f1d34ba3aae8c60e365423e140
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: c289c209b50f0c2c1f2d8b15a3aedeaebf671d0b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Создание приложения ASP.NET MVC 5 с Facebook, Twitter, LinkedIn и Google OAuth2 единого входа (C#)
 ====================
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/02/2018
 <a id="start"></a>
 ## <a name="getting-started"></a>Начало работы
 
-Начните с установки и запуска [Visual Studio Express 2013 для Web](https://go.microsoft.com/fwlink/?LinkId=299058) или [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566). Установка Visual Studio [2013 обновление 3](https://go.microsoft.com/fwlink/?LinkId=390521) или более поздней версии. Для получения справки по Dropbox, GitHub, Linkedin, Instagram, буфера, salesforce, поток данных, Exchange стека, Tripit, twitch, Twitter, Yahoo и многое другое см. в этой [универсальное руководство по](http://www.oauthforaspnet.com/).
+Начните с установки и запуска [Visual Studio Express 2013 для Web](https://go.microsoft.com/fwlink/?LinkId=299058) или [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566). Установка Visual Studio [2013 обновление 3](https://go.microsoft.com/fwlink/?LinkId=390521) или более поздней версии. Для получения справки по Dropbox, GitHub, Linkedin, Instagram, буфера, Salesforce, поток данных, Exchange стека, Tripit, Twitch, Twitter, Yahoo! и несколько см. в этой [образец проекта](https://github.com/matthewdunsdon/oauthforaspnet).
 
 > [!NOTE]
 > Необходимо установить Visual Studio [2013 обновление 3](https://go.microsoft.com/fwlink/?LinkId=390521) или более поздней версии с помощью Google OAuth 2 и отлаживать локально без предупреждения SSL.
@@ -118,9 +118,9 @@ ms.lasthandoff: 03/02/2018
 > Текущий Google OAuth инструкции см. [Google Настройка проверки подлинности в ASP.NET Core](/aspnet/core/security/authentication/social/google-logins).
 
 1. Перейдите к [Google Developers Console](https://console.developers.google.com/).
-1. Если проект перед еще не создан, выберите **учетные данные** левой вкладке, а затем выберите **создать**.
-1. На левой вкладке нажмите кнопку **учетные данные**.
-1. Нажмите кнопку **создать учетные данные** затем **идентификатор клиента OAuth**. 
+2. Если проект перед еще не создан, выберите **учетные данные** левой вкладке, а затем выберите **создать**.
+3. На левой вкладке нажмите кнопку **учетные данные**.
+4. Нажмите кнопку **создать учетные данные** затем **идентификатор клиента OAuth**. 
 
     1. В **создать идентификатор клиента** диалоговое окно, оставьте значение по умолчанию **веб-приложение** для типа приложения.
     2. Задать **право JavaScript** источники, которые можно использовать выше URL-адрес SSL (`https://localhost:44300/` Если вы создали проекты SSL)
@@ -131,7 +131,7 @@ ms.lasthandoff: 03/02/2018
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image15.png)  
   
- На рисунке ниже показана включен API-интерфейсы.  
+   На рисунке ниже показана включен API-интерфейсы.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image16.png)
 7. Посетите из Google API-интерфейсы API диспетчера, **учетные данные** вкладку, чтобы получить **идентификатор клиента**. Загрузите, сохранить файл JSON с секретными данными приложения. Скопируйте и вставьте **ClientId** и **ClientSecret** в `UseGoogleAuthentication` найти метод в *Startup.Auth.cs* файла в *App_Start* папки. **ClientId** и **ClientSecret** значений, приведенных ниже примеров и не работают.
@@ -148,8 +148,8 @@ ms.lasthandoff: 03/02/2018
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image18.png)
 
     > [!NOTE]
-    > Если пропустить любой из вышеперечисленных действий вы получите сообщение об ошибке HTTP 401. Повторная проверка выше действия. Если вы пропустите обязательный параметр (например **название продукта**), Добавление отсутствующих элементов и сохранить, может занять несколько минут для проверки подлинности для работы.
-10. Вы будете перенаправлены на сайт google, можно будет ввести учетные данные.   
+    > Если пропустить любой из вышеперечисленных действий вы получите сообщение об ошибке HTTP 401. Повторная проверка выше действия. Если вы пропустите обязательный параметр (например **название продукта**), добавьте отсутствующий элемент и сохраните; может занять несколько минут для проверки подлинности для работы.
+10. Вы будете перенаправлены на сайт Google, можно будет ввести учетные данные.   
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image19.png)
 11. После ввода учетных данных, будет предложено предоставить разрешения для только что созданной веб-приложения:
@@ -167,14 +167,14 @@ ms.lasthandoff: 03/02/2018
 
 Для проверки подлинности Facebook OAuth2 необходимо скопировать в проект некоторые параметры из приложения, создаваемые в Facebook.
 
-1. В браузере перейдите к [https://developers.facebook.com/apps](https://developers.facebook.com/apps) и войдите в систему, указав учетные данные Facebook.
+1. В браузере перейдите к [ https://developers.facebook.com/apps ](https://developers.facebook.com/apps) и войдите в систему, указав учетные данные Facebook.
 2. Если вы уже не зарегистрирован как разработчика Facebook, нажмите кнопку **зарегистрировать как разработчик** и следуйте инструкциям для регистрации.
 3. На **приложения** щелкните **создать новое приложение**.
 
     ![Создайте новое приложение](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image22.png)
 4. Введите **имя приложения** и **категории**, нажмите кнопку **Создание приложения**.
 
-    Это должно быть уникальным для Facebook. **Пространство имен приложения** является частью URL-адрес, приложение будет использовать для доступа к приложению Facebook для проверки подлинности (например, https://apps.facebook.com/ {пространство имен приложения}). Если не указать **пространство имен приложения**, **идентификатор приложения** будет использоваться URL-адреса. **Идентификатор приложения** долго системой номер, который вы увидите на следующем шаге.
+    Это должно быть уникальным для Facebook. <strong>Пространство имен приложения</strong> является частью URL-адрес, приложение будет использовать для доступа к приложению Facebook для проверки подлинности (например, https://apps.facebook.com/{App пространство имен}). Если не указать <strong>пространство имен приложения</strong>, <strong>идентификатор приложения</strong> будет использоваться URL-адреса. <strong>Идентификатор приложения</strong> долго системой номер, который вы увидите на следующем шаге.
 
     ![Создание диалогового окна нового приложения](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image23.png)
 5. Отправьте проверки безопасности standard.

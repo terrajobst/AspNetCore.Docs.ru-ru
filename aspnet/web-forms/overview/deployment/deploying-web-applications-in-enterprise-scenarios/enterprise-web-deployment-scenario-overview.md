@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview
-title: "Корпоративного веб-развертывания: Общие сведения о сценарии | Документы Microsoft"
+title: 'Корпоративного веб-развертывания: Общие сведения о сценарии | Документы Microsoft'
 author: jrjlee
-description: "Этот набор учебников использует образец решения с реалистичных уровень сложности, а также вымышленной корпоративный сценарий развертывания, для обеспечения ref..."
+description: Этот набор учебников использует образец решения с реалистичных уровень сложности, а также вымышленной корпоративный сценарий развертывания, для обеспечения ref...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/03/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview
 msc.type: authoredcontent
-ms.openlocfilehash: f90db22bf98456661c530e728e854ce109aec6fd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 20f6e206d6aa4bebb4936246468f5ada0e213236
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="enterprise-web-deployment-scenario-overview"></a>Корпоративного веб-развертывания: Общие сведения о сценарии
 ====================
@@ -122,6 +122,6 @@ Fabrikam, Inc. сценарии и решения диспетчера конт�
 - Вы хотите войти операции развертывания. Процесс развертывания следует отправить уведомления по электронной почте успешной или неуспешной развертываний выбранным получателям.
 - При сбое автоматизированного развертывания, процесс развертывания должен повторите текущее развертывание или развертывание вместо предыдущего веб-пакета.
 
->[!div class="step-by-step"]
-[Назад](deploying-web-applications-in-enterprise-scenarios.md)
-[Вперед](application-lifecycle-management-from-development-to-production.md)
+> [!div class="step-by-step"]
+> [Назад](deploying-web-applications-in-enterprise-scenarios.md)
+> [Вперед](application-lifecycle-management-from-development-to-production.md)

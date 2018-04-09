@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/animating-in-response-to-user-interaction-vb
-title: "Анимация в ответ на взаимодействие с пользователем (Visual Basic) | Документы Microsoft"
+title: Анимация в ответ на взаимодействие с пользователем (Visual Basic) | Документы Microsoft
 author: wenz
-description: "Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Анимации можно звездочек..."
+description: Элемент управления анимации в наборе элементов управления ASP.NET AJAX не только элемент управления, но всю платформу, позволяющую Добавление анимации в элемент управления. Анимации можно звездочек...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animating-in-response-to-user-interaction-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3219e9d126b3225bfc78d08fb3ac7ef4cc3dca75
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e12467bfeb88c2ab9d1cfb866506e9e8e7f9ae25
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="animating-in-response-to-user-interaction-vb"></a>Анимация в ответ на взаимодействие с пользователем (Visual Basic)
 ====================
@@ -51,11 +51,11 @@ ms.lasthandoff: 11/10/2017
 
 В пределах `<Animations>` узла существует пять способов запуска анимации через взаимодействие с пользователем (отсутствует элемент `<OnLoad>` которое выполняется после полной загрузки страницы в целом):
 
-- `<OnClick>`(щелкните мышью элемент управления)
-- `<OnHoverOut>`(указатель мыши покидает элемент управления)
-- `<OnHoverOver>`(указатель мыши находится над элементом управления, остановка `<OnHoverOut>` анимации)
-- `<OnMouseOut>`(указатель мыши покидает элемент управления)
-- `<OnMouseOver>`(указатель мыши находится над элементом управления, не останавливая `<OnMouseOut>` анимации)
+- `<OnClick>` (щелкните мышью элемент управления)
+- `<OnHoverOut>` (указатель мыши покидает элемент управления)
+- `<OnHoverOver>` (указатель мыши находится над элементом управления, остановка `<OnHoverOut>` анимации)
+- `<OnMouseOut>` (указатель мыши покидает элемент управления)
+- `<OnMouseOver>` (указатель мыши находится над элементом управления, не останавливая `<OnMouseOut>` анимации)
 
 В этом сценарии `<OnClick>` используется. При нажатии на панели, он изменяется и Исчезание, в то же время.
 
@@ -66,6 +66,6 @@ ms.lasthandoff: 11/10/2017
 
 Щелчок мыши запуск анимации ([Просмотр полноразмерное изображение](animating-in-response-to-user-interaction-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Назад](picking-one-animation-out-of-a-list-vb.md)
-[Вперед](disabling-actions-during-animation-vb.md)
+> [!div class="step-by-step"]
+> [Назад](picking-one-animation-out-of-a-list-vb.md)
+> [Вперед](disabling-actions-during-animation-vb.md)

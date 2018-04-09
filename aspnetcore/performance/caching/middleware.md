@@ -1,7 +1,7 @@
 ---
-title: "Кэширование по промежуточного слоя в ASP.NET Core ответов"
+title: Кэширование по промежуточного слоя в ASP.NET Core ответов
 author: guardrex
-description: "Дополнительные сведения о настройке и использованию по промежуточного слоя, кэширование ответа в ASP.NET Core."
+description: Дополнительные сведения о настройке и использованию по промежуточного слоя, кэширование ответа в ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -9,11 +9,11 @@ ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: e9a74d8f6c3945b1bc8c62d0ab21145a7c5717fb
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: ff92b032fe8bbbcb7bc26a34fdfbc56a0fcc0e2c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Кэширование по промежуточного слоя в ASP.NET Core ответов
 
@@ -88,7 +88,7 @@ if (responseCachingFeature != null)
 | Header | Подробные сведения |
 | ------ | ------- |
 | Авторизация | Ответ не кэшируется. Если заголовок существует. |
-| Cache-Control | По промежуточного слоя рассматривает только кэширование ответов, отмеченные `public` директива кэша. Управлять кэшированием со следующими параметрами:<ul><li>max-age</li><li>Устаревшая max &#8224;</li><li>Min нуля</li><li>должен revalidate</li><li>Нет-cache</li><li>нет хранилища</li><li>только если кэширования</li><li>private</li><li>public</li><li>s-maxage</li><li>Proxy-revalidate &#8225;</li></ul>&#8224; Если указано без ограничений `max-stale`, по промежуточного слоя не выполняет никаких действий.<br>&#8225; `proxy-revalidate` действует так же, как `must-revalidate`.<br><br>Дополнительные сведения см. в разделе [RFC 7231: запрос директивы управления кэшем](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
+| Cache-Control | По промежуточного слоя рассматривает только кэширование ответов, отмеченные `public` директива кэша. Управлять кэшированием со следующими параметрами:<ul><li>max-age</li><li>Max устарело&#8224;</li><li>Min нуля</li><li>должен revalidate</li><li>Нет-cache</li><li>нет хранилища</li><li>только если кэширования</li><li>private</li><li>public</li><li>s-maxage</li><li>Proxy-revalidate&#8225;</li></ul>&#8224;Если указано без ограничений `max-stale`, по промежуточного слоя не выполняет никаких действий.<br>&#8225;`proxy-revalidate`действует так же, как `must-revalidate`.<br><br>Дополнительные сведения см. в разделе [RFC 7231: запрос директивы управления кэшем](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | Директивы pragma | Объект `Pragma: no-cache` заголовка в запросе дает тот же эффект, что `Cache-Control: no-cache`. Этот заголовок переопределяется соответствующей директивы в `Cache-Control` заголовка, если он имеется. Для обеспечения обратной совместимости с HTTP/1.0 во внимание. |
 | Set-Cookie | Ответ не кэшируется. Если заголовок существует. |
 | Различаются | `Vary` Заголовок используется другой заголовок для изменения кэшированного ответа. Например, кэшировать ответы от кодировки, включая `Vary: Accept-Encoding` заголовок, который кэширует ответы для запросов с заголовками `Accept-Encoding: gzip` и `Accept-Encoding: text/plain` отдельно. Значение заголовка ответа `*` никогда не хранится. |
@@ -105,7 +105,7 @@ if (responseCachingFeature != null)
 
 Для усиления контроля над поведение кэширования изучение других функций кэширования ASP.NET Core. См. указанные ниже разделы.
 
-* [Кэширование в памяти](xref:performance/caching/memory)
+* [Кэш в памяти](xref:performance/caching/memory)
 * [Работа с распределенным кэшем](xref:performance/caching/distributed)
 * [Кэшировать вспомогательный тег в ядре ASP.NET MVC](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
 * [Вспомогательная функция тега распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
@@ -142,7 +142,7 @@ if (responseCachingFeature != null)
 
 * [Запуск приложения](xref:fundamentals/startup)
 * [ПО промежуточного слоя](xref:fundamentals/middleware/index)
-* [Кэширование в памяти](xref:performance/caching/memory)
+* [Кэш в памяти](xref:performance/caching/memory)
 * [Работа с распределенным кэшем](xref:performance/caching/distributed)
 * [Обнаружение изменений с помощью маркеров изменений](xref:fundamentals/primitives/change-tokens)
 * [Кэширование ответов](xref:performance/caching/response)

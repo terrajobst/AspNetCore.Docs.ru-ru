@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-vb
-title: "Пользовательские кнопки в DataList и повторителя (VB) | Документы Microsoft"
+title: Пользовательские кнопки в DataList и повторителя (VB) | Документы Microsoft
 author: rick-anderson
-description: "В этом учебнике мы создадим интерфейс, который используется повторитель для получения списка категорий в системе, с помощью каждой категории, предоставляя кнопки, чтобы показать его associ..."
+description: В этом учебнике мы создадим интерфейс, который используется повторитель для получения списка категорий в системе, с помощью каждой категории, предоставляя кнопки, чтобы показать его associ...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fc6c297f08790cdcc74867df21e32258017c5a7d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6e470590252102c486bb72ff46f516180aa09ba8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="custom-buttons-in-the-datalist-and-repeater-vb"></a>Пользовательские кнопки в DataList и повторителя (Visual Basic)
 ====================
@@ -104,8 +104,8 @@ ms.lasthandoff: 01/24/2018
 
 При нажатии кнопки в DataList или повторителя зачастую необходимо передать какая кнопка была нажата (в случае, что может быть несколько кнопок в элементе управления, такие как оба изменения и кнопку «Удалить») и может быть некоторые дополнительные сведения (такие как значению ключа элемента, для которого была нажата). Кнопка, LinkButton и ImageButton предоставляют два свойства, значения которого будут переданы `ItemCommand` обработчик событий:
 
-- `CommandName`Строка, обычно используются для определения каждой кнопки в шаблоне
-- `CommandArgument`обычно используется для хранения значения некоторые поля данных, например значения первичного ключа
+- `CommandName` Строка, обычно используются для определения каждой кнопки в шаблоне
+- `CommandArgument` обычно используется для хранения значения некоторые поля данных, например значения первичного ключа
 
 В этом примере набор LinkButton s `CommandName` свойство ShowProducts и привязки текущей записи s значения первичного ключа `CategoryID` для `CommandArgument` свойства, используя синтаксис привязки данных `CategoryArgument='<%# Eval("CategoryID") %>'`. После указания этих свойств, LinkButton s должен выглядеть следующим образом:
 
@@ -116,10 +116,10 @@ ms.lasthandoff: 01/24/2018
 
 Создайте обработчик событий для повторителя s `ItemCommand` событий и обратите внимание на второй параметр, переданный в обработчик событий (с именем `e`). Этот второй параметр имеет тип [ `RepeaterCommandEventArgs` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeatercommandeventargs.aspx) и имеет следующие четыре свойства:
 
-- `CommandArgument`значение нажатой кнопке s `CommandArgument` свойство
-- `CommandName`значение кнопки s `CommandName` свойство
-- `CommandSource`ссылку на элемент управления button, который был щелкнут
-- `Item`ссылку на [ `RepeaterItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeateritem.aspx) , содержащий кнопки, которая была нажата; каждая запись, привязанный к повторителя представляется в виде`RepeaterItem`
+- `CommandArgument` значение нажатой кнопке s `CommandArgument` свойство
+- `CommandName` значение кнопки s `CommandName` свойство
+- `CommandSource` ссылку на элемент управления button, который был щелкнут
+- `Item` ссылку на [ `RepeaterItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeateritem.aspx) , содержащий кнопки, которая была нажата; каждая запись, привязанный к повторителя представляется в виде `RepeaterItem`
 
 С момента выбранной категории s `CategoryID` переданными в виде `CommandArgument` свойства, мы можем получить набор продукты, связанные с выбранной категории в `ItemCommand` обработчика событий. Эти продукты затем могут быть привязаны к элементу управления BulletedList в `ItemTemplate` (который мы хранять еще для добавления). Все остается, затем — добавление маркированный список ссылок на него в `ItemCommand` обработчик событий и привязать к нему набор продуктов для выбранной категории, мы исследуем в этом выпуске на шаге 4.
 
@@ -162,11 +162,11 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Патерсона Деннис. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](custom-buttons-in-the-datalist-and-repeater-cs.md)
+> [!div class="step-by-step"]
+> [Назад](custom-buttons-in-the-datalist-and-repeater-cs.md)

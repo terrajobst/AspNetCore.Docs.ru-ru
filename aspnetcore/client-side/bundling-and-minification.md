@@ -1,7 +1,7 @@
 ---
-title: "Объединение и Минификация в ASP.NET Core"
+title: Пакет и minifiy статических активы ASP.NET Core
 author: scottaddie
-description: "Сведения об оптимизации статические ресурсы в веб-приложение ASP.NET Core, применяя объединение и Минификация методы."
+description: Сведения об оптимизации статические ресурсы в веб-приложение ASP.NET Core, применяя объединение и Минификация методы.
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,13 +11,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 6c233d0957ce9974adbc6112e6194c072aab0b41
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a155422c0fd638f46fe4a9d8a77faebc0b2a5681
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="bundling-and-minification"></a>Объединение и Минификация
+# <a name="bundle-and-minifiy-static-assets-in-aspnet-core"></a>Пакет и minifiy статических активы ASP.NET Core
 
 Автор: [Скотт Адди](https://twitter.com/Scott_Addie) (Scott Addie)
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 01/30/2018
 
 * `outputFileName`: Имя файла набора для вывода. Может содержать относительный путь от *bundleconfig.json* файла. **Обязательно**
 * `inputFiles`: Массив файлов, которые будут объединены. Это относительные пути к файлу конфигурации. **Необязательный**, * пустое значение преобразуется в пустой выходной файл. [Этот режим](http://www.tldp.org/LDP/abs/html/globbingref.html) поддерживаются шаблоны.
-* `minify`: Параметры минификации тип выходных данных. **Необязательный**, *по умолчанию —`minify: { enabled: true }`*
+* `minify`: Параметры минификации тип выходных данных. **Необязательный**, *по умолчанию — `minify: { enabled: true }`*
   * Параметры конфигурации доступны на тип выходного файла.
     * [Уменьшитель CSS](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [Уменьшитель JavaScript](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
@@ -220,28 +220,22 @@ dotnet bundle
 
 Следующие `environment` тег отображает необработанных файлов CSS при работе в `Development` среде:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=21-24)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=9-12)]
 
----
-
+* * *
 Следующие `environment` тег отображает распространение и уменьшенный CSS-файл при выполнении в среде, отличный от `Development`. Например, на котором работают `Production` или `Staging` триггеры для подготовки к просмотру эти таблицы стилей:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=5&range=25-30)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=13-18)]
 
----
-
+* * *
 ## <a name="consume-bundleconfigjson-from-gulp"></a>Использовать bundleconfig.json из Gulp
 
 Существуют случаи, в которых приложение объединение и Минификация рабочего процесса требуется дополнительная обработка. Примеры Оптимизация изображения, busting кэша и обработка активов CDN. Чтобы удовлетворить этим требованиям, можно преобразовать объединение и Минификация рабочий процесс для использования Gulp.
@@ -253,7 +247,7 @@ Visual Studio [Bundler & Уменьшитель](https://marketplace.visualstudi
 > [!NOTE]
 > Расширение Bundler & Уменьшитель принадлежит сообщество ведет проекта на GitHub, для которых корпорация Майкрософт не поддерживает. Должна быть заполнена проблемы [здесь](https://github.com/madskristensen/BundlerMinifier/issues).
 
-Щелкните правой кнопкой мыши *bundleconfig.json* в обозревателе решений и выберите **Bundler & Уменьшитель** > **преобразовать Gulp... **:
+Щелкните правой кнопкой мыши *bundleconfig.json* в обозревателе решений и выберите **Bundler & Уменьшитель** > **преобразовать Gulp...** :
 
 ![Преобразовать Gulp пункт контекстного меню](../client-side/bundling-and-minification/_static/convert-to-gulp.png)
 
@@ -319,5 +313,5 @@ npm i -g gulp-cli
 
 * [Использование Gulp](xref:client-side/using-gulp)
 * [Использование Grunt](xref:client-side/using-grunt)
-* [Работа с несколькими средами](xref:fundamentals/environments)
+* [Работать с несколькими средами](xref:fundamentals/environments)
 * [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro)

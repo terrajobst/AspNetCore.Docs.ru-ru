@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-a-route-constraint-cs
-title: "Создание ограничения маршрута (C#) | Документы Microsoft"
+title: Создание ограничения маршрута (C#) | Документы Microsoft
 author: StephenWalther
-description: "В этом учебнике Стивен Вальтер показано, как можно контролировать, как браузер запрашивает маршруты соответствия путем создания ограничения маршрута с помощью регулярных выражений."
+description: В этом учебнике Стивен Вальтер показано, как можно контролировать, как браузер запрашивает маршруты соответствия путем создания ограничения маршрута с помощью регулярных выражений.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-a-route-constraint-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ee83a134dcbdd1abfb296f3126a64c7d4ebab7f5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3159feb6538e3048f4f235f7d549e692604ca4e7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-route-constraint-c"></a>Создание ограничения маршрута (C#)
 ====================
@@ -77,6 +77,6 @@ ms.lasthandoff: 11/10/2017
 
 - Эти запросы браузера будет обрабатываться по другому маршруту или, если отсутствуют соответствующие маршруты *не удалось найти ресурс* будет возвращена ошибка.
 
->[!div class="step-by-step"]
-[Назад](creating-custom-routes-cs.md)
-[Вперед](creating-a-custom-route-constraint-cs.md)
+> [!div class="step-by-step"]
+> [Назад](creating-custom-routes-cs.md)
+> [Вперед](creating-a-custom-route-constraint-cs.md)

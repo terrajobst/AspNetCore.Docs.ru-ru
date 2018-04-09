@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/releases/running-v1-and-v2-sites-side-by-side
-title: "Под управлением других версий веб-страниц ASP.NET (Razor) параллельно | Документы Microsoft"
+title: Под управлением других версий веб-страниц ASP.NET (Razor) параллельно | Документы Microsoft
 author: tfitzmac
-description: "В этой статье описывается порядок выполнения веб-сайтов ASP.NET Web Pages (Razor) на том же компьютере или сервере, когда веб-сайты настроены для использования разных версий..."
+description: В этой статье описывается порядок выполнения веб-сайтов ASP.NET Web Pages (Razor) на том же компьютере или сервере, когда веб-сайты настроены для использования разных версий...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/releases/running-v1-and-v2-sites-side-by-side
 msc.type: authoredcontent
-ms.openlocfilehash: c11399b0bde59d18fa378ed48c15844454c1f956
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1729f3201013926b221afc92d23416b0081d8efb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="running-different-versions-of-aspnet-web-pages-razor-side-by-side"></a>Рядом с разными версиями веб-страниц ASP.NET (Razor)
 ====================
@@ -52,7 +52,7 @@ ms.lasthandoff: 11/10/2017
 - Если вы хотите запустить сайта с помощью другой версии веб-страниц ASP.NET, можно настроить для этого сайта. Если сайт еще нет *web.config* файл в корневом каталоге узла, создайте новую и скопируйте следующий код XML, перезапись существующего содержимого. Если сайт уже содержит *web.config* файл, добавьте `<appSettings>` элемент, аналогичный приведенному ниже, чтобы `<configuration>` раздела.
 
     [!code-xml[Main](running-v1-and-v2-sites-side-by-side/samples/sample1.xml)]
-"— Если вы не укажете версии в *web.config* файл сайт развертывается как последнюю версию. (Сборки копируются в *bin* папки в развернутом узле.)
+  "— Если вы не укажете версии в *web.config* файл сайт развертывается как последнюю версию. (Сборки копируются в *bin* папки в развернутом узле.)
 - Новые приложения, созданные с помощью шаблонов узла в Web Matrix включают сборки версии веб-страниц на сайте *bin* папки.
 
 Как правило, всегда можно управлять версии веб-страниц для использования с веб-узла с помощью NuGet, чтобы установить соответствующие сборки на веб-узел *bin* папки. Чтобы найти пакеты, посетите [NuGet.org](http://NuGet.org).

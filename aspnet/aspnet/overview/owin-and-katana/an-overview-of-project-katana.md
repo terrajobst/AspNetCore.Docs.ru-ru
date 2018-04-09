@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/owin-and-katana/an-overview-of-project-katana
-title: "Общие сведения о проекте Katana | Документы Microsoft"
+title: Общие сведения о проекте Katana | Документы Microsoft
 author: howarddierking
-description: "Платформа ASP.NET уже более десяти лет, и включения платформы разработки бесчисленное множество веб-сайтов и служб. Как разработка Web приложений..."
+description: Платформа ASP.NET уже более десяти лет, и включения платформы разработки бесчисленное множество веб-сайтов и служб. Как разработка Web приложений...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/30/2013
 ms.topic: article
 ms.assetid: 0ee21741-c1bf-4025-a9b0-24580cae24bc
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/an-overview-of-project-katana
 msc.type: authoredcontent
-ms.openlocfilehash: ceb7d3a7d1cb1685c0f1e62698f508c9a73e77c2
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 3c2bcbbc6e506af759f6d77af17d015278cc0bdf
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="an-overview-of-project-katana"></a>Общие сведения о проекте Katana
 ====================
@@ -144,7 +144,7 @@ OWIN-совместимых веб-сервер отвечает за запол
 - Управление в базовый процесс.
 - Оркестрация рабочего процесса, который приводит к выбора сервера и построении конвейер OWIN через какие запросы будут обрабатываться.
 
- В настоящее существует 3 основных размещения возможности для приложений на основе Katana:  
+  В настоящее существует 3 основных размещения возможности для приложений на основе Katana:  
   
 **IIS/ASP.NET**: с помощью стандартных типов HttpModule и HttpHandler, конвейеры OWIN можно выполнять в IIS как часть потока обработки запросов ASP.NET. Поддержка размещения ASP.NET включена путем установки пакета Microsoft.AspNet.Host.SystemWeb NuGet в проект веб-приложения. Кроме того так как IIS работает как узлом и сервером, в этот пакет NuGet, то есть, если узел SystemWeb, разработчик не могут подставить реализацию альтернативный сервер связывается различие узла или сервера OWIN.  
   
@@ -221,7 +221,7 @@ OWIN-совместимых веб-сервер отвечает за запол
 
 ## <a name="for-more-information-about-katana"></a>Дополнительные сведения о Katana
 
-- В проекте Katana на GitHub: [https://github.com/aspnet/AspNetKatana/](https://github.com/aspnet/AspNetKatana/).
+- В проекте Katana на GitHub: [ https://github.com/aspnet/AspNetKatana/ ](https://github.com/aspnet/AspNetKatana/).
 - Видео: [проект Katana - OWIN для ASP.NET](https://channel9.msdn.com/Shows/Web+Camps+TV/The-Katana-Project-OWIN-for-ASPNET), по Говард Дайеркинг.
 
 ## <a name="acknowledgements"></a>Благодарности

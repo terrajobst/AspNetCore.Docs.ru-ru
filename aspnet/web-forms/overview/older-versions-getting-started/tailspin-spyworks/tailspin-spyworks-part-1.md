@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1
-title: "Часть 1: Файл -> Новый проект | Документы Microsoft"
+title: 'Часть 1: Файл -> Новый проект | Документы Microsoft'
 author: JoeStagner
-description: "Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 1 рассматриваются общие сведения и файл/создать проект."
+description: Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 1 рассматриваются общие сведения и файл/создать проект.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: bd840f9f3f5d723e6bc1bb35955a7770634e9483
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a1b9681516e626b6a0eec420b168a74e05d88afb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-1-file--new-project"></a>Часть 1: Файл -> Новый проект
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения Tailspin Spyworks. Часть 1 рассматриваются общие сведения и файл/создать проект.
 
 
-## <a id="_Toc260221666"></a>Общие сведения
+## <a id="_Toc260221666"></a>  Общие сведения
 
 Этот учебник содержит основные сведения о веб-форм ASP.NET. Мы будем медленному запуску, поэтому новичок уровня веб-разработки допустимо.
 
@@ -61,11 +61,11 @@ ms.lasthandoff: 11/10/2017
 
 Начнем с создания нового проекта веб-форм ASP.NET в Visual Studio 2010 и постепенно мы добавим компонентов, чтобы создать работающее приложение. Попутно мы обсудим доступ к базе данных, представления списка и сетки, обновление страниц данных, проверка данных с помощью главных страниц для согласованного макета страницы, AJAX, проверки, членство и многое другое.
 
-Можно продолжить работу, шаг за шагом, или можно загрузить завершенное приложение из [http://tailspinspyworks.codeplex.com/](http://tailspinspyworks.codeplex.com/)
+Шаг за шагом продолжить работу, или можно загрузить из завершенного приложения [http://tailspinspyworks.codeplex.com/](http://tailspinspyworks.codeplex.com/)
 
-Можно использовать Visual Studio 2010 или произвольным Visual Web Developer 2010 из [https://www.microsoft.com/express/Web/](https://www.microsoft.com/express/Web/). Чтобы построить приложение, можно использовать SQL Server или произвольным SQL Server Express для размещения базы данных.
+Можно использовать Visual Studio 2010 или произвольным Visual Web Developer 2010 из [ https://www.microsoft.com/express/Web/ ](https://www.microsoft.com/express/Web/). Чтобы построить приложение, можно использовать SQL Server или произвольным SQL Server Express для размещения базы данных.
 
-## <a id="_Toc260221667"></a>Файл / Создать проект
+## <a id="_Toc260221667"></a>  Файл / Создать проект
 
 Мы начнем, выбрав в меню "файл" в Visual Studio новый проект. Откроется диалоговое окно нового проекта.
 
@@ -105,5 +105,5 @@ ms.lasthandoff: 11/10/2017
 
 После этого необходимо изменить на главную страницу ссылки в ASPX-файлах, созданных по умолчанию страницы веб-форм ASP.NET.
 
->[!div class="step-by-step"]
-[Вперед](tailspin-spyworks-part-2.md)
+> [!div class="step-by-step"]
+> [Вперед](tailspin-spyworks-part-2.md)

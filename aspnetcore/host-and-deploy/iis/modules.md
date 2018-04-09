@@ -1,7 +1,7 @@
 ---
-title: "Использование с ASP.NET Core модули IIS"
+title: Модули IIS с ASP.NET Core
 author: guardrex
-description: "Обнаружение активных и неактивных модули IIS для приложения ASP.NET Core и управлении модули IIS."
+description: Обнаружение активных и неактивных модули IIS для приложения ASP.NET Core и управлении модули IIS.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,13 +10,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: a6610e33abdc3eafb5908728b3299e95e6e7183f
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: d9b3de915df333153255f91649f9169f76ba2fe0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="using-iis-modules-with-aspnet-core"></a>Использование с ASP.NET Core модули IIS
+# <a name="iis-modules-with-aspnet-core"></a>Модули IIS с ASP.NET Core
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
@@ -49,16 +49,16 @@ ms.lasthandoff: 03/02/2018
 | **Поддержка протоколов**<br>`ProtocolSupportModule` | Да | |
 | **Фильтрация запросов**<br>`RequestFilteringModule` | Да | [По промежуточного слоя перезаписи URL-адрес `IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **Монитор запросов**<br>`RequestMonitorModule` | Да | |
-| **Переписывание URL-адресов**<br>`RewriteModule` | Да &#8224; | [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting) |
+| **Переписывание URL-адресов**<br>`RewriteModule` | Да&#8224; | [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting) |
 | **Включения на стороне сервера**<br>`ServerSideIncludeModule` | Нет | |
 | **Статическое сжатие**<br>`StaticCompressionModule` | Нет | [ПО промежуточного слоя для сжатия ответов](xref:performance/response-compression) |
 | **Статическое содержимое**<br>`StaticFileModule` | Нет | [По промежуточного слоя статических файлов](xref:fundamentals/static-files) |
 | **Кэширование маркеров**<br>`TokenCacheModule` | Да | |
 | **Кэширование URI**<br>`UriCacheModule` | Да | |
 | **Авторизация URL-адреса**<br>`UrlAuthorizationModule` | Да | [Удостоверение ASP.NET Core](xref:security/authentication/identity) |
-| **Проверка подлинности Windows**<br>`WindowsAuthenticationModule` | Да | |
+| **Аутентификация Windows**<br>`WindowsAuthenticationModule` | Да | |
 
-&#8224; Модуль переопределения URL-в `isFile` и `isDirectory` соответствует типам не работают с приложениями ASP.NET Core из-за изменений в [структуру каталогов](xref:host-and-deploy/directory-structure).
+&#8224;Модуль переопределения URL-в `isFile` и `isDirectory` соответствует типам не работают с приложениями ASP.NET Core из-за изменений в [структуру каталогов](xref:host-and-deploy/directory-structure).
 
 ## <a name="managed-modules"></a>Управляемые модули
 
@@ -106,21 +106,21 @@ ms.lasthandoff: 03/02/2018
 
 1. Снятие блокировки модуля на уровне сервера. В диспетчере IIS выберите сервер IIS **подключений** боковой панели. Откройте **модули** в **IIS** области. Выберите модуль в списке. В **действия** боковой панели справа выберите **Unlock**. Разблокировать столько модулей, которые планируется удалить из *web.config* позже.
 
-1. Развернуть приложение без  **\<модули >** статьи *web.config*. Если приложение развертывается с *web.config* содержащий  **\<модули >** раздела без разблокирован раздел сначала с помощью диспетчера IIS, Configuration Manager возникло исключение При попытке разблокировать раздел. Таким образом, развертывание приложения без  **\<модули >** раздела.
+2. Развернуть приложение без  **\<модули >** статьи *web.config*. Если приложение развертывается с *web.config* содержащий  **\<модули >** раздела без разблокирован раздел сначала с помощью диспетчера IIS, Configuration Manager возникло исключение При попытке разблокировать раздел. Таким образом, развертывание приложения без  **\<модули >** раздела.
 
-1. Разблокировать  **\<модули >** раздел *web.config*. В **подключений** боковой панели выберите веб-сайт в **узлы**. В **управления** откройте **редактор конфигурации**. Позволяет выбрать элементы управления навигацией `system.webServer/modules` раздела. В **действия** боковой панели справа, выберите, чтобы **Unlock** разделе.
+3. Разблокировать  **\<модули >** раздел *web.config*. В **подключений** боковой панели выберите веб-сайт в **узлы**. В **управления** откройте **редактор конфигурации**. Позволяет выбрать элементы управления навигацией `system.webServer/modules` раздела. В **действия** боковой панели справа, выберите, чтобы **Unlock** разделе.
 
-1. На этом этапе  **\<модули >** можно добавить раздел *web.config* файл с  **\<удалить >** элемента, удаляемого из модуля приложение. Несколько  **\<удалить >** могут быть добавлены элементы, чтобы удалить несколько модулей. Если *web.config* изменений на сервере, немедленно внесения изменений в проект *web.config* файл на компьютере. Удаление модуля таким образом не влияет на использование модуля с другими приложениями на сервере.
+4. На этом этапе  **\<модули >** можно добавить раздел *web.config* файл с  **\<удалить >** элемента, удаляемого из модуля приложение. Несколько  **\<удалить >** могут быть добавлены элементы, чтобы удалить несколько модулей. Если *web.config* изменений на сервере, немедленно внесения изменений в проект *web.config* файл на компьютере. Удаление модуля таким образом не влияет на использование модуля с другими приложениями на сервере.
 
-  ```xml
-  <configuration> 
+   ```xml
+   <configuration> 
     <system.webServer> 
       <modules> 
         <remove name="MODULE_NAME" /> 
       </modules> 
     </system.webServer> 
-  </configuration>
-  ```
+   </configuration>
+   ```
 
 Для установки служб IIS с модулями по умолчанию установлен, воспользуйтесь следующим  **\<модуль >** раздел, чтобы удалить модули по умолчанию.
 

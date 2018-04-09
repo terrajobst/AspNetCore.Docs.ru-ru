@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/entering-data
-title: "Введение в ASP.NET Web Pages — ввод данных базы данных с помощью форм | Документы Microsoft"
+title: Введение в ASP.NET Web Pages — ввод данных базы данных с помощью форм | Документы Microsoft
 author: tfitzmac
-description: "Этого учебника показано, как создать форму ввода, а затем введите данные, получаемые из формы в таблицу базы данных при использовании веб-страниц ASP.NET (..."
+description: Этого учебника показано, как создать форму ввода, а затем введите данные, получаемые из формы в таблицу базы данных при использовании веб-страниц ASP.NET (...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/entering-data
 msc.type: authoredcontent
-ms.openlocfilehash: b74eecb16b2c4695bb417816b90f701f724cc9d0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bbccf8134e90c19e29efaa5afe1e46e15320c189
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---entering-database-data-by-using-forms"></a>Введение в ASP.NET Web Pages — ввод данных базы данных с помощью форм
 ====================
@@ -121,7 +121,7 @@ ms.lasthandoff: 11/10/2017
 
 ![«Добавить фильма» страницы в браузере](entering-data/_static/image2.png)
 
-(При завершении на другую страницу в браузере убедитесь, что URL-адрес `http://localhost:nnnnn/AddMovie`), где  *nnnnn*  — номер порта, которую вы используете.)
+(При завершении на другую страницу в браузере убедитесь, что URL-адрес `http://localhost:nnnnn/AddMovie`), где *nnnnn* — номер порта, которую вы используете.)
 
 Вы получаете страницу ошибки? В этом случае следует внимательно прочитать и убедитесь, что код выглядит точно что перечисленного ранее.
 
@@ -145,7 +145,7 @@ ms.lasthandoff: 11/10/2017
 
 Очевидно, что вы не хотите разрешить пользователям вводить сведения о фильмах половина пустым в базу данных. Решение заключается в том, чтобы проверить введенные пользователем данные. Изначально проверки просто убедиться в том, что пользователь ввел значение для всех полей (таким образом, что ни один из них содержит пустую строку).
 
-> [!TIP] 
+> [!TIP]
 > 
 > **NULL и пустые строки**
 > 
@@ -260,6 +260,6 @@ ms.lasthandoff: 11/10/2017
 - [Вставка в инструкции SQL](http://www.w3schools.com/sql/sql_insert.asp) на сайте W3Schools
 - [Проверка пользовательского ввода в ASP.NET Web Pages сайтов](https://go.microsoft.com/fwlink/?LinkId=253002). Дополнительные сведения о работе с `Validation` поддержки.
 
->[!div class="step-by-step"]
-[Назад](form-basics.md)
-[Вперед](updating-data.md)
+> [!div class="step-by-step"]
+> [Назад](form-basics.md)
+> [Вперед](updating-data.md)

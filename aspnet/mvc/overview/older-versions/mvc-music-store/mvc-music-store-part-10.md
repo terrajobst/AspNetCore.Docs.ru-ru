@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-10
-title: "Часть 10: Окончательный обновления навигации и разработки узла, в заключение | Документы Microsoft"
+title: 'Часть 10: Окончательный обновления навигации и разработки узла, в заключение | Документы Microsoft'
 author: jongalloway
-description: "Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения ASP.NET MVC Music Store. Часть 10 охватывает окончательного обновлений для навигации и S...."
+description: Этот учебник ряд подробно описываются шаги, необходимые для построения образца приложения ASP.NET MVC Music Store. Часть 10 охватывает окончательного обновлений для навигации и S....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-10
 msc.type: authoredcontent
-ms.openlocfilehash: 2a65e4b793b615c45cdf31166e0a000ae72ee534
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: b40d194c4d08f3564da59bacde4b5d3d7663373a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-10-final-updates-to-navigation-and-site-design-conclusion"></a>Часть 10: Окончательный обновления навигации и разработки узла, в заключение
 ====================
@@ -138,5 +138,5 @@ ms.lasthandoff: 02/12/2018
 Мы узнали, что ASP.NET MVC упрощает создание сложных веб-сайта с помощью доступа к базе данных, членство в AJAX, и т. д. довольно быстро. Надеемся, у этого учебника вы получили средства, необходимые для приступить к созданию собственного ASP.NET MVC приложений!
 
 
->[!div class="step-by-step"]
-[Назад](mvc-music-store-part-9.md)
+> [!div class="step-by-step"]
+> [Назад](mvc-music-store-part-9.md)

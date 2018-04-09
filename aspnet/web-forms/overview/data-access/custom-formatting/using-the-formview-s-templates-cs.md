@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-cs
-title: "Используя шаблоны FormView (C#) | Документы Microsoft"
+title: Используя шаблоны FormView (C#) | Документы Microsoft
 author: rick-anderson
-description: "В отличие от DetailsView FormView не состоит из полей. Вместо этого FormView подготавливается к просмотру с помощью шаблонов. В этом учебнике мы рассмотрим е. с помощью..."
+description: В отличие от DetailsView FormView не состоит из полей. Вместо этого FormView подготавливается к просмотру с помощью шаблонов. В этом учебнике мы рассмотрим е. с помощью...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 18e76a763e22c0d1046acc60e095bbd11960c5e6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0e1b36f0bfc244e39bb620c1c066b3e2403722cb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-formviews-templates-c"></a>Используя шаблоны FormView (C#)
 ====================
@@ -33,12 +33,12 @@ ms.lasthandoff: 11/10/2017
 
 В отличие от DetailsView FormView не состоит из полей. Не удается добавить BoundField и TemplateField в FormView. Вместо этого FormView подготавливается к просмотру с помощью шаблонов. Рассматривать как элемент управления DetailsView, содержащий один TemplateField FormView. FormView поддерживает следующие шаблоны:
 
-- `ItemTemplate`используется для отрисовки конкретной записи, отображаемых в FormView
-- `HeaderTemplate`используется для указания строки необязательный заголовок
-- `FooterTemplate`используется для указания строка необязательно нижнего колонтитула
-- `EmptyDataTemplate`Когда FormView `DataSource` отсутствуют какие-либо записи `EmptyDataTemplate` используется вместо `ItemTemplate` для визуализации разметки для элемента управления
-- `PagerTemplate`можно использовать для настройки интерфейса постраничного просмотра для FormViews, имеющих включено разбиение на страницы
-- `EditItemTemplate` / `InsertItemTemplate`позволяет настраивать интерфейс редактирования или интерфейс для вставки для FormViews, который поддерживает такие функциональные возможности
+- `ItemTemplate` используется для отрисовки конкретной записи, отображаемых в FormView
+- `HeaderTemplate` используется для указания строки необязательный заголовок
+- `FooterTemplate` используется для указания строка необязательно нижнего колонтитула
+- `EmptyDataTemplate` Когда FormView `DataSource` отсутствуют какие-либо записи `EmptyDataTemplate` используется вместо `ItemTemplate` для визуализации разметки для элемента управления
+- `PagerTemplate` можно использовать для настройки интерфейса постраничного просмотра для FormViews, имеющих включено разбиение на страницы
+- `EditItemTemplate` / `InsertItemTemplate` позволяет настраивать интерфейс редактирования или интерфейс для вставки для FormViews, который поддерживает такие функциональные возможности
 
 В данном руководстве, мы изучим с помощью элемента управления FormView для представления менее строгое отображения продуктов. Вместо того чтобы использовать поля имени, категории, поставщика и т. д., FormView `ItemTemplate` отобразит эти значения, используя сочетание элемент заголовка и `<table>` (см. рис. 1).
 
@@ -111,12 +111,12 @@ FormView привязку к элементу управления ObjectDataSou
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было E.R. Gilmore. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](using-templatefields-in-the-detailsview-control-cs.md)
-[Вперед](displaying-summary-information-in-the-gridview-s-footer-cs.md)
+> [!div class="step-by-step"]
+> [Назад](using-templatefields-in-the-detailsview-control-cs.md)
+> [Вперед](displaying-summary-information-in-the-gridview-s-footer-cs.md)

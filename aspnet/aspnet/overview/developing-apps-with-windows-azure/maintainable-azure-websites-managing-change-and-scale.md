@@ -1,26 +1,26 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
-title: "Практического занятия: поддерживаемого веб-сайтов Azure: управление изменениями и масштаб | Документы Microsoft"
+title: 'Практического занятия: поддерживаемого веб-сайтов Azure: управление изменениями и масштаб | Документы Microsoft'
 author: rick-anderson
-description: "В этой лабораторной работы Узнайте, как Microsoft Azure позволяет легко создавать и развертывать веб-сайтов в рабочей среде."
+description: В этой лабораторной работы Узнайте, как Microsoft Azure позволяет легко создавать и развертывать веб-сайтов в рабочей среде.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/16/2014
 ms.topic: article
 ms.assetid: ecfd0eb4-c4ad-44e6-9db9-a2a66611ff6a
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
 msc.type: authoredcontent
-ms.openlocfilehash: 4bce02b2c592ff04e0dbce78d18004c69268e4fd
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a79921681b4e742b5cd23f7119d19f4dd74c3f83
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>Практического занятия: поддерживаемого веб-сайтов Azure: управление изменениями и масштабирования
 ====================
-по [Web лагеря команды](https://twitter.com/webcamps)
+По [Web лагеря команды](https://twitter.com/webcamps)
 
 [Загрузите комплект учебных материалов лагеря Web](http://aka.ms/webcamps-training-kit)
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/30/2018
 > 
 > С базами данных SQL очень важно обновлять производительность базы данных, при развертывании новых версий приложения. Благодаря **Entity Framework Code First Migrations**, разработка и развертывание модели данных, был упрощен для обновления среды в минутах. Данная практическая работа Показать различных разделов, которые могут возникнуть при развертывании веб-приложения в рабочей среде в Microsoft Azure.
 > 
-> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit).
+> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
 > 
 > Более подробные сведения этого раздела см. в разделе [Создание реальных облачных приложений с Azure электронная книга](building-real-world-cloud-apps-with-windows-azure/introduction.md).
 
@@ -281,13 +281,13 @@ ms.lasthandoff: 01/30/2018
     *Настройка нового веб-приложения*
 5. Укажите следующие сведения для настройки базы данных:
 
-    - В **имя** текста введите имя базы данных (например *geekquiz\_db*)
-    - На сервере **раскрывающемся** выберите **сервера базы данных SQL, новый**. Кроме того можно выбрать существующий сервер.
-    - В **имя пользователя базы данных** и **пароль базы данных** , введите имя пользователя администратора и пароль для базы данных SQL server. Если выбрать сервер уже создан, предложит ввести пароль.
+   - В **имя** текста введите имя базы данных (например *geekquiz\_db*)
+   - На сервере **раскрывающемся** выберите **сервера базы данных SQL, новый**. Кроме того можно выбрать существующий сервер.
+   - В **имя пользователя базы данных** и **пароль базы данных** , введите имя пользователя администратора и пароль для базы данных SQL server. Если выбрать сервер уже создан, предложит ввести пароль.
 
-    ![Задание параметров базы данных](maintainable-azure-websites-managing-change-and-scale/_static/image17.png)
+     ![Задание параметров базы данных](maintainable-azure-websites-managing-change-and-scale/_static/image17.png)
 
-    *Задание параметров базы данных*
+     *Задание параметров базы данных*
 6. Чтобы продолжить, нажмите кнопку **Далее** .
 7. Выберите **локального репозитория Git** для системы управления версиями, и нажмите кнопку **Далее**.
 
@@ -687,7 +687,7 @@ ms.lasthandoff: 01/30/2018
 
 В этой задаче вы настроите **GeekQuiz** решение, чтобы использовать изображение переданы хранилища больших двоичных объектов (вместо образа, расположенного в веб-приложения), добавив правило подстановки URL-адреса ASP.NET в **web.config**файла.
 
-1. В Visual Studio откройте **Web.config** файла внутри **GeekQuiz** проекта и найдите  **&lt;system.webServer&gt;**  элемента.
+1. В Visual Studio откройте **Web.config** файла внутри **GeekQuiz** проекта и найдите **&lt;system.webServer&gt;** элемента.
 2. Добавьте следующий код для добавления URL-адрес перепишите правило, обновление заполнитель с вашей учетной записи хранилища.
 
     (Фрагмент - кода *UrlRewriteRule WebSitesInProduction - Ex4 -*)
@@ -785,7 +785,7 @@ ms.lasthandoff: 01/30/2018
     ![Запрос на добавление WebTest1](maintainable-azure-websites-managing-change-and-scale/_static/image81.png "запрос на добавление WebTest1")
 
     *Запрос на добавление WebTest1*
-4. В **свойства** окно нового узла запроса обновления **URL-адрес** свойство, чтобы указать URL-адрес веб-приложения (например  *[http://geek-quiz.azurewebsites.net/](http://geek-quiz.azurewebsites.net/)* ).
+4. В **свойства** окно нового узла запроса обновления **URL-адрес** свойство, чтобы указать URL-адрес веб-приложения (например *[ http://geek-quiz.azurewebsites.net/ ](http://geek-quiz.azurewebsites.net/)*).
 
     ![Изменение свойства URL-адрес](maintainable-azure-websites-managing-change-and-scale/_static/image82.png "изменения свойства в URL-адрес")
 
@@ -797,13 +797,13 @@ ms.lasthandoff: 01/30/2018
     *Добавление цикла WebTest1*
 6. В **Добавьте условное правило и элементы в цикл** выберите **цикл For** правила и измените следующие свойства.
 
-    1. **Дифференциальное значение:** 1000
-    2. **Имя параметра контекста:** итератора
-    3. **Значение приращения:** 1
+   1. **Дифференциальное значение:** 1000
+   2. **Имя параметра контекста:** итератора
+   3. **Значение приращения:** 1
 
-    ![Выберите правило для цикла и обновление свойств](maintainable-azure-websites-managing-change-and-scale/_static/image84.png "выберите правило для цикла и обновление свойств")
+      ![Выберите правило для цикла и обновление свойств](maintainable-azure-websites-managing-change-and-scale/_static/image84.png "выберите правило для цикла и обновление свойств")
 
-    *Выберите правило для цикла и обновление свойств*
+      *Выберите правило для цикла и обновление свойств*
 7. В разделе **элементы в цикле** выберите запрос, созданный ранее первого и последнего элемента для цикла. Нажмите кнопку **ОК** , чтобы продолжить.
 
     ![При выборе первый и последний элемент цикла](maintainable-azure-websites-managing-change-and-scale/_static/image85.png "при выборе первый и последний элемент цикла")

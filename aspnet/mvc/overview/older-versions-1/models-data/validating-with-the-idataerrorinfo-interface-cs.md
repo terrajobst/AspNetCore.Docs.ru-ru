@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-cs
-title: "Проверка с помощью IDataErrorInfo-интерфейс (C#) | Документы Microsoft"
+title: Проверка с помощью IDataErrorInfo-интерфейс (C#) | Документы Microsoft
 author: StephenWalther
-description: "Стивен Вальтер показано, как для отображения пользовательской проверки ошибок, реализовав интерфейс IDataErrorInfo в классе модели."
+description: Стивен Вальтер показано, как для отображения пользовательской проверки ошибок, реализовав интерфейс IDataErrorInfo в классе модели.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c04088c576481e4a91676d7e6962c03b56e7a8a4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b5028b2e07c4144efa59824885ce96cd8b037dff
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validating-with-the-idataerrorinfo-interface-c"></a>Проверка с помощью IDataErrorInfo-интерфейс (C#)
 ====================
@@ -161,6 +161,6 @@ DefaultModelBinder также проверяет свойство IDataErrorInfo
 
 В этом учебнике вы узнали, как использовать интерфейс IDataErrorInfo для формирования сообщений об ошибках проверки. Во-первых мы создали разделяемый класс фильм, который расширяет функциональность в разделяемый класс фильм, созданные платформой Entity Framework. Далее мы добавили логику проверки в фильма класса OnTitleChanging() и OnDirectorChanging() разделяемые методы. Наконец мы реализовали IDataErrorInfo-интерфейс для предоставления этих сообщений проверки с платформой ASP.NET MVC.
 
->[!div class="step-by-step"]
-[Назад](performing-simple-validation-cs.md)
-[Вперед](validating-with-a-service-layer-cs.md)
+> [!div class="step-by-step"]
+> [Назад](performing-simple-validation-cs.md)
+> [Вперед](validating-with-a-service-layer-cs.md)

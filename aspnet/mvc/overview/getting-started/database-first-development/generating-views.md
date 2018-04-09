@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/generating-views
-title: "EF базы данных сначала с ASP.NET MVC: создание представлений | Документы Microsoft"
+title: 'EF базы данных сначала с ASP.NET MVC: создание представлений | Документы Microsoft'
 author: tfitzmac
-description: "С помощью MVC, Entity Framework и формирование шаблонов ASP.NET, можно создать веб-приложения, который предоставляет интерфейс для существующей базы данных. Этот учебник seri..."
+description: С помощью MVC, Entity Framework и формирование шаблонов ASP.NET, можно создать веб-приложения, который предоставляет интерфейс для существующей базы данных. Этот учебник seri...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/29/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/generating-views
 msc.type: authoredcontent
-ms.openlocfilehash: 5fccb3c56af0945ec448becff777a3e92dc160d7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b60e89a187a879255eb051dc87241714cef6fa63
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="ef-database-first-with-aspnet-mvc-generating-views"></a>EF базы данных сначала с ASP.NET MVC: создание представлений
 ====================
@@ -109,6 +109,6 @@ ms.lasthandoff: 11/10/2017
 
 Вы убедились, что автоматически создается представления позволяют пользователям работать с данными в базе данных. В следующем учебнике этой серии будет обновления базы данных и внести соответствующие изменения в веб-приложения.
 
->[!div class="step-by-step"]
-[Назад](creating-the-web-application.md)
-[Вперед](changing-the-database.md)
+> [!div class="step-by-step"]
+> [Назад](creating-the-web-application.md)
+> [Вперед](changing-the-database.md)
