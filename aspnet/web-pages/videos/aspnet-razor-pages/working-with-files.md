@@ -16,17 +16,17 @@ ms.openlocfilehash: 09c133abe4915450e07ab6a4d7e124cec6c6714a
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
-<a name="working-with-files"></a><span data-ttu-id="825c6-103">Работа с файлами</span><span class="sxs-lookup"><span data-stu-id="825c6-103">Working with Files</span></span>
+<a name="working-with-files"></a><span data-ttu-id="36d52-103">Работа с файлами</span><span class="sxs-lookup"><span data-stu-id="36d52-103">Working with Files</span></span>
 ====================
-<span data-ttu-id="825c6-104">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="825c6-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="36d52-104">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="36d52-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="825c6-105">Видео сопровождением при работе с учебником файлов</span><span class="sxs-lookup"><span data-stu-id="825c6-105">Video accompaniment to the Working with Files tutorial</span></span>
+<span data-ttu-id="36d52-105">Видео сопровождением при работе с учебником файлов</span><span class="sxs-lookup"><span data-stu-id="36d52-105">Video accompaniment to the Working with Files tutorial</span></span>
 
-[<span data-ttu-id="825c6-106">&#9654;Посмотрите видео (в минутах 23)</span><span class="sxs-lookup"><span data-stu-id="825c6-106">&#9654; Watch video (23 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-files)
+[<span data-ttu-id="36d52-106">&#9654;Посмотрите видео (в минутах 23)</span><span class="sxs-lookup"><span data-stu-id="36d52-106">&#9654; Watch video (23 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-files)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="825c6-107">[Назад](displaying-data-in-a-chart-part-2.md)
-> [Вперед](working-with-images.md)</span><span class="sxs-lookup"><span data-stu-id="825c6-107">[Previous](displaying-data-in-a-chart-part-2.md)
+> <span data-ttu-id="36d52-107">[Назад](displaying-data-in-a-chart-part-2.md)
+> [Вперед](working-with-images.md)</span><span class="sxs-lookup"><span data-stu-id="36d52-107">[Previous](displaying-data-in-a-chart-part-2.md)
 [Next](working-with-images.md)</span></span>
