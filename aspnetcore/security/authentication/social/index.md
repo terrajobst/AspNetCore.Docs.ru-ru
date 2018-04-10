@@ -1,7 +1,7 @@
 ---
-title: "Проверка подлинности Facebook, Google и внешних поставщиков в ASP.NET Core"
+title: Проверка подлинности Facebook, Google и внешних поставщиков в ASP.NET Core
 author: rick-anderson
-description: "В этом руководстве демонстрируется построение приложения ASP.NET Core 2.x с использованием OAuth 2.0 с внешними поставщиками проверки подлинности."
+description: В этом руководстве демонстрируется построение приложения ASP.NET Core 2.x с использованием OAuth 2.0 с внешними поставщиками проверки подлинности.
 manager: wpickett
 ms.author: riande
 ms.date: 11/01/2016
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/social/index
-ms.openlocfilehash: 76433f814d6850a449434c29eb0bd27570ce193a
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 93fa42be9c551f5bbdf3851aec1d9e01139fdb76
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Проверка подлинности Facebook, Google и внешних поставщиков в ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/02/2018
 
 В этом руководстве демонстрируется построение приложения ASP.NET Core 2.x, с помощью которого пользователи могут выполнять вход, используя OAuth 2.0 с учетными данными внешних поставщиков проверки подлинности.
 
-В следующих разделах рассматриваются такие поставщики, как [Facebook](facebook-logins.md), [Twitter](twitter-logins.md), [Google](google-logins.md), и [Microsoft](microsoft-logins.md). В сторонних пакетах также доступны другие поставщики, такие как [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) и [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
+В следующих разделах рассматриваются такие поставщики, как [Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins), и [Microsoft](xref:security/authentication/microsoft-logins). В сторонних пакетах также доступны другие поставщики, такие как [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) и [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
 
 ![Значки социальных сетей для Facebook, Twitter, Google+ и Windows](index/_static/social.png)
 
@@ -66,17 +66,17 @@ ms.lasthandoff: 03/02/2018
 
 Фактически эти значения определяют *имя пользователя* и *пароль*, которые ваше приложение использует для доступа к API поставщика. Они содержат секретные данные, которые могут быть привязаны к конфигурации приложения с помощью компонента **Secret Manager**, вместо того, чтобы жестко задавать или хранить их непосредственно в файлах конфигурации.
 
-Инструкции по сохранению маркеров безопасности, назначаемых приведенными ниже поставщиками входа, см. в разделе [Безопасное хранение секретных данных приложения в процессе разработки в ASP.NET Core](xref:security/app-secrets).
+Инструкции по сохранению маркеров безопасности, назначаемых приведенными ниже поставщиками входа, см. в разделе [Безопасное хранение секретов приложения в процессе разработки в ASP.NET Core](xref:security/app-secrets).
 
 ## <a name="setup-login-providers-required-by-your-application"></a>Настройка поставщиков входа, используемых приложением
 
 В следующих разделах приводятся инструкции по настройке приложения для работы с соответствующими поставщиками:
 
-* Инструкции для [Facebook](facebook-logins.md)
-* Инструкции для [Twitter](twitter-logins.md)
-* Инструкции для [Google](google-logins.md)
-* Инструкции для [Майкрософт](microsoft-logins.md)
-* Инструкции для [других поставщиков](other-logins.md)
+* Инструкции для [Facebook](xref:security/authentication/facebook-logins)
+* Инструкции для [Twitter](xref:security/authentication/twitter-logins)
+* Инструкции для [Google](xref:security/authentication/google-logins)
+* Инструкции для [Майкрософт](xref:security/authentication/microsoft-logins)
+* Инструкции для [других поставщиков](xref:security/authentication/otherlogins)
 
 ## <a name="optionally-set-password"></a>Необязательная установка пароля
 

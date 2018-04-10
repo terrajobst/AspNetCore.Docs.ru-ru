@@ -1,7 +1,7 @@
 ---
-title: "Конфигурация в .NET Core"
+title: Конфигурация в .NET Core
 author: rick-anderson
-description: "Используйте API конфигурации для настройки приложения ASP.NET Core несколькими способами."
+description: Используйте API конфигурации для настройки приложения ASP.NET Core несколькими способами.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 7c41621db835b452c9aad9463a9ffccdf0c06484
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: f272f9629ab1f9e7f7643cafd0d45f19340d5284
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="configure-an-aspnet-core-app"></a>Настройка приложения ASP.NET Core
+# <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson), [Марк Михаэлис](http://intellitect.com/author/mark-michaelis/) (Mark Michaelis), [Стив Смит](https://ardalis.com/) (Steve Smith), [Даниэль Рот](https://github.com/danroth27) (Daniel Roth) и [Люк Лэтхэм](https://github.com/guardrex) (Luke Latham)
 
@@ -48,7 +48,7 @@ API конфигурации позволяет настраивать веб-п
 
 [!code-json[](index/sample/ConfigJson/appsettings.json)]
 
-Конфигурация — это иерархический список пар "имя-значение", в котором узлы разделяются двоеточием. Чтобы получить значение, обратитесь к индексатору `Configuration` с ключом соответствующего элемента:
+Конфигурация — это иерархический список пар "имя-значение", в котором узлы разделяются двоеточием (`:`). Чтобы получить значение, обратитесь к индексатору `Configuration` с ключом соответствующего элемента:
 
 [!code-csharp[](index/sample/ConfigJson/Program.cs?range=21-22)]
 
@@ -105,15 +105,15 @@ Console.Write($"{Configuration["wizard:Harry:age"]}");
 
 [!code-csharp[](index/sample/StartupConfig.cs?name=snippet&highlight=3,4)]
 
-
-Для среды обычно задаются значения `Development`, `Staging` или `Production`. Дополнительные сведения см. в разделе [Работа с несколькими средами](xref:fundamentals/environments).
+Для среды обычно задаются значения `Development`, `Staging` или `Production`. Дополнительные сведения см. в статье [Работа с несколькими средами](xref:fundamentals/environments).
 
 Рекомендации по конфигурации:
 
-* `IOptionsSnapshot` может перезагрузить данные конфигурации после их изменения. Дополнительные сведения: [IOptionsSnapshot](xref:fundamentals/configuration/options#reload-configuration-data-with-ioptionssnapshot).
+* [IOptionsSnapshot](xref:fundamentals/configuration/options#reload-configuration-data-with-ioptionssnapshot) может перезагрузить данные конфигурации после их изменения.
 * Ключи конфигурации **не учитывают** регистр.
 * **Никогда** не храните пароли и другие конфиденциальные данные в коде поставщика конфигурации или в файлах конфигурации в виде обычного текста. Не используйте секреты рабочей среды в средах разработки и тестирования. Указывайте секреты вне проекта, чтобы их нельзя было случайно зафиксировать в репозитории с исходным кодом. Узнайте больше о [работе с несколькими средами](xref:fundamentals/environments) и управлении [безопасным хранением секретов приложения во время разработки](xref:security/app-secrets).
-* Если система не позволяет использовать двоеточие (`:`) в переменных среды, замените двоеточие (`:`) двойным подчеркиванием (`__`).
+* Для значений иерархической конфигурации, указанных в переменных среды, двоеточие (`:`) поддерживается не на всех платформах. Двойной знак подчеркивания (`__`) поддерживается на всех платформах.
+* При взаимодействии с API конфигурации двоеточие (`:`) поддерживается на всех платформах.
 
 ## <a name="in-memory-provider-and-binding-to-a-poco-class"></a>Поставщик в памяти и привязка к классу POCO
 
@@ -234,8 +234,7 @@ key3=value_from_json_3
 
 ### <a name="setup-and-use-the-commandline-configuration-provider"></a>Настройка и использование поставщика конфигурации CommandLine
 
-# <a name="basic-configurationtabbasicconfiguration"></a>[Базовая конфигурация](#tab/basicconfiguration)
-
+#### <a name="basic-configurationtabbasicconfiguration"></a>[Базовая конфигурация](#tab/basicconfiguration/)
 Чтобы активировать конфигурацию командной строки, вызовите метод расширения `AddCommandLine` в экземпляре [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder):
 
 [!code-csharp[](index/sample_snapshot//CommandLine/Program.cs?highlight=18,21)]
@@ -264,8 +263,7 @@ Left: 1979
 
 [!code-csharp[](index/sample_snapshot//CommandLine/Program2.cs?range=11-16&highlight=1,5)]
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 Для создания узла стандартные приложения ASP.NET Core 2.x используют статический удобный метод `CreateDefaultBuilder`:
 
 [!code-csharp[](index/sample_snapshot//Program.cs?highlight=12)]
@@ -282,14 +280,12 @@ Left: 1979
 
 Приложение ASP.NET Core 2.x может использовать [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) вместо `CreateDefaultBuilder`. При использовании `WebHostBuilder` задайте конфигурацию вручную с помощью [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder). Дополнительные сведения см. в разделе о ASP.NET Core 1.x.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 Чтобы использовать поставщик конфигурации CommandLine, создайте [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) и вызовите метод `AddCommandLine`. В этом случае аргументы командной строки, передаваемые во время выполнения, переопределяют конфигурацию, заданную другими вызванными ранее поставщиками конфигурации. Примените конфигурацию к [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) с помощью метода `UseConfiguration`:
 
 [!code-csharp[](index/sample_snapshot//CommandLine/Program2.cs?highlight=11,15,19)]
 
----
-
+* * *
 ### <a name="arguments"></a>Аргументы
 
 Аргументы, передаваемые в командной строке, должны соответствовать одному из двух форматов, приведенных в следующей таблице.
@@ -308,11 +304,11 @@ Left: 1979
 | Префикс ключа               | Пример         |
 | ------------------------ | :-------------: |
 | Без префикса                | `key1=value1`   |
-| Один дефис (`-`) &#8224; | `-key2=value2`  |
+| Один дефис (`-`) & #8224; | `-key2=value2`  |
 | Два дефиса (`--`)        | `--key3=value3` |
 | Прямая косая черта (`/`)      | `/key4=value4`  |
 
-&#8224;Ключ с префиксом из одного дефиса (`-`) должен быть указан в [сопоставлениях переключений](#switch-mappings), описанных ниже.
+& #8224;Ключ с префиксом из одного дефиса (`-`) должен быть указан в [сопоставлениях переключений](#switch-mappings), описанных ниже.
 
 Пример команды:
 
@@ -330,11 +326,11 @@ dotnet run key1=value1 -key2=value2 --key3=value3 /key4=value4
 
 | Префикс ключа               | Пример         |
 | ------------------------ | :-------------: |
-| Один дефис (`-`) &#8224; | `-key1 value1`  |
+| Один дефис (`-`) & #8224; | `-key1 value1`  |
 | Два дефиса (`--`)        | `--key2 value2` |
 | Прямая косая черта (`/`)      | `/key3 value3`  |
 
-&#8224;Ключ с префиксом из одного дефиса (`-`) должен быть указан в [сопоставлениях переключений](#switch-mappings), описанных ниже.
+& #8224;Ключ с префиксом из одного дефиса (`-`) должен быть указан в [сопоставлениях переключений](#switch-mappings), описанных ниже.
 
 Пример команды:
 
@@ -413,9 +409,52 @@ Left: 1988
 
 Файл *web.config* необходим для размещения приложения в службах IIS или IIS Express. Параметры в файле *web.config* включают [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) для запуска приложения и настройки других параметров и модулей IIS. Если файл *web.config* отсутствует и файл проекта содержит `<Project Sdk="Microsoft.NET.Sdk.Web">`, при публикации проекта файл *web.config* создается в опубликованных выходных данных (папка *publish*). Дополнительные сведения см. в разделе [Размещение ASP.NET Core в Windows со службами IIS](xref:host-and-deploy/iis/index#webconfig-file).
 
-## <a name="accessing-configuration-during-startup"></a>Доступ к конфигурации во время запуска
+## <a name="access-configuration-during-startup"></a>Доступ к конфигурации во время запуска
 
 Чтобы получить доступ к конфигурации в `ConfigureServices` или `Configure` во время запуска, см. примеры в разделе [Запуск приложения](xref:fundamentals/startup).
+
+## <a name="access-configuration-in-a-razor-page-or-mvc-view"></a>Настройка доступа на странице Razor или в представлении MVC
+
+Для доступа к параметрам конфигурации на странице Razor Pages или в представлении MVC добавьте [использование директивы](xref:mvc/views/razor#using) ([Справочник по C#: использование директивы](/dotnet/csharp/language-reference/keywords/using-directive)) для [пространства имен Microsoft.Extensions.Configuration](/dotnet/api/microsoft.extensions.configuration) и вставьте [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration) на страницу или в представление.
+
+На странице Razor Pages
+
+```cshtml
+@page
+@model IndexModel
+
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Index Page</title>
+</head>
+<body>
+    <h1>Access configuration in a Razor Pages page</h1>
+    <p>Configuration[&quot;key&quot;]: @Configuration["key"]</p>
+</body>
+</html>
+```
+
+В представлении MVC
+
+```cshtml
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Index View</title>
+</head>
+<body>
+    <h1>Access configuration in an MVC view</h1>
+    <p>Configuration[&quot;key&quot;]: @Configuration["key"]</p>
+</body>
+</html>
+```
 
 ## <a name="additional-notes"></a>Дополнительные сведения
 

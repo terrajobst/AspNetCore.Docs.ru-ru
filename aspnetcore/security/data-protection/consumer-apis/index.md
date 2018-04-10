@@ -1,7 +1,7 @@
 ---
-title: "Потребительские API"
+title: Потребительские API для ASP.NET Core
 author: rick-anderson
-description: "В этом документе приводится перечень различных разделов о защите данных потребительских API в ASP.NET Core."
+description: Ознакомитесь с различными темами о защите данных в потребительских API для ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,22 +9,22 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/index
-ms.openlocfilehash: a36dbaa7c34ed0cd99bfb2b27a9d59b81ffccbcf
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: d7ca1104b0a14a330df8d13be58425b3371bff73
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="consumer-apis"></a>Потребительские API
+# <a name="consumer-apis-for-aspnet-core"></a>Потребительские API для ASP.NET Core
 
-* [Обзор потребительских API](overview.md)
+* [Обзор потребительских API](xref:security/data-protection/consumer-apis/overview)
 
-* [Строки назначений](purpose-strings.md)
+* [Строки назначений](xref:security/data-protection/consumer-apis/purpose-strings)
 
-* [Иерархия назначений и мультитенантность](purpose-strings-multitenancy.md)
+* [Иерархия назначений и мультитенантность](xref:security/data-protection/consumer-apis/purpose-strings-multitenancy)
 
-* [Хэширование паролей](password-hashing.md)
+* [Хэшированные пароли](xref:security/data-protection/consumer-apis/password-hashing)
 
-* [Ограничение времени существования защищенных полезных данных](limited-lifetime-payloads.md)
+* [Ограничение времени существования защищенных полезных данных](xref:security/data-protection/consumer-apis/limited-lifetime-payloads)
 
-* [Снятие защиты полезных данных, ключи которых были отозваны](dangerous-unprotect.md)
+* [Снятие защиты полезных данных, ключи которых были отозваны](xref:security/data-protection/consumer-apis/dangerous-unprotect)

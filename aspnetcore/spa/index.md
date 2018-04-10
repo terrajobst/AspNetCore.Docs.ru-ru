@@ -1,7 +1,7 @@
 ---
-title: "Использование шаблонов одностраничных приложений"
+title: Использование шаблонов одностраничных приложений с ASP.NET Core
 author: SteveSandersonMS
-description: "Узнайте, как установить и начать использовать шаблоны проектов одностраничных приложений (SPA) в ASP.NET Core."
+description: Узнайте, как установить и начать использовать шаблоны проектов одностраничных приложений (SPA) в ASP.NET Core.
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,20 +11,20 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/index
-ms.openlocfilehash: 63b56de101199e9ea0d66d89d2dd7288e47902f6
-ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
+ms.openlocfilehash: eda4817de007f3c3184b2ba6ed6c97989ff17da5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="use-the-single-page-application-templates"></a>Использование шаблонов одностраничных приложений
+# <a name="use-the-single-page-application-templates-with-aspnet-core"></a>Использование шаблонов одностраничных приложений с ASP.NET Core
 
 > [!NOTE]
 > Выпущенный пакет SDK для .NET Core 2.0.x содержит более ранние шаблоны проектов Angular, React и React с Redux. Эта документация не относится к этим шаблонам. Она относится к новейшим шаблонам Angular, React и React с Redux, которые можно установить в ASP.NET Core 2.0 вручную. ASP.NET Core 2.1 включает обновленные шаблоны по умолчанию.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [Пакет SDK для .NET Core](https://www.microsoft.com/net/download) 2.0.0 или более поздней версии
+* [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 * [Node.js](https://nodejs.org) 6 или более поздней версии
 
 ## <a name="installation"></a>Установка

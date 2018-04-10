@@ -1,7 +1,7 @@
 ---
-title: "Реализация"
+title: Реализация защиты данных в ASP.NET Core
 author: rick-anderson
-description: "В этом документе приводится перечень различных разделов о реализации защиты данных в ASP.NET Core."
+description: Ознакомьтесь с различными разделами о реализации защиты данных в ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,28 +9,28 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/index
-ms.openlocfilehash: a464e961c0df1eb5f3def40d2a8c306454ed02d8
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ac891077342bb60cf321b96ba6d55df1a90655cd
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="implementation"></a>Реализация
+# <a name="aspnet-core-data-protection-implementation"></a>Реализация защиты данных в ASP.NET Core
 
-* [Сведения о шифровании с проверкой подлинности](authenticated-encryption-details.md)
+* [Сведения о шифровании с проверкой подлинности](xref:security/data-protection/implementation/authenticated-encryption-details)
 
-* [Формирование подключа и шифрование с проверкой подлинности](subkeyderivation.md)
+* [Формирование подключа и шифрование с проверкой подлинности](xref:security/data-protection/implementation/subkeyderivation)
 
-* [Заголовки контекста](context-headers.md)
+* [Заголовки контекста](xref:security/data-protection/implementation/context-headers)
 
-* [Управление ключами](key-management.md)
+* [Управление ключами](xref:security/data-protection/implementation/key-management)
 
-* [Поставщики хранилищ ключей](key-storage-providers.md)
+* [Поставщики хранилищ ключей](xref:security/data-protection/implementation/key-storage-providers)
 
-* [Шифрование ключей при хранении](key-encryption-at-rest.md)
+* [Шифрование ключей при хранении](xref:security/data-protection/implementation/key-encryption-at-rest)
 
-* [Неизменность ключа и изменение параметров](key-immutability.md)
+* [Неизменность и параметры ключа](xref:security/data-protection/implementation/key-immutability)
 
-* [Формат хранилища ключей](key-storage-format.md)
+* [Формат хранилища ключей](xref:security/data-protection/implementation/key-storage-format)
 
-* [Временные поставщики защиты данных](key-storage-ephemeral.md)
+* [Временные поставщики защиты данных](xref:security/data-protection/implementation/key-storage-ephemeral)

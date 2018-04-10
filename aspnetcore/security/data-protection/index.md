@@ -1,7 +1,7 @@
 ---
-title: "Защита данных в ASP.NET Core"
+title: Защита данных в ASP.NET Core
 author: rick-anderson
-description: "В этом документе приводится перечень различных разделов о защите данных в ASP.NET Core."
+description: В этом документе приводится перечень различных разделов о защите данных в ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,70 +9,70 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/index
-ms.openlocfilehash: e08dea63f012c4a758f2e5561c4930d09cfee0ac
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 83b5bb1e6a4942a4d3e5ec0d445fa6e5a21fb533
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="data-protection-in-aspnet-core-consumer-apis-configuration-extensibility-apis-and-implementation"></a>Защита данных в ASP.NET Core: потребительские API, настройка, API расширяемости и реализация
+# <a name="data-protection-in-aspnet-core"></a>Защита данных в ASP.NET Core
 
-* [Общие сведения о защите данных](introduction.md)
+* [Общие сведения о защите данных](xref:security/data-protection/introduction)
 
-* [Начало работы с API защиты данных](using-data-protection.md)
+* [Начало работы с API защиты данных](xref:security/data-protection/using-data-protection)
 
-* [Потребительские API](consumer-apis/index.md)
+* [Потребительские API](xref:security/data-protection/consumer-apis/index)
 
-  * [Обзор потребительских API](consumer-apis/overview.md)
+  * [Обзор потребительских API](xref:security/data-protection/consumer-apis/overview)
 
-  * [Строки назначений](consumer-apis/purpose-strings.md)
+  * [Строки назначений](xref:security/data-protection/consumer-apis/purpose-strings)
 
-  * [Иерархия назначений и мультитенантность](consumer-apis/purpose-strings-multitenancy.md)
+  * [Иерархия назначений и мультитенантность](xref:security/data-protection/consumer-apis/purpose-strings-multitenancy)
 
-  * [Хэширование паролей](consumer-apis/password-hashing.md)
+  * [Хэшированные пароли](xref:security/data-protection/consumer-apis/password-hashing)
 
-  * [Ограничение времени существования защищенных полезных данных](consumer-apis/limited-lifetime-payloads.md)
+  * [Ограничение времени существования защищенных полезных данных](xref:security/data-protection/consumer-apis/limited-lifetime-payloads)
 
-  * [Снятие защиты полезных данных, ключи которых были отозваны](consumer-apis/dangerous-unprotect.md)
+  * [Снятие защиты полезных данных, ключи которых были отозваны](xref:security/data-protection/consumer-apis/dangerous-unprotect)
 
-* [Конфигурация](configuration/index.md)
+* [Конфигурация](xref:security/data-protection/configuration/index)
 
-  * [Настройка защиты данных](configuration/overview.md)
+  * [Настройка защиты данных в ASP.NET Core](xref:security/data-protection/configuration/overview)
 
-  * [Параметры по умолчанию](configuration/default-settings.md)
+  * [Параметры по умолчанию](xref:security/data-protection/configuration/default-settings)
 
-  * [Политики уровня компьютера](configuration/machine-wide-policy.md)
+  * [Политики уровня компьютера](xref:security/data-protection/configuration/machine-wide-policy)
 
-  * [Сценарии, не поддерживающие внедрение зависимостей](configuration/non-di-scenarios.md)
+  * [Сценарии, не поддерживающие внедрение зависимостей](xref:security/data-protection/configuration/non-di-scenarios)
 
-* [API расширяемости](extensibility/index.md)
+* [API расширяемости](xref:security/data-protection/extensibility/index)
 
-  * [Расширяемость базового шифрования](extensibility/core-crypto.md)
+  * [Расширяемость базового шифрования](xref:security/data-protection/extensibility/core-crypto)
 
-  * [Расширяемость управления ключами](extensibility/key-management.md)
+  * [Расширяемость управления ключами](xref:security/data-protection/extensibility/key-management)
 
-  * [Различные API](extensibility/misc-apis.md)
+  * [Различные API](xref:security/data-protection/extensibility/misc-apis)
 
-* [Реализация](implementation/index.md)
+* [Реализация](xref:security/data-protection/implementation/index)
 
-  * [Сведения о шифровании с проверкой подлинности](implementation/authenticated-encryption-details.md)
+  * [Сведения о шифровании с проверкой подлинности](xref:security/data-protection/implementation/authenticated-encryption-details)
 
-  * [Формирование подключа и шифрование с проверкой подлинности](implementation/subkeyderivation.md)
+  * [Формирование подключа и шифрование с проверкой подлинности](xref:security/data-protection/implementation/subkeyderivation)
 
-  * [Заголовки контекста](implementation/context-headers.md)
+  * [Заголовки контекста](xref:security/data-protection/implementation/context-headers)
 
-  * [Управление ключами](implementation/key-management.md)
+  * [Управление ключами](xref:security/data-protection/implementation/key-management)
 
-  * [Поставщики хранилищ ключей](implementation/key-storage-providers.md)
+  * [Поставщики хранилищ ключей](xref:security/data-protection/implementation/key-storage-providers)
 
-  * [Шифрование ключей при хранении](implementation/key-encryption-at-rest.md)
+  * [Шифрование ключей при хранении](xref:security/data-protection/implementation/key-encryption-at-rest)
 
-  * [Неизменность ключа и изменение параметров](implementation/key-immutability.md)
+  * [Неизменность и параметры ключа](xref:security/data-protection/implementation/key-immutability)
 
-  * [Формат хранилища ключей](implementation/key-storage-format.md)
+  * [Формат хранилища ключей](xref:security/data-protection/implementation/key-storage-format)
 
-  * [Временные поставщики защиты данных](implementation/key-storage-ephemeral.md)
+  * [Временные поставщики защиты данных](xref:security/data-protection/implementation/key-storage-ephemeral)
 
-* [Совместимость](compatibility/index.md)
+* [Совместимость](xref:security/data-protection/compatibility/index)
 
-  * [Замена <machineKey> в ASP.NET](xref:security/data-protection/compatibility/replacing-machinekey)
+  * [Замена ASP.NET <machineKey> в ASP.NET Core](xref:security/data-protection/compatibility/replacing-machinekey)

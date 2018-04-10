@@ -1,7 +1,7 @@
 ---
-title: "Миграция с ASP.NET Core 1.x на 2.0"
+title: Миграция с ASP.NET Core 1.x на 2.0
 author: scottaddie
-description: "В этой статье описываются предварительные требования и стандартные этапы миграции проекта ASP.NET Core 1.x в ASP.NET Core 2.0."
+description: В этой статье описываются предварительные требования и стандартные этапы миграции проекта ASP.NET Core 1.x в ASP.NET Core 2.0.
 manager: wpickett
 ms.author: scaddie
 ms.date: 10/03/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: ebc4efdedd60c38280a0d37b20313e09671f7f9d
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 4b7a13b31340f01c4f1527f602b925d3ac4e8241
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="migrating-from-aspnet-core-1x-to-aspnet-core-20"></a>Миграция с ASP.NET Core 1.x на ASP.NET Core 2.0
+# <a name="migrate-from-aspnet-core-1x-to-20"></a>Миграция с ASP.NET Core 1.x на 2.0
 
 Автор: [Скотт Адди](https://github.com/scottaddie) (Scott Addie)
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 03/15/2018
 <a name="dot-net-cli-tool-reference"></a>
 
 ## <a name="update-net-core-cli-tools"></a>Обновление средств CLI для .NET Core
-Измените значение атрибута  *каждого узла*  в файле `Version`CSPROJ`<DotNetCliToolReference />` на 2.0.0.
+Измените значение атрибута *каждого узла* в файле `Version`CSPROJ`<DotNetCliToolReference />` на 2.0.0.
 
 Например, вот список средств CLI, используемых в типичном проекте ASP.NET Core 2.0, предназначенном для .NET Core 2.0:
 

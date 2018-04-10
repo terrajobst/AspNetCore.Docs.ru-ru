@@ -1,7 +1,7 @@
 ---
-title: "Размещение ASP.NET Core в Windows со службами IIS"
+title: Размещение ASP.NET Core в Windows со службами IIS
 author: guardrex
-description: "Сведения о размещении приложений ASP.NET Core в службах Windows Server Internet Information Services (IIS)."
+description: Сведения о размещении приложений ASP.NET Core в службах Windows Server Internet Information Services (IIS).
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: fa9e60c52f143b20dbf179679fc4932e838a9137
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 64eb85f75a6c2e10bf8c39f32eeda5311744f2a2
+ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/15/2018
 * Windows 7 и более поздние версии
 * Windows Server 2008 R2 и более поздние версии.&#8224;
 
-&#8224; В принципе, конфигурация IIS, описанная в этом документе, также подходит для размещения приложений ASP.NET Core в службах IIS на сервере Nano Server. Инструкции для Nano Server см. в руководстве [ASP.NET Core с IIS в Nano Server](xref:tutorials/nano-server).
+& #8224; В принципе, конфигурация IIS, описанная в этом документе, также подходит для размещения приложений ASP.NET Core в службах IIS на сервере Nano Server. Инструкции для Nano Server см. в руководстве [ASP.NET Core с IIS в Nano Server](xref:tutorials/nano-server).
 
 [Сервер HTTP.sys](xref:fundamentals/servers/httpsys) (ранее назывался [WebListener](xref:fundamentals/servers/weblistener)) не работает в конфигурации обратного прокси-сервера со службами IIS. Используйте [сервер Kestrel](xref:fundamentals/servers/kestrel).
 
@@ -85,6 +85,10 @@ services.Configure<IISOptions>(options =>
 | `AuthenticationDisplayName`    | `null`  | Задает отображаемое имя для пользователей на страницах входа. |
 | `ForwardClientCertificate`     | `true`  | Если значение — `true` и если присутствует заголовок запроса `MS-ASPNETCORE-CLIENTCERT`, происходит заполнение `HttpContext.Connection.ClientCertificate`. |
 
+### <a name="proxy-server-and-load-balancer-scenarios"></a>Сценарии использования прокси-сервера и подсистемы балансировки нагрузки
+
+ПО промежуточного слоя для интеграции IIS, которое настраивает ПО промежуточного слоя переадресации заголовков, и модуль ASP.NET Core настраиваются на пересылку схемы (HTTP/HTTPS) и удаленного IP-адреса расположения, где был сформирован запрос. Для приложений, размещенных за дополнительными прокси-серверами и подсистемами балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).
+
 ### <a name="webconfig-file"></a>Файл web.config
 
 В файле *web.config* содержится конфигурация [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). За создание, преобразования и публикацию *web.config* отвечает веб-пакет SDK для .NET Core (`Microsoft.NET.Sdk.Web`). Пакет SDK задается в начале файла проекта.
@@ -97,7 +101,7 @@ services.Configure<IISOptions>(options =>
 
 Если в проекте есть файл *web.config*, он преобразуется с соответствующими аргументами *processPath* и *arguments* для настройки модуля ASP.NET Core и переносится в опубликованные выходные данные. Преобразование не изменяет параметры конфигурации служб IIS, включенные в файл.
 
-Файл *web.config* может содержать дополнительные параметры конфигурации IIS, управляющие активными модулями IIS. Сведения о модулях IIS, которые могут обрабатывать запросы к приложениям ASP.NET Core, см. в статье [Using IIS Modules with ASP.NET Core](xref:host-and-deploy/iis/modules) (Использование модулей IIS с ASP.NET Core).
+Файл *web.config* может содержать дополнительные параметры конфигурации IIS, управляющие активными модулями IIS. Сведения о модулях IIS, которые могут обрабатывать запросы к приложениям ASP.NET Core, см. в статье [Модули IIS](xref:host-and-deploy/iis/modules).
 
 Чтобы пакет SDK не преобразовывал файл *web.config*, добавьте в файл проекта свойство **\<IsTransformWebConfigDisabled>**.
 
@@ -167,7 +171,11 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="install-the-net-core-windows-server-hosting-bundle"></a>Установка пакета размещения .NET Core для Windows Server
 
-1. Установите [пакет размещения .NET Core для Windows Server](https://aka.ms/dotnetcore-2-windowshosting) в размещающей системе. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратный прокси-сервер между службами IIS и сервером Kestrel. Если система не подключена к Интернету, перед установкой пакета размещения .NET Core для Windows Server получите и установите [Распространяемый компонент Microsoft Visual C++ 2015](https://www.microsoft.com/download/details.aspx?id=53840).
+1. Установите *пакет размещения .NET Core для Windows Server* в размещающей системе. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратный прокси-сервер между службами IIS и сервером Kestrel. Если система не подключена к Интернету, перед установкой пакета размещения .NET Core для Windows Server получите и установите [Распространяемый компонент Microsoft Visual C++ 2015](https://www.microsoft.com/download/details.aspx?id=53840).
+
+   1. Перейдите на [страницу всех загрузок .NET](https://www.microsoft.com/net/download/all).
+   1. Выберите последнюю не предварительную версию среды выполнения .NET Core из списка (**.NET Core** > **Среда выполнения** > **Среда выполнения .NET Core x.y.z**). Если вы не планируете работать с предварительной версией программного обеспечения, избегайте сред выполнения, в тексте ссылки которых указано "предварительная версия".
+   1. На странице загрузки среды выполнения .NET Core в разделе **Windows** нажмите на ссылку **Установщик размещения сервера**, чтобы загрузить *Пакет размещения Windows Server для .NET Core*.
 
    **Важно!** Если пакет размещения был установлен до установки служб IIS, пакет необходимо восстановить. После установки служб IIS запустите установщик пакета размещения еще раз.
    
@@ -278,7 +286,7 @@ services.Configure<IISOptions>(options =>
 
 * Все токены аутентификации, использующие файлы cookie, становятся недействительными. 
 * При выполнении следующего запроса пользователю требуется выполнить вход снова. 
-* Все данные, защищенные с помощью набора ключей, больше не могут быть расшифрованы. Это могут быть [токены CSRF](xref:security/anti-request-forgery#how-does-aspnet-core-mvc-address-csrf) и [файлы cookie временных данных ASP.NET Core MVC](xref:fundamentals/app-state#tempdata).
+* Все данные, защищенные с помощью набора ключей, больше не могут быть расшифрованы. Это могут быть [токены CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) и [файлы cookie временных данных ASP.NET Core MVC](xref:fundamentals/app-state#tempdata).
 
 Чтобы настроить защиту данных в службах IIS для хранения набора ключей, воспользуйтесь **одним** из следующих методов:
 
@@ -288,7 +296,7 @@ services.Configure<IISOptions>(options =>
 
   При автономной установке служб IIS, не поддерживающей веб-ферму, можно выполнить [скрипт PowerShell Provision-AutoGenKeys.ps1 для защиты данных](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1) применительно к каждому пулу приложений, в который входит приложение ASP.NET Core. Этот скрипт создает раздел в реестре HKLM, который будет доступен только для учетной записи рабочего процесса пула приложений, к которому относится соответствующее приложение. Неактивные ключи шифруются с помощью API защиты данных с ключом компьютера.
 
-  В случаях, когда используется веб-ферма, в приложении можно настроить UNC-путь, по которому это приложение будет хранить набор ключей для защиты данных. По умолчанию ключи защиты данных не шифруются. Разрешения на доступ к файлам в сетевой папке должны быть предоставлены только учетной записи Windows, с помощью которой выполняется приложение. Для защиты неактивных ключей можно использовать сертификат X509. Рассмотрите возможность реализации механизма, позволяющего пользователям отправлять сертификаты: поместить сертификаты в хранилище доверенных сертификатов пользователя и обеспечивать их доступность на всех компьютерах, где выполняется приложение. Подробные сведения см. в разделе [Настройка защиты данных](xref:security/data-protection/configuration/overview).
+  В случаях, когда используется веб-ферма, в приложении можно настроить UNC-путь, по которому это приложение будет хранить набор ключей для защиты данных. По умолчанию ключи защиты данных не шифруются. Разрешения на доступ к файлам в сетевой папке должны быть предоставлены только учетной записи Windows, с помощью которой выполняется приложение. Для защиты неактивных ключей можно использовать сертификат X509. Рассмотрите возможность реализации механизма, позволяющего пользователям отправлять сертификаты: поместить сертификаты в хранилище доверенных сертификатов пользователя и обеспечивать их доступность на всех компьютерах, где выполняется приложение. Дополнительные сведения см. в разделе [Настройка защиты данных в ASP.NET Core](xref:security/data-protection/configuration/overview).
 
 * **Настройка пула приложений IIS для загрузки профиля пользователя**.
 
@@ -348,7 +356,7 @@ services.Configure<IISOptions>(options =>
 
 Раздел **\<system.webServer>** файла *web.config* действует для тех компонентов IIS, которые относятся к конфигурации прокси-сервера. Если в службах IIS на уровне сервера настроено динамическое сжатие, элемент **\<urlCompression>** в файле *web.config* приложения может отключить это сжатие.
 
-Дополнительные сведения см. в [справочнике по настройке \<system.webServer>](/iis/configuration/system.webServer/), [справочнике по настройке модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) и статье [Using IIS Modules with ASP.NET Core](xref:host-and-deploy/iis/modules) (Использование модулей IIS с ASP.NET Core). Сведения о настройке переменных среды для отдельных приложений, выполняющихся в изолированных пулах приложений (такая возможность поддерживается в службах IIS начиная с версии 10.0), см. в справочной документации по службам IIS, в частности в разделе *AppCmd.exe* статьи [Environment Variables \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) (Переменные среды <environmentVariables>).
+Дополнительные сведения см. в [справочнике по настройке \<system.webServer>](/iis/configuration/system.webServer/), [справочнике по настройке модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module) и статье [Модули IIS с ASP.NET Core](xref:host-and-deploy/iis/modules). Сведения о настройке переменных среды для отдельных приложений, выполняющихся в изолированных пулах приложений (такая возможность поддерживается в службах IIS начиная с версии 10.0), см. в справочной документации по службам IIS, в частности в разделе *AppCmd.exe* статьи [Environment Variables \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) (Переменные среды <environmentVariables>).
 
 ## <a name="configuration-sections-of-webconfig"></a>Разделы конфигурации файла web.config
 
@@ -407,7 +415,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 * [Справочник по общим ошибкам для службы приложений Azure и служб IIS с ASP.NET Core](xref:host-and-deploy/azure-iis-errors-reference)
 * [Введение в модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
 * [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
-* [Использование модулей IIS с ASP.NET Core](xref:host-and-deploy/iis/modules)
+* [Модули IIS с ASP.NET Core](xref:host-and-deploy/iis/modules)
 * [Введение в ASP.NET Core](../index.md)
 * [Официальный веб-сайт Microsoft IIS](https://www.iis.net/)
 * [Библиотека Microsoft TechNet: Windows Server](/windows-server/windows-server-versions)

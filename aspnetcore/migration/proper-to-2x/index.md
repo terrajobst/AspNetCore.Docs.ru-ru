@@ -1,7 +1,7 @@
 ---
-title: "Миграция с ASP.NET на ASP.NET Core 2.0"
+title: Миграция с ASP.NET на ASP.NET Core 2.0
 author: isaac2004
-description: "Здесь вы найдете указания по миграции существующих приложений с ASP.NET MVC или веб-API на ASP.NET Core 2.0."
+description: Здесь вы найдете указания по миграции существующих приложений с ASP.NET MVC или веб-API на ASP.NET Core 2.0.
 manager: wpickett
 ms.author: scaddie
 ms.date: 08/27/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 877bcdbe5c5fb43e280800b2b843f2dfacb5bb45
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 86b4ee5f431d1e23ed3ad2be5740af34176de531
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="migrating-from-aspnet-to-aspnet-core-20"></a>Миграция с ASP.NET на ASP.NET Core 2.0
+# <a name="migrate-from-aspnet-to-aspnet-core-20"></a>Миграция с ASP.NET на ASP.NET Core 2.0
 
 Автор [Айзек Левин](https://isaaclevin.com) (Isaac Levin)
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [Пакет SDK .NET Core 2.0.0](https://dot.net/core) или более поздней версии.
+[!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 
 ## <a name="target-frameworks"></a>Требуемые версии .NET Framework
 Проекты ASP.NET Core 2.0 предлагают разработчикам гибкость работы с .NET Core и .NET Framework. Определить наиболее подходящую платформу поможет статья [Выбор между .NET Core и .NET Framework для серверных приложений](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
@@ -145,7 +145,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 Например, ресурс изображения в папке *wwwroot/images* доступен для браузера в расположении `http://<app>/images/<imageFileName>`.
 
-**Примечание**. Более подробное руководство по обработке статических файлов в ASP.NET Core см. в статье [Введение в работу со статическими файлами в ASP.NET Core](xref:fundamentals/static-files).
+**Примечание**. Более подробное руководство по обработке статических файлов в ASP.NET Core см. в статье [Работа со статическими файлами в ASP.NET Core](xref:fundamentals/static-files).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

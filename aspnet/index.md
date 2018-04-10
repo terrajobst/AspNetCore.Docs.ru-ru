@@ -2,13 +2,13 @@
 uid: index
 layout: HubPage
 ms.topic: hub-page
-title: "Документация по ASP.NET | Документация Майкрософт"
-description: 
-ms.openlocfilehash: 4ab928b65bc91a24d02cd0450e143cd6bd3b639b
-ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
+title: Документация по ASP.NET | Документация Майкрософт
+description: ''
+ms.openlocfilehash: cc887183fba9d3c46fbb1068d13d612a3e1806e6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/08/2018
                             <li>
                                 <div class="container intro">
                                     <p>ASP.NET Core — это новая кроссплатформенная среда .NET на основе исходного кода для создания современных облачных веб-приложений в Windows, macOS или Linux.</p>
-                                    <p>[Узнайте о преимуществах ASP.NET Core и ASP.NET](https://docs.microsoft.com/aspnet/core/choose-aspnet-framework) и выберите ту платформу, которая подходит именно вам.</p>
+                                    <p><a href="https://docs.microsoft.com/aspnet/core/choose-aspnet-framework" data-raw-source="[Learn the benefits of both ASP.NET Core and ASP.NET](https://docs.microsoft.com/aspnet/core/choose-aspnet-framework)">Узнайте о преимуществах ASP.NET Core и ASP.NET</a> и выберите ту платформу, которая подходит именно вам.</p>
                                 </div>
                             </li>
                             <li>
@@ -153,7 +153,7 @@ ms.lasthandoff: 03/08/2018
                         <ul id="core_tutorials" class="cardsZ">
                             <li>
                                 <div class="container intro">
-                                    <p>Рекомендуемые учебники | [Просмотр всех учебников по ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/)</p>
+                                    <p>Рекомендуемые учебники | <a href="https://docs.microsoft.com/aspnet/core/tutorials/" data-raw-source="[View all ASP.NET Core tutorials](https://docs.microsoft.com/aspnet/core/tutorials/)">Просмотр всех учебников по ASP.NET Core</a></p>
                                 </div>
                             </li>
                             <li>
@@ -291,7 +291,7 @@ ms.lasthandoff: 03/08/2018
                             <li>
                                 <div class="container intro">
                                     <p>ASP.NET — это развитая веб-платформа, предоставляющая все необходимые службы для создания серверных веб-приложений корпоративного класса с помощью .NET в Windows.</p>
-                                    <p>[Узнайте о преимуществах ASP.NET Core и ASP.NET](https://docs.microsoft.com/aspnet/core/choose-aspnet-framework) и выберите ту платформу, которая подходит именно вам.</p>
+                                    <p><a href="https://docs.microsoft.com/aspnet/core/choose-aspnet-framework" data-raw-source="[Learn the benefits of both ASP.NET Core and ASP.NET](https://docs.microsoft.com/aspnet/core/choose-aspnet-framework)">Узнайте о преимуществах ASP.NET Core и ASP.NET</a> и выберите ту платформу, которая подходит именно вам.</p>
                                 </div>
                             </li>
                             <li>
@@ -568,7 +568,7 @@ ms.lasthandoff: 03/08/2018
                         <ul id="aspnet_tutorials" class="cardsZ">
                             <li>
                                 <div class="container intro">
-                                    <p>Рекомендуемые учебники | [Просмотр всех учебников по ASP.NET](https://docs.microsoft.com/aspnet/tutorials/)</p>
+                                    <p>Рекомендуемые учебники | <a href="https://docs.microsoft.com/aspnet/tutorials/" data-raw-source="[View all ASP.NET tutorials](https://docs.microsoft.com/aspnet/tutorials/)">Просмотр всех учебников по ASP.NET</a></p>
                                 </div>
                             </li>
                             <li>
