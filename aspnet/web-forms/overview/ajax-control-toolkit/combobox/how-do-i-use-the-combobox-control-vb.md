@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-vb
-title: "Использование элемента управления ComboBox (VISUAL BASIC) | Документы Microsoft"
+title: Использование элемента управления ComboBox (VISUAL BASIC) | Документы Microsoft
 author: microsoft
-description: "Поле со списком является элементом управления ASP.NET AJAX, который объединяет гибкость текстового поля со списком параметров, которые можно выбрать пользователей."
+description: Поле со списком является элементом управления ASP.NET AJAX, который объединяет гибкость текстового поля со списком параметров, которые можно выбрать пользователей.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,13 +12,13 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 54e36cf275dcc4b85253dc3b8bb5b0dbb027af77
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e42844e326cb190502a51c5a85195b4752d7e827
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
-<a name="how-do-i-use-the-combobox-control-vb"></a>Использование элемента управления ComboBox (VISUAL BASIC)
+<a name="how-do-i-use-the-combobox-control-vb"></a>Использование элемента управления ComboBox (VB)
 ====================
 по [Microsoft](https://github.com/microsoft)
 
@@ -172,5 +172,5 @@ ms.lasthandoff: 11/10/2017
 
 В этом учебнике вы узнали, как использовать элемент управления ComboBox для отображения фиксированный набор элементов. Мы привязан элемент управления ComboBox, оба в статический набор элементов и в таблицу базы данных. Наконец вы узнали, как изменить поведение поля со списком, задавая ее свойства DropDownStyle, а для AutoCompleteMode.
 
->[!div class="step-by-step"]
-[Назад](how-do-i-use-the-combobox-control-cs.md)
+> [!div class="step-by-step"]
+> [Назад](how-do-i-use-the-combobox-control-cs.md)

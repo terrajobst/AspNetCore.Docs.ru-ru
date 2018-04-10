@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/caching-data/using-sql-cache-dependencies-vb
-title: "С помощью кэш-зависимости SQL (Visual Basic) | Документы Microsoft"
+title: С помощью кэш-зависимости SQL (Visual Basic) | Документы Microsoft
 author: rick-anderson
-description: "Простейшая стратегия кэширования является предоставление кэшированные данные по истечении указанного периода времени. Однако этот простой подход означает, что maintai кэшированных данных..."
+description: Простейшая стратегия кэширования является предоставление кэшированные данные по истечении указанного периода времени. Однако этот простой подход означает, что maintai кэшированных данных...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/30/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/caching-data/using-sql-cache-dependencies-vb
 msc.type: authoredcontent
-ms.openlocfilehash: af302d67b009fc25e38fb33a5e2a623f7200bcd5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 452d856fe352ef2eb7dfcc3f3acd6aa5bcb5ae41
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-sql-cache-dependencies-vb"></a>С помощью кэш-зависимости SQL (Visual Basic)
 ====================
@@ -309,15 +309,15 @@ AFTER, срабатывающим разбиения по страницам с�
 - [Создание уведомления о запросе](https://msdn.microsoft.com/library/ms188669.aspx)
 - [Кэширование в ASP.NET с `SqlCacheDependency` класса](https://msdn.microsoft.com/library/ms178604(VS.80).aspx)
 - [Средство регистрации ASP.NET SQL Server (`aspnet_regsql.exe`)](https://msdn.microsoft.com/library/ms229862(vs.80).aspx)
-- [Общие сведения о`SqlCacheDependency`](http://www.aspnetresources.com/blog/sql_cache_depedency_overview.aspx)
+- [Общие сведения о `SqlCacheDependency`](http://www.aspnetresources.com/blog/sql_cache_depedency_overview.aspx)
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основными редакторами этого учебника были Marko Rangel Тереза д Мерфи и – Хилтон Гизнау. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](caching-data-at-application-startup-vb.md)
+> [!div class="step-by-step"]
+> [Назад](caching-data-at-application-startup-vb.md)

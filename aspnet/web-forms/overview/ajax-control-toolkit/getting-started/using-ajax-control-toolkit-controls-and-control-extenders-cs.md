@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-cs
-title: "С помощью набора средств управления AJAX и расширителей элементов управления (C#) | Документы Microsoft"
+title: С помощью набора средств управления AJAX и расширителей элементов управления (C#) | Документы Microsoft
 author: microsoft
-description: "Дополнительные сведения о добавлении элементов управления для элементов управления AJAX и расширителей для страниц ASP.NET."
+description: Дополнительные сведения о добавлении элементов управления для элементов управления AJAX и расширителей для страниц ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 42a210ac41e83e2379aa64979f42ce66c843f878
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3d7cea2452db01ca116849ffb17631db3b935668
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-ajax-control-toolkit-controls-and-control-extenders-c"></a>С помощью набора средств управления AJAX и расширителей элементов управления (C#)
 ====================
@@ -106,6 +106,6 @@ ms.lasthandoff: 11/10/2017
 
 В одном элементе управления ASP.NET может быть расширена путем расширителей несколько элементов управления. Окно свойств для элемента управления расширяемого отображает список всех расширений элемента управления, связанный с элементом управления.
 
->[!div class="step-by-step"]
-[Назад](get-started-with-the-ajax-control-toolkit-cs.md)
-[Вперед](creating-a-custom-ajax-control-toolkit-control-extender-cs.md)
+> [!div class="step-by-step"]
+> [Назад](get-started-with-the-ajax-control-toolkit-cs.md)
+> [Вперед](creating-a-custom-ajax-control-toolkit-control-extender-cs.md)

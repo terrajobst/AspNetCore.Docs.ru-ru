@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-cs
-title: "Создание пользовательских AJAX элемента набора средств управления расширителем (C#) | Документы Microsoft"
+title: Создание пользовательских AJAX элемента набора средств управления расширителем (C#) | Документы Microsoft
 author: microsoft
-description: "Пользовательские расширения позволяют настроить и расширить возможности элементов управления ASP.NET без необходимости создавать новые классы."
+description: Пользовательские расширения позволяют настроить и расширить возможности элементов управления ASP.NET без необходимости создавать новые классы.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2ae03484dd1161c65b77f4718bb8cedb5abfdd82
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: dc058d1d19df880109352caf2dc7d1860121a104
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-custom-ajax-control-toolkit-control-extender-c"></a>Создание набора средств управления расширитель элемента управления пользовательского AJAX (C#)
 ====================
@@ -198,7 +198,7 @@ ms.lasthandoff: 11/10/2017
 2. Перетащите наличия ScriptManager на странице.
 3. Перетащите элемент управления TextBox на страницу.
 4. Перетащите элемент управления Button на страницу.
-5. В окне свойств измените значение свойства Button ID *btnSave* и свойству Text значение *Сохранить\**.
+5. В окне свойств измените значение свойства Button ID <em>btnSave</em> и свойству Text значение *Сохранить\**.
   
 
 Мы создали страницу стандартных элементов управления ASP.NET текстовое поле и кнопку.
@@ -238,6 +238,6 @@ ms.lasthandoff: 11/10/2017
 
 Целью данного учебника было объясняется, как можно расширить набор элементов управления AJAX с помощью пользовательских расширений элементов управления. В этом учебнике мы создали простого расширения элемента управления DisabledButton. Мы реализовали этого расширителя путем создания класса DisabledButtonExtender, поведение DisabledButtonBehavior JavaScript и класс DisabledButtonDesigner. Выполните аналогичный набор шагов, каждый раз при создании пользовательского элемента управления расширителем.
 
->[!div class="step-by-step"]
-[Назад](using-ajax-control-toolkit-controls-and-control-extenders-cs.md)
-[Вперед](get-started-with-the-ajax-control-toolkit-vb.md)
+> [!div class="step-by-step"]
+> [Назад](using-ajax-control-toolkit-controls-and-control-extenders-cs.md)
+> [Вперед](get-started-with-the-ajax-control-toolkit-vb.md)

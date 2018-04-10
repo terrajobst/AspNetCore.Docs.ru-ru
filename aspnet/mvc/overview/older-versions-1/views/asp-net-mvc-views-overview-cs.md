@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-cs
-title: "ASP.NET MVC представления Обзор (C#) | Документы Microsoft"
+title: ASP.NET MVC представления Обзор (C#) | Документы Microsoft
 author: StephenWalther
-description: "Что такое представление ASP.NET MVC и как это отличается от HTML-страницу? В этом учебнике Стивен Вальтер содержит описание представления и показано, как можно t..."
+description: Что такое представление ASP.NET MVC и как это отличается от HTML-страницу? В этом учебнике Стивен Вальтер содержит описание представления и показано, как можно t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9de095b0621af3b6166a2e1cbcb1c63c26a88aa2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5217994168ebac32a4a9754ae09e63e120804813
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-views-overview-c"></a>ASP.NET MVC представления Обзор (C#)
 ====================
@@ -84,7 +84,7 @@ View();
 
 Обратите внимание, что текст HTML-страницы в списке 2 содержит следующий скрипт:
 
-&lt;% Response.Write(DateTime.Now); %&gt;
+&lt;% Response.Write(DateTime.Now);%&gt;
 
 Используйте разделители сценарий &lt;% и %&gt; чтобы пометить начало и конец скрипта. Этот сценарий написан на языке C#. Отображает текущую дату и время, вызвав метод Response.Write() для отображения содержимого в браузер. Разделители сценарий &lt;% и %&gt; может использоваться для выполнения одной или нескольких инструкций.
 
@@ -152,5 +152,5 @@ View();
 
 Этот учебник предоставляется краткое введение в ASP.NET MVC представления данных в представлении и вспомогательные методы HTML. В первом разделе вы узнали, как добавить новые представления в проект. Вы узнали, что необходимо добавить представление в папку правой вызывать из конкретного контроллера. Далее мы рассмотрели разделе вспомогательные методы HTML. Вы узнали, как вспомогательных методов HTML, которые позволяют легко создавать стандартные HTML-содержимого. Наконец вы узнали, как пользоваться преимуществами данные представления для передачи данных из контроллера в представление.
 
->[!div class="step-by-step"]
-[Вперед](creating-custom-html-helpers-cs.md)
+> [!div class="step-by-step"]
+> [Вперед](creating-custom-html-helpers-cs.md)

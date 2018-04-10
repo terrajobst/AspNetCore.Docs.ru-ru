@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb
-title: "Создание схемы членства в SQL Server (VB) | Документы Microsoft"
+title: Создание схемы членства в SQL Server (VB) | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник начинает проверять методы для добавления необходимую схему для использования SqlMembershipProvider к базе данных. После этого мы wi..."
+description: Этот учебник начинает проверять методы для добавления необходимую схему для использования SqlMembershipProvider к базе данных. После этого мы wi...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/18/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2dadf091c6ae77fdfaf76f4e1bda92fd3e949678
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 44458e8022f1f0d52cf136ad7fbaa5dd1f546632
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-the-membership-schema-in-sql-server-vb"></a>Создание схемы членства в SQL Server (Visual Basic)
 ====================
@@ -155,9 +155,9 @@ ms.lasthandoff: 01/24/2018
 
 Третий шаг запрашивает сведения о базе данных: имя сервера, сведения о проверке подлинности и имя базы данных. Если действия вместе с учебником и добавили `SecurityTutorials.mdf` базы данных для `App_Data`, присоединении к `localhost\InstanceName`и переименован в `SecurityTutorialsDatabase`, затем используйте следующие значения:
 
-- Сервер:`localhost\InstanceName`
+- Сервер: `localhost\InstanceName`
 - Аутентификация Windows
-- База данных:`SecurityTutorialsDatabase`
+- База данных: `SecurityTutorialsDatabase`
 
 
 [![Введите сведения о базе данных](creating-the-membership-schema-in-sql-server-vb/_static/image26.png)](creating-the-membership-schema-in-sql-server-vb/_static/image25.png)
@@ -211,7 +211,7 @@ ms.lasthandoff: 01/24/2018
 - `UserName`
 - `ApplicationId`
 
-`UserId`является первичным ключом (и типа `uniqueidentifier`). `UserName`относится к типу `nvarchar(256)` и наряду с паролем, составляющих учетные данные пользователя. (Пароль хранится в `aspnet_Membership` таблицы.) `ApplicationId` связывает учетной записи пользователя для конкретного приложения в `aspnet_Applications`. Нет составного [ `UNIQUE` ограничение](https://msdn.microsoft.com/library/ms191166.aspx) на `UserName` и `ApplicationId` столбцов. Это гарантирует, что определенного приложения каждое имя пользователя является уникальным, но он позволяет одним и тем же `UserName` для использования в разных приложениях.
+`UserId` является первичным ключом (и типа `uniqueidentifier`). `UserName` относится к типу `nvarchar(256)` и наряду с паролем, составляющих учетные данные пользователя. (Пароль хранится в `aspnet_Membership` таблицы.) `ApplicationId` связывает учетной записи пользователя для конкретного приложения в `aspnet_Applications`. Нет составного [ `UNIQUE` ограничение](https://msdn.microsoft.com/library/ms191166.aspx) на `UserName` и `ApplicationId` столбцов. Это гарантирует, что определенного приложения каждое имя пользователя является уникальным, но он позволяет одним и тем же `UserName` для использования в разных приложениях.
 
 `aspnet_Membership` Таблица содержит дополнительные сведения, такие как пароль пользователя, адрес электронной почты, последнего входа даты и времени и т. д. Имеется взаимно-однозначное соответствие между записями в `aspnet_Users` и `aspnet_Membership` таблицы. Это отношение гарантируется `UserId` в `aspnet_Membership`, который используется в качестве первичного ключа таблицы. Как `aspnet_Users` таблицы, `aspnet_Membership` включает `ApplicationId` поле, которое связывает эту информацию для определенного раздела приложений.
 
@@ -225,7 +225,7 @@ ms.lasthandoff: 01/24/2018
 
 Пароль хранилища методика зависит от `SqlMembershipProvider` , заданные в `Web.config`. Мы рассмотрим Настройка `SqlMembershipProvider` параметров на шаге 4. Поведение по умолчанию не хранить хэш пароля.
 
-Столбцы, ответственный за хранение пароля, `Password`, `PasswordFormat`, и `PasswordSalt`. `PasswordFormat`поле типа `int` , значение которого указывает метод, используемый для хранения пароля: 0 для очистки; 1 для Hashed; 2; для шифрования. `PasswordSalt`назначенный случайным строки независимо от того, пароль хранилища методика; значение `PasswordSalt` используется только при вычислении хэш пароля. Наконец `Password` столбец содержит данные фактический пароль, будь то обычный текст пароля, хэш пароля или зашифрованный пароль.
+Столбцы, ответственный за хранение пароля, `Password`, `PasswordFormat`, и `PasswordSalt`. `PasswordFormat` поле типа `int` , значение которого указывает метод, используемый для хранения пароля: 0 для очистки; 1 для Hashed; 2; для шифрования. `PasswordSalt` назначенный случайным строки независимо от того, пароль хранилища методика; значение `PasswordSalt` используется только при вычислении хэш пароля. Наконец `Password` столбец содержит данные фактический пароль, будь то обычный текст пароля, хэш пароля или зашифрованный пароль.
 
 Таблица 1 демонстрирует, как эти три столбца будет выглядеть для различных методов хранения при сохранении пароля MySecret! .
 
@@ -248,7 +248,7 @@ ms.lasthandoff: 01/24/2018
 - `RoleName`
 - `ApplicationId`
 
-`RoleId`является первичным ключом (и типа `uniqueidentifier`). `RoleName` имеет тип `nvarchar(256)`. И `ApplicationId` связывает учетной записи пользователя для конкретного приложения в `aspnet_Applications`. Нет составного `UNIQUE` ограничения на `RoleName` и `ApplicationId` столбцы, обеспечивая определенного приложения каждое имя роли уникальное.
+`RoleId` является первичным ключом (и типа `uniqueidentifier`). `RoleName` имеет тип `nvarchar(256)`. И `ApplicationId` связывает учетной записи пользователя для конкретного приложения в `aspnet_Applications`. Нет составного `UNIQUE` ограничения на `RoleName` и `ApplicationId` столбцы, обеспечивая определенного приложения каждое имя роли уникальное.
 
 `aspnet_UsersInRoles` Таблица служит сопоставление пользователей и ролей. Существует только два столбца - `UserId` и `RoleId` - а вместе они образуют составной первичный ключ.
 
@@ -305,8 +305,8 @@ ms.lasthandoff: 01/24/2018
 
 Если не был указан поставщик информацию о членстве в нашем приложении `Web.config` файл, приложение использует поставщик членства по умолчанию зарегистрированные `AspNetSqlMembershipProvider`. Если `~/App_Data/aspnet.mdf` базы данных не существует, среда выполнения ASP.NET будет автоматически создать его и добавить схему службы приложения. Тем не менее, мы не хотим использовать `aspnet.mdf` в базе данных; вместо этого мы хотим использовать `SecurityTutorials.mdf` базы данных, созданную на шаге 2. Это изменение можно одним из двух способов:
 
-- **Укажите значение для ***`LocalSqlServer`*** имя строки подключения в ***`Web.config`***.** Путем перезаписи `LocalSqlServer` значение имя строки подключения в `Web.config`, можно использовать поставщика членства по умолчанию зарегистрированные (`AspNetSqlMembershipProvider`) и его правильной работы с `SecurityTutorials.mdf` базы данных. Этот подход подходит при наличии содержимого с указанными параметрами конфигурации по `AspNetSqlMembershipProvider`. Дополнительные сведения об этом приеме см. в разделе [Скотт Гатри](https://weblogs.asp.net/scottgu/)в записи блога [Настройка ASP.NET 2.0 служб приложений для использования SQL Server 2000 или SQL Server 2005](https://weblogs.asp.net/scottgu/archive/2005/08/25/423703.aspx).
-- **Добавить новый зарегистрированный поставщик типа ***`SqlMembershipProvider`*** и настройте его ***`connectionStringName`*** параметр, чтобы она указывала на ***`SecurityTutorials.mdf`*** базы данных.** Этот подход полезен в сценариях, где вы хотите настроить другие свойства конфигурации, в дополнение к строке подключения базы данных. В собственных проектах я всегда использую этот подход из-за его гибкости и удобства чтения.
+- <strong>Укажите значение для</strong><strong>`LocalSqlServer`</strong><strong>имя строки подключения в</strong><strong>`Web.config`</strong><strong>.</strong> Путем перезаписи `LocalSqlServer` значение имя строки подключения в `Web.config`, можно использовать поставщика членства по умолчанию зарегистрированные (`AspNetSqlMembershipProvider`) и его правильной работы с `SecurityTutorials.mdf` базы данных. Этот подход подходит при наличии содержимого с указанными параметрами конфигурации по `AspNetSqlMembershipProvider`. Дополнительные сведения об этом приеме см. в разделе [Скотт Гатри](https://weblogs.asp.net/scottgu/)в записи блога [Настройка ASP.NET 2.0 служб приложений для использования SQL Server 2000 или SQL Server 2005](https://weblogs.asp.net/scottgu/archive/2005/08/25/423703.aspx).
+- <strong>Добавить новый зарегистрированный поставщик типа</strong><strong>`SqlMembershipProvider`</strong><strong>и настройте его</strong><strong>`connectionStringName`</strong><strong>параметр, чтобы она указывала на</strong> <strong>`SecurityTutorials.mdf`</strong> <strong>базы данных.</strong> Этот подход полезен в сценариях, где вы хотите настроить другие свойства конфигурации, в дополнение к строке подключения базы данных. В собственных проектах я всегда использую этот подход из-за его гибкости и удобства чтения.
 
 Перед добавлением нового зарегистрированного поставщика, который ссылается на `SecurityTutorials.mdf` базы данных, необходимо сначала добавить строковое значение соответствующее соединение в `<connectionStrings>` раздела `Web.config`. Приведенный ниже код добавляет новую строку подключения с именем `SecurityTutorialsConnectionString` , ссылается на SQL Server 2005 Express Edition `SecurityTutorials.mdf` базы данных в `App_Data` папки.
 
@@ -348,7 +348,7 @@ ms.lasthandoff: 01/24/2018
 - [`<membership>` Элемент](https://msdn.microsoft.com/library/1b9hw62f.aspx)
 - [`<providers>` Элемент для членства](https://msdn.microsoft.com/library/6d4936ht.aspx)
 - [С помощью `<clear />` при добавлении поставщиков](https://weblogs.asp.net/scottgu/archive/2006/11/20/common-gotcha-don-t-forget-to-clear-when-adding-providers.aspx)
-- [Непосредственная работа с`SqlMembershipProvider`](http://aspnet.4guysfromrolla.com/articles/091207-1.aspx)
+- [Непосредственная работа с `SqlMembershipProvider`](http://aspnet.4guysfromrolla.com/articles/091207-1.aspx)
 
 ### <a name="video-training-on-topics-contained-in-this-tutorial"></a>Видео на разделы, содержащиеся в этом учебнике
 
@@ -358,12 +358,12 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="about-the-author"></a>Об авторе
 
-Скотт Митчелл, автор нескольких ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга —  *[диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Скотт может быть достигнута по [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) или через его блог по [http://ScottOnWriting.NET](http://scottonwriting.net/).
+Скотт Митчелл, автор нескольких ASP/ASP.NET и основатель 4GuysFromRolla.com, работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга —  *[диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Скотт может быть достигнута по [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) или через его блог по [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Alicja Maziarz. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Назад](storing-additional-user-information-cs.md)
-[Вперед](creating-user-accounts-vb.md)
+> [!div class="step-by-step"]
+> [Назад](storing-additional-user-information-cs.md)
+> [Вперед](creating-user-accounts-vb.md)

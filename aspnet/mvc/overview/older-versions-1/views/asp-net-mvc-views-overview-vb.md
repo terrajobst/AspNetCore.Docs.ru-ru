@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-vb
-title: "ASP.NET MVC представления Обзор (VB) | Документы Microsoft"
+title: ASP.NET MVC представления Обзор (VB) | Документы Microsoft
 author: StephenWalther
-description: "Что такое представление ASP.NET MVC и как это отличается от HTML-страницу? В этом учебнике Стивен Вальтер содержит описание представления и показано, как можно t..."
+description: Что такое представление ASP.NET MVC и как это отличается от HTML-страницу? В этом учебнике Стивен Вальтер содержит описание представления и показано, как можно t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c85b969aa4457d0326b4a16da218db9e11d01e10
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a64c70851d13b923964dfd1cf3bad55612ae0d0f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-views-overview-vb"></a>ASP.NET MVC представления Обзор (Visual Basic)
 ====================
@@ -152,6 +152,6 @@ View()
 
 Этот учебник предоставляется краткое введение в ASP.NET MVC представления данных в представлении и вспомогательные методы HTML. В первом разделе вы узнали, как добавить новые представления в проект. Вы узнали, что необходимо добавить представление в папку правой вызывать из конкретного контроллера. Далее мы рассмотрели разделе вспомогательные методы HTML. Вы узнали, как вспомогательных методов HTML, которые позволяют легко создавать стандартные HTML-содержимого. Наконец вы узнали, как пользоваться преимуществами данные представления для передачи данных из контроллера в представление.
 
->[!div class="step-by-step"]
-[Назад](passing-data-to-view-master-pages-cs.md)
-[Вперед](creating-custom-html-helpers-vb.md)
+> [!div class="step-by-step"]
+> [Назад](passing-data-to-view-master-pages-cs.md)
+> [Вперед](creating-custom-html-helpers-vb.md)

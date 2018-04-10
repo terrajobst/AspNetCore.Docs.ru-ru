@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-vb
-title: "Создание хранимых процедур и определяемых пользователем функций с помощью управляемого кода (VB) | Документы Microsoft"
+title: Создание хранимых процедур и определяемых пользователем функций с помощью управляемого кода (VB) | Документы Microsoft
 author: rick-anderson
-description: "Microsoft SQL Server 2005 интегрируется с .NET Common Language Runtime на предоставление разработчикам возможности создания объектов базы данных с помощью управляемого кода. Этот учебник..."
+description: Microsoft SQL Server 2005 интегрируется с .NET Common Language Runtime на предоставление разработчикам возможности создания объектов базы данных с помощью управляемого кода. Этот учебник...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e30df9ddc094d0390d9e5985ec676713b57feaf4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: cb676313b04fab9c7cf9c6d08d08d07852ee1fcb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-vb"></a>Создание хранимой процедуры и определяемые пользователем функции с помощью управляемого кода (Visual Basic)
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/24/2018
 
 Использование базы данных, таких как s Microsoft SQL Server 2005 [Transact-Structured языка запросов (T-SQL)](http://en.wikipedia.org/wiki/Transact-SQL) для вставки, изменения и получения данных. Большинство баз данных включают конструкции для группирования нескольких инструкций SQL, которые затем могут быть выполнены как единое единого и повторного использования. Хранимые процедуры являются одним из примеров. Другая — *определяемые пользователем функции*(UDF), это конструкция, будут рассмотрены более подробно в шаге 9.
 
-По существу SQL предназначен для работы с наборами данных. `SELECT`, `UPDATE`, И `DELETE` инструкций по своей природе применяются ко всем записям в соответствующей таблице и ограничено только объемом их `WHERE` предложения. Тем не менее имеют множество функций языка, для работы с одной записи за раз и для работы с данными, скалярные. [`CURSOR`s](http://www.sqlteam.com/item.asp?ItemID=553) позволяют быть в цикле по одному за раз набор записей. Строковые функции обработки как `LEFT`, `CHARINDEX`, и `PATINDEX` работают со скалярными значениями. SQL также включает операторах потока управления, такие как `IF` и `WHILE`.
+По существу SQL предназначен для работы с наборами данных. `SELECT`, `UPDATE`, И `DELETE` инструкций по своей природе применяются ко всем записям в соответствующей таблице и ограничено только объемом их `WHERE` предложения. Тем не менее имеют множество функций языка, для работы с одной записи за раз и для работы с данными, скалярные. [`CURSOR` s](http://www.sqlteam.com/item.asp?ItemID=553) позволяют быть в цикле по одному за раз набор записей. Строковые функции обработки как `LEFT`, `CHARINDEX`, и `PATINDEX` работают со скалярными значениями. SQL также включает операторах потока управления, такие как `IF` и `WHILE`.
 
 До Microsoft SQL Server 2005 хранимые процедуры и определяемые пользователем функции могут определяться только как коллекция инструкций T-SQL. SQL Server 2005, однако был разработан для обеспечения интеграции с [Common Language Runtime (CLR)](https://msdn.microsoft.com/netframework/aa497266.aspx), передаваемый в среде выполнения все сборки .NET. Следовательно хранимые процедуры и определяемые пользователем функции в базе данных SQL Server 2005 могут создаваться с помощью управляемого кода. То есть хранимой процедуры или определяемой пользователем функции можно создать как метод в класс Visual Basic. Это позволяет эти хранимые процедуры и определяемые пользователем функции, чтобы использовать функциональные возможности в платформе .NET Framework и из пользовательских классов.
 
@@ -424,8 +424,8 @@ ms.lasthandoff: 01/24/2018
 
 После развертывания проекта, вернитесь в SQL Server Management Studio и обновите содержимое папки, скалярные функции. Теперь должны отображаться две записи:
 
-- `dbo.udf_ComputeInventoryValue`-T-SQL определяемая пользователем Функция создана на шаге 9, и
-- `dbo.udf ComputeInventoryValue_Managed`-управляемого определяемая пользователем Функция создана в шаге 10, который только что была развернута.
+- `dbo.udf_ComputeInventoryValue` -T-SQL определяемая пользователем Функция создана на шаге 9, и
+- `dbo.udf ComputeInventoryValue_Managed` -управляемого определяемая пользователем Функция создана в шаге 10, который только что была развернута.
 
 Чтобы протестировать этот управляемый определяемой пользователем функции, выполните следующий запрос в среде Management Studio:
 
@@ -569,11 +569,11 @@ Visual Studio s тип проекта SQL Server упрощает создани
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Благодарности
 
 Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было S ren Алексей Lauritsen. Кроме этой статьи, S ren также создан проект Visual C#, экспресс-выпуск, включенному в настоящую загрузку статьи s для компиляции управляемых объектов базы данных вручную. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Назад](debugging-stored-procedures-vb.md)
+> [!div class="step-by-step"]
+> [Назад](debugging-stored-procedures-vb.md)
