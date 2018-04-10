@@ -16,7 +16,7 @@ ms.openlocfilehash: 565b0294f57b784bc592b286b3d8b28504110415
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="understanding-aspnet-ajax-localization"></a>Основные сведения о локализации для ASP.NET AJAX
 ====================
@@ -65,7 +65,7 @@ ms.lasthandoff: 04/06/2018
 | --- | --- |
 | Script.js | Сценарий окончательной версии зависящий от языка и региональных параметров. |
 | Script.debug.js | Отладочная версия сценарий, зависящий от языка и региональных параметров. |
-| Script.en US.js | Выпуск версии английский, США сценарий. |
+| Script.en-US.js | Выпуск версии английский, США сценарий. |
 | Script.debug.es-CO.js | Отладочная версия испанский, Колумбия скрипт. |
 
 ## <a name="walkthrough-create-an-localized-embedded-script"></a>Пошаговое руководство: Создание локализованного, внедренных сценариев

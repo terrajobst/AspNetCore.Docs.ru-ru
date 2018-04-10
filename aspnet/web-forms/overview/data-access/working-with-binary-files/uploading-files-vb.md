@@ -16,7 +16,7 @@ ms.openlocfilehash: fbc4aaf80ac7e0f960e140b492055fe35cd2b6ce
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="uploading-files-vb"></a>Передача файлов (Visual Basic)
 ====================
@@ -249,7 +249,7 @@ FileUpload s `SaveAs(filePath)` сохраняет загруженный фай
 **Рис. 14**: файл `EvolutionValley.jpg` загрузки на веб-сервер ([Просмотр полноразмерное изображение](uploading-files-vb/_static/image22.png))
 
 
-![EvolutionValley.jpg была сохранена в папке ~/Brochures](uploading-files-vb/_static/image15.gif)
+![EvolutionValley.jpg Was Saved to the ~/Brochures Folder](uploading-files-vb/_static/image15.gif)
 
 **Рис. 15**: `EvolutionValley.jpg` был сохранен на `~/Brochures` папки
 

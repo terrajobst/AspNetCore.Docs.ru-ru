@@ -15,7 +15,7 @@ ms.openlocfilehash: a155422c0fd638f46fe4a9d8a77faebc0b2a5681
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 # <a name="bundle-and-minifiy-static-assets-in-aspnet-core"></a>Пакет и minifiy статических активы ASP.NET Core
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 04/06/2018
 
 Следующие параметры конфигурации.
 
-* `outputFileName`: Имя файла набора для вывода. Может содержать относительный путь от *bundleconfig.json* файла. **Обязательно**
+* `outputFileName`: Имя файла набора для вывода. Может содержать относительный путь от *bundleconfig.json* файла. **required**
 * `inputFiles`: Массив файлов, которые будут объединены. Это относительные пути к файлу конфигурации. **Необязательный**, * пустое значение преобразуется в пустой выходной файл. [Этот режим](http://www.tldp.org/LDP/abs/html/globbingref.html) поддерживаются шаблоны.
 * `minify`: Параметры минификации тип выходных данных. **Необязательный**, *по умолчанию — `minify: { enabled: true }`*
   * Параметры конфигурации доступны на тип выходного файла.
@@ -236,7 +236,7 @@ dotnet bundle
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=13-18)]
 
 * * *
-## <a name="consume-bundleconfigjson-from-gulp"></a>Использовать bundleconfig.json из Gulp
+## <a name="consume-bundleconfigjson-from-gulp"></a>Consume bundleconfig.json from Gulp
 
 Существуют случаи, в которых приложение объединение и Минификация рабочего процесса требуется дополнительная обработка. Примеры Оптимизация изображения, busting кэша и обработка активов CDN. Чтобы удовлетворить этим требованиям, можно преобразовать объединение и Минификация рабочий процесс для использования Gulp.
 
@@ -313,5 +313,5 @@ npm i -g gulp-cli
 
 * [Использование Gulp](xref:client-side/using-gulp)
 * [Использование Grunt](xref:client-side/using-grunt)
-* [Работать с несколькими средами](xref:fundamentals/environments)
+* [Работа с несколькими средами](xref:fundamentals/environments)
 * [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
-title: "Предотвращение XSRF/CSRF в ASP.NET MVC и веб-страницы | Документы Microsoft"
+title: Предотвращение XSRF/CSRF в ASP.NET MVC и веб-страницы | Документы Microsoft
 author: Rick-Anderson
-description: "Подделки межсайтовых запросов (также известный как XSRF или CSRF) — это атака, для приложений веб сервере, при котором вредоносный веб-узел может влиять на проводятся..."
+description: Подделки межсайтовых запросов (также известный как XSRF или CSRF) — это атака, для приложений веб сервере, при котором вредоносный веб-узел может влиять на проводятся...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/14/2013
@@ -13,14 +13,14 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
 msc.type: authoredcontent
 ms.openlocfilehash: 6cf30daa7ed966b11405cec715c5bc803b567249
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages"></a>Предотвращение XSRF/CSRF в ASP.NET MVC и веб-страницы
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > Запрос межсайтовой подделки (также известный как XSRF или CSRF) — это атака, для приложений веб сервере, при котором вредоносных веб-сайта могут повлиять на взаимодействие между браузером клиента и веб-сайта, которым доверяет этот браузер. Такие атаки становится возможным, так как веб-браузеры будет отправлять маркеры проверки подлинности автоматически при каждом запросе к веб-сайту. Типичный пример — файл cookie проверки подлинности, например ASP. Билет проверки подлинности форм в NET. Тем не менее веб-сайтов, которые с помощью любого механизма проверки подлинности (например, проверку подлинности Windows, Basic и т. д.) могут быть нацелены подобных атак.
 > 
@@ -86,7 +86,7 @@ ms.lasthandoff: 01/24/2018
 Для создания маркеров защиты от XSRF следует вызвать [ @Html.AntiForgeryToken ](https://msdn.microsoft.com/library/dd470175.aspx) метод из представления MVC или @AntiForgery.GetHtml() на странице Razor. Среда выполнения будет затем выполните следующие действия:
 
 1. Если текущий HTTP-запрос уже содержит маркера anti-XSRF сеанса (файл cookie защиты от XSRF \_ \_RequestVerificationToken), маркер безопасности извлекается из него. Если HTTP-запроса не содержит маркера anti-XSRF сеанса или произошел сбой извлечения маркера безопасности, будет создан новый маркер случайных anti-XSRF.
-2. Маркера anti-XSRF поля генерируется с использованием маркера безопасности в предыдущем шаге (1) и удостоверения текущего вошедшего в систему пользователя. (Дополнительные сведения об определении удостоверение пользователя см. в разделе  **[сценариев с специальную поддержку](#_Scenarios_with_special)**  разделе ниже.) Кроме того Если [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/jj158328(v=vs.111).aspx) будет настроена, среда выполнения будет вызывать его [GetAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.getadditionaldata(v=vs.111).aspx) метод и включать в токен поля возвращаемой строки. (См.  **[конфигурации и расширяемость](#_Configuration_and_extensibility)**  Дополнительные сведения.)
+2. Маркера anti-XSRF поля генерируется с использованием маркера безопасности в предыдущем шаге (1) и удостоверения текущего вошедшего в систему пользователя. (Дополнительные сведения об определении удостоверение пользователя см. в разделе **[сценариев с специальную поддержку](#_Scenarios_with_special)** разделе ниже.) Кроме того Если [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/jj158328(v=vs.111).aspx) будет настроена, среда выполнения будет вызывать его [GetAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.getadditionaldata(v=vs.111).aspx) метод и включать в токен поля возвращаемой строки. (См. **[конфигурации и расширяемость](#_Configuration_and_extensibility)** Дополнительные сведения.)
 3. Если нового маркера anti-XSRF, созданный на шаге (1), новый маркер для него будет создана и будет добавляться в коллекцию файлов cookie HTTP-исходящих. Токен поля из пункта (2) будет вставлено в `<input type="hidden" />` элемент и эта разметка HTML будут возвращаемое значение `Html.AntiForgeryToken()` или `AntiForgery.GetHtml()`.
 
 ## <a name="validating-the-tokens"></a>Проверку маркеров
@@ -108,9 +108,9 @@ ms.lasthandoff: 01/24/2018
 - Маркер сеанса и токен поля были перепутаны.
 - Маркер сеанса и токен поля содержат токены несоответствия безопасности.
 - Имя пользователя, внедренные в маркер поля не соответствует текущего вошедшего в систему пользователя.
-- *[IAntiForgeryAdditionalDataProvider.ValidateAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.validateadditionaldata(v=vs.111).aspx)*  возвращаемое значение метода *false*.
+- *[IAntiForgeryAdditionalDataProvider.ValidateAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.validateadditionaldata(v=vs.111).aspx)* возвращаемое значение метода *false*.
 
-Средства защиты от XSRF также может выполнять дополнительную проверку во время создания токенов или проверки и ошибок во время проверки может привести к созданию исключений. . В разделе [WIF и ACS или на основе утверждений проверки подлинности](#_WIF_ACS) и  **[конфигурации и расширяемость](#_Configuration_and_extensibility)**  разделы для получения дополнительной информации.
+Средства защиты от XSRF также может выполнять дополнительную проверку во время создания токенов или проверки и ошибок во время проверки может привести к созданию исключений. . В разделе [WIF и ACS или на основе утверждений проверки подлинности](#_WIF_ACS) и **[конфигурации и расширяемость](#_Configuration_and_extensibility)** разделы для получения дополнительной информации.
 
 <a id="_Scenarios_with_special"></a>
 
@@ -139,10 +139,10 @@ ms.lasthandoff: 01/24/2018
 
 При создании или проверке токена, среда выполнения ASP.NET Web стека во время выполнения попытается привязки к типам:
 
-- `Microsoft.IdentityModel.Claims.IClaimsIdentity, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35`(Для WIF SDK.)
-- `System.Security.Claims.ClaimsIdentity`(Для .NET Framework 4.5).
+- `Microsoft.IdentityModel.Claims.IClaimsIdentity, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35` (Для WIF SDK.)
+- `System.Security.Claims.ClaimsIdentity` (Для .NET Framework 4.5).
 
-Если такие существуют и в том случае, если текущий пользователь *IIIIdentity* реализует или подклассы один из этих типов, будет использовать средство защиты от XSRF (поставщика удостоверений, идентификатора имени) кортежа вместо имени пользователя, при создании и Проверка токены. Если присутствует нет таких кортежей, запрос будет завершаться ошибкой, описывают разработчику для настройки системы защиты от XSRF для понимания механизм конкретной проверки подлинности на основе утверждений используется. В разделе  **[конфигурации и расширяемость](#_Configuration_and_extensibility)**  Дополнительные сведения.
+Если такие существуют и в том случае, если текущий пользователь *IIIIdentity* реализует или подклассы один из этих типов, будет использовать средство защиты от XSRF (поставщика удостоверений, идентификатора имени) кортежа вместо имени пользователя, при создании и Проверка токены. Если присутствует нет таких кортежей, запрос будет завершаться ошибкой, описывают разработчику для настройки системы защиты от XSRF для понимания механизм конкретной проверки подлинности на основе утверждений используется. В разделе **[конфигурации и расширяемость](#_Configuration_and_extensibility)** Дополнительные сведения.
 
 ### <a name="oauth--openid-authentication"></a>OAuth или OpenID проверки подлинности
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="iantiforgeryadditionaldataprovider"></a>IAntiForgeryAdditionalDataProvider
 
-*[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)*  типа позволяет разработчикам расширять поведение системы защиты от XSRF с циклической обработки дополнительных данных в каждом маркере. *GetAdditionalData* при каждом вызове метода создается маркер поля, и возвращаемое значение внедряется в созданный токен. Разработчик может вернуть отметку времени, nonce или любое другое значение, которое она хочет из этого метода.
+*[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)* типа позволяет разработчикам расширять поведение системы защиты от XSRF с циклической обработки дополнительных данных в каждом маркере. *GetAdditionalData* при каждом вызове метода создается маркер поля, и возвращаемое значение внедряется в созданный токен. Разработчик может вернуть отметку времени, nonce или любое другое значение, которое она хочет из этого метода.
 
 Аналогичным образом *ValidateAdditionalData* метод вызывается каждый раз проверяется токен поля, и строка «дополнительные данные», внедренные в маркер передается в метод. Процедуры проверки может реализовать тайм-аут (путем проверки текущее время от времени, которое было сохранено при создании токена), nonce проверка подпрограммы или любой другой требуемого логику.
 

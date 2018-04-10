@@ -1,28 +1,28 @@
 ---
 uid: whitepapers/overview
-title: "Технические документы | Документы Microsoft"
+title: Технические документы | Документы Microsoft
 author: rick-anderson
-description: "На этой странице вы найдете технические документы, которые помогут вам установить и настроить ASP.NET и помогут вам создавать безопасные быстрое и гибкое приложения ASP.NET."
+description: На этой странице вы найдете технические документы, которые помогут вам установить и настроить ASP.NET и помогут вам создавать безопасные быстрое и гибкое приложения ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/15/2011
 ms.topic: article
 ms.assetid: d5e79470-01f2-4d65-8077-11c3e10a6784
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers
 msc.type: content
 ms.openlocfilehash: ba9fda509605025754dc9753266f86585f38b089
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="whitepapers"></a>Техническая документация
 ====================
 > На этой странице вы найдете технические документы, которые помогут вам установить и настроить ASP.NET и помогут вам создавать безопасные быстрое и гибкое приложения ASP.NET.
 > 
-> - [В ASP.NET 4](#aspnet4)
+> - [ASP.NET 4](#aspnet4)
 > - [Технические документы по безопасности ASP.NET](#security)
 > - [Установка и настройка технические документы](#setup)
 > - [Технические документы SQL Server](#sql)
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/24/2018
 
 
 <a id="aspnet4"></a>
-## <a name="aspnet-4"></a>В ASP.NET 4
+## <a name="aspnet-4"></a>ASP.NET 4
 
 Сведения, относящиеся к ASP.NET 4 и Visual Studio 2010.
 
@@ -242,15 +242,15 @@ IPSec — это технология, предоставляемые Windows 20
 
 Этот способ для показано, как Настройка веб-приложений ASP.NET для запуска на среднем уровне доверия. Если размещать несколько приложений на одном сервере, можно использовать для обеспечения изоляции приложений управления доступом для кода и среднего уровня доверия. Установив...
 
-[Использовать учетную запись сетевой службы для доступа к ресурсам в ASP.NET 2.0](https://msdn.microsoft.com/library/ms998320.aspx)
+[Use the Network Service Account to Access Resources in ASP.NET 2.0](https://msdn.microsoft.com/library/ms998320.aspx)
 
 Этот способ для показано, как можно использовать учетную запись NT AUTHORITY\Network Service компьютера для доступа к локальной и сетевым ресурсам. По умолчанию в Windows Server 2003 приложения ASP.NET выполняются с использованием этой учетной записи удостоверения. Это минимальных привилегий...
 
-[Использовать переход протокола и ограниченное делегирование в ASP.NET 2.0](https://msdn.microsoft.com/library/ms998355.aspx)
+[Use Protocol Transition and Constrained Delegation in ASP.NET 2.0](https://msdn.microsoft.com/library/ms998355.aspx)
 
 Этот способ для показано, как настроить и использовать передача протокола и ограниченное делегирование, чтобы разрешить приложению ASP.NET для доступа к сетевым ресурсам, а олицетворяя исходного заявителя. Операционная система Microsoft® Windows® 2000...
 
-[Выполнение .NET Framework 1.0 и 1.1 ASP.NET Side-by-Side](side-by-side-with-10.md "параллельно с 1.0")
+[ASP.NET Side-by-Side Execution of .NET Framework 1.0 and 1.1](side-by-side-with-10.md "side by side with 1.0")
 
 В этом техническом документе описывается установка на компьютере, что позволяет веб-приложение ASP.NET для запуска на любой из версий платформы .NET версии 1.0 и .NET 1.1.
 
@@ -262,7 +262,7 @@ IPSec — это технология, предоставляемые Windows 20
 
 Хотя Windows Server 2003 включает службы IIS 6.0 и ASP.NET версии 1.1, по умолчанию отключены следующие компоненты. В этом техническом документе описывается включение IIS 6.0 и ASP.NET версии 1.1 и рекомендует несколько параметров конфигурации для получения оптимальной...
 
-[Исправление для ошибки «Приложение сервера недоступно» после применения обновления безопасности для IE](ms03-32-issue.md "ms03-32-проблемы")
+[Fix for ‘Server Application Unavailable' Error after Applying Security Update for IE](ms03-32-issue.md "ms03-32-issue")
 
 В этом документе описывается исправление, которое устраняет проблему с MS03 32 обновления для системы безопасности для Internet Explorer, который влияет на приложения ASP.NET 1.0, работающие под управлением Windows XP Professional.
 
@@ -276,7 +276,7 @@ IPSec — это технология, предоставляемые Windows 20
 
 Этом практическом руководстве описано &lt;machineKey&gt; в файле Web.config и показано, как настроить &lt;machineKey&gt; элемент в элемент управления проверки правописания вскрытия и шифрование состояние просмотра, проверки подлинности форм билеты и файлы Cookie роли. ViewState подписан...
 
-[Шифрование разделов конфигурации в ASP.NET 2.0 с помощью DPAPI](https://msdn.microsoft.com/library/ms998280.aspx)
+[Encrypt Configuration Sections in ASP.NET 2.0 Using DPAPI](https://msdn.microsoft.com/library/ms998280.aspx)
 
 Этот способ для показано, как использовать приложение для защиты данных Windows программирования поставщик защищенной конфигурации интерфейса (DPAPI) и Aspnet\_regiis.exe средства для шифрования разделов файлов конфигурации. Можно использовать Aspnet\_regiis.exe, которая позволяет...
 

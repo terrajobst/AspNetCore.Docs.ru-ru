@@ -1,7 +1,7 @@
 ---
-title: "Представления в ASP.NET Core MVC"
+title: Представления в ASP.NET Core MVC
 author: ardalis
-description: "Узнайте, как представления обеспечивают отображение данных приложения и взаимодействие с пользователем в ASP.NET Core MVC."
+description: Узнайте, как представления обеспечивают отображение данных приложения и взаимодействие с пользователем в ASP.NET Core MVC.
 manager: wpickett
 ms.author: riande
 ms.date: 12/12/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/overview
-ms.openlocfilehash: bab08e75652c75b371438581d6e9f56541844a61
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: HT
+ms.openlocfilehash: b9af2068aec4326585eb2a8994399a16461db3be
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/10/2018
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Представления в ASP.NET Core MVC
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/30/2018
 
 Представления, относящиеся к определенному контроллеру, создаются в папке *Views/[имя_контроллера]*. Представления, используемые разными контроллерами, помещаются в папку *Views/Shared*. Чтобы создать представление, добавьте новый файл и присвойте ему имя связанного действия контроллера с расширением *CSHTML*. Чтобы создать представление, соответствующее действию *About* контроллера *Home*, создайте файл *About.cshtml* в папке *Views/Home*.
 
-[!code-cshtml[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
+[!code-cshtml[](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
 Разметка *Razor* начинается с символа `@`. Для выполнения операторов C# поместите код C# в [блоки кода Razor](xref:mvc/views/razor#razor-code-blocks), заключенные в фигурные скобки (`{ ... }`). Примером может служить приведенный выше оператор присвоения значения "About" свойству `ViewData["Title"]`. Для отображения значений в коде HTML можно просто ссылаться на них с помощью символа `@`. См. содержимое элементов `<h2>` и `<h3>` выше.
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 01/30/2018
 
 *HomeController.cs*
 
-[!code-csharp[Main](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]
+[!code-csharp[](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]
 
 Когда это действие возвращает управление, представление *About.cshtml*, приведенное в предыдущем разделе, отрисовывается в виде следующей веб-страницы:
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 01/30/2018
 
 Не имеет значения, возвращается ли объект `ViewResult` неявно с помощью метода `return View();` или имя представления явно передается в метод `View` с помощью `return View("<ViewName>");`. В обоих случаях обнаружение подходящего файла представления происходит в следующем порядке:
 
-   1. *Views/\[ControllerName]\[ViewName].cshtml*
+   1. *Views/\[ControllerName]/\[ViewName].cshtml*
    1. *Views/Shared/\[ViewName].cshtml*
 
 Вместо имени файла можно предоставить путь к файлу представления. При использовании абсолютного пути, начинающегося с корня приложения (может начинаться с символов "/" или "~/"), необходимо указывать расширение *CSHTML*:
