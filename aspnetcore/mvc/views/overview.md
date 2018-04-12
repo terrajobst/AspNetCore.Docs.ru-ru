@@ -11,7 +11,7 @@ ms.topic: article
 uid: mvc/views/overview
 ms.openlocfilehash: b9af2068aec4326585eb2a8994399a16461db3be
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/10/2018
 ---
@@ -64,7 +64,7 @@ ms.lasthandoff: 04/10/2018
 
 Когда это действие возвращает управление, представление *About.cshtml*, приведенное в предыдущем разделе, отрисовывается в виде следующей веб-страницы:
 
-![Страница About в браузере Edge](overview/_static/about-page.png)
+![Страница About в браузере Microsoft Edge](overview/_static/about-page.png)
 
 Вспомогательный метод `View` имеет несколько перегрузок. Вы можете дополнительно указать:
 
