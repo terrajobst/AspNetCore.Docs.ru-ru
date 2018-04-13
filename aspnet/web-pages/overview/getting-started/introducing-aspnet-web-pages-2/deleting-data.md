@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/deleting-data
-title: "Введение в ASP.NET Web Pages — удаление базы данных | Документы Microsoft"
+title: Введение в ASP.NET Web Pages — удаление базы данных | Документы Microsoft
 author: tfitzmac
-description: "Этого учебника показано, как удалить запись отдельной базы данных. Предполагается, что завершена ряда через обновление базы данных в ASP.NET Web АП..."
+description: Этого учебника показано, как удалить запись отдельной базы данных. Предполагается, что завершена ряда через обновление базы данных в ASP.NET Web АП...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/02/2018
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/deleting-data
 msc.type: authoredcontent
-ms.openlocfilehash: 5bc92b5d40e7a55dcd730d552c71031d913b277e
-ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
+ms.openlocfilehash: 146199e862cd6fa2607671d31633476b1cb67021
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---deleting-database-data"></a>Введение в ASP.NET Web Pages — удаление базы данных
 ====================
@@ -137,7 +137,7 @@ ms.lasthandoff: 01/03/2018
   
  AND  
   
-*Была* `buttonDelete` *кнопка кнопки, которая отправки формы.*
+** `buttonDelete` *Была кнопка кнопки, которая отправки формы.*
 
 Эта форма (на самом деле, эта страница) содержит только одну кнопку, поэтому дополнительные тестовые для `buttonDelete` технически не является обязательным. Тем не менее которое вы собираетесь выполнить операцию, которая приведет к окончательному удалению данных. Поэтому требуется, убедитесь, что максимально выполняемой операции, только в том случае, когда пользователь явно запрашивает его. Например предположим, позже развернуть эту страницу и добавить к нему другие кнопки. Даже в таком случае будет выполняться только в том случае, если код, который удаляет фильма `buttonDelete` была нажата кнопка.
 
@@ -172,6 +172,6 @@ ms.lasthandoff: 01/03/2018
 - [Введение в программирование веб-ASP.NET с синтаксисом Razor](../introducing-razor-syntax-c.md)
 - [Инструкция DELETE SQL](http://www.w3schools.com/sql/sql_delete.asp) на сайте W3Schools
 
->[!div class="step-by-step"]
-[Назад](updating-data.md)
-[Вперед](layouts.md)
+> [!div class="step-by-step"]
+> [Назад](updating-data.md)
+> [Вперед](layouts.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
-title: "Перенос и формирование шаблонов ASP.NET MVC 4 Entity Framework | Документы Microsoft"
+title: Перенос и формирование шаблонов ASP.NET MVC 4 Entity Framework | Документы Microsoft
 author: rick-anderson
-description: "Знакомы с методами контроллера ASP.NET MVC 4, и завершена &quot;вспомогательные методы, форм и проверки&quot; практическая работа следует иметь в виду..."
+description: Знакомы с методами контроллера ASP.NET MVC 4, и завершена &quot;вспомогательные методы, форм и проверки&quot; практическая работа следует иметь в виду...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 396859463446d95c58271c4b00fc950bcd0d539a
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 548afe1926eed49841251832d54dc213da0cb753
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>Перенос и формирование шаблонов ASP.NET MVC 4 Entity Framework
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 03/02/2018
 
 Для удобства большая часть кода, который вы планируете управлять вдоль этой лаборатории доступна как фрагменты кода Visual Studio. Чтобы установить фрагменты кода запуска **.\Source\Setup\CodeSnippets.vsi** файла.
 
-Если вы не знакомы с фрагментов кода Visual Studio и хотите узнать о способах их использования, можно ссылаться в приложение из этого документа &quot;[с помощью фрагментов кода в приложении б](#AppendixB)&quot;.
+Если вы не знакомы с фрагментов кода Visual Studio и хотите узнать о способах их использования, можно ссылаться в приложение из этого документа &quot; [с помощью фрагментов кода в приложении б](#AppendixB)&quot;.
 
 * * *
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 03/02/2018
     ![Диалоговое окно "новый проект ASP.NET MVC 4"](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image1.png "новое диалоговое окно проекта ASP.NET MVC 4")
 
     *Диалоговое окно "новый проект ASP.NET MVC 4"*
-3. В **нового проекта ASP.NET MVC 4** диалогового окна выберите **веб-приложение** шаблона и убедитесь, что **Razor** нажата **обработчик представлений**. Нажмите кнопку **ОК** для создания проекта.
+3. В **нового проекта ASP.NET MVC 4** диалогового окна выберите **веб-приложение** шаблона и убедитесь, что **Razor** нажата **обработчик представлений**. Нажмите кнопку **ОК**, чтобы создать проект.
 
     ![Новый Интернет-приложения ASP.NET MVC 4](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image2.png "новых Интернет-приложения ASP.NET MVC 4")
 
@@ -109,7 +109,9 @@ ms.lasthandoff: 03/02/2018
     (Фрагмент - кода *ASP.NET MVC 4 и Entity Framework миграции - свойства пользователя сервера Ex1*)
 
 
-    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample1.cs)]
+~~~
+[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample1.cs)]
+~~~
 6. Нажмите кнопку **сборки | Построение решения** для сохранения изменений и постройте проект.
 
     ![Сборка приложения](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image3.png "построение приложения")
@@ -118,14 +120,14 @@ ms.lasthandoff: 03/02/2018
 7. В обозревателе решений щелкните правой кнопкой мыши папку controllers и выбрать **добавить | Контроллер**.
 8. Назовите контроллер *PersonController* и завершить **параметры формирования шаблонов** со следующими значениями.
 
-    1. В **шаблона** раскрывающемся списке выберите **контроллер MVC с действиями чтения и записи и представлениями, использующий Entity Framework** параметр.
-    2. В **класс модели** раскрывающемся списке выберите **лицо** класса.
-    3. В **класс контекста данных** выберите  **&lt;новый контекст данных... &gt;**. Выберите любое имя и нажмите кнопку **ОК**.
-    4. В **представления** раскрывающемся списке, убедитесь, что **Razor** выбран.
+   1. В **шаблона** раскрывающемся списке выберите **контроллер MVC с действиями чтения и записи и представлениями, использующий Entity Framework** параметр.
+   2. В **класс модели** раскрывающемся списке выберите **лицо** класса.
+   3. В **класс контекста данных** выберите  **&lt;новый контекст данных... &gt;**. Выберите любое имя и нажмите кнопку **ОК**.
+   4. В **представления** раскрывающемся списке, убедитесь, что **Razor** выбран.
 
-    ![Добавление пользователя контроллера с помощью формирования шаблонов](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image4.png "Добавление пользователя контроллера с помощью формирования шаблонов")
+      ![Добавление пользователя контроллера с помощью формирования шаблонов](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image4.png "Добавление пользователя контроллера с помощью формирования шаблонов")
 
-    *Добавление пользователя контроллера с помощью формирования шаблонов*
+      *Добавление пользователя контроллера с помощью формирования шаблонов*
 9. Нажмите кнопку **добавить** Создание нового контроллера для пользователя с помощью формирования шаблонов. Вы создали действия контроллера, а также представления.
 
     ![После создания пользователя контроллера с помощью формирования шаблонов](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image5.png "после создания пользователя контроллера с помощью формирования шаблонов")
@@ -133,9 +135,9 @@ ms.lasthandoff: 03/02/2018
     *После создания пользователя контроллера с помощью формирования шаблонов*
 10. Откройте **PersonController** класса. Обратите внимание, что полный CRUD методы действия были созданы автоматически.
 
-    ![Внутри контроллера лица](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image6.png "внутри пользователя контроллера")
+   ![Внутри контроллера лица](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image6.png "внутри пользователя контроллера")
 
-    *Внутри контроллера Person*
+   *Внутри контроллера Person*
 
 <a id="Ex1Task2"></a>
 
@@ -195,11 +197,15 @@ ms.lasthandoff: 03/02/2018
 3. Откройте **Configuration.cs** файл в папке миграции. Найдите конструктор класса и измените **AutomaticMigrationsEnabled** значение *true*.
 
 
-    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample3.cs)]
+~~~
+[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample3.cs)]
+~~~
 4. Откройте класс Person и добавьте атрибут для отчества данного лица. Модель изменяется с помощью этого нового атрибута.
 
 
-    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample4.cs)]
+~~~
+[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample4.cs)]
+~~~
 5. Выберите **сборки | Построение решения** меню для построения приложения.
 
     ![Сборка приложения](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image13.png "построение приложения")
@@ -247,9 +253,9 @@ ms.lasthandoff: 03/02/2018
     *Обновление контроллера*
 10. Нажмите кнопку **Добавить**. Выберите значения **перезаписать PersonController.cs** и **перезаписать связанные представления** и нажмите кнопку **ОК**.
 
-    ![Добавление перезаписи контроллера](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image19.png)
+   ![Добавление перезаписи контроллера](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image19.png)
 
-    *Обновление контроллера*
+   *Обновление контроллера*
 
 <a id="Ex1Task4"></a>
 
@@ -280,9 +286,9 @@ ms.lasthandoff: 03/02/2018
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>Приложение а. Установка Visual Studio Express 2012 для Web
 
-Можно установить **Microsoft Visual Studio Express 2012 для Web** или другой &quot;Express&quot; версию, используя  **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)** . Следующие инструкции описывают действия, необходимые для установки *Visual studio Express 2012 для Web* с помощью *Microsoft Web Platform Installer*.
+Можно установить **Microsoft Visual Studio Express 2012 для Web** или другой &quot;Express&quot; версию, используя **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. Следующие инструкции описывают действия, необходимые для установки *Visual studio Express 2012 для Web* с помощью *Microsoft Web Platform Installer*.
 
-1. Последовательно выберите пункты [ [https://go.microsoft.com/? linkid = 9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169). Кроме того, если вы уже установили установщика веб-платформы, можно открыть его и выполните поиск продукта &quot; *Visual Studio Express 2012 для Web с пакетом Windows Azure SDK*&quot;.
+1. Последовательно выберите пункты [ [ https://go.microsoft.com/? linkid = 9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169). Кроме того, если вы уже установили установщика веб-платформы, можно открыть его и выполните поиск продукта &quot; <em>Visual Studio Express 2012 для Web с пакетом Windows Azure SDK</em>&quot;.
 2. Щелкните **установить сейчас**. Если у вас **Web Platform Installer** вы будете перенаправлены, чтобы загрузить и установить ее сначала.
 3. Один раз **Web Platform Installer** открыто, нажмите кнопку **установить** для запуска программы установки.
 
