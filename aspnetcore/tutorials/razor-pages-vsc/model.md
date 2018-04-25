@@ -23,7 +23,7 @@ ms.lasthandoff: 01/29/2018
 
 * Добавьте папку с именем *Models*.
 * Добавьте класс в папку *Models* с именем *Movie.cs*.
-* Добавьте в файл *Movie.cs* следующий код:
+* Добавьте в файл *Models/Movie.cs* следующий код:
 
 [!INCLUDE[model 2](../../includes/RP/model2.md)]
 [!INCLUDE[model 2a](../../includes/RP/model2a.md)]
