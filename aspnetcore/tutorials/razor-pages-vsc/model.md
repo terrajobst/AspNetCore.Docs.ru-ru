@@ -72,8 +72,10 @@ ms.lasthandoff: 01/29/2018
 
 Выйдите из Visual Studio и выполните команду еще раз.
 
-[!INCLUDE[model 4](../../includes/RP/model4.md)] В следующем учебнике рассматриваются файлы, созданные с помощью формирования шаблонов.
+[!INCLUDE[model 4](../../includes/RP/model4.md)] 
 
->[!div class="step-by-step"]
-[Назад: Начало работы](xref:tutorials/razor-pages-vsc/razor-pages-start)
-[Далее: Сформированные страницы Razor Pages](xref:tutorials/razor-pages/page)
+В следующем учебнике рассматриваются файлы, созданные с помощью формирования шаблонов.
+
+> [!div class="step-by-step"]
+> [Назад: Начало работы](xref:tutorials/razor-pages-vsc/razor-pages-start)
+> [Далее: Сформированные страницы Razor Pages](xref:tutorials/razor-pages-vsc/page)
