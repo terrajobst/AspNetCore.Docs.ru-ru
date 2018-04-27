@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/spa-services
-ms.openlocfilehash: 05b0d7f31e167e620f2d168109ffd907ba120a49
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: fd893b7c62f38442bf5633a956786983763e6f9f
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>Используйте JavaScriptServices для создания приложений на одной странице в ASP.NET Core
 
@@ -74,7 +74,7 @@ SpaServices предоставляет полезные инфраструкту
 
   * Если вы используете Windows с помощью Visual Studio 2017 г., выбрав установлен пакет SDK **кросс платформенной разработки .NET Core** рабочей нагрузки.
 
-* [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) NuGet package
+* [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) пакета NuGet
 
 <a name="server-prerendering"></a>
 
@@ -166,7 +166,7 @@ ASP.NET Core [вспомогательных функций тегов](xref:mvc
 
 ## <a name="hot-module-replacement"></a>Модуль горячей замены
 
-Можно представить в Webpack [горячей замены модуля](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html) компоненте (HMR) с развитием [Webpack разработки по промежуточного слоя](#webpack-dev-middleware). HMR представляет те же преимущества, но дополнительно упрощает рабочего процесса разработки автоматически обновит содержимое страницы после компиляции изменений. Не следует путать с обновление браузера, который может повлиять на текущее состояние в памяти и SPA сеанс отладки. Нет активную связь между службой Webpack разработки по промежуточного слоя и браузер, это означает, что изменения передаются в браузер.
+Можно представить в Webpack [горячей замены модуля](https://webpack.js.org/concepts/hot-module-replacement/) компоненте (HMR) с развитием [Webpack разработки по промежуточного слоя](#webpack-dev-middleware). HMR представляет те же преимущества, но дополнительно упрощает рабочего процесса разработки автоматически обновит содержимое страницы после компиляции изменений. Не следует путать с обновление браузера, который может повлиять на текущее состояние в памяти и SPA сеанс отладки. Нет активную связь между службой Webpack разработки по промежуточного слоя и браузер, это означает, что изменения передаются в браузер.
 
 ### <a name="prerequisites"></a>Предварительные требования
 
@@ -226,7 +226,7 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
 
 ## <a name="creating-a-new-project"></a>Создание нового проекта
 
-JavaScriptServices предоставляет шаблоны предварительно настроенное приложение. SpaServices используется в этих шаблонов в сочетании с помощью различных платформ и библиотек, например угловая, Aurelia, Knockout, реагирование на них и Vue.
+JavaScriptServices предоставляет шаблоны предварительно настроенное приложение. SpaServices используется в этих шаблонов в сочетании с помощью различных платформ и библиотек, например угловая, реагирование на них и Redux.
 
 Эти шаблоны может быть выполнена с помощью .NET Core CLI, выполнив следующую команду:
 
@@ -239,11 +239,8 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 | Шаблоны                                 | Краткое имя | Язык | Теги        |
 |:------------------------------------------|:-----------|:---------|:------------|
 | Ядро ASP.NET MVC с углового             | angular    | [C#]     | Web/MVC/SPA |
-| Ядро ASP.NET MVC с Aurelia             | aurelia    | [C#]     | Web/MVC/SPA |
-| Ядро ASP.NET MVC с Knockout.js         | маскирования   | [C#]     | Web/MVC/SPA |
 | Ядро ASP.NET MVC с React.js            | react      | [C#]     | Web/MVC/SPA |
 | MVC ASP.NET Core с React.js и локализации  | reactredux | [C#]     | Web/MVC/SPA |
-| Ядро ASP.NET MVC с Vue.js              | VUE        | [C#]     | Web/MVC/SPA | 
 
 Чтобы создать новый проект с помощью одного из шаблонов SPA, включают **короткое имя** шаблона в [dotnet новый](/dotnet/core/tools/dotnet-new) команды. Следующая команда создает углового приложения с ASP.NET MVC Core настроен на стороне сервера:
 
@@ -295,7 +292,7 @@ dotnet run
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-Откройте окно командной строки, в корне проекта и выполните следующую команду:
+Откройте командную строку в *ClientApp* каталога. Выполните следующую команду:
 
 ```console
 npm test

@@ -9,19 +9,27 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 3a19cec2ce4387ca44ca120f031a072269b93454
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 300feb42dff7f1bb86bab6fedf3f657273ced8be
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/10/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Настройка защиты данных ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-При инициализации системы защиты данных, оно применяется [параметры по умолчанию](xref:security/data-protection/configuration/default-settings) в зависимости от рабочей среды. Эти параметры обычно подходят для приложений, выполняющихся на одном компьютере. Существуют случаи, когда разработчик может потребоваться изменить параметры по умолчанию, возможно, потому что их приложения распределены между несколькими компьютерами или соответствия требованиям. В этих сценариях в системе защиты данных предлагает широкие возможности настройки API.
+При инициализации системы защиты данных, оно применяется [параметры по умолчанию](xref:security/data-protection/configuration/default-settings) в зависимости от рабочей среды. Эти параметры обычно подходят для приложений, выполняющихся на одном компьютере. Существуют случаи, когда разработчик может потребоваться изменить параметры по умолчанию:
 
-Является методом расширения [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) , возвращающий [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` Предоставляет методы расширения, что можно соединить в цепочку вместе для настройки защиты данных параметров.
+* Приложение распределены между несколькими компьютерами.
+* Для обеспечения соответствия.
+
+В этих сценариях в системе защиты данных предлагает широкие возможности настройки API.
+
+> [!WARNING]
+> Как и файлы конфигурации, кольцо ключ защиты данных должны быть защищены с помощью соответствующих разрешений. Можно выбрать для шифрования ключей при хранении, но это не помешает злоумышленники создание новых разделов. Следовательно это повлияет на безопасность приложения. Место хранения, настроенной с Data Protection должен иметь доступ к нему ограничением в состав самого приложения, аналогично тому, как можно будет защитить файлы конфигурации. Например если вы решили хранить кольцо ваш ключ на диске, используйте разрешения файловой системы. Убедитесь, идентификатор, под которой запущено приложение чтения, записи и создать доступ к этому каталогу. При использовании табличного хранилища Azure, веб-приложения должен иметь возможность читать, записывать и создание новых записей в хранилище таблиц и т. д.
+>
+> Метод расширения [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) возвращает [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` Предоставляет методы расширения, что можно соединить в цепочку вместе для настройки защиты данных параметров.
 
 ## <a name="persistkeystofilesystem"></a>PersistKeysToFileSystem
 

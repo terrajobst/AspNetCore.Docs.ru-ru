@@ -11,17 +11,17 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: a243eeb982ba581e237263c4e31e130d634aff0e
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: fdb74b0eb74ce7f387f49a0b25ceebd3fc389da9
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/26/2018
 ---
 <a name="call-a-web-api-from-a-net-client-c"></a>Вызов веб-API из клиента .NET (C#)
 ====================
 по [Mike Wasson](https://github.com/MikeWasson) и [Рик Андерсон](https://twitter.com/RickAndMSFT)
 
-[Загрузка завершенного проекта](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample)
+[Загрузка завершенного проекта](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample). [Указания по скачиванию](/aspnet/core/tutorials/#how-to-download-a-sample). 
 
 Этого учебника показано, как вызывать из приложения .NET, веб-API с помощью [System.Net.Http.HttpClient.](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)
 
@@ -29,10 +29,10 @@ ms.lasthandoff: 04/06/2018
 
 | Действие | Метод HTTP | Относительный URI |
 | --- | --- | --- |
-| Получение продукта по Идентификатору | GET | /api/products/*id* |
+| Получение продукта по Идентификатору | GET | /API/продукты/*идентификатор* |
 | Создать продукт | ПОМЕСТИТЬ | / api/продуктов |
-| Обновления продукта | PUT | /api/products/*id* |
-| Удаление продукта | DELETE | /api/products/*id* |
+| Обновления продукта | PUT | /API/продукты/*идентификатор* |
+| Удаление продукта | DELETE | /API/продукты/*идентификатор* |
 
 Чтобы узнать, как реализовать этот интерфейс API с веб-API ASP.NET, в разделе [Создание веб-API, поддерживает операции CRUD](xref:web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 ).
@@ -167,7 +167,7 @@ resp.Content.ReadAsAsync<IEnumerable<Product>>(formatters);
 
 Для проверки клиентского приложения:
 
-1. [Загрузить](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) и запустить приложение сервера. [Указания по скачиванию](https://docs.microsoft.com/aspnet/core/tutorials/#how-to-download-a-sample). Убедитесь, что работа приложения сервера. Для exaxmple `http://localhost:64195/api/products` должен возвращать список продуктов.
+1. [Загрузить](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) и запустить приложение сервера. [Указания по скачиванию](/aspnet/core/tutorials/#how-to-download-a-sample). Убедитесь, что работа приложения сервера. Для exaxmple `http://localhost:64195/api/products` должен возвращать список продуктов.
 2. Задайте базовый универсальный код Ресурса для HTTP-запросов. Измените номер порта к порту, используемому в приложении сервера.
     [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet5&highlight=2)]
 

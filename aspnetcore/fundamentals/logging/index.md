@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/logging/index
-ms.openlocfilehash: 4cb2cf5b22ed9f5b84638b5f8c4b07d99a17ce1c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: aab1190467c13ae121625c377d0908eac2fe8d95
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="logging-in-aspnet-core"></a>Ведение журналов в ASP.NET Core
 
@@ -487,37 +487,6 @@ loggerFactory.AddEventSourceLogger()
 Чтобы настроить PerfView для сбора событий, регистрируемых этим поставщиком, добавьте строку `*Microsoft-Extensions-Logging` в список **Дополнительные поставщики**. (Не пропустите звездочку в начале строки.)
 
 ![Дополнительные поставщики Perfview](index/_static/perfview-additional-providers.png)
-
-Для записи событий на сервере Nano Server следует выполнить дополнительную настройку:
-
-* Подключите PowerShell для удаленной работы к Nano Server:
-
-  ```powershell
-  Enter-PSSession [name]
-  ```
-
-* Создайте сеанс трассировки событий Windows:
-
-  ```powershell
-  New-EtwTraceSession -Name "MyAppTrace" -LocalFilePath C:\trace.etl
-  ```
-
-* Добавьте поставщики трассировки событий Windows для [CLR](/dotnet/framework/performance/clr-etw-providers), ASP.NET Core и другие, если это необходимо. Поставщик ASP.NET Core имеет GUID `3ac73b97-af73-50e9-0822-5da4367920d0`. 
-
-  ```powershell
-  Add-EtwTraceProvider -Guid "{e13c0d23-ccbc-4e12-931b-d9cc2eee27e4}" -SessionName MyAppTrace
-  Add-EtwTraceProvider -Guid "{3ac73b97-af73-50e9-0822-5da4367920d0}" -SessionName MyAppTrace
-  ```
-
-* Запустите сайт и выполните нужные действия, для которых требуется получить сведения трассировки.
-
-* Остановите сеанс трассировки после окончания сбора данных:
-
-  ```powershell
-  Stop-EtwTraceSession -Name "MyAppTrace"
-  ```
-
-Итоговый файл *C:\trace.etl* можно проанализировать в PerfView и других выпусках Windows.
 
 <a id="eventlog"></a>
 ### <a name="the-windows-eventlog-provider"></a>Поставщик Windows EventLog

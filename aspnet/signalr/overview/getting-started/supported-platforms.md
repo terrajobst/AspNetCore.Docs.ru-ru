@@ -1,22 +1,22 @@
 ---
 uid: signalr/overview/getting-started/supported-platforms
-title: "Поддерживаемые платформы | Документы Microsoft"
+title: Поддерживаемые платформы | Документы Microsoft
 author: pfletcher
-description: "В этой статье описывается, какие клиенты и серверы поддерживаются с SignalR."
+description: В этой статье описывается, какие клиенты и серверы поддерживаются с SignalR.
 ms.author: aspnetcontent
 manager: wpickett
-ms.date: 06/10/2014
+ms.date: 04/18/2018
 ms.topic: article
 ms.assetid: eac31beb-0f46-4afa-9def-e80904dea4f0
 ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/supported-platforms
 msc.type: authoredcontent
-ms.openlocfilehash: 1379b9fb638f67896d88d7aa4312d95280ef7318
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4d3dc028ff67d0a9cfa03627b5f98f6541ecfff8
+ms.sourcegitcommit: 7c8fd9b7445cd77eb7f7d774bfd120c26f3b5d84
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 <a name="supported-platforms"></a>Поддерживаемые платформы
 ====================
@@ -37,8 +37,9 @@ SignalR поддерживается в разных конфигурации с
 
 ### <a name="supported-server-operating-systems"></a>Поддерживаемые серверные операционные системы
 
-Компонент сервера SignalR можно поместить в следующих операционных систем сервера или клиента. Обратите внимание, что для SignalR, использовать WebSocket, Windows Server 2012 или Windows 8 необходимые (WebSocket можно использовать на Windows Azure веб-сайтов, так как имеет значение узла версии .NET framework 4.5 и веб-сокеты включено в конфигурации на страницу).
+Компонент сервера SignalR можно поместить в следующих операционных систем сервера или клиента. Обратите внимание, что для SignalR, использовать WebSocket, Windows Server 2012, Windows Server 2016 или Windows 8 требуется (WebSocket можно использовать в Windows Azure веб-сайтов, пока равным сайта версии .NET framework 4.5 и веб-сокеты включен на сайте Страница конфигурации).
 
+- Windows Server 2016
 - Windows Server 2012
 - Windows Server 2008 r2
 - Windows 10
@@ -127,10 +128,10 @@ SignalR может использоваться в приложениях для
 
 | Transport | Магазин Windows и .NET | Магазин Windows / JavaScript | Windows Phone / IE | Windows Phone и .NET |
 | --- | --- | --- | --- | --- |
-| Протокол WebSocket | Н/Д | Win8+ | 8+ | Н/Д |
-| Рамки | Н/Д | Win8+ | 7.5+ | Н/Д |
-| Сервер отправил события | Win8+ | Н/Д | Н/Д | 8+ |
-| Долго опрашивающего | Win8+ | Win8+ | 7.5+ | 8+ |
+| Протокол WebSocket | Н/Д | Win8 + | 8+ | Н/Д |
+| Рамки | Н/Д | Win8 + | 7.5+ | Н/Д |
+| Сервер отправил события | Win8 + | Н/Д | Н/Д | 8+ |
+| Долго опрашивающего | Win8 + | Win8 + | 7.5+ | 8+ |
 
 <a id="updates"></a>
 

@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: fb833ef8797ea7851cbaf53bb5681df248d07a49
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 1500f026c245f80de4120d6db4901cb117552966
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Общий Справочник ошибок для службы приложений Azure и IIS с ASP.NET Core
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 04/06/2018
 
 Устранение неполадок:
 
-* Если при установке пакета размещения сервера у системы нет доступа к Интернету, это исключение возникает, когда у установщика нет возможности получить *Распространяемый компонент Microsoft Visual C++ 2015*. Получить установщика из [центра загрузки Майкрософт](https://www.microsoft.com/download/details.aspx?id=53840). Если программа установки завершается ошибкой, сервер может не получить среды выполнения .NET Core, необходимые для размещения развертывания зависит от framework (дискеты). Если размещение системой защиты Фиксированных, убедитесь, что среда выполнения установлен в программах &amp; функции. В случае необходимости получения установщика среды выполнения из [всех загрузок .NET](https://www.microsoft.com/net/download/all). После установки среды выполнения перезагрузите систему или перезапустите службы IIS, выполнив в командной строке команду **net stop was /y**, а затем — команду **net start w3svc**.
+* Если система не имеет доступа к Интернету при установке пакета размещения, это исключение возникает, когда программа установки будет запрещено получение *Visual C++ 2015 распространяемый компонент Microsoft*. Получить установщика из [центра загрузки Майкрософт](https://www.microsoft.com/download/details.aspx?id=53840). Если программа установки завершается ошибкой, сервер может не получить среды выполнения .NET Core, необходимые для размещения развертывания зависит от framework (дискеты). Если размещение системой защиты Фиксированных, убедитесь, что среда выполнения установлен в программах &amp; функции. В случае необходимости получения установщика среды выполнения из [всех загрузок .NET](https://www.microsoft.com/net/download/all). После установки среды выполнения перезагрузите систему или перезапустите службы IIS, выполнив в командной строке команду **net stop was /y**, а затем — команду **net start w3svc**.
 
 ## <a name="os-upgrade-removed-the-32-bit-aspnet-core-module"></a>При обновлении ОС был удален 32-разрядный модуль ASP.NET Core
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 04/06/2018
 
 Устранение неполадок:
 
-* Не относящиеся к ОС файлы в каталоге **C:\Windows\SysWOW64\inetsrv** не сохраняются при обновлении ОС. Если модуль ASP.NET Core установлена до обновления операционной системы и затем любой пул приложений запускается в 32-разрядном режиме после обновления операционной системы, при возникновении этой проблемы. После обновления ОС восстановите модуль ASP.NET Core. См. раздел [Установка пакета размещения .NET Core для Windows Server](xref:host-and-deploy/iis/index#install-the-net-core-windows-server-hosting-bundle). Выберите **восстановления** при запуске программы установки.
+* Не относящиеся к ОС файлы в каталоге **C:\Windows\SysWOW64\inetsrv** не сохраняются при обновлении ОС. Если модуль ASP.NET Core установлена до обновления операционной системы и затем любой пул приложений запускается в 32-разрядном режиме после обновления операционной системы, при возникновении этой проблемы. После обновления ОС восстановите модуль ASP.NET Core. В разделе [установки пакета .NET Core размещение](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle). Выберите **восстановления** при запуске программы установки.
 
 ## <a name="platform-conflicts-with-rid"></a>Конфликты платформы с относительным идентификатором
 
@@ -114,11 +114,11 @@ ms.lasthandoff: 04/06/2018
 
 * Убедитесь, что включена ролью. См. раздел [Конфигурация IIS](xref:host-and-deploy/iis/index#iis-configuration).
 
-* На странице **Программы и компоненты** убедитесь в том, что установлен **модуль Microsoft ASP.NET Core**. Если **модуль Microsoft ASP.NET Core** отсутствует в списке установленных программ, установите его. См. раздел [Установка пакета размещения .NET Core для Windows Server](xref:host-and-deploy/iis/index#install-the-net-core-windows-server-hosting-bundle).
+* На странице **Программы и компоненты** убедитесь в том, что установлен **модуль Microsoft ASP.NET Core**. Если **модуль Microsoft ASP.NET Core** отсутствует в списке установленных программ, установите его. В разделе [установить .NET Core, размещение пакета](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
 * Убедитесь, что **пула приложений** > **модель процесса** > **удостоверение** равно **ApplicationPoolIdentity** или пользовательское удостоверение имеет правильные разрешения на доступ к папке развертывания приложения.
 
-## <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a>Неправильное значение processPath, отсутствует переменная PATH, пакет размещения не установлен, система или службы IIS не перезапущены, не установлен распространяемый компонент VC++ либо нарушены права доступа к dotnet.exe
+## <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a>Неверный processPath, отсутствующую переменную PATH, размещение пакета не установлен, системы и IIS не перезапускается, VC ++ распространяемый пакет не установлен или dotnet.exe нарушение прав доступа
 
 * **Браузер:** ошибка HTTP 502.5 — сбой процесса
 
@@ -138,7 +138,7 @@ ms.lasthandoff: 04/06/2018
 
 * Системой защиты Фиксированных был развернут и .NET Core устанавливается без перезапуска IIS. Перезагрузите сервер или перезапустите службы IIS, выполнив в командной строке команду **net stop was /y**, а затем — команду **net start w3svc**.
 
-* Системой защиты Фиксированных развернуто без установки среды выполнения .NET Core на хост-системы. Если не был установлен среды выполнения .NET Core, запустите **.NET Core Windows Server, где размещены пакет установщика** в системе. См. раздел [Установка пакета размещения .NET Core для Windows Server](xref:host-and-deploy/iis/index#install-the-net-core-windows-server-hosting-bundle). При попытке установить среду выполнения .NET Core на компьютере без подключения к Интернету, получить среду выполнения из [всех загрузок .NET](https://www.microsoft.com/net/download/all) и запустите установщик размещения пакета для установки модуля ASP.NET Core. Завершите установку, перезагрузив систему или перезапустив службы IIS. Для этого выполните в командной строке команду **net stop was /y**, а затем — команду **net start w3svc**.
+* Системой защиты Фиксированных развернуто без установки среды выполнения .NET Core на хост-системы. Если не был установлен среды выполнения .NET Core, запустите **.NET Core размещение пакета установщика** в системе. В разделе [установить .NET Core, размещение пакета](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle). При попытке установить среду выполнения .NET Core на компьютере без подключения к Интернету, получить среду выполнения из [всех загрузок .NET](https://www.microsoft.com/net/download/all) и запустите установщик размещение пакета для установки модуля ASP.NET Core. Завершите установку, перезагрузив систему или перезапустив службы IIS. Для этого выполните в командной строке команду **net stop was /y**, а затем — команду **net start w3svc**.
 
 * Системой защиты Фиксированных был развернут и *Visual C++ 2015 распространяемый компонент Microsoft (x64)* не установлен в системе. Получить установщика из [центра загрузки Майкрософт](https://www.microsoft.com/download/details.aspx?id=53840).
 
@@ -216,7 +216,7 @@ ms.lasthandoff: 04/06/2018
 
 * **Обозреватель:** обычно отвечает приложение.
 
-* **Application Log:** Warning: Could not create stdoutLogFile \\?\C:\_apps\app_folder\bin\Release\netcoreapp2.0\win10-x64\publish\logs\path_doesnt_exist\stdout_8748_201831835937.log, ErrorCode = -2147024893.
+* **Журнал приложения:** предупреждение: не удалось создать stdoutLogFile \\? \C:\_apps\app_folder\bin\Release\netcoreapp2.0\win10-x64\publish\logs\path_doesnt_exist\stdout_8748_201831835937.log, код ошибки = - 2147024893.
 
 * **Журнал модуля ASP.NET Core:** файл журнала не создан
 

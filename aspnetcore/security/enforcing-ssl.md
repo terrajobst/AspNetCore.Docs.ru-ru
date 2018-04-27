@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/enforcing-ssl
-ms.openlocfilehash: 2ebb975e1ea17698cee13ca00d3f5df4a5135e38
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 0509bebe430c6ba213031a2cb7cb91bb7a39566d
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="enforce-https-in-an-aspnet-core"></a>Применять HTTPS в ASP.NET Core
 
@@ -30,7 +30,31 @@ ms.lasthandoff: 03/22/2018
 >* Прослушивает HTTP.
 >* Закрывает соединение с кодом состояния 400 (неправильный запрос) и обслуживает запрос.
 
+<a name="require"></a>
 ## <a name="require-https"></a>Требовать использования протокола HTTPS
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!INCLUDE[](~/includes/2.1.md)]
+
+Корпорация Майкрософт рекомендует всем ASP.NET Core веб-приложений вызов `UseHttpsRedirection` для перенаправления всех запросов HTTP на HTTPS. Если `UseHsts` вызывается в приложении, он должен быть вызван перед `UseHttpsRedirection`.
+
+Следующий код вызывает `UseHttpsRedirection` в `Startup` класса:
+
+[!code-csharp[sample](enforcing-ssl/sample/Startup.cs?name=snippet1&highlight=13)]
+
+
+В приведенном ниже коде
+
+[!code-csharp[sample](enforcing-ssl/sample/Startup.cs?name=snippet2&highlight=14-99)]
+
+* Наборы `RedirectStatusCode`.
+* Задает 5001 HTTPS-порт.
+
+::: moniker-end
+
+
+::: moniker range="< aspnetcore-2.1"
 
 [RequireHttpsAttribute](/dotnet/api/Microsoft.AspNetCore.Mvc.RequireHttpsAttribute) используется для обязательного использования протокола HTTPS. `[RequireHttpsAttribute]` можно дополнить контроллеров или методы или могут быть применены глобально. Чтобы применить атрибут глобально, добавьте следующий код в `ConfigureServices` в `Startup`:
 
@@ -43,3 +67,63 @@ ms.lasthandoff: 03/22/2018
 Дополнительные сведения см. в разделе [по промежуточного слоя перезаписи URL-адрес](xref:fundamentals/url-rewriting).
 
 Требования HTTPS глобально (`options.Filters.Add(new RequireHttpsAttribute());`) является рекомендации по безопасности. Применение `[RequireHttps]` атрибут ко всем страницам контроллеры и Razor не считается защищено настолько, насколько требования HTTPS глобально. Не может гарантировать `[RequireHttps]` атрибут при добавлении новых контроллеров и страниц Razor.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+<a name="hsts"></a>
+## <a name="http-strict-transport-security-protocol-hsts"></a>Безопасность Strict транспортный протокол HTTP (HSTS)
+
+На [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [строгой безопасности транспорта (HSTS) HTTP](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) — расширение согласиться на использование безопасности, определяемый веб-приложения с помощью специальных заголовка. Когда этот заголовок получает поддерживаемого браузера браузера позволит обмен данными с передачей по протоколу HTTP к указанному домену и вместо этого будет отправлять все связи по протоколу HTTPS. Он также препятствует щелкните HTTPS через запросы в браузерах.
+
+ASP.NET Core Предварительная версия 1 инструментов 2.1 или более поздней версии реализует HSTS с `UseHsts` метода расширения. Следующий код вызывает `UseHsts` при это приложение не в [режим разработки](xref:fundamentals/environments):
+
+[!code-csharp[sample](enforcing-ssl/sample/Startup.cs?name=snippet1&highlight=10)]
+
+`UseHsts` не рекомендуется при разработке решений, так как заголовок HSTS высокой может быть кэширован в браузерах. По умолчанию UseHsts исключает локальный петлевой адрес.
+
+В приведенном ниже коде
+
+[!code-csharp[sample](enforcing-ssl/sample/Startup.cs?name=snippet2&highlight=5-12)]
+
+* Задает параметр предварительной загрузки заголовка безопасности Strict-транспорта. Предварительная загрузка не частью [спецификации RFC HSTS](https://tools.ietf.org/html/rfc6797), но поддерживается для веб-браузера для предварительной загрузки HSTS узлов на установку. Дополнительные сведения см. в разделе [https://hstspreload.org/](https://hstspreload.org/).
+* Включает [includeSubDomain](https://tools.ietf.org/html/rfc6797#section-6.1.2), который применяет политику HSTS дочерних узлов. 
+* Явно задает для параметра max-age заголовка безопасности для транспорта Strict до 60 дней. Если свойство не задано, по умолчанию используется значение 30 дней. В разделе [директива max-age](https://tools.ietf.org/html/rfc6797#section-6.1.1) для получения дополнительной информации.
+* Добавляет `example.com` в список узлов для исключения.
+
+`UseHsts` исключает замыкания на себя следующие узлы:
+
+* `localhost` : IPv4-адрес замыкания на себя.
+* `127.0.0.1` : IPv4-адрес замыкания на себя.
+* `[::1]` : Петлевой адрес IPv6.
+
+Предыдущий пример демонстрирует добавление дополнительных узлов.
+::: moniker-end
+
+
+::: moniker range=">= aspnetcore-2.1"
+<a name="https"></a>
+## <a name="opt-out-of-https-on-project-creation"></a>Отказаться от HTTPS на создания проекта
+
+Включить ASP.NET Core 2.1 и более поздних версий шаблонов веб-приложений (из Visual Studio или в командной строке dotnet) [перенаправления HTTPS](#require) и [HSTS](#hsts). Для развертываний, не требующие HTTPS вы можете отказаться от HTTPS. Например некоторые серверных служб, где HTTPS обрабатывается извне на границе с помощью протокола HTTPS на каждом узле не требуется.
+
+Чтобы отказаться от HTTPS:
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+
+Снимите флажок **настроить для использования протокола HTTPS** флажок.
+
+![Схема сущностей](enforcing-ssl/_static/out.png)
+
+
+#   <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli) 
+
+Использовать параметр `--no-https`. Пример
+
+```cli
+dotnet new razor --no-https
+```
+
+------
+
+::: moniker-end
