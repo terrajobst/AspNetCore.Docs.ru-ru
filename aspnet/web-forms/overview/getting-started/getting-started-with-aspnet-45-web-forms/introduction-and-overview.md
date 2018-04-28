@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 572b263a5f968b473457771a1dd4075910218c01
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: a3527b54d1936bc14e32a1828ac3a2be625107ba
+ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>Приступая к работе с 4,5 веб-форм ASP.NET и Visual Studio 2013
 ====================
@@ -179,7 +179,7 @@ PayPal подтвердит вашей учетной записи, порядо
 
 Загрузка <em>.zip</em> файла. Чтобы просмотреть завершенный проект, создающем этого учебника ряда, найдите и выберите <em>C#</em>папки в <em>.zip</em> файла. Сохранить <em>C#</em> folderto папки, предназначенный для работы с проектами Visual Studio 2013. По умолчанию папку Проекты Visual Studio 2013 выглядит следующим образом:
 
-<strong>C:\Users\</strong><strong><em>&lt;username&gt;</em></strong><strong>\Documents\Visual Studio 2013\Projects</strong>
+<strong>C:\Users&#92;</strong><strong><em>&lt;username&gt;</em></strong><strong>\Documents\Visual Studio 2013\Projects</strong>
 
 Переименуйте ***C#*** папки ***WingtipToys***.
 
