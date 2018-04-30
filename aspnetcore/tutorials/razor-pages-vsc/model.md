@@ -1,19 +1,19 @@
 ---
-title: "Добавление модели в приложение Razor Pages с помощью Visual Studio для Mac"
+title: Добавление модели в приложение Razor Pages с помощью Visual Studio для Mac
 author: rick-anderson
-description: "Добавление модели в приложение Razor Pages в ASP.NET Core с помощью Visual Studio для Mac"
-ms.author: riande
+description: Добавление модели в приложение Razor Pages в ASP.NET Core с помощью Visual Studio для Mac
 manager: wpickett
+ms.author: riande
 ms.date: 08/27/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages-vsc/model
-ms.openlocfilehash: 704c13e60db2d80e24626b2dea25b64086dafda4
-ms.sourcegitcommit: 18ff1fdaa3e1ae204ed6a2ba9351ce8cf1371c85
+ms.openlocfilehash: 9600392b47fb8b1dded06faefaff1bf87d67af4e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="adding-a-model-to-a-razor-pages-app-in-aspnet-core-with-visual-studio-code"></a>Добавление модели в приложение Razor Pages в ASP.NET Core с помощью Visual Studio Code
 
@@ -76,4 +76,4 @@ ms.lasthandoff: 01/29/2018
 
 >[!div class="step-by-step"]
 [Назад: Начало работы](xref:tutorials/razor-pages-vsc/razor-pages-start)
-[Далее: Сформированные страницы Razor Pages](xref:tutorials/razor-pages/page)
+[Далее: Сформированные страницы Razor Pages](xref:tutorials/razor-pages-vsc/page)
