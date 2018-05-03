@@ -1,22 +1,25 @@
 ---
 title: ASP.NET Core SignalR
 author: rachelappel
-description: Обнаружение разделы, относящиеся к ASP.NET Core SignalR.
+description: Разделы, относящиеся к ASP.NET Core SignalR.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
-ms.date: 03/29/2018
+ms.date: 04/20/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/index
-ms.openlocfilehash: 5ec8d8d1ff7b49281857b0868c289dccf632736d
-ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
-ms.translationtype: MT
+ms.openlocfilehash: 5918b25f595bc545b020df7f020eee592c6045e7
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/26/2018
 ---
-# <a name="aspnet-core-signalr"></a><span data-ttu-id="531cc-103">ASP.NET Core SignalR</span><span class="sxs-lookup"><span data-stu-id="531cc-103">ASP.NET Core SignalR</span></span>
+# <a name="aspnet-core-signalr"></a><span data-ttu-id="1fd8a-103">ASP.NET Core SignalR</span><span class="sxs-lookup"><span data-stu-id="1fd8a-103">ASP.NET Core SignalR</span></span>
 
-* [<span data-ttu-id="531cc-104">Начало работы с SignalR для ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="531cc-104">Get started with SignalR for ASP.NET Core</span></span>](xref:signalr/get-started)
-* [<span data-ttu-id="531cc-105">Общие сведения о SignalR для ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="531cc-105">Introduction to SignalR for ASP.NET Core</span></span>](xref:signalr/introduction)
-* [<span data-ttu-id="531cc-106">Концентраторы SignalR</span><span class="sxs-lookup"><span data-stu-id="531cc-106">SignalR Hubs</span></span>](xref:signalr/hubs)
+* [<span data-ttu-id="1fd8a-104">Начало работы</span><span class="sxs-lookup"><span data-stu-id="1fd8a-104">Get started</span></span>](xref:signalr/get-started)
+* [<span data-ttu-id="1fd8a-105">Введение</span><span class="sxs-lookup"><span data-stu-id="1fd8a-105">Introduction</span></span>](xref:signalr/introduction)
+* [<span data-ttu-id="1fd8a-106">Центры</span><span class="sxs-lookup"><span data-stu-id="1fd8a-106">Hubs</span></span>](xref:signalr/hubs)
+* [<span data-ttu-id="1fd8a-107">Клиент JavaScript</span><span class="sxs-lookup"><span data-stu-id="1fd8a-107">JavaScript client</span></span>](xref:signalr/javascript-client)
+* [<span data-ttu-id="1fd8a-108">Поддерживаемые платформы</span><span class="sxs-lookup"><span data-stu-id="1fd8a-108">Supported platforms</span></span>](xref:signalr/supported-platforms)
