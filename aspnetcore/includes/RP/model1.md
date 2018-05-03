@@ -4,6 +4,6 @@
 
 Создаваемые вами классы моделей называются классами POCO (от "plain old CLR objects" — старые добрые объекты CLR), так как они не зависят от EF Core. Эти классы определяют свойства данных, которые хранятся в базе данных.
 
-Работая с этим учебников, вы напишете классы моделей, а затем EF Core создаст базу данных. Другой вариант, который здесь не рассматривается, состоит в [создание классов моделей из существующей базы данных](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db).
+Работая с этим учебником, вы напишете классы моделей, а затем EF Core создаст базу данных. Другой вариант, который здесь не рассматривается, состоит в [создании классов моделей из существующей базы данных](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db).
 
 [Просмотрите или скачайте](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie) пример.
