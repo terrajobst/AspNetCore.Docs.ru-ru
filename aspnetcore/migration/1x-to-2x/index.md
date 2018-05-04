@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 4b7a13b31340f01c4f1527f602b925d3ac4e8241
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: c462f38ba345a9eaf648967524cadd1ba45aee19
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>Миграция с ASP.NET Core 1.x на 2.0
 
 Автор: [Скотт Адди](https://github.com/scottaddie) (Scott Addie)
 
-В этой статье поэтапно рассматривается процесс обновления существующего проекта ASP.NET Core 1.x до версии ASP.NET Core 2.0. Миграция приложения в ASP.NET Core 2.0 позволяет воспользоваться [множеством новых функций и улучшений производительности](https://docs.microsoft.com/aspnet/core/aspnetcore-2.0). 
+В этой статье поэтапно рассматривается процесс обновления существующего проекта ASP.NET Core 1.x до версии ASP.NET Core 2.0. Миграция приложения в ASP.NET Core 2.0 позволяет воспользоваться [множеством новых функций и улучшений производительности](xref:aspnetcore-2.0). 
 
 Существующие приложения ASP.NET Core 1.x основаны на шаблонах проектов для определенной версии. По мере развития платформы ASP.NET Core совершенствуются шаблоны проектов и содержащийся в них начальный код. Помимо обновления платформы ASP.NET Core, необходимо также обновить код приложения.
 

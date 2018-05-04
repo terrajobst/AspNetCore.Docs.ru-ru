@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/middleware/index
-ms.openlocfilehash: a410d686b6140a487efb9962e94f64cfbec245f2
-ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
+ms.openlocfilehash: 4c44063fb3385fc625c35c8a3cf06a35b5b0afb7
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="aspnet-core-middleware"></a>ПО промежуточного слоя ASP.NET Core
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/26/2018
 
 Для построения конвейера запросов используются делегаты запроса. Они обрабатывают каждый HTTP-запрос.
 
-Для их настройки служат методы расширения [Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions), [Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) и [Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Отдельный делегат запроса можно указать встроенным в качестве анонимного метода (называемого встроенным ПО промежуточного слоя) либо определить в многоразовом классе. Эти многоразовые классы и встроенные анонимные методы являются *ПО промежуточного слоя* или *компонентами промежуточного слоя*. Каждый компонент промежуточного слоя представляет собой конвейер запросов, отвечающий за вызов следующего компонента в конвейере и замыкающий цепочку, если это необходимо.
+Для их настройки служат методы расширения [Run](/dotnet/api/microsoft.aspnetcore.builder.runextensions), [Map](/dotnet/api/microsoft.aspnetcore.builder.mapextensions) и [Use](/dotnet/api/microsoft.aspnetcore.builder.useextensions). Отдельный делегат запроса можно указать встроенным в качестве анонимного метода (называемого встроенным ПО промежуточного слоя) либо определить в многоразовом классе. Эти многоразовые классы и встроенные анонимные методы являются *ПО промежуточного слоя* или *компонентами промежуточного слоя*. Каждый компонент промежуточного слоя представляет собой конвейер запросов, отвечающий за вызов следующего компонента в конвейере и замыкающий цепочку, если это необходимо.
 
 Статья о [миграции модулей HTTP на ПО промежуточного слоя](xref:migration/http-modules) поясняет различия между конвейерами запросов в ASP.NET Core и ASP.NET 4.x, а также содержит дополнительные примеры ПО промежуточного слоя.
 
@@ -46,9 +46,9 @@ ms.lasthandoff: 04/26/2018
 
 [!code-csharp[](index/sample/Middleware/Startup.cs)]
 
-Первый делегат [app.Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions) завершает конвейер.
+Первый делегат [app.Run](/dotnet/api/microsoft.aspnetcore.builder.runextensions) завершает конвейер.
 
-Несколько делегатов запроса можно соединить в цепочку с помощью [app.Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Параметр `next` представляет следующий делегат в конвейере. (Помните, что замыкать конвейер можно*не*  вызывая параметр *next*) Обычно действия можно выполнять как до, так и после следующего делегата, как показано в этом примере.
+Несколько делегатов запроса можно соединить в цепочку с помощью [app.Use](/dotnet/api/microsoft.aspnetcore.builder.useextensions). Параметр `next` представляет следующий делегат в конвейере. (Помните, что замыкать конвейер можно*не*  вызывая параметр *next*) Обычно действия можно выполнять как до, так и после следующего делегата, как показано в этом примере.
 
 [!code-csharp[](index/sample/Chain/Startup.cs?name=snippet1)]
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 04/26/2018
 > - может вызвать нарушение протокола, например, при записи больше указанного значения `content-length`;
 > - может привести к нарушению формата, например, при записи нижнего колонтитула HTML в CSS-файл.
 >
-> [HttpResponse.HasStarted](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.features.httpresponsefeature#Microsoft_AspNetCore_Http_Features_HttpResponseFeature_HasStarted) удобное использовать для обозначения того, были ли отправлены заголовки и (или) выполнена запись в тело отклика.
+> [HttpResponse.HasStarted](/dotnet/api/microsoft.aspnetcore.http.features.httpresponsefeature#Microsoft_AspNetCore_Http_Features_HttpResponseFeature_HasStarted) удобное использовать для обозначения того, были ли отправлены заголовки и (или) выполнена запись в тело отклика.
 
 ## <a name="ordering"></a>Упорядочение
 
@@ -122,7 +122,7 @@ public void Configure(IApplicationBuilder app)
 
 -----------
 
-Следующий пример показывает порядок компонентов промежуточного слоя, где запросы для статических файлов обрабатываются компонентом для статических файлов до компонента для сжатия откликов. При таком порядке сжатие статических файлов не выполняется. Отклики MVC из [UseMvcWithDefaultRoute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mvcapplicationbuilderextensions#Microsoft_AspNetCore_Builder_MvcApplicationBuilderExtensions_UseMvcWithDefaultRoute_Microsoft_AspNetCore_Builder_IApplicationBuilder_) могут сжиматься.
+Следующий пример показывает порядок компонентов промежуточного слоя, где запросы для статических файлов обрабатываются компонентом для статических файлов до компонента для сжатия откликов. При таком порядке сжатие статических файлов не выполняется. Отклики MVC из [UseMvcWithDefaultRoute](/dotnet/api/microsoft.aspnetcore.builder.mvcapplicationbuilderextensions#Microsoft_AspNetCore_Builder_MvcApplicationBuilderExtensions_UseMvcWithDefaultRoute_Microsoft_AspNetCore_Builder_IApplicationBuilder_) могут сжиматься.
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -140,7 +140,7 @@ public void Configure(IApplicationBuilder app)
 
 Для настройки конвейера HTTP служат методы `Use`, `Run` и `Map`. Метод `Use` может замыкать конвейер (это происходит, если он не вызывает делегат запроса `next`). `Run` является соглашением, и некоторые компоненты промежуточного слоя могут предоставлять методы `Run[Middleware]`, которые выполняются в конце конвейера.
 
-Расширения `Map*` используются в качестве соглашения для ветвления конвейера. [Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) осуществляет ветвление конвейера запросов на основе совпадений для заданного пути запроса. Если путь запроса начинается с заданного пути, данная ветвь выполняется.
+Расширения `Map*` используются в качестве соглашения для ветвления конвейера. [Map](/dotnet/api/microsoft.aspnetcore.builder.mapextensions) осуществляет ветвление конвейера запросов на основе совпадений для заданного пути запроса. Если путь запроса начинается с заданного пути, данная ветвь выполняется.
 
 [!code-csharp[](index/sample/Chain/StartupMap.cs?name=snippet1)]
 
@@ -155,7 +155,7 @@ public void Configure(IApplicationBuilder app)
 
 Когда используется `Map`, соответствующие сегменты путей удаляются из `HttpRequest.Path` и добавляются к `HttpRequest.PathBase` для каждого запроса.
 
-[MapWhen](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapwhenextensions) осуществляет ветвление конвейера запросов на основе результата заданного предиката. Любой предикат типа `Func<HttpContext, bool>` можно использовать для сопоставления запросов с новой ветвью конвейера. В следующем примере предикат служит для определения наличия переменной строки запроса `branch`.
+[MapWhen](/dotnet/api/microsoft.aspnetcore.builder.mapwhenextensions) осуществляет ветвление конвейера запросов на основе результата заданного предиката. Любой предикат типа `Func<HttpContext, bool>` можно использовать для сопоставления запросов с новой ветвью конвейера. В следующем примере предикат служит для определения наличия переменной строки запроса `branch`.
 
 [!code-csharp[](index/sample/Chain/StartupMapWhen.cs?name=snippet1)]
 
@@ -225,7 +225,7 @@ ASP.NET Core содержит следующие компоненты проме
 > [!NOTE]
 > В ASP.NET Core 1.x метод промежуточного слоя `Task` должен иметь имя `Invoke`. В ASP.NET Core 2.0 и более поздних версиях имя может быть `Invoke` или `InvokeAsync`.
 
-Следующий метод расширения предоставляет ПО промежуточного слоя посредством [IApplicationBuilder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.iapplicationbuilder).
+Следующий метод расширения предоставляет ПО промежуточного слоя посредством [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder).
 
 [!code-csharp[](index/sample/Culture/RequestCultureMiddlewareExtensions.cs)]
 
@@ -235,7 +235,7 @@ ASP.NET Core содержит следующие компоненты проме
 
 ПО промежуточного слоя должно соответствовать [принципу явных зависимостей](http://deviq.com/explicit-dependencies-principle/), предоставляя свои зависимости в своем конструкторе. ПО промежуточного слоя создается один раз за *время существования приложения*. В разделе *Зависимости отдельных запросов* ниже приведены сведения о том, как использовать службы совместно с ПО промежуточного слоя внутри запроса.
 
-Компоненты промежуточного слоя могут разрешать свои зависимости, возникшие в результате введения зависимостей, за счет параметров конструктора. [`UseMiddleware<T>`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.usemiddlewareextensions#methods_summary) также может принимать дополнительные параметры напрямую.
+Компоненты промежуточного слоя могут разрешать свои зависимости, возникшие в результате введения зависимостей, за счет параметров конструктора. [`UseMiddleware<T>`](/dotnet/api/microsoft.aspnetcore.builder.usemiddlewareextensions#methods_summary) также может принимать дополнительные параметры напрямую.
 
 ### <a name="per-request-dependencies"></a>Зависимости отдельных запросов
 

@@ -9,11 +9,11 @@ ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: ff92b032fe8bbbcb7bc26a34fdfbc56a0fcc0e2c
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 8296d535725d95682fa5904a43ab196e21b4f83c
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Кэширование по промежуточного слоя в ASP.NET Core ответов
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/22/2018
 
 [!code-csharp[](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
 
-Настройка приложения для использования по промежуточного слоя с `UseResponseCaching` метод расширения, который добавляет по промежуточного слоя в конвейер обработки запросов. Добавляет в пример приложения [ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2) заголовок в ответ, который кэширует кэшируемых ответов на срок до 10 секунд. Образец отправляет [ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4) заголовок для настройки по промежуточного слоя для обслуживания только если кэшированный ответ [ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4) заголовок последующих запросов таковыми исходного запроса.
+Настройка приложения для использования по промежуточного слоя с `UseResponseCaching` метод расширения, который добавляет по промежуточного слоя в конвейер обработки запросов. Добавляет в пример приложения [ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2) заголовок в ответ, который кэширует кэшируемых ответов на срок до 10 секунд. Образец отправляет [ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4) заголовок для настройки по промежуточного слоя для обслуживания только если кэшированный ответ [ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4) заголовок последующих запросов таковыми исходного запроса. В следующем примере кода [CacheControlHeaderValue](/dotnet/api/microsoft.net.http.headers.cachecontrolheadervalue) и [HeaderNames](/dotnet/api/microsoft.net.http.headers.headernames) требуют `using` инструкции для [Microsoft.Net.Http.Headers](/dotnet/api/microsoft.net.http.headers) пространство имен.
 
 [!code-csharp[](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
 
@@ -90,7 +90,7 @@ if (responseCachingFeature != null)
 | Авторизация | Ответ не кэшируется. Если заголовок существует. |
 | Cache-Control | По промежуточного слоя рассматривает только кэширование ответов, отмеченные `public` директива кэша. Управлять кэшированием со следующими параметрами:<ul><li>max-age</li><li>Max устарело&#8224;</li><li>Min нуля</li><li>должен revalidate</li><li>Нет-cache</li><li>нет хранилища</li><li>только если кэширования</li><li>private</li><li>public</li><li>s-maxage</li><li>Proxy-revalidate&#8225;</li></ul>&#8224;Если указано без ограничений `max-stale`, по промежуточного слоя не выполняет никаких действий.<br>&#8225;`proxy-revalidate`действует так же, как `must-revalidate`.<br><br>Дополнительные сведения см. в разделе [RFC 7231: запрос директивы управления кэшем](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | Директивы pragma | Объект `Pragma: no-cache` заголовка в запросе дает тот же эффект, что `Cache-Control: no-cache`. Этот заголовок переопределяется соответствующей директивы в `Cache-Control` заголовка, если он имеется. Для обеспечения обратной совместимости с HTTP/1.0 во внимание. |
-| Set-Cookie | Ответ не кэшируется. Если заголовок существует. |
+| Set-Cookie | Ответ не кэшируется. Если заголовок существует. Любое по промежуточного слоя в конвейер обработки запросов, который задает один или несколько файлов cookie предотвращает кэширование ответа по промежуточного слоя кэширования ответа (например, [поставщика на основе файлов cookie TempData](xref:fundamentals/app-state#tempdata)).  |
 | Различаются | `Vary` Заголовок используется другой заголовок для изменения кэшированного ответа. Например, кэшировать ответы от кодировки, включая `Vary: Accept-Encoding` заголовок, который кэширует ответы для запросов с заголовками `Accept-Encoding: gzip` и `Accept-Encoding: text/plain` отдельно. Значение заголовка ответа `*` никогда не хранится. |
 | Срок действия истекает | Как устаревшие средством этот заголовок ответа не хранятся или получить, если не переопределено другим `Cache-Control` заголовки. |
 | If-None-Match | Полный ответ подано из кэша, если значение не `*` и `ETag` ответа не соответствует ни одному из предлагаемых значений. В противном случае выдается в отклике 304 (не изменено). |
@@ -130,13 +130,13 @@ if (responseCachingFeature != null)
 * `Set-Cookie` Заголовок не должен присутствовать.
 * `Vary` Параметры заголовка должно быть допустимым и не равно `*`.
 * `Content-Length` Значение заголовка (если задать) должно соответствовать размеру текста ответа.
-* [IHttpSendFileFeature](/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature) не используется.
+* [IHttpSendFileFeature](/dotnet/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature) не используется.
 * Ответ не должно быть устаревшей в соответствии с `Expires` заголовок и `max-age` и `s-maxage` кэшировать директивы.
 * Буферизация требуется успешное выполнение, и размер ответа должно быть меньше, чем настроенное или по умолчанию `SizeLimit`.
 * Требуется ответ может быть кэширован в соответствии с [RFC 7234](https://tools.ietf.org/html/rfc7234) спецификации. Например `no-store` директива не должен существовать в поля заголовка запроса или ответа. В разделе *раздел 3: хранение ответы в кэше* из [RFC 7234](https://tools.ietf.org/html/rfc7234) подробные сведения.
 
 > [!NOTE]
-> Сложные системы, для создания токенов безопасности для предотвращения подделки межсайтовых запросов (CSRF) атак наборы `Cache-Control` и `Pragma` заголовки `no-cache` , чтобы ответы не кэшируются.
+> Сложные системы, для создания токенов безопасности для предотвращения подделки межсайтовых запросов (CSRF) атак наборы `Cache-Control` и `Pragma` заголовки `no-cache` , чтобы ответы не кэшируются. Сведения о том, как отключить сложные маркеров для элементов HTML-форм см. в разделе [сложные конфигурации ASP.NET Core](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

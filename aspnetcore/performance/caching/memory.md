@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/memory
-ms.openlocfilehash: c2eae83219e8995a614b2933b1290d061f1b7869
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: a1ceb6c577c634aae7ee9c327e8e5b33e973912d
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэш в памяти в ASP.NET Core
 
@@ -26,11 +26,11 @@ ms.lasthandoff: 03/22/2018
 
 Кэширование может значительно повысить производительность и масштабируемость приложения за счет снижения работ, необходимый для создания содержимого. Кэширование будет работать наилучшим образом с данными, которые редко изменяются. Кэширование делает копию данных, которые могут быть возвращены намного быстрее, чем из исходного источника. Следует писать и тестировать приложения никогда не зависят от кэшированных данных.
 
-ASP.NET Core поддерживает несколько разных кэша. Простейший кэша на основе [IMemoryCache](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache), который представляет кэша, хранящийся в памяти веб-сервера. Приложения, которые выполняются на ферме серверов из нескольких серверов следует убедиться, прикрепленные сеансы при использовании кэша в памяти. Прикрепленные сеансы убедитесь, что последующие запросы от клиента все перейти на том же сервере. Например, использование приложения Azure Web [маршрутизации запросов приложений](https://www.iis.net/learn/extensions/planning-for-arr) (ARR), чтобы перенаправлять все последующие запросы на тот же сервер.
+ASP.NET Core поддерживает несколько разных кэша. Простейший кэша на основе [IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache), который представляет кэша, хранящийся в памяти веб-сервера. Приложения, которые выполняются на ферме серверов из нескольких серверов следует убедиться, прикрепленные сеансы при использовании кэша в памяти. Прикрепленные сеансы убедитесь, что последующие запросы от клиента все перейти на том же сервере. Например, использование приложения Azure Web [маршрутизации запросов приложений](https://www.iis.net/learn/extensions/planning-for-arr) (ARR), чтобы перенаправлять все последующие запросы на тот же сервер.
 
 Non прикрепленных сеансов в веб-ферме требуется [распределенный кэш](distributed.md) во избежание проблем с согласованностью кэша. Для некоторых приложений распределенного кэша может поддерживать более масштабного чем кэша в памяти. Использование распределенного кэша разгружает кэш-памяти во внешний процесс. 
 
-`IMemoryCache` Кэша исключим записей кэша, свободной памяти, если не [кэшировать приоритет](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheitempriority) равно `CacheItemPriority.NeverRemove`. Можно задать `CacheItemPriority` Настройка приоритета, с которым кэша исключает элементы в условиях нехватки памяти.
+`IMemoryCache` Кэша исключим записей кэша, свободной памяти, если не [кэшировать приоритет](/dotnet/api/microsoft.extensions.caching.memory.cacheitempriority) равно `CacheItemPriority.NeverRemove`. Можно задать `CacheItemPriority` Настройка приоритета, с которым кэша исключает элементы в условиях нехватки памяти.
 
 Кэш в памяти можно хранить любой объект; интерфейс распределенного кэша ограничен `byte[]`.
 
@@ -58,15 +58,15 @@ Non прикрепленных сеансов в веб-ферме требуе�
 
 ![Индекс представления с помощью двух разных времени отображаются в](memory/_static/time.png)
 
-В следующем коде используется [GetOrCreate](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__) и [GetOrCreateAsync](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___) для кэширования данных. 
+В следующем коде используется [GetOrCreate](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__) и [GetOrCreateAsync](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___) для кэширования данных. 
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet2&highlight=3-7,14-19)]
 
-Следующий код вызывает [получить](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_Get__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_) выбирать время кэширования:
+Следующий код вызывает [получить](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_Get__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_) выбирать время кэширования:
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_gct)]
 
-В разделе [методы IMemoryCache](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache) и [CacheExtensions методы](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions) описание методов кэша.
+В разделе [методы IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache) и [CacheExtensions методы](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions) описание методов кэша.
 
 ## <a name="using-memorycacheentryoptions"></a>С помощью MemoryCacheEntryOptions
 
@@ -75,7 +75,7 @@ Non прикрепленных сеансов в веб-ферме требуе�
 - Задает абсолютный срок действия. Это — это максимальное время, кэшировании записи и блокирует элемент устаревшими при скользящий срок действия постоянно обновляется.
 - Задает скользящего срока. Запросы, которые обращаются к этой кэшированного элемента приведет к сбросу скользящего срока.
 - Задает приоритет кэша `CacheItemPriority.NeverRemove`. 
-- Наборы [PostEvictionDelegate](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.postevictiondelegate) , будет вызван после удаления записи из кэша. Обратный вызов выполняется в другом потоке, от кода, который удаляет элемент из кэша.
+- Наборы [PostEvictionDelegate](/dotnet/api/microsoft.extensions.caching.memory.postevictiondelegate) , будет вызван после удаления записи из кэша. Обратный вызов выполняется в другом потоке, от кода, который удаляет элемент из кэша.
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_et&highlight=14-20)]
 

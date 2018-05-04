@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: 166111696a9c4244ede44fca8878dd3725bb3099
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0a04f5762a35426f342b58b8b60288c66c057ae7
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Безопасного хранения секрета приложения при разработке в ASP.NET Core
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 04/06/2018
 
 В этом документе показано, как можно использовать диспетчер секрет при разработке решений для хранить секреты вне кода. Самое главное, никогда не следует хранить пароли и другие конфиденциальные данные в исходном коде и секретные данные в рабочей среде не следует использовать в режиме разработки и тестирования. Вместо этого можно использовать [конфигурации](xref:fundamentals/configuration/index) системы для считывания этих значений из переменных среды или из значения, сохраненные с помощью диспетчера секрет средства. Секрет диспетчера предотвращает конфиденциальные данные проверяются в систему управления версиями. [Конфигурации](xref:fundamentals/configuration/index) системы, может прочитать секретные данные, хранимые с помощью средства диспетчера секрет, описанных в этой статье.
 
-Секрет диспетчера используется только при разработке. Можно защитить Azure рабочего и тестового секреты с [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) поставщика конфигурации. В разделе [конфигурации поставщика хранилища ключей Azure](https://docs.microsoft.com/aspnet/core/security/key-vault-configuration) для получения дополнительной информации.
+Секрет диспетчера используется только при разработке. Можно защитить Azure рабочего и тестового секреты с [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) поставщика конфигурации. В разделе [конфигурации поставщика хранилища ключей Azure](xref:security/key-vault-configuration) для получения дополнительной информации.
 
 ## <a name="environment-variables"></a>Переменные среды
 
