@@ -1,7 +1,7 @@
 ---
-title: "Работа с SQLite"
+title: Работа с SQLite
 author: rick-anderson
-description: "Использование SQLite с простым приложением MVC"
+description: Использование SQLite с простым приложением MVC
 manager: wpickett
 ms.author: riande
 ms.date: 04/07/2017
@@ -9,15 +9,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app-xplat/working-with-sql
-ms.openlocfilehash: cd0d2c2bc7fb02fe8500d40eafd5ec4717420cf8
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 191045d392e71858c7db4425a9fc1242ef309e41
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-[!INCLUDE[adding-model](../../includes/mvc-intro/sql.md)]
+[!INCLUDE [adding-model](../../includes/mvc-intro/sql.md)]
 
->[!div class="step-by-step"]
-<span data-ttu-id="8f9d6-103">[Предыдущая статья — "Добавление модели"](adding-model.md)
-[Следующая статья — "Методы и представления контроллера"](controller-methods-views.md)</span><span class="sxs-lookup"><span data-stu-id="8f9d6-103">[Previous - Add a model](adding-model.md)
+> [!div class="step-by-step"]
+> <span data-ttu-id="133fa-103">[Предыдущая статья — "Добавление модели"](adding-model.md)
+> [Следующая статья — "Методы и представления контроллера"](controller-methods-views.md)</span><span class="sxs-lookup"><span data-stu-id="133fa-103">[Previous - Add a model](adding-model.md)
 [Next - Controller methods and views](controller-methods-views.md)</span></span>

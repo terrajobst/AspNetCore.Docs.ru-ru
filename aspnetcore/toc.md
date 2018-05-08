@@ -132,6 +132,7 @@
 ### [HTTP.sys](fundamentals/servers/httpsys.md)
 ## [Глобализация и локализация](xref:fundamentals/localization)
 ### [Настройка локализации переносных объектов с помощью Orchard Core](xref:fundamentals/portable-object-localization)
+## [Инициирование HTTP-запросов](xref:fundamentals/http-requests)
 ## [Параметры запроса](fundamentals/request-features.md)
 ## [Фоновые задачи с размещенными службами](xref:fundamentals/hosted-services)
 ## [Примитивы](xref:fundamentals/primitives/index)
@@ -143,9 +144,11 @@
 ## [Выбор между ASP.NET Core и ASP.NET](choose-aspnet-framework.md)
 
 # [Razor Pages](xref:mvc/razor-pages/index)
-## [Соглашения для маршрутов и приложений](xref:mvc/razor-pages/razor-pages-convention-features)
 ## [Методы фильтрации для Razor Pages](xref:mvc/razor-pages/filter)
+## [Создание библиотеки классов Razor](xref:mvc/razor-pages/ui-class)
+## [Соглашения для маршрутов и приложений](xref:mvc/razor-pages/razor-pages-convention-features)
 ## [Пакет SDK для Razor](xref:mvc/razor-pages/sdk)
+
 
 # [MVC](mvc/overview.md)
 ## [Привязка модели](mvc/models/model-binding.md)
@@ -355,7 +358,7 @@
 ## [Миграция с ASP.NET Core 1.x на 2.0](xref:migration/1x-to-2x/index)
 ### [Проверка подлинности и удостоверения](xref:migration/1x-to-2x/identity-2x)
 
-# [Справочник по интерфейсам API](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0)
+# [Справочник по интерфейсам API](/dotnet/api/?view=aspnetcore-2.0)
 
 # [Заметки о выпуске 2.0](aspnetcore-2.0.md)
 ## [Заметки о выпуске 1.1](aspnetcore-1.1.md)
