@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC с EF Core — параллелизм — 8 из 10"
+title: ASP.NET Core MVC с EF Core — параллелизм — 8 из 10
 author: tdykstra
-description: "Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей одновременно изменяют одну сущность."
+description: Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей одновременно изменяют одну сущность.
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: c271488d4da72ba340f3617ac20c7b6da2574c69
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 99c4872719a4e46aa27eb7138eb914dc5954c219
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="handling-concurrency-conflicts---ef-core-with-aspnet-core-mvc-tutorial-8-of-10"></a>Обработка конфликтов параллелизма — руководство по EF Core и ASP.NET Core MVC (8 из 10)
+# <a name="aspnet-core-mvc-with-ef-core---concurrency---8-of-10"></a>ASP.NET Core MVC с EF Core — параллелизм — 8 из 10
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 01/31/2018
 
 В *Models/Department.cs* добавьте свойство отслеживания RowVersion:
 
-[!code-csharp[Main](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
+[!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
 Атрибут `Timestamp` указывает, что этот столбец будет включен в предложение Where команд Update и Delete, отправляемых в базу данных. Этот атрибут называется `Timestamp`, так как предыдущие версии SQL Server использовали тип данных `timestamp` SQL, пока его не сменил `rowversion`. Тип .NET для `rowversion` — это массив байтов.
 
@@ -120,7 +120,7 @@ dotnet ef database update
 
 В файле *DepartmentsController.cs* измените все четыре экземпляра "FirstMidName" на "FullName", чтобы раскрывающиеся списки для администратора кафедры содержали полное имя преподавателя, а не только фамилию.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_Dropdown)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_Dropdown)]
 
 ## <a name="update-the-departments-index-view"></a>Изменение представления индекса кафедр
 
@@ -128,7 +128,7 @@ dotnet ef database update
 
 Замените код в файле *Views/Departments/Index.cshtml* на приведенный ниже код.
 
-[!code-html[Main](intro/samples/cu/Views/Departments/Index.cshtml?highlight=4,7,44)]
+[!code-html[](intro/samples/cu/Views/Departments/Index.cshtml?highlight=4,7,44)]
 
 Он изменяет заголовок на "Departments" (Кафедры), удаляет столбец RowVersion и отображает администратору имя и фамилию, а не только имя.
 
@@ -136,11 +136,11 @@ dotnet ef database update
 
 Добавьте `AsNoTracking` в оба метода — HttpGet `Edit` и `Details`. В методе HttpGet `Edit` добавьте безотложную загрузку для администратора.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EagerLoading&highlight=2,3)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EagerLoading&highlight=2,3)]
 
 Замените существующий код в методе HttpPost`Edit` следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EditPost)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EditPost)]
 
 Код начинает пытаться считать кафедру для обновления. Если метод `SingleOrDefaultAsync` возвращает значение null, кафедра была удалена другим пользователем. В этом случае код использует переданные значения из формы для создания сущности кафедры, чтобы страницу "Edit" (Редактирование) можно было отобразить повторно с сообщением об ошибке. Кроме того, повторно создать сущность кафедры не нужно, если вы выводите только сообщение об ошибке без повторного отображения полей кафедры.
 
@@ -154,19 +154,19 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 Код в блоке catch для этого исключения возвращает затронутую сущность Department, имеющую обновленные значения из свойства `Entries` в объекте исключения.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?range=164)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=164)]
 
 Коллекция `Entries` будет иметь всего один объект `EntityEntry`.  Вы можете использовать его для получения новых значений, введенных пользователем, и текущих значений в базе данных.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?range=165-166)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=165-166)]
 
 Код добавляет настраиваемое сообщение об ошибке для каждого столбца, для которого значения базы данных отличаются от введенных пользователем на странице "Edit" (Редактирование) (здесь для краткости показано всего одно поле).
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?range=174-178)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=174-178)]
 
 Наконец, код задает для `RowVersion` объекта `departmentToUpdate` новое значение, полученное из базы данных. Это новое значение `RowVersion` будет сохранено в скрытом поле при повторном отображении страницы "Edit" (Редактирование). Когда пользователь в следующий раз нажимает кнопку **Save** (Сохранить), перехватываются только те ошибки параллелизма, которые возникли с момента повторного отображения страницы "Edit" (Редактирование).
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?range=199-200)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=199-200)]
 
 Оператор `ModelState.Remove` является обязательным, так как `ModelState` имеет старое значение `RowVersion`. На представлении значение `ModelState` для поля имеет приоритет над значениями свойств модели, если они присутствуют вместе.
 
@@ -178,7 +178,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 * Добавьте пункт "Select Administrator" (Выбрать администратора) в раскрывающийся список.
 
-[!code-html[Main](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
+[!code-html[](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
 
 ## <a name="test-concurrency-conflicts-in-the-edit-page"></a>Тестирование конфликтов параллелизма на странице "Edit" (Редактирование)
 
@@ -208,13 +208,13 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 В файле *DepartmentsController.cs* замените код метода HttpGet `Delete` приведенным ниже кодом:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeleteGet&highlight=1,10,14-17,21-29)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeleteGet&highlight=1,10,14-17,21-29)]
 
 Этот метод принимает необязательный параметр, который указывает, отображается ли страница повторно после ошибки параллелизма. Если этот флаг имеет значение true, а указанная кафедра больше не существует, она была удалена другим пользователем. В этом случае код выполняет перенаправление на страницу индекса.  Если этот флаг имеет значение true, а кафедра существует, она была изменена другим пользователем. В этом случае код отправляет сообщение об ошибке в представление, используя `ViewData`.  
 
 Замените код в методе HttpPost`Delete` (с именем `DeleteConfirmed`) следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeletePost&highlight=1,3,5-8,11-18)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeletePost&highlight=1,3,5-8,11-18)]
 
 В шаблонном коде, который вы только что заменили, этот метод принимал только идентификатор записи:
 
@@ -239,7 +239,7 @@ public async Task<IActionResult> Delete(Department department)
 
 В файле *Views/Departments/Delete.cshtml* замените шаблонный код приведенным ниже кодом, который добавляет поле сообщения об ошибке и скрытые поля для свойств DepartmentID и RowVersion. Изменения выделены.
 
-[!code-html[Main](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
+[!code-html[](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
 
 Этот код вносит следующие изменения:
 
@@ -269,16 +269,16 @@ public async Task<IActionResult> Delete(Department department)
 
 Замените код в *Views/Departments/Details.cshtml*, чтобы удалить столбец RowVersion и отобразить полное имя администратора.
 
-[!code-html[Main](intro/samples/cu/Views/Departments/Details.cshtml?highlight=35)]
+[!code-html[](intro/samples/cu/Views/Departments/Details.cshtml?highlight=35)]
 
 Замените код в *Views/Departments/Create.cshtml*, чтобы добавить параметр "Select" (Выбрать) в раскрывающийся список.
 
-[!code-html[Main](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
+[!code-html[](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
 
 ## <a name="summary"></a>Сводка
 
 На этом заканчивается введение в обработку конфликтов параллелизма. Дополнительные сведения об обработке параллелизма в EF Core см. в разделе [Конфликты параллелизма](https://docs.microsoft.com/ef/core/saving/concurrency). Следующее руководство описывает, как реализовать наследование "одна таблица на иерархию" для сущностей Instructor и Student.
 
->[!div class="step-by-step"]
-[Назад](update-related-data.md)
-[Вперед](inheritance.md)  
+> [!div class="step-by-step"]
+> [Назад](update-related-data.md)
+> [Вперед](inheritance.md)  

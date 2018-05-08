@@ -1,7 +1,7 @@
 ---
-title: "Добавление модели в приложение MVC ASP.NET Core."
+title: Добавление модели в приложение MVC ASP.NET Core
 author: rick-anderson
-description: "Добавление модели в простое приложение ASP.NET Core."
+description: Добавление модели в простое приложение ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 09/18/2017
@@ -9,18 +9,20 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app-xplat/adding-model
-ms.openlocfilehash: 81511b05a3cc11a58b93452d3c6e5305e7ee4357
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 77750ba0df7775d6a0e4744811848bfe9782d995
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-[!INCLUDE[adding-model1](../../includes/mvc-intro/adding-model1.md)]
+# <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>Добавление модели в приложение MVC ASP.NET Core
+
+[!INCLUDE [adding-model1](../../includes/mvc-intro/adding-model1.md)]
 
 * Добавьте класс в папку *Models* с именем *Movie.cs*.
 * Добавьте в файл *ToUpperPlugin.cs* следующий код:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
 
 Поле `ID` является обязательным для первичного ключа базы данных. 
 
@@ -30,20 +32,20 @@ ms.lasthandoff: 01/30/2018
 
 - Добавьте в файл *MvcMovie.csproj* следующие выделенные пакеты NuGet:
              
-   [!code-csharp[Main](start-mvc/sample/MvcMovie/MvcMovie.csproj?highlight=7,10)]
+   [!code-csharp[](start-mvc/sample/MvcMovie/MvcMovie.csproj?highlight=7,10)]
 
 - Сохраните файл и нажмите кнопку **Восстановить** в **информационном** сообщении "There are unresolved dependencies" (Имеются неразрешенные зависимости).
 - Создайте файл *Models/MvcMovieContext.cs* и добавьте следующий класс `MvcMovieContext`:
 
-   [!code-csharp[Main](start-mvc/sample/MvcMovie/Models/MvcMovieContext.cs)]
+   [!code-csharp[](start-mvc/sample/MvcMovie/Models/MvcMovieContext.cs)]
    
 - Откройте файл *Startup.cs* и добавьте два использования:
 
-   [!code-csharp[Main](start-mvc/sample/MvcMovie/Startup.cs?name=snippet1&highlight=1,2)]
+   [!code-csharp[](start-mvc/sample/MvcMovie/Startup.cs?name=snippet1&highlight=1,2)]
 
 - Добавьте контекст базы данных в файл *Startup.cs*:
 
-   [!code-csharp[Main](start-mvc/sample/MvcMovie/Startup.cs?name=snippet2&highlight=6-7)]
+   [!code-csharp[](start-mvc/sample/MvcMovie/Startup.cs?name=snippet2&highlight=6-7)]
 
   За счет этого Entity Framework будет знать, какие классы модели входят в модель данных. Вы определяете один *набор сущностей* объектов Movie, который будут представлен в базу данных как таблица Movie.
 
@@ -64,9 +66,9 @@ dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMo
 
 Автоматическое создание методов и представлений действия [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (создание, чтение, обновление и удаление) называется *формированием шаблонов*. Вскоре вы получите полнофункциональное веб-приложение, позволяющее управлять базой данных фильмов.
 
-[!INCLUDE[adding-model 2x](../../includes/mvc-intro/adding-model2xp.md)]
+[!INCLUDE [adding-model 2x](../../includes/mvc-intro/adding-model2xp.md)]
 
-[!INCLUDE[adding-model](../../includes/mvc-intro/adding-model3.md)]
+[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model3.md)]
 
 Теперь у вас есть база данных и страницы для отображения, редактирования, обновления и удаления данных. В следующем руководстве мы будем работать с базой данных.
 
@@ -75,6 +77,6 @@ dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMo
 * [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro)
 * [Глобализация и локализация](xref:fundamentals/localization)
 
->[!div class="step-by-step"]
-[Назад: Добавление представления](adding-view.md)
-[Далее: Работа с SQLite](working-with-sql.md)
+> [!div class="step-by-step"]
+> [Назад: Добавление представления](adding-view.md)
+> [Далее: Работа с SQLite](working-with-sql.md)

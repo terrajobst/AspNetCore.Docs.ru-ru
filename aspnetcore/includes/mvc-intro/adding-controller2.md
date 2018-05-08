@@ -1,6 +1,6 @@
 Замените содержимое файла *Controllers/HelloWorldController.cs* следующим:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_1)]
 
 Каждый метод `public` в контроллере вызывается как конечная точка HTTP. В приведенном выше примере оба метода возвращают строку.  Обратите внимание на комментарии, предшествующие каждому методу.
 
@@ -12,13 +12,13 @@
 
 ![Окно браузера, в котором отображается ответ "This is my default action" (Это действие по умолчанию)](../../tutorials/first-mvc-app/adding-controller/_static/hell1.png)
 
-MVC вызывает классы контроллера (и методы действия в них) в зависимости от входящего URL-адреса. [Логика маршрутизации URL-адресов](../../mvc/controllers/routing.md), используемая моделью MVC по умолчанию, определяет вызываемый код на основе формата следующего вида:
+MVC вызывает классы контроллера (и методы действия в них) в зависимости от входящего URL-адреса. [Логика маршрутизации URL-адресов](xref:mvc/controllers/routing), используемая моделью MVC по умолчанию, определяет вызываемый код на основе формата следующего вида:
 
 `/[Controller]/[ActionName]/[Parameters]`
 
 Формат маршрутизации задается в методе `Configure` в файле *Startup.cs*.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
 Если при запуске приложения не указаны сегменты URL-адреса, по умолчанию устанавливаются контроллер "Home" и метод "Index", которые заданы в выделенной выше строке шаблона.
 
@@ -30,19 +30,19 @@ MVC вызывает классы контроллера (и методы дей
 
 Измените код, чтобы передать сведения о параметрах из URL-адреса в контроллер. Например, `/HelloWorld/Welcome?name=Rick&numtimes=4`. Измените метод `Welcome`, включив два параметра, как показано в следующем коде. 
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_2)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_2)]
 
 Предыдущий код:
 
 * Использует функцию необязательного параметра C#, указывая, что параметр `numTimes` по умолчанию принимает значение 1, если ему не было передано значение.
 * Использует `HtmlEncoder.Default.Encode` для защиты приложения от злонамеренного ввода данных (JavaScript). 
-* Использует [интерполированные строки](https://docs.microsoft.com/dotnet/articles/csharp/language-reference/keywords/interpolated-strings).
+* Использует [интерполированные строки](/dotnet/articles/csharp/language-reference/keywords/interpolated-strings).
 
 Запустите приложение и перейдите по адресу:
 
    `http://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4`
 
-(Замените xxxx на номер порта.) Вы можете попробовать различные значения `name` и `numtimes` в URL-адресе. [Система привязки модели MVC](../../mvc/models/model-binding.md) автоматически сопоставляет именованные параметры из строк запроса в адресной строке с параметрами метода. Дополнительные сведения см. в разделе [Привязка модели](../../mvc/models/model-binding.md).
+(Замените xxxx на номер порта.) Вы можете попробовать различные значения `name` и `numtimes` в URL-адресе. [Система привязки модели MVC](xref:mvc/models/model-binding) автоматически сопоставляет именованные параметры из строк запроса в адресной строке с параметрами метода. Дополнительные сведения см. в разделе [Привязка модели](xref:mvc/models/model-binding).
 
 ![Окно браузера, в котором отображается ответ "Hello Rick" (Привет, Rick); NumTimes=4](../../tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
@@ -50,7 +50,7 @@ MVC вызывает классы контроллера (и методы дей
 
 Замените метод `Welcome` следующим кодом:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_3)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_3)]
 
 Запустите приложение и введите следующий URL-адрес: `http://localhost:xxx/HelloWorld/Welcome/3?name=Rick`
 
@@ -58,6 +58,6 @@ MVC вызывает классы контроллера (и методы дей
 
 На этот раз третий сегмент URL-адреса сопоставляется с параметром маршрута `id`. Метод `Welcome` содержит параметр `id`, который сопоставляется с шаблоном URL-адреса в методе `MapRoute`. Завершающий символ `?` (в `id?`) указывает, что параметр `id` является необязательным.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
 В этих примерах контроллер реализует работу представления и контроллера в модели MVC. Контроллер возвращает HTML напрямую. Как правило, это не требуется, поскольку в этом случае заметно усложняется написание и поддержка кода. Вместо этого обычно используется отдельный файл шаблона представления Razor для создания HTML-ответа. Это будет показано в следующем руководстве.

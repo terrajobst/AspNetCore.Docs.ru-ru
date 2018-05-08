@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC с EF Core — наследование — 9 из 10"
+title: ASP.NET Core MVC с EF Core — наследование — 9 из 10
 author: tdykstra
-description: "В этом учебнике показано, как реализовать наследование в модели данных с использованием платформы Entity Framework Core в приложении ASP.NET Core."
+description: В этом учебнике показано, как реализовать наследование в модели данных с использованием платформы Entity Framework Core в приложении ASP.NET Core.
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 985cc38b10ef830b8274e40ad5f7050157fd4d86
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 25d4292e325e208ee08f4a7bb8d06580809f9e40
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="inheritance---ef-core-with-aspnet-core-mvc-tutorial-9-of-10"></a>Наследование — учебник по EF Core и ASP.NET Core MVC (9 из 10)
+# <a name="aspnet-core-mvc-with-ef-core---inheritance---9-of-10"></a>ASP.NET Core MVC с EF Core — наследование — 9 из 10
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -60,23 +60,23 @@ ms.lasthandoff: 01/31/2018
 
 В папке Models создайте файл Person.cs и замените код шаблона следующим:
 
-[!code-csharp[Main](intro/samples/cu/Models/Person.cs)]
+[!code-csharp[](intro/samples/cu/Models/Person.cs)]
 
 ## <a name="make-student-and-instructor-classes-inherit-from-person"></a>Создание классов Student и Instructor, унаследованных от класса Person
 
 В файле *Instructor.cs* измените класс Instructor так, чтобы он был производным от класса Person, и удалите поля ключа и имени. Код будет выглядеть следующим образом:
 
-[!code-csharp[Main](intro/samples/cu/Models/Instructor.cs?name=snippet_AfterInheritance&highlight=8)]
+[!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_AfterInheritance&highlight=8)]
 
 Выполните те же изменения в файле *Student.cs*.
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_AfterInheritance&highlight=8)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_AfterInheritance&highlight=8)]
 
 ## <a name="add-the-person-entity-type-to-the-data-model"></a>Добавление типа сущности Person в модель данных
 
 Добавьте тип сущности Person в файл *SchoolContext.cs*. Новые строки выделены.
 
-[!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_AfterInheritance&highlight=19,30)]
+[!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_AfterInheritance&highlight=19,30)]
 
 Это все, что требуется платформе Entity Framework для настройки наследования типа "одна таблица на иерархию". Как видно, после обновления базы данных в ней будет присутствовать таблица Person вместо таблиц Student и Instructor.
 
@@ -92,7 +92,7 @@ dotnet ef migrations add Inheritance
 
 Откройте файл *Migrations/\<метка_времени>_Inheritance.cs* и замените метод `Up` следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Migrations/20170216215525_Inheritance.cs?name=snippet_Up)]
+[!code-csharp[](intro/samples/cu/Migrations/20170216215525_Inheritance.cs?name=snippet_Up)]
 
 Этот код выполняет следующие задачи по обновлению базы данных:
 
@@ -143,6 +143,6 @@ dotnet ef database update
 
 Вы реализовали наследование типа "одна таблица на иерархию" для классов `Person`, `Student` и `Instructor`. Дополнительные сведения о наследовании на платформе Entity Framework Core см. в разделе [Наследование](https://docs.microsoft.com/ef/core/modeling/inheritance). В рамках следующего учебника вы узнаете, как работать в нескольких сценариях Entity Framework с расширенными возможностями.
 
->[!div class="step-by-step"]
-[Назад](concurrency.md)
-[Вперед](advanced.md)  
+> [!div class="step-by-step"]
+> [Назад](concurrency.md)
+> [Вперед](advanced.md)  

@@ -4,4 +4,4 @@
 * проще для выполнения;
 * охватывает дополнительные возможности;
 
-При выборе этого руководства вместо версии про [Razor Pages](xref:tutorials/razor-pages/razor-pages-start), оставьте примечание, объясняющее причину.
+При выборе этого руководства вместо документации по [Razor Pages](xref:tutorials/razor-pages/razor-pages-start) оставьте на [GitHub](https://github.com/aspnet/Docs/issues/6146) примечание, объясняющее причину.

@@ -3,17 +3,18 @@ title: Введение в Razor Pages в ASP.NET Core
 author: Rick-Anderson
 description: Сведения о применении в ASP.NET Core функции Razor Pages, которая делает создание кодов сценариев для страниц проще и эффективнее по сравнению с MVC.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/12/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 532799d013f26869da03fe1062072f55dcce35f8
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 08866543d5b510b86c6af1896a9bd41ae0053ecf
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -206,6 +207,38 @@ Razor Pages — это новая функция платформы MVC ASP.NET
 * Если контакт клиента найден, он удаляется из списка контактов. База данных обновляется.
 * Вызывает `RedirectToPage` для перенаправления на корневую страницу индекса (`/Index`).
 
+::: moniker range=">= aspnetcore-2.1"
+## <a name="manage-head-requests-with-the-onget-handler"></a>Управление запросами HEAD с помощью обработчика OnGet
+
+Обработчик HEAD обычно создается и вызывается для выполнения запросов HEAD:
+
+```csharp
+public void OnHead()
+{
+    HttpContext.Response.Headers.Add("HandledBy", "Handled by OnHead!");
+}
+```
+
+Если обработчик HEAD (`OnHead`) не определен, Razor Pages выполнит вызов обработчика страниц GET (`OnGet`) в ASP.NET Core 2.1 или более поздней версии. Вы можете явно выбрать такое поведение с помощью [метода SetCompatibilityVersion](xref:fundamentals/startup#setcompatibilityversion-for-aspnet-core-mvc) в `Startup.Configure` ASP.NET Core 2.1–2.x:
+
+```csharp
+services.AddMvc()
+    .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+```
+
+`SetCompatibilityVersion` задает для параметра `AllowMappingHeadRequestsToGetHandler` Razor Pages значение `true`. Это поведение можно выбрать в версиях ниже ASP.NET Core 3.0 (предварительная версия 1). Каждая основная версия ASP.NET Core наследует поведение выпуска исправлений предыдущей версии.
+
+Вы можете явно не выбирать поведение выпусков исправлений 2.1–2.x, используя конфигурацию приложения, которая сопоставляет запросы HEAD для обработчика GET. Задайте для параметра `AllowMappingHeadRequestsToGetHandler` Razor Pages значение `true`, не вызывая `SetCompatibilityVersion` в `Startup.Configure`:
+
+```csharp
+services.AddMvc()
+    .AddRazorPagesOptions(options =>
+    {
+        options.AllowMappingHeadRequestsToGetHandler = true;
+    });
+```
+::: moniker-end
+
 <a name="xsrf"></a>
 
 ## <a name="xsrfcsrf-and-razor-pages"></a>XSRF/CSRF и Razor Pages
@@ -291,7 +324,7 @@ Pages работает со всеми функциями представлен
 * */Pages*
 
   * *Index.cshtml*
-  * */Customer*
+  * */Customers*
 
     * *Create.cshtml*
     * *Edit.cshtml*
@@ -314,13 +347,13 @@ Pages работает со всеми функциями представлен
 | RedirectToPage("../Index") | *Pages/Index* |
 | RedirectToPage("Index")  | *Pages/Customers/Index* |
 
-`RedirectToPage("Index")`, `RedirectToPage("./Index")` и `RedirectToPage("../Index")` — это <em>относительные имена</em>. Для получения имени целевой страницы параметр `RedirectToPage` <em>комбинируется</em> с путем текущей страницы.  <!-- Review: Original had The provided string is combined with the page name of the current page to compute the name of the destination page. -- page name, not page path -->
+`RedirectToPage("Index")`, `RedirectToPage("./Index")` и `RedirectToPage("../Index")` — это <em>относительные имена</em>. Для получения имени целевой страницы параметр `RedirectToPage` <em>комбинируется</em> с путем текущей страницы.  <!-- Review: Original had The provided string is combined with the page name of the current page to compute the name of the destination page.  page name, not page path -->
 
 Привязка относительных имен полезна при создании сайтов со сложной структурой. Если для связи между страницами в определенной папке используются относительные имена, эту папку можно переименовать. При этом все ссылки останутся рабочими (так как не включают имя папки).
 
 ## <a name="tempdata"></a>TempData
 
-ASP.NET Core позволяет использовать свойство [TempData](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) в [контроллере](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller). Это свойство хранит данные до тех пор, пока они не будут прочитаны. Для проверки данных без удаления можно использовать методы `Keep` и `Peek`. `TempData` удобно использовать для перенаправления, когда данные требуются больше чем для одного запроса.
+ASP.NET Core позволяет использовать свойство [TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) в [контроллере](/dotnet/api/microsoft.aspnetcore.mvc.controller). Это свойство хранит данные до тех пор, пока они не будут прочитаны. Для проверки данных без удаления можно использовать методы `Keep` и `Peek`. `TempData` удобно использовать для перенаправления, когда данные требуются больше чем для одного запроса.
 
 Атрибут `[TempData]` появился в ASP.NET 2.0 и поддерживается в контроллерах и на страницах.
 
@@ -363,6 +396,8 @@ public string Message { get; set; }
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml?range=12-13)]
 
 При использовании представленного выше кода URL-путь для отправки данных в `OnPostJoinListAsync` будет выглядеть как `http://localhost:5000/Customers/CreateFATH?handler=JoinList`. URL-путь для отправки данных в `OnPostJoinListUCAsync` будет иметь вид `http://localhost:5000/Customers/CreateFATH?handler=JoinListUC`.
+
+
 
 ## <a name="customizing-routing"></a>Настройка маршрутизации
 
@@ -417,6 +452,7 @@ services.AddMvc()
 ## <a name="see-also"></a>См. также
 
 * [Введение в ASP.NET Core](xref:index)
+* [Синтаксис Razor](xref:mvc/views/razor)
 * [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [Соглашения об авторизации Razor Pages](xref:security/authorization/razor-pages-authorization)
 * [Пользовательские поставщики моделей маршрутов и страниц Razor Pages](xref:mvc/razor-pages/razor-pages-convention-features)

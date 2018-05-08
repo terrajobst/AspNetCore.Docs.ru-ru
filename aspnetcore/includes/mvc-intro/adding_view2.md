@@ -1,6 +1,6 @@
 Замените содержимое файла представления Razor *Views/HelloWorld/Index.cshtml* следующим:
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index.cshtml)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index.cshtml)]
 
 Перейдите к `http://localhost:xxxx/HelloWorld`. Метод `Index` в `HelloWorldController` сделал совсем мало. Он выполнил оператор `return View();`, который указал, что метод должен использовать файл шаблона представления для отображения ответа в браузере. Поскольку имя файла шаблона представления не указывается явно, модель MVC по умолчанию использует файл представления *Index.cshtml* в папке */Views/HelloWorld*. На рисунке ниже показана строка "Hello from our View Template!", которая жестко задана в представлении.
 
@@ -18,11 +18,11 @@
 
 ## <a name="change-the-title-and-menu-link-in-the-layout-file"></a>Изменение заголовка и ссылки меню в файле макета
 
-В элементе title измените `MvcMovie` на `Movie App`. Измените текст привязки в шаблоне макета с `MvcMovie` на `Mvc Movie` и контроллер с `Home` на `Movies`, как показано ниже:
+В элементе title измените `MvcMovie` на `Movie App`. Измените текст привязки в шаблоне макета с `MvcMovie` на `Movie App` и контроллер с `Home` на `Movies`, как показано ниже:
 
 Примечание. В версии ASP.NET Core 2.0 есть определенные отличия. В ней отсутствуют `@inject ApplicationInsights` и `@Html.Raw(JavaScriptSnippet.FullScript)`.
 
-[!code-html[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout.cshtml?highlight=7,31)]
+[!code-html[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout.cshtml?highlight=7,31)]
 
 >[!WARNING]
 > На данный момент контроллер `Movies` еще не реализован, поэтому при щелчке по этой ссылке будет возвращена ошибка 404 (страница не найдена).
@@ -73,7 +73,7 @@
 
 Сохраните изменения и перейдите к `http://localhost:xxxx/HelloWorld`. Обратите внимание, что основной и дополнительный заголовки браузера изменились. (Если изменения не отображаются, возможно, вы просматриваете кэшированное содержимое. В этом случае нажмите в браузере клавиши CTRL+F5 для принудительной загрузки ответа сервера.) Заголовок браузера создается с помощью атрибута `ViewData["Title"]`, который задается в шаблоне представления *Index.cshtml* и дополнительной строки "- Movie App", добавляемой в файл макета.
 
-Также обратите внимание, что содержимое шаблона представления *Index.cshtml* объединяется с шаблоном представления *Views/Shared/_Layout.cshtml*, а в браузер отправляется один ответ HTML. С помощью шаблонов макета можно легко вносить изменения, которые применяются ко всем страницам приложения. Дополнительные сведения см. в разделе [Макет](../../mvc/views/layout.md).
+Также обратите внимание, что содержимое шаблона представления *Index.cshtml* объединяется с шаблоном представления *Views/Shared/_Layout.cshtml*, а в браузер отправляется один ответ HTML. С помощью шаблонов макета можно легко вносить изменения, которые применяются ко всем страницам приложения. Дополнительные сведения см. в разделе [Макет](xref:mvc/views/layout).
 
 ![Представление списка фильмов](../../tutorials/first-mvc-app/adding-view/_static/hell3.png)
 
@@ -89,7 +89,7 @@
 
 Вернитесь к файлу *HelloWorldController.cs* и измените метод `Welcome` так, чтобы добавлять значения `Message` и `NumTimes` в словарь `ViewData`. Словарь `ViewData` является динамическим объектом, то есть в него можно помещать абсолютно любые данные. Объект `ViewData` не имеет определенных свойств, пока в него не будут добавлены какие-либо данные. [Система привязки модели MVC](xref:mvc/models/model-binding) автоматически сопоставляет именованные параметры (`name` и `numTimes`) из строк запроса в адресной строке с параметрами метода. Полный файл *HelloWorldController.cs* выглядит следующим образом:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 
 Объект словаря `ViewData` содержит данные, которые будут передаваться в представление. 
 
@@ -97,7 +97,7 @@
 
 В шаблоне представления *Welcome.cshtml* создайте цикл, который будет отображать строку "Hello" `NumTimes`. Замените содержимое файла *Views/HelloWorld/Welcome.cshtml* следующим:
 
-[!code-html[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
+[!code-html[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
 
 Сохраните изменения и перейдите по следующему URL-адресу:
 

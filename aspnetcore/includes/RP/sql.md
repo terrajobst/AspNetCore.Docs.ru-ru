@@ -4,7 +4,7 @@
 
 Объект `MovieContext` обрабатывает задачу подключения к базе данных и сопоставления объектов `Movie` с записями базы данных. Контекст базы данных регистрируется с помощью контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection) в методе `ConfigureServices` в файле *Startup.cs*:
 
-[!code-csharp[Main](code/Startup.cs?name=snippet2&highlight=6-8)]
+[!code-csharp[](code/Startup.cs?name=snippet2&highlight=6-8)]
 
 ## <a name="sqlite"></a>SQLite
 
@@ -20,7 +20,7 @@
 
 Создайте класс `SeedData` в папке *Models*. Замените сгенерированный код следующим кодом:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/SeedData.cs?name=snippet_1)]
+[!code-csharp[](code/Models/SeedData.cs)]
 
 Если в базе данных есть фильмы, возвращается инициализатор заполнения.
 
@@ -36,10 +36,10 @@ if (context.Movie.Any())
 
 Добавьте инициализатор заполнения в метод `Main` в файле *Program.cs*:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Program.cs?highlight=6,16-32)]
+[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Program.cs)]
 
 ### <a name="test-the-app"></a>Тестирование приложения
 
 Удалите все записи в базе данных для запуска метода заполнения. Остановите и запустите приложение, чтобы начать заполнение базы данных.
-   
+
 В приложении будут отображены данные.

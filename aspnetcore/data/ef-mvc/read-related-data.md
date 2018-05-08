@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC и EF Core — чтение связанных данных — 6 из 10"
+title: ASP.NET Core MVC и EF Core — чтение связанных данных — 6 из 10
 author: tdykstra
-description: "Из этого руководства вы узнаете, как читать и отображать связанные данные — данные, которые Entity Framework загружает в свойства навигации."
+description: Из этого руководства вы узнаете, как читать и отображать связанные данные — данные, которые Entity Framework загружает в свойства навигации.
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 58b05587458aacad1a633a04f0359a4d2a3605a3
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 6ee4b0db5bf4d1781ce44f1aff8331680ca8686c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="reading-related-data---ef-core-with-aspnet-core-mvc-tutorial-6-of-10"></a>Чтение связанных данных — руководство по Core EF и ASP.NET Core MVC (6 из 10)
+# <a name="aspnet-core-mvc-with-ef-core---read-related-data---6-of-10"></a>ASP.NET Core MVC и EF Core — чтение связанных данных — 6 из 10
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 01/31/2018
 
 Замените метод `Index` следующим кодом, который использует более подходящее имя для `IQueryable`, возвращающего сущности Course (`courses` вместо `schoolContext`):
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_RevisedIndexMethod)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_RevisedIndexMethod)]
 
 Откройте файл *Views/Courses/Index.cshtml* и замените код шаблона следующим кодом. Изменения выделены:
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 01/31/2018
 
 Создайте в папке *SchoolViewModels* файл *InstructorIndexData.cs* и замените существующий код следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
 ### <a name="create-the-instructor-controller-and-views"></a>Создание контроллера и представлений Instructor
 
@@ -117,31 +117,31 @@ ms.lasthandoff: 01/31/2018
 
 Откройте файл *InstructorsController.cs* и добавьте директиву using для пространства имен ViewModels:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Using)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Using)]
 
 Замените код Index следующим кодом для выполнения безотложной загрузки связанных данных и размещения их в модели представления.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EagerLoading)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EagerLoading)]
 
 Метод принимает необязательные данные маршрута (`id`) и строку запроса (`courseID`), которые содержат значения идентификатора выбранного преподавателя и выбранного курса. Параметры передаются гиперссылками **Select** на странице.
 
 Код начинается с создания экземпляра модели представления и помещения его в список преподавателей. В коде задается безотложная загрузка для свойств навигации `Instructor.OfficeAssignment` и `Instructor.CourseAssignments`. Вместе со свойством `CourseAssignments` загружается свойство `Course`, с которым загружаются свойства `Enrollments` и `Department`, а с каждой сущностью `Enrollment` загружается свойство `Student`.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude)]
 
 Так как для представления требуется сущность OfficeAssignment, значительно эффективнее извлекать ее в том же запросе. Получение сущностей Course необходимо при выборе преподавателя на веб-странице, таким образом одиночный запрос окажется предпочтительнее нескольких запросов, только если страница отображается с курсами чаще, чем без них.
 
 В коде повторяются `CourseAssignments` и `Course`, так как требуется получить два свойства из `Course`. Первая строка `ThenInclude` вызывает получение `CourseAssignment.Course`, `Course.Enrollments` и `Enrollment.Student`.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=3-6)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=3-6)]
 
 В этой точке кода вызов метода `ThenInclude` получал бы свойства навигации `Student`, которые нам требуются. Но вызов `Include` начнет заново получать свойства `Instructor`, поэтому нам придется еще раз выполнить последовательность команд, указав в этот раз `Course.Department` вместо `Course.Enrollments`.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=7-9)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=7-9)]
 
 Следующий код выполняется при выборе преподавателя. Выбранный преподаватель извлекается из списка преподавателей в модели представления. Затем из свойства навигации `CourseAssignments` этого преподавателя получается свойство модели представления `Courses` вместе с сущностями Course.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=56-62)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=56-62)]
 
 Метод `Where` возвращает коллекцию, но с учетом переданных в метод условий в данном случае возвращается только одна сущность Instructor. Метод `Single` преобразует коллекцию в отдельную сущность Instructor, что позволяет получить доступ к ее свойству `CourseAssignments`. Свойство `CourseAssignments` содержит сущности `CourseAssignment`, из которых нам нужны только связанные сущности `Course`.
 
@@ -159,7 +159,7 @@ ms.lasthandoff: 01/31/2018
 
 Далее, если был выбран курс, то он получается из списка курсов модели представления. Затем из свойства навигации `Enrollments` этого курса получается свойство модели представления `Enrollments` вместе с сущностями Enrollment.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=64-69)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=64-69)]
 
 ### <a name="modify-the-instructor-index-view"></a>Изменение представления Instructor Index
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 01/31/2018
 
 Пусть ожидается, что пользователи лишь изредка будут просматривать список зачисления для выбранных преподавателя и курса. В этом случае, возможно, потребуется загружать данные о зачислении, только когда они запрошены. Чтобы продемонстрировать пример того, как выполнять явную загрузку, заменим метод `Index` следующим кодом, который удаляет упреждающую загрузку для Enrollments и загружает это свойство явно. Изменения в коде выделены.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ExplicitLoading&highlight=23-29)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ExplicitLoading&highlight=23-29)]
 
 В новом коде из блока, который получает сущности преподавателей, удален вызов метода *ThenInclude*. Если выбраны преподаватели и курс, выделенный код получает сущности Enrollment выбранного курса и сущности Student для каждой сущности Enrollment.
 

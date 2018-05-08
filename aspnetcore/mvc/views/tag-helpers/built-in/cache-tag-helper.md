@@ -1,7 +1,7 @@
 ---
-title: "Вспомогательная функция тегов кэша в MVC-моделях ASP.NET Core"
+title: Вспомогательная функция тегов кэша в MVC-моделях ASP.NET Core
 author: pkellner
-description: "Сведения о работе со вспомогательной функцией тега кэша"
+description: Сведения о работе со вспомогательной функцией тега кэша
 manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 51811ee1669a24a0fc4ce9bc67e782b61bff655c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6f19a989c9bdfddea7609c5571cdd49de29e036b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Вспомогательная функция тегов кэша в MVC-моделях ASP.NET Core
 
@@ -60,10 +60,9 @@ ms.lasthandoff: 01/30/2018
 
 ### <a name="expires-on"></a>expires-on 
 
-| Тип атрибута    | Пример значения     |
-|----------------   |----------------   |
-| DateTimeOffset    | "@new DateTime(2025,1,29,17,02,0)"    |
-
+| Тип атрибута |           Пример значения            |
+|----------------|------------------------------------|
+| DateTimeOffset | "@new DateTime(2025,1,29,17,02,0)" |
 
 Задает абсолютную дату окончания срока действия. В следующем примере содержимое вспомогательной функции тегов кэша будет кэшировано до 29 января 2025 г., 17:02.
 
@@ -79,10 +78,9 @@ ms.lasthandoff: 01/30/2018
 
 ### <a name="expires-after"></a>expires-after
 
-| Тип атрибута    | Пример значения     |
-|----------------   |----------------   |
-| TimeSpan    | "@TimeSpan.FromSeconds(120)"    |
-
+| Тип атрибута |        Пример значения         |
+|----------------|------------------------------|
+|    TimeSpan    | "@TimeSpan.FromSeconds(120)" |
 
 Задает интервал времени для кэширования содержимого с момента первого запроса. 
 
@@ -98,10 +96,9 @@ ms.lasthandoff: 01/30/2018
 
 ### <a name="expires-sliding"></a>expires-sliding
 
-| Тип атрибута    | Пример значения     |
-|----------------   |----------------   |
-| TimeSpan    | "@TimeSpan.FromSeconds(60)"     |
-
+| Тип атрибута |        Пример значения        |
+|----------------|-----------------------------|
+|    TimeSpan    | "@TimeSpan.FromSeconds(60)" |
 
 Задает время, по истечении которого запись кэша следует удалить, если к ней не было обращений.
 
@@ -169,7 +166,7 @@ routes.MapRoute(
     name: "default",
     template: "{controller=Home}/{action=Index}/{Make?}/{Model?}");
 ```
-  
+
 *Index.cshtml*
 
 ```cshtml
@@ -224,10 +221,9 @@ routes.MapRoute(
 
 ### <a name="vary-by"></a>vary-by
 
-| Тип атрибута    | Примеры значений                |
-|----------------   |----------------               |
-| String             | "@Model"                 |
-
+| Тип атрибута | Примеры значений |
+|----------------|----------------|
+|     String     |    "@Model"    |
 
 Позволяет настраивать, какие данные кэшируются. Содержимое вспомогательной функции тегов кэша обновляется при изменении объекта, на который ссылается строковое значение атрибута. Часто этому атрибуту назначается объединенная строка значений модели.  По сути это означает, что обновление любого из объединенных значений приводит к сбросу кэша.
 
@@ -283,5 +279,5 @@ public IActionResult Index(string myParam1,string myParam2,string myParam3)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Кэширование в памяти](xref:performance/caching/memory)
+* [Кэш в памяти](xref:performance/caching/memory)
 * [Общие сведения об Identity](xref:security/authentication/identity)

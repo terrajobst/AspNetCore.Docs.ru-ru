@@ -1,7 +1,7 @@
 ---
-title: "Передача файлов в ASP.NET Core"
+title: Передача файлов в ASP.NET Core
 author: ardalis
-description: "Сведения об использовании привязки модели и потоковой передачи для передачи файлов в ASP.NET Core MVC."
+description: Сведения об использовании привязки модели и потоковой передачи для передачи файлов в ASP.NET Core MVC.
 manager: wpickett
 ms.author: riande
 ms.date: 07/05/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 314d585c7bf7f8c95f763babe6cdf93e514ff656
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 7ba4f6d9e3901c310fe9fa7a70382d9243d8b347
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="file-uploads-in-aspnet-core"></a>Передача файлов в ASP.NET Core
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 01/30/2018
 
 ![Форма для отправки файла](file-uploads/_static/upload-form.png)
 
-Доступ к отдельным файлам, переданным на сервер, можно получать посредством [привязки модели](xref:mvc/models/model-binding) с помощью интерфейса [IFormFile](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.iformfile). `IFormFile` имеет следующую структуру:
+Доступ к отдельным файлам, переданным на сервер, можно получать посредством [привязки модели](xref:mvc/models/model-binding) с помощью интерфейса [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile). `IFormFile` имеет следующую структуру:
 
 ```csharp
 public interface IFormFile
@@ -71,7 +71,7 @@ public interface IFormFile
 
 [!INCLUDE [GetTempFileName](../../includes/GetTempFileName.md)]
 
-[!code-csharp[Main](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
+[!code-csharp[](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
 
 Файлы, передаваемые с помощью интерфейса `IFormFile`, буферизуются в памяти или на диске на веб-сервере перед обработкой. Внутри метода действия содержимое `IFormFile` доступно в виде потока. Помимо локальной файловой системы, файлы могут передаваться в потоковом режиме в [хранилище BLOB-объектов Azure](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/) или в [Entity Framework](https://docs.microsoft.com/ef/core/index).
 
@@ -151,15 +151,15 @@ public IActionResult Index()
 
 Атрибут использует встроенную поддержку [защиты от подделки](xref:security/anti-request-forgery) в ASP.NET Core, чтобы задать файл cookie с токеном запроса.
 
-[!code-csharp[Main](file-uploads/sample/FileUploadSample/Filters/GenerateAntiforgeryTokenCookieForAjaxAttribute.cs?name=snippet1)]
+[!code-csharp[](file-uploads/sample/FileUploadSample/Filters/GenerateAntiforgeryTokenCookieForAjaxAttribute.cs?name=snippet1)]
 
 Angular автоматически передает токен от подделки в заголовке запроса с именем `X-XSRF-TOKEN`. Приложение ASP.NET Core MVC настроено так, что оно ссылается на этот заголовок в конфигурации в файле *Startup.cs*:
 
-[!code-csharp[Main](file-uploads/sample/FileUploadSample/Startup.cs?name=snippet1)]
+[!code-csharp[](file-uploads/sample/FileUploadSample/Startup.cs?name=snippet1)]
 
 Показанный ниже атрибут `DisableFormValueModelBinding` предназначен для отключения привязки модели для метода действия `Upload`.
 
-[!code-csharp[Main](file-uploads/sample/FileUploadSample/Filters/DisableFormValueModelBindingAttribute.cs?name=snippet1)]
+[!code-csharp[](file-uploads/sample/FileUploadSample/Filters/DisableFormValueModelBindingAttribute.cs?name=snippet1)]
 
 Так как привязка модели отключена, метод действия `Upload` не принимает параметров. Он работает напрямую со свойством `Request` объекта `ControllerBase`. Для считывания каждого раздела служит объект `MultipartReader`. Файл сохраняется с именем GUID, а данные типа "ключ — значение" сохраняются в `KeyValueAccumulator`. После считывания всех разделов содержимое `KeyValueAccumulator` используется для привязки данных формы к типу модели.
 
@@ -167,7 +167,7 @@ Angular автоматически передает токен от поддел
 
 [!INCLUDE [GetTempFileName](../../includes/GetTempFileName.md)]
 
-[!code-csharp[Main](file-uploads/sample/FileUploadSample/Controllers/StreamingController.cs?name=snippet1)]
+[!code-csharp[](file-uploads/sample/FileUploadSample/Controllers/StreamingController.cs?name=snippet1)]
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
@@ -195,7 +195,7 @@ The request filtering module is configured to deny a request that exceeds the re
 </system.webServer>
 ```
 
-Этот параметр применим только к службам IIS. При размещении в Kestrel такой проблемы возникать не должно. Дополнительные сведения см. в статье [Ограничения запроса \<requestLimits\>](https://docs.microsoft.com/iis/configuration/system.webServer/security/requestFiltering/requestLimits/).
+Этот параметр применим только к службам IIS. При размещении в Kestrel такой проблемы возникать не должно. Дополнительные сведения см. в статье [Ограничения запроса \<requestLimits\>](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/).
 
 ### <a name="null-reference-exception-with-iformfile"></a>Исключение, связанное с пустой ссылкой в IFormFile
 

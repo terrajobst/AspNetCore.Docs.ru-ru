@@ -1,32 +1,33 @@
 ---
-title: "Сформированные страницы Razor Pages в ASP.NET Core"
+title: Сформированные страницы Razor Pages в ASP.NET Core
 author: rick-anderson
-description: "Описание страниц Razor Pages, созданных путем формирования шаблонов."
-ms.author: riande
+description: Описание страниц Razor Pages, созданных путем формирования шаблонов.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
+ms.author: riande
 ms.date: 09/27/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 10da592de7b6dd45fbe81d25bc10105e31b547cb
-ms.sourcegitcommit: 09b342b45e7372ba9ebf17f35eee331e5a08fb26
+ms.openlocfilehash: c2a92cea2fdb3465963df1c4dcb71d1d3c95dcd3
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/26/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>Сформированные страницы Razor Pages в ASP.NET Core
 
-[!INCLUDE[model1](../../includes/RP/page1.md)]
+[!INCLUDE [model1](../../includes/RP/page1.md)]
 
 Visual Studio выделяет тег `<form method="post">` отдельным шрифтом, который используется для вспомогательных функций тегов. 
 
 ![Представление страницы Create.cshtml в VS17](page/_static/th.png)
 
-[!INCLUDE[model1](../../includes/RP/page2.md)]
+[!INCLUDE [model1](../../includes/RP/page2.md)]
 
 В следующем учебнике рассматривается SQL Server LocalDB и заполнение базы данных.
 
->[!div class="step-by-step"]
-[Назад: Добавление модели](xref:tutorials/razor-pages/model)
-[Далее: SQL Server LocalDB](xref:tutorials/razor-pages/sql)
+> [!div class="step-by-step"]
+> [Назад: Добавление модели](xref:tutorials/razor-pages/model)
+> [Далее: SQL Server LocalDB](xref:tutorials/razor-pages/sql)

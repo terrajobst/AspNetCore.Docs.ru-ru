@@ -1,20 +1,20 @@
 ---
-title: "ASP.NET Core MVC и EF Core — сортировка, фильтрация, разбиение на страницы — 3 из 10"
+title: ASP.NET Core MVC и EF Core — сортировка, фильтрация, разбиение на страницы — 3 из 10
 author: tdykstra
-description: "Из этого руководства вы узнаете, как при помощи ASP.NET Core и Entity Framework Core добавить на страницу функции сортировки, фильтрации и разбиения на страницы."
+description: Из этого руководства вы узнаете, как при помощи ASP.NET Core и Entity Framework Core добавить на страницу функции сортировки, фильтрации и разбиения на страницы.
 ms.author: tdykstra
 ms.date: 03/15/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: feb4a50c9e5602064e7d493b6991485949903f47
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: d4fe6386318210a751d1248c87299d414ab563a3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="sorting-filtering-paging-and-grouping---ef-core-with-aspnet-core-mvc-tutorial-3-of-10"></a>Сортировка, фильтрация, разбиение на страницы и группировка — руководство по Core EF с ASP.NET Core MVC (3 из 10)
+# <a name="aspnet-core-mvc-with-ef-core---sort-filter-paging---3-of-10"></a>ASP.NET Core MVC и EF Core — сортировка, фильтрация, разбиение на страницы — 3 из 10
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/31/2018
 
 В файле *StudentsController.cs* замените код метода `Index` следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly)]
 
 Этот код принимает параметр `sortOrder` из строки запроса в URL. Значение строки запроса в ASP.NET Core MVC передается как параметр метода действия. Имя параметра представляет собой строку, состоящую из "Name" или "Date" с возможным добавлением знака подчеркивания и строки "desc" для указания убывающего порядка сортировки. По умолчанию используется порядок сортировки по возрастанию.
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/31/2018
 
 Для формирования гиперссылок в заголовках столбцов в представлении используются два элемента `ViewData` (NameSortParm и DateSortParm) с соответствующими значениями строки запроса.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly&highlight=3-4)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly&highlight=3-4)]
 
 Это тернарные условные операторы. Первое выражение означает, что если параметр `sortOrder` пуст или равен null, то параметр NameSortParm должен принять значение "name_desc", в противном случае параметру NameSortParm присваивается пустая строка. Следующие два оператора устанавливают гиперссылки в заголовках столбцов в представлении следующим образом:
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 01/31/2018
 
 В файле *StudentsController.cs* замените метод `Index` следующим кодом (изменения выделены).
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
 
 Мы добавили в метод `Index` параметр `searchString`. Значение строки поиска получается из текстового поля, которое мы добавили в представление Index. Мы также добавили в запрос LINQ предложение where, которое отбирает только студентов, чье имя или фамилия содержат строку поиска. Выражение с предложением where выполняется только в том случае, если задано значение для поиска.
 
@@ -116,7 +116,7 @@ http://localhost:5813/Students?SearchString=an
 
 В папке проекта создайте файл `PaginatedList.cs` и замените код шаблона на следующий код.
 
-[!code-csharp[Main](intro/samples/cu/PaginatedList.cs)]
+[!code-csharp[](intro/samples/cu/PaginatedList.cs)]
 
 В этом коде метод `CreateAsync` принимает размер и номер страницы и вызывает соответствующие методы `Skip` и `Take` объекта `IQueryable`. Метод `ToListAsync` объекта `IQueryable` при вызове возвратит список, содержащий только запрошенную страницу. Для включения и отключения кнопок перелистывания страниц **Previous** и **Next** можно использовать свойства `HasPreviousPage` и `HasNextPage`.
 
@@ -126,7 +126,7 @@ http://localhost:5813/Students?SearchString=an
 
 В файле *StudentsController.cs* замените код метода `Index` следующим кодом.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilterPage&highlight=1-5,7,11-18,45-46)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilterPage&highlight=1-5,7,11-18,45-46)]
 
 Этот код добавляет к сигнатуре метода параметры с номером страницы, текущим порядком сортировки и текущим фильтром.
 
@@ -213,21 +213,21 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 В новой папке добавьте файл класса *EnrollmentDateGroup.cs* и замените код шаблона следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
 ### <a name="modify-the-home-controller"></a>Изменение контроллера Home
 
 Добавьте следующие директивы using в начало файла *HomeController.cs*:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings1)]
+[!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings1)]
 
 Добавьте переменную класса для контекста базы данных сразу же после открывающей фигурной скобки описания класса и получите экземпляр контекста из ASP.NET Core DI:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_AddContext&highlight=3,5,7)]
+[!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_AddContext&highlight=3,5,7)]
 
 Замените метод `About` следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
+[!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
 Запрос LINQ группирует записи из таблицы студентов по дате зачисления, вычисляет число записей в каждой группе и сохраняет результаты в коллекцию объектов моделей представления `EnrollmentDateGroup`.
 > [!NOTE] 
@@ -247,6 +247,6 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 В этом руководстве вы узнали, как выполнять сортировку, фильтрацию, разбиение на страницы и группировку. В следующем руководстве вы узнаете, как с помощью миграций обрабатывать изменения в модели данных.
 
->[!div class="step-by-step"]
-[Назад](crud.md)
-[Вперед](migrations.md)  
+> [!div class="step-by-step"]
+> [Назад](crud.md)
+> [Вперед](migrations.md)  

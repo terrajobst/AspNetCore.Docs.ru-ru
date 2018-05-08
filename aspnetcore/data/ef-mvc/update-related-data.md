@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC и EF Core — обновление связанных данных — 7 из 10"
+title: ASP.NET Core MVC и EF Core — обновление связанных данных — 7 из 10
 author: tdykstra
-description: "В этом руководстве описано обновление связанных данных путем обновления полей внешнего ключа и свойств навигации."
+description: В этом руководстве описано обновление связанных данных путем обновления полей внешнего ключа и свойств навигации.
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 4085ca9340291f6ab594285360f3b65738699098
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 2501f4c4abdadd47b4910909205a5c798f1b938f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="updating-related-data---ef-core-with-aspnet-core-mvc-tutorial-7-of-10"></a>Обновление связанных данных — руководство по Core EF и ASP.NET Core MVC (7 из 10)
+# <a name="aspnet-core-mvc-with-ef-core---update-related-data---7-of-10"></a>ASP.NET Core MVC и EF Core — обновление связанных данных — 7 из 10
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -35,27 +35,27 @@ ms.lasthandoff: 01/31/2018
 
 В *CoursesController.cs* удалите методы Create и Edit и замените их следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_CreateGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_CreateGet)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_CreatePost)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_CreatePost)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_EditGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_EditGet)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_EditPost)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_EditPost)]
 
 После метода HttpPost `Edit` создайте метод, загружающий сведения о кафедре для раскрывающегося списка.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_Departments)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_Departments)]
 
 Метод `PopulateDepartmentsDropDownList` возвращает список всех кафедр, отсортированных по имени, создает коллекцию `SelectList` для раскрывающегося списка и передает ее в представление в `ViewBag`. Этот метод принимает необязательный параметр `selectedDepartment`, позволяющий вызывающему коду указать элемент, который будет выбран при отрисовке раскрывающегося списка. Представление передаст имя "DepartmentID" во вспомогательную функцию тегов `<select>`, после чего ей станет известно, что нужно искать в объекте `ViewBag` коллекцию `SelectList` с именем "DepartmentID".
 
 Метод HttpGet `Create` вызывает метод `PopulateDepartmentsDropDownList` без установки выбранного элемента, так как кафедра для нового курса еще не задана:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=3&name=snippet_CreateGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?highlight=3&name=snippet_CreateGet)]
 
 Метод HttpGet `Edit` задает выбранный элемент на основе идентификатора кафедры, который уже назначен редактируемому курсу:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=15&name=snippet_EditGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?highlight=15&name=snippet_EditGet)]
 
 Методы HttpPost для `Create` и `Edit` также содержат код, который задает выбранный элемент, когда они повторно отображают страницу после ошибки. Это гарантирует, что при повторном отображении страницы для вывода сообщения об ошибке сохраняется выбор кафедры.
 
@@ -63,27 +63,27 @@ ms.lasthandoff: 01/31/2018
 
 Чтобы оптимизировать производительность страниц "Details" (Сведения) и "Delete" (Удаление) курса, добавьте вызовы `AsNoTracking` в методы `Details` и HttpGet `Delete`.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=10&name=snippet_Details)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?highlight=10&name=snippet_Details)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=10&name=snippet_DeleteGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?highlight=10&name=snippet_DeleteGet)]
 
 ### <a name="modify-the-course-views"></a>Изменение представлений курса
 
 Во *Views/Courses/Create.cshtml* добавьте параметр "Select Department" (Выбрать кафедру) в раскрывающийся список **Department** (Кафедра), измените заголовок с **DepartmentID** на **Department** и добавьте сообщение о проверке.
 
-[!code-html[Main](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
+[!code-html[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
 
 Во *Views/Courses/Edit.cshtml* внесите для поля "Department" (Кафедра) изменение, аналогичное внесенному в *Create.cshtml*.
 
 Кроме того, добавьте во *Views/Courses/Edit.cshtml* поле номера курса перед полем **Title** (Название). Так как номер курса является первичным ключом, он отображается, но не может быть изменен.
 
-[!code-html[Main](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
+[!code-html[](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
 
 Представление "Edit" (Редактирование) уже содержит скрытое поле (`<input type="hidden">`) для номера курса. Добавление вспомогательной функции тегов `<label>` не устраняет потребность в этом скрытом поле, так как не приводит к включению номера курса в передаваемые данные, когда пользователь нажимает кнопку **Save** (Сохранить) на странице **Edit** (Редактирование).
 
 Во *Views/Courses/Delete.cshtml* добавьте поле номера курса в верхней части страницы и измените идентификатор кафедры на ее имя.
 
-[!code-html[Main](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
+[!code-html[](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
 
 Во *Views/Courses/Details.cshtml* внесите изменение, аналогичное внесенному в *Delete.cshtml*.
 
@@ -115,11 +115,11 @@ ms.lasthandoff: 01/31/2018
 
 В *InstructorsController.cs* измените код метода HttpGet `Edit`, чтобы он загружал свойство навигации `OfficeAssignment` сущности Instructor и вызывал `AsNoTracking`:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=9,10&name=snippet_EditGetOA)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=9,10&name=snippet_EditGetOA)]
 
 Замените метод HttpPost `Edit` следующим кодом, чтобы обрабатывать обновления назначения кабинета:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EditPostOA)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EditPostOA)]
 
 Этот код выполняет следующее:
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 01/31/2018
 
 -  Обновляет извлеченную сущность Instructor, используя значения из связывателя модели. Перегрузка `TryUpdateModel` позволяет добавить включаемые свойства в список разрешений. Это защищает от чрезмерной передачи данных, как описано во [втором руководстве](crud.md).
 
-    <!-- Snippets don't play well with <ul> [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
+    <!-- Snippets don't play well with <ul> [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 
     ```csharp
     if (await TryUpdateModelAsync<Instructor>(
@@ -155,7 +155,7 @@ ms.lasthandoff: 01/31/2018
 
 В конце *Views/Instructors/Edit.cshtml*, перед кнопкой **Save** (Сохранить), добавьте новое поле для редактирования расположения кабинета:
 
-[!code-html[Main](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
+[!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
 
 Запустите приложение, выберите вкладку **Instructors** (Преподаватели), а затем щелкните **Edit** (Изменить) для преподавателя. Измените значение **Office Location** (Расположение кабинета) и нажмите кнопку **Save** (Сохранить).
 
@@ -177,11 +177,11 @@ ms.lasthandoff: 01/31/2018
 
 Создайте в папке *SchoolViewModels* файл *AssignedCourseData.cs* и замените существующий код следующим:
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
 
 В файле *InstructorsController.cs* замените код метода HttpGet `Edit` приведенным ниже кодом. Изменения выделены.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=10,17,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36&name=snippet_EditGetCourses)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=10,17,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36&name=snippet_EditGetCourses)]
 
 Код добавляет безотложную загрузку для свойства навигации `Courses` и вызывает новый метод `PopulateAssignedCourseData` для предоставления сведений массиву флажков с помощью класса модели представления `AssignedCourseData`.
 
@@ -189,9 +189,9 @@ ms.lasthandoff: 01/31/2018
 
 Добавьте код, выполняемый, когда пользователь нажимает кнопку **Save** (Сохранить). Замените метод `EditPost` на следующий код и добавьте новый метод, который обновляет свойство навигации `Courses` для сущности Instructor.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=1,3,12,13,25,39-40&name=snippet_EditPostCourses)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=1,3,12,13,25,39-40&name=snippet_EditPostCourses)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_UpdateCourses&highlight=1-31)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_UpdateCourses&highlight=1-31)]
 
 Сигнатура метода теперь отличается от метода HttpGet `Edit`, поэтому имя метода изменяется с `EditPost` обратно на `Edit`.
 
@@ -199,17 +199,17 @@ ms.lasthandoff: 01/31/2018
 
 Если никакие флажки не выбраны, код в `UpdateInstructorCourses` инициализирует свойство навигации `CourseAssignments` с использованием пустой коллекции и возвращает следующее:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_UpdateCourses&highlight=3-7)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_UpdateCourses&highlight=3-7)]
 
 После этого код в цикле проходит по всем курсам в базе данных и сравнивает каждый из них с теми, которые сейчас назначены преподавателю, в противоположность тем, которые были выбраны в представлении. Чтобы упростить эффективную подстановку, последние две коллекции хранятся в объектах `HashSet`.
 
 Если флажок для курса был установлен, но курс отсутствует в свойстве навигации `Instructor.CourseAssignments`, этот курс добавляется в коллекцию в свойстве навигации.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=14-20&name=snippet_UpdateCourses)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=14-20&name=snippet_UpdateCourses)]
 
 Если флажок для курса не был установлен, но курс присутствует в свойстве навигации `Instructor.CourseAssignments`, этот курс удаляется из свойства навигации.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=21-29&name=snippet_UpdateCourses)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=21-29&name=snippet_UpdateCourses)]
 
 ### <a name="update-the-instructor-views"></a>Обновление представлений преподавателя
 
@@ -219,7 +219,7 @@ ms.lasthandoff: 01/31/2018
 > [!NOTE] 
 > При вставке кода в Visual Studio разрывы строк изменяются, нарушая код.  Один раз нажмите клавиши CTRL+Z, чтобы отменить автоматическое форматирование.  Это исправляет разрывы строк, благодаря чему код приобретает показанный здесь вид. Выравнивать отступы необязательно, однако строки `@</tr><tr>`, `@:<td>`, `@:</td>` и `@:</tr>` должны находиться на одной строке, как показано здесь. В противном случае возникает ошибка времени выполнения. Выделите блок нового кода и три раза нажмите клавишу TAB, чтобы выровнять его с существующим кодом. С ходом работы над решением этой проблемы вы можете ознакомиться [здесь](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html).
 
-[!code-html[Main](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
+[!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 
 Этот код создает таблицу HTML с тремя столбцами. Каждый столбец содержит флажок, за которым идет заголовок с номером и названием курса. Все флажки имеют одинаковое имя ("selectedCourses"), уведомляющее связывателя модели, что их следует рассматривать как группу. Атрибуту значения для каждого флажка присваивается значение `CourseID`. При передаче страницы связыватель модели передает контроллеру массив, содержащий значения `CourseID` только для выбранных флажков.
 
@@ -238,7 +238,7 @@ ms.lasthandoff: 01/31/2018
 
 В файле *InstructorsController.cs* удалите метод `DeleteConfirmed` и вставьте вместо него приведенный ниже код.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=5-7,9-12&name=snippet_DeleteConfirmed)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=5-7,9-12&name=snippet_DeleteConfirmed)]
 
 Этот код вносит следующие изменения:
 
@@ -250,7 +250,7 @@ ms.lasthandoff: 01/31/2018
 
 В файле *InstructorsController.cs* удалите методы HttpGet и HttpPost `Create` и вставьте вместо них следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Create&highlight=3-5,12,14-22,29)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Create&highlight=3-5,12,14-22,29)]
 
 Этот код аналогичен коду для методов `Edit`, за исключением того, что изначально никакие курсы не выбраны. Метод HttpGet `Create` вызывает метод `PopulateAssignedCourseData` не потому, что могут быть выбраны курсы, а чтобы предоставить пустую коллекцию для цикла `foreach` в представлении (в противном случае код представления выдаст исключение пустой ссылки).
 
@@ -283,7 +283,7 @@ public ICollection<CourseAssignment> CourseAssignments
 
 Во *Views/Instructor/Create.cshtml* добавьте текстовое поле для расположения кабинета и флажки для курсов перед кнопкой "Submit" (Отправить). Как и в случае со страницей редактирования, [исправьте форматирование, если Visual Studio переформатирует код при вставке](#notepad).
 
-[!code-html[Main](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
+[!code-html[](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 
 Проверьте работу, запустив приложение и создав преподавателя. 
 
@@ -295,6 +295,6 @@ public ICollection<CourseAssignment> CourseAssignments
 
 Вы ознакомились с введением в работу со связанными данными. Следующее руководство описывает обработку конфликтов параллелизма.
 
->[!div class="step-by-step"]
-[Назад](read-related-data.md)
-[Вперед](concurrency.md)  
+> [!div class="step-by-step"]
+> [Назад](read-related-data.md)
+> [Вперед](concurrency.md)  

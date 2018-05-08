@@ -4,13 +4,13 @@
 
 В этом руководстве в таблицу `Movies` добавляется новое поле. После изменения схемы (и добавления нового поля) мы удалим старую базу данных и создадим новую. Этот подход применяется на ранней стадии разработки, когда в базе отсутствуют важные рабочие данные.
 
-После того, как приложение развернуто и содержит нужные данные, при изменении схемы нельзя удалять существующую базу данных. Платформа Entity Framework [Code First Migrations](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) позволяет обновлять схему и переносить базу данных без потери данных. При работе с SQL Server миграция выполняется достаточно часто, но в SQLlite набор операций, связанных со схемой миграции, крайне ограничен. Дополнительные сведения см. в разделе [Ограничения в SQLite](https://docs.microsoft.com/ef/core/providers/sqlite/limitations).
+После того, как приложение развернуто и содержит нужные данные, при изменении схемы нельзя удалять существующую базу данных. Платформа Entity Framework [Code First Migrations](/ef/core/get-started/aspnetcore/new-db) позволяет обновлять схему и переносить базу данных без потери данных. При работе с SQL Server миграция выполняется достаточно часто, но в SQLlite набор операций, связанных со схемой миграции, крайне ограничен. Дополнительные сведения см. в разделе [Ограничения в SQLite](/ef/core/providers/sqlite/limitations).
 
 ## <a name="adding-a-rating-property-to-the-movie-model"></a>Добавление свойства Rating в модель Movie
 
 Откройте файл *Models/Movie.cs* и добавьте свойство `Rating`:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
 
 Поскольку в класс `Movie` было добавлено новое поле, необходимо также обновить белый список привязки, включив в него новое свойство. В файле *MoviesController.cs* обновите атрибут `[Bind]` для методов действия `Create` и `Edit`, включив свойство `Rating`:
 
@@ -22,7 +22,7 @@
 
 Измените файл */Views/Movies/Index.cshtml* и добавьте поле `Rating`:
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=17,39&range=24-64)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=17,39&range=24-64)]
 
 Обновите файл */Views/Movies/Create.cshtml*, указав поле `Rating`.
 
@@ -48,7 +48,7 @@ SqliteException: SQLite Error 1: 'no such column: m.Rating'.
 
 Обновите класс `SeedData` так, чтобы он предоставлял значение нового столбца. Ниже показан пример изменения, которое необходимо выполнить для каждого `new Movie`.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/SeedDataRating.cs?name=snippet1&highlight=6)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/SeedDataRating.cs?name=snippet1&highlight=6)]
 
 Добавьте поле `Rating` в представления `Edit`, `Details` и `Delete`.
 

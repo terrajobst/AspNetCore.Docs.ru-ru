@@ -110,6 +110,7 @@
 ## [Запуск приложения](fundamentals/startup.md)
 ## [Введение зависимостей (службы)](fundamentals/dependency-injection.md)
 ## [ПО промежуточного слоя](xref:fundamentals/middleware/index)
+### [ПО промежуточного слоя](xref:fundamentals/middleware/index)
 ### [Фабричное ПО промежуточного слоя](xref:fundamentals/middleware/extensibility)
 ### [Фабричное ПО промежуточного слоя со сторонним контейнером](xref:fundamentals/middleware/extensibility-third-party-container)
 ## [Работа со статическими файлами](fundamentals/static-files.md)
@@ -117,6 +118,7 @@
 ## [ПО промежуточного слоя для переопределения URL-адресов](fundamentals/url-rewriting.md)
 ## [Работа с несколькими средами](fundamentals/environments.md)
 ## [Конфигурация и параметры](xref:fundamentals/configuration/index)
+### [Конфигурация](xref:fundamentals/configuration/index)
 ### [Параметры](xref:fundamentals/configuration/options)
 ## [Ведение журнала](xref:fundamentals/logging/index)
 ### [Ведение журнала с LoggerMessage](xref:fundamentals/logging/loggermessage)
@@ -130,6 +132,7 @@
 ### [HTTP.sys](fundamentals/servers/httpsys.md)
 ## [Глобализация и локализация](xref:fundamentals/localization)
 ### [Настройка локализации переносных объектов с помощью Orchard Core](xref:fundamentals/portable-object-localization)
+## [Инициирование HTTP-запросов](xref:fundamentals/http-requests)
 ## [Параметры запроса](fundamentals/request-features.md)
 ## [Фоновые задачи с размещенными службами](xref:fundamentals/hosted-services)
 ## [Примитивы](xref:fundamentals/primitives/index)
@@ -140,10 +143,14 @@
 ## [Выбор между средами выполнения .NET Core и.NET Framework](/dotnet/articles/standard/choosing-core-framework-server)
 ## [Выбор между ASP.NET Core и ASP.NET](choose-aspnet-framework.md)
 
+# [Razor Pages](xref:mvc/razor-pages/index)
+## [Методы фильтрации для Razor Pages](xref:mvc/razor-pages/filter)
+## [Создание библиотеки классов Razor](xref:mvc/razor-pages/ui-class)
+## [Соглашения для маршрутов и приложений](xref:mvc/razor-pages/razor-pages-convention-features)
+## [Пакет SDK для Razor](xref:mvc/razor-pages/sdk)
+
+
 # [MVC](mvc/overview.md)
-## [Razor Pages](xref:mvc/razor-pages/index)
-### [Синтаксис Razor](mvc/views/razor.md)
-### [Соглашения для маршрутов и приложений](xref:mvc/razor-pages/razor-pages-convention-features)
 ## [Привязка модели](mvc/models/model-binding.md)
 ### [Проверка модели](mvc/models/validation.md)
 ## [Представления](mvc/views/overview.md)
@@ -221,6 +228,9 @@
 ## [Введение](xref:signalr/introduction)
 ## [Начало работы](xref:signalr/get-started)
 ## [Центры](xref:signalr/hubs)
+## [Клиент JavaScript](xref:signalr/javascript-client)
+## [Публикация в Azure](xref:signalr/publish-to-azure-web-app)
+## [Поддерживаемые платформы](xref:signalr/supported-platforms)
 
 # [Мобильные приложения](xref:mobile/index)
 ## [Создание серверных служб для собственных мобильных приложений](xref:mobile/native-mobile-backend)
@@ -348,7 +358,7 @@
 ## [Миграция с ASP.NET Core 1.x на 2.0](xref:migration/1x-to-2x/index)
 ### [Проверка подлинности и удостоверения](xref:migration/1x-to-2x/identity-2x)
 
-# [Справочник по интерфейсам API](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0)
+# [Справочник по интерфейсам API](/dotnet/api/?view=aspnetcore-2.0)
 
 # [Заметки о выпуске 2.0](aspnetcore-2.0.md)
 ## [Заметки о выпуске 1.1](aspnetcore-1.1.md)

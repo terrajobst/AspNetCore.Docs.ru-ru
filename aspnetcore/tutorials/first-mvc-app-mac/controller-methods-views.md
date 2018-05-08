@@ -1,19 +1,19 @@
 ---
-title: "Методы и представления контроллера в приложении ASP.NET Core MVC"
+title: Методы и представления контроллера в приложении ASP.NET Core MVC
 author: rick-anderson
-description: "Работа с методами, представлениями контроллера и DataAnnotations"
-ms.author: riande
+description: Работа с методами, представлениями контроллера и DataAnnotations
 manager: wpickett
+ms.author: riande
 ms.date: 04/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/first-mvc-app-mac/controller-methods-views
-ms.openlocfilehash: 71cdf9f0a4a72f375af094c7c0a446278f8aeeb5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7a6a965d99742e7e06e6da82999dc60264cac6c8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="controller-methods-and-views-in-an-aspnet-core-mvc-app"></a>Методы и представления контроллера в приложении ASP.NET Core MVC
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/24/2018
 
 Откройте файл *Models/Movie.cs* и добавьте указанные ниже выделенные строки:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDate.cs?name=snippet_1&highlight=2,11-12)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDate.cs?name=snippet_1&highlight=2,11-12)]
 
 Выполните сборку и запуск приложения.
 
@@ -34,8 +34,8 @@ ms.lasthandoff: 01/24/2018
 
  -->
 
-[!INCLUDE[adding-model](../../includes/mvc-intro/controller-methods-views.md)]
+[!INCLUDE [adding-model](../../includes/mvc-intro/controller-methods-views.md)]
 
->[!div class="step-by-step"]
-[Предыдущая статья — "Работа с SQLite"](working-with-sql.md)
-[Следующая статья — "Добавление поиска"](search.md)
+> [!div class="step-by-step"]
+> [Предыдущая статья — "Работа с SQLite"](working-with-sql.md)
+> [Следующая статья — "Добавление поиска"](search.md)

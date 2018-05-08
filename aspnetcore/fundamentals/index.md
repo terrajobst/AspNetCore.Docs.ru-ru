@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: b74870c93ea0120e43931bb75f47bab19a6de201
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: d5b74e213828d1a1f7e09810e5cc72773a821dab
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>Основы ASP.NET Core
 
@@ -98,6 +98,10 @@ ASP.NET Core содержит большой набор встроенного �
 В приложениях ASP.NET Core можно использовать любое ПО промежуточного слоя на базе [OWIN](http://owin.org), а также писать собственные, пользовательские ПО промежуточного слоя.
 
 Дополнительные сведения см. в статьях [ПО промежуточного слоя](xref:fundamentals/middleware/index) и [Открытый веб-интерфейс .NET (OWIN)](xref:fundamentals/owin).
+
+## <a name="initiate-http-requests"></a>Инициирование HTTP-запросов
+
+Дополнительные сведения об использовании `IHttpClientFactory` для доступа к экземплярам `HttpClient` для выполнения HTTP-запросов см. в руководстве по [инициированию HTTP-запросов](xref:fundamentals/http-requests).
 
 ## <a name="environments"></a>Среды
 

@@ -1,7 +1,7 @@
 ---
-title: "Поставщики файлов в ASP.NET Core"
+title: Поставщики файлов в ASP.NET Core
 author: ardalis
-description: "Сведения о том, как ASP.NET Core абстрагирует доступ к файловой системе с помощью поставщиков файлов."
+description: Сведения о том, как ASP.NET Core абстрагирует доступ к файловой системе с помощью поставщиков файлов.
 manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/file-providers
-ms.openlocfilehash: 06197f967e111d75531e9c3bcbcbdb971cb9f99b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: cdbffdadd9616fe941809d67dc2c0bbd52149561
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="file-providers-in-aspnet-core"></a>Поставщики файлов в ASP.NET Core
 
@@ -50,15 +50,15 @@ IFileInfo fileInfo = provider.GetFileInfo("wwwroot/js/site.js"); // a file under
 
 Чтобы запросить поставщик из контроллера, укажите его в конструкторе контроллера и назначьте его локальному полю. Используйте локальный экземпляр из своих методов действий:
 
-[!code-csharp[Main](file-providers/sample/src/FileProviderSample/Controllers/HomeController.cs?highlight=5,7,12&range=6-19)]
+[!code-csharp[](file-providers/sample/src/FileProviderSample/Controllers/HomeController.cs?highlight=5,7,12&range=6-19)]
 
 После этого создайте поставщик в классе `Startup` приложения:
 
-[!code-csharp[Main](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=35,40&range=1-43)]
+[!code-csharp[](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=35,40&range=1-43)]
 
 В представлении *Index.cshtml* выполните итерации по предоставленному `IDirectoryContents`:
 
-[!code-html[Main](file-providers/sample/src/FileProviderSample/Views/Home/Index.cshtml?highlight=2,7,9,11,15)]
+[!code-html[](file-providers/sample/src/FileProviderSample/Views/Home/Index.cshtml?highlight=2,7,9,11,15)]
 
 Результат:
 
@@ -68,7 +68,7 @@ IFileInfo fileInfo = provider.GetFileInfo("wwwroot/js/site.js"); // a file under
 
 `EmbeddedFileProvider` используется для доступа к файлам, внедренным в сборки. В .NET Core для внедрения файлов в сборку используется элемент `<EmbeddedResource>` в файле *CSPROJ*:
 
-[!code-json[Main](file-providers/sample/src/FileProviderSample/FileProviderSample.csproj?range=13-18)]
+[!code-json[](file-providers/sample/src/FileProviderSample/FileProviderSample.csproj?range=13-18)]
 
 Вы можете использовать [стандартные маски](#globbing-patterns) при указании файлов для внедрения в сборку. Эти шаблоны можно использовать для сопоставления одного или нескольких файлов.
 
@@ -97,7 +97,7 @@ var embeddedProvider = new EmbeddedFileProvider(Assembly.GetEntryAssembly());
 
 `CompositeFileProvider` объединяет экземпляры `IFileProvider`, предоставляя единый интерфейс для работы с файлами от нескольких поставщиков. При создании `CompositeFileProvider` вы передаете один или несколько экземпляров `IFileProvider` в его конструктор:
 
-[!code-csharp[Main](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=3&range=35-37)]
+[!code-csharp[](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=3&range=35-37)]
 
 Изменение примера приложения для использования `CompositeFileProvider`, который включает в себя настроенные ранее физический и внедренный поставщики, дает следующий результат:
 
@@ -109,7 +109,7 @@ var embeddedProvider = new EmbeddedFileProvider(Assembly.GetEntryAssembly());
 
 В рассматриваемом здесь примере консольное приложение настраивается для отображения сообщения при изменении текстового файла:
 
-[!code-csharp[Main](file-providers/sample/src/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
+[!code-csharp[](file-providers/sample/src/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
 
 Результат после нескольких сохранений файла:
 

@@ -10,4 +10,4 @@
 
 Откройте файл *Models/Movie.cs* и добавьте указанные ниже выделенные строки кода:
 
-[!code-csharp[Main](code/Models/Movie.cs?highlight=2,11-12)]
+[!code-csharp[](code/Models/Movie.cs?highlight=2,11-12)]
