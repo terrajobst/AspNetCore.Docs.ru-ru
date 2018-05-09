@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: c2675f73880a41ee75f6ec13155419945387e109
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 9e438cef9db61e725b5385da53e8aa2b407218c3
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>Размещение ASP.NET Core в службе приложений Azure
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 04/06/2018
 
 При использовании ASP.NET Core 2.0 и более поздних версий три пакета в составе [метапакета Microsoft.AspNetCore.All](xref:fundamentals/metapackage) предоставляют функции автоматического ведения журналов для приложений, развернутых в службе приложений Azure:
 
-* [Microsoft.AspNetCore.AzureAppServices.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServices.HostingStartup/) использует [IHostingStartup](xref:host-and-deploy/platform-specific-configuration) для интеграции подсветки ASP.NET Core в службу приложений Azure. Пакет `Microsoft.AspNetCore.AzureAppServicesIntegration` включает дополнительные функции для ведения журналов.
+* [Microsoft.AspNetCore.AzureAppServices.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServices.HostingStartup/) использует [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration) для интеграции подсветки ASP.NET Core в службу приложений Azure. Пакет `Microsoft.AspNetCore.AzureAppServicesIntegration` включает дополнительные функции для ведения журналов.
 * [Microsoft.AspNetCore.AzureAppServicesIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServicesIntegration/) выполняет [AddAzureWebAppDiagnostics](/dotnet/api/microsoft.extensions.logging.azureappservicesloggerfactoryextensions.addazurewebappdiagnostics) для добавления поставщиков ведения журналов диагностики из службы приложений Azure в пакет `Microsoft.Extensions.Logging.AzureAppServices`.
 * [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices/) предоставляет реализации средства ведения журналов в поддержку журналов диагностики службы приложений Azure и функций потоковой передачи журналов.
 
@@ -95,14 +95,13 @@ ms.lasthandoff: 04/06/2018
 
 Предварительную версию приложения ASP.NET Core можно развернуть в службе приложений Azure, используя следующие методы.
 
-* [Установка расширения сайта предварительной версии](#site-x)
-* [Автономное развертывание приложения](#self)
-* [Использование Docker с веб-приложениями для контейнеров](#docker)
+* [Установка расширения сайта предварительной версии](#install-the-preview-site-extension)
+* [Автономное развертывание приложения](#deploy-the-app-self-contained)
+* [Использование Docker с веб-приложениями для контейнеров](#use-docker-with-web-apps-for-containers)
 
 Если у вас возникли проблемы при использовании расширения сайта предварительной версии, сообщите о них на [GitHub](https://github.com/aspnet/azureintegration/issues/new).
 
-<a name="site-x"></a>
-### <a name="install-the-preview-site-extention"></a>Установка расширения сайта предварительной версии
+### <a name="install-the-preview-site-extension"></a>Установка расширения сайта предварительной версии
 
 * На портале Azure перейдите к колонке "Служба приложений".
 * Введите "ex" в поле поиска.
@@ -111,10 +110,10 @@ ms.lasthandoff: 04/06/2018
 
 ![Колонка "Приложение Azure" с предыдущими шагами](index/_static/x1.png)
 
-* Выберите **Расширения среды выполнения ASP.NET Core**.
-* Нажмите **ОК** > **ОК**.
+* Выберите **Среда выполнения ASP.NET Core 2.1 (x86)** или **Среда выполнения ASP.NET Core 2.1 (x64)**.
+* Нажмите кнопку **ОК**. Снова нажмите кнопку **ОК**.
 
-Когда операции добавления будут выполнены, будет установлена последняя предварительная версия .NET Core 2.1. Чтобы проверить установку, запустите `dotnet --info` в консоли. В колонке "Служба приложений":
+По завершении операций добавления устанавливается последняя предварительная версия .NET Core 2.1. Проверьте установку, запустив `dotnet --info` в консоли. В колонке **Служба приложений**.
 
 * Введите "con" в поле поиска.
 * Выберите **Консоль**.
@@ -126,26 +125,24 @@ ms.lasthandoff: 04/06/2018
 
 `dotnet --info` отображает путь к расширению сайта, где установлена предварительная версия. Он показывает, что приложение выполняется из расширения сайта, а не из расположения *ProgramFiles* по умолчанию. Если вы видите *ProgramFiles*, перезапустите сайт и выполните `dotnet --info`.
 
-#### <a name="use-the-preview-site-extention-with-an-arm-template"></a>Использование расширения сайта предварительного просмотра с шаблоном ARM
+**Использование расширения сайта предварительной версии с шаблоном ARM**
 
-Если вы используете шаблон ARM для создания и развертывания приложений, вы можете использовать тип ресурса `siteextensions`, чтобы добавить расширение сайта в веб-приложение. Пример:
+Если вы используете шаблон ARM для создания и развертывания приложений, можно использовать тип ресурса `siteextensions`, чтобы добавить расширение сайта в веб-приложение. Пример:
 
 [!code-json[Main](index/sample/arm.json?highlight=2)]
 
-<a name="self"></a>
 ### <a name="deploy-the-app-self-contained"></a>Автономное развертывание приложения
 
-Вы можете развернуть [автономное приложение](/dotnet/core/deploying/#self-contained-deployments-scd), которое при развертывании содержит в себе среду выполнения предварительной версии. При развертывании автономного приложения.
+Можно развернуть [автономное приложение](/dotnet/core/deploying/#self-contained-deployments-scd), которое при развертывании содержит в себе среду выполнения предварительной версии. При развертывании автономного приложения:
 
-* Не нужно подготавливать сайт.
-* Необходимо опубликовать приложение не так, как при развертывании приложения после установки пакета SDK на сервере.
+* сайт не нужно подготавливать;
+* приложение нужно публиковать иначе, чем при публикации для развертывания, зависимого от платформы, с общей средой выполнения и узлом на сервере.
 
-Автономные приложения — это вариант для всех приложений .NET Core.
+Автономные приложения — это вариант для всех приложений ASP.NET Core.
 
-<a name="docker"></a>
 ### <a name="use-docker-with-web-apps-for-containers"></a>Использование Docker с веб-приложениями для контейнеров
 
-[Центр Docker](https://hub.docker.com/r/microsoft/aspnetcore/) содержит образы Docker из последней предварительной версии 2.1. Можно использовать их в качестве базового образа и развертывать в веб-приложения для контейнеров, как обычно.
+[Центр Docker](https://hub.docker.com/r/microsoft/aspnetcore/) содержит образы Docker из последней предварительной версии 2.1. Их можно использовать в качестве базового образа. Использование образа и развертывание в веб-приложениях для контейнеров выполняется как обычно.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

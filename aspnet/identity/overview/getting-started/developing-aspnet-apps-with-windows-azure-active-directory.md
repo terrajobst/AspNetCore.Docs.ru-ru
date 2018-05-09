@@ -12,20 +12,17 @@ ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
 msc.type: authoredcontent
-ms.openlocfilehash: 44bf29e099583bf9d49f2715d3ff4f748728ad8b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 9b2dc05089126fd5f4c1b0a0bd85b8a39f3041dc
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 <a name="developing-aspnet-apps-with-azure-active-directory"></a>Разработка приложений ASP.NET с Azure Active Directory
 ====================
 по [Рик Андерсон](https://github.com/Rick-Anderson)
 
-> Средства Microsoft ASP.NET для Azure Active Directory позволяет легко включить проверку подлинности для веб-приложений, размещенных на [Azure](https://www.windowsazure.com/home/features/web-sites/). Проверка подлинности Azure можно использовать для проверки подлинности пользователей Office 365 в организации, корпоративных учетных записей, синхронизированные из локальной службы Active Directory или пользователей, созданных в собственный домен Azure Active Directory. Включение проверки подлинности Windows Azure настраивает приложение для проверки подлинности пользователей с помощью одного [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) клиента.
-> 
->  Это руководство было написано с Рик Андерсон [@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
-
+Средства Microsoft ASP.NET для Azure Active Directory упрощает Включение проверки подлинности для веб-приложений, размещенных на [Azure](https://www.windowsazure.com/home/features/web-sites/). Проверка подлинности Azure можно использовать для проверки подлинности пользователей Office 365 в организации, корпоративных учетных записей, синхронизированные из локальной службы Active Directory или пользователей, созданных в собственный домен Azure Active Directory. Включение проверки подлинности Windows Azure настраивает приложение для проверки подлинности пользователей с помощью одного [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) клиента.
 
 Этот учебник будет показано, как создать приложение ASP.NET, настроенная для единого входа с [Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (Azure AD). Вы также узнаете, как вызвать API Graph для получения сведений о пользователе, выполнившего вход и развертывание приложения в Azure.
 

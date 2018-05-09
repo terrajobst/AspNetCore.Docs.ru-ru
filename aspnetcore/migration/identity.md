@@ -9,52 +9,49 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/identity
-ms.openlocfilehash: 320f5e079316114832e639d62c780a0639df0c61
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 2a80274e9056b41e370f199c7d41865db5fcedd7
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core"></a>Перенести проверку подлинности и удостоверение в ASP.NET Core
 
-<a name="migration-identity"></a>
-
 Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
-В предыдущей статье мы [конфигурации, перенесенные из проекта ASP.NET MVC в ASP.NET Core MVC](configuration.md). В этой статье мы переносим функции управления регистрации, имя входа и пользователя.
+В предыдущей статье мы [конфигурации, перенесенные из проекта ASP.NET MVC в ASP.NET Core MVC](xref:migration/configuration). В этой статье мы переносим функции управления регистрации, имя входа и пользователя.
 
 ## <a name="configure-identity-and-membership"></a>Настройте удостоверение и членства
 
-В ASP.NET MVC компоненты проверки подлинности и удостоверение настраиваются с помощью ASP.NET Identity в Startup.Auth.cs и IdentityConfig.cs, расположенный в папке App_Start. В ASP.NET MVC основных компонентов, эти функции настраиваются в *файла Startup.cs*.
+В ASP.NET MVC компоненты проверки подлинности и удостоверение настроены с использованием ASP.NET Identity в *Startup.Auth.cs* и *IdentityConfig.cs*, расположенного в *App_Start* папка. В ASP.NET MVC основных компонентов, эти функции настраиваются в *файла Startup.cs*.
 
 Установка `Microsoft.AspNetCore.Identity.EntityFrameworkCore` и `Microsoft.AspNetCore.Authentication.Cookies` пакеты NuGet.
 
-Затем откройте файла Startup.cs и обновление `ConfigureServices()` метод для использования платформы Entity Framework и удостоверение службы:
+Затем откройте *файла Startup.cs* и обновить `Startup.ConfigureServices` метод для использования платформы Entity Framework и удостоверение службы:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-  // Add EF services to the services container.
-  services.AddEntityFramework(Configuration)
-    .AddSqlServer()
-    .AddDbContext<ApplicationDbContext>();
+    // Add EF services to the services container.
+    services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-  // Add Identity services to the services container.
-  services.AddIdentity<ApplicationUser, IdentityRole>(Configuration)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
 
-  services.AddMvc();
+     services.AddMvc();
 }
 ```
 
-На этом этапе существует два типа, на который ссылается приведенный выше код, который мы еще не были перенесены из проекта ASP.NET MVC: `ApplicationDbContext` и `ApplicationUser`. Создайте новый *моделей* папки в ASP.NET Core проект и добавить в него соответствующий эти типы двух классов. Вы найдете ASP.NET MVC версии этих классов в `/Models/IdentityModels.cs`, но мы будем использовать один файл для каждого класса в перенесенном проекте, так как это более четко.
+На этом этапе существует два типа, на который ссылается приведенный выше код, который мы еще не были перенесены из проекта ASP.NET MVC: `ApplicationDbContext` и `ApplicationUser`. Создайте новый *моделей* папки в ASP.NET Core проект и добавить в него соответствующий эти типы двух классов. Вы найдете ASP.NET MVC версии этих классов в */Models/IdentityModels.cs*, но мы будем использовать один файл для каждого класса в перенесенном проекте, так как это более четко.
 
-ApplicationUser.cs:
+*ApplicationUser.cs*:
 
 ```csharp
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace NewMvc6Project.Models
+namespace NewMvcProject.Models
 {
   public class ApplicationUser : IdentityUser
   {
@@ -62,47 +59,52 @@ namespace NewMvc6Project.Models
 }
 ```
 
-ApplicationDbContext.cs:
+*ApplicationDbContext.cs*:
 
 ```csharp
 using Microsoft.AspNetCore.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 
-namespace NewMvc6Project.Models
+namespace NewMvcProject.Models
 {
-  public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-  {
-    public ApplicationDbContext()
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-      Database.EnsureCreated();
-    }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder options)
-    {
-      options.UseSqlServer();
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            // Customize the ASP.NET Identity model and override the defaults if needed.
+            // For example, you can rename the ASP.NET Identity table names and more.
+            // Add your customizations after calling base.OnModelCreating(builder);
+        }
     }
-  }
 }
 ```
 
-ASP.NET MVC Core Starter, веб-проекта не содержит много настройки пользователей или ApplicationDbContext. При миграции в реальном приложении, также необходимо перенести все пользовательские свойства и методы пользователя вашего приложения и DbContext классов, а также любые другие классы модели, которую ваше приложение использует (например, если вашей DbContext DbSet<Album>, конечно, потребуется миграция альбом класса).
+ASP.NET MVC Core Starter, веб-проекта не содержит много настройки пользователей, или `ApplicationDbContext`. При миграции настоящее приложение, необходимо перенести все пользовательские свойства и методы пользователя приложения и `DbContext` классов, а также любые другие классы модели, использует приложение. Например если ваш `DbContext` имеет `DbSet<Album>`, необходимые для миграции `Album` класса.
 
-С этими файлами на месте в файле Startup.cs файл можно сделать для компиляции, обновляя ее с помощью инструкций:
+С этими файлами на месте *файла Startup.cs* файл можно сделать для компиляции, обновив его `using` инструкции:
 
 ```csharp
-using Microsoft.Framework.ConfigurationModel;
-using Microsoft.AspNetCore.Hosting;
-using NewMvc6Project.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 ```
 
-Наше приложение готов для поддержки проверки подлинности и удостоверение службы — так же, их необходимо установить эти функции, предоставляемые пользователям.
+Нашего приложения готов для поддержки проверки подлинности и удостоверение службы. Необходимо только эти функции доступны для пользователей.
 
-## <a name="migrate-registration-and-login-logic"></a>Перенос регистрации и входа в систему логику
+## <a name="migrate-registration-and-login-logic"></a>Перенести логику регистрации и входа в систему
 
-С помощью службы удостоверений, настроенного для приложения и доступа к данным, настроенные с помощью платформы Entity Framework и SQL Server мы теперь готовы для добавления поддержки для регистрации и входа в приложение. Помните, что [ранее в процессе миграции](mvc.md#migrate-layout-file) мы закомментирован ссылку на _LoginPartial в _Layout.cshtml. Теперь пора вернуться к этому коду Раскомментировать ее, а затем добавьте необходимые контроллеры и представления для поддержки функции входа в систему.
+Настроено для приложения службы удостоверений и доступа к данным, настроенные с помощью платформы Entity Framework и SQL Server все готово для добавления поддержки для регистрации и входа в приложение. Помните, что [ранее в процессе миграции](xref:migration/mvc#migrate-the-layout-file) мы закомментирован ссылку на *_LoginPartial* в *_Layout.cshtml*. Теперь пора вернуться к этому коду Раскомментировать ее, а затем добавьте необходимые контроллеры и представления для поддержки функции входа в систему.
 
-_Layout.cshtml обновления; Раскомментируйте @Html.Partial строки:
+Раскомментируйте `@Html.Partial` строку в *_Layout.cshtml*:
 
 ```cshtml
       <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
@@ -112,23 +114,23 @@ _Layout.cshtml обновления; Раскомментируйте @Html.Part
 </div>
 ```
 
-Теперь добавьте страница представления MVC вызывается _LoginPartial для представления/общие папки.
+Теперь добавьте новый Razor представление с именем *_LoginPartial* для *представления/Общие* папки:
 
-Обновить с помощью следующего кода _LoginPartial.cshtml (заменить все его содержимое):
+Обновление *_LoginPartial.cshtml* с помощью следующего кода (заменить все его содержимое):
 
 ```cshtml
-@inject SignInManager<User> SignInManager
-@inject UserManager<User> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+    <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
             </li>
             <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
             </li>
         </ul>
     </form>
@@ -146,4 +148,4 @@ else
 
 ## <a name="summary"></a>Сводка
 
-ASP.NET Core вносит изменения в функциях ASP.NET Identity. В этой статье были рассмотрены вопросы миграции функции управления проверки подлинности и пользователь удостоверения ASP.NET в ASP.NET Core.
+ASP.NET Core вносит изменения в функциях ASP.NET Identity. В этой статье были рассмотрены вопросы миграции функции управления проверки подлинности и пользователь в ASP.NET Identity в ASP.NET Core.

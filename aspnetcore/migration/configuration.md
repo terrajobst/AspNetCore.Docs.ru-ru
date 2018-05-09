@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/configuration
-ms.openlocfilehash: 5bb89401ac54b54810fe5724b293ae8ed7e5afef
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: ead4f96aa0041cd919caa972d3bb05bd94a857b3
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="migrate-configuration-to-aspnet-core"></a>Перенос конфигурации в ASP.NET Core
 
 Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith) и [Скотт Эдди](https://scottaddie.com) (Scott Addie)
 
-В предыдущей статье мы начали [миграции проекта ASP.NET MVC в ASP.NET Core MVC](mvc.md). В этой статье мы миграцию конфигурации.
+В предыдущей статье мы начали [миграции проекта ASP.NET MVC в ASP.NET Core MVC](xref:migration/mvc). В этой статье мы миграцию конфигурации.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/configuration/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
@@ -29,9 +29,9 @@ ms.lasthandoff: 03/22/2018
 
 *Web.config* также завершает в ASP.NET Core. Сама конфигурация теперь можно, как часть процедуры при запуске приложения, описанной в *файла Startup.cs*. Конфигурация по-прежнему можно использовать XML-файлов, но обычно проекты ASP.NET Core будет помещать значения конфигурации в файл в формате JSON, такие как *appsettings.json*. Система конфигурации ASP.NET Core можно также легко получить переменные среды, которые содержат информацию о [более безопасным и надежным расположение](xref:security/app-secrets) для конкретных значений. Это особенно верно для секретов, такие как строки подключения и ключи API, которые не должны проверяться в системе управления версиями. В разделе [конфигурации](xref:fundamentals/configuration/index) для получения дополнительных сведений о конфигурации в ASP.NET Core.
 
-Для данной статьи мы приступаете к работе с частично миграции проекта ASP.NET Core из [предыдущей статьи](mvc.md). Для настройки конфигурации, добавьте следующий конструктор и свойства *файла Startup.cs* файл, расположенный в корневой папке проекта:
+Для данной статьи мы приступаете к работе с частично перенесенного проекта ASP.NET Core из [предыдущей статьи](xref:migration/mvc). Для настройки конфигурации, добавьте следующий конструктор и свойства *файла Startup.cs* файл, расположенный в корневой папке проекта:
 
-[!code-csharp[](configuration/samples/WebApp1/src/WebApp1/Startup.cs?range=11-21)]
+[!code-csharp[](configuration/samples/WebApp1/src/WebApp1/Startup.cs?range=11-16)]
 
 Обратите внимание, на этом этапе *файла Startup.cs* файла не может быть скомпилирован, как все равно нужно добавить следующие `using` инструкции:
 
@@ -48,7 +48,6 @@ using Microsoft.Extensions.Configuration;
 Наш проект ASP.NET MVC включены в строку подключения базы данных, необходимых в *web.config*в `<connectionStrings>` элемент. В данном проекте ASP.NET Core мы будем хранить эти сведения в *appsettings.json* файла. Откройте *appsettings.json*и обратите внимание, что он уже включает в себя следующее:
 
 [!code-json[](../migration/configuration/samples/WebApp1/src/WebApp1/appsettings.json?highlight=4)]
-
 
 В выделенной строке, описанные выше, измените имя базы данных из **_CHANGE_ME** к имени базы данных.
 

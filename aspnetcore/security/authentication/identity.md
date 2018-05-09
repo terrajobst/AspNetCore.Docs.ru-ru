@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity
-ms.openlocfilehash: f9215767bf9a7c8b43b474848ba7dff7c3ddaf24
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: cf63766dc4ae94d784190d6dbc7b5beb57342f42
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об учетных данных ASP.NET Core
 
@@ -49,7 +49,7 @@ ASP.NET Core Identity позволяет реализовать проверку
 
    # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-   Если используется .NET Core CLI, выполните команду ``dotnet new mvc --auth Individual``. Эта команда создает новый проект с тем же кодом шаблона удостоверений, создаваемых в Visual Studio.
+   Если используется .NET Core CLI, создайте новый проект с помощью `dotnet new mvc --auth Individual`. Эта команда создает новый проект с тем же кодом шаблона удостоверений, создаваемых в Visual Studio.
 
    Созданный проект содержит `Microsoft.AspNetCore.Identity.EntityFrameworkCore` пакет, который сохраняет данные удостоверений и схемы SQL Server с помощью [Entity Framework Core](https://docs.microsoft.com/ef/).
 
@@ -88,30 +88,30 @@ ASP.NET Core Identity позволяет реализовать проверку
 
    ![Веб-страница применения миграции](identity/_static/apply-migrations.png)
 
-   Кроме того, можно проверить работу удостоверения ASP.NET Core с приложением без постоянной базы данных, а с использованием базы данных в памяти. Для этого добавьте в приложение пакет ``Microsoft.EntityFrameworkCore.InMemory``и измените вызов метода ``AddDbContext`` в ``ConfigureServices`` следующим образом:
+   Кроме того, можно проверить работу удостоверения ASP.NET Core с приложением без постоянной базы данных, а с использованием базы данных в памяти. Для этого добавьте в приложение пакет `Microsoft.EntityFrameworkCore.InMemory`и измените вызов метода `AddDbContext` в `ConfigureServices` следующим образом:
 
    ```csharp
    services.AddDbContext<ApplicationDbContext>(options =>
        options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
    ```
 
-   Когда пользователь нажимает на ссылку **Register** (Регистрация), вызывается метод действия ``Register`` контроллера ``AccountController``. Действие ``Register`` создает пользователя путем вызова метода `CreateAsync` объекта`_userManager` (обеспечивается в ``AccountController`` путем внедрения зависимостей):
+   Когда пользователь нажимает на ссылку **Register** (Регистрация), вызывается метод действия `Register` контроллера `AccountController`. Действие `Register` создает пользователя путем вызова метода `CreateAsync` объекта`_userManager` (обеспечивается в `AccountController` путем внедрения зависимостей):
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_register&highlight=11)]
 
-   Если пользователь создан, происходит вход пользователя путем вызова метода ``_signInManager.SignInAsync``.
+   Если пользователь создан, происходит вход пользователя путем вызова метода `_signInManager.SignInAsync`.
 
    **Примечание.** Раздел [подтверждение учетной записи](xref:security/authentication/accconfirm#prevent-login-at-registration) описывает, как предотвратить автоматический вход пользователя при регистрации.
 
 4. Вход.
 
-   Пользователи могут войти, щелкнув **входа** ссылок в верхней части сайта, или может быть переход на страницу входа, если они пытаются получить доступ к части сайта, требующей авторизации. Когда пользователь отправляет форму на странице входа ``AccountController`` ``Login`` вызова действия.
+   Пользователи могут войти, щелкнув **входа** ссылок в верхней части сайта, или может быть переход на страницу входа, если они пытаются получить доступ к части сайта, требующей авторизации. Когда пользователь отправляет форму на странице входа `AccountController` `Login` вызова действия.
 
-   ``Login`` Вызывает действие ``PasswordSignInAsync`` на ``_signInManager`` объекта (для ``AccountController`` путем внедрения зависимостей).
+   `Login` Вызывает действие `PasswordSignInAsync` на `_signInManager` объекта (для `AccountController` путем внедрения зависимостей).
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
 
-   Базовый ``Controller`` предоставляемых классами ``User`` свойство, которое можно открыть из методов контроллера. Например, можно перечислить `User.Claims` и принимать решения об авторизации. Дополнительные сведения см. в разделе [авторизации](xref:security/authorization/index).
+   Базовый `Controller` предоставляемых классами `User` свойство, которое можно открыть из методов контроллера. Например, можно перечислить `User.Claims` и принимать решения об авторизации. Дополнительные сведения см. в разделе [авторизации](xref:security/authorization/index).
 
 5. Выход.
 
@@ -149,7 +149,7 @@ ASP.NET Core Identity позволяет реализовать проверку
 
     Значение по умолчанию *веб-приложения ASP.NET Core* шаблон проекта предоставляет пользователям доступ к любое действие в приложении без повторного входа. Чтобы проверить работоспособность ASP.NET Identity, добавьте`[Authorize]` атрибут `About` действие `Home` контроллера.
 
-    ```cs
+    ```csharp
     [Authorize]
     public IActionResult About()
     {
@@ -166,7 +166,7 @@ ASP.NET Core Identity позволяет реализовать проверку
 
     Откройте окно командной строки и перейдите в корневой каталог проекта в каталог, содержащий `.csproj` файла. Запустите [dotnet запуска](/dotnet/core/tools/dotnet-run) команду, чтобы запустить приложение:
 
-    ```cs
+    ```csharp
     dotnet run 
     ```
 

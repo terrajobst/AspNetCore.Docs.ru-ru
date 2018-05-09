@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/intro-to-web-pages-programming
 msc.type: authoredcontent
-ms.openlocfilehash: 3e2c990a6451c13e03baafa343df156b2d46d219
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 60115dd06a27bf856427953de29e993194afb991
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 <a name="introducing-aspnet-web-pages---programming-basics"></a>Общие сведения о веб-страницах ASP.NET — основы программирования
 ====================
@@ -207,7 +207,7 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="testing-the-value-of-a-query-string"></a>Проверка значения строки запроса
 
-Один дополнительные тест. На этот раз вам предстоит добавить if блок, который проверяет значение с именем показывают, что может быть передано в строке запроса. (Как в данном: ''http://localhost:43097/TestRazorPart2.cshtml`?show=true`) вы измените страницу, чтобы сообщение вы отображение («Это в первый раз...», т. д.) отображается только в том случае, если отображается значение true.
+Один дополнительные тест. На этот раз вам предстоит добавить if блок, который проверяет значение с именем показывают, что может быть передано в строке запроса. (Следующим образом: `http://localhost:43097/TestRazorPart2.cshtml?show=true`) вы измените страницу, чтобы сообщение вы отображение («Это в первый раз...», т. д.) отображается только в том случае, если отображается значение true.
 
 В нижней (но внутри) блок кода в верхней части страницы, добавьте следующее:
 
