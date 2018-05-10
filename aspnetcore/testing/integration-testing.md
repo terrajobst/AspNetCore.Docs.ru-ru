@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/integration-testing
-ms.openlocfilehash: 3c618b2bd5919f6536601631eb4d21359a6bc03a
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: ac3a9e00edfd4c736ee1e7d5c0c724c3e52d0b6b
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/22/2018
 
 ### <a name="the-test-host"></a>Узел тестирования
 
-ASP.NET Core включает тест узла, который можно добавить к интеграции тестовые проекты и используется для узла ASP.NET Core приложений, тестирования обслуживанием запросов без необходимости на реальных веб-узел. Предоставленный образец включает проект интеграционного теста, который был настроен для использования [xUnit](https://xunit.github.io) и проверки узла. Она использует `Microsoft.AspNetCore.TestHost` пакет NuGet.
+ASP.NET Core включает тест узла, который можно добавить к интеграции тестовые проекты и используется для узла ASP.NET Core приложений, тестирования обслуживанием запросов без необходимости на реальных веб-узел. Предоставленный образец включает проект интеграционного теста, который был настроен для использования [xUnit](https://xunit.github.io) и проверки узла. Она использует [Microsoft.AspNetCore.TestHost](https://www.nuget.org/packages/Microsoft.AspNetCore.TestHost/) пакет NuGet.
 
 Один раз `Microsoft.AspNetCore.TestHost` пакет включен в проект, вы сможете создать и настроить `TestServer` в тестах. Следующий тест показано, как проверить, что запрос к корню сайта возвращает «Hello World!» и должны выполняться успешно по умолчанию шаблон пустой веб-узел ASP.NET Core, созданные с помощью Visual Studio.
 

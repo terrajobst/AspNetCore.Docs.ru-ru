@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
-ms.openlocfilehash: d084c5c7e232b92c8cfe2230e076752d42d8da5d
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 946d4d5e5a506fb437232f9f4440c98e33a1a9b3
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 <a name="adding-validation"></a>Добавление проверки
 ====================
@@ -134,7 +134,7 @@ ms.lasthandoff: 04/06/2018
 
 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибуты только предоставить подсказки для обработчика представлений для форматирования данных (и укажите атрибуты, такие как `<a>` для URL-адреса и `<a href="mailto:EmailAddress.com">` для электронной почты. Можно использовать [регулярное выражение](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx) атрибут для проверки формата данных. [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибут используется для указания типа данных, который является более точным определением, чем встроенный тип базы данных, они являются ***не*** атрибутов проверки. В этом случае требуется отслеживать только дату, а не дату и время. [Перечисление DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) предоставляет для многих типов данных, таких как *даты, времени, PhoneNumber, валюты, EmailAddress* и многое другое. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Например `mailto:` связи могут создаваться для [DataType.EmailAddress](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx), и элемент выбора даты, которые могут быть предоставлены для [DataType.Date](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) в браузерах, поддерживающих [HTML5](http://html5.org/). [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибуты выдает HTML 5 [от данных](http://ejohn.org/blog/html-5-data-attributes/) (произносится *тире данных*) атрибутов, которые можно понять браузеров HTML 5. [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибуты не имеют каких-либо проверок.
 
-`DataType.Date` не задает формат отображаемой даты. По умолчанию, поле данных отображается в соответствии с форматы по умолчанию на сервере[CultureInfo](https://msdn.microsoft.com/library/vstudio/system.globalization.cultureinfo(v=vs.110).aspx).
+`DataType.Date` не задает формат отображаемой даты. По умолчанию, поле данных отображается в соответствии с форматы по умолчанию на сервере [CultureInfo](https://msdn.microsoft.com/library/vstudio/system.globalization.cultureinfo(v=vs.110).aspx).
 
 С помощью атрибута `DisplayFormat` можно явно указать формат даты:
 
@@ -147,17 +147,17 @@ ms.lasthandoff: 04/06/2018
 Можно использовать [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) атрибут сам, но обычно имеет смысл использовать [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) также атрибут. `DataType` Передает атрибут *семантику* данных как отличие от Подготовка к просмотру его на экране и предоставляет следующие преимущества, которые вы не получаете с `DisplayFormat`:
 
 - Браузер может включить функции HTML5 (например для отображения элемента управления календаря, локализованными обозначение денежной единицы, ссылок по электронной почте, и т. д.).
-- По умолчанию браузер будет отображаться с использованием правильного формата на основе данных вашей[языкового стандарта](https://msdn.microsoft.com/library/vstudio/wyzd2bce.aspx).
-- [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибута можно включить MVC выбрать шаблон справа поля для отображения данных ( [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) Если используется сама использует шаблон строки). Дополнительные сведения см. в разделе Брэд Вилсон[ASP.NET MVC 2 Templates](http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html). (Хотя предназначено для MVC 2, в этой статье по-прежнему применяется к текущей версии ASP.NET MVC.)
+- По умолчанию браузер будет отображаться с использованием правильного формата на основе данных вашей [языкового стандарта](https://msdn.microsoft.com/library/vstudio/wyzd2bce.aspx).
+- [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибута можно включить MVC выбрать шаблон справа поля для отображения данных ( [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) Если используется сама использует шаблон строки). Дополнительные сведения см. в разделе Брэд Вилсон [ASP.NET MVC 2 Templates](http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html). (Хотя предназначено для MVC 2, в этой статье по-прежнему применяется к текущей версии ASP.NET MVC.)
 
 Если вы используете `DataType` атрибут с полем даты, необходимо указать `DisplayFormat` атрибута также для того, чтобы убедиться в правильном отображении поля в браузерах Chrome. Дополнительные сведения см. в разделе [этот поток StackOverflow](http://stackoverflow.com/questions/12633471/mvc4-datatype-date-editorfor-wont-display-date-value-in-chrome-fine-in-ie).
 
 > [!NOTE]
-> Проверка jQuery не работает с[диапазон](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx) атрибута и[DateTime](https://msdn.microsoft.com/library/system.datetime.aspx). Например, следующий код всегда приводит к возникновению ошибки проверки на стороне клиента, даже если дата попадает в указанный диапазон:
+> Проверка jQuery не работает с [диапазон](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx) атрибута и [DateTime](https://msdn.microsoft.com/library/system.datetime.aspx). Например, следующий код всегда приводит к возникновению ошибки проверки на стороне клиента, даже если дата попадает в указанный диапазон:
 > 
 > [!code-csharp[Main](adding-validation/samples/sample9.cs)]
 > 
-> Необходимо отключить проверку jQuery даты для использования [диапазон](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx) атрибутом[DateTime](https://msdn.microsoft.com/library/system.datetime.aspx). Это обычно не рекомендуется для компиляции жестких дат в модели, поэтому использование[диапазон](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx) атрибута и[DateTime](https://msdn.microsoft.com/library/system.datetime.aspx) не рекомендуется.
+> Необходимо отключить проверку jQuery даты для использования [диапазон](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx) атрибутом [DateTime](https://msdn.microsoft.com/library/system.datetime.aspx). Это обычно не рекомендуется для компиляции жестких дат в модели, поэтому использование [диапазон](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx) атрибута и [DateTime](https://msdn.microsoft.com/library/system.datetime.aspx) не рекомендуется.
 
 
 В следующем коде демонстрируется объединение атрибутов в одной строке:

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: b6939207ee15aa93bfb3ccb9cad553b814896bd1
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: f534080fe9aa22eb9092932babc74c5ab96aabbf
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 <a name="examining-the-details-and-delete-methods"></a>Изучение сведений и методы удаления
 ====================
@@ -42,7 +42,7 @@ ms.lasthandoff: 04/06/2018
 
 [!code-csharp[Main](examining-the-details-and-delete-methods/samples/sample2.cs?highlight=17)]
 
-Обратите внимание, что `HTTP Get``Delete` метода не удаляет указанный фильм, он возвращает представления фильма, где можно отправить (`HttpPost`) удаления... Выполнение операции удаления в ответ на запрос GET (или выполнение операции редактирования, создания или любой другой операции, изменяющей данные) открывает брешь в системе безопасности. Дополнительные сведения об этом см. запись в блоге Стивен Вальтер [46 совет # ASP.NET MVC — не использовать удалить ссылки, так как они создают бреши в системе безопасности](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx).
+Обратите внимание, что HTTP GET `Delete` метода не удаляет указанный фильм, он возвращает представления фильма, где можно отправить (`HttpPost`) удаления. Выполнение операции удаления в ответ на запрос GET (или выполнение операции редактирования, создания или любой другой операции, изменяющей данные) открывает брешь в системе безопасности. Дополнительные сведения об этом см. запись в блоге Стивен Вальтер [46 совет # ASP.NET MVC — не использовать удалить ссылки, так как они создают бреши в системе безопасности](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx).
 
 Метод `HttpPost`, который удаляет данные, называется `DeleteConfirmed`, поэтому метод HTTP POST обладает уникальной сигнатурой или именем. Ниже приведены сигнатуры двух методов:
 

@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 64093b9fcfa9047145de8f8b142f72fa1515f248
-ms.sourcegitcommit: d45d766504c2c5aad2453f01f089bc6b696b5576
+ms.openlocfilehash: fe772203e5e3fceb7489e0a5866f60ea914b7329
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -95,7 +95,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 Если не [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) для указания по промежуточного слоя, заголовки по умолчанию для пересылки `None`.
 
-Для приложений, размещенных за прокси-серверы и подсистемы балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверы и подсистем балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).
+Для приложений, размещенных за прокси-серверами и подсистемами балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).
 
 ### <a name="install-nginx"></a>Установка Nginx
 
@@ -184,6 +184,13 @@ WantedBy=multi-user.target
 
 **Примечание:** Если пользователь *www данных* не используется в конфигурации пользовательские необходимо сначала создать и получает соответствующие права владения для файлов.
 **Примечание:** Linux содержит с учетом регистра файловую систему. Параметр ASPNETCORE_ENVIRONMENT поиск файла конфигурации приводит к «Production» *appsettings. Production.JSON*, а не *appsettings.production.json*.
+
+> [!NOTE]
+> Некоторые значения (например, строки подключения SQL) необходимо экранировать для поставщиков конфигурации для чтения переменные среды. Используйте следующую команду для создания правильно экранированное значение для использования в файле конфигурации:
+>
+> ```console
+> systemd-escape "<value-to-escape>"
+> ```
 
 Сохраните файл и включите службу.
 

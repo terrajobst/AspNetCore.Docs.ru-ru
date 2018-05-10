@@ -6,22 +6,20 @@ manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
-ms.date: 04/06/2018
+ms.date: 05/09/2018
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/javascript-client
-ms.openlocfilehash: d2530fe3c4b47687d3ef4015624499d96fea2d7b
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 1701d9ac5222bf64f9690c1cecdf54ef95fe4a49
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET SignalR JavaScript ядра клиента
 
 Автор: [Рэйчел Аппель](http://twitter.com/rachelappel) (Rachel Appel)
-
-[!INCLUDE [2.1 preview notice](~/includes/2.1.md)]
 
 Клиентская библиотека ASP.NET Core SignalR JavaScript позволяет разработчикам вызывать код концентратора на стороне сервера.
 
@@ -58,7 +56,7 @@ ms.lasthandoff: 05/08/2018
 
 Для предотвращения чтения конфиденциальных данных с другого сайта вредоносный сайт [подключения независимо от источника](xref:security/cors) по умолчанию отключены. Чтобы разрешить запрос независимо от источника, включить его в `Startup` класса.
 
-[!code-csharp[Cross-origin connections](javascript-client/sample/Startup.cs?highlight=29-34,55)]
+[!code-csharp[Cross-origin connections](javascript-client/sample/Startup.cs?highlight=29-35,56)]
 
 ## <a name="call-hub-methods-from-client"></a>Вызов методов концентратора из клиента
 
@@ -102,7 +100,7 @@ SignalR определяют, какой метод клиента для выз
 
 Используйте `configureLogging` метод `HubConnectionBuilder` Чтобы настроить уровень ведения журнала. Сообщения регистрируются в консоли браузера.
 
-[!code-javascript[Logging levels](javascript-client/sample/wwwroot/js/chat.js?range=11)]
+[!code-javascript[Logging levels](javascript-client/sample/wwwroot/js/chat.js?range=9-12)]
 
 ## <a name="related-resources"></a>Связанные ресурсы
 
