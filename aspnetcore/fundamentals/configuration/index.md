@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/index
-ms.openlocfilehash: b1c2b734a2e9b274792b597bfd222c31e661b0d7
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 4637ff6312f32f5887ff0f7a6e74d10f5beb0ca5
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -105,13 +105,13 @@ Console.Write($"{Configuration["wizard:Harry:age"]}");
 
 [!code-csharp[](index/sample/StartupConfig.cs?name=snippet&highlight=3,4)]
 
-Для среды обычно задаются значения `Development`, `Staging` или `Production`. Дополнительные сведения см. в статье [Работа с несколькими средами](xref:fundamentals/environments).
+Для среды обычно задаются значения `Development`, `Staging` или `Production`. Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments).
 
 Рекомендации по конфигурации:
 
 * [IOptionsSnapshot](xref:fundamentals/configuration/options#reload-configuration-data-with-ioptionssnapshot) может перезагрузить данные конфигурации после их изменения.
 * Ключи конфигурации **не учитывают** регистр.
-* **Никогда** не храните пароли и другие конфиденциальные данные в коде поставщика конфигурации или в файлах конфигурации в виде обычного текста. Не используйте секреты рабочей среды в средах разработки и тестирования. Указывайте секреты вне проекта, чтобы их нельзя было случайно зафиксировать в репозитории с исходным кодом. Узнайте больше о [работе с несколькими средами](xref:fundamentals/environments) и управлении [безопасным хранением секретов приложения во время разработки](xref:security/app-secrets).
+* **Никогда** не храните пароли и другие конфиденциальные данные в коде поставщика конфигурации или в файлах конфигурации в виде обычного текста. Не используйте секреты рабочей среды в средах разработки и тестирования. Указывайте секреты вне проекта, чтобы их нельзя было случайно зафиксировать в репозитории с исходным кодом. Узнайте больше об [использовании нескольких сред](xref:fundamentals/environments) и управлении [безопасным хранением секретов приложения во время разработки](xref:security/app-secrets).
 * Для значений иерархической конфигурации, указанных в переменных среды, двоеточие (`:`) поддерживается не на всех платформах. Двойной знак подчеркивания (`__`) поддерживается на всех платформах.
 * При взаимодействии с API конфигурации двоеточие (`:`) поддерживается на всех платформах.
 
@@ -413,6 +413,10 @@ Left: 1988
 
 Чтобы получить доступ к конфигурации в `ConfigureServices` или `Configure` во время запуска, см. примеры в разделе [Запуск приложения](xref:fundamentals/startup).
 
+## <a name="adding-configuration-from-an-external-assembly"></a>Добавление конфигурации из внешней сборки
+
+Реализация [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) позволяет при запуске добавлять в приложение улучшения из внешней сборки вне класса `Startup` приложения. Дополнительные сведения см. в разделе [Усовершенствование приложения из внешней сборки](xref:fundamentals/configuration/platform-specific-configuration).
+
 ## <a name="access-configuration-in-a-razor-page-or-mvc-view"></a>Настройка доступа на странице Razor или в представлении MVC
 
 Для доступа к параметрам конфигурации на странице Razor Pages или в представлении MVC добавьте [использование директивы](xref:mvc/views/razor#using) ([Справочник по C#: использование директивы](/dotnet/csharp/language-reference/keywords/using-directive)) для [пространства имен Microsoft.Extensions.Configuration](/dotnet/api/microsoft.extensions.configuration) и вставьте [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration) на страницу или в представление.
@@ -468,7 +472,7 @@ Left: 1988
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Параметры](xref:fundamentals/configuration/options)
-* [Работа с несколькими средами](xref:fundamentals/environments)
+* [Использование нескольких сред](xref:fundamentals/environments)
 * [Безопасное хранение секретов приложений во время разработки](xref:security/app-secrets)
 * [Размещение в ASP.NET Core](xref:fundamentals/hosting)
 * [Введение зависимостей](xref:fundamentals/dependency-injection)
