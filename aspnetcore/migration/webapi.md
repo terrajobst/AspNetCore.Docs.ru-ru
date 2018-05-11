@@ -4,16 +4,16 @@ author: ardalis
 description: Дополнительные сведения о миграции реализация веб-API из веб-API ASP.NET ASP.NET Core MVC.
 manager: wpickett
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 05/10/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/webapi
-ms.openlocfilehash: 059e1bc54c57e502ad01fd50d9899dfd0671037f
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 8d842877e49e317323d453e71ebb3302245f388d
+ms.sourcegitcommit: 3d071fabaf90e32906df97b08a8d00e602db25c0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>Миграция с веб-API ASP.NET на ASP.NET Core
 
@@ -116,6 +116,37 @@ ms.lasthandoff: 05/08/2018
 [!code-csharp[](../migration/webapi/sample/ProductsCore/Controllers/ProductsController.cs?highlight=1,2,6,8,9,27)]
 
 Теперь можно запустить перенесенного проекта и перейдите к */api/продуктов*; и следует просмотреть весь список продуктов, 3. Перейдите к */api/products/1* и вы увидите первого продукта.
+
+## <a name="microsoftaspnetcoremvcwebapicompatshim"></a>Microsoft.AspNetCore.Mvc.WebApiCompatShim
+
+— Это эффективное средство, если миграция веб-API ASP.NET проектов для ASP.NET Core [Microsoft.AspNetCore.Mvc.WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim) библиотеки. Оболочки совместимости расширяет ASP.NET Core, чтобы разрешить несколько разных соглашений веб-API 2 для использования. Образца перенесена ранее в этом документе является достаточно простым и оболочку совместимости был необходим. Для крупных проектов с помощью оболочки совместимости можно использовать для временного мост API разрыв между ASP.NET Core и ASP.NET Web API 2.
+
+Оболочки совместимости веб-API предназначен для использования в качестве временной меры для упрощения переноса больших проектов веб-API для ASP.NET Core. Со временем проектов должен быть обновлен для использования шаблонов ASP.NET Core, не полагаясь на оболочку совместимости. 
+
+Совместимость возможности, включенные в Microsoft.AspNetCore.Mvc.WebApiCompatShim:
+
+* Добавляет `ApiController` тип, так что контроллеров базовые типы не должны быть обновлены.
+* Включение API веб-привязки модели. Основные ASP.NET MVC модель привязки работает так же MVC 5 по умолчанию. Изменения оболочки совместимости модели больше похож на соглашения привязки модели веб-API 2 привязки. Например сложные типы автоматически привязываются в тексте запроса.
+* Расширяет привязки модели, благодаря чему действия контроллера может использовать параметры типа `HttpRequestMessage`.
+* Добавляет модули форматирования сообщений разрешение действий для возврата результатов типа `HttpResponseMessage`.
+* Добавляет ответа дополнительные методы, которые воспользовались для обслуживания ответы веб-API 2 действия:
+    * Генераторы HttpResponseMessage:
+        * `CreateResponse<T>`
+        * `CreateErrorResponse`
+    * Методы действий результат:
+        * `BadResuestErrorMessageResult`
+        * `ExceptionResult`
+        * `InternalServerErrorResult`
+        * `InvalidModelStateResult`
+        * `NegotiatedContentResult`
+        * `ResponseMessageResult`
+* Добавляет экземпляр `IContentNegotiator` контейнер DI приложения и делает содержимое из типов, связанных с согласования [Microsoft.AspNet.WebApi.Client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) доступны. Сюда входят типы, такие как `DefaultContentNegotiator`, `MediaTypeFormatter`и т. д.
+
+Чтобы использовать оболочку совместимости, необходимо:
+
+* Справочник по [Microsoft.AspNetCore.Mvc.WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim) пакет NuGet.
+* Зарегистрируйте служб оболочку совместимости с контейнером DI приложения путем вызова `services.AddWebApiConventions()` в приложении `Startup.ConfigureServices` метод.
+* Определение конкретных Web API маршрутов с помощью `MapWebApiRoute` на `IRouteBuilder` в приложении `IApplicationBuilder.UseMvc` вызова.
 
 ## <a name="summary"></a>Сводка
 
