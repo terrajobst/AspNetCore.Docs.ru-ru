@@ -1,75 +1,75 @@
-# <a name="adding-search-to-a-razor-pages-app"></a><span data-ttu-id="de24f-101">Добавление поиска в приложение Razor Pages</span><span class="sxs-lookup"><span data-stu-id="de24f-101">Adding search to a Razor Pages app</span></span>
+# <a name="adding-search-to-a-razor-pages-app"></a>Добавление поиска в приложение Razor Pages
 
-<span data-ttu-id="de24f-102">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="de24f-102">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-<span data-ttu-id="de24f-103">В этом документе на страницу Index добавляется возможность поиска фильмов по *жанру* или *названию*.</span><span class="sxs-lookup"><span data-stu-id="de24f-103">In this document, search capability is added to the Index page that enables searching movies by *genre* or *name*.</span></span>
+В этом документе на страницу Index добавляется возможность поиска фильмов по *жанру* или *названию*.
 
-<span data-ttu-id="de24f-104">Обновите метод `OnGetAsync` страницы Index, добавив следующий код:</span><span class="sxs-lookup"><span data-stu-id="de24f-104">Update the Index page's `OnGetAsync` method with the following code:</span></span>
+Обновите метод `OnGetAsync` страницы Index, добавив следующий код:
 
 [!code-cshtml[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/_ViewStart.cshtml)]
 
 [!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_1stSearch)]
 
-<span data-ttu-id="de24f-105">В первой строке метода `OnGetAsync` создается запрос [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/) для выбора фильмов:</span><span class="sxs-lookup"><span data-stu-id="de24f-105">The first line of the `OnGetAsync` method creates a [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/) query to select the movies:</span></span>
+В первой строке метода `OnGetAsync` создается запрос [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/) для выбора фильмов:
 
 ```csharp
 var movies = from m in _context.Movie
              select m;
 ```
 
-<span data-ttu-id="de24f-106">Этот запрос определяется *только* в этой точке и **не** выполняется для базы данных.</span><span class="sxs-lookup"><span data-stu-id="de24f-106">The query is *only* defined at this point, it has **not** been run against the database.</span></span>
+Этот запрос *только* определяется в этой точке и **не** выполняется для базы данных.
 
-<span data-ttu-id="de24f-107">Если параметр `searchString` содержит строку, запрос фильмов изменяется для фильтрации по строке поиска:</span><span class="sxs-lookup"><span data-stu-id="de24f-107">If the `searchString` parameter contains a string, the movies query is modified to filter on the search string:</span></span>
+Если параметр `searchString` содержит строку, запрос фильмов изменяется для фильтрации по строке поиска:
 
 [!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SearchNull)]
 
-<span data-ttu-id="de24f-108">Код `s => s.Title.Contains()` представляет собой [лямбда-выражение](https://docs.microsoft.com/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions).</span><span class="sxs-lookup"><span data-stu-id="de24f-108">The `s => s.Title.Contains()` code is a [Lambda Expression](https://docs.microsoft.com/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions).</span></span> <span data-ttu-id="de24f-109">Лямбда-выражения используются в запросах [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/) на основе методов в качестве аргументов стандартных методов операторов запроса, таких как метод [Where](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) или `Contains` (используется в предшествующем коде).</span><span class="sxs-lookup"><span data-stu-id="de24f-109">Lambdas are used in method-based [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/) queries as arguments to standard query operator methods such as the [Where](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) method or `Contains` (used in the preceding code).</span></span> <span data-ttu-id="de24f-110">Запросы LINQ не выполняются, если они определяются или изменяются путем вызова метода (например, `Where`, `Contains` или `OrderBy`).</span><span class="sxs-lookup"><span data-stu-id="de24f-110">LINQ queries are not executed when they're defined or when they're modified by calling a method (such as `Where`, `Contains`  or `OrderBy`).</span></span> <span data-ttu-id="de24f-111">Вместо этого выполнение запроса откладывается.</span><span class="sxs-lookup"><span data-stu-id="de24f-111">Rather, query execution is deferred.</span></span> <span data-ttu-id="de24f-112">Это означает, что вычисление выражения откладывается до тех пор, пока не будет выполнена итерация его реализованного значения или не будет вызван метод `ToListAsync`.</span><span class="sxs-lookup"><span data-stu-id="de24f-112">That means the evaluation of an expression is delayed until its realized value is iterated over or the `ToListAsync` method is called.</span></span> <span data-ttu-id="de24f-113">Дополнительные сведения см. в разделе [Выполнение запроса](https://docs.microsoft.com/dotnet/framework/data/adonet/ef/language-reference/query-execution).</span><span class="sxs-lookup"><span data-stu-id="de24f-113">See [Query Execution](https://docs.microsoft.com/dotnet/framework/data/adonet/ef/language-reference/query-execution) for more information.</span></span>
+Код `s => s.Title.Contains()` представляет собой [лямбда-выражение](https://docs.microsoft.com/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions). Лямбда-выражения используются в запросах [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/) на основе методов в качестве аргументов стандартных методов операторов запроса, таких как метод [Where](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) или `Contains` (используется в предшествующем коде). Запросы LINQ не выполняются, если они определяются или изменяются путем вызова метода (например, `Where`, `Contains` или `OrderBy`). Вместо этого выполнение запроса откладывается. Это означает, что вычисление выражения откладывается до тех пор, пока не будет выполнена итерация его реализованного значения или не будет вызван метод `ToListAsync`. Дополнительные сведения см. в разделе [Выполнение запроса](https://docs.microsoft.com/dotnet/framework/data/adonet/ef/language-reference/query-execution).
 
-<span data-ttu-id="de24f-114">**Примечание.** Метод [Contains](https://docs.microsoft.com//dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) выполняется в базе данных, а не в коде C#.</span><span class="sxs-lookup"><span data-stu-id="de24f-114">**Note:** The [Contains](https://docs.microsoft.com//dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) method is run on the database, not in the C# code.</span></span> <span data-ttu-id="de24f-115">Регистр символов запроса учитывается в зависимости от параметров базы данных и сортировки.</span><span class="sxs-lookup"><span data-stu-id="de24f-115">The case sensitivity on the query depends on the database and the collation.</span></span> <span data-ttu-id="de24f-116">В SQL Server метод `Contains` сопоставляется с [SQL LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql), в котором регистр символов не учитывается.</span><span class="sxs-lookup"><span data-stu-id="de24f-116">On SQL Server, `Contains` maps to [SQL LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql), which is case insensitive.</span></span> <span data-ttu-id="de24f-117">В SQLite при параметрах сортировки по умолчанию регистр символов учитывается.</span><span class="sxs-lookup"><span data-stu-id="de24f-117">In SQLite, with the default collation, it's case sensitive.</span></span>
+**Примечание.** Метод [Contains](https://docs.microsoft.com//dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) выполняется в базе данных, а не в коде C#. Регистр символов запроса учитывается в зависимости от параметров базы данных и сортировки. В SQL Server метод `Contains` сопоставляется с [SQL LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql), в котором регистр символов не учитывается. В SQLite при параметрах сортировки по умолчанию регистр символов учитывается.
 
-<span data-ttu-id="de24f-118">Перейдите на страницу Movies и добавьте строку запроса, такую как `?searchString=Ghost`, к URL-адресу (например, `http://localhost:5000/Movies?searchString=Ghost`).</span><span class="sxs-lookup"><span data-stu-id="de24f-118">Navigate to the Movies page and append a query string such as `?searchString=Ghost` to the URL (for example, `http://localhost:5000/Movies?searchString=Ghost`).</span></span> <span data-ttu-id="de24f-119">Отображаются отфильтрованные фильмы.</span><span class="sxs-lookup"><span data-stu-id="de24f-119">The filtered movies are displayed.</span></span>
+Перейдите на страницу Movies и добавьте строку запроса, такую как `?searchString=Ghost`, к URL-адресу (например, `http://localhost:5000/Movies?searchString=Ghost`). Отображаются отфильтрованные фильмы.
 
 ![Представление Index](../../tutorials/razor-pages/search/_static/ghost.png)
 
-<span data-ttu-id="de24f-121">Если на страницу Index добавлен следующий шаблон маршрута, строку поиска можно передать в виде сегмента URL-адреса (например, `http://localhost:5000/Movies/ghost`).</span><span class="sxs-lookup"><span data-stu-id="de24f-121">If the following route template is added to the Index page, the search string can be passed as a URL segment (for example, `http://localhost:5000/Movies/ghost`).</span></span>
+Если на страницу Index добавлен следующий шаблон маршрута, строку поиска можно передать в виде сегмента URL-адреса (например, `http://localhost:5000/Movies/ghost`).
 
 ```cshtml
 @page "{searchString?}"
 ```
 
-<span data-ttu-id="de24f-122">Предыдущее ограничение маршрута разрешало поиск названия в виде данных маршрута (сегмент URL-адреса) вместо значения строки запроса.</span><span class="sxs-lookup"><span data-stu-id="de24f-122">The preceding route constraint allows searching the title as route data (a URL segment) instead of as a query string value.</span></span>  <span data-ttu-id="de24f-123">Символ `?` в `"{searchString?}"` означает, что этот параметр является необязательным.</span><span class="sxs-lookup"><span data-stu-id="de24f-123">The `?` in `"{searchString?}"` means this is an optional route parameter.</span></span>
+Предыдущее ограничение маршрута разрешало поиск названия в виде данных маршрута (сегмент URL-адреса) вместо значения строки запроса.  Символ `?` в `"{searchString?}"` означает, что этот параметр является необязательным.
 
 ![Представление Index, в URL-адрес которого добавлено слово ghost, возвращает два фильма: Ghostbusters и Ghostbusters 2](../../tutorials/razor-pages/search/_static/g2.png)
 
-<span data-ttu-id="de24f-125">Тем не менее пользователи вряд ли будут изменять URL-адрес для поиска фильмов.</span><span class="sxs-lookup"><span data-stu-id="de24f-125">However, you can't expect users to modify the URL to search for a movie.</span></span> <span data-ttu-id="de24f-126">На этом шаге добавляется пользовательский интерфейс для поиска фильмов.</span><span class="sxs-lookup"><span data-stu-id="de24f-126">In this step, UI is added to filter movies.</span></span> <span data-ttu-id="de24f-127">Если было добавлено ограничение маршрута `"{searchString?}"`, удалите его.</span><span class="sxs-lookup"><span data-stu-id="de24f-127">If you added the route constraint `"{searchString?}"`, remove it.</span></span>
+Тем не менее пользователи вряд ли будут изменять URL-адрес для поиска фильмов. На этом шаге добавляется пользовательский интерфейс для поиска фильмов. Если было добавлено ограничение маршрута `"{searchString?}"`, удалите его.
 
-<span data-ttu-id="de24f-128">Откройте файл *Pages/Movies/Index.cshtml* и добавьте разметку `<form>`, которая выделена в следующем коде:</span><span class="sxs-lookup"><span data-stu-id="de24f-128">Open the *Pages/Movies/Index.cshtml* file, and add the `<form>` markup highlighted in the following code:</span></span>
+Откройте файл *Pages/Movies/Index.cshtml* и добавьте разметку `<form>`, которая выделена в следующем коде:
 
 [!code-cshtml[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index2.cshtml?highlight=14-19&range=1-22)]
 
-<span data-ttu-id="de24f-129">Тег HTML `<form>` использует [вспомогательную функцию тега Form](xref:mvc/views/working-with-forms#the-form-tag-helper).</span><span class="sxs-lookup"><span data-stu-id="de24f-129">The HTML `<form>` tag uses the [Form Tag Helper](xref:mvc/views/working-with-forms#the-form-tag-helper).</span></span> <span data-ttu-id="de24f-130">При отправке формы строка фильтра отправляется на страницу *Pages/Movies/Index*.</span><span class="sxs-lookup"><span data-stu-id="de24f-130">When the form is submitted, the filter string is sent to the *Pages/Movies/Index* page.</span></span> <span data-ttu-id="de24f-131">Сохраните изменения и проверьте работу фильтра.</span><span class="sxs-lookup"><span data-stu-id="de24f-131">Save the changes and test the filter.</span></span>
+Тег HTML `<form>` использует [вспомогательную функцию тега Form](xref:mvc/views/working-with-forms#the-form-tag-helper). При отправке формы строка фильтра отправляется на страницу *Pages/Movies/Index*. Сохраните изменения и проверьте работу фильтра.
 
 ![Представление Index со словом ghost в текстовом поле фильтра по названию](../../tutorials/razor-pages/search/_static/filter.png)
 
-## <a name="search-by-genre"></a><span data-ttu-id="de24f-133">Поиск по жанру</span><span class="sxs-lookup"><span data-stu-id="de24f-133">Search by genre</span></span>
+## <a name="search-by-genre"></a>Поиск по жанру
 
-<span data-ttu-id="de24f-134">Добавьте следующие выделенные свойства в файл *Pages/Movies/Index.cshtml.cs*:</span><span class="sxs-lookup"><span data-stu-id="de24f-134">Add the the following highlighted properties to *Pages/Movies/Index.cshtml.cs*:</span></span>
+Добавьте следующие выделенные свойства в файл *Pages/Movies/Index.cshtml.cs*:
 
 [!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-)]
 
-<span data-ttu-id="de24f-135">Свойство `SelectList Genres` содержит список жанров.</span><span class="sxs-lookup"><span data-stu-id="de24f-135">The `SelectList Genres` contains the list of genres.</span></span> <span data-ttu-id="de24f-136">В этом списке пользователь может выбрать жанр фильма.</span><span class="sxs-lookup"><span data-stu-id="de24f-136">This allows the user to select a genre from the list.</span></span>
+Свойство `SelectList Genres` содержит список жанров. В этом списке пользователь может выбрать жанр фильма.
 
-<span data-ttu-id="de24f-137">Свойство `MovieGenre` содержит конкретный жанр, выбранный пользователем, например "Western" (Вестерн).</span><span class="sxs-lookup"><span data-stu-id="de24f-137">The `MovieGenre` property contains the specific genre the user selects (for example, "Western").</span></span>
+Свойство `MovieGenre` содержит конкретный жанр, выбранный пользователем, например "Western" (Вестерн).
 
-<span data-ttu-id="de24f-138">Обновите метод `OnGetAsync`, используя следующий код:</span><span class="sxs-lookup"><span data-stu-id="de24f-138">Update the `OnGetAsync` method with the following code:</span></span>
+Обновите метод `OnGetAsync`, используя следующий код:
 
 [!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SearchGenre)]
 
-<span data-ttu-id="de24f-139">Следующий код определяет запрос LINQ, который извлекает все жанры из базы данных.</span><span class="sxs-lookup"><span data-stu-id="de24f-139">The following code is a LINQ query that retrieves all the genres from the database.</span></span>
+Следующий код определяет запрос LINQ, который извлекает все жанры из базы данных.
 
 [!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_LINQ)]
 
-<span data-ttu-id="de24f-140">Список жанров `SelectList` создается путем проецирования отдельных жанров.</span><span class="sxs-lookup"><span data-stu-id="de24f-140">The `SelectList` of genres is created by projecting the distinct genres.</span></span>
+Список жанров `SelectList` создается путем проецирования отдельных жанров.
 
 <!-- BUG in OPS
 Tag snippet_selectlist's start line '75' should be less than end line '29' when resolving "[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]"
@@ -83,10 +83,10 @@ There's no start line.
 Genres = new SelectList(await genreQuery.Distinct().ToListAsync());
 ```
 
-### <a name="adding-search-by-genre"></a><span data-ttu-id="de24f-141">Добавление поиска по жанру</span><span class="sxs-lookup"><span data-stu-id="de24f-141">Adding search by genre</span></span>
+### <a name="adding-search-by-genre"></a>Добавление поиска по жанру
 
-<span data-ttu-id="de24f-142">Обновите файл *Index.cshtml* следующим образом:</span><span class="sxs-lookup"><span data-stu-id="de24f-142">Update *Index.cshtml* as follows:</span></span>
+Обновите файл *Index.cshtml* следующим образом:
 
 [!code-cshtml[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/Movies/IndexFormGenreNoRating.cshtml?highlight=16-18&range=1-26)]
 
-<span data-ttu-id="de24f-143">Проверьте работу приложения, выполнив поиск по жанру, по названию фильма и по обоим этим параметрам.</span><span class="sxs-lookup"><span data-stu-id="de24f-143">Test the app by searching by genre, by movie title, and by both.</span></span>
+Проверьте работу приложения, выполнив поиск по жанру, по названию фильма и по обоим этим параметрам.
