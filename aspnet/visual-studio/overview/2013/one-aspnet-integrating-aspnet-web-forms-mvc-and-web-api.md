@@ -1,14 +1,14 @@
 ---
 uid: visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
-title: "Практическое лабораторное занятие: Один ASP.NET: интеграция веб-форм ASP.NET, MVC и веб-API | Документы Microsoft"
+title: 'Практическое лабораторное занятие: Один ASP.NET: интеграция веб-форм ASP.NET, MVC и веб-API | Документы Microsoft'
 author: rick-anderson
-description: "ASP.NET — это платформа для создания веб-сайтов, приложений и служб с помощью специальных технологий, таких как MVC, веб-API и другие. С расширением ASP.NET h..."
+description: ASP.NET — это платформа для создания веб-сайтов, приложений и служб с помощью специальных технологий, таких как MVC, веб-API и другие. С расширением ASP.NET h...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/16/2014
 ms.topic: article
 ms.assetid: 4fe2558d-67cc-4d12-a5c1-6fb9f6f16137
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
 msc.type: authoredcontent
@@ -161,7 +161,7 @@ ms.lasthandoff: 11/10/2017
     *Понятные URL-адреса*
 
     > [!NOTE]
-    > Как видите, URL-адрес примет **или обратитесь**. Начиная с **ASP.NET 4**, были добавлены возможности маршрутизации URL-адрес веб-форм, можно создать URL-адреса, например  *[http://www.mysite.com/products/software](http://www.mysite.com/products/software)*  вместо  *[http://www.mysite.com/products.aspx?category=software](http://www.mysite.com/products.aspx?category=software)*. Дополнительные сведения см. в [маршрутизации URL-адрес](../../../web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md).
+    > Как видите, URL-адрес примет **или обратитесь**. Начиная с **ASP.NET 4**, были добавлены возможности маршрутизации URL-адрес веб-форм, можно создать URL-адреса, например *[http://www.mysite.com/products/software](http://www.mysite.com/products/software)* вместо  *[http://www.mysite.com/products.aspx?category=software](http://www.mysite.com/products.aspx?category=software)*. Дополнительные сведения см. в [маршрутизации URL-адрес](../../../web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md).
 3. Теперь вы исследуете поток проверки подлинности, который интегрируется в приложение. Чтобы сделать это, нажмите кнопку **зарегистрировать** в правом верхнем углу страницы.
 
     ![Регистрация нового пользователя](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image8.png)
