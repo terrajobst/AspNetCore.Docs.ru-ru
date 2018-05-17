@@ -1,24 +1,24 @@
 <a name="scaffold"></a>
-### <a name="scaffold-the-movie-model"></a>Модель создания фильма
+### <a name="scaffold-the-movie-model"></a><span data-ttu-id="b0ee8-101">Модель создания фильма</span><span class="sxs-lookup"><span data-stu-id="b0ee8-101">Scaffold the Movie model</span></span>
 
-* Выполните следующую команду в окне командной строки (в папке проекта, содержащей файлы *Program.cs*, *Startup.cs* и *.csproj*).
+* <span data-ttu-id="b0ee8-102">Выполните следующую команду в окне командной строки (в папке проекта, содержащей файлы *Program.cs*, *Startup.cs* и *.csproj*).</span><span class="sxs-lookup"><span data-stu-id="b0ee8-102">Run the following from the command line (in the project directory that contains the *Program.cs*, *Startup.cs*, and *.csproj* files):</span></span>
 
   ```console
   dotnet aspnet-codegenerator razorpage -m Movie -dc MovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
-Если возникает ошибка.
+<span data-ttu-id="b0ee8-103">Если возникает ошибка.</span><span class="sxs-lookup"><span data-stu-id="b0ee8-103">If you get the error:</span></span>
   ```
 No executable found matching command "dotnet-aspnet-codegenerator"
   ```
 
-Откройте в командной оболочке папку проекта (папку, содержащую файлы *Program.cs*, *Startup.cs* и *.csproj*).
+<span data-ttu-id="b0ee8-104">Предыдущая ошибка возникает, когда вы находитесь в неверном каталоге.</span><span class="sxs-lookup"><span data-stu-id="b0ee8-104">The preceeding error happens when you are in the wrong directory.</span></span> <span data-ttu-id="b0ee8-105">Откройте в командной оболочке папку проекта (папку, содержащую файлы *Program.cs*, *Startup.cs* и *.csproj*), а затем запустите предыдущую команду.</span><span class="sxs-lookup"><span data-stu-id="b0ee8-105">Open a command shell to the project directory (The directory that contains the *Program.cs*, *Startup.cs*, and *.csproj* files), and then run the preceeding command.</span></span>
 
-Если возникает ошибка.
+<span data-ttu-id="b0ee8-106">Если возникает ошибка.</span><span class="sxs-lookup"><span data-stu-id="b0ee8-106">If you get the error:</span></span>
   ```
   The process cannot access the file 
  'RazorPagesMovie/bin/Debug/netcoreapp2.0/RazorPagesMovie.dll' 
   because it is being used by another process.
   ```
 
-Выйдите из Visual Studio и выполните команду еще раз.
+<span data-ttu-id="b0ee8-107">Выйдите из Visual Studio и выполните команду еще раз.</span><span class="sxs-lookup"><span data-stu-id="b0ee8-107">Exit Visual Studio and run the command again.</span></span>
