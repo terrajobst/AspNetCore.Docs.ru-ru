@@ -4,7 +4,12 @@
 
 Зарегистрируйте контекст базы данных в контейнере службы с помощью встроенной поддержки [внедрения зависимостей](xref:fundamentals/dependency-injection). Замените содержимое файла *Startup.cs* следующим кодом:
 
+::: moniker range="<= aspnetcore-2.0"
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Startup.cs?highlight=2,4,12-13)]
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Startup.cs?highlight=3,5,13-14)]
+::: moniker-end
 
 Предыдущий код:
 
