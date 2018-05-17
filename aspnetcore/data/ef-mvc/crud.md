@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC с EF Core — операции CRUD (создание, чтение, обновление и удаление) — 2 из 10"
-author: tdykstra
-description: 
+title: ASP.NET Core MVC с EF Core — операции CRUD (создание, чтение, обновление и удаление) — 2 из 10
+author: rick-anderson
+description: ''
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/crud
-ms.openlocfilehash: a7e0d4ff3d57e42dd7e33ffb5f26f2143520be87
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: ec3f048c97d4e950fa76250382e4e18ccbea29e1
+ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>Учебник по операциям создания, чтения, обновления и удаления в ASP.NET Core MVC с EF Core (2 из 10)
+# <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC с EF Core — операции CRUD (создание, чтение, обновление и удаление) — 2 из 10
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/31/2018
 
 В методе действия *Controllers/StudentsController.cs* для представления Details используется метод `SingleOrDefaultAsync` для извлечения одной сущности `Student`. Добавьте код, который вызывает методы `Include`. `ThenInclude` и `AsNoTracking`, как показано ниже в выделенном коде.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Details&highlight=8-12)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Details&highlight=8-12)]
 
 Методы `Include` и `ThenInclude` инструктируют контекст для загрузки свойства навигации `Student.Enrollments`, а также свойства навигации `Enrollment.Course` в пределах каждой регистрации.  Дополнительные сведения об этих методах см. в учебнике [Чтение связанных данных](read-related-data.md).
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 01/31/2018
 
 Значение ключа, которое передается в метод `Details`, поступает из *данных маршрута*. Данные маршрута обнаруживаются связывателем модели в сегменте URL-адреса. Например, маршрут по умолчанию задает сегменты контроллера, действия и идентификатора:
 
-[!code-csharp[Main](intro/samples/cu/Startup.cs?name=snippet_Route&highlight=5)]
+[!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Route&highlight=5)]
 
 В следующем URL-адресе маршрут по умолчанию сопоставляет контроллер Instructor, действие Index и идентификатор 1, которые принимаются в качестве значений данных маршрута.
 
@@ -114,7 +114,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 В файле *StudentsController.cs* измените метод HttpPost `Create`, добавив в него блок try-catch и удалив идентификатор из атрибута `Bind`.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
 
 Этот код добавляет сущность Student, созданную связывателем модели ASP.NET MVC, в набор сущностей Students, после чего сохраняет изменения в базе данных. (Связыватель модели использует функциональные возможности ASP.NET MVC, упрощая работу с данными, которые вы предоставляете в форме. Связыватель модели преобразует значения из отправленной формы в типы CLR и передает их в виде параметров в метод действия. В этом случае связыватель модели создает сущность Student, используя значения свойств из коллекции Form.)
 
@@ -162,7 +162,7 @@ public class Student
 
 Эта проверка по умолчанию выполняется на стороне сервера. Позднее в учебнике вы узнаете, как добавлять атрибуты, которые будут создавать код для проверки на стороне клиента. В выделенном ниже коде демонстрируется проверка модели в методе `Create`.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=8)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=8)]
 
 Измените дату на допустимую и щелкните **Create** (Создать), чтобы добавить нового учащегося на страницу **Index** (Указатель).
 
@@ -174,7 +174,7 @@ public class Student
 
 Замените метод действия HttpPost Edit следующим кодом.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ReadFirst)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ReadFirst)]
 
 Благодаря этому изменению реализуются рекомендации по безопасности, позволяющие предотвратить чрезмерную отправку данных. Шаблон создал атрибут `Bind` и добавил сущность, созданную связывателем модели, в набор сущностей с флагом `Modified`. В большинстве сценариев не рекомендуется использовать этот код, поскольку атрибут `Bind` очищает любые ранее существовавшие данные в полях, которые не перечислены в параметре `Include`.
 
@@ -188,7 +188,7 @@ public class Student
 
 Рекомендуемый код метода HttpPost гарантирует обновление только измененных столбцов и сохраняет данные в свойствах, которые не требуется включать в привязку моделей. Тем не менее при подходе с предварительным считыванием дополнительно выполняется чтение из базы данных, в результате чего код может усложняться для обработки конфликтов параллелизма. В качестве альтернативы можно присоединить сущность, созданную связывателем модели, к контексту EF и пометить ее как измененную. (Не добавляйте этот код в проект, поскольку он показан исключительно как пример альтернативного подхода.) 
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_CreateAndAttach)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_CreateAndAttach)]
 
 Этот подход можно использовать в тех случаях, когда пользовательский интерфейс веб-страницы включает все поля сущности и может обновлять любые из них.
 
@@ -236,7 +236,7 @@ public class Student
 
 Замените метод действия HttpGet `Delete` следующим кодом, в котором реализуется управление сообщениями об ошибках.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteGet&highlight=1,9,16-21)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteGet&highlight=1,9,16-21)]
 
 Этот код принимает необязательный параметр, который указывает, был ли метод вызван после сбоя при сохранении изменений. Если перед вызовом метода HttpGet `Delete` не произошел сбой, этот параметр будет иметь значение false. Если он вызывается методом HttpPost `Delete` в ответ на ошибку при обновлении базы данных, этот параметр будет иметь значение true, а в представление передается сообщение об ошибке.
 
@@ -244,7 +244,7 @@ public class Student
 
 Замените метод действия HttpPost `Delete` (имеет имя `DeleteConfirmed`) следующим кодом, в котором выполняется фактическая операция удаления и перехватываются любые ошибки при обновлении базы данных.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6,8-11,13-14,18-23)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6,8-11,13-14,18-23)]
 
 Этот код извлекает выбранную сущность и вызывает метод `Remove`, чтобы присвоить ей состояние `Deleted`. При вызове метода `SaveChanges` создается инструкция SQL DELETE.
 
@@ -252,7 +252,7 @@ public class Student
 
 Если требуется обеспечить максимальную производительность крупного приложения, можно избежать создания ненужных запросов SQL. Для этого можно создать экземпляр сущности Student, используя только значение первичного ключа, и затем присвоить этой сущности состояние `Deleted`. Это все, что платформе Entity Framework необходимо для удаления сущности. (Не используйте этот код в проекте. Он показан здесь исключительно в качестве примера.)
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithoutReadFirst&highlight=7-8)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithoutReadFirst&highlight=7-8)]
 
 Если также требуется удалить связанные с сущностью данные, убедитесь, что в базе данных настроено каскадное удаление. При таком подходе к удалению сущности платформе EF может быть неизвестно о наличии связанных сущностей, которые требуется удалить.
 
@@ -296,6 +296,6 @@ public class Student
 
 Теперь у вас есть полный набор страниц, которые реализуют простые операции CRUD (создание, чтение, обновление и удаление) для сущностей Student. В следующем учебнике мы добавим на страницу **Index** (Указатель) функции добавления, сортировки, фильтрации и разбиения на страницы.
 
->[!div class="step-by-step"]
-[Назад](intro.md)
-[Вперед](sort-filter-page.md)  
+> [!div class="step-by-step"]
+> [Назад](intro.md)
+> [Вперед](sort-filter-page.md)  

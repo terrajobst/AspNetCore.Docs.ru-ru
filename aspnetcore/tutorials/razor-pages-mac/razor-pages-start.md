@@ -1,21 +1,22 @@
 ---
-title: "Начало работы с Razor Pages в ASP.NET Core на Mac"
+title: Начало работы с Razor Pages в ASP.NET Core в macOS с использованием Visual Studio для Mac
 author: rick-anderson
-description: "Начало работы с Razor Pages в ASP.NET Core с использованием Visual Studio для Mac"
+description: Узнайте, как начать работу с Razor Pages в ASP.NET Core с использованием Visual Studio для Mac.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 07/27/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages-mac/razor-pages-start
-ms.openlocfilehash: 9e7d1db47e4cc9d753b1629e20345ca1f4403b2f
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 2da9b34f797758c02132d5cf6cc2f2fb2fe6f05a
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-for-mac"></a>Начало работы с Razor Pages в ASP.NET Core с использованием Visual Studio для Mac
+# <a name="get-started-with-razor-pages-in-aspnet-core-on-macos-with-visual-studio-for-mac"></a>Начало работы с Razor Pages в ASP.NET Core в macOS с использованием Visual Studio для Mac
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -23,10 +24,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Установите следующие компоненты:
-
-* [пакет SDK для .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии;
-* [Visual Studio для Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
+[!INCLUDE [](~/includes/net-core-prereqs-macos.md)]
 
 ## <a name="create-a-razor-web-app"></a>Создание веб-приложения Razor
 
@@ -42,7 +40,7 @@ dotnet run
 
 ![Домашняя или индексная страница](../razor-pages/razor-pages-start/_static/home.png)
 
-[!INCLUDE[razor-pages-start](../../includes/RP/razor-pages-start.md)]
+[!INCLUDE [razor-pages-start](../../includes/RP/razor-pages-start.md)]
 
 ## <a name="open-the-project"></a>Открытие проекта
 
@@ -52,9 +50,9 @@ dotnet run
 
 ### <a name="launch-the-app"></a>Запуск приложения
 
-В Visual Studio откройте меню **Выполнить > Запуск без отладки**, чтобы запустить приложение. Visual Studio запускает [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview), открывает браузер и переходит к `http://localhost:5000`.
+В Visual Studio выберите **Выполнить > Запуск без отладки**, чтобы запустить приложение. Visual Studio запускает [Kestrel](xref:fundamentals/servers/kestrel), открывает браузер и переходит к `http://localhost:5000`.
 
 В следующем учебнике мы добавим в проект модель.
 
->[!div class="step-by-step"]
-[Далее: добавление модели](xref:tutorials/razor-pages-mac/model)
+> [!div class="step-by-step"]
+> [Далее: добавление модели](xref:tutorials/razor-pages-mac/model)

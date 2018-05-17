@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: 0a04f5762a35426f342b58b8b60288c66c057ae7
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
-ms.translationtype: MT
+ms.openlocfilehash: a268fd76a303dc1185b451e4f678fc2fe761e80a
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Безопасного хранения секрета приложения при разработке в ASP.NET Core
 
@@ -41,7 +41,8 @@ ms.lasthandoff: 05/03/2018
 
 ## <a name="installing-the-secret-manager-tool"></a>Установка средства диспетчера секрет
 
-#### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
+
 Щелкните правой кнопкой мыши проект в обозревателе решений и выберите **изменить \<project_name\>.csproj** в контекстном меню. Добавьте в выделенной строке *.csproj* и сохранение файлов для восстановления, связанный с ним пакет NuGet:
 
 [!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
@@ -58,7 +59,8 @@ ms.lasthandoff: 05/03/2018
 }
 ```
 
-#### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
+
 Добавить `Microsoft.Extensions.SecretManager.Tools` для *.csproj* файл и запустите [восстановления dotnet](/dotnet/core/tools/dotnet-restore). Можно использовать те же действия для установки средства диспетчера секрета, используемого для командной строки.
 
 [!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
@@ -94,7 +96,8 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 
 Также можно использовать средство диспетчера секрет для перечисления, удаления и очистите секреты приложения.
 
-* * *
+---
+
 ## <a name="accessing-user-secrets-via-configuration"></a>Доступ к секретной информации пользователя через конфигурацию
 
 Секреты Manager секрет доступ через систему конфигурации. Добавить `Microsoft.Extensions.Configuration.UserSecrets` упаковка и запуск [восстановления dotnet](/dotnet/core/tools/dotnet-restore).

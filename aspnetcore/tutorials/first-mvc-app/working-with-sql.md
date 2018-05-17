@@ -1,7 +1,7 @@
 ---
-title: "Работа с SQL Server LocalDB"
+title: Работа с SQL Server LocalDB в ASP.NET Core
 author: rick-anderson
-description: "Использование SQL Server LocalDB с простым приложением MVC"
+description: Сведения об использовании SQL Server LocalDB в простом приложении MVC ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 03/07/2017
@@ -9,23 +9,23 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: a0aa6fdfa51650628021a4ba6d0533e7e0e39200
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3f69657cb21e163bdf00fb1faea98889046e9b45
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="working-with-sql-server-localdb"></a>Работа с SQL Server LocalDB
+# <a name="work-with-sql-server-localdb-in-aspnet-core"></a>Работа с SQL Server LocalDB в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 Объект `MvcMovieContext` обрабатывает задачу подключения к базе данных и сопоставления объектов `Movie` с записями базы данных. Контекст базы данных регистрируется с помощью контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection) в методе `ConfigureServices` в файле *Startup.cs*:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
 
 Система [конфигурации](xref:fundamentals/configuration/index) ASP.NET Core считывает `ConnectionString`. Для разработки на локальном уровне она получает строку подключения из файла *appsettings.json*:
 
-[!code-json[Main](start-mvc/sample/MvcMovie/appsettings.json?highlight=2&range=8-10)]
+[!code-json[](start-mvc/sample/MvcMovie/appsettings.json?highlight=2&range=8-10)]
 
 При развертывании приложения на тестовом или рабочем сервере вы можете использовать переменную среды или другой способ настройки строки подключения к реальному серверу SQL Server. Дополнительные сведения см. в статье [Конфигурация](xref:fundamentals/configuration/index).
 
@@ -55,7 +55,7 @@ LocalDB — это упрощенная версия ядра СУБД SQL Serv
 
 Создайте класс `SeedData` в папке *Models*. Замените сгенерированный код следующим кодом:
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Models/SeedData.cs?name=snippet_1)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Models/SeedData.cs?name=snippet_1)]
 
 Если в базе данных есть фильмы, возвращается инициализатор заполнения и фильмы не добавляются.
 
@@ -69,20 +69,17 @@ if (context.Movie.Any())
 <a name="si"></a>
 ### <a name="add-the-seed-initializer"></a>Добавление инициализатора заполнения
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 Добавьте инициализатор заполнения в метод `Main` в файле *Program.cs*:
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Program.cs?highlight=6,14-32)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Program.cs?highlight=6,14-32)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 Добавьте инициализатор заполнения в конец метода `Configure` в файле *Startup.cs*:
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Startup.cs?highlight=9&name=snippet_seed)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Startup.cs?highlight=9&name=snippet_seed)]
 
----
-
+* * *
 Тестирование приложения
 
 * Удалите все записи из базы данных. Это можно сделать с помощью ссылок удаления в браузере или из SSOX.
@@ -94,13 +91,13 @@ if (context.Movie.Any())
 
     ![Контекстное меню](working-with-sql/_static/stopIIS.png)
 
-   * Если среда VS была запущена в режиме без отладки, нажмите клавишу F5 для запуска в режиме отладки.
-   * Если среда VS была запущена в режиме отладки, остановите отладчик и нажмите клавишу F5.
-   
+    * Если среда VS была запущена в режиме без отладки, нажмите клавишу F5 для запуска в режиме отладки.
+    * Если среда VS была запущена в режиме отладки, остановите отладчик и нажмите клавишу F5.
+
 В приложении будут отображены данные.
 
 ![Приложение MVC Movie, открытое в Microsoft Edge и отображающие данные о фильме](working-with-sql/_static/m55.png)
 
->[!div class="step-by-step"]
-[Назад](adding-model.md)
-[Вперед](controller-methods-views.md)  
+> [!div class="step-by-step"]
+> [Назад](adding-model.md)
+> [Вперед](controller-methods-views.md)  

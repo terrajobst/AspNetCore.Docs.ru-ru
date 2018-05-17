@@ -1,7 +1,7 @@
 ---
-title: "Обработка ошибок в ASP.NET Core"
+title: Обработка ошибок в ASP.NET Core
 author: ardalis
-description: "Узнайте, как обрабатывать ошибки в приложениях ASP.NET Core."
+description: Узнайте, как обрабатывать ошибки в приложениях ASP.NET Core.
 manager: wpickett
 ms.author: tdykstra
 ms.custom: H1Hack27Feb2017
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/error-handling
-ms.openlocfilehash: 5b0cda7b79b8a9523d1ba6a9b321d22d3ccc753a
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 5443cbeb1ef95c579e5fc12b625babbfa27c7ec2
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="introduction-to-error-handling-in-aspnet-core"></a>Общие сведения об обработке ошибок в ASP.NET Core
+# <a name="handle-errors-in-aspnet-core"></a>Обработка ошибок в ASP.NET Core
 
 Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith) и [Том Дакстра](https://github.com/tdykstra/) (Tom Dykstra)
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/30/2018
 
 Чтобы настроить вывод в приложении страницы с подробными сведениями об исключениях, установите пакет NuGet `Microsoft.AspNetCore.Diagnostics` и добавьте строку в [метод Configure в классе Startup](startup.md):
 
-[!code-csharp[Main](error-handling/sample/Startup.cs?name=snippet_DevExceptionPage&highlight=7)]
+[!code-csharp[](error-handling/sample/Startup.cs?name=snippet_DevExceptionPage&highlight=7)]
 
 Поместите метод `UseDeveloperExceptionPage` перед каждым промежуточным слоем, в котором нужно перехватывать исключения, например `app.UseMvc`.
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/30/2018
 
 Если приложение выполняется не в среде `Development`, желательно настроить страницу обработки исключений.
 
-[!code-csharp[Main](error-handling/sample/Startup.cs?name=snippet_DevExceptionPage&highlight=11)]
+[!code-csharp[](error-handling/sample/Startup.cs?name=snippet_DevExceptionPage&highlight=11)]
 
 В приложении MVC не следует явным образом декорировать метод действия обработки ошибок атрибутами метода HTTP, например `HttpGet`. Из-за использования явных команд некоторые запросы могут не передаваться в метод.
 
@@ -65,39 +65,44 @@ public IActionResult Index()
 
 ## <a name="configuring-status-code-pages"></a>Настройка страниц с кодами состояния
 
-По умолчанию приложение не предоставляет специальных страниц для кодов состояния HTTP, таких как код 500 (внутренняя ошибка сервера) или 404 (не найдено). Вы можете настроить `StatusCodePagesMiddleware`, добавив строку в метод `Configure`:
+По умолчанию приложение не предоставляет специальных страниц для кодов состояния HTTP, таких как код *404 Не найдено*. Чтобы предоставить страницы кодов состояния, настройте ПО промежуточного слоя страниц кода состояния, добавив строку в метод `Startup.Configure`:
 
 ```csharp
 app.UseStatusCodePages();
 ```
 
-По умолчанию этот промежуточный слой добавляет простые текстовые обработчики для распространенных кодов состояния, например 404:
+По умолчанию это ПО промежуточного слоя добавляет простые текстовые обработчики для распространенных кодов состояния, например 404:
 
 ![Страница 404](error-handling/_static/default-404-status-code.png)
 
-Промежуточный слой поддерживает несколько разных методов расширения. Один из них принимает лямбда-выражение, а другой — тип содержимого и строку формата.
+ПО промежуточного слоя поддерживает несколько методов расширения. Один метод принимает лямбда-выражение:
 
-[!code-csharp[Main](error-handling/sample/Startup.cs?name=snippet_StatusCodePages)]
+[!code-csharp[](error-handling/sample/Startup.cs?name=snippet_StatusCodePages)]
+
+Другой метод принимает строку формата и типа содержимого:
 
 ```csharp
 app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
 ```
 
-Имеются также методы расширения для перенаправления. Один из них отправляет клиенту код состояния 302, а другой возвращает исходный код состояния клиенту, а также выполняет обработчик для URL-адреса перенаправления.
+Имеются также методы расширения для перенаправления и повторного выполнения. Метод перенаправления отправляет клиенту код состояния 302:
 
-[!code-csharp[Main](error-handling/sample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
+[!code-csharp[](error-handling/sample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
+
+Метод повторного выполнения возвращает исходный код состояния клиенту, а также выполняет обработчик для URL-адреса перенаправления:
 
 ```csharp
 app.UseStatusCodePagesWithReExecute("/error/{0}");
 ```
 
-Если нужно отключить страницы с кодами состояния для некоторых запросов, это можно сделать так:
+Можно отключить страницы кодов состояния для конкретных запросов в методе обработчика Razor Pages или в контроллере MVC. Чтобы отключить страницы кодов состояния, попробуйте извлечь [IStatusCodePagesFeature](/dotnet/api/microsoft.aspnetcore.diagnostics.istatuscodepagesfeature) из коллекции запроса [HttpContext.Features](/dotnet/api/microsoft.aspnetcore.http.httpcontext.features) и отключить эту функцию, если она доступна:
 
 ```csharp
-var statusCodePagesFeature = context.Features.Get<IStatusCodePagesFeature>();
+var statusCodePagesFeature = HttpContext.Features.Get<IStatusCodePagesFeature>();
+
 if (statusCodePagesFeature != null)
 {
-  statusCodePagesFeature.Enabled = false;
+    statusCodePagesFeature.Enabled = false;
 }
 ```
 
@@ -109,13 +114,15 @@ if (statusCodePagesFeature != null)
 
 ## <a name="server-exception-handling"></a>Обработка исключений на сервере
 
-Помимо логики обработки исключений в приложении, [сервер](servers/index.md), на котором размещается приложение, также выполняет ряд операций по обработке исключений. Если сервер перехватывает исключение перед отправкой заголовков, он отсылает ответ 500 "Внутренняя ошибка сервера" без текста. Если сервер перехватывает исключение после отправки заголовков, он закрывает соединение. Запросы, не обработанные приложением, обрабатываются сервером. Все возникшие исключения обрабатываются с помощью механизма обработки исключений на сервере. Настроенные пользовательские страницы ошибок, промежуточный слой обработки исключений и фильтры не влияют на этот процесс.
+Помимо логики обработки исключений в приложении, [сервер](servers/index.md), на котором размещается приложение, также выполняет ряд операций по обработке исключений. Если сервер перехватывает исключение перед отправкой заголовков, он отсылает ответ *500 Внутренняя ошибка сервера* без текста. Если сервер перехватывает исключение после отправки заголовков, он закрывает соединение. Запросы, не обработанные приложением, обрабатываются сервером. Все возникшие исключения обрабатываются с помощью механизма обработки исключений на сервере. Настроенные пользовательские страницы ошибок, промежуточный слой обработки исключений и фильтры не влияют на этот процесс.
 
 ## <a name="startup-exception-handling"></a>Обработка исключений при запуске
 
 Исключения, возникающие во время запуска приложения, могут обрабатываться только на уровне размещения. Вы можете [настроить реакцию узла на ошибки при запуске](hosting.md#detailed-errors) с помощью метода `captureStartupErrors` и ключа `detailedErrors`.
 
-Узел может отображать страницу со сведениями о перехваченной ошибке при запуске, только если ошибка произошла после привязки адреса и порта узла. Если выполнить привязку по какой-либо причине не удается, уровень размещения записывает в журнал критическое исключение, происходит аварийное завершение процесса dotnet и страница со сведениями об ошибке не выводится.
+Узел может отображать страницу со сведениями о перехваченной ошибке при запуске, только если ошибка произошла после привязки адреса и порта узла. Если выполнить привязку по какой-либо причине не удается, уровень размещения записывает в журнал критическое исключение, происходит аварийное завершение процесса dotnet и страница со сведениями об ошибке не выводится, когда приложение запущено на сервере [Kestrel](xref:fundamentals/servers/kestrel).
+
+При работе в службе [IIS](/iis) или [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) возвращает ошибку *502.5 Сбой процесса*, если процесс невозможно запустить. Следуйте рекомендациям по устранению неполадок из раздела [Устранение неполадок ASP.NET Core в службах IIS](xref:host-and-deploy/iis/troubleshoot).
 
 ## <a name="aspnet-mvc-error-handling"></a>Обработка ошибок ASP.NET MVC
 
@@ -132,7 +139,7 @@ if (statusCodePagesFeature != null)
 
 [Проверка модели](../mvc/models/validation.md) проводится перед вызовом каждого действия контроллера. Метод действия отвечает за проверку свойства `ModelState.IsValid` и соответствующую реакцию.
 
-В некоторых приложениях соблюдается стандартное соглашение об обработке ошибок проверки модели. В этом случае подходящим местом для реализации такой политики может быть [фильтр](../mvc/controllers/filters.md). Следует проверить, как выполняются действия при недопустимых состояниях модели. Дополнительные сведения см. в статье [Тестирование логики контроллеров](../mvc/controllers/testing.md).
+В некоторых приложениях соблюдается стандартное соглашение об обработке ошибок проверки модели. В этом случае подходящим местом для реализации такой политики может быть [фильтр](../mvc/controllers/filters.md). Следует проверить, как выполняются действия при недопустимых состояниях модели. Дополнительные сведения см. в статье [Тестирование логики контроллера](../mvc/controllers/testing.md).
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: "Публикация приложения ASP.NET Core в Azure с использованием программ командной строки"
+title: Публикация приложения ASP.NET Core в Azure с использованием средств командной строки
 author: camsoper
-description: "Сведения о публикации приложения ASP.NET Core в службе приложений Azure с помощью клиента командной строки Git."
+description: Сведения о публикации приложения ASP.NET Core в службе приложений Azure с помощью клиента командной строки Git.
 manager: wpickett
 ms.author: casoper
 ms.custom: mvc
@@ -12,15 +12,17 @@ ms.technology: aspnet
 ms.topic: get-started-article
 services: multiple
 uid: tutorials/publish-to-azure-webapp-using-cli
-ms.openlocfilehash: 0418a2695d3afb6dc2c55b8f694a97d62239835f
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0462a4cf18bba23643ed3b1b4e6b76bdbceb24a8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="deploy-an-aspnet-core-application-to-azure-app-service-from-the-command-line"></a>Развертывание приложения ASP.NET Core в службе приложений Azure из командной строки
+# <a name="publish-an-aspnet-core-app-to-azure-with-command-line-tools"></a>Публикация приложения ASP.NET Core в Azure с использованием средств командной строки
 
 Автор [Кэм Сопер (Cam Soper)](https://twitter.com/camsoper)
+
+[!INCLUDE [Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
 
 В этом руководстве рассказывается, как создавать и развертывать приложение ASP.NET Core в службе приложений Microsoft Azure с помощью программ командной строки.  После завершения у вас будет веб-приложение, созданное в ASP.NET MVC Core, размещенное в качестве веб-приложения службы приложений Azure.  Это руководство написано с использованием программ командной строки Windows, но оно также может применяться в средах MacOS и Linux.  
 
@@ -35,7 +37,7 @@ ms.lasthandoff: 01/30/2018
 Для работы с этим руководством вам понадобится:
 
 * [Подписка на Microsoft Azure](https://azure.microsoft.com/free/).
-* [.NET Core](https://www.microsoft.com/net/download/core)
+* [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 * Клиент командной строки [Git](https://www.git-scm.com/).
 
 ## <a name="create-a-web-application"></a>Создание веб-приложения

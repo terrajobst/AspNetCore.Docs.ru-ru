@@ -1,7 +1,7 @@
 ---
-title: "Добавление нового поля"
+title: Добавление нового поля в приложение ASP.NET Core
 author: rick-anderson
-description: 
+description: Узнайте, как использовать Entity Framework Code First Migrations для добавления нового поля к модели и переноса этого изменения в базу данных.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: f8a5f9528d899f75aaabfbca38f075a27763567f
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a314115459fedb9561694604509856503c023a5c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="adding-a-new-field"></a>Добавление нового поля
+# <a name="add-a-new-field-to-an-aspnet-core-app"></a>Добавление нового поля в приложение ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/30/2018
 
 Откройте файл *Models/Movie.cs* и добавьте свойство `Rating`:
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
 
 Постройте приложение (CTRL+SHIFT+B).
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/30/2018
 
 Измените файл */Views/Movies/Index.cshtml* и добавьте поле `Rating`:
 
-[!code-HTML[Main](start-mvc/sample/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=17,39&range=24-64)]
+[!code-HTML[](start-mvc/sample/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=17,39&range=24-64)]
 
 Обновите файл */Views/Movies/Create.cshtml*, указав поле `Rating`. Вы можете скопировать и вставить предыдущую "группу форм" и дождаться автоматического обновления полей с помощью IntelliSense. IntelliSense работает со [вспомогательными функциями тегов](xref:mvc/views/tag-helpers/intro). Примечание. В RTM-версии Visual Studio 2017 необходимо установить [службы языка Razor](https://marketplace.visualstudio.com/items?itemName=ms-madsk.RazorLanguageServices) для Razor IntelliSense. Эта неполадка будет устранена в следующем выпуске.
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 01/30/2018
 
 Обновите класс `SeedData` так, чтобы он предоставлял значение нового столбца. Ниже показан пример изменения, которое необходимо выполнить для каждого `new Movie`.
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Models/SeedDataRating.cs?name=snippet1&highlight=6)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Models/SeedDataRating.cs?name=snippet1&highlight=6)]
 
 Постройте решение.
 
@@ -86,6 +86,6 @@ Update-Database
 
 Запустите приложение и проверьте возможность создания, редактирования и отображения фильмов с использованием поля `Rating`. Также следует добавить поле `Rating` в шаблоны представлений `Edit`, `Details` и `Delete`.
 
->[!div class="step-by-step"]
-[Назад](search.md)
-[Вперед](validation.md)  
+> [!div class="step-by-step"]
+> [Назад](search.md)
+> [Вперед](validation.md)  

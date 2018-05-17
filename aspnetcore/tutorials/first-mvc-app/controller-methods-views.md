@@ -1,21 +1,21 @@
 ---
-title: "Методы и представления контроллера"
+title: Методы и представления контроллера в приложении ASP.NET Core
 author: rick-anderson
-description: "Работа с методами, представлениями контроллера и DataAnnotations"
-ms.author: riande
+description: Узнайте, как работать с методами, представлениями и DataAnnotations контроллера в ASP.NET Core.
 manager: wpickett
+ms.author: riande
 ms.date: 03/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: e279b6c2852f1aea49685381ccaa5f7854f7c418
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6fe0a0e71079bebcbd3a76abee0f2917f562e766
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="controller-methods-and-views"></a>Методы и представления контроллера
+# <a name="controller-methods-and-views-in-aspnet-core"></a>Методы и представления контроллера в приложении ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/24/2018
 
 Откройте файл *Models/Movie.cs* и добавьте указанные ниже выделенные строки:
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Models/MovieDateWithExtraUsings.cs?name=snippet_1&highlight=13-14)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Models/MovieDateWithExtraUsings.cs?name=snippet_1&highlight=13-14)]
 
 Щелкните правой кнопкой мыши строку, подчеркнутую волнистой красной линией, и выберите **> Быстрые действия и операции рефакторинга**.
 
@@ -44,12 +44,12 @@ ms.lasthandoff: 01/24/2018
 
 Обновленный код выглядит следующим образом:
 
-[!code-csharp[Main](./start-mvc/sample/MvcMovie/Models/MovieDate.cs?name=snippet_1)]
+[!code-csharp[](./start-mvc/sample/MvcMovie/Models/MovieDate.cs?name=snippet_1)]
 
 <!-- include start -->
 
-[!INCLUDE[adding-model](../../includes/mvc-intro/controller-methods-views.md)]
+[!INCLUDE [adding-model](../../includes/mvc-intro/controller-methods-views.md)]
 
->[!div class="step-by-step"]
-[Назад](working-with-sql.md)
-[Вперед](search.md)  
+> [!div class="step-by-step"]
+> [Назад](working-with-sql.md)
+> [Вперед](search.md)  

@@ -1,23 +1,23 @@
 ---
-title: "Частичные представления"
+title: Частичные представления в ASP.NET Core
 author: ardalis
-description: "Использование частичных представлений в ASP.NET Core MVC"
+description: Сведения о том, что частичное представление — это представление, отображаемое в другом представлении, и о сценариях их использования в приложениях ASP.NET Core.
 manager: wpickett
 ms.author: riande
-ms.date: 03/14/2017
+ms.date: 03/14/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/partial
-ms.openlocfilehash: 169948e5d7dc8068463ed61114666148b785b217
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3deaaeb666e5443d0784f2ac6977e58e1b25d711
+ms.sourcegitcommit: 71b93b42cbce8a9b1a12c4d88391e75a4dfb6162
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/20/2018
 ---
-# <a name="partial-views"></a>Частичные представления
+# <a name="partial-views-in-aspnet-core"></a>Частичные представления в ASP.NET Core
 
-Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith), [Махер Джендуби](https://twitter.com/maherjend) (Maher JENDOUBI) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
+Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith), [Махер Джендуби](https://twitter.com/maherjend) (Maher JENDOUBI), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Скотт Саубер](https://twitter.com/scottsauber) (Scott Sauber)
 
 В ASP.NET Core MVC поддерживаются частичные представления, которые полезны в том случае, если на веб-страницах есть повторяющиеся части, которые должны использоваться совместно в разных представлениях.
 
@@ -41,19 +41,17 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="referencing-a-partial-view"></a>Ссылка на частичное представление
 
-Частичное представление может преобразовываться для просмотра из страницы представления несколькими способами. Самый простой способ — использовать метод `Html.Partial`, который возвращает экземпляр `IHtmlString` и на который можно ссылаться путем указания префикса `@` перед вызовом:
+Частичное представление может преобразовываться для просмотра из страницы представления несколькими способами. Рекомендуется использовать метод `Html.PartialAsync`, который возвращает `IHtmlString` и на который можно ссылаться путем указания префикса `@` перед вызовом:
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=9)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=8)]
 
-Метод `PartialAsync` доступен для частичных представлений, содержащих асинхронный код (хотя использовать код в представлениях, как правило, не рекомендуется):
+Преобразовывать частичное представление для просмотра можно с помощью метода `RenderPartialAsync`. Он не возвращает результат, а передает преобразованные выходные данные непосредственно в ответ в потоковом режиме. Так как этот метод не возвращает результат, его необходимо вызывать в блоке кода Razor:
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=8)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=11-13)]
 
-Преобразовывать частичное представление для просмотра можно с помощью метода `RenderPartial`. Он не возвращает результат, а передает преобразованные выходные данные непосредственно в ответ в потоковом режиме. Так как этот метод не возвращает результат, его необходимо вызывать в блоке кода Razor (при необходимости можно также вызывать `RenderPartialAsync`):
+Так как метод `RenderPartialAsync` передает результат в потоковом режиме напрямую, в некоторых ситуациях он может быть эффективнее. Тем не менее рекомендуется использовать `PartialAsync`.
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=10-12)]
-
-Так как методы `RenderPartial` и `RenderPartialAsync` передают результат в потоковом режиме напрямую, в некоторых ситуациях они могут быть эффективнее. Однако в большинстве случаев рекомендуется применять методы `Partial` и `PartialAsync`.
+Хотя существуют синхронные эквиваленты `Html.PartialAsync` (`Html.Partial`) и `Html.RenderPartialAsync` (`Html.RenderPartial`), не рекомендуется использовать их, поскольку в некоторых случаях возникает взаимоблокировка. Синхронные методы будут недоступны в будущих версиях.
 
 > [!NOTE]
 > Если представления должны выполнять код, рекомендованный подход заключается в использовании [компонента представления](view-components.md) вместо частичного представления.
@@ -62,21 +60,21 @@ ms.lasthandoff: 01/30/2018
 
 Ссылаясь на частичное представление, его расположение можно указывать несколькими способами.
 
-```text
+```cshtml
 // Uses a view in current folder with this name
 // If none is found, searches the Shared folder
-@Html.Partial("ViewName")
+@await Html.PartialAsync("ViewName")
 
 // A view with this name must be in the same folder
-@Html.Partial("ViewName.cshtml")
+@await Html.PartialAsync("ViewName.cshtml")
 
 // Locate the view based on the application root
 // Paths that start with "/" or "~/" refer to the application root
-@Html.Partial("~/Views/Folder/ViewName.cshtml")
-@Html.Partial("/Views/Folder/ViewName.cshtml")
+@await Html.PartialAsync("~/Views/Folder/ViewName.cshtml")
+@await Html.PartialAsync("/Views/Folder/ViewName.cshtml")
 
 // Locate the view using relative paths
-@Html.Partial("../Account/LoginPartial.cshtml")
+@await Html.PartialAsync("../Account/LoginPartial.cshtml")
 ```
 
 В разных папках представлений могут быть разные частичные представления с одинаковыми именами. При обращении к представлениям по имени (без указания расширения имени файла) представление в каждой папке будет использовать частичное представление из той же папки. Можно также определить частичное представление по умолчанию, поместив его в папку *Shared*. Общее частичное представление будет использоваться всеми представлениями, у которых нет собственного частичного представления. Частичное представление по умолчанию (в папке *Shared*) может переопределяться частичным представлением с тем же именем, которое находится в одной папке с родительским представлением.
@@ -92,31 +90,31 @@ ms.lasthandoff: 01/30/2018
 
 В частичное представление можно передать экземпляр `ViewDataDictionary`:
 
-```csharp
-@Html.Partial("PartialName", customViewData)
-   ```
+```cshtml
+@await Html.PartialAsync("PartialName", customViewData)
+```
 
-В частичное представление можно также передать модель. Это может быть модель представления страницы, какая-либо ее часть или пользовательский объект. Модель можно передать в метод `Partial`,`PartialAsync`, `RenderPartial` или `RenderPartialAsync`.
+В частичное представление можно также передать модель. Это может быть модель представления страницы или пользовательский объект. Модель можно передать в метод `PartialAsync` или `RenderPartialAsync`:
 
-```csharp
-@Html.Partial("PartialName", viewModel)
-   ```
+```cshtml
+@await Html.PartialAsync("PartialName", viewModel)
+```
 
 В частичное представление можно передать экземпляр `ViewDataDictionary` и модель представления:
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml?range=15-16)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml?range=15-16)]
 
 В приведенной ниже разметке показано представление *Views/Articles/Read.cshtml*, содержащее два частичных представления. Второе частичное представление передает модель и объект `ViewData` в первое частичное представление. Вы можете передать новый словарь `ViewData`, сохранив существующий `ViewData`. Для этого используйте перегрузку конструктора `ViewDataDictionary`, выделенную ниже.
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml)]
 
 *Views/Shared/AuthorPartial*:
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Shared/AuthorPartial.cshtml)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Shared/AuthorPartial.cshtml)]
 
 Частичное представление *ArticleSection*:
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Articles/ArticleSection.cshtml)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Articles/ArticleSection.cshtml)]
 
 Во время выполнения частичные представления преобразовываются для просмотра внутри родительского представления, которое само преобразовывается для просмотра в общем макете *_Layout.cshtml*.
 

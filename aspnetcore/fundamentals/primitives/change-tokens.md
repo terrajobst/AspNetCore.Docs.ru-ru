@@ -1,7 +1,7 @@
 ---
-title: "Обнаружение изменений с помощью токенов изменений в ASP.NET Core"
+title: Обнаружение изменений с помощью токенов изменений в ASP.NET Core
 author: guardrex
-description: "Сведения об использовании токенов изменений для отслеживания изменений."
+description: Сведения об использовании токенов изменений для отслеживания изменений.
 manager: wpickett
 ms.author: riande
 ms.date: 11/10/2017
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/primitives/change-tokens
-ms.openlocfilehash: 94bf356fcbfab3930804485c1b65e4a0f4c52b8e
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 3055eec91adc412b596d4cc73e8523e18ff63331
+ms.sourcegitcommit: 7c8fd9b7445cd77eb7f7d774bfd120c26f3b5d84
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Обнаружение изменений с помощью токенов изменений в ASP.NET Core
 
@@ -59,22 +59,22 @@ ms.lasthandoff: 01/31/2018
 
 По умолчанию шаблоны ASP.NET Core используют [файлы конфигурации JSON](xref:fundamentals/configuration/index#json-configuration) (*appsettings.json*, *appsettings.Development.json* и *appsettings.Production.json*) для загрузки параметров конфигурации приложения.
 
-Эти файлы настраиваются с помощью метода расширения [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions.addjsonfile?view=aspnetcore-2.0#Microsoft_Extensions_Configuration_JsonConfigurationExtensions_AddJsonFile_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_System_Boolean_System_Boolean_) в [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder), который принимает параметр `reloadOnChange` (ASP.NET Core 1.1 и более поздней версии). `reloadOnChange` указывает, нужно ли перезагружать конфигурацию при изменении файла. Просмотрите этот параметр в удобном методе [WebHost](/dotnet/api/microsoft.aspnetcore.webhost) [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) ([источник ссылки](https://github.com/aspnet/MetaPackages/blob/rel/2.0.3/src/Microsoft.AspNetCore/WebHost.cs#L152-L193)):
+Эти файлы настраиваются с помощью метода расширения [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions.addjsonfile?view=aspnetcore-2.0#Microsoft_Extensions_Configuration_JsonConfigurationExtensions_AddJsonFile_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_System_Boolean_System_Boolean_) в [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder), который принимает параметр `reloadOnChange` (ASP.NET Core 1.1 и более поздней версии). `reloadOnChange` указывает, нужно ли перезагружать конфигурацию при изменении файла. Просмотрите этот параметр в удобном методе [WebHost](/dotnet/api/microsoft.aspnetcore.webhost) [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder):
 
 ```csharp
 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
       .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
 ```
 
-Конфигурация на основе файла представлена [FileConfigurationSource](/dotnet/api/microsoft.extensions.configuration.fileconfigurationsource). `FileConfigurationSource` использует [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider) ([источник ссылки](https://github.com/aspnet/FileSystem/blob/patch/2.0.1/src/Microsoft.Extensions.FileProviders.Abstractions/IFileProvider.cs)) для отслеживания файлов.
+Конфигурация на основе файла представлена [FileConfigurationSource](/dotnet/api/microsoft.extensions.configuration.fileconfigurationsource). `FileConfigurationSource` использует [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider) для наблюдения за файлами.
 
-По умолчанию `IFileMonitor` предоставляется [PhysicalFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider) ([источник ссылки](https://github.com/aspnet/Configuration/blob/patch/2.0.1/src/Microsoft.Extensions.Configuration.FileExtensions/FileConfigurationSource.cs#L82)), который использует [FileSystemWatcher](/dotnet/api/system.io.filesystemwatcher) для отслеживания изменений в файле конфигурации.
+По умолчанию `IFileMonitor` предоставляется [PhysicalFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider), который использует [FileSystemWatcher](/dotnet/api/system.io.filesystemwatcher) для отслеживания изменений в файле конфигурации.
 
 Этот пример приложения демонстрирует две реализации для отслеживания изменений конфигурации. Если изменяется файл *appsettings.json* или его версия среды, каждая реализация выполняет пользовательский код. Этот пример приложения записывает сообщение в консоль.
 
 `FileSystemWatcher` файла конфигурации может активировать несколько обратных вызовов токена для одного изменения файла конфигурации. Реализация в примере защищает от этой проблемы, проверяя хэши для файлов конфигурации. Проверка хэшей файлов позволяет убедиться, что изменился по меньшей мере один из файлов конфигурации, прежде чем запускать пользовательский код. Этот пример использует хэширование файлов SHA1 (*Utilities/Utilities.cs*):
 
-   [!code-csharp[Main](change-tokens/sample/Utilities/Utilities.cs?name=snippet1)]
+   [!code-csharp[](change-tokens/sample/Utilities/Utilities.cs?name=snippet1)]
 
    Повторная попытка реализуется посредством экспоненциальной задержки. Повторная попытка нужна, так как может возникать блокировка файлов, препятствующая вычислению нового хэша для одного из файлов.
 
@@ -82,11 +82,11 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 Зарегистрируйте обратный вызов `Action` объекта-получателя токена для уведомлений об изменениях в токене перезагрузки конфигурации (*Startup.cs*):
 
-[!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet2)]
+[!code-csharp[](change-tokens/sample/Startup.cs?name=snippet2)]
 
 `config.GetReloadToken()` предоставляет токен. Обратный вызов является методом `InvokeChanged`:
 
-[!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet3)]
+[!code-csharp[](change-tokens/sample/Startup.cs?name=snippet3)]
 
 `state` обратного вызова используется для передачи `IHostingEnvironment`. Это удобно для определения правильного JSON-файла конфигурации *appsettings*, который требуется отслеживать, *appsettings.&lt;среда&gt;.json*. Хэши файлов используются для предотвращения многократного выполнения оператора `WriteConsole` из-за нескольких обратных вызовов токена при всего одном изменении файла конфигурации.
 
@@ -102,11 +102,11 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 Этот пример задает интерфейс `IConfigurationMonitor` (*Extensions/ConfigurationMonitor.cs*):
 
-[!code-csharp[Main](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet1)]
+[!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet1)]
 
 Конструктор реализованного класса `ConfigurationMonitor` регистрирует обратный вызов для уведомлений об изменениях:
 
-[!code-csharp[Main](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet2)]
+[!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet2)]
 
 `config.GetReloadToken()` предоставляет токен. `InvokeChanged` является методом обратного вызова. `state` в этом экземпляре является строкой, описывающей состояние отслеживания. Используются два свойства:
 
@@ -119,27 +119,27 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 * задает для строки свойства `CurrentState` описательное сообщение, регистрирующее время выполнения кода;
 * записывает текущее значение `state` в своих выходных данных `WriteConsole`.
 
-[!code-csharp[Main](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet3)]
+[!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet3)]
 
 Экземпляр `ConfigurationMonitor` регистрируется как служба в `ConfigureServices` в файле *Startup.cs*:
 
-[!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet1)]
+[!code-csharp[](change-tokens/sample/Startup.cs?name=snippet1)]
 
 Страница индекса позволяет пользователю управлять отслеживанием конфигурации. Экземпляр `IConfigurationMonitor` внедряется в `IndexModel`:
 
-[!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet1)]
+[!code-csharp[](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet1)]
 
 Кнопка включает и отключает отслеживание:
 
-[!code-cshtml[Main](change-tokens/sample/Pages/Index.cshtml?range=35)]
+[!code-cshtml[](change-tokens/sample/Pages/Index.cshtml?range=35)]
 
-[!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet2)]
+[!code-csharp[](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet2)]
 
 При активации `OnPostStartMonitoring` отслеживание включается, а текущее состояние сбрасывается. При активации `OnPostStopMonitoring` отслеживание отключается, а состояние указывает на отсутствие отслеживания.
 
 ## <a name="monitoring-cached-file-changes"></a>Отслеживание изменений кэшированных файлов
 
-Содержимое файла можно кэшировать в памяти с помощью [IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache). Кэширование в памяти описано в разделе [Кэширование в памяти](xref:performance/caching/memory). *Устаревшие* (просроченные) данные возвращаются из кэша при изменении источника исходных данных без каких-либо дополнительных действий, таких как описанная ниже реализация.
+Содержимое файла можно кэшировать в памяти с помощью [IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache). Кэширование в памяти описано в разделе [Кэш в памяти](xref:performance/caching/memory). *Устаревшие* (просроченные) данные возвращаются из кэша при изменении источника исходных данных без каких-либо дополнительных действий, таких как описанная ниже реализация.
 
 Если не учитывать состояние кэшированного исходного файла при продлении [скользящего срока действия](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.slidingexpiration), это приведет к устаревшим данным кэша. Каждый запрос к данным продляет скользящий срок действия, но этот файл никогда не загружается в кэш. Любые функции приложения, использующие кэшированное содержимое, могут получить устаревшее содержимое.
 
@@ -152,7 +152,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 *Utilities/Utilities.cs*:
 
-[!code-csharp[Main](change-tokens/sample/Utilities/Utilities.cs?name=snippet2)]
+[!code-csharp[](change-tokens/sample/Utilities/Utilities.cs?name=snippet2)]
 
 Для обработки поиска кэшированных файлов создается `FileService`. Направленный в службу вызов метода `GetFileContent` пытается получить содержимое файла из кэша в памяти и вернуть его вызывающему объекту (*Services/FileService.cs*).
 
@@ -162,19 +162,19 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 1. Токен изменений извлекается из файла поставщика с помощью [IFileProviders.Watch](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch). При изменении файла активируется обратный вызов токена.
 1. Содержимое файла кэшируется с использованием [скользящего срока действия](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.slidingexpiration). Токен изменений подключается к [MemoryCacheEntryExtensions.AddExpirationToken](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryextensions.addexpirationtoken) для исключения записи кэша, если файл изменяется во время его кэширования.
 
-[!code-csharp[Main](change-tokens/sample/Services/FileService.cs?name=snippet1)]
+[!code-csharp[](change-tokens/sample/Services/FileService.cs?name=snippet1)]
 
 `FileService` регистрируется в контейнере службы вместе со службой кэширования памяти (*Startup.cs*):
 
-[!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet4)]
+[!code-csharp[](change-tokens/sample/Startup.cs?name=snippet4)]
 
 Страничная модель загружает содержимое файла с помощью службы (*Pages/Index.cshtml.cs*):
 
-[!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet3)]
+[!code-csharp[](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet3)]
 
 ## <a name="compositechangetoken-class"></a>Класс CompositeChangeToken
 
-Чтобы представить один или несколько экземпляров `IChangeToken` в одном объекте, используйте класс [CompositeChangeToken](/dotnet/api/microsoft.extensions.primitives.compositechangetoken) ([источник ссылки](https://github.com/aspnet/Common/blob/patch/2.0.1/src/Microsoft.Extensions.Primitives/CompositeChangeToken.cs)).
+Чтобы представить один или несколько экземпляров `IChangeToken` в одном объекте, используйте класс [CompositeChangeToken](/dotnet/api/microsoft.extensions.primitives.compositechangetoken).
 
 ```csharp
 var firstCancellationTokenSource = new CancellationTokenSource();
@@ -199,7 +199,7 @@ var compositeChangeToken =
 
 ## <a name="see-also"></a>См. также
 
-* [Кэширование в памяти](xref:performance/caching/memory)
+* [Кэш в памяти](xref:performance/caching/memory)
 * [Работа с распределенным кэшем](xref:performance/caching/distributed)
 * [Обнаружение изменений с помощью маркеров изменений](xref:fundamentals/primitives/change-tokens)
 * [Кэширование ответов](xref:performance/caching/response)

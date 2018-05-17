@@ -1,23 +1,24 @@
 ---
-title: "Добавление модели в приложение Razor Pages в ASP.NET Core"
+title: Добавление модели в приложение Razor Pages в ASP.NET Core
 author: rick-anderson
-description: "Добавление модели в приложение Razor Pages в ASP.NET Core"
+description: Узнайте, как добавлять классы для управления фильмами в базе данных с использованием Entity Framework Core (EF Core).
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 07/27/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 0ce7693bfdc37d930488304b329dbcd533a5ec1d
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a288b454ac1b418ef0deacb3643be22d440cb938
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="adding-a-model-to-a-razor-pages-app"></a>Добавление модели в приложение Razor Pages
+# <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Добавление модели в приложение Razor Pages в ASP.NET Core
 
-[!INCLUDE[model1](../../includes/RP/model1.md)]
+[!INCLUDE [model1](../../includes/RP/model1.md)]
 
 ## <a name="add-a-data-model"></a>Добавление модели данных
 
@@ -25,21 +26,21 @@ ms.lasthandoff: 01/30/2018
 
 Щелкните правой кнопкой мыши папку *Models*. Выберите **Добавить** > **Класс**. Добавьте класс **Movie** и следующие свойства:
 
-[!INCLUDE[model 2](../../includes/RP/model2.md)]
+[!INCLUDE [model 2](../../includes/RP/model2.md)]
 
 <a name="cs"></a>
 ### <a name="add-a-database-connection-string"></a>Добавление строки подключения базы данных
 
 Добавьте строку подключения в файл *appsettings.json*.
 
-[!code-json[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=8-10)]
+[!code-json[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=8-10)]
 
 <a name="reg"></a>
 ###  <a name="register-the-database-context"></a>Регистрация контекста базы данных
 
 Зарегистрируйте контекст базы данных в контейнере [внедрения зависимостей](xref:fundamentals/dependency-injection) в файле *Startup.cs*.
 
-[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=3-5,7-9)]
+[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=3-5,7-9)]
 
 Выполните сборку проекта, чтобы убедиться в отсутствии ошибок.
 
@@ -56,12 +57,20 @@ ms.lasthandoff: 01/30/2018
 
   ![Меню PMC](../first-mvc-app/adding-model/_static/pmc.png)
 
-В PMC введите следующие команды.
+В PMC введите следующие команды:
 
 ```powershell
 Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design
 Add-Migration Initial
 Update-Database
+```
+
+Кроме того, можно использовать следующие команды .NET Core CLI:
+
+```console
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet ef migrations add Initial
+dotnet ef database update
 ```
 
 Команда `Install-Package` устанавливает средства, необходимые для запуска ядра формирования шаблонов.
@@ -70,9 +79,9 @@ Update-Database
 
 Команда `Update-Database` выполняет метод `Up` в файле *Migrations/\<метка-времени>_InitialCreate.cs*, который создает базу данных.
 
-[!INCLUDE[model 4windows](../../includes/RP/model4Win.md)]
+[!INCLUDE [model 4windows](../../includes/RP/model4Win.md)]
 
-[!INCLUDE[model 4](../../includes/RP/model4tbl.md)]
+[!INCLUDE [model 4](../../includes/RP/model4tbl.md)]
 
 <a name="test"></a>
 ### <a name="test-the-app"></a>Тестирование приложения
@@ -80,7 +89,7 @@ Update-Database
 * Запустите приложение и добавьте `/Movies` к URL-адресу в браузере (`http://localhost:port/movies`).
 * Протестируйте ссылку **Создать**.
 
- ![Страница "Создать"](../../tutorials/razor-pages/model/_static/conan.png)
+  ![Страница "Создать"](../../tutorials/razor-pages/model/_static/conan.png)
 
 <a name="scaffold"></a>
 
@@ -90,6 +99,6 @@ Update-Database
 
 В следующем учебнике рассматриваются файлы, созданные с помощью формирования шаблонов.
 
->[!div class="step-by-step"]
-[Назад: Начало работы](xref:tutorials/razor-pages/razor-pages-start)
-[Далее: Сформированные страницы Razor Pages](xref:tutorials/razor-pages/page)    
+> [!div class="step-by-step"]
+> [Предыдущая статья — "Начало работы"](xref:tutorials/razor-pages/razor-pages-start)
+> [Следующая статья — "Сформированные страницы Razor Pages"](xref:tutorials/razor-pages/page)    

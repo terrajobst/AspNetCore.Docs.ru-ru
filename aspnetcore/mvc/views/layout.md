@@ -1,7 +1,7 @@
 ---
-title: "Макет"
+title: Макет в ASP.NET Core
 author: ardalis
-description: 
+description: Узнайте, как использовать общие макеты, директивы и как выполнять общий код перед преобразованием представлений для просмотра в приложении ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/layout
-ms.openlocfilehash: 3e9e5949d8940a33508e24f0da015b49b7ba468c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 8e89c8e6cf18c47abb6bf432cdc6bb6b97e8aeb0
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="layout"></a>Макет
+# <a name="layout-in-aspnet-core"></a>Макет в ASP.NET Core
 
 Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
@@ -37,13 +37,13 @@ ms.lasthandoff: 01/30/2018
 
 Пример макета `_Layout.cshtml`:
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=42,66)]
+[!code-html[](../../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=42,66)]
 
 ## <a name="specifying-a-layout"></a>Указание макета
 
 Представления Razor имеют свойство `Layout`. С его помощью указывается макет в отдельных представлениях:
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
+[!code-html[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
 Макет может указываться в виде полного пути (пример: `/Views/Shared/_Layout.cshtml`) или частичного имени (пример: `_Layout`). Если указано частичное имя, подсистема представлений Razor ищет файл макета, используя стандартный процесс обнаружения. Сначала поиск производится в папке, связанной с контроллером, а затем в папке `Shared`. Процесс обнаружения аналогичен тому, который применяется для поиска [частичных представлений](partial.md).
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 01/30/2018
 
 Пример файла `_ViewImports.cshtml`:
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
+[!code-html[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
 
 Файл `_ViewImports.cshtml` для приложения ASP.NET Core MVC обычно находится в папке `Views`. Файл `_ViewImports.cshtml` можно поместить в любую папку, но в этом случае он будет применяться только к представлениям в этой папке и вложенных в нее папках. Файлы `_ViewImports` обрабатываются начиная с корневого уровня, а затем в каждой папке вплоть до расположения самого представления, поэтому параметры, заданные на корневом уровне, могут переопределяться на уровне папки.
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 01/30/2018
 
 Пример файла `_ViewStart.cshtml`:
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
+[!code-html[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
 
 Приведенный файл предписывает всем представлениям использовать макет `_Layout.cshtml`.
 

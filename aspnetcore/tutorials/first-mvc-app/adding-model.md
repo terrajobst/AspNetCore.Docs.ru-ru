@@ -1,7 +1,7 @@
 ---
-title: "Добавление модели в приложение MVC ASP.NET Core"
+title: Добавление модели в приложение MVC ASP.NET Core
 author: rick-anderson
-description: "Добавление модели в простое приложение ASP.NET Core."
+description: Добавление модели в простое приложение ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 12/8/2017
@@ -9,19 +9,21 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 1819aff0e6ae68ad3c609466e52fcb6510fe1dcd
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4204d4e2d474db51692d42751a9f82373e9f0c0d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-[!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
+# <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>Добавление модели в приложение MVC ASP.NET Core
+
+[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model1.md)]
 
 Примечание. Шаблоны ASP.NET Core 2.0 содержат папку *Models*.
 
 Щелкните правой кнопкой мыши папку *Models* и выберите пункт **Добавить** > **Класс**. Добавьте класс **Movie** и следующие свойства:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
 
 Поле `ID` является обязательным для первичного ключа базы данных. 
 
@@ -59,7 +61,7 @@ Visual Studio создаст следующие компоненты:
 
 * [класс контекста базы данных](xref:data/ef-mvc/intro#create-the-database-context) Entity Framework Core (*Data/MvcMovieContext.cs*);
 * контроллер фильмов (*Controllers/MoviesController.cs*);
-* файлы представления Razor для страниц Create, Delete, Details, Edit и Index (*Views/Movies/&ast;.cshtml*).
+* файлы представления Razor для страниц Create, Delete, Details, Edit и Index (<em>Views/Movies/&ast;.cshtml</em>).
 
 Автоматическое создание контекста базы данных и методов и представлений действий [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (создание, чтение, обновление и удаление) называется *формированием шаблонов*. Вскоре вы получите полнофункциональное веб-приложение, позволяющее управлять базой данных фильмов.
 
@@ -113,12 +115,21 @@ Update-Database
   dotnet ef database update
   ```     
   
+  Если вы запускаете приложение и возникает ошибка:
+  
+  ```text
+  SqlException: Cannot open database "Movie" requested by the login.
+  The login failed.
+  Login failed for user 'user name'.
+  ```
 
-[!INCLUDE[adding-model](../../includes/mvc-intro/adding-model3.md)]
+Возможно, вы не выполнили ` dotnet ef database update`.
+  
+[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model3.md)]
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
 
-[!INCLUDE[adding-model](../../includes/mvc-intro/adding-model4.md)]
+[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model4.md)]
 
 ![Контекстное меню Intellisense элемента модели со списком доступных свойств: идентификатор, цена, дата выпуска и название](adding-model/_static/ints.png)
 
@@ -127,6 +138,6 @@ Update-Database
 * [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro)
 * [Глобализация и локализация](xref:fundamentals/localization)
 
->[!div class="step-by-step"]
-[Назад: добавление представления](adding-view.md)
-[Далее: работа с SQL](working-with-sql.md)  
+> [!div class="step-by-step"]
+> [Назад: добавление представления](adding-view.md)
+> [Далее: работа с SQL](working-with-sql.md)  

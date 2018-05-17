@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/distributed
-ms.openlocfilehash: d9c7c1c3b2c052ba11f9ea5eaaa424d69bc43eb2
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: c40209e3b3f2b5bf28450bb2a88cbe40e9e23230
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="work-with-a-distributed-cache-in-aspnet-core"></a>Работа с распределенным кэшем в ASP.NET Core
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/22/2018
 
 `IDistributedCache` Интерфейс включает синхронные и асинхронные методы. Интерфейс позволяет элементы добавлены, получение и удалены из реализации распределенного кэша. `IDistributedCache` Интерфейс содержит следующие методы:
 
-**Get, GetAsync**
+**Get-GetAsync**
 
 Принимает строковый ключ и извлекает кэшированного элемента как `byte[]` Если найден в кэше.
 
@@ -52,11 +52,11 @@ ms.lasthandoff: 03/22/2018
 
 Добавляет элемент (как `byte[]`) в кэш с помощью строкового ключа.
 
-**Refresh, RefreshAsync**
+**Обновление RefreshAsync**
 
 Обновляет объект в кэше, по его ключу, сброс его скользящий срок хранения (если таковые имеются).
 
-**Remove, RemoveAsync**
+**Удалите асинхронно удаляет**
 
 Удаляет запись по его ключу.
 

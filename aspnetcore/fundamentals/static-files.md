@@ -1,7 +1,7 @@
 ---
-title: "Работа со статическими файлами в ASP.NET Core"
+title: Работа со статическими файлами в ASP.NET Core
 author: rick-anderson
-description: "Узнайте, как в веб-приложениях ASP.NET Core обслуживать и защищать статические файлы, а также как настраивать ПО промежуточного слоя по размещению статических файлов."
+description: Узнайте, как в веб-приложениях ASP.NET Core обслуживать и защищать статические файлы, а также как настраивать ПО промежуточного слоя по размещению статических файлов.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -11,11 +11,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/static-files
-ms.openlocfilehash: 7b156830ab59db3c08fbff6b2c4180d8765a113b
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 46e868910661024ea3b950e78ced02a095896be1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="work-with-static-files-in-aspnet-core"></a>Работа со статическими файлами в ASP.NET Core
 
@@ -31,20 +31,17 @@ ms.lasthandoff: 02/01/2018
 
 Веб-узел приложения должен знать о расположении корневого каталога содержимого.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 Метод `WebHost.CreateDefaultBuilder` устанавливает текущий каталог в качестве корневого каталога содержимого:
 
 [!code-csharp[](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=9)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 Установите текущий каталог в качестве корневого каталога содержимого, вызвав [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseContentRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_) в методе `Program.Main`:
 
 [!code-csharp[](static-files/samples/1x/Program.cs?name=snippet_ProgramClass&highlight=7)]
 
----
-
+* * *
 Статические файлы доступны по относительному пути от корневого веб-каталога. Например, шаблон проекта **Web Application** содержит несколько папок в папке *wwwroot*:
 
 * **wwwroot**
@@ -52,7 +49,7 @@ ms.lasthandoff: 02/01/2018
   * **images**
   * **js**
 
-Формат URI для доступа к файлу во вложенной папке *images* следующий: *http://\<адрес_сервера>/images/\<имя_файла_изображения>*. Например: *http://localhost:9189/images/banner3.svg*.
+Формат URI для доступа к файлу во вложенной папке *images* следующий: *http://\<адрес_сервера>/images/\<имя_файла_изображения>*. Например, *http://localhost:9189/images/banner3.svg*.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -236,9 +233,9 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 > [!WARNING]
 > Использование `UseDirectoryBrowser` и `UseStaticFiles` может привести к утечке конфиденциальной информации. Настоятельно рекомендуется отключать просмотр каталогов в рабочей среде. Тщательно проверьте, просмотр каких каталогов разрешен посредством `UseStaticFiles` или `UseDirectoryBrowser`. Весь каталог и его подкаталоги становятся общедоступными. Храните файлы, предназначенные для общего доступа, в выделенных каталогах, таких как *\<корневой_каталог_содержимого>/wwwroot*. Отделите эти файлы от представлений MVC, страниц Razor (только для версии 2.x), файлов конфигурации и т.д.
 
-* К URL-адресам содержимого, к которому предоставлен доступ методами `UseDirectoryBrowser` и `UseStaticFiles`, применяются те же требования по регистрозависимости и запрещенным символам, что и к базовой файловой системе. Например, в Windows не учитывается регистр &mdash;, а в Mac и Linux учитывается.
+* К URL-адресам содержимого, к которому предоставлен доступ методами `UseDirectoryBrowser` и `UseStaticFiles`, применяются те же требования по регистрозависимости и запрещенным символам, что и к базовой файловой системе. Например, в Windows не учитывается регистр, а в macOS и Linux &mdash; учитывается.
 
-* Приложения ASP.NET Core, размещенные в IIS, используют [Модуль Core ASP.NET (ANCM)](xref:fundamentals/servers/aspnet-core-module) для перенаправления всех запросов к приложению, включая запросы статических файлов. Обработчик статических файлов IIS не используется. Не существует возможности обработать запросы до того, как их обработает ANCM.
+* Приложения ASP.NET Core, размещенные в IIS, используют [Модуль Core ASP.NET](xref:fundamentals/servers/aspnet-core-module) для перенаправления всех запросов к приложению, включая запросы статических файлов. Обработчик статических файлов IIS не используется. Не существует возможности обработать запросы до того, как их обработает модуль.
 
 * Выполните следующие шаги в диспетчере служб IIS для удаления обработчика статических файлов IIS на уровне сервера или веб-сайта:
     1. Перейдите к компоненту **Модули**.
@@ -246,7 +243,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
     1. Нажмите кнопку **Удалить** в боковой панели **Действия**.
 
 > [!WARNING]
-> Если обработчик статических файлов IIS включен **и** ANCM настроен неправильно, то статические файлы будут обслуживаться. Это может случиться, если, например, не был развернут файл *web.config*.
+> Если обработчик статических файлов IIS включен **и** модуль ASP.NET Core настроен неправильно, то статические файлы будут обслуживаться. Это может случиться, если, например, не был развернут файл *web.config*.
 
 * Размещайте файлы с кодом (включая *.cs* и *.cshtml*) за пределами корневого веб-каталога проекта приложения. Таким образом, в приложении создается логическое разделение между клиентским содержимым и серверным кодом. Это предотвращает утечку серверного кода.
 

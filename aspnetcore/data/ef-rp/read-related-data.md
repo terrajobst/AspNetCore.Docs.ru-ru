@@ -1,7 +1,7 @@
 ---
-title: "Razor Pages с EF Core — чтение связанных данных — 6 из 8"
+title: Razor Pages с EF Core в ASP.NET Core — чтение связанных данных — 6 из 8
 author: rick-anderson
-description: "Из этого руководства вы узнаете, как читать и отображать связанные данные — данные, которые Entity Framework загружает в свойства навигации."
+description: Из этого руководства вы узнаете, как читать и отображать связанные данные — данные, которые Entity Framework загружает в свойства навигации.
 manager: wpickett
 ms.author: riande
 ms.date: 11/05/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: ccb1e95ae2b43fd0a4c4b1ac9ed58a4d474ab3b6
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 55d9b6743c7d97dc9a354bae218b1fac69d7b6bc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="reading-related-data---ef-core-with-razor-pages-6-of-8"></a>Чтение связанных данных — EF Core с Razor Pages (6 из 8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Razor Pages с EF Core в ASP.NET Core — чтение связанных данных — 6 из 8
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra), [Йон П. Смит](https://twitter.com/thereformedprog) (Jon P Smith) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
 В этом руководстве выполняется чтение и отображение связанных данных. Связанными называются данные, которые EF Core загружает в свойства навигации.
 
@@ -37,22 +37,22 @@ ms.lasthandoff: 01/31/2018
 
 * [Безотложная загрузка](https://docs.microsoft.com/ef/core/querying/related-data#eager-loading). Безотложной является загрузка, когда запрос для одного типа сущности также загружает связанные сущности. При чтении сущности связанные данные извлекаются. Обычно такая загрузка представляет собой одиночный запрос с соединением, который получает все необходимые данные. Для некоторых типов безотложной загрузки EF Core выдает несколько запросов. Выдача нескольких запросов может оказаться более эффективной по сравнению с отдельными ситуациями в EF6, когда выполнялся отдельный запрос. Безотложная загрузка указывается с помощью методов `Include` и `ThenInclude`.
 
- ![Пример безотложной загрузки](read-related-data/_static/eager-loading.png)
+  ![Пример безотложной загрузки](read-related-data/_static/eager-loading.png)
  
- Безотложная загрузка отправляет несколько запросов, когда включена навигация коллекции:
+  Безотложная загрузка отправляет несколько запросов, когда включена навигация коллекции:
 
- * Один запрос для основного запроса 
- * Один запрос для каждого "края" коллекции в дереве загрузки.
+  * Один запрос для основного запроса 
+  * Один запрос для каждого "края" коллекции в дереве загрузки.
 
 * Отдельные запросы с `Load`: данные можно получить в отдельных запросах, а EF Core "исправляет" свойства навигации. Термин "исправляет" означает, что EF Core автоматически заполняет свойства навигации. Отдельные запросы с `Load` больше похожи на явную загрузку, чем безотложную.
 
- ![Пример отдельных запросов](read-related-data/_static/separate-queries.png)
+  ![Пример отдельных запросов](read-related-data/_static/separate-queries.png)
 
- Примечание: EF Core автоматически исправляет свойства навигации для других сущностей, которые были ранее загружены в экземпляр контекста. Даже если данные для свойства навигации *не* включены явно, свойство все равно можно заполнить при условии, что ранее были загружены некоторые или все связанные сущности.
+  Примечание: EF Core автоматически исправляет свойства навигации для других сущностей, которые были ранее загружены в экземпляр контекста. Даже если данные для свойства навигации *не* включены явно, свойство все равно можно заполнить при условии, что ранее были загружены некоторые или все связанные сущности.
 
 * [Явная загрузка](https://docs.microsoft.com/ef/core/querying/related-data#explicit-loading). При первом чтении сущности связанные данные не извлекаются. Нужно написать код, извлекающий связанные данные, когда они необходимы. Явная загрузка с отдельными запросами приводит к отправке нескольких запросов к базе данных. При явной загрузке код указывает, какие свойства навигации нужно загрузить. Для выполнения явной загрузки используется метод `Load`. Пример:
 
- ![Пример явной загрузки](read-related-data/_static/explicit-loading.png)
+  ![Пример явной загрузки](read-related-data/_static/explicit-loading.png)
 
 * [Отложенная загрузка](https://docs.microsoft.com/ef/core/querying/related-data#lazy-loading). [Сейчас EF Core не поддерживает отложенную загрузку](https://github.com/aspnet/EntityFrameworkCore/issues/3797). При первом чтении сущности связанные данные не извлекаются. При первом обращении к свойству навигации необходимые для этого свойства данные извлекаются автоматически. Запрос к базе данных отправляется при каждом первом обращении к свойству навигации.
 
@@ -76,9 +76,9 @@ ms.lasthandoff: 01/31/2018
 * Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
 * Выполните следующую команду:
 
- ```console
-dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
- ```
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
+  ```
 
 Предыдущая команда формирует шаблон для модели `Course`. Откройте проект в Visual Studio.
 
@@ -97,7 +97,7 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 
 Обновите метод `OnGetAsync`, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod)]
 
 Предыдущий код добавляет `AsNoTracking`. `AsNoTracking` повышает производительность, так как возвращаемые сущности не отслеживаются. Отслеживание отсутствует, так как сущности не изменяются в текущем контексте.
 
@@ -124,17 +124,17 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 
 Метод `OnGetAsync` загружает связанные данные с помощью метода `Include`:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
 
-Оператор `Select` загружает только необходимые связанные данные. Для отдельных элементов, таких как `Department.Name`, используется SQL INNER JOIN. Для коллекций используется доступ к другой базе данных, но это же делает и оператор .`Include` в коллекциях.
+Оператор `Select` загружает только необходимые связанные данные. Для отдельных элементов, таких как `Department.Name`, используется SQL INNER JOIN. Для коллекций используется доступ к другой базе данных, но это же делает и оператор `Include` в коллекциях.
 
 Следующий код загружает связанные данные с помощью метода `Select`:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
 
 `CourseViewModel`:
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
 
 Полный пример см. в описании [IndexSelect.cshtml](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml) и [IndexSelect.cshtml.cs](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs).
 
@@ -157,7 +157,7 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 
 Создайте в папке *SchoolViewModels* файл *InstructorIndexData.cs* со следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
 ### <a name="scaffold-the-instructor-model"></a>Формирование шаблона для модели "Instructor" (Преподаватель)
 
@@ -165,9 +165,9 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 * Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
 * Выполните следующую команду:
 
- ```console
-dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
- ```
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
+  ```
 
 Предыдущая команда формирует шаблон для модели `Instructor`. Откройте проект в Visual Studio.
 
@@ -179,13 +179,13 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 Замените содержимое *Pages/Instructors/Index.cshtml.cs* на следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,20-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,20-99)]
 
 Метод `OnGetAsync` принимает необязательные данные маршрутизации для идентификатора выбранного преподавателя.
 
 Изучите запрос на странице *Pages/Instructors/Index.cshtml*:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_ThenInclude)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_ThenInclude)]
 
 Запрос имеет две операции включения:
 
@@ -201,7 +201,7 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 Приведенная выше разметка вносит следующие изменения:
 
-* Изменяет директиву `page` с `@page` на `@page "{id:int?}"`. `"{id:int?}"` является шаблоном маршрута. Шаблон маршрута изменяет целочисленные строки запроса в URL-адресе для маршрутизации данных. Например, при выборе ссылки **Select** (Выбрать) для преподавателя директива страницы формирует URL-адрес следующего вида:
+* Изменяет директиву `page` с `@page` на `@page "{id:int?}"`. `"{id:int?}"` является шаблоном маршрута. Шаблон маршрута изменяет целочисленные строки запроса в URL-адресе для маршрутизации данных. Например, при выборе ссылки **Select** для преподавателя только с директивой `@page` формируется URL-адрес следующего вида:
 
     `http://localhost:1234/Instructors?id=2`
 
@@ -248,17 +248,17 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 Измените метод `OnGetAsync` в *Pages/Instructors/Index.cshtml.cs*, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_OnGetAsync&highlight=1,8,16-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_OnGetAsync&highlight=1,8,16-999)]
 
 Проверьте измененный запрос:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ThenInclude)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ThenInclude)]
 
 Предыдущий запрос добавляет сущности `Department`.
 
 Приведенный ниже код выполняется при выборе преподавателя (`id != null`). Выбранный преподаватель извлекается из списка преподавателей в модели представления. Из свойства навигации `CourseAssignments` этого преподавателя загружается свойство модели представления `Courses` вместе с сущностями `Course`.
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ID)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ID)]
 
 Метод `Where` возвращает коллекцию. В предыдущем методе `Where` возвращается всего одна сущность `Instructor`. Метод `Single` преобразует коллекцию в отдельную сущность `Instructor`. Сущность `Instructor` предоставляет доступ к свойству `CourseAssignments`. `CourseAssignments` предоставляет доступ к связанным сущностям `Course`.
 
@@ -271,11 +271,11 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 Следующий код заполняет свойство `Enrollments` модели представления при выборе курса:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_courseID)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_courseID)]
 
 Добавьте следующую разметку в конец страницы Razor *Pages/Courses/Index.cshtml*:
 
-[!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-)]
+[!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-999)]
 
 Предыдущая разметка отображает список связанных с преподавателем курсов при выборе преподавателя.
 
@@ -289,7 +289,7 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 Измените запрос в методе `OnGetAsync` в *Pages/Instructors/Index.cshtml.cs*, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
 
 Измените *Pages/Instructors/Index.cshtml*. Добавьте следующую разметку в конец файла:
 
@@ -305,7 +305,7 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 Метод `Single` может передать условие `Where` вместо отдельного вызова метода `Where`:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/IndexSingle.cshtml.cs?name=snippet_single&highlight=21,28-29)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/IndexSingle.cshtml.cs?name=snippet_single&highlight=21,28-29)]
 
 Приведенный выше подход на основе `Single` не дает преимуществ по сравнению с использованием `Where`. Некоторые разработчики предпочитают использовать подход `Single`.
 
@@ -313,13 +313,13 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 Текущий код указывает упреждающую загрузку для `Enrollments` и `Students`:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
 
 Предположим, что пользователям редко требуется просматривать зачисления на курс. В этом случае можно оптимизировать работу, загружая данные о зачислении только при их запросе. В этом разделе изменяется `OnGetAsync` для использования явной загрузки `Enrollments` и `Students`.
 
 Измените `OnGetAsync`, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/IndexXp.cshtml.cs?name=snippet_OnGetAsync&highlight=9-13,29-35)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/IndexXp.cshtml.cs?name=snippet_OnGetAsync&highlight=9-13,29-35)]
 
 Предыдущий код удаляет вызовы метода *ThenInclude* для данных о зачислении и учащихся. Если курс выбран, выделенный код извлекает следующее:
 

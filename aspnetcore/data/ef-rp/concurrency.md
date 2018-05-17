@@ -1,7 +1,7 @@
 ---
-title: "Razor Pages с EF Core — параллелизм — 8 из 8"
+title: Razor Pages с EF Core в ASP.NET Core — параллелизм — 8 из 8
 author: rick-anderson
-description: "Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей одновременно изменяют одну сущность."
+description: Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей одновременно изменяют одну сущность.
 manager: wpickett
 ms.author: riande
 ms.date: 11/15/2017
@@ -9,19 +9,19 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 1c6cdefa1410839606711d7460a8f4d0f1d6c72b
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: b6a8354bf438895f5188290013afefd883c4dd0a
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/03/2018
 ---
 ru-ru/
 
-# <a name="handling-concurrency-conflicts---ef-core-with-razor-pages-8-of-8"></a>Обработка конфликтов параллелизма — EF Core с Razor Pages (8 из 8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Razor Pages с EF Core в ASP.NET Core — параллелизм — 8 из 8
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson), [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Йон П. Смит](https://twitter.com/thereformedprog) (Jon P Smith)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
 Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей параллельно (одновременно) изменяют одну сущность. При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение для этого этапа](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part8).
 
@@ -57,38 +57,38 @@ ru-ru/
 
 * Вы можете отслеживать, для какого свойства пользователь изменил и обновил только соответствующие столбцы в базе данных.
 
- В этом сценарии никакие данные не теряются. Разные свойства были обновлены двумя пользователями. Когда какой-либо пользователь просмотрит кафедру английского языка в следующий раз, он увидит изменения, внесенные как Марией, так и Дмитрием. Этот способ обновления позволяет снизить количество конфликтов, способных привести к потере данных. Этот подход имеет следующие особенности. Во-первых, он не позволяет избежать потери данных, если конкурирующие изменения вносятся для одного свойства.
+  В этом сценарии никакие данные не теряются. Разные свойства были обновлены двумя пользователями. Когда какой-либо пользователь просмотрит кафедру английского языка в следующий раз, он увидит изменения, внесенные как Марией, так и Дмитрием. Этот способ обновления позволяет снизить количество конфликтов, способных привести к потере данных. Этот подход имеет следующие особенности. Во-первых, он не позволяет избежать потери данных, если конкурирующие изменения вносятся для одного свойства.
         Во-вторых, он не слишком хорошо подходит для веб-приложений, так как требует поддерживать значительный объем состояний, чтобы отслеживать все извлеченные и новые значения. Обслуживание большого объема состояний может негативно повлиять на производительность приложения.
         В-третьих, он может повысить сложность приложений по сравнению с обнаружением параллелизма для сущности.
 
 * Вы можете позволить изменению Дмитрия перезаписать изменение Марии.
 
- Когда какой-либо пользователь просмотрит кафедру английского языка в следующий раз, он увидит дату 9/1/2013 и значение 350 000,00 USD. Такой подход называется *победой клиента* или *сохранением последнего внесенного изменения*. (Все значения из клиента имеют приоритет над данными в хранилище.) Если не писать код для обработки параллелизма, автоматически применяется победа клиента.
+  Когда какой-либо пользователь просмотрит кафедру английского языка в следующий раз, он увидит дату 9/1/2013 и значение 350 000,00 USD. Такой подход называется *победой клиента* или *сохранением последнего внесенного изменения*. (Все значения из клиента имеют приоритет над данными в хранилище.) Если не писать код для обработки параллелизма, автоматически применяется победа клиента.
 
 * Вы можете запретить обновление изменения Дмитрия в базе данных. В этом случае приложение обычно отображает сообщение об ошибке.
         * Отображает текущее состояние данных.
         * Разрешает пользователю повторно применить изменения.
 
- Это называется *победой хранилища*. (Значения в хранилище имеют приоритет над данными, передаваемыми клиентом.) В этом руководстве вы реализуете сценарий победы хранилища. Данный метод гарантирует, что никакие изменения не перезаписываются без оповещения пользователя.
+  Это называется *победой хранилища*. (Значения в хранилище имеют приоритет над данными, передаваемыми клиентом.) В этом руководстве вы реализуете сценарий победы хранилища. Данный метод гарантирует, что никакие изменения не перезаписываются без оповещения пользователя.
 
 ## <a name="handling-concurrency"></a>Обработка параллелизма 
 
 Если свойство настроено как [токен параллелизма](https://docs.microsoft.com/ef/core/modeling/concurrency):
 
-* EF Core проверяет, что свойство не было изменено после его получения. Эта проверка выполняется при вызове [SaveChanges](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) или [SaveChangesAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_).
-* Если свойство было изменено после получения, возникает исключение [DbUpdateConcurrencyException](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception?view=efcore-2.0). 
+* EF Core проверяет, что свойство не было изменено после его получения. Эта проверка выполняется при вызове [SaveChanges](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) или [SaveChangesAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_).
+* Если свойство было изменено после получения, возникает исключение [DbUpdateConcurrencyException](/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception?view=efcore-2.0). 
 
 Нужно настроить базу данных и модель данных для поддержки исключения `DbUpdateConcurrencyException`.
 
 ### <a name="detecting-concurrency-conflicts-on-a-property"></a>Обнаружение конфликтов параллелизма для свойства
 
-Конфликты параллелизма можно обнаружить на уровне свойств с помощью атрибута [ConcurrencyCheck](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0). Этот атрибут можно применить к нескольким свойствам в модели. Дополнительные сведения см. в [описании ConcurrencyCheck в подразделе "Заметки к данным"](https://docs.microsoft.com/ef/core/modeling/concurrency#data-annotations).
+Конфликты параллелизма можно обнаружить на уровне свойств с помощью атрибута [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0). Этот атрибут можно применить к нескольким свойствам в модели. Дополнительные сведения см. в [описании ConcurrencyCheck в подразделе "Заметки к данным"](/ef/core/modeling/concurrency#data-annotations).
 
 Атрибут`[ConcurrencyCheck]` в этом руководстве не используется.
 
 ### <a name="detecting-concurrency-conflicts-on-a-row"></a>Обнаружение конфликтов параллелизма для строки
 
-Чтобы обнаружить конфликты параллелизма, в модель добавлен столбец отслеживания [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql).  `rowversion`:
+Чтобы обнаружить конфликты параллелизма, в модель добавлен столбец отслеживания [rowversion](/sql/t-sql/data-types/rowversion-transact-sql).  `rowversion`:
 
 * Относится к SQL Server. Другие базы данных могут не предоставлять подобную функцию.
 * Используется для определения того, что сущность не была изменена после ее получения из базы данных. 
@@ -105,9 +105,9 @@ ru-ru/
 
 В *Models/Department.cs* добавьте свойство отслеживания RowVersion:
 
-[!code-csharp[Main](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
+[!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
-Атрибут [Timestamp](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.timestampattribute) указывает, что этот столбец входит в предложение `Where` для команд `Update` и `Delete`. Этот атрибут называется `Timestamp`, так как предыдущие версии SQL Server использовали тип данных `timestamp` SQL, пока его не сменил тип `rowversion`.
+Атрибут [Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute) указывает, что этот столбец входит в предложение `Where` для команд `Update` и `Delete`. Этот атрибут называется `Timestamp`, так как предыдущие версии SQL Server использовали тип данных `timestamp` SQL, пока его не сменил тип `rowversion`.
 
 Текучий API также может задавать свойство отслеживания:
 
@@ -127,7 +127,7 @@ modelBuilder.Entity<Department>()
 
 [!code-sql[](intro/samples/sql.txt?highlight=4-6)]
 
-[@@ROWCOUNT](https://docs.microsoft.com/sql/t-sql/functions/rowcount-transact-sql) возвращает число строк, затронутых при выполнении последнего оператора. Если никакие строки не обновляются, EF Core выдает исключение `DbUpdateConcurrencyException`.
+[@@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql) возвращает число строк, затронутых при выполнении последнего оператора. Если никакие строки не обновляются, EF Core выдает исключение `DbUpdateConcurrencyException`.
 
 Вы можете просмотреть код T-SQL, создаваемый EF Core в окне вывода Visual Studio.
 
@@ -147,7 +147,7 @@ dotnet ef database update
 * Добавляет файл миграций *Migrations/{метка времени}_RowVersion.cs*.
 * Изменяет файл *Migrations/SchoolContextModelSnapshot.cs*. Это изменение добавляет следующий выделенный код в метод `BuildModel`:
 
-[!code-csharp[Main](intro/samples/cu/Migrations/SchoolContextModelSnapshot2.cs?name=snippet&highlight=14-16)]
+[!code-csharp[](intro/samples/cu/Migrations/SchoolContextModelSnapshot2.cs?name=snippet&highlight=14-16)]
 
 * Запускает миграции для обновления базы данных.
 
@@ -158,9 +158,9 @@ dotnet ef database update
 * Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
 * Выполните следующую команду:
 
- ```console
-dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries
- ```
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries
+  ```
 
 Предыдущая команда формирует шаблон для модели `Department`. Откройте проект в Visual Studio.
 
@@ -193,9 +193,9 @@ dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outD
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet)]
 
-Для обнаружения проблемы параллелизма [OriginalValue](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) обновляется с помощью значения `rowVersion` из сущности, откуда он был получен. EF Core создает команду SQL UPDATE с предложением WHERE, содержащим исходное значение `RowVersion`. Если команда UPDATE не затрагивает никакие строки (нет строк, имеющих исходное значение `RowVersion`), возникает исключение `DbUpdateConcurrencyException`.
+Для обнаружения проблемы параллелизма [OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) обновляется с помощью значения `rowVersion` из сущности, откуда он был получен. EF Core создает команду SQL UPDATE с предложением WHERE, содержащим исходное значение `RowVersion`. Если команда UPDATE не затрагивает никакие строки (нет строк, имеющих исходное значение `RowVersion`), возникает исключение `DbUpdateConcurrencyException`.
 
-[!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_rv&highlight=24-)]
+[!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_rv&highlight=24-999)]
 
 В приведенном выше коде `Department.RowVersion` является значением на момент извлечения сущности. `OriginalValue` является значением в базе данных на момент вызова `FirstOrDefaultAsync` в этом методе.
 
@@ -305,8 +305,8 @@ dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outD
 
 ### <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Токены параллелизма в EF Core](https://docs.microsoft.com/ef/core/modeling/concurrency)
-* [Обработка параллелизма в EF Core](https://docs.microsoft.com/ef/core/saving/concurrency)
+* [Токены параллелизма в EF Core](/ef/core/modeling/concurrency)
+* [Обработка параллелизма в EF Core](/ef/core/saving/concurrency)
 
->[!div class="step-by-step"]
-[Назад](xref:data/ef-rp/update-related-data)
+> [!div class="step-by-step"]
+> [Назад](xref:data/ef-rp/update-related-data)

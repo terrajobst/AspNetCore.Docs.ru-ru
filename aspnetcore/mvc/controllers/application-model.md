@@ -1,7 +1,7 @@
 ---
-title: "Работа с моделью приложения"
+title: Работа с моделью приложения в ASP.NET Core
 author: ardalis
-description: 
+description: Узнайте, как читать и обрабатывать модель приложения, чтобы изменить поведение элементов MVC в ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/application-model
-ms.openlocfilehash: 08f67b517b2d7ee1186666a4eb5c6c925eb3bd5d
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: f61d04f6cf0aa054566d9f48a030cf268f2ba72a
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="working-with-the-application-model"></a>Работа с моделью приложения
+# <a name="work-with-the-application-model-in-aspnet-core"></a>Работа с моделью приложения в ASP.NET Core
 
 Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
@@ -39,18 +39,18 @@ ms.lasthandoff: 01/30/2018
 
 ### <a name="iapplicationmodelprovider"></a>IApplicationModelProvider
 
-ASP.NET Core MVC загружает модель приложения с помощью шаблона поставщика, определяемого интерфейсом [IApplicationModelProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.iapplicationmodelprovider). В этом разделе приводятся некоторые сведения о внутренней реализации функциональности этого поставщика. Это довольно сложная тема — в большинстве приложений, использующих модель приложения, для выполнения этой задачи требуются соглашения.
+ASP.NET Core MVC загружает модель приложения с помощью шаблона поставщика, определяемого интерфейсом [IApplicationModelProvider](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.iapplicationmodelprovider). В этом разделе приводятся некоторые сведения о внутренней реализации функциональности этого поставщика. Это довольно сложная тема — в большинстве приложений, использующих модель приложения, для выполнения этой задачи требуются соглашения.
 
 Реализации интерфейса `IApplicationModelProvider` создают оболочку друг для друга — каждая реализация вызывает `OnProvidersExecuting` по возрастанию на основе его свойства `Order`. Затем в обратном порядке вызывается метод `OnProvidersExecuted`. Платформа определяет несколько поставщиков:
 
 Сначала (`Order=-1000`):
 
-* [`DefaultApplicationModelProvider`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.internal.defaultapplicationmodelprovider)
+* [`DefaultApplicationModelProvider`](/dotnet/api/microsoft.aspnetcore.mvc.internal.defaultapplicationmodelprovider)
 
 Затем (`Order=-990`):
 
-* [`AuthorizationApplicationModelProvider`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.internal.authorizationapplicationmodelprovider)
-* [`CorsApplicationModelProvider`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.cors.internal.corsapplicationmodelprovider)
+* [`AuthorizationApplicationModelProvider`](/dotnet/api/microsoft.aspnetcore.mvc.internal.authorizationapplicationmodelprovider)
+* [`CorsApplicationModelProvider`](/dotnet/api/microsoft.aspnetcore.mvc.cors.internal.corsapplicationmodelprovider)
 
 > [!NOTE]
 > Порядок вызова двух поставщиков с одним и тем же значением для `Order` не определен, поэтому на него не следует полагаться.
@@ -66,7 +66,7 @@ ASP.NET Core MVC загружает модель приложения с пом�
 * добавление параметров методов действий в контекст;
 * применение маршрута и других атрибутов.
 
-Поставщик `DefaultApplicationModelProvider` реализует некоторые встроенные поведения. Он отвечает за создание класса [`ControllerModel`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel), который, в свою очередь, ссылается на экземпляры [`ActionModel`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ActionModel), [`PropertyModel`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel) и [`ParameterModel`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ParameterModel). Класс `DefaultApplicationModelProvider` является элементом внутренней реализации структуры, который может быть изменен и изменится в будущем. 
+Поставщик `DefaultApplicationModelProvider` реализует некоторые встроенные поведения. Он отвечает за создание класса [`ControllerModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel), который, в свою очередь, ссылается на экземпляры [`ActionModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ActionModel), [`PropertyModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel) и [`ParameterModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel#Microsoft_AspNetCore_Mvc_ApplicationModels_ParameterModel). Класс `DefaultApplicationModelProvider` является элементом внутренней реализации структуры, который может быть изменен и изменится в будущем. 
 
 Поставщик `AuthorizationApplicationModelProvider` занимается применением поведения, связанным с атрибутами `AuthorizeFilter` и `AllowAnonymousFilter`. [Дополнительные сведения об этих атрибутах](xref:security/authorization/simple).
 
@@ -78,10 +78,10 @@ ASP.NET Core MVC загружает модель приложения с пом�
 
 Доступны следующие соглашения:
 
-* [`IApplicationModelConvention`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.iapplicationmodelconvention)
-* [`IControllerModelConvention`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.icontrollermodelconvention)
-* [`IActionModelConvention`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.iactionmodelconvention)
-* [`IParameterModelConvention`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.iparametermodelconvention)
+* [`IApplicationModelConvention`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.iapplicationmodelconvention)
+* [`IControllerModelConvention`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.icontrollermodelconvention)
+* [`IActionModelConvention`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.iactionmodelconvention)
+* [`IParameterModelConvention`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.iparametermodelconvention)
 
 Соглашения применяются путем их добавления в параметры MVC либо путем реализации `Attribute` и их применения к контроллерам, действиям или параметрам действий (аналогично [`Filters`](xref:mvc/controllers/filters)). В отличие от фильтров соглашения выполняются только при запуске приложения, а не в составе каждого запроса.
 
@@ -89,25 +89,25 @@ ASP.NET Core MVC загружает модель приложения с пом�
 
 Для добавления свойства в модель приложения используется следующее соглашение. 
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Conventions/ApplicationDescription.cs)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/ApplicationDescription.cs)]
 
 Соглашения для модели приложения применяются в виде параметров при добавлении MVC в `ConfigureServices` в `Startup`.
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Startup.cs?name=ConfigureServices&highlight=5)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Startup.cs?name=ConfigureServices&highlight=5)]
 
 Свойства доступны из коллекции свойств `ActionDescriptor` в действиях контроллера:
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Controllers/AppModelController.cs?name=AppModelController)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Controllers/AppModelController.cs?name=AppModelController)]
 
 ### <a name="sample-modifying-the-controllermodel-description"></a>Пример: изменение описания ControllerModel
 
 Как и в предыдущем примере, модель контроллера можно изменить для включения в нее настраиваемых свойств. Они переопределят существующие свойства с тем же именем, указанным в модели приложения. Следующий атрибут соглашения добавляет описание на уровне контроллера:
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Conventions/ControllerDescriptionAttribute.cs)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/ControllerDescriptionAttribute.cs)]
 
 Это соглашение будет применяться в качестве атрибута в контроллере.
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Controllers/DescriptionAttributesController.cs?name=ControllerDescription&highlight=1)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Controllers/DescriptionAttributesController.cs?name=ControllerDescription&highlight=1)]
 
 Доступ к свойству "description" осуществляется так же, как и в предыдущих примерах.
 
@@ -115,53 +115,53 @@ ASP.NET Core MVC загружает модель приложения с пом�
 
 К отдельным действиям может применяться индивидуальное соглашение об атрибутах, переопределяющее поведения, уже примененные на уровне приложения или контроллера.
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Conventions/ActionDescriptionAttribute.cs)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/ActionDescriptionAttribute.cs)]
 
 Его применение к действию в предыдущем примере с контроллером демонстрирует, как оно переопределяет соглашение уровня контроллера:
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Controllers/DescriptionAttributesController.cs?name=DescriptionAttributesController&highlight=9)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Controllers/DescriptionAttributesController.cs?name=DescriptionAttributesController&highlight=9)]
 
 ### <a name="sample-modifying-the-parametermodel"></a>Пример: изменение ParameterModel
 
 Следующее соглашение может применяться к параметрам действия для изменения их класса `BindingInfo`. Для следующего соглашения требуется, чтобы параметр был параметром маршрута. Другие возможные источники привязки (например, значения строки запроса) не учитываются.
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Conventions/MustBeInRouteParameterModelConvention.cs)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/MustBeInRouteParameterModelConvention.cs)]
 
 Атрибут можно применять к любому параметру действия:
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Controllers/ParameterModelController.cs?name=ParameterModelController&highlight=5)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Controllers/ParameterModelController.cs?name=ParameterModelController&highlight=5)]
 
 ### <a name="sample-modifying-the-actionmodel-name"></a>Пример: изменение имени ActionModel
 
 Следующее соглашение изменяет класс `ActionModel` для обновления *имени* действия, к которому оно применяется. Новое имя указывается в качестве параметра для атрибута. Имя используется при маршрутизации, поэтому оно повлияет на маршрут для доступа к этому методу действия.
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Conventions/CustomActionNameAttribute.cs)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/CustomActionNameAttribute.cs)]
 
 Этот атрибут применяется к методу действия в классе `HomeController`:
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Controllers/HomeController.cs?name=ActionModelConvention&highlight=2)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Controllers/HomeController.cs?name=ActionModelConvention&highlight=2)]
 
 Даже несмотря на то, что методу задано имя `SomeName`, атрибут переопределяет соглашение MVC об использовании имени метода и заменяет имя действия на `MyCoolAction`. Таким образом, для доступа к этому действию используется маршрут `/Home/MyCoolAction`.
 
 > [!NOTE]
-> Этот пример по существу является аналогом использования встроенного атрибута [ActionName](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.actionnameattribute).
+> Этот пример по существу является аналогом использования встроенного атрибута [ActionName](/dotnet/api/microsoft.aspnetcore.mvc.actionnameattribute).
 
 ### <a name="sample-custom-routing-convention"></a>Пример: соглашение о настраиваемой маршрутизации
 
 Настроить поведение маршрутизации можно с помощью `IApplicationModelConvention`. Например, следующее соглашение будет включать пространства имен контроллеров в маршруты, заменяя `.` в пространстве имен на `/` в маршруте:
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Conventions/NamespaceRoutingConvention.cs)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/NamespaceRoutingConvention.cs)]
 
 Соглашение добавляется в качестве параметра при запуске.
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Startup.cs?name=ConfigureServices&highlight=6)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Startup.cs?name=ConfigureServices&highlight=6)]
 
 > [!TIP]
-> Соглашения можно добавить в [ПО промежуточного слоя](xref:fundamentals/middleware), обратившись к `MvcOptions` с помощью `services.Configure<MvcOptions>(c => c.Conventions.Add(YOURCONVENTION));`.
+> Соглашения можно добавить в [ПО промежуточного слоя](xref:fundamentals/middleware/index), обратившись к `MvcOptions` с помощью `services.Configure<MvcOptions>(c => c.Conventions.Add(YOURCONVENTION));`.
 
 В этом примере это соглашение применяется к маршрутам, не использующим маршрутизацию атрибутов, когда в имени контроллера содержится "Namespace". Соглашение демонстрируется в следующем контроллере:
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Controllers/NamespaceRoutingController.cs?highlight=7-8)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Controllers/NamespaceRoutingController.cs?highlight=7-8)]
 
 ## <a name="application-model-usage-in-webapicompatshim"></a>Использование модели приложения в WebApiCompatShim
 
@@ -178,10 +178,10 @@ services.AddMvc().AddWebApiConventions();
 
 Соглашения, предоставляемые оболочкой, применяются только к тем частям приложения, к которым уже применены определенные атрибуты. Для управления контроллерами, соглашения которых должны быть изменены с помощью соглашений оболочки, используются следующие четыре атрибута:
 
-* [UseWebApiActionConventionsAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.webapicompatshim.usewebapiactionconventionsattribute)
-* [UseWebApiOverloadingAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.webapicompatshim.usewebapioverloadingattribute)
-* [UseWebApiParameterConventionsAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.webapicompatshim.usewebapiparameterconventionsattribute)
-* [UseWebApiRoutesAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.webapicompatshim.usewebapiroutesattribute)
+* [UseWebApiActionConventionsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.webapicompatshim.usewebapiactionconventionsattribute)
+* [UseWebApiOverloadingAttribute](/dotnet/api/microsoft.aspnetcore.mvc.webapicompatshim.usewebapioverloadingattribute)
+* [UseWebApiParameterConventionsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.webapicompatshim.usewebapiparameterconventionsattribute)
+* [UseWebApiRoutesAttribute](/dotnet/api/microsoft.aspnetcore.mvc.webapicompatshim.usewebapiroutesattribute)
 
 ### <a name="action-conventions"></a>Соглашения о действиях
 
@@ -203,8 +203,8 @@ services.AddMvc().AddWebApiConventions();
 
 ## <a name="using-apiexplorer-to-document-your-app"></a>Использование ApiExplorer для документирования приложения
 
-Модель приложения предоставляет свойство [`ApiExplorer`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.applicationmodels.apiexplorermodel) на каждом уровне, который может использоваться для перехода по структуре приложения. Такая ситуация походит для [создания страниц справки для веб-API с помощью таких средств, как Swagger](https://docs.microsoft.com/aspnet/core/tutorials/web-api-help-pages-using-swagger). Свойство `ApiExplorer` предоставляет свойство `IsVisible`, которое можно задать, чтобы указать, какие части модели приложения следует предоставить. Этот параметр настраивается с помощью соглашения:
+Модель приложения предоставляет свойство [`ApiExplorer`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.apiexplorermodel) на каждом уровне, который может использоваться для перехода по структуре приложения. Такая ситуация походит для [создания страниц справки для веб-API с помощью таких средств, как Swagger](xref:tutorials/web-api-help-pages-using-swagger). Свойство `ApiExplorer` предоставляет свойство `IsVisible`, которое можно задать, чтобы указать, какие части модели приложения следует предоставить. Этот параметр настраивается с помощью соглашения:
 
-[!code-csharp[Main](./application-model/sample/src/AppModelSample/Conventions/EnableApiExplorerApplicationConvention.cs)]
+[!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/EnableApiExplorerApplicationConvention.cs)]
 
 Этот подход (и дополнительные соглашения, если необходимо) позволяет включать или отключать видимость API на любом уровне в приложении. 

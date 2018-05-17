@@ -1,7 +1,7 @@
 ---
-title: "Реализация веб-сервера HTTP.sys в ASP.NET Core"
+title: Реализация веб-сервера HTTP.sys в ASP.NET Core
 author: tdykstra
-description: "Общие сведения о веб-сервере HTTP.sys для ASP.NET Core в Windows. Веб-сервер HTTP.sys на основе работающего в режиме ядра драйвера Http.Sys — это альтернатива Kestrel, которую можно использовать для прямого подключения к Интернету без служб IIS."
+description: Общие сведения о веб-сервере HTTP.sys для ASP.NET Core в Windows. Веб-сервер HTTP.sys на основе работающего в режиме ядра драйвера Http.Sys — это альтернатива Kestrel, которую можно использовать для прямого подключения к Интернету без служб IIS.
 manager: wpickett
 ms.author: tdykstra
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: d7ae6c070c7eecfd714086e15f32eff96c0943d9
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 1ec309a00b6cb156b0d11ad085eda3b7a772ac94
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера HTTP.sys в ASP.NET Core
 
@@ -65,7 +65,7 @@ HTTP.sys — это проверенная технология, которая 
 
 1. Ссылка на пакет в файле проекта не требуется при использовании [метапакета Microsoft.AspNetCore.All](xref:fundamentals/metapackage) ([nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.All/)) (ASP.NET Core 2.0 или более поздней версии). Если метапакет `Microsoft.AspNetCore.All` не используется, добавьте ссылку на пакет в файл [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/).
 
-1. Вызовите метод расширения [UseHttpSys](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderhttpsysextensions.usehttpsys) при создании веб-узла, указав все необходимые [параметры HTTP.sys](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions):
+2. Вызовите метод расширения [UseHttpSys](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderhttpsysextensions.usehttpsys) при создании веб-узла, указав все необходимые [параметры HTTP.sys](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions):
 
    [!code-csharp[](httpsys/sample/Program.cs?name=snippet1&highlight=4-12)]
 
@@ -93,7 +93,7 @@ HTTP.sys — это проверенная технология, которая 
    Максимально допустимый размер текста запроса в байтах. Если задано значение `null`, размер максимального запроса не ограничен. Это ограничение не оказывает влияния на обновленные подключения, которые не имеют ограничений.
 
    Чтобы переопределить это ограничение в приложении ASP.NET Core MVC для `IActionResult`, рекомендуется использовать атрибут [RequestSizeLimitAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requestsizelimitattribute) в методе действия:
-   
+
    ```csharp
    [RequestSizeLimit(100000000)]
    public IActionResult MyActionMethod()
@@ -105,7 +105,7 @@ HTTP.sys — это проверенная технология, которая 
 
    [!code-csharp[](httpsys/sample/Startup.cs?name=snippet1&highlight=6-7)]
 
-1. При использовании Visual Studio убедитесь, что приложение не настроено для запуска IIS или IIS Express.
+3. При использовании Visual Studio убедитесь, что приложение не настроено для запуска IIS или IIS Express.
 
    В Visual Studio профиль запуска по умолчанию использует IIS Express. Чтобы запустить проект как консольное приложение, измените выбранный профиль вручную, как показано на следующем снимке экрана.
 
@@ -115,10 +115,10 @@ HTTP.sys — это проверенная технология, которая 
 
 1. Если приложение является [развертыванием, не зависящим от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd), установите NET Core или .NET Framework (или обе платформы, если это приложение .NET Core, предназначенное для .NET Framework).
 
-   * **.NET Core** — если приложению требуется .NET Core, скачайте и запустите установщик [.NET Core отсюда](https://www.microsoft.com/net/download/windows).
-   * **.NET Framework** — если приложению требуется .NET Framework, инструкции по установке см. в руководстве по [установке .NET Framework](/dotnet/framework/install/). Установите требуемую платформу .NET Framework. Установщик последней версии .NET Framework можно скачать [отсюда](https://www.microsoft.com/net/download/windows).
+   * **.NET Core** &ndash; если приложению требуется .NET Core, скачайте и запустите установщик .NET Core из раздела [Все загрузки .NET Core](https://www.microsoft.com/net/download/all).
+   * **.NET Framework** — если приложению требуется .NET Framework, инструкции по установке см. в руководстве по [установке .NET Framework](/dotnet/framework/install/). Установите требуемую платформу .NET Framework. Установщик последней версии .NET Framework можно скачать [отсюда](https://www.microsoft.com/net/download/all).
 
-1. Настройте URL-адреса и порты для приложения.
+2. Настройте URL-адреса и порты для приложения.
 
    По умолчанию платформа ASP.NET Core привязана к `http://localhost:5000`. Чтобы настроить префиксы URL-адресов и порты, используйте следующие параметры:
 
@@ -138,9 +138,9 @@ HTTP.sys — это проверенная технология, которая 
    HTTP.sys использует [форматы строк UrlPrefix API сервера HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
 
    > [!WARNING]
-   > **Не используйте** привязку с подстановочными знаками (`http://*:80/` и `http://+:80`) на верхнем уровне. Это может создать уязвимость и поставить под угрозу ваше приложение. Сюда относятся и строгие, и нестрогие подстановочные знаки. Вместо этого используйте имена узлов в явном виде. Привязки с подстановочными знаками на уровне дочерних доменов (например, `*.mysub.com`) не создают таких угроз безопасности, если вы полностью контролируете родительский домен (в отличие от варианта `*.com`, создающего уязвимость). Дополнительные сведения см. в документе [rfc7230, раздел 5.4](https://tools.ietf.org/html/rfc7230#section-5.4).
+   > **Не используйте** привязки с подстановочными знаками (`http://*:80/` и `http://+:80`) на верхнем уровне. Это может создать уязвимость и поставить ваше приложение под угрозу. Сюда относятся и строгие, и нестрогие подстановочные знаки. Вместо этого используйте имена узлов в явном виде. Привязки с подстановочными знаками на уровне дочерних доменов (например `*.mysub.com`) не создают таких угроз безопасности, если вы полностью контролируете родительский домен (в отличие от варианта `*.com`, создающего уязвимость). Дополнительные сведения см. в документе [rfc7230, раздел 5.4](https://tools.ietf.org/html/rfc7230#section-5.4).
 
-1. Предварительно зарегистрируйте префиксы URL-адресов для привязки к серверу HTTP.sys и настройте сертификаты x.509.
+3. Предварительно зарегистрируйте префиксы URL-адресов для привязки к серверу HTTP.sys и настройте сертификаты x.509.
 
    Если URL-префиксы предварительно не зарегистрированы в Windows, приложение можно запустить с правами администратора. Единственным исключением является привязка к localhost через HTTP (не HTTPS) с номером порта больше 1024. В этом случае права администратора не требуются.
 
@@ -164,11 +164,16 @@ HTTP.sys — это проверенная технология, которая 
       * [Команды netsh для протокола HTTP](https://technet.microsoft.com/library/cc725882.aspx)
       * [Строки UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
-   1. При необходимости создайте самозаверяющие сертификаты X.509.
+   2. При необходимости создайте самозаверяющие сертификаты X.509.
 
-     [!INCLUDE[How to make an X.509 cert](../../includes/make-x509-cert.md)]
+      [!INCLUDE [How to make an X.509 cert](../../includes/make-x509-cert.md)]
 
-1. Откройте порты брандмауэра, чтобы разрешить трафик в HTTP.sys. Можно использовать средство *netsh.exe* или [командлеты PowerShell](https://technet.microsoft.com/library/jj554906).
+
+4. Откройте порты брандмауэра, чтобы разрешить трафик в HTTP.sys. Можно использовать средство *netsh.exe* или [командлеты PowerShell](https://technet.microsoft.com/library/jj554906).
+
+## <a name="proxy-server-and-load-balancer-scenarios"></a>Сценарии использования прокси-сервера и подсистемы балансировки нагрузки
+
+Для приложений, размещенных с помощью файла HTTP.sys, которые взаимодействуют с запросами из Интернета или корпоративной сети, может потребоваться дополнительная настройка при размещении за прокси-серверами и подсистемами балансировки нагрузки. Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

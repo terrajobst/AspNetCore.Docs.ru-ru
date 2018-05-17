@@ -1,13 +1,13 @@
 
-Пространство имен [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) будет рассмотрено в следующем учебнике. Атрибут [Display](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) определяет отображаемое имя поля (в этом случае "Release Date" вместо "ReleaseDate"). Атрибут [DataType](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) определяет тип данных (Date), поэтому сведения о времени, хранящиеся в поле, не отображаются.
+Пространство имен [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) будет рассмотрено в следующем учебнике. Атрибут [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) определяет отображаемое имя поля (в этом случае "Release Date" вместо "ReleaseDate"). Атрибут [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) определяет тип данных (Date), поэтому сведения о времени, хранящиеся в поле, не отображаются.
 
 Перейдите к контроллеру `Movies`. Наведите указатель мыши на ссылку **Edit** (Изменить) и удерживайте его на месте, чтобы просмотреть целевой URL-адрес.
 
-![Окно браузера с указателем, наведенным на ссылку "Edit" (Изменить), и URL-адресом ссылки http://localhost:1234/Movies/Edit/5](../../tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
+![Окно браузера с указателем, наведенным на ссылку Edit (Изменить), и URL-адресом ссылки http://localhost:1234/Movies/Edit/5](../../tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
 Ссылки **Edit** (Изменить), **Details** (Сведения) и **Delete** (Удалить) создаются вспомогательной функцией тегов привязки Core MVC в файле *Views/Movies/Index.cshtml*.
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
 [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro) позволяют серверному коду участвовать в создании и отображении HTML-элементов в файлах Razor. В представленном выше коде `AnchorTagHelper` динамически создает значение атрибута HTML `href` на основании метода действия контроллера и идентификатора маршрута. Для изучения созданной разметки используйте функцию **просмотра исходного кода** в вашем любимом браузере или средства для разработчика. Ниже показана часть созданного кода HTML:
 
@@ -21,7 +21,7 @@
 
 Повторите вызов формата [routing](xref:mvc/controllers/routing), настроенный в файле *Startup.cs*:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
 ASP.NET Core преобразует `http://localhost:1234/Movies/Edit/4` в запрос метода действия `Edit` контроллера `Movies` с параметром `Id`, равным 4. (Методы контроллера также называются методами действия.)
 
@@ -29,33 +29,33 @@ ASP.NET Core преобразует `http://localhost:1234/Movies/Edit/4` в з�
 
 Откройте контроллер `Movies` и изучите два метода действия `Edit`. В следующем коде демонстрируется метод `HTTP GET Edit`, который выполняет выборку фильмов и заполняет форму редактирования, созданную файлом Razor *Edit.cshtml*.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
 
 В следующем коде показан метод `HTTP POST Edit`, который является владельцем переданных значений фильмов:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
 
-Атрибут `[Bind]` является одним из способов защиты от [чрезмерной передачи данных](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost). Свойства необходимо включать только в тот атрибут `[Bind]`, который вы хотите изменить. Дополнительные сведения см. в разделе [Защита контроллера от чрезмерной передачи данных](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application). [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) реализует альтернативный подход к защите от чрезмерной передачи данных.
+Атрибут `[Bind]` является одним из способов защиты от [чрезмерной передачи данных](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost). Свойства необходимо включать только в тот атрибут `[Bind]`, который вы хотите изменить. Дополнительные сведения см. в разделе [Защита контроллера от чрезмерной передачи данных](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application). [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) реализует альтернативный подход к защите от чрезмерной передачи данных.
 
 Обратите внимание на второй метод действия `Edit`, которому предшествует атрибут `[HttpPost]`.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2&highlight=4)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2&highlight=4)]
 
 Атрибут `HttpPost` указывает на то, что этот метод `Edit` может вызываться *только* для запросов `POST`. Вы могли бы применить атрибут `[HttpGet]` к первому методу редактирования, однако это необязательно, поскольку значение `[HttpGet]` задается по умолчанию.
 
 Атрибут `ValidateAntiForgeryToken` используется для [защиты от подделки запросов](xref:security/anti-request-forgery) и используется совместно с соответствующим маркером безопасности, который создается в файле представления редактирования (*Views/Movies/Edit.cshtml*). В файле представления редактирования для создания маркера защиты от подделки используется [вспомогательная функция тега Form](xref:mvc/views/working-with-forms).
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 
 [Вспомогательная функция тега Form](xref:mvc/views/working-with-forms) создает скрытый маркер защиты от подделки, который должен соответствовать `[ValidateAntiForgeryToken]` аналогичному маркеру безопасности в методе `Edit` контроллера Movies. Дополнительные сведения см. в разделе [Защита от подделки запросов](xref:security/anti-request-forgery).
 
 Метод `HttpGet Edit` принимает параметр фильма `ID`, выполняет поиск фильма с использованием метода `SingleOrDefaultAsync` платформы Entity Framework и возвращает выбранный фильм в представление редактирования. Если фильм найти не удается, возвращается ошибка `NotFound` (HTTP 404).
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
 
 Если в представлении редактирования создана система формирования шаблонов, она проверяет класс `Movie` и создает код для отображения элементов `<label>` и `<input>` для каждого свойства класса. В следующем примере показано представление редактирования, созданное системой формирования шаблонов Visual Studio:
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/EditCopy.cshtml?highlight=1)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/EditCopy.cshtml?highlight=1)]
 
 Обратите внимание, что в начале файла шаблона представления содержится оператор `@model MvcMovie.Models.Movie`. `@model MvcMovie.Models.Movie` указывает, что в представлении требуется модель представления шаблона с типом `Movie`.
 
@@ -63,7 +63,7 @@ ASP.NET Core преобразует `http://localhost:1234/Movies/Edit/4` в з�
 
 Запустите приложение и перейдите по URL-адресу `/Movies`. Щелкните ссылку **Edit** (Изменить). Просмотрите исходный код страницы в окне браузера. Созданный HTML-код для элемента `<form>` показан ниже.
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/edit_view_source.html?highlight=1,6,10,17,24,28)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/edit_view_source.html?highlight=1,6,10,17,24,28)]
 
 Элементы `<input>` находятся в элементе `HTML <form>`, атрибут `action` которого задает передачу данных по URL-адресу `/Movies/Edit/id`. Данные формы будут передаваться на сервер при нажатии кнопки `Save`. В последней строке перед закрывающим элементом `</form>` отображается скрытый маркер [XSRF](xref:security/anti-request-forgery), созданный [вспомогательной функцией тега Form](xref:mvc/views/working-with-forms).
 
@@ -71,7 +71,7 @@ ASP.NET Core преобразует `http://localhost:1234/Movies/Edit/4` в з�
 
 В следующем листинге демонстрируется версия `[HttpPost]` метода действия `Edit`.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
 
 Атрибут `[ValidateAntiForgeryToken]` проверяет скрытый маркер безопасности [XSRF](xref:security/anti-request-forgery), который был создан генератором маркеров во [вспомогательной функции тега Form](xref:mvc/views/working-with-forms)
 
@@ -89,7 +89,7 @@ ASP.NET Core преобразует `http://localhost:1234/Movies/Edit/4` в з�
 * [Общие сведения о вспомогательных функциях тегов](xref:mvc/views/tag-helpers/intro)
 * [Создание вспомогательных функций тегов](xref:mvc/views/tag-helpers/authoring)
 * [Защита от подделки запросов](xref:security/anti-request-forgery)
-* Защита контроллера от [чрезмерной передачи данных](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
+* Защита контроллера от [чрезмерной передачи данных](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
 * [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
 * [Вспомогательная функция тега Form](xref:mvc/views/working-with-forms)
 * [Вспомогательная функция тега Input](xref:mvc/views/working-with-forms)

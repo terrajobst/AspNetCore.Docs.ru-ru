@@ -1,7 +1,7 @@
 ---
-title: "Справочник по синтаксису Razor для ASP.NET Core"
+title: Справочник по синтаксису Razor для ASP.NET Core
 author: rick-anderson
-description: "Сведения о синтаксисе разметки Razor для внедрения в веб-страницы серверного кода."
+description: Сведения о синтаксисе разметки Razor для внедрения в веб-страницы серверного кода.
 manager: wpickett
 ms.author: riande
 ms.date: 10/18/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/razor
-ms.openlocfilehash: 98021cc76555f0c1402764c845471a4730b01b20
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 224c855b355b8ecde36377bba6966edec251af6a
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="razor-syntax-for-aspnet-core"></a>Синтаксис Razor для ASP.NET Core
+# <a name="razor-syntax-reference-for-aspnet-core"></a>Справочник по синтаксису Razor для ASP.NET Core
 
 Авторы: [Рик Андерсон (Rick Anderson)](https://twitter.com/RickAndMSFT), [Люк Лэтем (Luke Latham)](https://github.com/guardrex), [Тейлор Маллен (Taylor Mullen)](https://twitter.com/ntaylormullen) и [Дэн Викарел (Dan Vicarel)](https://github.com/Rabadash8820)
 
@@ -89,7 +89,7 @@ HTML-атрибуты и содержимое, включающие адреса
 
 Неявные выражения, описанные в предыдущем разделе, обычно не содержат пробелов. В следующем коде из значения текущего времени неделя не вычитается:
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact.cshtml?range=17)]
+[!code-cshtml[](razor/sample/Views/Home/Contact.cshtml?range=17)]
 
 Код отображает следующий HTML:
 
@@ -109,19 +109,7 @@ HTML-атрибуты и содержимое, включающие адреса
 
 Без явного выражения `<p>Age@joe.Age</p>` обрабатывается как адрес электронной почты, и на выходе отображается `<p>Age@joe.Age</p>`. Если же текст написан как явное выражение, то вы получите `<p>Age33</p>`.
 
-
-Вы можете использовать явные выражения для отображения выходных данных из универсальных методов в файлах *CSHTML*. В неявном выражении символы в угловых скобках (`<>`) интерпретируются как тег HTML. Следующая разметка является в Razor **недопустимой**:
-
-```cshtml
-<p>@GenericMethod<int>()</p>
-```
-
-Приведенный выше код вызывает ошибку компилятора примерно следующего вида:
-
- * Элемент "int" не был закрыт. Все элементы должны быть самозакрывающимися или иметь соответствующий закрывающий тег.
- *  Не удается преобразовать группу методов "GenericMethod" в не являющийся делегатом тип "object". Предполагалось вызывать этот метод? 
- 
- Корректный способ написания этого кода показан в разметке ниже. Код записывается как явное выражение:
+Вы можете использовать явные выражения для отображения выходных данных из универсальных методов в файлах *CSHTML*. В следующем примере показано, как исправить ошибку, показанную ранее и вызванную скобками в универсальном шаблоне C#. Код записывается как явное выражение:
 
 ```cshtml
 <p>@(GenericMethod<int>())</p>
@@ -370,7 +358,7 @@ else
 
 Обработка исключений выполняется так же, как в C#:
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact7.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact7.cshtml)]
 
 ### <a name="lock"></a>@lock
 
@@ -419,7 +407,7 @@ Razor поддерживает комментарии C# и HTML:
 
 Узнав, каким образом Razor создает код для представления, вы сможете легко понять принципы работы директив.
 
-[!code-html[Main](razor/sample/Views/Home/Contact8.cshtml)]
+[!code-html[](razor/sample/Views/Home/Contact8.cshtml)]
 
 Код создает класс, аналогичный следующему:
 
@@ -439,11 +427,12 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 Сведения о просмотре этого класса приводятся в разделе [Просмотр Razor-класса C#, созданного для представления](#viewing-the-razor-c-class-generated-for-a-view) далее в этой статье.
 
+<a name="using"></a>
 ### <a name="using"></a>@using
 
 Директива `@using` добавляет директиву C# `using` в созданное представление:
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact9.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact9.cshtml)]
 
 ### <a name="model"></a>@model
 
@@ -471,7 +460,7 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 <div>The Login Email: @Model.Email</div>
 ```
 
-Директива `@model` задает тип этого свойства. Директива указывает `T` в `RazorPage<T>` — созданном классе, на основе которого создается производное представление. Если директива `@model` не указана, свойство `Model` имеет тип `dynamic`. Значение модели передается из контроллера в представление. Дополнительные сведения см. в разделах, посвященных строго типизированным моделям и ключевому слову @model.
+Директива `@model` задает тип этого свойства. Директива указывает `T` в `RazorPage<T>` — созданном классе, на основе которого создается производное представление. Если директива `@model` не указана, свойство `Model` имеет тип `dynamic`. Значение модели передается из контроллера в представление. Дополнительные сведения см. в разделе [Строго типизированные модели и &commat;ключевое слово модели](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-and-the--keyword).
 
 ### <a name="inherits"></a>@inherits
 
@@ -483,11 +472,11 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 Следующий код показывает настраиваемый тип страницы Razor:
 
-[!code-csharp[Main](razor/sample/Classes/CustomRazorPage.cs)]
+[!code-csharp[](razor/sample/Classes/CustomRazorPage.cs)]
 
 В представлении отображается `CustomText`:
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact10.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact10.cshtml)]
 
 Код отображает следующий HTML:
 
@@ -497,11 +486,11 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
  `@model` и `@inherits` могут использоваться в одном представлении. `@inherits` может находиться в файле *_ViewImports.cshtml*, который импортируется представлением:
 
-[!code-cshtml[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
+[!code-cshtml[](razor/sample/Views/_ViewImportsModel.cshtml)]
 
 Следующий код показывает пример строго типизированного представления:
 
-[!code-cshtml[Main](razor/sample/Views/Home/Login1.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Login1.cshtml)]
 
 Если передать в модель "rick@contoso.com", представление создает следующую разметку HTML:
 
@@ -517,7 +506,7 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 ### <a name="functions"></a>@functions
 
-Директива `@functions` позволяет странице Razor добавлять в представление содержимое на уровне функций:
+Директива `@functions` позволяет странице Razor добавлять в представление блок кода C#:
 
 ```cshtml
 @functions { // C# Code }
@@ -525,7 +514,7 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 Пример:
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact6.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
 Код создает следующую разметку HTML:
 
@@ -535,7 +524,7 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 Следующий код показывает созданный Razor-класс C#:
 
-[!code-csharp[Main](razor/sample/Classes/Views_Home_Test_cshtml.cs?range=1-19)]
+[!code-csharp[](razor/sample/Classes/Views_Home_Test_cshtml.cs?range=1-19)]
 
 ### <a name="section"></a>@section
 
@@ -547,15 +536,16 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 | Директива | Функция |
 | --------- | -------- |
-| [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | Делает вспомогательные функции тегов доступными в представлении. |
-| [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | Удаляет из представления вспомогательные функции тегов, добавленные ранее. |
-| [@tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | Задает префикс тега, который активирует поддержку вспомогательной функции тега и ее использования в явном виде. |
+| [&commat;addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | Делает вспомогательные функции тегов доступными в представлении. |
+| [&commat;removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | Удаляет из представления вспомогательные функции тегов, добавленные ранее. |
+| [&commat;tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | Задает префикс тега, который активирует поддержку вспомогательной функции тега и ее использования в явном виде. |
 
 ## <a name="razor-reserved-keywords"></a>Зарезервированные ключевые слова Razor
 
 ### <a name="razor-keywords"></a>Ключевые слова Razor
 
 * page (требуется ASP.NET Core 2.0 или более поздние версии)
+* namespace
 * функции
 * наследует
 * model
@@ -585,18 +575,17 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 ### <a name="reserved-keywords-not-used-by-razor"></a>Зарезервированные ключевые слова, не используемые в Razor
 
-* namespace
 * класс
 
 ## <a name="viewing-the-razor-c-class-generated-for-a-view"></a>Просмотр Razor-класса C#, созданного для представления
 
 Добавьте в MVC-проект ASP.NET следующий класс:
 
-[!code-csharp[Main](razor/sample/Utilities/CustomTemplateEngine.cs)]
+[!code-csharp[](razor/sample/Utilities/CustomTemplateEngine.cs)]
 
 Переопределите класс `RazorTemplateEngine`, добавленный MVC, классом `CustomTemplateEngine`:
 
-[!code-csharp[Main](razor/sample/Startup.cs?highlight=4&range=10-14)]
+[!code-csharp[](razor/sample/Startup.cs?highlight=4&range=10-14)]
 
 Установите точку останова в операторе `return csharpDocument` класса `CustomTemplateEngine`. Когда выполнение программы остановится в этой точке, просмотрите значение `generatedCode`.
 

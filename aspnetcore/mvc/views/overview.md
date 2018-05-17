@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/overview
-ms.openlocfilehash: b9af2068aec4326585eb2a8994399a16461db3be
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 9af08d8fcbd91a9189fe1f4c6cedd644361773f7
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/10/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Представления в ASP.NET Core MVC
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 04/10/2018
 
 ## <a name="how-controllers-specify-views"></a>Указание представлений в контроллерах
 
-Представления, как правило, возвращаются из действий в виде объекта [ViewResult](/aspnet/core/api/microsoft.aspnetcore.mvc.viewresult), который является разновидностью объекта [ActionResult](/aspnet/core/api/microsoft.aspnetcore.mvc.actionresult). Метод действия может создавать и возвращать объект `ViewResult` напрямую, однако обычно так не делается. Так как большинство контроллеров наследуются от класса [Controller](/aspnet/core/api/microsoft.aspnetcore.mvc.controller), для возврата объекта `ViewResult` можно просто использовать вспомогательный метод `View`:
+Представления, как правило, возвращаются из действий в виде объекта [ViewResult](/dotnet/api/microsoft.aspnetcore.mvc.viewresult), который является разновидностью объекта [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult). Метод действия может создавать и возвращать объект `ViewResult` напрямую, однако обычно так не делается. Так как большинство контроллеров наследуются от класса [Controller](/dotnet/api/microsoft.aspnetcore.mvc.controller), для возврата объекта `ViewResult` можно просто использовать вспомогательный метод `View`:
 
 *HomeController.cs*
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 04/10/2018
 
 Когда это действие возвращает управление, представление *About.cshtml*, приведенное в предыдущем разделе, отрисовывается в виде следующей веб-страницы:
 
-![Страница About в браузере Microsoft Edge](overview/_static/about-page.png)
+![Страница About в браузере Edge](overview/_static/about-page.png)
 
 Вспомогательный метод `View` имеет несколько перегрузок. Вы можете дополнительно указать:
 
@@ -115,7 +115,7 @@ return View("./About");
 
 [Частичные представления](xref:mvc/views/partial) и [компоненты представлений](xref:mvc/views/view-components) используют похожие (но не одинаковые) механизмы обнаружения.
 
-Настроить соглашение по умолчанию, определяющее способ поиска представлений в приложении, можно с помощью пользовательской реализации [IViewLocationExpander](/aspnet/core/api/microsoft.aspnetcore.mvc.razor.iviewlocationexpander).
+Настроить соглашение по умолчанию, определяющее способ поиска представлений в приложении, можно с помощью пользовательской реализации [IViewLocationExpander](/dotnet/api/microsoft.aspnetcore.mvc.razor.iviewlocationexpander).
 
 Обнаружение представлений предусматривает поиск файлов представлений по имени. Если в базовой файловой системе учитывается регистр символов, то он, скорее всего, будет учитываться и в именах представлений. В целях совместимости в разных операционных системах следует соблюдать одинаковый реестр символов в именах контроллеров и действий с одной стороны и в соответствующих именах файлов и папок представлений с другой. Если при работе в файловой системе, в которой учитывается регистр символов, возникает ошибка, связанная с тем, что не удается найти файл представления, проверьте, совпадает ли регистр символов в запрошенном и фактическом именах файлов представлений.
 
@@ -205,7 +205,7 @@ namespace WebApplication1.ViewModels
 
 **ViewData**
 
-`ViewData` — это объект [ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), доступ к которому осуществляется посредством ключей `string`. Строковые данные можно сохранять и использовать напрямую без приведения, однако при извлечении других значений объекта `ViewData` их необходимо приводить к соответствующим типам. С помощью свойства `ViewData` можно передавать данные, включая [частичные представления](xref:mvc/views/partial) и [макеты](xref:mvc/views/layout), из контроллеров в представления и внутри представлений.
+`ViewData` — это объект [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), доступ к которому осуществляется посредством ключей `string`. Строковые данные можно сохранять и использовать напрямую без приведения, однако при извлечении других значений объекта `ViewData` их необходимо приводить к соответствующим типам. С помощью свойства `ViewData` можно передавать данные, включая [частичные представления](xref:mvc/views/partial) и [макеты](xref:mvc/views/layout), из контроллеров в представления и внутри представлений.
 
 Ниже приведен пример, в котором с помощью свойства `ViewData` в действии задаются значения для приветствия и адреса.
 
@@ -247,7 +247,7 @@ public IActionResult SomeAction()
 
 Примечание. Свойство `ViewBag` недоступно в Razor Pages.
 
-`ViewBag` — это объект [DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata), который обеспечивает динамический доступ к объектам, хранящимся в `ViewData`. Работать со свойством `ViewBag` может быть удобнее, так как оно не требует приведения. В приведенном ниже примере демонстрируется использование свойства `ViewBag` с тем же результатом, что и свойства `ViewData` ранее.
+`ViewBag` — это объект [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata), который обеспечивает динамический доступ к объектам, хранящимся в `ViewData`. Работать со свойством `ViewBag` может быть удобнее, так как оно не требует приведения. В приведенном ниже примере демонстрируется использование свойства `ViewBag` с тем же результатом, что и свойства `ViewData` ранее.
 
 ```csharp
 public IActionResult SomeAction()
@@ -321,11 +321,11 @@ public IActionResult SomeAction()
  Свойство `ViewBag` недоступно в Razor Pages.
 
 * `ViewData`
-  * Является производным от [ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), поэтому имеет свойства словаря, которые могут быть полезны, например `ContainsKey`, `Add`, `Remove` и `Clear`.
+  * Является производным от [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), поэтому имеет свойства словаря, которые могут быть полезны, например `ContainsKey`, `Add`, `Remove` и `Clear`.
   * Ключи в словаре представляют собой строки, поэтому пробел допустим. Пример: `ViewData["Some Key With Whitespace"]`
   * Любой тип, кроме `string`, должен быть приведен в представлении так, чтобы он мог использоваться в `ViewData`.
 * `ViewBag`
-  * Является производным от [DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata), поэтому позволяет создавать динамические свойства с помощью точечной нотации (`@ViewBag.SomeKey = <value or object>`); приведение не требуется. Синтаксис свойства `ViewBag` позволяет быстрее добавлять его в контроллеры и представления.
+  * Является производным от [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata), поэтому позволяет создавать динамические свойства с помощью точечной нотации (`@ViewBag.SomeKey = <value or object>`); приведение не требуется. Синтаксис свойства `ViewBag` позволяет быстрее добавлять его в контроллеры и представления.
   * Проще проверять значение NULL. Пример: `@ViewBag.Person?.Name`
 
 **Выбор между ViewData и ViewBag**

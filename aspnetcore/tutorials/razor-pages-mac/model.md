@@ -1,23 +1,24 @@
 ---
-title: "Добавление модели в приложение Razor Pages с помощью Visual Studio для Mac"
+title: Добавление модели в приложение Razor Pages в ASP.NET Core с помощью Visual Studio для Mac
 author: rick-anderson
-description: "Добавление модели в приложение Razor Pages в ASP.NET Core с помощью Visual Studio для Mac"
+description: Узнайте, как добавить модель в приложение Razor Pages в ASP.NET Core с помощью Visual Studio для Mac.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/27/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages-mac/model
-ms.openlocfilehash: b8e5d65e195f9824602ec15d05dc013faa2a8dc9
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 97bc9f14b8d6da958a7f587e54a37d2d0e0aabd4
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="adding-a-model-to-a-razor-pages-app-in-aspnet-core-with-visual-studio-for-mac"></a>Добавление модели в приложение Razor Pages в ASP.NET Core с помощью Visual Studio для Mac
+# <a name="add-a-model-to-an-aspnet-core-razor-pages-app-with-visual-studio-for-mac"></a>Добавление модели в приложение Razor Pages в ASP.NET Core с помощью Visual Studio для Mac
 
-[!INCLUDE[model1](../../includes/RP/model1.md)]
+[!INCLUDE [model1](../../includes/RP/model1.md)]
 
 ## <a name="add-a-data-model"></a>Добавление модели данных
 
@@ -29,10 +30,11 @@ ms.lasthandoff: 01/30/2018
   * Выберите в центральной области **Пустой класс**.
   * Назовите класс **Movie** и выберите **Создать**.
 
-[!INCLUDE[model 2](../../includes/RP/model2.md)]
-[!INCLUDE[model 2a](../../includes/RP/model2a.md)]
+[!INCLUDE [model 2](../../includes/RP/model2.md)]
 
-[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices2&highlight=3-6)]
+[!INCLUDE [model 2a](../../includes/RP/model2a.md)]
+
+[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices2&highlight=3-6)]
 
 Щелкните правой кнопкой мыши волнистую красную линию, например `MovieContext` в строке `services.AddDbContext<MovieContext>(options =>`. Выберите **Быстрое исправление > С помощью RazorPagesMovie.Models;**. Visual Studio добавляет с оператор using.
 
@@ -54,25 +56,26 @@ ms.lasthandoff: 01/30/2018
 
 Добавьте ссылку на инструмент `Microsoft.EntityFrameworkCore.Tools.DotNet` во вторую группу **\<ItemGroup>**.
 
-[!code-xml[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?highlight=10)]
+[!code-xml[](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?highlight=10)]
 
 Номера версий, показанные в приведенном ниже коде, были правильными на момент написания статьи.
 
-[!INCLUDE[model3](../../includes/RP/model3.md)]
-[!INCLUDE[model 4x](../../includes/RP/model4x.md)]
+[!INCLUDE [model3](../../includes/RP/model3.md)]
 
-[!INCLUDE[model 4 exit](../../includes/RP/model4exit.md)]
+[!INCLUDE [model 4x](../../includes/RP/model4x.md)]
 
-[!INCLUDE[model 4](../../includes/RP/model4.md)]
+[!INCLUDE [model 4 exit](../../includes/RP/model4exit.md)]
+
+[!INCLUDE [model 4](../../includes/RP/model4.md)]
 
 ### <a name="add-the-pagesmovies-files-to-the-project"></a>Добавление файлов страниц и фильмов в проект
 
 * В Visual Studio щелкните папку *Pages* правой кнопкой мыши и выберите пункт **Добавить > Добавить существующую папку**.
 * Выберите папку *Movies*.
-* В диалоговом окне *Выберите файлы для добавления в проект* выберите параметр **Включить все**.
+* В диалоговом окне *Выбор файлов для включения в проект* выберите **Включить все**.
 
 В следующем учебнике рассматриваются файлы, созданные с помощью формирования шаблонов.
 
->[!div class="step-by-step"]
-[Назад: Начало работы](xref:tutorials/razor-pages-mac/razor-pages-start)
-[Далее: Сформированные страницы Razor Pages](xref:tutorials/razor-pages-mac/page)
+> [!div class="step-by-step"]
+> [Предыдущая статья — "Начало работы"](xref:tutorials/razor-pages-mac/razor-pages-start)
+> [Следующая статья — "Сформированные страницы Razor Pages"](xref:tutorials/razor-pages-mac/page)

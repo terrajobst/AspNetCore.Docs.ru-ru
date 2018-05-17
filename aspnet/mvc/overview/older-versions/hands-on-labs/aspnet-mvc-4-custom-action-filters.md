@@ -107,7 +107,7 @@ ASP.NET MVC предоставляет фильтры действий для в
 
 Это решение Music Store имеет новую таблицу модели данных для ведения журнала для сайта, **ActionLog**, со следующими полями: имя контроллера, который получил запрос, вызываемые действия, IP-адрес клиента и отметки времени.
 
-![Модель данных. Таблица ActionLog. ] (aspnet-mvc-4-custom-action-filters/_static/image1.png "Модели данных. Таблица ActionLog.")
+![Модель данных. Таблица ActionLog. ](aspnet-mvc-4-custom-action-filters/_static/image1.png "Модели данных. Таблица ActionLog.")
 
 *Модель данных — ActionLog таблицы*
 

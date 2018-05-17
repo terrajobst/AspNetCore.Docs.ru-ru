@@ -1,7 +1,7 @@
 ---
-title: "Razor Pages с EF Core — обновление связанных данных — 7 из 8"
+title: Razor Pages с EF Core в ASP.NET Core — обновление связанных данных — 7 из 8
 author: rick-anderson
-description: "В этом руководстве описано обновление связанных данных путем обновления полей внешнего ключа и свойств навигации."
+description: В этом руководстве описано обновление связанных данных путем обновления полей внешнего ключа и свойств навигации.
 manager: wpickett
 ms.author: riande
 ms.date: 11/15/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 5c91c91ab938f3aa4abc55049c54f399469f6163
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 2eff6cd5f4bb737cb79875c9b04c889914376cd0
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="updating-related-data---ef-core-razor-pages-7-of-8"></a>Обновление связанных данных — EF Core с Razor Pages (7 из 8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Razor Pages с EF Core в ASP.NET Core — обновление связанных данных — 7 из 8
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
 В этом учебнике демонстрируется обновление связанных данных. При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение для этого этапа](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part7).
 
@@ -34,9 +34,9 @@ ms.lasthandoff: 01/31/2018
 
 На страницах Courses/Create и Courses/Edit используется список названий кафедр. Создайте базовый класс *Pages/Courses/DepartmentNamePageModel.cshtml.cs* для страниц Create и Edit:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/DepartmentNamePageModel.cshtml.cs?highlight=9,11,20-21)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/DepartmentNamePageModel.cshtml.cs?highlight=9,11,20-21)]
 
-Приведенный выше код создает [SelectList](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0), содержащий список названий кафедр. Если указан параметр `selectedDepartment`, кафедра выбрана в списке `SelectList`.
+Приведенный выше код создает [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0), содержащий список названий кафедр. Если указан параметр `selectedDepartment`, кафедра выбрана в списке `SelectList`.
 
 Классы моделей страниц Create и Edit являются производными от `DepartmentNamePageModel`.
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/31/2018
 
 Обновите модель страницы Create, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Create.cshtml.cs?highlight=7,18,32-)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Create.cshtml.cs?highlight=7,18,32-999)]
 
 Предыдущий код:
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 01/31/2018
 
 Обновите файл *Pages/Courses/Create.cshtml*, используя следующую разметку:
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Courses/Create.cshtml?highlight=29-34)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Create.cshtml?highlight=29-34)]
 
 Приведенная выше разметка вносит следующие изменения:
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 01/31/2018
 
 На странице Razor Pages используется [вспомогательная функция тега Select](xref:mvc/views/working-with-forms#the-select-tag-helper):
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Courses/Create.cshtml?range=28-35&highlight=3-6)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Create.cshtml?range=28-35&highlight=3-6)]
 
 Протестируйте страницу создания. На странице Create отображается название, а не идентификатор кафедры.
 
@@ -81,13 +81,13 @@ ms.lasthandoff: 01/31/2018
 
 Обновите модель страницы редактирования, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Edit.cshtml.cs?highlight=8,28,35,36,40,47-)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Edit.cshtml.cs?highlight=8,28,35,36,40,47-999)]
 
 Изменения аналогичны внесенным в модель страницы Create. В приведенном выше коде `PopulateDepartmentsDropDownList` передает идентификатор кафедры, по которому выбирается кафедра, заданная в раскрывающемся списке.
 
 Обновите файл *Pages/Courses/Edit.cshtml*, используя следующую разметку:
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Courses/Edit.cshtml?highlight=17-20,32-35)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Edit.cshtml?highlight=17-20,32-35)]
 
 Приведенная выше разметка вносит следующие изменения:
 
@@ -103,19 +103,19 @@ ms.lasthandoff: 01/31/2018
 
 ## <a name="add-asnotracking-to-the-details-and-delete-page-models"></a>Добавление AsNoTracking в модели страниц Details и Delete
 
-Применение [AsNoTracking](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) позволяет повысить производительность в тех сценариях, где не требуется отслеживание. Добавьте `AsNoTracking` в модели страниц Delete и Details. Следующий код отображает обновленную модель страницы Delete:
+Применение [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) позволяет повысить производительность в тех сценариях, где не требуется отслеживание. Добавьте `AsNoTracking` в модели страниц Delete и Details. Следующий код отображает обновленную модель страницы Delete:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
 
 Обновите метод `OnGetAsync` в файле *Pages/Courses/Details.cshtml.cs*:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Details.cshtml.cs?name=snippet)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Details.cshtml.cs?name=snippet)]
 
 ### <a name="modify-the-delete-and-details-pages"></a>Изменение страниц Delete и Details
 
 Обновите страницу Razor Pages Delete, используя следующую разметку:
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Courses/Delete.cshtml?highlight=15-20)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Delete.cshtml?highlight=15-20)]
 
 Выполните те же изменения для страницы Details.
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 01/31/2018
 
 Обновите модель страницы редактирования преподавателей, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Edit1.cshtml.cs?name=snippet&highlight=20-23,32,39-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Edit1.cshtml.cs?name=snippet&highlight=20-23,32,39-999)]
 
 Предыдущий код:
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 01/31/2018
 
 Обновите файл *Pages/Instructors/Edit.cshtml*, указав расположение кабинета:
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Instructors/Edit1.cshtml?highlight=29-33)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/Edit1.cshtml?highlight=29-33)]
 
 Убедитесь, что можно изменить расположение кабинета для преподавателя.
 
@@ -170,27 +170,27 @@ ms.lasthandoff: 01/31/2018
 
 Создайте файл *SchoolViewModels/AssignedCourseData.cs* со следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
 
 Класс `AssignedCourseData` содержит данные для создания флажков, определяющих назначенные преподавателю курсы.
 
 Создайте базовый класс *Pages/Instructors/InstructorCoursesPageModel.cshtml.cs*:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/InstructorCoursesPageModel.cshtml.cs)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/InstructorCoursesPageModel.cshtml.cs)]
 
-Базовый класс `InstructorCoursesPageModel` будет использоваться для моделей страниц редактирования и создания. `PopulateAssignedCourseData` считывает все сущности `Course` для заполнения списка `AssignedCourseDataList`. Для каждого курса код задает `CourseID`, название, а также сведения о назначении курсу преподавателя. Для реализации эффективного поиска используется класс [HashSet](https://docs.microsoft.com/dotnet/api/system.collections.generic.hashset-1).
+Базовый класс `InstructorCoursesPageModel` будет использоваться для моделей страниц редактирования и создания. `PopulateAssignedCourseData` считывает все сущности `Course` для заполнения списка `AssignedCourseDataList`. Для каждого курса код задает `CourseID`, название, а также сведения о назначении курсу преподавателя. Для реализации эффективного поиска используется класс [HashSet](/dotnet/api/system.collections.generic.hashset-1).
 
 ### <a name="instructors-edit-page-model"></a>Модель страницы редактирования преподавателей
 
 Обновите модель страницы редактирования преподавателя, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Edit.cshtml.cs?name=snippet&highlight=1,20-24,30,34,41-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Edit.cshtml.cs?name=snippet&highlight=1,20-24,30,34,41-999)]
 
 Приведенный выше код обрабатывает изменения в назначении кабинета.
 
 Обновите представление Razor преподавателя:
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Instructors/Edit.cshtml?highlight=34-59)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/Edit.cshtml?highlight=34-59)]
 
 <a id="notepad"></a>
 > [!NOTE]
@@ -208,13 +208,13 @@ ms.lasthandoff: 01/31/2018
 
 Обновите модель страницы создания преподавателя, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Create.cshtml.cs)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Create.cshtml.cs)]
 
 Приведенный выше код аналогичен коду в файле *Pages/Instructors/Edit.cshtml.cs*.
 
 Обновите страницу создания преподавателя Razor Pages, используя следующую разметку:
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Instructors/Create.cshtml?highlight=32-62)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/Create.cshtml?highlight=32-62)]
 
 Протестируйте страницу создания преподавателя.
 
@@ -222,7 +222,7 @@ ms.lasthandoff: 01/31/2018
 
 Обновите страницу "Delete" (Удаление) с помощью следующего кода:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Delete.cshtml.cs?highlight=5,40-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Delete.cshtml.cs?highlight=5,40-999)]
 
 Приведенный выше код вносит следующие изменения:
 
@@ -230,6 +230,6 @@ ms.lasthandoff: 01/31/2018
 
 * Если преподаватель, которого требуется удалить, назначен в качестве администратора любой из кафедр, удаляется назначение преподавателя из таких кафедр.
 
->[!div class="step-by-step"]
-[Назад](xref:data/ef-rp/read-related-data)
-[Вперед](xref:data/ef-rp/concurrency)
+> [!div class="step-by-step"]
+> [Назад](xref:data/ef-rp/read-related-data)
+> [Вперед](xref:data/ef-rp/concurrency)

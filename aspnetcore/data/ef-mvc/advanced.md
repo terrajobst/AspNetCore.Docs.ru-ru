@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC с EF Core — расширенные возможности — 10 из 10"
+title: ASP.NET Core MVC с EF Core — расширенные возможности — 10 из 10
 author: tdykstra
-description: "В этом учебнике описываются некоторые расширенные возможности, не относящиеся к базовой разработке веб-приложений ASP.NET, использующих платформу Entity Framework Core."
+description: В этом учебнике описываются полезные рекомендации по расширенным возможностям разработки веб-приложений ASP.NET Core, использующих платформу Entity Framework Core.
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 458f2dc8a67f8c706d043f0d9d7cb7ce962e52ce
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 655f60116cbfe1dd81b7e2855906446b919b6489
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="advanced-topics---ef-core-with-aspnet-core-mvc-tutorial-10-of-10"></a>Расширенные возможности — учебник по EF Core и ASP.NET Core MVC (10 из 10)
+# <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC с EF Core — расширенные возможности — 10 из 10
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/31/2018
 
 В файле *DepartmentsController.cs* в методе `Details` замените код, извлекающий кафедру, вызовом метода `FromSql`, как показано ниже в выделенном коде:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10,13)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10,13)]
 
 Чтобы убедиться, что новый код работает правильно, выберите вкладку **Departments** (Кафедры) и щелкните **Details** (Сведения) для одной из кафедр.
 
@@ -53,11 +53,11 @@ ms.lasthandoff: 01/31/2018
 
 В файле *HomeController.cs* замените метод `About` следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseRawSQL&highlight=3-32)]
+[!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseRawSQL&highlight=3-32)]
 
 Добавьте инструкцию using:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings2)]
+[!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings2)]
 
 Запустите приложение и перейдите на страницу About. На экран будут выведены те же данные, что и ранее.
 
@@ -71,9 +71,9 @@ ms.lasthandoff: 01/31/2018
 
 В файле *CoursesContoller.cs* добавьте методы UpdateCourseCredits для HttpGet и HttpPost:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdateGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdateGet)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdatePost)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdatePost)]
 
 Когда контроллер обрабатывает запрос HttpGet, в `ViewData["RowsAffected"]` ничего не возвращается, а в представлении отображается пустое текстовое поле и кнопка отправки, как показано на предыдущем рисунке.
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 01/31/2018
 
 В файле *Views/Courses/UpdateCourseCredits.cshtml* замените код шаблона следующим кодом:
 
-[!code-html[Main](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
+[!code-html[](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
 
 Выполните метод `UpdateCourseCredits`, выбрав вкладку **Courses** (Курсы), а затем добавив "/UpdateCourseCredits" в конец URL-адреса в адресной строке браузера (например, `http://localhost:5813/Courses/UpdateCourseCredits`). Введите число в текстовое поле:
 
@@ -169,7 +169,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 ## <a name="entity-framework-core-source-code-and-development-plans"></a>Исходный код Entity Framework Core и планы разработки
 
-Исходный код Entity Framework Core можно найти на веб-странице [https://github.com/aspnet/EntityFrameworkCore](https://github.com/aspnet/EntityFrameworkCore). Репозиторий EF Core содержит ночные сборки, результаты отслеживания проблем, спецификации функций, протоколы совещаний по проекту, а также [стратегию дальнейшей разработки](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap). Вы также можете сообщать об ошибках, находить сведения об обнаруженных проблемах и участвовать в работе сообщества.
+Источник Entity Framework Core расположен на странице [https://github.com/aspnet/EntityFrameworkCore](https://github.com/aspnet/EntityFrameworkCore). Репозиторий EF Core содержит ночные сборки, результаты отслеживания проблем, спецификации функций, протоколы совещаний по проекту, а также [стратегию дальнейшей разработки](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap). Вы также можете сообщать об ошибках, находить сведения об обнаруженных проблемах и участвовать в работе сообщества.
 
 Несмотря на открытый исходный код, платформа Entity Framework Core полностью поддерживается как продукт корпорации Майкрософт. Команда Microsoft Entity Framework контролирует предложения участников, принимает их и тестирует любые изменения кода, чтобы обеспечить максимальное качество каждого выпуска.
 
@@ -182,7 +182,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 В [третьем учебнике этой серии](sort-filter-page.md) демонстрируется написание кода LINQ с жестко запрограммированными именами столбцов в инструкции `switch`. При наличии всего двух столбцов такой подход эффективен, однако если столбцов много, код может стать слишком громоздким. Чтобы устранить эту проблему, можно использовать метод `EF.Property` для указания имени свойства в виде строки. Чтобы попробовать этот подход, замените метод `Index` в `StudentsController` следующим кодом.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DynamicLinq)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DynamicLinq)]
 
 ## <a name="next-steps"></a>Следующие шаги
 
@@ -192,7 +192,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 Дополнительные сведения о развертывании веб-приложения см. в разделе [Размещение и развертывание](xref:host-and-deploy/index).
 
-Дополнительные сведения по другим вопросам, связанным с использованием ASP.NET Core MVC, включая способы проверки подлинности и авторизации, см. в [документации по ASP.NET Core](https://docs.microsoft.com/aspnet/core/).
+Дополнительные сведения по другим вопросам, связанным с использованием ASP.NET Core MVC, включая способы проверки подлинности и авторизации, см. в [документации по ASP.NET Core](xref:index).
 
 ## <a name="acknowledgments"></a>Благодарности
 
@@ -244,5 +244,5 @@ dotnet ef database drop
 
 Проверьте строку подключения. Если вы вручную удалили файл базы данных, измените имя базы данных в строке подключения, чтобы начать работу с новой базой.
 
->[!div class="step-by-step"]
-[Назад](inheritance.md)
+> [!div class="step-by-step"]
+> [Назад](inheritance.md)

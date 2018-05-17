@@ -1,7 +1,7 @@
 ---
-title: "Пользовательская привязка модели"
+title: Пользовательская привязка модели в ASP.NET Core
 author: ardalis
-description: "Настройка привязки модели в ASP.NET Core MVC."
+description: Узнайте, как привязка модели позволяет действиям контроллера работать непосредственно с типами модели в ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 04/10/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 313bc586a1c313f0bf5d8f413a4b082ffc2b7f0c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a687753083d3b11898e9ff35828780a5ad240854
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="custom-model-binding"></a>Пользовательская привязка модели
+# <a name="custom-model-binding-in-aspnet-core"></a>Пользовательская привязка модели в ASP.NET Core
 
 Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/30/2018
 
 Для типов, с которыми работает привязка данных, используются специальные определения. *Простой тип* преобразуется из одной строки во входных данных. *Сложный тип* преобразуется из нескольких входных значений. Платформа определяет их различие в зависимости от наличия `TypeConverter`. Если у вас есть простое сопоставление `string` -> `SomeType`, не требующее внешних ресурсов, рекомендуется создать преобразователь типов.
 
-Прежде чем создавать собственный настраиваемый связыватель модели, следует понять реализацию существующих связывателей моделей. Рассмотрим класс [ByteArrayModelBinder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.binders.bytearraymodelbinder), который используется для преобразования строк в кодировке Base64 в массивы байтов. Массивы байтов часто хранятся в виде файлов или полей больших двоичных объектов базы данных.
+Прежде чем создавать собственный настраиваемый связыватель модели, следует понять реализацию существующих связывателей моделей. Рассмотрим класс [ByteArrayModelBinder](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.binders.bytearraymodelbinder), который используется для преобразования строк в кодировке Base64 в массивы байтов. Массивы байтов часто хранятся в виде файлов или полей больших двоичных объектов базы данных.
 
 ### <a name="working-with-the-bytearraymodelbinder"></a>Работа с классом ByteArrayModelBinder
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 01/30/2018
 
 Чтобы преобразовать строку в кодировке Base64 в файл, следуйте инструкциям в [файле README](https://github.com/aspnet/Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/sample/CustomModelBindingSample/README.md).
 
-ASP.NET Core MVC может принимать строки в кодировке Base64 и использовать `ByteArrayModelBinder` для их преобразования в массив байтов. Класс [ByteArrayModelBinderProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.binders.bytearraymodelbinderprovider), реализующий интерфейс [IModelBinderProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.imodelbinderprovider), сопоставляет аргументы `byte[]` с `ByteArrayModelBinder`:
+ASP.NET Core MVC может принимать строки в кодировке Base64 и использовать `ByteArrayModelBinder` для их преобразования в массив байтов. Класс [ByteArrayModelBinderProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.binders.bytearraymodelbinderprovider), реализующий интерфейс [IModelBinderProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.imodelbinderprovider), сопоставляет аргументы `byte[]` с `ByteArrayModelBinder`:
 
 ```csharp
 public IModelBinder GetBinder(ModelBinderProviderContext context)
@@ -64,11 +64,11 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 }
 ```
 
-При создании собственного настраиваемого связывателя модели можно реализовать собственный тип `IModelBinderProvider` или воспользоваться [ModelBinderAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinderattribute).
+При создании собственного настраиваемого связывателя модели можно реализовать собственный тип `IModelBinderProvider` или воспользоваться [ModelBinderAttribute](/dotnet/api/microsoft.aspnetcore.mvc.modelbinderattribute).
 
 В следующем примере показано, как использовать `ByteArrayModelBinder` для преобразования строки в кодировке Base64 в `byte[]` и сохранить результат в файл:
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Controllers/ImageController.cs?name=post1&highlight=3)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/ImageController.cs?name=post1&highlight=3)]
 
 Строку в кодировке Base64 можно отправить (POST) в этот метод API с помощью такого средства, как [Postman](https://www.getpostman.com/):
 
@@ -76,7 +76,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 Привязка модели успешно выполняется до тех пор, пока связыватель может привязывать данные запроса к свойствам или аргументам с соответствующими именами. В приведенном ниже примере показано, как использовать `ByteArrayModelBinder` с моделью представления.
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Controllers/ImageController.cs?name=post2&highlight=2)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/ImageController.cs?name=post2&highlight=2)]
 
 ## <a name="custom-model-binder-sample"></a>Образец настраиваемого связывателя модели
 
@@ -88,21 +88,21 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 В следующем примере используется атрибут `ModelBinder` в модели `Author`:
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Data/Author.cs?highlight=10)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Data/Author.cs?highlight=10)]
 
 В приведенном выше коде атрибут `ModelBinder` указывает тип `IModelBinder`, который следует использовать для привязки параметров действия `Author`. 
 
 `AuthorEntityBinder` используется для привязки параметра `Author` получения сущности из источника данных с помощью Entity Framework Core и `authorId`:
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinder.cs?name=demo)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinder.cs?name=demo)]
 
 В следующем примере кода демонстрируется использование `AuthorEntityBinder` в методе действия.
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo2&highlight=2)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo2&highlight=2)]
 
 С помощью атрибута `ModelBinder` можно применять `AuthorEntityBinder` к параметрам, которые не используют соглашения по умолчанию:
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo1&highlight=2)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo1&highlight=2)]
 
 Поскольку в этом примере имя аргумента не является `authorId` по умолчанию, оно указывается в параметре с помощью атрибута `ModelBinder`. Обратите внимание, что функционал контроллера и метода действия упрощен по сравнению с поиском сущности в методе действия. Логика для выборки автора с использованием Entity Framework Core перемещается в связыватель модели. Такой подход позволит существенно упростить работу, если у вас есть несколько методов для привязки к модели автора, и поможет вам следовать [принципу "не повторяйся"](http://deviq.com/don-t-repeat-yourself/).
 
@@ -112,13 +112,13 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 Вместо применения атрибута можно реализовать класс `IModelBinderProvider`. Таким образом реализуются встроенные связыватели платформы. При указании типа, с которым работает связыватель, определяется тип создаваемого им аргумента, а **не** принимаемые им входные данные. Следующий поставщик связывателей работает с `AuthorEntityBinder`. Если он добавляется в коллекцию поставщиков MVC, не нужно использовать атрибут `ModelBinder` в типизированных параметрах `Author` или `Author`.
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinderProvider.cs?highlight=17-20)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinderProvider.cs?highlight=17-20)]
 
 > Примечание. Приведенный выше код возвращает `BinderTypeModelBinder`. `BinderTypeModelBinder` выступает в качестве фабрики для связывателей моделей и обеспечивает внедрение зависимостей (DI). Для доступа к EF Core классу `AuthorEntityBinder` требуется внедрение зависимостей. Если связывателю модели необходимы службы из DI, используйте класс `BinderTypeModelBinder`.
 
 Чтобы начать работу с настраиваемым поставщиком связывателей моделей, добавьте его в `ConfigureServices`:
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Startup.cs?name=callout&highlight=5-9)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Startup.cs?name=callout&highlight=5-9)]
 
 При оценке связывателей моделей коллекция поставщиков проверяется в определенном порядке. Используется первый поставщик, который возвращает связыватель.
 
@@ -128,11 +128,11 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 Добавление поставщика в конец коллекции может привести к вызову встроенного связывателя модели раньше, чем будет вызван ваш собственный настраиваемый связыватель. В этом примере настраиваемый поставщик добавляется в начало коллекции, чтобы использоваться для аргументов действия `Author`.
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Startup.cs?name=callout&highlight=5-9)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Startup.cs?name=callout&highlight=5-9)]
 
 ## <a name="recommendations-and-best-practices"></a>Рекомендации и советы
 
 Ниже приведены рекомендации относительно настраиваемых связывателей моделей.
 - Связыватели моделей не следует использовать для установки кодов состояния или возвращаемых результатов (например, "404 — не найдено"). При сбое привязки модели обрабатывать ошибку должен сам [фильтр действий](xref:mvc/controllers/filters) или логика в самом методе действия.
 - Связыватели наиболее полезны в сценариях исключения повторяющихся частей кода и решения взаимосвязанных проблем с методами действий.
-- Как правило, связыватели не следует использовать для преобразования строки в пользовательский тип. Лучшим вариантом обычно является [`TypeConverter`](https://docs.microsoft.com//dotnet/api/system.componentmodel.typeconverter).
+- Как правило, связыватели не следует использовать для преобразования строки в пользовательский тип. Лучшим вариантом обычно является [`TypeConverter`](/dotnet/api/system.componentmodel.typeconverter).

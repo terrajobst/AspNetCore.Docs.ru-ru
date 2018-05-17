@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC с EF Core — модель данных — 5 из 10"
-author: tdykstra
-description: "В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных, указав правила форматирования, проверки и сопоставления базы данных."
+title: ASP.NET Core MVC с EF Core — модель данных — 5 из 10
+author: rick-anderson
+description: В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных, указав правила форматирования, проверки и сопоставления.
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: ac30d9ae5531934ba5163a8d9114b11ac54af8d2
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 8f7b0d45962e5ca04d8f4d32d9c80270fb1daa72
+ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="creating-a-complex-data-model---ef-core-with-aspnet-core-mvc-tutorial-5-of-10"></a>Создание сложной модели данных — руководство по EF Core и ASP.NET Core MVC (5 из 10)
+# <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC с EF Core — модель данных — 5 из 10
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 01/31/2018
 
 В *Models/Student.cs* добавьте оператор `using` для пространства имен `System.ComponentModel.DataAnnotations`, а также атрибуты `DataType` и `DisplayFormat` для свойства `EnrollmentDate`, как показано в следующем примере:
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
 Атрибут `DataType` позволяет указать тип данных с более точным определением по сравнению со встроенным типом базы данных. В этом случае требуется отслеживать только дату, а не дату и время. В перечислении `DataType` представлено множество типов данных, таких как Date, Time, PhoneNumber, Currency, EmailAddress и других. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Например, может быть создана ссылка `mailto:` для `DataType.EmailAddress`. Также в браузерах с поддержкой HTML5 может быть предоставлен селектор даты для `DataType.Date`. Атрибут `DataType` создает атрибуты HTML 5 `data-`, которые используются браузерами с поддержкой HTML 5. Атрибуты `DataType` не предназначены для проверки.
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 01/31/2018
 
 Предположим, вы хотите сделать так, чтобы пользователи не вводили больше 50 символов для имени. Чтобы задать это ограничение, добавьте атрибуты `StringLength` в свойства `LastName` и `FirstMidName`, как показано в следующем примере:
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
 
 Атрибут `StringLength` не запрещает пользователю ввести пробел в качестве имени пользователя. Атрибут `RegularExpression` можно использовать для применения ограничений к входным данным. Например, следующий код требует, чтобы первый символ был прописной буквой, а остальные символы были буквенными:
 
@@ -107,7 +107,7 @@ dotnet ef database update
 
 В файле *Student.cs* добавьте оператор `using` для `System.ComponentModel.DataAnnotations.Schema` и атрибут имени столбца в свойство `FirstMidName`, как показано в следующем выделенном коде:
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
 
 Добавление атрибута `Column` изменяет модель для поддержки `SchoolContext`, поэтому она не будет соответствовать базе данных.
 
@@ -136,7 +136,7 @@ dotnet ef database update
 
 В *Models/Student.cs* замените добавленный ранее код на приведенный ниже. Изменения выделены.
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
 
 ### <a name="the-required-attribute"></a>Атрибут Required
 
@@ -164,7 +164,7 @@ public string LastName { get; set; }
 
 Создайте файл *Models/Instructor.cs*, заменив код шаблона следующим:
 
-[!code-csharp[Main](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
+[!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
 
 Обратите внимание, что некоторые свойства являются одинаковыми в сущностях Student и Instructor. В руководстве по [реализации наследования](inheritance.md) далее в этой серии вы выполните рефакторинг данного кода, чтобы устранить избыточность.
 
@@ -200,7 +200,7 @@ public OfficeAssignment OfficeAssignment { get; set; }
 
 Создайте файл *Models/OfficeAssignment.cs* со следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Models/OfficeAssignment.cs)]
+[!code-csharp[](intro/samples/cu/Models/OfficeAssignment.cs)]
 
 ### <a name="the-key-attribute"></a>Атрибут Key
 
@@ -227,7 +227,7 @@ public int InstructorID { get; set; }
 
 В *Models/Course.cs* замените добавленный ранее код на приведенный ниже. Изменения выделены.
 
-[!code-csharp[Main](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
+[!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
 
 Сущность курса имеет свойство внешнего ключа `DepartmentID`, указывающее на связанную сущность Department, а также она имеет свойство навигации `Department`.
 
@@ -277,7 +277,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 Создайте файл *Models/Department.cs* со следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Models/Department.cs?name=snippet_Begin)]
+[!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Begin)]
 
 ### <a name="the-column-attribute"></a>Атрибут Column
 
@@ -322,7 +322,7 @@ public ICollection<Course> Courses { get; set; }
 
 В *Models/Enrollment.cs* замените добавленный ранее код на приведенный ниже:
 
-[!code-csharp[Main](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
+[!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
 
 ### <a name="foreign-key-and-navigation-properties"></a>Свойства внешнего ключа и навигации
 
@@ -362,7 +362,7 @@ public Student Student { get; set; }
 
 Создайте файл *Models/CourseAssignment.cs* со следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Models/CourseAssignment.cs)]
+[!code-csharp[](intro/samples/cu/Models/CourseAssignment.cs)]
 
 ### <a name="join-entity-names"></a>Имена для сущностей соединения
 
@@ -378,7 +378,7 @@ public Student Student { get; set; }
 
 Добавьте выделенный ниже код в файл *Data/SchoolContext.cs*:
 
-[!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
+[!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
 
 Этот код добавляет новые сущности и настраивает составной первичный ключ сущности CourseAssignment.
 
@@ -413,7 +413,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Замените код в файле *Data/DbInitializer.cs* на приведенный ниже, чтобы предоставить начальные данные для созданных вами сущностей.
 
-[!code-csharp[Main](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Final)]
+[!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Final)]
 
 Как можно было заметить в первом руководстве, основная часть кода просто создает объекты сущности и загружает демонстрационные данные в свойства для тестирования. Обратите внимание, как обрабатываются связи многие ко многим: код формирует связи, создавая сущности в наборах сущностей соединения `Enrollments` и `CourseAssignment`.
 
@@ -444,11 +444,11 @@ Done. To undo this action, use 'ef migrations remove'
 
 * Закомментируйте строку кода, которая добавляет столбец DepartmentID в таблицу Course.
 
-  [!code-csharp[Main](intro/samples/cu/Migrations/20170215234014_ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]
+  [!code-csharp[](intro/samples/cu/Migrations/20170215234014_ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]
 
 * Добавьте выделенный ниже код после кода, создающего таблицу Department:
 
-  [!code-csharp[Main](intro/samples/cu/Migrations/20170215234014_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
+  [!code-csharp[](intro/samples/cu/Migrations/20170215234014_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
 В реальном приложении вам потребуется написать код или сценарии для добавления строк Department, а также для связи строк Course с новыми строками Department. После этого кафедра "Temp" и значение по умолчанию в столбце Course.DepartmentID вам больше не понадобятся.
 
@@ -495,6 +495,6 @@ dotnet ef database update
 
 Теперь у вас есть более сложная модель данных и соответствующая база данных. В следующем руководстве вы подробнее узнаете о доступе к связанным данным.
 
->[!div class="step-by-step"]
-[Назад](migrations.md)
-[Вперед](read-related-data.md)  
+> [!div class="step-by-step"]
+> [Назад](migrations.md)
+> [Вперед](read-related-data.md)  

@@ -1,27 +1,32 @@
 ---
-title: "Создание веб-API с помощью ASP.NET Core и Visual Studio для Windows"
+title: Создание веб-API с помощью ASP.NET Core и Visual Studio для Windows
 author: rick-anderson
-description: "Сборка веб-API с помощью MVC ASP.NET Core и Visual Studio для Windows"
+description: Сборка веб-API с помощью MVC ASP.NET Core и Visual Studio для Windows
 manager: wpickett
 ms.author: riande
-ms.date: 08/15/2017
+ms.custom: mvc
+ms.date: 04/27/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-web-api
-ms.openlocfilehash: 1146132693681eca8f92beb00ebabd7296534688
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 962c24a7e654328df7e8893e589e45b19e87b931
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-#<a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>Создание веб-API с помощью ASP.NET Core и Visual Studio для Windows
+# <a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>Создание веб-API с помощью ASP.NET Core и Visual Studio для Windows
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Майк Уоссон](https://github.com/mikewasson)
 
+::: moniker range="= aspnetcore-2.1"
+[!INCLUDE[](~/includes/2.1.md)]
+::: moniker-end
+
 В этом руководстве вы создали веб-API для управления элементами списка дел. Пользовательский интерфейс не создан.
 
-Существует 3 версии этого учебника:
+Существуют три версии этого руководства:
 
 * Windows: создание веб-API с помощью Visual Studio для Windows (этот учебник)
 * macOS: [создание веб-API с помощью Visual Studio для Mac](xref:tutorials/first-web-api-mac)
@@ -33,43 +38,38 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-[!INCLUDE[install 2.0](../includes/install2.0.md)]
-
-См. [этот PDF-файл](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-web-api/_static/_webAPI.pdf) для версии ASP.NET Core 1.1.
+[!INCLUDE[](~/includes/net-core-prereqs-windows.md)]
 
 ## <a name="create-the-project"></a>Создание проекта
 
-В Visual Studio откройте меню **Файл** > **Создать** > **Проект**.
+Выполните следующие действия в Visual Studio:
 
-Выберите шаблон проекта **Веб-приложение ASP.NET Core (.NET Core)**. Задайте для проекта имя `TodoApi` и нажмите кнопку **ОК**.
-
-![Диалоговое окно создания проекта](first-web-api/_static/new-project.png)
-
-В диалоговом окне **Новое веб-приложение ASP.NET Core — TodoApi** выберите шаблон **Веб-API**. Нажмите кнопку **ОК**. **Не** выбирайте **Включение поддержки Docker**.
-
-![Диалоговое окно создания веб-приложения ASP.NET с помощью шаблона проекта веб-API, выбранное из базовых шаблонов ASP.NET](first-web-api/_static/web-api-project.png)
+* В меню **Файл** выберите пункт **Создать** > **Проект**.
+* Выберите шаблон **Веб-приложение ASP.NET Core**. Назовите проект *TodoApi* и нажмите **OK**.
+* В диалоговом окне **Новое веб-приложение ASP.NET Core — TodoApi** выберите версию ASP.NET Core. Выберите шаблон **API** и нажмите кнопку **ОК**. **Не** выбирайте **Включение поддержки Docker**.
 
 ### <a name="launch-the-app"></a>Запуск приложения
 
-В Visual Studio нажмите клавиши CTRL+F5, чтобы запустить приложение. Visual Studio запустит браузер и перейдет к `http://localhost:port/api/values`, где *порт* — это номер порта, выбранный случайным образом. В Chrome, Microsoft Edge и Firefox отобразится следующая информация.
+В Visual Studio нажмите клавиши CTRL+F5, чтобы запустить приложение. Visual Studio запустит браузер и перейдет к `http://localhost:<port>/api/values`, где `<port>` — это номер порта, выбранный случайным образом. В Chrome, Microsoft Edge и Firefox отобразится следующая информация.
 
-```
+```json
 ["value1","value2"]
 ```
 
 ### <a name="add-a-model-class"></a>Добавление класса модели
 
-Модель — это объект, представляющий данные в приложении. В этом случае единственной моделью является задача.
+Модель — это объект, представляющий данные в приложении. В этом случае единственной моделью является задача.
 
-Добавьте папку с именем "Models". В обозревателе решений щелкните проект правой кнопкой мыши. Выберите **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
+В обозревателе решений щелкните проект правой кнопкой мыши. Выберите **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
 
-Примечание. Классы модели могут переходить в любое место в проекте. Папка *Модели* используется по соглашению о классах модели.
+> [!NOTE]
+> Классы модели могут переходить в любое место в проекте. Папка *Модели* используется по соглашению о классах модели.
 
-Добавьте класс `TodoItem`. Щелкните папку *Models* правой кнопкой мыши и выберите **Добавить** > **Класс**. Присвойте классу имя `TodoItem` и выберите **Добавить**.
+В обозревателе решений щелкните папку *Models* правой кнопкой мыши и выберите команду **Добавить** > **Класс**. Назовите класс *TodoItem* и нажмите **Добавить**.
 
 Обновите класс `TodoItem` с помощью следующего кода:
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoItem.cs)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoItem.cs)]
 
 После создания `TodoItem` база данных формирует `Id`.
 
@@ -77,17 +77,17 @@ ms.lasthandoff: 01/30/2018
 
 *Контекст базы данных* —это основной класс, который координирует функциональные возможности Entity Framework для заданной модели данных. Этот класс является производным от класса `Microsoft.EntityFrameworkCore.DbContext`.
 
-Добавьте класс `TodoContext`. Щелкните папку *Models* правой кнопкой мыши и выберите **Добавить** > **Класс**. Присвойте классу имя `TodoContext` и выберите **Добавить**.
+В обозревателе решений щелкните папку *Models* правой кнопкой мыши и выберите команду **Добавить** > **Класс**. Назовите класс *TodoContext* и нажмите **Добавить**.
 
 Замените класс на следующий код.
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoContext.cs)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoContext.cs)]
 
-[!INCLUDE[Register the database context](../includes/webApi/register_dbContext.md)]
+[!INCLUDE [Register the database context](../includes/webApi/register_dbContext.md)]
 
 ### <a name="add-a-controller"></a>Добавление контроллера
 
-В обозревателе решений щелкните папку *Контроллеры* правой кнопкой мыши. Выберите **Добавить** > **Новый объект**. В диалоговом окне **Add New Item** (Добавление нового элемента) выберите шаблон **Класс контроллера веб-API**. Присвойте классу имя `TodoController`.
+В обозревателе решений щелкните папку *Контроллеры* правой кнопкой мыши. Выберите **Добавить** > **Новый объект**. В диалоговом окне **Добавить новый элемент** выберите шаблон **Класс контроллера API**. Назовите класс *TodoController* и нажмите **Добавить**.
 
 ![Диалоговое окно добавления элемента с контроллером в поле поиска и выбранным контроллером веб-API](first-web-api/_static/new_controller.png)
 
@@ -97,9 +97,10 @@ ms.lasthandoff: 01/30/2018
 
 ### <a name="launch-the-app"></a>Запуск приложения
 
-В Visual Studio нажмите клавиши CTRL+F5, чтобы запустить приложение. Visual Studio запустит браузер и перейдет к `http://localhost:port/api/values`, где *порт* — это номер порта, выбранный случайным образом. Перейдите к контроллеру `Todo` по адресу `http://localhost:port/api/todo`.
+В Visual Studio нажмите клавиши CTRL+F5, чтобы запустить приложение. Visual Studio запустит браузер и перейдет к `http://localhost:<port>/api/values`, где `<port>` — это номер порта, выбранный случайным образом. Перейдите к контроллеру `Todo` по адресу `http://localhost:<port>/api/todo`.
 
 [!INCLUDE[last part of web API](../includes/webApi/end.md)]
 
-[!INCLUDE[next steps](../includes/webApi/next.md)]
+[!INCLUDE[jQuery](../includes/webApi/add-jquery.md)]
 
+[!INCLUDE[next steps](../includes/webApi/next.md)]

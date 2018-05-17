@@ -1,7 +1,7 @@
 ---
-title: "Обработка запросов с помощью контроллеров в ASP.NET Core MVC"
+title: Обработка запросов с помощью контроллеров в ASP.NET Core MVC
 author: ardalis
-description: 
+description: ''
 manager: wpickett
 ms.author: riande
 ms.date: 07/03/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/actions
-ms.openlocfilehash: 0f04891aaeec026120e2afff3ff24fb89f649c8d
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 187ac69322545685380ad8f810bb65208c093d82
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="handling-requests-with-controllers-in-aspnet-core-mvc"></a>Обработка запросов с помощью контроллеров в ASP.NET Core MVC
+# <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Обработка запросов с помощью контроллеров в ASP.NET Core MVC
 
 Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith) и [Скотт Эдди](https://github.com/scottaddie) (Scott Addie)
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 02/01/2018
 
 ### <a name="controller-helper-methods"></a>Вспомогательные методы Controller
 
-Контроллеры обычно наследуют от [Controller](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller), хотя это не является обязательным. Наследование от `Controller` предоставляет доступ к трем категориям вспомогательных методов:
+Контроллеры обычно наследуют от [Controller](/dotnet/api/microsoft.aspnetcore.mvc.controller), хотя это не является обязательным. Наследование от `Controller` предоставляет доступ к трем категориям вспомогательных методов:
 
 #### <a name="1-methods-resulting-in-an-empty-response-body"></a>1. Методы, дающие пустой основной текст отклика
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 02/01/2018
 
 Большинство вспомогательных методов в этой категории имеют свойство `ContentType`, что позволяет задать заголовок отклика `Content-Type` для описания основного текста отклика.
 
-В этой категории есть два типа результатов: [представление](xref:mvc/views/overview) и [форматированный отклик](xref:mvc/models/formatting).
+В этой категории есть два типа результатов: [представление](xref:mvc/views/overview) и [форматированный отклик](xref:web-api/advanced/formatting).
 
 * **Вид**
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 02/01/2018
 
 #### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. Методы, дающие непустой основной текст отклика и отформатированные с типом содержимого, согласованным с клиентом
 
-Эта категория более известна как **согласование содержимого**. [Согласование содержимого](xref:mvc/models/formatting#content-negotiation) применяется, когда действие возвращает тип [ObjectResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.objectresult) или что-то отличное от реализации [IActionResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iactionresult). Действие, которое возвращает значение, отличное от реализации `IActionResult` (например, `object`), также возвращает форматированный отклик.
+Эта категория более известна как **согласование содержимого**. [Согласование содержимого](xref:web-api/advanced/formatting#content-negotiation) применяется, когда действие возвращает тип [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) или что-то отличное от реализации [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult). Действие, которое возвращает значение, отличное от реализации `IActionResult` (например, `object`), также возвращает форматированный отклик.
 
 Другими вспомогательными методами этого типа являются `BadRequest`, `CreatedAtRoute` и `Ok`. Примерами этих методов являются `return BadRequest(modelState);`, `return CreatedAtRoute("routename", values, newobject);` и `return Ok(value);`, соответственно. Обратите внимание, что `BadRequest` и `Ok` выполняют согласование содержимого только при передаче значения. Без передачи значения они выступают в качестве типов результатов для кода состояния HTTP. С другой стороны, метод `CreatedAtRoute` всегда выполняет согласование содержимого, так как все его перегрузки требуют передачи значения.
 

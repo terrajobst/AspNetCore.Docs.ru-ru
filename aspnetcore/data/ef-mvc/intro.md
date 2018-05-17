@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC с Entity Framework Core: учебник 1 из 10"
+title: 'ASP.NET Core MVC с Entity Framework Core: учебник 1 из 10'
 author: tdykstra
-description: 
+description: ''
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 7de43a390ee0e11f6eda811b0774343ab330c53b
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: eaa3070e182b161087185bbb9007e8067052d95c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>Начало работы с ASP.NET Core MVC и Entity Framework Core с использованием Visual Studio (1 из 10)
+# <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC с Entity Framework Core: учебник 1 из 10
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-Версия учебника по Razor Pages доступна [здесь](xref:data/ef-rp/intro). Версия учебника по Razor Pages проще в изучении, и в ней рассматриваются дополнительные возможности EF. Мы рекомендуем руководствоваться [версией этого учебника для Razor Pages](xref:data/ef-rp/intro).
+[!INCLUDE [RP better than MVC](../../includes/RP-EF/rp-over-mvc.md)]
 
 На примере учебного веб-приложения "Университет Contoso" демонстрируется процесс создания веб-приложений ASP.NET Core 2.0 MVC с помощью Entity Framework (EF) Core 2.0 и Visual Studio 2017.
 
@@ -35,7 +35,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-[!INCLUDE[install 2.0](../../includes/install2.0.md)]
+[!INCLUDE [](~/includes/net-core-prereqs.md)]
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
@@ -128,7 +128,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 В папке *Models* создайте файл класса с именем *Student.cs* и замените код шаблона следующим кодом.
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_Intro)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Intro)]
 
 Свойство `ID` будет использоваться в качестве столбца первичного ключа в таблице базы данных, соответствующей этому классу. По умолчанию платформа Entity Framework интерпретирует в качестве первичного ключа свойство `ID` или `classnameID`.
 
@@ -142,11 +142,11 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 В папке *Models* создайте файл *Enrollment.cs* и замените существующий код следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Models/Enrollment.cs?name=snippet_Intro)]
+[!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Intro)]
 
 Свойство `EnrollmentID` будет использоваться в качестве первичного ключа. В этой сущности используется шаблон `classnameID` вместо `ID`, как в сущности `Student`. Как правило, следует выбирать один шаблон, который будет использоваться в рамках всей модели данных. В этом случае демонстрируется возможность использования любого из шаблонов. В [одном из следующих учебников](inheritance.md) вы узнаете, за счет чего использование идентификатора без имени класса позволяет упростить реализацию наследования в модели данных.
 
-Свойство `Grade` имеет тип `enum`. Знак вопроса после объявления типа `Grade` указывает, что свойство `Grade` допускает значение NULL. Оценка со значением NULL отличается от нулевой оценки тем, что при таком значении оценка еще не известна или не назначена.
+Свойство `Grade` имеет тип `enum`. Знак вопроса после объявления типа `Grade` указывает, что свойство `Grade` допускает значение null. Оценка со значением null отличается от нулевой оценки тем, что при таком значении оценка еще не известна или не назначена.
 
 Свойство `StudentID` представляет собой внешний ключ. Ему соответствует свойство навигации `Student`. Сущность `Enrollment` связана с одной сущностью `Student`, поэтому это свойство может содержать одну сущность `Student` (в отличие от представленного ранее свойства навигации `Student.Enrollments`, которое может содержать несколько сущностей `Enrollment`).
 
@@ -160,7 +160,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 В папке *Models* создайте файл *Course.cs* и замените существующий код следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Models/Course.cs?name=snippet_Intro)]
+[!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Intro)]
 
 Свойство `Enrollments` является свойством навигации. Сущность `Course` может быть связана с любым числом сущностей `Enrollment`.
 
@@ -174,7 +174,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 В папке *Data* создайте новый файл класса с именем *SchoolContext.cs* и замените код шаблона следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_Intro)]
+[!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_Intro)]
 
 Этот код создает свойство `DbSet` для каждого набора сущностей. В терминологии Entity Framework набор сущностей обычно соответствует таблице базы данных, а сущность — строке в этой таблице.
 
@@ -182,7 +182,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 При создании базы данных платформа EF создает таблицы с именами, соответствующими именам свойств в `DbSet`. Имена свойств для коллекций, как правило, задаются во множественном числе (например, Students вместо Student), однако единого мнения по поводу присвоения имен во множественном числе таблицам среди разработчиков не существует. В этих учебниках вместо принятого по умолчанию способа таблицам в DbContext присваиваются имена в единственном числе. Чтобы сделать это, добавьте выделенный ниже код после последнего свойства DbSet.
 
-[!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_TableNames&highlight=16-21)]
+[!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_TableNames&highlight=16-21)]
 
 ## <a name="register-the-context-with-dependency-injection"></a>Регистрация контекста с помощью внедрения зависимостей
 
@@ -190,13 +190,13 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 Чтобы зарегистрировать `SchoolContext` как службу, откройте файл *Startup.cs* и добавьте выделенные строки в метод `ConfigureServices`.
 
-[!code-csharp[Main](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=3-4)]
+[!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=3-4)]
 
 Имя строки подключения передается в контекст путем вызова метода для объекта `DbContextOptionsBuilder`. При локальной разработке [система конфигурации ASP.NET Core](xref:fundamentals/configuration/index) считывает строку подключения из файла *appsettings.json*.
 
 Добавьте инструкции `using` для пространств имен `ContosoUniversity.Data` и `Microsoft.EntityFrameworkCore`, после чего выполните построение проекта.
 
-[!code-csharp[Main](intro/samples/cu/Startup.cs?name=snippet_Usings)]
+[!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Usings)]
 
 Откройте файл *appsettings.json* и добавьте строку подключения, как показано в следующем примере.
 
@@ -214,7 +214,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 В папке *Data* создайте новый файл класса с именем *DbInitializer.cs* и замените код шаблона следующим кодом, который обеспечивает создание базы данных и загрузку в нее тестовых данных.
 
-[!code-csharp[Main](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Intro)]
+[!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Intro)]
 
 Этот код проверяет, добавлены ли в базу данных учащиеся. Если нет, база данных считается новой и заполняется тестовыми данными. Для повышения производительности тестовые данные загружаются массивами, а не коллекциями `List<T>`.
 
@@ -224,11 +224,11 @@ ASP.NET Core по умолчанию реализует технологию [в
 * Вызов метода инициализации с передачей ему контекста.
 * Высвобождение контекста после завершения работы метода заполнения.
 
-[!code-csharp[Main](intro/samples/cu/Program.cs?name=snippet_Seed&highlight=3-20)]
+[!code-csharp[](intro/samples/cu/Program.cs?name=snippet_Seed&highlight=3-20)]
 
 Добавьте инструкции `using`:
 
-[!code-csharp[Main](intro/samples/cu/Program.cs?name=snippet_Usings)]
+[!code-csharp[](intro/samples/cu/Program.cs?name=snippet_Usings)]
 
 В предыдущих учебниках аналогичный код использовался в методе `Configure` в файле *Startup.cs*. Мы рекомендуем использовать метод `Configure` только для настройки конвейера запросов. Код запуска приложения принадлежит методу `Main`.
 
@@ -271,13 +271,13 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 Обратите внимание, что контроллер принимает `SchoolContext` в качестве параметра конструктора.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Context&highlight=5,7,9)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Context&highlight=5,7,9)]
 
 Технология внедрения зависимостей ASP.NET обеспечивает передачу экземпляра `SchoolContext` в контроллер. Это поведение было настроено ранее в файле *Startup.cs*.
 
 Контроллер содержит метод действия `Index`, который отображает всех учащихся в базе данных. Этот метод получает список учащихся из набора сущностей Students, считывая свойство `Students` экземпляра контекста базы данных:
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ScaffoldedIndex&highlight=3)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ScaffoldedIndex&highlight=3)]
 
 Позднее в этом учебнике будут описаны элементы асинхронного программирования в этом коде.
 
@@ -311,7 +311,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 ![Таблица Student в SSOX](intro/_static/ssox-student-table.png)
 
-Файлы базы данных с расширением *.mdf* и *.ldf* располагаются в папке *C:\Users\<имя_пользователя>*.
+Файлы базы данных с расширением <em>MDF</em> и <em>LDF</em> располагаются в папке <em>C:\Users\\<yourusername></em>.
 
 Поскольку вы вызываете метод `EnsureCreated` в методе инициализатора, который выполняется при запуске приложения, теперь вы можете внести изменения в класс `Student`, удалить базу данных и снова запустить приложение. После этого база данных будет создана повторно в соответствии с внесенными изменениями. Например, при добавлении свойства `EmailAddress` в класс `Student` во вновь созданной таблице появится столбец `EmailAddress`.
 
@@ -339,7 +339,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 В следующем коде для асинхронного выполнения используются ключевое слово `async`, возвращаемое значение `Task<T>`, ключевое слово `await` и метод `ToListAsync`.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ScaffoldedIndex)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ScaffoldedIndex)]
 
 * Ключевое слово `async` указывает компилятору создавать обратные вызовы для частей тела метода и автоматически создавать возвращаемый объект `Task<IActionResult>`.
 
@@ -363,5 +363,5 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 Теперь вы создали простое приложение, которое использует Entity Framework Core и SQL Server Express LocalDB для хранения и отображения данных. В следующем учебнике вы узнаете, как выполнять основные операции CRUD (создание, чтение, обновление и удаление).
 
->[!div class="step-by-step"]
-[Вперед](crud.md)
+> [!div class="step-by-step"]
+> [Вперед](crud.md)

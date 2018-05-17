@@ -1,25 +1,29 @@
 ---
-title: "Публикация приложения ASP.NET Core в Azure с помощью Visual Studio"
+title: Публикация приложения ASP.NET Core в Azure с помощью Visual Studio
 author: rick-anderson
-description: "Сведения о публикации приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio."
-ms.author: riande
+description: Сведения о публикации приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio.
 manager: wpickett
+ms.author: riande
 ms.date: 12/16/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: d0e64c967ff332365981338809a47faf35d499ab
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e5c213a682c9bf7c64c40fad630cacfff24e23bb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>Публикация веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio
+# <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Публикация приложения ASP.NET Core в Azure с помощью Visual Studio
 
 Авторы: [Рик Андерсон (Rick Anderson)](https://twitter.com/RickAndMSFT), [Сезар Блум Сильвейра (Cesar Blum Silveira)](https://github.com/cesarbs) и [Рейчел Аппель (Rachel Appel)](https://twitter.com/rachelappel)
 
-Если вы работаете на компьютере Mac, см. раздел [Publish to Azure from Visual Studio for Mac](https://blog.xamarin.com/publish-azure-visual-studio-mac/) (Публикация в Azure из Visual Studio для компьютера Mac).
+[!INCLUDE [Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
+
+Если вы работаете в macOS, см. раздел [Публикация в Azure из Visual Studio для Mac](https://blog.xamarin.com/publish-azure-visual-studio-mac/).
+
+В разделе [Устранение неполадок ASP.NET Core в службе приложений Azure](xref:host-and-deploy/azure-apps/troubleshoot) описывается устранение проблемы с развертыванием службы приложений.
 
 ## <a name="set-up"></a>Настройка
 
@@ -185,3 +189,4 @@ Visual Studio создает веб-приложение и SQL Server в Azure.
 * [служба приложений Azure](https://docs.microsoft.com/azure/app-service/app-service-web-overview);
 * [Группа ресурсов Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)
 * [База данных SQL Azure](https://docs.microsoft.com/azure/sql-database/)
+* [Устранение неполадок ASP.NET Core в службе приложений Azure](xref:host-and-deploy/azure-apps/troubleshoot)

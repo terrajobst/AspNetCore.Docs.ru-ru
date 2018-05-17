@@ -1,7 +1,7 @@
 ---
-title: "Маршрутизация в ASP.NET Core"
+title: Маршрутизация в ASP.NET Core
 author: ardalis
-description: "Узнайте, как функции маршрутизации ASP.NET Core обеспечивают сопоставление входящего запроса с обработчиком маршрутов."
+description: Узнайте, как функции маршрутизации ASP.NET Core обеспечивают сопоставление входящего запроса с обработчиком маршрутов.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/routing
-ms.openlocfilehash: d35c24347e8e06ed85e2af8addcc1f8cf28dc47a
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 2e1257639ec41f657093439c5245b50adbad34dc
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -22,13 +22,13 @@ ms.lasthandoff: 02/01/2018
 Функция маршрутизации обеспечивает сопоставление входящего запроса с обработчиком маршрутов. Маршруты определяются в приложении ASP.NET и настраиваются при его запуске. Маршрут может также извлекать значения из содержащегося в запросе URL-адреса, которые затем используются для обработки запроса. С помощью сведений о маршрутах из приложения ASP.NET функция маршрутизации также может формировать URL-адреса, сопоставленные с обработчиками маршрутов. Таким образом, маршрутизация позволяет находить обработчик маршрутов по URL-адресу или URL-адрес, соответствующий определенному обработчику маршрутов, на основе сведений об обработчике.
 
 >[!IMPORTANT]
-> В этом документе рассматривается низкоуровневая маршрутизация ASP.NET Core. Сведения о маршрутизации ASP.NET Core MVC см. в статье [Маршрутизация к действиям контроллера](../mvc/controllers/routing.md).
+> В этом документе рассматривается низкоуровневая маршрутизация ASP.NET Core. Сведения о маршрутизации ASP.NET Core MVC см. в статье [Маршрутизация к действиям контроллера](../mvc/controllers/routing.md)
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Основы маршрутизации
 
-Маршрутизация использует *маршруты* (реализации интерфейса [IRouter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.routing.irouter)) в следующих целях:
+Маршрутизация использует *маршруты* (реализации интерфейса [IRouter](/dotnet/api/microsoft.aspnetcore.routing.irouter)) в следующих целях:
 
 * для сопоставления входящих запросов с *обработчиками маршрутов*;
 
@@ -187,7 +187,7 @@ routes.MapRoute(
 
 Добавьте маршрутизацию в контейнер службы в файле *Startup.cs*:
 
-[!code-csharp[Main](../fundamentals/routing/sample/RoutingSample/Startup.cs?highlight=3&start=11&end=14)]
+[!code-csharp[](../fundamentals/routing/sample/RoutingSample/Startup.cs?highlight=3&start=11&end=14)]
 
 Маршруты должны настраиваться в методе `Configure` класса `Startup`. В приведенном ниже примере используются следующие интерфейсы API:
 
@@ -321,7 +321,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 
 ## <a name="regular-expressions"></a>Регулярные выражения 
 
-В платформе ASP.NET Core в конструктор регулярных выражений добавляются члены `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant`. Их описание см. в статье [Перечисление RegexOptions](https://docs.microsoft.com/dotnet/api/system.text.regularexpressions.regexoptions).
+В платформе ASP.NET Core в конструктор регулярных выражений добавляются члены `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant`. Их описание см. в статье [Перечисление RegexOptions](/dotnet/api/system.text.regularexpressions.regexoptions).
 
 В регулярных выражениях применяются разделители и токены, аналогичные используемым функцией маршрутизации и в языке C#. Токены регулярного выражения должны быть экранированы. Например, чтобы использовать регулярное выражение `^\d{3}-\d{2}-\d{4}$` при маршрутизации, необходимо ввести символы `\` в виде `\\` в исходном файле C# для экранирования escape-символов строки `\` (если не используются [буквальные строковые литералы](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/string)). Символы `{`, `}`, "[" и "]" необходимо экранировать путем их удвоения, чтобы экранировать символы-разделители параметров маршрутизации.  В приведенной ниже таблице показаны регулярные выражения и их экранированные варианты.
 
@@ -351,7 +351,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 
 В приведенном ниже примере показано, как создать ссылку на маршрут с использованием словаря значений маршрута и коллекции `RouteCollection`.
 
-[!code-csharp[Main](../fundamentals/routing/sample/RoutingSample/Startup.cs?range=45-59)]
+[!code-csharp[](../fundamentals/routing/sample/RoutingSample/Startup.cs?range=45-59)]
 
 В результате приведенного выше примера создается `VirtualPath` со значением `/package/create/123`.
 

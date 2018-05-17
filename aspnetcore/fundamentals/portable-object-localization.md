@@ -1,7 +1,7 @@
 ---
-title: "Настройка локализации переносных объектов"
+title: Настройка локализации переносных объектов в ASP.NET Core
 author: sebastienros
-description: "Эта статья содержит вводные сведения о файлах переносимых объектов и описывает действия по их использованию в приложении ASP.NET Core с помощью платформы Orchard Core."
+description: Эта статья содержит вводные сведения о файлах переносимых объектов и описывает действия по их использованию в приложении ASP.NET Core с помощью платформы Orchard Core.
 manager: wpickett
 ms.author: scaddie
 ms.date: 09/26/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 6fefbd9b28d481184e358e7d66af68d112c63696
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: fbf2afd6fbc07c8068a21be15816aa45618f28d6
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="configure-portable-object-localization-with-orchard-core"></a>Настройка локализации переносных объектов с помощью Orchard Core
+# <a name="configure-portable-object-localization-in-aspnet-core"></a>Настройка локализации переносных объектов в ASP.NET Core
 
 Авторы: [Себастьен Рос](https://github.com/sebastienros) (Sébastien Ros) и [Скотт Эдди](https://twitter.com/Scott_Addie) (Scott Addie)
 
@@ -70,25 +70,25 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="referencing-the-package"></a>Указание ссылок на пакет
 
-Добавьте ссылку на пакет NuGet `OrchardCore.Localization.Core`. Он доступен на сайте [MyGet](https://www.myget.org/) в следующем источнике: https://www.myget.org/F/orchardcore-preview/api/v3/index.json
+Добавьте ссылку на пакет NuGet `OrchardCore.Localization.Core`. Его можно найти на [MyGet](https://www.myget.org/) в следующем источнике пакетов: https://www.myget.org/F/orchardcore-preview/api/v3/index.json
 
 Файл *CSPROJ* теперь содержит строку следующего вида (номер версии может отличаться):
 
-[!code-xml[Main](localization/sample/POLocalization/POLocalization.csproj?range=9)]
+[!code-xml[](localization/sample/POLocalization/POLocalization.csproj?range=9)]
 
 ### <a name="registering-the-service"></a>Регистрация службы
 
 Добавьте необходимые службы в метод `ConfigureServices` файла *Startup.cs*:
 
-[!code-csharp[Main](localization/sample/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
+[!code-csharp[](localization/sample/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
 Добавьте необходимое ПО промежуточного слоя в метод `Configure` файла *Startup.cs*:
 
-[!code-csharp[Main](localization/sample/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
+[!code-csharp[](localization/sample/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
 Добавьте следующий код в нужное представление Razor. В этом примере используется *About.cshtml*.
 
-[!code-cshtml[Main](localization/sample/POLocalization/Views/Home/About.cshtml)]
+[!code-cshtml[](localization/sample/POLocalization/Views/Home/About.cshtml)]
 
 Экземпляр `IViewLocalizer` внедряется и используется для перевода текста "Hello world!".
 
@@ -96,7 +96,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 Создайте файл с именем *<culture code>.po* в корневой папке приложения. В этом примере файл имеет имя *fr.po*, так как используется французский язык:
 
-[!code-text[Main](localization/sample/POLocalization/fr.po)]
+[!code-text[](localization/sample/POLocalization/fr.po)]
 
 Данный файл содержит как строку на перевод, так и строку, переведенную на французский язык. При необходимости переводы возвращаются к своим родительским языку и региональным параметрам. В этом примере файл *fr.po* используется, если запрошены язык и региональные параметры `fr-FR` или `fr-CA`.
 
@@ -133,7 +133,7 @@ msgstr[1] "Il y a {0} éléments."
 
 Создайте файл `cs.po`, как показано ниже, и обратите внимание, что для преобразования во множественную форму нужно три разных перевода:
 
-[!code-text[Main](localization/sample/POLocalization/cs.po)]
+[!code-text[](localization/sample/POLocalization/cs.po)]
 
 Чтобы принять локализации на чешский язык, добавьте `"cs"` в список поддерживаемых языков и региональных параметров в методе `ConfigureServices`:
 
@@ -206,7 +206,7 @@ msgstr "Bonjour le monde!"
 
 Если с заданным контекстом файла не совпадает ни одна из конкретных записей, резервный механизм Orchard Core ищет соответствующий файл PO без контекста. Если предположить, что для *Views/Home/Contact.cshtml* не задан никакой контекст, при переходе по адресу `/Home/Contact?culture=fr-FR` загружается файл PO, как показано ниже:
 
-[!code-text[Main](localization/sample/POLocalization/fr.po)]
+[!code-text[](localization/sample/POLocalization/fr.po)]
 
 ### <a name="changing-the-location-of-po-files"></a>Изменение расположения для файлов PO
 

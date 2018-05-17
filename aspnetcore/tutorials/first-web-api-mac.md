@@ -1,28 +1,33 @@
 ---
-title: "Создание веб-API с помощью ASP.NET Core и Visual Studio для Mac"
+title: Создание веб-API с помощью ASP.NET Core и Visual Studio для Mac
 author: rick-anderson
-description: "Создание веб-API с помощью MVC ASP.NET Core и Visual Studio для Mac"
+description: Создание веб-API с помощью MVC ASP.NET Core и Visual Studio для Mac
 helpviewer_heywords: ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, Service, HTTP Service
 manager: wpickett
 ms.author: riande
-ms.date: 09/15/2017
+ms.custom: mvc
+ms.date: 04/27/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-web-api-mac
-ms.openlocfilehash: b0e1a331fe3229119f4669fa336b6af4822785bf
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 46050f4bbd6ae821c03d92c8750e839d491328cd
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>Создание веб-API с помощью MVC ASP.NET Core и Visual Studio для Mac
+# <a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-mac"></a>Создание веб-API с помощью ASP.NET Core и Visual Studio для Mac
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Майк Уоссон](https://github.com/mikewasson)
 
+::: moniker range="= aspnetcore-2.1"
+[!INCLUDE[](~/includes/2.1.md)]
+::: moniker-end
+
 В этом руководстве создается веб-API для управления элементами списка дел. При этом пользовательский интерфейс не создается.
 
-Существует 3 версии этого учебника:
+Существуют три версии этого руководства:
 
 * macOS: создание веб-API с помощью Visual Studio для Mac (этот учебник)
 * Windows: [создание веб-API с помощью Visual Studio для Windows](xref:tutorials/first-web-api)
@@ -32,44 +37,41 @@ ms.lasthandoff: 01/30/2018
 
 [!INCLUDE[template files](../includes/webApi/intro.md)]
 
-* Пример использования постоянной базы данных см. в статье [Введение в MVC ASP.NET Core на Mac или Linux](xref:tutorials/first-mvc-app-xplat/index).
+Пример использования постоянной базы данных см. в статье [Введение в MVC ASP.NET Core в macOS](xref:tutorials/first-mvc-app-xplat/index).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Установите следующие компоненты:
-
-- [пакет SDK для .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии;
-- [Visual Studio для Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
+[!INCLUDE[](~/includes/net-core-prereqs-macos.md)]
 
 ## <a name="create-the-project"></a>Создание проекта
 
-В Visual Studio выберите **Файл > Новое решение**.
+В Visual Studio выберите **Файл** > **Новое решение**.
 
 ![Новое решение macOS](first-web-api-mac/_static/sln.png)
 
-Выберите **Приложение .NET Core > Веб-API ASP.NET Core > Далее**.
+Выберите **Приложение .NET Core** > **Веб-API ASP.NET Core** > **Далее**.
 
 ![Диалоговое окно "Новый проект" в macOS](first-web-api-mac/_static/1.png)
 
-Введите **TodoApi** в поле **Имя проекта** и выберите команду "Создать".
+Введите *TodoApi* в поле **Имя проекта** и нажмите **Создать**.
 
 ![Диалоговое окно конфигурации](first-web-api-mac/_static/2.png)
 
 ### <a name="launch-the-app"></a>Запуск приложения
 
-В Visual Studio откройте меню **Выполнить > Запуск без отладки**, чтобы запустить приложение. Visual Studio откроет браузер и перейдет к `http://localhost:5000`. Появится ошибка HTTP 404 (Не найдено).  Измените URL-адрес на `http://localhost:port/api/values`. Отобразятся данные `ValuesController`
+В Visual Studio откройте меню **Выполнить** > **Запуск без отладки**, чтобы запустить приложение. Visual Studio откроет браузер и перейдет к `http://localhost:5000`. Появится ошибка HTTP 404 (Не найдено). Измените URL-адрес на `http://localhost:<port>/api/values`. Отображаются данные `ValuesController`:
 
-```
+```json
 ["value1","value2"]
 ```
 
 ### <a name="add-support-for-entity-framework-core"></a>Добавление поддержки для Entity Framework Core
 
-Установите поставщик базы данных [Entity Framework Core InMemory](https://docs.microsoft.com/ef/core/providers/in-memory/). Этот поставщик базы данных позволяет использовать Entity Framework Core с выполняющейся в памяти базой данных.
+Установите поставщик базы данных [Entity Framework Core InMemory](/ef/core/providers/in-memory/). Этот поставщик базы данных позволяет использовать Entity Framework Core с выполняющейся в памяти базой данных.
 
-* В меню **Проект** выберите пункт **Добавить пакеты NuGet**. 
+* В меню **Проект** выберите пункт **Добавить пакеты NuGet**.
 
-  *  Также можно щелкнуть **Зависимости** правой кнопкой мыши и выбрать команду **Добавить пакеты**.
+  * Также можно щелкнуть **Зависимости** правой кнопкой мыши и выбрать команду **Добавить пакеты**.
 
 * Введите `EntityFrameworkCore.InMemory` в поле поиска.
 * Выберите `Microsoft.EntityFrameworkCore.InMemory`, а затем **Добавить пакет**.
@@ -78,17 +80,18 @@ ms.lasthandoff: 01/30/2018
 
 Модель — это объект, представляющий данные в приложении. В этом случае единственной моделью является задача.
 
-Добавьте папку с именем *Models*. В обозревателе решений щелкните проект правой кнопкой мыши. Выберите **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
+В обозревателе решений щелкните проект правой кнопкой мыши. Выберите **Добавить** > **Новая папка**. Присвойте папке имя *Models*.
 
 ![Новая папка](first-web-api-mac/_static/folder.png)
 
-Примечание. Классы моделей можно размещать в любом месте проекта, но обычно используется папка *Models*.
+> [!NOTE]
+> Классы моделей можно размещать в любом месте в проекте, но по соглашению используется папка *Models*.
 
-Добавьте класс `TodoItem`. Щелкните папку *Models* правой кнопкой мыши и выберите **Добавить > Новый файл > Общие > Пустой класс**. Присвойте классу имя `TodoItem` и выберите команду **Создать**.
+Щелкните папку *Models* правой кнопкой мыши и выберите **Добавить** > **Новый файл** > **Общие** > **Пустой класс**. Назовите класс *TodoItem* и нажмите **Создать**.
 
 Замените сгенерированный код на следующий:
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoItem.cs)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoItem.cs)]
 
 После создания `TodoItem` база данных формирует `Id`.
 
@@ -98,7 +101,7 @@ ms.lasthandoff: 01/30/2018
 
 Добавьте класс `TodoContext` в папку *Models*.
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoContext.cs)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoContext.cs)]
 
 [!INCLUDE[Register the database context](../includes/webApi/register_dbContext.md)]
 
@@ -106,74 +109,91 @@ ms.lasthandoff: 01/30/2018
 
 В обозревателе решений добавьте в папку *Controllers* класс `TodoController`.
 
-Замените сгенерированный код на следующий (и добавьте закрывающие скобки).
+Замените сгенерированный код следующим кодом:
 
 [!INCLUDE[code and get todo items](../includes/webApi/getTodoItems.md)]
 
 ### <a name="launch-the-app"></a>Запуск приложения
 
-В Visual Studio откройте меню **Выполнить > Запуск без отладки**, чтобы запустить приложение. Visual Studio запустит браузер и перейдет к `http://localhost:port`, где *порт* — это номер порта, выбранный случайным образом. Появится ошибка HTTP 404 (Не найдено).  Измените URL-адрес на `http://localhost:port/api/values`. Отобразятся данные `ValuesController`
+В Visual Studio откройте меню **Выполнить** > **Запуск без отладки**, чтобы запустить приложение. Visual Studio запустит браузер и перейдет к `http://localhost:<port>`, где `<port>` — это номер порта, выбранный случайным образом. Появится ошибка HTTP 404 (Не найдено). Измените URL-адрес на `http://localhost:<port>/api/values`. Отображаются данные `ValuesController`:
 
-```
+```json
 ["value1","value2"]
 ```
 
-Перейдите к контроллеру `Todo` по адресу `http://localhost:port/api/todo`.
+Перейдите к контроллеру `Todo` по адресу `http://localhost:<port>/api/todo`:
 
-```
+```json
 [{"key":1,"name":"Item1","isComplete":false}]
 ```
 
 ## <a name="implement-the-other-crud-operations"></a>Реализация других операций CRUD
 
-Добавим к контроллеру методы `Create`, `Update` и `Delete`. Это вариации темы, поэтому мы просто покажем код и выделим основные различия. После добавления или изменения кода выполните сборку проекта.
+Добавим к контроллеру методы `Create`, `Update` и `Delete`. Эти методы являются вариациями темы, поэтому мы просто покажем код и выделим основные различия. После добавления или изменения кода выполните сборку проекта.
 
 ### <a name="create"></a>Создать
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-Это метод HTTP POST, обозначенный атрибутом [`[HttpPost]`](/aspnet/core/api/microsoft.aspnetcore.mvc.httppostattribute). Атрибут [`[FromBody]`](/aspnet/core/api/microsoft.aspnetcore.mvc.frombodyattribute) сообщает MVC, что необходимо получить значение элемента задачи из текста HTTP-запроса.
+Приведенный выше метод отвечает на запрос HTTP POST, как указано атрибутом [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). Атрибут [[FromBody]](/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute) сообщает MVC, что необходимо получить значение элемента задачи из текста HTTP-запроса.
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-Метод `CreatedAtRoute` возвращает ответ 201, который представляет собой стандартный ответ для метода HTTP POST, создающий новый ресурс на сервере. `CreatedAtRoute` также добавляет в ответ заголовок расположения. Заголовок расположения указывает URI вновь созданной задачи. См. раздел [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+Приведенный выше метод отвечает на запрос HTTP POST, как указано атрибутом [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). MVC получает значение элемента задачи из текста HTTP-запроса.
+::: moniker-end
 
-### <a name="use-postman-to-send-a-create-request"></a>Отправка запроса Create с помощью коллекции Postman
+Метод `CreatedAtRoute` возвращает ответ 201. Это стандартный ответ для метода HTTP POST, который создает ресурс на сервере. `CreatedAtRoute` также добавляет в ответ заголовок расположения. Заголовок расположения указывает URI вновь созданной задачи. См. раздел [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
-* Запустите приложение (**Выполнить > Запуск с отладкой**).
-* Запустите Postman.
+### <a name="use-postman-to-send-a-create-request"></a>Отправка запроса Create с помощью Postman
+
+* Запустите приложение (**Выполнить** > **Запуск с отладкой**).
+* Откройте Postman.
 
 ![Консоль Postman](first-web-api/_static/pmc.png)
 
-* Укажите HTTP-метод `POST`
-* Установите переключатель **Текст запроса**
-* Установите переключатель **без обработки**
-* В качестве типа выберите JSON
-* В редакторе пар ключей и значений введите элемент Todo, например
+* Измените номера порта в localhost URL-адреса.
+* Укажите метод HTTP *POST*.
+* Откройте вкладку **Текст**.
+* Установите переключатель **без обработки**.
+* Задайте тип *JSON (приложение/json)*.
+* Введите текст запроса с элементом задачи наподобие следующего JSON:
 
 ```json
 {
-    "name":"walk dog",
-    "isComplete":true
+  "name":"walk dog",
+  "isComplete":true
 }
 ```
 
-* Нажмите кнопку **Отправить**
+* Нажмите кнопку **Отправить**.
 
-* Откройте вкладку "Заголовки" в нижней области и скопируйте заголовок **расположения**:
+::: moniker range=">= aspnetcore-2.1"
+> [!TIP]
+> Если ответ не отображается после нажатия кнопки **Отправить**, отключите параметр **Проверка сертификации SSL**. Он находится в разделе **Файл** > **Параметры**. Нажмите кнопку **Отправить** еще раз после отключения параметра.
+::: moniker-end
 
-![Вкладка "Заголовки" в консоли Postman](first-web-api/_static/pmget.png)
+Откройте вкладку **Заголовки** на панели **Ответ** и скопируйте значение заголовка **Расположение**:
 
-URI заголовка расположения позволяет получить доступ к только что созданному ресурсу. Снова вызовите метод `GetById` для создания маршрута с именем `"GetTodo"`:
+![Вкладка "Заголовки" в консоли Postman](first-web-api/_static/pmc2.png)
+
+URI заголовка расположения позволяет получить доступ к созданному ресурсу. Метод `Create` возвращает [CreatedAtRoute](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.createdatroute#Microsoft_AspNetCore_Mvc_ControllerBase_CreatedAtRoute_System_String_System_Object_System_Object_). Первый параметр, передаваемый `CreatedAtRoute`, представляет именованный маршрут для создания URL-адреса. Помните, что метод `GetById` создал именованный маршрут `"GetTodo"`:
 
 ```csharp
 [HttpGet("{id}", Name = "GetTodo")]
-public IActionResult GetById(string id)
 ```
 
 ### <a name="update"></a>Обновление
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+::: moniker-end
 
-Страница `Update` аналогична странице `Create`, но использует запрос HTTP PUT. Ответ — [204 (Нет содержимого)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). Согласно спецификации HTTP, запрос PUT требует, чтобы клиент отправлял всю обновленную сущность, а не только сведения о ней. Чтобы обеспечить поддержку частичных обновлений, используйте HTTP PATCH.
+Страница `Update` аналогична странице `Create`, но использует запрос HTTP PUT. Ответ — [204 (Нет содержимого)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). Согласно спецификации HTTP, запрос PUT требует, чтобы клиент отправлял всю обновленную сущность, а не только сведения о ней. Чтобы обеспечить поддержку частичных обновлений, используйте HTTP PATCH.
 
 ```json
 {
@@ -187,16 +207,12 @@ public IActionResult GetById(string id)
 
 ### <a name="delete"></a>Удаление
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]
 
-Ответ — [204 (Нет содержимого)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
+Ответ — [204 (Нет содержимого)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
 
 ![Консоль Postman с ответом 204 (Нет содержимого)](first-web-api/_static/pmd.png)
 
-## <a name="next-steps"></a>Следующие шаги
+[!INCLUDE[jQuery](../includes/webApi/add-jquery.md)]
 
-* [Маршрутизация к действиям контроллера](xref:mvc/controllers/routing)
-* Сведения о развертывании API см. в разделе [Размещение и развертывание](xref:host-and-deploy/index).
-* [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
-* [Postman](https://www.getpostman.com/)
-* [Fiddler](https://www.telerik.com/download/fiddler)
+[!INCLUDE[next steps](../includes/webApi/next.md)]

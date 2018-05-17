@@ -1,21 +1,22 @@
 ---
-title: "Добавление нового поля на страницу Razor"
+title: Добавление нового поля на страницу Razor в ASP.NET Core
 author: rick-anderson
-description: "Демонстрирует, как добавить новое поле на страницу Razor с помощью Entity Framework Core"
+description: Демонстрирует, как добавить новое поле на страницу Razor с помощью Entity Framework Core
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 36412e9d1f3143f0d1999d0e754e6627f0984ad5
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 45a39defc9480b0e4fe85ae7ed6bfa654a35264a
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="adding-a-new-field-to-a-razor-page"></a>Добавление нового поля на страницу Razor
+# <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Добавление нового поля на страницу Razor в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -27,13 +28,13 @@ ms.lasthandoff: 01/30/2018
 
 Откройте файл *Models/Movie.cs* и добавьте свойство `Rating`:
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
 
 Постройте приложение (CTRL+SHIFT+B).
 
 Измените файл *Pages/Movies/Index.cshtml* и добавьте в него поле `Rating`:
 
-[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=40-42,61-63)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=40-42,61-63)]
 
 Добавьте поле `Rating` на страницы "Delete" (Удаление) и "Details" (Сведения).
 
@@ -43,7 +44,7 @@ ms.lasthandoff: 01/30/2018
 
 В следующем коде показан файл *Create.cshtml* с полем `Rating`:
 
-[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?highlight=36-40)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?highlight=36-40)]
 
 Добавьте поле `Rating` на страницу "Edit" (Редактирование).
 
@@ -67,7 +68,7 @@ SqlException: Invalid column name 'Rating'.
 
 Обновите класс `SeedData` так, чтобы он предоставлял значение нового столбца. Ниже показан пример изменения, которое необходимо выполнить для каждого блока `new Movie`.
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
 См. [готовый файл SeedData.cs](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs).
 
@@ -102,6 +103,6 @@ Update-Database
 
 Запустите приложение и проверьте возможность создания, редактирования и отображения фильмов с использованием поля `Rating`. Если база данных не заполнена начальными значениями, остановите IIS Express и затем запустите приложение.
 
->[!div class="step-by-step"]
-[Предыдущая тема — "Добавление поиска"](xref:tutorials/razor-pages/search)
-[Следующая тема — "Добавление проверки"](xref:tutorials/razor-pages/validation)
+> [!div class="step-by-step"]
+> [Предыдущая тема — "Добавление поиска"](xref:tutorials/razor-pages/search)
+> [Следующая тема — "Добавление проверки"](xref:tutorials/razor-pages/validation)

@@ -1,7 +1,7 @@
 ---
-title: "Начало работы с MVC ASP.NET Core и Visual Studio для Mac"
+title: Начало работы с MVC ASP.NET Core и Visual Studio для Mac
 author: rick-anderson
-description: "Начало работы с MVC ASP.NET Core и Visual Studio"
+description: Сведения о начале работы с MVC ASP.NET Core и Visual Studio
 manager: wpickett
 ms.author: riande
 ms.date: 8/23/2017
@@ -9,19 +9,19 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: tutorials/first-mvc-app-mac/start-mvc
-ms.openlocfilehash: 05a2323851c58c95667066a74c11f1d015405e6f
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ffa620f07251c52c785672d8fbeefacac31ed4c1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="getting-started-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>Начало работы с MVC ASP.NET Core и Visual Studio для Mac
+# <a name="get-started-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>Начало работы с MVC ASP.NET Core и Visual Studio для Mac
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 В этом учебнике представлены основы сборки веб-приложений MVC ASP.NET Core с помощью [Visual Studio для Mac](https://www.visualstudio.com/vs/visual-studio-mac/). 
 
-[!INCLUDE[consider RP](../../includes/razor.md)]
+[!INCLUDE [consider RP](../../includes/razor.md)]
 
 Существует 3 версии этого учебника:
 
@@ -31,12 +31,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для этого учебника требуется [пакет SDK для .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии.
-
-Установите следующие компоненты:
-
-- [пакет SDK для .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии;
-- [Visual Studio для Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
+[!INCLUDE [](~/includes/net-core-prereqs-macos.md)]
 
 ## <a name="create-a-web-app"></a>Создание веб-приложения
 
@@ -67,5 +62,5 @@ ms.lasthandoff: 01/30/2018
 
 В следующей части этого учебника мы поговорим об MVC и приступим к написанию кода.
 
->[!div class="step-by-step"]
-[Вперед](adding-controller.md)  
+> [!div class="step-by-step"]
+> [Вперед](adding-controller.md)  

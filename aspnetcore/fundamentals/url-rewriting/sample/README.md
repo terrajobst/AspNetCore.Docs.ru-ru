@@ -33,11 +33,13 @@ using Microsoft.Extensions.FileProviders;
 PhysicalFileProvider fileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory());
 ```
 ## <a name="secure-redirection-extensions"></a>Расширения безопасного перенаправления
-Этот пример включает в себя конфигурацию `WebHostBuilder`, чтобы приложение использовало URL-адреса (**https://localhost:5001**, **https://localhost**), и тестовый сертификат (**testCert.pfx**), чтобы помочь вам в изучении этих методов перенаправления. Добавьте любой из них в `RewriteOptions()` в файле **Startup.cs**, чтобы изучить их поведение.
+Этот пример включает в себя конфигурацию `WebHostBuilder`, чтобы приложение использовало URL-адреса (**https://localhost:5001**, **https://localhost**), и тестовый сертификат (**testCert.pfx**) с целью помочь вам в изучении этих методов перенаправления. Добавьте любой из них в `RewriteOptions()` в файле **Startup.cs**, чтобы изучить их поведение.
 
-Метод | Код состояния | Порт
---- | :---: | :---:
-`.AddRedirectToHttpsPermanent()` | 301 | null (465)
-`.AddRedirectToHttps()` | 302 | null (465)
-`.AddRedirectToHttps(301)` | 301 | null (465)
-`.AddRedirectToHttps(301, 5001)` | 301 | 5001
+
+|              Метод              | Код состояния |    Порт    |
+|----------------------------------|:-----------:|:----------:|
+| `.AddRedirectToHttpsPermanent()` |     301     | null (465) |
+|     `.AddRedirectToHttps()`      |     302     | null (465) |
+|    `.AddRedirectToHttps(301)`    |     301     | null (465) |
+| `.AddRedirectToHttps(301, 5001)` |     301     |    5001    |
+

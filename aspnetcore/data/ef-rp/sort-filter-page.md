@@ -1,24 +1,24 @@
 ---
-title: "Razor Pages с EF Core — сортировка, фильтрация, разбиение на страницы — 3 из 8"
+title: Razor Pages с EF Core в ASP.NET Core — сортировка, фильтрация, разбиение на страницы — 3 из 8
 author: rick-anderson
-description: "Из этого руководства вы узнаете, как при помощи ASP.NET Core и Entity Framework Core добавить на страницу функции сортировки, фильтрации и разбиения на страницы."
+description: Из этого руководства вы узнаете, как при помощи ASP.NET Core и Entity Framework Core добавить на страницу функции сортировки, фильтрации и разбиения на страницы.
 ms.author: riande
 ms.date: 10/22/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 9c1ee6f8c00f3cd501ea86fbf73f51ae540a010a
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: be7d55bf1a5d3da63ff137ed86f71984dc897eff
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="sorting-filtering-paging-and-grouping---ef-core-with-razor-pages-3-of-8"></a>Сортировка, фильтрация, разбиение на страницы и группировка — EF Core с Razor Pages (3 из 8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Razor Pages с EF Core в ASP.NET Core — сортировка, фильтрация, разбиение на страницы — 3 из 8
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Йон П. Смит](https://twitter.com/thereformedprog) (Jon P Smith)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
 Это руководство описывает добавление функций сортировки, фильтрации, группировки и разбиения на страницы.
 
@@ -32,12 +32,12 @@ ms.lasthandoff: 01/31/2018
 
 Добавьте строки в *Students/Index.cshtml.cs* `PageModel` для хранения параметров сортировки:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet1&highlight=10-13)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet1&highlight=10-13)]
 
 
 Измените *Students/Index.cshtml.cs* `OnGetAsync`, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly)]
 
 Предыдущий код принимает параметр `sortOrder` из строки запроса в URL-адресе. URL-адрес (включая строку запроса) формируется [вспомогательной функцией тегов привязки](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper
 )
@@ -48,11 +48,11 @@ ms.lasthandoff: 01/31/2018
 
 Для формирования гиперссылок в заголовках столбцов страница Razor использует `NameSort` и `DateSort` с соответствующими значениями строки запроса:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=3-4)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=3-4)]
 
 Следующий код содержит [оператор ?:](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/conditional-operator) C#:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_Ternary)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_Ternary)]
 
 Первая строка указывает, что когда `sortOrder` равен null или пуст, `NameSort` имеет значение "name_desc". Если `sortOrder` **не является** равным null или пустым, для `NameSort` задается пустая строка.
 
@@ -69,11 +69,11 @@ ms.lasthandoff: 01/31/2018
 
 Для указания столбца, по которому выполняется сортировка, этот метод использует LINQ to Entities. Код инициализирует `IQueryable<Student> ` до оператора switch и изменяет его в этом операторе:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=6-)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=6-999)]
 
  При создании или изменении `IQueryable` запрос в базу данных не отправляется. Запрос не выполнится, пока объект `IQueryable` не будет преобразован в коллекцию. `IQueryable` преобразуются в коллекцию путем вызова метода, такого как `ToListAsync`. Таким образом, код `IQueryable` создает одиночный запрос, который не выполняется до следующего оператора:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnlyRtn)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnlyRtn)]
 
 `OnGetAsync` можно расширить на случай большого числа столбцов.
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 01/31/2018
 
 Измените *Students/Index.cshtml.cs* `OnGetAsync`, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
 
 Предыдущий код:
 
@@ -164,7 +164,7 @@ http://localhost:5000/Students?SearchString=an
 
 В папке проекта создайте файл `PaginatedList.cs` со следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/PaginatedList.cs)]
+[!code-csharp[](intro/samples/cu/PaginatedList.cs)]
 
 В предыдущем коде метод `CreateAsync` принимает размер и номер страницы и вызывает соответствующие методы `Skip` и `Take` объекта `IQueryable`. Метод `ToListAsync` объекта `IQueryable` при вызове возвращает список, содержащий только запрошенную страницу. Для включения и отключения кнопок перелистывания страниц **Previous** (Назад) и **Next** (Далее) используются свойства `HasPreviousPage` и `HasNextPage`.
 
@@ -174,15 +174,15 @@ http://localhost:5000/Students?SearchString=an
 
 В *Students/Index.cshtml.cs* измените тип `Student` с `IList<Student>` на `PaginatedList<Student>`:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPageType)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPageType)]
 
 Измените *Students/Index.cshtml.cs* `OnGetAsync`, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage&highlight=1-4,7-14,41-)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage&highlight=1-4,7-14,41-999)]
 
 Предыдущий код добавляет страницу индекса, текущий `sortOrder` и `currentFilter` в сигнатуру метода.
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage2)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage2)]
 
 Все параметры равны null, когда:
 
@@ -203,11 +203,11 @@ http://localhost:5000/Students?SearchString=an
 * Строка поиска изменяется.
 * Значение параметра `searchString` отличается от null.
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage3)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage3)]
 
 Метод `PaginatedList.CreateAsync` преобразует результат запроса учащихся в отдельную страницу коллекции, поддерживающую разбиение на страницы. Эта страница с учащимися передается на страницу Razor.
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage4)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage4)]
 
 Два вопросительных знака в `PaginatedList.CreateAsync` являются [оператором объединения с null](https://docs.microsoft.com/ dotnet/csharp/language-reference/operators/null-conditional-operator). Оператор объединения с null определяет значение по умолчанию для типа, допускающего значение null. Выражение `(pageIndex ?? 1)` означает возвращение значения `pageIndex`, если он имеет значение. Если у `pageIndex` нет значения, возвращается 1.
 
@@ -215,7 +215,7 @@ http://localhost:5000/Students?SearchString=an
 
 Измените разметку в *Students/Index.cshtml*. Изменения выделены:
 
-[!code-html[](intro/samples/cu/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-)]
+[!code-html[](intro/samples/cu/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
 
 Ссылки в заголовках столбцов передают в метод `OnGetAsync` с помощью строки запроса текущее значение строки поиска, чтобы пользователь мог сортировать отфильтрованные результаты:
 
@@ -253,13 +253,13 @@ http://localhost:5000/Students?SearchString=an
 
 Добавьте в папку *SchoolViewModels* файл *EnrollmentDateGroup.cs* со следующим кодом:
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
 ### <a name="update-the-about-page-model"></a>Обновление модели страницы "About" (О программе)
 
 Измените файл *Pages/About.cshtml.cs*, используя следующий код:
 
-[!code-csharp[Main](intro/samples/cu/Pages/About.cshtml.cs)]
+[!code-csharp[](intro/samples/cu/Pages/About.cshtml.cs)]
 
 Запрос LINQ группирует записи из таблицы студентов по дате зачисления, вычисляет число записей в каждой группе и сохраняет результаты в коллекцию объектов моделей представления `EnrollmentDateGroup`.
 
@@ -283,6 +283,6 @@ http://localhost:5000/Students?SearchString=an
 
 В следующем руководстве приложение использует миграции для обновления модели данных.
 
->[!div class="step-by-step"]
-[Назад](xref:data/ef-rp/crud)
-[Вперед](xref:data/ef-rp/migrations)
+> [!div class="step-by-step"]
+> [Назад](xref:data/ef-rp/crud)
+> [Вперед](xref:data/ef-rp/migrations)

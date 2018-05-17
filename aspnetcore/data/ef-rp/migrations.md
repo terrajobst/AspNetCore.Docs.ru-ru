@@ -1,7 +1,7 @@
 ---
-title: "Razor Pages с EF Core — миграции — 4 из 8"
+title: Razor Pages с EF Core в ASP.NET Core — миграции — 4 из 8
 author: rick-anderson
-description: "В этом учебнике вы начинаете использовать функцию миграций EF Core для управления изменениями модели данных в приложении ASP.NET Core MVC."
+description: В этом учебнике вы начинаете использовать функцию миграций EF Core для управления изменениями модели данных в приложении ASP.NET Core MVC.
 manager: wpickett
 ms.author: riande
 ms.date: 10/15/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/migrations
-ms.openlocfilehash: e89d95702cb94556bc6e5dc73253c51acaa11578
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 690beaabeab098cf9b764730b1bf1bd04bf6b003
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="migrations---ef-core-with-razor-pages-tutorial-4-of-8"></a>Миграции — учебник по EF Core с Razor Pages (4 из 8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>Razor Pages с EF Core в ASP.NET Core — миграции — 4 из 8
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra), [Йон П. Смит](https://twitter.com/thereformedprog) (Jon P Smith) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
 В этом учебнике используется функция миграций EF Core для управления изменениями модели данных.
 
@@ -52,7 +52,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/S
 
 В файле *appsettings.json* измените имя базы данных в строке подключения на ContosoUniversity2.
 
-[!code-json[Main](intro/samples/cu/appsettings2.json?range=1-4)]
+[!code-json[](intro/samples/cu/appsettings2.json?range=1-4)]
 
 Изменение имени базы данных в строке подключения приводит к выполнению первой миграции для создания новой базы данных. Новая база данных создается в связи с тем, что база с указанным именем не существует. Для начала работы с миграциями изменять строку подключения необязательно.
 
@@ -100,13 +100,13 @@ Done. To undo this action, use 'ef migrations remove'
 
 Команда EF Core `migrations add` создала код для создания базы данных. Код миграции находится в файле *Migrations\<метка_времени>_InitialCreate.cs*. Метод `Up` класса `InitialCreate` создает таблицы базы данных, соответствующие наборам сущностей модели данных. Метод `Down` удаляет их, как показано в следующем примере:
 
-[!code-csharp[Main](intro/samples/cu/Migrations/20171026010210_InitialCreate.cs?range=8-24,77-)]
+[!code-csharp[](intro/samples/cu/Migrations/20171026010210_InitialCreate.cs?range=8-24,77-)]
 
 Функция миграций вызывает метод `Up`, чтобы реализовать изменения модели данных для миграции. При вводе команды для отката обновления функция миграций вызывает метод `Down`.
 
 Приведенный выше код предназначен для первоначальной миграции. Этот код был создан при выполнении команды `migrations add InitialCreate`. Параметр имени миграции (в примере это "InitialCreate") используется в качестве имени файла. В качестве имени миграции можно использовать любое допустимое имя файла. Рекомендуется выбрать слово или фразу, которые кратко описывают назначение миграции. Например, миграция, обеспечивающая добавление таблицы кафедр, может называться "AddDepartmentTable".
 
-Если создается первоначальная миграция и выполняется выход из базы данных:
+Если создается первоначальная миграция и база данных существует:
 
 * Формируется код создания базы данных.
 * Выполнять код создания базы данных не нужно, поскольку база уже соответствует модели данных. В случае выполнения код создания базы данных не вносит никаких изменений, поскольку база уже соответствует модели данных.
@@ -115,15 +115,13 @@ Done. To undo this action, use 'ef migrations remove'
 
 Ранее была изменена строка подключения для использования нового имени базы данных. Поскольку указанная база данных не существует, миграция создает ее.
 
-### <a name="examine-the-data-model-snapshot"></a>Обзор моментального снимка модели данных
+### <a name="the-data-model-snapshot"></a>Моментальный снимок модели данных
 
-Функция миграций создает *моментальный снимок* текущей схемы базы данных в *Migrations/SchoolContextModelSnapshot.cs*:
+Функция миграций создает *моментальный снимок* текущей схемы базы данных в *Migrations/SchoolContextModelSnapshot.cs*. При добавлении миграции EF определяет, что именно изменилось, сравнивая модель данных с файлом моментального снимка.
 
-[!code-csharp[Main](intro/samples/cu/Migrations/SchoolContextModelSnapshot1.cs?name=snippet_Truncate)]
+При удалении миграции используйте команду [dotnet ef migrations remove](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove). `dotnet ef migrations remove` удаляет миграцию и гарантирует корректный сброс моментального снимка.
 
-Так как текущая схема базы данных представлена в коде, платформе EF Core не требуется взаимодействовать с базой данных для создания миграций. При добавлении миграции EF Core определяет, что именно изменилось, сравнивая модель данных с файлом моментального снимка. EF Core взаимодействует с базой данных, только когда ее нужно обновить.
-
-Файл моментального снимка должен быть синхронизирован с миграцией, которая создала его. Миграцию нельзя удалить, удалив файл с именем *\<метка_времени>_\<имя_миграции>.cs*. В случае удаления этого файла оставшиеся миграции потеряют синхронизацию с файлом моментального снимка базы данных. Чтобы удалить последнюю добавленную миграцию, используйте команду [dotnet ef migrations remove](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove).
+Дополнительные сведения об использовании файла моментального снимка см. в разделе [Миграции Core EF в средах групп](/ef/core/managing-schemas/migrations/teams).
 
 ## <a name="remove-ensurecreated"></a>Удаление EnsureCreated
 
@@ -187,9 +185,9 @@ Done.
 
 Запустите приложение и убедитесь, что все функции работают.
 
-## <a name="appling-migrations-in-production"></a>Применение миграций в рабочей среде
+## <a name="applying-migrations-in-production"></a>Применение миграций в рабочей среде
 
-Для рабочих приложений **не рекомендуется** вызывать [Database.Migrate](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.relationaldatabasefacadeextensions.migrate?view=efcore-2.0#Microsoft_EntityFrameworkCore_RelationalDatabaseFacadeExtensions_Migrate_Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_) при запуске приложения. `Migrate` не следует вызывать из приложения в ферме серверов. Например, если приложение было развернуто в облаке с горизонтальным масштабированием (выполняется несколько экземпляров приложения).
+Для рабочих приложений **не рекомендуется** вызывать [Database.Migrate](/dotnet/api/microsoft.entityframeworkcore.relationaldatabasefacadeextensions.migrate?view=efcore-2.0#Microsoft_EntityFrameworkCore_RelationalDatabaseFacadeExtensions_Migrate_Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_) при запуске приложения. `Migrate` не следует вызывать из приложения в ферме серверов. Например, если приложение было развернуто в облаке с горизонтальным масштабированием (выполняется несколько экземпляров приложения).
 
 Миграция базы данных должна выполняться контролируемым способом в рамках развертывания. Подход к миграции рабочей базы данных включает следующее:
 
@@ -224,7 +222,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/S
 Приложение создает следующее исключение:
 
 ```text
-`SqlException: Cannot open database "ContosoUniversity" requested by the login.
+SqlException: Cannot open database "ContosoUniversity" requested by the login.
 The login failed.
 Login failed for user 'user name'.
 ```
@@ -236,6 +234,6 @@ Login failed for user 'user name'.
 * выполните команду еще раз.
 * Оставьте сообщение внизу страницы.
 
->[!div class="step-by-step"]
-[Назад](xref:data/ef-rp/sort-filter-page)
-[Вперед](xref:data/ef-rp/complex-data-model)
+> [!div class="step-by-step"]
+> [Назад](xref:data/ef-rp/sort-filter-page)
+> [Вперед](xref:data/ef-rp/complex-data-model)

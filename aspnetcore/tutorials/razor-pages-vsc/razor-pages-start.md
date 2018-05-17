@@ -1,33 +1,30 @@
 ---
-title: "Начало работы с Razor Pages в ASP.NET Core с Visual Studio Code"
+title: Начало работы с Razor Pages ASP.NET Core в Visual Studio Code
 author: rick-anderson
-description: "Начало работы с Razor Pages в ASP.NET Core с использованием Visual Studio Code"
+description: Основные сведения о создании веб-приложении Razor Pages в ASP.NET Core с помощью Visual Studio Code.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/27/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages-vsc/razor-pages-start
-ms.openlocfilehash: 7c01d802e59951281c86c8eab64b7c6b9d646fbf
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0ad008b4f2b2e74dcf7f3d6c83798d5f03d1d315
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-code"></a>Начало работы с Razor Pages в ASP.NET Core с Visual Studio Code
+# <a name="get-started-with-aspnet-core-razor-pages-in-visual-studio-code"></a>Начало работы с Razor Pages ASP.NET Core в Visual Studio Code
 
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT)
+Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 В этом учебнике приводятся основные сведения о веб-приложении Razor Pages в ASP.NET Core. Перед работой с этим учебником рекомендуем изучить статью [Введение в Razor Pages](xref:mvc/razor-pages/index). Razor Pages — это рекомендуемый способ создания пользовательского интерфейса для веб-приложений в ASP.NET Core.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Установите следующие компоненты:
-
-* [пакет SDK для .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии;
-* [Visual Studio Code.](https://code.visualstudio.com)
-* Расширение VS Code [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
+[!INCLUDE [](~/includes/net-core-prereqs-vscode.md)]
 
 ## <a name="create-a-razor-web-app"></a>Создание веб-приложения Razor
 
@@ -43,7 +40,7 @@ dotnet run
 
 ![Домашняя или индексная страница](../razor-pages/razor-pages-start/_static/home.png)
 
-[!INCLUDE[razor-pages-start](../../includes/RP/razor-pages-start.md)]
+[!INCLUDE [razor-pages-start](../../includes/RP/razor-pages-start.md)]
 
 ## <a name="open-the-project"></a>Открытие проекта
 
@@ -60,5 +57,5 @@ dotnet run
 
 В следующем учебнике мы добавим в проект модель. 
 
->[!div class="step-by-step"]
-[Далее: добавление модели](xref:tutorials/razor-pages-vsc/model)  
+> [!div class="step-by-step"]
+> [Далее: добавление модели](xref:tutorials/razor-pages-vsc/model)  

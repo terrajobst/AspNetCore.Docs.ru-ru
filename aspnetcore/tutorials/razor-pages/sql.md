@@ -1,31 +1,32 @@
 ---
-title: "Работа с SQL Server LocalDB и ASP.NET Core"
+title: Работа с SQL Server LocalDB и ASP.NET Core
 author: rick-anderson
-description: "Описывается работа с SQL Server LocalDB и ASP.NET Core."
-ms.author: riande
+description: Описывается работа с SQL Server LocalDB и ASP.NET Core.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
+ms.author: riande
 ms.date: 08/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 07f024e2e178828c4488adfd866fc6eec3b251dd
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d1a345fe8c61f6e07ebbe53de6d53e18d6f4c851
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="working-with-sql-server-localdb-and-aspnet-core"></a>Работа с SQL Server LocalDB и ASP.NET Core
+# <a name="work-with-sql-server-localdb-and-aspnet-core"></a>Работа с SQL Server LocalDB и ASP.NET Core
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Джо Одетт](https://twitter.com/joeaudette) (Joe Audette) 
 
 Объект `MovieContext` обрабатывает задачу подключения к базе данных и сопоставления объектов `Movie` с записями базы данных. Контекст базы данных регистрируется с помощью контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection) в методе `ConfigureServices` в файле *Startup.cs*:
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=7-8)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=7-8)]
 
 Система [конфигурации](xref:fundamentals/configuration/index) ASP.NET Core считывает `ConnectionString`. Для разработки на локальном уровне она получает строку подключения из файла *appsettings.json*:
 
-[!code-json[Main](razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=2&range=8-10)]
+[!code-json[](razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=2&range=8-10)]
 
 При развертывании приложения на тестовом или рабочем сервере вы можете использовать переменную среды или другой способ настройки строки подключения к реальному серверу SQL Server. Дополнительные сведения см. в статье [Конфигурация](xref:fundamentals/configuration/index).
 
@@ -54,7 +55,7 @@ LocalDB — это упрощенная версия ядра СУБД SQL Serv
 
 Создайте класс `SeedData` в папке *Models*. Замените сгенерированный код следующим кодом:
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/SeedData.cs?name=snippet_1)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/SeedData.cs?name=snippet_1)]
 
 Если в базе данных есть фильмы, возвращается инициализатор заполнения и фильмы не добавляются.
 
@@ -69,7 +70,7 @@ if (context.Movie.Any())
 
 Добавьте инициализатор заполнения в конец метода `Main` в файле *Program.cs*:
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Program.cs)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Program.cs)]
 
 Тестирование приложения
 
@@ -82,8 +83,8 @@ if (context.Movie.Any())
 
     ![Контекстное меню](sql/_static/stopIIS.png)
 
-   * Если среда Visual Studio была запущена в режиме без отладки, нажмите клавишу F5 для запуска в режиме отладки.
-   * Если среда Visual Studio была запущена в режиме отладки, остановите отладчик и нажмите клавишу F5.
+    * Если среда Visual Studio была запущена в режиме без отладки, нажмите клавишу F5 для запуска в режиме отладки.
+    * Если среда Visual Studio была запущена в режиме отладки, остановите отладчик и нажмите клавишу F5.
    
 В приложении отображаются заполненные данные.
 
@@ -91,6 +92,6 @@ if (context.Movie.Any())
 
 В следующем учебнике будет улучшено представление данных.
 
->[!div class="step-by-step"]
-[Предыдущая тема. Шаблонные страницы Razor](xref:tutorials/razor-pages/page)
-[Следующая тема. Обновление страниц](xref:tutorials/razor-pages/da1)
+> [!div class="step-by-step"]
+> [Предыдущая тема. Шаблонные страницы Razor](xref:tutorials/razor-pages/page)
+> [Следующая тема. Обновление страниц](xref:tutorials/razor-pages/da1)

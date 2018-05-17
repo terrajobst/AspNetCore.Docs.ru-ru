@@ -1,7 +1,7 @@
 ---
-title: "Состояние сеанса и приложения в ASP.NET Core"
+title: Состояние сеанса и приложения в ASP.NET Core
 author: rick-anderson
-description: "Методы для сохранения состояния приложения и пользователя (сеанса) между запросами."
+description: Методы для сохранения состояния приложения и пользователя (сеанса) между запросами.
 manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/app-state
-ms.openlocfilehash: f4ed38f7395e3f4fe939584c1f3f5b0dba93724c
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 3a9463e5c501b5f32471f002ecab5ad7a81a5c4a
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>Общие сведения о состоянии сеанса и приложения в ASP.NET Core
+# <a name="session-and-application-state-in-aspnet-core"></a>Состояние сеанса и приложения в ASP.NET Core
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson), [Стив Смит](https://ardalis.com/) (Steve Smith) и [Диана Лароуз](https://github.com/DianaLaRose) (Diana LaRose)
 
@@ -38,7 +38,7 @@ ASP.NET Core сохраняет состояние сеанса, предост�
 <a name="temp"></a>
 ## <a name="tempdata"></a>TempData
 
-ASP.NET Core MVC позволяет использовать свойство [TempData](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) в [контроллере](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-2.0). Это свойство хранит данные до тех пор, пока они не будут прочитаны. Для проверки данных без удаления можно использовать методы `Keep` и `Peek`. `TempData` особенно удобно использовать для перенаправления, когда данные требуются больше чем для одного запроса. `TempData` реализуется поставщиками TempData, например с помощью файлов cookie или состояния сеанса.
+ASP.NET Core MVC позволяет использовать свойство [TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) в [контроллере](/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-2.0). Это свойство хранит данные до тех пор, пока они не будут прочитаны. Для проверки данных без удаления можно использовать методы `Keep` и `Peek`. `TempData` особенно удобно использовать для перенаправления, когда данные требуются больше чем для одного запроса. `TempData` реализуется поставщиками TempData, например с помощью файлов cookie или состояния сеанса.
 
 <a name="tempdata-providers"></a>
 ### <a name="tempdata-providers"></a>Поставщики TempData
@@ -47,7 +47,7 @@ ASP.NET Core MVC позволяет использовать свойство [T
 
 В ASP.NET Core 2.0 и более поздних версий поставщик TempData, основанный на файлах cookie, используется по умолчанию для хранения TempData в файлах cookie.
 
-Данные cookie кодируются с помощью [Base64UrlTextEncoder](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.webutilities.base64urltextencoder?view=aspnetcore-2.0). Так как файл cookie шифруется и фрагментируется, ограничение на размер одного такого файла, заданное в ASP.NET Core 1.x, не применяется. Данные файла cookie не сжимаются, так как сжатие зашифрованных данных может привести к проблемам с безопасностью, например атакам [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) и [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)). Дополнительные сведения на поставщике TempData, основанном на файлах cookie, см. в разделе [CookieTempDataProvider](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.ViewFeatures/ViewFeatures/CookieTempDataProvider.cs).
+Данные cookie кодируются с помощью [Base64UrlTextEncoder](/dotnet/api/microsoft.aspnetcore.webutilities.base64urltextencoder?view=aspnetcore-2.0). Так как файл cookie шифруется и фрагментируется, ограничение на размер одного такого файла, заданное в ASP.NET Core 1.x, не применяется. Данные файла cookie не сжимаются, так как сжатие зашифрованных данных может привести к проблемам с безопасностью, например атакам [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) и [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)). Дополнительные сведения на поставщике TempData, основанном на файлах cookie, см. в разделе [CookieTempDataProvider](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.ViewFeatures/ViewFeatures/CookieTempDataProvider.cs).
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -70,20 +70,17 @@ ASP.NET Core MVC позволяет использовать свойство [T
 <a name="config-temp"></a>
 ### <a name="configure-the-tempdata-provider"></a>Настройка поставщика TempData
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 Поставщик TempData на основе файлов cookie включен по умолчанию. Следующий код класса `Startup` настраивает поставщик TempData на основе сеансов:
 
 [!code-csharp[](app-state/sample/src/WebAppSessionDotNetCore2.0App/StartupTempDataSession.cs?name=snippet_TempDataSession&highlight=4,6,11)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 Следующий код класса `Startup` настраивает поставщик TempData на основе сеансов:
 
 [!code-csharp[](app-state/sample/src/WebAppSession/StartupTempDataSession.cs?name=snippet_TempDataSession&highlight=4,9)]
 
----
-
+* * *
 Для компонентов промежуточного слоя критически важен порядок. В предыдущем примере исключение типа `InvalidOperationException` возникает при вызове `UseSession` после `UseMvcWithDefaultRoute`. Дополнительные сведения см. в разделе [Порядок ПО промежуточного слоя](xref:fundamentals/middleware/index#ordering).
 
 > [!IMPORTANT]
@@ -91,7 +88,7 @@ ASP.NET Core MVC позволяет использовать свойство [T
 
 ## <a name="query-strings"></a>Строки запроса
 
-Вы можете передать ограниченный объем данных из одного запроса в другой, добавив их в строку запроса нового запроса. Это удобно для захвата состояния в сохраняемом виде, что позволяет обмениваться ссылками с внедренным состоянием по электронной почте или через социальные сети. Однако по этой причине никогда не следует использовать строки запроса для конфиденциальных данных. Кроме удобного общего доступа, включение данных в строки запроса может открыть возможности для атак с [подделкой межсайтовых запросов (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)), которые могут обманом вынудить пользователей посещать вредоносные веб-сайты во время проверки подлинности. Это позволит злоумышленникам похитить данные пользователей из приложения или предпринимать вредоносные действия от их имени. Любое сохраненное состояние приложения или сеанса необходимо защитить от атак CSRF. Дополнительные сведения об атаках CSRF см. в статье [Предотвращение атак с подделкой межсайтовых запросов (XSRF/CSRF) в ASP.NET Core](../security/anti-request-forgery.md).
+Вы можете передать ограниченный объем данных из одного запроса в другой, добавив их в строку запроса нового запроса. Это удобно для захвата состояния в сохраняемом виде, что позволяет обмениваться ссылками с внедренным состоянием по электронной почте или через социальные сети. Однако по этой причине никогда не следует использовать строки запроса для конфиденциальных данных. Кроме удобного общего доступа, включение данных в строки запроса может открыть возможности для атак с [подделкой межсайтовых запросов (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)), которые могут обманом вынудить пользователей посещать вредоносные веб-сайты во время проверки подлинности. Это позволит злоумышленникам похитить данные пользователей из приложения или предпринимать вредоносные действия от их имени. Любое сохраненное состояние приложения или сеанса необходимо защитить от атак CSRF. Дополнительные сведения об атаках CSRF см. в статье [Предотвращение атак с подделкой межсайтовых запросов (XSRF/CSRF)](xref:security/anti-request-forgery).
 
 ## <a name="post-data-and-hidden-fields"></a>Публикация данных и скрытые поля
 
@@ -111,7 +108,7 @@ ASP.NET Core MVC позволяет использовать свойство [T
 
 ## <a name="cache"></a>Кэш
 
-Кэширование — это эффективный способ хранения и извлечения данных. Вы можете управлять временем существования кэшированных элементов по времени и другим факторам. Дополнительные сведения о [кэшировании](../performance/caching/index.md).
+Кэширование — это эффективный способ хранения и извлечения данных. Вы можете управлять временем существования кэшированных элементов по времени и другим факторам. Дополнительные сведения о [методах кэширования](../performance/caching/index.md).
 
 <a name="session"></a>
 ## <a name="working-with-session-state"></a>Работа с состоянием сеанса
@@ -120,22 +117,19 @@ ASP.NET Core MVC позволяет использовать свойство [T
 
 Пакет `Microsoft.AspNetCore.Session` предоставляет ПО промежуточного слоя для управления состоянием сеанса. Чтобы включить сеанс ПО промежуточного слоя для сеансов, `Startup` должен содержать:
 
-- Любой из кэшей памяти [IDistributedCache](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.distributed.idistributedcache), при этом реализация `IDistributedCache` используется в качестве резервного хранилища для сеанса.
-- Вызов [AddSession](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions#Microsoft_Extensions_DependencyInjection_SessionServiceCollectionExtensions_AddSession_Microsoft_Extensions_DependencyInjection_IServiceCollection_), требующий пакет NuGet "Microsoft.AspNetCore.Session".
-- Вызов [UseSession](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.sessionmiddlewareextensions#methods_).
+- Любой из кэшей памяти [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache), при этом реализация `IDistributedCache` используется в качестве резервного хранилища для сеанса.
+- Вызов [AddSession](/dotnet/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions#Microsoft_Extensions_DependencyInjection_SessionServiceCollectionExtensions_AddSession_Microsoft_Extensions_DependencyInjection_IServiceCollection_), требующий пакет NuGet "Microsoft.AspNetCore.Session".
+- Вызов [UseSession](/dotnet/api/microsoft.aspnetcore.builder.sessionmiddlewareextensions#methods_).
 
 Следующий код показывает, как настроить поставщик сеансов в памяти.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+[!code-csharp[](app-state/sample/src/WebAppSessionDotNetCore2.0App/Startup.cs?highlight=11-19,24)]
 
-[!code-csharp[Main](app-state/sample/src/WebAppSessionDotNetCore2.0App/Startup.cs?highlight=11-19,24)]
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+[!code-csharp[](app-state/sample/src/WebAppSession/Startup.cs?highlight=11-19,24)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-[!code-csharp[Main](app-state/sample/src/WebAppSession/Startup.cs?highlight=11-19,24)]
-
----
-
+* * *
 Вы можете сослаться на сеанс из `HttpContext` после его установки и настройки.
 
 Если попытаться обратиться к `Session` до вызова `UseSession`, возникает исключение `InvalidOperationException: Session has not been configured for this application or request`.
@@ -144,9 +138,9 @@ ASP.NET Core MVC позволяет использовать свойство [T
 
 ### <a name="loading-session-asynchronously"></a>Асинхронная загрузка сеанса 
 
-Поставщик сеансов по умолчанию в ASP.NET Core загружает запись сеанса из базового хранилища [IDistributedCache](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.distributed.idistributedcache) в асинхронном режиме только при явном вызове метода [ISession.LoadAsync](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.isession#Microsoft_AspNetCore_Http_ISession_LoadAsync) перед методами `TryGetValue`, `Set` или `Remove`. Если `LoadAsync` не вызывается первым, базовая запись сеанса загружается синхронно, что может негативно повлиять на возможность масштабирования приложения.
+Поставщик сеансов по умолчанию в ASP.NET Core загружает запись сеанса из базового хранилища [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) в асинхронном режиме только при явном вызове метода [ISession.LoadAsync](/dotnet/api/microsoft.aspnetcore.http.isession#Microsoft_AspNetCore_Http_ISession_LoadAsync) перед методами `TryGetValue`, `Set` или `Remove`. Если `LoadAsync` не вызывается первым, базовая запись сеанса загружается синхронно, что может негативно повлиять на возможность масштабирования приложения.
 
-Чтобы принудительно использовать этот режим в приложениях, используйте для реализаций [DistributedSessionStore](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.session.distributedsessionstore) и [DistributedSession](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.session.distributedsession) оболочку из версий, которые выдают исключение, когда метод `LoadAsync` не вызывается перед `TryGetValue`, `Set` или `Remove`. Зарегистрируйте версии оболочки в контейнере служб.
+Чтобы принудительно использовать этот режим в приложениях, используйте для реализаций [DistributedSessionStore](/dotnet/api/microsoft.aspnetcore.session.distributedsessionstore) и [DistributedSession](/dotnet/api/microsoft.aspnetcore.session.distributedsession) оболочку из версий, которые выдают исключение, когда метод `LoadAsync` не вызывается перед `TryGetValue`, `Set` или `Remove`. Зарегистрируйте версии оболочки в контейнере служб.
 
 ### <a name="implementation-details"></a>Сведения о реализации
 
@@ -154,35 +148,32 @@ ASP.NET Core MVC позволяет использовать свойство [T
 
 Чтобы переопределить значения по умолчанию для сеанса, используйте `SessionOptions`:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+[!code-csharp[](app-state/sample/src/WebAppSessionDotNetCore2.0App/StartupCopy.cs?name=snippet1&highlight=8-12)]
 
-[!code-csharp[Main](app-state/sample/src/WebAppSessionDotNetCore2.0App/StartupCopy.cs?name=snippet1&highlight=8-12)]
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+[!code-csharp[](app-state/sample/src/WebAppSession/StartupCopy.cs?name=snippet1&highlight=8-12)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-[!code-csharp[Main](app-state/sample/src/WebAppSession/StartupCopy.cs?name=snippet1&highlight=8-12)]
-
----
-
+* * *
 Сервер использует свойство `IdleTimeout`, чтобы определить, как долго сеанс может оставаться неактивным до сброса его содержимого. Это свойство не зависит от срока действия файла cookie. Каждый запрос, проходящий через ПО промежуточного слоя сеанса (посредством чтения или записи), сбрасывает это время ожидания.
 
 Так как `Session` является *неблокирующим*, когда два запроса пытаются изменить содержимое сеанса, последний из них переопределяет первый. `Session` реализован в виде *согласованного сеанса*, что означает, что все содержимое хранится вместе. Два запроса, изменяющие разные части сеанса (разные ключи), по-прежнему могут повлиять друг на друга.
 
 ### <a name="setting-and-getting-session-values"></a>Задание и получение значений сеанса
 
-Доступ к сеансу осуществляется через свойство `Session` в `HttpContext`. Оно является реализацией [ISession](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.isession).
+Доступ к сеансу осуществляется через свойство `Session` в `HttpContext`. Оно является реализацией [ISession](/dotnet/api/microsoft.aspnetcore.http.isession).
 
 Следующий пример показывает задание и получение значения int и строки:
 
-[!code-csharp[Main](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?range=8-27,49)]
+[!code-csharp[](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?range=8-27,49)]
 
 Добавив приведенные ниже методы расширения, можно задавать и получать сериализуемые объекты для сеанса:
 
-[!code-csharp[Main](app-state/sample/src/WebAppSession/Extensions/SessionExtensions.cs)]
+[!code-csharp[](app-state/sample/src/WebAppSession/Extensions/SessionExtensions.cs)]
 
 Следующий пример показывает, как задать и получить сериализуемый объект:
 
-[!code-csharp[Main](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?name=snippet2)]
+[!code-csharp[](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?name=snippet2)]
 
 
 ## <a name="working-with-httpcontextitems"></a>Работа с HttpContext.Items

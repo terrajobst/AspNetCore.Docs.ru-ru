@@ -1,27 +1,28 @@
 ---
-title: "Создание веб-API с помощью ASP.NET Core и VS Code"
+title: Создание веб-API с помощью ASP.NET Core и Visual Studio Code
 author: rick-anderson
-description: "Создание веб-API на платформах macOS, Linux или Windows с помощью ASP.NET Core MVC и Visual Studio Code"
+description: Создание веб-API на платформах macOS, Linux или Windows с помощью ASP.NET Core MVC и Visual Studio Code
 manager: wpickett
 ms.author: riande
-ms.date: 09/22/2017
+ms.custom: mvc
+ms.date: 05/08/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/web-api-vsc
-ms.openlocfilehash: 44566c4014400aa2ca3d512eeaa226637b5f0b97
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 9fac4d7b3f687881eafbd63ee71f99bff3b27183
+ms.sourcegitcommit: c867d7427bd4a88a78b2322e156367733b532730
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/09/2018
 ---
-# <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-code-on-linux-macos-and-windows"></a>Создание веб-API с помощью ASP.NET Core MVC и Visual Studio Code на платформах macOS, Windows и Linux
+# <a name="create-a-web-api-with-aspnet-core-and-visual-studio-code"></a>Создание веб-API с помощью ASP.NET Core и Visual Studio Code
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Майк Уоссон](https://github.com/mikewasson)
 
 В этом руководстве создается веб-API для управления элементами списка дел. При этом пользовательский интерфейс не создается.
 
-Существует 3 версии этого учебника:
+Существуют три версии этого руководства:
 
 * macOS, Linux, Windows: создание веб-API с помощью Visual Studio Code (этот учебник)
 * macOS: [создание веб-API с помощью Visual Studio для Mac](xref:tutorials/first-web-api-mac)
@@ -31,43 +32,50 @@ ms.lasthandoff: 01/30/2018
 
 [!INCLUDE[template files](../includes/webApi/intro.md)]
 
-## <a name="set-up-your-development-environment"></a>Настройка среды разработки
+## <a name="prerequisites"></a>Предварительные требования
 
-Скачайте и установите следующие компоненты:
-- [Пакет SDK .NET Core 2.0.0](https://www.microsoft.com/net/core) или более поздней версии.
-- [Visual Studio Code.](https://code.visualstudio.com)
-- [Расширение C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Visual Studio Code
+[!INCLUDE[prerequisites](~/includes/net-core-prereqs-vscode.md)]
 
 ## <a name="create-the-project"></a>Создание проекта
 
 Из консоли выполните следующие команды:
 
 ```console
-mkdir TodoApi
-cd TodoApi
-dotnet new webapi
+dotnet new webapi -o TodoApi
+code TodoApi
 ```
 
-Откройте папку *TodoApi* в Visual Studio Code (VS Code) и выберите файл *Startup.cs*.
+В Visual Studio Code (VS Code) откроется папка *TodoApi*. Выберите файл *Startup.cs*.
 
-- В **предупреждении** "Required assets to build and debug are missing from 'TodoApi'.Add them?" (В TodoApi отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?) нажмите кнопку **Да** .
-- В **информационном** сообщении "There are unresolved dependencies" (Имеются неразрешенные зависимости) щелкните **Восстановить**.
+* В **предупреждении** "Required assets to build and debug are missing from 'TodoApi'.Add them?" (В TodoApi отсутствуют необходимые ресурсы для сборки и отладки. Добавить их?) нажмите кнопку **Да** .
+* В **информационном** сообщении "There are unresolved dependencies" (Имеются неразрешенные зависимости) щелкните **Восстановить**.
 
 <!-- uid: tutorials/first-mvc-app-xplat/start-mvc uses the pic below. If you change it, make sure it's consistent -->
 
 ![VS Code с предупреждением "Required assets to build and debug are missing from 'TodoApi'.Add them?" (В TodoApi отсутствуют необходимые ресурсы для сборки и отладки. Добавить их? Больше не спрашивать, не сейчас, да](web-api-vsc/_static/vsc_restore.png)
 
-Нажмите клавишу **отладки** (F5), чтобы выполнить сборку программы и запустить ее. В браузере перейдите по адресу http://localhost:5000/api/values. Отобразится следующее:
+Нажмите клавишу **отладки** (F5), чтобы выполнить сборку программы и запустить ее. В браузере перейдите на адрес http://localhost:5000/api/values. Выводится следующий результат.
 
-`["value1","value2"]`
+```json
+["value1","value2"]
+```
 
 Советы по использованию VS Code см. в [справке по Visual Studio Code](#visual-studio-code-help).
 
 ## <a name="add-support-for-entity-framework-core"></a>Добавление поддержки для Entity Framework Core
 
-Создание проекта в .NET Core 2.0 добавляет поставщик "Microsoft.AspNetCore.All" в файл *TodoApi.csproj*. Устанавливать поставщик базы данных [Entity Framework Core InMemory](https://docs.microsoft.com/ef/core/providers/in-memory/) отдельно не требуется. Этот поставщик базы данных позволяет использовать Entity Framework Core с выполняющейся в памяти базой данных.
+:::moniker range="<= aspnetcore-2.0"
+При создании проекта в ASP.NET Core 2.0 в файл *TodoApi.csproj* добавляется ссылка на пакет [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All):
 
-[!code-xml[Main](web-api-vsc/sample/TodoApi/TodoApi.csproj?highlight=12)]
+[!code-xml[](first-web-api/samples/2.0/TodoApi/TodoApi.csproj?name=snippet_Metapackage&highlight=2)]
+:::moniker-end
+:::moniker range=">= aspnetcore-2.1"
+При создании проекта в ASP.NET Core 2.1 или более поздней версии в файл *TodoApi.csproj* добавляется ссылка на пакет [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App):
+
+[!code-xml[](first-web-api/samples/2.1/TodoApi/TodoApi.csproj?name=snippet_Metapackage&highlight=2)]
+:::moniker-end
+
+Устанавливать поставщик базы данных [Entity Framework Core InMemory](/ef/core/providers/in-memory/) отдельно не требуется. Этот поставщик базы данных позволяет использовать Entity Framework Core с выполняющейся в памяти базой данных.
 
 ## <a name="add-a-model-class"></a>Добавление класса модели
 
@@ -77,7 +85,7 @@ dotnet new webapi
 
 Добавьте класс `TodoItem` с помощью следующего кода:
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoItem.cs)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoItem.cs)]
 
 После создания `TodoItem` база данных сформирует `Id`.
 
@@ -87,33 +95,33 @@ dotnet new webapi
 
 Добавьте класс `TodoContext` в папку *Models*:
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoContext.cs)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoContext.cs)]
 
 [!INCLUDE[Register the database context](../includes/webApi/register_dbContext.md)]
 
 ## <a name="add-a-controller"></a>Добавление контроллера
 
-В папке *Controllers* создайте класс с именем `TodoController`. Добавьте следующий код:
+В папке *Controllers* создайте класс с именем `TodoController`. Замените его содержимое следующим кодом:
 
 [!INCLUDE[code and get todo items](../includes/webApi/getTodoItems.md)]
 
 ### <a name="launch-the-app"></a>Запуск приложения
 
-В VS Code нажмите клавишу F5, чтобы запустить приложение. Перейдите по адресу http://localhost:5000/api/todo (только что созданный контроллер `Todo`).
+В VS Code нажмите клавишу F5, чтобы запустить приложение. Перейдите к http://localhost:5000/api/todo (созданному контроллеру `Todo`).
+
+[!INCLUDE[jQuery](../includes/webApi/add-jquery.md)]
 
 [!INCLUDE[last part of web API](../includes/webApi/end.md)]
 
 ## <a name="visual-studio-code-help"></a>Справка по Visual Studio Code
 
-- [Начало работы](https://code.visualstudio.com/docs)
-- [Отладка](https://code.visualstudio.com/docs/editor/debugging)
-- [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal)
-- [Сочетания клавиш](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
+* [Начало работы](https://code.visualstudio.com/docs)
+* [Отладка](https://code.visualstudio.com/docs/editor/debugging)
+* [Интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal)
+* [Сочетания клавиш](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
 
-  - [Сочетания клавиш для Mac](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
-  - [Сочетания клавиш для Linux](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
-  - [Сочетания клавиш для Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+  * [Сочетания клавиш для macOS](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
+  * [Сочетания клавиш для Linux](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
+  * [Сочетания клавиш для Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
 
 [!INCLUDE[next steps](../includes/webApi/next.md)]
-
-

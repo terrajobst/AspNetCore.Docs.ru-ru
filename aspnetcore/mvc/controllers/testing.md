@@ -1,7 +1,7 @@
 ---
-title: "Тестирование логики контроллера в ASP.NET Core"
+title: Тестирование логики контроллера в ASP.NET Core
 author: ardalis
-description: "Узнайте, как протестировать логику контроллера в ASP.NET Core с помощью Moq и xUnit."
+description: Узнайте, как протестировать логику контроллера в ASP.NET Core с помощью Moq и xUnit.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/testing
-ms.openlocfilehash: cabb1d2498e6c993b327c2fb9719525ec2181f9e
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 51b7a02c697807c9e3504b70f89370126ee0e781
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="testing-controller-logic-in-aspnet-core"></a>Тестирование логики контроллера в ASP.NET Core
+# <a name="test-controller-logic-in-aspnet-core"></a>Тестирование логики контроллера в ASP.NET Core
 
 Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
@@ -40,20 +40,20 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="unit-testing"></a>Модульное тестирование
 
-[Модульное тестирование](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test) предполагает тестирование части приложения изолированно от его инфраструктуры и зависимостей. При модульном тестировании логики контроллера тестируется только содержимое отдельного действия, но не поведение его зависимостей или сама платформа. Выполняя модульное тестирование действий контроллера, следует сосредоточиться только на его поведении. В рамках модульного тестирования контроллера не учитываются такие аспекты, как [фильтры](filters.md), [маршрутизация](../../fundamentals/routing.md) или [привязка модели](../models/model-binding.md). Благодаря нацеленности на отдельный компонент модульные тесты, как правило, проще создавать, а выполняются они быстрее. Правильно составленный набор модульных тестов можно выполнять часто без значительных затрат. Однако модульные тесты не выявляют проблемы с взаимодействием между компонентами. Для этого служит [тестирование интеграции](xref:mvc/controllers/testing#integration-testing).
+[Модульное тестирование](/dotnet/articles/core/testing/unit-testing-with-dotnet-test) предполагает тестирование части приложения изолированно от его инфраструктуры и зависимостей. При модульном тестировании логики контроллера тестируется только содержимое отдельного действия, но не поведение его зависимостей или сама платформа. Выполняя модульное тестирование действий контроллера, следует сосредоточиться только на его поведении. В рамках модульного тестирования контроллера не учитываются такие аспекты, как [фильтры](filters.md), [маршрутизация](../../fundamentals/routing.md) или [привязка модели](../models/model-binding.md). Благодаря нацеленности на отдельный компонент модульные тесты, как правило, проще создавать, а выполняются они быстрее. Правильно составленный набор модульных тестов можно выполнять часто без значительных затрат. Однако модульные тесты не выявляют проблемы с взаимодействием между компонентами. Для этого используется [тестирование интеграции](xref:mvc/controllers/testing#integration-testing).
 
 Если вы создаете пользовательские фильтры, маршруты и т. д., их следует подвергать модульному тестированию, но не в рамках тестирования определенного действия контроллера. Они должны тестироваться отдельно.
 
 > [!TIP]
-> [Создавайте и выполняйте модульные тесты с помощью Visual Studio](https://docs.microsoft.com/visualstudio/test/unit-test-your-code).
+> [Создавайте и выполняйте модульные тесты с помощью Visual Studio](/visualstudio/test/unit-test-your-code).
 
 Для демонстрации модульного тестирования рассмотрим представленный ниже контроллер. Он выводит список сеансов мозгового штурма и позволяет создавать такие сеансы с помощью запроса POST.
 
-[!code-csharp[Main](testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/HomeController.cs?highlight=12,16,21,42,43)]
+[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/HomeController.cs?highlight=12,16,21,42,43)]
 
 Контроллер следует [принципу явных зависимостей](http://deviq.com/explicit-dependencies-principle/), предполагающему предоставление экземпляра `IBrainstormSessionRepository` при внедрении зависимостей. Благодаря этому его достаточно легко протестировать с помощью платформы макетов объектов, например [Moq](https://www.nuget.org/packages/Moq/). В методе `HTTP GET Index` нет циклов или ветвления, и он вызывает лишь один метод. Чтобы протестировать этот метод `Index`, необходимо проверить, возвращается ли результат `ViewResult` с объектом `ViewModel` из метода `List` репозитория.
 
-[!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=17-18&range=1-33,76-95)]
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=17-18&range=1-33,76-95)]
 
 Метод `HomeController` `HTTP POST Index` (показанный выше) должен проверять, выполняются ли следующие действия:
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 01/30/2018
 
 Недопустимое состояние модели можно проверить, добавив ошибки с помощью метода `AddModelError`, как показано в первом тесте ниже.
 
-[!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=8,15-16,37-39&range=35-75)]
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=8,15-16,37-39&range=35-75)]
 
 Первый тест проверяет, возвращается ли тот же результат `ViewResult`, что и для запроса `GET`, если состояние `ModelState` недопустимо. Обратите внимание на то, что он не пытается передать недопустимую модель. Это бы в любом случае не удалось, так как привязка модели не запущена (хотя [тест интеграции](xref:mvc/controllers/testing#integration-testing) использовал бы тестовую привязку модели). В этом случае привязка модели не тестируется. Эти модульные тесты проверяют только действия, выполняемые кодом в методе действия.
 
@@ -74,23 +74,23 @@ ms.lasthandoff: 01/30/2018
 
 Другой контроллер в приложении выводит сведения, связанные с определенным сеансом мозгового штурма. Он содержит логику для обработки недопустимых значений id:
 
-[!code-csharp[Main](./testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?highlight=19,20,21,22,25,26,27,28)]
+[!code-csharp[](./testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?highlight=19,20,21,22,25,26,27,28)]
 
 Действие контроллера имеет три тестируемых случая, по одному на каждый оператор `return`:
 
-[!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs?highlight=27,28,29,46,47,64,65,66,67,68)]
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs?highlight=27,28,29,46,47,64,65,66,67,68)]
 
 Приложение предоставляет функциональные возможности в виде веб-интерфейса API (список идей, связанных с сеансом мозгового штурма, и метод для добавления новых идей в сеанс):
 
 <a name="ideas-controller"></a>
 
-[!code-csharp[Main](testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?highlight=21,22,27,30,31,32,33,34,35,36,41,42,46,52,65)]
+[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?highlight=21,22,27,30,31,32,33,34,35,36,41,42,46,52,65)]
 
 Метод `ForSession` возвращает список типов `IdeaDTO`. Старайтесь не возвращать бизнес-элементы непосредственно через вызовы API, так как они часто содержат больше данных, чем требуется клиенту API, и связывают внутреннюю модель предметной области приложения с интерфейсом API, доступным извне, чего следует избегать. Сопоставлять элементы предметной области и типы, возвращаемые по сети, можно вручную (с помощью инструкции LINQ `Select`, как показано здесь) или с помощью такой библиотеки, как [AutoMapper](https://github.com/AutoMapper/AutoMapper).
 
 Модульные тесты для методов API `Create` и `ForSession`:
 
-[!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?highlight=18,23,29,33,38-39,43,50,58-59,68-70,76-78&range=1-83,121-135)]
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?highlight=18,23,29,33,38-39,43,50,58-59,68-70,76-78&range=1-83,121-135)]
 
 Как уже говорилось ранее, чтобы протестировать поведение метода в случае, если состояние `ModelState` недопустимо, следует добавить ошибку модели в контроллер в рамках теста. Не пытайтесь тестировать проверку модели или привязку модели с помощью модульных тестов — проверяйте только поведение метода действия при определенных значениях `ModelState`.
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 01/30/2018
 
 Класс `Startup`:
 
-[!code-csharp[Main](testing/sample/TestingControllersSample/src/TestingControllersSample/Startup.cs?highlight=19,20,34,35,43,52)]
+[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Startup.cs?highlight=19,20,34,35,43,52)]
 
 Как вы увидите, метод `GetTestSession` будет часто использоваться в приведенных далее тестах интеграции.
 
@@ -127,11 +127,11 @@ The view 'Index' wasn't found. The following locations were searched:
 
 Чтобы устранить эту проблему, необходимо настроить корень содержимого сервера так, чтобы он мог находить представления тестируемого проекта. Для этого следует вызвать метод `UseContentRoot` в классе `TestFixture`, как показано ниже.
 
-[!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/TestFixture.cs?highlight=30,33)]
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/TestFixture.cs?highlight=30,33)]
 
 Класс `TestFixture` отвечает за настройку и создание сервера `TestServer`, а также настройку взаимодействия клиента `HttpClient` с `TestServer`. Каждый тест интеграции использует свойство `Client` для подключения к тестовому серверу и выполнения запроса.
 
-[!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/HomeControllerTests.cs?highlight=20,26,29,30,31,35,38,39,40,41,44,47,48)]
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/HomeControllerTests.cs?highlight=20,26,29,30,31,35,38,39,40,41,44,47,48)]
 
 В первом приведенном выше тесте `responseString` содержит преобразованный для просмотра код HTML из представления, который можно проверить на соответствие ожидаемым результатам.
 
@@ -143,7 +143,7 @@ The view 'Index' wasn't found. The following locations were searched:
 
 Следующий набор тестов предназначен для проверки метода `Create` в представленном выше классе [IdeasController](xref:mvc/controllers/testing#ideas-controller):
 
-[!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/ApiIdeasControllerTests.cs)]
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/ApiIdeasControllerTests.cs)]
 
 В отличие от тестов интеграции для действий, возвращающих представления HTML, методы веб-интерфейсов API, которые возвращают результаты, обычно можно десериализировать как строго типизированные объекты. Это продемонстрировано в последнем из приведенных выше тестов. В этом случае тест десериализирует результат в экземпляр `BrainstormSession` и проверяет, правильно ли идея была добавлена в коллекцию идей.
 

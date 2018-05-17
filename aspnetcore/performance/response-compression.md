@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/response-compression
-ms.openlocfilehash: bde0522de0c70be637b903c3bbced8c0be814c31
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: cae81a04e41dc7fcbacec975e63171f633fccecf
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>Ответ сжатия по промежуточного слоя ASP.NET Core
 
@@ -24,6 +24,7 @@ ms.lasthandoff: 04/06/2018
 Пропускная способность сети является ограниченным ресурсом. Обычно уменьшить размер ответа часто значительно увеличивает скорость реагирования приложения. Для сжатия ответов приложения является одним из способов уменьшить размер полезных данных.
 
 ## <a name="when-to-use-response-compression-middleware"></a>Когда следует использовать ответ сжатия по промежуточного слоя
+
 Используйте технологии сжатия ответ на основе сервера в IIS, Apache или Nginx. Производительность по промежуточного слоя, скорее всего, не будет соответствовать модулей сервера. [HTTP.sys сервера](xref:fundamentals/servers/httpsys) и [Kestrel](xref:fundamentals/servers/kestrel) в настоящее время не предлагают поддержка встроенных сжатия.
 
 Используйте ответа сжатия по промежуточного слоя, когда вы:
@@ -37,6 +38,7 @@ ms.lasthandoff: 04/06/2018
   * [Kestrel](xref:fundamentals/servers/kestrel)
 
 ## <a name="response-compression"></a>Сжатие ответа
+
 Как правило любой ответ, изначально не сжаты могут выиграть от сжатия ответов. Ответы, изначально не сжаты обычно включают: CSS, JavaScript, HTML, XML и JSON. Не следует сжимать изначально сжатых ресурсов, таких как файлы PNG. При попытке выполнить дальнейшее сжатие изначально сжатого ответа любой небольшой дополнительное сокращение времени, размер и передачи скорее всего будет злоумышленниками время, затраченное на обработку сжатие. Не сжимать файлы размером меньше примерно 150-1000 байт (в зависимости от его содержимого и повысить эффективность сжатия). Затраты на сжатие небольших файлов может привести к сжатый файл, размер которых превышает несжатого файла.
 
 Когда клиент может обрабатывать сжатое содержимое, клиент должен уведомить сервер его возможности, отправляя `Accept-Encoding` заголовок с запросом. Когда сервер отправляет сжатое содержимое, он должен содержать сведения в `Content-Encoding` заголовок кодируется как сжатого ответа. В следующей таблице показаны содержимого обозначения кодировки, поддерживаемые по промежуточного слоя.
@@ -72,22 +74,28 @@ ms.lasthandoff: 04/06/2018
 | `Vary`             | При отправке сервером со значением `Accept-Encoding` для клиентов и прокси-серверы, `Vary` заголовок указывает клиенту или прокси-сервера, кэшируется (меняться) ответы на основе значения `Accept-Encoding` заголовок запроса. Возврат содержимого с результатом `Vary: Accept-Encoding` заголовок — что оба сжатые и несжатые ответы, кэшируются отдельно. |
 
 Можно ознакомиться с функциями по промежуточного слоя сжатия ответа с [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples). В образце кода:
+
 * Сжатие ответов приложения с помощью gzip и сжатие пользовательских поставщиков.
 * Как добавить тип MIME по умолчанию в список типов MIME для сжатия.
 
 ## <a name="package"></a>Пакет
+
 Чтобы включить по промежуточного слоя в проекте, добавьте ссылку на [ `Microsoft.AspNetCore.ResponseCompression` ](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) пакета или использовать [ `Microsoft.AspNetCore.All` ](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) пакета. Эта функция доступна для приложений, предназначенных для ASP.NET Core 1.1 или более поздней версии.
 
 ## <a name="configuration"></a>Конфигурация
+
 Ниже показано включение ответа сжатия по промежуточного слоя со сжатием gzip по умолчанию и для типов MIME по умолчанию.
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 [!code-csharp[](response-compression/samples/2.x/StartupBasic.cs?name=snippet1&highlight=4,8)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 [!code-csharp[](response-compression/samples/1.x/StartupBasic.cs?name=snippet1&highlight=3,8)]
 
-* * *
+---
+
 > [!NOTE]
 > Использование таких средств, как [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), или [почтальон](https://www.getpostman.com/) для задания `Accept-Encoding` заголовок запроса и изучения заголовки ответа, размер и текст.
 
@@ -100,7 +108,9 @@ ms.lasthandoff: 04/06/2018
 ![Fiddler окно, отображающее результат запроса с заголовком Accept-Encoding и значение gzip. Заголовки Vary и Content-Encoding, добавляются в ответ. Ответ сжимаются.](response-compression/_static/request-compressed.png)
 
 ## <a name="providers"></a>Поставщики
+
 ### <a name="gzipcompressionprovider"></a>GzipCompressionProvider
+
 Используйте `GzipCompressionProvider` сжатия ответов с помощью gzip. Это поставщик сжатия по умолчанию, если не указан ни один. Сжатие можно установить уровень с `GzipCompressionProviderOptions`. 
 
 По умолчанию используется поставщик сжатие gzip быстрым уровень сжатия (`CompressionLevel.Fastest`), который может не обеспечить наиболее эффективное сжатие. При желании наиболее эффективный сжатия можно настроить по промежуточного слоя для оптимального сжатия.
@@ -111,15 +121,18 @@ ms.lasthandoff: 04/06/2018
 | `CompressionLevel.NoCompression` | Должно осуществляться без сжатия.                                                                           |
 | `CompressionLevel.Optimal`       | Ответы должны оптимально сжиматься, даже если сжатие занимает больше времени для завершения.                |
 
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-csharp[](response-compression/samples/2.x/Program.cs?name=snippet1&highlight=3,8-11)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 [!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=5,10-13)]
 
-* * *
+---
+
 ## <a name="mime-types"></a>типы MIME
+
 По промежуточного слоя указывает набор типов MIME для сжатия по умолчанию:
 * `text/plain`
 * `text/css`
@@ -132,37 +145,46 @@ ms.lasthandoff: 04/06/2018
 
 Можно заменить или добавить типы MIME с параметрами по промежуточного слоя сжатия ответов. Обратите внимание, что подстановочные MIME типы, такие как `text/*` не поддерживаются. Пример приложения добавляет тип MIME для `image/svg+xml` и сжимает и служит ASP.NET Core изображение баннера (*banner.svg*).
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 [!code-csharp[](response-compression/samples/2.x/Program.cs?name=snippet1&highlight=5)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 [!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=7)]
 
-* * *
+---
+
 ### <a name="custom-providers"></a>Настраиваемые поставщики
+
 Можно создать реализаций сжатия с `ICompressionProvider`. `EncodingName` Представляет содержимое, кодировка этим `ICompressionProvider` выводятся. По промежуточного слоя использует эти сведения можно выбрать поставщика, на основе списка, указанный в `Accept-Encoding` заголовок запроса.
 
 Используя пример приложения, клиент отправляет запрос с `Accept-Encoding: mycustomcompression` заголовок. По промежуточного слоя использует реализацию пользовательского сжатия и возвращает ответ с `Content-Encoding: mycustomcompression` заголовок. Клиент должен иметь возможность распаковки пользовательских кодировок в порядке для реализации пользовательских сжатия для работы.
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 [!code-csharp[](response-compression/samples/2.x/Program.cs?name=snippet1&highlight=4)]
 
 [!code-csharp[](response-compression/samples/2.x/CustomCompressionProvider.cs?name=snippet1)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 [!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=6)]
 
 [!code-csharp[](response-compression/samples/1.x/CustomCompressionProvider.cs?name=snippet1)]
 
-* * *
+---
+
 Отправить запрос на пример приложения с `Accept-Encoding: mycustomcompression` заголовок и просмотрите заголовки ответа. `Vary` И `Content-Encoding` заголовки присутствуют в ответе. Текст ответа (не показано) не сжаты в образце. Отсутствует реализация сжатия в `CustomCompressionProvider` класс образца. Тем не менее в образце показано, где следует реализовать алгоритм сжатия.
 
 ![Fiddler окно, отображающее результат запроса с заголовком Accept-Encoding и значение mycustomcompression. Заголовки Vary и Content-Encoding, добавляются в ответ.](response-compression/_static/request-custom-compression.png)
 
 ## <a name="compression-with-secure-protocol"></a>Сжатие с безопасным протоколом
+
 Сжатые ответы по безопасным соединениям можно управлять при помощи `EnableForHttps` параметр, который по умолчанию отключена. С помощью сжатия с динамической страницы может привести к проблемам безопасности таких как [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) и [нарушения](https://wikipedia.org/wiki/BREACH_(security_exploit)) атак.
 
 ## <a name="adding-the-vary-header"></a>Добавление заголовка Vary
+
 При сжатии ответы на основе `Accept-Encoding` заголовок, потенциально несколько версий сжатого ответа и несжатую версию. Чтобы настроить кэш клиента и прокси-сервера, существует несколько версий и должны быть сохранены, `Vary` добавить заголовок с `Accept-Encoding` значение. В ASP.NET Core 1.x, добавление `Vary` заголовок в ответ выполняется вручную. В ASP.NET Core добавляет по промежуточного слоя 2.x `Vary` заголовка автоматически при ответе сжимается.
 
 **ASP.NET Core только 1.x**
@@ -170,22 +192,27 @@ ms.lasthandoff: 04/06/2018
 [!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet1)]
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>Проблемы по промежуточного слоя за Nginx обратного прокси-сервера
+
 При получении запроса через прокси, Nginx, `Accept-Encoding` заголовок удаляется. Это предотвращает сжатие ответ по промежуточного слоя. Дополнительные сведения см. в разделе [NGINX: сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Эта проблема отслеживается [выяснить сквозной сжатия для Nginx (BasicMiddleware #123)](https://github.com/aspnet/BasicMiddleware/issues/123).
 
 ## <a name="working-with-iis-dynamic-compression"></a>Работа с динамическое сжатие IIS
+
 При наличии активных динамического сжатия модуль IIS настроен на уровне сервера, который вы хотите отключить для приложения, это можно сделать с дополнением к вашей *web.config* файла. Дополнительные сведения см. в разделе [Отключение модулей IIS](xref:host-and-deploy/iis/modules#disabling-iis-modules).
 
 ## <a name="troubleshooting"></a>Устранение неполадок
+
 Использование таких средств, как [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), или [почтальон](https://www.getpostman.com/), позволяют задавать `Accept-Encoding` заголовок запроса и изучения заголовки ответа, размер и текст. По промежуточного слоя сжатия ответа сжимает ответов, которые удовлетворяют следующим условиям:
+
 * `Accept-Encoding` Присутствует заголовок со значением `gzip`, `*`, или настраиваемую кодировку, соответствующий поставщик сжатия, который вы определили. Значение не должно быть `identity` или иметь значение качества (qvalue, `q`) значение 0 (ноль).
 * Тип MIME (`Content-Type`) должны быть заданы, должны совпадать с типом MIME, настроенный на `ResponseCompressionOptions`.
 * Запрос не должен включать `Content-Range` заголовок.
 * Запрос должен использовать незащищенный протокол (http), если безопасный протокол (https) не настроен в параметрах ответа сжатия по промежуточного слоя. *Обратите внимание, опасности [описанных выше](#compression-with-secure-protocol) при включении сжатия безопасного содержимого.*
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
+
 * [Запуск приложения](xref:fundamentals/startup)
 * [ПО промежуточного слоя](xref:fundamentals/middleware/index)
-* [Mozilla Developer Network: Accept-Encoding](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
+* [Сеть разработчиков Mozilla: Приемлемой кодировкой](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
 * [Раздела RFC 7231 3.1.2.1: Codings содержимого](https://tools.ietf.org/html/rfc7231#section-3.1.2.1)
 * [RFC 7230 разделе 4.2.3: Кодирование Gzip](https://tools.ietf.org/html/rfc7230#section-4.2.3)
 * [Версия спецификации формата файла GZIP 4.3](http://www.ietf.org/rfc/rfc1952.txt)

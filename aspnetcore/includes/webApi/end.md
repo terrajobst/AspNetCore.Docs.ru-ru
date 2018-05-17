@@ -6,39 +6,61 @@
 
 Добавьте приведенный ниже метод `Create`.
 
-[!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-Предыдущий код является методом HTTP POST, обозначенным атрибутом [`[HttpPost]`](/aspnet/core/api/microsoft.aspnetcore.mvc.httppostattribute). Атрибут [`[FromBody]`](/aspnet/core/api/microsoft.aspnetcore.mvc.frombodyattribute) сообщает MVC, что необходимо получить значение элемента задачи из текста HTTP-запроса.
+Предыдущий код является методом HTTP POST, как указывает атрибут [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). Атрибут [[FromBody]](/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute) сообщает MVC, что необходимо получить значение элемента задачи из текста HTTP-запроса.
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
+
+Предыдущий код является методом HTTP POST, как указывает атрибут [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). MVC получает значение элемента задачи из текста HTTP-запроса.
+::: moniker-end
 
 Метод `CreatedAtRoute`:
 
 * возвращает ответ 201. HTTP 201 представляет собой стандартный ответ для метода HTTP POST, создающий ресурс на сервере.
-* Добавляет в ответ заголовок расположения. Заголовок расположения указывает URI вновь созданной задачи. См. раздел [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+* Добавляет в ответ заголовок расположения. Заголовок расположения указывает URI вновь созданной задачи. См. раздел [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 * Использует для создания URL-адреса маршрут с именем GetTodo. Маршрут с именем GetTodo определяется в `GetById`:
 
-[!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
+::: moniker-end
 
 ### <a name="use-postman-to-send-a-create-request"></a>Отправка запроса Create с помощью Postman
 
+* Запустите приложение.
+* Откройте Postman.
+
 ![Консоль Postman](../../tutorials/first-web-api/_static/pmc.png)
 
-* Укажите HTTP-метод `POST`
-* Установите переключатель **Текст запроса**
-* Установите переключатель **без обработки**
-* В качестве типа выберите JSON
-* В редакторе пар ключей и значений введите элемент Todo, например
+* Измените номера порта в localhost URL-адреса.
+* Укажите метод HTTP *POST*.
+* Откройте вкладку **Текст**.
+* Установите переключатель **без обработки**.
+* Задайте тип *JSON (приложение/json)*.
+* Введите текст запроса с элементом задачи наподобие следующего JSON:
 
 ```json
 {
-    "name":"walk dog",
-    "isComplete":true
+  "name":"walk dog",
+  "isComplete":true
 }
 ```
 
-* Нажмите кнопку **Отправить**
-* Откройте вкладку "Заголовки" в нижней области и скопируйте заголовок **расположения**:
+* Нажмите кнопку **Отправить**.
 
-![Вкладка "Заголовки" в консоли Postman](../../tutorials/first-web-api/_static/pmget.png)
+::: moniker range=">= aspnetcore-2.1"
+> [!TIP]
+> Если ответ не отображается после нажатия кнопки **Отправить**, отключите параметр **Проверка сертификации SSL**. Он находится в разделе **Файл** > **Параметры**. Нажмите кнопку **Отправить** еще раз после отключения параметра.
+::: moniker-end
+
+Откройте вкладку **Заголовки** на панели **Ответ** и скопируйте значение заголовка **Расположение**:
+
+![Вкладка "Заголовки" в консоли Postman](../../tutorials/first-web-api/_static/pmc2.png)
 
 Универсальный код ресурса (URI) заголовка расположения можно использовать для получения доступа к новому элементу.
 
@@ -46,9 +68,16 @@
 
 Добавьте приведенный ниже метод `Update`.
 
-[!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+::: moniker-end
 
-Страница `Update` аналогична странице `Create`, но использует запрос HTTP PUT. Ответ — [204 (Нет содержимого)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). Согласно спецификации HTTP, запрос PUT требует, чтобы клиент отправлял всю обновленную сущность, а не только сведения о ней. Чтобы обеспечить поддержку частичных обновлений, используйте HTTP PATCH.
+Страница `Update` аналогична странице `Create`, но использует запрос HTTP PUT. Ответ — [204 (Нет содержимого)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). Согласно спецификации HTTP, запрос PUT требует, чтобы клиент отправлял всю обновленную сущность, а не только отличия. Чтобы обеспечить поддержку частичных обновлений, используйте HTTP PATCH.
+
+Используйте Postman, чтобы изменить имя элемента задачи на "walk cat":
 
 ![Консоль Postman с ответом 204 (Нет содержимого)](../../tutorials/first-web-api/_static/pmcput.png)
 
@@ -56,10 +85,10 @@
 
 Добавьте приведенный ниже метод `Delete`.
 
-[!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]
+[!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]
 
-`Delete`Ответ[ — 204 (нет содержимого)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
+`Delete`Ответ[ — 204 (нет содержимого)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
 
-Проверьте `Delete`: 
+Используйте Postman для удаления элемента задачи:
 
 ![Консоль Postman с ответом 204 (Нет содержимого)](../../tutorials/first-web-api/_static/pmd.png)

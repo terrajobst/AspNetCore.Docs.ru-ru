@@ -1,21 +1,22 @@
 ---
-title: "Добавление проверки"
+title: Добавление проверки на страницу Razor в ASP.NET Core
 author: rick-anderson
-description: "В этой статье объясняется, как добавлять проверки на страницу Razor."
-ms.author: riande
+description: Практическое руководство по добавлению проверки на страницу Razor в ASP.NET Core.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
+ms.author: riande
 ms.date: 08/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 43d9ecacc479dac3eff35cc745b30d859c5cfd1d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: bf3cfd8ce7616807bae4bcacf09b63e54c8fae55
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="adding-validation-to-a-razor-page"></a>Добавление проверки на страницу Razor
+# <a name="add-validation-to-an-aspnet-core-razor-page"></a>Добавление проверки на страницу Razor в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 01/24/2018
 
 Обновите класс `Movie`, чтобы использовать преимущества атрибутов проверки `Required`, `StringLength`, `RegularExpression` и `Range`.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
 
 Атрибуты проверки определяют поведение, которое применяется к свойствам модели.
 
@@ -53,7 +54,7 @@ ms.lasthandoff: 01/24/2018
 ![Форма просмотра фильма с несколькими ошибками проверки jQuery на стороне клиента](validation/_static/val.png)
 
 > [!NOTE]
-> В поле `Price` нельзя вводить десятичные точки или запятые. Чтобы обеспечить поддержку [проверки jQuery](https://jqueryvalidation.org/) для языков, помимо английского, которые используют вместо десятичной точки запятую (","), а также для отображения дат в форматах для языков, помимо английского, выполните действия, необходимые для глобализации вашего приложения. Дополнительные сведения см. в разделе [Дополнительные ресурсы](#additional-resources). А пока вводите целые числа, такие как 10.
+> В поле `Price` нельзя вводить десятичные точки или запятые. Чтобы обеспечить поддержку [проверки jQuery](https://jqueryvalidation.org/) для других языков, кроме английского, используйте вместо десятичной точки запятую (","), а для отображения данных в форматах для других языков, кроме английского, выполните действия, необходимые для глобализации вашего приложения. Дополнительные сведения см. в разделе [Дополнительные ресурсы](#additional-resources). А пока вводите целые числа, такие как 10.
 
 Обратите внимание, что для каждого поля, содержащего недопустимое значение, в форме автоматически отображается сообщение об ошибке проверки. Эти ошибки применяются как на стороне клиента (с помощью JavaScript и jQuery), так и на стороне сервера (если пользователь отключает JavaScript).
 
@@ -85,7 +86,7 @@ ms.lasthandoff: 01/24/2018
 
 В следующем коде демонстрируется часть страницы *Create.cshtml*, сформированной ранее в рамках этого руководства. Она используется на страницах создания и редактирования для отображения исходной формы и повторного вывода формы в случае ошибки.
 
-[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
 [Вспомогательная функция тега Input](xref:mvc/views/working-with-forms) использует атрибуты [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) и создает HTML-атрибуты, необходимые для проверки jQuery на стороне клиента. [Вспомогательная функция тега Validation](xref:mvc/views/working-with-forms#the-validation-tag-helpers) отображает ошибки проверки. Дополнительные сведения см. в разделе [Проверка](xref:mvc/models/validation).
 
@@ -97,11 +98,11 @@ ms.lasthandoff: 01/24/2018
 
 Проверьте класс `Movie`. В пространстве имен `System.ComponentModel.DataAnnotations` в дополнение к набору встроенных атрибутов проверки предоставляются атрибуты форматирования. Атрибут `DataType` применяется к свойствам `ReleaseDate` и `Price`.
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
 
-Атрибуты `DataType` предоставляют модулю просмотра только рекомендации по форматированию данных, а также другие атрибуты, например `<a>` для URL-адресов и `<a href="mailto:EmailAddress.com">` для электронной почты. Используйте атрибут `RegularExpression` для проверки формата данных. Атрибут `DataType` позволяет указать тип данных с более точным определением по сравнению со встроенным типом базы данных. Атрибуты `DataType` не предназначены для проверки. В нашем приложении-примере отображается только дата (без времени).
+Атрибуты `DataType` предоставляют модулю просмотра только рекомендации по форматированию данных, а также другие атрибуты, например `<a>` для URL-адресов и `<a href="mailto:EmailAddress.com">` для электронной почты. Используйте атрибут `RegularExpression` для проверки формата данных. Атрибут `DataType` позволяет указать тип данных с более точным определением по сравнению со встроенным типом базы данных. Атрибуты `DataType` не предназначены для проверки. В том же приложении отображается только дата (без времени).
 
-В перечислении `DataType` представлено множество типов данных, таких как Date, Time, PhoneNumber, Currency, EmailAddress и других. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Например, может быть создана ссылка `mailto:` для `DataType.EmailAddress`. Для `DataType.Date` в браузерах с поддержкой HTML5 может быть предоставлен селектор даты. Атрибут `DataType` создает атрибуты HTML 5 `data-`, которые используются браузерами с поддержкой HTML 5. Атрибуты `DataType` **не предназначены** для проверки.
+В перечислении `DataType` представлено множество типов данных, таких как Date, Time, PhoneNumber, Currency, EmailAddress и других. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Например, можно создавать ссылку `mailto:` для `DataType.EmailAddress`. Для `DataType.Date` в браузерах с поддержкой HTML5 можно предоставить селектор даты. Атрибут `DataType` создает атрибуты HTML 5 `data-`, которые используются браузерами с поддержкой HTML 5. Атрибуты `DataType` **не предназначены** для проверки.
 
 `DataType.Date` не задает формат отображаемой даты. По умолчанию поле данных отображается с использованием форматов, установленных в параметрах `CultureInfo` сервера.
 
@@ -130,7 +131,7 @@ public DateTime ReleaseDate { get; set; }
 
 В следующем коде демонстрируется объединение атрибутов в одной строке:
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
 Дополнительные операции EF Core с Razor Pages см. в статье [Начало работы с Razor Pages и EF Core](xref:data/ef-rp/intro).
 
@@ -145,6 +146,6 @@ public DateTime ReleaseDate { get; set; }
 * [Общие сведения о вспомогательных функциях тегов](xref:mvc/views/tag-helpers/intro)
 * [Создание вспомогательных функций тегов](xref:mvc/views/tag-helpers/authoring)
 
->[!div class="step-by-step"]
-[Предыдущая тема. Добавление нового поля](xref:tutorials/razor-pages/new-field)
-[Следующая тема. Отправка файлов](xref:tutorials/razor-pages/uploading-files)
+> [!div class="step-by-step"]
+> [Предыдущая тема. Добавление нового поля](xref:tutorials/razor-pages/new-field)
+> [Следующая тема. Отправка файлов](xref:tutorials/razor-pages/uploading-files)

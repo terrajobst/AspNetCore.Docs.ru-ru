@@ -1,21 +1,21 @@
 ---
-title: "ASP.NET Core MVC с EF Core — миграции — 4 из 10"
+title: ASP.NET Core MVC с EF Core — миграции — 4 из 10
 author: tdykstra
-description: "В этом руководстве вы начинаете использовать функцию миграций EF Core для управления изменениями модели данных в приложении ASP.NET Core MVC."
+description: В этом руководстве вы начинаете использовать функцию миграций EF Core для управления изменениями модели данных в приложении ASP.NET Core MVC.
 manager: wpickett
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.date: 03/15/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: fd466af8a73bf4c568fafe7e7fdcaa82021624da
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: f3f14d6dab1eb03e0ead5edaa9d7ba41a10b21e9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="migrations---ef-core-with-aspnet-core-mvc-tutorial-4-of-10"></a>Миграции — руководство по Core EF и ASP.NET Core MVC (4 из 10)
+# <a name="aspnet-core-mvc-with-ef-core---migrations---4-of-10"></a>ASP.NET Core MVC с EF Core — миграции — 4 из 10
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -43,9 +43,9 @@ ms.lasthandoff: 01/31/2018
 
 В файле *appsettings.json* измените имя базы данных в строке подключения на ContosoUniversity2 или другое имя, которое вы еще не использовали на компьютере, с которым работаете.
 
-[!code-json[Main](intro/samples/cu/appsettings2.json?range=1-4)]
+[!code-json[](intro/samples/cu/appsettings2.json?range=1-4)]
 
-Это изменение настраивает проект, чтобы первая миграция создала базу данных. Это не является обязательным для начала работы с миграциями, но позднее вы поймете, почему так стоит сделать.
+Это изменение настраивает проект, чтобы первая миграция создала базу данных. Это необязательно для начала работы с миграциями, но позднее вы поймете, почему так стоит сделать.
 
 > [!NOTE]
 > Вместо изменения имени базы данных можно удалить ее. Воспользуйтесь **обозревателем объектов SQL Server** (SSOX) или командой интерфейса командной строки `database drop`:
@@ -91,7 +91,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 При выполнении команды `migrations add` система EF сформировала код, который создаст базу данных с нуля. Этот код находится в файле *\<метка_времени>_InitialCreate.cs* внутри папки *Migrations*. Метод `Up` класса `InitialCreate` создает таблицы базы данных, которые соответствуют наборам сущностей модели данных, а метод `Down` удаляет их, как показано в следующем примере.
 
-[!code-csharp[Main](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
+[!code-csharp[](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
 
 Функция миграций вызывает метод `Up`, чтобы реализовать изменения модели данных для миграции. При вводе команды для отката обновления функция миграций вызывает метод `Down`.
 
@@ -99,15 +99,13 @@ Done. To undo this action, use 'ef migrations remove'
 
 Если вы создали первоначальную миграцию, когда база данных уже существовала, код для создания базы данных формируется, но выполнять его не требуется, так как база данных уже соответствует модели данных. Однако при развертывании приложения в другой среде, где база данных еще не существует, этот код будет выполняться для создания базы данных, поэтому рекомендуется сначала его протестировать. Вот почему ранее вы изменили имя базы данных в строке подключения — это позволяет функции миграций создать базу данных с нуля.
 
-## <a name="examine-the-data-model-snapshot"></a>Обзор моментального снимка модели данных
+## <a name="the-data-model-snapshot"></a>Моментальный снимок модели данных
 
-Функция миграций также создает *моментальный снимок* текущей схемы базы данных в *Migrations/SchoolContextModelSnapshot.cs*. Этот код выглядит следующим образом:
+Функция миграций создает *моментальный снимок* текущей схемы базы данных в *Migrations/SchoolContextModelSnapshot.cs*. При добавлении миграции EF определяет, что именно изменилось, сравнивая модель данных с файлом моментального снимка.
 
-[!code-csharp[Main](intro/samples/cu/Migrations/SchoolContextModelSnapshot1.cs?name=snippet_Truncate)]
+При удалении миграции используйте команду [dotnet ef migrations remove](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove). `dotnet ef migrations remove` удаляет миграцию и гарантирует корректный сброс моментального снимка.
 
-Так как текущая схема базы данных представлена в коде, EF Core не требуется взаимодействовать с базой данных для создания миграций. При добавлении миграции EF определяет, что именно изменилось, сравнивая модель данных с файлом моментального снимка. EF взаимодействует с базой данных, только когда ее нужно обновить. 
-
-Файл моментального снимка должен синхронизироваться с миграциями, которые его создали, поэтому вы не можете удалить миграцию, просто удалив файл с именем *\<метка_времени>_\<имя_миграции>.cs*. Если удалить этот файл, оставшиеся миграции не будут синхронизированы с файлом моментального снимка базы данных. Чтобы удалить последнюю добавленную миграцию, используйте команду [dotnet ef migrations remove](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove).
+Дополнительные сведения об использовании файла моментального снимка см. в разделе [Миграции Core EF в средах групп](/ef/core/managing-schemas/migrations/teams).
 
 ## <a name="apply-the-migration-to-the-database"></a>Применение миграции к базе данных
 
@@ -167,6 +165,6 @@ Done.
 
 В этом руководстве вы узнали, как создать и применить первую миграцию. В следующем руководстве вы начнете рассматривать более сложные вопросы, развернув модель данных. Попутно вы создадите и примените дополнительные миграции.
 
->[!div class="step-by-step"]
-[Назад](sort-filter-page.md)
-[Вперед](complex-data-model.md)  
+> [!div class="step-by-step"]
+> [Назад](sort-filter-page.md)
+> [Вперед](complex-data-model.md)  

@@ -1,39 +1,39 @@
 <!--
-[!code-html[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout.cshtml?highlight=7,31)]
+[!code-html[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout.cshtml?highlight=7,31)]
 
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_1stSearch)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_1stSearch)]
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_SearchNull)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_SearchNull)]
 
 ![Index view](../../tutorials/first-mvc-app/search/_static/ghost.png)
 
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
 
 --> 
 
 Предыдущий метод `Index`:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,8&name=snippet_1stSearch)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,8&name=snippet_1stSearch)]
 
 Обновленный метод `Index` с параметром `id`:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,8&name=snippet_SearchID)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1,8&name=snippet_SearchID)]
 
 Теперь можно передать заголовок поиска в качестве данных маршрута (сегмент URL-адреса) вместо значения строки запроса.
 
 ![Представление Index, в URL-адрес которого добавлено слово ghost, возвращает два фильма: Ghostbusters и Ghostbusters 2](../../tutorials/first-mvc-app/search/_static/g2.png)
 
-Тем не менее пользователи вряд ли будут каждый раз изменять URL-адрес для поиска фильмов. Итак, теперь вам необходимо добавить пользовательский интерфейс для удобства фильтрации фильмов. Если вы изменили сигнатуру метода `Index` для тестирования передачи параметра `ID` с привязкой к маршруту, измените ее снова, чтобы она снова принимала параметр `searchString`:
+Тем не менее пользователи вряд ли будут каждый раз изменять URL-адрес для поиска фильмов. Итак, теперь вам необходимо добавить элементы пользовательского интерфейса для удобства фильтрации фильмов. Если вы изменили сигнатуру метода `Index` для тестирования передачи параметра `ID` с привязкой к маршруту, измените ее снова, чтобы она снова принимала параметр `searchString`:
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1&name=snippet_1stSearch)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1&name=snippet_1stSearch)]
 
 Откройте файл *Views/Movies/Index.cshtml* и добавьте разметку `<form>`, которая выделена ниже:
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexForm1.cshtml?highlight=10-16&range=4-21)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexForm1.cshtml?highlight=10-16&range=4-21)]
 
-Тег HTML `<form>` использует [вспомогательную функцию тега Form](../../mvc/views/working-with-forms.md), чтобы при отправке формы строка фильтра передавалась в действие `Index` контроллера movies. Сохраните изменения и протестируйте фильтр.
+Тег HTML `<form>` использует [вспомогательную функцию тега Form](xref:mvc/views/working-with-forms), чтобы при отправке формы строка фильтра передавалась в действие `Index` контроллера movies. Сохраните изменения и протестируйте фильтр.
 
 ![Представление Index со словом ghost в текстовом поле фильтра по названию](../../tutorials/first-mvc-app/search/_static/filter.png)
 
@@ -41,7 +41,7 @@
 
 Можно добавить следующий метод `[HttpPost] Index`.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1&name=snippet_SearchPost)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?highlight=1&name=snippet_SearchPost)]
 
 Параметр `notUsed` используется для создания перегрузки метода `Index`. Это мы обсудим далее в этом учебнике.
 
@@ -53,6 +53,6 @@
 
 ![Вкладка "Сеть" средств разработчика в Microsoft Edge с телом запроса со значением searchString, равным ghost](../../tutorials/first-mvc-app/search/_static/f12_rb.png)
 
-В теле запроса отображается параметр поиска и маркер [XSRF](../../security/anti-request-forgery.md). Обратите внимание, что, как описывается в предыдущем руководстве, [вспомогательная функция тега Form](../../mvc/views/working-with-forms.md) создает маркер защиты от подделки [XSRF](../../security/anti-request-forgery.md). Поскольку мы не изменяем данные, проверять маркер безопасности в методе контроллера не нужно.
+В теле запроса отображается параметр поиска и маркер [XSRF](xref:security/anti-request-forgery). Обратите внимание, что, как описывается в предыдущем руководстве, [вспомогательная функция тега Form](xref:mvc/views/working-with-forms) создает маркер защиты от подделки [XSRF](xref:security/anti-request-forgery). Поскольку мы не изменяем данные, проверять маркер безопасности в методе контроллера не нужно.
 
 Так как параметр поиска находится в теле запроса, а не в URL-адресе, эти сведения о поиске нельзя добавить в закладки или открыть для общего доступа. Чтобы исправить это, необходимо указать запрос как `HTTP GET`.

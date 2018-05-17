@@ -1,7 +1,7 @@
 ---
-title: "Создание серверных служб для собственных мобильных приложений"
+title: Создание внутренних служб для собственных мобильных приложений в ASP.NET Core
 author: ardalis
-description: 
+description: Сведения о том, как создать внутренние службы с помощью MVC ASP.NET Core, чтобы обеспечить поддержку собственных мобильных приложений.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: ff09f331cff5cca7b42fa89bff55c0ed5c7d82f4
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 18aecea00eb9cda3462ede7e478616a99cf302f8
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="creating-backend-services-for-native-mobile-applications"></a>Создание серверных служб для собственных мобильных приложений
+# <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>Создание внутренних служб для собственных мобильных приложений в ASP.NET Core
 
 Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/31/2018
 
 ## <a name="the-sample-native-mobile-app"></a>Пример собственного мобильного приложения
 
-Это руководство описывает, как создать внутренние службы с помощью ASP.NET Core MVC, чтобы обеспечить поддержку собственных мобильных приложений. В нем [приложение Xamarin Forms ToDoRest](https://developer.xamarin.com/guides/xamarin-forms/web-services/consuming/rest/) используется в качестве собственного клиента, который содержит отдельные собственные клиенты для устройств на базе Android, iOS, универсальной платформы Windows и Window Phone. Вы можете следовать приложенному руководству, чтобы создать собственное приложение (и установить необходимые бесплатные средства Xamarin), а также скачать пример решения Xamarin. Пример Xamarin включает в себя проект служб веб-API ASP.NET 2, заменяемый приведенным в этой статье приложением ASP.NET Core (со стороны клиента никаких изменений не требуется).
+Это руководство описывает, как создать внутренние службы с помощью ASP.NET Core MVC, чтобы обеспечить поддержку собственных мобильных приложений. В нем [приложение Xamarin Forms ToDoRest](/xamarin/xamarin-forms/data-cloud/consuming/rest) используется в качестве собственного клиента, который содержит отдельные собственные клиенты для устройств на базе Android, iOS, универсальной платформы Windows и Window Phone. Вы можете следовать приложенному руководству, чтобы создать собственное приложение (и установить необходимые бесплатные средства Xamarin), а также скачать пример решения Xamarin. Пример Xamarin включает в себя проект служб веб-API ASP.NET 2, заменяемый приведенным в этой статье приложением ASP.NET Core (со стороны клиента никаких изменений не требуется).
 
 ![Приложение To Do Rest, запущенное на смартфоне Android](native-mobile-backend/_static/todo-android.png)
 
@@ -61,31 +61,31 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 Приложение должно отвечать на все запросы, направляемые на порт 5000. Для этого измените *Program.cs*, чтобы включить в него `.UseUrls("http://*:5000")`:
 
-[!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Program.cs?range=10-16&highlight=3)]
+[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Program.cs?range=10-16&highlight=3)]
 
 > [!NOTE]
-> Обязательно запустите приложение напрямую, а не через IIS Express, так как это решение по умолчанию игнорирует нелокальные запросы. Запустите `dotnet run` из командной строки или выберите профиль имени приложения в раскрывающемся списке "Цель отладки" на панели инструментов Visual Studio.
+> Обязательно запустите приложение напрямую, а не через IIS Express, так как это решение по умолчанию игнорирует нелокальные запросы. Запустите [dotnet run](/dotnet/core/tools/dotnet-run) из командной строки или выберите профиль имени приложения в раскрывающемся списке "Целевой объект отладки" на панели инструментов Visual Studio.
 
 Добавьте класс модели для представления элементов задач. Пометьте обязательные поля с помощью атрибута `[Required]`:
 
-[!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Models/ToDoItem.cs)]
+[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Models/ToDoItem.cs)]
 
 Методам API нужен определенный способ для работы с данными. Используйте тот же интерфейс `IToDoRepository`, который использует исходный пример Xamarin:
 
-[!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Interfaces/IToDoRepository.cs)]
+[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Interfaces/IToDoRepository.cs)]
 
 В этом примере реализация использует просто частную коллекцию элементов:
 
-[!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Services/ToDoRepository.cs)]
+[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Services/ToDoRepository.cs)]
 
 Настройте реализацию в файле *Startup.cs*:
 
-[!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Startup.cs?highlight=6&range=29-35)]
+[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Startup.cs?highlight=6&range=29-35)]
 
 На этом этапе вы готовы создать *ToDoItemsController*.
 
 > [!TIP]
-> Дополнительные сведения о создании веб-API см. в статье [Создание первого веб-API с помощью ASP.NET Core MVC и Visual Studio](../tutorials/first-web-api.md).
+> Дополнительные сведения о создании веб-API см. в статье [Создание первого веб-API с помощью MVC ASP.NET Core и Visual Studio](../tutorials/first-web-api.md).
 
 ## <a name="creating-the-controller"></a>Создание контроллера
 
@@ -93,7 +93,7 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 Для работы контроллеру нужен `IToDoRepository`; запросите экземпляр этого типа через конструктор контроллера. Во время выполнения этот экземпляр будет предоставляться с помощью поддержки [внедрения зависимостей](../fundamentals/dependency-injection.md) на платформе.
 
-[!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=1-17&highlight=9,14)]
+[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=1-17&highlight=9,14)]
 
 Этот API поддерживает четыре различных HTTP-команды для выполнения операций CRUD (создание, чтение, обновление, удаление) с источником данных. Самой простой из них является операция чтения, которая соответствует HTTP-запросу GET.
 
@@ -101,7 +101,7 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 Запрос списка элементов, выполняется с помощью отправки запроса GET в метод `List`. Атрибут`[HttpGet]` в методе `List` указывает, что это действие должно обрабатывать только запросы GET. Маршрут для этого действия соответствует маршруту, указанному на контроллере. Использовать имя действия в составе маршрута необязательно. Нужно лишь убедиться, что каждое действие имеет уникальный и однозначный маршрут. Атрибуты маршрутизации можно применять на уровне как контроллера, так и метода для создания определенных маршрутов.
 
-[!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=19-23)]
+[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=19-23)]
 
 Метод `List` возвращает код ответа "200 ОК" и все элементы задач, сериализованные в виде JSON.
 
@@ -115,11 +115,11 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 Внутри метода элемент проверяется на допустимость и предшествующее существование в хранилище данных, а при отсутствии проблем он добавляется с помощью репозитория. Проверка `ModelState.IsValid` приводит к [проверке модели](../mvc/models/validation.md) и должна выполняться в каждом методе API, принимающем вводимые пользователем данные.
 
-[!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=25-46)]
+[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=25-46)]
 
 Этот пример использует перечисление, содержащее коды ошибок, которые передаются мобильному клиенту:
 
-[!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=91-99)]
+[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=91-99)]
 
 Проверьте добавление новых элементов с помощью Postman, выбрав команду POST, предоставляющую новый объект в формате JSON в тексте запроса. Вам также нужно добавить заголовок запроса, указав `Content-Type` типа `application/json`.
 
@@ -131,7 +131,7 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 Изменение записей осуществляется с помощью HTTP-запросов PUT. За исключением этого изменения, метод `Edit` практически идентичен `Create`. Обратите внимание, что если запись не найдена, то действие `Edit` возвратит отклик `NotFound` (404).
 
-[!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=48-69)]
+[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=48-69)]
 
 Чтобы выполнить проверку с помощью Postman, измените команду на PUT. Укажите обновленные данные объекта в тексте запроса.
 
@@ -143,7 +143,7 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 Удаление записей сопровождается отправкой запросов DELETE в службу и передачей идентификатора удаляемого элемента. Как и в случае с обновлениями, запросы несуществующих элементов будут получать отклики `NotFound`. В противном случае успешный запрос получит отклик `NoContent` (204).
 
-[!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=71-88)]
+[!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=71-88)]
 
 Обратите внимание, что при тестировании функции удаления в тексте запроса не требуется никаких элементов.
 
