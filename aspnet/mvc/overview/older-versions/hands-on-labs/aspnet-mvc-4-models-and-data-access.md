@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-models-and-data-access
 msc.type: authoredcontent
-ms.openlocfilehash: 57477cf15bf6755523f28356d5384517bea24982
-ms.sourcegitcommit: 5ae0c125ee3bbd324edef3818d1d160f4dd84602
+ms.openlocfilehash: 88b3316b116962dd35031f4b971dbfe31ed0e010
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="aspnet-mvc-4-models-and-data-access"></a>Модели ASP.NET MVC 4 и доступа к данным
 
@@ -224,41 +224,27 @@ Code First подход позволяет определить модель и�
 
     (Фрагмент - кода *моделей и доступа к данным — storeDB сервера Ex1*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample1.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample1.cs)]
 2. **MusicStoreEntities** класс предоставляет свойства коллекции для каждой таблицы в базе данных. Обновление **Обзор** метода действия для получения жанр со всеми **альбомы**.
 
     (Фрагмент - кода *моделей и доступа к данным — Обзор хранилища сервера Ex1*)
 
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample2.cs)]
 
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample2.cs)]
-~~~
-
-> [!NOTE]
-> Вы используете функцию .NET вызывается **LINQ** (язык запросов LINQ) для написания выражений строго типизированный запрос к этим коллекциям - которые будет выполнять код в базе данных и возвращают объекты, вы можете программировать соответствие.
-> 
-> Дополнительные сведения о LINQ, посетите [веб-сайте msdn](https://msdn.microsoft.com/library/bb397926&amp;#040;v=vs.110&amp;#041;.aspx).
-
-
+    > [!NOTE]
+    > Вы используете функцию .NET вызывается **LINQ** (язык запросов LINQ) для написания выражений строго типизированный запрос к этим коллекциям - которые будет выполнять код в базе данных и возвращают объекты, вы можете программировать соответствие.
+    > 
+    > Дополнительные сведения о LINQ, посетите [веб-сайте msdn](https://msdn.microsoft.com/library/bb397926&amp;#040;v=vs.110&amp;#041;.aspx).
 3. Обновление **индекс** метода действия для получения всех жанров.
 
     (Фрагмент - кода *моделей и доступа к данным — индекс хранилища сервера Ex1*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample3.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample3.cs)]
 4. Обновление **индекс** метода действия для получения всех жанров и преобразовать коллекцию в список.
 
     (Фрагмент - кода *моделей и доступа к данным — GenreMenu хранилище сервера Ex1*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample4.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample4.cs)]
 
 <a id="Ex1Task5"></a>
 
@@ -316,18 +302,12 @@ Code First подход позволяет определить модель и�
 
     (Фрагмент - кода *моделей и доступа к данным — глобальный Asax директивы Ex2*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample5.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample5.cs)]
 4. В **приложения\_Start()** метод добавьте следующую строку для задания инициализатора базы данных.
 
     (Фрагмент - кода *моделей и доступа к данным — глобальный Asax SetInitializer Ex2*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample6.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample6.cs)]
 
 <a id="Ex2Task2"></a>
 
@@ -342,10 +322,7 @@ Code First подход позволяет определить модель и�
 
     *расположение файла Web.config*
 
-
-~~~
-[!code-xml[Main](aspnet-mvc-4-models-and-data-access/samples/sample7.xml)]
-~~~
+    [!code-xml[Main](aspnet-mvc-4-models-and-data-access/samples/sample7.xml)]
 
 <a id="Ex2Task3"></a>
 
@@ -354,39 +331,29 @@ Code First подход позволяет определить модель и�
 
 Теперь, когда вы уже настроили соединение с базой данных, будет связан с таблицами базы данных модели. В этой задаче будет создан класс, который будет связан в базу данных в режиме Code First. Помните, отсутствует класс модели POCO, который должен быть изменен.
 
-   > [!NOTE]
+> [!NOTE]
 > Если вы выполнили Упражнение 1, можно заметить, то, что этот шаг выполнялась в мастере. Выполняя Code First, будут вручную создать классы, которые будут связаны с сущностями данных.
-
 
 1. Откройте класс модели POCO **жанр** из **моделей** папку проекта и включают идентификатор. Используйте целочисленное свойство с именем **GenreId**.
 
     (Фрагмент - кода *моделей и доступа к данным — первый жанр Ex2 код*)
 
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample8.cs)]
 
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample8.cs)]
-
-> [!NOTE]
-> To work with Code First conventions, the class Genre must have a primary key property that will be automatically detected.
-> 
-> You can read more about Code First Conventions in this [msdn article](https://msdn.microsoft.com/library/hh161541&amp;#040;v=vs.103&amp;#041;.aspx).
-~~~
+    > [!NOTE]
+    > Для работы с Code First соглашения, класс жанр должен иметь свойство первичного ключа, будут определяться автоматически.
+    > 
+    > Вы можете прочитать больше о первом соглашения о написании кода в этом [статьи msdn](https://msdn.microsoft.com/library/hh161541&amp;#040;v=vs.103&amp;#041;.aspx).
 2. Теперь откройте класс модели POCO **альбом** из **моделей** папку проекта и включить внешние ключи, создавать свойства с именами **GenreId** и  **ArtistId**. Этот класс уже есть **GenreId** для первичного ключа.
 
     (Фрагмент - кода *моделей и доступа к данным — первый альбом Ex2 код*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample9.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample9.cs)]
 3. Откройте класс модели POCO **исполнителя** и включать **ArtistId** свойство.
 
     (Фрагмент - кода *моделей и доступа к данным — первый исполнителя Ex2 код*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample10.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample10.cs)]
 4. Щелкните правой кнопкой мыши **моделей** папку проекта и выберите **добавить | Класс**. Назовите файл **MusicStoreEntities.cs**. Нажмите кнопку **Add.**
 
     ![Добавление класса](aspnet-mvc-4-models-and-data-access/_static/image20.png "Добавление класса")
@@ -398,21 +365,15 @@ Code First подход позволяет определить модель и�
     *Добавление класса*
 5. Откройте класс, который вы только что создали, **MusicStoreEntities.cs**и включите пространства имен **System.Data.Entity** и **System.Data.Entity.Infrastructure**.
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample11.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample11.cs)]
 6. Замените объявление класса для расширения **DbContext** класса: Объявите общую **DBSet** и Переопределите **OnModelCreating** метод. После выполнения этого шага вы получите класс домена, которое будет связано с платформой Entity Framework модели. Для этого замените код класса с помощью следующего:
 
     (Фрагмент - кода *моделей и доступа к данным — первый MusicStoreEntities Ex2 код*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample12.cs)]
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample12.cs)]
 
 > [!NOTE]
-> With Entity Framework **DbContext** and **DBSet** you will be able to query the POCO class Genre. By extending **OnModelCreating** method, you are specifying in the **code** how Genre will be mapped to a database table. You can find more information about DBContext and DBSet in this msdn article: [link](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.103).aspx)
-~~~
+> С Entity Framework **DbContext** и **DBSet** можно класс POCO жанр запроса. Расширив **OnModelCreating** метода, которое указано в **кода** как жанр сопоставлены с таблицей базы данных. Дополнительные сведения о DBContext и DBSet можно найти в статье msdn: [ссылку](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.103).aspx)
 
 <a id="Ex2Task4"></a>
 
@@ -431,39 +392,27 @@ Code First подход позволяет определить модель и�
 
     (Фрагмент - кода *моделей и доступа к данным — storeDB сервера Ex1*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample13.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample13.cs)]
 2. **MusicStoreEntities** класс предоставляет свойства коллекции для каждой таблицы в базе данных. Обновление **Обзор** метода действия для получения жанр со всеми **альбомы**.
 
     (Фрагмент - кода *моделей и доступа к данным — Обзор хранилища Ex2*)
 
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample14.cs)]
 
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample14.cs)]
-
-> [!NOTE]
-> You are using a capability of .NET called **LINQ** (language-integrated query) to write strongly-typed query expressions against these collections - which will execute code against the database and return objects that you can program against.
-> 
-> For more information about LINQ, please visit the [msdn site](https://msdn.microsoft.com/library/bb397926(v=vs.110).aspx).
-~~~
+    > [!NOTE]
+    > Вы используете функцию .NET вызывается **LINQ** (язык запросов LINQ) для написания выражений строго типизированный запрос к этим коллекциям - которые будет выполнять код в базе данных и возвращают объекты, вы можете программировать соответствие.
+    > 
+    > Дополнительные сведения о LINQ, посетите [веб-сайте msdn](https://msdn.microsoft.com/library/bb397926(v=vs.110).aspx).
 3. Обновление **индекс** метода действия для получения всех жанров.
 
     (Фрагмент - кода *моделей и доступа к данным — индекс хранилища Ex2*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample15.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample15.cs)]
 4. Обновление **индекс** метода действия для получения всех жанров и преобразовать коллекцию в список.
 
     (Фрагмент - кода *моделей и доступа к данным — Ex2 хранилища GenreMenu*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample16.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample16.cs)]
 
 <a id="Ex2Task5"></a>
 
@@ -494,7 +443,6 @@ Code First подход позволяет определить модель и�
 > [!NOTE]
 > Дополнительные сведения о формировании результатов запроса, посетите следующий [статьи msdn](https://msdn.microsoft.com/library/bb896272&amp;#040;v=vs.100&amp;#041;.aspx).
 
-
 <a id="Ex3Task1"></a>
 
 <a id="Task_1_-_Modifying_StoreController_to_Retrieve_Albums_from_Database"></a>
@@ -515,17 +463,14 @@ Code First подход позволяет определить модель и�
 
     (Фрагмент - кода *моделей и доступа к данным — Ex3 StoreController BrowseMethod*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample17.cs)]
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample17.cs)]
 
 > [!NOTE]
-> To populate a collection of the entity, you need to use the **Include** method to specify you want to retrieve the albums too. You can use the .**Single()** extension in LINQ because in this case only one genre is expected for an album. The **Single()** method takes a Lambda expression as a parameter, which in this case specifies a single Genre object such that its name matches the value defined.
+> Чтобы заполнить коллекцию сущностей, необходимо использовать **Include** метод, чтобы указать, требуется извлечь слишком дисках. Можно использовать. **Single()** расширения в LINQ, так как в этом случае только одна жанр является ожидаемым для альбома. **Single()** метод принимает лямбда-выражение как параметр, который в данном случае указан один объект жанра, таким образом, что его имя соответствует значение, определяемое.
 > 
-> You will take advantage of a feature that allows you to indicate other related entities you want loaded as well when the Genre object is retrieved. This feature is called **Query Result Shaping**, and enables you to reduce the number of times needed to access the database to retrieve information. In this scenario, you will want to pre-fetch the Albums for the Genre you retrieve.
+> Будет воспользоваться преимуществами функцию, которая позволяет указывать другие связанные сущности, которые требуется также загружать при извлечении объекта жанра. Эта возможность называется **формирование результата запроса**и позволяет уменьшить количество времени, необходимого для доступа к базе данных для получения сведений. В этом случае требуется выполнять упреждающую выборку альбомов для жанра, можно получить.
 > 
-> The query includes **Genres.Include(&quot;Albums&quot;)** to indicate that you want related albums as well. This will result in a more efficient application, since it will retrieve both Genre and Album data in a single database request.
-~~~
+> Запрос включает **Genres.Include (&quot;альбомы&quot;)** , чтобы указать, что связанные альбомы также. Это приведет к более эффективной работе приложения, поскольку извлечет жанр и альбом данных в запросе на одну базу данных.
 
 <a id="Ex3Task2"></a>
 
@@ -553,10 +498,7 @@ Code First подход позволяет определить модель и�
 
     (Фрагмент - кода *моделей и доступа к данным — Ex3 StoreController DetailsMethod*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample18.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample18.cs)]
 
 <a id="Ex3Task4"></a>
 
@@ -574,7 +516,6 @@ Code First подход позволяет определить модель и�
 
 > [!NOTE]
 > Кроме того, можно развернуть это приложение на веб-сайтов Windows Azure ниже [приложение б. публикация приложения ASP.NET MVC 4 с помощью веб-развертывания](#AppendixB).
-
 
 * * *
 

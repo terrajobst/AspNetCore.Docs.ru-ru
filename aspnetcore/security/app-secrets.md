@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: 4db09d3d41b705597f93d05af91077f2b9236b7e
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 88b4ee9a963543f8cc97cb66271628a14fe657de
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Безопасного хранения секрета приложения при разработке в ASP.NET Core
 
@@ -55,8 +55,25 @@ ms.lasthandoff: 05/17/2018
 
 Секрет диспетчера абстрагирует детали реализации, например, где и как значения сохраняются. Можно использовать средство, не зная эти детали реализации. Значения хранятся в [JSON](https://json.org/) файл конфигурации в папке профиля пользователя, защищенные системы на локальном компьютере:
 
-* Windows: `%APPDATA%\Microsoft\UserSecrets\<user_secrets_id>\secrets.json`
-* Linux & macOS: `~/.microsoft/usersecrets/<user_secrets_id>/secrets.json`
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+Путь файловой системы:
+
+`%APPDATA%\Microsoft\UserSecrets\<user_secrets_id>\secrets.json`
+
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+
+Путь файловой системы:
+
+`~/.microsoft/usersecrets/<user_secrets_id>/secrets.json`
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+Путь файловой системы:
+
+`~/.microsoft/usersecrets/<user_secrets_id>/secrets.json`
+
+---
 
 В предыдущем пути к файлам, замените `<user_secrets_id>` с `UserSecretsId` значение, указанное в *.csproj* файла.
 
@@ -133,17 +150,33 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ## <a name="set-multiple-secrets"></a>Задать несколько секретов
 
-Пакет секретные данные можно задать по конвейеру JSON, `set` команды. В следующем примере *input.json* содержимое файла передаются по конвейеру в `set` команды в Windows:
+Пакет секретные данные можно задать по конвейеру JSON, `set` команды. В следующем примере *input.json* содержимое файла передаются по конвейеру в `set` команды.
 
-```console
-type .\input.json | dotnet user-secrets set
-```
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-В macOS и Linux, используйте следующую команду:
+Откройте командную строку и выполните следующую команду:
 
-```console
-cat ./input.json | dotnet user-secrets set
-```
+  ```console
+  type .\input.json | dotnet user-secrets set
+  ```
+
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+
+Откройте командную строку и выполните следующую команду:
+
+  ```console
+  cat ./input.json | dotnet user-secrets set
+  ```
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+Откройте командную строку и выполните следующую команду:
+
+  ```console
+  cat ./input.json | dotnet user-secrets set
+  ```
+
+---
 
 ## <a name="access-a-secret"></a>Доступ к секрета
 

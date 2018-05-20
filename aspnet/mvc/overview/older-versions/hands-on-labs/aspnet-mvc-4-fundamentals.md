@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-fundamentals
 msc.type: authoredcontent
-ms.openlocfilehash: a0dd32280321938aba84a2aed5273d80750ed774
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 225dff4663e0e556cfb8966f1078848b4c2b47a5
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="aspnet-mvc-4-fundamentals"></a>Принципы работы ASP.NET MVC 4
 
@@ -191,10 +191,7 @@ ms.lasthandoff: 04/06/2018
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - индекс HomeController сервера Ex1*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample1.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample1.cs)]
 
 <a id="Ex1Task4"></a>
 
@@ -259,18 +256,12 @@ ms.lasthandoff: 04/06/2018
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - индекс StoreController Ex2*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample2.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample2.cs)]
 2. Добавить **Обзор** и **сведения** методы. Чтобы сделать это, добавьте следующий код в **StoreController**:
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - Ex2 StoreController BrowseAndDetails*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample3.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample3.cs)]
 
 <a id="Ex2Task3"></a>
 
@@ -319,15 +310,12 @@ ms.lasthandoff: 04/06/2018
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - Ex3 StoreController BrowseMethod*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample4.cs)]
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample4.cs)]
 
 > [!NOTE]
-> You are using the **HttpUtility.HtmlEncode** utility method to prevents users from injecting Javascript into the View with a link like **/Store/Browse?Genre=&lt;script&gt;window.location='[http://hackersite.com](http://hackersite.com)'&lt;/script&gt;**.
+> Вы используете **HttpUtility.HtmlEncode** вспомогательный метод для добавления Javascript в представление с помощью ссылки, например не позволяет пользователям   **/Store/обзора? Жанр =&lt;сценарий&gt;window.location= "[http://hackersite.com](http://hackersite.com)"&lt;/script&gt;**.
 > 
-> For further explanation, please visit [this msdn article](https://msdn.microsoft.com/library/a2a4yykt(v=VS.80).aspx).
-~~~
+> Дополнительные пояснения посетите [в этой статье msdn](https://msdn.microsoft.com/library/a2a4yykt(v=VS.80).aspx).
 
 <a id="Ex3Task2"></a>
 
@@ -355,10 +343,7 @@ ms.lasthandoff: 04/06/2018
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - Ex3 StoreController DetailsMethod*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample5.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample5.cs)]
 
 <a id="Ex3Task4"></a>
 
@@ -441,10 +426,7 @@ ms.lasthandoff: 04/06/2018
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - индекс HomeController Ex4*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample9.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample9.cs)]
 2. Теперь необходимо добавить соответствующий шаблон представления. Чтобы сделать это, **щелкните правой кнопкой мыши** внутри **индекс** метода действия и выберите **добавить представление**. Данная команда откроет **добавить представление** диалогового окна.
 
     ![Добавление представления из метода индекс](aspnet-mvc-4-fundamentals/_static/image13.png "Добавление представления из метода индекса")
@@ -469,10 +451,7 @@ ms.lasthandoff: 04/06/2018
     > Таким образом, ASP.NET MVC позволяет избежать необходимости явно указывать имя или расположение шаблона представления при использовании это соглашение об именовании, чтобы вернуть представление.
 5. Созданный шаблон представления основана на  **\_layout.cshtml** шаблоном, определенным ранее. Обновить свойство ViewBag.Title для **Главная**и измените основного содержимого для **это домашняя страница**, как показано в следующем коде:
 
-
-~~~
-[!code-cshtml[Main](aspnet-mvc-4-fundamentals/samples/sample10.cshtml)]
-~~~
+    [!code-cshtml[Main](aspnet-mvc-4-fundamentals/samples/sample10.cshtml)]
 6. Выберите **MvcMusicStore** проекта в обозревателе решений и нажать клавишу **F5** для запуска приложения.
 
 <a id="Ex4Task4"></a>
@@ -550,13 +529,10 @@ ms.lasthandoff: 04/06/2018
 
     (Фрагмент - кода *MVC 4 ASP.NET основы - свойства Ex5 StoreIndexViewModel*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample11.cs)]
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample11.cs)]
 
 > [!NOTE]
-> The **{ get; set; }** notation makes use of C#'s auto-implemented properties feature. It provides the benefits of a property without requiring us to declare a backing field.
-~~~
+> **{Get; задать;}**  нотации задействует возможности C# автоматически реализуемые свойства компонента. Предоставляет преимущества свойства без необходимости нами для объявления резервным полем.
 
 <a id="Ex5Task3"></a>
 
@@ -576,10 +552,7 @@ ms.lasthandoff: 04/06/2018
 
     (Фрагмент - кода *MVC 4 ASP.NET основы - с помощью ViewModels StoreIndexViewModel Ex5*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample12.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample12.cs)]
 3. Изменение **StoreController** **индекс** метод действия, чтобы создает и заполняет **StoreIndexViewModel** объекта, а затем передает его шаблон, представление Создайте HTML-ответа с ним.
 
     > [!NOTE]
@@ -590,13 +563,10 @@ ms.lasthandoff: 04/06/2018
 
     (Фрагмент - кода *MVC 4 ASP.NET основы - метод индекс StoreController Ex5*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample13.cs)]
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample13.cs)]
 
 > [!NOTE]
-> If you're unfamiliar with C#, you may assume that using **var** means that the **viewModel** variable is late-bound. That's not correct - the C# compiler is using type-inference based on what you assign to the variable to determine that **viewModel** is of type **StoreIndexViewModel**. Also, by compiling the local **viewModel** variable as a **StoreIndexViewModel** type you get compile-time checking and Visual Studio code-editor support.
-~~~
+> Если вы знакомы с C#, могут предположить, используя **var** означает, что **viewModel** переменной позднего связывания. Неправильный - компилятор C# используется для определения того, что определение зависимости от того, что можно присвоить переменной типа **viewModel** относится к типу **StoreIndexViewModel**. Кроме того, при компиляции локальной **viewModel** переменной как **StoreIndexViewModel** тип проверки во время компиляции get и поддержка редактора кода Visual Studio.
 
 <a id="Ex5Task4"></a>
 
@@ -633,24 +603,20 @@ ms.lasthandoff: 04/06/2018
 > [!NOTE]
 > Будет использовать @ синтаксис (часто обозначается как &quot;фрагменты кода&quot;) для выполнения кода в шаблоне представления.
 
-
 1. В **Index.cshtml** в файл **хранилища** папка, замените его код следующим:
 
-
-~~~
 [!code-cshtml[Main](aspnet-mvc-4-fundamentals/samples/sample14.cshtml)]
 
-> [!NOTE]
-> As soon as you finish typing the period after the word **Model**, Visual Studio's Intellisense will show a list of possible properties and methods to choose from.
-> 
-> ![](aspnet-mvc-4-fundamentals/_static/image25.png)
-> 
-> *Getting Model properties and methods with Visual Studio's IntelliSense*
-> 
-> The **Model** property references the **StoreIndexViewModel** object that the Controller passed to the View template. This means that you can access all of the data passed from the Controller to the View template via the **Model** property, and format it into an appropriate HTML response within the View template.
-> 
-> You can just select the **NumberOfGenres** property from the Intellisense list rather than typing it in and then it will auto-complete it by pressing the **tab key**.
-~~~
+    > [!NOTE]
+    > As soon as you finish typing the period after the word **Model**, Visual Studio's Intellisense will show a list of possible properties and methods to choose from.
+    > 
+    > ![](aspnet-mvc-4-fundamentals/_static/image25.png)
+    > 
+    > *Getting Model properties and methods with Visual Studio's IntelliSense*
+    > 
+    > The **Model** property references the **StoreIndexViewModel** object that the Controller passed to the View template. This means that you can access all of the data passed from the Controller to the View template via the **Model** property, and format it into an appropriate HTML response within the View template.
+    > 
+    > You can just select the **NumberOfGenres** property from the Intellisense list rather than typing it in and then it will auto-complete it by pressing the **tab key**.
 2. Цикл по списку genre в **StoreIndexViewModel** и создать HTML **&lt;ul&gt;** список с помощью **foreach** цикла.
    (C#)
 
@@ -698,19 +664,13 @@ ms.lasthandoff: 04/06/2018
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - жанр Ex6*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample16.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample16.cs)]
 5. Таким же способом, как и прежде, добавьте **альбом** класса. Для этого щелкните правой кнопкой мыши **моделей** папки в **обозревателе решений**выберите **добавить** и затем **новый элемент** параметр. В разделе **кода**, выберите **класса** элемента и присвойте файлу имя *Album.cs*, нажмите кнопку **добавить**.
 6. Добавьте в класс альбом два свойства: **жанр** и **заголовка**. Чтобы сделать это, добавьте следующий код:
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - альбом Ex6*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample17.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample17.cs)]
 
 <a id="Ex6Task2"></a>
 
@@ -724,25 +684,19 @@ ms.lasthandoff: 04/06/2018
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - Ex6 UsingModel*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample18.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample18.cs)]
 3. Добавьте два свойства для **StoreBrowseViewModel** класса: **жанр** и **альбомы**. Чтобы сделать это, добавьте следующий код:
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - Ex6 ModelProperties*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample19.cs)]
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample19.cs)]
 
 > [!NOTE]
-> What is **List&lt;Album&gt;** ?: This definition is using the **List&lt;T&gt;** type, where **T** constrains the type to which elements of this **List** belong to, in this case **Album** (or any of its descendants).
+> Что такое **списка&lt;альбом&gt;**  ?: использует это определение **списка&lt;T&gt;**  типа, где **T** ограничивает тип, для каких элементов этого **списка** принадлежат, в этом случае **альбом** (или один из его потомков).
 > 
-> This ability to design classes and methods that defer the specification of one or more types until the class or method is declared and instantiated by client code is a feature of the C# language called **Generics**.
+> Эта возможность создавать классы и методы, которые отложить спецификации один или несколько типов, пока класс или метод объявляется и создавать экземпляры в клиентском коде функции языка C# называется **универсальные шаблоны**.
 > 
-> **List&lt;T&gt;** is the generic equivalent of the **ArrayList** type and is available in the **System.Collections.Generic** namespace. One of the benefits of using **generics** is that since the type is specified, you do not need to take care of type checking operations such as casting the elements into **Album** as you would do with an **ArrayList**.
-~~~
+> **Список&lt;T&gt;**  универсального эквивалентно **ArrayList** тип, доступный в **System.Collections.Generic** пространства имен. Одно из преимуществ использования **универсальных шаблонов** что, поскольку задан тип, не требуется выполнять проверку операции, такие как элементы в приведении типа **альбом** как в случае с **ArrayList**.
 
 <a id="Ex6Task3"></a>
 
@@ -755,26 +709,17 @@ ms.lasthandoff: 04/06/2018
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - Ex6 UsingModelInController*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample20.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample20.cs)]
 2. Замените **Обзор** метода действия для использования **StoreViewBrowseController** класса. Вы создадите жанра, а два новых альбомы фиктивными данными (в следующей практической работе будут использовать реальные данные из базы данных). Для этого замените **Обзор** метод следующим кодом:
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - Ex6 BrowseMethod*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample21.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample21.cs)]
 3. Замените **сведения** метода действия для использования **StoreViewBrowseController** класса. Будет создана новая **альбом** объекта, возвращаемого в **представление**. Для этого замените **сведения** метод следующим кодом:
 
     (Фрагмент - кода *основы ASP.NET MVC 4 - Ex6 DetailsMethod*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample22.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample22.cs)]
 
 <a id="Ex6Task4"></a>
 
@@ -854,7 +799,7 @@ ms.lasthandoff: 04/06/2018
    > [!NOTE]
    > другой подход будет связывания непосредственно на страницу с помощью следующего кода:
    > 
-   > &lt;a href=&quot;/Store/Browse?genre=@genreName&quot;&gt;@genreName&lt;/a&gt;
+   > &lt;href =&quot;/Store/обзора? жанр =@genreName&quot;&gt;@genreName&lt;/a&gt;
    > 
    > Несмотря на то, что такой подход работает, он зависит от строки жестко задано. При переименовании контроллера в более поздней версии необходимо вручную изменить эту инструкцию. Лучшим вариантом является использование **вспомогательный метод HTML** метод. ASP.NET MVC включает метод вспомогательный метод HTML, который доступен для выполнения таких задач. **Html.ActionLink()** вспомогательный метод позволяет легко построить HTML **&lt;&gt;** ссылки, всегда убеждаться в том пути URL-адрес правильно URL-кодированием.
    > 
@@ -889,13 +834,10 @@ ms.lasthandoff: 04/06/2018
 
 1. Закройте браузер, если необходимо, чтобы вернуться в окно Visual Studio. Откройте **StoreController.cs** и изменения **индекс** метод для создания списка или звездообразную жанров в коллекцию ViewModel:
 
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample26.cs)]
 
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample26.cs)]
-
-> [!NOTE]
-> You could also use the syntax **ViewBag[&quot;Starred&quot;]** to access the properties.
-~~~
+    > [!NOTE]
+    > Можно также использовать синтаксис **ViewBag [&quot;Starred&quot;]** доступа к свойствам.
 2. Значок звезды **&quot;starred.png&quot;** включается в **Source\Assets\Images** папку части этой лаборатории. Чтобы добавить его в приложение, перетащите их содержимое из **Проводник** в окно **обозревателе решений** в Visual Web Developer Express, как показано ниже:
 
     ![Добавление типа «звезда» образ для решения](aspnet-mvc-4-fundamentals/_static/image34.png "изображение решения, добавление типа «звезда»")

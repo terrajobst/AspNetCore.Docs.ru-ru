@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/creating-a-basic-web-forms-page
 msc.type: authoredcontent
-ms.openlocfilehash: 0dbd3063c9be3564637fad34e60f62c1662dcc07
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0d44a8f607df3a45ef312820f85f269c7a2c9c1e
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/18/2018
 ---
 <a name="creating-a-basic-aspnet-45-web-forms-page-in-visual-studio-2013"></a>Создание основных ASP.NET 4.5 Web Forms страницы в Visual Studio 2013
 ====================
@@ -293,7 +293,7 @@ Visual Studio предлагает различные способы устан�
 
     **Автоформат** диалоговое окно, что позволяет выбрать схему форматирования календаря. На следующем рисунке показана **Автоформат** диалоговое окно для [календаря](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.aspx) элемента управления.
 
-    ![Диалоговое окно "Автоформат" (элемент управления "Календарь")](creating-a-basic-web-forms-page/_static/image14.png "диалоговое окно «Автоформат» (элемент управления "Календарь")")
+    ![Диалоговое окно "Автоформат" (элемент управления "Календарь")](creating-a-basic-web-forms-page/_static/image14.png "диалоговое окно «Автоформат» (элемент управления \"Календарь\")")
 4. Из **Выбор схемы** выберите **простой** и нажмите кнопку **ОК**.
 5. Переключитесь в **источника** представления.
 
@@ -315,15 +315,12 @@ Visual Studio предлагает различные способы устан�
     Новый обработчик событий, который отображается в файле кода, с именем *FirstWebPage.aspx.cs*.
 2. Готово [SelectionChanged](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.selectionchanged.aspx) обработчик событий следующим кодом.
 
-
-~~~
-[!code-csharp[Main](creating-a-basic-web-forms-page/samples/sample3.cs?highlight=3)]
+    [!code-csharp[Main](creating-a-basic-web-forms-page/samples/sample3.cs?highlight=3)]
 
 
-[!code-vb[Main](creating-a-basic-web-forms-page/samples/sample4.vb?highlight=2)]
-~~~
+    [!code-vb[Main](creating-a-basic-web-forms-page/samples/sample4.vb?highlight=2)]
 
- Этот код задает текст элемента управления label для выбранных дат элемента управления calendar.
+    Этот код задает текст элемента управления label для выбранных дат элемента управления calendar.
 
 
 ### <a name="running-the-page"></a>Запуск страницы

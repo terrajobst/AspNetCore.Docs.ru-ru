@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/recommended-resources-for-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: b328b733914b20b0aa3fe529c9a9f999349171ec
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 7887d81366cc166ad89308b22ad7cc6af0263111
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/18/2018
 ---
 <a name="mvc-recommended-resources"></a>Рекомендуется использовать ресурсы MVC
 ====================
@@ -42,7 +42,6 @@ ms.lasthandoff: 04/06/2018
 ## <a name="new-featured-content"></a>Новое содержимое
 
 - [Выбор языков и региональных параметров для локализации в ASP.NET](http://weblog.west-wind.com/posts/2014/Mar/27/Auto-Selecting-Cultures-for-Localization-in-ASPNET)
-- [Макеты вложение в MVC](http://astutelogic.com/nesting-layouts-in-mvc/) по Уэйта Руссел
 - [Создание приложения ASP.NET MVC 5 с Facebook и Google OAuth2 единого входа](../security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)
 - [Основные сведения о ASP.NET MVC, фильтры и атрибуты](http://www.dotnet-tricks.com/Tutorial/mvc/b11a280114-Understanding-ASP.NET-MVC-Filters-and-Attributes.html)
 - [Жизненный цикл приложения ASP.NET MVC 5](lifecycle-of-an-aspnet-mvc-5-application.md) (PDF)
@@ -196,7 +195,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="angularjs-knockout-knockoutjs"></a>AngularJS, Knockout, использованием KnockoutJS
 
-- [Knockout](http://knockoutjs.com/)
+- [маскирования](http://knockoutjs.com/)
 - [Приступая к работе с использованием KnockoutJS в ASP.NET MVC](http://www.dotnetcurry.com/ShowArticle.aspx?ID=933)
 - [Начальная загрузка AngularJS приложений с помощью данных на сервере с ASP.NET MVC](http://blog.mariusschulz.com/2014/03/25/bootstrapping-angularjs-applications-with-server-side-data-from-aspnet-mvc) по Мариус Шульц
 - [TypeScripted маскирования в ASP.NET MVC](http://www.dotnetcurry.com/ShowArticle.aspx?ID=939)
@@ -208,7 +207,7 @@ ms.lasthandoff: 04/06/2018
 
 <a id="jQueryAjaxJSON"></a>
 
-## <a name="jquery-ajax-json-javascript"></a>jQuery, Ajax, JSON, JavaScript
+## <a name="jquery-ajax-json-javascript"></a>jQuery Ajax, JSON, JavaScript
 
 - [Создание JavascriptResult для ASP.NET MVC](http://tostring.it/2014/01/14/create-a-javascriptresult-for-asp-net-mvc/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+override%2Ftostring%2Fit+%28override.tostring.it%29)
 - [Передача данных на сервере .NET в код JavaScript](http://blog.mariusschulz.com/2014/02/05/passing-net-server-side-data-to-javascript) по Мариус Шульц

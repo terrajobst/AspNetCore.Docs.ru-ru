@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/build-restful-apis-with-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: ded549109ca6e7ad806f1c3f53387766527e5a94
-ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
+ms.openlocfilehash: cb02288e93be801a1e55852741ed1443d8d3617d
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2018
+ms.lasthandoff: 05/18/2018
 ---
 <a name="build-restful-apis-with-aspnet-web-api"></a>Построение RESTful API-интерфейсы с веб-API ASP.NET
 ====================
@@ -128,7 +128,7 @@ ms.lasthandoff: 04/26/2018
     *Домашняя страница по умолчанию, приложения веб-API ASP.NET*
 6. В окне Internet Explorer нажмите **F12** раздел, чтобы открыть **средств разработчика** окна. Нажмите кнопку **сети** , а затем щелкните **начать захват** кнопку, чтобы начать отслеживать сетевой трафик в окно.
 
-    ![Открыв вкладку "Сеть" и инициирует сбор по сети](build-restful-apis-with-aspnet-web-api/_static/image6.png "открыв вкладку "Сеть" и инициирует сбор по сети")
+    ![Открыв вкладку "Сеть" и инициирует сбор по сети](build-restful-apis-with-aspnet-web-api/_static/image6.png "открыв вкладку \"Сеть\" и инициирует сбор по сети")
 
     *Открыв вкладку "Сеть" и инициации записи сетевого трафика*
 7. Добавьте URL-адрес в адресной строке браузера с **/api/контакт** и нажмите клавишу ВВОД. Передачи сведений будут отображаться в окне сбора данных сети. Обратите внимание, что тип MIME ответа **приложение/json**. Этот пример демонстрирует, как выходного формата по умолчанию является JSON.
@@ -171,10 +171,7 @@ ms.lasthandoff: 04/26/2018
 
     (Фрагмент - кода *веб-класса контакта лаборатории API - Ex01 -*)
 
-
-~~~
-[!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample2.cs)]
-~~~
+    [!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample2.cs)]
 4. В **ContactController** класса, выделите слово **строка** в определении метода **получить** метод и введите слово *контакт*. После ввода слова в, индикатор будет отображаться в начале слова **контакт**. Либо удерживайте **Ctrl** и нажмите клавишу точки (.) или щелкните значок, используя мышь, чтобы открыть диалоговое окно помощника в редакторе кода для автоматического заполнения **с помощью** директив для моделей пространство имен.
 
     ![С помощью Intellisense помощь для объявления пространства имен](build-restful-apis-with-aspnet-web-api/_static/image12.png)
@@ -222,10 +219,7 @@ ms.lasthandoff: 04/26/2018
     *Создание класса файл, содержащий код для уровня службы репозитория контактов*
 4. Добавить с помощью директивы **ContactRepository.cs** файла следует включить пространство имен модели.
 
-
-~~~
-[!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample4.cs)]
-~~~
+    [!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample4.cs)]
 5. Добавьте следующий выделенный код в **ContactRepository.cs** файл для реализации метода GetAllContacts.
 
     (Фрагмент - кода *веб-репозитория контактов лаборатории API - Ex01 -*)
@@ -234,10 +228,7 @@ ms.lasthandoff: 04/26/2018
 6. Откройте **ContactController.cs** файл, если он еще не открыт.
 7. Добавьте следующий код с помощью инструкции раздел объявления пространства имен в файле.
 
-
-~~~
-[!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample6.cs)]
-~~~
+    [!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample6.cs)]
 8. Добавьте следующий выделенный код в **ContactController.cs** класса добавьте закрытое поле для представления экземпляра репозитория, чтобы использовать все доступные членам класса реализации службы.
 
     (Фрагмент - кода *лаборатории API - Ex01 - контактные контроллер веб-*)
@@ -356,16 +347,10 @@ ms.lasthandoff: 04/26/2018
 3. Откройте **Index.cshtml** файл, расположенный в **представления/домашние** папки.
 4. Замените код HTML в элемент div с идентификатором **текст** , чтобы он выглядел как следующий код.
 
-
-~~~
-[!code-html[Main](build-restful-apis-with-aspnet-web-api/samples/sample13.html)]
-~~~
+    [!code-html[Main](build-restful-apis-with-aspnet-web-api/samples/sample13.html)]
 5. Добавьте следующий код Javascript в нижней части файла для выполнения запроса HTTP для веб-API.
 
-
-~~~
-[!code-cshtml[Main](build-restful-apis-with-aspnet-web-api/samples/sample14.cshtml)]
-~~~
+    [!code-cshtml[Main](build-restful-apis-with-aspnet-web-api/samples/sample14.cshtml)]
 6. Откройте **ContactController.cs** файл, если он еще не открыт.
 7. Установить точку останова на **получить** метод **ContactController** класса.
 
@@ -400,17 +385,11 @@ ms.lasthandoff: 04/26/2018
 
     (Фрагмент - кода *веб-метод Post лаборатории API - Ex03 -*)
 
-
-~~~
-[!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample15.cs)]
-~~~
+    [!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample15.cs)]
 3. Откройте **Index.cshtml** файл в Visual Studio, если он еще не открыт.
 4. Добавьте приведенный ниже код HTML в файл сразу после неупорядоченного списка, добавленного в предыдущей задаче.
 
-
-~~~
-[!code-html[Main](build-restful-apis-with-aspnet-web-api/samples/sample16.html)]
-~~~
+    [!code-html[Main](build-restful-apis-with-aspnet-web-api/samples/sample16.html)]
 5. В элементе скрипта в нижней части документа добавьте следующий выделенный код для обработки события нажатия кнопки, которые будут отправлены в данных веб-API с помощью вызова HTTP POST.
 
     [!code-html[Main](build-restful-apis-with-aspnet-web-api/samples/sample17.html)]

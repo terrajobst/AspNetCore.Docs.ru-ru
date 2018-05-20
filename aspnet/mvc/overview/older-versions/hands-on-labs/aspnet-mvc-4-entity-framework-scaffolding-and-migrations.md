@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 548afe1926eed49841251832d54dc213da0cb753
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 42a12ee39223a06054382dbe9b4784196a706216
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>Перенос и формирование шаблонов ASP.NET MVC 4 Entity Framework
 
@@ -108,10 +108,7 @@ ms.lasthandoff: 04/06/2018
 
     (Фрагмент - кода *ASP.NET MVC 4 и Entity Framework миграции - свойства пользователя сервера Ex1*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample1.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample1.cs)]
 6. Нажмите кнопку **сборки | Построение решения** для сохранения изменений и постройте проект.
 
     ![Сборка приложения](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image3.png "построение приложения")
@@ -196,16 +193,10 @@ ms.lasthandoff: 04/06/2018
     *Миграция папки*
 3. Откройте **Configuration.cs** файл в папке миграции. Найдите конструктор класса и измените **AutomaticMigrationsEnabled** значение *true*.
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample3.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample3.cs)]
 4. Откройте класс Person и добавьте атрибут для отчества данного лица. Модель изменяется с помощью этого нового атрибута.
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample4.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample4.cs)]
 5. Выберите **сборки | Построение решения** меню для построения приложения.
 
     ![Сборка приложения](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image13.png "построение приложения")
