@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/logging/index
-ms.openlocfilehash: 7e2a4657211b0142ec87fd792d013f7ef397de2b
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 8b53a19f4958e97198175d6acea4017d54f827bb
+ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/24/2018
 ---
 # <a name="logging-in-aspnet-core"></a>Ведение журналов в ASP.NET Core
 
@@ -583,21 +583,22 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 ## <a name="third-party-logging-providers"></a>Сторонние поставщики ведения журналов
 
-Ниже приведены некоторые сторонние платформы ведения журналов, которые работают с ASP.NET Core:
+Некоторые сторонние платформы ведения журналов, которые работают с ASP.NET Core:
 
-* [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging) — поставщик для службы Elmah.Io.
+* [ELMAH.IO](https://elmah.io/) ([в репозитории GitHub](https://github.com/elmahio/Elmah.Io.Extensions.Logging));
+* [JSNLog](http://jsnlog.com/) ([в репозитории GitHub](https://github.com/mperdeck/jsnlog));
+* [Loggr](http://loggr.net/) ([в репозитории GitHub](https://github.com/imobile3/Loggr.Extensions.Logging));
+* [NLog](http://nlog-project.org/) ([в репозитории GitHub](https://github.com/NLog/NLog.Extensions.Logging));
+* [Serilog](https://serilog.net/) ([в репозитории GitHub](https://github.com/serilog/serilog-extensions-logging)).
 
-* [JSNLog](http://jsnlog.com) — регистрирует в серверном журнале исключения JavaScript и другие клиентские события.
+Некоторые сторонние платформы выполняют [семантическое ведение журналов, также известное как структурированное ведение журналов](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
 
-* [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging) — поставщик для службы Loggr.
+Использование сторонней платформы аналогично использованию одного из встроенных поставщиков:
 
-* [NLog](https://github.com/NLog/NLog.Extensions.Logging) — поставщик для библиотеки NLog.
+1. Добавьте пакет NuGet в проект.
+1. Вызовите метод расширения в `ILoggerFactory`.
 
-* [Serilog](https://github.com/serilog/serilog-extensions-logging) — поставщик для библиотеки Serilog.
-
-Некоторые сторонние платформы поддерживают [семантическое ведение журналов, также известное как структурированное ведение журналов](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
-
-Использование сторонней платформы аналогично использованию одного из встроенных поставщиков: добавьте пакет NuGet в проект и вызовите метод расширения в `ILoggerFactory`. Дополнительные сведения см. в документации по каждой платформе.
+Дополнительные сведения см. в документации по каждой платформе.
 
 ## <a name="azure-log-streaming"></a>Потоковая передача журналов Azure
 

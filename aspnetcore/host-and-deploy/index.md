@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/index
-ms.openlocfilehash: 6364f54ede43b8eec070166a75b4552d896644f3
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: 1ffc7f9f2dc2a06dddb629d2d2553964b56cec05
+ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/24/2018
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Размещение и развертывание ASP.NET Core
 
@@ -22,9 +22,9 @@ ms.lasthandoff: 05/14/2018
 
 * Публикация приложения в папку на сервере размещения.
 * Настройка диспетчера процессов, который запускает приложение при поступлении запросов и перезапускает его после аварийного завершения или после перезагрузки сервера.
-* Настройка обратного прокси-сервера, который перенаправляет запросы в приложение.
+* Если требуется конфигурация обратного прокси-сервера, настройте такой прокси-сервер, который перенаправляет запросы в приложение.
 
-## <a name="publish-to-a-folder"></a>Публикация в папку 
+## <a name="publish-to-a-folder"></a>Публикация в папку
 
 Команда интерфейса командной строки [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) компилирует код приложения и копирует файлы, необходимые для его выполнения, в папку *publish*. При развертывании из Visual Studio шаг [dotnet publish](/dotnet/core/tools/dotnet-publish) выполняется автоматически перед копированием файлов в место развертывания.
 
@@ -51,7 +51,9 @@ ms.lasthandoff: 05/14/2018
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Если приложение использует веб-сервер [Kestrel](xref:fundamentals/servers/kestrel), вы можете использовать [nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache) или [IIS](xref:host-and-deploy/iis/index) в качестве обратного прокси-сервера. Обратный прокси-сервер получает HTTP-запросы из Интернета и пересылает их в Kestrel после определенной предварительной обработки. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel?tabs=aspnetcore2x#when-to-use-kestrel-with-a-reverse-proxy).
+Если приложение использует веб-сервер [Kestrel](xref:fundamentals/servers/kestrel), вы можете использовать [nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache) или [IIS](xref:host-and-deploy/iis/index) в качестве обратного прокси-сервера. Обратный прокси-сервер получает HTTP-запросы из Интернета и пересылает их в Kestrel после определенной предварительной обработки.
+
+Любая из этих конфигураций&mdash;с обратным прокси-сервером и без него&mdash;является допустимой и поддерживаемой для размещения основных компонентов приложений ASP.NET версии 2.0 и выше. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
