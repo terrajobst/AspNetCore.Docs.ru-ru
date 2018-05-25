@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 64eb85f75a6c2e10bf8c39f32eeda5311744f2a2
-ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
+ms.openlocfilehash: 3a9479dc1bb09218ebb4a5a76078ea514041d751
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -25,9 +25,7 @@ ms.lasthandoff: 04/03/2018
 Поддерживаются следующие операционные системы:
 
 * Windows 7 и более поздние версии
-* Windows Server 2008 R2 и более поздние версии.&#8224;
-
-& #8224; В принципе, конфигурация IIS, описанная в этом документе, также подходит для размещения приложений ASP.NET Core в службах IIS на сервере Nano Server. Инструкции для Nano Server см. в руководстве [ASP.NET Core с IIS в Nano Server](xref:tutorials/nano-server).
+* Windows Server 2008 R2 и более поздние версии
 
 [Сервер HTTP.sys](xref:fundamentals/servers/httpsys) (ранее назывался [WebListener](xref:fundamentals/servers/weblistener)) не работает в конфигурации обратного прокси-сервера со службами IIS. Используйте [сервер Kestrel](xref:fundamentals/servers/kestrel).
 
@@ -45,7 +43,7 @@ public static IWebHost BuildWebHost(string[] args) =>
         ...
 ```
 
-Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. Метод `UseIISIntegration` принимает этот динамический порт и настраивает Kestrel для прослушивания адресу `http://locahost:{dynamicPort}/`. Это переопределяет другие конфигурации URL-адресов, такие как вызовы `UseUrls` или [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). Таким образом, вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel прослушивает порт, указанный при выполнении приложения без IIS.
+Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. Метод `UseIISIntegration` принимает этот динамический порт и настраивает Kestrel для прослушивания адресу `http://localhost:{dynamicPort}/`. Это переопределяет другие конфигурации URL-адресов, такие как вызовы `UseUrls` или [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). Таким образом, вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel прослушивает порт, указанный при выполнении приложения без IIS.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -66,7 +64,7 @@ var host = new WebHostBuilder()
 
 ---
 
-Дополнительные сведения о размещении см. в разделе [Размещение в ASP.NET Core](xref:fundamentals/hosting).
+Дополнительные сведения о размещении см. в разделе [Размещение в ASP.NET Core](xref:fundamentals/host/index).
 
 ### <a name="iis-options"></a>Параметры служб IIS
 
@@ -169,15 +167,15 @@ services.Configure<IISOptions>(options =>
 
 ---
 
-## <a name="install-the-net-core-windows-server-hosting-bundle"></a>Установка пакета размещения .NET Core для Windows Server
+## <a name="install-the-net-core-hosting-bundle"></a>Установка пакета размещения .NET Core
 
-1. Установите *пакет размещения .NET Core для Windows Server* в размещающей системе. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратный прокси-сервер между службами IIS и сервером Kestrel. Если система не подключена к Интернету, перед установкой пакета размещения .NET Core для Windows Server получите и установите [Распространяемый компонент Microsoft Visual C++ 2015](https://www.microsoft.com/download/details.aspx?id=53840).
+1. Установите *пакет размещения .NET Core* в размещающей системе. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратный прокси-сервер между службами IIS и сервером Kestrel. Если система не подключена к Интернету, перед установкой пакета размещения .NET Core получите и установите [Распространяемый компонент Microsoft Visual C++ 2015](https://www.microsoft.com/download/details.aspx?id=53840).
 
    1. Перейдите на [страницу всех загрузок .NET](https://www.microsoft.com/net/download/all).
    1. Выберите последнюю не предварительную версию среды выполнения .NET Core из списка (**.NET Core** > **Среда выполнения** > **Среда выполнения .NET Core x.y.z**). Если вы не планируете работать с предварительной версией программного обеспечения, избегайте сред выполнения, в тексте ссылки которых указано "предварительная версия".
-   1. На странице загрузки среды выполнения .NET Core в разделе **Windows** нажмите на ссылку **Установщик размещения сервера**, чтобы загрузить *Пакет размещения Windows Server для .NET Core*.
+   1. На странице скачивания среды выполнения .NET Core в разделе **Windows** выберите ссылку **установщика пакета размещения**, чтобы скачать *пакет размещения .NET Core*.
 
-   **Важно!** Если пакет размещения был установлен до установки служб IIS, пакет необходимо восстановить. После установки служб IIS запустите установщик пакета размещения еще раз.
+   **Важно!** Если пакет размещения устанавливается до установки служб IIS, его нужно восстановить. После установки служб IIS запустите установщик пакета размещения еще раз.
    
    Чтобы запретить установщику установку пакетов x86 в операционной системе x64, запускать установщик следует из командной строки с правами администратора с параметром `OPT_NO_X86=1`.
 
@@ -196,7 +194,8 @@ services.Configure<IISOptions>(options =>
 
 1. В созданной только что папке создайте папку *logs*, в которой будут храниться журналы StdOut модуля ASP.NET Core (если включено ведение таких журналов). Если приложение развертывается с папкой *logs* в полезных данных, пропустите этот шаг. Сведения о том, как в MSBuild настроить автоматическое создание папки *logs* при создании проекта локально, см. в статье [Directory structure of published ASP.NET Core apps](xref:host-and-deploy/directory-structure) (Структура каталогов опубликованных приложений ASP.NET Core).
 
-   **Важно!** Журнал StdOut следует использовать только для устранения ошибок, возникающих при запуске приложения. Никогда не используйте журнал StdOut как журнал повседневных операций приложения. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены. Дополнительные сведения о журнале StdOut см. в разделе о [создании и перенаправлении журналов](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection). Сведения о ведении журнала приложения ASP.NET Core см. в статье [Общие сведения о ведении журналов в ASP.NET Core](xref:fundamentals/logging/index).
+   > [!IMPORTANT]
+   > Журнал StdOut следует использовать только для устранения ошибок, возникающих при запуске приложения. Никогда не используйте журнал StdOut как журнал повседневных операций приложения. Ни размер файла журнала, ни количество создаваемых файлов журналов ничем не ограничены. Пул приложений должен иметь доступ на запись к папке, куда записываются журналы. Все папки в пути к папке журнала должны существовать. Дополнительные сведения о журнале StdOut см. в разделе о [создании и перенаправлении журналов](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection). Сведения о ведении журнала приложения ASP.NET Core см. в статье [Общие сведения о ведении журналов в ASP.NET Core](xref:fundamentals/logging/index).
 
 1. В окне **Диспетчер служб IIS** в области **Подключения** разверните узел сервера. Щелкните правой кнопкой мыши папку **Сайты**. В контекстном меню выберите пункт **Добавить веб-сайт**.
 
@@ -242,6 +241,8 @@ services.Configure<IISOptions>(options =>
 
 Переместить приложение в размещающую систему можно несколькими способами: с помощью копирования вручную, Xcopy, Robocopy или PowerShell.
 
+Дополнительные сведения о развертывании ASP.NET Core в службах IIS см. в разделе [Ресурсы развертывания для администраторов IIS](#deployment-resources-for-iis-administrators).
+
 ## <a name="browse-the-website"></a>Обзор веб-сайта
 
 ![Начальная страница IIS, загруженная в браузере Microsoft Edge.](index/_static/browsewebsite.png)
@@ -250,7 +251,7 @@ services.Configure<IISOptions>(options =>
 
 Во время выполнения приложения файлы в папке развертывания блокируются. Заблокированные файлы невозможно перезаписать во время развертывания. Чтобы снять блокировку с файлов в развертывании, остановите пул приложений с помощью **одного** из следующих методов:
 
-* Запустите веб-развертывание и добавьте ссылку на `Microsoft.NET.Sdk.Web` в файл проекта. Файл *app_offline.htm* помещается в корень каталога веб-приложения. Если файл присутствует, модуль ASP.NET Core корректно завершает работу приложения и обслуживает файл *app_offline.htm* во время развертывания. Дополнительные сведения см. в разделе [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module#appofflinehtm).
+* Запустите веб-развертывание и добавьте ссылку на `Microsoft.NET.Sdk.Web` в файл проекта. Файл *app_offline.htm* помещается в корень каталога веб-приложения. Если файл присутствует, модуль ASP.NET Core корректно завершает работу приложения и обслуживает файл *app_offline.htm* во время развертывания. Дополнительные сведения см. в разделе [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module#app_offlinehtm).
 * Вручную остановите пул приложений в диспетчере служб IIS на сервере.
 * Используйте PowerShell для остановки и перезапуска пула приложений (требуется PowerShell 5 или более поздняя версия).
 
@@ -409,13 +410,34 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 Дополнительные сведения об ICACLS см. [здесь](/windows-server/administration/windows-commands/icacls).
 
+## <a name="deployment-resources-for-iis-administrators"></a>Ресурсы развертывания для администраторов IIS
+
+Дополнительные сведения о службах IIS см. в документации по ним.  
+[Документация по службам IIS](/iis)
+
+Дополнительные сведения о моделях развертывания приложения .NET Core.  
+[Развертывание приложений .NET Core](/dotnet/core/deploying/)
+
+Сведения о том, как модуль ASP.NET Core позволяет веб-серверу Kestrel использовать IIS или IIS Express в качестве обратного прокси-сервера.  
+[Модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
+
+Сведения о настройке модуля ASP.NET Core для размещения приложений ASP.NET Core.  
+[Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
+
+Сведения о структуре каталогов опубликованных приложений ASP.NET Core.  
+[Структура каталогов](xref:host-and-deploy/directory-structure)
+
+Сведения об обнаружении активных и неактивных модулей IIS для приложения ASP.NET Core и управлении модулями IIS.  
+[Модули IIS](xref:host-and-deploy/iis/troubleshoot)
+
+Сведения о диагностике проблем с развертываниями IIS приложений ASP.NET Core.  
+[Устранение неполадок](xref:host-and-deploy/iis/troubleshoot)
+
+Распознавание распространенных ошибок при размещении приложений ASP.NET Core в IIS.  
+[Справочник по общим ошибкам для службы приложений Azure и служб IIS](xref:host-and-deploy/azure-iis-errors-reference)
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Устранение неполадок ASP.NET Core в службах IIS](xref:host-and-deploy/iis/troubleshoot)
-* [Справочник по общим ошибкам для службы приложений Azure и служб IIS с ASP.NET Core](xref:host-and-deploy/azure-iis-errors-reference)
-* [Введение в модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
-* [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
-* [Модули IIS с ASP.NET Core](xref:host-and-deploy/iis/modules)
-* [Введение в ASP.NET Core](../index.md)
+* [Введение в ASP.NET Core](xref:index)
 * [Официальный веб-сайт Microsoft IIS](https://www.iis.net/)
-* [Библиотека Microsoft TechNet: Windows Server](/windows-server/windows-server-versions)
+* [Библиотека технического содержимого по Windows Server](/windows-server/windows-server)

@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: ce4edf6f07808d3958c919a1d81561ce020fe52b
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: 89d9a51334bdd50b72213d32fa194808ac6a93b9
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера HTTP.sys в ASP.NET Core
 
@@ -133,7 +133,7 @@ HTTP.sys — это проверенная технология, которая 
 
    Преимущество `UrlPrefixes` заключается в том, что при неправильном формате префиксов сразу же создается сообщение об ошибке.
 
-   Этот параметр в `UrlPrefixes` переопределяет параметры `UseUrls`/`urls`/`ASPNETCORE_URLS`. Таким образом, преимущество переменных среды`UseUrls`, `urls`и `ASPNETCORE_URLS` заключается в возможности быстрого переключения между Kestrel и HTTP.sys. Дополнительные сведения по `UseUrls`, `urls` и `ASPNETCORE_URLS` см. в инструкциях по [размещению](xref:fundamentals/hosting).
+   Этот параметр в `UrlPrefixes` переопределяет параметры `UseUrls`/`urls`/`ASPNETCORE_URLS`. Таким образом, преимущество переменных среды`UseUrls`, `urls`и `ASPNETCORE_URLS` заключается в возможности быстрого переключения между Kestrel и HTTP.sys. Дополнительные сведения о `UseUrls`, `urls` и `ASPNETCORE_URLS` см. в статье [Размещение в ASP.NET Core](xref:fundamentals/host/index).
 
    HTTP.sys использует [форматы строк UrlPrefix API сервера HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
 
@@ -179,4 +179,4 @@ HTTP.sys — это проверенная технология, которая 
 
 * [API сервера HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
 * [Репозиторий GitHub ASPNET/HttpSysServer (исходный код)](https://github.com/aspnet/HttpSysServer/)
-* [Размещение](xref:fundamentals/hosting)
+* [Размещение в ASP.NET Core](xref:fundamentals/host/index)

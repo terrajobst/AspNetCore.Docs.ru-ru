@@ -8,11 +8,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: be7d55bf1a5d3da63ff137ed86f71984dc897eff
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 26f516716864bdce81cf3acdacb0f9d2f98407b7
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Razor Pages с EF Core в ASP.NET Core — сортировка, фильтрация, разбиение на страницы — 3 из 8
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 04/06/2018
 
 `?: operator` также называется тернарным оператором.
 
-Следующие два оператора устанавливают гиперссылки в заголовках столбцов в представлении следующим образом:
+Следующие два оператора устанавливают гиперссылки в заголовках столбцов на странице следующим образом:
 
 | Текущий порядок сортировки | Гиперссылка "Last Name" (Фамилия) | Гиперссылка "Date" (Дата) |
 |:--------------------:|:-------------------:|:--------------:|
@@ -77,7 +77,7 @@ ms.lasthandoff: 04/06/2018
 
 `OnGetAsync` можно расширить на случай большого числа столбцов.
 
-### <a name="add-column-heading-hyperlinks-to-the-student-index-view"></a>Добавление гиперссылок для заголовков столбцов в представлении индекса учащихся
+### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a>Добавление гиперссылок для заголовков столбцов на странице индексов учащихся
 
 Замените код в файле *Students/Index.cshtml* на следующий выделенный код:
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 04/06/2018
 
 Примечание. Предыдущий код вызывает метод `Where` объекта `IQueryable`, при этом фильтр обрабатывается на сервере. В некоторых случаях приложение может вызывать метод `Where` как метод расширения для коллекции в памяти. Предположим, например, что `_context.Students` меняется с EF Core `DbSet` на метод репозитория, возвращающий коллекцию `IEnumerable`. Обычно результат остается прежним, но в некоторых случаях он может отличаться.
 
-Например, реализация `Contains` в .NET Framework по умолчанию выполняет сравнение с учетом регистра. В SQL Server `Contains` учет регистра определяется параметрами сортировки у экземпляра SQL Server. По умолчанию SQL Serve не учитывает регистр. Можно вызвать `ToUpper`, чтобы явно велеть тесту не учитывать регистр.
+Например, реализация `Contains` в .NET Framework по умолчанию выполняет сравнение с учетом регистра. В SQL Server `Contains` учет регистра определяется параметрами сортировки у экземпляра SQL Server. По умолчанию SQL Server не учитывает регистр. Можно вызвать `ToUpper`, чтобы явно велеть тесту не учитывать регистр.
 
 `Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
@@ -133,9 +133,9 @@ ms.lasthandoff: 04/06/2018
 
 Вызов `ToUpper` снижает производительность. Код `ToUpper` добавляет функцию в предложение WHERE TSQL-оператора SELECT. Добавленная функция не позволяет оптимизатору использовать индекс. Учитывая, что SQL устанавливается без учета регистра, рекомендуется не использовать вызов `ToUpper`, когда он не требуется.
 
-### <a name="add-a-search-box-to-the-student-index-view"></a>Добавление поля поиска на страницу индекса учащихся
+### <a name="add-a-search-box-to-the-student-index-page"></a>Добавление поля поиска на страницу индексов учащихся
 
-Добавьте в *Views/Student/Index.cshtml* приведенный ниже выделенный код, чтобы создать кнопку **Search** и различные элементы хрома.
+Добавьте в *Pages/Student/Index.cshtml* приведенный ниже выделенный код, чтобы создать кнопку **Search** и различные элементы хрома.
 
 [!code-html[](intro/samples/cu/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
@@ -267,7 +267,7 @@ http://localhost:5000/Students?SearchString=an
 
 ### <a name="modify-the-about-razor-page"></a>Изменение страницы Razor "About" (О программе)
 
-Замените код в файле *Views/Home/About.cshtml* следующим кодом:
+Замените код в файле *Pages/About.cshtml* следующим кодом:
 
 [!code-html[](intro/samples/cu/Pages/About.cshtml)]
 

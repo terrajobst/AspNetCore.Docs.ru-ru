@@ -11,17 +11,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/http-requests
-ms.openlocfilehash: 30ac239a38376feecffc3010387ec5e0009b6db6
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 1f2c7522a10220cd9520d78846d2e897115447c2
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="initiate-http-requests"></a>Инициирование HTTP-запросов
 
 Авторы: [Гленн Кондрон (Glenn Condron)](https://github.com/glennc), [Райан Новак (Ryan Nowak)](https://github.com/rynowak) и [Стив Гордон (Steve Gordon)](https://github.com/stevejgordon)
-
-[!INCLUDE[](~/includes/2.1.md)]
 
 `IHttpClientFactory` можно зарегистрировать и использовать для настройки и создания экземпляров [HttpClient](/dotnet/api/system.net.http.httpclient) в приложении. Так вы получите следующие преимущества:
 
@@ -77,7 +75,7 @@ ms.lasthandoff: 05/03/2018
 
 [!code-csharp[](http-requests/samples/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 
-В приведенном выше коде конфигурация перемещается в типизированный клиент. Объект `HttpClient` предоставляется в виде открытого свойства. Можно определить связанные с API методы, которые предоставляют функциональные возможности `HttpClient`. Метод `GetLatestDocsIssue` инкапсулирует код, необходимый для запроса и анализа последнего выпуска из репозитория GitHub.
+В приведенном выше коде конфигурация перемещается в типизированный клиент. Объект `HttpClient` предоставляется в виде открытого свойства. Можно определить связанные с API методы, которые предоставляют функциональные возможности `HttpClient`. Метод `GetAspNetDocsIssues` инкапсулирует код, необходимый для запроса и анализа последнего открытого выпуска из репозитория GitHub.
 
 Для регистрации типизированного клиента можно использовать универсальный метод расширения `AddHttpClient` в `ConfigureServices`, указав класс типизированного клиента:
 

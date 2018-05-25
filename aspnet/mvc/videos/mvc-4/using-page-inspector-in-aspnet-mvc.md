@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-4/using-page-inspector-in-aspnet-mvc
-title: "С помощью инспектора страниц в ASP.NET MVC | Документы Microsoft"
+title: С помощью инспектора страниц в ASP.NET MVC | Документы Microsoft
 author: rick-anderson
-description: "Видео, которые более подробно рассматривается использование инспектора страниц в веб-приложений ASP.NET MVC. Чтение учебника"
+description: Видео, которые более подробно рассматривается использование инспектора страниц в веб-приложений ASP.NET MVC. Чтение учебника
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/04/2012
@@ -24,4 +24,4 @@ ms.lasthandoff: 11/10/2017
 
 Видео, которые более подробно рассматривается использование инспектора страниц в веб-приложений ASP.NET MVC. [Чтение учебника](../../overview/views/using-page-inspector-in-aspnet-mvc.md)
 
-[&#9654; Посмотрите видео (6 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/using-page-inspector-in-aspnet-mvc)
+[& #9654; Посмотрите видео (6 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/using-page-inspector-in-aspnet-mvc)

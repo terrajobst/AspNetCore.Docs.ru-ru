@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/scaleout-with-windows-azure-service-bus
-title: "SignalR горизонтального масштабирования с Azure Service Bus (SignalR 1.x) | Документы Microsoft"
+title: SignalR горизонтального масштабирования с Azure Service Bus (SignalR 1.x) | Документы Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/01/2013

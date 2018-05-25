@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/routing-and-action-selection
-title: "Маршрутизация и выбор действий в ASP.NET Web API | Документы Microsoft"
+title: Маршрутизация и выбор действий в ASP.NET Web API | Документы Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2012

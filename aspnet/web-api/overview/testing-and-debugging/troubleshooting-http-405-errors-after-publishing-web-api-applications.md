@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/testing-and-debugging/troubleshooting-http-405-errors-after-publishing-web-api-applications
-title: "Устранение неполадок HTTP 405 ошибок после публикации веб-API 2 приложений | Документы Microsoft"
+title: Устранение неполадок HTTP 405 ошибок после публикации веб-API 2 приложений | Документы Microsoft
 author: rmcmurray
-description: "Этот учебник описывает устранение ошибок HTTP 405 после публикации приложения веб-API рабочий веб-сервер."
+description: Этот учебник описывает устранение ошибок HTTP 405 после публикации приложения веб-API рабочий веб-сервер.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/01/2014

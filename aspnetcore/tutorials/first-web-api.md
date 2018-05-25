@@ -5,24 +5,20 @@ description: Сборка веб-API с помощью MVC ASP.NET Core и Visua
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/27/2018
+ms.date: 05/17/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-web-api
-ms.openlocfilehash: 962c24a7e654328df7e8893e589e45b19e87b931
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 1680d5e0be0f4844c904d923af30634c53bd1b81
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>Создание веб-API с помощью ASP.NET Core и Visual Studio для Windows
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Майк Уоссон](https://github.com/mikewasson)
-
-::: moniker range="= aspnetcore-2.1"
-[!INCLUDE[](~/includes/2.1.md)]
-::: moniker-end
 
 В этом руководстве вы создали веб-API для управления элементами списка дел. Пользовательский интерфейс не создан.
 
@@ -56,6 +52,8 @@ ms.lasthandoff: 05/03/2018
 ["value1","value2"]
 ```
 
+При использовании Internet Explorer будет предложено сохранить файл *values.json*.
+
 ### <a name="add-a-model-class"></a>Добавление класса модели
 
 Модель — это объект, представляющий данные в приложении. В этом случае единственной моделью является задача.
@@ -83,7 +81,7 @@ ms.lasthandoff: 05/03/2018
 
 [!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoContext.cs)]
 
-[!INCLUDE [Register the database context](../includes/webApi/register_dbContext.md)]
+[!INCLUDE[Register the database context](../includes/webApi/register_dbContext.md)]
 
 ### <a name="add-a-controller"></a>Добавление контроллера
 

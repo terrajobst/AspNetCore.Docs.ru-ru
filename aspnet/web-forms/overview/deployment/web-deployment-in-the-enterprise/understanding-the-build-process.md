@@ -210,7 +210,7 @@ MSBuild обрабатывает эту инструкцию, построени
 [!code-xml[Main](understanding-the-build-process/samples/sample11.xml)]
 
 
-В этом случае **%(DbPublishPackages.DatabaseConnectionString)**, **%(DbPublishPackages.TargetDatabase)**, и **%(DbPublishPackages.FullPath)** ссылаются значения метаданных **DbPublishPackages** коллекции элементов.  **\_Cmd** используется свойство **Exec** задачу, которая вызывает команду.
+В этом случае **%(DbPublishPackages.DatabaseConnectionString)**, **%(DbPublishPackages.TargetDatabase)**, и **%(DbPublishPackages.FullPath)** ссылаются значения метаданных **DbPublishPackages** коллекции элементов. **\_Cmd** используется свойство **Exec** задачу, которая вызывает команду.
 
 
 [!code-xml[Main](understanding-the-build-process/samples/sample12.xml)]

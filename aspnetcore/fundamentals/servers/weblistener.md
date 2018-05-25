@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: cd2e477824d916afcf1a7901e935dd465a466922
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 46871edb744ad152df8eb958b344068b7408dd1e
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера WebListener в ASP.NET Core
 
@@ -84,7 +84,7 @@ WebListener также хорошо подходит для внутренних
 
 * Настройка URL-адресов и портов для прослушивания 
 
-  По умолчанию ASP.NET Core привязан к `http://localhost:5000`. Чтобы настроить префиксы URL-адресов и порты, можно использовать метод расширения `UseURLs`, аргумент командной строки `urls` или систему конфигурации ASP.NET Core. Дополнительные сведения см. в разделе [Размещение](../../fundamentals/hosting.md).
+  По умолчанию платформа ASP.NET Core привязана к `http://localhost:5000`. Чтобы настроить префиксы URL-адресов и порты, можно использовать метод расширения `UseURLs`, аргумент командной строки `urls` или систему конфигурации ASP.NET Core. Дополнительные сведения см. в разделе [Размещение в ASP.NET Core(xref:fundamentals/host/index).
 
   WebListener использует [форматы строк префикса Http.Sys](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx). Для WebListener не предъявляются отдельные требования к формату строк префикса.
 
@@ -148,7 +148,7 @@ netsh http add urlacl url=https://+:443/ user=Users
 Следующий пример показывает, как назначить SSL-сертификат:
 
 ```console
-netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={00000000-0000-0000-0000-000000000000}".
+netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid="{00000000-0000-0000-0000-000000000000}".
 ```
 
 Ниже указана официальная справочная документация:
@@ -179,4 +179,4 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={000000
 
 * [Пример приложения для этой статьи](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample)
 * [Исходный код WebListener](https://github.com/aspnet/HttpSysServer/)
-* [Размещение](../hosting.md)
+* [Размещение](xref:fundamentals/host/index)

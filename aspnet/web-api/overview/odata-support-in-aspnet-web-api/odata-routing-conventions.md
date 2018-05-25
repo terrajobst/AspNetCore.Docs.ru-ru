@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
-title: "Соглашение о маршрутизации в ASP.NET Web API 2 Odata | Документы Microsoft"
+title: Соглашение о маршрутизации в ASP.NET Web API 2 Odata | Документы Microsoft
 author: MikeWasson
-description: "В этой статье описаны соглашения маршрутизации, которые веб-API использует конечные точки OData."
+description: В этой статье описаны соглашения маршрутизации, которые веб-API использует конечные точки OData.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/31/2013
@@ -147,7 +147,7 @@ ms.lasthandoff: 01/24/2018
 
 Для обоих методов Если соглашение не применяется на этот запрос, метод должен возвращать значение null.
 
-**ODataPath** представляет параметр синтаксического анализа пути ресурса OData. Он содержит список  **[ODataPathSegment](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatapathsegment.aspx)**  экземпляров, по одному для каждого сегмента пути к ресурсу. **ODataPathSegment** класс является абстрактным; каждого типа сегмента представляется с помощью класса, производного от **ODataPathSegment**.
+**ODataPath** представляет параметр синтаксического анализа пути ресурса OData. Он содержит список **[ODataPathSegment](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatapathsegment.aspx)** экземпляров, по одному для каждого сегмента пути к ресурсу. **ODataPathSegment** класс является абстрактным; каждого типа сегмента представляется с помощью класса, производного от **ODataPathSegment**.
 
 **ODataPath.TemplatePath** свойство является строка, представляющая результат объединения всех сегментов пути. Например, если URL-адрес является `/Products(1)/Supplier`, является шаблон пути &quot;~/entityset/key/navigation&quot;. Обратите внимание, что сегменты не соответствуют напрямую сегментов URI-адреса. Например, ключ сущности (1) представляется как собственные **ODataPathSegment**.
 
@@ -169,7 +169,7 @@ ms.lasthandoff: 01/24/2018
 
 1. Я являются производными от **EntitySetRoutingConvention**, так как **SelectController** метода этого класса подходит для этой новой соглашение о маршрутизации. Это означает, что нет необходимости в повторной реализации **SelectController**.
 2. Соглашение о применяется только для запросов GET, а только в том случае, когда шаблон пути будет &quot;~/entityset/key/navigation/key&quot;.
-3. Имя действия &quot;получить {EntityType}&quot;, где *{EntityType}* тип навигации коллекции. Например &quot;GetSupplier&quot;. Можно использовать любое соглашение об именовании, что вам нравится &#8212; просто убедитесь, что соответствует действий контроллера.
+3. Имя действия &quot;получить {EntityType}&quot;, где *{EntityType}* тип навигации коллекции. Например &quot;GetSupplier&quot;. Можно использовать любое соглашение об именовании, что вам нравится & #8212; просто убедитесь, что соответствует действий контроллера.
 4. Действие принимает два параметра с именем *ключ* и *relatedKey*. (Список некоторые имена стандартных параметров см. в разделе [ODataRouteConstants](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatarouteconstants.aspx).)
 
 Следующим шагом является добавление новое соглашение список соглашений о маршрутизации. Это происходит во время настройки, как показано в следующем коде:

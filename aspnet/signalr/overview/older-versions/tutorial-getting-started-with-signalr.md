@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/tutorial-getting-started-with-signalr
-title: "Учебник: Приступая к работе с SignalR 1.x | Документы Microsoft"
+title: 'Учебник: Приступая к работе с SignalR 1.x | Документы Microsoft'
 author: pfletcher
-description: "Используйте ASP.NET SignalR для построения приложения разговора в режиме реального времени на HTML-странице."
+description: Используйте ASP.NET SignalR для построения приложения разговора в режиме реального времени на HTML-странице.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013

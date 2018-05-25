@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/guide-to-the-api/working-with-groups
-title: "Работа с группами в SignalR | Документы Microsoft"
+title: Работа с группами в SignalR | Документы Microsoft
 author: pfletcher
-description: "Описывается, как сохранить сведения о членстве в группах с помощью API концентратора."
+description: Описывается, как сохранить сведения о членстве в группах с помощью API концентратора.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014

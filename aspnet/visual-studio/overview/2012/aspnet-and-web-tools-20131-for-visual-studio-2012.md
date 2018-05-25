@@ -1,14 +1,14 @@
 ---
 uid: visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
-title: "Заметки о выпуске для ASP.NET и веб-инструменты 2013.1 для Visual Studio 2012 | Документы Microsoft"
+title: Заметки о выпуске для ASP.NET и веб-инструменты 2013.1 для Visual Studio 2012 | Документы Microsoft
 author: microsoft
-description: "Этот документ описывает выпуска ASP.NET и Web Tools 2013.1 для Visual Studio 2012."
+description: Этот документ описывает выпуска ASP.NET и Web Tools 2013.1 для Visual Studio 2012.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/13/2013
 ms.topic: article
 ms.assetid: ca26e5bb-630e-41d2-8512-2a9386c431cb
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
 msc.type: authoredcontent
@@ -181,7 +181,7 @@ NuGet 2.7 включает широкий набор новых функций, 
 
 После обновления до ASP.NET Razor 3 или MVC ASP.NET 5, нотации tilde(~) может перестать работать правильно при использовании операции перезаписи URL-адрес. Перезапись URL-адреса влияет нотация tilde(~) в HTML-элементов, например &lt;A /&gt;, &lt;СЦЕНАРИЯ /&gt;, &lt;ССЫЛКУ и&gt;, и поэтому больше не сопоставляет тильда в корневой каталог.
 
-Например, если переписывать запросы для **asp.net/content** для **asp.net**, атрибут href в &lt;A href = «~/content/» /&gt; разрешается в **/content/ содержимое и** вместо  **/** . Чтобы отменить это изменение, можно задать **IIS\_WasUrlRewritten** контекста, значение false в каждой веб-страницы или в **приложения\_BeginRequest** в файле Global.asax.
+Например, если переписывать запросы для **asp.net/content** для **asp.net**, атрибут href в &lt;A href = «~/content/» /&gt; разрешается в **/content/ содержимое и** вместо **/**. Чтобы отменить это изменение, можно задать **IIS\_WasUrlRewritten** контекста, значение false в каждой веб-страницы или в **приложения\_BeginRequest** в файле Global.asax.
 
 <a id="templateissue"></a>
 ### <a name="templates"></a>Шаблоны

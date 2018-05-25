@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms
-title: "Использование веб-API с веб-форм ASP.NET | Документы Microsoft"
+title: Использование веб-API с веб-форм ASP.NET | Документы Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/03/2012
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/01/2017
 
 Запустите Visual Studio и выберите **новый проект** из **запустить** страницы. Или из **файл** последовательно выберите пункты **New** и затем **проекта**.
 
-В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#**выберите **Web**. В списке шаблонов проектов выберите **приложениях ASP.NET Web Forms**. Введите имя для проекта и нажмите кнопку **ОК**.
+В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#** выберите **Web**. В списке шаблонов проектов выберите **приложениях ASP.NET Web Forms**. Введите имя для проекта и нажмите кнопку **ОК**.
 
 ![](using-web-api-with-aspnet-web-forms/_static/image1.png)
 

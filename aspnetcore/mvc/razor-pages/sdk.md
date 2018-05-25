@@ -10,17 +10,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: content
 uid: mvc/razor-pages/sdk
-ms.openlocfilehash: 2cbebb12ccd1098e1950aa7eeb22fab4ffc689e6
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: acc049a69574968d1e304d6c504cb89243387d6c
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="aspnet-core-razor-sdk"></a>Пакет SDK для Razor в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
-
-[!INCLUDE[](~/includes/2.1.md)]
 
 [!INCLUDE[](~/includes/2.1-SDK.md)] включает пакет SDK MSBuild `Microsoft.NET.Sdk.Razor` (пакет SDK Razor). Пакет SDK для Razor:
 
@@ -66,7 +64,7 @@ ms.lasthandoff: 04/18/2018
 | ------------                                  | -------------                                                                 |
 | RazorGenerate                                 | Элементы (файлы *.cshtml*), которые являются входными данными для целей создания кода. |
 | RazorCompile                                  | Элементы (CS-файлы), которые являются входными данными для целей компиляции Razor. Используйте этот ItemGroup, чтобы указать дополнительные файлы для компиляции в сборку Razor. |
-| RazorAssemblyAttribute                        | Элементы, используемые для создания атрибутов для сборки Razor. Пример:  <br />`<RazorAssemblyAttribute ` <br />  `Include="System.Reflection.AssemblyMetadataAttribute"`<br />`  _Parameter1="BuildSource" _Parameter2="https://docs.asp.net/">` |
+| RazorTargetAssemblyAttribute                  | Элементы, используемые для создания атрибутов для сборки Razor. Пример:  <br />`<RazorAssemblyAttribute ` <br />  `Include="System.Reflection.AssemblyMetadataAttribute"`<br />`  _Parameter1="BuildSource" _Parameter2="https://docs.asp.net/">` |
 | RazorEmbeddedResource                         | Элементы, добавленные в качестве внедренных ресурсов к созданной сборке Razor |
 
 | Свойство.                                      | Описание:                                                                   |

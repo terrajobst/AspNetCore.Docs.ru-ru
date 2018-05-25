@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/10-working-with-video
-title: "Отображение видео в ASP.NET Web Pages (Razor) сайта | Документы Microsoft"
+title: Отображение видео в ASP.NET Web Pages (Razor) сайта | Документы Microsoft
 author: tfitzmac
-description: "В этой главе описывается отображение видео в веб-страниц ASP.NET со страницей синтаксиса Razor."
+description: В этой главе описывается отображение видео в веб-страниц ASP.NET со страницей синтаксиса Razor.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014

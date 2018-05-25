@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr
-title: "Учебник: Приступая к работе с SignalR 2 | Документы Microsoft"
+title: 'Учебник: Приступая к работе с SignalR 2 | Документы Microsoft'
 author: pfletcher
-description: "В этом учебнике содержатся сведения об использовании SignalR для создания приложения разговора в режиме реального времени. Будет добавить SignalR пустое веб-приложение ASP.NET и создать HTML-pa..."
+description: В этом учебнике содержатся сведения об использовании SignalR для создания приложения разговора в режиме реального времени. Будет добавить SignalR пустое веб-приложение ASP.NET и создать HTML-pa...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014

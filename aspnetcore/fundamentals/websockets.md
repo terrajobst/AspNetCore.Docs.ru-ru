@@ -1,6 +1,6 @@
 ---
 title: Поддержка WebSockets в ASP.NET Core
-author: tdykstra
+author: rick-anderson
 description: Сведения о начале работы с WebSocket в ASP.NET Core.
 manager: wpickett
 ms.author: tdykstra
@@ -10,11 +10,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/websockets
-ms.openlocfilehash: e744ab5b81ff85f48edb012a86b55003cc74929c
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: ede8064b5e77024b843357d4715869b3495b9147
+ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Поддержка WebSockets в ASP.NET Core
 

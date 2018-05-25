@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/using-page-inspector-in-a-visual-studio-11-beta-web-forms-project
-title: "С помощью инспектора страниц для Visual Studio 2012 в ASP.NET Web Forms | Документы Microsoft"
+title: С помощью инспектора страниц для Visual Studio 2012 в ASP.NET Web Forms | Документы Microsoft
 author: rick-anderson
-description: "Инспектор страниц для Visual Studio 2012 — средство веб-разработки с интегрированным браузером. Выберите любой элемент в встроенном браузере и инспектор страниц..."
+description: Инспектор страниц для Visual Studio 2012 — средство веб-разработки с интегрированным браузером. Выберите любой элемент в встроенном браузере и инспектор страниц...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -63,7 +63,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="create-a-web-application"></a>Создание веб-приложения
 
-Во-первых вы создадите веб-приложения, который будет использоваться инспектор страниц с. В Visual Studio выберите **файл** &gt; **новый проект**. Слева разверните узел **Visual C#**выберите **веб**, а затем выберите **приложениях ASP.NET Web Forms**.
+Во-первых вы создадите веб-приложения, который будет использоваться инспектор страниц с. В Visual Studio выберите **файл** &gt; **новый проект**. Слева разверните узел **Visual C#** выберите **веб**, а затем выберите **приложениях ASP.NET Web Forms**.
 
 ![Новое приложение Web Forms](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image1.png)
 
@@ -249,7 +249,7 @@ ms.lasthandoff: 01/24/2018
 
 ![IntelliSense отфильтрованные значения](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image24.png)
 
-Теперь введите двоеточие. При этом вставляется имя свойства полный цвет фона. Тип  **#**  или **rgb (**, и отображается палитра цветов:
+Теперь введите двоеточие. При этом вставляется имя свойства полный цвет фона. Тип **#** или **rgb (**, и отображается палитра цветов:
 
 ![Палитра цветов CSS](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image25.png)
 

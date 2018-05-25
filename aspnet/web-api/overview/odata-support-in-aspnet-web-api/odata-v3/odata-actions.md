@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/odata-actions
-title: "Поддержка действия OData в ASP.NET Web API 2 | Документы Microsoft"
+title: Поддержка действия OData в ASP.NET Web API 2 | Документы Microsoft
 author: MikeWasson
-description: "В OData действий, способ добавления серверных поведения, которые легко не определены как операций CRUD в объектах. Некоторые варианты применения действия включают: реализуйте..."
+description: 'В OData действий, способ добавления серверных поведения, которые легко не определены как операций CRUD в объектах. Некоторые варианты применения действия включают: реализуйте...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/25/2014

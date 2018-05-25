@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/improvements-in-visual-studio-2005
-title: "Усовершенствования в Visual Studio 2005 | Документы Microsoft"
+title: Усовершенствования в Visual Studio 2005 | Документы Microsoft
 author: microsoft
-description: "Visual Studio 2005 предоставляет разработчики веб-приложений с большом количестве улучшений и усовершенствований для веб-проектов."
+description: Visual Studio 2005 предоставляет разработчики веб-приложений с большом количестве улучшений и усовершенствований для веб-проектов.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -445,7 +445,7 @@ Visual Studio 2005 устраняет зависимость от mdm.exe и vs7
 
 ASP.NET Development Server является ограниченным веб-сервера. Запрещены удаленные соединения, он не допускает запросы из любого пользователя, отличного от пользователя, запустившего веб-сервера. Он также имеет возможность предоставления ASP-страниц. Обслуживаются только ASP.NET ресурсов и HTML (включая изображений, файлов CSS, т. д.).
 
-ASP.NET Development Server может быть вызвано из командной строки, запустив файл WebDev.WebServer.exe, расположенный в папке c:/Windows/Microsoft.NET/Framework/v2.0./ */*  /  */*/*. Следующее диалоговое окно отображает параметры, которые доступны.
+ASP.NET Development Server может быть вызвано из командной строки, запустив файл WebDev.WebServer.exe, расположенный в папке c:/Windows/Microsoft.NET/Framework/v2.0./*/* /  */*/*. Следующее диалоговое окно отображает параметры, которые доступны.
 
 
 ![](improvements-in-visual-studio-2005/_static/image11.jpg)

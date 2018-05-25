@@ -2,7 +2,7 @@
 
 ![Домашняя или индексная страница](../../tutorials/razor-pages/razor-pages-start/_static/home2.png)
 
-Проверьте ссылки. Ссылки **RazorPagesMovie** и **Главная** ведут на стартовую страницу (Index). Ссылки **О программе** и **Контакт** указывают соответственно на страницы `About` и `Contact`.
+Проверьте ссылки. Ссылки **RazorPagesMovie** и **Главная** ведут на страницу индексов. Ссылки **О программе** и **Контакт** указывают соответственно на страницы `About` и `Contact`.
 
 ## <a name="project-files-and-folders"></a>Защита файлов и папок
 
@@ -10,10 +10,10 @@
 
 | Файл или папка              | Цель |
 | ----------------- | ------------ | 
-| wwwroot | Содержит статические файлы. См. [Работа со статическими файлами](xref:fundamentals/static-files). |
+| wwwroot | Содержит статические файлы. См. [Статические файлы](xref:fundamentals/static-files). |
 | Pages | Папка для [Razor Pages](xref:mvc/razor-pages/index). | 
 | *appsettings.json* | [Конфигурация](xref:fundamentals/configuration/index) |
-| *Program.cs* | [Содержит](xref:fundamentals/hosting) приложение ASP.NET Core.|
+| *Program.cs* | [Содержит](xref:fundamentals/host/index) приложение ASP.NET Core.|
 | *Startup.cs* | Настраивает службы и конвейер обработки запросов. См. раздел [Запуск](xref:fundamentals/startup).|
 
 ### <a name="the-pages-folder"></a>Папка "Pages"

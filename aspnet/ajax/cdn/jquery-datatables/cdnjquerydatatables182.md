@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables182
 msc.type: content
 ms.openlocfilehash: 90bb75f2427bbe12cf0bfdc1ce4015dace328ed2
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/21/2018
 ---
 <a name="jquery-datatables-182"></a>jQuery DataTables 1.8.2
 ====================
@@ -26,12 +26,12 @@ ms.lasthandoff: 03/22/2018
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/jquery.dataTables.min.js
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/css/jquery.dataTables.css
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/css/jquery.dataTables\_themeroller.css
-- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/back\_Disabled.jpg
-- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/back\_Enabled.jpg
-- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/forward\_Disabled.jpg
-- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/forward\_Enabled.jpg
-- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/sort\_ASC.PNG
+- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/back\_disabled.jpg
+- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/back\_enabled.jpg
+- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/forward\_disabled.jpg
+- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/forward\_enabled.jpg
+- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/sort\_asc.png
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/sort\_asc\_disabled.png
-- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/sort\_Both.PNG
+- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/sort\_both.png
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/sort\_desc.png
-- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/sort\_DESC\_disabled.png
+- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/images/sort\_desc\_disabled.png

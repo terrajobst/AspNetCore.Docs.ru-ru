@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-cs
-title: "Общие сведения о моделях, представлениях и контроллерах (C#) | Документы Microsoft"
+title: Общие сведения о моделях, представлениях и контроллерах (C#) | Документы Microsoft
 author: StephenWalther
-description: "Не понимаете, о моделях, представлениях и контроллерах? В этом учебнике Стивен Вальтер приведены различные части приложения ASP.NET MVC."
+description: Не понимаете, о моделях, представлениях и контроллерах? В этом учебнике Стивен Вальтер приведены различные части приложения ASP.NET MVC.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008

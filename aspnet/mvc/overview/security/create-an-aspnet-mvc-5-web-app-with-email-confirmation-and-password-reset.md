@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
-title: "Создание безопасного веб-приложения ASP.NET MVC 5 с журналом, электронной почты, пароль и подтверждение сброса (C#) | Документы Microsoft"
+title: Создание безопасного веб-приложения ASP.NET MVC 5 с журналом, электронной почты, пароль и подтверждение сброса (C#) | Документы Microsoft
 author: Rick-Anderson
-description: "Этого учебника показано, как построить веб-приложение ASP.NET MVC 5 с подтверждения электронной почты и пароль, с помощью системы членства ASP.NET Identity. ЦС..."
+description: Этого учебника показано, как построить веб-приложение ASP.NET MVC 5 с подтверждения электронной почты и пароль, с помощью системы членства ASP.NET Identity. ЦС...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/26/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: d55b34135d5bab98ab8de31cc4b12dcc272cbc0a
-ms.sourcegitcommit: d43c84c4c80527c85e49d53691b293669557a79d
+ms.openlocfilehash: bfa5d52019be81374c7a544e255ab7ffb301fa7b
+ms.sourcegitcommit: 50d40c83fa641d283c097f986dde5341ebe1b44c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 05/22/2018
 ---
 <a name="create-a-secure-aspnet-mvc-5-web-app-with-log-in-email-confirmation-and-password-reset-c"></a>Создание безопасного веб-приложения ASP.NET MVC 5 с журналом, электронной почты, пароль и подтверждение сброса (C#)
 ====================
@@ -78,7 +78,7 @@ ms.lasthandoff: 02/20/2018
 [!code-xml[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample4.xml)]
 
 > [!WARNING]
-> Безопасность — никогда не конфиденциальных данных в хранилище в исходном коде. Учетная запись и учетные данные хранятся в appSetting. В Azure, можно безопасно хранить эти значения на  **[Настройка](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)**  на портале Azure. В разделе [советы и рекомендации по развертыванию пароли и другие конфиденциальные данные в ASP.NET и Azure](../../../identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md).
+> Безопасность — никогда не конфиденциальных данных в хранилище в исходном коде. Учетная запись и учетные данные хранятся в appSetting. В Azure, можно безопасно хранить эти значения на **[Настройка](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** на портале Azure. В разделе [советы и рекомендации по развертыванию пароли и другие конфиденциальные данные в ASP.NET и Azure](../../../identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md).
 
 
 ### <a name="enable-email-confirmation-in-the-account-controller"></a>Включение подтверждения электронной почты в контроллера учетных записей
@@ -108,7 +108,7 @@ ms.lasthandoff: 02/20/2018
 
 [!code-cshtml[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample8.cshtml)]
 
-Добавить [авторизовать атрибут](https://msdn.microsoft.com/library/system.web.mvc.authorizeattribute(v=vs.118).aspx) для `Contact` метод действия контроллера Home. Нажмите кнопку можно использовать на **контакт** ссылку, чтобы проверить анонимных пользователей нет доступа и прошедшие проверку подлинности пользователи имеют доступ.
+Добавить [авторизовать атрибут](https://msdn.microsoft.com/library/system.web.mvc.authorizeattribute(v=vs.118).aspx) для `Contact` метод действия контроллера Home. Можно щелкнуть **контакт** ссылку, чтобы проверить анонимных пользователей нет доступа и прошедшие проверку подлинности пользователи имеют доступ.
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample9.cs?highlight=1)]
 
@@ -148,18 +148,18 @@ ms.lasthandoff: 02/20/2018
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample15.cs?highlight=17)]
 
-Обновить метод входа для повторной отправки пароля при Если учетная запись пользователя не имеет подтверждения:
+Обновите метод входа для повторной отправки пароль, если учетная запись пользователя не имеет подтверждения:
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample16.cs?highlight=20)]
 
 <a id="combine"></a>
 ## <a name="combine-social-and-local-login-accounts"></a>Объединение социальных сетей и локальных учетных записей
 
-Можно объединять учетные записи локальных и социальных сетей, щелкнув ссылку по электронной почте. В следующей последовательности  **RickAndMSFT@gmail.com**  сначала создается как локальное имя входа, но можно создать учетную запись в качестве социальных журналов в первой, а затем добавить локальный вход.
+Можно объединять учетные записи локальных и социальных сетей, щелкнув ссылку по электронной почте. В следующей последовательности **RickAndMSFT@gmail.com** сначала создается как локальное имя входа, но можно создать учетную запись в качестве социальных журналов в первой, а затем добавить локальный вход.
 
 ![](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/_static/image5.png)
 
-Щелкните **управление** ссылку. Примечание внешних 0 (социальных имена входа), связанные с этой учетной записи.
+Щелкните **управление** ссылку. Примечание **внешних имен входа: 0** для этой учетной записи.
 
 ![](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/_static/image6.png)
 

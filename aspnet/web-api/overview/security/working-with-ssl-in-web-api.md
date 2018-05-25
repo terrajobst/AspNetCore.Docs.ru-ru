@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/security/working-with-ssl-in-web-api
-title: "Работа с SSL в веб-API | Документы Microsoft"
+title: Работа с SSL в веб-API | Документы Microsoft
 author: MikeWasson
-description: "Показано, как использовать протокол SSL с веб-API ASP.NET, в том числе с использованием SSL-сертификатов клиента."
+description: Показано, как использовать протокол SSL с веб-API ASP.NET, в том числе с использованием SSL-сертификатов клиента.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/12/2012

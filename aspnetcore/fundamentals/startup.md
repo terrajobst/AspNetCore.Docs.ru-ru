@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/startup
-ms.openlocfilehash: 8dd632a2c888e65c6420e0fed7acf6fa15173b3d
-ms.sourcegitcommit: c4a31aaf902f2e84aaf4a9d882ca980fdf6488c0
+ms.openlocfilehash: a61f78b2d0e5c6c171a26690fcce256462a82508
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="application-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 04/23/2018
 
 [!code-csharp[](startup/snapshot_sample/Startup2.cs)]
 
-Альтернативой внедрению `IHostingEnvironment` является использование подхода на основе соглашений. Приложение может определять отдельные классы `Startup` для различных сред (например, `StartupDevelopment`), при этом подходящий класс запуска выбирается во время выполнения. Класс, у которого суффикс имени соответствует текущей среде, получает приоритет. Если приложение выполняется в среде разработки и включает в себя оба класса — `Startup` и `StartupDevelopment`, используется класс `StartupDevelopment`. Дополнительные сведения см. в статье [Работа с несколькими средами](xref:fundamentals/environments#startup-conventions).
+Альтернативой внедрению `IHostingEnvironment` является использование подхода на основе соглашений. Приложение может определять отдельные классы `Startup` для различных сред (например, `StartupDevelopment`), при этом подходящий класс запуска выбирается во время выполнения. Класс, у которого суффикс имени соответствует текущей среде, получает приоритет. Если приложение выполняется в среде разработки и включает в себя оба класса — `Startup` и `StartupDevelopment`, используется класс `StartupDevelopment`. Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments#startup-conventions).
 
 Дополнительные сведения о `WebHostBuilder` см. в разделе [Размещение](xref:fundamentals/hosting). Сведения об обработке ошибок во время запуска см. в разделе [Обработка исключений при запуске](xref:fundamentals/error-handling#startup-exception-handling).
 
@@ -64,9 +64,10 @@ ms.lasthandoff: 04/23/2018
 
 [!code-csharp[](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
 
-::: moniker range=">= aspnetcore-2.1" 
+::: moniker range=">= aspnetcore-2.1"
 
 <a name="setcompatibilityversion"></a>
+
 ### <a name="setcompatibilityversion-for-aspnet-core-mvc"></a>SetCompatibilityVersion для ASP.NET Core MVC 
 
 Метод `SetCompatibilityVersion` позволяет приложению принимать или отклонять потенциально критические изменения в поведении, появившиеся в ASP.NET MVC Core 2.1+. Эти потенциально критические изменения обычно затрагивают поведение подсистем MVC и способы вызова **кода** средой выполнения. Если принять эти изменения, вы сможете использовать актуальное поведение, которое сохранится в ASP.NET Core.
@@ -157,10 +158,14 @@ ms.lasthandoff: 04/23/2018
 * Несколько реализаций `IStartupFilter` могут взаимодействовать с одними и теми же объектами. Если важен порядок, упорядочите регистрации службы `IStartupFilter` в соответствии с требуемым порядком выполнения ПО промежуточного слоя.
 * Библиотеки могут добавлять ПО промежуточного слоя с одной или несколькими реализациями `IStartupFilter`, которые выполняются до или после другого ПО промежуточного слоя приложения, зарегистрированного с помощью `IStartupFilter`. Чтобы вызвать ПО промежуточного слоя `IStartupFilter` до ПО промежуточного слоя, добавляемого библиотекой `IStartupFilter`, расположите регистрацию службы до добавления библиотеки в контейнер службы. Чтобы вызвать его после этого момента, расположите регистрацию службы после добавления библиотеки.
 
+## <a name="adding-configuration-at-startup-from-an-external-assembly"></a>Добавление конфигурации из внешней сборки при запуске
+
+Реализация [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) позволяет при запуске добавлять в приложение улучшения из внешней сборки вне класса `Startup` приложения. Дополнительные сведения см. в разделе [Усовершенствование приложения из внешней сборки](xref:fundamentals/configuration/platform-specific-configuration).
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Размещение](xref:fundamentals/hosting)
-* [Работа с несколькими средами](xref:fundamentals/environments)
+* [Использование нескольких сред](xref:fundamentals/environments)
 * [ПО промежуточного слоя](xref:fundamentals/middleware/index)
 * [Ведение журнала](xref:fundamentals/logging/index)
 * [Конфигурация](xref:fundamentals/configuration/index)

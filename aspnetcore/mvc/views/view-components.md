@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/view-components
-ms.openlocfilehash: a3614024c7f776e4502bc049180ae1c965e31db4
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: cdf44fc15ac64497b2589e8b7b289beb94c5b2c4
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="view-components-in-aspnet-core"></a>Просмотр компонентов в ASP.NET Core
 
@@ -21,9 +21,11 @@ ms.lasthandoff: 05/03/2018
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="introducing-view-components"></a>Общие сведения о компонентах представлений
+## <a name="view-components"></a>Компоненты представлений
 
-Недавно появившиеся в ASP.NET Core MVC компоненты представлений похожи на частичные представления, но при этом гораздо функциональнее. Компоненты представлений не используют привязку модели и зависят только от данных, предоставляемых при их вызове. Компонент представлений:
+Компоненты представлений похожи на частичные представления, но при этом гораздо функциональнее. Компоненты представлений не используют привязку модели и зависят только от данных, предоставляемых при их вызове. Эта статья написана для ASP.NET Core MVC, но компоненты представлений работают и в Razor Pages.
+
+Компонент представлений:
 
 * Выполняет отрисовку фрагмента, а не всего отклика.
 * Включает те же преимущества разделения функций и тестирования, которые доступны между контроллером и представлением.

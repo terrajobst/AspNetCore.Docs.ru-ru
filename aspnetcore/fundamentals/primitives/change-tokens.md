@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/primitives/change-tokens
-ms.openlocfilehash: 3055eec91adc412b596d4cc73e8523e18ff63331
-ms.sourcegitcommit: 7c8fd9b7445cd77eb7f7d774bfd120c26f3b5d84
+ms.openlocfilehash: 06751e713fbd579a944333cc3c3b2c0c0ad51eba
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Обнаружение изменений с помощью токенов изменений в ASP.NET Core
 
@@ -108,7 +108,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 [!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet2)]
 
-`config.GetReloadToken()` предоставляет токен. `InvokeChanged` является методом обратного вызова. `state` в этом экземпляре является строкой, описывающей состояние отслеживания. Используются два свойства:
+`config.GetReloadToken()` предоставляет токен. `InvokeChanged` является методом обратного вызова. `state` в этом экземпляре является ссылкой на экземпляр `IConfigurationMonitor`, используемый для доступа к состоянию мониторинга. Используются два свойства:
 
 * `MonitoringEnabled` указывает, нужно ли обратному вызову выполнять свой пользовательский код.
 * `CurrentState` описывает текущее состояние отслеживания для использования в пользовательском интерфейсе.
@@ -116,7 +116,6 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 Метод `InvokeChanged` похож на описанный ранее подход, за исключением того, что он:
 
 * не выполняет свой код, если только `MonitoringEnabled` не имеет значение `true`;
-* задает для строки свойства `CurrentState` описательное сообщение, регистрирующее время выполнения кода;
 * записывает текущее значение `state` в своих выходных данных `WriteConsole`.
 
 [!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet3)]
@@ -201,7 +200,6 @@ var compositeChangeToken =
 
 * [Кэш в памяти](xref:performance/caching/memory)
 * [Работа с распределенным кэшем](xref:performance/caching/distributed)
-* [Обнаружение изменений с помощью маркеров изменений](xref:fundamentals/primitives/change-tokens)
 * [Кэширование ответов](xref:performance/caching/response)
 * [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
 * [Вспомогательная функция тега кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)

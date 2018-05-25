@@ -1,9 +1,9 @@
 ---
 uid: signalr/overview/performance/using-signalr-performance-counters-in-an-azure-web-role
-title: "Использование счетчиков производительности SignalR в веб-роли Azure | Документы Microsoft"
+title: Использование счетчиков производительности SignalR в веб-роли Azure | Документы Microsoft
 author: guardrex
-description: "Описывается установка и использование счетчиков производительности SignalR в веб-роли Azure."
-keywords: "Счетчик ASP.NET,SignalR,Performance, веб-роли azure"
+description: Описывается установка и использование счетчиков производительности SignalR в веб-роли Azure.
+keywords: Счетчик ASP.NET,SignalR,Performance, веб-роли azure
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/11/2017

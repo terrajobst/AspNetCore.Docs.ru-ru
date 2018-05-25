@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/security/individual-accounts-in-web-api
-title: "Защита веб-API с отдельным учетным записям и локального имени входа в ASP.NET Web API 2.2 | Документы Microsoft"
+title: Защита веб-API с отдельным учетным записям и локального имени входа в ASP.NET Web API 2.2 | Документы Microsoft
 author: MikeWasson
-description: "В этом разделе показано, как защитить веб-API, с помощью OAuth2 для проверки подлинности базы данных членства. Версии программного обеспечения, используемые в учебник Visual Studio 201..."
+description: В этом разделе показано, как защитить веб-API, с помощью OAuth2 для проверки подлинности базы данных членства. Версии программного обеспечения, используемые в учебник Visual Studio 201...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/15/2014

@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: ce79118fa025f912d7f04e2c9bff481a04489674
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 97c0b289b259332d57f8175e05020fe03d505723
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>Основы ASP.NET Core
 
@@ -155,7 +155,7 @@ ASP.NET Core ограничивает доступ к файловой сист�
 
 Приложения ASP.NET Core настраивают и запускают *хост*, который отвечает за запуск приложений и управление жизненным циклом.
 
-Дополнительные сведения см. в разделе [Размещение](xref:fundamentals/hosting).
+Дополнительные сведения см. в разделе [Размещение в ASP.NET Core](xref:fundamentals/host/index).
 
 ## <a name="session-and-application-state"></a>Состояние сеанса и приложения
 
@@ -189,7 +189,7 @@ ASP.NET Core ограничивает доступ к файловой сист�
 
 Фоновые задачи реализуются как *размещенные службы*. Размещенная служба — это класс с логикой фоновой задачи, реализующий интерфейс [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice).
 
-Дополнительные сведения см. в статье [Background tasks with hosted services in ASP.NET Core](xref:fundamentals/hosted-services) (Фоновые задачи с размещенными службами в ASP.NET Core).
+Дополнительные сведения см. в статье [Background tasks with hosted services in ASP.NET Core](xref:fundamentals/host/hosted-services) (Фоновые задачи с размещенными службами в ASP.NET Core).
 
 ## <a name="open-web-interface-for-net-owin"></a>Открытый веб-интерфейс для .NET (OWIN)
 
