@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/gdpr
-ms.openlocfilehash: 3adfd1703dbf6446356886a662168bf1dbf65d56
-ms.sourcegitcommit: 300a1127957dcdbce1b6ad79a7b9dc676f571510
-ms.translationtype: HT
+ms.openlocfilehash: dc1724e8a78c25d3697d14ad784ce853737681f2
+ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/23/2018
+ms.lasthandoff: 05/24/2018
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Поддержка Европа общие данные защиты стабилизации (GDPR) в ASP.NET Core
 
@@ -28,9 +28,9 @@ ASP.NET Core предоставляет API-интерфейсы и шаблон
 * [Файлы cookie TempData и сеанса](#tempdata) не работают при отключении отслеживания.
 * [Управление удостоверения](#pd) странице приводятся ссылки для загрузки и удаление данных пользователей.
 
-[Пример приложения](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr) позволяет проверить большинство точек расширения GDPR и добавлен в список шаблонов ASP.NET Core 2.1 API-интерфейсы. В разделе [ReadMe](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr) файла для тестирования инструкции.
+[Пример приложения](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr/sample) позволяет проверить большинство точек расширения GDPR и добавлен в список шаблонов ASP.NET Core 2.1 API-интерфейсы. В разделе [ReadMe](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr/sample) файла для тестирования инструкции.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>Поддержка GDPR ASP.NET Core в шаблоне созданного кода
 
