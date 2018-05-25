@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/aspnet-web-pages-razor-faq
-title: "Веб-страницы ASP.NET (Razor) часто задаваемые вопросы | Документы Microsoft"
+title: Веб-страницы ASP.NET (Razor) часто задаваемые вопросы | Документы Microsoft
 author: tfitzmac
-description: "В этой статье перечислены некоторые часто задаваемые вопросы о веб-страниц ASP.NET (Razor) и WebMatrix. Версии программного обеспечения, используемых в учебника по ASP.NET Web Pages (р..."
+description: В этой статье перечислены некоторые часто задаваемые вопросы о веб-страниц ASP.NET (Razor) и WebMatrix. Версии программного обеспечения, используемых в учебника по ASP.NET Web Pages (р...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/07/2014

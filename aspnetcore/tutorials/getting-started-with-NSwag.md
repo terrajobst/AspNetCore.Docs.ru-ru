@@ -1,195 +1,237 @@
 ---
 title: Начало работы с NSwag и ASP.NET Core
 author: zuckerthoben
-description: Узнайте, как использовать NSwag для создания документации и страниц справки для веб-приложения API в ASP.NET Core.
+description: Узнайте, как использовать NSwag для создания документации и страниц справки для веб-API в ASP.NET Core.
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 03/15/2018
+ms.date: 05/08/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 80e6a9e1702d8f68d139d2ff9c3a01a27c40cecb
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0f0aa0eeaa174ef40f03aab2500a8b3ce37e9448
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="get-started-with-nswag-and-aspnet-core"></a><span data-ttu-id="4a846-103">Начало работы с NSwag и ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4a846-103">Get started with NSwag and ASP.NET Core</span></span>
+# <a name="get-started-with-nswag-and-aspnet-core"></a><span data-ttu-id="c2098-103">Начало работы с NSwag и ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="c2098-103">Get started with NSwag and ASP.NET Core</span></span>
 
-<span data-ttu-id="4a846-104">Авторы: [Кристоф Ниенабер (Christoph Nienaber)](https://twitter.com/zuckerthoben) и [Рико Сутер (Rico Suter)](https://rsuter.com)</span><span class="sxs-lookup"><span data-stu-id="4a846-104">By [Christoph Nienaber](https://twitter.com/zuckerthoben) and [Rico Suter](https://rsuter.com)</span></span>
+<span data-ttu-id="c2098-104">Авторы: [Кристоф Ниенабер (Christoph Nienaber)](https://twitter.com/zuckerthoben) и [Рико Сутер (Rico Suter)](https://rsuter.com)</span><span class="sxs-lookup"><span data-stu-id="c2098-104">By [Christoph Nienaber](https://twitter.com/zuckerthoben) and [Rico Suter](https://rsuter.com)</span></span>
 
-<span data-ttu-id="4a846-105">Для использования [NSwag](https://github.com/RSuter/NSwag) с ПО промежуточного слоя ASP.NET Core требуется пакет NuGet [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/).</span><span class="sxs-lookup"><span data-stu-id="4a846-105">Using [NSwag](https://github.com/RSuter/NSwag) with ASP.NET Core middleware requires the [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/) NuGet package.</span></span> <span data-ttu-id="4a846-106">Пакет состоит из генератора Swagger, пользовательского интерфейса Swagger (v2 и v3) и [пользовательского интерфейса ReDoc](https://github.com/Rebilly/ReDoc).</span><span class="sxs-lookup"><span data-stu-id="4a846-106">The package consists of a Swagger generator, Swagger UI (v2 and v3), and [ReDoc UI](https://github.com/Rebilly/ReDoc).</span></span>
+::: moniker range="<= aspnetcore-2.0"
+<span data-ttu-id="c2098-105">[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="c2098-105">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+<span data-ttu-id="c2098-106">[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="c2098-106">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
+::: moniker-end
 
-<span data-ttu-id="4a846-107">Настоятельно рекомендуется использовать возможности создания кода в NSwag.</span><span class="sxs-lookup"><span data-stu-id="4a846-107">It's highly recommended to make use of NSwag's code generation capabilities.</span></span> <span data-ttu-id="4a846-108">Выберите один из следующих вариантов создания кода:</span><span class="sxs-lookup"><span data-stu-id="4a846-108">Choose one of the following options for code generation:</span></span>
+<span data-ttu-id="c2098-107">Для использования [NSwag](https://github.com/RSuter/NSwag) с ПО промежуточного слоя ASP.NET Core требуется пакет NuGet [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/).</span><span class="sxs-lookup"><span data-stu-id="c2098-107">Using [NSwag](https://github.com/RSuter/NSwag) with ASP.NET Core middleware requires the [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/) NuGet package.</span></span> <span data-ttu-id="c2098-108">Пакет состоит из генератора Swagger, пользовательского интерфейса Swagger (v2 и v3) и [пользовательского интерфейса ReDoc](https://github.com/Rebilly/ReDoc).</span><span class="sxs-lookup"><span data-stu-id="c2098-108">The package consists of a Swagger generator, Swagger UI (v2 and v3), and [ReDoc UI](https://github.com/Rebilly/ReDoc).</span></span>
 
-* <span data-ttu-id="4a846-109">Используйте [NSwagStudio](https://github.com/NSwag/NSwag/wiki/NSwagStudio), классическое приложение Windows для создания клиентского кода в C# и TypeScript для вашего API</span><span class="sxs-lookup"><span data-stu-id="4a846-109">Use [NSwagStudio](https://github.com/NSwag/NSwag/wiki/NSwagStudio), a Windows desktop app for generating client code in C# and TypeScript for your API</span></span>
-* <span data-ttu-id="4a846-110">Используйте пакеты NuGet [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) или [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/), чтобы создавать код внутри проекта</span><span class="sxs-lookup"><span data-stu-id="4a846-110">Use the [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) or [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) NuGet packages to do code generation inside your project</span></span>
-* <span data-ttu-id="4a846-111">Используйте NSwag из [командной строки](https://github.com/NSwag/NSwag/wiki/CommandLine)</span><span class="sxs-lookup"><span data-stu-id="4a846-111">Use NSwag from the [command line](https://github.com/NSwag/NSwag/wiki/CommandLine)</span></span>
-* <span data-ttu-id="4a846-112">Используйте пакет NuGet [NSwag.MSBuild](https://github.com/NSwag/NSwag/wiki/MSBuild)</span><span class="sxs-lookup"><span data-stu-id="4a846-112">Use the [NSwag.MSBuild](https://github.com/NSwag/NSwag/wiki/MSBuild) NuGet package</span></span>
+<span data-ttu-id="c2098-109">Настоятельно рекомендуется использовать возможности создания кода в NSwag.</span><span class="sxs-lookup"><span data-stu-id="c2098-109">It's highly recommended to make use of NSwag's code generation capabilities.</span></span> <span data-ttu-id="c2098-110">Выберите один из следующих вариантов создания кода:</span><span class="sxs-lookup"><span data-stu-id="c2098-110">Choose one of the following options for code generation:</span></span>
 
-## <a name="features"></a><span data-ttu-id="4a846-113">Функции</span><span class="sxs-lookup"><span data-stu-id="4a846-113">Features</span></span>
+* <span data-ttu-id="c2098-111">Используйте [NSwagStudio](https://github.com/NSwag/NSwag/wiki/NSwagStudio), классическое приложение Windows для создания клиентского кода в C# и TypeScript для вашего API.</span><span class="sxs-lookup"><span data-stu-id="c2098-111">Use [NSwagStudio](https://github.com/NSwag/NSwag/wiki/NSwagStudio), a Windows desktop app for generating client code in C# and TypeScript for your API.</span></span>
+* <span data-ttu-id="c2098-112">Используйте пакеты NuGet [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) или [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/), чтобы создавать код внутри проекта.</span><span class="sxs-lookup"><span data-stu-id="c2098-112">Use the [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) or [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) NuGet packages to do code generation inside your project.</span></span>
+* <span data-ttu-id="c2098-113">Используйте NSwag из [командной строки](https://github.com/NSwag/NSwag/wiki/CommandLine).</span><span class="sxs-lookup"><span data-stu-id="c2098-113">Use NSwag from the [command line](https://github.com/NSwag/NSwag/wiki/CommandLine).</span></span>
+* <span data-ttu-id="c2098-114">Используйте пакет NuGet [NSwag.MSBuild](https://github.com/NSwag/NSwag/wiki/MSBuild).</span><span class="sxs-lookup"><span data-stu-id="c2098-114">Use the [NSwag.MSBuild](https://github.com/NSwag/NSwag/wiki/MSBuild) NuGet package.</span></span>
 
-<span data-ttu-id="4a846-114">Основная причина применения NSwag — возможность не только ввести пользовательский интерфейс Swagger и генератор Swagger, но и использовать гибкие возможности создания кода.</span><span class="sxs-lookup"><span data-stu-id="4a846-114">The main reason to use NSwag is the ability to not only introduce the Swagger UI and Swagger generator, but to make use of the flexible code generation capabilities.</span></span> <span data-ttu-id="4a846-115">Вам не требуется существующий API &mdash; вы можете использовать API сторонних разработчиков, которые содержат Swagger и позволяют NSwag создавать реализацию клиента.</span><span class="sxs-lookup"><span data-stu-id="4a846-115">You don't need an existing API&mdash;you can use third-party APIs that incorporate Swagger and let NSwag generate a client implementation.</span></span> <span data-ttu-id="4a846-116">В любом случае цикл разработки ускоряется, и вам проще адаптироваться к изменениям API.</span><span class="sxs-lookup"><span data-stu-id="4a846-116">Either way, the development cycle is expedited and you can more easily adapt to API changes.</span></span>
+## <a name="features"></a><span data-ttu-id="c2098-115">Функции</span><span class="sxs-lookup"><span data-stu-id="c2098-115">Features</span></span>
 
-## <a name="package-installation"></a><span data-ttu-id="4a846-117">Установка пакета</span><span class="sxs-lookup"><span data-stu-id="4a846-117">Package installation</span></span>
+<span data-ttu-id="c2098-116">Основная причина применения NSwag — возможность не только ввести пользовательский интерфейс Swagger и генератор Swagger, но и использовать гибкие возможности создания кода.</span><span class="sxs-lookup"><span data-stu-id="c2098-116">The main reason to use NSwag is the ability to not only introduce the Swagger UI and Swagger generator, but to make use of the flexible code generation capabilities.</span></span> <span data-ttu-id="c2098-117">Вам не требуется существующий API &mdash; вы можете использовать API сторонних разработчиков, которые содержат Swagger и позволяют NSwag создавать реализацию клиента.</span><span class="sxs-lookup"><span data-stu-id="c2098-117">You don't need an existing API&mdash;you can use third-party APIs that incorporate Swagger and let NSwag generate a client implementation.</span></span> <span data-ttu-id="c2098-118">В любом случае цикл разработки ускоряется, и вам проще адаптироваться к изменениям API.</span><span class="sxs-lookup"><span data-stu-id="c2098-118">Either way, the development cycle is expedited and you can more easily adapt to API changes.</span></span>
 
-<span data-ttu-id="4a846-118">Пакет NuGet NSwag можно добавить одним из описанных ниже способов.</span><span class="sxs-lookup"><span data-stu-id="4a846-118">The NSwag NuGet package can be added with the following approaches:</span></span>
+## <a name="package-installation"></a><span data-ttu-id="c2098-119">Установка пакета</span><span class="sxs-lookup"><span data-stu-id="c2098-119">Package installation</span></span>
 
-# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="4a846-119">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="4a846-119">Visual Studio</span></span>](#tab/visual-studio)
+<span data-ttu-id="c2098-120">Пакет NuGet NSwag можно добавить одним из описанных ниже способов.</span><span class="sxs-lookup"><span data-stu-id="c2098-120">The NSwag NuGet package can be added with the following approaches:</span></span>
 
-* <span data-ttu-id="4a846-120">В окне **Консоль диспетчера пакетов**</span><span class="sxs-lookup"><span data-stu-id="4a846-120">From the **Package Manager Console** window:</span></span>
+### <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="c2098-121">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="c2098-121">Visual Studio</span></span>](#tab/visual-studio)
+
+* <span data-ttu-id="c2098-122">В окне **Консоль диспетчера пакетов**</span><span class="sxs-lookup"><span data-stu-id="c2098-122">From the **Package Manager Console** window:</span></span>
+  * <span data-ttu-id="c2098-123">Перейдите в раздел **Представление** > **Другие окна** > **Консоль диспетчера пакетов**</span><span class="sxs-lookup"><span data-stu-id="c2098-123">Go to **View** > **Other Windows** > **Package Manager Console**</span></span>
+  * <span data-ttu-id="c2098-124">Перейдите в каталог, в котором существует файл *TodoApi.csproj*</span><span class="sxs-lookup"><span data-stu-id="c2098-124">Navigate to the directory in which the *TodoApi.csproj* file exists</span></span>
+  * <span data-ttu-id="c2098-125">Выполните следующую команду:</span><span class="sxs-lookup"><span data-stu-id="c2098-125">Execute the following command:</span></span>
 
     ```powershell
     Install-Package NSwag.AspNetCore
     ```
 
-* <span data-ttu-id="4a846-121">В диалоговом окне **Управление пакетами NuGet**</span><span class="sxs-lookup"><span data-stu-id="4a846-121">From the **Manage NuGet Packages** dialog:</span></span>
-  * <span data-ttu-id="4a846-122">Щелкните правой кнопкой мыши проект в **обозревателе решений** > **Управление пакетами NuGet**.</span><span class="sxs-lookup"><span data-stu-id="4a846-122">Right-click your project in **Solution Explorer** > **Manage NuGet Packages**</span></span>
-  * <span data-ttu-id="4a846-123">В качестве **источника пакета** выберите "nuget.org".</span><span class="sxs-lookup"><span data-stu-id="4a846-123">Set the **Package source** to "nuget.org"</span></span>
-  * <span data-ttu-id="4a846-124">В поле поиска введите "NSwag.AspNetCore"</span><span class="sxs-lookup"><span data-stu-id="4a846-124">Enter "NSwag.AspNetCore" in the search box</span></span>
-  * <span data-ttu-id="4a846-125">Выберите пакет "NSwag.AspNetCore" на вкладке **Обзор** и нажмите **Установить**</span><span class="sxs-lookup"><span data-stu-id="4a846-125">Select the "NSwag.AspNetCore" package from the **Browse** tab and click **Install**</span></span>
+* <span data-ttu-id="c2098-126">В диалоговом окне **Управление пакетами NuGet**</span><span class="sxs-lookup"><span data-stu-id="c2098-126">From the **Manage NuGet Packages** dialog:</span></span>
+  * <span data-ttu-id="c2098-127">Щелкните правой кнопкой мыши проект в **обозревателе решений** > **Управление пакетами NuGet**</span><span class="sxs-lookup"><span data-stu-id="c2098-127">Right-click the project in **Solution Explorer** > **Manage NuGet Packages**</span></span>
+  * <span data-ttu-id="c2098-128">В качестве **источника пакета** выберите "nuget.org".</span><span class="sxs-lookup"><span data-stu-id="c2098-128">Set the **Package source** to "nuget.org"</span></span>
+  * <span data-ttu-id="c2098-129">В поле поиска введите "NSwag.AspNetCore"</span><span class="sxs-lookup"><span data-stu-id="c2098-129">Enter "NSwag.AspNetCore" in the search box</span></span>
+  * <span data-ttu-id="c2098-130">Выберите пакет "NSwag.AspNetCore" на вкладке **Обзор** и нажмите **Установить**</span><span class="sxs-lookup"><span data-stu-id="c2098-130">Select the "NSwag.AspNetCore" package from the **Browse** tab and click **Install**</span></span>
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="4a846-126">Visual Studio для Mac</span><span class="sxs-lookup"><span data-stu-id="4a846-126">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="c2098-131">Visual Studio для Mac</span><span class="sxs-lookup"><span data-stu-id="c2098-131">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="4a846-127">Щелкните правой кнопкой мыши папку *Пакеты* на **панели решения** > **Добавление пакетов...**.</span><span class="sxs-lookup"><span data-stu-id="4a846-127">Right-click the *Packages* folder in **Solution Pad** > **Add Packages...**</span></span>
-* <span data-ttu-id="4a846-128">В раскрывающемся списке **Источник** в окне **Добавление пакетов** выберите вариант "nuget.org".</span><span class="sxs-lookup"><span data-stu-id="4a846-128">Set the **Add Packages** window's **Source** drop-down to "nuget.org"</span></span>
-* <span data-ttu-id="4a846-129">В поле поиска введите "NSwag.AspNetCore"</span><span class="sxs-lookup"><span data-stu-id="4a846-129">Enter NSwag.AspNetCore in the search box</span></span>
-* <span data-ttu-id="4a846-130">В области результатов выберите пакет "NSwag.AspNetCore" и нажмите **Добавить пакет**</span><span class="sxs-lookup"><span data-stu-id="4a846-130">Select the NSwag.AspNetCore package from the results pane and click **Add Package**</span></span>
+* <span data-ttu-id="c2098-132">Щелкните правой кнопкой мыши папку *Пакеты* на **панели решения** > **Добавление пакетов...**.</span><span class="sxs-lookup"><span data-stu-id="c2098-132">Right-click the *Packages* folder in **Solution Pad** > **Add Packages...**</span></span>
+* <span data-ttu-id="c2098-133">В раскрывающемся списке **Источник** в окне **Добавление пакетов** выберите вариант "nuget.org".</span><span class="sxs-lookup"><span data-stu-id="c2098-133">Set the **Add Packages** window's **Source** drop-down to "nuget.org"</span></span>
+* <span data-ttu-id="c2098-134">В поле поиска введите "NSwag.AspNetCore"</span><span class="sxs-lookup"><span data-stu-id="c2098-134">Enter "NSwag.AspNetCore" in the search box</span></span>
+* <span data-ttu-id="c2098-135">В области результатов выберите пакет "NSwag.AspNetCore" и нажмите **Добавить пакет**</span><span class="sxs-lookup"><span data-stu-id="c2098-135">Select the "NSwag.AspNetCore" package from the results pane and click **Add Package**</span></span>
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="4a846-131">Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="4a846-131">Visual Studio Code</span></span>](#tab/visual-studio-code)
+### <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="c2098-136">Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="c2098-136">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-<span data-ttu-id="4a846-132">Во **встроенном терминале** выполните следующую команду.</span><span class="sxs-lookup"><span data-stu-id="4a846-132">Run the following command from the **Integrated Terminal**:</span></span>
+<span data-ttu-id="c2098-137">Во **встроенном терминале** выполните следующую команду.</span><span class="sxs-lookup"><span data-stu-id="c2098-137">Run the following command from the **Integrated Terminal**:</span></span>
 
 ```console
-dotnet add TodoApi.NSwag.csproj package NSwag.AspNetCore
+dotnet add TodoApi.csproj package NSwag.AspNetCore
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="4a846-133">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="4a846-133">.NET Core CLI</span></span>](#tab/netcore-cli)
+### <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="c2098-138">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="c2098-138">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-<span data-ttu-id="4a846-134">Выполните следующую команду:</span><span class="sxs-lookup"><span data-stu-id="4a846-134">Run the following command:</span></span>
+<span data-ttu-id="c2098-139">Выполните следующую команду:</span><span class="sxs-lookup"><span data-stu-id="c2098-139">Run the following command:</span></span>
 
 ```console
-dotnet add TodoApi.NSwag.csproj package NSwag.AspNetCore
+dotnet add TodoApi.csproj package NSwag.AspNetCore
 ```
 
 ---
 
-## <a name="add-and-configure-swagger-middleware"></a><span data-ttu-id="4a846-135">Добавление и настройка ПО промежуточного слоя Swagger</span><span class="sxs-lookup"><span data-stu-id="4a846-135">Add and configure Swagger middleware</span></span>
+## <a name="add-and-configure-swagger-middleware"></a><span data-ttu-id="c2098-140">Добавление и настройка ПО промежуточного слоя Swagger</span><span class="sxs-lookup"><span data-stu-id="c2098-140">Add and configure Swagger middleware</span></span>
 
-<span data-ttu-id="4a846-136">Импортируйте следующие пространства имен в класс `Info`:</span><span class="sxs-lookup"><span data-stu-id="4a846-136">Import the following namespaces in the `Info` class:</span></span>
+<span data-ttu-id="c2098-141">Импортируйте следующие пространства имен в класс `Startup`:</span><span class="sxs-lookup"><span data-stu-id="c2098-141">Import the following namespaces in the `Startup` class:</span></span>
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_StartupConfigureImports)]
+
+<span data-ttu-id="c2098-142">В методе `Startup.Configure` включите ПО промежуточного слоя для обслуживания созданной спецификации Swagger и пользовательского интерфейса Swagger:</span><span class="sxs-lookup"><span data-stu-id="c2098-142">In the `Startup.Configure` method, enable the middleware for serving the generated Swagger specification and the Swagger UI:</span></span>
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_Configure&highlight=6-10)]
+
+<span data-ttu-id="c2098-143">Запустите приложение.</span><span class="sxs-lookup"><span data-stu-id="c2098-143">Launch the app.</span></span> <span data-ttu-id="c2098-144">Перейдите к `http://localhost:<port>/swagger` для просмотра пользовательского интерфейса Swagger.</span><span class="sxs-lookup"><span data-stu-id="c2098-144">Navigate to `http://localhost:<port>/swagger` to view the Swagger UI.</span></span> <span data-ttu-id="c2098-145">Перейдите к `http://localhost:<port>/swagger/v1/swagger.json` для просмотра спецификации Swagger.</span><span class="sxs-lookup"><span data-stu-id="c2098-145">Navigate to `http://localhost:<port>/swagger/v1/swagger.json` to view the Swagger specification.</span></span>
+
+## <a name="code-generation"></a><span data-ttu-id="c2098-146">Создание кода</span><span class="sxs-lookup"><span data-stu-id="c2098-146">Code generation</span></span>
+
+### <a name="via-nswagstudio"></a><span data-ttu-id="c2098-147">Через NSwagStudio</span><span class="sxs-lookup"><span data-stu-id="c2098-147">Via NSwagStudio</span></span>
+
+* <span data-ttu-id="c2098-148">Установите NSwagStudio из официального [репозитория GitHub](https://github.com/RSuter/NSwag/wiki/NSwagStudio).</span><span class="sxs-lookup"><span data-stu-id="c2098-148">Install NSwagStudio from the official [GitHub repository](https://github.com/RSuter/NSwag/wiki/NSwagStudio).</span></span>
+* <span data-ttu-id="c2098-149">Запустите NSwagStudio.</span><span class="sxs-lookup"><span data-stu-id="c2098-149">Launch NSwagStudio.</span></span> <span data-ttu-id="c2098-150">Введите URL-адрес файла *swagger.json* в текстовое поле **URL-адрес спецификации Swagger** и нажмите кнопку **Создать локальную копию**.</span><span class="sxs-lookup"><span data-stu-id="c2098-150">Enter the *swagger.json* file URL in the **Swagger Specification URL** textbox, and click the **Create local Copy** button.</span></span>
+* <span data-ttu-id="c2098-151">Выберите тип выходных данных **Клиент CSharp**.</span><span class="sxs-lookup"><span data-stu-id="c2098-151">Select the **CSharp Client** client output type.</span></span> <span data-ttu-id="c2098-152">Другие доступные варианты: **клиент TypeScript** и **контроллер веб-API CSharp**.</span><span class="sxs-lookup"><span data-stu-id="c2098-152">Other options include **TypeScript Client** and **CSharp Web API Controller**.</span></span> <span data-ttu-id="c2098-153">Использование контроллера веб-API по сути является обратным созданием.</span><span class="sxs-lookup"><span data-stu-id="c2098-153">Using a Web API Controller is basically a reverse generation.</span></span> <span data-ttu-id="c2098-154">Служба воссоздается по спецификации службы.</span><span class="sxs-lookup"><span data-stu-id="c2098-154">It uses a specification of a service to rebuild the service.</span></span>
+* <span data-ttu-id="c2098-155">Нажмите кнопку **Создать выходные данные**.</span><span class="sxs-lookup"><span data-stu-id="c2098-155">Click the **Generate Outputs** button.</span></span> <span data-ttu-id="c2098-156">Будет создана полная клиентская реализация проекта *TodoApi.NSwag* на языке C#.</span><span class="sxs-lookup"><span data-stu-id="c2098-156">A complete C# client implementation of the *TodoApi.NSwag* project is produced.</span></span> <span data-ttu-id="c2098-157">Откройте вкладку **Клиент CSharp** в разделе **Выходные данные**, чтобы просмотреть созданный клиентский код:</span><span class="sxs-lookup"><span data-stu-id="c2098-157">Click the **CSharp Client** tab of the **Outputs** section to see the generated client code:</span></span>
 
 ```csharp
-using NSwag.AspNetCore;
-using System.Reflection;
-using NJsonSchema;
+//----------------------
+// <auto-generated>
+//     Generated using the NSwag toolchain v11.17.3.0 (NJsonSchema v9.10.46.0 (Newtonsoft.Json v9.0.0.0)) (http://NSwag.org)
+// </auto-generated>
+//----------------------
+
+namespace MyNamespace
+{
+    #pragma warning disable // Disable all warnings
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag",
+        "11.17.3.0 (NJsonSchema v9.10.46.0 (Newtonsoft.Json v9.0.0.0))")]
+    public partial class TodoClient
+    {
+        private string _baseUrl = "http://localhost:50499";
+        private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
+
+        public TodoClient()
+        {
+            _settings = new System.Lazy
+                <Newtonsoft.Json.JsonSerializerSettings>(() =>
+            {
+                var settings = new Newtonsoft.Json.JsonSerializerSettings();
+                UpdateJsonSerializerSettings(settings);
+                return settings;
+            });
+        }
+
+        public string BaseUrl
+        {
+            get { return _baseUrl; }
+            set { _baseUrl = value; }
+        }
+
+        // code omitted for brevity
 ```
 
-<span data-ttu-id="4a846-137">В методе `Startup.Configure` включите ПО промежуточного слоя для обслуживания созданной спецификации Swagger и пользовательского интерфейса Swagger:</span><span class="sxs-lookup"><span data-stu-id="4a846-137">In the `Startup.Configure` method, enable the middleware for serving the generated Swagger specification and the Swagger UI:</span></span>
+> [!TIP]
+> <span data-ttu-id="c2098-158">Клиентский код C# создается на основе параметров, определенных на вкладке **Параметры** вкладки **Клиент CSharp**. Измените параметры для выполнения таких задач, как переименование пространства имен по умолчанию и создание синхронного метода.</span><span class="sxs-lookup"><span data-stu-id="c2098-158">The C# client code is generated based on settings defined in the **Settings** tab of the **CSharp Client** tab. Modify the settings to perform tasks such as default namespace renaming and synchronous method generation.</span></span>
 
-[!code-cs[](../tutorials/web-api-help-pages-using-swagger/samples/TodoApi.NSwag/Startup.cs?name=snippet_Configure&highlight=4,7-10)]
-
-<span data-ttu-id="4a846-138">Запустите приложение.</span><span class="sxs-lookup"><span data-stu-id="4a846-138">Launch the app.</span></span> <span data-ttu-id="4a846-139">Перейдите к `/swagger` для просмотра пользовательского интерфейса Swagger.</span><span class="sxs-lookup"><span data-stu-id="4a846-139">Navigate to `/swagger` to view the Swagger UI.</span></span> <span data-ttu-id="4a846-140">Перейдите к `/swagger/v1/swagger.json` для просмотра спецификации Swagger.</span><span class="sxs-lookup"><span data-stu-id="4a846-140">Navigate to `/swagger/v1/swagger.json` to view the Swagger specification.</span></span>
-
-## <a name="code-generation"></a><span data-ttu-id="4a846-141">Создание кода</span><span class="sxs-lookup"><span data-stu-id="4a846-141">Code generation</span></span>
-
-### <a name="via-nswagstudio"></a><span data-ttu-id="4a846-142">Через NSwagStudio</span><span class="sxs-lookup"><span data-stu-id="4a846-142">Via NSwagStudio</span></span>
-
-* <span data-ttu-id="4a846-143">Установите `NSwagStudio` из официального [репозитория GitHub](https://github.com/RSuter/NSwag/wiki/NSwagStudio).</span><span class="sxs-lookup"><span data-stu-id="4a846-143">Install `NSwagStudio` from the official [GitHub repository](https://github.com/RSuter/NSwag/wiki/NSwagStudio).</span></span>
-
-* <span data-ttu-id="4a846-144">Запустите NSwagStudio.</span><span class="sxs-lookup"><span data-stu-id="4a846-144">Launch NSwagStudio.</span></span> <span data-ttu-id="4a846-145">Введите расположение файла *swagger.json* или скопируйте его напрямую:</span><span class="sxs-lookup"><span data-stu-id="4a846-145">Enter the location of your *swagger.json* or copy it directly:</span></span>
-
-![NSwagStudio](web-api-help-pages-using-swagger/_static/NSwagStudio.png)
-
-* <span data-ttu-id="4a846-147">Укажите желаемый тип выходных данных клиента.</span><span class="sxs-lookup"><span data-stu-id="4a846-147">Indicate the desired client output type.</span></span> <span data-ttu-id="4a846-148">Доступные варианты: **клиент TypeScript**, **клиент CSharp** или **контроллер веб-API CSharp**.</span><span class="sxs-lookup"><span data-stu-id="4a846-148">Options include **TypeScript Client**, **CSharp Client**, or **CSharp Web API Controller**.</span></span> <span data-ttu-id="4a846-149">Использование контроллера веб-API по сути является обратным созданием.</span><span class="sxs-lookup"><span data-stu-id="4a846-149">Using a Web API Controller is basically a reverse generation.</span></span> <span data-ttu-id="4a846-150">Служба воссоздается по спецификации службы.</span><span class="sxs-lookup"><span data-stu-id="4a846-150">It uses a specification of a service to rebuild the service.</span></span>
-
-* <span data-ttu-id="4a846-151">Нажмите **Создать выходные данные**.</span><span class="sxs-lookup"><span data-stu-id="4a846-151">Click **Generate Outputs**.</span></span>
-
-* <span data-ttu-id="4a846-152">Вы увидите полную клиентскую реализацию примера *TodoApi.NSwag* на языке C#:</span><span class="sxs-lookup"><span data-stu-id="4a846-152">Here you see a complete client implementation of the *TodoApi.NSwag* sample in C#:</span></span>
-
-![NSwagStudio-Output](web-api-help-pages-using-swagger/_static/NSwagStudio-Output.png)
-
-* <span data-ttu-id="4a846-154">Поместите файл в клиентский проект (например, приложение [Xamarin.Forms](/xamarin/xamarin-forms/)).</span><span class="sxs-lookup"><span data-stu-id="4a846-154">Put the file into a client project (for example, a [Xamarin.Forms](/xamarin/xamarin-forms/) app).</span></span> <span data-ttu-id="4a846-155">Начните использовать API:</span><span class="sxs-lookup"><span data-stu-id="4a846-155">Start consuming the API:</span></span>
+* <span data-ttu-id="c2098-159">Скопируйте созданный код C# в файл в клиентском проекте (например, приложение [Xamarin.Forms](/xamarin/xamarin-forms/)).</span><span class="sxs-lookup"><span data-stu-id="c2098-159">Copy the generated C# code into a file in a client project (for example, a [Xamarin.Forms](/xamarin/xamarin-forms/) app).</span></span>
+* <span data-ttu-id="c2098-160">Начните использовать веб-API:</span><span class="sxs-lookup"><span data-stu-id="c2098-160">Start consuming the web API:</span></span>
 
 ```csharp
 var todoClient = new TodoClient();
 
-// Gets all Todos from the Api
+// Gets all to-dos from the API
 var allTodos = await todoClient.GetAllAsync();
 
-// Create a new TodoItem and save it in the Api
-var createdTodo = await todoClient.CreateAsync(new TodoItem);
+// Create a new TodoItem, and save it in the API
+var createdTodo = await todoClient.CreateAsync(new TodoItem());
 
-// Get a single Todo by Id
+// Get a single to-do by ID
 var foundTodo = await todoClient.GetByIdAsync(1);
 ```
 
 > [!NOTE]
-> <span data-ttu-id="4a846-156">Вы можете вставить базовый URL-адрес и (или) HTTP-клиент в API-клиент.</span><span class="sxs-lookup"><span data-stu-id="4a846-156">You can inject a base URL and/or a HTTP client into the API client.</span></span> <span data-ttu-id="4a846-157">Рекомендуется всегда [повторно использовать HttpClient](https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/).</span><span class="sxs-lookup"><span data-stu-id="4a846-157">The best practice is to always [reuse the HttpClient](https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/).</span></span>
+> <span data-ttu-id="c2098-161">Вы можете вставить базовый URL-адрес и (или) HTTP-клиент в API-клиент.</span><span class="sxs-lookup"><span data-stu-id="c2098-161">You can inject a base URL and/or a HTTP client into the API client.</span></span> <span data-ttu-id="c2098-162">Рекомендуется всегда [повторно использовать HttpClient](https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/).</span><span class="sxs-lookup"><span data-stu-id="c2098-162">The best practice is to always [reuse the HttpClient](https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/).</span></span>
 
-<span data-ttu-id="4a846-158">Теперь можно без труда приступить к реализации API в клиентских проектах.</span><span class="sxs-lookup"><span data-stu-id="4a846-158">You can now start implementing your API into client projects easily.</span></span>
+### <a name="other-ways-to-generate-client-code"></a><span data-ttu-id="c2098-163">Другие способы создания кода клиента</span><span class="sxs-lookup"><span data-stu-id="c2098-163">Other ways to generate client code</span></span>
 
-### <a name="other-ways-to-generate-client-code"></a><span data-ttu-id="4a846-159">Другие способы создания кода клиента</span><span class="sxs-lookup"><span data-stu-id="4a846-159">Other ways to generate client code</span></span>
+<span data-ttu-id="c2098-164">Можно создать клиентский код другими способами, более подходящими для вашего рабочего процесса:</span><span class="sxs-lookup"><span data-stu-id="c2098-164">You can generate the client code in other ways, more suited to your workflow:</span></span>
 
-<span data-ttu-id="4a846-160">Можно создать код другими способами, более подходящими для вашего рабочего процесса:</span><span class="sxs-lookup"><span data-stu-id="4a846-160">You can generate the code in other ways, more suited to your workflow:</span></span>
+* [<span data-ttu-id="c2098-165">MSBuild</span><span class="sxs-lookup"><span data-stu-id="c2098-165">MSBuild</span></span>](https://www.nuget.org/packages/NSwag.MSBuild/)
 
-* [<span data-ttu-id="4a846-161">MSBuild</span><span class="sxs-lookup"><span data-stu-id="4a846-161">MSBuild</span></span>](https://www.nuget.org/packages/NSwag.MSBuild/)
+* [<span data-ttu-id="c2098-166">В коде</span><span class="sxs-lookup"><span data-stu-id="c2098-166">In code</span></span>](https://github.com/NSwag/NSwag/wiki/SwaggerToCSharpClientGenerator)
 
-* [<span data-ttu-id="4a846-162">В коде</span><span class="sxs-lookup"><span data-stu-id="4a846-162">In code</span></span>](https://github.com/NSwag/NSwag/wiki/SwaggerToCSharpClientGenerator)
+* [<span data-ttu-id="c2098-167">Шаблоны T4</span><span class="sxs-lookup"><span data-stu-id="c2098-167">T4 templates</span></span>](https://github.com/NSwag/NSwag/wiki/T4)
 
-* [<span data-ttu-id="4a846-163">Шаблоны T4</span><span class="sxs-lookup"><span data-stu-id="4a846-163">T4 templates</span></span>](https://github.com/NSwag/NSwag/wiki/T4)
+## <a name="customize"></a><span data-ttu-id="c2098-168">Настройка</span><span class="sxs-lookup"><span data-stu-id="c2098-168">Customize</span></span>
 
-## <a name="customization"></a><span data-ttu-id="4a846-164">Настройка</span><span class="sxs-lookup"><span data-stu-id="4a846-164">Customization</span></span>
+<span data-ttu-id="c2098-169">Swagger предоставляет параметры для документирования объектной модели и упрощения использования веб-API.</span><span class="sxs-lookup"><span data-stu-id="c2098-169">Swagger provides options for documenting the object model to ease consumption of the web API.</span></span>
 
-### <a name="xml-comments"></a><span data-ttu-id="4a846-165">XML-комментарии</span><span class="sxs-lookup"><span data-stu-id="4a846-165">XML comments</span></span>
+### <a name="api-info-and-description"></a><span data-ttu-id="c2098-170">Данные и описание API</span><span class="sxs-lookup"><span data-stu-id="c2098-170">API info and description</span></span>
 
-<span data-ttu-id="4a846-166">XML-комментарии можно включить следующим образом.</span><span class="sxs-lookup"><span data-stu-id="4a846-166">XML comments are enabled with the following approaches:</span></span>
+<span data-ttu-id="c2098-171">В методе `Startup.Configure` действие по настройке, передаваемое в метод `UseSwagger`, можно использовать для добавления таких сведений, как автор, лицензия и описание:</span><span class="sxs-lookup"><span data-stu-id="c2098-171">In the `Startup.Configure` method, a configuration action passed to the `UseSwagger` method adds information such as the author, license, and description:</span></span>
 
-#### <a name="visual-studiotabvisual-studio-xml"></a>[<span data-ttu-id="4a846-167">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="4a846-167">Visual Studio</span></span>](#tab/visual-studio-xml/)
-* <span data-ttu-id="4a846-168">В **обозревателе решений** щелкните проект правой кнопкой мыши и выберите пункт **Свойства**.</span><span class="sxs-lookup"><span data-stu-id="4a846-168">Right-click the project in **Solution Explorer** and select **Properties**</span></span>
-* <span data-ttu-id="4a846-169">Установите флажок **Файл XML-документации** в разделе **Вывод** на вкладке **Сборка**:</span><span class="sxs-lookup"><span data-stu-id="4a846-169">Check the **XML documentation file** box under the **Output** section of the **Build** tab:</span></span>
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup2.cs?name=snippet_UseSwagger)]
 
-![Свойства проекта, вкладка "Сборка"](web-api-help-pages-using-swagger/_static/swagger-xml-comments.png)
+<span data-ttu-id="c2098-172">Пользовательский интерфейс Swagger отображает сведения о версии:</span><span class="sxs-lookup"><span data-stu-id="c2098-172">The Swagger UI displays the version's information:</span></span>
 
-#### <a name="visual-studio-for-mactabvisual-studio-mac-xml"></a>[<span data-ttu-id="4a846-171">Visual Studio для Mac</span><span class="sxs-lookup"><span data-stu-id="4a846-171">Visual Studio for Mac</span></span>](#tab/visual-studio-mac-xml/)
-* <span data-ttu-id="4a846-172">Откройте диалоговое окно **Параметры проекта** > **Сборка** > **Компилятор**.</span><span class="sxs-lookup"><span data-stu-id="4a846-172">Open the **Project Options** dialog > **Build** > **Compiler**</span></span>
-* <span data-ttu-id="4a846-173">Установите флажок **Сформировать документацию XML** в разделе **Общие параметры**:</span><span class="sxs-lookup"><span data-stu-id="4a846-173">Check the **Generate xml documentation** box under the **General Options** section:</span></span>
+![Пользовательский интерфейс Swagger с информацией о версии](web-api-help-pages-using-swagger/_static/custom-info-nswag.png)
 
-![Параметры проекта, раздел "Общие параметры"](web-api-help-pages-using-swagger/_static/swagger-xml-comments-mac.png)
+### <a name="xml-comments"></a><span data-ttu-id="c2098-174">XML-комментарии</span><span class="sxs-lookup"><span data-stu-id="c2098-174">XML comments</span></span>
 
-#### <a name="visual-studio-codetabvisual-studio-code-xml"></a>[<span data-ttu-id="4a846-175">Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="4a846-175">Visual Studio Code</span></span>](#tab/visual-studio-code-xml/)
-<span data-ttu-id="4a846-176">Вручную добавьте в файл *.csproj* следующий фрагмент кода:</span><span class="sxs-lookup"><span data-stu-id="4a846-176">Manually add the following snippet to the *.csproj* file:</span></span>
+<span data-ttu-id="c2098-175">XML-комментарии можно включить следующим образом.</span><span class="sxs-lookup"><span data-stu-id="c2098-175">XML comments are enabled with the following approaches:</span></span>
 
-[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/TodoApi.NSwag/TodoApiNSwag.csproj?range=7-9)]
+# <a name="visual-studiotabvisual-studio-xml"></a>[<span data-ttu-id="c2098-176">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="c2098-176">Visual Studio</span></span>](#tab/visual-studio-xml/)
 
-* * *
-## <a name="data-annotations"></a><span data-ttu-id="4a846-177">Заметки к данным</span><span class="sxs-lookup"><span data-stu-id="4a846-177">Data annotations</span></span>
+* <span data-ttu-id="c2098-177">В **обозревателе решений** щелкните проект правой кнопкой мыши и выберите пункт **Свойства**.</span><span class="sxs-lookup"><span data-stu-id="c2098-177">Right-click the project in **Solution Explorer** and select **Properties**</span></span>
+* <span data-ttu-id="c2098-178">Установите флажок **Файл XML-документации** в разделе **Вывод** на вкладке **Сборка**</span><span class="sxs-lookup"><span data-stu-id="c2098-178">Check the **XML documentation file** box under the **Output** section of the **Build** tab</span></span>
 
-<span data-ttu-id="4a846-178">NSwag использует [Отражение](/dotnet/csharp/programming-guide/concepts/reflection), и для действий веб-API рекомендуется возвращать [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult).</span><span class="sxs-lookup"><span data-stu-id="4a846-178">NSwag uses [Reflection](/dotnet/csharp/programming-guide/concepts/reflection), and the best practice for Web API actions is to return [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult).</span></span> <span data-ttu-id="4a846-179">Следовательно, NSwag не удается определить, что делает ваше действие и что оно возвращает.</span><span class="sxs-lookup"><span data-stu-id="4a846-179">Consequently, NSwag can't infer what your action is doing and what it returns.</span></span> <span data-ttu-id="4a846-180">Рассмотрим следующий пример.</span><span class="sxs-lookup"><span data-stu-id="4a846-180">Consider the following example:</span></span>
+# <a name="visual-studio-for-mactabvisual-studio-mac-xml"></a>[<span data-ttu-id="c2098-179">Visual Studio для Mac</span><span class="sxs-lookup"><span data-stu-id="c2098-179">Visual Studio for Mac</span></span>](#tab/visual-studio-mac-xml/)
 
-```csharp
-public IActionResult Create([FromBody] TodoItem item)
-{
-    if (item == null)
-    {
-        return BadRequest();
-    }
+* <span data-ttu-id="c2098-180">Откройте диалоговое окно **Параметры проекта** > **Сборка** > **Компилятор**.</span><span class="sxs-lookup"><span data-stu-id="c2098-180">Open the **Project Options** dialog > **Build** > **Compiler**</span></span>
+* <span data-ttu-id="c2098-181">Установите флажок **Сформировать XML-документацию** в разделе **Общие параметры**</span><span class="sxs-lookup"><span data-stu-id="c2098-181">Check the **Generate xml documentation** box under the **General Options** section</span></span>
 
-    _context.TodoItems.Add(item);
-    _context.SaveChanges();
+# <a name="visual-studio-codetabvisual-studio-code-xml"></a>[<span data-ttu-id="c2098-182">Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="c2098-182">Visual Studio Code</span></span>](#tab/visual-studio-code-xml/)
 
-     return CreatedAtRoute("GetTodo", new { id = item.Id }, item);
-}
-```
+<span data-ttu-id="c2098-183">Вручную добавьте в файл *.csproj* следующий фрагмент кода:</span><span class="sxs-lookup"><span data-stu-id="c2098-183">Manually add the following snippet to the *.csproj* file:</span></span>
 
-<span data-ttu-id="4a846-181">Предыдущее действие возвращает `IActionResult`, но внутри действия возвращается [CreatedAtRoute](/dotnet/api/system.web.http.apicontroller.createdatroute) или [BadRequest](/dotnet/api/system.web.http.apicontroller.badrequest).</span><span class="sxs-lookup"><span data-stu-id="4a846-181">The preceding action returns `IActionResult`, but inside the action it's returning either [CreatedAtRoute](/dotnet/api/system.web.http.apicontroller.createdatroute) or [BadRequest](/dotnet/api/system.web.http.apicontroller.badrequest).</span></span> <span data-ttu-id="4a846-182">Заметки к данным используются, чтобы сообщить клиентам, какой ответ HTTP возвращает это действие.</span><span class="sxs-lookup"><span data-stu-id="4a846-182">Data annotations are used to tell clients which HTTP response this action is returning.</span></span> <span data-ttu-id="4a846-183">Добавьте к действию следующие атрибуты:</span><span class="sxs-lookup"><span data-stu-id="4a846-183">Decorate the action with the following attributes:</span></span>
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement)]
 
-```csharp
-[HttpPost]
-[ProducesResponseType(typeof(TodoItem), 201)] // Created
-[ProducesResponseType(typeof(TodoItem), 400)] // BadRequest
-public IActionResult Create([FromBody] TodoItem item)
-```
+---
 
-<span data-ttu-id="4a846-184">Генератор Swagger теперь может точно описать это действие, и созданные клиенты знают, что они получают при вызове конечной точки.</span><span class="sxs-lookup"><span data-stu-id="4a846-184">The Swagger generator can now accurately describe this action, and generated clients know what they receive when calling the endpoint.</span></span> <span data-ttu-id="4a846-185">Настоятельно рекомендуется добавлять эти атрибуты ко всем действиям.</span><span class="sxs-lookup"><span data-stu-id="4a846-185">Decorating all actions with these attributes is highly recommended.</span></span> <span data-ttu-id="4a846-186">Рекомендации о том, какие ответы HTTP должны возвращать ваши действия API, см. в [спецификации RFC 7231](https://tools.ietf.org/html/rfc7231#section-4.3).</span><span class="sxs-lookup"><span data-stu-id="4a846-186">For guidelines on what HTTP responses your API actions should return, see the [RFC 7231 specification](https://tools.ietf.org/html/rfc7231#section-4.3).</span></span>
+### <a name="data-annotations"></a><span data-ttu-id="c2098-184">Заметки к данным</span><span class="sxs-lookup"><span data-stu-id="c2098-184">Data annotations</span></span>
+
+::: moniker range="<= aspnetcore-2.0"
+<span data-ttu-id="c2098-185">NSwag использует [Отражение](/dotnet/csharp/programming-guide/concepts/reflection), и для действий веб-API рекомендуется возвращать значение типа [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult).</span><span class="sxs-lookup"><span data-stu-id="c2098-185">NSwag uses [Reflection](/dotnet/csharp/programming-guide/concepts/reflection), and the recommended return type for web API actions is [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult).</span></span> <span data-ttu-id="c2098-186">Следовательно, NSwag не удается определить, что делает ваше действие и что оно возвращает.</span><span class="sxs-lookup"><span data-stu-id="c2098-186">Consequently, NSwag can't infer what your action is doing and what it returns.</span></span> <span data-ttu-id="c2098-187">Рассмотрим следующий пример.</span><span class="sxs-lookup"><span data-stu-id="c2098-187">Consider the following example:</span></span>
+
+<span data-ttu-id="c2098-188">[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]</span><span class="sxs-lookup"><span data-stu-id="c2098-188">[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]</span></span>
+
+<span data-ttu-id="c2098-189">Предыдущее действие возвращает `IActionResult`, но внутри действия возвращается [CreatedAtRoute](/dotnet/api/system.web.http.apicontroller.createdatroute) или [BadRequest](/dotnet/api/system.web.http.apicontroller.badrequest).</span><span class="sxs-lookup"><span data-stu-id="c2098-189">The preceding action returns `IActionResult`, but inside the action it's returning either [CreatedAtRoute](/dotnet/api/system.web.http.apicontroller.createdatroute) or [BadRequest](/dotnet/api/system.web.http.apicontroller.badrequest).</span></span> <span data-ttu-id="c2098-190">Заметки к данным используются, чтобы сообщить клиентам, какие коды состояния HTTP возвращает это действие.</span><span class="sxs-lookup"><span data-stu-id="c2098-190">Data annotations are used to tell clients which HTTP status codes this action is known to return.</span></span> <span data-ttu-id="c2098-191">Добавьте к действию следующие атрибуты:</span><span class="sxs-lookup"><span data-stu-id="c2098-191">Decorate the action with the following attributes:</span></span>
+
+<span data-ttu-id="c2098-192">[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]</span><span class="sxs-lookup"><span data-stu-id="c2098-192">[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]</span></span>
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+<span data-ttu-id="c2098-193">NSwag использует [Отражение](/dotnet/csharp/programming-guide/concepts/reflection), и для действий веб-API рекомендуется возвращать значение типа [IActionResult\<T>](/dotnet/api/microsoft.aspnetcore.mvc.actionresult-1).</span><span class="sxs-lookup"><span data-stu-id="c2098-193">NSwag uses [Reflection](/dotnet/csharp/programming-guide/concepts/reflection), and the recommended return type for web API actions is [ActionResult\<T>](/dotnet/api/microsoft.aspnetcore.mvc.actionresult-1).</span></span> <span data-ttu-id="c2098-194">Следовательно, NSwag может вывести только тип возвращаемого значения, определенный `T`.</span><span class="sxs-lookup"><span data-stu-id="c2098-194">Consequently, NSwag can only infer the return type defined by `T`.</span></span> <span data-ttu-id="c2098-195">Другие типы возвращаемых значений в действии вывести невозможно.</span><span class="sxs-lookup"><span data-stu-id="c2098-195">Other possible return types in the action cannot be inferred.</span></span> <span data-ttu-id="c2098-196">Рассмотрим следующий пример.</span><span class="sxs-lookup"><span data-stu-id="c2098-196">Consider the following example:</span></span>
+
+<span data-ttu-id="c2098-197">[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]</span><span class="sxs-lookup"><span data-stu-id="c2098-197">[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]</span></span>
+
+<span data-ttu-id="c2098-198">Предыдущее действие возвращает `ActionResult<T>`, но внутри действия возвращается [CreatedAtRoute](/dotnet/api/system.web.http.apicontroller.createdatroute).</span><span class="sxs-lookup"><span data-stu-id="c2098-198">The preceding action returns `ActionResult<T>`, but inside the action it's returning either [CreatedAtRoute](/dotnet/api/system.web.http.apicontroller.createdatroute).</span></span> <span data-ttu-id="c2098-199">Поскольку контроллер дополнен атрибутом [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute), ответ [BadRequest](/dotnet/api/system.web.http.apicontroller.badrequest) также возможен.</span><span class="sxs-lookup"><span data-stu-id="c2098-199">Since the controller is decorated with the [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) attribute, a [BadRequest](/dotnet/api/system.web.http.apicontroller.badrequest) response is possible too.</span></span> <span data-ttu-id="c2098-200">Дополнительные сведения см. в разделе [Автоматические отклики HTTP 400](xref:web-api/index#automatic-http-400-responses).</span><span class="sxs-lookup"><span data-stu-id="c2098-200">See [Automatic HTTP 400 responses](xref:web-api/index#automatic-http-400-responses) for more info.</span></span> <span data-ttu-id="c2098-201">Заметки к данным используются, чтобы сообщить клиентам, какие коды состояния HTTP возвращает это действие.</span><span class="sxs-lookup"><span data-stu-id="c2098-201">Data annotations are used to tell clients which HTTP status codes this action is known to return.</span></span> <span data-ttu-id="c2098-202">Добавьте к действию следующие атрибуты:</span><span class="sxs-lookup"><span data-stu-id="c2098-202">Decorate the action with the following attributes:</span></span>
+
+<span data-ttu-id="c2098-203">[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]</span><span class="sxs-lookup"><span data-stu-id="c2098-203">[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]</span></span>
+::: moniker-end
+
+<span data-ttu-id="c2098-204">Генератор Swagger теперь может точно описать это действие, и созданные клиенты знают, что они получают при вызове конечной точки.</span><span class="sxs-lookup"><span data-stu-id="c2098-204">The Swagger generator can now accurately describe this action, and generated clients know what they receive when calling the endpoint.</span></span> <span data-ttu-id="c2098-205">Настоятельно рекомендуется добавлять эти атрибуты ко всем действиям.</span><span class="sxs-lookup"><span data-stu-id="c2098-205">Decorating all actions with these attributes is highly recommended.</span></span> <span data-ttu-id="c2098-206">Рекомендации о том, какие ответы HTTP должны возвращать ваши действия API, см. в [спецификации RFC 7231](https://tools.ietf.org/html/rfc7231#section-4.3).</span><span class="sxs-lookup"><span data-stu-id="c2098-206">For guidelines on what HTTP responses your API actions should return, see the [RFC 7231 specification](https://tools.ietf.org/html/rfc7231#section-4.3).</span></span>

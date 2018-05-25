@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/testing-and-debugging/troubleshooting
-title: "Устранение неполадок SignalR | Документы Microsoft"
+title: Устранение неполадок SignalR | Документы Microsoft
 author: pfletcher
-description: "В этой статье описываются распространенных проблем в разработке приложений SignalR."
+description: В этой статье описываются распространенных проблем в разработке приложений SignalR.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014

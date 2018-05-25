@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/self-host-a-web-api
-title: "Резидентной ASP.NET Web API 1 (C#) | Документы Microsoft"
+title: Резидентной ASP.NET Web API 1 (C#) | Документы Microsoft
 author: MikeWasson
-description: "Веб-API ASP.NET не требуются службы IIS. Самостоятельно, можно разместить веб-API в свои собственные хост-процесса. Этот учебник показывает, как для размещения веб-API в консоли паролей..."
+description: Веб-API ASP.NET не требуются службы IIS. Самостоятельно, можно разместить веб-API в свои собственные хост-процесса. Этот учебник показывает, как для размещения веб-API в консоли паролей...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2012
@@ -37,7 +37,7 @@ ms.lasthandoff: 01/24/2018
 
 <span data-ttu-id="23664-116">Запустите Visual Studio и выберите **новый проект** из **запустить** страницы.</span><span class="sxs-lookup"><span data-stu-id="23664-116">Start Visual Studio and select **New Project** from the **Start** page.</span></span> <span data-ttu-id="23664-117">Или из **файл** последовательно выберите пункты **New** и затем **проекта**.</span><span class="sxs-lookup"><span data-stu-id="23664-117">Or, from the **File** menu, select **New** and then **Project**.</span></span>
 
-<span data-ttu-id="23664-118">В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла.</span><span class="sxs-lookup"><span data-stu-id="23664-118">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="23664-119">В разделе **Visual C#**выберите **Windows**.</span><span class="sxs-lookup"><span data-stu-id="23664-119">Under **Visual C#**, select **Windows**.</span></span> <span data-ttu-id="23664-120">В списке шаблонов проектов выберите **консольное приложение**.</span><span class="sxs-lookup"><span data-stu-id="23664-120">In the list of project templates, select **Console Application**.</span></span> <span data-ttu-id="23664-121">Назовите проект &quot;SelfHost&quot; и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="23664-121">Name the project &quot;SelfHost&quot; and click **OK**.</span></span>
+<span data-ttu-id="23664-118">В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла.</span><span class="sxs-lookup"><span data-stu-id="23664-118">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="23664-119">В разделе **Visual C#** выберите **Windows**.</span><span class="sxs-lookup"><span data-stu-id="23664-119">Under **Visual C#**, select **Windows**.</span></span> <span data-ttu-id="23664-120">В списке шаблонов проектов выберите **консольное приложение**.</span><span class="sxs-lookup"><span data-stu-id="23664-120">In the list of project templates, select **Console Application**.</span></span> <span data-ttu-id="23664-121">Назовите проект &quot;SelfHost&quot; и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="23664-121">Name the project &quot;SelfHost&quot; and click **OK**.</span></span>
 
 ![](self-host-a-web-api/_static/image1.png)
 

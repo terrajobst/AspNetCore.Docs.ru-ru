@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
-title: "Приступая к работе с ASP.NET Web API 2 (C#)"
+title: Приступая к работе с ASP.NET Web API 2 (C#)
 author: MikeWasson
-description: "HTTP не только для предоставления веб-страниц. Это также мощную платформу для построения API, которые предоставляют службы и данных. Протокол HTTP является простой и гибкий и ubiq..."
+description: HTTP не только для предоставления веб-страниц. Это также мощную платформу для построения API, которые предоставляют службы и данных. Протокол HTTP является простой и гибкий и ubiq...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/28/2017
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/15/2018
 
 <span data-ttu-id="8e8af-121">Запустите Visual Studio и выберите **новый проект** из **запустить** страницы.</span><span class="sxs-lookup"><span data-stu-id="8e8af-121">Start Visual Studio and select **New Project** from the **Start** page.</span></span> <span data-ttu-id="8e8af-122">Или из **файл** последовательно выберите пункты **New** и затем **проекта**.</span><span class="sxs-lookup"><span data-stu-id="8e8af-122">Or, from the **File** menu, select **New** and then **Project**.</span></span>
 
-<span data-ttu-id="8e8af-123">В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла.</span><span class="sxs-lookup"><span data-stu-id="8e8af-123">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="8e8af-124">В разделе **Visual C#**выберите **Web**.</span><span class="sxs-lookup"><span data-stu-id="8e8af-124">Under **Visual C#**, select **Web**.</span></span> <span data-ttu-id="8e8af-125">В списке шаблонов проектов выберите **веб-приложение ASP.NET**.</span><span class="sxs-lookup"><span data-stu-id="8e8af-125">In the list of project templates, select **ASP.NET Web Application**.</span></span> <span data-ttu-id="8e8af-126">Назовите проект «ProductsApp» и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="8e8af-126">Name the project "ProductsApp" and click **OK**.</span></span>
+<span data-ttu-id="8e8af-123">В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла.</span><span class="sxs-lookup"><span data-stu-id="8e8af-123">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="8e8af-124">В разделе **Visual C#** выберите **Web**.</span><span class="sxs-lookup"><span data-stu-id="8e8af-124">Under **Visual C#**, select **Web**.</span></span> <span data-ttu-id="8e8af-125">В списке шаблонов проектов выберите **веб-приложение ASP.NET**.</span><span class="sxs-lookup"><span data-stu-id="8e8af-125">In the list of project templates, select **ASP.NET Web Application**.</span></span> <span data-ttu-id="8e8af-126">Назовите проект «ProductsApp» и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="8e8af-126">Name the project "ProductsApp" and click **OK**.</span></span>
 
 ![](tutorial-your-first-web-api/_static/image2.png)
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 03/15/2018
 
 ![](tutorial-your-first-web-api/_static/image9.png)
 
-<span data-ttu-id="8e8af-183">В **Добавление нового элемента** диалогового окна выберите **Web** узле **Visual C#**и выберите **HTML-страницу** элемента.</span><span class="sxs-lookup"><span data-stu-id="8e8af-183">In the **Add New Item** dialog, select the **Web** node under **Visual C#**, and then select the **HTML Page** item.</span></span> <span data-ttu-id="8e8af-184">Назовите страницу &quot;index.html&quot;.</span><span class="sxs-lookup"><span data-stu-id="8e8af-184">Name the page &quot;index.html&quot;.</span></span>
+<span data-ttu-id="8e8af-183">В **Добавление нового элемента** диалогового окна выберите **Web** узле **Visual C#** и выберите **HTML-страницу** элемента.</span><span class="sxs-lookup"><span data-stu-id="8e8af-183">In the **Add New Item** dialog, select the **Web** node under **Visual C#**, and then select the **HTML Page** item.</span></span> <span data-ttu-id="8e8af-184">Назовите страницу &quot;index.html&quot;.</span><span class="sxs-lookup"><span data-stu-id="8e8af-184">Name the page &quot;index.html&quot;.</span></span>
 
 ![](tutorial-your-first-web-api/_static/image10.png)
 
