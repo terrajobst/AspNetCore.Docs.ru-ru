@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1f30ff6c97e565059c57c55f26d2dff477774aeb
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 9a56ceb9eab5774906ecc89ce9da570d4f691a82
+ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/27/2018
 ---
 <a name="creating-model-classes-with-linq-to-sql-c"></a>Создание классов модели с помощью LINQ to SQL (C#)
 ====================
 по [Microsoft](https://github.com/microsoft)
 
-[Скачать PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_10_CS.pdf)
+[Загрузить PDF-файл](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_10_CS.pdf)
 
 > Целью данного учебника является объясните, один из способов создания классов модели для приложения ASP.NET MVC. В этом учебнике вы научитесь создавать классы модели и выполнять доступ к базе данных, используя преимущества Microsoft LINQ to SQL.
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="using-the-repository-pattern"></a>Чтобы использовать шаблон репозитория
 
-В предыдущем разделе мы использовали LINQ для классов SQL непосредственно внутри действия контроллера. Мы использовали `MovieDataContex` t класса, производного от `Index()` действия контроллера. Нет ничего плохого таким образом, в случае простого приложения. Однако для работы с LINQ to SQL напрямую в классе контроллера создает проблемы при необходимы для создания более сложных приложений.
+В предыдущем разделе мы использовали LINQ для классов SQL непосредственно внутри действия контроллера. Мы использовали `MovieDataContext` класса непосредственно из `Index()` действия контроллера. Нет ничего плохого таким образом, в случае простого приложения. Однако для работы с LINQ to SQL напрямую в классе контроллера создает проблемы при необходимы для создания более сложных приложений.
 
 С помощью LINQ to SQL в класс контроллера затрудняет переключение технологии доступа к данным в будущем. Например вы можете переключиться с Microsoft LINQ to SQL с помощью платформы Entity Framework Microsoft как к технологии доступа к данным. В этом случае необходимо переписать каждый контроллер, который обращается к базе данных в приложении.
 

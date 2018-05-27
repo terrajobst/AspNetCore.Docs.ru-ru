@@ -4,16 +4,17 @@ author: rick-anderson
 description: Дополнительные сведения о настройке защиты данных в ASP.NET Core.
 manager: wpickett
 ms.author: riande
+ms.custom: mvc
 ms.date: 07/17/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 300feb42dff7f1bb86bab6fedf3f657273ced8be
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 803b81f5f69496900791ca1d1976f70f8c266f29
+ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/27/2018
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Настройка защиты данных ASP.NET Core
 
@@ -30,6 +31,33 @@ ms.lasthandoff: 04/18/2018
 > Как и файлы конфигурации, кольцо ключ защиты данных должны быть защищены с помощью соответствующих разрешений. Можно выбрать для шифрования ключей при хранении, но это не помешает злоумышленники создание новых разделов. Следовательно это повлияет на безопасность приложения. Место хранения, настроенной с Data Protection должен иметь доступ к нему ограничением в состав самого приложения, аналогично тому, как можно будет защитить файлы конфигурации. Например если вы решили хранить кольцо ваш ключ на диске, используйте разрешения файловой системы. Убедитесь, идентификатор, под которой запущено приложение чтения, записи и создать доступ к этому каталогу. При использовании табличного хранилища Azure, веб-приложения должен иметь возможность читать, записывать и создание новых записей в хранилище таблиц и т. д.
 >
 > Метод расширения [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) возвращает [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` Предоставляет методы расширения, что можно соединить в цепочку вместе для настройки защиты данных параметров.
+
+::: moniker range=">= aspnetcore-2.1"
+
+## <a name="protectkeyswithazurekeyvault"></a>ProtectKeysWithAzureKeyVault
+
+Для хранения ключей в [хранилище ключей Azure](https://azure.microsoft.com/services/key-vault/), настройки системы с [ProtectKeysWithAzureKeyVault](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault) в `Startup` класса:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddDataProtection()
+        .PersistKeysToAzureBlobStorage(new Uri("<blobUriWithSasToken>"))
+        .ProtectKeysWithAzureKeyVault("<keyIdentifier>", "<clientId>", "<clientSecret>");
+}
+```
+
+Задайте расположение хранилища ключей (например, [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)). Необходимо задать расположение, так как вызов `ProtectKeysWithAzureKeyVault` реализует [IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) , отключает автоматические данные параметры защиты, в том числе расположение хранилища ключей. В предыдущем примере использовался хранилища больших двоичных объектов для сохранения ключей. Дополнительные сведения см. в разделе [поставщики хранилища ключей: Azure и Redis](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis). Также можно сохранить ключей локально с [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system).
+
+`keyIdentifier` — Идентификатор ключа хранилища ключей, используемый для ключа шифрования (например, `https://contosokeyvault.vault.azure.net/keys/dataprotection/`).
+
+`ProtectKeysWithAzureKeyVault` перегрузки:
+
+* [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder KeyVaultClient, String)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_Microsoft_Azure_KeyVault_KeyVaultClient_System_String_) позволяет использовать [KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient) системы защиты данных для хранилища ключей.
+* [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder, строка, строка, X509Certificate2)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_Security_Cryptography_X509Certificates_X509Certificate2_) позволяет использовать `ClientId` и [X509Certificate](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) системы защиты данных для хранилища ключей.
+* [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder, строка, String, String)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_String_) позволяет использовать `ClientId` и `ClientSecret` для включения системы защиты данных для хранилища ключей.
+
+::: moniker-end
 
 ## <a name="persistkeystofilesystem"></a>PersistKeysToFileSystem
 
