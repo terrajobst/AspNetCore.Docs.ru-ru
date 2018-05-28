@@ -9,24 +9,24 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: c462f38ba345a9eaf648967524cadd1ba45aee19
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: f96b38e9f0368e04198c849bb3585674183a92b1
+ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/27/2018
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>Миграция с ASP.NET Core 1.x на 2.0
 
 Автор: [Скотт Адди](https://github.com/scottaddie) (Scott Addie)
 
-В этой статье поэтапно рассматривается процесс обновления существующего проекта ASP.NET Core 1.x до версии ASP.NET Core 2.0. Миграция приложения в ASP.NET Core 2.0 позволяет воспользоваться [множеством новых функций и улучшений производительности](xref:aspnetcore-2.0). 
+В этой статье поэтапно рассматривается обновление существующего проекта ASP.NET Core 1.x до версии ASP.NET Core 2.0. Миграция приложения в ASP.NET Core 2.0 позволяет воспользоваться [множеством новых функций и улучшений производительности](xref:aspnetcore-2.0). 
 
 Существующие приложения ASP.NET Core 1.x основаны на шаблонах проектов для определенной версии. По мере развития платформы ASP.NET Core совершенствуются шаблоны проектов и содержащийся в них начальный код. Помимо обновления платформы ASP.NET Core, необходимо также обновить код приложения.
 
 <a name="prerequisites"></a>
 
 ## <a name="prerequisites"></a>Предварительные требования
-См. раздел [Начало работы с ASP.NET Core](xref:getting-started).
+См. [Начало работы с ASP.NET Core](xref:getting-started).
 
 <a name="tfm"></a>
 
