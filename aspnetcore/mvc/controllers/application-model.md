@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/application-model
-ms.openlocfilehash: f61d04f6cf0aa054566d9f48a030cf268f2ba72a
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: a0e38b041f428f8b519fd726643b3214761fb44e
+ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/27/2018
+ms.locfileid: "34555356"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>Работа с моделью приложения в ASP.NET Core
 
@@ -168,7 +169,7 @@ ASP.NET Core MVC загружает модель приложения с пом�
 ASP.NET Core MVC использует набор соглашений, отличный от соглашений ASP.NET Web API 2. С помощью настраиваемых соглашений можно изменить поведение приложения ASP.NET Core MVC так, чтобы оно соответствовало режиму работы приложения веб-API. Специально для этого корпорация Майкрософт поставляет пакет [WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim/).
 
 > [!NOTE]
-> Узнайте больше о [миграции с веб-API ASP.NET](xref:migration/webapi).
+> Узнайте больше о [переходе с веб-API ASP.NET](xref:migration/webapi).
 
 Чтобы использовать оболочку совместимости Web API Compatibility Shim, необходимо добавить пакет в проект и затем добавить соглашения в MVC, вызвав `AddWebApiConventions` в `Startup`:
 

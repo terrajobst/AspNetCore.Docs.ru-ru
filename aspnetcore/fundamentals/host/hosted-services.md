@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: ace7fc8622864099b7c0e36e4a914de340d4d4e9
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: cc39d125b639719599eca68d627fda014fb107e0
+ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/27/2018
+ms.locfileid: "34555304"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Фоновые задачи с размещенными службами в ASP.NET Core
 
@@ -27,6 +28,15 @@ ms.lasthandoff: 05/17/2018
 * Очередь фоновых задач, которые выполняются последовательно.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+
+::: moniker range=">= aspnetcore-2.1"
+
+Пример приложения предоставляется в двух версиях:
+
+* Веб-узел &ndash; удобно использовать для размещения веб-приложений. Пример кода, приведенный в этой статье, относится к этой версии примера приложения. Дополнительные сведения см. в статье о [веб-узле](xref:fundamentals/host/web-host).
+* Универсальный узел &ndash; — новая возможность в ASP.NET Core 2.1. Дополнительные сведения см. в статье об [универсальном узле](xref:fundamentals/host/generic-host).
+
+::: moniker-end
 
 ## <a name="ihostedservice-interface"></a>Интерфейс IHostedService
 
@@ -42,11 +52,11 @@ ms.lasthandoff: 05/17/2018
 
 Для фоновых задач с заданным временем используется класс [System.Threading.Timer](/dotnet/api/system.threading.timer). Таймер запускает метод `DoWork` задачи. Таймер отключается методом `StopAsync` и удаляется при удалении контейнера службы методом `Dispose`:
 
-[!code-csharp[](hosted-services/samples/2.x/Services/TimedHostedService.cs?name=snippet1&highlight=15-16,30,37)]
+[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/TimedHostedService.cs?name=snippet1&highlight=15-16,30,37)]
 
 Служба регистрируется в `Startup.ConfigureServices`:
 
-[!code-csharp[](hosted-services/samples/2.x/Startup.cs?name=snippet1)]
+[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet1)]
 
 ## <a name="consuming-a-scoped-service-in-a-background-task"></a>Использование службы с заданной областью в фоновой задаче
 
@@ -54,37 +64,37 @@ ms.lasthandoff: 05/17/2018
 
 Служба фоновой задачи с заданной областью содержит логику фоновой задачи. В следующем примере в службу вставляется [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger):
 
-[!code-csharp[](hosted-services/samples/2.x/Services/ScopedProcessingService.cs?name=snippet1)]
+[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/ScopedProcessingService.cs?name=snippet1)]
 
 Размещенная служба создает область для разрешения службы фоновой задачи с заданной областью, чтобы вызвать ее метод `DoWork`:
 
-[!code-csharp[](hosted-services/samples/2.x/Services/ConsumeScopedServiceHostedService.cs?name=snippet1&highlight=29-36)]
+[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/ConsumeScopedServiceHostedService.cs?name=snippet1&highlight=29-36)]
 
 Службы регистрируются в `Startup.ConfigureServices`:
 
-[!code-csharp[](hosted-services/samples/2.x/Startup.cs?name=snippet2)]
+[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet2)]
 
 ## <a name="queued-background-tasks"></a>Фоновые задачи в очереди
 
 Очередь фоновых задач основывается на методе [QueueBackgroundWorkItem](/dotnet/api/system.web.hosting.hostingenvironment.queuebackgroundworkitem) в .NET 4.x ([предварительно запланирована встройка в ASP.NET Core 2.2](https://github.com/aspnet/Hosting/issues/1280)):
 
-[!code-csharp[](hosted-services/samples/2.x/Services/BackgroundTaskQueue.cs?name=snippet1)]
+[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/BackgroundTaskQueue.cs?name=snippet1)]
 
 В `QueueHostedService` фоновые задачи (`workItem`) в очереди выводятся из очереди и выполняются:
 
-[!code-csharp[](hosted-services/samples/2.x/Services/QueuedHostedService.cs?name=snippet1&highlight=30-31,35)]
+[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/QueuedHostedService.cs?name=snippet1&highlight=30-31,35)]
 
 Службы регистрируются в `Startup.ConfigureServices`:
 
-[!code-csharp[](hosted-services/samples/2.x/Startup.cs?name=snippet3)]
+[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet3)]
 
 В классе модели страницы индексов `IBackgroundTaskQueue` вставляется в конструктор и присваивается `Queue`:
 
-[!code-csharp[](hosted-services/samples/2.x/Pages/Index.cshtml.cs?name=snippet1)]
+[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Pages/Index.cshtml.cs?name=snippet1)]
 
 Если нажать кнопку **Добавить задачу** на странице индексов, выполняется метод `OnPostAddTask`. `QueueBackgroundWorkItem` вызывается для постановки рабочего элемента в очередь:
 
-[!code-csharp[](hosted-services/samples/2.x/Pages/Index.cshtml.cs?name=snippet2)]
+[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Pages/Index.cshtml.cs?name=snippet2)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

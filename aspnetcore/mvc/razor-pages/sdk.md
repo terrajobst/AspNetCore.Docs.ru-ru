@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: content
 uid: mvc/razor-pages/sdk
-ms.openlocfilehash: acc049a69574968d1e304d6c504cb89243387d6c
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: cf0e1873c7ce500ce3b8ad2b3367555bdc41a576
+ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/27/2018
+ms.locfileid: "34555538"
 ---
 # <a name="aspnet-core-razor-sdk"></a>Пакет SDK для Razor в ASP.NET Core
 
@@ -63,7 +64,7 @@ ms.lasthandoff: 05/08/2018
 | Элементы                                         | Описание:                                                                   |
 | ------------                                  | -------------                                                                 |
 | RazorGenerate                                 | Элементы (файлы *.cshtml*), которые являются входными данными для целей создания кода. |
-| RazorCompile                                  | Элементы (CS-файлы), которые являются входными данными для целей компиляции Razor. Используйте этот ItemGroup, чтобы указать дополнительные файлы для компиляции в сборку Razor. |
+| RazorCompile                                  | Элементы (CS-файлы), которые являются входными данными для целей компиляции Razor. Используйте этот элемент ItemGroup, чтобы указать дополнительные файлы для компиляции в сборку Razor. |
 | RazorTargetAssemblyAttribute                  | Элементы, используемые для создания атрибутов для сборки Razor. Пример:  <br />`<RazorAssemblyAttribute ` <br />  `Include="System.Reflection.AssemblyMetadataAttribute"`<br />`  _Parameter1="BuildSource" _Parameter2="https://docs.asp.net/">` |
 | RazorEmbeddedResource                         | Элементы, добавленные в качестве внедренных ресурсов к созданной сборке Razor |
 
