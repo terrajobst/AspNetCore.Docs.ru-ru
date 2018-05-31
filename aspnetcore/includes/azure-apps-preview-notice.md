@@ -1,4 +1,4 @@
 > [!IMPORTANT]
-> **Обратите внимание, для использования предварительных выпусков ASP.NET Core 2.1**
+> <span data-ttu-id="44f38-101">**Примечание об использовании предварительных выпусков ASP.NET Core 2.1**</span><span class="sxs-lookup"><span data-stu-id="44f38-101">**Notice for using ASP.NET Core 2.1 preview releases**</span></span>
 >
-> В разделе [развертывание ASP.NET Core предварительного выпуска в службу приложений Azure](xref:host-and-deploy/azure-apps/index#deploy-aspnet-core-preview-release-to-azure-app-service).
+> <span data-ttu-id="44f38-102">См. [Развертывание предварительной версии ASP.NET Core в Службе приложений Azure](xref:host-and-deploy/azure-apps/index#deploy-aspnet-core-preview-release-to-azure-app-service).</span><span class="sxs-lookup"><span data-stu-id="44f38-102">See [Deploy ASP.NET Core preview release to Azure App Service](xref:host-and-deploy/azure-apps/index#deploy-aspnet-core-preview-release-to-azure-app-service).</span></span>
