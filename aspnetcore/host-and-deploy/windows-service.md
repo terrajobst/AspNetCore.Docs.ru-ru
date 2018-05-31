@@ -1,7 +1,7 @@
 ---
-title: Узел ASP.NET Core в службе Windows
+title: Размещение ASP.NET Core в службе Windows
 author: rick-anderson
-description: Узнайте, как для размещения приложения ASP.NET Core в службе Windows.
+description: Узнайте, как разместить приложение ASP.NET Core в службе Windows.
 manager: wpickett
 ms.author: tdykstra
 ms.custom: mvc
@@ -12,39 +12,40 @@ ms.topic: article
 uid: host-and-deploy/windows-service
 ms.openlocfilehash: 29f83ee585c73aeb57a09f70ea8e28650c05ce69
 ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34153533"
 ---
-# <a name="host-aspnet-core-in-a-windows-service"></a>Узел ASP.NET Core в службе Windows
+# <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
 Автор: [Том Дикстра](https://github.com/tdykstra) (Tom Dykstra)
 
-Рекомендуется размещать приложения ASP.NET Core в Windows без с помощью служб IIS для запуска в [службы Windows](/dotnet/framework/windows-services/introduction-to-windows-service-applications). Когда в качестве службы Windows, приложение может автоматически запуск после перезагрузки и аварийно завершает работу без необходимости вмешательства человека.
+Чтобы разместить приложение ASP.NET Core в Windows, не используя IIS, рекомендуем выполнить его в [службе Windows](/dotnet/framework/windows-services/introduction-to-windows-service-applications). Размещенное в службе Windows приложение может автоматически запускаться после перезагрузок и аварийных завершений работы, не требуя вмешательства оператора.
 
-[Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/sample) ([описание скачивания](xref:tutorials/index#how-to-download-a-sample)). Инструкции по запуску примера приложения, см. пример *README.md* файла.
+[Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/sample) ([описание скачивания](xref:tutorials/index#how-to-download-a-sample)). Инструкции по запуску примера приложения содержатся в файле *README.md* для этого примера.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* Приложение должно выполняться в среде выполнения .NET Framework. В *.csproj* файла, укажите соответствующие значения для [TargetFramework](/nuget/schema/target-frameworks) и [RuntimeIdentifier](/dotnet/articles/core/rid-catalog). Ниже приведен пример:
+* Приложение должно работать в среде выполнения .NET Framework. В файле *.csproj* укажите соответствующие значения для параметров [TargetFramework](/nuget/schema/target-frameworks) (Целевая среда выполнения) и [RuntimeIdentifier](/dotnet/articles/core/rid-catalog) (Идентификатор среды выполнения). Ниже приведен пример:
 
   [!code-xml[](windows-service/sample/AspNetCoreService.csproj?range=3-6)]
 
-  При создании проекта в Visual Studio, используйте **основное приложение ASP.NET (.NET Framework)** шаблона.
+  При создании нового проекта в Visual Studio используйте шаблон **приложения ASP.NET Core (.NET Framework)**.
 
-* Если приложение получает запросы из Интернета (не только из внутренней сети), он должен использовать [HTTP.sys](xref:fundamentals/servers/httpsys) веб-сервера (ранее называвшейся [WebListener](xref:fundamentals/servers/weblistener) для приложений ASP.NET Core 1.x) вместо [Kestrel](xref:fundamentals/servers/kestrel). IIS рекомендуется для использования в качестве обратного прокси-сервера с Kestrel для развертываний edge. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
+* Если это приложение получает запросы из Интернета (а не только из внутренней сети), для него потребуется веб-сервер [HTTP.sys](xref:fundamentals/servers/httpsys) (который ранее назывался [WebListener](xref:fundamentals/servers/weblistener) для приложений ASP.NET Core 1.x), а не [Kestrel](xref:fundamentals/servers/kestrel). Рекомендуем применять IIS в качестве обратного прокси-сервера для развертываний Kestrel на пограничных серверах. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
 
 ## <a name="get-started"></a>Начало работы
 
-В этом разделе описывается минимальный набор изменений, необходимых для настройки существующего проекта ASP.NET Core для запуска в службе.
+В этом разделе описан минимальный набор изменений, позволяющий настроить существующий проект ASP.NET Core для запуска в службе.
 
-1. Установка пакета NuGet [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices/).
+1. Установите пакет NuGet [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices/).
 
 2. Внесите следующие изменения в `Program.Main`:
 
-   * Вызовите `host.RunAsService` вместо `host.Run`.
+   * Вызовите метод `host.RunAsService` вместо `host.Run`.
 
-   * Если код вызывает `UseContentRoot`, используйте путь в расположение публикации вместо `Directory.GetCurrentDirectory()`.
+   * Если в коде есть вызовы `UseContentRoot`, используйте в них путь к расположению публикации вместо `Directory.GetCurrentDirectory()`.
 
    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
@@ -56,28 +57,28 @@ ms.lasthandoff: 05/14/2018
 
    ---
 
-3. Публикация приложения в папке. Используйте [публикации dotnet](/dotnet/articles/core/tools/dotnet-publish) или [профиль публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles) , публикует в папку.
+3. Опубликуйте приложение в папке. Используйте команду [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) или [профиль публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles), выполняющий публикацию в папку.
 
-4. Тестирование путем создания и запуска службы.
+4. Выполните проверку, создав и запустив службу.
 
-   Откройте командную строку с правами администратора для использования [sc.exe](https://technet.microsoft.com/library/bb490995) средство командной строки для создания и запуска службы. Если служба называется MyService, опубликованы `c:\svc`, и с именем AspNetCoreService, команды, являются:
+   Откройте оболочку командной строки с правами администратора и запустите в ней программу командной строки [sc.exe](https://technet.microsoft.com/library/bb490995) для создания и запуска службы. Например, если служба называется MyService и опубликована в `c:\svc` с именем AspNetCoreService, для ее запуска используются следующие команды:
 
    ```console
    sc create MyService binPath="c:\svc\aspnetcoreservice.exe"
    sc start MyService
    ```
 
-   `binPath` Значение — это путь к исполняемому файлу приложения, включая имя исполняемого файла.
+   Значение `binPath` обозначает путь к исполняемому файлу приложения, включая имя самого файла.
 
-   ![Окно консоли, создание и запуск примера](windows-service/_static/create-start.png)
+   ![Пример создания и запуска в окне консоли](windows-service/_static/create-start.png)
 
-   После завершения этих команд, перейдите к тому же пути, что при запуске в качестве консольного приложения (по умолчанию `http://localhost:5000`):
+   Когда эти команд будут выполнены, перейдите по тому же пути, что и при запуске консольного приложения (по умолчанию это `http://localhost:5000`):
 
-   ![Выполняемые в службе](windows-service/_static/running-in-service.png)
+   ![Выполнение в качестве службы](windows-service/_static/running-in-service.png)
 
-## <a name="provide-a-way-to-run-outside-of-a-service"></a>Укажите способ запуска за пределами службы
+## <a name="provide-a-way-to-run-outside-of-a-service"></a>Обеспечение возможности запуска за пределами службы
 
-Проще тестирования и отладки при работе вне службы, поэтому обычно добавьте код, вызывающий `RunAsService` только при определенных условиях. Например, приложение может выполняться как консольное приложение с `--console` аргумент командной строки или при присоединении отладчика:
+Тестирование и отладку проще выполнять при работе вне службы. Поэтому разработчики обычно добавляют код, который вызывает `RunAsService` только при соблюдении определенных условий. Например, приложение может выполняться как консольное приложение с аргументом командной строки `--console` или при присоединении отладчика:
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
@@ -89,19 +90,19 @@ ms.lasthandoff: 05/14/2018
 
 ---
 
-## <a name="handle-stopping-and-starting-events"></a>Остановка и запуск событий
+## <a name="handle-stopping-and-starting-events"></a>Обработка событий остановки и запуска
 
-Для обработки `OnStarting`, `OnStarted`, и `OnStopping` события, выполните следующие дополнительные изменения:
+Чтобы правильно обрабатывать события `OnStarting`, `OnStarted` и `OnStopping`, внесите дополнительные изменения.
 
-1. Создайте класс, производный от `WebHostService`:
+1. Создайте класс, производный от класса `WebHostService`.
 
    [!code-csharp[](windows-service/sample/CustomWebHostService.cs?name=NoLogging)]
 
-2. Создание метода расширения для `IWebHost` , проходящего пользовательский `WebHostService` для `ServiceBase.Run`:
+2. Создайте метод расширения для `IWebHost`, который передает пользовательский параметр `WebHostService` в `ServiceBase.Run`:
 
    [!code-csharp[](windows-service/sample/WebHostServiceExtensions.cs?name=ExtensionsClass)]
 
-3. В `Program.Main`, вызовите новый метод расширения, `RunAsCustomService`, а не `RunAsService`:
+3. В `Program.Main` измените вызов `RunAsService` на вызов нового метода расширения `RunAsCustomService`:
 
    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
@@ -113,17 +114,17 @@ ms.lasthandoff: 05/14/2018
 
    ---
 
-Если пользовательский `WebHostService` кода требует службы из внедрения зависимости (например, средства ведения журнала), получить его из `Services` свойства `IWebHost`:
+Если пользовательский код `WebHostService` обращается к службе путем введения зависимости (например, к средству ведения журнала), ее можно получить из свойства `Services` объекта `IWebHost`:
 
 [!code-csharp[](windows-service/sample/CustomWebHostService.cs?name=Logging&highlight=7)]
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Сценарии использования прокси-сервера и подсистемы балансировки нагрузки
 
-Служб, взаимодействовать с запросы из Интернета или корпоративной сети и через прокси или Подсистема балансировки нагрузки может потребовать дополнительной настройки. Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).
+Для служб, которые взаимодействуют с запросами из Интернета или корпоративной сети и размещаются за прокси-сервером или подсистемой балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).
 
 ## <a name="acknowledgments"></a>Благодарности
 
-В этой статье было написано с помощью опубликованных источников:
+Эта статья создана с использованием данных из других опубликованных источников:
 
-* [Размещение ASP.NET Core в качестве службы Windows](https://stackoverflow.com/questions/37346383/hosting-asp-net-core-as-windows-service/37464074)
-* [Как разместить основные ASP.NET в службе Windows](https://dotnetthoughts.net/how-to-host-your-aspnet-core-in-a-windows-service/)
+* [Hosting ASP.NET Core as Windows service](https://stackoverflow.com/questions/37346383/hosting-asp-net-core-as-windows-service/37464074) (Размещение ASP.NET Core в качестве службы Windows)
+* [How to host your ASP.NET Core in a Windows Service](https://dotnetthoughts.net/how-to-host-your-aspnet-core-in-a-windows-service/) (Как разместить ASP.NET Core в службе Windows)

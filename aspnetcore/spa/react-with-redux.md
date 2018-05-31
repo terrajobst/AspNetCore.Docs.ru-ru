@@ -1,7 +1,7 @@
 ---
-title: Использовать шаблон проекта реагирование на них с локализации с ASP.NET Core
+title: Использование шаблона проекта React и Redux с ASP.NET Core
 author: SteveSandersonMS
-description: Сведения о начале работы с использованием шаблона проекта ASP.NET Core одной страницы приложений (SPA) для действия с Redux и создание-реагирование на них приложения.
+description: Сведения о начале работы с шаблоном проекта одностраничного приложения (SPA) ASP.NET Core для React с Redux и create-react-app.
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -13,15 +13,16 @@ ms.topic: article
 uid: spa/react-with-redux
 ms.openlocfilehash: 9abfbfe5be69d3145de453d9d9e56ea35eec64ed
 ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30076295"
 ---
-# <a name="use-the-react-with-redux-project-template-with-aspnet-core"></a>Использовать шаблон проекта реагирование на них с локализации с ASP.NET Core
+# <a name="use-the-react-with-redux-project-template-with-aspnet-core"></a>Использование шаблона проекта React и Redux с ASP.NET Core
 
 > [!NOTE]
-> В этой документации о шаблоне реагирование на них с локализации проекта отсутствует в ASP.NET Core 2.0. Дело новым шаблоном реагирование на них с локализации, к которому можно обновить вручную. Шаблон по умолчанию включены в ASP.NET Core 2.1.
+> Информация о шаблоне проекта React и Redux, который включен в ASP.NET Core 2.0, в этой документации отсутствует. Речь идет о более новом шаблоне React и Redux, который можно обновить вручную. Этот шаблон по умолчанию включен в ASP.NET Core 2.1.
 
-Обновленный шаблон проекта реагирование на них с Redux предоставляет удобную начальную точку для приложений ASP.NET Core с помощью реагировать, Redux, и [создать реагирование на них приложении](https://github.com/facebookincubator/create-react-app) (CRA) соглашения для реализации полнофункционального клиентского пользовательского интерфейса (UI).
+Обновленный шаблон проекта React и Redux служит удобной отправной точкой для создания приложений ASP.NET Core на основе конвенций React, Redux и [create-react-app](https://github.com/facebookincubator/create-react-app) (CRA), позволяющих реализовать полноценный пользовательский интерфейс на стороне клиента.
 
-За исключением команду создания проекта все сведения о шаблоне реагирование на них с локализации совпадает шаблона реагирование на них. Чтобы создать этот тип проекта, запустите `dotnet new reactredux` вместо `dotnet new react`. Дополнительные сведения о функции, общие для обоих шаблонов на основе реагирование на них см. в разделе [реагировать документации по шаблону](xref:spa/react).
+За исключением команд создания проекта, все сведения о шаблоне React и Redux совпадают с данными о шаблоне React. Чтобы создать проект такого типа, выполните `dotnet new reactredux` вместо `dotnet new react`. Дополнительные сведения о функциональности обоих шаблонов на основе React вы найдете в [документации по шаблону React](xref:spa/react).
