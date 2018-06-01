@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/windowsauth
-ms.openlocfilehash: a481951812e3498a1172dea98aaa162149b86f2b
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: dbcef095561fe656bdd28c4fa6560c6b269a2db0
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/31/2018
+ms.locfileid: "34689013"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Настроить проверку подлинности в ASP.NET Core
 
@@ -56,7 +57,7 @@ ms.lasthandoff: 05/12/2018
 
 ## <a name="enable-windows-authentication-with-iis"></a>Включение проверки подлинности Windows в службах IIS
 
-Службы IIS используют [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) для приложений ASP.NET Core узла. Модуль потоки проверки подлинности Windows для служб IIS по умолчанию. В службах IIS, приложение не настроена проверка подлинности Windows. Ниже показано, как использовать диспетчер служб IIS для настройки приложения ASP.NET Core, чтобы использовать проверку подлинности Windows.
+Службы IIS используют [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) для приложений ASP.NET Core узла. Модуль разрешает проверку подлинности Windows для передачи в службах IIS по умолчанию. В службах IIS, приложение не настроена проверка подлинности Windows. Ниже показано, как использовать диспетчер служб IIS для настройки приложения ASP.NET Core, чтобы использовать проверку подлинности Windows.
 
 ### <a name="create-a-new-iis-site"></a>Создать новый сайт IIS
 

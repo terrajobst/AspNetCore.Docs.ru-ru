@@ -10,17 +10,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/gdpr
-ms.openlocfilehash: dc1724e8a78c25d3697d14ad784ce853737681f2
-ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.openlocfilehash: 92a7000f4f8e4c2097065cb530fe106ef0e98545
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2018
+ms.lasthandoff: 05/31/2018
+ms.locfileid: "34688631"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Поддержка Европа общие данные защиты стабилизации (GDPR) в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-ASP.NET Core предоставляет API-интерфейсы и шаблоны с помощью требованиям [UE общие данные защиты стабилизации (GDPR)](https://www.eugdpr.org/) требования:
+ASP.NET Core предоставляет API-интерфейсы и шаблоны с помощью требованиям [Европа общие данные защиты стабилизации (GDPR)](https://www.eugdpr.org/) требования:
 
 * Шаблоны проектов включают точки расширения и кратких разметку, можно заменить конфиденциальности и политики использования файлов cookie.
 * Функция согласия куки-файл позволяет запрашивать (и отслеживания) согласие от пользователей для сохранения личных сведений. Если пользователь не дал свое согласие на сбор данных и приложение устанавливается с [CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded?view=aspnetcore-2.1#Microsoft_AspNetCore_Builder_CookiePolicyOptions_CheckConsentNeeded) для `true`, необязательные файлы cookie не будут отправляться в браузере.
@@ -38,7 +39,7 @@ ASP.NET Core предоставляет API-интерфейсы и шаблон
 
 * [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions?view=aspnetcore-2.0) и [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_CookiePolicyAppBuilderExtensions_UseCookiePolicy_Microsoft_AspNetCore_Builder_IApplicationBuilder_) задаются в `Startup`.
 * *_CookieConsentPartial.cshtml* [частичного представления](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper).
-* *Pages/Privacy.cshtml* или *Home/rivacy.cshtml* представление предоставляет страницы для подробного описания политики конфиденциальности вашего веб-узла. *_CookieConsentPartial.cshtml* файл создает ссылку на страницу о конфиденциальности.
+* *Pages/Privacy.cshtml* или *Home/Privacy.cshtml* представление предоставляет страницы для подробного описания политики конфиденциальности вашего веб-узла. *_CookieConsentPartial.cshtml* файл создает ссылку на страницу о конфиденциальности.
 * Для приложений, созданных с помощью отдельных учетных записей пользователей, страница управления ссылки для загрузки и удалить [персональных данных пользователя](#pd).
 
 ### <a name="cookiepolicyoptions-and-usecookiepolicy"></a>CookiePolicyOptions и UseCookiePolicy
