@@ -12,19 +12,20 @@ ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-cycle/cdnjquerycycle294
 msc.type: content
-ms.openlocfilehash: 459a6d19996d0f41d27a3472c60e6ad2ce049241
-ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
+ms.openlocfilehash: 333059d026fedba97931da6d26b8db86f4c91a5b
+ms.sourcegitcommit: a0b6319c36f41cdce76ea334372f6e14fc66507e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/21/2018
+ms.lasthandoff: 06/02/2018
+ms.locfileid: "34728912"
 ---
 <a name="jquery-cycle-294"></a>jQuery 2.94 цикла
 ====================
 Следующие файлы цикла jQuery размещенных на этом CDN:
 
-- https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.all.js &mdash; Полную версию подключаемого модуля цикла jQuery. Включает в себя более чем двадцати специальные эффекты и все параметры.
-- https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.all.min.js &mdash; Уменьшенная версия файла выше. Используйте эту версию для производственных приложений для повышения производительности веб-сайта.
-- https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.js &mdash; Эта версия подключаемого модуля цикла jQuery меньше и содержит только эффект перехода «исчезания».
-- https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.min.js &mdash; Уменьшенная версия файла выше. Используйте эту версию для производственных приложений для повышения производительности веб-сайта.
-- https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.lite.js &mdash; Еще меньше версия подключаемого модуля цикла jQuery, который содержит только переход «затемнения» без параметров.
-- https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.lite.min.js &mdash; Уменьшенная версия файла выше. Используйте эту версию для производственных приложений для повышения производительности веб-сайта.
+- [https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.all.js](https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.all.js) &mdash; Полную версию подключаемого модуля цикла jQuery. Включает в себя более чем двадцати специальные эффекты и все параметры.
+- [https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.all.min.js](https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.all.min.js) &mdash; Уменьшенная версия файла выше. Используйте эту версию для производственных приложений для повышения производительности веб-сайта.
+- [https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.js](https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.js) &mdash; Эта версия подключаемого модуля цикла jQuery меньше и содержит только эффект перехода «исчезания».
+- [https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.min.js](https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.min.js) &mdash; Уменьшенная версия файла выше. Используйте эту версию для производственных приложений для повышения производительности веб-сайта.
+- [https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.lite.js](https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.lite.js) &mdash; Еще меньше версия подключаемого модуля цикла jQuery, который содержит только переход «затемнения» без параметров.
+- [https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.lite.min.js](https://ajax.aspnetcdn.com/ajax/jquery.cycle/2.94/jquery.cycle.lite.min.js) &mdash; Уменьшенная версия файла выше. Используйте эту версию для производственных приложений для повышения производительности веб-сайта.

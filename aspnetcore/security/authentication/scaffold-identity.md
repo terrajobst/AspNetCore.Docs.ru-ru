@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 7527d3c075fd845ac804d4cfd56469a0679ed7e8
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: a43b7bbaf1f90d3373b3846bc3f4f32be6b80bd4
+ms.sourcegitcommit: a0b6319c36f41cdce76ea334372f6e14fc66507e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/02/2018
+ms.locfileid: "34729614"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Удостоверение формирования шаблонов в проектах ASP.NET Core
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/17/2018
 
 Несмотря на то, что scaffolder создает большую часть необходимый код, необходимо обновить проект, чтобы завершить процесс. В этом документе объясняется шаги, необходимые для завершения обновления удостоверения формирования шаблонов.
 
-При запуске удостоверения scaffolder *ScaffoldingReadme.txt* файл создается в каталоге проекта. *ScaffoldingReadme.txt* файл содержит общие инструкции по потребности для завершения обновления удостоверения формирования шаблонов. Этот документ содержит более подробные инструкции, чем чтения *ScaffoldingReadme.txt* файла.
+При запуске удостоверения scaffolder *ScaffoldingReadme.txt* файл создается в каталоге проекта. *ScaffoldingReadme.txt* файл содержит общие инструкции, на что требуется для завершения обновления удостоверения формирования шаблонов. Этот документ содержит более подробные инструкции, чем чтения *ScaffoldingReadme.txt* файла.
 
 Мы рекомендуем использовать систему управления версиями, показаны различия в файл и дает возможность отката изменений. Проверьте изменения после выполнения scaffolder удостоверений.
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 05/17/2018
 <!--
 set projNam=RPnoAuth
 set projType=razor
-set version=2.1.0-rc1-final
+set version=2.1.0
 
 dotnet new %projType% -o %projNam%
 cd %projNam%
@@ -76,12 +77,13 @@ dotnet ef database update
 
 [!code-html[Main](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
 
-## <a name="scaffold-identity-into-a-razor-project-with-individual-authorization"></a>Удостоверение формирования шаблонов в проект Razor с отдельными авторизации
+## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a>Удостоверение формирования шаблонов в проект Razor с авторизации
 
 <!--
-dotnet new razor -au Individual -o RPauth
+Use >=2.1: dotnet new webapp -au Individual -o RPauth
+Use = 2.0: dotnet new razor -au Individual -o RPauth
 cd RPauth
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design -v "2.1.0-rc1-final"
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.1.0
 dotnet restore
 dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files Account.Register
 -->
@@ -94,7 +96,7 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 <!--
 set projNam=MvcNoAuth
 set projType=mvc
-set version=2.1.0-rc1-final
+set version=2.1.0
 
 dotnet new %projType% -o %projNam%
 cd %projNam%
@@ -123,12 +125,12 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/hsts.md)]
 
-## <a name="scaffold-identity-into-an-mvc-project-with-individual-authorization"></a>Удостоверение формирования шаблонов в проект MVC с отдельными авторизации
+## <a name="scaffold-identity-into-an-mvc-project-with-authorization"></a>Удостоверение формирования шаблонов в проект MVC с авторизации
 
 <!--
 dotnet new mvc -au Individual -o MvcAuth
 cd MvcAuth
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design -v "2.1.0-rc1-final"
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.1.0
 dotnet restore
 dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext --files Account.Register
 -->

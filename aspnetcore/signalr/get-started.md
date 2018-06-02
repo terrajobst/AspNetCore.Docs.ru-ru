@@ -11,12 +11,12 @@ ms.prod: aspnet-core
 ms.topic: tutorial
 ms.technology: aspnet
 uid: signalr/get-started
-ms.openlocfilehash: eb14fbf42f5c18ccdc3ca42af8fd8bcfaa15c623
-ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
+ms.openlocfilehash: 880abd87805990baf8dd977c340a60582e54d2df
+ms.sourcegitcommit: a0b6319c36f41cdce76ea334372f6e14fc66507e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/31/2018
-ms.locfileid: "34688592"
+ms.lasthandoff: 06/02/2018
+ms.locfileid: "34729509"
 ---
 # <a name="get-started-with-signalr-on-aspnet-core"></a>Приступая к работе с SignalR в ASP.NET Core
 
@@ -75,7 +75,7 @@ Visual Studio включает `Microsoft.AspNetCore.SignalR` пакета, со
     npm install @aspnet/signalr
     ```     
 
-4. Копировать *signalr.js* файл из *node_modules\\ @aspnet\signalr\dist\browser*  для *lib* в папке проекта.
+4. Создайте новую папку с именем «signalr» внутри *lib* в папке проекта. Затем скопируйте *signalr.js* файл из *node_modules\\ @aspnet\signalr\dist\browser*  в эту папку.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
 
@@ -102,7 +102,7 @@ Visual Studio включает `Microsoft.AspNetCore.SignalR` пакета, со
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-1. Добавить класс в проект, выбрав **файл** > **New** > **файл** и выбрав **классов Visual C#**.
+1. Добавить класс в проект, выбрав **файл** > **New** > **файл** и выбрав **классов Visual C#**. Назовите файл *ChatHub*. 
 
 2. Наследовать от `Microsoft.AspNetCore.SignalR.Hub`. `Hub` Класс содержит свойства и события для управления подключения и группы, а также отправки и получения данных.
 
