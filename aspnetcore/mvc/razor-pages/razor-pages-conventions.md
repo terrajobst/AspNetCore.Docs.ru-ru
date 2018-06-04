@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/razor-pages/razor-pages-conventions
-ms.openlocfilehash: 15bb0687ffef777b82ea9374fdc3b92f3af7818b
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: eba3422fbf46ac181a783b7f8cc605c2a549b4b7
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729747"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>Соглашения для маршрутов и приложений Razor Pages в ASP.NET Core
 
@@ -104,8 +105,6 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range=">= aspnetcore-2.1"
 **Добавление соглашения для модели обработчика ко всем страницам**
-
-
 
 Используйте свойство [Conventions](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions), чтобы создать и добавить [IPageHandlerModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipagehandlermodelconvention) в коллекцию экземпляров [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention), которые применяются при формировании модели обработчика страницы.
 
@@ -342,6 +341,6 @@ services.AddMvc()
 
 Фильтр страниц ([IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter)) — это фильтр, применяемый для Razor Pages. Дополнительные сведения см. в разделе [Методы фильтрации для Razor Pages](xref:mvc/razor-pages/filter).
 
-## <a name="see-also"></a>См. также
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Соглашения об авторизации Razor Pages](xref:security/authorization/razor-pages-authorization)

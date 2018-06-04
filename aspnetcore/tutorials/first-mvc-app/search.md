@@ -9,13 +9,14 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: 772409f11a43e1d130265d8bba3bad1da5a41b86
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: aee1682755385d9fa292f9ba0814d5d3602f3881
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729912"
 ---
-[!INCLUDE [adding-model](../../includes/mvc-intro/search1.md)]
+[!INCLUDE [adding-model](~/includes/mvc-intro/search1.md)]
 
 Параметр `searchString` можно быстро переименовать в `id` с помощью команды **rename**. Щелкните правой кнопкой мыши элемент `searchString` **> Rename**.
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/06/2018
 
 ![Редактор кода, в котором переменная изменена на идентификатор](search/_static/rename3.png)
 
-[!INCLUDE [adding-model](../../includes/mvc-intro/search2.md)]
+[!INCLUDE [adding-model](~/includes/mvc-intro/search2.md)]
 
 Обратите внимание на то, как IntelliSense автоматически обновляет разметку.
 
@@ -37,11 +38,11 @@ ms.lasthandoff: 04/06/2018
 
 ![Контекстное меню IntelliSense с методом get, выбранным в списке значений атрибутов метода](search/_static/int_get.png)
 
-Обратите внимание на другой шрифт тега `<form>`. Такое выделение свидетельствует о том, что тег поддерживается [вспомогательными функциями тегов](../../mvc/views/tag-helpers/intro.md).
+Обратите внимание на другой шрифт тега `<form>`. Такое выделение свидетельствует о том, что тег поддерживается [вспомогательными функциями тегов](~/mvc/views/tag-helpers/intro.md).
 
 ![Тег form, выделенный фиолетовым цветом](search/_static/th_font.png)
 
-[!INCLUDE [adding-model](../../includes/mvc-intro/search3.md)]
+[!INCLUDE [adding-model](~/includes/mvc-intro/search3.md)]
 
 > [!div class="step-by-step"]
 > [Назад](controller-methods-views.md)

@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: 3691801c2d48b7f635bee844fdf2392f2f3445de
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: b392f956888a740a4a8c7c553996fc85ce63bd4b
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729640"
 ---
 # <a name="examine-the-details-and-delete-methods-of-an-aspnet-core-app"></a>Изучение методов Details и Delete в приложении ASP.NET Core
 
@@ -21,7 +22,14 @@ ms.lasthandoff: 04/06/2018
 
 Откройте контроллер Movie и изучите метод `Details`:
 
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](start-mvc/sample/MvcMovie21/Controllers/MoviesController.cs?name=snippet_details)]
+
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
 [!code-csharp[](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_details)]
+
+::: moniker-end
 
 Подсистема формирования шаблонов MVC, созданная этим методом действия, добавляет комментарий, показывающий HTTP-запрос, который вызывает метод. Здесь это запрос GET, состоящий из трех сегментов URL-адреса, контроллера `Movies`, метода `Details` и значения `id`. Эти сегменты определены в *Startup.cs*.
 
@@ -31,7 +39,14 @@ EF упрощает поиск данных с помощью метода `Sing
 
 Просмотрите методы `Delete` и `DeleteConfirmed`.
 
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](start-mvc/sample/MvcMovie21/Controllers/MoviesController.cs?name=snippet_delete)]
+
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
 [!code-csharp[](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete)]
+
+::: moniker-end
 
 Обратите внимание, что метод `HTTP GET Delete` не удаляет указанный фильм, он возвращает представление фильма, где можно выполнить (HttpPost) удаление. Выполнение операции удаления в ответ на запрос GET (или выполнение операции редактирования, создания или любой другой операции, изменяющей данные) открывает брешь в системе безопасности.
 
@@ -57,8 +72,6 @@ public async Task<IActionResult> Delete(int id, bool notUsed)
 ### <a name="publish-to-azure"></a>Публикация в Azure
 
 Дополнительные сведения о публикации этого приложения в Azure с помощью Visual Studio см. в руководстве по [публикации веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs).  Приложение можно также опубликовать из [командной строки](xref:tutorials/publish-to-azure-webapp-using-cli).
-
-Благодарим вас за изучение общих сведений по ASP.NET Core MVC. Мы будем рады любым комментариям. Отличным дополнением к этому учебнику является статья [Начало работы с EF Core и MVC](xref:data/ef-mvc/intro).
 
 > [!div class="step-by-step"]
 > [Назад](validation.md)

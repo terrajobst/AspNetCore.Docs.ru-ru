@@ -16,7 +16,12 @@
 
 Обновите класс `Movie`, чтобы использовать преимущества встроенных атрибутов проверки `Required`, `StringLength`, `RegularExpression` и `Range`.
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie21/Models/MovieDateRatingDA.cs?name=snippet1)]
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
+::: moniker-end
 
 Атрибуты проверки определяют поведение для свойств модели, к которым они применяются. Атрибуты `Required` и `MinimumLength` указывают, что свойство должно иметь значение. Тем не менее, чтобы удовлетворить требованиям проверки, пользователю достаточно ввести пробел. Атрибут `RegularExpression` ограничивает набор допустимых для ввода символов. В приведенном выше коде в полях `Genre` и `Rating` можно использовать только буквы (пробелы, числа и специальные символы не допускаются). Атрибут `Range` ограничивает диапазон значений. Атрибут `StringLength` позволяет задать максимальную и при необходимости минимальную длину строкового свойства. Типы значений (например, `decimal`, `int`, `float`, `DateTime`) по своей природе являются обязательными и не требуют атрибута `[Required]`.
 
@@ -28,7 +33,7 @@
 
 Коснитесь ссылки **Create New** (Создать), чтобы добавить новый фильм. Введите в форму какие-либо недопустимые значения. Если функция проверки jQuery на стороне клиента обнаруживает ошибку, сведения о ней отображаются в соответствующем сообщении.
 
-![Форма просмотра фильма с несколькими ошибками проверки jQuery на стороне клиента](../../tutorials/first-mvc-app/validation/_static/val.png)
+![Форма просмотра фильма с несколькими ошибками проверки jQuery на стороне клиента](~/tutorials/first-mvc-app/validation/_static/val.png)
 
 > [!NOTE]
 > В поле `Price` нельзя вводить десятичные запятые. Чтобы обеспечить поддержку [проверки jQuery](https://jqueryvalidation.org/) для других языков, кроме английского, используйте вместо десятичной точки запятую (","), а для отображения данных в форматах для других языков, кроме английского, выполните действия, необходимые для глобализации вашего приложения. Инструкции по добавлению десятичной запятой представлены в этом [вопросе 4076 GitHub](https://github.com/aspnet/Docs/issues/4076#issuecomment-326590420). 
@@ -43,7 +48,7 @@
 
 Вам может быть интересно, как пользовательский интерфейс проверки создается без обновления кода контроллера или представлений. В следующем примере кода показаны два метода `Create`.
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Controllers/MoviesController.cs?name=snippetCreate)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Controllers/MoviesController.cs?name=snippetCreate)]
 
 Первый метод действия `Create` (HTTP GET) отображает исходную форму создания. Вторая версия (`[HttpPost]`) обрабатывает передачу формы. Второй метод `Create` (версия `[HttpPost]`) вызывает `ModelState.IsValid`, который определяет наличие ошибок проверки в фильме. При вызове этого метода оцениваются все атрибуты проверки, которые были применены к объекту. При наличии ошибок проверки в объекте метод `Create` повторно отображает форму. Если ошибок нет, метод сохраняет новый фильм в базе данных. В этом примере форма передается на сервер только после того, как будут устранены все ошибки проверки, обнаруженные на стороне клиента. Второй метод `Create` не вызывается до тех пор, пока на стороне клиента присутствуют ошибки проверки. При отключении JavaScript в браузере также отключается проверка на стороне клиента. В этом случае вы можете протестировать метод HTTP POST `Create` `ModelState.IsValid`, который обнаруживает наличие ошибок проверки.
 
@@ -51,19 +56,19 @@
 
 На следующем рисунке показано, как отключить JavaScript в браузере FireFox.
 
-![Firefox: в разделе "Настройки" на вкладке "Содержимое" снимите флажок "Включить Javascript".](../../tutorials/first-mvc-app/validation/_static/ff.png)
+![Firefox: в разделе "Настройки" на вкладке "Содержимое" снимите флажок "Включить Javascript".](~/tutorials/first-mvc-app/validation/_static/ff.png)
 
 На следующем рисунке показано, как отключить JavaScript в браузере Chrome.
 
-![Google Chrome: в разделе Javascript меню "Настройки контента" выберите "Запретить сайтам использовать JavaScript".](../../tutorials/first-mvc-app/validation/_static/chrome.png)
+![Google Chrome: в разделе Javascript меню "Настройки контента" выберите "Запретить сайтам использовать JavaScript".](~/tutorials/first-mvc-app/validation/_static/chrome.png)
 
 После отключения JavaScript передайте недопустимые данные и запустите отладку в пошаговом режиме.
 
-![Отладка Intellisense во время передачи недопустимых данных показывает, что атрибут ModelState.IsValid имеет значение false.](../../tutorials/first-mvc-app/validation/_static/ms.png)
+![Отладка Intellisense во время передачи недопустимых данных показывает, что атрибут ModelState.IsValid имеет значение false.](~/tutorials/first-mvc-app/validation/_static/ms.png)
 
 Ниже демонстрируется часть шаблона представления *Create.cshtml*, сформированного ранее в рамках этого руководства. Он используется в показанных выше методах действия для отображения исходной формы и повторного вывода формы в случае ошибки.
 
-[!code-HTML[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml)]
+[!code-HTML[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml)]
 
 [Вспомогательная функция тега Input](xref:mvc/views/working-with-forms) использует атрибуты [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) и создает HTML-атрибуты, необходимые для проверки jQuery на стороне клиента. [Вспомогательная функция тега Validation](xref:mvc/views/working-with-forms#the-validation-tag-helpers) отображает ошибки проверки. Дополнительные сведения см. в разделе [Проверка](xref:mvc/models/validation).
 
@@ -75,7 +80,7 @@
 
 Откройте файл *Movie.cs* и проверьте класс `Movie`. В пространстве имен `System.ComponentModel.DataAnnotations` в дополнение к набору встроенных атрибутов проверки предоставляются атрибуты форматирования. К полям с датой выпуска и ценой уже применено значение перечисления `DataType`. В следующем коде показаны свойства `ReleaseDate` и `Price` с соответствующим атрибутом `DataType`.
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
 
 Атрибуты `DataType` предоставляют модулю просмотра только рекомендации по форматированию данных, а также другие элементы и атрибуты, например `<a>` для URL-адресов и `<a href="mailto:EmailAddress.com">` для электронной почты. Используйте атрибут `RegularExpression` для проверки формата данных. Атрибут `DataType` позволяет указать тип данных с более точным определением по сравнению со встроенным типом базы данных, но не предназначен для проверки. В этом случае требуется отслеживать только дату, но не время. В перечислении `DataType` представлено множество типов данных, таких как Date, Time, PhoneNumber, Currency, EmailAddress и другие. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Например, может быть создана ссылка `mailto:` для `DataType.EmailAddress`. Также в браузерах с поддержкой HTML5 может быть предоставлен селектор даты для `DataType.Date`. Атрибуты `DataType` создают атрибуты HTML 5 `data-`, которые используются браузерами с поддержкой HTML 5. Атрибуты `DataType` **не предназначены** для проверки.
 
@@ -109,7 +114,14 @@ public DateTime ReleaseDate { get; set; }
 
 В следующем коде демонстрируется объединение атрибутов в одной строке:
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie21/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+
+::: moniker-end
 
 В следующей части этой серии мы рассмотрим приложение и внесем ряд изменений в автоматически создаваемые методы `Details` и `Delete`.
 

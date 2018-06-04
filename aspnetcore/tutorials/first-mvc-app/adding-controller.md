@@ -9,17 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 62a2736c57dee5210253ba8f7b62ca7791abacd3
-ms.sourcegitcommit: c4a31aaf902f2e84aaf4a9d882ca980fdf6488c0
+ms.openlocfilehash: 3aa0275ae37eaef3a0dca8be70c701a50ccd7d48
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34687770"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>Добавление контроллера в приложение MVC ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-[!INCLUDE [adding-controller1](../../includes/mvc-intro/adding-controller1.md)]
+[!INCLUDE [adding-controller1](~/includes/mvc-intro/adding-controller1.md)]
 
 * В **обозревателе решений** щелкните правой кнопкой мыши **Контроллеры > Добавить > Новый элемент**.
 
@@ -30,10 +31,10 @@ ms.lasthandoff: 04/23/2018
 
 ![Добавьте контроллер MVC и присвойте ему имя.](adding-controller/_static/ac.png)
 
-[!INCLUDE [adding-controller2](../../includes/mvc-intro/adding-controller2.md)]
+[!INCLUDE [adding-controller2](~/includes/mvc-intro/adding-controller2.md)]
 
 В Visual Studio в режиме без отладки (CTRL+F5) не требуется выполнять сборку приложения после изменения кода. Просто сохраните файл, обновите страницу браузера и вы увидите изменения.
 
 > [!div class="step-by-step"]
 > [Назад](start-mvc.md)
-> [Вперед](adding-view.md)  
+> [Вперед](adding-view.md)

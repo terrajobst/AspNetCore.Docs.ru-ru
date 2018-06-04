@@ -1,14 +1,14 @@
 Замените содержимое файла представления Razor *Views/HelloWorld/Index.cshtml* следующим:
 
-[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index.cshtml)]
+[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index.cshtml)]
 
 Перейдите к `http://localhost:xxxx/HelloWorld`. Метод `Index` в `HelloWorldController` сделал совсем мало. Он выполнил оператор `return View();`, который указал, что метод должен использовать файл шаблона представления для отображения ответа в браузере. Поскольку имя файла шаблона представления не указывается явно, модель MVC по умолчанию использует файл представления *Index.cshtml* в папке */Views/HelloWorld*. На рисунке ниже показана строка "Hello from our View Template!", которая жестко задана в представлении.
 
-![Окно браузера](../../tutorials/first-mvc-app/adding-view/_static/hell_template.png)
+![Окно браузера](~/tutorials/first-mvc-app/adding-view/_static/hell_template.png)
 
 Если окно браузера слишком мало (например, на экране мобильного устройства), может стать необходимым нажать [кнопку навигации "Bootstrap" (Начальная загрузка)](http://getbootstrap.com/components/#navbar) в верхнем правом углу или коснуться ее, чтобы появились ссылки **Home** (Главная), **About** (Сведения) и **Contact** (Контакты).
 
-![Окно браузера с выделенной кнопкой навигации "Bootstrap" (Начальная загрузка)](../../tutorials/first-mvc-app/adding-view/_static/1.png)
+![Окно браузера с выделенной кнопкой навигации "Bootstrap" (Начальная загрузка)](~/tutorials/first-mvc-app/adding-view/_static/1.png)
 
 ## <a name="changing-views-and-layout-pages"></a>Изменение представлений и страниц макета
 
@@ -20,16 +20,21 @@
 
 В элементе title измените `MvcMovie` на `Movie App`. Измените текст привязки в шаблоне макета с `MvcMovie` на `Movie App` и контроллер с `Home` на `Movies`, как показано ниже:
 
-Примечание. В версии ASP.NET Core 2.0 есть определенные отличия. В ней отсутствуют `@inject ApplicationInsights` и `@Html.Raw(JavaScriptSnippet.FullScript)`.
+::: moniker range="<= aspnetcore-2.0"
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout.cshtml?highlight=7,31)]
 
-[!code-html[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout.cshtml?highlight=7,31)]
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout21.cshtml?highlight=6,29)]
+::: moniker-end
 
 >[!WARNING]
 > На данный момент контроллер `Movies` еще не реализован, поэтому при щелчке по этой ссылке будет возвращена ошибка 404 (страница не найдена).
 
 Сохраните изменения и коснитесь ссылки **About** (Сведения). Обратите внимание, что заголовок вкладки браузера изменяется на **About - Movie App** (Сведения - Movie App) вместо **Mvc Movie**: 
 
-![О вкладке](../../tutorials/first-mvc-app/adding-view/_static/about2.png)
+![О вкладке](~/tutorials/first-mvc-app/adding-view/_static/about2.png)
 
 Коснитесь ссылки **Contact** (Контакты) и убедитесь, что в заголовке и тексте привязки также отображается **Movie App**. Таким образом, внеся одно изменение в шаблон макета, мы изменили заголовок и текст ссылки на всех страницах сайта.
 
@@ -75,7 +80,7 @@
 
 Также обратите внимание, что содержимое шаблона представления *Index.cshtml* объединяется с шаблоном представления *Views/Shared/_Layout.cshtml*, а в браузер отправляется один ответ HTML. С помощью шаблонов макета можно легко вносить изменения, которые применяются ко всем страницам приложения. Дополнительные сведения см. в разделе [Макет](xref:mvc/views/layout).
 
-![Представление списка фильмов](../../tutorials/first-mvc-app/adding-view/_static/hell3.png)
+![Представление списка фильмов](~/tutorials/first-mvc-app/adding-view/_static/hell3.png)
 
 В этом примере небольшой фрагмент данных (сообщение "Hello from our View Template!" ) жестко задан в коде. Приложение MVC предоставляет представление, вы реализуете контроллер, однако модели на данный момент еще нет.
 
@@ -89,7 +94,7 @@
 
 Вернитесь к файлу *HelloWorldController.cs* и измените метод `Welcome` так, чтобы добавлять значения `Message` и `NumTimes` в словарь `ViewData`. Словарь `ViewData` является динамическим объектом, то есть в него можно помещать абсолютно любые данные. Объект `ViewData` не имеет определенных свойств, пока в него не будут добавлены какие-либо данные. [Система привязки модели MVC](xref:mvc/models/model-binding) автоматически сопоставляет именованные параметры (`name` и `numTimes`) из строк запроса в адресной строке с параметрами метода. Полный файл *HelloWorldController.cs* выглядит следующим образом:
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 
 Объект словаря `ViewData` содержит данные, которые будут передаваться в представление. 
 
@@ -97,7 +102,7 @@
 
 В шаблоне представления *Welcome.cshtml* создайте цикл, который будет отображать строку "Hello" `NumTimes`. Замените содержимое файла *Views/HelloWorld/Welcome.cshtml* следующим:
 
-[!code-html[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
 
 Сохраните изменения и перейдите по следующему URL-адресу:
 
@@ -105,7 +110,7 @@
 
 Данные извлекаются по URL-адресу и передаются в контроллер с помощью [средства привязки модели MVC](xref:mvc/models/model-binding). Контроллер упаковывает данные в словарь `ViewData` и передает этот объект в представление. Представление отображает данные в формате HTML в браузере.
 
-![Представление сведений, в котором отображается приветственный заголовок и четыре раза выводится фраза "Hello Rick"](../../tutorials/first-mvc-app/adding-view/_static/rick2.png)
+![Представление сведений, в котором отображается приветственный заголовок и четыре раза выводится фраза "Hello Rick"](~/tutorials/first-mvc-app/adding-view/_static/rick2.png)
 
 В примере выше мы использовали словарь `ViewData` для передачи данных из контроллера в представление. Далее в этом руководстве для передачи данных из контроллера в представление мы будем использовать модель представления. Подход к передаче данных на основе модели представления является предпочтительным относительно применения словаря `ViewData`. Дополнительные сведения см. в разделе [Сравнение ViewModel, ViewData, ViewBag, TempData и Session в модели MVC](http://www.mytecbits.com/microsoft/dot-net/viewmodel-viewdata-viewbag-tempdata-mvc).
 

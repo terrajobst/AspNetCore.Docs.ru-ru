@@ -1,6 +1,6 @@
 ---
 title: ASP.NET Core MVC с EF Core — расширенные возможности — 10 из 10
-author: tdykstra
+author: rick-anderson
 description: В этом учебнике описываются полезные рекомендации по расширенным возможностям разработки веб-приложений ASP.NET Core, использующих платформу Entity Framework Core.
 manager: wpickett
 ms.author: tdykstra
@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 655f60116cbfe1dd81b7e2855906446b919b6489
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: fffb78e4d66c8a798d5f952ba9e4506c8cb666ca
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34566936"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC с EF Core — расширенные возможности — 10 из 10
 
@@ -147,9 +148,9 @@ ORDER BY [t].[ID]
 
 * Платформа EF предусматривает функции для реализации разработки на основе тестирования, не требующие написания кода репозитория.
 
-Дополнительные сведения о реализации шаблонов репозитория и единиц работы см. в [версии этой серии учебников для платформы Entity Framework 5](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application).
+Дополнительные сведения о реализации шаблонов репозитория и единиц работы см. в [версии этой серии учебников для платформы Entity Framework 5](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application).
 
-Платформа Entity Framework Core реализует выполняющийся в памяти поставщик базы данных, который может использоваться для тестирования. Дополнительные сведения см. в разделе [Тестирование с помощью InMemory](https://docs.microsoft.com/ef/core/miscellaneous/testing/in-memory).
+Платформа Entity Framework Core реализует выполняющийся в памяти поставщик базы данных, который может использоваться для тестирования. Дополнительные сведения см. в разделе [Тестирование с помощью InMemory](/ef/core/miscellaneous/testing/in-memory).
 
 ## <a name="automatic-change-detection"></a>Автоматическое обнаружение изменений
 

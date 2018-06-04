@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 067d9bd09f6d5e54bbafd953eea169d2df2be34e
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 14c3d464773fe78a563a27776bfcd124c22df134
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34566962"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
@@ -245,7 +246,7 @@ public static void Main(string[] args)
 
 Службы запросов представляют службы, которые вы настраиваете и запрашиваете в рамках своего приложения. Когда ваши объекты задают зависимости, они удовлетворяются за счет типов из `RequestServices`, а не `ApplicationServices`.
 
-Как правило, не следует использовать эти свойства напрямую, лучше запросить нужные вашим классам типы через конструктор класса и позволить платформе внедрить эти зависимости. Полученные таким образом классы более удобны для тестирования (см. раздел [Тестирование и отладка](xref:testing/index)) и слабее связаны.
+Как правило, не следует использовать эти свойства напрямую, лучше запросить нужные вашим классам типы через конструктор класса и позволить платформе внедрить эти зависимости. Полученные таким образом классы более удобны для тестирования (см. раздел [Тестирование и отладка](xref:test/index)) и слабее связаны.
 
 > [!NOTE]
 > Предпочтительнее запрашивать зависимости в качестве параметров конструктора, а не обращаться к коллекции `RequestServices`.
@@ -361,7 +362,7 @@ public class DefaultModule : Module
 * [Внедрение зависимостей в контроллеры](xref:mvc/controllers/dependency-injection)
 * [Внедрение зависимостей в обработчики требований](xref:security/authorization/dependencyinjection)
 * [Запуск приложения](xref:fundamentals/startup)
-* [Тестирование и отладка](xref:testing/index)
+* [Тестирование и отладка](xref:test/index)
 * [Активация фабричного ПО промежуточного слоя](xref:fundamentals/middleware/extensibility)
 * [Написание чистого кода в ASP.NET Core с внедрением зависимостей (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
 * [Проектирование приложения на основе контейнеров. Вступление. К чему относится контейнер?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/)

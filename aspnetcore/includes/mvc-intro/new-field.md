@@ -1,3 +1,4 @@
+<!-- This include not used by windows version -->
 # <a name="adding-a-new-field"></a>Добавление нового поля
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
@@ -10,7 +11,12 @@
 
 Откройте файл *Models/Movie.cs* и добавьте свойство `Rating`:
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Models/MovieDateRating.cs?highlight=12&name=snippet)]
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
+::: moniker-end
 
 Поскольку в класс `Movie` было добавлено новое поле, необходимо также обновить белый список привязки, включив в него новое свойство. В файле *MoviesController.cs* обновите атрибут `[Bind]` для методов действия `Create` и `Edit`, включив свойство `Rating`:
 
@@ -22,7 +28,7 @@
 
 Измените файл */Views/Movies/Index.cshtml* и добавьте поле `Rating`:
 
-[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=17,39&range=24-64)]
+[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=17,39&range=24-64)]
 
 Обновите файл */Views/Movies/Create.cshtml*, указав поле `Rating`.
 
@@ -48,7 +54,7 @@ SqliteException: SQLite Error 1: 'no such column: m.Rating'.
 
 Обновите класс `SeedData` так, чтобы он предоставлял значение нового столбца. Ниже показан пример изменения, которое необходимо выполнить для каждого `new Movie`.
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/SeedDataRating.cs?name=snippet1&highlight=6)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/SeedDataRating.cs?name=snippet1&highlight=6)]
 
 Добавьте поле `Rating` в представления `Edit`, `Details` и `Delete`.
 

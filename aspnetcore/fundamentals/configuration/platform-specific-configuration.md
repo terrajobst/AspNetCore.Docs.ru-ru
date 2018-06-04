@@ -11,11 +11,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 793169b491596cd7326d747a3f19d7fdaf7e2b65
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 618cb4349dcff696db37012af3aee844b82974f2
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729055"
 ---
 # <a name="enhance-an-app-from-an-external-assembly-in-aspnet-core-with-ihostingstartup"></a>Усовершенствование приложения из внешней сборки в ASP.NET Core с IHostingStartup
 
@@ -68,7 +69,7 @@ ms.lasthandoff: 05/17/2018
 
 ### <a name="update-the-dependencies-file"></a>Обновление файла зависимостей
 
-Расположение среды выполнения указывается в файле *\*.deps.json*. Для активации улучшения элемент `runtime` должен указывать расположение среды выполнения сборки для улучшения. Расположение `runtime` должно иметь префикс `lib/netcoreapp2.0/`:
+Расположение среды выполнения указывается в файле *\*.deps.json*. Для активации улучшения элемент `runtime` должен указывать расположение среды выполнения сборки для улучшения. Расположение `runtime` должно иметь префикс `lib/<TARGET_FRAMEWORK_MONIKER>/`:
 
 [!code-json[](platform-specific-configuration/snapshot_sample/StartupEnhancement2.deps.json?range=2-13&highlight=8)]
 
@@ -83,13 +84,13 @@ ms.lasthandoff: 05/17/2018
 Для индивидуального использования поместите сборку в хранилище среды выполнения профиля пользователя:
 
 ```
-<DRIVE>\Users\<USER>\.dotnet\store\x64\netcoreapp2.0\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\netcoreapp2.0\
+<DRIVE>\Users\<USER>\.dotnet\store\x64\<TARGET_FRAMEWORK_MONIKER>\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\<TARGET_FRAMEWORK_MONIKER>\
 ```
 
 Для глобального использования поместите сборку в хранилище среды выполнения установки .NET Core:
 
 ```
-<DRIVE>\Program Files\dotnet\store\x64\netcoreapp2.0\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\netcoreapp2.0\
+<DRIVE>\Program Files\dotnet\store\x64\<TARGET_FRAMEWORK_MONIKER>\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\<TARGET_FRAMEWORK_MONIKER>\
 ```
 
 При развертывании сборки в хранилище среды выполнения файл символов тоже можно развернуть, но это необязательно для оптимизации работы.
@@ -101,16 +102,16 @@ ms.lasthandoff: 05/17/2018
 Для индивидуального использования поместите файл в папку `additonalDeps` в параметрах профиля пользователя `.dotnet`: 
 
 ```
-<DRIVE>\Users\<USER>\.dotnet\x64\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.0.0\
+<DRIVE>\Users\<USER>\.dotnet\x64\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.1.0\
 ```
 
 Для глобального использования поместите файл в папку `additonalDeps` в установке .NET Core:
 
 ```
-<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.0.0\
+<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.1.0\
 ```
 
-Версия `2.0.0` — это версия общей среды выполнения, которую использует целевое приложение. Общая среда выполнения указана в файле *\*.runtimeconfig.json*. В примере приложения общая среда выполнения задается в файле *HostingStartupSample.runtimeconfig.json*.
+Версия `2.1.0` — это версия общей среды выполнения, которую использует целевое приложение. Общая среда выполнения указана в файле *\*.runtimeconfig.json*. В примере приложения общая среда выполнения задается в файле *HostingStartupSample.runtimeconfig.json*.
 
 **Настройка переменных среды**
 
@@ -135,7 +136,7 @@ DOTNET\_ADDITIONAL\_DEPS
 Если файл расположен в установке .NET Core для глобального использования, укажите полный путь к файлу:
 
 ```
-<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.0.0\<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
+<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.1.0\<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
 ```
 
 В пример приложения установлено значение:

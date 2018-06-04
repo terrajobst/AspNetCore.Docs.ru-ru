@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: 3f69657cb21e163bdf00fb1faea98889046e9b45
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: b00d709f3009f63431becf24797269ad5988a20b
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34688378"
 ---
 # <a name="work-with-sql-server-localdb-in-aspnet-core"></a>Работа с SQL Server LocalDB в ASP.NET Core
 
@@ -21,7 +22,12 @@ ms.lasthandoff: 04/06/2018
 
 Объект `MvcMovieContext` обрабатывает задачу подключения к базе данных и сопоставления объектов `Movie` с записями базы данных. Контекст базы данных регистрируется с помощью контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection) в методе `ConfigureServices` в файле *Startup.cs*:
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Startup.cs?name=ConfigureServices&highlight=13-99)]
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
+::: moniker-end
 
 Система [конфигурации](xref:fundamentals/configuration/index) ASP.NET Core считывает `ConnectionString`. Для разработки на локальном уровне она получает строку подключения из файла *appsettings.json*:
 
@@ -69,17 +75,26 @@ if (context.Movie.Any())
 <a name="si"></a>
 ### <a name="add-the-seed-initializer"></a>Добавление инициализатора заполнения
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Program.cs)]
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 Добавьте инициализатор заполнения в метод `Main` в файле *Program.cs*:
 
 [!code-csharp[](start-mvc/sample/MvcMovie/Program.cs?highlight=6,14-32)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 Добавьте инициализатор заполнения в конец метода `Configure` в файле *Startup.cs*:
 
 [!code-csharp[](start-mvc/sample/MvcMovie/Startup.cs?highlight=9&name=snippet_seed)]
 
-* * *
+---
+::: moniker-end
+
 Тестирование приложения
 
 * Удалите все записи из базы данных. Это можно сделать с помощью ссылок удаления в браузере или из SSOX.
