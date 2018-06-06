@@ -3,39 +3,41 @@ title: Кэширование по промежуточного слоя в ASP.
 author: guardrex
 description: Дополнительные сведения о настройке и использованию по промежуточного слоя, кэширование ответа в ASP.NET Core.
 manager: wpickett
+monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: 8296d535725d95682fa5904a43ab196e21b4f83c
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 7ceccffa39baf5f13d63c26e78c64a595bb42f60
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734501"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Кэширование по промежуточного слоя в ASP.NET Core ответов
 
 По [Latham Люк](https://github.com/guardrex) и [Джон Luo](https://github.com/JunTaoLuo)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или загрузить образец кода ASP.NET Core 2.1](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([загрузке](xref:tutorials/index#how-to-download-a-sample))
 
 В этой статье описывается настройка по промежуточного слоя, кэширование ответа в приложении ASP.NET Core. По промежуточного слоя определяет, когда ответов может быть кэширован, ответы на магазины и служит ответы из кэша. Основные сведения о кэшировании HTTP и `ResponseCache` см. в разделе [кэширование ответов](xref:performance/caching/response).
 
 ## <a name="package"></a>Пакет
 
-Чтобы включить по промежуточного слоя в проекте, добавьте ссылку на [ `Microsoft.AspNetCore.ResponseCaching` ](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) пакета или использовать [ `Microsoft.AspNetCore.All` ](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) пакета (ядро ASP.NET 2.0 или более поздней версии, при разработке для .NET Core).
+Чтобы включить по промежуточного слоя в проекте, добавьте ссылку на [Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) пакета или же можно использовать [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app), которая доступна для использования в ASP.NET Core 2.1 или более поздней версии.
 
 ## <a name="configuration"></a>Конфигурация
 
 В `ConfigureServices`, добавление в коллекцию службы по промежуточного слоя.
 
-[!code-csharp[](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
+[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet1&highlight=9)]
 
 Настройка приложения для использования по промежуточного слоя с `UseResponseCaching` метод расширения, который добавляет по промежуточного слоя в конвейер обработки запросов. Добавляет в пример приложения [ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2) заголовок в ответ, который кэширует кэшируемых ответов на срок до 10 секунд. Образец отправляет [ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4) заголовок для настройки по промежуточного слоя для обслуживания только если кэшированный ответ [ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4) заголовок последующих запросов таковыми исходного запроса. В следующем примере кода [CacheControlHeaderValue](/dotnet/api/microsoft.net.http.headers.cachecontrolheadervalue) и [HeaderNames](/dotnet/api/microsoft.net.http.headers.headernames) требуют `using` инструкции для [Microsoft.Net.Http.Headers](/dotnet/api/microsoft.net.http.headers) пространство имен.
 
-[!code-csharp[](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
+[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=17,21-28)]
 
 По промежуточного слоя, кэширование ответа только кэширует ответы сервера, которые приводят к код состояния 200 (ОК). Все другие ответы, включая [страницы ошибок](xref:fundamentals/error-handling), учитываются по промежуточного слоя.
 
@@ -46,10 +48,10 @@ ms.lasthandoff: 05/03/2018
 
 По промежуточного слоя предоставляет три варианта управлении кэшем ответа.
 
-| Параметр                | Значение по умолчанию |
-| --------------------- | ------------- |
-| UseCaseSensitivePaths | Определяет, если ответы кэшируются на пути с учетом регистра.</p><p>Значение по умолчанию — `false`. |
-| MaximumBodySize       | Максимальный размер кэшируемого текст ответа в байтах.</p>Значение по умолчанию — `64 * 1024 * 1024` (64 МБ). |
+| Параметр                | Описание: |
+| --------------------- | ----------- |
+| UseCaseSensitivePaths | Определяет, если ответы кэшируются на пути с учетом регистра. Значение по умолчанию — `false`. |
+| MaximumBodySize       | Максимальный размер кэшируемого текст ответа в байтах. Значение по умолчанию — `64 * 1024 * 1024` (64 МБ). |
 | Значение SizeLimit             | Предельный размер для по промежуточного слоя кэша ответа в байтах. Значение по умолчанию — `100 * 1024 * 1024` (100 МБ). |
 
 В следующем примере настраивается по промежуточного слоя для:

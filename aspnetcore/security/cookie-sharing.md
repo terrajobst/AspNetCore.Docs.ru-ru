@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/cookie-sharing
-ms.openlocfilehash: 5f77377f168993d48686217adac54a75313766ec
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: f6d62d5f6e446e3e2001ed6bde72a6c409aa2833
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734683"
 ---
 # <a name="share-cookies-among-apps-with-aspnet-and-aspnet-core"></a>Совместно использовать файлы cookie для приложений с помощью ASP.NET и ASP.NET Core
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 05/12/2018
 * В приложениях ASP.NET Core [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem) используется для задания расположения хранилища ключей. [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) используется для настройки общее имя общего приложения.
 * В приложении .NET Framework, файл cookie проверки подлинности по промежуточного слоя использует реализацию [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider). `DataProtectionProvider` предоставляет службы защиты данных для шифрования и расшифровки данных полезные данные файлов cookie проверки подлинности. `DataProtectionProvider` Экземпляр изолирован от системы защиты данных, используемые в других частях приложения.
   * [DataProtectionProvider.Create (System.IO.DirectoryInfo, действие\<IDataProtectionBuilder >)](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider.create?view=aspnetcore-2.0#Microsoft_AspNetCore_DataProtection_DataProtectionProvider_Create_System_IO_DirectoryInfo_System_Action_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder__) принимает [DirectoryInfo](/dotnet/api/system.io.directoryinfo) для указания расположения для хранения ключей для защиты данных. Пример приложения предоставляет путь *KeyRing* папки `DirectoryInfo`. [DataProtectionBuilderExtensions.SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname?view=aspnetcore-2.0#Microsoft_AspNetCore_DataProtection_DataProtectionBuilderExtensions_SetApplicationName_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_) задает общее имя приложения.
-  * [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider) требует [Microsoft.AspNetCore.DataProtection.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) пакет NuGet. Чтобы получить этот пакет для основных ASP.NET 2.0 и более поздних версий приложений, ссылаются на [Microsoft.AspNetCore.All](xref:fundamentals/metapackage) metapackage. При разработке для .NET Framework, добавьте ссылку на пакет `Microsoft.AspNetCore.DataProtection.Extensions`.
+  * [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider) требует [Microsoft.AspNetCore.DataProtection.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) пакет NuGet. Чтобы получить этот пакет для ASP.NET Core 2.1 и более поздних версий приложений, ссылаются на [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app). При разработке для .NET Framework, добавьте ссылку на пакет `Microsoft.AspNetCore.DataProtection.Extensions`.
 
 ## <a name="share-authentication-cookies-among-aspnet-core-apps"></a>Совместно использовать файлы cookie проверки подлинности между приложениями ASP.NET Core
 

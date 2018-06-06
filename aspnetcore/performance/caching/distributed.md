@@ -4,16 +4,18 @@ author: ardalis
 description: Сведения об использовании ASP.NET Core распределенного кэширования для повышения производительности приложения и масштабируемость, особенно в среде фермы облако или сервера.
 manager: wpickett
 ms.author: riande
+ms.custom: mvc
 ms.date: 02/14/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/distributed
-ms.openlocfilehash: c40209e3b3f2b5bf28450bb2a88cbe40e9e23230
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 6c595572641604d241c0c8f702d4f392afe34f71
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734462"
 ---
 # <a name="work-with-a-distributed-cache-in-aspnet-core"></a>Работа с распределенным кэшем в ASP.NET Core
 
@@ -73,13 +75,13 @@ ms.lasthandoff: 05/12/2018
 
 В следующем примере показано, как использовать экземпляр `IDistributedCache` в простой программный компонент:
 
-[!code-csharp[](./distributed/sample/src/DistCacheSample/StartTimeHeader.cs?highlight=15,18,21,27,28,29,30,31)]
+[!code-csharp[](distributed/sample/src/DistCacheSample/StartTimeHeader.cs)]
 
 В приведенном выше коде кэшированное значение является считываются, но никогда не записываются. В этом примере значение устанавливается только при запуске сервера, а также не изменяется. В случае многосерверной последний сервер запуск перезапишет все предыдущие значения, заданные на других серверах. `Get` И `Set` методы используют `byte[]` типа. Таким образом, строковое значение необходимо преобразовывать с помощью `Encoding.UTF8.GetString` (для `Get`) и `Encoding.UTF8.GetBytes` (для `Set`).
 
 В следующем примере кода из *файла Startup.cs* показывает, что будет задаваться значение:
 
-[!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=2,4,5,6&range=58-66)]
+[!code-csharp[](distributed/sample/src/DistCacheSample/Startup.cs?name=snippet1)]
 
 > [!NOTE]
 > Поскольку `IDistributedCache` настраивается в `ConfigureServices` метода, она доступна для `Configure` методу в качестве параметра. Добавив его в качестве параметра позволит настроенный экземпляр должен предоставляться через DI.
@@ -92,7 +94,7 @@ ms.lasthandoff: 05/12/2018
 
 В образце кода `RedisCache` реализация используется в том случае, если сервер настроен для `Staging` среды. Таким образом `ConfigureStagingServices` настраивает метод `RedisCache`:
 
-[!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13&range=27-40)]
+[!code-csharp[](distributed/sample/src/DistCacheSample/Startup.cs?name=snippet2)]
 
 > [!NOTE]
 > Чтобы установить Redis на локальном компьютере, необходимо установить пакет chocolatey [ https://chocolatey.org/packages/redis-64/ ](https://chocolatey.org/packages/redis-64/) и запустите `redis-server` из командной строки.
@@ -101,31 +103,42 @@ ms.lasthandoff: 05/12/2018
 
 Реализация SqlServerCache допускает распределенного кэша для использования базы данных SQL Server в качестве резервного хранилища. Создание SQL Server таблицы, можно использовать средство кэша sql, средство создает таблицу с именем и схемой, которые вы задаете.
 
-Чтобы использовать средство кэша sql, добавьте `SqlConfig.Tools` для `<ItemGroup>` элемент *.csproj* файл и запустите восстановление dotnet.
+::: moniker range="< aspnetcore-2.1"
 
-[!code-xml[](./distributed/sample/src/DistCacheSample/DistCacheSample.csproj?range=23-25)]
+Добавить `SqlConfig.Tools` для `<ItemGroup>` элемент файла проекта и выполнения `dotnet restore`.
 
-Протестируйте SqlConfig.Tools, выполнив следующую команду
+```xml
+<ItemGroup>
+  <DotNetCliToolReference Include="Microsoft.Extensions.Caching.SqlConfig.Tools" 
+                          Version="2.0.2" />
+</ItemGroup>
+```
 
-```none
-C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create --help
-   ```
+::: moniker-end
 
-Средство кэша SQL для отображения справки об использовании, параметры и команды, теперь можно создавать таблицы в sql server, выполнив команду «Создать кэш sql»:
+Протестируйте SqlConfig.Tools, выполнив следующую команду:
 
-```none
-C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache
-   info: Microsoft.Extensions.Caching.SqlConfig.Tools.Program[0]
-       Table and index were created successfully.
-   ```
+```console
+dotnet sql-cache create --help
+```
+
+SqlConfig.Tools отображает использования, параметров и команду справки.
+
+Создание таблицы в SQL Server, выполнив `sql-cache create` команды:
+
+```console
+dotnet sql-cache create "Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache
+info: Microsoft.Extensions.Caching.SqlConfig.Tools.Program[0]
+Table and index were created successfully.
+```
 
 Созданный таблица имеет следующую схему:
 
 ![Таблица кэша SqlServer](distributed/_static/SqlServerCacheTable.png)
 
-Как и все реализации кэша приложения следует получать и задавать значения кэша, используя экземпляр `IDistributedCache`, а не `SqlServerCache`. В этом образце реализуется `SqlServerCache` в `Production` среды (поэтому оно настроено в `ConfigureProductionServices`).
+Как и все реализации кэша приложения следует получать и задавать значения кэша, используя экземпляр `IDistributedCache`, а не `SqlServerCache`. В этом образце реализуется `SqlServerCache` в рабочей среде (поэтому оно настроено в `ConfigureProductionServices`).
 
-[!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=7,8,9,10,11,12&range=42-56)]
+[!code-csharp[](distributed/sample/src/DistCacheSample/Startup.cs?name=snippet3)]
 
 > [!NOTE]
 > `ConnectionString` (И при необходимости `SchemaName` и `TableName`) обычно должны храниться вне системы управления версиями (например, объектов UserSecrets), так как они могут содержать учетные данные.

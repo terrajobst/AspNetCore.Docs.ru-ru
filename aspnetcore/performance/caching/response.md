@@ -8,20 +8,21 @@ ms.date: 09/20/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: cc1ec50155398ba4143a2bf697ca26435c228c49
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: e5a3877c68f8475e7dd49d44f4a92cf7b09ac7f5
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734514"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Кэширование ответов в ASP.NET Core
 
 По [Luo Джон](https://github.com/JunTaoLuo), [Рик Андерсон](https://twitter.com/RickAndMSFT), [Стив Смит](https://ardalis.com/), и [Latham Люк](https://github.com/guardrex)
 
 > [!NOTE]
-> Кэширование ответов [не поддерживается на страницах Razor с ASP.NET Core 2.0](https://github.com/aspnet/Mvc/issues/6437). Этот компонент будет поддерживаться в [версии ASP.NET Core 2.1](https://github.com/aspnet/Home/wiki/Roadmap).
-  
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+> Кэширование ответов на страницах Razor ASP.NET Core 2.1 или более поздних версий.
+
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 Кэширование ответов снижает количество запросов, выполненных клиентом или прокси-сервера веб-сервера. Кэширование ответов также сокращает время работы веб-сервер выполняет для формирования ответа. Кэширование ответов управляется заголовки, указывающие способ клиента, прокси-сервера и по промежуточного слоя для кэширования ответов.
 
@@ -38,16 +39,16 @@ ms.lasthandoff: 03/22/2018
 | [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | Кэш может хранить ответ. |
 | [private](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | Ответ не должны храниться с общего кэша. Закрытый кэша может хранить и повторно использовать ответа. |
 | [max-age](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | Клиент не будет принимать ответ возраст больше, чем указанное количество секунд. Примеры: `max-age=60` (60 секунд), `max-age=2592000` (1 месяц) |
-| [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **В запросах,**: кэш не должны использовать хранимые ответа для удовлетворения запроса. Примечание: На исходном сервере повторно формирует ответ для клиента и по промежуточного слоя обновляет ответ хранимых в кэше.<br><br>**При ответах**: ответ не должны использоваться для последующего запроса без проверки на исходном сервере. |
+| [Нет-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **В запросах,**: кэш не должны использовать хранимые ответа для удовлетворения запроса. Примечание: На исходном сервере повторно формирует ответ для клиента и по промежуточного слоя обновляет ответ хранимых в кэше.<br><br>**При ответах**: ответ не должны использоваться для последующего запроса без проверки на исходном сервере. |
 | [no-store](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **В запросах,**: кэш не следует хранить запроса.<br><br>**При ответах**: кэш не следует хранить любую часть ответа. |
 
 В следующей таблице показаны другие заголовки кэша, играющих роль в кэшировании.
 
 | Header                                                     | Функция |
 | ---------------------------------------------------------- | -------- |
-| [Age](https://tools.ietf.org/html/rfc7234#section-5.1)     | Приблизительное количество времени в секундах с момента ответ был создан или успешно прошли проверку на исходном сервере. |
+| [Срок действия](https://tools.ietf.org/html/rfc7234#section-5.1)     | Приблизительное количество времени в секундах с момента ответ был создан или успешно прошли проверку на исходном сервере. |
 | [Срок действия истекает](https://tools.ietf.org/html/rfc7234#section-5.3) | Дата и время, после которого ответ считается устаревшей. |
-| [Pragma](https://tools.ietf.org/html/rfc7234#section-5.4)  | Существует для обеспечения обратной совместимости с HTTP/1.0 кэширует параметр `no-cache` поведение. Если `Cache-Control` заголовок присутствует `Pragma` заголовок учитывается. |
+| [Директивы pragma](https://tools.ietf.org/html/rfc7234#section-5.4)  | Существует для обеспечения обратной совместимости с HTTP/1.0 кэширует параметр `no-cache` поведение. Если `Cache-Control` заголовок присутствует `Pragma` заголовок учитывается. |
 | [Различаются](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | Указывает, что кэшированный ответ должен не отправляться, если не все из `Vary` поля заголовка совпадает в исходном запросе кэшированный ответ и новый запрос. |
 
 ## <a name="http-based-caching-respects-request-cache-control-directives"></a>На основе HTTP кэширования отношениях запрос директивы управления кэшем
@@ -113,7 +114,17 @@ ms.lasthandoff: 03/22/2018
 
 Этот заголовок записывается только когда `VaryByHeader` свойству. Ему присваивается `Vary` значение свойства. В следующем примере используется `VaryByHeader` свойство:
 
-[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](response/samples/1.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
+
+::: moniker-end
 
 Можно просматривать заголовки ответа с помощью средства сетевой вашего браузера. На следующем рисунке показаны границы F12, выведенных в **сети** вкладке при `About2` обновляется метода действия:
 
@@ -130,7 +141,17 @@ ms.lasthandoff: 03/22/2018
 
 Обычно устанавливается `NoStore` для `true` на страницы ошибок. Пример:
 
-[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](response/samples/1.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
+
+::: moniker-end
 
 Это приводит к следующие заголовки:
 
@@ -148,7 +169,17 @@ Pragma: no-cache
 
 Ниже приведен пример заголовки создается, задав `Duration` и оставить значение по умолчанию `Location` значение:
 
-[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](response/samples/1.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
+
+::: moniker-end
 
 Получается следующий заголовок.
 
@@ -162,11 +193,31 @@ Cache-Control: public,max-age=60
 
 Настройка профиля кэша.
 
-[!code-csharp[](response/sample/Startup.cs?name=snippet1)] 
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Startup.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](response/samples/1.x/ResponseCacheSample/Startup.cs?name=snippet1)]
+
+::: moniker-end
 
 Ссылка на профиль кэша:
 
-[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](response/samples/1.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
+
+::: moniker-end
 
 `ResponseCache` Атрибут может применяться к действия (методы) и контроллеры (классы). Атрибуты на уровне метода переопределяют параметры, указанные в атрибуты уровня класса.
 
