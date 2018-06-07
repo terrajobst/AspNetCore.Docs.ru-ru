@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: ece2bf541df2b4acac60a88767cc57ede473bd49
-ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.openlocfilehash: fd5cf5cdffd7281d7f4e0d96e8230b60be64a7c3
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34819140"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Безопасного хранения секрета приложения при разработке в ASP.NET Core
 
@@ -214,7 +215,7 @@ Core ASP.NET 2.0 или более поздней версии, источник
 
 ## <a name="string-replacement-with-secrets"></a>Строка замены с секретными данными
 
-Рискованно хранить пароли в виде обычного текста. Например, строка подключения базы данных хранятся в *appsettings.json* может быть указан пароль для указанного пользователя:
+Хранить пароли в виде обычного текста небезопасно. Например, строка подключения базы данных хранятся в *appsettings.json* может быть указан пароль для указанного пользователя:
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
@@ -224,17 +225,17 @@ Core ASP.NET 2.0 или более поздней версии, источник
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-Замените пароль в *appsettings.json* заполнителем. В следующем примере `{0}` используется в качестве заполнителя форму [Строка составного формата](/dotnet/standard/base-types/composite-formatting#composite-format-string).
+Удалить `Password` пары ключ значение из строки подключения в *appsettings.json*. Пример:
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
-Значение секрета могут быть добавлены в заполнитель, чтобы завершить строку подключения:
+Значение секрета можно установить на [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder) объекта [пароль](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.password) свойства для выполнения строки подключения:
 
 ::: moniker range="<= aspnetcore-1.1"
-[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=23-25)]
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=26-29)]
 ::: moniker-end
 ::: moniker range=">= aspnetcore-2.0"
-[!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=14-16)]
+[!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=14-17)]
 ::: moniker-end
 
 ## <a name="list-the-secrets"></a>Вывод списка секретов

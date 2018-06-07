@@ -12,11 +12,12 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: c289c209b50f0c2c1f2d8b15a3aedeaebf671d0b
-ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
+ms.openlocfilehash: aa4c91865f7b720846a5e8deb4281c3ca6933c8e
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/21/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34819101"
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Создание приложения ASP.NET MVC 5 с Facebook, Twitter, LinkedIn и Google OAuth2 единого входа (C#)
 ====================
@@ -174,7 +175,7 @@ ms.lasthandoff: 05/21/2018
     ![Создайте новое приложение](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image22.png)
 4. Введите **имя приложения** и **категории**, нажмите кнопку **Создание приложения**.
 
-    Это должно быть уникальным для Facebook. <strong>Пространство имен приложения</strong> является частью URL-адрес, приложение будет использовать для доступа к приложению Facebook для проверки подлинности (например, https://apps.facebook.com/{App пространство имен}). Если не указать <strong>пространство имен приложения</strong>, <strong>идентификатор приложения</strong> будет использоваться URL-адреса. <strong>Идентификатор приложения</strong> долго системой номер, который вы увидите на следующем шаге.
+    <strong>Пространство имен приложения</strong> является частью URL-адрес, приложение будет использовать для доступа к приложению Facebook для проверки подлинности (например, протокол https\://apps.facebook.com/{App пространство имен}). Если не указать <strong>пространство имен приложения</strong>, <strong>идентификатор приложения</strong> будет использоваться URL-адреса. <strong>Идентификатор приложения</strong> долго системой номер, который вы увидите на следующем шаге.
 
     ![Создание диалогового окна нового приложения](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image23.png)
 5. Отправьте проверки безопасности standard.

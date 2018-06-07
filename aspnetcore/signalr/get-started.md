@@ -11,12 +11,12 @@ ms.prod: aspnet-core
 ms.topic: tutorial
 ms.technology: aspnet
 uid: signalr/get-started
-ms.openlocfilehash: 880abd87805990baf8dd977c340a60582e54d2df
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: ba1db640e5608fd9f5e7fa024283a651bf7772c2
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34729509"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34819062"
 ---
 # <a name="get-started-with-signalr-on-aspnet-core"></a>Приступая к работе с SignalR в ASP.NET Core
 
@@ -75,7 +75,7 @@ Visual Studio включает `Microsoft.AspNetCore.SignalR` пакета, со
     npm install @aspnet/signalr
     ```     
 
-4. Создайте новую папку с именем «signalr» внутри *lib* в папке проекта. Затем скопируйте *signalr.js* файл из *node_modules\\ @aspnet\signalr\dist\browser*  в эту папку.
+4. Создайте новую папку с именем «signalr» внутри *lib* в папке проекта. Копировать *signalr.js* файл из *node_modules\\ @aspnet\signalr\dist\browser*  в эту папку.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
 
@@ -92,7 +92,7 @@ Visual Studio включает `Microsoft.AspNetCore.SignalR` пакета, со
     npm install @aspnet/signalr
     ```
 
-3. Копировать *signalr.js* файл из *node_modules\\ @aspnet\signalr\dist\browser*  для *lib* в папке проекта.
+3. Создайте новую папку с именем «signalr» внутри *lib* в папке проекта. Копировать *signalr.js* файл из *node_modules\\ @aspnet\signalr\dist\browser*  в эту папку.
 
 -----
 
@@ -140,15 +140,16 @@ SignalR сервера необходимо настроить, чтобы он 
 
 ## <a name="create-the-signalr-client-code"></a>Создайте код клиента SignalR
 
-1. Замените содержимое в *Pages\Index.cshtml* следующим кодом:
+1. Добавьте файл JavaScript с именем *chat.js*в *wwwroot\js* папки. Добавьте в этот файл следующий код:
+
+   [!code-javascript[Index](get-started/sample/wwwroot/js/chat.js)]
+
+2. Замените содержимое в *Pages\Index.cshtml* следующим кодом:
 
    [!code-cshtml[Index](get-started/sample/Pages/Index.cshtml)]
 
    Предыдущий HTML отображает имя и поля сообщения и кнопка отправки. Обратите внимание, ссылки на скрипты в нижней: ссылку на SignalR и *chat.js*.
 
-2. Добавьте файл JavaScript с именем *chat.js*в *wwwroot\js* папки. Добавьте в этот файл следующий код:
-
-   [!code-javascript[Index](get-started/sample/wwwroot/js/chat.js)]
 
 ## <a name="run-the-app"></a>Запуск приложения
 
