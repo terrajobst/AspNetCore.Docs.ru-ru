@@ -4,16 +4,18 @@ author: guardrex
 description: Узнайте, как для управления доступом к страницам с соглашениями, авторизацию пользователей и Разрешить анонимные пользователи для доступа к страницам или папкам страниц.
 manager: wpickett
 ms.author: riande
+ms.custom: mvc
 ms.date: 10/27/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: 2fd8cd444b1d774c387dc6426af5914bde9b8ae7
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 35a21156c001d8703e09e604129c4c2c500fe25f
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734657"
 ---
 # <a name="razor-pages-authorization-conventions-in-aspnet-core"></a>Правила авторизации страниц Razor в ASP.NET Core
 
@@ -23,21 +25,30 @@ ms.lasthandoff: 05/08/2018
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
+В образце приложения используется [файла Cookie проверки подлинности без ASP.NET Core Identity](xref:security/authentication/cookie). Учетная запись пользователя для гипотетического пользователя Rodriguez Мария встроен в приложение. Используйте имя электронной почты "maria.rodriguez@contoso.com" и все пароли для входа пользователя. Пользователь проходит проверку подлинности в `AuthenticateUser` метод в *Pages/Account/Login.cshtml.cs* файла. В реальном примере пользователь будет пройти проверку подлинности в базе данных. Чтобы использовать ASP.NET Core Identity, следуйте указаниям в [введение в ASP.NET Core удостоверения](xref:security/authentication/identity) раздела. Концепции и примеры, приведенные в этом разделе также применяются к приложениям, использующим ASP.NET Core Identity.
+
 ## <a name="require-authorization-to-access-a-page"></a>Требуется разрешение на доступ к странице
 
 Используйте [AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage) соглашение через [AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions) добавление [AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter) на страницу по указанному пути:
 
-[!code-csharp[](razor-pages-authorization/sample/Startup.cs?name=snippet1&highlight=2,4)]
+[!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,4)]
 
 Указанный путь — это путь обработчик представлений, который является корневой страниц Razor, относительный путь без расширения и содержащий только косые черты.
 
 [AuthorizePage перегрузка](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_AuthorizePage_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_String_System_String_) доступен, если необходимо указать политику авторизации.
 
+::: moniker range=">= aspnetcore-2.1"
+
+> [!NOTE]
+> `AuthorizeFilter` Может применяться к странице класс модели с `[Authorize]` атрибут фильтра. Дополнительные сведения см. в разделе [атрибут фильтра авторизовать](xref:mvc/razor-pages/filter#authorize-filter-attribute).
+
+::: moniker-end
+
 ## <a name="require-authorization-to-access-a-folder-of-pages"></a>Требуется разрешение на доступ к папке страниц
 
 Используйте [AuthorizeFolder](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizefolder) соглашение через [AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions) добавление [AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter) на все страницы в папку по указанному пути:
 
-[!code-csharp[](razor-pages-authorization/sample/Startup.cs?name=snippet1&highlight=2,5)]
+[!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,5)]
 
 Указанный путь является путь обработчика представлений, который страниц Razor относительный путь от корня.
 
@@ -47,7 +58,7 @@ ms.lasthandoff: 05/08/2018
 
 Используйте [AllowAnonymousToPage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.allowanonymoustopage) соглашение через [AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions) добавление [AllowAnonymousFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.allowanonymousfilter) страницу по указанному пути:
 
-[!code-csharp[](razor-pages-authorization/sample/Startup.cs?name=snippet1&highlight=2,6)]
+[!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,6)]
 
 Указанный путь — это путь обработчик представлений, который является корневой страниц Razor, относительный путь без расширения и содержащий только косые черты.
 
@@ -55,7 +66,7 @@ ms.lasthandoff: 05/08/2018
 
 Используйте [AllowAnonymousToFolder](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.allowanonymoustofolder) соглашение через [AddRazorPagesOptions](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.addrazorpagesoptions) добавление [AllowAnonymousFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.allowanonymousfilter) на все страницы в папку по указанному пути:
 
-[!code-csharp[](razor-pages-authorization/sample/Startup.cs?name=snippet1&highlight=2,7)]
+[!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,7)]
 
 Указанный путь является путь обработчика представлений, который страниц Razor относительный путь от корня.
 
@@ -77,7 +88,7 @@ ms.lasthandoff: 05/08/2018
 
 Требующие авторизации на странице «закрытый» не будет работать, так как при как `AllowAnonymousFilter` и `AuthorizeFilter` фильтры применяются к странице `AllowAnonymousFilter` wins и управление доступом.
 
-## <a name="see-also"></a>См. также
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Пользовательские поставщики моделей маршрутов и страниц Razor Pages](xref:mvc/razor-pages/razor-pages-conventions)
 * [PageConventionCollection](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection) класса
