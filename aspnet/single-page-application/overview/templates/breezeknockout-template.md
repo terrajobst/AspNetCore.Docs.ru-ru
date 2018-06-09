@@ -1,22 +1,23 @@
 ---
 uid: single-page-application/overview/templates/breezeknockout-template
-title: "Просто/маскирования шаблона | Документы Microsoft"
+title: Просто/маскирования шаблона | Документы Microsoft
 author: madskristensen
-description: "Шаблон одностраничного приложения просто/маскирования"
+description: Шаблон одностраничного приложения просто/маскирования
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/30/2013
 ms.topic: article
 ms.assetid: 3bd94827-3c59-448f-abc3-36e6df4858db
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/templates/breezeknockout-template
 msc.type: authoredcontent
 ms.openlocfilehash: 07ec099a0381458fe42c1972a2554f76fd34638c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26506703"
 ---
 <a name="breezeknockout-template"></a>Шаблон просто/маскирования
 ====================
@@ -57,7 +58,7 @@ SPA использованием KnockoutJS шаблона делает запр
 
 Загрузите и установите шаблон, нажав кнопку «Загрузить» выше. Шаблон упаковывается в виде файла расширения Visual Studio (VSIX). Может потребоваться перезапустить Visual Studio.
 
-В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#**выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Имя проекта и нажмите кнопку **ОК**.
+В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#** выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Имя проекта и нажмите кнопку **ОК**.
 
 В **новый проект** мастера выберите **SPA маскирования просто**.
 
@@ -104,7 +105,7 @@ SPA использованием KnockoutJS шаблона делает запр
 
 Базовая архитектура совпадает с шаблоном KockoutJS SPA. Однако реализация является гораздо проще: DTO были удалены, и большинство данных Entity Framework о делегированных Breeze.NET.
 
-## <a name="next-steps"></a>Дальнейшие действия
+## <a name="next-steps"></a>Следующие шаги
 
 Рекомендуется изучить код, по [широко обсуждений](http://www.breezejs.com/spa-template?utm_source=ms-spa) клиента и стеки серверов, просто веб-сайта.
 

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
-title: "Включение операций CRUD в ASP.NET Web API 1 | Документы Microsoft"
+title: Включение операций CRUD в ASP.NET Web API 1 | Документы Microsoft
 author: MikeWasson
-description: "Этот учебник показывает, как для поддержки операций CRUD в службы HTTP с помощью веб-API ASP.NET. Версии программного обеспечения, используемые в учебник Visual Studio 2012 Web точки доступа..."
+description: Этот учебник показывает, как для поддержки операций CRUD в службы HTTP с помощью веб-API ASP.NET. Версии программного обеспечения, используемые в учебник Visual Studio 2012 Web точки доступа...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/28/2012
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
 msc.type: authoredcontent
 ms.openlocfilehash: 69b7d5453b6ff36d6e28a69428b016cb8cfd06e9
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "29153012"
 ---
 <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>Включение операций CRUD в ASP.NET Web API 1
 ====================
@@ -42,11 +43,11 @@ ms.lasthandoff: 02/12/2018
 | Действие | Метод HTTP | Относительный URI |
 | --- | --- | --- |
 | Получить список всех продуктов | GET | / api/продуктов |
-| Получение продукта по Идентификатору | GET | /api/products/*id* |
+| Получение продукта по Идентификатору | GET | /API/продукты/*идентификатор* |
 | Получение продукта по категориям | GET | / api/продуктов? категории =*категории* |
 | Создать продукт | ПОМЕСТИТЬ | / api/продуктов |
-| Обновления продукта | PUT | /api/products/*id* |
-| Удаление продукта | DELETE | /api/products/*id* |
+| Обновления продукта | PUT | /API/продукты/*идентификатор* |
+| Удаление продукта | DELETE | /API/продукты/*идентификатор* |
 
 Обратите внимание, что часть URL-адреса, включают идентификатор продукта в пути. Например, чтобы получить продукта, идентификатор которого — 28, клиент отправляет запрос GET `http://hostname/api/products/28`.
 
@@ -57,7 +58,7 @@ ms.lasthandoff: 02/12/2018
 | Ресурс | URI |
 | --- | --- |
 | Список всех продуктов. | / api/продуктов |
-| Отдельного продукта. | /api/products/*id* |
+| Отдельного продукта. | /API/продукты/*идентификатор* |
 
 ### <a name="methods"></a>Методы
 
@@ -74,7 +75,7 @@ ms.lasthandoff: 02/12/2018
 
 Запустить Visual Studio и выберите **новый проект** из **запустить** страницы. Или из **файл** последовательно выберите пункты **New** и затем **проекта**.
 
-В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#**выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Назовите проект &quot;ProductStore&quot; и нажмите кнопку **ОК**.
+В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#** выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Назовите проект &quot;ProductStore&quot; и нажмите кнопку **ОК**.
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image1.png)
 
@@ -158,14 +159,14 @@ ms.lasthandoff: 02/12/2018
 | Действие | Метод HTTP | Относительный URI |
 | --- | --- | --- |
 | Получить список всех продуктов | GET | / api/продуктов |
-| Получение продукта по Идентификатору | GET | /api/products/*id* |
+| Получение продукта по Идентификатору | GET | /API/продукты/*идентификатор* |
 | Получение продукта по категориям | GET | / api/продуктов? категории =*категории* |
 
 Чтобы получить список всех продуктов, добавьте этот метод `ProductsController` класса:
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample6.cs)]
 
-Имя метода начинается с &quot;получить&quot;, поэтому по соглашению оно сопоставлено запросов GET. Кроме того, поскольку метод не имеет параметров, он был сопоставлен URI, который не содержит  *&quot;идентификатор&quot;*  сегмента пути.
+Имя метода начинается с &quot;получить&quot;, поэтому по соглашению оно сопоставлено запросов GET. Кроме того, поскольку метод не имеет параметров, он был сопоставлен URI, который не содержит *&quot;идентификатор&quot;* сегмента пути.
 
 Чтобы получить продукта по Идентификатору, добавьте этот метод, чтобы `ProductsController` класса:
 

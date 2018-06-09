@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/advanced/custom-mvc-templates
-title: "Шаблон MVC пользовательские | Документы Microsoft"
+title: Шаблон MVC пользовательские | Документы Microsoft
 author: joeloff
-description: "Создание шаблона, как расширение VSIX."
+description: Создание шаблона, как расширение VSIX.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/10/2012
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/advanced/custom-mvc-templates
 msc.type: authoredcontent
 ms.openlocfilehash: c3ddd4e341511f520927e924b25d890088adb69e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28034611"
 ---
 <a name="custom-mvc-template"></a>Пользовательский шаблон
 ====================
@@ -63,13 +64,13 @@ ms.lasthandoff: 01/24/2018
 
 **Активы** вкладка используется для добавления всех файлов содержимого в VSIX. Так как MVC требует пользовательские метаданные будут изменять исходные XML-файл манифеста VSIX вместо использования **активы** можно добавлять содержимое. Начните с добавления содержимого шаблона в проект VSIX. Очень важно, что структура папок и содержимого отражает проекта. В приведенном ниже примере содержит четыре шаблонов проектов, которые были получены на основе шаблона проекта Basic MVC. Убедитесь, что все файлы, составляющие шаблон проекта (все элементы, под папка Шаблоны_проекта) добавляются **содержимого** itemgroup в VSIX-ФАЙЛ проекта файл и что каждый элемент содержит  **CopyToOutputDirectory** и **IncludeInVsix** метаданные набора, как показано в следующем примере.
 
-&lt;Content Include=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicWeb.config&quot;&gt;
+&lt;Содержимое включать =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicWeb.config&quot;&gt;
 
 &lt;CopyToOutputDirectory&gt;всегда&lt;/CopyToOutputDirectory&gt;
 
 &lt;IncludeInVSIX&gt;true&lt;/IncludeInVSIX&gt;
 
-&lt;/Content&gt;
+&lt;/ Содержимого&gt;
 
 В противном случае IDE попытается скомпилировать содержимое шаблона при создании VSIX и скорее всего появится сообщение об ошибке. Файлы кода в шаблонах часто содержат специальные [параметров шаблона](https://msdn.microsoft.com/library/eehb4faa(v=vs.110).aspx) используется в Visual Studio, когда шаблон проекта создается и поэтому не может быть скомпилирован в Интегрированной среде разработки.
 
@@ -79,23 +80,23 @@ ms.lasthandoff: 01/24/2018
 
 ![Открыть с помощью диалогового окна](custom-mvc-templates/_static/image7.jpg)
 
-Создание  **&lt;активы&gt;**  элемент и добавьте  **&lt;активов&gt;**  для каждого файла, который необходимо включить в VSIX. **Тип** атрибут каждого  **&lt;активов&gt;**  элемента должно быть присвоено **Microsoft.VisualStudio.Mvc.Template**. Это пользовательского пространства имен, которое понимает только в мастере проекта MVC. Обратитесь к документации схемой VSIX 2.0 Дополнительные сведения о структуре и расположение файла манифеста.
+Создание **&lt;активы&gt;** элемент и добавьте **&lt;активов&gt;** для каждого файла, который необходимо включить в VSIX. **Тип** атрибут каждого **&lt;активов&gt;** элемента должно быть присвоено **Microsoft.VisualStudio.Mvc.Template**. Это пользовательского пространства имен, которое понимает только в мастере проекта MVC. Обратитесь к документации схемой VSIX 2.0 Дополнительные сведения о структуре и расположение файла манифеста.
 
-Только добавление файлов VSIX недостаточно для регистрации шаблонов с помощью мастера MVC. Необходимо предоставить сведения, например имя шаблона, описание, обработчиков представлений, поддерживаемых и язык программирования, мастер MVC. Эта информация передается в настраиваемые атрибуты, связанные с  **&lt;активов&gt;**  для каждого элемента **vstemplate** файла.
+Только добавление файлов VSIX недостаточно для регистрации шаблонов с помощью мастера MVC. Необходимо предоставить сведения, например имя шаблона, описание, обработчиков представлений, поддерживаемых и язык программирования, мастер MVC. Эта информация передается в настраиваемые атрибуты, связанные с **&lt;активов&gt;** для каждого элемента **vstemplate** файла.
 
-&lt;Asset d:VsixSubPath=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx&quot;
+&lt;Средства d:VsixSubPath =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx&quot;
 
 Type=&quot;Microsoft.VisualStudio.Mvc.Template&quot;
 
-d:Source=&quot;File&quot;
+d:Source =&quot;файла&quot;
 
-Path=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicMvcWebApplicationProjectTemplate.11.csaspx.vstemplate&quot;
+Путь =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicMvcWebApplicationProjectTemplate.11.csaspx.vstemplate&quot;
 
-ProjectType=&quot;MVC&quot;
+ProjectType =&quot;MVC&quot;
 
-Language=&quot;C#&quot;
+Language =&quot;C#&quot;
 
-ViewEngine=&quot;Aspx&quot;
+ViewEngine =&quot;Aspx&quot;
 
 Идентификатор шаблона =&quot;MyMvcApplication&quot;
 
@@ -114,7 +115,7 @@ ViewEngine=&quot;Aspx&quot;
 - **Заголовок** обозначает краткое описание, отображаемое в мастере под каждый шаблон проекта MVC.
 - **Описание** задает более подробное описание шаблона.
 
-После добавления все файлы манифеста и сохранить его, можно будет заметить, что **активы** в конструкторе будут отображаться все файлы, но не пользовательские атрибуты, добавленные в  **&lt;активов&gt;**  элементы для **vstemplate** файлов.
+После добавления все файлы манифеста и сохранить его, можно будет заметить, что **активы** в конструкторе будут отображаться все файлы, но не пользовательские атрибуты, добавленные в **&lt;активов&gt;** элементы для **vstemplate** файлов.
 
 ![Ресурсы конструктора проектов](custom-mvc-templates/_static/image8.jpg)
 

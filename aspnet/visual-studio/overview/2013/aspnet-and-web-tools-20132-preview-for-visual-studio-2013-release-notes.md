@@ -1,22 +1,23 @@
 ---
 uid: visual-studio/overview/2013/aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes
-title: "ASP.NET и веб-средств 2013.2 заметки о выпуске Visual Studio 2013 | Документы Microsoft"
+title: ASP.NET и веб-средств 2013.2 заметки о выпуске Visual Studio 2013 | Документы Microsoft
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/06/2014
 ms.topic: article
 ms.assetid: 7ef5f73c-ca60-43c1-bdb2-702800347e7e
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes
 msc.type: authoredcontent
 ms.openlocfilehash: 0e7ad52662f7ceaa1f087d007d0b14b610f90bee
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28036028"
 ---
 <a name="aspnet-and-web-tools-20132--for-visual-studio-2013-release-notes"></a>ASP.NET и веб-инструменты 2013.2 заметки о выпуске Visual Studio 2013
 ====================

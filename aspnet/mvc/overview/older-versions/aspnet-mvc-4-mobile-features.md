@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
 ms.openlocfilehash: 5f38fcdd8e71ce12f7899214b6b2133e21f9910c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30876843"
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>Возможности ASP.NET MVC 4 для мобильных приложений
 ====================
@@ -35,7 +36,7 @@ ms.lasthandoff: 04/06/2018
 
 - [Эмулятор Windows 7 Phone](https://msdn.microsoft.com/library/ff402563(VS.92).aspx). (Это эмулятор, используемый в большинстве снимков экрана в этом учебнике).
 - Измените строку пользовательского агента для эмуляции iPhone. В разделе [это](http://www.howtogeek.com/113439/how-to-change-your-browsers-user-agent-without-installing-any-extensions/) запись в блоге.
-- [Opera Mobile Emulator](http://www.opera.com/developer/tools/mobile/)
+- [Opera мобильном эмуляторе](http://www.opera.com/developer/tools/mobile/)
 - [Apple Safari](http://www.apple.com/safari/download/) с агентом пользователя, задайте для iPhone. Инструкции по установке агента пользователя в Safari на «iPhone» см. в разделе [как предоставить Safari представьте это IE](http://www.davidalison.com/2008/05/how-to-let-safari-pretend-its-ie.html) в блоге Дэвида Alison.
 
 Проекты Visual Studio с исходным кодом C# доступны по следующему адресу:

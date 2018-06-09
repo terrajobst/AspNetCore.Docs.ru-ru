@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-configuring-project-properties-4-of-12
 msc.type: authoredcontent
 ms.openlocfilehash: b8352c1832ffc79db93b6324dd673afaff6b0d74
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30887204"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-configuring-project-properties---4-of-12"></a>Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: Настройка свойств проекта - 4 12
 ====================
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/06/2018
 
 ![Package_Publish_Web_tab](deployment-to-a-hosting-provider-configuring-project-properties-4-of-12/_static/image1.png)
 
-При отображении окна по умолчанию показывают параметры для любой конфигурации построения активного решения. Если **конфигурации** не указывает на поле **Активная (Release)**выберите **выпуска** для отображения параметров конфигурации построения выпуска. Используется для развертывания сборки выпуска в тесте и рабочей средах.
+При отображении окна по умолчанию показывают параметры для любой конфигурации построения активного решения. Если **конфигурации** не указывает на поле **Активная (Release)** выберите **выпуска** для отображения параметров конфигурации построения выпуска. Используется для развертывания сборки выпуска в тесте и рабочей средах.
 
 ![Package_Publish_Web_tab_selecting_Release](deployment-to-a-hosting-provider-configuring-project-properties-4-of-12/_static/image2.png)
 

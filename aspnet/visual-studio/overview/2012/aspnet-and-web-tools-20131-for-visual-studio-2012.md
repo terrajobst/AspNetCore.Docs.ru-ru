@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
 msc.type: authoredcontent
 ms.openlocfilehash: c11e2ef9c33b0cae1f196690533094ce1c342da5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28036431"
 ---
 <a name="release-notes-for-aspnet-and-web-tools-20131-for-visual-studio-2012"></a>Заметки о выпуске для ASP.NET и веб-инструменты 2013.1 для Visual Studio 2012
 ====================
@@ -31,7 +32,7 @@ ms.lasthandoff: 01/24/2018
 - [Требования к программному обеспечению](#requirements)
 - Новые возможности в ASP.NET и веб-инструменты 2013.1 для Visual Studio 2012
 
-    - [Bootstrap](#bootstrap)
+    - [Начальная загрузка](#bootstrap)
     - [Шаблоны](#templates)
 
         - [Шаблон ASP.NET MVC 5](#mvc5template)
@@ -168,7 +169,7 @@ NuGet 2.7 включает широкий набор новых функций, 
 <a id="browseissue"></a>
 #### <a name="viewing-cshtml-file-withbrowse-withorf5causes-a-server-error"></a>Просмотр withBrowse файл cshtml WithorF5causes ошибка сервера
 
-При создании проекта MVC 5 в Visual Studio 2012 (или откройте файл в проект Visual Studio 2012 MVC 5, созданный в Visual Studio 2013) и попытаться просмотреть файл cshtml с помощью просмотр с помощью либо нажмите клавишу F5, вы получите сообщение об ошибке с состояния — **ошибка сервера в Приложение «/»**. Пытается перейти к серверу`http://localhost:XXXX/Views/../XXXX.cshtml`
+При создании проекта MVC 5 в Visual Studio 2012 (или откройте файл в проект Visual Studio 2012 MVC 5, созданный в Visual Studio 2013) и попытаться просмотреть файл cshtml с помощью просмотр с помощью либо нажмите клавишу F5, вы получите сообщение об ошибке с состояния — **ошибка сервера в Приложение «/»**. Пытается перейти к серверу `http://localhost:XXXX/Views/../XXXX.cshtml`
 
 Чтобы устранить эту проблему, измените **действие при запуске** в проекте для **определенную страницу**. Необходимо указать значение для страницы.
 

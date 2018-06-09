@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
 ms.openlocfilehash: 1f1e90544c9dd8439a522f2196d81d020ea2f4f2
-ms.sourcegitcommit: 7f92990bad6a6cb901265d621dcbc136794f5f3f
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30223266"
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>Создание интерфейса API REST с атрибутом маршрутизации в ASP.NET Web API 2
 ====================
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/28/2018
 | Действие | Пример URI |
 | --- | --- |
 | Получение списка всех книг. | / api/книг |
-| Получение книги по идентификатору. | /api/books/1 |
+| Получение книги по идентификатору. | /API/Books/1 |
 | Получите сведения о книге. | /API/Books/1/Details |
 | Получение списка книг по жанру. | /API/Books/FANTASY |
 | Получите список книг, дата публикации. | /API/Books/Date/2013-02-16 /api/books/date/2013/02/16 (альтернативный способ) |
@@ -42,7 +43,7 @@ ms.lasthandoff: 03/28/2018
 - Жанр
 - Дата публикации.
 - Цены
-- Описание
+- Описание:
 - AuthorID (внешний ключ к таблице Authors)
 
 Для большинства запросов тем не менее, API вернет подмножество этих данных (название, автор и жанр). Чтобы получить полную запись клиента запросы `/api/books/{id}/details`.
@@ -55,7 +56,7 @@ ms.lasthandoff: 03/28/2018
 
 Запустить Visual Studio. Из **файл** последовательно выберите пункты **New** , а затем выберите **проекта**.
 
-В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#**выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Назовите проект &quot;BooksAPI&quot;.
+В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#** выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Назовите проект &quot;BooksAPI&quot;.
 
 ![](create-a-rest-api-with-attribute-routing/_static/image1.png)
 

@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-view
 msc.type: authoredcontent
 ms.openlocfilehash: c9675eb7776116ecbe910d5515abfe9b4391df22
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30873356"
 ---
 <a name="adding-a-view-vb"></a>Добавление представления (Visual Basic)
 ====================
@@ -79,7 +80,7 @@ ms.lasthandoff: 04/06/2018
 
 [!code-vbhtml[Main](adding-a-view/samples/sample5.vbhtml)]
 
-Open *MvcMovie\Views\HelloWorld\Index.vbhtml*. Есть два места для внесения изменений: во-первых, текст, расположенный в заголовке обозревателя, а затем в заголовке получателя ( `<h2>` элемент). Мы выполним их немного отличается, можно увидеть, какая часть кода изменяет какие-либо часть приложения.
+Откройте *MvcMovie\Views\HelloWorld\Index.vbhtml*. Есть два места для внесения изменений: во-первых, текст, расположенный в заголовке обозревателя, а затем в заголовке получателя ( `<h2>` элемент). Мы выполним их немного отличается, можно увидеть, какая часть кода изменяет какие-либо часть приложения.
 
 Запустите приложение и перейдите к`http://localhost:xx/HelloWorld`. Обратите внимание, что основной и дополнительный заголовки браузера изменились. Это легко сделать существенные изменения в приложении с небольшими изменениями в представление. (Если изменения не отображаются, возможно, вы просматриваете кэшированное содержимое. В этом случае нажмите в браузере клавиши CTRL+F5 для принудительной загрузки ответа сервера.)
 

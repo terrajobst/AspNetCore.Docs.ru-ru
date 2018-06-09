@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
 msc.type: authoredcontent
 ms.openlocfilehash: 0ab99dd443040b90ffefd2f5b9261a63b91e9463
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28037325"
 ---
 <a name="routing-conventions-in-aspnet-web-api-2-odata"></a>Соглашение о маршрутизации в ASP.NET Web API 2 Odata
 ====================
@@ -47,9 +48,9 @@ ms.lasthandoff: 01/24/2018
 
 Для маршрутизации, важно пути к ресурсу. Путь к ресурсу, разделяются на сегменты. Например `/Products(1)/Supplier` состоит из трех сегментов:
 
-- `Products`ссылается на набор сущностей с именем «Продукты».
-- `1`ключ сущности, при выборе одной сущности из набора.
-- `Supplier`является свойством навигации, которое выбирает связанной сущности.
+- `Products` ссылается на набор сущностей с именем «Продукты».
+- `1` ключ сущности, при выборе одной сущности из набора.
+- `Supplier` является свойством навигации, которое выбирает связанной сущности.
 
 Поэтому этот путь выбирает out к поставщику продукта 1.
 
@@ -88,7 +89,7 @@ ms.lasthandoff: 01/24/2018
 | Запрос | Пример URI | Имя действия | Пример действия |
 | --- | --- | --- | --- |
 | GET /entityset (ключ) и навигации | И продукты (1) или поставщика | GetNavigationFromEntityType или GetNavigation | GetSupplierFromProduct |
-| ПОЛУЧИТЬ /entityset (ключ) и приведения и навигация | /Products(1)/Models.Book/Author | GetNavigationFromEntityType или GetNavigation | GetAuthorFromBook |
+| ПОЛУЧИТЬ /entityset (ключ) и приведения и навигация | / /Models.Book/Author продуктов (1) | GetNavigationFromEntityType или GetNavigation | GetAuthorFromBook |
 
 Дополнительные сведения см. в разделе [работа с отношениями сущностей](odata-v3/working-with-entity-relations.md).
 
@@ -110,9 +111,9 @@ ms.lasthandoff: 01/24/2018
 | Запрос | Пример URI | Имя действия | Пример действия |
 | --- | --- | --- | --- |
 | GET /entityset (ключ) и свойства | И продукты (1) или имя | GetPropertyFromEntityType или GetProperty | GetNameFromProduct |
-| ПОЛУЧИТЬ /entityset (ключ) и приведения или свойства | /Products(1)/Models.Book/Author | GetPropertyFromEntityType или GetProperty | GetTitleFromBook |
+| ПОЛУЧИТЬ /entityset (ключ) и приведения или свойства | / /Models.Book/Author продуктов (1) | GetPropertyFromEntityType или GetProperty | GetTitleFromBook |
 
-**Действия**
+**действия**
 
 | Запрос | Пример URI | Имя действия | Пример действия |
 | --- | --- | --- | --- |
@@ -169,7 +170,7 @@ ms.lasthandoff: 01/24/2018
 
 1. Я являются производными от **EntitySetRoutingConvention**, так как **SelectController** метода этого класса подходит для этой новой соглашение о маршрутизации. Это означает, что нет необходимости в повторной реализации **SelectController**.
 2. Соглашение о применяется только для запросов GET, а только в том случае, когда шаблон пути будет &quot;~/entityset/key/navigation/key&quot;.
-3. Имя действия &quot;получить {EntityType}&quot;, где *{EntityType}* тип навигации коллекции. Например &quot;GetSupplier&quot;. Можно использовать любое соглашение об именовании, что вам нравится & #8212; просто убедитесь, что соответствует действий контроллера.
+3. Имя действия &quot;получить {EntityType}&quot;, где *{EntityType}* тип навигации коллекции. Например &quot;GetSupplier&quot;. Можно использовать любое соглашение об именовании, что вам нравится &#8212; просто убедитесь, что соответствует действий контроллера.
 4. Действие принимает два параметра с именем *ключ* и *relatedKey*. (Список некоторые имена стандартных параметров см. в разделе [ODataRouteConstants](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatarouteconstants.aspx).)
 
 Следующим шагом является добавление новое соглашение список соглашений о маршрутизации. Это происходит во время настройки, как показано в следующем коде:

@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/creating-an-odata-endpoint
 msc.type: authoredcontent
 ms.openlocfilehash: 227faacd3f42731e08a4cd2b71075776309961b6
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30874633"
 ---
 <a name="creating-an-odata-v3-endpoint-with-web-api-2"></a>Создание конечной точки OData v3 с веб-API 2
 ====================
@@ -57,7 +58,7 @@ ms.lasthandoff: 04/06/2018
 
 Запустите Visual Studio и выберите **новый проект** с начальной страницы. Или из **файл** последовательно выберите пункты **New** и затем **проекта**.
 
-В **шаблоны** выберите **установленные шаблоны** и разверните узел Visual C#. В разделе **Visual C#**выберите **Web**. Выберите **веб-приложение ASP.NET** шаблона.
+В **шаблоны** выберите **установленные шаблоны** и разверните узел Visual C#. В разделе **Visual C#** выберите **Web**. Выберите **веб-приложение ASP.NET** шаблона.
 
 ![](creating-an-odata-endpoint/_static/image1.png)
 

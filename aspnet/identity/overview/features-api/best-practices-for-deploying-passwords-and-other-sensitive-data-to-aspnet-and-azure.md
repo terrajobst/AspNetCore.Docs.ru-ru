@@ -1,26 +1,27 @@
 ---
 uid: identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
-title: "Советы и рекомендации по развертыванию пароли и другие конфиденциальные данные, ASP.NET и службы приложений Azure | Документы Microsoft"
+title: Советы и рекомендации по развертыванию пароли и другие конфиденциальные данные, ASP.NET и службы приложений Azure | Документы Microsoft
 author: Rick-Anderson
-description: "В этом учебнике показано, как код можно безопасно хранения и доступа к защищенным сведениям. Наиболее важно то, что никогда не следует хранить пароли и другие отправителя..."
+description: В этом учебнике показано, как код можно безопасно хранения и доступа к защищенным сведениям. Наиболее важно то, что никогда не следует хранить пароли и другие отправителя...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/21/2015
 ms.topic: article
 ms.assetid: 97902c66-cb61-4d11-be52-73f962f2db0a
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
 msc.type: authoredcontent
 ms.openlocfilehash: 995d9a088e3095f36a01d2adb19ec08e6a6d1b3e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28033025"
 ---
 <a name="best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure-app-service"></a>Рекомендации по развертыванию пароли и другие конфиденциальные данные в ASP.NET и службы приложений Azure
 ====================
-По [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон](https://github.com/Rick-Anderson)
 
 > В этом учебнике показано, как код можно безопасно хранения и доступа к защищенным сведениям. Самое главное, никогда не следует хранить пароли и другие конфиденциальные данные в исходном коде и секретные данные в рабочей среде не следует использовать в режиме разработки и тестирования.
 > 
@@ -90,7 +91,7 @@ Visual Studio создает новые проекты ASP.NET, использу
 
 При развертывании веб-приложения в Azure, *AppSettingsSecrets.config* файл не будет развернут (то есть, при необходимости). Может перейти к [портала управления Azure](https://azure.microsoft.com/services/management-portal/) и задать их вручную, чтобы это сделать:
 
-1. Последовательно выберите пункты [https://portal.azure.com](https://portal.azure.com)и выполните вход с помощью учетных данных Azure.
+1. Последовательно выберите пункты [ https://portal.azure.com ](https://portal.azure.com)и выполните вход с помощью учетных данных Azure.
 2. Нажмите кнопку **Обзор &gt; веб-приложений**, затем щелкните имя веб-приложения.
 3. Нажмите кнопку **все параметры &gt; параметры приложения**.
 

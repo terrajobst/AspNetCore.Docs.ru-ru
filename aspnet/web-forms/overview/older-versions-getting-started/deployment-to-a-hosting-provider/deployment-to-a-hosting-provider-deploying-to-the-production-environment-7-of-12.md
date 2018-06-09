@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12
 msc.type: authoredcontent
 ms.openlocfilehash: ab3b7ba332deddae7d04fc37c7aabc72bdb2d17e
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30889687"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-to-the-production-environment---7-of-12"></a>Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: развертывание в рабочей среде - 7 12
 ====================
@@ -190,7 +191,7 @@ ms.lasthandoff: 04/06/2018
 
 Убедитесь, что Elmah имеет доступ на запись к *Elmah* папку, что вызывает ошибку и отображения Elmah отчет об ошибке. Недопустимый URL-адрес, например запроса *Studentsxxx.aspx*. Как и прежде, можно увидеть *GenericErrorPage.aspx* страницы. Нажмите кнопку **Выход** связь, а затем запустите *Elmah.axd*. Вы получаете **входа в** страницы во-первых, проверяющее, что *Web.config* преобразования успешно добавлен Elmah авторизации. После входа появится отчет, отображающий только причиной ошибки.
 
-[![Elmah.axd_Prod](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image41.png)](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image40.png)
+[![ELMAH.axd_Prod](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image41.png)](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image40.png)
 
 ## <a name="testing-in-the-production-environment"></a>Тестирование в рабочей среде
 

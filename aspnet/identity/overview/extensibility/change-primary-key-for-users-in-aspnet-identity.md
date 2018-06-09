@@ -1,22 +1,23 @@
 ---
 uid: identity/overview/extensibility/change-primary-key-for-users-in-aspnet-identity
-title: "Изменение первичного ключа для пользователей в ASP.NET Identity | Документы Microsoft"
+title: Изменение первичного ключа для пользователей в ASP.NET Identity | Документы Microsoft
 author: tfitzmac
-description: "В Visual Studio 2013 веб-приложения по умолчанию использует строковое значение для ключа для учетных записей пользователей. ASP.NET Identity позволяет изменить тип..."
+description: В Visual Studio 2013 веб-приложения по умолчанию использует строковое значение для ключа для учетных записей пользователей. ASP.NET Identity позволяет изменить тип...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/30/2014
 ms.topic: article
 ms.assetid: 44925849-5762-4504-a8cd-8f0cd06f6dc3
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/extensibility/change-primary-key-for-users-in-aspnet-identity
 msc.type: authoredcontent
 ms.openlocfilehash: 79812efb4de2461fad3765d6005bbd20393e62b2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26498233"
 ---
 <a name="change-primary-key-for-users-in-aspnet-identity"></a>Изменение первичного ключа для пользователей в ASP.NET Identity
 ====================
@@ -275,7 +276,7 @@ ms.lasthandoff: 11/10/2017
 <a id="other"></a>
 ## <a name="other-resources"></a>Другие источники
 
-- [Обзор поставщиков пользовательского хранилища для ASP.NET Identity](overview-of-custom-storage-providers-for-aspnet-identity.md)
-- [Миграция существующего веб-сайта из SQL членства в ASP.NET Identity](../migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)
+- [Обзор пользовательских поставщиков хранилищ для ASP.NET Identity](overview-of-custom-storage-providers-for-aspnet-identity.md)
+- [Миграция существующего веб-сайта из членства SQL в ASP.NET Identity](../migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)
 - [Перенос данных универсальной поставщик членства и профили пользователей для ASP.NET Identity](../migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity.md)
 - [Образец приложения](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/ChangePK/readme.txt) с измененной первичного ключа

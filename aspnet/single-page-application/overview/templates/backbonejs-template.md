@@ -1,22 +1,23 @@
 ---
 uid: single-page-application/overview/templates/backbonejs-template
-title: "Шаблон магистрали | Документы Microsoft"
+title: Шаблон магистрали | Документы Microsoft
 author: madskristensen
-description: "Шаблон SPA Backbone.js"
+description: Шаблон SPA Backbone.js
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/04/2013
 ms.topic: article
 ms.assetid: 00aca413-f067-4108-9bd1-cf21e64a2646
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/templates/backbonejs-template
 msc.type: authoredcontent
 ms.openlocfilehash: 3b8eabd3cefcb96dc40bbf6cc6e3ee81accb0d7c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26506683"
 ---
 <a name="backbone-template"></a>Шаблон магистрали
 ====================
@@ -39,7 +40,7 @@ ms.lasthandoff: 11/10/2017
 
 Загрузите и установите шаблон, нажав кнопку «Загрузить» выше. Шаблон упаковывается в виде файла расширения Visual Studio (VSIX). Может потребоваться перезапустить Visual Studio.
 
-В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#**выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Имя проекта и нажмите кнопку **ОК**.
+В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#** выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Имя проекта и нажмите кнопку **ОК**.
 
 ![](backbonejs-template/_static/image1.png)
 
@@ -61,7 +62,7 @@ ms.lasthandoff: 11/10/2017
 
 **Приложение**
 
-`Application`определено в application.ts. Этот объект Инициализирует приложение и выступает в качестве корневого пространства имен. Хранит сведения о конфигурации и состоянии, общего для нескольких приложений, например, является ли пользователь выполнил вход.
+`Application` определено в application.ts. Этот объект Инициализирует приложение и выступает в качестве корневого пространства имен. Хранит сведения о конфигурации и состоянии, общего для нескольких приложений, например, является ли пользователь выполнил вход.
 
 `application.start` Метод создает модальные представления и присоединяет обработчики событий к событиям уровня приложения, например вход пользователя. Затем он создает маршрутизатора по умолчанию и проверяет, задано ли URL-адрес любого клиентского. Если нет, он перенаправляет на url-адрес по умолчанию (#! /).
 

@@ -13,14 +13,15 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs
 msc.type: authoredcontent
 ms.openlocfilehash: 9a748628d53878be380869ac5327de0111d2284d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26507263"
 ---
 <a name="hands-on-lab-build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs"></a>Практическое лабораторное занятие: Построить приложение на одной странице (SPA) с веб-API ASP.NET и Angular.js
 ====================
-по [Web лагеря команды](https://twitter.com/webcamps)
+По [Web лагеря команды](https://twitter.com/webcamps)
 
 [Загрузите комплект учебных материалов лагеря Web](http://aka.ms/webcamps-training-kit)
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > В этой лаборатории в наличии будет воспользоваться преимуществами этих технологий для реализации компьютерный фанат тест веб-сайт trivia зависимости от понятия SPA. Сначала будет реализовать уровень службы с веб-API ASP.NET для предоставления конечных точек, необходимые для получения головоломки вопросы и ответы сохранения. Затем вы создадите подробный и отвечать на запросы пользовательского интерфейса с помощью AngularJS и CSS3 влияние преобразования.
 > 
-> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit).
+> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
 
 
 ## <a name="overview"></a>Обзор
@@ -307,7 +308,7 @@ ms.lasthandoff: 11/10/2017
 Начнем с установкой AngularJS консоли диспетчера пакетов Visual Studio. Затем вы создадите контроллера для обеспечения поведения приложения компьютерный фанат головоломки и представления для отображения головоломки вопросы и ответы, с помощью механизма шаблона AngularJS.
 
 > [!NOTE]
-> Дополнительные сведения о AngularJS посвящены [ [http://angularjs.org/](http://angularjs.org/)](http://angularjs.org/).
+> Дополнительные сведения о AngularJS посвящены [ [ http://angularjs.org/ ](http://angularjs.org/) ](http://angularjs.org/).
 
 
 1. Откройте **Visual Studio Express 2013 для Web** и откройте **GeekQuiz.sln** решение находится в **источника/Ex2-CreatingASPAInterface/начало** папки. Кроме того можно продолжить с решением, полученный в предыдущем упражнении.

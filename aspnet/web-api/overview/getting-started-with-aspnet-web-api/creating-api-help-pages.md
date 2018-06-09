@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
-title: "Создание страниц справки для веб-API ASP.NET | Документы Microsoft"
+title: Создание страниц справки для веб-API ASP.NET | Документы Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2013
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
 msc.type: authoredcontent
 ms.openlocfilehash: 37fd26ebaea192cb540c443eff8a07343ab8c15b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28037907"
 ---
 <a name="creating-help-pages-for-aspnet-web-api"></a>Создание страниц справки для веб-API ASP.NET
 ====================
@@ -60,9 +61,9 @@ ms.lasthandoff: 01/24/2018
 
 Из **средства** последовательно выберите пункты **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**. В [консоль диспетчера пакетов](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) окно, введите одну из следующих команд:
 
-Для **C#** приложения:`Install-Package Microsoft.AspNet.WebApi.HelpPage`
+Для **C#** приложения: `Install-Package Microsoft.AspNet.WebApi.HelpPage`
 
-Для **Visual Basic** приложения:`Install-Package Microsoft.AspNet.WebApi.HelpPage.VB`
+Для **Visual Basic** приложения: `Install-Package Microsoft.AspNet.WebApi.HelpPage.VB`
 
 Существует два пакета, один для C# и один для Visual Basic. Убедитесь, что используйте тот, который соответствует проекту.
 

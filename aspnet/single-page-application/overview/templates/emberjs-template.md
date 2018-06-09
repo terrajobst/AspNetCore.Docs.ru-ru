@@ -1,22 +1,23 @@
 ---
 uid: single-page-application/overview/templates/emberjs-template
-title: "Шаблон EmberJS | Документы Microsoft"
+title: Шаблон EmberJS | Документы Microsoft
 author: xqiu
-description: "Шаблон EmberJS"
+description: Шаблон EmberJS
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/30/2013
 ms.topic: article
 ms.assetid: 04d5f142-5f62-494a-b5ea-4f3d068d34cb
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/templates/emberjs-template
 msc.type: authoredcontent
 ms.openlocfilehash: 1fb7633aee288be648d4f9681b43c8911b7dbab9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26506803"
 ---
 <a name="emberjs-template"></a>Шаблон EmberJS
 ====================
@@ -43,7 +44,7 @@ AJAX нет ничего нового, но на сегодняшний день
 
 Загрузите и установите шаблон, нажав кнопку «Загрузить» выше. Может потребоваться перезапустить Visual Studio.
 
-В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#**выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Имя проекта и нажмите кнопку **ОК**.
+В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#** выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Имя проекта и нажмите кнопку **ОК**.
 
 ![](emberjs-template/_static/image2.png)
 
@@ -134,7 +135,7 @@ TodoListRoute.js загружает данные для TodoListRoute путем
 
 [!code-javascript[Main](emberjs-template/samples/sample11.js)]
 
-Ember использует соглашения об именовании для соответствия URL-адреса, имена маршрутов, контроллеров и шаблоны. Дополнительные сведения см. в разделе [http://emberjs.com/guides/routing/defining-your-routes/](http://emberjs.com/guides/routing/defining-your-routes/) EmberJS документацию.
+Ember использует соглашения об именовании для соответствия URL-адреса, имена маршрутов, контроллеров и шаблоны. Дополнительные сведения см. в разделе [ http://emberjs.com/guides/routing/defining-your-routes/ ](http://emberjs.com/guides/routing/defining-your-routes/) EmberJS документацию.
 
 ## <a name="templates"></a>Шаблоны
 
@@ -146,7 +147,7 @@ Ember использует соглашения об именовании для
 - todoList.hbs: шаблона для «/ todo» маршрута.
 - \_NavBar.hbs: шаблон определяет меню навигации.
 
-Шаблон приложения ведет себя как главной страницы. Он содержит заголовок, нижний колонтитул и «{{розетки}}» для вставки другие шаблоны, в зависимости от маршрута. Дополнительные сведения о шаблонах приложений в Ember см. в разделе [http://guides.emberjs.com/v1.10.0/templates/the-application-template//](http://guides.emberjs.com/v1.10.0/templates/the-application-template/).
+Шаблон приложения ведет себя как главной страницы. Он содержит заголовок, нижний колонтитул и «{{розетки}}» для вставки другие шаблоны, в зависимости от маршрута. Дополнительные сведения о шаблонах приложений в Ember см. в разделе [ http://guides.emberjs.com/v1.10.0/templates/the-application-template// ](http://guides.emberjs.com/v1.10.0/templates/the-application-template/).
 
 «/ TodoList» шаблон содержит два выражения цикла. Находится вне цикла `{{#each controller}}`и внутренние цикл `{{#each todos}}`. В следующем коде показано встроенная `Ember.Checkbox` просмотреть, настраиваемый `App.TodoItemEditView`и компоновку с `deleteTodo` действие.
 

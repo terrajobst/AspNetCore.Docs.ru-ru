@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-view
 msc.type: authoredcontent
 ms.openlocfilehash: 61a93c1430e9e39543c69b84901a50ceb710a5ae
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30874522"
 ---
 <a name="adding-a-view"></a>Добавление представления
 ====================
@@ -94,7 +95,7 @@ ms.lasthandoff: 04/06/2018
 
 Теперь изменим название индекс представления.
 
-Open *MvcMovie\Views\HelloWorld\Index.cshtml*. Есть два места для внесения изменений: во-первых, текст, расположенный в заголовке обозревателя, а затем в заголовке получателя ( `<h2>` элемент). Сделайте их немного разными, чтобы видеть, какой именно фрагмент кода изменяет соответствующую часть приложения.
+Откройте *MvcMovie\Views\HelloWorld\Index.cshtml*. Есть два места для внесения изменений: во-первых, текст, расположенный в заголовке обозревателя, а затем в заголовке получателя ( `<h2>` элемент). Сделайте их немного разными, чтобы видеть, какой именно фрагмент кода изменяет соответствующую часть приложения.
 
 [!code-cshtml[Main](adding-a-view/samples/sample6.cshtml)]
 

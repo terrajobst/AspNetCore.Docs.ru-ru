@@ -13,14 +13,15 @@ ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: 55109723e566a9f7c66c1a59414377b05dbec760
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26507123"
 ---
 <a name="hands-on-lab-one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api"></a>Практическое лабораторное занятие: Один ASP.NET: интеграция веб-форм ASP.NET, MVC и веб-API
 ====================
-по [Web лагеря команды](https://twitter.com/webcamps)
+По [Web лагеря команды](https://twitter.com/webcamps)
 
 [Загрузите комплект учебных материалов лагеря Web](http://aka.ms/webcamps-training-kit)
 
@@ -28,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > Visual Studio 2013 вводит новую систему единой проектов, в которой можно построить приложение и использовать все технологии ASP.NET в одном проекте. Эта функция избавляет от необходимости выбора одной технологии в начале проекта и манипулятор с ним и вместо этого рекомендует использование нескольких платформ ASP.NET в рамках одного проекта.
 > 
-> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit).
+> Все образцы кода и фрагменты кода включаются в Web лагеря комплект учебных материалов, доступных в [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
 
 
 <a id="Overview"></a>
@@ -161,7 +162,7 @@ ms.lasthandoff: 11/10/2017
     *Понятные URL-адреса*
 
     > [!NOTE]
-    > Как видите, URL-адрес примет **или обратитесь**. Начиная с **ASP.NET 4**, были добавлены возможности маршрутизации URL-адрес веб-форм, можно создать URL-адреса, например *[http://www.mysite.com/products/software](http://www.mysite.com/products/software)* вместо  *[http://www.mysite.com/products.aspx?category=software](http://www.mysite.com/products.aspx?category=software)*. Дополнительные сведения см. в [маршрутизации URL-адрес](../../../web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md).
+    > Как видите, URL-адрес примет **или обратитесь**. Начиная с **ASP.NET 4**, были добавлены возможности маршрутизации URL-адрес веб-форм, можно создать URL-адреса, например *[ http://www.mysite.com/products/software ](http://www.mysite.com/products/software)* вместо  *[http://www.mysite.com/products.aspx?category=software](http://www.mysite.com/products.aspx?category=software)*. Дополнительные сведения см. в [маршрутизации URL-адрес](../../../web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md).
 3. Теперь вы исследуете поток проверки подлинности, который интегрируется в приложение. Чтобы сделать это, нажмите кнопку **зарегистрировать** в правом верхнем углу страницы.
 
     ![Регистрация нового пользователя](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image8.png)

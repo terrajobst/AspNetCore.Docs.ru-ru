@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/project-properties
 msc.type: authoredcontent
 ms.openlocfilehash: fba3f089bf1693eec873b08b4bc50e3accba06ee
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30879885"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-project-properties"></a>ASP.NET веб-развертывания Visual Studio с помощью: свойства проекта
 ====================
@@ -39,7 +40,7 @@ ms.lasthandoff: 04/06/2018
 
 ![Вкладка "Упаковка и публикация веб-проекта"](project-properties/_static/image1.png)
 
-При отображении окна по умолчанию показывают параметры для любой конфигурации построения активного решения. Если **конфигурации** не указывает на поле **Активная (Release)**выберите **выпуска** для отображения параметров конфигурации построения выпуска. Используется для развертывания сборки выпуска в тесте и рабочей средах.
+При отображении окна по умолчанию показывают параметры для любой конфигурации построения активного решения. Если **конфигурации** не указывает на поле **Активная (Release)** выберите **выпуска** для отображения параметров конфигурации построения выпуска. Используется для развертывания сборки выпуска в тесте и рабочей средах.
 
 ![Выбор конфигурации построения выпуска](project-properties/_static/image2.png)
 

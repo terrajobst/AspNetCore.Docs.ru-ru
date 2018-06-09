@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
 msc.type: authoredcontent
 ms.openlocfilehash: 4cfa98144919c3f1bdb3608970af1a7952fe6ea7
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30878182"
 ---
 # <a name="aspnet-mvc-4-helpers-forms-and-validation"></a>Вспомогательные объекты ASP.NET MVC 4, форм и проверки
 
@@ -605,7 +606,7 @@ ms.lasthandoff: 04/06/2018
 
 В этой задаче вы добавите заметок к данным в альбоме модель, которая сделает странице Создание и изменение отображения сообщений о проверке, когда это необходимо.
 
-Для простой класс модели, Добавление заметки к данным только осуществляется путем добавления **с помощью** инструкции для **System.ComponentModel.DataAnnotation**, помещаться **[обязательно]**атрибута на соответствующие свойства. Следующий пример сделает **имя** свойство обязательное поле в представлении.
+Для простой класс модели, Добавление заметки к данным только осуществляется путем добавления **с помощью** инструкции для **System.ComponentModel.DataAnnotation**, помещаться **[обязательно]** атрибута на соответствующие свойства. Следующий пример сделает **имя** свойство обязательное поле в представлении.
 
 [!code-csharp[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample18.cs)]
 

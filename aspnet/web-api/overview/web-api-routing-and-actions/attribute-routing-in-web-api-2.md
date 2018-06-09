@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
-title: "Атрибут маршрутизации в ASP.NET Web API 2 | Документы Microsoft"
+title: Атрибут маршрутизации в ASP.NET Web API 2 | Документы Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/20/2014
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 msc.type: authoredcontent
 ms.openlocfilehash: 173add73a150d3e13ae243d6548463da912dadee
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28038053"
 ---
 <a name="attribute-routing-in-aspnet-web-api-2"></a>Атрибут маршрутизации в ASP.NET Web API 2
 ====================
@@ -180,13 +181,13 @@ ms.lasthandoff: 01/24/2018
 
 | Ограничение | Описание: | Пример |
 | --- | --- | --- |
-| Альфа-канал | Соответствует прописные или строчные буквы латинского алфавита (a-z, A-Z) | {x:alpha} |
+| Альфа-канал | Соответствует прописные или строчные буквы латинского алфавита (a-z, A-Z) | {x: альфа} |
 | bool | Соответствует логическое значение. | {x: bool} |
-| datetime | Соответствует **DateTime** значение. | {x:datetime} |
-| decimal | Совпадает с десятичным значением. | {x:decimal} |
-| double | Совпадает с 64-разрядное значение с плавающей запятой. | {x:double} |
+| datetime | Соответствует **DateTime** значение. | {x: datetime} |
+| decimal | Совпадает с десятичным значением. | {x: decimal} |
+| double | Совпадает с 64-разрядное значение с плавающей запятой. | {x: double} |
 | float | Совпадает с 32-разрядное значение с плавающей запятой. | {x: float} |
-| guid | Совпадает со значением GUID. | {x:guid} |
+| guid | Совпадает со значением GUID. | {x: guid} |
 | int | Совпадает со значением 32-разрядное целое число. | {x: int} |
 | длина | Соответствует строке, указанной длины или в указанном диапазоне длин. | {x: length(6)} {x: length(1,20)} |
 | long | Совпадает со значением 64-разрядное целое число. | {x: long} |
@@ -195,7 +196,7 @@ ms.lasthandoff: 01/24/2018
 | min | Соответствует целое минимальное значение. | {x: min(10)} |
 | minLength | Со строкой с минимальной длиной. | {x: minlength(10)} |
 | range | Соответствует целым числом в диапазоне значений. | {x: range(10,50)} |
-| regex | Соответствует регулярному выражению. | {x:regex(^\d{3}-\d{3}-\d{4}$)} |
+| regex | Соответствует регулярному выражению. | {x: regex(^\d{3}-\d{3}-\d{4}$)} |
 
 Обратите внимание на то что некоторые ограничения, такие как &quot;min&quot;, принимают аргументы в круглые скобки. Можно применить несколько ограничений для параметров, разделенных точкой с запятой.
 
@@ -271,7 +272,7 @@ ms.lasthandoff: 01/24/2018
 
 1. заказы подробности
 2. заказы / {id}
-3. orders/{customerName}
+3. заказы / {customerName}
 4. заказы / {\*date}
 5. заказы / ожидание
 

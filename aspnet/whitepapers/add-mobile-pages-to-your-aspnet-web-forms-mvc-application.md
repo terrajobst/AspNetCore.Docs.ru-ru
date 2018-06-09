@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
 msc.type: content
 ms.openlocfilehash: a8358b91ca424f4f3e576057ab43d850081dda60
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30898987"
 ---
 <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>Практическое руководство: Добавление мобильных страниц на ваш веб-форм ASP.NET и MVC-приложения
 ====================
@@ -113,7 +114,7 @@ ASP.NET версии 2.0 до версии 3.5 включены *элемент�
 Веб-форм ASP.NET и MVC разработчики могут сразу обнаружить важные характеристики посещаемый обозреватель путем проверки свойств *Request.Browser* объекта. Например см.
 
 - Request.Browser.IsMobileDevice
-- Request.Browser.MobileDeviceManufacturer, Request.Browser.MobileDeviceModel
+- Request.Browser.MobileDeviceManufacturer Request.Browser.MobileDeviceModel
 - Request.Browser.ScreenPixelsWidth
 - Request.Browser.SupportsXmlHttp
 - ...и многие другие
