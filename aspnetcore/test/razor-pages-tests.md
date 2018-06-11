@@ -10,12 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: test/razor-pages-tests
-ms.openlocfilehash: 460c35754750691d3d940dac04d06823083133c2
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: df74d8e44b2dff00e76139edba47fd8a30ce33ef
+ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35217698"
+ms.lasthandoff: 06/10/2018
+ms.locfileid: "35252309"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>Razor страниц в модульные тесты ASP.NET Core
 
@@ -34,7 +34,7 @@ ASP.NET Core поддерживает модульные тесты прилож
 * [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [Модульное тестирование C# в .NET Core, используя dotnet теста и xUnit](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tests/razor-pages-tests/samples/) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 Пример проекта состоит из двух приложений:
 
