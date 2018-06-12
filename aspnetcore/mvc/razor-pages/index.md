@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 651d47ce20f3269340f0796f487e2f1a2a155710
-ms.sourcegitcommit: 0063338c2e130409081bb60fcffa0c3f190cd46a
+ms.openlocfilehash: c8611ef9218711410cde9e142202fa25c3e51862
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729462"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -40,17 +41,47 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
+::: moniker range=">= aspnetcore-2.1"
+
+Из командной строки выполните команду `dotnet new webapp`.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 Из командной строки выполните команду `dotnet new razor`.
+
+::: moniker-end
 
 Откройте созданный файл *.csproj* в Visual Studio для Mac.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code) 
 
+::: moniker range=">= aspnetcore-2.1"
+
+Из командной строки выполните команду `dotnet new webapp`.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 Из командной строки выполните команду `dotnet new razor`.
+
+::: moniker-end
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli) 
 
+::: moniker range=">= aspnetcore-2.1"
+
+Из командной строки выполните команду `dotnet new webapp`.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 Из командной строки выполните команду `dotnet new razor`.
+
+::: moniker-end
 
 ---
 
@@ -116,7 +147,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 Как правило, класс `PageModel` называется `<PageName>Model` и находится в том же пространстве имен, что и страница.
 
-Класс `PageModel` позволяет разделять логику страницы и ее представление. Он определяет обработчики страницы для запросов, отправляемых на страницу, а также данные для ее визуализации. Такое разделение позволяет управлять зависимостями страницы путем их [внедрения](xref:fundamentals/dependency-injection) и выполнять [модульное тестирование](xref:testing/razor-pages-testing) страниц.
+Класс `PageModel` позволяет разделять логику страницы и ее представление. Он определяет обработчики страницы для запросов, отправляемых на страницу, а также данные для ее визуализации. Такое разделение позволяет управлять зависимостями страницы путем их [внедрения](xref:fundamentals/dependency-injection) и выполнять [модульное тестирование](xref:test/razor-pages-tests) страниц.
 
 Страница содержит *метод обработчика* `OnPostAsync`, который выполняется по запросам `POST` (когда пользователь публикует форму). Методы обработчика можно добавить для любой HTTP-команды. Наиболее распространенные обработчики
 
@@ -502,4 +533,4 @@ services.AddMvc()
 * [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [Соглашения об авторизации Razor Pages](xref:security/authorization/razor-pages-authorization)
 * [Пользовательские поставщики моделей маршрутов и страниц Razor Pages](xref:mvc/razor-pages/razor-pages-conventions)
-* [Модульные и интеграционные тесты для Razor Pages](xref:testing/razor-pages-testing)
+* [Модульные тесты страниц Razor](xref:test/razor-pages-tests)

@@ -1,7 +1,7 @@
 ---
-title: "Учебники по ASP.NET Core"
+title: Учебники по ASP.NET Core
 author: rick-anderson
-description: "Список пошаговых руководств для изучения разработки приложений ASP.NET Core."
+description: Список пошаговых руководств для изучения разработки приложений ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2017
@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/index
-ms.openlocfilehash: fd58a6a3e35a706d503603790fa1c726e6c865d6
-ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
+ms.openlocfilehash: 019224e86f1f5583ce0f212d8be70e8829274c7e
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34688443"
 ---
 # <a name="aspnet-core-tutorials"></a>Учебники по ASP.NET Core
 
@@ -32,55 +33,54 @@ ms.lasthandoff: 03/16/2018
 
 * Создание веб-приложения ASP.NET Core MVC
 
-   * [Веб-приложение в Visual Studio для Windows](first-mvc-app/index.md)
-   * [Веб-приложение в Visual Studio для Mac](first-mvc-app-mac/index.md)
-   * [Веб-приложение в Visual Studio Code на macOS или Linux](first-mvc-app-xplat/index.md)
+   * [Веб-приложение в Visual Studio для Windows](xref:tutorials/first-mvc-app/index)
+   * [Веб-приложение в Visual Studio для Mac](xref:tutorials/first-mvc-app-mac/index)
+   * [Веб-приложение в Visual Studio Code на macOS или Linux](xref:tutorials/first-mvc-app-xplat/index)
 
-* [Начало работы с ASP.NET Core и Entity Framework Core в Visual Studio](../data/ef-mvc/index.md)
-* [Создание вспомогательных функций тегов](../mvc/views/tag-helpers/authoring.md)
-* [Создание простого компонента представления](../mvc/views/view-components.md#walkthrough-creating-a-simple-view-component)
-* [Разработка приложений ASP.NET Core с использованием dotnet watch](dotnet-watch.md)
+* [Начало работы с ASP.NET Core и Entity Framework Core в Visual Studio](xref:data/ef-mvc/index)
+* [Создание вспомогательных функций тегов](xref:mvc/views/tag-helpers/authoring)
+* [Создание простого компонента представления](xref:mvc/views/view-components#walkthrough-creating-a-simple-view-component)
+* [Разработка приложений с помощью наблюдателя файлов](xref:tutorials/dotnet-watch)
 
 ## <a name="build-web-apis"></a>Создание веб-API
 * Создание веб-API с помощью ASP.NET Core
 
-  * [Веб-API в Visual Studio для Windows](first-web-api.md)
+  * [Веб-API в Visual Studio для Windows](xref:tutorials/first-web-api)
   * [Веб-API в Visual Studio для Mac](xref:tutorials/first-web-api-mac)
-  * [Веб-API в Visual Studio Code](web-api-vsc.md)
+  * [Веб-API в Visual Studio Code](xref:tutorials/web-api-vsc)
 
 * [Страницы справки по веб-API ASP.NET Core с использованием Swagger](xref:tutorials/web-api-help-pages-using-swagger)
   * [Начало работы с NSwag](xref:tutorials/get-started-with-nswag)
   * [Начало работы с Swashbuckle](xref:tutorials/get-started-with-swashbuckle)
 
-* [Создание серверных служб для собственных мобильных приложений](../mobile/native-mobile-backend.md)
+* [Создание серверных служб для собственных мобильных приложений](xref:mobile/native-mobile-backend)
 
 ## <a name="data-access-and-storage"></a>Доступ к данным и хранилища данных
 * [Начало работы с Razor Pages и EF Core в Visual Studio](xref:data/ef-rp/intro)
-* [Начало работы с ASP.NET Core MVC и EF Core в Visual Studio](../data/ef-mvc/index.md)
-* [ASP.NET Core MVC с EF Core — новая база данных](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)
-* [ASP.NET Core MVC с EF Core — существующая база данных](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)
+* [Начало работы с ASP.NET Core MVC и EF Core в Visual Studio](xref:data/ef-mvc/index)
+* [ASP.NET Core MVC с EF Core — новая база данных](/ef/core/get-started/aspnetcore/new-db)
+* [ASP.NET Core MVC с EF Core — существующая база данных](/ef/core/get-started/aspnetcore/existing-db)
 
 ## <a name="authentication-and-authorization"></a>Аутентификация и авторизация
-* [Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков](../security/authentication/social/index.md)
-* [Подтверждение учетной записи и восстановление пароля](../security/authentication/accconfirm.md)
-* [Двухфакторная проверка подлинности с помощью SMS](../security/authentication/2fa.md)
+* [Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков](xref:security/authentication/social/index)
+* [Подтверждение учетной записи и восстановление пароля](xref:security/authentication/accconfirm)
+* [Двухфакторная проверка подлинности с помощью SMS](xref:security/authentication/2fa)
 
 ## <a name="client-side-development"></a>Клиентская разработка
-* [Использование Gulp](../client-side/using-gulp.md)
-* [Использование Grunt](../client-side/using-grunt.md)
-* [Управление клиентскими пакетами с помощью Bower](../client-side/bower.md)
-* [Создание адаптивных веб-сайтов с помощью Bootstrap](../client-side/bootstrap.md)
+* [Использование Gulp](xref:client-side/using-gulp)
+* [Использование Grunt](xref:client-side/using-grunt)
+* [Управление клиентскими пакетами с помощью Bower](xref:client-side/bower)
+* [Создание адаптивных веб-сайтов с помощью Bootstrap](xref:client-side/bootstrap)
 
 ## <a name="test"></a>Проверка
-* [Модульное тестирование в .NET Core с помощью команды dotnet test](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
+* [Модульное тестирование в .NET Core с помощью команды dotnet test](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
-## <a name="publish-and-deploy"></a>Публикация и развертывание
-* [Развертывание веб-приложения ASP.NET Core в Azure с помощью Visual Studio](publish-to-azure-webapp-using-vs.md)
-* [Развертывание веб-приложения ASP.NET Core в Azure с помощью командной строки](publish-to-azure-webapp-using-cli.md)
+## <a name="host-and-deploy"></a>Размещение и развертывание
+* [Развертывание веб-приложения ASP.NET Core в Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs)
+* [Развертывание веб-приложения ASP.NET Core в Azure с помощью командной строки](xref:tutorials/publish-to-azure-webapp-using-cli)
 * [Публикация в веб-приложение Azure с непрерывным развертыванием](xref:host-and-deploy/azure-apps/azure-continuous-deployment)
-* [Развертывание контейнера ASP.NET на удаленном узле Docker](https://docs.microsoft.com/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
-* [ASP.NET Core в Nano Server](nano-server.md)
-* [ASP.NET Core и Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-add-a-web-frontend)
+* [Развертывание контейнера ASP.NET на удаленном узле Docker](/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
+* [ASP.NET Core и Azure Service Fabric](/azure/service-fabric/service-fabric-add-a-web-frontend)
 
 <a name="download"></a> 
 ## <a name="how-to-download-a-sample"></a>Загрузка примера
