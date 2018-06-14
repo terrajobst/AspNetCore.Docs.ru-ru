@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/anti-request-forgery
-ms.openlocfilehash: ad50f8b261447d40ccc24c0ee006239aa976bf20
-ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
+ms.openlocfilehash: 3bca96f4a2e247eeeb93140df93221371d88d4d3
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341864"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Предотвратить межсайтовых запросов подделки XSRF-атак в ASP.NET Core
 
@@ -43,11 +44,13 @@ ms.lasthandoff: 04/03/2018
 1. Пользователь выбирает кнопку «Отправить». Браузер отправляет запрос и автоматически включает файл cookie проверки подлинности для запрошенного домена `www.good-banking-site.com`.
 1. Запрос выполняется на `www.good-banking-site.com` сервер с контекст проверки подлинности пользователя и может выполнять любое действие, которое может выполнять проверку подлинности пользователя.
 
-Когда пользователь выбирает эту кнопку для отправки формы, вредоносный сайт может:
+В дополнение к ситуации, когда пользователь выбирает эту кнопку для отправки формы вредоносный сайт может:
 
 * Запустите скрипт, который автоматически отправляет форму.
-* Отправляет отправки формы в качестве AJAX-запросом. 
-* С помощью CSS с помощью скрытого формы. 
+* Отправка отправки формы в качестве AJAX-запросом.
+* Скройте форму с помощью CSS.
+
+Эти альтернативные сценарии не требуется, любое действие или входные данные пользователя, отличные от изначально посещения вредоносный сайт.
 
 С помощью протокола HTTPS не предотвращает атаки CSRF. Можно отправить вредоносный сайт `https://www.good-banking-site.com/` запроса так же легко, как его можно отправить запрос небезопасен.
 
@@ -193,9 +196,9 @@ services.AddAntiforgery(options =>
 });
 ```
 
-| Параметр | Описание |
+| Параметр | Описание: |
 | ------ | ----------- |
-| [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания сложные файлы cookie. |
+| [Файл cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания сложные файлы cookie. |
 | [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Домен cookie. По умолчанию — `null`. Это свойство является устаревшим и будет удален в будущей версии. Взамен рекомендуется использовать — Cookie.Domain. |
 | [CookieName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Имя файла cookie. Если не задано, система создает уникальное имя которого начинается с [DefaultCookiePrefix](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (». AspNetCore.Antiforgery.»). Это свойство является устаревшим и будет удален в будущей версии. Взамен рекомендуется использовать — Cookie.Name. |
 | [CookiePath](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | Путь задать в файле cookie. Это свойство является устаревшим и будет удален в будущей версии. Взамен рекомендуется использовать — Cookie.Path. |

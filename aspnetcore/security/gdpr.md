@@ -1,21 +1,22 @@
 ---
 title: Поддержка защиты стабилизации (GDPR) общие данные в ASP.NET Core
 author: rick-anderson
-description: Показано, как получить доступ к точек расширения GDPR в ASP.NET Core веб-приложения.
+description: Узнайте, как получить доступ к точек расширения GDPR в веб-приложения ASP.NET Core.
 manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 5/29/2018
+ms.custom: mvc
+ms.date: 05/29/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/gdpr
-ms.openlocfilehash: 92a7000f4f8e4c2097065cb530fe106ef0e98545
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: c3c8a3fcd4a303aea65c57ff6be2ff0434383f33
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34688631"
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341929"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Поддержка Европа общие данные защиты стабилизации (GDPR) в ASP.NET Core
 
@@ -24,7 +25,7 @@ ms.locfileid: "34688631"
 ASP.NET Core предоставляет API-интерфейсы и шаблоны с помощью требованиям [Европа общие данные защиты стабилизации (GDPR)](https://www.eugdpr.org/) требования:
 
 * Шаблоны проектов включают точки расширения и кратких разметку, можно заменить конфиденциальности и политики использования файлов cookie.
-* Функция согласия куки-файл позволяет запрашивать (и отслеживания) согласие от пользователей для сохранения личных сведений. Если пользователь не дал свое согласие на сбор данных и приложение устанавливается с [CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded?view=aspnetcore-2.1#Microsoft_AspNetCore_Builder_CookiePolicyOptions_CheckConsentNeeded) для `true`, необязательные файлы cookie не будут отправляться в браузере.
+* Функция согласия куки-файл позволяет запрашивать (и отслеживания) согласие от пользователей для сохранения личных сведений. Если пользователь не дал свое согласие на сбор данных и приложение устанавливается с [CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded) для `true`, необязательные файлы cookie не будут отправляться в браузере.
 * Файлы cookie могут быть помечены как важные. Основные файлы cookie отправляются в браузере даже в том случае, если пользователь не согласился и трассировка отключена.
 * [Файлы cookie TempData и сеанса](#tempdata) не работают при отключении отслеживания.
 * [Управление удостоверения](#pd) странице приводятся ссылки для загрузки и удаление данных пользователей.
@@ -37,18 +38,18 @@ ASP.NET Core предоставляет API-интерфейсы и шаблон
 
 Страниц Razor и MVC проектов, созданных с использованием шаблонов проекта поддерживает следующие GDPR:
 
-* [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions?view=aspnetcore-2.0) и [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_CookiePolicyAppBuilderExtensions_UseCookiePolicy_Microsoft_AspNetCore_Builder_IApplicationBuilder_) задаются в `Startup`.
+* [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) и [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) задаются в `Startup`.
 * *_CookieConsentPartial.cshtml* [частичного представления](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper).
 * *Pages/Privacy.cshtml* или *Home/Privacy.cshtml* представление предоставляет страницы для подробного описания политики конфиденциальности вашего веб-узла. *_CookieConsentPartial.cshtml* файл создает ссылку на страницу о конфиденциальности.
 * Для приложений, созданных с помощью отдельных учетных записей пользователей, страница управления ссылки для загрузки и удалить [персональных данных пользователя](#pd).
 
 ### <a name="cookiepolicyoptions-and-usecookiepolicy"></a>CookiePolicyOptions и UseCookiePolicy
 
-[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions?view=aspnetcore-2.0) инициализируются в `Startup` класса `ConfigureServices` метод:
+[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) инициализируются в `Startup` класса `ConfigureServices` метод:
 
 [!code-csharp[Main](gdpr/sample/Startup.cs?name=snippet1&highlight=14-20)]
 
-[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_CookiePolicyAppBuilderExtensions_UseCookiePolicy_Microsoft_AspNetCore_Builder_IApplicationBuilder_) вызывается в `Startup` класса `Configure` метод:
+[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) вызывается в `Startup` класса `Configure` метод:
 
 [!code-csharp[Main](gdpr/sample/Startup.cs?name=snippet1&highlight=49)]
 
@@ -94,7 +95,7 @@ ASP.NET Core предоставляет API-интерфейсы и шаблон
 
 * Для создания `Account/Manage` кода см. в разделе [удостоверение формирования шаблонов](xref:security/authentication/scaffold-identity).
 * Удалите и загрузить только влияние учетных данных по умолчанию. Создать пользовательские данные приложения необходимо расширить до удаления загрузку пользовательские данные. Проблема GitHub [как добавлять или удалять пользовательские данные для удостоверения](https://github.com/aspnet/Docs/issues/6226) отслеживает предложенный статьи о создании пользовательских или удаление или загрузке пользовательские данные. Если хотелось бы в разделе, приоритету, оставьте Палец вверх реакции на проблему.
-* Сохранить токены для пользователя, которые хранятся в таблице базы данных удостоверений `AspNetUserTokens` удаляются при удалении пользователя через каскадных поведение удаления из-за [внешний ключ](https://github.com/aspnet/Identity/blob/b4fc72c944e0589a7e1f076794d7e5d8dcf163bf/src/EF/IdentityUserContext.cs#L152).
+* Сохранить токены для пользователя, которые хранятся в таблице базы данных удостоверений `AspNetUserTokens` удаляются при удалении пользователя через каскадных поведение удаления из-за [внешний ключ](https://github.com/aspnet/Identity/blob/release/2.1/src/EF/IdentityUserContext.cs#L152).
 
 ## <a name="encryption-at-rest"></a>Шифрование неактивных
 
@@ -107,17 +108,17 @@ ASP.NET Core предоставляет API-интерфейсы и шаблон
 
 Пример:
 
-* Microsoft SQL и Azure SQL предоставляет [прозрачное шифрование данных](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) (TDE).
-* [SQL Azure шифрует базы данных по умолчанию](https://azure.microsoft.com/en-us/updates/newly-created-azure-sql-databases-encrypted-by-default/)
-* [По умолчанию зашифрован Azure BLOB-объектов, файлы, таблицы и очереди хранилища](https://azure.microsoft.com/en-us/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
+* Microsoft SQL и Azure SQL предоставляет [прозрачное шифрование данных](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE).
+* [SQL Azure шифрует базы данных по умолчанию](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)
+* [По умолчанию зашифрован Azure BLOB-объектов, файлы, таблицы и очереди хранилища](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 
 Для баз данных, которые не предоставляют встроенные шифрование неактивных можно использовать шифрование диска для обеспечения такой же уровень защиты. Пример:
 
-* [BitLocker для windows server](https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
+* [BitLocker для Windows Server](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
 * Linux:
   * [eCryptfs](https://launchpad.net/ecryptfs)
   * [EncFS](https://github.com/vgough/encfs).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Microsoft.com/GDPR](https://www.microsoft.com/en-us/trustcenter/Privacy/GDPR)
+* [Microsoft.com/GDPR](https://www.microsoft.com/trustcenter/Privacy/GDPR)

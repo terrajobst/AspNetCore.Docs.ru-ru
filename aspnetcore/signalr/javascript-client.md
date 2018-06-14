@@ -6,16 +6,17 @@ manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
-ms.date: 05/09/2018
+ms.date: 05/29/2018
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/javascript-client
-ms.openlocfilehash: 1701d9ac5222bf64f9690c1cecdf54ef95fe4a49
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 6ff888d3337bb53d435744009f4cc24b327ebcda
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341942"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET SignalR JavaScript ядра клиента
 
@@ -78,7 +79,7 @@ JavaScript клиенты вызывать открытые методы кон�
 
 Приведенный выше код в `connection.on` выполняется, когда серверный код вызывает ее с помощью `SendAsync` метод.
 
-[!code-javascript[Call client-side](javascript-client/sample/hubs/chathub.cs?range=8-11)]
+[!code-csharp[Call client-side](javascript-client/sample/hubs/chathub.cs?range=8-11)]
 
 SignalR определяют, какой метод клиента для вызова путем сопоставления имени метода и определенные аргументы в `SendAsync` и `connection.on`.
 
@@ -104,5 +105,7 @@ SignalR определяют, какой метод клиента для выз
 
 ## <a name="related-resources"></a>Связанные ресурсы
 
-* [Концентраторы SignalR в ASP.NET Core](xref:signalr/hubs)
+* [Центры](xref:signalr/hubs)
+* [Клиент .NET](xref:signalr/dotnet-client)
+* [Публикация в Azure](xref:signalr/publish-to-azure-web-app)
 * [Включить запросы независимо от источника (CORS) в ASP.NET Core](xref:security/cors)

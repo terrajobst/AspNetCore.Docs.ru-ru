@@ -9,12 +9,12 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/secure-data
-ms.openlocfilehash: 1ffa44d1816284d563b80b2d9a02b7b816116ee1
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: 0b67d4aef198aa418b54fb92db76d331ffa2785a
+ms.sourcegitcommit: 0d6f151e69c159d776ed0142773279e645edbc0a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/10/2018
-ms.locfileid: "35252117"
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35415037"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Создание приложения ASP.NET Core пользовательскими данными, защищенных авторизации
 
@@ -111,7 +111,7 @@ dotnet ef database update
 
 Для перенаправления HTTP-запросы HTTPS, в разделе [по промежуточного слоя перезаписи URL-адрес](xref:fundamentals/url-rewriting). Если с помощью кода Visual Studio или тестирование на локальном платформу, которая не включает тестовый сертификат для использования протокола HTTPS.
 
-  Задать `"LocalTest:skipSSL": true` в *appsettings. Developement.JSON* файл.
+  Задать `"LocalTest:skipHTTPS": true` в *appsettings. Developement.JSON* файл.
 
 ### <a name="require-authenticated-users"></a>Требовать проверку подлинности пользователей
 
@@ -273,7 +273,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 Если с помощью кода Visual Studio или тестирование на локальном платформу, которая не включает тестовый сертификат для использования протокола HTTPS.
 
-* Задать `"LocalTest:skipSSL": true` в *appsettings. Developement.JSON* файл, чтобы пропустить обязательное использование протокола HTTPS. Пропустить HTTPS только на компьютере разработки.
+* Задать `"LocalTest:skipHTTPS": true` в *appsettings. Developement.JSON* файл, чтобы пропустить обязательное использование протокола HTTPS. Пропустить HTTPS только на компьютере разработки.
 
 Если приложение имеет контактов:
 
