@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: c61918d42b407b01484b67d740edc7a682c3a4b0
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 463c1c7b3aef624622e34943f1a7a518e658a037
+ms.sourcegitcommit: 4e3497bda0c3e5011ffba3717eb61a1d46c61c15
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 06/14/2018
+ms.locfileid: "35613038"
 ---
 # <a name="enable-qr-code-generation-for-authenticator-apps-in-aspnet-core"></a>Включить создание QR-код для приложения для проверки подлинности в ASP.NET Core
 
@@ -89,4 +90,4 @@ private string GenerateQrCodeUri(string email, string unformattedKey)
 
 ## <a name="totp-client-and-server-time-skew"></a>Отклонение по времени клиента и сервера TOTP
 
-Проверка подлинности TOTP зависит от сервера и проверки подлинности устройства, необходимости точного времени. Токены только последние 30 секунд. Если имена входа 2FA TOTP не удается, проверьте время сервера точными и предпочтительно синхронизированные точные службе NTP.
+Проверка подлинности TOTP (на основе времени одноразового пароля) зависит от сервера и проверки подлинности устройства, необходимости точного времени. Токены только последние 30 секунд. Если имена входа 2FA TOTP не удается, проверьте время сервера точными и предпочтительно синхронизированные точные службе NTP.

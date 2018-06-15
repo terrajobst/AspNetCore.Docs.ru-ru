@@ -10,12 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/cookie-sharing
-ms.openlocfilehash: f6d62d5f6e446e3e2001ed6bde72a6c409aa2833
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: c22db501a2689feb8c16649eba4866e1190361a4
+ms.sourcegitcommit: 4e3497bda0c3e5011ffba3717eb61a1d46c61c15
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34734683"
+ms.lasthandoff: 06/14/2018
+ms.locfileid: "35613022"
 ---
 # <a name="share-cookies-among-apps-with-aspnet-and-aspnet-core"></a>Совместно использовать файлы cookie для приложений с помощью ASP.NET и ASP.NET Core
 
@@ -141,19 +141,15 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
 Для создания файлов cookie проверки подлинности, которые совместимы с по промежуточного слоя ASP.NET Core файла cookie проверки подлинности можно настроить приложения ASP.NET 4.x, которые используют Katana промежуточного по проверки подлинности файла cookie. Это позволяет поэтапное обновление большого узла отдельными приложениями то же время предоставляя smooth службы Единого входа в пределах сайта.
 
-> [!TIP]
-> Если приложение использует Katana промежуточного по проверки подлинности файла cookie, он вызывает `UseCookieAuthentication` в проекте *Startup.Auth.cs* файла. Приложения веб-проектов ASP.NET 4.x создан в Visual Studio 2013 и более поздней версии, по умолчанию используют промежуточного по проверки подлинности файла cookie Katana.
+Если приложение использует Katana промежуточного по проверки подлинности файла cookie, он вызывает `UseCookieAuthentication` в проекте *Startup.Auth.cs* файла. Приложения веб-проектов ASP.NET 4.x создан в Visual Studio 2013 и более поздней версии, по умолчанию используют промежуточного по проверки подлинности файла cookie Katana. Несмотря на то что `UseCookieAuthentication` устарел и не поддерживается для приложений ASP.NET Core, вызвав `UseCookieAuthentication` в приложении ASP.NET 4.x, использующий Katana промежуточного по проверки подлинности файла cookie является допустимым.
 
-> [!NOTE]
-> Приложение ASP.NET 4.x должны предназначаться для платформы .NET Framework 4.5.1 или более поздней версии. В противном случае необходимые пакеты NuGet не удалось установить.
+Приложение ASP.NET 4.x должны предназначаться для платформы .NET Framework 4.5.1 или более поздней версии. В противном случае необходимые пакеты NuGet не удалось установить.
 
-Для совместного использования файлов cookie проверки подлинности между ASP.NET 4.x приложений и приложений ASP.NET Core, настроить приложение ASP.NET Core, как упоминалось выше, а затем настройте приложения ASP.NET 4.x, выполнив указанные ниже действия.
+Для совместного использования файлов cookie проверки подлинности между 4.x приложения ASP.NET и приложения ASP.NET Core, настроить приложения ASP.NET Core, как упоминалось выше, а затем настроить приложение ASP.NET 4.x, выполните следующие действия:
 
 1. Установите пакет [Microsoft.Owin.Security.Interop](https://www.nuget.org/packages/Microsoft.Owin.Security.Interop/) в каждое приложение ASP.NET 4.x.
 
 2. В *Startup.Auth.cs*, найдите вызов `UseCookieAuthentication` и внесите следующие изменения. Измените имя файла cookie, должно соответствовать имени, используемые по промежуточного слоя ASP.NET Core файла cookie проверки подлинности. Предоставляет экземпляр `DataProtectionProvider` инициализирован в общую папку хранилища ключей защиты данных. Убедитесь, что имя приложения присвоено общее имя приложения, используемые все приложения, которые совместно использовать файлы cookie, `SharedCookieApp` в пример приложения.
-
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 [!code-csharp[](cookie-sharing/sample/CookieAuthWithIdentity.NETFramework/CookieAuthWithIdentity.NETFramework/App_Start/Startup.Auth.cs?name=snippet1)]
 
@@ -164,32 +160,6 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 *Models/IdentityModels.cs*:
 
 [!code-csharp[](cookie-sharing/sample/CookieAuthWithIdentity.NETFramework/CookieAuthWithIdentity.NETFramework/Models/IdentityModels.cs?name=snippet1)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
-
-Задать `CookieManager` с взаимодействием `ChunkingCookieManager` , совместима неверный формат.
-
-```csharp
-app.UseCookieAuthentication(new CookieAuthenticationOptions
-{
-    AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-    CookieName = ".AspNetCore.Cookies",
-    // CookieName = ".AspNetCore.ApplicationCookie", (if using ASP.NET Identity)
-    // CookiePath = "...", (if necessary)
-    // ...
-    TicketDataFormat = new AspNetTicketDataFormat(
-        new DataProtectorShim(
-            DataProtectionProvider.Create(
-                new DirectoryInfo(@"PATH_TO_KEY_RING_FOLDER"))
-            .CreateProtector(
-                "Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationMiddleware",
-                "Cookies", 
-                "v2"))),
-    CookieManager = new ChunkingCookieManager()
-});
-```
-
----
 
 ## <a name="use-a-common-user-database"></a>Использование общей базы данных пользователя
 

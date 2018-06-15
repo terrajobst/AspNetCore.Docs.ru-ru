@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/enforcing-ssl
-ms.openlocfilehash: 69ce182855878e4d05bff95139fefb9e1312f3d5
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: 48a25b7ba7affe84cfa6fe16096409239c510221
+ms.sourcegitcommit: 40b102ecf88e53d9d872603ce6f3f7044bca95ce
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/10/2018
-ms.locfileid: "35252078"
+ms.lasthandoff: 06/15/2018
+ms.locfileid: "35652192"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Применять HTTPS в ASP.NET Core
 
@@ -48,8 +48,8 @@ ms.locfileid: "35252078"
 
 Предыдущий выделенный код:
 
-* Наборы [HttpsRedirectionOptions.RedirectStatusCode](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode).
-* Задает 5001 HTTPS-порт.
+* Наборы [HttpsRedirectionOptions.RedirectStatusCode](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode) для `Status307TemporaryRedirect`, который является значением по умолчанию. Приложения в рабочей среде следует вызывать [UseHsts](#hsts).
+* Задает 5001 HTTPS-порт. Значение по умолчанию — 443.
 
 Следующие механизмы автоматически задать порт:
 
@@ -77,6 +77,11 @@ ms.locfileid: "35252078"
 * Запросы на перенаправление не выполнено.
 * По промежуточного слоя заносит в журнал предупреждение.
 
+> [!NOTE]
+> Вместо использования по промежуточного слоя перенаправления HTTPS (`UseHttpsRedirection`) является использование по промежуточного слоя перезаписи URL-адрес (`AddRedirectToHttps`). `AddRedirectToHttps` Можно также задать код состояния и порта при выполнении перенаправления. Дополнительные сведения см. в разделе [по промежуточного слоя перезаписи URL-адрес](xref:fundamentals/url-rewriting).
+>
+> При перенаправлении HTTPS не требует дополнительных перенаправления правила, рекомендуется использовать HTTPS перенаправление по промежуточного слоя (`UseHttpsRedirection`) описанные в этом разделе.
+
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.1"
@@ -89,7 +94,7 @@ ms.locfileid: "35252078"
 
 [!code-csharp[](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=7-999)]
 
-Дополнительные сведения см. в разделе [по промежуточного слоя перезаписи URL-адрес](xref:fundamentals/url-rewriting).
+Дополнительные сведения см. в разделе [по промежуточного слоя перезаписи URL-адрес](xref:fundamentals/url-rewriting). По промежуточного слоя также позволяет приложению задать код состояния или код состояния и порт, когда выполняется перенаправление.
 
 Требования HTTPS глобально (`options.Filters.Add(new RequireHttpsAttribute());`) является рекомендации по безопасности. Применение `[RequireHttps]` атрибут ко всем страницам контроллеры и Razor не считается защищено настолько, насколько требования HTTPS глобально. Не может гарантировать `[RequireHttps]` атрибут при добавлении новых контроллеров и страниц Razor.
 

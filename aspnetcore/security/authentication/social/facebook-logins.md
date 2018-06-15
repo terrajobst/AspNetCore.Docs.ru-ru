@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: cabb5acc6e593c02c20b3403b39c601ce26a4d99
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: f9c28930c1f8a9c54792a2f689d890f16d795a55
+ms.sourcegitcommit: 4e3497bda0c3e5011ffba3717eb61a1d46c61c15
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34688987"
+ms.lasthandoff: 06/14/2018
+ms.locfileid: "35613113"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>Настройка внешнего входа Facebook в ASP.NET Core
 
@@ -47,6 +47,9 @@ ms.locfileid: "34688987"
 ![Страница параметров OAuth клиента](index/_static/FBOAuthSetup.png)
 
 * Введите URI разработки с */signin-facebook* добавляется в **допустимый URI перенаправления OAuth** поля (например: `https://localhost:44320/signin-facebook`). Проверка подлинности Facebook далее в этом учебнике автоматически будет обрабатывать запросы на */signin-facebook* маршрута для реализации потока OAuth.
+
+> [!NOTE]
+> URI */signin-facebook* задан в качестве обратного вызова по умолчанию поставщика проверки подлинности Facebook. URI обратного вызова по умолчанию можно изменить во время настройки по промежуточного слоя проверки подлинности Facebook через наследуемого [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) свойство [FacebookOptions](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions) класс.
 
 * Нажмите кнопку **сохранить изменения**.
 
