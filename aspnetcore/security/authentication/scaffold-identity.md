@@ -10,32 +10,32 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: e7a2cf3633ed48a0d2030739cdc092441fcae2ff
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: 80cd39af61e856d3ce92db1c26e70788bcdca83d
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/10/2018
-ms.locfileid: "35252039"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35725823"
 ---
-# <a name="scaffold-identity-in-aspnet-core-projects"></a><span data-ttu-id="8fa1b-103">Удостоверение формирования шаблонов в проектах ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="8fa1b-103">Scaffold Identity in ASP.NET Core projects</span></span>
+# <a name="scaffold-identity-in-aspnet-core-projects"></a><span data-ttu-id="06438-103">Удостоверение формирования шаблонов в проектах ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="06438-103">Scaffold Identity in ASP.NET Core projects</span></span>
 
-<span data-ttu-id="8fa1b-104">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="8fa1b-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="06438-104">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="06438-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="8fa1b-105">Предоставляет ASP.NET Core 2.1 и более поздние версии [ASP.NET Core Identity](xref:security/authentication/identity) как [библиотеки классов Razor](xref:mvc/razor-pages/ui-class).</span><span class="sxs-lookup"><span data-stu-id="8fa1b-105">ASP.NET Core 2.1 and later provides [ASP.NET Core Identity](xref:security/authentication/identity) as a [Razor Class Library](xref:mvc/razor-pages/ui-class).</span></span> <span data-ttu-id="8fa1b-106">Приложения, включающие удостоверение можно применить scaffolder выборочно Добавление исходного кода, содержащегося в библиотеке класса Razor идентификаторов (RCL).</span><span class="sxs-lookup"><span data-stu-id="8fa1b-106">Applications that include Identity can apply the scaffolder to selectively add the source code contained in the Identity Razor Class Library (RCL).</span></span> <span data-ttu-id="8fa1b-107">Можно создать исходный код, чтобы можно было изменить код и изменить поведение.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-107">You might want to generate source code so you can modify the code and change the behavior.</span></span> <span data-ttu-id="8fa1b-108">Например можно указать scaffolder для создания кода, используемое при регистрации.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-108">For example, you could instruct the scaffolder to generate the code used in registration.</span></span> <span data-ttu-id="8fa1b-109">Созданный код имеет приоритет над один и тот же код в RCL удостоверений.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-109">Generated code takes precedence over the same code in the Identity RCL.</span></span>
+<span data-ttu-id="06438-105">Предоставляет ASP.NET Core 2.1 и более поздние версии [ASP.NET Core Identity](xref:security/authentication/identity) как [библиотеки классов Razor](xref:mvc/razor-pages/ui-class).</span><span class="sxs-lookup"><span data-stu-id="06438-105">ASP.NET Core 2.1 and later provides [ASP.NET Core Identity](xref:security/authentication/identity) as a [Razor Class Library](xref:mvc/razor-pages/ui-class).</span></span> <span data-ttu-id="06438-106">Приложения, включающие удостоверение можно применить scaffolder выборочно Добавление исходного кода, содержащегося в библиотеке класса Razor идентификаторов (RCL).</span><span class="sxs-lookup"><span data-stu-id="06438-106">Applications that include Identity can apply the scaffolder to selectively add the source code contained in the Identity Razor Class Library (RCL).</span></span> <span data-ttu-id="06438-107">Можно создать исходный код, чтобы можно было изменить код и изменить поведение.</span><span class="sxs-lookup"><span data-stu-id="06438-107">You might want to generate source code so you can modify the code and change the behavior.</span></span> <span data-ttu-id="06438-108">Например можно указать scaffolder для создания кода, используемое при регистрации.</span><span class="sxs-lookup"><span data-stu-id="06438-108">For example, you could instruct the scaffolder to generate the code used in registration.</span></span> <span data-ttu-id="06438-109">Созданный код имеет приоритет над один и тот же код в RCL удостоверений.</span><span class="sxs-lookup"><span data-stu-id="06438-109">Generated code takes precedence over the same code in the Identity RCL.</span></span> <span data-ttu-id="06438-110">Чтобы получить полный контроль над пользовательского интерфейса и не использовать значение по умолчанию RCL, см. в разделе [создать полное удостоверение пользовательского интерфейса источника](#full).</span><span class="sxs-lookup"><span data-stu-id="06438-110">To gain full control of the UI and not use the default RCL, see the section [Create full identity UI source](#full).</span></span>
 
-<span data-ttu-id="8fa1b-110">Приложения, которые **не** включения проверки подлинности можно применить scaffolder Добавление RCL удостоверение пакета.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-110">Applications that do **not** include authentication can apply the scaffolder to add the RCL Identity package.</span></span> <span data-ttu-id="8fa1b-111">У вас есть возможность выбрать удостоверение код должен быть создан.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-111">You have the option of selecting Identity code to be generated.</span></span>
+<span data-ttu-id="06438-111">Приложения, которые **не** включения проверки подлинности можно применить scaffolder Добавление RCL удостоверение пакета.</span><span class="sxs-lookup"><span data-stu-id="06438-111">Applications that do **not** include authentication can apply the scaffolder to add the RCL Identity package.</span></span> <span data-ttu-id="06438-112">У вас есть возможность выбрать удостоверение код должен быть создан.</span><span class="sxs-lookup"><span data-stu-id="06438-112">You have the option of selecting Identity code to be generated.</span></span>
 
-<span data-ttu-id="8fa1b-112">Несмотря на то, что scaffolder создает большую часть необходимый код, необходимо обновить проект, чтобы завершить процесс.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-112">Although the scaffolder generates most of the necessary code, you'll have to update your project to complete the process.</span></span> <span data-ttu-id="8fa1b-113">В этом документе объясняется шаги, необходимые для завершения обновления удостоверения формирования шаблонов.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-113">This document explains the steps needed to complete an Identity scaffolding update.</span></span>
+<span data-ttu-id="06438-113">Несмотря на то, что scaffolder создает большую часть необходимый код, необходимо обновить проект, чтобы завершить процесс.</span><span class="sxs-lookup"><span data-stu-id="06438-113">Although the scaffolder generates most of the necessary code, you'll have to update your project to complete the process.</span></span> <span data-ttu-id="06438-114">В этом документе объясняется шаги, необходимые для завершения обновления удостоверения формирования шаблонов.</span><span class="sxs-lookup"><span data-stu-id="06438-114">This document explains the steps needed to complete an Identity scaffolding update.</span></span>
 
-<span data-ttu-id="8fa1b-114">При запуске удостоверения scaffolder *ScaffoldingReadme.txt* файл создается в каталоге проекта.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-114">When the Identity scaffolder is run, a *ScaffoldingReadme.txt* file is created in the project directory.</span></span> <span data-ttu-id="8fa1b-115">*ScaffoldingReadme.txt* файл содержит общие инструкции, на что требуется для завершения обновления удостоверения формирования шаблонов.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-115">The *ScaffoldingReadme.txt* file contains general instructions on what's needed to complete the Identity scaffolding update.</span></span> <span data-ttu-id="8fa1b-116">Этот документ содержит более подробные инструкции, чем *ScaffoldingReadme.txt* файла.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-116">This document contains more complete instructions than the *ScaffoldingReadme.txt* file.</span></span>
+<span data-ttu-id="06438-115">При запуске удостоверения scaffolder *ScaffoldingReadme.txt* файл создается в каталоге проекта.</span><span class="sxs-lookup"><span data-stu-id="06438-115">When the Identity scaffolder is run, a *ScaffoldingReadme.txt* file is created in the project directory.</span></span> <span data-ttu-id="06438-116">*ScaffoldingReadme.txt* файл содержит общие инструкции, на что требуется для завершения обновления удостоверения формирования шаблонов.</span><span class="sxs-lookup"><span data-stu-id="06438-116">The *ScaffoldingReadme.txt* file contains general instructions on what's needed to complete the Identity scaffolding update.</span></span> <span data-ttu-id="06438-117">Этот документ содержит более подробные инструкции, чем *ScaffoldingReadme.txt* файла.</span><span class="sxs-lookup"><span data-stu-id="06438-117">This document contains more complete instructions than the *ScaffoldingReadme.txt* file.</span></span>
 
-<span data-ttu-id="8fa1b-117">Мы рекомендуем использовать систему управления версиями, показаны различия в файл и дает возможность отката изменений.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-117">We recommend using a source control system that shows file differences and allows you to back out of changes.</span></span> <span data-ttu-id="8fa1b-118">Проверьте изменения после выполнения scaffolder удостоверений.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-118">Inspect the changes after running the Identity scaffolder.</span></span>
+<span data-ttu-id="06438-118">Мы рекомендуем использовать систему управления версиями, показаны различия в файл и дает возможность отката изменений.</span><span class="sxs-lookup"><span data-stu-id="06438-118">We recommend using a source control system that shows file differences and allows you to back out of changes.</span></span> <span data-ttu-id="06438-119">Проверьте изменения после выполнения scaffolder удостоверений.</span><span class="sxs-lookup"><span data-stu-id="06438-119">Inspect the changes after running the Identity scaffolder.</span></span>
 
-## <a name="scaffold-identity-into-an-empty-project"></a><span data-ttu-id="8fa1b-119">Удостоверение формирования шаблонов в пустой проект</span><span class="sxs-lookup"><span data-stu-id="8fa1b-119">Scaffold identity into an empty project</span></span>
+## <a name="scaffold-identity-into-an-empty-project"></a><span data-ttu-id="06438-120">Удостоверение формирования шаблонов в пустой проект</span><span class="sxs-lookup"><span data-stu-id="06438-120">Scaffold identity into an empty project</span></span>
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-<span data-ttu-id="8fa1b-120">Добавьте следующий выделенный вызовы `Startup` класса:</span><span class="sxs-lookup"><span data-stu-id="8fa1b-120">Add the following highlighted calls to the `Startup` class:</span></span>
+<span data-ttu-id="06438-121">Добавьте следующий выделенный вызовы `Startup` класса:</span><span class="sxs-lookup"><span data-stu-id="06438-121">Add the following highlighted calls to the `Startup` class:</span></span>
 
 [!code-csharp[Main](scaffold-identity/sample/StartupEmpty.cs?name=snippet1&highlight=5,20-23)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "35252039"
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-## <a name="scaffold-identity-into-a-razor-project-without-existing-authorization"></a><span data-ttu-id="8fa1b-121">Удостоверение формирования шаблонов в проект Razor без существующей авторизации</span><span class="sxs-lookup"><span data-stu-id="8fa1b-121">Scaffold identity into a Razor project without existing authorization</span></span>
+## <a name="scaffold-identity-into-a-razor-project-without-existing-authorization"></a><span data-ttu-id="06438-122">Удостоверение формирования шаблонов в проект Razor без существующей авторизации</span><span class="sxs-lookup"><span data-stu-id="06438-122">Scaffold identity into a Razor project without existing authorization</span></span>
 
 <!--
 set projNam=RPnoAuth
@@ -61,27 +61,27 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-<span data-ttu-id="8fa1b-122">Удостоверение настраивается в *Areas/Identity/IdentityHostingStartup.cs*.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-122">Identity is configured in *Areas/Identity/IdentityHostingStartup.cs*.</span></span> <span data-ttu-id="8fa1b-123">Дополнительные сведения см. в разделе [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).</span><span class="sxs-lookup"><span data-stu-id="8fa1b-123">for more information, see [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).</span></span>
+<span data-ttu-id="06438-123">Удостоверение настраивается в *Areas/Identity/IdentityHostingStartup.cs*.</span><span class="sxs-lookup"><span data-stu-id="06438-123">Identity is configured in *Areas/Identity/IdentityHostingStartup.cs*.</span></span> <span data-ttu-id="06438-124">Дополнительные сведения см. в разделе [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).</span><span class="sxs-lookup"><span data-stu-id="06438-124">for more information, see [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).</span></span>
 
 <a name="efm"></a>
 
-### <a name="migrations-useauthentication-and-layout"></a><span data-ttu-id="8fa1b-124">Миграция, UseAuthentication и макет</span><span class="sxs-lookup"><span data-stu-id="8fa1b-124">Migrations, UseAuthentication, and layout</span></span>
+### <a name="migrations-useauthentication-and-layout"></a><span data-ttu-id="06438-125">Миграция, UseAuthentication и макет</span><span class="sxs-lookup"><span data-stu-id="06438-125">Migrations, UseAuthentication, and layout</span></span>
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-<span data-ttu-id="8fa1b-125">В `Configure` метод `Startup` вызовите [UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) после `UseStaticFiles`:</span><span class="sxs-lookup"><span data-stu-id="8fa1b-125">In the `Configure` method of the `Startup` class, call [UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) after `UseStaticFiles`:</span></span>
+<span data-ttu-id="06438-126">В `Configure` метод `Startup` вызовите [UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) после `UseStaticFiles`:</span><span class="sxs-lookup"><span data-stu-id="06438-126">In the `Configure` method of the `Startup` class, call [UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) after `UseStaticFiles`:</span></span>
 
 [!code-csharp[Main](scaffold-identity/sample/StartupRPnoAuth.cs?name=snippet1&highlight=29)]
 
 [!INCLUDE[](~/includes/scaffold-identity/hsts.md)]
 
-### <a name="layout-changes"></a><span data-ttu-id="8fa1b-126">Изменение макета</span><span class="sxs-lookup"><span data-stu-id="8fa1b-126">Layout changes</span></span>
+### <a name="layout-changes"></a><span data-ttu-id="06438-127">Изменение макета</span><span class="sxs-lookup"><span data-stu-id="06438-127">Layout changes</span></span>
 
-<span data-ttu-id="8fa1b-127">Необязательно: Добавьте имя входа частичного (`_LoginPartial`) файл макета:</span><span class="sxs-lookup"><span data-stu-id="8fa1b-127">Optional: Add the login partial (`_LoginPartial`) to the layout file:</span></span>
+<span data-ttu-id="06438-128">Необязательно: Добавьте имя входа частичного (`_LoginPartial`) файл макета:</span><span class="sxs-lookup"><span data-stu-id="06438-128">Optional: Add the login partial (`_LoginPartial`) to the layout file:</span></span>
 
 [!code-html[Main](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
 
-## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a><span data-ttu-id="8fa1b-128">Удостоверение формирования шаблонов в проект Razor с авторизации</span><span class="sxs-lookup"><span data-stu-id="8fa1b-128">Scaffold identity into a Razor project with authorization</span></span>
+## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a><span data-ttu-id="06438-129">Удостоверение формирования шаблонов в проект Razor с авторизации</span><span class="sxs-lookup"><span data-stu-id="06438-129">Scaffold identity into a Razor project with authorization</span></span>
 
 <!--
 Use >=2.1: dotnet new webapp -au Individual -o RPauth
@@ -95,9 +95,9 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 -->
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
-<span data-ttu-id="8fa1b-129">Некоторые параметры идентификаторов настраиваются в *Areas/Identity/IdentityHostingStartup.cs*.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-129">Some Identity options are configured in *Areas/Identity/IdentityHostingStartup.cs*.</span></span> <span data-ttu-id="8fa1b-130">Дополнительные сведения см. в разделе [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).</span><span class="sxs-lookup"><span data-stu-id="8fa1b-130">For more information, see [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).</span></span>
+<span data-ttu-id="06438-130">Некоторые параметры идентификаторов настраиваются в *Areas/Identity/IdentityHostingStartup.cs*.</span><span class="sxs-lookup"><span data-stu-id="06438-130">Some Identity options are configured in *Areas/Identity/IdentityHostingStartup.cs*.</span></span> <span data-ttu-id="06438-131">Дополнительные сведения см. в разделе [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).</span><span class="sxs-lookup"><span data-stu-id="06438-131">For more information, see [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).</span></span>
 
-## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a><span data-ttu-id="8fa1b-131">Удостоверение формирования шаблонов в проект MVC без существующей авторизации</span><span class="sxs-lookup"><span data-stu-id="8fa1b-131">Scaffold identity into an MVC project without existing authorization</span></span>
+## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a><span data-ttu-id="06438-132">Удостоверение формирования шаблонов в проект MVC без существующей авторизации</span><span class="sxs-lookup"><span data-stu-id="06438-132">Scaffold identity into an MVC project without existing authorization</span></span>
 
 <!--
 set projNam=MvcNoAuth
@@ -115,23 +115,23 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-<span data-ttu-id="8fa1b-132">Необязательно: Добавьте имя входа частичного (`_LoginPartial`) для *Views/Shared/_Layout.cshtml* файла:</span><span class="sxs-lookup"><span data-stu-id="8fa1b-132">Optional: Add the login partial (`_LoginPartial`) to the *Views/Shared/_Layout.cshtml* file:</span></span>
+<span data-ttu-id="06438-133">Необязательно: Добавьте имя входа частичного (`_LoginPartial`) для *Views/Shared/_Layout.cshtml* файла:</span><span class="sxs-lookup"><span data-stu-id="06438-133">Optional: Add the login partial (`_LoginPartial`) to the *Views/Shared/_Layout.cshtml* file:</span></span>
 
 [!code-html[Main](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
 
-* <span data-ttu-id="8fa1b-133">Переместить *Pages/Shared/_LoginPartial.cshtml* файл *Views/Shared/_LoginPartial.cshtml*</span><span class="sxs-lookup"><span data-stu-id="8fa1b-133">Move the *Pages/Shared/_LoginPartial.cshtml* file to *Views/Shared/_LoginPartial.cshtml*</span></span>
+* <span data-ttu-id="06438-134">Переместить *Pages/Shared/_LoginPartial.cshtml* файл *Views/Shared/_LoginPartial.cshtml*</span><span class="sxs-lookup"><span data-stu-id="06438-134">Move the *Pages/Shared/_LoginPartial.cshtml* file to *Views/Shared/_LoginPartial.cshtml*</span></span>
 
-<span data-ttu-id="8fa1b-134">Удостоверение настраивается в *Areas/Identity/IdentityHostingStartup.cs*.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-134">Identity is configured in *Areas/Identity/IdentityHostingStartup.cs*.</span></span> <span data-ttu-id="8fa1b-135">Дополнительные сведения см. в разделе IHostingStartup.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-135">For more information, see IHostingStartup.</span></span>
+<span data-ttu-id="06438-135">Удостоверение настраивается в *Areas/Identity/IdentityHostingStartup.cs*.</span><span class="sxs-lookup"><span data-stu-id="06438-135">Identity is configured in *Areas/Identity/IdentityHostingStartup.cs*.</span></span> <span data-ttu-id="06438-136">Дополнительные сведения см. в разделе IHostingStartup.</span><span class="sxs-lookup"><span data-stu-id="06438-136">For more information, see IHostingStartup.</span></span>
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-<span data-ttu-id="8fa1b-136">Вызовите [UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) после `UseStaticFiles`:</span><span class="sxs-lookup"><span data-stu-id="8fa1b-136">Call [UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) after `UseStaticFiles`:</span></span>
+<span data-ttu-id="06438-137">Вызовите [UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) после `UseStaticFiles`:</span><span class="sxs-lookup"><span data-stu-id="06438-137">Call [UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) after `UseStaticFiles`:</span></span>
 
 [!code-csharp[Main](scaffold-identity/sample/StartupMvcNoAuth.cs?name=snippet1&highlight=23)]
 
 [!INCLUDE[](~/includes/scaffold-identity/hsts.md)]
 
-## <a name="scaffold-identity-into-an-mvc-project-with-authorization"></a><span data-ttu-id="8fa1b-137">Удостоверение формирования шаблонов в проект MVC с авторизации</span><span class="sxs-lookup"><span data-stu-id="8fa1b-137">Scaffold identity into an MVC project with authorization</span></span>
+## <a name="scaffold-identity-into-an-mvc-project-with-authorization"></a><span data-ttu-id="06438-138">Удостоверение формирования шаблонов в проект MVC с авторизации</span><span class="sxs-lookup"><span data-stu-id="06438-138">Scaffold identity into an MVC project with authorization</span></span>
 
 <!--
 dotnet new mvc -au Individual -o MvcAuth
@@ -143,4 +143,25 @@ dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext --fil
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
-<span data-ttu-id="8fa1b-138">Удалить *страниц/Общие* папки и файлы в этой папке.</span><span class="sxs-lookup"><span data-stu-id="8fa1b-138">Delete the *Pages/Shared* folder and the files in that folder.</span></span>
+<span data-ttu-id="06438-139">Удалить *страниц/Общие* папки и файлы в этой папке.</span><span class="sxs-lookup"><span data-stu-id="06438-139">Delete the *Pages/Shared* folder and the files in that folder.</span></span>
+
+<a name="full"></a>
+
+## <a name="create-full-identity-ui-source"></a><span data-ttu-id="06438-140">Создать источник полное удостоверение пользовательского интерфейса</span><span class="sxs-lookup"><span data-stu-id="06438-140">Create full identity UI source</span></span>
+
+<span data-ttu-id="06438-141">Чтобы сохранить полный контроль удостоверения пользовательского интерфейса, запустите scaffolder удостоверений и выберите **переопределить все файлы**.</span><span class="sxs-lookup"><span data-stu-id="06438-141">To maintain full control of the Identity UI, run the Identity scaffolder and select **Override all files**.</span></span>
+
+<span data-ttu-id="06438-142">Следующий выделенный код показывает изменения, замените имя по умолчанию удостоверения пользовательского удостоверения в веб-приложение ASP.NET Core 2.1.</span><span class="sxs-lookup"><span data-stu-id="06438-142">The following highlighted code shows the changes to replace the default Identity UI with Identity in an ASP.NET Core 2.1 web app.</span></span> <span data-ttu-id="06438-143">Может потребоваться этого имеют полный контроль над удостоверения пользовательского интерфейса.</span><span class="sxs-lookup"><span data-stu-id="06438-143">You might want to do this to have full control of the Identity UI.</span></span>
+
+[!code-csharp[Main](scaffold-identity/sample/StartupFull.cs?name=snippet1&highlight=13-14,17-999)]
+
+<span data-ttu-id="06438-144">Значение по умолчанию удостоверение будет заменен в следующий код: [!code-csharp[Main](scaffold-identity/sample/StartupFull.cs?name=snippet2)]</span><span class="sxs-lookup"><span data-stu-id="06438-144">The default Identity is replaced in the following code: [!code-csharp[Main](scaffold-identity/sample/StartupFull.cs?name=snippet2)]</span></span>
+
+<span data-ttu-id="06438-145">Следующий код служит для настройки ASP.NET Core для авторизации страницы удостоверений, которые требуют наличия авторизации: [!code-csharp[Main](scaffold-identity/sample/StartupFull.cs?name=snippet3)]</span><span class="sxs-lookup"><span data-stu-id="06438-145">The following code configures ASP.NET Core to authorize the Identity pages that require authorization: [!code-csharp[Main](scaffold-identity/sample/StartupFull.cs?name=snippet3)]</span></span>
+
+<span data-ttu-id="06438-146">Следующий код задает cookie удостоверений для использования правильный путь страницы удостоверения.</span><span class="sxs-lookup"><span data-stu-id="06438-146">The following the code sets the Identity cookie to use the correct Identity pages path.</span></span>
+[!code-csharp[Main](scaffold-identity/sample/StartupFull.cs?name=snippet3)]
+
+<span data-ttu-id="06438-147">Зарегистрировать `IEmailSender` реализации, например:</span><span class="sxs-lookup"><span data-stu-id="06438-147">Register an `IEmailSender` implementation, for example:</span></span>
+
+[!code-csharp[Main](scaffold-identity/sample/StartupFull.cs?name=snippet4)]
