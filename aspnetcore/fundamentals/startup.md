@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/startup
-ms.openlocfilehash: a61f78b2d0e5c6c171a26690fcce256462a82508
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 58ced0ae11f462bc309526b7db7bda7897c33009
+ms.sourcegitcommit: 40b102ecf88e53d9d872603ce6f3f7044bca95ce
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "34233174"
 ---
 # <a name="application-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
@@ -46,7 +47,7 @@ ms.lasthandoff: 05/07/2018
 
 Альтернативой внедрению `IHostingEnvironment` является использование подхода на основе соглашений. Приложение может определять отдельные классы `Startup` для различных сред (например, `StartupDevelopment`), при этом подходящий класс запуска выбирается во время выполнения. Класс, у которого суффикс имени соответствует текущей среде, получает приоритет. Если приложение выполняется в среде разработки и включает в себя оба класса — `Startup` и `StartupDevelopment`, используется класс `StartupDevelopment`. Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments#startup-conventions).
 
-Дополнительные сведения о `WebHostBuilder` см. в разделе [Размещение](xref:fundamentals/hosting). Сведения об обработке ошибок во время запуска см. в разделе [Обработка исключений при запуске](xref:fundamentals/error-handling#startup-exception-handling).
+Дополнительные сведения о `WebHostBuilder` см. в разделе [Размещение](xref:fundamentals/host/index). Сведения об обработке ошибок во время запуска см. в разделе [Обработка исключений при запуске](xref:fundamentals/error-handling#startup-exception-handling).
 
 ## <a name="the-configureservices-method"></a>Метод ConfigureServices
 
@@ -58,7 +59,7 @@ ms.lasthandoff: 05/07/2018
 
 Добавление служб в контейнер службы делает их доступными в приложении и методе `Configure`. Службы разрешаются посредством [внедрения зависимостей](xref:fundamentals/dependency-injection) или из [IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices).
 
-Веб-узел может настраивать некоторые службы перед вызовом методов `Startup`. Дополнительные сведения см. в разделе [Размещение](xref:fundamentals/hosting).
+Веб-узел может настраивать некоторые службы перед вызовом методов `Startup`. Дополнительные сведения см. в разделе о [размещении в ASP.NET Core](xref:fundamentals/host/index).
 
 Для функций, нуждающихся в значительной настройке, существуют методы расширения `Add[Service]` в [IServiceCollection](/dotnet/api/Microsoft.Extensions.DependencyInjection.IServiceCollection). Обычное веб-приложение регистрирует службы для Entity Framework, удостоверения и MVC:
 
@@ -164,7 +165,7 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Размещение](xref:fundamentals/hosting)
+* [Размещение](xref:fundamentals/host/index)
 * [Использование нескольких сред](xref:fundamentals/environments)
 * [ПО промежуточного слоя](xref:fundamentals/middleware/index)
 * [Ведение журнала](xref:fundamentals/logging/index)
