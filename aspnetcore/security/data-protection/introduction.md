@@ -9,17 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/introduction
-ms.openlocfilehash: 5526b517ba9f1ac4b041576156b2964217460726
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 56876f43ed48b577f4d870825fd9230f526baec3
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35725956"
 ---
 # <a name="aspnet-core-data-protection"></a>Защита данных ASP.NET Core
 
 Веб-приложений часто требуется хранить конфиденциальные данные. Windows предоставляет DPAPI для настольных приложений, но это не подходит для веб-приложений. Стек защиты данных ASP.NET Core предоставляют простой и удобный API-интерфейса криптографии разработчик может использовать для защиты данных, включая управление ключами и поворота.
 
-Стек защиты данных ASP.NET Core предназначен для использования в качестве долгосрочной заменой <machineKey> элемент в ASP.NET 1.x - 4.x. Она может решать многие из недостатки использования старого шифрования стека в то же время предоставляя out встроенное решение для большинства вариантов использования, которые чаще всего возникают современных приложений.
+Стек защиты данных ASP.NET Core предназначен для использования в качестве долгосрочной заменой &lt;machineKey&gt; элемент в ASP.NET 1.x - 4.x. Она может решать многие из недостатки использования старого шифрования стека в то же время предоставляя out встроенное решение для большинства вариантов использования, которые чаще всего возникают современных приложений.
 
 ## <a name="problem-statement"></a>Постановка задачи
 
@@ -75,6 +76,6 @@ ms.lasthandoff: 03/22/2018
 
 * Microsoft.AspNetCore.DataProtection.Extensions содержит дополнительные интерфейсы API, разработчики могут оказаться полезными, но которая не входящие в базовый пакет. Например этот пакет содержит простой API «создать экземпляр системы, который указывает на каталог конкретного хранилища ключей без настройки внедрения зависимостей» (Дополнительные сведения). Он также содержит методы расширения для ограничения времени существования полезных данных защищенного (Дополнительные сведения).
 
-* Microsoft.AspNetCore.DataProtection.SystemWeb могут быть установлены в существующее приложение ASP.NET 4.x перенаправлять его <machineKey> операций вместо этого использовать новый стек защиты данных. В разделе [совместимости](xref:security/data-protection/compatibility/replacing-machinekey#compatibility-replacing-machinekey) для получения дополнительной информации.
+* Microsoft.AspNetCore.DataProtection.SystemWeb могут быть установлены в существующее приложение ASP.NET 4.x перенаправлять его &lt;machineKey&gt; операций вместо этого использовать новый стек защиты данных. В разделе [совместимости](xref:security/data-protection/compatibility/replacing-machinekey#compatibility-replacing-machinekey) для получения дополнительной информации.
 
 * Microsoft.AspNetCore.Cryptography.KeyDerivation предоставляет реализацию пароль PBKDF2 хэширования подпрограммы и может использоваться с компьютеров, на которых необходимо безопасно обрабатывать пароли пользователей. В разделе [хэширования паролей](xref:security/data-protection/consumer-apis/password-hashing) для получения дополнительной информации.

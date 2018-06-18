@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 3f59f7d1bf0280cef8f7757e8cd57d4872769b3d
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 440695f98714f33cff9e4bf97bfc09477901e14c
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34689000"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35725995"
 ---
 # <a name="twitter-external-login-setup-with-aspnet-core"></a>Программа установки внешнее имя входа Twitter с ASP.NET Core
 
@@ -32,7 +32,10 @@ ms.locfileid: "34689000"
 
 ![Создание страницы приложения](index/_static/TwitterCreate.png)
 
-* Введите URI разработки с */signin-twitter* добавляется в **допустимый URI перенаправления OAuth** поля (например: `https://localhost:44320/signin-twitter`). Схема проверки подлинности Twitter настроен далее в этом учебнике автоматически будет обрабатывать запросы на */signin-twitter* маршрута для реализации потока OAuth.
+* Введите URI разработки с `/signin-twitter` добавляется в **допустимый URI перенаправления OAuth** поля (например: `https://localhost:44320/signin-twitter`). Схема проверки подлинности Twitter настроен далее в этом учебнике автоматически будет обрабатывать запросы на `/signin-twitter` маршрута для реализации потока OAuth.
+
+> [!NOTE]
+> Сегмент URI `/signin-twitter` задан в качестве обратного вызова по умолчанию поставщика проверки подлинности Twitter. URI обратного вызова по умолчанию можно изменить во время настройки по промежуточного слоя проверки подлинности Twitter через наследуемого [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) свойство [TwitterOptions](/dotnet/api/microsoft.aspnetcore.authentication.twitter.twitteroptions) класс.
 
 * Заполните другие формы и коснитесь **создания приложения Twitter**. Отображаются сведения о новом приложение.
 

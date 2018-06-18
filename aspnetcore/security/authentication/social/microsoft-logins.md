@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: a9bf7b49b1cfdfff65c639eed1e14c94c5432350
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 46973f8a82034bd99a6e6634bbd6da06b1b14f25
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34689026"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35726034"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Программа установки внешнее имя входа учетной записи Майкрософт с ASP.NET Core
 
@@ -46,9 +46,12 @@ ms.locfileid: "34689026"
 
 ![Добавить диалоговое окно платформы](index/_static/MicrosoftDevAppPlatform.png)
 
-* В новом **Web** платформы введите URL-адрес разработки с */signin-microsoft* добавляется в **URL-адреса перенаправления** поля (например: `https://localhost:44320/signin-microsoft`). Схема проверки подлинности Microsoft настроен далее в этом учебнике автоматически будет обрабатывать запросы на */signin-microsoft* маршрута для реализации потока OAuth:
+* В новом **Web** платформы введите URL-адрес разработки с `/signin-microsoft` добавляется в **URL-адреса перенаправления** поля (например: `https://localhost:44320/signin-microsoft`). Схема проверки подлинности Microsoft настроен далее в этом учебнике автоматически будет обрабатывать запросы на `/signin-microsoft` маршрута для реализации потока OAuth:
 
 ![Веб-платформы раздела](index/_static/MicrosoftRedirectUri.png)
+
+> [!NOTE]
+> Сегмент URI `/signin-microsoft` задан в качестве обратного вызова по умолчанию поставщика проверки подлинности Майкрософт. URI обратного вызова по умолчанию можно изменить во время настройки по промежуточного слоя проверки подлинности Майкрософт через наследуемого [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) свойство [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions) класса.
 
 * Коснитесь **Добавление URL-адреса** чтобы URL-адрес был добавлен.
 

@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/google-logins
-ms.openlocfilehash: ccb771dbefefb007aede1bdf05ab50ec363a3089
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 878c0b16e24f48a0ee84f93393af67af1728e284
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34689039"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35725969"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>Программа установки внешней учетной записи Google в ASP.NET Core
 
@@ -61,7 +61,10 @@ ms.locfileid: "34689039"
 
 * Поскольку мы создаем с какой-либо функции (вход), мы можете ввести тот же проект Google + **имя** для идентификатор клиента OAuth 2.0, что мы использовали для проекта.
 
-* Введите URI разработки с */signin-google* добавляется в **авторизованные URI перенаправления** поля (например: `https://localhost:44320/signin-google`). Проверка подлинности Google далее в этом учебнике автоматически будет обрабатывать запросы на */signin-google* маршрута для реализации потока OAuth.
+* Введите URI разработки с `/signin-google` добавляется в **авторизованные URI перенаправления** поля (например: `https://localhost:44320/signin-google`). Проверка подлинности Google далее в этом учебнике автоматически будет обрабатывать запросы на `/signin-google` маршрута для реализации потока OAuth.
+
+> [!NOTE]
+> Сегмент URI `/signin-google` задан в качестве обратного вызова по умолчанию поставщика проверки подлинности Google. URI обратного вызова по умолчанию можно изменить во время настройки по промежуточного слоя проверки подлинности Google через наследуемого [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) свойство [GoogleOptions](/dotnet/api/microsoft.aspnetcore.authentication.google.googleoptions) класса.
 
 * Нажмите клавишу TAB, чтобы добавить **авторизованные URI перенаправления** входа.
 
