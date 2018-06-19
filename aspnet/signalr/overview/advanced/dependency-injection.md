@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/advanced/dependency-injection
-title: "Внедрение зависимостей в SignalR | Документы Microsoft"
+title: Внедрение зависимостей в SignalR | Документы Microsoft
 author: MikeWasson
-description: "Версии программного обеспечения используется в этом разделе Visual Studio 2013 .NET 4.5 SignalR предыдущие версии версии 2 в этом разделе сведения о предыдущих версиях..."
+description: Версии программного обеспечения используется в этом разделе Visual Studio 2013 .NET 4.5 SignalR предыдущие версии версии 2 в этом разделе сведения о предыдущих версиях...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26504183"
 ---
 <a name="dependency-injection-in-signalr"></a>Внедрение зависимостей в SignalR
 ====================

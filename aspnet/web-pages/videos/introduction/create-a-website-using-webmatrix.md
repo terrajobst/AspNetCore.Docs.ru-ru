@@ -1,8 +1,8 @@
 ---
 uid: web-pages/videos/introduction/create-a-website-using-webmatrix
-title: "Создать веб-сайт с помощью WebMatrix | Документы Microsoft"
+title: Создать веб-сайт с помощью WebMatrix | Документы Microsoft
 author: rick-anderson
-description: "Часть 2 учебные материалы по созданию вашей первой веб-страницы с помощью WebMatrix."
+description: Часть 2 учебные материалы по созданию вашей первой веб-страницы с помощью WebMatrix.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529853"
 ---
 <a name="create-a-website-using-webmatrix"></a>Создать веб-сайт с помощью WebMatrix
 ====================

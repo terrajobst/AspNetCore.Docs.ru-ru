@@ -15,6 +15,7 @@ ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/18/2018
+ms.locfileid: "34306625"
 ---
 # <a name="microsoftaspnetcoreapp-metapackage-for-aspnet-core-21"></a>Метапакет Microsoft.AspNetCore.App для ASP.NET Core 2.1
 

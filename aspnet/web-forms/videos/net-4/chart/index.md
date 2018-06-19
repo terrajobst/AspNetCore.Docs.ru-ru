@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/net-4/chart/index
-title: "Диаграмма | Документы Microsoft"
+title: Диаграмма | Документы Microsoft
 author: rick-anderson
-description: "Этот набор видео показано, как создавать визуально привлекательные отображение данных с помощью элемента управления диаграммы для ASP.NET."
+description: Этот набор видео показано, как создавать визуально привлекательные отображение данных с помощью элемента управления диаграммы для ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/net-4/chart
 msc.type: chapter
 ms.openlocfilehash: 4bb94f23b0428cc3431b84e556e55fc789587d4a
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521893"
 ---
 <a name="chart"></a>Диаграмма
 ====================

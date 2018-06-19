@@ -1,14 +1,14 @@
 ---
 uid: single-page-application/overview/introduction/knockoutjs-template
-title: "Одностраничного приложения: Шаблон использованием KnockoutJS | Документы Microsoft"
+title: 'Одностраничного приложения: Шаблон использованием KnockoutJS | Документы Microsoft'
 author: MikeWasson
-description: "Шаблон маскирования"
+description: Шаблон маскирования
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/30/2013
 ms.topic: article
 ms.assetid: f9c07af0-4b20-4b08-af8f-47fc3df169a2
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/introduction/knockoutjs-template
 msc.type: authoredcontent
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "28036899"
 ---
 <a name="single-page-application-knockoutjs-template"></a>Одностраничного приложения: Использованием KnockoutJS шаблон
 ====================
@@ -46,7 +47,7 @@ AJAX нет ничего нового, но на сегодняшний день
 
 Запустите Visual Studio и выберите **новый проект** с начальной страницы. Или из **файл** последовательно выберите пункты **New** и затем **проекта**.
 
-В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#**выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Имя проекта и нажмите кнопку **ОК**.
+В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#** выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Имя проекта и нажмите кнопку **ОК**.
 
 ![](knockoutjs-template/_static/image2.png)
 

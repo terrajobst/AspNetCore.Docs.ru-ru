@@ -1,8 +1,8 @@
 ---
 uid: mvc/pluralsight
-title: "Видео от Pluralsight MVC | Документы Microsoft"
+title: Видео от Pluralsight MVC | Документы Microsoft
 author: rick-anderson
-description: "Видео от Pluralsight это бесплатные учебные видеоматериалы MVC вы получите запущен и работает с ASP.NET MVC. Она охватывает все, от настройки разработка..."
+description: Видео от Pluralsight это бесплатные учебные видеоматериалы MVC вы получите запущен и работает с ASP.NET MVC. Она охватывает все, от настройки разработка...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/09/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503893"
 ---
 <a name="mvc-video-training-from-pluralsight"></a>Видео от Pluralsight MVC
 ====================

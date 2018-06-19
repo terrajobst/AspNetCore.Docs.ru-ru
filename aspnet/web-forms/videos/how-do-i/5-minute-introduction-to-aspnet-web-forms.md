@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/5-minute-introduction-to-aspnet-web-forms
-title: "Введение в веб-форм ASP.NET | Документы Microsoft"
+title: Введение в веб-форм ASP.NET | Документы Microsoft
 author: shanselman
-description: "Скотт Хансельман представляет собой 5-минутного введение веб-форм ASP.NET."
+description: Скотт Хансельман представляет собой 5-минутного введение веб-форм ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525323"
 ---
 <a name="intro-to-aspnet-web-forms"></a>Введение в веб-форм ASP.NET
 ====================

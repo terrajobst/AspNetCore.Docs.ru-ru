@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/index
-title: "Пользовательский формат | Документы Microsoft"
+title: Пользовательский формат | Документы Microsoft
 author: rick-anderson
-description: "Эти учебники рассмотрим, как для настройки отображения данных во время привязки данных с помощью обработчиков событий в элементах управления GridView, DetailsView и FormView."
+description: Эти учебники рассмотрим, как для настройки отображения данных во время привязки данных с помощью обработчиков событий в элементах управления GridView, DetailsView и FormView.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/custom-formatting
 msc.type: chapter
 ms.openlocfilehash: afced0e5c310d8843107dde48d97e55e5242dd13
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26513023"
 ---
 <a name="custom-formatting"></a>Настраиваемое форматирование
 ====================

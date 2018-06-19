@@ -1,8 +1,8 @@
 ---
 uid: web-pages/videos/introduction/change-the-visual-style-of-a-web-page
-title: "Изменение стиля веб-страницы | Документы Microsoft"
+title: Изменение стиля веб-страницы | Документы Microsoft
 author: rick-anderson
-description: "Часть 3 возвращает вам начать работу с CSS и стиль таблицы, чтобы можно было более привлекательных страницы."
+description: Часть 3 возвращает вам начать работу с CSS и стиль таблицы, чтобы можно было более привлекательных страницы.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529983"
 ---
 <a name="change-the-visual-style-of-a-web-page"></a>Изменение стиля веб-страницы
 ====================

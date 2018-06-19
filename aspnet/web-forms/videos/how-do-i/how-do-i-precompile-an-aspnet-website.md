@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-precompile-an-aspnet-website
-title: "[Инструкции:] Предварительной компиляции веб-сайта ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Предварительной компиляции веб-сайта ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "Крис пиксел показано, как для предварительной компиляции веб-узла ASP.NET, что повышает производительность первого запуска и повысить уровень безопасности приложения."
+description: Крис пиксел показано, как для предварительной компиляции веб-узла ASP.NET, что повышает производительность первого запуска и повысить уровень безопасности приложения.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/18/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521703"
 ---
 <a name="how-do-i-precompile-an-aspnet-website"></a>[Инструкции:] Предварительная компиляция веб-узла ASP.NET
 ====================

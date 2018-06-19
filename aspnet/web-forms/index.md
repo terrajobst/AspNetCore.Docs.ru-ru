@@ -1,8 +1,8 @@
 ---
 uid: web-forms/index
-title: "Веб-форм ASP.NET | Документы Microsoft"
+title: Веб-форм ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "Загрузите Visual Web Developer Express и узнайте, как быстро создавать веб-приложения с помощью простой для понимания элементов управления на веб-форм ASP.NET в визуальной разработки environ..."
+description: Загрузите Visual Web Developer Express и узнайте, как быстро создавать веб-приложения с помощью простой для понимания элементов управления на веб-форм ASP.NET в визуальной разработки environ...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/08/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms
 msc.type: categoryindex
 ms.openlocfilehash: f56ac2552017ad2b41debdea58d93c19c56268b9
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26509743"
 ---
 <a name="aspnet-web-forms"></a>Веб-формы ASP.NET
 ====================

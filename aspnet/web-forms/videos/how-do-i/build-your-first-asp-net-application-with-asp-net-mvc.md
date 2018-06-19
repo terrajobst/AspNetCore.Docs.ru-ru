@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/build-your-first-asp-net-application-with-asp-net-mvc
-title: "Создания первого приложения ASP.NET с ASP.NET MVC | Документы Microsoft"
+title: Создания первого приложения ASP.NET с ASP.NET MVC | Документы Microsoft
 author: lmoroney
-description: "Корпорации Майкрософт Лоуренс Морони показано, как для создания первого приложения ASP.NET с ASP.NET MVC."
+description: Корпорации Майкрософт Лоуренс Морони показано, как для создания первого приложения ASP.NET с ASP.NET MVC.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/09/2010
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525173"
 ---
 <a name="build-your-first-aspnet-application-with-aspnet-mvc"></a>Создания первого приложения ASP.NET с ASP.NET MVC
 ====================

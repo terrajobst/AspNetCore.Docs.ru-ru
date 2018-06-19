@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-add-client-script-event-handlers-controls-on-an-aspnet-page
-title: "[Инструкции]: Добавление клиента сценарии элементов обработчики событий на странице ASP.NET? | Документы Майкрософт"
+title: '[Инструкции]: Добавление клиента сценарии элементов обработчики событий на странице ASP.NET? | Документы Майкрософт'
 author: rick-anderson
-description: "В этой видео пиксел Крис показано добавление событий клиентского скрипта для элементов управления на странице ASP.NET. Во-первых страницы и e добавляются несколько элементов управления ASP.NET..."
+description: В этой видео пиксел Крис показано добавление событий клиентского скрипта для элементов управления на странице ASP.NET. Во-первых страницы и e добавляются несколько элементов управления ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/23/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525163"
 ---
 <a name="how-do-i-add-client-script-event-handlers-controls-on-an-aspnet-page"></a>[Инструкции]: Добавление клиента сценарии элементов обработчики событий на странице ASP.NET?
 ====================

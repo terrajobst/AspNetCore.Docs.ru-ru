@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/numericupdown/index
-title: "NumericUpDown | Документы Microsoft"
+title: NumericUpDown | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник показывает, как использовать элемент управления NumericUpDown, который позволяет пользователям выбирать значение, используя стрелки вверх и вниз."
+description: Этот учебник показывает, как использовать элемент управления NumericUpDown, который позволяет пользователям выбирать значение, используя стрелки вверх и вниз.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/numericupdown
 msc.type: chapter
 ms.openlocfilehash: dfda777549571f6608a4cc2cf146327b4e3de69c
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510473"
 ---
 <a name="numericupdown"></a>NumericUpDown
 ====================

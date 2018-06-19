@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-the-aspnet-cache-object-to-cache-application-information
-title: "[Инструкции]: использовать объект кэша ASP.NET, чтобы кэшировать сведения о приложении | Документы Microsoft"
+title: '[Инструкции]: использовать объект кэша ASP.NET, чтобы кэшировать сведения о приложении | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис показано, как использовать объект кэша ASP.NET для хранения сведений о приложении. Пример страницы создается с простой пользовательский интерфейс..."
+description: В этой видео пиксел Крис показано, как использовать объект кэша ASP.NET для хранения сведений о приложении. Пример страницы создается с простой пользовательский интерфейс...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/26/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525983"
 ---
 <a name="how-do-i-use-the-aspnet-cache-object-to-cache-application-information"></a>[Инструкции]: использовать объект кэша ASP.NET, чтобы кэшировать сведения о приложении
 ====================

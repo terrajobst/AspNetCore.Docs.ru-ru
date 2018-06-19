@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-send-email-asynchronously-with-aspnet
-title: "[Инструкции:] Отправить по электронной почте асинхронно с помощью ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Отправить по электронной почте асинхронно с помощью ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис показано, как использовать классы System.Net.Mail в ASP.NET для отправки сообщения электронной почты асинхронной. Во-первых в разделе Настройка веб-сайт..."
+description: В этом видеоролике пиксел Крис показано, как использовать классы System.Net.Mail в ASP.NET для отправки сообщения электронной почты асинхронной. Во-первых в разделе Настройка веб-сайт...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/24/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525873"
 ---
 <a name="how-do-i-send-email-asynchronously-with-aspnet"></a>[Инструкции:] Отправить по электронной почте асинхронно с помощью ASP.NET
 ====================

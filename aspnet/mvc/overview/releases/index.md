@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/releases/index
-title: "Выпуски | Документы Microsoft"
+title: Выпуски | Документы Microsoft
 author: rick-anderson
-description: "Новые возможности в последних выпусках MVC."
+description: Новые возможности в последних выпусках MVC.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/09/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/releases
 msc.type: chapter
 ms.openlocfilehash: 095b8f601fb994e6efc877981bfe92583bd3ee1d
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503333"
 ---
 <a name="releases"></a>Выпуски
 ====================

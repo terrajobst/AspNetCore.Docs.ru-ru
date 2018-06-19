@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/page-layout
-title: "Макет страницы | Документы Microsoft"
+title: Макет страницы | Документы Microsoft
 author: JoeStagner
-description: "Таблицы или таблиц стилей? Относительное расположение или абсолютное? В этом видео будет продемонстрировать возможности Visual Web developer, который поддерживает разработку с ё..."
+description: Таблицы или таблиц стилей? Относительное расположение или абсолютное? В этом видео будет продемонстрировать возможности Visual Web developer, который поддерживает разработку с ё...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525403"
 ---
 <a name="page-layout"></a>Разметка страницы
 ====================

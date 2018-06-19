@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-multi-lingual-site-with-localization
-title: "[Инструкции:] Создать многоязычный узел с локализацией? | Документы Майкрософт"
+title: '[Инструкции:] Создать многоязычный узел с локализацией? | Документы Майкрософт'
 author: microsoft
-description: "Описание способов создания языка и языкового стандарта веб-содержимого с без дополнительного кода. Используйте редактор ресурсов для создания страниц и уровня приложения..."
+description: Описание способов создания языка и языкового стандарта веб-содержимого с без дополнительного кода. Используйте редактор ресурсов для создания страниц и уровня приложения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/06/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525113"
 ---
 <a name="how-do-i-create-a-multi-lingual-site-with-localization"></a>[Инструкции:] Создать многоязычный узел с локализацией?
 ====================

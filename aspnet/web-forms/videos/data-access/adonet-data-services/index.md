@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/data-access/adonet-data-services/index
-title: "Службы ADO.NET Data Services | Документы Microsoft"
+title: Службы ADO.NET Data Services | Документы Microsoft
 author: rick-anderson
-description: "Эти видеоролики сняты демонстрируют Создание слой доступа к данным с помощью типизированного набора данных для простого приложения ASP.NET."
+description: Эти видеоролики сняты демонстрируют Создание слой доступа к данным с помощью типизированного набора данных для простого приложения ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/04/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/data-access/adonet-data-services
 msc.type: chapter
 ms.openlocfilehash: 07181564ee701c71ce74ac7cea3d8cfd0f9f4ffd
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525103"
 ---
 <a name="adonet-data-services"></a>Службы данных ADO.NET
 ====================

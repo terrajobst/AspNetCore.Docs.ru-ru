@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/index
-title: "Работа с данными в веб-форм ASP.NET | Документы Microsoft"
+title: Работа с данными в веб-форм ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "Для доступа к данным с помощью элементов управления и способ сохранения данных между запросами."
+description: Для доступа к данным с помощью элементов управления и способ сохранения данных между запросами.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/08/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/presenting-and-managing-data
 msc.type: chapter
 ms.openlocfilehash: fcfe22a67a2d0876e25b867d43a3bc1535149110
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519763"
 ---
 <a name="working-with-data-in-aspnet-web-forms"></a>Работа с данными в веб-форм ASP.NET
 ====================

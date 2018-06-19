@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/intro-to-web-forms
-title: "Введение в Web Forms | Документы Microsoft"
+title: Введение в Web Forms | Документы Microsoft
 author: JoeStagner
-description: "Веб-форм ASP.NET — это механизм пользовательский интерфейс по умолчанию для приложений ASP.NET... В этом видеоролике показано basic разработки в веб-форм."
+description: Веб-форм ASP.NET — это механизм пользовательский интерфейс по умолчанию для приложений ASP.NET... В этом видеоролике показано basic разработки в веб-форм.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521023"
 ---
 <a name="intro-to-web-forms"></a>Введение в веб-форм
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api
-title: "Используйте OWIN для самостоятельного размещения ASP.NET Web API 2 | Документы Microsoft"
+title: Используйте OWIN для самостоятельного размещения ASP.NET Web API 2 | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник показывает, как для размещения в консольном приложении, с помощью OWIN для самостоятельного размещения платформа веб-API ASP.NET Web API. Открыть веб-интерфейс для .NET (OWIN) d..."
+description: Этот учебник показывает, как для размещения в консольном приложении, с помощью OWIN для самостоятельного размещения платформа веб-API ASP.NET Web API. Открыть веб-интерфейс для .NET (OWIN) d...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/09/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506973"
 ---
 <a name="use-owin-to-self-host-aspnet-web-api-2"></a>Используйте OWIN для самостоятельного размещения ASP.NET Web API 2
 ====================

@@ -1,20 +1,21 @@
 ---
 uid: webhooks/receiving/dependencies
-title: "Веб-перехватчиков ASP.NET приемника зависимостей | Документы Microsoft"
+title: Веб-перехватчиков ASP.NET приемника зависимостей | Документы Microsoft
 author: rick-anderson
-description: "Приемник зависимости и внедрение зависимостей в ASP.NET веб-привязок."
+description: Приемник зависимости и внедрение зависимостей в ASP.NET веб-привязок.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: 5125e483-c2bb-435b-8cd1-21d3499bfaaf
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: f9726c746c8934594e26f2871f9b867c192374bb
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529913"
 ---
 # <a name="aspnet-webhooks-receiver-dependencies"></a>Веб-перехватчиков ASP.NET приемника зависимостей
 

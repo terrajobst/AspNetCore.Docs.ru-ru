@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/localization
-ms.openlocfilehash: b81926f81fdfb832ff6ae3bd65c00fa09412fec4
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 929c73c314a15e7003853d3996158d1328e597cb
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34094604"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -141,14 +142,6 @@ ASP.NET Core позволяет указывать два значения яз�
     В Visual Studio отобразится файл *Welcome.es.resx*.
 
     ![Обозреватель решений с файлом ресурсов на испанском языке](localization/_static/se.png)
-
-<a name="error"></a>
-
-Если вы используете предварительную версию 15.3 среды Visual Studio 2017, в редакторе ресурсов появится индикатор ошибки. Удалите значение *ResXFileCodeGenerator* в строке *Пользовательский инструмент* таблицы свойств, чтобы эта ошибка не возникала:
-
-![Редактор файлов RESX](localization/_static/err.png)
-
-Эту ошибку можно игнорировать. Мы постараемся исправить ее в следующем выпуске.
 
 ## <a name="resource-file-naming"></a>Именование файлов ресурсов
 

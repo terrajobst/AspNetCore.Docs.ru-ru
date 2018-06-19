@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-user-selectable-themes-for-a-web-site
-title: "[Инструкции:] Создать доступный для выбора темы пользователя для веб-сайта | Документы Microsoft"
+title: '[Инструкции:] Создать доступный для выбора темы пользователя для веб-сайта | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис будет показано, как создать несколько темы для веб-сайта, а затем разрешить пользователю выбирать, какие тема применяется к сайту. В разделе как..."
+description: В этом видеоролике пиксел Крис будет показано, как создать несколько темы для веб-сайта, а затем разрешить пользователю выбирать, какие тема применяется к сайту. В разделе как...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/13/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26524953"
 ---
 <a name="how-do-i-create-user-selectable-themes-for-a-web-site"></a>[Инструкции:] Создать доступный для выбора темы пользователя для веб-сайта
 ====================

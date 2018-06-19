@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/index
-title: "Изменение и удаление данных с помощью DataList | Документы Microsoft"
+title: Изменение и удаление данных с помощью DataList | Документы Microsoft
 author: rick-anderson
-description: "В этих учебниках показано, как настроить элемент управления DataList, чтобы она позволяет изменять данные используются."
+description: В этих учебниках показано, как настроить элемент управления DataList, чтобы она позволяет изменять данные используются.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through
 msc.type: chapter
 ms.openlocfilehash: f4056e4c88fd3e270de275dd7dd52e944cfc0862
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26513443"
 ---
 <a name="editing-and-deleting-data-through-the-datalist"></a>Изменение и удаление данных с помощью DataList
 ====================

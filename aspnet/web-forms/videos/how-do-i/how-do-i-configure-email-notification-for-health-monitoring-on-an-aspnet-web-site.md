@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-configure-email-notification-for-health-monitoring-on-an-aspnet-web-site
-title: "[Инструкции:] Настройка уведомлений по электронной почте для наблюдения за работоспособностью веб-узла ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Настройка уведомлений по электронной почте для наблюдения за работоспособностью веб-узла ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис показано, как настроить уведомления по электронной почте для мониторинга в веб-сайт ASP.NET состояния. Во-первых в разделе Настройка отправки e..."
+description: В этой видео пиксел Крис показано, как настроить уведомления по электронной почте для мониторинга в веб-сайт ASP.NET состояния. Во-первых в разделе Настройка отправки e...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/11/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521763"
 ---
 <a name="how-do-i-configure-email-notification-for-health-monitoring-on-an-aspnet-web-site"></a>[Инструкции:] Настройка уведомлений по электронной почте для мониторинга на веб-сайте ASP.NET состояния
 ====================

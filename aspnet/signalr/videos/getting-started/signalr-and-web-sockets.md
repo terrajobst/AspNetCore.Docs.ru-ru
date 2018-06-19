@@ -1,8 +1,8 @@
 ---
 uid: signalr/videos/getting-started/signalr-and-web-sockets
-title: "SignalR и веб-сокеты | Документы Microsoft"
+title: SignalR и веб-сокеты | Документы Microsoft
 author: shanselman
-description: "Скотт Хансельман представлены SignalR и веб-сокеты."
+description: Скотт Хансельман представлены SignalR и веб-сокеты.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26505523"
 ---
 <a name="signalr-and-web-sockets"></a>SignalR и веб-сокеты
 ====================

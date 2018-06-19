@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-url-rewriting
-title: "[Инструкции:] Переписывание URL-адреса? | Документы Майкрософт"
+title: '[Инструкции:] Переписывание URL-адреса? | Документы Майкрософт'
 author: scottgolightly
-description: "В этом видеоролике Scott Golightly показывает способы создания HttpModule «переписать» URL-адрес, при поступлении запроса для веб-страницы ASP.NET. Может потребоваться переписать..."
+description: В этом видеоролике Scott Golightly показывает способы создания HttpModule «переписать» URL-адрес, при поступлении запроса для веб-страницы ASP.NET. Может потребоваться переписать...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/01/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526263"
 ---
 <a name="how-do-i-implement-url-rewriting"></a>[Инструкции:] Переписывание URL-адреса?
 ====================

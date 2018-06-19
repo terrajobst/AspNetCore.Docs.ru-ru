@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/sending-html-form-data-part-2
-title: "Отправка данных формы HTML в веб-API ASP.NET: файл передачи и составного MIME | Документы Microsoft"
+title: 'Отправка данных формы HTML в веб-API ASP.NET: файл передачи и составного MIME | Документы Microsoft'
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/21/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28040146"
 ---
 <a name="sending-html-form-data-in-aspnet-web-api-file-upload-and-multipart-mime"></a>Отправка данных формы HTML в веб-API ASP.NET: файл передачи и составного MIME
 ====================

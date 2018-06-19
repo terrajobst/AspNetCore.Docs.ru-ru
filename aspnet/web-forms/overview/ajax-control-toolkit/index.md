@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/index
-title: "Более старые версии - элементов управления AJAX | Документы Microsoft"
+title: Более старые версии - элементов управления AJAX | Документы Microsoft
 author: rick-anderson
-description: "Начало работы с помощью элементов управления AJAX и как использовать некоторые из наиболее распространенных элементов управления. DevExpress ведет свободного и открытый исходный код контракту Ajax..."
+description: Начало работы с помощью элементов управления AJAX и как использовать некоторые из наиболее распространенных элементов управления. DevExpress ведет свободного и открытый исходный код контракту Ajax...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit
 msc.type: chapter
 ms.openlocfilehash: 75fef51d40352c4bd600bb63056f1d1d5c74cbd6
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510853"
 ---
 <a name="older-versions---ajax-control-toolkit"></a>Более старые версии - элементов управления AJAX
 ====================

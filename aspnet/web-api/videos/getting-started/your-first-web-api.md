@@ -1,8 +1,8 @@
 ---
 uid: web-api/videos/getting-started/your-first-web-api
-title: "ASP.NET Web API, часть 1: Первый веб-API | Документы Microsoft"
+title: 'ASP.NET Web API, часть 1: Первый веб-API | Документы Microsoft'
 author: jongalloway
-description: "Примечание: Этот видеоролик содержит сведения из предварительной версии ASP.NET Web API"
+description: 'Примечание: Этот видеоролик содержит сведения из предварительной версии ASP.NET Web API'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26509093"
 ---
 <a name="aspnet-web-api-part-1-your-first-web-api"></a>ASP.NET Web API, часть 1: Первый веб-API
 ====================

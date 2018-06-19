@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/nobot/index
-title: "NoBot | Документы Microsoft"
+title: NoBot | Документы Microsoft
 author: rick-anderson
-description: "Этого учебника показано, как использовать элемент управления NoBot, который предоставляет способ предотвратить учета программы-роботы с узлом."
+description: Этого учебника показано, как использовать элемент управления NoBot, который предоставляет способ предотвратить учета программы-роботы с узлом.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/nobot
 msc.type: chapter
 ms.openlocfilehash: c2e4da8991b116754b6e21f97a383f2a1003ad2a
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510673"
 ---
 <a name="nobot"></a>NoBot
 ====================

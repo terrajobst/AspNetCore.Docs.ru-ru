@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/hub-authorization
-title: "Проверка подлинности и авторизация для концентраторов SignalR (SignalR 1.x) | Документы Microsoft"
+title: Проверка подлинности и авторизация для концентраторов SignalR (SignalR 1.x) | Документы Microsoft
 author: pfletcher
-description: "В этом разделе описывается ограничьте какие пользователи или роли доступ к методам концентраторов."
+description: В этом разделе описывается ограничьте какие пользователи или роли доступ к методам концентраторов.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28042879"
 ---
 <a name="authentication-and-authorization-for-signalr-hubs-signalr-1x"></a>Проверка подлинности и авторизация для концентраторов SignalR (SignalR 1.x)
 ====================

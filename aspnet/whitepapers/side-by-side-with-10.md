@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/side-by-side-with-10
-title: "Выполнение .NET Framework 1.0 и 1.1 ASP.NET Side-by-Side | Документы Microsoft"
+title: Выполнение .NET Framework 1.0 и 1.1 ASP.NET Side-by-Side | Документы Microsoft
 author: rick-anderson
-description: "В этом техническом документе описывается установка .NET версии 1.0 и .NET 1.1 на компьютере, позволяя веб-приложение ASP.NET для запуска на любой из версий обрамление..."
+description: В этом техническом документе описывается установка .NET версии 1.0 и .NET 1.1 на компьютере, позволяя веб-приложение ASP.NET для запуска на любой из версий обрамление...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: bdea2003-e964-4db5-9092-d56cc7560616
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/side-by-side-with-10
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26530183"
 ---
 <a name="aspnet-side-by-side-execution-of-net-framework-10-and-11"></a>ASP.NET Side-by-Side выполнения платформы .NET Framework 1.0 и 1.1
 ====================

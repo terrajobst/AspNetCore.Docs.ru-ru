@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32740300"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Обработка запросов с помощью контроллеров в ASP.NET Core MVC
 

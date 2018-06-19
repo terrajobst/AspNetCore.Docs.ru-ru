@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-synchronize-data-in-secondary-user-controls-based-upon-user-selections
-title: "[Инструкции]: синхронизация данных из дополнительных пользовательских элементов управления, основываясь на выборе пользователя | Документы Microsoft"
+title: '[Инструкции]: синхронизация данных из дополнительных пользовательских элементов управления, основываясь на выборе пользователя | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис демонстрируется создание двух элементов управления DropDownList где при выборе элемента в первом списке заполняет элементы во втором списке. Первы..."
+description: В этой видео пиксел Крис демонстрируется создание двух элементов управления DropDownList где при выборе элемента в первом списке заполняет элементы во втором списке. Первы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/06/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526443"
 ---
 <a name="how-do-i-synchronize-data-in-secondary-user-controls-based-upon-user-selections"></a>[Инструкции]: синхронизация данных из дополнительных пользовательских элементов управления, основываясь на выборе пользователя
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-3/mvc-3-razor-view-engine
-title: "MVC 3 - представлений Razor | Документы Microsoft"
+title: MVC 3 - представлений Razor | Документы Microsoft
 author: jongalloway
-description: "В этом видео будет основы обработчик представлений Razor включены в ASP.NET MVC 3."
+description: В этом видео будет основы обработчик представлений Razor включены в ASP.NET MVC 3.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/04/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503823"
 ---
 <a name="mvc-3---razor-view-engine"></a>MVC 3 - представлений Razor
 ====================

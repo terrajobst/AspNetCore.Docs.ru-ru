@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/tailspin-spyworks/index
-title: "Tailspin Spyworks | Документы Microsoft"
+title: Tailspin Spyworks | Документы Microsoft
 author: rick-anderson
-description: "Как использовать новые возможности в ASP.NET 4 для создания Интернет-магазина, включая покупок, извлечения и администрирования."
+description: Как использовать новые возможности в ASP.NET 4 для создания Интернет-магазина, включая покупок, извлечения и администрирования.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/tailspin-spyworks
 msc.type: chapter
 ms.openlocfilehash: 28e504c3e1332d047ca7c4f1696eaaf5167cc145
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26522453"
 ---
 <a name="tailspin-spyworks"></a>Tailspin Spyworks
 ====================

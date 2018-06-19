@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-and-use-application-level-events-in-aspnet
-title: "[Инструкции:]  Создание и использование событий на уровне приложения в ASP.NET | Документы Microsoft"
+title: '[Инструкции:]  Создание и использование событий на уровне приложения в ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис будет показано, как для создания файла класса приложения (Global.asax), содержащий обработчики событий уровня приложения, например Application_S..."
+description: В этой видео пиксел Крис будет показано, как для создания файла класса приложения (Global.asax), содержащий обработчики событий уровня приложения, например Application_S...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/28/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521183"
 ---
 <a name="how-do-i--create-and-use-application-level-events-in-aspnet"></a>[Инструкции:]  Создание и использование событий на уровне приложения в ASP.NET
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/basic-reporting/index
-title: "Базовые отчеты | Документы Microsoft"
+title: Базовые отчеты | Документы Microsoft
 author: rick-anderson
-description: "Этот набор учебники рассказывается, как использовать элемент управления ObjectDataSource для работы с данными из МЕТОДА, все без кода."
+description: Этот набор учебники рассказывается, как использовать элемент управления ObjectDataSource для работы с данными из МЕТОДА, все без кода.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/basic-reporting
 msc.type: chapter
 ms.openlocfilehash: 86c675e3618b1bc21ff05dcae3525aa3de725516
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26512603"
 ---
 <a name="basic-reporting"></a>Базовые отчеты
 ====================

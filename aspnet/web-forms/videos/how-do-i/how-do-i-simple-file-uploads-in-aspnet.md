@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-simple-file-uploads-in-aspnet
-title: "[Инструкции:]  Простой файл передает в ASP.NET | Документы Microsoft"
+title: '[Инструкции:]  Простой файл передает в ASP.NET | Документы Microsoft'
 author: JoeStagner
-description: "В этом видео я продемонстрирую, с помощью ASP.NET, отправка одного файла с клиентского компьютера к серверу. Это будет первым в последовательности загрузки..."
+description: В этом видео я продемонстрирую, с помощью ASP.NET, отправка одного файла с клиентского компьютера к серверу. Это будет первым в последовательности загрузки...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/12/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526113"
 ---
 <a name="how-do-i--simple-file-uploads-in-aspnet"></a>[Инструкции:]  Простой файл передачи файлов в ASP.NET
 ====================

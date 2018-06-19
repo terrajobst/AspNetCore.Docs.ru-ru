@@ -1,8 +1,8 @@
 ---
 uid: web-pages/videos/introduction/publish-a-website-to-the-internet-using-webmatrix
-title: "Публикация веб-сайта к Интернету с помощью WebMatrix | Документы Microsoft"
+title: Публикация веб-сайта к Интернету с помощью WebMatrix | Документы Microsoft
 author: rick-anderson
-description: "Часть 9 показано, как опубликовать веб-узла в Интернете с помощью WebMatrix."
+description: Часть 9 показано, как опубликовать веб-узла в Интернете с помощью WebMatrix.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529843"
 ---
 <a name="publish-a-website-to-the-internet-using-webmatrix"></a>Публикация веб-сайта к Интернету с помощью WebMatrix
 ====================

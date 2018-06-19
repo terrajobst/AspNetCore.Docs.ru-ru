@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-20-applications/index
-title: "Построение приложений 2.0 | Документы Microsoft"
+title: Построение приложений 2.0 | Документы Microsoft
 author: rick-anderson
-description: "ASP.NET 2.0 построение приложений"
+description: ASP.NET 2.0 построение приложений
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/building-20-applications
 msc.type: chapter
 ms.openlocfilehash: 7260e5ba8bc913729c21245a3904a684d94086dd
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521593"
 ---
 <a name="building-20-applications"></a>Построение приложений 2.0
 ====================

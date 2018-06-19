@@ -1,8 +1,8 @@
 ---
 uid: web-api/videos/getting-started/index
-title: "Общие сведения о ASP.NET Web API и начало работы видео | Документы Microsoft"
+title: Общие сведения о ASP.NET Web API и начало работы видео | Документы Microsoft
 author: rick-anderson
-description: "Это ряд видео, чтобы приступить к работе с веб-API ASP.NET."
+description: Это ряд видео, чтобы приступить к работе с веб-API ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/videos/getting-started
 msc.type: chapter
 ms.openlocfilehash: c06a3e5670839af357a515331cd864521d260c0e
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508993"
 ---
 <a name="aspnet-web-api-overview-and-getting-started-videos"></a>Общие сведения о ASP.NET Web API и начало работы видео
 ====================

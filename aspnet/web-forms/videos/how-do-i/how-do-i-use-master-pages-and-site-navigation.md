@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-master-pages-and-site-navigation
-title: "[Инструкции:] Использовать главные страницы и навигации веб-узла? | Документы Майкрософт"
+title: '[Инструкции:] Использовать главные страницы и навигации веб-узла? | Документы Майкрософт'
 author: microsoft
-description: "Создайте веб-сайт с согласованного макета и разработки на его страницах, с помощью главные страницы ASP.NET 2.0. Узнайте, как легко добавить навигации на веб-сайт..."
+description: Создайте веб-сайт с согласованного макета и разработки на его страницах, с помощью главные страницы ASP.NET 2.0. Узнайте, как легко добавить навигации на веб-сайт...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/11/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521503"
 ---
 <a name="how-do-i-use-master-pages-and-site-navigation"></a>[Инструкции:] Использовать главные страницы и навигации веб-узла?
 ====================

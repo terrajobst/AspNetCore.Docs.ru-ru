@@ -1,8 +1,8 @@
 ---
 uid: web-api/videos/getting-started/paging-and-querying
-title: "Веб-API ASP.NET, часть 4: Разбиение по страницам и запросов | Документы Microsoft"
+title: 'Веб-API ASP.NET, часть 4: Разбиение по страницам и запросов | Документы Microsoft'
 author: jongalloway
-description: "Примечание: Этот видеоролик содержит сведения из предварительной версии ASP.NET Web API"
+description: 'Примечание: Этот видеоролик содержит сведения из предварительной версии ASP.NET Web API'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26509113"
 ---
 <a name="aspnet-web-api-part-4-paging-and-querying"></a>Веб-API ASP.NET, часть 4: Разбиение по страницам и запросов
 ====================

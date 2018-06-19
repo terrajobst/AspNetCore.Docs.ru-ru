@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-custom-membership-provider
-title: "[Инструкции:] Создание пользовательского поставщика членства? | Документы Майкрософт"
+title: '[Инструкции:] Создание пользовательского поставщика членства? | Документы Майкрософт'
 author: rick-anderson
-description: "Поставщик членства позволяет веб-приложение для хранения и извлечения данных о членстве для пользователя и заранее определить стандартные использует поставщик членства ASP.NET..."
+description: Поставщик членства позволяет веб-приложение для хранения и извлечения данных о членстве для пользователя и заранее определить стандартные использует поставщик членства ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525523"
 ---
 <a name="how-do-i-create-a-custom-membership-provider"></a>[Инструкции:] Создание пользовательского поставщика членства?
 ====================

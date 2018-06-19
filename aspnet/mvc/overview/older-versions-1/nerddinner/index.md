@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/index
-title: "Обновление NerdDinner | Документы Microsoft"
+title: Обновление NerdDinner | Документы Microsoft
 author: rick-anderson
-description: "Порядок создания NerdDinner.com веб-сайта, с помощью ASP.NET MVC 1. Для версии ASP.NET MVC 3 посетите обновление nerddinner на GitHub."
+description: Порядок создания NerdDinner.com веб-сайта, с помощью ASP.NET MVC 1. Для версии ASP.NET MVC 3 посетите обновление nerddinner на GitHub.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions-1/nerddinner
 msc.type: chapter
 ms.openlocfilehash: e4791f1fa7d5a23fdd688c294836971735070afc
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26500753"
 ---
 <a name="nerddinner"></a>Обновление NerdDinner
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-the-ability-to-create-groups-with-the-listview-control-for-different-data
-title: "[Инструкции:] Используйте возможность для создания групп с помощью элемента управления ListView различных данных | Документы Microsoft"
+title: '[Инструкции:] Используйте возможность для создания групп с помощью элемента управления ListView различных данных | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис будет показано, как группировать элементы по отображению данных в элементе управления ListView. Во-первых в разделе Основные принципы макета элемента в элемент управления ListView..."
+description: В этом видеоролике пиксел Крис будет показано, как группировать элементы по отображению данных в элементе управления ListView. Во-первых в разделе Основные принципы макета элемента в элемент управления ListView...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/20/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525203"
 ---
 <a name="how-do-i-use-the-ability-to-create-groups-with-the-listview-control-for-different-data"></a>[Инструкции:] Используйте возможность для создания групп с помощью элемента управления ListView различных данных
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/releases/whats-new-in-aspnet-mvc-52
-title: "Новые возможности в ASP.NET MVC 5.2 | Документы Microsoft"
+title: Новые возможности в ASP.NET MVC 5.2 | Документы Microsoft
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/25/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26504103"
 ---
 <a name="whats-new-in-aspnet-mvc-52"></a>Новые возможности в ASP.NET MVC 5.2
 ====================

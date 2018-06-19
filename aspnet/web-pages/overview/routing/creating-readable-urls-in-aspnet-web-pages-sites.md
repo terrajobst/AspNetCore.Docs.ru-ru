@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/routing/creating-readable-urls-in-aspnet-web-pages-sites
-title: "Создание для чтения URL-адресов в ASP.NET Web Pages сайтов (Razor) | Документы Microsoft"
+title: Создание для чтения URL-адресов в ASP.NET Web Pages сайтов (Razor) | Документы Microsoft
 author: tfitzmac
-description: "В этой статье описывается маршрутизации в ASP.NET Web Pages (Razor) веб-сайта, и как это позволяет использовать URL-адреса, более удобочитаемые и лучше подходит для оптимизации поисковой системы. Вы будете..."
+description: В этой статье описывается маршрутизации в ASP.NET Web Pages (Razor) веб-сайта, и как это позволяет использовать URL-адреса, более удобочитаемые и лучше подходит для оптимизации поисковой системы. Вы будете...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/17/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529753"
 ---
 <a name="creating-readable-urls-in-aspnet-web-pages-razor-sites"></a>Создание для чтения URL-адреса веб-страниц (Razor) узлов ASP.NET
 ====================

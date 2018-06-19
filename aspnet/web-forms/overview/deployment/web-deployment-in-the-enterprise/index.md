@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/index
-title: "В ASP.NET 4 - корпоративного развертывания ряда 1 | Документы Microsoft"
+title: В ASP.NET 4 - корпоративного развертывания ряда 1 | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник описывает соответствуют большое количество задач, с которыми можно столкнуться при управлении развертывания веб-приложений масштаба предприятия для developmen..."
+description: Этот учебник описывает соответствуют большое количество задач, с которыми можно столкнуться при управлении развертывания веб-приложений масштаба предприятия для developmen...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/16/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise
 msc.type: chapter
 ms.openlocfilehash: 50918b1aef416a7b262e982bcf67607aa36933a3
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26515183"
 ---
 <a name="aspnet-4---enterprise-deployment-series-1"></a>В ASP.NET 4 - корпоративного развертывания ряда 1
 ====================

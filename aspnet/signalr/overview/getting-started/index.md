@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/index
-title: "Приступая к работе SignalR | Документы Microsoft"
+title: Приступая к работе SignalR | Документы Microsoft
 author: rick-anderson
-description: "Дополнительные сведения о ASP.NET SignalR ASP.NET SignalR представляет собой новую библиотеку для разработчиков в среде ASP.NET, упрощающую процесса разработки функций реального времени. SignalR позволяет бизнес-аналитики..."
+description: Дополнительные сведения о ASP.NET SignalR ASP.NET SignalR представляет собой новую библиотеку для разработчиков в среде ASP.NET, упрощающую процесса разработки функций реального времени. SignalR позволяет бизнес-аналитики...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/19/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /signalr/overview/getting-started
 msc.type: chapter
 ms.openlocfilehash: 23d54a781354fbccfd5c42bfb4280d8c45ee4c30
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503833"
 ---
 <a name="signalr-getting-started"></a>Приступая к работе SignalR
 ====================
