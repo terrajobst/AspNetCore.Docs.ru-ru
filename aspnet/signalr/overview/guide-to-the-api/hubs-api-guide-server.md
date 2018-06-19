@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/guide-to-the-api/hubs-api-guide-server
-title: "Справочник по API концентраторов ASP.NET SignalR - сервера (C#) | Документы Microsoft"
+title: Справочник по API концентраторов ASP.NET SignalR - сервера (C#) | Документы Microsoft
 author: pfletcher
-description: "Этот документ содержит введение в программирование API концентраторов SignalR ASP.NET со стороны сервера для SignalR, версия 2, с использованием образцы кода, демонстрирующие..."
+description: Этот документ содержит введение в программирование API концентраторов SignalR ASP.NET со стороны сервера для SignalR, версия 2, с использованием образцы кода, демонстрирующие...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28039213"
 ---
 <a name="aspnet-signalr-hubs-api-guide---server-c"></a>Справочник по API концентраторов ASP.NET SignalR - сервера (C#)
 ====================

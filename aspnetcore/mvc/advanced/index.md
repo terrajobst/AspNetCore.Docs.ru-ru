@@ -14,6 +14,7 @@ ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30305777"
 ---
 # <a name="advanced-topics-for-aspnet-core-mvc"></a>Дополнительные разделы по ASP.NET MVC
 

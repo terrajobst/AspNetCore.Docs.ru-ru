@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-export-data-to-a-comma-delimited-csv-file-for-an-application-like-excel
-title: "[Инструкции:] Экспорт данных в файл с разделителями с разделителями (CSV) для приложения, такие как Excel | Документы Microsoft"
+title: '[Инструкции:] Экспорт данных в файл с разделителями с разделителями (CSV) для приложения, такие как Excel | Документы Microsoft'
 author: rick-anderson
-description: "Крис пиксел в этом видео показано, как получать данные из базы данных или другого источника и экспортировать его в файл с разделителями с разделителями, можно использовать в приложении li..."
+description: Крис пиксел в этом видео показано, как получать данные из базы данных или другого источника и экспортировать его в файл с разделителями с разделителями, можно использовать в приложении li...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/22/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525643"
 ---
 <a name="how-do-i-export-data-to-a-comma-delimited-csv-file-for-an-application-like-excel"></a>[Инструкции:] Экспорт данных в файл с разделителями с разделителями (CSV), для такого приложения, как Microsoft Excel
 ====================

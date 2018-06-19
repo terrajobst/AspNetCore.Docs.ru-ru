@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-understand-and-defend-against-script-injection-attacks-in-aspnet
-title: "Как понять и защиты от внедрения скрипта атак в ASP.NET | Документы Microsoft"
+title: Как понять и защиты от внедрения скрипта атак в ASP.NET | Документы Microsoft
 author: JoeStagner
-description: "Перекрестные сценариев сайта (XSS), возможно, наиболее отчетливо проблема безопасности для веб-разработчиков к решению в наши дни. В этом видеоролике корпорации Майкрософт Джо Стэгнер pro..."
+description: Перекрестные сценариев сайта (XSS), возможно, наиболее отчетливо проблема безопасности для веб-разработчиков к решению в наши дни. В этом видеоролике корпорации Майкрософт Джо Стэгнер pro...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/13/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28882234"
 ---
 <a name="how-do-i-understand-and-defend-against-script-injection-attacks-in-aspnet"></a>Как понять и защиты от внедрения скрипта атак в ASP.NET
 ====================

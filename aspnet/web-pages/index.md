@@ -1,8 +1,8 @@
 ---
 uid: web-pages/index
-title: "Веб-страницы ASP.NET | Документы Microsoft"
+title: Веб-страницы ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "& Загружать WebMatrix Узнайте, как быстро создавать веб-страницы в упрощенный способ объединения серверного кода с HTML."
+description: '& Загружать WebMatrix Узнайте, как быстро создавать веб-страницы в упрощенный способ объединения серверного кода с HTML.'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/18/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages
 msc.type: categoryindex
 ms.openlocfilehash: d6c2d8a564b5144845e89cd0ee86841b9f305bf5
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528663"
 ---
 <a name="aspnet-web-pages"></a>Веб-страницы ASP.NET
 ====================

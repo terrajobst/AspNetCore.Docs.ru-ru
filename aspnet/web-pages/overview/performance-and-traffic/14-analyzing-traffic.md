@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/performance-and-traffic/14-analyzing-traffic
-title: "Отслеживание сведений о посетителях (аналитика) для веб-страниц ASP.NET (Razor) сайта | Документы Microsoft"
+title: Отслеживание сведений о посетителях (аналитика) для веб-страниц ASP.NET (Razor) сайта | Документы Microsoft
 author: tfitzmac
-description: "После принял веб-сайт будет можно анализировать данный трафик веб-сайта."
+description: После принял веб-сайт будет можно анализировать данный трафик веб-сайта.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/17/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528763"
 ---
 <a name="tracking-visitor-information-analytics-for-an-aspnet-web-pages-razor-site"></a>Отслеживание сведений о посетителях (аналитика) для веб-страниц (Razor) узла ASP.NET
 ====================

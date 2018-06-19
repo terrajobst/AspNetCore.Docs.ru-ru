@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877181"
 ---
 <a name="configuring-the-data-access-layers-connection--and-command-level-settings-vb"></a>Настройка параметров подключения и команды уровень уровня доступа к данным (Visual Basic)
 ====================

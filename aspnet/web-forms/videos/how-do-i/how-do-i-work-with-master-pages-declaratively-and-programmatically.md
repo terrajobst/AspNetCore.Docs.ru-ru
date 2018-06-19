@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-work-with-master-pages-declaratively-and-programmatically
-title: "[Инструкции:] Работа с главными страницами декларативно и программно | Документы Microsoft"
+title: '[Инструкции:] Работа с главными страницами декларативно и программно | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис покажет некоторые аспекты об определении и использовании главных страниц веб-узла ASP.NET. Во-первых в разделе Создание главных страниц declarati..."
+description: В этой видео пиксел Крис покажет некоторые аспекты об определении и использовании главных страниц веб-узла ASP.NET. Во-первых в разделе Создание главных страниц declarati...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/21/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526523"
 ---
 <a name="how-do-i-work-with-master-pages-declaratively-and-programmatically"></a>[Инструкции:] Работа с главными страницами декларативно и программно
 ====================

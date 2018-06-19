@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-custom-provider-for-logging-health-monitoring-events
-title: "[Инструкции:] Создание пользовательского поставщика для ведения журнала для событий мониторинга работоспособности | Документы Microsoft"
+title: '[Инструкции:] Создание пользовательского поставщика для ведения журнала для событий мониторинга работоспособности | Документы Microsoft'
 author: rick-anderson
-description: "Крис пиксел показано создание пользовательского поставщика за состоянием ASP.NET, наблюдение за системой, который записывает события в файл журнала на основе текста мониторинга работоспособности. LE..."
+description: Крис пиксел показано создание пользовательского поставщика за состоянием ASP.NET, наблюдение за системой, который записывает события в файл журнала на основе текста мониторинга работоспособности. LE...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/06/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26524973"
 ---
 <a name="how-do-i-create-a-custom-provider-for-logging-health-monitoring-events"></a>[Инструкции:] Создание пользовательского поставщика событий мониторинга работоспособности ведения журнала
 ====================

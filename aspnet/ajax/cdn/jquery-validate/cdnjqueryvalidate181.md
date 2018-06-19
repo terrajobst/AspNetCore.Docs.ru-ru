@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30078015"
 ---
 <a name="jqueryvalidate-version-181"></a>версия jQuery.Validate 1.8.1
 ====================

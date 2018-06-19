@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "26504053"
 ---
 <a name="whats-new-in-aspnet-mvc-51"></a>Новые возможности в ASP.NET MVC 5.1
 ====================

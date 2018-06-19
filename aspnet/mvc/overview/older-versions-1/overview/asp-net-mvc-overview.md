@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/overview/asp-net-mvc-overview
-title: "Общие сведения о ASP.NET MVC | Документы Microsoft"
+title: Общие сведения о ASP.NET MVC | Документы Microsoft
 author: microsoft
-description: "Дополнительные сведения о различиях между приложением ASP.NET MVC и приложения веб-форм ASP.NET. Дополнительные сведения о выборе времени для создания приложения ASP.NET MVC."
+description: Дополнительные сведения о различиях между приложением ASP.NET MVC и приложения веб-форм ASP.NET. Дополнительные сведения о выборе времени для создания приложения ASP.NET MVC.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26500873"
 ---
 <a name="aspnet-mvc-overview"></a>Общие сведения о ASP.NET MVC
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/testing-and-debugging/unit-testing-controllers-in-web-api
-title: "Модульное тестирование контроллеров в ASP.NET Web API 2 | Документы Microsoft"
+title: Модульное тестирование контроллеров в ASP.NET Web API 2 | Документы Microsoft
 author: MikeWasson
-description: "В этом разделе описываются некоторые конкретные методы модульного тестирования контроллеров в веб-API 2. Перед прочтением этого раздела, можно прочитать учебник единицы..."
+description: В этом разделе описываются некоторые конкретные методы модульного тестирования контроллеров в веб-API 2. Перед прочтением этого раздела, можно прочитать учебник единицы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/11/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28039548"
 ---
 <a name="unit-testing-controllers-in-aspnet-web-api-2"></a>Модульное тестирование контроллеров в ASP.NET Web API 2
 ====================

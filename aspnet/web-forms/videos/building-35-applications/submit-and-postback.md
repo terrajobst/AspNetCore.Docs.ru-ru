@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/submit-and-postback
-title: "Отправка и обратной передачи | Документы Microsoft"
+title: Отправка и обратной передачи | Документы Microsoft
 author: JoeStagner
-description: "В этом видеоролике рассмотрим, что происходит &quot;на самом деле&quot; при взаимодействии приложения ASP.NET браузером и сервером."
+description: В этом видеоролике рассмотрим, что происходит &quot;на самом деле&quot; при взаимодействии приложения ASP.NET браузером и сервером.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/20/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28882358"
 ---
 <a name="submit-and-postback"></a>Отправка и обратной передачи
 ====================

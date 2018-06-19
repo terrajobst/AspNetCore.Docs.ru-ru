@@ -1,7 +1,7 @@
 ---
-title: "Функции запросов в ASP.NET Core"
+title: Функции запросов в ASP.NET Core
 author: ardalis
-description: "Сведения о реализации веб-сервера, связанные с HTTP-запросами и откликами, определяемые в интерфейсах для ASP.NET Core."
+description: Сведения о реализации веб-сервера, связанные с HTTP-запросами и откликами, определяемые в интерфейсах для ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -14,6 +14,7 @@ ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28913576"
 ---
 # <a name="request-features-in-aspnet-core"></a>Функции запросов в ASP.NET Core
 
