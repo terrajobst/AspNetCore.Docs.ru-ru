@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/vs-2005/index
-title: "Visual Studio 2005 | Документы Microsoft"
+title: Visual Studio 2005 | Документы Microsoft
 author: rick-anderson
-description: "Способы работы с Visual Studio 2005 Team System и надстройки для выполнения тестирования, развертывания и другие задачи."
+description: Способы работы с Visual Studio 2005 Team System и надстройки для выполнения тестирования, развертывания и другие задачи.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/vs-2005
 msc.type: chapter
 ms.openlocfilehash: e3918119baf1e2fb0f1fb9d56627e7b7894f33fe
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528513"
 ---
 <a name="visual-studio-2005"></a>Visual Studio 2005
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/debugging
-title: "Отладка | Документы Microsoft"
+title: Отладка | Документы Microsoft
 author: JoeStagner
-description: "Описание: Visual Web Developer предлагает широкие возможности отладки для начинающих и опытных разработчиков одинаково. В этом видеоролике Joe будет тур по вы через VW..."
+description: 'Описание: Visual Web Developer предлагает широкие возможности отладки для начинающих и опытных разработчиков одинаково. В этом видеоролике Joe будет тур по вы через VW...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/30/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528153"
 ---
 <a name="debugging"></a>Отладка
 ====================

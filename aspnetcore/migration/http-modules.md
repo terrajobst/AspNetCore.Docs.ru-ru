@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32741054"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Перенести обработчики HTTP-данных и модули в по промежуточного слоя ASP.NET Core
 

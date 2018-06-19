@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/index
-title: "OData в веб-API ASP.NET | Документы Microsoft"
+title: OData в веб-API ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "Как создать конечные точки OData в веб-API. OData — это протокол доступа к данным для веб. Он предоставляет единообразный способ запроса и управления наборами данных. Веб-API s..."
+description: Как создать конечные точки OData в веб-API. OData — это протокол доступа к данным для веб. Он предоставляет единообразный способ запроса и управления наборами данных. Веб-API s...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/17/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api
 msc.type: chapter
 ms.openlocfilehash: dd46454ae78424ab383a71d185ff7a563692cc5f
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508043"
 ---
 <a name="odata-in-aspnet-web-api"></a>OData в веб-API ASP.NET
 ====================

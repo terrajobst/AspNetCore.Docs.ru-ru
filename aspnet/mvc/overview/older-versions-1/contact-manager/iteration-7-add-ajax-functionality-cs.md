@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875530"
 ---
 <a name="iteration-7--add-ajax-functionality-c"></a>Итерации #7 — функций Add Ajax (C#)
 ====================

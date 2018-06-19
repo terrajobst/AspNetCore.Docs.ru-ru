@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list
-title: "[Инструкции:] Создать повторно используемый компонент для отправки электронной почты в список рассылки | Документы Microsoft"
+title: '[Инструкции:] Создать повторно используемый компонент для отправки электронной почты в список рассылки | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис показано, как создать компонент, который может использоваться на нескольких веб-страниц и веб-сайтов, отправляет сообщения электронной почты в список получателей. Первы..."
+description: В этой видео пиксел Крис показано, как создать компонент, который может использоваться на нескольких веб-страниц и веб-сайтов, отправляет сообщения электронной почты в список получателей. Первы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/04/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525503"
 ---
 <a name="how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list"></a>[Инструкции:] Создать повторно используемый компонент для отправки электронной почты в список рассылки
 ====================

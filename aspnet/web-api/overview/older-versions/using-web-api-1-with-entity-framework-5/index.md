@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/index
-title: "С помощью веб-API 1 ASP.NET с Entity Framework 5 | Документы Microsoft"
+title: С помощью веб-API 1 ASP.NET с Entity Framework 5 | Документы Microsoft
 author: rick-anderson
-description: "Инструкции по созданию приложения веб-API 1, использующий Entity Framework для базы данных сохраняемости."
+description: Инструкции по созданию приложения веб-API 1, использующий Entity Framework для базы данных сохраняемости.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/16/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-fram
 msc.type: chapter
 ms.openlocfilehash: 30fc6619da6ac16599eed9de18aaf558c248e980
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508123"
 ---
 <a name="using-aspnet-web-api-1-with-entity-framework-5"></a>С помощью веб-API 1 ASP.NET с Entity Framework 5
 ====================

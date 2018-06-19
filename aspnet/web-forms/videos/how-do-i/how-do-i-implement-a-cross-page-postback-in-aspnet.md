@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-a-cross-page-postback-in-aspnet
-title: "[Инструкции:] Реализация обратной перекрестного страницы в ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Реализация обратной перекрестного страницы в ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис показано создание кросс-обратной передачи страницы в ASP.NET, где элемент управления на исходной странице вызывает событие обратной передачи для другой целевой объект..."
+description: В этой видео пиксел Крис показано создание кросс-обратной передачи страницы в ASP.NET, где элемент управления на исходной странице вызывает событие обратной передачи для другой целевой объект...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/10/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526313"
 ---
 <a name="how-do-i-implement-a-cross-page-postback-in-aspnet"></a>[Инструкции:] Реализация обратной перекрестного страницы в ASP.NET
 ====================

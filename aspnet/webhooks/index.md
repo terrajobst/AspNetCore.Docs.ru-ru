@@ -1,20 +1,21 @@
 ---
 uid: webhooks/index
-title: "Общие сведения о веб-перехватчиков ASP.NET | Документы Microsoft"
+title: Общие сведения о веб-перехватчиков ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "Введение в ASP.NET веб-привязок."
+description: Введение в ASP.NET веб-привязок.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: 5e2843f0-f499-448f-a712-33d4e9858321
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: 52399c23cdf393a2f7f94661fd48098ced65948c
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26530053"
 ---
 # <a name="aspnet-webhooks-overview"></a>Общие сведения о веб-перехватчиков ASP.NET
 

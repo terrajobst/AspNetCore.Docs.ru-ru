@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868819"
 ---
 <a name="creating-a-numeric-updown-control-with-a-web-service-backend-c"></a>Создание числового элемента управления вверх/вниз с серверной части веб-службы (C#)
 ====================

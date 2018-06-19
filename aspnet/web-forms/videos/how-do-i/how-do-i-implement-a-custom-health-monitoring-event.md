@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-a-custom-health-monitoring-event
-title: "[Инструкции:] Реализуйте пользовательские события мониторинга состояния | Документы Microsoft"
+title: '[Инструкции:] Реализуйте пользовательские события мониторинга состояния | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис будет показано создание пользовательского события, который расширяет возможности стандартных работоспособности, наблюдение за событиями в ASP.NET мониторинга состояния. Пользовательские pro..."
+description: В этой видео пиксел Крис будет показано создание пользовательского события, который расширяет возможности стандартных работоспособности, наблюдение за событиями в ASP.NET мониторинга состояния. Пользовательские pro...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/17/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26524963"
 ---
 <a name="how-do-i-implement-a-custom-health-monitoring-event"></a>[Инструкции:] Реализуйте пользовательские события мониторинга состояния
 ====================

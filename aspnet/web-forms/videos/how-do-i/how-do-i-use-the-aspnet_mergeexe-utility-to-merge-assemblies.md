@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-the-aspnet_mergeexe-utility-to-merge-assemblies
-title: "[Инструкции:] Слияние сборок с помощью программы aspnet_merge.exe | Документы Microsoft"
+title: '[Инструкции:] Слияние сборок с помощью программы aspnet_merge.exe | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис будет показано, как использовать программу aspnet_merge.exe для объединения сборок, которые были скомпилированы с помощью aspnet_compiler.exe utilit..."
+description: В этом видеоролике пиксел Крис будет показано, как использовать программу aspnet_merge.exe для объединения сборок, которые были скомпилированы с помощью aspnet_compiler.exe utilit...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526493"
 ---
 <a name="how-do-i-use-the-aspnetmergeexe-utility-to-merge-assemblies"></a>[Инструкции:] Слияние сборок с помощью программы aspnet_merge.exe
 ====================

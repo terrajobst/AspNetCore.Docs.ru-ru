@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-to-install-asp-net-and-tools
-title: "Установка ASP.NET и инструменты | Документы Microsoft"
+title: Установка ASP.NET и инструменты | Документы Microsoft
 author: shanselman
-description: "Скотт Хансельман корпорации Майкрософт показано, как загрузить и установить ASP.NET и инструменты, чтобы вы могли начать разработку веб-приложений."
+description: Скотт Хансельман корпорации Майкрософт показано, как загрузить и установить ASP.NET и инструменты, чтобы вы могли начать разработку веб-приложений.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/10/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526293"
 ---
 <a name="how-to-install-aspnet-and-tools"></a>Установка ASP.NET и инструменты
 ====================

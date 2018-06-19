@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: bd739abe4737e0fb9e4da6011c5810d7b05a3a22
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 1a63246dd81a16bbcca22ad2c50bc2010c852c4e
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34233405"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Razor Pages с EF Core в ASP.NET Core — чтение связанных данных — 6 из 8
 
@@ -101,7 +102,7 @@ ms.lasthandoff: 05/07/2018
 
 Предыдущий код добавляет `AsNoTracking`. `AsNoTracking` повышает производительность, так как возвращаемые сущности не отслеживаются. Отслеживание отсутствует, так как сущности не изменяются в текущем контексте.
 
-Измените *Views/Courses/Index.cshtml*, используя выделенную ниже разметку:
+Измените *Pages/Courses/Index.cshtml*, используя выделенную ниже разметку:
 
 [!code-html[](intro/samples/cu/Pages/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
 

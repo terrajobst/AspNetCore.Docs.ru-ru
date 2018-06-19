@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/security/enabling-login-from-external-sites-in-an-aspnet-web-pages-site
-title: "Вход с использованием внешних сайтов в ASP.NET Web Pages сайта (Razor) | Документы Microsoft"
+title: Вход с использованием внешних сайтов в ASP.NET Web Pages сайта (Razor) | Документы Microsoft
 author: tfitzmac
-description: "В этой статье объясняется, как выполнить вход на сайт веб-страниц ASP.NET (Razor), используя Facebook, Google, Twitter, Yahoo и других сайтов, то есть, как обеспечить поддержку..."
+description: В этой статье объясняется, как выполнить вход на сайт веб-страниц ASP.NET (Razor), используя Facebook, Google, Twitter, Yahoo и других сайтов, то есть, как обеспечить поддержку...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/21/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26530173"
 ---
 <a name="logging-in-using-external-sites-in-an-aspnet-web-pages-razor-site"></a>Вход с использованием внешних сайтов в веб-страницы (Razor) узла ASP.NET
 ====================

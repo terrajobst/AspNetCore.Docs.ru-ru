@@ -1,8 +1,8 @@
 ---
 uid: web-pages/videos/introduction/create-a-web-interface-in-webmatrix
-title: "Создание веб-интерфейса в WebMatrix | Документы Microsoft"
+title: Создание веб-интерфейса в WebMatrix | Документы Microsoft
 author: rick-anderson
-description: "Часть 6 показано создает страницу, которая позволяет пользователям добавлять данные к базе данных, веб-узла можно вывести ее."
+description: Часть 6 показано создает страницу, которая позволяет пользователям добавлять данные к базе данных, веб-узла можно вывести ее.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529743"
 ---
 <a name="create-a-web-interface-in-webmatrix"></a>Создание веб-интерфейса в WebMatrix
 ====================

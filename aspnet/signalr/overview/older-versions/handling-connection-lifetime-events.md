@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/handling-connection-lifetime-events
-title: "Понимание и обработка событий время существования подключения SignalR 1.x | Документы Microsoft"
+title: Понимание и обработка событий время существования подключения SignalR 1.x | Документы Microsoft
 author: pfletcher
-description: "В этой статье описывается использование событий, предоставляемых API концентраторов."
+description: В этой статье описывается использование событий, предоставляемых API концентраторов.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/05/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036730"
 ---
 <a name="understanding-and-handling-connection-lifetime-events-in-signalr-1x"></a>Понимание и обработка событий время существования подключения SignalR 1.x
 ====================

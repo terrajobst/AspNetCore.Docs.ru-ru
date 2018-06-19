@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/deployment/tutorial-signalr-self-host
-title: "Учебник: SignalR резидентной | Документы Microsoft"
+title: 'Учебник: SignalR резидентной | Документы Microsoft'
 author: pfletcher
-description: "Этот учебник показывает, как создание резидентной SignalR 2 сервера и способ подключения с помощью клиента JavaScript. Версии программного обеспечения, используемая в этом учебнике V..."
+description: Этот учебник показывает, как создание резидентной SignalR 2 сервера и способ подключения с помощью клиента JavaScript. Версии программного обеспечения, используемая в этом учебнике V...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036782"
 ---
 <a name="tutorial-signalr-self-host"></a>Учебник: SignalR резидентной
 ====================

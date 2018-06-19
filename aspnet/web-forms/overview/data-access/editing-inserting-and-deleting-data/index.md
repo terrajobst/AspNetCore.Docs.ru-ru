@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/index
-title: "Изменения, вставки и удаления данных | Документы Microsoft"
+title: Изменения, вставки и удаления данных | Документы Microsoft
 author: rick-anderson
-description: "В этих учебниках см сведения о сопоставлении методы элемента управления ObjectDataSource методам уровень бизнес-ЛОГИКИ и настройке GridView, DetailsView и FormView co..."
+description: В этих учебниках см сведения о сопоставлении методы элемента управления ObjectDataSource методам уровень бизнес-ЛОГИКИ и настройке GridView, DetailsView и FormView co...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-da
 msc.type: chapter
 ms.openlocfilehash: 424781d445443ff2df3b5fda359dadc5243e1ea9
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26513813"
 ---
 <a name="editing-inserting-and-deleting-data"></a>Изменение, вставка и удаление данных
 ====================

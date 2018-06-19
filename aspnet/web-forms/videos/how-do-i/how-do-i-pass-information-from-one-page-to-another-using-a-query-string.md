@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-pass-information-from-one-page-to-another-using-a-query-string
-title: "[Инструкции:] Передачи данных из одной страницы в другую, используя строку запроса | Документы Microsoft"
+title: '[Инструкции:] Передачи данных из одной страницы в другую, используя строку запроса | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис покажет, как данные могут передаваться с одной страницы на другую с помощью строки запроса. Сначала посмотрите, как создать строку запроса в..."
+description: В этом видеоролике пиксел Крис покажет, как данные могут передаваться с одной страницы на другую с помощью строки запроса. Сначала посмотрите, как создать строку запроса в...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521963"
 ---
 <a name="how-do-i-pass-information-from-one-page-to-another-using-a-query-string"></a>[Инструкции:] Передачи данных из одной страницы в другую с помощью строки запроса
 ====================

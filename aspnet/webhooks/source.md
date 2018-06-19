@@ -1,20 +1,21 @@
 ---
 uid: webhooks/source
-title: "Веб-перехватчиков ASP.NET исходный код и пакеты NuGet | Документы Microsoft"
+title: Веб-перехватчиков ASP.NET исходный код и пакеты NuGet | Документы Microsoft
 author: rick-anderson
-description: "Ссылки на веб-перехватчиков ASP.NET исходный код и пакеты NuGet"
+description: Ссылки на веб-перехватчиков ASP.NET исходный код и пакеты NuGet
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: 91a62bfa-ea3a-41f9-a2e1-e90d2c8fc8ca
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: 733a0839c77bcfc96214bdf235ce8fe22ee2d3cf
 ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/09/2018
+ms.locfileid: "27709974"
 ---
 # <a name="aspnet-webhooks-source-code-and-nuget-packages"></a>Веб-перехватчиков ASP.NET исходный код и пакеты NuGet
 

@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/performance/signalr-connection-density-testing-with-crank
-title: "Тестирование с помощью ручки плотность подключения SignalR | Документы Microsoft"
+title: Тестирование с помощью ручки плотность подключения SignalR | Документы Microsoft
 author: tfitzmac
-description: "Тестирование с помощью ручки плотность подключения SignalR"
+description: Тестирование с помощью ручки плотность подключения SignalR
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/22/2015
@@ -17,6 +17,7 @@ ms.sourcegitcommit: fe880bf4ed1c8116071c0e47c0babf3623b7f44a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/21/2017
+ms.locfileid: "26535333"
 ---
 <a name="signalr-connection-density-testing-with-crank"></a>Тестирование с помощью ручки плотность подключения SignalR
 ====================

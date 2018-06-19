@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-the-objectdatasource-with-a-data-access-class-and-business-object
-title: "[Инструкции:] Использовать элемент управления ObjectDataSource с данных Access, класс и бизнес-объекта | Документы Microsoft"
+title: '[Инструкции:] Использовать элемент управления ObjectDataSource с данных Access, класс и бизнес-объекта | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис будет показано, как использовать элемент управления ObjectDataSource как промежуточный слой между элементами интерфейса пользователя с привязкой к данным и пользовательские данные...."
+description: В этом видеоролике пиксел Крис будет показано, как использовать элемент управления ObjectDataSource как промежуточный слой между элементами интерфейса пользователя с привязкой к данным и пользовательские данные....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/21/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526123"
 ---
 <a name="how-do-i-use-the-objectdatasource-with-a-data-access-class-and-business-object"></a>[Инструкции:] Используйте элемент управления ObjectDataSource данных Access, класс и бизнес-объекта
 ====================
