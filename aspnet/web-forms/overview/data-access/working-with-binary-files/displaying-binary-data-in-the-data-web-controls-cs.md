@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888215"
 ---
 <a name="displaying-binary-data-in-the-data-web-controls-c"></a><span data-ttu-id="23b7c-103">Отображение двоичных данных в веб-элементы управления данными (C#)</span><span class="sxs-lookup"><span data-stu-id="23b7c-103">Displaying Binary Data in the Data Web Controls (C#)</span></span>
 ====================

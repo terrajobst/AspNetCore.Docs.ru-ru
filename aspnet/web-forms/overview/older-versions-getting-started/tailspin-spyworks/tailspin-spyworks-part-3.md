@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882092"
 ---
 <a name="part-3-layout-and-category-menu"></a><span data-ttu-id="5f7d4-104">Часть 3: Макет и меню категории</span><span class="sxs-lookup"><span data-stu-id="5f7d4-104">Part 3: Layout and Category Menu</span></span>
 ====================

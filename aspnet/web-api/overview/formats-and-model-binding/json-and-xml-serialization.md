@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28038105"
 ---
 <a name="json-and-xml-serialization-in-aspnet-web-api"></a><span data-ttu-id="94963-102">JSON и XML-сериализации в веб-API ASP.NET</span><span class="sxs-lookup"><span data-stu-id="94963-102">JSON and XML Serialization in ASP.NET Web API</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876804"
 ---
 <a name="overview-of-custom-storage-providers-for-aspnet-identity"></a><span data-ttu-id="fc9ad-103">Обзор поставщиков пользовательского хранилища для ASP.NET Identity</span><span class="sxs-lookup"><span data-stu-id="fc9ad-103">Overview of Custom Storage Providers for ASP.NET Identity</span></span>
 ====================

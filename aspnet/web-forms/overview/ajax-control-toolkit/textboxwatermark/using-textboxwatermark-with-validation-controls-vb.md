@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879235"
 ---
 <a name="using-textboxwatermark-with-validation-controls-vb"></a><span data-ttu-id="dc266-104">Использование TextBoxWatermark с проверяющие элементы управления (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="dc266-104">Using TextBoxWatermark With Validation Controls (VB)</span></span>
 ====================

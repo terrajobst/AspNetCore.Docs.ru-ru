@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883031"
 ---
 <a name="masterdetail-using-a-selectable-master-gridview-with-a-details-detailview-c"></a><span data-ttu-id="8dbf5-104">Главного и подчиненного представлений с помощью выбираемого основного элемента GridView с DetailView (C#)</span><span class="sxs-lookup"><span data-stu-id="8dbf5-104">Master/Detail Using a Selectable Master GridView with a Details DetailView (C#)</span></span>
 ====================

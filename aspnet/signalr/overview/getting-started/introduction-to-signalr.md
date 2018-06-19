@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873697"
 ---
 <a name="introduction-to-signalr"></a><span data-ttu-id="6dec7-103">Общие сведения о SignalR</span><span class="sxs-lookup"><span data-stu-id="6dec7-103">Introduction to SignalR</span></span>
 ====================

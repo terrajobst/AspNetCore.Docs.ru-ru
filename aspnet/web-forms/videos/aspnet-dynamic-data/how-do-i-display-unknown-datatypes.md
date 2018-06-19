@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881605"
 ---
 <a name="how-do-i-display-unknown-datatypes"></a><span data-ttu-id="7c53a-104">Как отображения неизвестные типы данных?</span><span class="sxs-lookup"><span data-stu-id="7c53a-104">How do I Display Unknown datatypes?</span></span>
 ====================

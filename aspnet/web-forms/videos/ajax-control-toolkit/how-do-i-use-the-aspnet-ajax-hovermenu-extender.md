@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892664"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-hovermenu-extender"></a><span data-ttu-id="e2ee2-104">[Инструкции:] Использовать расширитель HoverMenu ASP.NET AJAX?</span><span class="sxs-lookup"><span data-stu-id="e2ee2-104">[How Do I:] Use the ASP.NET AJAX HoverMenu Extender?</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885544"
 ---
 <a name="how-do-i-choose-between-methods-of-ajax-page-updates"></a><span data-ttu-id="fed34-105">[Инструкции:] Выбрать один из методов AJAX для страницы обновления?</span><span class="sxs-lookup"><span data-stu-id="fed34-105">[How Do I:] Choose Between Methods of AJAX Page Updates?</span></span>
 ====================

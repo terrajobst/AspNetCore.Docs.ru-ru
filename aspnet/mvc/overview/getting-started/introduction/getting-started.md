@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868325"
 ---
 <a name="getting-started-with-aspnet-mvc-5"></a><span data-ttu-id="12000-104">Начало работы с ASP.NET MVC 5</span><span class="sxs-lookup"><span data-stu-id="12000-104">Getting Started with ASP.NET MVC 5</span></span>
 ====================

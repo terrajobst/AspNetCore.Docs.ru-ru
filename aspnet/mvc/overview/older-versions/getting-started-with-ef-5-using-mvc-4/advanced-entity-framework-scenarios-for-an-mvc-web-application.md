@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876713"
 ---
 <a name="advanced-entity-framework-scenarios-for-an-mvc-web-application-10-of-10"></a><span data-ttu-id="bf3b0-103">Сценарии Framework дополнительные сущности для веб-приложения MVC (10, 10)</span><span class="sxs-lookup"><span data-stu-id="bf3b0-103">Advanced Entity Framework Scenarios for an MVC Web Application (10 of 10)</span></span>
 ====================

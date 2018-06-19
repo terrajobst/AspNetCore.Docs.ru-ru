@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884627"
 ---
 <a name="feature-specific-delegated-management"></a><span data-ttu-id="97a2b-103">Функция специальное делегированное управление</span><span class="sxs-lookup"><span data-stu-id="97a2b-103">Feature Specific Delegated Management</span></span>
 ====================

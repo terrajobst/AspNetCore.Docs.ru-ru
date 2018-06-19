@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873499"
 ---
 <a name="using-ajax-control-toolkit-controls-and-control-extenders-c"></a><span data-ttu-id="adf91-103">С помощью набора средств управления AJAX и расширителей элементов управления (C#)</span><span class="sxs-lookup"><span data-stu-id="adf91-103">Using AJAX Control Toolkit Controls and Control Extenders (C#)</span></span>
 ====================

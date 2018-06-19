@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880405"
 ---
 <a name="configuring-parameters-for-web-package-deployment"></a><span data-ttu-id="3f79b-103">Настройка параметров для развертывания веб-пакета</span><span class="sxs-lookup"><span data-stu-id="3f79b-103">Configuring Parameters for Web Package Deployment</span></span>
 ====================

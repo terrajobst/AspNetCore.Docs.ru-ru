@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873983"
 ---
 <a name="iteration-4--make-the-application-loosely-coupled-c"></a><span data-ttu-id="d5642-104">Итерации #4 — сделать приложение слабо (C#)</span><span class="sxs-lookup"><span data-stu-id="d5642-104">Iteration #4 – Make the application loosely coupled (C#)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890883"
 ---
 <a name="creating-a-site-wide-layout-using-master-pages-vb"></a><span data-ttu-id="eac9d-104">Создание структуры сайта с помощью главных страниц (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="eac9d-104">Creating a Site-Wide Layout Using Master Pages (VB)</span></span>
 ====================

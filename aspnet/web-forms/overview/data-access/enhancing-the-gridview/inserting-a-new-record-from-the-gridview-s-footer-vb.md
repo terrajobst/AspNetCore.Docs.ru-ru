@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888374"
 ---
 <a name="inserting-a-new-record-from-the-gridviews-footer-vb"></a><span data-ttu-id="5fb1b-103">Вставка новой записи в нижнем колонтитуле GridView (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="5fb1b-103">Inserting a New Record from the GridView's Footer (VB)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885826"
 ---
 <a name="creating-a-customized-sorting-user-interface-c"></a><span data-ttu-id="52552-104">Создание пользовательского интерфейса настраиваемой сортировки (C#)</span><span class="sxs-lookup"><span data-stu-id="52552-104">Creating a Customized Sorting User Interface (C#)</span></span>
 ====================

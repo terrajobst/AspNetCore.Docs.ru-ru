@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882992"
 ---
 <a name="how-do-i-make-client-side-network-callbacks-with-aspnet-ajax"></a><span data-ttu-id="c9b0c-105">[Инструкции:] Чтобы обратные вызовы сети на стороне клиента с помощью ASP.NET AJAX?</span><span class="sxs-lookup"><span data-stu-id="c9b0c-105">[How Do I:] Make Client-Side Network Callbacks with ASP.NET AJAX?</span></span>
 ====================

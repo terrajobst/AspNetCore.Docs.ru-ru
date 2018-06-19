@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886801"
 ---
 <a name="using-script-combining-to-improve-ajax-performance"></a><span data-ttu-id="d9867-103">Для повышения производительности AJAX с помощью сценариев объединения</span><span class="sxs-lookup"><span data-stu-id="d9867-103">Using Script Combining to improve AJAX performance</span></span>
 ====================

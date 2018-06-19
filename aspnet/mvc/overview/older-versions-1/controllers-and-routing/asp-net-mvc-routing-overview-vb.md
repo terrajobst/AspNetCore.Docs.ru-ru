@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879211"
 ---
 <a name="aspnet-mvc-routing-overview-vb"></a><span data-ttu-id="50a06-103">Обзор маршрутизации ASP.NET MVC (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="50a06-103">ASP.NET MVC Routing Overview (VB)</span></span>
 ====================

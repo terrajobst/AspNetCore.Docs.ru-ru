@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883363"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-accordion-control"></a><span data-ttu-id="3e71c-104">[Инструкции:] Использование элемента управления ASP.NET AJAX?</span><span class="sxs-lookup"><span data-stu-id="3e71c-104">[How Do I:] Use the ASP.NET AJAX Accordion Control?</span></span>
 ====================

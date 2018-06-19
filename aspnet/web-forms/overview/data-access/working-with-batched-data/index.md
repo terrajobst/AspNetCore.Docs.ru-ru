@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-batched-data/index
-title: "Работа с данными в пакетном режиме | Документы Microsoft"
+title: Работа с данными в пакетном режиме | Документы Microsoft
 author: rick-anderson
-description: "Эти учебники просмотрите обновление, удаление и вставка пакетов данных с помощью транзакций."
+description: Эти учебники просмотрите обновление, удаление и вставка пакетов данных с помощью транзакций.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data
 msc.type: chapter
 ms.openlocfilehash: 1a6af028c2d4ac8b6085a34bec16893d1e1632af
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26514763"
 ---
 <a name="working-with-batched-data"></a><span data-ttu-id="e238a-103">Работа с данными в пакетном режиме</span><span class="sxs-lookup"><span data-stu-id="e238a-103">Working with Batched Data</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876752"
 ---
 <a name="provide-crud-create-read-update-delete-data-form-entry-support"></a><span data-ttu-id="dcdba-103">Укажите CRUD (Создание, чтение, обновление и удаление) данных образуют запись поддержки</span><span class="sxs-lookup"><span data-stu-id="dcdba-103">Provide CRUD (Create, Read, Update, Delete) Data Form Entry Support</span></span>
 ====================

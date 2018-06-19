@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30867428"
 ---
 <a name="nerddinner-wrap-up"></a><span data-ttu-id="21cea-103">Обновление NerdDinner Wrap вверх</span><span class="sxs-lookup"><span data-stu-id="21cea-103">NerdDinner Wrap Up</span></span>
 ====================

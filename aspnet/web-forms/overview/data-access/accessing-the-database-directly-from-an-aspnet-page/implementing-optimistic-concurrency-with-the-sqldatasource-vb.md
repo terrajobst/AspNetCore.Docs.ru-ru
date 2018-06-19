@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877555"
 ---
 <a name="implementing-optimistic-concurrency-with-the-sqldatasource-vb"></a><span data-ttu-id="ce79e-103">Реализация оптимистической блокировки в SqlDataSource (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="ce79e-103">Implementing Optimistic Concurrency with the SqlDataSource (VB)</span></span>
 ====================

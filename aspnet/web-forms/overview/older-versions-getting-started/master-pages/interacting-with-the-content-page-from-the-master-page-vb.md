@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889479"
 ---
 <a name="interacting-with-the-content-page-from-the-master-page-vb"></a><span data-ttu-id="90c50-103">Взаимодействие с содержимым страницы на главной странице (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="90c50-103">Interacting with the Content Page from the Master Page (VB)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889099"
 ---
 <a name="retrieving-and-displaying-data-with-model-binding-and-web-forms"></a><span data-ttu-id="1d866-104">Извлечение и отображение данных с помощью привязки модели и веб-форм</span><span class="sxs-lookup"><span data-stu-id="1d866-104">Retrieving and displaying data with model binding and web forms</span></span>
 ====================

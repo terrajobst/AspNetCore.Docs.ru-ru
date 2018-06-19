@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882368"
 ---
 <a name="how-do-i-change-how-my-fields-render"></a><span data-ttu-id="e81b9-105">Изменение поля my подготовки к просмотру</span><span class="sxs-lookup"><span data-stu-id="e81b9-105">How do I Change how my Fields render?</span></span>
 ====================

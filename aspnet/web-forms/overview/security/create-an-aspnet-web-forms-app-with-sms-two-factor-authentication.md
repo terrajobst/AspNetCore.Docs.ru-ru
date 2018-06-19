@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887429"
 ---
 <a name="create-an-aspnet-web-forms-app-with-sms-two-factor-authentication-c"></a><span data-ttu-id="840dc-104">Создание ASP.NET Web Forms приложение с SMS двухфакторной проверки подлинности (C#)</span><span class="sxs-lookup"><span data-stu-id="840dc-104">Create an ASP.NET Web Forms app with SMS Two-Factor Authentication (C#)</span></span>
 ====================

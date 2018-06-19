@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871419"
 ---
 <a name="preventing-javascript-injection-attacks-c"></a><span data-ttu-id="96d94-104">Предотвращение атак путем внедрения кода JavaScript (C#)</span><span class="sxs-lookup"><span data-stu-id="96d94-104">Preventing JavaScript Injection Attacks (C#)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889453"
 ---
 <a name="multiple-contentplaceholders-and-default-content-vb"></a><span data-ttu-id="ef4d8-103">Несколько ContentPlaceHolders и содержимого по умолчанию (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="ef4d8-103">Multiple ContentPlaceHolders and Default Content (VB)</span></span>
 ====================

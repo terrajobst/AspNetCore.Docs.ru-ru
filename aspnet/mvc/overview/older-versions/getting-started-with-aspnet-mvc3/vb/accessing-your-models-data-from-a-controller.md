@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873148"
 ---
 <a name="accessing-your-models-data-from-a-controller-vb"></a><span data-ttu-id="b9412-103">Доступ к данным вашей модели из контроллера (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="b9412-103">Accessing your Model's Data from a Controller (VB)</span></span>
 ====================

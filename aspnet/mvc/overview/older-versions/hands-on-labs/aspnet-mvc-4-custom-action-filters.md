@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877714"
 ---
 # <a name="aspnet-mvc-4-custom-action-filters"></a><span data-ttu-id="1956a-104">ASP.NET MVC 4 настраиваемых фильтров действий</span><span class="sxs-lookup"><span data-stu-id="1956a-104">ASP.NET MVC 4 Custom Action Filters</span></span>
 

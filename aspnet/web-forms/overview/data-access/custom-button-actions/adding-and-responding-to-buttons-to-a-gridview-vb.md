@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878104"
 ---
 <a name="adding-and-responding-to-buttons-to-a-gridview-vb"></a><span data-ttu-id="c106f-104">Добавление и реагирование на кнопок в элементе управления GridView (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="c106f-104">Adding and Responding to Buttons to a GridView (VB)</span></span>
 ====================

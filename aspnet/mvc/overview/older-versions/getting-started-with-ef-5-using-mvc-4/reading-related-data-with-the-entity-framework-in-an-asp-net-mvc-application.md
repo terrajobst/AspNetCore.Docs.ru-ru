@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876687"
 ---
 <a name="reading-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-5-of-10"></a><span data-ttu-id="3ef91-103">Чтение связанных данных с платформой Entity Framework в приложении ASP.NET MVC (5, 10)</span><span class="sxs-lookup"><span data-stu-id="3ef91-103">Reading Related Data with the Entity Framework in an ASP.NET MVC Application (5 of 10)</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-map-an-aspnet-server-control-to-the-adaptor-used-to-render-it
-title: "[Инструкции:] Сопоставить адаптер, используемый для его отображения элемента управления сервера ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Сопоставить адаптер, используемый для его отображения элемента управления сервера ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис будет показано, как использовать адаптер элемента управления для предоставления различных готовых для просмотра серверного элемента управления ASP.NET без изменения c..."
+description: В этой видео пиксел Крис будет показано, как использовать адаптер элемента управления для предоставления различных готовых для просмотра серверного элемента управления ASP.NET без изменения c...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/19/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526063"
 ---
 <a name="how-do-i-map-an-aspnet-server-control-to-the-adaptor-used-to-render-it"></a><span data-ttu-id="d6dd2-103">[Инструкции:] Сопоставить адаптер, используемый для его отображения элемента управления сервера ASP.NET</span><span class="sxs-lookup"><span data-stu-id="d6dd2-103">[How Do I:] Map an ASP.NET Server Control to the Adaptor Used to Render It</span></span>
 ====================

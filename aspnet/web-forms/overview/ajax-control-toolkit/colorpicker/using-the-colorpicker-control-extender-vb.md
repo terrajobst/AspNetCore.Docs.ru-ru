@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874529"
 ---
 <a name="using-the-colorpicker-control-extender-vb"></a><span data-ttu-id="33880-104">С помощью элемента управления ColorPicker расширения (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="33880-104">Using the ColorPicker Control Extender (VB)</span></span>
 ====================

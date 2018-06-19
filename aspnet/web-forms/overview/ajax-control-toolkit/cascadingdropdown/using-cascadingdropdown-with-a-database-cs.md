@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879131"
 ---
 <a name="using-cascadingdropdown-with-a-database-c"></a><span data-ttu-id="b4938-103">С помощью CascadingDropDown с базой данных (C#)</span><span class="sxs-lookup"><span data-stu-id="b4938-103">Using CascadingDropDown with a Database (C#)</span></span>
 ====================

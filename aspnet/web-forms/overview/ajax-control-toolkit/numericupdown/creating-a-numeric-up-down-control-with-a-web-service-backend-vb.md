@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871393"
 ---
 <a name="creating-a-numeric-updown-control-with-a-web-service-backend-vb"></a><span data-ttu-id="5b322-103">Создание числового элемента управления вверх/вниз с серверной службы Web (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="5b322-103">Creating a Numeric Up/Down Control with a Web Service Backend (VB)</span></span>
 ====================

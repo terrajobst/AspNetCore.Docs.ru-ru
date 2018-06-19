@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882469"
 ---
 <a name="creating-a-server-farm-with-the-web-farm-framework"></a><span data-ttu-id="285fe-103">Создание фермы серверов с помощью платформы веб-фермы</span><span class="sxs-lookup"><span data-stu-id="285fe-103">Creating a Server Farm with the Web Farm Framework</span></span>
 ====================

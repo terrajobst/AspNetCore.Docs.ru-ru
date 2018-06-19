@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881725"
 ---
 <a name="how-do-i-create-a-master-page-in-visual-studio-2008"></a><span data-ttu-id="148aa-103">[Инструкции:] Создание главной страницы в Visual Studio 2008</span><span class="sxs-lookup"><span data-stu-id="148aa-103">[How Do I:] Create a Master Page in Visual Studio 2008</span></span>
 ====================

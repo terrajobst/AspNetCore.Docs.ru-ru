@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886190"
 ---
 <a name="set-up-your-development-environment-for-aspnet-35"></a><span data-ttu-id="4aca4-103">Настройка среды разработки для ASP.NET 3.5</span><span class="sxs-lookup"><span data-stu-id="4aca4-103">Set Up Your Development Environment for ASP.NET 3.5</span></span>
 ====================

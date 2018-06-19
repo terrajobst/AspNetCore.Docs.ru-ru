@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884604"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-autocomplete-control"></a><span data-ttu-id="e4941-103">[Инструкции:] Используйте элемент управления ASP.NET AJAX автозаполнения</span><span class="sxs-lookup"><span data-stu-id="e4941-103">[How Do I:] Use the ASP.NET AJAX AutoComplete Control</span></span>
 ====================

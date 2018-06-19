@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887633"
 ---
 <a name="customizing-the-data-modification-interface-c"></a><span data-ttu-id="f6c26-103">Настройка интерфейса изменения данных (C#)</span><span class="sxs-lookup"><span data-stu-id="f6c26-103">Customizing the Data Modification Interface (C#)</span></span>
 ====================

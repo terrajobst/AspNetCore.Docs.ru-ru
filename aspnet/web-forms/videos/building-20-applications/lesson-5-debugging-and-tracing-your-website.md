@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881926"
 ---
 <a name="lesson-5-debugging-and-tracing-your-website"></a><span data-ttu-id="9a66b-103">[Занятие 5:] Отладка и трассировка веб-сайта</span><span class="sxs-lookup"><span data-stu-id="9a66b-103">[Lesson 5:] Debugging and Tracing Your Website</span></span>
 ====================

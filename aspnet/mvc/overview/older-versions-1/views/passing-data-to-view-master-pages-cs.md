@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869846"
 ---
 <a name="passing-data-to-view-master-pages-c"></a><span data-ttu-id="e4a3f-104">Передача данных представления главных страниц (C#)</span><span class="sxs-lookup"><span data-stu-id="e4a3f-104">Passing Data to View Master Pages (C#)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876271"
 ---
 <a name="external-authentication-services-with-aspnet-web-api-c"></a><span data-ttu-id="5ec6e-103">Внешние службы проверки подлинности с помощью веб-API ASP.NET (C#)</span><span class="sxs-lookup"><span data-stu-id="5ec6e-103">External Authentication Services with ASP.NET Web API (C#)</span></span>
 ====================

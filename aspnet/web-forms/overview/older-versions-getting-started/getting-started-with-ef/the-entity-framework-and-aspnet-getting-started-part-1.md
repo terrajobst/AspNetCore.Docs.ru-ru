@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889492"
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms"></a><span data-ttu-id="e2eed-103">Приступая к работе с базой данных Entity Framework 4.0 сначала и ASP.NET 4 Web Forms</span><span class="sxs-lookup"><span data-stu-id="e2eed-103">Getting Started with Entity Framework 4.0 Database First and ASP.NET 4 Web Forms</span></span>
 ====================

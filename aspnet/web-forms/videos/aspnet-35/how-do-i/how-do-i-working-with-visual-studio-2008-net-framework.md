@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881120"
 ---
 <a name="how-do-i-working-with-visual-studio-2008-net-framework"></a><span data-ttu-id="2183a-105">[Инструкции:] Работа с Visual Studio 2008 .NET Framework</span><span class="sxs-lookup"><span data-stu-id="2183a-105">[How Do I:] Working with Visual Studio 2008 .NET Framework</span></span>
 ====================

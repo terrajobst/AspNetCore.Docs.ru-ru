@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871848"
 ---
 <a name="iteration-2--make-the-application-look-nice-c"></a><span data-ttu-id="e1fcc-103">Итерации #2 — сделать приложение поиска работы с низким приоритетом (C#)</span><span class="sxs-lookup"><span data-stu-id="e1fcc-103">Iteration #2 – Make the application look nice (C#)</span></span>
 ====================

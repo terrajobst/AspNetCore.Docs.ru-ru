@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877389"
 ---
 <a name="iteration-1--create-the-application-c"></a><span data-ttu-id="30c1b-104">Итерации #1 – Создание приложения (C#)</span><span class="sxs-lookup"><span data-stu-id="30c1b-104">Iteration #1 – Create the Application (C#)</span></span>
 ====================

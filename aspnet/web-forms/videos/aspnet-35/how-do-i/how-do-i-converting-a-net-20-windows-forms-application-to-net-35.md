@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886463"
 ---
 <a name="how-do-i-converting-a-net-20-windows-forms-application-to-net-35"></a><span data-ttu-id="5e212-104">[Инструкции:] Преобразование приложения .NET 2.0 Windows Forms в .NET 3.5</span><span class="sxs-lookup"><span data-stu-id="5e212-104">[How Do I:] Converting a .NET 2.0 Windows Forms Application to .NET 3.5</span></span>
 ====================

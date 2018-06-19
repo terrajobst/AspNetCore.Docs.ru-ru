@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882300"
 ---
 <a name="data-access-layers-in-aspnet-applications"></a><span data-ttu-id="a2d37-104">Слои доступа к данным в приложениях ASP.NET</span><span class="sxs-lookup"><span data-stu-id="a2d37-104">Data Access Layers in ASP.NET Applications</span></span>
 ====================

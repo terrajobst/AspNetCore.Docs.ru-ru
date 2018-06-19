@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874984"
 ---
 <a name="configuring-aspnet-web-api-2"></a><span data-ttu-id="01496-102">Настройка ASP.NET Web API 2</span><span class="sxs-lookup"><span data-stu-id="01496-102">Configuring ASP.NET Web API 2</span></span>
 ====================

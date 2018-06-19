@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874386"
 ---
 <a name="secure-applications-using-authentication-and-authorization"></a><span data-ttu-id="c846b-103">Защита приложений с использованием проверки подлинности и авторизации</span><span class="sxs-lookup"><span data-stu-id="c846b-103">Secure Applications Using Authentication and Authorization</span></span>
 ====================

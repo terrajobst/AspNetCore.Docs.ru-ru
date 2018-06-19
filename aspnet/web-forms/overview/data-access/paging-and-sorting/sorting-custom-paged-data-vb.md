@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883070"
 ---
 <a name="sorting-custom-paged-data-vb"></a><span data-ttu-id="ed1dd-104">Сортировка настраиваемый постраничных данных (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="ed1dd-104">Sorting Custom Paged Data (VB)</span></span>
 ====================

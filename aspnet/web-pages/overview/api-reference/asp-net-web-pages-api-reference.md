@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30897588"
 ---
 <a name="aspnet-web-pages-razor-api-quick-reference"></a><span data-ttu-id="b6b9e-103">Веб-страницы ASP.NET (Razor) краткий справочник по API</span><span class="sxs-lookup"><span data-stu-id="b6b9e-103">ASP.NET Web Pages (Razor) API Quick Reference</span></span>
 ====================

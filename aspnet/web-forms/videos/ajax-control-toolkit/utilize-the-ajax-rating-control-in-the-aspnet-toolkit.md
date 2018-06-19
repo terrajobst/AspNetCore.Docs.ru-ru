@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885798"
 ---
 <a name="utilize-the-ajax-rating-control-in-the-aspnet-toolkit"></a><span data-ttu-id="0cfe5-103">Использование AJAX, оценка элемента управления в наборе средств ASP.NET</span><span class="sxs-lookup"><span data-stu-id="0cfe5-103">Utilize the AJAX Rating Control in the ASP.NET Toolkit</span></span>
 ====================

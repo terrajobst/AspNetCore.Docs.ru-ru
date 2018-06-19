@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886613"
 ---
 <a name="how-to-dynamically-add-controls-to-a-web-page"></a><span data-ttu-id="f10d3-103">Как динамически добавлять элементы управления на веб-страницу</span><span class="sxs-lookup"><span data-stu-id="f10d3-103">How To Dynamically Add Controls to a Web Page</span></span>
 ====================

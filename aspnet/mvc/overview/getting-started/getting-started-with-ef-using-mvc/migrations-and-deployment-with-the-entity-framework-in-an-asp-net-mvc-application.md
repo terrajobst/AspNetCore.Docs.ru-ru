@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879560"
 ---
 <a name="code-first-migrations-and-deployment-with-the-entity-framework-in-an-aspnet-mvc-application"></a><span data-ttu-id="6691f-103">Сначала код миграция и развертывание с платформой Entity Framework в приложении ASP.NET MVC</span><span class="sxs-lookup"><span data-stu-id="6691f-103">Code First Migrations and Deployment with the Entity Framework in an ASP.NET MVC Application</span></span>
 ====================

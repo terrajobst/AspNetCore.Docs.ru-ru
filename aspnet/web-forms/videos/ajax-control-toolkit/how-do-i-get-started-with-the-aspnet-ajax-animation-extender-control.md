@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880628"
 ---
 <a name="how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control"></a><span data-ttu-id="0bc32-104">[Инструкции:] Приступая к работе с ASP.NET AJAX анимации управляющего элемента-расширителя?</span><span class="sxs-lookup"><span data-stu-id="0bc32-104">[How Do I:] Get Started with the ASP.NET AJAX Animation Extender Control?</span></span>
 ====================

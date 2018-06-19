@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878013"
 ---
 <a name="building-a-custom-database-driven-site-map-provider-c"></a><span data-ttu-id="85d4e-104">Создание поставщика карты сайта пользовательские базы данных (C#)</span><span class="sxs-lookup"><span data-stu-id="85d4e-104">Building a Custom Database-Driven Site Map Provider (C#)</span></span>
 ====================

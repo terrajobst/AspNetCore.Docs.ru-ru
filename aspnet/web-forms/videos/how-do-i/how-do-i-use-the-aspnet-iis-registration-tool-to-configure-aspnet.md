@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-the-aspnet-iis-registration-tool-to-configure-aspnet
-title: "Как использовать средство регистрации ASP.NET IIS для настройки ASP.NET | Документы Microsoft"
+title: Как использовать средство регистрации ASP.NET IIS для настройки ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "В этой видео пиксел Крис показано, как использовать средство регистрации ASP.NET IIS для настройки ASP.NET. Во-первых, в разделе сопоставление расширений файлов ASP.NET в..."
+description: В этой видео пиксел Крис показано, как использовать средство регистрации ASP.NET IIS для настройки ASP.NET. Во-первых, в разделе сопоставление расширений файлов ASP.NET в...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/01/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525893"
 ---
 <a name="how-do-i-use-the-aspnet-iis-registration-tool-to-configure-aspnet"></a><span data-ttu-id="31d30-104">Как использовать средство регистрации ASP.NET IIS для настройки ASP.NET</span><span class="sxs-lookup"><span data-stu-id="31d30-104">How Do I Use the ASP.NET IIS Registration Tool to Configure ASP.NET</span></span>
 ====================

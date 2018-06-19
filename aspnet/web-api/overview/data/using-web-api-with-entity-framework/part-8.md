@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868091"
 ---
 <a name="display-item-details"></a><span data-ttu-id="726af-102">Отобразить сведения о элемента</span><span class="sxs-lookup"><span data-stu-id="726af-102">Display Item Details</span></span>
 ====================

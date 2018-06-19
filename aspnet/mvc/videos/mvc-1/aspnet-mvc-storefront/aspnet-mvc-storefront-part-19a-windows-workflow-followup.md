@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878559"
 ---
 <a name="aspnet-mvc-storefront-part-19a-windows-workflow-followup"></a><span data-ttu-id="24390-103">ASP.NET MVC Storefront часть ток составляет 19a: отслеживания рабочего процесса Windows</span><span class="sxs-lookup"><span data-stu-id="24390-103">ASP.NET MVC Storefront Part 19a: Windows Workflow Followup</span></span>
 ====================

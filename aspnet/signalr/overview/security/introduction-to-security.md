@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873905"
 ---
 <a name="introduction-to-signalr-security"></a><span data-ttu-id="b4048-103">Общие сведения о безопасности SignalR</span><span class="sxs-lookup"><span data-stu-id="b4048-103">Introduction to SignalR Security</span></span>
 ====================

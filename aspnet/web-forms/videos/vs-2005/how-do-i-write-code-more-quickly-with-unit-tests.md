@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895869"
 ---
 <a name="how-do-i-write-code-more-quickly-with-unit-tests"></a><span data-ttu-id="f906b-105">[Инструкции:] Написать код быстрее с модульными тестами?</span><span class="sxs-lookup"><span data-stu-id="f906b-105">[How Do I:] Write Code More Quickly with Unit Tests?</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886359"
 ---
 <a name="how-to-manually-bind-a-dataset-to-a-datagrid"></a><span data-ttu-id="cd99f-104">Как вручную связать набор данных в элемент управления Datagrid</span><span class="sxs-lookup"><span data-stu-id="cd99f-104">How to Manually Bind a Dataset to a Datagrid</span></span>
 ====================

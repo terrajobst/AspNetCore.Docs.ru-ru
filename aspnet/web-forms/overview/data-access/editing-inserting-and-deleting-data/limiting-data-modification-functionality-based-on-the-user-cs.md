@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888202"
 ---
 <a name="limiting-data-modification-functionality-based-on-the-user-c"></a><span data-ttu-id="d6de1-104">Ограничение функций изменения данных на основе пользователя (C#)</span><span class="sxs-lookup"><span data-stu-id="d6de1-104">Limiting Data Modification Functionality Based on the User (C#)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881897"
 ---
 <a name="how-do-i-associate-ajax-client-behavior-with-an-aspnet-server-control"></a><span data-ttu-id="e639b-105">[Инструкции:] Связать клиентское поведение AJAX с ASP.NET серверный элемент управления?</span><span class="sxs-lookup"><span data-stu-id="e639b-105">[How Do I:] Associate AJAX Client Behavior with an ASP.NET Server Control?</span></span>
 ====================

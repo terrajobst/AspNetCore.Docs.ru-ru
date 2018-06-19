@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885849"
 ---
 <a name="updating-deleting-and-creating-data-with-model-binding-and-web-forms"></a><span data-ttu-id="612dd-104">Обновление, удаление и создание данных с привязкой модели и веб-форм</span><span class="sxs-lookup"><span data-stu-id="612dd-104">Updating, deleting, and creating data with model binding and web forms</span></span>
 ====================

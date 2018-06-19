@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877428"
 ---
 <a name="displaying-summary-information-in-the-gridviews-footer-c"></a><span data-ttu-id="1311e-104">Отображение сводки в нижнем колонтитуле GridView (C#)</span><span class="sxs-lookup"><span data-stu-id="1311e-104">Displaying Summary Information in the GridView's Footer (C#)</span></span>
 ====================

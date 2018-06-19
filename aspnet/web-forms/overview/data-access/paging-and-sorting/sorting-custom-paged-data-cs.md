@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882420"
 ---
 <a name="sorting-custom-paged-data-c"></a><span data-ttu-id="0d7b4-104">Сортировка настраиваемый постраничных данных (C#)</span><span class="sxs-lookup"><span data-stu-id="0d7b4-104">Sorting Custom Paged Data (C#)</span></span>
 ====================

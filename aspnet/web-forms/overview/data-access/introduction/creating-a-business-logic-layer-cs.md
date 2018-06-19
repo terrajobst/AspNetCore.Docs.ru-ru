@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886944"
 ---
 <a name="creating-a-business-logic-layer-c"></a><span data-ttu-id="81bbb-103">Создание уровня бизнес-логики (C#)</span><span class="sxs-lookup"><span data-stu-id="81bbb-103">Creating a Business Logic Layer (C#)</span></span>
 ====================

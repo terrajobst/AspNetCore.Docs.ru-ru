@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884734"
 ---
 <a name="aspnet-4-quick-hit--new-rendering-option-for-check-box-lists-and-radio-button-lists"></a><span data-ttu-id="e5364-103">Список «Быстрый Hit» — новые визуализации параметр для списков флажок и переключатель ASP.NET 4</span><span class="sxs-lookup"><span data-stu-id="e5364-103">ASP.NET 4 "Quick Hit" – New Rendering Option for Check Box Lists and Radio Button Lists</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882446"
 ---
 <a name="how-do-i-linq-to-sql-querying-the-database"></a><span data-ttu-id="c18f1-103">[Инструкции:] LINQ to SQL: запросы к базе данных</span><span class="sxs-lookup"><span data-stu-id="c18f1-103">[How Do I:] LINQ to SQL: Querying the Database</span></span>
 ====================

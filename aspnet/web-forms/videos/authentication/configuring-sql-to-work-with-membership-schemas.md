@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882797"
 ---
 <a name="configuring-sql-to-work-with-membership-schemas"></a><span data-ttu-id="b515d-103">Настройка SQL для работы со схемами членства</span><span class="sxs-lookup"><span data-stu-id="b515d-103">Configuring SQL To Work with Membership Schemas</span></span>
 ====================

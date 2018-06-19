@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879924"
 ---
 <a name="how-do-i-linq-to-sql-overview"></a><span data-ttu-id="e2b6f-104">[Инструкции:] LINQ to SQL: Обзор</span><span class="sxs-lookup"><span data-stu-id="e2b6f-104">[How Do I:] LINQ to SQL: Overview</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872576"
 ---
 <a name="unstructured-blob-storage-building-real-world-cloud-apps-with-azure"></a><span data-ttu-id="6c7e3-104">Хранилище неструктурированных BLOB-объектов (Создание реальных облачных приложений в Azure)</span><span class="sxs-lookup"><span data-stu-id="6c7e3-104">Unstructured Blob Storage (Building Real-World Cloud Apps with Azure)</span></span>
 ====================

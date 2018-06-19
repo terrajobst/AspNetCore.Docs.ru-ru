@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887945"
 ---
 <a name="adding-validation-controls-to-the-editing-and-inserting-interfaces-vb"></a><span data-ttu-id="096cb-103">Добавление элементов управления проверки для редактирования и вставка интерфейсов (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="096cb-103">Adding Validation Controls to the Editing and Inserting Interfaces (VB)</span></span>
 ====================

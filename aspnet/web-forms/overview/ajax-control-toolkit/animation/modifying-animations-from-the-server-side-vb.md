@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869274"
 ---
 <a name="modifying-animations-from-the-server-side-vb"></a><span data-ttu-id="6b7a3-104">Изменение анимации со стороны сервера (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="6b7a3-104">Modifying Animations From The Server Side (VB)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877363"
 ---
 <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a><span data-ttu-id="fb7fb-104">Мониторинг и Телеметрия (Создание реальных облачных приложений в Azure)</span><span class="sxs-lookup"><span data-stu-id="fb7fb-104">Monitoring and Telemetry (Building Real-World Cloud Apps with Azure)</span></span>
 ====================

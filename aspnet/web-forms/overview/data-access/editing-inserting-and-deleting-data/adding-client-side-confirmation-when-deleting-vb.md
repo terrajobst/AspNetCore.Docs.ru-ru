@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880145"
 ---
 <a name="adding-client-side-confirmation-when-deleting-vb"></a><span data-ttu-id="2dec1-104">Добавление клиентского подтверждения при удалении (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="2dec1-104">Adding Client-Side Confirmation When Deleting (VB)</span></span>
 ====================

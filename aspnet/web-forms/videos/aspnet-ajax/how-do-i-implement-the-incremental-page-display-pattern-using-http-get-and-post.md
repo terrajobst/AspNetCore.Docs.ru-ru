@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886554"
 ---
 <a name="how-do-i-implement-the-incremental-page-display-pattern-using-http-get-and-post"></a><span data-ttu-id="f889f-105">[Инструкции:] Реализовать добавочное шаблон отображения страницы, с помощью HTTP GET и POST?</span><span class="sxs-lookup"><span data-stu-id="f889f-105">[How Do I:] Implement the Incremental Page Display Pattern using HTTP GET and POST?</span></span>
 ====================

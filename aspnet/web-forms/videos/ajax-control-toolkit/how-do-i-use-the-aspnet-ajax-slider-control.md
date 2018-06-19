@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880054"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-slider-control"></a><span data-ttu-id="c993a-105">[Инструкции:] Используйте ползунок ASP.NET AJAX?</span><span class="sxs-lookup"><span data-stu-id="c993a-105">[How Do I:] Use the ASP.NET AJAX Slider Control?</span></span>
 ====================

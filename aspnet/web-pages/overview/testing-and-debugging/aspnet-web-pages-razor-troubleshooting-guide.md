@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898517"
 ---
 <a name="aspnet-web-pages-razor-troubleshooting-guide"></a><span data-ttu-id="d2bdf-104">Веб-страницы ASP.NET руководство по устранению неполадок (Razor)</span><span class="sxs-lookup"><span data-stu-id="d2bdf-104">ASP.NET Web Pages (Razor) Troubleshooting Guide</span></span>
 ====================

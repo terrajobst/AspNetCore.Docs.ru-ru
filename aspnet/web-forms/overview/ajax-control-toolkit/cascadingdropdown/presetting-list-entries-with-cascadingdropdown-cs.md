@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868832"
 ---
 <a name="presetting-list-entries-with-cascadingdropdown-c"></a><span data-ttu-id="dae6b-103">Предварительная настройка записи списка с CascadingDropDown (C#)</span><span class="sxs-lookup"><span data-stu-id="dae6b-103">Presetting List Entries with CascadingDropDown (C#)</span></span>
 ====================

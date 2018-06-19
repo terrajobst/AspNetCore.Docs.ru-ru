@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882186"
 ---
 <a name="how-do-i-implement-dynamic-partial-page-updates-with-aspnet-ajax"></a><span data-ttu-id="3c740-105">[Инструкции:] Реализация динамической частичных обновлений с помощью ASP.NET AJAX?</span><span class="sxs-lookup"><span data-stu-id="3c740-105">[How Do I:] Implement Dynamic Partial-Page Updates with ASP.NET AJAX?</span></span>
 ====================

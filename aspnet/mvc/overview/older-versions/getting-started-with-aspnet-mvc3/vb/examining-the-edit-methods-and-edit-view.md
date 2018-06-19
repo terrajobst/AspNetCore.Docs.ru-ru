@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875465"
 ---
 <a name="examining-the-edit-methods-and-edit-view-vb"></a><span data-ttu-id="c22d3-103">Изучение методы изменения и представления изменения (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="c22d3-103">Examining the Edit Methods and Edit View (VB)</span></span>
 ====================

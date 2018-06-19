@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872979"
 ---
 <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a><span data-ttu-id="37bd0-103">Профилирование и отладке приложения ASP.NET MVC с помощью Glimpse</span><span class="sxs-lookup"><span data-stu-id="37bd0-103">Profile and debug your ASP.NET MVC app with Glimpse</span></span>
 ====================

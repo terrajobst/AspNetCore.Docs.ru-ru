@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885631"
 ---
 <a name="aspnet-vnext-videos-model-binding-part-1---selecting-data"></a><span data-ttu-id="2d3b8-103">ASP.NET vNext видео: привязки модели, часть 1 — Выбор данных</span><span class="sxs-lookup"><span data-stu-id="2d3b8-103">ASP.NET vNext Videos: Model Binding Part 1 - Selecting Data</span></span>
 ====================

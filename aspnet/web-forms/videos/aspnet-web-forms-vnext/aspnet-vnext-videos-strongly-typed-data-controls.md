@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880990"
 ---
 <a name="aspnet-vnext-videos-strongly-typed-data-controls"></a><span data-ttu-id="be070-103">ASP.NET vNext видео: строго типизированные элементы управления данными</span><span class="sxs-lookup"><span data-stu-id="be070-103">ASP.NET vNext Videos: Strongly Typed Data Controls</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886996"
 ---
 <a name="users-and-roles-on-the-production-website-vb"></a><span data-ttu-id="e3a75-103">Пользователи и роли рабочего веб-сайта (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="e3a75-103">Users and Roles On The Production Website (VB)</span></span>
 ====================

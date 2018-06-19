@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/signalr-1x-hubs-api-guide-net-client
-title: "Справочник по API концентраторов ASP.NET SignalR - клиент .NET (SignalR 1.x) | Документы Microsoft"
+title: Справочник по API концентраторов ASP.NET SignalR - клиент .NET (SignalR 1.x) | Документы Microsoft
 author: pfletcher
-description: "В этом документе содержатся вводные сведения с помощью API концентраторов SignalR версии 2 в таких клиентов .NET, магазин Windows (WinRT), WPF, Silverlight и недостатки..."
+description: В этом документе содержатся вводные сведения с помощью API концентраторов SignalR версии 2 в таких клиентов .NET, магазин Windows (WinRT), WPF, Silverlight и недостатки...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/17/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28037484"
 ---
 <a name="aspnet-signalr-hubs-api-guide---net-client-signalr-1x"></a><span data-ttu-id="55315-103">Справочник по API концентраторов ASP.NET SignalR - клиент .NET (SignalR 1.x)</span><span class="sxs-lookup"><span data-stu-id="55315-103">ASP.NET SignalR Hubs API Guide - .NET Client (SignalR 1.x)</span></span>
 ====================

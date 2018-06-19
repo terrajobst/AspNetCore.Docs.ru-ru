@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874188"
 ---
 <a name="adding-a-new-field"></a><span data-ttu-id="ce2e8-102">Добавление нового поля</span><span class="sxs-lookup"><span data-stu-id="ce2e8-102">Adding a New Field</span></span>
 ====================

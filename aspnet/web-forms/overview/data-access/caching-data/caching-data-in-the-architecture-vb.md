@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876388"
 ---
 <a name="caching-data-in-the-architecture-vb"></a><span data-ttu-id="978f6-104">Кэширование данных в архитектуре (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="978f6-104">Caching Data in the Architecture (VB)</span></span>
 ====================

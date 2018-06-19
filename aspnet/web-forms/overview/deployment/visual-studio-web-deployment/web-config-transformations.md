@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880509"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-webconfig-file-transformations"></a><span data-ttu-id="2e032-103">ASP.NET веб-развертывания с помощью Visual Studio: файл преобразования Web.config</span><span class="sxs-lookup"><span data-stu-id="2e032-103">ASP.NET Web Deployment using Visual Studio: Web.config File Transformations</span></span>
 ====================

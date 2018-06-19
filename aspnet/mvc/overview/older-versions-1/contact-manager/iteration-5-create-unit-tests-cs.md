@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875582"
 ---
 <a name="iteration-5--create-unit-tests-c"></a><span data-ttu-id="ea4b2-104">Итерации #5 – Создание модульных тестов (C#)</span><span class="sxs-lookup"><span data-stu-id="ea4b2-104">Iteration #5 – Create unit tests (C#)</span></span>
 ====================

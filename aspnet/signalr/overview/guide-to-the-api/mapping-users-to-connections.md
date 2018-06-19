@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/guide-to-the-api/mapping-users-to-connections
-title: "Сопоставление пользователей SignalR с подключениями | Документы Microsoft"
+title: Сопоставление пользователей SignalR с подключениями | Документы Microsoft
 author: tfitzmac
-description: "В этом разделе показано, как сохранить сведения о пользователях и их соединения. Патрик Флетчера помогли записи в этом разделе. Версии программного обеспечения, используемого в этом разделе..."
+description: В этом разделе показано, как сохранить сведения о пользователях и их соединения. Патрик Флетчера помогли записи в этом разделе. Версии программного обеспечения, используемого в этом разделе...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/30/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036418"
 ---
 <a name="mapping-signalr-users-to-connections"></a><span data-ttu-id="9e8e2-105">Сопоставление пользователей SignalR для подключения</span><span class="sxs-lookup"><span data-stu-id="9e8e2-105">Mapping SignalR Users to Connections</span></span>
 ====================
