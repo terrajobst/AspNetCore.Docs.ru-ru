@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879976"
 ---
 <a name="aspnet-4-quick-hit---jquery-syntax-for-microsoft-ajax"></a>В ASP.NET 4 «Быстрый попадания» - jQuery синтаксис Microsoft Ajax
 ====================

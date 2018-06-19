@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878416"
 ---
 <a name="aspnet-mvc-how-10-minute-technical-video-for-developers"></a>ASP.NET MVC: как? 10-минутного технические видео для разработчиков
 ====================

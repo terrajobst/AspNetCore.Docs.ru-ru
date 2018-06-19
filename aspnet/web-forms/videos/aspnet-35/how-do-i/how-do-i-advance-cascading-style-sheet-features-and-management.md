@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882661"
 ---
 <a name="how-do-i-advance-cascading-style-sheet-features-and-management"></a>[Инструкции:] Переместить функции листа каскадных стилей и управление
 ====================

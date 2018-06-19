@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-handle-events-in-master-and-content-pages
-title: "[Инструкции:] Обработка событий в Master и страницы содержимого | Документы Microsoft"
+title: '[Инструкции:] Обработка событий в Master и страницы содержимого | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис покажет обработки событий в master и отдельных страниц. Несмотря на то что результат master и отдельных ко..."
+description: В этом видеоролике пиксел Крис покажет обработки событий в master и отдельных страниц. Несмотря на то что результат master и отдельных ко...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/21/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526003"
 ---
 <a name="how-do-i-handle-events-in-master-and-content-pages"></a>[Инструкции:] Обработка событий в Master и страницы содержимого
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881445"
 ---
 <a name="how-do-i-cascading-style-sheets-in-visual-studio-2008"></a>[Инструкции:] Каскадные таблицы стилей в Visual Studio 2008
 ====================

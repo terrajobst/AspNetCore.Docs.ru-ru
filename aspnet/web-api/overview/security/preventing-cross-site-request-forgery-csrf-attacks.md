@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks
-title: "Предотвращение атак подделки межсайтовых запросов в веб-API ASP.NET | Документы Microsoft"
+title: Предотвращение атак подделки межсайтовых запросов в веб-API ASP.NET | Документы Microsoft
 author: MikeWasson
-description: "Описывает атаки подделки межсайтовых запросов и способ реализации меры противодействия CSRF в веб-API ASP.NET."
+description: Описывает атаки подделки межсайтовых запросов и способ реализации меры противодействия CSRF в веб-API ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/12/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508153"
 ---
 <a name="preventing-cross-site-request-forgery-csrf-attacks-in-aspnet-web-api"></a>Предотвращение атак подделки межсайтовых запросов в веб-API ASP.NET
 ====================

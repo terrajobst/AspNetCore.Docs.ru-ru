@@ -17,6 +17,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33839290"
 ---
 <a name="introducing-aspnet-web-pages---programming-basics"></a>Общие сведения о веб-страницах ASP.NET — основы программирования
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/slider/index
-title: "Ползунок | Документы Microsoft"
+title: Ползунок | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник показывает, как использовать элемент управления \"ползунок\" для отображения графических \"ползунок\", пользователи могут управлять с помощью мыши."
+description: Этот учебник показывает, как использовать элемент управления "ползунок" для отображения графических "ползунок", пользователи могут управлять с помощью мыши.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/slider
 msc.type: chapter
 ms.openlocfilehash: 52b6fda01b6ef9931c3557b57b5ebd216a7f2eda
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26511633"
 ---
 <a name="slider"></a>Slider
 ====================

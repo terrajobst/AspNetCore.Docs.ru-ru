@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34094870"
 ---
 # <a name="configure-identity-primary-key-data-type-in-aspnet-core"></a>Настроить тип данных первичного ключа удостоверения в ASP.NET Core
 

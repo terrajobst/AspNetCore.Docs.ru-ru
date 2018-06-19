@@ -14,6 +14,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33851122"
 ---
 # <a name="key-encryption-at-rest-in-aspnet-core"></a>Шифрование ключа при хранении в ASP.NET Core
 

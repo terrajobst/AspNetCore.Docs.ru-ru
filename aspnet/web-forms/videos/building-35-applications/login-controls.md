@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/login-controls
-title: "Элементы управления входом | Документы Microsoft"
+title: Элементы управления входом | Документы Microsoft
 author: JoeStagner
-description: "В этом видео Joe приведены членства ASP.NET, показывая, как использовать некоторые элементы управления входа в ASP.NET."
+description: В этом видео Joe приведены членства ASP.NET, показывая, как использовать некоторые элементы управления входа в ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/04/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26520923"
 ---
 <a name="login-controls"></a>Элементы управления входом
 ====================

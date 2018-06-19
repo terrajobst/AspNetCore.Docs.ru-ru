@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870158"
 ---
 <a name="allowing-only-certain-characters-in-a-text-box-vb"></a>Разрешение только для некоторых символов в текстовом поле (Visual Basic)
 ====================

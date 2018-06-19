@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877129"
 ---
 <a name="displaying-data-with-the-datalist-and-repeater-controls-vb"></a>Отображение данных с помощью DataList и элементы управления повторителем (Visual Basic)
 ====================

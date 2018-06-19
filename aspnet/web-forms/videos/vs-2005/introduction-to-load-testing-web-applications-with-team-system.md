@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30894224"
 ---
 <a name="introduction-to-load-testing-web-applications-with-team-system"></a>Общие сведения для загрузки тестирования веб-приложений с помощью Team System
 ====================

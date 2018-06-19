@@ -12,17 +12,18 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-remote-agent
 msc.type: authoredcontent
-ms.openlocfilehash: 8cad6ee45a8331513c72c4079f300fbb06c1ed77
-ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
-ms.translationtype: HT
+ms.openlocfilehash: 9f3a55c5e68e61a2d7907c765209d3786e05a485
+ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/21/2018
+ms.lasthandoff: 05/24/2018
+ms.locfileid: "34473211"
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-remote-agent"></a>Настройка веб-сервер для публикации (удаленный агент) веб-развертывания
 ====================
 по [Джейсон Lee](https://github.com/jrjlee)
 
-[Скачать PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
+[Загрузить PDF-файл](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > В этом разделе описываются способы настройки веб-сервер Internet Information Services (IIS), для поддержки веб-публикации и развертывания, используя службу удаленного агента средство веб-развертывания IIS (веб-развертывания).
 > 
@@ -217,7 +218,7 @@ ms.lasthandoff: 05/21/2018
 
 По умолчанию служба удаленного агента прослушивает TCP-порт 80, на этот URL-адрес:
 
-http:// [<em>имя сервера</em>] / MSDEPLOYAGENTSERVICE
+<http://servername.com/MSDEPLOYAGENTSERVICE>
 
 В большинстве случаев не требуется настроить все правила дополнительный брандмауэр для службы удаленного агента, поскольку веб-серверы обычно прослушивания HTTP-запросов через порт 80. При стандартной установке на нестандартный порт, необходимо настроить исключения брандмауэра при необходимости.
 

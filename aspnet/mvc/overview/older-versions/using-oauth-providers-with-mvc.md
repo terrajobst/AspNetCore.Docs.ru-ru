@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/using-oauth-providers-with-mvc
-title: "Использование поставщиков OAuth с MVC 4 | Документы Microsoft"
+title: Использование поставщиков OAuth с MVC 4 | Документы Microsoft
 author: tfitzmac
-description: "Этот учебник показывает, как для создания веб-приложения ASP.NET MVC 4, позволяющий пользователям выполнять вход с учетными данными из внешних поставщиков, например Facebo..."
+description: Этот учебник показывает, как для создания веб-приложения ASP.NET MVC 4, позволяющий пользователям выполнять вход с учетными данными из внешних поставщиков, например Facebo...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/19/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28033580"
 ---
 <a name="using-oauth-providers-with-mvc-4"></a>Использование поставщиков OAuth с MVC 4
 ====================

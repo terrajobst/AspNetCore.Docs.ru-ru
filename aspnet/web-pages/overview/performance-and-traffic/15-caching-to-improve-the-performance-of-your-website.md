@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/performance-and-traffic/15-caching-to-improve-the-performance-of-your-website
-title: "Кэширования данных в ASP.NET Web Pages (Razor) сайта для повышения производительности | Документы Microsoft"
+title: Кэширования данных в ASP.NET Web Pages (Razor) сайта для повышения производительности | Документы Microsoft
 author: tfitzmac
-description: "Можно ускорить, веб-сайта, установив хранения — то есть кэш - результаты, как правило, может потребоваться значительное время для получения и обработки данных..."
+description: Можно ускорить, веб-сайта, установив хранения — то есть кэш - результаты, как правило, может потребоваться значительное время для получения и обработки данных...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/14/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28039200"
 ---
 <a name="caching-data-in-an-aspnet-web-pages-razor-site-for-better-performance"></a>Кэширование данных в веб-страницы (Razor) узле ASP.NET для повышения производительности
 ====================

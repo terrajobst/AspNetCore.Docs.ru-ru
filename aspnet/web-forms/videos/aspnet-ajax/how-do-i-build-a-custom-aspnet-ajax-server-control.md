@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885553"
 ---
 <a name="how-do-i-build-a-custom-aspnet-ajax-server-control"></a>[Инструкции:] Создавать пользовательские ASP.NET AJAX серверного элемента управления?
 ====================

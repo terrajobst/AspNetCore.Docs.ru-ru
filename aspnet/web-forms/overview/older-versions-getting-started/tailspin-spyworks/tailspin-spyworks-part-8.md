@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886275"
 ---
 <a name="part-8-final-pages-exception-handling-and-conclusion"></a>Часть 8: Последней страницы, обработки исключений и выводу
 ====================

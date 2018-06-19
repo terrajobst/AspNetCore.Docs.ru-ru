@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876037"
 ---
 <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>Подтверждение учетной записи и пароль восстановления в ASP.NET Identity (C#)
 ====================

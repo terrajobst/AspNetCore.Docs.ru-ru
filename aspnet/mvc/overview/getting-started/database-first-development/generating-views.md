@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879755"
 ---
 <a name="ef-database-first-with-aspnet-mvc-generating-views"></a>EF базы данных сначала с ASP.NET MVC: создание представлений
 ====================

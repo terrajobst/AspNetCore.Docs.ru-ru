@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872420"
 ---
 <a name="part-6-using-data-annotations-for-model-validation"></a>Часть 6: С помощью заметок к данным для проверки модели
 ====================
