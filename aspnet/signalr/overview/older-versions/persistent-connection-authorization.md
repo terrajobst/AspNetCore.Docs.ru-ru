@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/persistent-connection-authorization
-title: "Проверка подлинности и авторизация для постоянного подключения SignalR (SignalR 1.x) | Документы Microsoft"
+title: Проверка подлинности и авторизация для постоянного подключения SignalR (SignalR 1.x) | Документы Microsoft
 author: pfletcher
-description: "В этом разделе описывается принудительной авторизации для постоянного подключения. Общие сведения об интеграции безопасности в приложении SignalR..."
+description: В этом разделе описывается принудительной авторизации для постоянного подключения. Общие сведения об интеграции безопасности в приложении SignalR...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/21/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036106"
 ---
 <a name="authentication-and-authorization-for-signalr-persistent-connections-signalr-1x"></a><span data-ttu-id="52fa4-104">Проверка подлинности и авторизация для постоянного подключения SignalR (SignalR 1.x)</span><span class="sxs-lookup"><span data-stu-id="52fa4-104">Authentication and Authorization for SignalR Persistent Connections (SignalR 1.x)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891221"
 ---
 <a name="showing-multiple-records-per-row-with-the-datalist-control-c"></a><span data-ttu-id="d6472-103">Отображение нескольких записей в строке с помощью элемента управления DataList (C#)</span><span class="sxs-lookup"><span data-stu-id="d6472-103">Showing Multiple Records per Row with the DataList Control (C#)</span></span>
 ====================

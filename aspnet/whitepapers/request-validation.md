@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/request-validation
-title: "Проверка - атак скрипт запросов | Документы Microsoft"
+title: Проверка - атак скрипт запросов | Документы Microsoft
 author: rick-anderson
-description: "Этот документ описывает функцию проверки запроса ASP.NET, где, по умолчанию, приложение будет запрещено обработки без кодировки HTML-содержимого отправка..."
+description: Этот документ описывает функцию проверки запроса ASP.NET, где, по умолчанию, приложение будет запрещено обработки без кодировки HTML-содержимого отправка...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: fa429113-5f8f-4ef4-97c5-5c04900a19fa
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/request-validation
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28883559"
 ---
 <a name="request-validation---preventing-script-attacks"></a><span data-ttu-id="f0221-103">Проверка - атак скрипт запросов</span><span class="sxs-lookup"><span data-stu-id="f0221-103">Request Validation - Preventing Script Attacks</span></span>
 ====================

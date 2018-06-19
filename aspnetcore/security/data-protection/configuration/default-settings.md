@@ -1,7 +1,7 @@
 ---
-title: "Управление ключами для защиты данных и время жизни в ASP.NET Core"
+title: Управление ключами для защиты данных и время жизни в ASP.NET Core
 author: rick-anderson
-description: "Дополнительные сведения об управлении ключами для защиты данных и время жизни в ASP.NET Core."
+description: Дополнительные сведения об управлении ключами для защиты данных и время жизни в ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -14,6 +14,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28887294"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a><span data-ttu-id="94d3f-103">Управление ключами для защиты данных и время жизни в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="94d3f-103">Data Protection key management and lifetime in ASP.NET Core</span></span>
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30070827"
 ---
 # <a name="cache-responses-in-aspnet-core"></a><span data-ttu-id="297ff-103">Ответы кэша в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="297ff-103">Cache responses in ASP.NET Core</span></span>
 

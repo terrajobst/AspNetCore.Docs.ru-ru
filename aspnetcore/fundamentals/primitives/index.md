@@ -1,7 +1,7 @@
 ---
-title: "Примитивы в ASP.NET Core"
+title: Примитивы в ASP.NET Core
 author: guardrex
-description: "Ознакомьтесь со статьями о стандартных блоках ASP.NET Core, общих для расширений платформы и доступных для использования в собственном коде."
+description: Ознакомьтесь со статьями о стандартных блоках ASP.NET Core, общих для расширений платформы и доступных для использования в собственном коде.
 manager: wpickett
 ms.author: riande
 ms.date: 10/28/2017
@@ -14,6 +14,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28882715"
 ---
 # <a name="primitives-in-aspnet-core"></a><span data-ttu-id="8a531-103">Примитивы в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="8a531-103">Primitives in ASP.NET Core</span></span>
 

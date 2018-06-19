@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893512"
 ---
 <a name="understanding-security-and-network-connectivity"></a><span data-ttu-id="8c8a4-104">Общие сведения о безопасности и сетевое подключение</span><span class="sxs-lookup"><span data-stu-id="8c8a4-104">Understanding Security and Network Connectivity</span></span>
 ====================

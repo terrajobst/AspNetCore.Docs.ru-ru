@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30894624"
 ---
 <a name="building-and-customizing-reports-in-business-intelligence-development-studio"></a><span data-ttu-id="fad95-104">Создание и настройка отчетов в среде Business Intelligence Development Studio</span><span class="sxs-lookup"><span data-stu-id="fad95-104">Building and Customizing Reports in Business Intelligence Development Studio</span></span>
 ====================

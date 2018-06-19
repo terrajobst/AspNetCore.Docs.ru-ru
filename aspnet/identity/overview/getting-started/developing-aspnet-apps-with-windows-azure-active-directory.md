@@ -17,6 +17,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33838502"
 ---
 <a name="developing-aspnet-apps-with-azure-active-directory"></a><span data-ttu-id="bc09a-104">Разработка приложений ASP.NET с Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="bc09a-104">Developing ASP.NET Apps with Azure Active Directory</span></span>
 ====================

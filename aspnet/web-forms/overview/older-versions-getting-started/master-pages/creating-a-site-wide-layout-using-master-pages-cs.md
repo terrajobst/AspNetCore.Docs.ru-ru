@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891273"
 ---
 <a name="creating-a-site-wide-layout-using-master-pages-c"></a><span data-ttu-id="1c673-104">Создание структуры сайта с помощью главных страниц (C#)</span><span class="sxs-lookup"><span data-stu-id="1c673-104">Creating a Site-Wide Layout Using Master Pages (C#)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30891949"
 ---
 <a name="user-based-authorization-vb"></a><span data-ttu-id="e9da7-103">Авторизация на основе пользователя (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="e9da7-103">User-Based Authorization (VB)</span></span>
 ====================

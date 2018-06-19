@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880041"
 ---
 <a name="deploying-a-specific-build"></a><span data-ttu-id="4056f-103">Развертывание конкретной сборки</span><span class="sxs-lookup"><span data-stu-id="4056f-103">Deploying a Specific Build</span></span>
 ====================

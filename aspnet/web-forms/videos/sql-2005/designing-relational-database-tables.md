@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893633"
 ---
 <a name="designing-relational-database-tables"></a><span data-ttu-id="feca1-104">Конструирование таблиц реляционной базы данных</span><span class="sxs-lookup"><span data-stu-id="feca1-104">Designing Relational Database Tables</span></span>
 ====================

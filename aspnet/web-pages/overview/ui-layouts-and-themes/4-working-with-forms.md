@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "28046434"
 ---
 <a name="working-with-html-forms-in-aspnet-web-pages-razor-sites"></a><span data-ttu-id="736b5-104">Работа с HTML-форм в ASP.NET веб-страницы (Razor) узлов</span><span class="sxs-lookup"><span data-stu-id="736b5-104">Working with HTML Forms in ASP.NET Web Pages (Razor) Sites</span></span>
 ====================

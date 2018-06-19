@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881949"
 ---
 <a name="the-listview-control"></a><span data-ttu-id="27c4b-105">В элементе управления ListView</span><span class="sxs-lookup"><span data-stu-id="27c4b-105">The ListView Control</span></span>
 ====================

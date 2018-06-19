@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30072768"
 ---
 # <a name="miscellaneous-aspnet-core-data-protection-apis"></a><span data-ttu-id="15b1e-103">Прочие ASP.NET Core интерфейсы API защиты данных</span><span class="sxs-lookup"><span data-stu-id="15b1e-103">Miscellaneous ASP.NET Core Data Protection APIs</span></span>
 

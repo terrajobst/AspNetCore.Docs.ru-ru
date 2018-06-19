@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34094133"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a><span data-ttu-id="8cf59-104">Общие сведения об учетных данных ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="8cf59-104">Introduction to Identity on ASP.NET Core</span></span>
 

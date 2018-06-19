@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879170"
 ---
 <a name="caching-data-at-application-startup-c"></a><span data-ttu-id="f8dd3-104">Кэширование данных при запуске приложения (C#)</span><span class="sxs-lookup"><span data-stu-id="f8dd3-104">Caching Data at Application Startup (C#)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30073910"
 ---
 <a name="jquery-mobile-10-beta-3-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="133d4-102">jQuery Mobile 1.0 бета-версии 3 в сети Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="133d4-102">jQuery Mobile 1.0 Beta 3 on the Microsoft Ajax CDN</span></span>
 ====================

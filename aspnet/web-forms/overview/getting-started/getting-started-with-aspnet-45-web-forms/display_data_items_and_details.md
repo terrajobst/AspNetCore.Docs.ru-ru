@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892573"
 ---
 <a name="display-data-items-and-details"></a><span data-ttu-id="242e0-103">Отображать данные элементов и сведения</span><span class="sxs-lookup"><span data-stu-id="242e0-103">Display Data Items and Details</span></span>
 ====================

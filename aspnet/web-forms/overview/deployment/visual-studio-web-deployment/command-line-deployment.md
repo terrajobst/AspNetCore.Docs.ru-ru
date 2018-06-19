@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890532"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-command-line-deployment"></a><span data-ttu-id="70248-103">ASP.NET веб-развертывания с помощью Visual Studio: развертывание командной строки</span><span class="sxs-lookup"><span data-stu-id="70248-103">ASP.NET Web Deployment using Visual Studio: Command Line Deployment</span></span>
 ====================

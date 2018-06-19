@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/server-controls
-title: "Серверные элементы управления | Документы Microsoft"
+title: Серверные элементы управления | Документы Microsoft
 author: microsoft
-description: "ASP.NET 2.0 повышает серверных элементов управления различными способами. В этом модуле будет обсуждаться ряд архитектурных изменений способом ASP.NET 2.0 и Visual Studio 200..."
+description: ASP.NET 2.0 повышает серверных элементов управления различными способами. В этом модуле будет обсуждаться ряд архитектурных изменений способом ASP.NET 2.0 и Visual Studio 200...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28885197"
 ---
 <a name="server-controls"></a><span data-ttu-id="eb473-104">Серверные элементы управления</span><span class="sxs-lookup"><span data-stu-id="eb473-104">Server Controls</span></span>
 ====================

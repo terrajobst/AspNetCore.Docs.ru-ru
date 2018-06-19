@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/aspnet-web-deployment-content-map
-title: "Развертывание веб-ASP.NET — рекомендуется использовать ресурсы | Документы Microsoft"
+title: Развертывание веб-ASP.NET — рекомендуется использовать ресурсы | Документы Microsoft
 author: rick-anderson
-description: "Этот раздел содержит ссылки на документацию ресурсов о развертывании (публикации) ASP.NET веб-приложений в IIS с помощью Visual Studio 2010, Visual Web De..."
+description: Этот раздел содержит ссылки на документацию ресурсов о развертывании (публикации) ASP.NET веб-приложений в IIS с помощью Visual Studio 2010, Visual Web De...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/14/2014
 ms.topic: article
 ms.assetid: 58b583cd-c4ab-47a3-8527-8c92c298c91f
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet-web-deployment-content-map
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28048172"
 ---
 <a name="aspnet-web-deployment---recommended-resources"></a><span data-ttu-id="736f5-103">Развертывание веб-ASP.NET — рекомендуется использовать ресурсы</span><span class="sxs-lookup"><span data-stu-id="736f5-103">ASP.NET Web Deployment - Recommended Resources</span></span>
 ====================

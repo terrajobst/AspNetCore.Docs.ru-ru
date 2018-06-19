@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30896141"
 ---
 <a name="visual-studio-2010-quick-hit---code-optimized-profile"></a><span data-ttu-id="3d283-103">Visual Studio 2010 «Быстрый Hit» — код оптимизирован профиля</span><span class="sxs-lookup"><span data-stu-id="3d283-103">Visual Studio 2010 "Quick Hit" - Code Optimized Profile</span></span>
 ====================

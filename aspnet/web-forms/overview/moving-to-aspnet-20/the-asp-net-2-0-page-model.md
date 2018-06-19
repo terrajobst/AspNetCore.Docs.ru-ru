@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891299"
 ---
 <a name="the-aspnet-20-page-model"></a><span data-ttu-id="6a123-104">Модель 2.0 страницы ASP.NET</span><span class="sxs-lookup"><span data-stu-id="6a123-104">The ASP.NET 2.0 Page Model</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884006"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender"></a><span data-ttu-id="6fce1-105">[Инструкции:] Используйте элемент управления UpdatePanelAnimation ASP.NET AJAX?</span><span class="sxs-lookup"><span data-stu-id="6fce1-105">[How Do I:] Use the ASP.NET AJAX UpdatePanelAnimation Extender?</span></span>
 ====================

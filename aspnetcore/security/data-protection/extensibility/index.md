@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30077513"
 ---
 # <a name="aspnet-core-data-protection-extensibility-apis"></a><span data-ttu-id="f14cb-103">API расширяемости для защиты данных в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="f14cb-103">ASP.NET Core Data Protection extensibility APIs</span></span>
 

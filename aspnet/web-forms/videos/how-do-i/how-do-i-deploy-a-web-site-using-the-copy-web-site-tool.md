@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-deploy-a-web-site-using-the-copy-web-site-tool
-title: "[Инструкции:] Развертывание веб-сайта с помощью средства копирования веб-сайта | Документы Microsoft"
+title: '[Инструкции:] Развертывание веб-сайта с помощью средства копирования веб-сайта | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис будет показано, как развертывание веб-сайта с помощью средства копирования веб-узла в Visual Studio. Сначала показано, как соединиться с удаленного веб-сайта и..."
+description: В этой видео пиксел Крис будет показано, как развертывание веб-сайта с помощью средства копирования веб-узла в Visual Studio. Сначала показано, как соединиться с удаленного веб-сайта и...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/03/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525673"
 ---
 <a name="how-do-i-deploy-a-web-site-using-the-copy-web-site-tool"></a><span data-ttu-id="0d20a-104">[Инструкции:] Развертывание веб-сайта с помощью средства копирования веб-сайта</span><span class="sxs-lookup"><span data-stu-id="0d20a-104">[How Do I:] Deploy a Web Site Using the Copy Web Site Tool</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891338"
 ---
 <a name="validating-user-credentials-against-the-membership-user-store-vb"></a><span data-ttu-id="707dd-103">Проверка учетных данных пользователя в хранилище пользователя членства (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="707dd-103">Validating User Credentials Against the Membership User Store (VB)</span></span>
 ====================

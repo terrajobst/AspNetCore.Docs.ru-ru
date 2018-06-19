@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/what-is-new-in-aspnet-mvc
-title: "Новые возможности в ASP.NET MVC 2 | Документы Microsoft"
+title: Новые возможности в ASP.NET MVC 2 | Документы Microsoft
 author: rick-anderson
-description: "В этом документе описываются новые функции и усовершенствования, появившиеся в ASP.NET MVC 2. В этом документе также доступен для загрузки."
+description: В этом документе описываются новые функции и усовершенствования, появившиеся в ASP.NET MVC 2. В этом документе также доступен для загрузки.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/20/2010
 ms.topic: article
 ms.assetid: 69a8d6f8-4b10-4602-8822-2d6c05fc432b
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/what-is-new-in-aspnet-mvc
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28885236"
 ---
 <a name="whats-new-in-aspnet-mvc-2"></a><span data-ttu-id="99ab6-104">Новые возможности в ASP.NET MVC 2</span><span class="sxs-lookup"><span data-stu-id="99ab6-104">What's New in ASP.NET MVC 2</span></span>
 ====================

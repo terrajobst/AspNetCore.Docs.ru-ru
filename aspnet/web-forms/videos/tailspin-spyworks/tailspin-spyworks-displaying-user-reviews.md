@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895931"
 ---
 <a name="tailspin-spyworks---displaying-user-reviews"></a><span data-ttu-id="5bafa-103">Spyworks Tailspin - отображение отзывы пользователей</span><span class="sxs-lookup"><span data-stu-id="5bafa-103">Tailspin Spyworks - Displaying User Reviews</span></span>
 ====================

@@ -14,6 +14,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30896453"
 ---
 # <a name="create-an-aspnet-core-mvc-app-with-visual-studio-code"></a><span data-ttu-id="1b0a2-103">Создание приложения ASP.NET Core MVC с помощью Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="1b0a2-103">Create an ASP.NET Core MVC app with Visual Studio Code</span></span>
 

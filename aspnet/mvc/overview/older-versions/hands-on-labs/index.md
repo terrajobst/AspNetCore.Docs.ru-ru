@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/hands-on-labs/index
-title: "ASP.NET MVC 4 Практические лаборатории | Документы Microsoft"
+title: ASP.NET MVC 4 Практические лаборатории | Документы Microsoft
 author: rick-anderson
-description: "Дополнительные сведения о разработке с ASP.NET MVC с Labs на эти руки"
+description: Дополнительные сведения о разработке с ASP.NET MVC с Labs на эти руки
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions/hands-on-labs
 msc.type: chapter
 ms.openlocfilehash: bfdab4cfd3945401213bcc0b6f282dd5ffbedc5d
 ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29727175"
 ---
 # <a name="aspnet-mvc-4-hands-on-labs"></a><span data-ttu-id="05a9b-103">ASP.NET MVC 4 Практические лаборатории</span><span class="sxs-lookup"><span data-stu-id="05a9b-103">ASP.NET MVC 4 Hands On Labs</span></span>
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869755"
 ---
 <a name="performing-simple-validation-vb"></a><span data-ttu-id="60867-104">Выполняет простую проверку (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="60867-104">Performing Simple Validation (VB)</span></span>
 ====================

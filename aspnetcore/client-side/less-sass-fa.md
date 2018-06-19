@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30073527"
 ---
 # <a name="less-sass-and-font-awesome-in-aspnet-core"></a><span data-ttu-id="8ac87-103">Меньше Sass и шрифтов, здорово в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="8ac87-103">Less, Sass, and Font Awesome in ASP.NET Core</span></span>
 

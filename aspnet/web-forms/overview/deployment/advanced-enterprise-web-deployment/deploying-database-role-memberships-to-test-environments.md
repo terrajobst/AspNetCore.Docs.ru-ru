@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892560"
 ---
 <a name="deploying-database-role-memberships-to-test-environments"></a><span data-ttu-id="cabcb-104">Развертывание членства в роли базы данных в тестовой среде</span><span class="sxs-lookup"><span data-stu-id="cabcb-104">Deploying Database Role Memberships to Test Environments</span></span>
 ====================

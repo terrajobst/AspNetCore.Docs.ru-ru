@@ -1,7 +1,7 @@
 ---
 uid: mvc/overview/deployment/docker
-title: "Перенос приложений ASP.NET MVC в контейнеры Windows"
-description: "Узнайте, как запустить существующее приложение ASP.NET MVC в контейнере Windows Docker"
+title: Перенос приложений ASP.NET MVC в контейнеры Windows
+description: Узнайте, как запустить существующее приложение ASP.NET MVC в контейнере Windows Docker
 keywords: Windows Containers,Docker,ASP.NET MVC
 author: BillWagner
 ms.author: wiwagn
@@ -16,6 +16,7 @@ ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29143193"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a><span data-ttu-id="1cb84-104">Перенос приложений ASP.NET MVC в контейнеры Windows</span><span class="sxs-lookup"><span data-stu-id="1cb84-104">Migrating ASP.NET MVC Applications to Windows Containers</span></span>
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30891247"
 ---
 <a name="using-page-inspector-in-visual-studio-2012"></a><span data-ttu-id="ae92c-104">С помощью инспектора страниц в Visual Studio 2012</span><span class="sxs-lookup"><span data-stu-id="ae92c-104">Using Page Inspector in Visual Studio 2012</span></span>
 ====================
@@ -312,7 +313,7 @@ ms.lasthandoff: 04/10/2018
 
     <span data-ttu-id="ae92c-313">Вы увидите все исходные файлы, которые являются составляющими отображаемой страницы по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="ae92c-313">You will see all the source files that are composing the rendered Default page.</span></span> <span data-ttu-id="ae92c-314">Эта функция полезна для идентификации всех элементов с первого взгляда, особенно при работе с пользовательскими элементами управления и главных страниц.</span><span class="sxs-lookup"><span data-stu-id="ae92c-314">This is a useful feature to identify all the elements at a glance, especially when you are working with User Controls and Master Pages.</span></span> <span data-ttu-id="ae92c-315">Обратите внимание, что вы также можете переходить на каждом из файлов.</span><span class="sxs-lookup"><span data-stu-id="ae92c-315">Notice that you can also navigate to each of the files.</span></span>
 
-    <span data-ttu-id="ae92c-316">![Вкладка "файлы"](using-page-inspector-in-visual-studio-2012/_static/image26.png "вкладка "файлы"")</span><span class="sxs-lookup"><span data-stu-id="ae92c-316">![The Files tab](using-page-inspector-in-visual-studio-2012/_static/image26.png "The Files tab")</span></span>
+    <span data-ttu-id="ae92c-316">![Вкладка "файлы"](using-page-inspector-in-visual-studio-2012/_static/image26.png "вкладка \"файлы\"")</span><span class="sxs-lookup"><span data-stu-id="ae92c-316">![The Files tab](using-page-inspector-in-visual-studio-2012/_static/image26.png "The Files tab")</span></span>
 
     <span data-ttu-id="ae92c-317">*Вкладка "файлы"*</span><span class="sxs-lookup"><span data-stu-id="ae92c-317">*The Files tab*</span></span>
 5. <span data-ttu-id="ae92c-318">Нажмите кнопку **переключиться в режим проверки** , расположенную в левой части вкладки.</span><span class="sxs-lookup"><span data-stu-id="ae92c-318">Click the **Toggle Inspection Mode** button, located at the left of the tabs.</span></span>

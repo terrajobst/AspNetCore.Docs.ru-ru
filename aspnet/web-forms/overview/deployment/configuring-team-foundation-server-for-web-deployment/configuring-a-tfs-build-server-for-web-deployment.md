@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30892521"
 ---
 <a name="configuring-a-tfs-build-server-for-web-deployment"></a><span data-ttu-id="c5377-103">Настройка сервера сборки TFS для развертывания веб-приложения</span><span class="sxs-lookup"><span data-stu-id="c5377-103">Configuring a TFS Build Server for Web Deployment</span></span>
 ====================

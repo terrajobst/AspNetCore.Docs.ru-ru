@@ -1,7 +1,7 @@
 ---
-title: "Разработка мобильных приложений с помощью ASP.NET Core"
+title: Разработка мобильных приложений с помощью ASP.NET Core
 author: rick-anderson
-description: "Сведения о разделах, относящихся к разработке мобильных приложений в ASP.NET Core."
+description: Сведения о разделах, относящихся к разработке мобильных приложений в ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "29902283"
 ---
 # <a name="mobile-development-with-aspnet-core"></a><span data-ttu-id="78349-103">Разработка мобильных приложений с помощью ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="78349-103">Mobile development with ASP.NET Core</span></span>
 

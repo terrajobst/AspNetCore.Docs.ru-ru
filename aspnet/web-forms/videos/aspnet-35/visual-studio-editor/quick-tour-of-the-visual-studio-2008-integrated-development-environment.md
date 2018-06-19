@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892612"
 ---
 <a name="quick-tour-of-the-visual-studio-2008-integrated-development-environment"></a><span data-ttu-id="96358-104">Краткий обзор среды разработки Visual Studio 2008</span><span class="sxs-lookup"><span data-stu-id="96358-104">Quick Tour of the Visual Studio 2008 Integrated Development Environment</span></span>
 ====================

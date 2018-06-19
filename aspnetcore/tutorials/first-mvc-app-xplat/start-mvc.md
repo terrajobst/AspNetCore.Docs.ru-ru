@@ -14,6 +14,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893564"
 ---
 # <a name="introduction-to-aspnet-core-mvc-on-macos-linux-or-windows"></a><span data-ttu-id="6e9bf-103">Введение в ASP.NET Core MVC для macOS, Linux и Windows</span><span class="sxs-lookup"><span data-stu-id="6e9bf-103">Introduction to ASP.NET Core MVC on macOS, Linux, or Windows</span></span>
 

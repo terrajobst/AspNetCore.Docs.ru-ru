@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878351"
 ---
 <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a><span data-ttu-id="1978c-103">Практического занятия: поддерживаемого веб-сайтов Azure: управление изменениями и масштабирования</span><span class="sxs-lookup"><span data-stu-id="1978c-103">Hands on Lab: Maintainable Azure Websites: Managing Change and Scale</span></span>
 ====================
@@ -861,7 +862,7 @@ ms.lasthandoff: 04/06/2018
     <span data-ttu-id="1978c-676">*Выбрав тип браузера*</span><span class="sxs-lookup"><span data-stu-id="1978c-676">*Selecting the browser type*</span></span>
 18. <span data-ttu-id="1978c-677">В **наборы счетчиков** щелкните **Далее**.</span><span class="sxs-lookup"><span data-stu-id="1978c-677">In the **Counter Sets** page, click **Next**.</span></span>
 
-    <span data-ttu-id="1978c-678">![Нажав кнопку "Далее" на странице наборы счетчиков](maintainable-azure-websites-managing-change-and-scale/_static/image96.png "нажмите кнопку "Далее", на странице наборы счетчиков")</span><span class="sxs-lookup"><span data-stu-id="1978c-678">![Clicking Next in the Counter Sets page](maintainable-azure-websites-managing-change-and-scale/_static/image96.png "Clicking Next in the Counter Sets page")</span></span>
+    <span data-ttu-id="1978c-678">![Нажав кнопку "Далее" на странице наборы счетчиков](maintainable-azure-websites-managing-change-and-scale/_static/image96.png "нажмите кнопку \"Далее\", на странице наборы счетчиков")</span><span class="sxs-lookup"><span data-stu-id="1978c-678">![Clicking Next in the Counter Sets page](maintainable-azure-websites-managing-change-and-scale/_static/image96.png "Clicking Next in the Counter Sets page")</span></span>
 
     <span data-ttu-id="1978c-679">*Нажав кнопку "Далее" на странице наборы счетчиков*</span><span class="sxs-lookup"><span data-stu-id="1978c-679">*Clicking Next in the Counter Sets page*</span></span>
 19. <span data-ttu-id="1978c-680">В **параметры запуска** задайте **длительность нагрузочного теста** для **5 минут** и нажмите кнопку **Готово**.</span><span class="sxs-lookup"><span data-stu-id="1978c-680">In the **Run Settings** page, set the **Load test duration** to **5 minutes** and click **Finish**.</span></span>

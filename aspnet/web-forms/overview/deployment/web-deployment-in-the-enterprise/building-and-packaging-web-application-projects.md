@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892313"
 ---
 <a name="building-and-packaging-web-application-projects"></a><span data-ttu-id="0993b-103">Построения и упаковки проектов веб-приложений</span><span class="sxs-lookup"><span data-stu-id="0993b-103">Building and Packaging Web Application Projects</span></span>
 ====================

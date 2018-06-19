@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890025"
 ---
 <a name="enterprise-web-deployment-scenario-overview"></a><span data-ttu-id="3f998-103">Корпоративного веб-развертывания: Общие сведения о сценарии</span><span class="sxs-lookup"><span data-stu-id="3f998-103">Enterprise Web Deployment: Scenario Overview</span></span>
 ====================

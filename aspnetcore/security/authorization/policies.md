@@ -15,6 +15,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30072865"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a><span data-ttu-id="9c601-103">Авторизация на основе политик в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="9c601-103">Policy-based authorization in ASP.NET Core</span></span>
 

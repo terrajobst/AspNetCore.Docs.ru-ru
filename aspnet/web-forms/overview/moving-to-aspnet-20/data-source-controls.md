@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/data-source-controls
-title: "Элементы управления источником данных | Документы Microsoft"
+title: Элементы управления источником данных | Документы Microsoft
 author: microsoft
-description: "Элемент управления DataGrid в ASP.NET 1.x помечено как значительные улучшения в доступ к данным в веб-приложений. Однако это не было же прост, как были бы..."
+description: Элемент управления DataGrid в ASP.NET 1.x помечено как значительные улучшения в доступ к данным в веб-приложений. Однако это не было же прост, как были бы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28885899"
 ---
 <a name="data-source-controls"></a><span data-ttu-id="bbdc1-104">Элементы управления источников данных</span><span class="sxs-lookup"><span data-stu-id="bbdc1-104">Data Source Controls</span></span>
 ====================

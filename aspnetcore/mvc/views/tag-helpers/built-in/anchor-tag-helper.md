@@ -15,6 +15,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899412"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a><span data-ttu-id="2bb23-103">Вспомогательная функция тега привязки в ASP.NET Core MVC</span><span class="sxs-lookup"><span data-stu-id="2bb23-103">Anchor Tag Helper in ASP.NET Core</span></span>
 

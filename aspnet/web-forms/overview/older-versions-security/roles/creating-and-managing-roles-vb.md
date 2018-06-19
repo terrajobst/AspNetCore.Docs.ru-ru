@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30891364"
 ---
 <a name="creating-and-managing-roles-vb"></a><span data-ttu-id="7e3b1-104">Создание и управление ролями (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="7e3b1-104">Creating and Managing Roles (VB)</span></span>
 ====================

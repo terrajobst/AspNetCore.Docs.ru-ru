@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879116"
 ---
 <a name="aspnet-mvc-storefront-part-11-hooking-up-the-shopping-cart-and-using-components"></a><span data-ttu-id="42cc7-104">ASP.NET MVC Storefront, часть 11: Прикрепления в корзину для покупок и использование компонентов</span><span class="sxs-lookup"><span data-stu-id="42cc7-104">ASP.NET MVC Storefront Part 11: Hooking Up The Shopping Cart and Using Components</span></span>
 ====================

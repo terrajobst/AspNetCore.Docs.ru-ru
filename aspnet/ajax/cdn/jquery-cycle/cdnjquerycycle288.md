@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30078287"
 ---
 <a name="jquery-cycle-288"></a><span data-ttu-id="a39d5-102">jQuery 2,88 цикла</span><span class="sxs-lookup"><span data-stu-id="a39d5-102">jQuery Cycle 2.88</span></span>
 ====================

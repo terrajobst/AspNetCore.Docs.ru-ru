@@ -1,7 +1,7 @@
 ---
-title: "Проверка подлинности в ASP.NET Core"
+title: Проверка подлинности в ASP.NET Core
 author: rick-anderson
-description: "Разделы, относящиеся к технологиям проверки подлинности ASP.NET Core."
+description: Разделы, относящиеся к технологиям проверки подлинности ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "29903303"
 ---
 # <a name="authentication-in-aspnet-core"></a><span data-ttu-id="ac457-103">Проверка подлинности в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="ac457-103">Authentication in ASP.NET Core</span></span>
 

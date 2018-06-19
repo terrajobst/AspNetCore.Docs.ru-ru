@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34094633"
 ---
 # <a name="configure-aspnet-core-identity"></a><span data-ttu-id="8ce0e-103">Настройка удостоверения ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="8ce0e-103">Configure ASP.NET Core Identity</span></span>
 
