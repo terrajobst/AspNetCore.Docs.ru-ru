@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890581"
 ---
 <a name="configuring-a-website-that-uses-application-services-vb"></a><span data-ttu-id="b2708-103">Настройка веб-сайта, использующего службы приложений (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="b2708-103">Configuring a Website that Uses Application Services (VB)</span></span>
 ====================

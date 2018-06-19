@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886151"
 ---
 <a name="lesson-3--understanding-more-about-events-and-postback"></a><span data-ttu-id="e7774-103">[Занятие 3:]  Дополнительные сведения о событиях и обратной передаче</span><span class="sxs-lookup"><span data-stu-id="e7774-103">[Lesson 3:]  Understanding More About Events and Postback</span></span>
 ====================

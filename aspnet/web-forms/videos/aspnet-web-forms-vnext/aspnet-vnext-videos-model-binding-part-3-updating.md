@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881260"
 ---
 <a name="aspnet-vnext-videos-model-binding-part-3---updating"></a><span data-ttu-id="4b918-103">ASP.NET vNext видео: привязки модели, часть 3. обновление</span><span class="sxs-lookup"><span data-stu-id="4b918-103">ASP.NET vNext Videos: Model Binding Part 3 - Updating</span></span>
 ====================

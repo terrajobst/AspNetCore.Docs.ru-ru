@@ -16,6 +16,7 @@ ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/26/2018
+ms.locfileid: "32006161"
 ---
 <a name="call-a-web-api-from-a-net-client-c"></a><span data-ttu-id="a5220-102">Вызов веб-API из клиента .NET (C#)</span><span class="sxs-lookup"><span data-stu-id="a5220-102">Call a Web API From a .NET Client (C#)</span></span>
 ====================

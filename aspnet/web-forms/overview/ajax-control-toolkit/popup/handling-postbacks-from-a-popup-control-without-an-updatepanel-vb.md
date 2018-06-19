@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871367"
 ---
 <a name="handling-postbacks-from-a-popup-control-without-an-updatepanel-vb"></a><span data-ttu-id="c4c9f-104">Обработка операций обратной передачи из контекстного меню элемента управления без UpdatePanel (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="c4c9f-104">Handling Postbacks from A Popup Control Without an UpdatePanel (VB)</span></span>
 ====================

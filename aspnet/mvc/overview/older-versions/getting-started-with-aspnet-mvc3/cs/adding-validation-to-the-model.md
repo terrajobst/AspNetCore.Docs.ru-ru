@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872550"
 ---
 <a name="adding-validation-to-the-model-c"></a><span data-ttu-id="c6fef-103">Добавление проверки для модели (C#)</span><span class="sxs-lookup"><span data-stu-id="c6fef-103">Adding Validation to the Model (C#)</span></span>
 ====================

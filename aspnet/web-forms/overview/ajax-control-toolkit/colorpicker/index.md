@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/colorpicker/index
-title: "ColorPicker | Документы Microsoft"
+title: ColorPicker | Документы Microsoft
 author: rick-anderson
-description: "Этого учебника показано, как использовать элемент управления ColorPicker, которая позволяет пользователям выбрать цвет из всплывающего окна."
+description: Этого учебника показано, как использовать элемент управления ColorPicker, которая позволяет пользователям выбрать цвет из всплывающего окна.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/colorpicker
 msc.type: chapter
 ms.openlocfilehash: 28a5801af256a1457f486c658783fb153f8428e1
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26509303"
 ---
 <a name="colorpicker"></a><span data-ttu-id="50fed-103">ColorPicker</span><span class="sxs-lookup"><span data-stu-id="50fed-103">ColorPicker</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883243"
 ---
 <a name="validating-users-with-the-login-control"></a><span data-ttu-id="daab2-103">Проверка пользователей с помощью управления входом</span><span class="sxs-lookup"><span data-stu-id="daab2-103">Validating Users with the Login Control</span></span>
 ====================

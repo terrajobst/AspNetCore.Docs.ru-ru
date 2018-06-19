@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/security/authentication-filters
-title: "Фильтры проверки подлинности в ASP.NET Web API 2 | Документы Microsoft"
+title: Фильтры проверки подлинности в ASP.NET Web API 2 | Документы Microsoft
 author: MikeWasson
-description: "Фильтр проверки подлинности — это компонент, который выполняет проверку подлинности HTTP-запроса. Веб-API 2 и MVC 5 и поддерживать фильтры проверки подлинности, но немного отличаться..."
+description: Фильтр проверки подлинности — это компонент, который выполняет проверку подлинности HTTP-запроса. Веб-API 2 и MVC 5 и поддерживать фильтры проверки подлинности, но немного отличаться...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/25/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/12/2018
+ms.locfileid: "29153522"
 ---
 <a name="authentication-filters-in-aspnet-web-api-2"></a><span data-ttu-id="b450c-104">Фильтры проверки подлинности в ASP.NET Web API 2</span><span class="sxs-lookup"><span data-stu-id="b450c-104">Authentication Filters in ASP.NET Web API 2</span></span>
 ====================

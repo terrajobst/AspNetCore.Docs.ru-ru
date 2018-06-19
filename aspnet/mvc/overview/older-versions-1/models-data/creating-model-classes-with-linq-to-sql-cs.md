@@ -17,6 +17,7 @@ ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/27/2018
+ms.locfileid: "34555317"
 ---
 <a name="creating-model-classes-with-linq-to-sql-c"></a><span data-ttu-id="2c4c2-104">Создание классов модели с помощью LINQ to SQL (C#)</span><span class="sxs-lookup"><span data-stu-id="2c4c2-104">Creating Model Classes with LINQ to SQL (C#)</span></span>
 ====================

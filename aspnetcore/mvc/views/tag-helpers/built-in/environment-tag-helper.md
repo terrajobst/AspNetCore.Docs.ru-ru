@@ -1,7 +1,7 @@
 ---
-title: "Вспомогательная функция тега среды в ASP.NET Core"
+title: Вспомогательная функция тега среды в ASP.NET Core
 author: pkellner
-description: "Определенная в ASP.NET Core вспомогательная функция тега среды, включая все свойства"
+description: Определенная в ASP.NET Core вспомогательная функция тега среды, включая все свойства
 manager: wpickett
 ms.author: riande
 ms.date: 07/14/2017
@@ -14,6 +14,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28901186"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a><span data-ttu-id="f8be5-103">Вспомогательная функция тега среды в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="f8be5-103">Environment Tag Helper in ASP.NET Core</span></span>
 

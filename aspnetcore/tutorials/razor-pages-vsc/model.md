@@ -15,6 +15,7 @@ ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32078516"
 ---
 # <a name="add-a-model-to-an-aspnet-core-razor-pages-app-with-visual-studio-code"></a><span data-ttu-id="bef55-103">Добавление модели в приложение Razor Pages в ASP.NET Core с помощью Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="bef55-103">Add a model to an ASP.NET Core Razor Pages app with Visual Studio Code</span></span>
 

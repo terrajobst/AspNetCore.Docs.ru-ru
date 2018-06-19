@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893889"
 ---
 <a name="how-do-i-work-with-urls-in-aspnet-routing"></a><span data-ttu-id="d62f8-105">Инструкции: работы с URL-адреса маршрутизации ASP.NET?</span><span class="sxs-lookup"><span data-stu-id="d62f8-105">How Do I: Work with URLs in ASP.NET Routing?</span></span>
 ====================

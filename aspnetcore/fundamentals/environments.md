@@ -14,6 +14,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33840961"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a><span data-ttu-id="64cad-103">Использование нескольких сред в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="64cad-103">Use multiple environments in ASP.NET Core</span></span>
 

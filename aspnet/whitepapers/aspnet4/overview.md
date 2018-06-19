@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30899047"
 ---
 <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a><span data-ttu-id="2b64a-103">В ASP.NET 4 и Visual Studio 2010 Web Общие сведения о разработке</span><span class="sxs-lookup"><span data-stu-id="2b64a-103">ASP.NET 4 and Visual Studio 2010 Web Development Overview</span></span>
 ====================

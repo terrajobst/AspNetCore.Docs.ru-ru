@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/application-level-objects
-title: "Объекты уровня приложения | Документы Microsoft"
+title: Объекты уровня приложения | Документы Microsoft
 author: JoeStagner
-description: "В этом видео будет событий на уровне приложения, а также объекты и объясняется понятие &quot;область&quot; , относящегося к ним."
+description: В этом видео будет событий на уровне приложения, а также объекты и объясняется понятие &quot;область&quot; , относящегося к ним.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/20/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521563"
 ---
 <a name="application-level-objects"></a><span data-ttu-id="b9f2e-103">Объекты уровня приложения</span><span class="sxs-lookup"><span data-stu-id="b9f2e-103">Application Level Objects</span></span>
 ====================

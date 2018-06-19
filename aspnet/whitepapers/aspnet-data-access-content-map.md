@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/aspnet-data-access-content-map
-title: "Доступ к данным ASP.NET - рекомендуется использовать ресурсы | Документы Microsoft"
+title: Доступ к данным ASP.NET - рекомендуется использовать ресурсы | Документы Microsoft
 author: rick-anderson
-description: "В этом разделе приведены ссылки на ресурсы документации о том, как получить доступ к данным в веб-приложениях ASP.NET, главным образом с помощью платформы Entity Framework и SQL Se..."
+description: В этом разделе приведены ссылки на ресурсы документации о том, как получить доступ к данным в веб-приложениях ASP.NET, главным образом с помощью платформы Entity Framework и SQL Se...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/25/2013
 ms.topic: article
 ms.assetid: f8157be1-4ab9-469e-ad3a-0ccc80b56c00
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet-data-access-content-map
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28048263"
 ---
 <a name="aspnet-data-access---recommended-resources"></a><span data-ttu-id="c24cc-103">Доступ к данным ASP.NET - рекомендуется использовать ресурсы</span><span class="sxs-lookup"><span data-stu-id="c24cc-103">ASP.NET Data Access - Recommended Resources</span></span>
 ====================

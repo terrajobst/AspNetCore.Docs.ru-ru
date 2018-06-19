@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-aspnet-to-send-email-from-a-web-site
-title: "[Инструкции:] Используется для отправки электронной почты с веб-сайта ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Используется для отправки электронной почты с веб-сайта ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "В этот видеоролик пиксел Крис показано, как создать и отправить сообщение электронной почты в веб-сайт ASP.NET. Во-первых сведения о основными классами f имен System.Net.Mail..."
+description: В этот видеоролик пиксел Крис показано, как создать и отправить сообщение электронной почты в веб-сайт ASP.NET. Во-первых сведения о основными классами f имен System.Net.Mail...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/28/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526053"
 ---
 <a name="how-do-i-use-aspnet-to-send-email-from-a-web-site"></a><span data-ttu-id="1535e-104">[Инструкции:] Используется для отправки электронной почты с веб-сайта ASP.NET</span><span class="sxs-lookup"><span data-stu-id="1535e-104">[How Do I:] Use ASP.NET to Send Email from a Web Site</span></span>
 ====================

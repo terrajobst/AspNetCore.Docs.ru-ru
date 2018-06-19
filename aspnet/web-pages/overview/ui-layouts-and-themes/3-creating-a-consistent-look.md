@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/3-creating-a-consistent-look
-title: "Создание согласованного макета в ASP.NET Web Pages (Razor) узлов | Документы Microsoft"
+title: Создание согласованного макета в ASP.NET Web Pages (Razor) узлов | Документы Microsoft
 author: tfitzmac
-description: "Чтобы сделать его более эффективно создавать веб-страницы для веб-узла, можно создать многократно используемых блоков содержимого (например, верхние и нижние колонтитулы) для веб-сайта и вы сможете..."
+description: Чтобы сделать его более эффективно создавать веб-страницы для веб-узла, можно создать многократно используемых блоков содержимого (например, верхние и нижние колонтитулы) для веб-сайта и вы сможете...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/10/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26530243"
 ---
 <a name="creating-a-consistent-layout-in-aspnet-web-pages-razor-sites"></a><span data-ttu-id="2b66f-103">Создание согласованного макета веб-страниц (Razor) узлов ASP.NET</span><span class="sxs-lookup"><span data-stu-id="2b66f-103">Creating a Consistent Layout in ASP.NET Web Pages (Razor) Sites</span></span>
 ====================

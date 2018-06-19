@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890724"
 ---
 <a name="shopping-cart"></a><span data-ttu-id="f6ccf-103">Корзина для покупок</span><span class="sxs-lookup"><span data-stu-id="f6ccf-103">Shopping Cart</span></span>
 ====================

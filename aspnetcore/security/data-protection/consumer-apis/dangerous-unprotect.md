@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30077421"
 ---
 # <a name="unprotect-payloads-whose-keys-have-been-revoked-in-aspnet-core"></a><span data-ttu-id="027a6-103">Снять защиту полезных данных, ключи которой был отозван в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="027a6-103">Unprotect payloads whose keys have been revoked in ASP.NET Core</span></span>
 

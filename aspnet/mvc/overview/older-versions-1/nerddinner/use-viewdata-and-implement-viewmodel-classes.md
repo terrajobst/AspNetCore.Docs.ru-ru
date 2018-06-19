@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879430"
 ---
 <a name="use-viewdata-and-implement-viewmodel-classes"></a><span data-ttu-id="77a88-103">Используйте ViewData и реализуйте ViewModel классы</span><span class="sxs-lookup"><span data-stu-id="77a88-103">Use ViewData and Implement ViewModel Classes</span></span>
 ====================

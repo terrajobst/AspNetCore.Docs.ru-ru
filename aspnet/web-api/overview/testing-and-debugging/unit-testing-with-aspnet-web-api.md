@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
-title: "Модульное тестирование ASP.NET Web API 2 | Документы Microsoft"
+title: Модульное тестирование ASP.NET Web API 2 | Документы Microsoft
 author: tfitzmac
-description: "Это руководство и приложения показано, как создать простой модульные тесты для приложения веб-API 2. Этот учебник показывает, как включать proj модульных тестов..."
+description: Это руководство и приложения показано, как создать простой модульные тесты для приложения веб-API 2. Этот учебник показывает, как включать proj модульных тестов...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/05/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28042749"
 ---
 <a name="unit-testing-aspnet-web-api-2"></a><span data-ttu-id="8ac4e-104">Модульное тестирование ASP.NET Web API 2</span><span class="sxs-lookup"><span data-stu-id="8ac4e-104">Unit Testing ASP.NET Web API 2</span></span>
 ====================

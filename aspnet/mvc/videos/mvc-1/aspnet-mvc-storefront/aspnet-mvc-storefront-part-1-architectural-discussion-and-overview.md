@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871653"
 ---
 <a name="aspnet-mvc-storefront-part-1-architectural-discussion-and-overview"></a><span data-ttu-id="7803b-104">ASP.NET MVC Storefront, часть 1: Описание архитектуры и общие сведения о</span><span class="sxs-lookup"><span data-stu-id="7803b-104">ASP.NET MVC Storefront Part 1: Architectural Discussion and Overview</span></span>
 ====================

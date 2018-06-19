@@ -1,6 +1,6 @@
 ---
 uid: mvc/videos/mvc-1/index
-title: "ASP.NET MVC 1 | Документы Microsoft"
+title: ASP.NET MVC 1 | Документы Microsoft
 author: rick-anderson
 description: ASP.NET MVC 1
 ms.author: aspnetcontent
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/videos/mvc-1
 msc.type: chapter
 ms.openlocfilehash: ad33f7cb81b0124728cfa36c8ff3ba0a473e351f
 ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/12/2018
+ms.locfileid: "29153908"
 ---
 <a name="aspnet-mvc-1"></a><span data-ttu-id="7e6e5-103">ASP.NET MVC 1</span><span class="sxs-lookup"><span data-stu-id="7e6e5-103">ASP.NET MVC 1</span></span>
 ====================

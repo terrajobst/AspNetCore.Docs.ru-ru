@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879612"
 ---
 <a name="ef-database-first-with-aspnet-mvc-enhancing-data-validation"></a><span data-ttu-id="bcd08-104">EF базы данных сначала с ASP.NET MVC: упрощает проверку данных</span><span class="sxs-lookup"><span data-stu-id="bcd08-104">EF Database First with ASP.NET MVC: Enhancing Data Validation</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883083"
 ---
 <a name="creating-a-site-with-iis7-manager"></a><span data-ttu-id="9ca3d-103">Создание сайта с помощью диспетчера служб IIS 7</span><span class="sxs-lookup"><span data-stu-id="9ca3d-103">Creating a Site with IIS7 Manager</span></span>
 ====================

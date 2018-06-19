@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-save-and-load-view-state-information-for-a-custom-web-server-control
-title: "[Инструкции:] Сохранение и загрузка состояния просмотра сведения для пользовательского элемента управления сервера веб | Документы Microsoft"
+title: '[Инструкции:] Сохранение и загрузка состояния просмотра сведения для пользовательского элемента управления сервера веб | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис будет показано, как для сохранения и восстановления данных в ViewState из пользовательского элемента управления. Во-первых как сохранить простым значением..."
+description: В этой видео пиксел Крис будет показано, как для сохранения и восстановления данных в ViewState из пользовательского элемента управления. Во-первых как сохранить простым значением...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/18/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525573"
 ---
 <a name="how-do-i-save-and-load-view-state-information-for-a-custom-web-server-control"></a><span data-ttu-id="b1be4-104">[Инструкции:] Сохранение и загрузка состояния просмотра сведения о пользовательских серверный элемент управления</span><span class="sxs-lookup"><span data-stu-id="b1be4-104">[How Do I:] Save and Load View State Information for a Custom Web Server Control</span></span>
 ====================

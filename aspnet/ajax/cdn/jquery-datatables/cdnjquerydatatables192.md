@@ -17,6 +17,7 @@ ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/21/2018
+ms.locfileid: "30071360"
 ---
 <a name="jquery-datatables-192"></a><span data-ttu-id="fb30c-102">jQuery DataTables 1.9.2</span><span class="sxs-lookup"><span data-stu-id="fb30c-102">jQuery DataTables 1.9.2</span></span>
 ====================

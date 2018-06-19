@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878533"
 ---
 <a name="aspnet-mvc-storefront-part-5-globalization"></a><span data-ttu-id="6461c-103">ASP.NET MVC Storefront часть 5: глобализации</span><span class="sxs-lookup"><span data-stu-id="6461c-103">ASP.NET MVC Storefront Part 5: Globalization</span></span>
 ====================

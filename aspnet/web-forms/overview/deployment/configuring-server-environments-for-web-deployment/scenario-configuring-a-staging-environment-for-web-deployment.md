@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892326"
 ---
 <a name="scenario-configuring-a-staging-environment-for-web-deployment"></a><span data-ttu-id="2b7e4-103">Сценарий: Настройка среды промежуточного хранения для веб-развертывания</span><span class="sxs-lookup"><span data-stu-id="2b7e4-103">Scenario: Configuring a Staging Environment for Web Deployment</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-send-templated-emails-for-health-monitoring-events-in-aspnet
-title: "[Инструкции:] Отправка событий в ASP.NET мониторинга работоспособности шаблон сообщения электронной почты | Документы Microsoft"
+title: '[Инструкции:] Отправка событий в ASP.NET мониторинга работоспособности шаблон сообщения электронной почты | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис демонстрируется использование TemplatedEmailWebEventProvider для отправки сообщений электронной почты при возникновении событий мониторинга работоспособности, используйте шаблон для t..."
+description: В этом видеоролике пиксел Крис демонстрируется использование TemplatedEmailWebEventProvider для отправки сообщений электронной почты при возникновении событий мониторинга работоспособности, используйте шаблон для t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/18/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521793"
 ---
 <a name="how-do-i-send-templated-emails-for-health-monitoring-events-in-aspnet"></a><span data-ttu-id="053c6-103">[Инструкции:] Отправка событий в ASP.NET мониторинга работоспособности шаблон сообщения электронной почты</span><span class="sxs-lookup"><span data-stu-id="053c6-103">[How Do I:] Send Templated Emails for Health Monitoring Events in ASP.NET</span></span>
 ====================
