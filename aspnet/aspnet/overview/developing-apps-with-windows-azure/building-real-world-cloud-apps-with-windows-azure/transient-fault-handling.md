@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873083"
 ---
 <a name="transient-fault-handling-building-real-world-cloud-apps-with-azure"></a><span data-ttu-id="a42a9-104">Transient Fault Handling (Создание реальных облачных приложений с Azure)</span><span class="sxs-lookup"><span data-stu-id="a42a9-104">Transient Fault Handling (Building Real-World Cloud Apps with Azure)</span></span>
 ====================

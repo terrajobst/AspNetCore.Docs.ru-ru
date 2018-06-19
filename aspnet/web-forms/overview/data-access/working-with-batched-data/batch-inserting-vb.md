@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888732"
 ---
 <a name="batch-inserting-vb"></a><span data-ttu-id="8bf9d-104">Пакетная вставка (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="8bf9d-104">Batch Inserting (VB)</span></span>
 ====================

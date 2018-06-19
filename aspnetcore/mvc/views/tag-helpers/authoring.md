@@ -15,6 +15,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32741002"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a><span data-ttu-id="55718-103">Создание вспомогательных функций тегов в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="55718-103">Author Tag Helpers in ASP.NET Core</span></span>
 

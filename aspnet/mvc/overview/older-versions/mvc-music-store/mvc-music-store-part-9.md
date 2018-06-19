@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870119"
 ---
 <a name="part-9-registration-and-checkout"></a><span data-ttu-id="28553-104">Часть 9: Регистрация и извлечение</span><span class="sxs-lookup"><span data-stu-id="28553-104">Part 9: Registration and Checkout</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30869599"
 ---
 <a name="adding-a-view"></a><span data-ttu-id="0f451-104">Добавление представления</span><span class="sxs-lookup"><span data-stu-id="0f451-104">Adding a View</span></span>
 ====================

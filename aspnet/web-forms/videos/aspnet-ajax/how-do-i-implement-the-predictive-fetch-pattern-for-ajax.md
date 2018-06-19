@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883376"
 ---
 <a name="how-do-i-implement-the-predictive-fetch-pattern-for-ajax"></a><span data-ttu-id="716c0-104">[Инструкции:] Реализовать шаблон прогнозной выборки для AJAX?</span><span class="sxs-lookup"><span data-stu-id="716c0-104">[How Do I:] Implement the Predictive Fetch Pattern for AJAX?</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877880"
 ---
 <a name="using-templatefields-in-the-gridview-control-c"></a><span data-ttu-id="faea3-104">С помощью TemplateFields в элементе управления GridView (C#)</span><span class="sxs-lookup"><span data-stu-id="faea3-104">Using TemplateFields in the GridView Control (C#)</span></span>
 ====================

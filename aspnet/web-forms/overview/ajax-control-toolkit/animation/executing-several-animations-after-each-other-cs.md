@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871413"
 ---
 <a name="executing-several-animations-after-each-other-c"></a><span data-ttu-id="a981b-104">Выполнение нескольких анимации друг за другом (C#)</span><span class="sxs-lookup"><span data-stu-id="a981b-104">Executing Several Animations after Each Other (C#)</span></span>
 ====================

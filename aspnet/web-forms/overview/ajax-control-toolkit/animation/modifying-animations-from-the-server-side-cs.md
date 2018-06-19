@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869014"
 ---
 <a name="modifying-animations-from-the-server-side-c"></a><span data-ttu-id="5547f-104">Изменение анимации со стороны сервера (C#)</span><span class="sxs-lookup"><span data-stu-id="5547f-104">Modifying Animations From The Server Side (C#)</span></span>
 ====================

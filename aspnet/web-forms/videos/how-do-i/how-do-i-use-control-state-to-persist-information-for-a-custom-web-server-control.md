@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-control-state-to-persist-information-for-a-custom-web-server-control
-title: "[Инструкции:] Состояние элемента управления используется для сохранения данных для пользовательских серверный элемент управления | Документы Microsoft"
+title: '[Инструкции:] Состояние элемента управления используется для сохранения данных для пользовательских серверный элемент управления | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис будет показано, как для хранения информации, относящейся к пользовательский серверный элемент управления в состоянии элемента управления, который не зависит от ViewState..."
+description: В этом видеоролике пиксел Крис будет показано, как для хранения информации, относящейся к пользовательский серверный элемент управления в состоянии элемента управления, который не зависит от ViewState...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/17/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526223"
 ---
 <a name="how-do-i-use-control-state-to-persist-information-for-a-custom-web-server-control"></a><span data-ttu-id="d479e-103">[Инструкции:] Состояние элемента управления используется для сохранения данных для пользовательских серверный элемент управления</span><span class="sxs-lookup"><span data-stu-id="d479e-103">[How Do I:] Use Control State to Persist Information for a Custom Web Server Control</span></span>
 ====================

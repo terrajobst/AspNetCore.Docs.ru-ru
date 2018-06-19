@@ -16,6 +16,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33838765"
 ---
 # <a name="initiate-http-requests"></a><span data-ttu-id="970e4-103">Инициирование HTTP-запросов</span><span class="sxs-lookup"><span data-stu-id="970e4-103">Initiate HTTP requests</span></span>
 

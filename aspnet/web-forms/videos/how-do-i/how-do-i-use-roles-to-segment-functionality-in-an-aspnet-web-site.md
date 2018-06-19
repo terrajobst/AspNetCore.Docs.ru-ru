@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-roles-to-segment-functionality-in-an-aspnet-web-site
-title: "[Инструкции:] Роли можно использовать для сегментирования функциональные возможности веб-сайт ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Роли можно использовать для сегментирования функциональные возможности веб-сайт ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис будет показано, как для максимизации использования ролей в веб-сайт ASP.NET после настройки членства в ASP.NET. Во-первых как установка роли..."
+description: В этом видеоролике пиксел Крис будет показано, как для максимизации использования ролей в веб-сайт ASP.NET после настройки членства в ASP.NET. Во-первых как установка роли...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/29/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526533"
 ---
 <a name="how-do-i-use-roles-to-segment-functionality-in-an-aspnet-web-site"></a><span data-ttu-id="ec490-104">[Инструкции:] Роли можно использовать для сегментирования функциональные возможности веб-сайт ASP.NET</span><span class="sxs-lookup"><span data-stu-id="ec490-104">[How Do I:] Use Roles to Segment Functionality in an ASP.NET Web Site</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-custom-profile-provider
-title: "[Инструкции:] Создание настраиваемого профиля поставщика? | Документы Майкрософт"
+title: '[Инструкции:] Создание настраиваемого профиля поставщика? | Документы Майкрософт'
 author: rick-anderson
-description: "В этом видеоролике рассказано, как создать настраиваемый профиль поставщика для хранения и извлечения данных, связанных с профилем пользователя в таблицах SQL Server отдельно от t..."
+description: В этом видеоролике рассказано, как создать настраиваемый профиль поставщика для хранения и извлечения данных, связанных с профилем пользователя в таблицах SQL Server отдельно от t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526413"
 ---
 <a name="how-do-i-create-a-custom-profile-provider"></a><span data-ttu-id="1666f-104">[Инструкции:] Создание настраиваемого профиля поставщика?</span><span class="sxs-lookup"><span data-stu-id="1666f-104">[How Do I:] Create a Custom Profile Provider?</span></span>
 ====================

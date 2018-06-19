@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-customize-my-site-with-profiles-and-themes
-title: "[Инструкции:] Настроить узел с помощью профилей и тем? | Документы Майкрософт"
+title: '[Инструкции:] Настроить узел с помощью профилей и тем? | Документы Майкрософт'
 author: microsoft
-description: "Узнайте, как использовать профили для сбора сведений о конфигурации на уровне пользователя и применять темы для согласованный внешний вид и поведение во всей веб-сайта."
+description: Узнайте, как использовать профили для сбора сведений о конфигурации на уровне пользователя и применять темы для согласованный внешний вид и поведение во всей веб-сайта.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/06/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526193"
 ---
 <a name="how-do-i-customize-my-site-with-profiles-and-themes"></a><span data-ttu-id="2e987-104">[Инструкции:] Настроить узел с помощью профилей и тем?</span><span class="sxs-lookup"><span data-stu-id="2e987-104">[How Do I:] Customize my Site with Profiles and Themes?</span></span>
 ====================

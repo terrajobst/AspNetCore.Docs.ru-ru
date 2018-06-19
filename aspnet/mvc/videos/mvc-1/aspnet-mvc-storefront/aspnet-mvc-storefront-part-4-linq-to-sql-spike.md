@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871627"
 ---
 <a name="aspnet-mvc-storefront-part-4-linq-to-sql-spike"></a><span data-ttu-id="e9b3b-103">ASP.NET MVC Storefront, часть 4: Linq To Sql пик</span><span class="sxs-lookup"><span data-stu-id="e9b3b-103">ASP.NET MVC Storefront Part 4: Linq To Sql Spike</span></span>
 ====================

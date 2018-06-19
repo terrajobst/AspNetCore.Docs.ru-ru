@@ -1,8 +1,8 @@
 ---
 uid: web-api/videos/getting-started/getting-data
-title: "Веб-API ASP.NET, часть 2: Получение данных | Документы Microsoft"
+title: 'Веб-API ASP.NET, часть 2: Получение данных | Документы Microsoft'
 author: jongalloway
-description: "Примечание: Этот видеоролик содержит сведения из предварительной версии ASP.NET Web API"
+description: 'Примечание: Этот видеоролик содержит сведения из предварительной версии ASP.NET Web API'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26509063"
 ---
 <a name="aspnet-web-api-part-2-getting-data"></a><span data-ttu-id="c3e99-103">Веб-API ASP.NET, часть 2: Получение данных</span><span class="sxs-lookup"><span data-stu-id="c3e99-103">ASP.NET Web API, Part 2: Getting Data</span></span>
 ====================

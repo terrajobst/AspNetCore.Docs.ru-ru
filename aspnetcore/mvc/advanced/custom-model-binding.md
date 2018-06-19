@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32740625"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a><span data-ttu-id="cc890-103">Пользовательская привязка модели в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="cc890-103">Custom Model Binding in ASP.NET Core</span></span>
 

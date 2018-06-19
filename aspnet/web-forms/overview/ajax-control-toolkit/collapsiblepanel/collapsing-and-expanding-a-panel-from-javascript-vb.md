@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873122"
 ---
 <a name="collapsing-and-expanding-a-panel-from-javascript-vb"></a><span data-ttu-id="36677-103">Свертывание и развертывание панели из кода JavaScript (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="36677-103">Collapsing and Expanding a Panel from JavaScript (VB)</span></span>
 ====================

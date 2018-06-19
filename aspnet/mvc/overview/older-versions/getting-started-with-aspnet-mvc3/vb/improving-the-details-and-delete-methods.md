@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869521"
 ---
 <a name="improving-the-details-and-delete-methods-vb"></a><span data-ttu-id="2c955-103">Улучшение сведения и методы удаления (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="2c955-103">Improving the Details and Delete Methods (VB)</span></span>
 ====================

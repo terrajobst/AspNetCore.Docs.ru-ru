@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30867610"
 ---
 <a name="mvc2---stronglytyped-helpers"></a><span data-ttu-id="bb8b5-103">MVC2 - StronglyTyped помощников</span><span class="sxs-lookup"><span data-stu-id="bb8b5-103">MVC2 - StronglyTyped Helpers</span></span>
 ====================

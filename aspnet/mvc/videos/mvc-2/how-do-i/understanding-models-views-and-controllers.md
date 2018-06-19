@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870028"
 ---
 <a name="understanding-models-views-and-controllers"></a><span data-ttu-id="25207-104">Общие сведения о моделях, представлениях и контроллерах</span><span class="sxs-lookup"><span data-stu-id="25207-104">Understanding Models, Views, and Controllers</span></span>
 ====================

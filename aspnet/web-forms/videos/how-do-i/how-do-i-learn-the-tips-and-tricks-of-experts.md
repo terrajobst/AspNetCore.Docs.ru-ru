@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-learn-the-tips-and-tricks-of-experts
-title: "[Инструкции:] Дополнительные сведения, советы и подсказки экспертов? | Документы Майкрософт"
+title: '[Инструкции:] Дополнительные сведения, советы и подсказки экспертов? | Документы Майкрософт'
 author: microsoft
-description: "Просмотрите советы и рекомендации, включая шифрования конфиденциальных данных, хранящихся в файле web.config, отправка содержимого на другую страницу, что упрощает сложные URL-адреса..."
+description: Просмотрите советы и рекомендации, включая шифрования конфиденциальных данных, хранящихся в файле web.config, отправка содержимого на другую страницу, что упрощает сложные URL-адреса...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/16/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525763"
 ---
 <a name="how-do-i-learn-the-tips-and-tricks-of-experts"></a><span data-ttu-id="fe5a0-104">[Инструкции:] Дополнительные сведения, советы и подсказки экспертов?</span><span class="sxs-lookup"><span data-stu-id="fe5a0-104">[How Do I:] Learn the Tips and Tricks of Experts?</span></span>
 ====================

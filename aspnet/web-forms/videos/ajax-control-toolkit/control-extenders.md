@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883772"
 ---
 <a name="control-extenders"></a><span data-ttu-id="2fe6b-103">Расширения элемента управления</span><span class="sxs-lookup"><span data-stu-id="2fe6b-103">Control Extenders</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874815"
 ---
 <a name="creating-model-classes-with-linq-to-sql-vb"></a><span data-ttu-id="75bd6-104">Создание классов модели с помощью LINQ to SQL (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="75bd6-104">Creating Model Classes with LINQ to SQL (VB)</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/entity-relations-in-odata-v4
-title: "Отношениями сущностей в OData v4, с помощью ASP.NET Web API 2.2 | Документы Microsoft"
+title: Отношениями сущностей в OData v4, с помощью ASP.NET Web API 2.2 | Документы Microsoft
 author: MikeWasson
-description: "Большинство наборов данных определить отношения между сущностями: клиенты имеют заказы; у книги может быть авторов; продукты имеют поставщиков. С помощью OData, клиенты могут переходить по..."
+description: 'Большинство наборов данных определить отношения между сущностями: клиенты имеют заказы; у книги может быть авторов; продукты имеют поставщиков. С помощью OData, клиенты могут переходить по...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508103"
 ---
 <a name="entity-relations-in-odata-v4-using-aspnet-web-api-22"></a><span data-ttu-id="4236b-104">Отношениями сущностей в OData v4, с помощью ASP.NET Web API 2.2</span><span class="sxs-lookup"><span data-stu-id="4236b-104">Entity Relations in OData v4 Using ASP.NET Web API 2.2</span></span>
 ====================

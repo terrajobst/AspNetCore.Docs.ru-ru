@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877844"
 ---
 <a name="aspnet-mobile-controls-tested-devices"></a><span data-ttu-id="d9e79-104">Протестированные устройства, элементы управления ASP.NET для мобильных устройств</span><span class="sxs-lookup"><span data-stu-id="d9e79-104">ASP.NET Mobile Controls Tested Devices</span></span>
 ====================

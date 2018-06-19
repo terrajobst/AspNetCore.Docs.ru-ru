@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870054"
 ---
 <a name="owin-startup-class-detection"></a><span data-ttu-id="0874a-105">Определение класса запуска OWIN</span><span class="sxs-lookup"><span data-stu-id="0874a-105">OWIN Startup Class Detection</span></span>
 ====================

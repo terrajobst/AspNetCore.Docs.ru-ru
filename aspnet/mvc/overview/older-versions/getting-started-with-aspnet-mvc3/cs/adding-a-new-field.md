@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871562"
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-table-c"></a><span data-ttu-id="96879-103">Добавление нового поля в таблице (C#) и модели фильма</span><span class="sxs-lookup"><span data-stu-id="96879-103">Adding a New Field to the Movie Model and Table (C#)</span></span>
 ====================

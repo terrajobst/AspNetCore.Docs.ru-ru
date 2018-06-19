@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870093"
 ---
 <a name="validating-with-the-idataerrorinfo-interface-vb"></a><span data-ttu-id="66c6d-103">Проверка с помощью IDataErrorInfo-интерфейс (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="66c6d-103">Validating with the IDataErrorInfo Interface (VB)</span></span>
 ====================

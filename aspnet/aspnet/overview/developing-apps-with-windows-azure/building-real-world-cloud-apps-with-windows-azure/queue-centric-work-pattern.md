@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875439"
 ---
 <a name="queue-centric-work-pattern-building-real-world-cloud-apps-with-azure"></a><span data-ttu-id="a1328-104">Ориентированное на очередь рабочих шаблон (Создание реальных облачных приложений в Azure)</span><span class="sxs-lookup"><span data-stu-id="a1328-104">Queue-Centric Work Pattern (Building Real-World Cloud Apps with Azure)</span></span>
 ====================

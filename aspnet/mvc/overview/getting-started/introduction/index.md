@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/getting-started/introduction
 msc.type: chapter
 ms.openlocfilehash: bef9a660f00452120fe1dfc5818cb9f94cfe08df
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872628"
 ---
 <a name="getting-started-with-aspnet-mvc-5"></a><span data-ttu-id="5f492-103">Начало работы с ASP.NET MVC 5</span><span class="sxs-lookup"><span data-stu-id="5f492-103">Getting Started with ASP.NET MVC 5</span></span>
 ====================

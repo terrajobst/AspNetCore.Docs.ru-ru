@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889466"
 ---
 <a name="examining-the-events-associated-with-inserting-updating-and-deleting-vb"></a><span data-ttu-id="eb277-104">Обзор событий, связанных с вставки, обновления и удаления (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="eb277-104">Examining the Events Associated with Inserting, Updating, and Deleting (VB)</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-a-hidden-field-to-store-and-manipulate-client-side-information
-title: "[Инструкции:] Использовать скрытое поле для хранения и обрабатывать эти данные на стороне клиента | Документы Microsoft"
+title: '[Инструкции:] Использовать скрытое поле для хранения и обрабатывать эти данные на стороне клиента | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис будет показано, как использовать скрытое поле как один из подходов к простой состояния управления на странице ASP.NET и взаимодействие на стороне клиента..."
+description: В этом видеоролике пиксел Крис будет показано, как использовать скрытое поле как один из подходов к простой состояния управления на странице ASP.NET и взаимодействие на стороне клиента...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/24/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525083"
 ---
 <a name="how-do-i-use-a-hidden-field-to-store-and-manipulate-client-side-information"></a><span data-ttu-id="6febf-103">[Инструкции:] Использовать скрытое поле для хранения и обрабатывать эти данные на стороне клиента</span><span class="sxs-lookup"><span data-stu-id="6febf-103">[How Do I:] Use a Hidden Field to Store and Manipulate Client-Side Information</span></span>
 ====================

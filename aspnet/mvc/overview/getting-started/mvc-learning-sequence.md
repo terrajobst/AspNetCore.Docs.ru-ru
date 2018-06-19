@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/mvc-learning-sequence
-title: "MVC рекомендуется учебники и статьи | Документы Microsoft"
+title: MVC рекомендуется учебники и статьи | Документы Microsoft
 author: Rick-Anderson
-description: "Эта страница содержит ссылки на учебники по ASP.NET MVC и предлагаемые последовательности, чтобы подписаться на них."
+description: Эта страница содержит ссылки на учебники по ASP.NET MVC и предлагаемые последовательности, чтобы подписаться на них.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2015
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28032645"
 ---
 <a name="mvc-recommended-tutorials-and-articles"></a><span data-ttu-id="f2963-103">MVC рекомендуется учебники и статьи</span><span class="sxs-lookup"><span data-stu-id="f2963-103">MVC recommended tutorials and articles</span></span>
 ====================

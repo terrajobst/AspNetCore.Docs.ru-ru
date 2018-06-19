@@ -1,8 +1,8 @@
 ---
 uid: web-api/videos/getting-started/aspnet-web-api
-title: "Веб-API ASP.NET | Документы Microsoft"
+title: Веб-API ASP.NET | Документы Microsoft
 author: shanselman
-description: "Отладка"
+description: Отладка
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508963"
 ---
 <a name="aspnet-web-api"></a><span data-ttu-id="44c49-103">ASP.NET Web API</span><span class="sxs-lookup"><span data-stu-id="44c49-103">ASP.NET Web API</span></span>
 ====================

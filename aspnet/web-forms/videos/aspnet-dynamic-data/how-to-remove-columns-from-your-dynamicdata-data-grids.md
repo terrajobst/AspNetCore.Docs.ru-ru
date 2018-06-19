@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883681"
 ---
 <a name="how-to-remove-columns-from-your-dynamicdata-data-grids"></a><span data-ttu-id="1d6a4-103">Удаление столбцов из вашего таблицы DynamicData данных</span><span class="sxs-lookup"><span data-stu-id="1d6a4-103">How to Remove Columns From Your DynamicData Data Grids</span></span>
 ====================

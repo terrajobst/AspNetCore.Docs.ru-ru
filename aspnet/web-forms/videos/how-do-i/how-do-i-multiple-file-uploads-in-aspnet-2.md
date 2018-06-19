@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-multiple-file-uploads-in-aspnet-2
-title: "[Инструкции:]  Загрузки нескольких файлов в ASP.NET 2 | Документы Microsoft"
+title: '[Инструкции:]  Загрузки нескольких файлов в ASP.NET 2 | Документы Microsoft'
 author: JoeStagner
-description: "В этом видео я продемонстрирую передачи динамически определено несколько файлов в приложении ASP.NET."
+description: В этом видео я продемонстрирую передачи динамически определено несколько файлов в приложении ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/12/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521383"
 ---
 <a name="how-do-i--multiple-file-uploads-in-aspnet-2"></a><span data-ttu-id="c5fb9-103">[Инструкции:]  Загрузки нескольких файлов в ASP.NET 2</span><span class="sxs-lookup"><span data-stu-id="c5fb9-103">[How Do I:]  Multiple File Uploads in ASP.NET 2</span></span>
 ====================

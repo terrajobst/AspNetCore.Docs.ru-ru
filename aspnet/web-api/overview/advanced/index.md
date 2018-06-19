@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/index
-title: "Дополнительные разделы для ASP.NET Web API | Документы Microsoft"
+title: Дополнительные разделы для ASP.NET Web API | Документы Microsoft
 author: rick-anderson
-description: "Дополнительные разделы для разработки веб-API ASP.NET, после того, как вы узнали основы."
+description: Дополнительные разделы для разработки веб-API ASP.NET, после того, как вы узнали основы.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/23/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/advanced
 msc.type: chapter
 ms.openlocfilehash: dca812e1c88d1aa2692365711d71813199be9ca2
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506753"
 ---
 <a name="advanced-topics-for-aspnet-web-api"></a><span data-ttu-id="67b9c-103">Дополнительные разделы для веб-API ASP.NET</span><span class="sxs-lookup"><span data-stu-id="67b9c-103">Advanced Topics for ASP.NET Web API</span></span>
 ====================

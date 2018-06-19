@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880496"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-filteredtextbox-extender"></a><span data-ttu-id="28e4b-104">[Инструкции:] Использовать расширения ASP.NET AJAX FilteredTextBox не дает?</span><span class="sxs-lookup"><span data-stu-id="28e4b-104">[How Do I:] Use the ASP.NET AJAX FilteredTextbox Extender?</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868247"
 ---
 <a name="validating-with-a-service-layer-vb"></a><span data-ttu-id="123df-104">Проверка с помощью на уровне службы (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="123df-104">Validating with a Service Layer (VB)</span></span>
 ====================

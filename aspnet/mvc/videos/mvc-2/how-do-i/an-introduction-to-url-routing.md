@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869885"
 ---
 <a name="an-introduction-to-url-routing"></a><span data-ttu-id="72740-104">Общие сведения о маршрутизации URL-адрес</span><span class="sxs-lookup"><span data-stu-id="72740-104">An Introduction to URL Routing</span></span>
 ====================

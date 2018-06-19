@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879625"
 ---
 <a name="creating-page-layouts-with-view-master-pages-vb"></a><span data-ttu-id="61bfe-104">Создание макетов страниц с главными страницами представлений (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="61bfe-104">Creating Page Layouts with View Master Pages (VB)</span></span>
 ====================

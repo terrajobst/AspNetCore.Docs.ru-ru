@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868988"
 ---
 <a name="aspnet-mvc-controller-overview-vb"></a><span data-ttu-id="35b0e-104">Общие сведения о ASP.NET MVC контроллера (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="35b0e-104">ASP.NET MVC Controller Overview (VB)</span></span>
 ====================

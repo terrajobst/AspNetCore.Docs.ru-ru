@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891725"
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-vb"></a><span data-ttu-id="2c276-104">Настройка проверки подлинности форм и дополнительные разделы (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="2c276-104">Forms Authentication Configuration and Advanced Topics (VB)</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/jquery/how-do-i-make-ajax-calls-using-jquery
-title: "Инструкции: создание вызовы Ajax с использованием библиотеки jQuery? | Документы Майкрософт"
+title: 'Инструкции: создание вызовы Ajax с использованием библиотеки jQuery? | Документы Майкрософт'
 author: rick-anderson
-description: "В этой видео пиксел Крис показано, как выполнять вызовы Ajax с использованием библиотеки jQuery. Создается пример веб-сайта, который содержит простую веб-службу, которая возвращает..."
+description: В этой видео пиксел Крис показано, как выполнять вызовы Ajax с использованием библиотеки jQuery. Создается пример веб-сайта, который содержит простую веб-службу, которая возвращает...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2010
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526423"
 ---
 <a name="how-do-i-make-ajax-calls-using-jquery"></a><span data-ttu-id="3485e-105">Инструкции: создание вызовы Ajax с использованием библиотеки jQuery?</span><span class="sxs-lookup"><span data-stu-id="3485e-105">How Do I: Make Ajax Calls Using jQuery?</span></span>
 ====================

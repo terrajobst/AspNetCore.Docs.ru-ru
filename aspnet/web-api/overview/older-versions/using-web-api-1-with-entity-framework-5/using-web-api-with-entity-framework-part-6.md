@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869391"
 ---
 <a name="part-6-creating-product-and-order-controllers"></a><span data-ttu-id="b5309-102">Часть 6: Создание продукта и порядок контроллеров</span><span class="sxs-lookup"><span data-stu-id="b5309-102">Part 6: Creating Product and Order Controllers</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895389"
 ---
 <a name="visual-studio-2010-quick-hit---new-multi-targeting"></a><span data-ttu-id="c2925-103">Visual Studio 2010 «Быстрый Hit» — новый для различных версий</span><span class="sxs-lookup"><span data-stu-id="c2925-103">Visual Studio 2010 "Quick Hit" - New Multi-Targeting</span></span>
 ====================

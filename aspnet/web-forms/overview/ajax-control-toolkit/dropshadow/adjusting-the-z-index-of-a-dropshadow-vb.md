@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871302"
 ---
 <a name="adjusting-the-z-index-of-a-dropshadow-vb"></a><span data-ttu-id="676ef-104">Настройка Z-Index DropShadow (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="676ef-104">Adjusting the Z-Index of a DropShadow (VB)</span></span>
 ====================

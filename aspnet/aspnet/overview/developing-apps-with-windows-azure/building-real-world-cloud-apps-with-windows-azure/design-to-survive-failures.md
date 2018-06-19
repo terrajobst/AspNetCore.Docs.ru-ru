@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874113"
 ---
 <a name="design-to-survive-failures-building-real-world-cloud-apps-with-azure"></a><span data-ttu-id="715d4-104">Разработка выдержать сбои (Создание реальных облачных приложений в Azure)</span><span class="sxs-lookup"><span data-stu-id="715d4-104">Design to Survive Failures (Building Real-World Cloud Apps with Azure)</span></span>
 ====================

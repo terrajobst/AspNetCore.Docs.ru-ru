@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881702"
 ---
 <a name="new-designer-support-in-visual-studio-2008"></a><span data-ttu-id="9c5e1-103">Поддержка нового конструктора в Visual Studio 2008</span><span class="sxs-lookup"><span data-stu-id="9c5e1-103">New Designer Support in Visual Studio 2008</span></span>
 ====================

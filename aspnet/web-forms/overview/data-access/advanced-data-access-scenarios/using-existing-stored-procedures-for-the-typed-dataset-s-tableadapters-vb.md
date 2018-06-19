@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877376"
 ---
 <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a><span data-ttu-id="c3cf7-104">Использование существующих хранимых процедур для адаптеров таблиц типизированного набора данных (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="c3cf7-104">Using Existing Stored Procedures for the Typed DataSet's TableAdapters (VB)</span></span>
 ====================
