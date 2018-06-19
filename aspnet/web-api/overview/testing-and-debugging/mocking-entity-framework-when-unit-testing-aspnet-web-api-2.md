@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/testing-and-debugging/mocking-entity-framework-when-unit-testing-aspnet-web-api-2
-title: "Макетирование Entity Framework при модульного тестирования ASP.NET Web API 2 | Документы Microsoft"
+title: Макетирование Entity Framework при модульного тестирования ASP.NET Web API 2 | Документы Microsoft
 author: tfitzmac
-description: "Это руководство и приложения показано, как создавать модульные тесты для приложения веб-API 2, использующего платформу Entity Framework. Показано, как изменить..."
+description: Это руководство и приложения показано, как создавать модульные тесты для приложения веб-API 2, использующего платформу Entity Framework. Показано, как изменить...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/13/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/12/2018
+ms.locfileid: "29152869"
 ---
 <a name="mocking-entity-framework-when-unit-testing-aspnet-web-api-2"></a>Макетирование Entity Framework при модульного тестирования ASP.NET Web API 2
 ====================

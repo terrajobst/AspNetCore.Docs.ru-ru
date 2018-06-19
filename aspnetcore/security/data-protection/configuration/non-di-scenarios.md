@@ -1,7 +1,7 @@
 ---
-title: "DI не зависимые сценарии для защиты данных в ASP.NET Core"
+title: DI не зависимые сценарии для защиты данных в ASP.NET Core
 author: rick-anderson
-description: "Узнайте, как для поддержки сценариев защиты данных, где невозможно или не хотите использовать службу, предоставляемую классом внедрения зависимостей."
+description: Узнайте, как для поддержки сценариев защиты данных, где невозможно или не хотите использовать службу, предоставляемую классом внедрения зависимостей.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29727250"
 ---
 # <a name="non-di-aware-scenarios-for-data-protection-in-aspnet-core"></a>DI не зависимые сценарии для защиты данных в ASP.NET Core
 

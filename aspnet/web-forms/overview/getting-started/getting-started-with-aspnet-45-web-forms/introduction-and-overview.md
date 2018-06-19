@@ -17,6 +17,7 @@ ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32078610"
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>Приступая к работе с 4,5 веб-форм ASP.NET и Visual Studio 2013
 ====================

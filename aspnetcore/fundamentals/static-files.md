@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34094545"
 ---
 # <a name="static-files-in-aspnet-core"></a>Статические файлы в ASP.NET Core
 

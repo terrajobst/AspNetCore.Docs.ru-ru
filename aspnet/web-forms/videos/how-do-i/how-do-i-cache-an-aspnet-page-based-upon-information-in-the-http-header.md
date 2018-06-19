@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-cache-an-aspnet-page-based-upon-information-in-the-http-header
-title: "[Инструкции:]  Страницы ASP.NET на основе данных в заголовке HTTP кэша | Документы Microsoft"
+title: '[Инструкции:]  Страницы ASP.NET на основе данных в заголовке HTTP кэша | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис показано, как сохранить страницы в кэше вывода ASP.NET на основе данных в заголовке HTTP. Первый потенциальных стили HTTP..."
+description: В этой видео пиксел Крис показано, как сохранить страницы в кэше вывода ASP.NET на основе данных в заголовке HTTP. Первый потенциальных стили HTTP...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/26/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28882221"
 ---
 <a name="how-do-i--cache-an-aspnet-page-based-upon-information-in-the-http-header"></a>[Инструкции:]  Страницы ASP.NET на основе данных в заголовке HTTP кэша
 ====================

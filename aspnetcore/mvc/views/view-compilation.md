@@ -1,71 +1,98 @@
 ---
-title: Компиляция и предварительная компиляция представлений Razor в ASP.NET Core
+title: Компиляция и предварительная компиляция файлов Razor в ASP.NET Core
 author: rick-anderson
-description: Узнайте, как включить компиляцию и предварительную компиляцию представлений MVC Razor в приложениях ASP.NET Core.
+description: Узнайте о преимуществах предварительной компиляции файлов Razor и о том, как это сделать в приложении ASP.NET Core.
 manager: wpickett
+monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
-ms.date: 12/13/2017
+ms.custom: mvc
+ms.date: 05/17/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 013ca0d149c6415b5e6825aa5a48e93ae48f6728
-ms.sourcegitcommit: 0063338c2e130409081bb60fcffa0c3f190cd46a
+ms.openlocfilehash: 03b11116a15c291452acd878e32cd015dc553dcc
+ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34336282"
 ---
-# <a name="razor-file-cshtml-compilation-in-aspnet-core"></a>Компиляция файла Razor (.cshtml) в ASP.NET Core
+# <a name="razor-file-compilation-in-aspnet-core"></a>Компиляция файлов Razor в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-Представления Razor компилируются во время выполнения при вызове представления. В ASP.NET Core 2.1.0 или более поздней версии представления компилируются во время сборки и публикации с помощью [пакета SDK для Razor](/aspnetcore/mvc/razor-pages/sdk). В ASP.NET Core 1.1 и ASP.NET Core 2.0 представления можно при необходимости компилировать во время публикации и развертывать с приложением &mdash; с помощью средств предварительной компиляции. 
+::: moniker range="= aspnetcore-1.1"
+Файл Razor компилируется в среде выполнения при вызове связанного представления MVC. Публикация файла Razor во время сборки не поддерживается. При необходимости файлы Razor можно компилировать во время публикации и развертывать вместе с приложением &mdash; для этого используется средство предварительной компиляции.
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
+Файл Razor компилируется в среде выполнения при вызове связанной страницы Razor или представления MVC. Публикация файла Razor во время сборки не поддерживается. При необходимости файлы Razor можно компилировать во время публикации и развертывать вместе с приложением &mdash; для этого используется средство предварительной компиляции.
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+Файл Razor компилируется в среде выполнения при вызове связанной страницы Razor или представления MVC. Файлы Razor компилируются и во время сборки, и во время публикации с помощью [пакета SDK для Razor](xref:mvc/razor-pages/sdk).
+::: moniker-end
 
+## <a name="precompilation-considerations"></a>Особенности предварительной компиляции
 
+Ниже перечислены побочные эффекты предварительной компиляции файлов Razor:
 
-Особенности предварительной компиляции:
+* уменьшение размера публикуемого пакета;
+* уменьшение времени запуска сервера;
+* отсутствие возможности редактирования файлов Razor по причине отсутствия связанного содержимого в публикуемом пакете.
 
-* Предварительная компиляция представлений уменьшает размер публикуемого пакета и сокращает время запуска.
-* После предварительной компиляции представлений редактировать файлы Razor невозможно. Отредактированные представления не попадут в опубликованный пакет. 
+## <a name="deploy-precompiled-files"></a>Развертывание предварительно скомпилированных файлов
 
-Развертывание предварительно скомпилированных представлений осуществляется следующим образом.
+::: moniker range=">= aspnetcore-2.1"
+Компиляция файлов Razor во время сборки и публикации включена по умолчанию с помощью пакета SDK для Razor. Редактирование файлов Razor после их обновления поддерживается во время сборки. По умолчанию только скомпилированный файл *Views.dll*, а не *CSHTML*-файлы, развертываются вместе с приложением.
 
-# <a name="aspnet-core-21tabaspnetcore21"></a>[ASP.NET Core 2.1](#tab/aspnetcore21/)
-Компиляция файлов Razor во время сборки и публикации включена по умолчанию с помощью пакетов SDK для Razor. Редактирование файлов Razor после их обновления поддерживается во время сборки. По умолчанию только скомпилированный файл *Views.dll*, а не CSHTML-файлы, развертываются вместе с приложением. 
-    
 > [!IMPORTANT]
-> Пакет SDK для Razor — это единственное эффективное средство в случае, когда в файле проекта не заданы свойства для предварительной компиляции. Например, параметр `MvcRazorCompileOnPublish` в файле *CSPROJ* отключает пакет SDK для Razor.
+> Пакет SDK для Razor применяется только в том случае, если в файле проекта не заданы свойства предварительной компиляции. Например, если в *CSPROJ*-файле для свойства `MvcRazorCompileOnPublish` установлено значение `true`, пакет SDK для Razor будет отключен.
+::: moniker-end
 
-# <a name="aspnet-core-20tabaspnetcore20"></a>[ASP.NET Core 2.0](#tab/aspnetcore20/)
+::: moniker range="= aspnetcore-2.0"
+Если проект ориентирован на платформу .NET Framework, установите пакет NuGet [Microsoft.AspNetCore.Mvc.Razor.ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation/):
 
-Если проект нацелен на платформу .NET Framework, включите ссылку на пакет в [Microsoft.AspNetCore.Mvc.Razor.ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation/):
-
-```xml
-<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.0.0" PrivateAssets="All" />
-```
+[!code-xml[](view-compilation/sample/DotNetFrameworkProject.csproj?name=snippet_ViewCompilationPackage)]
 
 Если проект нацелен на .NET Core, никаких изменений не требуется.
 
-Шаблоны проектов ASP.NET Core 2.x неявно задают свойству `MvcRazorCompileOnPublish` значение `true` по умолчанию. Это означает, что этот узел можно безопасно удалить из файла *CSPROJ*.
-    
-> [!IMPORTANT]
-> Предварительная компиляция представлений Razor сейчас недоступна при выполнении [автономного развертывания](/dotnet/core/deploying/#self-contained-deployments-scd) в ASP.NET Core 2.0. 
+В шаблонах проектов ASP.NET Core 2.x для свойства `MvcRazorCompileOnPublish` по умолчанию неявно задано значение `true`. Следовательно, этот элемент можно безопасно удалить из *CSPROJ*-файла.
 
+> [!IMPORTANT]
+> Предварительная компиляция файлов Razor недоступна при выполнении [автономного развертывания](/dotnet/core/deploying/#self-contained-deployments-scd) в ASP.NET Core 2.0.
+::: moniker-end
+
+::: moniker range="= aspnetcore-1.1"
+Задайте для свойства `MvcRazorCompileOnPublish` значение `true`и установите пакет NuGet [Microsoft.AspNetCore.Mvc.Razor.ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation/). Это показано в следующем примере *CSPROJ*:
+
+[!code-xml[](view-compilation/sample/MvcRazorCompileOnPublish.csproj?highlight=4,10)]
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
 Подготовьте приложение к [развертыванию в зависимости от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd) с помощью [команды публикации .NET Core CLI](/dotnet/core/tools/dotnet-publish). Например, выполните следующую команду в корневом элементе проекта:
 
 ```console
 dotnet publish -c Release
 ```
 
-При успешной компиляции создается файл *<имя_проекта>.PrecompiledViews.dll*, содержащий скомпилированные представления Razor. Например, следующий снимок экрана показывает содержимое *Index.cshtml* внутри *WebApplication1.PrecompiledViews.dll*:
+В случае успешного выполнения компиляции создается файл *<имя_проекта>.PrecompiledViews.dll*, содержащий скомпилированные файлы Razor. Например, следующий снимок экрана показывает содержимое файла *Index.cshtml* внутри *WebApplication1.PrecompiledViews.dll*:
 
 ![Представления Razor внутри библиотеки DLL](view-compilation/_static/razor-views-in-dll.png)
+::: moniker-end
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Задайте свойству `MvcRazorCompileOnPublish` значение `true` и включите ссылку на пакет в `Microsoft.AspNetCore.Mvc.Razor.ViewCompilation`. Это показано в следующем примере *CSPROJ*:
+::: moniker range="= aspnetcore-1.1"
+* <xref:mvc/views/overview>
+::: moniker-end
 
-[!code-xml[](view-compilation/sample/MvcRazorCompileOnPublish.csproj?highlight=5,12)]
+::: moniker range="= aspnetcore-2.0"
+* <xref:mvc/razor-pages/index>
+* <xref:mvc/views/overview>
+::: moniker-end
 
----
-
+::: moniker range=">= aspnetcore-2.1"
+* <xref:mvc/razor-pages/index>
+* <xref:mvc/views/overview>
+* <xref:mvc/razor-pages/sdk>
+::: moniker-end

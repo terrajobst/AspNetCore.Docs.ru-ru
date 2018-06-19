@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/membership
-title: "Членство | Документы Microsoft"
+title: Членство | Документы Microsoft
 author: microsoft
-description: "Строит членства в ASP.NET в случае успешного выполнения модели проверки подлинности форм из ASP.NET 1.x. Проверка подлинности форм ASP.NET предоставляет удобный способ incorp..."
+description: Строит членства в ASP.NET в случае успешного выполнения модели проверки подлинности форм из ASP.NET 1.x. Проверка подлинности форм ASP.NET предоставляет удобный способ incorp...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28885584"
 ---
 <a name="membership"></a>Членство
 ====================

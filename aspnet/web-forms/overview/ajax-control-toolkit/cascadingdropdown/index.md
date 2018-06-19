@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/index
-title: "CascadingDropdown | Документы Microsoft"
+title: CascadingDropdown | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник показывает, как использовать элемент управления CascadingDropDown для создания связанных раскрывающегося списка перечислены обновления, при выборе пользователями."
+description: Этот учебник показывает, как использовать элемент управления CascadingDropDown для создания связанных раскрывающегося списка перечислены обновления, при выборе пользователями.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown
 msc.type: chapter
 ms.openlocfilehash: 200dc5ce3f27b5123edea2ac63f0a86b8502605d
 ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/12/2018
+ms.locfileid: "29152856"
 ---
 <a name="cascadingdropdown"></a>CascadingDropdown
 ====================

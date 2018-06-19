@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878351"
 ---
 <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>Практического занятия: поддерживаемого веб-сайтов Azure: управление изменениями и масштабирования
 ====================
@@ -861,7 +862,7 @@ ms.lasthandoff: 04/06/2018
     *Выбрав тип браузера*
 18. В **наборы счетчиков** щелкните **Далее**.
 
-    ![Нажав кнопку "Далее" на странице наборы счетчиков](maintainable-azure-websites-managing-change-and-scale/_static/image96.png "нажмите кнопку "Далее", на странице наборы счетчиков")
+    ![Нажав кнопку "Далее" на странице наборы счетчиков](maintainable-azure-websites-managing-change-and-scale/_static/image96.png "нажмите кнопку \"Далее\", на странице наборы счетчиков")
 
     *Нажав кнопку "Далее" на странице наборы счетчиков*
 19. В **параметры запуска** задайте **длительность нагрузочного теста** для **5 минут** и нажмите кнопку **Готово**.

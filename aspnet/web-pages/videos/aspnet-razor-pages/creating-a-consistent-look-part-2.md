@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899075"
 ---
 <a name="creating-a-consistent-look-part-2"></a>Создание согласованного вида (часть 2)
 ====================

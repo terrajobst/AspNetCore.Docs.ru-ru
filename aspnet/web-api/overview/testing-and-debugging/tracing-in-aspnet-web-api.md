@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
-title: "Трассировка в ASP.NET Web API 2 | Документы Microsoft"
+title: Трассировка в ASP.NET Web API 2 | Документы Microsoft
 author: MikeWasson
-description: "Показано, как включить трассировку в веб-API ASP.NET."
+description: Показано, как включить трассировку в веб-API ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/25/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28044212"
 ---
 <a name="tracing-in-aspnet-web-api-2"></a>Трассировка в ASP.NET Web API 2
 ====================

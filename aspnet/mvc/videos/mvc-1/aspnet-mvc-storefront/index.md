@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/index
-title: "ASP.NET MVC витрине | Документы Microsoft"
+title: ASP.NET MVC витрине | Документы Microsoft
 author: rick-anderson
-description: "ASP.NET MVC Storefront начального набора"
+description: ASP.NET MVC Storefront начального набора
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront
 msc.type: chapter
 ms.openlocfilehash: 78b42135d38918fb1d5c1d7a9dcdae1da9b660f1
 ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/12/2018
+ms.locfileid: "29153246"
 ---
 <a name="aspnet-mvc-storefront"></a>ASP.NET MVC витрине
 ====================

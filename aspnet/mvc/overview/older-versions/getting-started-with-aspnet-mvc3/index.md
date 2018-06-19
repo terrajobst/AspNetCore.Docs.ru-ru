@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/index
-title: "Приступая к работе с ASP.NET MVC3 | Документы Microsoft"
+title: Приступая к работе с ASP.NET MVC3 | Документы Microsoft
 author: rick-anderson
-description: "Основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express."
+description: Основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3
 msc.type: chapter
 ms.openlocfilehash: e5af266175260c5fce4c88823895a8a8ab28830a
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26501653"
 ---
 <a name="getting-started-with-aspnet-mvc3"></a>Приступая к работе с ASP.NET MVC3
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-cascading-style-sheets-for-web-page-layout
-title: "[Инструкции:] Использование каскадных таблиц стилей для веб-страницы макета? | Документы Майкрософт"
+title: '[Инструкции:] Использование каскадных таблиц стилей для веб-страницы макета? | Документы Майкрософт'
 author: rick-anderson
-description: "В этом видео мы сведения об использовании &amp;lt; div&amp;gt; элементов в сочетании с каскадные таблицы стилей (CSS) для создания надежной и более поздних версиях производительности веб-p..."
+description: В этом видео мы сведения об использовании &amp;lt; div&amp;gt; элементов в сочетании с каскадные таблицы стилей (CSS) для создания надежной и более поздних версиях производительности веб-p...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/05/2018
+ms.locfileid: "28988007"
 ---
 <a name="how-do-i-use-cascading-style-sheets-for-web-page-layout"></a>[Инструкции:] Использование каскадных таблиц стилей для веб-страницы макета?
 ====================

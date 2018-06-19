@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898925"
 ---
 <a name="introducing-aspnet-web-pages---html-form-basics"></a>Общие сведения о веб-страницах ASP.NET — основы HTML-формы
 ====================

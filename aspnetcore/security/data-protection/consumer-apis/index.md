@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30076416"
 ---
 # <a name="consumer-apis-for-aspnet-core"></a>Потребительские API для ASP.NET Core
 

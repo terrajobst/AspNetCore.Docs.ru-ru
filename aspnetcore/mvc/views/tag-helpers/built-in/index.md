@@ -1,7 +1,7 @@
 ---
-title: "Встроенные вспомогательные функции тегов ASP.NET Core"
+title: Встроенные вспомогательные функции тегов ASP.NET Core
 author: pkellner
-description: "Узнайте, как использовать встроенные вспомогательные функции тегов ASP.NET Core для более эффективной работы."
+description: Узнайте, как использовать встроенные вспомогательные функции тегов ASP.NET Core для более эффективной работы.
 manager: wpickett
 ms.author: riande
 ms.date: 09/13/2017
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "29903212"
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a>Встроенные вспомогательные функции тегов ASP.NET Core
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036925"
 ---
 <a name="signalr-1x-hubs-api-guide---javascript-client"></a>Руководство API концентраторов 1.x SignalR - клиент JavaScript
 ====================

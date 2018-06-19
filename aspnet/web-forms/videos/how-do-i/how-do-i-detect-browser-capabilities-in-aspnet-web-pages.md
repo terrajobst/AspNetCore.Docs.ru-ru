@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-detect-browser-capabilities-in-aspnet-web-pages
-title: "[Инструкции:] Определение возможностей браузера в веб-страницах ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Определение возможностей браузера в веб-страницах ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис будет показано, как определить, какими возможностями обладает браузер пользователя при просмотре страницы в веб-сайт ASP.NET. Во-первых, узнайте, как счет..."
+description: В этом видеоролике пиксел Крис будет показано, как определить, какими возможностями обладает браузер пользователя при просмотре страницы в веб-сайт ASP.NET. Во-первых, узнайте, как счет...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/19/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28884095"
 ---
 <a name="how-do-i-detect-browser-capabilities-in-aspnet-web-pages"></a>[Инструкции:] Определение возможностей браузера в веб-страницы ASP.NET
 ====================

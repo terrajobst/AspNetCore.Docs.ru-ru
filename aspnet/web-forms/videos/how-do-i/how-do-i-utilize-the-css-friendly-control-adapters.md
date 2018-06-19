@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-utilize-the-css-friendly-control-adapters
-title: "[Инструкции:] Использовать адаптеры понятное управления CSS? | Документы Майкрософт"
+title: '[Инструкции:] Использовать адаптеры понятное управления CSS? | Документы Майкрософт'
 author: rick-anderson
-description: "Понятное адаптеров элементов управления CSS позволяет изменять HTML, которая визуализируется стандартного элемента управления сервера ASP.NET 2.0. В этом видео мы узнаем, Стэн..."
+description: Понятное адаптеров элементов управления CSS позволяет изменять HTML, которая визуализируется стандартного элемента управления сервера ASP.NET 2.0. В этом видео мы узнаем, Стэн...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/01/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/05/2018
+ms.locfileid: "28988085"
 ---
 <a name="how-do-i-utilize-the-css-friendly-control-adapters"></a>[Инструкции:] Использовать адаптеры понятное управления CSS?
 ====================

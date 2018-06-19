@@ -14,6 +14,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30076011"
 ---
 # <a name="consumer-apis-overview-for-aspnet-core"></a>Общие сведения об API-интерфейсы потребителя для ASP.NET Core
 

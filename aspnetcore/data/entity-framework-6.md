@@ -14,6 +14,7 @@ ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34153603"
 ---
 # <a name="get-started-with-aspnet-core-and-entity-framework-6"></a>Начало работы с ASP.NET Core и Entity Framework 6
 

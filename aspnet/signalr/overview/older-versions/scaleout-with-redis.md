@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/scaleout-with-redis
-title: "SignalR горизонтального масштабирования с помощью Redis (SignalR 1.x) | Документы Microsoft"
+title: SignalR горизонтального масштабирования с помощью Redis (SignalR 1.x) | Документы Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/01/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28035740"
 ---
 <a name="signalr-scaleout-with-redis-signalr-1x"></a>SignalR горизонтального масштабирования с помощью Redis (SignalR 1.x)
 ====================

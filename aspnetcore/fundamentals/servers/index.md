@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/24/2018
+ms.locfileid: "34473198"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Реализации веб-сервера в ASP.NET Core
 

@@ -1,7 +1,7 @@
 ---
-title: "Проверки подлинности в облаке с Azure Active Directory B2C в ASP.NET Core"
+title: Проверки подлинности в облаке с Azure Active Directory B2C в ASP.NET Core
 author: camsoper
-description: "Узнайте, как настроить проверку подлинности Azure Active Directory B2C с ASP.NET Core."
+description: Узнайте, как настроить проверку подлинности Azure Active Directory B2C с ASP.NET Core.
 manager: wpickett
 ms.date: 01/25/2018
 ms.topic: tutorial
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "29905079"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Проверки подлинности в облаке с Azure Active Directory B2C в ASP.NET Core
 

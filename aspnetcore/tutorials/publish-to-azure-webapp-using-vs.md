@@ -14,6 +14,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30897630"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Публикация приложения ASP.NET Core в Azure с помощью Visual Studio
 
