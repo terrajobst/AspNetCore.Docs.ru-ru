@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036948"
 ---
 <a name="signalr-troubleshooting"></a><span data-ttu-id="428c8-103">Устранение неполадок SignalR</span><span class="sxs-lookup"><span data-stu-id="428c8-103">SignalR Troubleshooting</span></span>
 ====================

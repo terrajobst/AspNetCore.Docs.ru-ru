@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-3/mvc-3-razor-helpers
-title: "MVC 3 - вспомогательные объекты Razor | Документы Microsoft"
+title: MVC 3 - вспомогательные объекты Razor | Документы Microsoft
 author: jongalloway
-description: "В этом видео вы узнаете, как использовать оба метода расширения и декларативный @helper синтаксиса в представлений Razor."
+description: В этом видео вы узнаете, как использовать оба метода расширения и декларативный @helper синтаксиса в представлений Razor.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/23/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503663"
 ---
 <a name="mvc-3---razor-helpers"></a><span data-ttu-id="38be2-103">MVC 3 - вспомогательные объекты Razor</span><span class="sxs-lookup"><span data-stu-id="38be2-103">MVC 3 - Razor Helpers</span></span>
 ====================

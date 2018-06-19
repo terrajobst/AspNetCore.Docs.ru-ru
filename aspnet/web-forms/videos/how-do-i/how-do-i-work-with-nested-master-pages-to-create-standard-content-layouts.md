@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-work-with-nested-master-pages-to-create-standard-content-layouts
-title: "[Инструкции:] Работать с вложенные главные страницы, чтобы создать стандартные макеты содержимого | Документы Microsoft"
+title: '[Инструкции:] Работать с вложенные главные страницы, чтобы создать стандартные макеты содержимого | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис будет показано, как использовать вложенные главные страницы для создания отдельных главные страницы, представляющие различные стандартные макеты содержимого w..."
+description: В этой видео пиксел Крис будет показано, как использовать вложенные главные страницы для создания отдельных главные страницы, представляющие различные стандартные макеты содержимого w...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/19/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525963"
 ---
 <a name="how-do-i-work-with-nested-master-pages-to-create-standard-content-layouts"></a><span data-ttu-id="c85d5-103">[Инструкции:] Работать с вложенные главные страницы, чтобы создать стандартные макеты содержимого</span><span class="sxs-lookup"><span data-stu-id="c85d5-103">[How Do I:] Work with Nested Master Pages to Create Standard Content Layouts</span></span>
 ====================

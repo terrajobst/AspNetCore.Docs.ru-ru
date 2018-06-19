@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-a-visual-studio-2008-web-deployment-project
-title: "[Инструкции:] Используйте Visual Studio 2008 веб-развертывания проекта | Документы Microsoft"
+title: '[Инструкции:] Используйте Visual Studio 2008 веб-развертывания проекта | Документы Microsoft'
 author: rick-anderson
-description: "В этом видео пиксел Крис показано, как использовать надстройку Visual Studio 2008 веб-развертывания для создания проектов развертывания на степень контроля над тем, как..."
+description: В этом видео пиксел Крис показано, как использовать надстройку Visual Studio 2008 веб-развертывания для создания проектов развертывания на степень контроля над тем, как...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/11/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521853"
 ---
 <a name="how-do-i-use-a-visual-studio-2008-web-deployment-project"></a><span data-ttu-id="5d23e-103">[Инструкции:] Используйте Visual Studio 2008 веб-развертывания проекта</span><span class="sxs-lookup"><span data-stu-id="5d23e-103">[How Do I:] Use a Visual Studio 2008 Web Deployment Project</span></span>
 ====================

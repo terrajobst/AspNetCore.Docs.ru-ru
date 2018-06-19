@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-determine-whether-to-use-a-web-site-or-a-web-application-project
-title: "[Инструкции:] Определить, следует ли использовать веб-сайт или проект веб-приложения | Документы Microsoft"
+title: '[Инструкции:] Определить, следует ли использовать веб-сайт или проект веб-приложения | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис будет выполнено сравнение различий между проекта веб-узла ASP.NET и проект веб-приложения. Сведения, рекомендации по использованию..."
+description: В этой видео пиксел Крис будет выполнено сравнение различий между проекта веб-узла ASP.NET и проект веб-приложения. Сведения, рекомендации по использованию...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/22/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26522203"
 ---
 <a name="how-do-i-determine-whether-to-use-a-web-site-or-a-web-application-project"></a><span data-ttu-id="f505a-104">[Инструкции:] Определить, следует ли использовать веб-сайт или проект веб-приложения</span><span class="sxs-lookup"><span data-stu-id="f505a-104">[How Do I:] Determine Whether to Use a Web Site or a Web Application Project</span></span>
 ====================

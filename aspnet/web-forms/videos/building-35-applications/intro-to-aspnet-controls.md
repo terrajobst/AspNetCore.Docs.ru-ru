@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/intro-to-aspnet-controls
-title: "Введение в элементы управления ASP.NET | Документы Microsoft"
+title: Введение в элементы управления ASP.NET | Документы Microsoft
 author: JoeStagner
-description: "Разработка на основе элементов управления действительно можно увеличить производительность разработки. В этом видео представлены основные сведения о стандартных элементов управления ASP.NET."
+description: Разработка на основе элементов управления действительно можно увеличить производительность разработки. В этом видео представлены основные сведения о стандартных элементов управления ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26520963"
 ---
 <a name="intro-to-aspnet-controls"></a><span data-ttu-id="a4a58-104">Введение в элементы управления ASP.NET</span><span class="sxs-lookup"><span data-stu-id="a4a58-104">Intro to ASP.NET Controls</span></span>
 ====================

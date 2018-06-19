@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/releases/index
-title: "Освобождает веб-API ASP.NET | Документы Microsoft"
+title: Освобождает веб-API ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "Освобождает новые возможности последних веб-API."
+description: Освобождает новые возможности последних веб-API.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/13/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/releases
 msc.type: chapter
 ms.openlocfilehash: 479d39edb071e84587e10ef3bce0ad929fa77c60
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508033"
 ---
 <a name="aspnet-web-api-releases"></a><span data-ttu-id="25378-103">Освобождает веб-API ASP.NET</span><span class="sxs-lookup"><span data-stu-id="25378-103">ASP.NET Web API Releases</span></span>
 ====================

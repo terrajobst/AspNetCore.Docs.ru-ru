@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-secure-my-site-using-membership-and-roles
-title: "[Инструкции:] Как защитить узел с помощью членства и ролей? | Документы Майкрософт"
+title: '[Инструкции:] Как защитить узел с помощью членства и ролей? | Документы Майкрософт'
 author: microsoft
-description: "Дополнительные сведения о безопасности веб-сайта с помощью новых функций членства и ролей ASP.NET 2.0. Список разделов Регистрация пользователя, пароль восстановления и ограниченного использования..."
+description: Дополнительные сведения о безопасности веб-сайта с помощью новых функций членства и ролей ASP.NET 2.0. Список разделов Регистрация пользователя, пароль восстановления и ограниченного использования...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/09/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526103"
 ---
 <a name="how-do-i-secure-my-site-using-membership-and-roles"></a><span data-ttu-id="46ff9-105">[Инструкции:] Как защитить узел с помощью членства и ролей?</span><span class="sxs-lookup"><span data-stu-id="46ff9-105">[How Do I:] Secure my Site using Membership and Roles?</span></span>
 ====================

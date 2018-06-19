@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-control-the-caching-of-an-aspnet-page-based-upon-custom-information
-title: "[Инструкции:] Кэширование страницы ASP.NET на основе данных пользовательского элемента управления | Документы Microsoft"
+title: '[Инструкции:] Кэширование страницы ASP.NET на основе данных пользовательского элемента управления | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис показывает способ управления критерии для кэширования страницы ASP.NET на основе пользовательских данных. Пример страницы создается и затем O..."
+description: В этой видео пиксел Крис показывает способ управления критерии для кэширования страницы ASP.NET на основе пользовательских данных. Пример страницы создается и затем O...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/19/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528133"
 ---
 <a name="how-do-i-control-the-caching-of-an-aspnet-page-based-upon-custom-information"></a><span data-ttu-id="0b52e-104">[Инструкции:] Кэширование страницы ASP.NET на основе данных пользовательского элемента управления</span><span class="sxs-lookup"><span data-stu-id="0b52e-104">[How Do I:] Control the Caching of an ASP.NET Page Based Upon Custom Information</span></span>
 ====================

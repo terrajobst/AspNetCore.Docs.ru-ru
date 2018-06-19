@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/net-4/data/aspnet-4-quick-hit-persistent-gridview-row-selection
-title: "Выбор строк постоянные GridView | Документы Microsoft"
+title: Выбор строк постоянные GridView | Документы Microsoft
 author: JoeStagner
-description: "В этом видео будет рассказано о Выбор сохраненного строк для элемента управления GridView."
+description: В этом видео будет рассказано о Выбор сохраненного строк для элемента управления GridView.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/16/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26522033"
 ---
 <a name="aspnet-4-quick-hit--persistent-gridview-row-selection"></a><span data-ttu-id="5afd1-103">В ASP.NET 4 «Быстрый Hit» — Выбор строк постоянные GridView</span><span class="sxs-lookup"><span data-stu-id="5afd1-103">ASP.NET 4 "Quick Hit" – Persistent GridView Row Selection</span></span>
 ====================

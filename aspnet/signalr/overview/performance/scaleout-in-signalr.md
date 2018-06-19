@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/performance/scaleout-in-signalr
-title: "Общие сведения о горизонтального масштабирования в SignalR | Документы Microsoft"
+title: Общие сведения о горизонтального масштабирования в SignalR | Документы Microsoft
 author: MikeWasson
-description: "Версии программного обеспечения используется в этом разделе Visual Studio 2013 .NET 4.5 SignalR предыдущие версии версии 2 в этом разделе сведения о предыдущих версиях..."
+description: Версии программного обеспечения используется в этом разделе Visual Studio 2013 .NET 4.5 SignalR предыдущие версии версии 2 в этом разделе сведения о предыдущих версиях...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28034598"
 ---
 <a name="introduction-to-scaleout-in-signalr"></a><span data-ttu-id="034a5-103">Общие сведения о горизонтального масштабирования в SignalR</span><span class="sxs-lookup"><span data-stu-id="034a5-103">Introduction to Scaleout in SignalR</span></span>
 ====================

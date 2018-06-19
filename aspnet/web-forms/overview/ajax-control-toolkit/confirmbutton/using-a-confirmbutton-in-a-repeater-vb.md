@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869456"
 ---
 <a name="using-a-confirmbutton-in-a-repeater-vb"></a><span data-ttu-id="549c6-104">С помощью ConfirmButton в повторителя (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="549c6-104">Using a ConfirmButton In a Repeater (VB)</span></span>
 ====================

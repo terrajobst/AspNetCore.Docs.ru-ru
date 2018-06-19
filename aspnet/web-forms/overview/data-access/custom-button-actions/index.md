@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-button-actions/index
-title: "Настраиваемая кнопка действия | Документы Microsoft"
+title: Настраиваемая кнопка действия | Документы Microsoft
 author: rick-anderson
-description: "Этот небольшой набор учебников демонстрируется добавление кнопок в элемент управления GridView и DetailsView, который может выполнять любые действия, которые необходимы приложению."
+description: Этот небольшой набор учебников демонстрируется добавление кнопок в элемент управления GridView и DetailsView, который может выполнять любые действия, которые необходимы приложению.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/custom-button-actions
 msc.type: chapter
 ms.openlocfilehash: 5da10542b7797a90f6019df2f3c94603be7276f3
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26512633"
 ---
 <a name="custom-button-actions"></a><span data-ttu-id="39d5e-103">Настраиваемая кнопка действия</span><span class="sxs-lookup"><span data-stu-id="39d5e-103">Custom Button Actions</span></span>
 ====================

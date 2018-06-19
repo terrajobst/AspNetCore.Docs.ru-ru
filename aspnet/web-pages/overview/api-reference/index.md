@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/api-reference/index
-title: "Справочник по API | Документы Microsoft"
+title: Справочник по API | Документы Microsoft
 author: rick-anderson
-description: "Справочник по API документация для веб-страниц ASP.NET."
+description: Справочник по API документация для веб-страниц ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/overview/api-reference
 msc.type: chapter
 ms.openlocfilehash: 4824fa48083a1db537226209aa403e24bfed7eb0
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528533"
 ---
 <a name="api-reference"></a><span data-ttu-id="97ff2-103">Справочник по интерфейсам API</span><span class="sxs-lookup"><span data-stu-id="97ff2-103">API Reference</span></span>
 ====================

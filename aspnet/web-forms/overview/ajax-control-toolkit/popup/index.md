@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/index
-title: "Всплывающее окно | Документы Microsoft"
+title: Всплывающее окно | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник демонстрирует отображение всплывающего при активации любого другого элемента управления с помощью контекстного меню элемента управления."
+description: Этот учебник демонстрирует отображение всплывающего при активации любого другого элемента управления с помощью контекстного меню элемента управления.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup
 msc.type: chapter
 ms.openlocfilehash: f0d9ab97c0d04b0fd6b8798d08676755bda43cdf
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510583"
 ---
 <a name="popup"></a><span data-ttu-id="41f70-103">Контекстное меню</span><span class="sxs-lookup"><span data-stu-id="41f70-103">Popup</span></span>
 ====================

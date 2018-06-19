@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28038290"
 ---
 <a name="secure-a-web-api-with-individual-accounts-and-local-login-in-aspnet-web-api-22"></a><span data-ttu-id="21dc0-104">Защита веб-API с отдельным учетным записям и локального имени входа в ASP.NET Web API 2.2</span><span class="sxs-lookup"><span data-stu-id="21dc0-104">Secure a Web API with Individual Accounts and Local Login in ASP.NET Web API 2.2</span></span>
 ====================

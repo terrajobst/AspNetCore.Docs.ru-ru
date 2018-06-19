@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-tracing-in-an-aspnet-web-site
-title: "[Инструкции:]  Реализовать трассировку в веб-сайт ASP.NET? | Документы Майкрософт"
+title: '[Инструкции:]  Реализовать трассировку в веб-сайт ASP.NET? | Документы Майкрософт'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис будет показано, как реализовать трассировку в веб-сайт ASP.NET отслеживания и измерять производительность и диагностика ошибок. Узнать, Кому..."
+description: В этом видеоролике пиксел Крис будет показано, как реализовать трассировку в веб-сайт ASP.NET отслеживания и измерять производительность и диагностика ошибок. Узнать, Кому...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/05/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526563"
 ---
 <a name="how-do-i--implement-tracing-in-an-aspnet-web-site"></a><span data-ttu-id="e8014-105">[Инструкции:]  Реализовать трассировку в веб-сайт ASP.NET?</span><span class="sxs-lookup"><span data-stu-id="e8014-105">[How Do I:]  Implement Tracing in an ASP.NET Web Site?</span></span>
 ====================

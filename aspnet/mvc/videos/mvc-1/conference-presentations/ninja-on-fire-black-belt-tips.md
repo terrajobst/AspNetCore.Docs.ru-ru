@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-1/conference-presentations/ninja-on-fire-black-belt-tips
-title: "Ниндзя на черный пояс советы пожара | Документы Microsoft"
+title: Ниндзя на черный пояс советы пожара | Документы Microsoft
 author: Haacked
-description: "См. пошаговое руководство по несколько советы и рекомендации по достижению максимальной эффективности платформа ASP.NET MVC."
+description: См. пошаговое руководство по несколько советы и рекомендации по достижению максимальной эффективности платформа ASP.NET MVC.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503903"
 ---
 <a name="ninja-on-fire-black-belt-tips"></a><span data-ttu-id="720a0-103">Ниндзя на пожара черный пояс советы</span><span class="sxs-lookup"><span data-stu-id="720a0-103">Ninja on Fire Black Belt Tips</span></span>
 ====================

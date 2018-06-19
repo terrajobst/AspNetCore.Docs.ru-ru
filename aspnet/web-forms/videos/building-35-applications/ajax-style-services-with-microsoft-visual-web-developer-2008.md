@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/ajax-style-services-with-microsoft-visual-web-developer-2008
-title: "Стиль службы AJAX с помощью Microsoft Visual Web Developer 2008 | Документы Microsoft"
+title: Стиль службы AJAX с помощью Microsoft Visual Web Developer 2008 | Документы Microsoft
 author: JoeStagner
-description: "AJAX означает разные вещи для разных людей. В этом видео показано основы создания стиля службы AJAX (и потребители стороны клиента) в Visual веб-разработках..."
+description: AJAX означает разные вещи для разных людей. В этом видео показано основы создания стиля службы AJAX (и потребители стороны клиента) в Visual веб-разработках...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/08/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525433"
 ---
 <a name="ajax-style-services-with-microsoft-visual-web-developer-2008"></a><span data-ttu-id="ba9ec-104">Стиль службы AJAX с помощью Microsoft Visual Web Developer 2008</span><span class="sxs-lookup"><span data-stu-id="ba9ec-104">AJAX Style Services with Microsoft Visual Web Developer 2008</span></span>
 ====================

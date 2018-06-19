@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-extend-and-customize-an-aspnet-server-control-for-a-specific-purpose
-title: "[Инструкции:] Расширения и настройки элемента управления сервера ASP.NET для определенной цели | Документы Microsoft"
+title: '[Инструкции:] Расширения и настройки элемента управления сервера ASP.NET для определенной цели | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис будет показано, как расширить стандартный серверный элемент управления ASP.NET и настроить его для определенной цели. Специальные элементы управления предоставляют c..."
+description: В этой видео пиксел Крис будет показано, как расширить стандартный серверный элемент управления ASP.NET и настроить его для определенной цели. Специальные элементы управления предоставляют c...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/20/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526503"
 ---
 <a name="how-do-i-extend-and-customize-an-aspnet-server-control-for-a-specific-purpose"></a><span data-ttu-id="7066f-104">[Инструкции:] Расширения и настройки элемента управления сервера ASP.NET для определенной цели</span><span class="sxs-lookup"><span data-stu-id="7066f-104">[How Do I:] Extend and Customize an ASP.NET Server Control for a Specific Purpose</span></span>
 ====================

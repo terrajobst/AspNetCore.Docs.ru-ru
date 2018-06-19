@@ -15,6 +15,7 @@ ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34233314"
 ---
 # <a name="aspnet-core-fundamentals"></a><span data-ttu-id="9473c-103">Основы ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="9473c-103">ASP.NET Core fundamentals</span></span>
 

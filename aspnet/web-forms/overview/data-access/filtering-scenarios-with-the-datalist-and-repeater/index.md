@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/index
-title: "Фильтрация сценариев с DataList и повторителя | Документы Microsoft"
+title: Фильтрация сценариев с DataList и повторителя | Документы Microsoft
 author: rick-anderson
-description: "В этих учебниках см отображение главного и подчиненного представлений отчетов с помощью раскрывающихся списков для основных записей и управления DataList сведения."
+description: В этих учебниках см отображение главного и подчиненного представлений отчетов с помощью раскрывающихся списков для основных записей и управления DataList сведения.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-data
 msc.type: chapter
 ms.openlocfilehash: a8a1c2301dc287b49149bc5afe85a7dedad54d58
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26514103"
 ---
 <a name="filtering-scenarios-with-the-datalist-and-repeater"></a><span data-ttu-id="b0510-103">Сценариев с DataList и повторителя фильтрации</span><span class="sxs-lookup"><span data-stu-id="b0510-103">Filtering Scenarios with the DataList and Repeater</span></span>
 ====================

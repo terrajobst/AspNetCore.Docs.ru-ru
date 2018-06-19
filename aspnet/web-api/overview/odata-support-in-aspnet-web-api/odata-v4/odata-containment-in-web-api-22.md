@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/odata-containment-in-web-api-22
-title: "Вложение в OData v4, с помощью веб-API 2.2 | Документы Microsoft"
+title: Вложение в OData v4, с помощью веб-API 2.2 | Документы Microsoft
 author: rick-anderson
-description: "В большинстве случаев сущность может осуществляться только, если он был инкапсулирован в наборе сущностей. Однако OData v4 содержит два дополнительных параметра: одноэлементных, так и Con..."
+description: 'В большинстве случаев сущность может осуществляться только, если он был инкапсулирован в наборе сущностей. Однако OData v4 содержит два дополнительных параметра: одноэлементных, так и Con...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/27/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508003"
 ---
 <a name="containment-in-odata-v4-using-web-api-22"></a><span data-ttu-id="69fb5-104">Вложение в OData v4, с помощью веб-API 2.2</span><span class="sxs-lookup"><span data-stu-id="69fb5-104">Containment in OData v4 Using Web API 2.2</span></span>
 ====================

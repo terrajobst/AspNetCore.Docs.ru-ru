@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/index
-title: "Видео | Документы Microsoft"
+title: Видео | Документы Microsoft
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/08/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos
 msc.type: book
 ms.openlocfilehash: a268e93a8863422b37dbbfa6d08331ce96b02672
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526653"
 ---
 <a name="videos"></a><span data-ttu-id="2a028-102">Видеоролики</span><span class="sxs-lookup"><span data-stu-id="2a028-102">Videos</span></span>
 ====================

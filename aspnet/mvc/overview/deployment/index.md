@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/deployment/index
-title: "Развертывание | Документы Microsoft"
+title: Развертывание | Документы Microsoft
 author: rick-anderson
-description: "Как развертывать проекты ASP.NET MVC на сервере."
+description: Как развертывать проекты ASP.NET MVC на сервере.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/18/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/deployment
 msc.type: chapter
 ms.openlocfilehash: 8efbf5ee2e24ea6e302177a64e751b00809250fb
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26497883"
 ---
 # <a name="aspnet-mvc-deployment"></a><span data-ttu-id="2d610-103">Развертывание ASP.NET MVC</span><span class="sxs-lookup"><span data-stu-id="2d610-103">ASP.NET MVC Deployment</span></span>
 

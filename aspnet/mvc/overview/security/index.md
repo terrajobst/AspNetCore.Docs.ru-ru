@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/security/index
-title: "Безопасности, аутентификации и авторизации с помощью ASP.NET MVC | Документы Microsoft"
+title: Безопасности, аутентификации и авторизации с помощью ASP.NET MVC | Документы Microsoft
 author: rick-anderson
-description: "Для повышения защищенности узла ASP.NET и способ реализации аутентификации и авторизации."
+description: Для повышения защищенности узла ASP.NET и способ реализации аутентификации и авторизации.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/10/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/security
 msc.type: chapter
 ms.openlocfilehash: ae6cee1fcccc080c9865f618f162e5f2acdcb620
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503213"
 ---
 <a name="security-authentication-and-authorization-with-aspnet-mvc"></a><span data-ttu-id="3ff3e-103">Безопасности, аутентификации и авторизации с помощью ASP.NET MVC</span><span class="sxs-lookup"><span data-stu-id="3ff3e-103">Security, Authentication, and Authorization with ASP.NET MVC</span></span>
 ====================

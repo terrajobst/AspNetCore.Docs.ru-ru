@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/index
-title: "Модели (данных) | Документы Microsoft"
+title: Модели (данных) | Документы Microsoft
 author: rick-anderson
-description: "В этой серии учебника вы узнаете, как использовать ASP.NET MVC с платформой Entity Framework корпорации Майкрософт. В ходе работы с этим учебником построения веб-приложения..."
+description: В этой серии учебника вы узнаете, как использовать ASP.NET MVC с платформой Entity Framework корпорации Майкрософт. В ходе работы с этим учебником построения веб-приложения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions-1/models-data
 msc.type: chapter
 ms.openlocfilehash: b531a5ad6924840487985a57c178d18d945a0b06
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26499983"
 ---
 <a name="models-data"></a><span data-ttu-id="9d64e-104">Модели (данных)</span><span class="sxs-lookup"><span data-stu-id="9d64e-104">Models (Data)</span></span>
 ====================

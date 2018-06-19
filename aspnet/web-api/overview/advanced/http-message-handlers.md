@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/http-message-handlers
-title: "Обработчики сообщений HTTP в ASP.NET Web API | Документы Microsoft"
+title: Обработчики сообщений HTTP в ASP.NET Web API | Документы Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/13/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506953"
 ---
 <a name="http-message-handlers-in-aspnet-web-api"></a><span data-ttu-id="5ac9d-102">Обработчики HTTP-сообщения в веб-API ASP.NET</span><span class="sxs-lookup"><span data-stu-id="5ac9d-102">HTTP Message Handlers in ASP.NET Web API</span></span>
 ====================

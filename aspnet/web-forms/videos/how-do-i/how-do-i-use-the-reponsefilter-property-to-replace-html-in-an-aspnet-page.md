@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-the-reponsefilter-property-to-replace-html-in-an-aspnet-page
-title: "[Инструкции:] Чтобы заменить HTML на странице ASP.NET используйте свойство Reponse.Filter | Документы Microsoft"
+title: '[Инструкции:] Чтобы заменить HTML на странице ASP.NET используйте свойство Reponse.Filter | Документы Microsoft'
 author: rick-anderson
-description: "В этот видеоролик пиксел Крис показывает, как использовать свойство Reponse.Filter перехватывать и изменять, отправляемых на страницу HTML. Во-первых пример страницы создается w..."
+description: В этот видеоролик пиксел Крис показывает, как использовать свойство Reponse.Filter перехватывать и изменять, отправляемых на страницу HTML. Во-первых пример страницы создается w...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/29/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525533"
 ---
 <a name="how-do-i-use-the-reponsefilter-property-to-replace-html-in-an-aspnet-page"></a><span data-ttu-id="472bb-104">[Инструкции:] Свойство Reponse.Filter позволяет заменить HTML на странице ASP.NET</span><span class="sxs-lookup"><span data-stu-id="472bb-104">[How Do I:] Use the Reponse.Filter Property to Replace HTML in an ASP.NET Page</span></span>
 ====================

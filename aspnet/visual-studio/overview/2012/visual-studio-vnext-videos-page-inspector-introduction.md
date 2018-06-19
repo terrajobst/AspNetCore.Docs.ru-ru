@@ -1,14 +1,14 @@
 ---
 uid: visual-studio/overview/2012/visual-studio-vnext-videos-page-inspector-introduction
-title: "Visual Studio vNext видео: инспектор страниц - введение | Документы Microsoft"
+title: 'Visual Studio vNext видео: инспектор страниц - введение | Документы Microsoft'
 author: gabosom
-description: "В этом видеоролике Гонзалес Gabuardi Jorge вводит инспектор страниц в Visual Studio vNext"
+description: В этом видеоролике Гонзалес Gabuardi Jorge вводит инспектор страниц в Visual Studio vNext
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/30/2011
 ms.topic: article
 ms.assetid: fc12ff1f-c063-4786-9783-b9d6e6452019
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/visual-studio-vnext-videos-page-inspector-introduction
 msc.type: video
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506483"
 ---
 <a name="visual-studio-vnext-videos-page-inspector---introduction"></a><span data-ttu-id="0e935-103">Visual Studio vNext видео: инспектор страниц — введение</span><span class="sxs-lookup"><span data-stu-id="0e935-103">Visual Studio vNext Videos: Page Inspector - Introduction</span></span>
 ====================

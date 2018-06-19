@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-data-driven-web-sites
-title: "[Инструкции:] Создание управляемых данными веб-сайтов? | Документы Майкрософт"
+title: '[Инструкции:] Создание управляемых данными веб-сайтов? | Документы Майкрософт'
 author: microsoft
-description: "Узнайте, как простое создание управляемых данными веб-сайтов с помощью ASP.NET 2.0, Visual Web Developer 2005 Express Edition и SQL Server 2005 Express Edition. Дополнительные сведения..."
+description: Узнайте, как простое создание управляемых данными веб-сайтов с помощью ASP.NET 2.0, Visual Web Developer 2005 Express Edition и SQL Server 2005 Express Edition. Дополнительные сведения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/16/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26524913"
 ---
 <a name="how-do-i-create-data-driven-web-sites"></a><span data-ttu-id="4bebc-105">[Инструкции:] Создание управляемых данными веб-сайтов?</span><span class="sxs-lookup"><span data-stu-id="4bebc-105">[How Do I:] Create Data-Driven Web Sites?</span></span>
 ====================

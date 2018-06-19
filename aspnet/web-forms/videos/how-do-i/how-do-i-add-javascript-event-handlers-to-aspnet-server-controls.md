@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-add-javascript-event-handlers-to-aspnet-server-controls
-title: "[Инструкции:] Добавьте обработчики событий JavaScript для серверных элементов управления ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Добавьте обработчики событий JavaScript для серверных элементов управления ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "В этом видеоролике пиксел Крис будет показано, как методы JavaScript с ASP.NET серверных элементов управления для обеспечения клиентского интерфейса функциональные возможности для контракту сервера..."
+description: В этом видеоролике пиксел Крис будет показано, как методы JavaScript с ASP.NET серверных элементов управления для обеспечения клиентского интерфейса функциональные возможности для контракту сервера...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/20/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525413"
 ---
 <a name="how-do-i-add-javascript-event-handlers-to-aspnet-server-controls"></a><span data-ttu-id="056c1-103">[Инструкции:] Добавьте обработчики событий JavaScript для серверных элементов управления ASP.NET</span><span class="sxs-lookup"><span data-stu-id="056c1-103">[How Do I:] Add JavaScript Event Handlers to ASP.NET Server Controls</span></span>
 ====================

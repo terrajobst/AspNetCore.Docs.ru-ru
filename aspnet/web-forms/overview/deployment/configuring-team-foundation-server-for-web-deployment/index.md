@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/index
-title: "В ASP.NET 4 - корпоративного развертывания ряда 3 Настройка TFS | Документы Microsoft"
+title: В ASP.NET 4 - корпоративного развертывания ряда 3 Настройка TFS | Документы Microsoft
 author: rick-anderson
-description: "Этого учебника показано, как настроить Team Foundation Server (TFS) 2010 для построения решений и развертывания веб-содержимого на различных целевых средах."
+description: Этого учебника показано, как настроить Team Foundation Server (TFS) 2010 для построения решений и развертывания веб-содержимого на различных целевых средах.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/16/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server
 msc.type: chapter
 ms.openlocfilehash: e82bcc3d408a47233e2192d9dd9a56ecd06fbaa1
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26515173"
 ---
 <a name="aspnet-4---enterprise-deployment-series-3-configuring-tfs"></a><span data-ttu-id="08ca5-103">В ASP.NET 4 - корпоративного развертывания ряда 3 Настройка TFS</span><span class="sxs-lookup"><span data-stu-id="08ca5-103">ASP.NET 4 - Enterprise Deployment Series 3 Configuring TFS</span></span>
 ====================

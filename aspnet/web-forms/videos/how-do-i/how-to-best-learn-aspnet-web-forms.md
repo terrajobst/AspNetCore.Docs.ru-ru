@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-to-best-learn-aspnet-web-forms
-title: "Как лучше всего узнать веб-форм ASP.NET | Документы Microsoft"
+title: Как лучше всего узнать веб-форм ASP.NET | Документы Microsoft
 author: JoeStagner
-description: "Корпорации Майкрософт (Joe Stagner) показывает, необходимо использование веб-форм ASP.NET при разработке веб-приложений."
+description: Корпорации Майкрософт (Joe Stagner) показывает, необходимо использование веб-форм ASP.NET при разработке веб-приложений.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/03/2010
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521743"
 ---
 <a name="how-to-best-learn-aspnet-web-forms"></a><span data-ttu-id="65a12-103">Как лучше всего узнать веб-форм ASP.NET</span><span class="sxs-lookup"><span data-stu-id="65a12-103">How to Best Learn ASP.NET Web Forms</span></span>
 ====================

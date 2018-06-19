@@ -1,8 +1,8 @@
 ---
 uid: web-forms/pluralsight
-title: "Веб-форм видео от Pluralsight | Документы Microsoft"
+title: Веб-форм видео от Pluralsight | Документы Microsoft
 author: rick-anderson
-description: "Web Forms видео обучения на основе Pluralsight этот веб-форм ASP.NET development курса вы познакомитесь несколько ключевых технологий, которые необходимо знать как устройствам .NET..."
+description: Web Forms видео обучения на основе Pluralsight этот веб-форм ASP.NET development курса вы познакомитесь несколько ключевых технологий, которые необходимо знать как устройствам .NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/16/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26520143"
 ---
 <a name="web-forms-video-training-from-pluralsight"></a><span data-ttu-id="28550-103">Веб-форм видео от Pluralsight</span><span class="sxs-lookup"><span data-stu-id="28550-103">Web Forms Video Training from Pluralsight</span></span>
 ====================

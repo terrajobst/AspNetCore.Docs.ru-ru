@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-embed-an-image-in-an-email-with-aspnet
-title: "[Инструкции:] Внедрить изображение в сообщение электронной почты с ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Внедрить изображение в сообщение электронной почты с ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "Крис пиксел показано, как внедрить изображение в сообщение электронной почты с ASP.NET. Он создает веб-форму (с полями для для, из темы и текст), использует AlternateView..."
+description: Крис пиксел показано, как внедрить изображение в сообщение электронной почты с ASP.NET. Он создает веб-форму (с полями для для, из темы и текст), использует AlternateView...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/06/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525073"
 ---
 <a name="how-do-i-embed-an-image-in-an-email-with-aspnet"></a><span data-ttu-id="fc95e-104">[Инструкции:] Внедрить изображение в сообщение электронной почты с ASP.NET</span><span class="sxs-lookup"><span data-stu-id="fc95e-104">[How Do I:] Embed an Image in an Email with ASP.NET</span></span>
 ====================

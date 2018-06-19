@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-full-featured-customer-login-portal
-title: "[Инструкции:] Создать имя входа портал полнофункционального клиента? | Документы Майкрософт"
+title: '[Инструкции:] Создать имя входа портал полнофункционального клиента? | Документы Майкрософт'
 author: microsoft
-description: "Проследите за создание вымышленного пользовательского портала, чтобы узнать о главные страницы, темы, членства, ролей, навигации веб-узла, профили пользователей и..."
+description: Проследите за создание вымышленного пользовательского портала, чтобы узнать о главные страницы, темы, членства, ролей, навигации веб-узла, профили пользователей и...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/05/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525303"
 ---
 <a name="how-do-i-create-a-full-featured-customer-login-portal"></a><span data-ttu-id="eda81-104">[Инструкции:] Создать имя входа портал полнофункционального клиента?</span><span class="sxs-lookup"><span data-stu-id="eda81-104">[How Do I:] Create a Full-Featured Customer Login Portal?</span></span>
 ====================

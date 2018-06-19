@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/index
-title: "MVC 3 — HTML5 и раскрывающегося календаря с выбором дат jQuery | Документы Microsoft"
+title: MVC 3 — HTML5 и раскрывающегося календаря с выбором дат jQuery | Документы Microsoft
 author: rick-anderson
-description: "Этом учебном руководстве рассматривается работа с редактор шаблонов, шаблоны отображения и пользовательского интерфейса jQuery datepicker раскрывающегося календаря в приложении MVC ASP.NET."
+description: Этом учебном руководстве рассматривается работа с редактор шаблонов, шаблоны отображения и пользовательского интерфейса jQuery datepicker раскрывающегося календаря в приложении MVC ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/19/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepi
 msc.type: chapter
 ms.openlocfilehash: 0e1ee1798d260215f8824a9222605a1a9a900917
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26502603"
 ---
 <a name="mvc-3---the-html5-and-jquery-ui-datepicker-popup-calendar"></a><span data-ttu-id="ae812-103">MVC 3 — HTML5 и раскрывающегося календаря с выбором дат jQuery</span><span class="sxs-lookup"><span data-stu-id="ae812-103">MVC 3 - The HTML5 and jQuery UI Datepicker Popup Calendar</span></span>
 ====================

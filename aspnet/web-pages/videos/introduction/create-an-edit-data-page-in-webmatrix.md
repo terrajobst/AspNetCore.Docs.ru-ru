@@ -1,8 +1,8 @@
 ---
 uid: web-pages/videos/introduction/create-an-edit-data-page-in-webmatrix
-title: "Создайте страницу изменения данных в WebMatrix | Документы Microsoft"
+title: Создайте страницу изменения данных в WebMatrix | Документы Microsoft
 author: rick-anderson
-description: "Часть 7 основан на этот параметр, чтобы показать, как задавать страницы для изменения базы данных и увидеть изменения, обновляется автоматически."
+description: Часть 7 основан на этот параметр, чтобы показать, как задавать страницы для изменения базы данных и увидеть изменения, обновляется автоматически.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529763"
 ---
 <a name="create-an-edit-data-page-in-webmatrix"></a><span data-ttu-id="92174-103">Создайте страницу изменения данных в WebMatrix</span><span class="sxs-lookup"><span data-stu-id="92174-103">Create an Edit Data Page in WebMatrix</span></span>
 ====================

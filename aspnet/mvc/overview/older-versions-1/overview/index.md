@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/overview/index
-title: "Обзор | Документы Microsoft"
+title: Обзор | Документы Microsoft
 author: rick-anderson
-description: "Дополнительные сведения, MVC —, как она отличается от веб-форм и создание приложения ASP.NET."
+description: Дополнительные сведения, MVC —, как она отличается от веб-форм и создание приложения ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions-1/overview
 msc.type: chapter
 ms.openlocfilehash: c0f4e2747708c0c3ad42f21af680b28541d77252
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26500743"
 ---
 <a name="overview"></a><span data-ttu-id="6e88e-103">Обзор</span><span class="sxs-lookup"><span data-stu-id="6e88e-103">Overview</span></span>
 ====================

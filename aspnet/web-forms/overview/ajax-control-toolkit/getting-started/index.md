@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/getting-started/index
-title: "Приступая к работе | Документы Microsoft"
+title: Приступая к работе | Документы Microsoft
 author: rick-anderson
-description: "На этой странице описаны способы загрузки набора элементов управления Ajax и добавление ее элементов управления на панель инструментов Visual Studio или Visual Web Developer."
+description: На этой странице описаны способы загрузки набора элементов управления Ajax и добавление ее элементов управления на панель инструментов Visual Studio или Visual Web Developer.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started
 msc.type: chapter
 ms.openlocfilehash: a2bee0fa190a0215546bd5ac72e14df23b2be87b
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510503"
 ---
 <a name="getting-started"></a><span data-ttu-id="ed3f3-103">Начало работы</span><span class="sxs-lookup"><span data-stu-id="ed3f3-103">Getting Started</span></span>
 ====================

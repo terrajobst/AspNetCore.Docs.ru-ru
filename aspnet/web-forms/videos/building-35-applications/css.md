@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/css
-title: "CSS | Документы Microsoft"
+title: CSS | Документы Microsoft
 author: JoeStagner
-description: "Каскадные таблицы стилей являются неотъемлемой частью разработки современных веб-приложений и Visual Web Developer 2008 включает в себя ряд мощных CSS построение средства, помогающие..."
+description: Каскадные таблицы стилей являются неотъемлемой частью разработки современных веб-приложений и Visual Web Developer 2008 включает в себя ряд мощных CSS построение средства, помогающие...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/30/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521483"
 ---
 <a name="css"></a><span data-ttu-id="9769b-103">CSS</span><span class="sxs-lookup"><span data-stu-id="9769b-103">CSS</span></span>
 ====================

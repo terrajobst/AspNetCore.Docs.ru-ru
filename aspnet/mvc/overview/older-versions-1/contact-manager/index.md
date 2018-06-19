@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/index
-title: "Диспетчер контактов | Документы Microsoft"
+title: Диспетчер контактов | Документы Microsoft
 author: rick-anderson
-description: "Как для всего приложения управления контактами от начала и завершения построения."
+description: Как для всего приложения управления контактами от начала и завершения построения.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions-1/contact-manager
 msc.type: chapter
 ms.openlocfilehash: 1dfcaeef7f292a24f2ba191d965028f5c0f912e4
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26499193"
 ---
 <a name="contact-manager"></a><span data-ttu-id="18a16-103">Диспетчер контактов</span><span class="sxs-lookup"><span data-stu-id="18a16-103">Contact Manager</span></span>
 ====================

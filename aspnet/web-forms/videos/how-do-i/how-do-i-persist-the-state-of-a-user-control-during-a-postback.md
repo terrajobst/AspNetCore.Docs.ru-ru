@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-persist-the-state-of-a-user-control-during-a-postback
-title: "[Инструкции]: сохранить состояние пользовательского элемента управления при обратной передаче | Документы Microsoft"
+title: '[Инструкции]: сохранить состояние пользовательского элемента управления при обратной передаче | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис показывает, как для сохранения состояния одного или нескольких объектов в пользовательском элементе управления. Во-первых создается пользовательский элемент управления, представляющий abilit..."
+description: В этой видео пиксел Крис показывает, как для сохранения состояния одного или нескольких объектов в пользовательском элементе управления. Во-первых создается пользовательский элемент управления, представляющий abilit...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/02/2009
@@ -17,8 +17,10 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525973"
 ---
-<a name="how-do-i-persist-the-state-of-a-user-control-during-a-postback"></a><span data-ttu-id="3d154-104">[Инструкции]: сохранить состояние пользовательского элемента управления во время обратной передачи</span><span class="sxs-lookup"><span data-stu-id="3d154-104">[How Do I]: Persist the State of a User Control During a Postback</span></span>
+<a name="how-do-i-persist-the-state-of-a-user-control-during-a-postback"></a>[Инструкции]: сохранить состояние пользовательского элемента управления во время обратной передачи
+[How Do I]: Persist the State of a User Control During a Postback
 ====================
 <span data-ttu-id="3d154-105">по [Крис пиксел](https://twitter.com/chrispels)</span><span class="sxs-lookup"><span data-stu-id="3d154-105">by [Chris Pels](https://twitter.com/chrispels)</span></span>
 

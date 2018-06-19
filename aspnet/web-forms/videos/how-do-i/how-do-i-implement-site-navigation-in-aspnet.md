@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-site-navigation-in-aspnet
-title: "[Инструкции:] Реализация переходов веб-узла в ASP.NET? | Документы Майкрософт"
+title: '[Инструкции:] Реализация переходов веб-узла в ASP.NET? | Документы Майкрософт'
 author: rick-anderson
-description: "В этом видео мы научитесь определять карты и использовать его в меню, TreeView и Sitemap серверных элементов управления. Мы узнаем, как использовать карты на главной странице..."
+description: В этом видео мы научитесь определять карты и использовать его в меню, TreeView и Sitemap серверных элементов управления. Мы узнаем, как использовать карты на главной странице...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/18/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525693"
 ---
 <a name="how-do-i-implement-site-navigation-in-aspnet"></a><span data-ttu-id="2f791-105">[Инструкции:] Реализация переходов веб-узла в ASP.NET?</span><span class="sxs-lookup"><span data-stu-id="2f791-105">[How Do I:] Implement Site Navigation in ASP.NET?</span></span>
 ====================

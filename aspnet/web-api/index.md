@@ -1,8 +1,8 @@
 ---
 uid: web-api/index
-title: "Веб-API ASP.NET | Документы Microsoft"
+title: Веб-API ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "Загрузите ASP.NET MVC 4 и создавать широкого диапазона клиентов службы HTTP."
+description: Загрузите ASP.NET MVC 4 и создавать широкого диапазона клиентов службы HTTP.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api
 msc.type: categoryindex
 ms.openlocfilehash: 208cca850cc18f02c6a317c86b532e9707e9d5cf
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26507053"
 ---
 <a name="aspnet-web-api"></a><span data-ttu-id="122d4-103">ASP.NET Web API</span><span class="sxs-lookup"><span data-stu-id="122d4-103">ASP.NET Web API</span></span>
 ====================

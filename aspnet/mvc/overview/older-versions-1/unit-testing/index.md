@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/unit-testing/index
-title: "Модульное тестирование | Документы Microsoft"
+title: Модульное тестирование | Документы Microsoft
 author: rick-anderson
-description: "Этот набор учебника показано, как для создания модульных тестов для ASP.NET MVC действия контроллера."
+description: Этот набор учебника показано, как для создания модульных тестов для ASP.NET MVC действия контроллера.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions-1/unit-testing
 msc.type: chapter
 ms.openlocfilehash: 8d003486ae45938dfed93b908c4be44e66085189
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26500723"
 ---
 <a name="unit-testing"></a><span data-ttu-id="6e820-103">Модульное тестирование</span><span class="sxs-lookup"><span data-stu-id="6e820-103">Unit Testing</span></span>
 ====================

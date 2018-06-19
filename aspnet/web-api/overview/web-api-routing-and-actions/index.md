@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/index
-title: "Веб-API маршрутизации | Документы Microsoft"
+title: Веб-API маршрутизации | Документы Microsoft
 author: rick-anderson
-description: "Как веб-API ASP.NET направляет HTTP-запросы контроллеров и действий."
+description: Как веб-API ASP.NET направляет HTTP-запросы контроллеров и действий.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/web-api-routing-and-actions
 msc.type: chapter
 ms.openlocfilehash: eee9d853e67cf8e13541a8ae570108a3564f8a51
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508983"
 ---
 <a name="web-api-routing"></a><span data-ttu-id="fb45c-103">Веб-API маршрутизации</span><span class="sxs-lookup"><span data-stu-id="fb45c-103">Web API Routing</span></span>
 ====================

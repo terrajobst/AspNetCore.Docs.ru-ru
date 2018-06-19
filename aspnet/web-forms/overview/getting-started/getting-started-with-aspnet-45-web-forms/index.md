@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/index
-title: "Приступая к работе с 4,5 веб-форм ASP.NET и Visual Studio 2013 | Документы Microsoft"
+title: Приступая к работе с 4,5 веб-форм ASP.NET и Visual Studio 2013 | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник ряд описываются основы построения с помощью ASP.NET 4.5 и Visual Studio 2013 Express для веб-приложения веб-форм ASP.NET. Visua..."
+description: Этот учебник ряд описываются основы построения с помощью ASP.NET 4.5 и Visual Studio 2013 Express для веб-приложения веб-форм ASP.NET. Visua...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-4
 msc.type: chapter
 ms.openlocfilehash: 1c6e6f08c94d025c3643938de2c6ca2326402f90
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26516543"
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a><span data-ttu-id="49006-104">Приступая к работе с 4,5 веб-форм ASP.NET и Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="49006-104">Getting Started with ASP.NET 4.5 Web Forms and Visual Studio 2013</span></span>
 ====================

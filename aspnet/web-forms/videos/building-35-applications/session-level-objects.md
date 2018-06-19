@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/session-level-objects
-title: "Объекты уровня сеанса | Документы Microsoft"
+title: Объекты уровня сеанса | Документы Microsoft
 author: JoeStagner
-description: "В этом видео будет событий на уровне сеанса, а также объекты и сравните их использование на эквиваленты уровня приложения и страницы."
+description: В этом видео будет событий на уровне сеанса, а также объекты и сравните их использование на эквиваленты уровня приложения и страницы.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/20/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26524993"
 ---
 <a name="session-level-objects"></a><span data-ttu-id="409f2-103">Объекты уровня сеанса</span><span class="sxs-lookup"><span data-stu-id="409f2-103">Session Level Objects</span></span>
 ====================

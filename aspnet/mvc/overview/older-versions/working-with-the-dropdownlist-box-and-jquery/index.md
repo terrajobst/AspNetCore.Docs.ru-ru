@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/index
-title: "MVC 3 — Работа с полем DropDownList и jQuery | Документы Microsoft"
+title: MVC 3 — Работа с полем DropDownList и jQuery | Документы Microsoft
 author: rick-anderson
-description: "Этого учебника показано, как использовать поле DropDownList с jQuery"
+description: Этого учебника показано, как использовать поле DropDownList с jQuery
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/19/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-an
 msc.type: chapter
 ms.openlocfilehash: 9d498c0fbb0860d50ab76e58e9940f6789e34d6b
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26502593"
 ---
 <a name="mvc-3---working-with-the-dropdownlist-box-and-jquery"></a><span data-ttu-id="481e0-103">MVC 3 — Работа с полем DropDownList и jQuery</span><span class="sxs-lookup"><span data-stu-id="481e0-103">MVC 3 - Working with the DropDownList Box and jQuery</span></span>
 ====================

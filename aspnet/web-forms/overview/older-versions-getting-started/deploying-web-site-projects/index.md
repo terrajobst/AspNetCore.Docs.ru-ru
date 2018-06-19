@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/index
-title: "Развертывание проектов веб-сайтов в Visual Studio 2008 и более ранних версий | Документы Microsoft"
+title: Развертывание проектов веб-сайтов в Visual Studio 2008 и более ранних версий | Документы Microsoft
 author: rick-anderson
-description: "Веб-приложений ASP.NET обычно разрабатываются, создания и тестирования в локальной среде разработки и должны быть развернуты в производственной среде o..."
+description: Веб-приложений ASP.NET обычно разрабатываются, создания и тестирования в локальной среде разработки и должны быть развернуты в производственной среде o...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/16/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-
 msc.type: chapter
 ms.openlocfilehash: a5a332a226efe4c549ce123d611c58ce01439452
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26517413"
 ---
 <a name="deploying-web-site-projects-in-visual-studio-2008-and-earlier"></a><span data-ttu-id="42d91-103">Развертывание проектов веб-сайтов в Visual Studio 2008 и более ранних версий</span><span class="sxs-lookup"><span data-stu-id="42d91-103">Deploying Web Site Projects in Visual Studio 2008 and earlier</span></span>
 ====================

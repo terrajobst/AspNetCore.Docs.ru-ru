@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872742"
 ---
 <a name="implementing-a-custom-mysql-aspnet-identity-storage-provider"></a><span data-ttu-id="0a6e7-103">Реализация поставщика хранилища ASP.NET Identity пользовательских MySQL</span><span class="sxs-lookup"><span data-stu-id="0a6e7-103">Implementing a Custom MySQL ASP.NET Identity Storage Provider</span></span>
 ====================

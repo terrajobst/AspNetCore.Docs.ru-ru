@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/index
-title: "Расширенный сценариев доступа к данным | Документы Microsoft"
+title: Расширенный сценариев доступа к данным | Документы Microsoft
 author: rick-anderson
-description: "В этих учебниках рассматриваются способы работы с хранимыми процедурами и вычисляемые столбцы, способ использования соединения с таблицами базы данных и шифрование данных сведений о соединении..."
+description: В этих учебниках рассматриваются способы работы с хранимыми процедурами и вычисляемые столбцы, способ использования соединения с таблицами базы данных и шифрование данных сведений о соединении...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios
 msc.type: chapter
 ms.openlocfilehash: e773ced66465ab99e9b662d84e1cdb8e607918e7
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26512293"
 ---
 <a name="advanced-data-access-scenarios"></a><span data-ttu-id="943f0-103">Расширенные сценарии доступа к</span><span class="sxs-lookup"><span data-stu-id="943f0-103">Advanced Data Access Scenarios</span></span>
 ====================

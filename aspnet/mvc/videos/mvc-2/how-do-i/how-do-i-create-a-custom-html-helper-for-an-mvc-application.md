@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870106"
 ---
 <a name="how-do-i-create-a-custom-html-helper-for-an-mvc-application"></a><span data-ttu-id="daab1-105">Практические советы. Создание вспомогательного класса пользовательского HTML для приложения MVC?</span><span class="sxs-lookup"><span data-stu-id="daab1-105">How Do I: Create a Custom HTML Helper for an MVC Application?</span></span>
 ====================

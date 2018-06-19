@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/read-write-and-delete-cookies-in-aspnet
-title: "Чтение, запись и удаление файлов cookie в ASP.NET | Документы Microsoft"
+title: Чтение, запись и удаление файлов cookie в ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "В этой видео пиксел Крис будет показано, как для чтения, записи и удаления файлов cookie в приложении ASP.NET. Во-первых Узнайте базовые операции для управления cooki..."
+description: В этой видео пиксел Крис будет показано, как для чтения, записи и удаления файлов cookie в приложении ASP.NET. Во-первых Узнайте базовые операции для управления cooki...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/10/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526373"
 ---
 <a name="read-write-and-delete-cookies-in-aspnet"></a><span data-ttu-id="21da7-104">Чтение, запись и удаление файлов cookie в ASP.NET</span><span class="sxs-lookup"><span data-stu-id="21da7-104">Read, Write, and Delete Cookies in ASP.NET</span></span>
 ====================

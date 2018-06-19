@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-cache-portions-of-an-aspnet-page
-title: "[Инструкции:] Кэширование частей страницы ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Кэширование частей страницы ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис показано, как кэшировать одну или несколько частей страницы ASP.NET, реализовав OutputCache для пользовательских элементов управления на странице. Во-первых,..."
+description: В этой видео пиксел Крис показано, как кэшировать одну или несколько частей страницы ASP.NET, реализовав OutputCache для пользовательских элементов управления на странице. Во-первых,...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/12/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525283"
 ---
 <a name="how-do-i-cache-portions-of-an-aspnet-page"></a><span data-ttu-id="44258-104">[Инструкции:] Кэшированные части страницы ASP.NET</span><span class="sxs-lookup"><span data-stu-id="44258-104">[How Do I:] Cache Portions of an ASP.NET Page</span></span>
 ====================

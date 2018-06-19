@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-an-httpmodule
-title: "[Инструкции:] Реализовать HttpModule? | Документы Майкрософт"
+title: '[Инструкции:] Реализовать HttpModule? | Документы Майкрософт'
 author: scottgolightly
-description: "В этом видеоролике Scott Golightly показывает, как реализовать простой HttpModule, использующий события BeginRequest и EndRequest сохранять некоторые данные о запрос..."
+description: В этом видеоролике Scott Golightly показывает, как реализовать простой HttpModule, использующий события BeginRequest и EndRequest сохранять некоторые данные о запрос...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526033"
 ---
 <a name="how-do-i-implement-an-httpmodule"></a><span data-ttu-id="8d086-104">[Инструкции:] Реализовать HttpModule?</span><span class="sxs-lookup"><span data-stu-id="8d086-104">[How Do I:] Implement an HttpModule?</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/index
-title: "Контроллеры и маршрутизации | Документы Microsoft"
+title: Контроллеры и маршрутизации | Документы Microsoft
 author: rick-anderson
-description: "В этом наборе учебника вы узнаете о маршрутизации ASP.NET, которой сопоставляется действия контроллера ASP.NET MVC запросы браузера."
+description: В этом наборе учебника вы узнаете о маршрутизации ASP.NET, которой сопоставляется действия контроллера ASP.NET MVC запросы браузера.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing
 msc.type: chapter
 ms.openlocfilehash: fe42077c119599bd169464ec2a7cdc4a0dd008a3
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26499953"
 ---
 <a name="controllers-and-routing"></a><span data-ttu-id="cc0d8-103">Контроллеры и маршрутизации</span><span class="sxs-lookup"><span data-stu-id="cc0d8-103">Controllers and Routing</span></span>
 ====================

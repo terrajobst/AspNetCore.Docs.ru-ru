@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-event-handlers-in-aspnet-web-pages-and-controls
-title: "[Инструкции:] Обработчики событий в элементах управления и веб-страниц ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Обработчики событий в элементах управления и веб-страниц ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "В этот видеоролик пиксел Крис будет показано, как создавать обработчики событий для веб-страниц ASP.NET и веб-сервера управления. Во-первых сведения о создании f событий на уровне страницы..."
+description: В этот видеоролик пиксел Крис будет показано, как создавать обработчики событий для веб-страниц ASP.NET и веб-сервера управления. Во-первых сведения о создании f событий на уровне страницы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/17/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526043"
 ---
 <a name="how-do-i-event-handlers-in-aspnet-web-pages-and-controls"></a><span data-ttu-id="5ce7a-104">[Инструкции:] Обработчики событий в элементах управления и веб-страниц ASP.NET</span><span class="sxs-lookup"><span data-stu-id="5ce7a-104">[How Do I:] Event Handlers in ASP.NET Web Pages and Controls</span></span>
 ====================

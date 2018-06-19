@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-share-data-between-client-javascript-and-server-code-using-a-hidden-field
-title: "[Инструкции:] Обмен данными между JavaScript клиентского и серверного кода с помощью скрытого поля | Документы Microsoft"
+title: '[Инструкции:] Обмен данными между JavaScript клиентского и серверного кода с помощью скрытого поля | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис будет показано, как обмен данными между JavaScript и кода на стороне сервера с помощью скрытого поля на странице ASP.NET. Далее, узнайте, как t..."
+description: В этой видео пиксел Крис будет показано, как обмен данными между JavaScript и кода на стороне сервера с помощью скрытого поля на странице ASP.NET. Далее, узнайте, как t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/13/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521583"
 ---
 <a name="how-do-i-share-data-between-client-javascript-and-server-code-using-a-hidden-field"></a><span data-ttu-id="8661e-104">[Инструкции:] Обмен данными между JavaScript клиентского и серверного кода с помощью скрытого поля</span><span class="sxs-lookup"><span data-stu-id="8661e-104">[How Do I:] Share Data Between Client JavaScript and Server Code Using a Hidden Field</span></span>
 ====================

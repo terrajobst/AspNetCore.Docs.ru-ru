@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/index
-title: "Приступая к работе с веб-страниц ASP.NET | Документы Microsoft"
+title: Приступая к работе с веб-страниц ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "Дополнительные сведения о веб-страниц ASP.NET веб-страниц ASP.NET и новый синтаксис Razor обеспечивают быстрый, понятный и простой способ объединения серверного кода с HTML-t..."
+description: Дополнительные сведения о веб-страниц ASP.NET веб-страниц ASP.NET и новый синтаксис Razor обеспечивают быстрый, понятный и простой способ объединения серверного кода с HTML-t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/18/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/overview/getting-started
 msc.type: chapter
 ms.openlocfilehash: 879110bba5e3465dd413764816603bcdb56eac31
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528593"
 ---
 <a name="getting-started-with-aspnet-web-pages"></a><span data-ttu-id="f36d4-103">Приступая к работе с веб-страницы ASP.NET</span><span class="sxs-lookup"><span data-stu-id="f36d4-103">Getting Started with ASP.NET Web Pages</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-handle-application-events-using-an-httpmodule
-title: "[Инструкции:] Обработка событий приложения, с помощью HttpModule? | Документы Майкрософт"
+title: '[Инструкции:] Обработка событий приложения, с помощью HttpModule? | Документы Майкрософт'
 author: rick-anderson
-description: "Описание способов создания HttpModule, который обрабатывает события приложения во время обработки запроса страницы. Пример модуля записи данных о журналов..."
+description: Описание способов создания HttpModule, который обрабатывает события приложения во время обработки запроса страницы. Пример модуля записи данных о журналов...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/13/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526183"
 ---
 <a name="how-do-i-handle-application-events-using-an-httpmodule"></a><span data-ttu-id="eb062-105">[Инструкции:] Обработка событий приложения, с помощью HttpModule?</span><span class="sxs-lookup"><span data-stu-id="eb062-105">[How Do I:] Handle Application Events using an HttpModule?</span></span>
 ====================

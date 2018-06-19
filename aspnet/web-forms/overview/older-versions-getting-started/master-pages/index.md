@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/index
-title: "ASP.NET 3.5 — основной страницы Web Forms | Документы Microsoft"
+title: ASP.NET 3.5 — основной страницы Web Forms | Документы Microsoft
 author: rick-anderson
-description: "Как создать и использовать для создания согласованного макета в приложениях веб-форм ASP.NET, главные страницы и страницы содержимого."
+description: Как создать и использовать для создания согласованного макета в приложениях веб-форм ASP.NET, главные страницы и страницы содержимого.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/04/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages
 msc.type: chapter
 ms.openlocfilehash: 7db12550902920339d3bbacdf0a13b2081edc580
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26518043"
 ---
 <a name="aspnet-35---web-forms-master-pages"></a><span data-ttu-id="766d2-103">ASP.NET 3.5 — основной страницы Web Forms</span><span class="sxs-lookup"><span data-stu-id="766d2-103">ASP.NET 3.5 - Web Forms Master Pages</span></span>
 ====================

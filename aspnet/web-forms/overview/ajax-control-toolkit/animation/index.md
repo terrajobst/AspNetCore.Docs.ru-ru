@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/index
-title: "Анимация | Документы Microsoft"
+title: Анимация | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник показывает, как создание анимации с помощью управления \"анимация\" и framework анимации."
+description: Этот учебник показывает, как создание анимации с помощью управления "анимация" и framework анимации.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/11/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation
 msc.type: chapter
 ms.openlocfilehash: 96a27f734e616022e17dc073ac0467b88eddced3
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26509513"
 ---
 <a name="animation"></a><span data-ttu-id="e9226-103">Анимация</span><span class="sxs-lookup"><span data-stu-id="e9226-103">Animation</span></span>
 ====================

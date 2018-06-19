@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-make-html-elements-accessible-from-server-side-code
-title: "[Инструкции:] Предоставить HTML-элементов доступ через код стороны сервера | Документы Microsoft"
+title: '[Инструкции:] Предоставить HTML-элементов доступ через код стороны сервера | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис будет показано, как предоставить стандартный HTML-элементов в страницы ASPX доступ через код со стороны сервера, они могут использоваться в processin страницы..."
+description: В этой видео пиксел Крис будет показано, как предоставить стандартный HTML-элементов в страницы ASPX доступ через код со стороны сервера, они могут использоваться в processin страницы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/29/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521553"
 ---
 <a name="how-do-i-make-html-elements-accessible-from-server-side-code"></a><span data-ttu-id="f9628-103">[Инструкции:] Сделать доступной из код со стороны сервера HTML-элементов</span><span class="sxs-lookup"><span data-stu-id="f9628-103">[How Do I:] Make HTML elements accessible from server side code</span></span>
 ====================

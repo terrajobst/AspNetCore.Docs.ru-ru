@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/index
-title: "Приступая к работе с веб-API ASP.NET | Документы Microsoft"
+title: Приступая к работе с веб-API ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "Дополнительные сведения о веб-API ASP.NET Web API ASP.NET — это платформа, позволяет легко создавать службы HTTP широкого диапазона клиентов, включая браузеры..."
+description: Дополнительные сведения о веб-API ASP.NET Web API ASP.NET — это платформа, позволяет легко создавать службы HTTP широкого диапазона клиентов, включая браузеры...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api
 msc.type: chapter
 ms.openlocfilehash: 31f697935a22bcdbc13055cf8ba5966930ef8fb9
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506853"
 ---
 <a name="getting-started-with-aspnet-web-api"></a><span data-ttu-id="00846-103">Приступая к работе с веб-API ASP.NET</span><span class="sxs-lookup"><span data-stu-id="00846-103">Getting Started with ASP.NET Web API</span></span>
 ====================

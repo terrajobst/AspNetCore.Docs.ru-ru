@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-1/conference-presentations/americas-next-top-model-view-controller-framework
-title: "Америки Далее Top модели представления контроллера Framework | Документы Microsoft"
+title: Америки Далее Top модели представления контроллера Framework | Документы Microsoft
 author: Haacked
-description: "Узнайте, как создать простое приложение, которое представлены некоторые основные возможности ASP.NET MVC. Кроме того, узнайте, как повысить производительность, с помощью некоторых..."
+description: Узнайте, как создать простое приложение, которое представлены некоторые основные возможности ASP.NET MVC. Кроме того, узнайте, как повысить производительность, с помощью некоторых...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503443"
 ---
 <a name="americas-next-top-model-view-controller-framework"></a><span data-ttu-id="8f986-104">Америки Далее Top модели представления контроллера Framework</span><span class="sxs-lookup"><span data-stu-id="8f986-104">America's Next Top Model View Controller Framework</span></span>
 ====================

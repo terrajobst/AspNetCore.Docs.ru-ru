@@ -1,14 +1,14 @@
 ---
 uid: single-page-application/overview/introduction/knockoutjs-template
-title: "Одностраничного приложения: Шаблон использованием KnockoutJS | Документы Microsoft"
+title: 'Одностраничного приложения: Шаблон использованием KnockoutJS | Документы Microsoft'
 author: MikeWasson
-description: "Шаблон маскирования"
+description: Шаблон маскирования
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/30/2013
 ms.topic: article
 ms.assetid: f9c07af0-4b20-4b08-af8f-47fc3df169a2
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/introduction/knockoutjs-template
 msc.type: authoredcontent
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "28036899"
 ---
 <a name="single-page-application-knockoutjs-template"></a><span data-ttu-id="0bdd7-103">Одностраничного приложения: Использованием KnockoutJS шаблон</span><span class="sxs-lookup"><span data-stu-id="0bdd7-103">Single Page Application: KnockoutJS template</span></span>
 ====================
@@ -46,7 +47,7 @@ ms.lasthandoff: 03/15/2018
 
 <span data-ttu-id="0bdd7-121">Запустите Visual Studio и выберите **новый проект** с начальной страницы.</span><span class="sxs-lookup"><span data-stu-id="0bdd7-121">Start Visual Studio and select **New Project** from the Start page.</span></span> <span data-ttu-id="0bdd7-122">Или из **файл** последовательно выберите пункты **New** и затем **проекта**.</span><span class="sxs-lookup"><span data-stu-id="0bdd7-122">Or, from the **File** menu, select **New** and then **Project**.</span></span>
 
-<span data-ttu-id="0bdd7-123">В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла.</span><span class="sxs-lookup"><span data-stu-id="0bdd7-123">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="0bdd7-124">В разделе **Visual C#**выберите **Web**.</span><span class="sxs-lookup"><span data-stu-id="0bdd7-124">Under **Visual C#**, select **Web**.</span></span> <span data-ttu-id="0bdd7-125">В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**.</span><span class="sxs-lookup"><span data-stu-id="0bdd7-125">In the list of project templates, select **ASP.NET MVC 4 Web Application**.</span></span> <span data-ttu-id="0bdd7-126">Имя проекта и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="0bdd7-126">Name the project and click **OK**.</span></span>
+<span data-ttu-id="0bdd7-123">В **шаблоны** выберите **установленные шаблоны** и разверните **Visual C#** узла.</span><span class="sxs-lookup"><span data-stu-id="0bdd7-123">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="0bdd7-124">В разделе **Visual C#** выберите **Web**.</span><span class="sxs-lookup"><span data-stu-id="0bdd7-124">Under **Visual C#**, select **Web**.</span></span> <span data-ttu-id="0bdd7-125">В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**.</span><span class="sxs-lookup"><span data-stu-id="0bdd7-125">In the list of project templates, select **ASP.NET MVC 4 Web Application**.</span></span> <span data-ttu-id="0bdd7-126">Имя проекта и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="0bdd7-126">Name the project and click **OK**.</span></span>
 
 ![](knockoutjs-template/_static/image2.png)
 

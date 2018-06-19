@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/index
-title: "Модель привязки и веб-форм в Visual Studio 2013 | Документы Microsoft"
+title: Модель привязки и веб-форм в Visual Studio 2013 | Документы Microsoft
 author: rick-anderson
-description: "Способы работы с данными с помощью привязки модели и веб-форм."
+description: Способы работы с данными с помощью привязки модели и веб-форм.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/13/2013
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding
 msc.type: chapter
 ms.openlocfilehash: f653a1394af8bfc562c244dad00ff35bc4744647
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519773"
 ---
 <a name="model-binding-and-web-forms-in-visual-studio-2013"></a><span data-ttu-id="99130-103">Привязка модели и веб-форм в Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="99130-103">Model Binding and Web Forms in Visual Studio 2013</span></span>
 ====================

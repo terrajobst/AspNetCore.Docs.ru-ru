@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/index
-title: "Приступая к работе с веб-форм ASP.NET | Документы Microsoft"
+title: Приступая к работе с веб-форм ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "Дополнительные сведения о ASP.NET Web Forms веб-форм ASP.NET позволяет построения динамических веб-сайтов с помощью знакомую модель и перетащите, управляемые событиями. Область конструктора и hund..."
+description: Дополнительные сведения о ASP.NET Web Forms веб-форм ASP.NET позволяет построения динамических веб-сайтов с помощью знакомую модель и перетащите, управляемые событиями. Область конструктора и hund...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/08/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/getting-started
 msc.type: chapter
 ms.openlocfilehash: 219379b12e207755e8d27f0b5dae761527215519
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26516573"
 ---
 <a name="getting-started-with-aspnet-web-forms"></a><span data-ttu-id="a539e-104">Приступая к работе с веб-форм ASP.NET</span><span class="sxs-lookup"><span data-stu-id="a539e-104">Getting Started with ASP.NET Web Forms</span></span>
 ====================

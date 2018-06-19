@@ -1,20 +1,21 @@
 ---
 uid: aspnet/tutorials
-title: "Учебники по ASP.NET | Документы Microsoft"
+title: Учебники по ASP.NET | Документы Microsoft
 author: tdykstra
-description: "Список пошаговых руководств для разработки приложений ASP.NET."
+description: Список пошаговых руководств для разработки приложений ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: fddf8e5e-c055-4f81-b691-78deef871112
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: 704285fe06e2ece0f6afdc117aedf98f6155ef87
 ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036769"
 ---
 # <a name="aspnet-tutorials"></a><span data-ttu-id="44bc8-103">Учебники по ASP.NET</span><span class="sxs-lookup"><span data-stu-id="44bc8-103">ASP.NET tutorials</span></span>
 

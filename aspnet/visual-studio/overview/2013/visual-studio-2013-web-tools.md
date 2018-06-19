@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "26507133"
 ---
 <a name="hands-on-lab-visual-studio-2013-web-tools"></a><span data-ttu-id="c96df-104">Практическое лабораторное занятие: Visual Studio 2013 веб-инструменты</span><span class="sxs-lookup"><span data-stu-id="c96df-104">Hands On Lab: Visual Studio 2013 Web Tools</span></span>
 ====================
@@ -302,7 +303,7 @@ ms.lasthandoff: 04/10/2018
     <span data-ttu-id="c96df-291">![Изменение вопроса](visual-studio-2013-web-tools/_static/image28.png "редактирование на вопрос:")</span><span class="sxs-lookup"><span data-stu-id="c96df-291">![Editing the question](visual-studio-2013-web-tools/_static/image28.png "Editing the question")</span></span>
 
     <span data-ttu-id="c96df-292">*Изменение вопроса*</span><span class="sxs-lookup"><span data-stu-id="c96df-292">*Editing the question*</span></span>
-3. <span data-ttu-id="c96df-293">Курсор должен появиться.</span><span class="sxs-lookup"><span data-stu-id="c96df-293">A cursor should appear.</span></span> <span data-ttu-id="c96df-294">Замените исходный текст с *как она выглядит при рукописном дольше вопрос?*и нажмите клавишу **ESC** для выхода из режима конструктора.</span><span class="sxs-lookup"><span data-stu-id="c96df-294">Replace the original text with *What does it look like when I write a longer question?*, and then press **ESC** to exit Design Mode.</span></span>
+3. <span data-ttu-id="c96df-293">Курсор должен появиться.</span><span class="sxs-lookup"><span data-stu-id="c96df-293">A cursor should appear.</span></span> <span data-ttu-id="c96df-294">Замените исходный текст с *как она выглядит при рукописном дольше вопрос?* и нажмите клавишу **ESC** для выхода из режима конструктора.</span><span class="sxs-lookup"><span data-stu-id="c96df-294">Replace the original text with *What does it look like when I write a longer question?*, and then press **ESC** to exit Design Mode.</span></span>
 
     <span data-ttu-id="c96df-295">![Изменить вопрос](visual-studio-2013-web-tools/_static/image29.png "изменить вопрос")</span><span class="sxs-lookup"><span data-stu-id="c96df-295">![Question edited](visual-studio-2013-web-tools/_static/image29.png "Question edited")</span></span>
 
@@ -320,7 +321,7 @@ ms.lasthandoff: 04/10/2018
 
 1. <span data-ttu-id="c96df-305">Последовательно выберите пункты **представление** меню и выберите пункт **список ошибок** Открытие **список ошибок** окна.</span><span class="sxs-lookup"><span data-stu-id="c96df-305">Go to the **View** menu and click **Error List** to open the **Error List** window.</span></span>
 
-    <span data-ttu-id="c96df-306">![Ошибка в представлении списка меню](visual-studio-2013-web-tools/_static/image31.png "список ошибок, в меню "Вид"")</span><span class="sxs-lookup"><span data-stu-id="c96df-306">![Error List in View menu](visual-studio-2013-web-tools/_static/image31.png "Error List in View menu")</span></span>
+    <span data-ttu-id="c96df-306">![Ошибка в представлении списка меню](visual-studio-2013-web-tools/_static/image31.png "список ошибок, в меню \"Вид\"")</span><span class="sxs-lookup"><span data-stu-id="c96df-306">![Error List in View menu](visual-studio-2013-web-tools/_static/image31.png "Error List in View menu")</span></span>
 
     <span data-ttu-id="c96df-307">*Ошибка в представлении списка меню*</span><span class="sxs-lookup"><span data-stu-id="c96df-307">*Error List in View menu*</span></span>
 2. <span data-ttu-id="c96df-308">Обратите внимание, что предупреждение об оптимизации поисковой системы, связанные с уведомлением, **&lt;meta&gt;** тегов для описания страницы отсутствует.</span><span class="sxs-lookup"><span data-stu-id="c96df-308">Notice that there is an SEO warning notifying that a **&lt;meta&gt;** tag for the page description is missing.</span></span> <span data-ttu-id="c96df-309">Дважды щелкните запись предупреждение SEO по ее устранению.</span><span class="sxs-lookup"><span data-stu-id="c96df-309">Double-click the SEO warning entry to fix it.</span></span>

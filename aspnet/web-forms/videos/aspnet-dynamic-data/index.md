@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/index
-title: "Платформа динамических данных ASP.NET | Документы Microsoft"
+title: Платформа динамических данных ASP.NET | Документы Microsoft
 author: rick-anderson
-description: "Инструкции по использованию динамических данных ASP.NET для создания формирования шаблонов приложений, которые автоматически знают, как осуществлять доступ к данным."
+description: Инструкции по использованию динамических данных ASP.NET для создания формирования шаблонов приложений, которые автоматически знают, как осуществлять доступ к данным.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/aspnet-dynamic-data
 msc.type: chapter
 ms.openlocfilehash: a2fc937d18572ac2e1bc41cd28b98569a2490a61
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26522513"
 ---
 <a name="aspnet-dynamic-data"></a><span data-ttu-id="a9591-103">Платформа динамических данных ASP.NET</span><span class="sxs-lookup"><span data-stu-id="a9591-103">ASP.NET Dynamic Data</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-error-handling-when-sending-email-with-aspnet
-title: "[Инструкции:] Реализация обработки ошибок, при отправке сообщения электронной почты с ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Реализация обработки ошибок, при отправке сообщения электронной почты с ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "Крис пиксел показано, как реализовать обработку ошибок при отправке писем с ASP.NET. Он создает веб-страницу ASP.NET для отправки электронной почты, показано, как настроить & lt...."
+description: Крис пиксел показано, как реализовать обработку ошибок при отправке писем с ASP.NET. Он создает веб-страницу ASP.NET для отправки электронной почты, показано, как настроить & lt....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/06/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526433"
 ---
 <a name="how-do-i-implement-error-handling-when-sending-email-with-aspnet"></a><span data-ttu-id="6d166-104">[Инструкции:] Реализация обработки ошибок, при отправке сообщения электронной почты с ASP.NET</span><span class="sxs-lookup"><span data-stu-id="6d166-104">[How Do I:] Implement Error Handling when Sending Email with ASP.NET</span></span>
 ====================

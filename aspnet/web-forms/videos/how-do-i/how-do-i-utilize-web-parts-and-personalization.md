@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-utilize-web-parts-and-personalization
-title: "[Инструкции:] Использовать веб-частей и персонализации? | Документы Майкрософт"
+title: '[Инструкции:] Использовать веб-частей и персонализации? | Документы Майкрософт'
 author: microsoft
-description: "Узнайте, как использовать новые возможности веб-частей и персонализации для создания настраиваемых веб-страниц, содержимое и макет может быть изменен пользователем."
+description: Узнайте, как использовать новые возможности веб-частей и персонализации для создания настраиваемых веб-страниц, содержимое и макет может быть изменен пользователем.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/16/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526133"
 ---
 <a name="how-do-i-utilize-web-parts-and-personalization"></a><span data-ttu-id="8cbec-104">[Инструкции:] Использовать веб-частей и персонализации?</span><span class="sxs-lookup"><span data-stu-id="8cbec-104">[How Do I:] Utilize Web Parts and Personalization?</span></span>
 ====================

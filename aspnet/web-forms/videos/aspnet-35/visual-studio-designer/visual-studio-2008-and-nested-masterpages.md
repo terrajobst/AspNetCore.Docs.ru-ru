@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-35/visual-studio-designer/visual-studio-2008-and-nested-masterpages
-title: "Visual Studio 2008 и вложенные главные страницы | Документы Microsoft"
+title: Visual Studio 2008 и вложенные главные страницы | Документы Microsoft
 author: JoeStagner
-description: "Я использую веб-шаблона из oswd.org для демонстрации использования главных страниц и как они поддерживаются в Visual Studio 2008. В частности покажет th..."
+description: Я использую веб-шаблона из oswd.org для демонстрации использования главных страниц и как они поддерживаются в Visual Studio 2008. В частности покажет th...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/15/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26520563"
 ---
 <a name="visual-studio-2008-and-nested-masterpages"></a><span data-ttu-id="a86a9-104">Visual Studio 2008 и вложенные главные страницы</span><span class="sxs-lookup"><span data-stu-id="a86a9-104">Visual Studio 2008 and Nested Masterpages</span></span>
 ====================

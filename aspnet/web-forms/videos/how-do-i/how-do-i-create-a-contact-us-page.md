@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-contact-us-page
-title: "Как создать контакт нам страницы"
+title: Как создать контакт нам страницы
 author: microsoft
-description: "Построение веб-страницы, чтобы собирать сведения от пользователя с помощью элемента управления мастера, проверьте информацию и используйте классы System.Net.Mail для отправки настроить..."
+description: Построение веб-страницы, чтобы собирать сведения от пользователя с помощью элемента управления мастера, проверьте информацию и используйте классы System.Net.Mail для отправки настроить...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/24/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525463"
 ---
 <a name="how-do-i-create-a-contact-us-page"></a><span data-ttu-id="d5e73-103">[Инструкции:] Создать страницу «Свяжитесь с нами»?</span><span class="sxs-lookup"><span data-stu-id="d5e73-103">[How Do I:] Create a "Contact Us" Page?</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-web-forms-vnext/index
-title: "ASP.NET 4.5 | Документы Microsoft"
+title: ASP.NET 4.5 | Документы Microsoft
 author: rick-anderson
-description: "Новые возможности веб-форм в ASP.NET 4.5."
+description: Новые возможности веб-форм в ASP.NET 4.5.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/aspnet-web-forms-vnext
 msc.type: chapter
 ms.openlocfilehash: 7b4c1e39dcc1b93c40cff69e6e5337d55b5607ba
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521293"
 ---
 <a name="aspnet-45"></a><span data-ttu-id="6d033-103">ASP.NET 4.5</span><span class="sxs-lookup"><span data-stu-id="6d033-103">ASP.NET 4.5</span></span>
 ====================

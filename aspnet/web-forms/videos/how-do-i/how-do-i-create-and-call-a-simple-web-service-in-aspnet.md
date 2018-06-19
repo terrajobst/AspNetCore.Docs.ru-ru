@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-and-call-a-simple-web-service-in-aspnet
-title: "[Инструкции:] Создайте и назовите простой веб-службы в ASP.NET | Документы Microsoft"
+title: '[Инструкции:] Создайте и назовите простой веб-службы в ASP.NET | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис будет показано, как создание веб-службы в ASP.NET и затем вызвать службу из другой веб-сайт ASP.NET. Во-первых как создать..."
+description: В этой видео пиксел Крис будет показано, как создание веб-службы в ASP.NET и затем вызвать службу из другой веб-сайт ASP.NET. Во-первых как создать...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/27/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526463"
 ---
 <a name="how-do-i-create-and-call-a-simple-web-service-in-aspnet"></a><span data-ttu-id="bac04-104">[Инструкции:] Создайте и назовите простой веб-службы в ASP.NET</span><span class="sxs-lookup"><span data-stu-id="bac04-104">[How Do I:] Create and Call a Simple Web Service in ASP.NET</span></span>
 ====================

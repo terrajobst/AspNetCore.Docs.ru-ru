@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/index
-title: "ASP.NET MVC 3 Music Store | Документы Microsoft"
+title: ASP.NET MVC 3 Music Store | Документы Microsoft
 author: rick-anderson
-description: "Создание приложения MVC Music Store, образец приложения, который продает альбомы через Интернет, и типов, реализующих Администрирование сайта пользователя входа в систему..."
+description: Создание приложения MVC Music Store, образец приложения, который продает альбомы через Интернет, и типов, реализующих Администрирование сайта пользователя входа в систему...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions/mvc-music-store
 msc.type: chapter
 ms.openlocfilehash: b8fc43d8a8803a5b4cacfe46b55282e8dfd988c8
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26502453"
 ---
 <a name="aspnet-mvc-3-music-store"></a><span data-ttu-id="f8fcc-103">ASP.NET MVC 3 Music Store</span><span class="sxs-lookup"><span data-stu-id="f8fcc-103">ASP.NET MVC 3 Music Store</span></span>
 ====================

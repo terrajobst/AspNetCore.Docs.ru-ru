@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/what-is-asp-net
-title: "Что такое ASP.NET? | Документы Майкрософт"
+title: Что такое ASP.NET? | Документы Майкрософт
 author: shanselman
-description: "Скотт Хансельман корпорации Майкрософт предоставляет краткий обзор ASP.NET."
+description: Скотт Хансельман корпорации Майкрософт предоставляет краткий обзор ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/09/2010
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521533"
 ---
 <a name="what-is-aspnet"></a><span data-ttu-id="9e044-104">Что такое ASP.NET?</span><span class="sxs-lookup"><span data-stu-id="9e044-104">What is ASP.NET?</span></span>
 ====================

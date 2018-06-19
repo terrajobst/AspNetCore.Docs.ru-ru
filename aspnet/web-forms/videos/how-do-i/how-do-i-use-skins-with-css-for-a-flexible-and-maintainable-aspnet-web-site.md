@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-skins-with-css-for-a-flexible-and-maintainable-aspnet-web-site
-title: "[Инструкции:] Использование обложек CSS для веб-сайта ASP.NET гибким и простым в обслуживании | Документы Microsoft"
+title: '[Инструкции:] Использование обложек CSS для веб-сайта ASP.NET гибким и простым в обслуживании | Документы Microsoft'
 author: rick-anderson
-description: "В этой видео пиксел Крис показано, как создать обложки для ASP.NET серверных элементов управления, а затем применить стили CSS для управления внешним видом создавать обложки контракту..."
+description: В этой видео пиксел Крис показано, как создать обложки для ASP.NET серверных элементов управления, а затем применить стили CSS для управления внешним видом создавать обложки контракту...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/07/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521773"
 ---
 <a name="how-do-i-use-skins-with-css-for-a-flexible-and-maintainable-aspnet-web-site"></a><span data-ttu-id="a6314-103">[Инструкции:] Использование обложек CSS для гибким и простым в обслуживании веб-узла ASP.NET</span><span class="sxs-lookup"><span data-stu-id="a6314-103">[How Do I:] Use Skins with CSS for a Flexible and Maintainable ASP.NET Web Site</span></span>
 ====================

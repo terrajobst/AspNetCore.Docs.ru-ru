@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/index
-title: "Приступая к работе с ASP.NET MVC 4 | Документы Microsoft"
+title: Приступая к работе с ASP.NET MVC 4 | Документы Microsoft
 author: rick-anderson
-description: "Этот учебник ряд описываются основы построения MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, w..."
+description: Этот учебник ряд описываются основы построения MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, w...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4
 msc.type: chapter
 ms.openlocfilehash: 2d53060133e982e01e371407fc18ac62188c36b7
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26501833"
 ---
 <a name="getting-started-with-aspnet-mvc-4"></a><span data-ttu-id="36cd5-103">Приступая к работе с ASP.NET MVC 4</span><span class="sxs-lookup"><span data-stu-id="36cd5-103">Getting Started with ASP.NET MVC 4</span></span>
 ====================

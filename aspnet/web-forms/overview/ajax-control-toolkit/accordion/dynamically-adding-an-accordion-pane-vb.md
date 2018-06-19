@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868728"
 ---
 <a name="dynamically-adding-an-accordion-pane-vb"></a><span data-ttu-id="a76ba-104">Динамическое добавление Гармошка области (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="a76ba-104">Dynamically Adding An Accordion Pane (VB)</span></span>
 ====================

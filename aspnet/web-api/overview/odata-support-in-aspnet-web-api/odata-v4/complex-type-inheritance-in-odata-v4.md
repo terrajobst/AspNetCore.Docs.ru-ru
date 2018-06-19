@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/complex-type-inheritance-in-odata-v4
-title: "Сложный тип наследования в OData v4 с веб-API ASP.NET | Документы Microsoft"
+title: Сложный тип наследования в OData v4 с веб-API ASP.NET | Документы Microsoft
 author: microsoft
-description: "Согласно спецификации OData v4 сложный тип может наследовать от другого сложного типа. (Сложного типа является структурированного типа без ключа). Веб-API..."
+description: Согласно спецификации OData v4 сложный тип может наследовать от другого сложного типа. (Сложного типа является структурированного типа без ключа). Веб-API...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/16/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508423"
 ---
 <a name="complex-type-inheritance-in-odata-v4-with-aspnet-web-api"></a><span data-ttu-id="31da4-104">Сложный тип наследования в OData v4 с веб-API ASP.NET</span><span class="sxs-lookup"><span data-stu-id="31da4-104">Complex Type Inheritance in OData v4 with ASP.NET Web API</span></span>
 ====================

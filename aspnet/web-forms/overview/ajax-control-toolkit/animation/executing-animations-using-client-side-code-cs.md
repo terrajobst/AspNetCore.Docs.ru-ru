@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870743"
 ---
 <a name="executing-animations-using-client-side-code-c"></a><span data-ttu-id="6e851-104">Выполнение анимации с помощью кода на стороне клиента (C#)</span><span class="sxs-lookup"><span data-stu-id="6e851-104">Executing Animations Using Client-Side Code (C#)</span></span>
 ====================

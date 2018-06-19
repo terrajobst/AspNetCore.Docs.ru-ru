@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/aspnet-and-iis6
-title: "Запущена среда ASP.NET 1.1 со службами IIS 6.0 | Документы Microsoft"
+title: Запущена среда ASP.NET 1.1 со службами IIS 6.0 | Документы Microsoft
 author: rick-anderson
-description: "Хотя Windows Server 2003 включает службы IIS 6.0 и ASP.NET версии 1.1, по умолчанию отключены следующие компоненты. В этом техническом документе описывается включение IIS 6.0..."
+description: Хотя Windows Server 2003 включает службы IIS 6.0 и ASP.NET версии 1.1, по умолчанию отключены следующие компоненты. В этом техническом документе описывается включение IIS 6.0...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: 5a5537bf-2aaa-49e7-839f-9e6522b829d8
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet-and-iis6
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26530113"
 ---
 <a name="running-aspnet-11-with-iis-60"></a><span data-ttu-id="82af6-104">Запущена среда ASP.NET 1.1 с IIS 6.0</span><span class="sxs-lookup"><span data-stu-id="82af6-104">Running ASP.NET 1.1 with IIS 6.0</span></span>
 ====================

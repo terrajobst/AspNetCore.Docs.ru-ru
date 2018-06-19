@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/index
-title: "ASP.NET 4. Настройка серверов корпоративного развертывания ряда 2 | Документы Microsoft"
+title: ASP.NET 4. Настройка серверов корпоративного развертывания ряда 2 | Документы Microsoft
 author: rick-anderson
-description: "Этого учебника показано, как настроить серверных сред с одним щелчком, так и для автоматических веб-сайт развертывания и публикации в различных разных сценария..."
+description: Этого учебника показано, как настроить серверных сред с одним щелчком, так и для автоматических веб-сайт развертывания и публикации в различных разных сценария...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/16/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-fo
 msc.type: chapter
 ms.openlocfilehash: 48281541d8337daf9cf252bc4601c8b1e75fd398
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26515233"
 ---
 <a name="aspnet-4---enterprise-deployment-series-2-configuring-servers"></a><span data-ttu-id="5870c-103">ASP.NET 4. Настройка серверов корпоративного развертывания ряда 2</span><span class="sxs-lookup"><span data-stu-id="5870c-103">ASP.NET 4 - Enterprise Deployment Series 2 Configuring Servers</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-and-use-classes-in-javascript
-title: "Как I: создать и использовать классы в JavaScript? | Документы Майкрософт"
+title: 'Как I: создать и использовать классы в JavaScript? | Документы Майкрософт'
 author: rick-anderson
-description: "В этом видео пиксел Крис показано, как для создания классов в JavaScript с помощью функции похожи на другие языки программирования с capabilitie объектно-ориентированной..."
+description: В этом видео пиксел Крис показано, как для создания классов в JavaScript с помощью функции похожи на другие языки программирования с capabilitie объектно-ориентированной...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/08/2010
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525943"
 ---
 <a name="how-do-i-create-and-use-classes-in-javascript"></a><span data-ttu-id="6b9b2-104">Как I: создать и использовать классы в JavaScript?</span><span class="sxs-lookup"><span data-stu-id="6b9b2-104">How Do I: Create and Use Classes in JavaScript?</span></span>
 ====================

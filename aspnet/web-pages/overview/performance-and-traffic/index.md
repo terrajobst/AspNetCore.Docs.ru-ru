@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/performance-and-traffic/index
-title: "Производительность | Документы Microsoft"
+title: Производительность | Документы Microsoft
 author: rick-anderson
-description: "Как для кэширования содержимого для повышения производительности, а также измерение трафика узла."
+description: Как для кэширования содержимого для повышения производительности, а также измерение трафика узла.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/overview/performance-and-traffic
 msc.type: chapter
 ms.openlocfilehash: fffeb7c5b5a202a273bfd8b144ad1f63d5743087
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528523"
 ---
 <a name="performance"></a><span data-ttu-id="67c00-103">Производительность</span><span class="sxs-lookup"><span data-stu-id="67c00-103">Performance</span></span>
 ====================

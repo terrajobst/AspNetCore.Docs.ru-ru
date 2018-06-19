@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-an-efficient-and-standardized-approach-for-implementing-css-styles
-title: "Практические советы. Создание эффективного и стандартный подход для реализации стилей CSS? | Документы Майкрософт"
+title: Практические советы. Создание эффективного и стандартный подход для реализации стилей CSS? | Документы Майкрософт
 author: rick-anderson
-description: "В этой видео пиксел Крис показано, как организовать и реализовать стили CSS, предоставляющие стандартный внешний вид и поведение веб-сайт. Кроме того стили, которые являются..."
+description: В этой видео пиксел Крис показано, как организовать и реализовать стили CSS, предоставляющие стандартный внешний вид и поведение веб-сайт. Кроме того стили, которые являются...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/15/2010
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521903"
 ---
 <a name="how-do-i-create-an-efficient-and-standardized-approach-for-implementing-css-styles"></a><span data-ttu-id="fb2b9-105">Практические советы. Создание эффективного и стандартный подход для реализации стилей CSS?</span><span class="sxs-lookup"><span data-stu-id="fb2b9-105">How Do I: Create an Efficient and Standardized Approach for Implementing CSS Styles?</span></span>
 ====================
