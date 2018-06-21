@@ -1,5 +1,9 @@
 # [Введение](index.md)
 
+# [Новые возможности](xref:aspnetcore-2.1)
+# [Новые возможности](xref:aspnetcore-2.0)
+# [Новые возможности](xref:aspnetcore-1.1)
+
 # [Начало работы](getting-started.md)
 ## [Создание веб-приложения](xref:mvc/razor-pages/index)
 ## [Создание веб-API](xref:tutorials/first-web-api)
@@ -104,6 +108,8 @@
 ### [Веб-API в Visual Studio для Mac](xref:tutorials/first-web-api-mac)
 ### [Веб-API в Visual Studio Code](xref:tutorials/web-api-vsc)
 
+## [Разработка приложений с помощью наблюдателя файлов](xref:tutorials/dotnet-watch)
+
 ## [Создание серверных служб для мобильных приложений](mobile/native-mobile-backend.md)
 
 # [Основы](fundamentals/index.md)
@@ -198,15 +204,15 @@
 ### [Пользовательские модули форматирования](xref:web-api/advanced/custom-formatters)
 ### [Форматирование данных ответа](xref:web-api/advanced/formatting)
 
-# [Тестирование, отладка и устранение неполадок](xref:testing/index)
+# [Тестирование, отладка и устранение неполадок](xref:test/index)
 ## [Модульное тестирование](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
-## [Интеграционные тесты](xref:testing/integration-testing)
-## [Тестирование страниц Razor](xref:testing/razor-pages-testing)
+## [Интеграционные тесты](xref:test/integration-tests)
+## [Модульные тесты страниц Razor](xref:test/razor-pages-tests)
 ## [Контроллеры тестирования](xref:mvc/controllers/testing)
 ## [Удаленная отладка](/visualstudio/debugger/remote-debugging-azure)
 ## [Отладка моментальных снимков](/azure/application-insights/app-insights-snapshot-debugger)
 ## [Отладка моментальных снимков в Visual Studio](/visualstudio/debugger/debug-live-azure-applications)
-## [Устранение неполадок](xref:testing/troubleshoot)
+## [Устранение неполадок](xref:test/troubleshoot)
 
 # [Доступ к данным с помощью EF Core и Azure](data/index.md)
 ## [Начало работы с Razor Pages и EF Core в Visual Studio](xref:data/ef-rp/intro)
@@ -240,7 +246,11 @@
 ## [Центры](xref:signalr/hubs)
 ## [Клиент JavaScript](xref:signalr/javascript-client)
 ## [Клиент .NET](xref:signalr/dotnet-client)
+## [HubContext](xref:signalr/hubcontext)
+## [Пользователи и группы](xref:signalr/groups)
+## [Протокол MessagePack для концентратора](xref:signalr/messagepackhubprotocol)
 ## [Публикация в Azure](xref:signalr/publish-to-azure-web-app)
+## [Потоковая передача](xref:signalr/streaming)
 ## [Поддерживаемые платформы](xref:signalr/supported-platforms)
 
 # [Мобильные приложения](xref:mobile/index)
@@ -274,6 +284,7 @@
 ## [Проверка подлинности](xref:security/authentication/index)
 ### [Общие сведения об Identity](xref:security/authentication/identity)
 ### [Удостоверение шаблона](xref:security/authentication/scaffold-identity)
+### [Добавление данных пользователя для удостоверения](xref:security/authentication/add-user-data)
 ### [Варианты проверки подлинности OSS сообщества](xref:security/authentication/community)
 ### [Настройка Identity](xref:security/authentication/identity-configuration)
 ### [Настройка проверки подлинности Windows](xref:security/authentication/windowsauth)
@@ -361,6 +372,7 @@
 ## [ПО промежуточного слоя для сжатия ответов](xref:performance/response-compression)
 
 # [Миграция](xref:migration/index)
+## [Переход с ASP.NET Core 2.0 на 2.1](xref:migration/20_21)
 ## [Миграция с ASP.NET на ASP.NET Core](xref:migration/proper-to-2x/index)
 ### [MVC](xref:migration/mvc)
 ### [Веб-API](xref:migration/webapi)
@@ -372,11 +384,6 @@
 ## [Миграция с ASP.NET Core 1.x на 2.0](xref:migration/1x-to-2x/index)
 ### [Проверка подлинности и удостоверения](xref:migration/1x-to-2x/identity-2x)
 
-# [Справочник по интерфейсам API](/dotnet/api/?view=aspnetcore-2.0)
-
-# [Заметки о выпуске 2.0](aspnetcore-2.0.md)
-## [Заметки о выпуске 1.1](aspnetcore-1.1.md)
-## [Заметки о более раннем выпуске](https://github.com/aspnet/home/releases)
-## [VS 2015/project.json docs](https://docs.microsoft.com/dotnet/articles/project-json)
+# [Справочник по API](/dotnet/api/?view=aspnetcore-2.0)
 
 # [Участие](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md)

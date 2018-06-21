@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/host/index
-ms.openlocfilehash: 7ad059e39866f59040c12b7ac15e9fa3405a9aad
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 7f8ccff7e3da93d6e617505ac93fafc3a82ed880
+ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/10/2018
+ms.locfileid: "35252013"
 ---
 # <a name="host-in-aspnet-core"></a>Размещение в ASP.NET Core
 
@@ -23,4 +24,4 @@ ms.lasthandoff: 05/17/2018
 * [Веб-узел](xref:fundamentals/host/web-host) &ndash; подходит для размещения веб-приложений.
 * [Универсальный узел](xref:fundamentals/host/generic-host) (ASP.NET Core 2.1 или более поздней версии) &ndash; подходит для размещения других приложений (например, приложений, которые выполняют фоновые задачи). В следующем выпуске универсальный узел позволит размещать любые приложения, включая веб-приложения. Со временем универсальный узел заменит веб-узел.
 
-Сейчас разработчикам следует использовать [веб-узел](xref:fundamentals/host/web-host) на основе [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) для размещения приложений ASP.NET Core.
+Для размещения *веб-приложений* ASP.NET Core разработчикам следует использовать веб-узел на основе [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder). Если это *не веб-приложение*, для его размещения разработчикам следует использовать универсальный узел на основе [HostBuilder](/dotnet/api/microsoft.extensions.hosting.hostbuilder).

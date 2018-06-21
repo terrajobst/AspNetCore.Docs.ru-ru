@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 016f15c13470db53252941acafa25a3c6caf8db5
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: c6d362cf15b5d4611f0e544c5092a18f32ed7dfc
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34819049"
 ---
 # <a name="aspnet-core-middleware"></a>ПО промежуточного слоя ASP.NET Core
 
@@ -196,14 +197,17 @@ ASP.NET Core содержит следующие компоненты проме
 | [Проверка подлинности](xref:security/authentication/identity) | Обеспечивает поддержку проверки подлинности. | Ставится перед тем, как потребуется `HttpContext.User`. Является конечным для обратных вызовов OAuth. |
 | [CORS](xref:security/cors) | Настраивает общий доступ к ресурсам независимо от источника. | Ставится перед компонентами, использующими CORS. |
 | [Диагностика](xref:fundamentals/error-handling) | Настраивает диагностику. | Ставится перед компонентами, выдающими ошибки. |
-| [ForwardedHeaders/HttpOverrides](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions) | Пересылает заголовки, переданные через прокси-сервер, в текущий запрос. | Ставится перед компонентами, использующими обновленные поля (например: Scheme, Host, ClientIP, Method). |
+| [Перенаправленные заголовки](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions) | Пересылает заголовки, переданные через прокси-сервер, в текущий запрос. | Ставится перед компонентами, использующими обновленные поля (например: схема, узел, IP-адрес клиента, метод). |
+| [Переопределение метода HTTP](/dotnet/api/microsoft.aspnetcore.builder.httpmethodoverrideextensions) | Разрешает входящий запрос POST для переопределения этого метода. | Ставится перед компонентами, использующими обновленный метод. |
+| [Перенаправление HTTPS](xref:security/enforcing-ssl#require-https) | Перенаправление всех запросов HTTP на HTTPS (ASP.NET Core 2.1 или более поздней версии). | Ставится перед компонентами, использующими URL-адрес. |
+| [HTTP Strict Transport Security (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | ПО промежуточного слоя для усовершенствования безопасности, которое добавляет специальный заголовок ответа (ASP.NET Core 2.1 или более поздней версии). | Перед отправкой ответов и после компонентов, изменяющих запросы (например, перенаправленные заголовки, переопределение URL-адреса). |
 | [Кэширование ответов](xref:performance/caching/middleware) | Обеспечивает поддержку для кэширования откликов. | Ставится перед компонентами, требующими кэширование. |
 | [Сжатие откликов](xref:performance/response-compression) | Обеспечивает поддержку для сжатия откликов. | Ставится перед компонентами, требующими сжатие. |
-| [Локализация запросов](xref:fundamentals/localization) | Обеспечивает поддержку локализации. | Ставится перед компонентами, для которых важна локализация. |
+| [Локализация запроса](xref:fundamentals/localization) | Обеспечивает поддержку локализации. | Ставится перед компонентами, для которых важна локализация. |
 | [Маршрутизация](xref:fundamentals/routing) | Определяет и ограничивает маршруты запросов. | Является конечным для совпадающих маршрутов. |
 | [Сеанс](xref:fundamentals/app-state) | Обеспечивает поддержку для управления пользовательскими сеансами. | Ставится перед компонентами, требующими сеанс. |
 | [Статические файлы](xref:fundamentals/static-files) | Обеспечивает поддержку для обработки статических файлов и просмотра каталогов. | Является конечным, если запрос соответствует файлам. |
-| [Переопределение адреса URL](xref:fundamentals/url-rewriting) | Обеспечивает поддержку для переопределения URL-адресов и перенаправления запросов. | Ставится перед компонентами, использующими URL-адрес. |
+| [Переопределение URL-адресов](xref:fundamentals/url-rewriting) | Обеспечивает поддержку для переопределения URL-адресов и перенаправления запросов. | Ставится перед компонентами, использующими URL-адрес. |
 | [WebSockets](xref:fundamentals/websockets) | Обеспечивает поддержку протокола WebSockets. | Ставится перед компонентами, которым нужно принимать запросы WebSocket. |
 
 <a name="middleware-writing-middleware"></a>

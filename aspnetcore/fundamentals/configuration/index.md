@@ -1,7 +1,7 @@
 ---
 title: Конфигурация в .NET Core
 author: rick-anderson
-description: Используйте API конфигурации для настройки приложения ASP.NET Core несколькими способами.
+description: Узнайте, как использовать API конфигурации для настройки приложения ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,12 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 1048554c78e3810206b1261371ae7c41485c436a
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: a146991945add3c1299633db2147edbc63d3bc40
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/10/2018
-ms.locfileid: "35252130"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35725982"
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -102,7 +102,7 @@ Console.Write($"{Configuration["wizard:Harry:age"]}");
 
 [!code-json[](index/sample/appsettings.Staging.json)]
 
-Когда для среды задано значение `Staging`, следующий метод `Configure` считывает значение `MyConfig`.
+В следующем коде `Configure` считывает значение `MyConfig`.
 
 [!code-csharp[](index/sample/StartupConfig.cs?name=snippet&highlight=3,4)]
 
