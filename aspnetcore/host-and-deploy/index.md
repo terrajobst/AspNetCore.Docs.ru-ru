@@ -2,20 +2,16 @@
 title: Размещение и развертывание ASP.NET Core
 author: rick-anderson
 description: Сведения о настройке сред размещения и развертывании приложений ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/07/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/index
-ms.openlocfilehash: 1ffc7f9f2dc2a06dddb629d2d2553964b56cec05
-ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.openlocfilehash: 31444475e39a12d526dd624bb508770429e414ca
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2018
-ms.locfileid: "34472938"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277154"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Размещение и развертывание ASP.NET Core
 
@@ -54,7 +50,7 @@ ms.locfileid: "34472938"
 
 Если приложение использует веб-сервер [Kestrel](xref:fundamentals/servers/kestrel), вы можете использовать [nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache) или [IIS](xref:host-and-deploy/iis/index) в качестве обратного прокси-сервера. Обратный прокси-сервер получает HTTP-запросы из Интернета и пересылает их в Kestrel после определенной предварительной обработки.
 
-Любая из этих конфигураций&mdash;с обратным прокси-сервером и без него&mdash;является допустимой и поддерживаемой для размещения основных компонентов приложений ASP.NET версии 2.0 и выше. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
+Любая из этих конфигураций &mdash; с обратным прокси-сервером и без него &mdash; является допустимой и поддерживаемой для размещения основных компонентов приложений ASP.NET версии 2.0 и выше. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 

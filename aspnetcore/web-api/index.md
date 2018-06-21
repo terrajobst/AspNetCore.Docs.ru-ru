@@ -2,20 +2,16 @@
 title: Сборка веб-API с использованием ASP.NET Core
 author: scottaddie
 description: Сведения о функциях, доступных для сборки веб-API в ASP.NET Core, и о ситуациях, в которых уместно использовать каждую из них.
-manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 04/24/2018
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
 uid: web-api/index
-ms.openlocfilehash: 6afc02c1a966b62d0fcead0349c5f0803309dcbb
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: ab672667d1ca349d80c4ca80f8d1f32f4871c7e6
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33972791"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274970"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>Сборка веб-API с использованием ASP.NET Core
 

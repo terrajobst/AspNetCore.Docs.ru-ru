@@ -2,19 +2,15 @@
 title: Реализация защиты данных в ASP.NET Core
 author: rick-anderson
 description: Ознакомьтесь с различными разделами о реализации защиты данных в ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/implementation/index
-ms.openlocfilehash: ac891077342bb60cf321b96ba6d55df1a90655cd
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: a21738ee2c092a9d14b7d448f7d3c7694f456ca8
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30075328"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273827"
 ---
 # <a name="aspnet-core-data-protection-implementation"></a>Реализация защиты данных в ASP.NET Core
 
