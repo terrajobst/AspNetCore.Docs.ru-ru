@@ -1,5 +1,5 @@
-# <a name="aspnet-core-change-token-sample"></a>Пример токена изменения ASP.NET Core
+# <a name="aspnet-core-change-token-sample"></a><span data-ttu-id="737c1-101">Пример токена изменения ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="737c1-101">ASP.NET Core Change Token Sample</span></span>
 
-Этот пример демонстрирует использование [ChangeToken](https://docs.microsoft.com/dotnet/api/microsoft.extensions.primitives.changetoken). Этот пример демонстрирует функции, описанные в разделе [Обнаружение изменений с помощью токенов изменений](https://docs.microsoft.com/aspnet/core/fundamentals/primitives/change-tokens).
+<span data-ttu-id="737c1-102">Этот пример демонстрирует использование [ChangeToken](https://docs.microsoft.com/dotnet/api/microsoft.extensions.primitives.changetoken).</span><span class="sxs-lookup"><span data-stu-id="737c1-102">This sample illustrates the use of [ChangeToken](https://docs.microsoft.com/dotnet/api/microsoft.extensions.primitives.changetoken).</span></span> <span data-ttu-id="737c1-103">Этот пример демонстрирует функции, описанные в разделе [Обнаружение изменений с помощью токенов изменений](https://docs.microsoft.com/aspnet/core/fundamentals/primitives/change-tokens).</span><span class="sxs-lookup"><span data-stu-id="737c1-103">This sample demonstrates the features described in the [Detect changes with Change Tokens](https://docs.microsoft.com/aspnet/core/fundamentals/primitives/change-tokens) topic.</span></span>
 
-Запустите пример и следуйте инструкциям на странице индекса.
+<span data-ttu-id="737c1-104">Запустите пример и следуйте инструкциям на странице индекса.</span><span class="sxs-lookup"><span data-stu-id="737c1-104">Run the sample and follow the instructions on the Index page.</span></span>
