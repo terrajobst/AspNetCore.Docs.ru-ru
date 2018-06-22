@@ -2,19 +2,15 @@
 title: Заголовков контекста в ASP.NET Core
 author: rick-anderson
 description: Узнайте подробности реализации защиты данных ASP.NET Core заголовков контекста.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 5ba247a74e11408145e1f6e87c7cfa251c66707f
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 2343e59898c024eba420390d7fb0bce2fc82a895
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30077858"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274473"
 ---
 # <a name="context-headers-in-aspnet-core"></a>Заголовков контекста в ASP.NET Core
 
@@ -71,7 +67,7 @@ B7 92 3D BF 59 90 00 A9
 
 Далее вычислений Enc_CBC (K_E, IV, «») для AES-192-CBC заданный вектор Инициализации = 0 * и K_E, как описано выше.
 
-result := F474B1872B3B53E4721DE19C0841DB6F
+результат: = F474B1872B3B53E4721DE19C0841DB6F
 
 Далее вычислений MAC (K_H, "") для HMACSHA256, учитывая K_H, как описано выше.
 
@@ -122,7 +118,7 @@ D1 F7 5A 34 EB 28 3E D7 D4 67 B4 64
 
 Далее вычислений MAC (K_H, "") для HMAC-SHA1, учитывая K_H, как описано выше.
 
-result := 76EB189B35CF03461DDF877CD9F4B1B4D63A7555
+результат: = 76EB189B35CF03461DDF877CD9F4B1B4D63A7555
 
 В результате получается полный заголовок, который является отпечаток прошедшего проверку подлинности пары алгоритм шифрования (шифрование 3DES-192-CBC + проверки HMAC-SHA1), показано ниже:
 
@@ -166,7 +162,7 @@ result := 76EB189B35CF03461DDF877CD9F4B1B4D63A7555
 
 K_E формируется с помощью того же механизма, как и шифрования CBC + HMAC сценарии проверки подлинности. Тем не менее, поскольку здесь не K_H, мы фактически имеют | K_H | = 0, и алгоритм сворачивает форму ниже.
 
-K_E = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")
+K_E = SP800_108_CTR (prf = HMACSHA512, ключ = "», метки ="», контекст = "")
 
 ### <a name="example-aes-256-gcm"></a>Пример: AES-256-GCM
 
@@ -176,7 +172,7 @@ K_E := 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8
 
 Далее вычислений тега Enc_GCM проверки подлинности (K_E, nonce, «») для AES-256-GCM заданному nonce = 096 и K_E как описано выше.
 
-result := E7DCCE66DF855A323A6BB7BD7A59BE45
+результат: = E7DCCE66DF855A323A6BB7BD7A59BE45
 
 В результате получается полный заголовок ниже:
 

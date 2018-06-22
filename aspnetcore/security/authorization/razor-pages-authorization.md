@@ -2,20 +2,16 @@
 title: Правила авторизации страниц Razor в ASP.NET Core
 author: guardrex
 description: Узнайте, как для управления доступом к страницам с соглашениями, авторизацию пользователей и Разрешить анонимные пользователи для доступа к страницам или папкам страниц.
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/27/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: cd1fa7957ca50db0de71f71234f84d3fbc631f45
-ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
+ms.openlocfilehash: 8856520bf43f2f62cc12c7e883485babdb43fb3e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35341747"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272679"
 ---
 # <a name="razor-pages-authorization-conventions-in-aspnet-core"></a>Правила авторизации страниц Razor в ASP.NET Core
 
@@ -40,7 +36,7 @@ ms.locfileid: "35341747"
 ::: moniker range=">= aspnetcore-2.1"
 
 > [!NOTE]
-> `AuthorizeFilter` Может применяться к странице класс модели с `[Authorize]` атрибут фильтра. Дополнительные сведения см. в разделе [атрибут фильтра авторизовать](xref:mvc/razor-pages/filter#authorize-filter-attribute).
+> `AuthorizeFilter` Может применяться к странице класс модели с `[Authorize]` атрибут фильтра. Дополнительные сведения см. в разделе [атрибут фильтра авторизовать](xref:razor-pages/filter#authorize-filter-attribute).
 
 ::: moniker-end
 
@@ -90,5 +86,5 @@ ms.locfileid: "35341747"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Пользовательские поставщики моделей маршрутов и страниц Razor Pages](xref:mvc/razor-pages/razor-pages-conventions)
+* [Пользовательские поставщики моделей маршрутов и страниц Razor Pages](xref:razor-pages/razor-pages-conventions)
 * [PageConventionCollection](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection) класса

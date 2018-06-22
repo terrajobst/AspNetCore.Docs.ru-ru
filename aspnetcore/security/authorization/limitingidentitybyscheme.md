@@ -2,19 +2,15 @@
 title: Авторизация в нужной раскладки в ASP.NET Core
 author: rick-anderson
 description: В этой статье объясняется, как ограничить удостоверение для нужной раскладки при работе с несколькими методами проверки подлинности.
-manager: wpickett
 ms.author: riande
 ms.date: 10/12/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: 81a01d7de8221fcb3bf90a108d9df6633ca2b696
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 231c664006ee7ff91f471aa8d16c1fd18dcbabb1
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30072702"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278204"
 ---
 # <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>Авторизация в нужной раскладки в ASP.NET Core
 

@@ -2,20 +2,17 @@
 title: Клиент .NET ASP.NET Core SignalR
 author: rachelappel
 description: Сведения о клиенте .NET ASP.NET Core SignalR
-manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
-ms.date: 05/18/2018
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
+ms.date: 05/29/2018
 uid: signalr/dotnet-client
-ms.openlocfilehash: 412d2362575789f1fb4792940df6d3dd24dbdd5a
-ms.sourcegitcommit: 300a1127957dcdbce1b6ad79a7b9dc676f571510
+ms.openlocfilehash: faa4368988971a3e7fcdcd1b044971e16d70f19a
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/23/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273299"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>Клиент .NET ASP.NET Core SignalR
 
@@ -27,7 +24,7 @@ ms.lasthandoff: 05/23/2018
 
 В образце кода в этой статье является приложением WPF, использующее клиент ASP.NET Core SignalR .NET.
 
-## <a name="setup-client"></a>Программа установки клиента
+## <a name="install-the-signalr-net-client-package"></a>Установить пакет клиента SignalR .NET
 
 `Microsoft.AspNetCore.SignalR.Client` Пакет требуется для клиентов .NET для подключения к концентраторов SignalR. Чтобы установить клиентскую библиотеку, выполните следующую команду **консоль диспетчера пакетов** окна:
 

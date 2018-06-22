@@ -1,21 +1,17 @@
 ---
 title: Интеграционные тесты в ASP.NET Core
 author: guardrex
-description: Узнайте, как тесты интеграции гарантировать правильную работу компонентов приложения на уровне инфраструктуры, включая базы данных, файловой системы и сети.
-manager: wpickett
+description: Узнайте, как с помощью интеграционных тестов можно проверить работу компонентов приложения на уровне инфраструктуры, включая базу данных, файловую систему и сеть.
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/30/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: test/integration-tests
-ms.openlocfilehash: a402c3f5f6a75917eba4058e6cc6926f25b214d4
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: 1895b06f1af9a9eb66c14aa5c7834497fc95d583
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35217683"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277700"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
@@ -29,7 +25,7 @@ ms.locfileid: "35217683"
 
 Пример приложения представляет собой приложение страниц Razor и предполагает базовое представление о страниц Razor. Если знакомы со страниц Razor, см. в следующих разделах:
 
-* [Введение в Razor Pages](xref:mvc/razor-pages/index)
+* [Введение в Razor Pages](xref:razor-pages/index)
 * [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [Модульные тесты страниц Razor](xref:test/razor-pages-tests)
 

@@ -2,19 +2,15 @@
 title: Перенести проверку подлинности и удостоверение в ASP.NET Core 2.0
 author: scottaddie
 description: В этой статье описаны наиболее распространенные действия для переноса 1.x ASP.NET Core проверку подлинности и удостоверение по Core ASP.NET 2.0.
-manager: wpickett
 ms.author: scaddie
 ms.date: 10/26/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 0653906996f9f37d436ebefc6a738d2603788d53
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 0485b1bdf8be550de35a49803a24666c026b3d9b
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32741463"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276423"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>Перенести проверку подлинности и удостоверение в ASP.NET Core 2.0
 

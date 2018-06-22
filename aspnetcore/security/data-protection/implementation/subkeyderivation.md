@@ -2,19 +2,15 @@
 title: Шифрование, прошедшего проверку подлинности в ASP.NET Core и подразделов наследования
 author: rick-anderson
 description: Узнайте сведения о реализации защиты данных ASP.NET Core подраздела наследования и шифрование с проверкой подлинности.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/implementation/subkeyderivation
-ms.openlocfilehash: 8c83da40a524896becc07c94c01d5e2b684e4386
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 37e7b01700e8a6b755b5ed16a9d7d75a9eeb970e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30072643"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275727"
 ---
 # <a name="subkey-derivation-and-authenticated-encryption-in-aspnet-core"></a>Шифрование, прошедшего проверку подлинности в ASP.NET Core и подразделов наследования
 
@@ -39,7 +35,7 @@ ms.locfileid: "30072643"
 
 Так как AAD уникален для всех трех компонентов кортежа, мы можно использовать для формирования новых ключей из км вместо использования км сам во всех наших криптографических операций. При каждом вызове `IAuthenticatedEncryptor.Encrypt`, выполняется следующий процесс производного ключа:
 
-( K_E, K_H ) = SP800_108_CTR_HMACSHA512(K_M, AAD, contextHeader || keyModifier)
+(K_E, K_H) = SP800_108_CTR_HMACSHA512 (contextHeader K_M AAD, || keyModifier)
 
 Здесь выполняется вызов Формирования NIST SP800-108 в режиме счетчика (см. [NIST SP800-108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf), секунду 5.1) со следующими параметрами:
 

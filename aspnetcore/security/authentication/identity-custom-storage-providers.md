@@ -2,18 +2,15 @@
 title: Поставщики пользовательского хранилища для ASP.NET Core Identity
 author: ardalis
 description: Подробные сведения о настройке поставщиков пользовательского хранилища для ASP.NET Core Identity.
-manager: wpickett
 ms.author: riande
 ms.date: 05/24/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: a50069586c702152e81961773114ea75901ab23d
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 11c49d630c922b0aa91678277e9553bf0c25134d
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278431"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Поставщики пользовательского хранилища для ASP.NET Core Identity
 
@@ -170,7 +167,7 @@ ASP.NET Core Identity состоит из класса с именами мен�
 - **IUserLockoutStore**  
  [IUserLockoutStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1) интерфейса определяются методы, реализуемые для хранения сведений о блокировке учетной записи. Содержит методы для отслеживания неудачных попыток доступа и блокировки.
 - **IQueryableUserStore**  
- [IQueryableUserStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) интерфейс определяет реализуют члены для предоставления хранилища поддерживает запросы пользователя.
+ [IQueryableUserStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) интерфейс определяет элементы, реализовать для предоставления хранилища поддерживает запросы пользователя.
 
 Реализация интерфейсов, которые необходимы в приложении. Пример:
 

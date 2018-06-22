@@ -2,27 +2,25 @@
 title: Управление пакетами стороне клиента с помощью Bower в ASP.NET Core
 author: rick-anderson
 description: Управление пакетами стороне клиента с помощью Bower.
-manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 02/14/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: client-side/bower
-ms.openlocfilehash: 4f53d0f04d17631a12e2c2030d6dbb1f4fcc09d3
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 23f3dcd06f012f3cf8d9509280b91c4bd1dc84e1
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33838427"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272521"
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Управление пакетами стороне клиента с помощью Bower в ASP.NET Core
 
 По [Рик Андерсон](https://twitter.com/RickAndMSFT), [Риса Ноэл](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/), и [Скотт Addie](https://scottaddie.com) 
 
 > [!IMPORTANT]
-> Сохранение Bower, его программы обслуживания рекомендуется с помощью другого решения. [Диспетчер библиотек](https://blogs.msdn.microsoft.com/webdev/2018/04/18/what-happened-to-bower/) (LibMan сокращенно) — новая система управления содержимым статический клиентский Visual Studio. Yarn с Webpack — популярный альтернатива которой [инструкции по миграции](https://bower.io/blog/2017/how-to-migrate-away-from-bower/) доступны.
+> Сохранение Bower, его программы обслуживания рекомендуется с помощью другого решения. [Диспетчер библиотек](https://blogs.msdn.microsoft.com/webdev/2018/04/18/what-happened-to-bower/) (LibMan сокращенно) является новой системы управления содержимым статический клиентский Visual Studio (Visual Studio требуется выделить 15,8 или более поздней версии). Дополнительные сведения см. в разделе [диспетчер библиотек: клиентские Диспетчер содержимого для веб-приложений](https://blogs.msdn.microsoft.com/webdev/2018/04/17/library-manager-client-side-content-manager-for-web-apps/). В Visual Studio до версии 15,5 поддерживается bower.
+>
+> Yarn с Webpack — популярный альтернатива которой [инструкции по миграции](https://bower.io/blog/2017/how-to-migrate-away-from-bower/) доступны. 
 
 [Bower](https://bower.io/) вызывает саму себя «Диспетчер пакетов для Интернета». В экосистеме .NET он заполняет void влево на невозможность NuGet доставки статического содержимого файлов. Для проектов ASP.NET Core эти статические файлы, присущие клиентские библиотеки, такие как [jQuery](http://jquery.com/) и [начальной загрузки](http://getbootstrap.com/). Для библиотеки .NET, по-прежнему использовать [NuGet](https://www.nuget.org/) диспетчера пакетов.
 

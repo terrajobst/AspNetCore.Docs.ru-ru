@@ -2,19 +2,15 @@
 title: Настройка удостоверения ASP.NET Core
 author: AdrienTorris
 description: Обзор ASP.NET Core Identity значения по умолчанию и подробные сведения о настройке свойства удостоверения для использования пользовательских значений.
-manager: wpickett
 ms.author: scaddie
 ms.date: 03/06/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 511c39db2bb4d3b215a1037c52f6c4f89b48ff7d
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 914e9b22ed52b560366fdff1f2430d3dd66454c3
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34094633"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276267"
 ---
 # <a name="configure-aspnet-core-identity"></a>Настройка удостоверения ASP.NET Core
 
@@ -101,7 +97,7 @@ ASP.NET Core 2.0 добавлен [RequiredUniqueChars](/dotnet/api/microsoft.as
 [IdentityOptions.Tokens](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens) указывает [TokenOptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) с свойства, показанные в таблице.
 
 
-|                                                        Свойство.                                                         |                                                                                      Описание                                                                                      |
+|                                                        Свойство.                                                         |                                                                                      Описание:                                                                                      |
 |-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |     [AuthenticatorTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.authenticatortokenprovider)     |                                       Возвращает или задает `AuthenticatorTokenProvider` используется для проверки двухфакторной входа в систему с помощью средства проверки подлинности.                                       |
 |       [ChangeEmailTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changeemailtokenprovider)       |                                     Возвращает или задает `ChangeEmailTokenProvider` используется для создания токенов, используемых в сообщениях электронной почты Подтверждение изменений по электронной почте.                                     |
@@ -137,7 +133,7 @@ ASP.NET Core 2.0 добавлен [RequiredUniqueChars](/dotnet/api/microsoft.as
 
 [CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions) имеет следующие свойства:
 
-|                                                               Свойство.                                                               |                                                                                                                                                           Описание                                                                                                                                                            |
+|                                                               Свойство.                                                               |                                                                                                                                                           Описание:                                                                                                                                                            |
 |--------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |       [AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath)       |                                                                 Уведомляет обработчик, что следует изменить исходящий <em>403 Запрещено</em> код состояния в <em>перенаправление 302</em> на заданный путь.<br><br>Значение по умолчанию — `/Account/AccessDenied`.                                                                  |
 |             [authenticationScheme](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.authenticationscheme)              |                                                                                                                Применяется только к ASP.NET Core 1.x.<br><br> Логическое имя для проверки подлинности конкретной схемы.                                                                                                                |

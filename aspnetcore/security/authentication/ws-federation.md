@@ -2,20 +2,16 @@
 title: Проверять подлинность пользователей с WS-Federation в ASP.NET Core
 author: chlowell
 description: Демонстрирует использование WS-Federation в приложении ASP.NET Core.
-manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/27/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/ws-federation
-ms.openlocfilehash: d4621c7b97678903b9f2562e353da3883334b599
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 55504ed28cf8ef1095bf16c101c09a6f374f038c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30898808"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277443"
 ---
 # <a name="authenticate-users-with-ws-federation-in-aspnet-core"></a>Проверять подлинность пользователей с WS-Federation в ASP.NET Core
 
@@ -26,7 +22,7 @@ ms.locfileid: "30898808"
 По умолчанию новый по промежуточного слоя:
 
 * Не Разрешать незапрошенные имена входа. Этот компонент протокола WS-Federation подвержена XSRF-атак. Тем не менее, он может быть включен с `AllowUnsolicitedLogins` параметр.
-* Не выполняется для каждой формы post для входа в систему сообщений. Только запросы к `CallbackPath` проверяются на наличие знака модули `CallbackPath` по умолчанию используется значение `/signin-wsfed` , но может быть изменено. Этот путь можно использовать совместно с других поставщиков проверки подлинности, включив `SkipUnrecognizedRequests` параметр.
+* Не выполняется для каждой формы post для входа в систему сообщений. Только запросы к `CallbackPath` проверяются на наличие знака модули `CallbackPath` по умолчанию используется значение `/signin-wsfed` , но могут быть изменены через наследуемого [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) свойство [ WsFederationOptions](/dotnet/api/microsoft.aspnetcore.authentication.wsfederation.wsfederationoptions) класса. Этот путь можно использовать совместно с других поставщиков проверки подлинности, включив [SkipUnrecognizedRequests](/dotnet/api/microsoft.aspnetcore.authentication.wsfederation.wsfederationoptions.skipunrecognizedrequests) параметр.
 
 ## <a name="register-the-app-with-active-directory"></a>Регистрация приложения в Active Directory
 

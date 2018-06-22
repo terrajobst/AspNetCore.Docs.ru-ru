@@ -2,35 +2,31 @@
 title: Общие сведения об учетных данных ASP.NET Core
 author: rick-anderson
 description: Используйте удостоверение с приложением ASP.NET Core. Включает параметр паролей (RequireDigit, RequiredLength, RequiredUniqueChars и многое другое).
-manager: wpickett
 ms.author: riande
 ms.date: 01/24/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/identity
-ms.openlocfilehash: 4eebda171f02c46ff831adf2798a025cd094051d
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 57d9abbf82aedadd4d8c5eaabd21a5d31d5c6c61
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34094133"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272705"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об учетных данных ASP.NET Core
 
 По [Pranav Rastogi](https://github.com/rustd), [Рик Андерсон](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra), Джон Гэллоуэй [Reitan Эрик](https://github.com/Erikre), и [Стив Смит](https://ardalis.com/)
 
-ASP.NET Core Identity позволяет реализовать проверку подлинности в приложении. Пользователи могут создавать учетную запись с логином и паролем либо использовать внешнего поставщика, например Facebook, Google, учетную запись Майкрософт, Twitter и другие.
+Удостоверение ASP.NET Core является система членства, в котором можно добавить функциональные возможности входа в приложение. Пользователи могут создавать учетную запись и имя входа с именем пользователя и пароль или их можно использовать поставщик внешней учетной записи, например Facebook, Google, учетной записи Майкрософт, Twitter или другим пользователям.
 
-Вы можете настроить в ASP.NET Identity Core использование базы данных SQL Server для хранения пользовательских имен, паролей и данных профиля. Кроме того можно использовать собственные постоянное хранилище, например, табличное хранилище Azure. Этот документ содержит инструкции по использованию Visual Studio и CLI.
+Вы можете настроить ASP.NET Identity Core использование базы данных SQL Server для хранения имен пользователей, пароли и данные профиля. Кроме того можно использовать собственные постоянное хранилище, например, табличное хранилище Azure. Этот документ содержит инструкции по Visual Studio и с помощью CLI.
 
 [Просмотреть или загрузить образец кода.](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [(Сведения о загрузке)](xref:tutorials/index#how-to-download-a-sample)
 
 ## <a name="overview-of-identity"></a>Общие сведения об идентификации
 
-В этом разделе вы узнаете, как использовать ASP.NET Core Identity для реализации регистрации, входа и выхода пользователя. Более подробные инструкции по созданию приложений с помощью ASP.NET Core Identity см. в разделе "Дальнейшие действия" в конце этой статьи.
+В этом разделе будет использование ASP.NET Core Identity Добавление функциональности для регистрации, вход и выход пользователя. Более подробные инструкции по созданию приложений с помощью ASP.NET Core Identity см. в разделе Дальнейшие действия в конце этой статьи.
 
-1. Создание проекта "Веб-приложение ASP.NET Core" с использованием проверки подлинности "Индивидуальные учетные записи пользователей".
+1. Создайте проект веб-приложения ASP.NET Core с отдельными учетными записями пользователей.
 
    # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -56,9 +52,9 @@ ASP.NET Core Identity позволяет реализовать проверку
 
    ---
 
-2. Настройка службы удостоверений и добавление ПО промежуточного слоя в `Startup`.
+2. Настройка службы удостоверений и добавление по промежуточного слоя в `Startup`.
 
-   Службы удостоверений регистрируются в приложении в методе `ConfigureServices` класса `Startup`:
+   Службы удостоверений добавляются к приложению в `ConfigureServices` метод `Startup` класса:
 
    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
@@ -66,7 +62,7 @@ ASP.NET Core Identity позволяет реализовать проверку
 
    Эти службы доступны для приложения с помощью [внедрения зависимостей](xref:fundamentals/dependency-injection).
 
-   Удостоверения для приложения включаются с помощью вызова `UseAuthentication` в методе `Configure` . `UseAuthentication` Добавление проверки подлинности [по промежуточного слоя](xref:fundamentals/middleware/index) к конвейеру запросов.
+   Путем вызова для приложения включена удостоверения `UseAuthentication` в `Configure` метод. `UseAuthentication` Добавление проверки подлинности [по промежуточного слоя](xref:fundamentals/middleware/index) к конвейеру запросов.
 
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
 
@@ -82,7 +78,7 @@ ASP.NET Core Identity позволяет реализовать проверку
 
    ---
 
-   Дополнительные сведения о запуске приложения см. в разделе [Запуск приложения](xref:fundamentals/startup).
+   Дополнительные сведения о время загрузки приложения см. в разделе [запуска приложения](xref:fundamentals/startup).
 
 3. Создание пользователя.
 

@@ -2,19 +2,15 @@
 title: Создание привлекательных, быстро реагирующих сайтов с начальной загрузки и ASP.NET Core
 author: ardalis
 description: Сведения об использовании начальной загрузки для разработки отвечать на запросы веб-приложений с ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: client-side/bootstrap
-ms.openlocfilehash: a11ed13c709830795ebfd0e658d3f2fd2fd5a458
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: c7a4dc193f52532b1046853d98ae5c838c8b1723
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31483715"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279549"
 ---
 # <a name="build-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>Создание привлекательных, быстро реагирующих сайтов с начальной загрузки и ASP.NET Core
 

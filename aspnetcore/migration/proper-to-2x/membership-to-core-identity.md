@@ -2,20 +2,16 @@
 title: Перенести из проверки подлинности членства в ASP.NET 2.0 удостоверению ASP.NET Core
 author: isaac2004
 description: Дополнительные сведения о миграции существующих приложений ASP.NET, с помощью проверки подлинности членства ASP.NET Core 2.0 Identity.
-manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 04/24/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: migration/proper-to-2x/membership-to-core-identity
-ms.openlocfilehash: f0d1099bfda01d036831350e0888ae3830ad3d58
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 3ec22713997a74b587ef5d18e71a28668a5481e2
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33851546"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274109"
 ---
 # <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-identity"></a>Перенести из проверки подлинности членства в ASP.NET 2.0 удостоверению ASP.NET Core
 
@@ -42,7 +38,7 @@ ms.locfileid: "33851546"
 
 * Выберите **Файл** > **Создать** > **Проект**.
 * Создайте новый **веб-приложения ASP.NET Core**и назовите проект *CoreIdentitySample*.
-* Выберите в раскрывающемся списке **ASP.NET Core 2.0**, а затем **Веб-приложение**. Этот шаблон создает [страниц Razor](xref:mvc/razor-pages/index) приложения. Перед нажатием кнопки **ОК**, нажмите кнопку **изменить аутентификацию**.
+* Выберите в раскрывающемся списке **ASP.NET Core 2.0**, а затем **Веб-приложение**. Этот шаблон создает [страниц Razor](xref:razor-pages/index) приложения. Перед нажатием кнопки **ОК**, нажмите кнопку **изменить аутентификацию**.
 * Выберите **отдельных учетных записей пользователей** для идентификаторов шаблонов. Наконец, нажмите кнопку **ОК**, затем **ОК**. Visual Studio создает проект с помощью шаблона ASP.NET Core Identity.
 
 Использует удостоверения ASP.NET Core 2.0 [Entity Framework Core](/ef/core) для взаимодействия с базой данных, хранение данных проверки подлинности. Чтобы вновь созданного приложения для работы необходимо поддерживать базу данных для хранения этих данных. После создания нового приложения, то самый быстрый способ проверить схему в среде базы данных является создание базы данных, с помощью миграций Entity Framework. Этот процесс создает базу данных, либо локально или в других местах, который имитирует этой схемы. Предыдущий документации для получения дополнительной информации.
