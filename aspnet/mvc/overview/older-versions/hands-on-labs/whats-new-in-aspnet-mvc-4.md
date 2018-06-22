@@ -181,7 +181,7 @@ ASP.NET MVC 4 — это платформа для создания масшта
 
        Обзор представлений шаблона, чтобы узнать, разметку новой темы.
 
-       ![Новый шаблон с помощью Razor и HTML5 About.cshtml разметки. ] (whats-new-in-aspnet-mvc-4/_static/image10.png "Новый шаблон, с помощью Razor и HTML5 About.cshtml разметки.")
+       ![Новый шаблон с помощью Razor и HTML5 About.cshtml разметки. ](whats-new-in-aspnet-mvc-4/_static/image10.png "Новый шаблон, с помощью Razor и HTML5 About.cshtml разметки.")
 
        *Новый шаблон с помощью Razor и HTML5 разметки (About.cshtml).*
    - **Обновленные библиотек JavaScript**
