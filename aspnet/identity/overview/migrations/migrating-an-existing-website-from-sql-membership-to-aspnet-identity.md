@@ -12,12 +12,12 @@ ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 2790f32bc74cecf450f5a258fc1ff5b280a63923
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 1766c11dabec3931ec2bfc4ae2e15332427d7855
+ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30874997"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36314017"
 ---
 <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>Миграция существующего веб-сайта из SQL членства в ASP.NET Identity
 ====================
@@ -99,7 +99,7 @@ ms.locfileid: "30874997"
 | PhoneNumberConfirmed | bool |  |  |  |  |
 | LockoutEnabled | bool |  |  |  |  |
 | LockoutEndDate | DateTime |  |  |  |  |
-| AccessFailedCount | int |  |  |  |  |
+| Счетчик AccessFailedCount | int |  |  |  |  |
 
 Мы должны иметь таблиц для каждой из этих моделей с столбцы, соответствующие свойства. Сопоставление между классами и таблиц, определенное в `OnModelCreating` метод `IdentityDBContext`. Этот процесс известен как метод fluent API конфигурации и Дополнительные сведения можно найти [здесь](https://msdn.microsoft.com/data/jj591617.aspx). Конфигурация для классов является описанным ниже
 
@@ -107,15 +107,17 @@ ms.locfileid: "30874997"
 | --- | --- | --- | --- |
 | IdentityUser | AspnetUsers | Идентификатор |  |
 | IdentityRole | AspnetRoles | Идентификатор |  |
-| IdentityUserRole | AspnetUserRole | UserId + RoleId | User\_Id-&gt;AspnetUsers RoleId-&gt;AspnetRoles |
-| IdentityUserLogin | AspnetUserLogins | ProviderKey + UserId + LoginProvider | UserId-&gt;AspnetUsers |
-| IdentityUserClaim | AspnetUserClaims | Идентификатор | User\_Id-&gt;AspnetUsers |
+| IdentityUserRole | AspnetUserRole | UserId + RoleId | Пользователь\_идентификатор -&gt;AspnetUsers RoleId -&gt;AspnetRoles |
+| IdentityUserLogin | AspnetUserLogins | ProviderKey + UserId + LoginProvider | UserId -&gt;AspnetUsers |
+| IdentityUserClaim | AspnetUserClaims | Идентификатор | Пользователь\_идентификатор -&gt;AspnetUsers |
 
 Эта информация позволяет создавать инструкции SQL для создания новых таблиц. Мы записи каждой инструкции по отдельности или сформировать весь скрипт с помощью команд EntityFramework PowerShell, которые затем можно изменить при необходимости. Для этого откройте VS **консоль диспетчера пакетов** из **представление** или **средства** меню
 
 - Выполните команду «Enable-Migrations», чтобы включить EntityFramework миграции.
 - Выполните команду «Add-migration начальным», создающий код начальной настройки, чтобы создать базу данных в C# или Visual Basic.
 - Последний шаг заключается в запуске «Update-Database — сценарий «команду, которая формирует скрипт SQL, основанных на классах модели.
+
+[!INCLUDE[](../../../includes/identity/alter-command-exception.md)]
 
 Этот скрипт создания базы данных можно использовать как начало, где мы будем внесения дополнительных изменений для добавления новых столбцов и копирования данных. Преимущество этого — мы создаем `_MigrationHistory` таблицу, которая используется для изменения схемы базы данных при модели классы изменений для будущих версий выпусков Identity EntityFramework. 
 
@@ -150,7 +152,7 @@ ms.locfileid: "30874997"
 
     ASP\_netUsers и asp\_netMembership--&gt; AspNetUsers
 
-    aspnet\_UserInRoles --&gt; AspNetUserRoles
+    ASPNET\_UserInRoles--&gt; AspNetUserRoles
 
     Как описано в предыдущем разделе, то AspNetUserClaims и AspNetUserLogins таблицы пусты. Поле «Дискриминатора» в таблице пользователь ASPNET должно соответствовать имени класса модели, которая определяется как следующий шаг. Также PasswordHash столбец находится в форме "зашифрованный пароль | соли пароль | формат пароля". Это позволяет использовать специальную логику шифрования членства SQL, чтобы можно было повторно использовать старый пароль. Который описан далее в этой статье.
 

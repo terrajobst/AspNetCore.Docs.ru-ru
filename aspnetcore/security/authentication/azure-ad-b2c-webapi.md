@@ -6,12 +6,12 @@ ms.author: casoper
 ms.date: 01/25/2018
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: 82179e52e2c292ec3b7e618b3c61eef6494abc7c
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c56efda28c668b8f88d28334705b4c26f288870f
+ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273422"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36314166"
 ---
 # <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Облачной проверки подлинности в веб-API с Azure Active Directory B2C в ASP.NET Core
 
@@ -117,7 +117,7 @@ Visual Studio создает веб-API с помощью контроллера
 | **Включить веб-приложения или веб-API** | Да                              |                                 |
 | **Разрешить неявного потока**       | Да                              |                                 |
 | **URL-адрес ответа**                 | `https://getpostman.com/postman` |                                 |
-| **URI ИД приложения**                | *&lt;Не указывайте&gt;*            | Не требуется для этого учебника. |
+| **URI ИД приложения**                | *&lt;не указывайте&gt;*            | Не требуется для этого учебника. |
 | **Включить собственный клиент**     | Нет                               |                                 |
 
 Вновь зарегистрированного веб-приложения необходимо предоставить разрешение на доступ к веб-API от имени пользователя.  
@@ -173,9 +173,9 @@ Visual Studio создает веб-API с помощью контроллера
    |      <strong>Имя токена</strong>       |                                  <em>&lt;Имя токена&gt;</em>                                  |                                                                                                                   Введите описательное имя для маркера.                                                                                                                    |
    |      <strong>Тип предоставления</strong>       |                                           Неявные                                            |                                                                                                                                                                                                                                                                              |
    |     <strong>URL-адрес обратного вызова</strong>      |                               `https://getpostman.com/postman`                                |                                                                                                                                                                                                                                                                              |
-   |       <strong>URL-адрес проверки подлинности</strong>        | `https://login.microsoftonline.com/<tenant domain name>/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` |                                                                                                  Замените <em>&lt;доменное имя клиента&gt;</em> с доменное имя клиента.                                                                                                  |
+   |       <strong>URL-адрес проверки подлинности</strong>        | `https://login.microsoftonline.com/tfp/<tenant domain name>/B2C_1_SiUpIn/oauth2/v2.0/authorize` |                                                                                                  Замените <em>&lt;доменное имя клиента&gt;</em> с доменное имя клиента.                                                                                                  |
    |       <strong>Идентификатор клиента</strong>       |                <em>&lt;Введите приложения почтальон <b>идентификатор приложения</b>&gt;</em>                 |                                                                                                                                                                                                                                                                              |
-   |     <strong>Секрет клиента</strong>     |                                 <em>&lt;Не указывайте&gt;</em>                                  |                                                                                                                                                                                                                                                                              |
+   |     <strong>Секрет клиента</strong>     |                                 <em>&lt;не указывайте&gt;</em>                                  |                                                                                                                                                                                                                                                                              |
    |         <strong>Область</strong>         |         `https://<tenant domain name>/<api>/user_impersonation openid offline_access`         | Замените <em>&lt;доменное имя клиента&gt;</em> с доменное имя клиента. Замените <em>&lt;api&gt;</em> с именем проекта веб-API. Можно также использовать идентификатор приложения. Схема URL-адрес выглядит следующим образом: <em>https://{tenant}.onmicrosoft.com/{app_name_or_id}/{scope имя}</em>. |
    | <strong>Проверка подлинности клиента</strong> |                                Отправлять учетные данные клиента в текст                                |                                                                                                                                                                                                                                                                              |
 
