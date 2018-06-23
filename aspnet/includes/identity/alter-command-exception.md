@@ -1,0 +1,5 @@
+> <span data-ttu-id="4dd92-101">Некоторые команды не поддерживаются, если приложение использует SQLite в качестве удостоверения хранилища данных.</span><span class="sxs-lookup"><span data-stu-id="4dd92-101">Some commands aren't supported if the app uses SQLite as its Identity data store.</span></span> <span data-ttu-id="4dd92-102">Из-за ограничений в компоненте database engine `Alter` исключения команды:</span><span class="sxs-lookup"><span data-stu-id="4dd92-102">Due to limitations in the database engine, `Alter` commands throw the following exception:</span></span>
+>
+> <span data-ttu-id="4dd92-103">«System.NotSupportedException: SQLite не поддерживает эту операцию миграции.»</span><span class="sxs-lookup"><span data-stu-id="4dd92-103">"System.NotSupportedException: SQLite does not support this migration operation."</span></span> 
+>
+> <span data-ttu-id="4dd92-104">Решения запустите миграций Code First для изменения таблиц базы данных.</span><span class="sxs-lookup"><span data-stu-id="4dd92-104">As a work around, run Code First migrations on the database to change the tables.</span></span>
