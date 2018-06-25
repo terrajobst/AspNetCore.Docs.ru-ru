@@ -2,34 +2,30 @@
 title: Начало работы с Razor Pages в ASP.NET Core в macOS с использованием Visual Studio для Mac
 author: rick-anderson
 description: Узнайте, как начать работу с Razor Pages в ASP.NET Core с использованием Visual Studio для Mac.
-manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 07/27/2017
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/razor-pages-mac/razor-pages-start
-ms.openlocfilehash: 29eb11d0195f483b144394e505dd63fb6016161b
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: c2d2038a77a67d4e955856756f73e18e31f13a5d
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/10/2018
-ms.locfileid: "35252338"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272056"
 ---
-# <a name="get-started-with-razor-pages-in-aspnet-core-on-macos-with-visual-studio-for-mac"></a><span data-ttu-id="da647-103">Начало работы с Razor Pages в ASP.NET Core в macOS с использованием Visual Studio для Mac</span><span class="sxs-lookup"><span data-stu-id="da647-103">Get started with Razor Pages in ASP.NET Core on macOS with Visual Studio for Mac</span></span>
+# <a name="get-started-with-razor-pages-in-aspnet-core-on-macos-with-visual-studio-for-mac"></a><span data-ttu-id="00242-103">Начало работы с Razor Pages в ASP.NET Core в macOS с использованием Visual Studio для Mac</span><span class="sxs-lookup"><span data-stu-id="00242-103">Get started with Razor Pages in ASP.NET Core on macOS with Visual Studio for Mac</span></span>
 
-<span data-ttu-id="da647-104">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="da647-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="00242-104">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="00242-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="da647-105">В этом учебнике приводятся основные сведения о веб-приложении Razor Pages в ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="da647-105">This tutorial teaches the basics of building an ASP.NET Core Razor Pages web app.</span></span> <span data-ttu-id="da647-106">Перед работой с этим учебником рекомендуем изучить статью [Введение в Razor Pages](xref:mvc/razor-pages/index).</span><span class="sxs-lookup"><span data-stu-id="da647-106">We recommend you review [Introduction to Razor Pages](xref:mvc/razor-pages/index) before starting this tutorial.</span></span> <span data-ttu-id="da647-107">Razor Pages — это рекомендуемый способ создания пользовательского интерфейса для веб-приложений в ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="da647-107">Razor Pages is the recommended way to build UI for web applications in ASP.NET Core.</span></span>
+<span data-ttu-id="00242-105">В этом учебнике приводятся основные сведения о веб-приложении Razor Pages в ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="00242-105">This tutorial teaches the basics of building an ASP.NET Core Razor Pages web app.</span></span> <span data-ttu-id="00242-106">Перед работой с этим учебником рекомендуем изучить статью [Введение в Razor Pages](xref:razor-pages/index).</span><span class="sxs-lookup"><span data-stu-id="00242-106">We recommend you review [Introduction to Razor Pages](xref:razor-pages/index) before starting this tutorial.</span></span> <span data-ttu-id="00242-107">Razor Pages — это рекомендуемый способ создания пользовательского интерфейса для веб-приложений в ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="00242-107">Razor Pages is the recommended way to build UI for web applications in ASP.NET Core.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="da647-108">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="da647-108">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="00242-108">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="00242-108">Prerequisites</span></span>
 
 [!INCLUDE [](~/includes/net-core-prereqs-macos.md)]
 
-## <a name="create-a-razor-web-app"></a><span data-ttu-id="da647-109">Создание веб-приложения Razor</span><span class="sxs-lookup"><span data-stu-id="da647-109">Create a Razor web app</span></span>
+## <a name="create-a-razor-web-app"></a><span data-ttu-id="00242-109">Создание веб-приложения Razor</span><span class="sxs-lookup"><span data-stu-id="00242-109">Create a Razor web app</span></span>
 
-<span data-ttu-id="da647-110">Из терминала выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="da647-110">From a terminal, run the following commands:</span></span>
+<span data-ttu-id="00242-110">Из терминала выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="00242-110">From a terminal, run the following commands:</span></span>
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -53,23 +49,23 @@ dotnet run
 
 ::: moniker-end
 
-<span data-ttu-id="da647-112">Указанные выше команды используют [интерфейс командной строки .NET Core](https://docs.microsoft.com/dotnet/core/tools/dotnet) для создания и запуска проекта Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="da647-112">The preceding commands use the [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/dotnet) to create and run a Razor Pages project.</span></span> <span data-ttu-id="da647-113">Откройте в браузере страницу http://localhost:5000 для просмотра приложения.</span><span class="sxs-lookup"><span data-stu-id="da647-113">Open a browser to http://localhost:5000 to view the application.</span></span>
+<span data-ttu-id="00242-112">Указанные выше команды используют [интерфейс командной строки .NET Core](https://docs.microsoft.com/dotnet/core/tools/dotnet) для создания и запуска проекта Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="00242-112">The preceding commands use the [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/dotnet) to create and run a Razor Pages project.</span></span> <span data-ttu-id="00242-113">Откройте в браузере страницу http://localhost:5000 для просмотра приложения.</span><span class="sxs-lookup"><span data-stu-id="00242-113">Open a browser to http://localhost:5000 to view the application.</span></span>
 
 ![Домашняя или индексная страница](../razor-pages/razor-pages-start/_static/home.png)
 
 [!INCLUDE [razor-pages-start](../../includes/RP/razor-pages-start.md)]
 
-## <a name="open-the-project"></a><span data-ttu-id="da647-115">Открытие проекта</span><span class="sxs-lookup"><span data-stu-id="da647-115">Open the project</span></span>
+## <a name="open-the-project"></a><span data-ttu-id="00242-115">Открытие проекта</span><span class="sxs-lookup"><span data-stu-id="00242-115">Open the project</span></span>
 
-<span data-ttu-id="da647-116">Нажмите клавиши CTRL+C, чтобы завершить работу приложения.</span><span class="sxs-lookup"><span data-stu-id="da647-116">Press Ctrl+C to shut down the application.</span></span>
+<span data-ttu-id="00242-116">Нажмите клавиши CTRL+C, чтобы завершить работу приложения.</span><span class="sxs-lookup"><span data-stu-id="00242-116">Press Ctrl+C to shut down the application.</span></span>
 
-<span data-ttu-id="da647-117">В Visual Studio откройте меню **Файл > Открыть файл** и выберите файл *RazorPagesMovie.csproj*.</span><span class="sxs-lookup"><span data-stu-id="da647-117">From Visual Studio, select **File > Open**, and then select the *RazorPagesMovie.csproj* file.</span></span>
+<span data-ttu-id="00242-117">В Visual Studio откройте меню **Файл > Открыть файл** и выберите файл *RazorPagesMovie.csproj*.</span><span class="sxs-lookup"><span data-stu-id="00242-117">From Visual Studio, select **File > Open**, and then select the *RazorPagesMovie.csproj* file.</span></span>
 
-### <a name="launch-the-app"></a><span data-ttu-id="da647-118">Запуск приложения</span><span class="sxs-lookup"><span data-stu-id="da647-118">Launch the app</span></span>
+### <a name="launch-the-app"></a><span data-ttu-id="00242-118">Запуск приложения</span><span class="sxs-lookup"><span data-stu-id="00242-118">Launch the app</span></span>
 
-<span data-ttu-id="da647-119">В Visual Studio выберите **Выполнить > Запуск без отладки**, чтобы запустить приложение.</span><span class="sxs-lookup"><span data-stu-id="da647-119">In Visual Studio, select **Run > Start Without Debugging** to launch the app.</span></span> <span data-ttu-id="da647-120">Visual Studio запускает [Kestrel](xref:fundamentals/servers/kestrel), открывает браузер и переходит к `http://localhost:5000`.</span><span class="sxs-lookup"><span data-stu-id="da647-120">Visual Studio starts [Kestrel](xref:fundamentals/servers/kestrel), launches a browser, and navigates to `http://localhost:5000`.</span></span>
+<span data-ttu-id="00242-119">В Visual Studio выберите **Выполнить > Запуск без отладки**, чтобы запустить приложение.</span><span class="sxs-lookup"><span data-stu-id="00242-119">In Visual Studio, select **Run > Start Without Debugging** to launch the app.</span></span> <span data-ttu-id="00242-120">Visual Studio запускает [Kestrel](xref:fundamentals/servers/kestrel), открывает браузер и переходит к `http://localhost:5000`.</span><span class="sxs-lookup"><span data-stu-id="00242-120">Visual Studio starts [Kestrel](xref:fundamentals/servers/kestrel), launches a browser, and navigates to `http://localhost:5000`.</span></span>
 
-<span data-ttu-id="da647-121">В следующем учебнике мы добавим в проект модель.</span><span class="sxs-lookup"><span data-stu-id="da647-121">In the next tutorial, we add a model to the project.</span></span>
+<span data-ttu-id="00242-121">В следующем учебнике мы добавим в проект модель.</span><span class="sxs-lookup"><span data-stu-id="00242-121">In the next tutorial, we add a model to the project.</span></span>
 
 > [!div class="step-by-step"]
-> [<span data-ttu-id="da647-122">Далее: добавление модели</span><span class="sxs-lookup"><span data-stu-id="da647-122">Next: Adding a model</span></span>](xref:tutorials/razor-pages-mac/model)
+> [<span data-ttu-id="00242-122">Далее: добавление модели</span><span class="sxs-lookup"><span data-stu-id="00242-122">Next: Adding a model</span></span>](xref:tutorials/razor-pages-mac/model)
