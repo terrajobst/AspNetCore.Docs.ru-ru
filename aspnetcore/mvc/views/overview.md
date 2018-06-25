@@ -2,25 +2,21 @@
 title: Представления в ASP.NET Core MVC
 author: ardalis
 description: Узнайте, как представления обеспечивают отображение данных приложения и взаимодействие с пользователем в ASP.NET Core MVC.
-manager: wpickett
 ms.author: riande
 ms.date: 12/12/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/overview
-ms.openlocfilehash: b9947de03942bd71616e4bf12263befd9f784915
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 4d5cb6288711cdef145ebb0b52e4e645c535bdf2
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33965729"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278353"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Представления в ASP.NET Core MVC
 
 Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith) и [Люк Лэтем](https://github.com/guardrex) (Luke Latham)
 
-В этом документе описываются представления, используемые в приложениях ASP.NET Core MVC. Сведения о Razor Pages см. в статье [Введение в Razor Pages](xref:mvc/razor-pages/index).
+В этом документе описываются представления, используемые в приложениях ASP.NET Core MVC. Сведения о Razor Pages см. в статье [Введение в Razor Pages](xref:razor-pages/index).
 
 В шаблоне MVC (Model-View-Controller, модель — представление — контроллер) *представление* отвечает за отображение данных приложения и взаимодействие с пользователем. Представление — это шаблон HTML с внедренной [разметкой Razor](xref:mvc/views/razor). Разметка Razor — это код, который взаимодействует с разметкой HTML для создания веб-страницы, отправляемой клиенту.
 

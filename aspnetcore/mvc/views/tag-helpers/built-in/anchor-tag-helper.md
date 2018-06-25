@@ -2,20 +2,16 @@
 title: Вспомогательная функция тега привязки в ASP.NET Core MVC
 author: pkellner
 description: Обнаруживайте атрибуты вспомогательной функции тега привязки ASP.NET Core и роль, которую играет каждый атрибут в расширении поведения тега привязки HTML.
-manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/31/2018
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 31ff62b6bedb5e577a51f341c89d241d06a83ad3
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 6bdf71eaf38f134cb15b5950d2cae6ab67f861a4
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30899412"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273888"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега привязки в ASP.NET Core MVC
 
@@ -272,4 +268,4 @@ ms.locfileid: "30899412"
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Области](xref:mvc/controllers/areas)
-* [Общие сведения о Razor Pages](xref:mvc/razor-pages/index)
+* [Общие сведения о Razor Pages](xref:razor-pages/index)

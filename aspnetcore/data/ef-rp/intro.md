@@ -2,19 +2,15 @@
 title: 'Razor Pages с Entity Framework Core в ASP.NET Core: учебник 1 из 8'
 author: rick-anderson
 description: Сведения о том, как создать приложение Razor Pages с помощью Entity Framework Core
-manager: wpickett
 ms.author: riande
 ms.date: 11/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-rp/intro
-ms.openlocfilehash: d7cf4740f31f1e0ae56461efc4c1b3d91238270f
-ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
+ms.openlocfilehash: cadf36f4e1ff3776ad4139e1d7c4e9b73687bc5c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35726021"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279234"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages с Entity Framework Core в ASP.NET Core: учебник 1 из 8
 
@@ -30,7 +26,7 @@ ms.locfileid: "35726021"
 
 [!INCLUDE [](~/includes/net-core-prereqs.md)]
 
-Знакомство с [Razor Pages](xref:mvc/razor-pages/index). Новые программисты должны изучить статью [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start), прежде чем приступать к этой серии.
+Знакомство с [Razor Pages](xref:razor-pages/index). Новые программисты должны изучить статью [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start), прежде чем приступать к этой серии.
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
@@ -57,7 +53,7 @@ ms.locfileid: "35726021"
 * Создайте новое веб-приложение ASP.NET Core. Назовите проект **ContosoUniversity**. Очень важно, чтобы проект имел имя *ContosoUniversity*, чтобы совпадали пространства имен при копировании и вставке кода.
  ![Новое веб-приложение ASP.NET Core](intro/_static/np.png)
 * Выберите в раскрывающемся списке **ASP.NET Core 2.0**, а затем **Веб-приложение**.
- ![Веб-приложение (Razor Pages)](../../mvc/razor-pages/index/_static/np2.png)
+ ![Веб-приложение (Razor Pages)](../../razor-pages/index/_static/np2.png)
 
 Нажмите клавишу **F5**, чтобы запустить приложение в режиме отладки, или **CTRL-F5**, чтобы запустить его без подключения отладчика.
 

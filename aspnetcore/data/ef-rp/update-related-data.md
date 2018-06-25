@@ -2,19 +2,15 @@
 title: Razor Pages с EF Core в ASP.NET Core — обновление связанных данных — 7 из 8
 author: rick-anderson
 description: В этом руководстве описано обновление связанных данных путем обновления полей внешнего ключа и свойств навигации.
-manager: wpickett
 ms.author: riande
 ms.date: 11/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 2eff6cd5f4bb737cb79875c9b04c889914376cd0
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: e987971f60e5c5a9fb79e30440c7c986df64447e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32740378"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275298"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Razor Pages с EF Core в ASP.NET Core — обновление связанных данных — 7 из 8
 
@@ -95,8 +91,6 @@ ms.locfileid: "32740378"
 * Отображает идентификатор курса. Как правило, первичный ключ сущности не отображается. Первичные ключи для пользователей обычно не имеют значения. В этом случае в качестве первичного ключа используется номер курса.
 * Изменяет заголовок с **DepartmentID** на **Department**.
 * Заменяет `"ViewBag.DepartmentID"` на `DepartmentNameSL` (из базового класса).
-* Добавляет параметр "Select Department" (Выбор кафедры). В результате этого изменения вместо первой кафедры отображается параметр "Select Department" (Выбор кафедры).
-* Добавляет сообщение о проверке в том случае, если не выбрана кафедра.
 
 На этой странице содержится скрытое поле (`<input type="hidden">`) с номером курса. Добавление вспомогательной функции тега `<label>` с `asp-for="Course.CourseID"` не избавляет от необходимости использовать это скрытое поле. `<input type="hidden">` необходимо, чтобы включить номер курса в отправляемые данные при нажатии пользователем кнопки **Save** (Сохранить).
 

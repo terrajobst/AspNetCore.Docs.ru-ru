@@ -2,20 +2,16 @@
 title: Непрерывное развертывание ASP.NET Core в Azure с помощью Visual Studio и Git
 author: rick-anderson
 description: Сведения о создании веб-приложения ASP.NET Core с помощью Visual Studio и его развертывании в службе приложений Azure с использованием Git для непрерывного развертывания.
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 4de1893e8c1f7f2f4d9af7278a110067ea777c61
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0a9a2d9d0de25a4eaab704680c627c1216d146e3
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30897895"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275487"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Непрерывное развертывание ASP.NET Core в Azure с помощью Visual Studio и Git
 

@@ -3,19 +3,15 @@ title: Активация ПО промежуточного слоя на осн
 author: guardrex
 description: В этой статье приводятся сведения о том, как использовать строго типизированное ПО промежуточного слоя с реализацией активации на основе фабрики в ASP.NET Core.
 ms.author: riande
-manager: wpickett
 ms.custom: mvc
 ms.date: 01/29/2018
-ms.topic: article
-ms.technology: aspnet
-ms.prod: asp.net-core
 uid: fundamentals/middleware/extensibility
-ms.openlocfilehash: 8cec5b3b498f5a23463d8c3cd5901e14f22f6eab
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 44987dbc20b0419865a23e64b60a5dc3f436743a
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34729120"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277076"
 ---
 # <a name="factory-based-middleware-activation-in-aspnet-core"></a>Активация ПО промежуточного слоя на основе фабрики в ASP.NET Core
 

@@ -2,19 +2,15 @@
 title: 'ASP.NET Core MVC с Entity Framework Core: учебник 1 из 10'
 author: rick-anderson
 description: ''
-manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 0eef084c656f68fb1cad9fc0f5cfeee31ff96a30
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: 3c418cc4e331ad19b0ec1be3207fa2cc44bef041
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34153781"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275675"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC с Entity Framework Core: учебник 1 из 10
 
@@ -31,8 +27,7 @@ ms.locfileid: "34153781"
 EF Core 2.0 — это последняя версия платформы EF, однако в ней реализованы еще не все возможности EF 6.x. Дополнительные сведения о выборе между платформами EF 6.x и EF Core см. в [этой статье](https://docs.microsoft.com/ef/efcore-and-ef6/). Если вы используете платформу EF 6.x, ознакомьтесь с [предыдущей версией этой серии учебников](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
 > [!NOTE]
-> * Версия этого учебника для ASP.NET Core 1.1 и VS 2017 с обновлением 2 в формате PDF доступна [здесь](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf).
-> * Версию этого учебника для Visual Studio 2015 см. в статье [документации по ASP.NET Core для VS 2015 в формате PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf).
+> Версия этого учебника для ASP.NET Core 1.1 и VS 2017 с обновлением 2 в формате PDF доступна [здесь](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -42,7 +37,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 Если вы столкнулись с проблемами, для их решения можно попробовать сравнить свой код с кодом [готового проекта](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final). Список распространенных ошибок и способы их устранения см. в [разделе "Устранение неполадок" последнего руководства серии](advanced.md#common-errors). Если вам не удалось найти нужную информацию, вы можете задать вопрос на сайте StackOverflow.com в разделах, посвященных [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) или [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
-> [!TIP] 
+> [!TIP]
 > Эта серия включает в себя 10 учебников, содержание каждого из которых базируется на предыдущих учебниках. После успешного завершения каждого руководства рекомендуется сохранять копию проекта. Таким образом, при возникновении проблем вы сможете вернуться к предыдущему учебнику, а не к началу серии.
 
 ## <a name="the-contoso-university-web-application"></a>Веб-приложение университета Contoso

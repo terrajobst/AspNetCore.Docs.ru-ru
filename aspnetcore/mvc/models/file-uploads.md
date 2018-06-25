@@ -2,19 +2,15 @@
 title: Передача файлов в ASP.NET Core
 author: ardalis
 description: Сведения об использовании привязки модели и потоковой передачи для передачи файлов в ASP.NET Core MVC.
-manager: wpickett
 ms.author: riande
 ms.date: 07/05/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 7ba4f6d9e3901c310fe9fa7a70382d9243d8b347
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 771e22ca01c67f2b6bbee780324d9d08759b3279
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32740417"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272547"
 ---
 # <a name="file-uploads-in-aspnet-core"></a>Передача файлов в ASP.NET Core
 

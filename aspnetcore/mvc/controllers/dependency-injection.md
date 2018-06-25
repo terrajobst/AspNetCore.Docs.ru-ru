@@ -2,19 +2,15 @@
 title: Внедрение зависимостей в контроллеры в ASP.NET Core
 author: ardalis
 description: Узнайте, как контроллеры MVC ASP.NET Core явным образом запрашивают зависимости с помощью конструкторов с внедрением зависимостей в ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: c3e26d294d51dc7044158b05c1ac39015c494610
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 23c91a4363223a135c50ceca51e6af22ed69fe3b
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30071806"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276455"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>Внедрение зависимостей в контроллеры в ASP.NET Core
 

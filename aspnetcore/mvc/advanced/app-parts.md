@@ -2,19 +2,15 @@
 title: Части приложения в ASP.NET Core
 author: ardalis
 description: Сведения о том, как использовать части приложения, которые являются абстракциями по отношению к ресурсам приложения, для обнаружения или запрета загрузки компонентов из сборки.
-manager: wpickett
 ms.author: riande
 ms.date: 01/04/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 8f7aeadc7a1218bf203575add8c82c95faf137b4
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: e0290ceadc159d7c3608ec4420d95cd219407d32
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32739858"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276829"
 ---
 # <a name="application-parts-in-aspnet-core"></a>Части приложения в ASP.NET Core
 

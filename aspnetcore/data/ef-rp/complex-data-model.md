@@ -2,19 +2,15 @@
 title: Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
 author: rick-anderson
 description: В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных, указав правила форматирования, проверки и сопоставления.
-manager: wpickett
 ms.author: riande
 ms.date: 10/25/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 2cec45afbf08e5dd379a54e780e4218bfc86d13f
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: a885809205f13e1090a957496710cc0d9c7257c0
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32741281"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274545"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
 
