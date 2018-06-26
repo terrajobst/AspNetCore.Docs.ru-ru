@@ -2,19 +2,16 @@
 title: Вспомогательные функции тегов в ASP.NET Core
 author: rick-anderson
 description: Сведения о вспомогательных функциях тегов и их использовании в ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 0c66b700f9bb3e6349fe2e0c8a7e254b8e7903a5
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: be75667f34eed7ba601eee331e3451c5738ef223
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273573"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Вспомогательные функции тегов в ASP.NET Core
 
@@ -67,11 +64,11 @@ public class Movie
 
 ### <a name="addtaghelper-makes-tag-helpers-available"></a>Директива `@addTagHelper` обеспечивает доступность вспомогательных функций тегов
 
-При создании веб-приложения ASP.NET Core с именем *AuthoringTagHelpers* (без проверки подлинности) в проект будет добавлен следующий файл *Views/_ViewImports.cshtml*:
+При создании веб-приложения ASP.NET Core с именем *AuthoringTagHelpers* в проект будет добавлен следующий файл *Views/_ViewImports.cshtml*:
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
-Директива `@addTagHelper` делает вспомогательные функции тегов доступными в представлении. В этом случае файлом представления является *Views/_ViewImports.cshtml*, который по умолчанию наследуется всеми файлами представлений в папке *Views* и вложенными каталогами. Таким образом, вспомогательные функции тегов доступны для всех. В приведенном выше коде используется синтаксис знаков подстановки ("\*") для указания того, что все вспомогательные функции тегов в указанной сборке (*Microsoft.AspNetCore.Mvc.TagHelpers*) будут доступны для каждого файла представления в каталоге *Views* или вложенном каталоге. Первый параметр после директивы `@addTagHelper` указывает загружаемые вспомогательные функции тегов (мы используем "\*" для всех вспомогательных функций тегов), а второй параметр "Microsoft.AspNetCore.Mvc.TagHelpers" указывает сборку, содержащую вспомогательные функции тегов. *Microsoft.AspNetCore.Mvc.TagHelpers* — это сборка для встроенных вспомогательных функций тегов ASP.NET Core.
+Директива `@addTagHelper` делает вспомогательные функции тегов доступными в представлении. В этом случае файлом представления является *Pages/_ViewImports.cshtml*, который по умолчанию наследуется всеми файлами в папке *Pages* и вложенными папками. Таким образом, вспомогательные функции тегов доступны для всех. В приведенном выше коде используется синтаксис знаков подстановки ("\*") для указания того, что все вспомогательные функции тегов в указанной сборке (*Microsoft.AspNetCore.Mvc.TagHelpers*) будут доступны для каждого файла представления в каталоге *Views* или вложенном каталоге. Первый параметр после директивы `@addTagHelper` указывает загружаемые вспомогательные функции тегов (мы используем "\*" для всех вспомогательных функций тегов), а второй параметр "Microsoft.AspNetCore.Mvc.TagHelpers" указывает сборку, содержащую вспомогательные функции тегов. *Microsoft.AspNetCore.Mvc.TagHelpers* — это сборка для встроенных вспомогательных функций тегов ASP.NET Core.
 
 Чтобы использовать все вспомогательные функции тегов в этом проекте (где создается сборка *AuthoringTagHelpers*), нужно сделать следующее:
 

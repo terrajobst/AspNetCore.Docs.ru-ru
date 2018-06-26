@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/primitives/change-tokens
-ms.openlocfilehash: 06751e713fbd579a944333cc3c3b2c0c0ad51eba
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: d132747cb7c92ef5afac4664c91634a4ad290e5f
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734527"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Обнаружение изменений с помощью токенов изменений в ASP.NET Core
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/12/2018
 
 ## <a name="ichangetoken-interface"></a>Интерфейс IChangeToken
 
-[IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken) распространяет уведомления о том, что произошло изменение. `IChangeToken` находится в пространстве имен [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives). Для приложений, которые не используют метапакет [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/), сошлитесь на пакет NuGet [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) в файле проекта.
+[IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken) распространяет уведомления о том, что произошло изменение. `IChangeToken` находится в пространстве имен [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives). Для приложений, которые не используют метапакет [Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 или более поздней версии), сошлитесь на пакет NuGet [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) в файле проекта.
 
 `IChangeToken` имеет два свойства:
 
@@ -37,9 +38,10 @@ ms.lasthandoff: 05/12/2018
 
 ## <a name="changetoken-class"></a>Класс ChangeToken
 
-`ChangeToken` — это статический класс, который распространяет уведомления о том, что произошло изменение. `ChangeToken` находится в пространстве имен [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives). Для приложений, которые не используют метапакет [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/), сошлитесь на пакет NuGet [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) в файле проекта.
+`ChangeToken` — это статический класс, который распространяет уведомления о том, что произошло изменение. `ChangeToken` находится в пространстве имен [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives). Для приложений, которые не используют метапакет [Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app), сошлитесь на пакет NuGet [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) в файле проекта.
 
 Метод `ChangeToken` [OnChange(Func&lt;IChangeToken&gt;, Action)](/dotnet/api/microsoft.extensions.primitives.changetoken.onchange?view=aspnetcore-2.0#Microsoft_Extensions_Primitives_ChangeToken_OnChange_System_Func_Microsoft_Extensions_Primitives_IChangeToken__System_Action_) регистрирует `Action`, вызываемый при изменении токена:
+
 * `Func<IChangeToken>` создает токен.
 * `Action` вызывается при изменении токена.
 
@@ -196,7 +198,7 @@ var compositeChangeToken =
 
 `HasChanged` для составного токена указывает `true`, если `HasChanged` любой из представленных токенов имеет значение `true`. `ActiveChangeCallbacks` для составного токена указывает `true`, если `ActiveChangeCallbacks` любой из представленных токенов имеет значение `true`. Если возникает несколько одновременных событий изменения, обратный вызов составного изменения выполняется всего один раз.
 
-## <a name="see-also"></a>См. также
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Кэш в памяти](xref:performance/caching/memory)
 * [Работа с распределенным кэшем](xref:performance/caching/distributed)

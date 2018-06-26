@@ -2,20 +2,16 @@
 title: Размещение ASP.NET Core в операционной системе Linux с Apache
 description: Процедура настройки Apache в качестве обратного прокси-сервера в CentOS для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в Kestrel.
 author: spboyer
-manager: wpickett
 ms.author: spboyer
 ms.custom: mvc
 ms.date: 03/13/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 473585f1be180645395c14a154c9c017ca50edab
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 69e92af08eabede023608e612f1fbd48a8f2608e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33962821"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275455"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -26,14 +22,28 @@ ms.locfileid: "33962821"
 ## <a name="prerequisites"></a>Предварительные требования
 
 1. Сервер под управлением CentOS 7 и учетная запись обычного пользователя с правами sudo.
-2. Приложение ASP.NET Core.
+1. Установите среду выполнения .NET Core на сервере.
+   1. Перейдите на [страницу всех загрузок .NET Core](https://www.microsoft.com/net/download/all).
+   1. Выберите последнюю не предварительную версию среды выполнения из списка под заголовком **Среда выполнения**.
+   1. Сделайте выбор и следуйте инструкциям для CentOS/Oracle.
+1. Существующее приложение ASP.NET Core.
 
-## <a name="publish-the-app"></a>Публикация приложения
+## <a name="publish-and-copy-over-the-app"></a>Публикация и копирование приложения
 
-Опубликуйте приложение в качестве [автономного развертывания](/dotnet/core/deploying/#self-contained-deployments-scd) в конфигурации выпуска для среды выполнения CentOS 7 (`centos.7-x64`). Скопируйте содержимое папки *bin/Release/netcoreapp2.0/centos.7-x64/publish* на сервер с помощью SCP, FTP или другого метода передачи файлов.
+Настройте приложение, чтобы [его развертывание зависело от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd).
+
+Запустите [dotnet publish](/dotnet/core/tools/dotnet-publish) в среде разработки, чтобы упаковать приложение в каталог (например, *bin/Release/&lt;target_framework_moniker&gt;/publish*), который может выполняться на сервере:
+
+```console
+dotnet publish --configuration Release
+```
+
+Приложение может быть опубликовано как [автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd), если вы предпочитаете не сохранять среду выполнения .NET Core на сервере.
+
+Скопируйте приложение ASP.NET Core на сервер с помощью инструмента, интегрированного в ваш рабочий процесс (например, SCP или SFTP). Обычно веб-приложения находятся в каталоге *var* (например, *var/aspnetcore/hellomvc*).
 
 > [!NOTE]
-> Если развертывание выполняется в рабочей среде, рабочий процесс непрерывной интеграции автоматически опубликует приложение и скопирует его ресурсы на сервер. 
+> Если развертывание выполняется в рабочей среде, рабочий процесс непрерывной интеграции автоматически опубликует приложение и скопирует его ресурсы на сервер.
 
 ## <a name="configure-a-proxy-server"></a>Настройка прокси-сервера
 
@@ -41,13 +51,18 @@ ms.locfileid: "33962821"
 
 Прокси-сервер перенаправляет запросы клиента на другой сервер, а не обрабатывает их самостоятельно. Обратный прокси-сервер перенаправляет запросы в фиксированное назначение обычно от имени клиентов. При работе с этим руководством мы настроим Apache в качестве обратного прокси-сервера, который работает на том же сервере, где Kestrel предоставляет приложение ASP.NET Core.
 
-Так как запросы перенаправляются обратным прокси-сервером, используйте ПО промежуточного слоя перенаправления заголовков, входящее в пакет [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/). Это ПО обновляет `Request.Scheme`, используя заголовок `X-Forwarded-Proto`, что обеспечивает правильную работу URI перенаправления и других политик безопасности.
+Так как запросы перенаправляются обратным прокси-сервером, используйте [ПО промежуточного слоя перенаправления заголовков](xref:host-and-deploy/proxy-load-balancer), которое входит в пакет [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/). Это ПО обновляет `Request.Scheme`, используя заголовок `X-Forwarded-Proto`, что обеспечивает правильную работу URI перенаправления и других политик безопасности.
 
-Вне зависимости от того, какой тип ПО промежуточного слоя используется для проверки подлинности, сначала необходимо запустить ПО промежуточного слоя перенаправления заголовков. Такой порядок гарантирует, что ПО промежуточного слоя для проверки подлинности может использовать значения заголовков и сформирует правильные URI перенаправления.
+Любой компонент, который зависит от схемы, например проверка подлинности, генерация ссылок, перенаправление и геолокация, должен находиться после вызова ПО промежуточного слоя перенаправления заголовков. Как правило, ПО промежуточного слоя перенаправления заголовков должно выполняться до остального ПО промежуточного слоя, за исключением ПО промежуточного слоя для диагностики и обработки ошибок. Такой порядок гарантирует, что ПО промежуточного слоя, полагающееся на сведения о перенаправленных заголовках, может использовать значения заголовков для обработки.
+
+::: moniker range=">= aspnetcore-2.0"
+> [!NOTE]
+> Любая из этих конфигураций &mdash; с обратным прокси-сервером и без него &mdash; является допустимой и поддерживаемой для размещения основных компонентов приложений ASP.NET версии 2.0 и выше. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
+::: moniker-end
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Вызывайте метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызывать [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
+Вызовите метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызвать [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -60,7 +75,7 @@ app.UseAuthentication();
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Вызывайте метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызывать [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity), [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
+Вызывайте метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызвать [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity), [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -117,13 +132,17 @@ Complete!
 > [!NOTE]
 > В нашем примере выходные данные содержат строку httpd.86_64, так как используется 64-разрядная версия CentOS 7. Чтобы проверить, где установлен Apache, выполните `whereis httpd` из командной строки.
 
-### <a name="configure-apache-for-reverse-proxy"></a>Настройка Apache в качестве обратного прокси-сервера
+### <a name="configure-apache"></a>Настройка Apache
 
 Файлы конфигурации для Apache находятся в каталоге `/etc/httpd/conf.d/`. В алфавитном порядке обрабатываются все файлы с расширением *.conf*, а также файлы конфигурации модуля из папки `/etc/httpd/conf.modules.d/`, где содержатся файлы конфигурации, необходимые для загрузки модулей.
 
 Создайте для приложения файл конфигурации с именем *hellomvc.conf*:
 
 ```
+<VirtualHost *:*>
+    RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
+</VirtualHost>
+
 <VirtualHost *:80>
     ProxyPreserveHost On
     ProxyPass / http://127.0.0.1:5000/
@@ -158,7 +177,6 @@ sudo systemctl enable httpd
 ## <a name="monitoring-the-app"></a>Мониторинг приложения
 
 Теперь Apache настроен на перенаправление запросов к `http://localhost:80` в приложение ASP.NET Core, выполняемое в Kestrel по адресу `http://127.0.0.1:5000`.  Но Apache не настроен для управления процессом Kestrel. Для запуска и мониторинга базового веб-приложения используйте *systemd* и создайте файл службы. *systemd* — это система инициализации, предоставляющая различные функции для запуска и остановки процессов, а также управления ими. 
-
 
 ### <a name="create-the-service-file"></a>Создание файла службы
 
@@ -262,7 +280,7 @@ sudo firewall-cmd --add-port=443/tcp --permanent
 
 Обновите параметры брандмауэра. Проверьте, что доступные службы и порты находятся в зоне по умолчанию. Эти параметры можно просмотреть с помощью `firewall-cmd -h`.
 
-```bash 
+```bash
 sudo firewall-cmd --reload
 sudo firewall-cmd --list-all
 ```
@@ -286,6 +304,7 @@ Apache для SSL настраивается с помощью модуля *mod
 ```bash
 sudo yum install mod_ssl
 ```
+
 Чтобы принудительно использовать SSL, установите модуль `mod_rewrite` для перезаписи URL-адресов.
 
 ```bash
@@ -295,10 +314,14 @@ sudo yum install mod_rewrite
 Измените файл *hellomvc.conf*, чтобы разрешить перезапись URL-адресов и безопасный обмен данными через порт 443.
 
 ```
+<VirtualHost *:*>
+    RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
+</VirtualHost>
+
 <VirtualHost *:80>
     RewriteEngine On
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^/?(.*) https://%{SERVER_NAME}/ [R,L]
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
 </VirtualHost>
 
 <VirtualHost *:443>
@@ -364,7 +387,7 @@ sudo nano /etc/httpd/conf/httpd.conf
 
 Добавьте строку `Header set X-Content-Type-Options "nosniff"`. Сохраните файл. Перезапустите Apache.
 
-### <a name="load-balancing"></a>Балансировка нагрузки 
+### <a name="load-balancing"></a>Балансировка нагрузки
 
 В этом примере показано, как установить и настроить Apache в CentOS 7 и Kestrel на том же компьютере. Чтобы устранить единую точку отказа, воспользуйтесь *mod_proxy_balancer* и измените значение **VirtualHost** для управления несколькими экземплярами веб-приложений за прокси-сервером Apache.
 
@@ -375,10 +398,14 @@ sudo yum install mod_proxy_balancer
 В представленном ниже файле конфигурации настроен дополнительный экземпляр приложения `hellomvc`, работающий на порту 5001. В разделе *Proxy* настраивается конфигурация подсистемы балансировки нагрузки с двумя членами для распределения нагрузки методом *byrequests*.
 
 ```
+<VirtualHost *:*>
+    RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
+</VirtualHost>
+
 <VirtualHost *:80>
     RewriteEngine On
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^/?(.*) https://%{SERVER_NAME}/ [R,L]
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
 </VirtualHost>
 
 <VirtualHost *:443>
@@ -407,6 +434,7 @@ sudo yum install mod_proxy_balancer
 ```
 
 ### <a name="rate-limits"></a>Ограничения скорости
+
 С помощью элемента *mod_ratelimit*, который входит в модуль *httpd*, можно ограничить пропускную способность для клиентов:
 
 ```bash
@@ -422,3 +450,7 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
     </Location>
 </IfModule>
 ```
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer)

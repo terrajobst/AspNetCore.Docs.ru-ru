@@ -2,29 +2,25 @@
 title: Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 author: rick-anderson
 description: В статье описывается процедура настройки Nginx как обратного прокси-сервера на Ubuntu 16.04 для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в Kestrel.
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/13/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
+ms.date: 05/22/2018
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: d37aa25c712d715aa4134587a84e5923f9cb5b79
-ms.sourcegitcommit: 50d40c83fa641d283c097f986dde5341ebe1b44c
+ms.openlocfilehash: 374b13e0851cd171a7d8500a4965851a3a0eb49c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/22/2018
-ms.locfileid: "34452559"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277378"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
 Автор [Сурабх Ширхатти](https://twitter.com/sshirhatti)
 
-В этом руководстве описывается настройка готовой к работе среды ASP.NET Core на сервере 16.04 Ubuntu.
+В этом руководстве описывается настройка готовой к работе среды ASP.NET Core на сервере Ubuntu 16.04. Эти инструкции могут подходить для более поздних версий Ubuntu, но они еще не были протестированы в этих версиях.
 
 > [!NOTE]
-> Для Ubuntu 14.04 в качестве решения для мониторинга процесса Kestrel рекомендуется *supervisord*. Решение *systemd* в Ubuntu 14.04 недоступно. [См. предыдущую версию этого документа](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md).
+> Для Ubuntu 14.04 в качестве решения для мониторинга процесса Kestrel рекомендуется *supervisord*. Решение *systemd* в Ubuntu 14.04 недоступно. Инструкции для Ubuntu 14.04 см. в [предыдущей версии этого раздела](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md).
 
 В этом руководстве рассматривается
 
@@ -35,35 +31,59 @@ ms.locfileid: "34452559"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-1. Доступ к серверу Ubuntu 16.04 под учетной записи обычного пользователя с правами sudo
-1. Существующее приложение ASP.NET Core
+1. Доступ к серверу Ubuntu 16.04 под учетной записью обычного пользователя с правами sudo.
+1. Установите среду выполнения .NET Core на сервере.
+   1. Перейдите на [страницу всех загрузок .NET Core](https://www.microsoft.com/net/download/all).
+   1. Выберите последнюю не предварительную версию среды выполнения из списка под заголовком **Среда выполнения**.
+   1. Сделайте выбор и следуйте инструкциям для Ubuntu, версия которой совпадает с версией Ubuntu на сервере.
+1. Существующее приложение ASP.NET Core.
 
-## <a name="copy-over-the-app"></a>Копирование приложения
+## <a name="publish-and-copy-over-the-app"></a>Публикация и копирование приложения
 
-Выполните из среды разработки команду [dotnet publish](/dotnet/core/tools/dotnet-publish), чтобы упаковать приложение в отдельный каталог, который можно запустить на сервере.
+Настройте приложение, чтобы [его развертывание зависело от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd).
 
-Скопируйте приложение ASP.NET Core на сервер с помощью инструмента, интегрированного в ваш рабочий процесс (например, SCP или FTP). Протестируйте приложение, например
+Запустите [dotnet publish](/dotnet/core/tools/dotnet-publish) в среде разработки, чтобы упаковать приложение в каталог (например, *bin/Release/&lt;target_framework_moniker&gt;/publish*), который может выполняться на сервере:
 
-* Выполните из командной строки команду `dotnet <app_assembly>.dll`.
-* В браузере откройте страницу `http://<serveraddress>:<port>`, чтобы убедиться, что приложение работает на платформе Linux. 
- 
+```console
+dotnet publish --configuration Release
+```
+
+Приложение может быть опубликовано как [автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd), если вы предпочитаете не сохранять среду выполнения .NET Core на сервере.
+
+Скопируйте приложение ASP.NET Core на сервер с помощью инструмента, интегрированного в ваш рабочий процесс (например, SCP или SFTP). Обычно веб-приложения находятся в каталоге *var* (например, *var/aspnetcore/hellomvc*).
+
+> [!NOTE]
+> Если развертывание выполняется в рабочей среде, рабочий процесс непрерывной интеграции автоматически опубликует приложение и скопирует его ресурсы на сервер.
+
+Проверьте работу приложения:
+
+1. Запустите приложение в командной строке: `dotnet <app_assembly>.dll`.
+1. В браузере откройте страницу `http://<serveraddress>:<port>`, чтобы убедиться, что приложение локально работает на платформе Linux.
+
 ## <a name="configure-a-reverse-proxy-server"></a>Настройка обратного прокси-сервера
 
-Обратный прокси-сервер — это общая настройка для обслуживания динамических веб-приложений. Обратный прокси-сервер завершает HTTP-запрос и перенаправляет его в приложение ASP.NET Core.
+Обратный прокси-сервер — это стандартный вариант настройки для обслуживания динамических веб-приложений. Обратный прокси-сервер завершает HTTP-запрос и перенаправляет его в приложение ASP.NET Core.
 
-### <a name="why-use-a-reverse-proxy-server"></a>Для чего нужен обратный прокси-сервер?
+::: moniker range=">= aspnetcore-2.0"
+
+> [!NOTE]
+> Любая из этих конфигураций &mdash; с обратным прокси-сервером и без него &mdash; является допустимой и поддерживаемой для размещения основных компонентов приложений ASP.NET версии 2.0 и выше. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
+
+::: moniker-end
+
+### <a name="use-a-reverse-proxy-server"></a>Использование обратного прокси-сервера
 
 Kestrel является отличным решением для обслуживания динамического содержимого из ASP.NET Core. При этом компоненты для работы с веб-службами не настолько функциональны, как серверы типа IIS, Apache или Nginx. Обратный прокси-сервер может облегчить такую работу, как обслуживание статического содержимого, кэширование запросов, сжатие запросов и завершение SSL с HTTP-сервера. Обратный прокси-сервер можно разместить на отдельном компьютере или развернуть параллельно с HTTP-сервером.
 
 В контексте данного руководства используется отдельный экземпляр Nginx. Он выполняется на том же сервере, что и HTTP-сервер. Настройки можно выбирать в зависимости от требований.
 
-Так как запросы перенаправляются обратным прокси-сервером, используйте ПО промежуточного слоя перенаправления заголовков, которое входит в пакет [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/). Это ПО обновляет `Request.Scheme`, используя заголовок `X-Forwarded-Proto`, что обеспечивает правильную работу URI перенаправления и других политик безопасности.
+Так как запросы перенаправляются обратным прокси-сервером, используйте [ПО промежуточного слоя перенаправления заголовков](xref:host-and-deploy/proxy-load-balancer), которое входит в пакет [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/). Это ПО обновляет `Request.Scheme`, используя заголовок `X-Forwarded-Proto`, что обеспечивает правильную работу URI перенаправления и других политик безопасности.
 
-Вне зависимости от того, какой тип ПО промежуточного слоя используется для проверки подлинности, сначала необходимо запустить ПО промежуточного слоя перенаправления заголовков. Такой порядок гарантирует, что ПО промежуточного слоя для проверки подлинности может использовать значения заголовков и сформирует правильные URI перенаправления.
+Любой компонент, который зависит от схемы, например проверка подлинности, генерация ссылок, перенаправление и геолокация, должен находиться после вызова ПО промежуточного слоя перенаправления заголовков. Как правило, ПО промежуточного слоя перенаправления заголовков должно выполняться до остального ПО промежуточного слоя, за исключением ПО промежуточного слоя для диагностики и обработки ошибок. Такой порядок гарантирует, что ПО промежуточного слоя, полагающееся на сведения о перенаправленных заголовках, может использовать значения заголовков для обработки.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Вызовите метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызвать [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме. Настройте ПО промежуточного слоя для перенаправления заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
+Вызовите метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызвать [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -76,7 +96,7 @@ app.UseAuthentication();
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Вызывайте метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызвать [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity), [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме. Настройте ПО промежуточного слоя для перенаправления заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
+Вызывайте метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызвать [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity), [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -100,20 +120,28 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 ### <a name="install-nginx"></a>Установка Nginx
 
+Установите Nginx с помощью команды `apt-get`. Программа установки создает сценарий инициализации *systemd*, который запускает Nginx как управляющую программу при запуске системы. 
+
 ```bash
-sudo apt-get install nginx
+sudo -s
+nginx=stable # use nginx=development for latest development version
+add-apt-repository ppa:nginx/$nginx
+apt-get update
+apt-get install nginx
 ```
 
-> [!NOTE]
-> Если будут установлены дополнительные модули Nginx, может потребоваться создание Nginx из источника.
+Ubuntu Personal Package Archive (PPA) обслуживается добровольцами и не распространяется на [nginx.org](https://nginx.org/). Дополнительные сведения см. в разделе [Nginx: двоичные выпуски. Официальные пакеты Debian и Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages).
 
-Установите Nginx с помощью команды `apt-get`. Программа установки создает сценарий инициализации System V, который запускает Nginx как управляющую программу Nginx при запуске системы. Так как Nginx устанавливается впервые, запустите его напрямую, выполнив следующую команду.
+> [!NOTE]
+> Если необходимы дополнительные модули Nginx, может потребоваться создание Nginx из источника.
+
+Так как Nginx устанавливается впервые, запустите его напрямую, выполнив следующую команду.
 
 ```bash
 sudo service nginx start
 ```
 
-В браузере должна открыться стартовая страница Nginx по умолчанию.
+В браузере должна открыться стартовая страница Nginx по умолчанию. Целевая страница доступна по адресу `http://<server_IP_address>/index.nginx-debian.html`.
 
 ### <a name="configure-nginx"></a>Настройка Nginx
 
@@ -128,8 +156,10 @@ server {
         proxy_http_version 1.1;
         proxy_set_header   Upgrade $http_upgrade;
         proxy_set_header   Connection keep-alive;
-        proxy_set_header   Host $http_host;
+        proxy_set_header   Host $host;
         proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
     }
 }
 ```
@@ -150,6 +180,21 @@ server {
 > Если не будет указана правильная [директива server_name](https://nginx.org/docs/http/server_names.html), приложение будет подвержено значительным уязвимостям. Привязки с подстановочными знаками на уровне дочерних доменов (например, `*.example.com`) не создают таких угроз безопасности, если вы полностью контролируете родительский домен (в отличие от варианта `*.com`, создающего уязвимость). Дополнительные сведения см. в документе [rfc7230, раздел 5.4](https://tools.ietf.org/html/rfc7230#section-5.4).
 
 Установив конфигурацию Nginx, выполните команду `sudo nginx -t`, чтобы проверить синтаксис файлов конфигурации. Если проверка файла конфигурации прошла успешно, заставьте Nginx принять изменения, выполнив команду `sudo nginx -s reload`.
+
+Для непосредственного запуска приложений на сервере:
+
+1. Перейдите в каталог приложения.
+1. Запустите исполняемый файл приложения: `./<app_executable>`.
+
+Если возникает ошибка прав доступа, измените права доступа:
+
+```console
+chmod u+x <app_executable>
+```
+
+Если приложение выполняется на сервере, но не отвечает по Интернету, проверьте брандмауэр сервера и убедитесь, что порт 80 открыт. При использовании виртуальной машины Ubuntu Azure добавьте правило группы безопасности сети (NSG), которое разрешает входящий трафик через порт 80. Не нужно включать правило исходящего трафика на порте 80, так как исходящий трафик предоставляется автоматически при включении правила для входящего трафика.
+
+Когда закончите тестировать приложение, завершите его работу с помощью `Ctrl+C` в командной строке.
 
 ## <a name="monitoring-the-app"></a>Мониторинг приложения
 
@@ -259,20 +304,6 @@ sudo ufw allow 443/tcp
 
 ### <a name="securing-nginx"></a>Защита Nginx
 
-В дистрибутиве Nginx по умолчанию SSL не включен. Чтобы включить дополнительные функции безопасности, выполните сборку из исходного файла.
-
-#### <a name="download-the-source-and-install-the-build-dependencies"></a>Загрузка исходного файла и установка зависимостей сборки
-
-```bash
-# Install the build dependencies
-sudo apt-get update
-sudo apt-get install build-essential zlib1g-dev libpcre3-dev libssl-dev libxslt1-dev libxml2-dev libgd2-xpm-dev libgeoip-dev libgoogle-perftools-dev libperl-dev
-
-# Download Nginx 1.10.0 or latest
-wget http://www.nginx.org/download/nginx-1.10.0.tar.gz
-tar zxf nginx-1.10.0.tar.gz
-```
-
 #### <a name="change-the-nginx-response-name"></a>Изменение имени ответа Nginx
 
 Внесите изменения в файл *src/http/ngx_http_header_filter_module.c*:
@@ -282,20 +313,9 @@ static char ngx_http_server_string[] = "Server: Web Server" CRLF;
 static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 ```
 
-#### <a name="configure-the-options-and-build"></a>Настройка параметров и сборки
+#### <a name="configure-options"></a>Настройка параметров
 
-Для регулярных выражений требуется библиотека PCRE. Регулярные выражения используются в директиве местонахождения для модуля ngx_http_rewrite_module. Модуль http_ssl_module добавляет поддержку протокола HTTPS.
-
-Для дополнительной защиты приложения можно использовать межсетевой экран для веб-приложений, например *ModSecurity*.
-
-```bash
-./configure
---with-pcre=../pcre-8.38
---with-zlib=../zlib-1.2.8
---with-http_ssl_module
---with-stream
---with-mail=dynamic
-```
+Настройте дополнительные обязательные модули на сервере. Для дополнительной защиты приложения можно использовать межсетевой экран для веб-приложений, например [ModSecurity](https://www.modsecurity.org/).
 
 #### <a name="configure-ssl"></a>Настройка SSL
 
@@ -337,3 +357,9 @@ sudo nano /etc/nginx/nginx.conf
 ```
 
 Добавьте строку `add_header X-Content-Type-Options "nosniff";` и сохраните файл, а затем перезапустите Nginx.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Nginx: двоичные выпуски. Официальные пакеты Debian и Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages)
+* [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer)
+* [NGINX. Использование перенаправленного заголовка](https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/)

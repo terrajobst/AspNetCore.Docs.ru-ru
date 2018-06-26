@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 336a097c2186bc195854bd54211d4554a577ed14
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: a4ffa512825fedafdc58ade9929097e255593fa9
+ms.sourcegitcommit: 40b102ecf88e53d9d872603ce6f3f7044bca95ce
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/15/2018
+ms.locfileid: "35652218"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ПО промежуточного слоя для переопределения URL-адресов в ASP.NET Core
 
@@ -22,6 +23,7 @@ ms.lasthandoff: 05/12/2018
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/sample/) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 Переопределение URL-адресов представляет собой изменение URL-адресов запросов на основе одного или нескольких предопределенных правил. Переопределение URL-адресов создает абстракцию между расположениями ресурсов и их адресами, позволяя убрать тесную связь между ними. Существует несколько сценариев, где может пригодиться переопределение URL-адресов:
+
 * Временное или постоянное перемещение или замещение ресурсов сервера с сохранением стабильных указателей для этих ресурсов.
 * Разделение обработки запросов между разными приложениями или разными областями одного приложения.
 * Удаление, добавление или переупорядочение сегментов URL-адресов для входящих запросов.
@@ -127,8 +129,8 @@ public void Configure(IApplicationBuilder app)
 
 В строке замены группы записи внедряются с помощью знака доллара (`$`), за которым следует порядковый номер записи. Первое значение группы записи получается с помощью `$1`, второе — с помощью `$2`, после чего они продолжают по очереди использоваться для групп записи в регулярном выражении. В регулярном выражении правила перенаправления в примере приложения присутствует всего одна группа записи, поэтому в строку замены внедряется тоже одна строка — `$1`. Когда применяется правило, URL-адрес становится `/redirected/1234/5678`.
 
-<a name="url-redirect-to-secure-endpoint"></a>
 ### <a name="url-redirect-to-a-secure-endpoint"></a>Перенаправление URL-адресов на защищенную конечную точку
+
 Используйте `AddRedirectToHttps`, чтобы перенаправлять HTTP-запросы на тот же узел и путь с использованием протокола HTTPS (`https://`). Если код состояния не указан, ПО промежуточного слоя по умолчанию использует значение "302 (найдено)". Если порт не указан, ПО промежуточного слоя по умолчанию использует значение `null`, в результате чего протокол изменяется на `https://`, а клиент обращается к ресурсу через порт 443. Этот пример показывает, как задать код состояния "301 (перемещен окончательно)" и изменить порт на 5001.
 
 ```csharp
@@ -153,13 +155,16 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-Пример приложения позволяет продемонстрировать использование `AddRedirectToHttps` или `AddRedirectToHttpsPermanent`. Добавьте этот метод расширения в `RewriteOptions`. Выполните небезопасный запрос к приложению по любому URL-адресу. Закройте предостережение системы безопасности о том, что самозаверяющий сертификат не является доверенным.
+> [!NOTE]
+> При перенаправлении на HTTPS без дополнительных правил перенаправления рекомендуется использовать ПО промежуточного слоя перенаправления на HTTPS. Дополнительные сведения см. в разделе [Обязательное использование HTTPS](xref:security/enforcing-ssl#require-https).
 
-Исходный запрос с использованием `AddRedirectToHttps(301, 5001)`: `/secure`
+Пример приложения позволяет продемонстрировать использование `AddRedirectToHttps` или `AddRedirectToHttpsPermanent`. Добавьте этот метод расширения в `RewriteOptions`. Выполните небезопасный запрос к приложению по любому URL-адресу. Закройте предостережение системы безопасности о том, что самозаверяющий сертификат не является доверенным, или создайте исключение, чтобы сделать сертификат доверенным.
+
+Исходный запрос с использованием `AddRedirectToHttps(301, 5001)`: `http://localhost:5000/secure`
 
 ![Окно браузера, в котором средства разработчика отслеживают запросы и отклики](url-rewriting/_static/add_redirect_to_https.png)
 
-Исходный запрос с использованием `AddRedirectToHttpsPermanent`: `/secure`
+Исходный запрос с использованием `AddRedirectToHttpsPermanent`: `http://localhost:5000/secure`
 
 ![Окно браузера, в котором средства разработчика отслеживают запросы и отклики](url-rewriting/_static/add_redirect_to_https_permanent.png)
 
@@ -254,6 +259,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ##### <a name="supported-server-variables"></a>Поддерживаемые переменные сервера
 
 ПО промежуточного слоя поддерживает следующие переменные сервера в mod_rewrite Apache:
+
 * CONN_REMOTE_ADDR
 * HTTP_ACCEPT
 * HTTP_CONNECTION
@@ -325,6 +331,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ПО промежуточного слоя, выпущенное вместе с ASP.NET Core 2.x, не поддерживает следующие функции в модуле переопределения URL-адресов для IIS:
+
 * Правила для исходящих подключений
 * Пользовательские переменные сервера
 * Знаки подстановки
@@ -333,6 +340,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ПО промежуточного слоя, выпущенное вместе с ASP.NET Core 1.x, не поддерживает следующие функции в модуле переопределения URL-адресов для IIS:
+
 * Глобальные правила
 * Правила для исходящих подключений
 * Сопоставления переопределения
@@ -347,6 +355,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 #### <a name="supported-server-variables"></a>Поддерживаемые переменные сервера
 
 ПО промежуточного слоя поддерживает следующие переменные сервера в модуле переопределения URL-адресов для IIS:
+
 * CONTENT_LENGTH
 * CONTENT_TYPE
 * HTTP_ACCEPT

@@ -10,12 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 0bf4585d44e61c5e7e5b89ce9d8dfdfa10d5460e
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: aeff8cd7da0637290d4edffaf183fc3c4f56f7f4
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34233083"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34555486"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
 
@@ -25,7 +25,10 @@ ms.locfileid: "34233083"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-[!INCLUDE[](~/includes/net-core-prereqs-windows.md)]
+* [Visual Studio для Windows](https://www.microsoft.com/net/download/windows)
+* Рабочая нагрузка **ASP.NET и веб-разработка**
+* Рабочая нагрузка **Кроссплатформенная разработка .NET Core**
+* Сертификат безопасности X.509
 
 ## <a name="enable-iis"></a>Активация IIS
 

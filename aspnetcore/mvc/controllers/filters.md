@@ -2,19 +2,15 @@
 title: Фильтры в ASP.NET Core
 author: ardalis
 description: Узнайте, как работают фильтры и как использовать их в ASP.NET Core MVC.
-manager: wpickett
 ms.author: riande
 ms.date: 4/10/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/controllers/filters
-ms.openlocfilehash: 49e51a867e47ce375a5048cae5979360c4103365
-ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
+ms.openlocfilehash: 24551382847fee0896fe6620d52c30a03aca69d1
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/27/2018
-ms.locfileid: "34555408"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275649"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -23,10 +19,10 @@ ms.locfileid: "34555408"
 *Фильтры* в ASP.NET Core MVC позволяют выполнять код до или после определенных стадий в конвейере обработки запросов.
 
 > [!IMPORTANT]
-> Этот раздел **не** распространяется на приложение Razor Pages. ASP.NET Core 2.1 и более поздних версий поддерживает [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) и [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) для Razor Pages. Дополнительные сведения см. в разделе [Методы фильтрации для Razor Pages](xref:mvc/razor-pages/filter).
+> Этот раздел **не** распространяется на приложение Razor Pages. ASP.NET Core 2.1 и более поздних версий поддерживает [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) и [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) для Razor Pages. Дополнительные сведения см. в разделе [Методы фильтрации для Razor Pages](xref:razor-pages/filter).
 
  Встроенные фильтры обрабатывают следующие задачи:
- 
+
  * Авторизация (предотвращение несанкционированного доступа к ресурсам).
  * Гарантия использования HTTPS во всех запросах.
  * Кэширование откликов (замыкание конвейера обработки запросов для возврата кэшированного ответа). 
@@ -78,7 +74,7 @@ ms.locfileid: "34555408"
 
 ### <a name="ifilterfactory"></a>IFilterFactory
 
-Объект `IFilterFactory` реализует интерфейс `IFilter`. Поэтому экземпляр `IFilterFactory` можно использовать в качестве экземпляра `IFilter` в любом месте конвейера фильтров. Когда платформа готовится вызвать фильтр, она пытается привести его к `IFilterFactory`. Если приведение проходит успешно, вызывается метод `CreateInstance` для создания вызываемого экземпляра `IFilter`. Это обеспечивает высокую степень гибкости, так как при запуске приложения нет необходимости в явном и точном определении конвейера фильтров.
+[IFilterFactory](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory) реализует [IFilterMetadata](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifiltermetadata). Поэтому экземпляр `IFilterFactory` можно использовать в качестве экземпляра `IFilterMetadata` в любом месте конвейера фильтров. Когда платформа готовится вызвать фильтр, она пытается привести его к `IFilterFactory`. Если приведение проходит успешно, вызывается метод [CreateInstance](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory.createinstance) для создания вызываемого экземпляра `IFilterMetadata`. Это обеспечивает высокую степень гибкости, так как при запуске приложения нет необходимости в явном и точном определении конвейера фильтров.
 
 Еще один подход к созданию фильтров заключается в реализации интерфейса `IFilterFactory` для собственных атрибутов.
 
@@ -221,7 +217,7 @@ System.InvalidOperationException: No service for type
 'FiltersSample.Filters.AddHeaderFilterWithDI' has been registered.
 ```
 
-Объект `ServiceFilterAttribute` реализует интерфейс `IFilterFactory`. `IFilterFactory` предоставляет метод `CreateInstance` для создания экземпляра `IFilter`. Метод `CreateInstance` загружает указанный тип из контейнера служб (внедрение зависимостей).
+Объект `ServiceFilterAttribute` реализует интерфейс `IFilterFactory`. `IFilterFactory` предоставляет метод `CreateInstance` для создания экземпляра `IFilterMetadata`. Метод `CreateInstance` загружает указанный тип из контейнера служб (внедрение зависимостей).
 
 ### <a name="typefilterattribute"></a>TypeFilterAttribute
 

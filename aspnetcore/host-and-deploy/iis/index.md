@@ -2,19 +2,16 @@
 title: Размещение ASP.NET Core в Windows со службами IIS
 author: guardrex
 description: Сведения о размещении приложений ASP.NET Core в службах Windows Server Internet Information Services (IIS).
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/13/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 6b2c3334798861ebdb14787205480422d7d536ea
-ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.openlocfilehash: ea18c451c2f68dc389cc6dc30ede9a10e3d8e6ac
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/24/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275416"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -43,7 +40,7 @@ public static IWebHost BuildWebHost(string[] args) =>
         ...
 ```
 
-Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. Метод `UseIISIntegration` принимает этот динамический порт и настраивает Kestrel для прослушивания адресу `http://localhost:{dynamicPort}/`. Это переопределяет другие конфигурации URL-адресов, такие как вызовы `UseUrls` или [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). Таким образом, вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel прослушивает порт, указанный при выполнении приложения без IIS.
+Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. `CreateDefaultBuilder` вызывает метод [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration), который принимает этот динамический порт и настраивает Kestrel для прослушивания по адресу `http://localhost:{dynamicPort}/`. Это переопределяет другие конфигурации URL-адресов, такие как вызовы `UseUrls` или [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). Таким образом, вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel прослушивает порт, указанный при выполнении приложения без IIS.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -89,7 +86,7 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="webconfig-file"></a>Файл web.config
 
-В файле *web.config* содержится конфигурация [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). За создание, преобразования и публикацию *web.config* отвечает веб-пакет SDK для .NET Core (`Microsoft.NET.Sdk.Web`). Пакет SDK задается в начале файла проекта.
+В файле *web.config* содержится конфигурация [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Создание, преобразование и публикация файла *web.config* обрабатываются целевым объектом MSBuild (`_TransformWebConfig`) при публикации проекта. Этот целевой объект присутствует в целевых веб-пакетах SDK (`Microsoft.NET.Sdk.Web`). Пакет SDK задается в начале файла проекта:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -172,8 +169,9 @@ services.Configure<IISOptions>(options =>
 1. Установите *пакет размещения .NET Core* в размещающей системе. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратный прокси-сервер между службами IIS и сервером Kestrel. Если система не подключена к Интернету, перед установкой пакета размещения .NET Core получите и установите [Распространяемый компонент Microsoft Visual C++ 2015](https://www.microsoft.com/download/details.aspx?id=53840).
 
    1. Перейдите на [страницу всех загрузок .NET](https://www.microsoft.com/net/download/all).
-   1. Выберите последнюю не предварительную версию среды выполнения .NET Core из списка (**.NET Core** > **Среда выполнения** > **Среда выполнения .NET Core x.y.z**). Если вы не планируете работать с предварительной версией программного обеспечения, избегайте сред выполнения, в тексте ссылки которых содержится "preview" (предварительная версия) или "rc" (версия-кандидат).
-   1. На странице скачивания среды выполнения .NET Core в разделе **Windows** выберите ссылку **установщика пакета размещения**, чтобы скачать *пакет размещения .NET Core*.
+   1. В столбце **Среда выполнения** в таблице выберите последнюю не предварительную версию среды выполнения .NET Core из списка (**Загрузка среды выполнения X.Y (vX.Y.Z)**). Последняя версия среды выполнения имеет метку **Текущая**. Если вы не планируете работать с предварительной версией программного обеспечения, избегайте сред выполнения, в тексте ссылки которых содержится "preview" (предварительная версия) или "rc" (версия-кандидат).
+   1. На странице загрузки среды выполнения .NET Core в разделе **Windows** выберите ссылку **установщика пакета размещения**, чтобы скачать установщик *пакета размещения .NET Core*.
+   1. Запустите установщик на сервере.
 
    **Важно!** Если пакет размещения устанавливается до установки служб IIS, его нужно восстановить. После установки служб IIS запустите установщик пакета размещения еще раз.
    

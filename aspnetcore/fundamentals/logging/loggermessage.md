@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/logging/loggermessage
-ms.openlocfilehash: 24a75cfacfa61ca66e78deeb743baa75718dfb76
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 5b5bd03b6cb5da693f046653a09ba400ee6ff585
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729198"
 ---
 # <a name="high-performance-logging-with-loggermessage-in-aspnet-core"></a>Высокопроизводительное ведение журналов с помощью LoggerMessage в ASP.NET Core
 
@@ -143,13 +144,9 @@ Parameter name: entity
 
 Пример приложения имеет кнопку **Clear All** (Очистить все), позволяющую удалить все цитаты в базе данных. Удаление цитат производится по одной за раз. При каждом удалении цитаты для средства ведения журнала вызывается метод `QuoteDeleted`. В эти сообщения журнала добавляется область журнала.
 
-Включите `IncludeScopes` в параметрах средства ведения журнала консоли:
+Включите `IncludeScopes` в раздел средства ведения журнала консоли в файле *appsettings.json*:
 
-[!code-csharp[](loggermessage/sample/Program.cs?name=snippet1&highlight=10)]
-
-Чтобы включить области журнала в приложениях ASP.NET Core 2.0, нужно задать `IncludeScopes`. Возможность задания `IncludeScopes` через файлы конфигурации *appsettings* запланирована для выпуска ASP.NET Core 2.1.
-
-Пример приложения очищает другие поставщики и добавляет фильтры, чтобы сократить объем выходных данных журнала. Это упрощает просмотр сообщений журнала в примере, которые демонстрируют функции `LoggerMessage`.
+[!code-csharp[](loggermessage/sample/appsettings.json?highlight=3-5)]
 
 Для создания области журнала добавьте поле, содержащее делегат `Func` для области. Пример приложения создает поле `_allQuotesDeletedScope` (*Internal/LoggerExtensions.cs*):
 
@@ -181,6 +178,6 @@ info: LoggerMessageSample.Pages.IndexModel[4]
       Quote deleted (Quote = 'Quote 3' Id = 4)
 ```
 
-## <a name="see-also"></a>См. также
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Ведение журнала](xref:fundamentals/logging/index)

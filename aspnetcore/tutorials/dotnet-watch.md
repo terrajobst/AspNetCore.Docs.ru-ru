@@ -1,31 +1,32 @@
 ---
-title: Разработка приложений ASP.NET Core с использованием dotnet watch
+title: Разработка приложений ASP.NET Core с использованием наблюдателя файлов
 author: rick-anderson
-description: В этом учебнике показано, как установить и использовать наблюдатель за файлами .NET Core CLI (dotnet watch) в приложении ASP.NET Core.
+description: В этом руководстве показано, как установить и использовать наблюдатель за файлами .NET Core CLI (dotnet watch) в приложении ASP.NET Core.
 manager: wpickett
 ms.author: riande
-ms.date: 10/05/2017
+ms.date: 05/31/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: c3ece3a5b936b2ea7b7772eee10e598cb557b361
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 016ee107ae646ed43d8a98e97fd2d5b41356910e
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341851"
 ---
-# <a name="develop-aspnet-core-apps-using-dotnet-watch"></a>Разработка приложений ASP.NET Core с использованием dotnet watch
+# <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Разработка приложений ASP.NET Core с использованием наблюдателя файлов
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Виктор Хурдугачи](https://twitter.com/victorhurdugaci) (Victor Hurdugaci)
 
 `dotnet watch` — это средство, которое запускает команду [.NET Core CLI](/dotnet/core/tools) при изменении исходных файлов. Например, в результате изменения файла может выполняться компиляция, тестирование или развертывание.
 
-В этом руководстве используется уже существующее приложение веб-API с двумя конечными точками, одна из которых возвращает сумму, а другая — произведение. В методе product присутствует ошибка, которая будет исправлена в рамках этого руководства.
+В этом руководстве используется уже существующее приложение веб-API с двумя конечными точками, одна из которых возвращает сумму, а другая — произведение. В методе произведения есть ошибка, которая исправлена в этом руководстве.
 
 Скачайте [образец приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Он содержит два проекта: *WebApp* (веб-API ASP.NET Core) и *WebAppTests* (модульные тесты для веб-API).
 
-В командной оболочке перейдите в папку *WebApp* и запустите следующую команду:
+В командной оболочке перейдите в папку *WebApp*. Выполните следующую команду:
 
 ```console
 dotnet run
@@ -43,25 +44,31 @@ Application started. Press Ctrl+C to shut down.
 
 В браузере перейдите на адрес `http://localhost:<port number>/api/math/sum?a=4&b=5`. Должен появиться результат `9`.
 
-Перейдите к API продукта (`http://localhost:<port number>/api/math/product?a=4&b=5`). Он возвращает `9`, а не `20`, как ожидалось. Эта ошибка будет исправлена далее в этом руководстве.
+Перейдите к API продукта (`http://localhost:<port number>/api/math/product?a=4&b=5`). Он возвращает `9`, а не `20`, как ожидалось. Эта проблема устраняется далее в этом руководстве.
+
+::: moniker range="<= aspnetcore-2.0"
 
 ## <a name="add-dotnet-watch-to-a-project"></a>Добавление `dotnet watch` в проект
+
+Средство наблюдения за файлами `dotnet watch` входит в версию 2.1.300 пакета SDK для .NET Core. Выполните следующие действия при использовании более ранней версии пакета SDK для .NET Core.
 
 1. Добавьте ссылку на пакет `Microsoft.DotNet.Watcher.Tools` в *CSPROJ*-файл:
 
     ```xml
     <ItemGroup>
         <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
-    </ItemGroup> 
+    </ItemGroup>
     ```
 
 1. Установите пакет `Microsoft.DotNet.Watcher.Tools`, запустив следующую команду:
-    
+
     ```console
     dotnet restore
     ```
 
-## <a name="running-net-core-cli-commands-using-dotnet-watch"></a>Запуск команд .NET Core CLI с помощью `dotnet watch`
+::: moniker-end
+
+## <a name="run-net-core-cli-commands-using-dotnet-watch"></a>Запуск команд .NET Core CLI с помощью `dotnet watch`
 
 Любую [команду .NET Core CLI](/dotnet/core/tools#cli-commands) можно запустить с `dotnet watch`. Пример:
 
@@ -74,7 +81,7 @@ Application started. Press Ctrl+C to shut down.
 
 Запустите `dotnet watch run` в папке *WebApp*. В выходных данных консоли будет указано, что запущен `watch`.
 
-## <a name="making-changes-with-dotnet-watch"></a>Внесение изменений с использованием `dotnet watch`
+## <a name="make-changes-with-dotnet-watch"></a>Изменения с помощью `dotnet watch`
 
 Убедитесь, что `dotnet watch` выполняется.
 
@@ -84,16 +91,16 @@ Application started. Press Ctrl+C to shut down.
 public static int Product(int a, int b)
 {
   return a * b;
-} 
+}
 ```
 
 Сохраните файл. В выходных данных консоли будет показано, что `dotnet watch` обнаружил изменение файла и перезапустил приложение.
 
 Убедитесь, что `http://localhost:<port number>/api/math/product?a=4&b=5` возвращает правильный результат.
 
-## <a name="running-tests-using-dotnet-watch"></a>Выполнение тестов с использованием `dotnet watch`
+## <a name="run-tests-using-dotnet-watch"></a>Тестирование с помощью `dotnet watch`
 
-1. Снова измените метод `Product` для *MathController.cs* так, чтобы он возвращал сумму чисел, после чего сохраните файл.
+1. Снова измените метод `Product` для *MathController.cs* так, чтобы он возвращал сумму чисел. Сохраните файл.
 1. В командной оболочке перейдите в папку *WebAppTests*.
 1. Запустите [dotnet restore](/dotnet/core/tools/dotnet-restore).
 1. Запустите `dotnet watch test`. В выходных данных будет указано, что проверка не пройдена и наблюдатель ожидает изменений в файле:
@@ -107,8 +114,73 @@ public static int Product(int a, int b)
 
 `dotnet watch` обнаруживает изменения в файле и повторно запускает тесты. В выходных данных консоли будет указано, что проверка пройдена.
 
-## <a name="dotnet-watch-in-github"></a>dotnet-watch на сайте GitHub
+## <a name="customize-files-list-to-watch"></a>Настройка списка файлов для наблюдения
 
-dotnet-watch входит в состав [репозитория DotNetTools](https://github.com/aspnet/DotNetTools/tree/dev/src/dotnet-watch) на сайте GitHub.
+По умолчанию `dotnet-watch` отслеживает все файлы, соответствующие следующим стандартным маскам:
 
-В [разделе MSBuild](https://github.com/aspnet/DotNetTools/tree/dev/src/dotnet-watch#msbuild) файла [ReadMe для dotnet-watch](https://github.com/aspnet/DotNetTools/blob/dev/src/dotnet-watch/README.md) поясняется, как настроить dotnet-watch из файла проекта MSBuild, для которого осуществляется контроль. Файл [ReadMe для dotnet-watch](https://github.com/aspnet/DotNetTools/blob/dev/src/dotnet-watch/README.md) содержит сведения о dotnet-watch, которые отсутствуют в этом руководстве.
+* `**/*.cs`
+* `*.csproj`
+* `**/*.resx`
+
+Можно добавить в список наблюдения еще элементы, отредактировав файл *.csproj*. Элементы можно указывать по отдельности или с помощью стандартной маски.
+
+```xml
+<ItemGroup>
+    <!-- extends watching group to include *.js files -->
+    <Watch Include="**\*.js" Exclude="node_modules\**\*;**\*.js.map;obj\**\*;bin\**\*" />
+</ItemGroup>
+```
+
+## <a name="opt-out-of-files-to-be-watched"></a>Удаление файлов из списка наблюдения
+
+Можно настроить `dotnet-watch` так, чтобы игнорировать параметры по умолчанию. Чтобы пропускать определенные файлы, добавьте атрибут `Watch="false"` в определение элемента в файле *.csproj*:
+
+```xml
+<ItemGroup>
+    <!-- exclude Generated.cs from dotnet-watch -->
+    <Compile Include="Generated.cs" Watch="false" />
+
+    <!-- exclude Strings.resx from dotnet-watch -->
+    <EmbeddedResource Include="Strings.resx" Watch="false" />
+
+    <!-- exclude changes in this referenced project -->
+    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj" Watch="false" />
+</ItemGroup>
+```
+
+## <a name="custom-watch-projects"></a>Пользовательское наблюдение за проектами
+
+`dotnet-watch` используется не только с проектами C#. Создайте пользовательское наблюдение за проектами для различных ситуаций. Вы можете использовать следующий макет проекта:
+
+* **test/**
+  * *UnitTests/UnitTests.csproj*
+  * *IntegrationTests/IntegrationTests.csproj*
+
+Если вы хотите наблюдать за обоими проектами, создайте пользовательский файл проекта, настроенный для наблюдения за обоими проектами:
+
+```xml
+<Project>
+    <ItemGroup>
+        <TestProjects Include="**\*.csproj" />
+        <Watch Include="**\*.cs" />
+    </ItemGroup>
+
+    <Target Name="Test">
+        <MSBuild Targets="VSTest" Projects="@(TestProjects)" />
+    </Target>
+
+    <Import Project="$(MSBuildExtensionsPath)\Microsoft.Common.targets" />
+</Project>
+```
+
+Чтобы запустить наблюдение за файлами для обоих проектов, внесите изменения в папку *test*. Выполните следующую команду:
+
+```console
+dotnet watch msbuild /t:Test
+```
+
+VSTest выполняется при изменении любого файла в любом из тестовых проектов.
+
+## <a name="dotnet-watch-in-github"></a>`dotnet-watch` на GitHub
+
+`dotnet-watch` входит в [репозиторий DotNetTools](https://github.com/aspnet/DotNetTools/tree/dev/src/dotnet-watch) на GitHub.

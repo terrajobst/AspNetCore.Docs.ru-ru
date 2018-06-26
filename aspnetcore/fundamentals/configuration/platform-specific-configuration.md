@@ -11,12 +11,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 618cb4349dcff696db37012af3aee844b82974f2
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 47d3a64ce0cc543162a066eeeaa0aaaf7dc96a5f
+ms.sourcegitcommit: 0d6f151e69c159d776ed0142773279e645edbc0a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34729055"
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35415012"
 ---
 # <a name="enhance-an-app-from-an-external-assembly-in-aspnet-core-with-ihostingstartup"></a>Усовершенствование приложения из внешней сборки в ASP.NET Core с IHostingStartup
 
@@ -57,7 +57,7 @@ ms.locfileid: "34729055"
 
 [!code-csharp[](platform-specific-configuration/snapshot_sample/StartupEnhancement.cs?name=snippet1)]
 
-Класс реализует `IHostingStartup`. Метод класса [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) использует [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) для добавления улучшений в приложение:
+Класс реализует `IHostingStartup`. Метод класса [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) использует [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) для добавления улучшений в приложение. `IHostingStartup.Configure` в стартовой сборке размещения вызывается средой выполнения до `Startup.Configure` в пользовательском коде, что позволяет пользовательскому коду перезаписать конфигурацию, предоставленную стартовой сборкой размещения.
 
 [!code-csharp[](platform-specific-configuration/snapshot_sample/StartupEnhancement.cs?name=snippet2&highlight=3,5)]
 
@@ -99,31 +99,33 @@ ms.locfileid: "34729055"
 
 Файл реализации *\*.deps.json* должен находиться в доступном расположении.
 
-Для индивидуального использования поместите файл в папку `additonalDeps` в параметрах профиля пользователя `.dotnet`: 
+Для индивидуального использования поместите файл в папку `additonalDeps` в параметрах профиля пользователя `.dotnet`:
 
 ```
-<DRIVE>\Users\<USER>\.dotnet\x64\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.1.0\
+<DRIVE>\Users\<USER>\.dotnet\x64\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\
 ```
 
 Для глобального использования поместите файл в папку `additonalDeps` в установке .NET Core:
 
 ```
-<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.1.0\
+<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\
 ```
 
-Версия `2.1.0` — это версия общей среды выполнения, которую использует целевое приложение. Общая среда выполнения указана в файле *\*.runtimeconfig.json*. В примере приложения общая среда выполнения задается в файле *HostingStartupSample.runtimeconfig.json*.
+Версия общей платформы отражает версию общей среды выполнения, которую использует целевое приложение. Общая среда выполнения указана в файле *\*.runtimeconfig.json*. В примере приложения общая среда выполнения задается в файле *HostingStartupSample.runtimeconfig.json*.
 
 **Настройка переменных среды**
 
 Задайте следующие переменные среды в контексте приложения, которое использует улучшение.
 
-ASPNETCORE\_HOSTINGSTARTUPASSEMBLIES
+ASPNETCORE_HOSTINGSTARTUPASSEMBLIES
 
 Только начальные сборки размещения проверяются на наличие `HostingStartupAttribute`. Имя сборки реализации предоставляется в этой переменной среды. В пример приложения установлено значение `StartupDiagnostics`.
 
 Значение также можно задать с помощью параметра конфигурации узла [Начальные сборки размещения](xref:fundamentals/host/web-host#hosting-startup-assemblies).
 
-DOTNET\_ADDITIONAL\_DEPS
+При наличии нескольких стартовых сборок размещения их методы [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) выполняются в порядке расположения сборок.
+
+DOTNET_ADDITIONAL_DEPS
 
 Расположение файла реализации *\*.deps.json*.
 
@@ -136,7 +138,7 @@ DOTNET\_ADDITIONAL\_DEPS
 Если файл расположен в установке .NET Core для глобального использования, укажите полный путь к файлу:
 
 ```
-<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.1.0\<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
+<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
 ```
 
 В пример приложения установлено значение:
