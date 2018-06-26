@@ -2,7 +2,7 @@
 
 В этом разделе добавляется HTML-страница, которая использует jQuery для вызова веб-API. jQuery запускает запрос и вносит на страницу подробные сведения из ответа API.
 
-Настройте в проекте обслуживание статических файлов и включение сопоставления файлов по умолчанию. Для этого необходимо вызвать методы расширения [UseStaticFiles](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) и [UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) в *Startup.Configure*. Дополнительные сведения см. в разделе [Работа со статическими файлами в ASP.NET Core](xref:fundamentals/static-files).
+Настройте в проекте обслуживание статических файлов и включение сопоставления файлов по умолчанию. Для этого необходимо вызвать методы расширения [UseStaticFiles](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) и [UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) в *Startup.Configure*. Дополнительные сведения см. в разделе [Статические файлы](xref:fundamentals/static-files).
 
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Startup2.cs?name=snippet_Configure&highlight=3-4)]
 

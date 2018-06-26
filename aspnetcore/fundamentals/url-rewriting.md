@@ -2,19 +2,15 @@
 title: ПО промежуточного слоя для переопределения URL-адресов в ASP.NET Core
 author: guardrex
 description: Сведения о переопределении и перенаправлении URL-адресов с помощью ПО промежуточного слоя для переопределения URL-адресов в приложениях ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 08/17/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: a4ffa512825fedafdc58ade9929097e255593fa9
-ms.sourcegitcommit: 40b102ecf88e53d9d872603ce6f3f7044bca95ce
+ms.openlocfilehash: d3484e222c4412a427d086c1b71a12b81095ba72
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/15/2018
-ms.locfileid: "35652218"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276351"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ПО промежуточного слоя для переопределения URL-адресов в ASP.NET Core
 

@@ -9,17 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 1dba6eaceb6b69cf92cb8a831df9dc8d70a005d4
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 3272700c7739778a6a341ae8ee424fd69605ca53
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729721"
 ---
 # <a name="get-started-with-aspnet-core-mvc-and-visual-studio"></a>Начало работы с MVC ASP.NET Core и Visual Studio
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-[!INCLUDE [consider RP](../../includes/razor.md)]
+[!INCLUDE [consider RP](~/includes/razor.md)]
 
 Существует 3 версии этого учебника:
 
@@ -29,9 +30,64 @@ ms.lasthandoff: 05/12/2018
 
 ## <a name="install-visual-studio-and-net-core"></a>Установка Visual Studio и .NET Core
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!INCLUDE [](~/includes/net-core-prereqs-windows.md) [](~/includes/net-core-prereqs-windows.md)]
+
+## <a name="create-a-web-app"></a>Создание веб-приложения
+
+В Visual Studio выберите меню **Файл > Создать > Проект**.
+
+![Файл > Создать > Проект](start-mvc/_static/alt_new_project.png)
+
+В диалоговом окне **Создание проекта** выполните следующие действия.
+
+* В левой области выберите **.NET Core**.
+* В центральной области выберите **Веб-приложение ASP.NET Core (.NET Core)**.
+* Назовите проект "MvcMovie" (имя "MvcMovie" необходимо присвоить для того, чтобы при копировании кода пространства имен совпали).
+* Нажмите кнопку **ОК**.
+
+![Диалоговое окно нового проекта, .NET Core в левой области, веб-узел ASP.NET Core ](start-mvc/_static/new_project2-21.png)
+
+Заполните данные в диалоговом окне **Создание веб-приложения ASP.NET Core (.NET Core) — MvcMovie**.
+
+* Выберите в раскрывающемся списке выбора версии **ASP.NET Core 2.1**
+* Выберите **Веб-приложение (модель-представление-контроллер)**.
+* Нажмите кнопку **ОК**.
+
+![Диалоговое окно нового проекта, .NET Core в левой области, веб-узел ASP.NET Core ](start-mvc/_static/new_project22-21.png)
+
+В Visual Studio используется только что созданный вами шаблон по умолчанию для проекта MVC. Чтобы приложение стало рабочим, осталось только указать имя проекта и выбрать несколько параметров. Это простой начальный проект и хорошая стартовая точка.
+
+Нажмите клавишу **F5**, чтобы запустить приложение в режиме отладки, или клавиши **CTRL-F5**, чтобы выбрать режим без отладки.
+<!-- These images are also used by uid: tutorials/first-mvc-app-xplat/start-mvc -->
+![Запуск приложения](start-mvc/_static/1.png)
+
+* Visual Studio запускает [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview), а затем ваше приложение. Обратите внимание на то, что в адресной строке указывается `localhost:port#`, а не что-либо типа `example.com`. Это связано с тем, что `localhost` — стандартное имя узла для локального компьютера. Когда Visual Studio создает веб-проект, для веб-сервера используется случайный порт. На представленном выше снимке экрана используется порт номер 5000. URL-адрес в браузере отображает `localhost:5000`. При запуске приложения вы увидите другой номер порта.
+* Запуск приложения с помощью клавиш **CTRL+F5** (режим без отладки) позволяет внести изменения в код, сохранить файл, обновить браузер и увидеть изменения в коде. Многие разработчики предпочитают использовать режим без отладки, чтобы быстро запустить приложение и просмотреть изменения.
+* Из меню **Отладка** можно запустить приложение в режиме с отладкой или без.
+
+![Меню отладки](start-mvc/_static/debug_menu.png)
+
+* Чтобы выполнить отладку приложения, нажмите кнопку **IIS Express**.
+
+![IIS Express](start-mvc/_static/iis_express.png)
+
+Шаблон по умолчанию включает рабочие ссылки **Домой, О программе** и **Контакты**. На представленном выше снимке экрана эти ссылки не отображаются. Если размер окна вашего браузера слишком мал, нажмите значок навигации, чтобы отобразить эти ссылки.
+
+![Значок навигации в правом верхнем углу экрана](start-mvc/_static/2.png)
+
+При запуске в режиме отладки нажмите клавиши **SHIFT+F5**, чтобы остановить отладку.
+
+В следующей части этого учебника мы поговорим об MVC и приступим к написанию кода.
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-[!INCLUDE [](~/includes/net-core-prereqs.md)]
+[!INCLUDE [](~/includes/net-core-prereqs.md) [](~/includes/net-core-prereqs.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
@@ -112,5 +168,6 @@ ms.lasthandoff: 05/12/2018
 
 В следующей части этого учебника мы поговорим об MVC и приступим к написанию кода.
 
+::: moniker-end
 > [!div class="step-by-step"]
 > [Вперед](adding-controller.md)  

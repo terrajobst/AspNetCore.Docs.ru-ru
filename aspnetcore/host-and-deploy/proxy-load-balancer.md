@@ -2,20 +2,16 @@
 title: Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки
 author: guardrex
 description: Сведения о конфигурации приложений, размещаемых за прокси-серверами и подсистемами балансировки нагрузки, которые могут мешать передаче важных сведений в запросах.
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/26/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: e18f049fd5d8caef5dfc488a020ec239d1a6d83d
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 1797962d6eada9c48b31cd94e2c7481380301a0d
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34567079"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276780"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки
 

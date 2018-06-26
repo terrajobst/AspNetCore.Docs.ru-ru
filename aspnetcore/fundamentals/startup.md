@@ -2,20 +2,16 @@
 title: Запуск приложения в ASP.NET Core
 author: ardalis
 description: Сведения о том, как класс Startup в ASP.NET Core настраивает службы и конвейер запросов приложения.
-manager: wpickett
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/startup
-ms.openlocfilehash: 58ced0ae11f462bc309526b7db7bda7897c33009
-ms.sourcegitcommit: 40b102ecf88e53d9d872603ce6f3f7044bca95ce
+ms.openlocfilehash: f0b907e4322809dfe2bcd287bb064f35f5ebe150
+ms.sourcegitcommit: 79b756ea03eae77a716f500ef88253ee9b1464d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "34233174"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36314124"
 ---
 # <a name="application-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
@@ -45,7 +41,7 @@ ms.locfileid: "34233174"
 
 [!code-csharp[](startup/snapshot_sample/Startup2.cs)]
 
-Альтернативой внедрению `IHostingEnvironment` является использование подхода на основе соглашений. Приложение может определять отдельные классы `Startup` для различных сред (например, `StartupDevelopment`), при этом подходящий класс запуска выбирается во время выполнения. Класс, у которого суффикс имени соответствует текущей среде, получает приоритет. Если приложение выполняется в среде разработки и включает в себя оба класса — `Startup` и `StartupDevelopment`, используется класс `StartupDevelopment`. Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments#startup-conventions).
+Альтернативой внедрению `IHostingEnvironment` является использование подхода на основе соглашений. Приложение может определять отдельные классы `Startup` для различных сред (например, `StartupDevelopment`), при этом подходящий класс запуска выбирается во время выполнения. Класс, у которого суффикс имени соответствует текущей среде, получает приоритет. Если приложение выполняется в среде разработки и включает в себя оба класса — `Startup` и `StartupDevelopment`, используется класс `StartupDevelopment`. Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments#environment-based-startup-class-and-methods).
 
 Дополнительные сведения о `WebHostBuilder` см. в разделе [Размещение](xref:fundamentals/host/index). Сведения об обработке ошибок во время запуска см. в разделе [Обработка исключений при запуске](xref:fundamentals/error-handling#startup-exception-handling).
 

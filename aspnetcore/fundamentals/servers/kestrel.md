@@ -2,20 +2,16 @@
 title: Реализации веб-сервера Kestrel в ASP.NET Core
 author: rick-anderson
 description: Общие сведения о Kestrel — кроссплатформенном веб-сервере для ASP.NET Core.
-manager: wpickett
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 05/02/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 39949585dc8fce10c31045ef3013c6bc166e45ba
-ms.sourcegitcommit: 4e3497bda0c3e5011ffba3717eb61a1d46c61c15
+ms.openlocfilehash: 62649351271deebcf1ed9d2f8b2258bed3478989
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/14/2018
-ms.locfileid: "35613155"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276660"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера Kestrel в ASP.NET Core
 
@@ -458,12 +454,12 @@ WebHost.CreateDefaultBuilder()
 
 Если указать номер порта `0`, Kestrel динамически привязывается к доступному порту. Следующий пример показывает, как определить, к какому порту фактически привязан Kestrel во время выполнения:
 
-[!code-csharp[](kestrel/samples/2.x/KestrelSample/Startup.cs?name=snippet_Port0&highlight=3)]
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Startup.cs?name=snippet_Configure&highlight=3-4,15-21)]
 
 Когда приложение выполняется, в выходных данных в окне консоли указывается динамический порт, по которому можно связаться с приложением:
 
 ```console
-Now listening on: http://127.0.0.1:48508
+Listening on the following addresses: http://127.0.0.1:48508
 ```
 
 **Ограничения UseUrls, аргумента командной строки --urls, ключа конфигурации узла urls и переменной среды ASPNETCORE_URLS**

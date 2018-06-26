@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 800ff2039e7cc1fa37315ed55a77711dc9f47504
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 11f3e0b0cc1356db4c5fb9a2ce948099ed9f85b5
+ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/10/2018
+ms.locfileid: "35252390"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Шаблон параметров в ASP.NET Core
 
@@ -25,11 +26,11 @@ ms.lasthandoff: 05/07/2018
 * [Принцип изоляции интерфейсов](http://deviq.com/interface-segregation-principle/). Функции (классы), которые зависят от параметров конфигурации, зависят только от используемых ими параметров конфигурации.
 * [Разделение ответственности](http://deviq.com/separation-of-concerns/). Параметры для разных частей приложения не зависят друг от друга и не связаны друг с другом.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample)). Информацию в этой статье будет проще воспринимать, если пользоваться примером приложения.
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample)). Информацию в этой статье будет проще воспринимать, если пользоваться примером приложения.
 
 ## <a name="basic-options-configuration"></a>Конфигурация основных параметров
 
-Конфигурация основных параметров демонстрируется в примере № 1 в [образце приложения](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Конфигурация основных параметров демонстрируется в примере № 1 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
 Класс параметров должен быть неабстрактным с открытым конструктором без параметров. Приведенный ниже класс (`MyOptions`) имеет два свойства: `Option1` и `Option2`. Задавать значения по умолчанию необязательно, однако конструктор класса в этом примере задает значение по умолчанию для `Option1`. Значение по умолчанию для `Option2` устанавливается путем прямой инициализации (*Models/MyOptions.cs*).
 
@@ -49,7 +50,7 @@ ms.lasthandoff: 05/07/2018
 
 В файле *appsettings.json* образца задаются значения для свойств `option1` и `option2`:
 
-[!code-json[](options/sample/appsettings.json)]
+[!code-json[](options/sample/appsettings.json?highlight=2-3)]
 
 Когда приложение выполняется, метод `OnGet` страничной модели возвращает строку со значениями класса параметров:
 
@@ -59,7 +60,7 @@ option1 = value1_from_json, option2 = -1
 
 ## <a name="configure-simple-options-with-a-delegate"></a>Настройка простых параметров с помощью делегата
 
-Настройка простых параметров с помощью делегата демонстрируется в примере № 2 в [образце приложения](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Настройка простых параметров с помощью делегата демонстрируется в примере № 2 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
 Используйте делегат для задания значений параметров. В образце приложения используется класс `MyOptionsWithDelegateConfig` (*Models/MyOptionsWithDelegateConfig.cs*):
 
@@ -89,7 +90,7 @@ delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 
 ## <a name="suboptions-configuration"></a>Конфигурация подпараметров
 
-Конфигурация подпараметров демонстрируется в примере № 3 в [образце приложения](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Конфигурация подпараметров демонстрируется в примере № 3 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
 В приложениях должны создаваться классы приложений, относящиеся к определенным группам функциональных возможностей (классам). Части приложения, которым требуются значения конфигурации, должны иметь доступ только к используемым ими значениям конфигурации.
 
@@ -99,7 +100,7 @@ delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 
 [!code-csharp[](options/sample/Startup.cs?name=snippet_Example3)]
 
-Методу расширения `GetSection` требуется пакет NuGet [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/). Если приложение использует метапакет [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/), он включается автоматически.
+Методу расширения `GetSection` требуется пакет NuGet [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/). Если приложение использует [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 или более поздней версии), пакет включается автоматически.
 
 В файле *appsettings.json* образца определяется член `subsection` с ключами для `suboption1` и `suboption2`.
 
@@ -125,7 +126,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="options-provided-by-a-view-model-or-with-direct-view-injection"></a>Параметры, предоставляемые моделью представления или посредством прямого внедрения представления
 
-Параметры, предоставляемые моделью представления или посредством прямого внедрения представления, демонстрируются в примере № 4 в [образце приложения](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Параметры, предоставляемые моделью представления или посредством прямого внедрения представления, демонстрируются в примере № 4 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
 Параметры могут передаваться в модель представления или путем внедрения `IOptions<TOptions>` непосредственно в представление (*Pages/Index.cshtml.cs*):
 
@@ -145,7 +146,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="reload-configuration-data-with-ioptionssnapshot"></a>Повторная загрузка данных конфигурации с помощью IOptionsSnapshot
 
-Повторная загрузка данных конфигурации с помощью `IOptionsSnapshot` демонстрируется в примере № 5 в [образце приложения](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Повторная загрузка данных конфигурации с помощью `IOptionsSnapshot` демонстрируется в примере № 5 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
 *Требуется ASP.NET Core 1.1 или более поздней версии.*
 
@@ -173,7 +174,7 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 ## <a name="named-options-support-with-iconfigurenamedoptions"></a>Поддержка именованных параметров в IConfigureNamedOptions
 
-Поддержка именованных параметров в [IConfigureNamedOptions](/dotnet/api/microsoft.extensions.options.iconfigurenamedoptions-1) демонстрируется в примере № 6 в [образце приложения](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Поддержка именованных параметров в [IConfigureNamedOptions](/dotnet/api/microsoft.extensions.options.iconfigurenamedoptions-1) демонстрируется в примере № 6 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
 *Требуется ASP.NET Core 2.0 или более поздней версии.*
 

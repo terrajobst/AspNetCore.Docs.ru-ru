@@ -2,20 +2,16 @@
 title: Размещение ASP.NET Core в службе Windows
 author: guardrex
 description: Узнайте, как разместить приложение ASP.NET Core в службе Windows.
-manager: wpickett
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 5eba685bbe55d43bb063a01798bc691a1ba0d6fc
-ms.sourcegitcommit: 4e3497bda0c3e5011ffba3717eb61a1d46c61c15
+ms.openlocfilehash: 0149039f69539b7c69d7ba45efcf09d80ffcba79
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/14/2018
-ms.locfileid: "35613090"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275102"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 

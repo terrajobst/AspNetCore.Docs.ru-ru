@@ -8,7 +8,16 @@
 
 ## <a name="the-create-delete-details-and-edit-pages"></a>Страницы Create, Delete, Details и Edit
 
-Изучите страничную модель *Pages/Movies/Index.cshtml.cs*: [!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs)]
+Изучите модель страницы *Pages/Movies/Index.cshtml.cs*:
+
+::: moniker range="= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs)]
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index21.cshtml.cs)]
+
+::: moniker-end
 
 Страницы Razor Pages являются производными от `PageModel`. Как правило, класс, производный от `PageModel`, называется `<PageName>Model`. Используя [внедрение зависимостей](xref:fundamentals/dependency-injection), конструктор добавляет на страницу `MovieContext`. Этому шаблону соответствуют все сформированные страницы. Дополнительные сведения об асинхронном программировании с использованием Entity Framework см. в разделе [Асинхронный код](xref:data/ef-rp/intro#asynchronous-code).
 
@@ -17,7 +26,7 @@
 Когда `OnGet` возвращает `void` или `OnGetAsync` возвращает `Task`, возвращаемый метод не используется. Если возвращаемый тип — `IActionResult` или `Task<IActionResult>`, необходимо предоставить оператор return. Например, метод `OnPostAsync` *Pages/Movies/Create.cshtml.cs*:
 
 <!-- TODO - replace with snippet
-[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
  -->
 
 ```csharp
@@ -34,6 +43,7 @@ public async Task<IActionResult> OnPostAsync()
     return RedirectToPage("./Index");
 }
 ```
+
 Изучите страницу Razor *Pages/Movies/Index.cshtml*:
 
 [!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml)]
@@ -70,13 +80,28 @@ Razor может выполнять переход с HTML на C# или на �
 
 Выделенный выше код представляет собой пример перехода Razor на C#. Символы `{` и `}` ограничивают блок кода C#.
 
-Базовый класс `PageModel` содержит свойство словаря `ViewData`, позволяющее передать данные в представление. Объекты можно добавить в словарь `ViewData` с помощью шаблона "ключ/значение". В приведенном выше примере в словарь `ViewData` добавляется свойство "Title". Свойство "Title" используется в файле *Pages/_Layout.cshtml*. Ниже показаны первые несколько строк файла *Pages/_Layout.cshtml*.
+Базовый класс `PageModel` содержит свойство словаря `ViewData`, позволяющее передать данные в представление. Объекты можно добавить в словарь `ViewData` с помощью шаблона "ключ/значение". В приведенном выше примере в словарь `ViewData` добавляется свойство "Title". 
+
+::: moniker range="= aspnetcore-2.0"
+
+Свойство "Title" используется в файле *Pages/_Layout.cshtml*. Ниже показаны первые несколько строк файла *Pages/_Layout.cshtml*.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+Свойство "Title" используется в файле *Pages/Shared/_Layout.cshtml*. Ниже показаны первые несколько строк файла *_Layout.cshtml*.
+
+::: moniker-end
 
 [!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/NU/_Layout1.cshtml?highlight=6-999)]
 
 Строка `@*Markup removed for brevity.*@` представляет собой комментарий Razor. В отличие от комментариев HTML (`<!-- -->`) комментарии Razor не отправляются клиенту.
 
 Запустите приложение и проверьте ссылки в проекте (**Главная**, **О программе**, **Контакты**, **Создать**, **Изменить** и **Удалить**). Каждая страница задает заголовок, который отображается на вкладке браузера. При добавлении страницы в избранное заголовок используется в закладках. В настоящее время страницы *Pages/Index.cshtml* и *Pages/Movies/Index.cshtml* могут иметь один и тот же заголовок, но при желании их заголовки можно изменить.
+
+> [!NOTE]
+> В поле `Price` нельзя вводить десятичные запятые. Чтобы обеспечить поддержку [проверки jQuery](https://jqueryvalidation.org/) для других языков, кроме английского, используйте вместо десятичной точки запятую (","), а для отображения данных в форматах для других языков, кроме английского, выполните действия, необходимые для глобализации вашего приложения. Инструкции по добавлению десятичной запятой представлены в этом [вопросе 4076 GitHub](https://github.com/aspnet/Docs/issues/4076#issuecomment-326590420).
 
 Свойство `Layout` определяется в файле *Pages/_ViewStart.cshtml*:
 
@@ -109,15 +134,22 @@ Razor может выполнять переход с HTML на C# или на �
 
 Изучите страничную модель *Pages/Movies/Create.cshtml.cs*:
 
-[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
+::: moniker range="= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
+::: moniker-end
 
-Метод `OnGet` инициализирует все состояния, необходимые для страницы. Страница Create не содержит никаких состояний для инициализации. Метод `Page` создает объект `PageResult`, который формирует страницу *Create.cshtml*.
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create21.cshtml.cs?name=snippetALL)]
+::: moniker-end
+
+
+Метод `OnGet` инициализирует все состояния, необходимые для страницы. Страница Create не содержит никаких состояний для инициализации, поэтому возвращается `Page`. Далее в этом руководстве вы увидите, как метод `OnGet` инициализирует состояние. Метод `Page` создает объект `PageResult`, который формирует страницу *Create.cshtml*.
 
 Для указания согласия на [привязку модели](xref:mvc/models/model-binding) в свойстве `Movie` используется атрибут `[BindProperty]`. Когда форма Create публикует свои значения, среда выполнения ASP.NET Core связывает переданные значения с моделью `Movie`.
 
 Метод `OnPostAsync` выполняется, когда страница публикует данные формы:
 
-[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetPost)]
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetPost)]
 
 Если в модели есть ошибки, форма отображается снова вместе со всеми опубликованными данными этой формы. Большинство ошибок в модели может быть перехвачено на стороне клиента до публикации формы. Пример ошибки в модели — это публикация значения для поля даты, которое нельзя конвертировать в дату. О проверке на стороне клиента и проверке модели мы поговорим подробнее далее в этом учебнике.
 
@@ -127,7 +159,7 @@ Razor может выполнять переход с HTML на C# или на �
 
 Изучите файл страницы Razor *Pages/Movies/Create.cshtml*:
 
-[!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml)]
+[!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml)]
 
 <!--
 Visual Studio displays the `<form method="post">` tag in a distinctive font used for Tag Helpers. The `<form method="post">` element is a [Form Tag Helper](xref:mvc/views/working-with-forms#the-form-tag-helper). The Form Tag Helper automatically includes an [antiforgery token](xref:security/anti-request-forgery).
