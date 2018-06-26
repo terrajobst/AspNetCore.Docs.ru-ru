@@ -2,52 +2,67 @@
 title: Размещение ASP.NET Core в операционной системе Linux с Apache
 description: Процедура настройки Apache в качестве обратного прокси-сервера в CentOS для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в Kestrel.
 author: spboyer
-manager: wpickett
 ms.author: spboyer
 ms.custom: mvc
 ms.date: 03/13/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 473585f1be180645395c14a154c9c017ca50edab
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 69e92af08eabede023608e612f1fbd48a8f2608e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33962821"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275455"
 ---
-# <a name="host-aspnet-core-on-linux-with-apache"></a><span data-ttu-id="9abaf-103">Размещение ASP.NET Core в операционной системе Linux с Apache</span><span class="sxs-lookup"><span data-stu-id="9abaf-103">Host ASP.NET Core on Linux with Apache</span></span>
+# <a name="host-aspnet-core-on-linux-with-apache"></a><span data-ttu-id="b2904-103">Размещение ASP.NET Core в операционной системе Linux с Apache</span><span class="sxs-lookup"><span data-stu-id="b2904-103">Host ASP.NET Core on Linux with Apache</span></span>
 
-<span data-ttu-id="9abaf-104">Автор: [Шейн Бойер (Shayne Boyer)](https://github.com/spboyer)</span><span class="sxs-lookup"><span data-stu-id="9abaf-104">By [Shayne Boyer](https://github.com/spboyer)</span></span>
+<span data-ttu-id="b2904-104">Автор: [Шейн Бойер (Shayne Boyer)](https://github.com/spboyer)</span><span class="sxs-lookup"><span data-stu-id="b2904-104">By [Shayne Boyer](https://github.com/spboyer)</span></span>
 
-<span data-ttu-id="9abaf-105">Из этого руководства вы узнаете, как настроить [Apache](https://httpd.apache.org/) в качестве обратного прокси-сервера в [CentOS 7](https://www.centos.org/) для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в [Kestrel](xref:fundamentals/servers/kestrel).</span><span class="sxs-lookup"><span data-stu-id="9abaf-105">Using this guide, learn how to set up [Apache](https://httpd.apache.org/) as a reverse proxy server on [CentOS 7](https://www.centos.org/) to redirect HTTP traffic to an ASP.NET Core web app running on [Kestrel](xref:fundamentals/servers/kestrel).</span></span> <span data-ttu-id="9abaf-106">[Расширение mod_proxy](http://httpd.apache.org/docs/2.4/mod/mod_proxy.html) и связанные с ним модули создают обратный прокси-сервер.</span><span class="sxs-lookup"><span data-stu-id="9abaf-106">The [mod_proxy extension](http://httpd.apache.org/docs/2.4/mod/mod_proxy.html) and related modules create the server's reverse proxy.</span></span>
+<span data-ttu-id="b2904-105">Из этого руководства вы узнаете, как настроить [Apache](https://httpd.apache.org/) в качестве обратного прокси-сервера в [CentOS 7](https://www.centos.org/) для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в [Kestrel](xref:fundamentals/servers/kestrel).</span><span class="sxs-lookup"><span data-stu-id="b2904-105">Using this guide, learn how to set up [Apache](https://httpd.apache.org/) as a reverse proxy server on [CentOS 7](https://www.centos.org/) to redirect HTTP traffic to an ASP.NET Core web app running on [Kestrel](xref:fundamentals/servers/kestrel).</span></span> <span data-ttu-id="b2904-106">[Расширение mod_proxy](http://httpd.apache.org/docs/2.4/mod/mod_proxy.html) и связанные с ним модули создают обратный прокси-сервер.</span><span class="sxs-lookup"><span data-stu-id="b2904-106">The [mod_proxy extension](http://httpd.apache.org/docs/2.4/mod/mod_proxy.html) and related modules create the server's reverse proxy.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="9abaf-107">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="9abaf-107">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="b2904-107">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="b2904-107">Prerequisites</span></span>
 
-1. <span data-ttu-id="9abaf-108">Сервер под управлением CentOS 7 и учетная запись обычного пользователя с правами sudo.</span><span class="sxs-lookup"><span data-stu-id="9abaf-108">Server running CentOS 7 with a standard user account with sudo privilege</span></span>
-2. <span data-ttu-id="9abaf-109">Приложение ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="9abaf-109">ASP.NET Core app</span></span>
+1. <span data-ttu-id="b2904-108">Сервер под управлением CentOS 7 и учетная запись обычного пользователя с правами sudo.</span><span class="sxs-lookup"><span data-stu-id="b2904-108">Server running CentOS 7 with a standard user account with sudo privilege.</span></span>
+1. <span data-ttu-id="b2904-109">Установите среду выполнения .NET Core на сервере.</span><span class="sxs-lookup"><span data-stu-id="b2904-109">Install the .NET Core runtime on the server.</span></span>
+   1. <span data-ttu-id="b2904-110">Перейдите на [страницу всех загрузок .NET Core](https://www.microsoft.com/net/download/all).</span><span class="sxs-lookup"><span data-stu-id="b2904-110">Visit the [.NET Core All Downloads page](https://www.microsoft.com/net/download/all).</span></span>
+   1. <span data-ttu-id="b2904-111">Выберите последнюю не предварительную версию среды выполнения из списка под заголовком **Среда выполнения**.</span><span class="sxs-lookup"><span data-stu-id="b2904-111">Select the latest non-preview runtime from the list under **Runtime**.</span></span>
+   1. <span data-ttu-id="b2904-112">Сделайте выбор и следуйте инструкциям для CentOS/Oracle.</span><span class="sxs-lookup"><span data-stu-id="b2904-112">Select and follow the instructions for CentOS/Oracle.</span></span>
+1. <span data-ttu-id="b2904-113">Существующее приложение ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="b2904-113">An existing ASP.NET Core app.</span></span>
 
-## <a name="publish-the-app"></a><span data-ttu-id="9abaf-110">Публикация приложения</span><span class="sxs-lookup"><span data-stu-id="9abaf-110">Publish the app</span></span>
+## <a name="publish-and-copy-over-the-app"></a><span data-ttu-id="b2904-114">Публикация и копирование приложения</span><span class="sxs-lookup"><span data-stu-id="b2904-114">Publish and copy over the app</span></span>
 
-<span data-ttu-id="9abaf-111">Опубликуйте приложение в качестве [автономного развертывания](/dotnet/core/deploying/#self-contained-deployments-scd) в конфигурации выпуска для среды выполнения CentOS 7 (`centos.7-x64`).</span><span class="sxs-lookup"><span data-stu-id="9abaf-111">Publish the app as a [self-contained deployment](/dotnet/core/deploying/#self-contained-deployments-scd) in Release configuration for the CentOS 7 runtime (`centos.7-x64`).</span></span> <span data-ttu-id="9abaf-112">Скопируйте содержимое папки *bin/Release/netcoreapp2.0/centos.7-x64/publish* на сервер с помощью SCP, FTP или другого метода передачи файлов.</span><span class="sxs-lookup"><span data-stu-id="9abaf-112">Copy the contents of the *bin/Release/netcoreapp2.0/centos.7-x64/publish* folder to the server using SCP, FTP, or other file transfer method.</span></span>
+<span data-ttu-id="b2904-115">Настройте приложение, чтобы [его развертывание зависело от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd).</span><span class="sxs-lookup"><span data-stu-id="b2904-115">Configure the app for a [framework-dependent deployment](/dotnet/core/deploying/#framework-dependent-deployments-fdd).</span></span>
+
+<span data-ttu-id="b2904-116">Запустите [dotnet publish](/dotnet/core/tools/dotnet-publish) в среде разработки, чтобы упаковать приложение в каталог (например, *bin/Release/&lt;target_framework_moniker&gt;/publish*), который может выполняться на сервере:</span><span class="sxs-lookup"><span data-stu-id="b2904-116">Run [dotnet publish](/dotnet/core/tools/dotnet-publish) from the development environment to package an app into a directory (for example, *bin/Release/&lt;target_framework_moniker&gt;/publish*) that can run on the server:</span></span>
+
+```console
+dotnet publish --configuration Release
+```
+
+<span data-ttu-id="b2904-117">Приложение может быть опубликовано как [автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd), если вы предпочитаете не сохранять среду выполнения .NET Core на сервере.</span><span class="sxs-lookup"><span data-stu-id="b2904-117">The app can also be published as a [self-contained deployment](/dotnet/core/deploying/#self-contained-deployments-scd) if you prefer not to maintain the .NET Core runtime on the server.</span></span>
+
+<span data-ttu-id="b2904-118">Скопируйте приложение ASP.NET Core на сервер с помощью инструмента, интегрированного в ваш рабочий процесс (например, SCP или SFTP).</span><span class="sxs-lookup"><span data-stu-id="b2904-118">Copy the ASP.NET Core app to the server using a tool that integrates into the organization's workflow (for example, SCP, SFTP).</span></span> <span data-ttu-id="b2904-119">Обычно веб-приложения находятся в каталоге *var* (например, *var/aspnetcore/hellomvc*).</span><span class="sxs-lookup"><span data-stu-id="b2904-119">It's common to locate web apps under the *var* directory (for example, *var/aspnetcore/hellomvc*).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="9abaf-113">Если развертывание выполняется в рабочей среде, рабочий процесс непрерывной интеграции автоматически опубликует приложение и скопирует его ресурсы на сервер.</span><span class="sxs-lookup"><span data-stu-id="9abaf-113">Under a production deployment scenario, a continuous integration workflow does the work of publishing the app and copying the assets to the server.</span></span> 
+> <span data-ttu-id="b2904-120">Если развертывание выполняется в рабочей среде, рабочий процесс непрерывной интеграции автоматически опубликует приложение и скопирует его ресурсы на сервер.</span><span class="sxs-lookup"><span data-stu-id="b2904-120">Under a production deployment scenario, a continuous integration workflow does the work of publishing the app and copying the assets to the server.</span></span>
 
-## <a name="configure-a-proxy-server"></a><span data-ttu-id="9abaf-114">Настройка прокси-сервера</span><span class="sxs-lookup"><span data-stu-id="9abaf-114">Configure a proxy server</span></span>
+## <a name="configure-a-proxy-server"></a><span data-ttu-id="b2904-121">Настройка прокси-сервера</span><span class="sxs-lookup"><span data-stu-id="b2904-121">Configure a proxy server</span></span>
 
-<span data-ttu-id="9abaf-115">Обратный прокси-сервер — это стандартный вариант настройки для обслуживания динамических веб-приложений.</span><span class="sxs-lookup"><span data-stu-id="9abaf-115">A reverse proxy is a common setup for serving dynamic web apps.</span></span> <span data-ttu-id="9abaf-116">Обратный прокси-сервер завершает HTTP-запрос и перенаправляет его в приложение ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="9abaf-116">The reverse proxy terminates the HTTP request and forwards it to the ASP.NET app.</span></span>
+<span data-ttu-id="b2904-122">Обратный прокси-сервер — это стандартный вариант настройки для обслуживания динамических веб-приложений.</span><span class="sxs-lookup"><span data-stu-id="b2904-122">A reverse proxy is a common setup for serving dynamic web apps.</span></span> <span data-ttu-id="b2904-123">Обратный прокси-сервер завершает HTTP-запрос и перенаправляет его в приложение ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="b2904-123">The reverse proxy terminates the HTTP request and forwards it to the ASP.NET app.</span></span>
 
-<span data-ttu-id="9abaf-117">Прокси-сервер перенаправляет запросы клиента на другой сервер, а не обрабатывает их самостоятельно.</span><span class="sxs-lookup"><span data-stu-id="9abaf-117">A proxy server is one which forwards client requests to another server instead of fulfilling requests itself.</span></span> <span data-ttu-id="9abaf-118">Обратный прокси-сервер перенаправляет запросы в фиксированное назначение обычно от имени клиентов.</span><span class="sxs-lookup"><span data-stu-id="9abaf-118">A reverse proxy forwards to a fixed destination, typically on behalf of arbitrary clients.</span></span> <span data-ttu-id="9abaf-119">При работе с этим руководством мы настроим Apache в качестве обратного прокси-сервера, который работает на том же сервере, где Kestrel предоставляет приложение ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="9abaf-119">In this guide, Apache is configured as the reverse proxy running on the same server that Kestrel is serving the ASP.NET Core app.</span></span>
+<span data-ttu-id="b2904-124">Прокси-сервер перенаправляет запросы клиента на другой сервер, а не обрабатывает их самостоятельно.</span><span class="sxs-lookup"><span data-stu-id="b2904-124">A proxy server is one which forwards client requests to another server instead of fulfilling requests itself.</span></span> <span data-ttu-id="b2904-125">Обратный прокси-сервер перенаправляет запросы в фиксированное назначение обычно от имени клиентов.</span><span class="sxs-lookup"><span data-stu-id="b2904-125">A reverse proxy forwards to a fixed destination, typically on behalf of arbitrary clients.</span></span> <span data-ttu-id="b2904-126">При работе с этим руководством мы настроим Apache в качестве обратного прокси-сервера, который работает на том же сервере, где Kestrel предоставляет приложение ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="b2904-126">In this guide, Apache is configured as the reverse proxy running on the same server that Kestrel is serving the ASP.NET Core app.</span></span>
 
-<span data-ttu-id="9abaf-120">Так как запросы перенаправляются обратным прокси-сервером, используйте ПО промежуточного слоя перенаправления заголовков, входящее в пакет [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/).</span><span class="sxs-lookup"><span data-stu-id="9abaf-120">Because requests are forwarded by reverse proxy, use the Forwarded Headers Middleware from the [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) package.</span></span> <span data-ttu-id="9abaf-121">Это ПО обновляет `Request.Scheme`, используя заголовок `X-Forwarded-Proto`, что обеспечивает правильную работу URI перенаправления и других политик безопасности.</span><span class="sxs-lookup"><span data-stu-id="9abaf-121">The middleware updates the `Request.Scheme`, using the `X-Forwarded-Proto` header, so that redirect URIs and other security policies work correctly.</span></span>
+<span data-ttu-id="b2904-127">Так как запросы перенаправляются обратным прокси-сервером, используйте [ПО промежуточного слоя перенаправления заголовков](xref:host-and-deploy/proxy-load-balancer), которое входит в пакет [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/).</span><span class="sxs-lookup"><span data-stu-id="b2904-127">Because requests are forwarded by reverse proxy, use the [Forwarded Headers Middleware](xref:host-and-deploy/proxy-load-balancer) from the [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) package.</span></span> <span data-ttu-id="b2904-128">Это ПО обновляет `Request.Scheme`, используя заголовок `X-Forwarded-Proto`, что обеспечивает правильную работу URI перенаправления и других политик безопасности.</span><span class="sxs-lookup"><span data-stu-id="b2904-128">The middleware updates the `Request.Scheme`, using the `X-Forwarded-Proto` header, so that redirect URIs and other security policies work correctly.</span></span>
 
-<span data-ttu-id="9abaf-122">Вне зависимости от того, какой тип ПО промежуточного слоя используется для проверки подлинности, сначала необходимо запустить ПО промежуточного слоя перенаправления заголовков.</span><span class="sxs-lookup"><span data-stu-id="9abaf-122">When using any type of authentication middleware, the Forwarded Headers Middleware must run first.</span></span> <span data-ttu-id="9abaf-123">Такой порядок гарантирует, что ПО промежуточного слоя для проверки подлинности может использовать значения заголовков и сформирует правильные URI перенаправления.</span><span class="sxs-lookup"><span data-stu-id="9abaf-123">This ordering ensures that the authentication middleware can consume the header values and generate correct redirect URIs.</span></span>
+<span data-ttu-id="b2904-129">Любой компонент, который зависит от схемы, например проверка подлинности, генерация ссылок, перенаправление и геолокация, должен находиться после вызова ПО промежуточного слоя перенаправления заголовков.</span><span class="sxs-lookup"><span data-stu-id="b2904-129">Any component that depends on the scheme, such as authentication, link generation, redirects, and geolocation, must be placed after invoking the Forwarded Headers Middleware.</span></span> <span data-ttu-id="b2904-130">Как правило, ПО промежуточного слоя перенаправления заголовков должно выполняться до остального ПО промежуточного слоя, за исключением ПО промежуточного слоя для диагностики и обработки ошибок.</span><span class="sxs-lookup"><span data-stu-id="b2904-130">As a general rule, Forwarded Headers Middleware should run before other middleware except diagnostics and error handling middleware.</span></span> <span data-ttu-id="b2904-131">Такой порядок гарантирует, что ПО промежуточного слоя, полагающееся на сведения о перенаправленных заголовках, может использовать значения заголовков для обработки.</span><span class="sxs-lookup"><span data-stu-id="b2904-131">This ordering ensures that the middleware relying on forwarded headers information can consume the header values for processing.</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="9abaf-124">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="9abaf-124">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
+> [!NOTE]
+> <span data-ttu-id="b2904-132">Любая из этих конфигураций &mdash; с обратным прокси-сервером и без него &mdash; является допустимой и поддерживаемой для размещения основных компонентов приложений ASP.NET версии 2.0 и выше.</span><span class="sxs-lookup"><span data-stu-id="b2904-132">Either configuration&mdash;with or without a reverse proxy server&mdash;is a valid and supported hosting configuration for ASP.NET Core 2.0 or later apps.</span></span> <span data-ttu-id="b2904-133">Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).</span><span class="sxs-lookup"><span data-stu-id="b2904-133">For more information, see [When to use Kestrel with a reverse proxy](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).</span></span>
+::: moniker-end
 
-<span data-ttu-id="9abaf-125">Вызывайте метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызывать [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме.</span><span class="sxs-lookup"><span data-stu-id="9abaf-125">Invoke the [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) method in `Startup.Configure` before calling [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) or similar authentication scheme middleware.</span></span> <span data-ttu-id="9abaf-126">В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:</span><span class="sxs-lookup"><span data-stu-id="9abaf-126">Configure the middleware to forward the `X-Forwarded-For` and `X-Forwarded-Proto` headers:</span></span>
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2904-134">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2904-134">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+<span data-ttu-id="b2904-135">Вызовите метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызвать [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме.</span><span class="sxs-lookup"><span data-stu-id="b2904-135">Invoke the [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) method in `Startup.Configure` before calling [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) or similar authentication scheme middleware.</span></span> <span data-ttu-id="b2904-136">В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:</span><span class="sxs-lookup"><span data-stu-id="b2904-136">Configure the middleware to forward the `X-Forwarded-For` and `X-Forwarded-Proto` headers:</span></span>
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -58,9 +73,9 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 app.UseAuthentication();
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="9abaf-127">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="9abaf-127">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2904-137">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2904-137">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-<span data-ttu-id="9abaf-128">Вызывайте метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызывать [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity), [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме.</span><span class="sxs-lookup"><span data-stu-id="9abaf-128">Invoke the [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) method in `Startup.Configure` before calling [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity) and [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) or similar authentication scheme middleware.</span></span> <span data-ttu-id="9abaf-129">В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:</span><span class="sxs-lookup"><span data-stu-id="9abaf-129">Configure the middleware to forward the `X-Forwarded-For` and `X-Forwarded-Proto` headers:</span></span>
+<span data-ttu-id="b2904-138">Вызывайте метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызвать [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity), [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме.</span><span class="sxs-lookup"><span data-stu-id="b2904-138">Invoke the [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) method in `Startup.Configure` before calling [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity) and [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) or similar authentication scheme middleware.</span></span> <span data-ttu-id="b2904-139">В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:</span><span class="sxs-lookup"><span data-stu-id="b2904-139">Configure the middleware to forward the `X-Forwarded-For` and `X-Forwarded-Proto` headers:</span></span>
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -78,25 +93,25 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 ---
 
-<span data-ttu-id="9abaf-130">Если параметр [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) не задан для ПО промежуточного слоя, по умолчанию перенаправляются заголовки `None`.</span><span class="sxs-lookup"><span data-stu-id="9abaf-130">If no [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) are specified to the middleware, the default headers to forward are `None`.</span></span>
+<span data-ttu-id="b2904-140">Если параметр [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) не задан для ПО промежуточного слоя, по умолчанию перенаправляются заголовки `None`.</span><span class="sxs-lookup"><span data-stu-id="b2904-140">If no [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) are specified to the middleware, the default headers to forward are `None`.</span></span>
 
-<span data-ttu-id="9abaf-131">Для приложений, размещенных за прокси-серверами и подсистемами балансировки нагрузки, может потребоваться дополнительная настройка.</span><span class="sxs-lookup"><span data-stu-id="9abaf-131">Additional configuration might be required for apps hosted behind proxy servers and load balancers.</span></span> <span data-ttu-id="9abaf-132">Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).</span><span class="sxs-lookup"><span data-stu-id="9abaf-132">For more information, see [Configure ASP.NET Core to work with proxy servers and load balancers](xref:host-and-deploy/proxy-load-balancer).</span></span>
+<span data-ttu-id="b2904-141">Для приложений, размещенных за прокси-серверами и подсистемами балансировки нагрузки, может потребоваться дополнительная настройка.</span><span class="sxs-lookup"><span data-stu-id="b2904-141">Additional configuration might be required for apps hosted behind proxy servers and load balancers.</span></span> <span data-ttu-id="b2904-142">Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).</span><span class="sxs-lookup"><span data-stu-id="b2904-142">For more information, see [Configure ASP.NET Core to work with proxy servers and load balancers](xref:host-and-deploy/proxy-load-balancer).</span></span>
 
-### <a name="install-apache"></a><span data-ttu-id="9abaf-133">Установка Apache</span><span class="sxs-lookup"><span data-stu-id="9abaf-133">Install Apache</span></span>
+### <a name="install-apache"></a><span data-ttu-id="b2904-143">Установка Apache</span><span class="sxs-lookup"><span data-stu-id="b2904-143">Install Apache</span></span>
 
-<span data-ttu-id="9abaf-134">Обновите пакеты CentOS до последних стабильных версий:</span><span class="sxs-lookup"><span data-stu-id="9abaf-134">Update CentOS packages to their latest stable versions:</span></span>
+<span data-ttu-id="b2904-144">Обновите пакеты CentOS до последних стабильных версий:</span><span class="sxs-lookup"><span data-stu-id="b2904-144">Update CentOS packages to their latest stable versions:</span></span>
 
 ```bash
 sudo yum update -y
 ```
 
-<span data-ttu-id="9abaf-135">Установите веб-сервер Apache на CentOS, выполнив одну команду `yum`:</span><span class="sxs-lookup"><span data-stu-id="9abaf-135">Install the Apache web server on CentOS with a single `yum` command:</span></span>
+<span data-ttu-id="b2904-145">Установите веб-сервер Apache на CentOS, выполнив одну команду `yum`:</span><span class="sxs-lookup"><span data-stu-id="b2904-145">Install the Apache web server on CentOS with a single `yum` command:</span></span>
 
 ```bash
 sudo yum -y install httpd mod_ssl
 ```
 
-<span data-ttu-id="9abaf-136">Пример выходных данных этой команды:</span><span class="sxs-lookup"><span data-stu-id="9abaf-136">Sample output after running the command:</span></span>
+<span data-ttu-id="b2904-146">Пример выходных данных этой команды:</span><span class="sxs-lookup"><span data-stu-id="b2904-146">Sample output after running the command:</span></span>
 
 ```bash
 Downloading packages:
@@ -115,15 +130,19 @@ Complete!
 ```
 
 > [!NOTE]
-> <span data-ttu-id="9abaf-137">В нашем примере выходные данные содержат строку httpd.86_64, так как используется 64-разрядная версия CentOS 7.</span><span class="sxs-lookup"><span data-stu-id="9abaf-137">In this example, the output reflects httpd.86_64 since the CentOS 7 version is 64 bit.</span></span> <span data-ttu-id="9abaf-138">Чтобы проверить, где установлен Apache, выполните `whereis httpd` из командной строки.</span><span class="sxs-lookup"><span data-stu-id="9abaf-138">To verify where Apache is installed, run `whereis httpd` from a command prompt.</span></span>
+> <span data-ttu-id="b2904-147">В нашем примере выходные данные содержат строку httpd.86_64, так как используется 64-разрядная версия CentOS 7.</span><span class="sxs-lookup"><span data-stu-id="b2904-147">In this example, the output reflects httpd.86_64 since the CentOS 7 version is 64 bit.</span></span> <span data-ttu-id="b2904-148">Чтобы проверить, где установлен Apache, выполните `whereis httpd` из командной строки.</span><span class="sxs-lookup"><span data-stu-id="b2904-148">To verify where Apache is installed, run `whereis httpd` from a command prompt.</span></span>
 
-### <a name="configure-apache-for-reverse-proxy"></a><span data-ttu-id="9abaf-139">Настройка Apache в качестве обратного прокси-сервера</span><span class="sxs-lookup"><span data-stu-id="9abaf-139">Configure Apache for reverse proxy</span></span>
+### <a name="configure-apache"></a><span data-ttu-id="b2904-149">Настройка Apache</span><span class="sxs-lookup"><span data-stu-id="b2904-149">Configure Apache</span></span>
 
-<span data-ttu-id="9abaf-140">Файлы конфигурации для Apache находятся в каталоге `/etc/httpd/conf.d/`.</span><span class="sxs-lookup"><span data-stu-id="9abaf-140">Configuration files for Apache are located within the `/etc/httpd/conf.d/` directory.</span></span> <span data-ttu-id="9abaf-141">В алфавитном порядке обрабатываются все файлы с расширением *.conf*, а также файлы конфигурации модуля из папки `/etc/httpd/conf.modules.d/`, где содержатся файлы конфигурации, необходимые для загрузки модулей.</span><span class="sxs-lookup"><span data-stu-id="9abaf-141">Any file with the *.conf* extension is processed in alphabetical order in addition to the module configuration files in `/etc/httpd/conf.modules.d/`, which contains any configuration files necessary to load modules.</span></span>
+<span data-ttu-id="b2904-150">Файлы конфигурации для Apache находятся в каталоге `/etc/httpd/conf.d/`.</span><span class="sxs-lookup"><span data-stu-id="b2904-150">Configuration files for Apache are located within the `/etc/httpd/conf.d/` directory.</span></span> <span data-ttu-id="b2904-151">В алфавитном порядке обрабатываются все файлы с расширением *.conf*, а также файлы конфигурации модуля из папки `/etc/httpd/conf.modules.d/`, где содержатся файлы конфигурации, необходимые для загрузки модулей.</span><span class="sxs-lookup"><span data-stu-id="b2904-151">Any file with the *.conf* extension is processed in alphabetical order in addition to the module configuration files in `/etc/httpd/conf.modules.d/`, which contains any configuration files necessary to load modules.</span></span>
 
-<span data-ttu-id="9abaf-142">Создайте для приложения файл конфигурации с именем *hellomvc.conf*:</span><span class="sxs-lookup"><span data-stu-id="9abaf-142">Create a configuration file, named *hellomvc.conf*, for the app:</span></span>
+<span data-ttu-id="b2904-152">Создайте для приложения файл конфигурации с именем *hellomvc.conf*:</span><span class="sxs-lookup"><span data-stu-id="b2904-152">Create a configuration file, named *hellomvc.conf*, for the app:</span></span>
 
 ```
+<VirtualHost *:*>
+    RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
+</VirtualHost>
+
 <VirtualHost *:80>
     ProxyPreserveHost On
     ProxyPass / http://127.0.0.1:5000/
@@ -135,40 +154,39 @@ Complete!
 </VirtualHost>
 ```
 
-<span data-ttu-id="9abaf-143">Блок `VirtualHost` может встречаться несколько раз в одном или нескольких файлах на сервере.</span><span class="sxs-lookup"><span data-stu-id="9abaf-143">The `VirtualHost` block can appear multiple times, in one or more files on a server.</span></span> <span data-ttu-id="9abaf-144">С представленным выше файлом конфигурации Apache принимает трафик от любого источника через порт 80.</span><span class="sxs-lookup"><span data-stu-id="9abaf-144">In the preceding configuration file, Apache accepts public traffic on port 80.</span></span> <span data-ttu-id="9abaf-145">Он обслуживает домен `www.example.com`, а псевдоним `*.example.com` указывает на тот же веб-сайт.</span><span class="sxs-lookup"><span data-stu-id="9abaf-145">The domain `www.example.com` is being served, and the `*.example.com` alias resolves to the same website.</span></span> <span data-ttu-id="9abaf-146">Дополнительные сведения см. в статье [о поддержке виртуальных узлов на основе имен](https://httpd.apache.org/docs/current/vhosts/name-based.html).</span><span class="sxs-lookup"><span data-stu-id="9abaf-146">See [Name-based virtual host support](https://httpd.apache.org/docs/current/vhosts/name-based.html) for more information.</span></span> <span data-ttu-id="9abaf-147">Запросы к корневому каталогу перенаправляются на порт 5000 того же сервера по адресу 127.0.0.1.</span><span class="sxs-lookup"><span data-stu-id="9abaf-147">Requests are proxied at the root to port 5000 of the server at 127.0.0.1.</span></span> <span data-ttu-id="9abaf-148">Для двусторонней связи требуются `ProxyPass` и `ProxyPassReverse`.</span><span class="sxs-lookup"><span data-stu-id="9abaf-148">For bi-directional communication, `ProxyPass` and `ProxyPassReverse` are required.</span></span>
+<span data-ttu-id="b2904-153">Блок `VirtualHost` может встречаться несколько раз в одном или нескольких файлах на сервере.</span><span class="sxs-lookup"><span data-stu-id="b2904-153">The `VirtualHost` block can appear multiple times, in one or more files on a server.</span></span> <span data-ttu-id="b2904-154">С представленным выше файлом конфигурации Apache принимает трафик от любого источника через порт 80.</span><span class="sxs-lookup"><span data-stu-id="b2904-154">In the preceding configuration file, Apache accepts public traffic on port 80.</span></span> <span data-ttu-id="b2904-155">Он обслуживает домен `www.example.com`, а псевдоним `*.example.com` указывает на тот же веб-сайт.</span><span class="sxs-lookup"><span data-stu-id="b2904-155">The domain `www.example.com` is being served, and the `*.example.com` alias resolves to the same website.</span></span> <span data-ttu-id="b2904-156">Дополнительные сведения см. в статье [о поддержке виртуальных узлов на основе имен](https://httpd.apache.org/docs/current/vhosts/name-based.html).</span><span class="sxs-lookup"><span data-stu-id="b2904-156">See [Name-based virtual host support](https://httpd.apache.org/docs/current/vhosts/name-based.html) for more information.</span></span> <span data-ttu-id="b2904-157">Запросы к корневому каталогу перенаправляются на порт 5000 того же сервера по адресу 127.0.0.1.</span><span class="sxs-lookup"><span data-stu-id="b2904-157">Requests are proxied at the root to port 5000 of the server at 127.0.0.1.</span></span> <span data-ttu-id="b2904-158">Для двусторонней связи требуются `ProxyPass` и `ProxyPassReverse`.</span><span class="sxs-lookup"><span data-stu-id="b2904-158">For bi-directional communication, `ProxyPass` and `ProxyPassReverse` are required.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="9abaf-149">Если не удастся указать правильную [директиву ServerName](https://httpd.apache.org/docs/current/mod/core.html#servername) в блоке **VirtualHost**, приложение будет иметь значительные уязвимости.</span><span class="sxs-lookup"><span data-stu-id="9abaf-149">Failure to specify a proper [ServerName directive](https://httpd.apache.org/docs/current/mod/core.html#servername) in the **VirtualHost** block exposes your app to security vulnerabilities.</span></span> <span data-ttu-id="9abaf-150">Привязки с подстановочными знаками на уровне дочерних доменов (например, `*.example.com`) не создают таких угроз безопасности, если вы полностью контролируете родительский домен (в отличие от варианта `*.com`, создающего уязвимость).</span><span class="sxs-lookup"><span data-stu-id="9abaf-150">Subdomain wildcard binding (for example, `*.example.com`) doesn't pose this security risk if you control the entire parent domain (as opposed to `*.com`, which is vulnerable).</span></span> <span data-ttu-id="9abaf-151">Дополнительные сведения см. в документе [rfc7230, раздел 5.4](https://tools.ietf.org/html/rfc7230#section-5.4).</span><span class="sxs-lookup"><span data-stu-id="9abaf-151">See [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) for more information.</span></span>
+> <span data-ttu-id="b2904-159">Если не удастся указать правильную [директиву ServerName](https://httpd.apache.org/docs/current/mod/core.html#servername) в блоке **VirtualHost**, приложение будет иметь значительные уязвимости.</span><span class="sxs-lookup"><span data-stu-id="b2904-159">Failure to specify a proper [ServerName directive](https://httpd.apache.org/docs/current/mod/core.html#servername) in the **VirtualHost** block exposes your app to security vulnerabilities.</span></span> <span data-ttu-id="b2904-160">Привязки с подстановочными знаками на уровне дочерних доменов (например, `*.example.com`) не создают таких угроз безопасности, если вы полностью контролируете родительский домен (в отличие от варианта `*.com`, создающего уязвимость).</span><span class="sxs-lookup"><span data-stu-id="b2904-160">Subdomain wildcard binding (for example, `*.example.com`) doesn't pose this security risk if you control the entire parent domain (as opposed to `*.com`, which is vulnerable).</span></span> <span data-ttu-id="b2904-161">Дополнительные сведения см. в документе [rfc7230, раздел 5.4](https://tools.ietf.org/html/rfc7230#section-5.4).</span><span class="sxs-lookup"><span data-stu-id="b2904-161">See [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) for more information.</span></span>
 
-<span data-ttu-id="9abaf-152">Ведение журнала можно настроить отдельно для каждого `VirtualHost` с помощью директив `ErrorLog` и `CustomLog`.</span><span class="sxs-lookup"><span data-stu-id="9abaf-152">Logging can be configured per `VirtualHost` using `ErrorLog` and `CustomLog` directives.</span></span> <span data-ttu-id="9abaf-153">Журналы ошибок сохраняются в расположение `ErrorLog`, а параметр `CustomLog` задает имя и формат для файла журнала.</span><span class="sxs-lookup"><span data-stu-id="9abaf-153">`ErrorLog` is the location where the server logs errors, and `CustomLog` sets the filename and format of log file.</span></span> <span data-ttu-id="9abaf-154">В нашем примере здесь фиксируются сведения о запросах.</span><span class="sxs-lookup"><span data-stu-id="9abaf-154">In this case, this is where request information is logged.</span></span> <span data-ttu-id="9abaf-155">Для каждого запроса создается одна строка.</span><span class="sxs-lookup"><span data-stu-id="9abaf-155">There's one line for each request.</span></span>
+<span data-ttu-id="b2904-162">Ведение журнала можно настроить отдельно для каждого `VirtualHost` с помощью директив `ErrorLog` и `CustomLog`.</span><span class="sxs-lookup"><span data-stu-id="b2904-162">Logging can be configured per `VirtualHost` using `ErrorLog` and `CustomLog` directives.</span></span> <span data-ttu-id="b2904-163">Журналы ошибок сохраняются в расположение `ErrorLog`, а параметр `CustomLog` задает имя и формат для файла журнала.</span><span class="sxs-lookup"><span data-stu-id="b2904-163">`ErrorLog` is the location where the server logs errors, and `CustomLog` sets the filename and format of log file.</span></span> <span data-ttu-id="b2904-164">В нашем примере здесь фиксируются сведения о запросах.</span><span class="sxs-lookup"><span data-stu-id="b2904-164">In this case, this is where request information is logged.</span></span> <span data-ttu-id="b2904-165">Для каждого запроса создается одна строка.</span><span class="sxs-lookup"><span data-stu-id="b2904-165">There's one line for each request.</span></span>
 
-<span data-ttu-id="9abaf-156">Сохраните файл и протестируйте конфигурацию.</span><span class="sxs-lookup"><span data-stu-id="9abaf-156">Save the file and test the configuration.</span></span> <span data-ttu-id="9abaf-157">Если проверка выполнена успешно, ответ должен быть `Syntax [OK]`.</span><span class="sxs-lookup"><span data-stu-id="9abaf-157">If everything passes, the response should be `Syntax [OK]`.</span></span>
+<span data-ttu-id="b2904-166">Сохраните файл и протестируйте конфигурацию.</span><span class="sxs-lookup"><span data-stu-id="b2904-166">Save the file and test the configuration.</span></span> <span data-ttu-id="b2904-167">Если проверка выполнена успешно, ответ должен быть `Syntax [OK]`.</span><span class="sxs-lookup"><span data-stu-id="b2904-167">If everything passes, the response should be `Syntax [OK]`.</span></span>
 
 ```bash
 sudo service httpd configtest
 ```
 
-<span data-ttu-id="9abaf-158">Перезапустите Apache.</span><span class="sxs-lookup"><span data-stu-id="9abaf-158">Restart Apache:</span></span>
+<span data-ttu-id="b2904-168">Перезапустите Apache.</span><span class="sxs-lookup"><span data-stu-id="b2904-168">Restart Apache:</span></span>
 
 ```bash
 sudo systemctl restart httpd
 sudo systemctl enable httpd
 ```
 
-## <a name="monitoring-the-app"></a><span data-ttu-id="9abaf-159">Мониторинг приложения</span><span class="sxs-lookup"><span data-stu-id="9abaf-159">Monitoring the app</span></span>
+## <a name="monitoring-the-app"></a><span data-ttu-id="b2904-169">Мониторинг приложения</span><span class="sxs-lookup"><span data-stu-id="b2904-169">Monitoring the app</span></span>
 
-<span data-ttu-id="9abaf-160">Теперь Apache настроен на перенаправление запросов к `http://localhost:80` в приложение ASP.NET Core, выполняемое в Kestrel по адресу `http://127.0.0.1:5000`.</span><span class="sxs-lookup"><span data-stu-id="9abaf-160">Apache is now setup to forward requests made to `http://localhost:80` to the ASP.NET Core app running on Kestrel at `http://127.0.0.1:5000`.</span></span>  <span data-ttu-id="9abaf-161">Но Apache не настроен для управления процессом Kestrel.</span><span class="sxs-lookup"><span data-stu-id="9abaf-161">However, Apache isn't set up to manage the Kestrel process.</span></span> <span data-ttu-id="9abaf-162">Для запуска и мониторинга базового веб-приложения используйте *systemd* и создайте файл службы.</span><span class="sxs-lookup"><span data-stu-id="9abaf-162">Use *systemd* and create a service file to start and monitor the underlying web app.</span></span> <span data-ttu-id="9abaf-163">*systemd* — это система инициализации, предоставляющая различные функции для запуска и остановки процессов, а также управления ими.</span><span class="sxs-lookup"><span data-stu-id="9abaf-163">*systemd* is an init system that provides many powerful features for starting, stopping, and managing processes.</span></span> 
+<span data-ttu-id="b2904-170">Теперь Apache настроен на перенаправление запросов к `http://localhost:80` в приложение ASP.NET Core, выполняемое в Kestrel по адресу `http://127.0.0.1:5000`.</span><span class="sxs-lookup"><span data-stu-id="b2904-170">Apache is now setup to forward requests made to `http://localhost:80` to the ASP.NET Core app running on Kestrel at `http://127.0.0.1:5000`.</span></span>  <span data-ttu-id="b2904-171">Но Apache не настроен для управления процессом Kestrel.</span><span class="sxs-lookup"><span data-stu-id="b2904-171">However, Apache isn't set up to manage the Kestrel process.</span></span> <span data-ttu-id="b2904-172">Для запуска и мониторинга базового веб-приложения используйте *systemd* и создайте файл службы.</span><span class="sxs-lookup"><span data-stu-id="b2904-172">Use *systemd* and create a service file to start and monitor the underlying web app.</span></span> <span data-ttu-id="b2904-173">*systemd* — это система инициализации, предоставляющая различные функции для запуска и остановки процессов, а также управления ими.</span><span class="sxs-lookup"><span data-stu-id="b2904-173">*systemd* is an init system that provides many powerful features for starting, stopping, and managing processes.</span></span> 
 
+### <a name="create-the-service-file"></a><span data-ttu-id="b2904-174">Создание файла службы</span><span class="sxs-lookup"><span data-stu-id="b2904-174">Create the service file</span></span>
 
-### <a name="create-the-service-file"></a><span data-ttu-id="9abaf-164">Создание файла службы</span><span class="sxs-lookup"><span data-stu-id="9abaf-164">Create the service file</span></span>
-
-<span data-ttu-id="9abaf-165">Создайте файл определения службы.</span><span class="sxs-lookup"><span data-stu-id="9abaf-165">Create the service definition file:</span></span>
+<span data-ttu-id="b2904-175">Создайте файл определения службы.</span><span class="sxs-lookup"><span data-stu-id="b2904-175">Create the service definition file:</span></span>
 
 ```bash
 sudo nano /etc/systemd/system/kestrel-hellomvc.service
 ```
 
-<span data-ttu-id="9abaf-166">Пример файла службы для приложения:</span><span class="sxs-lookup"><span data-stu-id="9abaf-166">An example service file for the app:</span></span>
+<span data-ttu-id="b2904-176">Пример файла службы для приложения:</span><span class="sxs-lookup"><span data-stu-id="b2904-176">An example service file for the app:</span></span>
 
 ```
 [Unit]
@@ -189,22 +207,22 @@ WantedBy=multi-user.target
 ```
 
 > [!NOTE]
-> <span data-ttu-id="9abaf-167">**Пользователь.** Если пользователь *apache* в вашей конфигурации еще не используется, его необходимо создать и правильно предоставить ему права владения для соответствующих файлов.</span><span class="sxs-lookup"><span data-stu-id="9abaf-167">**User** &mdash; If the user *apache* isn't used by the configuration, the user must be created first and given proper ownership for files.</span></span>
+> <span data-ttu-id="b2904-177">**Пользователь.** Если пользователь *apache* в вашей конфигурации еще не используется, его необходимо создать и правильно предоставить ему права владения для соответствующих файлов.</span><span class="sxs-lookup"><span data-stu-id="b2904-177">**User** &mdash; If the user *apache* isn't used by the configuration, the user must be created first and given proper ownership for files.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="9abaf-168">Некоторые значения (например, строки подключения SQL) необходимо экранировать, чтобы поставщики конфигурации могли считать переменные среды.</span><span class="sxs-lookup"><span data-stu-id="9abaf-168">Some values (for example, SQL connection strings) must be escaped for the configuration providers to read the environment variables.</span></span> <span data-ttu-id="9abaf-169">Используйте следующую команду, чтобы создать правильно экранированное значение для файла конфигурации:</span><span class="sxs-lookup"><span data-stu-id="9abaf-169">Use the following command to generate a properly escaped value for use in the configuration file:</span></span>
+> <span data-ttu-id="b2904-178">Некоторые значения (например, строки подключения SQL) необходимо экранировать, чтобы поставщики конфигурации могли считать переменные среды.</span><span class="sxs-lookup"><span data-stu-id="b2904-178">Some values (for example, SQL connection strings) must be escaped for the configuration providers to read the environment variables.</span></span> <span data-ttu-id="b2904-179">Используйте следующую команду, чтобы создать правильно экранированное значение для файла конфигурации:</span><span class="sxs-lookup"><span data-stu-id="b2904-179">Use the following command to generate a properly escaped value for use in the configuration file:</span></span>
 >
 > ```console
 > systemd-escape "<value-to-escape>"
 > ```
 
-<span data-ttu-id="9abaf-170">Сохраните файл и включите службу.</span><span class="sxs-lookup"><span data-stu-id="9abaf-170">Save the file and enable the service:</span></span>
+<span data-ttu-id="b2904-180">Сохраните файл и включите службу.</span><span class="sxs-lookup"><span data-stu-id="b2904-180">Save the file and enable the service:</span></span>
 
 ```bash
 systemctl enable kestrel-hellomvc.service
 ```
 
-<span data-ttu-id="9abaf-171">Запустите службу и убедитесь, что она работает.</span><span class="sxs-lookup"><span data-stu-id="9abaf-171">Start the service and verify that it's running:</span></span>
+<span data-ttu-id="b2904-181">Запустите службу и убедитесь, что она работает.</span><span class="sxs-lookup"><span data-stu-id="b2904-181">Start the service and verify that it's running:</span></span>
 
 ```bash
 systemctl start kestrel-hellomvc.service
@@ -218,7 +236,7 @@ Main PID: 9021 (dotnet)
             └─9021 /usr/local/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
 ```
 
-<span data-ttu-id="9abaf-172">Теперь, когда обратный прокси-сервер настроен и *systemd* управляет процессом Kestrel, веб-приложение можно считать полностью настроенным и вы можете обратиться к нему по адресу `http://localhost` из браузера на локальном компьютере.</span><span class="sxs-lookup"><span data-stu-id="9abaf-172">With the reverse proxy configured and Kestrel managed through *systemd*, the web app is fully configured and can be accessed from a browser on the local machine at `http://localhost`.</span></span> <span data-ttu-id="9abaf-173">Заголовок **Server** в ответе подтверждает, что приложение ASP.NET Core обслуживается Kestrel.</span><span class="sxs-lookup"><span data-stu-id="9abaf-173">Inspecting the response headers, the **Server** header indicates that the ASP.NET Core app is served by Kestrel:</span></span>
+<span data-ttu-id="b2904-182">Теперь, когда обратный прокси-сервер настроен и *systemd* управляет процессом Kestrel, веб-приложение можно считать полностью настроенным и вы можете обратиться к нему по адресу `http://localhost` из браузера на локальном компьютере.</span><span class="sxs-lookup"><span data-stu-id="b2904-182">With the reverse proxy configured and Kestrel managed through *systemd*, the web app is fully configured and can be accessed from a browser on the local machine at `http://localhost`.</span></span> <span data-ttu-id="b2904-183">Заголовок **Server** в ответе подтверждает, что приложение ASP.NET Core обслуживается Kestrel.</span><span class="sxs-lookup"><span data-stu-id="b2904-183">Inspecting the response headers, the **Server** header indicates that the ASP.NET Core app is served by Kestrel:</span></span>
 
 ```
 HTTP/1.1 200 OK
@@ -229,40 +247,40 @@ Connection: Keep-Alive
 Transfer-Encoding: chunked
 ```
 
-### <a name="viewing-logs"></a><span data-ttu-id="9abaf-174">Просмотр журналов</span><span class="sxs-lookup"><span data-stu-id="9abaf-174">Viewing logs</span></span>
+### <a name="viewing-logs"></a><span data-ttu-id="b2904-184">Просмотр журналов</span><span class="sxs-lookup"><span data-stu-id="b2904-184">Viewing logs</span></span>
 
-<span data-ttu-id="9abaf-175">Так как веб-приложением, использующим Kestrel, управляет *systemd*, все события и процессы регистрируются в централизованном журнале.</span><span class="sxs-lookup"><span data-stu-id="9abaf-175">Since the web app using Kestrel is managed using *systemd*, events and processes are logged to a centralized journal.</span></span> <span data-ttu-id="9abaf-176">Но этот журнал содержит все записи обо всех службах и процессах, управляемых *systemd*.</span><span class="sxs-lookup"><span data-stu-id="9abaf-176">However, this journal includes entries for all of the services and processes managed by *systemd*.</span></span> <span data-ttu-id="9abaf-177">Чтобы просмотреть элементы, связанные с `kestrel-hellomvc.service`, используйте следующую команду.</span><span class="sxs-lookup"><span data-stu-id="9abaf-177">To view the `kestrel-hellomvc.service`-specific items, use the following command:</span></span>
+<span data-ttu-id="b2904-185">Так как веб-приложением, использующим Kestrel, управляет *systemd*, все события и процессы регистрируются в централизованном журнале.</span><span class="sxs-lookup"><span data-stu-id="b2904-185">Since the web app using Kestrel is managed using *systemd*, events and processes are logged to a centralized journal.</span></span> <span data-ttu-id="b2904-186">Но этот журнал содержит все записи обо всех службах и процессах, управляемых *systemd*.</span><span class="sxs-lookup"><span data-stu-id="b2904-186">However, this journal includes entries for all of the services and processes managed by *systemd*.</span></span> <span data-ttu-id="b2904-187">Чтобы просмотреть элементы, связанные с `kestrel-hellomvc.service`, используйте следующую команду.</span><span class="sxs-lookup"><span data-stu-id="b2904-187">To view the `kestrel-hellomvc.service`-specific items, use the following command:</span></span>
 
 ```bash
 sudo journalctl -fu kestrel-hellomvc.service
 ```
 
-<span data-ttu-id="9abaf-178">Чтобы отфильтровать элементы по времени, укажите в команде параметры времени.</span><span class="sxs-lookup"><span data-stu-id="9abaf-178">For time filtering, specify time options with the command.</span></span> <span data-ttu-id="9abaf-179">Например, `--since today` позволяет отфильтровать данные за текущий день, а `--until 1 hour ago` — просмотреть записи за предыдущий час.</span><span class="sxs-lookup"><span data-stu-id="9abaf-179">For example, use `--since today` to filter for the current day or `--until 1 hour ago` to see the previous hour's entries.</span></span> <span data-ttu-id="9abaf-180">Дополнительные сведения см. на странице руководства о команде [journalctl](https://www.unix.com/man-page/centos/1/journalctl/).</span><span class="sxs-lookup"><span data-stu-id="9abaf-180">For more information, see the [man page for journalctl](https://www.unix.com/man-page/centos/1/journalctl/).</span></span>
+<span data-ttu-id="b2904-188">Чтобы отфильтровать элементы по времени, укажите в команде параметры времени.</span><span class="sxs-lookup"><span data-stu-id="b2904-188">For time filtering, specify time options with the command.</span></span> <span data-ttu-id="b2904-189">Например, `--since today` позволяет отфильтровать данные за текущий день, а `--until 1 hour ago` — просмотреть записи за предыдущий час.</span><span class="sxs-lookup"><span data-stu-id="b2904-189">For example, use `--since today` to filter for the current day or `--until 1 hour ago` to see the previous hour's entries.</span></span> <span data-ttu-id="b2904-190">Дополнительные сведения см. на странице руководства о команде [journalctl](https://www.unix.com/man-page/centos/1/journalctl/).</span><span class="sxs-lookup"><span data-stu-id="b2904-190">For more information, see the [man page for journalctl](https://www.unix.com/man-page/centos/1/journalctl/).</span></span>
 
 ```bash
 sudo journalctl -fu kestrel-hellomvc.service --since "2016-10-18" --until "2016-10-18 04:00"
 ```
 
-## <a name="securing-the-app"></a><span data-ttu-id="9abaf-181">Защита приложения</span><span class="sxs-lookup"><span data-stu-id="9abaf-181">Securing the app</span></span>
+## <a name="securing-the-app"></a><span data-ttu-id="b2904-191">Защита приложения</span><span class="sxs-lookup"><span data-stu-id="b2904-191">Securing the app</span></span>
 
-### <a name="configure-firewall"></a><span data-ttu-id="9abaf-182">Настройка брандмауэра</span><span class="sxs-lookup"><span data-stu-id="9abaf-182">Configure firewall</span></span>
+### <a name="configure-firewall"></a><span data-ttu-id="b2904-192">Настройка брандмауэра</span><span class="sxs-lookup"><span data-stu-id="b2904-192">Configure firewall</span></span>
 
-<span data-ttu-id="9abaf-183">*Firewalld* — это динамическая управляющая программа брандмауэра, которая поддерживает зоны сети.</span><span class="sxs-lookup"><span data-stu-id="9abaf-183">*Firewalld* is a dynamic daemon to manage the firewall with support for network zones.</span></span> <span data-ttu-id="9abaf-184">Фильтрацию портов и пакетов можно по-прежнему осуществлять через iptables.</span><span class="sxs-lookup"><span data-stu-id="9abaf-184">Ports and packet filtering can still be managed by iptables.</span></span> <span data-ttu-id="9abaf-185">*Firewalld* обычно устанавливается в системе по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="9abaf-185">*Firewalld* should be installed by default.</span></span> <span data-ttu-id="9abaf-186">`yum` позволяет установить этот пакет или убедиться, что он установлен.</span><span class="sxs-lookup"><span data-stu-id="9abaf-186">`yum` can be used to install the package or verify it's installed.</span></span>
+<span data-ttu-id="b2904-193">*Firewalld* — это динамическая управляющая программа брандмауэра, которая поддерживает зоны сети.</span><span class="sxs-lookup"><span data-stu-id="b2904-193">*Firewalld* is a dynamic daemon to manage the firewall with support for network zones.</span></span> <span data-ttu-id="b2904-194">Фильтрацию портов и пакетов можно по-прежнему осуществлять через iptables.</span><span class="sxs-lookup"><span data-stu-id="b2904-194">Ports and packet filtering can still be managed by iptables.</span></span> <span data-ttu-id="b2904-195">*Firewalld* обычно устанавливается в системе по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="b2904-195">*Firewalld* should be installed by default.</span></span> <span data-ttu-id="b2904-196">`yum` позволяет установить этот пакет или убедиться, что он установлен.</span><span class="sxs-lookup"><span data-stu-id="b2904-196">`yum` can be used to install the package or verify it's installed.</span></span>
 
 ```bash
 sudo yum install firewalld -y
 ```
 
-<span data-ttu-id="9abaf-187">С помощью `firewalld` вы можете открыть только те порты, которые необходимые для работы приложения.</span><span class="sxs-lookup"><span data-stu-id="9abaf-187">Use `firewalld` to open only the ports needed for the app.</span></span> <span data-ttu-id="9abaf-188">В этом случае используются порты 80 и 443.</span><span class="sxs-lookup"><span data-stu-id="9abaf-188">In this case, port 80 and 443 are used.</span></span> <span data-ttu-id="9abaf-189">Следующие команды назначают порты 80 и 443 постоянно открытыми.</span><span class="sxs-lookup"><span data-stu-id="9abaf-189">The following commands permanently set ports 80 and 443 to open:</span></span>
+<span data-ttu-id="b2904-197">С помощью `firewalld` вы можете открыть только те порты, которые необходимые для работы приложения.</span><span class="sxs-lookup"><span data-stu-id="b2904-197">Use `firewalld` to open only the ports needed for the app.</span></span> <span data-ttu-id="b2904-198">В этом случае используются порты 80 и 443.</span><span class="sxs-lookup"><span data-stu-id="b2904-198">In this case, port 80 and 443 are used.</span></span> <span data-ttu-id="b2904-199">Следующие команды назначают порты 80 и 443 постоянно открытыми.</span><span class="sxs-lookup"><span data-stu-id="b2904-199">The following commands permanently set ports 80 and 443 to open:</span></span>
 
 ```bash
 sudo firewall-cmd --add-port=80/tcp --permanent
 sudo firewall-cmd --add-port=443/tcp --permanent
 ```
 
-<span data-ttu-id="9abaf-190">Обновите параметры брандмауэра.</span><span class="sxs-lookup"><span data-stu-id="9abaf-190">Reload the firewall settings.</span></span> <span data-ttu-id="9abaf-191">Проверьте, что доступные службы и порты находятся в зоне по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="9abaf-191">Check the available services and ports in the default zone.</span></span> <span data-ttu-id="9abaf-192">Эти параметры можно просмотреть с помощью `firewall-cmd -h`.</span><span class="sxs-lookup"><span data-stu-id="9abaf-192">Options are available by inspecting `firewall-cmd -h`.</span></span>
+<span data-ttu-id="b2904-200">Обновите параметры брандмауэра.</span><span class="sxs-lookup"><span data-stu-id="b2904-200">Reload the firewall settings.</span></span> <span data-ttu-id="b2904-201">Проверьте, что доступные службы и порты находятся в зоне по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="b2904-201">Check the available services and ports in the default zone.</span></span> <span data-ttu-id="b2904-202">Эти параметры можно просмотреть с помощью `firewall-cmd -h`.</span><span class="sxs-lookup"><span data-stu-id="b2904-202">Options are available by inspecting `firewall-cmd -h`.</span></span>
 
-```bash 
+```bash
 sudo firewall-cmd --reload
 sudo firewall-cmd --list-all
 ```
@@ -279,26 +297,31 @@ icmp-blocks:
 rich rules: 
 ```
 
-### <a name="ssl-configuration"></a><span data-ttu-id="9abaf-193">Конфигурация SSL</span><span class="sxs-lookup"><span data-stu-id="9abaf-193">SSL configuration</span></span>
+### <a name="ssl-configuration"></a><span data-ttu-id="b2904-203">Конфигурация SSL</span><span class="sxs-lookup"><span data-stu-id="b2904-203">SSL configuration</span></span>
 
-<span data-ttu-id="9abaf-194">Apache для SSL настраивается с помощью модуля *mod_ssl*.</span><span class="sxs-lookup"><span data-stu-id="9abaf-194">To configure Apache for SSL, the *mod_ssl* module is used.</span></span> <span data-ttu-id="9abaf-195">При установке модуля *httpd* автоматически добавляется и модуль *mod_ssl*.</span><span class="sxs-lookup"><span data-stu-id="9abaf-195">When the *httpd* module was installed, the *mod_ssl* module was also installed.</span></span> <span data-ttu-id="9abaf-196">Если он по каким-то причинам отсутствует, добавьте его в систему с помощью `yum`.</span><span class="sxs-lookup"><span data-stu-id="9abaf-196">If it wasn't installed, use `yum` to add it to the configuration.</span></span>
+<span data-ttu-id="b2904-204">Apache для SSL настраивается с помощью модуля *mod_ssl*.</span><span class="sxs-lookup"><span data-stu-id="b2904-204">To configure Apache for SSL, the *mod_ssl* module is used.</span></span> <span data-ttu-id="b2904-205">При установке модуля *httpd* автоматически добавляется и модуль *mod_ssl*.</span><span class="sxs-lookup"><span data-stu-id="b2904-205">When the *httpd* module was installed, the *mod_ssl* module was also installed.</span></span> <span data-ttu-id="b2904-206">Если он по каким-то причинам отсутствует, добавьте его в систему с помощью `yum`.</span><span class="sxs-lookup"><span data-stu-id="b2904-206">If it wasn't installed, use `yum` to add it to the configuration.</span></span>
 
 ```bash
 sudo yum install mod_ssl
 ```
-<span data-ttu-id="9abaf-197">Чтобы принудительно использовать SSL, установите модуль `mod_rewrite` для перезаписи URL-адресов.</span><span class="sxs-lookup"><span data-stu-id="9abaf-197">To enforce SSL, install the `mod_rewrite` module to enable URL rewriting:</span></span>
+
+<span data-ttu-id="b2904-207">Чтобы принудительно использовать SSL, установите модуль `mod_rewrite` для перезаписи URL-адресов.</span><span class="sxs-lookup"><span data-stu-id="b2904-207">To enforce SSL, install the `mod_rewrite` module to enable URL rewriting:</span></span>
 
 ```bash
 sudo yum install mod_rewrite
 ```
 
-<span data-ttu-id="9abaf-198">Измените файл *hellomvc.conf*, чтобы разрешить перезапись URL-адресов и безопасный обмен данными через порт 443.</span><span class="sxs-lookup"><span data-stu-id="9abaf-198">Modify the *hellomvc.conf* file to enable URL rewriting and secure communication on port 443:</span></span>
+<span data-ttu-id="b2904-208">Измените файл *hellomvc.conf*, чтобы разрешить перезапись URL-адресов и безопасный обмен данными через порт 443.</span><span class="sxs-lookup"><span data-stu-id="b2904-208">Modify the *hellomvc.conf* file to enable URL rewriting and secure communication on port 443:</span></span>
 
 ```
+<VirtualHost *:*>
+    RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
+</VirtualHost>
+
 <VirtualHost *:80>
     RewriteEngine On
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^/?(.*) https://%{SERVER_NAME}/ [R,L]
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
 </VirtualHost>
 
 <VirtualHost *:443>
@@ -316,69 +339,73 @@ sudo yum install mod_rewrite
 ```
 
 > [!NOTE]
-> <span data-ttu-id="9abaf-199">В этом примере используется локально созданный сертификат.</span><span class="sxs-lookup"><span data-stu-id="9abaf-199">This example is using a locally-generated certificate.</span></span> <span data-ttu-id="9abaf-200">В **SSLCertificateFile** должен быть указан основной файл сертификата для доменного имени.</span><span class="sxs-lookup"><span data-stu-id="9abaf-200">**SSLCertificateFile** should be the primary certificate file for the domain name.</span></span> <span data-ttu-id="9abaf-201">В **SSLCertificateKeyFile** должен быть указан файл ключа, сформированный при создании CSR.</span><span class="sxs-lookup"><span data-stu-id="9abaf-201">**SSLCertificateKeyFile** should be the key file generated when CSR is created.</span></span> <span data-ttu-id="9abaf-202">В **SSLCertificateChainFile** должен быть указан файл промежуточного сертификата (если он существует), предоставленный центром сертификации.</span><span class="sxs-lookup"><span data-stu-id="9abaf-202">**SSLCertificateChainFile** should be the intermediate certificate file (if any) that was supplied by the certificate authority.</span></span>
+> <span data-ttu-id="b2904-209">В этом примере используется локально созданный сертификат.</span><span class="sxs-lookup"><span data-stu-id="b2904-209">This example is using a locally-generated certificate.</span></span> <span data-ttu-id="b2904-210">В **SSLCertificateFile** должен быть указан основной файл сертификата для доменного имени.</span><span class="sxs-lookup"><span data-stu-id="b2904-210">**SSLCertificateFile** should be the primary certificate file for the domain name.</span></span> <span data-ttu-id="b2904-211">В **SSLCertificateKeyFile** должен быть указан файл ключа, сформированный при создании CSR.</span><span class="sxs-lookup"><span data-stu-id="b2904-211">**SSLCertificateKeyFile** should be the key file generated when CSR is created.</span></span> <span data-ttu-id="b2904-212">В **SSLCertificateChainFile** должен быть указан файл промежуточного сертификата (если он существует), предоставленный центром сертификации.</span><span class="sxs-lookup"><span data-stu-id="b2904-212">**SSLCertificateChainFile** should be the intermediate certificate file (if any) that was supplied by the certificate authority.</span></span>
 
-<span data-ttu-id="9abaf-203">Сохраните файл и протестируйте конфигурацию.</span><span class="sxs-lookup"><span data-stu-id="9abaf-203">Save the file and test the configuration:</span></span>
+<span data-ttu-id="b2904-213">Сохраните файл и протестируйте конфигурацию.</span><span class="sxs-lookup"><span data-stu-id="b2904-213">Save the file and test the configuration:</span></span>
 
 ```bash
 sudo service httpd configtest
 ```
 
-<span data-ttu-id="9abaf-204">Перезапустите Apache.</span><span class="sxs-lookup"><span data-stu-id="9abaf-204">Restart Apache:</span></span>
+<span data-ttu-id="b2904-214">Перезапустите Apache.</span><span class="sxs-lookup"><span data-stu-id="b2904-214">Restart Apache:</span></span>
 
 ```bash
 sudo systemctl restart httpd
 ```
 
-## <a name="additional-apache-suggestions"></a><span data-ttu-id="9abaf-205">Дополнительные предложения Apache</span><span class="sxs-lookup"><span data-stu-id="9abaf-205">Additional Apache suggestions</span></span>
+## <a name="additional-apache-suggestions"></a><span data-ttu-id="b2904-215">Дополнительные предложения Apache</span><span class="sxs-lookup"><span data-stu-id="b2904-215">Additional Apache suggestions</span></span>
 
-### <a name="additional-headers"></a><span data-ttu-id="9abaf-206">Дополнительные заголовки</span><span class="sxs-lookup"><span data-stu-id="9abaf-206">Additional headers</span></span>
+### <a name="additional-headers"></a><span data-ttu-id="b2904-216">Дополнительные заголовки</span><span class="sxs-lookup"><span data-stu-id="b2904-216">Additional headers</span></span>
 
-<span data-ttu-id="9abaf-207">Для защиты от вредоносных атак следует изменить или добавить несколько заголовков.</span><span class="sxs-lookup"><span data-stu-id="9abaf-207">In order to secure against malicious attacks, there are a few headers that should either be modified or added.</span></span> <span data-ttu-id="9abaf-208">Убедитесь, что модуль `mod_headers` установлен.</span><span class="sxs-lookup"><span data-stu-id="9abaf-208">Ensure that the `mod_headers` module is installed:</span></span>
+<span data-ttu-id="b2904-217">Для защиты от вредоносных атак следует изменить или добавить несколько заголовков.</span><span class="sxs-lookup"><span data-stu-id="b2904-217">In order to secure against malicious attacks, there are a few headers that should either be modified or added.</span></span> <span data-ttu-id="b2904-218">Убедитесь, что модуль `mod_headers` установлен.</span><span class="sxs-lookup"><span data-stu-id="b2904-218">Ensure that the `mod_headers` module is installed:</span></span>
 
 ```bash
 sudo yum install mod_headers
 ```
 
-#### <a name="secure-apache-from-clickjacking-attacks"></a><span data-ttu-id="9abaf-209">Защита Apache от атак кликджекинга</span><span class="sxs-lookup"><span data-stu-id="9abaf-209">Secure Apache from clickjacking attacks</span></span>
+#### <a name="secure-apache-from-clickjacking-attacks"></a><span data-ttu-id="b2904-219">Защита Apache от атак кликджекинга</span><span class="sxs-lookup"><span data-stu-id="b2904-219">Secure Apache from clickjacking attacks</span></span>
 
-<span data-ttu-id="9abaf-210">[Кликджекинг](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger) (или *атака с подменой пользовательского интерфейса*) является вредоносной атакой, при которой посетителя сайта обманным путем вынуждают щелкнуть ссылку или нажать кнопку не той страницы, на которой он находится.</span><span class="sxs-lookup"><span data-stu-id="9abaf-210">[Clickjacking](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger), also known as a *UI redress attack*, is a malicious attack where a website visitor is tricked into clicking a link or button on a different page than they're currently visiting.</span></span> <span data-ttu-id="9abaf-211">Используйте `X-FRAME-OPTIONS` для защиты сайта.</span><span class="sxs-lookup"><span data-stu-id="9abaf-211">Use `X-FRAME-OPTIONS` to secure the site.</span></span>
+<span data-ttu-id="b2904-220">[Кликджекинг](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger) (или *атака с подменой пользовательского интерфейса*) является вредоносной атакой, при которой посетителя сайта обманным путем вынуждают щелкнуть ссылку или нажать кнопку не той страницы, на которой он находится.</span><span class="sxs-lookup"><span data-stu-id="b2904-220">[Clickjacking](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger), also known as a *UI redress attack*, is a malicious attack where a website visitor is tricked into clicking a link or button on a different page than they're currently visiting.</span></span> <span data-ttu-id="b2904-221">Используйте `X-FRAME-OPTIONS` для защиты сайта.</span><span class="sxs-lookup"><span data-stu-id="b2904-221">Use `X-FRAME-OPTIONS` to secure the site.</span></span>
 
-<span data-ttu-id="9abaf-212">Измените файл *httpd.conf*.</span><span class="sxs-lookup"><span data-stu-id="9abaf-212">Edit the *httpd.conf* file:</span></span>
-
-```bash
-sudo nano /etc/httpd/conf/httpd.conf
-```
-
-<span data-ttu-id="9abaf-213">Добавьте строку `Header append X-FRAME-OPTIONS "SAMEORIGIN"`.</span><span class="sxs-lookup"><span data-stu-id="9abaf-213">Add the line `Header append X-FRAME-OPTIONS "SAMEORIGIN"`.</span></span> <span data-ttu-id="9abaf-214">Сохраните файл.</span><span class="sxs-lookup"><span data-stu-id="9abaf-214">Save the file.</span></span> <span data-ttu-id="9abaf-215">Перезапустите Apache.</span><span class="sxs-lookup"><span data-stu-id="9abaf-215">Restart Apache.</span></span>
-
-#### <a name="mime-type-sniffing"></a><span data-ttu-id="9abaf-216">Сканирование типа MIME</span><span class="sxs-lookup"><span data-stu-id="9abaf-216">MIME-type sniffing</span></span>
-
-<span data-ttu-id="9abaf-217">Заголовок `X-Content-Type-Options` защищает Internet Explorer от *сканирования MIME* (определения `Content-Type` для файла по его содержимому).</span><span class="sxs-lookup"><span data-stu-id="9abaf-217">The `X-Content-Type-Options` header prevents Internet Explorer from *MIME-sniffing* (determining a file's `Content-Type` from the file's content).</span></span> <span data-ttu-id="9abaf-218">Если сервер задает заголовок `Content-Type` со значением `text/html`, и при этом установлен параметр `nosniff`, Internet Explorer отображает содержимое как `text/html` независимо от содержимого файла.</span><span class="sxs-lookup"><span data-stu-id="9abaf-218">If the server sets the `Content-Type` header to `text/html` with the `nosniff` option set, Internet Explorer renders the content as `text/html` regardless of the file's content.</span></span>
-
-<span data-ttu-id="9abaf-219">Измените файл *httpd.conf*.</span><span class="sxs-lookup"><span data-stu-id="9abaf-219">Edit the *httpd.conf* file:</span></span>
+<span data-ttu-id="b2904-222">Измените файл *httpd.conf*.</span><span class="sxs-lookup"><span data-stu-id="b2904-222">Edit the *httpd.conf* file:</span></span>
 
 ```bash
 sudo nano /etc/httpd/conf/httpd.conf
 ```
 
-<span data-ttu-id="9abaf-220">Добавьте строку `Header set X-Content-Type-Options "nosniff"`.</span><span class="sxs-lookup"><span data-stu-id="9abaf-220">Add the line `Header set X-Content-Type-Options "nosniff"`.</span></span> <span data-ttu-id="9abaf-221">Сохраните файл.</span><span class="sxs-lookup"><span data-stu-id="9abaf-221">Save the file.</span></span> <span data-ttu-id="9abaf-222">Перезапустите Apache.</span><span class="sxs-lookup"><span data-stu-id="9abaf-222">Restart Apache.</span></span>
+<span data-ttu-id="b2904-223">Добавьте строку `Header append X-FRAME-OPTIONS "SAMEORIGIN"`.</span><span class="sxs-lookup"><span data-stu-id="b2904-223">Add the line `Header append X-FRAME-OPTIONS "SAMEORIGIN"`.</span></span> <span data-ttu-id="b2904-224">Сохраните файл.</span><span class="sxs-lookup"><span data-stu-id="b2904-224">Save the file.</span></span> <span data-ttu-id="b2904-225">Перезапустите Apache.</span><span class="sxs-lookup"><span data-stu-id="b2904-225">Restart Apache.</span></span>
 
-### <a name="load-balancing"></a><span data-ttu-id="9abaf-223">Балансировка нагрузки</span><span class="sxs-lookup"><span data-stu-id="9abaf-223">Load Balancing</span></span> 
+#### <a name="mime-type-sniffing"></a><span data-ttu-id="b2904-226">Сканирование типа MIME</span><span class="sxs-lookup"><span data-stu-id="b2904-226">MIME-type sniffing</span></span>
 
-<span data-ttu-id="9abaf-224">В этом примере показано, как установить и настроить Apache в CentOS 7 и Kestrel на том же компьютере.</span><span class="sxs-lookup"><span data-stu-id="9abaf-224">This example shows how to setup and configure Apache on CentOS 7 and Kestrel on the same instance machine.</span></span> <span data-ttu-id="9abaf-225">Чтобы устранить единую точку отказа, воспользуйтесь *mod_proxy_balancer* и измените значение **VirtualHost** для управления несколькими экземплярами веб-приложений за прокси-сервером Apache.</span><span class="sxs-lookup"><span data-stu-id="9abaf-225">In order to not have a single point of failure; using *mod_proxy_balancer* and modifying the **VirtualHost** would allow for managing multiple instances of the web apps behind the Apache proxy server.</span></span>
+<span data-ttu-id="b2904-227">Заголовок `X-Content-Type-Options` защищает Internet Explorer от *сканирования MIME* (определения `Content-Type` для файла по его содержимому).</span><span class="sxs-lookup"><span data-stu-id="b2904-227">The `X-Content-Type-Options` header prevents Internet Explorer from *MIME-sniffing* (determining a file's `Content-Type` from the file's content).</span></span> <span data-ttu-id="b2904-228">Если сервер задает заголовок `Content-Type` со значением `text/html`, и при этом установлен параметр `nosniff`, Internet Explorer отображает содержимое как `text/html` независимо от содержимого файла.</span><span class="sxs-lookup"><span data-stu-id="b2904-228">If the server sets the `Content-Type` header to `text/html` with the `nosniff` option set, Internet Explorer renders the content as `text/html` regardless of the file's content.</span></span>
+
+<span data-ttu-id="b2904-229">Измените файл *httpd.conf*.</span><span class="sxs-lookup"><span data-stu-id="b2904-229">Edit the *httpd.conf* file:</span></span>
+
+```bash
+sudo nano /etc/httpd/conf/httpd.conf
+```
+
+<span data-ttu-id="b2904-230">Добавьте строку `Header set X-Content-Type-Options "nosniff"`.</span><span class="sxs-lookup"><span data-stu-id="b2904-230">Add the line `Header set X-Content-Type-Options "nosniff"`.</span></span> <span data-ttu-id="b2904-231">Сохраните файл.</span><span class="sxs-lookup"><span data-stu-id="b2904-231">Save the file.</span></span> <span data-ttu-id="b2904-232">Перезапустите Apache.</span><span class="sxs-lookup"><span data-stu-id="b2904-232">Restart Apache.</span></span>
+
+### <a name="load-balancing"></a><span data-ttu-id="b2904-233">Балансировка нагрузки</span><span class="sxs-lookup"><span data-stu-id="b2904-233">Load Balancing</span></span>
+
+<span data-ttu-id="b2904-234">В этом примере показано, как установить и настроить Apache в CentOS 7 и Kestrel на том же компьютере.</span><span class="sxs-lookup"><span data-stu-id="b2904-234">This example shows how to setup and configure Apache on CentOS 7 and Kestrel on the same instance machine.</span></span> <span data-ttu-id="b2904-235">Чтобы устранить единую точку отказа, воспользуйтесь *mod_proxy_balancer* и измените значение **VirtualHost** для управления несколькими экземплярами веб-приложений за прокси-сервером Apache.</span><span class="sxs-lookup"><span data-stu-id="b2904-235">In order to not have a single point of failure; using *mod_proxy_balancer* and modifying the **VirtualHost** would allow for managing multiple instances of the web apps behind the Apache proxy server.</span></span>
 
 ```bash
 sudo yum install mod_proxy_balancer
 ```
 
-<span data-ttu-id="9abaf-226">В представленном ниже файле конфигурации настроен дополнительный экземпляр приложения `hellomvc`, работающий на порту 5001.</span><span class="sxs-lookup"><span data-stu-id="9abaf-226">In the configuration file shown below, an additional instance of the `hellomvc` app is setup to run on port 5001.</span></span> <span data-ttu-id="9abaf-227">В разделе *Proxy* настраивается конфигурация подсистемы балансировки нагрузки с двумя членами для распределения нагрузки методом *byrequests*.</span><span class="sxs-lookup"><span data-stu-id="9abaf-227">The *Proxy* section is set with a balancer configuration with two members to load balance *byrequests*.</span></span>
+<span data-ttu-id="b2904-236">В представленном ниже файле конфигурации настроен дополнительный экземпляр приложения `hellomvc`, работающий на порту 5001.</span><span class="sxs-lookup"><span data-stu-id="b2904-236">In the configuration file shown below, an additional instance of the `hellomvc` app is setup to run on port 5001.</span></span> <span data-ttu-id="b2904-237">В разделе *Proxy* настраивается конфигурация подсистемы балансировки нагрузки с двумя членами для распределения нагрузки методом *byrequests*.</span><span class="sxs-lookup"><span data-stu-id="b2904-237">The *Proxy* section is set with a balancer configuration with two members to load balance *byrequests*.</span></span>
 
 ```
+<VirtualHost *:*>
+    RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
+</VirtualHost>
+
 <VirtualHost *:80>
     RewriteEngine On
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^/?(.*) https://%{SERVER_NAME}/ [R,L]
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
 </VirtualHost>
 
 <VirtualHost *:443>
@@ -406,13 +433,14 @@ sudo yum install mod_proxy_balancer
 </VirtualHost>
 ```
 
-### <a name="rate-limits"></a><span data-ttu-id="9abaf-228">Ограничения скорости</span><span class="sxs-lookup"><span data-stu-id="9abaf-228">Rate Limits</span></span>
-<span data-ttu-id="9abaf-229">С помощью элемента *mod_ratelimit*, который входит в модуль *httpd*, можно ограничить пропускную способность для клиентов:</span><span class="sxs-lookup"><span data-stu-id="9abaf-229">Using *mod_ratelimit*, which is included in the *httpd* module, the bandwidth of clients can be limited:</span></span>
+### <a name="rate-limits"></a><span data-ttu-id="b2904-238">Ограничения скорости</span><span class="sxs-lookup"><span data-stu-id="b2904-238">Rate Limits</span></span>
+
+<span data-ttu-id="b2904-239">С помощью элемента *mod_ratelimit*, который входит в модуль *httpd*, можно ограничить пропускную способность для клиентов:</span><span class="sxs-lookup"><span data-stu-id="b2904-239">Using *mod_ratelimit*, which is included in the *httpd* module, the bandwidth of clients can be limited:</span></span>
 
 ```bash
 sudo nano /etc/httpd/conf.d/ratelimit.conf
 ```
-<span data-ttu-id="9abaf-230">В примере файла пропускная способность составляет 600 Кбит/с в корневой папке.</span><span class="sxs-lookup"><span data-stu-id="9abaf-230">The example file limits bandwidth as 600 KB/sec under the root location:</span></span>
+<span data-ttu-id="b2904-240">В примере файла пропускная способность составляет 600 Кбит/с в корневой папке.</span><span class="sxs-lookup"><span data-stu-id="b2904-240">The example file limits bandwidth as 600 KB/sec under the root location:</span></span>
 
 ```
 <IfModule mod_ratelimit.c>
@@ -422,3 +450,7 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
     </Location>
 </IfModule>
 ```
+
+## <a name="additional-resources"></a><span data-ttu-id="b2904-241">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="b2904-241">Additional resources</span></span>
+
+* [<span data-ttu-id="b2904-242">Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки</span><span class="sxs-lookup"><span data-stu-id="b2904-242">Configure ASP.NET Core to work with proxy servers and load balancers</span></span>](xref:host-and-deploy/proxy-load-balancer)

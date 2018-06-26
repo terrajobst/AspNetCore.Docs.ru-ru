@@ -5,105 +5,124 @@ description: Демонстрирует, как добавить новое по
 manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 08/07/2017
+ms.date: 5/30/2018
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 45a39defc9480b0e4fe85ae7ed6bfa654a35264a
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 926091a7643bbe584316677cbaae6574471c47f8
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34582714"
 ---
-# <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a><span data-ttu-id="dfcc6-103">Добавление нового поля на страницу Razor в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="dfcc6-103">Add a new field to a Razor Page in ASP.NET Core</span></span>
+# <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a><span data-ttu-id="e755d-103">Добавление нового поля на страницу Razor в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="e755d-103">Add a new field to a Razor Page in ASP.NET Core</span></span>
 
-<span data-ttu-id="dfcc6-104">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="dfcc6-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="e755d-104">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="e755d-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="dfcc6-105">В этом разделе вы будете использовать [Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) Code First Migrations для добавления нового поля к модели и переноса этого изменения в базу данных.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-105">In this section you'll use [Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) Code First Migrations to add a new field to the model and migrate that change to the database.</span></span>
+<span data-ttu-id="e755d-105">В этом разделе вы будете использовать [Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) Code First Migrations для добавления нового поля к модели и переноса этого изменения в базу данных.</span><span class="sxs-lookup"><span data-stu-id="e755d-105">In this section you use [Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) Code First Migrations to add a new field to the model and migrate that change to the database.</span></span>
 
-<span data-ttu-id="dfcc6-106">Если вы используете EF Code First для автоматического создания базы данных, Code First добавляет в нее таблицу, которая позволяет отслеживать синхронизацию схемы базы данных с классами модели, на основе которой она была создана.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-106">When you use EF Code First to automatically create a database, Code First adds a table to the database to help track whether the schema of the database is in sync with the model classes it was generated from.</span></span> <span data-ttu-id="dfcc6-107">Если синхронизация нарушена, EF вызывает исключение.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-107">If they aren't in sync, EF throws an exception.</span></span> <span data-ttu-id="dfcc6-108">Это позволяет упростить поиск проблем с согласованностью между базой данных и кодом.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-108">This makes it easier to find inconsistent database/code issues.</span></span>
+<span data-ttu-id="e755d-106">Если вы используете EF Code First для автоматического создания базы данных, Code First:</span><span class="sxs-lookup"><span data-stu-id="e755d-106">When using EF Code First to automatically create a database, Code First:</span></span>
 
-## <a name="adding-a-rating-property-to-the-movie-model"></a><span data-ttu-id="dfcc6-109">Добавление свойства Rating в модель Movie</span><span class="sxs-lookup"><span data-stu-id="dfcc6-109">Adding a Rating Property to the Movie Model</span></span>
+* <span data-ttu-id="e755d-107">добавляет в нее таблицу, которая позволяет отслеживать синхронизацию схемы базы данных с классами модели, на основе которой она была создана.</span><span class="sxs-lookup"><span data-stu-id="e755d-107">Adds a table to the database to track whether the schema of the database is in sync with the model classes it was generated from.</span></span>
+* <span data-ttu-id="e755d-108">если классы модели не синхронизированы с базой данных, EF выдает исключение.</span><span class="sxs-lookup"><span data-stu-id="e755d-108">If the model classes aren't in sync with the DB, EF throws an exception.</span></span> 
 
-<span data-ttu-id="dfcc6-110">Откройте файл *Models/Movie.cs* и добавьте свойство `Rating`:</span><span class="sxs-lookup"><span data-stu-id="dfcc6-110">Open the *Models/Movie.cs* file and add a `Rating` property:</span></span>
+<span data-ttu-id="e755d-109">Автоматическая проверка синхронизации схемы и модели упрощает поиск нарушений согласованности базы данных и кода.</span><span class="sxs-lookup"><span data-stu-id="e755d-109">Automatic verification of schema/model in sync makes it easier to find inconsistent database/code issues.</span></span>
 
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
+## <a name="adding-a-rating-property-to-the-movie-model"></a><span data-ttu-id="e755d-110">Добавление свойства Rating в модель Movie</span><span class="sxs-lookup"><span data-stu-id="e755d-110">Adding a Rating Property to the Movie Model</span></span>
 
-<span data-ttu-id="dfcc6-111">Постройте приложение (CTRL+SHIFT+B).</span><span class="sxs-lookup"><span data-stu-id="dfcc6-111">Build the app (Ctrl+Shift+B).</span></span>
+<span data-ttu-id="e755d-111">Откройте файл *Models/Movie.cs* и добавьте свойство `Rating`:</span><span class="sxs-lookup"><span data-stu-id="e755d-111">Open the *Models/Movie.cs* file and add a `Rating` property:</span></span>
+::: moniker range="= aspnetcore-2.0"
+<span data-ttu-id="e755d-112">[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]</span><span class="sxs-lookup"><span data-stu-id="e755d-112">[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]</span></span>
 
-<span data-ttu-id="dfcc6-112">Измените файл *Pages/Movies/Index.cshtml* и добавьте в него поле `Rating`:</span><span class="sxs-lookup"><span data-stu-id="dfcc6-112">Edit *Pages/Movies/Index.cshtml*, and add a `Rating` field:</span></span>
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+<span data-ttu-id="e755d-113">[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRating.cs?highlight=13&name=snippet)]</span><span class="sxs-lookup"><span data-stu-id="e755d-113">[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRating.cs?highlight=13&name=snippet)]</span></span>
+
+::: moniker-end
+
+<span data-ttu-id="e755d-114">Постройте приложение (CTRL+SHIFT+B).</span><span class="sxs-lookup"><span data-stu-id="e755d-114">Build the app (Ctrl+Shift+B).</span></span>
+
+<span data-ttu-id="e755d-115">Измените файл *Pages/Movies/Index.cshtml* и добавьте в него поле `Rating`:</span><span class="sxs-lookup"><span data-stu-id="e755d-115">Edit *Pages/Movies/Index.cshtml*, and add a `Rating` field:</span></span>
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=40-42,61-63)]
 
-<span data-ttu-id="dfcc6-113">Добавьте поле `Rating` на страницы "Delete" (Удаление) и "Details" (Сведения).</span><span class="sxs-lookup"><span data-stu-id="dfcc6-113">Add the `Rating` field to the Delete and Details pages.</span></span>
+<span data-ttu-id="e755d-116">Добавьте поле `Rating` на страницы "Delete" (Удаление) и "Details" (Сведения).</span><span class="sxs-lookup"><span data-stu-id="e755d-116">Add the `Rating` field to the Delete and Details pages.</span></span>
 
-<span data-ttu-id="dfcc6-114">Обновите файл *Create.cshtml*, добавив в него поле `Rating`.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-114">Update *Create.cshtml* with a `Rating` field.</span></span> <span data-ttu-id="dfcc6-115">Вы можете скопировать и вставить предыдущий элемент `<div>` и дождаться автоматического обновления полей с помощью IntelliSense.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-115">You can copy/paste the previous `<div>` element and let intelliSense help you update the fields.</span></span> <span data-ttu-id="dfcc6-116">IntelliSense работает со [вспомогательными функциями тегов](xref:mvc/views/tag-helpers/intro).</span><span class="sxs-lookup"><span data-stu-id="dfcc6-116">IntelliSense works with [Tag Helpers](xref:mvc/views/tag-helpers/intro).</span></span>
+<span data-ttu-id="e755d-117">Обновите файл *Create.cshtml*, добавив в него поле `Rating`.</span><span class="sxs-lookup"><span data-stu-id="e755d-117">Update *Create.cshtml* with a `Rating` field.</span></span> <span data-ttu-id="e755d-118">Вы можете скопировать и вставить предыдущий элемент `<div>` и дождаться автоматического обновления полей с помощью IntelliSense.</span><span class="sxs-lookup"><span data-stu-id="e755d-118">You can copy/paste the previous `<div>` element and let intelliSense help you update the fields.</span></span> <span data-ttu-id="e755d-119">IntelliSense работает со [вспомогательными функциями тегов](xref:mvc/views/tag-helpers/intro).</span><span class="sxs-lookup"><span data-stu-id="e755d-119">IntelliSense works with [Tag Helpers](xref:mvc/views/tag-helpers/intro).</span></span>
 
 ![Разработчик ввел букву R в качестве значения атрибута asp-for во втором элементе label представления.](new-field/_static/cr.png)
 
-<span data-ttu-id="dfcc6-120">В следующем коде показан файл *Create.cshtml* с полем `Rating`:</span><span class="sxs-lookup"><span data-stu-id="dfcc6-120">The following code shows *Create.cshtml* with a `Rating` field:</span></span>
+<span data-ttu-id="e755d-123">В следующем коде показан файл *Create.cshtml* с полем `Rating`:</span><span class="sxs-lookup"><span data-stu-id="e755d-123">The following code shows *Create.cshtml* with a `Rating` field:</span></span>
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?highlight=36-40)]
 
-<span data-ttu-id="dfcc6-121">Добавьте поле `Rating` на страницу "Edit" (Редактирование).</span><span class="sxs-lookup"><span data-stu-id="dfcc6-121">Add the `Rating` field to the Edit Page.</span></span>
+<span data-ttu-id="e755d-124">Добавьте поле `Rating` на страницу "Edit" (Редактирование).</span><span class="sxs-lookup"><span data-stu-id="e755d-124">Add the `Rating` field to the Edit Page.</span></span>
 
-<span data-ttu-id="dfcc6-122">Для работы приложения необходимо обновить базу данных, включив в нее новое поле.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-122">The app won't work until the DB is updated to include the new field.</span></span> <span data-ttu-id="dfcc6-123">Если запустить приложение сейчас, возникнет исключение `SqlException`:</span><span class="sxs-lookup"><span data-stu-id="dfcc6-123">If run now, the app throws a `SqlException`:</span></span>
+<span data-ttu-id="e755d-125">Для работы приложения необходимо обновить базу данных, включив в нее новое поле.</span><span class="sxs-lookup"><span data-stu-id="e755d-125">The app won't work until the DB is updated to include the new field.</span></span> <span data-ttu-id="e755d-126">Если запустить приложение сейчас, возникнет исключение `SqlException`:</span><span class="sxs-lookup"><span data-stu-id="e755d-126">If run now, the app throws a `SqlException`:</span></span>
 
 ```
 SqlException: Invalid column name 'Rating'.
 ```
 
-<span data-ttu-id="dfcc6-124">Эта ошибка связана с тем, что обновленный класс модели Movie отличается от схемы таблицы Movie в базе данных.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-124">This error is caused by the updated Movie model class being different than the schema of the Movie table of the database.</span></span> <span data-ttu-id="dfcc6-125">(В таблице базы данных отсутствует столбец `Rating`.)</span><span class="sxs-lookup"><span data-stu-id="dfcc6-125">(There's no `Rating` column in the database table.)</span></span>
+<span data-ttu-id="e755d-127">Эта ошибка связана с тем, что обновленный класс модели Movie отличается от схемы таблицы Movie в базе данных.</span><span class="sxs-lookup"><span data-stu-id="e755d-127">This error is caused by the updated Movie model class being different than the schema of the Movie table of the database.</span></span> <span data-ttu-id="e755d-128">(В таблице базы данных отсутствует столбец `Rating`.)</span><span class="sxs-lookup"><span data-stu-id="e755d-128">(There's no `Rating` column in the database table.)</span></span>
 
-<span data-ttu-id="dfcc6-126">Устранить эту ошибку можно несколькими способами:</span><span class="sxs-lookup"><span data-stu-id="dfcc6-126">There are a few approaches to resolving the error:</span></span>
+<span data-ttu-id="e755d-129">Устранить эту ошибку можно несколькими способами:</span><span class="sxs-lookup"><span data-stu-id="e755d-129">There are a few approaches to resolving the error:</span></span>
 
-1. <span data-ttu-id="dfcc6-127">Можно с помощью Entity Framework автоматически удалить и повторно создать базу данных на основе новой схемы класса модели.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-127">Have the Entity Framework automatically drop and re-create the database using  the new model class schema.</span></span> <span data-ttu-id="dfcc6-128">Этот подход удобен на ранних стадиях цикла разработки. В этом случае развитие модели и схемы базы данных осуществляется одновременно.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-128">This approach is convenient early in the development cycle; it allows you to quickly evolve the model and database schema together.</span></span> <span data-ttu-id="dfcc6-129">Недостатком такого подхода является потеря существующих данных в базе.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-129">The downside is that you lose existing data in the database.</span></span> <span data-ttu-id="dfcc6-130">В рабочей базе данных применять этот подход невозможно.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-130">You don't want to use this approach on a production database!</span></span> <span data-ttu-id="dfcc6-131">При разработке приложения часто выполняется удаление базы данных при изменении схемы, для чего используется инициализатор для автоматического заполнения базы тестовыми данными.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-131">Dropping the DB on schema changes and using an initializer to automatically seed the database with test data is often a productive way to develop an app.</span></span>
+1. <span data-ttu-id="e755d-130">Можно с помощью Entity Framework автоматически удалить и повторно создать базу данных на основе новой схемы класса модели.</span><span class="sxs-lookup"><span data-stu-id="e755d-130">Have the Entity Framework automatically drop and re-create the database using  the new model class schema.</span></span> <span data-ttu-id="e755d-131">Этот подход удобен на ранних стадиях цикла разработки. В этом случае развитие модели и схемы базы данных осуществляется одновременно.</span><span class="sxs-lookup"><span data-stu-id="e755d-131">This approach is convenient early in the development cycle; it allows you to quickly evolve the model and database schema together.</span></span> <span data-ttu-id="e755d-132">Недостатком такого подхода является потеря существующих данных в базе.</span><span class="sxs-lookup"><span data-stu-id="e755d-132">The downside is that you lose existing data in the database.</span></span> <span data-ttu-id="e755d-133">В рабочей базе данных применять этот подход невозможно.</span><span class="sxs-lookup"><span data-stu-id="e755d-133">You don't want to use this approach on a production database!</span></span> <span data-ttu-id="e755d-134">При разработке приложения часто выполняется удаление базы данных при изменении схемы, для чего используется инициализатор для автоматического заполнения базы тестовыми данными.</span><span class="sxs-lookup"><span data-stu-id="e755d-134">Dropping the DB on schema changes and using an initializer to automatically seed the database with test data is often a productive way to develop an app.</span></span>
 
-2. <span data-ttu-id="dfcc6-132">Можно явно изменить схему существующей базы данных в соответствии с новыми классами модели.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-132">Explicitly modify the schema of the existing database so that it matches the model classes.</span></span> <span data-ttu-id="dfcc6-133">Преимущество такого подхода состоит в том, что сохраняются все данные.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-133">The advantage of this approach is that you keep your data.</span></span> <span data-ttu-id="dfcc6-134">Это изменение можно выполнить как вручную, так и с помощью соответствующего скрипта базы данных.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-134">You can make this change either manually or by creating a database change script.</span></span>
+2. <span data-ttu-id="e755d-135">Можно явно изменить схему существующей базы данных в соответствии с новыми классами модели.</span><span class="sxs-lookup"><span data-stu-id="e755d-135">Explicitly modify the schema of the existing database so that it matches the model classes.</span></span> <span data-ttu-id="e755d-136">Преимущество такого подхода состоит в том, что сохраняются все данные.</span><span class="sxs-lookup"><span data-stu-id="e755d-136">The advantage of this approach is that you keep your data.</span></span> <span data-ttu-id="e755d-137">Это изменение можно выполнить как вручную, так и с помощью соответствующего скрипта базы данных.</span><span class="sxs-lookup"><span data-stu-id="e755d-137">You can make this change either manually or by creating a database change script.</span></span>
 
-3. <span data-ttu-id="dfcc6-135">Можно обновить схему базы данных с помощью Code First Migrations.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-135">Use Code First Migrations to update the database schema.</span></span>
+3. <span data-ttu-id="e755d-138">Можно обновить схему базы данных с помощью Code First Migrations.</span><span class="sxs-lookup"><span data-stu-id="e755d-138">Use Code First Migrations to update the database schema.</span></span>
 
-<span data-ttu-id="dfcc6-136">В этом руководстве используется Code First Migrations.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-136">For this tutorial, use Code First Migrations.</span></span>
+<span data-ttu-id="e755d-139">В этом руководстве используется Code First Migrations.</span><span class="sxs-lookup"><span data-stu-id="e755d-139">For this tutorial, use Code First Migrations.</span></span>
 
-<span data-ttu-id="dfcc6-137">Обновите класс `SeedData` так, чтобы он предоставлял значение нового столбца.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-137">Update the `SeedData` class so that it provides a value for the new column.</span></span> <span data-ttu-id="dfcc6-138">Ниже показан пример изменения, которое необходимо выполнить для каждого блока `new Movie`.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-138">A sample change is shown below, but you'll want to make this change for each `new Movie` block.</span></span>
+<span data-ttu-id="e755d-140">Обновите класс `SeedData` так, чтобы он предоставлял значение нового столбца.</span><span class="sxs-lookup"><span data-stu-id="e755d-140">Update the `SeedData` class so that it provides a value for the new column.</span></span> <span data-ttu-id="e755d-141">Ниже показан пример изменения, которое необходимо выполнить для каждого блока `new Movie`.</span><span class="sxs-lookup"><span data-stu-id="e755d-141">A sample change is shown below, but you'll want to make this change for each `new Movie` block.</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-<span data-ttu-id="dfcc6-139">См. [готовый файл SeedData.cs](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="dfcc6-139">See the [completed SeedData.cs file](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs).</span></span>
+::: moniker range="= aspnetcore-2.0"
+<span data-ttu-id="e755d-142">См. [готовый файл SeedData.cs](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="e755d-142">See the [completed SeedData.cs file](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs).</span></span>
+::: moniker-end
 
-<span data-ttu-id="dfcc6-140">Постройте решение.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-140">Build the solution.</span></span>
+::: moniker range=">= aspnetcore-2.1"
+<span data-ttu-id="e755d-143">См. [готовый файл SeedData.cs](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="e755d-143">See the [completed SeedData.cs file](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/SeedDataRating.cs).</span></span>
+::: moniker-end
 
-<a name="pmc"></a> <span data-ttu-id="dfcc6-141">В меню **Сервис** последовательно выберите пункты **Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-141">From the **Tools** menu, select **NuGet Package Manager > Package Manager Console**.</span></span>
-<span data-ttu-id="dfcc6-142">В PMC введите следующие команды:</span><span class="sxs-lookup"><span data-stu-id="dfcc6-142">In the PMC, enter the following commands:</span></span>
+<span data-ttu-id="e755d-144">Постройте решение.</span><span class="sxs-lookup"><span data-stu-id="e755d-144">Build the solution.</span></span>
+
+<a name="pmc"></a> <span data-ttu-id="e755d-145">В меню **Сервис** последовательно выберите пункты **Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.</span><span class="sxs-lookup"><span data-stu-id="e755d-145">From the **Tools** menu, select **NuGet Package Manager > Package Manager Console**.</span></span>
+<span data-ttu-id="e755d-146">В PMC введите следующие команды:</span><span class="sxs-lookup"><span data-stu-id="e755d-146">In the PMC, enter the following commands:</span></span>
 
 ```powershell
 Add-Migration Rating
 Update-Database
 ```
 
-<span data-ttu-id="dfcc6-143">Команда `Add-Migration` задает следующие инструкции для платформы:</span><span class="sxs-lookup"><span data-stu-id="dfcc6-143">The `Add-Migration` command tells the framework to:</span></span>
+<span data-ttu-id="e755d-147">Команда `Add-Migration` задает следующие инструкции для платформы:</span><span class="sxs-lookup"><span data-stu-id="e755d-147">The `Add-Migration` command tells the framework to:</span></span>
 
-* <span data-ttu-id="dfcc6-144">Сравните модель `Movie` со схемой базы данных `Movie`.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-144">Compare the `Movie` model with the `Movie` DB schema.</span></span>
-* <span data-ttu-id="dfcc6-145">Создайте код для переноса схемы базы данных в новую модель.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-145">Create code to migrate the DB schema to the new model.</span></span>
+* <span data-ttu-id="e755d-148">Сравните модель `Movie` со схемой базы данных `Movie`.</span><span class="sxs-lookup"><span data-stu-id="e755d-148">Compare the `Movie` model with the `Movie` DB schema.</span></span>
+* <span data-ttu-id="e755d-149">Создайте код для переноса схемы базы данных в новую модель.</span><span class="sxs-lookup"><span data-stu-id="e755d-149">Create code to migrate the DB schema to the new model.</span></span>
 
-<span data-ttu-id="dfcc6-146">В качестве имени файла переноса используется произвольное имя "Rating".</span><span class="sxs-lookup"><span data-stu-id="dfcc6-146">The name "Rating" is arbitrary and is used to name the migration file.</span></span> <span data-ttu-id="dfcc6-147">Рекомендуется присваивать этому файлу понятное имя.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-147">It's helpful to use a meaningful name for the migration file.</span></span>
+<span data-ttu-id="e755d-150">В качестве имени файла переноса используется произвольное имя "Rating".</span><span class="sxs-lookup"><span data-stu-id="e755d-150">The name "Rating" is arbitrary and is used to name the migration file.</span></span> <span data-ttu-id="e755d-151">Рекомендуется присваивать этому файлу понятное имя.</span><span class="sxs-lookup"><span data-stu-id="e755d-151">It's helpful to use a meaningful name for the migration file.</span></span>
 
-<a name="ssox"></a> <span data-ttu-id="dfcc6-148">Если удалить все записи из базы данных, при инициализации она будет заполнена значениями и в нее будет включено поле `Rating`.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-148">If you delete all the records in the DB, the initializer will seed the DB and include the `Rating` field.</span></span> <span data-ttu-id="dfcc6-149">Это можно сделать с помощью ссылок удаления в браузере или из [обозревателя объектов SQL Server](xref:tutorials/razor-pages/sql#ssox) (SSOX).</span><span class="sxs-lookup"><span data-stu-id="dfcc6-149">You can do this with the delete links in the browser or from [Sql Server Object Explorer](xref:tutorials/razor-pages/sql#ssox) (SSOX).</span></span> <span data-ttu-id="dfcc6-150">Удаление базы данных из SSOX:</span><span class="sxs-lookup"><span data-stu-id="dfcc6-150">To delete the database from SSOX:</span></span>
+<a name="ssox"></a> <span data-ttu-id="e755d-152">Если удалить все записи из базы данных, при инициализации она будет заполнена значениями и в нее будет включено поле `Rating`.</span><span class="sxs-lookup"><span data-stu-id="e755d-152">If you delete all the records in the DB, the initializer will seed the DB and include the `Rating` field.</span></span> <span data-ttu-id="e755d-153">Это можно сделать с помощью ссылок удаления в браузере или из [обозревателя объектов SQL Server](xref:tutorials/razor-pages/sql#ssox) (SSOX).</span><span class="sxs-lookup"><span data-stu-id="e755d-153">You can do this with the delete links in the browser or from [Sql Server Object Explorer](xref:tutorials/razor-pages/sql#ssox) (SSOX).</span></span> <span data-ttu-id="e755d-154">Удаление базы данных из SSOX:</span><span class="sxs-lookup"><span data-stu-id="e755d-154">To delete the database from SSOX:</span></span>
 
-* <span data-ttu-id="dfcc6-151">Выберите базу данных в SSOX.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-151">Select the database in SSOX.</span></span>
-* <span data-ttu-id="dfcc6-152">Щелкните базу данных правой кнопкой мыши и выберите *Удалить*.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-152">Right click on the database, and select *Delete*.</span></span>
-* <span data-ttu-id="dfcc6-153">Выберите **Закрыть существующие соединения**.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-153">Check **Close existing connections**.</span></span>
-* <span data-ttu-id="dfcc6-154">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-154">Select **OK**.</span></span>
-* <span data-ttu-id="dfcc6-155">Обновите базу данных в [PMC](xref:tutorials/razor-pages/new-field#pmc).</span><span class="sxs-lookup"><span data-stu-id="dfcc6-155">In the [PMC](xref:tutorials/razor-pages/new-field#pmc), update the database:</span></span>
+* <span data-ttu-id="e755d-155">Выберите базу данных в SSOX.</span><span class="sxs-lookup"><span data-stu-id="e755d-155">Select the database in SSOX.</span></span>
+* <span data-ttu-id="e755d-156">Щелкните базу данных правой кнопкой мыши и выберите *Удалить*.</span><span class="sxs-lookup"><span data-stu-id="e755d-156">Right click on the database, and select *Delete*.</span></span>
+* <span data-ttu-id="e755d-157">Выберите **Закрыть существующие соединения**.</span><span class="sxs-lookup"><span data-stu-id="e755d-157">Check **Close existing connections**.</span></span>
+* <span data-ttu-id="e755d-158">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="e755d-158">Select **OK**.</span></span>
+* <span data-ttu-id="e755d-159">Обновите базу данных в [PMC](xref:tutorials/razor-pages/new-field#pmc).</span><span class="sxs-lookup"><span data-stu-id="e755d-159">In the [PMC](xref:tutorials/razor-pages/new-field#pmc), update the database:</span></span>
 
   ```powershell
   Update-Database
   ```
 
-<span data-ttu-id="dfcc6-156">Запустите приложение и проверьте возможность создания, редактирования и отображения фильмов с использованием поля `Rating`.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-156">Run the app and verify you can create/edit/display movies with a `Rating` field.</span></span> <span data-ttu-id="dfcc6-157">Если база данных не заполнена начальными значениями, остановите IIS Express и затем запустите приложение.</span><span class="sxs-lookup"><span data-stu-id="dfcc6-157">If the database isn't seeded, stop IIS Express, and then run the app.</span></span>
+<span data-ttu-id="e755d-160">Запустите приложение и проверьте возможность создания, редактирования и отображения фильмов с использованием поля `Rating`.</span><span class="sxs-lookup"><span data-stu-id="e755d-160">Run the app and verify you can create/edit/display movies with a `Rating` field.</span></span> <span data-ttu-id="e755d-161">Если база данных не заполнена начальными значениями, остановите IIS Express и затем запустите приложение.</span><span class="sxs-lookup"><span data-stu-id="e755d-161">If the database isn't seeded, stop IIS Express, and then run the app.</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="dfcc6-158">[Предыдущая тема — "Добавление поиска"](xref:tutorials/razor-pages/search)
-> [Следующая тема — "Добавление проверки"](xref:tutorials/razor-pages/validation)</span><span class="sxs-lookup"><span data-stu-id="dfcc6-158">[Previous: Adding Search](xref:tutorials/razor-pages/search)
+> <span data-ttu-id="e755d-162">[Предыдущая тема — "Добавление поиска"](xref:tutorials/razor-pages/search)
+> [Следующая тема — "Добавление проверки"](xref:tutorials/razor-pages/validation)</span><span class="sxs-lookup"><span data-stu-id="e755d-162">[Previous: Adding Search](xref:tutorials/razor-pages/search)
 [Next: Adding Validation](xref:tutorials/razor-pages/validation)</span></span>
