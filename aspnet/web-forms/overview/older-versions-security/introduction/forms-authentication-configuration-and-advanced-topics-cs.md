@@ -12,12 +12,12 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d6578737478fb86f64be261925becc3adec33247
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 58d87bd6211ae1b1eea227d34c001239efcf5f1d
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30891784"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961403"
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-c"></a>Настройка проверки подлинности форм и дополнительные разделы (C#)
 ====================
@@ -168,7 +168,7 @@ ms.locfileid: "30891784"
 
 `http://localhost:2448/ASPNET\_Security\_Tutorial\_03\_CS/(F(jaIOIDTJxIr12xYS-VVgkqKCVAuIoW30Bu0diWi6flQC-FyMaLXJfow\_Vd9GZkB2Cv-rfezq0gKadKX0YPZCkA2))/SomePage.aspx`
 
-SomePage.aspx URL-адрес в ссылке автоматически преобразован в URL-адрес, который включен билет проверки подлинности — не пришлось писать единой строки кода! Билет проверки подлинности форм автоматически внедряются в URL-адрес для гиперссылки, начинается с http:// или /. Не важно, если ссылка на отображается в вызов Response.Redirect, элемент управления гиперссылки или элемент привязки HTML (т. е. &lt;href = «...»&gt;... &lt;/a&gt;). До тех пор, пока не URL-адреса, примерно http://www.someserver.com/SomePage.aspx или /SomePage.aspx, нам будет внедрен билета проверки подлинности форм.
+SomePage.aspx URL-адрес в ссылке автоматически преобразован в URL-адрес, который включен билет проверки подлинности — не пришлось писать единой строки кода! Билет проверки подлинности форм автоматически внедряются в URL-адрес для гиперссылки, не ставьте `http://` или `/`. Не важно, если ссылка на отображается в вызов Response.Redirect, элемент управления гиперссылки или элемент привязки HTML (т. е. `<a href="...">...</a>`). До тех пор, пока не URL-адреса, примерно `http://www.someserver.com/SomePage.aspx` или `/SomePage.aspx`, нам будет внедрен билета проверки подлинности форм.
 
 > [!NOTE]
 > Те же политики времени ожидания как билетов проверки подлинности на основе файлов cookie придерживаться билетов проверки подлинности форм без поддержки файлов cookie. Однако без поддержки файлов cookie проверки подлинности билеты подверженных атак, так как билет проверки подлинности встроена непосредственно в URL-адрес. Предположим, пользователь посетит веб-сайт, входит в систему и затем вставляет URL-адрес в сообщение электронной почты коллеге. Если коллеги щелкает эту ссылку, до достижения срок действия, они будут войти как пользователь, отправивший сообщение электронной почты!

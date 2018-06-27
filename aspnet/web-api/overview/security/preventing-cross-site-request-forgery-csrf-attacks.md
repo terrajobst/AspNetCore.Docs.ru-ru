@@ -12,12 +12,12 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks
 msc.type: authoredcontent
-ms.openlocfilehash: 1cd03f3b396cc2ece1d8dbe6820f6277c02d8e62
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5e7b24c697e0bb37f388341abd89609c76f6b64c
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26508153"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961241"
 ---
 <a name="preventing-cross-site-request-forgery-csrf-attacks-in-aspnet-web-api"></a>Предотвращение атак подделки межсайтовых запросов в веб-API ASP.NET
 ====================
@@ -27,7 +27,7 @@ ms.locfileid: "26508153"
 
 Ниже приведен пример атаки CSRF:
 
-1. Пользователь входит в www.example.com, с помощью форм проверки подлинности.
+1. Пользователь выполняет вход в `www.example.com` проверки подлинности с помощью форм.
 2. Сервер проверяет подлинность пользователя. Ответ от сервера включает файл cookie проверки подлинности.
 3. Не выходя из пользователь посещает вредоносный веб-узел. Этот вредоносный сайт содержит следующие HTML-формы: 
 
