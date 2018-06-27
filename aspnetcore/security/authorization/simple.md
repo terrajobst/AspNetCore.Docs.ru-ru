@@ -5,12 +5,12 @@ description: Узнайте, как использовать атрибут ав
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/simple
-ms.openlocfilehash: 3c5e9d5dfd65ded40c9828a666143c1868f5562f
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 6409def0508b855d3d2a4a1f4d3a3d15bfe5dd32
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272069"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961127"
 ---
 # <a name="simple-authorization-in-aspnet-core"></a>Простой авторизации в ASP.NET Core
 
@@ -71,5 +71,5 @@ public class AccountController : Controller
 
 Это позволит только прошедшие проверку подлинности пользователи `AccountController`, за исключением `Login` действия, который доступен всем пользователям, независимо от их состояния, прошедшего проверку подлинности или не прошедшие проверку подлинности и анонимный.
 
->[!WARNING]
-> `[AllowAnonymous]` пропускает все инструкции авторизации. Если применить объединение `[AllowAnonymous]` , а также `[Authorize]` атрибута, а затем авторизовать атрибуты всегда будет игнорироваться. Например, если применить `[AllowAnonymous]` на контроллере уровне любой `[Authorize]` атрибуты на одном контроллере или на любое действие в ней будут игнорироваться.
+> [!WARNING]
+> `[AllowAnonymous]` пропускает все инструкции авторизации. При сочетании `[AllowAnonymous]` , а также `[Authorize]` атрибута `[Authorize]` атрибуты игнорируются. Например, если применить `[AllowAnonymous]` на уровне контроллера любой `[Authorize]` атрибутов на одном контроллере (или на любое действие в ней) игнорируется.

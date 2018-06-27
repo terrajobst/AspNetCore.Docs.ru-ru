@@ -12,12 +12,12 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/releases/whats-new-in-aspnet-web-api-22
 msc.type: authoredcontent
-ms.openlocfilehash: 400329dd852ca3c527387ee45e3e902b725e771b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 89b065fccd0e4864f4a24c37b4caa29a1e127840
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26508403"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961303"
 ---
 <a name="whats-new-in-aspnet-web-api-22"></a>Новые возможности в ASP.NET Web API 2.2
 ====================
@@ -89,7 +89,7 @@ ms.locfileid: "26508403"
 
 1. Поддержка наследования атрибутов маршрута
 
-    Пример.
+    Пример
 
     Здесь запрос like «/ 10/api/значений» успешно вернет «Успех: 10»
 
@@ -131,7 +131,7 @@ ms.locfileid: "26508403"
 
 Когда службы получают такие запросы узлов будет отменить escape-символ те escape-последовательность перед их передачей в среду выполнения веб-API. Это обеспечивает защиту от атак на систему следующим образом:  
   
- http://www.contoso.com/..%2f..%2f/Windows/System32/cmd.exe?/c+dir+c:
+`http://www.contoso.com/..%2F..%2F/Windows/System32/cmd.exe?/c+dir+c:`
 
 В этом случае в стек OData веб-API, чтобы сообщение об ошибке 404 (не найдено). Чтобы предотвратить эту ошибку, ваш клиент должен использовать двойные escape-последовательности для косой черты (% 252F) и обратную косую черту (% 255C). Этого не происходит для строк запросов, например /Employees? $filter = имя eq «% 2F имя»
 
@@ -158,7 +158,7 @@ ms.locfileid: "26508403"
 Проблема: Привязка модели сложного типа, который является помеченной атрибутом FromUri ведет себя по-разному при использовании атрибута маршрутизации.
 
 Используйте следующую ссылку отслеживает проблемы, а также сведения о временном решении.  
-[http://aspnetwebstack.CodePlex.com/WorkItem/1944](http://aspnetwebstack.codeplex.com/workitem/1944)
+[http://aspnetwebstack.codeplex.com/workitem/1944](http://aspnetwebstack.codeplex.com/workitem/1944)
 
 Проблема: API MVC или веб-формирования шаблонов в проект с 5.2.0 результаты пакеты в 5.1.2 пакеты для те, которые уже не существуют в проекте
 
