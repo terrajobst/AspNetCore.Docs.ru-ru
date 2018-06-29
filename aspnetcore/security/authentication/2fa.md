@@ -6,18 +6,18 @@ monikerRange: < aspnetcore-2.0
 ms.author: riande
 ms.date: 08/15/2017
 uid: security/authentication/2fa
-ms.openlocfilehash: 335edfd5cd4dfbb9d223ba0ae888a6d2386cd4a5
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 0308b05ebcda1af7f6850549d7a33f1df1a912a0
+ms.sourcegitcommit: 1faf2525902236428dae6a59e375519bafd5d6d7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272313"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37089988"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Двухфакторная проверка подлинности с помощью SMS в ASP.NET Core
 
 По [Рик Андерсон](https://twitter.com/RickAndMSFT) и [разработчики швейцарский](https://github.com/Swiss-Devs)
 
-В разделе [Создание включить QR-код для приложения для проверки подлинности в ASP.NET Core](xref:security/authentication/identity-enable-qrcodes) Core ASP.NET 2.0 и более поздних версий.
+ Два фактора проверки подлинности (2FA) приложения для проверки подлинности, с помощью синхронизированного одноразовый пароль алгоритм (TOTP), — это рекомендованный подход для 2FA отрасли. 2FA с помощью TOTP предпочтительнее SMS 2FA. Дополнительные сведения см. в разделе [Создание включить QR-код для TOTP приложения для проверки подлинности в ASP.NET Core](xref:security/authentication/identity-enable-qrcodes) Core ASP.NET 2.0 и более поздних версий.
 
 Этого учебника показано, как настроить двухфакторную проверку подлинности (2FA) с помощью SMS. Инструкции, приведенные для [twilio](https://www.twilio.com/) и [ASPSMS](https://www.aspsms.com/asp.net/identity/core/testcredits/), но можно использовать любой другой поставщик SMS. Рекомендуется [подтверждение учетной записи и пароль восстановления](xref:security/authentication/accconfirm) перед запуском этого учебника.
 
@@ -33,28 +33,24 @@ ms.locfileid: "36272313"
 
 #### <a name="figuring-out-sms-provider-credentials"></a>Изучив учетные данные поставщика SMS
 
-**Twilio:**  
-На вкладке панели мониторинга учетной записи Twilio, скопируйте **ИД безопасности учетной записи** и **маркер проверки подлинности**.
+**Twilio:** на вкладке панели мониторинга учетной записи Twilio, скопируйте **ИД безопасности учетной записи** и **маркер проверки подлинности**.
 
-**ASPSMS:**  
-Параметры учетной записи, перейдите к **использованием ключа пользователя** и скопируйте его вместе с вашей **пароль**.
+**ASPSMS:** из параметров учетной записи, перейдите к **использованием ключа пользователя** и скопируйте его вместе с вашей **пароль**.
 
 Позже он будет храниться эти значения с помощью секрет диспетчера в ключи `SMSAccountIdentification` и `SMSAccountPassword`.
 
 #### <a name="specifying-senderid--originator"></a>Указав идентификатор отправителя / инициатора
 
-**Twilio:**  
-На вкладке номера скопируйте вашей Twilio **номер телефона**. 
+**Twilio:** вкладке числа скопируйте вашей Twilio **номер телефона**.
 
-**ASPSMS:**  
-В меню разблокирования инициаторы разблокировать одного или нескольких источников или выберите инициатор буквенно-цифровых (поддерживаются не все сети). 
+**ASPSMS:** инициаторы меню разблокирования разблокировать одного или нескольких источников или выберите инициатор буквенно-цифровых (поддерживаются не все сети).
 
 Это значение с помощью средства диспетчера секрет раздел позже будет храниться `SMSAccountFrom`.
 
 
 ### <a name="provide-credentials-for-the-sms-service"></a>Укажите учетные данные для службы SMS
 
-Мы будем использовать [параметры шаблона](xref:fundamentals/configuration/options) для доступа к параметрам учетной записи и ключа пользователя. 
+Мы будем использовать [параметры шаблона](xref:fundamentals/configuration/options) для доступа к параметрам учетной записи и ключа пользователя.
 
    * Создание класса для выборки защищенный ключ SMS. Для этого образца `SMSoptions` класса создается в *Services/SMSoptions.cs* файла.
 
@@ -68,21 +64,19 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 ```
 * Добавьте пакет NuGet для поставщика SMS. Из пакета Диспетчер консоли (PMC) запуска:
 
-**Twilio:**  
+**Twilio:**
 `Install-Package Twilio`
 
-**ASPSMS:**  
+**ASPSMS:**
 `Install-Package ASPSMS`
 
 
 * Добавьте код в *Services/MessageServices.cs* файл, чтобы включить SMS. Используйте Twilio или разделе ASPSMS:
 
 
-**Twilio:**  
-[!code-csharp[](2fa/sample/Web2FA/Services/MessageServices_twilio.cs)]
+**Twilio:** [!code-csharp[](2fa/sample/Web2FA/Services/MessageServices_twilio.cs)]
 
-**ASPSMS:**  
-[!code-csharp[](2fa/sample/Web2FA/Services/MessageServices_ASPSMS.cs)]
+**ASPSMS:** [!code-csharp[](2fa/sample/Web2FA/Services/MessageServices_ASPSMS.cs)]
 
 ### <a name="configure-startup-to-use-smsoptions"></a>Настройка запуска для использования `SMSoptions`
 

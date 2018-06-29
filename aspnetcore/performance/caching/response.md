@@ -2,18 +2,15 @@
 title: Кэширование ответов в ASP.NET Core
 author: rick-anderson
 description: Сведения об использовании ответ, кэширование, более низкие требования к пропускной способности и повышения производительности приложений ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 09/20/2017
-ms.prod: asp.net-core
-ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: e5a3877c68f8475e7dd49d44f4a92cf7b09ac7f5
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: c53ae3f6ab8d26588533772dd4fdacb36ec12059
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34734514"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077768"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Кэширование ответов в ASP.NET Core
 
@@ -98,9 +95,9 @@ ms.locfileid: "34734514"
 
 | Запрос                          | Результат                   |
 | -------------------------------- | ------------------------ |
-| `http://example.com?key1=value1` | возвращенный от сервера     |
-| `http://example.com?key1=value1` | возвращаемые по промежуточного слоя |
-| `http://example.com?key1=value2` | возвращенный от сервера     |
+| `http://example.com?key1=value1` | Возвращенный от сервера     |
+| `http://example.com?key1=value1` | Возвращаемые по промежуточного слоя |
+| `http://example.com?key1=value2` | Возвращенный от сервера     |
 
 Первый запрос возвращается сервером и кэшируются в по промежуточного слоя. Второй запрос возвращается по промежуточного слоя, так как предыдущий запрос соответствует строке запроса. Третий запрос не в кэше по промежуточного слоя, так как значение строки запроса не соответствует предыдущего запроса. 
 
