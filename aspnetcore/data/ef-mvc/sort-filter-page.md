@@ -5,14 +5,18 @@ description: Из этого руководства вы узнаете, как 
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 34097eacad16c0ffb989efb3b6a8656be4a076cd
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 1f80faf0e36332c28e8337ddc331cc8b4c4970d7
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273654"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37093092"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---sort-filter-paging---3-of-10"></a>ASP.NET Core MVC и EF Core — сортировка, фильтрация, разбиение на страницы — 3 из 10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -228,7 +232,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
 Запрос LINQ группирует записи из таблицы студентов по дате зачисления, вычисляет число записей в каждой группе и сохраняет результаты в коллекцию объектов моделей представления `EnrollmentDateGroup`.
-> [!NOTE] 
+> [!NOTE]
 > В Entity Framework Core версии 1.0 клиенту возвращался весь результирующий набор, и группировка выполнялась на стороне клиента. В некоторых случаях это может вызвать проблемы с производительностью. Тестирование производительности необходимо выполнять на объемах данных, сопоставимых с объемами данных в рабочей среде, и при необходимости использовать необработанный SQL для выполнения группировки на сервере. Сведения об использовании необработанного SQL см. в [последнем руководстве серии](advanced.md).
 
 ### <a name="modify-the-about-view"></a>Изменение представления About
@@ -245,6 +249,8 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 В этом руководстве вы узнали, как выполнять сортировку, фильтрацию, разбиение на страницы и группировку. В следующем руководстве вы узнаете, как с помощью миграций обрабатывать изменения в модели данных.
 
+::: moniker-end
+
 > [!div class="step-by-step"]
 > [Назад](crud.md)
-> [Вперед](migrations.md)  
+> [Вперед](migrations.md)

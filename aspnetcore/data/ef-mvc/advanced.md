@@ -5,14 +5,18 @@ description: В этом учебнике описываются полезны�
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 2aced1126e3062835d9c35ef01fd3c1438f0af84
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: be44ef115ce72e1571bbdea2c609ea6c53792c59
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274373"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37093079"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC с EF Core — расширенные возможности — 10 из 10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -195,7 +199,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 Этот учебник написан Томом Дайкстра (Tom Dykstra) и Риком Андерсоном (Rick Anderson) (twitter @RickAndMSFT). Помощь в проверке кода для учебника и отладке проблем, возникавших при его написании, оказывали Роуэн Миллер (Rowan Miller), Диего Вега (Diego Vega) и другие участники команды Entity Framework.
 
-## <a name="common-errors"></a>Распространенные ошибки  
+## <a name="common-errors"></a>Распространенные ошибки
 
 ### <a name="contosouniversitydll-used-by-another-process"></a>Библиотека ContosoUniversity.dll используется другим процессом
 
@@ -240,6 +244,7 @@ dotnet ef database drop
 Решение:
 
 Проверьте строку подключения. Если вы вручную удалили файл базы данных, измените имя базы данных в строке подключения, чтобы начать работу с новой базой.
+::: moniker-end
 
 > [!div class="step-by-step"]
 > [Назад](inheritance.md)

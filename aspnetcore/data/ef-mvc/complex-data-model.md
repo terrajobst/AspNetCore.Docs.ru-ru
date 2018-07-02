@@ -5,14 +5,18 @@ description: В этом руководстве вы добавите допол
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: d89ca44917fac57febc2f8b0d632ae004ca7216c
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 1d3c69c8c658b5ca2f0253b790b0dc75d44d3064
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277391"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37093118"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC с EF Core — модель данных — 5 из 10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -351,7 +355,7 @@ public Student Student { get; set; }
 
 Если таблица Enrollment не включала в себя сведения об оценках, ей потребуется содержать всего два внешних ключа (CourseID и StudentID). В данном случае это будет таблица соединения многие ко многим без полезных данных (ее также называют чистой таблицей соединения) в базе данных. Между сущностями Instructor и Course действует связь многие ко многим, и следующим шагом является создание класса сущности, выступающего в качестве таблицы соединения без полезных данных.
 
-(EF 6.x поддерживает неявные таблицы соединения для связей многие ко многим, но EF Core — нет. Дополнительные сведения см. в [обсуждении в репозитории EF Core на сайте GitHub](https://github.com/aspnet/EntityFramework/issues/1368).) 
+(EF 6.x поддерживает неявные таблицы соединения для связей многие ко многим, но EF Core — нет. Дополнительные сведения см. в [обсуждении в репозитории EF Core на сайте GitHub](https://github.com/aspnet/EntityFramework/issues/1368).)
 
 ## <a name="the-courseassignment-entity"></a>Сущность CourseAssignment
 
@@ -437,7 +441,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 Чтобы заставить эту миграцию работать с существующими данными, нужно изменить код, чтобы присвоить новому столбцу значение по умолчанию, а также создать кафедру-заглушку с именем "Temp" для использования по умолчанию. В результате существующие строки Course будут связаны с кафедрой "Temp" после выполнения метода `Up`.
 
-* Откройте файл *{метка_времени}_ComplexDataModel.cs*. 
+* Откройте файл *{метка_времени}_ComplexDataModel.cs*.
 
 * Закомментируйте строку кода, которая добавляет столбец DepartmentID в таблицу Course.
 
@@ -491,7 +495,8 @@ dotnet ef database update
 ## <a name="summary"></a>Сводка
 
 Теперь у вас есть более сложная модель данных и соответствующая база данных. В следующем руководстве вы подробнее узнаете о доступе к связанным данным.
+::: moniker-end
 
 > [!div class="step-by-step"]
 > [Назад](migrations.md)
-> [Вперед](read-related-data.md)  
+> [Вперед](read-related-data.md)

@@ -5,14 +5,18 @@ description: В этом руководстве вы начинаете испо
 ms.author: tdykstra
 ms.date: 03/15/2018
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: d8b92aeedb252b93e1dc1aca424d26a377305da2
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: f710b33ac1a6017b0e3d7e8c3e528675a41424bb
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273589"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37092946"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---migrations---4-of-10"></a>ASP.NET Core MVC с EF Core — миграции — 4 из 10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -34,7 +38,7 @@ ms.locfileid: "36273589"
 
 [!code-xml[](intro/samples/cu/ContosoUniversity.csproj?range=12-15&highlight=2)]
   
-(На момент написания руководства номера версий в этом примере были актуальными.) 
+(На момент написания руководства номера версий в этом примере были актуальными.)
 
 ## <a name="change-the-connection-string"></a>Изменение строки подключения
 
@@ -154,14 +158,15 @@ Done.
 
 **Важно!** Это не тот же пакет, который вы устанавливаете для интерфейса командной строки, изменив файл *CSPROJ*. Его имя заканчивается на `Tools`, а имя пакета интерфейса командной строки — на `Tools.DotNet`.
 
-Дополнительные сведения о командах интерфейса командной строки см. в разделе [.NET Core CLI](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet). 
+Дополнительные сведения о командах интерфейса командной строки см. в разделе [.NET Core CLI](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet).
 
 Дополнительные сведения о командах консоли диспетчера пакетов см. в разделе [Консоль диспетчера пакетов (Visual Studio)](https://docs.microsoft.com/ef/core/miscellaneous/cli/powershell).
 
 ## <a name="summary"></a>Сводка
 
 В этом руководстве вы узнали, как создать и применить первую миграцию. В следующем руководстве вы начнете рассматривать более сложные вопросы, развернув модель данных. Попутно вы создадите и примените дополнительные миграции.
+::: moniker-end
 
 > [!div class="step-by-step"]
 > [Назад](sort-filter-page.md)
-> [Вперед](complex-data-model.md)  
+> [Вперед](complex-data-model.md)

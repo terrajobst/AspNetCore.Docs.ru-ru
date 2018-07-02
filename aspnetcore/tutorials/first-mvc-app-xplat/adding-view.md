@@ -1,16 +1,16 @@
 ---
-title: Добавление представления
+title: Добавление представления в приложение ASP.NET Core
 author: rick-anderson
 description: Добавление представления в простое приложение ASP.NET Core MVC
 ms.author: riande
 ms.date: 03/30/2017
 uid: tutorials/first-mvc-app-xplat/adding-view
-ms.openlocfilehash: 473935c8fd89f78740a27ced8bb1b1d9cb91fb35
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: a8bb46d58f4c157335f4b41a200055c6c2bdb281
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274954"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961351"
 ---
 [!INCLUDE [adding-view](../../includes/mvc-intro/adding_view1.md)]
 

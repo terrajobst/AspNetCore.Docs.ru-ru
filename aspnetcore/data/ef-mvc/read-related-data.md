@@ -5,14 +5,18 @@ description: Из этого руководства вы узнаете, как 
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 8c634bb1ae715776e18b847574ce03791f2ede03
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: d5c9b665a80003ef5029754d7ad1780b3254e97e
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277216"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37092988"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---read-related-data---6-of-10"></a>ASP.NET Core MVC и EF Core — чтение связанных данных — 6 из 10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -238,6 +242,8 @@ ms.locfileid: "36277216"
 
 Вы научились использовать безотложную загрузку с одним запросом и несколькими запросами для чтения связанных данных в свойства навигации. В следующем руководстве вы узнаете, как обновлять связанные данные.
 
+::: moniker-end
+
 >[!div class="step-by-step"]
 >[Назад](complex-data-model.md)
->[Вперед](update-related-data.md)  
+>[Вперед](update-related-data.md)
