@@ -2,19 +2,15 @@
 title: Маршрутизация в ASP.NET Core
 author: ardalis
 description: Узнайте, как функции маршрутизации ASP.NET Core обеспечивают сопоставление входящего запроса с обработчиком маршрутов.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/routing
-ms.openlocfilehash: a23e2e1a1dd25a57e5d6189bbd5938c48078515b
-ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
+ms.openlocfilehash: 4482c865671eb4f5decbd5f1cd6e26f2e68e5c25
+ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35341786"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36314140"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -154,7 +150,7 @@ routes.MapRoute(
     dataTokens: new { locale = "en-US" });
 ```
 
-Этот шаблон будет соответствовать такому пути URL-адреса, как `/Products/5`, и будет извлекать значения `{ controller = Products, action = Details, id = 5 }` и токены данных `{ locale = en-US }`.
+Этот шаблон будет соответствовать такому пути URL-адреса, как `/en-US/Products/5`, и будет извлекать значения `{ controller = Products, action = Details, id = 5 }` и токены данных `{ locale = en-US }`.
 
 ![Токены в окне "Локальные"](routing/_static/tokens.png)
 
@@ -285,6 +281,16 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 Использование шаблона — это, как правило, самый простой подход к маршрутизации. Ограничения и значения по умолчанию также могут указываться вне шаблона маршрута.
 
 Совет. Чтобы увидеть, как встроенные реализации маршрутизации, такие как `Route`, сопоставляются с запросами, включите [ведение журнала](xref:fundamentals/logging/index).
+
+## <a name="reserved-routing-names"></a>Зарезервированные имена маршрутизации
+
+Следующие ключевые слова являются зарезервированными именами и не могут использоваться как имена маршрутов или параметры:
+
+* `action`
+* `area`
+* `controller`
+* `handler`
+* `page`
 
 ## <a name="route-constraint-reference"></a>Справочник по ограничениям маршрутов
 

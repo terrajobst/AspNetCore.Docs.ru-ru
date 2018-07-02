@@ -2,27 +2,23 @@
 title: Инициирование HTTP-запросов
 author: stevejgordon
 description: Сведения об использовании интерфейса IHttpClientFactory для управления логическими экземплярами HttpClient в ASP.NET Core.
-manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/02/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
+ms.date: 06/22/2018
 uid: fundamentals/http-requests
-ms.openlocfilehash: 1f2c7522a10220cd9520d78846d2e897115447c2
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: e56c7a3ed80cc08103f6178859a1a99f1a5ec068
+ms.sourcegitcommit: 79b756ea03eae77a716f500ef88253ee9b1464d2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33838765"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36327526"
 ---
 # <a name="initiate-http-requests"></a>Инициирование HTTP-запросов
 
 Авторы: [Гленн Кондрон (Glenn Condron)](https://github.com/glennc), [Райан Новак (Ryan Nowak)](https://github.com/rynowak) и [Стив Гордон (Steve Gordon)](https://github.com/stevejgordon)
 
-`IHttpClientFactory` можно зарегистрировать и использовать для настройки и создания экземпляров [HttpClient](/dotnet/api/system.net.http.httpclient) в приложении. Так вы получите следующие преимущества:
+[IHttpClientFactory](/dotnet/api/system.net.http.ihttpclientfactory) можно зарегистрировать и использовать для настройки и создания экземпляров [HttpClient](/dotnet/api/system.net.http.httpclient) в приложении. Так вы получите следующие преимущества:
 
 * Центральное расположение для именования и настройки логических экземпляров `HttpClient`. Например, можно зарегистрировать и использовать клиент github для доступа к GitHub. Можно зарегистрировать клиент по умолчанию для других целей.
 * Кодификация концепции исходящего ПО промежуточного слоя путем делегирования обработчиков в `HttpClient` и предоставление расширений для ПО промежуточного слоя на основе Polly для использования этой возможности.
@@ -42,7 +38,7 @@ ms.locfileid: "33838765"
 
 ### <a name="basic-usage"></a>Основное использование
 
-`IHttpClientFactory` можно зарегистрировать путем вызова метода расширения `AddHttpClient` в `IServiceCollection` внутри метода `ConfigureServices` в файле Startup.cs.
+`IHttpClientFactory` можно зарегистрировать путем вызова метода расширения `AddHttpClient` в `IServiceCollection` внутри метода `Startup.ConfigureServices`.
 
 [!code-csharp[](http-requests/samples/Startup.cs?name=snippet1)]
 
@@ -54,7 +50,7 @@ ms.locfileid: "33838765"
 
 ### <a name="named-clients"></a>Именованные клиенты
 
-Если в приложении требуется несколько различных способов использования `HttpClient`, каждый со своей конфигурацией, можно использовать **именованных клиентов**. Конфигурацию для именованного клиента `HttpClient` можно указать во время регистрации в `ConfigureServices`.
+Если в приложении требуется несколько различных способов использования `HttpClient`, каждый со своей конфигурацией, можно использовать **именованных клиентов**. Конфигурацию для именованного клиента `HttpClient` можно указать во время регистрации в `Startup.ConfigureServices`.
 
 [!code-csharp[](http-requests/samples/Startup.cs?name=snippet2)]
 
@@ -78,7 +74,7 @@ ms.locfileid: "33838765"
 
 В приведенном выше коде конфигурация перемещается в типизированный клиент. Объект `HttpClient` предоставляется в виде открытого свойства. Можно определить связанные с API методы, которые предоставляют функциональные возможности `HttpClient`. Метод `GetAspNetDocsIssues` инкапсулирует код, необходимый для запроса и анализа последнего открытого выпуска из репозитория GitHub.
 
-Для регистрации типизированного клиента можно использовать универсальный метод расширения `AddHttpClient` в `ConfigureServices`, указав класс типизированного клиента:
+Для регистрации типизированного клиента можно использовать универсальный метод расширения `AddHttpClient` в `Startup.ConfigureServices`, указав класс типизированного клиента:
 
 [!code-csharp[](http-requests/samples/Startup.cs?name=snippet3)]
 
@@ -86,7 +82,7 @@ ms.locfileid: "33838765"
 
 [!code-csharp[](http-requests/samples/Pages/TypedClient.cshtml.cs?name=snippet1&highlight=11-14,20)]
 
-При желании конфигурацию для типизированного клиента можно указать во время регистрации в `ConfigureServices`, а не в конструкторе типизированного клиента:
+При желании конфигурацию для типизированного клиента можно указать во время регистрации в `Startup.ConfigureServices`, а не в конструкторе типизированного клиента:
 
 [!code-csharp[](http-requests/samples/Startup.cs?name=snippet4)]
 
@@ -175,7 +171,7 @@ public class ValuesController : ControllerBase
 
 `IHttpClientFactory` интегрируется с популярной библиотекой сторонних разработчиков под названием [Polly](https://github.com/App-vNext/Polly). Polly — это комплексная библиотека, обеспечивающая отказоустойчивость и обработку временных сбоев в .NET. Она позволяет разработчикам выражать политики, например политику повтора, размыкателя цепи, времени ожидания, изоляции отсеков и отката, более эффективным и потокобезопасным образом.
 
-Для использования политик Polly с настроенными экземплярами `HttpClient` предоставляются методы расширения. Расширения Polly доступны в пакете NuGet Microsoft.Extensions.Http.Polly. Этот пакет не входит по умолчанию в метапакет Microsoft.AspNetCore.App. Для использования расширений PackageReference должен быть явно включен в проект.
+Для использования политик Polly с настроенными экземплярами `HttpClient` предоставляются методы расширения. Расширения Polly доступны в пакете NuGet [Microsoft.Extensions.Http.Polly](https://www.nuget.org/packages/Microsoft.Extensions.Http.Polly/). Этот пакет не входит в состав [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Для использования расширений в проект необходимо включить явную ссылку `<PackageReference />`.
 
 [!code-csharp[](http-requests/samples/HttpClientFactorySample.csproj?highlight=9)]
 
@@ -185,7 +181,7 @@ public class ValuesController : ControllerBase
 
 Наиболее распространенные сбои, возникающие при совершении внешних вызовов HTTP, будут носить временный характер. Используется удобный метод расширения `AddTransientHttpErrorPolicy`, который позволяет определить политику для обработки временных ошибок. Политики, заданные с помощью этого метода расширения, обрабатывают `HttpRequestException`, ответы HTTP 5xx и ответы HTTP 408.
 
-Расширение `AddTransientHttpErrorPolicy` может быть использовано в `ConfigureServices`. Данное расширение предоставляет доступ к объекту `PolicyBuilder`, настроенному для обработки ошибок, представляющих возможный временный сбой:
+Расширение `AddTransientHttpErrorPolicy` может быть использовано в `Startup.ConfigureServices`. Данное расширение предоставляет доступ к объекту `PolicyBuilder`, настроенному для обработки ошибок, представляющих возможный временный сбой:
 
 [!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet7)]
 
