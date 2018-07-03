@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/31/2018
 uid: getting-started
-ms.openlocfilehash: eb049dea2800cf2e12c044b88d1664ee80bb95a5
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 22e9c982921cc03d89506e18ff99bf481027dda6
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296771"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077664"
 ---
 # <a name="get-started-with-aspnet-core"></a>Начало работы с ASP.NET Core
 
 ::: moniker range=">= aspnetcore-2.1"
 
-1. Установите [!INCLUDE[](~/includes/2.1-SDK.md)].
+1. Установите [!INCLUDE [](~/includes/2.1-SDK.md)].
 
 2. Создайте проект ASP.NET Core. Откройте окно командной оболочки и введите следующую команду.
 
@@ -25,7 +25,7 @@ ms.locfileid: "36296771"
     dotnet new webapp -o aspnetcoreapp
     ```
 
-    [!INCLUDE[](~/includes/webapp-alias-notice.md)]
+    [!INCLUDE [](~/includes/webapp-alias-notice.md) [](~/includes/webapp-alias-notice.md)]
 
 3. Установите доверие к сертификату разработки HTTPS.
 
@@ -76,15 +76,15 @@ ms.locfileid: "36296771"
 
 7. Перейдите к [http://localhost:5001/About](http://localhost:5001/About) и проверьте, отобразились ли изменения.
 
-[!INCLUDE[next steps](~/includes/getting-started/next-steps.md)]
+[!INCLUDE [next steps](~/includes/getting-started/next-steps.md)]
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-1. Установите [!INCLUDE[](~/includes/net-core-sdk-download-link.md)].
+1. Установите [!INCLUDE [](~/includes/net-core-sdk-download-link.md)].
 
-2. Создайте проект ASP.NET Core.
+2. Создайте новый проект ASP.NET Core.
 
    Откройте командную оболочку. Введите следующую команду:
 
@@ -107,7 +107,7 @@ ms.locfileid: "36296771"
 
 6. Перейдите к [http://localhost:5000/About](http://localhost:5000/About) и проверьте изменения.
 
-[!INCLUDE[next steps](~/includes/getting-started/next-steps.md)]
+[!INCLUDE [next steps](~/includes/getting-started/next-steps.md)]
 
 ::: moniker-end
 
@@ -132,7 +132,7 @@ ms.locfileid: "36296771"
    }
    ```
 
-4. Создайте проект ASP.NET Core.
+4. Создайте новый проект ASP.NET Core.
 
    ```console
    dotnet new web
@@ -154,5 +154,5 @@ ms.locfileid: "36296771"
 
 7. Перейдите по адресу `http://localhost:5000`.
 
-[!INCLUDE[next steps](~/includes/getting-started/next-steps.md)]
+[!INCLUDE [next steps](~/includes/getting-started/next-steps.md)]
 ::: moniker-end

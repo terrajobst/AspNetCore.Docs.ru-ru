@@ -5,18 +5,22 @@ description: ''
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 3c418cc4e331ad19b0ec1be3207fa2cc44bef041
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 4e0bcffd1162681aa4d31c4fe74acac5a7e981f1
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275675"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37093131"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC с Entity Framework Core: учебник 1 из 10
 
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
+
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-[!INCLUDE [RP better than MVC](../../includes/RP-EF/rp-over-mvc.md)]
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
 На примере учебного веб-приложения "Университет Contoso" демонстрируется процесс создания веб-приложений ASP.NET Core 2.0 MVC с помощью Entity Framework (EF) Core 2.0 и Visual Studio 2017.
 
@@ -31,7 +35,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-[!INCLUDE [](~/includes/net-core-prereqs.md)]
+[!INCLUDE [](~/includes/net-core-prereqs.md) [](~/includes/net-core-prereqs.md)]
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
@@ -104,7 +108,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 Чтобы реализовать поддержку EF Core в проекте, установите поставщик целевой базы данных. В этом учебнике используется SQL Server, для которого требуется пакет поставщика [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/). Этот пакет уже входит в состав метапакета [Microsoft.AspNetCore.All](xref:fundamentals/metapackage), поэтому устанавливать его не требуется.
 
-Этот пакет и его зависимости (`Microsoft.EntityFrameworkCore` и `Microsoft.EntityFrameworkCore.Relational`) обеспечивают поддержку среды выполнения для платформы EF. Пакет средств будет добавлен позднее в рамках учебника [Миграции](migrations.md). 
+Этот пакет и его зависимости (`Microsoft.EntityFrameworkCore` и `Microsoft.EntityFrameworkCore.Relational`) обеспечивают поддержку среды выполнения для платформы EF. Пакет средств будет добавлен позднее в рамках учебника [Миграции](migrations.md).
 
 Дополнительные сведения о других поставщиках баз данных, которые доступны для платформы Entity Framework Core, см. в разделе [Поставщики баз данных](https://docs.microsoft.com/ef/core/providers/).
 
@@ -358,6 +362,8 @@ ASP.NET Core по умолчанию реализует технологию [в
 ## <a name="summary"></a>Сводка
 
 Теперь вы создали простое приложение, которое использует Entity Framework Core и SQL Server Express LocalDB для хранения и отображения данных. В следующем учебнике вы узнаете, как выполнять основные операции CRUD (создание, чтение, обновление и удаление).
+
+::: moniker-end
 
 > [!div class="step-by-step"]
 > [Вперед](crud.md)
