@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/12/2018
 uid: razor-pages/index
-ms.openlocfilehash: 601d6ac2cb373c40fb1de5427b0ea6c299fa1f32
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 9d7d4d49dbb55e327a208df99a0e3ca744de8609
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296751"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077752"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -31,7 +31,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 ## <a name="creating-a-razor-pages-project"></a>Создание проекта Razor Pages
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Подробные инструкции по созданию проекта Razor Pages с помощью Visual Studio см. в статье [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start).
 
@@ -53,7 +53,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 Откройте созданный файл *.csproj* в Visual Studio для Mac.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code) 
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -69,7 +69,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 ::: moniker-end
 
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli) 
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -295,7 +295,17 @@ Pages работает со всеми функциями подсистемы �
 
 Давайте упростим нашу страницу с помощью некоторых из этих функций.
 
+::: moniker range=">= aspnetcore-2.1"
+
+Добавим [макет страницы](xref:mvc/views/layout) в файл *Pages/Shared/_Layout.cshtml*.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 Добавим [макет страницы](xref:mvc/views/layout) в файл *Pages/_Layout.cshtml*:
+
+::: moniker-end
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/_LayoutSimple.cshtml)]
 
@@ -310,7 +320,19 @@ Pages работает со всеми функциями подсистемы �
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/_ViewStart.cshtml)]
 
+::: moniker range=">= aspnetcore-2.1"
+
+Макет хранится в папке *Shared/Pages*. Pages ищет другие представления (макеты, шаблоны, частичные реплики) в иерархическом порядке, начиная с той папки, где находится текущая страница. Макет в папке *Shared/Pages* можно использовать на любой странице Razor, которая находится в папке *Pages*.
+
+Файл макета следует поместить в папку *Pages/Shared*.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 Макет хранится в папке *Pages*. Pages ищет другие представления (макеты, шаблоны, частичные реплики) в иерархическом порядке, начиная с той папки, где находится текущая страница. Макет в папке *Pages* можно использовать на любой странице Razor, которая находится в папке *Pages*.
+
+::: moniker-end
 
 Корпорация Майкрософт рекомендует **не** размещать файл макета в папке *Views/Shared*. *Views/Shared* — это шаблон представлений MVC. Razor Pages опирается на иерархию папок, а не на условные обозначения путей.
 

@@ -5,12 +5,12 @@ description: Сведения о платформе ведения журнал�
 ms.author: tdykstra
 ms.date: 12/15/2017
 uid: fundamentals/logging/index
-ms.openlocfilehash: 4ceb7886cc9410c3b39beec68c2b11ea3578d851
-ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
+ms.openlocfilehash: 969ad303c3fee06aa40d43140153ffbf58b735db
+ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37077781"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37126291"
 ---
 # <a name="logging-in-aspnet-core"></a>Ведение журналов в ASP.NET Core
 
@@ -18,15 +18,17 @@ ms.locfileid: "37077781"
 
 ASP.NET Core поддерживает API ведения журнала, который работает с разными поставщиками. Встроенные поставщики позволяют отправлять журналы в одно или несколько мест назначений. Можно подключить стороннюю платформу ведения журналов. В этой статье содержатся сведения об использовании в коде встроенного API и поставщиков ведения журналов.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/sample2) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
----
+::: moniker-end
 
 ## <a name="how-to-create-logs"></a>Создание журналов
 
@@ -44,7 +46,7 @@ ASP.NET Core не поддерживает асинхронные методы �
 
 ## <a name="how-to-add-providers"></a>Добавление поставщиков
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 Поставщик ведения журнала принимает сообщения, созданные с помощью объекта `ILogger`, и отображает или сохраняет их. Например, поставщик Console отображает сообщения на консоли, а поставщик службы приложений Azure может сохранить их в хранилище больших двоичных объектов.
 
@@ -56,7 +58,9 @@ ASP.NET Core не поддерживает асинхронные методы �
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_TemplateCode&highlight=7)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Поставщик ведения журнала принимает сообщения, созданные с помощью объекта `ILogger`, и отображает или сохраняет их. Например, поставщик Console отображает сообщения на консоли, а поставщик службы приложений Azure может сохранить их в хранилище больших двоичных объектов.
 
@@ -69,9 +73,53 @@ ASP.NET Core не поддерживает асинхронные методы �
 > [!NOTE]
 > [Пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/sample) добавляет поставщиков ведения журнала в метод `Startup.Configure`. Чтобы получить выходные данные журнала из выполняемого ранее кода, добавьте поставщики ведения журналов в конструктор класса `Startup`.
 
----
+::: moniker-end
 
 Сведения о каждом [встроенном поставщике ведения журнала](#built-in-logging-providers) и ссылки на [сторонние поставщики](#third-party-logging-providers) приведены далее в статье.
+
+## <a name="settings-file-configuration"></a>Конфигурация файла параметров
+
+Во всех предыдущих примерах в разделе [Добавление поставщиков](#how-to-add-providers) конфигурация поставщика ведения журнала загружается из раздела `Logging` файлов параметров приложений. В следующем примере показано содержимое типичного файла *appsettings.Development.json*.
+
+::: moniker range=">= aspnetcore-2.1"
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    },
+    "Console":
+    {
+      "IncludeScopes": "true"
+    }
+  }
+}
+```
+
+Ключи `LogLevel` представляют имена журналов. Ключ `Default` применяется к журналам, которые не указаны явно. Значение представляет [уровень ведения журнала](#log-level), который применен к указанному журналу. Ключи журнала, которые задают `IncludeScopes` (в примере — `Console`), следует указывать, если [области ведения журнала](#log-scopes) включены для указанного журнала.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.1"
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  }
+}
+```
+
+Ключи `LogLevel` представляют имена журналов. Ключ `Default` применяется к журналам, которые не указаны явно. Значение представляет [уровень ведения журнала](#log-level), который применен к указанному журналу.
+
+::: moniker-end
 
 ## <a name="sample-logging-output"></a>Пример выходных данных ведения журнала
 
@@ -263,7 +311,7 @@ System.Exception: Item not found exception.
 
 ## <a name="log-filtering"></a>Фильтрация журналов
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 Можно указать минимальный уровень ведения журнала для определенного поставщика и категории или для всех поставщиков или всех категорий. Все журналы с уровнем ниже минимального не передаются этому поставщику, поэтому они не отображаются и не сохраняются. 
 
@@ -345,7 +393,9 @@ System.Exception: Item not found exception.
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_FilterFunction&highlight=5-13)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Некоторые поставщики ведения журналов позволяют указывать, когда журналы следует записывать на носитель, а когда — игнорировать. При этом учитывается уровень ведения журнала и категория.
 
@@ -363,7 +413,7 @@ System.Exception: Item not found exception.
 
 Пакет NuGet [Microsoft.Extensions.Logging.Filter](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Filter) предоставляет метод расширения `WithFilter`. Метод возвращает новый экземпляр `ILoggerFactory` для фильтрации журнала сообщений, переданного всем поставщикам средства ведения журналов, которые зарегистрированы в этом экземпляре. Он не влияет на другие экземпляры `ILoggerFactory`, включая исходный экземпляр `ILoggerFactory`.
 
----
+::: moniker-end
 
 ## <a name="log-scopes"></a>Области журналов
 
@@ -375,22 +425,37 @@ System.Exception: Item not found exception.
 
 Следующий код предоставляет области для поставщика Console:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range="> aspnetcore-2.0"
 
-В файле *Program.cs*:
+*Program.cs*:
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_Scopes&highlight=4)]
 
 > [!NOTE]
-> Для включения ведения журнала на уровне области требуется параметр `IncludeScopes` средства ведения журналов. Настройка `IncludeScopes` с помощью файлов конфигурации *appsettings* будет доступна в выпуске ASP.NET Core 2.1.
+> Для включения ведения журнала на уровне области требуется параметр `IncludeScopes` средства ведения журналов.
+>
+> `IncludeScopes` можно настроить в файле конфигурации *appsettings*. Дополнительные сведения см. в разделе [Конфигурация файла параметров](#settings-file-configuration).
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
 
-В файле *Startup.cs*:
+::: moniker range="= aspnetcore-2.0"
+
+*Program.cs*:
+
+[!code-csharp[](index/sample2/Program.cs?name=snippet_Scopes&highlight=4)]
+
+> [!NOTE]
+> Для включения ведения журнала на уровне области требуется параметр `IncludeScopes` средства ведения журналов.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+*Startup.cs*:
 
 [!code-csharp[](index/sample/Startup.cs?name=snippet_Scopes&highlight=6)]
 
----
+::: moniker-end
 
 Каждое сообщение журнала содержит ограниченную информацию:
 
@@ -418,13 +483,16 @@ warn: TodoApi.Controllers.TodoController[4000]
 
 Пакет поставщика [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console) отправляет выходные данные журнала на консоль. 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
+
 
 ```csharp
 logging.AddConsole()
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 loggerFactory.AddConsole()
@@ -446,7 +514,7 @@ loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
 Приведенные параметры ограничивают журналы платформы предупреждениями, но разрешают регистрацию приложений на уровне отладки, как описано в разделе [Фильтрация журналов](#log-filtering). Дополнительные сведения см. в разделе [Конфигурация](xref:fundamentals/configuration/index).
 
----
+::: moniker-end
 
 ### <a name="debug-provider"></a>Поставщик Debug
 
@@ -454,13 +522,15 @@ loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
 В Linux этот поставщик записывает журналы в каталог */var/log/message*.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 logging.AddDebug()
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 loggerFactory.AddDebug()
@@ -468,25 +538,27 @@ loggerFactory.AddDebug()
 
 [Перегрузки AddDebug](/dotnet/api/microsoft.extensions.logging.debugloggerfactoryextensions) позволяют передавать минимальный уровень ведения журнала или функцию фильтрации.
 
----
+::: moniker-end
 
 ### <a name="eventsource-provider"></a>Поставщик EventSource
 
 Для приложений, предназначенных для ASP.NET Core 1.1.0 или более поздних версий, реализовывать события трассировки можно с помощью пакета поставщика [Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource). В Windows используется [трассировка событий Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803). Поставщик является кроссплатформенным, но для Linux и macOS инструменты сбора событий и отображений пока отсутствуют. 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 logging.AddEventSourceLogger()
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 loggerFactory.AddEventSourceLogger()
 ```
 
----
+::: moniker-end
 
 Для сбора и просмотра данных журналов рекомендуется использовать [программу PerfView](https://github.com/Microsoft/perfview). Существуют и другие средства для просмотра журналов трассировки событий Windows, но PerfView обеспечивает максимальное удобство работы с событиями трассировки событий Windows, создаваемыми ASP.NET. 
 
@@ -498,13 +570,15 @@ loggerFactory.AddEventSourceLogger()
 
 Пакет поставщика [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog) отправляет выходные данные журнала в журнал событий Windows.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 logging.AddEventLog()
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 loggerFactory.AddEventLog()
@@ -512,25 +586,27 @@ loggerFactory.AddEventLog()
 
 [Перегрузки AddEventLog](/dotnet/api/microsoft.extensions.logging.eventloggerfactoryextensions) позволяют передавать `EventLogSettings` или минимальный уровень ведения журнала.
 
----
+::: moniker-end
 
 ### <a name="tracesource-provider"></a>Поставщик TraceSource
 
 Пакет поставщика [Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource) использует библиотеки и поставщики [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource).
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 logging.AddTraceSource(sourceSwitchName);
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 loggerFactory.AddTraceSource(sourceSwitchName);
 ```
 
----
+::: moniker-end
 
 [Перегрузки AddTraceSource](/dotnet/api/microsoft.extensions.logging.tracesourcefactoryextensions) позволяют передавать исходный параметр и прослушиватель трассировки.
 
@@ -544,7 +620,7 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 Пакет поставщика [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) записывает журналы в текстовые файлы в файловой системе приложения службы приложений Azure и в [хранилище больших двоичных объектов](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage) в учетной записи хранения Azure. Поставщик доступен только для приложений, предназначенных для ASP.NET Core 1.1 или более поздних версий.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 Если планируется использовать .NET Core, не нужно устанавливать пакет поставщика или явным образом вызвать [AddAzureWebAppDiagnostics](/dotnet/api/microsoft.extensions.logging.azureappservicesloggerfactoryextensions.addazurewebappdiagnostics). Поставщик становится автоматически доступным для приложения при развертывании приложения в службе приложений Azure.
 
@@ -554,7 +630,9 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 logging.AddAzureWebAppDiagnostics();
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 loggerFactory.AddAzureWebAppDiagnostics();
@@ -562,7 +640,7 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 Перегрузка [AddAzureWebAppDiagnostics](/dotnet/api/microsoft.extensions.logging.azureappservicesloggerfactoryextensions.addazurewebappdiagnostics) позволяет передавать [AzureAppServicesDiagnosticsSettings](/dotnet/api/microsoft.extensions.logging.azureappservices.azureappservicesdiagnosticssettings) для переопределения настроек по умолчанию, таких как шаблон выходных данных ведения журнала, имя BLOB-объекта и максимально допустимый размер файла. (*Шаблон выходных данных* — это шаблон сообщений, который применяется ко всем журналам на основе того, который вы указали при вызове метода `ILogger`.)
 
----
+::: moniker-end
 
 При развертывании в приложение службы приложений приложение учитывает параметры в разделе [Журналы диагностики](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/#enablediag) на странице **Служба приложений** на портале Azure. При обновлении этих параметров изменения вступают в силу немедленно без перезапуска или повторного развертывания приложения.
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: Познакомьтесь с основными понятиями для создания приложений ASP.NET Core.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 09/30/2017
+ms.date: 07/02/2018
 uid: fundamentals/index
-ms.openlocfilehash: b51d7b62525944d9924ecb4ce5964312f30a7835
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 33786bf78567a1aa12a1ac97d44d1a596ec4c3be
+ms.sourcegitcommit: 08f1a9baa97060da5168840b332c9c0805b5f901
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278873"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37144980"
 ---
 # <a name="aspnet-core-fundamentals"></a>Основы ASP.NET Core
 
@@ -204,15 +204,23 @@ ASP.NET Core поддерживает открытый веб-интерфейс
 
 Дополнительные сведения см. в разделе [Протокол WebSocket](xref:fundamentals/websockets).
 
+::: moniker range=">= aspnetcore-2.1"
+## <a name="microsoftaspnetcoreapp-metapackage"></a>Метапакет Microsoft.AspNetCore.App
+
+Метапакет [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/) упрощает управление пакетами. Дополнительные сведения см. в разделе [Метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
 ## <a name="microsoftaspnetcoreall-metapackage"></a>Метапакет Microsoft.AspNetCore.All
 
 Метапакет [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) для ASP.NET Core включает:
 
 * все пакеты, поддерживаемые командой ASP.NET Core;
-* все пакеты, поддерживаемые Entity Framework Core; 
+* все пакеты, поддерживаемые Entity Framework Core;
 * внутренние и сторонние зависимости, используемые ASP.NET Core и Entity Framework Core.
 
 Дополнительные сведения см. в разделе [Метапакет Microsoft.AspNetCore.All](xref:fundamentals/metapackage).
+::: moniker-end
 
 ## <a name="net-core-vs-net-framework-runtime"></a>Выбор между .NET Core и .NET Framework
 
