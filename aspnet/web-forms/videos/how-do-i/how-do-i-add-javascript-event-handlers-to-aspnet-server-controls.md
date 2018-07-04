@@ -1,28 +1,27 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-add-javascript-event-handlers-to-aspnet-server-controls
-title: '[Инструкции:] Добавьте обработчики событий JavaScript для серверных элементов управления ASP.NET | Документы Microsoft'
+title: '[Инструкции] Добавление обработчиков событий JavaScript серверные элементы управления ASP.NET | Документация Майкрософт'
 author: rick-anderson
-description: В этом видеоролике пиксел Крис будет показано, как методы JavaScript с ASP.NET серверных элементов управления для обеспечения клиентского интерфейса функциональные возможности для контракту сервера...
+description: В этом видео Крис Пелз будет показано, как методы JavaScript с серверными элементами управления ASP.NET, для обеспечения клиентского интерфейса функциональные возможности для контракту сервера...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/20/2008
 ms.topic: article
 ms.assetid: 4e8d3220-3299-41ad-897b-bbf62e2e667f
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-add-javascript-event-handlers-to-aspnet-server-controls
 msc.type: video
-ms.openlocfilehash: 75aa0046253f41b6ed2fd5a40fc45905045bb48a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ba0ebf2529450597116c1d098c599c95e8149f1e
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26525413"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37402643"
 ---
-<a name="how-do-i-add-javascript-event-handlers-to-aspnet-server-controls"></a>[Инструкции:] Добавьте обработчики событий JavaScript для серверных элементов управления ASP.NET
+<a name="how-do-i-add-javascript-event-handlers-to-aspnet-server-controls"></a>[Инструкции] Добавление обработчиков событий JavaScript серверные элементы управления ASP.NET
 ====================
-по [Крис пиксел](https://twitter.com/chrispels)
+по [Крис Пелз](https://twitter.com/chrispels)
 
-В этом видеоролике пиксел Крис будет показано, как методы JavaScript с ASP.NET серверных элементов управления для обеспечения клиентского интерфейса функциональные возможности для серверных элементов управления. См. во-первых, как декларативно добавить обработчики событий клиента путем расширения ASP.NET серверных элементов управления с помощью настраиваемых атрибутов. Далее см. способы добавления атрибутов для сопоставления методов клиента для ASP.NET серверных элементов управления программными средствами имеет преимущество, заключающееся, выполняемая во время выполнения. Наконец Узнайте, как ссылаться на идентификатор серверный элемент управления, который динамически визуализируется с ASP.NET, в коде JavaScript.
+В этом видео Крис Пелз будет показано, как методы JavaScript с серверными элементами управления ASP.NET, для обеспечения клиентского интерфейса функциональные возможности для серверных элементов управления. Во-первых см. в разделе как декларативно добавить обработчики событий клиента путем расширения серверных элементов управления ASP.NET с помощью настраиваемых атрибутов. Далее см. способы добавления атрибутов для сопоставления методы клиента серверных элементов управления ASP.NET программными средствами которых имеет преимущество, заключающееся, выполняемая во время выполнения. Наконец Узнайте, как ссылка на идентификатор серверного элемента управления, который формируется динамически ASP.NET, в коде JavaScript.
 
-[&#9654; Посмотрите видео (18 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-add-javascript-event-handlers-to-aspnet-server-controls)
+[&#9654;Просмотрите видео (18 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-add-javascript-event-handlers-to-aspnet-server-controls)

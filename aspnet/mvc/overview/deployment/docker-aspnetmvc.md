@@ -7,16 +7,15 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 02/01/2017
 ms.topic: article
-ms.prod: .net-framework
 ms.technology: dotnet-mvc
 ms.devlang: dotnet
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: 7a580c6c6236b375ea54ef4e9978fff6993d885a
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: fa010e795878b26c79dbe04ef0017373283c4269
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/11/2018
-ms.locfileid: "29143193"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37403023"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>Перенос приложений ASP.NET MVC в контейнеры Windows
 
@@ -43,7 +42,7 @@ ms.locfileid: "29143193"
 
 - [Юбилейное обновление Windows 10](https://www.microsoft.com/software-download/windows10/) (или выше) либо [Windows Server 2016](https://www.microsoft.com/cloud-platform/windows-server) (или выше).
 - [Docker для Windows](https://docs.docker.com/docker-for-windows/) — версия Stable 1.13.0 или 1.12 Beta 26 (или более поздние)
-- [Visual Studio 2017 г](https://www.visualstudio.com/visual-studio-homepage-vs.aspx).
+- [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx).
 
 > [!IMPORTANT]
 > При использовании Windows Server 2016 выполните инструкции по [развертыванию узла контейнеров в Windows Server](https://msdn.microsoft.com/virtualization/windowscontainers/deployment/deployment).
@@ -89,7 +88,7 @@ FROM microsoft/aspnet
 COPY ./bin/Release/PublishOutput/ /inetpub/wwwroot
 ```
 
-В Dockerfile нет команды `ENTRYPOINT`. Она не нужна. При запуске Windows Server со службами IIS, процесс IIS очень точки входа, который настроен для запуска в базовом образе aspnet.
+В Dockerfile нет команды `ENTRYPOINT`. Она не нужна. При запуске Windows Server со службами IIS, процесс IIS является entrypoint, который был настроен на запуск в базовом образе aspnet.
 
 Выполните команду сборки Docker, чтобы создать образ, который запускает приложение ASP.NET. Чтобы сделать это, откройте окно PowerShell в каталоге проекта и введите следующую команду в каталоге решения:
 
@@ -97,7 +96,7 @@ COPY ./bin/Release/PublishOutput/ /inetpub/wwwroot
 docker build -t mvcrandomanswers .
 ```
 
-Эта команда создаст новый образ с помощью инструкций в Dockerfile, именования (-t тегов) изображение в виде mvcrandomanswers. Это может включать получение базового образа из [Docker Hub](http://hub.docker.com). После этого в образ будет добавлено приложение.
+Эта команда создаст новый образ согласно инструкциям в Dockerfile, именования (-t — помечает тегом) образа в виде mvcrandomanswers. Это может включать получение базового образа из [Docker Hub](http://hub.docker.com). После этого в образ будет добавлено приложение.
 
 После выполнения этой команды можно выполнить команду `docker images` для просмотра сведений о новом образе:
 
@@ -118,7 +117,7 @@ docker run -d --name randomanswers mvcrandomanswers
 
 Аргумент `-d` предписывает Docker запустить образ в отсоединенном режиме. Это значит, что образ Docker запускается в отрыве от текущей оболочки.
 
-Во многих примерах docker может появиться -p для сопоставления портов контейнером и узлом. Изображение aspnet по умолчанию уже настроен контейнер для прослушивания порта 80 и предоставлять к нему. 
+Во многих примерах docker может появиться -p, чтобы сопоставление портов контейнера и узла. Изображение aspnet по умолчанию уже настроен контейнер для прослушивания порта 80 и предоставите к нему доступ. 
 
 Аргумент `--name randomanswers` содержит имя запущенного контейнера. Это имя можно использовать вместо идентификатора контейнера в большинстве команд.
 
@@ -137,7 +136,7 @@ docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" randomanswers
 172.31.194.61
 ```
 
-Соединиться с IPv4-адресом, запущенного контейнера `http://172.31.194.61` в приведенном примере. Введите этот URL-адрес в адресной строке браузера, и вы увидите работающий сайт.
+Подключиться к запущенному контейнеру, указав IPv4-адрес, `http://172.31.194.61` в приведенном примере. Введите этот URL-адрес в адресной строке браузера, и вы увидите работающий сайт.
 
 > [!NOTE]
 > Некоторые программы VPN или прокси-серверы могут препятствовать переходу на ваш узел.

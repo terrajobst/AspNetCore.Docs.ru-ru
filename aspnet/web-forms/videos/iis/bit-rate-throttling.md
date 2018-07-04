@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/iis/bit-rate-throttling
-title: Регулирование скорости | Документы Microsoft
+title: Bit Rate Throttling | Документация Майкрософт
 author: JoeStagner
-description: В этом видео объясняется, как установить и настроить новый IIS7 компонент — регулирование скорости. С бразильскому времени можно использовать файлы мультимедиа, withou большой загрузки...
+description: В этом видео будет научить для установки и настройки новой великолепной IIS7 возможности — регулирование скорости. С помощью по бразильскому времени можно использовать файлы мультимедиа, withou большие файлы для загрузки...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/09/2009
 ms.topic: article
 ms.assetid: 8dc90862-97d6-48d1-8bfc-79c70d622474
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/iis/bit-rate-throttling
 msc.type: video
-ms.openlocfilehash: 65511ccc49bda216b422334787cc6e0e032117d4
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 7eed091306f157c71a9a8d46fcfb3a21814c3e51
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30881179"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37402544"
 ---
 <a name="bit-rate-throttling"></a>Регулирование скорости
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-В этом видео объясняется, как установить и настроить новый IIS7 компонент — регулирование скорости. По бразильскому времени может выступать файлы мультимедиа, большой загрузки без повреждения производительность сайтов пользовательского интерфейса.
+В этом видео будет научить для установки и настройки новой великолепной IIS7 возможности — регулирование скорости. С по бразильскому времени сможет передать медиафайлы или большие файлы для загрузки, не сломать производительность сайтов пользовательского интерфейса.
 
-[&#9654;Посмотрите видео (6 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/bit-rate-throttling)
+[&#9654;Просмотрите видео (6 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/bit-rate-throttling)
 
 > [!div class="step-by-step"]
 > [Назад](installing-ftp7.md)

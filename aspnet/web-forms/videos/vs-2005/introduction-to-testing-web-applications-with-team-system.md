@@ -1,6 +1,6 @@
 ---
 uid: web-forms/videos/vs-2005/introduction-to-testing-web-applications-with-team-system
-title: Общие сведения о тестирования веб-приложений с помощью Team System | Документы Microsoft
+title: Введение в тестирование веб-приложений с помощью Team System | Документация Майкрософт
 author: rick-anderson
 description: В этом видео мы узнаем, как можно автоматизировать тестирование веб-приложений с помощью веб-тестирования возможности Visual Studio Team System.
 ms.author: aspnetcontent
@@ -9,23 +9,22 @@ ms.date: 02/09/2007
 ms.topic: article
 ms.assetid: 0924e7ff-b148-4a3e-bfaf-6f866ca13495
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/vs-2005/introduction-to-testing-web-applications-with-team-system
 msc.type: video
-ms.openlocfilehash: 1b43a6c11a38dd6bccf9dd3248c690f537ac081a
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 07f37f3d8f25c959d9303738b1aec7a406c808a2
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30893138"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37402513"
 ---
-<a name="introduction-to-testing-web-applications-with-team-system"></a>Общие сведения о тестирования веб-приложений с помощью Team System
+<a name="introduction-to-testing-web-applications-with-team-system"></a>Введение в тестирование веб-приложений с помощью Team System
 ====================
 по Эрика ли
 
 В этом видео мы узнаем, как можно автоматизировать тестирование веб-приложений с помощью веб-тестирования возможности Visual Studio Team System.
 
-[&#9654;Посмотрите видео (9 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/introduction-to-testing-web-applications-with-team-system)
+[&#9654;Просмотрите видео (9 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/introduction-to-testing-web-applications-with-team-system)
 
 > [!div class="step-by-step"]
 > [Назад](introduction-to-unit-testing-with-team-system.md)

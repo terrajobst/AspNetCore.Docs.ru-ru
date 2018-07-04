@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/authentication/creating-inactive-users
-title: Создание неактивных пользователей | Документы Microsoft
+title: Создание неактивных пользователей | Документация Майкрософт
 author: JoeStagner
-description: В этом видеоролике Джо Стэгнер описывается создание неактивных пользователей в систему членства ASP.NET, а затем с помощью интерфейса администратора активировать пользователей один...
+description: В этом видео (Joe Stagner) описывается создание неактивных пользователей в систему членства ASP.NET и затем с помощью интерфейса администрирования для активации пользователям единое...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/16/2010
 ms.topic: article
 ms.assetid: dc572644-1f4f-40a2-8173-e17caa3c8582
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/authentication/creating-inactive-users
 msc.type: video
-ms.openlocfilehash: 7f74b6d9b4e375c48c4e80533acc8384060ed64a
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0f43ea1ea86f4daff2b059157fea01db4be3290d
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30884406"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37402594"
 ---
 <a name="creating-inactive-users"></a>Создание неактивных пользователей
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-В этом видеоролике Джо Стэгнер рассматриваются создания неактивных пользователей в систему членства ASP.NET, а затем активировать пользователей один одновременно с помощью интерфейс администрирования.
+В этом видео (Joe Stagner) рассматривается создание неактивных пользователей в систему членства ASP.NET, а затем использовать интерфейс администрирования для активации пользователей одной за раз.
 
-[&#9654;Посмотрите видео (в минутах 23)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-inactive-users)
+[&#9654;Просмотрите видео (23 минуты)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-inactive-users)
 
 > [!div class="step-by-step"]
 > [Назад](simple-web-service-authentication.md)
