@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-mobile/cdnjquerymobile10rc2
-title: jQuery Mobile 1.0 RC2 в сети Microsoft Ajax CDN | Документы Microsoft
+title: jQuery Mobile 1.0 RC2 в сети доставки Содержимого Microsoft Ajax | Документация Майкрософт
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 07/23/2014
 ms.topic: article
 ms.assetid: 8e588bfd-15f7-4bbd-8b3e-97223b70af52
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile10rc2
 msc.type: content
-ms.openlocfilehash: 377a29a74ae23109c811ba570d4d7c8dbb9af7c7
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 79ade7c2fba05bbb25c5038e3903f53c1bf12547
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30071019"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37363498"
 ---
-<a name="jquery-mobile-10-rc2-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="c3dc7-102">jQuery Mobile 1.0 RC2 в сети Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="c3dc7-102">jQuery Mobile 1.0 RC2 on the Microsoft Ajax CDN</span></span>
+<a name="jquery-mobile-10-rc2-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="730d4-102">jQuery Mobile 1.0 RC2 в сети доставки Содержимого Microsoft Ajax</span><span class="sxs-lookup"><span data-stu-id="730d4-102">jQuery Mobile 1.0 RC2 on the Microsoft Ajax CDN</span></span>
 ====================
-<span data-ttu-id="c3dc7-103">Библиотеки jQuery Mobile 1.0 версии-Кандидате 2 включает следующие файлы:</span><span class="sxs-lookup"><span data-stu-id="c3dc7-103">The jQuery Mobile 1.0 RC 2 library includes the following files:</span></span>
+<span data-ttu-id="730d4-103">Библиотека jQuery Mobile 1.0 версии-Кандидата 2 включает следующие файлы:</span><span class="sxs-lookup"><span data-stu-id="730d4-103">The jQuery Mobile 1.0 RC 2 library includes the following files:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0rc2/jquery.mobile-1.0rc2.js
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0rc2/jquery.mobile-1.0rc2.min.js

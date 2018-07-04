@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-datatables/cdnjquerydatatables191
-title: jQuery DataTables 1.9.1 | Документы Microsoft
+title: jQuery DataTables 1.9.1 | Документация Майкрософт
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 07/23/2014
 ms.topic: article
 ms.assetid: 5bf7dd4e-ca1b-443d-b74c-a8b1ab4a4e26
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables191
 msc.type: content
-ms.openlocfilehash: 2e6eaf51b7333fc38f769330934d3e368bf9707b
-ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
+ms.openlocfilehash: 0caf071de8e3d94dba815bf6e8918723aefefc50
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "30071237"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37363459"
 ---
-<a name="jquery-datatables-191"></a><span data-ttu-id="58716-102">jQuery DataTables 1.9.1</span><span class="sxs-lookup"><span data-stu-id="58716-102">jQuery DataTables 1.9.1</span></span>
+<a name="jquery-datatables-191"></a><span data-ttu-id="a6183-102">jQuery DataTables 1.9.1</span><span class="sxs-lookup"><span data-stu-id="a6183-102">jQuery DataTables 1.9.1</span></span>
 ====================
-<span data-ttu-id="58716-103">Следующие файлы для jQuery DataTables подключаемые модули размещаются на CDN:</span><span class="sxs-lookup"><span data-stu-id="58716-103">The following files for the jQuery DataTables plugins are hosted on the CDN:</span></span>
+<span data-ttu-id="a6183-103">Следующие файлы для jQuery DataTables подключаемые модули размещаются в сети доставки Содержимого:</span><span class="sxs-lookup"><span data-stu-id="a6183-103">The following files for the jQuery DataTables plugins are hosted on the CDN:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/jquery.dataTables.js
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/jquery.dataTables.min.js

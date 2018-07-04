@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-validate/cdnjqueryvalidate111
-title: jQuery проверки 1.11.0 | Документы Microsoft
+title: jQuery Validation 1.11.0 | Документация Майкрософт
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,22 +9,21 @@ ms.date: 07/23/2014
 ms.topic: article
 ms.assetid: 028452a2-a3c2-494b-b5e9-b1677cb5c07d
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-validate/cdnjqueryvalidate111
 msc.type: content
-ms.openlocfilehash: 3cdc738d6f6fce54fcb2fe765757ab191d1fd3b9
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: f14f4c9511f859dd71d1eda394d58310da3874bf
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30072341"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37363388"
 ---
-<a name="jquery-validation-1110"></a><span data-ttu-id="86985-102">jQuery проверки 1.11.0</span><span class="sxs-lookup"><span data-stu-id="86985-102">jQuery Validation 1.11.0</span></span>
+<a name="jquery-validation-1110"></a><span data-ttu-id="f6453-102">jQuery Validation 1.11.0</span><span class="sxs-lookup"><span data-stu-id="f6453-102">jQuery Validation 1.11.0</span></span>
 ====================
-<span data-ttu-id="86985-103">Следующие файлы размещаются в CDN:</span><span class="sxs-lookup"><span data-stu-id="86985-103">The following files are hosted on the CDN:</span></span>
+<span data-ttu-id="f6453-103">Следующие файлы размещаются в сети доставки Содержимого:</span><span class="sxs-lookup"><span data-stu-id="f6453-103">The following files are hosted on the CDN:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.min.js
-- <span data-ttu-id="86985-104">Файлы локализации https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/localization/messages \_## .js где ## loc код.</span><span class="sxs-lookup"><span data-stu-id="86985-104">Localization Files at https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/localization/messages\_##.js where ## is the loc code.</span></span>
+- <span data-ttu-id="f6453-104">Файлы локализации https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/localization/messages\_##.js где ## — loc код.</span><span class="sxs-lookup"><span data-stu-id="f6453-104">Localization Files at https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/localization/messages\_##.js where ## is the loc code.</span></span>
