@@ -1,122 +1,121 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-vb
-title: Используя шаблоны FormView (VB) | Документы Microsoft
+title: Использование шаблонов FormView (VB) | Документация Майкрософт
 author: rick-anderson
-description: В отличие от DetailsView FormView не состоит из полей. Вместо этого FormView подготавливается к просмотру с помощью шаблонов. В этом учебнике мы рассмотрим е. с помощью...
+description: В отличие от элемента управления DetailsView FormView не состоит из полей. Вместо этого FormView подготавливается к просмотру с помощью шаблонов. В этом руководстве мы рассмотрим использование F....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
 ms.topic: article
 ms.assetid: 67b25f4c-2823-42b6-b07d-1d650b3fd711
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 16293960f5d8758c93646844bd159547f5e0f38c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 66ad79c0c385afed75c1888b81328220ee048d19
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30875153"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37389918"
 ---
-<a name="using-the-formviews-templates-vb"></a>Используя шаблоны FormView (Visual Basic)
+<a name="using-the-formviews-templates-vb"></a>Использование шаблонов FormView (VB)
 ====================
 по [Скотт Митчелл](https://twitter.com/ScottOnWriting)
 
-[Загрузить пример приложения](http://download.microsoft.com/download/5/7/0/57084608-dfb3-4781-991c-407d086e2adc/ASPNET_Data_Tutorial_14_VB.exe) или [скачать PDF](using-the-formview-s-templates-vb/_static/datatutorial14vb1.pdf)
+[Скачайте пример приложения](http://download.microsoft.com/download/5/7/0/57084608-dfb3-4781-991c-407d086e2adc/ASPNET_Data_Tutorial_14_VB.exe) или [скачать PDF](using-the-formview-s-templates-vb/_static/datatutorial14vb1.pdf)
 
-> В отличие от DetailsView FormView не состоит из полей. Вместо этого FormView подготавливается к просмотру с помощью шаблонов. В данном руководстве, мы изучим с помощью элемента управления FormView для представления менее строгое представление данных.
+> В отличие от элемента управления DetailsView FormView не состоит из полей. Вместо этого FormView подготавливается к просмотру с помощью шаблонов. В этом учебном курсе мы рассмотрим использование элемента управления FormView для представления менее строгое представление данных.
 
 
 ## <a name="introduction"></a>Вступление
 
-В двух последних учебниках мы узнали, как для настройки выходов GridView и DetailsView элементов управления при помощи TemplateFields. Разрешить TemplateFields к содержимому для конкретного поля высокой настраивать, но в конечном итоге GridView и DetailsView имеют вид вместо boxy, вид сетки. Во многих сценариях макета сетки таких идеально, но в некоторых случаях требуется более гибкий, менее строгое отображения. При отображении одной записи, возможно с помощью элемента управления FormView гибкий макет.
+В последних двух учебных курсах мы научились изменять выходные данные управления GridView и DetailsView, использование полей TemplateField. Разрешить полей TemplateField для содержимого для конкретных полей настраиваться высокой, но в конечном счете GridView и DetailsView имеют вид довольно коробкоподобный, действующие по принципу сетки. Во многих случаях такой сеткоподобной компоновки является идеальным, но в некоторых случаях требуется более гибкое отображение. При отображении единственной записи, легко изменяемая компоновка возможна с помощью элемента управления FormView.
 
-В отличие от DetailsView FormView не состоит из полей. Не удается добавить BoundField и TemplateField в FormView. Вместо этого FormView подготавливается к просмотру с помощью шаблонов. Рассматривать как элемент управления DetailsView, содержащий один TemplateField FormView. FormView поддерживает следующие шаблоны:
+В отличие от элемента управления DetailsView FormView не состоит из полей. Невозможно добавить BoundField и TemplateField в элементе управления FormView. Вместо этого FormView подготавливается к просмотру с помощью шаблонов. Представить себе элемент FormView как элемент управления DetailsView, содержащий один TemplateField. FormView поддерживает следующие шаблоны:
 
-- `ItemTemplate` используется для отрисовки конкретной записи, отображаемых в FormView
-- `HeaderTemplate` используется для указания строки необязательный заголовок
-- `FooterTemplate` используется для указания строка необязательно нижнего колонтитула
-- `EmptyDataTemplate` Когда FormView `DataSource` отсутствуют какие-либо записи `EmptyDataTemplate` используется вместо `ItemTemplate` для визуализации разметки для элемента управления
-- `PagerTemplate` можно использовать для настройки интерфейса постраничного просмотра для FormViews, имеющих включено разбиение на страницы
-- `EditItemTemplate` / `InsertItemTemplate` позволяет настраивать интерфейс редактирования или интерфейс для вставки для FormViews, который поддерживает такие функциональные возможности
+- `ItemTemplate` используемый для визуализации конкретной записи, отображенной в FormView
+- `HeaderTemplate` используется для указания необязательной строки заголовка
+- `FooterTemplate` используется для указания необязательной строки
+- `EmptyDataTemplate` Когда FormView `DataSource` не имеет записей, `EmptyDataTemplate` используется вместо `ItemTemplate` для визуализации разметки элемента управления
+- `PagerTemplate` можно использовать для настройки интерфейса разбиения по страницам для FormView среды, у которых разбиение включено
+- `EditItemTemplate` / `InsertItemTemplate` используется для настройки интерфейса правки или вставки интерфейса для FormView среды, поддерживающих такие функции
 
-В данном руководстве, мы изучим с помощью элемента управления FormView для представления менее строгое отображения продуктов. Вместо того чтобы использовать поля имени, категории, поставщика и т. д., FormView `ItemTemplate` отобразит эти значения, используя сочетание элемент заголовка и `<table>` (см. рис. 1).
-
-
-[![FormView разрывов вид сетки макета в DetailsView](using-the-formview-s-templates-vb/_static/image2.png)](using-the-formview-s-templates-vb/_static/image1.png)
-
-**Рис. 1**: FormView разбивает Grid-Like макета, видны в DetailsView ([Просмотр полноразмерное изображение](using-the-formview-s-templates-vb/_static/image3.png))
+В этом учебном курсе мы рассмотрим использование элемента управления FormView для представления менее строгое отображения продуктов. Вместо полей для имени, категории, поставщика и т. д FormView `ItemTemplate` покажет эти значения, с помощью сочетания элемента заголовка и `<table>` (см. рис. 1).
 
 
-## <a name="step-1-binding-the-data-to-the-formview"></a>Шаг 1: Привязка данных к FormView
+[![FormView разрыва Сеткоподобной компоновки, Наблюдавшейся в DetailsView](using-the-formview-s-templates-vb/_static/image2.png)](using-the-formview-s-templates-vb/_static/image1.png)
 
-Откройте `FormView.aspx` страницы и перетащите FormView из области элементов в конструктор. При первом добавлении FormView он отображается как серый прямоугольник, предписывая нам, `ItemTemplate` необходим.
-
-
-[![FormView невозможно отобразить в конструкторе, пока не предоставлены ItemTemplate](using-the-formview-s-templates-vb/_static/image5.png)](using-the-formview-s-templates-vb/_static/image4.png)
-
-**На рисунке 2**: FormView невозможно отобразить в конструкторе до `ItemTemplate` предоставляется ([Просмотр полноразмерное изображение](using-the-formview-s-templates-vb/_static/image6.png))
+**Рис. 1**: FormView преодолевает ограничений Grid-Like макета, видны в DetailsView ([Просмотр полноразмерного изображения](using-the-formview-s-templates-vb/_static/image3.png))
 
 
-`ItemTemplate` Могут быть созданы вручную (с помощью декларативного синтаксиса) или может быть создан автоматически путем привязки к элементу управления источником данных с помощью конструктора FormView. Это автоматически созданной `ItemTemplate` содержит код HTML, что списки имя каждого поля и метки управления которого `Text` свойство привязано к значению поля. Такой подход также auto создает `InsertItemTemplate` и `EditItemTemplate`, которые заполняются элементы управления вводом для каждого поля данных, возвращаемых элементом управления источника данных.
+## <a name="step-1-binding-the-data-to-the-formview"></a>Шаг 1: Привязка данных к элементу FormView
 
-Если вы хотите автоматически создать шаблон, с помощью смарт-тега FormView добавить новый элемент управления ObjectDataSource, который вызывает `ProductsBLL` класса `GetProducts()` метод. Это создаст FormView с `ItemTemplate`, `InsertItemTemplate`, и `EditItemTemplate`. Удалите из представления источника, `InsertItemTemplate` и `EditItemTemplate` поддерживает, так как мы не интересует создание элемента FormView, изменяемых или вставляемых еще. Далее очистить разметка в рамках `ItemTemplate` таким образом, что мы для работы с нуля.
+Откройте `FormView.aspx` страницы и перетащите с панели инструментов в конструктор элемента FormView. При первом добавлении FormView отображается как серый квадрат, указывая, `ItemTemplate` необходим.
 
-Если бы вместо надстраивать `ItemTemplate` вручную, можно добавить и настроить элемент управления ObjectDataSource, перетащив его из области элементов в конструктор. Тем не менее не устанавливается FormView источника данных из конструктора. Вместо этого перейдите в представление источника и вручную задать FormView `DataSourceID` свойства `ID` значение ObjectDataSource. Вручную добавьте `ItemTemplate`.
 
-Независимо от того, какой подход решил воспользоваться, на этом этапе в FormView декларативная разметка должна выглядеть следующим образом:
+[![FormView не визуализируется в конструкторе, пока предоставлен ItemTemplate](using-the-formview-s-templates-vb/_static/image5.png)](using-the-formview-s-templates-vb/_static/image4.png)
+
+**Рис. 2**: The FormView невозможно отобразить в конструкторе до `ItemTemplate` предоставляется ([Просмотр полноразмерного изображения](using-the-formview-s-templates-vb/_static/image6.png))
+
+
+`ItemTemplate` Могут быть созданы вручную (через декларативный синтаксис) или может быть автоматически созданная по привязке FormView к элементу управления источником данных через конструктор. Автоматически создаваемый `ItemTemplate` содержит HTML, что списки имя каждого поля и метки, свойство `Text` свойство привязано к значению поля. Этот подход также автоматически создает `InsertItemTemplate` и `EditItemTemplate`, которые заполняются элементы управления вводом для каждого поля данных, возвращаемых элементом управления источника данных.
+
+Если вы хотите автоматически создавать шаблон, с помощью смарт-тега FormView добавить новый элемент управления ObjectDataSource, который вызывает `ProductsBLL` класса `GetProducts()` метод. Это создаст FormView с `ItemTemplate`, `InsertItemTemplate`, и `EditItemTemplate`. В представлении источника, удалите `InsertItemTemplate` и `EditItemTemplate` так, как мы не интересует создание элемента FormView, который поддерживает правки или вставки пока. Затем очистите разметку внутри `ItemTemplate` таким образом, чтобы у нас есть для работы с нуля.
+
+Если вам предпочтительнее создать `ItemTemplate` вручную, можно добавить и настроить элемент управления ObjectDataSource, перетащив его с панели инструментов в конструктор. Однако не устанавливайте FormView источника данных из конструктора. Вместо этого перейдите в представление источника и вручную установить значение `DataSourceID` свойства `ID` значение элемента управления ObjectDataSource. Вручную добавьте `ItemTemplate`.
+
+Какой бы подход был выбран, на этом этапе декларативная разметка элемента FormView должна выглядеть следующим образом:
 
 
 [!code-aspx[Main](using-the-formview-s-templates-vb/samples/sample1.aspx)]
 
-Поставьте флажок Включить постраничный просмотр в FormView смарт-тегов; При этом будет добавлено `AllowPaging="True"` атрибут декларативный синтаксис FormView. Кроме того, задать `EnableViewState` свойству значение False.
+Отвлекитесь и установите флажок Enable Paging в смарт-тега FormView; При этом будет добавлено `AllowPaging="True"` атрибут декларативный синтаксис элемента FormView. Кроме того, задайте `EnableViewState` значение False.
 
 ## <a name="step-2-defining-theitemtemplates-markup"></a>Шаг 2: Определение`ItemTemplate`элемента разметки
 
-FormView привязку к элементу управления ObjectDataSource и настроен для поддержки разбиения на страницы мы готовы укажите содержимое `ItemTemplate`. В этом учебнике будет имя продукта, отображаемое в `<h3>` заголовок. После этого воспользуемся HTML `<table>` для отображения оставшихся свойства продукта в таблице четыре столбца, где первый и третий столбцы список имен свойств, а вторая и четвертая перечислить их значения.
+FormView привязанной к элементу управления ObjectDataSource и настроен для поддержки разбиения по страницам мы готовы указывать содержимое для `ItemTemplate`. Для этого руководства, пусть название продукта, отображаемый в `<h3>` заголовок. После этого мы используем HTML `<table>` для отображения остающихся свойств продукта в четырехстолбцовой таблице, где первый и третий столбцы перечисляют имена свойств, а второй и четвертый списке их значения.
 
-Эта разметка может быть введено в через интерфейс редактирования шаблона FormView в конструкторе или введены вручную посредством декларативного синтаксиса. При работе с шаблонами обычно найти его проще работать непосредственно с декларативного синтаксиса, но вы можете использовать ту же методику удобно наиболее с.
+Эта разметка может быть вводить в через интерфейс редактирования шаблона элемента FormView в конструкторе или вручную через декларативный синтаксис. При работе с шаблонами я обычно нахожу проще работать напрямую с декларативным синтаксисом, но вы можете использовать ту же методику, вам наиболее подходит.
 
 В следующем примере показана декларативная разметка FormView после `ItemTemplate`его завершения структуры:
 
 
 [!code-aspx[Main](using-the-formview-s-templates-vb/samples/sample2.aspx)]
 
-Обратите внимание, что синтаксис привязки данных — `<%# Eval("ProductName") %>`для примера могут быть добавлены непосредственно в выходные данные шаблона. То есть их требуется не назначить элемент управления Label `Text` свойство. Например, у нас есть `ProductName` значению, отображаемому в `<h3>` элемента с помощью `<h3><%# Eval("ProductName") %></h3>`, что для продукта Chai будут отображаться как `<h3>Chai</h3>`.
+Обратите внимание, что синтаксис привязки данных — `<%# Eval("ProductName") %>`, для примера можно внедрить непосредственно в выходные данные шаблона. То есть, его не нужно назначать в элемент управления Label `Text` свойство. Например, у нас есть `ProductName` значением, отображаемым в `<h3>` элемента с помощью `<h3><%# Eval("ProductName") %></h3>`, что для продукта Chai, будет визуализироваться как `<h3>Chai</h3>`.
 
-`ProductPropertyLabel` И `ProductPropertyValue` классы CSS, используются для указания стиль продукта имена и значения свойств в `<table>`. Эти классы CSS определены в `Styles.css` и привести имена свойств полужирный и выравниванием по правому краю, добавьте право заполнение значений свойств.
+`ProductPropertyLabel` И `ProductPropertyValue` классы CSS используются для указания стиля продукта имена свойств и значений в `<table>`. Эти классы CSS определены в `Styles.css` и делают имена свойств полужирного шрифта и по правому краю и добавляют правое заполнение к значениям свойств.
 
-Так как используются не CheckBoxFields с FormView, чтобы показать `Discontinued` значение как флажок необходимо добавить собственный элемент управления CheckBox. `Enabled` Задано значение False, сделав его только для чтения и этот флажок `Checked` свойство привязано к значению `Discontinued` поля данных.
+Так как используются не CheckBoxFields с FormView, чтобы можно было отобразить `Discontinued` значение как флажок необходимо добавить собственный элемент управления CheckBox. `Enabled` Свойство имеет значение False, что только для чтения и флажок `Checked` свойство привязано к значению `Discontinued` поля данных.
 
-С `ItemTemplate` завершения продукта информация отображается в виде гораздо более гибкая. Сравните выходные данные DetailsView из последнего курса (рис. 3) с выходными данными, созданные в FormView в этом учебнике (рис. 4).
-
-
-[![Жесткая вывода DetailsView](using-the-formview-s-templates-vb/_static/image8.png)](using-the-formview-s-templates-vb/_static/image7.png)
-
-**Рис. 3**: жесткая DetailsView Output ([Просмотр полноразмерное изображение](using-the-formview-s-templates-vb/_static/image9.png))
+С помощью `ItemTemplate` завершения, сведения о продукте отображается в гораздо более гибкой форме. Сравните выходные данные DetailsView из последнего курса (рис. 3) с выходными данными, создаваемыми FormView в этом руководстве (рис. 4).
 
 
-[![Выходные данные жидкости FormView](using-the-formview-s-templates-vb/_static/image11.png)](using-the-formview-s-templates-vb/_static/image10.png)
+[![Выводимые данные DetailsView](using-the-formview-s-templates-vb/_static/image8.png)](using-the-formview-s-templates-vb/_static/image7.png)
 
-**Рис. 4**: FormView Output жидкости ([Просмотр полноразмерное изображение](using-the-formview-s-templates-vb/_static/image12.png))
+**Рис. 3**: выводимые данные DetailsView ([Просмотр полноразмерного изображения](using-the-formview-s-templates-vb/_static/image9.png))
+
+
+[![Гибкие выводимые данные FormView](using-the-formview-s-templates-vb/_static/image11.png)](using-the-formview-s-templates-vb/_static/image10.png)
+
+**Рис. 4**: жидкостей выводимые данные FormView ([Просмотр полноразмерного изображения](using-the-formview-s-templates-vb/_static/image12.png))
 
 
 ## <a name="summary"></a>Сводка
 
-Хотя элементы управления GridView и DetailsView могут быть настроены при помощи TemplateFields выходные данные, и по-прежнему представить свои данные в формате вид сетки, boxy. В тех случаях, когда должно быть показано одной записи с использованием менее строгое макета, FormView является идеальным выбором. Как и DetailsView FormView отображает одну запись из его `DataSource`, но в отличие от DetailsView состоит только из шаблонов и не поддерживает полей.
+Хотя элементы управления GridView и DetailsView можно настроить использование полей TemplateField выходные данные, и по-прежнему представить свои данные в формате сетки, угловат. В тех случаях, когда необходимо отобразить одну запись с помощью более гибкую компоновку, FormView является идеальным выбором. Как и элемент DetailsView, FormView отображает одну запись из его `DataSource`, но в отличие от элемента управления DetailsView состоит только из шаблонов и не поддерживает поля.
 
-Как было показано в этом учебнике, FormView обеспечивает более гибкий макет при отображении одной записи. В будущих учебниках мы изучим элементов управления DataList и повторителя, которые обеспечивают тот же уровень гибкости в качестве FormsView, однако, могут отображать несколько записей (такие как GridView).
+Как мы видели в этом руководстве, FormView позволяет более гибкой компоновки при отображении единственной записи. В будущих учебных курсах мы изучим элементы управления DataList и Repeater, которые предоставляют тот же уровень гибкости в качестве FormsView, но могут отображать несколько записей (например GridView).
 
-Программирование довольны!
+Счастливого вам программирования!
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи книг по ASP/ASP.NET и основатель веб- [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Microsoft с 1998 года. Скотт — независимый консультант, преподаватель и автор. Его последняя книга — [ *Sams Teach ASP.NET 2.0 in 24 часа*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Ним можно связаться по адресу [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Благодарности
+## <a name="special-thanks-to"></a>Особая благодарность
 
-Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было E.R. Gilmore. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+В этой серии руководств пособий рецензировалась многими компетентными редакторами. Основной рецензент этого учебного курса – е.р Gilmore. Хотите поработать с моих последующих статей для MSDN? Если Да, напишите мне [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Назад](using-templatefields-in-the-detailsview-control-vb.md)

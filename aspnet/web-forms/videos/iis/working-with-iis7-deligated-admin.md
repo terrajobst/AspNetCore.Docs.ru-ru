@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/iis/working-with-iis7-deligated-admin
-title: Работа с IIS7 полномочный администратор | Документы Microsoft
+title: Работа с IIS7 полномочным администратором | Документация Майкрософт
 author: JoeStagner
-description: 'В этом видеоролике реализованы интересные новые возможности удаленного управления, созданного для диспетчера служб IIS 7. Конфигурация клиента и сервера он иллюстрирует как: приветствие...'
+description: Этот видеоматериал посвящен интересные новые возможности удаленного управления, созданная для диспетчера служб IIS 7. Он иллюстрирует конфигурацию клиента и сервера, как установка...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/09/2009
 ms.topic: article
 ms.assetid: 7ece1ff3-febd-43c0-9c4f-b5c15c3309f7
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/iis/working-with-iis7-deligated-admin
 msc.type: video
-ms.openlocfilehash: 6d9bab125e8bfc8ec62b354e8b9436d64bf51448
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 8b3d847434bbaf0ff43a9655273780afb471fdef
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30884708"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37376142"
 ---
-<a name="working-with-iis7-delegated-admin"></a>Работа с IIS7 полномочный администратор
+<a name="working-with-iis7-delegated-admin"></a>Работа с IIS7 полномочным администратором
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-В этом видеоролике реализованы интересные новые возможности удаленного управления, созданного для диспетчера служб IIS 7. Он иллюстрирует конфигурации клиента и сервера, а также параметры два авторизации.
+Этот видеоматериал посвящен интересные новые возможности удаленного управления, созданная для диспетчера служб IIS 7. Здесь показано, клиентских и серверных конфигурации, а также параметры авторизации.
 
-[&#9654;Посмотрите видео (22 минуты)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-iis7-deligated-admin)
+[&#9654;Просмотрите видео (22 мин)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-iis7-deligated-admin)
 
 > [!div class="step-by-step"]
 > [Назад](developing-and-deploying-in-a-shared-hosting.md)

@@ -1,6 +1,6 @@
 ---
 uid: web-pages/overview/releases/whats-new-in-aspnet-web-pages-32
-title: Новые возможности в ASP.NET Web Pages 3.2 | Документы Microsoft
+title: Новые возможности в ASP.NET Web Pages 3.2 | Документация Майкрософт
 author: microsoft
 description: ''
 ms.author: aspnetcontent
@@ -9,66 +9,65 @@ ms.date: 06/30/2014
 ms.topic: article
 ms.assetid: a652beff-8e6b-48ad-bfe4-3703f7ccf0a5
 ms.technology: dotnet-webpages
-ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/releases/whats-new-in-aspnet-web-pages-32
 msc.type: authoredcontent
-ms.openlocfilehash: 80421018e0508d430b6142cd3cee1727d1d17b7e
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: eb5698b2928c1f2d1016ec74c18a63e2df5b3225
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30896398"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37390437"
 ---
-<a name="whats-new-in-aspnet-web-pages-32"></a>Новые возможности веб-страниц ASP.NET версии 3.2
+<a name="whats-new-in-aspnet-web-pages-32"></a>Новые возможности в веб-страниц ASP.NET 3.2
 ====================
 по [Microsoft](https://github.com/microsoft)
 
-В этом разделе описаны новые 3.2 веб-страниц ASP.NET, веб-страницы 3.2.2 и [веб-страницы 3.2.3 бета-версия 1](https://blogs.msdn.com/b/webdev/archive/2014/12/17/asp-net-mvc-5-2-3-web-pages-5-2-3-and-web-api-5-2-3-beta-releases.aspx)
+В этом разделе описываются новые возможности для веб-страниц ASP.NET 3.2, веб-страниц 3.2.2 и [веб-страницы 3.2.3 бета-версии 1](https://blogs.msdn.com/b/webdev/archive/2014/12/17/asp-net-mvc-5-2-3-web-pages-5-2-3-and-web-api-5-2-3-beta-releases.aspx)
 
-## <a name="aspnet-web-pages-32"></a>Веб-страниц ASP.NET версии 3.2
+## <a name="aspnet-web-pages-32"></a>Веб-страниц ASP.NET 3.2
 
-Этот выпуск исправляет ошибку и содержит новую возможность.
+Этот выпуск исправляет ошибку и вводит новую возможность.
 
 ## <a name="download"></a>Скачать
 
-Компоненты среды выполнения выпущены в виде пакетов NuGet при галереи NuGet. Выполните все пакеты среды выполнения [семантического управления версиями](http://semver.org/) спецификации. Пакет 3.2 веб-страниц ASP.NET имеет следующую версию: &ldquo;3.2.0&rdquo;. Можно установить или обновить эти пакеты через [NuGet](http://www.nuget.org/packages/Microsoft.AspNet.WebPages/). Этот выпуск также включает соответствующие локализованные пакеты в NuGet.
+Компоненты среды выполнения выпускаются в виде пакетов NuGet из коллекции NuGet. Выполните все пакеты среды выполнения [семантического управления версиями](http://semver.org/) спецификации. Пакет веб-страниц ASP.NET 3.2 имеет следующую версию: &ldquo;3.2.0&rdquo;. Вы можете установить или обновить эти пакеты с помощью [NuGet](http://www.nuget.org/packages/Microsoft.AspNet.WebPages/). Этот выпуск также включает соответствующие локализованные пакеты в NuGet.
 
-Можно установить или обновить выпущенных пакетов NuGet, используя консоль диспетчера пакетов NuGet:
+Можно установить или обновить на выпущенных пакетов NuGet с помощью консоли диспетчера пакетов NuGet:
 
 [!code-console[Main](whats-new-in-aspnet-web-pages-32/samples/sample1.cmd)]
 
-## <a name="new-feature-and-bug-fix"></a>Новые функции и исправления ошибки
+## <a name="new-feature-and-bug-fix"></a>Новая функция и исправление ошибки
 
-Мы фиксированной одну ошибку и его расширение один дополнительный компонент в этой версии. Запрос можно найти одним и тем же [здесь](https://aspnetwebstack.codeplex.com/workitem/list/advanced?keyword=&amp;status=Closed&amp;type=All&amp;priority=All&amp;release=v5.2%20RC|v5.2%20RTM&amp;assignedTo=All&amp;component=Web%20Pages%2FRazor&amp;sortField=Id&amp;sortDirection=Descending&amp;page=0&amp;reasonClosed=Fixed).
+Мы фиксированной одну вашу ошибку и внесенных одним незначительные улучшений в этом выпуске. Вы можете найти запрос, для того же [здесь](https://aspnetwebstack.codeplex.com/workitem/list/advanced?keyword=&amp;status=Closed&amp;type=All&amp;priority=All&amp;release=v5.2%20RC|v5.2%20RTM&amp;assignedTo=All&amp;component=Web%20Pages%2FRazor&amp;sortField=Id&amp;sortDirection=Descending&amp;page=0&amp;reasonClosed=Fixed).
 
-## <a name="aspnet-web-pages-322"></a>Веб-страниц ASP.NET 3.2.2
+## <a name="aspnet-web-pages-322"></a>ASP.NET Web Pages 3.2.2
 
-Этот выпуск передача вверх изменения в [ASP.NET Web Pages 3.2.1 бета-версии](https://blogs.msdn.com/b/webdev/archive/2014/07/28/announcing-the-beta-release-of-web-pages-3-2-1.aspx) которой обеспечивает значительное улучшение производительности в отрисовки страниц больших razor. В разделе[проблема Codeplex 585](https://aspnetwebstack.codeplex.com/workitem/585). Этот выпуск выравнивается MVC 5.2.2 пакеты, которые теперь будет зависеть от этой версии.
+Этот выпуск сводное изменения [выпуска бета-версии ASP.NET Web Pages 3.2.1](https://blogs.msdn.com/b/webdev/archive/2014/07/28/announcing-the-beta-release-of-web-pages-3-2-1.aspx) который обеспечивает значительное улучшение производительности при отрисовке больших razor pages. См. в разделе[проблема Codeplex 585](https://aspnetwebstack.codeplex.com/workitem/585). Этот выпуск соответствует MVC 5.2.2 пакеты, которые теперь будет зависеть от этой версии.
 
-Мы работали с группой MSN визуализации больших страниц. Если страницы отображают более 80 объем данных в килобайтах, мы получим объектов в куче больших объектов. При использовании нескольких слоев макеты умножается этот эффект.
+Мы сотрудничаем с группой MSN над визуализацией больших страниц. При более чем 80 килобайт данных отображения страницы, мы получим объектов в куче больших объектов. При использовании нескольких уровней макеты умножается этот эффект.
 
-Результат на сервере — дополнительных ЦП, памяти и даже долго более длительного хранения приостанавливает во время [очистки Gen 2](https://msdn.microsoft.com/en-us/library/ms973837.aspx) в сборщике мусора.
+Результат на сервере — дополнительные ЦП, длительное хранение в памяти и даже long приостанавливает работу во время [очистки Gen 2](https://msdn.microsoft.com/en-us/library/ms973837.aspx) сборщика мусора.
 
-Ниже приведена таблица демонстрации результатов анализа [perfview](https://channel9.msdn.com/Series/PerfView-Tutorial) для запуска. Удерживается константой около 68%, ЦП, а большие страницы подготавливаются. В таблице показаны почти полностью устранить номер поколения 2, что результатом является более высокому тарифу запроса и существенное снижение приостанавливает свою работу из-за сборки мусора.
+Ниже приведена таблица, демонстрирующий результаты анализа [perfview](https://channel9.msdn.com/Series/PerfView-Tutorial) для выполнения. Удерживается константы около 68%, ЦП, хотя большие страницы, отображаются. В таблице показаны почти полностью исключен номер поколения 2, что результатом является более высокому тарифу запроса и значительное снижение приостанавливается из-за сборки мусора.
 
-| **Область** | **Прежде чем (3.2)** | **После (3.2.1)** | **Дельта %** |
+| **Область** | **Прежде чем (3.2)** | **После (3.2.1)** | **% Изменений** |
 | --- | --- | --- | --- |
-| Всего запроса (число) | 26,986 | 32,591 | <font style="background-color: #4bacc6">20.80%</font> |
-| Время трассировки (в секундах) | 196.20 | 198.60 | 1.20% |
-| Запросов/сек | 137.53 | 164.10 | <font style="background-color: #4bacc6">19.30%</font> |
+| Общее число запросов (количество) | 26,986 | 32,591 | <font style="background-color: #4bacc6">20.80%</font> |
+| Продолжительность трассировки (в секундах) | 196.20 | 198.60 | 1.20% |
+| Запросов в секунду | 137.53 | 164.10 | <font style="background-color: #4bacc6">19.30%</font> |
 | Загрузка ЦП | 68.80% | 68.50% |  -0.40% |
-| Образцы ЦП GC | 124,323 | 17,543 | <font style="background-color: #4bacc6">-85.90%</font> |
-| Общие выделения (число) | 55,357,146 | 57,222,949 | 3.40% |
-| Приостановка общего сборки Мусора (примеры) | 15,091 | 8,515 | <font style="background-color: #4bacc6">-43.60%</font> |
-| Сборка Мусора Gen0 (число) | 403 | 1,216 | 201.70% |
-| Сборка Мусора Gen1 (число) | 290 | 367 | 26.60% |
-| Сборка Мусора Gen2 (число) | 229 | 2 | <font style="background-color: #00ff00">-99.10%</font> |
-| ЦП / запроса (образцы req) | 19.73 | 16.47 | -16.50% |
+| Примеры ЦП сборки Мусора | 124,323 | 17,543 | <font style="background-color: #4bacc6">-85.90%</font> |
+| Общий объем выделенной памяти (количество) | 55,357,146 | 57,222,949 | 3.40% |
+| Общее GC Pause (примеры) | 15,091 | 8,515 | <font style="background-color: #4bacc6">-43.60%</font> |
+| Сборщик Мусора Gen0 (количество) | 403 | 1,216 | 201.70% |
+| Поколение 1 GC (количество) | 290 | 367 | 26.60% |
+| Сборки Мусора поколения 2 (количество) | 229 | 2 | <font style="background-color: #00ff00">-99.10%</font> |
+| ЦП / запроса (примеры/req) | 19.73 | 16.47 | -16.50% |
 
-| Выделение цветом: | <font style="background-color: #00ff00">Улучшения ядра</font> | <font style="background-color: #4bacc6">Положительное влияние на производительность</font> |
+| Цветовое выделение синтаксиса: | <font style="background-color: #00ff00">Улучшения ядра</font> | <font style="background-color: #4bacc6">Положительное влияние на производительность</font> |
 |---------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------|
 |               |                                                                 |                                                                               |
 
-## <a name="aspnet-web-pages-323-beta1"></a>ASP.NET Web Pages 3.2.3 бета-версия 1
+## <a name="aspnet-web-pages-323-beta1"></a>Веб-страницы 3.2.3 ASP.NET бета-версии 1
 
-Этот выпуск содержит только исправления ошибок. Можно использовать [этот запрос](https://aspnetwebstack.codeplex.com/workitem/list/advanced?keyword=&amp;status=Closed&amp;type=All&amp;priority=All&amp;release=v5.2.3%20Beta&amp;assignedTo=All&amp;component=Web%20Pages%2FRazor&amp;sortField=LastUpdatedDate&amp;sortDirection=Descending&amp;page=0&amp;reasonClosed=Fixed) Чтобы просмотреть список проблем, исправленных в этом выпуске.
+Этот выпуск содержит только исправления ошибок. Можно использовать [этот запрос](https://aspnetwebstack.codeplex.com/workitem/list/advanced?keyword=&amp;status=Closed&amp;type=All&amp;priority=All&amp;release=v5.2.3%20Beta&amp;assignedTo=All&amp;component=Web%20Pages%2FRazor&amp;sortField=LastUpdatedDate&amp;sortDirection=Descending&amp;page=0&amp;reasonClosed=Fixed) для просмотра списка проблем, исправленных в этом выпуске.

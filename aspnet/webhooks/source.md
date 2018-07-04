@@ -1,34 +1,33 @@
 ---
 uid: webhooks/source
-title: Веб-перехватчиков ASP.NET исходный код и пакеты NuGet | Документы Microsoft
+title: Исходный код ASP.NET веб-перехватчики и пакетов NuGet | Документация Майкрософт
 author: rick-anderson
-description: Ссылки на веб-перехватчиков ASP.NET исходный код и пакеты NuGet
+description: Ссылки на исходный код ASP.NET веб-перехватчики и пакеты NuGet
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: 91a62bfa-ea3a-41f9-a2e1-e90d2c8fc8ca
 ms.technology: ''
-ms.prod: .net-framework
-ms.openlocfilehash: 733a0839c77bcfc96214bdf235ce8fe22ee2d3cf
-ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
+ms.openlocfilehash: 49a6d3e92e8d6365bea6594a616922aff9d0b4ac
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2018
-ms.locfileid: "27709974"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37375853"
 ---
-# <a name="aspnet-webhooks-source-code-and-nuget-packages"></a>Веб-перехватчиков ASP.NET исходный код и пакеты NuGet
+# <a name="aspnet-webhooks-source-code-and-nuget-packages"></a>Исходный код ASP.NET веб-перехватчики и пакеты NuGet
 
-Веб-перехватчиков Microsoft ASP.NET является частью семейства Microsoft ASP.NET модулей и размещается в виде [Открытие исходного проекта на GitHub](https://github.com/aspnet/WebHooks). Это означает, что мы принимаем работы, но см. в [вклад рекомендации](https://github.com/aspnet/Home/blob/master/CONTRIBUTING.md) перед отправкой запроса на включение.
+Веб-перехватчики Microsoft ASP.NET является частью семейства Microsoft ASP.NET, модулей и размещен как управляющий [открытым проектом источник на GitHub](https://github.com/aspnet/WebHooks). Это означает, что мы принимаем работы, но см. в [рекомендациями по участию](https://github.com/aspnet/Home/blob/master/CONTRIBUTING.md) перед отправкой запроса на включение внесенных изменений.
 
-В следующей документации по документации, которую вы читаете теперь также размещается в виде [открытым исходным кодом на сайте GitHub](http://docs.asp.net/en/latest/contribute/style-guide.html#style-guide) , а также принимает публикаций.
+Теперь этот электронной документации, который вы читаете также размещен как управляющий [открытым исходным кодом на GitHub](http://docs.asp.net/en/latest/contribute/style-guide.html#style-guide) , а также принимает вклад.
 
 ## <a name="nuget-packages"></a>Пакеты NuGet
 
-[Пакетов NuGet](https://nuget.org/packages?q=Microsoft.AspNet.WebHooks) делятся на три части:
+[Пакеты NuGet](https://nuget.org/packages?q=Microsoft.AspNet.WebHooks) можно разделить на три части:
 
-* [Общие](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Common): общие пакета, который является общим для отправителей и получателей.
+* [Распространенные](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Common): общие пакета, который разделяется между отправителями и получателями.
 
-* [Отправитель](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Custom): набор пакетов, поддержка отправки собственных веб-перехватчиков для других пользователей. Данная функциональная возможность для отправки веб-перехватчиков описан более подробно в [отправки веб-перехватчиков](sending/index.md).
+* [Отправитель](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Custom): набор пакетов, поддержкой собственных веб-перехватчики пересылки другим пользователям. Функциональные возможности для отправки веб-перехватчики описан более подробно в [отправки веб-перехватчики](sending/index.md).
 
-* [Приемники](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers): набор пакетов, поддерживающий получение веб-перехватчиков от других. Более подробно описана функциональность для получения веб-перехватчиков [получения веб-перехватчиков](receiving/index.md).
+* [Приемники](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers): набор пакетов, поддерживающих получение веб-перехватчики от других. Функциональность для получения веб-перехватчики описан более подробно в [получения веб-перехватчики](receiving/index.md).

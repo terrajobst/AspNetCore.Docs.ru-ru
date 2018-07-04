@@ -1,38 +1,37 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
-title: Создание более сложные модели данных для приложения ASP.NET MVC (4 из 10) | Документы Microsoft
+title: Создание более сложной модели данных для приложения ASP.NET MVC (4 из 10) | Документация Майкрософт
 author: tdykstra
-description: Contoso университета примера веб-приложения демонстрирует создание приложения ASP.NET MVC 4, с помощью Entity Framework 5 Code First и Visual Studio...
+description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 4, с помощью Entity Framework 5 Code First и Visual Studio...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/30/2013
 ms.topic: article
 ms.assetid: f81f3d80-3674-4d8e-a9b1-87feed1a93c9
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: c8f01b33c18ce77d91ee2f0db5e561b047c1891c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: a7fbcf8dc41086764e1e8ba9055929bde132192a
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30877779"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37375743"
 ---
-<a name="creating-a-more-complex-data-model-for-an-aspnet-mvc-application-4-of-10"></a>Создание более сложные модели данных для приложения ASP.NET MVC (4 из 10)
+<a name="creating-a-more-complex-data-model-for-an-aspnet-mvc-application-4-of-10"></a>Создание более сложной модели данных для приложения ASP.NET MVC (4 из 10)
 ====================
-по [Tom Dykstra](https://github.com/tdykstra)
+по [том Дайкстра](https://github.com/tdykstra)
 
-[Загрузка завершенного проекта](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
+[Скачать завершенный проект](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
 
-> Contoso университета примера веб-приложения демонстрирует создание приложения ASP.NET MVC 4, с помощью Entity Framework 5 Code First и Visual Studio 2012. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Учебник рядов можно запустить с самого начала или [загрузить начальный проект для этой главы](building-the-ef5-mvc4-chapter-downloads.md) и начните здесь.
+> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 4, используя Entity Framework 5 Code First и Visual Studio 2012. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Серии руководств можно начать с самого начала или [Загрузите начальный проект для этой главы](building-the-ef5-mvc4-chapter-downloads.md) и начните здесь.
 > 
 > > [!NOTE] 
 > > 
-> > Если возникли проблемы, не удается устранить, [загрузить завершенного главе](building-the-ef5-mvc4-chapter-downloads.md) и попробуйте воспроизвести проблему. Обычно можно найти решение проблемы путем сравнения код для завершения кода. Некоторые распространенные ошибки и способы их устранения см. в разделе [ошибок и способы их устранения.](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors)
+> > Если вы столкнулись с проблемами, не удается устранить, [скачать завершенного глава](building-the-ef5-mvc4-chapter-downloads.md) и попробуйте воспроизвести проблему. Обычно можно найти решение проблемы, сравнивая код, чтобы полный код. Некоторые распространенные ошибки и способы их устранения, см. в разделе [ошибки и способы их устранения.](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors)
 
 
-В предыдущих занятий вы работали с простая модель данных, созданный из трех сущностей. В этом учебнике вы добавите дополнительные сущности и связи и будет настроить модель данных, указав форматирование, проверки и правила сопоставления базы данных. Вы увидите два способа настройки модели данных: путем добавления атрибутов к классам сущностей и путем добавления кода в класс контекста базы данных.
+В предыдущих руководствах вы работали с простой модели данных, состоящей из трех сущностей. В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных путем указания форматирования, проверки и правила сопоставления базы данных. Вы увидите два способа настройки модели данных: путем добавления атрибутов к классам сущностей и добавив код в класс контекста базы данных.
 
 По завершении работы классы сущностей сформируют готовую модель данных, приведенную на следующем рисунке:
 
@@ -40,9 +39,9 @@ ms.locfileid: "30877779"
 
 ## <a name="customize-the-data-model-by-using-attributes"></a>Настройка модели данных с использованием атрибутов
 
-В этом разделе вы узнаете, как настроить модель данных с помощью атрибутов, которые указывают правила форматирования, проверки и сопоставления базы данных. Затем в некоторых из следующих разделов вы создадите полный `School` модели данных, добавляя атрибуты к классам уже создана и создание новых классов для остальных типов сущностей в модели.
+В этом разделе вы узнаете, как настроить модель данных с помощью атрибутов, которые указывают правила форматирования, проверки и сопоставления базы данных. Затем в нескольких следующих разделах вы создадите полную `School` модели данных, добавив атрибуты к классам уже создана и создание новых классов для остальных типов сущностей в модели.
 
-### <a name="the-datatype-attribute"></a>Атрибут типа данных
+### <a name="the-datatype-attribute"></a>Атрибут DataType
 
 Сейчас для дат зачисления студентов учащихся все веб-страницы отображают время и дату, хотя для этого поля достаточно одной даты. Используя атрибуты заметок к данным, вы можете внести в код одно изменение, позволяющее исправить формат отображения в каждом представлении, где отображаются эти данные. Чтобы рассмотреть соответствующий пример, вы добавите атрибут в свойство `EnrollmentDate` класса `Student`.
 
@@ -50,9 +49,9 @@ ms.locfileid: "30877779"
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample1.cs?highlight=3,13-14)]
 
-[DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибут используется для указания типа данных, который является более точным определением, чем встроенный тип базы данных. В этом случае требуется отслеживать только дату, а не дату и время. [Перечисление DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) предоставляет для многих типов данных, таких как *даты, времени, PhoneNumber, валюты, EmailAddress* и многое другое. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Например `mailto:` связи могут создаваться для [DataType.EmailAddress](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx), и элемент выбора даты, которые могут быть предоставлены для [DataType.Date](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) в браузерах, поддерживающих [HTML5](http://html5.org/). [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибуты выдает HTML 5 [от данных](http://ejohn.org/blog/html-5-data-attributes/) (произносится *тире данных*) атрибутов, которые можно понять браузеров HTML 5. [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибуты не имеют каких-либо проверок.
+[DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибут используется для указания типа данных, с более точным определением относительно встроенного типа базы данных. В этом случае требуется отслеживать только дату, а не дату и время. [Перечисление DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) представлено множество типов данных, таких как *даты, времени, PhoneNumber, Currency, EmailAddress* и многое другое. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Например `mailto:` связи могут создаваться для [DataType.EmailAddress](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx), и можно предоставить селектор даты [DataType.Date](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx) в браузерах, поддерживающих [HTML5](http://html5.org/). [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) создает атрибуты HTML 5 [данных —](http://ejohn.org/blog/html-5-data-attributes/) (произносится *dash данных*) атрибуты, которые HTML 5. [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибуты не предназначены для проверки.
 
-`DataType.Date` не задает формат отображаемой даты. По умолчанию, поле данных отображается в соответствии с форматы по умолчанию на сервере [CultureInfo](https://msdn.microsoft.com/library/vstudio/system.globalization.cultureinfo(v=vs.110).aspx).
+`DataType.Date` не задает формат отображаемой даты. По умолчанию поле данных отображается в соответствии с использованием на сервере форматов [CultureInfo](https://msdn.microsoft.com/library/vstudio/system.globalization.cultureinfo(v=vs.110).aspx).
 
 С помощью атрибута `DisplayFormat` можно явно указать формат даты:
 
@@ -60,97 +59,97 @@ ms.locfileid: "30877779"
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample2.cs)]
 
 
-`ApplyFormatInEditMode` Параметр указывает, что заданное форматирование должен также быть применяется, когда значение отображается в текстовом поле для редактирования. (Не имеет смысла, для некоторых полей, например, для значений валют, может потребоваться обозначение денежной единицы в текстовом поле для редактирования.)
+`ApplyFormatInEditMode` Параметр указывает, что заданное форматирование также должны быть применены при отображении значения в текстовом поле для редактирования. (Вы не хотите, чтобы для некоторых полей, например, для денежных значений не можно символ валюты в текстовом поле для редактирования.)
 
-Можно использовать [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) атрибут сам, но обычно имеет смысл использовать [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) также атрибут. `DataType` Передает атрибут *семантику* данных как отличие от Подготовка к просмотру его на экране и предоставляет следующие преимущества, которые вы не получаете с `DisplayFormat`:
+Можно использовать [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) атрибут отдельно, однако он обычно имеет смысл использовать [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) также атрибут. `DataType` Атрибут передает *семантику* данных как и в отличие от способа их вывода на экран и обеспечивает следующие преимущества по сравнению с `DisplayFormat`:
 
-- Браузер может включить функции HTML5 (например для отображения элемента управления календаря, локализованными обозначение денежной единицы, ссылок по электронной почте, и т. д.).
-- По умолчанию браузер будет отображаться с использованием правильного формата на основе данных вашей [языкового стандарта](https://msdn.microsoft.com/library/vstudio/wyzd2bce.aspx).
-- [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибута можно включить MVC выбрать шаблон справа поля для отображения данных ( [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) Если используется сама использует шаблон строки). Дополнительные сведения см. в разделе Брэд Вилсон [ASP.NET MVC 2 Templates](http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html). (Хотя предназначено для MVC 2, в этой статье по-прежнему применяется к текущей версии ASP.NET MVC.)
+- Браузер можно включить функции HTML5 (например для отображения элемента управления календарем, языковому символа валюты, ссылок электронной почты и т. д.).
+- По умолчанию браузер будет обрабатывать данные, используя правильный формат на основе вашего [языкового стандарта](https://msdn.microsoft.com/library/vstudio/wyzd2bce.aspx).
+- [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) атрибута можно включить модель MVC может выбрать подходящий шаблон поля для отображения данных ( [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx) при отдельном использовании базируется на строковом шаблоне). Дополнительные сведения см. в разделе Брэд Вилсон [ASP.NET MVC 2 Templates](http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html). (Хотя написана для MVC 2, эта статья по-прежнему относится к текущей версии ASP.NET MVC.)
 
-Если вы используете `DataType` атрибут с полем даты, необходимо указать `DisplayFormat` атрибута также для того, чтобы убедиться в правильном отображении поля в браузерах Chrome. Дополнительные сведения см. в разделе [этот поток StackOverflow](http://stackoverflow.com/questions/12633471/mvc4-datatype-date-editorfor-wont-display-date-value-in-chrome-fine-in-ie).
+Если вы используете `DataType` атрибут с полем даты, вам нужно будет указать `DisplayFormat` атрибут также, чтобы гарантировать, что и поле правильно отображаются в браузерах Chrome. Дополнительные сведения см. в разделе [цепочке обсуждений StackOverflow](http://stackoverflow.com/questions/12633471/mvc4-datatype-date-editorfor-wont-display-date-value-in-chrome-fine-in-ie).
 
-Снова запустить страницу индекса студентов и обратите внимание раз больше не отображаются для дат регистрации. Также будет иметь значение true для любого представления, который использует `Student` модели.
+Снова запустите на страницу указателя учащихся и обратите внимание на то, что время для дат зачисления больше не отображается. Аналогичная ситуация будет наблюдаться в любом представлении, которое использует `Student` модели.
 
 ![Students_index_page_with_formatted_date](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image2.png)
 
-### <a name="the-stringlengthattribute"></a>Атрибут StringLengthAttribute
+### <a name="the-stringlengthattribute"></a>StringLengthAttribute
 
-Также можно указать правила проверки данных и сообщения с помощью атрибутов. Предположим, вы хотите сделать так, чтобы пользователи не вводили больше 50 символов для имени. Чтобы добавить это ограничение, добавьте [StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx) атрибуты `LastName` и `FirstMidName` свойства, как показано в следующем примере:
+Также можно указать правила проверки данных и сообщения с помощью атрибутов. Предположим, вы хотите сделать так, чтобы пользователи не вводили больше 50 символов для имени. Чтобы добавить это ограничение, добавьте [StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx) атрибуты к `LastName` и `FirstMidName` свойства, как показано в следующем примере:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample3.cs?highlight=10,12)]
 
-[StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx) атрибут не предотвратить ввода пробелы в имени пользователя. Можно использовать [регулярное выражение](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx) атрибутов для применения ограничений входных данных. Например следующий код требуются первого символа в записываются прописными буквами и остальные символы преобразуются в алфавитном порядке.
+[StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx) атрибута не помешает пользователю достаточно ввести пробел для имени. Можно использовать [RegularExpression](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx) атрибутов для применения ограничений к входным данным. Например следующий код требует первый символ был прописной, а остальные символы были буквенными:
 
 `[RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]`
 
-[MaxLength](https://msdn.microsoft.com/library/System.ComponentModel.DataAnnotations.MaxLengthAttribute.aspx) атрибут предоставляет аналогичные функциональные возможности для [StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx) атрибута, но не предоставляет клиентской проверки.
+[MaxLength](https://msdn.microsoft.com/library/System.ComponentModel.DataAnnotations.MaxLengthAttribute.aspx) атрибут предоставляет функции, аналогичные [StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx) атрибута, но не предоставляет клиентской проверки.
 
-Запустите приложение и нажмите кнопку **учащихся** вкладки. Появиться следующая ошибка:
+Запустите приложение и нажмите кнопку **учащихся** вкладки. Вы получите следующую ошибку:
 
-*Модель резервного контекст «SchoolContext» изменилось с момента создания базы данных. Рассмотрите возможность обновления базы данных с помощью Code First Migrations ([https://go.microsoft.com/fwlink/?LinkId=238269](https://go.microsoft.com/fwlink/?LinkId=238269)).*
+*Модель, поддерживающая контекст «SchoolContext» изменилось с момента создания базы данных. Рассмотрите возможность использования Code First Migrations для обновления базы данных ([https://go.microsoft.com/fwlink/?LinkId=238269](https://go.microsoft.com/fwlink/?LinkId=238269)).*
 
-Модель базы данных изменилось в результате которого требует изменения в схеме базы данных и обнаружила, что платформа Entity Framework. Миграция будет использоваться для обновления схемы без потери данных, добавленные в базу данных с помощью пользовательского интерфейса. При изменении данных, которая была создана с `Seed` метод, который будет изменен обратно в исходное состояние из-за [AddOrUpdate](https://msdn.microsoft.com/library/hh846520(v=vs.103).aspx) метод, который вы используете в `Seed` метод. ([AddOrUpdate](https://msdn.microsoft.com/library/hh846520(v=vs.103).aspx) эквивалентен операцией «вставки-обновления» в терминологии связанных баз данных.)
+Модель базы данных был изменен способом, который требует изменения в схему базы данных, и платформа Entity Framework обнаружил, что. Вы используете миграции для обновления схемы без потери данных, которые вы добавили в базу данных с помощью пользовательского интерфейса. При изменении данных, которая была создана с `Seed` метод, который будет изменен обратно в исходное состояние из-за [AddOrUpdate](https://msdn.microsoft.com/library/hh846520(v=vs.103).aspx) метод, который вы используете в `Seed` метод. ([AddOrUpdate](https://msdn.microsoft.com/library/hh846520(v=vs.103).aspx) эквивалентен операцией «вставки-обновления» в терминологии связанных баз данных.)
 
 Введите в консоли диспетчера пакетов (PMC) следующие команды:
 
 [!code-console[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample4.cmd)]
 
-`add-migration MaxLengthOnNames` Команда создает файл с именем  *&lt;timeStamp&gt;\_MaxLengthOnNames.cs*. Этот файл содержит код, который будет обновлять базу данных в соответствии с текущей моделью данных. Отметка времени, добавляемый в начало имени файла миграции используется платформой Entity Framework для упорядочения для миграции. После создания нескольких миграций и, если удалить базу данных или развертывании проекта с помощью миграций, все миграций применяются в порядке, в котором они были созданы.
+`add-migration MaxLengthOnNames` Команда создает файл с именем  *&lt;timeStamp&gt;\_MaxLengthOnNames.cs*. Этот файл содержит код, который обновит базу данных в соответствии с текущей моделью данных. Метка времени, добавляемый к имени файла миграций Entity Framework используется для упорядочения миграций. После создания несколько миграций, если вы удалите базу данных или при развертывании проекта с помощью миграций, все миграции применяются в порядке, в котором они были созданы.
 
-Запустите **создать** страницы и введите имя длиной более 50 символов. Как только вы более 50 символов, клиентская проверка немедленно отобразится сообщение об ошибке.
+Запустите **создать** и введите любое имя длиннее 50 символов. Как только вы превышать 50 символов, проверка на стороне клиента, немедленно отобразится сообщение об ошибке.
 
-![Ошибка val стороны клиента](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image3.png)
+![Ошибка val, на стороне клиента](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image3.png)
 
 ### <a name="the-column-attribute"></a>Атрибут столбца
 
 Вы также можете использовать атрибуты, чтобы управлять сопоставлением классов и свойств с базой данных. Предположим, что вы использовали имя `FirstMidName` для поля имени, так как это поле также может содержать отчество. Но вам нужно, чтобы столбец базы данных назывался `FirstName`, так как к этому имени привыкли пользователи, которые будут составлять нерегламентированные запросы к базе данных. Чтобы выполнить это сопоставление, можно использовать атрибут `Column`.
 
-Атрибут `Column` указывает, что при создании базы данных столбец таблицы `Student`, сопоставляемый со свойством `FirstMidName`, будет называться `FirstName`. Другими словами, когда ваш код ссылается на `Student.FirstMidName`, данные будут браться из столбца `FirstName` таблицы `Student` или обновляться в нем. Если не указать имена столбцов, они являются присваивается то же имя, как и имя свойства.
+Атрибут `Column` указывает, что при создании базы данных столбец таблицы `Student`, сопоставляемый со свойством `FirstMidName`, будет называться `FirstName`. Другими словами, когда ваш код ссылается на `Student.FirstMidName`, данные будут браться из столбца `FirstName` таблицы `Student` или обновляться в нем. Если не указать имена столбцов, им присваивается то же имя, что имя свойства.
 
-Добавить с помощью инструкции для [System.ComponentModel.DataAnnotations.Schema](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.aspx) и атрибут имени столбца для `FirstMidName` свойства, как показано в следующий выделенный код:
+Добавить с помощью инструкции для [System.ComponentModel.DataAnnotations.Schema](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.aspx) и атрибут имени столбца `FirstMidName` свойства, как показано в следующем выделенном коде:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample5.cs?highlight=4,14)]
 
-Добавление [атрибут столбца](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.columnattribute.aspx) изменения модели, резервное SchoolContext, поэтому он не будет соответствовать базе данных. Введите следующие команды в PMC, чтобы создать еще один процесс миграции:
+Добавление [атрибут столбца](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.columnattribute.aspx) изменяет модель резервного SchoolContext, поэтому она не будет соответствовать базе данных. Введите следующие команды в PMC, чтобы создать другую миграцию:
 
 [!code-console[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample6.cmd)]
 
-В **обозревателя серверов** (**обозреватель баз данных** при использовании Express для веб-сайта), дважды щелкните *студента* таблицы.
+В **обозревателя серверов** (**обозреватель баз данных** при использовании Express для Web), дважды щелкните *учащихся* таблицы.
 
 ![](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image4.png)
 
-Ниже приведен имя исходного столбца, в котором он находился перед применением первых двух миграции. В дополнение к имени столбца, изменение с `FirstMidName` для `FirstName`, два столбца были изменены из `MAX` длиной до 50 символов.
+Ниже показано имя исходного столбца, как это было до применения двух первых миграций. В дополнение к имени столбца, изменение с `FirstMidName` для `FirstName`, два столбца были изменены относительно `MAX` длиной до 50 символов.
 
 ![](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image5.png)
 
-Вы также можете базы данных с помощью изменения сопоставления [Fluent API](https://msdn.microsoft.com/data/jj591617), как вы увидите далее в этом учебнике.
+Вы также можете базы данных с помощью изменения сопоставления [Fluent API](https://msdn.microsoft.com/data/jj591617), как вы увидите далее в этом руководстве.
 
 > [!NOTE]
-> При попытке скомпилировать до завершения создания всех этих классов сущностей, могут возникнуть ошибки компилятора.
+> Если вы попытаетесь выполнить компиляцию до создания всех этих классов сущностей, могут возникнуть ошибки компилятора.
 
 
 ## <a name="create-the-instructor-entity"></a>Создание сущности Instructor
 
 ![Instructor_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image6.png)
 
-Создание *Models\Instructor.cs*, заменив шаблон код следующим кодом:
+Создание *Models\Instructor.cs*, заменив код шаблона следующим кодом:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample7.cs)]
 
-Обратите внимание, что некоторые свойства являются одинаковыми в сущностях `Student` и `Instructor`. В [реализации наследования](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md) учебника далее в этой серии будет рефакторинг с использованием наследования для устранения этой избыточности.
+Обратите внимание, что некоторые свойства являются одинаковыми в сущностях `Student` и `Instructor`. В [реализации наследования](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md) руководством далее в этой серии вы выполните рефакторинг с использованием наследования для устранения этой избыточности.
 
-### <a name="the-required-and-display-attributes"></a>Необходимая и атрибуты отображения
+### <a name="the-required-and-display-attributes"></a>Обязательный и атрибуты отображения
 
-Атрибуты на `LastName` свойство указать, что это обязательное поле, что заголовок для текстового поля должен «Last Name» (а не именем свойства, которое будет «LastName» без пробела) и что значение не может превышать 50 символов.
+Атрибуты `LastName` свойство указывать, что это обязательное поле, что заголовки для текстового поля должны иметь вид «Last Name» (а не имя свойства, которое будет «LastName» без пробела), и что значение не может быть длиннее 50 символов.
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample8.cs)]
 
-[StringLength атрибута](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx) задает максимальную длину в базе данных и предоставляет на стороне клиента и на стороне сервера проверки ASP.NET MVC. В этом атрибуте также можно указать минимальную длину строки, но это минимальное значение не влияет на схему базы данных. [Обязательный атрибут](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx) не требуются для типов значений, например даты и времени, int, double и число с плавающей запятой. Типы значений нельзя задать значение null, по сути они требуются. Можно удалить [обязательный атрибут](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx) и замените его минимальную длину параметра `StringLength` атрибута:
+[Атрибут StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx) задает максимальную длину в базе данных и предоставляет клиента на стороне сервера и проверки для ASP.NET MVC. В этом атрибуте также можно указать минимальную длину строки, но это минимальное значение не влияет на схему базы данных. [Обязательный атрибут](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx) не требуется для типов значений, таких как DateTime, int, double и число с плавающей запятой. Типы значений нельзя назначить значение null, поэтому они являются обязательными. Можно удалить [обязательный атрибут](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx) и заменить параметром минимальной длины для `StringLength` атрибут:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample9.cs?highlight=2)]
 
-Несколько атрибутов можно поместить на одной строке, можно также написать класс инструктора следующим образом:
+Несколько атрибутов можно расположить на одной строке, поэтому можно также написать класс instructor следующим образом:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample10.cs)]
 
@@ -162,13 +161,13 @@ ms.locfileid: "30877779"
 
 ### <a name="the-courses-and-officeassignment-navigation-properties"></a>Курсы и свойства навигации OfficeAssignment
 
-`Courses` и `OfficeAssignment` — это свойства навигации. Как было описано ранее, обычно они определяются как [виртуальных](https://msdn.microsoft.com/library/9fkccyh4(v=vs.110).aspx) , чтобы они могут воспользоваться преимуществами платформы Entity Framework, называемую [отложенную загрузку](https://msdn.microsoft.com/magazine/hh205756.aspx). Кроме того, если свойство навигации может содержать несколько сущностей, его тип должен реализовывать [ICollection&lt;T&gt; ](https://msdn.microsoft.com/library/92t2ye13.aspx) интерфейса. (Например [IList&lt;T&gt; ](https://msdn.microsoft.com/library/5y536ey6.aspx) , но не определяет [IEnumerable&lt;T&gt; ](https://msdn.microsoft.com/library/9eekhta0.aspx) из-за `IEnumerable<T>` не реализует [добавить ](https://msdn.microsoft.com/library/63ywd54z.aspx).
+`Courses` и `OfficeAssignment` — это свойства навигации. Как было описано ранее, обычно они определяются как [виртуального](https://msdn.microsoft.com/library/9fkccyh4(v=vs.110).aspx) таким образом, они могут использовать Entity Framework, называемого [отложенная загрузка](https://msdn.microsoft.com/magazine/hh205756.aspx). Кроме того, если свойство навигации может содержать несколько сущностей, его тип должен реализовывать [ICollection&lt;T&gt; ](https://msdn.microsoft.com/library/92t2ye13.aspx) интерфейс. (Например [IList&lt;T&gt; ](https://msdn.microsoft.com/library/5y536ey6.aspx) , но не определяет [IEnumerable&lt;T&gt; ](https://msdn.microsoft.com/library/9eekhta0.aspx) поскольку `IEnumerable<T>` не реализует [добавить ](https://msdn.microsoft.com/library/63ywd54z.aspx).
 
-Инструктор можно обучить любое количество курсов, поэтому `Courses` определяется как совокупность `Course` сущностей. Наш бизнес-правила, состояния инструктор только может иметь не более одного офиса, так `OfficeAssignment` определяется как один `OfficeAssignment` сущности (которые могут быть `null` Если office не назначено).
+Преподаватель может проводить любое число курсов, поэтому `Courses` определен как коллекция `Course` сущностей. Наши бизнес-правила состояние преподаватель может иметь не более одного кабинета, поэтому `OfficeAssignment` определяется как один `OfficeAssignment` сущности (которые могут быть `null` Если кабинет не назначен).
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample12.cs)]
 
-## <a name="create-the-officeassignment-entity"></a>Создать сущность OfficeAssignment
+## <a name="create-the-officeassignment-entity"></a>Создание сущности OfficeAssignment
 
 ![OfficeAssignment_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image7.png)
 
@@ -176,49 +175,49 @@ ms.locfileid: "30877779"
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample13.cs)]
 
-Постройте проект, сохраняющий изменения и подтверждает, что не было выполнено любой копии и вставьте ошибок, которое компилятор может перехватить.
+Построить проект, который сохраняет изменения и проверяет, что не было выполнено любое копирование и вставка ошибки, которые компилятор может перехватить.
 
 ### <a name="the-key-attribute"></a>Ключевой атрибут
 
-Имеется отношение "один к нулю или одному" между `Instructor` и `OfficeAssignment` сущности. Office назначения существует только относительно инструктора, которому присвоено, и поэтому ее первичный ключ также является его внешний ключ к `Instructor` сущности. Платформа Entity Framework не удалось распознать автоматически, но `InstructorID` первичной ключа сущности, так как его имя не соответствует соглашениям `ID` или *classname* `ID` соглашение об именовании. Таким образом, атрибут `Key` используется для определения ее в качестве ключа:
+Устанавливается отношение "один к нулю или одному" между `Instructor` и `OfficeAssignment` сущностей. Назначение кабинета существует только связи с преподавателем, он назначен, и поэтому его первичный ключ также является внешним ключом для `Instructor` сущности. Но платформа Entity Framework не распознает автоматически `InstructorID` роль первичного ключа этой сущности, так как его имя не соответствует соглашению `ID` или *classname* `ID` соглашение об именовании. Таким образом, атрибут `Key` используется для определения ее в качестве ключа:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample14.cs)]
 
-Можно также использовать `Key` атрибута, если сущность имеет собственный первичный ключ, но требуется имя свойства, отличные от `classnameID` или `ID`. По умолчанию EF обрабатывает ключ как без формирования базы данных, так как столбец для идентифицирующего отношения.
+Можно также использовать `Key` атрибута, если сущность имеет собственный первичный ключ, но требуется имя свойства, отличные от `classnameID` или `ID`. По умолчанию EF считает ключ созданным не базы данных, так как столбец предназначен для идентифицирующего отношения.
 
 ### <a name="the-foreignkey-attribute"></a>Атрибут ForeignKey
 
-При отсутствии отношением один к нулю или одному или однозначное соответствие между двумя сущностями (такие как между `OfficeAssignment` и `Instructor`), EF не может работать какому концу отношения является участником и какая является зависимым. Один к одному отношениями свойством навигации ссылки в каждом классе другому классу. [Атрибута ForeignKey](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.foreignkeyattribute.aspx) может применяться к классу зависимых для установления связи. Если не указан [атрибута ForeignKey](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.foreignkeyattribute.aspx), возникает следующая ошибка при попытке создать миграции:
+При отсутствии связи один к нулю или одному или отношение "один к одному" между двумя сущностями (таких как между `OfficeAssignment` и `Instructor`), EF не может работать какому концу отношения — это субъект, и зависит от какой из конечных элементов. Один к одному связи имеют свойства навигации ссылки в каждом классе в другой класс. [Атрибута ForeignKey](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.foreignkeyattribute.aspx) могут применяться к классу зависимые для установления связи. Если опустить [атрибута ForeignKey](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.foreignkeyattribute.aspx), возникает следующая ошибка при попытке создания миграции:
 
-Не удалось определить основной конец ассоциации между типами «ContosoUniversity.Models.OfficeAssignment» и «ContosoUniversity.Models.Instructor». Основной конец ассоциации должен быть явно настроен с помощью заметок к данным или fluent API связи.
+Не удалось определить основной конец ассоциации между типами «ContosoUniversity.Models.OfficeAssignment» и «ContosoUniversity.Models.Instructor». Основной конец этой ассоциации должны быть настроены явным с помощью заметок к данным или fluent API связи.
 
-Далее в этом учебнике мы покажем, как настроить эту связь с fluent API.
+Далее в этом руководстве будет показано, как настроить эту связь с помощью текучего API.
 
-### <a name="the-instructor-navigation-property"></a>Свойство навигации инструктора
+### <a name="the-instructor-navigation-property"></a>Свойство навигации Instructor
 
-`Instructor` Сущность имеет значение NULL `OfficeAssignment` свойство навигации (поскольку инструктор не может иметь назначение office) и `OfficeAssignment` сущность имеет не допускающий `Instructor` свойство навигации (так как не может присваиваться office существует без инструктор-- `InstructorID` не допускает значение NULL). Когда `Instructor` сущность имеет связанный с ним `OfficeAssignment` сущностей, каждая сущность имеет ссылку на другую переменную его свойства навигации.
+`Instructor` Сущность имеет значение необязательной определенности `OfficeAssignment` свойство навигации (поскольку преподавателя может не быть назначения кабинета) и `OfficeAssignment` сущность имеет не допускающим `Instructor` свойство навигации (так как назначение кабинета не может существовать без преподавателя — `InstructorID` не допускает значение NULL). Когда `Instructor` сущность имеет связанный с ним `OfficeAssignment` сущности, каждая из них имеет ссылку на другое в своем свойстве навигации.
 
-Можно поместить `[Required]` атрибут для свойства навигации инструктора, чтобы указать, должен быть связанные инструктора, что не нужно делать, так как не допускающий InstructorID внешний ключ (который также является ключом к этой таблице).
+Можно поместить `[Required]` атрибут в свойство навигации Instructor, чтобы указать, что должен существовать связанный преподаватель, но не нужно сделать, поскольку InstructorID внешний ключ (который также является ключом для этой таблицы), не допускающие значения NULL.
 
 ## <a name="modify-the-course-entity"></a>Изменение сущности Course
 
 ![Course_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image8.png)
 
-В *Models\Course.cs*, замените код, добавленный ранее следующий код:
+В *Models\Course.cs*, замените код, добавленный ранее, следующим кодом:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample15.cs)]
 
-Сущность курс имеет свойство внешнего ключа `DepartmentID` указывающая на связанный с ним `Department` сущности и он имеет `Department` свойства навигации. Платформа Entity Framework не требует добавлять свойство внешнего ключа в модель данных при наличии свойства навигации для связанной сущности. EF автоматически создает внешние ключи в базе данных, где они необходимы. Однако наличие внешнего ключа в модели данных позволяет сделать обновления проще и эффективнее. Например, когда выборки сущностью курса для редактирования, `Department` сущности имеет значение null, если он не загружается, поэтому при обновлении сущности курса пришлось бы получить `Department` сущности. При свойстве внешнего ключа `DepartmentID` включено в модель данных, нет необходимости получить `Department` сущности перед обновлением.
+Сущность курса имеет свойство внешнего ключа `DepartmentID` которого указывает на связанную `Department` сущности, и `Department` свойство навигации. Платформа Entity Framework не требует добавлять свойство внешнего ключа в модель данных при наличии свойства навигации для связанной сущности. EF автоматически создает внешние ключи в базе данных, где они необходимы. Однако наличие внешнего ключа в модели данных позволяет сделать обновления проще и эффективнее. Например, при извлечении сущности course для редактирования, `Department` сущности имеет значение null, если вы ее не загружаете, поэтому при обновлении сущности course, пришлось бы сначала получить `Department` сущности. Когда свойство внешнего ключа `DepartmentID` включается в модели данных, не нужно получить `Department` сущности перед обновлением.
 
 ### <a name="the-databasegenerated-attribute"></a>Атрибут DatabaseGenerated
 
-[Атрибута DatabaseGenerated](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedattribute.aspx) с [нет](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedoption(v=vs.110).aspx) параметр на `CourseID` свойство указывает, что значения первичного ключа предоставленного пользователем, а не созданное базой данных.
+[Атрибут DatabaseGenerated](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedattribute.aspx) с [None](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedoption(v=vs.110).aspx) параметр на `CourseID` свойство указывает, что значения первичного ключа предоставленный пользователем, а не созданных базой данных.
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample16.cs)]
 
-По умолчанию платформа Entity Framework предполагается генерировать значений первичного ключа в базе данных. Именно это и требуется для большинства сценариев. Однако для `Course` сущностей, будет использовать курса определяемый пользователем номер серии 1000 для одного подразделения ряд 2000 для разных отделов и т. д.
+По умолчанию Entity Framework предполагает, что значения первичного ключа создаются базой данных. Именно это и требуется для большинства сценариев. Однако для `Course` сущности, вы будете использовать номер курса, определяемое пользователем, например серия 1000 для одной кафедры, Серия 2000 для другой отдел и т. д.
 
-### <a name="foreign-key-and-navigation-properties"></a>Внешний ключ и свойств навигации
+### <a name="foreign-key-and-navigation-properties"></a>FOREIGN Key и свойства навигации
 
 Свойства внешнего ключа и свойства навигации в `Course` сущности отражают следующие связи:
 
@@ -232,7 +231,7 @@ ms.locfileid: "30877779"
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample19.cs)]
 
-## <a name="creating-the-department-entity"></a>Создание сущности «отдел»
+## <a name="creating-the-department-entity"></a>Создание сущности Department
 
 ![Department_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image9.png)
 
@@ -242,44 +241,44 @@ ms.locfileid: "30877779"
 
 ### <a name="the-column-attribute"></a>Атрибут столбца
 
-Ранее вы использовали [атрибут столбца](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.columnattribute.aspx) изменять сопоставления имени столбца. В коде `Department` сущности, `Column` атрибут используется для изменения SQL сопоставления типов данных, чтобы столбец будет определяться с помощью SQL Server [money](https://msdn.microsoft.com/library/ms179882.aspx) типа в базе данных:
+Ранее вы использовали [атрибут столбца](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.columnattribute.aspx) Чтобы изменить сопоставление имени столбца. В коде для `Department` сущности, `Column` атрибут используется для изменения сопоставления типов данных SQL, чтобы столбец будет определяться с помощью SQL Server [деньги](https://msdn.microsoft.com/library/ms179882.aspx) тип в базе данных:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample21.cs)]
 
-Сопоставление столбцов обычно не является обязательным, поскольку Entity Framework обычно выбирает соответствующий тип данных SQL Server, на основе типа CLR, определяемый для свойства. Тип `decimal` среды CLR сопоставляется с типом `decimal` SQL Server. Однако в этом случае известно, что столбец будет удерживать суммы в валюте и [money](https://msdn.microsoft.com/library/ms179882.aspx) больше подходит для этого типа данных.
+Сопоставление столбцов обычно не является обязательным, так как платформа Entity Framework обычно выбирает соответствующий тип данных SQL Server, на основе типа CLR, определяемое для свойства. Тип `decimal` среды CLR сопоставляется с типом `decimal` SQL Server. Но в этом случае вы знаете, что столбец будет содержать суммы в валюте и [деньги](https://msdn.microsoft.com/library/ms179882.aspx) для этого лучше подходит тип данных.
 
-### <a name="foreign-key-and-navigation-properties"></a>Внешний ключ и свойств навигации
+### <a name="foreign-key-and-navigation-properties"></a>FOREIGN Key и свойства навигации
 
 Свойства внешнего ключа и навигации отражают следующие связи:
 
-- Кафедра может иметь или не иметь администратора, и администратор всегда является преподавателем. Поэтому `InstructorID` свойство включается в качестве внешнего ключа в `Instructor` сущности, а вопросительный знак добавляется после `int` введите обозначение, — отмечает свойство как допускающие значение NULL. Свойство навигации называется `Administrator` , но содержит `Instructor` сущности: 
+- Кафедра может иметь или не иметь администратора, и администратор всегда является преподавателем. Таким образом `InstructorID` свойство включается как внешний ключ к `Instructor` сущность и знак вопроса добавляется после `int` введите обозначения свойство как допускающие значение NULL. Свойство навигации называется `Administrator` , но содержит `Instructor` сущности: 
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample22.cs)]
-- Отдел может иметь несколько курсов, так что `Courses` свойство навигации: 
+- Кафедра может иметь несколько курсов, поэтому `Courses` свойство навигации: 
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample23.cs)]
 
   > [!NOTE]
-  > По соглашению Entity Framework разрешает каскадное удаление для внешних ключей, не допускающих значение null, и связей многие ко многим. Это может привести к циклической cascade delete правила, которые вызывает исключение во время выполнения кода инициализации. Например, если не определен `Department.InstructorID` свойство как допускающие значение NULL, можно получить следующее сообщение об исключении при выполняется инициализатор: «ссылочную связь приведет к циклической ссылки, что не разрешено.» При необходимости бизнес-правила `InstructorID` свойство как не допускающие пришлось бы использовать для отключения каскадное удаление в отношении следующих fluent API: 
+  > По соглашению Entity Framework разрешает каскадное удаление для внешних ключей, не допускающих значение null, и связей многие ко многим. Это может привести к циклическим правилам каскадного удаления, которые будут вызывать исключение во время выполнения кода инициализатор. Например, если вы не `Department.InstructorID` свойство допускает значение NULL, можно получить следующее сообщение об исключении при выполняется инициализатор: «ссылочную связь приведет к циклическая ссылка, не допускается.» Если вашей бизнес-правила требуют `InstructorID` свойство как не допускающие значения NULL, пришлось бы использовать следующие текучий API, чтобы отключить каскадное удаление для связи: 
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample24.cs)]
 
 
-## <a name="modifying-the-student-entity"></a>Изменение сущности студента
+## <a name="modifying-the-student-entity"></a>Изменение сущности Student
 
 ![Student_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image10.png)
 
-В *Models\Student.cs*, замените код, добавленный ранее следующий код. Изменения выделены.
+В *Models\Student.cs*, замените код, добавленный ранее, следующим кодом. Изменения выделены.
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample25.cs?highlight=12,15,24-27)]
 
-## <a name="the-enrollment-entity"></a>Сущность регистрации
+## <a name="the-enrollment-entity"></a>Сущность Enrollment
 
- В *Models\Enrollment.cs*, замените код, добавленный ранее следующий код
+ В *Models\Enrollment.cs*, замените код, добавленный ранее, следующим кодом
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample26.cs?highlight=16)]
 
-### <a name="foreign-key-and-navigation-properties"></a>Внешний ключ и свойств навигации
+### <a name="foreign-key-and-navigation-properties"></a>FOREIGN Key и свойства навигации
 
 Свойства внешнего ключа и навигации отражают следующие связи:
 
@@ -292,23 +291,23 @@ ms.locfileid: "30877779"
 
 ### <a name="many-to-many-relationships"></a>Связи многие ко многим
 
-Имеется отношение "многие ко многим" между `Student` и `Course` сущности и `Enrollment` сущности функционирует как многие ко многим Соединяемая таблица *с полезными данными* в базе данных. Это означает, что `Enrollment` таблица содержит дополнительные данные помимо внешние ключи для соединяемых таблиц (в данном случае первичный ключ и `Grade` свойство).
+Устанавливается отношение "многие ко многим" между `Student` и `Course` сущности и `Enrollment` сущности функции в качестве таблицы соединения многие ко многим *с полезными данными* в базе данных. Это означает, что `Enrollment` таблица содержит дополнительные данные, кроме внешних ключей для присоединяемых таблиц (в данном случае первичный ключ и `Grade` свойство).
 
-На следующем рисунке показано, как выглядят эти связи на схеме сущностей. (Эта схема была создана с помощью [Entity Framework Power Tools](https://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d); Создание схемы не является частью учебника, он просто используется здесь как пример.)
+На следующем рисунке показано, как выглядят эти связи на схеме сущностей. (Эта схема была создана с помощью [Entity Framework Power Tools](https://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d); Создание схемы не является частью учебника, — он просто используется здесь в качестве примера.)
 
-![Student-Course_many-to-many_relationship](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image11.png)
+![Учащихся Course_many для many_relationship](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image11.png)
 
-Каждая линия связи имеет 1 на одном конце и звездочку (\*) в другое, указывающее, один ко многим.
+Каждая линия связи имеет 1 на одном конце и звездочку (\*) на другом, указывающее отношение один ко многим.
 
-Если `Enrollment` таблицы не были включены сведения об оценках, его потребуется только содержат два внешних ключа `CourseID` и `StudentID`. В этом случае он будет соответствовать многие ко многим Соединяемая таблица *без полезных данных* (или *таблицы присоединения*) в базе данных и создать класс модели для него вообще не требуется. `Instructor` И `Course` сущности, имеют этот тип связи "многие ко многим", и как можно видеть, между ними отсутствует класс сущности:
+Если `Enrollment` таблицы не были включены сведения об оценках, ей потребуется только содержат два внешних ключа `CourseID` и `StudentID`. В этом случае он будет соответствовать таблица соединения многие ко многим *без полезных данных* (или *чистой соединяемой таблицей*) в базе данных, и вам не пришлось создать класс модели для него вообще. `Instructor` И `Course` сущности имеют такого рода многие ко-многим, и как вы видите, между ними отсутствует класс сущности:
 
-![Instructor-Course_many-to-many_relationship](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image12.png)
+![Преподаватель Course_many для many_relationship](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image12.png)
 
-Соединяемая таблица является обязательным в базе данных, однако, как показано на следующей схеме базы данных:
+В таблице необходим в базе данных, тем не менее, как показано на следующей схеме базы данных:
 
-![Instructor-Course_many-to-many_relationship_tables](https://asp.net/media/2577802/Windows-Live-Writer_Creating-a.NET-MVC-Application-4-of-10h1_B662_Instructor-Course_many-to-many_relationship_tables_03e042cf-db89-4b4c-985a-e458351ada76.png)
+![Преподаватель Course_many для many_relationship_tables](https://asp.net/media/2577802/Windows-Live-Writer_Creating-a.NET-MVC-Application-4-of-10h1_B662_Instructor-Course_many-to-many_relationship_tables_03e042cf-db89-4b4c-985a-e458351ada76.png)
 
-Платформа Entity Framework автоматически создает `CourseInstructor` таблицы и чтения и обновить ее косвенно, чтение и обновление `Instructor.Courses` и `Course.Instructors` свойства навигации.
+Платформа Entity Framework автоматически создает `CourseInstructor` таблицы и для чтения, так и для обновления его косвенно путем чтения и обновления `Instructor.Courses` и `Course.Instructors` свойства навигации.
 
 ## <a name="entity-diagram-showing-relationships"></a>Схема сущностей, показывающая связи
 
@@ -316,89 +315,89 @@ ms.locfileid: "30877779"
 
 ![School_data_model_diagram](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image13.png)
 
-Помимо строк многие ко-многим (\* для \*) и один ко многим связей (от 1 до \*), здесь можно увидеть на линию связи один к нулю или одному (1 к нулю или одному) между `Instructor` и `OfficeAssignment` сущности и линию связи нуль или один ко многим (от 0 до 1 для \*) между сущностями инструктора и отдел.
+Помимо линиях связи многие ко многим (\* для \*) и связей один ко многим (1, чтобы \*), здесь можно увидеть на линию связи один к нулю или одному (1 к 0.. 1) между `Instructor` и `OfficeAssignment` сущности и на линию связи нуль или один ко многим (0.. 1 to \*) между сущностями Instructor и Department.
 
-## <a name="customize-the-data-model-by-adding-code-to-the-database-context"></a>Настройка модели данных путем добавления кода в контексте базы данных
+## <a name="customize-the-data-model-by-adding-code-to-the-database-context"></a>Настроить модель данных, добавив код в контексте базы данных
 
-Далее добавим новые сущности для `SchoolContext` класса и настраивать некоторые сопоставления с помощью [fluent API](https://msdn.microsoft.com/data/jj591617) вызовов. (API — «fluent» так, как часто используемые проводить ряда вызовов метода вместе в одной инструкции).
+Далее вы добавите новые сущности для `SchoolContext` и настройте некоторые сопоставления с помощью [fluent API](https://msdn.microsoft.com/data/jj591617) вызовов. (Этот API доступен «текучим», так как она часто используется серии вызовов методов друг с другом в одной инструкции.)
 
-В этом учебнике fluent API используется только для сопоставления с базой данных, нельзя выполнить с помощью атрибутов. Однако текучий API позволяет задать большинство правил форматирования, проверки и сопоставления, которые можно указать с помощью атрибутов. Некоторые атрибуты, такие как `MinimumLength`, невозможно применить с текучим API. Как упоминалось ранее, `MinimumLength` не изменяет схему, применяется правило проверки стороны клиента и сервера
+В этом руководстве текучий API используется только для сопоставления базы данных, которое невозможно выполнить с помощью атрибутов. Однако текучий API позволяет задать большинство правил форматирования, проверки и сопоставления, которые можно указать с помощью атрибутов. Некоторые атрибуты, такие как `MinimumLength`, невозможно применить с текучим API. Как упоминалось ранее, `MinimumLength` не изменяет схему, он действует только правило проверки на стороне клиента и сервера
 
 Некоторые разработчики предпочитают использовать текучий API монопольно, чтобы оставить свои классы сущностей "чистыми". Атрибуты и текучий API можно смешивать, и существует несколько конфигураций, которые можно реализовать только с помощью текучего API. На практике рекомендуется выбрать один из этих двух подходов и использовать его максимально согласованно.
 
-Чтобы добавить новые сущности для данных модели и выполнения сопоставления с базой данных, не были выполнены с помощью атрибутов, замените код в *DAL\SchoolContext.cs* следующим кодом:
+Чтобы добавить новые сущности для данных модели и сопоставления базы данных, не были выполнены с помощью атрибутов, замените код в *DAL\SchoolContext.cs* следующим кодом:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample29.cs)]
 
-Оператор new в [OnModelCreating](https://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating(v=vs.103).aspx) метод настраивает многие ко многим соединенной таблице:
+Оператор new в [OnModelCreating](https://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating(v=vs.103).aspx) метод настраивает таблицы соединения многие ко многим:
 
-- Для связи "многие ко многим" между `Instructor` и `Course` сущностей, код задает имена таблиц и столбцов для таблицы объединения. Код сначала можно настроить многие ко многим для вас без этого кода, но если вы не вызываете его, вы получите имена по умолчанию такие как `InstructorInstructorID` для `InstructorID` столбца.
+- Для связи "многие ко многим" между `Instructor` и `Course` сущностей, код задает имена таблиц и столбцов для таблицы соединения. Код сначала можно настроить многие ко многим для вас без этого кода, но если вы не будете вызывать ее, вы получите имена по умолчанию такие как `InstructorInstructorID` для `InstructorID` столбца.
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample30.cs)]
 
-Ниже приведен пример как вы мог использоваться fluent API вместо атрибутов для указания связь между `Instructor` и `OfficeAssignment` сущности:
+Приведенный ниже пример как вы мог бы использовать текучий API вместо атрибутов для указания отношений между `Instructor` и `OfficeAssignment` сущностей:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample31.cs)]
 
-Сведения о действиях инструкций «fluent API» в фоновом см [Fluent API](https://blogs.msdn.com/b/aspnetue/archive/2011/05/04/entity-framework-code-first-tutorial-supplement-what-is-going-on-in-a-fluent-api-call.aspx) записи блога.
+Сведения о действия инструкций «fluent API» за кулисами, см. в разделе [Fluent API](https://blogs.msdn.com/b/aspnetue/archive/2011/05/04/entity-framework-code-first-tutorial-supplement-what-is-going-on-in-a-fluent-api-call.aspx) записи блога.
 
 ## <a name="seed-the-database-with-test-data"></a>Заполнение базы данных тестовыми данными
 
-Замените код в *Migrations\Configuration.cs* файла следующим кодом для предоставления данных начального значения для новых сущностей, которые вы создали.
+Замените код в *Migrations\Configuration.cs* файла следующий код, чтобы предоставить начальные данные для создания новых сущностей.
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample32.cs)]
 
-Как видно в первом руководстве, большая часть кода просто обновляет или создает новые объекты сущности и загружает данные в свойства, необходимые для тестирования. Обратите внимание, как `Course` сущности, которая имеет отношение многие ко многим с `Instructor` обрабатывается сущности:
+Как было показано в первом руководстве, основная часть кода просто обновляет или создает объекты сущностей и загружает демонстрационные данные в свойства, необходимые для тестирования. Обратите внимание, каким образом `Course` сущность, которая имеет отношение многие ко многим с `Instructor` сущности, обрабатывается:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample33.cs)]
 
-При создании `Course` объекта инициализации `Instructors` свойство навигации как пустую коллекцию с помощью кода `Instructors = new List<Instructor>()`. Это позволяет добавить `Instructor` сущностей, относящихся к этому `Course` с помощью `Instructors.Add` метод. Если не удалось создать пустой список, невозможно добавить эти связи, так как `Instructors` свойство будет иметь значение null и не пришлось бы `Add` метод. Инициализация списка можно также добавить в конструктор.
+При создании `Course` объекта, необходимо инициализировать `Instructors` свойство навигации как пустую коллекцию с помощью кода `Instructors = new List<Instructor>()`. Это делает возможным добавление `Instructor` сущностей, которые относятся к этому `Course` с помощью `Instructors.Add` метод. Если вы не создавали пустой список, невозможно добавить эти связи, так как `Instructors` свойство будет иметь значение null и не пришлось бы `Add` метод. Инициализация списка можно также добавить в конструктор.
 
-## <a name="add-a-migration-and-update-the-database"></a>Добавьте миграции и обновления базы данных
+## <a name="add-a-migration-and-update-the-database"></a>Добавьте миграцию и обновления базы данных
 
-PMC, введите следующую команду `add-migration` команды:
+В PMC введите `add-migration` команды:
 
 `PM> add-Migration Chap4`
 
-При попытке обновить базу данных на этом этапе, появится следующая ошибка:
+Если вы попытаетесь обновить базу данных на этом этапе, появится следующая ошибка:
 
-*Конфликт инструкции ALTER TABLE с ограничением FOREIGN KEY «FK\_dbo. Курс\_dbo. Отдел\_DepartmentID». Конфликт произошел в таблицу в базе данных «ContosoUniversity», «dbo. Отдела», столбец «DepartmentID».*
+*Конфликт инструкции ALTER TABLE с ограничением FOREIGN KEY «FK\_dbo. Курс\_dbo. Отдел\_DepartmentID». Конфликт произошел в базе данных «ContosoUniversity», таблица «dbo. Отдел», столбце «DepartmentID».*
 
-Изменить &lt; *timestamp&gt;\_Chap4.cs* файл и внесите следующие изменения в код (мы добавим в инструкции SQL и изменить `AddColumn` инструкции):
+Изменить &lt; *timestamp&gt;\_Chap4.cs* файла и внесите следующие изменения в код (вы добавите инструкцию SQL и изменить `AddColumn` инструкции):
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample34.cs?highlight=14-18)]
 
-(Убедитесь, что закомментируйте или удалите существующую `AddColumn` строки при добавлении нового или приведет к ошибке при вводе `update-database` команд.)
+(Убедитесь, что закомментируйте или удалите существующие `AddColumn` строке при добавлении нового или вы получите ошибку при вводе `update-database` команды.)
 
-Иногда при выполнении миграции с существующими данными, необходимо вставить данные заглушки в базу данных для удовлетворения ограничения внешнего ключа, и, что делаем сейчас. Созданный код добавляет не допускающий `DepartmentID` внешний ключ к `Course` таблицы. Если уже имеются строки в `Course` таблицы при выполнении кода, `AddColumn` операция окончится неудачей, так как SQL Server не знает, какое значение в столбце, который не может иметь значение null. Таким образом вы изменили код, чтобы предоставить значения по умолчанию для нового столбца и создания заглушки подразделение с именем «Temp» в качестве подразделения по умолчанию. В результате, если существуют `Course` строках, если этот код запускается, они будут быть связаны в отдел «Temp».
+Иногда при выполнении миграций с существующими данными необходимо вставить данные-заглушки в базу данных для соблюдения ограничений внешнего ключа, и что делаем сейчас. Созданный код добавляет не допускающим `DepartmentID` внешний ключ к `Course` таблицы. Если уже имеются строки в `Course` таблицы при выполнении кода, `AddColumn` операция завершалась сбоем, так как SQL Server не знает, какое значение поставить в столбце, который не может иметь значение null. Таким образом вы изменили код, чтобы присвоить новому столбцу значение по умолчанию, и вы создали кафедру-заглушку с именем «Temp» в качестве подразделения по умолчанию. В результате, если существуют `Course` строках, если этот код запускается, они будут быть связаны с кафедрой «Temp».
 
-При `Seed` выполняется метод, он будет вставлять строки в `Department` относится существующие таблицы и ее `Course` этих новых строк `Department` строк. Если вы не добавляли курсов в пользовательском Интерфейсе, затем больше не потребуется отдела «Temp» или значение по умолчанию на `Course.DepartmentID` столбца. Чтобы обеспечить возможность того, что кто-то добавили курсы с помощью приложения, также требуется обновить `Seed` код метода, чтобы убедиться, что все `Course` строк (не только те, которые вставляются при предыдущих запусках `Seed` метод) имеет Допустимые `DepartmentID` значения перед удалением по умолчанию значение из столбца и удалить отдел «Temp».
+При `Seed` выполнения метода, он будет вставлять строки в `Department` таблицы и он будет связать существующие `Course` строк для этих новых `Department` строк. Если вы еще не добавили все курсы в пользовательском Интерфейсе, затем больше не потребуется кафедру «Temp» или значение по умолчанию на `Course.DepartmentID` столбца. Чтобы разрешить к тому, что кто-то возможно, добавили курсы с помощью приложения, также следует обновить `Seed` код метода, чтобы убедиться, что все `Course` строк (не только те, которые вставлены в ходе предыдущих запусков из `Seed` метод) имеют Допустимые `DepartmentID` значения, прежде чем удалить значение по умолчанию значение из столбца и удалить кафедру «Temp».
 
-После завершения редактирования &lt; *timestamp&gt;\_Chap4.cs* , введите `update-database` в PMC для выполнения миграции.
+После завершения редактирования &lt; *timestamp&gt;\_Chap4.cs* файл, введите `update-database` команду в PMC для выполнения миграции.
 
 > [!NOTE]
-> Можно получить другие ошибки при переносе данных и внесения изменений схемы. Если возникли ошибки миграции, не удается устранить, либо можно изменить строку подключения в *Web.config* файл или удалить базу данных. Самым простым подходом является переименовать базу данных, в *Web.config* файла. Например, измените имя базы данных на CU\_проверить, как показано ниже:
+> Это можно получить другие ошибки при переносе данных и внесения изменений схемы. Если вы получаете ошибки миграции, не удается устранить, можно либо изменить строку подключения в *Web.config* файл или удалить базу данных. Самым простым подходом является переименовать базу данных, в *Web.config* файл. Например, изменить имя базы данных на CU\_протестировать, как показано ниже:
 > 
 > [!code-xml[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample35.xml?highlight=1-2)]
 > 
->  С помощью новой базы данных нет данных для переноса и `update-database` команда гораздо больше шансов завершиться без ошибок. Инструкции по удалению базы данных см. в разделе [как удалить базу данных из Visual Studio 2012](http://romiller.com/2013/05/17/how-to-drop-a-database-from-visual-studio-2012/).
+>  В новой базе данных нет данных для переноса и `update-database` команда является гораздо большей долей вероятности завершится без ошибок. Инструкции о том, как удалить базу данных, см. в разделе [как удалить базу данных из Visual Studio 2012](http://romiller.com/2013/05/17/how-to-drop-a-database-from-visual-studio-2012/).
 
 
-Открыть базу данных в **обозревателя серверов** выполнял ранее, и разверните **таблиц** узел, чтобы увидеть, что все таблицы были созданы. (При наличии **обозревателя серверов** откройте из более ранних времени, щелкните **обновление** кнопки.)
+Открыть базу данных в **обозревателя серверов** как вы делали это раньше и разверните **таблиц** узел, чтобы увидеть, что все таблицы были созданы. (Если у вас есть **обозревателя серверов** откройте из более ранних времени, щелкните **обновить** кнопки.)
 
 ![](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image14.png)
 
-Не удалось создать класс модели для `CourseInstructor` таблицы. Как упоминалось ранее, это Соединяемая таблица для связи "многие ко многим" между `Instructor` и `Course` сущности.
+Вы создали класс модели для `CourseInstructor` таблицы. Как упоминалось ранее, это таблица соединения для связи "многие ко многим" между `Instructor` и `Course` сущностей.
 
-Щелкните правой кнопкой мыши `CourseInstructor` таблицы и выберите **Показать таблицу данных** для убедитесь в наличии данных в нем в результате использования `Instructor` сущностей, которые вы добавили `Course.Instructors` свойство навигации.
+Щелкните правой кнопкой мыши `CourseInstructor` таблицы и выберите **Показать таблицу данных** для убедитесь в наличии данных в ее результате `Instructor` сущностей, добавленных к `Course.Instructors` свойство навигации.
 
 ![Table_data_in_CourseInstructor_table](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image15.png)
 
 ## <a name="summary"></a>Сводка
 
-Теперь у вас есть более сложная модель данных и соответствующая база данных. В этом руководстве вы узнаете о дополнительных сведений о различные способы доступа к взаимосвязанных данных.
+Теперь у вас есть более сложная модель данных и соответствующая база данных. В следующем руководстве вы узнаете о различных способах доступа к соответствующим данным.
 
-Ссылки на другие ресурсы Entity Framework можно найти в [Карта содержимого для доступа к данным ASP.NET](../../../../whitepapers/aspnet-data-access-content-map.md).
+Ссылки на другие ресурсы Entity Framework можно найти в [схема содержимого для доступа к данным ASP.NET](../../../../whitepapers/aspnet-data-access-content-map.md).
 
 > [!div class="step-by-step"]
 > [Назад](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)

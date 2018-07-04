@@ -1,6 +1,6 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-vb
-title: Перетаскивание через ReorderList (VB) | Документы Microsoft
+title: Перетаскивание с помощью элемента управления ReorderList (VB) | Документация Майкрософт
 author: wenz
 description: /Data-Access/tutorials/master-Detail-using-a-bulleted-List-of-master-Records-with-a-Details-DataList-VB
 ms.author: aspnetcontent
@@ -9,87 +9,86 @@ ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: 848e6bcf-4c3f-4d14-974d-e45b9444ab79
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 99f47b969dc75efeec8485254d311c93dc0b5d35
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: d8b10ecd4c061082aba5cefe9d92b8616e9f40e6
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30878793"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37389167"
 ---
-<a name="drag-and-drop-via-reorderlist-vb"></a>Перетаскивание через ReorderList (Visual Basic)
+<a name="drag-and-drop-via-reorderlist-vb"></a>Перетаскивание с помощью элемента управления ReorderList (VB)
 ====================
 по [Кристиан Wenz](https://github.com/wenz)
 
-[Загрузить код](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/ReorderList5.vb.zip) или [скачать PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/reorderlist5VB.pdf)
+[Скачать код](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/ReorderList5.vb.zip) или [скачать PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/reorderlist5VB.pdf)
 
-> Элемент управления ReorderList в наборе элементов управления AJAX предоставляет список, который можно переупорядочить пользователем с помощью операции перетаскивания. Текущий порядок элементов в списке должны быть сохранены на сервере.
+> Элемент управления ReorderList в AJAX Control Toolkit предоставляет список, можно ли изменять расположение пользователем с помощью операции перетаскивания. Текущий порядок элементов в списке должны быть сохранены на сервере.
 
 
 ## <a name="overview"></a>Обзор
 
-`ReorderList` Список элемента управления в наборе элементов управления AJAX можно переупорядочить пользователем с помощью операции перетаскивания. Текущий порядок элементов в списке должны быть сохранены на сервере.
+`ReorderList` Элемент управления в AJAX Control Toolkit предоставляет список, можно ли изменять расположение пользователем с помощью операции перетаскивания. Текущий порядок элементов в списке должны быть сохранены на сервере.
 
 ## <a name="steps"></a>Шаги
 
-`ReorderList` Элемент управления поддерживает привязку данных из базы данных в список. Лучше всего оно также поддерживает запись изменений порядку элемент списка в хранилище данных.
+`ReorderList` Элемент управления поддерживает привязку данных из базы данных в список. Самое главное она также поддерживает запись изменений порядку элемент списка в хранилище данных.
 
-Этот образец использует в качестве хранилища данных Microsoft SQL Server 2005 Express Edition. Базы данных является частью необязательно (и бесплатные) установки Visual Studio, включая экспресс-выпуск. Эта схема также доступна как отдельный загружаемый под [ https://go.microsoft.com/fwlink/?LinkId=64064 ](https://go.microsoft.com/fwlink/?LinkId=64064). Для данного образца предполагается, что экземпляр SQL Server 2005 Express Edition вызывается `SQLEXPRESS` и находится на том же компьютере, что веб-сервер; Кроме того, это настройки по умолчанию. Если настройки отличаются, необходимо адаптировать сведения о соединении для базы данных.
+Этот образец использует Microsoft SQL Server 2005 Express Edition в качестве хранилища данных. Базы данных является необязательным (и бесплатной) часть установки Visual Studio, включая экспресс-выпуск. Эта схема также доступна для загрузки в разделе [ https://go.microsoft.com/fwlink/?LinkId=64064 ](https://go.microsoft.com/fwlink/?LinkId=64064). В этом примере мы предполагаем, что экземпляр SQL Server 2005 Express Edition называется `SQLEXPRESS` и находится на одном компьютере с веб-сервера; это также настройки по умолчанию. Если настройки отличаются, вам нужно адаптировать сведения о соединении для базы данных.
 
-Самый простой способ настроить базу данных будет использовать Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en) ). Подключиться к серверу, дважды щелкните `Databases` и создать новую базу данных (щелкните правой кнопкой мыши и выберите `New Database`) вызывается `Tutorials`.
+Самый простой способ установить базу данных, — использовать Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp; DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en) ). Подключитесь к серверу, дважды щелкните `Databases` и создать новую базу данных (щелкните правой кнопкой мыши и выберите `New Database`) вызывается `Tutorials`.
 
-В этой базе данных, создайте новую таблицу с именем `AJAX` следующие четыре столбца:
+В этой базе данных, создать новую таблицу с именем `AJAX` с следующие четыре столбца:
 
-- `id` (первичный ключ, целое число со знаком, удостоверение, не ОПРЕДЕЛЕНО)
-- `char` (char(1) NULL)
-- `description` (varchar(50) NULL)
+- `id` (первичный ключ, integer, удостоверение, not NULL)
+- `char` (char(1), NULL)
+- `description` (varchar(50), NULL)
 - `position` (int, NULL)
 
 
 [![Макет таблицы AJAX](drag-and-drop-via-reorderlist-vb/_static/image2.png)](drag-and-drop-via-reorderlist-vb/_static/image1.png)
 
-Макет таблицы AJAX ([Просмотр полноразмерное изображение](drag-and-drop-via-reorderlist-vb/_static/image3.png))
+Макет таблицы AJAX ([Просмотр полноразмерного изображения](drag-and-drop-via-reorderlist-vb/_static/image3.png))
 
 
-После этого заполните таблицу с помощью нескольких значений. Обратите внимание, что `position` столбец содержит порядок сортировки элементов.
+Затем введите таблицы с несколькими значениями. Обратите внимание, что `position` столбец содержит порядок сортировки элементов.
 
 
 [![Начальные данные в таблице AJAX](drag-and-drop-via-reorderlist-vb/_static/image5.png)](drag-and-drop-via-reorderlist-vb/_static/image4.png)
 
-Начальные данные в таблице AJAX ([Просмотр полноразмерное изображение](drag-and-drop-via-reorderlist-vb/_static/image6.png))
+Начальные данные в таблице AJAX ([Просмотр полноразмерного изображения](drag-and-drop-via-reorderlist-vb/_static/image6.png))
 
 
-Следующий шаг необходим для создания `SqlDataSource` управления для связи с новой базы данных и соответствующей таблицей. Источник данных должен поддерживать `SELECT` и `UPDATE` команды SQL. При последующем изменении порядок элементов списка `ReorderList` управления автоматически отправляет двух значений в источник данных `Update` команды: новое положение и идентификатор элемента. Таким образом, источника данных требованиям `<UpdateParameters>` раздел для этих двух значений:
+Для следующего шага требуется для создания `SqlDataSource` управления для взаимодействия с новой базы данных и соответствующей таблицей. Источник данных должен поддерживать `SELECT` и `UPDATE` команды SQL. При последующем изменении порядок элементов списка `ReorderList` элемент управления автоматически отправляет два значения в источник данных `Update` команда: новое положение и идентификатор элемента. Таким образом, источника данных требованиям `<UpdateParameters>` раздел для этих двух значений:
 
 [!code-aspx[Main](drag-and-drop-via-reorderlist-vb/samples/sample1.aspx)]
 
-`ReorderList` Элемент управления должен задать следующие атрибуты:
+`ReorderList` Управления необходимо задать следующие атрибуты:
 
 - `AllowReorder`: Ли можно упорядочить элементы списка
 - `DataSourceID`: Идентификатор источника данных
 - `DataKeyField`: Имя столбца первичного ключа в источнике данных
-- `SortOrderField`: Столбца источника данных, представляющий порядок сортировки для элементов списка
+- `SortOrderField`: Исходный столбец данных, представляющий порядок сортировки для элементов списка
 
-В `<DragHandleTemplate>` и `<ItemTemplate>` разделах макета списка может быть настроена. Кроме того, возможна привязка данных с помощью `Eval()` метода, как показано ниже:
+В `<DragHandleTemplate>` и `<ItemTemplate>` разделы, макет списка может быть настроена. Кроме того, возможна привязка данных с помощью `Eval()` метод, как показано ниже:
 
 [!code-aspx[Main](drag-and-drop-via-reorderlist-vb/samples/sample2.aspx)]
 
-Сведения о стиле следующий код CSS (на который ссылается `<DragHandleTemplate>` раздел `ReorderList` управления) гарантирует, что указатель мыши изменяется соответствующим образом при наведении курсора на маркер перетаскивания:
+Сведения о стиле следующий код CSS (на который указывает ссылка в `<DragHandleTemplate>` раздел `ReorderList` управления) гарантирует, что указатель мыши изменяется соответствующим образом при его наведении маркер перетаскивания:
 
 [!code-css[Main](drag-and-drop-via-reorderlist-vb/samples/sample3.css)]
 
-Наконец `ScriptManager` элемент управления инициализирует ASP.NET AJAX для страницы:
+Наконец `ScriptManager` управления инициализирует ASP.NET AJAX для страницы:
 
 [!code-aspx[Main](drag-and-drop-via-reorderlist-vb/samples/sample4.aspx)]
 
-Этот пример можно выполнить в браузере и немного изменить порядок элементов списка. Затем перезагрузите страницу и/или посмотрите на базе данных. Измененная позиций вестись и также отражаются по значениям в `position` столбца в базе данных, которые все без кода, только с помощью разметки.
+Выполнить этот пример в браузере и немного изменить порядок элементов списка. Затем перезагрузите страницу и/или посмотрите на базе данных. Измененная позиций вестись и также отражаются по значениям в `position` столбца в базе данных, которые все без кода, вы можете просто с помощью разметки.
 
 
-[![Данные в базы данных изменяется в соответствии с новой порядок элементов списка](drag-and-drop-via-reorderlist-vb/_static/image8.png)](drag-and-drop-via-reorderlist-vb/_static/image7.png)
+[![Изменения данных в базе данных в соответствии с новой порядок элементов списка](drag-and-drop-via-reorderlist-vb/_static/image8.png)](drag-and-drop-via-reorderlist-vb/_static/image7.png)
 
-Данные в базы данных изменяется в соответствии с новый список элементов заказа ([Просмотр полноразмерное изображение](drag-and-drop-via-reorderlist-vb/_static/image9.png))
+Элемент данных при изменениях базы данных в соответствии со списком нового заказа ([Просмотр полноразмерного изображения](drag-and-drop-via-reorderlist-vb/_static/image9.png))
 
 > [!div class="step-by-step"]
 > [Назад](using-postbacks-with-reorderlist-vb.md)

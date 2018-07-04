@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-the-ajax-toolkit-reorder-control
-title: '[Инструкции:] Элемент управления AJAX переупорядочить Toolkit | Документы Microsoft'
+title: '[Инструкции] Элемент управления Reorder в наборе средств AJAX | Документация Майкрософт'
 author: JoeStagner
-description: В этом видео я продемонстрирую использование переупорядочить элемент управления, который поставляется с помощью набора средств AJAX. Изменения порядка управления позволяет предлагать пользователям o список...
+description: В этом видео я продемонстрирую использование изменения порядка управления, который поставляется с набором средств AJAX. Элемент управления reorder позволяет представить пользователям o списка...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/21/2008
 ms.topic: article
 ms.assetid: 1bc7e41a-633c-4ade-ba7a-486c9484a0ba
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-the-ajax-toolkit-reorder-control
 msc.type: video
-ms.openlocfilehash: 6df7975feb5d3121b836af0e7457e867f6e0d972
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: dbe8bd79bbd0ccaa0a9639aadb9eb8d7e5b7759e
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30883438"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37390541"
 ---
-<a name="how-do-i-the-ajax-toolkit-reorder-control"></a>[Инструкции:] Элемент управления AJAX переупорядочить Toolkit
+<a name="how-do-i-the-ajax-toolkit-reorder-control"></a>[Инструкции] Элемент управления Reorder в наборе средств AJAX
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-В этом видео я продемонстрирую использование переупорядочить элемент управления, который поставляется с помощью набора средств AJAX. Изменения порядка управления позволяет предлагать пользователям список элементов данных, которые можно изменить порядок сортировки, имени пользователя, является предпочтительным.
+В этом видео я продемонстрирую использование изменения порядка управления, который поставляется с набором средств AJAX. Изменения порядка управления позволяет представлять пользователям список элементов данных, которые можно изменить порядок сортировки, что и пользователь является предпочтительным.
 
-[&#9654;Посмотрите видео (в минутах 21)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-the-ajax-toolkit-reorder-control)
+[&#9654;Просмотрите видео (21 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-the-ajax-toolkit-reorder-control)
 
 > [!div class="step-by-step"]
 > [Назад](how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender.md)

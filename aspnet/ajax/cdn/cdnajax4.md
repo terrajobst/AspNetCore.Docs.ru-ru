@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/cdnajax4
-title: Веб-форм ASP.NET и Ajax 4 | Документы Microsoft
+title: Веб-форм ASP.NET и Ajax 4 | Документация Майкрософт
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 07/28/2014
 ms.topic: article
 ms.assetid: cced3924-251c-4c77-bef0-7992acbac106
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/cdnajax4
 msc.type: content
-ms.openlocfilehash: c312b2d721de7dc29576d0cd509eb4ec5791420e
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: cff084e82a820881bd9fa1544f12bf61f1e070d0
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30070694"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37364097"
 ---
 <a name="aspnet-web-forms-and-ajax-4"></a>Веб-форм ASP.NET и Ajax 4
 ====================
-Следующие файлы размещаются в CDN:
+Следующие файлы размещаются в сети доставки Содержимого:
 
 - https://ajax.aspnetcdn.com/ajax/4.0/1/Date.HijriCalendar.debug.js
 - https://ajax.aspnetcdn.com/ajax/4.0/1/Date.HijriCalendar.js
@@ -60,6 +59,6 @@ ms.locfileid: "30070694"
 - https://ajax.aspnetcdn.com/ajax/4.0/1/WebParts.js
 - https://ajax.aspnetcdn.com/ajax/4.0/1/WebUIValidation.js
 
-Примечание: Сценарии глобализации, например fr-FR.js можно найти в следующей папке:
+Примечание: Сценарии глобализации, например, fr-FR.js, можно найти в следующей папке:
 
 - https://ajax.aspnetcdn.com/ajax/4.0/1/globalization/

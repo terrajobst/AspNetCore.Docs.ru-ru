@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/data-access/linq-videos-from-the-vb-team/how-do-i-perform-group-and-aggregate-queries
-title: '[Инструкции:] Выполнение группы и статистические запросы? | Документы Майкрософт'
+title: '[Инструкции] Выполнять группирование и объединение запросов? | Документы Майкрософт'
 author: bethmassi
-description: Программистов Visual Basic узнаете, как выполнить группы и статистические запросы через коллекциями бизнес-объектов и способ их отображения в связанных таблицах.
+description: Программистов Visual Basic будет рассказано, как выполнить группирование и объединение запросов через коллекциями бизнес-объектов и их отображение в связанных таблицах.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/15/2007
 ms.topic: article
 ms.assetid: 8d07ae36-c4f3-48d7-87d3-cfe9a5bb336e
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/data-access/linq-videos-from-the-vb-team/how-do-i-perform-group-and-aggregate-queries
 msc.type: video
-ms.openlocfilehash: b209d7f85669a68f157affe1504a49a6e45d16d2
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 34a9ae7c035126ca8d868f0fc18ebfce5f967bf4
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30881153"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37390508"
 ---
-<a name="how-do-i-perform-group-and-aggregate-queries"></a>[Инструкции:] Выполнение группы и статистические запросы?
+<a name="how-do-i-perform-group-and-aggregate-queries"></a>[Инструкции] Выполнять группирование и объединение запросов?
 ====================
 по [Бет Масси](https://github.com/bethmassi)
 
-Программистов Visual Basic узнаете, как выполнить группы и статистические запросы через коллекциями бизнес-объектов и способ их отображения в связанных таблицах.
+Программистов Visual Basic будет рассказано, как выполнить группирование и объединение запросов через коллекциями бизнес-объектов и их отображение в связанных таблицах.
 
-[&#9654;Посмотрите видео (17 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-perform-group-and-aggregate-queries)
+[&#9654;Просмотрите видео (17 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-perform-group-and-aggregate-queries)
 
 > [!div class="step-by-step"]
 > [Назад](how-do-i-get-started-with-linq.md)

@@ -1,30 +1,29 @@
 ---
 uid: aspnet/tutorials
-title: Учебники по ASP.NET | Документы Microsoft
+title: Учебники по ASP.NET | Документация Майкрософт
 author: tdykstra
-description: Список пошаговых руководств для разработки приложений ASP.NET.
+description: Список пошаговых руководств по разработке приложений ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: fddf8e5e-c055-4f81-b691-78deef871112
 ms.technology: ''
-ms.prod: .net-framework
-ms.openlocfilehash: 704285fe06e2ece0f6afdc117aedf98f6155ef87
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7929a06fd7857237c2529aca34d36564c2a89f82
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28036769"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37389616"
 ---
 # <a name="aspnet-tutorials"></a>Учебники по ASP.NET
 
 Доступны следующие пошаговые руководства по разработке приложений ASP.NET.
 
 > [!NOTE]
-> Поиск учебников ASP.NET Core?  Найти их [здесь](https://docs.microsoft.com/aspnet/core/tutorials/).
+> Ищете учебники по ASP.NET Core?  Найти их [здесь](https://docs.microsoft.com/aspnet/core/tutorials/).
 
-## <a name="web-forms"></a>веб-формы
+## <a name="web-forms"></a>Веб-формы
 
 * [Начало работы с веб-формами ASP.NET 4.5 и Visual Studio 2013](web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/index.md)
 * [Создание простой страницы веб-форм в Visual Studio 2013](web-forms/overview/getting-started/creating-a-basic-web-forms-page.md)
@@ -48,7 +47,7 @@ ms.locfileid: "28036769"
 
 ## <a name="mvc"></a>MVC
 
-* [Приступая к работе с ASP.NET MVC 5](mvc/overview/getting-started/introduction/index.md)
+* [Приступая к работе с ASP.NET MVC 5 ](mvc/overview/getting-started/introduction/index.md)
 * [Начало работы с EF 6 с помощью MVC 5](mvc/overview/getting-started/getting-started-with-ef-using-mvc/index.md)
 * [EF Database First с ASP.NET MVC](mvc/overview/getting-started/database-first-development/index.md)
 * [Использование инспектора страниц в ASP.NET MVC](mvc/overview/views/using-page-inspector-in-aspnet-mvc.md)
