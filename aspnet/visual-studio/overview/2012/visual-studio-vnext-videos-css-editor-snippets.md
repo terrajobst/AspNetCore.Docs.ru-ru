@@ -1,28 +1,27 @@
 ---
 uid: visual-studio/overview/2012/visual-studio-vnext-videos-css-editor-snippets
-title: 'Visual Studio vNext видео: фрагменты CSS | Документы Microsoft'
+title: 'Visual Studio vNext видео: фрагменты CSS | Документация Майкрософт'
 author: madskristensen
-description: В этом видеоролике Мэдс Kristensen показывает улучшение в редакторе Visual Studio vNext CSS, который добавляет некоторые полезные фрагменты для преобразования CSS3, q мультимедиа...
+description: В этом видео Мэдс Kristensen демонстрирует улучшение в редакторе Visual Studio vNext CSS, который добавляет некоторых полезных фрагментов, для преобразования CSS3, q мультимедиа...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/30/2011
 ms.topic: article
 ms.assetid: a87af3be-589d-4b0c-846d-4de60a8745c0
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/visual-studio-vnext-videos-css-editor-snippets
 msc.type: video
-ms.openlocfilehash: 7a33c1d6bf4aadaaf1081e700a37fb7135aba3d6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e119cc781e77f126d1fccbd5b2d3dadeb216fae9
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26506473"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37377553"
 ---
-<a name="visual-studio-vnext-videos-css-snippets"></a>Visual Studio vNext видео: фрагменты кода CSS
+<a name="visual-studio-vnext-videos-css-snippets"></a>Visual Studio vNext видео: фрагменты CSS
 ====================
-по [Мэдс Kristensen](https://github.com/madskristensen)
+по [Мэдсом Kristensen](https://github.com/madskristensen)
 
-В этом видеоролике Мэдс Kristensen показывает улучшение в редакторе Visual Studio vNext CSS, который добавляет некоторые полезные фрагменты для CSS3 преобразований, медиа-запросами, внедрение шрифтов и многое другое.
+В этом видео Мэдс Kristensen демонстрирует улучшение в редакторе Visual Studio vNext CSS, который добавляет некоторых полезных фрагментов для CSS3 преобразований, медиа-запросами, внедрение шрифтов и многое другое.
 
-[&#9654; Посмотрите видео (1 мин.)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/visual-studio-vnext-videos-css-editor-snippets)
+[&#9654;Просмотрите видео (1 мин.)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/visual-studio-vnext-videos-css-editor-snippets)
