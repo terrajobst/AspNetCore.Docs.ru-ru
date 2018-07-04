@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/cdnajax35
-title: ASP.NET Ajax 3.5 | Документы Microsoft
+title: Ajax для ASP.NET 3.5 | Документация Майкрософт
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 07/28/2014
 ms.topic: article
 ms.assetid: d5af74c6-3bdf-4d56-8dba-316e3dc0092f
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/cdnajax35
 msc.type: content
-ms.openlocfilehash: 5fe267b9c9461f4780214a5a4ae42ca39e5283d0
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 8f93428c9c86a5864f5da3fc6dda028515fa3574
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30070268"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37361429"
 ---
-<a name="aspnet-ajax-35"></a>ASP.NET Ajax 3.5
+<a name="aspnet-ajax-35"></a>Ajax для ASP.NET 3.5
 ====================
-Следующие файлы размещаются в CDN:
+Следующие файлы размещаются в сети доставки Содержимого:
 
 - https://ajax.aspnetcdn.com/ajax/3.5/MicrosoftAjax.debug.js
 - https://ajax.aspnetcdn.com/ajax/3.5/MicrosoftAjax.js
