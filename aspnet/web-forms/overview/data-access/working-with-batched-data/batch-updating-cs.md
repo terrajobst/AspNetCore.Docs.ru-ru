@@ -4,19 +4,16 @@ title: Пакетного обновления (C#) | Документация �
 author: rick-anderson
 description: Узнайте, как обновление нескольких записей базы данных в рамках одной операции. В слой пользовательского интерфейса, мы создаем GridView, где каждая строка является редактируемой. В данных...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2007
-ms.topic: article
 ms.assetid: 4e849bcc-c557-4bc3-937e-f7453ee87265
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-updating-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bd8a8f4bc56867da1668fda32b42efcf3a629cdf
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0cb55689ac3a6dc36ed18459ecece82ff0b073b7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366811"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842196"
 ---
 <a name="batch-updating-c"></a>Пакетное обновление (C#)
 ====================
