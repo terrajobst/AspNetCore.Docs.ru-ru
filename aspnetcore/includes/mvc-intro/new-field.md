@@ -1,5 +1,5 @@
 <!-- This include not used by windows version -->
-# <a name="adding-a-new-field"></a>Добавление нового поля
+# <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>Добавление нового поля в приложение MVC ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 

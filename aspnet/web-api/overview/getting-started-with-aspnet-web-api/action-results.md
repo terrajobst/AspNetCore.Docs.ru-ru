@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/action-results
-title: Действие приводит к веб-API 2 | Документы Microsoft
+title: Действие приводит к веб-API 2 | Документация Майкрософт
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
@@ -9,43 +9,42 @@ ms.date: 02/03/2014
 ms.topic: article
 ms.assetid: 2fc4797c-38ef-4cc7-926c-ca431c4739e8
 ms.technology: dotnet-webapi
-ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/action-results
 msc.type: authoredcontent
-ms.openlocfilehash: d0db5c6d45020861d7295ab1db989caee525fff9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7726829ac9eba339ff3ac1c94c86132cb1090783
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28036470"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37395533"
 ---
 <a name="action-results-in-web-api-2"></a>Результаты действий в веб-API 2
 ====================
-по [Mike Wasson](https://github.com/MikeWasson)
+по [Майк Уоссон](https://github.com/MikeWasson)
 
-В этом разделе описывается, возвращаемое значение веб-API ASP.NET преобразование из действия контроллера в сообщение ответа HTTP.
+Здесь описывается, как веб-API ASP.NET преобразует возвращаемое значение из действия контроллера в ответное сообщение HTTP.
 
-Действие контроллера Web API может возвращать одно из следующих значений:
+Действие контроллера веб-API может возвращать одно из следующих:
 
 1. void
 2. **HttpResponseMessage**
 3. **IHttpActionResult**
-4. Другим типом
+4. Какое-либо иное
 
-В зависимости от того, какой из этих возвращается, веб-API использует другой механизм для создания HTTP-ответа.
+В зависимости от их возвращается, веб-API использует другой механизм для создания HTTP-ответа.
 
-| Тип возвращаемого значения | Создание веб-API ответа |
+| Тип возвращаемого значения | Как веб-API создает ответ |
 | --- | --- |
 | void | Возвращает пустой 204 (нет содержимого) |
 | **HttpResponseMessage** | Преобразуйте непосредственно в сообщение ответа HTTP. |
 | **IHttpActionResult** | Вызовите **ExecuteAsync** для создания **HttpResponseMessage**, затем преобразовать сообщение ответа HTTP. |
-| Другой тип | Записи сериализованного возвращаемого значения в тексте ответа; Возвращает 200 (ОК). |
+| Другой тип | Записи сериализованного возвращаемое значение в тексте ответа; возвращать ответ 200 (ОК). |
 
 В остальной части этого раздела описаны все параметры более подробно.
 
 ## <a name="void"></a>void
 
-Если тип возвращаемого значения является `void`, веб-API просто возвращает пустой ответ HTTP с кодом состояния 204 (нет содержимого).
+Если возвращаемый тип — `void`, веб-API просто возвращает пустой ответ HTTP с кодом состояния 204 (нет содержимого).
 
 Пример контроллера:
 
@@ -57,9 +56,9 @@ HTTP-ответа:
 
 ## <a name="httpresponsemessage"></a>HttpResponseMessage
 
-Если действие возвращает [HttpResponseMessage](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.aspx), веб-API преобразует возвращаемое значение непосредственно в сообщение ответа HTTP с помощью свойств **HttpResponseMessage** объекта для заполнения ответ.
+Если действие возвращает [HttpResponseMessage](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.aspx), веб-API преобразует возвращаемое значение непосредственно в ответное сообщение HTTP с помощью свойств **HttpResponseMessage** объекта для заполнения ответ.
 
-Этот параметр обеспечивает большую контроля над ответное сообщение. Например следующее действие контроллера задает заголовок Cache-Control.
+Этот параметр обеспечивает большую контроля над ответного сообщения. Например следующее действие контроллера задает заголовок Cache-Control.
 
 [!code-csharp[Main](action-results/samples/sample3.cs)]
 
@@ -67,27 +66,27 @@ HTTP-ответа:
 
 [!code-console[Main](action-results/samples/sample4.cmd?highlight=2)]
 
-Если модель домена, чтобы передать **CreateResponse** метод, использует веб-API [форматирования мультимедиа](../formats-and-model-binding/media-formatters.md) для записи сериализованной модели в тексте ответа.
+Если передать модель домена, чтобы **CreateResponse** метод, веб-API использует [форматирования мультимедиа](../formats-and-model-binding/media-formatters.md) для записи сериализованной модели в тексте ответа.
 
 [!code-csharp[Main](action-results/samples/sample5.cs)]
 
-Для выбора модуля форматирования веб-API использует заголовок Accept в запросе. Дополнительные сведения см. в разделе [согласования содержимого](../formats-and-model-binding/content-negotiation.md).
+Веб-API использует заголовок Accept в запросе для выбора модуля форматирования. Дополнительные сведения см. в разделе [согласование содержимого](../formats-and-model-binding/content-negotiation.md).
 
 ## <a name="ihttpactionresult"></a>IHttpActionResult
 
-**IHttpActionResult** в веб-API 2 был представлен интерфейс. По существу, он определяет **HttpResponseMessage** фабрики. Ниже приведены некоторые преимущества использования **IHttpActionResult** интерфейс:
+**IHttpActionResult** в веб-API 2 был представлен интерфейс. По сути, он определяет **HttpResponseMessage** фабрики. Ниже приведены некоторые преимущества использования **IHttpActionResult** интерфейса:
 
 - Упрощает [модульное тестирование](../testing-and-debugging/unit-testing-controllers-in-web-api.md) контроллеров.
 - Перемещает общую логику для создания HTTP-ответов в отдельные классы.
-- Делает назначение яснее, действия контроллера, скрывая сведения низкого уровня построения ответа.
+- Делает цель более понятным, действие контроллера, скрывая низкоуровневые сведения о создании ответа.
 
-**IHttpActionResult** содержит только один метод **ExecuteAsync**, которая асинхронно создает **HttpResponseMessage** экземпляра.
+**IHttpActionResult** содержит один метод, **ExecuteAsync**, которая асинхронно создает **HttpResponseMessage** экземпляра.
 
 [!code-csharp[Main](action-results/samples/sample6.cs)]
 
-Если действие контроллера возвращает **IHttpActionResult**, вызывает веб-API **ExecuteAsync** метод для создания **HttpResponseMessage**. Затем он преобразует **HttpResponseMessage** в сообщение ответа HTTP.
+Возвращает действие контроллера **IHttpActionResult**, вызывает веб-API **ExecuteAsync** метод для создания **HttpResponseMessage**. То она преобразует **HttpResponseMessage** в ответное сообщение HTTP.
 
-Ниже приведен простой реализация из **IHttpActionResult** , создающего формат ответа:
+Ниже приведен простой реализация из **IHttpActionResult** , создающий формат ответа:
 
 [!code-csharp[Main](action-results/samples/sample7.cs)]
 
@@ -99,21 +98,21 @@ HTTP-ответа:
 
 [!code-console[Main](action-results/samples/sample9.cmd)]
 
-Как правило, используется **IHttpActionResult** реализации, определенные в  **[System.Web.Http.Results](https://msdn.microsoft.com/library/system.web.http.results.aspx)**  пространства имен. **ApiController** класс определяет вспомогательные методы, которые возвращают результаты этих встроенных действий.
+Более часто, вы воспользуетесь **IHttpActionResult** реализации, определенных в **[System.Web.Http.Results](https://msdn.microsoft.com/library/system.web.http.results.aspx)** пространства имен. **ApiController** класс определяет вспомогательные методы, которые возвращают результаты этих встроенных действий.
 
-В следующем примере, если запрос не соответствует существующей код продукта, контроллер вызывает [ApiController.NotFound](https://msdn.microsoft.com/library/system.web.http.apicontroller.notfound.aspx) для создания ответа 404 (не найдено). В противном случае вызывает контроллер [ApiController.OK](https://msdn.microsoft.com/library/dn314591.aspx), который создает ответ 200 (ОК), который содержит результат.
+В следующем примере, если запрос не совпадает с Идентификатором существующего продукта, контроллер вызывает [ApiController.NotFound](https://msdn.microsoft.com/library/system.web.http.apicontroller.notfound.aspx) для создания ответа 404 (не найдено). В противном случае вызывает контроллер [ApiController.OK](https://msdn.microsoft.com/library/dn314591.aspx), который создает ответ 200 (ОК), содержащий продукта.
 
 [!code-csharp[Main](action-results/samples/sample10.cs)]
 
-## <a name="other-return-types"></a>Другие возвращаемые типы
+## <a name="other-return-types"></a>Другие типы возвращаемого значения
 
-Для всех других типов возврата, использует веб-API [форматирования мультимедиа](../formats-and-model-binding/media-formatters.md) для сериализации возвращаемое значение. Сериализованное значение записывает веб-API в тексте ответа. Код состояния ответа: 200 (ОК).
+Для всех других типов возвращаемого значения, веб-API использует [форматирования мультимедиа](../formats-and-model-binding/media-formatters.md) для сериализации возвращаемого значения. Веб-API записывает сериализованное значение в тексте ответа. Код состояния ответа: 200 (ОК).
 
 [!code-csharp[Main](action-results/samples/sample11.cs)]
 
-Недостатком этого подхода является, не может непосредственно возвращают код ошибки, такие как 404. Однако можно создать исключение **HttpResponseException** коды ошибок. Дополнительные сведения см. в разделе [обработка исключений в веб-API ASP.NET](../error-handling/exception-handling.md).
+Недостаток этого подхода является то, что нельзя напрямую возвращать код ошибки, например 404. Тем не менее, можно создавать **HttpResponseException** для кодов ошибок. Дополнительные сведения см. в разделе [обработка исключений в веб-API ASP.NET](../error-handling/exception-handling.md).
 
-Для выбора модуля форматирования веб-API использует заголовок Accept в запросе. Дополнительные сведения см. в разделе [согласования содержимого](../formats-and-model-binding/content-negotiation.md).
+Веб-API использует заголовок Accept в запросе для выбора модуля форматирования. Дополнительные сведения см. в разделе [согласование содержимого](../formats-and-model-binding/content-negotiation.md).
 
 Пример запроса
 

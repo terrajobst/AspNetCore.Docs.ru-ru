@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/authentication/sql-injection-defense
-title: Защита от атак введения SQL | Документы Microsoft
+title: Защита от атак введения SQL | Документация Майкрософт
 author: JoeStagner
-description: Уязвимость путем внедрения кода SQL в приложении может разрушить вашей целый день. В этом видеоролике корпорации Майкрософт Джо Стэгнер объясняет, как атаки путем внедрения кода SQL может happ...
+description: Уязвимость путем внедрения кода SQL в приложении может разрушить на целый день. В этом видеоролике корпорации Майкрософт (Joe Stagner) объясняет, как атаки путем внедрения кода SQL может happ...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/29/2009
 ms.topic: article
 ms.assetid: b9fb1e01-06d9-43d9-9e8f-5fa1e4c6a211
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/authentication/sql-injection-defense
 msc.type: video
-ms.openlocfilehash: 9b22721032a12f0a566c3837b80ef4f4fbb41960
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: ddddefa83c268a93225fcfe6c406c26bf3dea369
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30889973"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37393867"
 ---
-<a name="sql-injection-defense"></a>Защите от внедрения кода SQL
+<a name="sql-injection-defense"></a>Защита от атак введения SQL
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-Уязвимость путем внедрения кода SQL в приложении может разрушить вашей целый день. В этом видеоролике корпорации Майкрософт Джо Стэгнер объясняется, как может произойти атак путем внедрения кода SQL, злоумышленник может выполнять с ними и способов защиты приложения ASP.NET от атак путем внедрения кода SQL.
+Уязвимость путем внедрения кода SQL в приложении может разрушить на целый день. В этом видео корпорации Майкрософт (Joe Stagner) объясняет, как атаки путем внедрения кода SQL может произойти, что может сделать злоумышленник с ними и как защитить приложения ASP.NET от атак путем внедрения кода SQL.
 
-[&#9654;Посмотрите видео (25 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/sql-injection-defense)
+[&#9654;Просмотрите видео (25 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/sql-injection-defense)
 
 > [!div class="step-by-step"]
 > [Назад](creating-inactive-users.md)

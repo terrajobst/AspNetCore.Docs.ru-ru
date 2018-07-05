@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/vs-2005/how-do-i-create-my-own-bug-work-item
-title: '[Инструкции:] Создать свой собственный рабочий элемент ошибки? | Документы Майкрософт'
+title: '[Инструкции] Создать собственный рабочий элемент Bug? | Документы Майкрософт'
 author: rick-anderson
-description: В этом видеоролике показано, как создать свое собственное определение рабочего элемента ошибки для использования в Visual Studio Team System. Мы видим, как рабочий элемент определяется fil XML...
+description: В этом видео показано, как создать свое собственное определение рабочего элемента ошибки для использования в Visual Studio Team System. Мы видим, как рабочий элемент определяется XML-файлов...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2007
 ms.topic: article
 ms.assetid: ab0805a3-76ff-4557-8750-a24d0f79a4c9
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-create-my-own-bug-work-item
 msc.type: video
-ms.openlocfilehash: 150e03863356af110d0b41ee3c54243f4dd98ada
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 67f40d01bb7dc70e730a8d4604a24f13044d2e40
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30896274"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37367432"
 ---
-<a name="how-do-i-create-my-own-bug-work-item"></a>[Инструкции:] Создать свой собственный рабочий элемент ошибки?
+<a name="how-do-i-create-my-own-bug-work-item"></a>[Инструкции] Создать собственный рабочий элемент Bug?
 ====================
 по [Криса Менегэй](https://twitter.com/CMenegay)
 
-В этом видеоролике показано, как создать свое собственное определение рабочего элемента ошибки для использования в Visual Studio Team System. Мы узнаем, как рабочий элемент определяется в XML-файл, можно вручную изменять для добавления, удаления или изменения полей, рабочих процессов и форм, связанных с определенным типом рабочего элемента.
+В этом видео показано, как создать свое собственное определение рабочего элемента ошибки для использования в Visual Studio Team System. Мы видим, как рабочий элемент определяется XML-файлом, можно вручную изменить для добавления, удаления или изменения поля, рабочие процессы и формы, связанные с определенным типом рабочего элемента.
 
-[&#9654;Посмотрите видео (в минутах 11)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-my-own-bug-work-item)
+[&#9654;Просмотрите видео (11 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-my-own-bug-work-item)
 
 > [!div class="step-by-step"]
 > [Назад](how-do-i-integrate-defect-tracking-with-testing.md)

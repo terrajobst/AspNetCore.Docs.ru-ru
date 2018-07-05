@@ -1,26 +1,25 @@
 ---
 uid: mvc/videos/mvc-4/aspnet-mvc-4
-title: ASP.NET MVC 4 | Документы Microsoft
+title: ASP.NET MVC 4 | Документация Майкрософт
 author: shanselman
-description: Скотт Хансельман демонстрирует новые функции в ASP.NET MVC 4.
+description: Скотт Хансельман демонстрируются новые возможности в ASP.NET MVC 4.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
 ms.topic: article
 ms.assetid: 8a6417d5-801d-4fd7-8a06-164cd5441d3d
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-4/aspnet-mvc-4
 msc.type: video
-ms.openlocfilehash: 6eba6d863261657c2915e4086367f79d0988986d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 62a153ba182500a603be4406e210573122e4cf47
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26503673"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37394590"
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
-по [Скотт Хансельман](https://github.com/shanselman)
+по [(Scott hanselman)](https://github.com/shanselman)
 
-[&#9654; Посмотрите видео (7 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-4)
+[&#9654;Просмотрите видео (7 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-4)

@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/migrating/intro-to-aspnet-20-user-interface-elements
-title: '[Введение в ASP.NET 2.0:] Элементы пользовательского интерфейса | Документы Microsoft'
+title: '[Введение в ASP.NET 2.0:] Элементы пользовательского интерфейса | Документация Майкрософт'
 author: microsoft
-description: Эта веб-трансляция анализирует функций ASP.NET 2.0, которые упрощают создание пользовательских интерфейсов, включая главные страницы, темы и элементов управления навигацией.
+description: Этой веб-трансляции рассматриваются возможности ASP.NET 2.0, которые упрощают построение пользовательских интерфейсов, включая главные страницы, темы и элементы управления навигацией.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/25/2006
 ms.topic: article
 ms.assetid: eb2e621c-3017-4382-83ee-cbec8148ac04
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/migrating/intro-to-aspnet-20-user-interface-elements
 msc.type: video
-ms.openlocfilehash: 12b0c4fc544ae6bcb2eaf1e3f2ea22860da9be0e
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: a1955726412179fdc45db4c0e26156c1e870d2b9
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30883941"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37395997"
 ---
 <a name="intro-to-aspnet-20-user-interface-elements"></a>[Введение в ASP.NET 2.0:] Элементы пользовательского интерфейса
 ====================
 по [Microsoft](https://github.com/microsoft)
 
-Эта веб-трансляция анализирует функций ASP.NET 2.0, которые упрощают создание пользовательских интерфейсов, включая главные страницы, темы и элементов управления навигацией.
+Этой веб-трансляции рассматриваются возможности ASP.NET 2.0, которые упрощают построение пользовательских интерфейсов, включая главные страницы, темы и элементы управления навигацией.
 
-[&#9654;Посмотрите видео (в минутах 63)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/intro-to-aspnet-20-user-interface-elements)
+[&#9654;Просмотрите видео (63 мин.)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/intro-to-aspnet-20-user-interface-elements)
 
 > [!div class="step-by-step"]
 > [Назад](intro-to-aspnet-20-aspnet-20-fundamentals.md)
