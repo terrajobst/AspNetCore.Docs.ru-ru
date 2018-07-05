@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/vs-2005/introduction-to-managing-and-running-tests-with-team-system
-title: Введение в управление и выполнение тестов с помощью Team System | Документы Microsoft
+title: Введение в управление и выполнение тестов с помощью Team System | Документация Майкрософт
 author: rick-anderson
-description: В этом видео мы узнаем, как можно управлять всеми или в различных тестовых случаев, с помощью функции управления теста Visual Studio Team System. Вы также узнаете...
+description: В этом видео мы видим, как вы можете управлять всеми или различных тестовых случаев, используя возможности тестирования управления Visual Studio Team System. Мы также увидим...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/09/2007
 ms.topic: article
 ms.assetid: e262ca69-55e5-4ec2-b278-78ee129b4649
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/vs-2005/introduction-to-managing-and-running-tests-with-team-system
 msc.type: video
-ms.openlocfilehash: 545d29f245f46f1d6fbdcc4690e52b0ef60e746a
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: c74f30d0577ada7d4fb939d1c52cd4b7249cca18
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30895183"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37373742"
 ---
 <a name="introduction-to-managing-and-running-tests-with-team-system"></a>Введение в управление и выполнение тестов с помощью Team System
 ====================
 по Эрика ли
 
-В этом видео мы узнаем, как можно управлять всеми или в различных тестовых случаев, с помощью функции управления теста Visual Studio Team System. Также вы узнаете, как запустить и настроить тестов.
+В этом видео мы видим, как вы можете управлять всеми или различных тестовых случаев, используя возможности тестирования управления Visual Studio Team System. Также вы узнаете, как запустить и настроить тесты.
 
-[&#9654;Посмотрите видео (8 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/introduction-to-managing-and-running-tests-with-team-system)
+[&#9654;Просмотрите видео (8 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/introduction-to-managing-and-running-tests-with-team-system)
 
 > [!div class="step-by-step"]
 > [Назад](introduction-to-manual-testing-with-team-system.md)

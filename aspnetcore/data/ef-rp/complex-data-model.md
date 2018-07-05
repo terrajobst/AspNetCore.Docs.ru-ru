@@ -3,20 +3,24 @@ title: Razor Pages с EF Core в ASP.NET Core — модель данных— 
 author: rick-anderson
 description: В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных, указав правила форматирования, проверки и сопоставления.
 ms.author: riande
-ms.date: 10/25/2017
+ms.date: 6/31/2017
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: a885809205f13e1090a957496710cc0d9c7257c0
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: d96ce7a3f81c54d3c4c0fe26d3fb588d9ce2e0ce
+ms.sourcegitcommit: 1faf2525902236428dae6a59e375519bafd5d6d7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274545"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37090001"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
 
+[!INCLUDE[2.0 version](~/includes/RP-EF/20-pdf.md)]
+
+::: moniker range=">= aspnetcore-2.1"
+
 Авторы: [Том Дайкстра](https://github.com/tdykstra) (Tom Dykstra) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](~/includes/RP-EF/intro.md)]
 
 Предыдущие руководства работали с базовой моделью данных, состоящей из трех сущностей. В этом руководстве:
 
@@ -27,7 +31,8 @@ ms.locfileid: "36274545"
 
 ![Схема сущностей](complex-data-model/_static/diagram.png)
 
-При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение для этого этапа](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part5-complex).
+При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение](
+https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 
 ## <a name="customize-the-data-model-with-attributes"></a>Настройка модели данных с использованием атрибутов
 
@@ -39,7 +44,7 @@ ms.locfileid: "36274545"
 
 Обновите *Models/Student.cs*, используя следующий выделенный код:
 
-[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
+[!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
 Атрибут [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) указывает тип данных более точно по сравнению со встроенным типом базы данных. В этом случае следует отображать отобразить только дату, а не дату и время. В [перечислении DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) представлено множество типов данных, таких как Date, Time, PhoneNumber, Currency, EmailAddress и других. Атрибут `DataType` также обеспечивает автоматическое предоставление функций для определенных типов в приложении. Пример:
 
@@ -75,7 +80,7 @@ ms.locfileid: "36274545"
 
 Обновите модель`Student`, используя следующий код:
 
-[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
+[!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
 
 Предыдущий код задает ограничение длины имен в 50 символов. Атрибут `StringLength` не запрещает пользователю ввести пробел в качестве имени пользователя. Атрибут [RegularExpression](/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute?view=netframework-4.7.1) используется для применения ограничений к входным данным. Например, следующий код требует, чтобы первый символ был прописной буквой, а остальные символы были буквенными:
 
@@ -107,7 +112,7 @@ ms.locfileid: "36274545"
 
 Обновите файл *Student.cs*, используя следующий выделенный код:
 
-[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
+[!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_Column&highlight=4,14)]
 
 С учетом предыдущего изменения `Student.FirstMidName` в приложении сопоставляется со столбцом `FirstName` таблицы `Student`.
 
@@ -121,12 +126,23 @@ SqlException: Invalid column name 'FirstName'.
 * Выполните построение проекта.
 * Откройте командное окно в папке проекта. Введите следующие команды для создания миграции и обновления базы данных:
 
-    ```console
-    dotnet ef migrations add ColumnFirstName
-    dotnet ef database update
-    ```
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Команда `dotnet ef migrations add ColumnFirstName` выдает следующее предупреждающее сообщение:
+```PMC
+Add-Migration ColumnFirstName
+Update-Database
+```
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
+```console
+dotnet ef migrations add ColumnFirstName
+dotnet ef database update
+```
+
+------
+
+Команда `migrations add ColumnFirstName` выдает следующее предупреждающее сообщение:
 
 ```text
 An operation was scaffolded that may result in the loss of data.
@@ -152,7 +168,7 @@ Please review the migration for accuracy.
 
 Обновите *Models/Student.cs*, используя следующий код:
 
-[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
+[!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
 
 ### <a name="the-required-attribute"></a>Атрибут Required
 
@@ -180,9 +196,7 @@ public string LastName { get; set; }
 
 Создайте файл *Models/Instructor.cs* со следующим кодом:
 
-[!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
-
-Обратите внимание, что некоторые свойства являются одинаковыми в сущностях `Student` и `Instructor`. В руководстве по реализации наследования далее в этой серии выполняется рефакторинг данного кода, чтобы устранить избыточность.
+[!code-csharp[](intro/samples/cu21/Models/Instructor.cs)]
 
 На одной строке могут находиться несколько атрибутов. Атрибуты `HireDate` можно записать следующим образом:
 
@@ -226,7 +240,7 @@ public OfficeAssignment OfficeAssignment { get; set; }
 
 Создайте файл *Models/OfficeAssignment.cs* со следующим кодом:
 
-[!code-csharp[](intro/samples/cu/Models/OfficeAssignment.cs)]
+[!code-csharp[](intro/samples/cu21/Models/OfficeAssignment.cs)]
 
 ### <a name="the-key-attribute"></a>Атрибут Key
 
@@ -275,7 +289,7 @@ public Instructor Instructor { get; set; }
 
 Обновите *Models/Course.cs*, используя следующий код:
 
-[!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
+[!code-csharp[](intro/samples/cu21/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
 
 Сущность `Course` имеет свойство внешнего ключа (FK) `DepartmentID`. `DepartmentID` указывает на связанную сущность `Department`. Сущность `Course` имеет свойство навигации `Department`.
 
@@ -333,7 +347,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 Создайте файл *Models/Department.cs* со следующим кодом:
 
-[!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Begin)]
+[!code-csharp[](intro/samples/cu21/Models/Department.cs?name=snippet_Begin)]
 
 ### <a name="the-column-attribute"></a>Атрибут Column
 
@@ -386,7 +400,7 @@ public ICollection<Course> Courses { get; set; }
 
 Предыдущий код отключает каскадное удаление для связи кафедры и преподавателя.
 
-## <a name="update-the-enrollment-entity"></a>Обновление сущности Enrollment
+## <a name="update-the-enrollment-entityupdate-the-enrollment-entity"></a>Обновление сущности Enrollment Обновление сущности Enrollment
 
 Запись зачисления обозначает один курс, который проходит один учащийся.
 
@@ -394,7 +408,7 @@ public ICollection<Course> Courses { get; set; }
 
 Обновите *Models/Enrollment.cs*, используя следующий код:
 
-[!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
+[!code-csharp[](intro/samples/cu21/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
 
 ### <a name="foreign-key-and-navigation-properties"></a>Свойства внешнего ключа и навигации
 
@@ -436,7 +450,7 @@ public Student Student { get; set; }
 
 Создайте файл *Models/CourseAssignment.cs* со следующим кодом:
 
-[!code-csharp[](intro/samples/cu/Models/CourseAssignment.cs)]
+[!code-csharp[](intro/samples/cu21/Models/CourseAssignment.cs)]
 
 ### <a name="instructor-to-courses"></a>Связь между Instructor и Courses
 
@@ -470,7 +484,7 @@ public Student Student { get; set; }
 
 Добавьте выделенный ниже код в файл *Data/SchoolContext.cs*:
 
-[!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
+[!code-csharp[](intro/samples/cu21/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
 
 Предыдущий код добавляет новые сущности и настраивает составной первичный ключ сущности `CourseAssignment`.
 
@@ -520,7 +534,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Обновите код в файле *Data/DbInitializer.cs*:
 
-[!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Final)]
+[!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Final)]
 
 Предыдущий код предоставляет начальные данные для новых сущностей. Основная часть кода создает объекты сущностей и загружает демонстрационные данные. Демонстрационные данные используются для проверки. Приведенный выше код создает следующие связи многие ко многим:
 
@@ -531,11 +545,21 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ## <a name="add-a-migration"></a>Добавление миграции
 
-Выполните построение проекта. Откройте командное окно в папке проекта и введите следующую команду:
+Выполните построение проекта.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+```PMC
+Add-Migration ComplexDataModel
+```
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 ```console
 dotnet ef migrations add ComplexDataModel
 ```
+
+------
 
 Предыдущая команда отображает предупреждение о возможной потере данных.
 
@@ -554,42 +578,40 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 При выполнении миграций с существующими данными могут действовать ограничения внешнего ключа, которым существующие данные не соответствуют. В этом руководстве создается новая база данных, поэтому нарушения ограничений внешнего ключа отсутствуют. Инструкции по устранению нарушений внешнего ключа для текущей базы данных см. в разделе [Устранение ограничений внешнего ключа с устаревшими данными](#fk).
 
-## <a name="change-the-connection-string-and-update-the-db"></a>Изменение строки подключения и обновление базы данных
+### <a name="drop-and-update-the-database"></a>Удаление и обновление базы данных
 
-Код в обновленном `DbInitializer` предоставляет начальные данные для новых сущностей. Чтобы велеть EF Core создать пустую базу данных, сделайте следующее:
+Код в обновленном `DbInitializer` предоставляет начальные данные для новых сущностей. Чтобы выполнить в EF Core принудительное создание новой базы данных, удаление и обновление базы данных:
 
-* Измените имя строки подключения базы данных в файле *appsettings.json* для ContosoUniversity3. Новое имя не должно использоваться на компьютере ранее.
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-    ```json
-    {
-      "ConnectionStrings": {
-        "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=ContosoUniversity3;Trusted_Connection=True;MultipleActiveResultSets=true"
-      },
-    ```
+Выполните следующие команды в **консоли диспетчера пакетов** (PMC):
 
-* Кроме того, можно удалить базу данных с помощью:
-
-  * **обозревателя объектов SQL Server** (SSOX) или
-  * команды интерфейса командной строки `database drop`:
-
-    ```console
-    dotnet ef database drop
-    ```
-
-Запустите `database update` в командном окне:
-
-```console
-dotnet ef database update
+```PMC
+Drop-Database
+Update-Database
 ```
 
-Предыдущая команда выполняет все миграции.
+Чтобы просмотреть справочную информацию, выполните команду `Get-Help about_EntityFrameworkCore` в PMC.
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
+Откройте командное окно и перейдите в папку проекта. Папка проекта содержит файл *Startup.cs*.
+
+Введите в командном окне следующее:
+
+ ```console
+ dotnet ef database drop
+dotnet ef database update
+ ```
+
+------
 
 Запустите приложение. При запуске приложения выполняется метод `DbInitializer.Initialize`. `DbInitializer.Initialize` заполняет новую базу данных.
 
 Откройте базу данных в SSOX:
 
-* Разверните узел **Таблицы**. Отображаются созданные таблицы.
 * Если SSOX был открыт ранее, нажмите кнопку **Обновить**.
+* Разверните узел **Таблицы**. Отображаются созданные таблицы.
 
 ![Таблицы в SSOX](complex-data-model/_static/ssox-tables.png)
 
@@ -638,6 +660,8 @@ dotnet ef database update
 * не использует кафедру "Temp" или значение по умолчанию для `Course.DepartmentID`.
 
 Следующее руководство посвящено связанным данным.
+
+::: moniker-end
 
 > [!div class="step-by-step"]
 > [Назад](xref:data/ef-rp/migrations)

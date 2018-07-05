@@ -1,38 +1,37 @@
 ---
 uid: mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2
-title: Процедура обновления ASP.NET MVC 4 и веб-проекта ASP.NET MVC 5 и веб-API 2 API | Документы Microsoft
+title: Как обновлять ASP.NET MVC 4 и веб-API проекта ASP.NET MVC 5 и веб-API 2 | Документация Майкрософт
 author: Rick-Anderson
-description: ASP.NET MVC 5 и веб-API 2 перевести целый ряд новых функций, включая маршрутизацией атрибутов, фильтры проверки подлинности и многое другое.
+description: ASP.NET MVC 5 и веб-API 2 перевести множество новых функций, включая маршрутизации с помощью атрибутов, фильтры проверки подлинности и многое другое.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
 ms.topic: article
 ms.assetid: db0d02d9-58e8-4a0b-8d7d-b8df8ea97b88
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: f61502933a5ba92896ee97cef9cff915fe23831d
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 7ccdc1bf7a1b1b8d5d9c5906eeeab9535b26df6c
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30874734"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37369251"
 ---
-<a name="how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2"></a>Как обновить ASP.NET MVC 4 и API веб-проекта ASP.NET MVC 5 и веб-API 2
+<a name="how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2"></a>Обновление ASP.NET MVC 4 и проекта веб-API до ASP.NET MVC 5 и веб-API 2
 ====================
 по [Рик Андерсон](https://github.com/Rick-Anderson)
 
-> ASP.NET MVC 5 и веб-API 2 перевести целый ряд новых функций, включая маршрутизацией атрибутов, фильтры проверки подлинности и многое другое. В разделе [ https://www.asp.net/vnext ](https://www.asp.net/core) для получения дополнительных сведений.
+> ASP.NET MVC 5 и веб-API 2 перевести множество новых функций, включая маршрутизации с помощью атрибутов, фильтры проверки подлинности и многое другое. См. в разделе [ https://www.asp.net/vnext ](https://www.asp.net/core) для получения дополнительных сведений.
 > 
-> В этом пошаговом руководстве поможет вам с помощью действий, необходимых для обновления до последней версии приложения.  
+> В этом пошаговом руководстве поможет вам с шаги, необходимые для обновления до последней версии приложения.  
 > 
 > > [!NOTE]
-> > См. в разделе [ASP.NET и веб-инструменты Visual Studio 2013 заметки о выпуске](../../../visual-studio/overview/2013/release-notes.md) сведения о критических изменениях в MVC 4 и веб-API до следующей версии.
+> > См. в разделе [ASP.NET and Web Tools для заметки о выпуске Visual Studio 2013](../../../visual-studio/overview/2013/release-notes.md) сведения о критических изменениях из MVC 4 и веб-API до следующей версии.
 > 
 >   
 > 
-> В этой статье было написано с Youngjune Гонконг и Рик Андерсон ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) )
+> Эта статья написана, Гонконг Youngjune и Рик Андерсон ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) )
 
 
 ## <a name="upgrade-steps"></a>Действия по обновлению
@@ -45,7 +44,7 @@ ms.locfileid: "30874734"
    в
 
     [!code-csharp[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample2.cs)]
-3. Убедитесь, что все пакеты, использующие проекты совместимы с MVC 5 и веб-API 2. Перечисленные ниже таблице показаны MVC 4 и веб-API, связанные с пакетами не должны быть изменены. Если у вас есть пакет, который зависит от одного из перечисленных ниже пакетов, обратитесь в службу издателей, чтобы получить более новых версий, совместимых с MVC 5 и веб-API 2. Если у вас есть исходный код для этих пакетов, необходимо повторно компилировать их с новыми сборками MVC 5 и веб-API 2.   
+3. Убедитесь, что все пакеты, использующие проекты совместимы с MVC 5 и веб-API 2. Ниже показано в таблице MVC 4 и веб-API, связанные с пакетами не должны быть изменены. Если у вас есть пакет, который зависит от одной из перечисленных ниже пакетов, обратитесь в службу издателей, чтобы получить более новых версий, совместимых с MVC 5 и веб-API 2. Если у вас есть исходный код для этих пакетов, их следует перекомпилировать с новыми сборками MVC 5 и веб-API 2.   
 
     | **Идентификатор пакета** | **Старая версия** | **Новая версия** |
     | --- | --- | --- |
@@ -67,73 +66,73 @@ ms.locfileid: "30874734"
     | Microsoft.Data.OData | 5.2.x | 5.6.x |
     | System.Spatial | 5.2.x | 5.6.x |
     | Microsoft.Data.Edm | 5.2.x | 5.6.x |
-    | Microsoft.AspNet.Mvc.FixedDisplayModes | < o: p >< / o: p > | Удаленная |
-    | Microsoft.AspNet.WebPages.Administration | < o: p >< / o: p > | Удаленная |
-    | Microsoft-Web-Helpers | < o: p >< / o: p > | Microsoft.AspNet.WebHelpers |
+    | Microsoft.AspNet.Mvc.FixedDisplayModes | < o:p >< / o:p > | Удаленная |
+    | Microsoft.AspNet.WebPages.Administration | < o:p >< / o:p > | Удаленная |
+    | Microsoft Web вспомогательные функции. | < o:p >< / o:p > | Microsoft.AspNet.WebHelpers |
 
     > [!NOTE]
-    > Microsoft Web вспомогательные методы были заменены Microsoft.AspNet.WebHelpers. Сначала удалите старый пакет и установите его более новой.   
+    > Microsoft Web вспомогательные методы были заменены Microsoft.AspNet.WebHelpers. Сначала удалите старый пакет и затем установить новый пакет.   
     >   
-    > Совместимость не перекрестного версии среди основных пакетов ASP.NET не существует. Например MVC 5 совместим только с Razor 3 и не Razor 2.
+    > Есть совместимость не перекрестного версии среди основных пакетов ASP.NET. Например MVC 5 совместим с только Razor 3, а не 2 Razor.
 4. Откройте проект в Visual Studio 2013.
-5. Удалите следующие пакеты ASP.NET NuGet, которые установлены. С помощью консоли диспетчера пакетов (PMC) будет удалена. Чтобы открыть PMC, выберите **средства** меню и выберите **диспетчер библиотеки пакетов** выберите **консоль диспетчера пакетов**. Проект может включать не все из них.
+5. Удалите любые из следующих пакетов ASP.NET NuGet, которые установлены. С помощью консоли диспетчера пакетов (PMC) будут удалены. Чтобы открыть консоль диспетчера пакетов, выберите **средства** меню и выберите **диспетчер пакетов библиотеки,** выберите **консоль диспетчера пакетов**. Проект может включать не все из них.
 
     1. `Microsoft.AspNet.WebPages.Administration`  
-   Как правило, этот пакет добавляется при обновлении MVC 3 до MVC 4. Чтобы удалить его, выполните следующую команду в PMC:  
+   Этот пакет обычно добавляется при обновлении MVC 3 до MVC 4. Чтобы удалить его, выполните следующую команду в PMC:  
         `Uninstall-Package -Id Microsoft.AspNet.WebPages.Administration`
     2. `Microsoft-Web-Helpers`   
-   Этот пакет были бренд `Microsoft.AspNet.WebHelpers`. Чтобы удалить его, выполните следующую команду в PMC:  
+   Этот пакет изменено на `Microsoft.AspNet.WebHelpers`. Чтобы удалить его, выполните следующую команду в PMC:  
         `Uninstall-Package -Id Microsoft-Web-Helpers`
     3. `Microsoft.AspNet.Mvc.FixedDisplayMode`  
-   Этот пакет содержит обходной путь для ошибок в MVC 4, что ошибка исправлена в MVC 5. Чтобы удалить его, выполните следующую команду в PMC:  
+   Этот пакет содержит решения для ошибки в MVC 4, которая была исправлена в MVC 5. Чтобы удалить его, выполните следующую команду в PMC:  
         `Uninstall-Package -Id Microsoft.AspNet.Mvc.FixedDisplayModes`
-6. Обновите все пакеты ASP.NET NuGet, с помощью PMC. В PMC выполните следующую команду:  
+6. Обновите все пакеты ASP.NET NuGet, используя консоль диспетчера пакетов. В PMC выполните следующую команду:  
     `Update-Package`  
-   `Update-Package` Команду без параметров будут обновлены все пакеты. Пакеты можно обновлять по отдельности с помощью аргумента идентификатора. Дополнительные сведения о команде обновления запустите `get-help update-package` .
+   `Update-Package` Команду без параметров будет обновлять каждого пакета. Пакеты можно обновить по отдельности, используя аргумент идентификатора. Дополнительные сведения о команде обновления выполняют `get-help update-package` .
 
-## <a name="update-the-application-webconfig-file"></a>Обновление приложения *web.config* файла
+## <a name="update-the-application-webconfig-file"></a>Обновить приложение *web.config* файла
 
-Убедитесь, что для внесения этих изменений в приложении *web.config* файл, не *web.config* файла в *представления* папки.
+Убедитесь, что для внесения этих изменений в приложении *web.config* запись в файл, *web.config* файл *представления* папки.
 
 Найдите `<runtime>/<assemblyBinding>` раздела и внесите следующие изменения:
 
-1. В элементах с именем атрибута «System.Web.Mvc» измените номер версии «4.0.0.0» для «5.0.0.0». (Два изменения в этот элемент).
-2. В элементах с именем атрибута &quot;System.Web.Helpers» и &quot;System.Web.WebPages&quot; изменить номер версии на «2.0.0.0» для «3.0.0.0». Четыре будут внесены изменения, два — в каждом из элементов.
+1. В элементы с атрибутом имени «System.Web.Mvc» измените номер версии «4.0.0.0» до «5.0.0.0». (Два изменения в этом элементе.)
+2. В элементах с атрибутом имени &quot;System.Web.Helpers» и &quot;System.Web.WebPages&quot; изменить номер версии из «2.0.0.0» до «3.0.0.0». Четыре будут внесены изменения, в каждом элементе.
 
     [!code-xml[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample3.xml?highlight=6,10,14)]
-3. Найдите `<appSettings>` статьи и обновить webpages:version из 2.0.0.0.0 для 3.0.0.0, как показано ниже:
+3. Найдите `<appSettings>` раздела и обновить webpages:version из 2.0.0.0.0 для 3.0.0.0, как показано ниже:
 
     [!code-xml[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample4.xml?highlight=2)]
-4. Удалите все уровни доверия Кроме Full. Пример:
+4. Удалите все уровни доверия, отличные от полного. Пример:
 
     [!code-xml[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample5.xml?highlight=2)]
 
-## <a name="update-the-webconfig-files-under-the-views-folder"></a>Обновление *web.config* файлы в папке «представления»
+## <a name="update-the-webconfig-files-under-the-views-folder"></a>Обновление *web.config* файлы в папке представления
 
-Если приложение использует области, будет необходимо также обновить каждый *web.config* файла в *представления* вложенная папка папки каждой области.
+Если приложение использует областей, также необходимо будет обновить каждый *web.config* файл *представления* вложенной папке каждой папке области.
 
-1. Обновите все элементы, содержащие «System.Web.Mvc» версии «4.0.0.0» версии «5.0.0.0».  
+1. Обновите все элементы, содержащие «System.Web.Mvc» версии «4.0.0.0» до версии «5.0.0.0».  
 
     [!code-xml[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample6.xml?highlight=2)]
 
     [!code-xml[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample7.xml?highlight=4-6,8)]
-2. Обновите все элементы, содержащие «System.Web.WebPages.Razor» версии «2.0.0.0» версии «3.0.0.0». Если этот раздел содержит «System.Web.WebPages», обновите эти элементы из версии «2.0.0.0» версии «3.0.0.0»  
+2. Обновите все элементы, содержащие «System.Web.WebPages.Razor» версии «2.0.0.0» до версии «3.0.0.0». Если этот раздел содержит «System.Web.WebPages», обновите эти элементы из версии «2.0.0.0» до версии «3.0.0.0»  
 
     [!code-xml[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample8.xml?highlight=3-5)]
-3. Если вы удалили `Microsoft-Web-Helpers` Установка пакета NuGet в предыдущем шаге, `Microsoft.AspNet.WebHelpers` с помощью следующей команды в PMC:  
+3. Если вы удалили `Microsoft-Web-Helpers` установить пакет NuGet на предыдущем шаге, `Microsoft.AspNet.WebHelpers` , выполнив следующую команду в PMC:  
     `Install-Package -Id Microsoft.AspNet.WebHelpers`
-4. Если ваше приложение использует [User.IsInRole()](https://msdn.microsoft.com/en-us/library/system.web.security.roleprincipal.isinrole(v=vs.110).aspx) метод, добавьте следующий код в *Web.config* файла.
+4. Если приложение использует [User.IsInRole()](https://msdn.microsoft.com/en-us/library/system.web.security.roleprincipal.isinrole(v=vs.110).aspx) метод, добавьте следующий код в *Web.config* файл.
 
     [!code-xml[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample9.xml)]
 
-## <a name="final-steps"></a>Последние действия
+## <a name="final-steps"></a>Заключительные действия
 
-Построение и тестирование приложения.
+Сборка и тестирование приложения.
 
-Удалите тип проекта MVC 4 GUID из файлов проекта.
+Удалите идентификатор GUID типа проекта MVC 4 из файлов проекта.
 
-1. В обозревателе решений щелкните правой кнопкой мыши имя проекта, а затем выберите **выгрузить проект**.
+1. В обозревателе решений щелкните правой кнопкой мыши имя проекта и выберите **выгрузить проект**.
 2. Щелкните правой кнопкой мыши проект и выберите команду Изменить имя_проекта.csproj.
-3. Найдите `ProjectTypeGuids` элемент, а затем удалить MVC 4 проект GUID, `{E3E379DF-F4C6-4180-9B81-6769533ABE47}`.
+3. Найдите `ProjectTypeGuids` элемент, а затем идентификатор GUID проекта MVC 4 remove `{E3E379DF-F4C6-4180-9B81-6769533ABE47}`.
 4. Сохраните и закройте файл открыть проект.
 5. Щелкните правой кнопкой мыши проект и выберите **перезагрузить проект**.

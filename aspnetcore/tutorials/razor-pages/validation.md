@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 569c5b977d832aec3657321cad8d0f9520aae031
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: cabf3d955ef2eb17b3bcb40170a9de7b53ffd107
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277778"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077635"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Добавление проверки на страницу Razor в ASP.NET Core
 
@@ -45,7 +45,7 @@ ms.locfileid: "36277778"
 Атрибуты проверки определяют поведение, которое применяется к свойствам модели.
 
 * Атрибуты `Required` и `MinimumLength` означают, что свойство должно иметь значение. Но пользователь может ввести пробел, чтобы соблюсти ограничение проверки для типа, допускающего значение null. [Типы значений](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/value-types), не допускающие значение null (например, `decimal`, `int`, `float` и `DateTime`), являются обязательными и не требуют атрибута `Required`.
-* Атрибут `RegularExpression` ограничивает символы, которые может ввести пользователь. В приведенном выше коде в полях `Genre` и `Rating` можно использовать только буквы (пробелы, числа и специальные символы не допускаются).
+* Атрибут `RegularExpression` ограничивает символы, которые может ввести пользователь. В приведенном выше коде строка `Genre` должна начинаться с одной или нескольких заглавных букв, после чего могут следовать ноль или несколько букв, двойных или одинарных кавычек, пробелов или дефисов. Строка `Rating` должна начинаться с одной или нескольких заглавных букв, после чего могут следовать ноль или несколько букв, цифр, двойных или одинарных кавычек, пробелов или дефисов.
 * Атрибут `Range` ограничивает диапазон значений.
 * Атрибут `StringLength` задает максимальную и при необходимости минимальную длину строки. 
 

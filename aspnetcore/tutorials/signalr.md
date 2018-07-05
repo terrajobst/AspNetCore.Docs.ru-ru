@@ -7,12 +7,12 @@ ms.author: rachelap
 ms.custom: mvc
 ms.date: 05/22/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 8762a4be1032d58014dd32dfdd3707197e14c6f9
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 62cef2d6f032caa2f048cfdd49a225d975dad10d
+ms.sourcegitcommit: 7003d27b607e529642ded0400aa48ae692a0e666
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36297203"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37033346"
 ---
 # <a name="get-started-with-signalr-on-aspnet-core"></a>Начало работы с SignalR в ASP.NET Core
 
@@ -29,9 +29,9 @@ ms.locfileid: "36297203"
 > * Создание хаба SignalR для передачи содержимого клиентам.
 > * Изменение класса `Startup` и настройка приложения.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/get-started/sample/) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-# <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 Установите следующее программное обеспечение:
 
@@ -100,7 +100,7 @@ Visual Studio включает пакет `Microsoft.AspNetCore.SignalR`, сод
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-1. Добавьте класс в проект, перейдя в меню **Файл** > **Создать** > **Файл** и выбрав **Класс Visual C#**. Назовите файл *ChatHub*.
+1. Добавьте класс в проект, перейдя в меню **Файл** > **Создать** > **Файл** и выбрав **Класс Visual C#**. Присвойте классу имя `ChatHub`, а файлу имя *ChatHub.cs*.
 
 2. Наследуйте от `Microsoft.AspNetCore.SignalR.Hub`. Класс `Hub` содержит свойства и события для управления подключениями и группами, а также отправки и получения данных.
 
@@ -112,13 +112,13 @@ Visual Studio включает пакет `Microsoft.AspNetCore.SignalR`, сод
 
 1. Откройте папку *SignalRChat* в Visual Studio Code.
 
-2. Добавьте класс в проект, выбрав **Файл** > **Создать файл**.
+2. Добавьте класс в проект, выбрав **Файл** > **Создать файл**. Присвойте классу имя `ChatHub`, а файлу имя *ChatHub.cs*.
 
 3. Наследуйте от `Microsoft.AspNetCore.SignalR.Hub`. Класс `Hub` содержит свойства и события для управления подключениями и группами, а также отправки и получения данных для клиентов.
 
 4. Добавьте в класс метод `SendMessage`. Метод `SendMessage` отправляет сообщение всем подключенным клиентам чата. Заметьте, что он возвращает [Task](/dotnet/api/system.threading.tasks.task), так как SignalR является асинхронным. Асинхронный код лучше масштабируется.
 
-   [!code-csharp[Startup](signalr/sample/Hubs/ChatHub.cs?range=6-12)]
+   [!code-csharp[Startup](signalr/sample/Hubs/ChatHub.cs)]
 
 -----
 

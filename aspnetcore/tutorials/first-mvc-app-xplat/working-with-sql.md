@@ -1,16 +1,16 @@
 ---
-title: Работа с SQLite
+title: Работа с SQLite в приложении MVC ASP.NET Core
 author: rick-anderson
 description: Использование SQLite с простым приложением MVC
 ms.author: riande
 ms.date: 04/07/2017
 uid: tutorials/first-mvc-app-xplat/working-with-sql
-ms.openlocfilehash: 34cb64e21d8d9b25daeca827a8bed3e2d17ba3ae
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 660cd8bf4573bc2423c149dae224ce4f74455219
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279107"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960727"
 ---
 [!INCLUDE [adding-model](../../includes/mvc-intro/sql.md)]
 

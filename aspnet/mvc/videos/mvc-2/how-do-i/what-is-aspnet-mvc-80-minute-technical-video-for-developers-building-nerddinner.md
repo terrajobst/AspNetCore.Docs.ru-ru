@@ -1,31 +1,30 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/what-is-aspnet-mvc-80-minute-technical-video-for-developers-building-nerddinner
-title: Новые возможности ASP.NET MVC 80 минуту технические видео для разработчиков и обновление NerdDinner | Документы Microsoft
+title: Что такое ASP.NET MVC? Технический видеоролик 80 минут для разработчиков, создающих приложение NerdDinner | Документация Майкрософт
 author: robconery
-description: Подробное руководство по созданию приложения с ASP.NET MVC. В этом видео мы создаем основные проблемы Nerddinner.com и обложки, такие как модульное тестирование...
+description: Подробное руководство по созданию приложения с ASP.NET MVC. В этом видео мы создаем основы Nerddinner.com и расскажем проблемы, такие как модульное тестирование...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/21/2009
 ms.topic: article
 ms.assetid: a9f317b0-28c3-4838-bae0-cfa5ed5b3110
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/what-is-aspnet-mvc-80-minute-technical-video-for-developers-building-nerddinner
 msc.type: video
-ms.openlocfilehash: 32a2f1c53ad2dcefbccd0d0a505c33f62a24f1f8
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 19021e51cffa62a70edc0baa26a61f5d34598707
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30868182"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37369189"
 ---
-<a name="what-is-aspnet-mvc-80-minute-technical-video-for-developers-building-nerddinner"></a>Новые возможности ASP.NET MVC 80 минуту технические видео для разработчиков и обновление NerdDinner
+<a name="what-is-aspnet-mvc-80-minute-technical-video-for-developers-building-nerddinner"></a>Что такое ASP.NET MVC? Технический видеоролик 80 минут для разработчиков, создающих приложение NerdDinner
 ====================
-по [ток Conery](https://github.com/robconery)
+по [Роб Conery](https://github.com/robconery)
 
-Подробное руководство по созданию приложения с ASP.NET MVC. В этом видео мы создаем основы Nerddinner.com и обложки проблем, таких как модульное тестирование Javascript (с помощью jQuery) и как использовать новые возможности средств для Visual Studio 2008, установленные с помощью шаблонов проектов ASP.NET MVC.
+Подробное руководство по созданию приложения с ASP.NET MVC. В этом видео мы создаем основы Nerddinner.com и охватывают вопросы Unit Testing, Javascript (с помощью jQuery) и способы использования новых возможностей инструментов для Visual Studio 2008 которые устанавливаются с помощью шаблонов проекта ASP.NET MVC.
 
-[&#9654;Посмотрите видео (80 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/what-is-aspnet-mvc-80-minute-technical-video-for-developers-building-nerddinner)
+[&#9654;Просмотрите видео (80 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/what-is-aspnet-mvc-80-minute-technical-video-for-developers-building-nerddinner)
 
 > [!div class="step-by-step"]
 > [Назад](displaying-a-table-of-database-data.md)

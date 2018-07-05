@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-9
-title: Добавление нового элемента в базе данных | Документы Microsoft
+title: Добавить новый элемент в базу данных | Документация Майкрософт
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
@@ -9,27 +9,26 @@ ms.date: 06/16/2014
 ms.topic: article
 ms.assetid: 0967c29e-e124-4db0-a788-c45d0ff5aff2
 ms.technology: dotnet-webapi
-ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-9
 msc.type: authoredcontent
-ms.openlocfilehash: 5845c092c4d7aee12b33b3f0a49c0e944c0fb9aa
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: b1f7935c70efcc3ee486e76fc356ff43716632dd
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30868377"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37368881"
 ---
-<a name="add-a-new-item-to-the-database"></a>Добавление нового элемента в базе данных
+<a name="add-a-new-item-to-the-database"></a>Добавить новый элемент в базу данных
 ====================
-по [Mike Wasson](https://github.com/MikeWasson)
+по [Майк Уоссон](https://github.com/MikeWasson)
 
-[Загрузка завершенного проекта](https://github.com/MikeWasson/BookService)
+[Скачать завершенный проект](https://github.com/MikeWasson/BookService)
 
-В этом разделе будет добавлена возможность для пользователей создать новую книгу. В файле app.js добавьте следующий код для модели представления:
+В этом разделе вы добавите возможность для пользователей создать новую книгу. В файле app.js добавьте следующий код для модели представления:
 
 [!code-javascript[Main](part-9/samples/sample1.js)]
 
-В Index.cshtml Замените следующую разметку:
+В файле Index.cshtml Замените следующую разметку:
 
 [!code-html[Main](part-9/samples/sample2.html)]
 
@@ -37,13 +36,13 @@ ms.locfileid: "30868377"
 
 [!code-html[Main](part-9/samples/sample3.html)]
 
-Эта разметка создает формы для отправки нового автора. Значения для списка автор привязаны к `authors` наблюдаемый в модели представления. Форма входов значения привязаны к `newBook` свойство модели представления.
+Эта разметка создает формы для отправки нового автора. Значения для раскрывающегося списка автор привязаны к `authors` наблюдаемые в модели представления. Для других формы ввода данных, значения привязаны к `newBook` свойство модели представления.
 
-Обработчик отправки формы привязан к `addBook` функции:
+Обработчик события submit в форме привязан к `addBook` функции:
 
 [!code-html[Main](part-9/samples/sample4.html)]
 
-`addBook` Функция считывает текущие значения входных данных формы с привязкой к данным для создания объекта JSON. Затем он отправляет объект JSON для `/api/books`.
+`addBook` Функция считывает текущие значения входных параметров формы с привязкой к данным для создания объекта JSON. Затем она отправляет объект JSON для `/api/books`.
 
 > [!div class="step-by-step"]
 > [Назад](part-8.md)

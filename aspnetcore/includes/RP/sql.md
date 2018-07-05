@@ -1,4 +1,4 @@
-# <a name="working-with-sqlite-in-and-razor-pages"></a>Работа с SQLite и Razor Pages
+# <a name="work-with-sqlite-in-an-aspnet-core-razor-pages-app"></a>Работа с SQLite в приложении Razor Pages ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 

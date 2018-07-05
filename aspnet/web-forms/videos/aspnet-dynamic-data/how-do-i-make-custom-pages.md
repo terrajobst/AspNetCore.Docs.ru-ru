@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/how-do-i-make-custom-pages
-title: Как сделать настраиваемые страницы | Документы Майкрософт
+title: Как сделать пользовательские страницы? | Документы Майкрософт
 author: shanselman
-description: На этом занятии вы узнаете, как для настраиваемой страницы для некоторых таблиц, в то время, как другие страницы используют стандартные функциональные возможности.
+description: В этом видео вы узнаете, как осуществлять пользовательской страницы для некоторых таблиц, а другие страницы в стандартных функциональных возможностей.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/08/2008
 ms.topic: article
 ms.assetid: f2b20119-abf4-4e78-9c47-adf563ad174c
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-do-i-make-custom-pages
 msc.type: video
-ms.openlocfilehash: e06fa9bdd6e1f6ff84d73cb5b1a544f4af3d1737
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 6cd88208b0bcbb0956f0dd69501f9302566df724
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30884253"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37380653"
 ---
-<a name="how-do-i-make-custom-pages"></a>Как сделать настраиваемые страницы
+<a name="how-do-i-make-custom-pages"></a>Как сделать пользовательские страницы?
 ====================
-по [Скотт Хансельман](https://github.com/shanselman)
+по [(Scott hanselman)](https://github.com/shanselman)
 
-На этом занятии вы узнаете, как для настраиваемой страницы для некоторых таблиц, в то время, как другие страницы используют стандартные функциональные возможности.
+В этом видео вы узнаете, как осуществлять пользовательской страницы для некоторых таблиц, а другие страницы в стандартных функциональных возможностей.
 
-[&#9654;Посмотрите видео (5 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-custom-pages)
+[&#9654;Просмотрите видео (5 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-custom-pages)
 
 > [!div class="step-by-step"]
 > [Назад](how-do-i-handle-business-logic-exceptions.md)

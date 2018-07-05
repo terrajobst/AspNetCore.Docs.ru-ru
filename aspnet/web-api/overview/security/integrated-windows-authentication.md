@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/security/integrated-windows-authentication
-title: Встроенная проверка подлинности Windows | Документы Microsoft
+title: Встроенная проверка подлинности Windows | Документация Майкрософт
 author: MikeWasson
 description: Описывает использование встроенной проверки подлинности Windows в ASP.NET Web API.
 ms.author: aspnetcontent
@@ -9,36 +9,35 @@ ms.date: 12/18/2012
 ms.topic: article
 ms.assetid: 71ee4c78-c500-4d1c-b761-b4e161a291b5
 ms.technology: dotnet-webapi
-ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/integrated-windows-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: bf5f55d98d61cdfdd246a847f41a6f1c65f00bfc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f11b9fe5d98118a252c6c00dd2997b2ee9a3da7a
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26508163"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37381607"
 ---
-<a name="integrated-windows-authentication"></a>Встроенная проверка подлинности Windows
+<a name="integrated-windows-authentication"></a>Проверка подлинности встроенная Windows
 ====================
-по [Mike Wasson](https://github.com/MikeWasson)
+по [Майк Уоссон](https://github.com/MikeWasson)
 
-Встроенная проверка подлинности Windows пользователи могут ввести свои учетные данные Windows, с помощью Kerberos или NTLM. Клиент отправляет учетные данные в заголовок авторизации. Проверка подлинности Windows наилучшим образом подходит для среды интрасети. Дополнительные сведения см. в разделе [проверки подлинности Windows](https://www.iis.net/configreference/system.webserver/security/authentication/windowsauthentication).
+Встроенная проверка подлинности Windows позволяет пользователям войти, используя свои учетные данные Windows, с помощью Kerberos или NTLM. Клиент отправляет учетные данные в заголовке авторизации. Проверка подлинности Windows лучше всего подходит для среды интрасети. Дополнительные сведения см. в разделе [проверки подлинности Windows](https://www.iis.net/configreference/system.webserver/security/authentication/windowsauthentication).
 
 | Преимущества | Недостатки |
 | --- | --- |
-| -Встроены в IIS. -Не отправляет учетные данные пользователя в запросе. — Если клиентский компьютер принадлежит домену (например, приложение интрасети), пользователю необходимо ввести учетные данные. | -Не рекомендуется для веб-приложений. -Требует поддержки Kerberos или NTLM в клиенте. -Клиент должен находиться в домене Active Directory. |
+| -Встроены в IIS. -Не отправляет учетные данные пользователя в запросе. — Если клиентский компьютер принадлежит к домену (например, приложение интрасети), пользователю не нужно вводить учетные данные. | -Не рекомендуется для Интернет-приложений. — Требует поддержки Kerberos или NTLM в клиенте. -Клиент должен находиться в домене Active Directory. |
 
 > [!NOTE]
-> Если приложение размещено в Azure и локального домена Active Directory, рассмотрите возможность федерацию в локальной AD с Azure Active Directory. Таким образом, пользователи могут входить с использованием их учетных данных локальной, но будет выполняться проверка подлинности Azure AD. Дополнительные сведения см. в разделе [проверки подлинности Azure](../../../visual-studio/overview/2012/windows-azure-authentication.md).
+> Если приложение размещено в Azure, и у вас есть домен Active Directory на предприятии, рассмотрите возможность федерации в локальной AD с Azure Active Directory. Таким образом, пользователи могут входить с использованием учетных данных на предприятии, но выполняется проверка подлинности с помощью Azure AD. Дополнительные сведения см. в разделе [проверки подлинности Azure](../../../visual-studio/overview/2012/windows-azure-authentication.md).
 
 
-Чтобы создать приложение, использующее встроенную проверку подлинности Windows, выберите шаблон «Приложение интрасети» в мастере проектов MVC 4. Этот шаблон проекта используется следующий параметр в файле Web.config:
+Чтобы создать приложение, использующее Windows интегрированной проверки подлинности, выберите шаблон «Приложение интрасети» в мастере проектов MVC 4. Этот шаблон проекта помещает следующий параметр в файле Web.config:
 
 [!code-xml[Main](integrated-windows-authentication/samples/sample1.xml)]
 
-На стороне клиента, встроенная проверка подлинности Windows работает с любого браузера, поддерживающего [Negotiate](http://www.ietf.org/rfc/rfc4559.txt) схему проверки подлинности, которая содержит большинство основных браузеров. Для клиентских приложений .NET **HttpClient** класс поддерживает проверку подлинности Windows:
+На стороне клиента, проверки подлинности встроенная Windows работает с помощью любого браузера, поддерживающего [Negotiate](http://www.ietf.org/rfc/rfc4559.txt) схему проверки подлинности, которая включает в себя большинства популярных браузеров. Для клиентских приложений .NET **HttpClient** класс поддерживает проверку подлинности Windows:
 
 [!code-csharp[Main](integrated-windows-authentication/samples/sample2.cs)]
 
-Проверка подлинности Windows является уязвимым для атак с подделкой (CSRF) запросов между сайтами. В разделе [атак подделки межсайтовых запросов](preventing-cross-site-request-forgery-csrf-attacks.md).
+Проверка подлинности Windows является уязвимым для атак с подделкой межсайтовых. См. в разделе [атак с подделкой межсайтовых запросов](preventing-cross-site-request-forgery-csrf-attacks.md).

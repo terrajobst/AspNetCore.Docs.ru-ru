@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/09/2018
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: 06d3f097cd93ceb2a23b9f6516a9b7a1f3ca3089
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 8e2693397f826d0e9a36ff52aa1d1d623b31043d
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273677"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960831"
 ---
 # <a name="aspnet-core-directory-structure"></a>Структура каталогов ASP.NET Core
 
@@ -22,8 +22,8 @@ ms.locfileid: "36273677"
 
 | Тип приложения | Структура каталогов |
 | -------- | ------------------- |
-| [Развертывание, зависящее от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd) | <ul><li>publish&dagger;<ul><li>logs&dagger; (необязательно, если не требуется для получения журналов stdout)</li><li>Views&dagger; (в приложениях MVC, если представления не компилируются заранее)</li><li>Pages&dagger; (в приложениях MVC или Razor Pages, если страницы не компилируются заранее)</li><li>wwwroot&dagger;</li><li>*\.DLL-файлы</li><li>\<имя_сборки>.deps.json</li><li>\<имя_сборки>.dll</li><li>\<имя_сборки>.pdb</li><li>\<имя_сборки>.PrecompiledViews.dll</li><li>\<имя_сборки>.PrecompiledViews.pdb</li><li>\<имя_сборки>.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li></ul></li></ul> |
-| [Автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>logs&dagger; (необязательно, если не требуется для получения журналов stdout)</li><li>refs&dagger;</li><li>Views&dagger; (в приложениях MVC, если представления не компилируются заранее)</li><li>Pages&dagger; (в приложениях MVC или Razor Pages, если страницы не компилируются заранее)</li><li>wwwroot&dagger;</li><li>\*DLL-файлы</li><li>\<имя_сборки>.deps.json</li><li>\<имя_сборки>.exe</li><li>\<имя_сборки>.pdb</li><li>\<имя_сборки>.PrecompiledViews.dll</li><li>\<имя_сборки>.PrecompiledViews.pdb</li><li>\<имя_сборки>.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li></ul></li></ul> |
+| [Развертывание, зависящее от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd) | <ul><li>publish&dagger;<ul><li>Logs&dagger; (необязательно, если не требуется для получения журналов stdout)</li><li>Views&dagger; (в приложениях MVC, если представления не компилируются заранее)</li><li>Pages&dagger; (в приложениях MVC или Razor Pages, если страницы не компилируются заранее)</li><li>wwwroot&dagger;</li><li>*\.DLL-файлы</li><li>\<имя_сборки>.deps.json</li><li>\<имя_сборки>.dll</li><li>\<имя_сборки>.pdb</li><li>\<имя_сборки>.PrecompiledViews.dll</li><li>\<имя_сборки>.PrecompiledViews.pdb</li><li>\<имя_сборки>.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li></ul></li></ul> |
+| [Автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Logs&dagger; (необязательно, если не требуется для получения журналов stdout)</li><li>refs&dagger;</li><li>Views&dagger; (в приложениях MVC, если представления не компилируются заранее)</li><li>Pages&dagger; (в приложениях MVC или Razor Pages, если страницы не компилируются заранее)</li><li>wwwroot&dagger;</li><li>\*DLL-файлы</li><li>\<имя_сборки>.deps.json</li><li>\<имя_сборки>.exe</li><li>\<имя_сборки>.pdb</li><li>\<имя_сборки>.PrecompiledViews.dll</li><li>\<имя_сборки>.PrecompiledViews.pdb</li><li>\<имя_сборки>.runtimeconfig.json</li><li>web.config (в развертываниях IIS)</li></ul></li></ul> |
 
 &dagger;Обозначает каталог
 
@@ -31,7 +31,7 @@ ms.locfileid: "36273677"
 
 Каталог *wwwroot*, если таковой имеется, содержит только статические активы.
 
-Каталог *logs* для журналов stdout можно создать для развертывания одним из следующих двух методов.
+Каталог *Logs* для журналов stdout можно создать для развертывания одним из следующих двух методов:
 
 * Добавьте в файл проекта элемент `<Target>` следующего содержания:
 

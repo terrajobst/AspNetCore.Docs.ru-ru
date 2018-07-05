@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/how-do-i-change-how-my-fields-render
-title: Изменение поля my подготовки к просмотру | Документы Майкрософт
+title: Изменение отрисовки полей? | Документы Майкрософт
 author: shanselman
-description: В этом видеоролике показано, как изменить способ отображения поля данных. Чтобы подключить их в элементах управления сторонних разработчиков для некоторых полей.
+description: В этом видео вы узнаете, как изменить способ визуализации полей данных. Вы подключите в сторонние элементы управления для некоторых полей.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/08/2008
 ms.topic: article
 ms.assetid: f99da654-2148-4e66-867c-6e837b84e9d0
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-do-i-change-how-my-fields-render
 msc.type: video
-ms.openlocfilehash: 57529627d54d5fc8d4db50b1d5b254e8811321e5
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 09c602f5a5de015e195731fb4f59082417892c74
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30882368"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37372917"
 ---
-<a name="how-do-i-change-how-my-fields-render"></a>Изменение поля my подготовки к просмотру
+<a name="how-do-i-change-how-my-fields-render"></a>Изменение отрисовки полей?
 ====================
-по [Скотт Хансельман](https://github.com/shanselman)
+по [(Scott hanselman)](https://github.com/shanselman)
 
-В этом видеоролике показано, как изменить способ отображения поля данных. Чтобы подключить их в элементах управления сторонних разработчиков для некоторых полей.
+В этом видео вы узнаете, как изменить способ визуализации полей данных. Вы подключите в сторонние элементы управления для некоторых полей.
 
-[&#9654;Посмотрите видео (13 мин.)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-change-how-my-fields-render)
+[&#9654;Просмотрите видео (13 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-change-how-my-fields-render)
 
 > [!div class="step-by-step"]
 > [Назад](how-do-i-enable-inline-gridview-editing.md)

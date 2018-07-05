@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-validate/cdnjqueryvalidate1170
-title: jQuery проверки 1.17.0 | Документы Microsoft
+title: jQuery Validation 1.17.0 | Документация Майкрософт
 author: guardrex
 description: ''
 ms.author: aspnetcontent
@@ -9,22 +9,21 @@ ms.date: 10/14/2017
 ms.topic: article
 ms.assetid: f038f3d6-daad-43de-8514-d2483c7e6609
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-validate/cdnjqueryvalidate1170
 msc.type: content
-ms.openlocfilehash: c2bb42e37d1869a8271d019845bb62330d26ed7c
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: e4edbd2b4905a55f022b0d515956ae8999f8036b
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30073038"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37367219"
 ---
-<a name="jquery-validation-1170"></a>jQuery проверки 1.17.0
+<a name="jquery-validation-1170"></a>jQuery Validation 1.17.0
 ====================
-Следующие файлы размещаются в CDN:
+Следующие файлы размещаются в сети доставки Содержимого:
 
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/additional-methods.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/additional-methods.min.js
-- Файлы локализации https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/localization/messages \_## .js где ## loc код.
+- Файлы локализации https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/localization/messages\_##.js где ## — loc код.

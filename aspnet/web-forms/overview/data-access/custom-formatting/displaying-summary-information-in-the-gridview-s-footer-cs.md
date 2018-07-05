@@ -1,151 +1,150 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-cs
-title: Отображение сводки в нижнем колонтитуле GridView (C#) | Документы Microsoft
+title: Отображение сводной информации в нижнем колонтитуле элемента GridView (C#) | Документация Майкрософт
 author: rick-anderson
-description: Сводная информация часто отображается в нижней части отчета в строки итогов. Элемент управления GridView может включать строкой нижнего колонтитула, в которых ячейки, мы можем pr...
+description: Сводная информация часто отображается в нижней части отчета в строке сводки. Элемент управления GridView может включать строку нижнего колонтитула, в которых ячейки, мы можем запроса на Вытягивание...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
 ms.topic: article
 ms.assetid: d50edc31-9286-4c6a-8635-be09e72752a4
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3bb00a41bee86090f71d6315d73037cd41b2c621
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 752a37f231f746573ad84d05677365216eaa48b7
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30877428"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37368357"
 ---
-<a name="displaying-summary-information-in-the-gridviews-footer-c"></a>Отображение сводки в нижнем колонтитуле GridView (C#)
+<a name="displaying-summary-information-in-the-gridviews-footer-c"></a>Отображение сводной информации в нижнем колонтитуле элемента GridView (C#)
 ====================
 по [Скотт Митчелл](https://twitter.com/ScottOnWriting)
 
-[Загрузить пример приложения](http://download.microsoft.com/download/9/6/9/969e5c94-dfb6-4e47-9570-d6d9e704c3c1/ASPNET_Data_Tutorial_15_CS.exe) или [скачать PDF](displaying-summary-information-in-the-gridview-s-footer-cs/_static/datatutorial15cs1.pdf)
+[Скачайте пример приложения](http://download.microsoft.com/download/9/6/9/969e5c94-dfb6-4e47-9570-d6d9e704c3c1/ASPNET_Data_Tutorial_15_CS.exe) или [скачать PDF](displaying-summary-information-in-the-gridview-s-footer-cs/_static/datatutorial15cs1.pdf)
 
-> Сводная информация часто отображается в нижней части отчета в строки итогов. Элемент управления GridView может включать строкой нижнего колонтитула, в которых ячейки мы программным путем вставки статистической обработки данных. В этом учебнике будет показано, как для отображения сводных данных в этой строке нижнего колонтитула.
+> Сводная информация часто отображается в нижней части отчета в строке сводки. Элемент управления GridView может включать строку нижнего колонтитула в ячейки которого мы программно внедрить статистической обработки данных. В этом руководстве будет показано, как для отображения сводных данных в этой строке нижнего колонтитула.
 
 
 ## <a name="introduction"></a>Вступление
 
-Помимо просмотра каждого цены продуктов, единиц на складе, единицы заказа и переупорядочить уровни, пользователь может также быть интересны статистические сведения, такие как среднюю цену, общее число единиц на складе и так далее. Такие сводные данные часто отображается в нижней части отчета в строки итогов. Элемент управления GridView может включать строкой нижнего колонтитула, в которых ячейки мы программным путем вставки статистической обработки данных.
+Помимо отображения каждого из продуктов цены, единиц на складе, заказанных единиц для изменения порядка уровней и порядок, пользователь может также заинтересовать статистические сведения, такие как средняя цена, общее количество единиц на складе и так далее. Такие сведения часто отображается в нижней части отчета в строке сводки. Элемент управления GridView может включать строку нижнего колонтитула в ячейки которого мы программно внедрить статистической обработки данных.
 
 Эта задача дает нам три проблемы:
 
-1. Настройка GridView для отображения его строкой нижнего колонтитула
-2. Определение сводных данных; то есть как мы вычислений выполните среднюю цену или общее количество единиц на складе?
-3. Добавление сводных данных в соответствующие ячейки в строке нижнего колонтитула
+1. Настройка для отображения его строку нижнего колонтитула GridView
+2. Определение сводных данных; то есть как мы вычисляет среднюю цену или общее количество единиц на складе?
+3. Добавление сводных данных в соответствующие ячейки таблицы строки нижнего колонтитула
 
-В этом учебнике будет показано, как преодолеть эти трудности. В частности мы создадим страница, на которой перечислены категории в раскрывающемся списке с выбранной категории продуктов, отображаемый в GridView. GridView будет включать строку нижнего колонтитула, отображает среднюю цену и общее число единиц на складе, а также на порядок продуктов в этой категории.
+В этом руководстве будет показано, как преодолеть эти трудности. В частности мы создадим страницу со списком категорий в раскрывающемся списке с продуктами выбранной категории, отображаемый в GridView. GridView будет включать строку нижнего колонтитула, отображает среднюю цену и общее количество единиц на складе, а также на порядок продуктов в этой категории.
 
 
 [![Сводная информация отображается в строке нижнего колонтитула GridView](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image2.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image1.png)
 
-**Рис. 1**: Сводка информация отображается в строке нижнего колонтитула GridView ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image3.png))
+**Рис. 1**: сведения о отображается в строке нижнего колонтитула GridView ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image3.png))
 
 
-Этот учебник, с его категория продуктов интерфейс главного и подчиненного представлений, основан на вопросы, рассмотренные в предыдущем [иерархического фильтрации с DropDownList](../masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md) учебника. Если вы еще не работали в более ранних по, сделайте это перед продолжением работы с этим параметром.
+Этот учебник, с его категории продуктов «основной/подробности» интерфейс, основан на понятия, описанные в предыдущих ["основной/подробности" Фильтрация с помощью элемента управления DropDownList](../masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md) руководства. Если вы еще не работали с более ранней руководством, сделайте это перед продолжением работы с данным элементом.
 
-## <a name="step-1-adding-the-categories-dropdownlist-and-products-gridview"></a>Шаг 1: Добавление DropDownList категорий и продуктов GridView
+## <a name="step-1-adding-the-categories-dropdownlist-and-products-gridview"></a>Шаг 1: Добавление элемента управления DropDownList категорий и GridView для продуктов
 
-Перед с добавлением нижний колонтитул элемента GridView сводные сведения, касающиеся сами, давайте сначала просто для построения иерархического отчета. После завершения первого шага мы рассмотрим способ включения сводных данных.
+Прежде чем добавить сводные данные для нижнего колонтитула GridView, касающиеся сами, давайте сначала просто построить отчет «основной/подробности». Когда мы изучили этот первый шаг, мы рассмотрим способ включения сводных данных.
 
-Сначала откройте `SummaryDataInFooter.aspx` страницы в `CustomFormatting` папки. Добавьте элемент управления DropDownList и задайте его `ID` для `Categories`. Далее, щелкните ссылку в смарт-теге DropDownList Выбор источника данных и по желанию добавьте новый элемент управления ObjectDataSource с именем `CategoriesDataSource` , вызывающий `CategoriesBLL` класса `GetCategories()` метод.
-
-
-[![Добавить новый элемент управления ObjectDataSource CategoriesDataSource с именем](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image5.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image4.png)
-
-**На рисунке 2**: добавить новый элемент управления ObjectDataSource с именем `CategoriesDataSource` ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image6.png))
+Сначала откройте `SummaryDataInFooter.aspx` странице в `CustomFormatting` папку. Добавьте элемент управления DropDownList и задайте его `ID` для `Categories`. Затем щелкните ссылку выберите источник данных смарт-теге DropDownList и необязательно, чтобы добавить новый ObjectDataSource, именуемый `CategoriesDataSource` , вызывающий `CategoriesBLL` класса `GetCategories()` метод.
 
 
-[![Иметь ObjectDataSource вызвать метод GetCategories() класса CategoriesBLL](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image8.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image7.png)
+[![Добавьте новый ObjectDataSource, именуемый CategoriesDataSource](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image5.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image4.png)
 
-**Рис. 3**: У вызова ObjectDataSource `CategoriesBLL` класса `GetCategories()` метод ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image9.png))
-
-
-После настройки ObjectDataSource, этот мастер возвращает нам конфигурации источника данных DropDownList, мастер, из которого необходимо указать значение поля данных должны отображаться и какой из них должен соответствовать значению DropDownList `ListItem` s. У `CategoryName` поле отображаются и использование `CategoryID` как значение.
+**Рис. 2**: добавьте новый ObjectDataSource с именем `CategoriesDataSource` ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image6.png))
 
 
-[![Используйте поля CategoryID и CategoryName как текст, а значение для элементов ListItem, соответственно](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image11.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image10.png)
+[![У элемента управления ObjectDataSource вызова метода GetCategories() класса categoriesbll](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image8.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image7.png)
 
-**Рис. 4**: использование `CategoryName` и `CategoryID` полей `Text` и `Value` для `ListItem` s, соответственно ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image12.png))
-
-
-На этом этапе у нас есть DropDownList (`Categories`), в которой перечислены категории в системе. Теперь необходимо добавить GridView, в которой перечислены продукты, относящиеся к выбранной категории. Прежде чем мы делаем, однако теперь пора флажок Включить AutoPostBack в DropDownList смарт-тега. Как было сказано в *иерархического фильтрации с DropDownList* учебник, установив DropDownList `AutoPostBack` свойства `true` страницы будут публиковаться обратно при каждом изменении значения DropDownList. Это приведет к GridView к обновлению, показывающая те продукты, для новой выбранной категории. Если `AutoPostBack` свойству `false` (по умолчанию), изменение категории не вызывает обратную передачу и поэтому не будет обновлять перечисленных продуктов.
+**Рис. 3**: иметь элемент управления ObjectDataSource вызывает `CategoriesBLL` класса `GetCategories()` метод ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image9.png))
 
 
-[![Установите флажок Enable AutoPostBack в DropDownList смарт-тег](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image14.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image13.png)
-
-**Рис. 5**: установите флажок "Включить" AutoPostBack в DropDownList смарт-тег ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image15.png))
+После настройки ObjectDataSource, этот мастер возвращает нам конфигурации источника данных элемента управления DropDownList, мастер, из которого необходимо указать значение поля данных должны отображаться и какой из них должен соответствовать значению DropDownList `ListItem` s. У `CategoryName` поле, отображаемое и использование `CategoryID` как значение.
 
 
-Добавление элемента управления GridView к странице для отображения продуктов для выбранной категории. Присвоить свойству `ID` для `ProductsInCategory` и привязать его к новой ObjectDataSource с именем `ProductsInCategoryDataSource`.
+[![Используйте поля CategoryID и CategoryName текста и значения для элементов ListItem, соответственно](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image11.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image10.png)
+
+**Рис. 4**: использование `CategoryName` и `CategoryID` полей `Text` и `Value` для `ListItem` s, соответственно ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image12.png))
 
 
-[![Добавить новый элемент управления ObjectDataSource ProductsInCategoryDataSource с именем](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image17.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image16.png)
-
-**Рис. 6**: добавить новый элемент управления ObjectDataSource с именем `ProductsInCategoryDataSource` ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image18.png))
+На этом этапе у нас есть элемента управления DropDownList (`Categories`), содержащая список категорий в системе. Теперь нам нужно добавить элемент GridView со списком продуктов, принадлежащих выбранной категории. Сначала, однако Отвлекитесь и установите флажок Включить AutoPostBack в смарт-тега DropDownList. Как уже говорилось в *"основной/подробности" Фильтрация с помощью элемента управления DropDownList* учебника, задав DropDownList `AutoPostBack` свойства `true` страницы будут передаваться обратно при каждом изменении значения элемента управления DropDownList. Это приведет к GridView к обновлению, с этими продуктами для новой выбранной категории. Если `AutoPostBack` свойству `false` (по умолчанию), изменение категории не вызывает обратную передачу и таким образом, не обновляются продукты.
 
 
-Настройте элемент управления ObjectDataSource таким образом, чтобы он вызывает `ProductsBLL` класса `GetProductsByCategoryID(categoryID)` метод.
+[![Установите флажок Enable AutoPostBack в смарт-тега DropDownList](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image14.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image13.png)
+
+**Рис. 5**: установите флажок "Включить" AutoPostBack в смарт-теге DropDownList ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image15.png))
 
 
-[![Вызовите метод GetProductsByCategoryID(categoryID) ObjectDataSource имеют](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image20.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image19.png)
-
-**Рис. 7**: У вызова ObjectDataSource `GetProductsByCategoryID(categoryID)` метод ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image21.png))
+Добавление элемента управления GridView на страницу для отображения продуктов для выбранной категории. Значение элемента GridView `ID` для `ProductsInCategory` и привязать его к элементу управления ObjectDataSource с именем `ProductsInCategoryDataSource`.
 
 
-Поскольку `GetProductsByCategoryID(categoryID)` метод принимает входной параметр, на последнем шаге мастера можно указать источник значения параметра. Чтобы отобразить эти продукты из выбранной категории, имеют параметр, полученных с `Categories` DropDownList.
+[![Добавьте новый ObjectDataSource, именуемый ProductsInCategoryDataSource](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image17.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image16.png)
+
+**Рис. 6**: добавьте новый ObjectDataSource с именем `ProductsInCategoryDataSource` ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image18.png))
 
 
-[![Получение categoryID значение параметра из DropDownList выбранных категорий](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image23.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image22.png)
-
-**Рис. 8**: получение *`categoryID`* значение параметра в выпадающем выбранной категории ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image24.png))
+Настройте элемент управления ObjectDataSource, таким образом, чтобы он вызывает `ProductsBLL` класса `GetProductsByCategoryID(categoryID)` метод.
 
 
-После завершения мастера GridView будет иметь поле BoundField для каждого свойства продукта. Давайте очистить, чтобы только эти стояли `ProductName`, `UnitPrice`, `UnitsInStock`, и `UnitsOnOrder` стояли отображаются. Вы можете добавить все параметры уровня полей оставшиеся стояли (таких как формат `UnitPrice` как денежная единица). После внесения этих изменений, GridView должна выглядеть следующим образом:
+[![У элемента управления ObjectDataSource вызвать метод GetProductsByCategoryID(categoryID)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image20.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image19.png)
+
+**Рис. 7**: иметь элемент управления ObjectDataSource вызывает `GetProductsByCategoryID(categoryID)` метод ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image21.png))
+
+
+Так как `GetProductsByCategoryID(categoryID)` метод принимает входной параметр, на последнем шаге мастера можно указать источник значения параметра. Для отображения этих продуктов выбранной категории, имеют параметр, извлеченных из `Categories` DropDownList.
+
+
+[![Получение categoryID значение параметра из выбранной категории DropDownList](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image23.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image22.png)
+
+**Рис. 8**: получение *`categoryID`* значение параметра из выбранной категории DropDownList ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image24.png))
+
+
+После завершения работы мастера GridView будет иметь BoundField для каждого из свойств продукта. Давайте очистки, чтобы только эти поля BoundField `ProductName`, `UnitPrice`, `UnitsInStock`, и `UnitsOnOrder` отображаются поля BoundFields. Вы можете добавить любые параметры на уровне полей для оставшихся полей BoundFields (например при форматировании `UnitPrice` как денежная единица). После внесения этих изменений декларативная разметка GridView должен выглядеть следующим образом:
 
 
 [!code-aspx[Main](displaying-summary-information-in-the-gridview-s-footer-cs/samples/sample1.aspx)]
 
-На этом этапе у нас есть полнофункциональной главного и подчиненного представлений отчета, отображающего имя, цену за единицу, единиц на складе и единиц заказа для этих продуктов, которые принадлежат выбранной категории.
+На этом этапе у нас есть полнофункционального отчета «основной/подробности» в которой отображается имя, цена за единицу, единиц на складе и единицы измерения для этих продуктов, принадлежащих выбранной категории.
 
 
-[![Получение categoryID значение параметра из DropDownList выбранных категорий](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image26.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image25.png)
+[![Получение categoryID значение параметра из выбранной категории DropDownList](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image26.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image25.png)
 
-**Рис. 9**: получение *`categoryID`* значение параметра в выпадающем выбранной категории ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image27.png))
-
-
-## <a name="step-2-displaying-a-footer-in-the-gridview"></a>Шаг 2: Отображение нижнего колонтитула в GridView
-
-Элемент управления GridView можно отобразить строки верхний и нижний колонтитул. Эти строки отображаются в зависимости от значения `ShowHeader` и `ShowFooter` свойства, соответственно, с `ShowHeader` по умолчанию принимается `true` и `ShowFooter` для `false`. Чтобы включить нижний колонтитул в GridView, просто установите его `ShowFooter` свойства `true`.
+**Рис. 9**: получение *`categoryID`* значение параметра из выбранной категории DropDownList ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image27.png))
 
 
-[![GridView ShowFooter свойство имеет значение true](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image29.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image28.png)
+## <a name="step-2-displaying-a-footer-in-the-gridview"></a>Шаг 2: Отображение нижний колонтитул в GridView
 
-**Рис. 10**: присвоить свойству `ShowFooter` свойства `true` ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image30.png))
-
-
-В строке нижнего колонтитула имеет ячейку для каждого из полей, определенных в GridView; Тем не менее эти ячейки являются пустыми по умолчанию. Теперь пора просмотрите ход работы в браузере. С `ShowFooter` свойство `true`, GridView включает пустая строка.
+Элемент управления GridView может отображать строки нижнего колонтитула и заголовка. Эти строки отображаются в зависимости от значения `ShowHeader` и `ShowFooter` свойства, соответственно, с помощью `ShowHeader` по умолчанию принимается `true` и `ShowFooter` для `false`. Чтобы включить нижний колонтитул в GridView, просто установите для его `ShowFooter` свойства `true`.
 
 
-[![Теперь GridView включает строку нижнего колонтитула](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image32.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image31.png)
+[![Свойства элемента GridView ShowFooter задано значение true](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image29.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image28.png)
 
-**Рис. 11**: GridView теперь включает строку нижнего колонтитула ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image33.png))
+**Рис. 10**: присвоить свойству `ShowFooter` свойства `true` ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image30.png))
 
 
-Строки нижнего колонтитула на рис. 11 не выделялись, как с белым фоном. Давайте создадим `FooterStyle` класса CSS в `Styles.css` , указывающий Темно-красный фон и затем настройте `GridView.skin` файл обложки в `DataWebControls` тему, чтобы назначить этот класс CSS в GridView `FooterStyle`в `CssClass` свойство. Если вам нужно подтянуть свои навыки в обложки и темы, обращаться к [отображение данных с ObjectDataSource](../basic-reporting/displaying-data-with-the-objectdatasource-cs.md) учебника.
+Строки нижнего колонтитула содержит ячейку для каждого из полей, определенных в GridView; Тем не менее эти ячейки являются пустыми по умолчанию. Отвлекитесь и просмотрите ход работы в браузере. С помощью `ShowFooter` свойство `true`, GridView включает пустая строка.
 
-Начните с добавления следующий класс CSS для `Styles.css`:
+
+[![GridView теперь включает в себя строку нижнего колонтитула](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image32.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image31.png)
+
+**Рис. 11**: GridView теперь включает строку нижнего колонтитула ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image33.png))
+
+
+Строки нижнего колонтитула на рис. 11 не выделялись, так как она содержит белый фон. Давайте создадим `FooterStyle` класса CSS, в `Styles.css` , указывающий Темно-красный фон и затем настройте `GridView.skin` файл обложки в `DataWebControls` темы, чтобы назначить этот класс CSS в GridView `FooterStyle`в `CssClass` свойство. Если вы хотите освежить в обложки и темы, обращаться к [отображение данных с ObjectDataSource](../basic-reporting/displaying-data-with-the-objectdatasource-cs.md) руководства.
+
+Начните с добавления следующий класс CSS `Styles.css`:
 
 
 [!code-css[Main](displaying-summary-information-in-the-gridview-s-footer-cs/samples/sample2.css)]
 
-`FooterStyle` Класс CSS аналогично стиль `HeaderStyle` класса `HeaderStyle`цвет фона — особенность темнее, а его текст отображается полужирным шрифтом. Кроме того текст в нижний колонтитул по правому краю, а заголовок текст выравнивается по центру.
+`FooterStyle` Класс CSS в стиль, который напоминает `HeaderStyle` класса, несмотря на то что `HeaderStyle`цвет фона имеет один важный нюанс темнее и его текст отображается полужирным шрифтом. Кроме того текст в нижнем колонтитуле по правому краю, тогда как текст заголовка выравнивается по центру.
 
-Далее, чтобы связать этот класс CSS с нижний колонтитул каждого GridView, откройте `GridView.skin` файла в `DataWebControls` темы и набор `FooterStyle`в `CssClass` свойство. После этого добавления файла разметки должно иметь вид:
+Далее, чтобы связать этот класс CSS с нижним колонтитулом для каждого элемента GridView, откройте `GridView.skin` файл `DataWebControls` темы и набор `FooterStyle`в `CssClass` свойство. После этого добавления файла разметки должен выглядеть так:
 
 
 [!code-aspx[Main](displaying-summary-information-in-the-gridview-s-footer-cs/samples/sample3.aspx)]
@@ -153,76 +152,76 @@ ms.locfileid: "30877428"
 Как на снимке экрана ниже показано, это изменение делает нижний колонтитул выделяться сильнее.
 
 
-[![Строка нижнего колонтитула GridView теперь имеет цвет фона красно-](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image35.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image34.png)
+[![Строки нижнего колонтитула GridView теперь имеет красно-фонового цвета](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image35.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image34.png)
 
-**Рис. 12**: строкой нижнего колонтитула GridView теперь имеет красно-цвет фона ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image36.png))
+**Рис. 12**: строки нижнего колонтитула элемента GridView теперь имеет красно-цвет фона ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image36.png))
 
 
 ## <a name="step-3-computing-the-summary-data"></a>Шаг 3: Вычисление сводных данных
 
-Отобразить нижний колонтитул элемента GridView Далее важной проблемой нам описана информацию для вычисления сводных данных. Вычисляет эти статистические данные двумя способами.
+С помощью отображения нижнего колонтитула GridView со следующей проблемой, с которыми мы, как для вычисления сводных данных. Чтобы вычислить эти статистические сведения двумя способами:
 
-1. С помощью запроса SQL может выдавать дополнительных запросов к базе данных для вычисления сводных данных для определенной категории. SQL включает несколько агрегатных функций вместе с `GROUP BY` предложение для указания данных, по которому должны быть получены сводные данные. Следующий SQL-запрос может вернуть необходимой информации:  
+1. С помощью запроса SQL мы выполним дополнительный запрос к базе данных для вычисления сводных данных для определенной категории. SQL включает ряд агрегатные функции вместе с `GROUP BY` предложение для указания данных, по которому должны быть получены сводные данные. Следующий SQL-запрос может вернуть необходимой информации:  
 
     [!code-sql[Main](displaying-summary-information-in-the-gridview-s-footer-cs/samples/sample4.sql)]
 
-    Конечно не требуется выдать этот запрос непосредственно из `SummaryDataInFooter.aspx` страницы, а лишь путем создания метода в `ProductsTableAdapter` и `ProductsBLL`.
-2. Вычислить эти сведения, как оно добавляется к GridView как описано в [форматирование на основе по данным](custom-formatting-based-upon-data-cs.md) учебника, GridView `RowDataBound` обработчик события запускается один раз для каждой строки, добавляемые в GridView, после его были с привязкой к данным. Создав обработчик событий для этого события может хранить текущее общее значений, мы хотим статистической обработки. После последней строки данных привязано к GridView, у нас есть итоги и сведения, необходимые для вычисления среднего.
+    Конечно вы не захотите выполнить этот запрос непосредственно из `SummaryDataInFooter.aspx` страницы, а лишь путем создания метода в `ProductsTableAdapter` и `ProductsBLL`.
+2. Вычислить эту информацию, как оно добавляется к элементу GridView рассматривался в [Custom форматирование данных на базе при](custom-formatting-based-upon-data-cs.md) учебника, GridView `RowDataBound` обработчик события запускается один раз для каждой строки, добавляемый к элементу GridView после его были с привязкой к данным. Создать обработчик событий для этого события можно хранить текущее общее значений, мы хотим статистической обработки. После последней строки данных привязан к GridView, у нас есть итоговые значения и сведения, необходимые для вычисления среднего значения.
 
-Обычно я применяю второй подход, как она сохраняет маршрут в базе данных и трудозатраты, необходимые для реализации функциональности сводки в уровне доступа к данным и бизнес-логики, но было бы достаточно обоих подходов. В этом учебнике давайте использовать второй параметр и отслеживать использование промежуточных итогов `RowDataBound` обработчика событий.
+Я обычно применяется второй подход, как она сохраняет поездку в базу данных и усилий для реализации функциональности сводки в уровне доступа к данным и бизнес-логики, но было бы достаточно любой из этих подходов. В этом руководстве давайте использовать второй вариант и отслеживать нарастающий итог с помощью `RowDataBound` обработчик событий.
 
-Создание `RowDataBound` обработчик событий для GridView, выбрав GridView в конструкторе, щелкнув значок молнии из окна «Свойства» и дважды щелкните `RowDataBound` событий. Это создаст новый обработчик событий с именем `ProductsInCategory_RowDataBound` в `SummaryDataInFooter.aspx` классе кода страницы.
+Создание `RowDataBound` обработчик событий для элемента GridView, выбрав GridView в конструкторе, щелкнув значок с молнией в окне «Свойства» и дважды щелкнув `RowDataBound` событий. Это создаст новый обработчик событий с именем `ProductsInCategory_RowDataBound` в `SummaryDataInFooter.aspx` вспомогательном классе страницы.
 
 
 [!code-csharp[Main](displaying-summary-information-in-the-gridview-s-footer-cs/samples/sample5.cs)]
 
-Чтобы сохранить текущее общее необходимо определить переменные вне обработчика событий. Создайте следующие четыре переменные уровня страницы:
+Чтобы поддерживать текущее общее нам нужно определить переменные за пределами области обработчика событий. Создайте следующие четыре переменные уровня страницы:
 
-- `_totalUnitPrice`, тип `decimal`
-- `_totalNonNullUnitPriceCount`, тип `int`
-- `_totalUnitsInStock`, тип `int`
-- `_totalUnitsOnOrder`, тип `int`
+- `_totalUnitPrice`, типа `decimal`
+- `_totalNonNullUnitPriceCount`, типа `int`
+- `_totalUnitsInStock`, типа `int`
+- `_totalUnitsOnOrder`, типа `int`
 
-Затем напишите код, чтобы увеличить эти три переменные для каждой строки данных обнаружил в `RowDataBound` обработчика событий.
+Теперь напишите код, чтобы увеличить эти три переменные для каждой строки данных обнаружена в `RowDataBound` обработчик событий.
 
 
 [!code-csharp[Main](displaying-summary-information-in-the-gridview-s-footer-cs/samples/sample6.cs)]
 
-`RowDataBound` Запускает обработчик событий, гарантируя, что мы имеем дело с DataRow. После того, было установлено, `Northwind.ProductsRow` экземпляр, который только что был привязан к `GridViewRow` объекта в `e.Row` хранится в переменной `product`. Далее, выполнение общего переменных увеличиваются с соответствующими значениями текущего продукта (предполагая, что они не содержат базы данных `NULL` значение). Мы отслеживания объекта как работающих `UnitPrice` общей и количество отличных`NULL` `UnitPrice` записей, поскольку средняя цена является частным этих двух чисел.
+`RowDataBound` Запускает обработчик событий, гарантируя, что мы имеем дело с DataRow. После того как, было установлено, `Northwind.ProductsRow` , который просто был привязан к `GridViewRow` объекта в `e.Row` хранится в переменной `product`. Далее, работающей общее переменных увеличиваются на соответствующие значения для данного продукта (при условии, что они не содержат базу данных `NULL` значение). Мы хранить список запущенных `UnitPrice` всего» и «количество отличных`NULL` `UnitPrice` записывает так, как средняя цена является частным этих двух чисел.
 
-## <a name="step-4-displaying-the-summary-data-in-the-footer"></a>Шаг 4: Отображение сводных данных в нижний колонтитул
+## <a name="step-4-displaying-the-summary-data-in-the-footer"></a>Шаг 4: Отображение сводных данных в нижнем колонтитуле
 
-Со сводными данными суммируются осталось для отображения в строке нижнего колонтитула GridView. Эта задача также можно выполнить программно с помощью `RowDataBound` обработчика событий. Помните, что `RowDataBound` запускает обработчик событий для *каждого* строку, которая привязывается к GridView, включая строки нижнего колонтитула. Таким образом можно расширить обработчиком событий для отображения данных в строке нижнего колонтитула, используя следующий код:
+Со сводными данными сгруппированы осталось для отображения в строке нижнего колонтитула GridView. Эту задачу, кроме того, можно выполнить программно с помощью `RowDataBound` обработчик событий. Помните, что `RowDataBound` запускает обработчик событий для *каждые* строку, которая привязывается к GridView, включая строки нижнего колонтитула. Таким образом мы можем расширить наш обработчик событий для отображения данных в строке нижнего колонтитула, используя следующий код:
 
 
 [!code-csharp[Main](displaying-summary-information-in-the-gridview-s-footer-cs/samples/sample7.cs)]
 
-Так как в строке нижнего колонтитула добавляется к GridView, после добавления всех строк данных, может быть уверенным, что к моменту мы готовы для отображения сводных данных в нижнем колонтитуле, будет завершена вычисления промежуточных итогов. Последний шаг, то для задания этих значений в ячейках нижний колонтитул.
+Так как строки нижнего колонтитула добавляется к элементу GridView после добавления всех строк данных, может быть уверены в том, что к моменту, мы готовы для отображения сводных данных в нижнем колонтитуле, которые будут выполнены вычисления промежуточных итогов. Последний шаг, то для задания этих значений в ячейках нижнего колонтитула.
 
-Для отображения текста в ячейке определенного нижнего колонтитула, используйте `e.Row.Cells[index].Text = value`, где `Cells` индексирование начинается с 0. Следующий код вычисляет среднюю цену (Общая цена, деленное на количество продуктов) и отображает его вместе с общее число единиц на складе и модули в порядке в ячейках соответствующие нижний колонтитул элемента управления GridView.
+Для отображения текста в ячейке определенного нижний колонтитул, используйте `e.Row.Cells[index].Text = value`, где `Cells` индексация начинается с 0. Следующий код вычисляет среднюю цену (Общая цена, деленное на количество продуктов) и отображает его, а также общее число единиц на складе и заказанных в ячейках соответствующие нижнего колонтитула элемента управления GridView единиц.
 
 
 [!code-csharp[Main](displaying-summary-information-in-the-gridview-s-footer-cs/samples/sample8.cs)]
 
-Рис. 13 показывает отчет после добавления этого кода. Обратите внимание как `ToString("c")` среднюю цену сводные сведения о форматироваться как валюты.
+Рис. 13 показан отчет, после добавления этого кода. Обратите внимание как `ToString("c")` среднюю цену сводные сведения о форматироваться как денежная единица.
 
 
-[![Строка нижнего колонтитула GridView теперь имеет цвет фона красно-](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image38.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image37.png)
+[![Строки нижнего колонтитула GridView теперь имеет красно-фонового цвета](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image38.png)](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image37.png)
 
-**Рис. 13**: строкой нижнего колонтитула GridView теперь имеет красно-цвет фона ([Просмотр полноразмерное изображение](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image39.png))
+**Рис. 13**: строки нижнего колонтитула элемента GridView теперь имеет красно-цвет фона ([Просмотр полноразмерного изображения](displaying-summary-information-in-the-gridview-s-footer-cs/_static/image39.png))
 
 
 ## <a name="summary"></a>Сводка
 
-Отображение сводных данных является общим требованием отчетов и управления GridView позволяет легко включать такую информацию, в строке нижнего колонтитула. Отображается строка нижнего колонтитула при GridView `ShowFooter` свойству `true` и может иметь текст в этих ячейках задать программным путем с помощью `RowDataBound` обработчика событий. Вычисление сводных данных можно либо сделать путем повторного запроса к базе данных или с помощью кода в классе кода страницы ASP.NET для вычисления сводных данных программными средствами.
+Отображение сводных данных является общим требованием отчет и элемент управления GridView облегчает входит такая информация в его строку нижнего колонтитула. Строка нижнего колонтитула отображается при GridView `ShowFooter` свойству `true` и может содержать текст в ячейках, задать программно с помощью `RowDataBound` обработчик событий. Вычисление сводных данных можно либо сделать путем повторного запроса к базе данных или с помощью кода в классе фонового кода страницы ASP.NET для программно вычисления сводных данных.
 
-Этот учебник завершает изучение настраиваемое форматирование с элементами управления GridView, DetailsView и FormView. В этом руководстве Далее запускает наши исследования вставки, обновления и удаления данных с помощью этих же элементов управления.
+Этот учебник завершает изучение настраиваемое форматирование с элементами управления GridView, DetailsView и FormView. Нашем следующем учебном курсе запускает исследование Вставка, обновление и удаление данных с помощью этих же элементов управления.
 
-Программирование довольны!
+Счастливого вам программирования!
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи книг по ASP/ASP.NET и основатель веб- [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Microsoft с 1998 года. Скотт — независимый консультант, преподаватель и автор. Его последняя книга — [ *Sams Teach ASP.NET 2.0 in 24 часа*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Ним можно связаться по адресу [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 > [!div class="step-by-step"]
 > [Назад](using-the-formview-s-templates-cs.md)

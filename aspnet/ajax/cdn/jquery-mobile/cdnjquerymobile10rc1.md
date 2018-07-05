@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-mobile/cdnjquerymobile10rc1
-title: jQuery Mobile 1.0 RC1 в сети Microsoft Ajax CDN | Документы Microsoft
+title: jQuery Mobile 1.0 RC1 в сети доставки Содержимого Microsoft Ajax | Документация Майкрософт
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 07/23/2014
 ms.topic: article
 ms.assetid: 5b59c0d3-dd21-43bf-bb4d-e008f011296d
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile10rc1
 msc.type: content
-ms.openlocfilehash: e41e751d7fff5b82fdade54d7d7caa6128b214e4
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: a5c0d80437181057685717450ba86677e5ffc723
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30078131"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37368186"
 ---
-<a name="jquery-mobile-10-rc1-on-the-microsoft-ajax-cdn"></a>jQuery Mobile 1.0 RC1 в сети Microsoft Ajax CDN
+<a name="jquery-mobile-10-rc1-on-the-microsoft-ajax-cdn"></a>jQuery Mobile 1.0 RC1 в сети доставки Содержимого Microsoft Ajax
 ====================
-Библиотеки jQuery Mobile 1.0 версии-Кандидата 1 включает следующие файлы:
+Библиотека jQuery Mobile 1.0 версии-Кандидата 1 включает следующие файлы:
 
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0rc1/jquery.mobile-1.0rc1.js
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0rc1/jquery.mobile-1.0rc1.min.js

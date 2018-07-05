@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/aspnet-ajax/how-do-i-implement-the-persistent-communications-pattern-using-web-services
-title: '[Инструкции:] Реализации постоянного шаблона обмена данными с помощью веб-службы? | Документы Майкрософт'
+title: '[Инструкции] Реализация шаблона постоянного обмена данными с помощью веб-служб? | Документы Майкрософт'
 author: JoeStagner
-description: В традиционной веб-сайта браузером и сервером не поддерживать непрерывную связь, но обмениваться данными только в ответ на пользователя, выполняющего акт...
+description: В традиционных веб-сайта браузером и сервером не поддерживают текущих подключений, но обмениваться данными только в ответ на пользователя, выполняющего акт...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/22/2007
 ms.topic: article
 ms.assetid: 424c06cd-6d61-43cd-a1f2-d1a6b62e47b1
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-implement-the-persistent-communications-pattern-using-web-services
 msc.type: video
-ms.openlocfilehash: 7aa696443beb1f084a5b3f5a91e761bef1fdc034
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 8d7aac37b3b5b47f0533454f2d1d6f1f8677af99
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30883187"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37367478"
 ---
-<a name="how-do-i-implement-the-persistent-communications-pattern-using-web-services"></a>[Инструкции:] Реализации постоянного шаблона обмена данными с помощью веб-службы?
+<a name="how-do-i-implement-the-persistent-communications-pattern-using-web-services"></a>[Инструкции] Реализация шаблона постоянного обмена данными с помощью веб-служб?
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-В традиционной веб-сайта браузером и сервером не поддерживать непрерывную связь, но обмениваться данными только в ответ на пользователя, выполняющего действие. В современных веб-сайта, когда страница становится контейнер приложения может быть полезным для браузером и сервером для поддержания текущих подключений, чтобы страницы могут обновляться без пользователя, выполняющего действие. Это известно как шаблон постоянного взаимодействия для AJAX. ASP.NET AJAX предоставляет два основных способа для веб-разработчиков для реализации постоянного шаблона обмена данными. В более ранних видео мы узнали, как для использования в качестве основы для реализации ASP.NET AJAX UpdatePanel. В этом видеоролике рассказано, как реализовать тот же шаблон, с помощью вызова JavaScrpt веб-службы, который избавляет от необходимости ASP.NET AJAX UpdatePanel.
+В традиционных веб-сайта браузером и сервером не поддерживают текущих подключений, но обмениваться данными только в ответ на пользователя, выполняющего действие. Для современных веб-сайта, где страницы становится контейнер приложения может быть полезным для браузером и сервером для поддержания текущего обмена данными, чтобы обновления страниц могут происходить даже без пользователя, выполняющего действие. Это называется шаблона постоянного обмена данными для AJAX. AJAX для ASP.NET предоставляет два основных способа для веб-разработчиков для реализации шаблона постоянного обмена данными. В предыдущих видео мы увидели, как использовать UpdatePanel в AJAX ASP.NET в качестве основы для реализации. В этом видео мы узнаем, как реализовать тот же шаблон, используя JavaScrpt вызов веб-службы, что устраняет потребность в ASP.NET AJAX UpdatePanel.
 
-[&#9654;Посмотрите видео (16 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-the-persistent-communications-pattern-using-web-services)
+[&#9654;Просмотрите видео (16 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-the-persistent-communications-pattern-using-web-services)
 
 > [!div class="step-by-step"]
 > [Назад](how-do-i-localize-an-aspnet-ajax-application.md)
