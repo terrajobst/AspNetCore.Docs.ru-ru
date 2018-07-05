@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-datatables/cdnjquerydatatables105
-title: jQuery DataTables 1.10.5 | Документы Microsoft
+title: jQuery DataTables 1.10.5 | Документация Майкрософт
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 03/10/2015
 ms.topic: article
 ms.assetid: 7a06c2a5-fd96-436c-baa1-2d148b8f7116
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables105
 msc.type: content
-ms.openlocfilehash: f662c819a96d51600d0bf905b893d3db46f07c16
-ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
+ms.openlocfilehash: f827cab310b14c116745e5e8b96a51c5022e9b2c
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "30078092"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37391668"
 ---
-<a name="jquery-datatables-1105"></a><span data-ttu-id="f29a0-102">jQuery DataTables 1.10.5</span><span class="sxs-lookup"><span data-stu-id="f29a0-102">jQuery DataTables 1.10.5</span></span>
+<a name="jquery-datatables-1105"></a><span data-ttu-id="7d5db-102">jQuery DataTables 1.10.5</span><span class="sxs-lookup"><span data-stu-id="7d5db-102">jQuery DataTables 1.10.5</span></span>
 ====================
-<span data-ttu-id="f29a0-103">Следующие файлы для jQuery DataTables подключаемые модули размещаются на CDN:</span><span class="sxs-lookup"><span data-stu-id="f29a0-103">The following files for the jQuery DataTables plugins are hosted on the CDN:</span></span>
+<span data-ttu-id="7d5db-103">Следующие файлы для jQuery DataTables подключаемые модули размещаются в сети доставки Содержимого:</span><span class="sxs-lookup"><span data-stu-id="7d5db-103">The following files for the jQuery DataTables plugins are hosted on the CDN:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.10.5/jquery.dataTables.js
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.10.5/jquery.dataTables.min.js
