@@ -1,28 +1,27 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-and-use-classes-in-javascript
-title: 'Как I: создать и использовать классы в JavaScript? | Документы Майкрософт'
+title: 'Как инструкции: Создание и использование классов в JavaScript? | Документы Майкрософт'
 author: rick-anderson
-description: В этом видео пиксел Крис показано, как для создания классов в JavaScript с помощью функции похожи на другие языки программирования с capabilitie объектно-ориентированной...
+description: В этом видео Крис Пелз показано, как создать классы в JavaScript с функциональностью похожи на другие языки программирования с объектно-ориентированного программирования capabilitie...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/08/2010
 ms.topic: article
 ms.assetid: 348d1bda-69e0-4cb5-a59f-a104133c2f93
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-create-and-use-classes-in-javascript
 msc.type: video
-ms.openlocfilehash: f3d62754f3052f6b4bff342b3387b301e428f899
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 763e715bb724c90a52ad7a23eaee90522fb8c95e
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26525943"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37386424"
 ---
-<a name="how-do-i-create-and-use-classes-in-javascript"></a>Как I: создать и использовать классы в JavaScript?
+<a name="how-do-i-create-and-use-classes-in-javascript"></a>Как инструкции: Создание и использование классов в JavaScript?
 ====================
-по [Крис пиксел](https://twitter.com/chrispels)
+по [Крис Пелз](https://twitter.com/chrispels)
 
-В этом видеоролике пиксел Крис показано, как для создания классов в JavaScript с помощью функции похожи на другие языки программирования, с возможностями объектно-ориентированной. Сначала пример проекта веб-сайта создается с помощью внешнего файла JavaScript. Создается function() и рассматривается различие между использованием функции «function», а конструктор класса с помощью ключевого слова «new». Затем в конструкторе класса, а также частные переменные добавляются открытые свойства. Далее отдельную функцию, которая создается и назначены в качестве метода в класс. Кроме того тот же метод отображается в виде функции, определенной в конструкторе класса. Наконец метод закрытый класс создается и используется в конструкторе класса.
+В этом видео Крис Пелз показано, как создать классы в JavaScript с функциональностью похожи на другие языки программирования с возможностями объектно-ориентированного программирования. Сначала пример веб-сайт проекта создается с внешний файл JavaScript. Создается function() и рассматриваются различия в использовании функции, как «функция» и как конструктор класса с помощью ключевого слова «new». Затем открытые свойства, добавляются в конструктор класса, а также закрытые переменные. Далее создается и назначается как метод к классу отдельную функцию. Кроме того как функция, определенная в конструкторе класса отображается тот же метод. Наконец метод закрытый класс создается и используется в конструкторе класса.
 
-[&#9654; Посмотрите видео (18 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-and-use-classes-in-javascript)
+[&#9654;Просмотрите видео (18 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-and-use-classes-in-javascript)

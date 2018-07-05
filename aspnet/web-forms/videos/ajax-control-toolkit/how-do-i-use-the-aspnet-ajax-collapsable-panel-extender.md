@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-collapsable-panel-extender
-title: '[Инструкции:] Использовать расширитель сворачиваемой панели ASP.NET AJAX? | Документы Майкрософт'
+title: '[Инструкции] Использовать расширитель сворачиваемой панели ASP.NET AJAX? | Документы Майкрософт'
 author: JoeStagner
-description: В этом видео вы узнаете, как использовать расширитель сворачиваемой панели ASP.NET AJAX, чтобы разрешить пользователю динамически отображать и скрывать содержимое на веб-странице.
+description: В этом видео вы узнаете, как использовать расширитель сворачиваемой панели ASP.NET AJAX, обеспечивающая динамически отображать или скрывать содержимое на веб-странице.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/31/2007
 ms.topic: article
 ms.assetid: d54549cd-e832-4bfa-b490-52e58a8a03c4
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-collapsable-panel-extender
 msc.type: video
-ms.openlocfilehash: 8c218237f38bf41139f170a9ee99be197e99dcbd
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0b2e8aacc24d31ccbc769f6bf76f5ae333cfd2a9
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30881234"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37387625"
 ---
-<a name="how-do-i-use-the-aspnet-ajax-collapsable-panel-extender"></a>[Инструкции:] Использовать расширитель сворачиваемой панели ASP.NET AJAX?
+<a name="how-do-i-use-the-aspnet-ajax-collapsable-panel-extender"></a>[Инструкции] Использовать расширитель сворачиваемой панели ASP.NET AJAX?
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-В этом видео вы узнаете, как использовать расширитель сворачиваемой панели ASP.NET AJAX, чтобы разрешить пользователю динамически отображать и скрывать содержимое на веб-странице.
+В этом видео вы узнаете, как использовать расширитель сворачиваемой панели ASP.NET AJAX, обеспечивающая динамически отображать или скрывать содержимое на веб-странице.
 
-[&#9654;Посмотрите видео (в минутах 11)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-collapsable-panel-extender)
+[&#9654;Просмотрите видео (11 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-collapsable-panel-extender)
 
 > [!div class="step-by-step"]
 > [Назад](how-do-i-use-the-aspnet-ajax-accordion-control.md)

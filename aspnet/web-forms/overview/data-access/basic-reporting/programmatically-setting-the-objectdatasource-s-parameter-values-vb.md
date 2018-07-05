@@ -1,158 +1,157 @@
 ---
 uid: web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-vb
-title: Программное задание значений параметров ObjectDataSource (VB) | Документы Microsoft
+title: Программная установка значений параметров ObjectDataSource (VB) | Документация Майкрософт
 author: rick-anderson
-description: В этом учебнике мы рассмотрим добавление метода к DAL и МЕТОДА, который принимает один входной параметр и возвращает данные. В примере будет задан этот параметр...
+description: В этом руководстве мы рассмотрим добавление метода к DAL и BLL, который принимает один входной параметр и возвращает данные. Этот параметр будет установлен пример...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
 ms.topic: article
 ms.assetid: 0ecb03b6-52a0-4731-8c7a-436391d36838
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ac53d651601829b6e7d2ce312a084618a8afbb61
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: e2d0afa6616d936d2c8a2c76ca51ee1995040644
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30876674"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37396272"
 ---
-<a name="programmatically-setting-the-objectdatasources-parameter-values-vb"></a>Программное задание значений параметров ObjectDataSource (Visual Basic)
+<a name="programmatically-setting-the-objectdatasources-parameter-values-vb"></a>Программная установка значений параметров ObjectDataSource (VB)
 ====================
 по [Скотт Митчелл](https://twitter.com/ScottOnWriting)
 
-[Загрузить пример приложения](http://download.microsoft.com/download/5/d/7/5d7571fc-d0b7-4798-ad4a-c976c02363ce/ASPNET_Data_Tutorial_6_VB.exe) или [скачать PDF](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/datatutorial06vb1.pdf)
+[Скачайте пример приложения](http://download.microsoft.com/download/5/d/7/5d7571fc-d0b7-4798-ad4a-c976c02363ce/ASPNET_Data_Tutorial_6_VB.exe) или [скачать PDF](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/datatutorial06vb1.pdf)
 
-> В этом учебнике мы рассмотрим добавление метода к DAL и МЕТОДА, который принимает один входной параметр и возвращает данные. В примере будет задан этот параметр программными средствами.
+> В этом руководстве мы рассмотрим добавление метода к DAL и BLL, который принимает один входной параметр и возвращает данные. Этот параметр будет установлен пример программным образом.
 
 
 ## <a name="introduction"></a>Вступление
 
-Как мы видели в [с предыдущим учебником](declarative-parameters-vb.md), декларативной передачи значений параметров методам ObjectDataSource доступно несколько параметров. Если значение параметра задано жестко, поступают из веб-элемента управления на странице или в любой другой источник доступен для чтения в источнике данных `Parameter` объекта, например, что значение может быть привязано к входному аргументу; без написания кода.
+Как мы видели в [предыдущем учебном курсе](declarative-parameters-vb.md), доступны несколько вариантов декларативной передачи значений параметров методам ObjectDataSource. Если значение параметра жестко, поступают из веб-элемент управления на странице или в любой другой источник, доступный для чтения в источнике данных `Parameter` объекта, например, что значение может быть привязано входному параметру без написания кода.
 
-Иногда, тем не менее, когда значение параметра поступает из источника, не учитываемого одним из источника данных, встроенные `Parameter` объектов. Если узел поддерживает учетные записи пользователей может потребоваться присвоить параметру, основанному на текущего выполнившего вход пользователя посетителя по идентификатору. Или же может потребоваться настройка значения параметра перед его отправкой методу базового объекта ObjectDataSource.
+Иногда, тем не менее, если значение параметра поступает из источника не учитываемого одним из источника данных, встроенные `Parameter` объектов. Если узел поддерживает учетные записи пользователей, мы может потребоваться задать параметр, в зависимости от текущего зарегистрированного посетителя идентификатор пользователя Или же может потребоваться настройка значения параметра перед его отправкой методу нижележащего объекта для ObjectDataSource.
 
-Каждый раз, когда элемент управления ObjectDataSource `Select` вызывается метод сначала вызывает ObjectDataSource его [события Selecting](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selecting%28VS.80%29.aspx). Затем вызывается метод ObjectDataSource базового объекта. Завершении ObjectDataSource [выбранные события](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selected%28VS.80%29.aspx) активируется (рис. 1 иллюстрирует эту последовательность событий). Можно задать или настроить в обработчик событий для значений параметров, передаваемых в метод базового объекта ObjectDataSource `Selecting` событий.
-
-
-[![Выбранные ObjectDataSource и выбрав события возникают до и после нижележащего объекта метод вызывается](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image2.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image1.png)
-
-**Рис. 1**: ObjectDataSource `Selected` и `Selecting` вызывается метод Fire события до и после нижележащего объекта ([Просмотр полноразмерное изображение](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image3.png))
+Каждый раз, когда ObjectDataSource `Select` вызывается метод ObjectDataSource прежде всего создает его [события Selecting](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selecting%28VS.80%29.aspx). Затем вызывается метод нижележащего объекта для ObjectDataSource. По завершении работы, ObjectDataSource [выбранные события](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selected%28VS.80%29.aspx) активируется (рис. 1 показана последовательность событий). Значения параметров, передаваемые в метод нижележащего объекта для ObjectDataSource можно установить или настроить в обработчик событий для `Selecting` событий.
 
 
-В этом учебнике мы рассмотрим добавление метода к DAL и МЕТОДА, который принимает один входной параметр `Month`, типа `Integer` и возвращает `EmployeesDataTable` заполненный сотрудниками, их найма окончания действия в указанном `Month`. Наш пример будет установить этот параметр, программными средствами на основе текущего месяца, отображая список «Годовщины сотрудников в этом месяце.»
+[![Выбранные ObjectDataSource и выбрав ObjectDataSource возникают до и после нижележащего объекта метод вызывается](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image2.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image1.png)
+
+**Рис. 1**: The ObjectDataSource `Selected` и `Selecting` вызывается метод ObjectDataSource возникают до и после нижележащего объекта ([Просмотр полноразмерного изображения](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image3.png))
+
+
+В этом учебнике будет рассмотрено Добавление метода к DAL и BLL, который принимает один входной параметр `Month`, типа `Integer` и возвращает `EmployeesDataTable` заполненный сотрудниками, годовщина приема которых их в указанном `Month`. Наш пример будет установить этот параметр, программными средствами на основе текущего месяца, отображая список «Годовщины сотрудников в этом месяце.»
 
 Давайте начнем!
 
-## <a name="step-1-adding-a-method-toemployeestableadapter"></a>Шаг 1: Добавление метода в`EmployeesTableAdapter`
+## <a name="step-1-adding-a-method-toemployeestableadapter"></a>Шаг 1: Добавление метода к`EmployeesTableAdapter`
 
-Для первого примера необходимо добавить возможность получения сотрудников, `HireDate` произошла в указанном месяце. Для поддержки этой функции в соответствии с нашей архитектурой, необходимо сначала создать метод в `EmployeesTableAdapter` сопоставляемого соответствующие инструкции SQL. Чтобы добиться этого, сначала откройте типизированного набора данных "Борей". Щелкните правой кнопкой мыши `EmployeesTableAdapter` метки и выберите Добавить запрос.
-
-
-[![Добавление нового запроса в EmployeesTableAdapter](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image5.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image4.png)
-
-**На рисунке 2**: Добавление нового запроса к `EmployeesTableAdapter` ([Просмотр полноразмерное изображение](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image6.png))
+Для нашего первого примера, нам нужно добавить возможность получения сотрудников, `HireDate` произошла в указанном месяце. Для поддержки этой функции в соответствие с нашей архитектурой необходимо сначала создать метод в `EmployeesTableAdapter` , сопоставляемый надлежащему оператору SQL. Для этого сначала откроем типизированный набор DataSet Northwind. Щелкните правой кнопкой мыши `EmployeesTableAdapter` метки и выберите Добавить запрос.
 
 
-Выберите добавление инструкции SQL, возвращающей строки. По достижении укажите `SELECT` инструкции на экране по умолчанию `SELECT` инструкции для `EmployeesTableAdapter` уже будет загружен. Просто добавьте в `WHERE` предложение: `WHERE DATEPART(m, HireDate) = @Month`. [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx) — функция T-SQL, которая возвращает конкретную дату часть `datetime` тип; в этом случае мы используем `DATEPART` для возврата месяц `HireDate` столбца.
+[![Добавить новый запрос в EmployeesTableAdapter](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image5.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image4.png)
+
+**Рис. 2**: Добавление нового запроса к `EmployeesTableAdapter` ([Просмотр полноразмерного изображения](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image6.png))
 
 
-[![Возврат только тех строк где HireDate столбца меньше или равно @HiredBeforeDate параметр](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image8.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image7.png)
-
-**Рис. 3**: возвращает только те строки, у которых `HireDate` столбца меньше или равно `@HiredBeforeDate` параметра ([Просмотр полноразмерное изображение](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image9.png))
+Выберите инструкцию SQL, которая возвращает строки. По достижении Specify a `SELECT` инструкции на экране по умолчанию `SELECT` инструкции для `EmployeesTableAdapter` уже будет загружен. Просто добавьте в `WHERE` предложение: `WHERE DATEPART(m, HireDate) = @Month`. [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx) — это функция T-SQL, возвращающая определенную часть даты `datetime` типа; в данном случае мы используем `DATEPART` для возврата месяца столбца `HireDate` столбца.
 
 
-Наконец, измените `FillBy` и `GetDataBy` имена метод `FillByHiredDateMonth` и `GetEmployeesByHiredDateMonth`соответственно.
+[![Возвращаемое только тех, где HireDate столбец строки меньше или равно @HiredBeforeDate параметр](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image8.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image7.png)
+
+**Рис. 3**: возвращает только те строки, у которых `HireDate` столбца меньше или равно `@HiredBeforeDate` параметра ([Просмотр полноразмерного изображения](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image9.png))
 
 
-[![Выберите более подходящих имен методов, чем FillBy и GetDataBy](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image11.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image10.png)
-
-**Рис. 4**: выберите более соответствующий метод имена чем `FillBy` и `GetDataBy` ([Просмотр полноразмерное изображение](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image12.png))
+Наконец, измените `FillBy` и `GetDataBy` имена метод `FillByHiredDateMonth` и `GetEmployeesByHiredDateMonth`, соответственно.
 
 
-Нажмите кнопку Готово, чтобы завершить работу мастера и вернуться в область конструктора набора данных. `EmployeesTableAdapter` Должен включать новый набор методов для доступа к сотрудников, принятых на работу в указанном месяце.
+[![Выбор более подходящих имен методов, чем FillBy и GetDataBy](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image11.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image10.png)
+
+**Рис. 4**: выберите более соответствующий метод имена чем `FillBy` и `GetDataBy` ([Просмотр полноразмерного изображения](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image12.png))
 
 
-[![Появились новые методы в область конструктора набора данных](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image14.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image13.png)
+Нажмите кнопку Готово, чтобы завершить работу мастера и вернуться в область конструктора набора данных. `EmployeesTableAdapter` Должен включать новый набор методов для доступа к сотрудникам, принятым на работу в указанном месяце.
 
-**Рис. 5**: новые методы, отображаются в области конструктора DataSet ([Просмотр полноразмерное изображение](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image15.png))
+
+[![В области проектирования DataSet появились новые методы](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image14.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image13.png)
+
+**Рис. 5**: новые методы, отображаются в области проектирования DataSet ([Просмотр полноразмерного изображения](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image15.png))
 
 
 ## <a name="step-2-adding-thegetemployeesbyhireddatemonthmonthmethod-to-the-business-logic-layer"></a>Шаг 2: Добавление`GetEmployeesByHiredDateMonth(month)`метод уровня бизнес-логики
 
-Поскольку логики доступа к архитектуре нашего приложения используется отдельный слой для бизнес-логику и данные, необходимо добавить метод наш уровень бизнес-ЛОГИКИ, вызов DAL для получения сотрудников на работу до определенной даты. Откройте `EmployeesBLL.vb` файл и добавьте следующий метод:
+Поскольку логики доступа к архитектуре нашего приложения используется отдельный слой для бизнес-логику и данные, необходимо добавить метод BLL, вызов DAL для получения сотрудников на работу до определенной даты. Откройте `EmployeesBLL.vb` файл и добавьте следующий метод:
 
 
 [!code-vb[Main](programmatically-setting-the-objectdatasource-s-parameter-values-vb/samples/sample1.vb)]
 
 Как и другие методы в этом классе `GetEmployeesByHiredDateMonth(month)` просто вызывает DAL и возвращает результаты.
 
-## <a name="step-3-displaying-employees-whose-hiring-anniversary-is-this-month"></a>Шаг 3: Для отображения сотрудников, чьи найма окончания действия — в этом месяце
+## <a name="step-3-displaying-employees-whose-hiring-anniversary-is-this-month"></a>Шаг 3: Отображение сотрудников, годовщина приема которых находится в этом месяце
 
-Последним этапом в этом примере является отображение сотрудников которого найма окончания действия — в этом месяце. Начните с добавления GridView к `ProgrammaticParams.aspx` страницы в `BasicReporting` папку и добавьте новый элемент управления ObjectDataSource в качестве источника данных. Настройка ObjectDataSource для использования `EmployeesBLL` класса `SelectMethod` значение `GetEmployeesByHiredDateMonth(month)`.
+Последним этапом в этом примере является отображение сотрудников, годовщина приема которых находится в этом месяце. Начните с добавления элемент управления GridView для `ProgrammaticParams.aspx` странице в `BasicReporting` папку и добавьте новый ObjectDataSource в качестве источника данных. Настройка ObjectDataSource на использование `EmployeesBLL` класса `SelectMethod` присвоено `GetEmployeesByHiredDateMonth(month)`.
 
 
-[![Используйте класс EmployeesBLL](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image17.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image16.png)
+[![Класс EmployeesBLL](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image17.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image16.png)
 
-**Рис. 6**: использование `EmployeesBLL` класса ([Просмотр полноразмерное изображение](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image18.png))
+**Рис. 6**: использование `EmployeesBLL` класс ([Просмотр полноразмерного изображения](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image18.png))
 
 
 [![Выберите из GetEmployeesByHiredDateMonth(month)-метод](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image20.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image19.png)
 
-**Рис. 7**: Select From `GetEmployeesByHiredDateMonth(month)` метод ([Просмотр полноразмерное изображение](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image21.png))
+**Рис. 7**: Select From `GetEmployeesByHiredDateMonth(month)` метод ([Просмотр полноразмерного изображения](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image21.png))
 
 
-На последнем экране появляется нам для предоставления `month` источник значения параметра. Поскольку нам это значение программными средствами, оставьте значение источника параметра по умолчанию None и нажмите кнопку Готово.
+На последнем экране появляется нам предоставить `month` источника значения параметра. Так как мы это значение программно, оставьте значение источника параметра по умолчанию ни один параметр и нажмите кнопку Готово.
 
 
-[![Оставьте ни один набор параметров источника](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image23.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image22.png)
+[![Оставьте исходный набор параметров значение None](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image23.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image22.png)
 
-**Рис. 8**: оставьте параметр источника, значение None ([Просмотр полноразмерное изображение](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image24.png))
+**Рис. 8**: оставьте параметру источника значение None ([Просмотр полноразмерного изображения](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image24.png))
 
 
-Это создаст `Parameter` объекта в элемент управления ObjectDataSource `SelectParameters` коллекции не поддерживает указанное значение.
+Это создаст `Parameter` объекта в коллекции `SelectParameters` коллекции не поддерживает указанное значение.
 
 
 [!code-aspx[Main](programmatically-setting-the-objectdatasource-s-parameter-values-vb/samples/sample2.aspx)]
 
-Чтобы установить это значение программными средствами, необходимо создать обработчик событий для элемента управления ObjectDataSource `Selecting` событий. Для этого перейдите в представление конструктора, а затем дважды щелкните элемент управления ObjectDataSource. Кроме того выберите элемент управления ObjectDataSource, перейдите в окне «Свойства» и щелкните значок молнии. Затем дважды щелкните в текстовом поле рядом с `Selecting` , либо введите имя обработчика событий, который вы хотите использовать. Как третий вариант, можно создать обработчик событий, выбрав элемент управления ObjectDataSource и его `Selecting` события из двух раскрывающихся списках в верхней части страницы кода класса.
+Чтобы задать это значение программно, необходимо создать обработчик событий для элемента управления ObjectDataSource `Selecting` событий. Для этого перейдите в режим конструктора и дважды щелкните ObjectDataSource. Кроме того выберите элемент управления ObjectDataSource, перейти в окно свойств и щелкните значок с молнией. Затем дважды щелкните в текстовом поле рядом с полем `Selecting` , либо введите имя обработчика событий, которые вы хотите использовать. Как третий вариант, можно создать обработчик событий, выбрав ObjectDataSource и его `Selecting` события из двух раскрывающихся списках в верхней части класса фонового кода страницы.
 
 
-![Щелкните значок молнии в окне свойств, чтобы вывести список событий веб-элемента управления](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image25.png)
+![Щелкните значок с молнией в окне «Свойства», чтобы получить список событий веб-элемента управления](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image25.png)
 
-**Рис. 9**: щелкните значок молнии в окне свойств, чтобы вывести список событий веб-элемента управления
+**Рис. 9**: щелкните значок с молнией в окне «Свойства», чтобы получить список событий веб-элемента управления
 
 
-Все три подхода добавить новый обработчик событий для элемента управления ObjectDataSource `Selecting` событий для классов кода страницы. В этом обработчике событий можно чтение и запись значений параметров, с помощью `e.InputParameters(parameterName)`, где *`parameterName`* значение `Name` атрибута в `<asp:Parameter>` тег ( `InputParameters` коллекция может также быть индексированные порядковым, как и в `e.InputParameters(index)`). Чтобы задать `month` параметр текущему месяцу, добавьте следующий код в `Selecting` обработчик событий:
+Все три подхода добавить новый обработчик событий для элемента управления ObjectDataSource `Selecting` событий к вспомогательному классу страницы. В этом обработчике событий можно чтения и записи значений параметров, используя `e.InputParameters(parameterName)`, где *`parameterName`* значение `Name` атрибут в `<asp:Parameter>` тега ( `InputParameters` коллекция может также быть индексированные порядковое, как показано на `e.InputParameters(index)`). Чтобы задать `month` параметра, равного текущему месяцу, добавьте следующий код в `Selecting` обработчик событий:
 
 
 [!code-vb[Main](programmatically-setting-the-objectdatasource-s-parameter-values-vb/samples/sample3.vb)]
 
-При посещении этой страницы с помощью браузера мы видим, что только один сотрудник был принят на работу в этом месяце (март) Иванов Мария, который был в компании с 1994 г.
+При просмотре страницы через обозреватель мы видим, что только один сотрудник был принят на работу в этом месяце (март) Лора Каллахан, которая была в компании с 1994 года.
 
 
-[![Тех сотрудников, годовщин показаны в этом месяце](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image27.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image26.png)
+[![Показаны сотрудники с годовщиной отображаются в этом месяце](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image27.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image26.png)
 
-**Рис. 10**: тех сотрудников с годовщин этот месяц отображаются ([Просмотр полноразмерное изображение](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image28.png))
+**Рис. 10**: те, сотрудники которых годовщины этот месяц отображаются ([Просмотр полноразмерного изображения](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image28.png))
 
 
 ## <a name="summary"></a>Сводка
 
-Значения параметров ObjectDataSource обычно может быть задано декларативно, без необходимости написания кода, его легко задавать значения параметров программными средствами. Все, необходимо сделать — создать обработчик событий для элемента управления ObjectDataSource `Selecting` событий, который запускается до вызова метода базового объекта и вручную установить значения для одного или нескольких параметров через `InputParameters` коллекции.
+Хотя значения параметров ObjectDataSource обычно могут быть установлены декларативно, без единой строчки кода, это просто установить значения параметров программно. Нам нужно лишь создать обработчик событий для элемента управления ObjectDataSource `Selecting` событий, который запускается до вызова метода базового объекта и вручную установить значения для одного или нескольких параметров через `InputParameters` коллекции.
 
-Этот учебник завершает раздел основной отчетности. [Следующее руководство](../masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md) запускает фильтрации и сценариях основной-подробности раздел, в котором мы рассмотрим методы предоставления посетителя для фильтрации данных и перехода от основного отчета в отчет подробные сведения.
+Этот учебник завершает раздел основной отчетности. [Следующему руководству](../masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md) запускает фильтрации и сценариях основной-подробности раздел, в котором мы рассмотрели методы предоставления посетителям возможностей фильтрации данных и перехода от основного отчета в отчет сведения.
 
-Программирование довольны!
+Счастливого вам программирования!
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи книг по ASP/ASP.NET и основатель веб- [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Microsoft с 1998 года. Скотт — независимый консультант, преподаватель и автор. Его последняя книга — [ *Sams Teach ASP.NET 2.0 in 24 часа*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Ним можно связаться по адресу [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Благодарности
+## <a name="special-thanks-to"></a>Особая благодарность
 
-Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было – Хилтон Гизнау. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+В этой серии руководств пособий рецензировалась многими компетентными редакторами. Основной рецензент этого учебного был (Hilton giesenow). Хотите поработать с моих последующих статей для MSDN? Если Да, напишите мне [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Назад](declarative-parameters-vb.md)

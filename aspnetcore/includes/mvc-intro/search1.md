@@ -1,4 +1,4 @@
-# <a name="adding-search-to-an-aspnet-core-mvc-app"></a>Добавление поиска в приложение ASP.NET Core MVC
+# <a name="add-search-to-an-aspnet-core-mvc-app"></a>Добавление поиска в приложение MVC ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 

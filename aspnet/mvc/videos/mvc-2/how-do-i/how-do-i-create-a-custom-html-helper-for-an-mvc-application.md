@@ -1,31 +1,30 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/how-do-i-create-a-custom-html-helper-for-an-mvc-application
-title: Практические советы. Создание вспомогательного класса пользовательского HTML для приложения MVC? | Документы Майкрософт
+title: 'How Do I: Create пользовательского вспомогательного метода HTML для приложения MVC? | Документы Майкрософт'
 author: rick-anderson
-description: В этом видеоролике пиксел Крис показано создание пользовательского HtmlHelper, недоступную в стандартный набор в MVC-приложениях. Первый пример MVC прило...
+description: В этом видео Крис Пелз демонстрируется создание пользовательского HtmlHelper, которая недоступна в стандартный набор в MVC-приложениях. Во-первых, пример MVC прило...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/11/2009
 ms.topic: article
 ms.assetid: 58b5eb15-4160-4ce2-ae70-6ba94262ea73
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-create-a-custom-html-helper-for-an-mvc-application
 msc.type: video
-ms.openlocfilehash: 92faa04e1eefec0852604d51987ddaa9ee58838a
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 87e74ade0182589d22aeaf66a608165df7ea2ee6
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30870106"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37380145"
 ---
-<a name="how-do-i-create-a-custom-html-helper-for-an-mvc-application"></a>Практические советы. Создание вспомогательного класса пользовательского HTML для приложения MVC?
+<a name="how-do-i-create-a-custom-html-helper-for-an-mvc-application"></a>How Do I: Create пользовательского вспомогательного метода HTML для приложения MVC?
 ====================
-по [Крис пиксел](https://twitter.com/chrispels)
+по [Крис Пелз](https://twitter.com/chrispels)
 
-В этом видеоролике пиксел Крис показано создание пользовательского HtmlHelper, недоступную в стандартный набор в MVC-приложениях. Во-первых пример MVC-приложения создается с демонстрационной контроллер и представление для проверки пользовательских HtmlHelper. Затем модуль создается с открытой функции, который является методом расширения, который представляет реализацию пользовательского HtmlHelper. Пользовательская вспомогательная — для создания `<img>` теги на странице и получает несколько входных параметров, включая идентификатор, URL-адрес и замещающий текст для тега image. Логика затем добавляется в функцию для возвращения выполненной `<img>` тег с указанными сведениями. Затем пользовательские HtmlHelper используется для демонстрационной страницы для отображения изображения. Наконец, пользовательские HtmlHelper расширяется для включения нескольких конструктор переопределений, которые обеспечивают гибкость, более легко Создание различных `<img>` тегов.
+В этом видео Крис Пелз демонстрируется создание пользовательского HtmlHelper, которая недоступна в стандартный набор в MVC-приложениях. Во-первых пример приложения MVC создается с демонстрации контроллер и представление для проверки пользовательских HtmlHelper. Затем модуль создается общедоступный функцию, которая является методом расширения, который представляет реализацию пользовательского HtmlHelper. Пользовательских вспомогательных — для создания `<img>` тегов на странице и принимает несколько входных параметров, включая идентификатор, URL-адрес и замещающий текст для тега изображения. Логика добавляется в функцию для возвращения выполненной задачи `<img>` тега с указанными сведениями. Затем пользовательский HtmlHelper используется на странице "demo" для отображения изображения. Наконец, пользовательские HtmlHelper расширяется для включения нескольких конструктор переопределений, которые обеспечивают гибкость для более легко создавать различные `<img>` теги.
 
-[&#9654;Посмотрите видео (18 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-a-custom-html-helper-for-an-mvc-application)
+[&#9654;Просмотрите видео (18 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-a-custom-html-helper-for-an-mvc-application)
 
 > [!div class="step-by-step"]
 > [Назад](how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)

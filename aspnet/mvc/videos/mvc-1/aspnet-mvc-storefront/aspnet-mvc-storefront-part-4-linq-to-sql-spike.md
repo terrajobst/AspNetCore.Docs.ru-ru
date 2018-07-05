@@ -1,31 +1,30 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-4-linq-to-sql-spike
-title: 'ASP.NET MVC Storefront, часть 4: Linq To Sql пик | Документы Microsoft'
+title: 'Часть Интернет-магазин на ASP.NET MVC 4: Потенциал Linq To Sql | Документация Майкрософт'
 author: robconery
-description: Вадим создает пик - много новых функций для тестирования размышления или вдохновения — убедитесь, что Linq To Sql будет работать для моей шаблоне доступа.
+description: Роб создает пик - функций для тестирования мысли или вдохновение — чтобы убедиться в том, что Linq To Sql будет работать для моей шаблон доступа к данным.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/27/2008
 ms.topic: article
 ms.assetid: 990262a5-4c06-472a-8083-ed11e14f1e5a
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-4-linq-to-sql-spike
 msc.type: video
-ms.openlocfilehash: 3f404156a8b801365a11539ffec578ec38ab624b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 723a10b056b3f031916c06dd72293a17b7ce2797
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30871627"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37401170"
 ---
-<a name="aspnet-mvc-storefront-part-4-linq-to-sql-spike"></a>ASP.NET MVC Storefront, часть 4: Linq To Sql пик
+<a name="aspnet-mvc-storefront-part-4-linq-to-sql-spike"></a>Часть Интернет-магазин на ASP.NET MVC 4: Потенциал Linq To Sql
 ====================
-по [ток Conery](https://github.com/robconery)
+по [Роб Conery](https://github.com/robconery)
 
-Вадим создает «пик» - много новых функций для тестирования размышления или вдохновения — убедитесь, что Linq To Sql будет работать для моей шаблоне доступа.
+Роб создает пик «» - функций для тестирования мысли или вдохновение — чтобы убедиться в том, что Linq To Sql будет работать для моей шаблон доступа к данным.
 
-[&#9654;Посмотрите видео (14 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-4-linq-to-sql-spike)
+[&#9654;Просмотрите видео (14 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-4-linq-to-sql-spike)
 
 > [!div class="step-by-step"]
 > [Назад](aspnet-mvc-storefront-part-3-pipes-and-filters.md)

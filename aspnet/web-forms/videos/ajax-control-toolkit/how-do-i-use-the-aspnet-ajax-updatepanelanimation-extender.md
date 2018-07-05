@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender
-title: '[Инструкции:] Используйте элемент управления UpdatePanelAnimation ASP.NET AJAX? | Документы Майкрософт'
+title: '[Инструкции] Использовать расширитель UpdatePanelAnimation ASP.NET AJAX? | Документы Майкрософт'
 author: JoeStagner
-description: Добавление анимации частичные обновления, мы информировать пользователей, при обновлении велика и при завершении. Элемент управления UpdatePanelAnimation...
+description: Добавление анимации для обновления части страницы, мы могли сообщать пользователю, когда происходит обновление и когда его завершения. Расширитель UpdatePanelAnimation...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/16/2007
 ms.topic: article
 ms.assetid: 56f5ec0f-38f7-4ebc-90d9-9baf0c693bd4
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender
 msc.type: video
-ms.openlocfilehash: f7a96295a3e3f372a3f43fbf47360c88b99433c6
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 465480f5d548cd224a96800bd5b4b32407ae709f
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30884006"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37392433"
 ---
-<a name="how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender"></a>[Инструкции:] Используйте элемент управления UpdatePanelAnimation ASP.NET AJAX?
+<a name="how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender"></a>[Инструкции] Использовать расширитель UpdatePanelAnimation ASP.NET AJAX?
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-Добавление анимации частичные обновления, мы информировать пользователей, при обновлении велика и при завершении. Элемент управления UpdatePanelAnimation добавляет эффекты анимации управления ASP.NET AJAX UpdatePanel, с помощью платформы широкие возможности анимации ядро расширения ASP.NET AJAX. В этом видео показано, как можно определить последовательность эффектов для UpdatePanelAnimation и как можно выполнить тонкую настройку анимации с помощью определения ScriptAction.
+Добавление анимации для обновления части страницы, мы могли сообщать пользователю, когда происходит обновление и когда его завершения. Расширитель UpdatePanelAnimation добавляет эффекты анимации в элемент управления ASP.NET AJAX UpdatePanel, с помощью платформы широкие возможности анимации базовых расширений AJAX для ASP.NET. В этом видео показано, как можно определить последовательность эффекты для UpdatePanelAnimation и как можно оптимизировать с помощью определений ScriptAction анимации.
 
-[&#9654;Посмотрите видео (20 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender)
+[&#9654;Просмотрите видео (20 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender)
 
 > [!div class="step-by-step"]
 > [Назад](how-do-i-use-the-aspnet-ajax-slideshow-extender.md)

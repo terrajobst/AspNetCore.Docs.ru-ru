@@ -1,16 +1,16 @@
 ---
-title: Добавление поиска в приложение ASP.NET Core MVC
+title: Добавление поиска в приложение MVC ASP.NET Core
 author: rick-anderson
 description: Инструкции по добавлению поиска в простое приложение ASP.NET Core MVC
 ms.author: riande
 ms.date: 04/07/2017
 uid: tutorials/first-mvc-app-mac/search
-ms.openlocfilehash: 4175d4dfd03d173f7025aff3b51d255bb1c213ee
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: aca0835340977605cc84fad1970ac30fa1a9872a
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274486"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961546"
 ---
 [!INCLUDE [adding-model](../../includes/mvc-intro/search1.md)]
 

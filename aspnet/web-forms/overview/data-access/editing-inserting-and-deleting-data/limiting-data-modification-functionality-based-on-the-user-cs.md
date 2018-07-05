@@ -1,253 +1,252 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-cs
-title: Ограничение функций изменения данных на основе пользователя (C#) | Документы Microsoft
+title: Ограничение функций изменения данных на основе пользователя (C#) | Документация Майкрософт
 author: rick-anderson
-description: В веб-приложении, пользователи могут изменять данные разных учетных записей пользователя могут иметь разные привилегии для изменения данных. В этом учебнике мы рассмотрим как t...
+description: В веб-приложения, который позволяет пользователю изменять данные различные учетные записи пользователей могут иметь различные полномочия на изменение данных. В этом руководстве будет рассмотрен способ t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
 ms.topic: article
 ms.assetid: 2b251c82-77cf-4e36-baa9-b648eddaa394
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b056536eeaa86ef2c73debe23dd38861f41b2a69
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: d8141a47bc7036641a93a0946b43e1f8086b9a93
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30888202"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37372246"
 ---
 <a name="limiting-data-modification-functionality-based-on-the-user-c"></a>Ограничение функций изменения данных на основе пользователя (C#)
 ====================
 по [Скотт Митчелл](https://twitter.com/ScottOnWriting)
 
-[Загрузить пример приложения](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_23_CS.exe) или [скачать PDF](limiting-data-modification-functionality-based-on-the-user-cs/_static/datatutorial23cs1.pdf)
+[Скачайте пример приложения](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_23_CS.exe) или [скачать PDF](limiting-data-modification-functionality-based-on-the-user-cs/_static/datatutorial23cs1.pdf)
 
-> В веб-приложении, пользователи могут изменять данные разных учетных записей пользователя могут иметь разные привилегии для изменения данных. В этом учебнике мы рассмотрим, как динамически настраивать возможности модификации данных, в зависимости от посетителя.
+> В веб-приложения, который позволяет пользователю изменять данные различные учетные записи пользователей могут иметь различные полномочия на изменение данных. В этом руководстве мы рассмотрим, как динамически корректировать возможности модификации данных, в зависимости от посетителя.
 
 
 ## <a name="introduction"></a>Вступление
 
-Число веб-приложений поддерживают учетные записи пользователей и обеспечивают различные параметры, отчеты и функциональных возможностей, основанных на пользователя. Например с нашим руководствам мы может потребоваться разрешить пользователям из компаний-поставщиков для входа на обновление сайта и общие сведения о продуктах - свое имя и количество на единицу, возможно, — а также сведения о поставщиках, название компании, адрес, сведения о контактном лице s и т. д. Кроме того необходимо включить некоторые учетные записи пользователей для людей с нашей компании, чтобы они могли войти в систему и обновить сведения о продукте, как единиц на складе, запас и т. д. Наш веб-приложения также могут разрешить анонимным пользователям посещать (лицам, не вошедшие в систему), но может ограничить их могут только просматривать данные. С такой пользователь учетной записи системы на месте мы хотим данных веб-элементов управления в страницах ASP.NET, обеспечивают вставку, изменение и удаление возможностей, подходит для текущего пользователя.
+Ряд веб-приложений поддерживает учетные записи пользователей и предоставления различных параметров, отчетов и функций в зависимости от текущего пользователя. Например ознакомившись с нашими руководствами мы можете дать пользователям из компаний-поставщиков для входа на обновление сайта и общие сведения о своих продуктах — их название и количество в единицах измерения, возможно, — а также сведения о поставщике, такие как имя своей компании, адрес, сведения о контактном лице s и т. д. Кроме того мы может потребоваться включить некоторые учетные записи пользователей для людей из нашей компании, чтобы они могли войти в систему и обновлять информацию о продуктах, как числа единиц на складе, минимального уровня запаса и т. д. Наше веб-приложение также позволит анонимным пользователям посетить (лицам, не подключавшиеся к системе), но при этом ограничивать их простым просмотром данных. С такой пользователь учетной записи системы на месте мы хотим данных веб-элементов управления на страницах ASP.NET, чтобы предложить Вставка, редактирование и удаление возможностей, подходит для текущего пользователя.
 
-В этом учебнике мы рассмотрим, как динамически настраивать возможности модификации данных, в зависимости от посетителя. В частности мы создадим страницы, отображающей данные поставщиков в редактируемой DetailsView вместе с GridView, в которой перечислены продукты, предоставляемый данным поставщиком. Если пользователь, посетив страницу нашей компании, они могут: просмотреть все сведения о поставщике s; изменить свой адрес; и изменять информацию для любых продуктов, предоставляемый данным поставщиком. Если, однако пользователь из конкретной компании, они могут только просматривать и изменять свои собственные сведения об адресах и можно изменять только свои продукты, которые не были помечены как более не поддерживается.
-
-
-[![Является сотрудником компании можно редактировать все сведения о поставщике s](limiting-data-modification-functionality-based-on-the-user-cs/_static/image2.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image1.png)
-
-**Рис. 1**: пользователя из s наш компании можно редактировать любой поставщик сведения ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image3.png))
+В этом руководстве мы рассмотрим, как динамически корректировать возможности модификации данных, в зависимости от посетителя. В частности мы создадим страницу, отображающую сведения suppliers в редактируемой DetailsView и GridView, которая перечисляет продукты, предоставляемые поставщиком. Если посещающий страницу пользователь из нашей компании, они могут: все данные, поставщик s; изменять их адреса; и изменять информацию для любой продукт, предоставляемый данным поставщиком. Если, однако пользователь из конкретной компании, они могут только просматривать и изменять свои собственные сведения об адресах и можно изменить только продукты, которые не были помечены как снятые с продажи.
 
 
-[![Пользователь из конкретного поставщика может только просмотр и изменение сведений о](limiting-data-modification-functionality-based-on-the-user-cs/_static/image5.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image4.png)
+[![Пользователь из нашей компании может изменить любые сведения о поставщике s](limiting-data-modification-functionality-based-on-the-user-cs/_static/image2.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image1.png)
 
-**На рисунке 2**: пользователя из конкретного поставщика можно только на просмотр и редактирование сведений о ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image6.png))
-
-
-S позволяют начать работу!
-
-> [!NOTE]
-> ASP.NET 2.0 система членства s предоставляет стандартизированные, расширяемую платформу для создания, управления и проверка учетных записей пользователей. Так как изучение система членства выходит за рамки этих учебников, этого учебника вместо «имитаций» членства, позволяя анонимных пользователей для выбора, являются ли они от конкретного поставщика или из нашей компании. Дополнительные сведения о членстве, см. в разделе Мои [проверки ASP.NET 2.0 s членства, ролей и профиля](http://aspnet.4guysfromrolla.com/articles/120705-1.aspx) статью рядов.
+**Рис. 1**: пользователя из s наш компании можно редактировать любой поставщик сведения ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image3.png))
 
 
-## <a name="step-1-allowing-the-user-to-specify-their-access-rights"></a>Шаг 1: Чтобы пользователи могли указывать их права доступа
+[![Пользователь с определенным поставщиком могут только просматривать и изменить свои сведения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image5.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image4.png)
 
-В реальных приложениях s учетной записи пользователя включает ли они проработали в компании или для конкретного поставщика, и эта информация должна быть программно доступными из наших страниц ASP.NET, когда пользователь вошел в систему на сайт. Эта информация может фиксируемое через систему ролей ASP.NET 2.0 s, как уровень пользователя сведения об учетной записи через систему профиля или через какие-либо пользовательские средства.
-
-Поскольку целью данного учебника является демонстрация настройки возможности модификации данных, зависящих от пользователя, вошедшего в систему и не предназначен для демонстрации ASP.NET 2.0 s членство, роли и профиль систем, мы будем использовать механизм очень просто определить возможности для пользователей, посетив страницу - DropDownList, из которого пользователь может указывать, если они должны иметь возможность просматривать и изменять любые поставщики данных и, кроме того, что сведения конкретного поставщика s, их можно просматривать и изменять. Если пользователь указывает, что она можно просматривать и изменять все сведения о поставщике (по умолчанию), она постраничного просмотра всех поставщиков, отредактировать сведения адрес поставщика s и измените имя и количество на единицу для любых продуктов, предоставляемые выбранного поставщика. Если пользователь указывает, что она может просматривать только и изменение конкретного поставщика, тем не менее, а затем она только просмотр сведений и продуктов для этого один поставщик и можно только обновления имени и количество на единицу сведения для этих продуктов, являющихся *не* более не поддерживается.
-
-Наш первый шаг в этом учебнике будет, для создания этого DropDownList и заполнить ее поставщиков в системе. Откройте `UserLevelAccess.aspx` страницы в `EditInsertDelete` папки, добавьте DropDownList которого `ID` свойству `Suppliers`и привязать этот элемент DropDownList новый ObjectDataSource с именем `AllSuppliersDataSource`.
+**Рис. 2**: пользователя от определенного поставщика можно только на просмотр и изменение информации о ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image6.png))
 
 
-[![Создать новый элемент управления ObjectDataSource AllSuppliersDataSource с именем](limiting-data-modification-functionality-based-on-the-user-cs/_static/image8.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image7.png)
-
-**Рис. 3**: создать новый именованный ObjectDataSource `AllSuppliersDataSource` ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image9.png))
-
-
-Поскольку мы хотим этого DropDownList для включения всех поставщиков, настройте элемент управления ObjectDataSource для вызова `SuppliersBLL` класса s `GetSuppliers()` метод. Также убедитесь, что ObjectDataSource s `Update()` метода сопоставлен `SuppliersBLL` класса s `UpdateSupplierAddress` метода, как этот элемент управления ObjectDataSource будет также использоваться DetailsView, мы будем добавлять на шаге 2.
-
-После завершения работы мастера ObjectDataSource выполните действия по настройке `Suppliers` DropDownList так, чтобы он показывал `CompanyName` поля данных и использует `SupplierID` поля данных в качестве значения для каждого `ListItem`.
-
-
-[![Настройка DropDownList поставщики использование CompanyName и полей данных SupplierID](limiting-data-modification-functionality-based-on-the-user-cs/_static/image11.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image10.png)
-
-**Рис. 4**: Настройка `Suppliers` DropDownList для использования `CompanyName` и `SupplierID` поля данных ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image12.png))
-
-
-На этом этапе DropDownList список названий компаний поставщиков в базе данных. Тем не менее необходимо также включить параметр «Показать или изменить все поставщики», чтобы DropDownList. Чтобы сделать это, задайте `Suppliers` DropDownList s `AppendDataBoundItems` свойства `true` и добавьте `ListItem` которого `Text` свойство — «Показать или изменить все поставщики», значение которого — `-1`. Их можно добавить непосредственно с помощью декларативной разметкой или с помощью конструктора в окне «Свойства» и щелкнув многоточие в DropDownList s `Items` свойство.
+Позвольте s приступить к работе!
 
 > [!NOTE]
-> Обращаться к [ *иерархического фильтрации с DropDownList* ](../masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md) учебника более подробный рассказ о добавлении Выбор всех элементов в DropDownList привязки к данным.
+> ASP.NET 2.0 система членства s предоставляет стандартизированную, расширяемую платформу для создания, управления и проверки учетных записей пользователей. Поскольку изучение системы членства выходит за рамки этих учебников, этот учебник «имитируется» членства, позволяя анонимным посетителям выбирать, являются ли они на определенного поставщика или из нашей компании. Дополнительные сведения о членстве, см. Мой [s ASP.NET 2.0, проверки членства, ролей и профиля](http://aspnet.4guysfromrolla.com/articles/120705-1.aspx) серия статей.
 
 
-После `AppendDataBoundItems` свойства и `ListItem` добавлен, DropDownList s должна выглядеть как:
+## <a name="step-1-allowing-the-user-to-specify-their-access-rights"></a>Шаг 1., Что позволяет пользователю указать их права доступа
+
+В реальных приложениях s учетная запись пользователя будет включать ли они работали на нашу компанию или на определенного поставщика, и эта информация будет возможен программный доступ со страниц ASP.NET, когда пользователь вошел на сайт. Эту информацию можно зафиксировать через систему ролей ASP.NET 2.0 s, как данные учетной записи пользователя через систему профиля или некоторыми пользовательскими средствами.
+
+Поскольку задачей данного учебного курса является демонстрация корректировки возможностей изменения данных, на основе пользователя, вошедшего в систему и не предназначен для членства s showcase ASP.NET 2.0, ролей и профиля систем, мы будем использовать механизм очень просто, чтобы определить, возможности для пользователя, посещающего страницу - элементе управления DropDownList, из которого пользователь может указать, если они должны иметь возможность просматривать и править информацию поставщиков или, кроме того, что сведения конкретного поставщика s, они могут просматривать и редактировать. Если пользователь указывает, что она может просматривать и править всю информацию поставщиков (по умолчанию), она можно перебирать всех поставщиков, изменить любые сведения о поставщике s адрес и измените имя и количество в единицах измерения любого продукта, предоставляемые выбранным поставщиком. Если пользователь указывает, что она может только просматривать и редактирования конкретного поставщика, тем не менее, а затем она только просматривать сведения и продукты для этого поставщика и можно только обновить имя и количество в информацию о единицах для тех продуктов, которые *не* более не поддерживается.
+
+Нашим первым этапом в этом руководстве, то для создания этого элемента управления DropDownList и заполняет ее поставщиков в системе. Откройте `UserLevelAccess.aspx` странице в `EditInsertDelete` папки, добавление элемента управления DropDownList, `ID` свойству `Suppliers`и привязать к элементу управления ObjectDataSource с именем этого элемента управления DropDownList `AllSuppliersDataSource`.
+
+
+[![Создайте новый ObjectDataSource, именуемый AllSuppliersDataSource](limiting-data-modification-functionality-based-on-the-user-cs/_static/image8.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image7.png)
+
+**Рис. 3**: создайте новый ObjectDataSource с именем `AllSuppliersDataSource` ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image9.png))
+
+
+Поскольку мы хотим этого элемента управления DropDownList содержались все поставщики, настройте ObjectDataSource на вызов `SuppliersBLL` класс s `GetSuppliers()` метод. Также убедитесь, что элемент управления ObjectDataSource s `Update()` относящимся `SuppliersBLL` класс s `UpdateSupplierAddress` метод, как данный элемент управления ObjectDataSource будет также использоваться DetailsView, мы добавим на шаге 2.
+
+После завершения работы мастера ObjectDataSource, следуйте инструкциям по настройке `Suppliers` DropDownList таким образом, чтобы он показывал `CompanyName` и использовал поле данных `SupplierID` поля данных в качестве значения для каждого `ListItem`.
+
+
+[![Настройте список DropDownList Suppliers использовать поля CompanyName и SupplierID данных](limiting-data-modification-functionality-based-on-the-user-cs/_static/image11.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image10.png)
+
+**Рис. 4**: Настройка `Suppliers` DropDownList для использования `CompanyName` и `SupplierID` полей данных ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image12.png))
+
+
+На этом этапе DropDownList список компании имен поставщиков в базе данных. Тем не менее необходимо также включить параметр «Show/Edit ALL Suppliers», чтобы DropDownList. Для этого необходимо задать `Suppliers` DropDownList s `AppendDataBoundItems` свойства `true` и добавьте `ListItem` которого `Text` свойство является «Show/Edit ALL Suppliers» и значение которого равно `-1`. Это можно сделать непосредственно через декларативную разметку или с помощью конструктора, перейдите в окно свойств и нажмите кнопку с многоточием в DropDownList s `Items` свойство.
+
+> [!NOTE]
+> Вернуться к [ *"основной/подробности" Фильтрация с помощью элемента управления DropDownList* ](../masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md) учебника более подробный рассказ о добавлении элемента выбрать все в привязкой к данным элемента управления DropDownList.
+
+
+После `AppendDataBoundItems` свойства и `ListItem` добавлен, декларативная разметка элемента управления DropDownList s должен выглядеть так:
 
 
 [!code-aspx[Main](limiting-data-modification-functionality-based-on-the-user-cs/samples/sample1.aspx)]
 
-Рис. 5 показан снимок экрана текущий ход работы, при просмотре через браузер.
+Рис. 5 показан снимок экрана для работы, при просмотре через браузер.
 
 
-[![Поставщики DropDownList содержит показа всех ListItem, а также один для каждого поставщика](limiting-data-modification-functionality-based-on-the-user-cs/_static/image14.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image13.png)
+[![Список DropDownList Suppliers содержит показа всех ListItem, а также для каждого поставщика](limiting-data-modification-functionality-based-on-the-user-cs/_static/image14.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image13.png)
 
-**Рис. 5**: `Suppliers` DropDownList содержит Показать все `ListItem`, а также один для каждого поставщика ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image15.png))
+**Рис. 5**: `Suppliers` DropDownList содержит Показать все `ListItem`, а также один для каждого поставщика ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image15.png))
 
 
-Поскольку необходимо обновить пользовательский интерфейс, сразу после пользователь изменил свой выбор, установите `Suppliers` DropDownList s `AutoPostBack` свойства `true`. На шаге 2 мы создадим элемента управления DetailsView, отображающий сведения о supplier(s), основанного на выборе DropDownList. Затем, в шаге 3 мы создадим обработчик событий для этого s DropDownList `SelectedIndexChanged` событий, в котором мы добавим код, который связывает сведения о поставщиках соответствующие в DetailsView зависимости от выбранного поставщика.
+Поскольку нам требуется обновить пользовательский интерфейс, сразу после пользователь изменил свой выбор, задайте `Suppliers` DropDownList s `AutoPostBack` свойства `true`. На шаге 2 мы создадим элемент управления DetailsView, который будет показывать информацию о поставщике(ах) на основе выбранного элемента управления DropDownList. Затем, на шаге 3, мы создадим обработчик событий для этого элемента управления DropDownList s `SelectedIndexChanged` событий, в котором мы добавим код, который привязывается к элементу управления DetailsView сведений о поставщике соответствующие зависимости от выбранного поставщика.
 
 ## <a name="step-2-adding-a-detailsview-control"></a>Шаг 2: Добавление элемента управления DetailsView
 
-Позволяет использовать для отображения сведений о поставщике DetailsView s. Для пользователей, которые можно просматривать и изменять все поставщики DetailsView будет поддерживать разбиение по страницам, позволяющее пользователю осуществлять пошаговое выполнение одной записи сведения поставщика одновременно. Если пользователь работает для конкретного поставщика, однако DetailsView будут показаны только этого конкретного поставщика сведения s и не будет содержать интерфейс разбиения по страницам. В любом случае необходимо разрешить пользователю изменять адрес s поставщика, города и страны поля DetailsView.
+Разрешить использовать элементе управления DetailsView для отображения сведений о поставщике s. Для пользователей, которые можно просматривать и изменять все поставщики DetailsView будет поддерживать разбиение на страницы, позволяя пользователям перемещаться по одной записи сведения поставщика за раз. Если пользователь работает на определенного поставщика, однако DetailsView показывают только этом определенном поставщике сведения s и не будет содержать интерфейс разбиения по страницам. В любом случае необходимо разрешить пользователю изменять адрес s поставщика, Город и Страна поля DetailsView.
 
-Добавить на страницу под DetailsView `Suppliers` DropDownList, задать его `ID` свойства `SupplierDetails`и привяжите его к `AllSuppliersDataSource` ObjectDataSource создан на предыдущем шаге. Затем установите флажки включить разбиение на страницы и разрешить изменение смарт-теге s DetailsView.
+Добавление элемента DetailsView на страницу под `Suppliers` DropDownList, задайте его `ID` свойства `SupplierDetails`и привяжите его к `AllSuppliersDataSource` ObjectDataSource создан на предыдущем шаге. Затем установите флажки включить разбиение по страницам и разрешить редактирование в смарт-теге DetailsView s.
 
 > [!NOTE]
-> Если пункт не отображается параметр Разрешить изменение в DetailsView s смарт-тег его s, так как не соответствует ObjectDataSource s `Update()` метод `SuppliersBLL` класса s `UpdateSupplierAddress` метод. Теперь пора вернуться назад и внести эти конфигурационные изменения, после чего появится параметр Разрешить изменение в DetailsView s смарт-тег.
+> Если параметр Разрешить изменение в смарт-s DetailsView см. в разделе Дон t пометить ее s, так как не удалось сопоставить ObjectDataSource s `Update()` метод `SuppliersBLL` класс s `UpdateSupplierAddress` метод. Отвлекитесь и вернуться назад и внести эти конфигурационные изменения, после которого параметр Разрешить изменение должен появиться в смарт-теге DetailsView s.
 
 
-Поскольку `SuppliersBLL` класса s `UpdateSupplierAddress` метод принимает только четыре параметра - `supplierID`, `address`, `city`, и `country` -s DetailsView стояли изменения, чтобы `CompanyName` и `Phone` Стояли доступны только для чтения. Кроме того, удалить `SupplierID` BoundField полностью. Наконец `AllSuppliersDataSource` ObjectDataSource в настоящее время имеет его `OldValuesParameterFormatString` свойство `original_{0}`. Теперь пора значение этого свойства полном удалении из декларативного синтаксиса или присвоено значение по умолчанию `{0}`.
+Так как `SuppliersBLL` класс s `UpdateSupplierAddress` метод принимает только четыре параметра - `supplierID`, `address`, `city`, и `country` -s DetailsView поля BoundField, кроме изменения, чтобы `CompanyName` и `Phone` Поля BoundField, кроме доступны только для чтения. Кроме того, удалите `SupplierID` BoundField полностью. Наконец `AllSuppliersDataSource` ObjectDataSource в настоящее время имеет его `OldValuesParameterFormatString` свойство значение `original_{0}`. Отвлекитесь и этот параметр свойства полном удалении из декларативного синтаксиса или установить его значение по умолчанию `{0}`.
 
-После настройки `SupplierDetails` DetailsView и `AllSuppliersDataSource` ObjectDataSource, у нас будет декларативный следующую разметку:
+После настройки `SupplierDetails` DetailsView и `AllSuppliersDataSource` ObjectDataSource, у нас будет следующей декларативной разметке:
 
 
 [!code-aspx[Main](limiting-data-modification-functionality-based-on-the-user-cs/samples/sample2.aspx)]
 
-На этом этапе DetailsView можно передавать сообщения через и информации об адресе выбранного поставщика s может быть обновлен, вне зависимости от выбора, сделанного в `Suppliers` DropDownList (см. рис. 6).
+На этом этапе DetailsView можно просматривать постранично и информации об адресе выбранного поставщика s могут обновляться, вне зависимости от выбора, сделанного в `Suppliers` DropDownList (см. рис. 6).
 
 
 [![Все поставщики сведения можно просмотреть и обновить его адрес](limiting-data-modification-functionality-based-on-the-user-cs/_static/image17.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image16.png)
 
-**Рис. 6**: Any поставщики сведения можно просмотреть и обновить его адрес ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image18.png))
+**Рис. 6**: Any поставщики сведения можно просмотреть и обновить свой адрес ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image18.png))
 
 
-## <a name="step-3-displaying-only-the-selected-supplier-s-information"></a>Шаг 3: Отображение только выбранного s сведения о поставщике
+## <a name="step-3-displaying-only-the-selected-supplier-s-information"></a>Шаг 3: Отображение только выбранного s информации о поставщике
 
-Нашу страницу в данный момент сведения для всех поставщиков, независимо от конкретного поставщика выбран из `Suppliers` DropDownList. Чтобы отобразить только сведения о поставщике для выбранного поставщика нам нужно добавить другой элемент управления ObjectDataSource на страницу, который извлекает сведения о конкретного поставщика.
+Нашей странице отображаются сведения обо всех поставщиках вне зависимости от того определенного поставщика был выбран из `Suppliers` DropDownList. Чтобы отобразить только сведения для выбранного поставщика, нам нужно добавить другой элемент управления ObjectDataSource к нашей странице, который будет извлекать информацию о определенном поставщике.
 
-Добавьте новый элемент управления ObjectDataSource страницу, присвоив ему имя `SingleSupplierDataSource`. Из его смарт-тег, щелкните ссылку настроить источник данных и его использование `SuppliersBLL` класса s `GetSupplierBySupplierID(supplierID)` метод. Как и в `AllSuppliersDataSource` ObjectDataSource, имеют `SingleSupplierDataSource` ObjectDataSource s `Update()` сопоставляется метод `SuppliersBLL` класса s `UpdateSupplierAddress` метод.
-
-
-[![Настройка SingleSupplierDataSource ObjectDataSource использовать метод GetSupplierBySupplierID(supplierID)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image20.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image19.png)
-
-**Рис. 7**: Настройка `SingleSupplierDataSource` ObjectDataSource для использования `GetSupplierBySupplierID(supplierID)` метод ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image21.png))
+Добавить новый элемент управления ObjectDataSource на страницу, назовите его `SingleSupplierDataSource`. Из его смарт-теге щелкните ссылку Настройка источника данных, который будет использовать `SuppliersBLL` класс s `GetSupplierBySupplierID(supplierID)` метод. Как и в `AllSuppliersDataSource` ObjectDataSource, имеют `SingleSupplierDataSource` ObjectDataSource s `Update()` сопоставить с относящимся к `SuppliersBLL` класс s `UpdateSupplierAddress` метод.
 
 
-Далее мы повторно запрос на указание для источника параметра `GetSupplierBySupplierID(supplierID)` метод s `supplierID` входного параметра. Так как нам нужно показать сведения для поставщика, выбранного в элементе управления DropDownList используйте `Suppliers` DropDownList s `SelectedValue` свойство в качестве источника параметра.
+[![Настройте элемент SingleSupplierDataSource ObjectDataSource на использование метода GetSupplierBySupplierID(supplierID)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image20.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image19.png)
+
+**Рис. 7**: Настройка `SingleSupplierDataSource` ObjectDataSource для использования `GetSupplierBySupplierID(supplierID)` метод ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image21.png))
 
 
-[![Использовать поставщики DropDownList в качестве supplierID источник параметра](limiting-data-modification-functionality-based-on-the-user-cs/_static/image23.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image22.png)
-
-**Рис. 8**: использование `Suppliers` DropDownList как `supplierID` источник параметров ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image24.png))
+Далее мы повторно запрос на указание источника параметра для `GetSupplierBySupplierID(supplierID)` метод s `supplierID` входного параметра. Поскольку мы хотим Показать сведения о поставщике, выбранном в элементе управления DropDownList, используйте `Suppliers` DropDownList s `SelectedValue` свойство как источник параметра.
 
 
-Несмотря на это второй ObjectDataSource добавлены управления DetailsView в настоящее время настроен на использование всегда `AllSuppliersDataSource` ObjectDataSource. Необходимо добавить логику, чтобы настроить источник данных, используемый в DetailsView в зависимости от `Suppliers` элемент DropDownList для выбора. Чтобы сделать это, создайте `SelectedIndexChanged` обработчика событий для поставщиков DropDownList. Это самый простой способ могут создаваться, дважды щелкнув DropDownList в конструкторе. Этот обработчик событий должен определить, какой источник данных для использования и необходимо изменить привязку данных для DetailsView. Это достигается с помощью следующего кода:
+[![Используйте список Suppliers DropDownList как источник параметра supplierID](limiting-data-modification-functionality-based-on-the-user-cs/_static/image23.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image22.png)
+
+**Рис. 8**: использование `Suppliers` DropDownList как `supplierID` источник параметра ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image24.png))
+
+
+Даже при наличии этой второй элемент управления ObjectDataSource добавлен, элемент управления DetailsView настроен всегда использовать `AllSuppliersDataSource` ObjectDataSource. Нам нужно добавить логику, чтобы скорректировать источник данных, используемые в зависимости от элемента управления DetailsView `Suppliers` выбран элемент DropDownList. Для этого создайте `SelectedIndexChanged` обработчик событий для элемента управления DropDownList Suppliers. Это проще всего могут создаваться двойным щелчком элемента управления DropDownList в конструкторе. Этот обработчик событий должен определить, какой источник данных для использования и заново привязать данные к элементу управления DetailsView. Это выполняется следующим кодом:
 
 
 [!code-csharp[Main](limiting-data-modification-functionality-based-on-the-user-cs/samples/sample3.cs)]
 
-Обработчик события начинается с определения, был ли выбран параметр «Показать или изменить все поставщики». Если он был, задает `SupplierDetails` DetailsView s `DataSourceID` для `AllSuppliersDataSource` и возвращает пользователя на первую запись в набор поставщиков, задав `PageIndex` значение 0. Если, однако пользователь выбрал конкретного поставщика в элементе управления DropDownList DetailsView s `DataSourceID` назначается `SingleSuppliersDataSource`. Независимо от того, какие данные используемый источник `SuppliersDetails` режим возвращается в режим только для чтения и привязываются DetailsView путем вызова `SuppliersDetails` управления s `DataBind()` метод.
+Обработчик событий начинает с определения, был ли выбран параметр «Show/Edit ALL Suppliers». Если Да, он задает `SupplierDetails` DetailsView s `DataSourceID` для `AllSuppliersDataSource` и возвращает пользователя к первой записи в наборе поставщиков, задав `PageIndex` значение 0. Если, однако пользователь выбрал определенного поставщика в элементе управления DropDownList, DetailsView s `DataSourceID` назначается `SingleSuppliersDataSource`. Независимо от того, какие данные используемый источник `SuppliersDetails` переводится в режим только для чтения и привязываются к элементу управления DetailsView путем вызова `SuppliersDetails` управления s `DataBind()` метод.
 
-Этот обработчик событий на месте элемента управления DetailsView теперь показывает выбранного поставщика, если был выбран параметр «Показать или изменить все поставщики», в этом случае всех поставщиков можно просмотреть с помощью интерфейса разбиения на страницы. Рис. 9 показана страница с параметром «Отображения и изменения всех поставщиков» установлен; Обратите внимание, что интерфейс разбиения по страницам присутствует, предоставляя пользователю возможность посетите и обновить любые поставщика. Рис. 10 показана страница с выбранного поставщика Ma Maison. Только Ma Maison s сведения в этом случае для просмотра и редактирования.
-
-
-[![Все поставщики сведения можно просматривать и редактировать](limiting-data-modification-functionality-based-on-the-user-cs/_static/image26.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image25.png)
-
-**Рис. 9**: все поставщики сведения можно просмотреть и редактирования ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image27.png))
+С этого обработчика событий в месте элементе управления DetailsView теперь Показывать выбранного поставщика, если был выбран параметр «Show/Edit ALL Suppliers», в этом случае всех поставщиков можно просмотреть через интерфейс разбиения по страницам. Рис. 9 показана страница с параметром «Show/Edit ALL Suppliers» выбран; Обратите внимание, что присутствует интерфейс разбиения по страницам, позволяя пользователю посетить и обновить любого поставщика. Рис. 10 показана страница с где выбран поставщик Ma. Только сведения о Ma где s — возможности просмотра и правки в этом случае.
 
 
-[![Можно просматривать и редактировать только сведения о поставщиках выбранного s](limiting-data-modification-functionality-based-on-the-user-cs/_static/image29.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image28.png)
+[![Всю информацию поставщиков могут просматривать и редактировать](limiting-data-modification-functionality-based-on-the-user-cs/_static/image26.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image25.png)
 
-**Рис. 10**: только выбранного поставщика s сведения могут быть Viewed и редактирования ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image30.png))
+**Рис. 9**: все поставщики можно просмотреть данные и редактирования ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image27.png))
+
+
+[![Можно просматривать и редактировать только сведения о выбранном поставщике s](limiting-data-modification-functionality-based-on-the-user-cs/_static/image29.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image28.png)
+
+**Рис. 10**: только для выбранного поставщика s сведения могут быть Viewed и редактирования ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image30.png))
 
 
 > [!NOTE]
-> В этом учебнике DropDownList и DetailsView управлять s `EnableViewState` должно быть присвоено `true` (по умолчанию) из-за DropDownList s `SelectedIndex` и DetailsView s `DataSourceID` запомнить изменения свойств s, во время обратной передачи.
+> В этом учебнике DropDownList и DetailsView управления s `EnableViewState` должно быть присвоено `true` (по умолчанию) так как DropDownList s `SelectedIndex` и DetailsView s `DataSourceID` свойство s изменения должны сохраняться во время обратной передачи.
 
 
-## <a name="step-4-listing-the-suppliers-products-in-an-editable-gridview"></a>Шаг 4: Список поставщиков продуктов в изменяемого элемента управления GridView
+## <a name="step-4-listing-the-suppliers-products-in-an-editable-gridview"></a>Шаг 4: Перечисление продуктов поставщика в изменяемого элемента управления GridView
 
-С помощью полного DetailsView следующим шагом является включение изменяемого элемента управления GridView, перечислены продукты, предоставляемые выбранного поставщика. Это GridView следует разрешить редактирование только `ProductName` и `QuantityPerUnit` поля. Кроме того, если пользователь, посетив страницу конкретного поставщика, его следует разрешить только обновление этих продуктов, которые являются *не* более не поддерживается. Для этого необходимо сначала добавить перегрузку `ProductsBLL` класса s `UpdateProducts` метод, который принимает в только что `ProductID`, `ProductName`, и `QuantityPerUnit` поля в качестве входных данных. Мы хранить, шаг с заходом в результате процесса заранее многочисленные учебников позвольте s взгляните на здесь код, который следует добавить `ProductsBLL`:
+С помощью DetailsView полный следующим этапом является включение изменяемого элемента управления GridView, перечисляются продукты, предоставляемые выбранным поставщиком. Этот GridView должен допускать изменение только `ProductName` и `QuantityPerUnit` поля. Кроме того, если посещающий страницу пользователь на определенного поставщика, он должен возможность обновлять лишь тех продуктов, которые *не* более не поддерживается. Для этого необходимо сначала добавить перегрузку `ProductsBLL` класс s `UpdateProducts` метода, принимающего в только что `ProductID`, `ProductName`, и `QuantityPerUnit` как входные данные. Мы ve проходили этот процесс заранее в многочисленных руководствах по, так что давайте s взгляните на код, который следует добавить к `ProductsBLL`:
 
 
 [!code-csharp[Main](limiting-data-modification-functionality-based-on-the-user-cs/samples/sample4.cs)]
 
-Эта перегрузка создан, мы готов для добавления элемента управления GridView и связанные методы. Добавить новый GridView на страницу, задайте его `ID` свойства `ProductsBySupplier`и настройте его для использования нового ObjectDataSource с именем `ProductsBySupplierDataSource`. Поскольку мы хотим этого GridView отображены продукты выбранной поставщиком, используйте `ProductsBLL` класса s `GetProductsBySupplierID(supplierID)` метод. Также сопоставить `Update()` метод к новому `UpdateProduct` перегрузку, мы только что создали.
+Перегрузка, мы будет готов для добавления элемента управления GridView и его связанный элемент управления ObjectDataSource. Добавление нового элемента управления GridView на страницу, задайте его `ID` свойства `ProductsBySupplier`и настройте его для использования нового источника ObjectDataSource с именем `ProductsBySupplierDataSource`. Поскольку мы хотим этот GridView отображены продукты поставщиков, используйте `ProductsBLL` класс s `GetProductsBySupplierID(supplierID)` метод. Также сопоставить `Update()` метода к новому `UpdateProduct` мы только что созданной перегрузки.
 
 
-[![Настройка с использованием перегрузки UpdateProduct только что созданный элемент управления ObjectDataSource](limiting-data-modification-functionality-based-on-the-user-cs/_static/image32.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image31.png)
+[![Настройка ObjectDataSource на использование только что созданной перегрузки UpdateProduct](limiting-data-modification-functionality-based-on-the-user-cs/_static/image32.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image31.png)
 
-**Рис. 11**: Настройка ObjectDataSource для использования `UpdateProduct` перегружать только что создали ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image33.png))
-
-
-Мы повторно предложено выбрать источник параметров для `GetProductsBySupplierID(supplierID)` метод s `supplierID` входного параметра. Поскольку мы хотим Показать продуктов для поставщика, выбранного в DetailsView, используйте `SuppliersDetails` управления DetailsView s `SelectedValue` свойство в качестве источника параметра.
+**Рис. 11**: Настройка ObjectDataSource для использования `UpdateProduct` перегрузки только что создали ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image33.png))
 
 
-[![Использовать в качестве источника параметра к свойству SelectedValue s SuppliersDetails DetailsView](limiting-data-modification-functionality-based-on-the-user-cs/_static/image35.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image34.png)
-
-**Рис. 12**: использование `SuppliersDetails` DetailsView s `SelectedValue` свойство в качестве источника параметра ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image36.png))
+Мы повторно запрос на Выбор источника параметра для `GetProductsBySupplierID(supplierID)` метод s `supplierID` входного параметра. Поскольку мы хотим Показать продукты поставщика, выбранного в DetailsView, используйте `SuppliersDetails` управления DetailsView s `SelectedValue` свойство как источник параметра.
 
 
-Возврат к GridView, удалите все поля GridView, за исключением `ProductName`, `QuantityPerUnit`, и `Discontinued`, Маркировка `Discontinued` CheckBoxField только для чтения. Кроме того установите флажок Разрешить изменение смарт-теге s GridView. После внесения этих изменений для GridView и ObjectDataSource должна выглядеть следующим образом:
+[![Используйте свойство SelectedValue s элемента управления suppliersdetails типа DetailsView как источник параметра](limiting-data-modification-functionality-based-on-the-user-cs/_static/image35.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image34.png)
+
+**Рис. 12**: использование `SuppliersDetails` DetailsView s `SelectedValue` свойство как источник параметра ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image36.png))
+
+
+Возвращаясь к GridView, удалите все поля GridView, за исключением `ProductName`, `QuantityPerUnit`, и `Discontinued`, Маркировка `Discontinued` CheckBoxField только для чтения. Кроме того установите флажок Enable Editing в смарт-теге GridView s. После внесения этих изменений декларативная разметка для GridView и элемент управления ObjectDataSource должен выглядеть следующим образом:
 
 
 [!code-aspx[Main](limiting-data-modification-functionality-based-on-the-user-cs/samples/sample5.aspx)]
 
-Как и в наших предыдущих ObjectDataSources эту один s `OldValuesParameterFormatString` свойству `original_{0}`, которое может вызвать проблемы при попытке обновить название продукта s или количество на единицу. Полностью удалите это свойство из декларативного синтаксиса или задайте для него значение по умолчанию `{0}`.
+Как и в наших предыдущих элементов управления ObjectDataSource, это один s `OldValuesParameterFormatString` свойству `original_{0}`, что вызовет проблемы при попытке обновить имя продукта s или количество в единицах измерения. Полностью удалите это свойство из декларативного синтаксиса или установить его на значение по умолчанию, `{0}`.
 
-По завершении этой конфигурации нашу страницу теперь перечислены продукты, предоставляемый данным поставщиком, выбранного в GridView (см. рис. 13). В настоящее время *любой* можно обновить имя продукта s или количество на единицу. Тем не менее необходимо обновить страницу логику, чтобы такие функциональные возможности запрещен для неподдерживаемые продукты для пользователей, связанных с конкретного поставщика. Мы исследуем в этом выпуске этот завершающий шаг на шаге 5.
+По завершении этих настроек нашей странице теперь перечислены продукты, предоставляемые поставщиком, выбранным в GridView (см. рис. 13). В настоящее время *любой* можно обновить имя продукта s или количество в единицах измерения. Тем не менее нам нужно обновить логику страницы, чтобы закрыть для снятых с производства продуктов для пользователей, связанных с определенным поставщиком. Это будет рассмотрено этот окончательный элемент на шаге 5.
 
 
-[![Отображаются продукты, предоставляемый данным поставщиком выбран](limiting-data-modification-functionality-based-on-the-user-cs/_static/image38.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image37.png)
+[![Отображаются продукты, предоставляемые поставщиком выбранные](limiting-data-modification-functionality-based-on-the-user-cs/_static/image38.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image37.png)
 
-**Рис. 13**: отображаются продукты, предоставляемый данным поставщиком выбран ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image39.png))
+**Рис. 13**: отображаются продукты, предоставляемый данным поставщиком выбран ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image39.png))
 
 
 > [!NOTE]
-> С появлением этого изменяемого элемента управления GridView `Suppliers` DropDownList s `SelectedIndexChanged` обработчик событий должны быть обновлены до возврата к GridView в состояние только для чтения. В противном случае при выборе различных поставщиков в середине редактирования сведения о продукте с соответствующим индексом в GridView для нового поставщика также будет использоваться для редактирования. Чтобы предотвратить это, просто установите GridView s `EditIndex` свойства `-1` в `SelectedIndexChanged` обработчика событий.
+> С добавлением этого изменяемого элемента управления GridView `Suppliers` DropDownList s `SelectedIndexChanged` обработчика событий необходимо обновить, чтобы вернуть GridView в состояние только для чтения. В противном случае если в ходе правки сведения о продукте выбран другой поставщик, соответствующий индекс в GridView для нового поставщика также станет изменяемым. Чтобы избежать этого, просто задайте GridView s `EditIndex` свойства `-1` в `SelectedIndexChanged` обработчик событий.
 
 
-Кроме того помните, что очень важно, что GridView, состояние представления s будет включен (по умолчанию). Если задать GridView s `EnableViewState` свойства `false`, увеличивается риск того что параллельно работающие пользователи непреднамеренно удаление или изменение записей. В разделе [предупреждение: проблемы параллелизма с ASP.NET 2.0 GridViews/DetailsView/FormViews, поддерживают редактирование или удаление и с состояние просмотра отключено](http://scottonwriting.net/sowblog/posts/10054.aspx) для получения дополнительной информации.
+Кроме того помните, что очень важно, что GridView состояние представления s быть включен (по умолчанию). Если задать GridView s `EnableViewState` свойства `false`, возникает риск случайного удаления или изменения записей параллельно работающими пользователями. См. в разделе [предупреждение: проблемы параллелизма с помощью ASP.NET 2.0 элементов управления GridView/DetailsView/FormView среды, поддерживающих правку и/или удаление и которых состояние просмотра отключено](http://scottonwriting.net/sowblog/posts/10054.aspx) Дополнительные сведения.
 
-## <a name="step-5-disallow-editing-for-discontinued-products-when-showedit-all-suppliers-is-not-selected"></a>Шаг 5: Запретить редактирование для неподдерживаемые продукты при отображения и изменения всех поставщиков — не выбран
+## <a name="step-5-disallow-editing-for-discontinued-products-when-showedit-all-suppliers-is-not-selected"></a>Шаг 5: Запретить редактирование неподдерживаемые продукты при Show/Edit ALL Suppliers — не выбран
 
-Хотя `ProductsBySupplier` GridView будут обладать полной функциональностью, он в настоящее время предоставляет слишком много доступ к тем пользователям, которые берутся из конкретного поставщика. В нашем бизнес-правила таким пользователям необходимо обновила неподдерживаемые продукты. Чтобы этого добиться, мы можно скрыть (или отключить) «изменить» в этих строках GridView с неподдерживаемые продукты при посещений страницы пользователем от поставщика.
+Хотя `ProductsBySupplier` GridView будет полностью работоспособно, оно дает слишком широкий доступ пользователям, работающим на определенного поставщика. В наши бизнес-правила такие пользователи не должны может обновить снятых с производства продуктов. Чтобы обеспечить это, можно скрыть (или отключить) "Изменить" в тех строках GridView с производства продукты, когда страница посещается пользователем, с использованием от поставщика.
 
-Создайте обработчик событий для GridView s `RowDataBound` событий. В этом обработчике событий необходимо определить, является ли пользователь связан с конкретного поставщика, который для этого учебника можно определить, проверив s DropDownList поставщики `SelectedValue` свойство — если его s, отличный от -1, то пользователь, связанный с конкретного поставщика. Для таких пользователей нам потребуется определить ли продукт не поддерживается. Мы можно взять ссылку фактического `ProductRow` экземпляра, привязанный к строке GridView через `e.Row.DataItem` свойства, как описано в [ *отображение сведения о в GridView s нижнего колонтитула* ](../custom-formatting/displaying-summary-information-in-the-gridview-s-footer-cs.md) Учебник. Если продукт не поддерживается, мы можно взять программный ссылку «Изменить» в GridView s CommandField методами, описанными в предыдущем учебнике [ *Добавление клиентского подтверждение при удалении* ](adding-client-side-confirmation-when-deleting-cs.md). После получения ссылки мы затем скрыть или отключить кнопку.
+Создайте обработчик событий для GridView s `RowDataBound` событий. В этом обработчике событий нужно определить, связан ли пользователь с определенным поставщиком, что для этого руководства, можно определить, проверив список DropDownList Suppliers s `SelectedValue` свойство — если он является s, отличный от -1, а затем пользователь связанные с определенным поставщиком. Затем, для таких пользователей необходимо определить ли продукт снят с производства. Можно взять ссылку на фактический `ProductRow` экземпляра, привязанный к строке GridView, с помощью `e.Row.DataItem` свойства, как описано в [ *отображение сведения о в нижнем колонтитуле GridView s* ](../custom-formatting/displaying-summary-information-in-the-gridview-s-footer-cs.md) Учебник. Если продукт снят с производства, можно взять программную ссылку "Изменить" в GridView s CommandField методами, описанными в предыдущем учебном курсе, [ *Добавление клиентского подтверждения при удалении* ](adding-client-side-confirmation-when-deleting-cs.md). Получив ссылку мы затем можно скрыть или отключить кнопку.
 
 
 [!code-csharp[Main](limiting-data-modification-functionality-based-on-the-user-cs/samples/sample6.cs)]
 
-С этим событием обработчика, при посещении этой страницы имени пользователя от определенного поставщика этих продуктов, которые не поддерживаются недоступны для редактирования, как кнопка правки скрыто для этих продуктов. Например s Креольская огненная смесь является неподдерживаемые продукты для нового Орлеана Cajun преимуществах поставщика. При посещении страницы для этого конкретного поставщика, «изменить» для данного продукта скрыта от видимости (см. рис. 14). Тем не менее при просмотре с помощью «Показать или изменить все поставщики», кнопка "Изменить" — доступны (см. рис. 15).
+С этим событием обработчика, при посещении данной страницы пользователя от определенного поставщика, снятые с производства продукты недоступны для редактирования, как "Изменить" скрывается для этих продуктов. Например Chef Anton s Gumbo Mix является снятый с производства продукт New Orleans Cajun Delights поставщика. При посещении страницы этого конкретного поставщика кнопка, кнопка Edit для этого продукта скрыта (см. рис. 14). Тем не менее при посещении, с использованием «Show/Edit ALL Suppliers», "Изменить" — доступна (см. рис. 15).
 
 
-[![Для пользователей, зависящие от поставщика скрыт кнопку "Изменить" для s Креольская огненная смесь](limiting-data-modification-functionality-based-on-the-user-cs/_static/image41.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image40.png)
+[![Для пользователей конкретного поставщика кнопка изменить для Chef Anton s Gumbo Mix скрыта](limiting-data-modification-functionality-based-on-the-user-cs/_static/image41.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image40.png)
 
-**Рис. 14**: для пользователей определенного поставщика скрыт кнопку "Изменить" для s Креольская Gumbo Mix ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image42.png))
-
-
-[![Для отображения и изменения всех пользователей, поставщики отображается кнопка изменить для s Креольская огненная смесь](limiting-data-modification-functionality-based-on-the-user-cs/_static/image44.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image43.png)
-
-**Рис. 15**: для отображения и изменения всех поставщиков пользователей, кнопку "Изменить" для отображения Gumbo Mix s Креольская ([Просмотр полноразмерное изображение](limiting-data-modification-functionality-based-on-the-user-cs/_static/image45.png))
+**Рис. 14**: для пользователей конкретного поставщика кнопка "Изменить" для Chef Anton s Gumbo Mix скрыта ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image42.png))
 
 
-## <a name="checking-for-access-rights-in-the-business-logic-layer"></a>Проверка наличия права доступа уровня бизнес-логики
+[![Для всех пользователей поставщики Show/Edit отображается кнопка редактирования для Chef Anton s Gumbo Mix](limiting-data-modification-functionality-based-on-the-user-cs/_static/image44.png)](limiting-data-modification-functionality-based-on-the-user-cs/_static/image43.png)
 
-В этом учебнике ASP.NET страницы обрабатывает всю логику в зависимости от того, какие сведения пользователь может видеть и какие продукты, которые он может обновить. В идеальном случае эту логику также будут на уровне бизнес-логики. Например `SuppliersBLL` класса s `GetSuppliers()` (который возвращает всех поставщиков) могут включать проверку, чтобы убедитесь, что текущему пользователю *не* связанные с какой-либо поставщик. Аналогичным образом `UpdateSupplierAddress` метод может включать в себя проверку, чтобы убедиться, что текущему пользователю, либо при работе нашей компании (и таким образом, можно обновить все сведения об адресах поставщики) или связан с поставщиком, данные которого обновляется.
+**Рис. 15**: для Show/Edit все поставщики пользователи, кнопку "Изменить" для Chef Anton s Gumbo Mix отображается ([Просмотр полноразмерного изображения](limiting-data-modification-functionality-based-on-the-user-cs/_static/image45.png))
 
-Я не содержит такие проверки слоев уровень бизнес-ЛОГИКИ, так как в нашем руководстве права пользователя s определяются DropDownList на странице, что нет доступа к классам уровень бизнес-ЛОГИКИ. При использовании системы членства или один из out-встроенные схемы проверки подлинности, предоставляемый ASP.NET (например, проверка подлинности Windows), выполнившего s пользователя данные и сведения о роли может осуществляться из МЕТОДА, делая такой доступ права проверяет возможные в презентации и слои уровень бизнес-ЛОГИКИ.
+
+## <a name="checking-for-access-rights-in-the-business-logic-layer"></a>Проверка прав доступа на уровне бизнес-логики
+
+В этом руководстве ASP.NET страницы обрабатывает всю логику в зависимости от того, какие сведения может видеть пользователь и какие продукты он может обновлять. В идеале эта логика будет также присутствовать на уровне бизнес-логики. Например `SuppliersBLL` класс s `GetSuppliers()` (возвращающего всех поставщиков) может входить проверка для обеспечения текущего пользователя *не* связанные с определенным поставщиком. Аналогичным образом `UpdateSupplierAddress` может входить проверка того, что текущему пользователю, либо работал нашу компанию (и таким образом, можно обновить все сведения об адресах поставщики) или связан с поставщиком, данные которого обновляется.
+
+Я не включил такие проверки уровня БИЗНЕС-логики, так как в нашем учебном курсе права пользователя s определяются DropDownList на странице, которая не может получить доступ к классам BLL. При использовании системы членства или одной из схем проверки подлинности out-готовые возможности, предоставляемые ASP.NET (например, проверка подлинности Windows), в настоящее время вошедшего пользователя s информации и сведений о ролях может осуществляться из BLL, что делает такой доступ права проверяет возможные в презентации и слои BLL.
 
 ## <a name="summary"></a>Сводка
 
-Настройка интерфейса изменения данных, основанный на пользовательском должны большинства узлов, предоставляющих учетных записей пользователей. Пользователи с правами администратора можно удалить или изменить любые записи, в то время как обычных пользователей могут быть ограничены только обновление или удаление записей, которые они создали сами. Любой сценарий, возможно, данные веб-элементы управления ObjectDataSource, и классы уровня бизнес-логики можно расширить для добавления или запрещать определенные функции, на основе пользователя, вошедшего в систему. В этом учебнике мы узнали, как ограничить количество данных для просмотра и редактирования, в зависимости от того, пользователь связан с конкретного поставщика или если они работали для нашей компании.
+Большинство узлов, предоставляющих учетные записи пользователей должны Настройка интерфейса изменения данных, в зависимости от текущего пользователя. Пользователи с правами администратора можно попытаться удалить или изменить любую запись, в то время как пользователям без прав администратора могут быть ограничены обновлением и удалением записей, созданных ими самими. Любой сценарий, возможно, данные веб-элемент управления ObjectDataSource, и классы уровня бизнес-логики, которые могут быть расширены для добавления или запрещать определенные функции в зависимости от вошедшего в систему пользователя. В этом учебнике мы рассмотрели для ограничения возможности просмотра и правки данных в зависимости от ли пользователь был связан с определенным поставщиком или если они работали нашей компании.
 
-Этот учебник завершает изучение вставки, обновления и удаления данных с помощью элементов управления GridView, DetailsView и FormView. Начиная с следующем уроке мы будем можем обратиться к Добавление разбиение по страницам и сортировка поддержки.
+Этим учебным курсом завершается изучение вставки, обновления и удаления данных с помощью элементов управления GridView, DetailsView и FormView. Начиная со следующего учебного, мы обратим наше внимание на разбиение по страницам и обеспечения поддержки сортировки.
 
-Программирование довольны!
+Счастливого вам программирования!
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи книг по ASP/ASP.NET и основатель веб- [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Microsoft с 1998 года. Скотт — независимый консультант, преподаватель и автор. Его последняя книга — [ *Sams Teach ASP.NET 2.0 in 24 часа*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Ним можно связаться по адресу [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 > [!div class="step-by-step"]
 > [Назад](adding-client-side-confirmation-when-deleting-cs.md)

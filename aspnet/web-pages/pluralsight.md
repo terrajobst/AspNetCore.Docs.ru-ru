@@ -1,34 +1,33 @@
 ---
 uid: web-pages/pluralsight
-title: WebMatrix и Web Pages видео от Pluralsight | Документы Microsoft
+title: WebMatrix и веб-страниц учебных видео от Pluralsight | Документация Майкрософт
 author: rick-anderson
-description: WebMatrix &amp; обучения веб-страницы на основе Pluralsight этого подробные курса вы получите запущен и работает с WebMatrix и ASP.NET Web Pages. Она охватывает everythi...
+description: WebMatrix &amp; веб-страниц обучение от Pluralsight этом подробном курсе вы получите приступить к работе с WebMatrix и ASP.NET Web Pages. Он охватывает everythi...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/18/2012
 ms.topic: article
 ms.assetid: 79eca52c-e7ad-44ab-a3e4-d8093e9da5a7
 ms.technology: dotnet-webpages
-ms.prod: .net-framework
 msc.legacyurl: /web-pages/pluralsight
 msc.type: content
-ms.openlocfilehash: 5b93685a71b7b85bfdbb2ab41950889c4bc6a37f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 43155f278187c193683fb04148b87377f63a9265
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26529823"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37385765"
 ---
-<a name="webmatrix-and-web-pages-video-training-from-pluralsight"></a>WebMatrix и Web Pages видео от Pluralsight
+<a name="webmatrix-and-web-pages-video-training-from-pluralsight"></a>WebMatrix и веб-страниц учебных видео от Pluralsight
 ====================
 
 > [!NOTE] 
-> WebMatrix не рекомендуется использовать в интегрированной среде разработки для веб-страниц ASP.NET. Используйте [Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) или [кода Visual Studio](https://code.visualstudio.com/).
+> WebMatrix не рекомендуется использовать как интегрированную среду разработки для веб-страниц ASP.NET. Используйте [Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) или [Visual Studio Code](https://code.visualstudio.com/).
 
 ### <a name="videos"></a>Видеоролики
 
-- [Знакомство с приложением WebMatrix](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m1&mode=live&clip=0&course=webmatrix-introduction)
-- [Сайты и рабочие области файлов](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m2&mode=live&clip=0&course=webmatrix-introduction)
+- [Введение в WebMatrix](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m1&mode=live&clip=0&course=webmatrix-introduction)
+- [Узлы и рабочие области файлов](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m2&mode=live&clip=0&course=webmatrix-introduction)
 - [Работа с базами данных](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m3&mode=live&clip=0&course=webmatrix-introduction)
 - [Работа с документами стандартные веб-сайтов](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m4&mode=live&clip=0&course=webmatrix-introduction)
 - [Веб-страницы ASP.NET](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m5&mode=live&clip=0&course=webmatrix-introduction)
@@ -37,13 +36,13 @@ ms.locfileid: "26529823"
 - [Мобильные веб-сайты](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m10&mode=live&clip=0&course=webmatrix-introduction)
 
 
-«Этот курс, регистрируемое Мэтт Милнер для Pluralsight является это отличный способ получить все сведения, необходимые для создания динамических приложений, управляемых данными с веб-страниц ASP.NET, но мощные новый синтаксис Razor. Большое спасибо, что для Pluralsight этого свободного источника! Видеопроигрыватель, содержимое и поток действительно превосходно. Я рекомендую извлечь сейчас!»
+«Этот курс с Мэтт Милнер компании Pluralsight — это отличный способ получить все сведения, необходимые для создания динамических управляемых данными приложений, на платформе веб-страниц ASP.NET, но также мощный нового синтаксиса Razor. Большое спасибо, Pluralsight, чтобы этот бесплатный источник! Проигрыватель видео, содержимым и ходом действительно превосходно. Я советую вам попробовать прямо сейчас!»
 
-Скотт Хансельман, руководитель программы участника, веб-платформа и средства Azure, Microsoft
+Скотт Хансельман, основной руководитель программы, веб-платформа и инструменты Azure, Microsoft
 
 
-![Pluralsight, эмблемы, playbutton](pluralsight/_static/image1.png)
+![Pluralsight — логотип playbutton](pluralsight/_static/image1.png)
 
-Разблокировать доступ к 3 000 + разработки, ИТ и creative курсов, которые можно просматривать в любое время.
+Разблокировать доступ к 3 000 + dev, ИТ и creative курсы, которые можно выполнить в любое время.
 
-**Начиная с 29 долларов США/mo.**[запустите бесплатную пробную версию](https://pluralsight.com/microsoft/olt/subscribe/SubscriptionRedirector.aspx?freetrial=true&amp;utm_source=microsoft&amp;utm_medium=sponsored-page&amp;utm_content=webmatrix&amp;utm_campaign=microsoft-sponsored-course) [подписку сейчас](https://pluralsight.com/microsoft/OLT/subscriptions.aspx?utm_source=microsoft&amp;utm_medium=sponsored-page&amp;utm_content=webmatrix&amp;utm_campaign=microsoft-sponsored-course)
+**Начиная с 29 долл. США/mo.**[начать бесплатный пробный период](https://pluralsight.com/microsoft/olt/subscribe/SubscriptionRedirector.aspx?freetrial=true&amp;utm_source=microsoft&amp;utm_medium=sponsored-page&amp;utm_content=webmatrix&amp;utm_campaign=microsoft-sponsored-course) [подписку сейчас](https://pluralsight.com/microsoft/OLT/subscriptions.aspx?utm_source=microsoft&amp;utm_medium=sponsored-page&amp;utm_content=webmatrix&amp;utm_campaign=microsoft-sponsored-course)

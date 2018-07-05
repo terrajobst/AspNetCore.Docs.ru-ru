@@ -1,90 +1,90 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/twitter-helper
-title: Вспомогательный модуль с веб-страниц ASP.NET Twitter | Документы Microsoft
+title: Вспомогательный модуль с помощью ASP.NET Web Pages Twitter | Документация Майкрософт
 author: tfitzmac
-description: Этого раздела и приложения показано, как добавить в проект WebMatrix 3 вспомогательный модуль Twitter. Он содержит код вспомогательный модуль Twitter и показан вызов вспомогательного...
+description: Этот раздел и приложения показано, как добавить вспомогательный модуль Twitter для WebMatrix 3 проекта. Он содержит код вспомогательный модуль Twitter и показан способ вызова вспомогательного приложения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/07/2014
 ms.topic: article
 ms.assetid: c1a1244e-b9c8-42e6-a00b-8456a4ec027c
 ms.technology: dotnet-webpages
-ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/twitter-helper
 msc.type: authoredcontent
-ms.openlocfilehash: 07d9c4d485c42b78a42c54c9740af5f67cb44763
-ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.openlocfilehash: 2c84a986a39f6802a78df53510847cb70efbb0f2
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/25/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37373027"
 ---
 <a name="twitter-helper-with-aspnet-web-pages"></a>Вспомогательное приложение Twitter с помощью веб-страниц ASP.NET
 ====================
 по [Tom FitzMacken](https://github.com/tfitzmac)
 
-> Этого раздела и приложения показано, как добавить в проект WebMatrix 3 вспомогательный модуль Twitter. Он содержит код вспомогательный модуль Twitter и показано, как вызвать вспомогательных методов.
+> Этот раздел и приложения показано, как добавить вспомогательный модуль Twitter для WebMatrix 3 проекта. Он содержит код вспомогательный модуль Twitter и демонстрируется вызов вспомогательных методов.
 > 
-> Этот код для файла Twitter.cshtml был разработан **Tian панорамирование** корпорации Майкрософт.
+> Этот код для файла Twitter.cshtml была разработана **Tian Pan** корпорации Майкрософт.
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемая в этом учебнике
+> ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
 > 
 > 
 > - Веб-страниц ASP.NET (Razor) 3
 >   
 > 
-> Этот учебник также работает с веб-страницы ASP.NET 2.
+> Этот учебник также работает с ASP.NET Web Pages 2.
 
 
 ## <a name="introduction"></a>Вступление
 
-В этом разделе показано, как добавить вспомогательный модуль Twitter в приложение и использовать синтаксис Razor для вызова вспомогательных методов. Вспомогательный модуль Twitter упрощает для включения кнопки Twitter и мини-приложения в приложении. Для использования в Twitter мини-приложении, например шкалы пользователя или результатах поиска для хэштегом, необходимо сначала создать [мини-приложение в Twitter](https://twitter.com/settings/widgets). После создания мини-приложения, вы получите идентификатор мини-приложения. При вызове вспомогательные методы, которые показывают мини-приложения можно передать в качестве параметра этот идентификатор мини-приложения.
+В этом разделе показано, как добавить вспомогательный модуль Twitter для приложения и используйте синтаксис Razor для вызова вспомогательных методов. Вспомогательный модуль Twitter упрощает процесс включения кнопки Twitter и мини-приложения в приложении. Для использования мини-приложения Twitter, например временную шкалу пользователя или результатов поиска по хэштегу, необходимо сначала создать [мини-приложение в Twitter](https://twitter.com/settings/widgets). После создания мини-приложение, вы получите идентификатор мини-приложения. При вызове вспомогательные методы, которые показывают мини-приложения можно передать в качестве параметра этот идентификатор мини-приложения.
 
-В этом разделе была написана для версии 1.1 Twitter API. Непосредственное добавление Twitter вспомогательного кода в проект, можно обновить вспомогательного кода при изменении Twitter API.
+Эта статья написана для Twitter API версии 1.1. Путем непосредственного добавления Twitter вспомогательного кода в проект, можно обновить вспомогательный код, при изменении Twitter API.
 
-Сведения об установке WebMatrix см. в разделе [введение в ASP.NET Web Pages 2 — начало работы](../getting-started/introducing-aspnet-web-pages-2/getting-started.md).
+Сведения об установке WebMatrix, см. в разделе [введение в ASP.NET Web Pages 2 - Приступая к работе](../getting-started/introducing-aspnet-web-pages-2/getting-started.md).
 
-## <a name="add-twitter-helper-to-your-project"></a>Добавьте в проект вспомогательный модуль Twitter
+## <a name="add-twitter-helper-to-your-project"></a>Добавьте вспомогательный модуль Twitter в проект
 
-Чтобы добавить вспомогательный модуль Twitter, сначала добавьте папку с именем **приложения\_код** в проект. Создайте файл с именем **Twitter.cshtml**.
+Чтобы добавить вспомогательный модуль Twitter, во-первых, добавьте папку с именем **приложения\_кода** в проект. Затем создайте файл с именем **Twitter.cshtml**.
 
-![Папки App_Code](twitter-helper/_static/image1.png)
+![Папка App_Code](twitter-helper/_static/image1.png)
 
 Замените код по умолчанию в Twitter.cshtml следующим кодом.
 
 [!code-cshtml[Main](twitter-helper/samples/sample1.cshtml)]
 
-## <a name="call-twitter-methods-from-your-web-pages"></a>Вызов методов Twitter из веб-страниц
+## <a name="call-twitter-methods-from-your-web-pages"></a>Вызывайте методы Twitter из веб-страниц
 
-Приведенный ниже показано, как использовать методы вспомогательный модуль Twitter со страницы в проекте. В проекте необходимо заменить значения параметров со значениями, которые относятся к вашим потребностям. Идентификаторы предоставленный мини-приложения можно использовать для изучения того, как методы работают, но требуется создавать собственные мини-приложения для проекта.
+Приведенный ниже показано, как использовать методы вспомогательный модуль Twitter из страницы в проекте. В проекте необходимо заменить значения параметров со значениями, которые имеют отношение к вашим потребностям. Можно использовать идентификаторы предоставленный мини-приложение для просмотра, как методы работают, но вам потребуется создать собственные мини-приложения для вашего проекта.
 
-Не все параметры, приведенные ниже, являются обязательными. Необязательные параметры используются для настройки отображения кнопки и мини-приложения. Например кнопка выполните требуется только имя пользователя, выполните, но в примере показано входят: номер последователи и как указать размер кнопки и языка.
+Не все параметры, показанные ниже, являются обязательными. Необязательные параметры позволяют настроить способ отображения кнопки или мини-приложения. Например кнопки выполните требуется только имя пользователя, выполните, но примере показано, как включить количество подписчиков, а также как указать размер кнопки и языка.
 
 [!code-html[Main](twitter-helper/samples/sample2.html)]
 
 ## <a name="see-the-results"></a>Просмотреть результаты
 
-Этот код создает следующие кнопки и мини-приложения. Эти кнопки и мини-приложений могут полностью функциональные, не снимки экрана. Кнопка выполните отображается на испанском языке, так как имеет значение параметра language **es**.
+Этот код создает следующие кнопки и мини-приложения. Эти кнопки и мини-приложения могут полностью работоспособно, не снимки экрана. Кнопки выполните отображается на испанском языке, поскольку было присвоено параметра language **es**.
 
 ### <a name="follow-button"></a>Выполните кнопки
 
-[Выполните @aspnet)](https://twitter.com/aspnet)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+[Выполните @aspnet)](https://twitter.com/aspnet)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>`
 
-### <a name="tweet-button"></a>Кнопка твит
+### <a name="tweet-button"></a>Кнопка твита
 
-[Твиты](https://twitter.com/share)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+[Твит](https://twitter.com/share)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>`
 
 ### <a name="user-timeline-profile"></a>Временная шкала пользователя (профиль)
 
-[Твиты @aspnet](https://twitter.com/aspnet)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+[Твиты по @aspnet](https://twitter.com/aspnet)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>`
 
 ### <a name="favorites"></a>Избранное
 
-[Избранного Твиты по @Microsoft](https://twitter.com/Microsoft/favorites)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+[Избранные Твитов @Microsoft](https://twitter.com/Microsoft/favorites)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>`
 
 ### <a name="list"></a>Список
 
-[Твиты из @Microsoft/MS \_потребителя\_делений](https://twitter.com/microsoft/ms-consumer-brands/)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+[Твиты из @Microsoft/MS \_потребителя\_делений](https://twitter.com/microsoft/ms-consumer-brands/)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>`
 
 ### <a name="search"></a>Поиск
 
-[Твитов о &quot;#asp.net&quot;](https://twitter.com/search?q=%23asp.net)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+[О &quot;#asp.net&quot;](https://twitter.com/search?q=%23asp.net)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>`

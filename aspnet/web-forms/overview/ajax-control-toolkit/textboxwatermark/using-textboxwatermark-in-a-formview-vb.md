@@ -1,61 +1,60 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-in-a-formview-vb
-title: С помощью TextBoxWatermark в FormView (VB) | Документы Microsoft
+title: Использование элемента управления TextBoxWatermark в элементе управления FormView (VB) | Документация Майкрософт
 author: wenz
-description: Элемент управления TextBoxWatermark в наборе элементов управления AJAX расширяет текстовое поле для отображения текста в поле. Когда пользователь щелкает в поле, оно я...
+description: Элемент управления TextBoxWatermark в AJAX Control Toolkit расширяет текстовое поле для отображения текста в поле. Когда пользователь щелкает в поле, его я...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: 41497361-7fba-4825-b36c-f58d79522a88
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-in-a-formview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5789ccc4b2c6385f3476857dce139a8b47c5e5e8
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 1bb3ad274ba6c8617643fa4d7894a73de4b5cdff
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30872537"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37396189"
 ---
-<a name="using-textboxwatermark-in-a-formview-vb"></a>С помощью TextBoxWatermark в FormView (Visual Basic)
+<a name="using-textboxwatermark-in-a-formview-vb"></a>Использование элемента управления TextBoxWatermark в элементе управления FormView (VB)
 ====================
 по [Кристиан Wenz](https://github.com/wenz)
 
-[Загрузить код](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/TextBoxWatermark1.vb.zip) или [скачать PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/textboxwatermark1VB.pdf)
+[Скачать код](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/TextBoxWatermark1.vb.zip) или [скачать PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/textboxwatermark1VB.pdf)
 
-> Элемент управления TextBoxWatermark в наборе элементов управления AJAX расширяет текстовое поле для отображения текста в поле. Когда пользователь щелкает в поле, оно будет очищено. Если поле остается без ввода текста, заданными текст снова появится. Это также возможно в элементе управления FormView.
+> Элемент управления TextBoxWatermark в AJAX Control Toolkit расширяет текстовое поле для отображения текста в поле. Когда пользователь щелкает в поле, оно будет очищено. Если пользователь оставляет поле без ввода текста, заданными текст отображается повторно. Это также возможно в элементе управления FormView.
 
 
 ## <a name="overview"></a>Обзор
 
-`TextBoxWatermark` В наборе элементов управления AJAX, расширяет текстовое поле для отображения текста в поле. Когда пользователь щелкает в поле, оно будет очищено. Если поле остается без ввода текста, заданными текст снова появится. Это также можно сделать в `FormView` элемента управления.
+`TextBoxWatermark` В AJAX Control Toolkit, расширяет текстовое поле для отображения текста в поле. Когда пользователь щелкает в поле, оно будет очищено. Если пользователь оставляет поле без ввода текста, заданными текст отображается повторно. Это также возможно в рамках `FormView` элемента управления.
 
 ## <a name="steps"></a>Шаги
 
-Во-первых источник данных является обязательным. В этом примере используется база данных AdventureWorks и Microsoft SQL Server 2005 Express Edition. Базы данных является необязательной частью установки Visual Studio (включая экспресс-выпуск), а также доступна как отдельный загружаемый в разделе [ https://go.microsoft.com/fwlink/?LinkId=64064 ](https://go.microsoft.com/fwlink/?LinkId=64064). Базы данных AdventureWorks входит в состав образцов баз данных и образцы SQL Server 2005 (загрузить в [ https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e &amp;DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp;DisplayLang=en)). Самый простой способ настроить базы данных будет использовать Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en)) и присоединения `AdventureWorks.mdf` файл базы данных.
+Во-первых источником данных является обязательным. В этом примере используется база данных AdventureWorks и Microsoft SQL Server 2005 Express Edition. Базы данных является необязательной частью установки Visual Studio (включая экспресс-выпуск), а также доступна для загрузки в разделе [ https://go.microsoft.com/fwlink/?LinkId=64064 ](https://go.microsoft.com/fwlink/?LinkId=64064). Базы данных AdventureWorks является частью образцы SQL Server 2005 и образцов баз данных (загрузить в [ https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp; DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp;DisplayLang=en)). Самый простой способ настроить базы данных является использование Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp; DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en)) и присоединения `AdventureWorks.mdf` файл базы данных.
 
-Для данного образца предполагается, что экземпляр SQL Server 2005 Express Edition вызывается `SQLEXPRESS` и находится на том же компьютере, что веб-сервер; Кроме того, это настройки по умолчанию. Если настройки отличаются, необходимо адаптировать сведения о соединении для базы данных.
+В этом примере мы предполагаем, что экземпляр SQL Server 2005 Express Edition называется `SQLEXPRESS` и находится на одном компьютере с веб-сервера; это также настройки по умолчанию. Если настройки отличаются, вам нужно адаптировать сведения о соединении для базы данных.
 
-Чтобы активировать функциональные возможности ASP.NET AJAX и набора средств управления `ScriptManager` управления необходимо поместить в любом месте на странице (но в `<form>` элемент):
+Для активации функции ASP.NET AJAX и Control Toolkit, `ScriptManager` управления необходимо поместить в любом месте на странице (но в `<form>` элемента):
 
 [!code-aspx[Main](using-textboxwatermark-in-a-formview-vb/samples/sample1.aspx)]
 
-Добавьте источник данных на страницу, которая поддерживает `DELETE`, `INSERT` и `UPDATE` инструкции SQL. При использовании помощника по Visual Studio для создания источника данных, помните, что ошибки в текущей версии не предшествует имени таблицы (`Vendor`) с `Purchasing`. В следующем примере показана правильный синтаксис:
+Затем добавьте источник данных на страницу, которая поддерживает `DELETE`, `INSERT` и `UPDATE` инструкций SQL. Если вы используете этот помощник используется Visual Studio для создания источника данных, виду, что ошибки в текущей версии не префикса имени таблицы (`Vendor`) с `Purchasing`. В следующей разметке показан правильный синтаксис:
 
 [!code-aspx[Main](using-textboxwatermark-in-a-formview-vb/samples/sample2.aspx)]
 
-Запомните имя (`ID`) источника данных, так как он будет использоваться в `DataSourceID` свойства `FormView` элемента управления. `<InsertItemTemplate>` Раздел `FormView` содержится текстовое поле, который расширяется за счет `TextBoxWatermarkExtender` элемента управления. Убедитесь, что расширения находится внутри шаблона, но не вне его.
+Запомните название (`ID`) источника данных, так как он будет использоваться в `DataSourceID` свойство `FormView` элемента управления. `<InsertItemTemplate>` Раздел `FormView` содержит поле textbox, которое расширяется за счет `TextBoxWatermarkExtender` элемента управления. Убедитесь, что расширитель находится в шаблоне, но не вне его.
 
 [!code-aspx[Main](using-textboxwatermark-in-a-formview-vb/samples/sample3.aspx)]
 
-Теперь при изменении пользователем в режим вставки из `FormView` управления текстового поля для нового поставщика автоматически заполняемом благодаря `TextBoxWatermarkExtender` элемента управления. Щелкните внутри текстового поля позволяет текста наполнения исчезают.
+Теперь когда пользователь изменяет в режим вставки из `FormView` управления текстового поля для нового поставщика автоматически заполняемом выражаем благодарность `TextBoxWatermarkExtender` элемента управления. Щелкните внутри текстового поля позволяет ввода текста наполнения исчезают.
 
 
-[![Водяной знак в поле поступают из расширения](using-textboxwatermark-in-a-formview-vb/_static/image2.png)](using-textboxwatermark-in-a-formview-vb/_static/image1.png)
+[![Водяной знак в поле поступает из расширения](using-textboxwatermark-in-a-formview-vb/_static/image2.png)](using-textboxwatermark-in-a-formview-vb/_static/image1.png)
 
-Водяной знак в поле поступают из расширения ([Просмотр полноразмерное изображение](using-textboxwatermark-in-a-formview-vb/_static/image3.png))
+Водяной знак в поле поступает из расширения ([Просмотр полноразмерного изображения](using-textboxwatermark-in-a-formview-vb/_static/image3.png))
 
 > [!div class="step-by-step"]
 > [Назад](using-textboxwatermark-with-validation-controls-cs.md)

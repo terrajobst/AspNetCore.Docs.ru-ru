@@ -1,31 +1,30 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-13-dependency-injection
-title: 'ASP.NET MVC Storefront часть 13: Внедрение зависимостей | Документы Microsoft'
+title: 'Часть Интернет-магазин на ASP.NET MVC 13: Внедрение зависимостей | Документация Майкрософт'
 author: robconery
-description: Это совместная разработка сеанс с Миллер Jeremy из CodeBetter/StructureMap, где он показывает, как я подробно внедрения зависимостей.
+description: Это сеанс совместной разработки с Джереми Миллер из CodeBetter/StructureMap, где он показывает, как я подробно внедрения зависимостей.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/19/2008
 ms.topic: article
 ms.assetid: 296fbe12-a28a-4fd8-bbc9-d1dc7468566a
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-13-dependency-injection
 msc.type: video
-ms.openlocfilehash: a915d6594d81151d87ee82d67af4105b009c7605
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: a2b2521c111eb4fe777aa3cdc99ec70ebb585600
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30871042"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37366165"
 ---
-<a name="aspnet-mvc-storefront-part-13-dependency-injection"></a>ASP.NET MVC Storefront часть 13: Внедрение зависимостей
+<a name="aspnet-mvc-storefront-part-13-dependency-injection"></a>Часть Интернет-магазин на ASP.NET MVC 13: Внедрение зависимостей
 ====================
-по [ток Conery](https://github.com/robconery)
+по [Роб Conery](https://github.com/robconery)
 
-Это совместная разработка сеанс с Миллер Jeremy из CodeBetter/StructureMap, где он показывает, как я подробно внедрения зависимостей.
+Это сеанс совместной разработки с Джереми Миллер из CodeBetter/StructureMap, где он показывает, как я подробно внедрения зависимостей.
 
-[&#9654;Посмотрите видео (58 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-13-dependency-injection)
+[&#9654;Просмотрите видео (созданные за 58 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-13-dependency-injection)
 
 > [!div class="step-by-step"]
 > [Назад](aspnet-mvc-storefront-part-12-mocking.md)

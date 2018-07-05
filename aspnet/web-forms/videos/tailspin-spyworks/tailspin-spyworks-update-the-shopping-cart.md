@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/tailspin-spyworks/tailspin-spyworks-update-the-shopping-cart
-title: Tailspin Spyworks - обновить список покупок | Документы Microsoft
+title: Tailspin Spyworks. обновление корзины | Документация Майкрософт
 author: JoeStagner
-description: Джо Стэгнер обновляет корзины для покупок для примера приложения Web Forms Tailspin Spyworks.
+description: (Joe Stagner) обновляет корзины для примера веб-форм приложения Tailspin Spyworks.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/29/2010
 ms.topic: article
 ms.assetid: 92909295-b514-486f-b9ed-0e0100ded16c
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/tailspin-spyworks/tailspin-spyworks-update-the-shopping-cart
 msc.type: video
-ms.openlocfilehash: 39e9db794b4659cc46dc08dd73e77c45ac462165
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 1c256983529018cb35f4373ee4717d806f8ab3d2
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30894097"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37378609"
 ---
-<a name="tailspin-spyworks---update-the-shopping-cart"></a>Tailspin Spyworks - обновить список покупок
+<a name="tailspin-spyworks---update-the-shopping-cart"></a>Tailspin Spyworks. обновление корзины для покупок
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-Джо Стэгнер обновляет корзины для покупок для примера приложения Web Forms Tailspin Spyworks.
+(Joe Stagner) обновляет корзины для примера веб-форм приложения Tailspin Spyworks.
 
-[&#9654;Посмотрите видео (41 в минутах)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/tailspin-spyworks-update-the-shopping-cart)
+[&#9654;Просмотрите видео (41 в минутах)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/tailspin-spyworks-update-the-shopping-cart)
 
 > [!div class="step-by-step"]
 > [Назад](tailspin-spyworks-display-shopping-cart.md)

@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/building-20-applications/lesson-4-understanding-web-application-state
-title: '[Занятия 4:] Основные сведения о состоянии веб-приложения | Документы Microsoft'
+title: '[Урок 4:] Основные сведения о состоянии веб-приложения | Документация Майкрософт'
 author: microsoft
-description: На этом занятии вы узнаете, как для поддержания состояния в ASP.NET, включая различные объекты, которые можно использовать для хранения информации о вашей разработка приложений ASP.NET 2.0...
+description: На этом занятии вы узнаете, как для поддержания состояния в ASP.NET, включая различные объекты, которые можно использовать для хранения сведений о приложение ASP.NET 2.0...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/28/2005
 ms.topic: article
 ms.assetid: 22ddc59d-cd84-4def-a58b-ec3ca57f0d85
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/building-20-applications/lesson-4-understanding-web-application-state
 msc.type: video
-ms.openlocfilehash: adfcc03b761ec55502b5b945f3c68ecc33a5c40c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: ed804d37f94845bcc2043bf21e16a27b12f64f83
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30886762"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37400581"
 ---
-<a name="lesson-4-understanding-web-application-state"></a>[Занятия 4:] Основные сведения о состоянии веб-приложения
+<a name="lesson-4-understanding-web-application-state"></a>[Урок 4:] Основные сведения о состоянии веб-приложения
 ====================
 по [Microsoft](https://github.com/microsoft)
 
-На этом занятии вы узнаете, как для поддержания состояния в ASP.NET, включая различные объекты, которые можно использовать для хранения сведений о приложениях ASP.NET 2.0.
+На этом занятии вы узнаете, как для поддержания состояния в ASP.NET, включая различные объекты, которые можно использовать для хранения сведений для приложений ASP.NET 2.0.
 
-[&#9654;Посмотрите видео (40 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-4-understanding-web-application-state)
+[&#9654;Просмотрите видео (40 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-4-understanding-web-application-state)
 
 > [!div class="step-by-step"]
 > [Назад](lesson-3-understanding-more-about-events-and-postback.md)

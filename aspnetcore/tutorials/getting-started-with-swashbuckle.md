@@ -4,14 +4,14 @@ author: zuckerthoben
 description: Дополнительные сведения о добавлении Swashbuckle в проект веб-API ASP.NET Core для интеграции пользовательского интерфейса Swagger.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/31/2018
+ms.date: 06/29/2018
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 7a1fdad874211134308ea3feac3110ea38095d49
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 70a1503a1ddbfe7f569d12b0034d967b220c9c44
+ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274460"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37126252"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Начало работы с Swashbuckle и ASP.NET Core
 
@@ -126,19 +126,55 @@ XML-комментарии можно включить следующим обр
 
 # <a name="visual-studiotabvisual-studio-xml"></a>[Visual Studio](#tab/visual-studio-xml/)
 
+::: moniker range=">= aspnetcore-2.0"
+
+* В **обозревателе решений** щелкните проект правой кнопкой мыши и выберите команду **Изменить <имя_проекта>.csproj**.
+* Вручную добавьте выделенные строки в файл *.csproj*:
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
 * В **обозревателе решений** щелкните проект правой кнопкой мыши и выберите пункт **Свойства**.
-* Установите флажок **Файл XML-документации** в разделе **Вывод** на вкладке **Сборка**
+* Установите флажок **Файл XML-документации** в разделе **Вывод** на вкладке **Сборка**.
+
+::: moniker-end
 
 # <a name="visual-studio-for-mactabvisual-studio-mac-xml"></a>[Visual Studio для Mac](#tab/visual-studio-mac-xml/)
 
-* Откройте диалоговое окно **Параметры проекта** > **Сборка** > **Компилятор**.
+::: moniker range=">= aspnetcore-2.0"
+
+* В *панели решения* нажмите **Управление** и выберите имя проекта. Перейдите в раздел **Сервис** > **Изменить файл**.
+* Вручную добавьте выделенные строки в файл *.csproj*:
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+* Откройте диалоговое окно **Параметры проекта** > **Сборка** > **Компилятор**
 * Установите флажок **Сформировать XML-документацию** в разделе **Общие параметры**
+
+::: moniker-end
 
 # <a name="visual-studio-codetabvisual-studio-code-xml"></a>[Visual Studio Code.](#tab/visual-studio-code-xml/)
 
-Вручную добавьте в файл *.csproj* следующий фрагмент кода:
+Вручную добавьте выделенные строки в файл *.csproj*:
 
-[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=2)]
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
+
+::: moniker-end
 
 ---
 
@@ -148,15 +184,25 @@ XML-комментарии можно включить следующим обр
 warning CS1591: Missing XML comment for publicly visible type or member 'TodoController.GetAll()'
 ```
 
-Чтобы отключить предупреждения, определите разделенный точками с запятой список игнорируемых кодов предупреждений в файле *.csproj*:
+Чтобы отключить предупреждения, определите разделенный точками с запятой список игнорируемых кодов предупреждений в файле *.csproj*. Добавление кодов предупреждений в `$(NoWarn);` также применяется к установленным по умолчанию значениям C#.
 
-[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=3)]
+::: moniker range=">= aspnetcore-2.0"
 
-Настройте Swagger на использование созданного XML-файла. В Linux и других операционных системах, отличных от Windows, имена и пути файлов могут быть чувствительны к регистру. Например, файл *ToDoApi.XML* допустим в Windows, но не в CentOS.
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=3)]
+
+::: moniker-end
 
 ::: moniker range="<= aspnetcore-1.1"
 
-[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup1x.cs?name=snippet_ConfigureServices&highlight=30-32)]
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=3)]
+
+::: moniker-end
+
+Настройте Swagger на использование созданного XML-файла. В Linux и других операционных системах, отличных от Windows, имена и пути файлов могут быть чувствительны к регистру. Например, файл *ToDoApi.XML* допустим в Windows, но не в CentOS.
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/Startup.cs?name=snippet_ConfigureServices&highlight=31-33)]
 
 ::: moniker-end
 
@@ -166,13 +212,13 @@ warning CS1591: Missing XML comment for publicly visible type or member 'TodoCon
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range="<= aspnetcore-1.1"
 
-[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/Startup.cs?name=snippet_ConfigureServices&highlight=31-33)]
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup1x.cs?name=snippet_ConfigureServices&highlight=30-32)]
 
 ::: moniker-end
 
-В приведенном выше коде для создания имени XML-файла, соответствующего имени проекта веб-API, используется [отражение](/dotnet/csharp/programming-guide/concepts/reflection). Такой подход гарантирует, что имя созданного XML-файла совпадает с именем проекта. Свойство [AppContext.BaseDirectory](/dotnet/api/system.appcontext.basedirectory#System_AppContext_BaseDirectory) используется для построения пути к XML-файлу.
+В приведенном выше коде для создания имени XML-файла, соответствующего имени проекта веб-API, используется [отражение](/dotnet/csharp/programming-guide/concepts/reflection). Свойство [AppContext.BaseDirectory](/dotnet/api/system.appcontext.basedirectory#System_AppContext_BaseDirectory) используется для построения пути к XML-файлу.
 
 Включение в действие комментариев с тройной косой чертой улучшает пользовательский интерфейс Swagger, так как позволяет добавить описание к заголовку раздела. Добавьте элемент [\<summary>](/dotnet/csharp/programming-guide/xmldoc/summary) над действием `Delete`:
 

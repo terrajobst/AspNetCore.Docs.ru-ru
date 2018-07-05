@@ -1,28 +1,27 @@
 ---
 uid: web-forms/videos/building-35-applications/page-lifecycle-events
-title: События жизненного цикла страницы | Документы Microsoft
+title: События жизненного цикла | Документация Майкрософт
 author: JoeStagner
-description: ASP.NET предоставляет механизм очень обширную с обработчики в важных хронологическом экземпляры жизненного цикла страницы ASP.NET. В этом видео будет перечисления...
+description: ASP.NET предоставляет механизм очень обширную с обработчики все важные хронологическом экземпляры в жизненном цикле страницы ASP.NET. В этом видео будет перечисления...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2009
 ms.topic: article
 ms.assetid: 11237821-220e-4357-9fa6-38245084e093
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/building-35-applications/page-lifecycle-events
 msc.type: video
-ms.openlocfilehash: 548475c695b3e043f9b12b37945c3abd8d4d5947
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cf71807ae564a75191576251da10c490773b49d2
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26521603"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37379781"
 ---
-<a name="page-lifecycle-events"></a>События жизненного цикла страницы
+<a name="page-lifecycle-events"></a>События жизненного цикла приложения
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-ASP.NET предоставляет механизм очень обширную с обработчики в важных хронологическом экземпляры жизненного цикла страницы ASP.NET. В этом видеоролике будут указаны многие распространенные события жизненного цикла, последовательность их запуска и видов объектов, которые можно использовать для каждого события.
+ASP.NET предоставляет механизм очень обширную с обработчики все важные хронологическом экземпляры в жизненном цикле страницы ASP.NET. В этом видео будет перечислить многие распространенные события жизненного цикла, последовательность их запуска и тех вещей, которые можно использовать каждое событие для.
 
-[& #9654; Посмотрите видео (12 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/page-lifecycle-events)
+[&#9654;Просмотрите видео (12 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/page-lifecycle-events)

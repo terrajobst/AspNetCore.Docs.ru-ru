@@ -1,31 +1,30 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-repository-pattern
-title: 'ASP.NET MVC Storefront, часть 2: Шаблон репозитория | Документы Microsoft'
+title: 'Часть Интернет-магазин на ASP.NET MVC 2: Шаблон репозитория | Документация Майкрософт'
 author: robconery
-description: Вадим Conery описывается реализация репозитория и записывает первый основной набор модульных тестов. Он также структура вверх metho слоя начальной службы...
+description: Rob Conery рассматривается реализация репозитория и выводит первый основной набор модульных тестов. Он также структурировать вверх metho слоя исходная служба...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/27/2008
 ms.topic: article
 ms.assetid: 94dd6eec-3685-4323-ac75-75a70a4f766a
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-repository-pattern
 msc.type: video
-ms.openlocfilehash: 272a710d05e0d0dd2d358505f54d5fd595ffa41f
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 2daa77ffbed6a37f46bea6809f2cfd005e630ca5
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30874490"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37399887"
 ---
-<a name="aspnet-mvc-storefront-part-2-the-repository-pattern"></a>ASP.NET MVC Storefront, часть 2: Шаблон репозитория
+<a name="aspnet-mvc-storefront-part-2-the-repository-pattern"></a>Часть Интернет-магазин на ASP.NET MVC 2: Шаблон репозитория
 ====================
-по [ток Conery](https://github.com/robconery)
+по [Роб Conery](https://github.com/robconery)
 
-Вадим Conery описывается реализация репозитория и записывает первый основной набор модульных тестов. Он также структур начальные слоя методы и интерфейсы.
+Rob Conery рассматривается реализация репозитория и выводит первый основной набор модульных тестов. Он также структурировать исходная служба слоя методы и интерфейсы.
 
-[&#9654;Посмотрите видео (10 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-2-the-repository-pattern)
+[&#9654;Просмотрите видео (10 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-2-the-repository-pattern)
 
 > [!div class="step-by-step"]
 > [Назад](aspnet-mvc-storefront-part-1-architectural-discussion-and-overview.md)

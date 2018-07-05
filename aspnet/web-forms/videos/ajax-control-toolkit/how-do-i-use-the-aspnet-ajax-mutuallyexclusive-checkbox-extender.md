@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-mutuallyexclusive-checkbox-extender
-title: '[Инструкции:] Используйте флажок MutuallyExclusive расширитель ASP.NET AJAX? | Документы Майкрософт'
+title: '[Инструкции] Использовать расширитель флажка Mutuallyexclusive ASP.NET AJAX? | Документы Майкрософт'
 author: JoeStagner
-description: Элемент управления MutuallyExclusive из элементов управления ASP.NET AJAX позволяет разработчикам настроить несколько флажков как взаимно исчерпывающим, какие e...
+description: Элемент управления MutuallyExclusive из ASP.NET AJAX Control Toolkit позволяет разработчику настроить ряд флажки взаимно исключающих какие e...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/04/2007
 ms.topic: article
 ms.assetid: 808a89d3-4a98-4abe-83b5-0aa01f749048
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-mutuallyexclusive-checkbox-extender
 msc.type: video
-ms.openlocfilehash: 8de022c371949b5c107d524d9c2b0050e5253557
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 29b07af7e09bd72227e2ca8893f7bd4d424e32aa
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30882011"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37392504"
 ---
-<a name="how-do-i-use-the-aspnet-ajax-mutuallyexclusive-checkbox-extender"></a>[Инструкции:] Используйте флажок MutuallyExclusive расширитель ASP.NET AJAX?
+<a name="how-do-i-use-the-aspnet-ajax-mutuallyexclusive-checkbox-extender"></a>[Инструкции] Использовать расширитель флажка Mutuallyexclusive ASP.NET AJAX?
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-Элемент управления MutuallyExclusive из элементов управления ASP.NET AJAX позволяет разработчику задать число флажков как взаимно исключают друг друга, который гарантирует, что пользователь может возвращать только один параметр. Список переключатель обеспечивает аналогичное поведение, потребность в флажок для нажатой пользователем делает элемент управления MutuallyExclusive идеально подходит для получения подтверждения от пользователя, такие как принятие или не принимает условия использования.
+Элемент управления MutuallyExclusive из ASP.NET AJAX Control Toolkit позволяет разработчику настроить ряд флажки как взаимно исключают друг друга, который гарантирует, что пользователь может возвращать только один параметр. Список «переключатель» предоставляет аналогичное поведение, потребность в типа "флажок" на нажатой пользователем благодаря управления MutuallyExclusive идеально подходят для получения подтверждения от пользователя, например принять или не принять условия использования.
 
-[&#9654;Посмотрите видео (10 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-mutuallyexclusive-checkbox-extender)
+[&#9654;Просмотрите видео (10 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-mutuallyexclusive-checkbox-extender)
 
 > [!div class="step-by-step"]
 > [Назад](how-do-i-use-the-aspnet-ajax-maskededit-controls.md)

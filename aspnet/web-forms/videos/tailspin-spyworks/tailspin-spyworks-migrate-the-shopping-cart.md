@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/tailspin-spyworks/tailspin-spyworks-migrate-the-shopping-cart
-title: Tailspin Spyworks - миграция покупательской корзине | Документы Microsoft
+title: Tailspin Spyworks. перенос корзины | Документация Майкрософт
 author: JoeStagner
-description: Джо Стэгнер показано преобразование в корзину для покупок анонимного пользователя с проверкой подлинности элементом до окончательного извлечение для образца Tailspin Spyworks F. веб...
+description: (Joe Stagner) показано, как преобразовать в корзину для покупок анонимного пользователя в одной из прошедшего проверку подлинности перед окончательной проверки out Tailspin Spyworks пример е. Web...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/29/2010
 ms.topic: article
 ms.assetid: 1dcc27a0-f9a9-4e34-94bf-7c35190ea08d
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/tailspin-spyworks/tailspin-spyworks-migrate-the-shopping-cart
 msc.type: video
-ms.openlocfilehash: a35cd4eeb46eeea2d7e965bdedda3a9aa481967c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 9ab2dc6fe552e0ad1b363c3f840447e4704beda9
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30894273"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37382037"
 ---
-<a name="tailspin-spyworks---migrate-the-shopping-cart"></a>Tailspin Spyworks - миграция корзины
+<a name="tailspin-spyworks---migrate-the-shopping-cart"></a>Tailspin Spyworks. перенос корзины для покупок
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-Джо Стэгнер показано, как для преобразования с проверкой подлинности элементом до окончательного извлечение для примера приложения Web Forms Tailspin Spyworks покупательской корзине анонимного пользователя.
+(Joe Stagner) показано, как преобразовать в корзину для покупок анонимного пользователя в одной из прошедшего проверку подлинности перед окончательной проверки out веб-форм пример приложения Tailspin Spyworks.
 
-[&#9654;Посмотрите видео (в минутах 23)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/tailspin-spyworks-migrate-the-shopping-cart)
+[&#9654;Просмотрите видео (23 минуты)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/tailspin-spyworks-migrate-the-shopping-cart)
 
 > [!div class="step-by-step"]
 > [Назад](tailspin-spyworks-update-the-shopping-cart.md)

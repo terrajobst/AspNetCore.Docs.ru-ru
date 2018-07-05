@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/building-20-applications/lesson-1-getting-started-with-visual-web-developer-express
-title: '[На занятии 1:] Приступая к работе с Visual Web Developer Express | Документы Microsoft'
+title: '[Урок 1:] Начало работы с Visual Web Developer Express | Документация Майкрософт'
 author: microsoft
-description: На этом занятии сначала ознакомиться с Visual Web Developer, экспресс-выпуск и отследить рабочих процессов, участвующих в программе для построения Дин...
+description: На этом занятии сначала ознакомиться с Visual Web Developer Express Edition и поинтересоваться у рабочих процессов, выполняемых при использовании программы для создания dyn...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2005
 ms.topic: article
 ms.assetid: e9341b0b-1f01-4371-bfe0-0fb7410916a4
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/building-20-applications/lesson-1-getting-started-with-visual-web-developer-express
 msc.type: video
-ms.openlocfilehash: 273850d9d0605c70c366ba42b6d679a7c2be65e1
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 8d57f3b6b330892092517053a0eae348211ddea3
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30885327"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37380640"
 ---
-<a name="lesson-1-getting-started-with-visual-web-developer-express"></a>[На занятии 1:] Приступая к работе с Visual Web Developer Express
+<a name="lesson-1-getting-started-with-visual-web-developer-express"></a>[Урок 1:] Начало работы с Visual Web Developer Express
 ====================
 по [Microsoft](https://github.com/microsoft)
 
-На этом занятии сначала ознакомиться с Visual Web Developer, экспресс-выпуск и отследить рабочих процессов, выполняемых при использовании программы для создания динамических веб-ASP.NET сайтов.
+На этом занятии сначала ознакомиться с Visual Web Developer Express Edition и поинтересоваться у рабочих процессов, выполняемых при использовании программы для создания динамических веб-ASP.NET сайтов.
 
-[&#9654;Посмотрите видео (28 мин.)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-1-getting-started-with-visual-web-developer-express)
+[&#9654;Просмотрите видео (28 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-1-getting-started-with-visual-web-developer-express)
 
 > [!div class="step-by-step"]
 > [Вперед](lesson-2-creating-a-web-forms-user-interface.md)

@@ -1,287 +1,286 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-gridview-control-vb
-title: С помощью TemplateFields в элементе управления GridView (VB) | Документы Microsoft
+title: Использование полей TemplateField в элементе управления GridView (VB) | Документация Майкрософт
 author: rick-anderson
-description: Для обеспечения гибкости GridView предлагает TemplateField, на которой отображается с помощью шаблона. Шаблон может включать сочетание статического кода HTML, веб-элементов управления и...
+description: Для обеспечения гибкости GridView предлагает TemplateField, на которой отображается с помощью шаблона. Шаблон может быть смесь статического кода HTML, веб-элементы управления, и...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
 ms.topic: article
 ms.assetid: a92cd6ed-609a-4e40-ad23-004b54afd436
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-gridview-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f236c1cfaaeaa00f30b6a90553ad4e468e05ca23
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 845b5b07849420f03e60a9eb243f07641253540f
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30876908"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37396512"
 ---
-<a name="using-templatefields-in-the-gridview-control-vb"></a>С помощью TemplateFields в элементе управления GridView (Visual Basic)
+<a name="using-templatefields-in-the-gridview-control-vb"></a>Использование полей TemplateField в элементе управления GridView (VB)
 ====================
 по [Скотт Митчелл](https://twitter.com/ScottOnWriting)
 
-[Загрузить пример приложения](http://download.microsoft.com/download/5/7/0/57084608-dfb3-4781-991c-407d086e2adc/ASPNET_Data_Tutorial_12_VB.exe) или [скачать PDF](using-templatefields-in-the-gridview-control-vb/_static/datatutorial12vb1.pdf)
+[Скачайте пример приложения](http://download.microsoft.com/download/5/7/0/57084608-dfb3-4781-991c-407d086e2adc/ASPNET_Data_Tutorial_12_VB.exe) или [скачать PDF](using-templatefields-in-the-gridview-control-vb/_static/datatutorial12vb1.pdf)
 
-> Для обеспечения гибкости GridView предлагает TemplateField, на которой отображается с помощью шаблона. Шаблон может быть смесь статического кода HTML, веб-элементов управления и синтаксис привязки данных. В этом учебнике мы рассмотрим, как использовать TemplateField для дополнительной настройки с помощью элемента управления GridView.
+> Для обеспечения гибкости GridView предлагает TemplateField, на которой отображается с помощью шаблона. Шаблон может быть смесь статического кода HTML, веб-элементы управления и синтаксис привязки данных. В этом руководстве мы рассмотрим использование TemplateField для достижения большего уровня настройки с помощью элемента управления GridView.
 
 
 ## <a name="introduction"></a>Вступление
 
-GridView состоит из набора полей, которые определяет, какие свойства `DataSource` должны быть включены в выходные данные и способ отображения данных. Простейший тип поля — BoundField, который отображает значение данных в виде текста. Поля других типов при отображении данных используют различные элементы HTML. CheckBoxField, например, отображаемое как флажок, состояние которого зависит от значения поля данных; ImageField отображает изображение, источник которого создается на основе поля данных. Гиперссылки и кнопки, состояние которого зависит от базового значения поля данных может осуществляться с помощью HyperLinkField и ButtonField типы полей.
+GridView представляет собой набор полей, которые определяет, какие свойства `DataSource` должны включаться в выводимые данные, а также способ отображения данных. Простейший тип поля — поле типа BoundField, который отображает значение данных в виде текста. Поля других типов при отображении данных используют различные элементы HTML. CheckBoxField, например, отображаемое как флажок, состояние которого зависит от значения поля данных; ImageField выводит на экран изображение, источник которого создается на основе поля данных. Гиперссылки и кнопки, состояние которого зависит от базового значения поля данных могут быть представлены с помощью поля HyperLinkField и ButtonField типы полей.
 
-Хотя типы полей CheckBoxField, ImageField, HyperLinkField и ButtonField разрешить альтернативного представления данных, они по-прежнему весьма ограниченны с точки зрения форматирования. CheckBoxField отображаются только одного флажка, тогда как ImageField можно отобразить только одно изображение. Что делать, если необходимо включать текст, флажок определенного поля *и* изображение все зависимости от значений полей данных? Или, что если нам нужно отобразить данные с помощью веб-элемент управления, отличный от флажок, изображения, гиперссылки или кнопки? Кроме того BoundField ограничивает область отображения одного поля данных. Что делать, если мы хотели Показать двух или нескольких значений полей данных в одном столбце GridView?
+Если типы полей CheckBoxField, ImageField, HyperLinkField и ButtonField необходимы для альтернативного представления данных, они все же весьма ограниченны с точки зрения форматирования. По полю CheckBoxField отображаются только одного флажка, тогда как ImageField можно отобразить только одно изображение. Что делать, если необходимо включать текст, флажок, определенного поля *и* изображения, все зависимости от значений полей данных? Или, что делать, если мы захотели бы отображать данные с помощью веб-элемент управления CheckBox, изображения, гиперссылки или кнопку? Кроме того поле типа BoundField ограничивает область отображения одного поля данных. Что делать, если нам нужно вывести несколько значений полей данных в одном столбце GridView?
 
-Чтобы учесть этот уровень гибкости GridView предлагает TemplateField, на которой отображается с помощью *шаблона*. Шаблон может быть смесь статического кода HTML, веб-элементов управления и синтаксис привязки данных. Кроме того TemplateField имеет множество шаблонов, которые можно использовать для настройки подготовки к просмотру в различных ситуациях. Например `ItemTemplate` используется по умолчанию для отображения ячейки в каждой строке, но `EditItemTemplate` шаблон можно использовать для настройки интерфейса при изменении данных.
+Для обеспечения такого уровня гибкости GridView предлагает TemplateField, на которой отображается с помощью *шаблона*. Шаблон может быть смесь статического кода HTML, веб-элементы управления и синтаксис привязки данных. Кроме того TemplateField имеется широкий набор шаблонов, которые можно использовать для настройки отображения различных ситуациях. Например `ItemTemplate` используется по умолчанию для отображения ячейки в каждой строке, но `EditItemTemplate` шаблон можно использовать для настройки интерфейса при изменении данных.
 
-В этом учебнике мы рассмотрим, как использовать TemplateField для дополнительной настройки с помощью элемента управления GridView. В [предыдущего учебника](custom-formatting-based-upon-data-vb.md) мы узнали, как настроить форматирование в зависимости от базовых данных с помощью `DataBound` и `RowDataBound` обработчики событий. Другой способ настройки форматирования на основе базовых данных путем вызова методов форматирования из шаблона. Мы рассмотрим этот метод в этом учебнике также.
+В этом руководстве мы рассмотрим использование TemplateField для достижения большего уровня настройки с помощью элемента управления GridView. В [предыдущем учебном курсе](custom-formatting-based-upon-data-vb.md) мы научились изменять форматирование в зависимости от нижележащих данных при помощи `DataBound` и `RowDataBound` обработчики событий. Другой способ настройки форматирования в зависимости от базовых данных путем вызова методов форматирования из шаблона. В этом руководстве также мы рассмотрим этот метод.
 
-В этом учебнике мы будем использовать TemplateFields, чтобы настроить внешний вид списка сотрудников. В частности, мы составим список всех сотрудников, но будет отображен сотрудника имя и фамилию в один столбец, дате найма в элементе управления Calendar и состояние столбца, который указывает, сколько дней они был принят на работу в компании.
+В этом руководстве мы будем использовать поля TemplateField для оформления списка сотрудников. В частности, мы составим список всех сотрудников, но отобразит его имя и фамилию в один столбец, дате найма в элемента управления календарем, а также состояние столбца, который указывает, сколько дней они был принят на работу компании.
 
 
-[![Три TemplateFields используются для настройки отображения](using-templatefields-in-the-gridview-control-vb/_static/image2.png)](using-templatefields-in-the-gridview-control-vb/_static/image1.png)
+[![Три поля TemplateField используются для настройки отображения](using-templatefields-in-the-gridview-control-vb/_static/image2.png)](using-templatefields-in-the-gridview-control-vb/_static/image1.png)
 
-**Рис. 1**: три TemplateFields используются для настройки отображения ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image3.png))
+**Рис. 1**: три поля TemplateField используются для настройки отображения ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image3.png))
 
 
 ## <a name="step-1-binding-the-data-to-the-gridview"></a>Шаг 1: Привязка данных к GridView
 
-В службах reporting сценариях, где необходимо использовать TemplateFields настройки внешнего вида, найти его проще всего начать с создания элемента управления GridView, содержащий только стояли сначала и затем, чтобы добавить новый TemplateFields или преобразовать существующий стояли для TemplateFields при необходимости. Таким образом давайте начнем этого учебника, добавление элемента управления GridView к странице через конструктор и привяжите его к элементу ObjectDataSource, который возвращает список сотрудников. Эти шаги создаст GridView с стояли для каждого из полей employee.
+В службах reporting сценариях, где необходимо использование полей TemplateField для настройки внешнего вида, я нахожу проще всего начать с создания элемента управления GridView, который содержит только поля BoundField, кроме сначала и затем для добавления нового поля TemplateField или преобразовать существующие поля BoundFields в Поля TemplateField, при необходимости. Таким образом давайте начнем этот учебник, путем добавления элемента управления GridView к странице через конструктор и ее привязки к элементу ObjectDataSource, который возвращает список сотрудников. Эти действия создадут GridView с помощью полей BoundField для каждого из полей employee.
 
-Откройте `GridViewTemplateField.aspx` страницы и перетащите элемент управления GridView с панели элементов в конструктор. В смарт-теге элемента GridView выбрать и добавить новый элемент управления ObjectDataSource, который вызывает `EmployeesBLL` класса `GetEmployees()` метод.
-
-
-[![Добавить новый элемент управления ObjectDataSource, который вызывает метод GetEmployees()](using-templatefields-in-the-gridview-control-vb/_static/image5.png)](using-templatefields-in-the-gridview-control-vb/_static/image4.png)
-
-**На рисунке 2**: Добавление нового элемента управления ObjectDataSource, методы Invoke `GetEmployees()` метод ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image6.png))
+Откройте `GridViewTemplateField.aspx` странице и перетащите элемент управления GridView с панели инструментов в конструктор. Смарт-теге элемента GridView выберите Добавление нового элемента управления ObjectDataSource, который вызывает `EmployeesBLL` класса `GetEmployees()` метод.
 
 
-Привязка GridView таким образом автоматически добавит поле BoundField для каждого свойства сотрудника: `EmployeeID`, `LastName`, `FirstName`, `Title`, `HireDate`, `ReportsTo`, и `Country`. Для этого отчета давайте не использоваться с отображением `EmployeeID`, `ReportsTo`, или `Country` свойства. Чтобы удалить эти стояли можно:
+[![Добавить новый элемент управления ObjectDataSource, вызывающего метод GetEmployees()](using-templatefields-in-the-gridview-control-vb/_static/image5.png)](using-templatefields-in-the-gridview-control-vb/_static/image4.png)
 
-- Чтобы открыть это диалоговое окно, используйте поля диалоговом окне щелкните ссылку Правка столбцов GridView смарт-теге. Затем выберите и щелкните красный значок X стояли из нижнего левого угла кнопку для удаления BoundField.
-- Вручную изменить декларативного синтаксиса элемента GridView из представления источников, удалите `<asp:BoundField>` элемент для BoundField, нужно удалить.
+**Рис. 2**: добавьте новый элемент управления ObjectDataSource, Invokes `GetEmployees()` метод ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image6.png))
 
-После удаления `EmployeeID`, `ReportsTo`, и `Country` стояли, разметку элемента GridView должен выглядеть так:
+
+Привязка элемента GridView таким образом автоматически добавит поле BoundField для каждого свойства сотрудника: `EmployeeID`, `LastName`, `FirstName`, `Title`, `HireDate`, `ReportsTo`, и `Country`. Для этого отчета давайте не возиться с отображением `EmployeeID`, `ReportsTo`, или `Country` свойства. Чтобы удалить эти поля BoundField, вы можете:
+
+- Используйте поля диалоговом окне щелкните ссылку Правка столбцов смарт-теге элемента GridView, чтобы открыть это диалоговое окно. Далее выберите полей BoundField в нижнем левом углу списка и щелкните красный значок X кнопку для удаления BoundField.
+- Изменить декларативный синтаксис элемента GridView вручную из представления источников, удалите `<asp:BoundField>` элемента для типа BoundField, нужно удалить.
+
+После удаления `EmployeeID`, `ReportsTo`, и `Country` полей BoundField, разметку элемента GridView должен выглядеть так:
 
 
 [!code-aspx[Main](using-templatefields-in-the-gridview-control-vb/samples/sample1.aspx)]
 
-Теперь пора просмотрите ход работы в браузере. На этом этапе появится таблица с помощью записи для каждого сотрудника и четыре столбца: один для сотрудника Фамилия, одному их именами, названий и один для дате найма.
+Отвлекитесь и просмотрите ход работы в браузере. На этом этапе вы должны увидеть таблицу, содержащую запись для каждого сотрудника и четыре столбца: один для сотрудника Фамилия, один для их имя, один для названий и один к дате найма.
 
 
-[![LastName, FirstName, заголовок и HireDate полей отображаются для каждого сотрудника.](using-templatefields-in-the-gridview-control-vb/_static/image8.png)](using-templatefields-in-the-gridview-control-vb/_static/image7.png)
+[![LastName, FirstName, Title и HireDate поля отображаются для каждого сотрудника](using-templatefields-in-the-gridview-control-vb/_static/image8.png)](using-templatefields-in-the-gridview-control-vb/_static/image7.png)
 
-**Рис. 3**: `LastName`, `FirstName`, `Title`, и `HireDate` отображаются поля для каждого сотрудника ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image9.png))
+**Рис. 3**: `LastName`, `FirstName`, `Title`, и `HireDate` отображаются поля для каждого сотрудника ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image9.png))
 
 
 ## <a name="step-2-displaying-the-first-and-last-names-in-a-single-column"></a>Шаг 2: Отображение имени и фамилии в одном столбце
 
-В настоящее время каждого сотрудника и фамилии, отображаются в отдельном столбце. Может оказаться удобнее объединить их в один столбец. Для выполнения этой задачи необходимо использовать TemplateField. Мы можно либо добавить новые TemplateField, добавить в него нужную разметку и синтаксис привязки данных, а затем удалите `FirstName` и `LastName` можно преобразовать стояли или мы `FirstName` BoundField в TemplateField, изменить TemplateField для включения `LastName` значение, а затем удалите `LastName` BoundField.
+В настоящее время каждого сотрудника и фамилии, отображаются в отдельном столбце. Возможно, желательно объединить их в один столбец. Для этого нам нужно использовать поле TemplateField. Мы можете Добавление нового поля TemplateField, добавить в него нужную разметку и синтаксис привязки данных и затем удалить `FirstName` и `LastName` можно преобразовать полю BoundFields или мы `FirstName` BoundField в поле TemplateField, изменить TemplateField для включения `LastName` значение, а затем удалите `LastName` BoundField.
 
-Оба подхода net тот же результат, но мы рекомендуем преобразование стояли TemplateFields, когда это возможно, поскольку преобразование автоматически добавляет `ItemTemplate` и `EditItemTemplate` с веб-элементов управления и синтаксис привязки данных имитацию и функциональность BoundField. Преимущество заключается в том, что нам нужно будет меньше работы по созданию TemplateField, как в процессе преобразования будет выполнена некоторых операций для нас.
+Тот же результат в обоих случах, но лично я предпочитаю преобразование полей BoundField в поля TemplateField, когда это возможно, так как преобразование автоматически добавляет `ItemTemplate` и `EditItemTemplate` с веб-элементов управления и синтаксис привязки данных для моделирования внешнего вида и поле типа BoundField функциональные возможности. Это удобно, что нам потребуется меньше работы по созданию TemplateField как процесс преобразования выполняет часть работы за нас.
 
-Для преобразования существующего BoundField в TemplateField, щелкните ссылку Правка столбцов GridView смарт-теге, открывая диалоговое окно «поля». Выберите BoundField для преобразования из списка в правом нижнем углу и затем щелкните ссылку «Преобразовать это поле в TemplateField» в правом нижнем углу.
-
-
-[![Преобразовать поле BoundField в TemplateField из диалогового окна поля](using-templatefields-in-the-gridview-control-vb/_static/image11.png)](using-templatefields-in-the-gridview-control-vb/_static/image10.png)
-
-**Рис. 4**: преобразование из диалогового окна поля BoundField в TemplateField ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image12.png))
+Чтобы преобразовать существующий BoundField в поле TemplateField, щелкните ссылку Изменить столбцы смарт-теге элемента GridView, открывая диалоговое окно "поля". Выберите поле типа BoundField предназначенным для преобразования в списке в левом нижнем углу и затем щелкните ссылку «Convert это поле в TemplateField» в правом нижнем углу.
 
 
-Преобразуйте `FirstName` BoundField в TemplateField. После этого изменения нет не перемен в конструкторе. Это так, как преобразование BoundField и TemplateField создает TemplateField, который поддерживает внешний вид BoundField. Несмотря на то, что никаких видимых изменений в этот момент в конструкторе, процесс преобразования заменил BoundField декларативного синтаксиса - `<asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />` - TemplateField следующим образом:
+[![Преобразование поля BoundField в поле TemplateField в диалоговом окне поля](using-templatefields-in-the-gridview-control-vb/_static/image11.png)](using-templatefields-in-the-gridview-control-vb/_static/image10.png)
+
+**Рис. 4**: преобразование типа BoundField в поле TemplateField в диалоговом окне поля ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image12.png))
+
+
+Преобразуйте `FirstName` BoundField в поле TemplateField. После этого изменения есть нет никаких видимых перемен в конструкторе. Это обусловлено преобразование BoundField в поле TemplateField создает поддерживает вид BoundField поле TemplateField. Несмотря на то, что никакой разницы в этот момент в конструкторе, процессе преобразования декларативный синтаксис BoundField декларативный синтаксис - `<asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />` — со следующим синтаксисом TemplateField:
 
 
 [!code-aspx[Main](using-templatefields-in-the-gridview-control-vb/samples/sample2.aspx)]
 
-Как видите, TemplateField состоит из двух шаблонов `ItemTemplate` , имеет метку которого `Text` свойству присвоено значение `FirstName` поля данных и `EditItemTemplate` текстовое поле, куда элемент управления `Text` задано свойство Чтобы `FirstName` поля данных. Синтаксис привязки данных — `<%# Bind("fieldName") %>` -указывает, что поля данных *`fieldName`* привязан к указанному свойству элемента управления Web.
+Как вы видите, TemplateField состоит из двух шаблонов `ItemTemplate` , имеет метку, `Text` свойству присваивается значение `FirstName` поля данных и `EditItemTemplate` с элементом TextBox со свойством `Text` также установлено свойство Чтобы `FirstName` поля данных. Синтаксис привязки данных — `<%# Bind("fieldName") %>` -указывает, что поле данных *`fieldName`* привязан к указанному свойству элемента управления Web.
 
-Чтобы добавить `LastName` значение этого TemplateField, необходимо добавить другой веб-управления Label в поля данных `ItemTemplate` и привязать его `Text` свойства `LastName`. Это можно сделать вручную или с помощью конструктора. Чтобы сделать это вручную, просто добавьте соответствующий декларативный синтаксис в `ItemTemplate`:
+Чтобы добавить `LastName` значение этого поля TemplateField, нам нужно добавить другой элемент управления Label Web в поля данных `ItemTemplate` и привязать его `Text` свойства `LastName`. Это можно сделать вручную или с помощью конструктора. Чтобы сделать это вручную, просто добавьте соответствующий декларативный синтаксис для `ItemTemplate`:
 
 
 [!code-aspx[Main](using-templatefields-in-the-gridview-control-vb/samples/sample3.aspx)]
 
-Чтобы добавить его в конструкторе, щелкните ссылку Изменить шаблоны смарт-теге элемента GridView. Это позволит отобразить интерфейс редактирования шаблона элемента GridView. В этом интерфейса смарт-тегов список шаблонов в GridView. Поскольку у нас имеется только один TemplateField на этом этапе, только шаблоны, в раскрывающемся списке, эти шаблоны для `FirstName` TemplateField вместе с `EmptyDataTemplate` и `PagerTemplate`. `EmptyDataTemplate` Шаблон, если указано, используется для отображения выходных данных GridView в том случае, если данные, привязанные к GridView; нет результатов `PagerTemplate`, если он указан, используется для отображения интерфейса разбиения на страницы для элемента управления GridView, поддерживающий разбиение на страницы.
+Чтобы добавить его в конструкторе, щелкните ссылку Изменить шаблоны смарт-теге элемента GridView. Отображает интерфейс редактирования шаблона элемента GridView. В этом смарт-теге этого интерфейса является список шаблонов в GridView. Поскольку у нас имеется только один TemplateField на этом этапе, только шаблоны, использованные в раскрывающемся списке представлены эти шаблоны `FirstName` TemplateField вместе с `EmptyDataTemplate` и `PagerTemplate`. `EmptyDataTemplate` Шаблон, если указано, используется для отображения выходных данных элемента GridView в том случае, если данные, привязанные к элементу GridView; нет результатов `PagerTemplate`, если он указан, используется для отображения интерфейса разбиения на страницы для элемента управления GridView, который поддерживает разбиение по страницам.
 
 
-[![Можно изменить шаблоны элемента GridView с помощью конструктора](using-templatefields-in-the-gridview-control-vb/_static/image14.png)](using-templatefields-in-the-gridview-control-vb/_static/image13.png)
+[![В конструкторе можно изменить шаблоны элемента GridView](using-templatefields-in-the-gridview-control-vb/_static/image14.png)](using-templatefields-in-the-gridview-control-vb/_static/image13.png)
 
-**Рис. 5**: GridView шаблоны могут быть изменены через конструктор ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image15.png))
-
-
-Чтобы также отобразить `LastName` в `FirstName` TemplateField перетащите элемент управления Label из области элементов в `FirstName` в TemplateField `ItemTemplate` в GridView редактирование шаблона интерфейса.
+**Рис. 5**: элемента GridView шаблоны могут быть изменены через конструктор ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image15.png))
 
 
-[![Добавить веб-элемент управления Label FirstName TemplateField ItemTemplate](using-templatefields-in-the-gridview-control-vb/_static/image17.png)](using-templatefields-in-the-gridview-control-vb/_static/image16.png)
-
-**Рис. 6**: Добавление веб-элемент управления Label к `FirstName` в TemplateField ItemTemplate ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image18.png))
+Чтобы отобразить также `LastName` в `FirstName` TemplateField перетащите элемент управления Label из области элементов в `FirstName` TemplateField `ItemTemplate` в GridView изменения шаблонов интерфейса.
 
 
-В этой точке веб-управления Label добавлен TemplateField содержит его `Text` свойством, имеющим значение «Метка». Нам нужно изменить, чтобы это свойство привязано к значению `LastName` поля данных. Для выполнения этого щелкнуть смарт-тег элемента управления Label и выберите пункт Изменить привязки данных.
+[![Добавить веб-элемент управления Label ItemTemplate FirstName TemplateField](using-templatefields-in-the-gridview-control-vb/_static/image17.png)](using-templatefields-in-the-gridview-control-vb/_static/image16.png)
+
+**Рис. 6**: Добавление веб-элемент управления Label к `FirstName` TemplateField ItemTemplate ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image18.png))
 
 
-[![Выберите Правка привязок данных с метки смарт-тег](using-templatefields-in-the-gridview-control-vb/_static/image20.png)](using-templatefields-in-the-gridview-control-vb/_static/image19.png)
-
-**Рис. 7**: выберите изменить привязки данных с метки смарт-тег ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image21.png))
+На этом этапе содержит элемент управления Label Web, добавленный TemplateField его `Text` , имеющим значение «Label». Нам нужно изменить таким образом, чтобы это свойство привязано к значению `LastName` поле данных. Для выполнения этого щелкнуть смарт-тега элемента управления Label и выберите пункт Edit DataBindings.
 
 
-Откроется диалоговое окно Привязка данных. Здесь можно выбрать свойство для участия в привязки данных в списке в левой части экрана и выберите поле для привязки данных в раскрывающемся списке справа. Выберите `Text` в левом и `LastName` в правом и нажмите кнопку ОК.
+[![Выберите параметр "Изменить" Привязка данных из смарт-тега метки](using-templatefields-in-the-gridview-control-vb/_static/image20.png)](using-templatefields-in-the-gridview-control-vb/_static/image19.png)
+
+**Рис. 7**: выберите Редактирование привязок данных с смарт-тега метки ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image21.png))
 
 
-[![Привязать свойство текста в поле «Фамилия» данных](using-templatefields-in-the-gridview-control-vb/_static/image23.png)](using-templatefields-in-the-gridview-control-vb/_static/image22.png)
+Откроется диалоговое окно Привязка данных. Отсюда можно выбрать свойство участвовать в привязку данных из списка слева и выберите поле для привязки данных в раскрывающемся списке справа. Выберите `Text` в левом и `LastName` справа и нажмите кнопку ОК.
 
-**Рис. 8**: привязка `Text` свойства `LastName` поля данных ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image24.png))
+
+[![Привязки свойства Text к полю данных LastName](using-templatefields-in-the-gridview-control-vb/_static/image23.png)](using-templatefields-in-the-gridview-control-vb/_static/image22.png)
+
+**Рис. 8**: привязка `Text` свойства `LastName` поля данных ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image24.png))
 
 
 > [!NOTE]
-> Диалоговое окно Привязка данных позволяет указать, следует ли выполнять двухсторонней привязкой данных. Если оставить этот флажок снят, синтаксис привязки данных `<%# Eval("LastName")%>` будет использоваться вместо `<%# Bind("LastName")%>`. В этом учебнике подойдет любой из этих подходов. Двусторонняя привязка к данным становится важным, при вставке или изменении данных. Для отображения данных, однако оба подхода могут использоваться одинаково хорошо. Двусторонняя привязка к данным, подробно обсуждаются в будущих учебниках.
+> Привязка данных диалоговое окно позволяет указать, следует ли выполнять двусторонней привязки данных. Если оставить этот флажок снят, синтаксис привязки данных `<%# Eval("LastName")%>` будет использоваться вместо `<%# Bind("LastName")%>`. Для этого учебника подходит любой из этих подходов. Двусторонняя привязка к данным также важно при вставке или изменении данных. Для отображения данных, однако оба подхода будут работать одинаково хорошо. Мы обсудим двусторонней привязки данных, подробно в последующих учебных курсах.
 
 
-Теперь пора просматривать эту страницу через браузер. Как видите, GridView по-прежнему включает четыре столбца; Тем не менее `FirstName` теперь стоят *оба* `FirstName` и `LastName` значения поля данных.
+Отвлекитесь и просмотреть эту страницу через обозреватель. Как вы видите, GridView по-прежнему имеет четыре столбца; Тем не менее `FirstName` теперь стоят *оба* `FirstName` и `LastName` значений полей данных.
 
 
 [![FirstName и LastName значения отображаются в одном столбце](using-templatefields-in-the-gridview-control-vb/_static/image26.png)](using-templatefields-in-the-gridview-control-vb/_static/image25.png)
 
-**Рис. 9**: как `FirstName` и `LastName` значения отображаются в одном столбце ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image27.png))
+**Рис. 9**: как `FirstName` и `LastName` значения отображаются в одном столбце ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image27.png))
 
 
-Для выполнения первого шага, удалите `LastName` BoundField и переименуйте `FirstName` в TemplateField `HeaderText` свойства «Имя». После внесения этих изменений декларативная разметка GridView должен выглядеть следующим образом:
+Чтобы завершить этот первый шаг, удалите `LastName` BoundField и переименуйте `FirstName` TemplateField `HeaderText` значения свойства «Имя». После внесения этих изменений декларативная разметка GridView должен выглядеть следующим образом:
 
 
 [!code-aspx[Main](using-templatefields-in-the-gridview-control-vb/samples/sample4.aspx)]
 
 
-[![Первый и фамилии каждого сотрудника, отображаются в одном столбце](using-templatefields-in-the-gridview-control-vb/_static/image29.png)](using-templatefields-in-the-gridview-control-vb/_static/image28.png)
+[![Первый и фамилии каждого сотрудника отображаются в одном столбце](using-templatefields-in-the-gridview-control-vb/_static/image29.png)](using-templatefields-in-the-gridview-control-vb/_static/image28.png)
 
-**Рис. 10**: первый и фамилии каждого сотрудника, отображаются в одном столбце ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image30.png))
-
-
-## <a name="step-3-using-the-calendar-control-to-display-thehireddatefield"></a>Шаг 3: С помощью элемента календаря для отображения`HiredDate`поля
-
-Отображение значения поля данных в виде текста в элементе управления GridView, достаточно использовать поле BoundField. В определенных случаях тем не менее, данные лучше представить с помощью определенного веб-элемента управления текста, а. Подобная настройка отображения данных возможна с помощью TemplateFields. Например, а не отображать дату найма работника как текст, можно было показать календаре (с помощью [управления Calendar](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar(VS.80).aspx)) с дате найма выделяются.
-
-Для этого запустите путем преобразования `HiredDate` BoundField в TemplateField. Просто перейдите к GridView смарт-тег и щелкните ссылку Изменить столбцы, открывая диалоговое окно «поля». Выберите `HiredDate` BoundField и нажмите кнопку «Преобразовать это поле в TemplateField.»
+**Рис. 10**: первый и фамилии каждого сотрудника отображаются в одном столбце ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image30.png))
 
 
-[![Преобразовать HiredDate BoundField в TemplateField](using-templatefields-in-the-gridview-control-vb/_static/image32.png)](using-templatefields-in-the-gridview-control-vb/_static/image31.png)
+## <a name="step-3-using-the-calendar-control-to-display-thehireddatefield"></a>Шаг 3: Использование элемента управления Calendar для отображения`HiredDate`поля
 
-**Рис. 11**: преобразование `HiredDate` BoundField в TemplateField ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image33.png))
+Отображение значения поля данных в виде текста в элементе управления GridView, как просто использовать BoundField. В некоторых сценариях тем не менее, данные удобнее представить в конкретной веб-элемента управления текста, а. Подобная настройка отображения данных возможна с помощью поля TemplateField. Например, а не отобразить дату приема сотрудника как текст, можно было показать календаря (с помощью [элемента управления Calendar](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar(VS.80).aspx)) с дате найма выделены.
 
-
-Как мы видели в шаге 2, это приведет к замене BoundField TemplateField, содержащий `ItemTemplate` и `EditItemTemplate` с подписью и текстовое поле, `Text` свойства связаны `HiredDate` с использованием синтаксиса databinding `<%# Bind("HiredDate")%>`.
-
-Чтобы заменить текст элемента управления календаря, измените шаблон путем удаления метки и добавление элемента управления Calendar. В режиме конструктора выберите Редактирование шаблонов из GridView смарт-тег и выберите `HireDate` в TemplateField `ItemTemplate` из раскрывающегося списка. Затем удалите элемент управления Label и перетащите элемент управления календаря из области элементов в интерфейсе правки шаблона.
+Для этого сначала преобразуйте `HiredDate` BoundField в поле TemplateField. Просто перейдите к смарт-теге элемента GridView и щелкните ссылку Изменить столбцы, открывая диалоговое окно "поля". Выберите `HiredDate` BoundField и нажмите кнопку «Преобразовать это поле в TemplateField.»
 
 
-[![Добавить элемент управления календаря HireDate ItemTemplate в TemplateField](using-templatefields-in-the-gridview-control-vb/_static/image35.png)](using-templatefields-in-the-gridview-control-vb/_static/image34.png)
+[![Преобразовать HiredDate BoundField в поле TemplateField](using-templatefields-in-the-gridview-control-vb/_static/image32.png)](using-templatefields-in-the-gridview-control-vb/_static/image31.png)
 
-**Рис. 12**: Добавление элемента управления "Календарь" для `HireDate` в TemplateField `ItemTemplate` ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image36.png))
-
-
-На этом этапе каждой строки в GridView будет содержать элемент управления "Календарь" в его `HiredDate` TemplateField. Однако сотрудника фактическое `HiredDate` значение не задано в любом месте в элементе управления календаря, вызывая каждый элемент управления календаря показывают за текущий месяц и дату по умолчанию. Чтобы исправить это, необходимо назначить каждому сотруднику `HiredDate` для элемента управления Calendar [SelectedDate](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.selecteddate(VS.80).aspx) и [VisibleDate](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.visibledate(VS.80).aspx) свойства.
-
-В смарт-тега элемента управления Calendar выберите команду Изменить привязки данных. Затем привяжите `SelectedDate` и `VisibleDate` свойства `HiredDate` поля данных.
+**Рис. 11**: преобразовать `HiredDate` BoundField в поля TemplateField ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image33.png))
 
 
-[![Привязать к полю данных HiredDate SelectedDate и VisibleDate свойства](using-templatefields-in-the-gridview-control-vb/_static/image38.png)](using-templatefields-in-the-gridview-control-vb/_static/image37.png)
+Как мы видели в шаге 2, это приводит к замене BoundField поле TemplateField содержит `ItemTemplate` и `EditItemTemplate` с метку и текстовое поле, `Text` свойства привязаны к `HiredDate` значение, используя синтаксис привязки данных `<%# Bind("HiredDate")%>`.
 
-**Рис. 13**: привязка `SelectedDate` и `VisibleDate` свойства `HiredDate` поля данных ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image39.png))
+Чтобы заменить текст элемента управления календарем, измените шаблон путем удаления метки и добавления элемента управления календаря. В конструкторе щелкните Изменить шаблоны смарт-теге элемента GridView и выберите `HireDate` TemplateField `ItemTemplate` из раскрывающегося списка. Затем удалите элемент управления Label и перетащите элемент управления календаря с панели инструментов в интерфейс редактирования шаблона.
+
+
+[![Добавьте элемент управления "Календарь" для HireDate TemplateField ItemTemplate](using-templatefields-in-the-gridview-control-vb/_static/image35.png)](using-templatefields-in-the-gridview-control-vb/_static/image34.png)
+
+**Рис. 12**: добавьте элемент управления "Календарь" для `HireDate` TemplateField `ItemTemplate` ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image36.png))
+
+
+На этом этапе каждая строка в GridView будет содержать элемент управления "Календарь" в его `HiredDate` TemplateField. Однако дата приема сотрудника фактическое `HiredDate` значение не задано в любом месте в элементе управления календаря, вызывая каждый элемент управления Calendar показывают текущий месяц и дату по умолчанию. Чтобы исправить это, нам нужно назначить каждому сотруднику `HiredDate` для элемента управления Calendar [SelectedDate](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.selecteddate(VS.80).aspx) и [VisibleDate](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.visibledate(VS.80).aspx) свойства.
+
+В смарт-тега элемента управления Calendar выберите пункт Edit DataBindings. Затем привяжите `SelectedDate` и `VisibleDate` свойства `HiredDate` поля данных.
+
+
+[![Привязка свойства SelectedDate и VisibleDate к полю данных HiredDate](using-templatefields-in-the-gridview-control-vb/_static/image38.png)](using-templatefields-in-the-gridview-control-vb/_static/image37.png)
+
+**Рис. 13**: привязка `SelectedDate` и `VisibleDate` свойства `HiredDate` поля данных ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image39.png))
 
 
 > [!NOTE]
-> Выбранная дата элемента управления Calendar не обязательно видимыми. Например, календарь, возможно, 1 августа<sup>st</sup>, 1999 г. как выбранной даты, но отображаться за текущий месяц и год. Выбранная дата и дата отображается задаются с помощью элемента управления Calendar `SelectedDate` и `VisibleDate` свойства. Поскольку нам требуется, выберите оба сотрудника `HiredDate` и убедитесь, что она отображается, нам нужно привязать оба эти свойства, чтобы `HireDate` поля данных.
+> Календарь совсем не обязательно видимыми. Например, может быть 1 августа календаре<sup>st</sup>, 1999 выделенной датой, а показывать текущий месяц и год. Выделенная и видимая Дата указываются с элемента управления Calendar `SelectedDate` и `VisibleDate` свойства. Поскольку нам требуется, выберите оба сотрудника `HiredDate` и убедитесь, что он отображается, мы должны привязать оба свойства к `HireDate` поля данных.
 
 
-При просмотре страницы в браузере, календарь теперь показывает месяц дату приема сотрудника и выбирает этой определенной даты.
+При просмотре страницы в браузере, в календаре теперь Показывать дату приема сотрудника и выбирает этой определенной даты.
 
 
 [![HiredDate сотрудника отображается в элементе управления Calendar](using-templatefields-in-the-gridview-control-vb/_static/image41.png)](using-templatefields-in-the-gridview-control-vb/_static/image40.png)
 
-**Рис. 14**: Сотрудник `HiredDate` отображается в элементе управления календаря ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image42.png))
+**Рис. 14**: сотрудника `HiredDate` отображается в элементе управления Calendar ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image42.png))
 
 
 > [!NOTE]
-> В отличие от во всех примерах, описанных выше таким образом, в этом учебнике мы сделали *не* задать `EnableViewState` свойства `False` для этого GridView. Для этого решения, поскольку нужно щелкнуть даты элемента управления Calendar вызывает обратную передачу, установите значение выбранной даты по календарю Дата просто нажать кнопку. Если GridView состояние просмотра отключено, однако при каждой обратной передаче GridView привязываются источнике данных, вследствие чего выбранной даты по календарю задаваемый *обратно* для сотрудника `HireDate`, перезапись Дата, выбранного пользователем.
+> В отличие от во всех примерах, мы видели в данный момент, в этом руководстве мы сделали *не* задать `EnableViewState` свойства `False` для этого GridView. Причина такого подхода обусловлено тем, когда пользователь щелкает даты элемента управления Calendar вызывает обратную передачу, значение даты просто нажать кнопку выбранной даты календаря. При отключении состояния представления элемента GridView, тем не менее, при каждой обратной передаче элемента GridView привязываются к его базового источника данных, что приводит к выбранной даты календаря устанавливается *обратно* сотрудника `HireDate`, перезапись Дата, выбранного пользователем.
 
 
-В этом учебнике это более чем рассуждения, поскольку пользователь не сможет обновить сотрудника `HireDate`. Возможно, лучше настроить элемент управления Calendar даты не могут быть выбраны. Независимо от того в этом учебнике показано, что в некоторых случаях состояние представления должно быть включено для предоставления определенных возможностей.
+В этом руководстве это более чем рассуждения, поскольку пользователь не сможет обновить сотрудника `HireDate`. Что, вероятно, будет лучше для настройки элементов управления календарем, таким образом, чтобы его даты не могут быть выбраны. Тем не менее в этом руководстве показано, что в некоторых случаях состояние представления должно быть включено для предоставления определенных функциональных возможностей.
 
-## <a name="step-4-showing-the-number-of-days-the-employee-has-worked-for-the-company"></a>Шаг 4: Отображается число дней сотрудник работал для компании
+## <a name="step-4-showing-the-number-of-days-the-employee-has-worked-for-the-company"></a>Шаг 4: Отображается число дней Сотрудник работает в компании
 
-Таким образом, что мы видели два приложения TemplateFields:
+Пока мы рассмотрели два варианта из полей TemplateField:
 
 - Объединение двух или нескольких значений полей данных в один столбец и
-- Значение поля данных, с помощью веб-элемента управления вместо текста выражения
+- Выражения значения поля данных, с помощью веб-элемент управления вместо текста
 
-Третий использование TemplateFields при отображении метаданные о GridView базовым данным. Просмотра дат приема на работу сотрудников, например, мы может также потребоваться столбец, отображающий общее количество дней, они имели на задание.
+Третий использование полей TemplateField в отображении метаданные о GridView базовые данные. Кроме возможности просматривать дату приема сотрудника, например, мы может также потребоваться столбец, отображающий общее число дней, они имели на задание.
 
-Еще другое использование оператора TemplateFields возникает в сценариях, если базовые данные должны отображаться по-разному в веб-страницы отчета в формате хранятся в базе данных, чем. Предположим, что `Employees` таблицы была `Gender` поле, хранятся в виде букв `M` или `F` для указания Пол сотрудника. При отображении этой информации на веб-странице мы хотим Показать пол, как «Мужской» или «Женский», а не только «M» или «F».
+Еще другой использование полей TemplateField возникает в сценариях, когда базовые данные должны отображаться по-разному в веб-страницы отчета в формате, он хранится в базе данных. Представим, что `Employees` таблица имела `Gender` поле, хранятся в виде букв `M` или `F` для указания пола сотрудника. При отображении этой информации на веб-странице мы хотим видеть полные как «Male» или «Female», а не просто «M» или «F».
 
-Оба эти сценарии могут обрабатываться путем создания *метод форматирования* в классе кода страницы ASP.NET (или в отдельной библиотеке классов, реализованы в виде `Shared` метод), вызываемой из шаблона. Этот метод форматирования вызывается с помощью шаблона, используя тот же синтаксис привязки данных, рассмотренное ранее. Метод форматирования можно выполнять в любое количество параметров, но должен вернуть строку. Эта строка представляет HTML, которая вставляется в шаблон.
+Оба этих сценария могут быть обработаны создание *метод форматирования* в классе фонового кода страницы ASP.NET (или в отдельной библиотеке классов, реализованы в виде `Shared` метод), вызываемой из шаблона. Этот метод форматирования вызывается из шаблона, используя тот же синтаксис привязки данных, который использовался раньше. Метод форматирования может занять в любое количество параметров, но должен вернуть строку. Эта строка представляет HTML-код, который вставляется в шаблон.
 
-Для иллюстрации этой концепции, попробуем чтобы отобразить столбец, содержащий общее число дней, сотрудник была в задании. Этот метод форматирования будет принимать `Northwind.EmployeesRow` объекта и возвращает количество дней, сотрудник принят на работу как строка. Этот метод можно добавить класс кода страницы ASP.NET, но *должен* помечается как `Protected` или `Public` чтобы быть доступен из шаблона.
+Для иллюстрации этой концепции, попробуем создать столбец, в которой перечислены общее число дней, которое сотрудник провел на работе. Этот метод форматирования будет принимать `Northwind.EmployeesRow` и не возвращать число дней, сотрудник принят на работу как строка. Этот метод можно добавить вспомогательном классе страницы ASP.NET, но *необходимо* быть помечен как `Protected` или `Public` чтобы быть доступным из шаблона.
 
 
 [!code-vb[Main](using-templatefields-in-the-gridview-control-vb/samples/sample5.vb)]
 
-Поскольку `HiredDate` поле может содержать `NULL` базы данных значения, мы сначала убедитесь, что значение не является `NULL` перед продолжением вычисления. Если `HiredDate` значение `NULL`, мы просто возвращают строку «Unknown»; Если это не `NULL`, мы вычисляем разницу между текущим временем и `HiredDate` значение и возвращает количество дней.
+Так как `HiredDate` поле может содержать `NULL` базы данных значения, нам сначала нужно убедиться, что значение не `NULL` перед продолжением вычисления. Если `HiredDate` значение `NULL`, мы просто возвращают строку «Unknown»; Если это не `NULL`, мы вычисляем разницу между текущей датой и `HiredDate` значение и возврат числа дней.
 
-Чтобы использовать этот метод необходимо вызвать из TemplateField в GridView, используя синтаксис привязки данных. Начните с добавления новых TemplateField к GridView, щелкнув ссылку Правка столбцов GridView смарт-тег и добавление новых TemplateField.
-
-
-[![Добавить новый TemplateField в GridView](using-templatefields-in-the-gridview-control-vb/_static/image44.png)](using-templatefields-in-the-gridview-control-vb/_static/image43.png)
-
-**Рис. 15**: Добавление новых TemplateField GridView ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image45.png))
+Чтобы использовать этот метод необходимо вызвать из TemplateField в GridView, используя синтаксис привязки данных. Начните с добавления нового поля TemplateField к GridView, щелкнув ссылку Изменить столбцы в смарт-теге элемента GridView и Добавление нового поля TemplateField.
 
 
-Задайте новый TemplateField `HeaderText` свойства «Дней на задание» и его `ItemStyle` `HorizontalAlign` свойства `Center`. Для вызова `DisplayDaysOnJob` метода на основе шаблона, добавьте `ItemTemplate` и используйте следующий синтаксис привязки данных:
+[![Добавление нового поля TemplateField GridView](using-templatefields-in-the-gridview-control-vb/_static/image44.png)](using-templatefields-in-the-gridview-control-vb/_static/image43.png)
+
+**Рис. 15**: Добавление нового поля TemplateField к GridView ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image45.png))
+
+
+Значение этого нового поля TemplateField `HeaderText` свойства «Дней на задание» и его `ItemStyle` `HorizontalAlign` свойства `Center`. Для вызова `DisplayDaysOnJob` метод на основе шаблона, добавить `ItemTemplate` и используйте следующий синтаксис привязки данных:
 
 
 [!code-aspx[Main](using-templatefields-in-the-gridview-control-vb/samples/sample6.aspx)]
 
-`Container.DataItem` Возвращает `DataRowView` объект, соответствующий `DataSource` привязанной к `GridViewRow`. Его `Row` свойство возвращает строго типизированный `Northwind.EmployeesRow`, который передается `DisplayDaysOnJob` метод. Этот синтаксис привязки данных может стоять непосредственно в `ItemTemplate` (как показано в приведенном ниже синтаксисе декларативных) или могут быть назначены `Text` свойство метки веб-элемент управления.
+`Container.DataItem` Возвращает `DataRowView` объект, соответствующий `DataSource` привязанной к `GridViewRow`. Его `Row` свойство возвращает строго типизированный `Northwind.EmployeesRow`, который передается `DisplayDaysOnJob` метод. Этот синтаксис привязки данных может стоять непосредственно в `ItemTemplate` (как показано в декларативном синтаксисе ниже) или могут быть назначены `Text` свойства элемента управления Label Web.
 
 > [!NOTE]
-> Кроме того, вместо передачи в `EmployeesRow` экземпляр, можно просто передать в `HireDate` с использованием `<%# DisplayDaysOnJob(Eval("HireDate")) %>`. Тем не менее `Eval` возвращает `Object`, поэтому нам пришлось бы изменить наши `DisplayDaysOnJob` сигнатуру метода, чтобы принять входного параметра типа `Object`, вместо этого. Нам не удается привести слепо `Eval("HireDate")` вызов `DateTime` из-за `HireDate` столбца в `Employees` таблица может содержать `NULL` значения. Таким образом, необходимо принять `Object` как входной параметр для `DisplayDaysOnJob` метод, проверьте, были ли базы данных `NULL` значение (которого может выполняться с помощью `Convert.IsDBNull(objectToCheck)`), а затем продолжайте соответствующим образом.
+> Кроме того, вместо передачи в `EmployeesRow` экземпляр, можно просто передать в `HireDate` с использованием синтаксиса `<%# DisplayDaysOnJob(Eval("HireDate")) %>`. Тем не менее `Eval` возвращает `Object`, поэтому мы должны внести изменения наших `DisplayDaysOnJob` сигнатуру метода, чтобы принять входной параметр типа `Object`вместо нее. Мы не можем `Eval("HireDate")` вызов `DateTime` поскольку `HireDate` столбца в `Employees` таблица может содержать `NULL` значения. Таким образом, необходимо принять `Object` как входной параметр для `DisplayDaysOnJob` метод, проверьте, были ли базы данных `NULL` значение (которого может выполняться с помощью `Convert.IsDBNull(objectToCheck)`), а затем продолжайте соответствующим образом.
 
 
-Из-за этих тонкостей мы удалили передать во всем `EmployeesRow` экземпляра. В следующем уроке мы рассмотрим более удачный пример использования `Eval("columnName")` для передачи входного параметра в метод форматирования.
+Из-за этих тонкостей мы решили передать во всем `EmployeesRow` экземпляра. В следующем учебном курсе мы рассмотрим более удачный пример использования `Eval("columnName")` синтаксис для передачи входного параметра в метод форматирования.
 
-Ниже показан декларативный синтаксис для наших GridView, после добавления TemplateField и `DisplayDaysOnJob` метод, вызываемый из `ItemTemplate`:
+Ниже приведен декларативный синтаксис для наших GridView после добавления TemplateField и `DisplayDaysOnJob` метод, вызываемый из `ItemTemplate`:
 
 
 [!code-aspx[Main](using-templatefields-in-the-gridview-control-vb/samples/sample7.aspx)]
 
-На рисунке 16 показано завершенного учебника при просмотре через браузер.
+Рис. 16 показаны результаты всей работы, выполненной работы в браузере.
 
 
-[![Отображается число дней для задания была сотрудника](using-templatefields-in-the-gridview-control-vb/_static/image47.png)](using-templatefields-in-the-gridview-control-vb/_static/image46.png)
+[![Отображается число дней, сотрудник провел на работе](using-templatefields-in-the-gridview-control-vb/_static/image47.png)](using-templatefields-in-the-gridview-control-vb/_static/image46.png)
 
-**На рисунке 16**: число дней сотрудник был задания отображается ([Просмотр полноразмерное изображение](using-templatefields-in-the-gridview-control-vb/_static/image48.png))
+**Рис. 16**: число дней сотрудник провел на работе отображается ([Просмотр полноразмерного изображения](using-templatefields-in-the-gridview-control-vb/_static/image48.png))
 
 
 ## <a name="summary"></a>Сводка
 
-TemplateField в элементе управления GridView обеспечивает более высокую степень гибкости в отображении данных, чем другие элементы управления полями. TemplateFields идеально подходят для ситуаций, где:
+TemplateField в элементе управления GridView позволяет более высокий уровень гибкости в отображении данных, чем другие элементы управления полями. Поля TemplateField идеальны для ситуаций, где:
 
 - Несколько полей данных должны отображаться в одном столбце GridView
-- Данные лучше представить с помощью веб-элемент управления, а не обычного текста
-- Результат зависит от базовых данных, таких как отображение метаданных или переформатирования данных
+- Данные удобнее представить в веб-элемента управления, а не обычный текст
+- Результат зависит от базовых данных, такие как отображение метаданных или переформатирования данных
 
-Помимо настройки внешнего вида данных, TemplateFields также используются для настройки пользовательских интерфейсов для редактирования и вставка данных, как будет видно в будущих учебниках.
+Помимо настройки внешнего вида данных, поля TemplateField также используются для настройки пользовательских интерфейсов для правки и вставки данных, как мы увидим в последующих руководствах.
 
-Два следующих учебников поработать шаблоны, начиная с рассмотрим использование TemplateFields в DetailsView. После этого мы перейдем к FormView, который использует шаблоны вместо поля обеспечивают большую гибкость в макет и структуру данных.
+Следующих двух учебных курсах мы продолжим, изучение шаблонов, начиная с взгляда на использование полей TemplateField в элементе управления DetailsView. После этого мы перейдем к элементу FormView, который использует шаблоны вместо полей для обеспечения большей гибкости при размещении и структурировании данных.
 
-Программирование довольны!
+Счастливого вам программирования!
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи книг по ASP/ASP.NET и основатель веб- [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Microsoft с 1998 года. Скотт — независимый консультант, преподаватель и автор. Его последняя книга — [ *Sams Teach ASP.NET 2.0 in 24 часа*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Ним можно связаться по адресу [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Благодарности
+## <a name="special-thanks-to"></a>Особая благодарность
 
-Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было (Dan Jagers). Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+В этой серии руководств пособий рецензировалась многими компетентными редакторами. Основной рецензент этого учебного был (Dan Jagers). Хотите поработать с моих последующих статей для MSDN? Если Да, напишите мне [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Назад](custom-formatting-based-upon-data-vb.md)

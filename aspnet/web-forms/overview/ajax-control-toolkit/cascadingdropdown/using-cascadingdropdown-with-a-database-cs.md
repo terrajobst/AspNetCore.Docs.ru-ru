@@ -1,103 +1,102 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-cascadingdropdown-with-a-database-cs
-title: С помощью CascadingDropDown с базой данных (C#) | Документы Microsoft
+title: Использование CascadingDropDown с базой данных (C#) | Документация Майкрософт
 author: wenz
-description: CascadingDropDown управления в наборе элементов управления AJAX расширяет элемент управления DropDownList, чтобы изменения в один загружает DropDownList соответствующих значений в anoth...
+description: Элемент управления CascadingDropDown в AJAX Control Toolkit расширяет элемент управления DropDownList, что изменения в одной загрузке DropDownList соответствующих значений в anoth...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: 684f0c28-a490-4e5b-b5e5-5dfb77464b49
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-cascadingdropdown-with-a-database-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1991c26d408e593999288ea6df0467cea0369457
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 06ba008740da7e9cb6a058465154a38b65ccb39a
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30879131"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37381620"
 ---
-<a name="using-cascadingdropdown-with-a-database-c"></a>С помощью CascadingDropDown с базой данных (C#)
+<a name="using-cascadingdropdown-with-a-database-c"></a>Использование CascadingDropDown с базой данных (C#)
 ====================
 по [Кристиан Wenz](https://github.com/wenz)
 
-[Загрузить код](http://download.microsoft.com/download/9/0/7/907760b1-2c60-4f81-aeb6-ca416a573b0d/cascadingdropdown1.cs.zip) или [скачать PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/cascadingdropdown1CS.pdf)
+[Скачать код](http://download.microsoft.com/download/9/0/7/907760b1-2c60-4f81-aeb6-ca416a573b0d/cascadingdropdown1.cs.zip) или [скачать PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/cascadingdropdown1CS.pdf)
 
-> CascadingDropDown управления в наборе элементов управления AJAX расширяет элемент управления DropDownList, чтобы изменения в один загружает DropDownList соответствующих значений в другой DropDownList. В порядке, чтобы это работало должны создаваться специальные веб-службы.
+> Элемент управления CascadingDropDown в AJAX Control Toolkit расширяет элемент управления DropDownList, что изменения в одной загрузке DropDownList соответствующих значений в другой DropDownList. В порядке, чтобы это работало должны создаваться специальных веб-службы.
 
 
 ## <a name="overview"></a>Обзор
 
-CascadingDropDown управления в наборе элементов управления AJAX расширяет элемент управления DropDownList, чтобы изменения в один загружает DropDownList соответствующих значений в другой DropDownList. (Для экземпляра один список содержит список штатов США, и далее список заполняется основных городов, в этом состоянии.) В порядке, чтобы это работало должны создаваться специальные веб-службы.
+Элемент управления CascadingDropDown в AJAX Control Toolkit расширяет элемент управления DropDownList, что изменения в одной загрузке DropDownList соответствующих значений в другой DropDownList. (К примеру, один список содержит список штатов США, и следующий список заполняется крупнейших городов в этом состоянии.) В порядке, чтобы это работало должны создаваться специальных веб-службы.
 
 ## <a name="steps"></a>Шаги
 
-Во-первых источник данных является обязательным. В этом примере используется база данных AdventureWorks и Microsoft SQL Server 2005 Express Edition. Базы данных является необязательной частью установки Visual Studio (включая экспресс-выпуск), а также доступна как отдельный загружаемый в разделе [ https://go.microsoft.com/fwlink/?LinkId=64064 ](https://go.microsoft.com/fwlink/?LinkId=64064). Базы данных AdventureWorks входит в состав образцов баз данных и образцы SQL Server 2005 (загрузить в [ https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e &amp;DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp;DisplayLang=en)). Самый простой способ настроить базы данных будет использовать Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en)) и присоединения `AdventureWorks.mdf` файл базы данных.
+Во-первых источником данных является обязательным. В этом примере используется база данных AdventureWorks и Microsoft SQL Server 2005 Express Edition. Базы данных является необязательной частью установки Visual Studio (включая экспресс-выпуск), а также доступна для загрузки в разделе [ https://go.microsoft.com/fwlink/?LinkId=64064 ](https://go.microsoft.com/fwlink/?LinkId=64064). Базы данных AdventureWorks является частью образцы SQL Server 2005 и образцов баз данных (загрузить в [ https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp; DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp;DisplayLang=en)). Самый простой способ настроить базы данных является использование Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp; DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en)) и присоединения `AdventureWorks.mdf` файл базы данных.
 
-Для данного образца предполагается, что экземпляр SQL Server 2005 Express Edition вызывается `SQLEXPRESS` и находится на том же компьютере, что веб-сервер; Кроме того, это настройки по умолчанию. Если настройки отличаются, необходимо адаптировать сведения о соединении для базы данных.
+В этом примере мы предполагаем, что экземпляр SQL Server 2005 Express Edition называется `SQLEXPRESS` и находится на одном компьютере с веб-сервера; это также настройки по умолчанию. Если настройки отличаются, вам нужно адаптировать сведения о соединении для базы данных.
 
-Чтобы активировать функциональные возможности ASP.NET AJAX и набора средств управления `ScriptManager` управления необходимо поместить в любом месте на странице (но в &lt; `form` &gt; элемент):
+Для активации функции ASP.NET AJAX и Control Toolkit, `ScriptManager` управления необходимо поместить в любом месте на странице (но в &lt; `form` &gt; элемента):
 
 [!code-aspx[Main](using-cascadingdropdown-with-a-database-cs/samples/sample1.aspx)]
 
-На следующем шаге необходимы два элемента управления DropDownList. В этом примере мы используем поставщику и контактной информации из AdventureWorks, таким образом создается один список доступных поставщиков и доступных контактов:
+На следующем шаге необходимы два элемента управления DropDownList. В этом примере мы используем поставщику и контактной информации из AdventureWorks, таким образом мы создадим один список доступных поставщиков и доступных контактов:
 
 [!code-aspx[Main](using-cascadingdropdown-with-a-database-cs/samples/sample2.aspx)]
 
-Затем необходимо добавить два расширителей CascadingDropDown на страницу. Одно заполняет в первом списке (поставщики), а другой заполняет список второй (контактов). Необходимо задать следующие атрибуты:
+Затем необходимо добавить два расширителей CascadingDropDown на страницу. Одно заполняет первый список (поставщики), а другой заполняет второй список (контакты). Необходимо задать следующие атрибуты:
 
-- `ServicePath`: URL-адрес веб-службы доставки элементов списка
-- `ServiceMethod`: Веб-метода доставки элементов списка
+- `ServicePath`: URL-адрес веб-службы, предоставляя элементов списка
+- `ServiceMethod`: Метод веб-доставка элементов списка
 - `TargetControlID`: Идентификатор из раскрывающегося списка
 - `Category`: Категории сведений, переданных при вызове веб-метода
-- `PromptText`: Текст, отображаемый при асинхронной загрузке данных списка с сервера
-- `ParentControlID`: (необязательно) родительского раскрывающегося списка, загрузкой триггеры текущего списка
+- `PromptText`: Текст, отображаемый при асинхронной загрузкой данных с сервера
+- `ParentControlID`: (необязательно) родительского раскрывающемся списке, что загрузка триггеры текущего списка
 
-В зависимости от того, используется язык программирования имя веб-службы в вопросе изменяется, но все значения атрибутов совпадают. Вот CascadingDropDown элемент для первого раскрывающегося списка.
+В зависимости от используемого языка программирования изменяет имя веб-службы в вопросе, но все остальные значения атрибута совпадают. Ниже приведен элемент CascadingDropDown для первого раскрывающегося списка.
 
 [!code-aspx[Main](using-cascadingdropdown-with-a-database-cs/samples/sample3.aspx)]
 
-Расширения элемента управления для второго, необходимо указать `ParentControlID` таким образом, чтобы при выборе записи в триггерах список поставщиков загрузке связанных элементов в списке контактов.
+Нужно задать управляющих элементов-расширителей для второй список `ParentControlID` таким образом, выберите соответствующую запись в триггерах списка поставщиков загрузке связанных элементов в списке контактов.
 
 [!code-aspx[Main](using-cascadingdropdown-with-a-database-cs/samples/sample4.aspx)]
 
-Фактические трудозатраты, затем выполняется в веб-службы, который настраивается следующим образом. Обратите внимание, что `[ScriptService]` используется атрибут, в противном случае ASP.NET AJAX не удается создать прокси-сервера JavaScript для доступа к веб-методов из кода клиентского скрипта.
+Фактическая работа осуществляется в веб-службы, который настраивается следующим образом. Обратите внимание, что `[ScriptService]` используется атрибут, в противном случае AJAX для ASP.NET не удается создать прокси JavaScript для доступа к веб-методы из кода клиентского сценария.
 
 [!code-aspx[Main](using-cascadingdropdown-with-a-database-cs/samples/sample5.aspx)]
 
-Подпись веб-методов, вызываемых CascadingDropDown выглядит следующим образом:
+Подпись веб-методов, вызванных CascadingDropDown выглядит следующим образом:
 
 [!code-csharp[Main](using-cascadingdropdown-with-a-database-cs/samples/sample6.cs)]
 
-Поэтому возвращаемое значение должно быть массивом типа `CascadingDropDownNameValue` определяется набором средств управления. `GetVendors()` Метод довольно просто реализовать: код подключается к базе данных AdventureWorks и запрашивает первые 25 поставщиков. Первый параметр в `CascadingDropDownNameValue` конструктор имеет заголовок в списке записи второго его значение (значение атрибута в формате HTML &lt; `option` &gt; элемент). Ниже приведен код:
+Поэтому возвращаемое значение должно быть массивом типа `CascadingDropDownNameValue` которого определяется набор элементов управления. `GetVendors()` Метод довольно прост в реализации: код подключается к базе данных AdventureWorks и запрашивает поставщиков первые 25. Первый параметр в `CascadingDropDownNameValue` конструктор будет ее величина заголовок элемента списка, второй (значение атрибута в формате HTML &lt; `option` &gt; элемент). Ниже приведен код:
 
 [!code-csharp[Main](using-cascadingdropdown-with-a-database-cs/samples/sample7.cs)]
 
-Получение связанного контактов для поставщика (имя метода: `GetContactsForVendor()`) немного сложнее. Во-первых необходимо определить поставщика, который был выбран в первом раскрывающемся списке. Определяет набор элементов управления вспомогательный метод для этой задачи: `ParseKnownCategoryValuesString()` возвращает `StringDictionary` элемент, содержащий данные раскрывающегося списка:
+Получение связанных контактов для поставщика (имя метода: `GetContactsForVendor()`) немного сложнее. Во-первых необходимо определить поставщика, который был выбран в первом раскрывающемся списке. Набор средств управления определяет вспомогательный метод для выполнения этой задачи: `ParseKnownCategoryValuesString()` возвращает `StringDictionary` элемент, содержащий данные раскрывающегося списка:
 
 [!code-csharp[Main](using-cascadingdropdown-with-a-database-cs/samples/sample8.cs)]
 
-По соображениям безопасности необходимо сначала проверить эти данные. Таким образом, если имеется запись поставщика (поскольку `Category` первого элемента CascadingDropDown свойству `"Vendor"`), идентификатор выбранного поставщика может быть получен:
+По соображениям безопасности необходимо сначала проверить эти данные. Таким образом, если имеется запись поставщика (поскольку `Category` первого элемента CascadingDropDown свойству `"Vendor"`), можно извлечь идентификатор выбранного поставщика:
 
 [!code-csharp[Main](using-cascadingdropdown-with-a-database-cs/samples/sample9.cs)]
 
-Остальная часть метода — довольно прост, затем. Идентификатор поставщика используется в качестве параметра для SQL-запрос, который получает все связанные контакты для данного поставщика. Опять же, метод возвращает массив объектов типа `CascadingDropDownNameValue`.
+Остальная часть метода — довольно очевидно, затем. Идентификатор поставщика используется в качестве параметра для SQL-запрос, который извлекает все связанные контакты для этого поставщика. Опять же, метод возвращает массив объектов типа `CascadingDropDownNameValue`.
 
 [!code-csharp[Main](using-cascadingdropdown-with-a-database-cs/samples/sample10.cs)]
 
-Загрузить страницу ASP.NET и через короткое время заполнения списка поставщиков с 25 записей. Выберите одну запись и обратите внимание на то, как второй раскрывающийся список заполняется данными.
+Загрузки страницы ASP.NET, и через некоторое время короткий список поставщиков заполняется 25 записей. Выберите одну запись и обратите внимание на то, каким образом второго раскрывающегося списка заполняется данными.
 
 
 [![Первый список заполняется автоматически](using-cascadingdropdown-with-a-database-cs/_static/image2.png)](using-cascadingdropdown-with-a-database-cs/_static/image1.png)
 
-Первый список заполняется автоматически ([Просмотр полноразмерное изображение](using-cascadingdropdown-with-a-database-cs/_static/image3.png))
+Первый список заполняется автоматически ([Просмотр полноразмерного изображения](using-cascadingdropdown-with-a-database-cs/_static/image3.png))
 
 
 [![Второй список заполняется согласно выбору, в первом списке](using-cascadingdropdown-with-a-database-cs/_static/image5.png)](using-cascadingdropdown-with-a-database-cs/_static/image4.png)
 
-Второй список заполняется согласно выбору, в первом списке ([Просмотр полноразмерное изображение](using-cascadingdropdown-with-a-database-cs/_static/image6.png))
+Второй список заполняется согласно выбору, в первом списке ([Просмотр полноразмерного изображения](using-cascadingdropdown-with-a-database-cs/_static/image6.png))
 
 > [!div class="step-by-step"]
 > [Назад](filling-a-list-using-cascadingdropdown-cs.md)

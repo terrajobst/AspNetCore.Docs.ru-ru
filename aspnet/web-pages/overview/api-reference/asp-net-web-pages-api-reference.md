@@ -1,33 +1,32 @@
 ---
 uid: web-pages/overview/api-reference/asp-net-web-pages-api-reference
-title: Веб-страницы ASP.NET (Razor) краткий справочник по API | Документы Microsoft
+title: Веб-страницы ASP.NET (Razor) краткий справочник по API | Документация Майкрософт
 author: tfitzmac
-description: Эта страница содержит список, содержащий краткие примеры наиболее часто используемые объекты, свойства и методы для программирования веб-страниц ASP.NET с синтаксисом Razor.
+description: Эта страница содержит список с краткие примеры наиболее часто используемые объекты, свойства и методы для программирования веб-страниц ASP.NET с синтаксисом Razor.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2014
 ms.topic: article
 ms.assetid: 4001cb9b-3bfd-4ace-8a89-1561d8421e2c
 ms.technology: dotnet-webpages
-ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/api-reference/asp-net-web-pages-api-reference
 msc.type: authoredcontent
-ms.openlocfilehash: 5f9d84f4d453583d7d4eae12e4fc510275255616
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 3bf706cefe5302cf1085e0f814dc6654e42ae917
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30897588"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37378667"
 ---
 <a name="aspnet-web-pages-razor-api-quick-reference"></a>Веб-страницы ASP.NET (Razor) краткий справочник по API
 ====================
 по [Tom FitzMacken](https://github.com/tfitzmac)
 
-> Эта страница содержит список, содержащий краткие примеры наиболее часто используемые объекты, свойства и методы для программирования веб-страниц ASP.NET с синтаксисом Razor.
+> Эта страница содержит список с краткие примеры наиболее часто используемые объекты, свойства и методы для программирования веб-страниц ASP.NET с синтаксисом Razor.
 > 
-> Описания «(v2)», отмеченные появились в веб-страниц ASP.NET версии 2.
+> Описания, отмеченные «(v2)» впервые появились в ASP.NET Web Pages версии 2.
 > 
-> Справочная документация по API, в разделе [справочная документация веб-страниц ASP.NET](https://go.microsoft.com/fwlink/?LinkId=208659) на сайте MSDN.
+> Справочная документация по API, см. в разделе [справочная документация веб-страниц ASP.NET](https://go.microsoft.com/fwlink/?LinkId=208659) на сайте MSDN.
 > 
 > ## <a name="software-versions"></a>Версии программного обеспечения
 > 
@@ -38,11 +37,11 @@ ms.locfileid: "30897588"
 > Этот учебник также работает с 2 веб-страниц ASP.NET и веб-страниц ASP.NET 1.0 (за исключением функций, отмеченных как v2).
 
 
-Эта страница содержит сведения о следующих:
+Эта страница содержит справочные сведения в следующих целях:
 
 - [Классы](#Classes)
 - [Данные](#Data)
-- [Helpers](#Helpers)
+- [Вспомогательные функции](#Helpers)
 - [Проверка](#Validation)
 
 <a id="Classes"></a>
@@ -50,19 +49,19 @@ ms.locfileid: "30897588"
 
 ### `AppState[key], AppState[index],App`
 
-Содержит данные, которые могут совместно использоваться все страницы в приложении. Можно использовать динамическую `App` свойство для доступа к данным, как показано в следующем примере:
+Содержит данные, которые могут выполнять все страницы в приложении. Можно использовать динамическую `App` свойство для доступа к те же данные, как показано в следующем примере:
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample1.html)]
 
 ### `AsBool(), AsBool(true|false)`
 
-Преобразует строковое значение в логическое значение (ИСТИНА или ЛОЖЬ). Возвращает значение false или указанное значение, если строка не представляет значение true или false.
+Преобразует строковое значение в логическое значение (true или false). Возвращает значение false или указанное значение, если строка не представляет значение true или false.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample2.cs)]
 
 ### `AsDateTime(), AsDateTime(value)`
 
-Преобразует строковое значение для даты и времени. Возвращает `DateTime.MinValue` или указанное значение, если строка не представляет даты и времени.
+Преобразует строковое значение в дату и время. Возвращает `DateTime.MinValue` или указанное значение, если строка не представляет даты и времени.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample3.cs)]
 
@@ -92,7 +91,7 @@ ms.locfileid: "30897588"
 
 ### `Html.Raw(value)`
 
-Подготавливает к просмотру *значение* как HTML-разметка, вместо отображения его выходные данные в кодировке HTML.
+Выполняет визуализацию *значение* как HTML-разметка, вместо отображения его выходные данные в кодировке HTML.
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample8.cshtml)]
 
@@ -110,7 +109,7 @@ ms.locfileid: "30897588"
 
 ### `IsPost`
 
-Возвращает значение true, если запрос POST. (Начальных запросов обычно являются GET).
+Возвращает значение true, если запрос POST. (Начальная обычно считаются запросы GET.)
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample11.cs)]
 
@@ -122,26 +121,26 @@ ms.locfileid: "30897588"
 
 ### `PageData[key], PageData[index],Page`
 
-Содержит данные, общим для страниц, страниц макетов и частичных страниц в текущий запрос. Можно использовать динамическую `Page` свойство для доступа к данным, как показано в следующем примере:
+Содержит данные, общим для страниц, страниц макетов и частичных страниц в текущем запросе. Можно использовать динамическую `Page` свойство для доступа к те же данные, как показано в следующем примере:
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample13.html)]
 
 ### `RenderBody()`
 
-(Макет страницы) Отображает содержимое страницы содержимого, не все именованные разделы.
+(Макета страниц) Выполняет визуализацию содержимого страницы содержимого, который не находится в любой именованные разделы.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample14.cs)]
 
 ### `RenderPage(path, values)`  
 `RenderPage(path[,param1 [, param2]])`
 
-Отображает страницу содержимого, используя заданный путь и необязательные дополнительные данные. Можно получить значения дополнительных параметров из `PageData` по положению (например, 1) или ключ (например, 2).
+Отображает страницу содержимого с помощью указанного пути и необязательные дополнительные данные. Вы можете получить значения дополнительных параметров из `PageData` по положению (например, 1) или ключ (например, 2).
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample15.js)]
 
 ### `RenderSection(sectionName [, required = true|false])`
 
-(Макет страницы) Отображает раздел содержимого с именем. Задать *необходимые* значение false, чтобы сделать необязательный раздел.
+(Макета страниц) Выполняет визуализацию содержимого раздела с именем. Задайте *требуется* значение false, чтобы сделать раздел необязательно.
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample16.js)]
 
@@ -153,38 +152,38 @@ ms.locfileid: "30897588"
 
 ### `Request.Files[key]`
 
-Получает файлы, которые были загружены в текущий запрос.
+Получает файлы, которые были отправлены в текущем запросе.
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample18.js)]
 
 ### `Request.Form[key]`
 
-Возвращает данные, была отправлена в форме (в виде строки). `Request[key]` проверяет оба `Request.Form` и `Request.QueryString` коллекции.
+Получает данные, которая была отправлена в форме (в виде строки). `Request[key]` проверяет оба `Request.Form` и `Request.QueryString` коллекций.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample19.cs)]
 
 ### `Request.QueryString[key]`
 
-Возвращает данные, который указан в строке запроса URL-адреса. `Request[key]` проверяет оба `Request.Form` и `Request.QueryString` коллекции.
+Получает данные, который был указан в строке запроса URL-адрес. `Request[key]` проверяет оба `Request.Form` и `Request.QueryString` коллекций.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample20.cs)]
 
 ### `Request.Unvalidated(key)`  
 `Request.Unvalidated().QueryString|Form|Cookies|Headers[key]`
 
-Выборочно отключает запрос проверки для элементов формы, значения строки запроса, файл cookie или значение заголовка. Проверка запросов включена по умолчанию и пользователи не смогут учета разметки или других потенциально опасное содержимое.
+Выборочно отключает запрос проверки для элемента формы, значения строки запроса, куки-файл или значение заголовка. Проверка запросов включена по умолчанию и запрещает учета разметки или других потенциально опасных содержимого.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample21.cs)]
 
 ### `Response.AddHeader(name, value)`
 
-Добавляет заголовок НТТР сервер в ответ.
+Добавляет заголовок HTTP сервер в ответ.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample22.cs)]
 
 ### `Response.OutputCache(seconds [, sliding] [, varyByParams])`
 
-Кэширование вывода страниц в указанное время. При необходимости установить *скользящий* Сброс времени ожидания для доступа к каждой странице и *varyByParams* кэширование разные версии страницы для каждой строки запроса, различающимся в запросе страницы.
+Кэширует вывод страницы в течение указанного времени. При необходимости задать *скользящий* для сброса времени ожидания при каждом доступе страницы и *varyByParams* кэшировать разные версии страницы для каждой строки другой запрос в запросе страницы.
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample23.js)]
 
@@ -196,13 +195,13 @@ ms.locfileid: "30897588"
 
 ### `Response.SetStatus(httpStatusCode)`
 
-Задает код состояния HTTP, отправляемого в браузер.
+Задает код состояния HTTP, отправляемых в браузер.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample25.cs)]
 
 ### `Response.WriteBinary(data [, mimetype])`
 
-Записывает содержимое *данные* ответ с типом MIME, необязательно.
+Записывает содержимое *данных* в ответ с необязательным типом MIME.
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample26.js)]
 
@@ -214,13 +213,13 @@ ms.locfileid: "30897588"
 
 ### `@section(sectionName) {content }`
 
-(Макет страницы) Определяет, имя раздела содержимого.
+(Макета страниц) Определяет раздел содержимого с именем.
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample28.cshtml)]
 
 ### `Server.HtmlDecode(htmlText)`
 
-Декодирует строку, — в кодировке HTML.
+Декодирует строку в кодировке HTML.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample29.cs)]
 
@@ -232,19 +231,19 @@ ms.locfileid: "30897588"
 
 ### `Server.MapPath(virtualPath)`
 
-Возвращает физический путь к серверу для заданного виртуального пути.
+Возвращает физический путь к серверу для указанного виртуального пути.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample31.cs)]
 
 ### `Server.UrlDecode(urlText)`
 
-Расшифровывает текст с URL-адреса.
+Декодирует текст из URL-адрес.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample32.cs)]
 
 ### `Server.UrlEncode(text)`
 
-Кодирует текст для размещения в URL-АДРЕСЕ.
+Кодирует текст в URL-адрес.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample33.cs)]
 
@@ -262,7 +261,7 @@ ms.locfileid: "30897588"
 
 ### `UrlData[index]`
 
-Возвращает дополнительные сведения по URL-адресу (например, */MyPage/ExtraData*).
+Получает дополнительные данные из URL-адрес (например, */MyPage/ExtraData*).
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample36.cs)]
 
@@ -274,33 +273,33 @@ ms.locfileid: "30897588"
 
 ### `WebSecurity.ConfirmAccount(accountConfirmationToken)`
 
-Подтверждение учетной записи с помощью токена подтверждения учетной записи.
+Подтверждает учетную запись с помощью токена подтверждения учетной записи.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample38.cs)]
 
 ### `WebSecurity.CreateAccount(userName, password`  
  `[, requireConfirmationToken = true|false])`
 
-Создает новую учетную запись пользователя с указанным именем пользователя и паролем. Если требуется маркер подтверждения, передайте значение true, если для *requireConfirmationToken.*
+Создает новую учетную запись пользователя с указанным именем пользователя и пароль. Чтобы требовать маркер подтверждения, передайте значение true для *requireConfirmationToken.*
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample39.cs)]
 
 ### `WebSecurity.CurrentUserId`
 
-Возвращает целочисленный идентификатор для пользователя, вошедшего в систему.
+Получает целочисленный идентификатор для пользователя, вошедшего в систему.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample40.cs)]
 
 ### `WebSecurity.CurrentUserName`
 
-Возвращает имя пользователя, вошедшего в систему.
+Получает имя для пользователя, вошедшего в систему.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample41.cs)]
 
 ### `WebSecurity.GeneratePasswordResetToken(username`  
  `[, tokenExpirationInMinutesFromNow])`
 
-Создает маркер сброса пароля, которое может быть отправлено в сообщении электронной почты для пользователя, чтобы пользователь может сбросить пароль.
+Создает маркер сброса пароля, которые можно отправить в сообщении электронной почты для пользователя, чтобы пользователь может сбросить пароль.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample42.cs)]
 
@@ -318,7 +317,7 @@ ms.locfileid: "30897588"
 
 ### `WebSecurity.IsConfirmed(userName)`
 
-Возвращает значение true, если пользователь подтвержден (например, с помощью подтверждения адреса электронной почты).
+Возвращает значение true, если пользователь подтвержден (например, с помощью подтверждение по электронной почте).
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample45.cs)]
 
@@ -336,7 +335,7 @@ ms.locfileid: "30897588"
 
 ### `WebSecurity.Logout()`
 
-Осуществляет вход пользователя помещает путем удаления файла cookie проверки подлинности для маркеров.
+Осуществляет вход пользователя, путем удаления файла cookie проверки подлинности для маркеров.
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample48.css)]
 
@@ -361,7 +360,7 @@ ms.locfileid: "30897588"
 
 ### `WebSecurity.ResetPassword(passwordResetToken,newPassword)`
 
-Если маркер сброса пароля является допустимой, изменяет пароль пользователя на новый пароль.
+Если маркер сброса пароля является допустимым, изменения пароля новый пароль.
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample52.css)]
 
@@ -383,13 +382,13 @@ ms.locfileid: "30897588"
 ### `Database.Open(filename)`  
 `Database.Open(connectionStringName)`
 
-Открывает указанный файл базы данных или базы данных, указанной с помощью именованную строку соединения из *Web.config* файла.
+Открывает указанный файл базы данных или базы данных, указанной с помощью именованную строку соединения из *Web.config* файл.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample55.cs)]
 
 ### `Database.OpenConnectionString(connectionString)`
 
-Открывает базу данных с помощью строки подключения. (Это отличается от `Database.Open`, которая использует имя строки подключения.)
+Открывает базу данных с помощью строки подключения. (Этим SideShow отличается от `Database.Open`, который использует имя строки подключения.)
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample56.cs)]
 
@@ -416,25 +415,25 @@ ms.locfileid: "30897588"
 
 ### `Analytics.GetGoogleHtml(webPropertyId)`
 
-Отображает код Google Analytics JavaScript для указанного идентификатора.
+Выводит код JavaScript в Google Analytics для указанного идентификатора.
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample60.js)]
 
 ### `Analytics.GetStatCounterHtml(project,security)`
 
-Отображает код JavaScript StatCounter аналитики для указанного проекта.
+Выполняет визуализацию StatCounter Analytics JavaScript-код для указанного проекта.
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample61.css)]
 
 ### `Analytics.GetYahooHtml(account)`
 
-Отображает код Yahoo Analytics JavaScript для указанной учетной записи.
+Выполняет визуализацию Yahoo Analytics JavaScript-код для указанной учетной записи.
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample62.js)]
 
 ### `Bing.SearchBox([boxWidth])`
 
-Передает поиск Bing. Укажите сайт для поиска и заголовком поля поиска, можно задать `Bing.SiteUrl` и `Bing.SiteTitle` свойства. Обычно эти свойства задаются  *\_AppStart* страницы.
+Передает поиска Bing. Чтобы указать узел для поиска и заголовок для поля поиска, можно задать `Bing.SiteUrl` и `Bing.SiteTitle` свойства. Обычно эти свойства задаются  *\_AppStart* страницы.
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample63.html)]
 
@@ -456,41 +455,41 @@ ms.locfileid: "30897588"
  `[, axisLabel] [, legend] [, markerStep] [, xValue]`  
  `[, xField] [, yValues] [, yFields] [, options])`
 
-Добавляет последовательность значений диаграммы.
+Добавляет ряд значений в диаграмме.
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample67.cshtml)]
 
 ### `Crypto.Hash(string [, algorithm])`  
 `Crypto.Hash(bytes [, algorithm])`
 
-Возвращает хэш-значение для указанных данных. Алгоритм по умолчанию — `sha256`.
+Возвращает хэш для указанных данных. Алгоритм по умолчанию — `sha256`.
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample68.html)]
 
 ### `Facebook.LikeButton(href [, buttonLayout] [, showFaces] [, width] [, height]`   
  `[, action] [, font] [, colorScheme] [, refLabel])`
 
-Позволяет устанавливать подключение к страницам пользователей Facebook.
+Позволяет установить подключение к страницам пользователей Facebook.
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample69.js)]
 
 ### `FileUpload.GetHtml([initialNumberOfFiles] [, allowMoreFilesToBeAdded]`  
  `[, includeFormTag] [, addText] [, uploadText])`
 
-Отрисовывает пользовательский Интерфейс для передачи файлов.
+Выполняет визуализацию пользовательского интерфейса для передачи файлов.
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample70.html)]
 
 ### `GamerCard.GetHtml(gamerTag)`
 
-Выполняет визуализацию указанного тега игровой Xbox.
+Выполняет визуализацию указанного тега игровой приставки Xbox.
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample71.js)]
 
 ### `Gravatar.GetHtml(email [, imageSize] [, defaultImage] [, rating]`  
  `[, imageExtension] [, attributes])`
 
-Отображает изображение глобально распознаваемые, чтобы указанный адрес электронной почты.
+Выполняет визуализацию Gravatar изображение, чтобы указанный адрес электронной почты.
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample72.css)]
 
@@ -502,14 +501,14 @@ ms.locfileid: "30897588"
 
 ### `Json.Decode(string)`
 
-Преобразует входной строки с кодированием JSON в объект данных, который можно итерацию или вставить в базу данных.
+Преобразует входной строки с кодированием JSON в объект данных, итерацию также можно вставить в базу данных.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample74.cs)]
 
 ### `LinkShare.GetHtml(pageTitle[, pageLinkBack] [, twitterUserName]`  
  `[, additionalTweetText] [, linkSites])`
 
-Подготавливает к просмотру социальной сети ссылок, с помощью указанного заголовка и необязательный URL-адрес.
+Выполняет визуализацию социальные сети ссылки, используя указанный заголовок и дополнительный URL-адрес.
 
 [!code-xml[Main](asp-net-web-pages-api-reference/samples/sample75.xml)]
 
@@ -539,7 +538,7 @@ ms.locfileid: "30897588"
 
 ### `Recaptcha.GetHtml([, publicKey] [, theme] [, language] [, tabIndex])`
 
-Подготавливает к просмотру проверку reCAPTCHA.
+Выполняет визуализацию проверку reCAPTCHA.
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample80.css)]
 
@@ -564,49 +563,49 @@ ms.locfileid: "30897588"
 
 ### `Twitter.Profile(twitterUserName)`
 
-Подготавливает к просмотру поток Twitter для указанного пользователя.
+Выполняет визуализацию поток Twitter для указанного пользователя.
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample84.js)]
 
 ### `Twitter.Search(searchQuery)`
 
-Подготавливает к просмотру поток Twitter для поиска указанного текста.
+Выполняет визуализацию поток Twitter в указанный искомый текст.
 
 [!code-xml[Main](asp-net-web-pages-api-reference/samples/sample85.xml)]
 
 ### `Video.Flash(filename [, width, height])`
 
-Подготавливает к просмотру флэш-памяти видеопроигрывателя для указанного файла с необязательным шириной и высотой.
+Выполняет визуализацию флэш проигрыватель видео для указанного файла с необязательным шириной и высотой.
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample86.cshtml)]
 
 ### `Video.MediaPlayer(filename [, width, height])`
 
-Подготавливает к просмотру проигрывателя Windows Media для указанного файла с необязательным шириной и высотой.
+Выполняет визуализацию проигрыватель Windows Media для указанного файла с необязательным шириной и высотой.
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample87.cshtml)]
 
 ### `Video.Silverlight(filename, width, height)`
 
-Подготавливает к просмотру проигрывателя Silverlight для указанного *.xap* файл с требуемой ширины и высоты.
+Выполняет визуализацию проигрывателя Silverlight для указанного *.xap* файл с требуемые ширину и высоту.
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample88.cshtml)]
 
 ### `WebCache.Get(key)`
 
-Возвращает объект, заданный *ключ*, или значение null, если объект не найден.
+Возвращает объект, указанный *ключ*, или значение null, если объект не найден.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample89.cs)]
 
 ### `WebCache.Remove(key)`
 
-Удаляет заданный объект *ключ* из кэша.
+Удаляет объект, указанный *ключ* из кэша.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample90.cs)]
 
 ### `WebCache.Set(key, value [, minutesToCache] [, slidingExpiration])`
 
-Помещает *значение* в кэш под именем, заданным *ключ*.
+Помещает *значение* в кэш под именем, указанным *ключ*.
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample91.html)]
 
@@ -618,13 +617,13 @@ ms.locfileid: "30897588"
 
 ### `WebGrid.GetHtml()`
 
-Выводит разметку для отображения данных в HTML-таблицу.
+Отображает разметку для отображения данных в таблице HTML.
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample93.html)]
 
 ### `WebGrid.Pager()`
 
-Отображает страничный навигатор для `WebGrid` объекта.
+Выполняет визуализацию страничный навигатор для `WebGrid` объекта.
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample94.html)]
 
@@ -636,7 +635,7 @@ ms.locfileid: "30897588"
 
 ### `WebImage.AddImagesWatermark(image)`
 
-Добавляет указанное изображение в качестве водяного знака.
+Добавляет заданное изображение в качестве водяного знака.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample96.cs)]
 
@@ -655,7 +654,7 @@ ms.locfileid: "30897588"
 
 ### `WebImage.GetImageFromRequest()`
 
-Загружает изображение при отправке изображения страницы при передаче файла.
+Загружает изображение при отправке изображение страницы во время передачи файлов.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample99.cs)]
 
@@ -699,7 +698,7 @@ ms.locfileid: "30897588"
 
 ### `WebMail.UserName`
 
-Задает имя пользователя для SMTP-сервера. Обычно это свойство следует задать в  *\_AppStart* страницы.
+Задает имя пользователя для SMTP-сервера. Обычно это свойство следует задавать в  *\_AppStart* страницы.
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample106.html)]
 
@@ -726,31 +725,31 @@ ms.locfileid: "30897588"
 
 ### `Validation.ClassFor(field)`
 
-(v2) Динамически подготавливает к просмотру атрибутов класса CSS для проверки на стороне клиента, что можно форматировать сообщения об ошибках проверки. (Требуется ссылаться на библиотеки соответствующие клиентских скриптов и определении классов CSS).
+(v2) Отрисовывает атрибуты класс CSS для проверки на стороне клиента, динамически таким образом, чтобы сообщения об ошибках проверки можно форматировать. (Требуется ссылаться на библиотеки соответствующих клиентских скриптов и определять классы CSS).
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample110.html)]
 
 ### `Validation.For(field)`
 
-(v2) Включает проверку на стороне клиента для поля ввода пользователя. (Требуется ссылаться на библиотеки соответствующего клиентского скрипта).
+(v2) Позволяет клиентской проверки для поля ввода пользователя. (Требуется ссылаться на библиотеки соответствующих клиентских сценариев.)
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample111.html)]
 
 ### `Validation.IsValid()`
 
-(v2) Возвращает значение true, если все элементы пользовательского ввода, зарегистрированного для проверки содержать допустимые значения.
+(v2) Возвращает значение true, если все элементы ввода пользователя, зарегистрированного для проверки содержать допустимые значения.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample112.cs)]
 
 ### `Validation.RequireField(field[, errorMessage])`
 
-(v2) Указывает, что пользователям необходимо предоставить значение для элемента ввода.
+(v2) Указывает, что пользователям необходимо указать значение для элемента ввода пользователя.
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample113.cs)]
 
 ### `Validation.RequireFields(field1[, field12, field3, ...])`
 
-(v2) Указывает, что пользователям необходимо предоставить значения для каждого элемента ввода пользователя. Этот метод не позволяет задать пользовательское сообщение об ошибке.
+(v2) Указывает, что пользователи должны указать значения для каждого из элементов пользовательского ввода. Этот метод не позволяет задать пользовательское сообщение об ошибке.
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample114.html)]
 
@@ -765,6 +764,6 @@ ms.locfileid: "30897588"
 `Validator.StringLength(length)`  
 `Validator.Url([error message])`
 
-(v2) Задает проверку при использовании `Validation.Add` метода.
+(v2) Задает проверку, при использовании `Validation.Add` метод.
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample115.js)]

@@ -1,283 +1,282 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/customizing-the-data-modification-interface-vb
-title: Настройка интерфейса изменения данных (Visual Basic) | Документы Microsoft
+title: Настройка интерфейса изменения данных (Visual Basic) | Документация Майкрософт
 author: rick-anderson
-description: В этом учебнике мы рассмотрим способы настройки интерфейса изменяемого элемента управления GridView, заменив стандартные текстовые поля и CheckBox альтернатив...
+description: В этом руководстве мы рассмотрим способы настройки интерфейса изменяемого элемента управления GridView, заменяя стандартные текстовые поля и CheckBox альтернатив...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
 ms.topic: article
 ms.assetid: 4830d984-bd2c-4a08-bfe5-2385599f1f7d
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/customizing-the-data-modification-interface-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7d334a86fcf2fbd1069628527c6e89f3ab655dd5
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 5eea1f226cbcfa07c2fcca3d68fb5ee1cb88ab61
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30888634"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37370381"
 ---
-<a name="customizing-the-data-modification-interface-vb"></a>Настройка интерфейса изменения данных (Visual Basic)
+<a name="customizing-the-data-modification-interface-vb"></a>Настройка интерфейса изменения данных (VB)
 ====================
 по [Скотт Митчелл](https://twitter.com/ScottOnWriting)
 
-[Загрузить пример приложения](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_20_VB.exe) или [скачать PDF](customizing-the-data-modification-interface-vb/_static/datatutorial20vb1.pdf)
+[Скачайте пример приложения](http://download.microsoft.com/download/9/c/1/9c1d03ee-29ba-4d58-aa1a-f201dcc822ea/ASPNET_Data_Tutorial_20_VB.exe) или [скачать PDF](customizing-the-data-modification-interface-vb/_static/datatutorial20vb1.pdf)
 
-> В этом учебнике мы рассмотрим способы настройки интерфейса изменяемого элемента управления GridView, заменив стандартные текстовые поля и CheckBox альтернативных ввода веб-элементов управления.
+> В этом руководстве мы рассмотрим способы настройки интерфейса изменяемого элемента управления GridView, заменяя стандартные текстовые поля и CheckBox альтернативный веб-элементами управления ввода.
 
 
 ## <a name="introduction"></a>Вступление
 
-Стояли и CheckBoxFields, используемым элементами управления GridView и DetailsView упростить процесс изменения данных из-за возможности для отображения только для чтения, для редактирования и вставляемые интерфейсов. Эти интерфейсы может осуществляться без необходимости добавления дополнительных декларативная разметка и код. Однако BoundField и в CheckBoxField интерфейсов не хватает подлежит, часто требуется в реальных сценариях. Чтобы настроить интерфейс для редактирования или вставляемые в GridView и DetailsView, нам нужно вместо этого использовать TemplateField.
+Поля BoundFields и CheckBoxFields, используемые элементами управления GridView и DetailsView упрощают процесс изменения данных из-за возможности для подготовки к просмотру интерфейсы только для чтения, редактирования и пригодным для вставки. Эти интерфейсы могут подготавливаться без необходимости добавления дополнительных декларативная разметка и код. Однако интерфейсы BoundField и CheckBoxField элемента не хватает настройки, часто требуется в сценарии из реальной жизни. Чтобы настроить интерфейс редактирования или пригодным для вставки в GridView или DetailsView, нам нужно вместо этого использовать TemplateField.
 
-В [предыдущего учебника](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb.md) мы узнали, как настроить интерфейсы изменения данных путем добавления веб-элементов управления проверки. В этом учебнике мы рассмотрим процесс настройки фактические данные коллекции веб-элементов управления, заменив BoundField и стандартные текстовые поля в CheckBoxField и элементов управления CheckBox, альтернативный веб-элементами управления ввода. В частности мы выполним сборку изменяемого элемента управления GridView, позволяющий продукта имя категории, поставщиков и неподдерживаемые состояние обновления. При редактировании конкретной строки, категорию и поставщика поля будут отображаться как элементами управления DropDownList, содержащую набор доступных категорий и поставщиков для выбора. Кроме того, мы заменим CheckBoxField по умолчанию флажок элемента управления RadioButtonList, который предлагает два варианта: «Active» и «Больше».
+В [предыдущем учебном курсе](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb.md) мы узнали, как настройка интерфейса изменения данных путем добавления веб-элементов управления проверки. В этом руководстве мы рассмотрим способы настройки фактические данные коллекции веб-элементов управления, заменив BoundField и стандартные текстовые поля в CheckBoxField и элементов управления CheckBox, альтернативный веб-элементами управления ввода. В частности мы создадим изменяемого элемента управления GridView, позволяющий продукта имя, категорию, поставщика и снят с производства обновляться. При редактировании конкретной строки, категорию и поставщика поля будут отображаться как элементов управления DropDownList, содержащую набор доступных категорий и поставщиков для выбора. Кроме того, мы заменим CheckBoxField по умолчанию флажок элемент управления RadioButtonList, который предлагает два варианта: «Активный» и «Более не поддерживается».
 
 
-[![Интерфейс редактирования элемента GridView включает элементами управления DropDownList и элементы управления RadioButton](customizing-the-data-modification-interface-vb/_static/image2.png)](customizing-the-data-modification-interface-vb/_static/image1.png)
+[![Интерфейс правки элемента GridView включает элементов управления DropDownList и переключатели](customizing-the-data-modification-interface-vb/_static/image2.png)](customizing-the-data-modification-interface-vb/_static/image1.png)
 
-**Рис. 1**: редактирование интерфейса включает элементами управления DropDownList GridView и переключатели ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image3.png))
+**Рис. 1**: редактирование интерфейс включает элементов управления DropDownList элемента GridView и переключатели ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image3.png))
 
 
 ## <a name="step-1-creating-the-appropriateupdateproductoverload"></a>Шаг 1: Создание соответствующего`UpdateProduct`перегрузки
 
-В этом учебнике мы построим изменяемого элемента управления GridView, позволяющий редактирование название продукта, категория, поставщик и неподдерживаемые состояния. Таким образом, нам нужно `UpdateProduct` перегрузку, которая принимает пять входных параметров, эти четыре значения, а также `ProductID`. Как и в наших предыдущих перегрузки одного будет:
+В этом руководстве мы построим изменяемого элемента управления GridView, позволяющий редактирование имя продукта, категории, поставщика, который более не поддерживается состояние. Таким образом, нам нужно `UpdateProduct` перегрузку, которая принимает пять входных параметров, значения этих четырех продукта, а также `ProductID`. Как и в наших предыдущих перегрузок, это будет один:
 
-1. Получить сведения о продукте из базы данных для указанного `ProductID`,
+1. Получения сведений о продуктах из базы данных для указанного `ProductID`,
 2. Обновление `ProductName`, `CategoryID`, `SupplierID`, и `Discontinued` поля, и
 3. Отправить запрос на обновление DAL через TableAdapter `Update()` метод.
 
-Для краткости для этой конкретной перегрузки я не Проверка правила бизнеса, что гарантирует, что продукт, отмеченных как неподдерживаемые не только продукта, предоставляемой его поставщиком. Можно добавить его в, если вы предпочитаете, или, в идеальном случае рефакторинга логическую схему отдельный метод.
+Для краткости для Данная конкретная перегрузка я опустил правило проверки бизнеса, которая гарантирует, что единственный продукт, предлагаемых поставщик не помечаются как снятые с продажи продукта. Вы можете добавить его в, если вы предпочитаете, или, в идеальном случае Реструктурируйте логику в отдельный метод.
 
-В следующем коде показан новый `UpdateProduct` перегрузки в `ProductsBLL` класса:
+В следующем коде показано новое `UpdateProduct` перегрузки в `ProductsBLL` класса:
 
 
 [!code-vb[Main](customizing-the-data-modification-interface-vb/samples/sample1.vb)]
 
-## <a name="step-2-crafting-the-editable-gridview"></a>Шаг 2: Дополнительно изменяемого элемента управления GridView
+## <a name="step-2-crafting-the-editable-gridview"></a>Шаг 2: Создание изменяемого элемента управления GridView
 
-С `UpdateProduct` перегрузка добавлены все готово для создания нашей изменяемого элемента управления GridView. Откройте `CustomizedUI.aspx` страницы в `EditInsertDelete` папки и добавление элемента управления GridView в конструктор. Создайте новый элемент управления ObjectDataSource смарт-теге элемента GridView. Настройка ObjectDataSource для получения сведений о продукте через `ProductBLL` класса `GetProducts()` метод и обновления данных с помощью продукта `UpdateProduct` перегрузку, мы только что создали. На вкладках INSERT и DELETE выберите (нет) из раскрывающихся списков.
-
-
-[![Настройка с использованием перегрузки UpdateProduct только что созданный элемент управления ObjectDataSource](customizing-the-data-modification-interface-vb/_static/image5.png)](customizing-the-data-modification-interface-vb/_static/image4.png)
-
-**На рисунке 2**: Настройка ObjectDataSource для использования `UpdateProduct` перегружать только что создали ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image6.png))
+С помощью `UpdateProduct` добавлена перегрузка, мы готовы к созданию наших изменяемого элемента управления GridView. Откройте `CustomizedUI.aspx` странице в `EditInsertDelete` папку и добавьте элемент управления GridView в конструктор. Создайте новый ObjectDataSource смарт-теге элемента GridView. Настройка ObjectDataSource для получения сведений о продуктах с помощью `ProductBLL` класса `GetProducts()` метода и обновления данных с помощью продукта `UpdateProduct` мы только что созданной перегрузки. На вкладках INSERT и DELETE выберите (нет) из раскрывающихся списков.
 
 
-Как видно на протяжении учебники по модификации данных декларативного синтаксиса для ObjectDataSource, созданные с помощью Visual Studio назначает `OldValuesParameterFormatString` свойства `original_{0}`. Это, конечно, не будет работать с нашей уровня бизнес-логики с момента наши методы не ожидается, что исходный `ProductID` значение для передачи. Таким образом, как мы использовали в предыдущих учебниках, пора удалить это назначение свойства из декларативного синтаксиса, или вместо этого установить значение этого свойства в `{0}`.
+[![Настройка ObjectDataSource на использование только что созданной перегрузки UpdateProduct](customizing-the-data-modification-interface-vb/_static/image5.png)](customizing-the-data-modification-interface-vb/_static/image4.png)
 
-После этого изменения ObjectDataSource должен выглядеть следующим образом:
+**Рис. 2**: Настройка ObjectDataSource для использования `UpdateProduct` перегрузки только что создали ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image6.png))
+
+
+Как мы видели на протяжении всего руководства изменения данных, декларативный синтаксис для элемента управления ObjectDataSource, созданные с помощью Visual Studio назначает `OldValuesParameterFormatString` свойства `original_{0}`. Это, само собой, не будет работать с нашей уровня бизнес-логики, поскольку наши методы не рассчитывают на получение исходного `ProductID` передать в значение. Таким образом, как мы делали в предыдущих учебных курсах, Отвлекитесь и удалить это назначение свойства из декларативного синтаксиса или вместо этого установить значение этого свойства в `{0}`.
+
+После этого изменения декларативная разметка ObjectDataSource должен выглядеть следующим образом:
 
 
 [!code-aspx[Main](customizing-the-data-modification-interface-vb/samples/sample2.aspx)]
 
-Обратите внимание, что `OldValuesParameterFormatString` было удалено и нет `Parameter` в `UpdateParameters` коллекции для каждого входного параметра, наши `UpdateProduct` перегрузки.
+Обратите внимание, что `OldValuesParameterFormatString` свойство была удалена и что `Parameter` в `UpdateParameters` для каждого входного параметра, наши `UpdateProduct` перегрузки.
 
-При ObjectDataSource настроена для обновления только подмножество значений продукта, в настоящий момент отображается GridView *всех* полей продукта. Теперь пора изменить GridView, чтобы:
+Хотя элемент управления ObjectDataSource настроен для обновления только подмножества значений продукта, в настоящее время показывает GridView *все* поля продукта. Отвлекитесь и измените GridView, чтобы:
 
-- Он включает только `ProductName`, `SupplierName`, `CategoryName` стояли и `Discontinued` CheckBoxField
-- `CategoryName` И `SupplierName` поля будет отображаться перед (по левому краю) `Discontinued` CheckBoxField
-- `CategoryName` И `SupplierName` стояли `HeaderText` свойство имеет значение «Категория» и «Поставщик» соответственно
-- Включена поддержка редактирования (флажок Разрешить изменение в смарт-теге элемента GridView)
+- Он включает только `ProductName`, `SupplierName`, `CategoryName` поля BoundFields и `Discontinued` CheckBoxField
+- `CategoryName` И `SupplierName` полей для отображения перед (слева от) `Discontinued` CheckBoxField
+- `CategoryName` И `SupplierName` поля BoundField, кроме `HeaderText` свойство имеет значение «Category» и «Поставщик», соответственно
+- Включена поддержка редактирования (установите флажок Enable Editing в смарт-теге элемента GridView)
 
 После внесения этих изменений конструктор будет выглядеть на рис. 3 с помощью декларативного синтаксиса элемента GridView, показано ниже.
 
 
 [![Удалить ненужные поля из GridView](customizing-the-data-modification-interface-vb/_static/image8.png)](customizing-the-data-modification-interface-vb/_static/image7.png)
 
-**Рис. 3**: удалить ненужные поля из GridView ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image9.png))
+**Рис. 3**: удалить ненужные поля из GridView ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image9.png))
 
 
 [!code-aspx[Main](customizing-the-data-modification-interface-vb/samples/sample3.aspx)]
 
-На этом этапе завершена GridView поведение только для чтения. При просмотре данных, каждый продукт отображается в виде строки в GridView, показывающая название продукта, категории, поставщика и неподдерживаемые состояния.
+На этом этапе завершена GridView поведение только для чтения. При просмотре данных, каждого продукта отображается в виде строки в GridView, Отображение названия продукта, категории, поставщика и более не поддерживается состояние.
 
 
-[![Интерфейс только для чтения элемента GridView — завершено.](customizing-the-data-modification-interface-vb/_static/image11.png)](customizing-the-data-modification-interface-vb/_static/image10.png)
+[![Интерфейс только для чтения элемента GridView — завершено](customizing-the-data-modification-interface-vb/_static/image11.png)](customizing-the-data-modification-interface-vb/_static/image10.png)
 
-**Рис. 4**: интерфейс только для чтения GridView является Complete ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image12.png))
+**Рис. 4**: интерфейс только для чтения элемента GridView — Complete ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image12.png))
 
 
 > [!NOTE]
-> Как было сказано в [Обзор Вставка, обновление и удаление данных учебника](an-overview-of-inserting-updating-and-deleting-data-cs.md), жизненно важна, GridView, быть s состояния просмотра включена (по умолчанию). Если задать GridView s `EnableViewState` свойства `false`, увеличивается риск того что параллельно работающие пользователи непреднамеренно удаление или изменение записей. В разделе [предупреждение: проблемы параллелизма с ASP.NET 2.0 GridViews/DetailsView/FormViews, поддерживают редактирование или удаление и с состояние просмотра отключено](http://scottonwriting.net/sowblog/posts/10054.aspx) для получения дополнительной информации.
+> Как уже говорилось в [Обзор Вставка, обновление и удаление данных учебника](an-overview-of-inserting-updating-and-deleting-data-cs.md), очень важно, чтобы GridView состояние представления s быть включены (поведение по умолчанию). Если задать GridView s `EnableViewState` свойства `false`, возникает риск случайного удаления или изменения записей параллельно работающими пользователями. См. в разделе [предупреждение: проблемы параллелизма с помощью ASP.NET 2.0 элементов управления GridView/DetailsView/FormView среды, поддерживающих правку и/или удаление и которых состояние просмотра отключено](http://scottonwriting.net/sowblog/posts/10054.aspx) Дополнительные сведения.
 
 
-## <a name="step-3-using-a-dropdownlist-for-the-category-and-supplier-editing-interfaces"></a>Шаг 3: С помощью DropDownList для категорию и редактирования интерфейсы поставщика
+## <a name="step-3-using-a-dropdownlist-for-the-category-and-supplier-editing-interfaces"></a>Шаг 3: С помощью элемента управления DropDownList для категорию и поставщика, редактирования интерфейсы
 
-Помните, что `ProductsRow` объект содержит `CategoryID`, `CategoryName`, `SupplierID`, и `SupplierName` свойства, которые предоставляют фактический идентификатор значения внешнего ключа в `Products` таблицы и соответствующие базы данных `Name` значения в `Categories` и `Suppliers` таблицы. `ProductRow` `CategoryID` И `SupplierID` можно оба считывать и записывать данные, тогда как `CategoryName` и `SupplierName` свойства помечены только для чтения.
+Помните, что `ProductsRow` объект содержит `CategoryID`, `CategoryName`, `SupplierID`, и `SupplierName` свойства, которые содержат фактические значения идентификатора внешнего ключа в `Products` базы данных, таблицы и соответствующий `Name` значения в `Categories` и `Suppliers` таблицы. `ProductRow` `CategoryID` И `SupplierID` могут быть чтение из и записывать данные, тогда как `CategoryName` и `SupplierName` свойства отмечены как доступные только для чтения.
 
-Из-за состояния только для чтения `CategoryName` и `SupplierName` свойства, имели соответствующие стояли их `ReadOnly` свойство `True`, предотвращая внесение при редактировании строки эти значения. Хотя можно выбрать вариант `ReadOnly` свойства `False`, подготовки к просмотру `CategoryName` и `SupplierName` стояли как текстовые поля во время редактирования, такой подход приведет к исключение при попытке пользователя обновить продукт, так как она не `UpdateProduct` , принимающую `CategoryName` и `SupplierName` входные данные. На самом деле мы не хотим создать такие перегрузки по двум причинам:
+Из-за состояния только для чтения `CategoryName` и `SupplierName` свойства, имели соответствующие поля BoundField, кроме их `ReadOnly` свойство значение `True`, предотвращая изменение при редактировании строки эти значения. Хотя можно установить `ReadOnly` свойства `False`, подготовки к просмотру `CategoryName` и `SupplierName` поля BoundField, кроме как текстовые поля во время редактирования, такой подход приведет к исключение при попытке пользователя обновить продукт, так как нет `UpdateProduct` перегрузку, принимающую в `CategoryName` и `SupplierName` входных данных. На самом деле мы не хотим создавать такие перегрузки по двум причинам:
 
-- `Products` Таблица не содержит `SupplierName` или `CategoryName` поля, но `SupplierID` и `CategoryID`. Таким образом мы хотим наш метод для передачи этих определенного значения идентификатора, не соответствующих таблиц подстановки значений.
-- Поскольку требует от пользователя введите имя поставщика или категории не является идеальным, как пользователь знать доступные категории и поставщики и их правильное написание.
+- `Products` В таблице отсутствует `SupplierName` или `CategoryName` поля, но `SupplierID` и `CategoryID`. Таким образом мы хотим наш метод передаваемые этими конкретными значениями идентификатора, не их таблиц подстановки значений.
+- Пользователю нужно ввести имя поставщика или категории не является идеальным, так как требует от пользователя запоминать доступные категории и поставщики и их правильное написание.
 
-Отображать поля поставщика и категории, категории и имена поставщиков в режиме только для чтения (что происходит сейчас) и применимые параметры при редактировании список раскрывающегося списка. С помощью раскрывающегося списка, конечный пользователь может быстро просмотреть, какие категории и поставщики доступны для выбора одного из и более легко можно их выбор.
+Поставщика и категории поля следует отображать, категории и имена поставщиков в режиме только для чтения (как это делается сейчас) и выберите в раскрывающемся списка применимые параметры при редактировании. С помощью раскрывающегося списка, конечному пользователю можно быстро просмотреть, какие категории и поставщики будут доступны для выбора одного из и многое другое вносить свой выбор.
 
-Чтобы обеспечить это поведение, нам нужно преобразовать `SupplierName` и `CategoryName` стояли в TemplateFields которого `ItemTemplate` выдает `SupplierName` и `CategoryName` значения, для которых `EditItemTemplate` использует элемента управления список Доступные категории и поставщиков.
+Чтобы обеспечить такое поведение, нам нужно преобразовать `SupplierName` и `CategoryName` полей BoundField в поля TemplateField которого `ItemTemplate` выдает `SupplierName` и `CategoryName` значения и для которой `EditItemTemplate` использует элемент управления DropDownList для списка Доступные категории и поставщиков.
 
-## <a name="adding-thecategoriesandsuppliersdropdownlists"></a>Добавление`Categories`и`Suppliers`элементами управления DropDownList
+## <a name="adding-thecategoriesandsuppliersdropdownlists"></a>Добавление`Categories`и`Suppliers`элементов управления DropDownList
 
-Запуск путем преобразования `SupplierName` и `CategoryName` стояли в TemplateFields по: щелкните ссылку Правка столбцов GridView смарт-теге; выбрав в списке в нижней левой; BoundField и нажав кнопку «Преобразовать это поле в Ссылка TemplateField». Процесс преобразования создаст TemplateField с обоими `ItemTemplate` и `EditItemTemplate`, как показано в приведенном ниже синтаксисе декларативных:
+Сначала преобразуйте `SupplierName` и `CategoryName` полей BoundField в поля TemplateField,: щелкните ссылку Изменить столбцы смарт-теге элемента GridView; выбрав BoundField в списке в нижней левой; и нажав кнопку «Преобразовать это поле в Ссылка на поле TemplateField». Процесс преобразования создаст TemplateField с обоими `ItemTemplate` и `EditItemTemplate`, как показано в декларативном синтаксисе ниже:
 
 
 [!code-aspx[Main](customizing-the-data-modification-interface-vb/samples/sample4.aspx)]
 
-Поскольку BoundField был помечен как только для чтения, как `ItemTemplate` и `EditItemTemplate` содержат Web метки свойство `Text` свойство привязано к полю применяется данных (`CategoryName`, в приведенном выше синтаксисе). Нам нужно изменить `EditItemTemplate`, заменив управления DropDownList веб-управления Label.
+Так как поле типа BoundField был помечен как только для чтения, как `ItemTemplate` и `EditItemTemplate` содержат Label Web свойство `Text` свойство привязано к полю данных применимо (`CategoryName`, в приведенном выше синтаксисе). Нам нужно изменить `EditItemTemplate`, заменив элемент управления Label Web элемент управления DropDownList.
 
-Как видно в предыдущих учебниках, шаблон можно изменить с помощью конструктора или непосредственно из декларативного синтаксиса. Чтобы изменить его в конструкторе, щелкните ссылку Изменить шаблоны смарт-теге элемента GridView и выберите для работы с поля «Категория» `EditItemTemplate`. Удалите элемент управления Label и замените элемент управления DropDownList, присвоив свойству идентификатора DropDownList `Categories`.
-
-
-[![Удалите TexBox и добавьте в шаблон EditItemTemplate DropDownList](customizing-the-data-modification-interface-vb/_static/image14.png)](customizing-the-data-modification-interface-vb/_static/image13.png)
-
-**Рис. 5**: удалите TexBox и добавьте DropDownList для `EditItemTemplate` ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image15.png))
+Как мы видели в предыдущих учебных курсах, шаблон можно изменить в конструкторе или непосредственно из декларативного синтаксиса. Чтобы изменить его в конструкторе, щелкните ссылку Изменить шаблоны смарт-теге элемента GridView и работы с помощью поля «Категория» `EditItemTemplate`. Удалить элемент управления Label Web и замените элемент управления DropDownList, присвоить значение DropDownList свойство ID `Categories`.
 
 
-Далее нам нужно заполнить DropDownList с доступных категорий. Щелкните ссылку Выбор источника данных в смарт-теге DropDownList и создадим новый ObjectDataSource с именем `CategoriesDataSource`.
+[![Удалите текстовое поле и добавьте к EditItemTemplate элемента управления DropDownList](customizing-the-data-modification-interface-vb/_static/image14.png)](customizing-the-data-modification-interface-vb/_static/image13.png)
+
+**Рис. 5**: удалить текстовое поле и добавление элемента управления DropDownList для `EditItemTemplate` ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image15.png))
 
 
-[![Создать новый элемент управления ObjectDataSource CategoriesDataSource с именем](customizing-the-data-modification-interface-vb/_static/image17.png)](customizing-the-data-modification-interface-vb/_static/image16.png)
-
-**Рис. 6**: Создание нового элемента управления ObjectDataSource с именем `CategoriesDataSource` ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image18.png))
+Далее нам нужно заполнить DropDownList с доступные категории. Щелкните ссылку выберите источник данных смарт-теге DropDownList и создадим новый ObjectDataSource, именуемый `CategoriesDataSource`.
 
 
-Чтобы этот элемент управления ObjectDataSource возвращать все категории, привяжите его к `CategoriesBLL` класса `GetCategories()` метод.
+[![Создать новый элемент управления ObjectDataSource с именем CategoriesDataSource](customizing-the-data-modification-interface-vb/_static/image17.png)](customizing-the-data-modification-interface-vb/_static/image16.png)
+
+**Рис. 6**: Создание нового элемента управления ObjectDataSource с именем `CategoriesDataSource` ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image18.png))
 
 
-[![Привязать элемент управления ObjectDataSource CategoriesBLL GetCategories() методу](customizing-the-data-modification-interface-vb/_static/image20.png)](customizing-the-data-modification-interface-vb/_static/image19.png)
-
-**Рис. 7**: привязать элемент управления ObjectDataSource `CategoriesBLL` `GetCategories()` метод ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image21.png))
+Чтобы данный элемент управления ObjectDataSource возвращает все категории, привяжите его к `CategoriesBLL` класса `GetCategories()` метод.
 
 
-И наконец, настройте параметры DropDownList таким образом, что `CategoryName` будет отображаться в каждом DropDownList `ListItem` с `CategoryID` используется в качестве значения поля.
+[![Привязать ObjectDataSource к метода GetCategories() CategoriesBLL](customizing-the-data-modification-interface-vb/_static/image20.png)](customizing-the-data-modification-interface-vb/_static/image19.png)
+
+**Рис. 7**: привязать ObjectDataSource к `CategoriesBLL` `GetCategories()` метод ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image21.png))
 
 
-[![Отображается в поле «Категория» и код типа используется в качестве значения](customizing-the-data-modification-interface-vb/_static/image23.png)](customizing-the-data-modification-interface-vb/_static/image22.png)
-
-**Рис. 8**: У `CategoryName` отображаются поля и `CategoryID` используется в качестве значения ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image24.png))
+Наконец, настройте параметры DropDownList таким образом, чтобы `CategoryName` поле должно отображаться на каждой DropDownList `ListItem` с `CategoryID` поле, используемое в качестве значения.
 
 
-После внесения этих изменений декларативная разметка для `EditItemTemplate` в `CategoryName` TemplateField будет включать DropDownList и ObjectDataSource:
+[![Отображается в поле «Категория» и CategoryID использовать в качестве значения](customizing-the-data-modification-interface-vb/_static/image23.png)](customizing-the-data-modification-interface-vb/_static/image22.png)
+
+**Рис. 8**: У `CategoryName` поле отображается и `CategoryID` используется в качестве значения ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image24.png))
+
+
+После внесения этих изменений декларативная разметка для `EditItemTemplate` в `CategoryName` TemplateField будет включать DropDownList и элементу ObjectDataSource:
 
 
 [!code-aspx[Main](customizing-the-data-modification-interface-vb/samples/sample5.aspx)]
 
 > [!NOTE]
-> DropDownList в `EditItemTemplate` должен иметь состояние просмотра включено. Чтобы декларативный синтаксис в DropDownList скоро мы добавим синтаксис привязки данных и команд привязки данных, например `Eval()` и `Bind()` может использоваться только в элементах управления состояние представления которого включен.
+> DropDownList в `EditItemTemplate` должен иметь состояние представления включено. Декларативный синтаксис серверного элемента управления DropDownList скоро будет добавлен синтаксис привязки данных и привязки данных команды, такие как `Eval()` и `Bind()` может присутствовать только в элементах управления, состояние представления включено.
 
 
-Повторите эти шаги для добавления с именем DropDownList `Suppliers` для `SupplierName` в TemplateField `EditItemTemplate`. Это будет включать в себя добавление DropDownList для `EditItemTemplate` и создания другой ObjectDataSource. `Suppliers` DropDownList ObjectDataSource, однако, должны быть настроены для вызова `SuppliersBLL` класса `GetSuppliers()` метод. Кроме того, настроить `Suppliers` DropDownList для отображения `CompanyName` поля и использовать `SupplierID` как значение его `ListItem` s.
+Повторите эти шаги для добавления элемента управления DropDownList с именем `Suppliers` для `SupplierName` TemplateField `EditItemTemplate`. Это потребует добавления элемента управления DropDownList для `EditItemTemplate` и создание другой элемент управления ObjectDataSource. `Suppliers` DropDownList ObjectDataSource, тем не менее, должны вызывать `SuppliersBLL` класса `GetSuppliers()` метод. Кроме того, настроить `Suppliers` DropDownList для отображения `CompanyName` поле и использовать `SupplierID` как значение для его `ListItem` s.
 
-После добавления двух элементами управления DropDownList `EditItemTemplate` , загрузить страницу в браузере и нажмите кнопку Правка Креольская Cajun Seasoning продукта. Как показано на рис. 9, продукта, категорию и поставщика столбцы отображаются как раскрывающиеся списки, содержащие доступные категории и поставщики для выбора. Тем не менее, обратите внимание, что *первый* элементы обоих списков раскрывающегося списка выбираются по умолчанию (напитки категории) и экзотические жидкости как поставщик, хотя Seasoning Cajun Креольская Condiment, предоставляемые Cajun Новый Орлеан Преимуществах.
+После добавления двух элементов управления DropDownList `EditItemTemplate` s, загрузки страницы в браузере и нажмите кнопку Edit для Chef Anton's Cajun Seasoning продукта. Как показано на рис. 9, категорию и поставщика столбцы продукта, отображаются как раскрывающиеся списки, содержащий доступные категории и поставщики для выбора. Тем не менее, обратите внимание, что *первый* элементы в обоих раскрывающихся списках выбраны по умолчанию («напитки» для категории) и Exotic Liquids как поставщик, несмотря на то, что Chef Anton's Cajun Seasoning — это Condiment, предоставляемые New Orleans Cajun Радует.
 
 
 [![По умолчанию выбран первый элемент в раскрывающемся списке указаны](customizing-the-data-modification-interface-vb/_static/image26.png)](customizing-the-data-modification-interface-vb/_static/image25.png)
 
-**Рис. 9**: по умолчанию выбран первый элемент в раскрывающемся списке указаны ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image27.png))
+**Рис. 9**: по умолчанию выбран первый элемент в раскрывающемся списке указаны ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image27.png))
 
 
-Кроме того, если нажать кнопку обновления, вы найдете, продукта `CategoryID` и `SupplierID` значения устанавливаются в значение `NULL`. Эти нежелательные поведения вызванные элементами управления DropDownList в `EditItemTemplate` не привязаны к полям данных из базовых данных продукта.
+Кроме того, если нажать кнопку обновления, вы обнаружите, что продукта `CategoryID` и `SupplierID` значения устанавливаются в значение `NULL`. Эти нежелательные поведения вызываются в том случае, так как элементов управления DropDownList в `EditItemTemplate` s не привязаны к полям данных из базовых данных продукта.
 
-## <a name="binding-the-dropdownlists-to-thecategoryidandsupplieriddata-fields"></a>Привязка элементами управления DropDownList для`CategoryID`и`SupplierID`полей данных
+## <a name="binding-the-dropdownlists-to-thecategoryidandsupplieriddata-fields"></a>Привязка элементов управления DropDownList для`CategoryID`и`SupplierID`полей данных
 
-Для измененного продукта категорию и поставщика раскрывающиеся списки задать соответствующие значения и иметь эти значения, отправляемые МЕТОДА `UpdateProduct` метод после нажатия на кнопку обновления, нам нужно привязать элементами управления DropDownList `SelectedValue` свойства `CategoryID` и `SupplierID` полей данных, с помощью двухсторонней привязкой данных. Для этого с `Categories` DropDownList, можно добавить `SelectedValue='<%# Bind("CategoryID") %>'` непосредственно к декларативного синтаксиса.
+Чтобы имеют категорию и поставщика отредактированный продукта раскрывающиеся списки задать соответствующие значения и с учетом этих значений, отправляемые BLL `UpdateProduct` метод после нажатия кнопки обновления, нам нужно выполнить привязку элементов управления DropDownList `SelectedValue` свойства `CategoryID` и `SupplierID` полей данных, использование двусторонней привязки данных. Для этого с помощью `Categories` DropDownList, вы можете добавить `SelectedValue='<%# Bind("CategoryID") %>'` непосредственно к декларативный синтаксис.
 
-Кроме того можно задать DropDownList привязки данных, изменив шаблон в конструкторе и щелкните ссылку изменить привязки данных в смарт-теге DropDownList. Далее, указывающий, что `SelectedValue` свойства должны быть привязаны к `CategoryID` поля двусторонняя привязка к данным (см. рис. 10). Повторите декларативной или конструктора процесса для привязки `SupplierID` поле данных `Suppliers` DropDownList.
-
-
-[![Привязка к свойству SelectedValue DropDownList двусторонняя привязка к данным с помощью CategoryID](customizing-the-data-modification-interface-vb/_static/image29.png)](customizing-the-data-modification-interface-vb/_static/image28.png)
-
-**Рис. 10**: привязка `CategoryID` в элемент управления DropDownList `SelectedValue` свойства с помощью двусторонней привязки к данным ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image30.png))
+Кроме того можно задать DropDownList databindings, изменив шаблон через конструктор и щелкнув ссылку Edit DataBindings в смарт-теге DropDownList. Затем указать, что `SelectedValue` свойство должно быть связано с `CategoryID` поле использование двусторонней привязки данных (см. рис. 10). Повторите декларативным или конструктора процесса для привязки `SupplierID` поле данных `Suppliers` DropDownList.
 
 
-После привязки были применены к `SelectedValue` свойства двумя элементами управления DropDownList, категорию и поставщика столбцы измененного продукта будет по умолчанию значения текущего продукта. После нажатия на кнопку обновления, `CategoryID` и `SupplierID` значения выбранного раскрывающегося элемента списка будет передан `UpdateProduct` метод. Рис. 11 показана учебника после добавления инструкции привязки данных; Обратите внимание, как элементы выбранного раскрывающегося списка для Seasoning Cajun Креольская правильно Condiment и преимуществах нового Орлеана Cajun.
+[![Привязка CategoryID к DropDownList свойство SelectedValue, использование двусторонней привязки данных](customizing-the-data-modification-interface-vb/_static/image29.png)](customizing-the-data-modification-interface-vb/_static/image28.png)
+
+**Рис. 10**: привязка `CategoryID` в элемент управления DropDownList `SelectedValue` двусторонняя привязка с помощью свойства данных ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image30.png))
 
 
-[![По умолчанию выбраны текущей категории и значения поставщика продукта изменен](customizing-the-data-modification-interface-vb/_static/image32.png)](customizing-the-data-modification-interface-vb/_static/image31.png)
+После привязки были применены к `SelectedValue` свойства двух элементов управления DropDownList, категорию и поставщика столбцы отредактированный продукта будет по умолчанию значения данного продукта. После нажатия кнопки обновления, `CategoryID` и `SupplierID` передаются значения выбранных стрелку раскрывающегося списка элемента `UpdateProduct` метод. Рис. 11 показана руководства, после добавления инструкции привязки данных; Обратите внимание на то, как элементы раскрывающегося списка, выбранного для Chef Anton's Cajun Seasoning будут правильно Condiment и New Orleans Cajun Delights.
 
-**Рис. 11**: изменить текущий категорию и поставщика значений по умолчанию выбраны ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image33.png))
+
+[![Изменить текущий категорию и поставщика значения, выбираемые по умолчанию](customizing-the-data-modification-interface-vb/_static/image32.png)](customizing-the-data-modification-interface-vb/_static/image31.png)
+
+**Рис. 11**: изменить текущий категорию и поставщика значения, выбираемые по умолчанию ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image33.png))
 
 
 ## <a name="handlingnullvalues"></a>Обработка`NULL`значения
 
-`CategoryID` И `SupplierID` столбцы в `Products` таблица может быть `NULL`, но элементами управления DropDownList в `EditItemTemplate` не включают элемент списка для представления `NULL` значение. Это имеет два последствия:
+`CategoryID` И `SupplierID` столбцов в `Products` таблица может быть `NULL`, но элементов управления DropDownList в `EditItemTemplate` s не включайте элемент списка для представления `NULL` значение. Это имеет два последствия:
 
-- Пользователь не может использовать наши интерфейс изменение поставщику или категории продуктов, отличным от`NULL` значение `NULL` один
-- Если продукт имеет `NULL` `CategoryID` или `SupplierID`, нажав кнопку «Изменить» будет приведет к исключению. Это вызвано `NULL` значения, возвращенного `CategoryID` (или `SupplierID`) в `Bind()` инструкция не соответствует значение в раскрывающемся списке (DropDownList приводит к возникновению исключения при его `SelectedValue` свойству присвоено значение *не* в его коллекцию элементов списка).
+- Пользователь не может использовать наш интерфейс для изменения категории или поставщику продукта, отличным от`NULL` значение `NULL` один
+- Если для разработки продукта `NULL` `CategoryID` или `SupplierID`, нажав кнопку "Изменить" приведет к возникновению исключения. Это обусловлено `NULL` значение, возвращенное `CategoryID` (или `SupplierID`) в `Bind()` инструкция не соответствует значению в DropDownList (DropDownList возникло исключение при его `SelectedValue` свойству присваивается значение *не* в его коллекции элементов списка).
 
-Чтобы обеспечить поддержку `NULL` `CategoryID` и `SupplierID` значения, необходимо добавить другой `ListItem` для каждого DropDownList для представления `NULL` значение. В [иерархического фильтрации с DropDownList](../masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md) учебника, мы узнали, как добавить дополнительный `ListItem` для привязки к данным DropDownList, который участвующих параметр DropDownList `AppendDataBoundItems` свойства `True` и вручную, добавив дополнительный `ListItem`. В этом с предыдущим учебником, тем не менее, мы добавили `ListItem` с `Value` из `-1`. Логика привязки данных в ASP.NET, однако автоматически преобразует пустую строку для `NULL` значение и a наоборот. Таким образом, в этом учебнике мы хотим `ListItem` `Value` быть пустой строкой.
+Чтобы обеспечить поддержку `NULL` `CategoryID` и `SupplierID` значения, необходимо добавить другой `ListItem` каждый элемент управления DropDownList для представления `NULL` значение. В ["основной/подробности" Фильтрация с помощью элемента управления DropDownList](../masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md) было показано, как добавить дополнительный `ListItem` для databound элемента управления DropDownList, который участвующих параметр DropDownList `AppendDataBoundItems` свойства `True` и вручную добавлять дополнительный `ListItem`. В этой с предыдущим учебником, тем не менее, мы добавили `ListItem` с `Value` из `-1`. Логика привязки данных в ASP.NET, однако автоматически преобразует пустую строку для `NULL` значение и a наоборот. Таким образом, в этом руководстве мы хотим `ListItem`в `Value` быть пустой строкой.
 
-Запуск, задав обоих элементами управления DropDownList `AppendDataBoundItems` свойства `True`. Добавьте `NULL` `ListItem` , добавив следующий код `<asp:ListItem>` элемент для каждого DropDownList так выглядит декларативная разметка, такие как:
+Начните с установки значения обоих элементов управления DropDownList `AppendDataBoundItems` свойства `True`. Затем добавьте `NULL` `ListItem` , добавив следующий `<asp:ListItem>` элемент для каждого элемента управления DropDownList, чтобы декларативная разметка будет выглядеть как:
 
 
 [!code-aspx[Main](customizing-the-data-modification-interface-vb/samples/sample6.aspx)]
 
-Я решил «(нет)» используется как текстовое значение для этого `ListItem`, но его также быть пустая строка, при желании можно изменить.
+Я решил использовать «(None)» как текстовое значение для данного `ListItem`, но его также быть пустой строкой, при желании можно изменить.
 
 > [!NOTE]
-> Как мы видели в *иерархического фильтрации с DropDownList* учебнике `ListItem` s могут добавляться в DropDownList в конструкторе, щелкнув DropDownList `Items` в окне свойств (который Отображает `ListItem` редактор коллекции). Тем не менее, не забудьте добавить `NULL` `ListItem` в этом учебнике посредством декларативного синтаксиса. При использовании `ListItem` редактор коллекции будут исключаться созданный декларативный синтаксис `Value` параметр полностью, если назначенный пустые строки, создавая декларативной разметкой, например: `<asp:ListItem>(None)</asp:ListItem>`. Хотя это может выглядеть опасное, отсутствующее значение вызывает DropDownList для использования `Text` значение свойства на его месте. Что означает, что если это `NULL` `ListItem` — флажок установлен, значение «(нет)» будет предпринята попытка должна назначаться `CategoryID`, что приведет к возникновению исключения. После явного задания `Value=""`, `NULL` присваивается значение `CategoryID` при `NULL` `ListItem` выбран.
+> Как мы видели в *"основной/подробности" Фильтрация с помощью элемента управления DropDownList* руководстве `ListItem` s можно добавить через конструктор элемента управления DropDownList, щелкнув DropDownList `Items` свойства в окне «Свойства» (который Отображает `ListItem` редактор коллекции). Тем не менее, не забудьте добавить `NULL` `ListItem` в этом руководстве через декларативный синтаксис. Если вы используете `ListItem` редактор коллекции, созданный декларативный синтаксис не будет включать `Value` параметр полностью, если назначить содержит пустую строку, создание декларативная разметка, таких как: `<asp:ListItem>(None)</asp:ListItem>`. Хотя это может показаться безопасным, отсутствующее значение приводит к DropDownList для использования `Text` значение свойства на его месте. Что означает, что если это `NULL` `ListItem` — флажок установлен, значение «(None)» будет предпринята попытка присвоить `CategoryID`, что приведет к возникновению исключения. При явном задании `Value=""`, `NULL` присваивается значение `CategoryID` при `NULL` `ListItem` выбран.
 
 
-Повторите эти шаги для DropDownList поставщиков.
+Повторите эти шаги для список Suppliers DropDownList.
 
-С этим дополнительных `ListItem`, теперь можно назначать интерфейс редактирования `NULL` значения с продуктом `CategoryID` и `SupplierID` поля, как показано на рис. 12.
+С этим дополнительных `ListItem`, интерфейс редактирования теперь можно назначить `NULL` значения в продукт `CategoryID` и `SupplierID` поля, как показано на рис. 12.
 
 
-[![Выберите (нет) для присвоения значения NULL для категории продукта или поставщика](customizing-the-data-modification-interface-vb/_static/image35.png)](customizing-the-data-modification-interface-vb/_static/image34.png)
+[![Выберите (нет) для присвоения значения NULL для категории или поставщику продукта](customizing-the-data-modification-interface-vb/_static/image35.png)](customizing-the-data-modification-interface-vb/_static/image34.png)
 
-**Рис. 12**: параметр (нет), для назначения `NULL` значение для категории продукта или поставщика ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image36.png))
+**Рис. 12**: выберите значение (None) для назначения `NULL` значение для категории или поставщику продукта ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image36.png))
 
 
 ## <a name="step-4-using-radiobuttons-for-the-discontinued-status"></a>Шаг 4: Использование переключатели неподдерживаемые состояния
 
-В настоящее время продукта `Discontinued` поля данных выражается с помощью CheckBoxField, который отображает Снятый флажок для строк только для чтения и включен флажок для изменяемой строки. Во время этого пользовательского интерфейса часто подходит, мы можно настраивать при необходимости с помощью TemplateField. В этом учебнике изменим CheckBoxField в TemplateField, используется элемент управления RadioButtonList два варианта «Active» и «Неподдерживаемые» из которого пользователь может указать продукта `Discontinued` значение.
+В настоящее время продукты `Discontinued` поля данных выражается с помощью CheckBoxField, который отображает Снятый флажок для строк только для чтения и поддержкой флажок для редактируемой строки. Хотя этот пользовательский интерфейс подход часто применяется, мы можно настроить при необходимости с помощью TemplateField. В этом учебнике давайте изменим CheckBoxField в поле TemplateField, используется элемент управления RadioButtonList с двумя вариантами «Активный» и «Больше» из которого пользователь может указать продукта `Discontinued` значение.
 
-Начните с преобразование `Discontinued` CheckBoxField в TemplateField, который создаст TemplateField с `ItemTemplate` и `EditItemTemplate`. Шаблоны включают флажок с его `Checked` свойство привязано к `Discontinued` поля данных, единственное различие между ними выполняется, `ItemTemplate`флажок в `Enabled` свойству `False`.
+Сначала преобразуйте `Discontinued` CheckBoxField в поле TemplateField, которая создаст TemplateField с `ItemTemplate` и `EditItemTemplate`. Оба шаблоны включают флажок с его `Checked` , привязанное к `Discontinued` поле данных, единственное различие между ними, что `ItemTemplate`элемента CheckBox `Enabled` свойство имеет значение `False`.
 
-Замените флажок в обоих `ItemTemplate` и `EditItemTemplate` с элементом управления RadioButtonList установка обоих RadioButtonLists `ID` свойства `DiscontinuedChoice`. Далее означает, что RadioButtonLists следует каждого содержаться два переключателя, один с меткой «активный» со значением «False» и надписью «Неподдерживаемые» со значением «True». Для этого можно либо ввести `<asp:ListItem>` элементов непосредственно с помощью декларативного синтаксиса или используйте `ListItem` редактор коллекции из конструктора. На рисунке 13 показано `ListItem` редактор коллекции после двух переключателей кнопку параметры были указаны.
-
-
-[![Добавление RadioButtonList активных и неподдерживаемые параметры](customizing-the-data-modification-interface-vb/_static/image38.png)](customizing-the-data-modification-interface-vb/_static/image37.png)
-
-**Рис. 13**: Добавление Active и неподдерживаемые параметры RadioButtonList ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image39.png))
+Замените флажок в оба `ItemTemplate` и `EditItemTemplate` с элементом управления RadioButtonList, параметр оба RadioButtonLists `ID` свойства `DiscontinuedChoice`. Затем указывается, что RadioButtonLists должны каждый содержат два переключателя, один с меткой «активно» со значением «False» и надписью «Более не поддерживается» со значением «True». Для этого вы можете ввести `<asp:ListItem>` элементов в напрямую через декларативный синтаксис или используйте `ListItem` редактор коллекции из конструктора. Рис. 13 показан `ListItem` редактор коллекции после двух переключателей кнопку параметры были указаны.
 
 
-С момента RadioButtonList в `ItemTemplate` не должно быть доступно для редактирования, задайте его `Enabled` свойства `False`, покидая `Enabled` свойства `True` (по умолчанию) для RadioButtonList в `EditItemTemplate`. Это сделает переключатели в строке без изменения только для чтения, но разрешает пользователю изменять значения RadioButton для измененной строки.
+[![Добавить в активных и неподдерживаемые параметры RadioButtonList](customizing-the-data-modification-interface-vb/_static/image38.png)](customizing-the-data-modification-interface-vb/_static/image37.png)
 
-Мы по-прежнему необходимо назначить элементы управления RadioButtonList `SelectedValue` свойства, чтобы выделить соответствующий переключатель основе продукта `Discontinued` поля данных. Как и в случае с элементами управления DropDownList, просмотренных ранее в этом учебнике, этот синтаксис привязки данных можно добавить непосредственно в декларативной разметкой или через ссылку изменить привязки данных в RadioButtonLists смарт-тегов.
+**Рис. 13**: Добавление Active и неподдерживаемые параметры RadioButtonList ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image39.png))
 
-После добавления двух RadioButtonLists и настраивать их, `Discontinued` в TemplateField должна выглядеть как:
+
+С момента RadioButtonList в `ItemTemplate` не должно быть закрытым для правки, задайте его `Enabled` свойства `False`, оставляя `Enabled` свойства `True` (по умолчанию) для RadioButtonList в `EditItemTemplate`. Это позволит упростить переключателей в строке не изменять только для чтения, но разрешает пользователю изменять значения RadioButton для редактируемой строки.
+
+Мы по-прежнему необходимо назначать элементы управления RadioButtonList `SelectedValue` свойства, чтобы выделить соответствующий переключатель на основе продукта `Discontinued` поля данных. С помощью элементов управления DropDownList, проверить ранее в этом учебнике, этот синтаксис привязки данных можно добавить непосредственно в декларативной разметке или с помощью ссылки Edit DataBindings в смарт-тегов RadioButtonLists.
+
+После добавления двух RadioButtonLists и настройки их, `Discontinued` TemplateField декларативная разметка должна выглядеть так:
 
 
 [!code-aspx[Main](customizing-the-data-modification-interface-vb/samples/sample7.aspx)]
 
-Эти изменения `Discontinued` столбец был преобразован из списка флажков в список пар кнопка переключателей (см. рис. 14). При изменении продукта, соответствующий переключатель установлен и неподдерживаемые состояние продукта может быть обновлен, установив соответствующий переключатель команду Update.
+Благодаря этим изменениям `Discontinued` был преобразован столбец из списка флажков в список пар кнопку radio (см. рис. 14). При правке продукта, соответствующий переключатель выбран, и неподдерживаемые состояние продукта можно изменить, выбрав переключатель «другие» и нажав кнопку обновления.
 
 
-[![Неподдерживаемые флажки были заменены пары кнопка переключателей](customizing-the-data-modification-interface-vb/_static/image41.png)](customizing-the-data-modification-interface-vb/_static/image40.png)
+[![Неподдерживаемые флажки были заменены пары кнопку переключателя](customizing-the-data-modification-interface-vb/_static/image41.png)](customizing-the-data-modification-interface-vb/_static/image40.png)
 
-**Рис. 14**: неподдерживаемые флажки были заменены переключатель кнопка пары ([Просмотр полноразмерное изображение](customizing-the-data-modification-interface-vb/_static/image42.png))
+**Рис. 14**: неподдерживаемые флажки были заменены пары кнопку Radio ([Просмотр полноразмерного изображения](customizing-the-data-modification-interface-vb/_static/image42.png))
 
 
 > [!NOTE]
-> Поскольку `Discontinued` столбца в `Products` базы данных не может иметь `NULL` значения, нам не нужно беспокоиться о записи `NULL` сведения в интерфейсе. IF, однако `Discontinued` столбец может содержать `NULL` значения, необходимо добавить третий переключатель в список с его `Value` пустой строкой (`Value=""`) точно так же, как и с категорию и поставщика элементами управления DropDownList.
+> Так как `Discontinued` столбца в `Products` базы данных не может иметь `NULL` значения, нам не нужно беспокоиться о записи `NULL` сведения в интерфейсе. IF, однако `Discontinued` столбец может содержать `NULL` значения, может понадобиться добавить третий переключатель в список с его `Value` задать пустую строку (`Value=""`), подобно тому, как с помощью категорию и поставщика элементов управления DropDownList.
 
 
 ## <a name="summary"></a>Сводка
 
-Хотя BoundField и CheckBoxField автоматически отображать интерфейсы только для чтения, правки и вставки, у которых отсутствует возможность настройки. Часто, хотя, нам нужно будет настроить правки или вставки интерфейса, возможно добавление элементов управления проверки (как было показано в предыдущем учебнике) или путем настройки пользовательского интерфейса сбора данных (как мы видели в этом учебнике). Настройка интерфейса с TemplateField может быть суммирована следующим образом:
+Хотя BoundField и CheckBoxField автоматически отображать интерфейсы только для чтения, правки и вставки, они не в состоянии для настройки. Часто, однако нам нужно будет настроить правки или вставки интерфейса, возможно добавление элементов управления проверки (как мы видели в предыдущем учебном курсе) или путем настройки пользовательского интерфейса сбора данных (как мы видели в этом руководстве). Настройка интерфейса с TemplateField можно свести к следующим образом:
 
-1. Добавление TemplateField или преобразовать существующий BoundField или CheckBoxField в TemplateField
-2. Расширяют интерфейс, при необходимости
-3. Привязка поля данных для вновь добавленного веб-элементов управления с помощью двухсторонней привязкой данных
+1. Добавление поля TemplateField или преобразовать существующий BoundField или CheckBoxField в поле TemplateField
+2. Дополнить интерфейс, при необходимости
+3. Привязка поля данных вновь добавленный элементами управления веб-использование двусторонней привязки данных
 
-Помимо использования встроенных элементов управления ASP.NET Web, можно также настроить шаблоны TemplateField специальными, скомпилированными серверных элементов управления и пользовательские элементы управления.
+Помимо использования встроенных элементов управления ASP.NET Web, также можно настроить шаблоны TemplateField специальными, скомпилированными серверных элементов управления и пользовательские элементы управления.
 
-Программирование довольны!
+Счастливого вам программирования!
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи книг по ASP/ASP.NET и основатель веб- [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Microsoft с 1998 года. Скотт — независимый консультант, преподаватель и автор. Его последняя книга — [ *Sams Teach ASP.NET 2.0 in 24 часа*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Ним можно связаться по адресу [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 > [!div class="step-by-step"]
 > [Назад](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb.md)

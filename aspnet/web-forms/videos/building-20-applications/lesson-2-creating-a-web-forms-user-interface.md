@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/building-20-applications/lesson-2-creating-a-web-forms-user-interface
-title: '[Lesson 2:] Создание веб-форм в пользовательском интерфейсе | Документы Microsoft'
+title: '[Урок 2:] Создание веб-форм пользовательский интерфейс | Документация Майкрософт'
 author: microsoft
-description: На этом занятии будет изучено различных ASP.NET&#160;2.0 серверные элементы управления доступны в Visual Web Developer, экспресс-выпуск. Кроме того сначала...
+description: На этом занятии будет изучено различных ASP.NET&#160;2.0 серверные элементы управления доступны в Visual Web Developer Express Edition. Кроме того вы начнете...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/25/2005
 ms.topic: article
 ms.assetid: 7eac8f6b-6911-4585-87e8-ba662c1578fb
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/building-20-applications/lesson-2-creating-a-web-forms-user-interface
 msc.type: video
-ms.openlocfilehash: cc0486e895c3d6ad095afec3edb18faa0bde6464
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 99d7c5cc9cd99cfb33f7916311c8da500efa3295
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30880077"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37379680"
 ---
-<a name="lesson-2-creating-a-web-forms-user-interface"></a>[Lesson 2:] Создание пользовательского интерфейса Web Forms
+<a name="lesson-2-creating-a-web-forms-user-interface"></a>[Урок 2:] Создание пользовательского интерфейса Web Forms
 ====================
 по [Microsoft](https://github.com/microsoft)
 
-На этом занятии вы узнаете, как различные ASP.NET2.0 серверные элементы управления доступны в Visual Web Developer, экспресс-выпуск. Кроме того сначала ознакомьтесь с windows в Visual Web Developer.
+На этом занятии будет изучено различных пользователей ASP.NET2.0 сервера элементов управления, доступных в Visual Web Developer Express Edition. Кроме того сначала ознакомиться с windows в Visual Web Developer.
 
-[&#9654;Посмотрите видео (49 мин.)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-2-creating-a-web-forms-user-interface)
+[&#9654;Просмотрите видео (49 мин.)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-2-creating-a-web-forms-user-interface)
 
 > [!div class="step-by-step"]
 > [Назад](lesson-1-getting-started-with-visual-web-developer-express.md)

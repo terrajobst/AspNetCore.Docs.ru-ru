@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-tabs-control
-title: '[Инструкции:] Используйте элемент управления ASP.NET AJAX вкладки? | Документы Майкрософт'
+title: '[Инструкции] Использовать элемент управления Tabs ASP.NET AJAX? | Документы Майкрософт'
 author: JoeStagner
-description: В этом видеоролике демонстрируются основные принципы вкладок элемента управления из набора элементов управления ASP.NET AJAX, с помощью которого можно создать набор вкладок для организации содержимого на...
+description: В этом видео демонстрируются основные принципы управления вкладки из ASP.NET AJAX Control Toolkit, с помощью которого можно создать набор вкладок для организации содержимого на...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/01/2007
 ms.topic: article
 ms.assetid: f85fcce9-a897-4f43-b12f-5c6f5f2733cd
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-tabs-control
 msc.type: video
-ms.openlocfilehash: f42d0a773109ad43d6a83ba4343a750e1073c025
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 049320f4981563a846b319fa1e7017be5098d2ac
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30882768"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37398965"
 ---
-<a name="how-do-i-use-the-aspnet-ajax-tabs-control"></a>[Инструкции:] Используйте элемент управления ASP.NET AJAX вкладки?
+<a name="how-do-i-use-the-aspnet-ajax-tabs-control"></a>[Инструкции] Использовать элемент управления Tabs ASP.NET AJAX?
 ====================
 по [(Joe Stagner)](https://github.com/JoeStagner)
 
-В этом видеоролике демонстрируются основные принципы вкладок элемента управления из набора элементов управления ASP.NET AJAX, с помощью которого можно создать набор вкладок для организации содержимого на веб-странице. Выбранная вкладка сохраняется между обратной, элемент управления вкладки становится идеальным для страниц администрирования на основе форм.
+В этом видео демонстрируются основные принципы управления вкладки из ASP.NET AJAX Control Toolkit, с помощью которого можно создать набор вкладок для организации содержимого на веб-странице. Выбранная вкладка сохраняется между обратные передачи, что делает элемент управления Tabs идеально подходит для страниц администрирования на основе форм.
 
-[&#9654;Посмотрите видео (8 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-tabs-control)
+[&#9654;Просмотрите видео (8 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-tabs-control)
 
 > [!div class="step-by-step"]
 > [Назад](how-do-i-use-the-aspnet-ajax-resizablecontrol-extender.md)

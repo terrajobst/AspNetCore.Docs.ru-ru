@@ -1,73 +1,72 @@
 ---
 uid: web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-cs
-title: Вставка новой записи в нижнем колонтитуле GridView (C#) | Документы Microsoft
+title: Вставка новой записи из нижнего колонтитула GridView (C#) | Документация Майкрософт
 author: rick-anderson
-description: Элемент управления GridView не предоставляют встроенную поддержку для вставки новой записи данных, этого учебника показано, как расширить для включения в GridView...
+description: Элемент управления GridView предлагает встроенную поддержку для вставки новой записи данных, этого руководстве показано, как для расширения GridView для включения...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/06/2007
 ms.topic: article
 ms.assetid: 49545652-98af-46ba-9dbc-9ab529805d9b
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f131280f4769507d169f8ada7568184233591446
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 3f402d98a12c7da10d97744bbbd33e204275e93c
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30888358"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37381855"
 ---
-<a name="inserting-a-new-record-from-the-gridviews-footer-c"></a>Вставка новой записи в нижнем колонтитуле GridView (C#)
+<a name="inserting-a-new-record-from-the-gridviews-footer-c"></a>Вставка новой записи из нижнего колонтитула GridView (C#)
 ====================
 по [Скотт Митчелл](https://twitter.com/ScottOnWriting)
 
-[Загрузить пример приложения](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_53_CS.exe) или [скачать PDF](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/datatutorial53cs1.pdf)
+[Скачайте пример приложения](http://download.microsoft.com/download/4/a/7/4a7a3b18-d80e-4014-8e53-a6a2427f0d93/ASPNET_Data_Tutorial_53_CS.exe) или [скачать PDF](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/datatutorial53cs1.pdf)
 
-> Элемента управления GridView не предоставляют встроенную поддержку для вставки новой записи данных, этого учебника показано, как расширить для включения интерфейс для вставки в GridView.
+> Элемент управления GridView предлагает встроенную поддержку для вставки новой записи данных, в этом руководстве показано как повысить эффективность GridView, чтобы включить интерфейс для вставки.
 
 
 ## <a name="introduction"></a>Вступление
 
-Как было сказано в [Обзор Вставка, обновление и удаление данных](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs.md) учебника элементы GridView, DetailsView и FormView Web управления включают возможности модификации данных. При использовании декларативного источников данных, эти три веб-элементы управления можно быстро и легко настроить для изменения данных — и в сценариях без необходимости писать ни одной строки кода. К сожалению только в элементах управления DetailsView и FormView предоставляют встроенные вставку, изменение и удаление возможностей. GridView только предлагает изменение и удаление поддержки. Однако с небольшой паста изгибом, можно расширить GridView, чтобы включить интерфейс для вставки.
+Как уже говорилось в [Обзор Вставка, обновление и удаление данных](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs.md) учебника, элементы GridView, DetailsView и FormView Web управления включают встроенные возможности изменения. При использовании с декларативной источников данных, эти три веб-элементы управления можно быстро и легко настроить для изменения данных — и в сценариях без необходимости писать ни одной строки кода. К сожалению только эти элементы управления DetailsView и FormView обеспечивают встроенные Вставка, редактирование и удаление возможностей. GridView предоставляет только поддержки правки и удаления. Однако с небольшой паста изгибом, мы можем расширить GridView, чтобы включить интерфейс для вставки.
 
-При добавлении возможности вставки GridView, мы отвечают за выбор как новые записи будут добавлены, создание интерфейса вставки и написание кода для вставки новой записи. В данном руководстве, мы рассмотрим добавление интерфейса вставки в нижний колонтитул s GridView строка (см. рис. 1). Ячейка нижнего колонтитула для каждого столбца включает в себя соответствующие данные коллекции элемента интерфейса пользователя (текстовое поле для имени продукта s, DropDownList для поставщика и т. д.). Мы также требуется столбец для добавления кнопка, при щелчке, вызывает обратную передачу и вставить новую запись в `Products` таблицу с помощью значения, указанные в строке нижнего колонтитула.
-
-
-[![В строке нижнего колонтитула предоставляет интерфейс для добавления новых продуктов](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image1.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image1.png)
-
-**Рис. 1**: строки нижнего колонтитула предоставляет интерфейс для добавления новых продуктов ([Просмотр полноразмерное изображение](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image2.png))
+При добавлении возможности вставки к GridView, мы отвечаем решить, каким образом новые записи будут добавлены, создание интерфейса вставки и написание кода для вставки новой записи. В этом учебном курсе мы рассмотрим добавление интерфейса вставки в нижнем колонтитуле GridView s строки (см. рис. 1). Ячейкой нижним колонтитулом для каждого столбца включает в себя соответствующие данные коллекции элемент пользовательского интерфейса (текстовое поле для имени продукта s, элемента управления DropDownList для поставщика и т. д.). Мы также требуется столбец для добавления кнопка, при щелчке, вызывает обратную передачу и вставить новую запись в `Products` таблицу с помощью значения, заданные в строке нижнего колонтитула.
 
 
-## <a name="step-1-displaying-product-information-in-a-gridview"></a>Шаг 1: Отображение сведений о продукте в элементе управления GridView
+[![Строки нижнего колонтитула предоставляет интерфейс для добавления новых продуктов](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image1.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image1.png)
 
-Прежде чем сами относятся к созданию интерфейса вставки в нижнем колонтитуле s GridView, позволяют s сначала изучить добавить GridView на страницу, на которой перечислены продукты, в базе данных. Сначала откройте `InsertThroughFooter.aspx` страницы в `EnhancedGridView` папки и перетащите элемент управления GridView с панели элементов в конструктор параметр GridView s `ID` свойства `Products`. Затем используйте смарт-тег s GridView для привязки к новой ObjectDataSource с именем `ProductsDataSource`.
-
-
-[![Создать новый элемент управления ObjectDataSource ProductsDataSource с именем](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image2.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image3.png)
-
-**На рисунке 2**: создать новый именованный ObjectDataSource `ProductsDataSource` ([Просмотр полноразмерное изображение](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image4.png))
+**Рис. 1**: строки нижнего колонтитула предоставляет интерфейс для добавления новых продуктов ([Просмотр полноразмерного изображения](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image2.png))
 
 
-Настройка ObjectDataSource для использования `ProductsBLL` класса s `GetProducts()` метод для получения сведений о продукте. В этом учебнике let фокус s строго о добавлении возможности вставки, не беспокоясь о изменения и удаления. Таким образом, чтобы убедиться, что в раскрывающемся списке на вкладке «Вставка» равно `AddProduct()` и установлены раскрывающихся списках на вкладках UPDATE и DELETE (нет).
+## <a name="step-1-displaying-product-information-in-a-gridview"></a>Шаг 1: Отображение информации о продукте в элементе управления GridView
+
+Прежде чем заняться Создание интерфейса вставки в нижнем колонтитуле GridView s, позвольте s сначала остановиться на добавление элемента GridView на страницу, которая перечисляет продукты в базе данных. Сначала откройте `InsertThroughFooter.aspx` странице в `EnhancedGridView` папки и перетащите элемент управления GridView с панели элементов в конструктор, установив GridView s `ID` свойства `Products`. Затем используйте смарт-тега GridView s, чтобы привязать его к элементу управления ObjectDataSource с именем `ProductsDataSource`.
 
 
-[![Сопоставить метод AddProduct методом Insert() ObjectDataSource s](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image3.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image5.png)
+[![Создайте новый ObjectDataSource, именуемый ProductsDataSource](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image2.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image3.png)
 
-**Рис. 3**: карты `AddProduct` метод ObjectDataSource s `Insert()` метод ([Просмотр полноразмерное изображение](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image6.png))
-
-
-[![Установите обновление и удаление вкладок раскрывающиеся списки (нет)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image4.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image7.png)
-
-**Рис. 4**: установите обновление и удаление вкладок раскрывающихся списков (нет) ([Просмотр полноразмерное изображение](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image8.png))
+**Рис. 2**: создайте новый ObjectDataSource с именем `ProductsDataSource` ([Просмотр полноразмерного изображения](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image4.png))
 
 
-После завершения работы мастера настройки источника данных ObjectDataSource s Visual Studio автоматически добавит поля к GridView для каждого из соответствующих полей данных. Пока оставьте все поля, добавленные с помощью Visual Studio. Далее в этом учебнике мы вернуться и удалить некоторые поля, значения которых не хотите t должны быть указаны при добавлении новой записи.
+Настройка ObjectDataSource на использование `ProductsBLL` класс s `GetProducts()` метод для получения сведений о продуктах. В этом учебнике let s планируют освоение строго возможности вставки и не беспокоиться об изменении и удалении. Таким образом, убедитесь, что раскрывающемся списке на вкладке "Вставка" присвоено `AddProduct()` и раскрывающиеся списки на вкладках UPDATE и DELETE установлены (нет).
 
-Так как существуют близко к 80 продуктов в базе данных, пользователю необходимо будет выполнить прокрутку вплоть до нижней части веб-страницы для добавления новой записи. Таким образом позволяют включить разбиение на страницы сделать вставку интерфейс более видимыми и доступными s. Чтобы включить разбиение на страницы, просто установите флажок Включить разбиение на страницы в смарт-теге s GridView.
 
-На этом этапе GridView и ObjectDataSource s декларативная разметка должен выглядеть следующим образом:
+[![Сопоставить метод AddProduct методом Insert() s ObjectDataSource](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image3.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image5.png)
+
+**Рис. 3**: карты `AddProduct` метод ObjectDataSource s `Insert()` метод ([Просмотр полноразмерного изображения](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image6.png))
+
+
+[![Установить обновление и удаление вкладки раскрывающихся списков (нет)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image4.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image7.png)
+
+**Рис. 4**: установите обновление и удаление вкладок раскрывающиеся списки (нет) ([Просмотр полноразмерного изображения](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image8.png))
+
+
+После завершения работы мастера настройки источника данных s ObjectDataSource Visual Studio автоматически добавит поля GridView для каждого из соответствующих полей данных. Пока оставьте все поля, добавленные в Visual Studio. Далее в этом руководстве мы вернемся и удалить некоторые поля, значения которых кое t необходимо указать при добавлении новой записи.
+
+Так как можно ближе к 80 продуктов в базе данных, пользователю придется прокрутить вплоть до нижней части веб-страницы, чтобы добавить новую запись. Таким образом позволяют включить разбиение на страницы сделать интерфейс вставки более видимым и доступным s. Чтобы включить разбиение по страницам, просто установите флажок Включить разбиение по страницам в смарт-теге GridView s.
+
+На этом этапе GridView и ObjectDataSource s декларативная разметка должна выглядеть следующим:
 
 
 [!code-aspx[Main](inserting-a-new-record-from-the-gridview-s-footer-cs/samples/sample1.aspx)]
@@ -75,41 +74,41 @@ ms.locfileid: "30888358"
 
 [![В элементе управления GridView, разбитых на страницы отображаются все поля данных продукта](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image5.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image9.png)
 
-**Рис. 5**: в элементе управления GridView, разбитых на страницы отображаются все поля данных продукта ([Просмотр полноразмерное изображение](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image10.png))
+**Рис. 5**: в элементе управления GridView, разбитых на страницы отображаются все поля данных продукта ([Просмотр полноразмерного изображения](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image10.png))
 
 
 ## <a name="step-2-adding-a-footer-row"></a>Шаг 2: Добавление строки нижнего колонтитула
 
-Вместе с его заголовок и данные строки GridView включает строку нижнего колонтитула. В зависимости от значения GridView s отображаются строки верхнего и нижнего колонтитулов [ `ShowHeader` ](https://msdn.microsoft.com/en-gb/library/system.web.ui.webcontrols.gridview.showheader.aspx) и [ `ShowFooter` ](https://msdn.microsoft.com/en-gb/library/system.web.ui.webcontrols.gridview.showfooter.aspx) свойства. Чтобы отобразить строку нижнего колонтитула, просто установите `ShowFooter` свойства `true`. Как показано на рис. 6, параметр `ShowFooter` свойства `true` добавляет строку нижнего колонтитула в сетку.
+Вместе с заголовка, так и строк данных GridView включает строку нижнего колонтитула. В зависимости от значения GridView s отображаются строки верхнего и нижнего колонтитулов [ `ShowHeader` ](https://msdn.microsoft.com/en-gb/library/system.web.ui.webcontrols.gridview.showheader.aspx) и [ `ShowFooter` ](https://msdn.microsoft.com/en-gb/library/system.web.ui.webcontrols.gridview.showfooter.aspx) свойства. Чтобы отобразить строки нижнего колонтитула, просто задайте `ShowFooter` свойства `true`. Как показано на рис. 6, параметр `ShowFooter` свойства `true` добавляет строку нижнего колонтитула в сетку.
 
 
-[![Чтобы отобразить строку нижнего колонтитула, значение True для ShowFooter](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image6.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image11.png)
+[![Чтобы отобразить строки нижнего колонтитула, установите значение True для ShowFooter](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image6.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image11.png)
 
-**Рис. 6**: задайте строке нижнего колонтитула для отображения `ShowFooter` для `True` ([Просмотр полноразмерное изображение](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image12.png))
+**Рис. 6**: задать для отображения строки нижнего колонтитула, `ShowFooter` для `True` ([Просмотр полноразмерного изображения](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image12.png))
 
 
-Обратите внимание, что строки нижнего колонтитула темной красного цвета фона. Это происходит из-за темы DataWebControls мы создается и применяется ко всем страницам в [отображение данных с ObjectDataSource](../basic-reporting/displaying-data-with-the-objectdatasource-cs.md) учебника. В частности `GridView.skin` файл настраивает `FooterStyle` свойство таких использует `FooterStyle` класс CSS. `FooterStyle` Класс определен в `Styles.css` следующим образом:
+Обратите внимание, что строки нижнего колонтитула цвет Темно-красный фон. Это происходит из-за тему DataWebControls, мы создали и применяются ко всем страницам в [отображение данных с ObjectDataSource](../basic-reporting/displaying-data-with-the-objectdatasource-cs.md) руководства. В частности `GridView.skin` файл настраивает `FooterStyle` свойство таких что он использует `FooterStyle` класс CSS. `FooterStyle` Класс определен в `Styles.css` следующим образом:
 
 
 [!code-css[Main](inserting-a-new-record-from-the-gridview-s-footer-cs/samples/sample2.css)]
 
 > [!NOTE]
-> Мы хранять использовать с помощью строки нижнего колонтитула s GridView в предыдущих учебниках. При необходимости обращаться к [отображение сведения о в нижнем колонтитуле GridView](../custom-formatting/displaying-summary-information-in-the-gridview-s-footer-cs.md) учебника в памяти.
+> Мы ve использовать с помощью строки нижнего колонтитула GridView s в предыдущих учебных курсах. При необходимости обращаться к [отображение сведения о в нижнем колонтитуле элемента GridView](../custom-formatting/displaying-summary-information-in-the-gridview-s-footer-cs.md) учебника в памяти.
 
 
-После установки параметра `ShowFooter` свойства `true`, занять некоторое время, чтобы просмотреть вывод в браузере. В настоящее время t строки нижнего колонтитула содержит текст или веб-элементов управления. На шаге 3 мы изменим нижний колонтитул для каждого поля GridView, чтобы оно включало вставку соответствующий интерфейс.
+После задания `ShowFooter` свойства `true`, Отвлекитесь и просмотреть выходные данные в браузере. В настоящее время t строки нижнего колонтитула содержит текст или веб-элементов управления. На шаге 3 мы изменим нижний колонтитул для каждого поля GridView, теперь она содержит соответствующий интерфейс вставки.
 
 
-[![Пустая строка является отображаются над разбивка на страницы элементы управления интерфейса](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image7.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image13.png)
+[![Пустая строка является отображается над разбиение по страницам элементы управления интерфейса](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image7.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image13.png)
 
-**Рис. 7**: пустая строка является отображаются над разбивка на страницы элементы управления интерфейса ([Просмотр полноразмерное изображение](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image14.png))
+**Рис. 7**: пустая строка является отображается над разбиение по страницам элементы управления интерфейса ([Просмотр полноразмерного изображения](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image14.png))
 
 
-## <a name="step-3-customizing-the-footer-row"></a>Шаг 3: Настройка строке нижнего колонтитула
+## <a name="step-3-customizing-the-footer-row"></a>Шаг 3: Настройка строки нижнего колонтитула
 
-В [с помощью TemplateFields в элементе управления GridView](../custom-formatting/using-templatefields-in-the-gridview-control-cs.md) учебника мы узнали, как значительно настройки отображения конкретного столбца GridView с использованием TemplateFields (в отличие от стояли или CheckBoxFields), в [ Настройка интерфейса изменения данных](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs.md) мы рассматривали Настройка интерфейса редактирования в элементе управления GridView с помощью TemplateFields. Напомним, что TemplateField состоит из нескольких шаблонов, определяющий сочетание разметки, веб-элементов управления и синтаксис привязки данных, используемый для определенных типов строк. `ItemTemplate`, Например, определяет шаблон, используемый для строк только для чтения, пока `EditItemTemplate` определяет шаблон для редактируемой строки.
+Вернитесь в [использование полей TemplateField в элементе управления GridView](../custom-formatting/using-templatefields-in-the-gridview-control-cs.md) руководства мы узнали, как значительно настраивать отображение определенного столбца GridView использование полей TemplateField (в отличие от полей BoundField или CheckBoxFields), в списке [ Настройка интерфейса изменения данных](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs.md) мы рассмотрели использование полей TemplateField для настройки интерфейса правки в элементе управления GridView. Вспомним, что поле TemplateField представляет собой ряд шаблонов, определяющий набор разметки, веб-элементы управления и синтаксис привязки данных использовался с определенными типами строк. `ItemTemplate`, К примеру, указывает шаблон, используемый для строк только для чтения, пока `EditItemTemplate` определяет шаблон для редактируемой строки.
 
-Вместе с `ItemTemplate` и `EditItemTemplate`, также включает TemplateField `FooterTemplate` , задающий содержимое для строки нижнего колонтитула. Таким образом, можно добавить веб-элементов управления, необходимых для каждого поля s Вставка интерфейса в `FooterTemplate`. Чтобы начать, преобразуйте TemplateFields всех полей в GridView. Это можно сделать, щелкнув ссылку Правка столбцов GridView s смарт-тега, выделяя каждое поле в нижнем левом углу, а затем щелкнув преобразовать это поле в TemplateField ссылку.
+Вместе с `ItemTemplate` и `EditItemTemplate`, также включает TemplateField `FooterTemplate` , указывает содержимое строки нижнего колонтитула. Таким образом, можно добавить веб-элементы управления, необходимые для каждого поля s, интерфейс в `FooterTemplate`. Чтобы начать, преобразуйте все поля в GridView в поля TemplateField. Это можно сделать, щелкнув ссылку Правка столбцов в GridView s смарт-тег, выделяя каждое поле в левом нижнем углу и выбрав Convert это поле в TemplateField ссылку.
 
 
 ![Преобразовать каждое поле в TemplateField](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image8.gif)
@@ -117,157 +116,157 @@ ms.locfileid: "30888358"
 **Рис. 8**: преобразовать каждое поле в TemplateField
 
 
-Включить щелчком преобразовать это поле в TemplateField текущий тип поле в TemplateField эквивалент. Например, каждый BoundField заменяется TemplateField с `ItemTemplate` , содержащий метку, которая отображает соответствующего поля данных и `EditItemTemplate` , отображающий поля данных в текстовом поле. `ProductName` BoundField преобразования в TemplateField следующую разметку:
+Это поле в TemplateField, щелкнув Convert включает текущий тип поля в эквивалентные TemplateField. Например, каждый BoundField заменяется TemplateField с `ItemTemplate` , содержащий метку для отображения соответствующего поля данных и `EditItemTemplate` , отображающий поле данных в текстовое поле. `ProductName` BoundField преобразования в TemplateField следующую разметку:
 
 
 [!code-aspx[Main](inserting-a-new-record-from-the-gridview-s-footer-cs/samples/sample3.aspx)]
 
-Аналогичным образом `Discontinued` CheckBoxField был преобразован в TemplateField которого `ItemTemplate` и `EditItemTemplate` содержит флажок веб-элемент управления (с `ItemTemplate` s флажок отключен). Только для чтения `ProductID` BoundField был преобразован в TemplateField с элементом управления Label в обоих `ItemTemplate` и `EditItemTemplate`. Иными словами поле в TemplateField преобразование существующих GridView является простой и быстрый способ переключения на более настраиваемые TemplateField без потери существующих функциональных возможностей поле s.
+Аналогичным образом `Discontinued` CheckBoxField будет преобразована в поле TemplateField, `ItemTemplate` и `EditItemTemplate` содержать флажок веб-элемент управления (с `ItemTemplate` s флажок отключен). Только для чтения `ProductID` преобразования BoundField в поле TemplateField в элемент управления Label в обоих `ItemTemplate` и `EditItemTemplate`. Короче говоря поле в TemplateField преобразование существующих GridView — быстрый и простой способ переключиться расширенными возможностями настройки TemplateField без потери каких-либо существующие функциональные возможности поле s.
 
-С момента GridView мы re работа с t поддерживают редактирование, вы можете удалить `EditItemTemplate` из каждого TemplateField, оставляя только `ItemTemplate`. После этого декларативная разметка s GridView должен выглядеть следующим образом:
+С момента GridView мы повторно работа с t поддержки редактирования, вы можете удалить `EditItemTemplate` из каждого TemplateField, оставляя только `ItemTemplate`. После этого декларативная разметка s GridView должен выглядеть следующим образом:
 
 
 [!code-aspx[Main](inserting-a-new-record-from-the-gridview-s-footer-cs/samples/sample4.aspx)]
 
-Теперь, когда каждое поле GridView преобразовано в TemplateField, можно ввести соответствующий интерфейс вставку в каждом поле s `FooterTemplate`. Некоторые поля не будет интерфейс для вставки (`ProductID`, например); другие зависит от веб-элементов управления, используемую для сбора сведения о новых продуктах s.
+Теперь, когда в поле TemplateField преобразования каждого поля GridView, мы можем ввести соответствующий интерфейс вставки в каждом поле s `FooterTemplate`. Некоторые поля не будет иметь интерфейс для вставки (`ProductID`, к примеру); другие зависит от веб-элементов управления, используемую для сбора информацию о новых продуктах s.
 
-Чтобы создать интерфейс редактирования, выберите ссылку Изменить шаблоны GridView s смарт-тег. Затем в раскрывающемся списке выберите соответствующее поле s `FooterTemplate` и перетащите соответствующий элемент управления из области элементов в конструктор.
-
-
-[![Добавить соответствующий интерфейс вставки для каждого поля s FooterTemplate](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image9.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image15.png)
-
-**Рис. 9**: добавить соответствующий интерфейс Вставка в каждое поле s `FooterTemplate` ([Просмотр полноразмерное изображение](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image16.png))
+Чтобы создать интерфейс редактирования, выберите ссылку Изменить шаблоны в смарт-теге GridView s. Затем выберите в раскрывающемся списке выберите соответствующее поле s `FooterTemplate` и перетащите соответствующий элемент управления из области элементов в конструктор.
 
 
-Следующем маркированном списке перечисляет поля GridView, указав Вставка интерфейса для добавления:
+[![Добавить соответствующий интерфейс вставки FooterTemplate s каждого поля](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image9.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image15.png)
 
-- `ProductID` Нет.
-- `ProductName` Добавьте текстовое поле и задайте его `ID` для `NewProductName`. Добавление элемента управления RequiredFieldValidator, чтобы убедиться, что пользователь вводит значение для нового имени продукта s.
-- `SupplierID` Нет.
-- `CategoryID` Нет.
+**Рис. 9**: добавить соответствующий интерфейс вставки для каждого поля s `FooterTemplate` ([Просмотр полноразмерного изображения](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image16.png))
+
+
+Следующем маркированном списке перечисляет поля GridView, с указанием интерфейса вставки для добавления:
+
+- `ProductID` нет.
+- `ProductName` Добавление текстового поля и задайте его `ID` для `NewProductName`. Добавьте элемент управления RequiredFieldValidator, чтобы убедиться, что пользователь вводит значение для нового названия продукта s.
+- `SupplierID` нет.
+- `CategoryID` нет.
 - `QuantityPerUnit` Добавление текстового поля, установка его `ID` для `NewQuantityPerUnit`.
-- `UnitPrice` текстовое поле с именем `NewUnitPrice` и элемент управления CompareValidator, гарантирующий введенное значение является значение валюты, больше или равно нулю.
-- `UnitsInStock` использовать текстовое поле, `ID` равно `NewUnitsInStock`. Включить элемент управления CompareValidator, гарантирует, что введенное значение является целочисленное значение больше или равно нулю.
-- `UnitsOnOrder` использовать текстовое поле, `ID` равно `NewUnitsOnOrder`. Включить элемент управления CompareValidator, гарантирует, что введенное значение является целочисленное значение больше или равно нулю.
-- `ReorderLevel` использовать текстовое поле, `ID` равно `NewReorderLevel`. Включить элемент управления CompareValidator, гарантирует, что введенное значение является целочисленное значение больше или равно нулю.
-- `Discontinued` флажки, установка его `ID` для `NewDiscontinued`.
-- `CategoryName` Добавьте DropDownList и задайте его `ID` для `NewCategoryID`. Привязать его к новой ObjectDataSource с именем `CategoriesDataSource` и настройте его для использования `CategoriesBLL` класса s `GetCategories()` метод. Иметь DropDownList s `ListItem` отображения s `CategoryName` данных поля, с помощью `CategoryID` поля данных, в качестве их значения.
-- `SupplierName` Добавьте DropDownList и задайте его `ID` для `NewSupplierID`. Привязать его к новой ObjectDataSource с именем `SuppliersDataSource` и настройте его для использования `SuppliersBLL` класса s `GetSuppliers()` метод. Иметь DropDownList s `ListItem` отображения s `CompanyName` данных поля, с помощью `SupplierID` поля данных, в качестве их значения.
+- `UnitPrice` Добавление текстового поля с именем `NewUnitPrice` и CompareValidator, которое гарантирует, что введенное значение является значение валюты, больше или равно нулю.
+- `UnitsInStock` использовать текстовое поле, `ID` присваивается `NewUnitsInStock`. Включить элемент управления CompareValidator, гарантирует, что введенное значение: целочисленное значение больше или равно нулю.
+- `UnitsOnOrder` использовать текстовое поле, `ID` присваивается `NewUnitsOnOrder`. Включить элемент управления CompareValidator, гарантирует, что введенное значение: целочисленное значение больше или равно нулю.
+- `ReorderLevel` использовать текстовое поле, `ID` присваивается `NewReorderLevel`. Включить элемент управления CompareValidator, гарантирует, что введенное значение: целочисленное значение больше или равно нулю.
+- `Discontinued` Добавление флага, установка его `ID` для `NewDiscontinued`.
+- `CategoryName` Добавление элемента управления DropDownList и задание его `ID` для `NewCategoryID`. Привяжите его к элементу управления ObjectDataSource с именем `CategoriesDataSource` и настройте его для использования `CategoriesBLL` класс s `GetCategories()` метод. У элемента управления DropDownList s `ListItem` отображения s `CategoryName` данных поле, с помощью `CategoryID` поля данных, как их значения.
+- `SupplierName` Добавление элемента управления DropDownList и задание его `ID` для `NewSupplierID`. Привяжите его к элементу управления ObjectDataSource с именем `SuppliersDataSource` и настройте его для использования `SuppliersBLL` класс s `GetSuppliers()` метод. У элемента управления DropDownList s `ListItem` отображения s `CompanyName` данных поле, с помощью `SupplierID` поля данных, как их значения.
 
-Для каждого из элементов управления проверки, очистить `ForeColor` свойство, чтобы `FooterStyle` CSS класса s белый цвет будет использоваться вместо используемого по умолчанию красным. Также используйте `ErrorMessage` подробное описание, но свойство `Text` свойство звездочку. Чтобы запретить текст элемента управления s проверки из-за интерфейса вставки программы-оболочки для двух строк, задайте `FooterStyle` s `Wrap` свойству значение false для каждого из `FooterTemplate` , которые используют проверяющий элемент управления. Наконец, добавьте элемент управления ValidationSummary под GridView и задайте его `ShowMessageBox` свойства `true` и его `ShowSummary` свойства `false`.
+Для каждого из элементов управления проверки, очистите `ForeColor` свойство, чтобы `FooterStyle` CSS класс s белый цвет будет использоваться вместо используемого по умолчанию красным. Также используйте `ErrorMessage` свойство подробное описание, но значение `Text` свойство звездочку. Чтобы не вызывал текст элемента управления s проверки интерфейса вставки программы-оболочки на две строки, задайте `FooterStyle` s `Wrap` значение false для каждого из `FooterTemplate` , которые используют проверяющим элементом управления. Наконец, добавьте элемент управления ValidationSummary под GridView и задайте его `ShowMessageBox` свойства `true` и его `ShowSummary` свойства `false`.
 
-При добавлении нового продукта, требуется предоставить `CategoryID` и `SupplierID`. Эта информация захватывается через элементами управления DropDownList для нижнего колонтитула ячеек `CategoryName` и `SupplierName` поля. Я решил использовать эти поля, в отличие от `CategoryID` и `SupplierID` TemplateFields так, как пользователь в сетке s столбцы данных, скорее всего более нужно просматривать имена категорию и поставщика, а не значениями Идентификаторов. Поскольку `CategoryID` и `SupplierID` значения теперь записываются в `CategoryName` и `SupplierName` поле s Вставка интерфейсов, мы можем удалить `CategoryID` и `SupplierID` TemplateFields из GridView.
+При добавлении нового продукта, то необходимо предоставить `CategoryID` и `SupplierID`. Эта информация захватывается посредством элементов управления DropDownList в ячейках нижний колонтитул для `CategoryName` и `SupplierName` поля. Я решил использовать эти поля, в отличие от `CategoryID` и `SupplierID` полей TemplateField так, как пользователь в сетке s столбцы данных, скорее всего более интересуют имена категорию и поставщика, а не значениями Идентификаторов. Так как `CategoryID` и `SupplierID` значения теперь записываются в `CategoryName` и `SupplierName` вставки интерфейсы s поля, мы можем удалить `CategoryID` и `SupplierID` полей TemplateField из GridView.
 
-Аналогичным образом `ProductID` не используется при добавлении нового продукта, поэтому `ProductID` TemplateField также можно удалить. Однако позволяет оставить s `ProductID` в сетке. Помимо текстовые поля, элементами управления DropDownList, флажки и проверяющие элементы управления, составляющие интерфейс для вставки, мы также потребуется добавить кнопка, при нажатии выполняет действия, чтобы добавить новый продукт в базу данных. На шаге 4 мы включить кнопку добавления в интерфейсе вставки в `ProductID` TemplateField s `FooterTemplate`.
+Аналогичным образом `ProductID` не используется при добавлении нового продукта, поэтому `ProductID` TemplateField можно также удалить. Тем не менее, позволить оставить s `ProductID` в сетке. В дополнение к текстовых полей, элементов управления DropDownList, флажки и элементы управления проверки, составляющие интерфейс вставки, нам также потребуется добавить кнопка, при щелчке, выполняет действия, чтобы добавить новый продукт в базу данных. На шаге 4 мы включаем кнопку «Add» в интерфейсе правки в `ProductID` TemplateField s `FooterTemplate`.
 
-Вы можете улучшить внешний вид различные поля GridView. Например, может потребоваться отформатировать `UnitPrice` значения в денежном формате, по правому краю `UnitsInStock`, `UnitsOnOrder`, и `ReorderLevel` поля и обновление `HeaderText` значения для TemplateFields.
+Вы можете улучшить внешний вид различных полей GridView. Например, может потребоваться отформатировать `UnitPrice` значения как денежной единицы, — по правому краю `UnitsInStock`, `UnitsOnOrder`, и `ReorderLevel` поля и обновление `HeaderText` значения для полей TemplateField.
 
-После создания большого количества Вставка интерфейсов в `FooterTemplate` s, удаление `SupplierID`, и `CategoryID` TemplateFields и повышая внешнее представление сетки через форматирования и выравнивания TemplateFields вашей декларативный s GridView Разметка должна выглядеть следующим образом:
+После создания масса Вставка интерфейсов в `FooterTemplate` s, удаление `SupplierID`, и `CategoryID` поля TemplateField и повышая внешнее представление сетки через форматирование и выравнивание полей TemplateField, ваш декларативной s GridView Разметка должна выглядеть следующим образом:
 
 
 [!code-aspx[Main](inserting-a-new-record-from-the-gridview-s-footer-cs/samples/sample5.aspx)]
 
-При просмотре через браузер, строке нижнего колонтитула s GridView теперь включает полный Вставка интерфейса (см. рис. 10). На этом этапе вставку t интерфейс включает средства для пользователя указать s она введенные данные для нового продукта и хочет, чтобы вставить новую запись в базу данных. Кроме того, мы хранять еще для решения, как данные, введенные в нижнем колонтитуле будет преобразована в новую запись в `Products` базы данных. На шаге 4 мы рассмотрим как включить кнопку "Добавить", чтобы интерфейс для вставки, а также для выполнения кода на обратной передачи, когда он s при щелчке. Шаг 5 показано, как вставить новую запись с использованием данных из нижнего колонтитула.
+При просмотре в обозревателе, строке нижнего колонтитула GridView s теперь включает в себя завершенные Вставка интерфейса (см. рис. 10). На этом этапе вставки t интерфейса включают средства для пользователя указать, она s введенные данные о новом продукте и хочет, чтобы вставить новую запись в базу данных. Кроме того, мы ve еще, чтобы решить, каким образом данные, вводимые в нижнем колонтитуле будет преобразовано в новую запись в `Products` базы данных. На шаге 4, мы рассмотрим способы включить кнопку "Добавить", чтобы интерфейс вставки и для выполнения кода на обратную передачу при его щелчке s. Шаг 5 показано, как вставить новую запись с использованием данных из нижнего колонтитула.
 
 
-[![Нижний колонтитул GridView предоставляет интерфейс для добавления новой записи](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image10.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image17.png)
+[![Нижнего колонтитула GridView предоставляет интерфейс для добавления новой записи](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image10.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image17.png)
 
-**Рис. 10**: нижний колонтитул GridView предоставляет интерфейс для добавления новой записи ([Просмотр полноразмерное изображение](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image18.png))
-
-
-## <a name="step-4-including-an-add-button-in-the-inserting-interface"></a>Шаг 4: Включение кнопку добавления в интерфейсе вставки
-
-Нам нужно включать кнопку добавления где-нибудь в интерфейсе вставки, поскольку s строки нижнего колонтитула, интерфейсам, в настоящее время отсутствуют средства для пользователя указать, что они завершены, введя сведения о новых продуктах s. Это может быть размещен в одну из существующих `FooterTemplate` s или нам удалось добавить новый столбец в сетке для этой цели. В этом учебнике s позволяют поместить кнопку Добавить в `ProductID` TemplateField s `FooterTemplate`.
-
-В режиме конструктора щелкните ссылку Изменить шаблоны в GridView s смарт-тег и выберите `ProductID` поля s `FooterTemplate` из раскрывающегося списка. Добавить кнопку веб-элемент управления (LinkButton или ImageButton, если вы предпочитаете) с шаблоном, указав его идентификатор `AddProduct`, ее `CommandName` для вставки и его `Text` свойство добавить, как показано на рис. 11.
+**Рис. 10**: нижнего колонтитула GridView предоставляет интерфейс для добавления новой записи ([Просмотр полноразмерного изображения](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image18.png))
 
 
-[![Разместите кнопку Добавить в шаблон FooterTemplate s ProductID TemplateField](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image11.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image19.png)
+## <a name="step-4-including-an-add-button-in-the-inserting-interface"></a>Шаг 4: Включая кнопку «Add» в интерфейсе правки
 
-**Рис. 11**: Поместите добавить кнопку в `ProductID` TemplateField s `FooterTemplate` ([Просмотр полноразмерное изображение](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image20.png))
+Нам нужно включить кнопку добавления где-нибудь в интерфейсе вставки, так как s строки нижнего колонтитула, интерфейсам, в настоящее время отсутствуют средства для пользователя указать, что они завершили ввод информацию о новых продуктах s. Это могут быть размещены в одном из существующих `FooterTemplate` s или мы может добавить новый столбец в сетке для этой цели. Для этого руководства позволяют s поместить кнопку Add в `ProductID` TemplateField s `FooterTemplate`.
+
+В режиме конструктора щелкните ссылку Изменить шаблоны в смарт-теге GridView s и выберите `ProductID` поле s `FooterTemplate` из раскрывающегося списка. Добавить кнопку веб-элемент управления (LinkButton или ImageButton, если вы предпочитаете) в шаблон, указав его идентификатор `AddProduct`, ее `CommandName` операциями вставки и его `Text` свойство добавить, как показано на рис. 11.
 
 
-После можно хранить включены кнопку «Добавить», проверьте страницу в браузере. Обратите внимание, что при нажатии кнопки Add с недопустимыми данными в интерфейсе вставки, обратную передачу коротких circuited управления ValidationSummary указывает недопустимые данные (см. рис. 12). С помощью соответствующих введенные данные нажав кнопку «Добавить» вызывает обратную передачу. Отсутствует запись добавляется в базу данных, однако. Нам потребуется написать большой объем кода для фактического выполнения инструкции insert.
+[![Поместите «добавить» в FooterTemplate s ProductID TemplateField](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image11.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image19.png)
+
+**Рис. 11**: поместить кнопку "Добавить" в `ProductID` TemplateField s `FooterTemplate` ([Просмотр полноразмерного изображения](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image20.png))
 
 
-[![Добавление кнопки s обратной передачи является короткий Circuited в случае недопустимых данных в интерфейсе вставки](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image12.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image21.png)
+Как только вы ve включены «добавить», проверьте страницу в браузере. Обратите внимание, что при нажатии кнопки «Добавить» с недопустимыми данными в интерфейсе правки, обратную передачу коротких circuited и управления ValidationSummary указывает недопустимые данные (см. рис. 12). С помощью соответствующие данные, введенные нажав кнопку «Добавить» вызывает обратную передачу. Отсутствует запись добавляется в базу данных, тем не менее. Нам потребуется написать небольшой фрагмент кода для фактического выполнения инструкции insert.
 
-**Рис. 12**: s добавить кнопку обратной передачи является короткий Circuited в случае недопустимых данных в интерфейсе вставки ([Просмотр полноразмерное изображение](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image22.png))
+
+[![S добавить кнопку обратная передача находится в короткое Circuited при недопустимых данных в интерфейсе вставки](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image12.gif)](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image21.png)
+
+**Рис. 12**: Добавление кнопки с обратной передачи — это короткие Circuited при недопустимых данных в интерфейсе вставки ([Просмотр полноразмерного изображения](inserting-a-new-record-from-the-gridview-s-footer-cs/_static/image22.png))
 
 
 > [!NOTE]
-> Проверяющие элементы управления в интерфейсе вставки не были назначены в группу проверки. Это хорошо работает при условии, что интерфейс для вставки — это единственный набор проверяющих элементов управления на странице. Если, однако существуют другие проверяющие элементы управления на странице (например, проверяющие элементы управления в интерфейс редактирования сетки s), проверяющие элементы управления в Вставка интерфейса и добавьте кнопку s `ValidationGroup` свойства следует назначить то же значение so как для Свяжите эти элементы управления с группой определенной проверки. В разделе [разбор элементов управления проверки в ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/112305-1.aspx) Дополнительные сведения о секционировании проверяющие элементы управления и кнопки на странице на группы проверки.
+> Проверяющие элементы управления в интерфейсе правки не были назначены в группу проверки. Это работает отлично до тех пор, пока интерфейс вставки — это единственный набор элементов управления проверки на странице. Если, однако существуют и другие элементы управления проверки на странице (например, элементов управления проверки в существующем интерфейсе правки сетки s), элементов управления проверки в Вставка интерфейса и добавьте кнопку s `ValidationGroup` свойства должны назначаться и то же значение so как для Свяжите эти элементы управления с группой определенной проверки. См. в разделе [разбор элементов управления проверки в ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/112305-1.aspx) Дополнительные сведения о секционировании проверяющие элементы управления и кнопки на странице на группы проверки.
 
 
 ## <a name="step-5-inserting-a-new-record-into-theproductstable"></a>Шаг 5: Вставка новой записи в`Products`таблицы
 
-При использовании встроенных функций редактирования элемента управления GridView, GridView автоматически обрабатывает все действия, необходимые для выполнения обновления. В частности, при нажатии кнопки "Обновить", он копирует значений, введенных в интерфейсе редактирования с параметрами ObjectDataSource s `UpdateParameters` коллекции и запускается обновления путем вызова ObjectDataSource s `Update()` метод. Поскольку GridView обеспечивают такие встроенные функциональные возможности для вставки, нужно реализовать код, который вызывает ObjectDataSource s `Insert()` метод и копирует значения из Вставка интерфейса ObjectDataSource s `InsertParameters` коллекции .
+При использовании встроенных функций редактирования элемента управления GridView, GridView автоматически обрабатывает все действия, необходимые для выполнения обновления. В частности, при нажатии кнопки "Обновить", он копирует значений, введенных из интерфейса правки с параметрами ObjectDataSource s `UpdateParameters` коллекции и запущена off обновления путем вызова ObjectDataSource s `Update()` метод. Так как GridView не поддерживает такие встроенные функции для вставки, нужно реализовать код, который вызывает ObjectDataSource s `Insert()` метод и копирует значения из вставку интерфейс ObjectDataSource s `InsertParameters` коллекции .
 
-Эта логика вставки должны выполняться после нажатия кнопки Добавить. Как было сказано в [Добавление и реагирование на кнопок в элементе управления GridView](../custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-cs.md) учебник, каждый раз, когда нажата кнопка, LinkButton или ImageButton в элементе управления GridView, GridView s `RowCommand` событие активируется при обратной передаче. Это событие возникает Button, LinkButton или ImageButton добавлен ли явно как «добавить» в строке нижнего колонтитула или если она автоматически добавляется GridView (например, элементов управления LinkButton в верхней части каждого столбца, если установлен флажок Включить сортировку, или Элементов управления LinkButton в интерфейсе постраничного просмотра при выборе включения постраничного просмотра).
+Эта логика вставки должен быть выполнен после нажатия кнопки Добавить. Как уже говорилось в [Добавление и реагирование на кнопки в элементе управления GridView](../custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-cs.md) учебник, каждый раз, когда нажата кнопка, LinkButton или ImageButton в элементе управления GridView, GridView s `RowCommand` вызывает событие при обратной передаче. Это событие возникает, кнопки, LinkButton или ImageButton был ли добавлен явным образом такие как «добавить» в строке нижнего колонтитула или если она автоматически добавляется GridView (например, элементов управления LinkButton в верхней части каждого столбца, если установлен флажок Включить сортировку, или Элементов управления LinkButton в интерфейсе разбиения по страницам при выборе Включить разбиение по страницам).
 
-Таким образом, чтобы ответить пользователь, нажав кнопку "Добавить", необходимо создать обработчик событий для GridView s `RowCommand` событий. Так как это событие возникает каждый раз, когда *любой* нажатии кнопки, LinkButton или ImageButton в GridView, его s важных, что мы только продолжить вставку логики при `CommandName` для свойствопередаетсясхемыобработчикасобытий`CommandName` значение «добавить» (Insert). Кроме того мы также продолжать следует только при проверяющие элементы управления допустимые данные отчета. Чтобы решить эту проблему, создайте обработчик событий для `RowCommand` событий следующим кодом:
+Таким образом, чтобы реагировать на пользователя, нажав кнопку «Добавить», необходимо создать обработчик событий для GridView s `RowCommand` событий. Так как это событие возникает каждый раз, когда *любой* нажатии кнопки LinkButton и ImageButton в GridView его s жизненно важных, что мы только продолжить вставку логики Если `CommandName` свойство, переданное в схемы обработчик событий для `CommandName` значение «добавить» (Insert). Кроме того мы также продолжать следует только при допустимые данные отчета, проверяющие элементы управления. Чтобы решить эту проблему, создайте обработчик событий для `RowCommand` событий следующим кодом:
 
 
 [!code-csharp[Main](inserting-a-new-record-from-the-gridview-s-footer-cs/samples/sample6.cs)]
 
 > [!NOTE]
-> Может возникнуть вопрос. Почему обработчик события вас проверки `Page.IsValid` свойство. В конце концов подавляются реализованных t обратной передачи, если недопустимые данные, предоставленные в интерфейсе вставки? Это предположение правильно работает при условии, что пользователь не отключил JavaScript или принимает меры для обхода логики проверки на стороне клиента. Иными словами один должен никогда не полагаться исключительно на клиентской проверки; серверные проверку допустимости всегда должно выполняться перед началом работы с данными.
+> Может возникнуть вопрос, почему обработчик событий остановились проверка `Page.IsValid` свойство. В конце концов Если недопустимые данные в интерфейсе правки подавить реализованных t обратную передачу? Это предположение относится правильно, пока пользователь не отключил JavaScript или принимает меры для обхода логику проверки на стороне клиента. Иными словами один не следует полагаться исключительно на клиентской проверки; всегда следует выполнять проверку на стороне сервера на допустимость перед началом работы с данными.
 
 
-Мы создали в шаге 1 `ProductsDataSource` ObjectDataSource таким образом, что его `Insert()` метода сопоставлен `ProductsBLL` класса s `AddProduct` метод. Чтобы вставить новую запись в `Products` таблицы, может достаточно вызвать ObjectDataSource s `Insert()` метод:
+На этапе 1 мы создали `ProductsDataSource` ObjectDataSource таким образом, чтобы его `Insert()` относящимся `ProductsBLL` класс s `AddProduct` метод. Для вставки новой записи в `Products` таблицы, мы можете просто вызвать ObjectDataSource s `Insert()` метод:
 
 
 [!code-csharp[Main](inserting-a-new-record-from-the-gridview-s-footer-cs/samples/sample7.cs)]
 
-Теперь, когда `Insert()` метод был вызван, все, что остается только для копирования значения из интерфейса вставки параметры передаются `ProductsBLL` класса s `AddProduct` метод. Как мы видели в [проверки события, связанные с вставки, обновления и удаления](../editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-cs.md) учебника, это можно сделать с помощью ObjectDataSource s `Inserting` событий. В `Inserting` событий, нам необходимо программно обращаться к элементам управления, от `Products` нижний колонтитул GridView s строк и назначить их значения для `e.InputParameters` коллекции. Если пользователь опустил значение, например если оставить `ReorderLevel` пустое текстовое поле, нам нужно указать, должен быть значением, вставленным в базу данных `NULL`. Поскольку `AddProducts` метод принимает типы, допускающие значение NULL для поля базы данных допускает значения NULL, просто используйте тип nullable и присвойте ему значение `null` там, где отсутствует ввод данных пользователем.
+Теперь, когда `Insert()` метод был вызван, остается лишь для копирования значений из интерфейса вставки с параметрами, передаваемое в `ProductsBLL` класс s `AddProduct` метод. Как мы видели в [Проверка события, связанные с вставки, обновления и удаления](../editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-cs.md) учебника, это можно сделать через ObjectDataSource s `Inserting` событий. В `Inserting` событий, нам нужно программно сослаться на элементы управления из `Products` нижнего колонтитула GridView s строк и назначить их значения для `e.InputParameters` коллекции. Когда пользователь опускает значение, например оставляя `ReorderLevel` пустое текстовое поле, нам нужно указать, что значение, вставляемое в базе данных должны быть `NULL`. Так как `AddProducts` метод принимает обнуляемые типы для полей, допускающие значения NULL базы данных, просто использовать тип, допускающий значение NULL и присвойте ему значение `null` в случае, когда опускается ввод данных пользователем.
 
 
 [!code-csharp[Main](inserting-a-new-record-from-the-gridview-s-footer-cs/samples/sample8.cs)]
 
-С `Inserting` обработчик завершения, новые записи добавляются в `Products` таблицы базы данных через строку нижнего колонтитула s GridView. Продолжим и попробуйте добавить несколько новых продуктов.
+С помощью `Inserting` доделан, новые записи добавляются в `Products` таблицы базы данных с помощью строки нижнего колонтитула GridView s. Продолжим и попробуйте добавить несколько новых продуктов.
 
-## <a name="enhancing-and-customizing-the-add-operation"></a>Улучшение и настройка операции добавления
+## <a name="enhancing-and-customizing-the-add-operation"></a>Улучшение и настройка добавить операцию
 
-В настоящее время нажав кнопку «Добавить» добавляет новую запись в таблицу базы данных, но не предоставляет каких-либо визуальную обратную связь, запись успешно добавлен. В идеальном случае Web метки элемента управления или на клиентском компьютере предупреждения окно проинформирует пользователя, который их вставки завершился успешно. Я это поле оставить в качестве упражнения для модуля чтения.
+В настоящее время кнопку Add добавляет новую запись в таблицу базы данных, но не предоставляет каких-либо визуальной обратной связи, что запись успешно добавлена. В идеальном случае Label Web элемента управления или клиентского окна предупреждения будет информировать пользователя, что их insert была выполнена успешно. Оставить этот в качестве упражнения для чтения.
 
-GridView, используемые в этом учебнике не выполняет сортировку перечисленных продуктов, а также разрешить конечным пользователям сортировать данные. Следовательно записи сортируются как в базе данных путем их поля первичного ключа. Поскольку каждая новая запись `ProductID` значение больше, чем последний, каждый раз при добавлении нового продукта он является отслеживаемые конец сетки. Таким образом можно автоматически отправлять пользователю на последнюю страницу GridView, после добавления новой записи. Это можно сделать, добавив следующую строку кода после вызова `ProductsDataSource.Insert()` в `RowCommand` обработчик событий, чтобы указать, что пользователь должен отправляться на последнюю страницу после привязки данных к GridView:
+GridView, используемый в этом руководстве не применяется выполняет сортировку для перечисленных продуктов и не позволяет пользователю сортировать данные. Следовательно записи упорядочены, как в базе данных путем их поле первичного ключа. Так как каждая новая запись имеет `ProductID` значение большее, чем последний, каждый раз при добавлении нового продукта приписываются в конец сетки. Таким образом можно автоматически отправлять пользователю на последнюю страницу элемент GridView после добавления новой записи. Это можно сделать, добавив следующую строку кода после вызова `ProductsDataSource.Insert()` в `RowCommand` обработчик событий, чтобы указать, что пользователь должен отправляться к последней странице после привязки данных к GridView:
 
 
 [!code-csharp[Main](inserting-a-new-record-from-the-gridview-s-footer-cs/samples/sample9.cs)]
 
-`SendUserToLastPage` Логическая переменная уровня страницы, изначально назначается значение `false`. В GridView s `DataBound` обработчик событий, если `SendUserToLastPage` имеет значение false, `PageIndex` свойство обновляется для отправки пользователю на последнюю страницу.
+`SendUserToLastPage` Логическая переменная уровня страницы, изначально назначается значение `false`. В GridView s `DataBound` обработчик событий, если `SendUserToLastPage` имеет значение false, `PageIndex` обновляется свойство будет перенаправлен на последнюю страницу.
 
 
 [!code-csharp[Main](inserting-a-new-record-from-the-gridview-s-footer-cs/samples/sample10.cs)]
 
-Причина `PageIndex` свойство задается в `DataBound` обработчик событий (в отличие от `RowCommand` обработчика событий) — так как при `RowCommand` обработчик событий вызывается мы хранять еще, чтобы добавить новую запись для `Products` таблицы базы данных. Таким образом, в `RowCommand` обработчик событий индекс последней страницы (`PageCount - 1`) представляет индекс последней страницы *перед* был добавлен новый продукт. Для большинства продуктов добавляется индекс последней страницы одинаково после добавления нового продукта. Но при добавлены продукта приводит новый последний индекс страницы, если неправильно обновить `PageIndex` в `RowCommand` обработчик событий, то мы будете перенаправлены в секунду на последней странице (последний индекс страницы перед добавлением нового продукта) в отличие от новых последняя страница i ndex. Поскольку `DataBound` обработчик событий вызывается после был добавлен новый продукт и данные повторную привязку к сетке, задав `PageIndex` существует свойство мы знаем, что нам удалось извлечь правильный индекс последней страницы.
+Причина `PageIndex` свойство задается в `DataBound` обработчик событий (в отличие от `RowCommand` обработчик событий) так как при `RowCommand` обработчик событий запускает мы ve еще, чтобы добавить новую запись для `Products` таблицы базы данных. Таким образом, в `RowCommand` обработчик событий индекс последней страницы (`PageCount - 1`) представляет индекс последней страницы *перед* был добавлен новый продукт. Для большинства продуктов добавляемого последний индекс страницы аналогичен после добавления нового продукта. Но когда добавленный продукт приводит новый последний индекс страницы, если мы изменим неправильно `PageIndex` в `RowCommand` обработчик событий, то мы будете перенаправлены на второй — на последней странице (последний индекс страницы перед добавлением нового продукта) в отличие от новых последней странице i индекса. Так как `DataBound` обработчик событий вызывается после добавления нового продукта и данные повторно привязываются к сетке, задав `PageIndex` существует свойство мы знаем, нам удалось извлечь нужный индекс последней страницы.
 
-Наконец GridView, используемые в этом учебнике очень широкий, из-за количества полей, которые должны быть собраны для добавления нового продукта. Из-за этой ширины DetailsView s вертикальный макет может быть предпочтительным. GridView s общая ширина могла быть уменьшена путем сбора меньшее число входов. Возможно мы не хотите t необходимости в сборе `UnitsOnOrder`, `UnitsInStock`, и `ReorderLevel` полей при добавлении нового продукта, в таком случае эти поля могут быть удалены из GridView.
+Наконец GridView, используемый в этом руководстве широким из-за количества полей, которые должны собираться для добавления нового продукта. Из-за этого ширины DetailsView s вертикальный макет может быть предпочтительнее. GridView s общая ширина могла быть уменьшена путем сбора меньшее количество входных данных. Возможно, мы кое t необходимость сбора `UnitsOnOrder`, `UnitsInStock`, и `ReorderLevel` полей при добавлении нового продукта, в таком случае эти поля может быть удален из элемента GridView.
 
-Для настройки сбора данных, можно использовать один из двух методов:
+Чтобы настроить данные, собранные, можно использовать один из двух подходов:
 
-- Продолжайте использовать `AddProduct` метод, который ожидает значения для `UnitsOnOrder`, `UnitsInStock`, и `ReorderLevel` поля. В `Inserting` обработчик событий предоставляют жестко, по умолчанию значения для этих входных данных, которые были удалены из интерфейса вставки.
-- Создание новой перегрузкой `AddProduct` метод в `ProductsBLL` класс, который не принимает входные данные для `UnitsOnOrder`, `UnitsInStock`, и `ReorderLevel` поля. На странице ASP.NET настройте ObjectDataSource для использования этой новой перегрузкой.
+- Продолжать использовать `AddProduct` метод, который ожидает, что значения для `UnitsOnOrder`, `UnitsInStock`, и `ReorderLevel` поля. В `Inserting` обработчик событий, предоставляют жестко, по умолчанию значения для этих входных данных, которые были удалены из интерфейса вставки.
+- Создание новой перегрузкой `AddProduct` метод в `ProductsBLL` класс, который не принимает входные данные для `UnitsOnOrder`, `UnitsInStock`, и `ReorderLevel` поля. Затем на странице ASP.NET, настройте ObjectDataSource на использование этой новой перегрузке.
 
-Столь же также будут работать оба варианта. В предыдущих учебниках мы использовали второй вариант создания несколько перегрузок для `ProductsBLL` класса s `UpdateProduct` метод.
+Оба варианта также будет работать одинаково. В предыдущих руководствах мы использовали последний вариант создания нескольких перегрузок для `ProductsBLL` класс s `UpdateProduct` метод.
 
 ## <a name="summary"></a>Сводка
 
-GridView не имеет встроенные возможности вставки, найденных в DetailsView и FormView, но с усилий интерфейс для вставки могут добавляться в строке нижнего колонтитула. Для отображения строки нижнего колонтитула в элементе управления GridView, просто задайте его `ShowFooter` свойства `true`. Содержимое строки нижнего колонтитула можно настроить для каждого поля, преобразуя поле в TemplateField и добавление Вставка интерфейса `FooterTemplate`. Как было показано в этом учебнике `FooterTemplate` могут содержать кнопки, текстовые поля, элементами управления DropDownList, флажки, управляющие элементы источников данных для заполнения управляемых данными веб-элементов управления (например, элементами управления DropDownList) и проверяющие элементы управления. Вместе с элементами управления для сбора входных данных пользователя s требуется добавить кнопку, LinkButton или ImageButton.
+GridView не имеет встроенные возможности вставки, найденных в DetailsView и FormView, но немного усилий интерфейс для вставки могут добавляться к строке нижнего колонтитула. Для отображения строки нижнего колонтитула в элементе управления GridView, просто задайте его `ShowFooter` свойства `true`. Содержимое строки нижнего колонтитула можно настроить для каждого поля путем преобразования поле в TemplateField и добавление вставку интерфейс `FooterTemplate`. Как мы видели в этом руководстве `FooterTemplate` может содержать кнопки, текстовые поля, элементов управления DropDownList, флажки, элементов управления источниками данных для заполнения управляемых данными веб-элементов управления (например, элементов управления DropDownList) и элементов управления проверки. Вместе с элементами управления для сбора входных данных пользователя s требуется добавить кнопку LinkButton и ImageButton.
 
-При нажатии кнопки Добавить ObjectDataSource s `Insert()` метод вызывается для запуска вставку рабочего процесса. ObjectDataSource затем вызывает метод вставки настроенного ( `ProductsBLL` класса s `AddProduct` метод в этом учебнике). Нам необходимо скопировать значения из s GridView, интерфейсам, чтобы ObjectDataSource s `InsertParameters` коллекцию до вызова метода вставки. Это можно сделать с программного обращения к вставке интерфейса веб-элементы управления ObjectDataSource s `Inserting` обработчика событий.
+При нажатии кнопки Добавить элемент управления ObjectDataSource s `Insert()` метод вызывается для запуска операций по вставке. ObjectDataSource затем вызывает метод вставки настроенного ( `ProductsBLL` класс s `AddProduct` метод, в этом руководстве). Нам необходимо скопировать значения из s GridView, интерфейсам, чтобы элемент управления ObjectDataSource s `InsertParameters` коллекции перед вызываемого метода insert. Это можно сделать с программного обращения вставки интерфейса веб-элементы управления ObjectDataSource s `Inserting` обработчик событий.
 
-Этот учебник завершает нашей Рассмотрение методов для улучшения внешнего s GridView. Следующий набор учебников проверит, как работать с двоичными данными, таких как изображения, PDF-файлов, документов Word и т. д и данные веб-элементов управления.
+Этот учебник завершает наш Рассмотрение методов улучшения внешнего s GridView. Следующий набор учебных курсов будет проверять, как работать с двоичными данными, таких как изображения, PDF-файлы, документы Word и т. д и данные веб-элементов управления.
 
-Программирование довольны!
+Счастливого вам программирования!
 
 ## <a name="about-the-author"></a>Об авторе
 
-[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи ASP/ASP.NET и основателя из [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Майкрософт с 1998 года. Скотт — независимый консультант, trainer и записи. Его последняя книга — [ *диспетчерами учат самостоятельно ASP.NET 2.0 в течение 24 часов*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Он может быть достигнута по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
+[Скотт Митчелл](http://www.4guysfromrolla.com/ScottMitchell.shtml), автор семи книг по ASP/ASP.NET и основатель веб- [4GuysFromRolla.com](http://www.4guysfromrolla.com), работает с веб-технологиями Microsoft с 1998 года. Скотт — независимый консультант, преподаватель и автор. Его последняя книга — [ *Sams Teach ASP.NET 2.0 in 24 часа*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Ним можно связаться по адресу [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) или через его блог, который можно найти в [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
-## <a name="special-thanks-to"></a>Благодарности
+## <a name="special-thanks-to"></a>Особая благодарность
 
-Этот учебник ряд прошел проверку многие полезные рецензентов. Основной рецензент этого учебника было Екатерина Leigh. Объясняются моих последующих статей для MSDN? Если Да, напишите мне по [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
+В этой серии руководств пособий рецензировалась многими компетентными редакторами. Основной рецензент этого учебного был Екатерина Leigh. Хотите поработать с моих последующих статей для MSDN? Если Да, напишите мне [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
 > [!div class="step-by-step"]
 > [Назад](adding-a-gridview-column-of-checkboxes-cs.md)

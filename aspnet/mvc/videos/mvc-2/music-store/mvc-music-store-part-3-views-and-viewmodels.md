@@ -1,31 +1,30 @@
 ---
 uid: mvc/videos/mvc-2/music-store/mvc-music-store-part-3-views-and-viewmodels
-title: 'MVC Music Store часть 3: Представления и ViewModels | Документы Microsoft'
+title: 'Music Store MVC, часть 3: Views и ViewModels | Документация Майкрософт'
 author: jongalloway
-description: Джон продолжает учебник MVC Music Store Общие сведения о представлениях, ViewModels и главные страницы.
+description: Джон продолжает учебник MVC Music Store изложены общие представления, ViewModels и главные страницы.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/22/2010
 ms.topic: article
 ms.assetid: ffe5e656-9078-4ec7-85bb-3d7300942e87
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/music-store/mvc-music-store-part-3-views-and-viewmodels
 msc.type: video
-ms.openlocfilehash: bfd3ed085975da10f64ca95d4abc3bc5ca1b99e9
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 2d3e57bef72591dc9c77fea896e1e9ab900f0be2
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30869352"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37399371"
 ---
-<a name="mvc-music-store-part-3-views-and-viewmodels"></a>MVC Music Store часть 3: Представления и ViewModels
+<a name="mvc-music-store-part-3-views-and-viewmodels"></a>Music Store MVC, часть 3: Views и ViewModels
 ====================
 по [Джон Гэллоуэй](https://github.com/jongalloway)
 
-Джон продолжает учебник MVC Music Store Общие сведения о представлениях, ViewModels и главные страницы.
+Джон продолжает учебник MVC Music Store изложены общие представления, ViewModels и главные страницы.
 
-[&#9654;Посмотрите видео (13 мин.)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/mvc-music-store-part-3-views-and-viewmodels)
+[&#9654;Просмотрите видео (13 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/mvc-music-store-part-3-views-and-viewmodels)
 
 > [!div class="step-by-step"]
 > [Назад](mvc-music-store-part-2-controllers.md)

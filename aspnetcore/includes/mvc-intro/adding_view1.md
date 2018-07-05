@@ -1,4 +1,4 @@
-# <a name="adding-a-view-to-an-aspnet-core-mvc-app"></a>Добавление представления в приложение MVC ASP.NET Core
+# <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>Добавление представления в приложение MVC ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 

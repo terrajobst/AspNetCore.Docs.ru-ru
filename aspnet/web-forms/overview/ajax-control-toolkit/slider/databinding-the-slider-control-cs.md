@@ -1,57 +1,56 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/slider/databinding-the-slider-control-cs
-title: Привязка данных управления "ползунок" (C#) | Документы Microsoft
+title: Привязка данных элемента управления "ползунок" (C#) | Документация Майкрософт
 author: wenz
-description: Ползунок в наборе элементов управления AJAX имеет графический ползунок, можно управлять с помощью мыши. Это позволяет привязать текущий иция...
+description: Элемент управления "ползунок" в AJAX Control Toolkit предоставляет графическим ползунком, которые могут контролироваться с помощью мыши. Это позволяет привязать текущий иция...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: b7f77869-aa1d-4025-924f-622c57112db6
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/slider/databinding-the-slider-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7644c991cd88868235511ba372be1f5b47c68fea
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: cbb53309ccde9ed6be67a977a56cf2942bbe7f8c
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30870587"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37400659"
 ---
-<a name="databinding-the-slider-control-c"></a>Привязка данных управления "ползунок" (C#)
+<a name="databinding-the-slider-control-c"></a>Привязка данных элемента управления "ползунок" (C#)
 ====================
 по [Кристиан Wenz](https://github.com/wenz)
 
-[Загрузить код](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/Slider0.cs.zip) или [скачать PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/slider0CS.pdf)
+[Скачать код](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/Slider0.cs.zip) или [скачать PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/slider0CS.pdf)
 
-> Ползунок в наборе элементов управления AJAX имеет графический ползунок, можно управлять с помощью мыши. Это позволяет привязать текущее положение ползунка на другой элемент управления ASP.NET.
+> Элемент управления "ползунок" в AJAX Control Toolkit предоставляет графическим ползунком, которые могут контролироваться с помощью мыши. Это позволяет привязать текущее положение ползунка на другой элемент управления ASP.NET.
 
 
 ## <a name="overview"></a>Обзор
 
-Ползунок в наборе элементов управления AJAX имеет графический ползунок, можно управлять с помощью мыши. Это позволяет привязать текущее положение ползунка на другой элемент управления ASP.NET.
+Элемент управления "ползунок" в AJAX Control Toolkit предоставляет графическим ползунком, которые могут контролироваться с помощью мыши. Это позволяет привязать текущее положение ползунка на другой элемент управления ASP.NET.
 
 ## <a name="steps"></a>Шаги
 
-Чтобы активировать функциональные возможности ASP.NET AJAX и набора средств управления `ScriptManager` управления необходимо поместить в любом месте на странице (но в `<form>` элемент):
+Для активации функции ASP.NET AJAX и Control Toolkit, `ScriptManager` управления необходимо поместить в любом месте на странице (но в `<form>` элемента):
 
 [!code-aspx[Main](databinding-the-slider-control-cs/samples/sample1.aspx)]
 
-Добавьте два `TextBox` элементов управления на страницу. Один будет преобразован в графический ползунок, а другой будет содержать положение движка.
+Добавьте два `TextBox` элементов управления на страницу. Один будет преобразован графическим ползунком, а другой будет содержать положение ползунка.
 
 [!code-aspx[Main](databinding-the-slider-control-cs/samples/sample2.aspx)]
 
-Следующий шаг уже является последним шагом. `SliderExtender` Управления из набора элементов управления ASP.NET AJAX делает ползунок из первого текстового поля и автоматически обновляет второе текстовое поле, когда изменения положение ползунка. Чтобы это работало `SliderExtender` `TargetControlID` атрибут необходимо задать идентификатор элемента в первом текстовом поле; `BoundControlID` атрибуту необходимо присвоить идентификатор второе текстовое поле.
+Следующим шагом уже является последним шагом. `SliderExtender` Элемента управления ASP.NET AJAX Control Toolkit делает ползунок из первое текстовое поле и автоматически обновляет второе текстовое поле, когда изменения позиции ползунка. В порядке, чтобы это сработало `SliderExtender` `TargetControlID` атрибута необходимо задать идентификатор элемента в первом текстовом поле; `BoundControlID` атрибута необходимо задать идентификатор второго текстового поля.
 
 [!code-aspx[Main](databinding-the-slider-control-cs/samples/sample3.aspx)]
 
-Как видно в браузере, привязка данных работает в обоих направлениях: Введите новое значение в текстовом поле обновляет положение ползунка. Если второе текстовое поле только для чтения, могут добавлять слабую защиту с текстовым полем, чтобы оно было сложнее для пользователя, чтобы вручную обновить значение в нем.
+Как вы видите в браузере, привязка данных работает в обоих направлениях: Введите новое значение в текстовом поле обновляет положение ползунка. Если второе текстовое поле только для чтения, может добавить слабую защиту в текстовое поле, так как это сложнее для пользователя, чтобы вручную обновить значение в ней.
 
 
-[![Ползунок и текстового поля находятся в синхронизированном состоянии](databinding-the-slider-control-cs/_static/image2.png)](databinding-the-slider-control-cs/_static/image1.png)
+[![Ползунок и текстовое поле синхронизированы](databinding-the-slider-control-cs/_static/image2.png)](databinding-the-slider-control-cs/_static/image1.png)
 
-Ползунок и текстового поля находятся в синхронизированном состоянии ([Просмотр полноразмерное изображение](databinding-the-slider-control-cs/_static/image3.png))
+Ползунок и текстовое поле синхронизированы ([Просмотр полноразмерного изображения](databinding-the-slider-control-cs/_static/image3.png))
 
 > [!div class="step-by-step"]
 > [Назад](using-the-slider-control-with-auto-postback-cs.md)

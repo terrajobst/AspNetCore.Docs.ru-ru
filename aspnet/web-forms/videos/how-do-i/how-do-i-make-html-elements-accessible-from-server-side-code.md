@@ -1,28 +1,27 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-make-html-elements-accessible-from-server-side-code
-title: '[Инструкции:] Предоставить HTML-элементов доступ через код стороны сервера | Документы Microsoft'
+title: '[Инструкции] Сделать доступным из серверного кода HTML-элементов | Документация Майкрософт'
 author: rick-anderson
-description: В этой видео пиксел Крис будет показано, как предоставить стандартный HTML-элементов в страницы ASPX доступ через код со стороны сервера, они могут использоваться в processin страницы...
+description: В этом видео Крис Пелз будет показано, как сделать стандартных элементов HTML на странице .aspx доступным из серверного кода, они могут использоваться в бработки страницы...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/29/2008
 ms.topic: article
 ms.assetid: 1e2bafaa-ae6a-4c4c-839b-ff2dfe836902
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-make-html-elements-accessible-from-server-side-code
 msc.type: video
-ms.openlocfilehash: 2c512e1c2e86c0bf4e892459f3735e4e450692be
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a10259c310091f133e4be5fed5e05b1424cddd36
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26521553"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37396976"
 ---
-<a name="how-do-i-make-html-elements-accessible-from-server-side-code"></a>[Инструкции:] Сделать доступной из код со стороны сервера HTML-элементов
+<a name="how-do-i-make-html-elements-accessible-from-server-side-code"></a>[Инструкции] Сделать доступным из серверного кода HTML-элементов
 ====================
-по [Крис пиксел](https://twitter.com/chrispels)
+по [Крис Пелз](https://twitter.com/chrispels)
 
-В этом видеоролике пиксел Крис будет показано, как предоставить стандартный HTML-элементов в страницы ASPX доступ через код стороны сервера, они могут использоваться как стандартные элементы управления сервера ASP.NET обработки страницы. См. во-первых, как добавление runat = «server» атрибут на стандартный HTML-элемент управления как &lt;div&gt; позволяет ссылаться на серверный код стороны с технологией Intellisense. Далее в разделе несколько примеров того, как может управлять элементами HTML на странице с помощью этого метода. Наконец в разделе как этот метод может использоваться в сочетании с новый элемент управления ListView в .NET Framework версии 3.5 для управления размещением списка.
+В этом видео Крис Пелз будет показано, как сделать стандартных элементов HTML на странице .aspx доступным из серверного кода, они могут использоваться как стандартный элемент управления сервера ASP.NET обработки страницы. Во-первых, см. в разделе как добавление runat = «server»-атрибут в стандартном элементе управления HTML, таких как &lt;div&gt; ссылаться в коде на стороне сервера с полной поддержкой Intellisense. Далее см. в разделе несколько примеров того, как может управлять элементами HTML на странице с помощью этого способа. Наконец см. в разделе, как этот метод можно использовать в сочетании с помощью нового элемента управления ListView в .NET Framework версии 3.5 для управления размещением списка.
 
-[&#9654; Посмотрите видео (в минутах 21)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-html-elements-accessible-from-server-side-code)
+[&#9654;Просмотрите видео (21 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-html-elements-accessible-from-server-side-code)

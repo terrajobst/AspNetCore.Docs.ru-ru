@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/aspnet-35/visual-studio-editor/intellisense-for-jscript-and-aspnet-ajax
-title: IntelliSense для Jscript и ASP.NET AJAX | Документы Microsoft
+title: IntelliSense для Jscript и ASP.NET AJAX | Документация Майкрософт
 author: rick-anderson
-description: В этом видеоролике обзор новых возможностей Intellisense для JavaScript в Visual Studio 2008, включая основные методы JavaScript, .js внешние файлы i...
+description: В этом видео представлен обзор новых функций Intellisense для JavaScript в Visual Studio 2008, включая основные методы JavaScript, внешние .js файлы i...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/15/2007
 ms.topic: article
 ms.assetid: 9d490341-f228-432e-a386-e6e51476c165
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-35/visual-studio-editor/intellisense-for-jscript-and-aspnet-ajax
 msc.type: video
-ms.openlocfilehash: 02db29a23c1d22a7b6f496e24c6515f71d42fdf0
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 30b0bdd8f29b5230543914aabc8f83a6b1070457
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30883616"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37382450"
 ---
 <a name="intellisense-for-jscript-and-aspnet-ajax"></a>IntelliSense для Jscript и ASP.NET AJAX
 ====================
-по [Крис пиксел](https://twitter.com/chrispels)
+по [Крис Пелз](https://twitter.com/chrispels)
 
-В этом видеоролике обзор новых возможностей Intellisense для JavaScript в Visual Studio 2008, включая основные методы JavaScript, внешние JS-файлы ASPX-страниц между внешние JS-файлы с помощью библиотек Microsoft core вроде MicrosoftAjax.js, клиент JavaScript поведений, элементов управления и библиотеки и веб-служб. Кроме того здесь показано интеграции новый XML-комментариев для JavaScript с поддержкой технологии Intellisense.
+В этом видео представлен обзор новых функций Intellisense для JavaScript в Visual Studio 2008, включая основные методы JavaScript, внешние файлы .js на страницах .aspx, промежуточные файлы .js, с такими основными библиотеками Microsoft как MicrosoftAjax.js, клиент Поведения JavaScript, элементы управления и библиотеки и веб-служб. Кроме того демонстрируется интеграция новые комментарии XML для JavaScript с использованием Intellisense.
 
-[&#9654;Посмотрите видео (20 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/intellisense-for-jscript-and-aspnet-ajax)
+[&#9654;Просмотрите видео (20 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/intellisense-for-jscript-and-aspnet-ajax)
 
 > [!div class="step-by-step"]
 > [Назад](multi-targeting-support-in-visual-studio-2008.md)
