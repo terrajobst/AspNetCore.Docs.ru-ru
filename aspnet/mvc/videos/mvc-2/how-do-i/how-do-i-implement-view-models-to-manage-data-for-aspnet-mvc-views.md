@@ -1,31 +1,30 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views
-title: 'Инструкции: реализуйте Просмотр моделей для управления данными для представления ASP.NET MVC? | Документы Майкрософт'
+title: 'Инструкции: реализация моделей представлений для управления данными по представлениям ASP.NET MVC? | Документы Майкрософт'
 author: rick-anderson
-description: Крис пиксел в этом видеоролике показано, как используют концепцию &quot;модель представления&quot; для управления данными для представления ASP.NET MVC. Во-первых пример проекта MVC — Исп...
+description: В этом видео Крис Пелз показано, как используют концепцию &quot;модель представления&quot; для управления данными для представлений ASP.NET MVC. Во-первых пример проекта MVC является соз...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/11/2009
 ms.topic: article
 ms.assetid: 22f55d63-78f7-44fd-9107-f74cbe16022b
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views
 msc.type: video
-ms.openlocfilehash: 95be7e6bdbefe3f988fbc4065a8298395fb3ac89
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: f0713b87dc6455016de921998a994f8bca7dd8bc
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30871198"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37378090"
 ---
-<a name="how-do-i-implement-view--models-to-manage-data-for-aspnet-mvc-views"></a>Инструкции: реализуйте Просмотр моделей для управления данными для представления ASP.NET MVC?
+<a name="how-do-i-implement-view--models-to-manage-data-for-aspnet-mvc-views"></a>Инструкции: реализация моделей представлений для управления данными по представлениям ASP.NET MVC?
 ====================
-по [Крис пиксел](https://twitter.com/chrispels)
+по [Крис Пелз](https://twitter.com/chrispels)
 
-В этой видео пиксел Крис показано использование понятие «Представление модели» для управления данными для представления ASP.NET MVC. Во-первых создается проект MVC пример, использующий ViewDataDictionary для упаковки и передачи данных из контроллера в представление. После этого создается класс, представляющий модель представлений для представления в образце проекта MVC. В рамках этой реализации рассматриваются преимущества подход модели представления. Наконец есть сведения о способе разделения логики приложения, при использовании реализации модели представления.
+В этом видео Крис Пелз показано, как использовать понятие «Модель представления» для управления данными для представлений ASP.NET MVC. Во-первых создается пример проекта MVC, использующий ViewDataDictionary для упаковки и передачи данных из контроллера в представление. Затем создается класс, представляющий модель представления для просмотра в образце проекта MVC. В этой реализации рассматриваются преимущества этого подхода модель представления. Наконец есть о том, как секционировать логику приложения, при использовании реализацию модели представления.
 
-[&#9654;Посмотрите видео (в минутах 21)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views)
+[&#9654;Просмотрите видео (21 минут)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views)
 
 > [!div class="step-by-step"]
 > [Назад](how-do-i-work-with-data-in-aspnet-mvc-partial-views.md)

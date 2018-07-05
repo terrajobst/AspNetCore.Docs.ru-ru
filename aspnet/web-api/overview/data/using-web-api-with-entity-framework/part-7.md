@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-7
-title: Создание представления (UI) | Документы Microsoft
+title: Создание представления (UI) | Документация Майкрософт
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
@@ -9,51 +9,50 @@ ms.date: 06/16/2014
 ms.topic: article
 ms.assetid: b2445062-a1fe-4133-8994-f510280f6d9a
 ms.technology: dotnet-webapi
-ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 5052d7cca4a5c12a9ea56eb929d4794b19e82603
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: e9ebe60f88ecbf65a6f8d04de9a23d72a72fda83
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30878806"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37364985"
 ---
-<a name="create-the-view-ui"></a>Создание представления (UI)
+<a name="create-the-view-ui"></a>Создание представления (пользовательский Интерфейс)
 ====================
-по [Mike Wasson](https://github.com/MikeWasson)
+по [Майк Уоссон](https://github.com/MikeWasson)
 
-[Загрузка завершенного проекта](https://github.com/MikeWasson/BookService)
+[Скачать завершенный проект](https://github.com/MikeWasson/BookService)
 
-В этом разделе сначала для определения HTML-код для приложения и добавление привязки данных между HTML и модели представления.
+В этом разделе вам предстоит определить HTML для приложения и добавление привязки данных между HTML и модель представления.
 
 Откройте файл Views/Home/Index.cshtml. Замените все содержимое этого файла следующим.
 
 [!code-cshtml[Main](part-7/samples/sample1.cshtml)]
 
-Большинство `div` элементы имеют [начальной загрузки](http://getbootstrap.com/) Задание стиля. Важные элементы, имеющие `data-bind` атрибуты. Этот атрибут связывает HTML модели представления.
+Большая часть `div` элементы существуют ли [Bootstrap](http://getbootstrap.com/) стиля. Важные элементы, имеющие `data-bind` атрибуты. Этот атрибут связывает HTML-код для модели представления.
 
 Пример:
 
 [!code-html[Main](part-7/samples/sample2.html)]
 
-В этом примере &quot; `text` &quot; привязки причины `<p>` элемент, чтобы отобразить значение `error` свойство из модели представления. Помните, что `error` был объявлен как `ko.observable`:
+В этом примере &quot; `text` &quot; привязки причины `<p>` элемент для отображения значения `error` свойство из модели представления. Помните, что `error` был объявлен как `ko.observable`:
 
 [!code-javascript[Main](part-7/samples/sample3.js)]
 
-Каждый раз, когда задается новое значение `error`, маскирования обновит текст в `<p>` элемент.
+Каждый раз, когда назначается новое значение `error`, Knockout обновляет текст в `<p>` элемент.
 
-`foreach` Привязки указывает маскирования перебор содержимое `books` массива. Для каждого элемента в массиве маскирования создает новую &lt;li&gt; элемента. Привязки в контексте `foreach` ссылки на свойства на элемент массива. Пример:
+`foreach` Привязки сообщает Knockout циклический перебор содержимое `books` массива. Для каждого элемента в массиве, создает новый Knockout &lt;li&gt; элемент. Привязки в контексте `foreach` ссылки на свойства для элемента массива. Пример:
 
 [!code-html[Main](part-7/samples/sample4.html)]
 
-Здесь `text` привязки считывает свойство Author каждой книги.
+Здесь `text` привязка позволяет считывать свойства Author каждую книгу.
 
-Если приложение запускается, он должен выглядеть следующим образом:
+Если запустить приложение сейчас, он должен выглядеть следующим образом:
 
 ![](part-7/_static/image1.png)
 
-Список книг загружает асинхронно, после загрузки страницы. Прямо сейчас &quot;сведения&quot; ссылки не работают. Эта функция будет добавлен в следующем разделе.
+Список книг загружает в асинхронном режиме, после загрузки страницы. Прямо сейчас &quot;сведения&quot; ссылки не работают. В следующем разделе мы добавим эту функцию.
 
 > [!div class="step-by-step"]
 > [Назад](part-6.md)

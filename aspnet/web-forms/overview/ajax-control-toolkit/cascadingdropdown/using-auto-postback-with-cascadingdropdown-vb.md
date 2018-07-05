@@ -1,69 +1,68 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-vb
-title: Использование автоматического выполнения обратной с CascadingDropDown (VB) | Документы Microsoft
+title: С помощью автоматической обратной передачи с помощью с CascadingDropDown (VB) | Документация Майкрософт
 author: wenz
-description: CascadingDropDown управления в наборе элементов управления AJAX расширяет элемент управления DropDownList, чтобы изменения в один загружает DropDownList соответствующих значений в anoth...
+description: Элемент управления CascadingDropDown в AJAX Control Toolkit расширяет элемент управления DropDownList, что изменения в одной загрузке DropDownList соответствующих значений в anoth...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: 0b34f7f6-a0cc-4b9f-9761-643fb0bb3ece
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e8a48692dd96ee6a647bfb57ce2915b4e85544fe
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 274189184b82734e89a30c9450079d7e07971f3c
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30871380"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37378165"
 ---
-<a name="using-auto-postback-with-cascadingdropdown-vb"></a>Использование автоматического выполнения обратной с CascadingDropDown (Visual Basic)
+<a name="using-auto-postback-with-cascadingdropdown-vb"></a>С помощью автоматической обратной передачи с помощью с CascadingDropDown (VB)
 ====================
 по [Кристиан Wenz](https://github.com/wenz)
 
-[Загрузить код](http://download.microsoft.com/download/9/0/7/907760b1-2c60-4f81-aeb6-ca416a573b0d/cascadingdropdown3.vb.zip) или [скачать PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/cascadingdropdown3VB.pdf)
+[Скачать код](http://download.microsoft.com/download/9/0/7/907760b1-2c60-4f81-aeb6-ca416a573b0d/cascadingdropdown3.vb.zip) или [скачать PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/cascadingdropdown3VB.pdf)
 
-> CascadingDropDown управления в наборе элементов управления AJAX расширяет элемент управления DropDownList, чтобы изменения в один загружает DropDownList соответствующих значений в другой DropDownList. Однако при использовании элемента управления CascadingDropDown, ASP. Компонент управления DropDownList в NET AutoPostBack не работает, поскольку асинхронно загрузку данных в списке создает (неиспользуемые) обратной передачи, сам. Этот эффект можно избежать с помощью кода JavaScript.
+> Элемент управления CascadingDropDown в AJAX Control Toolkit расширяет элемент управления DropDownList, что изменения в одной загрузке DropDownList соответствующих значений в другой DropDownList. Тем не менее при использовании элемента управления CascadingDropDown, ASP. Элемент управления DropDownList NET AutoPostBack функция работает, поскольку асинхронно загрузки данных в списке создает (ненужные) обратную передачу, сам. Этот эффект можно избежать с помощью кода JavaScript.
 
 
 ## <a name="overview"></a>Обзор
 
-CascadingDropDown управления в наборе элементов управления AJAX расширяет элемент управления DropDownList, чтобы изменения в один загружает DropDownList соответствующих значений в другой DropDownList. (Для экземпляра один список содержит список штатов США, и далее список заполняется основных городов, в этом состоянии.) Однако при использовании элемента управления CascadingDropDown, ASP. Компонент управления DropDownList в NET AutoPostBack не работает, поскольку асинхронно загрузку данных в списке создает (неиспользуемые) обратной передачи, сам. Этот эффект можно избежать с помощью кода JavaScript.
+Элемент управления CascadingDropDown в AJAX Control Toolkit расширяет элемент управления DropDownList, что изменения в одной загрузке DropDownList соответствующих значений в другой DropDownList. (К примеру, один список содержит список штатов США, и следующий список заполняется крупнейших городов в этом состоянии.) Тем не менее при использовании элемента управления CascadingDropDown, ASP. Элемент управления DropDownList NET AutoPostBack функция работает, поскольку асинхронно загрузки данных в списке создает (ненужные) обратную передачу, сам. Этот эффект можно избежать с помощью кода JavaScript.
 
 ## <a name="steps"></a>Шаги
 
-Чтобы активировать функциональные возможности ASP.NET AJAX и набора средств управления `ScriptManager` управления необходимо поместить в любом месте на странице (но в &lt; `form` &gt; элемент):
+Для активации функции ASP.NET AJAX и Control Toolkit, `ScriptManager` управления необходимо поместить в любом месте на странице (но в &lt; `form` &gt; элемента):
 
 [!code-aspx[Main](using-auto-postback-with-cascadingdropdown-vb/samples/sample1.aspx)]
 
-Затем элемент управления DropDownList требуется:
+Затем необходим элемент управления DropDownList:
 
 [!code-aspx[Main](using-auto-postback-with-cascadingdropdown-vb/samples/sample2.aspx)]
 
-Для этого списка добавляется расширителя CascadingDropDown, предоставляя URL-адрес и метод информации веб-службы:
+Для этого списка добавляется расширитель CascadingDropDown, предоставляя данные веб-службы URL-адрес и метод:
 
 [!code-aspx[Main](using-auto-postback-with-cascadingdropdown-vb/samples/sample3.aspx)]
 
-Расширитель CascadingDropDown асинхронно вызывает веб-службы со следующей сигнатурой метода:
+Расширитель CascadingDropDown затем производит асинхронный вызов веб-службы со следующей сигнатурой метода:
 
 [!code-vb[Main](using-auto-postback-with-cascadingdropdown-vb/samples/sample4.vb)]
 
-Метод возвращает массив объектов типа CascadingDropDown значение. Тип конструктора сначала требуется заголовок элемента списка, а затем значение (HTML `value` атрибут).
+Метод возвращает массив объектов типа CascadingDropDown значение. Конструктор типа сначала ожидает заголовок элемента списка, а затем значение (HTML `value` атрибут).
 
 [!code-aspx[Main](using-auto-postback-with-cascadingdropdown-vb/samples/sample5.aspx)]
 
-Загрузка страницы в браузере будут заполнены раскрывающийся список с тремя поставщиков предварительно выбран второй. Кроме того, определяет ASP.NET `__doPostBack()` метода JavaScript. После загрузки страницы, этот вызов JavaScript добавляется к раскрывающемуся списку, но только при наличии элементов в нем. Если в списке нет элементов, набор элементов управления загружается, поэтому код JavaScript использует время ожидания и предпринимает попытку через полсекунды.
+Загрузку страницы в браузере будет заполнить раскрывающийся список с тремя поставщиками второй выбраны заранее. Кроме того, ASP.NET определяет `__doPostBack()` метод JavaScript. После загрузки страницы, этот вызов JavaScript добавляется к раскрывающемуся списку, но только при наличии элементов в нем. Если в списке нет элементов, набор элементов управления в процессе загрузки, поэтому в коде JavaScript используется время ожидания и предпринимает попытку через половины секунды.
 
 [!code-html[Main](using-auto-postback-with-cascadingdropdown-vb/samples/sample6.html)]
 
-Таким образом, обратная передача выполняется только при наличии фактически элементов в списке, а пользователь выбирает запись.
+Таким образом, обратная передача выполняется только при наличии фактически элементы в списке, и пользователь выбирает запись.
 
 
-[![При выборе элемента списка вызывает обратную передачу](using-auto-postback-with-cascadingdropdown-vb/_static/image2.png)](using-auto-postback-with-cascadingdropdown-vb/_static/image1.png)
+[![Выбор элемента списка вызывает обратную передачу](using-auto-postback-with-cascadingdropdown-vb/_static/image2.png)](using-auto-postback-with-cascadingdropdown-vb/_static/image1.png)
 
-При выборе элемента списка вызывает обратную передачу ([Просмотр полноразмерное изображение](using-auto-postback-with-cascadingdropdown-vb/_static/image3.png))
+Выбор элемента списка вызывает обратную передачу ([Просмотр полноразмерного изображения](using-auto-postback-with-cascadingdropdown-vb/_static/image3.png))
 
 > [!div class="step-by-step"]
 > [Назад](presetting-list-entries-with-cascadingdropdown-vb.md)
