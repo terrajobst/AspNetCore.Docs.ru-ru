@@ -4,19 +4,16 @@ title: Очистка файлов Web.Config | Документация Май�
 author: JoeStagner
 description: В этом видео вы увидите, как были перемещены основные элементы конфигурации в файле machine.config. Это позволяет файл Web.config в веб-приложение ASP.NET 4 для...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/11/2009
-ms.topic: article
 ms.assetid: 12aa35dd-16f7-408a-9a3b-a70c0aca791f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/net-4/core/aspnet-4-quick-hit-clean-webconfig-files
 msc.type: video
-ms.openlocfilehash: cbbd06258f3de67193e61e3647edc5353f4a1f39
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6a44989e308096797fe33c8cec525eb968e9239b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382063"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842783"
 ---
 <a name="aspnet-4-quick-hit---clean-webconfig-files"></a>ASP.NET 4 «Быстрый Hit» - Очистка файлов Web.Config
 ====================

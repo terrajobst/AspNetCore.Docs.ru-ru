@@ -1,4 +1,4 @@
-Созданный код идентификатора базы данных требует [Entity Framework Core миграции](/ef/core/managing-schemas/migrations/). Создание миграции и обновить базу данных. Например выполните следующие команды:
+Созданный код базы данных удостоверений требует [Entity Framework Core Migrations](/ef/core/managing-schemas/migrations/). Создание миграции и обновления базы данных. Например выполните следующие команды:
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -18,4 +18,4 @@ dotnet ef database update
 
 ------
 
-Имя параметра «CreateIdentitySchema» для `Add-Migration` команда может быть произвольным. `"CreateIdentitySchema"` содержит описание миграции.
+Параметр name «CreateIdentitySchema» для `Add-Migration` команда может быть произвольным. `"CreateIdentitySchema"` содержит описание миграции.
