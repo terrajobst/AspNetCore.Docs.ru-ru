@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-mobile/cdnjquerymobile130
-title: jQuery Mobile 1.3.0 в сети Microsoft Ajax CDN | Документы Microsoft
+title: jQuery Mobile 1.3.0 в сети доставки Содержимого Microsoft Ajax | Документация Майкрософт
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 07/23/2014
 ms.topic: article
 ms.assetid: 99dd9ca6-27e6-48cb-8b8e-625022e0c5a0
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile130
 msc.type: content
-ms.openlocfilehash: 9bd067f1a3ae3c907cc3a013226352067447aeb3
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 3e187b50387ba471603a9d4cb4b921248265c76a
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30070983"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37395919"
 ---
-<a name="jquery-mobile-130-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="63969-102">jQuery Mobile 1.3.0 в сети Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="63969-102">jQuery Mobile 1.3.0 on the Microsoft Ajax CDN</span></span>
+<a name="jquery-mobile-130-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="7a019-102">jQuery Mobile 1.3.0 в сети доставки Содержимого Microsoft Ajax</span><span class="sxs-lookup"><span data-stu-id="7a019-102">jQuery Mobile 1.3.0 on the Microsoft Ajax CDN</span></span>
 ====================
-<span data-ttu-id="63969-103">Библиотеки jQuery Mobile 1.3.0 включает следующие файлы:</span><span class="sxs-lookup"><span data-stu-id="63969-103">The jQuery Mobile 1.3.0 library includes the following files:</span></span>
+<span data-ttu-id="7a019-103">Библиотека jQuery Mobile 1.3.0 включает следующие файлы:</span><span class="sxs-lookup"><span data-stu-id="7a019-103">The jQuery Mobile 1.3.0 library includes the following files:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.3.0/jquery.mobile.structure-1.3.0.css
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.3.0/jquery.mobile.structure-1.3.0.min.css

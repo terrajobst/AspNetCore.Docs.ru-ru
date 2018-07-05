@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-mobile/cdnjquerymobile145
-title: jQuery Mobile 1.4.5 в сети Microsoft Ajax CDN | Документы Microsoft
+title: jQuery Mobile 1.4.5 в сети доставки Содержимого Microsoft Ajax | Документация Майкрософт
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 12/31/2014
 ms.topic: article
 ms.assetid: 67e9fda2-7895-4818-add6-fdc5be5be367
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile145
 msc.type: content
-ms.openlocfilehash: c1f6febaa41e45a9ecd2e9b90ec9851a4c95f1f6
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 4a4642129fef5f0159139068179064e6b49b2799
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30071334"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37393297"
 ---
-<a name="jquery-mobile-145-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="262f6-102">jQuery Mobile 1.4.5 в сети Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="262f6-102">jQuery Mobile 1.4.5 on the Microsoft Ajax CDN</span></span>
+<a name="jquery-mobile-145-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="9f0c5-102">jQuery Mobile 1.4.5 в сети доставки Содержимого Microsoft Ajax</span><span class="sxs-lookup"><span data-stu-id="9f0c5-102">jQuery Mobile 1.4.5 on the Microsoft Ajax CDN</span></span>
 ====================
-<span data-ttu-id="262f6-103">Библиотеки jQuery Mobile 1.4.5 включает следующие файлы:</span><span class="sxs-lookup"><span data-stu-id="262f6-103">The jQuery Mobile 1.4.5 library includes the following files:</span></span>
+<span data-ttu-id="9f0c5-103">Библиотека jQuery Mobile 1.4.5 включает следующие файлы:</span><span class="sxs-lookup"><span data-stu-id="9f0c5-103">The jQuery Mobile 1.4.5 library includes the following files:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.4.5/jquery.mobile.structure-1.4.5.css
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css

@@ -1,33 +1,32 @@
 ---
 uid: web-forms/videos/vs-2005/how-do-i-enforce-coding-standards-with-code-analysis
-title: '[Инструкции:] Принудительно выполнить стандартов кодирования с помощью функций анализа кода? | Документы Майкрософт'
+title: '[Инструкции] Применение стандартов кодирования с помощью анализа кода? | Документы Майкрософт'
 author: rick-anderson
-description: С помощью Visual Studio Team System имеется точное управление сообщениями правил анализа кода, применяются для проектов библиотек классов, проектов веб-сайтов и co исходного кода...
+description: С помощью Visual Studio Team System, вы можете точно контролировать правила анализа кода, которые применяются для проектов библиотек классов, проектов веб-сайтов и co исходного кода...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/09/2007
 ms.topic: article
 ms.assetid: ab2eedbc-79b5-4b63-a1df-935940c1545b
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-enforce-coding-standards-with-code-analysis
 msc.type: video
-ms.openlocfilehash: f57e2372ec4a4d1ba7f6a8f9f2f81cdfc275819c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: b8e68c88ae059e47ca3224adcb957ff745c7bf4d
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30893151"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37381972"
 ---
-<a name="how-do-i-enforce-coding-standards-with-code-analysis"></a><span data-ttu-id="2d56e-104">[Инструкции:] Принудительно выполнить стандартов кодирования с помощью функций анализа кода?</span><span class="sxs-lookup"><span data-stu-id="2d56e-104">[How Do I:] Enforce Coding Standards with Code Analysis?</span></span>
+<a name="how-do-i-enforce-coding-standards-with-code-analysis"></a><span data-ttu-id="6ea21-104">[Инструкции] Применение стандартов кодирования с помощью анализа кода?</span><span class="sxs-lookup"><span data-stu-id="6ea21-104">[How Do I:] Enforce Coding Standards with Code Analysis?</span></span>
 ====================
-<span data-ttu-id="2d56e-105">по [Криса Менегэй](https://twitter.com/CMenegay)</span><span class="sxs-lookup"><span data-stu-id="2d56e-105">by [Chris Menegay](https://twitter.com/CMenegay)</span></span>
+<span data-ttu-id="6ea21-105">по [Криса Менегэй](https://twitter.com/CMenegay)</span><span class="sxs-lookup"><span data-stu-id="6ea21-105">by [Chris Menegay](https://twitter.com/CMenegay)</span></span>
 
-<span data-ttu-id="2d56e-106">С помощью Visual Studio Team System имеется точное управление сообщениями правил анализа кода, которые применяются для проектов библиотек классов, проектов веб-сайтов и управления исходным кодом.</span><span class="sxs-lookup"><span data-stu-id="2d56e-106">With Visual Studio Team System you have fine control over the code analysis rules that apply to class library projects, web site projects, and source code control.</span></span> <span data-ttu-id="2d56e-107">В этом видео мы научиться определять ошибки и предупреждения, которые будут применяться во время проекта возврат сборки и кода, и мы узнаем, как отключение конкретное правило от применения конкретного члена класса.</span><span class="sxs-lookup"><span data-stu-id="2d56e-107">In this video we learn how to specify the errors and warnings that will apply during project builds and code check ins, and we see how to suppress a particular rule from applying to a specific class member.</span></span> <span data-ttu-id="2d56e-108">С помощью этой возможности настройки, которые можно применить стандартов кодирования для повышения качества кода, обеспечивая неприменимых правила никогда не получить ваш образом.</span><span class="sxs-lookup"><span data-stu-id="2d56e-108">With this configurability you can enforce coding standards to improve the quality of your code, while ensuring inapplicable rules never get in your way.</span></span>
+<span data-ttu-id="6ea21-106">С помощью Visual Studio Team System имеется тонкий контроль над правил анализа кода, которые применяются для проектов библиотек классов, проекты веб-сайта и системы управления исходным кодом.</span><span class="sxs-lookup"><span data-stu-id="6ea21-106">With Visual Studio Team System you have fine control over the code analysis rules that apply to class library projects, web site projects, and source code control.</span></span> <span data-ttu-id="6ea21-107">В этом видео мы узнаем, как для указания ошибки и предупреждения, которые будут применяться во время проекта возврат сборок и кода, и мы узнаем, как подавлять конкретное правило применения конкретного члена класса.</span><span class="sxs-lookup"><span data-stu-id="6ea21-107">In this video we learn how to specify the errors and warnings that will apply during project builds and code check ins, and we see how to suppress a particular rule from applying to a specific class member.</span></span> <span data-ttu-id="6ea21-108">С помощью этой возможности настройки, которые можно применить стандартов кодирования для повышения качества кода, одновременно обеспечивая неприменимый правила приходили вам.</span><span class="sxs-lookup"><span data-stu-id="6ea21-108">With this configurability you can enforce coding standards to improve the quality of your code, while ensuring inapplicable rules never get in your way.</span></span>
 
-[<span data-ttu-id="2d56e-109">&#9654;Посмотрите видео (6 минут)</span><span class="sxs-lookup"><span data-stu-id="2d56e-109">&#9654; Watch video (6 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-enforce-coding-standards-with-code-analysis)
+[<span data-ttu-id="6ea21-109">&#9654;Просмотрите видео (6 минут)</span><span class="sxs-lookup"><span data-stu-id="6ea21-109">&#9654; Watch video (6 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-enforce-coding-standards-with-code-analysis)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="2d56e-110">[Назад](how-do-i-set-up-distributed-load-testing-for-high-volume-tests.md)
-> [Вперед](how-do-i-use-generic-tests.md)</span><span class="sxs-lookup"><span data-stu-id="2d56e-110">[Previous](how-do-i-set-up-distributed-load-testing-for-high-volume-tests.md)
+> <span data-ttu-id="6ea21-110">[Назад](how-do-i-set-up-distributed-load-testing-for-high-volume-tests.md)
+> [Вперед](how-do-i-use-generic-tests.md)</span><span class="sxs-lookup"><span data-stu-id="6ea21-110">[Previous](how-do-i-set-up-distributed-load-testing-for-high-volume-tests.md)
 [Next](how-do-i-use-generic-tests.md)</span></span>

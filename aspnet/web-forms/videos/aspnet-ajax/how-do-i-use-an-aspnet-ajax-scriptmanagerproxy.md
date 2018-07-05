@@ -1,33 +1,32 @@
 ---
 uid: web-forms/videos/aspnet-ajax/how-do-i-use-an-aspnet-ajax-scriptmanagerproxy
-title: '[Инструкции:] С помощью ASP.NET AJAX ScriptManagerProxy? | Документы Майкрософт'
+title: '[Инструкции] Использование ASP.NET AJAX ScriptManagerProxy? | Документы Майкрософт'
 author: JoeStagner
-description: Узнайте, как ScriptManagerProxy реализует страницу содержимого для передачи ссылки на которую диспетчер ScriptManager разместить на его главной страницы ASP.NET, позволяя каждую страницу содержимого t...
+description: Узнайте, как ScriptManagerProxy позволяет страницу содержимого для передачи ссылки на ScriptManager, помещаются на главной странице ASP.NET, позволяя каждую страницу содержимого t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/01/2007
 ms.topic: article
 ms.assetid: c11935d8-c3df-45d3-aab1-1d90f6599b6d
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-use-an-aspnet-ajax-scriptmanagerproxy
 msc.type: video
-ms.openlocfilehash: 2afe1ab24dd9faab01f4ff0278d4d3fa17ab242a
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: b48f5ecaf031185f87385f86ca4f75fa2fc43313
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30885384"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37386459"
 ---
-<a name="how-do-i-use-an-aspnet-ajax-scriptmanagerproxy"></a><span data-ttu-id="17c75-104">[Инструкции:] С помощью ASP.NET AJAX ScriptManagerProxy?</span><span class="sxs-lookup"><span data-stu-id="17c75-104">[How Do I:] Use an ASP.NET AJAX ScriptManagerProxy?</span></span>
+<a name="how-do-i-use-an-aspnet-ajax-scriptmanagerproxy"></a><span data-ttu-id="454f3-104">[Инструкции] Использование ASP.NET AJAX ScriptManagerProxy?</span><span class="sxs-lookup"><span data-stu-id="454f3-104">[How Do I:] Use an ASP.NET AJAX ScriptManagerProxy?</span></span>
 ====================
-<span data-ttu-id="17c75-105">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="17c75-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="454f3-105">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="454f3-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="17c75-106">Узнайте, как ScriptManagerProxy реализует страницу содержимого для передачи ссылки на которую диспетчер ScriptManager разместить на его главной страницы ASP.NET, позволяя каждую страницу содержимого определить поведение AJAX.</span><span class="sxs-lookup"><span data-stu-id="17c75-106">Learn how a ScriptManagerProxy enables a content page to pass references to the ScriptManager placed on its ASP.NET master page, allowing each content page to define its own AJAX behavior.</span></span>
+<span data-ttu-id="454f3-106">Узнайте, как ScriptManagerProxy позволяет страницу содержимого для передачи ссылки на ScriptManager, помещаются на главной странице ASP.NET, позволяя каждую страницу содержимого определить собственное поведение AJAX.</span><span class="sxs-lookup"><span data-stu-id="454f3-106">Learn how a ScriptManagerProxy enables a content page to pass references to the ScriptManager placed on its ASP.NET master page, allowing each content page to define its own AJAX behavior.</span></span>
 
-[<span data-ttu-id="17c75-107">&#9654;Посмотрите видео (8 минут)</span><span class="sxs-lookup"><span data-stu-id="17c75-107">&#9654; Watch video (8 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-an-aspnet-ajax-scriptmanagerproxy)
+[<span data-ttu-id="454f3-107">&#9654;Просмотрите видео (8 минут)</span><span class="sxs-lookup"><span data-stu-id="454f3-107">&#9654; Watch video (8 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-an-aspnet-ajax-scriptmanagerproxy)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="17c75-108">[Назад](how-do-i-use-the-aspnet-ajax-client-library-controls.md)
-> [Вперед](how-do-i-use-the-aspnet-ajax-roundedcorners-extender.md)</span><span class="sxs-lookup"><span data-stu-id="17c75-108">[Previous](how-do-i-use-the-aspnet-ajax-client-library-controls.md)
+> <span data-ttu-id="454f3-108">[Назад](how-do-i-use-the-aspnet-ajax-client-library-controls.md)
+> [Вперед](how-do-i-use-the-aspnet-ajax-roundedcorners-extender.md)</span><span class="sxs-lookup"><span data-stu-id="454f3-108">[Previous](how-do-i-use-the-aspnet-ajax-client-library-controls.md)
 [Next](how-do-i-use-the-aspnet-ajax-roundedcorners-extender.md)</span></span>

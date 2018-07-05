@@ -1,68 +1,67 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-vb
-title: Разрешение только для некоторых символов в текстовом поле (Visual Basic) | Документы Microsoft
+title: Разрешение только некоторых символов в текстовом поле (Visual Basic) | Документация Майкрософт
 author: wenz
-description: Проверяющие элементы управления ASP.NET гарантирует, что вводимые пользователем данные разрешены только определенные символы. Однако это по-прежнему не препятствует пользователям вводить недопустимые...
+description: Проверяющие элементы управления ASP.NET гарантирует, что вводимые пользователем данные разрешены только некоторых символов. Тем не менее это по-прежнему не позволяет пользователям вводить недопустимые...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: 33af23f1-4016-4740-8fb2-37d1773452cd
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2b63a3582c09e08310c97d4adfc7b8273458a723
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: e44b69a4f7d46f1f1278f7de07a2e6c025f5c316
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30870158"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37386764"
 ---
-<a name="allowing-only-certain-characters-in-a-text-box-vb"></a><span data-ttu-id="3feff-104">Разрешение только для некоторых символов в текстовом поле (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="3feff-104">Allowing Only Certain Characters in a Text Box (VB)</span></span>
+<a name="allowing-only-certain-characters-in-a-text-box-vb"></a><span data-ttu-id="9a3df-104">Разрешение только некоторых символов в текстовом поле (VB)</span><span class="sxs-lookup"><span data-stu-id="9a3df-104">Allowing Only Certain Characters in a Text Box (VB)</span></span>
 ====================
-<span data-ttu-id="3feff-105">по [Кристиан Wenz](https://github.com/wenz)</span><span class="sxs-lookup"><span data-stu-id="3feff-105">by [Christian Wenz](https://github.com/wenz)</span></span>
+<span data-ttu-id="9a3df-105">по [Кристиан Wenz](https://github.com/wenz)</span><span class="sxs-lookup"><span data-stu-id="9a3df-105">by [Christian Wenz](https://github.com/wenz)</span></span>
 
-<span data-ttu-id="3feff-106">[Загрузить код](http://download.microsoft.com/download/4/c/2/4c2def7a-0d23-4055-91f9-1f18504167d7/FilteredTextBox0.vb.zip) или [скачать PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/filteredtextbox0VB.pdf)</span><span class="sxs-lookup"><span data-stu-id="3feff-106">[Download Code](http://download.microsoft.com/download/4/c/2/4c2def7a-0d23-4055-91f9-1f18504167d7/FilteredTextBox0.vb.zip) or [Download PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/filteredtextbox0VB.pdf)</span></span>
+<span data-ttu-id="9a3df-106">[Скачать код](http://download.microsoft.com/download/4/c/2/4c2def7a-0d23-4055-91f9-1f18504167d7/FilteredTextBox0.vb.zip) или [скачать PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/filteredtextbox0VB.pdf)</span><span class="sxs-lookup"><span data-stu-id="9a3df-106">[Download Code](http://download.microsoft.com/download/4/c/2/4c2def7a-0d23-4055-91f9-1f18504167d7/FilteredTextBox0.vb.zip) or [Download PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/filteredtextbox0VB.pdf)</span></span>
 
-> <span data-ttu-id="3feff-107">Проверяющие элементы управления ASP.NET гарантирует, что вводимые пользователем данные разрешены только определенные символы.</span><span class="sxs-lookup"><span data-stu-id="3feff-107">ASP.NET validation controls can ensure that only certain characters are allowed in user input.</span></span> <span data-ttu-id="3feff-108">Однако это по-прежнему не запрещает пользователям вводить недопустимые символы и при попытке отправить форму.</span><span class="sxs-lookup"><span data-stu-id="3feff-108">However this still does not prevent users from typing invalid characters and trying to submit the form.</span></span>
+> <span data-ttu-id="9a3df-107">Проверяющие элементы управления ASP.NET гарантирует, что вводимые пользователем данные разрешены только некоторых символов.</span><span class="sxs-lookup"><span data-stu-id="9a3df-107">ASP.NET validation controls can ensure that only certain characters are allowed in user input.</span></span> <span data-ttu-id="9a3df-108">Тем не менее это по-прежнему не запрещает пользователям вводить недопустимые символы и при попытке отправить форму.</span><span class="sxs-lookup"><span data-stu-id="9a3df-108">However this still does not prevent users from typing invalid characters and trying to submit the form.</span></span>
 
 
-## <a name="overview"></a><span data-ttu-id="3feff-109">Обзор</span><span class="sxs-lookup"><span data-stu-id="3feff-109">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="9a3df-109">Обзор</span><span class="sxs-lookup"><span data-stu-id="9a3df-109">Overview</span></span>
 
-<span data-ttu-id="3feff-110">Проверяющие элементы управления ASP.NET гарантирует, что вводимые пользователем данные разрешены только определенные символы.</span><span class="sxs-lookup"><span data-stu-id="3feff-110">ASP.NET validation controls can ensure that only certain characters are allowed in user input.</span></span> <span data-ttu-id="3feff-111">Однако это по-прежнему не запрещает пользователям вводить недопустимые символы и при попытке отправить форму.</span><span class="sxs-lookup"><span data-stu-id="3feff-111">However this still does not prevent users from typing invalid characters and trying to submit the form.</span></span>
+<span data-ttu-id="9a3df-110">Проверяющие элементы управления ASP.NET гарантирует, что вводимые пользователем данные разрешены только некоторых символов.</span><span class="sxs-lookup"><span data-stu-id="9a3df-110">ASP.NET validation controls can ensure that only certain characters are allowed in user input.</span></span> <span data-ttu-id="9a3df-111">Тем не менее это по-прежнему не запрещает пользователям вводить недопустимые символы и при попытке отправить форму.</span><span class="sxs-lookup"><span data-stu-id="9a3df-111">However this still does not prevent users from typing invalid characters and trying to submit the form.</span></span>
 
-## <a name="steps"></a><span data-ttu-id="3feff-112">Шаги</span><span class="sxs-lookup"><span data-stu-id="3feff-112">Steps</span></span>
+## <a name="steps"></a><span data-ttu-id="9a3df-112">Шаги</span><span class="sxs-lookup"><span data-stu-id="9a3df-112">Steps</span></span>
 
-<span data-ttu-id="3feff-113">Содержит набор элементов управления ASP.NET AJAX `FilteredTextBox` элемента управления, который расширяет текстовое поле.</span><span class="sxs-lookup"><span data-stu-id="3feff-113">The ASP.NET AJAX Control Toolkit contains the `FilteredTextBox` control which extends a text box.</span></span> <span data-ttu-id="3feff-114">После активации только определенный набор символов можно ввести в поле.</span><span class="sxs-lookup"><span data-stu-id="3feff-114">Once activated, only a certain set of characters may be entered into the field.</span></span>
+<span data-ttu-id="9a3df-113">ASP.NET AJAX Control Toolkit содержит `FilteredTextBox` элемента управления, который расширяет текстового поля.</span><span class="sxs-lookup"><span data-stu-id="9a3df-113">The ASP.NET AJAX Control Toolkit contains the `FilteredTextBox` control which extends a text box.</span></span> <span data-ttu-id="9a3df-114">После активации, можно вводить только определенный набор символов в поле.</span><span class="sxs-lookup"><span data-stu-id="9a3df-114">Once activated, only a certain set of characters may be entered into the field.</span></span>
 
-<span data-ttu-id="3feff-115">Чтобы это работало, необходимо сначала обычным образом ASP.NET AJAX `ScriptManager` открывается библиотеки JavaScript, которые также используются в наборе элементов управления ASP.NET AJAX:</span><span class="sxs-lookup"><span data-stu-id="3feff-115">For this to work, we first need as usual the ASP.NET AJAX `ScriptManager` which loads the JavaScript libraries which are also used by the ASP.NET AJAX Control Toolkit:</span></span>
+<span data-ttu-id="9a3df-115">Чтобы это работало, необходимо сначала обычным образом ASP.NET AJAX `ScriptManager` которого загружала библиотеки JavaScript, которые также используется ASP.NET AJAX Control Toolkit:</span><span class="sxs-lookup"><span data-stu-id="9a3df-115">For this to work, we first need as usual the ASP.NET AJAX `ScriptManager` which loads the JavaScript libraries which are also used by the ASP.NET AJAX Control Toolkit:</span></span>
 
 [!code-aspx[Main](allowing-only-certain-characters-in-a-text-box-vb/samples/sample1.aspx)]
 
-<span data-ttu-id="3feff-116">Затем мы должны текстовое поле.</span><span class="sxs-lookup"><span data-stu-id="3feff-116">Then, we need a text box:</span></span>
+<span data-ttu-id="9a3df-116">Затем нам нужно текстового поля:</span><span class="sxs-lookup"><span data-stu-id="9a3df-116">Then, we need a text box:</span></span>
 
 [!code-aspx[Main](allowing-only-certain-characters-in-a-text-box-vb/samples/sample2.aspx)]
 
-<span data-ttu-id="3feff-117">Наконец `FilteredTextBoxExtender` управления отвечает за ограничение символы разрешены для ввода пользователя.</span><span class="sxs-lookup"><span data-stu-id="3feff-117">Finally, the `FilteredTextBoxExtender` control takes care of restricting the characters the user is allowed to type.</span></span> <span data-ttu-id="3feff-118">Сначала следует задать `TargetControlID` атрибут `ID` из `TextBox` элемента управления.</span><span class="sxs-lookup"><span data-stu-id="3feff-118">First, set the `TargetControlID` attribute to the `ID` of the `TextBox` control.</span></span> <span data-ttu-id="3feff-119">Выберите один из доступных `FilterType` значений:</span><span class="sxs-lookup"><span data-stu-id="3feff-119">Then, choose one of the available `FilterType` values:</span></span>
+<span data-ttu-id="9a3df-117">Наконец `FilteredTextBoxExtender` берет на себя ограничение символов, пользователь может ввести элемент управления.</span><span class="sxs-lookup"><span data-stu-id="9a3df-117">Finally, the `FilteredTextBoxExtender` control takes care of restricting the characters the user is allowed to type.</span></span> <span data-ttu-id="9a3df-118">Сначала задайте `TargetControlID` атрибут `ID` из `TextBox` элемента управления.</span><span class="sxs-lookup"><span data-stu-id="9a3df-118">First, set the `TargetControlID` attribute to the `ID` of the `TextBox` control.</span></span> <span data-ttu-id="9a3df-119">Выберите один из доступных `FilterType` значений:</span><span class="sxs-lookup"><span data-stu-id="9a3df-119">Then, choose one of the available `FilterType` values:</span></span>
 
-- <span data-ttu-id="3feff-120">`Custom` по умолчанию; Вы должны предоставить список допустимых символов</span><span class="sxs-lookup"><span data-stu-id="3feff-120">`Custom` default; you have to provide a list of valid chars</span></span>
-- <span data-ttu-id="3feff-121">`LowercaseLetters` только строчные буквы</span><span class="sxs-lookup"><span data-stu-id="3feff-121">`LowercaseLetters` lowercase letters only</span></span>
-- <span data-ttu-id="3feff-122">`Numbers` только цифры</span><span class="sxs-lookup"><span data-stu-id="3feff-122">`Numbers` digits only</span></span>
-- <span data-ttu-id="3feff-123">`UppercaseLetters` только прописные буквы</span><span class="sxs-lookup"><span data-stu-id="3feff-123">`UppercaseLetters` uppercase letters only</span></span>
+- <span data-ttu-id="9a3df-120">`Custom` по умолчанию; Вы должны предоставить список допустимых знаков</span><span class="sxs-lookup"><span data-stu-id="9a3df-120">`Custom` default; you have to provide a list of valid chars</span></span>
+- <span data-ttu-id="9a3df-121">`LowercaseLetters` только строчные буквы</span><span class="sxs-lookup"><span data-stu-id="9a3df-121">`LowercaseLetters` lowercase letters only</span></span>
+- <span data-ttu-id="9a3df-122">`Numbers` только цифры</span><span class="sxs-lookup"><span data-stu-id="9a3df-122">`Numbers` digits only</span></span>
+- <span data-ttu-id="9a3df-123">`UppercaseLetters` только прописные буквы</span><span class="sxs-lookup"><span data-stu-id="9a3df-123">`UppercaseLetters` uppercase letters only</span></span>
 
-<span data-ttu-id="3feff-124">Если `Custom FilterType` используется, `ValidChars` свойства должен быть задан и указать список символов, которые могут быть типизированы.</span><span class="sxs-lookup"><span data-stu-id="3feff-124">If the `Custom FilterType` is used, the `ValidChars` property must be set and provide a list of characters that may be typed.</span></span> <span data-ttu-id="3feff-125">Кстати: при попытке вставить текст в текстовом поле, будут удалены все недопустимые символы.</span><span class="sxs-lookup"><span data-stu-id="3feff-125">By the way: if you try to paste text into the text box, all invalid chars are removed.</span></span>
+<span data-ttu-id="9a3df-124">Если `Custom FilterType` используется, `ValidChars` свойство должно быть задано и укажите список символов, которые может ввести.</span><span class="sxs-lookup"><span data-stu-id="9a3df-124">If the `Custom FilterType` is used, the `ValidChars` property must be set and provide a list of characters that may be typed.</span></span> <span data-ttu-id="9a3df-125">Между прочим: при попытке вставить текст в текстовое поле, будут удалены все недопустимые символы.</span><span class="sxs-lookup"><span data-stu-id="9a3df-125">By the way: if you try to paste text into the text box, all invalid chars are removed.</span></span>
 
-<span data-ttu-id="3feff-126">Разметка для `FilteredTextBoxExtender` управления, который разрешает только цифры (то, что также было бы возможно при `FilterType="Numbers"`):</span><span class="sxs-lookup"><span data-stu-id="3feff-126">Here is the markup for the `FilteredTextBoxExtender` control that only allows digits (something that would also have been possible with `FilterType="Numbers"`):</span></span>
+<span data-ttu-id="9a3df-126">Далее приведена разметка для `FilteredTextBoxExtender` элемент управления, который допускает только цифры (то, что также было бы возможным с `FilterType="Numbers"`):</span><span class="sxs-lookup"><span data-stu-id="9a3df-126">Here is the markup for the `FilteredTextBoxExtender` control that only allows digits (something that would also have been possible with `FilterType="Numbers"`):</span></span>
 
 [!code-aspx[Main](allowing-only-certain-characters-in-a-text-box-vb/samples/sample3.aspx)]
 
-<span data-ttu-id="3feff-127">Запустить страницу и повторите вводить буквы, если включить JavaScript, работать не будет; Тем не менее знаков, отображаемых на странице.</span><span class="sxs-lookup"><span data-stu-id="3feff-127">Run the page and try to enter a letter if JavaScript is enabled, it will not work; digits however appear on the page.</span></span> <span data-ttu-id="3feff-128">Однако обратите внимание, что защита `FilteredTextBox` предоставляет не является подтверждением маркера: если JavaScript включен, все данные могут вводиться в текстовом поле, поэтому следует использовать средства дополнительную проверку, т. е. ASP. NET проверяющие элементы управления.</span><span class="sxs-lookup"><span data-stu-id="3feff-128">However note that the protection `FilteredTextBox` provides is not bullet-proof: If JavaScript is enabled, any data may be entered in the text box, so you have to use additional validation means, i.e. ASP.NET's validation controls.</span></span>
+<span data-ttu-id="9a3df-127">Запустите страницу и попробуйте ввести буквы в том случае, если включить JavaScript, он не будет работать; Тем не менее, на странице отображаются цифры.</span><span class="sxs-lookup"><span data-stu-id="9a3df-127">Run the page and try to enter a letter if JavaScript is enabled, it will not work; digits however appear on the page.</span></span> <span data-ttu-id="9a3df-128">Тем не менее Обратите внимание, что защита `FilteredTextBox` предоставляет не пуленепробиваема: если JavaScript включен, все данные могут вводиться в текстовом поле, поэтому необходимо использовать средства дополнительной проверки, т. е. ASP. NET-элементов управления проверки.</span><span class="sxs-lookup"><span data-stu-id="9a3df-128">However note that the protection `FilteredTextBox` provides is not bullet-proof: If JavaScript is enabled, any data may be entered in the text box, so you have to use additional validation means, i.e. ASP.NET's validation controls.</span></span>
 
 
-<span data-ttu-id="3feff-129">[![Можно вводить только цифры](allowing-only-certain-characters-in-a-text-box-vb/_static/image2.png)](allowing-only-certain-characters-in-a-text-box-vb/_static/image1.png)</span><span class="sxs-lookup"><span data-stu-id="3feff-129">[![Only digits may be entered](allowing-only-certain-characters-in-a-text-box-vb/_static/image2.png)](allowing-only-certain-characters-in-a-text-box-vb/_static/image1.png)</span></span>
+<span data-ttu-id="9a3df-129">[![Можно вводить только цифры](allowing-only-certain-characters-in-a-text-box-vb/_static/image2.png)](allowing-only-certain-characters-in-a-text-box-vb/_static/image1.png)</span><span class="sxs-lookup"><span data-stu-id="9a3df-129">[![Only digits may be entered](allowing-only-certain-characters-in-a-text-box-vb/_static/image2.png)](allowing-only-certain-characters-in-a-text-box-vb/_static/image1.png)</span></span>
 
-<span data-ttu-id="3feff-130">Можно вводить только цифры ([Просмотр полноразмерное изображение](allowing-only-certain-characters-in-a-text-box-vb/_static/image3.png))</span><span class="sxs-lookup"><span data-stu-id="3feff-130">Only digits may be entered ([Click to view full-size image](allowing-only-certain-characters-in-a-text-box-vb/_static/image3.png))</span></span>
+<span data-ttu-id="9a3df-130">Можно вводить только цифры ([Просмотр полноразмерного изображения](allowing-only-certain-characters-in-a-text-box-vb/_static/image3.png))</span><span class="sxs-lookup"><span data-stu-id="9a3df-130">Only digits may be entered ([Click to view full-size image](allowing-only-certain-characters-in-a-text-box-vb/_static/image3.png))</span></span>
 
 > [!div class="step-by-step"]
-> [<span data-ttu-id="3feff-131">Назад</span><span class="sxs-lookup"><span data-stu-id="3feff-131">Previous</span></span>](allowing-only-certain-characters-in-a-text-box-cs.md)
+> [<span data-ttu-id="9a3df-131">Назад</span><span class="sxs-lookup"><span data-stu-id="9a3df-131">Previous</span></span>](allowing-only-certain-characters-in-a-text-box-cs.md)
