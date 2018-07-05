@@ -1,33 +1,32 @@
 ---
 uid: web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-the-database
-title: '[Инструкции:] LINQ to SQL: обновление базы данных | Документы Microsoft'
+title: '[Инструкции] LINQ to SQL: обновление базы данных | Документация Майкрософт'
 author: scottstanfield
-description: В этом видео я было показано, как создание, обновление и удаление записи с помощью LINQ, простых операций обновления через связи и пользовательские столбца и...
+description: В этом видео я продемонстрировал, как создание, обновление и удаление записи с помощью LINQ, простые транзакции обновления через связи и настраиваемый столбец и...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/15/2007
 ms.topic: article
 ms.assetid: d37b9859-1fc1-4669-89ea-b16f3c349d82
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-the-database
 msc.type: video
-ms.openlocfilehash: ebb884cfd7980462c4d0a8135769f5ba3c35bc96
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 9eeb3e84cff3a4a75ceeb6da7369c88ec07f1924
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30885007"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37367465"
 ---
-<a name="how-do-i-linq-to-sql-updating-the-database"></a><span data-ttu-id="764c5-103">[Инструкции:] LINQ to SQL: обновление базы данных</span><span class="sxs-lookup"><span data-stu-id="764c5-103">[How Do I:] LINQ to SQL: Updating the Database</span></span>
+<a name="how-do-i-linq-to-sql-updating-the-database"></a><span data-ttu-id="ef8ba-103">[Инструкции] LINQ to SQL: обновление базы данных</span><span class="sxs-lookup"><span data-stu-id="ef8ba-103">[How Do I:] LINQ to SQL: Updating the Database</span></span>
 ====================
-<span data-ttu-id="764c5-104">по [Скотт Stanfield](https://github.com/scottstanfield)</span><span class="sxs-lookup"><span data-stu-id="764c5-104">by [Scott Stanfield](https://github.com/scottstanfield)</span></span>
+<span data-ttu-id="ef8ba-104">по [Скотт Stanfield](https://github.com/scottstanfield)</span><span class="sxs-lookup"><span data-stu-id="ef8ba-104">by [Scott Stanfield](https://github.com/scottstanfield)</span></span>
 
-<span data-ttu-id="764c5-105">В этом видео я было показано, как создавать, обновлять и удалять записи с помощью LINQ, простых операций обновления через связи и пользовательской проверки столбцов и строк.</span><span class="sxs-lookup"><span data-stu-id="764c5-105">In this video I demonstrated how to create, update and delete records through LINQ, simple transactions, updates across relationships, and custom column and row validation.</span></span>
+<span data-ttu-id="ef8ba-105">В этом видео я продемонстрировал, как для создания, изменения и удалять записи с помощью LINQ, простой транзакции обновления через связи и проведение пользовательской проверки столбцов и строк.</span><span class="sxs-lookup"><span data-stu-id="ef8ba-105">In this video I demonstrated how to create, update and delete records through LINQ, simple transactions, updates across relationships, and custom column and row validation.</span></span>
 
-[<span data-ttu-id="764c5-106">&#9654;Посмотрите видео (17 минут)</span><span class="sxs-lookup"><span data-stu-id="764c5-106">&#9654; Watch video (17 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-linq-to-sql-updating-the-database)
+[<span data-ttu-id="ef8ba-106">&#9654;Просмотрите видео (17 минут)</span><span class="sxs-lookup"><span data-stu-id="ef8ba-106">&#9654; Watch video (17 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-linq-to-sql-updating-the-database)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="764c5-107">[Назад](how-do-i-linq-to-sql-querying-the-database.md)
-> [Вперед](how-do-i-linq-to-sql-linqdatasource.md)</span><span class="sxs-lookup"><span data-stu-id="764c5-107">[Previous](how-do-i-linq-to-sql-querying-the-database.md)
+> <span data-ttu-id="ef8ba-107">[Назад](how-do-i-linq-to-sql-querying-the-database.md)
+> [Вперед](how-do-i-linq-to-sql-linqdatasource.md)</span><span class="sxs-lookup"><span data-stu-id="ef8ba-107">[Previous](how-do-i-linq-to-sql-querying-the-database.md)
 [Next](how-do-i-linq-to-sql-linqdatasource.md)</span></span>
