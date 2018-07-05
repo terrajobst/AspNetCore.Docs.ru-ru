@@ -1,28 +1,27 @@
 ---
 uid: web-pages/videos/introduction/create-a-web-interface-in-webmatrix
-title: Создание веб-интерфейса в WebMatrix | Документы Microsoft
+title: Создание веб-интерфейса в WebMatrix | Документация Майкрософт
 author: rick-anderson
-description: Часть 6 показано создает страницу, которая позволяет пользователям добавлять данные к базе данных, веб-узла можно вывести ее.
+description: Часть 6 показано, как создать страницу, которая позволяет пользователям для добавления данных к базе данных, поэтому их вывода на узле.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2011
 ms.topic: article
 ms.assetid: a0529495-422f-4008-94b5-5fa913ac2e70
 ms.technology: dotnet-webpages
-ms.prod: .net-framework
 msc.legacyurl: /web-pages/videos/introduction/create-a-web-interface-in-webmatrix
 msc.type: video
-ms.openlocfilehash: cfacc7587df6f4c1735dd872521973163fc27794
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5108fc17d8672309611db4afd767d8b245f7b3a6
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26529743"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37396803"
 ---
-<a name="create-a-web-interface-in-webmatrix"></a><span data-ttu-id="0bee7-103">Создание веб-интерфейса в WebMatrix</span><span class="sxs-lookup"><span data-stu-id="0bee7-103">Create a Web Interface in WebMatrix</span></span>
+<a name="create-a-web-interface-in-webmatrix"></a><span data-ttu-id="3d4a4-103">Создание веб-интерфейса в WebMatrix</span><span class="sxs-lookup"><span data-stu-id="3d4a4-103">Create a Web Interface in WebMatrix</span></span>
 ====================
-<span data-ttu-id="0bee7-104">по [Advaiya](https://twitter.com/Advaiyasolns)</span><span class="sxs-lookup"><span data-stu-id="0bee7-104">by [Advaiya](https://twitter.com/Advaiyasolns)</span></span>
+<span data-ttu-id="3d4a4-104">по [Advaiya](https://twitter.com/Advaiyasolns)</span><span class="sxs-lookup"><span data-stu-id="3d4a4-104">by [Advaiya](https://twitter.com/Advaiyasolns)</span></span>
 
-<span data-ttu-id="0bee7-105">Часть 6 показано создает страницу, которая позволяет пользователям добавлять данные к базе данных, веб-узла можно вывести ее.</span><span class="sxs-lookup"><span data-stu-id="0bee7-105">Part 6 shows you how to build a page that allows your users to add data to your database, so your site can render it.</span></span>
+<span data-ttu-id="3d4a4-105">Часть 6 показано, как создать страницу, которая позволяет пользователям для добавления данных к базе данных, поэтому их вывода на узле.</span><span class="sxs-lookup"><span data-stu-id="3d4a4-105">Part 6 shows you how to build a page that allows your users to add data to your database, so your site can render it.</span></span>
 
-[<span data-ttu-id="0bee7-106">&#9654; Посмотрите видео (3 минуты)</span><span class="sxs-lookup"><span data-stu-id="0bee7-106">&#9654; Watch video (3 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/create-a-web-interface-in-webmatrix)
+[<span data-ttu-id="3d4a4-106">&#9654;Просмотрите видео (3 мин.)</span><span class="sxs-lookup"><span data-stu-id="3d4a4-106">&#9654; Watch video (3 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/create-a-web-interface-in-webmatrix)
