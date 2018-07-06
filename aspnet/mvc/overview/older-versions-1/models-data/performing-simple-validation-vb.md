@@ -4,19 +4,16 @@ title: Выполнение простой проверки (Visual Basic) | Д�
 author: StephenWalther
 description: Узнайте, как для выполнения проверки в приложении ASP.NET MVC. В этом руководстве Стивен Вальтер вводит вы состояние модели, а также вспомогательные проверки HTML...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/02/2009
-ms.topic: article
 ms.assetid: df6cf4b7-0bb3-4c4e-b17a-bd78a759a6bc
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/performing-simple-validation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 26900229630b25affe21a5bb801ef0247711d26b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a8320e87cb4ef418fe5c8308b9dacceb5d6bbac8
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399465"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37830789"
 ---
 <a name="performing-simple-validation-vb"></a>Выполнение простой проверки (VB)
 ====================

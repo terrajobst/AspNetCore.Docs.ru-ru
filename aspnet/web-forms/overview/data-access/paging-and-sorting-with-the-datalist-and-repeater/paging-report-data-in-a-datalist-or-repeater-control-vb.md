@@ -4,19 +4,16 @@ title: Разбиение по страницам данных отчета в �
 author: rick-anderson
 description: При ни DataList, ни элемент управления Repeater предложение автоматическое разбиение по страницам или сортировки поддержки этом руководстве показано, как для добавления поддержки разбиения по страницам для элементов управления DataList или Repeater...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/13/2006
-ms.topic: article
 ms.assetid: bbd6b7f7-b98a-48b4-93f3-341d6a4f53c0
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: da3c851a8752d4ef5c210a6d8fe552412ecbc9b0
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b1c3858e232d950d2cf9af0621f60cb9ba4ae767
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385396"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835221"
 ---
 <a name="paging-report-data-in-a-datalist-or-repeater-control-vb"></a>Разбиение по страницам данных отчета в элементе управления DataList или Repeater управления (VB)
 ====================

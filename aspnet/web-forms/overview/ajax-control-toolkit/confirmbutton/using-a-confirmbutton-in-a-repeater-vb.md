@@ -4,19 +4,16 @@ title: Использование ConfirmButton в элементе управл
 author: wenz
 description: Расширитель ConfirmButton в AJAX Control Toolkit создает Да/Нет всплывающего меню, когда пользователь нажимает кнопку (включая управления LinkButton). Да — только если...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 18c31709-3f9d-4d93-8b01-f1356bf610b4
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ce403e84766f586eca36ef6bc513d9fbf7bd1d40
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 72c9493582f7b952d1efcb45d3bc95bc130a38e1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396423"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826951"
 ---
 <a name="using-a-confirmbutton-in-a-repeater-vb"></a>Использование ConfirmButton в элементе управления Repeater (VB)
 ====================

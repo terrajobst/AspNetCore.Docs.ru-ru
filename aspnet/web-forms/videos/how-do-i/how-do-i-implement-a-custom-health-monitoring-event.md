@@ -4,19 +4,16 @@ title: '[Инструкции] Реализация пользовательск
 author: rick-anderson
 description: В этом видео Крис Пелз будет показано, как создавать пользовательские события, который расширяет возможности стандартных работоспособности, наблюдение за событиями в ASP.NET мониторинга состояния. Пользовательские pro...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/17/2007
-ms.topic: article
 ms.assetid: 5fa365a1-d709-40e2-b7bf-489ff687f2ce
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-a-custom-health-monitoring-event
 msc.type: video
-ms.openlocfilehash: 2818a6781c753def18d489bd31806a6c02a5b708
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 161ed55459f5aaf93f6418bd4beeda98cbb464ff
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396166"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828784"
 ---
 <a name="how-do-i-implement-a-custom-health-monitoring-event"></a>[Инструкции] Реализация пользовательского события мониторинга состояния
 ====================

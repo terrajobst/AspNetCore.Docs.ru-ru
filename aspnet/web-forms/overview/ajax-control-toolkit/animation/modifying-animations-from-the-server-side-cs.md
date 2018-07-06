@@ -4,19 +4,16 @@ title: Изменение анимации со стороны сервера (C
 author: wenz
 description: Отображается этот элемент управления в ASP.NET AJAX Control Toolkit не только элемент управления, но всю платформу для добавления анимации в элемент управления. Анимации могут также...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: b0abec39-a1c9-422d-ba9a-ef16f6185af8
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/modifying-animations-from-the-server-side-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 83ce54b1cd2c226db36be75f61321a0fb710e0ca
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8954f025873ea553fde26c6e2330ce6e5be2b539
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37376666"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804058"
 ---
 <a name="modifying-animations-from-the-server-side-c"></a>Изменение анимации со стороны сервера (C#)
 ====================

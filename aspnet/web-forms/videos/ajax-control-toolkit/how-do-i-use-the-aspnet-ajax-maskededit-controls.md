@@ -4,19 +4,16 @@ title: '[Инструкции] Используйте элементы упра�
 author: JoeStagner
 description: ASP.NET AJAX Control Toolkit предоставляет элемент управления MaskedEdit и управления MaskedEditValidator, который совместной работы для запроса, стиль и проверки d...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/04/2007
-ms.topic: article
 ms.assetid: 806a8bfe-54be-4c96-8ffd-66303cc2b2f9
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-maskededit-controls
 msc.type: video
-ms.openlocfilehash: b725819313eae960ba96847d0a8db00668eb7ed0
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 57a6d27512912d512c6fbf538a7208370843c85b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392559"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829840"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-maskededit-controls"></a>[Инструкции] Используйте элементы управления MaskedEdit ASP.NET AJAX?
 ====================

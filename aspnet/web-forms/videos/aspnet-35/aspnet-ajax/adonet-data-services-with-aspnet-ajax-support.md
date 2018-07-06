@@ -4,19 +4,16 @@ title: Службы данных ADO.NET с поддержкой AJAX ASP.NET | 
 author: GrabYourPitchforks
 description: Узнайте, как службы ADO.NET Data Services можно интегрировать с поддержкой ASP.NET AJAX без проблем. Технологии служб данных ADP.NET доступен в ASP.NET 3.5 E....
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/20/2007
-ms.topic: article
 ms.assetid: c7aa9192-8859-403f-a9a8-c372081f75bd
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-35/aspnet-ajax/adonet-data-services-with-aspnet-ajax-support
 msc.type: video
-ms.openlocfilehash: 871c8bc01135a136e63b4837adaa58687a850220
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 26095c89d3e2a6135bc1e7c49ba11601f254c4ea
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385344"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836205"
 ---
 <a name="adonet-data-services-with-aspnet-ajax-support"></a>Службы данных ADO.NET с поддержкой ASP.NET AJAX
 ====================

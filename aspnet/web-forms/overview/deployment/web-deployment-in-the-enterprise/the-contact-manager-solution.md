@@ -4,19 +4,16 @@ title: Решение диспетчера контактов | Документ
 author: jrjlee
 description: Этой серии руководств используется пример решения&#x2014;решения диспетчера контактов&#x2014;для представления приложения корпоративного уровня с реалистичные уровень...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 4d8c8d19-055b-4b70-9ee1-f748f0db3a01
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/the-contact-manager-solution
 msc.type: authoredcontent
-ms.openlocfilehash: 8187766190da43ded52359892601f8129b9940ce
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: c8044c37738e9d23ca83648a6b571059338dc1a3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388112"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835163"
 ---
 <a name="the-contact-manager-solution"></a>Решение диспетчера контактов
 ====================

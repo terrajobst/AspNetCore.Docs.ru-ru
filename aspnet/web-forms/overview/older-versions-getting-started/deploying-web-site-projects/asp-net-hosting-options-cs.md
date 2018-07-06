@@ -4,19 +4,16 @@ title: ASP.NET, размещение параметров (C#) | Докумен�
 author: rick-anderson
 description: Веб-приложений ASP.NET обычно разрабатываются, создания и тестирования в локальной среде разработки и должны быть развернуты в рабочей среде o...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/01/2009
-ms.topic: article
 ms.assetid: 89a1d2bc-fdfd-4c5c-a3b0-49a08baaf63a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 843db9bd1216c14d31f6fd7c142951a17849d7c2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 12d4e0e4332cf611e304799155b45f5d668da8f6
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399228"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804191"
 ---
 <a name="aspnet-hosting-options-c"></a>Варианты размещения в ASP.NET (C#)
 ====================

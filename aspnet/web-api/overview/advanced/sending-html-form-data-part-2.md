@@ -4,19 +4,16 @@ title: 'Отправка данных формы HTML в веб-API ASP.NET: О�
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/21/2012
-ms.topic: article
 ms.assetid: a7f3c1b5-69d9-4261-b082-19ffafa5f16a
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/advanced/sending-html-form-data-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 7c1c85f462141daf747e23aa4215d47f2d263140
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: adaa59b47cb16def5b423181ca06729d43cd77de
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386712"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804349"
 ---
 <a name="sending-html-form-data-in-aspnet-web-api-file-upload-and-multipart-mime"></a>Отправка данных формы HTML в веб-API ASP.NET: Отправка файлов и составное сообщение MIME
 ====================

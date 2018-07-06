@@ -4,19 +4,16 @@ title: '[Инструкции] Как защитить узел с помощь�
 author: microsoft
 description: Узнайте, как защитить веб-сайта с помощью новых функций членства и ролей ASP.NET 2.0. Разделы включают регистрацию пользователя, пароль восстановления и ограниченного использования...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/09/2006
-ms.topic: article
 ms.assetid: e80c641c-f5e5-42a5-8bcd-5fecb34de198
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-secure-my-site-using-membership-and-roles
 msc.type: video
-ms.openlocfilehash: 7cd8c367ff35f761367b09b03be287a3378b5eab
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7cec18f7cf71e114d809c69b6fc3c689157e7c81
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37372901"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37830219"
 ---
 <a name="how-do-i-secure-my-site-using-membership-and-roles"></a>[Инструкции] Как защитить узел с помощью членства и ролей?
 ====================

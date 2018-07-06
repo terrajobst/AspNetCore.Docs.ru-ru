@@ -4,19 +4,16 @@ title: '[Инструкции] Использовать проект разве�
 author: rick-anderson
 description: В этом видео Крис Пелз показан способ использования надстройки веб-развертывание Visual Studio 2008 для создания проектов развертывания с помощью степень контроля над тем, как...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/11/2008
-ms.topic: article
 ms.assetid: 9517a342-e414-4c93-b0a6-5b52b391c908
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-a-visual-studio-2008-web-deployment-project
 msc.type: video
-ms.openlocfilehash: 651d27d94d6fae61b4d2468faab57a569c303f58
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 183ac4543fb294ca9815ec99f4c8c017fe637e8f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391830"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803487"
 ---
 <a name="how-do-i-use-a-visual-studio-2008-web-deployment-project"></a>[Инструкции] Использовать проект развертывания веб-Visual Studio 2008
 ====================

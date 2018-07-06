@@ -4,19 +4,16 @@ title: Использование элемента управления Rating �
 author: JoeStagner
 description: (Joe Stagner) показано, как использовать средство оценки, который поставляется с помощью набора средств AJAX ASP.NET.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/10/2008
-ms.topic: article
 ms.assetid: da366876-06d8-4a5d-9bce-1f52530f04b0
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/utilize-the-ajax-rating-control-in-the-aspnet-toolkit
 msc.type: video
-ms.openlocfilehash: 69cd995bd41b22b346254a327d08523e316f1b55
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b3c2091b501028008e221ef71e02baf6c2964c21
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398907"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804437"
 ---
 <a name="utilize-the-ajax-rating-control-in-the-aspnet-toolkit"></a>Использование элемента управления Rating в наборе средств ASP.NET AJAX
 ====================

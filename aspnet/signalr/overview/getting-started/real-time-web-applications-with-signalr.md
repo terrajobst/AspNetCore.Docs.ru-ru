@@ -4,19 +4,16 @@ title: 'Практическое лабораторное занятие: В р�
 author: rick-anderson
 description: В режиме реального времени веб-приложений имеют возможность отправлять содержимое подключенным клиентам оказывается, в режиме реального времени на стороне сервера. Для разработчиков ASP.NET, ASP...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/16/2014
-ms.topic: article
 ms.assetid: ba07958c-42e1-4da0-81db-ba6925ed6db0
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/getting-started/real-time-web-applications-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 8950a70a7c32bdc65fbcc09bce17548d23aacbdd
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 50ed2bed6b5b20684d00d7887494ee41346b5c3f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387098"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828913"
 ---
 <a name="hands-on-lab-real-time-web-applications-with-signalr"></a>Практическое лабораторное занятие: В режиме реального времени веб-приложений с помощью SignalR
 ====================

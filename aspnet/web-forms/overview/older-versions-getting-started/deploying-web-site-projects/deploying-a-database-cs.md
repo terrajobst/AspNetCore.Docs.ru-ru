@@ -4,19 +4,16 @@ title: Развертывание базы данных (C#) | Документ�
 author: rick-anderson
 description: Развертывание веб-приложения ASP.NET влечет за собой, получение необходимые файлы и ресурсы из среды разработки в рабочую среду. Для da...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/23/2009
-ms.topic: article
 ms.assetid: ff537a10-9f1f-43fe-9bcb-3dda161ba8f5
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fe85e583618cbab772c788f9a53509000aa415c5
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: baab10b8752af8c971f65df6e67cb77d9ad6518e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386541"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37834340"
 ---
 <a name="deploying-a-database-c"></a>Развертывание базы данных (C#)
 ====================

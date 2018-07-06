@@ -4,19 +4,16 @@ title: Асинхронные и хранимые процедуры с помо
 author: tdykstra
 description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/07/2014
-ms.topic: article
 ms.assetid: 27d110fc-d1b7-4628-a763-26f1e6087549
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 4c2deb53856d79a52415db48e04ea96111833b02
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 211c9c8c66f3eed15121b4dd425fa728c39b7de3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381933"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802053"
 ---
 <a name="async-and-stored-procedures-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Асинхронные и хранимые процедуры с помощью Entity Framework в приложении ASP.NET MVC
 ====================

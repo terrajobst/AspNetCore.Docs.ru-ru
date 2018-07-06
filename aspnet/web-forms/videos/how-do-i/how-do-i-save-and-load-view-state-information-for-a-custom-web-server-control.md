@@ -4,19 +4,16 @@ title: '[Инструкции] Сохранение и загрузка сост
 author: rick-anderson
 description: В этом видео Крис Пелз будет показано, как для сохранения и восстановления данных в состояние представления из настраиваемого пользовательского элемента управления. Во-первых Узнайте, как для сохранения простого значения...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/18/2008
-ms.topic: article
 ms.assetid: 20750baf-ad6d-4754-a1f5-644b952f2ebb
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-save-and-load-view-state-information-for-a-custom-web-server-control
 msc.type: video
-ms.openlocfilehash: b1972fa557c59510033451bc1068829bfe793b74
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bcac44c0578ec0923a9bbae61640cfd363220c22
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395182"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826440"
 ---
 <a name="how-do-i-save-and-load-view-state-information-for-a-custom-web-server-control"></a>[Инструкции] Сохранение и сведения о состоянии представления для пользовательский серверный элемент управления
 ====================

@@ -4,19 +4,16 @@ title: Создание макета сайта с помощью главных
 author: rick-anderson
 description: В этом учебнике показано основы главной страницы. А именно, каковы главные страницы, каким образом один создать главную страницу, каковы содержимого заполнители, каким образом один cr...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/21/2008
-ms.topic: article
 ms.assetid: 30945276-8ed9-4b27-8e50-4309244d3559
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b47f2d838cef8e43df83d49eecff2bae8553889e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 182f45c28dc37633b429fead333d401818299e36
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377318"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827826"
 ---
 <a name="creating-a-site-wide-layout-using-master-pages-vb"></a>Создание макета сайта с помощью главных страниц (Visual Basic)
 ====================

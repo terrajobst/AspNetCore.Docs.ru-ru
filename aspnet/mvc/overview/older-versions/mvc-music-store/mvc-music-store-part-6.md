@@ -4,19 +4,16 @@ title: 'Часть 6: Использование заметок к данным 
 author: jongalloway
 description: В этой серии руководств описаны все шаги, необходимые для построения примера приложения ASP.NET MVC Music Store. Часть 6 рассматриваются с использованием заметок к данным для модели V...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/21/2011
-ms.topic: article
 ms.assetid: b3193d33-2d0b-4d98-9712-58bd897c62ec
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6
 msc.type: authoredcontent
-ms.openlocfilehash: ca0ac2ca909f838f1c91e6cc01b8aafa90c0b193
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 10884f569f0f5d95517b73daab31fbd269a4726a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397661"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825957"
 ---
 <a name="part-6-using-data-annotations-for-model-validation"></a>Часть 6: Использование заметок к данным для проверки модели
 ====================

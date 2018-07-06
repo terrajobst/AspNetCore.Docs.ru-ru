@@ -4,19 +4,16 @@ title: Обработка параллелизма с помощью Entity Fram
 author: tdykstra
 description: В этой серии руководств основана на веб-приложение университета Contoso, созданный по началу работы с этой серии руководств Entity Framework 4.0. I...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/26/2011
-ms.topic: article
 ms.assetid: a5aa22a6-fb7f-4f41-9c7f-addda151940b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: c22f06e68b15d3fbf13e9f2af0e19631abe076ec
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 52c4dbdd5cf2919d0a04a883c1cd48cb56dd4e94
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392741"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804550"
 ---
 <a name="handling-concurrency-with-the-entity-framework-40-in-an-aspnet-4-web-application"></a>Обработка параллелизма с помощью Entity Framework 4.0 в 4 веб-приложения ASP.NET
 ====================

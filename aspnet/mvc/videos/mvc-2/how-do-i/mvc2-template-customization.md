@@ -4,19 +4,16 @@ title: MVC2 .Настройка шаблона | Документация Май
 author: microsoft
 description: В этом видео вы узнаете о возможностях настройки шаблона ASP.NET MVC 2. Мы рассмотрим Html.EditorForModel, Html.DisplayForModel, Templ модели...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/23/2010
-ms.topic: article
 ms.assetid: 93d5f225-1b13-4932-af79-120335d52447
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/mvc2-template-customization
 msc.type: video
-ms.openlocfilehash: 2864e7b2552a5fe97512003d954b0b232f404562
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4b4895c47eeccdbaaf51ffd459b77d143daea24c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367843"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802634"
 ---
 <a name="mvc2---template-customization"></a>MVC2 .Настройка шаблона
 ====================

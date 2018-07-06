@@ -4,19 +4,16 @@ title: Начало работы с Entity Framework 4.0 Database First и ASP.N
 author: tdykstra
 description: Пример веб-приложение университета Contoso демонстрирует создание приложений веб-форм ASP.NET, с помощью Entity Framework. Пример приложения является...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/03/2010
-ms.topic: article
 ms.assetid: ccdc3f8c-2568-40a7-8f8b-3c23d2e05388
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 51964f86e66e21d63105f1043641c0096d1d41b6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fb06176ef195ea5523a66baa938ed5076e0ebe9d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391151"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802371"
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-3"></a>Начало работы с Entity Framework 4.0 Database First и ASP.NET 4 Web Forms — часть 3
 ====================

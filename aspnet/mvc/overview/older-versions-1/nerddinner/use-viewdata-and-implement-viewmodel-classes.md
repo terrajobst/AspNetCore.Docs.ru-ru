@@ -4,19 +4,16 @@ title: Использование ViewData и реализация классо�
 author: microsoft
 description: Шаг 6 показано как включить поддержку редактирования сценариев, более широкие форм также рассматриваются два подхода, которые могут использоваться для передачи данных из контроллеров представлений:...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/27/2010
-ms.topic: article
 ms.assetid: 5755ec4c-60f1-4057-9ec0-3a5de3a20e23
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-viewdata-and-implement-viewmodel-classes
 msc.type: authoredcontent
-ms.openlocfilehash: edc62246cdc5e5df51c369a70b47dab92c9ecc1c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 70b264def11b55fc08165dda307ff9e82fd4be7f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365127"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826963"
 ---
 <a name="use-viewdata-and-implement-viewmodel-classes"></a>Использование ViewData и реализация классов ViewModel
 ====================

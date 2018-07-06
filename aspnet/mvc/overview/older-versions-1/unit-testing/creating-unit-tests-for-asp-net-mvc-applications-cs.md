@@ -4,19 +4,16 @@ title: Создание модульных тестов для приложен�
 author: StephenWalther
 description: Сведения о создании модульных тестов для действий контроллера. Стивен Вальтер в этом руководстве показано, как протестировать действия контроллера возвращает parti ли...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/19/2008
-ms.topic: article
 ms.assetid: d3a270b9-d7b1-47f2-8775-fc3beb518b5c
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-mvc-applications-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4c88024a85d418befc9b2a111d96643ca0249ff4
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f9e6945a379d37f1539c7135041f50dcc7041750
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396621"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826683"
 ---
 <a name="creating-unit-tests-for-aspnet-mvc-applications-c"></a>Создание модульных тестов для приложений ASP.NET MVC (C#)
 ====================

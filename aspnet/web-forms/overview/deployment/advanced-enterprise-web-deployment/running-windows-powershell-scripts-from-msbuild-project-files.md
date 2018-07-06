@@ -4,19 +4,16 @@ title: Запуск скриптов Windows PowerShell из файлов про
 author: jrjlee
 description: В этом разделе описывается, как для выполнения сценария Windows PowerShell как часть процесса построения и развертывания. Сценарий можно запустить локально (другими словами, на б...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 55f1ae45-fcb5-43a9-8415-fa5b935fc9c9
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/running-windows-powershell-scripts-from-msbuild-project-files
 msc.type: authoredcontent
-ms.openlocfilehash: ddb658d8a8f224a7c417321df3e17ce0610d2473
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: faedcee480b6c50dc560055206fedbe7af4d5f67
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362899"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803153"
 ---
 <a name="running-windows-powershell-scripts-from-msbuild-project-files"></a>Запуск скриптов Windows PowerShell из файлов проекта MSBuild
 ====================
@@ -59,7 +56,7 @@ ms.locfileid: "37362899"
 Задачи в этом разделе используется пример сценария Windows PowerShell с именем **LogDeploy.ps1** Чтобы проиллюстрировать процесс для выполнения скриптов с MSBuild. **LogDeploy.ps1** скрипт содержит простой функции, которая производит запись в одну строку в файл журнала:
 
 
-[!code-javascript[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample1.js)]
+[!code-powershell[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample1.ps1)]
 
 
 **LogDeploy.ps1** скрипт принимает два параметра. Первый параметр представляет полный путь к файлу журнала, к которому требуется добавить запись, а второй параметр представляет назначение развертывания, который требуется записать в файл журнала. При выполнении сценарий, он добавляет строку в файл журнала в следующем формате:

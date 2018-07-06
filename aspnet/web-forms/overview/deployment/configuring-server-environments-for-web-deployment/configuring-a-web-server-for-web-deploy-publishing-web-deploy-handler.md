@@ -4,19 +4,16 @@ title: Настройка веб-сервера для веб-публикаци
 author: jrjlee
 description: В этом разделе описываются способы настройки веб-сервер Internet Information Services (IIS), для поддержки веб-публикации и развертывания с помощью Хан развертывание IIS Web...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 90ebf911-1c46-4470-b876-1335bd0f590f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler
 msc.type: authoredcontent
-ms.openlocfilehash: 2d262aab8fd6e755330acbaffa6d18c29688666f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3296bb9b6460bbe80782746c9d398aa67815dcee
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394220"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37833339"
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler"></a>Настройка веб-сервера для веб-публикации развертывания (обработчик веб-развертывания)
 ====================

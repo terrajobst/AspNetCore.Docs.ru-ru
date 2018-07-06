@@ -1,68 +1,68 @@
 ---
-title: Общие сведения об учетных данных ASP.NET Core
+title: Общие сведения об Identity в ASP.NET Core
 author: rick-anderson
-description: Используйте удостоверение с приложением ASP.NET Core. Включает параметр паролей (RequireDigit, RequiredLength, RequiredUniqueChars и многое другое).
+description: Использование удостоверения с приложения ASP.NET Core. Включает параметр паролей (RequireDigit, RequiredLength, RequiredUniqueChars и многое другое).
 ms.author: riande
 ms.date: 01/24/2018
 uid: security/authentication/identity
-ms.openlocfilehash: 57d9abbf82aedadd4d8c5eaabd21a5d31d5c6c61
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c231a7619a4433ce004342ce68564e4c3892e702
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272705"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829306"
 ---
-# <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об учетных данных ASP.NET Core
+# <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об Identity в ASP.NET Core
 
-По [Pranav Rastogi](https://github.com/rustd), [Рик Андерсон](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra), Джон Гэллоуэй [Reitan Эрик](https://github.com/Erikre), и [Стив Смит](https://ardalis.com/)
+По [Пранавом Растоги](https://github.com/rustd), [Рик Андерсон](https://twitter.com/RickAndMSFT), [том Дайкстра](https://github.com/tdykstra), Джон Гэллоуэй [Erik Reitan](https://github.com/Erikre), и [Стив Смит](https://ardalis.com/)
 
-Удостоверение ASP.NET Core является система членства, в котором можно добавить функциональные возможности входа в приложение. Пользователи могут создавать учетную запись и имя входа с именем пользователя и пароль или их можно использовать поставщик внешней учетной записи, например Facebook, Google, учетной записи Майкрософт, Twitter или другим пользователям.
+Удостоверение ASP.NET Core — это система членства, который позволяет добавить функциональные возможности входа в приложение. Пользователи могут создавать учетную запись и имя входа с именем пользователя и пароль или их можно использовать поставщик внешней учетной записи, например Facebook, Google, учетной записи Майкрософт, Twitter или другим пользователям.
 
-Вы можете настроить ASP.NET Identity Core использование базы данных SQL Server для хранения имен пользователей, пароли и данные профиля. Кроме того можно использовать собственные постоянное хранилище, например, табличное хранилище Azure. Этот документ содержит инструкции по Visual Studio и с помощью CLI.
+Вы можете настроить удостоверение ASP.NET Core, чтобы использовать базу данных SQL Server для хранения имен пользователей, пароли и данные профиля. Кроме того можно использовать собственные постоянное хранилище, например, хранилище таблиц Azure. Этот документ содержит инструкции по Visual Studio и с помощью интерфейса командной строки.
 
-[Просмотреть или загрузить образец кода.](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [(Сведения о загрузке)](xref:tutorials/index#how-to-download-a-sample)
+[Просмотреть или скачать образец кода.](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [(Как для загрузки)](xref:tutorials/index#how-to-download-a-sample)
 
-## <a name="overview-of-identity"></a>Общие сведения об идентификации
+## <a name="overview-of-identity"></a>Общие сведения об удостоверениях
 
-В этом разделе будет использование ASP.NET Core Identity Добавление функциональности для регистрации, вход и выход пользователя. Более подробные инструкции по созданию приложений с помощью ASP.NET Core Identity см. в разделе Дальнейшие действия в конце этой статьи.
+В этом разделе будет использование удостоверения ASP.NET Core для добавления функций, регистрация, вход и выход пользователя. Более подробные инструкции по созданию приложений с помощью удостоверения ASP.NET Core см. в разделе "Дальнейшие действия" в конце этой статьи.
 
-1. Создайте проект веб-приложения ASP.NET Core с отдельными учетными записями пользователей.
+1. Создайте проект веб-приложение ASP.NET Core с учетными записями отдельных пользователей.
 
    # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-   В Visual Studio, выберите **файл** > **New** > **проекта**. Выберите **веб-приложения ASP.NET Core** и нажмите кнопку **ОК**.
+   В Visual Studio выберите **файл** > **New** > **проекта**. Выберите **веб-приложение ASP.NET Core** и нажмите кнопку **ОК**.
 
    ![Диалоговое окно создания нового проекта](identity/_static/01-new-project.png)
 
-   Выберите ASP.NET Core **веб-приложения (Model-View-Controller)** для ASP.NET Core 2.x, а затем выберите **изменить аутентификацию**.
+   Выберите ASP.NET Core **веб-приложение (Model-View-Controller)** для ASP.NET Core 2.x, а затем выберите **изменить способ проверки подлинности**.
 
    ![Диалоговое окно создания нового проекта](identity/_static/02-new-project.png)
 
-   Откроется диалоговое окно предложения вариантов проверки подлинности. Выберите **отдельных учетных записей пользователей** и нажмите кнопку **ОК** для возврата к диалоговому окну предыдущего.
+   Откроется диалоговое окно, предложить варианты проверки подлинности. Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК** чтобы вернуться в предыдущем диалоговом окне.
 
    ![Диалоговое окно создания нового проекта](identity/_static/03-new-project-auth.png)
 
-   При выборе **отдельных учетных записей пользователей** направляет Visual Studio для создания моделей, ViewModels, представления, контроллеры и другие активы, необходимые для проверки подлинности как часть шаблона проекта.
+   Выбрав **учетные записи отдельных пользователей** направляет Visual Studio для создания модели, модели ViewModel, представления, контроллеры и другие активы, необходимые для проверки подлинности как часть шаблона проекта.
 
    # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-   Если используется .NET Core CLI, создайте новый проект с помощью `dotnet new mvc --auth Individual`. Эта команда создает новый проект с тем же кодом шаблона удостоверений, создаваемых в Visual Studio.
+   Если с помощью интерфейса командной строки .NET Core, создайте новый проект с помощью `dotnet new mvc --auth Individual`. Эта команда создает новый проект с тем же кодом шаблона удостоверений, которые создает Visual Studio.
 
-   Созданный проект содержит `Microsoft.AspNetCore.Identity.EntityFrameworkCore` пакет, который сохраняет данные удостоверений и схемы SQL Server с помощью [Entity Framework Core](https://docs.microsoft.com/ef/).
+   Созданный проект содержит `Microsoft.AspNetCore.Identity.EntityFrameworkCore` пакет, который сохраняет данные удостоверений и схемы для SQL Server с помощью [Entity Framework Core](https://docs.microsoft.com/ef/).
 
    ---
 
-2. Настройка службы удостоверений и добавление по промежуточного слоя в `Startup`.
+2. Настройка службы удостоверений и добавьте по промежуточного слоя в `Startup`.
 
-   Службы удостоверений добавляются к приложению в `ConfigureServices` метод `Startup` класса:
+   Службы удостоверений добавляются к приложению в `ConfigureServices` метод в `Startup` класса:
 
    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-42)]
 
-   Эти службы доступны для приложения с помощью [внедрения зависимостей](xref:fundamentals/dependency-injection).
+   Эти службы доступны приложению через [внедрения зависимостей](xref:fundamentals/dependency-injection).
 
-   Путем вызова для приложения включена удостоверения `UseAuthentication` в `Configure` метод. `UseAuthentication` Добавление проверки подлинности [по промежуточного слоя](xref:fundamentals/middleware/index) к конвейеру запросов.
+   Удостоверение включено для приложения, вызвав `UseAuthentication` в `Configure` метод. `UseAuthentication` Добавляет проверку подлинности [по промежуточного слоя](xref:fundamentals/middleware/index) в конвейер запросов.
 
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
 
@@ -70,21 +70,21 @@ ms.locfileid: "36272705"
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,13-33)]
 
-   Эти службы доступны для приложения с помощью [внедрения зависимостей](xref:fundamentals/dependency-injection).
+   Эти службы доступны приложению через [внедрения зависимостей](xref:fundamentals/dependency-injection).
 
-   Путем вызова для приложения включена удостоверения `UseIdentity` в `Configure` метод. `UseIdentity` Добавляет файл cookie проверки подлинности с помощью [по промежуточного слоя](xref:fundamentals/middleware/index) к конвейеру запросов.
+   Удостоверение включено для приложения, вызвав `UseIdentity` в `Configure` метод. `UseIdentity` Добавляет проверку подлинности на основе файлов cookie [по промежуточного слоя](xref:fundamentals/middleware/index) в конвейер запросов.
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configure&highlight=21)]
 
    ---
 
-   Дополнительные сведения о время загрузки приложения см. в разделе [запуска приложения](xref:fundamentals/startup).
+   Дополнительные сведения о время загрузки приложения, см. в разделе [запуск приложения](xref:fundamentals/startup).
 
 3. Создание пользователя.
 
    Запустите приложение и щелкните ссылку **Register** (Регистрация).
 
-   При первом запуске вам может потребоваться выполнить миграцию. Приложение предложит **Apply Migrations** (Выполнить миграцию): При необходимости обновите страницу.
+   При первом запуске вам может потребоваться выполнить миграцию. Приложение предложит **Apply Migrations** (Выполнить миграцию): Обновите страницу, при необходимости.
 
    ![Веб-страница применения миграции](identity/_static/apply-migrations.png)
 
@@ -105,26 +105,26 @@ ms.locfileid: "36272705"
 
 4. Вход.
 
-   Пользователи могут войти, щелкнув **входа** ссылок в верхней части сайта, или может быть переход на страницу входа, если они пытаются получить доступ к части сайта, требующей авторизации. Когда пользователь отправляет форму на странице входа `AccountController` `Login` вызова действия.
+   Пользователи могут входить, щелкнув **вход** ссылку в верхней части сайта, или может быть переход на страницу входа, если они пытаются получить доступ к части сайта, требующему проверки подлинности. Когда пользователь отправляет форму на странице входа `AccountController` `Login` вызова действия.
 
-   `Login` Вызывает действие `PasswordSignInAsync` на `_signInManager` объекта (для `AccountController` путем внедрения зависимостей).
+   `Login` Вызовов действия `PasswordSignInAsync` на `_signInManager` объекта (для `AccountController` с помощью внедрения зависимостей).
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
 
-   Базовый `Controller` предоставляемых классами `User` свойство, которое можно открыть из методов контроллера. Например, можно перечислить `User.Claims` и принимать решения об авторизации. Дополнительные сведения см. в разделе [авторизации](xref:security/authorization/index).
+   Базовый `Controller` предоставляет `User` свойство, которое можно получить из методов контроллера. Например, можно перечислить `User.Claims` и принимать решения об авторизации. Дополнительные сведения см. в разделе [авторизации](xref:security/authorization/index).
 
 5. Выход.
 
-   Щелкнув **Выход** связывать вызовы `LogOut` действие.
+   Щелкнув **Выход** связать вызовы `LogOut` действие.
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_logout&highlight=7)]
 
-   Предыдущий код выше вызовы `_signInManager.SignOutAsync` метод. `SignOutAsync` Метод очищает утверждения пользователей, хранящихся в файле cookie.
+   Предыдущий код выше вызовы `_signInManager.SignOutAsync` метод. `SignOutAsync` Метод очищает утверждений пользователя, хранящиеся в файле cookie.
 
 <a name="pw"></a>
 6. Конфигурация.
 
-   Удостоверение имеет некоторые виды поведения по умолчанию, которые могут быть переопределены в классе при запуске приложения. `IdentityOptions` Нет необходимости быть настроены при использовании поведения по умолчанию. В следующем коде задается несколько параметров стойкость пароля:
+   Удостоверение имеет некоторые поведения по умолчанию, которые могут быть переопределены в классе запуска приложения. `IdentityOptions` не нужно настроить при использовании поведения по умолчанию. В следующем коде задается несколько вариантов стойкость пароля:
 
    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
@@ -136,21 +136,21 @@ ms.locfileid: "36272705"
 
    ---
 
-   Дополнительные сведения о настройке удостоверений см. в разделе [Настройка удостоверений](xref:security/authentication/identity-configuration).
+   Дополнительные сведения о том, как настроить удостоверение, см. в разделе [настроить удостоверение](xref:security/authentication/identity-configuration).
 
-   Можно также настроить тип данных первичный ключ. в разделе [тип данных первичные ключи Настройка удостоверения](xref:security/authentication/identity-primary-key-configuration).
+   Вы также можете настроить тип данных первичного ключа, см. в разделе [тип данных Настройка идентификаторов первичных ключей](xref:security/authentication/identity-primary-key-configuration).
 
 7. Просмотр базы данных.
 
-   Если приложение использует базу данных SQL Server (по умолчанию в Windows и для пользователей Visual Studio), можно просматривать базы данных с приложением, создаваемым. Можно использовать **SQL Server Management Studio**. Кроме того, в Visual Studio, выберите **представление** > **обозреватель объектов SQL Server**. Подключиться к **(localdb) \MSSQLLocalDB**. База данных с именем, соответствующим **aspnet - <*имя проекта*>-<*Дата строка* >**  отображается.
+   Если приложение использует базу данных SQL Server (по умолчанию на Windows и для пользователей Visual Studio), можно просмотреть приложение, созданное для базы данных. Можно использовать **SQL Server Management Studio**. Кроме того, в Visual Studio последовательно выберите **представление** > **обозреватель объектов SQL Server**. Подключение к **(localdb) \MSSQLLocalDB**. Базы данных с именем, соответствующим `aspnet-<name of your project>-<guid>` отображается.
 
-   ![Контекстные меню AspNetUsers таблицу базы данных](identity/_static/04-db.png)
+   ![Контекстные меню в таблице AspNetUsers базы данных](identity/_static/04-db.png)
 
    Разверните базу данных и его **таблиц**, щелкните правой кнопкой мыши **dbo. AspNetUsers** таблицы и выберите **данные представления**.
 
-8. Проверки удостоверения работы
+8. Проверка работы удостоверений
 
-    Значение по умолчанию *веб-приложения ASP.NET Core* шаблон проекта предоставляет пользователям доступ к любое действие в приложении без повторного входа. Чтобы проверить работоспособность ASP.NET Identity, добавьте`[Authorize]` атрибут `About` действие `Home` контроллера.
+    Значение по умолчанию *веб-приложение ASP.NET Core* шаблон проекта предоставляет пользователям доступ к любое действие в приложении без необходимости с именем входа. Чтобы убедиться, что ASP.NET Identity работает, добавьте`[Authorize]` атрибут `About` действие `Home` контроллера.
 
     ```csharp
     [Authorize]
@@ -163,43 +163,43 @@ ms.locfileid: "36272705"
 
     # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-    Запустите проект с помощью **Ctrl** + **F5** и перейдите к **о** страницы. Только прошедшие проверку подлинности пользователи могут получить доступ к **о** страницы, поэтому ASP.NET вы будете перенаправлены на страницу входа для входа или регистрации.
+    Запустите проект, используя **Ctrl** + **F5** и перейдите к **о** страницы. Только прошедшие проверку подлинности пользователи могут получать доступ к **о** странице, поэтому ASP.NET вы будете перенаправлены на страницу входа для входа или регистрации.
 
     # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-    Откройте окно командной строки и перейдите в корневой каталог проекта в каталог, содержащий `.csproj` файла. Запустите [dotnet запуска](/dotnet/core/tools/dotnet-run) команду, чтобы запустить приложение:
+    Откройте окно командной строки и перейдите в корневой каталог проекта каталог, содержащий `.csproj` файл. Запустите [запуска dotnet](/dotnet/core/tools/dotnet-run) команду, чтобы запустить приложение:
 
     ```csharp
     dotnet run 
     ```
 
-    Обзор URL-адрес, указанный в выходные данные [dotnet запуска](/dotnet/core/tools/dotnet-run) команды. URL-адрес должен указывать на `localhost` с созданный номер порта. Перейдите к **о** страницы. Только прошедшие проверку подлинности пользователи могут получить доступ к **о** страницы, поэтому ASP.NET вы будете перенаправлены на страницу входа для входа или регистрации.
+    Обзор URL-адрес, указанный в выходных данных из [запуска dotnet](/dotnet/core/tools/dotnet-run) команды. URL-адрес должен указывать `localhost` с созданный номер порта. Перейдите к **о** страницы. Только прошедшие проверку подлинности пользователи могут получать доступ к **о** странице, поэтому ASP.NET вы будете перенаправлены на страницу входа для входа или регистрации.
 
     ---
 
-## <a name="identity-components"></a>Компоненты идентификаторов
+## <a name="identity-components"></a>Компонентами системы идентификации
 
-Основная ссылка сборки для системы удостоверений `Microsoft.AspNetCore.Identity`. Данный пакет содержит базовый набор интерфейсов для ASP.NET Core Identity и включается по `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.
+Первичное эталонное сборки для системы идентификации `Microsoft.AspNetCore.Identity`. Этот пакет содержит базовый набор интерфейсов для ASP.NET Core Identity и включена в состав по `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.
 
-Эти зависимости необходимы для использования в приложениях ASP.NET Core системы удостоверений.
+Эти зависимости необходимы для использования системы идентификации в приложениях ASP.NET Core:
 
-* `Microsoft.AspNetCore.Identity.EntityFrameworkCore` -Типы, необходимые для использования с Entity Framework Core удостоверений.
+* `Microsoft.AspNetCore.Identity.EntityFrameworkCore` — Содержит необходимые типы использовать удостоверение с Entity Framework Core.
 
-* `Microsoft.EntityFrameworkCore.SqlServer` -Entity Framework Core — технология доступа к данных, рекомендуемые корпорации Майкрософт для реляционных баз данных, как SQL Server. Для тестирования, можно использовать `Microsoft.EntityFrameworkCore.InMemory`.
+* `Microsoft.EntityFrameworkCore.SqlServer` -Entity Framework Core — технология доступа к данных, рекомендуемые корпорации Майкрософт для реляционных баз данных, таких как SQL Server. Для тестирования, можно использовать `Microsoft.EntityFrameworkCore.InMemory`.
 
-* `Microsoft.AspNetCore.Authentication.Cookies` -Промежуточное по, которая позволяет приложению использовать проверку подлинности на основе файлов cookie.
+* `Microsoft.AspNetCore.Authentication.Cookies` — Промежуточный слой, который позволяет приложению использовать проверку подлинности на основе файлов cookie.
 
-## <a name="migrating-to-aspnet-core-identity"></a>Переход к удостоверению ASP.NET Core
+## <a name="migrating-to-aspnet-core-identity"></a>Переход на ASP.NET Core Identity
 
-Дополнительные сведения и инструкции по миграции существующего личности магазине см. в разделе [перенести проверку подлинности и удостоверение](xref:migration/identity).
+Дополнительные сведения и инструкции по миграции существующее удостоверение в магазине см. в разделе [перенести проверки подлинности и идентификации](xref:migration/identity).
 
-## <a name="setting-password-strength"></a>Параметр стойкость пароля
+## <a name="setting-password-strength"></a>Стойкость пароля параметр
 
-В разделе [конфигурации](#pw) для примера, устанавливает требования минимальные требования к паролю.
+См. в разделе [конфигурации](#pw) пример, задает минимальное паролей.
 
 ## <a name="next-steps"></a>Следующие шаги
 
-* [Перенос проверку подлинности и удостоверение](xref:migration/identity)
+* [Миграция проверки подлинности и удостоверения](xref:migration/identity)
 * [Подтверждение учетной записи и восстановление пароля](xref:security/authentication/accconfirm)
 * [Двухфакторная проверка подлинности с помощью SMS](xref:security/authentication/2fa)
-* [Facebook, Google и внешнего поставщика проверки подлинности](xref:security/authentication/social/index)
+* [Facebook, Google и внешних поставщиков проверки подлинности](xref:security/authentication/social/index)
