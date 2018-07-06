@@ -4,29 +4,26 @@ title: Как сделать пользовательские страницы? 
 author: shanselman
 description: В этом видео вы узнаете, как осуществлять пользовательской страницы для некоторых таблиц, а другие страницы в стандартных функциональных возможностей.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/08/2008
-ms.topic: article
 ms.assetid: f2b20119-abf4-4e78-9c47-adf563ad174c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-do-i-make-custom-pages
 msc.type: video
-ms.openlocfilehash: 6cd88208b0bcbb0956f0dd69501f9302566df724
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5d2791dc1a64f0119a7ca92736836ae7364407ac
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380653"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807194"
 ---
-<a name="how-do-i-make-custom-pages"></a><span data-ttu-id="ba6cf-104">Как сделать пользовательские страницы?</span><span class="sxs-lookup"><span data-stu-id="ba6cf-104">How Do I Make Custom Pages?</span></span>
+<a name="how-do-i-make-custom-pages"></a><span data-ttu-id="681ae-104">Как сделать пользовательские страницы?</span><span class="sxs-lookup"><span data-stu-id="681ae-104">How Do I Make Custom Pages?</span></span>
 ====================
-<span data-ttu-id="ba6cf-105">по [(Scott hanselman)](https://github.com/shanselman)</span><span class="sxs-lookup"><span data-stu-id="ba6cf-105">by [Scott Hanselman](https://github.com/shanselman)</span></span>
+<span data-ttu-id="681ae-105">по [(Scott hanselman)](https://github.com/shanselman)</span><span class="sxs-lookup"><span data-stu-id="681ae-105">by [Scott Hanselman](https://github.com/shanselman)</span></span>
 
-<span data-ttu-id="ba6cf-106">В этом видео вы узнаете, как осуществлять пользовательской страницы для некоторых таблиц, а другие страницы в стандартных функциональных возможностей.</span><span class="sxs-lookup"><span data-stu-id="ba6cf-106">In this video, you learn how to make a custom page for some tables, while other pages use standard functionality.</span></span>
+<span data-ttu-id="681ae-106">В этом видео вы узнаете, как осуществлять пользовательской страницы для некоторых таблиц, а другие страницы в стандартных функциональных возможностей.</span><span class="sxs-lookup"><span data-stu-id="681ae-106">In this video, you learn how to make a custom page for some tables, while other pages use standard functionality.</span></span>
 
-[<span data-ttu-id="ba6cf-107">&#9654;Просмотрите видео (5 минут)</span><span class="sxs-lookup"><span data-stu-id="ba6cf-107">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-custom-pages)
+[<span data-ttu-id="681ae-107">&#9654;Просмотрите видео (5 минут)</span><span class="sxs-lookup"><span data-stu-id="681ae-107">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-custom-pages)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="ba6cf-108">[Назад](how-do-i-handle-business-logic-exceptions.md)
-> [Вперед](how-do-i-display-unknown-datatypes.md)</span><span class="sxs-lookup"><span data-stu-id="ba6cf-108">[Previous](how-do-i-handle-business-logic-exceptions.md)
+> <span data-ttu-id="681ae-108">[Назад](how-do-i-handle-business-logic-exceptions.md)
+> [Вперед](how-do-i-display-unknown-datatypes.md)</span><span class="sxs-lookup"><span data-stu-id="681ae-108">[Previous](how-do-i-handle-business-logic-exceptions.md)
 [Next](how-do-i-display-unknown-datatypes.md)</span></span>

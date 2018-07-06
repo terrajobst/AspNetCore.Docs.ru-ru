@@ -4,29 +4,26 @@ title: Visual Studio 2010 быстрого попадание в-поддерж�
 author: JoeStagner
 description: В этом видео будет узнать о поддержке Visual Studio из нескольких сценариев монитор для повышения эффективности работы площадь экрана и оптимизации общего...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/11/2009
-ms.topic: article
 ms.assetid: 26dfc502-d164-4261-8006-ffde9a3e3447
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/visual-studio-2010/visual-studio-2010-quick-hit-multi-monitor-support
 msc.type: video
-ms.openlocfilehash: 2c9768f0452f26caf4d51d6f7e551786ba5fa0b6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d5046579c7f1505fffdeabe199a03a4ef7bd70b7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402698"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837355"
 ---
-<a name="visual-studio-2010-quick-hit---multi-monitor-support"></a><span data-ttu-id="8cbf4-103">Visual Studio 2010 «Быстрый Hit» — поддержка нескольких мониторов</span><span class="sxs-lookup"><span data-stu-id="8cbf4-103">Visual Studio 2010 "Quick Hit" - Multi-Monitor Support</span></span>
+<a name="visual-studio-2010-quick-hit---multi-monitor-support"></a><span data-ttu-id="ae851-103">Visual Studio 2010 «Быстрый Hit» — поддержка нескольких мониторов</span><span class="sxs-lookup"><span data-stu-id="ae851-103">Visual Studio 2010 "Quick Hit" - Multi-Monitor Support</span></span>
 ====================
-<span data-ttu-id="8cbf4-104">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="8cbf4-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="ae851-104">по [(Joe Stagner)](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="ae851-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="8cbf4-105">В этом видео будет узнать о поддержке Visual Studio из нескольких сценариев монитор для повышения эффективности работы площадь экрана и оптимизировать общую рабочего процесса разработки.</span><span class="sxs-lookup"><span data-stu-id="8cbf4-105">In this video you will learn about Visual Studio's support of multiple monitor scenarios to improve your use of screen real-estate, and optimize your overall development workflow.</span></span> 
+<span data-ttu-id="ae851-105">В этом видео будет узнать о поддержке Visual Studio из нескольких сценариев монитор для повышения эффективности работы площадь экрана и оптимизировать общую рабочего процесса разработки.</span><span class="sxs-lookup"><span data-stu-id="ae851-105">In this video you will learn about Visual Studio's support of multiple monitor scenarios to improve your use of screen real-estate, and optimize your overall development workflow.</span></span> 
 
-[<span data-ttu-id="8cbf4-106">&#9654;Просмотрите видео (5 минут)</span><span class="sxs-lookup"><span data-stu-id="8cbf4-106">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/visual-studio-2010-quick-hit-multi-monitor-support)
+[<span data-ttu-id="ae851-106">&#9654;Просмотрите видео (5 минут)</span><span class="sxs-lookup"><span data-stu-id="ae851-106">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/visual-studio-2010-quick-hit-multi-monitor-support)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="8cbf4-107">[Назад](visual-studio-2010-quick-hit-intellisense-smart-lists.md)
-> [Вперед](visual-studio-2010-quick-hit-new-web-project-template.md)</span><span class="sxs-lookup"><span data-stu-id="8cbf4-107">[Previous](visual-studio-2010-quick-hit-intellisense-smart-lists.md)
+> <span data-ttu-id="ae851-107">[Назад](visual-studio-2010-quick-hit-intellisense-smart-lists.md)
+> [Вперед](visual-studio-2010-quick-hit-new-web-project-template.md)</span><span class="sxs-lookup"><span data-stu-id="ae851-107">[Previous](visual-studio-2010-quick-hit-intellisense-smart-lists.md)
 [Next](visual-studio-2010-quick-hit-new-web-project-template.md)</span></span>
