@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 1fe05fbc5035ffa2d01bc6be55436146f1434d17
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 96d7d2956fa9bf72706cde0532ee7f4ff753b72c
+ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278548"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37126265"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Шаблон параметров в ASP.NET Core
 
@@ -53,6 +53,20 @@ ms.locfileid: "36278548"
 ```html
 option1 = value1_from_json, option2 = -1
 ```
+
+> [!NOTE]
+> При использовании настраиваемого компонента [ConfigurationBuilder](/dotnet/api/system.configuration.configurationbuilder) для загрузки конфигурации параметров из файла настроек необходимо убедиться, что базовый путь задан правильно:
+>
+> ```csharp
+> var configBuilder = new ConfigurationBuilder()
+>    .SetBasePath(Directory.GetCurrentDirectory())
+>    .AddJsonFile("appsettings.json", optional: true);
+> var config = configBuilder.Build();
+>
+> services.Configure<MyOptions>(config);
+> ```
+>
+> При загрузке конфигурации параметров из файла настроек с помощью [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) явно задавать базовый путь не требуется.
 
 ## <a name="configure-simple-options-with-a-delegate"></a>Настройка простых параметров с помощью делегата
 
