@@ -4,19 +4,16 @@ title: Обновление связанных данных с Entity Framework 
 author: tdykstra
 description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 4, с помощью Entity Framework 5 Code First и Visual Studio...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/30/2013
-ms.topic: article
 ms.assetid: 7871dc05-2750-470f-8b4c-3a52511949bc
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: dde9d5022823b252e59949144e3021a53c0bdd3a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e85162f58ed9826132db8bd854914a14709f709d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37371676"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809437"
 ---
 <a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-6-of-10"></a>Обновление связанных данных с Entity Framework в приложении ASP.NET MVC (6 из 10)
 ====================

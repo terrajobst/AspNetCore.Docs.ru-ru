@@ -4,19 +4,16 @@ title: Работа с данными (часть 1) | Документация 
 author: JoeStagner
 description: Видео сопровождением работающей с данным руководством (часть 1)
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/25/2011
-ms.topic: article
 ms.assetid: ebeac83f-2bca-4225-899e-1687480476f6
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/videos/aspnet-razor-pages/working-with-data-part-1
 msc.type: video
-ms.openlocfilehash: 27af02a1f57c1f5803863e01c5c22391d3cb9886
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 36e0b84ff78975cc85070b1786c56a487aa3d222
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395031"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810976"
 ---
 <a name="working-with-data-part-1"></a>Работа с данными (часть 1)
 ====================

@@ -4,19 +4,16 @@ title: '[Введение в ASP.NET 2.0:] ASP.NET 2.0 основы | Докум
 author: microsoft
 description: Разработчики ASP.NET будет необходимо посетить этой веб-трансляции, предназначены для ознакомления с ее основные особенности.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/25/2006
-ms.topic: article
 ms.assetid: ff36f242-5f40-44d1-b65d-5ab2fb622742
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/migrating/intro-to-aspnet-20-aspnet-20-fundamentals
 msc.type: video
-ms.openlocfilehash: 752a81398010fafcebe97fe25c8d66255ab64d88
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5ca9105108ded4a26e1349c173b30e46d2fb3e73
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379577"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840421"
 ---
 <a name="intro-to-aspnet-20-aspnet-20-fundamentals"></a>[Введение в ASP.NET 2.0:] ASP.NET 2.0 основы
 ====================

@@ -4,19 +4,16 @@ title: Настройка параметров подключения и уро�
 author: rick-anderson
 description: TableAdapters в типизированный набор DataSet автоматически выполняет подключение к базе данных, выполнения команд и Заполнение DataTable с результатами...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/03/2007
-ms.topic: article
 ms.assetid: cd330dd9-6254-4305-9351-dd727384c83b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0b9b1f1341416f92ab1df4f338bbdbcd753fbae4
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 835f17c35d85658a855072bf6d9355fdae9f63ab
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389629"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837841"
 ---
 <a name="configuring-the-data-access-layers-connection--and-command-level-settings-c"></a>Настройка параметров подключения и уровня команды на уровня доступа к данным (C#)
 ====================

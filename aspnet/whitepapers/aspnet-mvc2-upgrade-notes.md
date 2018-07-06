@@ -4,19 +4,16 @@ title: Обновление приложения ASP.NET MVC 1.0 до ASP.NET MV
 author: rick-anderson
 description: В этом документе описывается, как обновление вручную и с помощью мастера приложения ASP.NET MVC 1.0 до ASP.NET MVC 2. В этом документе также доступна для d...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/08/2010
-ms.topic: article
 ms.assetid: f1a01759-d251-4b09-8835-e112e336c6dd
-ms.technology: ''
 msc.legacyurl: /whitepapers/aspnet-mvc2-upgrade-notes
 msc.type: content
-ms.openlocfilehash: 354dbab3057068eb13b16c9aa31f66c72371ce7e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fe1696cd8f98f2ff253d385b62a6bcd74b536d33
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381920"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823875"
 ---
 <a name="upgrading-an-aspnet-mvc-10-application-to-aspnet-mvc-2"></a>Обновление приложения ASP.NET MVC 1.0 до ASP.NET MVC 2
 ====================

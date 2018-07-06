@@ -4,19 +4,16 @@ title: Динамическое заполнение элемента управ
 author: wenz
 description: Элемент управления DynamicPopulate в ASP.NET AJAX Control Toolkit вызывает веб-службы (или метод страницы) и заполняет результирующее значение в целевой элемент управления на t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 27305347-7b5d-4519-97b7-197a357e7f6e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fd55b59f9375eb320711ffea8d971a8d86179c43
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d82f8302ddd861531ba517d785a8695d7b914fa0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368664"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37806349"
 ---
 <a name="dynamically-populating-a-control-vb"></a>Динамическое заполнение элемента управления (VB)
 ====================

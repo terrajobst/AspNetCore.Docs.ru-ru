@@ -4,19 +4,16 @@ title: Тестирование надежности пароля (Visual Basic)
 author: wenz
 description: Таким образом, чтобы отложенной Пользователи склонны выберите простые пароли, которые легко взломать пароли в любом месте, являются обязательными. Элемент управления PasswordStrength в ASP. Н...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 9215a37f-3133-4887-8ed2-3689f3a53551
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3faf9996c73fb5aaa427b515d396f36663cf1801
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7073a06186ba3ff6c6a12d558445d75d9301589a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379706"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805905"
 ---
 <a name="testing-the-strength-of-a-password-vb"></a>Тестирование надежности пароля (VB)
 ====================

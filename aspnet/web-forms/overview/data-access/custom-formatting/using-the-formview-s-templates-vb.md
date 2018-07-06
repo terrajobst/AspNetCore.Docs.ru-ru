@@ -4,19 +4,16 @@ title: Использование шаблонов FormView (VB) | Докуме�
 author: rick-anderson
 description: В отличие от элемента управления DetailsView FormView не состоит из полей. Вместо этого FormView подготавливается к просмотру с помощью шаблонов. В этом руководстве мы рассмотрим использование F....
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: 67b25f4c-2823-42b6-b07d-1d650b3fd711
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 66ad79c0c385afed75c1888b81328220ee048d19
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bb613158343e6845e583ed823e2a2c16f958b720
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389918"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838158"
 ---
 <a name="using-the-formviews-templates-vb"></a>Использование шаблонов FormView (VB)
 ====================

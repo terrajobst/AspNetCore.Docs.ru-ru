@@ -4,19 +4,16 @@ title: Отображение данных на диаграмме с веб-с�
 author: microsoft
 description: В этой главе описываются способы отображения данных в диаграмме. В предыдущих главах вы узнали, как отобразить данные в сетке и вручную. В данной главе объясняется...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/22/2012
-ms.topic: article
 ms.assetid: f889fd46-4dac-4ecb-83d8-60e64c22036e
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/data/7-displaying-data-in-a-chart
 msc.type: authoredcontent
-ms.openlocfilehash: 41af8ac4dba0ba5ad478df7075628186a96f48c4
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 161dfa1b2c0676c79baebb00e303e8cb9df1d4e8
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393760"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812585"
 ---
 <a name="displaying-data-in-a-chart-with-aspnet-web-pages-razor"></a>Отображение данных на диаграмме с веб-страниц ASP.NET (Razor)
 ====================

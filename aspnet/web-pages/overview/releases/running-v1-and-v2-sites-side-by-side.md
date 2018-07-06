@@ -4,19 +4,16 @@ title: Под управлением разных версий веб-стран
 author: tfitzmac
 description: В этой статье объясняется, как запуск веб-сайтов ASP.NET Web Pages (Razor) на том же компьютере или сервере, когда веб-сайты настроены для использования разных версий...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/10/2014
-ms.topic: article
 ms.assetid: a861409b-4ae6-4868-9e09-87edfac3535f
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/releases/running-v1-and-v2-sites-side-by-side
 msc.type: authoredcontent
-ms.openlocfilehash: aa2bf41054540cc67b7c0b4669e356e732fed8d1
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 86b1d5babac747eb4fa7ba8abde0e6155c8b17fb
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402461"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810060"
 ---
 <a name="running-different-versions-of-aspnet-web-pages-razor-side-by-side"></a>Рядом друг с другом под управлением разных версий веб-страниц ASP.NET (Razor)
 ====================

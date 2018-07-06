@@ -4,19 +4,16 @@ title: Расширенные сценарии Entity Framework 6 для 5 ве�
 author: tdykstra
 description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/08/2014
-ms.topic: article
 ms.assetid: f35a9b0c-49ef-4cde-b06d-19d1543feb0b
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 43d7dec02a104b2bb29f598c17d252b0476a53f7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 82fe650712d39558668ab02b7cc410ab0540d00f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390492"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836698"
 ---
 <a name="advanced-entity-framework-6-scenarios-for-an-mvc-5-web-application-12-of-12"></a>Сценарии расширенные Entity Framework 6, 5 веб-приложения MVC (12, 12)
 ====================

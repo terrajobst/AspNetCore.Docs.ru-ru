@@ -4,19 +4,16 @@ title: ASP.NET 4 и Visual Studio 2010 Web Общие сведения о раз
 author: rick-anderson
 description: Этот документ содержит обзор многих новых функций для ASP.NET, которые включены в.NET Framework 4 и в Visual Studio 2010.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/10/2010
-ms.topic: article
 ms.assetid: d7729af4-1eda-4ff2-8b61-dbbe4fc11d10
-ms.technology: ''
 msc.legacyurl: /whitepapers/aspnet4
 msc.type: content
-ms.openlocfilehash: 7a75b0c39c923bb500368dbb2304b534d8ed994d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5c7aa95b18bc0a97f42cc981476c110830286fa5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380783"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829047"
 ---
 <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 и Visual Studio 2010 Web Общие сведения о разработке
 ====================

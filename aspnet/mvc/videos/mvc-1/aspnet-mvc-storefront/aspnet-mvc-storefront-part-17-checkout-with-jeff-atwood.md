@@ -4,19 +4,16 @@ title: 'Часть Интернет-магазин на ASP.NET MVC 17: Офор
 author: robconery
 description: В этой серии я готовы регистрации процесс подсчета стоимости покупок и пообщаться с Mr. CodingHorror самостоятельно Джеффа Атвуда. Мы говорим о любые действия, но главным образом обсуждать Ope...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/16/2008
-ms.topic: article
 ms.assetid: a39182f9-a82c-41fa-9be0-92c2291a3a96
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood
 msc.type: video
-ms.openlocfilehash: 3c5acf743757a088b22de63f5882e0b3f425c3c1
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 87755873eb94af416e0e33dd62e41ab383357201
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365163"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805390"
 ---
 <a name="aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood"></a>Часть Интернет-магазин на ASP.NET MVC 17: Оформление заказа с помощью Джеффа Атвуда
 ====================

@@ -4,19 +4,16 @@ title: Сортировка, фильтрация и разбиение по с�
 author: tdykstra
 description: Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/01/2015
-ms.topic: article
 ms.assetid: d5723e46-41fe-4d09-850a-e03b9e285bfa
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 3cd7d5e7ea97dd4defa5e609de70beda7dfccf77
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 231dd6bc9892d855a12289fde681d3f210494af9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37375416"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839717"
 ---
 <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Сортировка, фильтрация и разбиение по страницам с Entity Framework в приложении ASP.NET MVC
 ====================

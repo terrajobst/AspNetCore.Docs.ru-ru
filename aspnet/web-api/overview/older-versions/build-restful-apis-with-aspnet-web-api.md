@@ -4,19 +4,16 @@ title: Создание API-интерфейсов RESTful с помощью в�
 author: rick-anderson
 description: В последние годы стало clear, что HTTP не только для подготовки HTML-страницы. Это также мощную платформу для построения веб-API, с помощью o несколько...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/18/2013
-ms.topic: article
 ms.assetid: 87daa99f-3810-407e-b969-dd28a192959d
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/older-versions/build-restful-apis-with-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 88ac5102a1cf14050412abc336e7a8260a9fa80d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 9866b5f75771c633165587ba04e694f72a1e626c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363524"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835603"
 ---
 <a name="build-restful-apis-with-aspnet-web-api"></a>Создание API-интерфейсов RESTful с помощью веб-API ASP.NET
 ====================

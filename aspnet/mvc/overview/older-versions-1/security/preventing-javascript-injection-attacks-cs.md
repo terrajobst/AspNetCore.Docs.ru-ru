@@ -4,19 +4,16 @@ title: Предотвращение атак путем внедрения ко�
 author: StephenWalther
 description: Предотвратить атаки путем внедрения кода JavaScript и Cross-Site Scripting атаки для вас. В этом руководстве Стивен Вальтер объясняется, как вы можете легко de...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/19/2008
-ms.topic: article
 ms.assetid: d0136da6-81a4-4815-b002-baa84744c09e
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2d307e1034dca4893cd45baf7d54edb7544829e3
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0b0257eaef29c8e538fde92044cbc8cf2abe77f0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381894"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808270"
 ---
 <a name="preventing-javascript-injection-attacks-c"></a>Предотвращение атак путем внедрения кода JavaScript (C#)
 ====================

@@ -4,19 +4,16 @@ title: Распространенные различия в конфигурац
 author: rick-anderson
 description: В предыдущих учебных курсах мы развернули наш веб-сайт, скопировав все необходимые файлы из среды разработки в рабочую среду. Тем не менее я...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/01/2009
-ms.topic: article
 ms.assetid: 721a5c37-7e21-48e0-832e-535c6351dcae
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6c88a74d2135503f310c2822eefc60dd93607f34
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5b3476cdb25a0fc87ce233d7e26de094a0b7b17c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399085"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808912"
 ---
 <a name="common-configuration-differences-between-development-and-production-c"></a>Распространенные различия в конфигурации между средами разработки и производства (C#)
 ====================

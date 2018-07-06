@@ -4,19 +4,16 @@ title: Внедрение зависимостей в ASP.NET MVC 4 | Докум
 author: rick-anderson
 description: 'Примечание: Этот практический семинар предполагается, что у вас есть базовые знания о ASP.NET MVC и ASP.NET MVC 4 фильтры. Если вы не использовали фильтров ASP.NET MVC 4 до, мы rec...'
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/18/2013
-ms.topic: article
 ms.assetid: 84c7baca-1c54-4c44-8f52-4282122d6acb
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: 715444a6fbf491d7b99918294cfd2d0d0216cd09
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 44c8f2055fb62d589e874683cbf43eed87a8c447
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388048"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812348"
 ---
 # <a name="aspnet-mvc-4-dependency-injection"></a>Внедрение зависимостей в ASP.NET MVC 4
 

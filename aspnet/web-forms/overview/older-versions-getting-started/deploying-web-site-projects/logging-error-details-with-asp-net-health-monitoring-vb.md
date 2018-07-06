@@ -4,19 +4,16 @@ title: Записи сведений об ошибках с помощью ASP.N
 author: rick-anderson
 description: Система наблюдения за работоспособностью корпорации Майкрософт предоставляет простой и настраиваемый способ входа различных веб-события, включая необработанных исключений. В этом учебнике должен быть...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/09/2009
-ms.topic: article
 ms.assetid: 09a6c74e-936a-4c04-8547-5bb313a4e4a3
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1ed7b63989dc6ea7e46210a45612e2672a662177
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a19c1dc6ad5b3b45501befded4d8f14f7549b019
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382476"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809927"
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-vb"></a>Сведения об ошибке ведения журнала с помощью ASP.NET Health Monitoring (VB)
 ====================

@@ -4,19 +4,16 @@ title: ASP.NET 4 попаданий экспресс - декларативна�
 author: JoeStagner
 description: В этом видео вы узнаете, как сделать веб-форм маршрутизации декларативно в разметке.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/11/2009
-ms.topic: article
 ms.assetid: bfeb728e-3216-4310-8303-6cdb79255c15
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/net-4/routing/aspnet-4-quick-hit-declarative-webforms-routing
 msc.type: video
-ms.openlocfilehash: eacdb1a2a682ab9fce2f60171188311fdb141e70
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5aca5da2d3b6a5ba92510cd378aeca1be8496c84
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397017"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37833942"
 ---
 <a name="aspnet-4-quick-hit---declarative-webforms-routing"></a>ASP.NET 4 «Быстрый Hit» - декларативная Маршрутизация WebForms
 ====================

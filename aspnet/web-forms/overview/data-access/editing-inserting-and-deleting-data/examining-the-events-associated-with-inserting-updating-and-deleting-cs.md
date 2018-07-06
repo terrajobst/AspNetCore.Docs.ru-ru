@@ -4,19 +4,16 @@ title: Обзор событий, связанных со вставкой, об
 author: rick-anderson
 description: В этом учебном курсе мы рассмотрим использование событий, возникающих до, во время и после вставки обновления или удаления веб-элемента управления данными ASP.NET. КО...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/17/2006
-ms.topic: article
 ms.assetid: dab291a0-a8b5-46fa-9dd8-3d35b249201f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cec25809038cbe6a114b0e36ef7265d84bbe9b92
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 003d71bd05fcc3462b73c9c8c4bc5d63764b82ba
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363304"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836176"
 ---
 <a name="examining-the-events-associated-with-inserting-updating-and-deleting-c"></a>Обзор событий, связанных со вставкой, обновлением и удалением (C#)
 ====================

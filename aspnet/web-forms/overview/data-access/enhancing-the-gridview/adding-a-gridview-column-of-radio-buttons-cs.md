@@ -4,19 +4,16 @@ title: Добавление столбца GridView переключателей
 author: rick-anderson
 description: Этот учебник рассказывает, как для добавления столбца кнопок-переключателей для элемента управления GridView для предоставления пользователю более интуитивно понятный способ выбора одной строки...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/06/2007
-ms.topic: article
 ms.assetid: 32377145-ec25-4715-8370-a1c590a331d5
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-radio-buttons-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1e1691b3c0c5fb576f25b84e8f4d7125a8d0c698
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 83e7a938d9860b8f31cb391e07497def8854310f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366920"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37811838"
 ---
 <a name="adding-a-gridview-column-of-radio-buttons-c"></a>Добавление столбца GridView переключателей (C#)
 ====================

@@ -4,19 +4,16 @@ title: '[Инструкции] Использовать элемент упра�
 author: JoeStagner
 description: В этом видео демонстрируются основные принципы управления вкладки из ASP.NET AJAX Control Toolkit, с помощью которого можно создать набор вкладок для организации содержимого на...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/01/2007
-ms.topic: article
 ms.assetid: f85fcce9-a897-4f43-b12f-5c6f5f2733cd
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-tabs-control
 msc.type: video
-ms.openlocfilehash: 049320f4981563a846b319fa1e7017be5098d2ac
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 23fa24c15f6aafaecb22aa7a44ea2b2659640f20
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398965"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807250"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-tabs-control"></a>[Инструкции] Использовать элемент управления Tabs ASP.NET AJAX?
 ====================

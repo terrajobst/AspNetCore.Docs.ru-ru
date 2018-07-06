@@ -4,19 +4,16 @@ title: Общие сведения о фильтрах действий (C#) | �
 author: microsoft
 description: Цель данного руководства — объяснить фильтров действий. Фильтр операции — атрибут, который можно применить к действию контроллера--или всего контроллера...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/16/2008
-ms.topic: article
 ms.assetid: a94e4e81-40c1-47b7-8613-126a1a6cc93d
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b1294eb61164d9f5c71152a542daa673de37f4ca
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: aaec90a14e53f0173ea09fbdbaa591ec0eb680b1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398236"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810167"
 ---
 <a name="understanding-action-filters-c"></a>Общие сведения о фильтрах действий (C#)
 ====================

@@ -4,19 +4,16 @@ title: Модульное тестирование ASP.NET Web API 2 | Доку�
 author: tfitzmac
 description: Это руководство и приложение демонстрируется создание простого модульных тестов для приложения веб-API 2. Этом руководстве показано, как включать proj модульного теста...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/05/2014
-ms.topic: article
 ms.assetid: bf20f78d-ff91-48be-abd1-88e23dcc70ba
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: da56b38809faf760b7c390eb76ac9c4556d635c6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 701ced855ff2848182fdbf8d4b9e2bcf0c33341b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37376178"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37806219"
 ---
 <a name="unit-testing-aspnet-web-api-2"></a>Модульное тестирование ASP.NET Web API 2
 ====================

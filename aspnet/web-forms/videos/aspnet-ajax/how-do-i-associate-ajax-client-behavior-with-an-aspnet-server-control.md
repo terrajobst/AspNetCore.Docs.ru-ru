@@ -4,19 +4,16 @@ title: '[Инструкции] Связывание клиентского по�
 author: rick-anderson
 description: Узнайте, как создать поведение клиента на основе Microsoft AJAX, которые могут быть связаны с серверным элементом управления ASP.NET на страницу ASPX. Поведение клиента e...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/18/2007
-ms.topic: article
 ms.assetid: 3a75ac02-225d-4e30-8669-0156c3ef06c7
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-associate-ajax-client-behavior-with-an-aspnet-server-control
 msc.type: video
-ms.openlocfilehash: 16d7ab6d7531ce5f775d8e966847a5a42902c965
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 00d45c3dcf9092dbb51b7e162c2b9fb190090c5d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392101"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37816006"
 ---
 <a name="how-do-i-associate-ajax-client-behavior-with-an-aspnet-server-control"></a>[Инструкции] Связывание клиентского поведения AJAX с помощью элемента управления сервера ASP.NET?
 ====================

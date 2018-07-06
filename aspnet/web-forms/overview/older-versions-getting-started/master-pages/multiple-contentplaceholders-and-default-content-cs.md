@@ -4,19 +4,16 @@ title: Несколько элементов управления ContentPlaceHo
 author: rick-anderson
 description: Проверяет, как добавить несколько содержимого заполнители на главную страницу, а также как указать содержимое по умолчанию содержимого заполнители.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/21/2008
-ms.topic: article
 ms.assetid: b9b9798b-027d-46cc-9636-473378e437ac
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/multiple-contentplaceholders-and-default-content-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 19c9d03d9aacdf842fb12bd16c83859ec4299d68
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8e3a9146b22557691899bbfe299bc44682d1efae
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390096"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804162"
 ---
 <a name="multiple-contentplaceholders-and-default-content-c"></a>Несколько элементов управления ContentPlaceHolder и содержимое по умолчанию (C#)
 ====================

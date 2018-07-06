@@ -4,19 +4,16 @@ title: Анимация в зависимости от условия (VB) | Д�
 author: wenz
 description: Отображается этот элемент управления в ASP.NET AJAX Control Toolkit не только элемент управления, но всю платформу для добавления анимации в элемент управления. Является ли анимация...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 1b87d8d6-b3f7-4126-b51c-d41442fbf947
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animation-depending-on-a-condition-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 160b53519382c215db039fd6297bb907688b81c1
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4b815d7000d94ceec8864b29f0dddf0171344de1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368561"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836292"
 ---
 <a name="animation-depending-on-a-condition-vb"></a>Анимация в зависимости от условия (VB)
 ====================

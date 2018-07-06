@@ -4,19 +4,16 @@ title: Файлы cookie HTTP в веб-API ASP.NET | Документация �
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/17/2012
-ms.topic: article
 ms.assetid: 243db2ec-8f67-4a5e-a382-4ddcec4b4164
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/advanced/http-cookies
 msc.type: authoredcontent
-ms.openlocfilehash: 5885586df1d0f67d4e7e04ad88bc4fd1af71dc80
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 21ba186c11f39bbeedd1c320b98476ba13af27e2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368409"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819164"
 ---
 <a name="http-cookies-in-aspnet-web-api"></a>Файлы cookie HTTP в веб-API ASP.NET
 ====================

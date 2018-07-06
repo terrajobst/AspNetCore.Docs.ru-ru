@@ -4,19 +4,16 @@ title: 'Интернет-магазин на ASP.NET MVC, часть 19a: пос
 author: robconery
 description: В этой серии я последующего действия, с дополнительными сведениями об использовании рабочего процесса Windows, и я коснусь ряда обратной связи, выводится сообщение с эпизод 19.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/16/2008
-ms.topic: article
 ms.assetid: 50ed58f9-f329-45a8-b8be-675040172072
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19a-windows-workflow-followup
 msc.type: video
-ms.openlocfilehash: 7fad09f3361893017bc9f66e4eb2fcbd363db9ef
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 19fd03147a4626bf092811ea22b4cdf9125e565d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363880"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840382"
 ---
 <a name="aspnet-mvc-storefront-part-19a-windows-workflow-followup"></a>Интернет-магазин на ASP.NET MVC, часть 19a: последующего действия рабочего процесса Windows
 ====================

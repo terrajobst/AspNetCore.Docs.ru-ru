@@ -4,19 +4,16 @@ title: Создание основных ASP.NET 4.5 веб страницы ф�
 author: Erikre
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/03/2014
-ms.topic: article
 ms.assetid: a2f1c635-0817-4a9a-8c13-d5b5d29727c0
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/getting-started/creating-a-basic-web-forms-page
 msc.type: authoredcontent
-ms.openlocfilehash: c2051b166b8800654a107c5100ad5ed94af93407
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 9646aaf6d5ea13b062dbb979b0f1c759716eb7ab
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394457"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842893"
 ---
 <a name="creating-a-basic-aspnet-45-web-forms-page-in-visual-studio-2013"></a>Создание основных ASP.NET 4.5 веб страницы форм в Visual Studio 2013
 ====================

@@ -4,19 +4,16 @@ title: Включение трассировки SignalR | Документац�
 author: tfitzmac
 description: В этом документе описывается, как включить и настроить трассировку для SignalR серверов и клиентов. Трассировка позволяет просмотреть диагностические сведения о событиях...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/08/2014
-ms.topic: article
 ms.assetid: 30060acb-be3e-4347-996f-3870f0c37829
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/testing-and-debugging/enabling-signalr-tracing
 msc.type: authoredcontent
-ms.openlocfilehash: 7f7401814e8ca9e61e62a3ebf993b03f92570984
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3bc8e4c81a6efa1b02d2b3e633ddb92c8ff6c2e3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373247"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809201"
 ---
 <a name="enabling-signalr-tracing"></a>Включение трассировки SignalR
 ====================

@@ -4,19 +4,16 @@ title: Функции Visual Studio 2013 Web редактор - HTML5 | Доку
 author: shanselman
 description: Скотт Хансельман обзоры функций HTML5 в Visual Studio веб-средств разработчика.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/17/2013
-ms.topic: article
 ms.assetid: ac477784-74e8-4ff9-8150-4b827d95774c
-ms.technology: ''
 msc.legacyurl: /visual-studio/overview/2013/visual-studio-2013-web-editor-features-html5
 msc.type: video
-ms.openlocfilehash: 4ab86526c5f37db902d22f2ddd346737c9c1c1a6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b62a68f633e6cc71651ce36c6c3e8c642a444e17
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381768"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829426"
 ---
 <a name="visual-studio-2013-web-editor-features---html5"></a>Функции Visual Studio 2013 Web редактор - HTML5
 ====================

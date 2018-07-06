@@ -4,19 +4,16 @@ title: MVC2. кодировка Html | Документация Майкросо
 author: microsoft
 description: В этом видео вы узнаете, как использовать новый упрощенный синтаксис HTML-кодирования в ASP.NET для обеспечения защиты от внедрение скриптов, а также использовать MvcHtmlString при...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/23/2010
-ms.topic: article
 ms.assetid: d8d2d4fc-780a-48bb-82f1-4125cce03b2a
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/mvc2-html-encoding
 msc.type: video
-ms.openlocfilehash: d2d16fd298bc8c94074114bcb8124c7ca60e1b26
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 44f2341a04948167bca6272367af037d335d318a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398169"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37834919"
 ---
 <a name="mvc2---html-encoding"></a>MVC2. кодировка Html
 ====================

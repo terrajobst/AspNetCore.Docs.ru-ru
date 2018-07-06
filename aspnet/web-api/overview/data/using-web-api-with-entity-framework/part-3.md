@@ -4,19 +4,16 @@ title: Использовать Code First Migrations заполнить баз�
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/16/2014
-ms.topic: article
 ms.assetid: 76e2013a-65b7-488c-834d-9448ecea378e
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 0d753ea52c57af2cbffff9e1e8741bbe49bc6d7b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bce662110fa63a9aee8e23e7b9fcc9ba9a8d2857
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370530"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805461"
 ---
 <a name="use-code-first-migrations-to-seed-the-database"></a>Использовать Code First Migrations заполнить базу данных
 ====================

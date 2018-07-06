@@ -4,19 +4,16 @@ title: Введение в программирование веб-ASP.NET с и
 author: tfitzmac
 description: В этой главе дает Общие сведения о программировании с помощью веб-страниц ASP.NET с использованием синтаксиса Razor. ASP.NET — технология Майкрософт для выполнения динамических веб-pa...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/07/2014
-ms.topic: article
 ms.assetid: aa67d304-583b-4bf8-a231-195656cfb587
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-c
 msc.type: authoredcontent
-ms.openlocfilehash: 6e0af63ffab5ce1a4d582cbe1e9456da20df2b64
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 22985b71d39d93b8ad42ee923b872846f2fafa99
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363407"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814305"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-c"></a>Введение в программирование веб-ASP.NET с использованием синтаксиса Razor (C#)
 ====================

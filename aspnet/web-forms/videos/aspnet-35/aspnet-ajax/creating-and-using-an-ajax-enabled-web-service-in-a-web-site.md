@@ -4,19 +4,16 @@ title: Создание и использование поддерживающи
 author: rick-anderson
 description: Visual Studio 2008 позволяет создавать пользовательские веб-служб ASP.NET, к которым можно обращаться из клиентского сценария. В этом пошаговом руководстве демонстрируется создание го...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/15/2007
-ms.topic: article
 ms.assetid: bfccf680-efc7-400e-ac16-104e288cd430
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-35/aspnet-ajax/creating-and-using-an-ajax-enabled-web-service-in-a-web-site
 msc.type: video
-ms.openlocfilehash: 354f2691f46841a7e278eac34e63b1a6dedcde66
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 99bc453a81a96d68071e89564dcd393b07557c27
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398868"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842867"
 ---
 <a name="creating-and-using-an-ajax-enabled-web-service-in-a-web-site"></a>Создание и использование поддерживающих AJAX веб-службы для веб-сайта
 ====================

@@ -4,19 +4,16 @@ title: Привязка данных к Accordion (VB) | Документаци�
 author: wenz
 description: Элемент управления Accordion в AJAX Control Toolkit предоставляет несколько областей и пользователь может одновременно отобразить один из них. Панели обычно объявляются w...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: b19f0875-7d3e-4ecf-baa1-a0c693c765b3
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/accordion/databinding-to-an-accordion-vb
 msc.type: authoredcontent
-ms.openlocfilehash: bc11aa96577919c2ca5dfca4ffc6301da67645ea
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e21eeacf776111656eb539b1fef8203db1b761c7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377432"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805892"
 ---
 <a name="databinding-to-an-accordion-vb"></a>Привязка данных к Accordion (VB)
 ====================

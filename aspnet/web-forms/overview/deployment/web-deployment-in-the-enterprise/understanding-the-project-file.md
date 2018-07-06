@@ -4,19 +4,16 @@ title: Общие сведения о файле проекта | Докумен
 author: jrjlee
 description: Файлы проекта Microsoft Build Engine (MSBuild) лежат в основе процесса построения и развертывания. Этот раздел начинается с концептуальный обзор MSBuild...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 07978d9d-341c-4524-bcba-62976f390f77
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file
 msc.type: authoredcontent
-ms.openlocfilehash: 89c5c7906ccfc453195b788cbc6393dc74cda1fb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7e117459f5953be7bac53267700dfb9f69802aec
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377208"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836847"
 ---
 <a name="understanding-the-project-file"></a>Общие сведения о файле проекта
 ====================

@@ -4,19 +4,16 @@ title: Использование полей TemplateField в элементе �
 author: rick-anderson
 description: Для обеспечения гибкости GridView предлагает TemplateField, на которой отображается с помощью шаблона. Шаблон может быть смесь статического кода HTML, веб-элементы управления, и...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: a92cd6ed-609a-4e40-ad23-004b54afd436
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-gridview-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 845b5b07849420f03e60a9eb243f07641253540f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 411a3a2e4067d0e9b41143d85ddfb9b1031fd684
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396512"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829169"
 ---
 <a name="using-templatefields-in-the-gridview-control-vb"></a>Использование полей TemplateField в элементе управления GridView (VB)
 ====================

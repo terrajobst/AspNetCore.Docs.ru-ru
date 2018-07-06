@@ -4,19 +4,16 @@ title: Профилирование и отладка приложения ASP.N
 author: Rick-Anderson
 description: Glimpse — бурно и семейству пакетов NuGet с открытым кодом, предоставляющий подробные сведения о производительности, отладку и диагностических сведений для ASP.NET...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/26/2015
-ms.topic: article
 ms.assetid: c205805f-efdd-4fa7-9616-f26eab180611
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
 msc.type: authoredcontent
-ms.openlocfilehash: ef65b512645d3f013ea34d3557da93254425c419
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4d044217d6c33594b39747a765165b8702338027
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391074"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808545"
 ---
 <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a>Профилирование и отладка приложения ASP.NET MVC с помощью Glimpse
 ====================

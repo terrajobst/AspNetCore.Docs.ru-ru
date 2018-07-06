@@ -4,19 +4,16 @@ title: Веб-страницы ASP.NET (Razor) краткий справочни
 author: tfitzmac
 description: Эта страница содержит список с краткие примеры наиболее часто используемые объекты, свойства и методы для программирования веб-страниц ASP.NET с синтаксисом Razor.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/10/2014
-ms.topic: article
 ms.assetid: 4001cb9b-3bfd-4ace-8a89-1561d8421e2c
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/api-reference/asp-net-web-pages-api-reference
 msc.type: authoredcontent
-ms.openlocfilehash: 3bf706cefe5302cf1085e0f814dc6654e42ae917
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5fb5b8d29fce25fb36704a58b673f5f3bd582873
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378667"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836772"
 ---
 <a name="aspnet-web-pages-razor-api-quick-reference"></a>Веб-страницы ASP.NET (Razor) краткий справочник по API
 ====================

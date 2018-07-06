@@ -5,19 +5,16 @@ author: guardrex
 description: Описывается установка и использование счетчиков производительности SignalR в веб-роли Azure.
 keywords: Счетчик ASP.NET,SignalR,Performance, веб-роли azure
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/11/2017
-ms.topic: article
 ms.assetid: 2a127d3b-21ed-4cc9-bec0-cdab4e742a25
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/performance/using-signalr-performance-counters-in-an-azure-web-role
 msc.type: authoredcontent
-ms.openlocfilehash: ffc8033ca58a3ff559eacdd1cd14e77bfc692a31
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b082e4052efa468543e7c2d92e4795234941beeb
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378048"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840080"
 ---
 # <a name="using-signalr-performance-counters-in-an-azure-web-role"></a>Использование счетчиков производительности SignalR в веб-роли Azure
 

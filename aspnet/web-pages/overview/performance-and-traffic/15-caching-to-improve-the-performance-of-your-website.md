@@ -4,19 +4,16 @@ title: Кэширование данных в веб-ASP.NET страниц уз
 author: tfitzmac
 description: Можно ускорить веб-сайта, унаследовав его хранения — то есть кэш — результаты, обычно бы много времени получения и обработки данных...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/14/2014
-ms.topic: article
 ms.assetid: 961e525b-7700-469e-8a68-d7010b6fb68c
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/performance-and-traffic/15-caching-to-improve-the-performance-of-your-website
 msc.type: authoredcontent
-ms.openlocfilehash: 4134c80d7eed4752c90a06aab796a0fd8c2a9782
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 28be9194bbd95e896311700ddcf89379a82ee636
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37383413"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805208"
 ---
 <a name="caching-data-in-an-aspnet-web-pages-razor-site-for-better-performance"></a>Кэширование данных на сайте ASP.NET Web Pages (Razor) для повышения производительности
 ====================

@@ -4,19 +4,16 @@ title: Основные сведения о частичных обновлен�
 author: scottcate
 description: Возможно самой заметной функцией расширения AJAX для ASP.NET является возможность выполнить на странице частичной или добавочной обновления, не выполняя полную обратную передачу t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/28/2008
-ms.topic: article
 ms.assetid: 54d9df99-1161-4899-b4e8-2679c85915e7
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-partial-page-updates-with-asp-net-ajax
 msc.type: authoredcontent
-ms.openlocfilehash: 3b3c53f046933f71ada23f13eba99b720b2e51ea
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8ec4df5ffeaab4490eaea0f0093d543d517bd5f4
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366797"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805276"
 ---
 <a name="understanding-partial-page-updates-with-aspnet-ajax"></a>Основные сведения о частичных обновлениях страниц с помощью ASP.NET AJAX
 ====================

@@ -4,19 +4,16 @@ title: Практическое использование проверки ат
 author: JoeStagner
 description: В этом видео будет внести изменение разделяемые классы в уровне доступа к данным динамических данных приложения и приступить к работе с помощью атрибутов, фокусировки o...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/23/2008
-ms.topic: article
 ms.assetid: dcaaaa8d-7dbd-4f5f-be2a-226c2517872a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-to-use-attribute-validation-in-aspnet-dynamic-data-applications
 msc.type: video
-ms.openlocfilehash: ac668078772fbef243bfbcb3bdb96a4d55a30d08
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 601d8a2749e319ba6fe3a112ac82576f4f3d92f0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385193"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831778"
 ---
 <a name="how-to-use-attribute-validation-in-aspnet-dynamic-data-applications"></a>Практическое использование проверки атрибутов в приложениях ASP.NET Dynamic Data
 ====================

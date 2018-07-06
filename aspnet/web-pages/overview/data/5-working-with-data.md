@@ -4,19 +4,16 @@ title: Введение в работу с базой данных в ASP.NET We
 author: tfitzmac
 description: В этой главе описывается, как для доступа к данным из базы данных и отображения его с помощью веб-страниц ASP.NET.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/18/2014
-ms.topic: article
 ms.assetid: 673d502f-2c16-4a6f-bb63-dbfd9a77ef47
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/data/5-working-with-data
 msc.type: authoredcontent
-ms.openlocfilehash: 1ee2f680d6088ad786022b3c590c33e4e25e04db
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5185769530cf78c301f2ac43b25dba6e77ca75a2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363362"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808510"
 ---
 <a name="introduction-to-working-with-a-database-in-aspnet-web-pages-razor-sites"></a>Введение в работу с базой данных в ASP.NET Web Pages (Razor) узлов
 ====================

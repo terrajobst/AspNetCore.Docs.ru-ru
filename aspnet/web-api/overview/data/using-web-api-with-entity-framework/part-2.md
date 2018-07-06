@@ -4,19 +4,16 @@ title: Добавление моделей и контроллеров | Док�
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/16/2014
-ms.topic: article
 ms.assetid: 88908ff8-51a9-40eb-931c-a8139128b680
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-2
 msc.type: authoredcontent
-ms.openlocfilehash: f127f239bcc665f71976bb34f6d3387f8e0b72a7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 31e0fbf65c74a18677588cfa412dc34f7b25f78f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393154"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37806362"
 ---
 <a name="add-models-and-controllers"></a>Добавление моделей и контроллеров
 ====================

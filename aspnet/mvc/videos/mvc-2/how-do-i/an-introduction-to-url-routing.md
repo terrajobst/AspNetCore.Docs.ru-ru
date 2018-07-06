@@ -4,19 +4,16 @@ title: Общие сведения о маршрутизации URL-адрес�
 author: StephenWalther
 description: В этом руководстве описано Стивен Вальтер демонстрирует, как браузер запросы get сопоставляются действий контроллера посредством маршрутизации URL-адресов. Вы также научитесь создавать cust...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/20/2008
-ms.topic: article
 ms.assetid: ad0f4d26-6366-4464-968f-a24a380e6dc6
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/an-introduction-to-url-routing
 msc.type: video
-ms.openlocfilehash: 3b5c9a5db8e6886a0b319b5c4b65aef6e946dc97
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f239bc6e781cf45090e16a197ff5adf9849f6f92
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366178"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839058"
 ---
 <a name="an-introduction-to-url-routing"></a>Общие сведения о маршрутизации URL-адресов
 ====================

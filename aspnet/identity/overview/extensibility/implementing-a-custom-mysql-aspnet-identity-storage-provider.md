@@ -4,19 +4,16 @@ title: Реализация поставщика хранилища MySQL пол
 author: raquelsa
 description: ASP.NET Identity является расширяемой системой, что дает возможность создать собственный поставщик хранилища и подключить его к приложению без переработки приложения...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/22/2015
-ms.topic: article
 ms.assetid: 248f5fe7-39ba-40ea-ab1e-71a69b0bd649
-ms.technology: ''
 msc.legacyurl: /identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
 msc.type: authoredcontent
-ms.openlocfilehash: 44c21b749377c5df445a20deee3f1b689c7c84c0
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e5784991a95dcff0db38d87707bc83555da716df
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381131"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805679"
 ---
 <a name="implementing-a-custom-mysql-aspnet-identity-storage-provider"></a>Реализация поставщика хранилища MySQL пользовательских ASP.NET Identity
 ====================

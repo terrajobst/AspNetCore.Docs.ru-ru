@@ -4,19 +4,16 @@ title: '[Инструкции] Создание расширения ASP.NET AJA
 author: rick-anderson
 description: Сведения о создании расширитель ASP.NET AJAX для стандартного элемента управления сервера ASP.NET. Мы показано, как добавлять свойства серверных и клиентских сценариев JavaScript...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/01/2007
-ms.topic: article
 ms.assetid: 526b4ec1-4a80-4fae-bf0d-af5cb78f5d02
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-create-an-aspnet-ajax-extender-from-scratch
 msc.type: video
-ms.openlocfilehash: b759c7a9924e633679d91e7a38e7db7e470f23a2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4e82ac4351e7af361140d38f79fb3a1bfde5834a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382427"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810073"
 ---
 <a name="how-do-i-create-an-aspnet-ajax-extender-from-scratch"></a>[Инструкции] Создание расширения ASP.NET AJAX с нуля?
 ====================

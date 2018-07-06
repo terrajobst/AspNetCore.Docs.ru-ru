@@ -4,19 +4,16 @@ title: Устойчивость подключения ASP.NET Web Forms и пе
 author: Erikre
 description: Это руководство содержит инструкции изменить пример приложения для поддержки устойчивость подключений и перехват команд.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2014
-ms.topic: article
 ms.assetid: 6d497001-fa80-4765-b4cc-181fe90b894e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/advanced/aspnet-web-forms-connection-resiliency-and-command-interception
 msc.type: authoredcontent
-ms.openlocfilehash: 8b8f592c4e79cf9dbe1255c93fac2fe18f1d9409
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9a66b297608a5a8cd536b9af2a9ae4bb600a6bbb
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368325"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807093"
 ---
 <a name="aspnet-web-forms-connection-resiliency-and-command-interception"></a>Устойчивость подключения ASP.NET Web Forms и перехват команд
 ====================

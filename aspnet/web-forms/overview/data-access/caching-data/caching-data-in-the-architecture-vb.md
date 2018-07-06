@@ -4,19 +4,16 @@ title: Кэширование данных в архитектуре (Visual Bas
 author: rick-anderson
 description: В предыдущем учебном курсе мы показали, как для применения кэширования на уровне представления. В этом руководстве мы узнаем, как пользоваться преимуществами наших многоуровневой архитектуре систем обеспечения...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/30/2007
-ms.topic: article
 ms.assetid: 5e189dd7-f4f9-4f28-9b3a-6cb7d392e9c7
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-in-the-architecture-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7776fb01d31d9f84e57de2d5d899726b52c26d19
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a8431c2b516a1a41f1d096b1bdb1071cc8a5ab66
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402013"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835384"
 ---
 <a name="caching-data-in-the-architecture-vb"></a>Кэширование данных в архитектуре (VB)
 ====================

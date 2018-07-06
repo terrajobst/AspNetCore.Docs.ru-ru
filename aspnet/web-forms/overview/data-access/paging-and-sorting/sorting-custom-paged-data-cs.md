@@ -4,19 +4,16 @@ title: Упорядочение нестандартно разбитых по �
 author: rick-anderson
 description: В предыдущем учебном курсе мы показали, как реализовать пользовательское разбиение по страницам при представлении данных на веб-страницы. В этом руководстве показано, как расширить предшествующий...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/15/2006
-ms.topic: article
 ms.assetid: 778baa4e-4af8-4665-947e-7a01d1a4dff2
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/sorting-custom-paged-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 36080799c94b359a7e5b7ba6ccb47e359fc2161d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8057b11f9d2d812b9b2bf8d9e016ed17cff4e2f2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362801"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37816750"
 ---
 <a name="sorting-custom-paged-data-c"></a>Упорядочение нестандартно разбитых по страницам данных (C#)
 ====================

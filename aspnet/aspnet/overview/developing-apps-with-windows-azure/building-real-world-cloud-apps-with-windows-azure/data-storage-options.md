@@ -4,19 +4,16 @@ title: Варианты хранения данных (Создание реал
 author: MikeWasson
 description: Создание реальных облачных приложений в условиях электронная книга основана на презентацию, разработанная Скоттом Гатри. Здесь объясняется, 13 шаблонов и практических рекомендаций, которые он может...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/12/2014
-ms.topic: article
 ms.assetid: e51fcecb-cb33-4f9e-8428-6d2b3d0fe1bf
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
 msc.type: authoredcontent
-ms.openlocfilehash: 43e7a03f3bebcca820452ea10e13459d8d275b5a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 16388bf00c291ee21eec7bc72a9c01c33cec9371
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363511"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820338"
 ---
 <a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a>Варианты хранения данных (Создание реальных облачных приложений в Azure)
 ====================

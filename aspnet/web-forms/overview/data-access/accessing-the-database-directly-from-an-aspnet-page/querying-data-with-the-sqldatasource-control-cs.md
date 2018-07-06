@@ -4,19 +4,16 @@ title: Запрос данных с помощью элемента управл
 author: rick-anderson
 description: В предшествующих учебных курсах мы использовали элемент управления ObjectDataSource для полностью отделить слой представления от слоя доступа к данным. Начиная с этого учебного...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2007
-ms.topic: article
 ms.assetid: 60512d6a-b572-4b7a-beb3-3e44b4d2020c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0bde7d76db2da71b3f12fc9ead2baa4b2028206d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6b9ca474b7a085302d287a223c08abe2fa5336b0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37369813"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815295"
 ---
 <a name="querying-data-with-the-sqldatasource-control-c"></a>Запрос данных с помощью элемента управления SqlDataSource (C#)
 ====================

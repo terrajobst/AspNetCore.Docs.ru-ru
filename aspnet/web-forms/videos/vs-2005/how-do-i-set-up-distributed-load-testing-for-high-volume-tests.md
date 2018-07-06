@@ -4,19 +4,16 @@ title: '[Инструкции] Настройка распределенного
 author: rick-anderson
 description: Visual Studio Team System позволяет настраивать нагрузки странами тестирования путем создания теста «оборудование», которое состоит из контроллера на один удаленный компьютер и нескольк...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/09/2007
-ms.topic: article
 ms.assetid: d5c42efc-1457-4e75-87e8-5b41c9ee8a80
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-set-up-distributed-load-testing-for-high-volume-tests
 msc.type: video
-ms.openlocfilehash: fccd22161eb45abf49dfe194e86c7956a7d80a88
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6afccdf517da82852f1bdb4398e56e20656d4f35
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37372628"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37821516"
 ---
 <a name="how-do-i-set-up-distributed-load-testing-for-high-volume-tests"></a>[Инструкции] Настройка распределенного нагрузочного тестирования для тестов большого объема?
 ====================

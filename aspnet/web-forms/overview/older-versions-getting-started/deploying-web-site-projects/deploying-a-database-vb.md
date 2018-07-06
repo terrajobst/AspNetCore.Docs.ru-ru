@@ -4,19 +4,16 @@ title: Развертывание базы данных (Visual Basic) | Док�
 author: rick-anderson
 description: Развертывание веб-приложения ASP.NET влечет за собой, получение необходимые файлы и ресурсы из среды разработки в рабочую среду. Для da...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/23/2009
-ms.topic: article
 ms.assetid: 96ac3e69-04c7-4917-ad06-5f8968c3fbf1
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3dc5e9b4e189929b2b898b997b7577a623bdc8a7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: c49b963cb5cfc40d8a0b03eb3ca722e3b789eab2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381326"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836279"
 ---
 <a name="deploying-a-database-vb"></a>Развертывание базы данных (VB)
 ====================

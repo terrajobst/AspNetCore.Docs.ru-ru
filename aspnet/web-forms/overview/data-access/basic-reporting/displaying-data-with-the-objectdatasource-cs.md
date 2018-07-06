@@ -4,19 +4,16 @@ title: Отображение данных с помощью ObjectDataSource (C
 author: rick-anderson
 description: В этом учебнике рассматривается в элемент управления ObjectDataSource, с помощью этого элемента управления, можно привязать данные, полученные из BLL, созданные в предыдущем учебном курсе без havi...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: af882aef-56f5-4e9a-8f95-3977fde20e74
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7d4d292104703f9aebf131035920a058317011af
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f10745eee9f6ac04e670d710a4ac999c9ddda50b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395390"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814929"
 ---
 <a name="displaying-data-with-the-objectdatasource-c"></a>Отображение данных с помощью ObjectDataSource (C#)
 ====================

@@ -4,19 +4,16 @@ title: Масштабирование SignalR с помощью SQL Server | Д�
 author: MikeWasson
 description: Версии программного обеспечения используется в этом разделе 4.5 .NET SignalR для Visual Studio 2013 версии 2, предыдущие версии в этом разделе сведения о более ранних версиях...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/10/2014
-ms.topic: article
 ms.assetid: 98358b6e-9139-4239-ba3a-2d7dd74dd664
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/performance/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: a105d4f3e9fc366eeec2dc42dd0eb73946432fc3
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fb21bee1737c5783d47abd2642af2c613b5d087b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391477"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810215"
 ---
 <a name="signalr-scaleout-with-sql-server"></a>Масштабирование SignalR с помощью SQL Server
 ====================

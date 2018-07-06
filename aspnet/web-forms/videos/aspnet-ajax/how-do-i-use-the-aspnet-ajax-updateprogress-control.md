@@ -4,19 +4,16 @@ title: '[Инструкции] Использовать элемент упра�
 author: JoeStagner
 description: В приложении AJAX обычно имеется заметное паузы между временем браузер выполняет сетевой запрос и время, обозреватель получает ответ. Т...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/20/2007
-ms.topic: article
 ms.assetid: fadc5c5a-e481-4472-b339-715cc036dc4e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-use-the-aspnet-ajax-updateprogress-control
 msc.type: video
-ms.openlocfilehash: b7a5f74041c849251273c4864f5c03ab1af24e59
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f4dcf89da332c303c5bb8e3c1093a9a2b8b68c34
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387368"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808159"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-updateprogress-control"></a>[Инструкции] Использовать элемент управления UpdateProgress ASP.NET AJAX?
 ====================

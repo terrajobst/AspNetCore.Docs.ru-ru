@@ -4,19 +4,16 @@ title: Сортировка, разбиение по страницам и фи�
 author: tfitzmac
 description: В этой серии руководств показано основными аспектами с помощью привязки модели с проектом веб-форм ASP.NET. Привязка модели позволяет взаимодействие с данными более прямой-...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/27/2014
-ms.topic: article
 ms.assetid: 266e7866-e327-4687-b29d-627a0925e87d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/sorting-paging-and-filtering-data
 msc.type: authoredcontent
-ms.openlocfilehash: 7529c811e6196327094f8f735de1bd65be76ee3a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ded398bcbbb8d7d9e5c882a598bf9d6faa6ea81e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398311"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37833880"
 ---
 <a name="sorting-paging-and-filtering-data-with-model-binding-and-web-forms"></a>Сортировка, разбиение по страницам и фильтрация данных с помощью привязки модели и веб-форм
 ====================

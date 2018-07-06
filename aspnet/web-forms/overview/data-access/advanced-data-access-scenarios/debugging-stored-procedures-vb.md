@@ -4,19 +4,16 @@ title: Отладка хранимых процедур (Visual Basic) | Док�
 author: rick-anderson
 description: Выпуски Visual Studio Professional и Team System позволяют задавать точки останова и будут хранимых процедур в SQL Server, упрощая отладку хранимых...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/03/2007
-ms.topic: article
 ms.assetid: 9ed8ccb5-5f31-4eb4-976d-cabf4b45ca09
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 67714284c44c7bc9b06dc599601e116b83017e3e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a4a507205ff8e837f64e01acf84f6376006a87b9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402009"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37806655"
 ---
 <a name="debugging-stored-procedures-vb"></a>Отладка хранимых процедур (Visual Basic)
 ====================

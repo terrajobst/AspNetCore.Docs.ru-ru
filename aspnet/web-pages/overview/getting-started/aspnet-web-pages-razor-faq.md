@@ -4,19 +4,16 @@ title: Веб-страницы ASP.NET (Razor) часто задаваемые �
 author: tfitzmac
 description: В этой статье перечислены некоторые часто задаваемые вопросы о веб-страниц ASP.NET (Razor) и WebMatrix. Версии программного обеспечения, используемые в учебника по ASP.NET Web Pages (R...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/07/2014
-ms.topic: article
 ms.assetid: b137bd04-25e1-47cb-9d96-ef2e179ecf1f
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/aspnet-web-pages-razor-faq
 msc.type: authoredcontent
-ms.openlocfilehash: 9546a5639da6baeadf9f01dfbe7da59d3dc4d6c6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1f97056c952757ea2d009eaca57d904791e80ca3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374760"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814240"
 ---
 <a name="aspnet-web-pages-razor-faq"></a>Веб-страницы ASP.NET (Razor) часто задаваемые вопросы
 ====================

@@ -4,19 +4,16 @@ title: 'Часть 7: Добавление функций | Документац
 author: JoeStagner
 description: В этой серии руководств описаны все действия, предпринимаемые для создайте пример приложения Tailspin Spyworks. Часть 7 добавляет дополнительные функции, например росмотреть учетной записи...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/21/2010
-ms.topic: article
 ms.assetid: 50223ee9-11b9-4cf3-bca2-e2f10bf471f3
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 8cdde10981835877e5ac2f65860010920a68d0a2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 47402ccdfb702dc1bb1bdb4e634a7cd6f5ebc235
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389180"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831652"
 ---
 <a name="part-7-adding-features"></a>Часть 7: Добавление функций
 ====================

@@ -4,19 +4,16 @@ title: Создайте свое первое приложение ASP.NET с п
 author: lmoroney
 description: Лоуренс Морони корпорации Майкрософт показано, как создать первое приложение ASP.NET с помощью ASP.NET MVC.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/09/2010
-ms.topic: article
 ms.assetid: a4daa181-8da2-4883-998e-d08f34259b1f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/build-your-first-asp-net-application-with-asp-net-mvc
 msc.type: video
-ms.openlocfilehash: 1b5960bd177af8d9fa9f518e3cf8dceb0b86871d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b270622be982e8fc550230cecefc599a1ac768dd
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391904"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37811063"
 ---
 <a name="build-your-first-aspnet-application-with-aspnet-mvc"></a>Создайте свое первое приложение ASP.NET с помощью ASP.NET MVC
 ====================

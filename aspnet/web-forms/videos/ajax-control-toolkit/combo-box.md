@@ -4,19 +4,16 @@ title: Поле со списком | Документация Майкросо�
 author: JoeStagner
 description: В этом видео будет показано, как использовать новый элемент управления списком из Microsoft AJAX Control Toolkit.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/13/2009
-ms.topic: article
 ms.assetid: 73822cfa-2052-41fa-98e6-434928574afb
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/combo-box
 msc.type: video
-ms.openlocfilehash: f3d62e5612077bac36be5474b082b9a2d5d9b553
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7069e14ad17f69a11bb3bed292a53cec82d008e6
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387667"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835091"
 ---
 <a name="combo-box"></a>Combo Box
 ====================

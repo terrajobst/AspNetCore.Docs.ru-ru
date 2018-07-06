@@ -4,19 +4,16 @@ title: Как создать таблицу отдельных пользова�
 author: JoeStagner
 description: Иногда нам приходится по умолчанию пользовательского интерфейса в приложении динамических данных ASP.NET. В этом видео вы узнаете, как это можно сделать, и как мы можем отключить...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/11/2008
-ms.topic: article
 ms.assetid: 14d3a727-8a1a-4950-8e8f-ce97f5b2ec1f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application
 msc.type: video
-ms.openlocfilehash: 806d5fc86cb38e9593ba404297c1cc58170cd5e5
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0f23131754cdf2bbb874cec6fffcce554b4e5bda
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379667"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841002"
 ---
 <a name="how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application"></a>Как создать таблицу отдельных пользовательских форм в приложении ASP.NET Dynamic Data
 ====================

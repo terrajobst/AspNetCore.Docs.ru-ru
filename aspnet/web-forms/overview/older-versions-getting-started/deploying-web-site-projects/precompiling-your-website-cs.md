@@ -4,19 +4,16 @@ title: Предварительная компиляция веб-сайта (C#
 author: rick-anderson
 description: 'Visual Studio предлагает разработчикам ASP.NET два типа проектов: Web Application Projects (беспроводного) и веб-сайтов (WSPs). Одно из ключевых различий betwe...'
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/09/2009
-ms.topic: article
 ms.assetid: ecd5a4de-beb7-4d1d-bbbb-e31003633267
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-cs
 msc.type: authoredcontent
-ms.openlocfilehash: abe2c3329129259b9d83cb202fe730eda6abc94d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1227c28600444ed1f2710ba1b5e021aae59fe098
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37369438"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840304"
 ---
 <a name="precompiling-your-website-c"></a>Предварительная компиляция веб-сайта (C#)
 ====================

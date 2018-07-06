@@ -4,19 +4,16 @@ title: Управлять расширителей | Документация М
 author: JoeStagner
 description: Просмотрите это видео, чтобы понять разницу между элементами управления и расширителей элементов управления AJAX и как использовать эти средства расширения в приложениях.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/13/2009
-ms.topic: article
 ms.assetid: 26f6a508-5ad4-4551-826d-61e48135943f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/control-extenders
 msc.type: video
-ms.openlocfilehash: 68b34410fd0afa0428b111e32f48c16484c24e04
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 64208ee4cb152f5fdad9dede7538be103268d3de
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392676"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809548"
 ---
 <a name="control-extenders"></a>Управляющих элементов-расширителей
 ====================

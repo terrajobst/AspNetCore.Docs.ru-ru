@@ -4,19 +4,16 @@ title: Создание интерфейса настраиваемого упо
 author: rick-anderson
 description: При отображении длинных списков данных, бывает удобно сгруппировать связанные данные, между группами разделяющие строки. В этом руководстве будет показано, как соз...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/15/2006
-ms.topic: article
 ms.assetid: f3897a74-cc6a-4032-8f68-465f155e296a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 27ff1efb47f8e74c3b9f090af646229a9121661b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8e94bbda0ca89b409515db1e223637e3a554cd31
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394564"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835872"
 ---
 <a name="creating-a-customized-sorting-user-interface-vb"></a>Создание интерфейса настраиваемого упорядочения (VB)
 ====================

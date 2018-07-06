@@ -4,19 +4,16 @@ title: Знакомство с веб-страниц ASP.NET — ввод дан
 author: tfitzmac
 description: Этом руководстве показано, как создать форму ввода, а затем введите данные, которые вы получаете из формы в таблицу базы данных при использовании веб-страниц ASP.NET (...)
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/28/2015
-ms.topic: article
 ms.assetid: d37c93fc-25fd-4e94-8671-0d437beef206
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/entering-data
 msc.type: authoredcontent
-ms.openlocfilehash: 41122b3bca5a3d3162a66be163642610b8349cc5
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 313fd6ff70af540d4dd749734f50e3fc24be0d29
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386411"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835765"
 ---
 <a name="introducing-aspnet-web-pages---entering-database-data-by-using-forms"></a>Знакомство с веб-страниц ASP.NET — ввод данных базы данных с помощью форм
 ====================

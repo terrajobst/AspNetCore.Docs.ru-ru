@@ -4,19 +4,16 @@ title: С помощью элемента управления Slider с авт�
 author: wenz
 description: Элемент управления "ползунок" в AJAX Control Toolkit предоставляет графическим ползунком, которые могут контролироваться с помощью мыши. Это можно делать Автоматическая разноска "ползунок"...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 41d1abba-97a5-4a45-9b44-d05624c19777
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/slider/using-the-slider-control-with-auto-postback-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0ddc5b119a7f58b4d289f11e1789cf193870ae4e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4ad701763f5d391a793083a1d81db69e7f712069
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374043"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809859"
 ---
 <a name="using-the-slider-control-with-auto-postback-vb"></a>С помощью элемента управления Slider с автоматической обратной передачей (VB)
 ====================

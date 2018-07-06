@@ -4,19 +4,16 @@ title: '[Инструкции] Использовать ASP.NET AJAX TextBoxWate
 author: JoeStagner
 description: В этом видео вы узнаете, как использовать расширитель элемента управления TextBoxWatermark с ASP.NET AJAX Control Toolkit, который добавляет новые свойства водяного знака для...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/26/2007
-ms.topic: article
 ms.assetid: a43d175e-7526-4dd9-b8ed-9348c3c3dd39
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-textboxwatermark-control-extender
 msc.type: video
-ms.openlocfilehash: c4e15ec5c0c1b8032aa20daf4e57292900e8c33d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7475da83fceb892550872d20a49e46a3051f5765
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401757"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808357"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-textboxwatermark-control-extender"></a>[Инструкции] Использовать ASP.NET AJAX TextBoxWatermark Control Extender?
 ====================

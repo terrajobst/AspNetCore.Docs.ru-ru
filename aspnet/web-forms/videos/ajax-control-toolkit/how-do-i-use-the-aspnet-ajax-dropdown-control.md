@@ -4,19 +4,16 @@ title: '[Инструкции] Использовать элемент упра�
 author: JoeStagner
 description: С помощью раскрывающегося списка управляющего элемента-расширителя из ASP.NET AJAX Control Toolkit можно предоставить пользователю список раскрывающегося списка параметров, которые активируют partial-pa...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/30/2007
-ms.topic: article
 ms.assetid: a997a9f8-9f71-4b9e-b7ed-f8e3a0daa576
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-dropdown-control
 msc.type: video
-ms.openlocfilehash: 04701a0b92b4fdd3feaef80826b96322fe514247
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6394818f52509a8784c8d12b54965710f4ece057
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392598"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37833201"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-dropdown-control"></a>[Инструкции] Использовать элемент управления DropDown ASP.NET AJAX?
 ====================

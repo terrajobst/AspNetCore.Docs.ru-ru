@@ -4,19 +4,16 @@ title: Обзор проверки подлинности форм (C#) | Док
 author: rick-anderson
 description: Создание пользовательских маршрутов
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/14/2008
-ms.topic: article
 ms.assetid: de2d65b9-aadc-42ba-abe1-4e87e66521a0
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/an-overview-of-forms-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cc000bab8fcc3f5688a7b0cd1a16b282dbb68c09
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a523e3c6ff79e7445813e2ef50eabc5b55d00144
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363375"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814450"
 ---
 <a name="an-overview-of-forms-authentication-c"></a>Обзор проверки подлинности форм (C#)
 ====================

@@ -4,19 +4,16 @@ title: '[Инструкции] Создание серверного элеме�
 author: rick-anderson
 description: Узнайте, как создать пользовательский серверный элемент управления с возможностями ASP.NET AJAX, с использованием расширений AJAX в библиотеке Microsoft AJAX. В этом видео показаны...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/25/2007
-ms.topic: article
 ms.assetid: 1165e0b4-2240-4dc2-aa94-ef6664c71a8c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-build-a-custom-aspnet-ajax-server-control
 msc.type: video
-ms.openlocfilehash: c4b6d40ea9a3f38d66400a3c6458a84bc8f722fc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 06a95297fa3f9d8a581267e0604cbf2880429a85
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397432"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828505"
 ---
 <a name="how-do-i-build-a-custom-aspnet-ajax-server-control"></a>[Инструкции] Создание серверного элемента управления формы пользовательских ASP.NET AJAX?
 ====================

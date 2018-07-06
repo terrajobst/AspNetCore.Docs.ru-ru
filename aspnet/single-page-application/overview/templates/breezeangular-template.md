@@ -4,19 +4,16 @@ title: Шаблон breeze/Angular | Документация Майкрософ
 author: madskristensen
 description: Шаблон breeze/Angular одностраничного приложения
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/08/2013
-ms.topic: article
 ms.assetid: db31e909-563a-4516-aadd-62aa210ac7e4
-ms.technology: ''
 msc.legacyurl: /single-page-application/overview/templates/breezeangular-template
 msc.type: authoredcontent
-ms.openlocfilehash: 541d1a71b58a0d55651d823dc7425b7d1ce73cdb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3799c891625b28312b54ed33628748dcc1b74925
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378064"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37811754"
 ---
 <a name="breezeangular-template"></a>Шаблон breeze/Angular
 ====================

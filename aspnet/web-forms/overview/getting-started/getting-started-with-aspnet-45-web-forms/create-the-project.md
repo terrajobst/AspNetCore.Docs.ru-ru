@@ -4,19 +4,16 @@ title: Создание проекта | Документация Майкрос
 author: Erikre
 description: В этой серии руководств будет основы создания приложений веб-форм ASP.NET с помощью ASP.NET 4.5 и Microsoft Visual Studio Express 2013 для мы...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/08/2014
-ms.topic: article
 ms.assetid: 2ce36f78-8ecb-4ab1-b748-6d0ab633ea3f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
 msc.type: authoredcontent
-ms.openlocfilehash: e5d6fa312ce0375eee5ca456aaea9f088d806cfc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 81d3b07fa0710d03bc350b93a02f7d3aba2bb684
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37384492"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814673"
 ---
 <a name="create-the-project"></a>Создание проекта
 ====================

@@ -4,19 +4,16 @@ title: Пользовательское форматирование на осн
 author: rick-anderson
 description: Настройка формата элементов GridView, DetailsView и FormView на основе привязанным к ним данным может быть выполнена несколькими способами. В этом руководстве мы будем l...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: df5a1525-386f-4632-972c-57b199870bc3
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2ed55c181534e18bbbb4447ce9a4e5c19ff3717b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d55a9ece22805d7f5d248e81a01d059dbde0ee18
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366204"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809593"
 ---
 <a name="custom-formatting-based-upon-data-vb"></a>Пользовательское форматирование на основе данных (VB)
 ====================

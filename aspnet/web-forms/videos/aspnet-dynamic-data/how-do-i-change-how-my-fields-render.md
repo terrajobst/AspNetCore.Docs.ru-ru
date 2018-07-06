@@ -4,19 +4,16 @@ title: Изменение отрисовки полей? | Документы М
 author: shanselman
 description: В этом видео вы узнаете, как изменить способ визуализации полей данных. Вы подключите в сторонние элементы управления для некоторых полей.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/08/2008
-ms.topic: article
 ms.assetid: f99da654-2148-4e66-867c-6e837b84e9d0
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-do-i-change-how-my-fields-render
 msc.type: video
-ms.openlocfilehash: 09c602f5a5de015e195731fb4f59082417892c74
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6fad628748abeaa878051093af921d1ce966b7b7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37372917"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822290"
 ---
 <a name="how-do-i-change-how-my-fields-render"></a>Изменение отрисовки полей?
 ====================

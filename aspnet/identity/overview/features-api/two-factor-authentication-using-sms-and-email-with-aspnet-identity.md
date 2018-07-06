@@ -4,19 +4,16 @@ title: Двухфакторная проверка подлинности с п�
 author: HaoK
 description: Этом учебнике показано, как настроить двухфакторную проверку подлинности (2FA) с помощью SMS и электронной почты. Эта статья написана с Рик Андерсон ( @RickAndMSFT ), счетам...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/15/2015
-ms.topic: article
 ms.assetid: 053e23c4-13c9-40fa-87cb-3e9b0823b31e
-ms.technology: ''
 msc.legacyurl: /identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 0519ae69b3d2ef129d206a936b199f781fef5bf6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: c1f4bd4a3f65d4b7fccd86214fd0ba45c891e390
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399683"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807626"
 ---
 <a name="two-factor-authentication-using-sms-and-email-with-aspnet-identity"></a>Двухфакторная проверка подлинности с помощью SMS и электронной почты с ASP.NET Identity
 ====================

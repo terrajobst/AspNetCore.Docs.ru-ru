@@ -4,19 +4,16 @@ title: Создание пользовательских маршрутов (Vis
 author: microsoft
 description: Узнайте, как добавить пользовательские маршруты для приложения ASP.NET MVC. В этом руководстве вы узнаете, как изменить таблицы маршрутизации по умолчанию в файле Global.asax.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/16/2009
-ms.topic: article
 ms.assetid: 6ac5758b-6199-42af-adcb-21954b864951
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-custom-routes-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b2bca002434274e334509d21f6857e094d391198
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3d6125f93d99acc695be319bd000ff65ab4a1159
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362022"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829704"
 ---
 <a name="creating-custom-routes-vb"></a>Создание пользовательских маршрутов (VB)
 ====================
