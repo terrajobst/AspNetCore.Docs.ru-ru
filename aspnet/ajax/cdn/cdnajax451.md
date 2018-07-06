@@ -4,23 +4,20 @@ title: Веб-форм ASP.NET и Ajax 4.5.1 | Документация Майк
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/18/2015
-ms.topic: article
 ms.assetid: d7ec655d-49b0-4968-af5e-3064616aff9a
-ms.technology: ''
 msc.legacyurl: /ajax/cdn/cdnajax451
 msc.type: content
-ms.openlocfilehash: 7e4fd7927b1f5084b673947c0a998e3c032afedf
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b8b1e799d7fb0bbe4360d1b5307deda6c94e4921
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363349"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802181"
 ---
-<a name="aspnet-web-forms-and-ajax-451"></a><span data-ttu-id="a17f1-102">Веб-форм ASP.NET и Ajax 4.5.1</span><span class="sxs-lookup"><span data-stu-id="a17f1-102">ASP.NET Web Forms and Ajax 4.5.1</span></span>
+<a name="aspnet-web-forms-and-ajax-451"></a><span data-ttu-id="5efe4-102">Веб-форм ASP.NET и Ajax 4.5.1</span><span class="sxs-lookup"><span data-stu-id="5efe4-102">ASP.NET Web Forms and Ajax 4.5.1</span></span>
 ====================
-<span data-ttu-id="a17f1-103">Следующие файлы размещаются в сети доставки Содержимого:</span><span class="sxs-lookup"><span data-stu-id="a17f1-103">The following files are hosted on the CDN:</span></span>
+<span data-ttu-id="5efe4-103">Следующие файлы размещаются в сети доставки Содержимого:</span><span class="sxs-lookup"><span data-stu-id="5efe4-103">The following files are hosted on the CDN:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/Date.HijriCalendar.debug.js
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/Date.HijriCalendar.js
@@ -59,6 +56,6 @@ ms.locfileid: "37363349"
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/WebParts.js
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/WebUIValidation.js
 
-<span data-ttu-id="a17f1-104">Примечание: Сценарии глобализации, например, fr-FR.js, можно найти в следующей папке:</span><span class="sxs-lookup"><span data-stu-id="a17f1-104">Note: The globalization scripts, such as fr-FR.js, can be found in the following folder:</span></span>
+<span data-ttu-id="5efe4-104">Примечание: Сценарии глобализации, например, fr-FR.js, можно найти в следующей папке:</span><span class="sxs-lookup"><span data-stu-id="5efe4-104">Note: The globalization scripts, such as fr-FR.js, can be found in the following folder:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/globalization/

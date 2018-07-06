@@ -4,29 +4,26 @@ title: '[Урок 7:] Привязка данных к элементам пол
 author: microsoft
 description: На этом занятии вы узнаете, как отобразить данные в приложениях ASP.NET&#160;2.0 веб-приложений, дается краткий обзор новых элементов управления с привязкой к данным.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/29/2005
-ms.topic: article
 ms.assetid: 49625de7-06c3-484c-bd76-d322b9ca41ea
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/building-20-applications/lesson-7-databinding-to-user-interface-controls
 msc.type: video
-ms.openlocfilehash: aa7d2143e60d504041302f85322970aeffbc1011
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 868072c6a3ccc8d461cd86d2092b5b8c82ed7fc9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37361406"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802233"
 ---
-<a name="lesson-7-databinding-to-user-interface-controls"></a><span data-ttu-id="77306-103">[Урок 7:] Привязка данных к элементам пользовательского интерфейса</span><span class="sxs-lookup"><span data-stu-id="77306-103">[Lesson 7:] Databinding to User Interface Controls</span></span>
+<a name="lesson-7-databinding-to-user-interface-controls"></a><span data-ttu-id="faa76-103">[Урок 7:] Привязка данных к элементам пользовательского интерфейса</span><span class="sxs-lookup"><span data-stu-id="faa76-103">[Lesson 7:] Databinding to User Interface Controls</span></span>
 ====================
-<span data-ttu-id="77306-104">по [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="77306-104">by [Microsoft](https://github.com/microsoft)</span></span>
+<span data-ttu-id="faa76-104">по [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="faa76-104">by [Microsoft](https://github.com/microsoft)</span></span>
 
-<span data-ttu-id="77306-105">На этом занятии вы узнаете, как отобразить данные в веб-приложениях пользователей ASP.NET2.0 дается краткий обзор новых элементов управления с привязкой к данным.</span><span class="sxs-lookup"><span data-stu-id="77306-105">In this lesson, you will learn how to display data in your ASP.NET2.0 web applications through some of the new databound controls.</span></span>
+<span data-ttu-id="faa76-105">На этом занятии вы узнаете, как отобразить данные в веб-приложениях пользователей ASP.NET2.0 дается краткий обзор новых элементов управления с привязкой к данным.</span><span class="sxs-lookup"><span data-stu-id="faa76-105">In this lesson, you will learn how to display data in your ASP.NET2.0 web applications through some of the new databound controls.</span></span>
 
-[<span data-ttu-id="77306-106">&#9654;Просмотрите видео (22 мин)</span><span class="sxs-lookup"><span data-stu-id="77306-106">&#9654; Watch video (22 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-7-databinding-to-user-interface-controls)
+[<span data-ttu-id="faa76-106">&#9654;Просмотрите видео (22 мин)</span><span class="sxs-lookup"><span data-stu-id="faa76-106">&#9654; Watch video (22 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-7-databinding-to-user-interface-controls)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="77306-107">[Назад](lesson-6-working-with-stylesheets-and-master-pages.md)
-> [Вперед](lesson-8-working-with-the-gridview-and-formview.md)</span><span class="sxs-lookup"><span data-stu-id="77306-107">[Previous](lesson-6-working-with-stylesheets-and-master-pages.md)
+> <span data-ttu-id="faa76-107">[Назад](lesson-6-working-with-stylesheets-and-master-pages.md)
+> [Вперед](lesson-8-working-with-the-gridview-and-formview.md)</span><span class="sxs-lookup"><span data-stu-id="faa76-107">[Previous](lesson-6-working-with-stylesheets-and-master-pages.md)
 [Next](lesson-8-working-with-the-gridview-and-formview.md)</span></span>
