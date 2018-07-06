@@ -4,19 +4,16 @@ title: Windows Azure проверка подлинности | Документ�
 author: Rick-Anderson
 description: Средства Microsoft ASP.NET для Windows Azure Active Directory вы можете легко включить проверку подлинности для веб-приложений, размещенных в Windows Azure Web Sites...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2013
-ms.topic: article
 ms.assetid: a3cef801-a54b-4ebd-93c3-55764e2e14b1
-ms.technology: ''
 msc.legacyurl: /visual-studio/overview/2012/windows-azure-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: d46a673b75eba0e058c7e20b12f44caf4e2f4f50
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e3443fb627dc8d7d5011341828556b4c13836170
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379797"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812818"
 ---
 <a name="windows-azure-authentication"></a>Windows Azure проверка подлинности
 ====================

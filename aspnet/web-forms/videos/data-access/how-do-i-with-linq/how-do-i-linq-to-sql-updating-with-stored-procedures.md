@@ -4,19 +4,16 @@ title: 'Инструкции: LINQ to SQL: обновление с помощь�
 author: scottstanfield
 description: Переопределите логику созданного ORM update/delete/insert на собственные посредством хранимых процедур. Видео также показано в сведениях о том, как использовать SQL Profiler для...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/13/2008
-ms.topic: article
 ms.assetid: b041ea07-a174-4a57-b2a8-4ce64232bdae
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-with-stored-procedures
 msc.type: video
-ms.openlocfilehash: cc4a7ea1067ecb71cc9a6d862e37b4f5ab84080b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a8150937aff608c866b5fb8b0da1544f602594a3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37384960"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825831"
 ---
 <a name="how-do-i-linq-to-sql-updating-with-stored-procedures"></a>Инструкции: LINQ to SQL: обновление с помощью хранимых процедур
 ====================

@@ -4,19 +4,16 @@ title: Непрерывная интеграция и непрерывная п�
 author: MikeWasson
 description: Создание реальных облачных приложений в условиях электронная книга основана на презентацию, разработанная Скоттом Гатри. Здесь объясняется, 13 шаблонов и практических рекомендаций, которые он может...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/12/2014
-ms.topic: article
 ms.assetid: eaece9f5-f80c-428b-b771-5db66d275b7d
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
 msc.type: authoredcontent
-ms.openlocfilehash: ae20f288e58961e411b66e17ee150084f94b26bc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 40687c490fdfb7764ac9ca8af6fffd054362d552
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391125"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819423"
 ---
 <a name="continuous-integration-and-continuous-delivery-building-real-world-cloud-apps-with-azure"></a>Непрерывная интеграция и непрерывная поставка (Создание реальных облачных приложений в Azure)
 ====================

@@ -4,19 +4,16 @@ title: ASP.NET (VB) варианты размещения | Документац
 author: rick-anderson
 description: Веб-приложений ASP.NET обычно разрабатываются, создания и тестирования в локальной среде разработки и должны быть развернуты в рабочей среде o...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/01/2009
-ms.topic: article
 ms.assetid: 492f5ae2-bad7-4107-89a9-f04a9525dee7
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0977548ce56ad8dba2dc677ae4958fd4c040bb57
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 68f12de0b459c01ecf766e09144364a64e2d69d3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399121"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817714"
 ---
 <a name="aspnet-hosting-options-vb"></a>Варианты размещения в ASP.NET (VB)
 ====================

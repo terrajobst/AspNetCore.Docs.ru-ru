@@ -4,19 +4,16 @@ title: Распределенное кэширование (Создание р�
 author: MikeWasson
 description: Создание реальных облачных приложений в условиях электронная книга основана на презентацию, разработанная Скоттом Гатри. Здесь объясняется, 13 шаблонов и практических рекомендаций, которые он может...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/20/2015
-ms.topic: article
 ms.assetid: 406518e9-3817-49ce-8b90-e82bc461e2c0
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/distributed-caching
 msc.type: authoredcontent
-ms.openlocfilehash: f92d9a00ce3cc723643f4f8077bb4308f5d8089e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a165c789ae656025934bc5e3ed8e8caef1c21787
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365650"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37821623"
 ---
 <a name="distributed-caching-building-real-world-cloud-apps-with-azure"></a>Распределенного кэширования (Создание реальных облачных приложений в Azure)
 ====================

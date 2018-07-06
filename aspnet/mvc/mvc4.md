@@ -4,19 +4,16 @@ title: ASP.NET MVC 4 | Документация Майкрософт
 author: rick-anderson
 description: ASP.NET MVC 4 ASP.NET MVC 4 — это платформа для создания масштабируемых, основанные на стандартах веб-приложений, с помощью хорошо проверенных шаблонах проектирования и мощь AS...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/12/2011
-ms.topic: article
 ms.assetid: 1279f5b1-390f-4b4b-9e6e-f947cb1ef5f5
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/mvc4
 msc.type: content
-ms.openlocfilehash: b9b1ac7998d02358b5754c9a4ad0f09b8d24da8b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0e96bd0184fc3bff66d677bb0b3ebb119b9ad3e7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362107"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814540"
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================

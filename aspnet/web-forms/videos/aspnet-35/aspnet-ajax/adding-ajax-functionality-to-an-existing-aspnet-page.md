@@ -4,19 +4,16 @@ title: Добавление функциональности AJAX на суще�
 author: tmiranda
 description: С помощью AJAX на страницах ASP.NET можно повысить производительность и улучшения общего впечатления пользователя приложения. Нет необходимости переписывать существующие страницы...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/15/2007
-ms.topic: article
 ms.assetid: a4eb03b2-8efa-42ea-848d-b26918b80c33
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-35/aspnet-ajax/adding-ajax-functionality-to-an-existing-aspnet-page
 msc.type: video
-ms.openlocfilehash: ccbe52fe35d9cdecec9d18a34bfb06db2082b1b1
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b2f7abca23e6b25e0b83edbe25ac9d58caad5149
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392472"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822277"
 ---
 <a name="adding-ajax-functionality-to-an-existing-aspnet-page"></a>Добавление функциональности AJAX на существующую страницу ASP.NET
 ====================

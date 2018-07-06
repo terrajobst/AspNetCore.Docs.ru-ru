@@ -4,19 +4,16 @@ title: Покрытие автоматических тестов кода | Д�
 author: rick-anderson
 description: В этом видео демонстрируется использование покрытия кода в качестве метрики для определения эффективности тестирования из веб-приложения ASP.NET. После проверки имеет com...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/23/2007
-ms.topic: article
 ms.assetid: b1a7fbfc-523f-473e-a454-8e6b90099b1e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/vs-2005/code-coverage-of-automated-tests
 msc.type: video
-ms.openlocfilehash: cf851c001c0e06c0fb2b108b2b54b0496c14042c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 78ebddc2535384657d03ba6f79cf6dbb22457507
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395270"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822212"
 ---
 <a name="code-coverage-of-automated-tests"></a>Покрытие кода автоматических тестов
 ====================

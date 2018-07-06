@@ -4,19 +4,16 @@ title: Создание пользовательского расширител�
 author: JoeStagner
 description: В этом видео Джо показано, как использовать AJAX Control Toolkit для создания пользовательского элемента управления расширителя AJAX.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/22/2009
-ms.topic: article
 ms.assetid: dacc2d88-5768-4721-8624-c603e2088670
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/create-a-new-custom-extender
 msc.type: video
-ms.openlocfilehash: ed4a1a67c52119dc4e5421ba44c35c76a5a9706f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f5099f896af82ffbdb68a8db0f1fe631da290dc5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387638"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810112"
 ---
 <a name="create-a-new-custom-extender"></a>Создание пользовательского расширителя
 ====================

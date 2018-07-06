@@ -4,19 +4,16 @@ title: Предустановка записей списка с помощью 
 author: wenz
 description: Элемент управления CascadingDropDown в AJAX Control Toolkit расширяет элемент управления DropDownList, что изменения в одной загрузке DropDownList соответствующих значений в anoth...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 04c79748-0f21-4a3b-aba5-e1ce3161c32e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/presetting-list-entries-with-cascadingdropdown-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 56093ad098d69039aafa9b4e6ba4e4c2ad91e49b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7797aa91452bfbed2695fd26e3b9d2a5783dd216
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362003"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825093"
 ---
 <a name="presetting-list-entries-with-cascadingdropdown-c"></a>Предустановка записей списка с помощью с CascadingDropDown (C#)
 ====================

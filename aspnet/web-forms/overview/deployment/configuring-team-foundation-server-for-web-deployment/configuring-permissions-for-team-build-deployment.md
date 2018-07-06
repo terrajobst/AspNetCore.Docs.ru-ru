@@ -4,19 +4,16 @@ title: Настройка разрешений для группы развер�
 author: jrjlee
 description: В этом разделе описываются способы настройки разрешения, чтобы включить сервер сборки для развертывания содержимого на веб-серверов и серверов баз данных как часть автоматической b...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 2488a91e-b0a8-465a-b874-3233f724b56b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: f84e72bd5991b0407008ccdaff5243979cbb986e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: b577d887b4a4476b6796ae9f1df538d16eededa3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37384666"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820364"
 ---
 <a name="configuring-permissions-for-team-build-deployment"></a>Настройка разрешений для группы развертывания построения
 ====================

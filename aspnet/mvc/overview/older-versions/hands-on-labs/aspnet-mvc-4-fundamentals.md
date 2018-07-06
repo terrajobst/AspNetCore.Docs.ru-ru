@@ -4,19 +4,16 @@ title: Основы ASP.NET MVC 4 | Документация Майкрософ�
 author: rick-anderson
 description: Этот практический семинар основан на MVC (Model View Controller) Music Store, учебного приложения, которые вводятся и описываются способы использования ASP.NET MV пошаговые...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/18/2013
-ms.topic: article
 ms.assetid: b7dba543-73c3-4534-a9a0-ba70fa2c6a8a
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-fundamentals
 msc.type: authoredcontent
-ms.openlocfilehash: 3a282d02ba929eb86571e92f190550614962524d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 2b3f8916bdca1df0dd2855f02ae46f5e5d13311a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386579"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819975"
 ---
 # <a name="aspnet-mvc-4-fundamentals"></a>Основы ASP.NET MVC 4
 

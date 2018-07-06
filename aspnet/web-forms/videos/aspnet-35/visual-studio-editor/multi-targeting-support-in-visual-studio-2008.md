@@ -4,19 +4,16 @@ title: Поддержка нескольких платформ в Visual Studio
 author: JoeStagner
 description: Будут продемонстрированы функции разных версий Visual Studio 2008. Раньше приходилось выбирать нужную версию Visual Studio в соответствии с целевой versi .NET...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/15/2007
-ms.topic: article
 ms.assetid: 297bd67d-10d9-406d-9c6e-9db0bbe35491
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-35/visual-studio-editor/multi-targeting-support-in-visual-studio-2008
 msc.type: video
-ms.openlocfilehash: 468fe1b3560d87c274785ac64d0fda74b7afaa1d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: aaa25197987faadd73f36c335554342fdc005014
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374893"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815373"
 ---
 <a name="multi-targeting-support-in-visual-studio-2008"></a>Поддержка нескольких платформ в Visual Studio 2008
 ====================

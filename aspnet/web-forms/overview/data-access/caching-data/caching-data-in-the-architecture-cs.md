@@ -4,19 +4,16 @@ title: Кэширование данных в архитектуре (C#) | До
 author: rick-anderson
 description: В предыдущем учебном курсе мы показали, как для применения кэширования на уровне представления. В этом руководстве мы узнаем, как пользоваться преимуществами наших многоуровневой архитектуре систем обеспечения...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/30/2007
-ms.topic: article
 ms.assetid: d29a7c41-0628-4a23-9dfc-bfea9c6c1054
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-in-the-architecture-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 20c3c0cb5f3d13e66fbbceab77083c89f3015c53
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 80805bae14654d6817328232453031384ceadad6
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402913"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820462"
 ---
 <a name="caching-data-in-the-architecture-c"></a>Кэширование данных в архитектуре (C#)
 ====================

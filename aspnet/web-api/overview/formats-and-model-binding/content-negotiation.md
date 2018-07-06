@@ -4,19 +4,16 @@ title: Согласование веб-API ASP.NET содержимого | До
 author: MikeWasson
 description: Описывает, как веб-API ASP.NET реализует согласования содержимого HTTP.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/20/2012
-ms.topic: article
 ms.assetid: 0dd51b30-bf5a-419f-a1b7-2817ccca3c7d
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/formats-and-model-binding/content-negotiation
 msc.type: authoredcontent
-ms.openlocfilehash: c4e7a0c2601ca60f081876e83757997a2e920298
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2314a263a12c74e80c08391ae03425955a82458a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368933"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810321"
 ---
 <a name="content-negotiation-in-aspnet-web-api"></a>Согласование содержимого в веб-API ASP.NET
 ====================

@@ -4,19 +4,16 @@ title: Использование параметризованных запро�
 author: rick-anderson
 description: В этом руководстве мы по-прежнему наш взгляд на элемента управления SqlDataSource и узнайте, как определить параметризованных запросов. Параметры могут быть заданы оба объявл...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2007
-ms.topic: article
 ms.assetid: e322f34c-83b7-41ea-ab65-ab1e0bdcc609
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fd6361d7b8981b7caee996ff3af165416af860a7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fd4964bbdfe7662513025086a6cc3a59a6d63782
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395490"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37813819"
 ---
 <a name="using-parameterized-queries-with-the-sqldatasource-vb"></a>Использование параметризованных запросов с помощью элемента управления SqlDataSource (VB)
 ====================

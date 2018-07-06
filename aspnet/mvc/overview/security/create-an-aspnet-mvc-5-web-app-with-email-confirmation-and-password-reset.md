@@ -4,19 +4,16 @@ title: Создание безопасного веб-приложения ASP.N
 author: Rick-Anderson
 description: Этом руководстве показано, как создавать веб-приложение ASP.NET MVC 5 с подтверждение по электронной почте и сбрасывать пароль с помощью системы членства ASP.NET Identity. ЦС...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/26/2015
-ms.topic: article
 ms.assetid: d4911cb3-1afb-4805-b860-10818c4b1280
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: 56c1a5c414fdcece8d827d1187144b4948d8eb93
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 1387c3e9c03e011b610a070aa0c273ded23b463e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387047"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823551"
 ---
 <a name="create-a-secure-aspnet-mvc-5-web-app-with-log-in-email-confirmation-and-password-reset-c"></a>Создание безопасного веб-приложения ASP.NET MVC 5 со входом, отправить по электронной почте подтверждение и сброс пароля (C#)
 ====================
