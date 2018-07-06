@@ -4,29 +4,26 @@ title: '[Переход] Классического ASP на ASP.NET | Доку�
 author: microsoft
 description: Вы планируете перенести из классической технологии ASP в Microsoft ASP.NET 2.0? Данная серия поможет во внимание при разработке архитектуры...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/25/2006
-ms.topic: article
 ms.assetid: af5736dd-e01d-45d6-8ac0-01ec0fe49023
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/migrating/migrating-from-classic-asp-to-aspnet
 msc.type: video
-ms.openlocfilehash: 05a99ec6efec7f39fc7afb07a848e4806699718e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2ae5a0549279eb756fa9fdf3d7a1be8818942fb8
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374699"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817500"
 ---
-<a name="migrating-from-classic-asp-to-aspnet"></a><span data-ttu-id="47321-104">[Переход] Классического ASP на ASP.NET</span><span class="sxs-lookup"><span data-stu-id="47321-104">[Migrating from] Classic ASP to ASP.NET</span></span>
+<a name="migrating-from-classic-asp-to-aspnet"></a><span data-ttu-id="e95ee-104">[Переход] Классического ASP на ASP.NET</span><span class="sxs-lookup"><span data-stu-id="e95ee-104">[Migrating from] Classic ASP to ASP.NET</span></span>
 ====================
-<span data-ttu-id="47321-105">по [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="47321-105">by [Microsoft](https://github.com/microsoft)</span></span>
+<span data-ttu-id="e95ee-105">по [Microsoft](https://github.com/microsoft)</span><span class="sxs-lookup"><span data-stu-id="e95ee-105">by [Microsoft](https://github.com/microsoft)</span></span>
 
-<span data-ttu-id="47321-106">Вы планируете перенести из классической технологии ASP в Microsoft ASP.NET 2.0?</span><span class="sxs-lookup"><span data-stu-id="47321-106">Are you planning to migrate from classic ASP to Microsoft ASP.NET 2.0?</span></span> <span data-ttu-id="47321-107">Этой серии веб-трансляции рассматриваются важные архитектурные рекомендации следует учитывать при планировании стратегии миграции.</span><span class="sxs-lookup"><span data-stu-id="47321-107">This webcast series walks you through the important architectural design considerations to keep in mind when you plan your migration strategy.</span></span>
+<span data-ttu-id="e95ee-106">Вы планируете перенести из классической технологии ASP в Microsoft ASP.NET 2.0?</span><span class="sxs-lookup"><span data-stu-id="e95ee-106">Are you planning to migrate from classic ASP to Microsoft ASP.NET 2.0?</span></span> <span data-ttu-id="e95ee-107">Этой серии веб-трансляции рассматриваются важные архитектурные рекомендации следует учитывать при планировании стратегии миграции.</span><span class="sxs-lookup"><span data-stu-id="e95ee-107">This webcast series walks you through the important architectural design considerations to keep in mind when you plan your migration strategy.</span></span>
 
-[<span data-ttu-id="47321-108">&#9654;Просмотрите видео (78 мин.)</span><span class="sxs-lookup"><span data-stu-id="47321-108">&#9654; Watch video (78 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/migrating-from-classic-asp-to-aspnet)
+[<span data-ttu-id="e95ee-108">&#9654;Просмотрите видео (78 мин.)</span><span class="sxs-lookup"><span data-stu-id="e95ee-108">&#9654; Watch video (78 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/migrating-from-classic-asp-to-aspnet)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="47321-109">[Назад](intro-to-aspnet-20-user-interface-elements.md)
-> [Вперед](intro-to-aspnet-for-jsp-developers-welcome-to-aspnet-20.md)</span><span class="sxs-lookup"><span data-stu-id="47321-109">[Previous](intro-to-aspnet-20-user-interface-elements.md)
+> <span data-ttu-id="e95ee-109">[Назад](intro-to-aspnet-20-user-interface-elements.md)
+> [Вперед](intro-to-aspnet-for-jsp-developers-welcome-to-aspnet-20.md)</span><span class="sxs-lookup"><span data-stu-id="e95ee-109">[Previous](intro-to-aspnet-20-user-interface-elements.md)
 [Next](intro-to-aspnet-for-jsp-developers-welcome-to-aspnet-20.md)</span></span>
