@@ -5,12 +5,12 @@ description: Узнайте, как настроить пользователь�
 ms.author: riande
 ms.date: 05/24/2017
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: d7baa8ed142a7d3337adceff2dc93274604bde4c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: bdde9b93449c2f3f8d43cc4ff86472ed8a60ed1c
+ms.sourcegitcommit: a09820f91e71a7d98b7347bf93210abb9e995e22
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831340"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37889172"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Пользовательские поставщики хранилищ для ASP.NET Core Identity
 
@@ -51,7 +51,7 @@ dotnet new webapi -au Individual
 
 При создании нового экземпляра `UserManager` или `RoleManager` укажите тип класса пользователя и передайте экземпляр класса store в качестве аргумента. Такой подход позволяет подключить свои настраиваемые классы в ASP.NET Core. 
 
-[Перенастройка приложения для использования нового поставщика хранилища](#reconfigure-app-to-use-new-storage-provider) показано, как создать экземпляр `UserManager` и `RoleManager` настраиваемого хранилища.
+[Перенастройка приложения для использования нового поставщика хранилища](#reconfigure-app-to-use-a-new-storage-provider) показано, как создать экземпляр `UserManager` и `RoleManager` настраиваемого хранилища.
 
 ## <a name="aspnet-core-identity-stores-data-types"></a>ASP.NET Core Identity хранит типы данных
 
