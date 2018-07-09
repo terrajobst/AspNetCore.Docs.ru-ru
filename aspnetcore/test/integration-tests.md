@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/30/2018
 uid: test/integration-tests
-ms.openlocfilehash: 2893ff41a104b4bef1277675afaf7dd1c758ecd6
-ms.sourcegitcommit: 79d2457989fc5b08925582dab0f1511ab11ad741
+ms.openlocfilehash: e18c5704c9d4db9669d8f831f1b556d1723a0fc1
+ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347256"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37894170"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
@@ -71,7 +71,7 @@ ms.locfileid: "37347256"
 1. Тестовый клиент сервера создается для отправки запросов к приложению.
 1. *Расположение* выполняется шаг теста: приложение тестирования готовит запрос.
 1. *Act* выполняется шаг теста: клиент отправляет запрос и получает ответ.
-1. *Assert* выполняется шаг теста: *фактическое* ответа проверяется как *передать* или *ошибкой* на основе *ожидается*  ответа.
+1. *Assert* выполняется шаг теста: *фактическое* ответа проверяется как *передать* или *ошибкой* на основе *ожидается * ответа.
 1. Процесс продолжается, пока все тесты выполняются.
 1. Выводятся результаты теста.
 
@@ -96,10 +96,16 @@ ms.locfileid: "37347256"
 
 Необходимо тестового проекта:
 
-* Иметь ссылку на пакет для [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/).
-* Используйте Web SDK в файле проекта (`<Project Sdk="Microsoft.NET.Sdk.Web">`).
+* Ссылаться на следующие пакеты:
+  - [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
+  - [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
+* Укажите Web SDK в файле проекта (`<Project Sdk="Microsoft.NET.Sdk.Web">`). Web SDK является обязательным при ссылке на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
-Эти prerequesities можно увидеть в [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/). Проверьте *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj* файла.
+Эти компоненты можно увидеть в [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/). Проверьте *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj* файла. Пример приложения использует [xUnit](https://xunit.github.io/) платформы тестирования и [AngleSharp](https://anglesharp.github.io/) библиотеки средство синтаксического анализа, поэтому в примере приложения также ссылается на:
+
+* [xUnit](https://www.nuget.org/packages/xunit/)
+* [xUnit.Runner.VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
+* [AngleSharp](https://www.nuget.org/packages/AngleSharp/)
 
 ## <a name="basic-tests-with-the-default-webapplicationfactory"></a>Основные тесты со значением по умолчанию WebApplicationFactory
 
