@@ -4,19 +4,16 @@ title: Как использовать элемент управления Combo
 author: microsoft
 description: Поля со списком является элементом управления ASP.NET AJAX, сочетающий в себе гибкость текстовое поле со списком параметров, из которых пользователи могут выбирать.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/12/2009
-ms.topic: article
 ms.assetid: 0bbf4134-04df-4226-8930-d5bb99e27128
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2589fe79b56d3794b46b3da84c96f6e0283c61a7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 07da594647c9b43bd31644aa8c7fedb256a12916
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373371"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839285"
 ---
 <a name="how-do-i-use-the-combobox-control-c"></a>Как использовать элемент управления ComboBox (C#)
 ====================

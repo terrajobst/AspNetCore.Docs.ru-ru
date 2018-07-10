@@ -4,19 +4,16 @@ title: Создание хранимых процедур и определяе�
 author: rick-anderson
 description: Microsoft SQL Server 2005 интегрируется с .NET среда CLR позволяет разработчикам для создания объектов базы данных с помощью управляемого кода. Этот учебник...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/03/2007
-ms.topic: article
 ms.assetid: 8be9a51b-ea6b-46c7-bfa2-476d9b14c24c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a2a4042303fe507af449e83e36f67f4624f579cc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: dcbd55185e7d5e3910b4f74f11554bae100057cc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37371847"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37806171"
 ---
 <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-vb"></a>Создание хранимых процедур и определяемых пользователем функций с помощью управляемого кода (Visual Basic)
 ====================

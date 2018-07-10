@@ -4,19 +4,16 @@ title: Создание схемы членства в SQL Server (Visual Basic)
 author: rick-anderson
 description: Этот учебник начинает проверять методы для добавления необходимую схему в базу данных для использования SqlMembershipProvider. После этого мы wi...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/18/2008
-ms.topic: article
 ms.assetid: 112a674d-716f-41a6-99b8-4074d65a54c0
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6fe5ab7e2748a7502f47cb29ecc0b93b6cb07d6b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 1fa1e3f57c1218af6fec8bddeed6cdcbdffe1965
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396992"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831849"
 ---
 <a name="creating-the-membership-schema-in-sql-server-vb"></a>Создание схемы членства в SQL Server (VB)
 ====================

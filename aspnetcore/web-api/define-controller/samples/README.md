@@ -8,5 +8,5 @@
 
 В этом примере показаны различные способы создания контроллера веб-API:
 
-- [Создание класса, производного от ControllerBase](https://docs.microsoft.com/en-us/aspnet/core/web-api/define-controller#derive-class-from-controllerbase)
-- [Аннотирование класса атрибутом ApiControllerAttribute](https://docs.microsoft.com/en-us/aspnet/core/web-api/define-controller#annotate-class-with-apicontrollerattribute)
+- [Создание класса, производного от ControllerBase](https://docs.microsoft.com/aspnet/core/web-api#derive-class-from-controllerbase)
+- [Аннотирование класса атрибутом ApiControllerAttribute](https://docs.microsoft.com/aspnet/core/web-api#annotate-class-with-apicontrollerattribute)

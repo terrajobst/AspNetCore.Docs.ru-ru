@@ -4,19 +4,16 @@ title: Использование зависимостей кэша SQL (Visual 
 author: rick-anderson
 description: Самый простой стратегии кэширования является предоставление кэшированных данных по истечении указанного периода времени. Но этот простой подход означает, что maintai кэшированных данных...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/30/2007
-ms.topic: article
 ms.assetid: bd347d93-4251-4532-801c-a36f2dfa7f96
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/caching-data/using-sql-cache-dependencies-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 74692fb7018cd75e29afc6d5852caddfdac1ed06
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 7929966d9eb82994b9d427d0c3fd7f08c41212fc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379849"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37821649"
 ---
 <a name="using-sql-cache-dependencies-vb"></a>Использование зависимостей кэша SQL (VB)
 ====================

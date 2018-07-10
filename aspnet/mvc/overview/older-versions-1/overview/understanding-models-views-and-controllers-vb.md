@@ -4,19 +4,16 @@ title: Общие сведения о моделях, представления
 author: StephenWalther
 description: Не понимаете, о моделях, представлениях и контроллерах? В этом руководстве Стивен Вальтер рассказывается о различных частях приложения ASP.NET MVC.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/19/2008
-ms.topic: article
 ms.assetid: a106374a-5e74-4fd0-9ac0-1a32280e5d0d
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c651201a34b9ab6b459d0f2ecf491b49feb64434
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 1c751972b0f59a3988e15eed0c6cff3bc566de0e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399903"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838732"
 ---
 <a name="understanding-models-views-and-controllers-vb"></a>Общие сведения о моделях, представлениях и контроллерах (VB)
 ====================
@@ -113,7 +110,7 @@ ms.locfileid: "37399903"
 
 Действие — подробности
 
-идентификатор = 3
+Идентификатор = 3
 
 Маршрут по умолчанию, определенные в файле Global.asax содержит значения по умолчанию для всех трех параметров. По умолчанию контроллера Home, действие по умолчанию используется индекс, а идентификатор по умолчанию является пустой строкой. Эти значения по умолчанию в виду рассмотрите как следующий URL-адрес анализируется:
 
@@ -129,7 +126,7 @@ ms.locfileid: "37399903"
 
 Наконец Если открыть приложения ASP.NET MVC, не указав любой URL-адрес (например, `http://localhost`) URL-адрес разбивается следующим образом:
 
-контроллер = Home
+Контроллер = Home
 
 Действие = индекс
 

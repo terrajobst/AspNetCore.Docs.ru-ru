@@ -4,19 +4,16 @@ title: Знакомство с веб-страниц ASP.NET — Приступ�
 author: tfitzmac
 description: WebMatrix не рекомендуется использовать как интегрированную среду разработки для веб-страниц ASP.NET. Используйте Visual Studio или Visual Studio Code. В этом руководстве...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/28/2015
-ms.topic: article
 ms.assetid: a36d3bdf-ef1b-47a4-b932-3a0cf4cad716
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 3717fe230f818f251ac5d0378701c28f6b427df8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: b4f554d2bf8bf564fd69239fcc7cc605158c83c3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382076"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825041"
 ---
 <a name="introducing-aspnet-web-pages---getting-started"></a>Знакомство с веб-страниц ASP.NET — Приступая к работе
 ====================

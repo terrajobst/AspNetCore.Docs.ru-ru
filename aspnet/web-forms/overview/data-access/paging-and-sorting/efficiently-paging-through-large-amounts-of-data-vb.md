@@ -4,19 +4,16 @@ title: Эффективное разбиение больших объемов �
 author: rick-anderson
 description: Возможности разбиения по страницам по умолчанию элемента управления представления данных не подходит при работе с большими объемами данных, таких как его retriev базового элемента управления источника данных...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/15/2006
-ms.topic: article
 ms.assetid: 3e20e64a-8808-4b49-88d6-014e2629d56f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7d3b9f816e8e940d3ba109aeaf6055616f38d12a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 9b00e18287bdb791a353b7ebd1bbb6cc0ab586b5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382683"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805510"
 ---
 <a name="efficiently-paging-through-large-amounts-of-data-vb"></a>Эффективное разбиение больших объемов данных (VB)
 ====================
