@@ -1,37 +1,37 @@
 ---
-title: Удостоверение формирования шаблонов в проектах ASP.NET Core
+title: Каркас удостоверений в проектах ASP.NET Core
 author: rick-anderson
-description: Дополнительные сведения о формировать удостоверения в проекте ASP.NET Core.
+description: Узнайте, как сформировать шаблон удостоверений в проекте ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 5/16/2018
 uid: security/authentication/scaffold-identity
 ms.openlocfilehash: cf6544d8b671f026c8466fa8dff506027b64cf1f
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276322"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38217686"
 ---
-# <a name="scaffold-identity-in-aspnet-core-projects"></a>Удостоверение формирования шаблонов в проектах ASP.NET Core
+# <a name="scaffold-identity-in-aspnet-core-projects"></a>Каркас удостоверений в проектах ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-Предоставляет ASP.NET Core 2.1 и более поздние версии [ASP.NET Core Identity](xref:security/authentication/identity) как [библиотеки классов Razor](xref:razor-pages/ui-class). Приложения, включающие удостоверение можно применить scaffolder выборочно Добавление исходного кода, содержащегося в библиотеке класса Razor идентификаторов (RCL). Можно создать исходный код, чтобы можно было изменить код и изменить поведение. Например можно указать scaffolder для создания кода, используемое при регистрации. Созданный код имеет приоритет над один и тот же код в RCL удостоверений. Чтобы получить полный контроль над пользовательского интерфейса и не использовать значение по умолчанию RCL, см. в разделе [создать полное удостоверение пользовательского интерфейса источника](#full).
+ASP.NET Core 2.1 и более поздних предоставляет [удостоверения ASP.NET Core](xref:security/authentication/identity) как [библиотеки классов Razor](xref:razor-pages/ui-class). Приложения, включающие удостоверение можно применить шаблон выборочно Добавление исходного кода, содержащегося в библиотеке класса Identity Razor (RCL). Вы можете создать исходный код, чтобы изменить код и тем самым изменить поведение. Например, вы можете указать шаблону создать код, используемый при регистрации. Созданный код имеет приоритет над тем же кодом в RCL для идентификаторов. Чтобы получить полный контроль над пользовательского интерфейса и не используйте значение по умолчанию RCL, см. в разделе [создать полное удостоверение пользовательского интерфейса источник](#full).
 
-Приложения, которые **не** включения проверки подлинности можно применить scaffolder Добавление RCL удостоверение пакета. У вас есть возможность выбрать удостоверение код должен быть создан.
+Приложения, которые **не** включения проверки подлинности можно применить шаблон для добавления пакета RCL удостоверений. Вы можете выбрать, какой код идентификатора будет создан.
 
-Несмотря на то, что scaffolder создает большую часть необходимый код, необходимо обновить проект, чтобы завершить процесс. В этом документе объясняется шаги, необходимые для завершения обновления удостоверения формирования шаблонов.
+Несмотря на то, что шаблон создает большую часть необходимый код, необходимо обновить проект так, чтобы завершить процесс. Этом документе описываются шаги, необходимые для завершения обновления удостоверений формирования шаблонов.
 
-При запуске удостоверения scaffolder *ScaffoldingReadme.txt* файл создается в каталоге проекта. *ScaffoldingReadme.txt* файл содержит общие инструкции, на что требуется для завершения обновления удостоверения формирования шаблонов. Этот документ содержит более подробные инструкции, чем *ScaffoldingReadme.txt* файла.
+При запуске шаблон удостоверений *ScaffoldingReadme.txt* файл создается в каталоге проекта. *ScaffoldingReadme.txt* файл содержит общие инструкции, на что нужно для завершения обновления удостоверений формирования шаблонов. Этот документ содержит более подробные инструкции, чем *ScaffoldingReadme.txt* файла.
 
-Мы рекомендуем использовать систему управления версиями, показаны различия в файл и дает возможность отката изменений. Проверьте изменения после выполнения scaffolder удостоверений.
+Мы рекомендуем использовать систему управления версиями, показаны различия в файл и дает возможность отката изменений. Какие изменения после выполнения шаблон удостоверений.
 
-## <a name="scaffold-identity-into-an-empty-project"></a>Удостоверение формирования шаблонов в пустой проект
+## <a name="scaffold-identity-into-an-empty-project"></a>Каркас identity в пустой проект
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-Добавьте следующий выделенный вызовы `Startup` класса:
+Добавьте следующие выделенные вызовы `Startup` класса:
 
 [!code-csharp[](scaffold-identity/sample/StartupEmpty.cs?name=snippet1&highlight=5,20-23)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "36276322"
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-## <a name="scaffold-identity-into-a-razor-project-without-existing-authorization"></a>Удостоверение формирования шаблонов в проект Razor без существующей авторизации
+## <a name="scaffold-identity-into-a-razor-project-without-existing-authorization"></a>Удостоверение шаблона в проект Razor без существующей авторизации
 
 <!--
 set projNam=RPnoAuth
@@ -57,7 +57,7 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-Удостоверение настраивается в *Areas/Identity/IdentityHostingStartup.cs*. Дополнительные сведения см. в разделе [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
+Удостоверение настроено в *Areas/Identity/IdentityHostingStartup.cs*. Дополнительные сведения см. в разделе [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 <a name="efm"></a>
 
@@ -73,11 +73,11 @@ dotnet ef database update
 
 ### <a name="layout-changes"></a>Изменение макета
 
-Необязательно: Добавьте имя входа частичного (`_LoginPartial`) файл макета:
+Необязательно: Добавьте частичное имя входа (`_LoginPartial`) с файлами макетов:
 
 [!code-html[Main](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
 
-## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a>Удостоверение формирования шаблонов в проект Razor с авторизации
+## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a>Удостоверение шаблона в проект Razor без авторизации
 
 <!--
 Use >=2.1: dotnet new webapp -au Individual -o RPauth
@@ -90,10 +90,9 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 [!INCLUDE[](~/includes/webapp-alias-notice.md)]
 -->
 
-[!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
-Некоторые параметры идентификаторов настраиваются в *Areas/Identity/IdentityHostingStartup.cs*. Дополнительные сведения см. в разделе [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
+[!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)] Некоторые параметры идентификаторов настраиваются в *Areas/Identity/IdentityHostingStartup.cs*. Дополнительные сведения см. в разделе [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
-## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>Удостоверение формирования шаблонов в проект MVC без существующей авторизации
+## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>Каркас удостоверений в проекте MVC без существующей авторизации
 
 <!--
 set projNam=MvcNoAuth
@@ -111,13 +110,13 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-Необязательно: Добавьте имя входа частичного (`_LoginPartial`) для *Views/Shared/_Layout.cshtml* файла:
+Необязательно: Добавьте частичное имя входа (`_LoginPartial`) для *Views/Shared/_Layout.cshtml* файла:
 
 [!code-html[](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
 
 * Переместить *Pages/Shared/_LoginPartial.cshtml* файл *Views/Shared/_LoginPartial.cshtml*
 
-Удостоверение настраивается в *Areas/Identity/IdentityHostingStartup.cs*. Дополнительные сведения см. в разделе IHostingStartup.
+Удостоверение настроено в *Areas/Identity/IdentityHostingStartup.cs*. Дополнительные сведения см. в разделе IHostingStartup.
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
@@ -127,7 +126,7 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/hsts.md)]
 
-## <a name="scaffold-identity-into-an-mvc-project-with-authorization"></a>Удостоверение формирования шаблонов в проект MVC с авторизации
+## <a name="scaffold-identity-into-an-mvc-project-with-authorization"></a>Каркас удостоверений в проекте MVC с авторизацией
 
 <!--
 dotnet new mvc -au Individual -o MvcAuth
@@ -139,19 +138,19 @@ dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext --fil
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
-Удалить *страниц/Общие* папки и файлы в этой папке.
+Удалить *страниц/Shared* папки и файлы в этой папке.
 
 <a name="full"></a>
 
 ## <a name="create-full-identity-ui-source"></a>Создать источник полное удостоверение пользовательского интерфейса
 
-Чтобы сохранить полный контроль удостоверения пользовательского интерфейса, запустите scaffolder удостоверений и выберите **переопределить все файлы**.
+Чтобы сохранить полный контроль удостоверение пользовательского интерфейса, запустите шаблон удостоверений и выберите **переопределить все файлы**.
 
-Следующий выделенный код показывает изменения, замените имя по умолчанию удостоверения пользовательского удостоверения в веб-приложение ASP.NET Core 2.1. Может потребоваться этого имеют полный контроль над удостоверения пользовательского интерфейса.
+Следующий выделенный код показывает изменения для замены стандартного пользовательского интерфейса удостоверения с удостоверением в веб-приложение ASP.NET Core 2.1. Может потребоваться сделать это для полного управления удостоверение пользовательского интерфейса.
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet1&highlight=13-14,17-999)]
 
-Значение по умолчанию удостоверение будет заменен в следующий код:
+По умолчанию удостоверение будет заменен в следующий код:
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet2)]
 
