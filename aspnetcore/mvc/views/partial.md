@@ -1,118 +1,195 @@
 ---
-title: Частичные представления в ASP.NET Core
+title: Частичные представления в ASP.NET Core
 author: ardalis
 description: Сведения о том, что частичное представление — это представление, отображаемое в другом представлении, и о сценариях их использования в приложениях ASP.NET Core.
 ms.author: riande
-ms.date: 03/14/2018
+ms.custom: mvc
+ms.date: 07/06/2018
 uid: mvc/views/partial
-ms.openlocfilehash: f3782961a63c08293a483ec7a75dadff2031b131
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 9f90ce39929d0dbc216b47d76d652c1fca866ec2
+ms.sourcegitcommit: a09820f91e71a7d98b7347bf93210abb9e995e22
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279536"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37889120"
 ---
-# <a name="partial-views-in-aspnet-core"></a><span data-ttu-id="0f8e9-103">Частичные представления в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="0f8e9-103">Partial Views in ASP.NET Core</span></span>
+# <a name="partial-views-in-aspnet-core"></a><span data-ttu-id="89498-103">Частичные представления в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="89498-103">Partial views in ASP.NET Core</span></span>
 
-<span data-ttu-id="0f8e9-104">Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith), [Махер Джендуби](https://twitter.com/maherjend) (Maher JENDOUBI), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Скотт Саубер](https://twitter.com/scottsauber) (Scott Sauber)</span><span class="sxs-lookup"><span data-stu-id="0f8e9-104">By [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT), and [Scott Sauber](https://twitter.com/scottsauber)</span></span>
+<span data-ttu-id="89498-104">Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith), [Махер Джендуби](https://twitter.com/maherjend) (Maher JENDOUBI), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Скотт Саубер](https://twitter.com/scottsauber) (Scott Sauber)</span><span class="sxs-lookup"><span data-stu-id="89498-104">By [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT), and [Scott Sauber](https://twitter.com/scottsauber)</span></span>
 
-<span data-ttu-id="0f8e9-105">В ASP.NET Core MVC поддерживаются частичные представления, которые полезны в том случае, если на веб-страницах есть повторяющиеся части, которые должны использоваться совместно в разных представлениях.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-105">ASP.NET Core MVC supports partial views, which are useful when you have reusable parts of web pages you want to share between different views.</span></span>
+<span data-ttu-id="89498-105">В ASP.NET Core MVC поддерживаются частичные представления, которые удобны для совместного использования повторяющихся частей на веб-страницах в разных представлениях.</span><span class="sxs-lookup"><span data-stu-id="89498-105">ASP.NET Core MVC supports partial views, which are useful for sharing reusable parts of web pages across different views.</span></span>
 
-<span data-ttu-id="0f8e9-106">[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="0f8e9-106">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="89498-106">[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="89498-106">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
 
-## <a name="what-are-partial-views"></a><span data-ttu-id="0f8e9-107">Что такое частичные представления</span><span class="sxs-lookup"><span data-stu-id="0f8e9-107">What are Partial Views?</span></span>
+## <a name="what-are-partial-views"></a><span data-ttu-id="89498-107">Что такое частичные представления</span><span class="sxs-lookup"><span data-stu-id="89498-107">What are partial views</span></span>
 
-<span data-ttu-id="0f8e9-108">Частичное представление — это представление, которое преобразовывается для просмотра внутри другого представления.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-108">A partial view is a view that's rendered within another view.</span></span> <span data-ttu-id="0f8e9-109">Выходные данные HTML, создаваемые при выполнении частичного представления, передаются в вызывающее (родительское) представление.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-109">The HTML output generated by executing the partial view is rendered into the calling (or parent) view.</span></span> <span data-ttu-id="0f8e9-110">Как и для обычных представлений, для частичных представлений используется расширение имени файла *CSHTML*.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-110">Like views, partial views use the *.cshtml* file extension.</span></span>
+<span data-ttu-id="89498-108">Частичное представление — это представление, которое преобразовывается для просмотра внутри другого представления.</span><span class="sxs-lookup"><span data-stu-id="89498-108">A partial view is a view that's rendered within another view.</span></span> <span data-ttu-id="89498-109">Выходные данные HTML, создаваемые при выполнении частичного представления, передаются в вызывающее (родительское) представление.</span><span class="sxs-lookup"><span data-stu-id="89498-109">The HTML output generated by executing the partial view is rendered into the calling (or parent) view.</span></span> <span data-ttu-id="89498-110">Как и для обычных представлений, для частичных представлений используется расширение имени файла *CSHTML*.</span><span class="sxs-lookup"><span data-stu-id="89498-110">Like views, partial views use the *.cshtml* file extension.</span></span>
 
-## <a name="when-should-i-use-partial-views"></a><span data-ttu-id="0f8e9-111">Когда следует использовать частичные представления</span><span class="sxs-lookup"><span data-stu-id="0f8e9-111">When Should I Use Partial Views?</span></span>
+<span data-ttu-id="89498-111">Например, шаблон проекта **веб-приложения** ASP.NET Core 2.1 содержит частичное представление *_CookieConsentPartial.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="89498-111">For example, the ASP.NET Core 2.1 **Web Application** project template includes a *_CookieConsentPartial.cshtml* partial view.</span></span> <span data-ttu-id="89498-112">Частичное представление загружается из *_Layout.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="89498-112">The partial view is loaded from within *_Layout.cshtml*:</span></span>
 
-<span data-ttu-id="0f8e9-112">Частичные представления — это эффективный способ разбиения больших представлений на более простые компоненты.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-112">Partial views are an effective way of breaking up large views into smaller components.</span></span> <span data-ttu-id="0f8e9-113">Они позволяют сократить дублирование содержимого и использовать элементы представлений повторно.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-113">They can reduce duplication of view content and allow view elements to be reused.</span></span> <span data-ttu-id="0f8e9-114">Общие элементы макета следует указывать в файле [_Layout.cshtml](layout.md).</span><span class="sxs-lookup"><span data-stu-id="0f8e9-114">Common layout elements should be specified in [_Layout.cshtml](layout.md).</span></span> <span data-ttu-id="0f8e9-115">Повторно используемое содержимое, не относящееся к макету, можно инкапсулировать в частичных представлениях.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-115">Non-layout reusable content can be encapsulated into partial views.</span></span>
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Shared/_Layout.cshtml?name=snippet_CookieConsentPartial)]
 
-<span data-ttu-id="0f8e9-116">Если имеется сложная страница, состоящая из нескольких логических частей, может быть удобнее работать с каждой из них как с отдельным частичным представлением.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-116">If you have a complex page made up of several logical pieces, it can be helpful to work with each piece as its own partial view.</span></span> <span data-ttu-id="0f8e9-117">Каждую часть страницы можно просматривать изолированно от остальных, а представление самой страницы становится гораздо проще, так как оно содержит только общую структуру страницы и вызывает частичные представления с целью преобразования для просмотра.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-117">Each piece of the page can be viewed in isolation from the rest of the page, and the view for the page itself becomes much simpler since it only contains the overall page structure and calls to render the partial views.</span></span>
+## <a name="when-to-use-partial-views"></a><span data-ttu-id="89498-113">Когда следует использовать частичные представления</span><span class="sxs-lookup"><span data-stu-id="89498-113">When to use partial views</span></span>
 
-<span data-ttu-id="0f8e9-118">Совет. Соблюдайте в представлениях [принцип "Не повторяйся"](http://deviq.com/don-t-repeat-yourself/).</span><span class="sxs-lookup"><span data-stu-id="0f8e9-118">Tip: Follow the [Don't Repeat Yourself Principle](http://deviq.com/don-t-repeat-yourself/) in your views.</span></span>
+<span data-ttu-id="89498-114">Частичные представления — это эффективный способ разбиения больших представлений на более простые компоненты.</span><span class="sxs-lookup"><span data-stu-id="89498-114">Partial views are an effective way of breaking up large views into smaller components.</span></span> <span data-ttu-id="89498-115">Они позволяют сократить дублирование содержимого и использовать элементы представлений повторно.</span><span class="sxs-lookup"><span data-stu-id="89498-115">They can reduce duplication of view content and allow view elements to be reused.</span></span> <span data-ttu-id="89498-116">Общие элементы макета следует указывать в файле [_Layout.cshtml](xref:mvc/views/layout).</span><span class="sxs-lookup"><span data-stu-id="89498-116">Common layout elements should be specified in [_Layout.cshtml](xref:mvc/views/layout).</span></span> <span data-ttu-id="89498-117">Повторно используемое содержимое, не относящееся к макету, можно инкапсулировать в частичных представлениях.</span><span class="sxs-lookup"><span data-stu-id="89498-117">Non-layout reusable content can be encapsulated into partial views.</span></span>
 
-## <a name="declaring-partial-views"></a><span data-ttu-id="0f8e9-119">Объявление частичных представлений</span><span class="sxs-lookup"><span data-stu-id="0f8e9-119">Declaring Partial Views</span></span>
+<span data-ttu-id="89498-118">На сложной странице, состоящей из нескольких логических частей, удобнее работать с каждой из них как с отдельным частичным представлением.</span><span class="sxs-lookup"><span data-stu-id="89498-118">In a complex page composed of several logical pieces, it's helpful to work with each piece as its own partial view.</span></span> <span data-ttu-id="89498-119">Каждый фрагмент страницы можно просмотреть отдельно от остальной страницы.</span><span class="sxs-lookup"><span data-stu-id="89498-119">Each piece of the page can be viewed in isolation from the rest of the page.</span></span> <span data-ttu-id="89498-120">Представление самой страницы становится проще, так как оно содержит только общую структуру страницы и вызовы для отображения частичных представлений.</span><span class="sxs-lookup"><span data-stu-id="89498-120">The view for the page itself becomes simpler, since it only contains the overall page structure and calls to render the partial views.</span></span>
 
-<span data-ttu-id="0f8e9-120">Частичные представления создаются так же, как и любые другие: нужно создать файл *CSHTML* в папке *Views*.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-120">Partial views are created like any other view: you create a *.cshtml* file within the *Views* folder.</span></span> <span data-ttu-id="0f8e9-121">Смыслового различия между частичным и обычным представлениями нет — они просто по-разному преобразовываются для просмотра.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-121">There's no semantic difference between a partial view and a regular view - they're just rendered differently.</span></span> <span data-ttu-id="0f8e9-122">Например, представление, возвращаемое из объекта `ViewResult`, может применяться как частичное представление.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-122">You can have a view that's returned directly from a controller's `ViewResult`, and the same view can be used as a partial view.</span></span> <span data-ttu-id="0f8e9-123">Основное различие между преобразованием обычных и частичных представлений для просмотра заключается в том, что частичные представления не запускают файл *_ViewStart.cshtml* (как это делают обычные представления; дополнительные сведения о файле *_ViewStart.cshtml* см. в статье [Макет](layout.md)).</span><span class="sxs-lookup"><span data-stu-id="0f8e9-123">The main difference between how a view and a partial view are rendered is that partial views don't run *_ViewStart.cshtml* (while views do - learn more about *_ViewStart.cshtml* in [Layout](layout.md)).</span></span>
+> [!TIP]
+> <span data-ttu-id="89498-121">Соблюдайте в представлениях [принцип "не повторяйся"](https://deviq.com/don-t-repeat-yourself/).</span><span class="sxs-lookup"><span data-stu-id="89498-121">Follow the [Don't Repeat Yourself Principle](https://deviq.com/don-t-repeat-yourself/) in your views.</span></span>
 
-## <a name="referencing-a-partial-view"></a><span data-ttu-id="0f8e9-124">Ссылка на частичное представление</span><span class="sxs-lookup"><span data-stu-id="0f8e9-124">Referencing a Partial View</span></span>
+## <a name="declare-partial-views"></a><span data-ttu-id="89498-122">Объявление частичных представлений</span><span class="sxs-lookup"><span data-stu-id="89498-122">Declare partial views</span></span>
 
-<span data-ttu-id="0f8e9-125">Частичное представление может преобразовываться для просмотра из страницы представления несколькими способами.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-125">From within a view page, there are several ways in which you can render a partial view.</span></span> <span data-ttu-id="0f8e9-126">Рекомендуется использовать метод `Html.PartialAsync`, который возвращает `IHtmlString` и на который можно ссылаться путем указания префикса `@` перед вызовом:</span><span class="sxs-lookup"><span data-stu-id="0f8e9-126">The best practice is to use `Html.PartialAsync`, which returns an `IHtmlString` and can be referenced by prefixing the call with `@`:</span></span>
+<span data-ttu-id="89498-123">Частичные представления создаются так же, как и обычные: &mdash;нужно создать файл *CSHTML* в папке *Views*.</span><span class="sxs-lookup"><span data-stu-id="89498-123">Partial views are created like a regular view&mdash;by creating a *.cshtml* file within the *Views* folder.</span></span> <span data-ttu-id="89498-124">Смыслового различия между частичным и обычным представлениями нет — они просто по-разному преобразовываются для просмотра.</span><span class="sxs-lookup"><span data-stu-id="89498-124">There's no semantic difference between a partial view and a regular view; however, they're rendered differently.</span></span> <span data-ttu-id="89498-125">Например, представление, возвращаемое из объекта [ViewResult](/dotnet/api/microsoft.aspnetcore.mvc.viewresult), может применяться как частичное представление.</span><span class="sxs-lookup"><span data-stu-id="89498-125">You can have a view that's returned directly from a controller's [ViewResult](/dotnet/api/microsoft.aspnetcore.mvc.viewresult), and the same view can be used as a partial view.</span></span> <span data-ttu-id="89498-126">Основное различие между преобразованием обычных и частичных представлений для просмотра заключается в том, что частичные представления не запускают файл *_ViewStart.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="89498-126">The main difference between how a view and a partial view are rendered is that partial views don't run *_ViewStart.cshtml*.</span></span> <span data-ttu-id="89498-127">Обычные представления запускают файл *_ViewStart.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="89498-127">Regular views do run *_ViewStart.cshtml*.</span></span> <span data-ttu-id="89498-128">Дополнительные сведения о *_ViewStart.cshtml* см. в разделе [Макет](xref:mvc/views/layout)).</span><span class="sxs-lookup"><span data-stu-id="89498-128">Learn more about *_ViewStart.cshtml* in [Layout](xref:mvc/views/layout)).</span></span>
 
-[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=8)]
+<span data-ttu-id="89498-129">Как правило, имена файлов частичного представления начинаются с `_`.</span><span class="sxs-lookup"><span data-stu-id="89498-129">As a convention, partial view file names often begin with `_`.</span></span> <span data-ttu-id="89498-130">Это соглашение об именовании не является обязательным требованием, но помогает отличать частичные представления от обычных.</span><span class="sxs-lookup"><span data-stu-id="89498-130">This naming convention isn't a requirement, but it helps to visually differentiate partial views from regular views.</span></span>
 
-<span data-ttu-id="0f8e9-127">Преобразовывать частичное представление для просмотра можно с помощью метода `RenderPartialAsync`.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-127">You can render a partial view with `RenderPartialAsync`.</span></span> <span data-ttu-id="0f8e9-128">Он не возвращает результат, а передает преобразованные выходные данные непосредственно в ответ в потоковом режиме.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-128">This method doesn't return a result; it streams the rendered output directly to the response.</span></span> <span data-ttu-id="0f8e9-129">Так как этот метод не возвращает результат, его необходимо вызывать в блоке кода Razor:</span><span class="sxs-lookup"><span data-stu-id="0f8e9-129">Because it doesn't return a result, it must be called within a Razor code block:</span></span>
+## <a name="reference-a-partial-view"></a><span data-ttu-id="89498-131">Ссылка на частичное представление</span><span class="sxs-lookup"><span data-stu-id="89498-131">Reference a partial view</span></span>
 
-[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=11-13)]
+<span data-ttu-id="89498-132">На странице представления частичное представление может преобразовываться для просмотра несколькими способами.</span><span class="sxs-lookup"><span data-stu-id="89498-132">Within a view page, there are several ways to render a partial view.</span></span> <span data-ttu-id="89498-133">Мы рекомендуем использовать асинхронную подготовку к просмотру.</span><span class="sxs-lookup"><span data-stu-id="89498-133">The best practice is to use asynchronous rendering.</span></span>
 
-<span data-ttu-id="0f8e9-130">Так как метод `RenderPartialAsync` передает результат в потоковом режиме напрямую, в некоторых ситуациях он может быть эффективнее.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-130">Because it streams the result directly, `RenderPartialAsync` may perform better in some scenarios.</span></span> <span data-ttu-id="0f8e9-131">Тем не менее рекомендуется использовать `PartialAsync`.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-131">However, it's recommended you use `PartialAsync`.</span></span>
+::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="0f8e9-132">Хотя существуют синхронные эквиваленты `Html.PartialAsync` (`Html.Partial`) и `Html.RenderPartialAsync` (`Html.RenderPartial`), не рекомендуется использовать их, поскольку в некоторых случаях возникает взаимоблокировка.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-132">While there are synchronous equivalents of `Html.PartialAsync` (`Html.Partial`) and `Html.RenderPartialAsync` (`Html.RenderPartial`), use of the synchronous equivalents isn't recommended because there are scenarios where they deadlock.</span></span> <span data-ttu-id="0f8e9-133">Синхронные методы будут недоступны в будущих версиях.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-133">The synchronous methods will be unavailable in future versions.</span></span>
+### <a name="partial-tag-helper"></a><span data-ttu-id="89498-134">Вспомогательная функция тега частичного представления</span><span class="sxs-lookup"><span data-stu-id="89498-134">Partial Tag Helper</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="0f8e9-134">Если представления должны выполнять код, рекомендованный подход заключается в использовании [компонента представления](view-components.md) вместо частичного представления.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-134">If your views need to execute code, the recommended pattern is to use a [view component](view-components.md) instead of a partial view.</span></span>
+<span data-ttu-id="89498-135">Для вспомогательной функции тега частичного представления требуется ASP.NET Core 2.1 или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="89498-135">The Partial Tag Helper requires ASP.NET Core 2.1 or later.</span></span> <span data-ttu-id="89498-136">Она преобразует страницы для просмотра асинхронно и использует синтаксис типа HTML.</span><span class="sxs-lookup"><span data-stu-id="89498-136">It renders asynchronously and uses an HTML-like syntax:</span></span>
 
-### <a name="partial-view-discovery"></a><span data-ttu-id="0f8e9-135">Обнаружение частичного представления</span><span class="sxs-lookup"><span data-stu-id="0f8e9-135">Partial View Discovery</span></span>
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_PartialTagHelper)]
 
-<span data-ttu-id="0f8e9-136">Ссылаясь на частичное представление, его расположение можно указывать несколькими способами.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-136">When referencing a partial view, you can refer to its location in several ways:</span></span>
+<span data-ttu-id="89498-137">Дополнительные сведения см. в разделе <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.</span><span class="sxs-lookup"><span data-stu-id="89498-137">For more information, see <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.</span></span>
+
+::: moniker-end
+
+### <a name="asynchronous-html-helper"></a><span data-ttu-id="89498-138">Асинхронный вспомогательный метод HTML</span><span class="sxs-lookup"><span data-stu-id="89498-138">Asynchronous HTML Helper</span></span>
+
+<span data-ttu-id="89498-139">Если вы используете вспомогательный метод HTML, мы рекомендуем использовать [PartialAsync](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partialasync#Microsoft_AspNetCore_Mvc_Rendering_HtmlHelperPartialExtensions_PartialAsync_Microsoft_AspNetCore_Mvc_Rendering_IHtmlHelper_System_String_).</span><span class="sxs-lookup"><span data-stu-id="89498-139">When using an HTML Helper, the best practice is to use [PartialAsync](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partialasync#Microsoft_AspNetCore_Mvc_Rendering_HtmlHelperPartialExtensions_PartialAsync_Microsoft_AspNetCore_Mvc_Rendering_IHtmlHelper_System_String_).</span></span> <span data-ttu-id="89498-140">Он возвращает тип [IHtmlContent](/dotnet/api/microsoft.aspnetcore.html.ihtmlcontent) в оболочке `Task`.</span><span class="sxs-lookup"><span data-stu-id="89498-140">It returns an [IHtmlContent](/dotnet/api/microsoft.aspnetcore.html.ihtmlcontent) type wrapped in a `Task`.</span></span> <span data-ttu-id="89498-141">Метод указывается с помощью префикса вызова `@`.</span><span class="sxs-lookup"><span data-stu-id="89498-141">The method is referenced by prefixing the call with `@`:</span></span>
+
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_PartialAsync)]
+
+<span data-ttu-id="89498-142">Вы также можете выполнить преобразование для просмотра частичного представления с помощью [RenderPartialAsync](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartialasync).</span><span class="sxs-lookup"><span data-stu-id="89498-142">Alternatively, you can render a partial view with [RenderPartialAsync](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartialasync).</span></span> <span data-ttu-id="89498-143">Этот метод не возвращает результат.</span><span class="sxs-lookup"><span data-stu-id="89498-143">This method doesn't return a result.</span></span> <span data-ttu-id="89498-144">Он передает выводимые данные непосредственно в ответ в потоковом режиме.</span><span class="sxs-lookup"><span data-stu-id="89498-144">It streams the rendered output directly to the response.</span></span> <span data-ttu-id="89498-145">Так как этот метод не возвращает результат, его необходимо вызывать в блоке кода Razor.</span><span class="sxs-lookup"><span data-stu-id="89498-145">Because the method doesn't return a result, it must be called within a Razor code block:</span></span>
+
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_RenderPartialAsync)]
+
+<span data-ttu-id="89498-146">Так как метод `RenderPartialAsync` передает результат в потоковом режиме напрямую, в некоторых ситуациях он может быть эффективнее.</span><span class="sxs-lookup"><span data-stu-id="89498-146">Since it streams the result directly, `RenderPartialAsync` may perform better in some scenarios.</span></span> <span data-ttu-id="89498-147">Тем не менее рекомендуется использовать `PartialAsync`.</span><span class="sxs-lookup"><span data-stu-id="89498-147">However, it's recommended that you use `PartialAsync`.</span></span>
+
+### <a name="synchronous-html-helper"></a><span data-ttu-id="89498-148">Синхронный вспомогательный метод HTML</span><span class="sxs-lookup"><span data-stu-id="89498-148">Synchronous HTML Helper</span></span>
+
+<span data-ttu-id="89498-149">[Partial](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partial) и [RenderPartial](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartial) — это синхронные эквиваленты `PartialAsync` и `RenderPartialAsync` соответственно.</span><span class="sxs-lookup"><span data-stu-id="89498-149">[Partial](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partial) and [RenderPartial](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartial) are the synchronous equivalents of `PartialAsync` and `RenderPartialAsync`, respectively.</span></span> <span data-ttu-id="89498-150">Не рекомендуется использовать синхронные эквиваленты, поскольку в некоторых случаях возникает взаимоблокировка.</span><span class="sxs-lookup"><span data-stu-id="89498-150">Use of the synchronous equivalents isn't recommended because there are scenarios in which they deadlock.</span></span> <span data-ttu-id="89498-151">Будущие выпуски не будут содержать синхронные методы.</span><span class="sxs-lookup"><span data-stu-id="89498-151">Future releases won't contain the synchronous methods.</span></span>
+
+> [!IMPORTANT]
+> <span data-ttu-id="89498-152">Если представления должны выполнять код, используйте [компонент представления](xref:mvc/views/view-components) вместо частичного представления.</span><span class="sxs-lookup"><span data-stu-id="89498-152">If your views need to execute code, use a [view component](xref:mvc/views/view-components) instead of a partial view.</span></span>
+
+::: moniker range=">= aspnetcore-2.1"
+
+<span data-ttu-id="89498-153">В ASP.NET Core 2.1 или более поздней версии вызов `Partial` или `RenderPartial` приводит к предупреждению об анализаторе.</span><span class="sxs-lookup"><span data-stu-id="89498-153">In ASP.NET Core 2.1 or later, calling `Partial` or `RenderPartial` results in an analyzer warning.</span></span> <span data-ttu-id="89498-154">Например, использование `Partial` выдает следующее предупреждающее сообщение.</span><span class="sxs-lookup"><span data-stu-id="89498-154">For example, usage of `Partial` yields the following warning message:</span></span>
+
+> <span data-ttu-id="89498-155">Использование IHtmlHelper.Partial может привести к взаимоблокировкам приложения.</span><span class="sxs-lookup"><span data-stu-id="89498-155">Use of IHtmlHelper.Partial may result in application deadlocks.</span></span> <span data-ttu-id="89498-156">Возможно, следует использовать вспомогательную функцию тега `<partial>` или `IHtmlHelper.PartialAsync`.</span><span class="sxs-lookup"><span data-stu-id="89498-156">Consider using `<partial>` Tag Helper or `IHtmlHelper.PartialAsync`.</span></span>
+
+<span data-ttu-id="89498-157">Замените вызовы к `@Html.Partial` на `@await Html.PartialAsync` или вспомогательную функцию тега частичного представления.</span><span class="sxs-lookup"><span data-stu-id="89498-157">Replace calls to `@Html.Partial` with `@await Html.PartialAsync` or the Partial Tag Helper.</span></span> <span data-ttu-id="89498-158">Дополнительные сведения о переносе вспомогательной функции тега частичного представления см. в разделе [Перенос из вспомогательного метода HTML](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper#migrate-from-an-html-helper).</span><span class="sxs-lookup"><span data-stu-id="89498-158">For more information on Partial Tag Helper migration, see [Migrate from an HTML Helper](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper#migrate-from-an-html-helper).</span></span>
+
+::: moniker-end
+
+## <a name="partial-view-discovery"></a><span data-ttu-id="89498-159">Обнаружение частичного представления</span><span class="sxs-lookup"><span data-stu-id="89498-159">Partial view discovery</span></span>
+
+<span data-ttu-id="89498-160">Ссылаясь на частичное представление, его расположение можно указывать несколькими способами.</span><span class="sxs-lookup"><span data-stu-id="89498-160">When referencing a partial view, you can refer to its location in several ways.</span></span> <span data-ttu-id="89498-161">Пример:</span><span class="sxs-lookup"><span data-stu-id="89498-161">For example:</span></span>
+
+::: moniker range=">= aspnetcore-2.1"
 
 ```cshtml
-// Uses a view in current folder with this name
-// If none is found, searches the Shared folder
-@await Html.PartialAsync("ViewName")
+// Uses a view in current folder with this name.
+// If none is found, searches the Shared folder.
+<partial name="_ViewName" />
 
 // A view with this name must be in the same folder
-@await Html.PartialAsync("ViewName.cshtml")
+<partial name="_ViewName.cshtml" />
 
-// Locate the view based on the application root
-// Paths that start with "/" or "~/" refer to the application root
-@await Html.PartialAsync("~/Views/Folder/ViewName.cshtml")
-@await Html.PartialAsync("/Views/Folder/ViewName.cshtml")
+// Locate the view based on the app root.
+// Paths that start with "/" or "~/" refer to the app root.
+<partial name="~/Views/Folder/_ViewName.cshtml" />
+<partial name="/Views/Folder/_ViewName.cshtml" />
 
-// Locate the view using relative paths
-@await Html.PartialAsync("../Account/LoginPartial.cshtml")
+// Locate the view using a relative path
+<partial name="../Account/_LoginPartial.cshtml" />
 ```
 
-<span data-ttu-id="0f8e9-137">В разных папках представлений могут быть разные частичные представления с одинаковыми именами.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-137">You can have different partial views with the same name in different view folders.</span></span> <span data-ttu-id="0f8e9-138">При обращении к представлениям по имени (без указания расширения имени файла) представление в каждой папке будет использовать частичное представление из той же папки.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-138">When referencing the views by name (without file extension), views in each folder will use the partial view in the same folder with them.</span></span> <span data-ttu-id="0f8e9-139">Можно также определить частичное представление по умолчанию, поместив его в папку *Shared*.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-139">You can also specify a default partial view to use, placing it in the *Shared* folder.</span></span> <span data-ttu-id="0f8e9-140">Общее частичное представление будет использоваться всеми представлениями, у которых нет собственного частичного представления.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-140">The shared partial view will be used by any views that don't have their own version of the partial view.</span></span> <span data-ttu-id="0f8e9-141">Частичное представление по умолчанию (в папке *Shared*) может переопределяться частичным представлением с тем же именем, которое находится в одной папке с родительским представлением.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-141">You can have a default partial view (in *Shared*), which is overridden by a partial view with the same name in the same folder as the parent view.</span></span>
+<span data-ttu-id="89498-162">В предыдущем примере используется вспомогательная функция тега частичного представления, для которой требуется ASP.NET Core 2.1 или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="89498-162">The preceding example uses the Partial Tag Helper, which requires ASP.NET Core 2.1 or later.</span></span> <span data-ttu-id="89498-163">В следующем примере используются асинхронные вспомогательные методы HTML для выполнения той же задачи.</span><span class="sxs-lookup"><span data-stu-id="89498-163">The following example uses asynchronous HTML Helpers to accomplish the same task.</span></span>
 
-<span data-ttu-id="0f8e9-142">Частичные представления могут *объединяться в цепочки*,</span><span class="sxs-lookup"><span data-stu-id="0f8e9-142">Partial views can be *chained*.</span></span> <span data-ttu-id="0f8e9-143">то есть одно частичное представление может вызывать другое (если при этом не образуется цикл).</span><span class="sxs-lookup"><span data-stu-id="0f8e9-143">That is, a partial view can call another partial view (as long as you don't create a loop).</span></span> <span data-ttu-id="0f8e9-144">В каждом обычном или частичном представлении относительные пути всегда указываются относительно данного представления, а не корневого или родительского.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-144">Within each view or partial view, relative paths are always relative to that view, not the root or parent view.</span></span>
+::: moniker-end
+
+```cshtml
+// Uses a view in current folder with this name.
+// If none is found, searches the Shared folder.
+@await Html.PartialAsync("_ViewName")
+
+// A view with this name must be in the same folder
+@await Html.PartialAsync("_ViewName.cshtml")
+
+// Locate the view based on the app root.
+// Paths that start with "/" or "~/" refer to the app root.
+@await Html.PartialAsync("~/Views/Folder/_ViewName.cshtml")
+@await Html.PartialAsync("/Views/Folder/_ViewName.cshtml")
+
+// Locate the view using a relative path
+@await Html.PartialAsync("../Account/_LoginPartial.cshtml")
+```
+
+<span data-ttu-id="89498-164">В разных папках представлений могут быть разные частичные представления с одинаковыми именами.</span><span class="sxs-lookup"><span data-stu-id="89498-164">You can have different partial views with the same file name in different view folders.</span></span> <span data-ttu-id="89498-165">При обращении к представлениям по имени (без указания расширения файла) представление в каждой папке будет использовать частичное представление из той же папки.</span><span class="sxs-lookup"><span data-stu-id="89498-165">When referencing the views by name (without a file extension), views in each folder use the partial view in the same folder with them.</span></span> <span data-ttu-id="89498-166">Можно также определить частичное представление по умолчанию, поместив его в папку *Shared*.</span><span class="sxs-lookup"><span data-stu-id="89498-166">You can also specify a default partial view to use, placing it in the *Shared* folder.</span></span> <span data-ttu-id="89498-167">Общее частичное представление будет использоваться всеми представлениями, у которых нет собственного частичного представления.</span><span class="sxs-lookup"><span data-stu-id="89498-167">The shared partial view is used by any views that don't have their own version of the partial view.</span></span> <span data-ttu-id="89498-168">Частичное представление по умолчанию (в папке *Shared*) может переопределяться частичным представлением с тем же именем, которое находится в одной папке с родительским представлением.</span><span class="sxs-lookup"><span data-stu-id="89498-168">You can have a default partial view (in *Shared*), which is overridden by a partial view with the same name in the same folder as the parent view.</span></span>
+
+<span data-ttu-id="89498-169">Частичные представления могут *выстраиваться цепочкой,* &mdash;то есть одно частичное представление может вызывать другое (если при этом не образуется цикл).</span><span class="sxs-lookup"><span data-stu-id="89498-169">Partial views can be *chained*&mdash;a partial view can call another partial view (as long as you don't create a loop).</span></span> <span data-ttu-id="89498-170">В каждом обычном или частичном представлении относительные пути всегда указываются относительно данного представления, а не корневого или родительского.</span><span class="sxs-lookup"><span data-stu-id="89498-170">Within each view or partial view, relative paths are always relative to that view, not to the root or parent view.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="0f8e9-145">При объявлении раздела `section` [Razor](razor.md) в частичном представлении он будет недоступен родительским представлениям, то есть он будет ограничен данным частичным представлением.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-145">If you declare a [Razor](razor.md) `section` in a partial view, it will not be visible to its parent(s); it will be limited to the partial view.</span></span>
+> <span data-ttu-id="89498-171">Объект [Razor](xref:mvc/views/razor) `section`, определенный в частичном представлении, невидим для родительских представлений.</span><span class="sxs-lookup"><span data-stu-id="89498-171">A [Razor](xref:mvc/views/razor) `section` defined in a partial view is invisible to parents views.</span></span> <span data-ttu-id="89498-172">Объект `section` видим только для частичного представления, в котором он определен.</span><span class="sxs-lookup"><span data-stu-id="89498-172">The `section` is only visible to the partial view in which it's defined.</span></span>
 
-## <a name="accessing-data-from-partial-views"></a><span data-ttu-id="0f8e9-146">Доступ к данным из частичных представлений</span><span class="sxs-lookup"><span data-stu-id="0f8e9-146">Accessing Data From Partial Views</span></span>
+## <a name="access-data-from-partial-views"></a><span data-ttu-id="89498-173">Доступ к данным из частичных представлений</span><span class="sxs-lookup"><span data-stu-id="89498-173">Access data from partial views</span></span>
 
-<span data-ttu-id="0f8e9-147">Когда создается экземпляр частичного представления, он получает копию словаря `ViewData` родительского представления.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-147">When a partial view is instantiated, it gets a copy of the parent view's `ViewData` dictionary.</span></span> <span data-ttu-id="0f8e9-148">Изменения, вносимые в данные в частичном представлении, не сохраняются в родительском представлении.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-148">Updates made to the data within the partial view are not persisted to the parent view.</span></span> <span data-ttu-id="0f8e9-149">Например, изменения объекта `ViewData` в частичном представлении утрачиваются при возврате управления из этого представления.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-149">`ViewData` changed in a partial view is lost when the partial view returns.</span></span>
+<span data-ttu-id="89498-174">Когда создается экземпляр частичного представления, он получает копию словаря `ViewData` родительского представления.</span><span class="sxs-lookup"><span data-stu-id="89498-174">When a partial view is instantiated, it gets a copy of the parent view's `ViewData` dictionary.</span></span> <span data-ttu-id="89498-175">Изменения, вносимые в данные в частичном представлении, не сохраняются в родительском представлении.</span><span class="sxs-lookup"><span data-stu-id="89498-175">Updates made to the data within the partial view aren't persisted to the parent view.</span></span> <span data-ttu-id="89498-176">Изменения объекта `ViewData` в частичном представлении утрачиваются при возврате этого представления.</span><span class="sxs-lookup"><span data-stu-id="89498-176">`ViewData` changes in a partial view are lost when the partial view returns.</span></span>
 
-<span data-ttu-id="0f8e9-150">В частичное представление можно передать экземпляр `ViewDataDictionary`:</span><span class="sxs-lookup"><span data-stu-id="0f8e9-150">You can pass an instance of `ViewDataDictionary` to the partial view:</span></span>
-
-```cshtml
-@await Html.PartialAsync("PartialName", customViewData)
-```
-
-<span data-ttu-id="0f8e9-151">В частичное представление можно также передать модель.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-151">You can also pass a model into a partial view.</span></span> <span data-ttu-id="0f8e9-152">Это может быть модель представления страницы или пользовательский объект.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-152">This can be the page's view model or a custom object.</span></span> <span data-ttu-id="0f8e9-153">Модель можно передать в метод `PartialAsync` или `RenderPartialAsync`:</span><span class="sxs-lookup"><span data-stu-id="0f8e9-153">You can pass a model to `PartialAsync` or `RenderPartialAsync`:</span></span>
+<span data-ttu-id="89498-177">В частичное представление можно передать экземпляр [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary).</span><span class="sxs-lookup"><span data-stu-id="89498-177">You can pass an instance of [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) to the partial view:</span></span>
 
 ```cshtml
-@await Html.PartialAsync("PartialName", viewModel)
+@await Html.PartialAsync("_PartialName", customViewData)
 ```
 
-<span data-ttu-id="0f8e9-154">В частичное представление можно передать экземпляр `ViewDataDictionary` и модель представления:</span><span class="sxs-lookup"><span data-stu-id="0f8e9-154">You can pass an instance of `ViewDataDictionary` and a view model to a partial view:</span></span>
+<span data-ttu-id="89498-178">В частичное представление можно передать модель.</span><span class="sxs-lookup"><span data-stu-id="89498-178">You can pass a model into a partial view.</span></span> <span data-ttu-id="89498-179">Это может быть модель представления страницы или пользовательский объект.</span><span class="sxs-lookup"><span data-stu-id="89498-179">The model can be the page's view model or a custom object.</span></span> <span data-ttu-id="89498-180">Модель можно передать в метод `PartialAsync` или `RenderPartialAsync`:</span><span class="sxs-lookup"><span data-stu-id="89498-180">You can pass a model to `PartialAsync` or `RenderPartialAsync`:</span></span>
 
-[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml?range=15-16)]
+```cshtml
+@await Html.PartialAsync("_PartialName", viewModel)
+```
 
-<span data-ttu-id="0f8e9-155">В приведенной ниже разметке показано представление *Views/Articles/Read.cshtml*, содержащее два частичных представления.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-155">The markup below shows the *Views/Articles/Read.cshtml* view which contains two partial views.</span></span> <span data-ttu-id="0f8e9-156">Второе частичное представление передает модель и объект `ViewData` в первое частичное представление.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-156">The second partial view passes in a model and `ViewData` to the partial view.</span></span> <span data-ttu-id="0f8e9-157">Вы можете передать новый словарь `ViewData`, сохранив существующий `ViewData`. Для этого используйте перегрузку конструктора `ViewDataDictionary`, выделенную ниже.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-157">You can pass new `ViewData` dictionary while retaining the existing `ViewData` if you use the constructor overload of the `ViewDataDictionary` highlighted below:</span></span>
+<span data-ttu-id="89498-181">В частичное представление можно передать экземпляр `ViewDataDictionary` и модель представления:</span><span class="sxs-lookup"><span data-stu-id="89498-181">You can pass an instance of `ViewDataDictionary` and a view model to a partial view:</span></span>
 
-[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml)]
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_PartialAsync)]
 
-<span data-ttu-id="0f8e9-158">*Views/Shared/AuthorPartial*:</span><span class="sxs-lookup"><span data-stu-id="0f8e9-158">*Views/Shared/AuthorPartial*:</span></span>
+<span data-ttu-id="89498-182">В приведенной ниже разметке показано представление *Views/Articles/Read.cshtml*, содержащее два частичных представления.</span><span class="sxs-lookup"><span data-stu-id="89498-182">The following markup shows the *Views/Articles/Read.cshtml* view, which contains two partial views.</span></span> <span data-ttu-id="89498-183">Второе частичное представление передает модель и объект `ViewData` в первое частичное представление.</span><span class="sxs-lookup"><span data-stu-id="89498-183">The second partial view passes in a model and `ViewData` to the partial view.</span></span> <span data-ttu-id="89498-184">Используйте выделенную перегрузку конструктора `ViewDataDictionary`, чтобы передать новый словарь `ViewData` и при этом сохранить существующий словарь `ViewData`.</span><span class="sxs-lookup"><span data-stu-id="89498-184">Use the highlighted `ViewDataDictionary` constructor overload to pass a new `ViewData` dictionary while retaining the existing `ViewData` dictionary.</span></span>
 
-[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Shared/AuthorPartial.cshtml)]
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=17-20)]
 
-<span data-ttu-id="0f8e9-159">Частичное представление *ArticleSection*:</span><span class="sxs-lookup"><span data-stu-id="0f8e9-159">The *ArticleSection* partial:</span></span>
+<span data-ttu-id="89498-185">*Views/Shared/_AuthorPartial*</span><span class="sxs-lookup"><span data-stu-id="89498-185">*Views/Shared/_AuthorPartial*:</span></span>
 
-[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Articles/ArticleSection.cshtml)]
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Shared/_AuthorPartial.cshtml)]
 
-<span data-ttu-id="0f8e9-160">Во время выполнения частичные представления преобразовываются для просмотра внутри родительского представления, которое само преобразовывается для просмотра в общем макете *_Layout.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="0f8e9-160">At runtime, the partials are rendered into the parent view, which itself is rendered within the shared *_Layout.cshtml*</span></span>
+<span data-ttu-id="89498-186">Частичное представление *_ArticleSection*</span><span class="sxs-lookup"><span data-stu-id="89498-186">The *_ArticleSection* partial:</span></span>
+
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/_ArticleSection.cshtml)]
+
+<span data-ttu-id="89498-187">Во время выполнения частичные представления преобразовываются для просмотра внутри родительского представления, которое само преобразовывается для просмотра в общем макете *_Layout.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="89498-187">At runtime, the partials are rendered into the parent view, which itself is rendered within the shared *_Layout.cshtml*.</span></span>
 
 ![выходные данные частичного представления](partial/_static/output.png)
+
+## <a name="additional-resources"></a><span data-ttu-id="89498-189">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="89498-189">Additional resources</span></span>
+
+::: moniker range=">= aspnetcore-2.1"
+
+* <xref:mvc/views/razor>
+* <xref:mvc/views/tag-helpers/intro>
+* <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>
+* <xref:mvc/views/view-components>
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+* <xref:mvc/views/razor>
+* <xref:mvc/views/view-components>
+
+::: moniker-end
