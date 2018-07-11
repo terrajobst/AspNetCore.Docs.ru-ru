@@ -2,16 +2,17 @@
 title: Поддержка WebSockets в ASP.NET Core
 author: rick-anderson
 description: Сведения о начале работы с WebSocket в ASP.NET Core.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/15/2018
+ms.date: 06/28/2018
 uid: fundamentals/websockets
-ms.openlocfilehash: ee529f1aaadb6b6062bed56003c51f161eae7e72
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: a9fe13ef7895ea3ab43257dbbaf4521f883c0804
+ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273801"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37433991"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Поддержка WebSockets в ASP.NET Core
 
@@ -46,16 +47,9 @@ ms.locfileid: "36273801"
 
 Используйте WebSocket для работы с подключением через сокет напрямую. Например, можно использовать WebSocket для оптимальной производительности игры в режиме реального времени.
 
-[ASP.NET SignalR](/aspnet/signalr/overview/getting-started/introduction-to-signalr) предоставляет расширенную модель приложения для функций реального времени, однако работает только в ASP.NET 4.x, но не в ASP.NET Core. Версия SignalR в ASP.NET Core будет выпущена в ASP.NET Core 2.1. См. [Планирование высокого уровня в ASP.NET Core 2.1](https://github.com/aspnet/Announcements/issues/288).
+[ASP.NET Core SignalR](xref:signalr/introduction) — это библиотека, которая упрощает добавление веб-функций в приложения в режиме реального времени. Она использует WebSocket, когда это возможно.
 
-До выпуска SignalR Core можно использовать WebSocket. Но функции, предоставляемые SignalR, должны предоставляться и поддерживаться разработчиком. Пример:
-
-* Поддержка расширенного набора версий браузеров с автоматическим возвратом к альтернативным методам передачи.
-* Автоматическое переподключение в случае разрыва соединения.
-* Поддержка методов вызова клиента на сервере или наоборот.
-* Поддержка масштабирования до нескольких серверов.
-
-## <a name="how-to-use-it"></a>Использование
+## <a name="how-to-use-websockets"></a>Как использовать WebSocket
 
 * Установка пакета [Microsoft.AspNetCore.WebSockets](https://www.nuget.org/packages/Microsoft.AspNetCore.WebSockets/).
 * Настройка ПО промежуточного слоя.

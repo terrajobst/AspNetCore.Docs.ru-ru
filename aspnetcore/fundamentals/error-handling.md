@@ -1,38 +1,54 @@
 ---
 title: Обработка ошибок в ASP.NET Core
 author: ardalis
-description: Узнайте, как обрабатывать ошибки в приложениях ASP.NET Core.
+description: Узнайте, как обрабатывать ошибки в приложениях ASP.NET Core.
 ms.author: tdykstra
-ms.custom: H1Hack27Feb2017
-ms.date: 11/30/2016
+ms.custom: mvc
+ms.date: 07/05/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: 2fe46ecc32d61a7fafb2ad6e2a35456476608251
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 126a782bfd32f9ecd0596045218371ef5ccc82f2
+ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273713"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37894144"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Обработка ошибок в ASP.NET Core
 
 Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith) и [Том Дакстра](https://github.com/tdykstra/) (Tom Dykstra)
 
-В этой статье рассматриваются основные методы обработки ошибок в приложениях ASP.NET Core.
+В этой статье рассматриваются основные методы обработки ошибок в приложениях ASP.NET Core.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/2.x/ErrorHandlingSample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="the-developer-exception-page"></a>Страница со сведениями об исключении для разработчика
 
-Чтобы настроить вывод в приложении страницы с подробными сведениями об исключениях, установите пакет NuGet `Microsoft.AspNetCore.Diagnostics` и добавьте строку в [метод Configure в классе Startup](xref:fundamentals/startup):
+::: moniker range=">= aspnetcore-2.1"
 
-[!code-csharp[](error-handling/sample/Startup.cs?name=snippet_DevExceptionPage&highlight=7)]
+Чтобы настроить приложение для отображения страницы с подробными сведениями об исключениях, используйте *страницу исключений для разработчика*. Эта страница доступна в пакете [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) в [метапакете Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Добавьте строку в метод `Startup.Configure`.
 
-Поместите метод `UseDeveloperExceptionPage` перед каждым промежуточным слоем, в котором нужно перехватывать исключения, например `app.UseMvc`.
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Чтобы настроить приложение для отображения страницы с подробными сведениями об исключениях, используйте *страницу исключений для разработчика*. Эта страница доступна в пакете [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) в [метапакете Microsoft.AspNetCore.All](xref:fundamentals/metapackage). Добавьте строку в метод `Startup.Configure`.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Чтобы настроить приложение для отображения страницы с подробными сведениями об исключениях, используйте *страницу исключений для разработчика*. Чтобы использовать страницу, добавьте ссылку на пакет [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) в файл проекта. Добавьте строку в метод `Startup.Configure`.
+
+::: moniker-end
+
+[!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevExceptionPage&highlight=7)]
+
+Поместите вызов к [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage) перед другим ПО промежуточного слоя, где требуется перехватывать исключения, например `app.UseMvc`.
 
 >[!WARNING]
 > Включать страницу со сведениями об исключении для разработчика следует **только тогда, когда приложение выполняется в среде разработки**. Подробные сведения об исключениях не должны быть общедоступными при выполнении приложения в рабочей среде. [Дополнительные сведения о настройке сред](xref:fundamentals/environments).
 
-Чтобы увидеть страницу со сведениями об исключении для разработчика, запустите образец приложения, указав среду `Development`, и добавьте элемент `?throw=true` к базовому URL-адресу приложения. Страница содержит несколько вкладок со сведениями об исключении и запросе. На первой вкладке приводится трассировка стека. 
+Чтобы увидеть страницу со сведениями об исключении для разработчика, запустите образец приложения, указав среду `Development`, и добавьте элемент `?throw=true` к базовому URL-адресу приложения. Страница содержит несколько вкладок со сведениями об исключении и запросе. На первой вкладке приводится трассировка стека.
 
 ![Трассировка стека](error-handling/_static/developer-exception-page.png)
 
@@ -40,7 +56,7 @@ ms.locfileid: "36273713"
 
 ![Параметры строки запроса](error-handling/_static/developer-exception-page-query.png)
 
-У этого запроса не было файлов cookie, но если бы они были, они бы отображались на вкладке **Cookies** (Файлы cookie). На последней вкладке можно просмотреть переданные заголовки.
+Если запрос содержит файлы cookie, они отображаются на вкладке **Cookie**. Заголовки отображаются на последней вкладке.
 
 ![Заголовки](error-handling/_static/developer-exception-page-headers.png)
 
@@ -48,7 +64,7 @@ ms.locfileid: "36273713"
 
 Если приложение выполняется не в среде `Development`, настройте страницу обработчика исключений.
 
-[!code-csharp[](error-handling/sample/Startup.cs?name=snippet_DevExceptionPage&highlight=11)]
+[!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevExceptionPage&highlight=11)]
 
 В приложении Razor Pages шаблон Razor Pages [dotnet new](/dotnet/core/tools/dotnet-new) предоставляет страницу ошибок и класс модели страницы `ErrorModel` в папке *Pages*.
 
@@ -60,7 +76,8 @@ ms.locfileid: "36273713"
 [AllowAnonymous]
 public IActionResult Error()
 {
-    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    return View(new ErrorViewModel 
+        { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 }
 ```
 
@@ -72,13 +89,13 @@ public IActionResult Error()
 app.UseStatusCodePages();
 ```
 
-По умолчанию это ПО промежуточного слоя добавляет простые текстовые обработчики для распространенных кодов состояния, например 404:
+По умолчанию это ПО промежуточного слоя добавляет текстовые обработчики для распространенных кодов состояния, например 404.
 
 ![Страница 404](error-handling/_static/default-404-status-code.png)
 
 ПО промежуточного слоя поддерживает несколько методов расширения. Один метод принимает лямбда-выражение:
 
-[!code-csharp[](error-handling/sample/Startup.cs?name=snippet_StatusCodePages)]
+[!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePages)]
 
 Другой метод принимает строку формата и типа содержимого:
 
@@ -86,9 +103,9 @@ app.UseStatusCodePages();
 app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
 ```
 
-Имеются также методы расширения для перенаправления и повторного выполнения. Метод перенаправления отправляет клиенту код состояния 302:
+Имеются также методы расширения для перенаправления и повторного выполнения. Метод перенаправления отправляет клиенту код состояния *302 Found*.
 
-[!code-csharp[](error-handling/sample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
+[!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
 
 Метод повторного выполнения возвращает исходный код состояния клиенту, а также выполняет обработчик для URL-адреса перенаправления:
 
@@ -130,10 +147,15 @@ if (statusCodePagesFeature != null)
 
 <h3>Development Mode</h3>
 <p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
+    Swapping to <strong>Development</strong> environment will display more detailed 
+    information about the error that occurred.
 </p>
 <p>
-    <strong>Development environment should not be enabled in deployed applications</strong>, as it can result in sensitive information from exceptions being displayed to end users. For local debugging, development environment can be enabled by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>, and restarting the application.
+    <strong>Development environment should not be enabled in deployed applications
+    </strong>, as it can result in sensitive information from exceptions being 
+    displayed to end users. For local debugging, development environment can be 
+    enabled by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment 
+    variable to <strong>Development</strong>, and restarting the application.
 </p>
 ```
 
@@ -146,7 +168,8 @@ public class ErrorModel : PageModel
 
     public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, 
+        NoStore = true)]
     public void OnGet()
     {
         RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
@@ -178,13 +201,18 @@ public class ErrorModel : PageModel
 
 ### <a name="exception-filters"></a>Фильтры исключений
 
-Фильтры исключений можно настраивать глобально либо для отдельных контроллеров, либо для действий в приложении MVC. Эти фильтры обрабатывают все необработанные исключения, которые возникают во время выполнения действия контроллера или другого фильтра. Иным образом они не вызываются. Дополнительные сведения о фильтрах исключений см. в статье [Фильтры](xref:mvc/controllers/filters).
+Фильтры исключений можно настраивать глобально либо для отдельных контроллеров, либо для действий в приложении MVC. Эти фильтры обрабатывают все необработанные исключения, которые возникают во время выполнения действия контроллера или другого фильтра. Иным образом они не вызываются. Дополнительные сведения см. в разделе [Фильтры](xref:mvc/controllers/filters).
 
 > [!TIP]
-> Фильтры исключений хорошо подходят для перехвата исключений, которые происходят в действиях MVC, однако они не так гибки, как ПО промежуточного слоя для обработки ошибок. ПО промежуточного слоя предпочтительнее для общих случаев. Фильтры следует использовать только тогда, когда обработка ошибок должна осуществляться *по-разному* в зависимости от выбранного действия MVC.
+> Фильтры исключений хорошо подходят для перехвата исключений, которые происходят в действиях MVC, однако они не так гибки, как ПО промежуточного слоя для обработки ошибок. Лучше выбирать ПО промежуточного слоя и использовать фильтры только тогда, когда обработка ошибок должна осуществляться *по-разному* в зависимости от выбранного действия MVC.
 
 ### <a name="handling-model-state-errors"></a>Обработка ошибок состояния модели
 
 [Проверка модели](xref:mvc/models/validation) проводится перед вызовом каждого действия контроллера. Метод действия отвечает за проверку свойства `ModelState.IsValid` и соответствующую реакцию.
 
 В некоторых приложениях соблюдается стандартное соглашение об обработке ошибок проверки модели. В этом случае подходящим местом для реализации такой политики может быть [фильтр](xref:mvc/controllers/filters). Следует проверить, как выполняются действия при недопустимых состояниях модели. Дополнительные сведения см. в статье [Тестирование логики контроллера](xref:mvc/controllers/testing).
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* <xref:host-and-deploy/azure-iis-errors-reference>
+* <xref:host-and-deploy/azure-apps/troubleshoot>

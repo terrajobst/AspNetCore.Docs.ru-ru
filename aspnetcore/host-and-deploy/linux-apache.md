@@ -6,12 +6,12 @@ ms.author: spboyer
 ms.custom: mvc
 ms.date: 03/13/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: c46c0aa578867ce306adc67a2e0d8b650b5fa5bd
-ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
+ms.openlocfilehash: d02fbd82be37e6d67214a9a0bf5851662b577cb9
+ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960896"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37433978"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -154,7 +154,7 @@ Complete!
 </VirtualHost>
 ```
 
-Блок `VirtualHost` может встречаться несколько раз в одном или нескольких файлах на сервере. С представленным выше файлом конфигурации Apache принимает трафик от любого источника через порт 80. Он обслуживает домен `www.example.com`, а псевдоним `*.example.com` указывает на тот же веб-сайт. Дополнительные сведения см. в статье [о поддержке виртуальных узлов на основе имен](https://httpd.apache.org/docs/current/vhosts/name-based.html). Запросы к корневому каталогу перенаправляются на порт 5000 того же сервера по адресу 127.0.0.1. Для двусторонней связи требуются `ProxyPass` и `ProxyPassReverse`.
+Блок `VirtualHost` может встречаться несколько раз в одном или нескольких файлах на сервере. С представленным выше файлом конфигурации Apache принимает трафик от любого источника через порт 80. Он обслуживает домен `www.example.com`, а псевдоним `*.example.com` указывает на тот же веб-сайт. Дополнительные сведения см. в статье [о поддержке виртуальных узлов на основе имен](https://httpd.apache.org/docs/current/vhosts/name-based.html). Запросы к корневому каталогу перенаправляются на порт 5000 того же сервера по адресу 127.0.0.1. Для двусторонней связи требуются `ProxyPass` и `ProxyPassReverse`. Сведения о том, как изменить IP-адрес/порт Kestrel, см. в разделе [Kestrel: конфигурация конечной точки](xref:fundamentals/servers/kestrel#endpoint-configuration).
 
 > [!WARNING]
 > Если не удастся указать правильную [директиву ServerName](https://httpd.apache.org/docs/current/mod/core.html#servername) в блоке **VirtualHost**, приложение будет иметь значительные уязвимости. Привязки с подстановочными знаками на уровне дочерних доменов (например, `*.example.com`) не создают таких угроз безопасности, если вы полностью контролируете родительский домен (в отличие от варианта `*.com`, создающего уязвимость). Дополнительные сведения см. в документе [rfc7230, раздел 5.4](https://tools.ietf.org/html/rfc7230#section-5.4).

@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 718cc83bb29c0cff323853d22c107e00616b1dd1
-ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
+ms.openlocfilehash: bce09a500160f0bf13926786d277f8b1e88c1bf8
+ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37126239"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37894261"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -40,7 +40,7 @@ ms.locfileid: "37126239"
 
    * Вызовите [host.RunAsService](/dotnet/api/microsoft.aspnetcore.hosting.windowsservices.webhostwindowsserviceextensions.runasservice) вместо `host.Run`.
 
-   * Если код вызывает `UseContentRoot`, используйте путь к расположению публикации приложения вместо `Directory.GetCurrentDirectory()`.
+   * Вызовите [UseContentRoot](xref:fundamentals/host/web-host#content-root) и используйте путь к расположению публикации приложения вместо `Directory.GetCurrentDirectory()`.
 
      ::: moniker range=">= aspnetcore-2.0"
 

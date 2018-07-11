@@ -5,12 +5,12 @@ description: Сведения об использовании SQL Server LocalDB
 ms.author: riande
 ms.date: 03/07/2017
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: 05bd76038e5856d2a3e392e3b00e589dbc26fcc6
-ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
+ms.openlocfilehash: 2981035222681e6badbb0d917e4091baa96b9af1
+ms.sourcegitcommit: a09820f91e71a7d98b7347bf93210abb9e995e22
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961062"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37889133"
 ---
 # <a name="work-with-sql-server-localdb-in-aspnet-core"></a>Работа с SQL Server LocalDB в ASP.NET Core
 
@@ -71,12 +71,14 @@ if (context.Movie.Any())
 <a name="si"></a>
 ### <a name="add-the-seed-initializer"></a>Добавление инициализатора заполнения
 
+Замените содержимое *Program.cs* кодом из этого примера.
+
 ::: moniker range=">= aspnetcore-2.1"
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Program.cs)]
 ::: moniker-end
 ::: moniker range="<= aspnetcore-2.0"
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 Добавьте инициализатор заполнения в метод `Main` в файле *Program.cs*:
 

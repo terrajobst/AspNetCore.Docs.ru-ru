@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения об отправке файлов на страницу Razor
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 09/12/2017
+ms.date: 07/03/2018
 uid: tutorials/razor-pages/uploading-files
-ms.openlocfilehash: 43268e24b67279b57c990a6289922ae38d883221
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 62e20ef33e2da44657aba19dab938913147d9bfe
+ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275961"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37433923"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>Отправка файлов на страницу Razor в ASP.NET Core
 
@@ -45,7 +45,17 @@ ms.locfileid: "36275961"
 
 Создайте страницу Razor для обработки парной отправки файлов. Добавьте класс `FileUpload`, привязанный к странице для получения данных расписания. Щелкните правой кнопкой мыши папку *Models*. Выберите **Добавить** > **Класс**. Назовите класс **FileUpload** и добавьте следующие свойства.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/FileUpload.cs)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/FileUpload.cs)]
+
+::: moniker-end
 
 Этот класс содержит свойство для заголовка расписания и свойство для каждой из двух версий расписания. Все три свойства являются обязательными, а заголовок должен иметь длину от 3 до 60 символов.
 
@@ -53,7 +63,17 @@ ms.locfileid: "36275961"
 
 Чтобы избежать дублирования кода для обработки отправленных файлов расписания, сначала добавьте статический вспомогательный метод. Создайте папку *Utilities* в приложении и добавьте файл *FileHelpers.cs* с приведенным ниже содержимым. Вспомогательный метод `ProcessFormFile` принимает [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile) и [ModelStateDictionary](/api/microsoft.aspnetcore.mvc.modelbinding.modelstatedictionary) и возвращает строку, содержащую размер и содержимое файла. Выполняется проверка типа содержимого и длины. Если файл не проходит проверку, в `ModelState` добавляется ошибка.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Utilities/FileHelpers.cs)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Utilities/FileHelpers.cs)]
+
+::: moniker-end
 
 ### <a name="save-the-file-to-disk"></a>Сохранение файла на диск
 
@@ -100,15 +120,39 @@ public async Task<IActionResult> OnPostAsync()
 
 Щелкните правой кнопкой мыши папку *Models*. Выберите **Добавить** > **Класс**. Назовите класс **Schedule** и добавьте следующие свойства.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/Schedule.cs)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/Schedule.cs)]
 
+::: moniker-end
+
 Класс использует атрибуты `Display` и `DisplayFormat`, которые создают понятные заголовки и форматирование при отрисовке данных расписания.
+
+::: moniker range=">= aspnetcore-2.1"
+
+## <a name="update-the-razorpagesmoviecontext"></a>Обновление RazorPagesMovieContext
+
+Укажите `DbSet` в `RazorPagesMovieContext` (*Data/RazorPagesMovieContext.cs*) для расписаний.
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Data/RazorPagesMovieContext.cs?highlight=17)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
 
 ## <a name="update-the-moviecontext"></a>Обновление MovieContext
 
 Укажите `DbSet` в `MovieContext` (*Models/MovieContext.cs*) для расписаний:
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieContext.cs?highlight=13)]
+
+::: moniker-end
 
 ## <a name="add-the-schedule-table-to-the-database"></a>Добавление таблицы Schedule в базу данных
 
@@ -127,7 +171,17 @@ Update-Database
 
 В папке *Pages* создайте папку *Schedules*. В папке *Schedules* создайте страницу *Index.cshtml* для отправки расписания со следующим содержимым.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie21/Pages/Schedules/Index.cshtml)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Index.cshtml)]
+
+::: moniker-end
 
 Каждая группа формы включает метку **\<label>**, отображающую имя каждого свойства класса. Атрибуты `Display` в модели `FileUpload` предоставляют отображаемые значения для меток. Например, отображаемое имя свойства `UploadPublicSchedule` задается с помощью `[Display(Name="Public Schedule")]`, в результате чего при отрисовке формы в метке отображается текст "Public Schedule" (Общее расписание).
 
@@ -137,43 +191,132 @@ Update-Database
 
 Добавьте страничную модель (*Index.cshtml.cs*) в папку *Schedules*.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Pages/Schedules/Index.cshtml.cs)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs)]
+
+::: moniker-end
 
 Модель страницы (`IndexModel` в *Index.cshtml.cs*) привязывается к классу `FileUpload`.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index21.cshtml.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet1)]
+
+::: moniker-end
 
 Модель также использует список расписаний (`IList<Schedule>`) для отображения расписаний, хранящихся в базе данных на странице.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index21.cshtml.cs?name=snippet2)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet2)]
+
+::: moniker-end
 
 Когда страница загружается с `OnGetAsync`, `Schedules` заполняется значениями из базы данных и используется для создания HTML-таблицы загруженных расписаний.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index21.cshtml.cs?name=snippet3)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet3)]
+
+::: moniker-end
 
 При публикации формы на сервере проверяется `ModelState`. В случае ошибки `Schedule` перестраивается, а страница отрисовывается с отображением одного сообщения или нескольких о том, почему не удалось выполнить проверку страницы. При прохождении проверки свойства `FileUpload` используются в *OnPostAsync*, чтобы передать файлы для двух версий расписания и создать объект `Schedule` для хранения данных. После этого расписание сохраняется в базе данных.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index21.cshtml.cs?name=snippet4)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet4)]
+
+::: moniker-end
 
 ## <a name="link-the-file-upload-razor-page"></a>Ссылка на страницу Razor для отправки файлов
 
-Откройте *_Layout.cshtml* и добавьте ссылку на панель навигации, позволяющую перейти на страницу отправки файлов.
+Откройте *Pages/Shared/_Layout.cshtml* и добавьте ссылку на панель навигации, позволяющую перейти на страницу расписаний.
 
-[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/_Layout.cshtml?range=31-38&highlight=4)]
+```cshtml
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li><a asp-page="/Index">Home</a></li>
+        <li><a asp-page="/Schedules/Index">Schedules</a></li>
+        <li><a asp-page="/About">About</a></li>
+        <li><a asp-page="/Contact">Contact</a></li>
+    </ul>
+</div>
+```
 
 ## <a name="add-a-page-to-confirm-schedule-deletion"></a>Добавление страницы для подтверждения удаления расписания
 
 Когда пользователь запускает операцию удаления расписания, предоставляется возможность ее отмены. Добавьте страницу подтверждения удаления (*Delete.cshtml*) в папку *Schedules*.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie21/Pages/Schedules/Delete.cshtml)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml)]
+
+::: moniker-end
 
 Страничная модель (*Delete.cshtml.cs*) загружает отдельное расписание, определяемое идентификатором `id` в данных маршрута запроса. Добавьте файл *Delete.cshtml.cs* в папку *Schedules*.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Pages/Schedules/Delete.cshtml.cs)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml.cs)]
+
+::: moniker-end
 
 Метод `OnPostAsync` обрабатывает удаление расписания по его `id`.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Delete21.cshtml.cs?name=snippet1&highlight=8,12-13)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml.cs?name=snippet1&highlight=8,12-13)]
+
+::: moniker-end
 
 После успешного удаления расписания `RedirectToPage` направляет пользователя обратно на страницу расписаний *Index.cshtml*.
 

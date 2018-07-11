@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 1fd86fb61b7f5ddb760992ac10f9bee43ab831cf
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 255faf12064aa424d51fb6faa801884c474bd288
+ms.sourcegitcommit: a09820f91e71a7d98b7347bf93210abb9e995e22
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272147"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37889487"
 ---
 # <a name="work-with-sql-server-localdb-and-aspnet-core"></a>Работа с SQL Server LocalDB и ASP.NET Core
 
@@ -108,7 +108,7 @@ if (context.Movie.Any())
 
 ::: moniker-end
 
-Рабочее приложение не вызывает `Database.Migrate`. Он добавляется в предыдущем коде, чтобы предотвратить следующее исключение, если `Update-Database` не был запущен:
+Рабочее приложение не вызывает `Database.Migrate`. Он добавляется в предыдущем коде, чтобы предотвратить следующее исключение, если `Update-Database` не был запущен.
 
 SqlException: не удается открыть базу данных RazorPagesMovieContext-21, запрошенную при входе. Сбой при входе.
 Сбой при входе в систему пользователя user name.

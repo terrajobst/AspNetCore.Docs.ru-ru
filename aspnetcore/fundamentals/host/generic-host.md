@@ -7,18 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/16/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 40d297257895a4defeb89cef9c5ec6deea64a985
-ms.sourcegitcommit: 7003d27b607e529642ded0400aa48ae692a0e666
+ms.openlocfilehash: 879f31a5916646a4d63f9f503173dc9ff4c53434
+ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37033359"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37894157"
 ---
 # <a name="net-generic-host"></a>Универсальный узел .NET
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-Приложения .NET настраивают и запускают *узел*. Узел отвечает за запуск приложения и управление временем существования. В этом разделе рассматриваются универсальный узел ASP.NET Core ([HostBuilder](/dotnet/api/microsoft.extensions.hosting.hostbuilder)), используемый для размещения приложений, которые не умеют обрабатывать запросы HTTP. Сведения о веб-узле ([WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)) см. в статье о [веб-узле](xref:fundamentals/host/web-host).
+Приложения .NET настраивают и запускают *узел*. Узел отвечает за запуск приложения и управление временем существования. В этом разделе рассматриваются универсальный узел ASP.NET Core ([HostBuilder](/dotnet/api/microsoft.extensions.hosting.hostbuilder)), используемый для размещения приложений, которые не умеют обрабатывать запросы HTTP. Сведения о веб-узле ([WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)) см. в статье <xref:fundamentals/host/web-host>.
 
 Универсальный узел предназначен для отделения конвейера HTTP от API веб-узла, чтобы можно было иметь больше сценариев узла. Обмен сообщениями, фоновые задачи и другие рабочие нагрузки типа "не HTTP", использующие перекрестные возможности универсальных узлов, такие как конфигурация, внедрение зависимости (DI) и ведения журналов.
 
@@ -58,7 +58,7 @@ ms.locfileid: "37033359"
 
 Конфигурация переменной среды не добавляется по умолчанию. Вызовите [AddEnvironmentVariables](/dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables) в конструкторе узла, чтобы настроить узел из переменных среды. `AddEnvironmentVariables` принимает необязательный определяемый пользователем префикс. В примере приложения используется префикс `PREFIX_`. Префикс удаляется при чтении переменных среды. После настройки узла в примере приложения значение переменной среды для `PREFIX_ENVIRONMENT` становится значением конфигурации узла для ключа `environment`.
 
-Во время разработки с использованием [Visual Studio](https://www.visualstudio.com/) или запуска приложения с помощью `dotnet run` переменные среды можно задать в файле *Properties/launchSettings.json*. В [Visual Studio Code](https://code.visualstudio.com/) переменные среды можно задавать в файле *.vscode/launch.json* во время разработки. Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments).
+Во время разработки с использованием [Visual Studio](https://www.visualstudio.com/) или запуска приложения с помощью `dotnet run` переменные среды можно задать в файле *Properties/launchSettings.json*. В [Visual Studio Code](https://code.visualstudio.com/) переменные среды можно задавать в файле *.vscode/launch.json* во время разработки. Дополнительные сведения см. в разделе <xref:fundamentals/environments>.
 
 Метод `ConfigureHostConfiguration` может вызываться несколько раз с накоплением результатов. Хост использует значение, заданное последним.
 
@@ -76,6 +76,21 @@ ms.locfileid: "37033359"
 ### <a name="extension-method-configuration"></a>Настройка метода расширения
 
 Методы расширения вызываются в реализации `IHostBuilder`, чтобы настроить корень содержимого и среду.
+
+#### <a name="application-key-name"></a>Ключ приложения (имя)
+
+Свойство [IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment.applicationname) задается в конфигурации узла во время создания узла. Чтобы явно задать значение, используйте [HostDefaults.ApplicationKey](/dotnet/api/microsoft.extensions.hosting.hostdefaults.applicationkey).
+
+**Ключ**: applicationName  
+**Тип**: *string*  
+**По умолчанию**: имя сборки, содержащей точку входа приложения  
+**Задается с помощью**: `UseSetting`  
+**Переменная среды**: `<PREFIX_>APPLICATIONKEY` (`<PREFIX_>` [необязательно и определяется пользователем](#configuration-builder))
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting(WebHostDefaults.ApplicationKey, "CustomApplicationName")
+```
 
 #### <a name="content-root"></a>Корень содержимого
 
@@ -128,11 +143,19 @@ ms.locfileid: "37033359"
 > [!NOTE]
 > Метод расширения [AddConfiguration](/dotnet/api/microsoft.extensions.configuration.chainedbuilderextensions.addconfiguration) в настоящее время не может анализировать раздел конфигурации, возвращаемый методом [GetSection](/dotnet/api/microsoft.extensions.configuration.iconfiguration.getsection) (например, `.AddConfiguration(Configuration.GetSection("section"))`). Метод `GetSection` фильтрует ключи конфигурации до запрошенного раздела, но оставляет имя раздела в ключах (например, `section:Logging:LogLevel:Default`). Метод `AddConfiguration` ожидает точное соответствие ключей конфигурации (например, `Logging:LogLevel:Default`). Наличие имени раздела в ключах предотвращает настройку приложения с помощью значений этого раздела. Эта проблема будет устранена в следующем выпуске. Дополнительные сведения и способы решения см. в описании проблемы [Passing configuration section into WebHostBuilder.UseConfiguration uses full keys](https://github.com/aspnet/Hosting/issues/839) (При передаче раздела конфигурации в WebHostBuilder.UseConfiguration используются полные ключи).
 
+Чтобы переместить файлы параметров в выходной каталог, укажите файлы параметров как [элементы проекта MSBuild](/visualstudio/msbuild/common-msbuild-project-items) в файле проекта. Пример приложения перемещает свои файлы параметров приложения JSON и *hostsettings.json* со следующим элементом **&lt;Content:&gt;**.
+
+```xml
+<ItemGroup>
+  <Content Include="**\*.json" CopyToOutputDirectory="PreserveNewest" />
+</ItemGroup>
+```
+
 ## <a name="configureservices"></a>ConfigureServices
 
 Метод [ConfigureServices](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices) добавляет службы в контейнер [внедрения зависимостей](xref:fundamentals/dependency-injection) приложения. Метод `ConfigureServices` может вызываться несколько раз с накоплением результатов.
 
-Размещенная служба — это класс с логикой фоновой задачи, реализующий интерфейс [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice). Дополнительные сведения см. в статье [Background tasks with hosted services in ASP.NET Core](xref:fundamentals/host/hosted-services) (Фоновые задачи с размещенными службами в ASP.NET Core).
+Размещенная служба — это класс с логикой фоновой задачи, реализующий интерфейс [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice). Дополнительные сведения см. в разделе <xref:fundamentals/host/hosted-services>.
 
 [Пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) использует метод расширения `AddHostedService` для добавления службы для событий времени жизни (`LifetimeEventsHostedService`) и синхронизированной фоновой задачи (`TimedHostedService`):
 
@@ -382,7 +405,7 @@ public class MyClass
 }
 ```
 
-Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments).
+Дополнительные сведения см. в разделе <xref:fundamentals/environments>.
 
 ## <a name="iapplicationlifetime-interface"></a>Интерфейс IApplicationLifetime
 
@@ -421,5 +444,5 @@ public class MyClass
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Фоновые задачи с размещенными службами](xref:fundamentals/host/hosted-services)
+* <xref:fundamentals/host/hosted-services>
 * [Репозиторий примеров размещения на GitHub](https://github.com/aspnet/Hosting/tree/release/2.1/samples)

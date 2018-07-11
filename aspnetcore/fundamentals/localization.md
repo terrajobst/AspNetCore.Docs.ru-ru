@@ -5,12 +5,12 @@ description: Сведения о службах и ПО промежуточно
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 0f48490af5805e4351c983f3ae519268c8e9c7a7
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 9647b605d4b9a23b365085e3677fb0e9b93f0da4
+ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274135"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434017"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -158,6 +158,27 @@ ASP.NET Core позволяет указывать два значения яз�
 * Resources/Views.Home.About.fr.resx
 
 Если параметр `ResourcesPath` не используется, файл *RESX* для представления будет находиться в той же папке, что и представление.
+
+### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
+
+Атрибут [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) содержит корневое пространство имен сборки, если корневое пространство имен сборки отличается от имени сборки. 
+
+Если корневое пространство имен сборки отличается от имени сборки
+
+* Локализация не работает по умолчанию.
+* Локализация завершается сбоем из-за метода поиска ресурсов в сборке. `RootNamespace` — это значение во время сборки, которое недоступно выполняющемуся процессу. 
+
+Если `RootNamespace` отличается от `AssemblyName`, включите следующее в файл *AssemblyInfo.cs* (со значениями параметров, замененными фактическими значениями).
+
+```Csharp
+using System.Reflection;
+using Microsoft.Extensions.Localization;
+
+[assembly: ResourceLocation("Resource Folder Name")]
+[assembly: RootNamespace("App Root Namespace")]
+```
+
+Приведенный выше код обеспечивает успешное разрешение RESX-файлов.
 
 ## <a name="culture-fallback-behavior"></a>Резервный язык и региональные параметры
 

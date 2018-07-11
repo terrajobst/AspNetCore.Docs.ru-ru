@@ -132,7 +132,7 @@ ms.locfileid: "37820079"
 Начните с добавления этих двух столбцов, чтобы `CategoriesDataTable`. Щелкните правой кнопкой мыши `CategoriesDataTable` s заголовок, выберите в контекстном меню Add, а затем выберите параметр столбец. Это создаст новый `DataColumn` таблицы данных с именем `Column1`. Переименуйте этот столбец в `Picture`. В окне «Свойства» задайте `DataColumn` s `DataType` свойства `System.Byte[]` (это не вариант в раскрывающемся списке, вам нужно ввести его в).
 
 
-[![Создание рисунка DataColumn с именем, типом данных является System.Byte]](uploading-files-cs/_static/image6.gif)](uploading-files-cs/_static/image7.png)
+[![Создание рисунка DataColumn с именем, типом данных является System.Byte[]](uploading-files-cs/_static/image6.gif)](uploading-files-cs/_static/image7.png)
 
 **Рис. 6**: создание `DataColumn` именованные `Picture` которого `DataType` — `System.Byte[]` ([Просмотр полноразмерного изображения](uploading-files-cs/_static/image8.png))
 

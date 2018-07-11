@@ -3,14 +3,14 @@ title: Использование нескольких сред в ASP.NET Core
 author: rick-anderson
 description: Сведения об управлении поведением приложений в разных средах в приложениях ASP.NET Core.
 ms.author: riande
-ms.date: 06/21/2018
+ms.date: 07/03/2018
 uid: fundamentals/environments
-ms.openlocfilehash: 505f19d8b4df6e476b46a1fe7c49872d3c4acc1a
-ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
+ms.openlocfilehash: 8983a0ce81beb16d68c799d30bfbfce6e7b693b1
+ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36314108"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37433952"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Использование нескольких сред в ASP.NET Core
 
@@ -24,7 +24,7 @@ ASP.NET Core настраивает поведение приложения в �
 
 ASP.NET Core считывает переменную среды `ASPNETCORE_ENVIRONMENT` при запуске приложения и сохраняет ее значение в свойстве [IHostingEnvironment.EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname). Переменной `ASPNETCORE_ENVIRONMENT` можно присвоить любое значение, но платформа поддерживает [три значения](/dotnet/api/microsoft.aspnetcore.hosting.environmentname): [Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging) и [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Если переменная `ASPNETCORE_ENVIRONMENT` не указана, используется значение по умолчанию `Production`.
 
-[!code-csharp[](environments/sample/WebApp1/Startup.cs?name=snippet)]
+[!code-csharp[](environments/sample/EnvironmentsSample/Startup.cs?name=snippet)]
 
 Предыдущий код:
 
@@ -37,7 +37,7 @@ ASP.NET Core считывает переменную среды `ASPNETCORE_ENVI
 
 [Вспомогательная функция тега среды](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper) использует значение `IHostingEnvironment.EnvironmentName` для включения или исключения разметки в элементе:
 
-[!code-cshtml[](environments/sample-snapshot/WebApp1/Pages/About.cshtml)]
+[!code-cshtml[](environments/sample-snapshot/EnvironmentsSample/Pages/About.cshtml)]
 
 В ОС Windows и macOS регистр символов в переменных среды и их значениях не учитывается. В ОС Linux в переменных среды и их значениях **регистр символов по умолчанию учитывается**.
 
@@ -49,7 +49,47 @@ ASP.NET Core считывает переменную среды `ASPNETCORE_ENVI
 
 В следующем коде JSON показаны три профиля из файла *launchSettings.json*:
 
-[!code-json[](environments/sample/WebApp1/Properties/launchSettings.json?highlight=10,11,18,26)]
+```json
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:54339/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_My_Environment": "1",
+        "ASPNETCORE_DETAILEDERRORS": "1",
+        "ASPNETCORE_ENVIRONMENT": "Staging"
+      }
+    },
+    "EnvironmentsSample": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Staging"
+      },
+      "applicationUrl": "http://localhost:54340/"
+    },
+    "Kestrel Staging": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_My_Environment": "1",
+        "ASPNETCORE_DETAILEDERRORS": "1",
+        "ASPNETCORE_ENVIRONMENT": "Staging"
+      },
+      "applicationUrl": "http://localhost:51997/"
+    }
+  }
+}
+```
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -57,7 +97,7 @@ ASP.NET Core считывает переменную среды `ASPNETCORE_ENVI
 > Свойство `applicationUrl` в *launchSettings.json* может задать список URL-адресов сервера. Для разделения URL-адресов в списке используется точка с запятой:
 >
 > ```json
-> "WebApplication1": {
+> "EnvironmentsSample": {
 >    "commandName": "Project",
 >    "launchBrowser": true,
 >    "applicationUrl": "https://localhost:5001;http://localhost:5000",
@@ -83,15 +123,15 @@ ASP.NET Core считывает переменную среды `ASPNETCORE_ENVI
 Ниже представлены выходные данные приложения, запущенного с помощью команды [dotnet run](/dotnet/core/tools/dotnet-run):
 
 ```bash
-PS C:\Webs\WebApp1> dotnet run
-Using launch settings from C:\Webs\WebApp1\Properties\launchSettings.json...
+PS C:\Websites\EnvironmentsSample> dotnet run
+Using launch settings from C:\Websites\EnvironmentsSample\Properties\launchSettings.json...
 Hosting environment: Staging
-Content root path: C:\Webs\WebApp1
+Content root path: C:\Websites\EnvironmentsSample
 Now listening on: http://localhost:54340
 Application started. Press Ctrl+C to shut down.
 ```
 
-Вкладка **Отладка** в Visual Studio предоставляет графический пользовательский интерфейс для изменения файла *launchSettings.json*:
+Вкладка **Отладка** в свойствах проекта Visual Studio предоставляет графический пользовательский интерфейс для изменения файла *launchSettings.json*.
 
 ![Задание переменных среды в свойствах проекта](environments/_static/project-properties-debug.png)
 
@@ -131,7 +171,7 @@ Application started. Press Ctrl+C to shut down.
 * включены страницы с понятными пользователям сообщениями об ошибках;
 * включены средства ведения журналов и мониторинга в рабочей среде, например [Application Insights](/azure/application-insights/app-insights-asp-net-core).
 
-## <a name="setting-the-environment"></a>Указание среды
+## <a name="set-the-environment"></a>Указание среды
 
 Часто бывает полезным указать определенную среду для тестирования. Если среда не указана, по умолчанию используется среда `Production`, в которой большинство функций отладки отключено. Способ указания среды зависит от операционной системы.
 
@@ -210,16 +250,16 @@ export ASPNETCORE_ENVIRONMENT=Development
 
 При запуске приложения ASP.NET Core [класс Startup](xref:fundamentals/startup) выполняет его начальную загрузку. Если класс `Startup{EnvironmentName}` существует, он вызывается для данной среды `EnvironmentName`:
 
-[!code-csharp[](environments/sample/WebApp1/StartupDev.cs?name=snippet&highlight=1)]
+[!code-csharp[](environments/sample/EnvironmentsSample/StartupDev.cs?name=snippet&highlight=1)]
 
-Вызов [WebHostBuilder.UseStartup<TStartup>](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) переопределяет разделы конфигурации.
+Вызов [WebHostBuilder.UseStartup&lt;TStartup&gt;](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) переопределяет разделы конфигурации.
 
 Методы [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) и [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) поддерживают версии для конкретных сред в формате `Configure{EnvironmentName}` и `Configure{EnvironmentName}Services`:
 
-[!code-csharp[](environments/sample/WebApp1/Startup.cs?name=snippet_all&highlight=15,37)]
+[!code-csharp[](environments/sample/EnvironmentsSample/Startup.cs?name=snippet_all&highlight=15,51)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Запуск приложения](xref:fundamentals/startup)
-* [Конфигурация](xref:fundamentals/configuration/index)
+* <xref:fundamentals/startup>
+* <xref:fundamentals/configuration/index>
 * [IHostingEnvironment.EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname)
