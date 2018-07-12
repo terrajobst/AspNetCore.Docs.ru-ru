@@ -1,0 +1,1 @@
+`UseHsts` рекомендуется, но не является обязательным. См. в разделе [строгой безопасности протокол HTTP](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) Дополнительные сведения.
