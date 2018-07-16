@@ -258,6 +258,8 @@
 ### [JavaScript API](/javascript/api/?view=signalr-js-latest)
 
 ## [Конфигурация](xref:signalr/configuration)
+## [Проверка подлинности и авторизация](xref:signalr/authn-and-authz)
+## [Вопросы безопасности](xref:signalr/security)
 ## [Протокол MessagePack для концентратора](xref:signalr/messagepackhubprotocol)
 ## [Потоковая передача](xref:signalr/streaming)
 ## [Различия между версиями SignalR](xref:signalr/version-differences)

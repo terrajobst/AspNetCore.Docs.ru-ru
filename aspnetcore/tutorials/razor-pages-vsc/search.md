@@ -7,15 +7,15 @@ ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages-vsc/search
 ms.openlocfilehash: 8713eee6327af0ff21c2dd983b32987ca1fa91ef
-ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960721"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38167379"
 ---
 [!INCLUDE [Search](../../includes/RP/search.md)]
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="3c5b7-103">[Предыдущая статья — "Обновление страниц"](xref:tutorials/razor-pages-vsc/da1)
-> [Следующая статья — "Добавление нового поля"](xref:tutorials/razor-pages/new-field)</span><span class="sxs-lookup"><span data-stu-id="3c5b7-103">[Previous: Updating the pages](xref:tutorials/razor-pages-vsc/da1)
+> <span data-ttu-id="69bce-103">[Предыдущая статья — "Обновление страниц"](xref:tutorials/razor-pages-vsc/da1)
+> [Следующая статья — "Добавление нового поля"](xref:tutorials/razor-pages/new-field)</span><span class="sxs-lookup"><span data-stu-id="69bce-103">[Previous: Updating the pages](xref:tutorials/razor-pages-vsc/da1)
 [Next: Adding a new field](xref:tutorials/razor-pages/new-field)</span></span>
