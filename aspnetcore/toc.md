@@ -18,7 +18,6 @@
 ### [Добавление поиска](xref:tutorials/razor-pages/search)
 ### [Добавление нового поля](xref:tutorials/razor-pages/new-field)
 ### [Добавление проверки](xref:tutorials/razor-pages/validation)
-### [Отправка файлов](xref:tutorials/razor-pages/uploading-files)
 ## [Создание веб-приложения реального времени SignalR](xref:tutorials/signalr)
 ## [Создание веб-приложения SignalR с помощью TypeScript](xref:tutorials/signalr-typescript-webpack)
 ## [Создание веб-приложения MVC](tutorials/first-mvc-app/index.md)
@@ -159,6 +158,7 @@
 ## [Методы фильтрации для Razor Pages](xref:razor-pages/filter)
 ## [Создание библиотеки классов Razor](xref:razor-pages/ui-class)
 ## [Соглашения для маршрутов и приложений](xref:razor-pages/razor-pages-conventions)
+## [Отправка файлов на страницу Razor](xref:razor-pages/upload-files)
 ## [Пакет SDK для Razor](xref:razor-pages/sdk)
 
 # [MVC](xref:mvc/overview)
