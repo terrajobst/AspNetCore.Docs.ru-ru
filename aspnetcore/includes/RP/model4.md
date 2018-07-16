@@ -6,7 +6,7 @@
 | -dc  | Контекст данных |
 | -udl | Использование макета по умолчанию |
 | -outDir | Относительный путь к папке выходных данных для создания представлений |
-| --referenceScriptLibraries | Добавляет `_ValidationScriptsPartial` для редактирования и создания страниц. |
+| --referenceScriptLibraries | Добавляет `_ValidationScriptsPartial` для страниц редактирования и создания |
 
 Чтобы получить справку по команде `aspnet-codegenerator razorpage`, используйте коммутатор `h`.
 

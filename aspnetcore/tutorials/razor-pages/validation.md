@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: cabf3d955ef2eb17b3bcb40170a9de7b53ffd107
-ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
+ms.openlocfilehash: 0d35de827ca6fea530229f1ef263ea7b9351e5ad
+ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37077635"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992832"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Добавление проверки на страницу Razor в ASP.NET Core
 
@@ -157,6 +157,8 @@ public DateTime ReleaseDate { get; set; }
 
 Дополнительные сведения о публикации этого приложения в Azure см. в руководстве по [публикации веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs).
 
+Благодарим вас за изучение общих сведений о страницах Razor. Мы благодарны за ваш отзыв! Отличным дополнением к этому учебнику является статья [Начало работы с EF Core и MVC](xref:data/ef-mvc/intro).
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Работа с формами](xref:mvc/views/working-with-forms)
@@ -166,4 +168,3 @@ public DateTime ReleaseDate { get; set; }
 
 > [!div class="step-by-step"]
 > [Предыдущая тема. Добавление нового поля](xref:tutorials/razor-pages/new-field)
-> [Следующая тема. Отправка файлов](xref:tutorials/razor-pages/uploading-files)
