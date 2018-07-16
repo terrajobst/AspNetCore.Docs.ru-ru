@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/08/2017
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: dea67cd16c9ad6bdf2b43ff13ae72645528b3e13
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 9d32a7becb291697313dc28925ab94b452385fc7
+ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275636"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992845"
 ---
 # <a name="create-a-razor-pages-web-app-with-aspnet-core"></a>Создание веб-приложения Razor Pages с помощью ASP.NET Core
 
@@ -25,4 +25,5 @@ ms.locfileid: "36275636"
 1. [Добавление поиска](xref:tutorials/razor-pages/search)
 1. [Добавление нового поля](xref:tutorials/razor-pages/new-field)
 1. [Добавление проверки](xref:tutorials/razor-pages/validation)
-1. [Отправка файлов](xref:tutorials/razor-pages/uploading-files)
+
+Изучив руководство по добавлению возможности отправки файла в пример приложения, перейдите к статье <xref:razor-pages/upload-files>.
