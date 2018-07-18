@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/29/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 2890b2e6cdb536850b3764b5a78084cca335b489
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 83965e69249ca8196d0f226528735444936567ad
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275766"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095617"
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>Размещение ASP.NET Core в службе приложений Azure
 
@@ -151,11 +151,12 @@ ms.locfileid: "36275766"
 * [Служба приложений Azure: оптимальное место для размещения приложений .NET (55-минутное видео)](https://channel9.msdn.com/events/dotnetConf/2017/T222)
 * [Azure, пятница: практики диагностики и устранения неполадок в службе приложений Azure (12-минутное видео)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
 * [Общие сведения о диагностике в службе приложений Azure](/azure/app-service/app-service-diagnostics)
+* <xref:host-and-deploy/web-farm>
 
 Служба приложений Azure на Windows Server использует [службы IIS](https://www.iis.net/). Технологии IIS посвящены следующие статьи.
 
-* [Размещение ASP.NET Core в Windows со службами IIS](xref:host-and-deploy/iis/index)
-* [Введение в модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
-* [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
-* [Модули IIS с ASP.NET Core](xref:host-and-deploy/iis/modules)
+* <xref:host-and-deploy/iis/index>
+* <xref:fundamentals/servers/aspnet-core-module>
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:host-and-deploy/iis/modules>
 * [Библиотека Microsoft TechNet: Windows Server](/windows-server/windows-server-versions)

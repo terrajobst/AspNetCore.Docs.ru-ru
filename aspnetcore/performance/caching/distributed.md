@@ -1,29 +1,29 @@
 ---
 title: Работа с распределенным кэшем в ASP.NET Core
 author: ardalis
-description: Сведения об использовании ASP.NET Core распределенного кэширования для повышения производительности приложения и масштабируемость, особенно в среде фермы облако или сервера.
+description: Узнайте, как использовать ASP.NET Core распределенного кэширования для повышения производительности приложения и масштабируемости, особенно в среде фермы облаком и сервером.
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/14/2017
 uid: performance/caching/distributed
-ms.openlocfilehash: 5ddc3a6927652f773ab38f93db1e222c5a1900b3
-ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
+ms.openlocfilehash: 861664fcad576c11abe052837b72367eb2b9479a
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37077703"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095685"
 ---
 # <a name="work-with-a-distributed-cache-in-aspnet-core"></a>Работа с распределенным кэшем в ASP.NET Core
 
 Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
-Распределенные кэши могут улучшить производительность и масштабируемость приложений ASP.NET Core, особенно в том случае, если они размещенны в облаке или на серверной ферме. В этой статье объясняется, как работать с встроенными в ASP.NET Core абстракциями и реализациями распределенного кэша.
+Распределенные кэши могут улучшить производительность и масштабируемость приложений ASP.NET Core, особенно в том случае, если размещенные в облаке или ферме серверов.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/distributed/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-a-distributed-cache"></a>Что такое распределенный кэш
 
-Распределенный кэш является общим для нескольких серверов приложений (см. [основы кэша](memory.md#caching-basics)).  Информация в кэше не хранятся в памяти отдельных веб-серверов и кэшированных данных доступен для всех серверов приложений. Это обеспечивает несколько преимуществ:
+Распределенный кэш является общим для нескольких серверов приложений (см. [основы кэша](memory.md#caching-basics)).  Сведения в кэше не хранятся в памяти отдельных веб-серверов и кэшированных данных доступен для всех серверов приложений. Это обеспечивает ряд преимуществ:
 
 1. Кэшированные данные согласованны на всех веб-серверах. Пользователи получают одинаковые результаты вне зависимости от того, какой веб-сервер обрабатывает их запрос.
 
@@ -84,7 +84,7 @@ ms.locfileid: "37077703"
 
 ## <a name="using-a-redis-distributed-cache"></a>Использование распределенного кеша Redis
 
-[Redis](https://redis.io/) -это хранилище данных в памяти с открытым исходным кодом, которое часто используется в качестве распределенного кэша. Вы можете использовать его локально, и вы можете настроить [кэш Azure Redis](https://azure.microsoft.com/services/cache/) для приложений ASP.NET Core, размещенных в Azure.  Настраивает приложение ASP.NET Core реализации кэша с помощью `RedisDistributedCache` экземпляра.
+[Redis](https://redis.io/) -это хранилище данных в памяти с открытым исходным кодом, которое часто используется в качестве распределенного кэша. Вы можете использовать его локально, и вы можете настроить [кэш Azure Redis](https://azure.microsoft.com/services/cache/) для приложений ASP.NET Core, размещенных в Azure.  Приложение ASP.NET Core настраивает реализации кэша с помощью `RedisDistributedCache` экземпляра.
 
 Настройте реализацию Redis в `ConfigureServices` и получите доступ к нему в коде приложения, запросив экземпляр `IDistributedCache` (см. код выше).
 
@@ -101,7 +101,7 @@ ms.locfileid: "37077703"
 
 ::: moniker range="< aspnetcore-2.1"
 
-Добавить `SqlConfig.Tools` для `<ItemGroup>` элемент файла проекта и выполнения `dotnet restore`.
+Добавить `SqlConfig.Tools` для `<ItemGroup>` элемент файла проекта и выполните `dotnet restore`.
 
 ```xml
 <ItemGroup>
@@ -112,7 +112,7 @@ ms.locfileid: "37077703"
 
 ::: moniker-end
 
-Протестируйте SqlConfig.Tools, выполнив следующую команду:
+Проверьте SqlConfig.Tools, выполнив следующую команду:
 
 ```console
 dotnet sql-cache create --help
@@ -130,7 +130,7 @@ Table and index were created successfully.
 
 Созданная таблица имеет следующую схему:
 
-![Таблица кэша SqlServer](distributed/_static/SqlServerCacheTable.png)
+![Таблицы кэша SqlServer](distributed/_static/SqlServerCacheTable.png)
 
 Как и все реализации кэша, ваше приложение должно получать и задавать значения кэша, используя экземпляр `IDistributedCache`, а не `SqlServerCache`. Этот пример реализует `SqlServerCache` в рабочей среде (с настройкой в `ConfigureProductionServices`).
 
@@ -145,11 +145,12 @@ Table and index were created successfully.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Кэш Azure redis](https://azure.microsoft.com/documentation/services/redis-cache/)
+* [Кэш в Azure redis](https://azure.microsoft.com/documentation/services/redis-cache/)
 * [База данных SQL в Azure](https://azure.microsoft.com/documentation/services/sql-database/)
-* [Кэш в памяти](xref:performance/caching/memory)
-* [Обнаружение изменений с помощью маркеров изменений](xref:fundamentals/primitives/change-tokens)
-* [Кэширование ответов](xref:performance/caching/response)
-* [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
-* [Вспомогательная функция тега кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Вспомогательная функция тега распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:performance/caching/memory>
+* <xref:fundamentals/primitives/change-tokens>
+* <xref:performance/caching/response>
+* <xref:performance/caching/middleware>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>
+* <xref:host-and-deploy/web-farm>

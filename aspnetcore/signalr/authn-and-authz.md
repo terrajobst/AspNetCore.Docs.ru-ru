@@ -1,18 +1,18 @@
 ---
 title: Проверка подлинности и авторизация в ASP.NET Core SignalR
-author: rachelappel
+author: tdykstra
 description: Узнайте, как использовать проверку подлинности и авторизации в ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
 ms.date: 06/29/2018
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 32e5fcf2fd3f888e0e131fa47bd9a74eede3c26d
-ms.sourcegitcommit: 32626efaa7316c9b283c96be6516e637d548c5e5
+ms.openlocfilehash: d4259e04a0e3bb9ff517a10465323ccb5e2895a5
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39028466"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095175"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>Проверка подлинности и авторизация в ASP.NET Core SignalR
 
@@ -54,7 +54,7 @@ var connection = new HubConnectionBuilder()
 
 В стандартных веб-API в заголовке HTTP отправляются токены носителя. Тем не менее SignalR не удается задать эти заголовки в браузерах, при использовании некоторых транспортов. При использовании WebSockets и Server-Sent события, маркер передается как параметр строки запроса. Чтобы обеспечить это, на сервере, необходима дополнительная настройка:
 
-[!code-csharp[Configure Server to accept access token from Query String](authn-and-authz/sample/Startup.cs?range=33-34,42-80,90)]
+[!code-csharp[Configure Server to accept access token from Query String](authn-and-authz/sample/Startup.cs?name=snippet)]
 
 ### <a name="windows-authentication"></a>Аутентификация Windows
 

@@ -1,44 +1,44 @@
 ---
-title: Использование файла cookie проверки подлинности без ASP.NET Core Identity
+title: Использовать проверку подлинности файлов cookie без ASP.NET Core Identity
 author: rick-anderson
-description: Описание использования файлов cookie проверки подлинности без ASP.NET Core Identity
+description: Объяснение того, с использованием проверки подлинности файла cookie без ASP.NET Core Identity
 ms.author: riande
 ms.date: 10/11/2017
 uid: security/authentication/cookie
-ms.openlocfilehash: 2064e4d6406ce3ca3ce28732f113e8c81447aace
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: ac1eec297d3efd1403990722f59c414ba4e5ddd9
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275610"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095805"
 ---
-# <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Использование файла cookie проверки подлинности без ASP.NET Core Identity
+# <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Использовать проверку подлинности файлов cookie без ASP.NET Core Identity
 
-По [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Latham Люк](https://github.com/guardrex)
+По [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Люк Лэтем](https://github.com/guardrex)
 
-Как видно в предыдущих разделах проверки подлинности, [ASP.NET Core Identity](xref:security/authentication/identity) является полным, полнофункциональный проверки подлинности поставщиком для создания и обслуживания имена входа. Тем не менее можно использовать свою собственную логику для нестандартной проверки подлинности с помощью файла cookie проверки подлинности на основе время от времени. Как поставщик проверки подлинности автономного без ASP.NET Core Identity можно использовать проверку подлинности на основе файлов cookie.
+Как вы уже видели в предыдущих разделах проверки подлинности, [удостоверения ASP.NET Core](xref:security/authentication/identity) — это поставщик проверки подлинности завершено, полнофункциональную для создания и обслуживания имена входа. Тем не менее может потребоваться использование собственной логики настраиваемой проверки подлинности на основе файлов cookie проверки подлинности в некоторых случаях. Проверка подлинности на основе файлов cookie можно использовать как автономного поставщика проверки подлинности без ASP.NET Core Identity.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-Для демонстрации в пример приложения учетной записи пользователя для гипотетического пользователя Rodriguez Мария встроен в приложение. Используйте имя электронной почты "maria.rodriguez@contoso.com" и все пароли для входа пользователя. Пользователь проходит проверку подлинности в `AuthenticateUser` метод в *Pages/Account/Login.cshtml.cs* файла. В реальном примере пользователь будет пройти проверку подлинности в базе данных.
+Для демонстрационных целей в примере приложения учетной записи пользователя для гипотетической пользователя Родригез Мария встроен в приложение. Использовать имя пользователя по электронной почте "maria.rodriguez@contoso.com" и любой пароль для входа пользователя. Пользователь проходит проверку подлинности в `AuthenticateUser` метод в *Pages/Account/Login.cshtml.cs* файла. В реальный пример пользователь может пройти проверку подлинности в базе данных.
 
-Сведения о миграции проверки подлинности на основе файла cookie из ASP.NET Core 1.x 2.0, см. [перенести проверку подлинности и удостоверение для ASP.NET 2.0 основных раздела (файл Cookie проверки подлинности на основе)](xref:migration/1x-to-2x/identity-2x#cookie-based-authentication).
+Сведения о миграции файл cookie проверки подлинности с помощью ASP.NET Core 1.x на 2.0, см. в разделе [перенести проверки подлинности и другие удостоверения в разделе ASP.NET Core 2.0 (проверка подлинности на основе файлов Cookie)](xref:migration/1x-to-2x/identity-2x#cookie-based-authentication).
 
-При использовании ASP.NET Core Identity см. [Общие сведения об идентификации](xref:security/authentication/identity) раздела.
+Чтобы использовать удостоверение ASP.NET Core, см. в разделе [Общие сведения об Identity](xref:security/authentication/identity) раздела.
 
 ## <a name="configuration"></a>Конфигурация
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-Если приложение не использует [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app), создайте ссылку на пакет в файл проекта для [Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/) пакета (версии 2.1.0 или более поздние).
+Если приложение не использует [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app), создайте ссылку на пакет в файле проекта для [Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/) пакета (версии 2.1.0 или более поздние).
 
 В `ConfigureServices` метод, создайте службу проверки подлинности по промежуточного слоя с `AddAuthentication` и `AddCookie` методов:
 
 [!code-csharp[](cookie/samples/2.x/CookieSample/Startup.cs?name=snippet1)]
 
-`AuthenticationScheme` передаваемый `AddAuthentication` задает схему проверки подлинности по умолчанию для приложения. `AuthenticationScheme` полезно при наличии нескольких экземпляров файла cookie проверки подлинности, и вы хотите [авторизации с нужной раскладки](xref:security/authorization/limitingidentitybyscheme). Установка `AuthenticationScheme` для `CookieAuthenticationDefaults.AuthenticationScheme` предоставляет значение файлов «cookie» для схемы. Можно указать любое строковое значение, отличающее схему.
+`AuthenticationScheme` передаваемый `AddAuthentication` задает схему проверки подлинности по умолчанию для приложения. `AuthenticationScheme` полезно, если имеется несколько экземпляров файла cookie проверки подлинности, и вы хотите [авторизация с определенной схемой](xref:security/authorization/limitingidentitybyscheme). Установка `AuthenticationScheme` для `CookieAuthenticationDefaults.AuthenticationScheme` предоставляет значение файлов «cookie» для схемы. Вы можете указать любое строковое значение, являющийся отличительным признаком схемы.
 
-В `Configure` используйте `UseAuthentication` метод, вызываемый по промежуточного слоя проверки подлинности, задает `HttpContext.User` свойства. Вызовите `UseAuthentication` метод перед вызовом метода `UseMvcWithDefaultRoute` или `UseMvc`:
+В `Configure` используйте `UseAuthentication` метод, вызываемый по промежуточного слоя проверки подлинности, который задает `HttpContext.User` свойства. Вызовите `UseAuthentication` метод перед вызовом `UseMvcWithDefaultRoute` или `UseMvc`:
 
 [!code-csharp[](cookie/samples/2.x/CookieSample/Startup.cs?name=snippet2)]
 
@@ -48,28 +48,28 @@ ms.locfileid: "36275610"
 
 | Параметр | Описание: |
 | ------ | ----------- |
-| [AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath?view=aspnetcore-2.0) | Предоставляет путь для предоставления с 302 Found (перенаправление URL-адрес) при срабатывании триггера `HttpContext.ForbidAsync`. Значение по умолчанию — `/Account/AccessDenied`. |
-| [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.claimsissuer?view=aspnetcore-2.0) | Издатель, используемый для [издателя](/dotnet/api/system.security.claims.claim.issuer) свойство утверждений, созданный с помощью службы проверки подлинности файла cookie. |
-| [Cookie.Domain](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.domain?view=aspnetcore-2.0) | Имя домена, где обслуживают куки-файл. По умолчанию это имя узла запроса. Браузер отправляет только куки-файл в запросах имени узла. Вы можете настроить этот параметр для файлов cookie, доступных любому узлу в вашем домене. Например, установите значение домена файла cookie `.contoso.com` делает ее доступной для `contoso.com`, `www.contoso.com`, и `staging.www.contoso.com`. |
-| [Cookie.Expiration](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.expiration?view=aspnetcore-2.0) | Возвращает или задает время существования куки-файла. В настоящее время это параметр Нет ops и станет устаревшим в ASP.NET Core 2.1 +. Используйте `ExpireTimeSpan` параметр, чтобы задать срок действия файла cookie. Дополнительные сведения см. в разделе [уточняется поведение CookieAuthenticationOptions.Cookie.Expiration](https://github.com/aspnet/Security/issues/1293). |
-| [Cookie.HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly?view=aspnetcore-2.0) | Флаг, указывающий куки-файл должен быть доступен только на серверы. Изменение этого значения для `false` разрешает клиентские скрипты для доступа к куки-файл и может открыть приложение кража файлов cookie, должны иметь приложения [межсайтовых сценариев (XSS)](xref:security/cross-site-scripting) уязвимость. Значение по умолчанию — `true`. |
+| [AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath?view=aspnetcore-2.0) | Предоставляет путь к предоставить "302 Found" (URL-адрес перенаправления) при активации `HttpContext.ForbidAsync`. Значение по умолчанию — `/Account/AccessDenied`. |
+| [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.claimsissuer?view=aspnetcore-2.0) | Издатель, используемый для [издателя](/dotnet/api/system.security.claims.claim.issuer) свойство на все утверждения, созданный с помощью службы проверки подлинности файла cookie. |
+| [Cookie.Domain](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.domain?view=aspnetcore-2.0) | Имя домена, где обслуживается куки-файл. По умолчанию это имя узла запроса. Браузер отправляет только куки-файл в запросах к соответствующим именем узла. Вы можете настроить этот параметр для файлов cookie, доступных на любом узле в вашем домене. Например, значение домена файла cookie `.contoso.com` сделает его доступным для `contoso.com`, `www.contoso.com`, и `staging.www.contoso.com`. |
+| [Cookie.Expiration](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.expiration?view=aspnetcore-2.0) | Возвращает или задает срок действия файла cookie. В настоящее время это параметр холостой командой и станут устаревшими в ASP.NET Core 2.1 или более поздней. Используйте `ExpireTimeSpan` параметр, чтобы задать срок действия файла cookie. Дополнительные сведения см. в разделе [уточнить поведение CookieAuthenticationOptions.Cookie.Expiration](https://github.com/aspnet/Security/issues/1293). |
+| [Cookie.HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly?view=aspnetcore-2.0) | Флаг, указывающий файл cookie должен быть доступен только на серверы. Это значение изменится на `false` разрешает клиентские скрипты, чтобы получить доступ к куки-файл и может открыть свое приложение для хищения файлов cookie, должны иметь приложения [межузловых сценариев (XSS)](xref:security/cross-site-scripting) уязвимость. Значение по умолчанию — `true`. |
 | [Cookie.Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name?view=aspnetcore-2.0) | Задает имя файла cookie. |
-| [Cookie.Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path?view=aspnetcore-2.0) | Использовать для изоляции приложений, выполняющихся в то же имя узла. Если у вас есть приложение, работающее на `/app1` и нужно ограничить файлы cookie для данного приложения, задайте `CookiePath` свойства `/app1`. Таким образом, файл cookie доступна только для запросов к `/app1` и любое приложение, входящие в него. |
-| [Cookie.SameSite](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.samesite?view=aspnetcore-2.0) | Указывает, является ли браузер должен позволять куки-файл для подключения к веб-сайте запросы только (`SameSiteMode.Strict`) или запросы между сайтами, с использованием безопасного HTTP методы и запросы веб-сайте (`SameSiteMode.Lax`). Если задано значение `SameSiteMode.None`, не задано значение заголовка файла cookie. Обратите внимание, что [по промежуточного слоя файлов Cookie политики](#cookie-policy-middleware) может перезаписать предоставленное значение. Для поддержки проверки подлинности OAuth, значение по умолчанию — `SameSiteMode.Lax`. Дополнительные сведения см. в разделе [потеряны из-за политики SameSite файла cookie проверки подлинности OAuth](https://github.com/aspnet/Security/issues/1231). |
-| [Cookie.SecurePolicy](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.securepolicy?view=aspnetcore-2.0) | Флаг, указывающий, следует ли созданный файл cookie ограничиваются HTTPS (`CookieSecurePolicy.Always`), HTTP или HTTPS (`CookieSecurePolicy.None`), или тот же протокол, что и при запросе (`CookieSecurePolicy.SameAsRequest`). Значение по умолчанию — `CookieSecurePolicy.SameAsRequest`. |
+| [Cookie.Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path?view=aspnetcore-2.0) | Использовать для изоляции приложений, выполняющихся в то же имя узла. Если у вас есть приложение, запущенное в `/app1` и нужно ограничить файлы cookie для этого приложения, задайте `CookiePath` свойства `/app1`. Таким образом, файл cookie доступна только для запросов к `/app1` и любого приложения под ним. |
+| [Cookie.SameSite](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.samesite?view=aspnetcore-2.0) | Указывает, разрешено ли браузер файлов cookie, должны быть присоединены к только запросы веб-сайте (`SameSiteMode.Strict`) или запросов между сайтами, с использованием безопасного HTTP-методов и запросов веб-сайте (`SameSiteMode.Lax`). Если задано значение `SameSiteMode.None`, не задано значение заголовка файла cookie. Обратите внимание, что [промежуточного слоя политики](#cookie-policy-middleware) может перезаписать предоставленное значение. Для поддержки проверки подлинности OAuth, значение по умолчанию — `SameSiteMode.Lax`. Дополнительные сведения см. в разделе [нарушена из-за политики SameSite файла cookie проверки подлинности OAuth](https://github.com/aspnet/Security/issues/1231). |
+| [Cookie.SecurePolicy](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.securepolicy?view=aspnetcore-2.0) | Флаг, указывающий, если созданный файл cookie был ограничен HTTPS (`CookieSecurePolicy.Always`), HTTP или HTTPS (`CookieSecurePolicy.None`), или тот же протокол, что и в запросе (`CookieSecurePolicy.SameAsRequest`). Значение по умолчанию — `CookieSecurePolicy.SameAsRequest`. |
 | [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.dataprotectionprovider?view=aspnetcore-2.0) | Наборы `DataProtectionProvider` , используемый для создания по умолчанию `TicketDataFormat`. Если `TicketDataFormat` свойство задано, `DataProtectionProvider` параметр не используется. Если не указано, используется поставщик защиты данных приложения по умолчанию. |
-| [События](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.events?view=aspnetcore-2.0) | Обработчик вызывает методы поставщика, позволяют контролировать приложения в определенные моменты обработки. Если `Events` не указан, предоставляется экземпляр по умолчанию, не выполняет никаких действий, при вызове методов. |
+| [События](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.events?view=aspnetcore-2.0) | Обработчик вызывает методы поставщика, который предоставить элемент управления приложения в определенные моменты обработки. Если `Events` не переданы, предоставляется экземпляр по умолчанию, не выполняет никаких действий при вызове методов. |
 | [EventsType](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.eventstype?view=aspnetcore-2.0) | Используется как тип службы для получения `Events` экземпляром, а не свойства. |
-| [ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.expiretimespan?view=aspnetcore-2.0) | `TimeSpan` После которого срок действия билета проверки подлинности, хранящийся в файле cookie. `ExpireTimeSpan` добавляется на текущий момент времени, чтобы создать срок действия билета. `ExpiredTimeSpan` Значение всегда переходит в зашифрованных AuthTicket, проверить сервер. Он также может перейти в [Set-Cookie](https://tools.ietf.org/html/rfc6265#section-4.1) заголовок, но только если `IsPersistent` имеет значение. Чтобы задать `IsPersistent` для `true`, настройте [AuthenticationProperties](/dotnet/api/microsoft.aspnetcore.authentication.authenticationproperties) передаваемый `SignInAsync`. Значение по умолчанию `ExpireTimeSpan` — 14 дней. |
-| [LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath?view=aspnetcore-2.0) | Предоставляет путь для предоставления с 302 Found (перенаправление URL-адрес) при срабатывании триггера `HttpContext.ChallengeAsync`. Текущий URL-адрес, создавший код 401, добавляется в `LoginPath` как параметр строки запроса с именем `ReturnUrlParameter`. Запрос один раз на `LoginPath` предоставляет нового вход удостоверения, `ReturnUrlParameter` значение используется для перенаправления браузера обратно в URL-адрес, вызвавший исходный код состояния не санкционировано. Значение по умолчанию — `/Account/Login`. |
-| [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath?view=aspnetcore-2.0) | Если `LogoutPath` предоставляется обработчику, а затем перенаправляет запрос по этому пути в зависимости от значения `ReturnUrlParameter`. Значение по умолчанию — `/Account/Logout`. |
-| [ReturnUrlParameter](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.returnurlparameter?view=aspnetcore-2.0) | Определяет имя параметра строки запроса, добавленный для обработчика ответа 302 Found (перенаправление URL-адрес). `ReturnUrlParameter` используется при получении запроса на `LoginPath` или `LogoutPath` для возврата в браузере исходный URL-адрес после выполнения действия имени входа или выхода из системы. Значение по умолчанию — `ReturnUrl`. |
-| [SessionStore](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.sessionstore?view=aspnetcore-2.0) | Необязательный контейнер, используемый для хранения идентификаторов различных запросов. При использовании только идентификатор сеанса отправляется клиенту. `SessionStore` можно использовать для устранения возможных проблем с большой удостоверения. |
-| [slidingExpiration](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.slidingexpiration?view=aspnetcore-2.0) | Флаг, указывающий, должен быть новый файл cookie, срок действия обновленного выдан динамически. Это может произойти на любой запрос, где текущего срока действия файла cookie более чем на 50% срок действия истек. Новую дату окончания срока действия перемещается вперед для текущей даты, а также `ExpireTimespan`. [Время истечения срока действия файла cookie абсолютный](xref:security/authentication/cookie#absolute-cookie-expiration) можно задать с помощью `AuthenticationProperties` класса при вызове `SignInAsync`. Абсолютный срок действия может повысить безопасность приложения, ограничивая количество времени, допустимый файл cookie проверки подлинности. Значение по умолчанию — `true`. |
-| [TicketDataFormat](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.ticketdataformat?view=aspnetcore-2.0) | `TicketDataFormat` Используется для установки и снятия защиты identity и других свойств, хранящихся в значении cookie. Если не указано, `TicketDataFormat` создается с помощью [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.dataprotectionprovider?view=aspnetcore-2.0). |
+| [ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.expiretimespan?view=aspnetcore-2.0) | `TimeSpan` После которого срока действия билета проверки подлинности, хранящийся в файл cookie. `ExpireTimeSpan` добавляется на текущий момент времени, чтобы создать срок действия билета. `ExpiredTimeSpan` Значение всегда переходит в зашифрованных AuthTicket, проверен сервером. Он также может перейти в [Set-Cookie](https://tools.ietf.org/html/rfc6265#section-4.1) заголовок, но только если `IsPersistent` имеет значение. Чтобы задать `IsPersistent` для `true`, Настройка [AuthenticationProperties](/dotnet/api/microsoft.aspnetcore.authentication.authenticationproperties) передается `SignInAsync`. Значение по умолчанию `ExpireTimeSpan` — 14 дней. |
+| [LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath?view=aspnetcore-2.0) | Предоставляет путь к предоставить "302 Found" (URL-адрес перенаправления) при активации `HttpContext.ChallengeAsync`. Добавляется текущий URL-адрес, вызвавший ответ 401 `LoginPath` как параметр строки запроса с именем, `ReturnUrlParameter`. Запрос один раз на `LoginPath` предоставляет новое входа удостоверение, `ReturnUrlParameter` значение используется для перенаправления браузера обратно в URL-адрес, вызвавший исходный код несанкционированного состояния. Значение по умолчанию — `/Account/Login`. |
+| [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath?view=aspnetcore-2.0) | Если `LogoutPath` предоставляется обработчику, а затем перенаправляет запрос по этому пути на основе значения из `ReturnUrlParameter`. Значение по умолчанию — `/Account/Logout`. |
+| [ReturnUrlParameter](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.returnurlparameter?view=aspnetcore-2.0) | Определяет имя параметра строки запроса, которое добавляется с помощью обработчика для ответа 302 Found (перенаправление URL-адрес). `ReturnUrlParameter` используется при получении запроса на `LoginPath` или `LogoutPath` для возврата в браузере на исходный URL-адрес после выполнения действия имени входа или выхода. Значение по умолчанию — `ReturnUrl`. |
+| [SessionStore](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.sessionstore?view=aspnetcore-2.0) | Необязательный контейнер, используемый для хранения идентификаторов всех запросов. При использовании только идентификатор сеанса отправляется клиенту. `SessionStore` можно использовать для устранения потенциальных проблем с удостоверениями большой. |
+| [slidingExpiration](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.slidingexpiration?view=aspnetcore-2.0) | Флаг, указывающий, если новый файл cookie с обновленной срок действия должен быть выдан динамически. Это может произойти на любой запрос, где текущий период истечения срока действия файла cookie более чем на 50% срок действия истек. Новый срок перемещается вперед быть текущая дата плюс `ExpireTimespan`. [Время истечения срока действия файла cookie абсолютный](xref:security/authentication/cookie#absolute-cookie-expiration) можно задать с помощью `AuthenticationProperties` при вызове метода `SignInAsync`. Абсолютный срок действия можно повысить безопасность приложения, ограничивая количество времени, который действителен cookie проверки подлинности. Значение по умолчанию — `true`. |
+| [TicketDataFormat](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.ticketdataformat?view=aspnetcore-2.0) | `TicketDataFormat` Используется для применения и снятия защиты identity и других свойств, которые хранятся в значении cookie. Если не указано, `TicketDataFormat` создается с помощью [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.dataprotectionprovider?view=aspnetcore-2.0). |
 | [Проверка](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.validate?view=aspnetcore-2.0) | Метод, который проверяет, что параметры являются допустимыми. |
 
-Задать `CookieAuthenticationOptions` в конфигурации службы для проверки подлинности в `ConfigureServices` метод:
+Задайте `CookieAuthenticationOptions` в конфигурации службы для проверки подлинности в `ConfigureServices` метод:
 
 ```csharp
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -81,11 +81,11 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
-Куки-файл использует 1.x ASP.NET Core [по промежуточного слоя](xref:fundamentals/middleware/index) , сериализует участника-пользователя в зашифрованном файле cookie. При последующих запросах куки-файл проверяется, и основной сервер заново и назначенные `HttpContext.User` свойство.
+ASP.NET Core 1.x использует cookie [по промежуточного слоя](xref:fundamentals/middleware/index) , сериализует участника-пользователя в зашифрованном файле cookie. При последующих запросах куки-файл проверяется, а основной сервер заново и назначенные `HttpContext.User` свойство.
 
-Установка [Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/) пакета NuGet в проекте. Этот пакет содержит файл cookie по промежуточного слоя.
+Установка [Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/) пакета NuGet в проект. Этот пакет содержит по промежуточного слоя.
 
-Используйте `UseCookieAuthentication` метод в `Configure` метод в вашей *файла Startup.cs* файла перед `UseMvc` или `UseMvcWithDefaultRoute`:
+Используйте `UseCookieAuthentication` метод в `Configure` метод в вашей *Startup.cs* файл перед `UseMvc` или `UseMvcWithDefaultRoute`:
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions()
@@ -104,19 +104,19 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions()
 
 | Параметр | Описание: |
 | ------ | ----------- |
-| [authenticationScheme](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.authenticationscheme?view=aspnetcore-1.1) | Задает схему проверки подлинности. `AuthenticationScheme` полезно, когда несколько экземпляров проверки подлинности, и вы хотите [авторизации с нужной раскладки](xref:security/authorization/limitingidentitybyscheme). Установка `AuthenticationScheme` для `CookieAuthenticationDefaults.AuthenticationScheme` предоставляет значение файлов «cookie» для схемы. Можно указать любое строковое значение, отличающее схему. |
-| [AutomaticAuthenticate](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.automaticauthenticate?view=aspnetcore-1.1) | Задает значение, указывающее, что файл cookie проверки подлинности запустите при каждом запросе и попытка проверки и воссоздания любому участнику сериализованный она создана. |
-| [AutomaticChallenge](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.automaticchallenge?view=aspnetcore-1.1) | Значение true, если по промежуточного слоя проверки подлинности обрабатывает автоматического проблем. Если значение равно false, проверка подлинности по промежуточного слоя лишь изменяет ответы, если они явным образом указано `AuthenticationScheme`. |
-| [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.claimsissuer?view=aspnetcore-1.1) | Издатель, используемый для [издателя](/dotnet/api/system.security.claims.claim.issuer) свойство все утверждения, созданные по промежуточного слоя проверки подлинности файла cookie. |
-| [CookieDomain](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiedomain?view=aspnetcore-1.1) | Имя домена, где обслуживают куки-файл. По умолчанию это имя узла запроса. Браузер служит только файла cookie для сопоставления имени узла. Вы можете настроить этот параметр для файлов cookie, доступных любому узлу в вашем домене. Например, установите значение домена файла cookie `.contoso.com` делает ее доступной для `contoso.com`, `www.contoso.com`, и `staging.www.contoso.com`. |
-| [CookieHttpOnly](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiehttponly?view=aspnetcore-1.1) | Флаг, указывающий куки-файл должен быть доступен только на серверы. Изменение этого значения для `false` разрешает клиентские скрипты для доступа к куки-файл и может открыть приложение кража файлов cookie, должны иметь приложения [межсайтовых сценариев (XSS)](xref:security/cross-site-scripting) уязвимость. Значение по умолчанию — `true`. |
-| [CookiePath](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiepath?view=aspnetcore-1.1) | Использовать для изоляции приложений, выполняющихся в то же имя узла. Если у вас есть приложение, работающее на `/app1` и нужно ограничить файлы cookie для данного приложения, задайте `CookiePath` свойства `/app1`. Таким образом, файл cookie доступна только для запросов к `/app1` и любое приложение, входящие в него. |
-| [CookieSecure](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiesecure?view=aspnetcore-1.1) | Флаг, указывающий, следует ли созданный файл cookie ограничиваются HTTPS (`CookieSecurePolicy.Always`), HTTP или HTTPS (`CookieSecurePolicy.None`), или тот же протокол, что и при запросе (`CookieSecurePolicy.SameAsRequest`). Значение по умолчанию — `CookieSecurePolicy.SameAsRequest`. |
-| [Описание](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.description?view=aspnetcore-1.1) | Дополнительные сведения о типе проверки подлинности доступны для приложения. |
-| [ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.expiretimespan?view=aspnetcore-1.1) | `TimeSpan` После которого срок действия билета проверки подлинности. Он добавляется в текущее время, чтобы создать срок действия билета. Для использования `ExpireTimeSpan`, необходимо задать `IsPersistent` для `true` в `AuthenticationProperties` передаваемый `SignInAsync`. Значение по умолчанию — 14 дней. |
-| [slidingExpiration](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.slidingexpiration?view=aspnetcore-1.1) | Флаг, указывающий, сбрасывается ли дата окончания срока действия файла cookie при более половины `ExpireTimeSpan` истечет интервал. Новое время exipiration перемещается вперед для текущей даты, а также `ExpireTimespan`. [Время истечения срока действия файла cookie абсолютный](xref:security/authentication/cookie#absolute-cookie-expiration) можно задать с помощью `AuthenticationProperties` класса при вызове `SignInAsync`. Абсолютный срок действия может повысить безопасность приложения, ограничивая количество времени, допустимый файл cookie проверки подлинности. Значение по умолчанию — `true`. |
+| [Значение AuthenticationScheme](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.authenticationscheme?view=aspnetcore-1.1) | Задает схему проверки подлинности. `AuthenticationScheme` полезно, если имеется несколько экземпляров проверки подлинности, и вы хотите [авторизация с определенной схемой](xref:security/authorization/limitingidentitybyscheme). Установка `AuthenticationScheme` для `CookieAuthenticationDefaults.AuthenticationScheme` предоставляет значение файлов «cookie» для схемы. Вы можете указать любое строковое значение, являющийся отличительным признаком схемы. |
+| [AutomaticAuthenticate](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.automaticauthenticate?view=aspnetcore-1.1) | Задает значение, указывающее, что файл cookie проверки подлинности следует выполняется при каждом запросе и пытаются проверить и воссоздания любому участнику сериализованный созданные им. |
+| [AutomaticChallenge](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.automaticchallenge?view=aspnetcore-1.1) | Если значение равно true, по промежуточного слоя проверки подлинности обрабатывает автоматического проблем. Если значение равно false, по промежуточного слоя проверки подлинности только изменяет ответы, если они явно не указано `AuthenticationScheme`. |
+| [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.claimsissuer?view=aspnetcore-1.1) | Издатель, используемый для [издателя](/dotnet/api/system.security.claims.claim.issuer) свойство на все утверждения, созданные по промежуточного слоя проверки подлинности. |
+| [CookieDomain](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiedomain?view=aspnetcore-1.1) | Имя домена, где обслуживается куки-файл. По умолчанию это имя узла запроса. Браузер обслуживает только файл cookie для сопоставления имени узла. Вы можете настроить этот параметр для файлов cookie, доступных на любом узле в вашем домене. Например, значение домена файла cookie `.contoso.com` сделает его доступным для `contoso.com`, `www.contoso.com`, и `staging.www.contoso.com`. |
+| [CookieHttpOnly](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiehttponly?view=aspnetcore-1.1) | Флаг, указывающий файл cookie должен быть доступен только на серверы. Это значение изменится на `false` разрешает клиентские скрипты, чтобы получить доступ к куки-файл и может открыть свое приложение для хищения файлов cookie, должны иметь приложения [межузловых сценариев (XSS)](xref:security/cross-site-scripting) уязвимость. Значение по умолчанию — `true`. |
+| [CookiePath](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiepath?view=aspnetcore-1.1) | Использовать для изоляции приложений, выполняющихся в то же имя узла. Если у вас есть приложение, запущенное в `/app1` и нужно ограничить файлы cookie для этого приложения, задайте `CookiePath` свойства `/app1`. Таким образом, файл cookie доступна только для запросов к `/app1` и любого приложения под ним. |
+| [CookieSecure](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiesecure?view=aspnetcore-1.1) | Флаг, указывающий, если созданный файл cookie был ограничен HTTPS (`CookieSecurePolicy.Always`), HTTP или HTTPS (`CookieSecurePolicy.None`), или тот же протокол, что и в запросе (`CookieSecurePolicy.SameAsRequest`). Значение по умолчанию — `CookieSecurePolicy.SameAsRequest`. |
+| [Описание](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.description?view=aspnetcore-1.1) | Дополнительные сведения о типе проверки подлинности, который становится доступен в приложение. |
+| [ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.expiretimespan?view=aspnetcore-1.1) | `TimeSpan` После которого срока действия билета проверки подлинности. Оно добавляется на текущий момент времени, чтобы создать срок действия билета. Чтобы использовать `ExpireTimeSpan`, необходимо задать `IsPersistent` для `true` в `AuthenticationProperties` передается `SignInAsync`. Значение по умолчанию — 14 дней. |
+| [slidingExpiration](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.slidingexpiration?view=aspnetcore-1.1) | Флаг, указывающий, сбрасывается ли дату истечения срока действия файла cookie при более половины `ExpireTimeSpan` промежуток времени истек. Новое время exipiration перемещается вперед быть текущая дата плюс `ExpireTimespan`. [Время истечения срока действия файла cookie абсолютный](xref:security/authentication/cookie#absolute-cookie-expiration) можно задать с помощью `AuthenticationProperties` при вызове метода `SignInAsync`. Абсолютный срок действия можно повысить безопасность приложения, ограничивая количество времени, который действителен cookie проверки подлинности. Значение по умолчанию — `true`. |
 
-Задать `CookieAuthenticationOptions` по промежуточного слоя проверки подлинности файла Cookie в `Configure` метод:
+Задайте `CookieAuthenticationOptions` для по промежуточного слоя проверки подлинности, в `Configure` метод:
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -127,27 +127,27 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
 ---
 
-## <a name="cookie-policy-middleware"></a>Файл cookie политики по промежуточного слоя
+## <a name="cookie-policy-middleware"></a>По промежуточного слоя для файлов cookie политики
 
-[По промежуточного слоя файлов cookie политики](/dotnet/api/microsoft.aspnetcore.cookiepolicy.cookiepolicymiddleware) обеспечивает возможности политики куки-файл в приложении. Добавление по промежуточного слоя в конвейере обработки приложения — порядок конфиденциальные; он влияет только на компоненты, зарегистрированные за ним в конвейере.
+[По промежуточного слоя для файлов cookie политики](/dotnet/api/microsoft.aspnetcore.cookiepolicy.cookiepolicymiddleware) обеспечивает возможности политики файлов cookie в приложении. Добавлением по промежуточного слоя в конвейере обработки приложение является конфиденциальным; порядок он влияет только на компоненты, зарегистрированные за ним в конвейере.
 
 ```csharp
 app.UseCookiePolicy(cookiePolicyOptions);
 ```
 
- [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) для по промежуточного слоя файлов Cookie политики позволяют управлять общих характеристик обработки файлов cookie и обработчик в обработчики обработки файла cookie при удалении или добавлены файлы cookie.
+ [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) для по промежуточного слоя политики позволяют управлять общих характеристик обработки файлов cookie и обработчик в обработчики обработки файлов cookie, если файлы cookie добавляется или удаляется.
 
 | Свойство. | Описание: |
 | -------- | ----------- |
-| [HttpOnly](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.httponly) | Влияет ли файлы cookie должен быть HttpOnly, который имеет флаг, указывающий, куки-файл должен быть доступен только на серверы. Значение по умолчанию — `HttpOnlyPolicy.None`. |
-| [MinimumSameSitePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.minimumsamesitepolicy) | Влияет на атрибут веб-сайте куки-файл (см. ниже). Значение по умолчанию — `SameSiteMode.Lax`. Этот параметр доступен для основных компонентов ASP.NET 2.0 +. |
-| [OnAppendCookie](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.onappendcookie) | Вызывается при добавлении файла cookie. |
+| [HttpOnly](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.httponly) | Влияет ли файлы cookie должен быть HttpOnly, который является флагом, показывающим куки-файл должен быть доступен только на серверы. Значение по умолчанию — `HttpOnlyPolicy.None`. |
+| [MinimumSameSitePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.minimumsamesitepolicy) | Влияет на атрибут файла cookie веб-сайте (см. ниже). Значение по умолчанию — `SameSiteMode.Lax`. Этот параметр доступен для ASP.NET Core 2.0 +. |
+| [OnAppendCookie](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.onappendcookie) | Вызывается, когда файл cookie добавляется. |
 | [OnDeleteCookie](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.ondeletecookie) | Вызывается при удалении файла cookie. |
 | [Защита](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.secure) | Влияет ли файлы cookie должен быть Secure. Значение по умолчанию — `CookieSecurePolicy.None`. |
 
 **MinimumSameSitePolicy** (ASP.NET Core 2.0 + только)
 
-Значение по умолчанию `MinimumSameSitePolicy` значение `SameSiteMode.Lax` для разрешения проверки подлинности OAuth2. Для строго принудительного применения политики веб-сайте `SameSiteMode.Strict`, задайте `MinimumSameSitePolicy`. Несмотря на то, что этот параметр сбрасывает OAuth2 и других схем проверки подлинности независимо от источника, он повышает уровень безопасности cookie для других типов приложений, которые не зависят от обработки запроса независимо от источника.
+Значение по умолчанию `MinimumSameSitePolicy` значение `SameSiteMode.Lax` для разрешения проверки подлинности OAuth2. Для строго ограничивает политику веб-сайте `SameSiteMode.Strict`, задайте `MinimumSameSitePolicy`. Несмотря на то, что этот параметр приводит к сбою OAuth2 и других схем проверки подлинности независимо от источника, оно повышает уровень безопасности cookie для других типов приложений, которые не полагаются на обработку независимо от источника запроса.
 
 ```csharp
 var cookiePolicyOptions = new CookiePolicyOptions
@@ -156,7 +156,7 @@ var cookiePolicyOptions = new CookiePolicyOptions
 };
 ```
 
-Параметр по промежуточного слоя куки-файл политики для `MinimumSameSitePolicy` может повлиять на ваш равным `Cookie.SameSite` в `CookieAuthenticationOptions` параметры в соответствии с Приведенная ниже таблица.
+Параметр политики промежуточного слоя для `MinimumSameSitePolicy` может повлиять на ваши равным `Cookie.SameSite` в `CookieAuthenticationOptions` параметры в соответствии с в таблице ниже.
 
 | MinimumSameSitePolicy | Cookie.SameSite | Результирующий параметр Cookie.SameSite |
 | --------------------- | --------------- | --------------------------------- |
@@ -164,19 +164,19 @@ var cookiePolicyOptions = new CookiePolicyOptions
 | SameSiteMode.Lax      | SameSiteMode.None<br>SameSiteMode.Lax<br>SameSiteMode.Strict | SameSiteMode.Lax<br>SameSiteMode.Lax<br>SameSiteMode.Strict |
 | SameSiteMode.Strict   | SameSiteMode.None<br>SameSiteMode.Lax<br>SameSiteMode.Strict | SameSiteMode.Strict<br>SameSiteMode.Strict<br>SameSiteMode.Strict |
 
-## <a name="create-an-authentication-cookie"></a>Создание файла cookie проверки подлинности
+## <a name="create-an-authentication-cookie"></a>Создайте файл cookie проверки подлинности
 
-Чтобы создать файл cookie, содержащий сведения о пользователе, следует создать [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal). Сведения о пользователе сериализуется и сохраняется в файле cookie. 
+Чтобы создать файл cookie, содержащий сведения о пользователе, то необходимо создать [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal). Сведения о пользователе сериализуется и сохраняется в файле cookie. 
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-Создание [ClaimsIdentity](/dotnet/api/system.security.claims.claimsidentity) с все необходимые [утверждения](/dotnet/api/system.security.claims.claim)s и вызовите [SignInAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signinasync?view=aspnetcore-2.0) входа пользователя:
+Создание [ClaimsIdentity](/dotnet/api/system.security.claims.claimsidentity) с любыми обязательными [утверждения](/dotnet/api/system.security.claims.claim)s и вызовите [SignInAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signinasync?view=aspnetcore-2.0) для входа пользователя:
 
 [!code-csharp[](cookie/samples/2.x/CookieSample/Pages/Account/Login.cshtml.cs?name=snippet1)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
-Вызовите [SignInAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1.signinasync?view=aspnetcore-1.1) входа пользователя:
+Вызовите [SignInAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1.signinasync?view=aspnetcore-1.1) для входа пользователя:
 
 ```csharp
 await HttpContext.Authentication.SignInAsync(
@@ -186,21 +186,21 @@ await HttpContext.Authentication.SignInAsync(
 
 ---
 
-`SignInAsync` создает зашифрованный файл cookie и добавляет его в текущий ответ. Если не указать `AuthenticationScheme`, используется схема по умолчанию.
+`SignInAsync` создает зашифрованный файл cookie и добавляет его в текущий ответ. Если вы не укажете `AuthenticationScheme`, используется схема по умолчанию.
 
-На самом деле шифрования, используемый — ASP.NET Core [защиты данных](xref:security/data-protection/using-data-protection#security-data-protection-getting-started) системы. Если вы используете приложение на нескольких компьютерах, балансировки нагрузки для приложений или с помощью веб-фермы, то необходимо [настроить защиту данных](xref:security/data-protection/configuration/overview) использовать же ключей и идентификатор приложения.
+На самом деле, шифрования, используемых — ASP.NET Core [защиты данных](xref:security/data-protection/using-data-protection#security-data-protection-getting-started) системы. Если вы размещаете приложения на нескольких компьютерах, балансировки нагрузки для приложений или с помощью веб-ферме, то необходимо [настроить защиту данных](xref:security/data-protection/configuration/overview) использование одного набора ключей и идентификатор приложения.
 
 ## <a name="sign-out"></a>Выйти
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-Чтобы выйти из системы текущего пользователя и удалить их куки-файл, вызовите [SignOutAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signoutasync?view=aspnetcore-2.0):
+Чтобы выйти из системы текущего пользователя и удалить их файл cookie, вызовите [SignOutAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signoutasync?view=aspnetcore-2.0):
 
 [!code-csharp[](cookie/samples/2.x/CookieSample/Pages/Account/Login.cshtml.cs?name=snippet2)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
-Чтобы выйти из системы текущего пользователя и удалить их куки-файл, вызовите [SignOutAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1.signoutasync?view=aspnetcore-1.1):
+Чтобы выйти из системы текущего пользователя и удалить их файл cookie, вызовите [SignOutAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1.signoutasync?view=aspnetcore-1.1):
 
 ```csharp
 await HttpContext.Authentication.SignOutAsync(
@@ -209,17 +209,17 @@ await HttpContext.Authentication.SignOutAsync(
 
 ---
 
-Если вы не используете `CookieAuthenticationDefaults.AuthenticationScheme` (или файлы «cookie») как схему (например, «ContosoCookie»), укажите схему, которая используется при настройке поставщика проверки подлинности. В противном случае используется схема по умолчанию.
+Если вы не используете `CookieAuthenticationDefaults.AuthenticationScheme` (или файлы «cookie») как схему (например, «ContosoCookie»), укажите схему, используемую при настройке поставщика проверки подлинности. В противном случае используется схема по умолчанию.
 
-## <a name="react-to-back-end-changes"></a>В ответ на изменение серверной части
+## <a name="react-to-back-end-changes"></a>Реагировать на изменения серверной части
 
-После создания файла cookie, он становится единственным источником удостоверения. Даже при отключении пользователя в серверной части системы системой проверки подлинности файла cookie не имеет сведений о это, а пользователь сохраняется вошедший в систему, при условии, что их файл cookie является допустимым.
+Создав файл cookie, он становится единственным источником удостоверения. Даже при отключении пользователя в системах серверной системой проверки подлинности файла cookie не имеет сведений о это и пользователь остается в системе до тех пор, пока их файл cookie является допустимым.
 
-[ValidatePrincipal](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationevents.validateprincipal) событий в ASP.NET Core 2.x или [ValidateAsync](/dotnet/api/microsoft.aspnetcore.identity.isecuritystampvalidator.validateasync?view=aspnetcore-1.1) метод в ASP.NET Core 1.x можно использовать для перехвата и переопределение проверки подлинности файла cookie. Этот подход уменьшает риск отозванных пользователей, получающих доступ к приложению.
+[ValidatePrincipal](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationevents.validateprincipal) событий в ASP.NET Core 2.x или [ValidateAsync](/dotnet/api/microsoft.aspnetcore.identity.isecuritystampvalidator.validateasync?view=aspnetcore-1.1) метод в ASP.NET Core 1.x можно использовать для перехвата и переопределение проверки подлинности файла cookie. Этот подход уменьшает риск появления отозванных пользователей, обращающихся к приложению.
 
-Одним из способов проверки cookie основан следить за изменением пользовательской базы данных. Если базы данных не был изменен с момента выдачи объекта cookie пользователя, нет необходимости повторно пройти проверку подлинности пользователя при их куки-файл все еще действительна. Чтобы реализовать этот сценарий базы данных, которая реализована в `IUserRepository` в этом примере хранит `LastChanged` значение. При обновлении любого пользователя в базе данных, `LastChanged` имеет значение до текущего момента.
+Один из способов проверки cookie основан на слежении за при изменении пользователя базы данных. Если базы данных не был изменен с момента выпуска файла cookie пользователя, нет необходимости пройти повторную аутентификацию пользователя, если их куки-файл все еще действителен. Чтобы реализовать этот сценарий базы данных, реализованное в `IUserRepository` в этом примере хранит `LastChanged` значение. При обновлении любого пользователя в базе данных, `LastChanged` имеет значение текущего времени.
 
-Чтобы сделать недействительными файла cookie при изменении базы данных на основе `LastChanged` значение, создайте файл cookie с `LastChanged` утверждение, содержащее текущий `LastChanged` значение из базы данных:
+Чтобы сделать недействительным файл cookie, когда база данных изменяется в зависимости от `LastChanged` создайте файл cookie с `LastChanged` утверждение, содержащее текущий `LastChanged` значение из базы данных:
 
 ```csharp
 var claims = new List<Claim>
@@ -239,7 +239,7 @@ await HttpContext.SignInAsync(
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Чтобы реализовать переопределение для `ValidatePrincipal` событий записи метод со следующей сигнатурой в классе, унаследованном от [CookieAuthenticationEvents](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationevents):
+Для реализации переопределения для `ValidatePrincipal` события, написание метод со следующей сигнатурой в классе, унаследованном от [CookieAuthenticationEvents](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationevents):
 
 ```csharp
 ValidatePrincipal(CookieValidatePrincipalContext)
@@ -284,7 +284,7 @@ public class CustomCookieAuthenticationEvents : CookieAuthenticationEvents
 }
 ```
 
-Зарегистрируйте экземпляр события во время регистрации службы куки-файл в `ConfigureServices` метод. Регистрация службы с областью для предоставления вашей `CustomCookieAuthenticationEvents` класса:
+Зарегистрируйте экземпляр события во время регистрации службы файл cookie в `ConfigureServices` метод. Укажите регистрацию ограниченной службы для вашего `CustomCookieAuthenticationEvents` класса:
 
 ```csharp
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -298,13 +298,13 @@ services.AddScoped<CustomCookieAuthenticationEvents>();
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Чтобы реализовать переопределение для `ValidateAsync` событий записи метод со следующей сигнатурой:
+Для реализации переопределения для `ValidateAsync` события, написание метод со следующей сигнатурой:
 
 ```csharp
 ValidateAsync(CookieValidatePrincipalContext)
 ```
 
-ASP.NET Core Identity реализует эту проверку как часть его [SecurityStampValidator](/dotnet/api/microsoft.aspnetcore.identity.securitystampvalidator-1.validateasync). Пример выглядит следующим образом:
+Удостоверение ASP.NET Core реализует эту проверку в процессе его [SecurityStampValidator](/dotnet/api/microsoft.aspnetcore.identity.securitystampvalidator-1.validateasync). Пример выглядит следующим образом:
 
 ```csharp
 public static class LastChangedValidator
@@ -348,16 +348,16 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
 ---
 
-Рассмотрим ситуацию, в которой имя пользователя будет обновлено &mdash; решение, которое не влияет на безопасность системы никаким образом. Безболезненно обновить участника-пользователя следует вызвать `context.ReplacePrincipal` и задайте `context.ShouldRenew` свойства `true`.
+Рассмотрим ситуацию, в котором имя пользователя будет обновлено &mdash; решение, которое не влияет на безопасность любым способом. Если вы хотите безболезненно обновить участника-пользователя, вызовите `context.ReplacePrincipal` и задайте `context.ShouldRenew` свойства `true`.
 
 > [!WARNING]
-> Подход, описанный здесь срабатывает при каждом запросе. Это может привести к снижению больших производительности для приложения.
+> Подход, описанный здесь активируется при каждом запросе. Это может привести к снижению производительности для приложения.
 
-## <a name="persistent-cookies"></a>Сохраняемые файлы cookie
+## <a name="persistent-cookies"></a>Постоянные файлы cookie
 
-Вы можете куки-файл для сохранения между сеансами браузера. Это сохраняемости должны включаться только с согласия пользователя с помощью флажка «Запомнить мои» на имя входа или аналогичного механизма. 
+Требуется файл cookie для сохранения между сеансами браузера. Такое сохранение должны включаться только с согласия пользователя с помощью флажка «Запомнить мои» на имя входа или похожий механизм. 
 
-Следующий фрагмент кода создает удостоверение и соответствующий файл cookie, нечувствительным к через браузер замыкания. Параметры скользящего срока действия ранее настроенные соблюдаются. Если истекает срок действия файла cookie, при закрытии, браузер очищает куки-файл после его перезапуска.
+Следующий фрагмент кода создает удостоверение и соответствующий файл cookie, который выдерживает его через браузер замыкания. Учитываются параметры скользящего срока действия ранее была настроена. Если срок действия файла cookie, при закрытии браузера, браузер удаляет файл cookie после перезагрузки.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -391,9 +391,9 @@ await HttpContext.Authentication.SignInAsync(
 
 ## <a name="absolute-cookie-expiration"></a>Срок действия файла cookie абсолютный
 
-Можно задать абсолютный срок действия с `ExpiresUtc`. Необходимо также задать `IsPersistent`; в противном случае `ExpiresUtc` учитывается и создается файл cookie одного сеанса. При `ExpiresUtc` устанавливается на `SignInAsync`, оно переопределяет значение `ExpireTimeSpan` параметр `CookieAuthenticationOptions`, если задать.
+Можно задать абсолютный срок действия с `ExpiresUtc`. Необходимо также задать `IsPersistent`; в противном случае `ExpiresUtc` учитывается и создается файл cookie одного сеанса. Когда `ExpiresUtc` устанавливается на `SignInAsync`, этот параметр переопределяет значение `ExpireTimeSpan` параметр `CookieAuthenticationOptions`, если задать.
 
-Следующий фрагмент кода создает удостоверение и соответствующий файл cookie, срок действия составляет 20 минут. Это не учитывает любые скользящий срок действия ранее настроенные.
+Следующий фрагмент кода создает удостоверение и соответствующий файл cookie, который выполняется в течение 20 минут. Это не учитывает параметры скользящего срока действия ранее была настроена.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -425,7 +425,8 @@ await HttpContext.Authentication.SignInAsync(
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Изменения AUTH 2.0 или объявления миграции](https://github.com/aspnet/Announcements/issues/262)
-* [Ограничение идентификаторов по схеме](xref:security/authorization/limitingidentitybyscheme)
-* [Авторизация на основе утверждений](xref:security/authorization/claims)
-* [Проверки роли на основе политик](xref:security/authorization/roles#policy-based-role-checks)
+* [Изменения AUTH 2.0 / объявления миграции](https://github.com/aspnet/Announcements/issues/262)
+* <xref:security/authorization/limitingidentitybyscheme>
+* <xref:security/authorization/claims>
+* [Проверок роли на основе политик](xref:security/authorization/roles#policy-based-role-checks)
+* <xref:host-and-deploy/web-farm>

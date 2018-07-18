@@ -1,32 +1,32 @@
 ---
-title: Использовать протокол MessagePack концентратора SignalR для ASP.NET Core
-author: rachelappel
-description: Добавление протокола MessagePack концентратора SignalR ASP.NET Core.
+title: Используют протокол центра MessagePack в SignalR для ASP.NET Core
+author: tdykstra
+description: Добавьте протокол MessagePack концентратора SignalR ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
-ms.author: rachelap
+ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: 702c77502868d6666cb2634b6959f029e036d14e
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 78b708c50ce7a8101c9eaa558171540e61c0d7f0
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274993"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39094999"
 ---
-# <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>Использовать протокол MessagePack концентратора SignalR для ASP.NET Core
+# <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>Используют протокол центра MessagePack в SignalR для ASP.NET Core
 
-По [Brennan Conroy](https://github.com/BrennanConroy)
+По [Бреннан Конрой](https://github.com/BrennanConroy)
 
-В этой статье предполагается, средство чтения знакомы с темы, рассматриваемые в [начать](xref:tutorials/signalr).
+В этой статье предполагается, читатель знаком с подразделах, рассматриваемых в [приступить к работе](xref:tutorials/signalr).
 
 ## <a name="what-is-messagepack"></a>Что такое MessagePack?
 
-[MessagePack](https://msgpack.org/index.html) -формат двоичной сериализации, быстрый и compact. Это полезно, когда производительность и пропускную способность являются проблемой, так как он создает сообщения меньшего размера, по сравнению с [JSON](https://www.json.org/). Поскольку это двоичный формат, сообщения не читаются, при просмотре трассировок сети и журналы, если байты передаются через средство синтаксического анализа MessagePack. SignalR имеет встроенную поддержку формата MessagePack и предоставляет API для клиента и сервера для использования.
+[MessagePack](https://msgpack.org/index.html) — это быстрый и компактный формат двоичной сериализации. Это удобно при производительности и пропускной способности являются проблемой, так как он создает относительно мелкие сообщения, по сравнению с [JSON](https://www.json.org/). Поскольку это двоичный формат, сообщения являются нечитаемыми, когда просмотрев журналы и трассировки сети, если только байты передаются через MessagePack средство синтаксического анализа. SignalR имеет встроенную поддержку формата MessagePack, а также предоставляет API-интерфейсы для клиента и сервера для использования.
 
 ## <a name="configure-messagepack-on-the-server"></a>Настройка MessagePack на сервере
 
-Чтобы включить протокол концентратора MessagePack на сервере, установите `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` пакета в вашем приложении. Добавьте в файл файла Startup.cs `AddMessagePackProtocol` для `AddSignalR` вызов для включения поддержки MessagePack на сервере.
+Чтобы включить протокол концентратора MessagePack на сервере, установите `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` в приложении пакет. В файле Startup.cs добавьте `AddMessagePackProtocol` для `AddSignalR` вызов, чтобы включить поддержку MessagePack на сервере.
 
 > [!NOTE]
 > JSON включена по умолчанию. Добавление MessagePack включает поддержку JSON и MessagePack клиентов.
@@ -36,7 +36,7 @@ services.AddSignalR()
     .AddMessagePackProtocol();
 ```
 
-Чтобы настроить как MessagePack будет форматирования данных, `AddMessagePackProtocol` принимает делегат для настройки параметров. В этом делегате `FormatterResolvers` свойство можно использовать для настройки параметров MessagePack сериализации. Дополнительные сведения о работе сопоставители посетите библиотеке MessagePack по [MessagePack CSharp](https://github.com/neuecc/MessagePack-CSharp). Можно использовать атрибуты для объектов, которые необходимо сериализовать, чтобы определить, как они должны обрабатываться.
+Для настройки, как MessagePack будет форматирования данных, `AddMessagePackProtocol` принимает делегат для настройки параметров. В этот делегат `FormatterResolvers` свойство может использоваться для настройки параметров MessagePack сериализации. Дополнительные сведения о работе сопоставители посетить MessagePack библиотеки [MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp). Атрибуты можно использовать на объекты, которые необходимо сериализовать, чтобы определить, как они должны обрабатываться.
 
 ```csharp
 services.AddSignalR()
@@ -53,7 +53,7 @@ services.AddSignalR()
 
 ### <a name="net-client"></a>Клиент .NET
 
-Чтобы включить MessagePack в клиент .NET, установить `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` пакета и вызова `AddMessagePackProtocol` на `HubConnectionBuilder`.
+Чтобы включить MessagePack в клиенте .NET, установите `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` пакета и вызов `AddMessagePackProtocol` на `HubConnectionBuilder`.
 
 ```csharp
 var hubConnection = new HubConnectionBuilder()
@@ -63,20 +63,20 @@ var hubConnection = new HubConnectionBuilder()
 ```
 
 > [!NOTE]
-> Это `AddMessagePackProtocol` вызова принимает делегат для настройки параметров так же, как сервер.
+> Это `AddMessagePackProtocol` вызов принимает делегат для настройки параметров так же, как сервер.
 
 ### <a name="javascript-client"></a>Клиент JavaScript
 
-Обеспечивается поддержка MessagePack клиента Javascript `@aspnet/signalr-protocol-msgpack` пакета NPM.
+Обеспечивается поддержка MessagePack для клиента Javascript `@aspnet/signalr-protocol-msgpack` пакета NPM.
 
 ```console
 npm install @aspnet/signalr-protocol-msgpack
 ```
 
-После установки пакета npm, можно использовать непосредственно через загрузчик модуля JavaScript или импортируются в браузере с помощью ссылки на модуль *node_modules\\ @aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js*  файла. В браузере `msgpack5` также должна быть указана библиотека. Используйте `<script>` тег, чтобы создать ссылку. Можно найти в библиотеке *node_modules\msgpack5\dist\msgpack5.js*.
+После установки пакета npm, модуль можно использовать непосредственно с помощью загрузчика модулей JavaScript или импортированы в браузере, ссылаясь на *node_modules\\ @aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js*  файла. В браузере `msgpack5` также должна быть указана библиотека. Используйте `<script>` тег, чтобы создать ссылку. Посетите библиотеку *node_modules\msgpack5\dist\msgpack5.js*.
 
 > [!NOTE]
-> При использовании `<script>` элемент, порядок важен. Если *signalr протокола msgpack.js* указывается перед *msgpack5.js*, произошла ошибка при попытке подключения с MessagePack. *SignalR.js* перед также требуется *signalr протокола msgpack.js*.
+> При использовании `<script>` элемент, порядок важен. Если *signalr-protocol-msgpack.js* указывается перед *msgpack5.js*, произошла ошибка при попытке подключения с MessagePack. *SignalR.js* также необходима перед *signalr-protocol-msgpack.js*.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -84,7 +84,7 @@ npm install @aspnet/signalr-protocol-msgpack
 <script src="~/lib/signalr/signalr-protocol-msgpack.js"></script>
 ```
 
-Добавление `.withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())` для `HubConnectionBuilder` будет настроить клиент для использования протокола MessagePack при соединении с сервером.
+Добавление `.withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())` для `HubConnectionBuilder` будет настроить клиент для использования протокола MessagePack, при подключении к серверу.
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -94,7 +94,7 @@ const connection = new signalR.HubConnectionBuilder()
 ```
 
 > [!NOTE]
-> В настоящее время существует каких-либо параметров протокола MessagePack на стороне клиента JavaScript.
+> В настоящее время существуют не для протокола MessagePack параметры конфигурации на стороне клиента JavaScript.
 
 ## <a name="related-resources"></a>Связанные ресурсы
 
