@@ -5,12 +5,12 @@ description: Описание операций создания, чтения, �
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: dfc79964cc4f15851b42822bb97d14800f54b878
-ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
+ms.openlocfilehash: 0a8d386104d9c62f37d0a94e66344d3f1e23bae9
+ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37093014"
+ms.lasthandoff: 07/15/2018
+ms.locfileid: "39063355"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>Razor Pages с EF Core в ASP.NET Core — CRUD — 2 из 8
 
@@ -236,9 +236,9 @@ ms.locfileid: "37093014"
 
 ## <a name="common-errors"></a>Распространенные ошибки
 
-Не работает ссылка Student/Home или другие ссылки:
+Не работает ссылка Student/Index или другие ссылки:
 
-Убедитесь, что на странице Razor Pages содержится правильная директива `@page`. Например, страница Razor Pages Student/Home **не должна** содержать шаблон маршрута:
+Убедитесь, что на странице Razor Pages содержится правильная директива `@page`. Например, страница Razor Pages Student/Index **не должна** содержать шаблон маршрута:
 
 ```cshtml
 @page "{id:int}"

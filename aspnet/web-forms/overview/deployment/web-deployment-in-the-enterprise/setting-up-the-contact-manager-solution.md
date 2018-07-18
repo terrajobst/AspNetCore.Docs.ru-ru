@@ -4,19 +4,16 @@ title: Настройка решения диспетчера контактов
 author: jrjlee
 description: В этом разделе описывается скачивание и настройка решения диспетчера контактов для локального запуска на компьютере разработчика.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 200b973c-776b-4a9b-9e82-39fda6120a52
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/setting-up-the-contact-manager-solution
 msc.type: authoredcontent
-ms.openlocfilehash: a7675a793909ec4d95164ee47a3a43f73600c5bc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 479dbb8d2edbe9fb953ea9e1312ffb8fdbd3e2fe
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366693"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802135"
 ---
 <a name="setting-up-the-contact-manager-solution"></a>Настройка решения диспетчера контактов
 ====================
@@ -64,7 +61,7 @@ ms.locfileid: "37366693"
     [!code-console[Main](setting-up-the-contact-manager-solution/samples/sample1.cmd)]
 
     1. Используйте **– C** параметр, чтобы указать строку подключения для сервера базы данных.
-    2. Используйте **** для указания функций, которые вы хотите добавить в базу данных служб приложения. В этом случае **m** указывает, что вы хотите добавить поддержку для поставщика членства и **r** указывает, что вы хотите добавить поддержку диспетчера ролей.
+    2. Используйте **–A** для указания функций, которые вы хотите добавить в базу данных служб приложения. В этом случае **m** указывает, что вы хотите добавить поддержку для поставщика членства и **r** указывает, что вы хотите добавить поддержку диспетчера ролей.
     3. Используйте **– d** параметр, чтобы указать имя для вашей базы данных служб приложений. Если параметр не задан, программа создаст базу данных с именем по умолчанию **aspnetdb**.
 3. Когда база данных создана успешно, командной строке будет отображаться подтверждение.
 

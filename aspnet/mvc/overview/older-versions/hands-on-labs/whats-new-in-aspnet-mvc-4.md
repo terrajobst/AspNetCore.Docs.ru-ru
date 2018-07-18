@@ -4,23 +4,20 @@ title: Новые возможности в ASP.NET MVC 4 | Документац
 author: rick-anderson
 description: ASP.NET MVC 4 — это платформа для создания масштабируемых, основанные на стандартах веб-приложений, с помощью хорошо проверенных шаблонах проектирования и возможности ASP.NET и...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/18/2013
-ms.topic: article
 ms.assetid: 48f7feb3-872f-485d-b96f-e30011ff8c4a
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/whats-new-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 8862c4da0d881a6f1084317e08697354c0ae6d48
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 718a31de3d2d60788ba4affb0463a4ae871ef89a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374108"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805354"
 ---
 # <a name="whats-new-in-aspnet-mvc-4"></a>Новые возможности в ASP.NET MVC 4
 
-по [Web Слышатся Team](https://twitter.com/webcamps)
+По [Web Слышатся Team](https://twitter.com/webcamps)
 
 [Скачайте комплект учебных материалов по лагеря Web](https://aka.ms/webcamps-training-kit)
 
@@ -585,7 +582,7 @@ jQuery Mobile темы по умолчанию включает в себя 5 о
 
 4. Создать копию  **\_Layout.Mobile.cshtml** файл **Views\Shared** папку и переименуйте копию &quot; **\_Layout.iPhone.csthml**&quot;.
 5. Откройте  **\_Layout.iPhone.csthml** вы создали на предыдущем шаге.
-6. Найдите элемент div с атрибутом роли данных, равным **страницы** и измените **data-theme** атрибут &quot; ****&quot;.
+6. Найдите элемент div с атрибутом роли данных, равным **страницы** и измените **data-theme** атрибут &quot; **a**&quot;.
 
 
 [!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample17.cshtml)]
@@ -870,7 +867,7 @@ Microsoft .NET Framework 4.5 предоставляет новые возмож�
 #### <a name="task-3---configuring-visual-studio-2012-to-run-iphone-simulator"></a>Задача 3 - Настройка Visual Studio 2012 для запуска симулятора iPhone
 
 1. Откройте **Visual Studio 2012** и откройте любой веб-сайт или создайте новый проект.
-2. Щелкните стрелку рядом с «־עךנע» и выберите **просмотр с помощью**.
+2. Щелкните стрелку рядом с «־עךנ» и выберите **просмотр с помощью**.
 
     ![Просмотр с помощью](whats-new-in-aspnet-mvc-4/_static/image58.png "просмотр с помощью")
 

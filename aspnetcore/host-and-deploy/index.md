@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/07/2017
 uid: host-and-deploy/index
-ms.openlocfilehash: 31444475e39a12d526dd624bb508770429e414ca
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: e62b68c4cfad29bb8bea3b9fbb2c231a4afeccea
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277154"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095672"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Размещение и развертывание ASP.NET Core
 
@@ -71,6 +71,10 @@ ms.locfileid: "36277154"
 ## <a name="publishing-to-azure"></a>Публикация в Azure
 
 Инструкции о публикации приложения в Azure с помощью Visual Studio см. в руководстве по [публикации веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs). Приложение можно также опубликовать в Azure из [командной строки](xref:tutorials/publish-to-azure-webapp-using-cli).
+
+## <a name="host-in-a-web-farm"></a>Размещение в веб-ферме
+
+Сведения о конфигурации для размещения приложений ASP.NET Core в среде веб-фермы (например, при развертывании множества экземпляров приложения для масштабируемости) см. в разделе <xref:host-and-deploy/web-farm>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

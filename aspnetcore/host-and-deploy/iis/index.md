@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/13/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 96a4403653e474bb056374909b3ee66998bc99be
-ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
+ms.openlocfilehash: 607bdb7ee830c9a3bbb83ca2aec4661772a285b2
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992819"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095844"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -168,9 +168,8 @@ services.Configure<IISOptions>(options =>
 
 1. Установите *пакет размещения .NET Core* в размещающей системе. В составе пакета устанавливаются среда выполнения .NET Core, библиотека .NET Core и [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Модуль создает обратный прокси-сервер между службами IIS и сервером Kestrel. Если система не подключена к Интернету, перед установкой пакета размещения .NET Core получите и установите [Распространяемый компонент Microsoft Visual C++ 2015](https://www.microsoft.com/download/details.aspx?id=53840).
 
-   1. Перейдите на [страницу всех загрузок .NET](https://www.microsoft.com/net/download/all).
-   1. В столбце **Среда выполнения** в таблице выберите последнюю не предварительную версию среды выполнения .NET Core из списка (**Загрузка среды выполнения X.Y (vX.Y.Z)**). Последняя версия среды выполнения имеет метку **Текущая**. Если вы не планируете работать с предварительной версией программного обеспечения, избегайте сред выполнения, в тексте ссылки которых содержится "preview" (предварительная версия) или "rc" (версия-кандидат).
-   1. На странице загрузки среды выполнения .NET Core в разделе **Windows** выберите ссылку **установщика пакета размещения**, чтобы скачать установщик *пакета размещения .NET Core*.
+   1. Перейдите на [страницу загрузок .NET](https://www.microsoft.com/net/download/windows).
+   1. В разделе **.NET Core** выберите **Download .NET Core Runtime** (Скачать среду выполнения .NET Core) рядом с пунктом **Run Apps** (Запуск приложений). В имени исполняемого файла установщика будет слово "hosting" (размещение), например: *dotnet-hosting-2.1.2-win.exe*.
    1. Запустите установщик на сервере.
 
    **Важно!** Если пакет размещения устанавливается до установки служб IIS, его нужно восстановить. После установки служб IIS запустите установщик пакета размещения еще раз.

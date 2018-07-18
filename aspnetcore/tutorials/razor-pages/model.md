@@ -5,12 +5,12 @@ description: Узнайте, как добавлять классы для уп�
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: ed8faf8b3049adc7bcc7953d63ad805b0a836bd9
-ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
+ms.openlocfilehash: 9e0fd0ee98c84bb2336749640b2a3c103e4639b6
+ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961179"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37938330"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Добавление модели в приложение Razor Pages в ASP.NET Core
 
