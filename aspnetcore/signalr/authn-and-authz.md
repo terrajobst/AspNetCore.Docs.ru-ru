@@ -7,12 +7,12 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 06/29/2018
 uid: signalr/authn-and-authz
-ms.openlocfilehash: d4259e04a0e3bb9ff517a10465323ccb5e2895a5
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: fceae37ce53a0d5a219e6dc466e9cc6df0277494
+ms.sourcegitcommit: cb0c27fa0184f954fce591d417e6ab2a51d8bb22
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095175"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39123776"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>Проверка подлинности и авторизация в ASP.NET Core SignalR
 
@@ -88,6 +88,19 @@ public void ConfigureServices(IServiceCollection services)
     services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
 }
 ```
+
+В клиенте .NET необходимо включить проверку подлинности Windows, задав [UseDefaultCredentials](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials) свойство:
+
+```csharp
+var connection = new HubConnectionBuilder()
+    .WithUrl("https://example.com/myhub", options =>
+    {
+        options.UseDefaultCredentials = true;
+    })
+    .Build();
+```
+
+Проверка подлинности Windows поддерживается только с помощью браузера клиента, при использовании Microsoft Internet Explorer или Microsoft Edge.
 
 ## <a name="authorize-users-to-access-hubs-and-hub-methods"></a>Авторизация пользователей для доступа к концентраторам и методам концентраторов
 

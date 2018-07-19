@@ -8,12 +8,12 @@ ms.date: 08/23/2012
 ms.assetid: 5894dc13-5d45-4dad-8096-136499120f1d
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: 090bb58f762302e0f58db7b8c005fe584e5ec419
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4e72804593c07318af8cc577f9d43ab96be4de05
+ms.sourcegitcommit: cb0c27fa0184f954fce591d417e6ab2a51d8bb22
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37827379"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39123792"
 ---
 <a name="bundling-and-minification"></a>Объединение и Минификация
 ====================
@@ -69,7 +69,7 @@ ms.locfileid: "37827379"
 | **Получено КБ** | 388.51 | 530 | 36% |
 | **Время загрузки** | 510 MS | 780 MS | 53% |
 
-Число отправленных байт было значительное сокращение с объединением как обозреватели являются довольно подробного с заголовками HTTP, которые они применяются к запросам. Сокращение полученные байты не имеет такой же размер поскольку самые большие файлы (*Scripts\jquery-ui-1.8.11.min.js* и *Scripts\jquery-1.7.1.min.js*) уже минифицированы. Примечание: Затраты времени на пример программы, используемой [Fiddler](http://www.fiddler2.com/fiddler2/) средство имитации медленной сети. (Из Fiddler **правила** меню, выберите **производительности** затем **имитировать скоростей**.)
+Число отправленных байт было значительное сокращение с объединением как обозреватели являются довольно подробного с заголовками HTTP, которые они применяются к запросам. Сокращения полученные байты не имеет такой же размер поскольку самые большие файлы (*сценарии\\jquery-ui-1.8.11.min.js* и *скрипты\\jquery-1.7.1.min.js*) уже минифицированы . Примечание: Затраты времени на пример программы, используемой [Fiddler](http://www.fiddler2.com/fiddler2/) средство имитации медленной сети. (Из Fiddler **правила** меню, выберите **производительности** затем **имитировать скоростей**.)
 
 ## <a name="debugging-bundled-and-minified-javascript"></a>Отладка объединенного в пакет и уменьшенными JavaScript
 
@@ -79,7 +79,7 @@ ms.locfileid: "37827379"
 2. Выберите пакет, в котором необходимо выполнить отладку с помощью кнопки активы функция JavaScript.  
     ![](bundling-and-minification/_static/image4.png)
 3. Формат минифицированные JavaScript, выбрав **Configuration кнопка** ![](bundling-and-minification/_static/image5.png), а затем выбрав **формата JavaScript**.
-4. В **сценария поиска** t поле ввода, выберите имя функции, необходимо выполнить отладку. На следующем рисунке **AddAltToImg** была введена в **сценария поиска** t поле ввода.  
+4. В **сценария поиска** поле ввода, выберите имя функции, необходимо выполнить отладку. На следующем рисунке **AddAltToImg** была введена в **сценария поиска** поле ввода.  
     ![](bundling-and-minification/_static/image6.png)
 
 Дополнительные сведения об отладке с помощью средств разработчика F12, см. в статье MSDN [с помощью средств разработчика F12 для отладки ошибок JavaScript](https://msdn.microsoft.com/library/ie/gg699336(v=vs.85).aspx).
@@ -107,15 +107,15 @@ ms.locfileid: "37827379"
 
 В этом разделе мы создадим ASP.NET MVC проекта изучаемый объединения и минификации. Во-первых, создайте новый проект ASP.NET MVC Интернета с именем **MvcBM** не изменяя значения по умолчанию.
 
-Откройте *приложения\_Start\BundleConfig.cs* файл и просмотрите `RegisterBundles` метод, который используется для создания, регистрации и настройки пакетов. В следующем коде показано часть `RegisterBundles` метод.
+Откройте *приложения\\\_запустить\\BundleConfig.cs* файл и просмотрите `RegisterBundles` метод, который используется для создания, регистрации и настройки пакетов. В следующем коде показано часть `RegisterBundles` метод.
 
 [!code-csharp[Main](bundling-and-minification/samples/sample5.cs)]
 
 Приведенный выше код создает новый набор JavaScript с именем *~/bundles/jquery* , включает в себя соответствующие (это отладки или уменьшено, но не. *vsdoc*) файлы в *сценариев* , соответствующие подстановочному знаку строки «~/Scripts/jquery-{version} .js». Для ASP.NET MVC 4, это означает, с помощью конфигурации отладки, файле *jquery-1.7.1.js* будут добавлены к пакету. В конфигурации выпуска *jquery-1.7.1.min.js* будут добавлены. Объединение framework соглашениям несколько распространенных такие как:
 
-- Выбор файла «.min» для выпуска, при «FileX.min.js» и «FileX.js» существует.
+- Выбрав файл «.min» для выпуске *FileX.min.js* и *FileX.js* существует.
 - Выбор версии не «.min» для отладки.
-- Пропуск «-vsdoc» файлов (например, jquery-1.7.1-vsdoc.js), которые используются только технологией IntelliSense.
+- Пропуск «-vsdoc» файлы (такие как *jquery-1.7.1-vsdoc.js*), которые используются только технологией IntelliSense.
 
 `{version}` Выше сопоставление шаблонов используется для автоматического создания пакета jQuery с соответствующей версией jQuery в вашей *сценариев* папки. В этом примере с помощью подстановочного знака предоставляет следующие преимущества:
 
@@ -134,7 +134,7 @@ ms.locfileid: "37827379"
 
 ## <a name="creating-a-bundle"></a>Создавая набор
 
-[Пакета](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) класс `Include` метод принимает массив строк, где каждая строка представляет виртуальный путь к ресурсу. Следующий код из метода RegisterBundles в *приложения\_Start\BundleConfig.cs* файла показано, каким образом несколько файлы добавляются в пакет:
+[Пакета](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) класс `Include` метод принимает массив строк, где каждая строка представляет виртуальный путь к ресурсу. В следующем коде из `RegisterBundles` метод в *приложения\\\_запустить\\BundleConfig.cs* файла показано, каким образом несколько файлы добавляются в пакет:
 
 [!code-csharp[Main](bundling-and-minification/samples/sample8.cs)]
 
@@ -142,7 +142,7 @@ ms.locfileid: "37827379"
 
 [!code-csharp[Main](bundling-and-minification/samples/sample9.cs)]
 
-Пакеты указываются в представления, используя метод Render ( `Styles.Render` для CSS и `Scripts.Render` для JavaScript). Следующая разметка из *Views\Shared\\_Layout.cshtml* -файл, показывающий, как представления по умолчанию для проекта ASP.NET internet ссылки на пакеты, CSS и JavaScript.
+Пакеты указываются в представления, используя метод Render (`Styles.Render` для CSS и `Scripts.Render` для JavaScript). Следующая разметка из *представления\\Shared\\\_Layout.cshtml* -файл, показывающий, как представления по умолчанию для проекта ASP.NET internet ссылки на пакеты, CSS и JavaScript.
 
 [!code-cshtml[Main](bundling-and-minification/samples/sample10.cshtml?highlight=5-6,11)]
 
@@ -156,10 +156,10 @@ ms.locfileid: "37827379"
 
 Рассмотрим проект, содержащий следующие файлы JavaScript:
 
-- *Scripts\Common\AddAltToImg.js*
-- *Scripts\Common\ToggleDiv.js*
-- *Scripts\Common\ToggleImg.js*
-- *Scripts\Common\Sub1\ToggleLinks.js*
+- *Сценарии\\распространенных\\AddAltToImg.js*
+- *Сценарии\\распространенных\\ToggleDiv.js*
+- *Сценарии\\распространенных\\ToggleImg.js*
+- *Сценарии\\распространенных\\Sub1\\ToggleLinks.js*
 
 ![dir imag](bundling-and-minification/_static/image7.png)
 
@@ -167,13 +167,13 @@ ms.locfileid: "37827379"
 
 | **Call** | **Файлы, добавленные или исключение, вызываемое** |
 | --- | --- |
-| Включить («~/Scripts/Common/\*.js ") | *ToggleImg.js AddAltToImg.js ToggleDiv.js,* |
+| Включить («~/Scripts/Common/\*.js ") | *AddAltToImg.js*, *ToggleDiv.js*, *ToggleImg.js* |
 | Включить («~/Scripts/Common/T\*.js ") | Недопустимый шаблон исключение. Подстановочный знак можно использовать только в префиксе или суффиксе. |
 | Включить («~/Scripts/Common/\*og.\*") | Недопустимый шаблон исключение. Допускается только один подстановочный знак. |
-| «Включить («~/Scripts/Common/T\*») | *ToggleDiv.js ToggleImg.js* |
-| «Включить («~/Scripts/Common/\*») | Недопустимый шаблон исключение. Недопустимый сегмент чисто подстановочный знак. |
-| IncludeDirectory ("~/Scripts/Common", "T\*") | *ToggleDiv.js ToggleImg.js* |
-| IncludeDirectory ("~/Scripts/Common", "T\*", true) | *ToggleLinks.js ToggleDiv.js ToggleImg.js,* |
+| Включить («~/Scripts/Common/T\*») | *ToggleDiv.js*, *ToggleImg.js* |
+| Включить («~/Scripts/Common/\*») | Недопустимый шаблон исключение. Недопустимый сегмент чисто подстановочный знак. |
+| IncludeDirectory ("~/Scripts/Common", "T\*") | *ToggleDiv.js*, *ToggleImg.js* |
+| IncludeDirectory ("~/Scripts/Common", "T\*", true) | *ToggleDiv.js*, *ToggleImg.js*, *ToggleLinks.js* |
 
 Прямого добавления каждого файла к пакету используется как предпочтительная через подстановочный знак загрузку файлов по следующим причинам:
 
@@ -183,7 +183,7 @@ ms.locfileid: "37827379"
 
     [!code-csharp[Main](bundling-and-minification/samples/sample12.cs)]
 
-  Селектор подстановочному знаку "\*.css» привносит в каждом файле CSS в папке, включая *Content\themes\base\jquery.ui.all.css* файла. *Jquery.ui.all.css* файл импортирует другие файлы CSS.
+  Селектор подстановочному знаку "\*.css» привносит в каждом файле CSS в папке, включая *содержимого\\темы\\базового\\jquery.ui.all.css* файла. *Jquery.ui.all.css* файл импортирует другие файлы CSS.
 
 ## <a name="bundle-caching"></a>Объединить кэширования
 
@@ -195,7 +195,7 @@ ms.locfileid: "37827379"
 
 Запрос   
 `http://localhost/MvcBM_time/bundles/AllMyScripts?v=r0sLDicvP58AIXN_mc3QdyVvVj5euZNzdsa2N1PKvb81`  
- — для пакета **AllMyScripts** и содержит пару строка запроса **v = r0sLDicvP58AIXN\_mc3QdyVvVj5euZNzdsa2N1PKvb81**. Строка запроса **v** имеет значение маркера, то есть уникальный идентификатор, используемый для кэширования. До тех пор, пока пакет не изменяется, приложение ASP.NET будет запрашивать **AllMyScripts** пакета с помощью этого токена. При изменении любого файла в пакете, платформа для оптимизации ASP.NET создаст новый маркер, гарантируя, что запросы браузера для пакета будут получены последнюю пакета.
+ — для пакета **AllMyScripts** и содержит пару строка запроса **v = r0sLDicvP58AIXN\\\_mc3QdyVvVj5euZNzdsa2N1PKvb81**. Строка запроса **v** имеет значение маркера, то есть уникальный идентификатор, используемый для кэширования. До тех пор, пока пакет не изменяется, приложение ASP.NET будет запрашивать **AllMyScripts** пакета с помощью этого токена. При изменении любого файла в пакете, платформа для оптимизации ASP.NET создаст новый маркер, гарантируя, что запросы браузера для пакета будут получены последнюю пакета.
 
 Если вы запускаете в средствах разработчика IE9 F12 и перейдите на страницу ранее загруженную, IE некорректно показывает условного запросы GET к каждый пакет и сервером, возвращая HTTP 304. Можно прочитать, почему IE9 имеет недостатков, определение условного запроса был создан в записи блога [с помощью CDN и Expires для повышения производительности веб-сайт](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx).
 
@@ -203,13 +203,13 @@ ms.locfileid: "37827379"
 
 Объединение и Минификация платформа предоставляет механизм для обработки промежуточные языки, такие как [SCSS](http://sass-lang.com/), [Sass](http://sass-lang.com/), [меньше](http://www.dotlesscss.org/) или [Coffeescript ](http://coffeescript.org/)и применение преобразований, таких как минификации в результирующий набор. Например, чтобы добавить [.less](http://www.dotlesscss.org/) файлы в проект MVC 4:
 
-1. Создайте папку для меньше содержимого. В следующем примере используется *Content\MyLess* папки.
+1. Создайте папку для меньше содержимого. В следующем примере используется *содержимого\\MyLess* папки.
 2. Добавить [.less](http://www.dotlesscss.org/) пакет NuGet **краткую** в проект.  
     ![Без точки установки NuGet](bundling-and-minification/_static/image9.png)
 3. Добавьте класс, реализующий [IBundleTransform](https://msdn.microsoft.com/library/system.web.optimization.ibundletransform(VS.110).aspx) интерфейс. Для преобразования .less добавьте следующий код в проект.
 
     [!code-csharp[Main](bundling-and-minification/samples/sample13.cs)]
-4. Создание пакета меньше файлов с `LessTransform` и [CssMinify](https://msdn.microsoft.com/library/system.web.optimization.cssminify(VS.110).aspx) преобразования. Добавьте следующий код, чтобы `RegisterBundles` метод в *приложения\_Start\BundleConfig.cs* файла.
+4. Создание пакета меньше файлов с `LessTransform` и [CssMinify](https://msdn.microsoft.com/library/system.web.optimization.cssminify(VS.110).aspx) преобразования. Добавьте следующий код, чтобы `RegisterBundles` метод в *приложения\\_запуск\\BundleConfig.cs* файла.
 
     [!code-csharp[Main](bundling-and-minification/samples/sample14.cs)]
 5. Добавьте следующий код ко всем представлениям, на которые ссылается на меньше пакета.
@@ -228,7 +228,7 @@ ms.locfileid: "37827379"
 
 Пакеты должны быть секционированы по страницам, где они необходимы. Например шаблон ASP.NET MVC для веб-приложение по умолчанию создает набор проверки jQuery, отдельно от jQuery. Так как не публиковать значения по умолчанию представления, созданные у отсутствуют входные данные, они не включают проверки пакета.
 
-`System.Web.Optimization` В System.Web.Optimization.DLL реализуется пространства имен. При этом используется библиотека WebGrease (WebGrease.dll) для добавления поддержки возможностей минификации, который в свою очередь Antlr3.Runtime.dll.
+`System.Web.Optimization` Пространство имен реализуется в *System.Web.Optimization.dll*. При этом используется библиотека WebGrease (*WebGrease.dll*) для добавления поддержки возможностей минификации, который в свою очередь использует *Antlr3.Runtime.dll*.
 
 *Я использую Twitter для быстрого сообщения и поделиться им ссылки. Мой дескриптор Twitter —*: [@RickAndMSFT](http://twitter.com/RickAndMSFT)
 
