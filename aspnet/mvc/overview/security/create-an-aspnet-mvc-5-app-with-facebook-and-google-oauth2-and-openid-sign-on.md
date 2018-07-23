@@ -8,12 +8,12 @@ ms.date: 04/03/2015
 ms.assetid: 81ee500f-fc37-40d6-8722-f1b64720fbb6
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: 6af4990f726bfcd0c45eb6991418661f9b8ccbf6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f36b73aac2e7844367e1e52b2c721bfe6b3575e2
+ms.sourcegitcommit: 7097dba14d5b858e82758ee031ac62dbe3611339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824710"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39138523"
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Создать приложение ASP.NET MVC 5 с помощью Facebook, Twitter, LinkedIn и Google OAuth2 Sign-on (C#)
 ====================
@@ -162,55 +162,6 @@ ms.locfileid: "37824710"
 > [!WARNING]
 > Актуальные инструкции для проверки подлинности Facebook OAuth2, см. в разделе [проверки подлинности Facebook, Настройка](/aspnet/core/security/authentication/social/facebook-logins)
 
-Для проверки подлинности Facebook OAuth2 вам нужно скопировать в свой проект некоторые параметры из приложения, создаваемые в Facebook.
-
-1. В окне браузера перейдите к [ https://developers.facebook.com/apps ](https://developers.facebook.com/apps) и войдите в систему, введя свои учетные данные Facebook.
-2. Если вы еще не зарегистрировался в качестве разработчика Facebook, щелкните **регистрация в качестве разработчика** и следуйте инструкциям для регистрации.
-3. На **приложений** щелкните **создать новое приложение**.
-
-    ![Создание нового приложения](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image22.png)
-4. Введите **имя_приложения** и **категории**, затем нажмите кнопку **создать приложение**.
-
-    <strong>Пространство имен приложения</strong> является частью URL-адрес, приложение будет использовать для доступа к приложению Facebook для проверки подлинности (например, https\://apps.facebook.com/{App пространство имен}). Если вы не укажете <strong>пространство имен приложения</strong>, <strong>идентификатор приложения</strong> будет использоваться в качестве URL-адреса. <strong>Идентификатор приложения</strong> долго системой номер, который вы увидите на следующем шаге.
-
-    ![Создать новое приложение](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image23.png)
-5. Отправьте проверку безопасности standard.
-
-    ![Проверка безопасности](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image24.png)
-6. Выберите **параметры** для панели меню слева![ Строка меню разработчика Facebook](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image25.png)
-7. На **основные** страницы «Параметры» выберите **Добавление платформы** для указания, что при добавлении приложения веб-сайта. ![Основные параметры](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image26.png)
-8. Выберите **веб-сайт** из вариантов платформы.  
-  
-    ![Выбор платформы](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image27.png)
-9. Запомните или запишите вашей **идентификатор приложения** и **секрет приложения** таким образом, чтобы можно было добавить оба сертификата в приложении MVC далее в этом руководстве. Кроме того, добавьте URL-адрес сайта (`https://localhost:44300/`) для тестирования приложения MVC. Кроме того, добавьте **контактный адрес электронной почты**. Выберите **сохранить изменения**.   
-
-    ![Странице сведений о простое приложение](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image28.png)
-
-    > [!NOTE]
-    > Обратите внимание, что вы только сможете пройти проверку подлинности с помощью зарегистрированного псевдоним электронной почты. Не будет возможности регистрации других пользователей и тестовых учетных записей. Вы можете предоставить доступ учетным записям других Facebook для приложения на Facebook **роль разработчика** вкладки.
-10. В Visual Studio откройте *приложения\_Start\Startup.Auth.cs*.
-11. Скопируйте и вставьте **AppId** и **секрет приложения** в `UseFacebookAuthentication` метод. **AppId** и **секрет приложения** значений, приведенных ниже примеров и не будет работать.
-
-    [!code-csharp[Main](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/samples/sample3.cs?highlight=33-35,38-39)]
-12. Нажмите кнопку **сохранить изменения**.
-13. Нажмите клавишу **CTRL + F5** для запуска приложения.
-
-
-Выберите **вход** на страницу входа. Нажмите кнопку **Facebook** под **вход с помощью другой службы.**
-
-Введите свои учетные данные Facebook.
-
-![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image29.png)
-
-Вам будет предложено предоставить разрешение для приложения доступ к открытый профиль и списков друзей.
-
-![Сведения о приложении Facebook](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image30.png)
-
-Теперь вы вошли. Теперь вы можете зарегистрировать эту учетную запись с приложением.
-
-![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image31.png)
-
-При регистрации, добавляется запись *пользователей* таблицы в базе данных членства.
 
 <a id="mdb"></a>
 ## <a name="examine-the-membership-data"></a>Изучите данные членства
