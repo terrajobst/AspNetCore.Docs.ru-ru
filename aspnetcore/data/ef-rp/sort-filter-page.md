@@ -5,12 +5,12 @@ description: Из этого руководства вы узнаете, как 
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 86321538f02ccf1a36ee9e50729e63e007f10327
-ms.sourcegitcommit: ee2b26c7d08b38c908c668522554b52ab8efa221
+ms.openlocfilehash: ee5a0dae41ba0afba518f0bd6fbd379fdbbfb1c1
+ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39146901"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39202618"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Razor Pages с EF Core в ASP.NET Core — сортировка, фильтрация, разбиение на страницы — 3 из 8
 
@@ -263,8 +263,6 @@ http://localhost:5000/Students?SearchString=an
 [!code-csharp[](intro/samples/cu21/Pages/About.cshtml.cs)]
 
 Запрос LINQ группирует записи из таблицы студентов по дате зачисления, вычисляет число записей в каждой группе и сохраняет результаты в коллекцию объектов моделей представления `EnrollmentDateGroup`.
-
-Примечание. Сейчас EF Core не поддерживает команду `group` LINQ. В приведенном выше коде все записи учащихся возвращаются из SQL Server. Команда `group` применяется в приложении страницы Razor, а не на сервере SQL Server. EF Core 2.1 будет поддерживать этот оператор `group` LINQ, а группирование выполняется в SQL Server. См. статью [Реляционность: поддержка преобразования GroupBy() в SQL](https://github.com/aspnet/EntityFrameworkCore/issues/2341). [EF Core 2.1](https://github.com/aspnet/EntityFrameworkCore/wiki/roadmap) будет выпущен вместе с .NET Core 2.1. Дополнительные сведения см. в [стратегии развития .NET Core](https://github.com/dotnet/core/blob/master/roadmap.md).
 
 ### <a name="modify-the-about-razor-page"></a>Изменение страницы Razor "About" (О программе)
 
