@@ -333,7 +333,7 @@ ms.locfileid: "37833676"
     ![Просмотр элементов](using-page-inspector-in-visual-studio-2012/_static/image29.png "проверки элементов")
 
     *Просмотр элементов*
-7. Нажмите кнопку **переключиться в режим проверки** кнопки (![Select-the-HTML-tab-to-display-the-HTML-code-rendered-in-the-Page-Inspector-browser.] (using-page-inspector-in-visual-studio-2012/_static/image30.png "Select-the-HTML-tab-to-display-the-HTML-code-rendered-in-the-Page-Inspector-browser.") ), расположенный в инспектор страниц вкладок, чтобы отключить курсор.
+7. Нажмите кнопку **переключиться в режим проверки** кнопки (![Select-the-HTML-tab-to-display-the-HTML-code-rendered-in-the-Page-Inspector-browser.](using-page-inspector-in-visual-studio-2012/_static/image30.png "Select-the-HTML-tab-to-display-the-HTML-code-rendered-in-the-Page-Inspector-browser.") ), расположенный в инспектор страниц вкладок, чтобы отключить курсор.
 8. Выберите **HTML** вкладка для отображения в браузере инспектора страниц HTML-код.
 9. В коде HTML найдите элемент списка с Koala ссылку и выберите его.
 

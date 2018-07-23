@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/14/2018
 uid: fundamentals/app-state
-ms.openlocfilehash: 9c63d9313acb055e6c692a7fef3d28e94cb37093
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 072699113a45056ec3ea79436ad56896ba0a4197
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272887"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095818"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>Состояние сеанса и приложения в ASP.NET Core
 
@@ -441,3 +441,7 @@ app.Run(async (context) =>
   Например, пользователь сохраняет корзину для покупок в сеансе. Он добавляет товар в корзину, но фиксация завершается сбоем. Приложению неизвестно о сбое, поэтому оно сообщает пользователю, что товар добавлен в корзину, хотя это не так.
 
   Для проверки на наличие таких ошибок рекомендуется вызывать `await feature.Session.CommitAsync();` из кода приложения по окончании записи в сеанс. `CommitAsync` создает исключение, если резервное хранилище недоступно. Если `CommitAsync` завершается ошибкой, приложение может обработать исключение. Исключение `LoadAsync` возникает в таких же условиях, когда хранилище данных недоступно.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+<xref:host-and-deploy/web-farm>

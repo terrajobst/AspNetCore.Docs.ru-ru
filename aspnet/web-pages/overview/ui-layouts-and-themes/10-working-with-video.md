@@ -115,7 +115,7 @@ ms.locfileid: "37826109"
     [!code-cshtml[Main](10-working-with-video/samples/sample2.cshtml)]
 4. Откройте страницу в браузере. (Убедитесь, что выбран страницы **файлы** рабочей области, прежде чем запускать его.) Эта страница отображается, и автоматически воспроизводит видео. 
 
-    ![[изображение] ] (10-working-with-video/_static/image1.jpg "ch08_video 1.jpg")
+    ![[изображение]](10-working-with-video/_static/image1.jpg "ch08_video 1.jpg")
 
 Можно задать `quality` параметр Flash видео для `low`, `autolow`, `autohigh`, `medium`, `high`, и `best`:
 

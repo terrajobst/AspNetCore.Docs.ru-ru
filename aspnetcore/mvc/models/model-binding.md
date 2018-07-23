@@ -1,17 +1,17 @@
 ---
 title: Привязка модели в ASP.NET Core
-author: rachelappel
+author: tdykstra
 description: Узнайте, как привязка модели в ASP.NET Core MVC сопоставляет данные из HTTP-запросов с параметрами методов действия.
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
-ms.author: rachelap
+ms.author: tdykstra
 ms.date: 01/22/2018
 uid: mvc/models/model-binding
-ms.openlocfilehash: 4c1cfddf82e077e22e9069777393bc5e6086de83
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 200e2c22e02ec9e24b7cdb3883cf6f2f93f2f4b7
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278389"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095737"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Привязка модели в ASP.NET Core
 

@@ -66,7 +66,7 @@ CDN размещает следующие библиотеки сценария 
 - jQuery Mobile (www.jquerymobile.com)
 - jQuery Validation (www.jquery.com)
 - Подключаемый модуль jQuery Cycle (www.malsup.com/jquery/cycle/)
-- jQuery DataTables)http://datatables.net/)
+- jQuery DataTables (http://datatables.net/)
 
 Сети доставки Содержимого Microsoft Ajax также включает в себя следующие библиотеки, которые были переданы корпорацией Майкрософт:
 
@@ -1056,7 +1056,7 @@ jQuery версии 1.2.0 "Миграция"
 
 ### <a name="bootstrap-touchcarousel-releases-on-the-cdn"></a>Выпуски TouchCarousel начальной загрузки в сети доставки Содержимого
 
-Следующие выпуски [ https://github.com/ixisio/bootstrap-touch-carousel ] (https://github.com/ixisio/bootstrap-touch-carousel " https://github.com/ixisio/bootstrap-touch-carousel ") Bootstrap TouchCarousel выпуски размещаются в сети доставки Содержимого:
+Следующие выпуски [https://github.com/ixisio/bootstrap-touch-carousel](https://github.com/ixisio/bootstrap-touch-carousel "https://github.com/ixisio/bootstrap-touch-carousel") Bootstrap TouchCarousel выпуски размещаются в сети доставки Содержимого:
 
 #### <a name="bootstrap-touchcarousel-version-080"></a>TouchCarousel начальной загрузки версии 0.8.0
 
@@ -1067,7 +1067,7 @@ jQuery версии 1.2.0 "Миграция"
 
 ### <a name="hammerjs-releases-on-the-cdn"></a>Выпуски Hammer.js в сети доставки Содержимого
 
-Следующие выпуски [ http://hammerjs.github.io/ ] (http://hammerjs.github.io/ " http://hammerjs.github.io/ ") Hammer.js выпуски размещаются в сети доставки Содержимого:
+Следующие выпуски [http://hammerjs.github.io/](http://hammerjs.github.io/ "http://hammerjs.github.io/") Hammer.js выпуски размещаются в сети доставки Содержимого:
 
 #### <a name="hammerjs-version-204"></a>Hammer.js версии 2.0.4
 

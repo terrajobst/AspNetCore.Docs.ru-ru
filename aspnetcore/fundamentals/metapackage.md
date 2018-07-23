@@ -1,17 +1,17 @@
 ---
-title: Метапакет Microsoft.AspNetCore.All для ASP.NET Core 2.0 и более поздних версий
+title: Метапакет Microsoft.AspNetCore.All для ASP.NET Core 2.0
 author: Rick-Anderson
 description: Метапакет Microsoft.AspNetCore.All включает все поддерживаемые пакеты ASP.NET Core и Entity Framework Core, а также их зависимости.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/20/2017
 uid: fundamentals/metapackage
-ms.openlocfilehash: 2fddc59d74dce4b114b5b4ed0646f773eb66ffb9
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: fbc0f5465dc37a612b81c293f1a58b53ea4b2238
+ms.sourcegitcommit: cb0c27fa0184f954fce591d417e6ab2a51d8bb22
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277827"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39123831"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>Метапакет Microsoft.AspNetCore.All для ASP.NET Core 2.0
 
@@ -23,8 +23,8 @@ ms.locfileid: "36277827"
 Метапакет [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) для ASP.NET Core включает:
 
 * все пакеты, поддерживаемые командой ASP.NET Core;
-* все пакеты, поддерживаемые Entity Framework Core; 
-* внутренние и сторонние зависимости, используемые ASP.NET Core и Entity Framework Core. 
+* все пакеты, поддерживаемые Entity Framework Core;
+* внутренние и сторонние зависимости, используемые ASP.NET Core и Entity Framework Core.
 
 В пакет `Microsoft.AspNetCore.All` входят все компоненты ASP.NET Core 2.x и Entity Framework Core 2.x. Этот пакет по умолчанию используется для шаблонов проектов, предназначенных для ASP.NET Core 2.0.
 
