@@ -1,222 +1,230 @@
 ---
-title: Управление ключами расширяемость ASP.NET Core
+title: Расширяемость управления ключами в ASP.NET Core
 author: rick-anderson
-description: Дополнительные сведения о расширении среды управления ключами для защиты данных ASP.NET Core.
+description: Дополнительные сведения о расширяемости защиты данных в ASP.NET Core управление ключами.
 ms.author: riande
 ms.date: 11/22/2017
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: 3ebde889d207e02aff8c042b1d80884210a68ff4
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 965a7ed8ca2f72a66cfe093b5978a54fea5440fd
+ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274756"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39219320"
 ---
-# <a name="key-management-extensibility-in-aspnet-core"></a>Управление ключами расширяемость ASP.NET Core
+# <a name="key-management-extensibility-in-aspnet-core"></a>Расширяемость управления ключами в ASP.NET Core
 
-<a name="data-protection-extensibility-key-management"></a>
+> [!TIP]
+> Чтение [управление ключами](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management) раздел перед прочтением данного раздела, в том случае, как он объясняет, что некоторые основные понятия за эти API-интерфейсы.
 
->[!TIP]
-> Чтение [управление ключами](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management) раздел перед считыванием в этом разделе, как он описаны некоторые основные принципы эти API-интерфейсы.
-
->[!WARNING]
-> Типы, реализующие любой из следующих интерфейсов должны быть потокобезопасным для нескольких клиентов.
+> [!WARNING]
+> Типы, реализующие любые из следующих интерфейсов должны быть потокобезопасными для нескольких клиентов.
 
 ## <a name="key"></a>Ключ
 
-`IKey` Интерфейса — это основные представление ключа в криптосистеме. Термин используется здесь в том смысле, абстрактным, не в литерал смысле «материалом ключа шифрования». Ключ имеет следующие свойства:
+`IKey` Интерфейс — это основные представление ключа в криптосистеме. Термин используется здесь в том смысле, абстрактный, не в том смысле, литерал «ключевого материала шифрования». Ключ имеет следующие свойства:
 
-* Даты истечения срока действия, создания и активации
+* Даты активации, создания и истечения срока действия
 
 * Состояние отзыва
 
 * Ключевой идентификатор (GUID)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
-Кроме того `IKey` предоставляет `CreateEncryptor` метод, который может использоваться для создания [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра привязан к данному ключу.
+Кроме того `IKey` предоставляет `CreateEncryptor` метод, который может использоваться для создания [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра привязан к этому ключу.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
 
-Кроме того `IKey` предоставляет `CreateEncryptorInstance` метод, который может использоваться для создания [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра привязан к данному ключу.
+::: moniker range="< aspnetcore-2.0"
 
----
+Кроме того `IKey` предоставляет `CreateEncryptorInstance` метод, который может использоваться для создания [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) экземпляра привязан к этому ключу.
+
+::: moniker-end
 
 > [!NOTE]
-> Нет API-интерфейс для извлечения необработанных криптографические материалы из `IKey` экземпляра.
+> Не существует API для извлечения необработанных криптографических из `IKey` экземпляра.
 
 ## <a name="ikeymanager"></a>IKeyManager
 
-`IKeyManager` Интерфейс представляет собой объект, ответственный за общие хранилища ключей, получения и обработки. Он представляет три операции высокого уровня:
+`IKeyManager` Интерфейс представляет объект, ответственный за общие хранилища ключей, извлечения и обработки. Он предоставляет три высокоуровневых операций:
 
-* Создание нового ключа и сохранения его в хранилище.
+* Создайте новый ключ и сохранить их в хранилище.
 
 * Получите все ключи из хранилища.
 
-* Отозвать один или несколько ключей и сохраняет сведения об отзыве в хранилище.
+* Сохранять сведения отзыва в хранилище и отозвать один или несколько ключей.
 
 >[!WARNING]
-> Написание `IKeyManager` является очень сложных задач, и большинство разработчиков не должен пытаться выполнить ее. Вместо этого, большинство разработчиков следует воспользоваться функциональными возможностями [XmlKeyManager](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-xmlkeymanager) класса.
-
-<a name="data-protection-extensibility-key-management-xmlkeymanager"></a>
+> Написание `IKeyManager` — очень сложная задача, и большинство разработчиков не следует пытаться выполнить ее. Вместо этого, большинство разработчиков следует воспользоваться функциональными возможностями [XmlKeyManager](#xmlkeymanager) класса.
 
 ## <a name="xmlkeymanager"></a>XmlKeyManager
 
-`XmlKeyManager` Тип — входящие в конкретную реализацию `IKeyManager`. Она предоставляет несколько полезных средств, включая переноса ключей и шифрования ключей при хранении. Ключи в этой системе представляются в виде XML-элементы (в частности, [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)).
+`XmlKeyManager` Измеряется в поле конкретная реализация `IKeyManager`. Он предоставляет несколько полезных набор возможностей, включая перенос ключа, а также шифрование неактивных ключей. Ключи в этой системе представлены в виде XML-элементы (в частности, [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)).
 
-`XmlKeyManager` зависит от других компонентов во время выполнения своих задач.
+`XmlKeyManager` зависит от нескольких компонентов во время выполнении своих задач.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
-* `AlgorithmConfiguration`, которые указывают, алгоритмы, используемые с новыми ключами.
-
-* `IXmlRepository`, какие элементы управления, где ключи сохраняются в хранилище.
-
-* `IXmlEncryptor` [необязательно], который позволяет шифровать ключи хранятся.
-
-* `IKeyEscrowSink` [необязательно], который предоставляет перенос ключа службы.
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+* `AlgorithmConfiguration`, который определяет алгоритмы, используемые новые ключи.
 
 * `IXmlRepository`, какие элементы управления, где ключи сохраняются в хранилище.
 
-* `IXmlEncryptor` [необязательно], который позволяет шифровать ключи хранятся.
+* `IXmlEncryptor` [необязательно], который позволяет шифровать неактивных ключей.
 
-* `IKeyEscrowSink` [необязательно], который предоставляет перенос ключа службы.
+* `IKeyEscrowSink` [необязательно], которая предоставляет службы доверительного хранения ключа.
 
----
+::: moniker-end
 
-Ниже перечислены высокоуровневые диаграммы, которые указывают, как эти компоненты соединены друг с другом в пределах `XmlKeyManager`.
+::: moniker range="< aspnetcore-2.0"
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+* `IXmlRepository`, какие элементы управления, где ключи сохраняются в хранилище.
 
-   ![Создание ключа](key-management/_static/keycreation2.png)
+* `IXmlEncryptor` [необязательно], который позволяет шифровать неактивных ключей.
 
-   *Создание ключа / CreateNewKey*
+* `IKeyEscrowSink` [необязательно], которая предоставляет службы доверительного хранения ключа.
 
-В реализации `CreateNewKey`, `AlgorithmConfiguration` компонент используется для создания уникального `IAuthenticatedEncryptorDescriptor`, который затем сериализуется в формат XML. Если присутствует приемник перенос ключа, необработанные XML-данные (незашифрованные) предоставляется в приемник для долговременного хранения. Незашифрованные XML этого выполняется `IXmlEncryptor` (при необходимости) для формирования зашифрованного XML-документа. Этот зашифрованный документ сохраняется в долговременном хранилище через `IXmlRepository`. (Если не `IXmlEncryptor` будет настроена, незашифрованные документ сохраняется в `IXmlRepository`.)
+::: moniker-end
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+Ниже перечислены высокоуровневые диаграммы, которые указывают, как эти компоненты при объединении в `XmlKeyManager`.
 
-   ![Создание ключа](key-management/_static/keycreation1.png)
+::: moniker range=">= aspnetcore-2.0"
 
-   *Создание ключа / CreateNewKey*
+![Создание ключа](key-management/_static/keycreation2.png)
 
-В реализации `CreateNewKey`, `IAuthenticatedEncryptorConfiguration` компонент используется для создания уникального `IAuthenticatedEncryptorDescriptor`, который затем сериализуется в формат XML. Если присутствует приемник перенос ключа, необработанные XML-данные (незашифрованные) предоставляется в приемник для долговременного хранения. Незашифрованные XML этого выполняется `IXmlEncryptor` (при необходимости) для формирования зашифрованного XML-документа. Этот зашифрованный документ сохраняется в долговременном хранилище через `IXmlRepository`. (Если не `IXmlEncryptor` будет настроена, незашифрованные документ сохраняется в `IXmlRepository`.)
+*Создание ключа / CreateNewKey*
 
----
+В реализации `CreateNewKey`, `AlgorithmConfiguration` компонент используется для создания уникального `IAuthenticatedEncryptorDescriptor`, который затем сериализуется как XML. Если присутствует приемник доверительного хранения ключа, необработанный код XML (незашифрованного) предоставляется в приемник для долговременного хранения. Незашифрованные XML этого выполняется `IXmlEncryptor` (при необходимости) для создания зашифрованного XML-документа. Этот зашифрованный документ сохраняется в долговременном хранилище с помощью `IXmlRepository`. (Если не `IXmlEncryptor` — настройки незашифрованные документ сохраняется в `IXmlRepository`.)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+![Получение ключа](key-management/_static/keyretrieval2.png)
 
-   ![Получение ключа](key-management/_static/keyretrieval2.png)
-   
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
 
-   ![Получение ключа](key-management/_static/keyretrieval1.png)
+::: moniker range="< aspnetcore-2.0"
 
----
+![Создание ключа](key-management/_static/keycreation1.png)
 
-   *Получение ключа / GetAllKeys*
+*Создание ключа / CreateNewKey*
 
-В реализации `GetAllKeys`, представляющих ключи документы XML и выдачу считываются из основного `IXmlRepository`. Если эти документы шифруются, система автоматически расшифровать их. `XmlKeyManager` создает соответствующий `IAuthenticatedEncryptorDescriptorDeserializer` экземпляров для десериализации документов обратно в `IAuthenticatedEncryptorDescriptor` экземпляров, которые затем помещается в отдельных `IKey` экземпляров. Эта коллекция `IKey` экземпляров возвращается вызывающему объекту.
+В реализации `CreateNewKey`, `IAuthenticatedEncryptorConfiguration` компонент используется для создания уникального `IAuthenticatedEncryptorDescriptor`, который затем сериализуется как XML. Если присутствует приемник доверительного хранения ключа, необработанный код XML (незашифрованного) предоставляется в приемник для долговременного хранения. Незашифрованные XML этого выполняется `IXmlEncryptor` (при необходимости) для создания зашифрованного XML-документа. Этот зашифрованный документ сохраняется в долговременном хранилище с помощью `IXmlRepository`. (Если не `IXmlEncryptor` — настройки незашифрованные документ сохраняется в `IXmlRepository`.)
 
-Дополнительные сведения об отдельных элементов XML, которые можно найти в [хранилища ключей форматировать документ](xref:security/data-protection/implementation/key-storage-format#data-protection-implementation-key-storage-format).
+![Получение ключа](key-management/_static/keyretrieval1.png)
+
+::: moniker-end
+
+*Получение ключа / GetAllKeys*
+
+В реализации `GetAllKeys`, представляющих ключи документов XML и выдачу считываются из основного `IXmlRepository`. Если эти документы шифруются, система автоматически расшифровывает их. `XmlKeyManager` создает соответствующий `IAuthenticatedEncryptorDescriptorDeserializer` экземпляры десериализовать документы обратно в `IAuthenticatedEncryptorDescriptor` экземпляров, которые затем упаковываются в отдельных `IKey` экземпляров. Эта коллекция `IKey` экземпляров возвращается вызывающему объекту.
+
+Дополнительные сведения об отдельных элементов XML можно найти в [хранилища ключей форматировать документ](xref:security/data-protection/implementation/key-storage-format#data-protection-implementation-key-storage-format).
 
 ## <a name="ixmlrepository"></a>IXmlRepository
 
-`IXmlRepository` Интерфейс представляет тип, который может хранить XML-Документы и получить XML из резервного хранилища. Он предоставляет два API:
+`IXmlRepository` Интерфейс представляет тип, который можно XML для сохранения и извлечения XML из резервного хранилища. Он предоставляет два API:
 
-* GetAllElements(): IReadOnlyCollection<XElement>
+* `GetAllElements` :`IReadOnlyCollection<XElement>`
 
-* StoreElement (элемент XElement, friendlyName строка)
+* `StoreElement(XElement element, string friendlyName)`
 
-Реализации `IXmlRepository` не требуется синтаксический анализ XML, проходящие через них. Они должны обрабатывать XML-документов как непрозрачный и позволить волноваться по поводу создания и разбора документы более высокого уровня.
+Реализации `IXmlRepository` не требуется синтаксический анализ XML, проходящие через них. Они должны обрабатывать XML-документов как непрозрачный и позволить более высоких уровнях беспокоиться о создании и анализе документов.
 
-Существуют две встроенные конкретные типы, реализующие `IXmlRepository`: `FileSystemXmlRepository` и `RegistryXmlRepository`. В разделе [документа поставщиков хранилища ключей](xref:security/data-protection/implementation/key-storage-providers#data-protection-implementation-key-storage-providers) для получения дополнительной информации. Регистрация пользовательского `IXmlRepository` будет подходящим способом резервных хранилищ, например, использование хранилища больших двоичных объектов.
+Существует четыре встроенных конкретные типы, реализующие `IXmlRepository`:
 
-Чтобы изменить репозиторий по умолчанию уровне приложения, зарегистрируйте пользовательский `IXmlRepository` экземпляр:
+* [FileSystemXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.filesystemxmlrepository)
+* [RegistryXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository)
+* [AzureStorage.AzureBlobXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.azurestorage.azureblobxmlrepository)
+* [RedisXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.redisxmlrepository)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+См. в разделе [документа поставщиков хранилища ключей](xref:security/data-protection/implementation/key-storage-providers) Дополнительные сведения.
 
-   ```csharp
-   services.Configure<KeyManagementOptions>(options => options.XmlRepository = new MyCustomXmlRepository());
-   ```
-   
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+Регистрация пользовательского `IXmlRepository` подходит при использовании резервных хранилищ (например, хранилище таблиц Azure).
 
-   ```csharp
-   services.AddSingleton<IXmlRepository>(new MyCustomXmlRepository());
-   ```
+Чтобы изменить репозитория по умолчанию уровня приложения, зарегистрируйте пользовательский `IXmlRepository` экземпляр:
 
----
+::: moniker range=">= aspnetcore-2.0"
 
-<a name="data-protection-extensibility-key-management-ixmlencryptor"></a>
+```csharp
+services.Configure<KeyManagementOptions>(options => options.XmlRepository = new MyCustomXmlRepository());
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+```csharp
+services.AddSingleton<IXmlRepository>(new MyCustomXmlRepository());
+```
+
+::: moniker-end
 
 ## <a name="ixmlencryptor"></a>IXmlEncryptor
 
-`IXmlEncryptor` Интерфейс представляет тип, который можно зашифровать XML-элементе обычного текста. Он предоставляет единый интерфейс API:
+`IXmlEncryptor` Интерфейс представляет тип, который можно зашифровать XML-элемент открытого текста. Он предоставляет единый интерфейс API:
 
 * Шифрование (XElement plaintextElement): EncryptedXmlInfo
 
-Если сериализованный `IAuthenticatedEncryptorDescriptor` содержит все элементы, помеченные как «требует шифрования», затем `XmlKeyManager` будет выполняться этих элементов посредством настроенного `IXmlEncryptor` `Encrypt` метод, который будет сохраняться enciphered элемент, а не обычный текст элемента `IXmlRepository`. Выходные данные `Encrypt` метод `EncryptedXmlInfo` объекта. Этот объект является программа-оболочка которого содержит оба итоговые enciphered `XElement` и тип, представляющий `IXmlDecryptor` которого можно расшифровать соответствующий элемент.
+Если сериализованный `IAuthenticatedEncryptorDescriptor` содержит все элементы с пометкой «требует шифрования», затем `XmlKeyManager` запустит эти элементы настроенного `IXmlEncryptor`в `Encrypt` метод и он будет сохранять зашифрованные элемент, а не открытый текст элемента `IXmlRepository`. Выходные данные `Encrypt` метод `EncryptedXmlInfo` объекта. Этот объект является оболочкой, содержащий оба результирующих зашифрованные `XElement` и тип, представляющий `IXmlDecryptor` которого может использоваться для расшифровки соответствующий элемент.
 
 Существует четыре встроенных конкретные типы, реализующие `IXmlEncryptor`:
-* `CertificateXmlEncryptor`
-* `DpapiNGXmlEncryptor`
-* `DpapiXmlEncryptor`
-* `NullXmlEncryptor`
 
-В разделе [ключа шифрования в документе rest](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest) для получения дополнительной информации.
+* [CertificateXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.certificatexmlencryptor)
+* [DpapiNGXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.dpapingxmlencryptor)
+* [DpapiXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.dpapixmlencryptor)
+* [NullXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.nullxmlencryptor)
 
-Чтобы изменить ключ шифрования на rest механизма по умолчанию уровне приложения, зарегистрируйте пользовательский `IXmlEncryptor` экземпляр:
+См. в разделе [шифрование ключей при документа rest](xref:security/data-protection/implementation/key-encryption-at-rest) Дополнительные сведения.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+Чтобы изменить ключ шифрования при хранении механизма по умолчанию уровня приложения, зарегистрируйте пользовательский `IXmlEncryptor` экземпляр:
 
-   ```csharp
-   services.Configure<KeyManagementOptions>(options => options.XmlEncryptor = new MyCustomXmlEncryptor());
-   ```
-   
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker range=">= aspnetcore-2.0"
 
-   ```csharp
-   services.AddSingleton<IXmlEncryptor>(new MyCustomXmlEncryptor());
-   ```
+```csharp
+services.Configure<KeyManagementOptions>(options => options.XmlEncryptor = new MyCustomXmlEncryptor());
+```
 
----
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+```csharp
+services.AddSingleton<IXmlEncryptor>(new MyCustomXmlEncryptor());
+```
+
+::: moniker-end
 
 ## <a name="ixmldecryptor"></a>IXmlDecryptor
 
-`IXmlDecryptor` Интерфейс представляет тип, который знает, как расшифровать `XElement` , был enciphered через `IXmlEncryptor`. Он предоставляет единый интерфейс API:
+`IXmlDecryptor` Интерфейс представляет тип, который знает, как для расшифровки `XElement` , был зашифрованные с помощью `IXmlEncryptor`. Он предоставляет единый интерфейс API:
 
 * Расшифровать (XElement encryptedElement): XElement
 
-`Decrypt` Метод отменяет шифрование, выполненных `IXmlEncryptor.Encrypt`. Как правило, каждый конкретный `IXmlEncryptor` реализация будет иметь соответствующий конкретный `IXmlDecryptor` реализации.
+`Decrypt` Метод отменяет шифрования, выполняемые `IXmlEncryptor.Encrypt`. Как правило, каждый конкретный `IXmlEncryptor` реализация будет иметь соответствующий устойчивый `IXmlDecryptor` реализации.
 
-Типы, которые реализуют `IXmlDecryptor` должны иметь одно из следующих двух открытые конструкторы:
+Типы, которые реализуют интерфейс `IXmlDecryptor` должны иметь одно из следующих двух открытые конструкторы:
 
 * .ctor(IServiceProvider)
 * .ctor()
 
 > [!NOTE]
-> `IServiceProvider` , Передаваемый конструктору может иметь значение null.
+> `IServiceProvider` Передается конструктору может иметь значение null.
 
 ## <a name="ikeyescrowsink"></a>IKeyEscrowSink
 
-`IKeyEscrowSink` Интерфейс представляет тип, который можно выполнить перенос конфиденциальных данных. Вспомним, что сериализованные дескрипторы могут содержать конфиденциальные сведения (например, криптографические материалы), это то, что привело к появлением [IXmlEncryptor](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-ixmlencryptor) введите в первую очередь. Однако аварий и кольца ключ может быть удален или поврежден.
+`IKeyEscrowSink` Интерфейс представляет тип, который можно выполнить перенос конфиденциальных данных. Отозвать сериализованный дескрипторы могут содержать конфиденциальные сведения (например, криптографическим материалом), что это, что привело к появлением [IXmlEncryptor](#ixmlencryptor) введите в первую очередь. Тем не менее иногда происходят аварии и колец ключ можно удалить или поврежден.
 
-Интерфейс условно предоставляет штриховки аварийный escape, доступ к необработанные сериализованный XML перед его преобразованием каким-либо настроить [IXmlEncryptor](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-ixmlencryptor). Интерфейс предоставляет единый интерфейс API.
+Интерфейс доверительного хранения обеспечивает аварийного escape-штрих, предоставляя доступ к необработанные сериализованный XML, перед его преобразованием каким-либо настроить [IXmlEncryptor](#ixmlencryptor). Данный интерфейс предоставляет единый интерфейс API:
 
-* Хранилище (идентификатор Guid ключа, элемент XElement)
+* Store (идентификатор Guid ключа, элемент XElement)
 
-О `IKeyEscrowSink` реализации для обработки предоставленного элемента безопасным образом согласуется с бизнес-политика. Может быть одна возможная реализация для приемника депонированной сумки для шифрования XML-элемента с помощью известных корпоративный сертификат X.509, где депонирован закрытый ключ сертификата; `CertificateXmlEncryptor` типа может помочь с данным. `IKeyEscrowSink` Реализации также отвечает за сохранение указанного элемента соответствующим образом.
+О `IKeyEscrowSink` реализации для обработки указанного элемента в безопасной форме, совместимой с бизнес-политике. Может быть одна возможная реализация для приемника доверительного хранения для шифрования элемента XML при помощи известных корпоративный сертификат X.509, где депонирован закрытый ключ сертификата; `CertificateXmlEncryptor` типа может помочь с данным. `IKeyEscrowSink` Реализации также отвечает за сохранение указанного элемента соответствующим образом.
 
-По умолчанию включен механизм переноса, хотя администраторы сервера могут [глобально эту настройку](xref:security/data-protection/configuration/machine-wide-policy). Его можно также настроить программно через `IDataProtectionBuilder.AddKeyEscrowSink` метода, как показано в примере ниже. `AddKeyEscrowSink` Зеркальный перегрузок метода `IServiceCollection.AddSingleton` и `IServiceCollection.AddInstance` перегрузок, как `IKeyEscrowSink` экземпляры должны быть единственные экземпляры. При наличии нескольких `IKeyEscrowSink` зарегистрированных экземпляров, каждый из них будет вызываться во время создания ключа, поэтому ключи могут быть перенесены на несколько механизмов одновременно.
+По умолчанию включен механизм доверительного хранения, то, что администраторы сервера могут [глобально эту настройку](xref:security/data-protection/configuration/machine-wide-policy). Его также можно настроить программно с помощью `IDataProtectionBuilder.AddKeyEscrowSink` метод, как показано в приведенном ниже примере. `AddKeyEscrowSink` Зеркальный перегрузки метода `IServiceCollection.AddSingleton` и `IServiceCollection.AddInstance` перегрузок, как `IKeyEscrowSink` экземпляры должны быть одноэлементных экземпляров. При наличии нескольких `IKeyEscrowSink` зарегистрированных экземпляров, каждый из них будет вызываться во время создания ключа, поэтому ключи может быть передан в несколько механизмов, одновременно.
 
-Никакой интерфейс API для чтения материалы из `IKeyEscrowSink` экземпляра. Это согласуется с теории проектирования механизма переноса: он предназначен для материала ключа доступа к доверенным центром сертификации, и так как приложение сам не является доверенным центром сертификации, он не должен иметь доступ к собственный депонированные материал.
+Не существует API на чтение материала из `IKeyEscrowSink` экземпляра. Это согласуется с теории проектирования механизма доверительного хранения: она предназначена предоставить доступ к доверенным центром сертификации материал ключа, и так, как приложение сам не является доверенным центром сертификации, он не должен иметь доступ к собственный депонированные материал.
 
-В следующем примере кода показано создание и регистрация `IKeyEscrowSink` где ключи перенесены таким образом, чтобы их можно восстановить только члены группы «Администраторы CONTOSODomain».
+В следующем примере кода показано создание и регистрация `IKeyEscrowSink` где ключи являются передан, таким образом, что их можно восстановить только члены «CONTOSODomain Admins».
 
 > [!NOTE]
-> Чтобы запустить этот образец, должен быть на Windows 8, присоединенном к домену / компьютера Windows Server 2012 и контроллер домена должен быть Windows Server 2012 или более поздней версии.
+> Чтобы запустить этот пример, необходимо быть на присоединенных к домену Windows 8 / компьютера Windows Server 2012 и контроллер домена должен быть Windows Server 2012 или более поздней версии.
 
 [!code-csharp[](key-management/samples/key-management-extensibility.cs)]
