@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 07/02/2018
 uid: fundamentals/index
-ms.openlocfilehash: 33786bf78567a1aa12a1ac97d44d1a596ec4c3be
-ms.sourcegitcommit: 08f1a9baa97060da5168840b332c9c0805b5f901
+ms.openlocfilehash: 30c456685ce26522faff9b58fbd2977ad2f2869a
+ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37144980"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39202631"
 ---
 # <a name="aspnet-core-fundamentals"></a>Основы ASP.NET Core
 
@@ -191,6 +191,12 @@ ASP.NET Core предлагает несколько способов сохр�
 Фоновые задачи реализуются как *размещенные службы*. Размещенная служба — это класс с логикой фоновой задачи, реализующий интерфейс [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice).
 
 Дополнительные сведения см. в статье [Background tasks with hosted services in ASP.NET Core](xref:fundamentals/host/hosted-services) (Фоновые задачи с размещенными службами в ASP.NET Core).
+
+## <a name="access-httpcontext"></a>Доступ к HttpContext
+
+Выполните доступ к `HttpContext` через интерфейс [IHttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor) и его реализацию по умолчанию — [HttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.httpcontextaccessor).
+
+Дополнительные сведения см. в разделе <xref:fundamentals/httpcontext>.
 
 ## <a name="open-web-interface-for-net-owin"></a>Открытый веб-интерфейс для .NET (OWIN)
 
