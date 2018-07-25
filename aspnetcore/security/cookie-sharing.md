@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/19/2017
 uid: security/cookie-sharing
-ms.openlocfilehash: f8347b52f68165cdbe4ab77a76664e4767bc4cdf
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: ed3496db3f7a63a704f0e57faef6b2f6c085a8bd
+ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095481"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39228602"
 ---
 # <a name="share-cookies-among-apps-with-aspnet-and-aspnet-core"></a>Совместное использование приложениями файлов cookie с помощью ASP.NET и ASP.NET Core
 
@@ -51,6 +51,12 @@ ms.locfileid: "39095481"
 
 Ключи защиты данных и имя приложения должно совместно использоваться приложениями. В образце приложения `GetKeyRingDirInfo` возвращает общие расположение хранилища ключей для [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem) метод. Используйте [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) Настройка общего имени общего приложения (`SharedCookieApp` в образце). Дополнительные сведения см. в разделе [Настройка защиты данных](xref:security/data-protection/configuration/overview).
 
+При размещении приложений, которые совместно использовать файлы cookie в поддомены, укажите общий домен в [Cookie.Domain](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.domain) свойство. Для совместного использования файлов cookie в приложениях в `contoso.com`, такие как `first_subdomain.contoso.com` и `second_subdomain.contoso.com`, укажите `Cookie.Domain` как `.contoso.com`:
+
+```csharp
+options.Cookie.Domain = ".contoso.com";
+```
+
 См. в разделе *CookieAuthWithIdentity.Core* в проекте [пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([загрузке](xref:tutorials/index#how-to-download-a-sample)).
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
@@ -89,7 +95,13 @@ app.AddIdentity<ApplicationUser, IdentityRole>(options =>
 
 [!code-csharp[](cookie-sharing/sample/CookieAuth.Core/Startup.cs?name=snippet1)]
 
-Ключи защиты данных и имя приложения должно совместно использоваться приложениями. В образце приложения `GetKeyRingDirInfo` возвращает общие расположение хранилища ключей для [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem) метод. Используйте [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) Настройка общего имени общего приложения (`SharedCookieApp` в образце). Дополнительные сведения см. в разделе [Настройка защиты данных](xref:security/data-protection/configuration/overview). 
+Ключи защиты данных и имя приложения должно совместно использоваться приложениями. В образце приложения `GetKeyRingDirInfo` возвращает общие расположение хранилища ключей для [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem) метод. Используйте [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) Настройка общего имени общего приложения (`SharedCookieApp` в образце). Дополнительные сведения см. в разделе [Настройка защиты данных](xref:security/data-protection/configuration/overview).
+
+При размещении приложений, которые совместно использовать файлы cookie в поддомены, укажите общий домен в [Cookie.Domain](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.domain) свойство. Для совместного использования файлов cookie в приложениях в `contoso.com`, такие как `first_subdomain.contoso.com` и `second_subdomain.contoso.com`, укажите `Cookie.Domain` как `.contoso.com`:
+
+```csharp
+options.Cookie.Domain = ".contoso.com";
+```
 
 См. в разделе *CookieAuth.Core* в проекте [пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([загрузке](xref:tutorials/index#how-to-download-a-sample)).
 
