@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/11/2018
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 70e9e73eeb5d08baf9ef190ebfbda998ace60d77
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 59ab0cd0f6975d15bd01ce7e4128521938182c24
+ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278329"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39228628"
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -34,6 +34,40 @@ API конфигурации позволяет настраивать веб-п
 Шаблон параметров использует классы параметров для представления групп связанных настроек. Дополнительные сведения об использовании шаблона параметров см. в разделе [Параметры](xref:fundamentals/configuration/options).
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+
+::: moniker range=">= aspnetcore-2.1"
+
+Примеры, приведенные в этом разделе, основаны на следующем.
+
+* Указание базового пути приложения с помощью [SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath). `SetBasePath` предоставляется приложению с помощью ссылки на пакет [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/).
+* Разрешение разделов файлов конфигурации с помощью [GetSection](/dotnet/api/microsoft.extensions.configuration.configurationsection.getsection). `GetSection` предоставляется приложению с помощью ссылки на пакет [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/).
+* Настройка привязки с помощью [Bind](/dotnet/api/microsoft.extensions.configuration.configurationbinder.bind). `Bind` предоставляется приложению с помощью ссылки на пакет [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/).
+
+Пакеты включены в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Примеры, приведенные в этом разделе, основаны на следующем.
+
+* Указание базового пути приложения с помощью [SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath). `SetBasePath` предоставляется приложению с помощью ссылки на пакет [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/).
+* Разрешение разделов файлов конфигурации с помощью [GetSection](/dotnet/api/microsoft.extensions.configuration.configurationsection.getsection). `GetSection` предоставляется приложению с помощью ссылки на пакет [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/).
+* Настройка привязки с помощью [Bind](/dotnet/api/microsoft.extensions.configuration.configurationbinder.bind). `Bind` предоставляется приложению с помощью ссылки на пакет [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/).
+
+Эти пакеты включены в [метапакет Microsoft.AspNetCore.All](xref:fundamentals/metapackage).
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+Примеры, приведенные в этом разделе, основаны на следующем.
+
+* Указание базового пути приложения с помощью [SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath). `SetBasePath` предоставляется приложению с помощью ссылки на пакет [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/).
+* Разрешение разделов файлов конфигурации с помощью [GetSection](/dotnet/api/microsoft.extensions.configuration.configurationsection.getsection). `GetSection` предоставляется приложению с помощью ссылки на пакет [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/).
+* Настройка привязки с помощью [Bind](/dotnet/api/microsoft.extensions.configuration.configurationbinder.bind). `Bind` предоставляется приложению с помощью ссылки на пакет [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/).
+
+::: moniker-end
 
 ## <a name="json-configuration"></a>Конфигурация JSON
 
