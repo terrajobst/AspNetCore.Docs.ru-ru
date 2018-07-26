@@ -2,17 +2,17 @@
 title: Фоновые задачи с размещенными службами в ASP.NET Core
 author: guardrex
 description: Узнайте, как реализовать фоновые задачи с размещенными службами в ASP.NET Core.
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/15/2018
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: e5455e553cba817dce811391d4a909e501a20d9a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 087ff4e1e169e1a1f76e93d4993441e47bafc945
+ms.sourcegitcommit: 7097dba14d5b858e82758ee031ac62dbe3611339
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273785"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39138601"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Фоновые задачи с размещенными службами в ASP.NET Core
 
@@ -26,14 +26,10 @@ ms.locfileid: "36273785"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-::: moniker range=">= aspnetcore-2.1"
-
 Пример приложения предоставляется в двух версиях:
 
 * Веб-узел &ndash; удобно использовать для размещения веб-приложений. Пример кода, приведенный в этой статье, относится к этой версии примера приложения. Дополнительные сведения см. в статье о [веб-узле](xref:fundamentals/host/web-host).
 * Универсальный узел &ndash; — новая возможность в ASP.NET Core 2.1. Дополнительные сведения см. в статье об [универсальном узле](xref:fundamentals/host/generic-host).
-
-::: moniker-end
 
 ## <a name="ihostedservice-interface"></a>Интерфейс IHostedService
 
@@ -51,21 +47,9 @@ ms.locfileid: "36273785"
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/TimedHostedService.cs?name=snippet1&highlight=15-16,30,37)]
 
-::: moniker range=">= aspnetcore-2.1"
-
 Служба зарегистрирована в `Startup.ConfigureServices` с методом расширения `AddHostedService`:
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Служба регистрируется в `Startup.ConfigureServices`:
-
-[!code-csharp[](hosted-services/samples-snapshot/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet1)]
-
-::: moniker-end
 
 ## <a name="consuming-a-scoped-service-in-a-background-task"></a>Использование службы с заданной областью в фоновой задаче
 
@@ -79,21 +63,9 @@ ms.locfileid: "36273785"
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/ConsumeScopedServiceHostedService.cs?name=snippet1&highlight=29-36)]
 
-::: moniker range=">= aspnetcore-2.1"
-
 Службы регистрируются в `Startup.ConfigureServices`. Реализация `IHostedService` зарегистрирована с методом расширения `AddHostedService`:
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet2)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Службы регистрируются в `Startup.ConfigureServices`:
-
-[!code-csharp[](hosted-services/samples-snapshot/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet2)]
-
-::: moniker-end
 
 ## <a name="queued-background-tasks"></a>Фоновые задачи в очереди
 
@@ -101,25 +73,13 @@ ms.locfileid: "36273785"
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/BackgroundTaskQueue.cs?name=snippet1)]
 
-В `QueueHostedService` фоновые задачи (`workItem`) в очереди выводятся из очереди и выполняются:
+В `QueueHostedService` фоновые задачи в очереди из очереди выводятся из очереди и выполняются в качестве [BackgroundService](/dotnet/api/microsoft.extensions.hosting.backgroundservice) — базового класса для реализации длительного выполнения `IHostedService`:
 
-[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/QueuedHostedService.cs?name=snippet1&highlight=30-31,35)]
-
-::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/QueuedHostedService.cs?name=snippet1&highlight=16,20)]
 
 Службы регистрируются в `Startup.ConfigureServices`. Реализация `IHostedService` зарегистрирована с методом расширения `AddHostedService`:
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet3)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Службы регистрируются в `Startup.ConfigureServices`:
-
-[!code-csharp[](hosted-services/samples-snapshot/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet3)]
-
-::: moniker-end
 
 В классе модели страницы индексов `IBackgroundTaskQueue` вставляется в конструктор и присваивается `Queue`:
 

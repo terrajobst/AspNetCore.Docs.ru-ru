@@ -1,22 +1,20 @@
 ---
 title: Начало работы с SignalR в ASP.NET Core
-author: rachelappel
+author: tdykstra
 description: В этом руководстве создается приложение с помощью SignalR для ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
-ms.author: rachelap
+ms.author: tdykstra
 ms.custom: mvc
 ms.date: 05/22/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 6b8222ee04573ca7157b4e1125ed5a4453b2b9a9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 83be28b30cf06eeea37e8d76b3f6444ffd9a10e8
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37830559"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095495"
 ---
 # <a name="get-started-with-signalr-on-aspnet-core"></a>Начало работы с SignalR в ASP.NET Core
-
-Автор: [Рэйчел Аппель](https://twitter.com/rachelappel) (Rachel Appel)
 
 В этом руководстве описаны основы создания приложения в режиме реального времени с помощью SignalR для ASP.NET Core.
 
@@ -39,14 +37,14 @@ ms.locfileid: "37830559"
 
 * [Пакет SDK для .NET Core 2.1.или более поздней версии](https://www.microsoft.com/net/download/all)
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.7.3 или более поздней версии с рабочей нагрузкой **ASP.NET и веб-разработка**
-* [npm](https://www.npmjs.com/get-npm)
+* [npm](https://www.npmjs.com/get-npm) (диспетчер пакетов для Node.js)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
 * [Пакет SDK для .NET Core 2.1.или более поздней версии](https://www.microsoft.com/net/download/all)
 * [Visual Studio Code.](https://code.visualstudio.com/download)
 * [C# для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-* [npm](https://www.npmjs.com/get-npm)
+* [npm](https://www.npmjs.com/get-npm) (диспетчер пакетов для Node.js)
 
 -----
 
@@ -71,7 +69,7 @@ Visual Studio включает пакет `Microsoft.AspNetCore.SignalR`, сод
     npm install @aspnet/signalr
     ```
 
-4. Создайте новую папку с именем "signalr" в папке *lib* в проекте. Скопируйте файл *signalr.js* из *node_modules\\@aspnet\signalr\dist\browser* в эту папку.
+4. Создайте папку с именем signalr в папке *wwwroot/lib* в проекте. Скопируйте файл *signalr.js* из *node_modules\\@aspnet\signalr\dist\browser* в эту папку.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
 
