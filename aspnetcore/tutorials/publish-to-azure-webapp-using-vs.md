@@ -5,12 +5,12 @@ description: Сведения о публикации приложения ASP.N
 ms.author: riande
 ms.date: 12/16/2017
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: b6ff7d4873e6863fe2c64f48952e59fe3593bd9e
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 7211da268c1c52e7b859e6f98ce433fd19b218ff
+ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273901"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39320730"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Публикация приложения ASP.NET Core в Azure с помощью Visual Studio
 
@@ -24,7 +24,7 @@ ms.locfileid: "36273901"
 
 ## <a name="set-up"></a>Настройка
 
-* Создайте [бесплатную учетную запись Azure](https://aka.ms/K5y5yh), если у вас ее нет. 
+* Создайте [бесплатную учетную запись Azure](https://azure.microsoft.com/free/dotnet/), если у вас ее нет. 
 
 ## <a name="create-a-web-app"></a>Создание веб-приложения
 
