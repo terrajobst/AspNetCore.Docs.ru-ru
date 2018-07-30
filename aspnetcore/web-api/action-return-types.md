@@ -4,14 +4,14 @@ author: scottaddie
 description: Сведения об использовании различных типов возвращаемых значений методов действий контроллера в веб-API ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 03/21/2018
+ms.date: 07/23/2018
 uid: web-api/action-return-types
-ms.openlocfilehash: 422db97da222fb5e742e1d8e6ae410edc90dbc18
-ms.sourcegitcommit: ee2b26c7d08b38c908c668522554b52ab8efa221
+ms.openlocfilehash: 82d18d866d4d18613cccb950b2f30ae81bd749de
+ms.sourcegitcommit: 6425baa92cec4537368705f8d27f3d0e958e43cd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "36273560"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39220616"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Типы возвращаемых значений действий контроллера в веб-API ASP.NET Core
 
@@ -21,14 +21,19 @@ ms.locfileid: "36273560"
 
 ASP.NET Core предоставляет следующие параметры для типов возвращаемых значений действий контроллера веб-API:
 
-::: moniker range="<= aspnetcore-2.0"
-* [Определенный тип](#specific-type)
-* [IActionResult](#iactionresult-type)
-::: moniker-end
 ::: moniker range=">= aspnetcore-2.1"
+
 * [Определенный тип](#specific-type)
 * [IActionResult](#iactionresult-type)
 * [ActionResult\<T>](#actionresultt-type)
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+* [Определенный тип](#specific-type)
+* [IActionResult](#iactionresult-type)
+
 ::: moniker-end
 
 В этом документе объясняется, когда лучше использовать каждый тип возвращаемого значения.
@@ -70,12 +75,25 @@ ASP.NET Core предоставляет следующие параметры д
 Также для предыдущего действия возвращается второй известный код — 201, который создается вспомогательным методом [CreatedAtAction](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.createdataction). В этом пути возвращается объект `Product`.
 
 ::: moniker range=">= aspnetcore-2.1"
+
 ## <a name="actionresultt-type"></a>Тип ActionResult\<T>
 
 ASP.NET Core 2.1 предоставляет тип возвращаемого значения [ActionResult\<T>](/dotnet/api/microsoft.aspnetcore.mvc.actionresult-1) для действий контроллера веб-API. Он позволяет возвращать тип, производный от [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult), или [определенный тип](#specific-type). `ActionResult<T>` имеет следующие преимущества по сравнению с [типом IActionResult](#iactionresult-type):
 
-* Свойство `Type` атрибута [[ProducesResponseType]](/dotnet/api/microsoft.aspnetcore.mvc.producesresponsetypeattribute) можно исключить.
+* Свойство `Type` атрибута [[ProducesResponseType]](/dotnet/api/microsoft.aspnetcore.mvc.producesresponsetypeattribute) можно исключить. Например, `[ProducesResponseType(200, Type = typeof(Product))]` упрощается до `[ProducesResponseType(200)]`. Ожидаемый тип возвращаемого значения действия вместо этого выводится из `T` в `ActionResult<T>`.
 * [Операторы неявного приведения](/dotnet/csharp/language-reference/keywords/implicit) поддерживают преобразование `T` и `ActionResult` в `ActionResult<T>`. `T` преобразуется в [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult), то есть `return new ObjectResult(T);` упрощается до `return T;`.
+
+C# не поддерживает операторы неявных приведений в интерфейсах. Следовательно, для преобразования в конкретный тип необходимо использовать `ActionResult<T>`. Например, использование `IEnumerable` не работает в следующем примере:
+
+    ```csharp
+    [HttpGet]
+    public ActionResult<IEnumerable<Product>> Get()
+    {
+        return _repository.GetProducts();
+    }
+    ```
+
+Один из способов исправить приведенный выше код — возвратить `_repository.GetProducts().ToList();`.
 
 Большинство действий имеют тип возвращаемого значения. При выполнении действия могут возникнуть непредвиденные условия, и в этом случае определенный тип не возвращается. Например, входной параметр действия может не пройти проверку модели. В этом случае обычно возвращается подходящий тип `ActionResult` вместо конкретного типа.
 
@@ -100,10 +118,11 @@ ASP.NET Core 2.1 предоставляет тип возвращаемого з
 
 > [!TIP]
 > В версии ASP.NET Core 2.1 включен вывод источника привязки параметра действия, когда класс контроллера дополнен атрибутом `[ApiController]`. Параметры сложного типа связываются автоматически с помощью текста запроса. В результате параметр предыдущего действия `product` явным образом не помечен атрибутом [[FromBody]](/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute).
+
 ::: moniker-end
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Действия контроллера](xref:mvc/controllers/actions)
-* [Проверка модели](xref:mvc/models/validation)
-* [Страницы справки веб-API с использованием Swagger](xref:tutorials/web-api-help-pages-using-swagger)
+* <xref:mvc/controllers/actions>
+* <xref:mvc/models/validation>
+* <xref:tutorials/web-api-help-pages-using-swagger>
