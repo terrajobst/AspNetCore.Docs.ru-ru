@@ -5,12 +5,12 @@ description: Здесь вы найдете указания по миграци
 ms.author: scaddie
 ms.date: 08/27/2017
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 285f252767e4eacbb6a9ccc50bd98d1916e26bd4
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 2f42ca6f9da8d9941e5bab40afc36c95360c3550
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273512"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342189"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Миграция с ASP.NET на ASP.NET Core
 
@@ -136,7 +136,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 Репозиторий, как и в Unity, можно внедрять где угодно.
 
 > [!NOTE]
-> Подробное руководство по внедрению зависимостей в ASP.NET Core см. в статье [Внедрение зависимостей в ASP.NET Core](xref:fundamentals/dependency-injection#replacing-the-default-services-container).
+> Дополнительные сведения о внедрении зависимостей см. [здесь](xref:fundamentals/dependency-injection).
 
 ## <a name="serve-static-files"></a>Обслуживание статических файлов
 

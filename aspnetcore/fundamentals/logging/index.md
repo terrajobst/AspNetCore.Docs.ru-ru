@@ -5,12 +5,12 @@ description: Сведения о платформе ведения журнал�
 ms.author: tdykstra
 ms.date: 07/24/2018
 uid: fundamentals/logging/index
-ms.openlocfilehash: f629b062afb5c17cd05040a9ef0281aa7121aabc
-ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
+ms.openlocfilehash: 5d31c5609c0e98a81d76ce0581f1c63f349d14d0
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39320756"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342475"
 ---
 # <a name="logging-in-aspnet-core"></a>Ведение журналов в ASP.NET Core
 
@@ -34,7 +34,7 @@ ASP.NET Core поддерживает API ведения журнала, кот�
 
 ## <a name="how-to-create-logs"></a>Создание журналов
 
-Чтобы создать журналы, примените объект [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) из контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection).
+Для создания журналов реализуйте объект [ILogger&lt;TCategoryName&gt;](/dotnet/api/microsoft.extensions.logging.ilogger-1) из контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection).
 
 [!code-csharp[](index/sample/Controllers/TodoController.cs?name=snippet_LoggerDI&highlight=7)]
 
