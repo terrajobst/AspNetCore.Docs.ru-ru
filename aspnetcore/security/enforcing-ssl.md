@@ -5,12 +5,12 @@ description: Показано, как требовать HTTPS/TLS, в ASP.NET C
 ms.author: riande
 ms.date: 2/9/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: c3d92994c0331b1408e246953454910ca1f4dc43
-ms.sourcegitcommit: c8e62aa766641aa55105f7db79cdf2b27a6e5977
+ms.openlocfilehash: a4ab91ef23a798c919a23a44f5a050bd3c09d56a
+ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39254835"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39356692"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Принудительное использование HTTPS в ASP.NET Core
 
@@ -64,11 +64,17 @@ ms.locfileid: "39254835"
 > [!NOTE]
 > При запуске приложения позади обратного прокси-сервера (например, IIS, IIS Express), `IServerAddressesFeature` недоступна. Необходимо вручную настроить порт. Если порт не задан, не перенаправляет запросы.
 
-Порт можно настроить, задав:
+Порт можно настроить, задав [параметр конфигурации веб-узел https_port](xref:fundamentals/host/web-host#https-port):
 
-* Переменная среды `ASPNETCORE_HTTPS_PORT`.
-* `http_port` ключ конфигурации узла (например, с помощью *hostsettings.json* или аргумент командной строки).
-* [HttpsRedirectionOptions.HttpsPort](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.httpsport). См. предыдущий пример, в котором показано, как задать порт на 5001.
+**Ключ**: https_port **тип**: *строка*
+**по умолчанию**: не задано значение по умолчанию.
+**Задать с помощью**: `UseSetting` 
+ **переменной среды**: `<PREFIX_>HTTPS_PORT` (используется префикс `ASPNETCORE_` при использовании веб-узла.)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting("https_port", "8080")
+```
 
 > [!NOTE]
 > Порт можно настроить, задав URL-адрес с косвенно `ASPNETCORE_URLS` переменной среды. Настраивает сервер в переменной среды, а затем по промежуточного слоя косвенно за HTTPS-порт, через `IServerAddressesFeature`.
