@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 6/16/2018
 uid: security/authentication/add-user-data
-ms.openlocfilehash: ecd0e6d1c71b24309fab70fbb06af7731463bb0e
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 6f583d65460803c816bf1ccd314216952710cd55
+ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38215939"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39378619"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Добавление, скачивание и удаление пользовательских данных для удостоверений в проекте ASP.NET Core
 
@@ -61,8 +61,8 @@ dotnet new webapp -o WebApp1
   * Выберите следующие файлы для переопределения:
     * **Учетная запись: регистрация**
     * **Учетная запись и управление/индексов**
-  * Выберите **+** кнопку, чтобы создать новый **класс контекста данных**. Выберите тип (**WebApp1.Models.WebApp1Context** Если присвоил проекту **WebApp1**).
-  * Выберите **+** кнопку, чтобы создать новый **класс пользователя**. Выберите тип (**WebApp1User** Если присвоил проекту **WebApp1**) > **добавить**.
+  * Выберите **+** кнопку, чтобы создать новый **класс контекста данных**. Выберите тип (**WebApp1.Models.WebApp1Context** Если проект называется **WebApp1**).
+  * Выберите **+** кнопку, чтобы создать новый **класс пользователя**. Выберите тип (**WebApp1User** Если проект называется **WebApp1**) > **добавить**.
 * Выберите **добавить**.
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
@@ -108,7 +108,7 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 ## <a name="add-custom-user-data-to-the-identity-db"></a>Добавить пользовательские данные в базу данных удостоверений
 
-Обновление `IdentityUser` производного класса с пользовательскими свойствами. Если название проекта WebApp1, этот файл имеет имя *Areas/Identity/Data/WebApp1User.cs*. Обновление файла следующим кодом:
+Обновление `IdentityUser` производного класса с пользовательскими свойствами. Если вы с именем проекта WebApp1, этот файл имеет имя *Areas/Identity/Data/WebApp1User.cs*. Обновление файла следующим кодом:
 
 [!code-csharp[Main](add-user-data/sample/Areas/Identity/Data/WebApp1User.cs)]
 
