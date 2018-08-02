@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/30/2018
 uid: test/integration-tests
-ms.openlocfilehash: 2a5adafd30aeca163063ea76857378e97163d0b9
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 8d304397fb7f218b395374c2b8c696fef9d9f8ad
+ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342085"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39410186"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
@@ -209,6 +209,56 @@ clientOptions.HandleCookies = true;
 clientOptions.MaxAutomaticRedirections = 7;
 
 _client = _factory.CreateClient(clientOptions);
+```
+
+## <a name="inject-mock-services"></a>Ввести макетов служб
+
+Службы могут переопределяться в тесте с помощью вызова [ConfigureTestServices](/dotnet/api/microsoft.aspnetcore.testhost.webhostbuilderextensions.configuretestservices) в построителе узла. **Чтобы внедрить службы имитации, необходимо иметь SUT `Startup` класса `Startup.ConfigureServices` метод.**
+
+Пример SUT включает областью действия службы, которая возвращает знак кавычек. Квоты внедряется в скрытом поле на странице индекса при запросе страницы индекса.
+
+*Services/IQuoteService.cs*:
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Services/IQuoteService.cs?name=snippet1)]
+
+*Services/QuoteService.cs*:
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Services/QuoteService.cs?name=snippet1)]
+
+*Startup.cs*:
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet2)]
+
+*Pages/Index.cshtml.cs*:
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml.cs?name=snippet1&highlight=4,9,20,26)]
+
+*Pages/Index.cs*:
+
+[!code-cshtml[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml?name=snippet_Quote)]
+
+Следующая разметка создается при запуске приложения SUT:
+
+```html
+<input id="quote" type="hidden" value="Come on, Sarah. We&#x27;ve an appointment in 
+    London, and we&#x27;re already 30,000 years late.">
+```
+
+Для тестирования внедрения службы и квоты при тестировании интеграции, макеты службы внедряется в SUT в тесте. Макеты службы заменяет приложения `QuoteService` и службу, предоставляемую тестовое приложение, с именем `TestQuoteService`:
+
+*IntegrationTests.IndexPageTests.cs*:
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet4)]
+
+`ConfigureTestServices` вызывается, и областью действия служба зарегистрирована:
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet5&highlight=7-10,17,20-21)]
+
+Разметки, созданный во время выполнения теста отражает текст предложения, предоставляемые `TestQuoteService`, таким образом передает утверждения:
+
+```html
+<input id="quote" type="hidden" value="Something&#x27;s interfering with time, 
+    Mr. Scarman, and time is my business.">
 ```
 
 ## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>Как в инфраструктуре тестирования выводит путь корня содержимого приложения
