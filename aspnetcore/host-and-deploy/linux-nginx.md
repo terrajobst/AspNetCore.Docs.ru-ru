@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/22/2018
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 840a9f98b3409f74b9a41ee24ff7bcb33a875470
-ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
+ms.openlocfilehash: aba9ed41ac3650d8c645d71fb772e2a8e4f32f02
+ms.sourcegitcommit: c8e62aa766641aa55105f7db79cdf2b27a6e5977
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37433939"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39254861"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -285,6 +285,21 @@ sudo journalctl -fu kestrel-hellomvc.service
 sudo journalctl -fu kestrel-hellomvc.service --since "2016-10-18" --until "2016-10-18 04:00"
 ```
 
+## <a name="data-protection"></a>Защита данных
+
+[Стек защиты данных в ASP.NET Core](xref:security/data-protection/index) используется определенным [ПО промежуточного слоя](xref:fundamentals/middleware/index) ASP.NET Core, включая промежуточное ПО для проверки подлинности (например, промежуточное ПО файлов cookie) и средствами защиты от подделки межсайтовых запросов. Даже если API-интерфейсы защиты данных не вызываются из пользовательского кода, необходимо настроить защиту данных для создания постоянного [хранилища криптографических ключей](xref:security/data-protection/implementation/key-management). Если защита данных не настроена, ключи хранятся в памяти и удаляются при перезапуске приложения.
+
+Если набор ключей хранится в памяти, при перезапуске приложения происходит следующее:
+
+* Все токены аутентификации, использующие файлы cookie, становятся недействительными.
+* При выполнении следующего запроса пользователю требуется выполнить вход снова.
+* Все данные, защищенные с помощью набора ключей, больше не могут быть расшифрованы. Это могут быть [токены CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) и [файлы cookie временных данных ASP.NET Core MVC](xref:fundamentals/app-state#tempdata).
+
+Сведения о настройке защиты данных для хранения и шифрования набора ключей см. в приведенных ниже статьях.
+
+* <xref:security/data-protection/implementation/key-storage-providers>
+* <xref:security/data-protection/implementation/key-encryption-at-rest>
+
 ## <a name="securing-the-app"></a>Защита приложения
 
 ### <a name="enable-apparmor"></a>Включение AppArmor
@@ -293,14 +308,21 @@ sudo journalctl -fu kestrel-hellomvc.service --since "2016-10-18" --until "2016-
 
 ### <a name="configuring-the-firewall"></a>Настройка межсетевого экрана
 
-Закройте все внешние порты, которые не используются. Незамысловатый межсетевой экран (ufw) позволяет взаимодействовать с `iptables`, предоставляя интерфейс командной строки для настройки межсетевого экрана. Убедитесь, что настройки `ufw` пропускают трафик на все необходимые порты.
+Закройте все внешние порты, которые не используются. Незамысловатый межсетевой экран (ufw) позволяет взаимодействовать с `iptables`, предоставляя интерфейс командной строки для настройки межсетевого экрана.
+
+> [!WARNING]
+> Неправильно настроенный брандмауэр предотвратит доступ ко всей системе. Если задать неправильный порт SSH, то при использовании SSH для подключения к системе произойдет ее блокировка. Порт по умолчанию — 22. Дополнительные сведения см. в [вводной статье по ufw](https://help.ubuntu.com/community/UFW) и в [этом руководстве](http://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html).
+
+Установите `ufw` и настройте его для разрешения прохождения трафика через все необходимые порты.
 
 ```bash
 sudo apt-get install ufw
-sudo ufw enable
 
+sudo ufw allow 22/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
+
+sudo ufw enable
 ```
 
 ### <a name="securing-nginx"></a>Защита Nginx

@@ -5,14 +5,14 @@ description: Сведения об использовании интерфейс
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 06/22/2018
+ms.date: 07/23/2018
 uid: fundamentals/http-requests
-ms.openlocfilehash: e56c7a3ed80cc08103f6178859a1a99f1a5ec068
-ms.sourcegitcommit: 79b756ea03eae77a716f500ef88253ee9b1464d2
+ms.openlocfilehash: 87424eaea499ba7ece1e5ef88649fcbb2e297635
+ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36327526"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39320659"
 ---
 # <a name="initiate-http-requests"></a>Инициирование HTTP-запросов
 
@@ -24,6 +24,12 @@ ms.locfileid: "36327526"
 * Кодификация концепции исходящего ПО промежуточного слоя путем делегирования обработчиков в `HttpClient` и предоставление расширений для ПО промежуточного слоя на основе Polly для использования этой возможности.
 * Управление созданием пулов и временем существования базовых экземпляров `HttpClientMessageHandler` с целью избежать обычных проблем с DNS, которые возникают при управлении временем существования `HttpClient` вручную.
 * Настройка параметров ведения журнала (через `ILogger`) для всех запросов, отправленных через клиентов, созданных фабрикой.
+
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/http-requests/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+
+## <a name="prerequisites"></a>Предварительные требования
+
+Для проектов, предназначенных для .NET Framework, необходимо установить пакет NuGet [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/). Пакет `Microsoft.Extensions.Http` уже включен в проекты, предназначенные для .NET Core и ссылающиеся на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 ## <a name="consumption-patterns"></a>Принципы использования
 

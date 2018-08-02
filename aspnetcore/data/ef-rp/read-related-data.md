@@ -5,12 +5,12 @@ description: Из этого руководства вы узнаете, как 
 ms.author: riande
 ms.date: 11/05/2017
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: bcea6aa6018a937979b8e0aaa2edcdd96da41559
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: bb1d087a5449c6e26c40e572d161dd9644ac2323
+ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202683"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39219346"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Razor Pages с EF Core в ASP.NET Core — чтение связанных данных — 6 из 8
 
@@ -69,14 +69,19 @@ ms.locfileid: "39202683"
 <a name="scaffold"></a>
 ### <a name="scaffold-the-course-model"></a>Формирование шаблона для модели Course
 
-* Закройте Visual Studio.
-* Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
-* Выполните следующую команду:
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+
+Следуйте инструкциям в разделе [Формирование шаблона для модели Student](xref:data/ef-rp/intro#scaffold-the-student-model) и используйте `Course` для класса модели.
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
+ Выполните следующую команду:
 
   ```console
-  dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.1.0
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
   ```
+
+------
 
 Предыдущая команда формирует шаблон для модели `Course`. Откройте проект в Visual Studio.
 
@@ -150,21 +155,21 @@ ms.locfileid: "39202683"
 
 ### <a name="scaffold-the-instructor-model"></a>Формирование шаблона для модели "Instructor" (Преподаватель)
 
-* Закройте Visual Studio.
-* Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
-* Выполните следующую команду:
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+
+Следуйте инструкциям в разделе [Формирование шаблона для модели Student](xref:data/ef-rp/intro#scaffold-the-student-model) и используйте `Instructor` для класса модели.
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
+ Выполните следующую команду:
 
   ```console
   dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
   ```
 
-Предыдущая команда формирует шаблон для модели `Instructor`. Откройте проект в Visual Studio.
+------
 
-Выполните построение проекта. Эта сборка выдает ошибки.
-
-Выполните глобальную замену `_context.Instructor` на `_context.Instructors` (она заключается в добавлении "s" к `Instructor`). Обнаруживаются и изменяются 7 экземпляров.
-
-Запустите приложение и перейдите на страницу преподавателей.
+Предыдущая команда формирует шаблон для модели `Instructor`. Запустите приложение и перейдите на страницу преподавателей.
 
 Замените содержимое *Pages/Instructors/Index.cshtml.cs* на следующий код:
 

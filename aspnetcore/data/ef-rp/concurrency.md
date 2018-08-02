@@ -5,12 +5,12 @@ description: Это руководство описывает, как обраб
 ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: ff9e52df63f9c9f47ee659a68beb28b773a114a1
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: a010e2ed660bea56b112799e850f2fb0ff37579e
+ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202696"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39219398"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Razor Pages с EF Core в ASP.NET Core — параллелизм — 8 из 8
 
@@ -153,24 +153,23 @@ dotnet ef database update
 <a name="scaffold"></a>
 ## <a name="scaffold-the-departments-model"></a>Формирование шаблона для модели кафедр
 
-* Закройте Visual Studio.
-* Откройте окно командной строки в папке проекта (папке, где находятся файлы *Program.cs*, *Startup.cs* и *.csproj* файлов).
-* Выполните следующую команду:
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+
+Следуйте инструкциям в разделе [Формирование шаблона для модели Student](xref:data/ef-rp/intro#scaffold-the-student-model) и используйте `Department` для класса модели.
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
+ Выполните следующую команду:
 
   ```console
   dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries
   ```
 
+------
+
 Предыдущая команда формирует шаблон для модели `Department`. Откройте проект в Visual Studio.
 
-Выполните построение проекта. Эта сборка выдает ошибки, например следующего характера:
-
-`1>Pages/Departments/Index.cshtml.cs(26,37,26,43): error CS1061: 'SchoolContext' does not
- contain a definition for 'Department' and no extension method 'Department' accepting a first
- argument of type 'SchoolContext' could be found (are you missing a using directive or
- an assembly reference?)`
-
- Выполните глобальную замену `_context.Department` на `_context.Departments` (она заключается в добавлении "s" к `Department`). Обнаруживаются и изменяются 7 экземпляров.
+Выполните построение проекта.
 
 ### <a name="update-the-departments-index-page"></a>Изменение страницы индекса кафедр
 

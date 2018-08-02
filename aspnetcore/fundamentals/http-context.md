@@ -4,18 +4,18 @@ author: coderandhiker
 description: Сведения о получении доступа к HttpContext в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/20/2018
+ms.date: 07/27/2018
 uid: fundamentals/httpcontext
-ms.openlocfilehash: b1ff80943db1788b465accd51c70a3c3a3462d5c
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: ee185cd30af51fa6ee9a4d23ea60a56ec1b76c8d
+ms.sourcegitcommit: 506a199274e9fe5fb4070b273ba94f29f14cb619
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202714"
+ms.lasthandoff: 07/28/2018
+ms.locfileid: "39332292"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>Доступ к HttpContext в ASP.NET Core
 
-Приложения ASP.NET Core получают доступ к `HttpContext` через интерфейс [IHttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor) и его реализацию по умолчанию — [HttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.httpcontextaccessor).
+Приложения ASP.NET Core получают доступ к `HttpContext` через интерфейс [IHttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor) и его реализацию по умолчанию — [HttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.httpcontextaccessor). `IHttpContextAccessor` требуется использовать только при необходимости доступа к `HttpContext` внутри службы.
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -36,6 +36,16 @@ public class AboutModel : PageModel
 ```
 
 ::: moniker-end
+
+## <a name="use-httpcontext-from-a-razor-view"></a>Использование HttpContext из представления Razor
+
+Представления Razor предоставляют `HttpContext` непосредственно через свойство [RazorPage.Context](/dotnet/api/microsoft.aspnetcore.mvc.razor.razorpage.context#Microsoft_AspNetCore_Mvc_Razor_RazorPage_Context). В следующем примере имя текущего пользователя в приложении интрасети извлекается с использованием проверки подлинности Windows.
+
+```cshtml
+@{
+    var username = Context.User.Identity.Name;
+}
+```
 
 ## <a name="use-httpcontext-from-a-controller"></a>Использование HttpContext через контроллер
 

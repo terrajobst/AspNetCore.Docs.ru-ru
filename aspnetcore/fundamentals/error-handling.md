@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/05/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: 6aded9525a0abd31dec8441c7fba60d8845c7d93
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: d7e60c0f615841461a17b093bffe5fb3f82f8616
+ms.sourcegitcommit: 506a199274e9fe5fb4070b273ba94f29f14cb619
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938245"
+ms.lasthandoff: 07/28/2018
+ms.locfileid: "39332279"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Обработка ошибок в ASP.NET Core
 
@@ -103,11 +103,11 @@ app.UseStatusCodePages();
 app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
 ```
 
-Имеются также методы расширения для перенаправления и повторного выполнения. Метод перенаправления отправляет клиенту код состояния *302 Found*.
+Имеются также методы расширения для перенаправления и повторного выполнения. Метод перенаправления отправляет клиенту код состояния *302 Найдено* и перенаправляет клиент к указанному шаблону URL-адреса расположения. Шаблон может содержать заполнитель `{0}` для кода состояния. В начало URL-адресов, начинающихся с `~`, добавлен базовый путь. URL-адрес, который не начинается с `~`, используется как есть.
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
 
-Метод повторного выполнения возвращает исходный код состояния клиенту, а также выполняет обработчик для URL-адреса перенаправления:
+Метод повторного выполнения возвращает клиенту исходный код состояния и указывает, что текст ответа должен создаваться путем повторного выполнения конвейера запросов с использованием другого пути. Этот путь может содержать заполнитель `{0}` для кода состояния:
 
 ```csharp
 app.UseStatusCodePagesWithReExecute("/error/{0}");

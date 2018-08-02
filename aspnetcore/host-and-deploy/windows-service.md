@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: e9e10b0bc99b2c54bf342121b1a454be5dac66c6
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: 4fd0cc881eff3b1bbdfdf51e223d0fd42051c31d
+ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938201"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39320743"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -221,8 +221,9 @@ ms.locfileid: "37938201"
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Сценарии использования прокси-сервера и подсистемы балансировки нагрузки
 
-Для служб, которые взаимодействуют с запросами из Интернета или корпоративной сети и размещаются за прокси-сервером или подсистемой балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).
+Для служб, которые взаимодействуют с запросами из Интернета или корпоративной сети и размещаются за прокси-сервером или подсистемой балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения см. в разделе <xref:host-and-deploy/proxy-load-balancer>.
 
-## <a name="kestrel-endpoint-configuration"></a>Конфигурация конечных точек Kestrel
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Сведения о конфигурации конечных точек Kestrel, включая конфигурацию HTTPS и поддержку SNI, см. в разделе [Конфигурация конечных точек Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration).
+* [Конфигурация конечных точек Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) (включает конфигурацию HTTPS и поддержку SNI)
+* <xref:fundamentals/host/web-host>
