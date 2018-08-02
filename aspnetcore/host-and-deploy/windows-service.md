@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 4fd0cc881eff3b1bbdfdf51e223d0fd42051c31d
-ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
+ms.openlocfilehash: 4aded0b87ca14a5c09844cc378efb1ac0c12a289
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39320743"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342160"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -82,7 +82,7 @@ ms.locfileid: "39320743"
 
      ::: moniker-end
 
-1. Опубликуйте приложение. Используйте команду [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) или [профиль публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles).
+1. Опубликуйте приложение. Используйте команду [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) или [профиль публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles). Работая в Visual Studio, выберите **FolderProfile**.
 
    Чтобы опубликовать пример приложения из командной строки, выполните следующую команду в окне консоли из папки проекта:
 
@@ -96,16 +96,19 @@ ms.locfileid: "39320743"
    sc create <SERVICE_NAME> binPath= "<PATH_TO_SERVICE_EXECUTABLE>"
    ```
 
-   Для создания службы, опубликованной в папке проекта, используйте путь к папке *publish*. В следующем примере служба:
+   Для создания службы, опубликованной в папке проекта, используйте путь к папке *publish*. В следующем примере:
 
-   * называется **MyService**;
-   * публикуется в папке *c:\\my_services\\AspNetCoreService\\bin\\Release\\&lt;TARGET_FRAMEWORK&gt;\\publish*;
-   * представлена исполняемым файлом приложения с именем *AspNetCoreService.exe*.
+   * Проект находится в папке `c:\my_services\AspNetCoreService`.
+   * Проект публикуется в конфигурации `Release`.
+   * Моникер целевой платформы (TFM) — `netcoreapp2.1`.
+   * Идентификатор среды выполнения (RID) — `win7-x64`.
+   * Имя исполняемого файла приложения — *AspNetCoreService.exe*.
+   * Служба называется **MyService**.
 
-   Откройте командную оболочку с правами администратора и выполните следующую команду:
+   Пример
 
    ```console
-   sc create MyService binPath= "c:\my_services\AspNetCoreService\bin\Release\<TARGET_FRAMEWORK>\publish\AspNetCoreService.exe"
+   sc create MyService binPath= "c:\my_services\AspNetCoreService\bin\Release\netcoreapp2.1\win7-x64\publish\AspNetCoreService.exe"
    ```
    
    > [!IMPORTANT]
@@ -113,7 +116,7 @@ ms.locfileid: "39320743"
    
    Чтобы опубликовать и запустить службу из другой папки:
    
-   1. Используйте параметр [--output &lt;OUTPUT_DIRECTORY&gt;](/dotnet/core/tools/dotnet-publish#options) команды `dotnet publish`.
+      1. Используйте параметр [--output &lt;OUTPUT_DIRECTORY&gt;](/dotnet/core/tools/dotnet-publish#options) команды `dotnet publish`. Если вы используете Visual Studio, настройте **Целевое расположение** на странице свойств публикации **FolderProfile**, прежде чем нажимать кнопку **Опубликовать**.
    1. Создайте службу с помощью команды `sc.exe`, используя путь к папке выходных данных. Включите имя исполняемого файла службы в путь, передаваемый в `binPath`.
 
 1. Запустите службу с помощью команды `sc start <SERVICE_NAME>`.
