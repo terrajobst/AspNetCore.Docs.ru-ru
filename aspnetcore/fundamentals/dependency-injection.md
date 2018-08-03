@@ -1,205 +1,388 @@
 ---
 title: Внедрение зависимостей в ASP.NET Core
-author: ardalis
+author: guardrex
 description: Сведения о том, как ASP.NET Core реализует внедрение зависимостей и как его использовать.
 ms.author: riande
-ms.custom: H1Hack27Feb2017
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 07/02/2018
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 04c52bd47d34cd2135753c469077b6a75ee02f86
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 861370dc689e2420838f639ea0b1fb8f73927e16
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278457"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342423"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
-<a name="fundamentals-dependency-injection"></a>
+Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith), [Скотт Эдди](https://scottaddie.com) (Scott Addie) и [Люк Латам](https://github.com/guardrex) (Luke Latham)
 
-Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith) и [Скотт Эдди](https://scottaddie.com) (Scott Addie)
+ASP.NET Core поддерживает проектирование программного обеспечения с возможностью внедрения зависимостей. При таком подходе достигается [инверсия управления](https://deviq.com/inversion-of-control/) между классами и их зависимостями.
 
-Среда ASP.NET Core разработана с нуля, чтобы обеспечить поддержку и использование внедрения зависимостей. Приложения ASP.NET Core могут использовать встроенные службы платформы, внедряя их в методы в классе Startup, кроме того, для внедрения можно настроить и службы приложений. Контейнер служб по умолчанию, предоставляемый ASP.NET Core, предлагает минимальный набор возможностей и не предназначен для замены других контейнеров.
+Дополнительные сведения о внедрении зависимостей в контроллерах MVC см. в статье <xref:mvc/controllers/dependency-injection>.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="what-is-dependency-injection"></a>Что такое внедрение зависимостей?
+## <a name="overview-of-dependency-injection"></a>Общие сведения о внедрении зависимостей
 
-Внедрение зависимостей (DI) — это методика для обеспечения слабой связи между объектами и их участниками совместной работы или зависимостями. Вместо того, чтобы напрямую создавать экземпляры участников совместной работы или использовать статические ссылки, объекты, необходимые классу для выполнения действий, предоставляются классу каким-либо образом. Чаще всего классы объявляют зависимости через свой конструктор, позволяя им следовать [принципу явных зависимостей](http://deviq.com/explicit-dependencies-principle/). Подобный подход называется "внедрением через конструктор".
-
-Когда классы создаются с учетом внедрения зависимостей, они слабее связаны, так как не имеют прямых и жестко заданных зависимостей от своих участников совместной работы. Это соответствует [принципу инверсии зависимостей](http://deviq.com/dependency-inversion-principle/), указывающему, что *"высокоуровневые модули не должны зависеть от низкоуровневых; оба этих типа должны зависеть от абстракций"*. Вместо ссылки на определенные реализации классы запрашивают абстракции (обычно `interfaces`), которые предоставляются им при создании класса. Извлечение зависимостей в интерфейсы и предоставление реализаций этих интерфейсов в качестве параметров также является примером [шаблона разработки стратегии](http://deviq.com/strategy-design-pattern/).
-
-Когда система предназначена для использования внедрения зависимостей, то есть множество классов запрашивают зависимости через свой конструктор (или свойства), полезно иметь выделенный класс для создания этих классов с их связанными зависимостями. Такие классы называются *контейнерами*, а если точнее, контейнерами [инверсии управления (IoC)](http://deviq.com/inversion-of-control/) или контейнерами внедрения зависимостей (DI). Контейнер по существу является фабрикой и отвечает за предоставление экземпляров типов, запрашиваемых из него. Если заданный тип объявил, что имеет зависимости, а контейнер настроен для предоставления этих типов зависимостей, он создаст зависимости в рамках создания запрошенного экземпляра. Таким образом, можно предоставить классам сложные графы зависимостей без потребности в создании жестко заданных объектов. Кроме создания объектов с зависимостями, контейнеры обычно управляют временем жизни объектов в приложении.
-
-ASP.NET Core содержит простой встроенный контейнер (представленный интерфейсом `IServiceProvider`), поддерживающий внедрение через конструктор по умолчанию, а ASP.NET предоставляет посредством внедрения зависимостей определенные службы. Контейнер ASP.NET ссылается на управляемые им типы, как на *службы*. В остальной части этой статьи *службами* будут обозначаться типы, которыми управляет контейнер инверсии управления ASP.NET Core. Настроить службы встроенного контейнера можно в методе `ConfigureServices` в классе `Startup` вашего приложения.
-
-> [!NOTE]
-> Мартин Фаулер (Martin Fowler) написал обширную статью о [контейнерах инверсии управления и шаблоне внедрения зависимостей](https://www.martinfowler.com/articles/injection.html). Центр Microsoft Patterns and Practices также содержит хорошее описание [внедрения зависимостей](https://msdn.microsoft.com/library/hh323705.aspx).
-
-> [!NOTE]
-> Эта статья охватывает внедрение зависимостей применительно ко всем приложениям ASP.NET. Внедрение зависимостей в контроллерах MVC рассматривается в статье [Внедрение зависимостей и контроллеры](../mvc/controllers/dependency-injection.md).
-
-### <a name="constructor-injection-behavior"></a>Поведение внедрения через конструктор
-
-Для внедрения через конструктор требуется, чтобы соответствующий конструктор был *открытым*. В противном случае приложение выдает исключение `InvalidOperationException`:
-
-> A suitable constructor for type "YourType" couldn't be located. Ensure the type is concrete and services are registered for all parameters of a public constructor. (Не удалось найти подходящий конструктор для типа "ваш_тип". Убедитесь, что тип является конкретным, а службы зарегистрированы для всех параметров открытого конструктора.)
-
-Для внедрения через конструктор необходимо, чтобы существовал всего один соответствующий конструктор. Перегрузки конструктора поддерживаются, но может существовать всего одна перегрузка, все аргументы которой могут быть обработаны с помощью внедрения зависимостей. При наличии нескольких экземпляров приложение выдает исключение `InvalidOperationException`:
-
-> Multiple constructors accepting all given argument types have been found in type "YourType". There should only be one applicable constructor. (В типе "YourType" найдено несколько конструкторов, принимающих все заданные типы аргументов. Должен присутствовать всего один соответствующий конструктор.)
-
-Конструкторы могут принимать аргументы, предоставленные не внедрением зависимостей, но они должны поддерживать значения по умолчанию. Пример:
+*Зависимость* — это любой объект, который требуется другому объекту. Рассмотрим класс `MyDependency` с методом `WriteMessage`, от которого зависят другие классы в приложении.
 
 ```csharp
-// throws InvalidOperationException: Unable to resolve service for type 'System.String'...
-public CharactersController(ICharacterRepository characterRepository, string title)
+public class MyDependency
 {
-    _characterRepository = characterRepository;
-    _title = title;
-}
+    public MyDependency()
+    {
+    }
 
-// runs without error
-public CharactersController(ICharacterRepository characterRepository, string title = "Characters")
-{
-    _characterRepository = characterRepository;
-    _title = title;
+    public Task WriteMessage(string message)
+    {
+        Console.WriteLine(
+            $"MyDependency.WriteMessage called. Message: {message}");
+
+        return Task.FromResult(0);
+    }
 }
 ```
 
-## <a name="using-framework-provided-services"></a>Использование служб, предоставленных платформой
+::: moniker range=">= aspnetcore-2.1"
 
-Метод `ConfigureServices` в классе `Startup` отвечает за определение служб, которые будет использовать приложение, включая такие возможности платформы, как Entity Framework Core и ASP.NET Core MVC. Изначально `IServiceCollection`, предоставленный `ConfigureServices`, имеет следующие определенные службы (в зависимости от [настройки узла](xref:fundamentals/host/index)):
+Чтобы сделать метод `WriteMessage` доступным какому-то классу, можно создать экземпляр класса `MyDependency`. Класс `MyDependency` выступает зависимостью класса `IndexModel`.
+
+```csharp
+public class IndexModel : PageModel
+{
+    MyDependency _dependency = new MyDependency();
+
+    public async Task OnGetAsync()
+    {
+        await _myDependency.WriteMessage(
+            "IndexModel.OnGetAsync created this message.");
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+Чтобы сделать метод `WriteMessage` доступным какому-то классу, можно создать экземпляр класса `MyDependency`. Класс `MyDependency` выступает зависимостью класса `HomeController`.
+
+```csharp
+public class HomeController : Controller
+{
+    MyDependency _dependency = new MyDependency();
+
+    public async Task<IActionResult> Index()
+    {
+        await _myDependency.WriteMessage(
+            "HomeController.Index created this message.");
+
+        return View();
+    }
+}
+```
+
+::: moniker-end
+
+Этот класс создает экземпляр `MyDependency` и напрямую зависит от него. Зависимости в коде (как в предыдущем примере) представляют собой определенную проблему. Их следует избегать по следующим причинам:
+
+* Чтобы заменить `MyDependency` другой реализацией, класс необходимо изменить.
+* Если у `MyDependency` есть зависимости, их конфигурацию должен выполнять класс. В больших проектах, когда от `MyDependency` зависят многие классы, код конфигурации растягивается по всему приложению.
+* Такая реализация плохо подходит для модульных тестов. В приложении нужно использовать имитацию или заглушку в виде класса `MyDependency`, что при таком подходе невозможно.
+
+Внедрение зависимостей устраняет эти проблемы следующим образом:
+
+* Используется интерфейс для абстрагирования реализации зависимостей.
+* Зависимость регистрируется в контейнере служб. ASP.NET Core предоставляет встроенный контейнер служб, [IServiceProvider](/dotnet/api/system.iserviceprovider). Службы регистрируются в приложении в методе `Startup.ConfigureServices`.
+* Служба *внедряется* в конструктор класса там, где он используется. Платформа берет на себя создание экземпляра зависимости и его удаление, когда он больше не нужен.
+
+В [примере приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) интерфейс `IMyDependency` определяет метод, который служба предоставляет приложению.
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Interfaces/IMyDependency.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Interfaces/IMyDependency.cs?name=snippet1)]
+
+::: moniker-end
+
+Этот интерфейс реализуется конкретным типом, `MyDependency`.
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/MyDependency.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Services/MyDependency.cs?name=snippet1)]
+
+::: moniker-end
+
+`MyDependency` запрашивает [ILogger&lt;TCategoryName&gt;](/dotnet/api/microsoft.extensions.logging.ilogger-1) в своем конструкторе. Использование цепочки внедрений зависимостей не является чем-то необычным. Каждая запрашиваемая зависимость запрашивает собственные зависимости. Контейнер разрешает зависимости в графе и возвращает полностью разрешенную службу. Весь набор зависимостей, которые нужно разрешить, обычно называют *деревом зависимостей*, *графом зависимостей* или *графом объектов*.
+
+`IMyDependency` и `ILogger<TCategoryName>` должны быть зарегистрированы в контейнере служб. `IMyDependency` регистрируется в `Startup.ConfigureServices`. Службу `ILogger<TCategoryName>` регистрирует инфраструктура абстракций ведения журналов, поэтому такая служба является [платформенной](#framework-provided-services), что означает, что ее по умолчанию регистрирует платформа.
+
+В примере приложения служба `IMyDependency` зарегистрирована с конкретным типом `MyDependency`. Регистрация регулирует время существования службы согласно времени существования одного запроса. Подробнее о [времени существования служб](#service-lifetimes) мы поговорим далее в этой статье.
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=11)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
+
+::: moniker-end
+
+> [!NOTE]
+> Каждый метод расширения `services.Add<ServiceName>` добавляет (а потенциально и настраивает) службы. Например, `services.AddMvc()` добавляет службы, которые нужны для Razor Pages и MVC. Рекомендуем придерживаться такого подхода в приложениях. Поместите методы расширения в пространство имен [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection), чтобы инкапсулировать группы зарегистрированных служб.
+
+Если конструктору службы требуется примитив, например `string`, его можно внедрить с помощью [конфигурации](xref:fundamentals/configuration/index) и [шаблона параметров](xref:fundamentals/configuration/options).
+
+```csharp
+public class MyDependency : IMyDependency
+{
+    public MyDependency(IConfiguration config)
+    {
+        var myStringValue = config["MyStringKey"];
+
+        // Use myStringValue
+    }
+
+    ...
+}
+```
+
+Экземпляр службы запрашивается через конструктор класса, в котором эта служба используется и назначается скрытому полю. Поле используется во всем классе для доступа к службе (по мере необходимости).
+
+В примере приложения запрашивается экземпляр `IMyDependency`, который затем используется для вызова метода службы `WriteMessage`.
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3,6,13,29-30)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Controllers/MyDependencyController.cs?name=snippet1&highlight=3,5-8,13-14)]
+
+::: moniker-end
+
+## <a name="framework-provided-services"></a>Платформенные службы
+
+Метод `Startup.ConfigureServices` отвечает за определение служб, которые использует приложение, включая такие компоненты, как Entity Framework Core и ASP.NET Core MVC. Изначально `IServiceCollection`, предоставленный `ConfigureServices`, имеет следующие определенные службы (в зависимости от [настройки узла](xref:fundamentals/host/index)):
 
 | Тип службы | Время существования |
-| ----- | ------- |
-| [Microsoft.AspNetCore.Hosting.IHostingEnvironment](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment) | Одноэлементный |
-| [Microsoft.Extensions.Logging.ILoggerFactory](/dotnet/api/microsoft.extensions.logging.iloggerfactory) | Одноэлементный |
-| [Microsoft.Extensions.Logging.ILogger&lt;T&gt;](/dotnet/api/microsoft.extensions.logging.ilogger) | Одноэлементный |
-| [Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory](/dotnet/api/microsoft.aspnetcore.hosting.builder.iapplicationbuilderfactory) | Временный |
-| [Microsoft.AspNetCore.Http.IHttpContextFactory](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextfactory) | Временный |
-| [Microsoft.Extensions.Options.IOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.ioptions-1) | Одноэлементный |
-| [System.Diagnostics.DiagnosticSource](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticsource) | Одноэлементный |
-| [System.Diagnostics.DiagnosticListener](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticlistener) | Одноэлементный |
-| [Microsoft.AspNetCore.Hosting.IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) | Временный |
-| [Microsoft.Extensions.ObjectPool.ObjectPoolProvider](/dotnet/api/microsoft.extensions.objectpool.objectpoolprovider) | Одноэлементный |
-| [Microsoft.Extensions.Options.IConfigureOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) | Временный |
-| [Microsoft.AspNetCore.Hosting.Server.IServer](/dotnet/api/microsoft.aspnetcore.hosting.server.iserver) | Одноэлементный |
-| [Microsoft.AspNetCore.Hosting.IStartup](/dotnet/api/microsoft.aspnetcore.hosting.istartup) | Одноэлементный |
-| [Microsoft.AspNetCore.Hosting.IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) | Одноэлементный |
+| ------------ | -------- |
+| [Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory](/dotnet/api/microsoft.aspnetcore.hosting.builder.iapplicationbuilderfactory) | Временно |
+| [Microsoft.AspNetCore.Hosting.IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) | Один раз |
+| [Microsoft.AspNetCore.Hosting.IHostingEnvironment](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment) | Один раз |
+| [Microsoft.AspNetCore.Hosting.IStartup](/dotnet/api/microsoft.aspnetcore.hosting.istartup) | Один раз |
+| [Microsoft.AspNetCore.Hosting.IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) | Временно |
+| [Microsoft.AspNetCore.Hosting.Server.IServer](/dotnet/api/microsoft.aspnetcore.hosting.server.iserver) | Один раз |
+| [Microsoft.AspNetCore.Http.IHttpContextFactory](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextfactory) | Временно |
+| [Microsoft.Extensions.Logging.ILogger&lt;T&gt;](/dotnet/api/microsoft.extensions.logging.ilogger) | Один раз |
+| [Microsoft.Extensions.Logging.ILoggerFactory](/dotnet/api/microsoft.extensions.logging.iloggerfactory) | Один раз |
+| [Microsoft.Extensions.ObjectPool.ObjectPoolProvider](/dotnet/api/microsoft.extensions.objectpool.objectpoolprovider) | Один раз |
+| [Microsoft.Extensions.Options.IConfigureOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) | Временно |
+| [Microsoft.Extensions.Options.IOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.ioptions-1) | Один раз |
+| [System.Diagnostics.DiagnosticSource](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticsource) | Один раз |
+| [System.Diagnostics.DiagnosticListener](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticlistener) | Один раз |
 
-Ниже приведен пример того, как добавить дополнительные службы в контейнер с помощью нескольких методов расширения, таких как `AddDbContext`, `AddIdentity` и `AddMvc`.
+Если зарегистрировать службу (включая ее зависимые службы, если нужно) можно, используя метод расширения коллекции служб, для регистрации всех служб, необходимых этой службе, рекомендуется использовать один метод расширения `Add<ServiceName>`. Ниже приведен пример того, как добавить дополнительные службы в контейнер с помощью методов расширения [AddDbContext](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext), [AddIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.addidentity) и [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc).
 
-[!code-csharp[](../common/samples/WebApplication1/Startup.cs?highlight=5-6,8-10,12&range=39-56)]
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-Предоставляемые ASP.NET функции и ПО промежуточного слоя, например MVC, соответствуют соглашению об использовании одного метода расширения Add*имя_службы* для регистрации всех служб, необходимых данному компоненту.
+    services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
 
-> [!TIP]
-> Вы можете запросить определенные предоставляемые платформой службы в методах `Startup` через их списки параметров. Дополнительные сведения см. в разделе [Запуск приложения](startup.md).
+    services.AddMvc();
+}
+```
 
-## <a name="registering-services"></a>Регистрация служб
+Дополнительные сведения см. в документации по API в статье о [классе ServiceCollection](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollection).
 
-Вы можете регистрировать свои службы приложений описанным ниже образом. Первый универсальный тип представляет тип (обычно это интерфейс), который будет запрашиваться из контейнера. Второй универсальный тип представляет конкретный тип, экземпляр которого будет создаваться контейнером и использоваться для выполнения таких запросов.
+## <a name="service-lifetimes"></a>Время существования служб
 
-[!code-csharp[](../common/samples/WebApplication1/Startup.cs?range=53-54)]
+Для каждой зарегистрированной службы выбирайте подходящее время существования. Для служб ASP.NET можно настроить следующие параметры времени существования:
 
-> [!NOTE]
-> Каждый метод расширения `services.Add<ServiceName>` добавляет (а потенциально и настраивает) службы. Например, `services.AddMvc()` добавляет службы, нужные MVC. Рекомендуется следовать этому соглашению и поместить методы расширения в пространство имен `Microsoft.Extensions.DependencyInjection` для инкапсуляции группы регистраций служб.
-
-Метод `AddTransient` используется для сопоставления абстрактных типов с конкретными службами, экземпляры которых создаются отдельно для каждого объекта, который в них нуждается. Это называется *временем существования* службы, а соответствующие дополнительные параметры описаны ниже. Важно выбирать подходящее время существования для каждой из регистрируемых служб. Нужно ли предоставлять новый экземпляр службы каждому классу, который его запрашивает? Нужно ли использовать один экземпляр в рамках всего заданного веб-запроса? Или нужно использовать один экземпляр в течение времени существования приложения?
-
-Пример для этой статьи содержит простой контроллер, который отображает имена символов и называется `CharactersController`. Его метод `Index` отображает текущий список символов, хранящихся в приложении, и инициализирует коллекцию с небольшим количеством символов, если такой список отсутствует. Обратите внимание, что хотя это приложение использует Entity Framework Core и класс `ApplicationDbContext` для обеспечения сохраняемости, в контроллере об этом неизвестно. Вместо этого определенный механизм доступа к данным был абстрагирован за интерфейс `ICharacterRepository`, что соответствует [шаблону репозитория](http://deviq.com/repository-pattern/). Экземпляр `ICharacterRepository` запрашивается через конструктор и назначается частному полю, которое затем используется для доступа к символам по мере необходимости.
-
-[!code-csharp[](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/CharactersController.cs?highlight=3,5,6,7,8,14,21-27&range=8-36)]
-
-`ICharacterRepository` определяет два метода, которые нужны контроллеру для работы с экземплярами `Character`.
-
-[!code-csharp[](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/ICharacterRepository.cs?highlight=8,9)]
-
-Этот интерфейс, в свою очередь, реализуется конкретным типом `CharacterRepository`, используемым во время выполнения.
-
-> [!NOTE]
-> Подход к использованию внедрения зависимостей с классом `CharacterRepository` является общей моделью, которую можно применять для всех служб приложений, а не только в репозиториях или классах доступа к данным.
-
-[!code-csharp[](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Models/CharacterRepository.cs?highlight=9,11,12,13,14)]
-
-Обратите внимание, что `CharacterRepository` запрашивает `ApplicationDbContext` в своем конструкторе. Внедрение зависимостей нередко используется по цепочке, когда каждая запрошенная зависимость запрашивает собственные зависимости. Этот контейнер отвечает за разрешение всех зависимостей на графе и возврат полностью разрешенной службы.
-
-> [!NOTE]
-> Создание запрошенного объекта, всех необходимых ему объектов и всех объектов, необходимых этим объектам, иногда называют *графом объектов*. Аналогичным образом, общий набор зависимостей, которые нужно разрешить, обычно называют *деревом зависимостей* или *графом зависимостей*.
-
-В этом случае как `ICharacterRepository`, так и `ApplicationDbContext` нужно зарегистрировать в контейнере служб в `ConfigureServices` в `Startup`. `ApplicationDbContext` настроен для вызова метода расширения `AddDbContext<T>`. Приведенный ниже пример кода демонстрирует регистрацию типа `CharacterRepository` .
-
-[!code-csharp[](dependency-injection/sample/DependencyInjectionSample/Startup.cs?highlight=3-5,11&range=16-32)]
-
-Контексты Entity Framework нужно добавлять в контейнер служб с использованием времени существования `Scoped`. Это выполняется автоматически, если вы используете вспомогательные методы, как показано выше. Репозитории, которые будут работать с Entity Framework, должны использовать то же время существования.
-
-> [!WARNING]
-> Главной опасностью, о которой следует помнить, является разрешение службы `Scoped` из singleton-класса. В этом случае вполне вероятно, что служба будет иметь неверное состояние при обработке последующих запросов.
-
-Службы, имеющие зависимости, должны зарегистрировать их в контейнере. Если конструктору службы требуется примитив, например `string`, его можно внедрить с помощью [конфигурации](xref:fundamentals/configuration/index) и [шаблона параметров](xref:fundamentals/configuration/options).
-
-## <a name="service-lifetimes-and-registration-options"></a>Время существования службы и параметры регистрации
-
-Для служб ASP.NET можно настроить следующие параметры времени существования:
-
-**Временный**
+**Временная**
 
 Временные службы времени существования создаются при каждом их запросе. Это время существования лучше всего подходит для простых служб без отслеживания состояния.
 
-**Ограниченный областью**
+**Регулируемая**
 
-Службы времени существования с заданной областью создаются один раз для каждого запроса.
+Службы с регулируемым временем существования создаются один раз для одного запроса.
 
 > [!WARNING]
-> При использовании службы с заданной областью в ПО промежуточного слоя внедрите службу в метод `Invoke` или `InvokeAsync`. Не внедряйте службу через внедрение конструктора, поскольку в таком случае служба будет вести себя как одноэлементный объект.
+> При использовании такой службы в ПО промежуточного слоя внедрите ее в метод `Invoke` или `InvokeAsync`. Не внедряйте службу через внедрение конструктора, поскольку в таком случае служба будет вести себя как одноэлементный объект. Дополнительные сведения см. в разделе <xref:fundamentals/middleware/index>.
 
-**Одноэлементные**
+**Одинарная**
 
-Одноэлементные службы времени существования создаются при первом их запросе (или при запуске `ConfigureServices`, если вы указываете экземпляр там), после чего каждый последующий запрос использует тот же самый экземпляр. Если приложению требуется одноэлементное поведение, рекомендуется разрешить контейнеру служб управлять временем существования службы вместо того, чтобы реализовывать одноэлементный шаблон разработки и самостоятельно управлять временем существования объекта в классе.
+Одинарные службы создаются при первом запросе (или при выполнении `ConfigureServices`, когда экземпляр указан во время регистрации службы) и существуют в единственном экземпляре. Созданный экземпляр используют все последующие запросы. Если в приложении нужно использовать одинарные службы, рекомендуется разрешить контейнеру служб управлять временем их существования. Реализовывать конструктивный шаблон с одинарными службами и предоставлять пользовательский код для управления временем существования объекта в классе категорически не рекомендуется.
 
-Службы можно регистрировать в контейнере несколькими способами. Мы уже рассмотрели, как зарегистрировать реализацию службы заданного типа, указав используемый конкретный тип. Кроме того, можно задать фабрику, которая затем будет использоваться для создания экземпляра по запросу. Третий способ заключается в том, чтобы напрямую указать используемый экземпляр типа. В этом случае контейнер никогда не будет пытаться создать экземпляр (и не будет удалять его).
+> [!WARNING]
+> Разрешать регулируемую службу из одиночной нельзя. При обработке последующих запросов это может вызвать неправильное состояние службы.
 
-Чтобы продемонстрировать различия между указанными вариантами времени существования и регистрации, рассмотрим простой интерфейс, представляющий одну или несколько задач в виде *операции* с уникальным идентификатором `OperationId`. В зависимости от того, как настроено время существования для этой службы, контейнер предоставляет запрашивающему классу одинаковые или разные экземпляры службы. Чтобы уточнить, какое время существования запрашивается, мы создадим по одному типу на каждый вариант времени существования:
+### <a name="constructor-injection-behavior"></a>Поведение при внедрении через конструктор
 
-[!code-csharp[](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/IOperation.cs?highlight=5-8)]
+Службы можно разрешать двумя методами:
 
-Мы реализуем эти интерфейсы с помощью одного класса — `Operation`, который принимает `Guid` в своем конструкторе или использует новый `Guid`, если он не указан.
+* `IServiceProvider`
+* [ActivatorUtilities.](/dotnet/api/microsoft.extensions.dependencyinjection.activatorutilities) Позволяет создавать объекты без регистрации службы в контейнере внедрения зависимостей. `ActivatorUtilities` используется с абстракциями пользовательского уровня, например с вспомогательными функциями для тегов, контроллерами MVC, концентраторами SignalR и связывателями моделей.
 
-Затем в `ConfigureServices` каждый тип добавляется в контейнер согласно его времени существования:
+Конструкторы могут принимать аргументы, которые не предоставляются внедрением зависимостей, но эти аргументы должны назначать значения по умолчанию.
 
-[!code-csharp[](dependency-injection/sample/DependencyInjectionSample/Startup.cs?range=26-32)]
+Когда разрешение служб выполняется через `IServiceProvider` или `ActivatorUtilities`, для внедрения через конструктор требуется *открытый* конструктор.
 
-Обратите внимание, что служба `IOperationSingletonInstance` использует определенный экземпляр с известным идентификатором `Guid.Empty`, что позволяет четко определить, когда этот тип используется (его GUID будет состоять из одних нулей). Мы также зарегистрировали `OperationService`, зависящий от каждого из других типов `Operation`, чтобы внутри запроса для каждого типа операции было очевидно, получает ли служба тот же или новый экземпляр контроллера. Эта служба лишь предоставляет свои зависимости в виде свойств, чтобы их можно было отобразить в представлении.
+Когда разрешение служб выполняется через `ActivatorUtilities`, для внедрения через конструктор требуется наличие только одного соответствующего конструктора. Перегрузки конструктора поддерживаются, но может существовать всего одна перегрузка, все аргументы которой могут быть обработаны с помощью внедрения зависимостей.
 
-[!code-csharp[](dependency-injection/sample/DependencyInjectionSample/Services/OperationService.cs)]
+## <a name="entity-framework-contexts"></a>Контексты Entity Framework
 
-Чтобы продемонстрировать время существования объектов внутри отдельных запросов, направляемых в приложение, и между ними, пример включает `OperationsController`, который запрашивает каждый из типов `IOperation`, а также `OperationService`. Действие `Index` отображает все значения `OperationId` контроллера и службы.
+Контексты Entity Framework нужно добавлять в контейнер служб с использованием регулируемого времени существования. Это делается автоматически с помощью вызова метода [AddDbContext](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) при регистрации контекста базы данных. Службы, использующие контекст базы данных, также должны иметь регулируемое время существования.
 
-[!code-csharp[](dependency-injection/sample/DependencyInjectionSample/Controllers/OperationsController.cs)]
+## <a name="lifetime-and-registration-options"></a>Параметры времени существования и регистрации
 
-Теперь для этого действия контроллера выполняются два отдельных запроса:
+Чтобы продемонстрировать различия между указанными вариантами времени существования и регистрации, рассмотрим интерфейсы, представляющие задачи в виде операции с уникальным идентификатором `OperationId`. В зависимости от того, как время существования службы операции настроено для этих интерфейсов, при запросе из класса контейнер предоставляет тот же или другой экземпляр службы.
 
-![Представление операций для веб-приложения примера внедрения зависимостей, запущенного в Microsoft Edge, где отображаются значения идентификаторов (GUID) для временных, ограниченных по области, одноэлементных и относящихся к экземпляру операций контроллера и службы операций при первом запросе.](dependency-injection/_static/lifetimes_request1.png)
+::: moniker range=">= aspnetcore-2.1"
 
-![Представление операций, показывающее идентификаторы операций для второго запроса.](dependency-injection/_static/lifetimes_request2.png)
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Interfaces/IOperation.cs?name=snippet1)]
 
-Обратите внимание, какие значения `OperationId` изменяются внутри запроса, а также между запросами.
+::: moniker-end
 
-* *Временные* объекты всегда различаются — для каждого контроллера и каждой службы предоставляется новый экземпляр.
+::: moniker range="<= aspnetcore-2.0"
 
-* *Ограниченные по области* объекты одинаковы в рамках запроса, но различаются для разных запросов.
+[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Interfaces/IOperation.cs?name=snippet1)]
 
-* *Одноэлементные* объекты одинаковы для всех объектов и запросов (независимо от того, предоставляется ли экземпляр в `ConfigureServices`).
+::: moniker-end
 
-## <a name="resolve-a-scoped-service-within-the-application-scope"></a>Разрешение службы с заданной областью в области приложения
+Интерфейсы реализованы в классе `Operation`. Если идентификатор GUID не предоставлен, конструктор `Operation` создает его.
 
-Создайте [IServiceScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescope) с [IServiceScopeFactory.CreateScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescopefactory.createscope) для разрешения службы с заданной областью в области приложения. Этот способ позволит получить доступ к службе с заданной областью при запуске для выполнения задач по инициализации. В следующем примере показано, как получить контекст для `MyScopedService` в `Program.Main`:
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Models/Operation.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Models/Operation.cs?name=snippet1)]
+
+::: moniker-end
+
+Регистрируется служба `OperationService`, которая зависит от каждого из других типов `Operation`. Когда служба `OperationService` запрашивается через внедрение зависимостей, она получает либо новый экземпляр каждой службы, либо экземпляр уже существующей службы в зависимости от времени существования зависимой службы.
+
+* Если при запросе создаются временные службы, `OperationsId` службы `IOperationTransient` отличается от `OperationsId` службы `OperationService`. `OperationService` получает новый экземпляр класса `IOperationTransient`. Новый экземпляр возвращает другой идентификатор `OperationsId`.
+* Если при запросе создаются регулируемые службы, идентификатор `OperationsId` службы `IOperationScoped` будет таким же, как для службы `OperationService` в запросе. В разных запросах обе службы используют разные значения `OperationsId`.
+* Если одинарные службы и службы с одинарным экземпляром создаются один раз и используются во всех запросах и службах, идентификатор `OperationsId` будет одинаковым во всех запросах служб.
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/OperationService.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Services/OperationService.cs?name=snippet1)]
+
+::: moniker-end
+
+В `Startup.ConfigureServices` каждый тип добавляется в контейнер согласно его времени существования.
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=12-15,18)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=6-9,12)]
+
+::: moniker-end
+
+Служба `IOperationSingletonInstance` использует определенный экземпляр с известным идентификатором `Guid.Empty`. Понятно, когда этот тип используется (его GUID — все нули).
+
+::: moniker range=">= aspnetcore-2.1"
+
+В примере приложения показано время существования объектов в пределах одного и нескольких запросов. В примере приложения `IndexModel` запрашивает каждый вид типа `IOperation`, а также `OperationService`. После этого на странице отображаются все значения `OperationId` службы и класса модели страниц в виде назначенных свойств.
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=7-11,14-18,21-25)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+В примере приложения показано время существования объектов в пределах одного и нескольких запросов. Образец приложения содержит контроллер `OperationsController`, который запрашивает каждый вид типа `IOperation`, а также `OperationService`. Чтобы отобразить значения `OperationId` службы, действие `Index` помещает службы в `ViewBag`.
+
+[!code-csharp[](dependency-injection/samples/1.x/DependencyInjectionSample/Controllers/OperationsController.cs?name=snippet1)]
+
+::: moniker-end
+
+Результаты двух запросов будут выглядеть так:
+
+**Первый запрос**
+
+Операции контроллера:
+
+Transient: d233e165-f417-469b-a866-1cf1935d2518  
+Scoped: 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
+Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance: 00000000-0000-0000-0000-000000000000
+
+Операции `OperationService`:
+
+Transient: c6b049eb-1318-4e31-90f1-eb2dd849ff64  
+Scoped: 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
+Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance: 00000000-0000-0000-0000-000000000000
+
+**Второй запрос**
+
+Операции контроллера:
+
+Transient: b63bd538-0a37-4ff1-90ba-081c5138dda0  
+Scoped: 31e820c5-4834-4d22-83fc-a60118acb9f4  
+Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance: 00000000-0000-0000-0000-000000000000
+
+Операции `OperationService`:
+
+Transient: c4cbacb8-36a2-436d-81c8-8c1b78808aaf  
+Scoped: 31e820c5-4834-4d22-83fc-a60118acb9f4  
+Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance: 00000000-0000-0000-0000-000000000000
+
+Проанализируйте, какие значения `OperationId` изменяются в пределах одного и нескольких запросов.
+
+* *Временные* объекты всегда разные. Обратите внимание, что временное значение `OperationId` отличается в первом и втором запросе, а также в обеих операциях `OperationService`. Каждой службе и каждому запросу предоставляется новый экземпляр.
+* *Регулируемые* объекты остаются неизменными в пределах одного запроса, но в разных запросах используются разные объекты.
+* *Одинарные* объекты остаются неизменными для всех объектов и запросов независимо от того, предоставляется ли в `ConfigureServices` экземпляр `Operation`.
+
+## <a name="call-services-from-main"></a>Вызов служб из функции main
+
+Создайте [IServiceScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescope) с [IServiceScopeFactory.CreateScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescopefactory.createscope) для разрешения регулируемой службы в области приложения. Этот способ позволит получить доступ к регулируемой службе при запуске для выполнения задач по инициализации. В следующем примере показано, как получить контекст для `MyScopedService` в `Program.Main`:
 
 ```csharp
 public static void Main(string[] args)
 {
-    var host = BuildWebHost(args);
+    var host = CreateWebHostBuilder(args).Build();
 
     using (var serviceScope = host.Services.CreateScope())
     {
@@ -221,48 +404,52 @@ public static void Main(string[] args)
 }
 ```
 
-## <a name="scope-validation"></a>Проверка области
+## <a name="scope-validation"></a>Проверка регулировки
 
-Когда приложение выполняется в среде разработки в ASP.NET Core 2.0 или более поздней версии, поставщик службы по умолчанию проверяет, что:
+::: moniker range=">= aspnetcore-2.0"
 
-* Службы с заданной областью не разрешаются из корневого поставщика службы, прямо или косвенно.
-* Службы с заданной областью не вводятся в одноэлементные объекты, прямо или косвенно.
+Когда приложение выполняется в среде разработки, поставщик службы по умолчанию проверяет следующее:
+
+* Регулируемые службы не разрешаются из корневого поставщика службы ни прямо, ни косвенно.
+* Регулируемые службы не внедряются в одинарные объекты ни прямо, ни косвенно.
+
+::: moniker-end
 
 Корневой поставщик службы создается при вызове [BuildServiceProvider](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectioncontainerbuilderextensions.buildserviceprovider). Время существования корневого поставщика службы соответствует времени существования приложения или сервера — поставщик запускается с приложением и удаляется, когда приложение завершает работу.
 
-Службы с заданной областью удаляются создавшим их контейнером. Если служба с заданной областью создается в корневом контейнере, время существования службы повышается до уровня одноэлементного объекта, поскольку она удаляется только корневым контейнером при завершении работы приложения или сервера. Проверка областей службы перехватывает эти ситуации при вызове `BuildServiceProvider`.
+Регулируемые службы удаляются создавшим их контейнером. Если регулируемая служба создается в корневом контейнере, время существования службы повышается до уровня одинарного объекта, поскольку она удаляется только корневым контейнером при завершении работы приложения или сервера. Проверка регулировки службы перехватывает эти ситуации при вызове `BuildServiceProvider`.
 
-Дополнительные сведения см. в разделе ["Проверка области" статьи "Веб-узел ASP.NET Core"](xref:fundamentals/host/web-host#scope-validation).
+Дополнительные сведения см. в разделе <xref:fundamentals/host/web-host#scope-validation>.
 
 ## <a name="request-services"></a>Службы запросов
 
-Службы, доступные в запросе ASP.NET из `HttpContext`, предоставляются посредством коллекции `RequestServices`.
+Службы, доступные в пределах запроса ASP.NET Core из `HttpContext`, предоставляются через коллекцию [HttpContext.RequestServices](/dotnet/api/microsoft.aspnetcore.http.httpcontext.requestservices).
 
-![Контекстное диалоговое окно Intellisense для службы запросов HttpContext, сообщающее, что служба запросов возвращает или задает IServiceProvider, предоставляющий доступ к контейнеру службы для запроса.](dependency-injection/_static/request-services.png)
+Службы запросов — это все настроенные и запрашиваемые в приложении службы. Когда объекты указывают зависимости, они удовлетворяются за счет типов из `RequestServices`, а не из `ApplicationServices`.
 
-Службы запросов представляют службы, которые вы настраиваете и запрашиваете в рамках своего приложения. Когда ваши объекты задают зависимости, они удовлетворяются за счет типов из `RequestServices`, а не `ApplicationServices`.
-
-Как правило, не следует использовать эти свойства напрямую, лучше запросить нужные вашим классам типы через конструктор класса и позволить платформе внедрить эти зависимости. Полученные таким образом классы более удобны для тестирования (см. раздел [Тестирование и отладка](xref:test/index)) и слабее связаны.
+Как правило, использовать эти свойства в приложении напрямую не следует. Вместо этого запрашивайте требуемые для классов типы через конструкторы классов и разрешите платформе внедрять зависимости. Таким образом вы получите классы, которые легче тестировать (см. статью [Тестирование, отладка и устранение неполадок в ASP.NET Core](xref:test/index)).
 
 > [!NOTE]
 > Предпочтительнее запрашивать зависимости в качестве параметров конструктора, а не обращаться к коллекции `RequestServices`.
 
-## <a name="designing-services-for-dependency-injection"></a>Разработка служб для внедрения зависимостей
+## <a name="design-services-for-dependency-injection"></a>Проектирование служб для внедрения зависимостей
 
-Службы следует разрабатывать таким образом, чтобы они использовали внедрение зависимостей для получения своих участников совместной работы. Это означает отказ от использования вызовов статических методов с отслеживанием состояния (что приводит к проблемам с кодом, называемым [статическим слипанием](http://deviq.com/static-cling/)) и прямого создания экземпляров зависимых классов внутри служб. Принимая решение о том, следует ли создать экземпляр типа или запросить его через внедрение зависимостей, рекомендуется руководствоваться принципами, изложенными в статье о [связующем слове new](https://ardalis.com/new-is-glue). Соблюдение [принципов SOLID для объектно-ориентированного программирования](http://deviq.com/solid/) поможет сделать ваши классы небольшими, хорошо организованными и удобными в тестировании.
+Придерживайтесь следующих рекомендаций:
 
-Что делать, если классы склонны использовать слишком много внедряемых зависимостей? Обычно это указывает на то, что класс пытается сделать слишком многое и, вероятно, нарушает [принцип единственной обязанности](http://deviq.com/single-responsibility-principle/). Определите, можно ли выполнить рефакторинг класса, переместив некоторые из его обязанностей в новый класс. Помните, что ваши классы `Controller` должны быть посвящены аспектам пользовательского интерфейса, а за реализацию бизнес-правил и доступа к данным должны отвечать [отдельные](http://deviq.com/separation-of-concerns/) классы.
+* Проектируйте службы так, чтобы для получения зависимостей они использовали внедрение зависимостей.
+* Избегайте вызовов статических методов или методов с отслеживанием состояния ([статическое сцепление](https://deviq.com/static-cling/)).
+* Избегайте прямого создания экземпляров зависимых классов внутри служб. Прямое создание экземпляров обязывает использовать в коде определенную реализацию.
 
-Например, для доступа к данным можно внедрить `DbContext` в свои контроллеры (при условии, что вы добавили Entity Framework в контейнер служб в `ConfigureServices`). Некоторые разработчики предпочитают использовать интерфейс репозитория для базы данных, вместо того, чтобы внедрять `DbContext` напрямую. Использование интерфейса для инкапсуляции логики доступа к данным в одном месте позволяет минимизировать число изменений, необходимых при изменении базы данных.
+Соблюдение [принципов SOLID для объектно-ориентированного проектирования](https://deviq.com/solid/) поможет сделать программные классы небольшими, хорошо организованными и удобными в тестировании.
 
-### <a name="disposing-of-services"></a>Удаление служб
+Если класс имеет слишком много внедренных зависимостей, обычно это указывает на то, что у класса слишком много задач и он не соответствует [принципу единственной обязанности](https://deviq.com/single-responsibility-principle/). Попробуйте выполнить рефакторинг класса и перенести часть его обязанностей в новый класс. Помните, что в классах модели страниц Razor Pages и классах контроллера MVC должны преимущественно выполняться задачи, связанные с пользовательским интерфейсом. Бизнес-правила и реализация доступа к данным должны обрабатываться в классах, которые предназначены для [этих целей](https://deviq.com/separation-of-concerns/).
 
-Контейнер будет вызывать `Dispose` для создаваемых им типов `IDisposable`. Но если вы самостоятельно добавите экземпляр в контейнер, он не будет удален.
+### <a name="disposal-of-services"></a>Удаление служб
 
-Пример
+Контейнер вызывает `Dispose` для создаваемых им типов `IDisposable`. Если экземпляр добавлен в контейнер с помощью пользовательского кода, он не будет удален автоматически.
 
 ```csharp
-// Services implement IDisposable:
+// Services that implement IDisposable:
 public class Service1 : IDisposable {}
 public class Service2 : IDisposable {}
 public class Service3 : IDisposable {}
@@ -270,97 +457,102 @@ public class Service3 : IDisposable {}
 public interface ISomeService {}
 public class SomeServiceImplementation : ISomeService, IDisposable {}
 
-
 public void ConfigureServices(IServiceCollection services)
 {
-    // container will create the instance(s) of these types and will dispose them
+    // The container creates the following instances and disposes them automatically:
     services.AddScoped<Service1>();
     services.AddSingleton<Service2>();
     services.AddSingleton<ISomeService>(sp => new SomeServiceImplementation());
 
-    // container didn't create instance so it will NOT dispose it
+    // The container doesn't create the following instances, so it doesn't dispose of
+    // the instances automatically:
     services.AddSingleton<Service3>(new Service3());
     services.AddSingleton(new Service3());
 }
 ```
 
-> [!NOTE]
-> В версии 1.0 контейнер вызывал удаление для *всех* объектов `IDisposable`, включая те, которые он не создавал.
-
-## <a name="replacing-the-default-services-container"></a>Замена контейнера служб по умолчанию
-
-Встроенный контейнер служб предназначен для удовлетворения базовых потребностей платформы и большинства основанных на ней клиентских приложений. Однако разработчики могут заменить его на предпочитаемый ими контейнер. Метод `ConfigureServices` обычно возвращает `void`, но если его сигнатура изменена для возврата `IServiceProvider`, можно настроить и возвращать другой контейнер. Для платформы .NET доступно множество контейнеров инверсии управления. В этом примере используется пакет [Autofac](https://autofac.org/).
-
-Сначала установите пакеты соответствующего контейнера:
-
-* `Autofac`
-* `Autofac.Extensions.DependencyInjection`
-
-Затем настройте контейнер в `ConfigureServices` и возвратите `IServiceProvider`:
-
-```csharp
-public IServiceProvider ConfigureServices(IServiceCollection services)
-{
-    services.AddMvc();
-    // Add other framework services
-
-    // Add Autofac
-    var containerBuilder = new ContainerBuilder();
-    containerBuilder.RegisterModule<DefaultModule>();
-    containerBuilder.Populate(services);
-    var container = containerBuilder.Build();
-    return new AutofacServiceProvider(container);
-}
-```
+::: moniker range="= aspnetcore-1.0"
 
 > [!NOTE]
-> При использовании стороннего контейнера внедрения зависимостей нужно изменить `ConfigureServices`, чтобы он возвращал `IServiceProvider` вместо `void`.
+> В ASP.NET Core 1.0 контейнер вызывает удаление для *всех* объектов `IDisposable`, включая те, которые он не создавал.
 
-Наконец, настройте Autofac в `DefaultModule` обычным образом:
+::: moniker-end
 
-```csharp
-public class DefaultModule : Module
-{
-    protected override void Load(ContainerBuilder builder)
+## <a name="default-service-container-replacement"></a>Замена стандартного контейнера служб
+
+Встроенный контейнер служб предназначен для удовлетворения базовых потребностей платформы и большинства основанных на ней клиентских приложений. Однако разработчики могут заменить его на предпочитаемый ими контейнер. Метод `Startup.ConfigureServices` обычно возвращает `void`. Если его сигнатуру изменить так, чтобы он возвращал [IServiceProvider](/dotnet/api/system.iserviceprovider), вы сможете настроить и возвращать другой контейнер. Для .NET доступно множество контейнеров с инверсией управления. В следующем примере используется контейнер [Autofac](https://autofac.org/):
+
+1. Установите соответствующие пакеты контейнера:
+
+    * [Autofac](https://www.nuget.org/packages/Autofac/);
+    * [Autofac.Extensions.DependencyInjection](https://www.nuget.org/packages/Autofac.Extensions.DependencyInjection/).
+
+2. Настройте контейнер в `Startup.ConfigureServices` и возвратите `IServiceProvider`.
+
+    ```csharp
+    public IServiceProvider ConfigureServices(IServiceCollection services)
     {
-        builder.RegisterType<CharacterRepository>().As<ICharacterRepository>();
-    }
-}
-```
+        services.AddMvc();
+        // Add other framework services
 
-Во время выполнения Autofac будет использоваться для разрешения типов и внедрения зависимостей. [Дополнительные сведения об использовании Autofac и ASP.NET Core](http://docs.autofac.org/en/latest/integration/aspnetcore.html).
+        // Add Autofac
+        var containerBuilder = new ContainerBuilder();
+        containerBuilder.RegisterModule<DefaultModule>();
+        containerBuilder.Populate(services);
+        var container = containerBuilder.Build();
+        return new AutofacServiceProvider(container);
+    }
+    ```
+
+    Чтобы использовать сторонний контейнер, метод `Startup.ConfigureServices` должен возвращать `IServiceProvider`.
+
+3. Настройте Autofac в `DefaultModule`.
+
+    ```csharp
+    public class DefaultModule : Module
+    {
+        protected override void Load(ContainerBuilder builder)
+        {
+            builder.RegisterType<CharacterRepository>().As<ICharacterRepository>();
+        }
+    }
+    ```
+
+В среде выполнения Autofac используется для разрешения типов и внедрения зависимостей. Дополнительные сведения об использовании Autofac с ASP.NET Core см. в [документации по Autofac](https://docs.autofac.org/en/latest/integration/aspnetcore.html).
 
 ### <a name="thread-safety"></a>Потокобезопасность
 
-Одноэлементные службы должны быть потокобезопасными. Если одноэлементная служба имеет зависимость от временной службы, с учетом характера использования одноэлементной службой к этой временной службе также может предъявляться требование потокобезопасности.
+Одинарные службы должны быть потокобезопасными. Если одинарная служба имеет зависимость от временной службы, с учетом характера использования одинарной службой к этой временной службе также может предъявляться требование потокобезопасности.
+
+Фабричный метод одной службы, например второй аргумент для [AddSingleton&lt;TService&gt;(IServiceCollection, Func&lt;IServiceProvider,TService&gt;)](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions.addsingleton#Microsoft_Extensions_DependencyInjection_ServiceCollectionServiceExtensions_AddSingleton__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Func_System_IServiceProvider___0__), не обязательно должен быть потокобезопасным. Как и конструктор типов (`static`), он гарантированно будет вызываться один раз одним потоком.
 
 ## <a name="recommendations"></a>Рекомендации
 
 При работе с внедрением зависимостей соблюдайте следующие рекомендации:
 
-* Внедрение зависимостей предназначено для объектов, имеющих сложные зависимости. Контроллеры, службы, адаптеры и репозитории являются примерами объектов, которые можно добавить в функцию внедрения зависимостей.
+* Не храните данные и конфигурацию непосредственно в контейнере служб. Например, обычно не следует добавлять корзину пользователя в контейнер служб. Конфигурация должна использовать [шаблон параметров](xref:fundamentals/configuration/options). Аналогичным образом, избегайте объектов "хранения данных", которые служат лишь для доступа к некоторому другому объекту. По возможности лучше запросить фактический элемент через внедрение зависимостей.
 
-* Не храните данные и конфигурации непосредственно в функции внедрения зависимостей. Например, в общем случае не следует добавлять корзину пользователя в контейнер служб. Конфигурация должна использовать [шаблон параметров](xref:fundamentals/configuration/options). Аналогичным образом, избегайте объектов "хранения данных", которые служат лишь для доступа к некоторому другому объекту. По возможности лучше запросить фактический необходимый элемент через внедрение зависимостей.
+* Не используйте статический доступ к службам (например, не используйте везде [IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices)).
 
-* Избегайте статического доступа к службам.
+* Не используйте шаблон обнаружения службы (например, [IServiceProvider.GetService](/dotnet/api/system.iserviceprovider.getservice)).
 
-* Избегайте обнаружения службы в коде приложения.
+* Не используйте статический доступ к `HttpContext` (например, [IHttpContextAccessor.HttpContext](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor.httpcontext)).
 
-* Избегайте статического доступа к `HttpContext`.
-
-Как в случае с любыми наборами рекомендаций, могут возникнуть ситуации, когда нужно отступить от одного из правил. Мы пришли к выводу, что подобные исключения довольно редки и нужны в особых случаях, главным образом внутри самой платформы.
+Как и с любыми рекомендациями, у вас могут возникнуть ситуации, когда нужно отступить от одного из правил. Такие исключения случаются редко. Главным образом они связаны с особенностями самой платформы.
 
 Внедрение зависимостей является *альтернативой* для шаблонов доступа к статическим или глобальным объектам. Вы не сможете воспользоваться преимуществами внедрения зависимостей, если будете сочетать его с доступом к статическим объектам.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Внедрение зависимостей в представления](xref:mvc/views/dependency-injection)
-* [Внедрение зависимостей в контроллеры](xref:mvc/controllers/dependency-injection)
-* [Внедрение зависимостей в обработчики требований](xref:security/authorization/dependencyinjection)
-* [Запуск приложения](xref:fundamentals/startup)
-* [Тестирование и отладка](xref:test/index)
-* [Активация фабричного ПО промежуточного слоя](xref:fundamentals/middleware/extensibility)
+* <xref:mvc/views/dependency-injection>
+* <xref:mvc/controllers/dependency-injection>
+* <xref:security/authorization/dependencyinjection>
+* <xref:fundamentals/repository-pattern>
+* <xref:fundamentals/startup>
+* <xref:test/index>
+* <xref:fundamentals/middleware/extensibility>
 * [Написание чистого кода в ASP.NET Core с внедрением зависимостей (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
 * [Проектирование приложения на основе контейнеров. Вступление. К чему относится контейнер?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/)
-* [Принцип явных зависимостей](http://deviq.com/explicit-dependencies-principle/)
-* [Контейнеры инверсии управления и шаблон внедрения зависимостей](https://www.martinfowler.com/articles/injection.html) (Фаулер)
+* [Принцип явных зависимостей](https://deviq.com/explicit-dependencies-principle/)
+* [Контейнеры с инверсией управления и шаблон внедрения зависимостей (Мартин Фаулер)](https://www.martinfowler.com/articles/injection.html)
+* [Ключевое слово New — связующий элемент (связывание кода с определенной реализацией)](https://ardalis.com/new-is-glue)

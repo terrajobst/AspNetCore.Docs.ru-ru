@@ -5,12 +5,12 @@ description: Узнайте, как контроллеры MVC ASP.NET Core яв
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 23c91a4363223a135c50ceca51e6af22ed69fe3b
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 9dec9807e8fc2883144b2da518f36a7eb8ddc871
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276455"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342137"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>Внедрение зависимостей в контроллеры в ASP.NET Core
 
@@ -74,7 +74,7 @@ InvalidOperationException: Multiple constructors accepting all given argument ty
 Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstructor(Type instanceType, Type[] argumentTypes, ConstructorInfo& matchingConstructor, Nullable`1[]& parameterMap)
 ```
 
-Как сказано в сообщении об ошибке, вы можете устранить эту проблему, используя один конструктор. Вы также можете [заменить поддержку внедрения зависимостей по умолчанию на стороннюю реализацию](../../fundamentals/dependency-injection.md#replacing-the-default-services-container), многие из которых поддерживают несколько конструкторов.
+Как указано в сообщении об ошибке, вы можете устранить эту проблему, используя один конструктор. Вы также можете [заменить контейнер внедрения зависимостей по умолчанию на стороннюю реализацию](xref:fundamentals/dependency-injection#default-service-container-replacement), многие из которых поддерживают несколько конструкторов.
 
 ## <a name="action-injection-with-fromservices"></a>Внедрение действий с помощью FromServices
 
