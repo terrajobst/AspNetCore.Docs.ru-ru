@@ -5,12 +5,12 @@ description: Показано, как требовать HTTPS/TLS, в ASP.NET C
 ms.author: riande
 ms.date: 2/9/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: a4ab91ef23a798c919a23a44f5a050bd3c09d56a
-ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
+ms.openlocfilehash: d8bf11d7d2df8d8b197f001570a8fab1f3262814
+ms.sourcegitcommit: 4e34ce61e1e7f1317102b16012ce0742abf2cca6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39356692"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39514808"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Принудительное использование HTTPS в ASP.NET Core
 
@@ -112,13 +112,15 @@ WebHost.CreateDefaultBuilder(args)
 <a name="hsts"></a>
 ## <a name="http-strict-transport-security-protocol-hsts"></a>Безопасность строгой транспортный протокол HTTP (HSTS)
 
-На [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [HTTP строгой безопасности транспорта (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) представляет собой улучшение центра безопасности, который задается параметром веб-приложения при помощи специального заголовка ответа. При получении этого заголовка поддерживаемый браузер этого браузера предотвратит передачу любых данных отправленных по протоколу HTTP к указанному домену и вместо этого будет отправлять весь обмен данными по протоколу HTTPS. Она также препятствует щелкните HTTPS через запросы в браузерах.
+На [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [HTTP строгой безопасности транспорта (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) представляет собой улучшение центра безопасности, который задается параметром веб-приложения при помощи специального заголовка ответа. Когда браузер, поддерживающий HSTS получает этот заголовок, он сохраняет конфигурацию для домена, который предотвращает отправку любые данные, передаваемые по протоколу HTTP и вместо этого принудительно весь обмен данными по протоколу HTTPS. Он также не позволяет пользователю с помощью недействителен или сертификаты, отключение браузера подсказок, которые позволяют пользователю временно доверять такой сертификат.
 
 ASP.NET Core 2.1 или более поздних версий реализует HSTS с `UseHsts` метода расширения. Следующий код вызывает `UseHsts` когда приложение не [режим разработки](xref:fundamentals/environments):
 
 [!code-csharp[](enforcing-ssl/sample/Startup.cs?name=snippet1&highlight=10)]
 
 `UseHsts` не следует использовать в разработки так, как заголовок HSTS высокой кэширован в браузерах. По умолчанию `UseHsts` исключает локальный петлевой адрес.
+
+Для рабочих сред, реализация HTTPS в первый раз задайте начальное значение HSTS небольшое значение. Задайте значение от часов не больше, чем в один день в случае необходимости использования инфраструктуры HTTPS-HTTP. После вы уверены в устойчивости конфигурации HTTPS, увеличьте значение max-age HSTS; часто используемые значение — один год. 
 
 В приведенном ниже коде
 
