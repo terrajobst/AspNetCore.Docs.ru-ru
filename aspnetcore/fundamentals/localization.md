@@ -5,12 +5,12 @@ description: Сведения о службах и ПО промежуточно
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 9647b605d4b9a23b365085e3677fb0e9b93f0da4
-ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
+ms.openlocfilehash: 87df1b8cf57509ddf80ce845d85a9b3f30673c35
+ms.sourcegitcommit: a25b572eaed21791230c85416f449f66a405ec19
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434017"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39396238"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -29,6 +29,8 @@ ms.locfileid: "37434017"
 2. предоставление локализованных ресурсов для поддерживаемых языков и региональных параметров;
 
 3. реализацию стратегии по выбору языка и региональных параметров для каждого запроса.
+
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="make-the-apps-content-localizable"></a>Обеспечение возможности локализации для содержимого приложения
 

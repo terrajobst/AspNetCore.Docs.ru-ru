@@ -21,32 +21,15 @@
 
 Страницы Razor Pages являются производными от `PageModel`. Как правило, класс, производный от `PageModel`, называется `<PageName>Model`. Используя [внедрение зависимостей](xref:fundamentals/dependency-injection), конструктор добавляет на страницу `MovieContext`. Этому шаблону соответствуют все сформированные страницы. Дополнительные сведения об асинхронном программировании с использованием Entity Framework см. в разделе [Асинхронный код](xref:data/ef-rp/intro#asynchronous-code).
 
-Когда к странице направляется запрос, метод `OnGetAsync` возвращает на страницу Razor список фильмов. На странице Razor вызывается метод `OnGetAsync` или `OnGet`, инициализирующий состояние для страницы. В этом случае `OnGetAsync` возвращает список фильмов для отображения. 
+Когда к странице направляется запрос, метод `OnGetAsync` возвращает на страницу Razor список фильмов. На странице Razor вызывается метод `OnGetAsync` или `OnGet`, инициализирующий состояние для страницы. В этом случае `OnGetAsync` возвращает список фильмов для отображения.
 
 Когда `OnGet` возвращает `void` или `OnGetAsync` возвращает `Task`, возвращаемый метод не используется. Если возвращаемый тип — `IActionResult` или `Task<IActionResult>`, необходимо предоставить оператор return. Например, метод `OnPostAsync` *Pages/Movies/Create.cshtml.cs*:
 
-<!-- TODO - replace with snippet
-[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
- -->
-
-```csharp
-public async Task<IActionResult> OnPostAsync()
-{
-    if (!ModelState.IsValid)
-    {
-        return Page();
-    }
-
-    _context.Movie.Add(Movie);
-    await _context.SaveChangesAsync();
-
-    return RedirectToPage("./Index");
-}
-```
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Pages/Movies/Create.cshtml.cs?name=snippet)]
 
 Изучите страницу Razor *Pages/Movies/Index.cshtml*:
 
-[!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml)]
+[!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml)]
 
 Razor может выполнять переход с HTML на C# или на разметку Razor. Если за символом `@` следует [зарезервированное ключевое слово Razor](xref:mvc/views/razor#razor-reserved-keywords), он переходит на разметку Razor, а если нет, то на C#.
 
@@ -63,7 +46,7 @@ Razor может выполнять переход с HTML на C# или на �
 <a name="md"></a>
 ### <a name="the-model-directive"></a>директиву @model 
 
-[!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-2&highlight=2)]
+[!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-2&highlight=2)]
 
 Директива `@model` определяет тип модели, передаваемой на страницу Razor. В приведенном выше примере строка `@model` делает класс, производный от `PageModel`, доступным для страниц Razor. Модель используется на странице во [вспомогательных методах HTML](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers) `@Html.DisplayNameFor` и `@Html.DisplayName`.
 
@@ -76,7 +59,7 @@ Razor может выполнять переход с HTML на C# или на �
 
 Рассмотрим следующий код.
 
-[!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-6&highlight=4-999)]
+[!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-6&highlight=4-999)]
 
 Выделенный выше код представляет собой пример перехода Razor на C#. Символы `{` и `}` ограничивают блок кода C#.
 
@@ -84,7 +67,7 @@ Razor может выполнять переход с HTML на C# или на �
 
 ::: moniker range="= aspnetcore-2.0"
 
-Свойство "Title" используется в файле *Pages/_Layout.cshtml*. Ниже показаны первые несколько строк файла *Pages/_Layout.cshtml*.
+Свойство "Title" используется в файле *Pages/Shared/_Layout.cshtml*. Ниже показаны первые несколько строк файла *Pages/Shared/_Layout.cshtml*.
 
 ::: moniker-end
 
@@ -94,7 +77,7 @@ Razor может выполнять переход с HTML на C# или на �
 
 ::: moniker-end
 
-[!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/NU/_Layout1.cshtml?highlight=6-999)]
+[!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/NU/_Layout1.cshtml?highlight=6-999)]
 
 Строка `@*Markup removed for brevity.*@` представляет собой комментарий Razor. В отличие от комментариев HTML (`<!-- -->`) комментарии Razor не отправляются клиенту.
 
@@ -105,15 +88,15 @@ Razor может выполнять переход с HTML на C# или на �
 
 Свойство `Layout` определяется в файле *Pages/_ViewStart.cshtml*:
 
-[!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/_ViewStart.cshtml)]
+[!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/_ViewStart.cshtml)]
 
-Представленный выше код задает файл разметки *Pages/_Layout.cshtml* для всех файлов Razor в папке *Pages*. Дополнительные сведения см. в статье о [макете](xref:razor-pages/index#layout).
+Представленный выше код задает файл разметки *Pages/Shared/_Layout.cshtml* для всех файлов Razor в папке *Pages*. Дополнительные сведения см. в статье о [макете](xref:razor-pages/index#layout).
 
 ### <a name="update-the-layout"></a>Обновление макета
 
-Измените элемент `<title>` в файле *Pages/_Layout.cshtml*, чтобы использовать более короткую строку.
+Измените элемент `<title>` в файле *Pages/Shared/_Layout.cshtml*, чтобы использовать более короткую строку.
 
-[!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/_Layout.cshtml?range=1-6&highlight=6)]
+[!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/_Layout.cshtml?range=1-6&highlight=6)]
 
 Найдите следующий элемент привязки в файле *Pages/_Layout.cshtml*.
 
