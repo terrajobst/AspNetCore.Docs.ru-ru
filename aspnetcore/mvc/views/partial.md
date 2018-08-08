@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/06/2018
 uid: mvc/views/partial
-ms.openlocfilehash: 983f3caae34b21b46d8f556e70673cf3c97abbd3
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: 7cb20fc30609adad83cb40e91316da115817f035
+ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938463"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39378687"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Частичные представления в ASP.NET Core
 
 Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith), [Махер Джендуби](https://twitter.com/maherjend) (Maher JENDOUBI), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Скотт Саубер](https://twitter.com/scottsauber) (Scott Sauber)
 
-В ASP.NET Core MVC поддерживаются частичные представления, которые удобны для совместного использования повторяющихся частей на веб-страницах в разных представлениях.
+ASP.NET Core поддерживает частичные представления. Частичные представления позволяют совместно использовать некоторые компоненты веб-страниц в нескольких представлениях.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
@@ -35,8 +35,7 @@ ms.locfileid: "37938463"
 
 На сложной странице, состоящей из нескольких логических частей, удобнее работать с каждой из них как с отдельным частичным представлением. Каждый фрагмент страницы можно просмотреть отдельно от остальной страницы. Представление самой страницы становится проще, так как оно содержит только общую структуру страницы и вызовы для отображения частичных представлений.
 
-> [!TIP]
-> Соблюдайте в представлениях [принцип "не повторяйся"](https://deviq.com/don-t-repeat-yourself/).
+Контроллеры ASP.NET Core MVC поддерживают метод [PartialView](/dotnet/api/microsoft.aspnetcore.mvc.controller.partialview#Microsoft_AspNetCore_Mvc_Controller_PartialView), который вызывается из метода действия. В Razor Pages не реализован метод, эквивалентный `PartialView`.
 
 ## <a name="declare-partial-views"></a>Объявление частичных представлений
 

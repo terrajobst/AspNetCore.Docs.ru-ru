@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 4aded0b87ca14a5c09844cc378efb1ac0c12a289
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: b156cd0755d7918d5f8433fcbe5c870ad04ac13e
+ms.sourcegitcommit: a25b572eaed21791230c85416f449f66a405ec19
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342160"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39396225"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -225,6 +225,10 @@ ms.locfileid: "39342160"
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Сценарии использования прокси-сервера и подсистемы балансировки нагрузки
 
 Для служб, которые взаимодействуют с запросами из Интернета или корпоративной сети и размещаются за прокси-сервером или подсистемой балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения см. в разделе <xref:host-and-deploy/proxy-load-balancer>.
+
+## <a name="configure-https"></a>Настройка HTTPS
+
+Укажите [конфигурацию конечной точки HTTPS для сервера Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

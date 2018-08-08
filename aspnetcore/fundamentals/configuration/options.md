@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
 uid: fundamentals/configuration/options
-ms.openlocfilehash: aa9c490aff873d12c9417e7b611991617207c0d3
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: fd3e55ec821be336501f523550f547f6049c9937
+ms.sourcegitcommit: 4e34ce61e1e7f1317102b16012ce0742abf2cca6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342449"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39514756"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Шаблон параметров в ASP.NET Core
 
@@ -294,10 +294,17 @@ services.PostConfigureAll<MyOptions>("named_options_1", myOptions =>
 
 ## <a name="accessing-options-during-startup"></a>Доступ к параметрам во время запуска
 
-`IOptions` можно использовать в методе `Configure`, так как службы создаются до выполнения метода `Configure`. Если в `ConfigureServices` создается поставщик службы для доступа к параметрам, он не будет содержать конфигурации параметров, предоставленные после его создания. Поэтому из-за очередности регистрации служб состояние параметров может быть несогласованным.
+`IOptions` можно использовать в методе `Startup.Configure`, так как службы создаются до выполнения метода `Configure`.
 
-Так как параметры, как правило, загружаются из конфигурации, конфигурация может использоваться при запуске как в `Configure`, так и в `ConfigureServices`. Примеры использования конфигурации во время запуска см. в статье [Запуск приложения](xref:fundamentals/startup).
+```csharp
+public void Configure(IApplicationBuilder app, IOptions<MyOptions> optionsAccessor)
+{
+    var option1 = optionsAccessor.Value.Option1;
+}
+```
 
-## <a name="see-also"></a>См. также
+`IOptions` не следует использовать в `Startup.ConfigureServices`. Из-за очередности регистрации служб состояние параметров может быть несогласованным.
 
-* [Конфигурация](xref:fundamentals/configuration/index)
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* <xref:fundamentals/configuration/index>

@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
 uid: fundamentals/startup
-ms.openlocfilehash: 285d74c0d12e3aca4d8c33d39467dfda02712993
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: a576f3840e66fc4ed877f7575aa3f3e36b37ae4d
+ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063264"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39356754"
 ---
 # <a name="application-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
@@ -30,14 +30,17 @@ ms.locfileid: "39063264"
 
 [!code-csharp[](startup/snapshot_sample/Startup1.cs)]
 
-Укажите класс `Startup` с методом [WebHostBuilderExtensions](/dotnet/api/Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions) [UseStartup&lt;TStartup&gt;](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_):
+Укажите класс `Startup` в методе [WebHostBuilderExtensions](/dotnet/api/Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions) [UseStartup&lt;TStartup&gt;](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_):
 
 [!code-csharp[](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=10)]
 
-Конструктор классов `Startup` принимает зависимости, определенные узлом. Типичным применением [внедрения зависимостей](xref:fundamentals/dependency-injection) в класс `Startup` является внедрение:
+Веб-узел предоставляет несколько служб, которые доступны конструктору классов `Startup`. Приложение добавляет дополнительные службы через `ConfigureServices`. Как службы узла, так и службы приложения доступны в `Configure` и во всем приложении.
+
+Типичным применением [внедрения зависимостей](xref:fundamentals/dependency-injection) в класс `Startup` является внедрение:
 
 * [IHostingEnvironment](/dotnet/api/Microsoft.AspNetCore.Hosting.IHostingEnvironment) для настройки служб средой.
-* [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration) для настройки приложения во время запуска.
+* [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration) для чтения конфигурации.
+* [ILoggerFactory](/dotnet/api/microsoft.extensions.logging.iloggerfactory) для создания средства ведения журнала в `Startup.ConfigureServices`.
 
 [!code-csharp[](startup/snapshot_sample/Startup2.cs)]
 
@@ -65,7 +68,7 @@ ms.locfileid: "39063264"
 
 <a name="setcompatibilityversion"></a>
 
-### <a name="setcompatibilityversion-for-aspnet-core-mvc"></a>SetCompatibilityVersion для ASP.NET Core MVC 
+### <a name="setcompatibilityversion-for-aspnet-core-mvc"></a>SetCompatibilityVersion для ASP.NET Core MVC
 
 Метод `SetCompatibilityVersion` позволяет приложению принимать или отклонять потенциально критические изменения в поведении, появившиеся в ASP.NET MVC Core 2.1+. Эти потенциально критические изменения обычно затрагивают поведение подсистем MVC и способы вызова **кода** средой выполнения. Если принять эти изменения, вы сможете использовать актуальное поведение, которое сохранится в ASP.NET Core.
 
@@ -73,14 +76,14 @@ ms.locfileid: "39063264"
 
 [!code-csharp[Main](startup/sampleCompatibility/Startup.cs?name=snippet1)]
 
-Рекомендуется протестировать приложение с помощью последней версии (`CompatibilityVersion.Version_2_1`). Мы полагаем, что в большинстве приложений не будет критических изменений в поведении при использовании последней версии. 
+Мы рекомендуем протестировать приложение с помощью последней версии (`CompatibilityVersion.Version_2_1`). Мы полагаем, что в большинстве приложений использование последней версии не приведет к критически важным изменениям в поведении.
 
-Приложения, вызывающие `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)`, защищены от потенциальных критических изменений в поведении, появившихся в MVC ASP.NET 2.1 и более поздних версий 2.x. Особенности защиты:
+Приложения, вызывающие `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)`, защищены от потенциальных критически важных изменений в поведении, появившихся в MVC ASP.NET 2.1 и более поздних версий 2.x. Особенности защиты:
 
 * Не применяется ко всем изменениям в версии 2.1 и более поздних версиях. Она направлена только на потенциально критические изменения в поведении среды выполнения ASP.NET Core в подсистеме MVC.
 * Не распространяется на следующую основную версию.
 
-Совместимость по умолчанию для приложений ASP.NET Core 2.1 и более поздних версий 2.x, которые **не** вызывают `SetCompatibilityVersion`, — совместимость 2.0. Отсутствие вызова `SetCompatibilityVersion` равноценно вызову `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)`.
+По умолчанию для приложений ASP.NET Core 2.1 и более поздних версий 2.x, которые **не** вызывают `SetCompatibilityVersion`, предусмотрена совместимость с 2.0. Отсутствие вызова `SetCompatibilityVersion` равноценно вызову `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)`.
 
 Следующий код задает режим совместимости в ASP.NET Core 2.1, за исключением следующего поведения:
 
@@ -96,13 +99,9 @@ ms.locfileid: "39063264"
 
 В комментариях к классу [MvcOptions](https://github.com/aspnet/Mvc/blob/master/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs) подробно объясняется, что изменилось и почему изменения выгодны для большинства пользователей.
 
-Позднее мы выпустим [версию ASP.NET Core 3.0](https://github.com/aspnet/Home/wiki/Roadmap). Старое поведение, поддерживаемое параметрами совместимости, не сохранится в версии 3.0. Мы думаем, что это полезные изменения почти для всех пользователей. Большинство приложений сможет воспользоваться этими изменениями уже сейчас, а у других будет время на обновление.
+Позднее мы выпустим [версию ASP.NET Core 3.0](https://github.com/aspnet/Home/wiki/Roadmap). Старое поведение, поддерживаемое параметрами совместимости, не сохранится в версии 3.0. Мы думаем, что это полезные изменения почти для всех пользователей. Большинство приложений сможет воспользоваться этими изменениями уже сейчас, а другие успеют обновиться.
 
 ::: moniker-end
-
-## <a name="services-available-in-startup"></a>Службы, доступные в классе Startup
-
-Веб-узел предоставляет несколько служб, которые доступны конструктору классов `Startup`. Приложение добавляет дополнительные службы через `ConfigureServices`. Как службы узла, так и службы приложения доступны в `Configure` и во всем приложении.
 
 ## <a name="the-configure-method"></a>Метод Configure 
 
@@ -161,9 +160,9 @@ ms.locfileid: "39063264"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Размещение](xref:fundamentals/host/index)
-* [Использование нескольких сред](xref:fundamentals/environments)
-* [ПО промежуточного слоя](xref:fundamentals/middleware/index)
-* [Ведение журнала](xref:fundamentals/logging/index)
-* [Конфигурация](xref:fundamentals/configuration/index)
+* <xref:fundamentals/host/index>
+* <xref:fundamentals/environments>
+* <xref:fundamentals/middleware/index>
+* <xref:fundamentals/logging/index>
+* <xref:fundamentals/configuration/index>
 * [Класс StartupLoader: метод FindStartupType (источник ссылки)](https://github.com/aspnet/Hosting/blob/rel/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs#L66-L116)
