@@ -1,206 +1,240 @@
 ---
 title: Общие сведения об Identity в ASP.NET Core
 author: rick-anderson
-description: Использование удостоверения с приложения ASP.NET Core. Включает параметр паролей (RequireDigit, RequiredLength, RequiredUniqueChars и многое другое).
+description: Использование удостоверения с приложения ASP.NET Core. Узнайте, как задать требования к паролю (RequireDigit, RequiredLength, RequiredUniqueChars и многое другое).
 ms.author: riande
-ms.date: 01/24/2018
+ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: 50ddb96000e6a3f9e1762e9bb3e1f215f20d4356
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 6a23dd4ad78c0695b5724a78204abf6752dfe67d
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095643"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655314"
 ---
-# <a name="introduction-to-identity-on-aspnet-core"></a><span data-ttu-id="1c8b7-104">Общие сведения об Identity в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="1c8b7-104">Introduction to Identity on ASP.NET Core</span></span>
+# <a name="introduction-to-identity-on-aspnet-core"></a><span data-ttu-id="5a1a7-104">Общие сведения об Identity в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="5a1a7-104">Introduction to Identity on ASP.NET Core</span></span>
 
-<span data-ttu-id="1c8b7-105">По [Пранавом Растоги](https://github.com/rustd), [Рик Андерсон](https://twitter.com/RickAndMSFT), [том Дайкстра](https://github.com/tdykstra), Джон Гэллоуэй [Erik Reitan](https://github.com/Erikre), и [Стив Смит](https://ardalis.com/)</span><span class="sxs-lookup"><span data-stu-id="1c8b7-105">By [Pranav Rastogi](https://github.com/rustd), [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra), Jon Galloway, [Erik Reitan](https://github.com/Erikre), and [Steve Smith](https://ardalis.com/)</span></span>
+<span data-ttu-id="5a1a7-105">Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)</span><span class="sxs-lookup"><span data-stu-id="5a1a7-105">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="1c8b7-106">Удостоверение ASP.NET Core — это система членства, который позволяет добавить функциональные возможности входа в приложение.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-106">ASP.NET Core Identity is a membership system which allows you to add login functionality to your application.</span></span> <span data-ttu-id="1c8b7-107">Пользователи могут создавать учетную запись и имя входа с именем пользователя и пароль или их можно использовать поставщик внешней учетной записи, например Facebook, Google, учетной записи Майкрософт, Twitter или другим пользователям.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-107">Users can create an account and login with a user name and password or they can use an external login provider such as Facebook, Google, Microsoft Account, Twitter or others.</span></span>
+<span data-ttu-id="5a1a7-106">Удостоверение ASP.NET Core — это система членства, который расширяет функциональные возможности входа для приложений ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-106">ASP.NET Core Identity is a membership system that adds login functionality to ASP.NET Core apps.</span></span> <span data-ttu-id="5a1a7-107">Пользователи могут создавать учетную запись входа сведений, хранящихся в удостоверении или они могут использовать внешнего поставщика входа.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-107">Users can create an account with the login information stored in Identity or they can use an external login provider.</span></span> <span data-ttu-id="5a1a7-108">Поставщики поддерживаемых внешней учетной записи включают [Facebook, Google, учетной записи Майкрософт и Twitter](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-108">Supported external login providers include [Facebook, Google, Microsoft Account, and Twitter](xref:security/authentication/social/index).</span></span>
 
-<span data-ttu-id="1c8b7-108">Вы можете настроить удостоверение ASP.NET Core, чтобы использовать базу данных SQL Server для хранения имен пользователей, пароли и данные профиля.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-108">You can configure ASP.NET Core Identity to use a SQL Server database to store user names, passwords, and profile data.</span></span> <span data-ttu-id="1c8b7-109">Кроме того можно использовать собственные постоянное хранилище, например, хранилище таблиц Azure.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-109">Alternatively, you can use your own persistent store, for example, an Azure Table Storage.</span></span> <span data-ttu-id="1c8b7-110">Этот документ содержит инструкции по Visual Studio и с помощью интерфейса командной строки.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-110">This document contains instructions for Visual Studio and for using the CLI.</span></span>
+<span data-ttu-id="5a1a7-109">Удостоверений можно настроить с помощью базы данных SQL Server для хранения имен пользователей, пароли и данные профиля.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-109">Identity can be configured using a SQL Server database to store user names, passwords, and profile data.</span></span> <span data-ttu-id="5a1a7-110">Кроме того других постоянных хранилищах можно использовать, например, хранилище таблиц Azure.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-110">Alternatively, another persistent store can be used, for example, Azure Table Storage.</span></span>
 
-[<span data-ttu-id="1c8b7-111">Просмотреть или скачать образец кода.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-111">View or download the sample code.</span></span>](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [<span data-ttu-id="1c8b7-112">(Как для загрузки)</span><span class="sxs-lookup"><span data-stu-id="1c8b7-112">(How to download)</span></span>](xref:tutorials/index#how-to-download-a-sample)
+[<span data-ttu-id="5a1a7-111">Просмотреть или скачать образец кода.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-111">View or download the sample code.</span></span>](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [<span data-ttu-id="5a1a7-112">(Как для загрузки)</span><span class="sxs-lookup"><span data-stu-id="5a1a7-112">(How to download)</span></span>](xref:tutorials/index#how-to-download-a-sample)
 
-## <a name="overview-of-identity"></a><span data-ttu-id="1c8b7-113">Общие сведения об удостоверениях</span><span class="sxs-lookup"><span data-stu-id="1c8b7-113">Overview of Identity</span></span>
+<span data-ttu-id="5a1a7-113">В этом разделе сведения об использовании идентификаторов регистрация, вход и выход пользователя.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-113">In this topic, you learn how to use Identity to register, log in, and log out a user.</span></span> <span data-ttu-id="5a1a7-114">Более подробные инструкции по созданию приложений, использующих удостоверения см. в разделе "Дальнейшие действия" в конце этой статьи.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-114">For more detailed instructions about creating apps that use Identity, see the Next Steps section at the end of this article.</span></span>
 
-<span data-ttu-id="1c8b7-114">В этом разделе будет использование удостоверения ASP.NET Core для добавления функций, регистрация, вход и выход пользователя.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-114">In this topic, you'll learn how to use ASP.NET Core Identity to add functionality to register, log in, and log out a user.</span></span> <span data-ttu-id="1c8b7-115">Более подробные инструкции по созданию приложений с помощью удостоверения ASP.NET Core см. в разделе "Дальнейшие действия" в конце этой статьи.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-115">For more detailed instructions about creating apps using ASP.NET Core Identity, see the Next Steps section at the end of this article.</span></span>
+## <a name="create-a-web-app-with-authentication"></a><span data-ttu-id="5a1a7-115">Создание веб-приложения с проверкой подлинности</span><span class="sxs-lookup"><span data-stu-id="5a1a7-115">Create a Web app with authentication</span></span>
 
-1. <span data-ttu-id="1c8b7-116">Создайте проект веб-приложение ASP.NET Core с учетными записями отдельных пользователей.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-116">Create an ASP.NET Core Web Application project with Individual User Accounts.</span></span>
+<span data-ttu-id="5a1a7-116">Создайте проект веб-приложение ASP.NET Core с учетными записями отдельных пользователей.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-116">Create an ASP.NET Core Web Application project with Individual User Accounts.</span></span>
 
-   # <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="1c8b7-117">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="1c8b7-117">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="5a1a7-117">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5a1a7-117">Visual Studio</span></span>](#tab/visual-studio)
 
-   <span data-ttu-id="1c8b7-118">В Visual Studio выберите **файл** > **New** > **проекта**.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-118">In Visual Studio, select **File** > **New** > **Project**.</span></span> <span data-ttu-id="1c8b7-119">Выберите **веб-приложение ASP.NET Core** и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-119">Select **ASP.NET Core Web Application** and click **OK**.</span></span>
+* <span data-ttu-id="5a1a7-118">Выберите **Файл** > **Создать** > **Проект**.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-118">Select **File** > **New** > **Project**.</span></span> 
+* <span data-ttu-id="5a1a7-119">Выберите **Новое веб-приложение ASP.NET Core**.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-119">Select **ASP.NET Core Web Application**.</span></span> <span data-ttu-id="5a1a7-120">Назовите проект **WebApp1** иметь то же пространство имен, как загрузка проекта.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-120">Name the project **WebApp1** to have the same namespace as the project download.</span></span> <span data-ttu-id="5a1a7-121">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-121">Click **OK**.</span></span>
+* <span data-ttu-id="5a1a7-122">Выберите ASP.NET Core **веб-приложение** ASP.NET Core 2.1, затем выберите **изменить способ проверки подлинности**.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-122">Select an ASP.NET Core **Web Application** for ASP.NET Core 2.1, then select **Change Authentication**.</span></span>
+* <span data-ttu-id="5a1a7-123">Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-123">Select **Individual User Accounts** and click **OK**.</span></span>
 
-   ![Диалоговое окно создания нового проекта](identity/_static/01-new-project.png)
+# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="5a1a7-124">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="5a1a7-124">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-   <span data-ttu-id="1c8b7-121">Выберите ASP.NET Core **веб-приложение (Model-View-Controller)** для ASP.NET Core 2.x, а затем выберите **изменить способ проверки подлинности**.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-121">Select an ASP.NET Core **Web Application (Model-View-Controller)** for ASP.NET Core 2.x, then select **Change Authentication**.</span></span>
+```cli
+dotnet new webapp --auth Individual -o WebApp1
+```
 
-   ![Диалоговое окно создания нового проекта](identity/_static/02-new-project.png)
+---
 
-   <span data-ttu-id="1c8b7-123">Откроется диалоговое окно, предложить варианты проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-123">A dialog appears offering authentication choices.</span></span> <span data-ttu-id="1c8b7-124">Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК** чтобы вернуться в предыдущем диалоговом окне.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-124">Select **Individual User Accounts** and click **OK** to return to the previous dialog.</span></span>
+<span data-ttu-id="5a1a7-125">Созданный проект предоставляет [удостоверения ASP.NET Core](xref:security/authentication/identity) как [библиотеки классов Razor](xref:razor-pages/ui-class).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-125">The generated project provides [ASP.NET Core Identity](xref:security/authentication/identity) as a [Razor Class Library](xref:razor-pages/ui-class).</span></span>
 
-   ![Диалоговое окно создания нового проекта](identity/_static/03-new-project-auth.png)
+### <a name="test-register-and-login"></a><span data-ttu-id="5a1a7-126">Тест регистра и имени входа</span><span class="sxs-lookup"><span data-stu-id="5a1a7-126">Test Register and Login</span></span>
 
-   <span data-ttu-id="1c8b7-126">Выбрав **учетные записи отдельных пользователей** направляет Visual Studio для создания модели, модели ViewModel, представления, контроллеры и другие активы, необходимые для проверки подлинности как часть шаблона проекта.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-126">Selecting **Individual User Accounts** directs Visual Studio to create Models, ViewModels, Views, Controllers, and other assets required for authentication as part of the project template.</span></span>
+<span data-ttu-id="5a1a7-127">Запустите приложение и регистрации пользователя.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-127">Run the app and register a user.</span></span> <span data-ttu-id="5a1a7-128">Зависимости от размера экрана, может потребоваться выбрать кнопки-переключателя навигации для просмотра **зарегистрировать** и **входа** ссылки.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-128">Depending on your screen size, you might need to select the navigation toggle button to see the **Register** and **Login** links.</span></span>
 
-   # <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="1c8b7-127">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="1c8b7-127">.NET Core CLI</span></span>](#tab/netcore-cli)
+![выключатель переходов.](identity/_static/navToggle.png)
 
-   <span data-ttu-id="1c8b7-128">Если с помощью интерфейса командной строки .NET Core, создайте новый проект с помощью `dotnet new mvc --auth Individual`.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-128">If using the .NET Core CLI, create the new project using `dotnet new mvc --auth Individual`.</span></span> <span data-ttu-id="1c8b7-129">Эта команда создает новый проект с тем же кодом шаблона удостоверений, которые создает Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-129">This command creates a new project with the same Identity template code Visual Studio creates.</span></span>
+[!INCLUDE[](~/includes/view-identity-db.md)]
 
-   <span data-ttu-id="1c8b7-130">Созданный проект содержит `Microsoft.AspNetCore.Identity.EntityFrameworkCore` пакет, который сохраняет данные удостоверений и схемы для SQL Server с помощью [Entity Framework Core](https://docs.microsoft.com/ef/).</span><span class="sxs-lookup"><span data-stu-id="1c8b7-130">The created project contains the `Microsoft.AspNetCore.Identity.EntityFrameworkCore` package, which persists the Identity data and schema to SQL Server using [Entity Framework Core](https://docs.microsoft.com/ef/).</span></span>
+<a name="pw"></a>
+### <a name="configure-identity-services"></a><span data-ttu-id="5a1a7-130">Настройка служб удостоверений</span><span class="sxs-lookup"><span data-stu-id="5a1a7-130">Configure Identity services</span></span>
 
-   ---
+<span data-ttu-id="5a1a7-131">Службы добавляются в `ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-131">Services are added in `ConfigureServices`.</span></span>
 
-2. <span data-ttu-id="1c8b7-131">Настройка службы удостоверений и добавьте по промежуточного слоя в `Startup`.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-131">Configure Identity services and add middleware in `Startup`.</span></span>
+::: moniker range=">= aspnetcore-2.1"
 
-   <span data-ttu-id="1c8b7-132">Службы удостоверений добавляются к приложению в `ConfigureServices` метод в `Startup` класса:</span><span class="sxs-lookup"><span data-stu-id="1c8b7-132">The Identity services are added to the application in the `ConfigureServices` method in the `Startup` class:</span></span>
+   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Startup.cs?name=snippet_configureservices)]
 
-   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="1c8b7-133">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="1c8b7-133">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x/)
+<span data-ttu-id="5a1a7-132">Приведенный выше код настраивает удостоверений со значениями по умолчанию параметр.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-132">The preceding code configures Identity with default option values.</span></span> <span data-ttu-id="5a1a7-133">Доступ к службе предоставляется в приложение с помощью [внедрения зависимостей](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-133">Services are made available to the app through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
+
+   <span data-ttu-id="5a1a7-134">Удостоверение включено, вызвав [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-134">Identity is enabled by calling [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_).</span></span> <span data-ttu-id="5a1a7-135">`UseAuthentication` Добавляет проверку подлинности [по промежуточного слоя](xref:fundamentals/middleware/index) в конвейер запросов.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-135">`UseAuthentication` adds authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
+
+   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Startup.cs?name=snippet_configure&highlight=18)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
 
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-42)]
 
-   <span data-ttu-id="1c8b7-134">Эти службы доступны приложению через [внедрения зависимостей](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="1c8b7-134">These services are made available to the application through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
+   <span data-ttu-id="5a1a7-136">Доступ к службе предоставляется приложению через [внедрения зависимостей](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-136">Services are made available to the application through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
 
-   <span data-ttu-id="1c8b7-135">Удостоверение включено для приложения, вызвав `UseAuthentication` в `Configure` метод.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-135">Identity is enabled for the application by calling `UseAuthentication` in the `Configure` method.</span></span> <span data-ttu-id="1c8b7-136">`UseAuthentication` Добавляет проверку подлинности [по промежуточного слоя](xref:fundamentals/middleware/index) в конвейер запросов.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-136">`UseAuthentication` adds authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
+   <span data-ttu-id="5a1a7-137">Удостоверение включено для приложения, вызвав `UseAuthentication` в `Configure` метод.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-137">Identity is enabled for the application by calling `UseAuthentication` in the `Configure` method.</span></span> <span data-ttu-id="5a1a7-138">`UseAuthentication` Добавляет проверку подлинности [по промежуточного слоя](xref:fundamentals/middleware/index) в конвейер запросов.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-138">`UseAuthentication` adds authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
 
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
 
-   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="1c8b7-137">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="1c8b7-137">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="= aspnetcore-1.1"
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,13-33)]
 
-   <span data-ttu-id="1c8b7-138">Эти службы доступны приложению через [внедрения зависимостей](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="1c8b7-138">These services are made available to the application through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
+   <span data-ttu-id="5a1a7-139">Эти службы доступны приложению через [внедрения зависимостей](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-139">These services are made available to the application through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
 
-   <span data-ttu-id="1c8b7-139">Удостоверение включено для приложения, вызвав `UseIdentity` в `Configure` метод.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-139">Identity is enabled for the application by calling `UseIdentity` in the `Configure` method.</span></span> <span data-ttu-id="1c8b7-140">`UseIdentity` Добавляет проверку подлинности на основе файлов cookie [по промежуточного слоя](xref:fundamentals/middleware/index) в конвейер запросов.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-140">`UseIdentity` adds cookie-based authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
+   <span data-ttu-id="5a1a7-140">Удостоверение включено для приложения, вызвав `UseIdentity` в `Configure` метод.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-140">Identity is enabled for the application by calling `UseIdentity` in the `Configure` method.</span></span> <span data-ttu-id="5a1a7-141">`UseIdentity` Добавляет проверку подлинности на основе файлов cookie [по промежуточного слоя](xref:fundamentals/middleware/index) в конвейер запросов.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-141">`UseIdentity` adds cookie-based authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configure&highlight=21)]
 
-   ---
+::: moniker-end
 
-   <span data-ttu-id="1c8b7-141">Дополнительные сведения о время загрузки приложения, см. в разделе [запуск приложения](xref:fundamentals/startup).</span><span class="sxs-lookup"><span data-stu-id="1c8b7-141">For more information about the application start up process, see [Application Startup](xref:fundamentals/startup).</span></span>
+<span data-ttu-id="5a1a7-142">Дополнительные сведения см. в разделе [класс IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) и [запуск приложения](xref:fundamentals/startup).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-142">For more information, see the [IdentityOptions Class](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) and [Application Startup](xref:fundamentals/startup).</span></span>
 
-3. <span data-ttu-id="1c8b7-142">Создание пользователя.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-142">Create a user.</span></span>
+## <a name="scaffold-register-login-and-logout"></a><span data-ttu-id="5a1a7-143">Сформировать шаблон регистрации, входа и выхода</span><span class="sxs-lookup"><span data-stu-id="5a1a7-143">Scaffold Register, Login, and LogOut</span></span>
 
-   <span data-ttu-id="1c8b7-143">Запустите приложение и щелкните ссылку **Register** (Регистрация).</span><span class="sxs-lookup"><span data-stu-id="1c8b7-143">Launch the application and then click on the **Register** link.</span></span>
+<span data-ttu-id="5a1a7-144">Выполните [позволяет формировать удостоверений в проект Razor без авторизации](xref:security/authentication/scaffold-identity#) инструкции.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-144">Follow the [Scaffold identity into a Razor project with authorization](xref:security/authentication/scaffold-identity#) instructions.</span></span>
 
-   <span data-ttu-id="1c8b7-144">При первом запуске вам может потребоваться выполнить миграцию.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-144">If this is the first time you're performing this action, you may be required to run migrations.</span></span> <span data-ttu-id="1c8b7-145">Приложение предложит **Apply Migrations** (Выполнить миграцию):</span><span class="sxs-lookup"><span data-stu-id="1c8b7-145">The application prompts you to **Apply Migrations**.</span></span> <span data-ttu-id="1c8b7-146">Обновите страницу, при необходимости.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-146">Refresh the page if needed.</span></span>
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="5a1a7-145">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5a1a7-145">Visual Studio</span></span>](#tab/visual-studio)
 
-   ![Веб-страница применения миграции](identity/_static/apply-migrations.png)
+<span data-ttu-id="5a1a7-146">Добавьте файлы регистрации, входа и выхода.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-146">Add the Register, Login, and LogOut files.</span></span>
 
-   <span data-ttu-id="1c8b7-148">Кроме того, можно проверить работу удостоверения ASP.NET Core с приложением без постоянной базы данных, а с использованием базы данных в памяти.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-148">Alternately, you can test using ASP.NET Core Identity with your app without a persistent database by using an in-memory database.</span></span> <span data-ttu-id="1c8b7-149">Для этого добавьте в приложение пакет `Microsoft.EntityFrameworkCore.InMemory`и измените вызов метода `AddDbContext` в `ConfigureServices` следующим образом:</span><span class="sxs-lookup"><span data-stu-id="1c8b7-149">To use an in-memory database, add the `Microsoft.EntityFrameworkCore.InMemory` package to your app and modify your app's call to `AddDbContext` in `ConfigureServices` as follows:</span></span>
 
-   ```csharp
-   services.AddDbContext<ApplicationDbContext>(options =>
-       options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
-   ```
+# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="5a1a7-147">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="5a1a7-147">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-   <span data-ttu-id="1c8b7-150">Когда пользователь нажимает на ссылку **Register** (Регистрация), вызывается метод действия `Register` контроллера `AccountController`.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-150">When the user clicks the **Register** link, the `Register` action is invoked on `AccountController`.</span></span> <span data-ttu-id="1c8b7-151">Действие `Register` создает пользователя путем вызова метода `CreateAsync` объекта`_userManager` (обеспечивается в `AccountController` путем внедрения зависимостей):</span><span class="sxs-lookup"><span data-stu-id="1c8b7-151">The `Register` action creates the user by calling `CreateAsync` on the `_userManager` object (provided to `AccountController` by dependency injection):</span></span>
+<span data-ttu-id="5a1a7-148">Если вы создали проект с именем **WebApp1**, выполните следующие команды.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-148">If you created the project with name **WebApp1**, run the following commands.</span></span> <span data-ttu-id="5a1a7-149">В противном случае использовать правильное пространство имен для `ApplicationDbContext`:</span><span class="sxs-lookup"><span data-stu-id="5a1a7-149">Otherwise, use the correct namespace for the `ApplicationDbContext`:</span></span>
+
+
+```cli
+dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
+
+```
+
+<span data-ttu-id="5a1a7-150">PowerShell используется точка с запятой в качестве разделителя команды.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-150">PowerShell uses semicolon as a command separator.</span></span> <span data-ttu-id="5a1a7-151">При использовании PowerShell экранировать точку с запятой в списке файлов или поместить в список файлов в двойные кавычки, как показано в предыдущем примере.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-151">When using PowerShell, escape the semicolons in the file list or put the file list in double quotes, as the preceding example shows.</span></span>
+
+---
+
+### <a name="examine-register"></a><span data-ttu-id="5a1a7-152">Проверьте регистр</span><span class="sxs-lookup"><span data-stu-id="5a1a7-152">Examine Register</span></span>
+
+::: moniker range=">= aspnetcore-2.1"
+
+   <span data-ttu-id="5a1a7-153">Когда пользователь щелкает **зарегистрировать** ссылку, `RegisterModel.OnPostAsync` вызова действия.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-153">When a user clicks the **Register** link, the `RegisterModel.OnPostAsync` action is invoked.</span></span> <span data-ttu-id="5a1a7-154">Пользователь создается путем [CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_) на `_userManager` объекта.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-154">The user is created by [CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_) on the `_userManager` object.</span></span> <span data-ttu-id="5a1a7-155">`_userManager` предоставляется с помощью внедрения зависимостей):</span><span class="sxs-lookup"><span data-stu-id="5a1a7-155">`_userManager` is provided by dependency injection):</span></span>
+
+   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Register.cshtml.cs?name=snippet&highlight=7,22)]
+
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
+
+   <span data-ttu-id="5a1a7-156">Когда пользователь щелкает **зарегистрировать** ссылку, `Register` действие вызывается в `AccountController`.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-156">When a user clicks the **Register** link, the `Register` action is invoked on `AccountController`.</span></span> <span data-ttu-id="5a1a7-157">Действие `Register` создает пользователя путем вызова метода `CreateAsync` объекта`_userManager` (обеспечивается в `AccountController` путем внедрения зависимостей):</span><span class="sxs-lookup"><span data-stu-id="5a1a7-157">The `Register` action creates the user by calling `CreateAsync` on the `_userManager` object (provided to `AccountController` by dependency injection):</span></span>
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_register&highlight=11)]
 
-   <span data-ttu-id="1c8b7-152">Если пользователь создан, происходит вход пользователя путем вызова метода `_signInManager.SignInAsync`.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-152">If the user was created successfully, the user is logged in by the call to `_signInManager.SignInAsync`.</span></span>
+::: moniker-end
 
-   <span data-ttu-id="1c8b7-153">**Примечание.** Раздел [подтверждение учетной записи](xref:security/authentication/accconfirm#prevent-login-at-registration) описывает, как предотвратить автоматический вход пользователя при регистрации.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-153">**Note:** See [account confirmation](xref:security/authentication/accconfirm#prevent-login-at-registration) for steps to prevent immediate login at registration.</span></span>
+   <span data-ttu-id="5a1a7-158">Если пользователь создан, происходит вход пользователя путем вызова метода `_signInManager.SignInAsync`.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-158">If the user was created successfully, the user is logged in by the call to `_signInManager.SignInAsync`.</span></span>
 
-4. <span data-ttu-id="1c8b7-154">Вход.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-154">Log in.</span></span>
+   <span data-ttu-id="5a1a7-159">**Примечание.** Раздел [подтверждение учетной записи](xref:security/authentication/accconfirm#prevent-login-at-registration) описывает, как предотвратить автоматический вход пользователя при регистрации.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-159">**Note:** See [account confirmation](xref:security/authentication/accconfirm#prevent-login-at-registration) for steps to prevent immediate login at registration.</span></span>
 
-   <span data-ttu-id="1c8b7-155">Пользователи могут входить, щелкнув **вход** ссылку в верхней части сайта, или может быть переход на страницу входа, если они пытаются получить доступ к части сайта, требующему проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-155">Users can sign in by clicking the **Log in** link at the top of the site, or they may be navigated to the Login page if they attempt to access a part of the site that requires authorization.</span></span> <span data-ttu-id="1c8b7-156">Когда пользователь отправляет форму на странице входа `AccountController` `Login` вызова действия.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-156">When the user submits the form on the Login page, the `AccountController` `Login` action is called.</span></span>
+### <a name="log-in"></a><span data-ttu-id="5a1a7-160">Войти</span><span class="sxs-lookup"><span data-stu-id="5a1a7-160">Log in</span></span>
 
-   <span data-ttu-id="1c8b7-157">`Login` Вызовов действия `PasswordSignInAsync` на `_signInManager` объекта (для `AccountController` с помощью внедрения зависимостей).</span><span class="sxs-lookup"><span data-stu-id="1c8b7-157">The `Login` action calls `PasswordSignInAsync` on the `_signInManager` object (provided to `AccountController` by dependency injection).</span></span>
+::: moniker range=">= aspnetcore-2.1"
 
-   [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
+<span data-ttu-id="5a1a7-161">Форма входа отображается при:</span><span class="sxs-lookup"><span data-stu-id="5a1a7-161">The Login form is displayed when:</span></span>
 
-   <span data-ttu-id="1c8b7-158">Базовый `Controller` предоставляет `User` свойство, которое можно получить из методов контроллера.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-158">The base `Controller` class exposes a `User` property that you can access from controller methods.</span></span> <span data-ttu-id="1c8b7-159">Например, можно перечислить `User.Claims` и принимать решения об авторизации.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-159">For instance, you can enumerate `User.Claims` and make authorization decisions.</span></span> <span data-ttu-id="1c8b7-160">Дополнительные сведения см. в разделе [авторизации](xref:security/authorization/index).</span><span class="sxs-lookup"><span data-stu-id="1c8b7-160">For more information, see [Authorization](xref:security/authorization/index).</span></span>
+* <span data-ttu-id="5a1a7-162">**Вход** выбора ссылки.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-162">The **Log in** link  is selected.</span></span>
+* <span data-ttu-id="5a1a7-163">Когда пользователь обращается к странице, где они не проходят проверку подлинности **или** авторизован, они перенаправляются на страницу входа.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-163">When a user accesses a page where they are not authenticated **or** authorized, they are redirected to the Login page.</span></span> 
 
-5. <span data-ttu-id="1c8b7-161">Выход.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-161">Log out.</span></span>
+<span data-ttu-id="5a1a7-164">При отправке формы на странице входа, `OnPostAsync` вызова действия.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-164">When the form on the Login page is submitted, the `OnPostAsync` action is called.</span></span> <span data-ttu-id="5a1a7-165">`PasswordSignInAsync` вызывается для `_signInManager` объекта (предоставляется с помощью внедрения зависимостей).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-165">`PasswordSignInAsync` is called on the `_signInManager` object (provided by dependency injection).</span></span>
 
-   <span data-ttu-id="1c8b7-162">Щелкнув **Выход** связать вызовы `LogOut` действие.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-162">Clicking the **Log out** link calls the `LogOut` action.</span></span>
+   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Login.cshtml.cs?name=snippet&highlight=10-11)]
+
+   <span data-ttu-id="5a1a7-166">Базовый `Controller` предоставляет `User` свойство, которое можно получить из методов контроллера.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-166">The base `Controller` class exposes a `User` property that you can access from controller methods.</span></span> <span data-ttu-id="5a1a7-167">Например, можно перечислить `User.Claims` и принимать решения об авторизации.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-167">For instance, you can enumerate `User.Claims` and make authorization decisions.</span></span> <span data-ttu-id="5a1a7-168">Дополнительные сведения см. в разделе [авторизации](xref:security/authorization/index).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-168">For more information, see [Authorization](xref:security/authorization/index).</span></span>
+
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
+
+<span data-ttu-id="5a1a7-169">Форма входа отображается в том случае, когда пользователь выбирает **вход** связывание или перенаправляются, когда доступ к странице, который требует проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-169">The Login form is displayed when users select the **Log in** link or are redirected when accessing a page that requires authentication.</span></span> <span data-ttu-id="5a1a7-170">Когда пользователь отправляет форму на странице входа `AccountController` `Login` вызова действия.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-170">When the user submits the form on the Login page, the `AccountController` `Login` action is called.</span></span>
+
+<span data-ttu-id="5a1a7-171">`Login` Вызовов действия `PasswordSignInAsync` на `_signInManager` объекта (для `AccountController` с помощью внедрения зависимостей).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-171">The `Login` action calls `PasswordSignInAsync` on the `_signInManager` object (provided to `AccountController` by dependency injection).</span></span>
+
+[!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
+
+<span data-ttu-id="5a1a7-172">Базовый (`Controller` или `PageModel`) предоставляет `User` свойство.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-172">The base (`Controller` or `PageModel`) class exposes a `User` property.</span></span> <span data-ttu-id="5a1a7-173">Например `User.Claims` может быть перечислимым для принятия решений об авторизации.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-173">For example, `User.Claims` can be enumerated to make authorization decisions.</span></span>
+
+::: moniker-end
+
+### <a name="log-out"></a><span data-ttu-id="5a1a7-174">Выход</span><span class="sxs-lookup"><span data-stu-id="5a1a7-174">Log out</span></span>
+
+::: moniker range=">= aspnetcore-2.1"
+
+<span data-ttu-id="5a1a7-175">**Выход** открывается `LogoutModel.OnPost` действие.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-175">The **Log out** link invokes the `LogoutModel.OnPost` action.</span></span> 
+
+[!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Logout.cshtml.cs)]
+
+<span data-ttu-id="5a1a7-176">[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) удаляет файл cookie утверждения пользователя.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-176">[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) clears the user's claims stored in a cookie.</span></span> <span data-ttu-id="5a1a7-177">Не перенаправления после вызова метода `SignOutAsync` или пользователь будет **не** выполнен выход.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-177">Don't redirect after calling `SignOutAsync` or the user will **not** be signed out.</span></span>
+
+<span data-ttu-id="5a1a7-178">POST указывается в *Pages/Shared/_LoginPartial.cshtml*:</span><span class="sxs-lookup"><span data-stu-id="5a1a7-178">Post is specified in the *Pages/Shared/_LoginPartial.cshtml*:</span></span>
+
+[!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/_LoginPartial.cshtml?highlight=10)]
+
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
+   <span data-ttu-id="5a1a7-179">Щелкнув **Выход** связать вызовы `LogOut` действие.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-179">Clicking the **Log out** link calls the `LogOut` action.</span></span>
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_logout&highlight=7)]
 
-   <span data-ttu-id="1c8b7-163">Предыдущий код выше вызовы `_signInManager.SignOutAsync` метод.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-163">The preceding code above calls the `_signInManager.SignOutAsync` method.</span></span> <span data-ttu-id="1c8b7-164">`SignOutAsync` Метод очищает утверждений пользователя, хранящиеся в файле cookie.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-164">The `SignOutAsync` method clears the user's claims stored in a cookie.</span></span>
+   <span data-ttu-id="5a1a7-180">Предыдущий код вызывает `_signInManager.SignOutAsync` метод.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-180">The preceding code calls the `_signInManager.SignOutAsync` method.</span></span> <span data-ttu-id="5a1a7-181">`SignOutAsync` Метод очищает утверждений пользователя, хранящиеся в файле cookie.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-181">The `SignOutAsync` method clears the user's claims stored in a cookie.</span></span>
+::: moniker-end
 
-<a name="pw"></a>
-6. <span data-ttu-id="1c8b7-165">Конфигурация.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-165">Configuration.</span></span>
+## <a name="test-identity"></a><span data-ttu-id="5a1a7-182">Проверить идентификатор</span><span class="sxs-lookup"><span data-stu-id="5a1a7-182">Test Identity</span></span>
 
-   <span data-ttu-id="1c8b7-166">Удостоверение имеет некоторые поведения по умолчанию, которые могут быть переопределены в классе запуска приложения.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-166">Identity has some default behaviors that can be overridden in the app's startup class.</span></span> <span data-ttu-id="1c8b7-167">`IdentityOptions` не нужно настроить при использовании поведения по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-167">`IdentityOptions` don't need to be configured when using the default behaviors.</span></span> <span data-ttu-id="1c8b7-168">В следующем коде задается несколько вариантов стойкость пароля:</span><span class="sxs-lookup"><span data-stu-id="1c8b7-168">The following code sets several password strength options:</span></span>
+<span data-ttu-id="5a1a7-183">Шаблоны веб-проектов по умолчанию разрешает анонимный доступ к домашней страницы.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-183">The default web project templates allow anonymous access to the home pages.</span></span> <span data-ttu-id="5a1a7-184">Чтобы проверить тождество, добавьте [ `[Authorize]` ](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) на страницу About.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-184">To test Identity, add [`[Authorize]`](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) to the About page.</span></span>
 
-   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="1c8b7-169">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="1c8b7-169">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x/)
+[!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/About.cshtml.cs)]
 
-   [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-42)]
+<span data-ttu-id="5a1a7-185">Если вы вошли, выйдите из системы. Запустите приложение и выберите **о** ссылку.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-185">If you are signed in, sign out. Run the app and select the **About** link.</span></span> <span data-ttu-id="5a1a7-186">Вы будете перенаправлены на страницу входа.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-186">You are redirected to the login page.</span></span>
 
-   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="1c8b7-170">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="1c8b7-170">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x/)
+::: moniker range=">= aspnetcore-2.1"
 
-   [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=13-33)]
+### <a name="explore-identity"></a><span data-ttu-id="5a1a7-187">Изучите удостоверений</span><span class="sxs-lookup"><span data-stu-id="5a1a7-187">Explore Identity</span></span>
 
-   ---
+<span data-ttu-id="5a1a7-188">Для просмотра идентификации, более подробно:</span><span class="sxs-lookup"><span data-stu-id="5a1a7-188">To explore Identity in more detail:</span></span>
 
-   <span data-ttu-id="1c8b7-171">Дополнительные сведения о том, как настроить удостоверение, см. в разделе [настроить удостоверение](xref:security/authentication/identity-configuration).</span><span class="sxs-lookup"><span data-stu-id="1c8b7-171">For more information about how to configure Identity, see [Configure Identity](xref:security/authentication/identity-configuration).</span></span>
+* [<span data-ttu-id="5a1a7-189">Создать источник полное удостоверение пользовательского интерфейса</span><span class="sxs-lookup"><span data-stu-id="5a1a7-189">Create full identity UI source</span></span>](xref:security/authentication/scaffold-identity#create-full-identity-ui-source)
+* <span data-ttu-id="5a1a7-190">Проверьте источник каждой страницы и пошагового выполнения отладчика.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-190">Examine the source of each page and step through the debugger.</span></span>
 
-   <span data-ttu-id="1c8b7-172">Вы также можете настроить тип данных первичного ключа, см. в разделе [тип данных Настройка идентификаторов первичных ключей](xref:security/authentication/identity-primary-key-configuration).</span><span class="sxs-lookup"><span data-stu-id="1c8b7-172">You also can configure the data type of the primary key, see [Configure Identity primary keys data type](xref:security/authentication/identity-primary-key-configuration).</span></span>
+::: moniker-end
 
-7. <span data-ttu-id="1c8b7-173">Просмотр базы данных.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-173">View the database.</span></span>
+## <a name="identity-components"></a><span data-ttu-id="5a1a7-191">Компонентами системы идентификации</span><span class="sxs-lookup"><span data-stu-id="5a1a7-191">Identity Components</span></span>
 
-   <span data-ttu-id="1c8b7-174">Если приложение использует базу данных SQL Server (по умолчанию на Windows и для пользователей Visual Studio), можно просмотреть приложение, созданное для базы данных.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-174">If your app is using a SQL Server database (the default on Windows and for Visual Studio users), you can view the database the app created.</span></span> <span data-ttu-id="1c8b7-175">Можно использовать **SQL Server Management Studio**.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-175">You can use **SQL Server Management Studio**.</span></span> <span data-ttu-id="1c8b7-176">Кроме того, в Visual Studio последовательно выберите **представление** > **обозреватель объектов SQL Server**.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-176">Alternatively, from Visual Studio, select **View** > **SQL Server Object Explorer**.</span></span> <span data-ttu-id="1c8b7-177">Подключение к **(localdb) \MSSQLLocalDB**.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-177">Connect to **(localdb)\MSSQLLocalDB**.</span></span> <span data-ttu-id="1c8b7-178">Базы данных с именем, соответствующим `aspnet-<name of your project>-<guid>` отображается.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-178">The database with a name matching `aspnet-<name of your project>-<guid>` is displayed.</span></span>
+::: moniker range=">= aspnetcore-2.1"
 
-   ![Контекстные меню в таблице AspNetUsers базы данных](identity/_static/04-db.png)
+<span data-ttu-id="5a1a7-192">Все удостоверения зависимые пакеты NuGet, включаются в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-192">All the Identity dependent NuGet packages are included in the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app).</span></span>
+::: moniker-end
 
-   <span data-ttu-id="1c8b7-180">Разверните базу данных и его **таблиц**, щелкните правой кнопкой мыши **dbo. AspNetUsers** таблицы и выберите **данные представления**.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-180">Expand the database and its **Tables**, then right-click the **dbo.AspNetUsers** table and select **View Data**.</span></span>
+<span data-ttu-id="5a1a7-193">Основной пакет для удостоверения [Microsoft.AspNetCore.Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-193">The primary package for Identity is [Microsoft.AspNetCore.Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/).</span></span> <span data-ttu-id="5a1a7-194">Этот пакет содержит базовый набор интерфейсов для ASP.NET Core Identity и включена в состав по `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-194">This package contains the core set of interfaces for ASP.NET Core Identity, and is included by `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.</span></span>
 
-8. <span data-ttu-id="1c8b7-181">Проверка работы удостоверений</span><span class="sxs-lookup"><span data-stu-id="1c8b7-181">Verify Identity works</span></span>
+## <a name="migrating-to-aspnet-core-identity"></a><span data-ttu-id="5a1a7-195">Переход на ASP.NET Core Identity</span><span class="sxs-lookup"><span data-stu-id="5a1a7-195">Migrating to ASP.NET Core Identity</span></span>
 
-    <span data-ttu-id="1c8b7-182">Значение по умолчанию *веб-приложение ASP.NET Core* шаблон проекта предоставляет пользователям доступ к любое действие в приложении без необходимости с именем входа.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-182">The default *ASP.NET Core Web Application* project template allows users to access any action in the application without having to login.</span></span> <span data-ttu-id="1c8b7-183">Чтобы убедиться, что ASP.NET Identity работает, добавьте`[Authorize]` атрибут `About` действие `Home` контроллера.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-183">To verify that ASP.NET Identity works, add an`[Authorize]` attribute to the `About` action of the `Home` Controller.</span></span>
+<span data-ttu-id="5a1a7-196">Дополнительные сведения и инструкции по миграции существующего хранилища удостоверений, см. в разделе [перенести проверки подлинности и идентификации](xref:migration/identity).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-196">For more information and guidance on migrating your existing Identity store, see [Migrate Authentication and Identity](xref:migration/identity).</span></span>
 
-    ```csharp
-    [Authorize]
-    public IActionResult About()
-    {
-        ViewData["Message"] = "Your application description page.";
-        return View();
-    }
-    ```
+## <a name="setting-password-strength"></a><span data-ttu-id="5a1a7-197">Стойкость пароля параметр</span><span class="sxs-lookup"><span data-stu-id="5a1a7-197">Setting password strength</span></span>
 
-    # <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="1c8b7-184">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="1c8b7-184">Visual Studio</span></span>](#tab/visual-studio)
+<span data-ttu-id="5a1a7-198">См. в разделе [конфигурации](#pw) пример, задает минимальное паролей.</span><span class="sxs-lookup"><span data-stu-id="5a1a7-198">See [Configuration](#pw) for a sample that sets the minimum password requirements.</span></span>
 
-    <span data-ttu-id="1c8b7-185">Запустите проект, используя **Ctrl** + **F5** и перейдите к **о** страницы.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-185">Run the project using **Ctrl** + **F5** and navigate to the **About** page.</span></span> <span data-ttu-id="1c8b7-186">Только прошедшие проверку подлинности пользователи могут получать доступ к **о** странице, поэтому ASP.NET вы будете перенаправлены на страницу входа для входа или регистрации.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-186">Only authenticated users may access the **About** page now, so ASP.NET redirects you to the login page to login or register.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="5a1a7-199">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="5a1a7-199">Next Steps</span></span>
 
-    # <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="1c8b7-187">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="1c8b7-187">.NET Core CLI</span></span>](#tab/netcore-cli)
-
-    <span data-ttu-id="1c8b7-188">Откройте окно командной строки и перейдите в корневой каталог проекта каталог, содержащий `.csproj` файл.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-188">Open a command window and navigate to the project's root directory containing the `.csproj` file.</span></span> <span data-ttu-id="1c8b7-189">Запустите [запуска dotnet](/dotnet/core/tools/dotnet-run) команду, чтобы запустить приложение:</span><span class="sxs-lookup"><span data-stu-id="1c8b7-189">Run the [dotnet run](/dotnet/core/tools/dotnet-run) command to run the app:</span></span>
-
-    ```csharp
-    dotnet run 
-    ```
-
-    <span data-ttu-id="1c8b7-190">Обзор URL-адрес, указанный в выходных данных из [запуска dotnet](/dotnet/core/tools/dotnet-run) команды.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-190">Browse the URL specified in the output from the [dotnet run](/dotnet/core/tools/dotnet-run) command.</span></span> <span data-ttu-id="1c8b7-191">URL-адрес должен указывать `localhost` с созданный номер порта.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-191">The URL should point to `localhost` with a generated port number.</span></span> <span data-ttu-id="1c8b7-192">Перейдите к **о** страницы.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-192">Navigate to the **About** page.</span></span> <span data-ttu-id="1c8b7-193">Только прошедшие проверку подлинности пользователи могут получать доступ к **о** странице, поэтому ASP.NET вы будете перенаправлены на страницу входа для входа или регистрации.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-193">Only authenticated users may access the **About** page now, so ASP.NET redirects you to the login page to login or register.</span></span>
-
-    ---
-
-## <a name="identity-components"></a><span data-ttu-id="1c8b7-194">Компонентами системы идентификации</span><span class="sxs-lookup"><span data-stu-id="1c8b7-194">Identity Components</span></span>
-
-<span data-ttu-id="1c8b7-195">Первичное эталонное сборки для системы идентификации `Microsoft.AspNetCore.Identity`.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-195">The primary reference assembly for the Identity system is `Microsoft.AspNetCore.Identity`.</span></span> <span data-ttu-id="1c8b7-196">Этот пакет содержит базовый набор интерфейсов для ASP.NET Core Identity и включена в состав по `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-196">This package contains the core set of interfaces for ASP.NET Core Identity, and is included by `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.</span></span>
-
-<span data-ttu-id="1c8b7-197">Эти зависимости необходимы для использования системы идентификации в приложениях ASP.NET Core:</span><span class="sxs-lookup"><span data-stu-id="1c8b7-197">These dependencies are needed to use the Identity system in ASP.NET Core applications:</span></span>
-
-* <span data-ttu-id="1c8b7-198">`Microsoft.AspNetCore.Identity.EntityFrameworkCore` — Содержит необходимые типы использовать удостоверение с Entity Framework Core.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-198">`Microsoft.AspNetCore.Identity.EntityFrameworkCore` - Contains the required types to use Identity with Entity Framework Core.</span></span>
-
-* <span data-ttu-id="1c8b7-199">`Microsoft.EntityFrameworkCore.SqlServer` -Entity Framework Core — технология доступа к данных, рекомендуемые корпорации Майкрософт для реляционных баз данных, таких как SQL Server.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-199">`Microsoft.EntityFrameworkCore.SqlServer` - Entity Framework Core is Microsoft's recommended data access technology for relational databases like SQL Server.</span></span> <span data-ttu-id="1c8b7-200">Для тестирования, можно использовать `Microsoft.EntityFrameworkCore.InMemory`.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-200">For testing, you can use `Microsoft.EntityFrameworkCore.InMemory`.</span></span>
-
-* <span data-ttu-id="1c8b7-201">`Microsoft.AspNetCore.Authentication.Cookies` — Промежуточный слой, который позволяет приложению использовать проверку подлинности на основе файлов cookie.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-201">`Microsoft.AspNetCore.Authentication.Cookies` - Middleware that enables an app to use cookie-based authentication.</span></span>
-
-## <a name="migrating-to-aspnet-core-identity"></a><span data-ttu-id="1c8b7-202">Переход на ASP.NET Core Identity</span><span class="sxs-lookup"><span data-stu-id="1c8b7-202">Migrating to ASP.NET Core Identity</span></span>
-
-<span data-ttu-id="1c8b7-203">Дополнительные сведения и инструкции по миграции существующее удостоверение в магазине см. в разделе [перенести проверки подлинности и идентификации](xref:migration/identity).</span><span class="sxs-lookup"><span data-stu-id="1c8b7-203">For additional information and guidance on migrating your existing Identity store see [Migrate Authentication and Identity](xref:migration/identity).</span></span>
-
-## <a name="setting-password-strength"></a><span data-ttu-id="1c8b7-204">Стойкость пароля параметр</span><span class="sxs-lookup"><span data-stu-id="1c8b7-204">Setting password strength</span></span>
-
-<span data-ttu-id="1c8b7-205">См. в разделе [конфигурации](#pw) пример, задает минимальное паролей.</span><span class="sxs-lookup"><span data-stu-id="1c8b7-205">See [Configuration](#pw) for a sample that sets the minimum password requirements.</span></span>
-
-## <a name="next-steps"></a><span data-ttu-id="1c8b7-206">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="1c8b7-206">Next Steps</span></span>
-
+* [<span data-ttu-id="5a1a7-200">Настройка Identity</span><span class="sxs-lookup"><span data-stu-id="5a1a7-200">Configure Identity</span></span>](xref:security/authentication/identity-configuration)
+* <xref:security/authorization/secure-data>
+* <xref:security/authentication/add-user-data>
+* <xref:security/authentication/identity-enable-qrcodes>
+* <span data-ttu-id="5a1a7-201">[Настроить тип данных идентификаторов первичных ключей](xref:security/authentication/identity-primary-key-configuration).</span><span class="sxs-lookup"><span data-stu-id="5a1a7-201">[Configure Identity primary keys data type](xref:security/authentication/identity-primary-key-configuration).</span></span>
 * <xref:migration/identity>
 * <xref:security/authentication/accconfirm>
 * <xref:security/authentication/2fa>
-* <xref:security/authentication/social/index>
 * <xref:host-and-deploy/web-farm>
