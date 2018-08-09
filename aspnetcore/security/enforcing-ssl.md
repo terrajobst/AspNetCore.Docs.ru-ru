@@ -5,12 +5,12 @@ description: Показано, как требовать HTTPS/TLS, в ASP.NET C
 ms.author: riande
 ms.date: 2/9/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: d8bf11d7d2df8d8b197f001570a8fab1f3262814
-ms.sourcegitcommit: 4e34ce61e1e7f1317102b16012ce0742abf2cca6
+ms.openlocfilehash: 3bea8661e17fec5128e822d98741d1f8ed7434e5
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39514808"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655502"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Принудительное использование HTTPS в ASP.NET Core
 
@@ -66,8 +66,8 @@ ms.locfileid: "39514808"
 
 Порт можно настроить, задав [параметр конфигурации веб-узел https_port](xref:fundamentals/host/web-host#https-port):
 
-**Ключ**: https_port **тип**: *строка*
-**по умолчанию**: не задано значение по умолчанию.
+**Ключ**: https_port **Тип**: *строка*
+**Значение по умолчанию**: не задано.
 **Задать с помощью**: `UseSetting` 
  **переменной среды**: `<PREFIX_>HTTPS_PORT` (используется префикс `ASPNETCORE_` при использовании веб-узла.)
 
@@ -112,7 +112,10 @@ WebHost.CreateDefaultBuilder(args)
 <a name="hsts"></a>
 ## <a name="http-strict-transport-security-protocol-hsts"></a>Безопасность строгой транспортный протокол HTTP (HSTS)
 
-На [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [HTTP строгой безопасности транспорта (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) представляет собой улучшение центра безопасности, который задается параметром веб-приложения при помощи специального заголовка ответа. Когда браузер, поддерживающий HSTS получает этот заголовок, он сохраняет конфигурацию для домена, который предотвращает отправку любые данные, передаваемые по протоколу HTTP и вместо этого принудительно весь обмен данными по протоколу HTTPS. Он также не позволяет пользователю с помощью недействителен или сертификаты, отключение браузера подсказок, которые позволяют пользователю временно доверять такой сертификат.
+На [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [HTTP строгой безопасности транспорта (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) представляет собой улучшение центра безопасности, который задается параметром веб-приложения при помощи заголовка ответа. Когда браузер, поддерживающий HSTS получает этот заголовок:
+
+* Браузер хранит конфигурацию для домена, который предотвращает отправку любые данные, передаваемые по протоколу HTTP. Браузер заставляет весь обмен данными по протоколу HTTPS. 
+* Браузер запрещает пользователю с помощью недействителен или сертификаты. Браузер отключает подсказок, которые позволяют пользователю временно доверять такой сертификат.
 
 ASP.NET Core 2.1 или более поздних версий реализует HSTS с `UseHsts` метода расширения. Следующий код вызывает `UseHsts` когда приложение не [режим разработки](xref:fundamentals/environments):
 

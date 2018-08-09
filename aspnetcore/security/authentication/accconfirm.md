@@ -5,12 +5,12 @@ description: Сведения о создании приложения ASP.NET C
 ms.author: riande
 ms.date: 7/11/2018
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 84eb3580107572f66f0c3b565b8e76ba401c0ddb
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 3ca6d014245bb2a9bc4b1c90285f47eec7cefe84
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219411"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655476"
 ---
 ::: moniker range="<= aspnetcore-2.0"
 
@@ -78,24 +78,11 @@ dotnet build
 
 Запустите приложение, выберите **зарегистрировать** связать и регистрации пользователя. На этом этапе является только проверка на адрес электронной почты с [[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute) атрибута. После отправки регистрации, вы вошли в приложение. Далее в этом руководстве код обновляется, поэтому новые пользователи не могут войти, пока не проверяется их по электронной почте.
 
-## <a name="view-the-identity-database"></a>Представление базы данных удостоверений
-
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
-
-* Из **представление** меню, выберите **обозреватель объектов SQL Server** (SSOX).
-* Перейдите к **(localdb) (SQL Server 13) MSSQLLocalDB**. Щелкните правой кнопкой мыши **dbo. AspNetUsers** > **просмотра данных**:
-
-![Контекстные меню в таблице AspNetUsers в обозревателе объектов SQL Server](accconfirm/_static/ssox.png)
+[!INCLUDE[](~/includes/view-identity-db.md)]
 
 Обратите внимание, таблицы `EmailConfirmed` поле является `False`.
 
 Вы можете использовать этот адрес электронной почты снова на следующем шаге, когда приложение отправляет сообщение электронной почты с подтверждением. Щелкните правой кнопкой мыши в строке и выберите **удалить**. Удаление псевдонима электронной почты упрощает в следующих шагах.
-
-# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
-
-См. в разделе [работа с SQLite в проекте ASP.NET Core MVC](xref:tutorials/first-mvc-app-xplat/working-with-sql) инструкции о том, как просмотреть базу данных SQLite.
-
-------
 
 <a name="prevent-login-at-registration"></a>
 ## <a name="require-email-confirmation"></a>Требуется подтверждение по электронной почте
@@ -113,8 +100,6 @@ dotnet build
 ### <a name="configure-email-provider"></a>Настройка поставщика услуг электронной почты
 
 В этом руководстве [SendGrid](https://sendgrid.com) используется для отправки электронной почты. Требуется учетная запись SendGrid и ключ для отправки электронной почты. Можно использовать другие поставщики электронной почты. ASP.NET Core 2.x включает `System.Net.Mail`, который позволяет отправлять электронную почту из приложения. Мы рекомендуем использовать SendGrid или другая служба электронной почты для отправки электронной почты. Для защиты и правильно настроить сложно SMTP.
-
-[Шаблон параметров](xref:fundamentals/configuration/options) используется для доступа к параметрам и ключ учетной записи пользователя. Дополнительные сведения см. в разделе [конфигурации](xref:fundamentals/configuration/index).
 
 Создание класса для извлечения ключа защиты электронной почты. Для этого примера создайте *Services/AuthMessageSenderOptions.cs*:
 
@@ -143,6 +128,8 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
     "SendGridKey": "<key removed>"
   }
   ```
+ 
+Дополнительные сведения см. в разделе [шаблон параметров](xref:fundamentals/configuration/options) и [конфигурации](xref:fundamentals/configuration/index).
 
 ### <a name="install-sendgrid"></a>Установка SendGrid
 

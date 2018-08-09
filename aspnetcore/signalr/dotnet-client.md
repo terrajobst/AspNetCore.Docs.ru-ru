@@ -5,20 +5,23 @@ description: Сведения о клиенте .NET, ASP.NET Core SignalR
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 08/07/2018
 uid: signalr/dotnet-client
-ms.openlocfilehash: ce5be911e67831cbf6c09e24744111e73ffdbe63
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 970888a410b2486a20f98ce77a8674f8ec357f50
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095038"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655256"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>Клиент .NET SignalR ASP.NET Core
 
 Автор: [Рэйчел Аппель](http://twitter.com/rachelappel) (Rachel Appel)
 
 Клиент ASP.NET Core SignalR .NET можно использовать в приложениях Xamarin, WPF, Windows Forms, консоли и .NET Core. Как и [клиента JavaScript](xref:signalr/javascript-client), клиент .NET позволяет получать и отправлять и получать сообщения в концентратор в режиме реального времени.
+
+> [!NOTE]
+> Xamarin имеет особые требования для версии Visual Studio. Дополнительные сведения см. в разделе [клиентом SignalR 2.1.1 в Xamarin](https://github.com/aspnet/Announcements/issues/305).
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/live/aspnetcore/signalr/dotnet-client/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
