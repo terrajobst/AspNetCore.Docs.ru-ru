@@ -73,7 +73,7 @@ var hubConnection = new HubConnectionBuilder()
 npm install @aspnet/signalr-protocol-msgpack
 ```
 
-После установки пакета npm, модуль можно использовать непосредственно с помощью загрузчика модулей JavaScript или импортированы в браузере, ссылаясь на *node_modules\\ @aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js*  файла. В браузере `msgpack5` также должна быть указана библиотека. Используйте `<script>` тег, чтобы создать ссылку. Посетите библиотеку *node_modules\msgpack5\dist\msgpack5.js*.
+После установки пакета npm, модуль можно использовать непосредственно с помощью загрузчика модулей JavaScript или импортированы в браузере, ссылаясь на *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* файла. В браузере `msgpack5` также должна быть указана библиотека. Используйте `<script>` тег, чтобы создать ссылку. Посетите библиотеку *node_modules\msgpack5\dist\msgpack5.js*.
 
 > [!NOTE]
 > При использовании `<script>` элемент, порядок важен. Если *signalr-protocol-msgpack.js* указывается перед *msgpack5.js*, произошла ошибка при попытке подключения с MessagePack. *SignalR.js* также необходима перед *signalr-protocol-msgpack.js*.
