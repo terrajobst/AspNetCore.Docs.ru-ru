@@ -35,7 +35,7 @@
 ## [Создание веб-API](xref:web-api/index)
 ### [Создание веб-API в Visual Studio Code](xref:tutorials/web-api-vsc)
 ### [Создание веб-API в Visual Studio для Mac](xref:tutorials/first-web-api-mac)
-### [Создание веб-API в Visual Studio для Windows](xref:tutorials/first-web-api)
+### [Создание веб-API в Visual Studio](xref:tutorials/first-web-api)
 ### [Создание серверных служб для собственных мобильных приложений](xref:mobile/native-mobile-backend)
 ### [Страницы справки с использованием Swagger](xref:tutorials/web-api-help-pages-using-swagger)
 #### [Начало работы с NSwag](xref:tutorials/get-started-with-nswag)
@@ -218,7 +218,7 @@
 ## [Отладка моментальных снимков в Visual Studio](/visualstudio/debugger/debug-live-azure-applications)
 ## [Устранение неполадок](xref:test/troubleshoot)
 
-# [Доступ к данным с помощью EF Core и Azure](data/index.md)
+# [Доступ к данным с помощью EF Core](xref:data/index)
 ## [Начало работы с Razor Pages и EF Core в Visual Studio](xref:data/ef-rp/intro)
 ## [Начало работы с ASP.NET Core и EF Core в Visual Studio](data/ef-mvc/index.md)
 ## [ASP.NET Core с EF Core — новая база данных](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)
@@ -229,6 +229,15 @@
 ### [Начало работы с хранилищем BLOB-объектов и подключенными службами Visual Studio](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)
 ### [Начало работы с хранилищем очередей и подключенными службами Visual Studio](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-queues/)
 ### [Начало работы с хранилищем таблиц и подключенными службами Visual Studio](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-tables/)
+
+# [Руководство по Azure](xref:azure/index)
+## DevOps с ASP.NET Core и Azure
+### [Введение](xref:azure/devops/index)
+### [Инструменты и файлы для скачивания](xref:azure/devops/tools-and-downloads)
+### [Развертывание в службу приложений](xref:azure/devops/deploy-to-app-service)
+### [Непрерывная интеграция и развертывание](xref:azure/devops/cicd)
+### [Мониторинг и устранение неполадок](xref:azure/devops/monitor)
+### [Дальнейшие действия](xref:azure/devops/next-steps)
 
 # [Клиентская разработка](xref:client-side/index)
 ## [Использование Gulp](xref:client-side/using-gulp)
