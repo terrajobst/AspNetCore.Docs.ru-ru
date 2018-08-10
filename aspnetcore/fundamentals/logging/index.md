@@ -5,12 +5,12 @@ description: Сведения о платформе ведения журнал�
 ms.author: tdykstra
 ms.date: 07/24/2018
 uid: fundamentals/logging/index
-ms.openlocfilehash: 60777d4f8664b7f02c806abb6ca40a29602d207f
-ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
+ms.openlocfilehash: 35bb7fa51db541f825a79151fb7fbe85d48e1998
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39378655"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655363"
 ---
 # <a name="logging-in-aspnet-core"></a>Ведение журналов в ASP.NET Core
 
@@ -707,7 +707,7 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 ## <a name="azure-application-insights-trace-logging"></a>Ведение журнала трассировки Azure Application Insights
 
-Пакет SDK [Application Insights](https://azure.microsoft.com/services/application-insights/) способен собирать телеметрию трассировки из журналов, сформированных инфраструктурой ведения журналов ASP.NET Core. Дополнительные сведения см. в [вики-сайте Microsoft/ApplicationInsights-aspnetcore: ведение журнала](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Logging).
+Пакет SDK [Application Insights](https://azure.microsoft.com/services/application-insights/) способен собирать телеметрию трассировки из журналов, сформированных инфраструктурой ведения журналов ASP.NET Core. Дополнительные сведения см. в разделе [Application Insights для ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core) и на [вики-сайте Microsoft/ApplicationInsights-aspnetcore: ведение журнала](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Logging).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
