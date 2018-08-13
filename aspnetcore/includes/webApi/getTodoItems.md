@@ -39,7 +39,7 @@
 ]
 ```
 
-Далее в этом руководстве мы покажем, как можно просмотреть ответ HTTP с использованием [Postman](https://www.getpostman.com/) или [curl](https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/curl.1.html).
+Далее в этом руководстве мы покажем, как можно просмотреть ответ HTTP с использованием [Postman](https://www.getpostman.com/) или [curl](https://curl.haxx.se/docs/manpage.html).
 
 ### <a name="routing-and-url-paths"></a>Маршрутизация и пути URL
 
