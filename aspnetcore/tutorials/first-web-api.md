@@ -1,19 +1,19 @@
 ---
-title: Создание веб-API с помощью ASP.NET Core и Visual Studio для Windows
+title: Создание веб-API с помощью ASP.NET Core и Visual Studio
 author: rick-anderson
-description: Сборка веб-API с помощью MVC ASP.NET Core и Visual Studio для Windows
+description: Создание веб-API с помощью MVC ASP.NET Core и Visual Studio в Windows
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/17/2018
 uid: tutorials/first-web-api
-ms.openlocfilehash: 3da22cbbbe0db7771656997a13587521e182fb2a
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 2694388324cdbd246aad6c88d8439171704dfe89
+ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38164604"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "39722520"
 ---
-# <a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>Создание веб-API с помощью ASP.NET Core и Visual Studio для Windows
+# <a name="create-a-web-api-with-aspnet-core-and-visual-studio"></a>Создание веб-API с помощью ASP.NET Core и Visual Studio
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) и [Майк Уоссон](https://github.com/mikewasson)
 
@@ -21,7 +21,7 @@ ms.locfileid: "38164604"
 
 Существуют три версии этого руководства:
 
-* Windows: создание веб-API с помощью Visual Studio для Windows (этот учебник)
+* Создание веб-API с помощью Visual Studio в Windows (это руководство)
 * macOS: [создание веб-API с помощью Visual Studio для Mac](xref:tutorials/first-web-api-mac)
 * macOS, Linux, Windows: [создание веб-API с помощью Visual Studio Code](xref:tutorials/web-api-vsc)
 

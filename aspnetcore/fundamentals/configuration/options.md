@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
 uid: fundamentals/configuration/options
-ms.openlocfilehash: fd3e55ec821be336501f523550f547f6049c9937
-ms.sourcegitcommit: 4e34ce61e1e7f1317102b16012ce0742abf2cca6
+ms.openlocfilehash: ef6b0117b88c4c79771f0280267bd99993028ac8
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39514756"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655424"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Шаблон параметров в ASP.NET Core
 
@@ -116,11 +116,11 @@ delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 
 [!code-json[](options/sample/appsettings.json?highlight=4-7)]
 
-Класс `MySubOptions` определяет свойства `SubOption1` и `SubOption2` для хранения значений подпараметров (*Models/MySubOptions.cs*).
+Класс `MySubOptions` определяет свойства `SubOption1` и `SubOption2` для хранения значений параметров (*Models/MySubOptions.cs*):
 
 [!code-csharp[](options/sample/Models/MySubOptions.cs?name=snippet1)]
 
-Метод `OnGet` страничной модели возвращает строку со значениями параметров (*Pages/Index.cshtml.cs*).
+Метод `OnGet` страничной модели возвращает строку со значениями параметров (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](options/sample/Pages/Index.cshtml.cs?range=11)]
 
@@ -150,7 +150,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 [!code-cshtml[](options/sample/Pages/Index.cshtml?range=1-10&highlight=5)]
 
-При запуске приложения значения параметров отображаются на отрисовываемой странице:
+Когда запускается приложение, значения параметров появляются на отображаемой странице:
 
 ![Значения параметров Option1: value1_from_json и Option2: –1 загружаются из модели и путем внедрения в представление.](options/_static/view.png)
 
@@ -249,6 +249,70 @@ named_options_2: option1 = ConfigureAll replacement value, option2 = 5
 > [!NOTE]
 > Все параметры являются именованными экземплярами. Существующие экземпляры `IConfigureOption` считаются нацеленными на экземпляр `Options.DefaultName`, который имеет значение `string.Empty`. Интерфейс `IConfigureNamedOptions` также реализует интерфейс `IConfigureOptions`. Реализация [IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) по умолчанию ([источник ссылки](https://github.com/aspnet/Options/blob/release/2.0/src/Microsoft.Extensions.Options/IOptionsFactory.cs)) содержит логику для надлежащего использования каждого экземпляра. Именованный параметр `null` предназначен для всех именованных экземпляров, а не для какого-то определенного ([ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) и [PostConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall) следуют этому соглашению).
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="options-validation"></a>Проверка параметров
+
+Эта функция позволяет проверить параметры при их настройке. Вызовите `Validate` с использованием метода проверки, который возвращает `true`, если параметры являются допустимыми, и `false`, если они являются недопустимыми:
+
+```csharp
+// Registration
+services.AddOptions<MyOptions>("optionalOptionsName")
+    .Configure(o => { }) // Configure the options
+    .Validate(o => YourValidationShouldReturnTrueIfValid(o), 
+        "custom error");
+        
+// Consumption
+var monitor = services.BuildServiceProvider()
+    .GetService<IOptionsMonitor<MyOptions>>();
+  
+try
+{
+    var options = monitor.Get("optionalOptionsName");
+} 
+catch (OptionsValidationException e) 
+{
+   // e.OptionsName returns "optionalOptionsName"
+   // e.OptionsType returns typeof(MyOptions)
+   // e.Failures returns a list of errors, which would contain 
+   //     "custom error"
+}
+```
+
+В предыдущем примере для именованного экземпляра параметров задается `optionalOptionsName`. Экземпляр параметров по умолчанию — `Options.DefaultName`.
+
+Проверка выполняется при создании экземпляра параметров. Экземпляр параметров гарантированно проходит проверку при первом обращении.
+
+> [!IMPORTANT]
+> Проверка параметров не защищает от изменений, вносимых после исходной настройки и проверки параметров.
+
+Метод `Validate` принимает `Func<TOptions, bool>`. Чтобы полностью настроить проверку, реализуйте `IValidateOptions<TOptions>`, чтобы:
+
+* выполнить проверку нескольких типов параметров — `class ValidateTwo : IValidateOptions<Option1>, IValidationOptions<Option2>`;
+* выполнить проверку, зависящую от другого типа параметра — `public DependsOnAnotherOptionValidator(IOptions<AnotherOption> options)`.
+
+`IValidateOptions` проверяет:
+
+* определенный именованный экземпляр параметров;
+* все параметры, при которых `name` имеет значение `null`.
+
+Возвращает `ValidateOptionsResult` из реализации интерфейса:
+
+```csharp
+public interface IValidateOptions<TOptions> where TOptions : class
+{
+    ValidateOptionsResult Validate(string name, TOptions options);
+}
+```
+
+Упреждающая проверка (с завершением работы при первой ошибке во время запуска) и проверка на основе заметок к данным будут реализованы в будущих выпусках.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
+
 ## <a name="ipostconfigureoptions"></a>IPostConfigureOptions
 
 Задайте пост-конфигурацию с помощью [IPostConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ipostconfigureoptions-1). Пост-конфигурация применяется после выполнения всех действий настройки с помощью [IConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1):
@@ -272,7 +336,7 @@ services.PostConfigure<MyOptions>("named_options_1", myOptions =>
 Для последующей настройки всех именованных экземпляров конфигурации служит метод [PostConfigureAll&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall):
 
 ```csharp
-services.PostConfigureAll<MyOptions>("named_options_1", myOptions =>
+services.PostConfigureAll<MyOptions>(myOptions =>
 {
     myOptions.Option1 = "post_configured_option1_value";
 });

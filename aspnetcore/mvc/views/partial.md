@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/06/2018
 uid: mvc/views/partial
-ms.openlocfilehash: 7cb20fc30609adad83cb40e91316da115817f035
-ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
+ms.openlocfilehash: 2223f3c6e42927def4b91ff9da58c228e5904756
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39378687"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655327"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Частичные представления в ASP.NET Core
 
@@ -35,7 +35,7 @@ ASP.NET Core поддерживает частичные представлен�
 
 На сложной странице, состоящей из нескольких логических частей, удобнее работать с каждой из них как с отдельным частичным представлением. Каждый фрагмент страницы можно просмотреть отдельно от остальной страницы. Представление самой страницы становится проще, так как оно содержит только общую структуру страницы и вызовы для отображения частичных представлений.
 
-Контроллеры ASP.NET Core MVC поддерживают метод [PartialView](/dotnet/api/microsoft.aspnetcore.mvc.controller.partialview#Microsoft_AspNetCore_Mvc_Controller_PartialView), который вызывается из метода действия. В Razor Pages не реализован метод, эквивалентный `PartialView`.
+Контроллеры ASP.NET Core MVC поддерживают метод [PartialView](/dotnet/api/microsoft.aspnetcore.mvc.controller.partialview#Microsoft_AspNetCore_Mvc_Controller_PartialView), который вызывается из метода действия. В Razor Pages не реализован метод `PartialView`, эквивалентный [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel).
 
 ## <a name="declare-partial-views"></a>Объявление частичных представлений
 
