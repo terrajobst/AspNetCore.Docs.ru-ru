@@ -9,7 +9,7 @@ ms.date: 05/29/2018
 uid: signalr/javascript-client
 ms.openlocfilehash: c13c41b0344b0c880e842f2799d6ee97bd7fff7e
 ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 07/17/2018
 ms.locfileid: "39095428"
@@ -31,7 +31,7 @@ ms.locfileid: "39095428"
    npm install @aspnet/signalr
   ```
 
-Npm устанавливает содержимое пакета в *node_modules\\ @aspnet\signalr\dist\browser*  папки. Создайте новую папку с именем *signalr* под *wwwroot\\lib* папки. Копировать *signalr.js* файл *wwwroot\lib\signalr* папки.
+Npm устанавливает содержимое пакета в *node_modules\\@aspnet\signalr\dist\browser* папки. Создайте новую папку с именем *signalr* под *wwwroot\\lib* папки. Копировать *signalr.js* файл *wwwroot\lib\signalr* папки.
 
 ## <a name="use-the-signalr-javascript-client"></a>Использование клиента SignalR JavaScript
 
