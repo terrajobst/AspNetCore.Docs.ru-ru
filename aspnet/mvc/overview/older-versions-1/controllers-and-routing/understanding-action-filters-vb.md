@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/controllers-and-routing/understanding-action-
 title: Общие сведения о фильтрах действий (Visual Basic) | Документация Майкрософт
 author: microsoft
 description: Цель данного руководства — объяснить фильтров действий. Фильтр операции — атрибут, который можно применить к действию контроллера--или всего контроллера...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/16/2008
 ms.assetid: e83812f2-c53e-4a43-a7c1-d64c59ecf694
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 07e02330747b3b8f8bb318d30c7a984aa15baeef
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0116306afdf21cb24a374013bb54ada54e5699ea
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811186"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41839226"
 ---
 <a name="understanding-action-filters-vb"></a>Общие сведения о фильтрах действий (VB)
 ====================

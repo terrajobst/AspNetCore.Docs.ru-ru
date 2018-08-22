@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-
 title: Создание модели данных Entity Framework для приложения ASP.NET MVC (1 из 10) | Документация Майкрософт
 author: tdykstra
 description: Для Visual Studio 2013, Entity Framework 6 и MVC 5 доступна более новая версия этого цикла руководств. Web приложения университета Contoso образец de...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/30/2013
 ms.assetid: 4ba029b6-ee7c-4e45-a0e7-b703c37e5d9a
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: ae9a4f0f13b01d8e093030bb1def2f21580a9e48
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 037f67d679762a037eaef9f0a4060156b94d97b1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815163"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837683"
 ---
 <a name="creating-an-entity-framework-data-model-for-an-aspnet-mvc-application-1-of-10"></a>Создание модели данных Entity Framework для приложения ASP.NET MVC (1 из 10)
 ====================

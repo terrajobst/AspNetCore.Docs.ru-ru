@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/02/2018
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: 6e46172ec8c5271ffcbad87e4ea5cc98465b78b0
-ms.sourcegitcommit: 41d3c4b27309d56f567fd1ad443929aab6587fb1
+ms.openlocfilehash: e3a534d3c3da5af4cfd3f72d105fac83e15135f0
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37910254"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829970"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>Настраиваемые поставщики политики авторизации, используя IAuthorizationPolicyProvider в ASP.NET Core 
 
@@ -25,16 +25,19 @@ ms.locfileid: "37910254"
 * С помощью большой диапазон политики (для номера разных мест или возрасте, например), поэтому нет смысла для добавления каждой политики авторизации для отдельных с `AuthorizationOptions.AddPolicy` вызова.
 * Создание политики в среде выполнения, на основе сведений из внешнего источника данных (например, базу данных) или динамически определить требования к проверке подлинности посредством другого механизма.
 
-## <a name="customizing-policy-retrieval"></a>Настройка получения политики
+[Просмотреть или скачать образец кода](https://github.com/aspnet/AuthSamples/tree/master/samples/CustomPolicyProvider) из [репозиторий GitHub aspnet/AuthSamples](https://github.com/aspnet/AuthSamples). Скачайте репозиторий aspnet/AuthSamples ZIP-файл.
+Распакуйте *AuthSamples-master.zip* файл. Перейдите к *примеры/CustomPolicyProvider* папки проекта.
 
-Приложения ASP.NET Core используют реализацию `IAuthorizationPolicyProvider` интерфейс для получения политики авторизации. По умолчанию [DefaultAuthorizationPolicyProvider](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.defaultauthorizationpolicyprovider) регистрируется и используется. `DefaultAuthorizationPolicyProvider` Возвращает политики из `AuthorizationOptions` в `IServiceCollection.AddAuthorization` вызова.
+## <a name="customize-policy-retrieval"></a>Настройки политики извлечения
+
+Приложения ASP.NET Core используют реализацию `IAuthorizationPolicyProvider` интерфейс для получения политики авторизации. По умолчанию [DefaultAuthorizationPolicyProvider](/dotnet/api/microsoft.aspnetcore.authorization.defaultauthorizationpolicyprovider) регистрируется и используется. `DefaultAuthorizationPolicyProvider` Возвращает политики из `AuthorizationOptions` в `IServiceCollection.AddAuthorization` вызова.
 
 Это поведение можно настроить путем регистрации другой `IAuthorizationPolicyProvider` реализации в приложении [внедрения зависимостей](xref:fundamentals/dependency-injection) контейнера. 
 
 `IAuthorizationPolicyProvider` Интерфейс содержит два API:
 
-* [GetPolicyAsync](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationpolicyprovider.getpolicyasync?view=aspnetcore-2.0#Microsoft_AspNetCore_Authorization_IAuthorizationPolicyProvider_GetPolicyAsync_System_String_) возвращает политику авторизации для заданного имени.
-* [GetDefaultPolicyAsync](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationpolicyprovider.getdefaultpolicyasync?view=aspnetcore-2.0) возвращает политику авторизации по умолчанию (политика, используемая для `[Authorize]` атрибутов без политику, указанную). 
+* [GetPolicyAsync](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationpolicyprovider.getpolicyasync#Microsoft_AspNetCore_Authorization_IAuthorizationPolicyProvider_GetPolicyAsync_System_String_) возвращает политику авторизации для заданного имени.
+* [GetDefaultPolicyAsync](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationpolicyprovider.getdefaultpolicyasync) возвращает политику авторизации по умолчанию (политика, используемая для `[Authorize]` атрибутов без политику, указанную). 
 
 Реализовав эти два API-интерфейсы, вы можете настроить, каким образом предоставляются политики авторизации.
 
@@ -46,7 +49,7 @@ ms.locfileid: "37910254"
 
 Политики авторизации идентифицируются по их именам. Пользовательский `MinimumAgeAuthorizeAttribute` описано ранее, необходимо сопоставить аргументов в строку, которая может использоваться для получения соответствующей политики авторизации. Это можно сделать путем наследования от `AuthorizeAttribute` и `Age` свойство wrap `AuthorizeAttribute.Policy` свойство.
 
-```CSharp
+```csharp
 internal class MinimumAgeAuthorizeAttribute : AuthorizeAttribute
 {
     const string POLICY_PREFIX = "MinimumAge";
@@ -76,7 +79,7 @@ internal class MinimumAgeAuthorizeAttribute : AuthorizeAttribute
 
 Его можно применить к действиям в так же, как другие `Authorize` атрибуты, за исключением того, что он принимает целое число как параметр.
 
-```CSharp
+```csharp
 [MinimumAgeAuthorize(10)]
 public IActionResult RequiresMinimumAge10()
 ```
@@ -91,7 +94,7 @@ public IActionResult RequiresMinimumAge10()
 * С помощью `AuthorizationPolicyBuilder` для создания нового `AuthorizationPolicy`
 * Добавление требований к политике на основе возраста с `AuthorizationPolicyBuilder.AddRequirements`. Можно использовать в других сценариях `RequireClaim`, `RequireRole`, или `RequireUserName` вместо этого.
 
-```CSharp
+```csharp
 internal class MinimumAgePolicyProvider : IAuthorizationPolicyProvider
 {
     const string POLICY_PREFIX = "MinimumAge";
@@ -130,7 +133,7 @@ internal class MinimumAgePolicyProvider : IAuthorizationPolicyProvider
 
 Во многих случаях этот атрибут авторизации требуется только прошедший проверку пользователь, чтобы принимать необходимые политики с помощью вызова `RequireAuthenticatedUser`:
 
-```CSharp
+```csharp
 public Task<AuthorizationPolicy> GetDefaultPolicyAsync() => 
     Task.FromResult(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build());
 ```
@@ -140,14 +143,14 @@ public Task<AuthorizationPolicy> GetDefaultPolicyAsync() =>
 * Политики авторизации по умолчанию не может быть использована.
 * Получение политики по умолчанию можно делегировать переход на резервный ресурс `IAuthorizationPolicyProvider`.
 
-## <a name="using-a-custom-iauthorizationpolicyprovider"></a>С помощью пользовательских IAuthorizationPolicyProvider
+## <a name="use-a-custom-iauthorizationpolicyprovider"></a>Используйте пользовательские IAuthorizationPolicyProvider
 
 Для использования настраиваемых политик из `IAuthorizationPolicyProvider`, необходимо:
 
 * Зарегистрируйте соответствующий `AuthorizationHandler` типов с помощью внедрения зависимостей (описано в разделе [авторизации на основе политики](xref:security/authorization/policies#authorization-handlers)), как и для всех сценариев на основе политик авторизации.
 * Регистрация пользовательского `IAuthorizationPolicyProvider` типа в коллекцию служб для внедрения зависимостей приложения (в `Startup.ConfigureServices`) для замены поставщика политики по умолчанию.
 
-```CSharp
+```csharp
 services.AddTransient<IAuthorizationPolicyProvider, MinimumAgePolicyProvider>();
 ```
 

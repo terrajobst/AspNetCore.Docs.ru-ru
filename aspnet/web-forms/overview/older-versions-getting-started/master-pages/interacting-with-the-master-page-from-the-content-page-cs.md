@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/master-pages/interacting-
 title: Взаимодействие с главной страницей на странице содержимого (C#) | Документация Майкрософт
 author: rick-anderson
 description: Проверяет как вызывать методы, задайте свойства, т. д., из главной страницы из кода на странице содержимого.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/11/2008
 ms.assetid: 32d54638-71b2-491d-81f4-f7417a13a62f
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2aa2ba4443a2bad248b0d2cd2a140dc828fd7747
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: afcec6cb7a6763d068301c7afdd28ff560a3065b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842880"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835548"
 ---
 <a name="interacting-with-the-master-page-from-the-content-page-c"></a>Взаимодействие с главной страницей на странице содержимого (C#)
 ====================

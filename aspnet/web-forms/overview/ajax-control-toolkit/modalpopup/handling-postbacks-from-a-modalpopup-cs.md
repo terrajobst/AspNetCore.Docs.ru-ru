@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/modalpopup/handling-postbacks-from-
 title: Обработка обратных передач из ModalPopup (C#) | Документация Майкрософт
 author: wenz
 description: Элемент управления ModalPopup в AJAX Control Toolkit предоставляет простой способ создания модального всплывающего окна с помощью средств на стороне клиента. Особое внимание следует принимать при терминалом...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 7963890b-4ea3-4a1c-b65d-6098a3d56f62
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/handling-postbacks-from-a-modalpopup-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0f27d28b9851f8e26c207a6bc495e98ad70577a2
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9bcb1ad058b800f3f957cafff07a5a54b44178a6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838126"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829487"
 ---
 <a name="handling-postbacks-from-a-modalpopup-c"></a>Обработка обратных передач из ModalPopup (C#)
 ====================

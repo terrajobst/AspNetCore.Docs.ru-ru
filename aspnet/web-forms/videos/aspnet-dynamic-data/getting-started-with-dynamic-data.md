@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-dynamic-data/getting-started-with-dynamic-data
 title: Приступая к работе с динамическими данными | Документация Майкрософт
 author: JoeStagner
 description: В этом видео мы выполним сборку всего приложения ASP.NET с помощью платформы динамических данных ASP.NET с помощью данных Northwind с помощью кода платформы динамических данных, создание scaffoldi...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/23/2008
 ms.assetid: 2011925a-789d-4160-af31-4667097727f1
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/getting-started-with-dynamic-data
 msc.type: video
-ms.openlocfilehash: d0a59996fbf7ec5f1c1888489144179d73deb238
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 25f8a03d37fb900af59b1bdd29c33e06f1706e9b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812903"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828476"
 ---
 <a name="getting-started-with-dynamic-data"></a>Приступая к работе с динамическими данными
 ====================

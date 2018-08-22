@@ -3,17 +3,17 @@ uid: signalr/overview/deployment/tutorial-signalr-self-host
 title: 'Учебник: Резидентное размещение SignalR | Документация Майкрософт'
 author: pfletcher
 description: Этом руководстве показано, как создать локальную среду сервера SignalR 2 и способ подключения к нему с помощью клиента JavaScript. Версии программного обеспечения, используемые в этом руководстве V...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/10/2014
 ms.assetid: 400db427-27af-4f2f-abf0-5486d5e024b5
 msc.legacyurl: /signalr/overview/deployment/tutorial-signalr-self-host
 msc.type: authoredcontent
-ms.openlocfilehash: 71fb121377a49bb741ebff098ff20ec82e85c82a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5d7d485357a6c820f11e0135e2ff9479c1965d96
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37821789"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829485"
 ---
 <a name="tutorial-signalr-self-host"></a>Учебник: Резидентное размещение SignalR
 ====================

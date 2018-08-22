@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-35/aspnet-ajax/aspnet-ajax-a-demonstration-of-aspne
 title: 'ASP.NET AJAX: Демонстрация ASP.NET AJAX | Документация Майкрософт'
 author: JoeStagner
 description: Узнайте, как легко создать с нуля приложения управления «Список дел» с помощью ASP.NET 2.0, а затем повысить удобство работы пользователей, с помощью ASP.NET AJAX...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/24/2009
 ms.assetid: f2b4fff1-523f-4636-aa70-63fcc1257a1f
 msc.legacyurl: /web-forms/videos/aspnet-35/aspnet-ajax/aspnet-ajax-a-demonstration-of-aspnet-ajax
 msc.type: video
-ms.openlocfilehash: 08ae45b2149ded4c47610e67598c1df6a01cc7f0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 886aaa91f1b6e224e058a25adaf9f9dbb7708a6f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808787"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828507"
 ---
 <a name="aspnet-ajax-a-demonstration-of-aspnet-ajax"></a>ASP.NET AJAX: Демонстрация ASP.NET AJAX
 ====================

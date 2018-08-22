@@ -3,17 +3,17 @@ uid: identity/overview/migrations/migrating-universal-provider-data-for-membersh
 title: Перенос данных универсального поставщика членства и профилей пользователей в ASP.NET Identity (C#) | Документация Майкрософт
 author: rustd
 description: Этот учебник описывает шаги, необходимые для миграции пользователей и роли данных и данные профиля пользователя, созданных с помощью универсальные поставщики существующего приложения...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/13/2013
 ms.assetid: 2e260430-d13c-4658-bd05-e256fc0d63b8
 msc.legacyurl: /identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 1f685e676d3ca4eeb64f48f0df7212402a9f6f5f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6115b2a6caca05659f1c35ce97954807a6fb01ae
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37810038"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835529"
 ---
 <a name="migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity-c"></a>Перенос данных универсального поставщика членства и профилей пользователей в ASP.NET Identity (C#)
 ====================

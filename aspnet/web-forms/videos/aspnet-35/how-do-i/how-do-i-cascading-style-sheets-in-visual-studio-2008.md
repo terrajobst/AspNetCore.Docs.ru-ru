@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-35/how-do-i/how-do-i-cascading-style-sheets-in-visu
 title: '[Инструкции] Каскадные таблицы стилей в Visual Studio 2008 | Документация Майкрософт'
 author: rick-anderson
 description: В этом видео мы рассмотрим, как улучшенные средства для создания внешних каскадных таблиц стилей. CSS используются с любой хорошо спроектированные веб-сайт и 2 для Visual Studio...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/14/2008
 ms.assetid: fa9c74b0-c692-4553-805c-b89f8bf2c4da
 msc.legacyurl: /web-forms/videos/aspnet-35/how-do-i/how-do-i-cascading-style-sheets-in-visual-studio-2008
 msc.type: video
-ms.openlocfilehash: 7ff360f32265235d679dad973fb065f8fbc20545
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6d3566fa7267b389d0b2ac0ecd31ff368e659e5a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37813475"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835557"
 ---
 <a name="how-do-i-cascading-style-sheets-in-visual-studio-2008"></a>[Инструкции] Каскадные таблицы стилей в Visual Studio 2008
 ====================

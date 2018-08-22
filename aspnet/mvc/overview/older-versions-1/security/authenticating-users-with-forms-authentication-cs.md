@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/security/authenticating-users-with-forms-auth
 title: Проверка подлинности пользователей с помощью форм проверки подлинности (C#) | Документация Майкрософт
 author: microsoft
 description: Узнайте, как использовать атрибут [Authorize] чтобы защитить паролем определенной страницы в приложении MVC. Вы узнаете, как использовать веб-сайта администрирования слишком...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/27/2009
 ms.assetid: 239fd3ca-5630-4b8d-bc4b-2f906b1d3504
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e23351071c953427457553a76a66b286d4a470f8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d69ae977b3e6a323d1dff1443f09ac40e8f9a449
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37841462"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829731"
 ---
 <a name="authenticating-users-with-forms-authentication-c"></a>Проверка подлинности пользователей с помощью форм (C#)
 ====================

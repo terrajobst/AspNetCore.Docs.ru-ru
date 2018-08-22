@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/visual-studio-web-deployment/preparing-databa
 title: 'Веб-развертывание ASP.NET с помощью Visual Studio: Подготовка к развертыванию базы данных | Документация Майкрософт'
 author: tdykstra
 description: В этой серии руководств показано, как развернуть ASP.NET (публикации) веб-приложения, веб-приложениях службы приложений Azure или у стороннего поставщика размещения, Пол...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/15/2013
 ms.assetid: ae4def81-fa37-4883-a13e-d9896cbf6c36
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
 msc.type: authoredcontent
-ms.openlocfilehash: a9ddeda3bfe4315c835cd447f6178669797dceb2
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7bdf443fbce7376ac057c848df146717955203f9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803195"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41839171"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>Веб-развертывание ASP.NET с помощью Visual Studio: Подготовка к развертыванию базы данных
 ====================

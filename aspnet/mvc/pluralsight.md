@@ -3,17 +3,17 @@ uid: mvc/pluralsight
 title: Обучающее видео об MVC от Pluralsight | Документация Майкрософт
 author: rick-anderson
 description: Обучающее видео об MVC от Pluralsight это бесплатные учебные видеоматериалы будут помогут вам приступить к работе с ASP.NET MVC. Этот интерфейс охватывает все от настройки, разработки...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/09/2011
 ms.assetid: 87612fe1-258c-4f50-88d8-c3047dec3f14
 msc.legacyurl: /mvc/pluralsight
 msc.type: content
-ms.openlocfilehash: 41c83b9a348fec1ac73b005ffec466ecf37abb24
-ms.sourcegitcommit: 8b68e144aab75374af52605a71717c77345a28b2
+ms.openlocfilehash: 4669f35f897b07d6cb288f57b031cc966c7bb04d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39182620"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829769"
 ---
 <a name="mvc-video-training-from-pluralsight"></a>Обучающее видео об MVC от Pluralsight
 ====================

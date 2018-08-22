@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-pro
 title: 'Веб-развертывание ASP.NET с помощью Visual Studio: развертывание в рабочей среде | Документация Майкрософт'
 author: tdykstra
 description: В этой серии руководств показано, как развернуть ASP.NET (публикации) веб-приложения, веб-приложениях службы приложений Azure или у стороннего поставщика размещения, Пол...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/15/2013
 ms.assetid: 416438a1-3b2f-4d27-bf53-6b76223c33bf
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: a91feedb9ac09b2a70ca256c72d312a1e78ecbc8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f71d8311cbb1131d9c30c0bd9071a1c6c90f9976
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37827881"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837061"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>Веб-развертывание ASP.NET с помощью Visual Studio: развертывание в рабочей среде
 ====================

@@ -3,17 +3,17 @@ uid: ajax/cdn/jquery-ui/cdnjqueryui1121
 title: пользовательский Интерфейс jQuery 1.12.1 в сети доставки Содержимого Microsoft Ajax | Документация Майкрософт
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/20/2016
 ms.assetid: 7bac1346-7135-4016-9d7a-4a5271159adb
 msc.legacyurl: /ajax/cdn/jquery-ui/cdnjqueryui1121
 msc.type: content
-ms.openlocfilehash: 3bdce776ee9148fb0a6c4ebf415505426497d672
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7c3b7df27783640cd520496facbc046f1df07477
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832905"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828474"
 ---
 <a name="jquery-ui-1121-on-the-microsoft-ajax-cdn"></a>пользовательский Интерфейс jQuery 1.12.1 в сети доставки Содержимого Microsoft Ajax
 ====================

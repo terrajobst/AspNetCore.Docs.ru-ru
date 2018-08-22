@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/introduction/forms-authenticatio
 title: Проверка подлинности Настройка форм и дополнительные разделы (VB) | Документация Майкрософт
 author: rick-anderson
 description: В этом руководстве мы Изучите различные параметры проверки подлинности форм и об их изменении посредством элемента forms см. в разделе. Это будет включают подробных сведений...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/14/2008
 ms.assetid: 829d2f56-5c48-445b-b826-3418a450c788
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d740694772b0fc5ad1c9c4eb5763004523586631
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: eb533cf763c2f3132ea0a5420b4d4cbea16c61cd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831146"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829791"
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-vb"></a>Настройка проверки подлинности форм и дополнительные разделы (VB)
 ====================

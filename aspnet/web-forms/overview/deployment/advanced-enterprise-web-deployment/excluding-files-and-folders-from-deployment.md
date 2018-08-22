@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-
 title: Исключение файлов и папок из развертывания | Документация Майкрософт
 author: jrjlee
 description: В этом разделе описывается, как можно исключить файлы и папки из веб-пакета развертывания при построении и упаковать проект веб-приложения.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: f4cc2d40-6a78-429b-b06f-07d000d4caad
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 33eecfea86842a93eac705e7823f1eba9519670e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: fd7357a94ab09effcec86f3725a37cfb2ef4746a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816682"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824138"
 ---
 <a name="excluding-files-and-folders-from-deployment"></a>Исключение файлов и папок из развертывания
 ====================

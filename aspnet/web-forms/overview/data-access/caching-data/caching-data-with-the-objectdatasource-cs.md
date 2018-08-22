@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/caching-data/caching-data-with-the-objectdat
 title: Кэширование данных с помощью ObjectDataSource (C#) | Документация Майкрософт
 author: rick-anderson
 description: Кэширование может означать разницу между медленное и быстрый веб-приложения. Это руководство представляет собой первое из четырех подробных взгляните на кэширование в ASP.NET...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/30/2007
 ms.assetid: bd87413c-8160-4520-a8a2-43b555c4183a
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f6ca84dc11eb8ecd03aee91198e74b723cfdce7c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 770b1ae92db8384a0c0b7f038b1ea994ae4c1b4c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803049"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837046"
 ---
 <a name="caching-data-with-the-objectdatasource-c"></a>Кэширование данных с помощью ObjectDataSource (C#)
 ====================
@@ -172,9 +172,9 @@ ASP.NET 2.0 предлагает широкий набор параметров 
 
 Просто задав несколько свойств, можно настроить элемент управления ObjectDataSource автоматически кэшировать его полученных данных в кэше данных ASP.NET. Ниже перечислены связанные с кэшем свойств элемента управления ObjectDataSource.
 
-- [EnableCaching](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.enablecaching.aspx) должно быть присвоено `true` для включения кэширования. Значение по умолчанию — `false`.
+- [EnableCaching](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.enablecaching.aspx) должно быть присвоено `true` для включения кэширования. Значение по умолчанию — `false`.
 - [CacheDuration](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheduration.aspx) количество времени в секундах, которое данные кэшируются. Значение по умолчанию — 0. Элемент управления ObjectDataSource будет кэшировать данные, только если `EnableCaching` — `true` и `CacheDuration` присваивается значение больше нуля.
-- [CacheExpirationPolicy](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheexpirationpolicy.aspx) можно присвоить `Absolute` или `Sliding`. Если `Absolute`, элемент управления ObjectDataSource кэширует его извлеченных данных для `CacheDuration` секунды; Если `Sliding`, только после его не было обращений для истечения срока действия данных `CacheDuration` секунд. Значение по умолчанию — `Absolute`.
+- [CacheExpirationPolicy](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheexpirationpolicy.aspx) можно присвоить `Absolute` или `Sliding`. Если `Absolute`, элемент управления ObjectDataSource кэширует его извлеченных данных для `CacheDuration` секунды; Если `Sliding`, только после его не было обращений для истечения срока действия данных `CacheDuration` секунд. Значение по умолчанию — `Absolute`.
 - [CacheKeyDependency](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cachekeydependency.aspx) это свойство используется для связывания записей кэша s ObjectDataSource с существующей зависимости кэша. Записи данных s ObjectDataSource может быть преждевременно удалена из кэша с истекающим сроком действия, связанный с ним `CacheKeyDependency`. Это свойство чаще всего используется для связи с кэшем s ObjectDataSource зависимость кэша SQL, раздел будет рассмотрен в будущем [использование зависимостей кэша SQL](using-sql-cache-dependencies-cs.md) руководства.
 
 Позвольте настроить s `ProductsDataSource` ObjectDataSource для кэширования данных на 30 секунд на абсолютной шкале. Набор ObjectDataSource s `EnableCaching` свойства `true` и его `CacheDuration` значение 30. Оставьте `CacheExpirationPolicy` свойство, значение по умолчанию `Absolute`.

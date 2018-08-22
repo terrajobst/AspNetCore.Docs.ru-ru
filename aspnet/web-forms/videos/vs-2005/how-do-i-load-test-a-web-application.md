@@ -3,17 +3,17 @@ uid: web-forms/videos/vs-2005/how-do-i-load-test-a-web-application
 title: '[Инструкции] Нагрузочный тест веб-приложения? | Документы Майкрософт'
 author: rick-anderson
 description: В этом видео рассматривается процесс записи веб-теста и затем воспроизведение его как нагрузочного теста, которое имитирует несколько пользователей. Мы видим, как Visual Studio...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/01/2007
 ms.assetid: 2b0649d3-d072-446a-9918-b2648de26472
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-load-test-a-web-application
 msc.type: video
-ms.openlocfilehash: 6adc67a30890792da9b8337e18b6f2bb4a58cf07
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9171b4aeb806b20d9e5a8464d503551761d3b2b6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37830112"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838922"
 ---
 <a name="how-do-i-load-test-a-web-application"></a>[Инструкции] Нагрузочный тест веб-приложения?
 ====================

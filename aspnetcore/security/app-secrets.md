@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как сохранять и извлекать конфиденциальную информацию в виде секретов приложения во время разработки приложения ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 06/21/2018
+ms.date: 08/16/2018
 uid: security/app-secrets
-ms.openlocfilehash: d3b2de1a17012986ef8dea7aaf8636dd35d10fa1
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 35c316230c19aa69a0dac26ec25a6e017f102237
+ms.sourcegitcommit: 1cf65c25ed16495e27f35ded98b3952a30c68f36
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38126915"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41824148"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Безопасное хранение секретов приложения во время разработки в ASP.NET Core
 
@@ -26,9 +26,11 @@ ms.locfileid: "38126915"
 Переменные среды позволяют избежать хранение секретов приложений в коде или в локальных файлов конфигурации. Переменные среды переопределить значения конфигурации для всех источников ранее указанной конфигурации.
 
 ::: moniker range="<= aspnetcore-1.1"
+
 Настройки чтения значений переменных среды путем вызова [AddEnvironmentVariables](/dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables) в `Startup` конструктор:
 
-[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=10)]
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=8)]
+
 ::: moniker-end
 
 Рассмотрим веб-приложение ASP.NET Core, в котором **учетные записи отдельных пользователей** включена безопасность. Строку подключения базы данных по умолчанию включается в проект *appsettings.json* файл с ключом `DefaultConnection`. Строка подключения по умолчанию — для LocalDB, который работает в режиме пользователя и пароля не требуется. Во время развертывания приложения `DefaultConnection` значение ключа может быть заменено значение переменной среды. Полная строка подключения с конфиденциальные учетные данные могут хранить в переменной среды.
@@ -72,9 +74,10 @@ ms.locfileid: "38126915"
 Не создавать код, зависящий от расположения или формата данных, сохраненных с помощью диспетчера секретов. Эти детали реализации могут быть изменены. Например его значения не шифруются, но может быть в будущем.
 
 ::: moniker range="<= aspnetcore-2.0"
+
 ## <a name="install-the-secret-manager-tool"></a>Установите средство Secret Manager
 
-Средство Secret Manager входит в состав .NET Core CLI .NET Core в пакете SDK для 2.1.300. Для версий пакета SDK для .NET Core до 2.1.300 необходим установки средства.
+Средство Secret Manager связке с .NET Core CLI в .NET Core SDK 2.1.300 или более поздней версии. Для версий пакета SDK для .NET Core до 2.1.300 необходим установки средства.
 
 > [!TIP]
 > Запустите `dotnet --version` из командной оболочки, чтобы увидеть установленный номер версии пакета SDK для .NET Core.
@@ -87,7 +90,7 @@ The tool 'Microsoft.Extensions.SecretManager.Tools' is now included in the .NET 
 
 Установка [Microsoft.Extensions.SecretManager.Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) пакет NuGet в проекте ASP.NET Core. Пример:
 
-[!code-xml[](app-secrets/samples/1.x/UserSecrets/UserSecrets.csproj?name=snippet_CsprojFile&highlight=13-14)]
+[!code-xml[](app-secrets/samples/1.x/UserSecrets/UserSecrets.csproj?name=snippet_CsprojFile&highlight=15-16)]
 
 Выполните следующую команду в командной строке для проверки установки средства:
 
@@ -119,21 +122,41 @@ Use "dotnet user-secrets [command] --help" for more information about a command.
 
 > [!NOTE]
 > Должен быть в том же каталоге, что *.csproj* файл для запуска средства, предназначенные для *.csproj* файла `DotNetCliToolReference` элементов.
+
 ::: moniker-end
 
 ## <a name="set-a-secret"></a>Значение секрета
 
 Средство Secret Manager работает настройки конфигурации конкретного проекта, хранящиеся в профиле пользователя. Чтобы использовать секреты пользователя, определить `UserSecretsId` сервисном `PropertyGroup` из *.csproj* файл. Значение `UserSecretsId` может быть произвольным, но является уникальным для проекта. Разработчики обычно создать GUID для `UserSecretsId`.
 
-::: moniker range="<= aspnetcore-1.1"
-[!code-xml[](app-secrets/samples/1.x/UserSecrets/UserSecrets.csproj?name=snippet_PropertyGroup&highlight=3)]
-::: moniker-end
 ::: moniker range=">= aspnetcore-2.0"
+
 [!code-xml[](app-secrets/samples/2.x/UserSecrets/UserSecrets.csproj?name=snippet_PropertyGroup&highlight=3)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+[!code-xml[](app-secrets/samples/1.x/UserSecrets/UserSecrets.csproj?name=snippet_PropertyGroup&highlight=3)]
+
 ::: moniker-end
 
 > [!TIP]
-> В Visual Studio щелкните правой кнопкой мыши проект в обозревателе решений и выберите **управление секретами пользователей** в контекстном меню. Добавляет этот жест `UserSecretsId` элемент, заполненный идентификатора GUID, что в *.csproj* файл. Visual Studio открывает *secrets.json* файл в текстовом редакторе. Замените содержимое файла *secrets.json* с парами "ключ значение" для сохранения. Пример: [!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file.md)]
+> В Visual Studio щелкните правой кнопкой мыши проект в обозревателе решений и выберите **управление секретами пользователей** в контекстном меню. Добавляет этот жест `UserSecretsId` элемент, заполненный идентификатора GUID, что в *.csproj* файл. Visual Studio открывает *secrets.json* файл в текстовом редакторе. Замените содержимое файла *secrets.json* с парами "ключ значение" для сохранения. Пример:
+> ```json
+> {
+>   "Movies": {
+>     "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=Movie-1;Trusted_Connection=True;MultipleActiveResultSets=true",
+>     "ServiceApiKey": "12345"
+>   }
+> }
+> ```
+> Структура JSON выравнивается после внесения изменений с помощью `dotnet user-secrets remove` или `dotnet user-secrets set`. Например, на котором работают `dotnet user-secrets remove "Movies:ConnectionString"` сворачивает `Movies` литерала объекта. Измененный файл будет выглядеть примерно так:
+> ```json
+> {
+>   "Movies:ServiceApiKey": "12345"
+> }
+> ```
 
 Определите секрет приложения, состоящие из ключа и его значение. Секрет связан с проектом `UserSecretsId` значение. Например, выполните следующую команду из каталога, в котором *.csproj* файл существует:
 
@@ -181,14 +204,8 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ## <a name="access-a-secret"></a>Доступ к секрета
 
-::: moniker range="<= aspnetcore-1.1"
-[API конфигурации ASP.NET Core](xref:fundamentals/configuration/index) предоставляет доступ к Secret Manager секреты. Установка [Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) пакет NuGet.
-
-Добавить источник конфигурации секреты пользователя с помощью вызова [AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets) в `Startup` конструктор:
-
-[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=5-8)]
-::: moniker-end
 ::: moniker range=">= aspnetcore-2.0"
+
 [API конфигурации ASP.NET Core](xref:fundamentals/configuration/index) предоставляет доступ к Secret Manager секреты. Если проект предназначен для платформы .NET Framework, установить [Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) пакет NuGet.
 
 В ASP.NET Core 2.0 или более поздней версии, источник конфигурации секреты пользователя автоматически добавляется в режиме разработки, пока проект не вызывает [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) для инициализации нового экземпляра узла с помощью предварительно настроенных значений по умолчанию. `CreateDefaultBuilder` вызовы [AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets) при [EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname) — [разработки](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development):
@@ -197,17 +214,57 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 Когда `CreateDefaultBuilder` не вызывается во время создания узла, добавьте источник конфигурации секреты пользователя с помощью вызова [AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets) в `Startup` конструктор:
 
-[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=5-8)]
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=12)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+[API конфигурации ASP.NET Core](xref:fundamentals/configuration/index) предоставляет доступ к Secret Manager секреты. Установка [Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) пакет NuGet.
+
+Добавить источник конфигурации секреты пользователя с помощью вызова [AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets) в `Startup` конструктор:
+
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=12)]
+
 ::: moniker-end
 
 Секреты пользователя можно получить через `Configuration` API:
 
-::: moniker range="<= aspnetcore-1.1"
-[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupClass&highlight=23)]
-::: moniker-end
 ::: moniker range=">= aspnetcore-2.0"
+
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup.cs?name=snippet_StartupClass&highlight=14)]
+
 ::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupClass&highlight=26)]
+
+::: moniker-end
+
+## <a name="map-secrets-to-a-poco"></a>Сопоставить секреты POCO
+
+Сопоставление всей литерала объекта POCO (простой класс .NET со свойствами) полезен для объединения связанных свойств.
+
+[!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file-and-text.md)]
+
+Чтобы сопоставить выше секреты POCO, используйте `Configuration` API [привязке графа объектов](xref:fundamentals/configuration/index#bind-to-an-object-graph) функции. Следующий код привязывается к пользовательской `MovieSettings` POCO и обращается к `ServiceApiKey` значение свойства:
+
+::: moniker range=">= aspnetcore-1.1"
+
+[!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup3.cs?name=snippet_BindToObjectGraph)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-1.0"
+
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup3.cs?name=snippet_BindToObjectGraph)]
+
+::: moniker-end
+
+`Movies:ConnectionString` И `Movies:ServiceApiKey` секреты, сопоставляются с соответствующих свойств в `MovieSettings`:
+
+[!code-csharp[](app-secrets/samples/2.x/UserSecrets/Models/MovieSettings.cs?name=snippet_MovieSettingsClass)]
 
 ## <a name="string-replacement-with-secrets"></a>Строка замены с секретами
 
@@ -227,11 +284,16 @@ dotnet user-secrets set "DbPassword" "pass123"
 
 Можно задать значение секрета [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder) объекта [пароль](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.password) свойство, чтобы завершить строку подключения:
 
-::: moniker range="<= aspnetcore-1.1"
-[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=26-29)]
-::: moniker-end
 ::: moniker range=">= aspnetcore-2.0"
+
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=14-17)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=26-29)]
+
 ::: moniker-end
 
 ## <a name="list-the-secrets"></a>Вывод списка секретов
@@ -247,8 +309,8 @@ dotnet user-secrets list
 Появляется следующий результат:
 
 ```console
-Movies:ServiceApiKey = 12345
 Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted_Connection=True;MultipleActiveResultSets=true
+Movies:ServiceApiKey = 12345
 ```
 
 В приведенном выше примере двоеточия в имена ключей означает иерархии объектов в пределах *secrets.json*.

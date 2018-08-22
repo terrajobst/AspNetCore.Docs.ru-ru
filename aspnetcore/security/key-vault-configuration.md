@@ -5,12 +5,12 @@ description: Узнайте, как использовать поставщик 
 ms.author: riande
 ms.date: 08/01/2018
 uid: security/key-vault-configuration
-ms.openlocfilehash: 6474b9f5cb9e441854565a7891c4aac7f781c810
-ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
+ms.openlocfilehash: 829c6c7e2750879b51bf3ce8225c6e472900f2ad
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39410134"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829803"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации Azure Key Vault в ASP.NET Core
 
@@ -155,7 +155,7 @@ Configuration.Reload();
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-Если приложение не удается загрузить конфигурацию с помощью поставщика, сообщение об ошибке записывается [инфраструктура ведения журнала ASP.NET](xref:fundamentals/logging/index). Следующие условия не позволит конфигурации загрузки:
+Если приложение не удается загрузить конфигурацию с помощью поставщика, сообщение об ошибке записывается [инфраструктуры ведения журнала ASP.NET Core](xref:fundamentals/logging/index). Следующие условия не позволит конфигурации загрузки:
 
 * Приложение не настроено правильно, в Azure Active Directory.
 * Хранилище ключей не существует в хранилище ключей Azure.

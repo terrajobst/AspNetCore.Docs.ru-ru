@@ -3,17 +3,17 @@ uid: visual-studio/overview/2013/visual-studio-2013-web-editor-features-html-edi
 title: Функции Visual Studio 2013 Web редактор - редактор HTML | Документация Майкрософт
 author: madskristensen
 description: Мэдс показано Kristensen выключить возможности редактора HTML в Visual Studio 2013, включая полную поддержку технологии IntelliSense для HTML-элементов, все классы CSS и идентификаторы в проекте...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/17/2013
 ms.assetid: 5a6b4558-0555-4cac-99c7-06865169007f
 msc.legacyurl: /visual-studio/overview/2013/visual-studio-2013-web-editor-features-html-editor
 msc.type: video
-ms.openlocfilehash: 63df82a0638f6c30ad8d628f37bfdc67b35aef9c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 317bff81f3788a6d182db6ac0338898e65aaf6ab
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809398"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829754"
 ---
 <a name="visual-studio-2013-web-editor-features---html-editor"></a>Функции Visual Studio 2013 Web редактор - редактор HTML
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/caching-data/caching-data-at-application-sta
 title: Кэширование данных при запуске приложения (C#) | Документация Майкрософт
 author: rick-anderson
 description: В любой веб-приложении некоторые данные будут часто использоваться, и некоторые данные будут использоваться редко. Мы может повысить производительность приложения в наших ASP.NET...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/30/2007
 ms.assetid: 22ca8efa-7cd1-45a7-b9ce-ce6eb3b3ff95
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-at-application-startup-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fdc24f215238a0c44e40a3fcc087230565efa52b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2c7d00a21663746964e086a75fd4b64ed211ed5f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829772"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837034"
 ---
 <a name="caching-data-at-application-startup-c"></a>Кэширование данных при запуске приложения (C#)
 ====================

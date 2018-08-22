@@ -1,27 +1,27 @@
 ---
-title: Миграция с ClaimsPrincipal.Current
+title: Перенос из ClaimsPrincipal.Current
 author: mjrousos
-description: Дополнительные сведения о миграции от ClaimsPrincipal.Current для получения удостоверения текущего прошедшего проверку подлинности пользователя и утверждения в ASP.NET Core.
+description: Узнайте, как избежать ClaimsPrincipal.Current для получения удостоверения текущего прошедшего проверку подлинности пользователя и утверждения в ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 05/04/2018
 uid: migration/claimsprincipal-current
-ms.openlocfilehash: 477f9fe8f0249bdfc528e1b401f072851f2f0d23
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 35c3389798041e141c45bf0a76fa9d7285212768
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277190"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828515"
 ---
-# <a name="migrate-from-claimsprincipalcurrent"></a>Миграция с ClaimsPrincipal.Current
+# <a name="migrate-from-claimsprincipalcurrent"></a>Перенос из ClaimsPrincipal.Current
 
-В проектах ASP.NET был обычно используется [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) извлечь текущий с проверкой подлинности удостоверения пользователя и заявки. Это свойство больше не устанавливаются в ASP.NET Core. Код, который, зависящие от нее должен быть обновлен для получения удостоверения текущего прошедшего проверку подлинности пользователя через различными способами.
+В проектах ASP.NET 4.x, было часто используется [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) для получения текущего с проверкой подлинности удостоверения пользователя и утверждения. В ASP.NET Core это свойство больше не устанавливаются. Код, который был в зависимости от его необходимо обновить, чтобы получить удостоверение текущего пользователя вошедшего в систему через различные средства.
 
-## <a name="context-specific-data-instead-of-static-data"></a>Контекстные данные вместо статических данных
+## <a name="context-specific-data-instead-of-static-data"></a>Контекстные данные, а не статических данных
 
-При использовании ASP.NET Core, оба значения `ClaimsPrincipal.Current` и `Thread.CurrentPrincipal` не заданы. Оба эти свойства представляют статических состояние, которое обычно избегает ASP.NET Core. Вместо этого архитектура ASP.NET Core состоит в извлечении зависимости (например, удостоверение текущего пользователя) из коллекции контекстно зависимые службы (с помощью его [внедрения зависимостей](xref:fundamentals/dependency-injection) модели (DI)). Более, `Thread.CurrentPrincipal` статичен, поток, поэтому не может сохраняться изменения в некоторых сценариях асинхронной (и `ClaimsPrincipal.Current` просто вызывает `Thread.CurrentPrincipal` по умолчанию).
+При использовании ASP.NET Core, значения `ClaimsPrincipal.Current` и `Thread.CurrentPrincipal` не установлены. Оба эти свойства представляют статическое состояние, что ASP.NET Core обычно позволяет избежать. Вместо этого архитектура ASP.NET Core — получение зависимостей (например, удостоверение текущего пользователя) из коллекции контекстные службы (с помощью его [внедрения зависимостей](xref:fundamentals/dependency-injection) модели (DI)). Более, `Thread.CurrentPrincipal` статичен, поток, поэтому не может сохраняться изменения в некоторые асинхронные сценарии (и `ClaimsPrincipal.Current` просто вызывает `Thread.CurrentPrincipal` по умолчанию).
 
-Для понимания виды проблем поток статических членов может привести к в асинхронные сценарии, рассмотрим следующий фрагмент кода:
+Чтобы понять виды проблем поток статических членов может привести к в асинхронных сценариях, используйте следующий фрагмент кода:
 
 ```csharp
 // Create a ClaimsPrincipal and set Thread.CurrentPrincipal
@@ -39,21 +39,21 @@ await Task.Yield();
 Console.WriteLine($"Current user: {Thread.CurrentPrincipal?.Identity.Name}");
 ```
 
-Предыдущий образец кода устанавливает `Thread.CurrentPrincipal` и проверяет его значение до и после Ожидание асинхронного вызова. `Thread.CurrentPrincipal` относится только к *поток* на котором установлено, и метод может возобновить выполнение в другом потоке после оператора await. Следовательно `Thread.CurrentPrincipal` участия, если он сначала проверяется, но имеет значение null после вызова `await Task.Yield()`.
+Указанный выше код задает образец `Thread.CurrentPrincipal` и проверяет его значение до и после ожидает асинхронный вызов. `Thread.CurrentPrincipal` относится только к *поток* на котором оно задано, и метод вероятнее всего возобновить выполнение в другом потоке после оператора await. Следовательно `Thread.CurrentPrincipal` присутствует, если она сначала проверяется, но имеет значение null после вызова `await Task.Yield()`.
 
-Получение удостоверение текущего пользователя из приложения DI службы коллекции является более тестируемых слишком, поскольку тест удостоверения легко могут быть добавлены.
+Получение удостоверение текущего пользователя из приложения внедрения Зависимостей службы коллекции слишком более тестируем, так как удостоверения теста можно легко внедрить.
 
-## <a name="retrieve-the-current-user-in-an-aspnet-core-app"></a>Получение текущего пользователя в приложении ASP.NET Core
+## <a name="retrieve-the-current-user-in-an-aspnet-core-app"></a>Получить текущего пользователя в приложении ASP.NET Core
 
 Существует несколько вариантов для извлечения текущего прошедшего проверку подлинности пользователя `ClaimsPrincipal` в ASP.NET Core вместо `ClaimsPrincipal.Current`:
 
-* **ControllerBase.User**. Контроллеров MVC доступны текущего пользователя, прошедшего проверку подлинности с их [пользователя](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.user) свойство.
+* **ControllerBase.User**. Контроллеры MVC можно получить доступ к текущего пользователя, прошедшего проверку подлинности с их [пользователя](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.user) свойство.
 * **HttpContext.User**. Компоненты с доступом к текущему `HttpContext` (например, по промежуточного слоя) можно получить текущий пользователь `ClaimsPrincipal` из [HttpContext.User](/dotnet/api/microsoft.aspnetcore.http.httpcontext.user).
-* **Переданный вызывающего**. Библиотеки не имеющие доступа к текущим `HttpContext` часто вызывается из контроллеров или компонентов по промежуточного слоя и может быть передана в качестве аргумента идентификатора текущего пользователя.
-* **IHttpContextAccessor**. Проект ASP.NET, переносимые в ASP.NET Core может быть слишком большим, чтобы легко передать все требуемые позиции удостоверение текущего пользователя. В таких случаях [IHttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor) можно использовать в качестве решения этой проблемы. `IHttpContextAccessor` может получить доступ к текущим `HttpContext` (если он существует). Краткосрочное решение можно получить удостоверение текущего пользователя в коде, который еще не была обновлена для работы с архитектурой управляемых DI ASP.NET Core будет следующим:
+* **Переданный из вызывающего объекта**. Библиотеки без доступа к текущему `HttpContext` часто вызываются из контроллеров или компоненты промежуточного слоя и может иметь удостоверение текущего пользователя, передается в качестве аргумента.
+* **IHttpContextAccessor**. Проект, переносе в ASP.NET Core может быть слишком большим, легко передавать удостоверение текущего пользователя все необходимые расположения. В таких случаях [IHttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor) можно использовать в качестве обходного решения. `IHttpContextAccessor` может получить доступ к текущим `HttpContext` (если он существует). Это временное решение, чтобы получение удостоверение текущего пользователя в коде, который еще не были обновлены для работы с ASP.NET Core DI-управляемая архитектура будет следующим:
 
-  * Сделать `IHttpContextAccessor` доступного в контейнере DI путем вызова [AddHttpContextAccessor](https://github.com/aspnet/Hosting/issues/793) в `Startup.ConfigureServices`.
-  * Получить экземпляр `IHttpContextAccessor` во время загрузки и сохранения его в статической переменной. Экземпляр становится доступным для кода, который ранее получение текущего пользователя из статического свойства.
-  * Получение текущего пользователя `ClaimsPrincipal` с помощью `HttpContextAccessor.HttpContext?.User`. Если этот код используется вне контекста HTTP-запроса, `HttpContext` имеет значение null.
+  * Сделать `IHttpContextAccessor` в контейнер с внедрением Зависимостей путем вызова [AddHttpContextAccessor](https://github.com/aspnet/Hosting/issues/793) в `Startup.ConfigureServices`.
+  * Получить экземпляр `IHttpContextAccessor` во время запуска и сохранить ее в статической переменной. Экземпляр становится доступным для кода, который ранее получение текущего пользователя из статического свойства.
+  * Получить текущего пользователя `ClaimsPrincipal` с помощью `HttpContextAccessor.HttpContext?.User`. Если этот код используется вне контекста HTTP-запроса, `HttpContext` имеет значение null.
 
-Конечный параметр, с помощью `IHttpContextAccessor`, противоречит принципы ASP.NET Core (предпочитая подставляемого зависимости статических зависимости). Запланируйте окончательно удалить зависимость от статического `IHttpContextAccessor` вспомогательный. Может быть полезным моста, при переносе большого существующего приложения ASP.NET, которые были ранее с помощью `ClaimsPrincipal.Current`.
+Последний параметр, с помощью `IHttpContextAccessor`, противоречит принципы ASP.NET Core (предпочитая внедренного зависимости статических зависимостей). Со временем планируемое зависимость от статического `IHttpContextAccessor` вспомогательный. Может быть полезно моста, однако при переносе большого существующих приложений ASP.NET, которые были ранее с помощью `ClaimsPrincipal.Current`.

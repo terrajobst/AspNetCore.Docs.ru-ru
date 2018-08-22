@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspn
 title: Вставка, обновление и удаление данных с помощью элемента управления SqlDataSource (VB) | Документация Майкрософт
 author: rick-anderson
 description: В предыдущих учебных курсах мы показали, как элемент управления ObjectDataSource, разрешенное для вставки, обновления и удаления данных. Элемент управления SqlDataSource поддерживает t...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2007
 ms.assetid: 9673bef3-892c-45ba-a7d8-0da3d6f48ec5
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/inserting-updating-and-deleting-data-with-the-sqldatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6914f0f30702f2943ed60ee6ec48bfac57fa90d5
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3124d53bad0040938c6a1090971ceecdf8c92333
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37835684"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41839176"
 ---
 <a name="inserting-updating-and-deleting-data-with-the-sqldatasource-vb"></a>Вставка, обновление и удаление данных с помощью элемента управления SqlDataSource (VB)
 ====================

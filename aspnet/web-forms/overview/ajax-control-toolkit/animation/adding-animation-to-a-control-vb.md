@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-con
 title: Добавление анимации в элемент управления (Visual Basic) | Документация Майкрософт
 author: wenz
 description: Отображается этот элемент управления в ASP.NET AJAX Control Toolkit не только элемент управления, но всю платформу для добавления анимации в элемент управления. В этом руководстве показано как...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: c120187e-963e-4439-bb85-32771bc7f1f4
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7ae2fd6c680ed89022772c62bb6148808d2f4daf
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9392b1bab2289d886baf308d05644afbdc42a13a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818130"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829950"
 ---
 <a name="adding-animation-to-a-control-vb"></a>Добавление анимации в элемент управления (VB)
 ====================

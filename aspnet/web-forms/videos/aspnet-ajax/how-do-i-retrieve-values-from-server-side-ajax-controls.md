@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-ajax/how-do-i-retrieve-values-from-server-side-ajax
 title: '[Инструкции] Получение значений из элементов управления AJAX на стороне сервера | Документация Майкрософт'
 author: JoeStagner
 description: В этом видео я продемонстрирую, как получить значения из элементов управления AJAX на стороне сервера, подобным найден в наборе средств AJAX.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/21/2008
 ms.assetid: 9d770bb5-fd76-4ae9-a11b-9783f394a24f
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-retrieve-values-from-server-side-ajax-controls
 msc.type: video
-ms.openlocfilehash: 6d03c429336e66eec58d8f3e547b173f42e7351d
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6911f167b16e3caa1bf942d454f0aacd583383d7
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37828986"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828489"
 ---
 <a name="how-do-i-retrieve-values-from-server-side-ajax-controls"></a>[Инструкции] Получение значений из элементов управления AJAX на стороне сервера
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/moving-to-aspnet-20/membership
 title: Членство | Документация Майкрософт
 author: microsoft
 description: Членство ASP.NET основывается на Успех модели проверки подлинности форм из ASP.NET 1.x. Проверка подлинности форм ASP.NET предоставляет удобный способ incorp...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2005
 ms.assetid: f2339485-5d78-4c5e-8c0a-dc9b8a315345
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/membership
 msc.type: authoredcontent
-ms.openlocfilehash: f776ed628e206c06543589767ba364af3c76ae16
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d7fa3cb61608ea089141931cb9362359cdc92619
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818221"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837060"
 ---
 <a name="membership"></a>Членство
 ====================

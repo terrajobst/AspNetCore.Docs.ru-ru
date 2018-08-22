@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/modalpopup/positioning-a-modalpopup
 title: Размещение ModalPopup (VB) | Документация Майкрософт
 author: wenz
 description: Элемент управления ModalPopup в AJAX Control Toolkit предоставляет простой способ создания модального всплывающего окна с помощью средств на стороне клиента. Тем не менее не предлагает элемент управления...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 8a07210c-eb0e-485e-9ee8-82a101520e65
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/positioning-a-modalpopup-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e36d22b5c2f503ed849f373153e263bdd9546452
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a507cb173b6dba96ca532a249fa9d495ded7d4e8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37821765"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837662"
 ---
 <a name="positioning-a-modalpopup-vb"></a>Размещение ModalPopup (VB)
 ====================

@@ -1,52 +1,53 @@
 ---
 title: Настройка удостоверения ASP.NET Core
 author: AdrienTorris
-description: Обзор ASP.NET Core Identity значения по умолчанию и подробные сведения о настройке свойства удостоверения для использования пользовательских значений.
-ms.author: scaddie
-ms.date: 03/06/2018
+description: Понять значения по умолчанию ASP.NET Core Identity и узнайте, как настроить свойства удостоверения для использования пользовательских значений.
+ms.author: riande
+ms.date: 08/14/2018
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 914e9b22ed52b560366fdff1f2430d3dd66454c3
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c597eacbb21ed0968e6195f7b6dcb46d37ba80a5
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276267"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "41870921"
 ---
 # <a name="configure-aspnet-core-identity"></a>Настройка удостоверения ASP.NET Core
 
-Удостоверение ASP.NET Core использует конфигурацию по умолчанию для параметров, таких как политика паролей, время блокировки и параметры файлов cookie. Эти параметры можно переопределить в приложении `Startup` класса.
+Удостоверение ASP.NET Core использует значения по умолчанию для параметров, таких как политики паролей, блокировки и куки-файл конфигурации. Эти параметры можно переопределить в `Startup` класса.
 
 ## <a name="identity-options"></a>Параметры удостоверений
 
-[IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) класс представляет параметры, которые можно использовать для настройки системы удостоверений.
+[IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) класс представляет параметры, которые могут использоваться для настройки системы удостоверений. `IdentityOptions` необходимо задать **после** вызова `AddIdentity` или `AddDefaultIdentity`.
 
 ### <a name="claims-identity"></a>Идентификатор утверждений
 
-[IdentityOptions.ClaimsIdentity](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity) указывает [ClaimsIdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions) с свойства, показанные в таблице.
+[IdentityOptions.ClaimsIdentity](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity) указывает [ClaimsIdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions) с помощью свойства, показанные в следующей таблице.
 
 | Свойство. | Описание | Значение по умолчанию |
 | -------- | ----------- | :-----: |
-| [roleClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.roleclaimtype) | Возвращает или задает тип утверждения, используемый для утверждения роли. | [ClaimTypes.Role](/dotnet/api/system.security.claims.claimtypes.role) |
+| [RoleClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.roleclaimtype) | Возвращает или задает тип утверждения, используемый для утверждения роли. | [ClaimTypes.Role](/dotnet/api/system.security.claims.claimtypes.role) |
 | [SecurityStampClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.securitystampclaimtype) | Возвращает или задает тип утверждения, используемый для отметки утверждения безопасности. | `AspNet.Identity.SecurityStamp` |
-| [UserIdClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.useridclaimtype) | Возвращает или задает тип утверждения, используемый для утверждения идентификатора пользователя. | [ClaimTypes.NameIdentifier](/dotnet/api/system.security.claims.claimtypes.nameidentifier) |
-| [UserNameClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.usernameclaimtype) | Возвращает или задает тип утверждения, используемый для утверждения имени пользователя. | [ClaimTypes.Name](/dotnet/api/system.security.claims.claimtypes.name) |
+| [UserIdClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.useridclaimtype) | Возвращает или задает тип утверждения, используемый для утверждение идентификатора пользователя. | [ClaimTypes.NameIdentifier](/dotnet/api/system.security.claims.claimtypes.nameidentifier) |
+| [UserNameClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.usernameclaimtype) | Возвращает или задает тип утверждения, используемый для утверждения с именем пользователя. | [Содержащееся в ClaimTypes.Name](/dotnet/api/system.security.claims.claimtypes.name) |
 
 ### <a name="lockout"></a>Блокировки
 
-Блокирует работу пользователя в течение заданного времени после заданного числа неудачных попыток доступа (по умолчанию: 5-минутного блокировки после 5 неудачных попыток доступа). Сбрасывает счетчик неудачных доступов попыток прошли проверку подлинности и сбрасывает часы.
+Блокировки задается в [PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync#Microsoft_AspNetCore_Identity_SignInManager_1_PasswordSignInAsync_System_String_System_String_System_Boolean_System_Boolean_) метод:
 
-В следующем примере значения по умолчанию:
+[!code-csharp[](identity-configuration/sample/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=9)]
 
-[!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-30,39-42,50-52)]
+Приведенный выше код основан на `Login` удостоверение шаблона. 
 
-Убедитесь, что [PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync) задает `lockoutOnFailure` для `true`:
+Задаются параметры блокировки `StartUp.ConfigureServices`:
 
-```csharp
-var result = await _signInManager.PasswordSignInAsync(
-                 Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
-```
+[!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_lock)]
 
-[IdentityOptions.Lockout](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout) указывает [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) с свойства, показанные в таблице.
+Указанный выше код задает [IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) со значениями по умолчанию.
+
+Сбрасывает счетчик попыток неудачные попытки доступа успешной проверки подлинности и сбрасывает часы.
+
+[IdentityOptions.Lockout](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout) указывает [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) со свойствами, приведенных в таблице.
 
 | Свойство. | Описание | Значение по умолчанию |
 | -------- | ----------- | :-----: |
@@ -56,111 +57,105 @@ var result = await _signInManager.PasswordSignInAsync(
 
 ### <a name="password"></a>Пароль
 
-По умолчанию удостоверение требует, что пароли содержат символ верхнего регистра, строчные буквы, цифры и не алфавитно-цифровой символ. Пароли должны быть по крайней мере шесть символов. [PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) можно изменить в `Startup.ConfigureServices`.
+По умолчанию удостоверение требует, что пароли содержат символ верхнего регистра, строчную букву, цифру и специальный символ. Пароли должны быть по крайней мере шесть символов. [PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) можно задать в `Startup.ConfigureServices`.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.1"
 
-ASP.NET Core 2.0 добавлен [RequiredUniqueChars](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireduniquechars) свойство. В противном случае параметры аналогичны ASP.NET Core 1.x.
+[!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_pw)]
 
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
 [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-37,50-52)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Startup.cs?range=58-65,84)]
 
----
+::: moniker-end
 
-[IdentityOptions.Password](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password) указывает [PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) с свойства, показанные в таблице.
+[IdentityOptions.Password](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password) указывает [PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) со свойствами, приведенных в таблице.
 
 | Свойство. | Описание | Значение по умолчанию |
 | -------- | ----------- | :-----: |
-| [RequireDigit](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredigit) | Необходимо указать число от 0-9 и пароль. | `true` |
+| [RequireDigit](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredigit) | Требуется число в диапазоне от 0 до 9, в пароле. | `true` |
 | [RequiredLength](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredlength) | Минимальная длина пароля. | 6 |
-| [RequiredUniqueChars](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireduniquechars) | Применяется только на основных ASP.NET 2.0 или более поздней версии.<br><br> Требует количества уникальных символов в пароле. | 1 |
-| [RequireLowercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirelowercase) | Требуется нижний регистр символов в пароле. | `true` |
-| [RequireNonAlphanumeric](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirenonalphanumeric) | Требуется не буквенно-цифровых символов в пароле. | `true` |
-| [RequireUppercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireuppercase) | Требуется символ верхнего регистра в пароле. | `true` |
 
-### <a name="sign-in"></a>вход
+::: moniker range=">= aspnetcore-2.0"
 
-[!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-30,44-46,50-52)]
+| [RequiredUniqueChars](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireduniquechars) | Применяется только к ASP.NET Core 2.0 или более поздней версии.<br><br> Необходимо число уникальных символов в пароле. | 1 |
 
-[IdentityOptions.SignIn](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.signin) указывает [SignInOptions](/dotnet/api/microsoft.aspnetcore.identity.signinoptions) с свойства, показанные в таблице.
+::: moniker-end
+
+| [RequireLowercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirelowercase) | Должен стоять символ нижнего регистра в пароле. | `true` | | [RequireNonAlphanumeric](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirenonalphanumeric) | Требуется не буквенно-цифровых символов в пароле. | `true` | | [RequireUppercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireuppercase) | Требуется символ верхнего регистра в пароле. | `true` |
+
+### <a name="sign-in"></a>Вход
+
+В следующем коде наборы `SignIn` (по умолчанию значения параметров):
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_si)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-30,44-46,50-52)] 
+
+::: moniker-end
+
+[IdentityOptions.SignIn](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.signin) указывает [SignInOptions](/dotnet/api/microsoft.aspnetcore.identity.signinoptions) со свойствами, приведенных в таблице.
 
 | Свойство. | Описание | Значение по умолчанию |
 | -------- | ----------- | :-----: |
-| [RequireConfirmedEmail](/dotnet/api/microsoft.aspnetcore.identity.signinoptions.requireconfirmedemail) | Требует подтверждения электронной почты для входа. | `false` |
-| [RequireConfirmedPhoneNumber](/dotnet/api/microsoft.aspnetcore.identity.signinoptions.requireconfirmedphonenumber) | Требуется номер телефона, подтвержденной для входа. | `false` |
+| [RequireConfirmedEmail](/dotnet/api/microsoft.aspnetcore.identity.signinoptions.requireconfirmedemail) | Требуется подтверждена электронной почты для входа. | `false` |
+| [RequireConfirmedPhoneNumber](/dotnet/api/microsoft.aspnetcore.identity.signinoptions.requireconfirmedphonenumber) | Требуется номер подтверждена телефона для входа. | `false` |
 
 ### <a name="tokens"></a>лексемы
 
-[IdentityOptions.Tokens](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens) указывает [TokenOptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) с свойства, показанные в таблице.
+[IdentityOptions.Tokens](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens) указывает [TokenOptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) со свойствами, приведенных в таблице.
 
 
 |                                                        Свойство.                                                         |                                                                                      Описание:                                                                                      |
 |-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     [AuthenticatorTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.authenticatortokenprovider)     |                                       Возвращает или задает `AuthenticatorTokenProvider` используется для проверки двухфакторной входа в систему с помощью средства проверки подлинности.                                       |
-|       [ChangeEmailTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changeemailtokenprovider)       |                                     Возвращает или задает `ChangeEmailTokenProvider` используется для создания токенов, используемых в сообщениях электронной почты Подтверждение изменений по электронной почте.                                     |
-| [ChangePhoneNumberTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changephonenumbertokenprovider) |                                      Возвращает или задает `ChangePhoneNumberTokenProvider` используется для создания токенов, используемых при изменении номера телефонов.                                      |
+|     [AuthenticatorTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.authenticatortokenprovider)     |                                       Возвращает или задает `AuthenticatorTokenProvider` используется для проверки двухфакторной входы в систему с помощью средства проверки подлинности.                                       |
+|       [ChangeEmailTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changeemailtokenprovider)       |                                     Возвращает или задает `ChangeEmailTokenProvider` используется для создания токенов, используемых в сообщениях электронной почты подтверждением изменение электронной почты.                                     |
+| [ChangePhoneNumberTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changephonenumbertokenprovider) |                                      Возвращает или задает `ChangePhoneNumberTokenProvider` использовать для создания маркеров, используемых для изменения номера телефонов.                                      |
 | [EmailConfirmationTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.emailconfirmationtokenprovider) |                                             Возвращает или задает поставщик маркеров, используемый для создания токенов, используемых в сообщениях электронной почты для подтверждения учетной записи.                                              |
 |     [PasswordResetTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.passwordresettokenprovider)     | Возвращает или задает [IUserTwoFactorTokenProvider<TUser> ](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactortokenprovider-1) используется для создания токенов, используемых в сообщениях электронной почты для сброса пароля. |
-|                    [ProviderMap](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.providermap)                    |                Используется для создания [пользовательского поставщика маркеров](/dotnet/api/microsoft.aspnetcore.identity.tokenproviderdescriptor) с ключом, который используется в качестве имени поставщика.                 |
+|                    [ProviderMap](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.providermap)                    |                Используется для конструирования [Поставщик маркера пользователя](/dotnet/api/microsoft.aspnetcore.identity.tokenproviderdescriptor) с ключом, используемым в качестве имени поставщика.                 |
 
 ### <a name="user"></a>Пользовательская
 
-[!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-30,48-52)]
+[!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_user)]
 
-[IdentityOptions.User](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.user) указывает [UserOptions](/dotnet/api/microsoft.aspnetcore.identity.useroptions) с свойства, показанные в таблице.
+[IdentityOptions.User](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.user) указывает [UserOptions](/dotnet/api/microsoft.aspnetcore.identity.useroptions) со свойствами, приведенных в таблице.
 
 | Свойство. | Описание | Значение по умолчанию |
 | -------- | ----------- | :-----: |
 | [AllowedUserNameCharacters](/dotnet/api/microsoft.aspnetcore.identity.useroptions.allowedusernamecharacters) | Допустимые символы в имени пользователя. | abcdefghijklmnopqrstuvwxyz<br>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789<br>-._@+ |
-| [RequireUniqueEmail](/dotnet/api/microsoft.aspnetcore.identity.useroptions.requireuniqueemail) | Требуется иметь уникальный адрес электронной почты пользователя. | `false` |
+| [RequireUniqueEmail](/dotnet/api/microsoft.aspnetcore.identity.useroptions.requireuniqueemail) | Требуется уникальный адрес электронной почты для каждого пользователя. | `false` |
 
-## <a name="cookie-settings"></a>Параметры файлов cookie
+### <a name="cookie-settings"></a>Параметры файлов cookie
 
-Настройка приложения в файле cookie `Startup.ConfigureServices`:
+Настройка приложения в файле cookie `Startup.ConfigureServices`. [ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) должен вызываться **после** вызова `AddIdentity` или `AddDefaultIdentity`.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_cookie)]
+
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
 
 [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?name=snippet_configurecookie)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Startup.cs?range=58-59,72-80,84)]
 
----
+::: moniker-end
 
-[CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions) имеет следующие свойства:
-
-|                                                               Свойство.                                                               |                                                                                                                                                           Описание:                                                                                                                                                            |
-|--------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|       [AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath)       |                                                                 Уведомляет обработчик, что следует изменить исходящий <em>403 Запрещено</em> код состояния в <em>перенаправление 302</em> на заданный путь.<br><br>Значение по умолчанию — `/Account/AccessDenied`.                                                                  |
-|             [authenticationScheme](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.authenticationscheme)              |                                                                                                                Применяется только к ASP.NET Core 1.x.<br><br> Логическое имя для проверки подлинности конкретной схемы.                                                                                                                |
-|            [AutomaticAuthenticate](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.automaticauthenticate)             |                                                                       Применяется только к ASP.NET Core 1.x.<br><br> Если значение равно true, файл cookie проверки подлинности запустите при каждом запросе и попытка проверки и воссоздания любому участнику сериализованный она создана.                                                                        |
-|               [AutomaticChallenge](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.automaticchallenge)                |                                              Применяется только к ASP.NET Core 1.x.<br><br> Значение true, если по промежуточного слоя проверки подлинности обрабатывает автоматического проблем. Если значение равно false, проверка подлинности по промежуточного слоя лишь изменяет ответы, если они явным образом указано `AuthenticationScheme`.                                               |
-|               [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.claimsissuer)               |                                                             Возвращает или задает поставщик, который должен использоваться для любые утверждения, которые создаются (наследуется от [AuthenticationSchemeOptions](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions)).                                                             |
-|                             [Cookie.Domain](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.domain)                              |                                                                                                                                             Домен, связанный с cookie.                                                                                                                                             |
-|                         [Cookie.Expiration](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.expiration)                          |                 Возвращает или задает время существования файлов cookie HTTP (не файл cookie проверки подлинности). Это свойство переопределено с [ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.expiretimespan). Не должны использоваться в контексте CookieAuthentication.                  |
-|                           [Cookie.HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly)                            |                                                                                                               Указывает, доступен ли cookie клиентским сценариям.<br><br>Значение по умолчанию — `true`.                                                                                                                |
-|                               [Cookie.Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name)                                |                                                                                                                            Имя файла cookie.<br><br>Значение по умолчанию — `.AspNetCore.Cookies`.                                                                                                                            |
-|                               [Cookie.Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path)                                |                                                                                                                                                         Путь к файлу cookie.                                                                                                                                                         |
-|                           [Cookie.SameSite](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.samesite)                            |                                                                                           `SameSite` Атрибут файла cookie.<br><br>Значение по умолчанию — [SameSiteMode.Lax](/dotnet/api/microsoft.aspnetcore.http.samesitemode).                                                                                            |
-|                       [Cookie.SecurePolicy](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.securepolicy)                        |                                                   [CookieSecurePolicy](/dotnet/api/microsoft.aspnetcore.http.cookiesecurepolicy) конфигурации.<br><br>Значение по умолчанию — [CookieSecurePolicy.SameAsRequest](/dotnet/api/microsoft.aspnetcore.http.cookiesecurepolicy).                                                    |
-|                  [CookieDomain](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiedomain)                   |                                                                                                                      Применяется только к ASP.NET Core 1.x.<br><br> Имя домена, где обслуживают куки-файл.                                                                                                                       |
-|                [CookieHttpOnly](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiehttponly)                 |                                                                                       Применяется только к ASP.NET Core 1.x.<br><br> Флаг, указывающий куки-файл должен быть доступен только на серверы.<br><br>Значение по умолчанию — `true`.                                                                                        |
-|                    [CookiePath](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiepath)                     |                                                                                                                  Применяется только к ASP.NET Core 1.x.<br><br> Использовать для изоляции приложений, выполняющихся в то же имя узла.                                                                                                                   |
-|                  [CookieSecure](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions.cookiesecure)                   | Применяется только к ASP.NET Core 1.x.<br><br> Флаг, указывающий, следует ли созданный файл cookie ограничиваются HTTPS (`CookieSecurePolicy.Always`), HTTP или HTTPS (`CookieSecurePolicy.None`), или тот же протокол, что и при запросе (`CookieSecurePolicy.SameAsRequest`).<br><br>Значение по умолчанию — `CookieSecurePolicy.SameAsRequest`. |
-|          [CookieManager](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.cookiemanager)          |                                                                                                                         Компонент, используемый для получения файлов cookie из запроса или задать их в ответе.                                                                                                                          |
-| [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.dataprotectionprovider) |                                                                             Если задано, поставщик используемые [CookieAuthenticationHandler](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationhandler) для защиты данных.                                                                             |
-|                      [Описание](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.description)                       |                                                                                                Применяется только к ASP.NET Core 1.x.<br><br> Дополнительные сведения о типе проверки подлинности доступны для приложения.                                                                                                |
-|                 [События](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.events)                 |                                                                                                      Обработчик вызывает методы в поставщике, который обеспечивает элементы управления приложения в определенных точках, в котором происходит обработка.                                                                                                       |
-|                 [EventsType](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.eventstype)                 |                                                            Если задано, службы тип, получаемый `Events` экземпляра вместо свойства (наследуется от [AuthenticationSchemeOptions](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions)).                                                            |
-|         [ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.expiretimespan)         |                                                                                      Элементы управления процессорное время билета проверки подлинности, хранящихся в файл cookie остается действительным с момента его создания.<br><br>Значение по умолчанию — 14 дней.                                                                                       |
-|              [LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath)              |                                                                                                       Если пользователь не авторизован, он будет перенаправлен на этот путь для имени входа.<br><br>Значение по умолчанию — `/Account/Login`.                                                                                                       |
-|             [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath)             |                                                                                                            При выходе пользователя, он будет перенаправлен на этот путь.<br><br>Значение по умолчанию — `/Account/Logout`.                                                                                                            |
-|     [ReturnUrlParameter](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.returnurlparameter)     |                                              Определяет имя параметра строки запроса, который добавляется по промежуточного слоя при <em>проверки подлинности 401</em> код состояния изменяется на <em>перенаправление 302</em> пути входа.<br><br>Значение по умолчанию — `ReturnUrl`.                                              |
-|           [SessionStore](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.sessionstore)           |                                                                                                                              Необязательный контейнер, в котором хранится удостоверение для различных запросов.                                                                                                                               |
-|      [slidingExpiration](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.slidingexpiration)      |                                                                           Если значение равно true, новый файл cookie выдается с новым окончанием срока действия текущего файла cookie при более половины срока.<br><br>Значение по умолчанию — `true`.                                                                           |
-|       [TicketDataFormat](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.ticketdataformat)       |                                                                                                 `TicketDataFormat` Используется для установки и снятия защиты identity и других свойств, хранящихся в значении файла cookie.                                                                                                  |
-
+Дополнительные сведения см. в разделе [CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions).

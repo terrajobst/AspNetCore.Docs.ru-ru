@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-vb
 title: Передача данных на главные страницы представлений (Visual Basic) | Документация Майкрософт
 author: microsoft
 description: Этот учебник призван объяснить, как можно передать данные от контроллера к главной странице представления. Мы рассмотрим две стратегии передачи данных в представление m...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/16/2008
 ms.assetid: 37a1ebae-8773-408f-8645-d21da7ff9ae1
 msc.legacyurl: /mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2daab1e8596035c1a70fb0f86ba752837d468ef2
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9b840e0a5cc325a043ae88c10f52cca418589119
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822248"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837329"
 ---
 <a name="passing-data-to-view-master-pages-vb"></a>Передача данных на главные страницы представлений (VB)
 ====================

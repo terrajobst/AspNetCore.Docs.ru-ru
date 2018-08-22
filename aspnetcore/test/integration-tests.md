@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/30/2018
 uid: test/integration-tests
-ms.openlocfilehash: 8d304397fb7f218b395374c2b8c696fef9d9f8ad
-ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
+ms.openlocfilehash: 758162eed6d6522986e1c7b93664c55d56216452
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39410186"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835571"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
@@ -29,6 +29,9 @@ ms.locfileid: "39410186"
 * [Введение в Razor Pages](xref:razor-pages/index)
 * [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [Модульные тесты страниц Razor](xref:test/razor-pages-tests)
+
+> [!NOTE]
+> Для тестирования одностраничные приложения, мы рекомендуем средство например [Selenium](https://www.seleniumhq.org/), которой можно автоматизировать браузера.
 
 ## <a name="introduction-to-integration-tests"></a>Общие сведения о интеграционные тесты
 
@@ -342,7 +345,7 @@ SUT — это система сообщение Razor Pages со следующ
 
 &#8224;В разделе EF [теста с помощью InMemory](/ef/core/miscellaneous/testing/in-memory), объясняется, как использовать базу данных в памяти для тестов с использованием MSTest. В этом разделе используется [xUnit](https://xunit.github.io/) платформы тестирования. Концепциях тестирования и тестирования реализации различных тестовых платформ доступны, но не идентичен.
 
-Несмотря на то, что приложение не использует [шаблон репозитория](xref:fundamentals/repository-pattern) и не эффективный пример [шаблон единицы работы (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages поддерживает эти шаблоны разработки. Дополнительные сведения см. в разделе [проектирование уровня сохраняемости инфраструктуры](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design), [реализация репозитория и шаблонов единицы работы в приложении MVC ASP.NET](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application), и [контроллера тестирования логика](/aspnet/core/mvc/controllers/testing) (этот пример реализует шаблон репозитория).
+Несмотря на то, что приложение не использует [шаблон репозитория](xref:fundamentals/repository-pattern) и не эффективный пример [шаблон единицы работы (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages поддерживает эти шаблоны разработки. Дополнительные сведения см. в разделе [проектирование уровня сохраняемости инфраструктуры](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design), <xref:fundamentals/repository-pattern>, и [тестирование логики контроллера](/aspnet/core/mvc/controllers/testing) (этот пример реализует шаблон репозитория).
 
 ### <a name="test-app-organization"></a>Тестирование приложений организации
 

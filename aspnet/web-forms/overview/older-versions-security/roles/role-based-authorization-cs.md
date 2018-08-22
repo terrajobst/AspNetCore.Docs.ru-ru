@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/roles/role-based-authorization-c
 title: Ролевая авторизация (C#) | Документация Майкрософт
 author: rick-anderson
 description: Этим руководством мы будем с рассмотрения как framework ролей связывает роли пользователя с его контекста безопасности. Затем он проверяет применение URL-адрес на основе ролей...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/24/2008
 ms.assetid: 4d9b63fa-c3d4-4e85-82b1-26ae3ba3ca1c
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/role-based-authorization-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 243a386bf682d63e3095a4e90ca0a0f08d24b503
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3f947e35164724b99507858a19bdd9cd1154768a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839951"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837067"
 ---
 <a name="role-based-authorization-c"></a>Ролевая авторизация (C#)
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspi
 title: 'Часть 5: Бизнес-логики | Документация Майкрософт'
 author: JoeStagner
 description: В этой серии руководств описаны все действия, предпринимаемые для создайте пример приложения Tailspin Spyworks. Часть 5 добавляет некоторые бизнес-логики.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/21/2010
 ms.assetid: eaef475a-ca91-47ea-a4a7-d074005ed80c
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: fdb73c01d7b6076bc292c640376aa35cc5f52ea6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e18acb66dbdb3bd3e0dfa21193f617dad82afc74
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37827052"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829471"
 ---
 <a name="part-5-business-logic"></a>Часть 5: Бизнес-логики
 ====================
