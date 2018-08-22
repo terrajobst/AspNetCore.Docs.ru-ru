@@ -3,21 +3,21 @@ uid: ajax/cdn/jquery-validate/cdnjqueryvalidate155
 title: Подключаемый модуль jQuery Validate 1.5.5. | Документация Майкрософт
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/23/2014
 ms.assetid: d1c0bb58-4450-464c-8db7-8ddaf2283ffa
 msc.legacyurl: /ajax/cdn/jquery-validate/cdnjqueryvalidate155
 msc.type: content
-ms.openlocfilehash: 6bd741b85a525532c85b1c723cbd40a0f65666db
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7f20c76acd35237cc0be677c10d5f422a76e4469
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809733"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824086"
 ---
-<a name="jquery-validate-155"></a><span data-ttu-id="c8da5-102">Подключаемый модуль jQuery Validate 1.5.5.</span><span class="sxs-lookup"><span data-stu-id="c8da5-102">jQuery Validate 1.5.5</span></span>
+<a name="jquery-validate-155"></a><span data-ttu-id="0ce1b-102">Подключаемый модуль jQuery Validate 1.5.5.</span><span class="sxs-lookup"><span data-stu-id="0ce1b-102">jQuery Validate 1.5.5</span></span>
 ====================
-<span data-ttu-id="c8da5-103">Следующие файлы размещаются в сети доставки Содержимого:</span><span class="sxs-lookup"><span data-stu-id="c8da5-103">The following files are hosted on the CDN:</span></span>
+<span data-ttu-id="0ce1b-103">Следующие файлы размещаются в сети доставки Содержимого:</span><span class="sxs-lookup"><span data-stu-id="0ce1b-103">The following files are hosted on the CDN:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.5.5/jquery.validate.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.5.5/jquery.validate.min.js
