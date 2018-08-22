@@ -3,119 +3,119 @@ uid: visual-studio/overview/2013/using-browser-link
 title: Использование привязывания к браузеру в Visual Studio 2013 | Документация Майкрософт
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/04/2013
 ms.assetid: 46cbfe20-b4dc-449b-9016-80657dd44fbe
 msc.legacyurl: /visual-studio/overview/2013/using-browser-link
 msc.type: authoredcontent
-ms.openlocfilehash: 9da93c279bfa2af614733e3234ba62429abf688a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f470aa7e425d16aec3f67d2a0ebb664a3e7eac41
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822199"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828153"
 ---
-<a name="using-browser-link-in-visual-studio-2013"></a><span data-ttu-id="e5e63-102">Использование привязывания к браузеру в Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="e5e63-102">Using Browser Link in Visual Studio 2013</span></span>
+<a name="using-browser-link-in-visual-studio-2013"></a><span data-ttu-id="df530-102">Использование привязывания к браузеру в Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="df530-102">Using Browser Link in Visual Studio 2013</span></span>
 ====================
-<span data-ttu-id="e5e63-103">по [Майк Уоссон](https://github.com/MikeWasson)</span><span class="sxs-lookup"><span data-stu-id="e5e63-103">by [Mike Wasson](https://github.com/MikeWasson)</span></span>
+<span data-ttu-id="df530-103">по [Майк Уоссон](https://github.com/MikeWasson)</span><span class="sxs-lookup"><span data-stu-id="df530-103">by [Mike Wasson](https://github.com/MikeWasson)</span></span>
 
-<span data-ttu-id="e5e63-104">Связь с браузером — это новая функция в Visual Studio 2013, который создает канал взаимодействия между средой разработки и один или несколько веб-браузеров.</span><span class="sxs-lookup"><span data-stu-id="e5e63-104">Browser Link is a new feature in Visual Studio 2013 that creates a communication channel between the development environment and one or more web browsers.</span></span> <span data-ttu-id="e5e63-105">Можно использовать связь с браузером для обновления веб-приложения в нескольких браузерах одновременно, что полезно для тестирования обозреватели.</span><span class="sxs-lookup"><span data-stu-id="e5e63-105">You can use Browser Link to refresh your web application in several browsers at once, which is useful for cross-browser testing.</span></span>
+<span data-ttu-id="df530-104">Связь с браузером — это новая функция в Visual Studio 2013, который создает канал взаимодействия между средой разработки и один или несколько веб-браузеров.</span><span class="sxs-lookup"><span data-stu-id="df530-104">Browser Link is a new feature in Visual Studio 2013 that creates a communication channel between the development environment and one or more web browsers.</span></span> <span data-ttu-id="df530-105">Можно использовать связь с браузером для обновления веб-приложения в нескольких браузерах одновременно, что полезно для тестирования обозреватели.</span><span class="sxs-lookup"><span data-stu-id="df530-105">You can use Browser Link to refresh your web application in several browsers at once, which is useful for cross-browser testing.</span></span>
 
-- [<span data-ttu-id="e5e63-106">Браузера "Обновить"</span><span class="sxs-lookup"><span data-stu-id="e5e63-106">Browser Refresh</span></span>](#browser-refresh)
-- [<span data-ttu-id="e5e63-107">Просмотр панели мониторинга связи с браузером</span><span class="sxs-lookup"><span data-stu-id="e5e63-107">Viewing the Browser Link Dashboard</span></span>](#dashboard)
-- [<span data-ttu-id="e5e63-108">Включение привязывание к браузеру для статического HTML-файлы</span><span class="sxs-lookup"><span data-stu-id="e5e63-108">Enabling Browser Link for Static HTML Files</span></span>](#static-html)
-- [<span data-ttu-id="e5e63-109">Отключение связь с браузером</span><span class="sxs-lookup"><span data-stu-id="e5e63-109">Disabling Browser Link</span></span>](#disabling)
-- [<span data-ttu-id="e5e63-110">Как это работает?</span><span class="sxs-lookup"><span data-stu-id="e5e63-110">How Does It Work?</span></span>](#how-it-works)
+- [<span data-ttu-id="df530-106">Браузера "Обновить"</span><span class="sxs-lookup"><span data-stu-id="df530-106">Browser Refresh</span></span>](#browser-refresh)
+- [<span data-ttu-id="df530-107">Просмотр панели мониторинга связи с браузером</span><span class="sxs-lookup"><span data-stu-id="df530-107">Viewing the Browser Link Dashboard</span></span>](#dashboard)
+- [<span data-ttu-id="df530-108">Включение привязывание к браузеру для статического HTML-файлы</span><span class="sxs-lookup"><span data-stu-id="df530-108">Enabling Browser Link for Static HTML Files</span></span>](#static-html)
+- [<span data-ttu-id="df530-109">Отключение связь с браузером</span><span class="sxs-lookup"><span data-stu-id="df530-109">Disabling Browser Link</span></span>](#disabling)
+- [<span data-ttu-id="df530-110">Как это работает?</span><span class="sxs-lookup"><span data-stu-id="df530-110">How Does It Work?</span></span>](#how-it-works)
 
 <a id="browser-refresh"></a>
-## <a name="browser-refresh"></a><span data-ttu-id="e5e63-111">Браузера "Обновить"</span><span class="sxs-lookup"><span data-stu-id="e5e63-111">Browser Refresh</span></span>
+## <a name="browser-refresh"></a><span data-ttu-id="df530-111">Браузера "Обновить"</span><span class="sxs-lookup"><span data-stu-id="df530-111">Browser Refresh</span></span>
 
-<span data-ttu-id="e5e63-112">С помощью обновления в браузере вы можете обновить несколько браузеров, которые подключены к Visual Studio с помощью привязывания к браузеру.</span><span class="sxs-lookup"><span data-stu-id="e5e63-112">With Browser Refresh, you can refresh multiple browsers that are connected to Visual Studio through Browser Link.</span></span>
+<span data-ttu-id="df530-112">С помощью обновления в браузере вы можете обновить несколько браузеров, которые подключены к Visual Studio с помощью привязывания к браузеру.</span><span class="sxs-lookup"><span data-stu-id="df530-112">With Browser Refresh, you can refresh multiple browsers that are connected to Visual Studio through Browser Link.</span></span>
 
-<span data-ttu-id="e5e63-113">Чтобы использовать обновления в браузере, необходимо сначала создайте приложение ASP.NET, с помощью любого из шаблонов проектов.</span><span class="sxs-lookup"><span data-stu-id="e5e63-113">To use Browser Refresh, first create an ASP.NET application, using any of the project templates.</span></span> <span data-ttu-id="e5e63-114">Отладка приложения, нажав клавишу F5 или выбрав значок со стрелкой на панели инструментов:</span><span class="sxs-lookup"><span data-stu-id="e5e63-114">Debug the application by pressing F5 or clicking the arrow icon in the toolbar:</span></span>
+<span data-ttu-id="df530-113">Чтобы использовать обновления в браузере, необходимо сначала создайте приложение ASP.NET, с помощью любого из шаблонов проектов.</span><span class="sxs-lookup"><span data-stu-id="df530-113">To use Browser Refresh, first create an ASP.NET application, using any of the project templates.</span></span> <span data-ttu-id="df530-114">Отладка приложения, нажав клавишу F5 или выбрав значок со стрелкой на панели инструментов:</span><span class="sxs-lookup"><span data-stu-id="df530-114">Debug the application by pressing F5 or clicking the arrow icon in the toolbar:</span></span>
 
 ![](using-browser-link/_static/image1.png)
 
-<span data-ttu-id="e5e63-115">Можно также использовать раскрывающийся список для выбора конкретного браузера для отладки.</span><span class="sxs-lookup"><span data-stu-id="e5e63-115">You can also use the dropdown to select a specific browser for debugging.</span></span>
+<span data-ttu-id="df530-115">Можно также использовать раскрывающийся список для выбора конкретного браузера для отладки.</span><span class="sxs-lookup"><span data-stu-id="df530-115">You can also use the dropdown to select a specific browser for debugging.</span></span>
 
 ![](using-browser-link/_static/image2.png)
 
-<span data-ttu-id="e5e63-116">Для отладки с помощью нескольких браузеров, установите **просмотр с помощью**.</span><span class="sxs-lookup"><span data-stu-id="e5e63-116">To debug with multiple browsers, select **Browse With**.</span></span> <span data-ttu-id="e5e63-117">В **просмотр с помощью** диалоговое окно, удерживайте нажатой клавишу CTRL, чтобы выбрать более одного браузера.</span><span class="sxs-lookup"><span data-stu-id="e5e63-117">In the **Browse With** dialog, hold down the CTRL key to select more than one browser.</span></span> <span data-ttu-id="e5e63-118">Нажмите кнопку **Обзор** для отладки с помощью выбранных браузерах.</span><span class="sxs-lookup"><span data-stu-id="e5e63-118">Click **Browse** to debug with the selected browsers.</span></span> <span data-ttu-id="e5e63-119">Связь с браузером также работает в том случае, если вы запустите браузер вне Visual Studio и перейдите к URL-адрес приложения.</span><span class="sxs-lookup"><span data-stu-id="e5e63-119">Browser Link also works if you launch a browser from outside Visual Studio and navigate to the application URL.</span></span>
+<span data-ttu-id="df530-116">Для отладки с помощью нескольких браузеров, установите **просмотр с помощью**.</span><span class="sxs-lookup"><span data-stu-id="df530-116">To debug with multiple browsers, select **Browse With**.</span></span> <span data-ttu-id="df530-117">В **просмотр с помощью** диалоговое окно, удерживайте нажатой клавишу CTRL, чтобы выбрать более одного браузера.</span><span class="sxs-lookup"><span data-stu-id="df530-117">In the **Browse With** dialog, hold down the CTRL key to select more than one browser.</span></span> <span data-ttu-id="df530-118">Нажмите кнопку **Обзор** для отладки с помощью выбранных браузерах.</span><span class="sxs-lookup"><span data-stu-id="df530-118">Click **Browse** to debug with the selected browsers.</span></span> <span data-ttu-id="df530-119">Связь с браузером также работает в том случае, если вы запустите браузер вне Visual Studio и перейдите к URL-адрес приложения.</span><span class="sxs-lookup"><span data-stu-id="df530-119">Browser Link also works if you launch a browser from outside Visual Studio and navigate to the application URL.</span></span>
 
 ![](using-browser-link/_static/image3.png)
 
-<span data-ttu-id="e5e63-120">Связь с браузером элементы управления находятся в раскрывающемся списке со значком круговой стрелки.</span><span class="sxs-lookup"><span data-stu-id="e5e63-120">The Browser Link controls are located in the dropdown with the circular arrow icon.</span></span> <span data-ttu-id="e5e63-121">Значок стрелки — **обновить** кнопки.</span><span class="sxs-lookup"><span data-stu-id="e5e63-121">The arrow icon is the **Refresh** button.</span></span>
+<span data-ttu-id="df530-120">Связь с браузером элементы управления находятся в раскрывающемся списке со значком круговой стрелки.</span><span class="sxs-lookup"><span data-stu-id="df530-120">The Browser Link controls are located in the dropdown with the circular arrow icon.</span></span> <span data-ttu-id="df530-121">Значок стрелки — **обновить** кнопки.</span><span class="sxs-lookup"><span data-stu-id="df530-121">The arrow icon is the **Refresh** button.</span></span>
 
 ![](using-browser-link/_static/image4.png)
 
-<span data-ttu-id="e5e63-122">Чтобы увидеть, какие браузеры подключены, наведите указатель мыши **обновить** кнопки во время отладки.</span><span class="sxs-lookup"><span data-stu-id="e5e63-122">To see which browsers are connected, hover the mouse over the **Refresh** button while debugging.</span></span> <span data-ttu-id="e5e63-123">Подключенные браузеры отображаются в окне всплывающей подсказки.</span><span class="sxs-lookup"><span data-stu-id="e5e63-123">The connected browsers are shown in a ToolTip window.</span></span>
+<span data-ttu-id="df530-122">Чтобы увидеть, какие браузеры подключены, наведите указатель мыши **обновить** кнопки во время отладки.</span><span class="sxs-lookup"><span data-stu-id="df530-122">To see which browsers are connected, hover the mouse over the **Refresh** button while debugging.</span></span> <span data-ttu-id="df530-123">Подключенные браузеры отображаются в окне всплывающей подсказки.</span><span class="sxs-lookup"><span data-stu-id="df530-123">The connected browsers are shown in a ToolTip window.</span></span>
 
 ![](using-browser-link/_static/image5.png)
 
-<span data-ttu-id="e5e63-124">Чтобы обновить подключенные браузеры, нажмите **обновить** кнопку или нажмите сочетание клавиш CTRL + ALT + ВВОД.</span><span class="sxs-lookup"><span data-stu-id="e5e63-124">To refresh the connected browsers, click the **Refresh** button or press CTRL+ALT+ENTER.</span></span> <span data-ttu-id="e5e63-125">Например на следующем рисунке показан проект ASP.NET, который я создал с помощью шаблона проекта MVC 5.</span><span class="sxs-lookup"><span data-stu-id="e5e63-125">For example, the following screenshot shows an ASP.NET project, which I created using the MVC 5 project template.</span></span> <span data-ttu-id="e5e63-126">Вы увидите приложения, работающего в двух браузеров в верхней.</span><span class="sxs-lookup"><span data-stu-id="e5e63-126">You can see the application running in two browsers at the top.</span></span> <span data-ttu-id="e5e63-127">В нижней проект открыт в Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="e5e63-127">At the bottom, the project is open in Visual Studio.</span></span>
+<span data-ttu-id="df530-124">Чтобы обновить подключенные браузеры, нажмите **обновить** кнопку или нажмите сочетание клавиш CTRL + ALT + ВВОД.</span><span class="sxs-lookup"><span data-stu-id="df530-124">To refresh the connected browsers, click the **Refresh** button or press CTRL+ALT+ENTER.</span></span> <span data-ttu-id="df530-125">Например на следующем рисунке показан проект ASP.NET, который я создал с помощью шаблона проекта MVC 5.</span><span class="sxs-lookup"><span data-stu-id="df530-125">For example, the following screenshot shows an ASP.NET project, which I created using the MVC 5 project template.</span></span> <span data-ttu-id="df530-126">Вы увидите приложения, работающего в двух браузеров в верхней.</span><span class="sxs-lookup"><span data-stu-id="df530-126">You can see the application running in two browsers at the top.</span></span> <span data-ttu-id="df530-127">В нижней проект открыт в Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="df530-127">At the bottom, the project is open in Visual Studio.</span></span>
 
 ![](using-browser-link/_static/image6.png)
 
-<span data-ttu-id="e5e63-128">В Visual Studio, я изменил &lt;h1&gt; заголовок домашней страницы:</span><span class="sxs-lookup"><span data-stu-id="e5e63-128">In Visual Studio, I changed the &lt;h1&gt; heading for the home page:</span></span>
+<span data-ttu-id="df530-128">В Visual Studio, я изменил &lt;h1&gt; заголовок домашней страницы:</span><span class="sxs-lookup"><span data-stu-id="df530-128">In Visual Studio, I changed the &lt;h1&gt; heading for the home page:</span></span>
 
 ![](using-browser-link/_static/image7.png)
 
-<span data-ttu-id="e5e63-129">Когда я щелкнул **обновить** кнопки изменения были доступны в обоих окнах браузера:</span><span class="sxs-lookup"><span data-stu-id="e5e63-129">When I clicked the **Refresh** button, the change appeared in both browser windows:</span></span>
+<span data-ttu-id="df530-129">Когда я щелкнул **обновить** кнопки изменения были доступны в обоих окнах браузера:</span><span class="sxs-lookup"><span data-stu-id="df530-129">When I clicked the **Refresh** button, the change appeared in both browser windows:</span></span>
 
 ![](using-browser-link/_static/image8.png)
 
-<span data-ttu-id="e5e63-130">**Примечания**</span><span class="sxs-lookup"><span data-stu-id="e5e63-130">**Notes**</span></span>
+<span data-ttu-id="df530-130">**Примечания**</span><span class="sxs-lookup"><span data-stu-id="df530-130">**Notes**</span></span>
 
-- <span data-ttu-id="e5e63-131">Чтобы включить связь с браузером, задайте `debug=true` в [ &lt;компиляции&gt; ](https://msdn.microsoft.com/library/s10awwz0(v=vs.85).aspx) в файле Web.config проекта.</span><span class="sxs-lookup"><span data-stu-id="e5e63-131">To enable Browser Link, set `debug=true` in the [&lt;compilation&gt;](https://msdn.microsoft.com/library/s10awwz0(v=vs.85).aspx) element in the project's Web.config file.</span></span>
-- <span data-ttu-id="e5e63-132">Приложение должно выполняться на локальном компьютере.</span><span class="sxs-lookup"><span data-stu-id="e5e63-132">The application must be running on localhost.</span></span>
-- <span data-ttu-id="e5e63-133">Приложение должно использовать платформу .NET 4.0 или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="e5e63-133">The application must target .NET 4.0 or later.</span></span>
+- <span data-ttu-id="df530-131">Чтобы включить связь с браузером, задайте `debug=true` в [ &lt;компиляции&gt; ](https://msdn.microsoft.com/library/s10awwz0(v=vs.85).aspx) в файле Web.config проекта.</span><span class="sxs-lookup"><span data-stu-id="df530-131">To enable Browser Link, set `debug=true` in the [&lt;compilation&gt;](https://msdn.microsoft.com/library/s10awwz0(v=vs.85).aspx) element in the project's Web.config file.</span></span>
+- <span data-ttu-id="df530-132">Приложение должно выполняться на локальном компьютере.</span><span class="sxs-lookup"><span data-stu-id="df530-132">The application must be running on localhost.</span></span>
+- <span data-ttu-id="df530-133">Приложение должно использовать платформу .NET 4.0 или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="df530-133">The application must target .NET 4.0 or later.</span></span>
 
 <a id="dashboard"></a>
-## <a name="viewing-the-browser-link-dashboard"></a><span data-ttu-id="e5e63-134">Просмотр панели мониторинга связи с браузером</span><span class="sxs-lookup"><span data-stu-id="e5e63-134">Viewing the Browser Link Dashboard</span></span>
+## <a name="viewing-the-browser-link-dashboard"></a><span data-ttu-id="df530-134">Просмотр панели мониторинга связи с браузером</span><span class="sxs-lookup"><span data-stu-id="df530-134">Viewing the Browser Link Dashboard</span></span>
 
-<span data-ttu-id="e5e63-135">На панели мониторинга связи с браузером отображаются сведения о соединениях, связь с браузером.</span><span class="sxs-lookup"><span data-stu-id="e5e63-135">The Browser Link dashboard shows information about the Browser Link connections.</span></span> <span data-ttu-id="e5e63-136">Для просмотра панели мониторинга, выберите в раскрывающемся меню привязывание к браузеру (маленькую стрелку рядом с полем **обновить** кнопки).</span><span class="sxs-lookup"><span data-stu-id="e5e63-136">To view the dashboard, select the Browser Link dropdown menu (the small arrow next to the **Refresh** button).</span></span> <span data-ttu-id="e5e63-137">Нажмите кнопку **мониторинга связи с браузером**.</span><span class="sxs-lookup"><span data-stu-id="e5e63-137">Then click **Browser Link Dashboard**.</span></span>
+<span data-ttu-id="df530-135">На панели мониторинга связи с браузером отображаются сведения о соединениях, связь с браузером.</span><span class="sxs-lookup"><span data-stu-id="df530-135">The Browser Link dashboard shows information about the Browser Link connections.</span></span> <span data-ttu-id="df530-136">Для просмотра панели мониторинга, выберите в раскрывающемся меню привязывание к браузеру (маленькую стрелку рядом с полем **обновить** кнопки).</span><span class="sxs-lookup"><span data-stu-id="df530-136">To view the dashboard, select the Browser Link dropdown menu (the small arrow next to the **Refresh** button).</span></span> <span data-ttu-id="df530-137">Нажмите кнопку **мониторинга связи с браузером**.</span><span class="sxs-lookup"><span data-stu-id="df530-137">Then click **Browser Link Dashboard**.</span></span>
 
 ![](using-browser-link/_static/image9.png)
 
-<span data-ttu-id="e5e63-138">Панели мониторинга перечислены подключенные браузеры и URL-адрес, к которому перешел каждым браузером.</span><span class="sxs-lookup"><span data-stu-id="e5e63-138">The dashboard lists the connected Browsers and the URL to which each browser has navigated.</span></span>
+<span data-ttu-id="df530-138">Панели мониторинга перечислены подключенные браузеры и URL-адрес, к которому перешел каждым браузером.</span><span class="sxs-lookup"><span data-stu-id="df530-138">The dashboard lists the connected Browsers and the URL to which each browser has navigated.</span></span>
 
 ![](using-browser-link/_static/image10.png)
 
-<span data-ttu-id="e5e63-139">**Предварительные требования** разделе показаны все действия, необходимые для включить связь с браузером для этого проекта.</span><span class="sxs-lookup"><span data-stu-id="e5e63-139">The **Prerequisites** section shows any steps needed to enable Browser Link for that project.</span></span> <span data-ttu-id="e5e63-140">Например на следующем рисунке показан проект где «debug» имеет значение false в файле Web.config.</span><span class="sxs-lookup"><span data-stu-id="e5e63-140">For example, the following screenshot shows a project where "debug" is set to false in the Web.config file.</span></span>
+<span data-ttu-id="df530-139">**Предварительные требования** разделе показаны все действия, необходимые для включить связь с браузером для этого проекта.</span><span class="sxs-lookup"><span data-stu-id="df530-139">The **Prerequisites** section shows any steps needed to enable Browser Link for that project.</span></span> <span data-ttu-id="df530-140">Например на следующем рисунке показан проект где «debug» имеет значение false в файле Web.config.</span><span class="sxs-lookup"><span data-stu-id="df530-140">For example, the following screenshot shows a project where "debug" is set to false in the Web.config file.</span></span>
 
 ![](using-browser-link/_static/image11.png)
 
 <a id="static-html"></a>
-## <a name="enabling-browser-link-for-static-html-files"></a><span data-ttu-id="e5e63-141">Включение привязывание к браузеру для статического HTML-файлы</span><span class="sxs-lookup"><span data-stu-id="e5e63-141">Enabling Browser Link for Static HTML Files</span></span>
+## <a name="enabling-browser-link-for-static-html-files"></a><span data-ttu-id="df530-141">Включение привязывание к браузеру для статического HTML-файлы</span><span class="sxs-lookup"><span data-stu-id="df530-141">Enabling Browser Link for Static HTML Files</span></span>
 
-<span data-ttu-id="e5e63-142">Чтобы включить связь с браузером для статических файлов HTML, добавьте следующее в файл Web.config.</span><span class="sxs-lookup"><span data-stu-id="e5e63-142">To enable Browser Link for static HTML files, add the following to your Web.config file.</span></span>
+<span data-ttu-id="df530-142">Чтобы включить связь с браузером для статических файлов HTML, добавьте следующее в файл Web.config.</span><span class="sxs-lookup"><span data-stu-id="df530-142">To enable Browser Link for static HTML files, add the following to your Web.config file.</span></span>
 
 [!code-xml[Main](using-browser-link/samples/sample1.xml)]
 
-<span data-ttu-id="e5e63-143">Для повышения производительности удалите этот параметр, при публикации проекта.</span><span class="sxs-lookup"><span data-stu-id="e5e63-143">For performance reasons, remove this setting when you publish your project.</span></span>
+<span data-ttu-id="df530-143">Для повышения производительности удалите этот параметр, при публикации проекта.</span><span class="sxs-lookup"><span data-stu-id="df530-143">For performance reasons, remove this setting when you publish your project.</span></span>
 
 <a id="disabling"></a>
-## <a name="disabling-browser-link"></a><span data-ttu-id="e5e63-144">Отключение связь с браузером</span><span class="sxs-lookup"><span data-stu-id="e5e63-144">Disabling Browser Link</span></span>
+## <a name="disabling-browser-link"></a><span data-ttu-id="df530-144">Отключение связь с браузером</span><span class="sxs-lookup"><span data-stu-id="df530-144">Disabling Browser Link</span></span>
 
-<span data-ttu-id="e5e63-145">Связь с браузером включена по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="e5e63-145">Browser Link is enabled by default.</span></span> <span data-ttu-id="e5e63-146">Чтобы отключить его несколькими способами:</span><span class="sxs-lookup"><span data-stu-id="e5e63-146">There are several ways to disable it:</span></span>
+<span data-ttu-id="df530-145">Связь с браузером включена по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="df530-145">Browser Link is enabled by default.</span></span> <span data-ttu-id="df530-146">Чтобы отключить его несколькими способами:</span><span class="sxs-lookup"><span data-stu-id="df530-146">There are several ways to disable it:</span></span>
 
-- <span data-ttu-id="e5e63-147">В раскрывающемся меню связь с браузером, снимите флажок **включить связь с браузером**.</span><span class="sxs-lookup"><span data-stu-id="e5e63-147">In the Browser Link dropdown menu, uncheck **Enable Browser Link**.</span></span> 
+- <span data-ttu-id="df530-147">В раскрывающемся меню связь с браузером, снимите флажок **включить связь с браузером**.</span><span class="sxs-lookup"><span data-stu-id="df530-147">In the Browser Link dropdown menu, uncheck **Enable Browser Link**.</span></span> 
 
     ![](using-browser-link/_static/image12.png)
-- <span data-ttu-id="e5e63-148">В файле Web.config добавьте ключ с именем «vs: EnableBrowserLink» на значение «false» в разделе appSettings.</span><span class="sxs-lookup"><span data-stu-id="e5e63-148">In the Web.config file, add a key named "vs:EnableBrowserLink" with the value "false" in the appSettings section.</span></span> 
+- <span data-ttu-id="df530-148">В файле Web.config добавьте ключ с именем «vs: EnableBrowserLink» на значение «false» в разделе appSettings.</span><span class="sxs-lookup"><span data-stu-id="df530-148">In the Web.config file, add a key named "vs:EnableBrowserLink" with the value "false" in the appSettings section.</span></span> 
 
     [!code-xml[Main](using-browser-link/samples/sample2.xml)]
-- <span data-ttu-id="e5e63-149">В файле Web.config отладки установлен в значение false.</span><span class="sxs-lookup"><span data-stu-id="e5e63-149">In the Web.config file, set debug to false.</span></span> 
+- <span data-ttu-id="df530-149">В файле Web.config отладки установлен в значение false.</span><span class="sxs-lookup"><span data-stu-id="df530-149">In the Web.config file, set debug to false.</span></span> 
 
     [!code-xml[Main](using-browser-link/samples/sample3.xml)]
 
 <a id="how-it-works"></a>
-## <a name="how-does-it-work"></a><span data-ttu-id="e5e63-150">Как это работает?</span><span class="sxs-lookup"><span data-stu-id="e5e63-150">How Does It Work?</span></span>
+## <a name="how-does-it-work"></a><span data-ttu-id="df530-150">Как это работает?</span><span class="sxs-lookup"><span data-stu-id="df530-150">How Does It Work?</span></span>
 
-<span data-ttu-id="e5e63-151">Использует связи с браузером [SignalR](../../../signalr/index.md) для создания канала обмена данными между Visual Studio и браузером.</span><span class="sxs-lookup"><span data-stu-id="e5e63-151">Browser Link uses [SignalR](../../../signalr/index.md) to create a communication channel between Visual Studio and the browser.</span></span> <span data-ttu-id="e5e63-152">При включении связь с браузером, Visual Studio выступает в качестве сервера SignalR, несколько клиентов (обозревателей) можно подключиться.</span><span class="sxs-lookup"><span data-stu-id="e5e63-152">When Browser Link is enabled, Visual Studio acts as a SignalR server that multiple clients (browsers) can connect to.</span></span> <span data-ttu-id="e5e63-153">Связь с браузером также регистрирует модуль HTTP ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="e5e63-153">Browser Link also registers an HTTP module with ASP.NET.</span></span> <span data-ttu-id="e5e63-154">Этот модуль внедряет специальные &lt;скрипт&gt; ссылок в каждом запросе страницы с сервера.</span><span class="sxs-lookup"><span data-stu-id="e5e63-154">This module injects special &lt;script&gt; references into every page request from the server.</span></span> <span data-ttu-id="e5e63-155">Вы увидите ссылки на скрипты, выбрав «Просмотр исходного кода» в браузере.</span><span class="sxs-lookup"><span data-stu-id="e5e63-155">You can see the script references by selecting "View source" in the browser.</span></span>
+<span data-ttu-id="df530-151">Использует связи с браузером [SignalR](../../../signalr/index.md) для создания канала обмена данными между Visual Studio и браузером.</span><span class="sxs-lookup"><span data-stu-id="df530-151">Browser Link uses [SignalR](../../../signalr/index.md) to create a communication channel between Visual Studio and the browser.</span></span> <span data-ttu-id="df530-152">При включении связь с браузером, Visual Studio выступает в качестве сервера SignalR, несколько клиентов (обозревателей) можно подключиться.</span><span class="sxs-lookup"><span data-stu-id="df530-152">When Browser Link is enabled, Visual Studio acts as a SignalR server that multiple clients (browsers) can connect to.</span></span> <span data-ttu-id="df530-153">Связь с браузером также регистрирует модуль HTTP ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="df530-153">Browser Link also registers an HTTP module with ASP.NET.</span></span> <span data-ttu-id="df530-154">Этот модуль внедряет специальные &lt;скрипт&gt; ссылок в каждом запросе страницы с сервера.</span><span class="sxs-lookup"><span data-stu-id="df530-154">This module injects special &lt;script&gt; references into every page request from the server.</span></span> <span data-ttu-id="df530-155">Вы увидите ссылки на скрипты, выбрав «Просмотр исходного кода» в браузере.</span><span class="sxs-lookup"><span data-stu-id="df530-155">You can see the script references by selecting "View source" in the browser.</span></span>
 
 ![](using-browser-link/_static/image13.png)
 
-<span data-ttu-id="e5e63-156">Исходные файлы не изменяются.</span><span class="sxs-lookup"><span data-stu-id="e5e63-156">Your source files are not modified.</span></span> <span data-ttu-id="e5e63-157">HTTP-модуль динамически внедряет ссылок на скрипты.</span><span class="sxs-lookup"><span data-stu-id="e5e63-157">The HTTP module injects the script references dynamically.</span></span>
+<span data-ttu-id="df530-156">Исходные файлы не изменяются.</span><span class="sxs-lookup"><span data-stu-id="df530-156">Your source files are not modified.</span></span> <span data-ttu-id="df530-157">HTTP-модуль динамически внедряет ссылок на скрипты.</span><span class="sxs-lookup"><span data-stu-id="df530-157">The HTTP module injects the script references dynamically.</span></span>
 
-<span data-ttu-id="e5e63-158">Так как код на стороне обозревателя все JavaScript, он работает во всех браузерах, [SignalR поддерживает](../../../signalr/overview/getting-started/supported-platforms.md), не требуя любой подключаемый модуль обозревателя.</span><span class="sxs-lookup"><span data-stu-id="e5e63-158">Because the browser-side code is all JavaScript, it works on all browsers that [SignalR supports](../../../signalr/overview/getting-started/supported-platforms.md), without requiring any browser plug-in.</span></span>
+<span data-ttu-id="df530-158">Так как код на стороне обозревателя все JavaScript, он работает во всех браузерах, [SignalR поддерживает](../../../signalr/overview/getting-started/supported-platforms.md), не требуя любой подключаемый модуль обозревателя.</span><span class="sxs-lookup"><span data-stu-id="df530-158">Because the browser-side code is all JavaScript, it works on all browsers that [SignalR supports](../../../signalr/overview/getting-started/supported-platforms.md), without requiring any browser plug-in.</span></span>
