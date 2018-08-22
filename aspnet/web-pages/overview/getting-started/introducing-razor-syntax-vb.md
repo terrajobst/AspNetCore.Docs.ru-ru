@@ -3,17 +3,17 @@ uid: web-pages/overview/getting-started/introducing-razor-syntax-vb
 title: Введение в программирование веб-ASP.NET с использованием синтаксиса Razor (Visual Basic) | Документация Майкрософт
 author: tfitzmac
 description: В этом приложении предоставляет общие сведения о программировании с помощью веб-страниц ASP.NET в Visual Basic с использованием синтаксиса Razor.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/07/2014
 ms.assetid: 5da59646-e973-41cd-88a9-c6b2c0594027
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 72f995e62141df4e8f4cd082b4873d82067af8c1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: cbec035533c37723afcd5bf4aa0c6e1c83dbae23
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816552"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824002"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-visual-basic"></a>Введение в программирование веб-ASP.NET с использованием синтаксиса Razor (Visual Basic)
 ====================
@@ -273,30 +273,88 @@ ms.locfileid: "37816552"
 Ниже перечислены некоторые распространенные методы преобразования и тестирования для переменных.
 
 
-::: строки:::::: столбец::: <strong>метод</strong> ::: конец столбца:::::: столбец::: <strong>описание</strong> ::: конец столбца:::::: столбец::: <strong>пример</strong> ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        <strong>Метод</strong>
+    :::column-end:::
+    :::column:::
+        <strong>Описание</strong>
+    :::column-end:::
+    :::column:::
+        <strong>Пример</strong>
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `AsInt(), IsInt()` ::: конец столбца:::::: столбец::: преобразует строка, представляющая целое число (например &quot;593&quot;) в целое число.
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample23.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `AsInt(), IsInt()`
+    :::column-end:::
+    :::column:::
+        Преобразует строковое представление целого числа (например &quot;593&quot;) в целое число.
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample23.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `AsBool(), IsBool()` ::: конец столбца:::::: столбец::: преобразует строку как &quot;true&quot; или &quot;false&quot; к логическому типу.
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample24.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `AsBool(), IsBool()`
+    :::column-end:::
+    :::column:::
+        Преобразует строку как &quot;true&quot; или &quot;false&quot; к логическому типу.
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample24.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `AsFloat(), IsFloat()` ::: конец столбца:::::: столбец::: преобразует строки, которая содержит значение десятичного числа, например &quot;1.3&quot; или &quot;7.439&quot; число с плавающей запятой.
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample25.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `AsFloat(), IsFloat()`
+    :::column-end:::
+    :::column:::
+        Преобразует строку, которая имеет значение десятичного числа, например &quot;1.3&quot; или &quot;7.439&quot; число с плавающей запятой.
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample25.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `AsDecimal(), IsDecimal()` ::: конец столбца:::::: столбец::: преобразует строки, которая содержит значение десятичного числа, например &quot;1.3&quot; или &quot;7.439&quot; в десятичное число. (В ASP.NET, десятичное число является более точным, чем число с плавающей запятой.) ::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample26.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `AsDecimal(), IsDecimal()`
+    :::column-end:::
+    :::column:::
+        Преобразует строку, которая имеет значение десятичного числа, например &quot;1.3&quot; или &quot;7.439&quot; в десятичное число. (В ASP.NET, десятичное число является более точным, чем число с плавающей запятой.) :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample26.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `AsDateTime(), IsDateTime()` ::: конец столбца:::::: столбец::: преобразует строку, представляющую значение даты и времени для ASP.NET `DateTime` типа.
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample27.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `AsDateTime(), IsDateTime()`
+    :::column-end:::
+    :::column:::
+        Преобразует строку, представляющую значение даты и времени для ASP.NET `DateTime` типа.
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample27.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `ToString()` ::: конец столбца:::::: столбец::: любого другого типа данных преобразуется в строку.
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample28.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `ToString()`
+    :::column-end:::
+    :::column:::
+        Любой другой тип данных преобразуется в строку.
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample28.vb)]
+    :::column-end:::
+:::row-end:::
 
 
 ## <a name="operators"></a>Операторы
@@ -304,47 +362,137 @@ ms.locfileid: "37816552"
 Оператор — это ключевое слово или символ, который сообщает ASP.NET, какого рода команду, выполняемую в выражении. Visual Basic поддерживает многие операторы, но требуется только для распознавания немного, чтобы приступить к разработке веб-страниц ASP.NET. В следующей таблице перечислены наиболее распространенные операторы.
 
 
-::: строки:::::: столбец::: <strong>оператор</strong> ::: конец столбца:::::: столбец::: <strong>описание</strong> ::: конец столбца:::::: столбец::: <strong>примеры</strong> ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        <strong>Operator</strong>
+    :::column-end:::
+    :::column:::
+        <strong>Описание</strong>
+    :::column-end:::
+    :::column:::
+        <strong>Примеры</strong>
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `+ - * /` ::: конец столбца:::::: столбец::: математические операторы, используемые в числовых выражений.
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample29.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `+ - * /`
+    :::column-end:::
+    :::column:::
+        Математические операторы, используемые в числовых выражений.
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample29.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `=` ::: конец столбца:::::: столбец::: назначения и проверки на равенство. В зависимости от контекста присваивает значение правой стороны оператора объекту с левой стороны или проверяет значения на равенство.
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample30.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `=`
+    :::column-end:::
+    :::column:::
+        Назначения и проверки на равенство. В зависимости от контекста присваивает значение правой стороны оператора объекту с левой стороны или проверяет значения на равенство.
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample30.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `<>` ::: конец столбца:::::: столбец::: неравенства. Возвращает `True` Если значения не равны.
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample31.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `<>`
+    :::column-end:::
+    :::column:::
+        Неравенство. Возвращает `True` Если значения не равны.
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample31.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `< > <= >=` ::: конец столбца:::::: столбец::: меньше, больше, меньше или равно и не меньше.
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample32.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `< > <= >=`
+    :::column-end:::
+    :::column:::
+        Меньше, больше, меньше или равно и не меньше.
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample32.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `&` ::: конец столбца:::::: столбец::: объединения, который используется для объединения строк.
-::: конец столбца:::::: столбец::: [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample33.vbhtml)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `&`
+    :::column-end:::
+    :::column:::
+        Объединение, который используется для объединения строк.
+    :::column-end:::
+    :::column:::
+        [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample33.vbhtml)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `+= -=` ::: конец столбца:::::: столбец::: операторы инкремента и декремента, которые сложения и вычитания 1 (соответственно) из переменной.
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample34.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `+= -=`
+    :::column-end:::
+    :::column:::
+        Операторы инкремента и декремента, которые сложения и вычитания 1 (соответственно) из переменной.
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample34.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `.` ::: конец столбца:::::: столбец::: точка. Используются для различения объектов и их свойства и методы.
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample35.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `.`
+    :::column-end:::
+    :::column:::
+        Точка. Используются для различения объектов и их свойства и методы.
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample35.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `()` ::: конец столбца:::::: столбец::: круглые скобки. Используется для группирования выражений для передачи параметров в методы и получить доступ к членам, массивы и коллекции.
-::: конец столбца:::::: столбец::: [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample36.vbhtml)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `()`
+    :::column-end:::
+    :::column:::
+        Круглые скобки. Используется для группирования выражений для передачи параметров в методы и получить доступ к членам, массивы и коллекции.
+    :::column-end:::
+    :::column:::
+        [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample36.vbhtml)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `Not` ::: конец столбца:::::: столбца::: не. Обращает значение true, false и наоборот. Обычно используется в качестве быстрым способом для проверки `False` (то есть для не `True`).
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample37.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `Not`
+    :::column-end:::
+    :::column:::
+        Нет. Обращает значение true, false и наоборот. Обычно используется в качестве быстрым способом для проверки `False` (то есть для не `True`).
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample37.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: строки:::::: столбец::: `AndAlso OrElse` ::: конец столбца:::::: столбец::: логического и и или, которые используются для связывания условий.
-::: конец столбца:::::: столбец::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample38.vb)]
-    ::: конец столбца:::::: конец строки:::
+:::row:::
+    :::column:::
+        `AndAlso OrElse`
+    :::column-end:::
+    :::column:::
+        Логическое и и или, которые используются для связывания условий.
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample38.vb)]
+    :::column-end:::
+:::row-end:::
 
 ## <a name="working-with-file-and-folder-paths-in-code"></a>Работа с файлом и пути к папкам в коде
 

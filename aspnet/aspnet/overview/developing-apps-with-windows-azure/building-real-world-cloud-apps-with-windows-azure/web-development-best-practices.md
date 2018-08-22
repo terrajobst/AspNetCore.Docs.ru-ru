@@ -3,17 +3,17 @@ uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-clou
 title: Веб-рекомендации по разработке (Создание реальных облачных приложений в Azure) | Документация Майкрософт
 author: MikeWasson
 description: Создание реальных облачных приложений в условиях электронная книга основана на презентацию, разработанная Скоттом Гатри. Здесь объясняется, 13 шаблонов и практических рекомендаций, которые он может...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: 52d6c941-2cd9-442f-9872-2c798d6d90cd
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices
 msc.type: authoredcontent
-ms.openlocfilehash: 054fcad387608e136e8171f5d511ee7af1082bd0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: be014eabcc7f88f229722b2d565262c9025c5ad3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824433"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827984"
 ---
 <a name="web-development-best-practices-building-real-world-cloud-apps-with-azure"></a>Рекомендации по разработке Web (Создание реальных облачных приложений в Azure)
 ====================

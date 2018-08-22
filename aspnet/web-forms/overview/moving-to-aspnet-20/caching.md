@@ -3,17 +3,17 @@ uid: web-forms/overview/moving-to-aspnet-20/caching
 title: Кэширование | Документация Майкрософт
 author: microsoft
 description: Понимание кэширования важно для высокопроизводительных приложений ASP.NET. ASP.NET 1.x предлагаются три различных варианта для кэширования; кэширование, вывода...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2005
 ms.assetid: 2bb109d2-e299-46ea-9054-fa0263b59165
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/caching
 msc.type: authoredcontent
-ms.openlocfilehash: 0c38092c47060e6d02791f9672df6703852f4b5a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5c97464ee50291338a80120a86b1b86b07bc672d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829490"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829614"
 ---
 <a name="caching"></a>Кэширование
 ====================

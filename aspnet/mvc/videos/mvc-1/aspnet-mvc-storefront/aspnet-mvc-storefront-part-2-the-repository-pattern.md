@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-rep
 title: 'Часть Интернет-магазин на ASP.NET MVC 2: Шаблон репозитория | Документация Майкрософт'
 author: robconery
 description: Rob Conery рассматривается реализация репозитория и выводит первый основной набор модульных тестов. Он также структурировать вверх metho слоя исходная служба...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/27/2008
 ms.assetid: 94dd6eec-3685-4323-ac75-75a70a4f766a
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-repository-pattern
 msc.type: video
-ms.openlocfilehash: 6af2afe89c08124311efac3423299aa22a0c9729
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 210f26a86a387ae4f639a8e45d04116fa3c3e750
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829413"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41839091"
 ---
 <a name="aspnet-mvc-storefront-part-2-the-repository-pattern"></a>Часть Интернет-магазин на ASP.NET MVC 2: Шаблон репозитория
 ====================

@@ -3,16 +3,16 @@ uid: web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-we
 title: Начало работы с ASP.NET Web API 2 (C#)
 author: MikeWasson
 description: HTTP не только для предоставления веб-страниц. Это также мощную платформу для создания API, которые предоставляют службы и данные. Протокол HTTP является простая и гибкая и ubiq...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/28/2017
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 170e361c46631e7ecdbe026061c181158dcf803f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 14796ce31187a0f6a6331b46477fadc77e281c3b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823424"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837195"
 ---
 <a name="get-started-with-aspnet-web-api-2-c"></a>Начало работы с ASP.NET Web API 2 (C#)
 ====================

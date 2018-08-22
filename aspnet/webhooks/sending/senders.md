@@ -3,15 +3,15 @@ uid: webhooks/senders
 title: Отправители ASP.NET веб-перехватчиков | Документация Майкрософт
 author: rick-anderson
 description: Веб-перехватчики ASP.NET отправителей
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: 33001ae2-8e1b-4807-8b02-16c7fd8ad38d
-ms.openlocfilehash: b1057fd5391fcda13608bdce6667938d481427d6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 08f155aa0d01d875b6011908fa5683a75c136c70
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37813731"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828371"
 ---
 # <a name="aspnet-webhook-senders"></a>Веб-перехватчик ASP.NET отправителей
 

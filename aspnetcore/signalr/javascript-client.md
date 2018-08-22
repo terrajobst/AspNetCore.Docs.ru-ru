@@ -5,14 +5,14 @@ description: Общие сведения о клиенте ASP.NET Core SignalR 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 08/14/2018
 uid: signalr/javascript-client
-ms.openlocfilehash: c13c41b0344b0c880e842f2799d6ee97bd7fff7e
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
-ms.translationtype: HT
+ms.openlocfilehash: 639c30f1d145a3da5e4f5857f32c1b573c1bfce2
+ms.sourcegitcommit: 2c158fcfd325cad97ead608a816e525fe3dcf757
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095428"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41835379"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>Клиент ASP.NET Core SignalR JavaScript
 
@@ -27,11 +27,11 @@ ms.locfileid: "39095428"
 Клиентская библиотека SignalR JavaScript предоставляется в виде [npm](https://www.npmjs.com/) пакета. Если вы используете Visual Studio, запустите `npm install` из **консоль диспетчера пакетов** при работе в корневой папке. Для Visual Studio Code, выполните команду из **интегрированный терминал**.
 
   ```console
-   npm init -y
-   npm install @aspnet/signalr
+  npm init -y
+  npm install @aspnet/signalr
   ```
 
-Npm устанавливает содержимое пакета в *node_modules\\@aspnet\signalr\dist\browser* папки. Создайте новую папку с именем *signalr* под *wwwroot\\lib* папки. Копировать *signalr.js* файл *wwwroot\lib\signalr* папки.
+npm устанавливает содержимое пакета в *node_modules\\ @aspnet\signalr\dist\browser*  папки. Создайте новую папку с именем *signalr* под *wwwroot\\lib* папки. Копировать *signalr.js* файл *wwwroot\lib\signalr* папки.
 
 ## <a name="use-the-signalr-javascript-client"></a>Использование клиента SignalR JavaScript
 
@@ -57,50 +57,51 @@ Npm устанавливает содержимое пакета в *node_module
 
 ## <a name="call-hub-methods-from-client"></a>Вызов методов концентратора из клиента
 
-Клиенты JavaScript вызывать открытые методы в концентраторах, с помощью `connection.invoke`. `invoke` Метод принимает два аргумента:
+Клиенты JavaScript вызывать открытые методы концентраторы через [вызова](/javascript/api/%40aspnet/signalr/hubconnection#invoke) метод [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection). `invoke` Метод принимает два аргумента:
 
-* Имя метода концентратора. В следующем примере имеет имя центра `SendMessage`.
+* Имя метода концентратора. В следующем примере, является имя метода на концентраторе `SendMessage`.
 * Все аргументы, определенный в методе концентратора. В следующем примере, является имя аргумента `message`.
 
-[!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=24)]
+  [!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=24)]
 
 ## <a name="call-client-methods-from-hub"></a>Вызывать методы клиента от концентратора
 
-Для получения сообщений от концентратора, определение метода с помощью `connection.on` метод.
+Для получения сообщений от концентратора, определение метода с помощью [на](/javascript/api/%40aspnet/signalr/hubconnection#on) метод `HubConnection`.
 
 * Имя метода клиента JavaScript. В следующем примере, является имя метода `ReceiveMessage`.
 * Аргументы концентратор передает в метод. В следующем примере значение аргумента равно `message`.
 
 [!code-javascript[Receive calls from hub](javascript-client/sample/wwwroot/js/chat.js?range=14-19)]
 
-Предыдущий код в `connection.on` выполняется, когда серверный код вызывает ее с помощью `SendAsync` метод.
+Предыдущий код в `connection.on` выполняется, когда серверный код вызывает ее с помощью [SendAsync](/dotnet/api/microsoft.aspnetcore.signalr.clientproxyextensions.sendasync) метод.
 
 [!code-csharp[Call client-side](javascript-client/sample/hubs/chathub.cs?range=8-11)]
 
 SignalR определяют, какой метод клиента для вызова, сопоставляя имя метода и аргументы, определенные в `SendAsync` и `connection.on`.
 
 > [!NOTE]
-> Рекомендуется, вызовите `connection.start` после `connection.on` обработчики зарегистрированные до получения сообщения.
+> Рекомендуется, вызовите [запустить](/javascript/api/%40aspnet/signalr/hubconnection#start) метод `HubConnection` после `on`. Это гарантирует, что зарегистрированных обработчиков до получения сообщения.
 
 ## <a name="error-handling-and-logging"></a>Обработка ошибок и ведение журнала
 
-Цепочка `catch` метод в конец `connection.start` метод для обработки ошибок на стороне клиента. Используйте `console.error` для ошибок вывода для консоли браузера.
+Цепочка `catch` метод в конец `start` метод для обработки ошибок на стороне клиента. Используйте `console.error` для ошибок вывода для консоли браузера.
 
 [!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=28)]
 
 Настройка трассировки журнала на стороне клиента, передав средства ведения журнала и тип события в журнале, когда устанавливается соединение. Выводятся сообщения с уровнем журнала и более поздних версий. Ниже перечислены уровни доступных журналов:
 
-* `signalR.LogLevel.Error` : Сообщения об ошибке. Журналы `Error` только сообщения.
-* `signalR.LogLevel.Warning` : Предупреждение сообщения об ошибках. Журналы `Warning`, и `Error` сообщений.
-* `signalR.LogLevel.Information` : Сообщения о состоянии без ошибок. Журналы `Information`, `Warning`, и `Error` сообщений.
-* `signalR.LogLevel.Trace` : Сообщения трассировки. В журнал все события, в том числе данных, перемещаемая между центром и клиентом.
+* `signalR.LogLevel.Error` &ndash; Сообщения об ошибках. Журналы `Error` только сообщения.
+* `signalR.LogLevel.Warning` &ndash; Предупреждающие сообщения об ошибках. Журналы `Warning`, и `Error` сообщений.
+* `signalR.LogLevel.Information` &ndash; Сообщения о состоянии без ошибок. Журналы `Information`, `Warning`, и `Error` сообщений.
+* `signalR.LogLevel.Trace` &ndash; Сообщения трассировки. В журнал все события, в том числе данных, перемещаемая между центром и клиентом.
 
-Используйте `configureLogging` метод `HubConnectionBuilder` настроить уровень ведения журнала. Сообщения записываются в консоли браузера.
+Используйте [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging) метод [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) настроить уровень ведения журнала. Сообщения записываются в консоли браузера.
 
 [!code-javascript[Logging levels](javascript-client/sample/wwwroot/js/chat.js?range=9-12)]
 
 ## <a name="related-resources"></a>Связанные ресурсы
 
+* [Справочник по JavaScript API](/javascript/api/)
 * [Центры](xref:signalr/hubs)
 * [Клиент .NET](xref:signalr/dotnet-client)
 * [Публикация в Azure](xref:signalr/publish-to-azure-web-app)

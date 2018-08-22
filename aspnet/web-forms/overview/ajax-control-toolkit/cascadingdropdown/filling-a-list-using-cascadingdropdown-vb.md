@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/filling-a-list-us
 title: Заполнение списка с помощью CascadingDropDown (VB) | Документация Майкрософт
 author: wenz
 description: Элемент управления CascadingDropDown в AJAX Control Toolkit расширяет элемент управления DropDownList, что изменения в одной загрузке DropDownList соответствующих значений в anoth...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 5236695e-5c70-4887-baee-0bfb0afb3448
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/filling-a-list-using-cascadingdropdown-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4a2e2440c0b93fc3945c466a2c60c6560c9e57a4
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ad716222335e8b6f2484953296cc263119718105
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37834181"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824039"
 ---
 <a name="filling-a-list-using-cascadingdropdown-vb"></a>Заполнение списка с помощью CascadingDropDown (VB)
 ====================

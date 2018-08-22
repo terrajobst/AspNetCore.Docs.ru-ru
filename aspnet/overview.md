@@ -1,20 +1,20 @@
-﻿---
+---
 uid: overview
 title: Общие сведения о ASP.NET | Документация Майкрософт
 author: rick-anderson
 description: Введение в ASP.NET — это бесплатная платформа для создания веб-сайтов, веб-приложений и веб-API.
 ms.assetid: 3a309468-f1ca-4e51-b9c3-536af79d7a8b
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/12/2010
 ms.technology: aspnet
 msc.legacyurl: ''
 msc.type: content
-ms.openlocfilehash: d477db5f38fff6549f0a7f62963a48ee89b74101
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5bdebcc226050afc2469840dc4a4dc97ec6b80b2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809489"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837233"
 ---
 # <a name="aspnet-overview"></a>Общие сведения о ASP.NET
 

@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-2/how-do-i/how-do-i-implement-view-models-to-manage-data-for
 title: 'Инструкции: реализация моделей представлений для управления данными по представлениям ASP.NET MVC? | Документы Майкрософт'
 author: rick-anderson
 description: В этом видео Крис Пелз показано, как используют концепцию &quot;модель представления&quot; для управления данными для представлений ASP.NET MVC. Во-первых пример проекта MVC является соз...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/11/2009
 ms.assetid: 22f55d63-78f7-44fd-9107-f74cbe16022b
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views
 msc.type: video
-ms.openlocfilehash: 30a02f4e9f277f54891fdc86c7ba2820a0d77e0b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 32e10e038e7effbe7cddba0f64db9b8bb8bd4c31
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819076"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835713"
 ---
 <a name="how-do-i-implement-view--models-to-manage-data-for-aspnet-mvc-views"></a>Инструкции: реализация моделей представлений для управления данными по представлениям ASP.NET MVC?
 ====================

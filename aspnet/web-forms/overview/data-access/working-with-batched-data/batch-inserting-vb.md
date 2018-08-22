@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/working-with-batched-data/batch-inserting-vb
 title: Вставка (VB) пакетной службы | Документация Майкрософт
 author: rick-anderson
 description: Узнайте, как вставить несколько записей в базе данных в рамках одной операции. В слой пользовательского интерфейса мы расширим GridView, чтобы разрешить пользователю вводить несколько n...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/26/2007
 ms.assetid: 48e2a4ae-77ca-4208-a204-c38c690ffb59
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-inserting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0ec5c35417f4f986c662201da58ca3441e8944ca
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 58338d8bfdd782167aafaa440f2d549d6eeb838e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824300"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829673"
 ---
 <a name="batch-inserting-vb"></a>Пакетная вставка (VB)
 ====================

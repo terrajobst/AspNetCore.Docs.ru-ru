@@ -3,17 +3,17 @@ uid: web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-fac
 title: Создание веб-ASP.NET Forms приложения с помощью SMS двухфакторной проверки подлинности (C#) | Документация Майкрософт
 author: Erikre
 description: Этом руководстве показано, как создать приложение веб-форм ASP.NET с двухфакторной проверки подлинности. Этот учебник был разработан в дополнение к учебника под названием Cr...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/09/2014
 ms.assetid: 716264ae-ab72-45de-bfc5-53a6237089cf
 msc.legacyurl: /web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-factor-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: 16045b116ca5c797e7840f2ee5944e5f2c6282eb
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7ad3b7a453a40f2708902ae5b9e5cb75b931d54d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803553"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829635"
 ---
 <a name="create-an-aspnet-web-forms-app-with-sms-two-factor-authentication-c"></a>Создание веб-ASP.NET Forms приложения с помощью SMS двухфакторной проверки подлинности (C#)
 ====================

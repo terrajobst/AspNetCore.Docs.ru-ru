@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-implement-health-monitoring-for-an-aspne
 title: '[Инструкции]  Реализовать, наблюдение за работоспособностью для приложений ASP.NET? | Документы Майкрософт'
 author: rick-anderson
 description: В этом видео Крис Пелз будет показано, как реализовать мониторинг для получения подробных сведений времени выполнения для приложений ASP.NET. Узнайте, эффективный и...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/05/2007
 ms.assetid: b3abd282-840a-42e3-ac27-cddbb22c5e33
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-health-monitoring-for-an-aspnet-application
 msc.type: video
-ms.openlocfilehash: 19161f76de27826d15ad0c68392fb1af40292614
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 23b7b12b0f22548951b5801205fd225e580b5c8c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806484"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829651"
 ---
 <a name="how-do-i--implement-health-monitoring-for-an-aspnet-application"></a>[Инструкции]  Реализовать, наблюдение за работоспособностью для приложений ASP.NET?
 ====================

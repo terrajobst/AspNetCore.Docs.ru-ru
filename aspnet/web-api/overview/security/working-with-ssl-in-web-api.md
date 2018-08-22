@@ -3,17 +3,17 @@ uid: web-api/overview/security/working-with-ssl-in-web-api
 title: Работа с SSL в веб-API | Документация Майкрософт
 author: MikeWasson
 description: Показано, как использовать протокол SSL с веб-API ASP.NET, в том числе с использованием SSL-сертификатов клиента.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/12/2012
 ms.assetid: 97f6164f-59cf-45c0-b820-e4aa29b45396
 msc.legacyurl: /web-api/overview/security/working-with-ssl-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 0e0ca75c6ff1af397fce91079bcd8e9304b025ef
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b11b35f58a1f033423f5e6ea5f5373df0d1fcb5f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829814"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828144"
 ---
 <a name="working-with-ssl-in-web-api"></a>Работа с SSL в веб-API
 ====================

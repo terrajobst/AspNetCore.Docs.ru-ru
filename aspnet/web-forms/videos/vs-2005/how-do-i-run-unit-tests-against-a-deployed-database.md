@@ -3,17 +3,17 @@ uid: web-forms/videos/vs-2005/how-do-i-run-unit-tests-against-a-deployed-databas
 title: '[Инструкции] Выполнение модульных тестов в развернутой базе данных? | Документы Майкрософт'
 author: pjhacker
 description: Если приложение ASP.NET настроено развертывание базы данных вместе с веб-сайта, как можно проверить что был развернут экземпляр допустимой базой данных?...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/22/2007
 ms.assetid: 83792674-f769-4c9a-889b-701cfc52de8b
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-run-unit-tests-against-a-deployed-database
 msc.type: video
-ms.openlocfilehash: e624a46a4ff01eb63dccbe282f3a12ddd0793abb
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 435111ca7f49fe822fcc1eca69275c466f8d4c5d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831558"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828147"
 ---
 <a name="how-do-i-run-unit-tests-against-a-deployed-database"></a>[Инструкции] Выполнение модульных тестов в развернутой базе данных?
 ====================

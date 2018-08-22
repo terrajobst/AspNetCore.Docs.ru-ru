@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-v
 title: Добавление элементов управления проверки правки и вставки интерфейсах (C#) | Документация Майкрософт
 author: rick-anderson
 description: В этом руководстве мы видим, насколько это просто добавлять элементы управления проверки к EditItemTemplate и InsertItemTemplate веб-элемента управления данными, чтобы предоставить более...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/17/2006
 ms.assetid: 2086cb1a-ab78-49ae-9c0b-03891c69776a
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fedcad6265e7247d59a74a2dcaccb71fabfe0b4c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4990ce2c15465873ef08aeb697780d98a186b3c6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37834207"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827527"
 ---
 <a name="adding-validation-controls-to-the-editing-and-inserting-interfaces-c"></a>Добавление элементов управления проверки правки и вставки интерфейсах (C#)
 ====================

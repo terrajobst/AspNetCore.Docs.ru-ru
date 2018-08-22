@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overv
 title: Обзор вставки, обновления и удаления данных (Visual Basic) | Документация Майкрософт
 author: rick-anderson
 description: В этом руководстве мы будет показано, как сопоставить элементу ObjectDataSource Insert(), Update(), и классы Delete() методов к методам BLL, а также способы настройки...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/17/2006
 ms.assetid: 35b40b8f-2ca8-4ab3-9c19-f361a91a3647
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: bd17d87d3fa82d8ef288ce4747876ecb53e3c625
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 55fab6bb7a1041a14f8734a0d2ae1238b3801149
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820302"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829656"
 ---
 <a name="an-overview-of-inserting-updating-and-deleting-data-vb"></a>Обзор вставки, обновления и удаления данных (VB)
 ====================

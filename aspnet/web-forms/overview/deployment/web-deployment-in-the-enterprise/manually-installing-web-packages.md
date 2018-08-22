@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/manually-ins
 title: Установка веб-пакетов вручную | Документация Майкрософт
 author: jrjlee
 description: В этом разделе описывается, как вручную импортировать пакет веб-развертывания в Internet Information Services (IIS). Создание раздела и упаковки веб приложение...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: f11d22a7-5d32-4ad0-8a9b-276460a61c06
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/manually-installing-web-packages
 msc.type: authoredcontent
-ms.openlocfilehash: 7fd8060104ca4e02919a3fbac135edb3e9396c64
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ca85db5cfb30bc06d6d3b94001a3668088461b87
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833009"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836977"
 ---
 <a name="manually-installing-web-packages"></a>Установка веб-пакетов вручную
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-dynamic-data/how-do-i-use-a-dynamiccontrol-in-listv
 title: Использование объектов DynamicControl в ListView и элементы управления DetailsView | Документы Майкрософт
 author: shanselman
 description: В этом видео сравнивает записываются дважды, один раз с платформы динамических данных и один раз без того же приложения. В процессе, добавлении объектов DynamicControl ListView...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/08/2008
 ms.assetid: 816175a2-47b1-49ba-b346-cfb1ee33096a
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-do-i-use-a-dynamiccontrol-in-listview-and-detailsview-controls
 msc.type: video
-ms.openlocfilehash: 97498c43ceb778554715e345eea96ee934bb93c3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ce587fd1cb73178c75d291a6cb7a7e3f24d29390
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822811"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827929"
 ---
 <a name="how-do-i-use-a-dynamiccontrol-in-listview-and-detailsview-controls"></a>Использование объектов DynamicControl в ListView и элементы управления DetailsView
 ====================

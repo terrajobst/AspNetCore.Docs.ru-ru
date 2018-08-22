@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-ajax/how-do-i-implement-the-persistent-communicatio
 title: '[Инструкции] Реализация шаблона постоянного обмена данными с помощью UpdatePanel? | Документы Майкрософт'
 author: JoeStagner
 description: В традиционных веб-сайта браузером и сервером не поддерживают текущих подключений, но обмениваться данными только в ответ на пользователя, выполняющего акт...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/01/2007
 ms.assetid: 49c7a74d-dce7-4d5c-8282-c7846f478e11
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-implement-the-persistent-communications-pattern-with-the-updatepanel
 msc.type: video
-ms.openlocfilehash: 89dea5c2c44e8bdd9c12a127864428f681a66fb2
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e826aa7b6597a8272b5b6987b85755f62a4a59ac
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833152"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828132"
 ---
 <a name="how-do-i-implement-the-persistent-communications-pattern-with-the-updatepanel"></a>[Инструкции] Реализация шаблона постоянного обмена данными с помощью UpdatePanel?
 ====================

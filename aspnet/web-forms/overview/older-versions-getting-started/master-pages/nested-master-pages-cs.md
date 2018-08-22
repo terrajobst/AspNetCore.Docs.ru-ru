@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/master-pages/nested-maste
 title: Вложенные главные страницы (C#) | Документация Майкрософт
 author: rick-anderson
 description: Показано, как вложить одну главную страницу внутри другого.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/28/2008
 ms.assetid: 32b7fb6e-d74b-4048-91f8-70631b2523ee
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 71cefa603d1b54e8dbbeb0f6e7e3ef8e0c0a93f8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1b60b0b7ce4be66bc24ccbc1d25ce4dc56766815
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840649"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835721"
 ---
 <a name="nested-master-pages-c"></a>Вложенные главные страницы (C#)
 ====================

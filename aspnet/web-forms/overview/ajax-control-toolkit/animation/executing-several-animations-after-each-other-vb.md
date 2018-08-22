@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/animation/executing-several-animati
 title: Выполнение нескольких анимаций друг за другом (Visual Basic) | Документация Майкрософт
 author: wenz
 description: Отображается этот элемент управления в ASP.NET AJAX Control Toolkit не только элемент управления, но всю платформу для добавления анимации в элемент управления. Он позволяет выполнять severa...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 21ece509-79cc-4d9d-892d-7b6e9c4d3502
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-after-each-other-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3d94619ca40d288f8a5a391ef02103902bd2550c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 89412c078bbe40f06d31327d0a17bf3ea8bc8314
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37835959"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835683"
 ---
 <a name="executing-several-animations-after-each-other-vb"></a>Выполнение нескольких анимаций друг за другом (VB)
 ====================

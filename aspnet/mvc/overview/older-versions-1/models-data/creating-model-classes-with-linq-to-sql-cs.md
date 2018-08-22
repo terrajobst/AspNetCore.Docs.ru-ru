@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-
 title: Создание классов модели в LINQ to SQL (C#) | Документация Майкрософт
 author: microsoft
 description: Этот учебник призван объяснить одним из способов создание классов модели для приложения ASP.NET MVC. В этом руководстве вы узнаете, как для построения модели c...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/07/2008
 ms.assetid: f84b4a16-e8bb-49e8-87a0-1832879a3501
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 35fa1e882268eaa1bfbd3589c8173e853ad5c5a7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c76e92ebfab1db162151ea5753888a60a4d54e59
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815854"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827817"
 ---
 <a name="creating-model-classes-with-linq-to-sql-c"></a>Создание классов модели в LINQ to SQL (C#)
 ====================

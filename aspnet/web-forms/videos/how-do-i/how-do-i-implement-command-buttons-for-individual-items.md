@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-implement-command-buttons-for-individual
 title: '[Инструкции] Реализация кнопок команд для отдельных элементов | Документация Майкрософт'
 author: rick-anderson
 description: В этом видео Крис Пелз будет показано, как обрабатывать события, связанные с элементом управления в каждом элементе элемента управления с привязкой к данным, как элемент управления ListView. Во-первых...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/24/2008
 ms.assetid: b883989d-4735-478e-ab56-411a2ed98f73
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-command-buttons-for-individual-items
 msc.type: video
-ms.openlocfilehash: 3dbb82e6de7100c51764f11f0a9ad72eed26cf99
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e52345ff182b9e042d4cb174b6237c92d6258755
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815938"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836920"
 ---
 <a name="how-do-i-implement-command-buttons-for-individual-items"></a>[Инструкции] Реализация кнопок команд для отдельных элементов
 ====================

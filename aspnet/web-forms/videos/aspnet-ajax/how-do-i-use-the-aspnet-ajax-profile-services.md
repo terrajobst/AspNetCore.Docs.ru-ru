@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-ajax/how-do-i-use-the-aspnet-ajax-profile-services
 title: '[Инструкции] Использование служб профилей ASP.NET AJAX? | Документы Майкрософт'
 author: rick-anderson
 description: ASP.NET 2.0 появилась свойства профиля, с помощью которых можно хранить сведения для каждого пользователя веб-приложения ASP.NET. Разрешить служб профилей ASP.NET AJAX...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/16/2007
 ms.assetid: 8fc77048-4d1f-42bf-a947-ecc9a02b25c9
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-use-the-aspnet-ajax-profile-services
 msc.type: video
-ms.openlocfilehash: 5a059e503262b33b0bf6f21f244715e92f46ca16
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b3cb1bdbd6be4fcdc956b8dc475888b9ab0a440e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840093"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828176"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-profile-services"></a>[Инструкции] Использование служб профилей ASP.NET AJAX?
 ====================

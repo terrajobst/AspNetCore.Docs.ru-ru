@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/nerddinner/create-a-database
 title: Создание базы данных | Документация Майкрософт
 author: microsoft
 description: Шаг 2 показано, как создать базу данных, содержащий все компании dinner и RSVP данных для нашего приложения NerdDinner.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 983f3ffa-08b8-4868-b8c9-aa34593fc683
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-database
 msc.type: authoredcontent
-ms.openlocfilehash: 2a2ed8c91aa3ec0da63cd8e8686ff601f6e66374
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b6ab0740f251889f0fa0561809cac2bbe79bcb3a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818970"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829867"
 ---
 <a name="create-a-database"></a>Создание базы данных
 ====================

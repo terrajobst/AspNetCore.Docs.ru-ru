@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/examinin
 title: Обзор событий, связанных со вставкой, обновлением и удалением (VB) | Документация Майкрософт
 author: rick-anderson
 description: В этом учебном курсе мы рассмотрим использование событий, возникающих до, во время и после вставки обновления или удаления веб-элемента управления данными ASP.NET. КО...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/17/2006
 ms.assetid: c9bd10a7-eff8-4d8c-bec9-963c2aef2d6e
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 548bfecc4215fbb2b36e0e2be42c7c08ee884270
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 71ae661ade23d18ebd302e2902f1094d61ce968f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37817166"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827582"
 ---
 <a name="examining-the-events-associated-with-inserting-updating-and-deleting-vb"></a>Обзор событий, связанных со вставкой, обновлением и удалением (VB)
 ====================

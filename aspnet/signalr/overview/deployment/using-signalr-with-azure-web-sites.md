@@ -3,17 +3,17 @@ uid: signalr/overview/deployment/using-signalr-with-azure-web-sites
 title: С помощью SignalR с веб-приложениями в службе приложений Azure | Документация Майкрософт
 author: pfletcher
 description: В этом документе описываются способы настройки приложения SignalR, которое работает на базе Microsoft Azure. Версии программного обеспечения используется в этом руководстве, Visual Studio 2013 или Vis...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/01/2015
 ms.assetid: 2a7517a0-b88c-4162-ade3-9bf6ca7062fd
 msc.legacyurl: /signalr/overview/deployment/using-signalr-with-azure-web-sites
 msc.type: authoredcontent
-ms.openlocfilehash: 03db2debe6bf5935ced926ae8278df8b9d47c86a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a6dfb4e5f3cd594860939eb54c88e6453e5db181
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822170"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836954"
 ---
 <a name="using-signalr-with-web-apps-in-azure-app-service"></a>С помощью SignalR с веб-приложениями в службе приложений Azure
 ====================

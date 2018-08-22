@@ -3,17 +3,17 @@ uid: mvc/overview/performance/bundling-and-minification
 title: Объединение и Минификация | Документация Майкрософт
 author: Rick-Anderson
 description: Объединение и Минификация существуют два следующих способа можно использовать в ASP.NET 4.5 для улучшения времени загрузки запроса. Объединение и Минификация повышает время загрузки, reducin...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/23/2012
 ms.assetid: 5894dc13-5d45-4dad-8096-136499120f1d
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: 4e72804593c07318af8cc577f9d43ab96be4de05
-ms.sourcegitcommit: cb0c27fa0184f954fce591d417e6ab2a51d8bb22
+ms.openlocfilehash: 7e54bdd2f50edb5001982ada9b6ce023584ce5b0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39123792"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836964"
 ---
 <a name="bundling-and-minification"></a>Объединение и Минификация
 ====================

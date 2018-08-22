@@ -3,17 +3,17 @@ uid: web-forms/videos/data-access/adonet-data-services/data-access-layers-in-asp
 title: Уровни доступа к данным в приложениях ASP.NET | Документация Майкрософт
 author: JoeStagner
 description: В этом видео, часть 1 из 3, (Joe Stagner) создает слой доступа к данным с помощью типизированного набора данных для простого приложения ASP.NET. Дополнительные сведения о...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/07/2008
 ms.assetid: 536aa7a6-84fb-487c-a14f-6ca3eb8a4a33
 msc.legacyurl: /web-forms/videos/data-access/adonet-data-services/data-access-layers-in-aspnet-applications
 msc.type: video
-ms.openlocfilehash: 7da39466777ba4aaec0c40d813fd31750f623bf2
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f084f54c32cb31c5787b073751764efbe1643fbc
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838033"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829847"
 ---
 <a name="data-access-layers-in-aspnet-applications"></a>Уровни доступа к данным в приложениях ASP.NET
 ====================

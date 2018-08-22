@@ -3,17 +3,17 @@ uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/use-open-types-in
 title: Открытые типы в OData v4 с веб-API ASP.NET | Документация Майкрософт
 author: microsoft
 description: В OData v4 открытого типа является типом stuctured, который содержит динамические свойства, а также любые свойства, объявленные в определении типа. Открыть...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/15/2014
 ms.assetid: f25f5ac5-4800-4950-abe5-c97750a27fc6
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/use-open-types-in-odata-v4
 msc.type: authoredcontent
-ms.openlocfilehash: 560d47e0dc451847311eb9e2327190eed2209546
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 77771d85532b8b622c2ad4ca219a38990e474c9c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832276"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828361"
 ---
 <a name="open-types-in-odata-v4-with-aspnet-web-api"></a>Открытые типы в OData v4 с веб-API ASP.NET
 ====================

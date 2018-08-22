@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-da
 title: Отображение таблицы данных в базе данных (Visual Basic) | Документация Майкрософт
 author: microsoft
 description: В этом руководстве описано я продемонстрирую два метода для отображения набора записей базы данных. Показать два метода форматирования набора записей базы данных в HTML-ta...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/07/2008
 ms.assetid: 5bb4587f-5bcd-44f5-b368-3c1709162b35
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0b796c424cfe3fb03f3d6eddd8812438ceea2026
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d96f574c9284ab259b8733b3b8109ecd0b689aa8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37830277"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828200"
 ---
 <a name="displaying-a-table-of-database-data-vb"></a>Отображение таблицы данных в базе данных (VB)
 ====================

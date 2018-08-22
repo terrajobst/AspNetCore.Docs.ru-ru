@@ -3,17 +3,17 @@ uid: mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4
 title: Использование асинхронных методов в ASP.NET MVC 4 | Документация Майкрософт
 author: Rick-Anderson
 description: Этом учебнике описываются основы создания асинхронных MVC веб-приложения ASP.NET с помощью Visual Studio Express 2012 для Web, который является бесплатной ve...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/06/2012
 ms.assetid: a56572ba-81c3-47af-826d-941e9c4775ec
 msc.legacyurl: /mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 5eb1b6dc3e9166c1ecb8e0d1968e12e8fa07f985
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5469ac18f55001b441def5b547b7f1836ee9d052
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37826404"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828181"
 ---
 <a name="using-asynchronous-methods-in-aspnet-mvc-4"></a>Использование асинхронных методов в ASP.NET MVC 4
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/roles/role-based-authorization-v
 title: Ролевая авторизация (Visual Basic) | Документация Майкрософт
 author: rick-anderson
 description: Этим руководством мы будем с рассмотрения как framework ролей связывает роли пользователя с его контекста безопасности. Затем он проверяет применение URL-адрес на основе ролей...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/24/2008
 ms.assetid: 83b4f5a4-4f5a-4380-ba33-f0b5c5ac6a75
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/role-based-authorization-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6bf9e1f0832b811ce8e2033dd45f94dc3baaeea6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 593eddfafae7c864a705ce65e6bbb59c9b41ea14
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829649"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827932"
 ---
 <a name="role-based-authorization-vb"></a>Ролевая авторизация (VB)
 ====================

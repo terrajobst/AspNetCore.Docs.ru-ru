@@ -3,17 +3,17 @@ uid: aspnet/overview/owin-and-katana/an-overview-of-project-katana
 title: Обзор проекта Katana | Документация Майкрософт
 author: howarddierking
 description: Платформа ASP.NET используется уже более десяти лет, и включения платформы разработки бесчисленное множество веб-сайтов и служб. Как веб-приложений...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/30/2013
 ms.assetid: 0ee21741-c1bf-4025-a9b0-24580cae24bc
 msc.legacyurl: /aspnet/overview/owin-and-katana/an-overview-of-project-katana
 msc.type: authoredcontent
-ms.openlocfilehash: a4c7d6cb5dc40ad68280a87acd89f60106a260a8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 52007eba109de28c6d178505b82b1d5ff2883b47
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803098"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835679"
 ---
 <a name="an-overview-of-project-katana"></a>Обзор проекта Katana
 ====================

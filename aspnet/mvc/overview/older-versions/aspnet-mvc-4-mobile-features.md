@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 title: Мобильные функции ASP.NET MVC 4 | Документация Майкрософт
 author: Rick-Anderson
 description: Сейчас MVC 5, версия этого руководства с примерами кода в развертывание MVC 5 мобильных веб-приложения ASP.NET на веб-сайтах Azure.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/15/2012
 ms.assetid: 27dc4fc8-1b51-43b0-933f-fc1b52476523
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: c852f4a853d14badb6c9a1c2c1ddb7b069bc3441
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a3cb2414775b2c29617296dcf0c2dc5729153cdd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806591"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828007"
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>Возможности ASP.NET MVC 4 для мобильных приложений
 ====================
@@ -212,7 +212,7 @@ ms.locfileid: "37806591"
 [!code-csharp[Main](aspnet-mvc-4-mobile-features/samples/sample11.cs?highlight=26)]
 
 > [!NOTE]
-> Если вы используете Internet Explorer 9 и вы не видите `BundleMobileConfig` строку выше в выделение желтым цветом, нажмите кнопку [кнопка просмотра в режиме совместимости](https://windows.microsoft.com/windows7/How-to-use-Compatibility-View-in-Internet-Explorer-9)![изображение кнопки «Просмотр в режиме совместимости» (отключено)] (http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg " Изображение кнопки «Просмотр в режиме совместимости» (отключено)") в IE, чтобы изменить контур значок ![изображение кнопки «Просмотр в режиме совместимости» (отключено)](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "изображение кнопки «Просмотр в режиме совместимости» (отключено) ") сплошной ![изображение кнопки просмотра в режиме совместимости (on)](http://res1.windows.microsoft.com/resbox/en/Windows 7/main/156805ff-3130-481b-a12d-4d3a96470f36_14.jpg "изображение кнопки просмотра в режиме совместимости (on)"). Вместо этого учебника можно просмотреть в FireFox или Chrome.
+> Если вы используете Internet Explorer 9 и вы не видите `BundleMobileConfig` строку выше в выделение желтым цветом, нажмите кнопку [кнопка просмотра в режиме совместимости](https://windows.microsoft.com/windows7/How-to-use-Compatibility-View-in-Internet-Explorer-9)![изображение кнопки «Просмотр в режиме совместимости» (отключено)](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg " Изображение кнопки «Просмотр в режиме совместимости» (отключено)") в IE, чтобы изменить контур значок ![изображение кнопки «Просмотр в режиме совместимости» (отключено)](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "изображение кнопки «Просмотр в режиме совместимости» (отключено) ") сплошной ![изображение кнопки просмотра в режиме совместимости (on)](http://res1.windows.microsoft.com/resbox/en/Windows 7/main/156805ff-3130-481b-a12d-4d3a96470f36_14.jpg "изображение кнопки просмотра в режиме совместимости (on)"). Вместо этого учебника можно просмотреть в FireFox или Chrome.
 
 
 Откройте *MvcMobile\Views\Shared\\_Layout.Mobile.cshtml* файл и добавьте следующий код непосредственно после `Html.Partial` вызова:

@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/working-with-batched-data/batch-updating-vb
 title: Пакетного обновления (Visual Basic) | Документация Майкрософт
 author: rick-anderson
 description: Узнайте, как обновление нескольких записей базы данных в рамках одной операции. В слой пользовательского интерфейса, мы создаем GridView, где каждая строка является редактируемой. В данных...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/26/2007
 ms.assetid: d191a204-d7ea-458d-b81c-0b9049ecb55f
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-updating-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7e5062898ca683571df2929eba5d824f9d77accd
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 76c475b67943b77d99630e087ed46fe6d5f11a03
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833405"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837562"
 ---
 <a name="batch-updating-vb"></a>Пакетное обновление (VB)
 ====================
