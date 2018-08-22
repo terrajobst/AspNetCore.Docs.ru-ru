@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/working-with-binary-files/including-a-file-u
 title: Параметр включения файла отправки при добавлении новой записи (C#) | Документация Майкрософт
 author: rick-anderson
 description: Этом руководстве показано, как создать веб-интерфейс, который позволяет пользователю ввести текстовых данных и передача двоичных файлов. Чтобы проиллюстрировать t доступные параметры...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/27/2007
 ms.assetid: 362ade25-3965-4fb2-88d2-835c4786244f
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5cc1db20a724c8a060e978e2360b977fb16f1e0c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c3887f920126d70b300de5a0d6e09474fd33c332
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842385"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837590"
 ---
 <a name="including-a-file-upload-option-when-adding-a-new-record-c"></a>Включение параметра отправки файла, при добавлении новой записи (C#)
 ====================

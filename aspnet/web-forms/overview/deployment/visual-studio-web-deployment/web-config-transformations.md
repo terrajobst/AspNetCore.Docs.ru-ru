@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/visual-studio-web-deployment/web-config-trans
 title: 'Веб-развертывание ASP.NET с помощью Visual Studio: преобразования файла Web.config | Документация Майкрософт'
 author: tdykstra
 description: В этой серии руководств показано, как развернуть ASP.NET (публикации) веб-приложения, веб-приложениях службы приложений Azure или у стороннего поставщика размещения, Пол...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/15/2013
 ms.assetid: 5a2a927b-14cb-40bc-867a-f0680f9febd7
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations
 msc.type: authoredcontent
-ms.openlocfilehash: 0a52530396efa3612d19817eeaa0498cffdac38f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 58f3daac5e9fbe6d327f19b6ae78ea17a26cd7e7
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842443"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835494"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-webconfig-file-transformations"></a>Веб-развертывание ASP.NET с помощью Visual Studio: преобразования файла Web.config
 ====================

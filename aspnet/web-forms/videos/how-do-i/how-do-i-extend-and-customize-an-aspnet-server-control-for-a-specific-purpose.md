@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-extend-and-customize-an-aspnet-server-co
 title: '[Инструкции] Расширение и настройка элемента управления сервера ASP.NET для определенной цели | Документация Майкрософт'
 author: rick-anderson
 description: В этом видео Крис Пелз будет показано, как расширить стандартного элемента управления сервера ASP.NET и его настройка для определенной цели. Специальные элементы управления предоставляют c...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/20/2008
 ms.assetid: ed460e6b-8f4e-4fcb-83c4-2495180c1f14
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-extend-and-customize-an-aspnet-server-control-for-a-specific-purpose
 msc.type: video
-ms.openlocfilehash: e0642e094592b858bd0932f5f5b6374591b4262b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d360bfdc2e491c7aa94ebd4da1a03063a93251ad
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37841520"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835493"
 ---
 <a name="how-do-i-extend-and-customize-an-aspnet-server-control-for-a-specific-purpose"></a>[Инструкции] Расширения и настройки ASP.NET серверный элемент управления для определенных задач.
 ====================

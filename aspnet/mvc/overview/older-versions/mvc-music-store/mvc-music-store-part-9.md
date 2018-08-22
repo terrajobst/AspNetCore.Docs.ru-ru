@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-9
 title: 'Часть 9: Регистрация и оформление заказа | Документация Майкрософт'
 author: jongalloway
 description: В этой серии руководств описаны все шаги, необходимые для построения примера приложения ASP.NET MVC Music Store. Часть 9 рассматривается регистрация и оформление заказа.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/21/2011
 ms.assetid: d65c5c2b-a039-463f-ad29-25cf9fb7a1ba
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-9
 msc.type: authoredcontent
-ms.openlocfilehash: e521e30cb820d834d57c87538b869861a536657b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b3babf1d935774b0ef93d6ab02c8b295998f8afc
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812877"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835533"
 ---
 <a name="part-9-registration-and-checkout"></a>Часть 9: Регистрация и оформление заказа
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/working-with-binary-files/uploading-files-vb
 title: Отправка файлов (Visual Basic) | Документация Майкрософт
 author: rick-anderson
 description: Узнайте, как разрешить пользователям отправлять двоичные файлы (например, документы Word или PDF) на веб-сайт, где они могут храниться в файловой системе ни для сервера...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/27/2007
 ms.assetid: f7c00fbd-652c-433d-8ed3-0e5168a4d4df
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/uploading-files-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 412a809de63f22fd3fddf99ad34d06c079f73fd0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: fdf7b351152d9c64b0ac4b1bc9d558962e704543
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802725"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828473"
 ---
 <a name="uploading-files-vb"></a>Отправка файлов (VB)
 ====================
