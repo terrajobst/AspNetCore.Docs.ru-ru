@@ -3,17 +3,17 @@ uid: mobile/device-simulators
 title: Имитация популярных мобильных устройств для тестирования | Документация Майкрософт
 author: rick-anderson
 description: По следующим ссылкам можно загрузить эмуляторов для популярных мобильных устройств и браузеров
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/28/2011
 ms.assetid: bfb5612e-c3ec-4f28-b43b-63d781aa2272
 msc.legacyurl: /mobile/device-simulators
 msc.type: content
-ms.openlocfilehash: 092186a48a304c1b9e3e140e74f65dbe5a035e66
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9498c370003d20ba0b8a835a8d4cd86961c3bf3c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833689"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838867"
 ---
 <a name="simulate-popular-mobile-devices-for-testing"></a>Имитация популярных мобильных устройств для тестирования
 ====================

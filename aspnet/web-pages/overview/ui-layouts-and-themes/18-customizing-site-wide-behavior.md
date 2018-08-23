@@ -3,17 +3,17 @@ uid: web-pages/overview/ui-layouts-and-themes/18-customizing-site-wide-behavior
 title: Настройка поведения в масштабах сайта для веб-страниц ASP.NET (Razor) сайтов | Документация Майкрософт
 author: tfitzmac
 description: В этой главе объясняется, как сделать параметры вашего всего веб-сайта или всей папке, а не только к одной странице.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/17/2014
 ms.assetid: e158bed7-226f-4275-b02e-7553bd58c669
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/18-customizing-site-wide-behavior
 msc.type: authoredcontent
-ms.openlocfilehash: 6dcc9e2882e0a0ce28715d5d90b6d27c030f9aea
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a6737c05d3326a2cd7535f32e99482b0de394575
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37801963"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838314"
 ---
 <a name="customizing-site-wide-behavior-for-aspnet-web-pages-razor-sites"></a>Настройка поведения сайта для сайтов ASP.NET Web Pages (Razor)
 ====================

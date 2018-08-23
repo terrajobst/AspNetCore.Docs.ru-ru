@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-th
 title: Начало работы с AJAX Control Toolkit (C#) | Документация Майкрософт
 author: microsoft
 description: Узнайте все что нужно знать, чтобы приступить к работе с AJAX Control Toolkit.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/12/2009
 ms.assetid: 16dc5c11-65be-4eae-a818-9fad7f8259c6
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3682af50eb2b9052ac0b15c2cec084deec10031d
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6ecf716b78a789ca72e8b35e0be3e1fd0b957052
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832163"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838844"
 ---
 <a name="get-started-with-the-ajax-control-toolkit-c"></a>Начало работы с AJAX Control Toolkit (C#)
 ====================

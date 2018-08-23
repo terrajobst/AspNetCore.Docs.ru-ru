@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/13/2018
 uid: signalr/hubcontext
-ms.openlocfilehash: 6b955c2064d7d6a045594e56326e2f7df282675f
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: a02588dc98283a375e9deb7c8561c59f6d886eb0
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095311"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836433"
 ---
 # <a name="send-messages-from-outside-a-hub"></a>Отправка сообщения извне концентратору
 
@@ -27,7 +27,7 @@ ms.locfileid: "39095311"
 В ASP.NET Core SignalR, можно получить доступ к экземпляру `IHubContext` посредством внедрения зависимостей. Вы можете внедрить экземпляр `IHubContext` в контроллере, по промежуточного слоя или другую службу внедрения Зависимостей. Используйте экземпляр, для отправки сообщений клиентам.
 
 > [!NOTE]
-> Это отличается от ASP.NET SignalR, который используется для предоставления доступа к GlobalHost `IHubContext`. ASP.NET Core имеет платформой внедрения зависимостей, который устраняет потребность в этот глобальный одноэлементный.
+> Это отличается от ASP.NET 4.x SignalR, который используется для предоставления доступа к GlobalHost `IHubContext`. ASP.NET Core имеет платформой внедрения зависимостей, который устраняет потребность в этот глобальный одноэлементный.
 
 ### <a name="inject-an-instance-of-ihubcontext-in-a-controller"></a>Запустить экземпляр `IHubContext` в контроллере
 

@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspi
 title: 'Часть 6: Членства ASP.NET | Документация Майкрософт'
 author: JoeStagner
 description: В этой серии руководств описаны все действия, предпринимаемые для создайте пример приложения Tailspin Spyworks. Часть 6 добавляет членства ASP.NET.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/21/2010
 ms.assetid: f70a310c-9557-4743-82cb-655265676d39
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6
 msc.type: authoredcontent
-ms.openlocfilehash: 303c1edf548db1da9ef61d94bdd8157d6afbb2e4
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c847db058bc03115210f12eeb0c3c76fecc8a31e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37804424"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838433"
 ---
 <a name="part-6-aspnet-membership"></a>Часть 6: Членства ASP.NET
 ====================

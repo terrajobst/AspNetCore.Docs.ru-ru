@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/custom-formatting/custom-formatting-based-up
 title: Пользовательское форматирование на основе данных (C#) | Документация Майкрософт
 author: rick-anderson
 description: Настройка формата элементов GridView, DetailsView и FormView на основе привязанным к ним данным может быть выполнена несколькими способами. В этом руководстве мы будем l...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/31/2010
 ms.assetid: 871a4574-f89c-4214-b786-79253ed3653b
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 05f83fc178cb3f79a86638d0159e692aef4410ca
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ee9cdf19769ea63388fd9dd18a82bb2b4dcdef87
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819277"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838222"
 ---
 <a name="custom-formatting-based-upon-data-c"></a>Пользовательское форматирование на основе данных (C#)
 ====================

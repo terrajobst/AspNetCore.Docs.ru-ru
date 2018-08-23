@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/customizin
 title: Настройка развертываний баз данных для нескольких сред | Документация Майкрософт
 author: jrjlee
 description: 'В этом разделе описывается, как настроить свойства базы данных для конкретных целевых сред в рамках процесса развертывания. Примечание: Предполагается, th...'
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: a172979a-1318-4318-a9c6-4f9560d26267
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
 msc.type: authoredcontent
-ms.openlocfilehash: 2ecd73e4eb3cb00545b5ba090ac5f8428586941b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 52fb2539ef388d129f88aa8aa87088e2d4a41ccf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37804297"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836410"
 ---
 <a name="customizing-database-deployments-for-multiple-environments"></a>Настройка развертываний баз данных для нескольких сред
 ====================

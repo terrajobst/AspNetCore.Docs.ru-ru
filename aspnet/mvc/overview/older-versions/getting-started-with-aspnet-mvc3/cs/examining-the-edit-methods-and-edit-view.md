@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/examining-t
 title: Изучение методов Edit и представления Edit (C#) | Документация Майкрософт
 author: Rick-Anderson
 description: Этом учебнике описываются основы создания MVC веб-приложения ASP.NET с помощью Microsoft Visual Web Developer 2010 Express пакетом обновления 1, который является...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/12/2011
 ms.assetid: 1d266bf0-a61e-423b-a3d2-13773d7dafe2
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 1451788f11e398c5ca713183721f4bbeb980bb83
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f206d04e0c9db6149b1d01f7dcbb6be733754881
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37828700"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836431"
 ---
 <a name="examining-the-edit-methods-and-edit-view-c"></a>Изучение методов Edit и представления Edit (C#)
 ====================

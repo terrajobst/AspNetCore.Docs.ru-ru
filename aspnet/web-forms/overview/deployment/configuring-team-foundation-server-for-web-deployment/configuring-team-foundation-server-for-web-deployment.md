@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-de
 title: Настройка Team Foundation Server для веб-развертывание | Документация Майкрософт
 author: jrjlee
 description: Этом учебнике показано, как настроить Team Foundation Server (TFS) 2010 для создания решений и развертывания веб-содержимого для различных целевых средах. Это...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: ff55233a-e795-4007-a4fc-861fe1bb590b
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 0155f8dc4ca05a91ed8921f83aa6fa1b0b59c1a5
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2b668f2e9bdf73632b8b076416c9ccc5cf34a7ed
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829691"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838577"
 ---
 <a name="configuring-team-foundation-server-for-web-deployment"></a>Настройка Team Foundation Server для веб-развертывания
 ====================

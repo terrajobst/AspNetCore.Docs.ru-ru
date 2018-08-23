@@ -3,17 +3,17 @@ uid: signalr/overview/performance/signalr-connection-density-testing-with-crank
 title: Тестирование с помощью Crank плотности подключений SignalR | Документация Майкрософт
 author: tfitzmac
 description: Тестирование с помощью Crank плотности подключений SignalR
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/22/2015
 ms.assetid: 148d9ca7-1af1-44b6-a9fb-91e261b9b463
 msc.legacyurl: /signalr/overview/performance/signalr-connection-density-testing-with-crank
 msc.type: authoredcontent
-ms.openlocfilehash: 7a9b49cf1c52d5291cf8cf04e6c6bbb2c07805ae
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: feda4906995c6a5b25de4bc54ef96b2d6803eb59
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37827619"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838842"
 ---
 <a name="signalr-connection-density-testing-with-crank"></a>Тестирование с помощью Crank плотности подключений SignalR
 ====================
@@ -57,7 +57,7 @@ Crank может использоваться для полностью насы
 - **SendTimeout**: время ожидания в миллисекундах для сообщений на сервер. Значение по умолчанию — 300.
 - **ControllerUrl**: URL-адрес, где один клиент будет размещаться концентратор контроллера. Значение по умолчанию имеет значение null (нет контроллеров). Контроллер концентратор запускается при запуске сеанса ручки; выполняется дальнейшая контакта между контроллеров и ручки.
 - **NumClients**: число имитации клиентов для подключения к приложению. Значение по умолчанию — один.
-- **Файл журнала**: имя файла для файла журнала для тестового запуска. Значение по умолчанию — `crank.csv`.
+- **Файл журнала**: имя файла для файла журнала для тестового запуска. Значение по умолчанию — `crank.csv`.
 - **SampleInterval**: время в миллисекундах между значения выборки счетчиков производительности. Значение по умолчанию — 1000.
 - **SignalRInstance**: имя экземпляра для счетчиков производительности на сервере. Значение по умолчанию — использовать состояние подключения клиента.
 

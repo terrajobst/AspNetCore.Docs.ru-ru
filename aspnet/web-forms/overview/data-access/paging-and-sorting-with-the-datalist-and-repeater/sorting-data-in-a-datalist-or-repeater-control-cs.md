@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-rep
 title: Сортировка данных в элементе управления DataList или Repeater (C#) | Документация Майкрософт
 author: rick-anderson
 description: В этом руководстве будет рассмотрен способ включения поддержки в элементах управления DataList и Repeater сортировки, а также как создать в элементе управления DataList или Repeater, данные которого можно...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/13/2006
 ms.assetid: f52c302a-1b7c-46fe-8a13-8412c95cbf6d
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f394487523a7da112d32fb18b622bc73d5077aaa
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 05fbc51d5341a4d3d634cbbc05c0e66a827b0394
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839996"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838767"
 ---
 <a name="sorting-data-in-a-datalist-or-repeater-control-c"></a>Сортировка данных в элементе управления DataList или Repeater (C#)
 ====================

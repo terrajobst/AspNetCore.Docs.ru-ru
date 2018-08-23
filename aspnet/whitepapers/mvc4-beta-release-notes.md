@@ -3,17 +3,17 @@ uid: whitepapers/mvc4-beta-release-notes
 title: ASP.NET MVC 4 | Документация Майкрософт
 author: rick-anderson
 description: В этом документе описывается в выпуске бета-версии ASP.NET MVC 4 для Visual Studio 2010.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/09/2011
 ms.assetid: 666407bb-81de-4319-89ba-0302c382a208
 msc.legacyurl: /whitepapers/mvc4-beta-release-notes
 msc.type: content
-ms.openlocfilehash: b9d50114a239b67b1adc263f6ea6d3a811bcc8f7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f1d949ec716ea8cb677c54fe5b07431161c58fbc
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816695"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838575"
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================

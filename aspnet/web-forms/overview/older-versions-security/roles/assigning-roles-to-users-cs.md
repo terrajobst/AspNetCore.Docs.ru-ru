@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/roles/assigning-roles-to-users-c
 title: Назначение ролей пользователям (C#) | Документация Майкрософт
 author: rick-anderson
 description: В этом руководстве мы построим две страницы ASP.NET для помощи в управлении, какие пользователи принадлежат к роли. Первая страница будет включать средства, чтобы увидеть, что...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/24/2008
 ms.assetid: d522639a-5aca-421e-9a76-d73f95607f57
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/assigning-roles-to-users-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f8573afc2fd5f12611f88f8bdad7e14389017808
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ada08e48da2f7b1513e1347e18fb7944c66d5a75
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820134"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829204"
 ---
 <a name="assigning-roles-to-users-c"></a>Назначение ролей пользователям (C#)
 ====================

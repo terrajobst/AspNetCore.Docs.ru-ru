@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: ASP.NET (VB) варианты размещения | Документация Майкрософт
 author: rick-anderson
 description: Веб-приложений ASP.NET обычно разрабатываются, создания и тестирования в локальной среде разработки и должны быть развернуты в рабочей среде o...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/01/2009
 ms.assetid: 492f5ae2-bad7-4107-89a9-f04a9525dee7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 68f12de0b459c01ecf766e09144364a64e2d69d3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 95df9c7595dc10f2bfce44845236d11457b8b3cb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37817714"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838286"
 ---
 <a name="aspnet-hosting-options-vb"></a>Варианты размещения в ASP.NET (VB)
 ====================

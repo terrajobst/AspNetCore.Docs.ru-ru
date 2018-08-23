@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/nerddinner/re-use-ui-using-master-pages-and-p
 title: Многократное использование пользовательского интерфейса с помощью главных страниц и частичных представлений | Документация Майкрософт
 author: microsoft
 description: Шаг 7 выглядит как "не повторяйся"принцип можно применить в наши шаблоны представлений, чтобы исключить дублирование кода, с помощью шаблонов частичного представления и главные страницы.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: d4243a4a-e91c-4116-9ae0-5c08e5285677
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/re-use-ui-using-master-pages-and-partials
 msc.type: authoredcontent
-ms.openlocfilehash: 961378d6d710c678a0cd223a5c31544f014ace7f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0da32e6ac38f10df6e581517989b3b1fd2f2328c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839598"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828716"
 ---
 <a name="re-use-ui-using-master-pages-and-partials"></a>Многократное использование пользовательского интерфейса с помощью главных страниц и частичных представлений
 ====================

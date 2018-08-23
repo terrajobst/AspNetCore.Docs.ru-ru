@@ -3,17 +3,17 @@ uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-
 title: 'Учебник: Начало работы с SignalR 2 и MVC 5 | Документация Майкрософт'
 author: pfletcher
 description: Этом руководстве показано, как использовать ASP.NET SignalR 2 для создания приложения разговора в режиме реального времени. Будет добавить в приложение MVC 5 SignalR и создание представления "Разговор"...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/10/2014
 ms.assetid: 80bfe5fb-bdfc-41fe-ac43-2132e5d69fac
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 4a4c013ff047f18f9d9b88595af7951577f3f200
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3fca46ac1e73905063afec9fc1eb9cf8df3aee24
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838654"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838455"
 ---
 <a name="tutorial-getting-started-with-signalr-2-and-mvc-5"></a>Учебник: Начало работы с SignalR 2 и MVC 5
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/animation/disabling-actions-during-
 title: Отключение действий во время анимации (Visual Basic) | Документация Майкрософт
 author: wenz
 description: Отображается этот элемент управления в ASP.NET AJAX Control Toolkit не только элемент управления, но всю платформу для добавления анимации в элемент управления. Она также поддерживает действия...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: a86c0276-6481-46ee-8b4f-8c2009399ee9
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/disabling-actions-during-animation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 18c1eb74c73876b3fc6f1e37f69c31642806d043
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 811e1d75f79885f3f4c561d9211fec625fcf1807
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37830883"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838545"
 ---
 <a name="disabling-actions-during-animation-vb"></a>Отключение действий во время анимации (VB)
 ====================

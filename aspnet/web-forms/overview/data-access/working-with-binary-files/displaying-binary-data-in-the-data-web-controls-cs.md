@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/working-with-binary-files/displaying-binary-
 title: Определяет отображение двоичных данных в веб-данных (C#) | Документация Майкрософт
 author: rick-anderson
 description: В этом руководстве мы рассмотрим параметры для представления двоичных данных на веб-странице, включая отображение файла изображения и предоставление f ссылку «Скачать»...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/27/2007
 ms.assetid: 5cbeb9f8-5f92-4ba8-87ae-0b4d460ae6d4
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 62cc931b670931677b4e9632dccd6634715b3c71
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 50d7f8eceb4772c628f7f6ef71f110de03dd9348
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814858"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838727"
 ---
 <a name="displaying-binary-data-in-the-data-web-controls-c"></a>Отображение двоичных данных в веб-элементы управления данными (C#)
 ====================

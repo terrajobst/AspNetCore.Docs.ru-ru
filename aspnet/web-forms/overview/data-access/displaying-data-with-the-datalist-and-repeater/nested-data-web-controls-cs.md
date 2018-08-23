@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeat
 title: Вложенные данные веб-элементов управления (C#) | Документация Майкрософт
 author: rick-anderson
 description: В этом учебном курсе мы изучим способ использования элемента управления Repeater вложенным в другой элемент управления Repeater. На примерах будет проиллюстрировано, как заполнять внутренний Repeater обоих d...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/13/2006
 ms.assetid: ad3cb0ec-26cf-42d7-b81b-184a34ec9f86
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bed7d3772d86b897cafc38a424723da6adf08f97
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 032321b5cf5323058c114e652512854f9866d447
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839387"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838804"
 ---
 <a name="nested-data-web-controls-c"></a>Вложенные данные веб-элементов управления (C#)
 ====================

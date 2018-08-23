@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: Обработка необработанных исключений (C#) | Документация Майкрософт
 author: rick-anderson
 description: При возникновении ошибки среды выполнения веб-приложения в рабочей среде важно для уведомления разработчик и записать ошибку в журнал, чтобы она может обнаружить в a la...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/09/2009
 ms.assetid: 5bc1afd5-2484-4528-b158-ab218ba150e8
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 07272a10ac9b1ddf3afd6b089b05a3f071834efe
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d94f0a3c931100d2c79513b1ad7ae0e77d7fcff6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832633"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837941"
 ---
 <a name="processing-unhandled-exceptions-c"></a>Обработка необработанных исключений (C#)
 ====================

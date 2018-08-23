@@ -3,17 +3,17 @@ uid: web-pages/overview/mobile/rendering-aspnet-web-pages-sites-for-mobile-devic
 title: Отрисовки ASP.NET Web Pages (Razor) сайтов для мобильных устройств | Документация Майкрософт
 author: tfitzmac
 description: 'В этой статье описывается создание страниц на сайте веб-страниц ASP.NET (Razor), будут отображаться правильно на мобильных устройствах. Вы узнаете, как: как вы...'
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/17/2014
 ms.assetid: f15ab392-c05e-4269-83bf-7c6d2b8c8ec8
 msc.legacyurl: /web-pages/overview/mobile/rendering-aspnet-web-pages-sites-for-mobile-devices
 msc.type: authoredcontent
-ms.openlocfilehash: dcc44e0d78814ef9a8537b01efa17259a12e9c76
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7159283efcd4a82d5dff68f2d9e315f804e7cdcb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816354"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838597"
 ---
 <a name="rendering-aspnet-web-pages-razor-sites-for-mobile-devices"></a>Подготовка к просмотру ASP.NET Web Pages (Razor) сайтов для мобильных устройств
 ====================

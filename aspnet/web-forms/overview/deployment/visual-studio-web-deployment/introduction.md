@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/visual-studio-web-deployment/introduction
 title: 'Веб-развертывание ASP.NET с помощью Visual Studio: введение | Документация Майкрософт'
 author: tdykstra
 description: В этой серии руководств показано, как развернуть ASP.NET (публикации) веб-приложения в веб-приложениях службы приложений Azure или стороннего поставщика услуг размещения, по с помощью V...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/15/2013
 ms.assetid: 24ad086d-865e-433c-9ac9-05f1a553da16
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: 11e6f6a695b4e98cf5d061ca3c3197922e971644
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a227f6564607ed9e909fc4d6297d7370f8fb62b5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37828355"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836730"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-introduction"></a>Веб-развертывание ASP.NET с помощью Visual Studio: введение
 ====================

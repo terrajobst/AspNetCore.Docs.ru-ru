@@ -3,23 +3,23 @@ uid: web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
 title: Модульное тестирование ASP.NET Web API 2 | Документация Майкрософт
 author: tfitzmac
 description: Это руководство и приложение демонстрируется создание простого модульных тестов для приложения веб-API 2. Этом руководстве показано, как включать proj модульного теста...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/05/2014
 ms.assetid: bf20f78d-ff91-48be-abd1-88e23dcc70ba
 msc.legacyurl: /web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 701ced855ff2848182fdbf8d4b9e2bcf0c33341b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0a3f9ddde725995359de85c5e0783106f5de02bd
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806219"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828739"
 ---
 <a name="unit-testing-aspnet-web-api-2"></a>Модульное тестирование ASP.NET Web API 2
 ====================
 по [Tom FitzMacken](https://github.com/tfitzmac)
 
-[Скачать завершенный проект](http://code.msdn.microsoft.com/Unit-Testing-with-ASPNET-e2867d4d)
+[Скачать завершенный проект](https://code.msdn.microsoft.com/Unit-Testing-with-ASPNET-1374bc11)
 
 > Это руководство и приложение демонстрируется создание простого модульных тестов для приложения веб-API 2. Этом руководстве показано, как включить проект модульного теста в решении, а написание методов теста, которые проверяют возвращаемые из метода контроллера.
 > 

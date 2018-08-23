@@ -3,17 +3,17 @@ uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-numericupdown-extend
 title: '[Инструкции] Использовать управляющий элемент-расширитель NumericUpDown? | Документы Майкрософт'
 author: JoeStagner
 description: В этом видео мы рассмотрим расширяющий элемент управления NumericUpDown с ASP.NET AJAX Control Toolkit. Мы видим, как средство расширения NumericUpDown добавляет «вверх» и «вниз»...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/12/2007
 ms.assetid: 2aee17e4-06d1-4875-985e-8fb817dc8bcd
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-numericupdown-extender-control
 msc.type: video
-ms.openlocfilehash: a85f89f9c46fb2a6b17f20a97fee896e24374389
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a3405c2ba0ec1372d343187c042ab5409a9db5fb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840450"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838770"
 ---
 <a name="how-do-i-use-the-numericupdown-extender-control"></a>[Инструкции] Использовать управляющий элемент-расширитель NumericUpDown?
 ====================

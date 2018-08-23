@@ -3,17 +3,17 @@ uid: web-api/overview/advanced/dependency-injection
 title: Внедрение зависимостей в ASP.NET Web API 2 | Документация Майкрософт
 author: MikeWasson
 description: Этом руководстве показано, как внедрить зависимости в контроллере веб-API ASP.NET. Версии программного обеспечения, используемые в руководстве Web API 2 Unity Application Block...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/20/2014
 ms.assetid: e3d3e7ba-87f0-4032-bdd3-31f3c1aa9d9c
 msc.legacyurl: /web-api/overview/advanced/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: a470c778fd5998006a0bf8edb08b62a75d72c48c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 41db1af79ed63ff4dd12be37e9cc76e16f1bf5e4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802679"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838452"
 ---
 <a name="dependency-injection-in-aspnet-web-api-2"></a>Внедрение зависимостей в ASP.NET Web API 2
 ====================
@@ -33,7 +33,7 @@ ms.locfileid: "37802679"
 
 ## <a name="what-is-dependency-injection"></a>Что такое внедрение зависимостей?
 
-Объект *зависимостей* — это любой объект, который требует другой объект. Например, довольно часто для определения [репозитория](http://martinfowler.com/eaaCatalog/repository.html) , служащий для обработки доступа к данным. Давайте рассмотрим пример. Во-первых мы определим модель предметной области:
+*Зависимость* — это любой объект, который требуется другому объекту. Например, довольно часто для определения [репозитория](http://martinfowler.com/eaaCatalog/repository.html) , служащий для обработки доступа к данным. Давайте рассмотрим пример. Во-первых мы определим модель предметной области:
 
 [!code-csharp[Main](dependency-injection/samples/sample1.cs)]
 

@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-vb
 title: Борьба с программами-роботами (VB) | Документация Майкрософт
 author: wenz
 description: Автоматические программы-роботы Гипс блогов и других веб-сайтов с нежелательной почтой, отправка форм комментарий без вмешательства пользователя. Элемент управления NoBot в ASP.NET AJAX Con...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: e9803150-452d-4521-97e3-d75d5599383c
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e79a973f721c1feeddb00ecbf9d6a76786afb4bb
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8b2a2d2d72bfcf3ce8b3b345fda0bad5a37818ee
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833447"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828733"
 ---
 <a name="fighting-bots-vb"></a>Борьба с программами-роботами (VB)
 ====================
