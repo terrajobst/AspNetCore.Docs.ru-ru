@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-
 title: С помощью элементов набора элементов управления AJAX и управляющих элементов-расширителей (VB) | Документация Майкрософт
 author: microsoft
 description: Сведения о добавлении элементов управления AJAX Control Toolkit и расширителей для страниц ASP.NET.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/12/2009
 ms.assetid: 763650a9-ffde-46a9-b779-7a9145dd5d88
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 292a6e41740538d41e26b01fa76ff59f9af21221
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f1cf40ec3ba299ee2702258a93aa1192a2112e7f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825364"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824015"
 ---
 <a name="using-ajax-control-toolkit-controls-and-control-extenders-vb"></a>С помощью элементов набора элементов управления AJAX и управляющих элементов-расширителей (VB)
 ====================

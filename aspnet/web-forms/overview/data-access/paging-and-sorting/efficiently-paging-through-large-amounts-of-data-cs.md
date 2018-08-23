@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/paging-and-sorting/efficiently-paging-throug
 title: Эффективное разбиение больших объемов данных (C#) | Документация Майкрософт
 author: rick-anderson
 description: Возможности разбиения по страницам по умолчанию элемента управления представления данных не подходит при работе с большими объемами данных, таких как его retriev базового элемента управления источника данных...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/15/2006
 ms.assetid: 59c01998-9326-4ecb-9392-cb9615962140
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bb10524e7973894ea60663da3813673742ae4ab4
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: feebee845a19a7cb462127a893a30ac7e0761965
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825844"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829500"
 ---
 <a name="efficiently-paging-through-large-amounts-of-data-c"></a>Эффективное разбиение больших объемов данных (C#)
 ====================
@@ -352,7 +352,7 @@ GridView отсутствует, так как элемент управлени
 Статьи, [пользовательского разбиения по страницам в ASP.NET 2.0 с SQL Server 2005](http://aspnet.4guysfromrolla.com/articles/031506-1.aspx), несколько тестов, я сравнил различия в производительности между этих двух способов разбиения по страницам таблицы базы данных с помощью 50 000 записей. В этих тестах я сравнил время выполнения запроса на уровне SQL Server (с помощью [SQL Profiler](https://msdn.microsoft.com/library/ms173757.aspx)) и на странице ASP.NET с помощью [возможности трассировки ASP.NET s](https://msdn.microsoft.com/library/y13fw6we.aspx). Имейте в виду, что эти тесты выполнялись на моем рабочем компьютере с одним активным пользователем и таким образом нельзя назвать научными и они не демонстрируют шаблонов нагрузки типичный веб-сайт. Тем не менее, они позволяют показать относительную разницу между временем выполнения для по умолчанию и пользовательское разбиение по страницам при работе с достаточно большими объемами данных.
 
 
-|  | **Средняя Длительность (в секундах)** | **Операции чтения** |
+|  | **Средняя Длительность (в секундах)** | **Число считываний** |
 | --- | --- | --- |
 | **По умолчанию разбиение на страницы SQL Profiler** | 1.411 | 383 |
 | **Пользовательского разбиения по страницам SQL Profiler** | 0.002 | 29 |

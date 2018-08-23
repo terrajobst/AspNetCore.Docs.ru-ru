@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/overview/understanding-models-views-and-contr
 title: Общие сведения о моделях, представлениях и контроллерах (C#) | Документация Майкрософт
 author: StephenWalther
 description: Не понимаете, о моделях, представлениях и контроллерах? В этом руководстве Стивен Вальтер рассказывается о различных частях приложения ASP.NET MVC.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/19/2008
 ms.assetid: 87313792-0a96-4caf-89fc-1457d54e5c1e
 msc.legacyurl: /mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c4c5247ac4b880c1be60f0419ebc9fc9b790c639
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5e9186a6c261266de8f1a1509a49b84b359bd920
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823400"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829688"
 ---
 <a name="understanding-models-views-and-controllers-c"></a>Общие сведения о моделях, представлениях и контроллерах (C#)
 ====================
@@ -110,7 +110,7 @@ ms.locfileid: "37823400"
 
 Действие — подробности
 
-Идентификатор = 3
+идентификатор = 3
 
 Маршрут по умолчанию, определенные в файле Global.asax содержит значения по умолчанию для всех трех параметров. По умолчанию контроллера Home, действие по умолчанию используется индекс, а идентификатор по умолчанию является пустой строкой. Эти значения по умолчанию в виду рассмотрите как следующий URL-адрес анализируется:
 
@@ -126,7 +126,7 @@ ms.locfileid: "37823400"
 
 Наконец Если открыть приложения ASP.NET MVC, не указав любой URL-адрес (например, `http://localhost`) URL-адрес разбивается следующим образом:
 
-Контроллер = Home
+контроллер = Home
 
 Действие = индекс
 

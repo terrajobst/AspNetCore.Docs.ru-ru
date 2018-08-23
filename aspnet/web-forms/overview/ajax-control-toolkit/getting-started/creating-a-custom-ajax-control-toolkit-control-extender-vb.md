@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/getting-started/creating-a-custom-a
 title: Создание пользовательских AJAX элемента управления набора средств расширения (Visual Basic) | Документация Майкрософт
 author: microsoft
 description: Пользовательские расширения позволяют настроить и расширить возможности элементов управления ASP.NET без создания новых классов.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/12/2009
 ms.assetid: 18b29834-c991-4e0c-b533-44d358fbfc9c
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b44918cff161088e98f7baaca7714348b0b6a8de
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7f0cbee47b541e31f3e9f01e42afeabcd7b9769f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814622"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837370"
 ---
 <a name="creating-a-custom-ajax-control-toolkit-control-extender-vb"></a>Создание пользовательских AJAX Control Toolkit управления Extender (VB)
 ====================

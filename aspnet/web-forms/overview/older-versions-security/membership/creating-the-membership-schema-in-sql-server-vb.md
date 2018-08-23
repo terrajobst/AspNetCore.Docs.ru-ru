@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/membership/creating-the-membersh
 title: Создание схемы членства в SQL Server (Visual Basic) | Документация Майкрософт
 author: rick-anderson
 description: Этот учебник начинает проверять методы для добавления необходимую схему в базу данных для использования SqlMembershipProvider. После этого мы wi...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/18/2008
 ms.assetid: 112a674d-716f-41a6-99b8-4074d65a54c0
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1fa1e3f57c1218af6fec8bddeed6cdcbdffe1965
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 62a6113c9ddad1722160c7092308939cf7883588
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831849"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837063"
 ---
 <a name="creating-the-membership-schema-in-sql-server-vb"></a>Создание схемы членства в SQL Server (VB)
 ====================
@@ -279,7 +279,7 @@ ms.locfileid: "37831849"
 | `minRequiredPasswordLength` | Минимальное число символов в пароле. Это значение должно быть в диапазоне от 0 до 128. значение по умолчанию — 7. |
 | `name` | Имя зарегистрированного поставщика. Это значение является обязательным. |
 | `passwordAttemptWindow` | Количество минут в течение которого не отслеживаются попыток входа. Если пользователь предоставляет учетные данные для входа недопустимый `maxInvalidPasswordAttempts` указано время в данном окне, они заблокированы. Значение по умолчанию — 10. |
-| `PasswordFormat` | Формат хранения паролей: `Clear`, `Hashed`, или `Encrypted`. Значение по умолчанию — `Hashed`. |
+| `PasswordFormat` | Формат хранения паролей: `Clear`, `Hashed`, или `Encrypted`. Значение по умолчанию — `Hashed`. |
 | `passwordStrengthRegularExpression` | Если указано, это регулярное выражение используется для оценки надежности выбранного пароля пользователя при создании новой учетной записи или при изменении пароля. Значение по умолчанию - пустая строка. |
 | `requiresQuestionAndAnswer` | Указывает, является ли пользователь должен ответить его контрольный вопрос при извлечении или сбросе пароля. Значение по умолчанию — `true`. |
 | `requiresUniqueEmail` | Указывает, является ли все учетные записи пользователей в разделе данного приложения должен иметь уникальный адрес электронной почты. Значение по умолчанию — `true`. |
