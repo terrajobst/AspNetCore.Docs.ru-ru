@@ -3,21 +3,21 @@ uid: ajax/cdn/jquery-mobile/cdnjquerymobile101
 title: jQuery Mobile 1.0.1 в сети доставки Содержимого Microsoft Ajax | Документация Майкрософт
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/23/2014
 ms.assetid: bdffb1f1-19e7-4b95-b73a-de94cd19ae8b
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile101
 msc.type: content
-ms.openlocfilehash: 8f514cffcffa09bc796289f203070391e6cc8def
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7442f9ca8dcc270cf3558f89003dac67df999ef4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37817818"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838906"
 ---
-<a name="jquery-mobile-101-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="95915-102">jQuery Mobile 1.0.1 в сети доставки Содержимого Microsoft Ajax</span><span class="sxs-lookup"><span data-stu-id="95915-102">jQuery Mobile 1.0.1 on the Microsoft Ajax CDN</span></span>
+<a name="jquery-mobile-101-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="a7c22-102">jQuery Mobile 1.0.1 в сети доставки Содержимого Microsoft Ajax</span><span class="sxs-lookup"><span data-stu-id="a7c22-102">jQuery Mobile 1.0.1 on the Microsoft Ajax CDN</span></span>
 ====================
-<span data-ttu-id="95915-103">Библиотека jQuery Mobile 1.0.1 включает следующие файлы:</span><span class="sxs-lookup"><span data-stu-id="95915-103">The jQuery Mobile 1.0.1 library includes the following files:</span></span>
+<span data-ttu-id="a7c22-103">Библиотека jQuery Mobile 1.0.1 включает следующие файлы:</span><span class="sxs-lookup"><span data-stu-id="a7c22-103">The jQuery Mobile 1.0.1 library includes the following files:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0.1/jquery.mobile-1.0.1.js
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0.1/jquery.mobile-1.0.1.min.js
