@@ -5,12 +5,12 @@ description: Основные сведения о проверки подлин�
 ms.author: tdykstra
 ms.date: 11/01/2017
 uid: security/index
-ms.openlocfilehash: ed64594c85d555d8417903947fc3ce927dc04cec
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 3a1c1ea1ad28fccbe5ae91b0be193938b095f60b
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095766"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41746085"
 ---
 # <a name="overview-of-aspnet-core-security"></a>Общие сведения о безопасности ASP.NET Core
 
@@ -35,9 +35,9 @@ ASP.NET Core и EF содержат средства, помогающие за�
 * [Подделки межсайтовых запросов (CSRF)](xref:security/anti-request-forgery)
 * [Атаки с открытой переадресацией](xref:security/preventing-open-redirects)
 
-Существует еще целый ряд уязвимостей, о которых следует знать. Дополнительные сведения см. в разделе этого документа, посвященном *документации по безопасности ASP.NET*.
+Существует еще целый ряд уязвимостей, о которых следует знать. Дополнительные сведения см. в разделе этого документа, посвященном *документации по безопасности ASP.NET Core*.
 
-## <a name="aspnet-security-documentation"></a>Документация по безопасности ASP.NET
+## <a name="aspnet-core-security-documentation"></a>Документация по безопасности ASP.NET Core
 
 *   [Проверка подлинности](xref:security/authentication/index)
     *   [Общие сведения об Identity](xref:security/authentication/identity)

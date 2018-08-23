@@ -4,13 +4,15 @@ author: CamSoper
 description: Коллекция рекомендаций для наиболее эффективного использования служб Azure с платформой ASP.NET Core.
 ms.author: casoper
 ms.date: 08/07/2018
+layout: LandingPage
+ms.topic: landing-page
 uid: azure/index
-ms.openlocfilehash: 7520d46c94af9ae48d2d770313de573ee7c39811
-ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
+ms.openlocfilehash: f0a01afb176b155c4eb4ca9a66f56f92b5f802c5
+ms.sourcegitcommit: 6d02e26748a09eabeb0e11740a398cc2bc90b098
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "39722556"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41746087"
 ---
 # <a name="azure-guidance"></a>Руководство по Azure
 
@@ -18,4 +20,6 @@ ms.locfileid: "39722556"
 
 ## <a name="guides"></a>Направляющие
 
-* [DevOps с ASP.NET Core и Azure](xref:azure/devops/index)
+[![Обложка "DevOps с ASP.NET Core и Azure"](./devops/media/cover-thumb.png)](xref:azure/devops/index) <br />
+**DevOps с ASP.NET Core и Azure** <br />
+[Документация](xref:azure/devops/index) | [PDF](https://aka.ms/devopsbook)
