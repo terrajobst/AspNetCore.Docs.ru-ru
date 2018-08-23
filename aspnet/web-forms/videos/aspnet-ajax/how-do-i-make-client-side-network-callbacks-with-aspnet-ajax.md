@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-ajax/how-do-i-make-client-side-network-callbacks-wi
 title: '[Инструкции] Создать сети на стороне клиента обратные вызовы с ASP.NET AJAX? | Документы Майкрософт'
 author: JoeStagner
 description: В этом видео мы видим, как Microsoft ASP.NET AJAX помогает веб-разработчикам сделать непосредственно из кода сценария на стороне клиента обратных вызовов по сети. Мы также увидеть, как ASP.NET...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/26/2007
 ms.assetid: ea4211be-faf9-40a0-8a7b-63427218b947
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-make-client-side-network-callbacks-with-aspnet-ajax
 msc.type: video
-ms.openlocfilehash: 565588294f4ee0dd755e300fe7c4e1350d9a529a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 73face950ec7d0e798f8c3a64612503105c6e7d0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816410"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835927"
 ---
 <a name="how-do-i-make-client-side-network-callbacks-with-aspnet-ajax"></a>[Инструкции] Создать сети на стороне клиента обратные вызовы с ASP.NET AJAX?
 ====================

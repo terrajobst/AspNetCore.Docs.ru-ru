@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/master-pages/urls-in-mast
 title: URL-адреса на главных страницах (VB) | Документация Майкрософт
 author: rick-anderson
 description: Адреса, как URL-адреса на главной странице может нарушить работу из-за файл главной страницы, находящиеся в каталоге относительный, отличном от содержимого страницы. Рассматривает модификация базового адреса...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/10/2008
 ms.assetid: 43d1e83c-0092-4dcf-977c-e709c4dce7c3
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 28c9927539ac243ce84f7a25c73be837d2dd6daa
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 881debeeaa98a7f2be7ccadb501c019e698b22f2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822759"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836565"
 ---
 <a name="urls-in-master-pages-vb"></a>URL-адреса на главных страницах (VB)
 ====================

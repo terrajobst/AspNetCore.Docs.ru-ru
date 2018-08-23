@@ -3,17 +3,17 @@ uid: web-api/overview/security/individual-accounts-in-web-api
 title: Защита веб-API с помощью отдельных учетных записей и локального имени входа в ASP.NET Web API 2.2 | Документация Майкрософт
 author: MikeWasson
 description: В этом разделе показано, как защитить веб-API с использованием OAuth2 для проверки подлинности в базе данных членства. Версии программного обеспечения, используемые в руководстве Visual Studio 201...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/15/2014
 ms.assetid: 92c84846-f0ea-4b5e-94b6-5004874eb060
 msc.legacyurl: /web-api/overview/security/individual-accounts-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 0a520333492a60014f7e9f9182a16f0ce514ba1d
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 01d117260ef458453bee79285a37a8977221998c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842089"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835917"
 ---
 <a name="secure-a-web-api-with-individual-accounts-and-local-login-in-aspnet-web-api-22"></a>Защита веб-API с помощью отдельных учетных записей и локального имени входа в ASP.NET Web API 2.2
 ====================

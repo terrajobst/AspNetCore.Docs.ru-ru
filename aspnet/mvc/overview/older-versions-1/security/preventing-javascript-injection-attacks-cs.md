@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/security/preventing-javascript-injection-atta
 title: Предотвращение атак путем внедрения кода JavaScript (C#) | Документация Майкрософт
 author: StephenWalther
 description: Предотвратить атаки путем внедрения кода JavaScript и Cross-Site Scripting атаки для вас. В этом руководстве Стивен Вальтер объясняется, как вы можете легко de...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/19/2008
 ms.assetid: d0136da6-81a4-4815-b002-baa84744c09e
 msc.legacyurl: /mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0b0257eaef29c8e538fde92044cbc8cf2abe77f0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 77d0f0346e9eff756cd74c64c310918f3c367ab1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808270"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835911"
 ---
 <a name="preventing-javascript-injection-attacks-c"></a>Предотвращение атак путем внедрения кода JavaScript (C#)
 ====================

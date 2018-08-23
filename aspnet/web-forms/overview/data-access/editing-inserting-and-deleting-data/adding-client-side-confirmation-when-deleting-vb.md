@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-c
 title: Добавление клиентского подтверждения при удалении (VB) | Документация Майкрософт
 author: rick-anderson
 description: В интерфейсы, которые мы создали ранее пользователь может случайно удалить данные, нажав кнопку Delete, Собираясь нажать кнопку "Изменить". В этом t...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/17/2006
 ms.assetid: 6331e02e-c465-4cdf-bd3f-f07680c289d6
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2318018b20841038ebb7a6e4900cf9849057d941
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: deae088d1daa63e2936aedf80eded18588b1ec60
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802501"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835899"
 ---
 <a name="adding-client-side-confirmation-when-deleting-vb"></a>Добавление клиентского подтверждения при удалении (VB)
 ====================

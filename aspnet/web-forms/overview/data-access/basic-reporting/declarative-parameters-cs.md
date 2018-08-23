@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/basic-reporting/declarative-parameters-cs
 title: Декларативные параметры (C#) | Документация Майкрософт
 author: rick-anderson
 description: В этом руководстве демонстрируют способы использования параметров с жестко запрограммированных значений, чтобы выбрать данные, отображаемые в элементе управления DetailsView.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/31/2010
 ms.assetid: 603c9bd3-b895-4ec6-853b-0c81ff36d580
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/declarative-parameters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 06577628d2b502df2854a83af564a0c0d402e9bd
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0e4091e873aab8bed4e0f4a5b2a30784fd52723e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839429"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836097"
 ---
 <a name="declarative-parameters-c"></a>Декларативные параметры (C#)
 ====================

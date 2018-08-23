@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/dropshadow/manipulating-dropshadow-
 title: Обработка свойств DropShadow из клиентского кода (C#) | Документация Майкрософт
 author: wenz
 description: Настройка интерфейса правки элемента управления DataList
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: c83ca3e6-c0bf-4158-a166-40c1ab0f33da
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dropshadow/manipulating-dropshadow-properties-from-client-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7255e8b2b4c3c5f1c5ebf5a05851c13c07e49c5e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f751e2378621a6ab74f9f15fe51fd18bdd8b4070
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820315"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836310"
 ---
 <a name="manipulating-dropshadow-properties-from-client-code-c"></a>Обработка свойств DropShadow из клиентского кода (C#)
 ====================

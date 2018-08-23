@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web
 title: Перевод веб-приложений вне сети с веб-развертывание | Документация Майкрософт
 author: jrjlee
 description: В этом разделе описывается перевод веб-приложения автономно в течение автоматического развертывания с помощью о Web Internet Information Services (IIS)...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 3e9f6e7d-8967-4586-94d5-d3a122f12529
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web-applications-offline-with-web-deploy
 msc.type: authoredcontent
-ms.openlocfilehash: b8dc1ff26bbbe7dee1ee90fd929b2e98de5360db
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9b18a48914a74a7fea85278d0e601f6f84376b23
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829519"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835922"
 ---
 <a name="taking-web-applications-offline-with-web-deploy"></a>Перевод веб-приложений вне сети с веб-развертывание
 ====================

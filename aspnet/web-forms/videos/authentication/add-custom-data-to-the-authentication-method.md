@@ -3,17 +3,17 @@ uid: web-forms/videos/authentication/add-custom-data-to-the-authentication-metho
 title: Добавление пользовательских данных в метод проверки подлинности | Документация Майкрософт
 author: JoeStagner
 description: (Joe Stagner) будет продолжена исследования проверки подлинности ASP.NET, настроив метод проверки подлинности, чтобы добавить пользовательские данные билет проверки подлинности...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/16/2008
 ms.assetid: 940bdecc-ae0f-448f-a189-405efa614049
 msc.legacyurl: /web-forms/videos/authentication/add-custom-data-to-the-authentication-method
 msc.type: video
-ms.openlocfilehash: d966c036a1862185ceb06fc0ae1010e1d8b6e7ae
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3c79a25b9b57311c8c5b941f1c6ab23cb1ebee42
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37817464"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829450"
 ---
 <a name="add-custom-data-to-the-authentication-method"></a>Добавление пользовательских данных в метод проверки подлинности
 ====================

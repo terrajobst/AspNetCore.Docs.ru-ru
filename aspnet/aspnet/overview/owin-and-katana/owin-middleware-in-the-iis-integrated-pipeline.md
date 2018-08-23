@@ -3,17 +3,17 @@ uid: aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipel
 title: По промежуточного слоя OWIN в службах IIS интегрирован конвейера | Документация Майкрософт
 author: Praburaj
 description: В этой статье показано, как для запуска компонентов по промежуточного слоя OWIN (OMCs) в интегрированном конвейере служб IIS и работает как для установки события конвейера OMC на. Вы должны...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/07/2013
 ms.assetid: d031c021-33c2-45a5-bf9f-98f8fa78c2ab
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
 msc.type: authoredcontent
-ms.openlocfilehash: e78ded1dcafd40097d6477a757406c7170dd1bb7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 56bd145688e1ab0a70710cc80cb8f5fa10ee8968
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37828102"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829065"
 ---
 <a name="owin-middleware-in-the-iis-integrated-pipeline"></a>По промежуточного слоя OWIN в интегрированном конвейере служб IIS
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/basic-reporting/programmatically-setting-the
 title: Программная установка значений параметров ObjectDataSource (C#) | Документация Майкрософт
 author: rick-anderson
 description: В этом руководстве мы рассмотрим добавление метода к DAL и BLL, который принимает один входной параметр и возвращает данные. Этот параметр будет установлен пример...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/31/2010
 ms.assetid: 1c4588bb-255d-4088-b319-5208da756f4d
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 561b197aae925eb432a3e93d37b347a081f64a2b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 78de288977f55ffe73c5b34329cd5b5c5c84334f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37827357"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836343"
 ---
 <a name="programmatically-setting-the-objectdatasources-parameter-values-c"></a>Программная установка значений параметров ObjectDataSource (C#)
 ====================

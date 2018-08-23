@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/advanced-data-access-scenarios/using-existin
 title: Использование существующих хранимых процедур для адаптеров таблиц TableAdapter типизированного DataSet (C#) | Документация Майкрософт
 author: rick-anderson
 description: В предыдущем учебном курсе мы показали, как использовать мастер TableAdapter для создания новых хранимых процедур. В этом руководстве мы Узнайте, как один адаптер таблицы...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/18/2007
 ms.assetid: 440bef2a-1641-4238-99e3-8e2d44e7d94c
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3057b7c296c82b3db740d9fd345aaa222ca31328
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: df095a7eeac0910078cfa206ed1ba7be9a1334d2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37828874"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836282"
 ---
 <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-c"></a>Использование существующих хранимых процедур для адаптеров таблиц TableAdapter типизированного DataSet (C#)
 ====================

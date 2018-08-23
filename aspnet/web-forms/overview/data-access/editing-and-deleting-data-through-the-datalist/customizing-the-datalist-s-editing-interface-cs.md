@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datali
 title: Настройка элемента управления DataList редактирования интерфейса (C#) | Документация Майкрософт
 author: rick-anderson
 description: В этом руководстве мы создадим более богатый интерфейс редактирования элемента управления DataList, содержащий элементов управления DropDownList и флажок.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/30/2006
 ms.assetid: a5d13067-ddfb-4c36-8209-0f69fd40e45c
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/customizing-the-datalist-s-editing-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c76e3bc46c7d38140320834a27ec7710d289e7d3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7f7723895dd50b1923de49ca4a3a7055bbad5fe4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37826122"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836052"
 ---
 <a name="customizing-the-datalists-editing-interface-c"></a>Настройка интерфейса правки элемента управления DataList (C#)
 ====================

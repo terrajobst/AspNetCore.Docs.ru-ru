@@ -3,17 +3,17 @@ uid: web-forms/videos/authentication/creating-user-accounts-programmatically
 title: Создание учетных записей пользователей программным способом | Документация Майкрософт
 author: JoeStagner
 description: В этом видео (Joe Stagner) демонстрирует создание пользовательского программным способом создать веб-формы пользователя при не с помощью мастера Create User. Для дополнительных я...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/22/2008
 ms.assetid: 33087707-9876-4575-9042-42e0d0947fa5
 msc.legacyurl: /web-forms/videos/authentication/creating-user-accounts-programmatically
 msc.type: video
-ms.openlocfilehash: 8d99f769f6bf04fa05b3dd85dec6dc3a2e5618fc
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0bdddac1e470e7b9eac79013aebd3f6d1e05c589
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37813424"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829431"
 ---
 <a name="creating-user-accounts-programmatically"></a>Создание учетных записей пользователей программным способом
 ====================

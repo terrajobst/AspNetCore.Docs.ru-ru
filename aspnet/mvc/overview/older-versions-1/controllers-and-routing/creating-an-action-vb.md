@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-vb
 title: Создание действия (Visual Basic) | Документация Майкрософт
 author: microsoft
 description: Узнайте, как добавить новое действие контроллера ASP.NET MVC. Дополнительные сведения о требованиях для метода для действия.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/02/2009
 ms.assetid: c8d93e11-ef78-4a30-afbc-f30419000a60
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6ec69f5aa9f7a789cb533a8dc04dca952adf35d0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 070dd4c9d68327eec52fe385000b9ca3907eaa9f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824050"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835975"
 ---
 <a name="creating-an-action-vb"></a>Создание действия (VB)
 ====================

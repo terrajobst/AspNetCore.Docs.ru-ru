@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-va
 title: Вспомогательные функции ASP.NET MVC 4, формы и проверка | Документация Майкрософт
 author: rick-anderson
 description: В ASP.NET MVC 4 моделей и данных доступа Практическое лабораторное занятие вы были Загрузка и отображение данных из базы данных. В этой лаборатории вы добавите...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/18/2013
 ms.assetid: 187ee9cd-bc70-479b-bfed-f568b8da96eb
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
 msc.type: authoredcontent
-ms.openlocfilehash: a84e35695fa08ac1bd4834d2803d2be76f863e5b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8671ae8e9408e6f05135fa27d56480477521c4ba
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815925"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836054"
 ---
 # <a name="aspnet-mvc-4-helpers-forms-and-validation"></a>Вспомогательные функции ASP.NET MVC 4, формы и проверка
 

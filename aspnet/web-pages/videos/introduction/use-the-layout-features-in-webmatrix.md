@@ -3,17 +3,17 @@ uid: web-pages/videos/introduction/use-the-layout-features-in-webmatrix
 title: Использование функций макета в WebMatrix | Документация Майкрософт
 author: rick-anderson
 description: Часть 4 содержит сведения, макет и использование макета в WebMatrix общий код по страницам.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/12/2011
 ms.assetid: 37504e9f-3c62-41ac-88c3-9daf9fdd5d9a
 msc.legacyurl: /web-pages/videos/introduction/use-the-layout-features-in-webmatrix
 msc.type: video
-ms.openlocfilehash: 0fdfee948971009ea9fa3c7b5d9ac64e34061168
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0e7dabc20eed7f363474f196463d56e8d6db1111
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812864"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836908"
 ---
 <a name="use-the-layout-features-in-webmatrix"></a>Использование функций макета в WebMatrix
 ====================

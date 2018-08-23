@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/limiting
 title: Ограничение функций изменения данных на основе пользователя (C#) | Документация Майкрософт
 author: rick-anderson
 description: В веб-приложения, который позволяет пользователю изменять данные различные учетные записи пользователей могут иметь различные полномочия на изменение данных. В этом руководстве будет рассмотрен способ t...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/17/2006
 ms.assetid: 2b251c82-77cf-4e36-baa9-b648eddaa394
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d011f57834ff27efd888a3f66342a7d0a2d70d8c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8f54f8ef593363f9428b663051cc71b8ef4a2e67
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811397"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829403"
 ---
 <a name="limiting-data-modification-functionality-based-on-the-user-c"></a>Ограничение функций изменения данных на основе пользователя (C#)
 ====================

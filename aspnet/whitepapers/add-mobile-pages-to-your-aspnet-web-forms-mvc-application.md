@@ -3,17 +3,17 @@ uid: whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
 title: 'Практическое руководство: Добавление мобильных страниц в ASP.NET Web Forms и MVC-приложения | Документация Майкрософт'
 author: rick-anderson
 description: Данном разделе описывается различные способы для обслуживания страниц, оптимизированных для мобильных устройств из вашей веб-форм ASP.NET и MVC-приложения и предлагает архитектуры и...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/20/2011
 ms.assetid: 3124f28e-cc32-418a-afe3-519fa56f4c36
 msc.legacyurl: /whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
 msc.type: content
-ms.openlocfilehash: 59b81184852a7fe0ad2dcad9718b572a8c756918
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1693838a74f0564e38e11a2827cceb3d6474677b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823359"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829108"
 ---
 <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>Практическое руководство: Добавление мобильных страниц в ASP.NET Web Forms и MVC-приложения
 ====================

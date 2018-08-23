@@ -3,17 +3,17 @@ uid: identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity
 title: Реализация поставщика хранилища MySQL пользовательского удостоверения ASP.NET | Документация Майкрософт
 author: raquelsa
 description: ASP.NET Identity является расширяемой системой, что дает возможность создать собственный поставщик хранилища и подключить его к приложению без переработки приложения...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/22/2015
 ms.assetid: 248f5fe7-39ba-40ea-ab1e-71a69b0bd649
 msc.legacyurl: /identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
 msc.type: authoredcontent
-ms.openlocfilehash: e5784991a95dcff0db38d87707bc83555da716df
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 358b1a3b7277f21c63a1d395f2a5fce79bbe0d56
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805679"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835753"
 ---
 <a name="implementing-a-custom-mysql-aspnet-identity-storage-provider"></a>Реализация поставщика хранилища MySQL пользовательских ASP.NET Identity
 ====================

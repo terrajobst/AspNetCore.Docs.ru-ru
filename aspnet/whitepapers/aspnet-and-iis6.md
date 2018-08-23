@@ -3,17 +3,17 @@ uid: whitepapers/aspnet-and-iis6
 title: Запуск ASP.NET 1.1 со службами IIS 6.0 | Документация Майкрософт
 author: rick-anderson
 description: Хотя Windows Server 2003 включает в себя IIS 6.0 и ASP.NET 1.1, эти компоненты отключены по умолчанию. Этот технический документ описывает способ включения IIS 6.0...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/10/2010
 ms.assetid: 5a5537bf-2aaa-49e7-839f-9e6522b829d8
 msc.legacyurl: /whitepapers/aspnet-and-iis6
 msc.type: content
-ms.openlocfilehash: 338059104f46a6c5517212db6e1a54c12677e133
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 38cd0abc1e9133b9b86cff6dd2759ce98ac5a115
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839298"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828574"
 ---
 <a name="running-aspnet-11-with-iis-60"></a>Запуск ASP.NET 1.1 со службами IIS 6.0
 ====================

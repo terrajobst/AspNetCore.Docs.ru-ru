@@ -3,17 +3,17 @@ uid: web-forms/videos/authentication/creating-user-accounts-with-the-create-user
 title: Создание учетных записей пользователей с мастер создания пользователей | Документация Майкрософт
 author: JoeStagner
 description: В этом видео (Joe Stagner) показано, как создать пользователей с помощью мастера создания пользователя, входящий в состав коллекции элементов управления входа в ASP.NET и Visual Studio. Е...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/22/2008
 ms.assetid: fe023ad0-a25e-48e6-a43a-304e113f1fca
 msc.legacyurl: /web-forms/videos/authentication/creating-user-accounts-with-the-create-user-wizard
 msc.type: video
-ms.openlocfilehash: 992e5488e5586416a3f9079f98de14e825cefef7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7aba0123446cd1ef14c58324022f9a31e2fc5d2f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842300"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835946"
 ---
 <a name="creating-user-accounts-with-the-create-user-wizard"></a>Создание учетных записей пользователей с мастер создания пользователей
 ====================

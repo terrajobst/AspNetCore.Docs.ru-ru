@@ -3,17 +3,17 @@ uid: identity/overview/getting-started/introduction-to-aspnet-identity
 title: Введение в ASP.NET Identity | Документация Майкрософт
 author: jongalloway
 description: Система членства ASP.NET впервые появилась в ASP.NET 2.0 обратно в 2005 г., а поскольку затем произошло много изменений в инициированная приложений web способов...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/17/2013
 ms.assetid: 38717fc1-5989-43cf-952d-4007cc1dd923
 msc.legacyurl: /identity/overview/getting-started/introduction-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 3cefefc85857c3e3e295789dfa9d9f4789de4602
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 24674adf1f28b3ffc0822a4b112c972d1e7ed5b4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811585"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829388"
 ---
 <a name="introduction-to-aspnet-identity"></a>Введение в ASP.NET Identity
 ====================

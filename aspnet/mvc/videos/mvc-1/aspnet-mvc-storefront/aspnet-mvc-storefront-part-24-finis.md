@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-24-finis
 title: 'Часть Интернет-магазин на ASP.NET MVC 24: Заключение | Документация Майкрософт'
 author: robconery
 description: Это последний эпизод из серии MVC Storefront, и это может показаться немного странным. Это определенно не последнего ролика, я сделаю по отношению к ASP.NET...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/28/2009
 ms.assetid: 160d6dde-1a19-4822-963b-cd936fb8afa0
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-24-finis
 msc.type: video
-ms.openlocfilehash: c731ac3e8706806924900da1e431ac76f5fd7dec
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 37509c68d129162fd497032ade3d47edf982b12f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833702"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835941"
 ---
 <a name="aspnet-mvc-storefront-part-24-finis"></a>Интернет-магазин на ASP.NET MVC, часть 24: заключение
 ====================

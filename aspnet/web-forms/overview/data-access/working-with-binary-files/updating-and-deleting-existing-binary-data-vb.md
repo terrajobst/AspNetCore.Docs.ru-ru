@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/working-with-binary-files/updating-and-delet
 title: Обновление и удаление существующих двоичных данных (Visual Basic) | Документация Майкрософт
 author: rick-anderson
 description: В предыдущих учебных курсах мы видели, как элемент управления GridView позволяет легко изменять и удалять текстовые данные. В этом руководстве мы видим, как элемент управления GridView также, чтобы...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/27/2007
 ms.assetid: 3a052ced-9cf5-47b8-a400-934f0b687c26
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/updating-and-deleting-existing-binary-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: dd5aea4bfc1a38dc3364cdf2657d3dca2b82022c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9a0f9e5ebb8bc8227e869f2af085394262a31663
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37830459"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835943"
 ---
 <a name="updating-and-deleting-existing-binary-data-vb"></a>Обновление и удаление существующих двоичных данных (VB)
 ====================

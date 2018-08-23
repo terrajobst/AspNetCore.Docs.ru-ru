@@ -3,17 +3,17 @@ uid: web-forms/videos/sql-2005/understanding-security-and-network-connectivity
 title: Общие сведения о безопасности и сетевое подключение | Документация Майкрософт
 author: microsoft
 description: SQL Server начинающих узнаете различать файлы базы данных SQL Server и процессов SQL Server. Изучите сценарии для подключения к SQL Server E....
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/20/2006
 ms.assetid: 5a0df3fa-07d9-4762-b9db-1824dcd8a31a
 msc.legacyurl: /web-forms/videos/sql-2005/understanding-security-and-network-connectivity
 msc.type: video
-ms.openlocfilehash: 7c5acc53d5e54e2d1cdde2b0929a8d4b3988fb31
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1f37c39df6b3b9c9c4847e038b490347888300a3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37834906"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829328"
 ---
 <a name="understanding-security-and-network-connectivity"></a>Общие сведения о безопасности и сетевое подключение
 ====================

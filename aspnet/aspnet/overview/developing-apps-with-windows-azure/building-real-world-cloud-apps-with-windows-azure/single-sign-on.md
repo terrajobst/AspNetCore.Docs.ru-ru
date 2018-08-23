@@ -3,17 +3,17 @@ uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-clou
 title: Single Sign-On (Создание реальных облачных приложений в Azure) | Документация Майкрософт
 author: MikeWasson
 description: Создание реальных облачных приложений в условиях электронная книга основана на презентацию, разработанная Скоттом Гатри. Здесь объясняется, 13 шаблонов и практических рекомендаций, которые он может...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: 7d82d5e9-0619-4f22-9e03-32a6d52940a5
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/single-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: c988b4864ce7096de7f3ad69b845d3961b7dbc9e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: feace28c373a767453b1b984f6fdc5a3d97a9217
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819118"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836874"
 ---
 <a name="single-sign-on-building-real-world-cloud-apps-with-azure"></a>Единый вход (Создание реальных облачных приложений в Azure)
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: Определение того, что файлы должны быть развертыванию (C#) | Документация Майкрософт
 author: rick-anderson
 description: Какие файлы должны быть развернуты из среды разработки в рабочую среду отчасти зависит ли нам было создано приложение ASP.NET...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/01/2009
 ms.assetid: f8d78a88-cc91-40d8-bce3-3d7954f6033b
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3fb54feb32c3c4a4903c65751bf1a4ae4f016a22
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ad759cefc372f6276ce1b16beea7282d9685ef82
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831039"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828802"
 ---
 <a name="determining-what-files-need-to-be-deployed-c"></a>Определение того, что файлы должны быть развертыванию (C#)
 ====================

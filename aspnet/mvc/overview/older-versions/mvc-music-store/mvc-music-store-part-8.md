@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8
 title: 'Часть 8: Корзина для покупок с обновлениями Ajax | Документация Майкрософт'
 author: jongalloway
 description: В этой серии руководств описаны все шаги, необходимые для построения примера приложения ASP.NET MVC Music Store. Часть 8 рассматриваются корзину для покупок с обновлениями Ajax.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/21/2011
 ms.assetid: 26b2f55e-ed42-4277-89b0-c941eb754145
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 881d47b5b4df5a4d310a1b3a7eec6ee97b0d42ea
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: cab338e56505c453532a26d794eb7bf4e94555a9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823843"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835918"
 ---
 <a name="part-8-shopping-cart-with-ajax-updates"></a>Часть 8: Корзина для покупок с обновлениями Ajax
 ====================

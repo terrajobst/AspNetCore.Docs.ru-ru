@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: Настройка веб-приложение для использования рабочей базы данных (Visual Basic) | Документация Майкрософт
 author: rick-anderson
 description: Как уже обсуждалось в предыдущих учебных курсах, нередко различия между средами разработки и эксплуатации сведения о конфигурации. Это es...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/23/2009
 ms.assetid: a64a7aa0-6608-449e-83bf-1ef8cceee504
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 952bdafd06143ce24e9e8beb0d6e6343400ffdc6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3d6e25de44a7c84ef0919d1cfd8ab4c6b368e0ea
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840704"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828836"
 ---
 <a name="configuring-the-production-web-application-to-use-the-production-database-vb"></a>Настройка веб-приложение для использования рабочей базы данных (VB)
 ====================

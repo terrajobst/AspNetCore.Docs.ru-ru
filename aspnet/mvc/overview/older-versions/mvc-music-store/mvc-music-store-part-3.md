@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3
 title: 'Часть 3: Views и ViewModels | Документация Майкрософт'
 author: jongalloway
 description: В этой серии руководств описаны все шаги, необходимые для построения примера приложения ASP.NET MVC Music Store. В части 3 описывается Views и ViewModels.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/21/2011
 ms.assetid: 94297aa0-1f2d-4d72-bbcb-63f64653e0c0
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 8fd89c2a448877bf13a7828f545ffcd400f63bb1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 828ff18abcc5932f82be71a45ebde589eeb051fa
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837414"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829333"
 ---
 <a name="part-3-views-and-viewmodels"></a>Часть 3: Views и ViewModels
 ====================
@@ -214,7 +214,7 @@ Visual Web Developer создается и открывается шаблон �
 
 ![](mvc-music-store-part-3/_static/image18.png)
 
-Внутри нашего цикла «foreach» Visual Web Developer знает, что каждый элемент имеет тип жанра, поэтому мы видим IntelliSence для каждого типа жанра.
+Внутри нашего цикла «foreach» Visual Web Developer знает, что каждый элемент имеет тип жанра, поэтому мы видим IntelliSense для каждого типа жанра.
 
 ![](mvc-music-store-part-3/_static/image19.png)
 

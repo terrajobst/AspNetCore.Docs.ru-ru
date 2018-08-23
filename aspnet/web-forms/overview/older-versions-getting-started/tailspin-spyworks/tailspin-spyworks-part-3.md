@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspi
 title: 'Часть 3: Макет и меню категории | Документация Майкрософт'
 author: JoeStagner
 description: В этой серии руководств описаны все действия, предпринимаемые для создайте пример приложения Tailspin Spyworks. В части 3 описывается добавление макет и меню категории.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/21/2010
 ms.assetid: 94ea1a70-a9bc-4241-8f36-08366d64bab9
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 3047c53e21a418aef8617bd772a247bc46edb98f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f55b29a271dbdb72d3e2249ed74517b77d78cf5e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37817529"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835728"
 ---
 <a name="part-3-layout-and-category-menu"></a>Часть 3: Макет и меню категории
 ====================

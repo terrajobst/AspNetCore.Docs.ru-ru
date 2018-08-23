@@ -3,15 +3,15 @@ uid: webhooks/diagnostics/logging
 title: Веб-перехватчики ASP.NET ведения журнала | Документация Майкрософт
 author: rick-anderson
 description: Как сделать ведения журналов в ASP.NET веб-перехватчики.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: f71bc442-5f80-481b-a32c-a0ec18dee9d6
-ms.openlocfilehash: 65e4d49474034406be835eb31378c81ba0706da3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2e86d519c24da102075b4da0a32787c90deb0f6b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37828459"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836272"
 ---
 # <a name="aspnet-webhooks-logging"></a>Веб-перехватчики ASP.NET ведения журнала
 

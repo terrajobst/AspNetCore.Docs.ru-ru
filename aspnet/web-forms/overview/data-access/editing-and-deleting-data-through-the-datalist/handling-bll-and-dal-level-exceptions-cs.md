@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datali
 title: Обработка исключений уровней BLL и DAL (C#) | Документация Майкрософт
 author: rick-anderson
 description: В этом руководстве будет показано, как tactfully обработки исключений, возникающих во время обновления рабочего процесса редактирования элемента управления DataList.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/30/2006
 ms.assetid: f8fd58e2-f932-4f08-ab3d-fbf8ff3295d2
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/handling-bll-and-dal-level-exceptions-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f83293f7b8482c2a24c3d825e271582edaadec59
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ebaca5ea34fabe3fcd4979eab2e3f684e8e221be
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812084"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836406"
 ---
 <a name="handling-bll--and-dal-level-exceptions-c"></a>Обработка исключений уровней BLL и DAL (C#)
 ====================

@@ -3,17 +3,17 @@ uid: signalr/overview/getting-started/tutorial-high-frequency-realtime-with-sign
 title: 'Учебник: В реальном времени с SignalR 2 по высокой частотой | Документация Майкрософт'
 author: pfletcher
 description: Этом руководстве показано, как создать веб-приложения, использующего ASP.NET SignalR для предоставления функции обмена сообщениями с высокой частотой. Высокочастотный обмена сообщениями в...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/10/2014
 ms.assetid: 9f969dda-78ea-4329-b1e3-e51c02210a2b
 msc.legacyurl: /signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 14ec1c8b4c034332afd8d3102a310fd3fb399d32
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e710980cecf9093ea9046b5790379befb5b61841
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829467"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836715"
 ---
 <a name="tutorial-high-frequency-realtime-with-signalr-2"></a>Учебник: В реальном времени высокой частотой с помощью SignalR 2
 ====================

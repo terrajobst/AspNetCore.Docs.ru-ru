@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/modalpopup/using-modalpopup-with-a-
 title: Использование ModalPopup с элементом управления Repeater (VB) | Документация Майкрософт
 author: wenz
 description: Элемент управления ModalPopup в AJAX Control Toolkit предоставляет простой способ создания модального всплывающего окна с помощью средств на стороне клиента. Можно также использовать этот контракту...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 0c8e74f1-b3ba-4ca9-a1c5-f5c4831a359a
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/using-modalpopup-with-a-repeater-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c51ddd4b2bcc17c7d8c5dee0926903bea6ac749f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4915883ce50512a0a612060ba9543705abcc5f00
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37826618"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836365"
 ---
 <a name="using-modalpopup-with-a-repeater-control-vb"></a>Использование ModalPopup с элементом управления Repeater (VB)
 ====================

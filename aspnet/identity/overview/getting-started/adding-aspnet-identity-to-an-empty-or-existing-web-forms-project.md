@@ -3,17 +3,17 @@ uid: identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-exi
 title: Добавление ASP.NET Identity к пустой или существующий веб-проект форм | Документация Майкрософт
 author: raquelsa
 description: Этом руководстве показано, как добавление ASP.NET Identity (новая система членства для ASP.NET) в приложение ASP.NET. При создании нового веб-форм или MVC...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/23/2013
 ms.assetid: 1cbc0ed2-5bd6-4b62-8d34-4c193dcd8b25
 msc.legacyurl: /identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project
 msc.type: authoredcontent
-ms.openlocfilehash: 1e7508fc2431f4e1e3c4509fbe705daf42686e8d
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 229d6fef5aa9c2384b6d92ec3e3ed7316b69afe0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832666"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835754"
 ---
 <a name="adding-aspnet-identity-to-an-empty-or-existing-web-forms-project"></a>Добавление ASP.NET Identity в пустой или существующий веб-проект форм
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: Развертывание сайта с помощью Visual Studio (Visual Basic) | Документация Майкрософт
 author: rick-anderson
 description: Visual Studio включает средства для развертывания веб-сайта. Дополнительные сведения об этих средствах в этом руководстве.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/01/2009
 ms.assetid: 977105f3-7987-4e50-8be7-afb53b4ca28a
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-visual-studio-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e0dd38bc158dea37d614a48a6783525ed99cd97a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b93931f032ad4cccb6ed33959860ad5b3037ed84
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819193"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835769"
 ---
 <a name="deploying-your-site-using-visual-studio-vb"></a>Развертывание сайта с помощью Visual Studio (VB)
 ====================

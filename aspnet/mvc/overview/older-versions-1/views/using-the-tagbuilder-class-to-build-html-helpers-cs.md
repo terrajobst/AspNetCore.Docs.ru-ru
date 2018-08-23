@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-htm
 title: Используя класс TagBuilder для создания вспомогательных методов HTML (C#) | Документация Майкрософт
 author: StephenWalther
 description: Стивен Вальтер представлены полезные служебный класс в платформе ASP.NET MVC с именем класс TagBuilder. Можно легко использовать класс TagBuilder для...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/02/2009
 ms.assetid: 3975a52f-bd15-4edd-8f3d-1df93672515b
 msc.legacyurl: /mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9990fc7ad8093643a564a5e02ff65264d4a7fe15
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9759ea9b05ba5eba268901d3d2d1a15b2afe6202
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37813230"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836682"
 ---
 <a name="using-the-tagbuilder-class-to-build-html-helpers-c"></a>Используя класс TagBuilder для создания вспомогательных методов HTML (C#)
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-re
 title: Использование обратных передач с помощью элемента управления ReorderList (C#) | Документация Майкрософт
 author: wenz
 description: Элемент управления ReorderList в AJAX Control Toolkit предоставляет список, можно ли изменять расположение пользователем с помощью операции перетаскивания. Каждый раз, когда отображается список po...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 70d5d106-b547-442c-a7fd-3492b3e3d646
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4510adc4ecf6928863b035d0afe8d008968d25b0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 426e31bc9804c97b551b9c36679d2b821700b915
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820108"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828816"
 ---
 <a name="using-postbacks-with-reorderlist-c"></a>Использование обратных передач с помощью элемента управления ReorderList (C#)
 ====================

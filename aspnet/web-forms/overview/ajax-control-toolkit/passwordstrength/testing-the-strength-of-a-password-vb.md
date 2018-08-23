@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-streng
 title: Тестирование надежности пароля (Visual Basic) | Документация Майкрософт
 author: wenz
 description: Таким образом, чтобы отложенной Пользователи склонны выберите простые пароли, которые легко взломать пароли в любом месте, являются обязательными. Элемент управления PasswordStrength в ASP. Н...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 9215a37f-3133-4887-8ed2-3689f3a53551
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7073a06186ba3ff6c6a12d558445d75d9301589a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: db4b2a6bbdb0716442b104c03d0c4138bf60f9be
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805905"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836091"
 ---
 <a name="testing-the-strength-of-a-password-vb"></a>Тестирование надежности пароля (VB)
 ====================

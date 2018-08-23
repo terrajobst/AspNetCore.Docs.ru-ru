@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/handling
 title: Обработка исключений уровней BLL и DAL на странице ASP.NET (C#) | Документация Майкрософт
 author: rick-anderson
 description: В этом руководстве мы увидим, как отобразить сообщение об ошибке удобные, информативные, появляющиеся при возникновении исключения во время вставки, обновления или удаления...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/17/2006
 ms.assetid: 49d8a66c-3ea8-4087-839f-179d1d94512a
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 13d33251a8552409a17b5ff9a1dcc07d78506b12
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0d4fa3e3e7bbe335af31423ec4fdd60e9791c2b0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819501"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828742"
 ---
 <a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-c"></a>Обработка исключений уровней BLL и DAL на странице ASP.NET (C#)
 ====================

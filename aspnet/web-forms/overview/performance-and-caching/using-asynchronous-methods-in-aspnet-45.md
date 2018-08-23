@@ -3,17 +3,17 @@ uid: web-forms/overview/performance-and-caching/using-asynchronous-methods-in-as
 title: Использование асинхронных методов в ASP.NET 4.5 | Документация Майкрософт
 author: Rick-Anderson
 description: Этом учебнике описываются основы создания асинхронных приложений веб-форм ASP.NET с помощью Visual Studio Express 2012 для Web, где — это бесплатный...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/06/2012
 ms.assetid: a585c9a2-7c8e-478b-9706-90f3739c50d1
 msc.legacyurl: /web-forms/overview/performance-and-caching/using-asynchronous-methods-in-aspnet-45
 msc.type: authoredcontent
-ms.openlocfilehash: 94adc03eeba61310d60ca88a0495c5a2e5dc4cf6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5e5fe83e802980a5783c3d77454d5fb0ee7d5a91
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819306"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835888"
 ---
 <a name="using-asynchronous-methods-in-aspnet-45"></a>Использование асинхронных методов в ASP.NET 4.5
 ====================

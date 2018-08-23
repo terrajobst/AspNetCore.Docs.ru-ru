@@ -3,17 +3,17 @@ uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-clou
 title: Система управления версиями (Создание реальных облачных приложений в Azure) | Документация Майкрософт
 author: MikeWasson
 description: Создание реальных облачных приложений в условиях электронная книга основана на презентацию, разработанная Скоттом Гатри. Здесь объясняется, 13 шаблонов и практических рекомендаций, которые он может...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/23/2015
 ms.assetid: 2a0370d3-c2fb-4bf3-88b8-aad5a736c793
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control
 msc.type: authoredcontent
-ms.openlocfilehash: 045dc654057802be4ad96f5ecc3ed6c3d7a1ccb1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8402b73f5f9d063d958df39f98267468e4aef746
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823317"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829066"
 ---
 <a name="source-control-building-real-world-cloud-apps-with-azure"></a>Системы управления версиями (Создание реальных облачных приложений в Azure)
 ====================
