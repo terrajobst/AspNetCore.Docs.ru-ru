@@ -31,7 +31,7 @@ ms.locfileid: "41835379"
   npm install @aspnet/signalr
   ```
 
-npm устанавливает содержимое пакета в *node_modules\\ @aspnet\signalr\dist\browser*  папки. Создайте новую папку с именем *signalr* под *wwwroot\\lib* папки. Копировать *signalr.js* файл *wwwroot\lib\signalr* папки.
+npm устанавливает содержимое пакета в *node_modules\\ @aspnet\signalr\dist\browser* папки. Создайте новую папку с именем *signalr* под *wwwroot\\lib* папки. Копировать *signalr.js* файл *wwwroot\lib\signalr* папки.
 
 ## <a name="use-the-signalr-javascript-client"></a>Использование клиента SignalR JavaScript
 
