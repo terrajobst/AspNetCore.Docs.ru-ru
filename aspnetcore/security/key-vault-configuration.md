@@ -2,37 +2,25 @@
 title: Поставщик конфигурации Azure Key Vault в ASP.NET Core
 author: guardrex
 description: Узнайте, как использовать поставщик конфигурации Azure Key Vault для настройки приложения с помощью пары "имя значение", загружен во время выполнения.
+monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
+ms.custom: mvc
 ms.date: 08/01/2018
 uid: security/key-vault-configuration
-ms.openlocfilehash: 829c6c7e2750879b51bf3ce8225c6e472900f2ad
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 933f4fb1f2c1c412d318af5974cc9653805242ca
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829803"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927991"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации Azure Key Vault в ASP.NET Core
 
 По [Люк Лэтем](https://github.com/guardrex) и [Andrew Stanton медсестра](https://github.com/anurse)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
-Просмотреть или скачать образец кода для версии 2.x:
-
-* [Пример простого](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/2.x) ([загрузке](xref:tutorials/index#how-to-download-a-sample))-считывает значения секретов в приложении.
-* [Пример префикс имени ключа](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/2.x) ([загрузке](xref:tutorials/index#how-to-download-a-sample)) — операции чтения значения секретов с помощью префикса имя ключа, которое представляет версию приложения, который позволяет загрузить другой набор значений секретов для каждой версии приложения.
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-Просмотреть или скачать образец кода для версии 1.x:
-
-* [Пример простого](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/1.x) ([загрузке](xref:tutorials/index#how-to-download-a-sample))-считывает значения секретов в приложении.
-* [Пример префикс имени ключа](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/1.x) ([загрузке](xref:tutorials/index#how-to-download-a-sample)) — операции чтения значения секретов с помощью префикса имя ключа, которое представляет версию приложения, который позволяет загрузить другой набор значений секретов для каждой версии приложения.
-
----
-
 В этом документе объясняется, как использовать [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) поставщик конфигурации для загрузки значений конфигурации из секреты Azure Key Vault. Azure Key Vault — это облачная служба, которая помогает защитить криптографические ключи и секреты, используемые приложениями и службами. Обычные сценарии включают управление доступом к конфиденциальные данные конфигурации и соответствующие потребностям под стандарт FIPS 140-2 уровня 2 проверяются аппаратных модулей безопасности (HSM), при сохранении данных конфигурации. Эта функция доступна для приложений, предназначенных для ASP.NET Core 1.1 или более поздней версии.
+
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="package"></a>Пакет
 
@@ -52,7 +40,7 @@ ms.locfileid: "41829803"
 
 [!code-csharp[Program](key-vault-configuration/samples/basic-sample/2.x/Program.cs?name=snippet1)]
 
-## <a name="creating-key-vault-secrets-and-loading-configuration-values-basic-sample"></a>Создание секретных кодов хранилища ключей и загружает значения конфигурации (basic образец)
+## <a name="create-key-vault-secrets-and-load-configuration-values-basic-sample"></a>Создать секретных кодов хранилища ключей и загрузить значения конфигурации (basic образец)
 
 1. Создание хранилища ключей и настроить Azure Active Directory (Azure AD) для приложении, следуя указаниям в [приступить к работе с хранилищем ключей Azure](https://azure.microsoft.com/documentation/articles/key-vault-get-started/).
    * Добавьте секреты в хранилище ключей с помощью [модуль PowerShell хранилища ключей AzureRM](/powershell/module/azurerm.keyvault) корпорации [коллекции PowerShell](https://www.powershellgallery.com/packages/AzureRM.KeyVault), [API REST хранилища ключей Azure](/rest/api/keyvault/), или [Портала azure](https://portal.azure.com/). Секреты создаются как *вручную* или *сертификат* секреты. *Сертификат* секретов, сертификатов для использования с приложениями и службами, но не поддерживаются поставщиком конфигурации. Следует использовать *вручную* параметр, чтобы создать пару "имя значение" секреты для использования при помощи поставщика конфигурации.
@@ -75,7 +63,7 @@ ms.locfileid: "41829803"
 
 ![Окно браузера с значения секретов, загруженном с помощью конфигурации Azure Key Vault Provider](key-vault-configuration/_static/sample1.png)
 
-## <a name="creating-prefixed-key-vault-secrets-and-loading-configuration-values-key-name-prefix-sample"></a>Создание секретов с префиксом хранилища ключей и загружает значения конфигурации (ключ имя префикс sample)
+## <a name="create-prefixed-key-vault-secrets-and-load-configuration-values-key-name-prefix-sample"></a>Создание секретов с префиксом хранилища ключей и загрузить значения конфигурации (ключ имя префикс sample)
 
 `AddAzureKeyVault` также содержит перегрузку, которая принимает реализацию `IKeyVaultSecretManager`, который позволяет управлять ключевых секреты хранилища преобразуются в ключи конфигурации. Например можно реализовать интерфейс для загрузки значения секретов, исходя из значения префикса, указанные вами при запуске приложения. Это позволяет, например, загружать секреты, в зависимости от версии приложения.
 
@@ -117,7 +105,7 @@ ms.locfileid: "41829803"
 
    ![Окно браузера, показывающее значение секрета, загруженном с помощью конфигурации Azure Key Vault Provider при 5.1.0.0 версия приложения](key-vault-configuration/_static/sample2-2.png)
 
-## <a name="controlling-access-to-the-clientsecret"></a>Управление доступом к ClientSecret
+## <a name="control-access-to-the-clientsecret"></a>Управление доступом к ClientSecret
 
 Используйте [средство Secret Manager](xref:security/app-secrets) для поддержания `ClientSecret` за пределами дерево исходного кода проекта. В менеджере секретов связывается с определенным проектом секретов приложения и использовать их для нескольких проектов.
 
@@ -141,7 +129,7 @@ config.AddAzureKeyVault(
 store.Close();
 ```
 
-## <a name="reloading-secrets"></a>Повторная загрузка секретов
+## <a name="reload-secrets"></a>Перезагрузить секретов
 
 Секреты, кэшируются до `IConfigurationRoot.Reload()` вызывается. Истек, отключена, и обновленные секреты в хранилище ключей не учитываются в приложении до `Reload` выполняется.
 
@@ -153,7 +141,7 @@ Configuration.Reload();
 
 Отключенные и просроченные секреты throw `KeyVaultClientException`. Чтобы избежать возникновения в приложении, замените приложение или изменить секрет просроченного отключено.
 
-## <a name="troubleshooting"></a>Устранение неполадок
+## <a name="troubleshoot"></a>Устранение неполадок
 
 Если приложение не удается загрузить конфигурацию с помощью поставщика, сообщение об ошибке записывается [инфраструктуры ведения журнала ASP.NET Core](xref:fundamentals/logging/index). Следующие условия не позволит конфигурации загрузки:
 
