@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 255faf12064aa424d51fb6faa801884c474bd288
-ms.sourcegitcommit: a09820f91e71a7d98b7347bf93210abb9e995e22
+ms.openlocfilehash: ef4e1fb3bf1ac1b3695ff89d6692ac6fa1641e31
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37889487"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "41820163"
 ---
 # <a name="work-with-sql-server-localdb-and-aspnet-core"></a>Работа с SQL Server LocalDB и ASP.NET Core
 
@@ -30,7 +30,7 @@ ms.locfileid: "37889487"
 Дополнительные сведения о методах, которые используются в `ConfigureServices`, см.:
 
 * [Общий регламент по защите данных (GDPR), принятый в ЕС, в ASP.NET Core](xref:security/gdpr) для `CookiePolicyOptions`.
-* [SetCompatibilityVersion](xref:fundamentals/startup#setcompatibilityversion-for-aspnet-core-mvc)
+* [SetCompatibilityVersion](xref:mvc/compatibility-version)
 
 ::: moniker-end
 

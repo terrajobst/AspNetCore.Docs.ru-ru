@@ -5,12 +5,12 @@ description: Сведения об использовании токенов и�
 ms.author: riande
 ms.date: 11/10/2017
 uid: fundamentals/primitives/change-tokens
-ms.openlocfilehash: 165602587d73907416f47a7ce82a3081e8d74c4b
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: ac80e4c9da6d38e5f1acf8aa6f7ac3f4803ffb33
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276897"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927856"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Обнаружение изменений с помощью токенов изменений в ASP.NET Core
 
@@ -54,9 +54,9 @@ ms.locfileid: "36276897"
 
 ## <a name="monitoring-for-configuration-changes"></a>Отслеживание изменений конфигурации
 
-По умолчанию шаблоны ASP.NET Core используют [файлы конфигурации JSON](xref:fundamentals/configuration/index#json-configuration) (*appsettings.json*, *appsettings.Development.json* и *appsettings.Production.json*) для загрузки параметров конфигурации приложения.
+По умолчанию шаблоны ASP.NET Core используют [файлы конфигурации JSON](xref:fundamentals/configuration/index#json-configuration-provider) (*appsettings.json*, *appsettings.Development.json* и *appsettings.Production.json*) для загрузки параметров конфигурации приложения.
 
-Эти файлы настраиваются с помощью метода расширения [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions.addjsonfile?view=aspnetcore-2.0#Microsoft_Extensions_Configuration_JsonConfigurationExtensions_AddJsonFile_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_System_Boolean_System_Boolean_) в [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder), который принимает параметр `reloadOnChange` (ASP.NET Core 1.1 и более поздней версии). `reloadOnChange` указывает, нужно ли перезагружать конфигурацию при изменении файла. Просмотрите этот параметр в удобном методе [WebHost](/dotnet/api/microsoft.aspnetcore.webhost) [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder):
+Эти файлы настраиваются с помощью метода расширения [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions.addjsonfile#Microsoft_Extensions_Configuration_JsonConfigurationExtensions_AddJsonFile_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_System_Boolean_System_Boolean_) в [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder), который принимает параметр `reloadOnChange` (ASP.NET Core 1.1 и более поздней версии). `reloadOnChange` указывает, нужно ли перезагружать конфигурацию при изменении файла. Просмотрите этот параметр в удобном методе [WebHost](/dotnet/api/microsoft.aspnetcore.webhost) [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder):
 
 ```csharp
 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)

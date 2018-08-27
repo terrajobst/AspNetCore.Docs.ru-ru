@@ -5,12 +5,12 @@ description: Основные сведения о создании веб-при
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 10e9174b0bf094f7a4ea820a5afcf2705f900327
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: bc18ec3ad3bb7e3afe38030a34b2e748ce9e341b
+ms.sourcegitcommit: 74c09caec8992635825b45b7f065f871d33c077a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38157176"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42634981"
 ---
 # <a name="get-started-with-razor-pages-in-aspnet-core"></a>Начало работы с Razor Pages в ASP.NET Core
 
@@ -65,6 +65,8 @@ ms.locfileid: "38157176"
 * Запуск приложения с помощью клавиш **CTRL+F5** (режим без отладки) позволяет внести изменения в код, сохранить файл, обновить браузер и увидеть изменения в коде. Многие разработчики предпочитают использовать режим без отладки, чтобы быстро запустить приложение и просмотреть изменения.
 
 [!INCLUDE [razor-pages-start](~/includes/RP/2.1/razor-pages-start.md)]
+
+[!INCLUDE [F7](~/includes/RP/F7.md)]
 
 ::: moniker-end
 

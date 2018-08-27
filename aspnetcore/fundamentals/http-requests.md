@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/07/2018
 uid: fundamentals/http-requests
-ms.openlocfilehash: dd217cfed230ea92c31eeed64ec19838032dd224
-ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
+ms.openlocfilehash: 2a1bf78edb5068d8b10d66e5ef306b1ad4395da6
+ms.sourcegitcommit: 15d7bd0b2c4e6fe9ac335d658bab71a45ca5bc72
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39655236"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41751466"
 ---
 # <a name="initiate-http-requests"></a>Инициирование HTTP-запросов
 
@@ -46,11 +46,11 @@ ms.locfileid: "39655236"
 
 `IHttpClientFactory` можно зарегистрировать путем вызова метода расширения `AddHttpClient` в `IServiceCollection` внутри метода `Startup.ConfigureServices`.
 
-[!code-csharp[](http-requests/samples/Startup.cs?name=snippet1)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
 
 После регистрации код может принимать `IHttpClientFactory` в любом месте, куда можно внедрить службу с помощью [внедрения зависимостей](xref:fundamentals/dependency-injection) (DI). `IHttpClientFactory` можно использовать для создания экземпляра `HttpClient`:
 
-[!code-csharp[](http-requests/samples/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,20)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,21)]
 
 Подобное использование `IHttpClientFactory` — это отличный способ рефакторинга существующего приложения. Он не оказывает влияния на использование `HttpClient`. Там, где сейчас создаются экземпляры `HttpClient`, используйте вызов к [CreateClient](/dotnet/api/system.net.http.ihttpclientfactory.createclient).
 
@@ -58,7 +58,7 @@ ms.locfileid: "39655236"
 
 Если для приложения предполагаются разные способы использования `HttpClient`, каждый со своей конфигурацией, можно применять **именованные клиенты**. Конфигурацию для именованного клиента `HttpClient` можно указать во время регистрации в `Startup.ConfigureServices`.
 
-[!code-csharp[](http-requests/samples/Startup.cs?name=snippet2)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet2)]
 
 В приведенном выше коде вызывается клиент `AddHttpClient`, предоставляющий имя *github*. У клиента есть некоторые настройки по умолчанию &mdash; а именно: базовый адрес и два заголовка, необходимые для работы с API GitHub.
 
@@ -66,7 +66,7 @@ ms.locfileid: "39655236"
 
 Для использования именованного клиента можно передать строковый параметр в `CreateClient`. Укажите имя создаваемого клиента:
 
-[!code-csharp[](http-requests/samples/Pages/NamedClient.cshtml.cs?name=snippet1&highlight=20)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/NamedClient.cshtml.cs?name=snippet1&highlight=21)]
 
 В приведенном выше коде в запросе не требуется указывать имя узла. Достаточно передать только путь, так как используется базовый адрес, заданный для клиента.
 
@@ -76,25 +76,25 @@ ms.locfileid: "39655236"
 
 Типизированный клиент принимает параметр `HttpClient` в конструкторе:
 
-[!code-csharp[](http-requests/samples/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 
 В приведенном выше коде конфигурация перемещается в типизированный клиент. Объект `HttpClient` предоставляется в виде открытого свойства. Можно определить связанные с API методы, которые предоставляют функциональные возможности `HttpClient`. Метод `GetAspNetDocsIssues` инкапсулирует код, необходимый для запроса и анализа последнего открытого выпуска из репозитория GitHub.
 
 Для регистрации типизированного клиента можно использовать универсальный метод расширения `AddHttpClient` в `Startup.ConfigureServices`, указав класс типизированного клиента:
 
-[!code-csharp[](http-requests/samples/Startup.cs?name=snippet3)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet3)]
 
 Типизированный клиент регистрируется во внедрении зависимостей как временный. Типизированный клиент можно внедрить и использовать напрямую:
 
-[!code-csharp[](http-requests/samples/Pages/TypedClient.cshtml.cs?name=snippet1&highlight=11-14,20)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/TypedClient.cshtml.cs?name=snippet1&highlight=11-14,20)]
 
 При желании конфигурацию для типизированного клиента можно указать во время регистрации в `Startup.ConfigureServices`, а не в конструкторе типизированного клиента:
 
-[!code-csharp[](http-requests/samples/Startup.cs?name=snippet4)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet4)]
 
 Можно полностью инкапсулировать `HttpClient` внутри типизированного клиента. Вместо предоставления его как свойства можно использовать открытые методы для внутреннего вызова экземпляра `HttpClient`.
 
-[!code-csharp[](http-requests/samples/GitHub/RepoService.cs?name=snippet1&highlight=3)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/GitHub/RepoService.cs?name=snippet1&highlight=4)]
 
 В приведенном выше коде `HttpClient` хранится как закрытое поле. Любой доступ для совершения внешних вызовов осуществляется через метод `GetRepos`.
 
@@ -159,19 +159,19 @@ public class ValuesController : ControllerBase
 
 Чтобы создать обработчик, необходимо определить класс, производный от `DelegatingHandler`. Переопределите метод `SendAsync` для выполнения кода до передачи запросов следующему обработчику в конвейере:
 
-[!code-csharp[Main](http-requests/samples/Handlers/ValidateHeaderHandler.cs?name=snippet1)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Handlers/ValidateHeaderHandler.cs?name=snippet1)]
 
 В предыдущем коде определяется базовый обработчик. Он проверяет, включен ли в запрос заголовок `X-API-KEY`. Если заголовок отсутствует, он может избежать вызовов HTTP и вернуть подходящий ответ.
 
 Во время регистрации можно добавить один или несколько обработчиков в конфигурацию для `HttpClient`. Эта задача выполняется с помощью методов расширения в [IHttpClientBuilder](/dotnet/api/microsoft.extensions.dependencyinjection.ihttpclientbuilder).
 
-[!code-csharp[](http-requests/samples/Startup.cs?name=snippet5)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet5)]
 
 В приведенном выше коде `ValidateHeaderHandler` регистрируется с помощью внедрения зависимостей. Обработчик **должен** регистрироваться во внедрении зависимостей как временный. После регистрации можно вызвать [AddHttpMessageHandler](/dotnet/api/microsoft.extensions.dependencyinjection.httpclientbuilderextensions.addhttpmessagehandler), передав тип обработчика.
 
 Можно зарегистрировать несколько обработчиков в порядке, в котором они должны выполняться. Каждый обработчик содержит следующий обработчик, пока последний `HttpClientHandler` не выполнит запрос:
 
-[!code-csharp[](http-requests/samples/Startup.cs?name=snippet6)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet6)]
 
 ## <a name="use-polly-based-handlers"></a>Использование обработчиков на основе Polly
 
@@ -179,7 +179,7 @@ public class ValuesController : ControllerBase
 
 Для использования политик Polly с настроенными экземплярами `HttpClient` предоставляются методы расширения. Расширения Polly доступны в пакете NuGet [Microsoft.Extensions.Http.Polly](https://www.nuget.org/packages/Microsoft.Extensions.Http.Polly/). Этот пакет не входит в состав [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Для использования расширений в проект необходимо включить явную ссылку `<PackageReference />`.
 
-[!code-csharp[](http-requests/samples/HttpClientFactorySample.csproj?highlight=9)]
+[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/HttpClientFactorySample.csproj?highlight=9)]
 
 После восстановления этого пакета будут доступны методы расширения для поддержки добавления обработчиков на основе Polly в клиенты.
 
@@ -189,7 +189,7 @@ public class ValuesController : ControllerBase
 
 Расширение `AddTransientHttpErrorPolicy` может быть использовано в `Startup.ConfigureServices`. Данное расширение предоставляет доступ к объекту `PolicyBuilder`, настроенному для обработки ошибок, представляющих возможный временный сбой:
 
-[!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet7)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet7)]
 
 В приведенном выше коде определена политика `WaitAndRetryAsync`. Неудачные запросы повторяются до трех раз с задержкой 600 мс между попытками.
 
@@ -197,7 +197,7 @@ public class ValuesController : ControllerBase
 
 Существуют дополнительные методы расширения, которые можно использовать для добавления обработчиков на основе Polly. Одним из таких расширений является `AddPolicyHandler` с несколькими перегрузками. Одна перегрузка разрешает проверку запроса для определения необходимой политики:
 
-[!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet8)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet8)]
 
 В приведенном выше коде для запроса GET время ожидания составляет 10 секунд. Для остальных методов HTTP время ожидания — 30 секунд.
 
@@ -205,7 +205,7 @@ public class ValuesController : ControllerBase
 
 Вложение политик Polly для расширения функциональных возможностей — это распространенная практика:
 
-[!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet9)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet9)]
 
 В приведенном выше примере добавляются два обработчика. Первый использует расширение `AddTransientHttpErrorPolicy`, чтобы добавить политику повтора. Неудачные запросы выполняются повторно до трех раз. Второй вызов к `AddTransientHttpErrorPolicy` добавляет политику размыкателя цепи. Дополнительные внешние запросы блокируются в течение 30 секунд в случае пяти неудачных попыток подряд. Политики размыкателя цепи отслеживают состояние. Все вызовы через этот клиент имеют одинаковое состояние цепи.
 
@@ -213,7 +213,7 @@ public class ValuesController : ControllerBase
 
 Подход к управлению регулярно используемыми политиками заключается в их однократном определении и регистрации с помощью `PolicyRegistry`. Предоставляется метод расширения, разрешающий добавление обработчика с помощью политики из реестра:
 
-[!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet10)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet10)]
 
 В приведенном выше коде, когда `PolicyRegistry` добавляется в `ServiceCollection`, регистрируются две политики. Чтобы использовать политику из реестра, применяется метод `AddPolicyHandlerFromRegistry`, который передает имя необходимой политики.
 
@@ -227,7 +227,7 @@ public class ValuesController : ControllerBase
 
 Время существования обработчика по умолчанию — две минуты. Значение по умолчанию можно переопределить для каждого именованного клиента. Чтобы переопределить это значение, вызовите [SetHandlerLifetime](/dotnet/api/microsoft.extensions.dependencyinjection.httpclientbuilderextensions.sethandlerlifetime) в `IHttpClientBuilder` (возвращается при создании клиента):
 
-[!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet11)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet11)]
 
 Высвобождать клиент не требуется. Высвобождение отменяет исходящие запросы и гарантирует, что указанный экземпляр `HttpClient` не может использоваться после вызова [Dispose](/dotnet/api/system.idisposable.dispose#System_IDisposable_Dispose). `IHttpClientFactory` отслеживает и высвобождает ресурсы, используемые экземплярами `HttpClient`. Экземпляры `HttpClient` обычно можно рассматривать как объекты .NET, не требующие высвобождения.
 
@@ -251,4 +251,4 @@ public class ValuesController : ControllerBase
 
 При добавлении именованного или типизированного клиента возвращается `IHttpClientBuilder`. С помощью метода расширения [ConfigurePrimaryHttpMessageHandler](/dotnet/api/microsoft.extensions.dependencyinjection.httpclientbuilderextensions.configureprimaryhttpmessagehandler) можно определить делегат. Делегат используется для создания и настройки основного обработчика `HttpMessageHandler`, используемого этим клиентом:
 
-[!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet12)]
+[!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet12)]

@@ -3,17 +3,17 @@ uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-s
 title: Знакомство с веб-страниц ASP.NET — Приступая к работе | Документация Майкрософт
 author: tfitzmac
 description: WebMatrix не рекомендуется использовать как интегрированную среду разработки для веб-страниц ASP.NET. Используйте Visual Studio или Visual Studio Code. В этом руководстве...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/28/2015
 ms.assetid: a36d3bdf-ef1b-47a4-b932-3a0cf4cad716
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: b4f554d2bf8bf564fd69239fcc7cc605158c83c3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 835e359edc87335366c82e35c1ff04902b70334b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825041"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824036"
 ---
 <a name="introducing-aspnet-web-pages---getting-started"></a>Знакомство с веб-страниц ASP.NET — Приступая к работе
 ====================
@@ -230,7 +230,7 @@ WebMatrix создаст страницу и открывает его в ред
 
 В **файлы** рабочей области, щелкните правой кнопкой мыши *HelloWorld.cshtml* странице и нажмите кнопку **запустить в браузере**.
 
-![Запуск страницы с помощью «־עךנע» на ленте WebMatrix](getting-started/_static/image18.png)
+![Запуск страницы с помощью на ленте WebMatrix](getting-started/_static/image18.png)
 
 WebMatrix запускает встроенный веб-сервер (IIS Express), можно использовать для тестирования страниц на компьютере. (Без IIS Express в WebMatrix, пришлось бы где-нибудь опубликовать страницу веб-сервера, прежде чем можно протестировать его.) Откроется страница в браузере по умолчанию.
 

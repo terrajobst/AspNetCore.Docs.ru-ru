@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/31/2018
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: f9918e9162329f4c5dbd1ff18e30fce0db24e651
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: a995c743b4e43be8bea5329affb3f2c736b1d016
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272728"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "41902558"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Устранение неполадок ASP.NET Core в службе приложений Azure
 
@@ -178,7 +178,7 @@ ms.locfileid: "36272728"
 * [Общие сведения об обработке ошибок в ASP.NET Core](xref:fundamentals/error-handling)
 * [Справочник по общим ошибкам для службы приложений Azure и служб IIS с ASP.NET Core](xref:host-and-deploy/azure-iis-errors-reference)
 * [Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio)
-* [Устранение ошибок HTTP "502 — недопустимый шлюз" и "503 — служба недоступна" в веб-приложениях Azure](/app-service/app-service-web-troubleshoot-http-502-http-503)
+* [Устранение ошибок HTTP "502 — недопустимый шлюз" и "503 — служба недоступна" в веб-приложениях Azure](/azure/app-service/app-service-web-troubleshoot-http-502-http-503)
 * [Устранение проблем с производительностью медленных веб приложений в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
 * [Вопросы и ответы о производительности приложений для веб-приложений в Azure](/azure/app-service/app-service-web-availability-performance-application-issues-faq)
 * ["Песочница" веб-приложений Azure (ограничения работы среды выполнения службы приложений)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)

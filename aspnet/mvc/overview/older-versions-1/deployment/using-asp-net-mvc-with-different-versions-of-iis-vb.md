@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-v
 title: Использование ASP.NET MVC с разными версиями служб IIS (Visual Basic) | Документация Майкрософт
 author: microsoft
 description: В этом руководстве вы узнаете, как использовать ASP.NET MVC и маршрутизация URL-адресов, с разными версиями служб IIS. Вы узнаете, различные стратегии...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/19/2008
 ms.assetid: 1c1283b2-6956-4937-b568-d30de432ce23
 msc.legacyurl: /mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4c0dc1ac08cfe06ad7ea35a6e6552ab1174ff989
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e83a5f8e5d1726dc2f39a9aee6515995ce0ed157
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818208"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838775"
 ---
 <a name="using-aspnet-mvc-with-different-versions-of-iis-vb"></a>Использование ASP.NET MVC с разными версиями служб IIS (VB)
 ====================
@@ -51,7 +51,7 @@ IIS 7.0, может обрабатывать запросы с помощью д
 3. В окне «действия» выберите **основные параметры** ссылку, чтобы открыть диалоговое окно Изменение приложения (см. рис. 1)
 4. Запишите выбранного пула приложений.
 
-По умолчанию службы IIS настроены для поддержки два пула приложений: **DefaultAppPool** и **Classic .NET AppPool**. Если выбран DefaultAppPool, приложение работает в режиме ָםעודנטנמגאםםי. Если выбран Classic .NET AppPool, приложение запущено в режиме классического запрос обработки.
+По умолчанию службы IIS настроены для поддержки два пула приложений: **DefaultAppPool** и **Classic .NET AppPool**. Если выбран DefaultAppPool, приложение работает в режиме. Если выбран Classic .NET AppPool, приложение запущено в режиме классического запрос обработки.
 
 
 [![В диалоговом окне нового проекта](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image1.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image1.png)

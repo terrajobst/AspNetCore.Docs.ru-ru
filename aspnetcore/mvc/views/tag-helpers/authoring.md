@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о разработке вспомогательных функций тегов в ASP.NET Core.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 01/19/2018
+ms.date: 08/20/2018
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 5873c6dbdeba1b5f2bf7ac85d8992480228b7125
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 2d39488caeea0c87d2efc79f265de7feb200f096
+ms.sourcegitcommit: 15d7bd0b2c4e6fe9ac335d658bab71a45ca5bc72
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275321"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41755609"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Создание вспомогательных функций тегов в ASP.NET Core
 
@@ -35,7 +35,7 @@ ms.locfileid: "36275321"
 
 ```html
 <email>Support</email>
-   ```
+```
 
 Сервер будет использовать эту вспомогательную функцию тега для преобразования разметки следующим образом:
 
@@ -179,7 +179,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 ```csharp
 [HtmlTargetElement("MyBold")]
-   ```
+```
 
 ## <a name="pass-a-model-to-a-tag-helper"></a>Передача модели во вспомогательную функцию тега
 
@@ -245,26 +245,8 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 2. Замените содержимое файла *Views/Home/Index.cshtml* следующей разметкой:
 
-   ```cshtml
-   @using AuthoringTagHelpers.Models
-   @model WebsiteContext
-    
-   @{
-       ViewData["Title"] = "Home Page";
-   }
-    
-   <div>
-       <h3>Information about our website (outdated):</h3>
-       <website-information info=@Model />
-       <div condition="@Model.Approved">
-           <p>
-               This website has <strong surround="em"> @Model.Approved </strong> been approved yet.
-               Visit www.contoso.com for more information.
-           </p>
-       </div>
-   </div>
-   ```
-    
+   [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml)]
+
 3. Замените метод `Index` в контроллере `Home` следующим кодом:
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Controllers/HomeController.cs?range=9-18)]
