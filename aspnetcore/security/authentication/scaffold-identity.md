@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как сформировать шаблон удостоверений в проекте ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 5/16/2018
+ms.date: 08/16/2018
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 07163941d0bd1fea6f9b3d9867536580d8a9e9d8
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: e35836fa9c20729da7c857243410833749b3a595
+ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063277"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43055852"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Каркас удостоверений в проектах ASP.NET Core
 
@@ -26,6 +26,9 @@ ASP.NET Core 2.1 и более поздних предоставляет [удо
 При запуске шаблон удостоверений *ScaffoldingReadme.txt* файл создается в каталоге проекта. *ScaffoldingReadme.txt* файл содержит общие инструкции, на что нужно для завершения обновления удостоверений формирования шаблонов. Этот документ содержит более подробные инструкции, чем *ScaffoldingReadme.txt* файла.
 
 Мы рекомендуем использовать систему управления версиями, показаны различия в файл и дает возможность отката изменений. Какие изменения после выполнения шаблон удостоверений.
+
+> [!NOTE]
+> При использовании служб требуются [двухфакторная проверка подлинности](xref:security/authentication/identity-enable-qrcodes), [учетной записи пароль и Подтверждение восстановления](xref:security/authentication/accconfirm)и другие функции безопасности с удостоверением. Службы или службы заглушки не появляется, если формирование шаблонов удостоверений. Службы, чтобы включить эти функции должны быть добавлены вручную. Например, см. в разделе [требуют подтверждение по электронной почте](xref:security/authentication/accconfirm#require-email-confirmation).
 
 ## <a name="scaffold-identity-into-an-empty-project"></a>Каркас identity в пустой проект
 
@@ -94,7 +97,8 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 [!INCLUDE[](~/includes/webapp-alias-notice.md)]
 -->
 
-[!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)] Некоторые параметры идентификаторов настраиваются в *Areas/Identity/IdentityHostingStartup.cs*. Дополнительные сведения см. в разделе [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
+[!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
+Некоторые параметры идентификаторов настраиваются в *Areas/Identity/IdentityHostingStartup.cs*. Дополнительные сведения см. в разделе [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 ## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>Каркас удостоверений в проекте MVC без существующей авторизации
 
