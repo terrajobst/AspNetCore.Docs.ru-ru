@@ -5,16 +5,16 @@ description: Рекомендации по созданию сквозного �
 ms.author: casoper
 ms.date: 08/07/2018
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: 3cf99f4d497bf2edd8759ab9afdee66ad49fac3d
-ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
+ms.openlocfilehash: a63e97d9ab9eb0ed2fbd30e8c2e033f0c048d33e
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42910035"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312305"
 ---
 # <a name="tools-and-downloads"></a>Средства и файлы для загрузки
 
-Azure имеет несколько интерфейсов для подготовки и управления ресурсами, такими как [портала Azure](https://portal.azure.com), [Azure CLI](https://docs.microsoft.com/cli/azure/), [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview), [облако Azure Оболочка](https://shell.azure.com/bash)и Visual Studio. В этом руководстве принимает минималистский подход и использует Azure Cloud Shell, чтобы уменьшить шаги. Тем не менее портала Azure необходимо использовать для некоторых частей.
+Azure имеет несколько интерфейсов для подготовки и управления ресурсами, такими как [портала Azure](https://portal.azure.com), [Azure CLI](https://docs.microsoft.com/cli/azure/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), [облако Azure Оболочка](https://shell.azure.com/bash)и Visual Studio. В этом руководстве принимает минималистский подход и использует Azure Cloud Shell, чтобы уменьшить шаги. Тем не менее портала Azure необходимо использовать для некоторых частей.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
