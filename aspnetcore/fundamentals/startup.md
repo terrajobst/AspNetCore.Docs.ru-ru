@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
 uid: fundamentals/startup
-ms.openlocfilehash: a576f3840e66fc4ed877f7575aa3f3e36b37ae4d
-ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
+ms.openlocfilehash: 465d33cc1f19428d5189b3a6fa7088ac402a9751
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39356754"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927975"
 ---
 # <a name="application-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
@@ -64,50 +64,11 @@ ms.locfileid: "39356754"
 
 [!code-csharp[](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
 
-::: moniker range=">= aspnetcore-2.1"
-
-<a name="setcompatibilityversion"></a>
-
-### <a name="setcompatibilityversion-for-aspnet-core-mvc"></a>SetCompatibilityVersion для ASP.NET Core MVC
-
-Метод `SetCompatibilityVersion` позволяет приложению принимать или отклонять потенциально критические изменения в поведении, появившиеся в ASP.NET MVC Core 2.1+. Эти потенциально критические изменения обычно затрагивают поведение подсистем MVC и способы вызова **кода** средой выполнения. Если принять эти изменения, вы сможете использовать актуальное поведение, которое сохранится в ASP.NET Core.
-
-Следующий код задает режим совместимости в ASP.NET Core 2.1:
-
-[!code-csharp[Main](startup/sampleCompatibility/Startup.cs?name=snippet1)]
-
-Мы рекомендуем протестировать приложение с помощью последней версии (`CompatibilityVersion.Version_2_1`). Мы полагаем, что в большинстве приложений использование последней версии не приведет к критически важным изменениям в поведении.
-
-Приложения, вызывающие `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)`, защищены от потенциальных критически важных изменений в поведении, появившихся в MVC ASP.NET 2.1 и более поздних версий 2.x. Особенности защиты:
-
-* Не применяется ко всем изменениям в версии 2.1 и более поздних версиях. Она направлена только на потенциально критические изменения в поведении среды выполнения ASP.NET Core в подсистеме MVC.
-* Не распространяется на следующую основную версию.
-
-По умолчанию для приложений ASP.NET Core 2.1 и более поздних версий 2.x, которые **не** вызывают `SetCompatibilityVersion`, предусмотрена совместимость с 2.0. Отсутствие вызова `SetCompatibilityVersion` равноценно вызову `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)`.
-
-Следующий код задает режим совместимости в ASP.NET Core 2.1, за исключением следующего поведения:
-
-* [AllowCombiningAuthorizeFilters](https://github.com/aspnet/Mvc/blob/master/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
-* [InputFormatterExceptionPolicy](https://github.com/aspnet/Mvc/blob/master/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
-
-[!code-csharp[Main](startup/sampleCompatibility/Startup2.cs?name=snippet1)]
-
-Если в приложении возникают критические изменения в поведении, использование параметров совместимости имеет следующие преимущества:
-
-* Позволяет использовать последний выпуск и отказаться от конкретных критических изменений.
-* Дает вам время обновить приложение, чтобы оно работало с последними изменениями.
-
-В комментариях к классу [MvcOptions](https://github.com/aspnet/Mvc/blob/master/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs) подробно объясняется, что изменилось и почему изменения выгодны для большинства пользователей.
-
-Позднее мы выпустим [версию ASP.NET Core 3.0](https://github.com/aspnet/Home/wiki/Roadmap). Старое поведение, поддерживаемое параметрами совместимости, не сохранится в версии 3.0. Мы думаем, что это полезные изменения почти для всех пользователей. Большинство приложений сможет воспользоваться этими изменениями уже сейчас, а другие успеют обновиться.
-
-::: moniker-end
-
 ## <a name="the-configure-method"></a>Метод Configure 
 
 Метод [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) используется для указания того, как приложение реагирует на HTTP-запросы. Конвейер запросов настраивается путем добавления компонентов [ПО промежуточного слоя](xref:fundamentals/middleware/index) в экземпляр [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder). `IApplicationBuilder` доступен для метода `Configure`, но он не зарегистрирован в контейнере службы. Размещение создает `IApplicationBuilder` и передает его непосредственно в `Configure` ([источник ссылки](https://github.com/aspnet/Hosting/blob/release/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/WebHost.cs#L179-L192)).
 
-[Шаблоны ASP.NET Core](/dotnet/core/tools/dotnet-new) настраивают конвейер, добавляя поддержку страницы исключений разработчика, [BrowserLink](http://vswebessentials.com/features/browserlink), страниц ошибок, статических файлов и ASP.NET MVC:
+[Шаблоны ASP.NET Core](/dotnet/core/tools/dotnet-new) настраивают конвейер, добавляя поддержку страницы исключений разработчика, [BrowserLink](http://vswebessentials.com/features/browserlink), страниц ошибок, статических файлов и ASP.NET Core MVC:
 
 [!code-csharp[](../common/samples/WebApplication1DotNetCore2.0App/Startup.cs?range=28-48&highlight=5,6,10,13,15)]
 
@@ -129,7 +90,7 @@ ms.locfileid: "39356754"
 
 Используйте [IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) для настройки ПО промежуточного слоя в начале или конце конвейера ПО промежуточного слоя [Configure](#the-configure-method) приложения. `IStartupFilter` удобно использовать, чтобы обеспечить запуск ПО промежуточного слоя до или после ПО промежуточного слоя, добавляемого библиотеками в начале или в конце конвейера обработки запросов приложения.
 
-`IStartupFilter` реализует отдельный метод [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter.configure), который принимает и возвращает `Action<IApplicationBuilder>`. [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) определяет класс для настройки конвейера запросов приложения. Дополнительные сведения см. в разделе [Создание конвейера ПО промежуточного слоя с помощью IApplicationBuilder](xref:fundamentals/middleware/index#creating-a-middleware-pipeline-with-iapplicationbuilder).
+`IStartupFilter` реализует отдельный метод [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter.configure), который принимает и возвращает `Action<IApplicationBuilder>`. [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) определяет класс для настройки конвейера запросов приложения. Дополнительные сведения см. в разделе [Создание конвейера ПО промежуточного слоя с помощью IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder).
 
 Каждый `IStartupFilter` реализует один или несколько компонентов ПО промежуточного слоя в конвейере запросов. Фильтры вызываются в том порядке, в котором они были добавлены в контейнер службы. Фильтры могут добавлять ПО промежуточного слоя до или после передачи управления следующему фильтру, поэтому они добавляются в начало или конец конвейера приложения.
 
@@ -154,7 +115,7 @@ ms.locfileid: "39356754"
 * Несколько реализаций `IStartupFilter` могут взаимодействовать с одними и теми же объектами. Если важен порядок, упорядочите регистрации службы `IStartupFilter` в соответствии с требуемым порядком выполнения ПО промежуточного слоя.
 * Библиотеки могут добавлять ПО промежуточного слоя с одной или несколькими реализациями `IStartupFilter`, которые выполняются до или после другого ПО промежуточного слоя приложения, зарегистрированного с помощью `IStartupFilter`. Чтобы вызвать ПО промежуточного слоя `IStartupFilter` до ПО промежуточного слоя, добавляемого библиотекой `IStartupFilter`, расположите регистрацию службы до добавления библиотеки в контейнер службы. Чтобы вызвать его после этого момента, расположите регистрацию службы после добавления библиотеки.
 
-## <a name="adding-configuration-at-startup-from-an-external-assembly"></a>Добавление конфигурации из внешней сборки при запуске
+## <a name="add-configuration-at-startup-from-an-external-assembly"></a>Добавление конфигурации из внешней сборки при запуске
 
 Реализация [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) позволяет при запуске добавлять в приложение улучшения из внешней сборки вне класса `Startup` приложения. Дополнительные сведения см. в разделе [Усовершенствование приложения из внешней сборки](xref:fundamentals/configuration/platform-specific-configuration).
 

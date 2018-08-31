@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/14/2016
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 0a9a2d9d0de25a4eaab704680c627c1216d146e3
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 3470d9278574a95115b14f25b90a0a93bb3b8a67
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275487"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751700"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Непрерывное развертывание ASP.NET Core в Azure с помощью Visual Studio и Git
 
@@ -46,7 +46,7 @@ ms.locfileid: "36275487"
 
 1. В диалоговом окне **New ASP.NET Core Project** (Новый проект ASP.NET Core) выберите **пустой** шаблон и щелкните **ОК**.
 
-   ![Диалоговое окно "Новый проект ASP.NET"](azure-continuous-deployment/_static/02-web-site-template.png)
+   ![Диалоговое окно "Создание проекта ASP.NET Core"](azure-continuous-deployment/_static/02-web-site-template.png)
 
 > [!NOTE]
 > Последним выпуском .NET Core является версия 2.0.

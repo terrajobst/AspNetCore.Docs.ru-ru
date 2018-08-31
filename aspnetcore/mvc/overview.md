@@ -5,12 +5,12 @@ description: Узнайте, почему ASP.NET MVC является мног�
 ms.author: riande
 ms.date: 01/08/2018
 uid: mvc/overview
-ms.openlocfilehash: 7f8aab02c0ee37dad49ff224b182ec455e837a7a
-ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
+ms.openlocfilehash: d2a50e48c20fe69b1fe691bfc9c91a27d4219922
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39378642"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "41902603"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Общие сведения ASP.NET Core MVC
 
@@ -251,3 +251,9 @@ ASP.NET Core имеет встроенную поддержку [внедрен�
 ### <a name="view-components"></a>Компоненты представлений
 
 [Компоненты представлений](views/view-components.md) позволяют упаковывать логику отрисовки и повторно использовать ее в приложении. Они аналогичны [частичным представлениям](views/partial.md), но имеют связанную логику.
+
+## <a name="compatibility-version"></a>Совместимая версия
+
+Метод <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> позволяет приложению принимать или отклонять потенциально критические изменения в поведении, появившиеся в ASP.NET Core MVC 2.1 или более поздних версий.
+
+Дополнительные сведения см. в разделе <xref:mvc/compatibility-version>.

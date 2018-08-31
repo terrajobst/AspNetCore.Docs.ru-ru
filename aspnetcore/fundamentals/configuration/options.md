@@ -6,23 +6,43 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
 uid: fundamentals/configuration/options
-ms.openlocfilehash: ef6b0117b88c4c79771f0280267bd99993028ac8
-ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
+ms.openlocfilehash: 6258530beedced9570111478fea630b1556e1a1e
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39655424"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927962"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Шаблон параметров в ASP.NET Core
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-Шаблон параметров использует классы для представления групп связанных настроек. Когда параметры конфигурации изолируются по функции в отдельных классах, в приложениях соблюдаются два важных принципа программной инженерии.
+Шаблон параметров использует классы для представления групп связанных настроек. Когда [параметры конфигурации](xref:fundamentals/configuration/index) изолируются по сценарию в отдельных классах, в приложениях соблюдаются два важных принципа программной инженерии.
 
-* [Принцип изоляции интерфейсов](http://deviq.com/interface-segregation-principle/). Функции (классы), которые зависят от параметров конфигурации, зависят только от используемых ими параметров конфигурации.
+* [Принцип изоляции интерфейсов](http://deviq.com/interface-segregation-principle/). Сценарии (классы), которые зависят от параметров конфигурации, зависят только от используемых ими параметров конфигурации.
 * [Разделение ответственности](http://deviq.com/separation-of-concerns/). Параметры для разных частей приложения не зависят друг от друга и не связаны друг с другом.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample)). Информацию в этой статье будет проще воспринимать, если пользоваться примером приложения.
+
+## <a name="prerequisites"></a>Предварительные требования
+
+::: moniker range=">= aspnetcore-2.1"
+
+Добавьте ссылку на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) или добавьте ссылку на пакет в пакет [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Добавьте ссылку на [метапакет Microsoft.AspNetCore.All](xref:fundamentals/metapackage) или добавьте ссылку на пакет в пакет [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Добавьте ссылку на пакет в пакет [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
+
+::: moniker-end
 
 ## <a name="basic-options-configuration"></a>Конфигурация основных параметров
 
@@ -102,7 +122,7 @@ delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 
 Конфигурация подпараметров демонстрируется в примере &num; 3 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
-В приложениях должны создаваться классы приложений, относящиеся к определенным группам функциональных возможностей (классам). Части приложения, которым требуются значения конфигурации, должны иметь доступ только к используемым ими значениям конфигурации.
+В приложениях должны создаваться классы приложений, относящиеся к определенным группам сценариев (классам). Части приложения, которым требуются значения конфигурации, должны иметь доступ только к используемым ими значениям конфигурации.
 
 При привязке параметров к конфигурации каждое свойство, относящееся к типу параметров, привязывается к ключу конфигурации в формате `property[:sub-property:]`. Например, свойство `MyOptions.Option1` привязывается к ключу `Option1`, который считывается из свойства `option1` в файле *appsettings.json*.
 

@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/05/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: d7e60c0f615841461a17b093bffe5fb3f82f8616
-ms.sourcegitcommit: 506a199274e9fe5fb4070b273ba94f29f14cb619
+ms.openlocfilehash: ff04ebeb6a682ec924afe896fd6716010a63f7cd
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/28/2018
-ms.locfileid: "39332279"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751428"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Обработка ошибок в ASP.NET Core
 
@@ -195,7 +195,7 @@ public class ErrorModel : PageModel
 
 При работе в службе [IIS](/iis) или [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) возвращает ошибку *502.5 Сбой процесса*, если процесс невозможно запустить. Сведения об устранении неполадок при запуске при размещении в службах IIS см. в статье <xref:host-and-deploy/iis/troubleshoot>. Сведения об устранении неполадок при запуске в службе приложений Azure см. в статье <xref:host-and-deploy/azure-apps/troubleshoot>.
 
-## <a name="aspnet-mvc-error-handling"></a>Обработка ошибок ASP.NET MVC
+## <a name="aspnet-core-mvc-error-handling"></a>Обработка ошибок в ASP.NET Core MVC
 
 В приложениях [MVC](xref:mvc/overview) есть дополнительные возможности обработки ошибок, например настройка фильтров исключений и проведение проверки модели.
 

@@ -5,12 +5,12 @@ description: В этом учебнике описываются полезны�
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: be44ef115ce72e1571bbdea2c609ea6c53792c59
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 25916365b4e682a8e296e0affbcddd4f1e5846b1
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38194046"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751646"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC с EF Core — расширенные возможности — 10 из 10
 
@@ -187,7 +187,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 ## <a name="next-steps"></a>Следующие шаги
 
-На этом серия учебников, посвященных использованию платформы Entity Framework Core в приложении ASP.NET MVC, завершена.
+На этом серия учебников, посвященных использованию платформы Entity Framework Core в приложении ASP.NET Core MVC, завершена.
 
 Дополнительные сведения о EF Core см. в [документации по платформе Entity Framework Core](https://docs.microsoft.com/ef/core). Также вы можете ознакомиться с книгой, посвященной [практическому применению Entity Framework Core](https://www.manning.com/books/entity-framework-core-in-action).
 

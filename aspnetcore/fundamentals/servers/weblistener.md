@@ -2,15 +2,16 @@
 title: Реализации веб-сервера WebListener в ASP.NET Core
 author: rick-anderson
 description: Дополнительные сведения о WebListener, веб-сервере для ASP.NET Core в Windows, который можно использовать для прямого подключения к Интернету без IIS.
+monikerRange: < aspnetcore-2.0
 ms.author: riande
-ms.date: 03/13/2018
+ms.date: 08/15/2018
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: 68aea99d6ce6af12655ef5fdb13130e9279e448a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 5602c1ddbe76879587de12bcd82722c103dee03f
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274873"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751745"
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера WebListener в ASP.NET Core
 
@@ -45,11 +46,15 @@ WebListener удобен для развертываний, где нужно п
 
 ![Weblistener взаимодействует с Интернетом напрямую.](weblistener/_static/weblistener-to-internet.png)
 
-Так как WebListener основан на Http.Sys, ему не нужен обратный прокси-сервер для защиты от атак. Http.Sys — это проверенная технология, которая защищает от многих типов атак, а также обеспечивает надежность, безопасность и масштабируемость полнофункционального веб-сервера. Сами службы IIS выполняются в качестве HTTP-прослушивателя поверх Http.Sys. 
+Так как WebListener основан на Http.Sys, ему не нужен обратный прокси-сервер для защиты от атак. Http.Sys — это проверенная технология, которая защищает от многих типов атак, а также обеспечивает надежность, безопасность и масштабируемость полнофункционального веб-сервера. Сами службы IIS выполняются в качестве HTTP-прослушивателя поверх Http.Sys.
 
 WebListener также хорошо подходит для внутренних развертываний, когда нужна функция, отсутствующая в Kestrel.
 
 ![Weblistener взаимодействует с вашей внутренней сетью напрямую.](weblistener/_static/weblistener-to-internal.png)
+
+## <a name="kernel-mode-authentication-with-kerberos"></a>Проверка подлинности в режиме ядра с помощью Kerberos
+
+WebListener делегирует задачи в проверку подлинности в режиме ядра с помощью протокола проверки подлинности Kerberos. Проверка подлинности в режиме пользователя не поддерживается с Kerberos и WebListener. Необходимо использовать учетную запись компьютера для расшифровки маркера/билета Kerberos, полученного из Active Directory и переадресованного клиентом на сервер для проверки подлинности пользователя. Зарегистрируйте имя субъекта-службы (SPN) для узла, а не пользователя приложения.
 
 ## <a name="how-to-use-weblistener"></a>Способы использования WebListener
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/10/2018
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: 280599ab4b4f0a70d154cc4408e7232aaf766d8e
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 2958b83de13207b93790004a4fa60b0509af3cd2
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279562"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "41902590"
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>Профили публикации Visual Studio для развертывания приложений ASP.NET Core
 
@@ -505,3 +505,4 @@ MSBuild file.
 
 * [Веб-развертывание](https://www.iis.net/downloads/microsoft/web-deploy) (MSDeploy) упрощает развертывание веб-приложений и веб-сайтов на серверах IIS.
 * [https://github.com/aspnet/websdk](https://github.com/aspnet/websdk/issues): проблемы с файлами и возможности запросов для развертывания.
+* [Публикация веб-приложения ASP.NET в виртуальную машину Azure из Visual Studio](/azure/virtual-machines/windows/publish-web-app-from-visual-studio)

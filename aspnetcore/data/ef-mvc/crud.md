@@ -5,12 +5,12 @@ description: ''
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 1c724da918640c514acbc24c390de4e735f8bf49
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 626b828e2391d3982ff2cf393f0c9e0748c12810
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342436"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751649"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC с EF Core — операции CRUD (создание, чтение, обновление и удаление) — 2 из 10
 
@@ -117,7 +117,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
 
-Этот код добавляет сущность Student, созданную связывателем модели ASP.NET MVC, в набор сущностей Students, после чего сохраняет изменения в базе данных. (Связыватель модели использует функциональные возможности ASP.NET MVC, упрощая работу с данными, которые вы предоставляете в форме. Связыватель модели преобразует значения из отправленной формы в типы CLR и передает их в виде параметров в метод действия. В этом случае связыватель модели создает сущность Student, используя значения свойств из коллекции Form.)
+Этот код добавляет сущность Student, созданную связывателем модели ASP.NET Core MVC, в набор сущностей Students, после чего сохраняет изменения в базе данных. (Связыватель модели использует функциональные возможности ASP.NET Core MVC, упрощая работу с данными, которые вы предоставляете в форме. Связыватель модели преобразует значения из отправленной формы в типы CLR и передает их в виде параметров в метод действия. В этом случае связыватель модели создает сущность Student, используя значения свойств из коллекции Form.)
 
 `ID` удаляется из атрибута `Bind` в связи с тем, что он содержит значение первичного ключа, которое будет автоматически устанавливаться SQL Server при вставке строки. Значение ID не задается на основе введенных пользователем данных.
 
@@ -273,7 +273,7 @@ public class Student
 
 Чтобы высвободить ресурсы, используемые подключением к базе данных, необходимо как можно скорее ликвидировать экземпляр контекста после завершения работы с ним. Эта задача реализуется с помощью встроенной в ASP.NET Core технологии [внедрения зависимостей](../../fundamentals/dependency-injection.md).
 
-В файле *Startup.cs* вызывается [метод расширения AddDbContext](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs), чтобы подготовить класс `DbContext` в контейнере ASP.NET DI. Этот метод по умолчанию устанавливает время существования службы `Scoped`. Значение `Scoped` указывает, что срок существования объекта контекста соответствует сроку существования веб-запроса. Таким образом, по завершении веб-запроса автоматически будет вызываться метод `Dispose`.
+В файле *Startup.cs* вызывается [метод расширения AddDbContext](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs), чтобы подготовить класс `DbContext` в контейнере ASP.NET Core DI. Этот метод по умолчанию устанавливает время существования службы `Scoped`. Значение `Scoped` указывает, что срок существования объекта контекста соответствует сроку существования веб-запроса. Таким образом, по завершении веб-запроса автоматически будет вызываться метод `Dispose`.
 
 ## <a name="handling-transactions"></a>Обработка транзакций
 

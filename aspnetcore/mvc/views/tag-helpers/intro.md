@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2018
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: be75667f34eed7ba601eee331e3451c5738ef223
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c2af9099fe439e1cdbf9ba86ffae3b2b0f67391e
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273573"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751719"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Вспомогательные функции тегов в ASP.NET Core
 
@@ -130,7 +130,7 @@ public class Movie
 
 ## <a name="intellisense-support-for-tag-helpers"></a>Поддержка Intellisense для вспомогательных функций тегов
 
-Веб-приложение ASP.NET, создаваемое в Visual Studio, добавляет пакет NuGet "Microsoft.AspNetCore.Razor.Tools". Это пакет добавляет инструментарий вспомогательной функции тега.
+Веб-приложение ASP.NET Core, создаваемое в Visual Studio, добавляет пакет NuGet "Microsoft.AspNetCore.Razor.Tools". Это пакет добавляет инструментарий вспомогательной функции тега.
 
 Рекомендуется написать элемент HTML `<label>`. Когда вы введете `<l` в редакторе Visual Studio, IntelliSense отобразит подходящие элементы:
 

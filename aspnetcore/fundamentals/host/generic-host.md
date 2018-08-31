@@ -7,18 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/16/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 0f3b548c2065245f6ed8a6a6f981ece4eb78535e
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: de9044875c8ebc62c80a129d721e7d37be5d846d
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342059"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927813"
 ---
 # <a name="net-generic-host"></a>Универсальный узел .NET
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
-Приложения .NET настраивают и запускают *узел*. Узел отвечает за запуск приложения и управление временем существования. В этом разделе рассматриваются универсальный узел ASP.NET Core ([HostBuilder](/dotnet/api/microsoft.extensions.hosting.hostbuilder)), используемый для размещения приложений, которые не умеют обрабатывать запросы HTTP. Сведения о веб-узле ([WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)) см. в статье <xref:fundamentals/host/web-host>.
+Приложения .NET Core настраивают и запускают *узел*. Узел отвечает за запуск приложения и управление временем существования. В этом разделе рассматриваются универсальный узел ASP.NET Core ([HostBuilder](/dotnet/api/microsoft.extensions.hosting.hostbuilder)), используемый для размещения приложений, которые не умеют обрабатывать запросы HTTP. Сведения о веб-узле ([WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)) см. в статье <xref:fundamentals/host/web-host>.
 
 Универсальный узел предназначен для отделения конвейера HTTP от API веб-узла, чтобы можно было иметь больше сценариев узла. Обмен сообщениями, фоновые задачи и другие рабочие нагрузки типа "не HTTP", использующие перекрестные возможности универсальных узлов, такие как конфигурация, внедрение зависимости (DI) и ведения журналов.
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/02/2018
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 861370dc689e2420838f639ea0b1fb8f73927e16
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: b9c322e56c0902c2a78bbbf2563dd01ce79fdc9a
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342423"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927901"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
@@ -55,7 +55,7 @@ public class IndexModel : PageModel
 
     public async Task OnGetAsync()
     {
-        await _myDependency.WriteMessage(
+        await _dependency.WriteMessage(
             "IndexModel.OnGetAsync created this message.");
     }
 }
@@ -74,7 +74,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        await _myDependency.WriteMessage(
+        await _dependency.WriteMessage(
             "HomeController.Index created this message.");
 
         return View();
@@ -143,7 +143,7 @@ public class HomeController : Controller
 ::: moniker-end
 
 > [!NOTE]
-> Каждый метод расширения `services.Add<ServiceName>` добавляет (а потенциально и настраивает) службы. Например, `services.AddMvc()` добавляет службы, которые нужны для Razor Pages и MVC. Рекомендуем придерживаться такого подхода в приложениях. Поместите методы расширения в пространство имен [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection), чтобы инкапсулировать группы зарегистрированных служб.
+> Каждый метод расширения `services.Add{SERVICE_NAME}` добавляет (а потенциально и настраивает) службы. Например, `services.AddMvc()` добавляет службы, которые нужны для Razor Pages и MVC. Рекомендуем придерживаться такого подхода в приложениях. Поместите методы расширения в пространство имен [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection), чтобы инкапсулировать группы зарегистрированных служб.
 
 Если конструктору службы требуется примитив, например `string`, его можно внедрить с помощью [конфигурации](xref:fundamentals/configuration/index) и [шаблона параметров](xref:fundamentals/configuration/options).
 
@@ -183,22 +183,22 @@ public class MyDependency : IMyDependency
 
 | Тип службы | Время существования |
 | ------------ | -------- |
-| [Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory](/dotnet/api/microsoft.aspnetcore.hosting.builder.iapplicationbuilderfactory) | Временно |
-| [Microsoft.AspNetCore.Hosting.IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) | Один раз |
-| [Microsoft.AspNetCore.Hosting.IHostingEnvironment](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment) | Один раз |
-| [Microsoft.AspNetCore.Hosting.IStartup](/dotnet/api/microsoft.aspnetcore.hosting.istartup) | Один раз |
-| [Microsoft.AspNetCore.Hosting.IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) | Временно |
-| [Microsoft.AspNetCore.Hosting.Server.IServer](/dotnet/api/microsoft.aspnetcore.hosting.server.iserver) | Один раз |
-| [Microsoft.AspNetCore.Http.IHttpContextFactory](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextfactory) | Временно |
-| [Microsoft.Extensions.Logging.ILogger&lt;T&gt;](/dotnet/api/microsoft.extensions.logging.ilogger) | Один раз |
-| [Microsoft.Extensions.Logging.ILoggerFactory](/dotnet/api/microsoft.extensions.logging.iloggerfactory) | Один раз |
-| [Microsoft.Extensions.ObjectPool.ObjectPoolProvider](/dotnet/api/microsoft.extensions.objectpool.objectpoolprovider) | Один раз |
-| [Microsoft.Extensions.Options.IConfigureOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) | Временно |
-| [Microsoft.Extensions.Options.IOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.ioptions-1) | Один раз |
-| [System.Diagnostics.DiagnosticSource](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticsource) | Один раз |
-| [System.Diagnostics.DiagnosticListener](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticlistener) | Один раз |
+| [Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory](/dotnet/api/microsoft.aspnetcore.hosting.builder.iapplicationbuilderfactory) | Временный |
+| [Microsoft.AspNetCore.Hosting.IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) | Одноэлементный |
+| [Microsoft.AspNetCore.Hosting.IHostingEnvironment](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment) | Одноэлементный |
+| [Microsoft.AspNetCore.Hosting.IStartup](/dotnet/api/microsoft.aspnetcore.hosting.istartup) | Одноэлементный |
+| [Microsoft.AspNetCore.Hosting.IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) | Временный |
+| [Microsoft.AspNetCore.Hosting.Server.IServer](/dotnet/api/microsoft.aspnetcore.hosting.server.iserver) | Одноэлементный |
+| [Microsoft.AspNetCore.Http.IHttpContextFactory](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextfactory) | Временный |
+| [Microsoft.Extensions.Logging.ILogger&lt;T&gt;](/dotnet/api/microsoft.extensions.logging.ilogger) | Одноэлементный |
+| [Microsoft.Extensions.Logging.ILoggerFactory](/dotnet/api/microsoft.extensions.logging.iloggerfactory) | Одноэлементный |
+| [Microsoft.Extensions.ObjectPool.ObjectPoolProvider](/dotnet/api/microsoft.extensions.objectpool.objectpoolprovider) | Одноэлементный |
+| [Microsoft.Extensions.Options.IConfigureOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) | Временный |
+| [Microsoft.Extensions.Options.IOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.ioptions-1) | Одноэлементный |
+| [System.Diagnostics.DiagnosticSource](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticsource) | Одноэлементный |
+| [System.Diagnostics.DiagnosticListener](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticlistener) | Одноэлементный |
 
-Если зарегистрировать службу (включая ее зависимые службы, если нужно) можно, используя метод расширения коллекции служб, для регистрации всех служб, необходимых этой службе, рекомендуется использовать один метод расширения `Add<ServiceName>`. Ниже приведен пример того, как добавить дополнительные службы в контейнер с помощью методов расширения [AddDbContext](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext), [AddIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.addidentity) и [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc).
+Если зарегистрировать службу (включая ее зависимые службы, если нужно) можно, используя метод расширения коллекции служб, для регистрации всех служб, необходимых этой службе, рекомендуется использовать один метод расширения `Add{SERVICE_NAME}`. Ниже приведен пример того, как добавить дополнительные службы в контейнер с помощью методов расширения [AddDbContext](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext), [AddIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.addidentity) и [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc).
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -220,25 +220,25 @@ public void ConfigureServices(IServiceCollection services)
 
 Для каждой зарегистрированной службы выбирайте подходящее время существования. Для служб ASP.NET можно настроить следующие параметры времени существования:
 
-**Временная**
+**Временный**
 
 Временные службы времени существования создаются при каждом их запросе. Это время существования лучше всего подходит для простых служб без отслеживания состояния.
 
-**Регулируемая**
+**Ограниченный областью**
 
-Службы с регулируемым временем существования создаются один раз для одного запроса.
+Службы времени существования с заданной областью создаются один раз для каждого запроса.
 
 > [!WARNING]
 > При использовании такой службы в ПО промежуточного слоя внедрите ее в метод `Invoke` или `InvokeAsync`. Не внедряйте службу через внедрение конструктора, поскольку в таком случае служба будет вести себя как одноэлементный объект. Дополнительные сведения см. в разделе <xref:fundamentals/middleware/index>.
 
-**Одинарная**
+**Одноэлементные**
 
 Одинарные службы создаются при первом запросе (или при выполнении `ConfigureServices`, когда экземпляр указан во время регистрации службы) и существуют в единственном экземпляре. Созданный экземпляр используют все последующие запросы. Если в приложении нужно использовать одинарные службы, рекомендуется разрешить контейнеру служб управлять временем их существования. Реализовывать конструктивный шаблон с одинарными службами и предоставлять пользовательский код для управления временем существования объекта в классе категорически не рекомендуется.
 
 > [!WARNING]
 > Разрешать регулируемую службу из одиночной нельзя. При обработке последующих запросов это может вызвать неправильное состояние службы.
 
-### <a name="constructor-injection-behavior"></a>Поведение при внедрении через конструктор
+### <a name="constructor-injection-behavior"></a>Поведение внедрения через конструктор
 
 Службы можно разрешать двумя методами:
 
@@ -377,7 +377,7 @@ Instance: 00000000-0000-0000-0000-000000000000
 
 ## <a name="call-services-from-main"></a>Вызов служб из функции main
 
-Создайте [IServiceScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescope) с [IServiceScopeFactory.CreateScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescopefactory.createscope) для разрешения регулируемой службы в области приложения. Этот способ позволит получить доступ к регулируемой службе при запуске для выполнения задач по инициализации. В следующем примере показано, как получить контекст для `MyScopedService` в `Program.Main`:
+Создайте [IServiceScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescope) с [IServiceScopeFactory.CreateScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescopefactory.createscope) для разрешения службы с заданной областью в области приложения. Этот способ позволит получить доступ к службе с заданной областью при запуске для выполнения задач по инициализации. В следующем примере показано, как получить контекст для `MyScopedService` в `Program.Main`:
 
 ```csharp
 public static void Main(string[] args)
@@ -404,20 +404,20 @@ public static void Main(string[] args)
 }
 ```
 
-## <a name="scope-validation"></a>Проверка регулировки
+## <a name="scope-validation"></a>Проверка области
 
 ::: moniker range=">= aspnetcore-2.0"
 
 Когда приложение выполняется в среде разработки, поставщик службы по умолчанию проверяет следующее:
 
-* Регулируемые службы не разрешаются из корневого поставщика службы ни прямо, ни косвенно.
-* Регулируемые службы не внедряются в одинарные объекты ни прямо, ни косвенно.
+* Службы с заданной областью не разрешаются из корневого поставщика службы, прямо или косвенно.
+* Службы с заданной областью не вводятся в одноэлементные объекты, прямо или косвенно.
 
 ::: moniker-end
 
 Корневой поставщик службы создается при вызове [BuildServiceProvider](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectioncontainerbuilderextensions.buildserviceprovider). Время существования корневого поставщика службы соответствует времени существования приложения или сервера — поставщик запускается с приложением и удаляется, когда приложение завершает работу.
 
-Регулируемые службы удаляются создавшим их контейнером. Если регулируемая служба создается в корневом контейнере, время существования службы повышается до уровня одинарного объекта, поскольку она удаляется только корневым контейнером при завершении работы приложения или сервера. Проверка регулировки службы перехватывает эти ситуации при вызове `BuildServiceProvider`.
+Службы с заданной областью удаляются создавшим их контейнером. Если служба с заданной областью создается в корневом контейнере, время существования службы повышается до уровня одноэлементного объекта, поскольку она удаляется только корневым контейнером при завершении работы приложения или сервера. Проверка областей службы перехватывает эти ситуации при вызове `BuildServiceProvider`.
 
 Дополнительные сведения см. в разделе <xref:fundamentals/host/web-host#scope-validation>.
 
@@ -480,14 +480,24 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="default-service-container-replacement"></a>Замена стандартного контейнера служб
 
-Встроенный контейнер служб предназначен для удовлетворения базовых потребностей платформы и большинства основанных на ней клиентских приложений. Однако разработчики могут заменить его на предпочитаемый ими контейнер. Метод `Startup.ConfigureServices` обычно возвращает `void`. Если его сигнатуру изменить так, чтобы он возвращал [IServiceProvider](/dotnet/api/system.iserviceprovider), вы сможете настроить и возвращать другой контейнер. Для .NET доступно множество контейнеров с инверсией управления. В следующем примере используется контейнер [Autofac](https://autofac.org/):
+Встроенный контейнер служб предназначен для удовлетворения базовых потребностей платформы и большинства клиентских приложений. Мы рекомендуем использовать встроенный контейнер, если только не требуется конкретная функциональная возможность, которую он не поддерживает. Некоторые функции, поддерживаемые сторонними контейнерами, отсутствуют во встроенном контейнере:
 
-1. Установите соответствующие пакеты контейнера:
+* Внедрение свойств
+* Внедрение по имени
+* Дочерние контейнеры
+* Настраиваемое управление временем существования
+* `Func<T>` поддерживает отложенную инициализацию
+
+Список некоторых контейнеров, которые поддерживают адаптеры, см. в разделе [Файл readme.md внедрения зависимостей](https://github.com/aspnet/DependencyInjection#using-other-containers-with-microsoftextensionsdependencyinjection).
+
+В следующем примере встроенный контейнер заменяется на [Autofac](https://autofac.org/):
+
+* Установите соответствующие пакеты контейнера:
 
     * [Autofac](https://www.nuget.org/packages/Autofac/);
     * [Autofac.Extensions.DependencyInjection](https://www.nuget.org/packages/Autofac.Extensions.DependencyInjection/).
 
-2. Настройте контейнер в `Startup.ConfigureServices` и возвратите `IServiceProvider`.
+* Настройте контейнер в `Startup.ConfigureServices` и возвратите `IServiceProvider`.
 
     ```csharp
     public IServiceProvider ConfigureServices(IServiceCollection services)
@@ -506,7 +516,7 @@ public void ConfigureServices(IServiceCollection services)
 
     Чтобы использовать сторонний контейнер, метод `Startup.ConfigureServices` должен возвращать `IServiceProvider`.
 
-3. Настройте Autofac в `DefaultModule`.
+* Настройте Autofac в `DefaultModule`.
 
     ```csharp
     public class DefaultModule : Module
@@ -522,7 +532,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="thread-safety"></a>Потокобезопасность
 
-Одинарные службы должны быть потокобезопасными. Если одинарная служба имеет зависимость от временной службы, с учетом характера использования одинарной службой к этой временной службе также может предъявляться требование потокобезопасности.
+Одноэлементные службы должны быть потокобезопасными. Если одноэлементная служба имеет зависимость от временной службы, с учетом характера использования одноэлементной службой к этой временной службе также может предъявляться требование потокобезопасности.
 
 Фабричный метод одной службы, например второй аргумент для [AddSingleton&lt;TService&gt;(IServiceCollection, Func&lt;IServiceProvider,TService&gt;)](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions.addsingleton#Microsoft_Extensions_DependencyInjection_ServiceCollectionServiceExtensions_AddSingleton__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Func_System_IServiceProvider___0__), не обязательно должен быть потокобезопасным. Как и конструктор типов (`static`), он гарантированно будет вызываться один раз одним потоком.
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2018
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: cbbdee6849768004476d94c58be4a0e7cc2d6f9e
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: f22914c9b0d6d1902dd37c9b21b80a18894c97e7
+ms.sourcegitcommit: d1c4580f56656b503cf528ec9f5ba570d790b57d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938476"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41751780"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Устранение неполадок ASP.NET Core в службах IIS
 
@@ -97,6 +97,7 @@ ms.locfileid: "37938476"
 1. Перейдите в папку развертывания сайта на компьютере размещения.
 1. Если здесь нет папки *logs*, создайте ее. Сведения о том, как настроить в MSBuild автоматическое создание папки *logs* в развертывании, см. в статье [о структуре каталогов](xref:host-and-deploy/directory-structure).
 1. Измените файл *web.config*. Задайте для параметра **stdoutLogEnabled** значение `true` и измените путь **stdoutLogFile** так, чтобы он указывал на папку *logs* (например, `.\logs\stdout`). В этом пути `stdout` обозначает префикс имени для файла журнала. При создании файла журнала автоматически добавляются метка времени, идентификатор процесса и расширение файла. Если указан префикс файла `stdout`, стандартный файл журнала будет иметь примерно такое имя: *stdout_20180205184032_5412.log*. 
+1. Убедитесь, что удостоверение пула приложений имеет разрешения на запись в папку *logs*.
 1. Сохраните обновленный файл *web.config*.
 1. Сделайте запрос к приложению.
 1. Перейдите в папку *logs*. Найдите и откройте последний журнал вывода stdout.

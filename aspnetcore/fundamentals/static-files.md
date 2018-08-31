@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: 7ecbcc81423af20f8da79ebc026b1ac01a250b90
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 33fad930e617c74d9a8c07f850764a6b81fa8ab5
+ms.sourcegitcommit: 2c158fcfd325cad97ead608a816e525fe3dcf757
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279221"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41751507"
 ---
 # <a name="static-files-in-aspnet-core"></a>Статические файлы в ASP.NET Core
 
@@ -102,7 +102,7 @@ ms.locfileid: "36279221"
 
 Метод [HeaderDictionaryExtensions.Append](/dotnet/api/microsoft.aspnetcore.http.headerdictionaryextensions.append) содержится в пакете [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/).
 
-Файлы, к которым был предоставлен доступ, кэшируются в течение 10 минут (600 секунд):
+Файлы, к которым был предоставлен доступ, кэшируются в течение 10 минут (600 секунд) в среде разработки:
 
 ![Добавлены заголовки ответов, включая заголовок Cache-Control](static-files/_static/add-header.png)
 

@@ -4,14 +4,14 @@ author: tdykstra
 description: Узнайте, как привязка модели в ASP.NET Core MVC сопоставляет данные из HTTP-запросов с параметрами методов действия.
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: tdykstra
-ms.date: 01/22/2018
+ms.date: 08/14/2018
 uid: mvc/models/model-binding
-ms.openlocfilehash: 200e2c22e02ec9e24b7cdb3883cf6f2f93f2f4b7
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 0ce20a8040c6b19da1f57e1c053a7ef81d8bcb23
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095737"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751636"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Привязка модели в ASP.NET Core
 
@@ -99,6 +99,31 @@ The link works but generates an error when building with DocFX
 
 Атрибуты очень полезны при переопределении поведения по умолчанию привязки модели.
 
+## <a name="customize-model-binding-and-validation-globally"></a>Глобальная настройка привязки и проверки модели
+
+Поведение привязки модели и системы проверки определяется классом [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata), который описывает:
+
+* Как модель будет привязана.
+* Как выполняется проверка типа и его свойств.
+
+Аспекты поведения системы можно настроить глобально, добавив поставщика сведений в [MvcOptions.ModelMetadataDetailsProviders](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions.modelmetadatadetailsproviders#Microsoft_AspNetCore_Mvc_MvcOptions_ModelMetadataDetailsProviders). MVC имеет несколько встроенных поставщиков сведений, которые позволяют настраивать такое поведение, как отключение привязки модели или проверки для определенных типов.
+
+Для отключения привязки модели для всех моделей определенного типа добавьте [ExcludeBindingMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.excludebindingmetadataprovider) в `Startup.ConfigureServices`. Например, для отключения привязки модели для всех моделей типа `System.Version`:
+
+```csharp
+services.AddMvc().AddMvcOptions(options =>
+    options.ModelMetadataDetailsProviders.Add(
+        new ExcludeBindingMetadataProvider(typeof(System.Version))));
+```
+
+Чтобы отключить проверку свойств определенного типа, добавьте [SuppressChildValidationMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.suppresschildvalidationmetadataprovider) в `Startup.ConfigureServices`. Например, чтобы отключить проверку по свойствам типа `System.Guid`:
+
+```csharp
+services.AddMvc().AddMvcOptions(options =>
+    options.ModelMetadataDetailsProviders.Add(
+        new SuppressChildValidationMetadataProvider(typeof(System.Guid))));
+```
+
 ## <a name="bind-formatted-data-from-the-request-body"></a>Привязка отформатированных данных из текста запроса
 
 Данные запроса могут иметь различные форматы, включая JSON, XML и многие другие. Если вы используете атрибут [FromBody], чтобы указать необходимость привязки параметра к данным в тексте запроса, MVC использует настроенный набор модулей форматирования для обработки данных запроса на основе его типа содержимого. По умолчанию MVC содержит класс `JsonInputFormatter` для обработки данных JSON, но вы можете добавить дополнительные модули форматирования для обработки XML и других пользовательских форматов.
@@ -109,7 +134,7 @@ The link works but generates an error when building with DocFX
 > [!NOTE]
 > `JsonInputFormatter` является модулем форматирования по умолчанию и основан на [Json.NET](https://www.newtonsoft.com/json).
 
-ASP.NET выбирает модули форматирования входных данных на основе заголовка [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) и типа параметра, если отсутствует примененный к нему атрибут, указывающий иное. Чтобы использовать XML или другой формат, его необходимо настроить в файле *Startup.cs*, но, возможно, сначала потребуется получить ссылку на `Microsoft.AspNetCore.Mvc.Formatters.Xml` с помощью NuGet. Код запуска должен выглядеть примерно следующим образом:
+ASP.NET Core выбирает модули форматирования входных данных на основе заголовка [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) и типа параметра, если отсутствует примененный к нему атрибут, указывающий иное. Чтобы использовать XML или другой формат, его необходимо настроить в файле *Startup.cs*, но, возможно, сначала потребуется получить ссылку на `Microsoft.AspNetCore.Mvc.Formatters.Xml` с помощью NuGet. Код запуска должен выглядеть примерно следующим образом:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -119,7 +144,7 @@ public void ConfigureServices(IServiceCollection services)
    }
 ```
 
-Код в файле *Startup.cs* содержит метод `ConfigureServices` с аргументом `services`, который можно использовать для построения служб для приложения ASP.NET. В примере показано добавление модуля форматирования XML в качестве службы, которую MVC будет предоставлять для этого приложения. Аргумент `options`, переданный в метод `AddMvc`, позволяет добавлять фильтры, модули форматирования и другие системные параметры из MVC при запуске приложения и управлять ими. Затем для работы с необходимым форматом атрибут `Consumes` применяется к классам контроллера или методам действий.
+Код в файле *Startup.cs* содержит метод `ConfigureServices` с аргументом `services`, который можно использовать для построения служб для приложения ASP.NET Core. В примере показано добавление модуля форматирования XML в качестве службы, которую MVC будет предоставлять для этого приложения. Аргумент `options`, переданный в метод `AddMvc`, позволяет добавлять фильтры, модули форматирования и другие системные параметры из MVC при запуске приложения и управлять ими. Затем для работы с необходимым форматом атрибут `Consumes` применяется к классам контроллера или методам действий.
 
 ### <a name="custom-model-binding"></a>Пользовательская привязка модели
 

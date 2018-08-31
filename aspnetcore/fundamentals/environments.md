@@ -5,12 +5,12 @@ description: Сведения об управлении поведением п�
 ms.author: riande
 ms.date: 07/03/2018
 uid: fundamentals/environments
-ms.openlocfilehash: eaa6fa44ed90d0c85a11f5e67a4bb9a91e84c196
-ms.sourcegitcommit: c8e62aa766641aa55105f7db79cdf2b27a6e5977
+ms.openlocfilehash: 720e5ef9fb63b83499ce1801a1c3f9df4786d748
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39254874"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927946"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Использование нескольких сред в ASP.NET Core
 
@@ -275,7 +275,11 @@ export ASPNETCORE_ENVIRONMENT=Development
 
 ### <a name="configuration-by-environment"></a>Конфигурация для разных сред
 
-См. раздел *Конфигурация для разных сред* в статье <xref:fundamentals/configuration/index#configuration-by-environment>.
+Для загрузки конфигурации среды мы рекомендуем:
+
+* Файлы *appsettings* (*appsettings.&lt;<Environment>&gt;.json). См. раздел [Конфигурация: поставщик конфигурации файлов](xref:fundamentals/configuration/index#file-configuration-provider).
+* Переменные среды (заданные в каждой системе, где размещено приложение). См. разделы [Конфигурация: поставщик конфигурации файлов](xref:fundamentals/configuration/index#file-configuration-provider) и [Безопасное хранение секретов приложения во время разработки: переменные среды](xref:security/app-secrets#environment-variables).
+* Менеджер секретов (только в среде разработки). См. раздел <xref:security/app-secrets>.
 
 ## <a name="environment-based-startup-class-and-methods"></a>Класс Startup и его методы для разных сред
 

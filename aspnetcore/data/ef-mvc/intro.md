@@ -5,12 +5,12 @@ description: ''
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 4e0bcffd1162681aa4d31c4fe74acac5a7e981f1
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: cbef7e5edf2950a87a4cd4155c63a22fff2990fe
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38216316"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751651"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC с Entity Framework Core: учебник 1 из 10
 
@@ -35,7 +35,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-[!INCLUDE [](~/includes/net-core-prereqs.md) [](~/includes/net-core-prereqs.md)]
+[!INCLUDE [](~/includes/net-core-prereqs.md)]
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
@@ -80,7 +80,7 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 * Нажмите кнопку **ОК**.
 
-  ![Диалоговое окно "Новый проект ASP.NET"](intro/_static/new-aspnet.png)
+  ![Диалоговое окно "Создание проекта ASP.NET Core"](intro/_static/new-aspnet.png)
 
 ## <a name="set-up-the-site-style"></a>Настройка стиля сайта
 
@@ -273,7 +273,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Context&highlight=5,7,9)]
 
-Технология внедрения зависимостей ASP.NET обеспечивает передачу экземпляра `SchoolContext` в контроллер. Это поведение было настроено ранее в файле *Startup.cs*.
+Технология внедрения зависимостей ASP.NET Core обеспечивает передачу экземпляра `SchoolContext` в контроллер. Это поведение было настроено ранее в файле *Startup.cs*.
 
 Контроллер содержит метод действия `Index`, который отображает всех учащихся в базе данных. Этот метод получает список учащихся из набора сущностей Students, считывая свойство `Students` экземпляра контекста базы данных:
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/14/2016
 uid: fundamentals/owin
-ms.openlocfilehash: 04042eedc52b4e6f57685e2d9ec1a75cd130fd8d
-ms.sourcegitcommit: 08f1a9baa97060da5168840b332c9c0805b5f901
+ms.openlocfilehash: db28eeff88a13dc95c469f3b7c0746c807da830f
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37144967"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751574"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>Открытый веб-интерфейс для .NET (OWIN) в ASP.NET Core
 
@@ -31,7 +31,7 @@ OWIN обеспечивает разделительный уровень, по�
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="running-owin-middleware-in-the-aspnet-pipeline"></a>Выполнение ПО промежуточного слоя OWIN в конвейере ASP.NET
+## <a name="running-owin-middleware-in-the-aspnet-core-pipeline"></a>Выполнение ПО промежуточного слоя OWIN в конвейере ASP.NET Core
 
 Поддержка OWIN для ASP.NET Core развертывается в составе пакета `Microsoft.AspNetCore.Owin`. Вы можете импортировать поддержку OWIN в проект, установив этот пакет.
 
@@ -56,7 +56,7 @@ public Task OwinHello(IDictionary<string, object> environment)
 
 Сигнатура примера возвращает `Task` и принимает `IDictionary<string, object>`, как того требует OWIN.
 
-Приведенный ниже код показывает, как добавить ПО промежуточного слоя `OwinHello` (показано выше) в конвейер ASP.NET с помощью метода расширения `UseOwin`.
+Приведенный ниже код показывает, как добавить ПО промежуточного слоя `OwinHello` (показано выше) в конвейер ASP.NET Core с помощью метода расширения `UseOwin`.
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -90,9 +90,9 @@ app.UseOwin(pipeline =>
 
 <a name="hosting-on-owin"></a>
 
-## <a name="using-aspnet-hosting-on-an-owin-based-server"></a>Использование размещения ASP.NET на сервере OWIN
+## <a name="using-aspnet-core-hosting-on-an-owin-based-server"></a>Использование размещения ASP.NET Core на сервере OWIN
 
-На основанных на OWIN серверах можно размещать приложения ASP.NET. Одним из них является веб-сервер OWIN для .NET с именем [Nowin](https://github.com/Bobris/Nowin). В пример для этой статьи я включил проект, который ссылается на Nowin и использует его для создания `IServer`, способного самостоятельно размещать ASP.NET Core.
+На основанных на OWIN серверах можно размещать приложения ASP.NET Core. Одним из них является веб-сервер OWIN для .NET с именем [Nowin](https://github.com/Bobris/Nowin). В пример для этой статьи я включил проект, который ссылается на Nowin и использует его для создания `IServer`, способного самостоятельно размещать ASP.NET Core.
 
 [!code-csharp[](owin/sample/src/NowinSample/Program.cs?highlight=15)]
 
