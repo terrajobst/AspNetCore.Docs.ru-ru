@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/14/2018
 uid: client-side/libman/index
-ms.openlocfilehash: b21ab0dbeda043dceda5376bcd95ccd334707c5a
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: a6ff0cc3342cfac74739387aa17046ed5050232f
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41909874"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312363"
 ---
 # <a name="client-side-library-acquisition-in-aspnet-core-with-libman"></a>Получение библиотеки на стороне клиента в ASP.NET Core с LibMan
 
@@ -34,4 +34,5 @@ LibMan не является системой управления пакета�
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * <xref:client-side/libman/libman-vs>
+* <xref:client-side/libman/libman-cli>
 * [Репозиторий LibMan на GitHub](https://github.com/aspnet/LibraryManager)
