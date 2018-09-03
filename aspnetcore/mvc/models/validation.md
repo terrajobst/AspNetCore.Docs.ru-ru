@@ -5,12 +5,12 @@ description: Сведения о проверке модели в ASP.NET Core M
 ms.author: riande
 ms.date: 07/31/2018
 uid: mvc/models/validation
-ms.openlocfilehash: f407903577e40b6501737ef5b78d90e1e3e60c06
-ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
+ms.openlocfilehash: fe036f261b80f6134078835080409720d149374d
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39378671"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312158"
 ---
 # <a name="model-validation-in-aspnet-core-mvc"></a>Проверка модели в ASP.NET Core MVC
 
@@ -239,7 +239,7 @@ $.get({
 
 [!code-csharp[](validation/sample/User.cs?range=10-13)]
 
-Свойству `AdditionalFields` можно было бы явным образом присвоить строки `"FirstName"` и `"LastName"`, однако применение оператора [`nameof`](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Метод действия, выполняющий проверку, должен в этом случае принимать два аргумента: один для значения `FirstName`, а другой для значения `LastName`.
+Свойству `AdditionalFields` можно было бы явным образом присвоить строки `"FirstName"` и `"LastName"`, однако применение оператора [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) упрощает дальнейший рефакторинг. Метод действия, выполняющий проверку, должен в этом случае принимать два аргумента: один для значения `FirstName`, а другой для значения `LastName`.
 
 [!code-csharp[](validation/sample/UsersController.cs?range=30-39)]
 
