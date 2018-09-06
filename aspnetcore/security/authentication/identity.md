@@ -5,12 +5,12 @@ description: Использование удостоверения с прило
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: fd5fa2fd1e069bf10f3baea38b1fe9f951dc4a7d
-ms.sourcegitcommit: fd461c60b5e36c7019f81da0138cc859d0fddaa2
+ms.openlocfilehash: bc69b1db56361dc185f582032148a4fb8078fdda
+ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41835879"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43893237"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об Identity в ASP.NET Core
 
@@ -56,7 +56,7 @@ dotnet new webapp --auth Individual -o WebApp1
 <a name="pw"></a>
 ### <a name="configure-identity-services"></a>Настройка служб удостоверений
 
-Службы добавляются в `ConfigureServices`.
+Службы добавляются в `ConfigureServices`. Следующий код не включает создание шаблона `CookiePolicyOptions`:
 
 ::: moniker range=">= aspnetcore-2.1"
 

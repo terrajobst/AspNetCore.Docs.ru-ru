@@ -5,12 +5,12 @@ description: Узнайте, как настроить проверку подл
 ms.date: 01/25/2018
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 731b25cac6f0d56fd34d12114a73e5cb5265dda6
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: 73a66cea1533cc835796f673021bfa45c35f5935
+ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202644"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43893198"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Проверка подлинности Cloud с Azure Active Directory B2C в ASP.NET Core
 
@@ -107,7 +107,7 @@ ms.locfileid: "39202644"
 
 ## <a name="run-the-app"></a>Запуск приложения
 
-В Visual Studio нажмите клавишу **F5** для сборки и запуска приложения. После запуска веб-приложения выберите **вход**.
+В Visual Studio нажмите клавишу **F5** для сборки и запуска приложения. После запуска веб-приложения выберите **Accept** для принятия на использование файлов cookie (при появлении соответствующего запроса), а затем выберите **вход**.
 
 ![Вход в приложение](./azure-ad-b2c/_static/signin.png)
 
