@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2018
 uid: fundamentals/configuration/index
-ms.openlocfilehash: a0c57e75b28bc7c5590d20a8fa59b00b6bb9af4e
-ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
+ms.openlocfilehash: 288f8ba5b45cdecd8c9eae060fee2c2c25dec7f9
+ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2018
-ms.locfileid: "42927882"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43893250"
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -24,7 +24,7 @@ ms.locfileid: "42927882"
 * Хранилище ключей Azure;
 * аргументов командной строки;
 * а также пользовательские поставщики (устанавливаемые или создаваемые).
-* справочных файлов;
+* Справочные файлы
 * Переменные среды
 * объектов .NET в памяти;
 * файлов параметров;
@@ -1475,17 +1475,17 @@ config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false)
 
 Метод расширения `AddEFConfiguration` позволяет добавить источник конфигурации к `ConfigurationBuilder`.
 
-*EFConfigurationProvider/EFConfigurationExtensions.cs*:
+*Extensions/EntityFrameworkExtensions.cs*:
 
 ::: moniker range=">= aspnetcore-2.0"
 
-[!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationExtensions.cs?name=snippet1)]
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
 
-[!code-csharp[](index/samples/1.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationExtensions.cs?name=snippet1)]
+[!code-csharp[](index/samples/1.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
 
 ::: moniker-end
 
