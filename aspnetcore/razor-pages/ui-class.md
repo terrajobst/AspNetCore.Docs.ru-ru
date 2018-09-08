@@ -4,16 +4,16 @@ author: Rick-Anderson
 description: Описание способов создания многоразового пользовательского интерфейса Razor в библиотеке классов.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 07/21/2018
+ms.date: 09/07/2018
 uid: razor-pages/ui-class
-ms.openlocfilehash: 1f0ef59ce3f3294d6a3bde015ca34800770b1be4
-ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
+ms.openlocfilehash: 7e9ab07a9060b16c09afb1e88950f6a3e55b13cb
+ms.sourcegitcommit: 8268cc67beb1bb1ca470abb0e28b15a7a71b8204
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "42910121"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44126752"
 ---
-# <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Создание многоразового пользовательского интерфейса с помощью проекта библиотеки классов Razor в ASP.NET Core.
+# <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Создание многократно используемых пользовательским Интерфейсом, с использованием проекта библиотеки классов Razor в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
@@ -41,7 +41,7 @@ ms.locfileid: "42910121"
 
 Выполните из командной строки команду `dotnet new razorclasslib`. Пример:
 
-``` CLI
+```console
 dotnet new razorclasslib -o RazorUIClassLib
 ```
 
@@ -75,15 +75,16 @@ dotnet new razorclasslib -o RazorUIClassLib
 
 В командной строке в каталоге *cli* создайте RCL и веб-приложение.
 
-``` CLI
+```console
 dotnet build
 ```
 
 Перейдите в каталог *WebApp1* и запустите приложение:
 
-``` CLI
+```console
 dotnet run
 ```
+
 ------
 
 Следуйте инструкциям в разделе [Тестирование WebApp1](#test)
@@ -107,7 +108,7 @@ dotnet run
 
 Выполните следующую команду в командной строке:
 
-``` CLI
+```console
 dotnet new razorclasslib -o RazorUIClassLib
 dotnet new page -n _Message -np -o RazorUIClassLib/Areas/MyFeature/Pages/Shared
 dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
@@ -117,33 +118,33 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 * Создает библиотеку классов Razor (RCL) `RazorUIClassLib`.
 * Создает страницу Razor _Message и добавляет ее в RCL. Параметр `-np` создает страницу без `PageModel`.
-* Создает файл [viewstart](xref:mvc/views/layout#running-code-before-each-view) и добавляет его в RCL.
+* Создает [_ViewStart.cshtml](xref:mvc/views/layout#running-code-before-each-view) файл и добавляет его к RCL.
 
-Файл viewstart требуется для использования макета проекта Razor Pages (который добавляется в следующем разделе).
+*_ViewStart.cshtml* файл необходим для использования макет проекта Razor Pages (который добавляется в следующем разделе).
 
 ------
 
-### <a name="add-razor-files-and-folders-to-the-project"></a>Добавление файлов и папок Razor в проект.
+### <a name="add-razor-files-and-folders-to-the-project"></a>Добавьте в проект Razor файлов и папок
 
 * Замените разметку в *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* следующим кодом:
 
-[!code-html[Main](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml)]
+[!code-cshtml[Main](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml)]
 
 * Замените разметку в *RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml* следующим кодом:
 
-[!code-html[Main](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml)]
+[!code-cshtml[Main](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml)]
 
 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` требуется для использования частичного представления (`<partial name="_Message" />`). Вместо включения директивы `@addTagHelper` можно добавить файл *_ViewImports.cshtml*. Пример:
 
-``` CLI
+```console
 dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
 ```
 
-Дополнительные сведения о файле viewimports см. в разделе [Импорт общих директив](xref:mvc/views/layout#importing-shared-directives)
+Дополнительные сведения о *_ViewImports.cshtml*, см. в разделе [Импорт общих директив](xref:mvc/views/layout#importing-shared-directives)
 
 * Создайте библиотеку классов, чтобы убедиться в отсутствии ошибок компилятора:
 
-``` CLI
+```console
 dotnet build RazorUIClassLib
 ```
 
@@ -202,7 +203,7 @@ dotnet run
 
 ## <a name="override-views-partial-views-and-pages"></a>Переопределение представлений, частичных представлений и страниц
 
-При обнаружении представления, частичного представления или страницы Razor и в веб-приложении, и в библиотеке классов Razor приоритет имеет разметка Razor (файл *.cshtml*) в веб-приложении. Например, если вы добавите *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* в WebApp1, Page1 в WebApp1 будет иметь приоритет над Page1 в библиотеке классов Razor.
+При обнаружении представления, частичного представления или страницы Razor и в веб-приложении, и в библиотеке классов Razor приоритет имеет разметка Razor (файл *.cshtml*) в веб-приложении. Например, добавить *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* для WebApp1, и страница Page1 в WebApp1 будет иметь приоритет над Page1 в библиотеке классов Razor.
 
 В примере загрузки переименуйте *WebApp1/Areas/MyFeature2* в *WebApp1/Areas/MyFeature*, чтобы протестировать приоритет.
 
@@ -212,17 +213,17 @@ dotnet run
 
 ### <a name="rcl-pages-layout"></a>Макет страниц RCL
 
-Для ссылки на содержимое RCL, как будто он является частью папки страниц веб приложения, создайте проект RCL со следующей структурой: файл:
+Ссылка RCL содержимого, как если бы, если он является частью веб приложения *страниц* папки, создайте проект RCL с со следующей структурой файла:
 
 * *RazorUIClassLib/страниц*
 * *RazorUIClassLib/страниц/Shared*
 
-Предположим, что *RazorUIClassLib/страниц/Shared* содержит два неполных файлов *_Header.cshtml* и *_Footer.cshtml*. <partial> Удалось добавить теги *_Layout.cshtml* файла: 
+Предположим, что *RazorUIClassLib/страниц/Shared* содержит два неполных файлов: *_Header.cshtml* и *_Footer.cshtml*. `<partial>` Удалось добавить теги *_Layout.cshtml* файла:
   
-```
-  <body>
-    <partial name="_Header">
-    @RenderBody()
-    <partial name="_Footer">
-  </body>
+```cshtml
+<body>
+  <partial name="_Header">
+  @RenderBody()
+  <partial name="_Footer">
+</body>
 ```
