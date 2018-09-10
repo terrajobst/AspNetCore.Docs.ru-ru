@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 07/23/2018
 uid: web-api/action-return-types
-ms.openlocfilehash: 82d18d866d4d18613cccb950b2f30ae81bd749de
-ms.sourcegitcommit: 6425baa92cec4537368705f8d27f3d0e958e43cd
+ms.openlocfilehash: 179a3e23ebc13a40b8e2d955b6adcc23d9a0f323
+ms.sourcegitcommit: 8268cc67beb1bb1ca470abb0e28b15a7a71b8204
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39220616"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44126726"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Типы возвращаемых значений действий контроллера в веб-API ASP.NET Core
 
@@ -85,13 +85,13 @@ ASP.NET Core 2.1 предоставляет тип возвращаемого з
 
 C# не поддерживает операторы неявных приведений в интерфейсах. Следовательно, для преобразования в конкретный тип необходимо использовать `ActionResult<T>`. Например, использование `IEnumerable` не работает в следующем примере:
 
-    ```csharp
-    [HttpGet]
-    public ActionResult<IEnumerable<Product>> Get()
-    {
-        return _repository.GetProducts();
-    }
-    ```
+```csharp
+[HttpGet]
+public ActionResult<IEnumerable<Product>> Get()
+{
+    return _repository.GetProducts();
+}
+```
 
 Один из способов исправить приведенный выше код — возвратить `_repository.GetProducts().ToList();`.
 
