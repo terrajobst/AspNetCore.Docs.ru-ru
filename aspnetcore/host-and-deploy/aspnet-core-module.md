@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/15/2018
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 8d4283c61163a586557135fddfb85440251aaf29
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 2eff8c9cf2661a3ba9870e8c908d0471a6672481
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275623"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312270"
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>Справочник по конфигурации модуля ASP.NET Core
 
@@ -126,7 +126,7 @@ ms.locfileid: "36275623"
 
 ## <a name="log-creation-and-redirection"></a>Создание и перенаправление журнала
 
-Модуль ASP.NET Core перенаправляет журналы stdout и stderr на диск, если заданы атрибуты `stdoutLogEnabled` и `stdoutLogFile` элемента `aspNetCore`. Чтобы модуль мог создать файл журнала, все папки в пути `stdoutLogFile` должны существовать. Пул приложений должен иметь доступ на запись в папку, где записываются журналы (используйте атрибут `IIS AppPool\<app_pool_name>` для предоставления разрешения на запись).
+Модуль ASP.NET Core перенаправляет выходные потоки консоли stdout и stderr на диск, если заданы атрибуты `stdoutLogEnabled` и `stdoutLogFile` элемента `aspNetCore`. Чтобы модуль мог создать файл журнала, все папки в пути `stdoutLogFile` должны существовать. Пул приложений должен иметь доступ на запись в папку, где записываются журналы (используйте атрибут `IIS AppPool\<app_pool_name>` для предоставления разрешения на запись).
 
 Журналы не выполняют циклический сдвиг, пока не произойдет процесс перезапуска или перезагрузки. Администратор несет ответственность за ограничение дискового пространства, которое потребляют журналы.
 

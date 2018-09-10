@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/05/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: ff04ebeb6a682ec924afe896fd6716010a63f7cd
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 7ea944bc423001aa47ce684443b96104cf9174bf
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751428"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312251"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Обработка ошибок в ASP.NET Core
 
@@ -21,7 +21,7 @@ ms.locfileid: "41751428"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/2.x/ErrorHandlingSample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="the-developer-exception-page"></a>Страница со сведениями об исключении для разработчика
+## <a name="the-developer-exception-page"></a>Страница исключений для разработчика
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -45,10 +45,10 @@ ms.locfileid: "41751428"
 
 Поместите вызов к [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage) перед другим ПО промежуточного слоя, где требуется перехватывать исключения, например `app.UseMvc`.
 
->[!WARNING]
-> Включать страницу со сведениями об исключении для разработчика следует **только тогда, когда приложение выполняется в среде разработки**. Подробные сведения об исключениях не должны быть общедоступными при выполнении приложения в рабочей среде. [Дополнительные сведения о настройке сред](xref:fundamentals/environments).
+> [!WARNING]
+> Включать страницу исключений для разработчика следует **только тогда, когда приложение выполняется в среде разработки**. Подробные сведения об исключениях не должны быть общедоступными при выполнении приложения в рабочей среде. [Дополнительные сведения о настройке сред](xref:fundamentals/environments).
 
-Чтобы увидеть страницу со сведениями об исключении для разработчика, запустите образец приложения, указав среду `Development`, и добавьте элемент `?throw=true` к базовому URL-адресу приложения. Страница содержит несколько вкладок со сведениями об исключении и запросе. На первой вкладке приводится трассировка стека.
+Чтобы просмотреть страницу исключений для разработчика, запустите образец приложения, указав среду `Development`, и добавьте элемент `?throw=true` к базовому URL-адресу приложения. Страница содержит несколько вкладок со сведениями об исключении и запросе. На первой вкладке приводится трассировка стека.
 
 ![Трассировка стека](error-handling/_static/developer-exception-page.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "41751428"
 
 ![Заголовки](error-handling/_static/developer-exception-page-headers.png)
 
-## <a name="configuring-a-custom-exception-handling-page"></a>Настройка пользовательской страницы обработки исключений
+## <a name="configure-a-custom-exception-handling-page"></a>Настройка пользовательской страницы обработки исключений
 
 Если приложение выполняется не в среде `Development`, настройте страницу обработчика исключений.
 
@@ -81,13 +81,35 @@ public IActionResult Error()
 }
 ```
 
-## <a name="configuring-status-code-pages"></a>Настройка страниц с кодами состояния
+## <a name="configure-status-code-pages"></a>Настройка страниц с кодами состояния
 
-По умолчанию приложение не предоставляет специальных страниц для кодов состояния HTTP, таких как код *404 Не найдено*. Чтобы предоставить страницы кодов состояния, настройте ПО промежуточного слоя страниц кода состояния, добавив строку в метод `Startup.Configure`:
+По умолчанию приложение не предоставляет специальных страниц для кодов состояния HTTP, таких как код *404 Не найдено*. Чтобы указать коды состояния, используйте ПО промежуточного слоя страниц с кодами состояния.
+
+::: moniker range=">= aspnetcore-2.1"
+
+Это ПО промежуточного слоя доступно в пакете [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) в [метапакете Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Это ПО промежуточного слоя доступно в пакете [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) в [метапакете Microsoft.AspNetCore.All](xref:fundamentals/metapackage).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Чтобы сделать это ПО промежуточного слоя доступным, добавьте ссылку на пакет [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) в файл проекта.
+
+::: moniker-end
+
+Добавьте строку в метод `Startup.Configure`.
 
 ```csharp
 app.UseStatusCodePages();
 ```
+
+<xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages*> должен вызываться перед ПО промежуточного слоя, обрабатывающим запрос в конвейере (например, ПО промежуточного слоя статических файлов и ПО промежуточного слоя MVC).
 
 По умолчанию это ПО промежуточного слоя добавляет текстовые обработчики для распространенных кодов состояния, например 404.
 
