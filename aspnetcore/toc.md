@@ -287,7 +287,7 @@
 ### [Опубликовать в Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs)
 ### [Публикация в Azure с инструментами командной строки](xref:tutorials/publish-to-azure-webapp-using-cli)
 ### [Непрерывное развертывание в Azure с помощью Visual Studio и Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment)
-### [Непрерывное развертывание в Azure с помощью VSTS](https://www.visualstudio.com/docs/build/aspnet/core/quick-to-azure)
+### [Непрерывное развертывание в Azure с помощью Azure Pipelines](/azure/devops/pipelines/get-started-yaml)
 ### [Устранение неполадок ASP.NET Core в службе приложений Azure](xref:host-and-deploy/azure-apps/troubleshoot)
 ## [Размещение в Windows с помощью IIS](xref:host-and-deploy/iis/index)
 ### [Устранение неполадок ASP.NET Core в службах IIS](xref:host-and-deploy/iis/troubleshoot)
