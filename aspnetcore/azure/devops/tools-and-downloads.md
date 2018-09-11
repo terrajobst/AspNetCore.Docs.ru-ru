@@ -5,12 +5,12 @@ description: Рекомендации по созданию сквозного �
 ms.author: casoper
 ms.date: 08/07/2018
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: a63e97d9ab9eb0ed2fbd30e8c2e033f0c048d33e
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 5529068b83db475315784571fbf4151d7ecd0d5d
+ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312305"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44340164"
 ---
 # <a name="tools-and-downloads"></a>Средства и файлы для загрузки
 
@@ -21,7 +21,7 @@ Azure имеет несколько интерфейсов для подгото
 Необходимы следующие подписки:
 
 * Azure &mdash; Если у вас нет учетной записи, [получить бесплатную пробную версию](https://azure.microsoft.com/free/).
-* Visual Studio Team Services (VSTS) &mdash; эта учетная запись создается в главе 4.
+* Службы Azure DevOps &mdash; ваша подписка Azure DevOps и организации создается в главе 4.
 * GitHub &mdash; Если у вас нет учетной записи, [Подпишитесь на бесплатную версию](https://github.com/join).
 
 Требуются следующие средства:

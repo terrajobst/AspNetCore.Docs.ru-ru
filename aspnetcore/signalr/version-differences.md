@@ -4,14 +4,14 @@ author: tdykstra
 description: Различия между SignalR и ASP.NET Core SignalR
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
-ms.date: 08/20/2018
+ms.date: 09/10/2018
 uid: signalr/version-differences
-ms.openlocfilehash: b904f57af3700b6e1e2143913dfa08da9bf8bbd2
-ms.sourcegitcommit: d27317c16f113e7c111583042ec7e4c5a26adf6f
+ms.openlocfilehash: 2f3458f27fd7f22339751e0734dd8c5da709a3c0
+ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41836081"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44340125"
 ---
 # <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a>Различия между ASP.NET SignalR и ASP.NET Core SignalR
 
@@ -132,6 +132,20 @@ connection = new HubConnectionBuilder()
     .WithUrl("url")
     .Build();
 ```
+
+## <a name="scaleout-differences"></a>Различия горизонтального масштабирования
+
+ASP.NET SignalR поддерживает SQL Server и Redis. ASP.NET Core SignalR поддерживает служба Azure SignalR и Redis.
+
+### <a name="aspnet"></a>ASP.NET
+
+* [Масштабирование SignalR с помощью служебной шины Azure](/aspnet/signalr/overview/performance/scaleout-with-windows-azure-service-bus)
+* [Масштабирование SignalR с помощью Redis](/aspnet/signalr/overview/performance/scaleout-with-redis)
+* [Масштабирование SignalR с помощью SQL Server](/aspnet/signalr/overview/performance/scaleout-with-sql-server)
+
+### <a name="aspnet-core"></a>ASP.NET Core
+
+* [Служба Azure SignalR](/azure/azure-signalr/)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

@@ -5,12 +5,12 @@ description: Рекомендации по созданию сквозного �
 ms.author: casoper
 ms.date: 08/07/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: abd7167b313e131dc8b7ea6a49b774e14ae53bb9
-ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
+ms.openlocfilehash: 710e65a048fdc062219e90b0db323e8e96fd8e9d
+ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42909242"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44340138"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Развертывание приложения в службе приложений
 
@@ -234,7 +234,7 @@ Visual Studio создает и развертывает приложение в
 * Развернуть обновления в промежуточном слоте.
 * Поменять местами промежуточными и рабочими слотами.
 
-В следующем разделе вы узнаете, как создать конвейер DevOps с помощью Azure и Visual Studio Team Services.
+В следующем разделе вы узнаете, как создать конвейер DevOps с конвейерами Azure.
 
 ## <a name="additional-reading"></a>Дополнительные материалы для чтения
 

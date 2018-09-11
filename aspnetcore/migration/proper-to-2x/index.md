@@ -5,12 +5,12 @@ description: Здесь вы найдете указания по миграци
 ms.author: scaddie
 ms.date: 08/27/2017
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 2f42ca6f9da8d9941e5bab40afc36c95360c3550
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 4d71621e5d4a9ef7bfb8020acc2d4a5d3774514f
+ms.sourcegitcommit: 1a2fc47fb5d3da0f2a3c3269613ab20eb3b0da2c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342189"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44373362"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Миграция с ASP.NET на ASP.NET Core
 
@@ -32,7 +32,7 @@ ms.locfileid: "39342189"
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.3" />
 </ItemGroup>
 ```
 
