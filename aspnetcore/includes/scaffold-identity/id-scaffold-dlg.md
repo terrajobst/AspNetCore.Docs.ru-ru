@@ -11,7 +11,7 @@
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-Если шаблон ASP.NET ранее не установлен, установите его:
+Если вы еще не установлен шаблон ASP.NET Core, установите его:
 
 ```cli
 dotnet tool install -g dotnet-aspnet-codegenerator

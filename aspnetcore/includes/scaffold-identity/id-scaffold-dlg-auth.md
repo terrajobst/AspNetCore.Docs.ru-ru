@@ -19,7 +19,7 @@
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-Если шаблон ASP.NET ранее не установлен, установите его:
+Если вы еще не установлен шаблон ASP.NET Core, установите его:
 
 ```cli
 dotnet tool install -g dotnet-aspnet-codegenerator
@@ -44,4 +44,9 @@ dotnet aspnet-codegenerator identity -h
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files Account.Register
 ```
 
+PowerShell используется точка с запятой в качестве разделителя команды. Если вы используете powershell, escape-точка с запятой в списке файлов или поместить в список файлов в двойные кавычки. Пример:
+
+```cli
+dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
+```
 -------------
