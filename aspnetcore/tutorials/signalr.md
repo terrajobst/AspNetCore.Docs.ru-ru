@@ -5,14 +5,14 @@ description: В этом руководстве создается прилож�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 08/20/2018
+ms.date: 08/31/2018
 uid: tutorials/signalr
-ms.openlocfilehash: a2573e2817a2d8921954264ca17bc3a7e2a010a8
-ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
+ms.openlocfilehash: 6d96331a4630f766ca11edb056fd3e13b52b6ae4
+ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43055836"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43893169"
 ---
 # <a name="tutorial-get-started-with-signalr-on-aspnet-core"></a>Руководство. Начало работы с SignalR в ASP.NET Core
 
@@ -34,22 +34,19 @@ ms.locfileid: "43055836"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* [Visual Studio 2017 15.7.3 или более поздней версии](https://www.visualstudio.com/downloads/) с рабочей нагрузкой **ASP.NET и веб-разработка**
+* [Visual Studio 2017 15.8 или более поздней версии](https://www.visualstudio.com/downloads/) с рабочей нагрузкой **ASP.NET и веб-разработка**
 * [Пакет SDK для .NET Core 2.1.или более поздней версии](https://www.microsoft.com/net/download/all)
-* [npm](https://www.npmjs.com/get-npm) (диспетчер пакетов для Node.js, используемый для клиентской библиотеки SignalR JavaScript.)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
 * [Visual Studio Code.](https://code.visualstudio.com/download)
 * [Пакет SDK для .NET Core 2.1.или более поздней версии](https://www.microsoft.com/net/download/all)
 * [C# для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-* [npm](https://www.npmjs.com/get-npm) (диспетчер пакетов для Node.js, используемый для клиентской библиотеки SignalR JavaScript.)
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * [Visual Studio для Mac 7.5.4 или более поздней версии](https://www.visualstudio.com/downloads/)
 * [Пакет SDK для .NET Core 2.1 или более поздней версии](https://www.microsoft.com/net/download/all) (входит в установку Visual Studio)
-* [npm](https://www.npmjs.com/get-npm) (диспетчер пакетов для Node.js, используемый для клиентской библиотеки SignalR JavaScript.)
 
 ---
 
@@ -95,76 +92,85 @@ ms.locfileid: "43055836"
 
 ## <a name="add-the-signalr-client-library"></a>Добавление клиентской библиотеки SignalR
 
-Библиотека сервера SignalR входит в состав [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Однако вам нужно получить клиентскую библиотеку JavaScript с помощью [npm, диспетчера пакетов Node.js](https://www.npmjs.com/get-npm).
+Библиотека сервера SignalR входит в состав [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Клиентская библиотека JavaScript не добавляется в проект автоматически. В рамках этого руководства вы будете использовать [диспетчер библиотек (LibMan)](xref:client-side/libman/index), чтобы получить клиентскую библиотеку из *unpkg*. [unpkg](https://unpkg.com/#/) — это [сеть доставки содержимого](https://wikipedia.org/wiki/Content_delivery_network), которая позволяет доставить любое содержимое из [npm (диспетчера пакетов Node.js)](https://www.npmjs.com/get-npm).
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* В **консоли диспетчера пакетов** (PMC) перейдите в папку проекта (где расположен файл *SignalRChat.csproj*).
+* В **обозревателе решений** щелкните проект правой кнопкой мыши и выберите **Добавить** > **Client-Side Library** (Клиентская библиотека).
 
-  ```console
-  cd SignalRChat
-  ```
+* В диалоговом окне **Add Client-Side Library** (Добавить клиентскую библиотеку) для параметра **Поставщик** выберите **unpkg**. 
+
+* В поле **Библиотека** введите _@aspnet/signalr@1_ и выберите последнюю версию, но не предварительную.
+
+  ![Диалоговое окно добавления клиентской библиотеки — выбор библиотеки](signalr/_static/libman1.png)
+
+* Щелкните **Choose specific files** (Выбрать определенные файлы), разверните папку *dist/browser* и выберите *signalr.js* и *signalr.min.js*.
+
+* В поле **Целевое расположение** укажите *wwwroot/lib/signalr/* и нажмите кнопку **Установить**.
+
+  ![Диалоговое окно добавления клиентской библиотеки — выбор файлов и назначения](signalr/_static/libman2.png)
+
+  [LibMan](xref:client-side/libman/index) создает папку *wwwroot/lib/signalr* и копирует в нее выбранные файлы.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
 
-2. Перейдите к новой папке проекта.
+* Во **встроенном терминале** выполните следующую команду, чтобы установить LibMan.
 
   ```console
-  cd SignalRChat
-  ``` 
+  dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+  ```
+
+* Перейдите в папку проекта (где расположен файл *SignalRChat.csproj*).
+
+* Выполните приведенную ниже команду, чтобы получить клиентскую библиотеку SignalR с помощью LibMan. Возможно, придется подождать несколько секунд, прежде чем появятся выходные данные.
+
+  ```console
+  libman install @aspnet/signalr -p unpkg -d wwwroot\lib\signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+  ```
+
+  В параметрах указываются следующие свойства:
+  * использование поставщика unpkg;
+  * копирование файлов в назначение *wwwroot/lib/signalr*;
+  * копирование только выбранных файлов.
+
+  Выходные данные выглядят примерно так, как в следующем примере:
+
+  ```console
+  wwwroot/lib/signalr/dist/browser/signalr.js written to disk
+  wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
+  Installed library "@aspnet/signalr@1.0.3" to "wwwroot\lib\signalr"
+  ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
-* В **терминале** перейдите в папку проекта (где расположен файл *SignalRChat.csproj*).
+* В **терминале** выполните следующую команду, чтобы установить LibMan.
+
+  ```console
+  dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+  ```
+
+* Перейдите в папку проекта (где расположен файл *SignalRChat.csproj*).
+
+* Выполните приведенную ниже команду, чтобы получить клиентскую библиотеку SignalR с помощью LibMan.
+
+  ```console
+  libman install @aspnet/signalr -p unpkg -d wwwroot\lib\signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+  ```
+
+  В параметрах указываются следующие свойства:
+  * использование поставщика unpkg;
+  * копирование файлов в назначение *wwwroot/lib/signalr*;
+  * копирование только выбранных файлов.
+
+  Выходные данные выглядят примерно так, как в следующем примере:
+
+  ```console
+  wwwroot/lib/signalr/dist/browser/signalr.js written to disk
+  wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
+  Installed library "@aspnet/signalr@1.0.3" to "wwwroot\lib\signalr"
+  ```
 
 ---
-
-* Запустите инициализатор npm, чтобы создать файл *package.json*:
-
-  ```console
-  npm init -y
-  ```
-
-  Выходные данные этой команды выглядят примерно следующим образом:
-
-  ```console
-  Wrote to C:\tmp\SignalRChat\package.json:
-  {
-    "name": "SignalRChat",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"0
-  }
-  ```
-
-* Установите пакет клиентской библиотеки:
-
-  ```console
-  npm install @aspnet/signalr
-  ```
-
-  Выходные данные этой команды выглядят примерно следующим образом:
-
-  ```
-  npm notice created a lockfile as package-lock.json. You should commit this file.
-  npm WARN signalrchat@1.0.0 No description
-  npm WARN signalrchat@1.0.0 No repository field.
-
-  + @aspnet/signalr@1.0.2
-  added 1 package in 0.98s
-  ```
-
-Команда `npm install` загрузила клиентскую библиотеку JavaScript во вложенную папку в разделе *node_modules*. Скопируйте ее оттуда в папку в разделе *wwwroot*, на которую можно ссылаться с веб-страницы приложения чата.
-
-* Создайте папку *signalr* в *wwwroot/lib*.
-
-* Скопируйте файл *signalr.js* из *node_modules/@aspnet/signalr/dist/browser* в новую папку *wwwroot/lib/signalr*.
 
 ## <a name="create-the-signalr-hub"></a>Создание концентратора SignalR
 
