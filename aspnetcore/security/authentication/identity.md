@@ -5,12 +5,12 @@ description: Использование удостоверения с прило
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: 96f446ad9ec1ef5d807a8648e68308ee20583365
-ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
+ms.openlocfilehash: af07adcc7f9513845bb91eb233f0a9840e1bd6f4
+ms.sourcegitcommit: 4db337bd47d70c06fff91000c58bc048a491ccec
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44040032"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44749312"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об Identity в ASP.NET Core
 
@@ -23,6 +23,21 @@ ms.locfileid: "44040032"
 [Просмотреть или скачать образец кода.](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [(Как для загрузки)](xref:tutorials/index#how-to-download-a-sample)
 
 В этом разделе сведения об использовании идентификаторов регистрация, вход и выход пользователя. Более подробные инструкции по созданию приложений, использующих удостоверения см. в разделе "Дальнейшие действия" в конце этой статьи.
+
+::: moniker range=">= aspnetcore-2.1"
+
+<a name="adi"></a>
+## <a name="adddefaultidentity-and-addidentity"></a>AddDefaultIdentity и AddIdentity
+
+[AddDefaultIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionuiextensions.adddefaultidentity?view=aspnetcore-2.1#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionUIExtensions_AddDefaultIdentity__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Identity_IdentityOptions__) была введена в ASP. Core 2.1. Вызов `AddDefaultIdentity` аналогичен вызову следующее:
+
+* [AddIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.addidentity?view=aspnetcore-2.1#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_AddIdentity__2_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Identity_IdentityOptions__)
+* [AddDefaultUI](/dotnet/api/microsoft.aspnetcore.identity.identitybuilderuiextensions.adddefaultui?view=aspnetcore-2.1#Microsoft_AspNetCore_Identity_IdentityBuilderUIExtensions_AddDefaultUI_Microsoft_AspNetCore_Identity_IdentityBuilder_)
+* [AddDefaultTokenProviders](/dotnet/api/microsoft.aspnetcore.identity.identitybuilderextensions.adddefaulttokenproviders?view=aspnetcore-2.1#Microsoft_AspNetCore_Identity_IdentityBuilderExtensions_AddDefaultTokenProviders_Microsoft_AspNetCore_Identity_IdentityBuilder_)
+
+См. в разделе [AddDefaultIdentity источника](https://github.com/aspnet/Identity/blob/2634637fd535b229762b5e4a49cdd128f4d8f12e/src/UI/IdentityServiceCollectionUIExtensions.cs#L47-L64) Дополнительные сведения.
+
+::: moniker-end
 
 ## <a name="create-a-web-app-with-authentication"></a>Создание веб-приложения с проверкой подлинности
 
@@ -56,7 +71,7 @@ dotnet new webapp --auth Individual -o WebApp1
 <a name="pw"></a>
 ### <a name="configure-identity-services"></a>Настройка служб удостоверений
 
-Службы добавляются в `ConfigureServices`. Типичный шаблон является вызов всех `Add{Service}` методов, а затем вызовите все `services.Configure{Service}` методы. Следующий код не включает создание шаблона `CookiePolicyOptions`:
+Службы добавляются в `ConfigureServices`. По стандартному шаблону сначала вызываются все методы `Add{Service}`, а затем все методы `services.Configure{Service}`. Следующий код не включает создание шаблона `CookiePolicyOptions`:
 
 ::: moniker range=">= aspnetcore-2.1"
 

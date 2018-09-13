@@ -7,16 +7,14 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 09/10/2018
 uid: signalr/dotnet-client
-ms.openlocfilehash: 205ca8ca228dcc2cc77f7e9b6431943851a3b152
-ms.sourcegitcommit: 1a2fc47fb5d3da0f2a3c3269613ab20eb3b0da2c
+ms.openlocfilehash: ef84ede2ed45ddc3b64d4ce8f5bd0018a681faf6
+ms.sourcegitcommit: 4db337bd47d70c06fff91000c58bc048a491ccec
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44373323"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44749325"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>Клиент .NET SignalR ASP.NET Core
-
-Автор: [Рэйчел Аппель](http://twitter.com/rachelappel) (Rachel Appel)
 
 Клиентская библиотека ASP.NET Core SignalR .NET позволяет взаимодействовать с концентраторами SignalR из приложений .NET.
 
@@ -39,7 +37,26 @@ Install-Package Microsoft.AspNetCore.SignalR.Client
 
 Чтобы установить подключение, создайте `HubConnectionBuilder` и вызвать `Build`. URL-адрес концентратора, протокола, тип транспорта, уровень ведения журнала, заголовки и другие параметры можно настроить при создании подключения. Настройте все необходимые параметры, вставляя `HubConnectionBuilder` методы в `Build`. Установить подключение с `StartAsync`.
 
-[!code-csharp[Build hub connection](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_MainWindowClass&highlight=14-16,32)]
+[!code-csharp[Build hub connection](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_MainWindowClass&highlight=15-17,39)]
+
+## <a name="handle-lost-connection"></a>Дескриптор была потеряна связь
+
+Используйте <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> событий реагировать на потерю соединения. Например можно автоматизировать повторное подключение.
+
+`Closed` Событие требует делегат, который возвращает `Task`, что позволяет асинхронного кода для выполнения без использования `async void`. Для удовлетворения сигнатуре делегата в `Closed` обработчик событий, который выполняется синхронно, возвращают `Task.CompletedTask`:
+
+```csharp
+connection.Closed += (error) => {
+    // Do your close logic.
+    return Task.CompletedTask;
+};
+```
+
+Основная причина для поддержки асинхронных является, поэтому вы можете перезапустить подключение. Подключения — это действие async.
+
+В `Closed` обработчик, который перезапускает соединения, рассмотрим некоторые случайные задержки предотвратить перегрузку сервера, как показано в следующем примере:
+
+[!code-csharp[Use Closed event handler to automate reconnection](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_ClosedRestart)]
 
 ## <a name="call-hub-methods-from-client"></a>Вызов методов концентратора из клиента
 
