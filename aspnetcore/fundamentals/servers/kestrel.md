@@ -4,14 +4,14 @@ author: rick-anderson
 description: Общие сведения о Kestrel — кроссплатформенном веб-сервере для ASP.NET Core.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/02/2018
+ms.date: 09/01/2018
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: a32b6e047ed0c2295f9f0bd95ffac010a7570ca5
-ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
+ms.openlocfilehash: c11a32aec49f4550471fb1399306fe17f1735a5c
+ms.sourcegitcommit: 7211ae2dd702f67d36365831c490d6178c9a46c8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336137"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44089890"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера Kestrel в ASP.NET Core
 
@@ -31,7 +31,7 @@ Kestrel поддерживается на всех платформах и во 
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Условия использования Kestrel с обратным прокси-сервером
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 Kestrel можно использовать отдельно или с *обратным прокси-сервером*, таким как IIS, Nginx или Apache. Обратный прокси-сервер получает HTTP-запросы из Интернета и пересылает их в Kestrel после определенной предварительной обработки.
 
@@ -41,7 +41,9 @@ Kestrel можно использовать отдельно или с *обра
 
 Любая из этих конфигураций &mdash; с обратным прокси-сервером и без него &mdash; является допустимой и поддерживаемой для размещения основных компонентов приложений ASP.NET версии 2.0 и выше.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Если приложение принимает запросы только от внутренней сети, можно использовать Kestrel напрямую как сервер приложения.
 
@@ -53,7 +55,7 @@ Kestrel можно использовать отдельно или с *обра
 
 По соображениям безопасности для развертываний пограничного сервера (открытого для интернет-трафика) нужен обратный прокси-сервер. В версиях Kestrel 1.x нет полного набора функций защиты от атак, например надлежащего времени ожидания, ограничений по размеру и ограничений количества одновременных подключений.
 
----
+::: moniker-end
 
 Обратный прокси-сервер требуется в ситуациях, когда несколько приложений совместно используют один IP-адрес и порт и выполняются на одном сервере. Kestrel не поддерживает этот сценарий, поскольку не поддерживает совместное использование одного IP-адреса и порта несколькими процессами. Когда Kestrel настроен на ожидание передачи данных от порта, Kestrel обрабатывает весь трафик для этого порта независимо от заголовка узла запросов. Поэтому обратный прокси-сервер, который может совместно использовать порты, способен пересылать запросы в Kestrel с уникальным IP-адресом и портом.
 
@@ -69,7 +71,7 @@ Kestrel можно использовать отдельно или с *обра
 
 ## <a name="how-to-use-kestrel-in-aspnet-core-apps"></a>Условия использования Kestrel в приложениях ASP.NET Core
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 Пакет [Microsoft.AspNetCore.Server.Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) входит в состав [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 или более поздней версии).
 
@@ -77,7 +79,35 @@ Kestrel можно использовать отдельно или с *обра
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=7)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+Чтобы задать дополнительную конфигурацию после вызова `CreateDefaultBuilder`, используйте `ConfigureKestrel`:
+
+```csharp
+.ConfigureKestrel((context, options) =>
+{
+    // Set properties and call methods on options
+});
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
+
+Чтобы задать дополнительную конфигурацию после вызова `CreateDefaultBuilder`, вызовите [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel):
+
+```csharp
+.UseKestrel(options =>
+{
+    // Set properties and call methods on options
+});
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Установите пакет NuGet [Microsoft.AspNetCore.Server.Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/).
 
@@ -85,11 +115,11 @@ Kestrel можно использовать отдельно или с *обра
 
 [!code-csharp[](kestrel/samples/1.x/KestrelSample/Program.cs?name=snippet_Main&highlight=13-19)]
 
----
+::: moniker-end
 
 ### <a name="kestrel-options"></a>Параметры Kestrel
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 Веб-сервер Kestrel имеет ограничительные параметры конфигурации, которые удобно использовать в развертываниях с выходом в Интернет. Несколько важных ограничений, которые можно настроить:
 
@@ -104,13 +134,47 @@ Kestrel можно использовать отдельно или с *обра
 [MaxConcurrentConnections](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxconcurrentconnections)  
 [MaxConcurrentUpgradedConnections](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxconcurrentupgradedconnections)
 
+::: moniker-end
+
 Максимальное число одновременно открытых подключений TCP для всего приложения можно задать с помощью следующего кода:
+
+::: moniker range=">= aspnetcore-2.2"
+
+```csharp
+.ConfigureKestrel((context, options) =>
+{
+    options.Limits.MaxConcurrentConnections = 100;
+});
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=3)]
 
+::: moniker-end
+
 Существует отдельный предел по подключениям, измененным с HTTP или HTTPS на другой протокол (например, по запросу WebSocket). После изменения подключение не учитывается в пределе `MaxConcurrentConnections`.
 
+::: moniker range=">= aspnetcore-2.2"
+
+```csharp
+.ConfigureKestrel((context, options) =>
+{
+    options.Limits.MaxConcurrentUpgradedConnections = 100;
+});
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
+
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=4)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
 
 По умолчанию максимальное число подключений не ограничено (null).
 
@@ -127,13 +191,32 @@ Kestrel можно использовать отдельно или с *обра
 public IActionResult MyActionMethod()
 ```
 
+::: moniker-end
+
 Приведенный ниже пример показывает, как настроить ограничение для приложения и каждого запроса:
+
+::: moniker range=">= aspnetcore-2.2"
+
+```csharp
+.ConfigureKestrel((context, options) =>
+{
+    options.Limits.MaxRequestBodySize = 10 * 1024;
+});
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=5)]
 
 Можно переопределить параметр для конкретного запроса в ПО промежуточного слоя:
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Startup.cs?name=snippet_Limits&highlight=3-4)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
 
 При попытке настроить ограничение для запроса после того, как приложение начало считывать запрос, возникает исключение. Доступно свойство `IsReadOnly`, указывающее, что свойство `MaxRequestBodySize` находится в состоянии только для чтения и настраивать ограничение слишком поздно.
 
@@ -150,11 +233,33 @@ Kestrel каждую секунду проверяет, поступают ли 
 
 Ниже приведен пример, показывающий, как настроить минимальную скорость передачи данных в *Program.cs*:
 
-[!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=6-7)]
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+```csharp
+.ConfigureKestrel((context, options) =>
+{
+    options.Limits.MinRequestBodyDataRate =
+        new MinDataRate(bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
+    options.Limits.MinResponseDataRate =
+        new MinDataRate(bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
+});
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
+
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=6-9)]
 
 Вы можете настроить скорости для отдельного запроса в ПО промежуточного слоя:
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Startup.cs?name=snippet_Limits&highlight=5-8)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
 
 Сведения о других параметрах и ограничениях Kestrel см. в следующих разделах:
 
@@ -162,20 +267,21 @@ Kestrel каждую секунду проверяет, поступают ли 
 * [KestrelServerLimits](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits)
 * [ListenOptions](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.listenoptions)
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Сведения о параметрах и ограничениях Kestrel см. в следующих разделах:
 
 * [Класс KestrelServerOptions](/dotnet/api/microsoft.aspnetcore.server.kestrel.kestrelserveroptions?view=aspnetcore-1.1)
 * [KestrelServerLimits](/dotnet/api/microsoft.aspnetcore.server.kestrel.kestrelserverlimits?view=aspnetcore-1.1)
 
----
+::: moniker-end
 
 ### <a name="endpoint-configuration"></a>Конфигурация конечной точки
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
-
 ::: moniker range="= aspnetcore-2.0"
+
 По умолчанию платформа ASP.NET Core привязана к `http://localhost:5000`. Вызовите метод [Listen](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listen) или [ListenUnixSocket](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listenunixsocket) в классе [KestrelServerOptions](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions), чтобы настроить префиксы URL-адреса и порты для Kestrel. `UseUrls`, аргумент командной строки `--urls`, ключ конфигурации узла `urls` и переменная среды `ASPNETCORE_URLS` тоже работают, однако на них распространяются ограничения, указанные далее в этой статье.
 
 Ключ конфигурации узла `urls` должен поступать из конфигурации узла, а не конфигурации приложения. Добавление ключа и значения `urls` в *appsettings.json* не влияет на конфигурацию узла, так как узел полностью инициализируется к моменту считывания конфигурации из файла конфигурации. Тем не менее ключ `urls` в *appsettings.json* можно использовать с [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration) в конструкторе узла для настройки узла:
@@ -195,6 +301,7 @@ var host = new WebHostBuilder()
 ```
 
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
 
 По умолчанию платформа ASP.NET Core привязана к:
@@ -353,10 +460,10 @@ Kestrel ожидает передачи данных через `http://localhos
 * Раздел `Certificate` является необязательным. Если раздел `Certificate` не указан, используются значения по умолчанию, определенные в предыдущих сценариях. Если значений по умолчанию нет, сервер выдает исключение и не запускается.
 * Раздел `Certificate` поддерживает сертификаты **Path**&ndash;**Password** и **Subject**&ndash;**Store**.
 * Таким образом, можно определить любое количество конечных точек, если это не приводит к конфликту портов.
-* `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))` возвращает `KestrelConfigurationLoader` с методом `.Endpoint(string name, options => { })`, который может использоваться в качестве дополнения для параметров настроенной конечной точки:
+* `options.Configure(context.Configuration.GetSection("Kestrel"))` возвращает `KestrelConfigurationLoader` с методом `.Endpoint(string name, options => { })`, который может использоваться в качестве дополнения для параметров настроенной конечной точки:
 
   ```csharp
-  serverOptions.Configure(context.Configuration.GetSection("Kestrel"))
+  options.Configure(context.Configuration.GetSection("Kestrel"))
       .Endpoint("HTTPS", opt =>
       {
           opt.HttpsOptions.SslProtocols = SslProtocols.Tls12;
@@ -366,7 +473,7 @@ Kestrel ожидает передачи данных через `http://localhos
   Можно также напрямую использовать `KestrelServerOptions.ConfigurationLoader`, чтобы и далее выполнять итерацию с существующим загрузчиком, например, предоставленным [WebHost.CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder).
 
 * Раздел конфигурации для каждой конечной точки доступен в параметрах в методе `Endpoint`, чтобы можно было прочитать пользовательские параметры.
-* Можно загрузить несколько конфигураций, снова вызвав `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))` с другим разделом. Используется только последняя конфигурация, если явным образом не вызвать `Load` в предыдущих экземплярах. Метапакет не вызывает `Load`, чтобы можно было заменить его раздел конфигурации по умолчанию.
+* Можно загрузить несколько конфигураций, снова вызвав `options.Configure(context.Configuration.GetSection("Kestrel"))` с другим разделом. Используется только последняя конфигурация, если явным образом не вызвать `Load` в предыдущих экземплярах. Метапакет не вызывает `Load`, чтобы можно было заменить его раздел конфигурации по умолчанию.
 * `KestrelConfigurationLoader` отражает семейство API `Listen` из `KestrelServerOptions` как перегрузки `Endpoint`, чтобы можно было настроить конечные точки кода и конфигурации в одном месте. Эти перегрузки не используют имена и используют только параметры по умолчанию из конфигурации.
 
 *Изменение значений по умолчанию в коде*
@@ -395,6 +502,51 @@ Kestrel поддерживает SNI через обратный вызов `Ser
 
 * Запуск на целевой платформе `netcoreapp2.1`. В `netcoreapp2.0` и `net461` обратный вызов выполняется, но `name` всегда имеет значение `null`. `name` также имеет значение `null`, если клиент не предоставляет параметр имени узла при подтверждении TLS.
 * Все веб-сайты выполняются на одном и том же экземпляре Kestrel. Kestrel не поддерживает совместное использование IP-адреса и порта на нескольких экземплярах без обратного прокси-сервера.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+```csharp
+WebHost.CreateDefaultBuilder()
+    .ConfigureKestrel((context, options) =>
+    {
+        options.ListenAnyIP(5005, listenOptions =>
+        {
+            listenOptions.UseHttps(httpsOptions =>
+            {
+                var localhostCert = CertificateLoader.LoadFromStoreCert(
+                    "localhost", "My", StoreLocation.CurrentUser, 
+                    allowInvalid: true);
+                var exampleCert = CertificateLoader.LoadFromStoreCert(
+                    "example.com", "My", StoreLocation.CurrentUser, 
+                    allowInvalid: true);
+                var subExampleCert = CertificateLoader.LoadFromStoreCert(
+                    "sub.example.com", "My", StoreLocation.CurrentUser, 
+                    allowInvalid: true);
+                var certs = new Dictionary<string, X509Certificate2>(
+                    StringComparer.OrdinalIgnoreCase);
+                certs["localhost"] = localhostCert;
+                certs["example.com"] = exampleCert;
+                certs["sub.example.com"] = subExampleCert;
+
+                httpsOptions.ServerCertificateSelector = (connectionContext, name) =>
+                {
+                    if (name != null && certs.TryGetValue(name, out var cert))
+                    {
+                        return cert;
+                    }
+
+                    return exampleCert;
+                };
+            });
+        });
+    });
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
 
 ```csharp
 WebHost.CreateDefaultBuilder()
@@ -439,7 +591,36 @@ WebHost.CreateDefaultBuilder()
 
 Метод [Listen](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listen) привязан к TCP-сокету, а лямбда-выражение параметров позволяет настроить SSL-сертификат:
 
+::: moniker range=">= aspnetcore-2.2"
+
+```csharp
+public static void Main(string[] args)
+{
+    CreateWebHostBuilder(args).Build().Run();
+}
+
+public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        .UseStartup<Startup>()
+        .ConfigureKestrel((context, options) =>
+        {
+            options.Listen(IPAddress.Loopback, 8000);
+            options.Listen(IPAddress.Loopback, 8001, listenOptions =>
+            {
+                listenOptions.UseHttps("testCert.pfx", "testPassword");
+            });
+        });
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
+
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_TCPSocket&highlight=9-16)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
 
 В примере настраивается SSL для конечной точки с помощью [ListenOptions](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.listenoptions). С помощью этого API можно настроить и другие параметры Kestrel для отдельных конечных точек.
 
@@ -449,7 +630,30 @@ WebHost.CreateDefaultBuilder()
 
 Вы можете прослушивать сокет UNIX с помощью [ListenUnixSocket](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listenunixsocket) для улучшения производительности Nginx, как показано в следующем примере:
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+```csharp
+.ConfigureKestrel((context, options) =>
+{
+    options.ListenUnixSocket("/tmp/kestrel-test.sock");
+    options.ListenUnixSocket("/tmp/kestrel-test.sock", listenOptions =>
+    {
+        listenOptions.UseHttps("testCert.pfx", "testpassword");
+    });
+});
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
+
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_UnixSocket)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
 
 **Порт 0**
 
@@ -481,7 +685,9 @@ Listening on the following addresses: http://127.0.0.1:48508
 
 При использовании служб IIS привязки URL-адресов для IIS переопределяют привязки, заданные `Listen` или `UseUrls`. Дополнительные сведения см. в статье [Модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module).
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 По умолчанию платформа ASP.NET Core привязана к `http://localhost:5000`. Настройте префиксы URL-адресов и порты для Kestrel, используя:
 
@@ -496,7 +702,7 @@ Listening on the following addresses: http://127.0.0.1:48508
 
 При использовании служб IIS привязки URL-адресов для IIS переопределяют привязки, заданные `UseUrls`. Дополнительные сведения см. в статье [Модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module).
 
----
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -539,7 +745,7 @@ Listening on the following addresses: http://127.0.0.1:48508
 
 Если вы используете `UseUrls`, аргумент командной строки `--urls`, ключ конфигурации узла `urls` или переменную среды `ASPNETCORE_URLS`, префиксы URL-адресов могут иметь любой из указанных ниже форматов.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 Допустимы только префиксы URL-адресов HTTP. Kestrel не поддерживает SSL при настройке привязки URL-адресов с помощью `UseUrls`.
 
@@ -581,7 +787,9 @@ Listening on the following addresses: http://127.0.0.1:48508
 
   Когда указан `localhost`, Kestrel пытается привязаться к обоим интерфейсам замыкания на себя IPv4 и IPv6. Если запрошенный порт уже используется другой службой в одном из интерфейсов замыкания на себя, Kestrel не запускается. Если один из интерфейсов замыкания на себя недоступен по любой другой причине (чаще всего, это отсутствие поддержки IPv6), Kestrel заносит в журнал предупреждение.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 * IPv4-адрес с номером порта
 
@@ -659,7 +867,7 @@ var host = new WebHostBuilder()
 
 [!INCLUDE [How to make an X.509 cert](~/includes/make-x509-cert.md)]
 
----
+::: moniker-end
 
 ## <a name="host-filtering"></a>Фильтрация узлов
 
