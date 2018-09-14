@@ -5,12 +5,12 @@ description: Узнайте, как создать приложение Razor Pa
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: a263b092194763ae4ff3360fc0d76e8ee494b5a6
-ms.sourcegitcommit: e7e1e531b80b3f4117ff119caadbebf4dcf5dcb7
+ms.openlocfilehash: e4a54c95aa8131441d29a835751ce6241aac2ed3
+ms.sourcegitcommit: 70fb7c9d5f2ddfcf4747382a9f7159feca7a6aa7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44510367"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45601773"
 ---
 ::: moniker range="<= aspnetcore-1.1"
 
@@ -269,9 +269,12 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/Details.cshtml.cs?name=snippet)]
 
-## <a name="add-a-user-to-a-role"></a>Добавление пользователя к роли
+## <a name="add-or-remove-a-user-to-a-role"></a>Добавление или удаление пользователя к роли
 
-Роли хранятся в файле cookie удостоверений. Изменения, внесенные в роли не сохраняются в файл cookie, пока файл cookie создается заново или пользователем выходит из системы и входе в систему. Приложения, добавить пользователей в роли должны вызывать метод `SignInManager.RefreshSignInAsync(user)` для обновления файла cookie.
+См. в разделе [эту проблему](https://github.com/aspnet/Docs/issues/8502) сведения о:
+
+* Удаление привилегий пользователя. Например, отключение звука пользователя в приложение чата.
+* Добавление прав к пользователю.
 
 ## <a name="test-the-completed-app"></a>Тестирование завершенного приложения
 
