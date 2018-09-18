@@ -5,12 +5,12 @@ description: Использование удостоверения с прило
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: af07adcc7f9513845bb91eb233f0a9840e1bd6f4
-ms.sourcegitcommit: 4db337bd47d70c06fff91000c58bc048a491ccec
+ms.openlocfilehash: ca83d07f7d93bd0cc61cd17cc373096b8e6aa2e1
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44749312"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46010979"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об Identity в ASP.NET Core
 
@@ -143,6 +143,7 @@ PowerShell используется точка с запятой в качест
    [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Register.cshtml.cs?name=snippet&highlight=7,22)]
 
 ::: moniker-end
+
 ::: moniker range="= aspnetcore-2.0"
 
    Когда пользователь щелкает **зарегистрировать** ссылку, `Register` действие вызывается в `AccountController`. Действие `Register` создает пользователя путем вызова метода `CreateAsync` объекта`_userManager` (обеспечивается в `AccountController` путем внедрения зависимостей):
@@ -171,6 +172,7 @@ PowerShell используется точка с запятой в качест
    Базовый `Controller` предоставляет `User` свойство, которое можно получить из методов контроллера. Например, можно перечислить `User.Claims` и принимать решения об авторизации. Дополнительные сведения см. в разделе [авторизации](xref:security/authorization/index).
 
 ::: moniker-end
+
 ::: moniker range="= aspnetcore-2.0"
 
 Форма входа отображается в том случае, когда пользователь выбирает **вход** связывание или перенаправляются, когда доступ к странице, который требует проверки подлинности. Когда пользователь отправляет форму на странице входа `AccountController` `Login` вызова действия.
@@ -198,12 +200,15 @@ POST указывается в *Pages/Shared/_LoginPartial.cshtml*:
 [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/_LoginPartial.cshtml?highlight=10)]
 
 ::: moniker-end
+
 ::: moniker range="= aspnetcore-2.0"
+
    Щелкнув **Выход** связать вызовы `LogOut` действие.
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_logout&highlight=7)]
 
    Предыдущий код вызывает `_signInManager.SignOutAsync` метод. `SignOutAsync` Метод очищает утверждений пользователя, хранящиеся в файле cookie.
+
 ::: moniker-end
 
 ## <a name="test-identity"></a>Проверить идентификатор
@@ -230,6 +235,7 @@ POST указывается в *Pages/Shared/_LoginPartial.cshtml*:
 ::: moniker range=">= aspnetcore-2.1"
 
 Все удостоверения зависимые пакеты NuGet, включаются в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
 ::: moniker-end
 
 Основной пакет для удостоверения [Microsoft.AspNetCore.Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/). Этот пакет содержит базовый набор интерфейсов для ASP.NET Core Identity и включена в состав по `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.

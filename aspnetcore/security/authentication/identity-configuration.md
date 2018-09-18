@@ -5,12 +5,12 @@ description: Понять значения по умолчанию ASP.NET Core 
 ms.author: riande
 ms.date: 08/14/2018
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: c597eacbb21ed0968e6195f7b6dcb46d37ba80a5
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: 0faab001b981c79f6afa16b2a8cf80c1ef141b11
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41870921"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011304"
 ---
 # <a name="configure-aspnet-core-identity"></a>Настройка удостоверения ASP.NET Core
 
@@ -66,6 +66,7 @@ ms.locfileid: "41870921"
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-37,50-52)]
 
 ::: moniker-end
@@ -102,6 +103,7 @@ ms.locfileid: "41870921"
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-30,44-46,50-52)] 
 
 ::: moniker-end
@@ -118,7 +120,7 @@ ms.locfileid: "41870921"
 [IdentityOptions.Tokens](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens) указывает [TokenOptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) со свойствами, приведенных в таблице.
 
 
-|                                                        Свойство.                                                         |                                                                                      Описание:                                                                                      |
+|                                                        Свойство.                                                         |                                                                                      Описание                                                                                      |
 |-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |     [AuthenticatorTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.authenticatortokenprovider)     |                                       Возвращает или задает `AuthenticatorTokenProvider` используется для проверки двухфакторной входы в систему с помощью средства проверки подлинности.                                       |
 |       [ChangeEmailTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changeemailtokenprovider)       |                                     Возвращает или задает `ChangeEmailTokenProvider` используется для создания токенов, используемых в сообщениях электронной почты подтверждением изменение электронной почты.                                     |
@@ -143,9 +145,11 @@ ms.locfileid: "41870921"
 Настройка приложения в файле cookie `Startup.ConfigureServices`. [ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) должен вызываться **после** вызова `AddIdentity` или `AddDefaultIdentity`.
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_cookie)]
 
 ::: moniker-end
+
 ::: moniker range="= aspnetcore-2.0"
 
 [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?name=snippet_configurecookie)]

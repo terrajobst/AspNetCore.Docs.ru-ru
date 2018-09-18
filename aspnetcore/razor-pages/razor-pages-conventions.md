@@ -4,14 +4,14 @@ author: guardrex
 description: Узнайте, как использовать соглашения поставщика модели маршрутов и приложений для управления маршрутизацией, обнаружением и обработкой страниц.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 04/12/2018
+ms.date: 09/17/2018
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: 5a5d580b4260767e411571ccacc19d6e8fe12559
-ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
+ms.openlocfilehash: ea4f785dc8a64b430e312fd122a4d3184b61949e
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "42909333"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011866"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>Соглашения для маршрутов и приложений Razor Pages в ASP.NET Core
 
@@ -69,6 +69,26 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+## <a name="route-order"></a>Порядок маршрута
+
+Маршруты указывают <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> для обработки (сопоставление маршрутов).
+
+| Номер            | Поведение |
+| :--------------: | -------- |
+| -1               | Маршрут обрабатывается перед обработкой других маршрутов. |
+| 0                | Порядок не указан (значение по умолчанию). Не назначая `Order` (`Order = null`) по умолчанию маршрут `Order` 0 (ноль) для обработки. |
+| 1, 2, &hellip; n | Указывает порядок обработки маршрута. |
+
+Обработка маршрутов устанавливается в соответствии с соглашением:
+
+* Маршруты обрабатываются в последовательном порядке (-1, 0, 1, 2, &hellip; n).
+* Когда маршруты имеют одинаковые `Order`, наиболее конкретный маршрут соответствует после менее определенных маршрутов.
+* Когда маршруты с тем же `Order` и URL-адрес запроса соответствует одинаковое число параметров, маршруты обрабатываются в порядке, в котором они добавляются к <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection>.
+
+По возможности избегайте в зависимости от установленного маршрута обработки заказа. Как правило Маршрутизация выбирает соответствующий маршрут с соответствующими URL-адрес. Если необходимо задать маршрут `Order` свойства для маршрутизации запросов правильно, маршрутизации схему приложения, вероятно, заблуждение клиентов и уязвимости для поддержания. Поиск для упрощения маршрутизации схемы приложения. Пример приложения требуется явный маршрут обработки заказа, чтобы продемонстрировать несколько сценариев маршрутизации, с помощью одного приложения. Тем не менее, стоит пытаться избежать практика параметр маршрута `Order` в рабочих приложениях.
+
+Razor Pages маршрутизации и маршрутизации ресурса контроллера MVC реализацию. Информация на порядок маршрута в разделах MVC доступна на [Маршрутизация к действиям контроллера: упорядочение маршрутов на основе атрибутов](xref:mvc/controllers/routing#ordering-attribute-routes).
+
 ## <a name="model-conventions"></a>Соглашения для моделей
 
 Добавьте делегат для [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention), чтобы добавить [соглашения для модели](xref:mvc/controllers/application-model#conventions), применяемые к Razor Pages.
@@ -81,8 +101,13 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-csharp[](razor-pages-conventions/sample/Conventions/GlobalTemplatePageRouteModelConvention.cs?name=snippet1)]
 
-> [!NOTE]
-> Свойству `Order` для `AttributeRouteModel` задано значение `-1`. Это гарантирует, что этот шаблон получит приоритет для первой позиции значения данных маршрута, когда предоставляется одно значение маршрута, а также что он будет иметь приоритет над автоматически созданными маршрутами Razor Pages. Проиллюстрировать это можно следующим образом. Далее в этом разделе показан пример, где добавляется шаблон маршрута `{aboutTemplate?}`. Шаблону `{aboutTemplate?}` задано свойство `Order`, равное `1`. При запросе страницы About по адресу `/About/RouteDataValue` значение RouteDataValue загружается в `RouteData.Values["globalTemplate"]` (`Order = -1`), а не в `RouteData.Values["aboutTemplate"]` (`Order = 1`). Это происходит из-за значения свойства `Order`.
+Свойству <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> для <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel> задано значение `1`. Это гарантирует следующий маршрут, соответствующий поведения в примере приложения:
+
+* Шаблон маршрута для `TheContactPage/{text?}` добавляется в разделе ниже. Обратитесь к странице маршрут имеет порядок по умолчанию `null` (`Order = 0`), чтобы он соответствовал перед `{globalTemplate?}` шаблон маршрута.
+* `{aboutTemplate?}` Далее в этом разделе добавляется шаблон маршрута. Шаблону `{aboutTemplate?}` задано свойство `Order`, равное `2`. При запросе страницы About по адресу `/About/RouteDataValue` значение RouteDataValue загружается в `RouteData.Values["globalTemplate"]` (`Order = 1`), а не в `RouteData.Values["aboutTemplate"]` (`Order = 2`). Это происходит из-за значения свойства `Order`.
+* `{otherPagesTemplate?}` Далее в этом разделе добавляется шаблон маршрута. Шаблону `{otherPagesTemplate?}` задано свойство `Order`, равное `2`. При любой страницы в *страниц/OtherPages* папку запрашивается с параметром маршрута (например, `/OtherPages/Page1/RouteDataValue`), «RouteDataValue» загружается в `RouteData.Values["globalTemplate"]` (`Order = 1`) и не `RouteData.Values["otherPagesTemplate"]` (`Order = 2`) из-за параметра `Order` свойство.
+
+Везде, где это возможно, не устанавливайте `Order`, что приводит к `Order = 0`. Используют маршрутов, чтобы выбрать правильный маршрут.
 
 Параметры Razor Pages, такие как добавление [соглашений](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions), добавляются при добавлении MVC в коллекцию службы в `Startup.ConfigureServices`. Пример см. в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/sample/).
 
@@ -111,6 +136,7 @@ public void ConfigureServices(IServiceCollection services)
 ![Заголовки ответа страницы About, показывающие, что добавлен заголовок GlobalHeader.](razor-pages-conventions/_static/about-page-global-header.png)
 
 ::: moniker range=">= aspnetcore-2.1"
+
 **Добавление соглашения для модели обработчика ко всем страницам**
 
 Используйте свойство [Conventions](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions), чтобы создать и добавить [IPageHandlerModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipagehandlermodelconvention) в коллекцию экземпляров [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention), которые применяются при формировании модели обработчика страницы.
@@ -135,6 +161,7 @@ services.AddMvc()
             options.Conventions.Add(new GlobalPageHandlerModelConvention());
         });
 ```
+
 ::: moniker-end
 
 ## <a name="page-route-action-conventions"></a>Соглашения для действий с маршрутами страниц
@@ -149,8 +176,9 @@ services.AddMvc()
 
 [!code-csharp[](razor-pages-conventions/sample/Startup.cs?name=snippet3)]
 
-> [!NOTE]
-> Свойству `Order` для `AttributeRouteModel` задано значение `1`. Это гарантирует, что при указании одного значения маршрута приоритетно выбирается значение данных маршрута из шаблона `{globalTemplate?}`, заданного ранее в этом разделе. При запросе страницы Page1 по адресу `/OtherPages/Page1/RouteDataValue` значение RouteDataValue загружается в `RouteData.Values["globalTemplate"]` (`Order = -1`), а не в `RouteData.Values["otherPagesTemplate"]` (`Order = 1`). Это происходит из-за значения свойства `Order`.
+Свойству <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> для <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel> задано значение `2`. Это гарантирует, что шаблон для `{globalTemplate?}` (ранее в этом разделе, чтобы задать `1`) имеет преимущество — для первого значение данных маршрута при указании одного значения маршрута предоставляется. Если страница в *страниц/OtherPages* папку запрашивается со значением параметра маршрута (например, `/OtherPages/Page1/RouteDataValue`), «RouteDataValue» загружается в `RouteData.Values["globalTemplate"]` (`Order = 1`) и не `RouteData.Values["otherPagesTemplate"]` (`Order = 2`) из-за параметра `Order` свойство.
+
+Везде, где это возможно, не устанавливайте `Order`, что приводит к `Order = 0`. Используют маршрутов, чтобы выбрать правильный маршрут.
 
 Запросите страницу Page1 по адресу `localhost:5000/OtherPages/Page1/GlobalRouteValue/OtherPagesRouteValue` из примера и проверьте результат:
 
@@ -164,8 +192,9 @@ services.AddMvc()
 
 [!code-csharp[](razor-pages-conventions/sample/Startup.cs?name=snippet4)]
 
-> [!NOTE]
-> Свойству `Order` для `AttributeRouteModel` задано значение `1`. Это гарантирует, что при указании одного значения маршрута приоритетно выбирается значение данных маршрута из шаблона `{globalTemplate?}`, заданного ранее в этом разделе. При запросе страницы About по адресу `/About/RouteDataValue` значение RouteDataValue загружается в `RouteData.Values["globalTemplate"]` (`Order = -1`), а не в `RouteData.Values["aboutTemplate"]` (`Order = 1`). Это происходит из-за значения свойства `Order`.
+Свойству <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> для <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel> задано значение `2`. Это гарантирует, что шаблон для `{globalTemplate?}` (ранее в этом разделе, чтобы задать `1`) имеет преимущество — для первого значение данных маршрута при указании одного значения маршрута предоставляется. При запросе страницы About со значением параметра маршрута в `/About/RouteDataValue`, «RouteDataValue» загружается в `RouteData.Values["globalTemplate"]` (`Order = 1`) и не `RouteData.Values["aboutTemplate"]` (`Order = 2`) из-за параметра `Order` свойство.
+
+Везде, где это возможно, не устанавливайте `Order`, что приводит к `Order = 0`. Используют маршрутов, чтобы выбрать правильный маршрут.
 
 Запросите страницу About по адресу `localhost:5000/About/GlobalRouteValue/AboutRouteValue` из примера и проверьте результат:
 

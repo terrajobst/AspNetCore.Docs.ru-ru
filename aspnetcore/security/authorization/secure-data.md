@@ -5,16 +5,17 @@ description: Узнайте, как создать приложение Razor Pa
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: e4a54c95aa8131441d29a835751ce6241aac2ed3
-ms.sourcegitcommit: 70fb7c9d5f2ddfcf4747382a9f7159feca7a6aa7
+ms.openlocfilehash: 2fb13f0772a1f8aa4ed2ff3ece2a2c5d3b7360c9
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45601773"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46010940"
 ---
 ::: moniker range="<= aspnetcore-1.1"
 
 См. в разделе [этот PDF-ФАЙЛ](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_1-16-18.pdf) для версии ASP.NET Core MVC. Версия ASP.NET Core 1.1 работы с этим руководством, [это](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data) папки. 1.1, пример ASP.NET Core находится в [примеры](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2).
+
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
@@ -70,17 +71,19 @@ ms.locfileid: "45601773"
 Этот учебник является дополнительным. Вы должны быть знакомы с:
 
 * [ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc)
-* [Проверка подлинности](xref:security/authentication/index)
+* [Authentication](xref:security/authentication/index)
 * [Подтверждение учетной записи и восстановление пароля](xref:security/authentication/accconfirm)
 * [Авторизация](xref:security/authorization/index)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
 ::: moniker-end
+
 ::: moniker range="= aspnetcore-2.1"
 
 В ASP.NET Core 2.1 `User.IsInRole` завершается сбоем при использовании `AddDefaultIdentity`. В этом руководстве используется `AddDefaultIdentity` и поэтому нуждается в предварительной версии ASP.NET Core 2.2 1 или более поздней версии. См. в разделе [проблема GitHub](https://github.com/aspnet/Identity/issues/1813#issuecomment-394543909) для обхода.
 
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
 
 ## <a name="the-starter-and-completed-app"></a>Начальный и завершенное приложение

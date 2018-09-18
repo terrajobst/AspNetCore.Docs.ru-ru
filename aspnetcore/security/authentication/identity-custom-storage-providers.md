@@ -3,14 +3,14 @@ title: Пользовательские поставщики хранилищ д
 author: ardalis
 description: Узнайте, как настроить пользовательские поставщики хранилищ для ASP.NET Core Identity.
 ms.author: riande
-ms.date: 05/24/2017
+ms.date: 09/17/2018
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 4b210a52ae9761bb838dd5611e86ce8f71345499
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: db51c39cc700f93917f54c80adbfe7922ffcd67e
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836761"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011265"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Пользовательские поставщики хранилищ для ASP.NET Core Identity
 
@@ -59,7 +59,7 @@ dotnet new webapi -au Individual
 
 ### <a name="users"></a>Пользователи
 
-Зарегистрированным пользователям вашего веб-сайта. [IdentityUser](/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuser) типа может расширять или использовать в качестве примера для пользовательского типа. Не нужно наследовать от определенного типа для реализации собственного решения хранилища пользовательских удостоверений.
+Зарегистрированным пользователям вашего веб-сайта. [IdentityUser](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuser) типа может расширять или использовать в качестве примера для пользовательского типа. Не нужно наследовать от определенного типа для реализации собственного решения хранилища пользовательских удостоверений.
 
 ### <a name="user-claims"></a>Утверждения пользователей
 
@@ -67,11 +67,11 @@ dotnet new webapi -au Individual
 
 ### <a name="user-logins"></a>Имена входа
 
-Сведения о поставщике внешней проверки подлинности (например, Facebook или учетную запись Майкрософт) для использования при входе пользователя. [Пример](/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuserlogin)
+Сведения о поставщике внешней проверки подлинности (например, Facebook или учетную запись Майкрософт) для использования при входе пользователя. [Пример](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin)
 
 ### <a name="roles"></a>Роли
 
-Группы авторизации для веб-узла. Включает в себя имя роли идентификатора и роли (например, «Администратор» или «Employee»). [Пример](/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityrole)
+Группы авторизации для веб-узла. Включает в себя имя роли идентификатора и роли (например, «Администратор» или «Employee»). [Пример](/dotnet/api/microsoft.aspnet.identity.corecompat.identityrole)
 
 ## <a name="the-data-access-layer"></a>Уровень доступа к данным
 
@@ -83,11 +83,11 @@ dotnet new webapi -au Individual
 
 ### <a name="context-class"></a>Context - класс
 
-Инкапсулирует сведения для подключения к вашей механизм сохранения и выполнения запросов. Несколько классов данных требует запуска экземпляра этого класса обычно предоставляются с помощью внедрения зависимостей. [Пример](/aspnet/core/api/microsoft.aspnet.identity.corecompat.identitydbcontext-1).
+Инкапсулирует сведения для подключения к вашей механизм сохранения и выполнения запросов. Несколько классов данных требует запуска экземпляра этого класса обычно предоставляются с помощью внедрения зависимостей. [Пример](/dotnet/api/microsoft.aspnet.identity.corecompat.identitydbcontext-1).
 
 ### <a name="user-storage"></a>Хранилище пользователя
 
-Хранит и извлекает сведения о пользователе (например, хэш имени и пароля пользователя). [Пример](/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
+Хранит и извлекает сведения о пользователе (например, хэш имени и пароля пользователя). [Пример](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
 ### <a name="role-storage"></a>Роль хранилища
 
@@ -95,15 +95,15 @@ dotnet new webapi -au Individual
 
 ### <a name="userclaims-storage"></a>Хранилище объектов Userclaim
 
-Сохраняет и извлекает информацию об утверждении пользователя (например, тип утверждения и значение). [Пример](/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
+Сохраняет и извлекает информацию об утверждении пользователя (например, тип утверждения и значение). [Пример](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
 ### <a name="userlogins-storage"></a>Хранилище объектов userlogin
 
-Хранит и извлекает данные для входа пользователя (например, внешний поставщик аутентификации). [Пример](/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
+Хранит и извлекает данные для входа пользователя (например, внешний поставщик аутентификации). [Пример](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
 ### <a name="userrole-storage"></a>Объем хранилища UserRole
 
-Хранит и извлекает, какие роли назначаются для пользователей. [Пример](/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
+Хранит и извлекает, какие роли назначаются для пользователей. [Пример](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
 **Совет:** реализуют только классы, которые планируется использовать в приложении.
 
@@ -115,7 +115,7 @@ dotnet new webapi -au Individual
 
 ## <a name="customize-the-user-class"></a>Настроить класс пользователя
 
-При реализации поставщика хранилища, создайте класс пользователя, что эквивалентно [ `IdentityUser` класс](/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuser).
+При реализации поставщика хранилища, создайте класс пользователя, что эквивалентно [IdentityUser класс](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuser).
 
 Как минимум, необходимо включить класса user `Id` и `UserName` свойство.
 
@@ -185,7 +185,7 @@ public class UserStore : IUserStore<IdentityUser>,
 
 ### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>IdentityUserClaim IdentityUserLogin и IdentityUserRole
 
-`Microsoft.AspNet.Identity.EntityFramework` Пространство имен содержит реализации [IdentityUserClaim](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1), [IdentityUserLogin](/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuserlogin), и [IdentityUserRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) классы. Если вы используете эти функции, можно создать собственные версии этих классов и определить свойства для вашего приложения. Тем не менее иногда бывает более эффективно не загружать эти сущности в памяти при выполнении основных операций (например, добавление или удаление утверждения пользователя). Вместо этого классы хранилища базы данных могут выполнять эти операции непосредственно на источнике данных. Например `UserStore.GetClaimsAsync` можно вызвать метод `userClaimTable.FindByUserId(user.Id)` метод для выполнения запроса на, который непосредственно таблицы и возвращает список утверждений.
+`Microsoft.AspNet.Identity.EntityFramework` Пространство имен содержит реализации [IdentityUserClaim](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1), [IdentityUserLogin](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin), и [IdentityUserRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) классы. Если вы используете эти функции, можно создать собственные версии этих классов и определить свойства для вашего приложения. Тем не менее иногда бывает более эффективно не загружать эти сущности в памяти при выполнении основных операций (например, добавление или удаление утверждения пользователя). Вместо этого классы хранилища базы данных могут выполнять эти операции непосредственно на источнике данных. Например `UserStore.GetClaimsAsync` можно вызвать метод `userClaimTable.FindByUserId(user.Id)` метод для выполнения запроса на, который непосредственно таблицы и возвращает список утверждений.
 
 ## <a name="customize-the-role-class"></a>Настроить класс ролей
 
