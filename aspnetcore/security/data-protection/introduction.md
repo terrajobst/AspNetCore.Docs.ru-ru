@@ -5,12 +5,12 @@ description: Дополнительные сведения о концепции
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/introduction
-ms.openlocfilehash: 29a2bbef6f2fd9b61541173af143926ca82bfad7
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: a49eee89e8c11b26c76ba167215c141482159933
+ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095699"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46292301"
 ---
 # <a name="aspnet-core-data-protection"></a>Защита данных в ASP.NET Core
 
@@ -66,15 +66,15 @@ ms.locfileid: "39095699"
 
 В стеке защиты данных состоит из пяти пакетов.
 
-* Microsoft.AspNetCore.DataProtection.Abstractions содержит основные интерфейсы IDataProtectionProvider и IDataProtector. Он также содержит методы полезные расширения, которые могут помочь в работе с этими типами (например, из-за перегрузки IDataProtector.Protect). В разделе потребителя интерфейсов Дополнительные сведения. Если вы просто используют API-интерфейсы, кто отвечает за создание экземпляра система защиты данных, стоит ссылка Microsoft.AspNetCore.DataProtection.Abstractions.
+* [Microsoft.AspNetCore.DataProtection.Abstractions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Abstractions/) содержит <xref:Microsoft.AspNetCore.DataProtection.IDataProtectionProvider> и <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> интерфейсы для создания служб защиты данных. Он также содержит методы расширения полезны для работы с этими типами (например, [IDataProtector.Protect](xref:Microsoft.AspNetCore.DataProtection.DataProtectionCommonExtensions.Protect*)). Если система защиты данных создается в другом месте и потребляем API, ссылка `Microsoft.AspNetCore.DataProtection.Abstractions`.
 
-* Microsoft.AspNetCore.DataProtection содержит реализацию ядра системы защиты данных, в том числе core криптографических операций, управления ключами, настройки и расширяемости. Если вы отвечаете за создание экземпляра система защиты данных (например, добавив его IServiceCollection) или изменения или расширения его поведение, стоит ссылка Microsoft.AspNetCore.DataProtection.
+* [Microsoft.AspNetCore.DataProtection](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection/) содержит реализацию core система защиты данных, в том числе core криптографических операций, управления ключами, настройки и расширяемости. Для создания экземпляра система защиты данных (например, при добавлении его к <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>) или изменения или расширения его поведения, ссылаются на `Microsoft.AspNetCore.DataProtection`.
 
-* Microsoft.AspNetCore.DataProtection.Extensions содержит дополнительные API-интерфейсы, которые разработчики могут оказаться полезными, но который не входящие в базовый пакет. Например этот пакет содержит простой API «создать экземпляр системы, указывающий на каталог конкретного ключа хранилища без настройки внедрения зависимостей» (Дополнительные сведения). Он также содержит методы расширения для ограничение времени существования защищенных полезных данных (Дополнительная информация).
+* [Microsoft.AspNetCore.DataProtection.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) содержит дополнительные API-интерфейсы, которые разработчики могут оказаться полезными, но который не входящие в базовый пакет. Например, этот пакет содержит фабричные методы для создания экземпляра система защиты данных для хранения ключей в расположении в файловой системе без внедрения зависимостей (см. в разделе <xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider>). Он также содержит методы расширения для ограничение времени существования защищенных полезных данных (см. в разделе <xref:Microsoft.AspNetCore.DataProtection.ITimeLimitedDataProtector>).
 
-* Microsoft.AspNetCore.DataProtection.SystemWeb может устанавливаться в существующее приложение ASP.NET 4.x, чтобы перенаправить его &lt;machineKey&gt; операций, чтобы вместо этого использовать новый стек защиты данных. См. в разделе [совместимости](xref:security/data-protection/compatibility/replacing-machinekey#compatibility-replacing-machinekey) Дополнительные сведения.
+* [Microsoft.AspNetCore.DataProtection.SystemWeb](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.SystemWeb/) могут быть установлены в существующее приложение ASP.NET 4.x для перенаправления его `<machineKey>` операций, чтобы использовать новый стек защиты данных ASP.NET Core. Дополнительные сведения см. в разделе <xref:security/data-protection/compatibility/replacing-machinekey>.
 
-* Microsoft.AspNetCore.Cryptography.KeyDerivation предоставляет реализацию хэширования подпрограмма пароль PBKDF2 и может использоваться в системах, которые должны надежно обрабатывать пароли пользователей. См. в разделе [хэширования паролей](xref:security/data-protection/consumer-apis/password-hashing) Дополнительные сведения.
+* [Microsoft.AspNetCore.Cryptography.KeyDerivation](https://www.nuget.org/packages/Microsoft.AspNetCore.Cryptography.KeyDerivation/) предоставляет реализацию хэширования подпрограмма пароль PBKDF2 и может использоваться в системах, которые должны надежно обрабатывать пароли пользователей. Дополнительные сведения см. в разделе <xref:security/data-protection/consumer-apis/password-hashing>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

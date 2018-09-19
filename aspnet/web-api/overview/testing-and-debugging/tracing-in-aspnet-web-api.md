@@ -8,12 +8,12 @@ ms.date: 02/25/2014
 ms.assetid: 66a837e9-600b-4b72-97a9-19804231c64a
 msc.legacyurl: /web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 697e7e91ae2d9d5712d9306a291635793063117b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 02805eda4f8dceb467547fa4e00aef8ea956f228
+ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838507"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46292288"
 ---
 <a name="tracing-in-aspnet-web-api-2"></a>Трассировка в ASP.NET Web API 2
 ====================
@@ -114,7 +114,7 @@ ms.locfileid: "41838507"
 
 ## <a name="how-web-api-tracing-works"></a>Как веб-API, трассировка Works
 
-Трассировка в веб-API используется в веб-API использует *фасадной* шаблон: Если трассировка включена, веб-API создает оболочку различные части конвейера запросов с классами, которые выполняют вызовы трассировки.
+Трассировка в веб-API использует *фасадной* шаблон: Если трассировка включена, веб-API создает оболочку различные части конвейера запросов с классами, которые выполняют вызовы трассировки.
 
 Например, при выборе контроллера, этот конвейер использует **IHttpControllerSelector** интерфейс. С включенной трассировкой, pipleline вставляет класс, реализующий **IHttpControllerSelector** , но вызовы через настоящей реализации:
 
