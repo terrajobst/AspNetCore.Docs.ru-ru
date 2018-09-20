@@ -7,14 +7,16 @@ ms.assetid: fddf8e5e-c055-4f81-b691-78deef871112
 ms.author: riande
 ms.date: 09/20/2017
 ms.technology: aspnet
-ms.openlocfilehash: fa7fe92ae0a6545986f816c04c18e659718846f1
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 8f45f73c691600ae5138170db5cc4794246c4f2e
+ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41824040"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46482974"
 ---
 # <a name="aspnet-tutorials"></a>Учебники по ASP.NET
+
+[!INCLUDE[](~/includes/rp.md)]
 
 Доступны следующие пошаговые руководства по разработке приложений ASP.NET.
 
@@ -23,8 +25,6 @@ ms.locfileid: "41824040"
 
 ## <a name="web-forms"></a>Веб-формы
 
-* [Начало работы с веб-формами ASP.NET 4.5 и Visual Studio 2013](web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/index.md)
-* [Создание простой страницы веб-форм в Visual Studio 2013](web-forms/overview/getting-started/creating-a-basic-web-forms-page.md)
 * [Редактирование кода в веб-формах ASP.NET в Visual Studio 2013](web-forms/overview/getting-started/code-editing-in-web-forms-pages.md)
 * [Использование инспектора страниц в Visual Studio 2012](web-forms/overview/getting-started/hands-on-labs/using-page-inspector-in-visual-studio-2012.md)
 * [Привязка моделей и веб-форм в Visual Studio 2013](web-forms/overview/presenting-and-managing-data/model-binding/index.md)
@@ -45,9 +45,6 @@ ms.locfileid: "41824040"
 
 ## <a name="mvc"></a>MVC
 
-* [Приступая к работе с ASP.NET MVC 5 ](mvc/overview/getting-started/introduction/index.md)
-* [Начало работы с EF 6 с помощью MVC 5](mvc/overview/getting-started/getting-started-with-ef-using-mvc/index.md)
-* [EF Database First с ASP.NET MVC](mvc/overview/getting-started/database-first-development/index.md)
 * [Использование инспектора страниц в ASP.NET MVC](mvc/overview/views/using-page-inspector-in-aspnet-mvc.md)
 * [Создание приложения ASP.NET MVC 5 с единым входом с помощью учетных данных Facebook, Twitter, LinkedIn и Google OAuth2 (C#)](mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)
 * [Создание безопасного приложения веб-форм ASP.NET MVC 5 с входом, подтверждением электронной почты и сбросом пароля (C#)](mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md)

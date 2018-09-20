@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как кэширование данных в памяти в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 7/22/2018
+ms.date: 09/15/2018
 uid: performance/caching/memory
-ms.openlocfilehash: 091d00ca7a30b61bdd83618e055bf23e0f2753c4
-ms.sourcegitcommit: 67a0a04ebb3b21c826e5b9600bacfc897abd6a46
+ms.openlocfilehash: 2570ad7d939d67530b3de8cd0147815c2e25ecc8
+ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42899848"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46482987"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэш в памяти в ASP.NET Core
 
@@ -31,7 +31,19 @@ Non прикрепленные сеансы на веб-ферме требуе�
 
 Кэш в памяти можно хранить любой объект; интерфейс распределенного кэша ограничен `byte[]`.
 
-### <a name="cache-guidelines"></a>Руководство по использованию кэша
+## <a name="systemruntimecachingmemorycache"></a>System.Runtime.Caching/MemoryCache
+
+<xref:System.Runtime.Caching>/<xref:System.Runtime.Caching.MemoryCache> ([Пакет NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) можно использовать с:
+
+* .NET standard 2.0 или более поздней версии.
+* Любой [реализации .NET](/dotnet/standard/net-standard#net-implementation-support) , предназначенного для .NET Standard 2.0 или более поздней версии. Например, ASP.NET Core 2.0 или более поздней версии.
+* .NET framework 4.5 или более поздней версии.
+
+[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` (описанные в этом разделе) предпочтительнее, чем `System.Runtime.Caching` / `MemoryCache` лучше интегрирован в ASP.NET Core. Например `IMemoryCache` работает непосредственно с ASP.NET Core [внедрения зависимостей](xref:fundamentals/dependency-injection).
+
+Используйте `System.Runtime.Caching` / `MemoryCache` как мост совместимости при переносе кода из ASP.NET 4.x в ASP.NET Core.
+
+## <a name="cache-guidelines"></a>Руководство по использованию кэша
 
 * Код всегда будет иметь способа возврата для выборки данных и **не** зависят от кэшированное значение, его доступность.
 * Кэш использует дефицитных ресурсов памяти. Ограничить рост кэша:

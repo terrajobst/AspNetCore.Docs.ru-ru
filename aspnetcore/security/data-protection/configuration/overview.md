@@ -6,16 +6,14 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/17/2017
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: fd3e5dff114c81eae07186e735a15314d984dcc3
-ms.sourcegitcommit: 5338b1ed9e2ef225ab565d6cba072b474fd9324d
+ms.openlocfilehash: 0377fe9fbe5a1eeddb384443370751baa3c0ee43
+ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39243114"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46483000"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Настройка защиты данных в ASP.NET Core
-
-Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
 При инициализации системы защиты данных, оно применяется [параметры по умолчанию](xref:security/data-protection/configuration/default-settings) зависимости от рабочей среды. Эти параметры обычно подходят для приложений, выполняющихся на одном компьютере. Бывают случаи, где разработчик может потребоваться изменить параметры по умолчанию:
 
