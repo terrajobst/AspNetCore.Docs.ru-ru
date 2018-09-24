@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/08/2018
 uid: tutorials/first-web-api-mac
-ms.openlocfilehash: 4caa6d9057de8d0e821c4abefe22985f43ff95ad
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 40f9bd9c57b97826edfddeb00cb4fb38a026d46e
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38156144"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011629"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-mac"></a>Создание веб-API с помощью ASP.NET Core и Visual Studio для Mac
 
@@ -126,14 +126,19 @@ ms.locfileid: "38156144"
 ### <a name="create"></a>Создать
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
 Приведенный выше метод отвечает на запрос HTTP POST, как указано атрибутом [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). Атрибут [[FromBody]](/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute) сообщает MVC, что необходимо получить значение элемента задачи из текста HTTP-запроса.
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
 Приведенный выше метод отвечает на запрос HTTP POST, как указано атрибутом [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). MVC получает значение элемента задачи из текста HTTP-запроса.
+
 ::: moniker-end
 
 Метод `CreatedAtRoute` возвращает ответ 201. Это стандартный ответ для метода HTTP POST, который создает ресурс на сервере. `CreatedAtRoute` также добавляет в ответ заголовок расположения. Заголовок расположения указывает URI вновь созданной задачи. См. раздел [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
@@ -162,8 +167,10 @@ ms.locfileid: "38156144"
 * Нажмите кнопку **Отправить**.
 
 ::: moniker range=">= aspnetcore-2.1"
+
 > [!TIP]
 > Если ответ не отображается после нажатия кнопки **Отправить**, отключите параметр **Проверка сертификации SSL**. Он находится в разделе **Файл** > **Параметры**. Нажмите кнопку **Отправить** еще раз после отключения параметра.
+
 ::: moniker-end
 
 Откройте вкладку **Заголовки** на панели **Ответ** и скопируйте значение заголовка **Расположение**:
@@ -179,10 +186,15 @@ URI заголовка расположения позволяет получи�
 ### <a name="update"></a>Обновление
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+
 ::: moniker-end
 
 Страница `Update` аналогична странице `Create`, но использует запрос HTTP PUT. Ответ — [204 (Нет содержимого)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). Согласно спецификации HTTP, запрос PUT требует, чтобы клиент отправлял всю обновленную сущность, а не только сведения о ней. Чтобы обеспечить поддержку частичных обновлений, используйте HTTP PATCH.

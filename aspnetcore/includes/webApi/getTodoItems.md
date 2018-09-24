@@ -1,9 +1,13 @@
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController2.cs?name=snippet_todo1)]
 
 В предыдущем коде определяется класс контроллера API без методов. В следующих разделах добавляются методы для реализации API-интерфейса.
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController2.cs?name=snippet_todo1)]
 
 Предыдущий код:
@@ -12,6 +16,7 @@
 * Создает новый элемент Todo, если параметр `TodoItems` пуст. Вы не сможете удалить все элементы Todo, так как конструктор создаст новый элемент, если параметр `TodoItems` пуст.
 
 В следующих разделах добавляются методы для реализации API-интерфейса. Класс помечается атрибутом `[ApiController]` для включения некоторых удобных функций. Сведения о функциях, включаемых этим атрибутом, см. в разделе [Аннотирование класса атрибутом ApiControllerAttribute](xref:web-api/index#annotate-class-with-apicontrollerattribute).
+
 ::: moniker-end
 
 Конструктор контроллера применяет [внедрение зависимостей](xref:fundamentals/dependency-injection) для внедрения контекста базы данных (`TodoContext`) в контроллер. Контекст базы данных используется в каждом методе [создания, чтения, обновления и удаления](https://wikipedia.org/wiki/Create,_read,_update_and_delete) в контроллере. Конструктор добавляет элемент в базу данных в памяти, если он не существует.
@@ -21,10 +26,15 @@
 Чтобы получить элементы задачи, добавьте к классу `TodoController` следующие методы:
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_GetAll)]
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_GetAll)]
+
 ::: moniker-end
 
 Эти методы реализуют два метода GET:
@@ -53,10 +63,15 @@
 * Принимается строка шаблона в атрибуте `Route` контроллера:
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=TodoController&highlight=3)]
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=TodoController&highlight=3)]
+
 ::: moniker-end
 
 * Замените `[controller]` именем контроллера (имя класса контроллера без суффикса "Controller"). В этом примере класс контроллера носит имя **Todo**Controller, а сам контроллер, соответственно, — "todo". В ASP.NET Core [маршрутизация](xref:mvc/controllers/routing) реализуется без учета регистра символов.
@@ -65,10 +80,15 @@
 В следующем методе `GetById` `"{id}"` — это переменная-заполнитель для уникального идентификатора элемента задачи. При вызове `GetById` параметру метода `id` присваивается значение `"{id}"` в URL.
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
+
 ::: moniker-end
 
 `Name = "GetTodo"` создает именованный маршрут. Именованные маршруты:
@@ -81,14 +101,19 @@
 Метод `GetAll` возвращает коллекцию объектов `TodoItem`. MVC автоматически сериализует объект в формат [JSON](https://www.json.org/) и записывает данные JSON в тело сообщения ответа. Код ответа для этого метода равен 200, что свидетельствует об отсутствии необработанных исключений. Необработанные исключения преобразуются в ошибки 5xx.
 
 ::: moniker range="<= aspnetcore-2.0"
+
 Напротив, метод `GetById` возвращает более общий тип [IActionResult type](xref:web-api/action-return-types#iactionresult-type), который представляет широкий диапазон типов возвращаемых значений. `GetById` имеет два разных типа возвращаемых значений:
 
 * Если запрошенному идентификатору не соответствует ни один элемент, метод возвращает ошибку 404. При возвращении [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound) возвращается ответ HTTP 404.
 * В противном случае метод возвращает код 200 с телом ответа JSON. При возвращении [ОК](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.ok) возвращается ответ HTTP 200.
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 Напротив, метод `GetById` возвращает тип [ActionResult\<T>](xref:web-api/action-return-types#actionresultt-type), который представляет широкий диапазон типов возвращаемых значений. `GetById` имеет два разных типа возвращаемых значений:
 
 * Если запрошенному идентификатору не соответствует ни один элемент, метод возвращает ошибку 404. При возвращении [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound) возвращается ответ HTTP 404.
 * В противном случае метод возвращает код 200 с телом ответа JSON. При возвращении `item` возвращается ответ HTTP 200.
+
 ::: moniker-end

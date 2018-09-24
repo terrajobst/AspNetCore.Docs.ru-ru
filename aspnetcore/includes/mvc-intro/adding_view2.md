@@ -21,12 +21,15 @@
 В элементе title измените `MvcMovie` на `Movie App`. Измените текст привязки в шаблоне макета с `MvcMovie` на `Movie App` и контроллер с `Home` на `Movies`, как показано ниже:
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout.cshtml?highlight=7,31)]
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout21.cshtml?highlight=7,31)]
+
 ::: moniker-end
 
 >[!WARNING]

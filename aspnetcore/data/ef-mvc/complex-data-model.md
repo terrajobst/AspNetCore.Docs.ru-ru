@@ -5,12 +5,12 @@ description: В этом руководстве вы добавите допол
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: c97acd2b943e1d4c466c060247220b3b8bab6d6b
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 3714cf7ce705a52653394319fef1728a6ddcc3ee
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751624"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011774"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC с EF Core — модель данных — 5 из 10
 
@@ -495,6 +495,7 @@ dotnet ef database update
 ## <a name="summary"></a>Сводка
 
 Теперь у вас есть более сложная модель данных и соответствующая база данных. В следующем руководстве вы подробнее узнаете о доступе к связанным данным.
+
 ::: moniker-end
 
 > [!div class="step-by-step"]

@@ -5,12 +5,12 @@ description: В этом учебнике описываются полезны�
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 25916365b4e682a8e296e0affbcddd4f1e5846b1
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 5cdba79c0b8edd9b865bda8328c86356cbe6a0a2
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751646"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46010927"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC с EF Core — расширенные возможности — 10 из 10
 
@@ -244,6 +244,7 @@ dotnet ef database drop
 Решение:
 
 Проверьте строку подключения. Если вы вручную удалили файл базы данных, измените имя базы данных в строке подключения, чтобы начать работу с новой базой.
+
 ::: moniker-end
 
 > [!div class="step-by-step"]

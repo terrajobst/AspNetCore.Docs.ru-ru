@@ -32,18 +32,23 @@ ASP.NET Core преобразует `http://localhost:1234/Movies/Edit/4` в з�
 Откройте контроллер `Movies` и изучите два метода действия `Edit`. В следующем коде демонстрируется метод `HTTP GET Edit`, который выполняет выборку фильмов и заполняет форму редактирования, созданную файлом Razor *Edit.cshtml*.
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit1)]
 
 В следующем коде показан метод `HTTP POST Edit`, который является владельцем переданных значений фильмов:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
 
 В следующем коде показан метод `HTTP POST Edit`, который является владельцем переданных значений фильмов:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+
 ::: moniker-end
 
 Атрибут `[Bind]` является одним из способов защиты от [чрезмерной передачи данных](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost). Свойства необходимо включать только в тот атрибут `[Bind]`, который вы хотите изменить. Дополнительные сведения см. в разделе [Защита контроллера от чрезмерной передачи данных](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application). [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) реализует альтернативный подход к защите от чрезмерной передачи данных.
@@ -51,10 +56,15 @@ ASP.NET Core преобразует `http://localhost:1234/Movies/Edit/4` в з�
 Обратите внимание на второй метод действия `Edit`, которому предшествует атрибут `[HttpPost]`.
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit2&highlight=1)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2&highlight=4)]
+
 ::: moniker-end
 
 Атрибут `HttpPost` указывает на то, что этот метод `Edit` может вызываться *только* для запросов `POST`. Вы могли бы применить атрибут `[HttpGet]` к первому методу редактирования, однако это необязательно, поскольку значение `[HttpGet]` задается по умолчанию.
@@ -68,10 +78,15 @@ ASP.NET Core преобразует `http://localhost:1234/Movies/Edit/4` в з�
 Метод `HttpGet Edit` принимает параметр фильма `ID`, выполняет поиск фильма с использованием метода `SingleOrDefaultAsync` платформы Entity Framework и возвращает выбранный фильм в представление редактирования. Если фильм найти не удается, возвращается ошибка `NotFound` (HTTP 404).
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit1)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
+
 ::: moniker-end
 
 Если в представлении редактирования создана система формирования шаблонов, она проверяет класс `Movie` и создает код для отображения элементов `<label>` и `<input>` для каждого свойства класса. В следующем примере показано представление редактирования, созданное системой формирования шаблонов Visual Studio:
@@ -93,10 +108,15 @@ ASP.NET Core преобразует `http://localhost:1234/Movies/Edit/4` в з�
 В следующем листинге демонстрируется версия `[HttpPost]` метода действия `Edit`.
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit2)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+
 ::: moniker-end
 
 Атрибут `[ValidateAntiForgeryToken]` проверяет скрытый маркер безопасности [XSRF](xref:security/anti-request-forgery), который был создан генератором маркеров во [вспомогательной функции тега Form](xref:mvc/views/working-with-forms)

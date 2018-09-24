@@ -1,4 +1,5 @@
 ::: moniker range=">= aspnetcore-2.1"
+
 Щелкните правой кнопкой мыши строку, подчеркнутую волнистой красной линией, выберите пункт **Быстрые действия и рефакторинг** в атрибуте `[Column]` и нажмите `using System.ComponentModel.DataAnnotations.Schema;`
 
 Требуются заметки к данным `[Column(TypeName = "decimal(18, 2)")]`, чтобы Entity Framework Core корректно сопоставила `Price` с валютой в базе данных. Дополнительные сведения см. в разделе [Типы данных](/ef/core/modeling/relational/data-types).
@@ -75,11 +76,13 @@
 Изучите файл *Pages/Movies/Edit.cshtml.cs*:
 
 ::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet2)]
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit21.cshtml.cs?name=snippet2)]
 
 ::: moniker-end

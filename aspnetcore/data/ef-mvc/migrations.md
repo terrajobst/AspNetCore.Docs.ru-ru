@@ -5,12 +5,12 @@ description: В этом руководстве вы начинаете испо
 ms.author: tdykstra
 ms.date: 03/15/2018
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: f710b33ac1a6017b0e3d7e8c3e528675a41424bb
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 556d7d4ad05679ebfce6c909b29610482bb3f350
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38194174"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011473"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---migrations---4-of-10"></a>ASP.NET Core MVC с EF Core — миграции — 4 из 10
 
@@ -165,6 +165,7 @@ Done.
 ## <a name="summary"></a>Сводка
 
 В этом руководстве вы узнали, как создать и применить первую миграцию. В следующем руководстве вы начнете рассматривать более сложные вопросы, развернув модель данных. Попутно вы создадите и примените дополнительные миграции.
+
 ::: moniker-end
 
 > [!div class="step-by-step"]

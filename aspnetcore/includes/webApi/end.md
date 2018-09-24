@@ -7,14 +7,19 @@
 Добавьте приведенный ниже метод `Create`.
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
 Предыдущий код является методом HTTP POST, как указывает атрибут [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). Атрибут [[FromBody]](/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute) сообщает MVC, что необходимо получить значение элемента задачи из текста HTTP-запроса.
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
 Предыдущий код является методом HTTP POST, как указывает атрибут [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). MVC получает значение элемента задачи из текста HTTP-запроса.
+
 ::: moniker-end
 
 Метод `CreatedAtRoute`:
@@ -24,10 +29,15 @@
 * Использует для создания URL-адреса маршрут с именем GetTodo. Маршрут с именем GetTodo определяется в `GetById`:
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
+
 ::: moniker-end
 
 ### <a name="use-postman-to-send-a-create-request"></a>Отправка запроса Create с помощью Postman
@@ -54,8 +64,10 @@
 * Нажмите кнопку **Отправить**.
 
 ::: moniker range=">= aspnetcore-2.1"
+
 > [!TIP]
 > Если ответ не отображается после нажатия кнопки **Отправить**, отключите параметр **Проверка сертификации SSL**. Он находится в разделе **Файл** > **Параметры**. Нажмите кнопку **Отправить** еще раз после отключения параметра.
+
 ::: moniker-end
 
 Откройте вкладку **Заголовки** на панели **Ответ** и скопируйте значение заголовка **Расположение**:
@@ -69,10 +81,15 @@
 Добавьте приведенный ниже метод `Update`.
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+
 ::: moniker-end
 
 Страница `Update` аналогична странице `Create`, но использует запрос HTTP PUT. Ответ — [204 (Нет содержимого)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). Согласно спецификации HTTP, запрос PUT требует, чтобы клиент отправлял всю обновленную сущность, а не только отличия. Чтобы обеспечить поддержку частичных обновлений, используйте HTTP PATCH.
