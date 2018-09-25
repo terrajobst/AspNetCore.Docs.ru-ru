@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как сохранять и извлекать конфиденциальную информацию в виде секретов приложения во время разработки приложения ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 08/16/2018
+ms.date: 09/24/2018
 uid: security/app-secrets
-ms.openlocfilehash: 35c316230c19aa69a0dac26ec25a6e017f102237
-ms.sourcegitcommit: 1cf65c25ed16495e27f35ded98b3952a30c68f36
+ms.openlocfilehash: 1ecd9b87b9e4aa2c511349fe407c0cea9dc9f921
+ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41824148"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47028275"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Безопасное хранение секретов приложения во время разработки в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "41824148"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/app-secrets/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-В этом документе описываются методы для хранения и извлечения конфиденциальных данных во время разработки приложения ASP.NET Core. Никогда не следует хранить пароли и другие конфиденциальные данные в исходном коде и не используйте секреты производства в разработки или тестирования режим. Для хранения и защиты секретов Azure в ходе тестирования и непосредственной работы используйте [Поставщик конфигурации Azure Key Vault](xref:security/key-vault-configuration).
+В этом документе описываются методы для хранения и извлечения конфиденциальных данных во время разработки приложения ASP.NET Core. Никогда не храните пароли и другие конфиденциальные данные в исходном коде. Не следует использовать секреты рабочей среды для разработки или тестирования. Для хранения и защиты секретов Azure в ходе тестирования и непосредственной работы используйте [Поставщик конфигурации Azure Key Vault](xref:security/key-vault-configuration).
 
 ## <a name="environment-variables"></a>Переменные среды
 
