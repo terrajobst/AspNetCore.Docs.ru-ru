@@ -5,12 +5,12 @@ description: Дополнительные сведения о поставщик
 ms.author: riande
 ms.date: 07/16/2018
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: e712ff09b5306bc4481c4cc105448d7cbfa39f3a
-ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
+ms.openlocfilehash: 0e64a65ab1d65efa9f2e4d36a23663b607f206d7
+ms.sourcegitcommit: 9bdba90b2c97a4016188434657194b2d7027d6e3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39356770"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47402072"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>Поставщики хранилища ключей в ASP.NET Core
 
@@ -78,6 +78,24 @@ public void ConfigureServices(IServiceCollection services)
 
 > [!IMPORTANT]
 > Мы рекомендуем использовать [Windows DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest) для шифрования ключей при хранении.
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="entity-framework-core"></a>Entity Framework Core
+
+[Microsoft.AspNetCore.DataProtection.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore/) пакет предоставляет механизм для хранения ключей защиты данных в базу данных с помощью Entity Framework Core. `Microsoft.AspNetCore.DataProtection.EntityFrameworkCore` Пакет NuGet должны добавляться в файл проекта не является частью [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
+При использовании этого пакета ключи могут совместно использоваться несколькими экземплярами веб-приложения.
+
+Чтобы настроить поставщика EF Core, вызовите [ `PersistKeysToDbContext<TContext>` ](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcoredataprotectionextensions.persistkeystodbcontext) метод:
+
+[!code-csharp[Main](key-storage-providers/sample/Startup.cs?name=snippet&highlight=13-15)]
+
+Универсальный параметр `TContext`, должен наследовать от [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) и [IDataProtectionKeyContext](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcore.idataprotectionkeycontext):
+
+[!code-csharp[Main](key-storage-providers/sample/MyKeysContext.cs)]
+
+::: moniker-end
 
 ## <a name="custom-key-repository"></a>Пользовательский репозиторий ключа
 
