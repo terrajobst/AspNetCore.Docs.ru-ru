@@ -5,12 +5,12 @@ description: Список пошаговых руководств для изу�
 ms.author: riande
 ms.date: 10/14/2017
 uid: tutorials/index
-ms.openlocfilehash: d103c351595f0d61e5f0ee14492f9f46b8c17e86
-ms.sourcegitcommit: 08f1a9baa97060da5168840b332c9c0805b5f901
+ms.openlocfilehash: 3d2fbb453c8f6510806d8dc263ea344023aa4cda
+ms.sourcegitcommit: 32f5ee0690604d451f61e9a5c28881c9fcf85738
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37144954"
+ms.lasthandoff: 09/29/2018
+ms.locfileid: "47454795"
 ---
 # <a name="aspnet-core-tutorials"></a>Учебники по ASP.NET Core
 
@@ -82,7 +82,7 @@ ms.locfileid: "37144954"
 ## <a name="host-and-deploy"></a>Размещение и развертывание
 
 * [Развертывание веб-приложения ASP.NET Core в Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs)
-* [Развертывание веб-приложения ASP.NET Core в Azure с помощью командной строки](xref:tutorials/publish-to-azure-webapp-using-cli)
+* [Развертывание веб-приложения ASP.NET Core в Azure с помощью командной строки](/azure/app-service/app-service-web-get-started-dotnet)
 * [Публикация в веб-приложение Azure с непрерывным развертыванием](xref:host-and-deploy/azure-apps/azure-continuous-deployment)
 * [Развертывание контейнера ASP.NET на удаленном узле Docker](/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
 * [ASP.NET Core и Azure Service Fabric](/azure/service-fabric/service-fabric-add-a-web-frontend)
