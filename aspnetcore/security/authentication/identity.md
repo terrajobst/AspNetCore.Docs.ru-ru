@@ -5,12 +5,12 @@ description: Использование удостоверения с прило
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: ca83d07f7d93bd0cc61cd17cc373096b8e6aa2e1
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: d427932bb175c09105534379be4d71760f4e04e5
+ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010979"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47860957"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Общие сведения об Identity в ASP.NET Core
 
@@ -45,7 +45,7 @@ ms.locfileid: "46010979"
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Выберите **Файл** > **Создать** > **Проект**. 
+* Выберите **Файл** > **Создать** > **Проект**.
 * Выберите **Новое веб-приложение ASP.NET Core**. Назовите проект **WebApp1** иметь то же пространство имен, как загрузка проекта. Нажмите кнопку **ОК**.
 * Выберите ASP.NET Core **веб-приложение** ASP.NET Core 2.1, затем выберите **изменить способ проверки подлинности**.
 * Выберите **учетные записи отдельных пользователей** и нажмите кнопку **ОК**.
@@ -119,15 +119,12 @@ dotnet new webapp --auth Individual -o WebApp1
 
 Добавьте файлы регистрации, входа и выхода.
 
-
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 Если вы создали проект с именем **WebApp1**, выполните следующие команды. В противном случае использовать правильное пространство имен для `ApplicationDbContext`:
 
-
 ```cli
 dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
-
 ```
 
 PowerShell используется точка с запятой в качестве разделителя команды. При использовании PowerShell экранировать точку с запятой в списке файлов или поместить в список файлов в двойные кавычки, как показано в предыдущем примере.
@@ -163,7 +160,7 @@ PowerShell используется точка с запятой в качест
 Форма входа отображается при:
 
 * **Вход** выбора ссылки.
-* Когда пользователь обращается к странице, где они не проходят проверку подлинности **или** авторизован, они перенаправляются на страницу входа. 
+* Когда пользователь обращается к странице, где они не проходят проверку подлинности **или** авторизован, они перенаправляются на страницу входа.
 
 При отправке формы на странице входа, `OnPostAsync` вызова действия. `PasswordSignInAsync` вызывается для `_signInManager` объекта (предоставляется с помощью внедрения зависимостей).
 
@@ -254,7 +251,6 @@ POST указывается в *Pages/Shared/_LoginPartial.cshtml*:
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
 * <xref:security/authentication/identity-enable-qrcodes>
-* [Настроить тип данных идентификаторов первичных ключей](xref:security/authentication/identity-primary-key-configuration).
 * <xref:migration/identity>
 * <xref:security/authentication/accconfirm>
 * <xref:security/authentication/2fa>

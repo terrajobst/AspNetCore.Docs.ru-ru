@@ -6,12 +6,12 @@ description: Приемники веб-перехватчики ASP.NET
 ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: 6cdea089-15b2-4732-8c68-921ca561a8f1
-ms.openlocfilehash: 376cb3e3fdc0bc7bd248da1f57e1064fb27b3cef
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d771a588b23abcd7b1b33e694af17b219683fc48
+ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838720"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47860918"
 ---
 # <a name="aspnet-webhooks-receivers"></a>Приемники веб-перехватчики ASP.NET
 
@@ -33,7 +33,7 @@ https://<host>/api/webhooks/incoming/<receiver>/{id}
 
 По соображениям безопасности многих приемники веб-перехватчика требуют URI *https* URI и в некоторых случаях он также должен содержать параметр дополнительный запрос, который используется для принудительного применения, что только они предназначались можно отправлять выше URI веб-перехватчиков .
 
-<em> <receiver> </em> Компонент является имя получателя, например <em>github</em> или <em>slack</em>.
+`<receiver>` Компонент является имя получателя, например `github` или `slack`.
 
 *{Id}* является необязательным идентификатором, который может использоваться для идентификации конкретной конфигурации приемника веб-перехватчика. Это можно использовать для регистрации N веб-перехватчиков с определенной получателем. Например следующие три URI можно использовать для регистрации для трех независимых веб-перехватчиков:
 
