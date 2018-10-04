@@ -1,28 +1,24 @@
 ---
 uid: web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/index
-title: Настраиваемая кнопка действия с DataList и повторителя | Документы Microsoft
+title: Действия настраиваемых кнопок с помощью элементов управления DataList и Repeater | Документация Майкрософт
 author: rick-anderson
-description: В этих учебниках показано, как добавить кнопки для элементов управления DataList и повторителя для добавления пользовательских функций.
-ms.author: aspnetcontent
-manager: wpickett
+description: Эти руководства демонстрируют Добавление кнопок к элементам управления DataList и Repeater для добавления пользовательских функций.
+ms.author: riande
 ms.date: 10/05/2011
-ms.topic: article
 ms.assetid: d017f36f-0152-43c7-ac44-6c7c755ea79a
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater
 msc.type: chapter
-ms.openlocfilehash: b9ec5df400ce445e703119b398e9f7a26d3f5446
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 4156ab56cda4e88caa883cf8968dca319109e59f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26512683"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48256843"
 ---
-<a name="custom-button-actions-with-the-datalist-and-repeater"></a>Настраиваемая кнопка действия с DataList и повторителя
+<a name="custom-button-actions-with-the-datalist-and-repeater"></a>Действия настраиваемых кнопок с помощью элементов управления DataList и Repeater
 ====================
-> В этих учебниках показано, как добавить кнопки для элементов управления DataList и повторителя для добавления пользовательских функций.
+> Эти руководства демонстрируют Добавление кнопок к элементам управления DataList и Repeater для добавления пользовательских функций.
 
 
-- [Пользовательские кнопки в DataList и повторителя (C#)](custom-buttons-in-the-datalist-and-repeater-cs.md)
-- [Пользовательские кнопки в DataList и повторителя (Visual Basic)](custom-buttons-in-the-datalist-and-repeater-vb.md)
+- [Настраиваемые кнопки в элементах управления DataList и Repeater (C#)](custom-buttons-in-the-datalist-and-repeater-cs.md)
+- [Настраиваемые кнопки в элементах управления DataList и Repeater (VB)](custom-buttons-in-the-datalist-and-repeater-vb.md)

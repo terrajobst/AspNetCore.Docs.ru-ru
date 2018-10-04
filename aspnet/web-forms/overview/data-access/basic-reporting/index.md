@@ -1,32 +1,28 @@
 ---
 uid: web-forms/overview/data-access/basic-reporting/index
-title: Базовые отчеты | Документы Microsoft
+title: Базовые отчеты | Документация Майкрософт
 author: rick-anderson
-description: Этот набор учебники рассказывается, как использовать элемент управления ObjectDataSource для работы с данными из МЕТОДА, все без кода.
-ms.author: aspnetcontent
-manager: wpickett
+description: Этот набор учебников рассказывается, как использовать элемент управления ObjectDataSource для работы с данными, полученными из BLL, без написания кода.
+ms.author: riande
 ms.date: 10/05/2011
-ms.topic: article
 ms.assetid: cbd98d24-8281-4415-87df-8365f0fbe7fc
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting
 msc.type: chapter
-ms.openlocfilehash: 86c675e3618b1bc21ff05dcae3525aa3de725516
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 9323886ed50df775ac587b0473126fbdc28a7a19
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26512603"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254315"
 ---
 <a name="basic-reporting"></a>Базовые отчеты
 ====================
-> Этот набор учебники рассказывается, как использовать элемент управления ObjectDataSource для работы с данными из МЕТОДА, все без кода.
+> Этот набор учебников рассказывается, как использовать элемент управления ObjectDataSource для работы с данными, полученными из BLL, без написания кода.
 
 
-- [Отображение данных с ObjectDataSource (C#)](displaying-data-with-the-objectdatasource-cs.md)
-- [Декларативные параметров (C#)](declarative-parameters-cs.md)
-- [Программное задание значений параметров ObjectDataSource (C#)](programmatically-setting-the-objectdatasource-s-parameter-values-cs.md)
-- [Отображение данных с ObjectDataSource (Visual Basic)](displaying-data-with-the-objectdatasource-vb.md)
-- [Декларативные параметры (Visual Basic)](declarative-parameters-vb.md)
-- [Программное задание значений параметров ObjectDataSource (Visual Basic)](programmatically-setting-the-objectdatasource-s-parameter-values-vb.md)
+- [Отображение данных с помощью элемента управления ObjectDataSource (C#)](displaying-data-with-the-objectdatasource-cs.md)
+- [Декларативные параметры (C#)](declarative-parameters-cs.md)
+- [Программная установка значений параметров ObjectDataSource (C#)](programmatically-setting-the-objectdatasource-s-parameter-values-cs.md)
+- [Отображение данных с помощью элемента управления ObjectDataSource (VB)](displaying-data-with-the-objectdatasource-vb.md)
+- [Декларативные параметры (VB)](declarative-parameters-vb.md)
+- [Программная установка значений параметров ObjectDataSource (VB)](programmatically-setting-the-objectdatasource-s-parameter-values-vb.md)

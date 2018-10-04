@@ -1,28 +1,24 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/rating/index
-title: Оценка | Документы Microsoft
+title: Оценка | Документация Майкрософт
 author: rick-anderson
-description: Этот учебник показан способ использования системы оценки для предоставления пользователям возможности вводить оценки для статьи или элементов.
-ms.author: aspnetcontent
-manager: wpickett
+description: Этом руководстве показано, как использовать элемент управления Rating позволяет пользователям вводить оценок для статьи или элементов.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 2af1ffb5-c6a6-40fa-b431-1e03190dedfd
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/rating
 msc.type: chapter
-ms.openlocfilehash: cabc043fd4be36d5d81563fa2f4b7e46a08fcad8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 7be078db8821e876cb860ae642f86a289a3fa744
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26511613"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255459"
 ---
 <a name="rating"></a>Рейтинг
 ====================
-> Этот учебник показан способ использования системы оценки для предоставления пользователям возможности вводить оценки для статьи или элементов.
+> Этом руководстве показано, как использовать элемент управления Rating позволяет пользователям вводить оценок для статьи или элементов.
 
 
-- [Создание элемента управления оценки (C#)](creating-a-rating-control-cs.md)
-- [Создание элемента управления оценку (Visual Basic)](creating-a-rating-control-vb.md)
+- [Создание элемента управления Rating (C#)](creating-a-rating-control-cs.md)
+- [Создание элемента управления Rating (VB)](creating-a-rating-control-vb.md)

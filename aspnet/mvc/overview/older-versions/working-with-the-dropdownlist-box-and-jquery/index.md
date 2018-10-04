@@ -1,29 +1,25 @@
 ---
 uid: mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/index
-title: MVC 3 — Работа с полем DropDownList и jQuery | Документы Microsoft
+title: MVC 3. Работа с полем DropDownList и jQuery | Документация Майкрософт
 author: rick-anderson
-description: Этого учебника показано, как использовать поле DropDownList с jQuery
-ms.author: aspnetcontent
-manager: wpickett
+description: Этом руководстве показано, как использовать поле элемента управления DropDownList с jQuery
+ms.author: riande
 ms.date: 01/19/2012
-ms.topic: article
 ms.assetid: 6d64df4d-8191-4faa-ab9f-9807c1b0a020
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery
 msc.type: chapter
-ms.openlocfilehash: 9d498c0fbb0860d50ab76e58e9940f6789e34d6b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: edcffa5ea7637b2408af4f96e8de60b57bdf8478
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26502593"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254651"
 ---
-<a name="mvc-3---working-with-the-dropdownlist-box-and-jquery"></a>MVC 3 — Работа с полем DropDownList и jQuery
+<a name="mvc-3---working-with-the-dropdownlist-box-and-jquery"></a>MVC 3. Работа с полем DropDownList и jQuery
 ====================
-> Этого учебника показано, как использовать поле DropDownList с jQuery
+> Этом руководстве показано, как использовать поле элемента управления DropDownList с jQuery
 
 
 - [Использование вспомогательного метода DropDownList в ASP.NET MVC](using-the-dropdownlist-helper-with-aspnet-mvc.md)
-- [Изучение как scaffolds вспомогательного метода DropDownList в ASP.NET MVC](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)
-- [Добавление новой категории с помощью jQuery UI DropDownList](adding-a-new-category-to-the-dropdownlist-using-jquery-ui.md)
+- [Проверка того, как ASP.NET MVC формирует шаблоны вспомогательного метода DropDownList](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)
+- [Добавление новой категории в DropDownList с помощью пользовательского интерфейса jQuery](adding-a-new-category-to-the-dropdownlist-using-jquery-ui.md)

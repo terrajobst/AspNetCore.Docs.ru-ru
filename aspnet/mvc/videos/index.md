@@ -1,23 +1,19 @@
 ---
 uid: mvc/videos/index
-title: Видео | Документы Microsoft
+title: Видео | Документация Майкрософт
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 06/24/2011
-ms.topic: article
 ms.assetid: e618c37c-68f3-49aa-9fda-f86cb3b578b9
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos
 msc.type: book
-ms.openlocfilehash: 03e8129816a2fb8b9261618207b0e1795fb7cf23
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
-ms.translationtype: HT
+ms.openlocfilehash: 1f284bb52bb45880d656592f173b3e57fbc47118
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
-ms.locfileid: "29152967"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48256679"
 ---
 <a name="videos"></a>Видеоролики
 ====================
@@ -50,7 +46,7 @@ ms.locfileid: "29152967"
         - [10-минутный видеоролик с техническими сведениями об ASP.NET MVC для разработчиков](mvc-2/how-do-i/aspnet-mvc-how-10-minute-technical-video-for-developers.md)
         - [Возвращение данных в формате JSON для вызова AJAX в веб-приложении ASP.NET MVC](mvc-2/how-do-i/how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application.md)
         - [Работа с данными в частичных представлениях ASP.NET MVC](mvc-2/how-do-i/how-do-i-work-with-data-in-aspnet-mvc-partial-views.md)
-        - [Реализовать Просмотр моделей для управления данными для представления ASP.NET MVC](mvc-2/how-do-i/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)
+        - [Реализация моделей представлений для управления данными по представлениям ASP.NET MVC](mvc-2/how-do-i/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)
         - [Создание пользовательского вспомогательного метода HTML для приложения MVC](mvc-2/how-do-i/how-do-i-create-a-custom-html-helper-for-an-mvc-application.md)
         - [Работа со связывателями моделей в приложении MVC](mvc-2/how-do-i/how-do-i-work-with-model-binders-in-an-mvc-application.md)
         - [Использование атрибутов HttpVerbs в приложениях MVC](mvc-2/how-do-i/how-do-i-use-httpverbs-attributes-in-an-mvc-application.md)
@@ -95,7 +91,7 @@ ms.locfileid: "29152967"
         - [Интернет-магазин на ASP.NET MVC, часть 16. Восстановление членства с помощью OpenID](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
         - [Интернет-магазин на ASP.NET MVC, часть 17. Оформление заказа с Джеффом Этвудом (Jeff Atwood)](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood.md)
         - [Интернет-магазин на ASP.NET MVC, часть 18. Формирование единого представления](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-18-creating-an-experience.md)
-        - [ASP.NET MVC Storefront часть 19: Обработки заказов с рабочим процессом Windows](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
+        - [Интернет-магазин на ASP.NET MVC, часть 19. Обработка заказов с Windows Workflow](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
         - [Интернет-магазин на ASP.NET MVC, часть 19a. Продолжение использования рабочего процесса Windows](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19a-windows-workflow-followup.md)
         - [Интернет-магазин на ASP.NET MVC, часть 20. Ведение журнала](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-20-logging.md)
         - [Интернет-магазин на ASP.NET MVC, часть 21. Диспетчер заказов и персонализация](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-21-order-manager-and-personalization.md)

@@ -1,27 +1,23 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/index
-title: Приступая к работе с MVC | Документы Microsoft
+title: Начало работы с MVC | Документация Майкрософт
 author: rick-anderson
-description: Это учебник для новичков ряда, вводит ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных.
-ms.author: aspnetcontent
-manager: wpickett
+description: Это руководств для начинающих, вводится ASP.NET MVC. Создание простого веб-приложения, которое считывает и записывает в базу данных.
+ms.author: riande
 ms.date: 11/08/2011
-ms.topic: article
 ms.assetid: 057f01bf-0ad9-488a-ae75-c8f85b8e1f23
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc
 msc.type: chapter
-ms.openlocfilehash: b2e2f167de1e4c1c197bb0a8d37c1a1aed047f14
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: HT
+ms.openlocfilehash: 22e344b0667ac596bea75884df6aadd8e6a5ff92
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
-ms.locfileid: "28883302"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255509"
 ---
-<a name="getting-started-with-mvc"></a>Приступая к работе с MVC
+<a name="getting-started-with-mvc"></a>Начало работы с MVC
 ====================
-> Это учебник для новичков ряда, вводит ASP.NET MVC. Создание простого веб-приложения, чтение и запись из базы данных.
+> Это руководств для начинающих, вводится ASP.NET MVC. Создание простого веб-приложения, которое считывает и записывает в базу данных.
 
 
 - [Введение в ASP.NET MVC](getting-started-with-mvc-part1.md)

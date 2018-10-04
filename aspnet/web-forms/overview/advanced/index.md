@@ -1,27 +1,23 @@
 ---
 uid: web-forms/overview/advanced/index
-title: Веб-форм ASP.NET дополнительные разделы | Документы Microsoft
+title: Веб-форм ASP.NET дополнительные разделы | Документация Майкрософт
 author: rick-anderson
-description: Дополнительные вопросы для программирования приложений веб-форм ASP.NET, включая интернационализации, доступности и расширяемости.
-ms.author: aspnetcontent
-manager: wpickett
+description: Дополнительные разделы по программированию приложений веб-форм ASP.NET, включая интернационализации, доступности и расширяемости.
+ms.author: riande
 ms.date: 10/18/2014
-ms.topic: article
 ms.assetid: e7b68e52-8c2b-431c-9b1e-4fb51f1950c9
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/advanced
 msc.type: chapter
-ms.openlocfilehash: e2e229d6ed6343e236c9863e0a1fdb092a2d3529
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: a8dde8c0771e483fc2060454cdb1db6b7e5325c0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26509033"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255020"
 ---
 <a name="aspnet-web-forms-advanced-topics"></a>Веб-форм ASP.NET дополнительные разделы
 ====================
-> Дополнительные вопросы для программирования приложений веб-форм ASP.NET, включая интернационализации, доступности и расширяемости.
+> Дополнительные разделы по программированию приложений веб-форм ASP.NET, включая интернационализации, доступности и расширяемости.
 
 
-- [Устойчивость подключений ASP.NET Web Forms и перехвата команды](aspnet-web-forms-connection-resiliency-and-command-interception.md)
+- [Устойчивость подключений и перехват команд в веб-формах ASP.NET](aspnet-web-forms-connection-resiliency-and-command-interception.md)

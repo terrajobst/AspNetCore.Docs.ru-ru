@@ -1,23 +1,19 @@
 ---
 uid: mvc/videos/mvc-1/index
-title: ASP.NET MVC 1 | Документы Microsoft
+title: ASP.NET MVC 1 | Документация Майкрософт
 author: rick-anderson
 description: ASP.NET MVC 1
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: a780d06b-36cd-410a-b95a-b6b935b5a7fa
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1
 msc.type: chapter
-ms.openlocfilehash: ad33f7cb81b0124728cfa36c8ff3ba0a473e351f
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
-ms.translationtype: HT
+ms.openlocfilehash: ab03d8df4b149e32dd32c26a5b9ae29e2b7be353
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
-ms.locfileid: "29153908"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254914"
 ---
 <a name="aspnet-mvc-1"></a>ASP.NET MVC 1
 ====================
@@ -44,7 +40,7 @@ ms.locfileid: "29153908"
     - [Интернет-магазин на ASP.NET MVC, часть 16. Восстановление членства с помощью OpenID](aspnet-mvc-storefront/aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
     - [Интернет-магазин на ASP.NET MVC, часть 17. Оформление заказа с Джеффом Этвудом (Jeff Atwood)](aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood.md)
     - [Интернет-магазин на ASP.NET MVC, часть 18. Формирование единого представления](aspnet-mvc-storefront/aspnet-mvc-storefront-part-18-creating-an-experience.md)
-    - [ASP.NET MVC Storefront часть 19: Обработки заказов с рабочим процессом Windows](aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
+    - [Интернет-магазин на ASP.NET MVC, часть 19. Обработка заказов с Windows Workflow](aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
     - [Интернет-магазин на ASP.NET MVC, часть 19a. Продолжение использования рабочего процесса Windows](aspnet-mvc-storefront/aspnet-mvc-storefront-part-19a-windows-workflow-followup.md)
     - [Интернет-магазин на ASP.NET MVC, часть 20. Ведение журнала](aspnet-mvc-storefront/aspnet-mvc-storefront-part-20-logging.md)
     - [Интернет-магазин на ASP.NET MVC, часть 21. Диспетчер заказов и персонализация](aspnet-mvc-storefront/aspnet-mvc-storefront-part-21-order-manager-and-personalization.md)

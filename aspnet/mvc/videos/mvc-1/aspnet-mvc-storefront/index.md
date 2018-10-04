@@ -1,27 +1,23 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/index
-title: ASP.NET MVC витрине | Документы Microsoft
+title: Онлайн-магазин ASP.NET MVC | Документация Майкрософт
 author: rick-anderson
-description: ASP.NET MVC Storefront начального набора
-ms.author: aspnetcontent
-manager: wpickett
+description: Интернет-магазин на Starter Kit ASP.NET MVC
+ms.author: riande
 ms.date: 09/28/2011
-ms.topic: article
 ms.assetid: 296b3a7a-483d-4937-ba2f-3f9c1319616a
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront
 msc.type: chapter
-ms.openlocfilehash: 78b42135d38918fb1d5c1d7a9dcdae1da9b660f1
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
-ms.translationtype: HT
+ms.openlocfilehash: b6030c14980bfe86b04284160d2c1e4a5ccc8bf7
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
-ms.locfileid: "29153246"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255100"
 ---
-<a name="aspnet-mvc-storefront"></a>ASP.NET MVC витрине
+<a name="aspnet-mvc-storefront"></a>Онлайн-магазин ASP.NET MVC
 ====================
-> ASP.NET MVC Storefront начального набора
+> Интернет-магазин на Starter Kit ASP.NET MVC
 
 
 - [Интернет-магазин на ASP.NET MVC, часть 1. Описание архитектуры и общие сведения](aspnet-mvc-storefront-part-1-architectural-discussion-and-overview.md)
@@ -42,7 +38,7 @@ ms.locfileid: "29153246"
 - [Интернет-магазин на ASP.NET MVC, часть 16. Восстановление членства с помощью OpenID](aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
 - [Интернет-магазин на ASP.NET MVC, часть 17. Оформление заказа с Джеффом Этвудом (Jeff Atwood)](aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood.md)
 - [Интернет-магазин на ASP.NET MVC, часть 18. Формирование единого представления](aspnet-mvc-storefront-part-18-creating-an-experience.md)
-- [ASP.NET MVC Storefront часть 19: Обработки заказов с рабочим процессом Windows](aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
+- [Интернет-магазин на ASP.NET MVC, часть 19. Обработка заказов с Windows Workflow](aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
 - [Интернет-магазин на ASP.NET MVC, часть 19a. Продолжение использования рабочего процесса Windows](aspnet-mvc-storefront-part-19a-windows-workflow-followup.md)
 - [Интернет-магазин на ASP.NET MVC, часть 20. Ведение журнала](aspnet-mvc-storefront-part-20-logging.md)
 - [Интернет-магазин на ASP.NET MVC, часть 21. Диспетчер заказов и персонализация](aspnet-mvc-storefront-part-21-order-manager-and-personalization.md)

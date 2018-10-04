@@ -1,33 +1,29 @@
 ---
 uid: web-forms/videos/aspnet-35/aspnet-ajax/index
-title: ASP.NET Ajax | Документы Microsoft
+title: Ajax для ASP.NET | Документация Майкрософт
 author: rick-anderson
-description: Эта серия видеоматериалов посвящена тому, как добавить функциональные возможности Ajax в приложение ASP.NET.
-ms.author: aspnetcontent
-manager: wpickett
+description: Эта серия учебных видеороликов посвящена тому, как добавить функциональность Ajax в приложение ASP.NET.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 93486ab8-7a8c-4075-935a-83900817b3db
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-35/aspnet-ajax
 msc.type: chapter
-ms.openlocfilehash: 1731f8611bbd3593f3add89d7765c07a0fbe6c2b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: ac46b096c549e0e582801a6db7134c9396eb26e5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26520233"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255349"
 ---
 <a name="aspnet-ajax"></a>ASP.NET Ajax
 ====================
-> Эта серия видеоматериалов посвящена тому, как добавить функциональные возможности Ajax в приложение ASP.NET.
+> Эта серия учебных видеороликов посвящена тому, как добавить функциональность Ajax в приложение ASP.NET.
 
 
 - [Поддержка AJAX ASP.NET в Visual Studio 2008](aspnet-ajax-support-in-visual-studio-2008.md)
-- [Добавление функциональных возможностей AJAX на существующую страницу ASP.NET](adding-ajax-functionality-to-an-existing-aspnet-page.md)
-- [Создание и использование с включенной технологией AJAX веб-службой в веб-сайта](creating-and-using-an-ajax-enabled-web-service-in-a-web-site.md)
-- [ASP.NET AJAX: Демонстрация ASP.NET AJAX](aspnet-ajax-a-demonstration-of-aspnet-ajax.md)
-- [Службы данных ADO.NET с поддержкой AJAX ASP.NET](adonet-data-services-with-aspnet-ajax-support.md)
-- [Введение в ASP.NET Ajax журнала](introduction-to-aspnet-ajax-history.md)
-- [Для повышения производительности AJAX с помощью сценариев объединения](using-script-combining-to-improve-ajax-performance.md)
+- [Добавление функциональности AJAX на существующую страницу ASP.NET](adding-ajax-functionality-to-an-existing-aspnet-page.md)
+- [Создание и использование веб-службы на основе AJAX на веб-сайте](creating-and-using-an-ajax-enabled-web-service-in-a-web-site.md)
+- [ASP.NET AJAX. Демонстрация ASP.NET AJAX](aspnet-ajax-a-demonstration-of-aspnet-ajax.md)
+- [Службы данных ADO.NET с поддержкой ASP.NET AJAX](adonet-data-services-with-aspnet-ajax-support.md)
+- [Введение в ASP.NET AJAX](introduction-to-aspnet-ajax-history.md)
+- [Использование сценариев объединения для повышения производительности AJAX](using-script-combining-to-improve-ajax-performance.md)

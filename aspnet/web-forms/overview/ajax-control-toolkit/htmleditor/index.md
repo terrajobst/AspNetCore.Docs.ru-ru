@@ -1,28 +1,24 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/htmleditor/index
-title: HTMLEditor | Документы Microsoft
+title: HTMLEditor | Документация Майкрософт
 author: rick-anderson
-description: Этого учебника показано, как использовать элемент управления HTMLEditor, который предоставляет полнофункциональный редактор и WYSIWYG или изменение исходного содержимого HTML.
-ms.author: aspnetcontent
-manager: wpickett
+description: Этом руководстве показано, как использовать элемент управления HTMLEditor, который предоставляет полнофункциональный редактор и WYSIWYG или изменение источника содержимого HTML.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: b43a6e83-7391-407c-953c-222e7567b509
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/htmleditor
 msc.type: chapter
-ms.openlocfilehash: 06e68d964cecc00c0ab45f7965a8df11e8afc6ea
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 39d5eae69f5d23aef7454148f1a6084fc1425b66
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26510623"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255230"
 ---
 <a name="htmleditor"></a>HTMLEditor
 ====================
-> Этого учебника показано, как использовать элемент управления HTMLEditor, который предоставляет полнофункциональный редактор и WYSIWYG или изменение исходного содержимого HTML.
+> Этом руководстве показано, как использовать элемент управления HTMLEditor, который предоставляет полнофункциональный редактор и WYSIWYG или изменение источника содержимого HTML.
 
 
-- [Редактор HTML-элемент управления (C#)](how-do-i-use-the-html-editor-control-cs.md)
-- [Редактор HTML-элемент управления (Visual Basic)](how-do-i-use-the-html-editor-control-vb.md)
+- [Элемент управления редактора HTML (C#)](how-do-i-use-the-html-editor-control-cs.md)
+- [Элемент управления редактора HTML (VB)](how-do-i-use-the-html-editor-control-vb.md)

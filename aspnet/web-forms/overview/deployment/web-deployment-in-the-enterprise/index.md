@@ -1,37 +1,33 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/index
-title: В ASP.NET 4 - корпоративного развертывания ряда 1 | Документы Microsoft
+title: ASP.NET 4 - Корпоративное развертывание, часть 1 | Документация Майкрософт
 author: rick-anderson
-description: Этот учебник описывает соответствуют большое количество задач, с которыми можно столкнуться при управлении развертывания веб-приложений масштаба предприятия для developmen...
-ms.author: aspnetcontent
-manager: wpickett
+description: Это руководство содержит инструкции для удовлетворения множество задач, с которыми придется столкнуться при управлении развертыванием веб-приложений корпоративного уровня для developmen...
+ms.author: riande
 ms.date: 05/16/2012
-ms.topic: article
 ms.assetid: 83e0a572-428f-4bea-9638-1a031c6901c0
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise
 msc.type: chapter
-ms.openlocfilehash: 50918b1aef416a7b262e982bcf67607aa36933a3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 92bc3d18c417e73e198d0f7663489fd931bf75b5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26515183"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48256891"
 ---
-<a name="aspnet-4---enterprise-deployment-series-1"></a>В ASP.NET 4 - корпоративного развертывания ряда 1
+<a name="aspnet-4---enterprise-deployment-series-1"></a>ASP.NET 4 - Корпоративное развертывание, часть 1
 ====================
-> Этот учебник описывает соответствуют большое количество задач, с которыми можно столкнуться при управлении развертывания веб-приложений корпоративного уровня для разработки, тестирования, промежуточного хранения и рабочей средах. Учебник включает эталонного решения, а также как общие и ориентированные на задачи содержимое инструкции по различных типовых задач и процедур.
+> Это руководство содержит инструкции для удовлетворения множество задач, с которыми придется столкнуться при управлении развертыванием веб-приложений корпоративного уровня для разработки, тестирования, промежуточной и рабочей средах. Учебник включает эталонного решения, а также сочетание концептуальные и ориентированные на задачи содержимого, которые описывают различные стандартные задачи и процедуры.
 
 
-- [Веб-развертывания в организации](web-deployment-in-the-enterprise.md)
+- [Корпоративное веб-развертывание](web-deployment-in-the-enterprise.md)
 - [Решение диспетчера контактов](the-contact-manager-solution.md)
 - [Настройка решения диспетчера контактов](setting-up-the-contact-manager-solution.md)
-- [Основные сведения о файле проекта](understanding-the-project-file.md)
-- [Основные сведения о процессе построения](understanding-the-build-process.md)
-- [Построения и упаковки проектов веб-приложений](building-and-packaging-web-application-projects.md)
+- [Общие сведения о файле проекта](understanding-the-project-file.md)
+- [Общие сведения о процессе сборки](understanding-the-build-process.md)
+- [Сборка и упаковка проектов веб-приложений](building-and-packaging-web-application-projects.md)
 - [Настройка параметров для развертывания веб-пакета](configuring-parameters-for-web-package-deployment.md)
-- [Развертывание веб-пакеты](deploying-web-packages.md)
-- [Развертывание проектов базы данных](deploying-database-projects.md)
-- [Создание и запуск командный файл развертывания](creating-and-running-a-deployment-command-file.md)
-- [Установка вручную веб-пакеты](manually-installing-web-packages.md)
+- [Развертывание веб-пакетов](deploying-web-packages.md)
+- [Развертывание проектов баз данных](deploying-database-projects.md)
+- [Создание и запуск командного файла развертывания](creating-and-running-a-deployment-command-file.md)
+- [Установка веб-пакетов вручную](manually-installing-web-packages.md)

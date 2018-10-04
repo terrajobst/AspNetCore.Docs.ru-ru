@@ -1,34 +1,30 @@
 ---
 uid: web-forms/videos/iis/index
-title: Общие советы IIS | Документы Microsoft
+title: Общие советы IIS | Документация Майкрософт
 author: rick-anderson
 description: Сведения о настройке IIS для работы с приложениями ASP.NET.
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 10/05/2011
-ms.topic: article
 ms.assetid: 0078ceb6-3447-4ce4-90c2-d0e013ebc000
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/iis
 msc.type: chapter
-ms.openlocfilehash: 2fb4da58fd5e0fc6bce8f042a9811d4ef30c1eb4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: febbe4e6cc00241246cb4a8d212bb86d1adccf23
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26525603"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254314"
 ---
 <a name="general-iis-tips"></a>Общие советы IIS
 ====================
 > Сведения о настройке IIS для работы с приложениями ASP.NET.
 
 
-- [Разработка и развертывание в совместное размещение](developing-and-deploying-in-a-shared-hosting.md)
-- [Работа с IIS7 полномочный администратор](working-with-iis7-deligated-admin.md)
-- [Функция специальное делегированное управление](feature-specific-delegated-management.md)
-- [Устранение неполадок производственного приложения ASP.NET](troubleshooting-production-aspnet-apps.md)
+- [Разработка и развертывание в общем ресурсе размещения](developing-and-deploying-in-a-shared-hosting.md)
+- [Работа с полномочным администратором IIS7](working-with-iis7-deligated-admin.md)
+- [Делегированное управление для определенных функций](feature-specific-delegated-management.md)
+- [Устранение неполадок рабочих приложений ASP.NET](troubleshooting-production-aspnet-apps.md)
 - [Создание сайта с помощью диспетчера служб IIS 7](creating-a-site-with-iis7-manager.md)
 - [Установка FTP7](installing-ftp7.md)
 - [Регулирование скорости](bit-rate-throttling.md)
-- [IIS7 списки воспроизведения](iis7-playlists.md)
+- [Списки воспроизведения IIS7](iis7-playlists.md)

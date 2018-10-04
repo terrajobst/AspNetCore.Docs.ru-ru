@@ -1,27 +1,23 @@
 ---
 uid: web-forms/videos/net-4/seo/index
-title: SEO | Документы Microsoft
+title: SEO | Документация Майкрософт
 author: rick-anderson
-description: В этом видеоролике Описание новых возможностей для оптимизации механизм поиска (SEO) в ASP.NET 4.
-ms.author: aspnetcontent
-manager: wpickett
+description: В этом видео описывает новые возможности для поиска ядра оптимизации систем (SEO) в ASP.NET 4.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 5462f2d0-e9de-45e4-8c8e-6110d62aaccc
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/net-4/seo
 msc.type: chapter
-ms.openlocfilehash: a16311736d8d051b05b4f9e9ea00a47dc502db20
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 69862430a2e28d1df0af7f4711eb96acfa8c51bd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26525543"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255830"
 ---
 <a name="seo"></a>ОПТИМИЗАЦИИ ПОИСКОВОЙ СИСТЕМЫ
 ====================
-> В этом видеоролике Описание новых возможностей для оптимизации механизм поиска (SEO) в ASP.NET 4.
+> В этом видео описывает новые возможности для поиска ядра оптимизации систем (SEO) в ASP.NET 4.
 
 
 - [Динамические метаданные](aspnet-4-quick-hit-dynamic-metadata.md)

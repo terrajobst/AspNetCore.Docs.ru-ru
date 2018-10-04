@@ -1,27 +1,23 @@
 ---
 uid: visual-studio/overview/2013/index
-title: ASP.NET и Visual Studio 2013 | Документы Microsoft
+title: ASP.NET и Visual Studio 2013 | Документация Майкрософт
 author: rick-anderson
 description: Visual Studio 2013
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 06/25/2013
-ms.topic: article
 ms.assetid: 646edfc7-dc62-4fa0-84c2-926996c92aeb
-ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013
 msc.type: chapter
-ms.openlocfilehash: fad379374814c794754605a2aab193ec625e2182
-ms.sourcegitcommit: 3625e4f7a667641b058d23126f0d9d1844fee886
-ms.translationtype: HT
+ms.openlocfilehash: 74793becba663d163a31cb1b02654b7b6cb021af
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/20/2018
-ms.locfileid: "27980167"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255119"
 ---
 <a name="aspnet-and-visual-studio-2013"></a>ASP.NET и Visual Studio 2013
 ====================
-> Разработка веб-приложения ASP.NET в Visual Studio 2013
+> Разработка веб-приложений ASP.NET с помощью Visual Studio 2013
 
 
 - [Создание веб-проектов ASP.NET в Visual Studio 2013](creating-web-projects-in-visual-studio.md)
@@ -35,6 +31,6 @@ ms.locfileid: "27980167"
 - [Формирование шаблонов ASP.NET в Visual Studio 2013](aspnet-scaffolding-overview.md)
 - [Привязывание к браузеру](using-browser-link.md)
 - [Заметки о выпуске ASP.NET and Web Tools для Visual Studio 2013](release-notes.md)
-- [ASP.NET и веб-инструменты 2013.2 заметки о выпуске Visual Studio 2013](aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes.md)
+- [ASP.NET and Web Tools 2013.2 для заметки о выпуске Visual Studio 2013](aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes.md)
 - [Практическое лабораторное занятие. Веб-инструменты Visual Studio 2013](visual-studio-2013-web-tools.md)
 - [Практическое лабораторное занятие. ASP.NET: интеграция веб-форм ASP.NET, MVC и веб-API](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api.md)

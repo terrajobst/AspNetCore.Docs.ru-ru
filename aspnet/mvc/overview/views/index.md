@@ -1,28 +1,24 @@
 ---
 uid: mvc/overview/views/index
-title: ASP.NET MVC пользовательского интерфейса, темы и макетов | Документы Microsoft
+title: ASP.NET MVC, пользовательский Интерфейс, макеты и темы | Документация Майкрософт
 author: rick-anderson
-description: Синтаксис Razor и способ его использования в представлениях (V MVC) для отображения информации.
-ms.author: aspnetcontent
-manager: wpickett
+description: Синтаксис Razor и способы ее использования в представлениях (V в MVC) для отображения информации.
+ms.author: riande
 ms.date: 08/10/2011
-ms.topic: article
 ms.assetid: 786e452d-c0d6-45fb-85eb-22c820304667
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/views
 msc.type: chapter
-ms.openlocfilehash: 914820b5d086f2f194881ec9d47da2e5db9732a7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 258746b494410b5bf10dccefaba244088b6bdbeb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26503283"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254970"
 ---
-<a name="aspnet-mvc-ui-layouts-and-themes"></a>ASP.NET MVC пользовательского интерфейса, макеты и темы
+<a name="aspnet-mvc-ui-layouts-and-themes"></a>ASP.NET MVC, пользовательский Интерфейс, макеты и темы
 ====================
-> Синтаксис Razor и способ его использования в представлениях (V MVC) для отображения информации.
+> Синтаксис Razor и способы ее использования в представлениях (V в MVC) для отображения информации.
 
 
-- [С помощью инспектора страниц в ASP.NET MVC](using-page-inspector-in-aspnet-mvc.md)
-- [Динамические v. Строго типизированные представления](dynamic-v-strongly-typed-views.md)
+- [Использование инспектора страниц в ASP.NET MVC](using-page-inspector-in-aspnet-mvc.md)
+- [Динамические и строго типизированные представления](dynamic-v-strongly-typed-views.md)

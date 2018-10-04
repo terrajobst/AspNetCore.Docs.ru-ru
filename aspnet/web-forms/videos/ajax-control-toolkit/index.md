@@ -1,66 +1,62 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/index
-title: Набор элементов управления AJAX | Документы Microsoft
+title: AJAX Control Toolkit | Документация Майкрософт
 author: rick-anderson
-description: Инструкции по созданию страницы с использованием элементов управления AJAX очень быстродействующих веб-приложений ASP.NET.
-ms.author: aspnetcontent
-manager: wpickett
+description: Как создать очень быстро реагирующих веб-ASP.NET страницы с использованием Ajax Control Toolkit.
+ms.author: riande
 ms.date: 10/05/2011
-ms.topic: article
 ms.assetid: 6f7b1c74-cc73-42f9-8ef0-8b3d058dabfa
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit
 msc.type: chapter
-ms.openlocfilehash: fad690c40cac7a344a445dae722ae2a1e89adf6b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 389a7563ca2c95563cd57326122a4a801e9e91e6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26521833"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48256694"
 ---
 <a name="ajax-control-toolkit"></a>Ajax (набор элементов управления)
 ====================
-> Инструкции по созданию страницы с использованием элементов управления AJAX очень быстродействующих веб-приложений ASP.NET.
+> Как создать очень быстро реагирующих веб-ASP.NET страницы с использованием Ajax Control Toolkit.
 
 
-- [Приступая к работе с элементов управления ASP.NET AJAX](how-do-i-get-started-with-the-aspnet-ajax-control-toolkit.md)
-- [Расширитель CascadingDropDown управления ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-cascadingdropdown-control-extender.md)
-- [Расширитель TextBoxWatermark управления ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-textboxwatermark-control-extender.md)
-- [Расширитель элемента управления ASP.NET AJAX всплывающего окна](how-do-i-use-the-aspnet-ajax-popup-control-extender.md)
-- [Элемент-расширитель ModalPopup ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-modalpopup-extender-control.md)
-- [Расширитель AlwaysVisible управления ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-alwaysvisible-control-extender.md)
-- [Элемента управления ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-accordion-control.md)
+- [Начало работы с набором средств управления AJAX ASP.NET](how-do-i-get-started-with-the-aspnet-ajax-control-toolkit.md)
+- [Расширитель элемента управления CascadingDropDown ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-cascadingdropdown-control-extender.md)
+- [Расширитель элемента управления TextBoxWatermark ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-textboxwatermark-control-extender.md)
+- [Расширитель элемента управления Popup ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-popup-control-extender.md)
+- [Расширитель элемента управления ModalPopup ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-modalpopup-extender-control.md)
+- [Расширитель элемента управления AlwaysVisible ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-alwaysvisible-control-extender.md)
+- [Элемент управления Accordion ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-accordion-control.md)
 - [Расширитель сворачиваемой панели ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-collapsable-panel-extender.md)
 - [Расширитель перетаскиваемой панели ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-draggable-panel-extender.md)
 - [Расширитель DynamicPopulate ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-dynamicpopulate-extender.md)
-- [Расширения FilteredTextBox не дает ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-filteredtextbox-extender.md)
+- [Расширитель FilteredTextbox ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-filteredtextbox-extender.md)
 - [Расширитель HoverMenu ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-hovermenu-extender.md)
 - [Расширитель ToggleButton ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-togglebutton-extender.md)
 - [Расширитель DropShadow ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-dropshadow-extender.md)
 - [Расширитель PasswordStrength ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-passwordstrength-extender.md)
-- [Приступая к работе с ASP.NET анимации элемента-расширителя AJAX](how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control.md)
+- [Начало работы с управляющим элементом-расширителем Animation ASP.NET](how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control.md)
 - [Расширитель ConfirmButton ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-confirmbutton-extender.md)
-- [Элемент управления "ползунок" ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-slider-control.md)
-- [Элемент управления ASP.NET AJAX автозаполнения](how-do-i-use-the-aspnet-ajax-autocomplete-control.md)
-- [Настройте элемент управления ASP.NET AJAX календаря](how-do-i-configure-the-aspnet-ajax-calendar-control.md)
+- [Элемент управления Slider ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-slider-control.md)
+- [Элемент управления AutoComplete ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-autocomplete-control.md)
+- [Настройка элемента управления Calendar ASP.NET AJAX](how-do-i-configure-the-aspnet-ajax-calendar-control.md)
 - [Элемент управления DropDown ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-dropdown-control.md)
-- [Элементы управления ASP.NET AJAX MaskedEdit](how-do-i-use-the-aspnet-ajax-maskededit-controls.md)
-- [Расширитель MutuallyExclusive флажок ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-mutuallyexclusive-checkbox-extender.md)
-- [Элемент управления ASP.NET AJAX NoBot](how-do-i-use-the-aspnet-ajax-nobot-control.md)
+- [Элементы управления MaskedEdit ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-maskededit-controls.md)
+- [Расширитель флажка MutuallyExclusive ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-mutuallyexclusive-checkbox-extender.md)
+- [Элемент управления NoBot ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-nobot-control.md)
 - [Расширитель ListSearch ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-listsearch-extender.md)
-- [Элемент-расширитель PagingBulletedList](how-do-i-use-the-pagingbulletedlist-extender-control.md)
-- [Элемент управления NumericUpDown расширений](how-do-i-use-the-numericupdown-extender-control.md)
+- [Управляющий элемент-расширитель PagingBulletedList](how-do-i-use-the-pagingbulletedlist-extender-control.md)
+- [Управляющий элемент-расширитель NumericUpDown](how-do-i-use-the-numericupdown-extender-control.md)
 - [Расширитель ValidatorCallout ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-validatorcallout-extender.md)
 - [Расширитель ResizableControl ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-resizablecontrol-extender.md)
-- [Элемент управления вкладки ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-tabs-control.md)
-- [Расширитель слайд-шоу ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-slideshow-extender.md)
-- [Элемент управления UpdatePanelAnimation ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender.md)
-- [Элемент управления AJAX переупорядочить Toolkit](how-do-i-the-ajax-toolkit-reorder-control.md)
-- [Использование AJAX, оценка элемента управления в наборе средств ASP.NET](utilize-the-ajax-rating-control-in-the-aspnet-toolkit.md)
-- [Расширения элемента управления](control-extenders.md)
+- [Элемент управления Tabs ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-tabs-control.md)
+- [Расширитель SlideShow ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-slideshow-extender.md)
+- [Расширитель UpdatePanelAnimation ASP.NET AJAX](how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender.md)
+- [Элемент управления Reorder в наборе средств AJAX](how-do-i-the-ajax-toolkit-reorder-control.md)
+- [Использование элемента управления Rating AJAX в наборе средств ASP.NET](utilize-the-ajax-rating-control-in-the-aspnet-toolkit.md)
+- [Управляющие элементы-расширители](control-extenders.md)
 - [Палитра цветов](color-picker.md)
 - [Поле со списком](combo-box.md)
 - [Элемент управления редактора](editor-control.md)
 - [Пользовательский элемент управления редактора](editor-control-custom.md)
-- [Создать новые пользовательские расширения](create-a-new-custom-extender.md)
+- [Создание пользовательского расширителя](create-a-new-custom-extender.md)

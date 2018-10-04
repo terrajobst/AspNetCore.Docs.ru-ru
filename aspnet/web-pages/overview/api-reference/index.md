@@ -1,27 +1,23 @@
 ---
 uid: web-pages/overview/api-reference/index
-title: Справочник по API | Документы Microsoft
+title: Справочник по API | Документация Майкрософт
 author: rick-anderson
-description: Справочник по API документация для веб-страниц ASP.NET.
-ms.author: aspnetcontent
-manager: wpickett
+description: Справочная документация по API для веб-страниц ASP.NET.
+ms.author: riande
 ms.date: 09/08/2014
-ms.topic: article
 ms.assetid: c29776f2-10b5-4632-b383-5f43656d5900
-ms.technology: dotnet-webpages
-ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/api-reference
 msc.type: chapter
-ms.openlocfilehash: 4824fa48083a1db537226209aa403e24bfed7eb0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: ff02881684e0058732fc98476454b33bce523c7e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26528533"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255199"
 ---
 <a name="api-reference"></a>Справочник по интерфейсам API
 ====================
-> Справочник по API документация для веб-страниц ASP.NET.
+> Справочная документация по API для веб-страниц ASP.NET.
 
 
-- [ASP.NET краткий справочник по API](asp-net-web-pages-api-reference.md)
+- [Краткий справочник по API ASP.NET](asp-net-web-pages-api-reference.md)

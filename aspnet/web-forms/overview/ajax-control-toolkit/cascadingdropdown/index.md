@@ -1,27 +1,23 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/index
-title: CascadingDropdown | Документы Microsoft
+title: CascadingDropdown | Документация Майкрософт
 author: rick-anderson
-description: Этот учебник показывает, как использовать элемент управления CascadingDropDown для создания связанных раскрывающегося списка перечислены обновления, при выборе пользователями.
-ms.author: aspnetcontent
-manager: wpickett
+description: Этом руководстве показано, как использовать элемент управления CascadingDropDown для создания связанных раскрывающиеся списки, которые обновляют, если пользователь делает выбор.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 5cc304e2-0013-4c26-8fe6-e897a533809f
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown
 msc.type: chapter
-ms.openlocfilehash: 200dc5ce3f27b5123edea2ac63f0a86b8502605d
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
-ms.translationtype: HT
+ms.openlocfilehash: 1bda628940da180288875c43ade92aad45101596
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
-ms.locfileid: "29152856"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "48256907"
 ---
 <a name="cascadingdropdown"></a>CascadingDropdown
 ====================
-> Этого учебника показано, как использовать элемент управления CascadingDropDown для создания связанных раскрывающиеся списки, которые обновляют при выборе пользователями.
+> Этом руководстве показано, как использовать элемент управления CascadingDropDown для создания связанных раскрывающиеся списки, которые обновляют, если пользователь делает выбор.
 
 
 - [Заполнение списка с помощью CascadingDropDown (C#)](filling-a-list-using-cascadingdropdown-cs.md)

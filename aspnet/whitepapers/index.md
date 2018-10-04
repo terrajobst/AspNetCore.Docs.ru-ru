@@ -1,23 +1,19 @@
 ---
 uid: whitepapers/index
-title: Технические документы | Документы Microsoft
+title: Технические документы | Документация Майкрософт
 author: rick-anderson
-description: На этой странице вы найдете технические документы, которые помогут вам установить и настроить ASP.NET и помогут вам создавать безопасные быстрое и гибкое приложения ASP.NET.
-ms.author: aspnetcontent
-manager: wpickett
+description: На этой странице вы найдете технические документы, которые помогут вам установить и настроить ASP.NET и помогут вам создавать безопасные, быстрый и гибкие приложения ASP.NET.
+ms.author: riande
 ms.date: 11/15/2011
-ms.topic: article
 ms.assetid: 3824e2d7-446f-406b-9c8b-5a1634359a78
-ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: ''
 msc.type: content
-ms.openlocfilehash: 5d335017a28f3dcbb8332b5361a2b068bddd2cce
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: HT
+ms.openlocfilehash: 3e463e0fb8e6af228480fc4795e1bd0ee5badac9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2018
-ms.locfileid: "28883807"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254482"
 ---
 <a name="whitepapers"></a>Техническая документация
 ====================
@@ -28,7 +24,7 @@ ms.locfileid: "28883807"
     - [Критические изменения в ASP.NET 4 ](aspnet4/breaking-changes.md)
 - [Обновление приложения ASP.NET MVC 1.0 до ASP.NET MVC 2](aspnet-mvc2-upgrade-notes.md)
 - [Платформа ASP.NET отказала в доступе к каталогам IIS ASP.NET](denied-access-to-iis-directories.md)
-- [Новые возможности в ASP.NET MVC 2](what-is-new-in-aspnet-mvc.md)
+- [Новые возможности ASP.NET MVC 2](what-is-new-in-aspnet-mvc.md)
 - [ASP.NET MVC 3](mvc3-release-notes.md)
 - [ASP.NET MVC 4](mvc4-beta-release-notes.md)
 - [Запуск ASP.NET 1.1 со службами IIS 6.0](aspnet-and-iis6.md)

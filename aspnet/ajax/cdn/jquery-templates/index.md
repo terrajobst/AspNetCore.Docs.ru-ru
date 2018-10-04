@@ -1,24 +1,20 @@
 ---
 uid: ajax/cdn/jquery-templates/index
-title: Шаблоны jQuery | Документы Microsoft
+title: Подключаемый модуль jQuery Templates | Документация Майкрософт
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 07/23/2014
-ms.topic: article
 ms.assetid: 77431f19-f341-410f-a67f-802f6ce8c845
-ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-templates
 msc.type: folder
-ms.openlocfilehash: 17a0544beb85dc7d72e5a84eeb1a7f97ff028757
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 078b8be94591be5ebf1d1fb1aae32b76e883d219
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26495593"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254402"
 ---
-<a name="jquery-templates"></a>Шаблоны jQuery
+<a name="jquery-templates"></a>Подключаемый модуль jQuery Templates
 ====================
-- [jQuery шаблоны бета-версия 1](cdnjquerytemplatesbeta1.md)
+- [jQuery Templates, бета-версия 1](cdnjquerytemplatesbeta1.md)

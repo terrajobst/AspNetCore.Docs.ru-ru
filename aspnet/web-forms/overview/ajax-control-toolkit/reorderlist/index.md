@@ -1,30 +1,26 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/index
-title: ReorderList | Документы Microsoft
+title: Элемента управления ReorderList | Документация Майкрософт
 author: rick-anderson
-description: Этого учебника показано, как использовать элемент управления ReorderList для отображения списка, пользователи могут изменить порядок с помощью перетаскивания элементов.
-ms.author: aspnetcontent
-manager: wpickett
+description: Этом руководстве показано, как использовать элемент управления ReorderList для отображения списка, пользователи могут изменить порядок путем перетаскивания элементов.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 25df8150-7999-4ab6-b401-0cad5f396d6c
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist
 msc.type: chapter
-ms.openlocfilehash: 14ad3527a17b0853dd10a07aba28d60867f79169
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: f429dac4352a5d0e469a7e3721f4b1a9396cd8f9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26511623"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48256715"
 ---
-<a name="reorderlist"></a>ReorderList
+<a name="reorderlist"></a>Элемента управления ReorderList
 ====================
-> Этого учебника показано, как использовать элемент управления ReorderList для отображения списка, пользователи могут изменить порядок с помощью перетаскивания элементов.
+> Этом руководстве показано, как использовать элемент управления ReorderList для отображения списка, пользователи могут изменить порядок путем перетаскивания элементов.
 
 
-- [Использование обратных передач с ReorderList (C#)](using-postbacks-with-reorderlist-cs.md)
-- [Перетаскивание через ReorderList (C#)](drag-and-drop-via-reorderlist-cs.md)
-- [Использование обратных передач с ReorderList (Visual Basic)](using-postbacks-with-reorderlist-vb.md)
-- [Перетаскивание через ReorderList (Visual Basic)](drag-and-drop-via-reorderlist-vb.md)
+- [Использование обратных передач с помощью элемента управления ReorderList (C#)](using-postbacks-with-reorderlist-cs.md)
+- [Перетаскивание с помощью элемента управления ReorderList (C#)](drag-and-drop-via-reorderlist-cs.md)
+- [Использование обратных передач с помощью элемента управления ReorderList (VB)](using-postbacks-with-reorderlist-vb.md)
+- [Перетаскивание с помощью элемента управления ReorderList (VB)](drag-and-drop-via-reorderlist-vb.md)

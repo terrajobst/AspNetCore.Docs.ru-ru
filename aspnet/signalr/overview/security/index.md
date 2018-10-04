@@ -1,29 +1,25 @@
 ---
 uid: signalr/overview/security/index
-title: SignalR безопасности | Документы Microsoft
+title: SignalR безопасности | Документация Майкрософт
 author: rick-anderson
 description: Понимание и решение проблем безопасности, связанных приложений SignalR.
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 09/19/2014
-ms.topic: article
 ms.assetid: 8faa734d-ab55-4b09-be54-564595d2ec78
-ms.technology: dotnet-signalr
-ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/security
 msc.type: chapter
-ms.openlocfilehash: 01ce39a655b69c038b4e39b013af9013968c2ac2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 92932f1a81dfbd3651f1e0edb25f8d16c15730e8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26505583"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255659"
 ---
-<a name="signalr-security"></a>SignalR безопасности
+<a name="signalr-security"></a>Безопасности SignalR
 ====================
 > Понимание и решение проблем безопасности, связанных приложений SignalR.
 
 
 - [Общие сведения о безопасности SignalR](introduction-to-security.md)
 - [Проверка подлинности и авторизация для концентраторов SignalR](hub-authorization.md)
-- [Проверка подлинности и авторизация для постоянного подключения SignalR](persistent-connection-authorization.md)
+- [Проверка подлинности и авторизация для постоянных подключений SignalR](persistent-connection-authorization.md)

@@ -1,36 +1,32 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/index
-title: Пользовательский формат | Документы Microsoft
+title: Пользовательское форматирование | Документация Майкрософт
 author: rick-anderson
 description: Эти учебники рассмотрим, как для настройки отображения данных во время привязки данных с помощью обработчиков событий в элементах управления GridView, DetailsView и FormView.
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 10/05/2011
-ms.topic: article
 ms.assetid: 320b7d26-837f-4fa7-a242-1ab82f8bdbe9
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting
 msc.type: chapter
-ms.openlocfilehash: afced0e5c310d8843107dde48d97e55e5242dd13
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 72a9b91b6d646d5c7d9d3105b4c36eec38a98236
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26513023"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254610"
 ---
-<a name="custom-formatting"></a>Настраиваемое форматирование
+<a name="custom-formatting"></a>Пользовательское форматирование
 ====================
 > Эти учебники рассмотрим, как для настройки отображения данных во время привязки данных с помощью обработчиков событий в элементах управления GridView, DetailsView и FormView.
 
 
-- [Настраиваемое форматирование на основе данных (C#)](custom-formatting-based-upon-data-cs.md)
-- [С помощью TemplateFields в элементе управления GridView (C#)](using-templatefields-in-the-gridview-control-cs.md)
-- [С помощью TemplateFields в элементе управления DetailsView (C#)](using-templatefields-in-the-detailsview-control-cs.md)
+- [Пользовательское форматирование на основе данных (C#)](custom-formatting-based-upon-data-cs.md)
+- [Использование TemplateField в элементе управления GridView (C#)](using-templatefields-in-the-gridview-control-cs.md)
+- [Использование TemplateField в элементе управления DetailsView (C#)](using-templatefields-in-the-detailsview-control-cs.md)
 - [Шаблоны FormView (C#)](using-the-formview-s-templates-cs.md)
-- [Отображение сводки в нижнем колонтитуле GridView (C#)](displaying-summary-information-in-the-gridview-s-footer-cs.md)
-- [Настраиваемое форматирование на основе данных (Visual Basic)](custom-formatting-based-upon-data-vb.md)
-- [С помощью TemplateFields в элементе управления GridView (Visual Basic)](using-templatefields-in-the-gridview-control-vb.md)
-- [С помощью TemplateFields в элементе управления DetailsView (Visual Basic)](using-templatefields-in-the-detailsview-control-vb.md)
-- [Шаблоны FormView (Visual Basic)](using-the-formview-s-templates-vb.md)
-- [Отображение сводки в нижнем колонтитуле GridView (Visual Basic)](displaying-summary-information-in-the-gridview-s-footer-vb.md)
+- [Отображение сводной информации в нижнем колонтитуле элемента управления GridView (C#)](displaying-summary-information-in-the-gridview-s-footer-cs.md)
+- [Пользовательское форматирование на основе данных (VB)](custom-formatting-based-upon-data-vb.md)
+- [Использование TemplateField в элементе управления GridView (VB)](using-templatefields-in-the-gridview-control-vb.md)
+- [Использование TemplateField в элементе управления DetailsView (VB)](using-templatefields-in-the-detailsview-control-vb.md)
+- [Шаблоны FormView (VB)](using-the-formview-s-templates-vb.md)
+- [Отображение сводной информации в нижнем колонтитуле элемента управления GridView (VB)](displaying-summary-information-in-the-gridview-s-footer-vb.md)

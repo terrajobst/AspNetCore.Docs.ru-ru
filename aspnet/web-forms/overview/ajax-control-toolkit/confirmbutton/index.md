@@ -1,28 +1,24 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/confirmbutton/index
-title: ConfirmButton | Документы Microsoft
+title: ConfirmButton | Документация Майкрософт
 author: rick-anderson
-description: Этот учебник показывает использование управления ConfirmButton, который отображает Да/Нет всплывающего меню, когда пользователь нажимает кнопку.
-ms.author: aspnetcontent
-manager: wpickett
+description: Этом руководстве показано, как использование ConfirmButton элемента управления, отображающий Да/Нет всплывающего меню, когда пользователь нажимает кнопку.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 338c4fd9-0e9b-4dab-a92b-4b88bd403d49
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/confirmbutton
 msc.type: chapter
-ms.openlocfilehash: d692162fb39065e6c49927e3fbfca5b3af90b54a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: d9c138c5ce2a5acbdbeb32653c4291904b4ae4bf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26510343"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255450"
 ---
 <a name="confirmbutton"></a>ConfirmButton
 ====================
-> Этот учебник показывает использование управления ConfirmButton, который отображает Да/Нет всплывающего меню, когда пользователь нажимает кнопку.
+> Этом руководстве показано, как использование ConfirmButton элемента управления, отображающий Да/Нет всплывающего меню, когда пользователь нажимает кнопку.
 
 
-- [С помощью ConfirmButton в повторителя (C#)](using-a-confirmbutton-in-a-repeater-cs.md)
-- [С помощью ConfirmButton в повторителя (Visual Basic)](using-a-confirmbutton-in-a-repeater-vb.md)
+- [Использование ConfirmButton в элементе управления Repeater (C#)](using-a-confirmbutton-in-a-repeater-cs.md)
+- [Использование ConfirmButton в элементе управления Repeater (VB)](using-a-confirmbutton-in-a-repeater-vb.md)

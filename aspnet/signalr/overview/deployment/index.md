@@ -1,28 +1,24 @@
 ---
 uid: signalr/overview/deployment/index
-title: SignalR развертывания и размещения | Документы Microsoft
+title: SignalR развертывание и размещение | Документация Майкрософт
 author: rick-anderson
-description: Развертывание и ведущих приложений SignalR.
-ms.author: aspnetcontent
-manager: wpickett
+description: Описывается развертывание и размещение приложений SignalR.
+ms.author: riande
 ms.date: 09/19/2014
-ms.topic: article
 ms.assetid: 62482bdd-e2a4-46e5-b909-6d0c6bc07114
-ms.technology: dotnet-signalr
-ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/deployment
 msc.type: chapter
-ms.openlocfilehash: 8c018a2fe92c90e3264326116cb4b21a0070bff4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: df56c36ba757192169fa6aac0fa48a120dfc717c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26504073"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48256826"
 ---
-<a name="signalr-deployment-and-hosting"></a>SignalR развертывания и размещения
+<a name="signalr-deployment-and-hosting"></a>Развертывание SignalR и размещение
 ====================
-> Развертывание и ведущих приложений SignalR.
+> Описывается развертывание и размещение приложений SignalR.
 
 
-- [Учебник: SignalR резидентной](tutorial-signalr-self-host.md)
-- [Использование SignalR с веб-приложений в службе приложений Azure](using-signalr-with-azure-web-sites.md)
+- [Учебник. Резидентное размещение SignalR](tutorial-signalr-self-host.md)
+- [Использование SignalR с веб-приложениями в службе приложений Azure](using-signalr-with-azure-web-sites.md)

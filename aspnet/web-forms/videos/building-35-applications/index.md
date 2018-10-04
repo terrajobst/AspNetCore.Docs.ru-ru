@@ -1,42 +1,38 @@
 ---
 uid: web-forms/videos/building-35-applications/index
-title: Построение приложений 3.5 | Документы Microsoft
+title: Создание приложений 3.5 | Документация Майкрософт
 author: rick-anderson
 description: Основы создания приложений веб-форм ASP.NET.
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 10/05/2011
-ms.topic: article
 ms.assetid: 20060b05-3c1b-41ca-9621-4434ba233adc
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/building-35-applications
 msc.type: chapter
-ms.openlocfilehash: 3a0c07ec2b8bd47e37dcce750a003ac6c0e824d8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 0c70223c81f598c83cc39c28d97364f5c8b1e92b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26526403"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254730"
 ---
-<a name="building-35-applications"></a>Построение приложений 3.5
+<a name="building-35-applications"></a>Создание приложений 3.5
 ====================
 > Основы создания приложений веб-форм ASP.NET.
 
 
 - [Введение в Visual Web Developer](intro-to-visual-web-developer.md)
 - [IntelliSense](intellisense.md)
-- [Введение в веб-форм](intro-to-web-forms.md)
+- [Введение в веб-формы](intro-to-web-forms.md)
 - [Макет страницы](page-layout.md)
-- [События жизненного цикла страницы](page-lifecycle-events.md)
+- [События жизненного цикла приложения](page-lifecycle-events.md)
 - [Введение в элементы управления ASP.NET](intro-to-aspnet-controls.md)
-- [Отправка и обратной передачи](submit-and-postback.md)
+- [Отправка и обратная передача](submit-and-postback.md)
 - [Объекты уровня приложения](application-level-objects.md)
 - [Объекты уровня сеанса](session-level-objects.md)
 - [Отладка](debugging.md)
 - [CSS](css.md)
 - [Главные страницы](masterpages.md)
-- [Введение в SOAP на основе веб-служб с помощью Visual Web Developer 2008](an-introduction-to-soap-based-web-services-with-visual-web-developer-2008.md)
-- [Стиль службы AJAX с помощью Microsoft Visual Web Developer 2008](ajax-style-services-with-microsoft-visual-web-developer-2008.md)
+- [Введение в веб-службы на основе SOAP в Visual Web Developer 2008](an-introduction-to-soap-based-web-services-with-visual-web-developer-2008.md)
+- [Службы в стиле AJAX в Microsoft Visual Web Developer 2008](ajax-style-services-with-microsoft-visual-web-developer-2008.md)
 - [Проверка](validation.md)
-- [Элементы управления входом](login-controls.md)
+- [Элементы управления для входа в систему](login-controls.md)

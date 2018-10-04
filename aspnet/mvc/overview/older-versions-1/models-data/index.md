@@ -1,40 +1,36 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/index
-title: Модели (данных) | Документы Microsoft
+title: Модели (данных) | Документация Майкрософт
 author: rick-anderson
-description: В этой серии учебника вы узнаете, как использовать ASP.NET MVC с платформой Entity Framework корпорации Майкрософт. В ходе работы с этим учебником построения веб-приложения...
-ms.author: aspnetcontent
-manager: wpickett
+description: В этой серии руководств вы узнаете, как использовать ASP.NET MVC с помощью Microsoft Entity Framework. В ходе работы с этим руководством сборки веб-приложения...
+ms.author: riande
 ms.date: 09/28/2011
-ms.topic: article
 ms.assetid: 9086d8a8-7952-4a7e-82a7-724d48178555
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data
 msc.type: chapter
-ms.openlocfilehash: b531a5ad6924840487985a57c178d18d945a0b06
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: aee92dffc059d984bc9e5d5a93fc03ed4a2f8136
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26499983"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254971"
 ---
 <a name="models-data"></a>Модели (данных)
 ====================
-> В этой серии учебника вы узнаете, как использовать ASP.NET MVC с платформой Entity Framework корпорации Майкрософт. В ходе работы с этим учебником построения веб-приложения, демонстрирующий выбора, вставки, обновления и удаления базы данных с помощью платформы Entity Framework.
+> В этой серии руководств вы узнаете, как использовать ASP.NET MVC с помощью Microsoft Entity Framework. В ходе работы с этим руководством вы создавать веб-приложения, демонстрирующий выбор, вставки, обновления и удаления базы данных с помощью Entity Framework.
 
 
-- [Создание классов модели с платформой Entity Framework (C#)](creating-model-classes-with-the-entity-framework-cs.md)
-- [Создание классов модели с помощью LINQ to SQL (C#)](creating-model-classes-with-linq-to-sql-cs.md)
-- [Отображение таблицы базы данных (C#)](displaying-a-table-of-database-data-cs.md)
-- [Выполняет простую проверку (C#)](performing-simple-validation-cs.md)
-- [Проверка с помощью IDataErrorInfo-интерфейс (C#)](validating-with-the-idataerrorinfo-interface-cs.md)
-- [Проверка с помощью на уровне службы (C#)](validating-with-a-service-layer-cs.md)
-- [Проверка с помощью средства проверки данных заметки (C#)](validation-with-the-data-annotation-validators-cs.md)
-- [Создание классов модели с платформой Entity Framework (Visual Basic)](creating-model-classes-with-the-entity-framework-vb.md)
-- [Создание классов модели с помощью LINQ to SQL (Visual Basic)](creating-model-classes-with-linq-to-sql-vb.md)
-- [Отображение таблицы базы данных (Visual Basic)](displaying-a-table-of-database-data-vb.md)
-- [Выполняет простую проверку (Visual Basic)](performing-simple-validation-vb.md)
-- [Проверка с помощью IDataErrorInfo-интерфейс (Visual Basic)](validating-with-the-idataerrorinfo-interface-vb.md)
-- [Проверка с помощью на уровне службы (Visual Basic)](validating-with-a-service-layer-vb.md)
-- [Проверка с помощью заметки данных проверяющие элементы управления (Visual Basic)](validation-with-the-data-annotation-validators-vb.md)
+- [Создание классов модели в Entity Framework (C#)](creating-model-classes-with-the-entity-framework-cs.md)
+- [Создание классов модели в LINQ to SQL (C#)](creating-model-classes-with-linq-to-sql-cs.md)
+- [Отображение таблицы данных в базе данных (C#)](displaying-a-table-of-database-data-cs.md)
+- [Выполнение простой проверки (C#)](performing-simple-validation-cs.md)
+- [Проверка с помощью интерфейса IDataErrorInfo (C#)](validating-with-the-idataerrorinfo-interface-cs.md)
+- [Проверка с помощью уровня службы (C#)](validating-with-a-service-layer-cs.md)
+- [Проверка с помощью проверяющих элементов управления заметок к данным (C#)](validation-with-the-data-annotation-validators-cs.md)
+- [Создание классов модели в Entity Framework (VB)](creating-model-classes-with-the-entity-framework-vb.md)
+- [Создание классов модели в LINQ to SQL (VB)](creating-model-classes-with-linq-to-sql-vb.md)
+- [Отображение таблицы данных в базе данных (VB)](displaying-a-table-of-database-data-vb.md)
+- [Выполнение простой проверки (VB)](performing-simple-validation-vb.md)
+- [Проверка с помощью интерфейса IDataErrorInfo (VB)](validating-with-the-idataerrorinfo-interface-vb.md)
+- [Проверка с помощью уровня службы (VB)](validating-with-a-service-layer-vb.md)
+- [Проверка с помощью проверяющих элементов управления заметок к данным (VB)](validation-with-the-data-annotation-validators-vb.md)
