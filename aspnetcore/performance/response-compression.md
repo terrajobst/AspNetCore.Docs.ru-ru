@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: performance/response-compression
-ms.openlocfilehash: 3a01c2d572c0026944347f736f9658a7872e6c35
-ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
+ms.openlocfilehash: d5e0b6ed21c14f2e76396cde846c69a76ad40794
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47028288"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578150"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Сжатие откликов в ASP.NET Core
 
@@ -150,9 +150,21 @@ public class Startup
 
 ![Fiddler окно, отображающее результат запроса без заголовка Accept-Encoding. Ответ не сжимается.](response-compression/_static/request-uncompressed.png)
 
+::: moniker range=">= aspnetcore-2.2"
+
+Отправить запрос в пример приложения с `Accept-Encoding: br` заголовка (Brotli сжатие) и обратите внимание, что ответ сжата. `Content-Encoding` И `Vary` заголовки присутствуют в ответе.
+
+![Fiddler окно, отображающее результат запроса с заголовком Accept-Encoding и значение br. Заголовки Vary и Content-Encoding, добавляются в ответ. Ответ сжимается.](response-compression/_static/request-compressed-br.png)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
 Отправить запрос в пример приложения с `Accept-Encoding: gzip` заголовка и обратите внимание, что ответ сжата. `Content-Encoding` И `Vary` заголовки присутствуют в ответе.
 
 ![Fiddler окно, отображающее результат запроса с заголовком Accept-Encoding и значение gzip. Заголовки Vary и Content-Encoding, добавляются в ответ. Ответ сжимается.](response-compression/_static/request-compressed.png)
+
+::: moniker-end
 
 ## <a name="providers"></a>Поставщики
 

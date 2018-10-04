@@ -8,16 +8,16 @@ ms.date: 08/28/2012
 ms.assetid: 41eb99ca-e88f-4720-ae6d-49a958da8116
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: ea8156fc2ea334be37e7c3f02ac15d168cfc6843
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 1223e110ce98c5b511312de42bc2992045a4a40b
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836691"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577994"
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>Изучение методов Edit и представления Edit
 ====================
-по [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон]((https://twitter.com/RickAndMSFT))
 
 > > [!NOTE]
 > > Обновленную версию этого учебника доступен [здесь](../../getting-started/introduction/getting-started.md) , использующий ASP.NET MVC 5 и Visual Studio 2013. Она более безопасные, гораздо проще следовать и показаны дополнительные возможности.

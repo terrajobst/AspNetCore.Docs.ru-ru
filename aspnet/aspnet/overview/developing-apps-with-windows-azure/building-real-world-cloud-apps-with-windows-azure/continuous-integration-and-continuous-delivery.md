@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: eaece9f5-f80c-428b-b771-5db66d275b7d
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
 msc.type: authoredcontent
-ms.openlocfilehash: 7a92a68ce8bbeec604a22e082975d33f9f3377c1
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: f701488025ec84a17651f9abff43f84531d35689
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340073"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48576252"
 ---
 <a name="continuous-integration-and-continuous-delivery-building-real-world-cloud-apps-with-azure"></a>Непрерывная интеграция и непрерывная поставка (Создание реальных облачных приложений в Azure)
 ====================
-по [Майк Уоссон](https://github.com/MikeWasson), [Рик Андерсон](https://github.com/Rick-Anderson), [том Дайкстра](https://github.com/tdykstra)
+по [Майк Уоссон](https://github.com/MikeWasson), [Рик Андерсон]((https://twitter.com/RickAndMSFT)), [том Дайкстра](https://github.com/tdykstra)
 
 [Загрузить решение проект](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) или [скачайте электронную книгу](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
@@ -40,7 +40,7 @@ ms.locfileid: "44340073"
 
 Автоматизация этих процессов в Azure очень просто. Так как все, что выполняется в облаке, не нужно покупать и как управлять серверами для сборки или тестовой среде. И вам не нужно ждать доступны для тестирования на сервер. С каждой сборкой, что делать можно настройте тестовую среду в Azure с помощью сценария автоматизации, выполнения приемочного тестирования или Дополнительные подробные тесты на ее основе и затем когда все будет готово только его уничтожения. И только запуске этого сервера для 2 часа или 8 часов в день, сумму денег, что необходимо будет заплатить за это сводится к минимуму, так как вы платите только за время компьютере выполняется. К примеру среде необходимые исправления для приложения по сути стоит около 1% в час при переходе одного уровня уровня бесплатно. В течение месяца вы запустили только среды в час за раз, тестовой среды, возможно, стоимость меньше, чем латте, приобрести в Starbucks.
 
-## <a name="azure-devops-services"></a>Службы Azure DevOps 
+## <a name="azure-devops-services"></a>Azure DevOps Services 
 
 Службы Azure DevOps предоставляет ряд функций для упрощения разработки приложений, от планирования до развертывания.
 

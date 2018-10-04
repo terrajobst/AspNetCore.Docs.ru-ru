@@ -8,16 +8,16 @@ ms.date: 07/20/2015
 ms.assetid: 406518e9-3817-49ce-8b90-e82bc461e2c0
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/distributed-caching
 msc.type: authoredcontent
-ms.openlocfilehash: 1f67c754fcc03462c25983a8397a1093997b1213
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 26866ef9d13a198aab627ccf0f5e1ff3d2304427
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41837965"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577552"
 ---
 <a name="distributed-caching-building-real-world-cloud-apps-with-azure"></a>Распределенного кэширования (Создание реальных облачных приложений в Azure)
 ====================
-по [Майк Уоссон](https://github.com/MikeWasson), [Рик Андерсон](https://github.com/Rick-Anderson), [том Дайкстра](https://github.com/tdykstra)
+по [Майк Уоссон](https://github.com/MikeWasson), [Рик Андерсон]((https://twitter.com/RickAndMSFT)), [том Дайкстра](https://github.com/tdykstra)
 
 [Загрузить решение проект](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) или [скачайте электронную книгу](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 

@@ -8,16 +8,16 @@ ms.date: 08/28/2012
 ms.assetid: 53db72da-e0b9-44d9-b60b-6e6988c00b28
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-model
 msc.type: authoredcontent
-ms.openlocfilehash: a7e732da3b056980c87660f6b80366438b5823c1
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 5308d2d1d11f954db8a4502adb42223f69e0c675
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838836"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578514"
 ---
 <a name="adding-a-model"></a>Добавление модели
 ====================
-по [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон]((https://twitter.com/RickAndMSFT))
 
 > > [!NOTE]
 > > Обновленную версию этого учебника доступен [здесь](../../getting-started/introduction/getting-started.md) , использующий ASP.NET MVC 5 и Visual Studio 2013. Она более безопасные, гораздо проще следовать и показаны дополнительные возможности.

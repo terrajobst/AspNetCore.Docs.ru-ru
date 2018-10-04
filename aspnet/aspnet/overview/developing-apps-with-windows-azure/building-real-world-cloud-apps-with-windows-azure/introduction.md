@@ -8,16 +8,16 @@ ms.date: 06/12/2014
 ms.assetid: accfa16a-ab15-4c26-9ad4-babdc2a77d2e
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: eade14bc27e2bface84fb0bdd2f3c5bf8ef28432
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: c496e93d7517bc187514d5fa2dfa90d29c5f47f9
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838873"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48576317"
 ---
 <a name="building-real-world-cloud-apps-with-azure"></a>Создание реальных облачных приложений в Azure
 ====================
-по [Майк Уоссон](https://github.com/MikeWasson), [Рик Андерсон](https://github.com/Rick-Anderson), [том Дайкстра](https://github.com/tdykstra)
+по [Майк Уоссон](https://github.com/MikeWasson), [Рик Андерсон]((https://twitter.com/RickAndMSFT)), [том Дайкстра](https://github.com/tdykstra)
 
 [Загрузить решение проект](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) или [скачайте электронную книгу](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 

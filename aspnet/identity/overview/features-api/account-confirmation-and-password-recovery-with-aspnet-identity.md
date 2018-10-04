@@ -8,16 +8,16 @@ ms.date: 03/26/2015
 ms.assetid: 8d54180d-f826-4df7-b503-7debf5ed9fb3
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 77a3e9d5e8b2698d2464e33520d779febd4533bd
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 84f35cfc0f0e0f1c268e0e9c18fd47aa68deb7d1
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838894"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577838"
 ---
 <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>Подтверждение учетной записи и восстановление пароля в ASP.NET Identity (C#)
 ====================
-по [поздравить Хао](https://github.com/HaoK), [Пранавом Растоги](https://github.com/rustd), [Рик Андерсон](https://github.com/Rick-Anderson), [Suhas Joshi](https://github.com/suhasj)
+по [поздравить Хао](https://github.com/HaoK), [Пранавом Растоги](https://github.com/rustd), [Рик Андерсон]((https://twitter.com/RickAndMSFT)), [Suhas Joshi](https://github.com/suhasj)
 
 > Прежде чем выполнять задания этого учебника вы должны изучить [создать безопасное веб-приложение ASP.NET MVC 5 со входом, по электронной почте подтверждение и сброс пароля](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md). Это руководство содержит дополнительные сведения о нем показано, как настроить адрес электронной почты для подтверждения локальной учетной записи и разрешить пользователям Сброс забытого пароля в ASP.NET Identity. Эта статья написана с Рик Андерсон ([@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)), Пранавом Растоги ([@rustd](https://twitter.com/rustd)), поздравить Хао и Suhas Joshi. NuGet образец был написан главным образом Хао поздравить.
 

@@ -8,16 +8,16 @@ ms.date: 03/26/2015
 ms.assetid: c205805f-efdd-4fa7-9616-f26eab180611
 msc.legacyurl: /mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
 msc.type: authoredcontent
-ms.openlocfilehash: f5d174ff6823d654a24dcb2c90f10a3cbd24f1e7
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 94a72f22cbcd7fa84528dde502cceaa1e26dcaa1
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829467"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577292"
 ---
 <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a>Профилирование и отладка приложения ASP.NET MVC с помощью Glimpse
 ====================
-по [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон]((https://twitter.com/RickAndMSFT))
 
 > Glimpse — бурно и семейству пакетов NuGet с открытым кодом, предоставляющий подробные сведения о производительности, отладку и диагностические сведения для приложений ASP.NET. Он просто установить, простой и сверхбыстрой и отображает ключевые показатели производительности в нижней части каждой страницы. Он дает возможность углубиться в приложении, если вам нужно узнать, что происходит на сервере. Glimpse предоставляет намного ценную информацию, мы рекомендуем использовать его на протяжении всего цикла разработки, включая Azure тестовой среды. Хотя [Fiddler](http://www.telerik.com/fiddler) и [средства разработки F-12](https://msdn.microsoft.com/library/ie/gg589512(v=vs.85).aspx) предоставляют на стороне клиента представления, представление предоставляет подробную информацию с сервера. Этот учебник посвящен с помощью Glimpse ASP.NET MVC и EF пакеты, но доступны многие другие пакеты. По возможности я будет связан соответствующий [Окиньте документация](http://getglimpse.com/Docs/) которого я целях. Представление — это проект с открытым исходным кодом, слишком у вас есть доступ к исходному коду и документы.
 

@@ -8,16 +8,16 @@ ms.date: 12/13/2013
 ms.assetid: 2e260430-d13c-4658-bd05-e256fc0d63b8
 msc.legacyurl: /identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 6115b2a6caca05659f1c35ce97954807a6fb01ae
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: a91bb6ac51819d7dbb8eb3c63bd36a9d830eecce
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835529"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578233"
 ---
 <a name="migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity-c"></a>Перенос данных универсального поставщика членства и профилей пользователей в ASP.NET Identity (C#)
 ====================
-по [Пранавом Растоги](https://github.com/rustd), [Рик Андерсон](https://github.com/Rick-Anderson), [(Robert McMurray)](https://github.com/rmcmurray), [Suhas Joshi](https://github.com/suhasj)
+по [Пранавом Растоги](https://github.com/rustd), [Рик Андерсон]((https://twitter.com/RickAndMSFT)), [(Robert McMurray)](https://github.com/rmcmurray), [Suhas Joshi](https://github.com/suhasj)
 
 > Этом руководстве описаны шаги, необходимые для переноса пользователей и роли данных и данные профиля пользователя, созданных с помощью универсальные поставщики существующего приложения модель удостоверений ASP.NET. Этот подход упомянутые здесь, можно использовать для переноса данных профиля пользователя в приложение с помощью членства SQL также.
 

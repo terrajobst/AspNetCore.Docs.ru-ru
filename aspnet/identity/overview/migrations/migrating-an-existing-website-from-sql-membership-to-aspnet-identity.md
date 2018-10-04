@@ -8,16 +8,16 @@ ms.date: 12/19/2014
 ms.assetid: 220d3d75-16b2-4240-beae-a5b534f06419
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 51b97ee413ea0304177d5963b5fd9d7253778d4f
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 393d14799973e9126379743f63f79a7131206f38
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835480"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577617"
 ---
 <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>Миграция существующего веб-сайта из членства SQL в ASP.NET Identity
 ====================
-по [Рик Андерсон](https://github.com/Rick-Anderson), [Suhas Joshi](https://github.com/suhasj)
+по [Рик Андерсон]((https://twitter.com/RickAndMSFT)), [Suhas Joshi](https://github.com/suhasj)
 
 > Этот учебник демонстрирует действия по миграции веб-приложение с именем пользователя и роли данных, созданных с помощью членства SQL в новую систему ASP.NET Identity. Этот подход включает изменение существующей схемы базы данных к одному необходимые ASP.NET Identity и обработчик в классах старым или новым к нему. После после переноса базы данных применять этот подход, будущие обновления удостоверение будет обрабатываться без усилий.
 

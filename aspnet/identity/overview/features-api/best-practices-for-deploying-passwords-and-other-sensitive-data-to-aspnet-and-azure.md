@@ -8,16 +8,16 @@ ms.date: 05/21/2015
 ms.assetid: 97902c66-cb61-4d11-be52-73f962f2db0a
 msc.legacyurl: /identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
 msc.type: authoredcontent
-ms.openlocfilehash: eda2277a4baad8f2a63aa2fdf6ab84f57f1eb0e0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 8b5d6bf9fad72218341e4e0b90144da01abea3aa
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41828662"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577545"
 ---
 <a name="best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure-app-service"></a>Рекомендации по развертыванию паролей и других конфиденциальных данных в ASP.NET и службы приложений Azure
 ====================
-по [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон]((https://twitter.com/RickAndMSFT))
 
 > Этом руководстве показано, как ваш код можно безопасно хранить и получить доступ к защищенным сведениям. Наиболее важно, никогда не следует хранить пароли и другие конфиденциальные данные в исходном коде, а не следует использовать секреты производства в режиме разработки и тестирования.
 > 

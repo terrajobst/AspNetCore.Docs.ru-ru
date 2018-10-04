@@ -8,16 +8,16 @@ ms.date: 02/03/2014
 ms.assetid: bffd7863-f63b-4b23-a13c-372b5492e9fb
 msc.legacyurl: /web-api/overview/error-handling/web-api-global-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: a52c2a1589327421b7f498ff551145676c80e3e8
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 3e371760d2b34eb2be492e6ebbb33a5f9f7eff10
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836004"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577175"
 ---
 <a name="global-error-handling-in-aspnet-web-api-2"></a>Глобальная обработка ошибок в ASP.NET Web API 2
 ====================
-по [Matson Дэвид](https://github.com/davidmatson), [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Matson Дэвид](https://github.com/davidmatson), [Рик Андерсон]((https://twitter.com/RickAndMSFT))
 
 Сегодняшний день не существует простого способа в веб-API, чтобы вести журнал или глобально обработки ошибок. Некоторые необработанные исключения, которые можно обрабатывать с помощью [фильтры исключений](exception-handling.md), но существует несколько вариантов, обработка фильтров исключений невозможна. Пример:
 

@@ -8,16 +8,16 @@ ms.date: 08/14/2014
 ms.assetid: 457d7eaf-ee76-4ceb-9082-c7c1721435ad
 msc.legacyurl: /identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
 msc.type: authoredcontent
-ms.openlocfilehash: e2df906d220d738c45006de8b3c92e157ca9e57e
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 96a6b8d1c258e742907b649b631f8a6c2c4bbf98
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836982"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577474"
 ---
 <a name="developing-aspnet-apps-with-azure-active-directory"></a>Разработка приложений ASP.NET с Azure Active Directory
 ====================
-по [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон]((https://twitter.com/RickAndMSFT))
 
 Средства Microsoft ASP.NET для Azure Active Directory упрощает Включение проверки подлинности для веб-приложений, размещенных на [Azure](https://www.windowsazure.com/home/features/web-sites/). Проверка подлинности Azure можно использовать для проверки подлинности пользователей Office 365 из вашей организации, корпоративных учетных записей, синхронизированные из локальной службы Active Directory или пользователей, созданных в личном домене Azure Active Directory. Включение проверки подлинности Windows Azure настраивает приложение для проверки подлинности пользователей с помощью одного [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) клиента.
 

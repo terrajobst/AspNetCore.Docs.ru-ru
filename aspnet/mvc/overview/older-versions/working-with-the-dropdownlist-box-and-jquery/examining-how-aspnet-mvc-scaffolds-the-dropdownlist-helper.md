@@ -8,16 +8,16 @@ ms.date: 01/12/2012
 ms.assetid: 8921d7f2-21f0-427a-8b27-2df7251174b0
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper
 msc.type: authoredcontent
-ms.openlocfilehash: ab45a14c4eda9e7552af4831851396af3c13dce1
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 542790b7f475cc641ed26ff3187c25c25118e0ed
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835928"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577851"
 ---
 <a name="examining--how--aspnet-mvc-scaffolds-the-dropdownlist-helper"></a>Проверка того, как ASP.NET MVC формирует шаблоны вспомогательного метода DropDownList
 ====================
-по [Рик Андерсон](https://github.com/Rick-Anderson)
+по [Рик Андерсон]((https://twitter.com/RickAndMSFT))
 
 В **обозревателе решений**, щелкните правой кнопкой мыши *контроллеров* папку, а затем выберите **Добавление контроллера**. Назовите контроллер **StoreManagerController**. Для установки параметров **Добавление контроллера** диалоговое окно, как показано на рисунке ниже.
 

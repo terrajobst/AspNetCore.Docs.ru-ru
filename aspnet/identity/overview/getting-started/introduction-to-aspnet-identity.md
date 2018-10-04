@@ -8,16 +8,16 @@ ms.date: 10/17/2013
 ms.assetid: 38717fc1-5989-43cf-952d-4007cc1dd923
 msc.legacyurl: /identity/overview/getting-started/introduction-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 24674adf1f28b3ffc0822a4b112c972d1e7ed5b4
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 1938de2b57c8fafa7ea8a656c0a42d2d3f1a6c81
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829388"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577877"
 ---
 <a name="introduction-to-aspnet-identity"></a>Введение в ASP.NET Identity
 ====================
-по [Джон Гэллоуэй](https://github.com/jongalloway), [Пранавом Растоги](https://github.com/rustd), [Рик Андерсон](https://github.com/Rick-Anderson), [том Дайкстра](https://github.com/tdykstra)
+по [Джон Гэллоуэй](https://github.com/jongalloway), [Пранавом Растоги](https://github.com/rustd), [Рик Андерсон]((https://twitter.com/RickAndMSFT)), [том Дайкстра](https://github.com/tdykstra)
 
 > Система членства ASP.NET впервые появилась в ASP.NET 2.0 обратно в 2005 г., а поскольку затем произошло много изменений одним из способов проверки подлинности и авторизации веб-приложения обычно обрабатывают. ASP.NET Identity — это Свежий взгляд на то, что система членства должно быть при создании современных приложений для Интернета, телефона или планшета.
 > 
