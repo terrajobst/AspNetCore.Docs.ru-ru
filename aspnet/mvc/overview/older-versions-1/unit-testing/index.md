@@ -1,28 +1,24 @@
 ---
 uid: mvc/overview/older-versions-1/unit-testing/index
-title: Модульное тестирование | Документы Microsoft
+title: Модульное тестирование | Документация Майкрософт
 author: rick-anderson
-description: Этот набор учебника показано, как для создания модульных тестов для ASP.NET MVC действия контроллера.
-ms.author: aspnetcontent
-manager: wpickett
+description: Этот набор руководств показано, как для создания модульных тестов для ASP.NET MVC действий контроллера.
+ms.author: riande
 ms.date: 09/28/2011
-ms.topic: article
 ms.assetid: b21d9a30-6b5c-41ab-a8e4-2fa18acd8e9b
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/unit-testing
 msc.type: chapter
-ms.openlocfilehash: 8d003486ae45938dfed93b908c4be44e66085189
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: d51c89c6b61c7092fcfcdbd11bd0cd7940afa70d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26500723"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255639"
 ---
-<a name="unit-testing"></a><span data-ttu-id="6e820-103">Модульное тестирование</span><span class="sxs-lookup"><span data-stu-id="6e820-103">Unit Testing</span></span>
+<a name="unit-testing"></a><span data-ttu-id="1794e-103">Модульное тестирование</span><span class="sxs-lookup"><span data-stu-id="1794e-103">Unit Testing</span></span>
 ====================
-> <span data-ttu-id="6e820-104">Этот набор учебника показано, как для создания модульных тестов для ASP.NET MVC действия контроллера.</span><span class="sxs-lookup"><span data-stu-id="6e820-104">This tutorial set shows you how to create unit tests for ASP.NET MVC controller actions.</span></span>
+> <span data-ttu-id="1794e-104">Этот набор руководств показано, как для создания модульных тестов для ASP.NET MVC действий контроллера.</span><span class="sxs-lookup"><span data-stu-id="1794e-104">This tutorial set shows you how to create unit tests for ASP.NET MVC controller actions.</span></span>
 
 
-- [<span data-ttu-id="6e820-105">Создание модульных тестов для приложений ASP.NET MVC (C#)</span><span class="sxs-lookup"><span data-stu-id="6e820-105">Creating Unit Tests for ASP.NET MVC Applications (C#)</span></span>](creating-unit-tests-for-asp-net-mvc-applications-cs.md)
-- [<span data-ttu-id="6e820-106">Создание модульных тестов для приложений ASP.NET MVC (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="6e820-106">Creating Unit Tests for ASP.NET MVC Applications (VB)</span></span>](creating-unit-tests-for-asp-net-mvc-applications-vb.md)
+- [<span data-ttu-id="1794e-105">Создание модульных тестов для приложений ASP.NET MVC (C#)</span><span class="sxs-lookup"><span data-stu-id="1794e-105">Creating Unit Tests for ASP.NET MVC Applications (C#)</span></span>](creating-unit-tests-for-asp-net-mvc-applications-cs.md)
+- [<span data-ttu-id="1794e-106">Создание модульных тестов для приложений ASP.NET MVC (VB)</span><span class="sxs-lookup"><span data-stu-id="1794e-106">Creating Unit Tests for ASP.NET MVC Applications (VB)</span></span>](creating-unit-tests-for-asp-net-mvc-applications-vb.md)

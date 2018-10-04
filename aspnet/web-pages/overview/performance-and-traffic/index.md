@@ -1,29 +1,25 @@
 ---
 uid: web-pages/overview/performance-and-traffic/index
-title: Производительность | Документы Microsoft
+title: Производительность | Документация Майкрософт
 author: rick-anderson
-description: Как для кэширования содержимого для повышения производительности, а также измерение трафика узла.
-ms.author: aspnetcontent
-manager: wpickett
+description: Как кэширование содержимого для повышения производительности и как измерить трафик сайта.
+ms.author: riande
 ms.date: 09/08/2014
-ms.topic: article
 ms.assetid: ce798572-e7dc-44c1-a7fe-a029820e195e
-ms.technology: dotnet-webpages
-ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/performance-and-traffic
 msc.type: chapter
-ms.openlocfilehash: fffeb7c5b5a202a273bfd8b144ad1f63d5743087
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: a38142955ffed9197b5e376a3b23fe11f46421df
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26528523"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255380"
 ---
-<a name="performance"></a><span data-ttu-id="67c00-103">Производительность</span><span class="sxs-lookup"><span data-stu-id="67c00-103">Performance</span></span>
+<a name="performance"></a><span data-ttu-id="94a3e-103">Производительность</span><span class="sxs-lookup"><span data-stu-id="94a3e-103">Performance</span></span>
 ====================
-> <span data-ttu-id="67c00-104">Как для кэширования содержимого для повышения производительности, а также измерение трафика узла.</span><span class="sxs-lookup"><span data-stu-id="67c00-104">How to cache content for faster performance and how to measure site traffic.</span></span>
+> <span data-ttu-id="94a3e-104">Как кэширование содержимого для повышения производительности и как измерить трафик сайта.</span><span class="sxs-lookup"><span data-stu-id="94a3e-104">How to cache content for faster performance and how to measure site traffic.</span></span>
 
 
-- [<span data-ttu-id="67c00-105">Кэширование для повышения производительности веб-сайта</span><span class="sxs-lookup"><span data-stu-id="67c00-105">Caching to Improve the Performance of Your Website</span></span>](15-caching-to-improve-the-performance-of-your-website.md)
-- [<span data-ttu-id="67c00-106">Анализ трафика</span><span class="sxs-lookup"><span data-stu-id="67c00-106">Analyzing Traffic</span></span>](14-analyzing-traffic.md)
-- [<span data-ttu-id="67c00-107">Объединение и Минификация активов на сайте ASP.NET Web Pages (Razor)</span><span class="sxs-lookup"><span data-stu-id="67c00-107">Bundling and Minifying Assets in an ASP.NET Web Pages (Razor) Site</span></span>](bundling-and-minifying-assets-in-an-aspnet-web-pages-razor-site.md)
+- [<span data-ttu-id="94a3e-105">Кэширование для повышения производительности веб-сайта</span><span class="sxs-lookup"><span data-stu-id="94a3e-105">Caching to Improve the Performance of Your Website</span></span>](15-caching-to-improve-the-performance-of-your-website.md)
+- [<span data-ttu-id="94a3e-106">Анализ трафика</span><span class="sxs-lookup"><span data-stu-id="94a3e-106">Analyzing Traffic</span></span>](14-analyzing-traffic.md)
+- [<span data-ttu-id="94a3e-107">Объединение и минификация активов на сайте веб-страниц ASP.NET (Razor)</span><span class="sxs-lookup"><span data-stu-id="94a3e-107">Bundling and Minifying Assets in an ASP.NET Web Pages (Razor) Site</span></span>](bundling-and-minifying-assets-in-an-aspnet-web-pages-razor-site.md)

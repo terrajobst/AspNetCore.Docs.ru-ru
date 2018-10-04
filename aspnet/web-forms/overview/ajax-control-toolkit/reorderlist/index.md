@@ -1,30 +1,26 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/index
-title: ReorderList | Документы Microsoft
+title: Элемента управления ReorderList | Документация Майкрософт
 author: rick-anderson
-description: Этого учебника показано, как использовать элемент управления ReorderList для отображения списка, пользователи могут изменить порядок с помощью перетаскивания элементов.
-ms.author: aspnetcontent
-manager: wpickett
+description: Этом руководстве показано, как использовать элемент управления ReorderList для отображения списка, пользователи могут изменить порядок путем перетаскивания элементов.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 25df8150-7999-4ab6-b401-0cad5f396d6c
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist
 msc.type: chapter
-ms.openlocfilehash: 14ad3527a17b0853dd10a07aba28d60867f79169
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: f429dac4352a5d0e469a7e3721f4b1a9396cd8f9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26511623"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48256715"
 ---
-<a name="reorderlist"></a><span data-ttu-id="db750-103">ReorderList</span><span class="sxs-lookup"><span data-stu-id="db750-103">ReorderList</span></span>
+<a name="reorderlist"></a><span data-ttu-id="1903c-103">Элемента управления ReorderList</span><span class="sxs-lookup"><span data-stu-id="1903c-103">ReorderList</span></span>
 ====================
-> <span data-ttu-id="db750-104">Этого учебника показано, как использовать элемент управления ReorderList для отображения списка, пользователи могут изменить порядок с помощью перетаскивания элементов.</span><span class="sxs-lookup"><span data-stu-id="db750-104">This tutorial shows how to use the ReorderList control to display a list that users can reorder by dragging items.</span></span>
+> <span data-ttu-id="1903c-104">Этом руководстве показано, как использовать элемент управления ReorderList для отображения списка, пользователи могут изменить порядок путем перетаскивания элементов.</span><span class="sxs-lookup"><span data-stu-id="1903c-104">This tutorial shows how to use the ReorderList control to display a list that users can reorder by dragging items.</span></span>
 
 
-- [<span data-ttu-id="db750-105">Использование обратных передач с ReorderList (C#)</span><span class="sxs-lookup"><span data-stu-id="db750-105">Using Postbacks with ReorderList (C#)</span></span>](using-postbacks-with-reorderlist-cs.md)
-- [<span data-ttu-id="db750-106">Перетаскивание через ReorderList (C#)</span><span class="sxs-lookup"><span data-stu-id="db750-106">Drag and Drop via ReorderList (C#)</span></span>](drag-and-drop-via-reorderlist-cs.md)
-- [<span data-ttu-id="db750-107">Использование обратных передач с ReorderList (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="db750-107">Using Postbacks with ReorderList (VB)</span></span>](using-postbacks-with-reorderlist-vb.md)
-- [<span data-ttu-id="db750-108">Перетаскивание через ReorderList (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="db750-108">Drag and Drop via ReorderList (VB)</span></span>](drag-and-drop-via-reorderlist-vb.md)
+- [<span data-ttu-id="1903c-105">Использование обратных передач с помощью элемента управления ReorderList (C#)</span><span class="sxs-lookup"><span data-stu-id="1903c-105">Using Postbacks with ReorderList (C#)</span></span>](using-postbacks-with-reorderlist-cs.md)
+- [<span data-ttu-id="1903c-106">Перетаскивание с помощью элемента управления ReorderList (C#)</span><span class="sxs-lookup"><span data-stu-id="1903c-106">Drag and Drop via ReorderList (C#)</span></span>](drag-and-drop-via-reorderlist-cs.md)
+- [<span data-ttu-id="1903c-107">Использование обратных передач с помощью элемента управления ReorderList (VB)</span><span class="sxs-lookup"><span data-stu-id="1903c-107">Using Postbacks with ReorderList (VB)</span></span>](using-postbacks-with-reorderlist-vb.md)
+- [<span data-ttu-id="1903c-108">Перетаскивание с помощью элемента управления ReorderList (VB)</span><span class="sxs-lookup"><span data-stu-id="1903c-108">Drag and Drop via ReorderList (VB)</span></span>](drag-and-drop-via-reorderlist-vb.md)

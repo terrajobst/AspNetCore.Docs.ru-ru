@@ -1,28 +1,24 @@
 ---
 uid: web-api/overview/hosting-aspnet-web-api/index
-title: 'Веб-API ASP.NET: Развертывание и размещения | Документы Microsoft'
+title: 'Веб-API ASP.NET: Развертывание и размещение | Документация Майкрософт'
 author: rick-anderson
 description: Как разместить веб-API.
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 01/26/2012
-ms.topic: article
 ms.assetid: 500be045-e1e1-478a-97fc-0374645dd95f
-ms.technology: dotnet-webapi
-ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/hosting-aspnet-web-api
 msc.type: chapter
-ms.openlocfilehash: 903e533d96c5187e1c7875f5bfcfdc4eba0ae98d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 76e5df0e67dee23df3cd0114f50011aa41e45e51
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26506903"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48256706"
 ---
-<a name="aspnet-web-api-deployment-and-hosting"></a><span data-ttu-id="6a31b-103">Веб-API ASP.NET: Развертывание и размещения</span><span class="sxs-lookup"><span data-stu-id="6a31b-103">ASP.NET Web API: Deployment and Hosting</span></span>
+<a name="aspnet-web-api-deployment-and-hosting"></a><span data-ttu-id="e9e2d-103">Веб-API ASP.NET: Развертывание и размещение</span><span class="sxs-lookup"><span data-stu-id="e9e2d-103">ASP.NET Web API: Deployment and Hosting</span></span>
 ====================
-> <span data-ttu-id="6a31b-104">Как разместить веб-API.</span><span class="sxs-lookup"><span data-stu-id="6a31b-104">How to host your web API.</span></span>
+> <span data-ttu-id="e9e2d-104">Как разместить веб-API.</span><span class="sxs-lookup"><span data-stu-id="e9e2d-104">How to host your web API.</span></span>
 
 
-- [<span data-ttu-id="6a31b-105">Используйте OWIN для самостоятельного размещения веб-API 2</span><span class="sxs-lookup"><span data-stu-id="6a31b-105">Use OWIN to Self-Host Web API 2</span></span>](use-owin-to-self-host-web-api.md)
-- [<span data-ttu-id="6a31b-106">Размещения веб-API 2 в рабочей роли Azure</span><span class="sxs-lookup"><span data-stu-id="6a31b-106">Host Web API 2 in an Azure Worker Role</span></span>](host-aspnet-web-api-in-an-azure-worker-role.md)
+- [<span data-ttu-id="e9e2d-105">Использование OWIN для резидентного размещения веб-API 2</span><span class="sxs-lookup"><span data-stu-id="e9e2d-105">Use OWIN to Self-Host Web API 2</span></span>](use-owin-to-self-host-web-api.md)
+- [<span data-ttu-id="e9e2d-106">Размещение веб-API 2 в рабочей роли Azure</span><span class="sxs-lookup"><span data-stu-id="e9e2d-106">Host Web API 2 in an Azure Worker Role</span></span>](host-aspnet-web-api-in-an-azure-worker-role.md)

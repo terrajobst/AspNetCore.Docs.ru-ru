@@ -1,28 +1,24 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/index
-title: MutuallyExclusiveCheckbox | Документы Microsoft
+title: MutuallyExclusiveCheckbox | Документация Майкрософт
 author: rick-anderson
-description: Этого учебника показано использование элемента управления MutuallyExclusiveCheckbox создавать флажки, которые работают подобно переключателей (взаимно исключают друг друга), но это может быть...
-ms.author: aspnetcontent
-manager: wpickett
+description: Этот учебник показано использование элемента управления MutuallyExclusiveCheckbox создавать флажки, которые работают как переключатели (являются взаимоисключающими), но это может оказаться...
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: f3f8ccad-2bb3-4cf7-94bf-24b184d987dc
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox
 msc.type: chapter
-ms.openlocfilehash: bea70dbaeb855c586cc0180511c454bf4ffd6e5f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: d171d1908034d81f931236f1494db29599014f70
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26510463"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48255690"
 ---
-<a name="mutuallyexclusivecheckbox"></a><span data-ttu-id="9f1f5-103">MutuallyExclusiveCheckbox</span><span class="sxs-lookup"><span data-stu-id="9f1f5-103">MutuallyExclusiveCheckbox</span></span>
+<a name="mutuallyexclusivecheckbox"></a><span data-ttu-id="755d1-103">MutuallyExclusiveCheckbox</span><span class="sxs-lookup"><span data-stu-id="755d1-103">MutuallyExclusiveCheckbox</span></span>
 ====================
-> <span data-ttu-id="9f1f5-104">Этот учебник показывает использование MutuallyExclusiveCheckbox управления создавать флажки, которые работают подобно переключателей (взаимно исключают друг друга), но, могут быть полностью устранены.</span><span class="sxs-lookup"><span data-stu-id="9f1f5-104">This tutorial shows how to use the MutuallyExclusiveCheckbox control to create check boxes that work like radio buttons (mutually exclusive) but that can be completely cleared.</span></span>
+> <span data-ttu-id="755d1-104">Этот учебник показано использование элемента управления MutuallyExclusiveCheckbox создавать флажки, которые работают как переключатели (являются взаимоисключающими), но, можно полностью очистить.</span><span class="sxs-lookup"><span data-stu-id="755d1-104">This tutorial shows how to use the MutuallyExclusiveCheckbox control to create check boxes that work like radio buttons (mutually exclusive) but that can be completely cleared.</span></span>
 
 
-- [<span data-ttu-id="9f1f5-105">Создание взаимно исключают друг друга флажки (C#)</span><span class="sxs-lookup"><span data-stu-id="9f1f5-105">Creating Mutually Exclusive Checkboxes (C#)</span></span>](creating-mutually-exclusive-checkboxes-cs.md)
-- [<span data-ttu-id="9f1f5-106">Создание взаимно исключают друг друга флажки (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="9f1f5-106">Creating Mutually Exclusive Checkboxes (VB)</span></span>](creating-mutually-exclusive-checkboxes-vb.md)
+- [<span data-ttu-id="755d1-105">Создание взаимоисключающих флажков (C#)</span><span class="sxs-lookup"><span data-stu-id="755d1-105">Creating Mutually Exclusive Checkboxes (C#)</span></span>](creating-mutually-exclusive-checkboxes-cs.md)
+- [<span data-ttu-id="755d1-106">Создание взаимоисключающих флажков (VB)</span><span class="sxs-lookup"><span data-stu-id="755d1-106">Creating Mutually Exclusive Checkboxes (VB)</span></span>](creating-mutually-exclusive-checkboxes-vb.md)
