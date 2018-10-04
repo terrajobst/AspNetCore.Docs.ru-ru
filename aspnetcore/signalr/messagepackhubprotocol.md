@@ -7,36 +7,36 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: 78b708c50ce7a8101c9eaa558171540e61c0d7f0
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: c04834b0d395d08782b51b56e79badba078a5b91
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39094999"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48794841"
 ---
-# <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a><span data-ttu-id="610ed-103">Используют протокол центра MessagePack в SignalR для ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="610ed-103">Use MessagePack Hub Protocol in SignalR for ASP.NET Core</span></span>
+# <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a><span data-ttu-id="8f729-103">Используют протокол центра MessagePack в SignalR для ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="8f729-103">Use MessagePack Hub Protocol in SignalR for ASP.NET Core</span></span>
 
-<span data-ttu-id="610ed-104">По [Бреннан Конрой](https://github.com/BrennanConroy)</span><span class="sxs-lookup"><span data-stu-id="610ed-104">By [Brennan Conroy](https://github.com/BrennanConroy)</span></span>
+<span data-ttu-id="8f729-104">По [Бреннан Конрой](https://github.com/BrennanConroy)</span><span class="sxs-lookup"><span data-stu-id="8f729-104">By [Brennan Conroy](https://github.com/BrennanConroy)</span></span>
 
-<span data-ttu-id="610ed-105">В этой статье предполагается, читатель знаком с подразделах, рассматриваемых в [приступить к работе](xref:tutorials/signalr).</span><span class="sxs-lookup"><span data-stu-id="610ed-105">This article assumes the reader is familiar with the topics covered in [Get Started](xref:tutorials/signalr).</span></span>
+<span data-ttu-id="8f729-105">В этой статье предполагается, читатель знаком с подразделах, рассматриваемых в [приступить к работе](xref:tutorials/signalr).</span><span class="sxs-lookup"><span data-stu-id="8f729-105">This article assumes the reader is familiar with the topics covered in [Get Started](xref:tutorials/signalr).</span></span>
 
-## <a name="what-is-messagepack"></a><span data-ttu-id="610ed-106">Что такое MessagePack?</span><span class="sxs-lookup"><span data-stu-id="610ed-106">What is MessagePack?</span></span>
+## <a name="what-is-messagepack"></a><span data-ttu-id="8f729-106">Что такое MessagePack?</span><span class="sxs-lookup"><span data-stu-id="8f729-106">What is MessagePack?</span></span>
 
-<span data-ttu-id="610ed-107">[MessagePack](https://msgpack.org/index.html) — это быстрый и компактный формат двоичной сериализации.</span><span class="sxs-lookup"><span data-stu-id="610ed-107">[MessagePack](https://msgpack.org/index.html) is a binary serialization format that is fast and compact.</span></span> <span data-ttu-id="610ed-108">Это удобно при производительности и пропускной способности являются проблемой, так как он создает относительно мелкие сообщения, по сравнению с [JSON](https://www.json.org/).</span><span class="sxs-lookup"><span data-stu-id="610ed-108">It's useful when performance and bandwidth are a concern because it creates smaller messages compared to [JSON](https://www.json.org/).</span></span> <span data-ttu-id="610ed-109">Поскольку это двоичный формат, сообщения являются нечитаемыми, когда просмотрев журналы и трассировки сети, если только байты передаются через MessagePack средство синтаксического анализа.</span><span class="sxs-lookup"><span data-stu-id="610ed-109">Because it's a binary format, messages are unreadable when looking at network traces and logs unless the bytes are passed through a MessagePack parser.</span></span> <span data-ttu-id="610ed-110">SignalR имеет встроенную поддержку формата MessagePack, а также предоставляет API-интерфейсы для клиента и сервера для использования.</span><span class="sxs-lookup"><span data-stu-id="610ed-110">SignalR has built-in support for the MessagePack format, and provides APIs for the client and server to use.</span></span>
+<span data-ttu-id="8f729-107">[MessagePack](https://msgpack.org/index.html) — это быстрый и компактный формат двоичной сериализации.</span><span class="sxs-lookup"><span data-stu-id="8f729-107">[MessagePack](https://msgpack.org/index.html) is a binary serialization format that is fast and compact.</span></span> <span data-ttu-id="8f729-108">Это удобно при производительности и пропускной способности являются проблемой, так как он создает относительно мелкие сообщения, по сравнению с [JSON](https://www.json.org/).</span><span class="sxs-lookup"><span data-stu-id="8f729-108">It's useful when performance and bandwidth are a concern because it creates smaller messages compared to [JSON](https://www.json.org/).</span></span> <span data-ttu-id="8f729-109">Поскольку это двоичный формат, сообщения являются нечитаемыми, когда просмотрев журналы и трассировки сети, если только байты передаются через MessagePack средство синтаксического анализа.</span><span class="sxs-lookup"><span data-stu-id="8f729-109">Because it's a binary format, messages are unreadable when looking at network traces and logs unless the bytes are passed through a MessagePack parser.</span></span> <span data-ttu-id="8f729-110">SignalR имеет встроенную поддержку формата MessagePack, а также предоставляет API-интерфейсы для клиента и сервера для использования.</span><span class="sxs-lookup"><span data-stu-id="8f729-110">SignalR has built-in support for the MessagePack format, and provides APIs for the client and server to use.</span></span>
 
-## <a name="configure-messagepack-on-the-server"></a><span data-ttu-id="610ed-111">Настройка MessagePack на сервере</span><span class="sxs-lookup"><span data-stu-id="610ed-111">Configure MessagePack on the server</span></span>
+## <a name="configure-messagepack-on-the-server"></a><span data-ttu-id="8f729-111">Настройка MessagePack на сервере</span><span class="sxs-lookup"><span data-stu-id="8f729-111">Configure MessagePack on the server</span></span>
 
-<span data-ttu-id="610ed-112">Чтобы включить протокол концентратора MessagePack на сервере, установите `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` в приложении пакет.</span><span class="sxs-lookup"><span data-stu-id="610ed-112">To enable the MessagePack Hub Protocol on the server, install the `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` package in your app.</span></span> <span data-ttu-id="610ed-113">В файле Startup.cs добавьте `AddMessagePackProtocol` для `AddSignalR` вызов, чтобы включить поддержку MessagePack на сервере.</span><span class="sxs-lookup"><span data-stu-id="610ed-113">In the Startup.cs file add `AddMessagePackProtocol` to the `AddSignalR` call to enable MessagePack support on the server.</span></span>
+<span data-ttu-id="8f729-112">Чтобы включить протокол концентратора MessagePack на сервере, установите `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` в приложении пакет.</span><span class="sxs-lookup"><span data-stu-id="8f729-112">To enable the MessagePack Hub Protocol on the server, install the `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` package in your app.</span></span> <span data-ttu-id="8f729-113">В файле Startup.cs добавьте `AddMessagePackProtocol` для `AddSignalR` вызов, чтобы включить поддержку MessagePack на сервере.</span><span class="sxs-lookup"><span data-stu-id="8f729-113">In the Startup.cs file add `AddMessagePackProtocol` to the `AddSignalR` call to enable MessagePack support on the server.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="610ed-114">JSON включена по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="610ed-114">JSON is enabled by default.</span></span> <span data-ttu-id="610ed-115">Добавление MessagePack включает поддержку JSON и MessagePack клиентов.</span><span class="sxs-lookup"><span data-stu-id="610ed-115">Adding MessagePack enables support for both JSON and MessagePack clients.</span></span>
+> <span data-ttu-id="8f729-114">JSON включена по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="8f729-114">JSON is enabled by default.</span></span> <span data-ttu-id="8f729-115">Добавление MessagePack включает поддержку JSON и MessagePack клиентов.</span><span class="sxs-lookup"><span data-stu-id="8f729-115">Adding MessagePack enables support for both JSON and MessagePack clients.</span></span>
 
 ```csharp
 services.AddSignalR()
     .AddMessagePackProtocol();
 ```
 
-<span data-ttu-id="610ed-116">Для настройки, как MessagePack будет форматирования данных, `AddMessagePackProtocol` принимает делегат для настройки параметров.</span><span class="sxs-lookup"><span data-stu-id="610ed-116">To customize how MessagePack will format your data, `AddMessagePackProtocol` takes a delegate for configuring options.</span></span> <span data-ttu-id="610ed-117">В этот делегат `FormatterResolvers` свойство может использоваться для настройки параметров MessagePack сериализации.</span><span class="sxs-lookup"><span data-stu-id="610ed-117">In that delegate, the `FormatterResolvers` property can be used to configure MessagePack serialization options.</span></span> <span data-ttu-id="610ed-118">Дополнительные сведения о работе сопоставители посетить MessagePack библиотеки [MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp).</span><span class="sxs-lookup"><span data-stu-id="610ed-118">For more information on how the resolvers work, visit the MessagePack library at [MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp).</span></span> <span data-ttu-id="610ed-119">Атрибуты можно использовать на объекты, которые необходимо сериализовать, чтобы определить, как они должны обрабатываться.</span><span class="sxs-lookup"><span data-stu-id="610ed-119">Attributes can be used on the objects you want to serialize to define how they should be handled.</span></span>
+<span data-ttu-id="8f729-116">Для настройки, как MessagePack будет форматирования данных, `AddMessagePackProtocol` принимает делегат для настройки параметров.</span><span class="sxs-lookup"><span data-stu-id="8f729-116">To customize how MessagePack will format your data, `AddMessagePackProtocol` takes a delegate for configuring options.</span></span> <span data-ttu-id="8f729-117">В этот делегат `FormatterResolvers` свойство может использоваться для настройки параметров MessagePack сериализации.</span><span class="sxs-lookup"><span data-stu-id="8f729-117">In that delegate, the `FormatterResolvers` property can be used to configure MessagePack serialization options.</span></span> <span data-ttu-id="8f729-118">Дополнительные сведения о работе сопоставители посетить MessagePack библиотеки [MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp).</span><span class="sxs-lookup"><span data-stu-id="8f729-118">For more information on how the resolvers work, visit the MessagePack library at [MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp).</span></span> <span data-ttu-id="8f729-119">Атрибуты можно использовать на объекты, которые необходимо сериализовать, чтобы определить, как они должны обрабатываться.</span><span class="sxs-lookup"><span data-stu-id="8f729-119">Attributes can be used on the objects you want to serialize to define how they should be handled.</span></span>
 
 ```csharp
 services.AddSignalR()
@@ -49,11 +49,14 @@ services.AddSignalR()
     });
 ```
 
-## <a name="configure-messagepack-on-the-client"></a><span data-ttu-id="610ed-120">Настройка MessagePack на стороне клиента</span><span class="sxs-lookup"><span data-stu-id="610ed-120">Configure MessagePack on the client</span></span>
+## <a name="configure-messagepack-on-the-client"></a><span data-ttu-id="8f729-120">Настройка MessagePack на стороне клиента</span><span class="sxs-lookup"><span data-stu-id="8f729-120">Configure MessagePack on the client</span></span>
 
-### <a name="net-client"></a><span data-ttu-id="610ed-121">Клиент .NET</span><span class="sxs-lookup"><span data-stu-id="610ed-121">.NET client</span></span>
+> [!NOTE]
+> <span data-ttu-id="8f729-121">JSON включена по умолчанию для поддерживаемых клиентов.</span><span class="sxs-lookup"><span data-stu-id="8f729-121">JSON is enabled by default for the supported clients.</span></span> <span data-ttu-id="8f729-122">Клиенты, поддерживают только один протокол.</span><span class="sxs-lookup"><span data-stu-id="8f729-122">Clients can only support a single protocol.</span></span> <span data-ttu-id="8f729-123">Добавление поддержки MessagePack заменяет любой ранее настроены протоколы.</span><span class="sxs-lookup"><span data-stu-id="8f729-123">Adding MessagePack support will replace any previously configured protocols.</span></span>
 
-<span data-ttu-id="610ed-122">Чтобы включить MessagePack в клиенте .NET, установите `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` пакета и вызов `AddMessagePackProtocol` на `HubConnectionBuilder`.</span><span class="sxs-lookup"><span data-stu-id="610ed-122">To enable MessagePack in the .NET Client, install the `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` package and call `AddMessagePackProtocol` on `HubConnectionBuilder`.</span></span>
+### <a name="net-client"></a><span data-ttu-id="8f729-124">Клиент .NET</span><span class="sxs-lookup"><span data-stu-id="8f729-124">.NET client</span></span>
+
+<span data-ttu-id="8f729-125">Чтобы включить MessagePack в клиенте .NET, установите `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` пакета и вызов `AddMessagePackProtocol` на `HubConnectionBuilder`.</span><span class="sxs-lookup"><span data-stu-id="8f729-125">To enable MessagePack in the .NET Client, install the `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` package and call `AddMessagePackProtocol` on `HubConnectionBuilder`.</span></span>
 
 ```csharp
 var hubConnection = new HubConnectionBuilder()
@@ -63,20 +66,20 @@ var hubConnection = new HubConnectionBuilder()
 ```
 
 > [!NOTE]
-> <span data-ttu-id="610ed-123">Это `AddMessagePackProtocol` вызов принимает делегат для настройки параметров так же, как сервер.</span><span class="sxs-lookup"><span data-stu-id="610ed-123">This `AddMessagePackProtocol` call takes a delegate for configuring options just like the server.</span></span>
+> <span data-ttu-id="8f729-126">Это `AddMessagePackProtocol` вызов принимает делегат для настройки параметров так же, как сервер.</span><span class="sxs-lookup"><span data-stu-id="8f729-126">This `AddMessagePackProtocol` call takes a delegate for configuring options just like the server.</span></span>
 
-### <a name="javascript-client"></a><span data-ttu-id="610ed-124">Клиент JavaScript</span><span class="sxs-lookup"><span data-stu-id="610ed-124">JavaScript client</span></span>
+### <a name="javascript-client"></a><span data-ttu-id="8f729-127">Клиент JavaScript</span><span class="sxs-lookup"><span data-stu-id="8f729-127">JavaScript client</span></span>
 
-<span data-ttu-id="610ed-125">Обеспечивается поддержка MessagePack для клиента Javascript `@aspnet/signalr-protocol-msgpack` пакета NPM.</span><span class="sxs-lookup"><span data-stu-id="610ed-125">MessagePack support for the Javascript client is provided by the `@aspnet/signalr-protocol-msgpack` NPM package.</span></span>
+<span data-ttu-id="8f729-128">Обеспечивается поддержка MessagePack для клиента Javascript `@aspnet/signalr-protocol-msgpack` пакета NPM.</span><span class="sxs-lookup"><span data-stu-id="8f729-128">MessagePack support for the Javascript client is provided by the `@aspnet/signalr-protocol-msgpack` NPM package.</span></span>
 
 ```console
 npm install @aspnet/signalr-protocol-msgpack
 ```
 
-<span data-ttu-id="610ed-126">После установки пакета npm, модуль можно использовать непосредственно с помощью загрузчика модулей JavaScript или импортированы в браузере, ссылаясь на *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* файла.</span><span class="sxs-lookup"><span data-stu-id="610ed-126">After installing the npm package, the module can be used directly via a JavaScript module loader or imported into the browser by referencing the *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* file.</span></span> <span data-ttu-id="610ed-127">В браузере `msgpack5` также должна быть указана библиотека.</span><span class="sxs-lookup"><span data-stu-id="610ed-127">In a browser the `msgpack5` library must also be referenced.</span></span> <span data-ttu-id="610ed-128">Используйте `<script>` тег, чтобы создать ссылку.</span><span class="sxs-lookup"><span data-stu-id="610ed-128">Use a `<script>` tag to create a reference.</span></span> <span data-ttu-id="610ed-129">Посетите библиотеку *node_modules\msgpack5\dist\msgpack5.js*.</span><span class="sxs-lookup"><span data-stu-id="610ed-129">The library can be found at *node_modules\msgpack5\dist\msgpack5.js*.</span></span>
+<span data-ttu-id="8f729-129">После установки пакета npm, модуль можно использовать непосредственно с помощью загрузчика модулей JavaScript или импортированы в браузере, ссылаясь на *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* файла.</span><span class="sxs-lookup"><span data-stu-id="8f729-129">After installing the npm package, the module can be used directly via a JavaScript module loader or imported into the browser by referencing the *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* file.</span></span> <span data-ttu-id="8f729-130">В браузере `msgpack5` также должна быть указана библиотека.</span><span class="sxs-lookup"><span data-stu-id="8f729-130">In a browser the `msgpack5` library must also be referenced.</span></span> <span data-ttu-id="8f729-131">Используйте `<script>` тег, чтобы создать ссылку.</span><span class="sxs-lookup"><span data-stu-id="8f729-131">Use a `<script>` tag to create a reference.</span></span> <span data-ttu-id="8f729-132">Посетите библиотеку *node_modules\msgpack5\dist\msgpack5.js*.</span><span class="sxs-lookup"><span data-stu-id="8f729-132">The library can be found at *node_modules\msgpack5\dist\msgpack5.js*.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="610ed-130">При использовании `<script>` элемент, порядок важен.</span><span class="sxs-lookup"><span data-stu-id="610ed-130">When using the `<script>` element, the order is important.</span></span> <span data-ttu-id="610ed-131">Если *signalr-protocol-msgpack.js* указывается перед *msgpack5.js*, произошла ошибка при попытке подключения с MessagePack.</span><span class="sxs-lookup"><span data-stu-id="610ed-131">If *signalr-protocol-msgpack.js* is referenced before *msgpack5.js*, an error occurs when trying to connect with MessagePack.</span></span> <span data-ttu-id="610ed-132">*SignalR.js* также необходима перед *signalr-protocol-msgpack.js*.</span><span class="sxs-lookup"><span data-stu-id="610ed-132">*signalr.js* is also required before *signalr-protocol-msgpack.js*.</span></span>
+> <span data-ttu-id="8f729-133">При использовании `<script>` элемент, порядок важен.</span><span class="sxs-lookup"><span data-stu-id="8f729-133">When using the `<script>` element, the order is important.</span></span> <span data-ttu-id="8f729-134">Если *signalr-protocol-msgpack.js* указывается перед *msgpack5.js*, произошла ошибка при попытке подключения с MessagePack.</span><span class="sxs-lookup"><span data-stu-id="8f729-134">If *signalr-protocol-msgpack.js* is referenced before *msgpack5.js*, an error occurs when trying to connect with MessagePack.</span></span> <span data-ttu-id="8f729-135">*SignalR.js* также необходима перед *signalr-protocol-msgpack.js*.</span><span class="sxs-lookup"><span data-stu-id="8f729-135">*signalr.js* is also required before *signalr-protocol-msgpack.js*.</span></span>
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -84,7 +87,7 @@ npm install @aspnet/signalr-protocol-msgpack
 <script src="~/lib/signalr/signalr-protocol-msgpack.js"></script>
 ```
 
-<span data-ttu-id="610ed-133">Добавление `.withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())` для `HubConnectionBuilder` будет настроить клиент для использования протокола MessagePack, при подключении к серверу.</span><span class="sxs-lookup"><span data-stu-id="610ed-133">Adding `.withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())` to the `HubConnectionBuilder` will configure the client to use the MessagePack protocol when connecting to a server.</span></span>
+<span data-ttu-id="8f729-136">Добавление `.withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())` для `HubConnectionBuilder` будет настроить клиент для использования протокола MessagePack, при подключении к серверу.</span><span class="sxs-lookup"><span data-stu-id="8f729-136">Adding `.withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())` to the `HubConnectionBuilder` will configure the client to use the MessagePack protocol when connecting to a server.</span></span>
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -94,10 +97,10 @@ const connection = new signalR.HubConnectionBuilder()
 ```
 
 > [!NOTE]
-> <span data-ttu-id="610ed-134">В настоящее время существуют не для протокола MessagePack параметры конфигурации на стороне клиента JavaScript.</span><span class="sxs-lookup"><span data-stu-id="610ed-134">At this time, there are no configuration options for the MessagePack protocol on the JavaScript client.</span></span>
+> <span data-ttu-id="8f729-137">В настоящее время существуют не для протокола MessagePack параметры конфигурации на стороне клиента JavaScript.</span><span class="sxs-lookup"><span data-stu-id="8f729-137">At this time, there are no configuration options for the MessagePack protocol on the JavaScript client.</span></span>
 
-## <a name="related-resources"></a><span data-ttu-id="610ed-135">Связанные ресурсы</span><span class="sxs-lookup"><span data-stu-id="610ed-135">Related resources</span></span>
+## <a name="related-resources"></a><span data-ttu-id="8f729-138">Связанные ресурсы</span><span class="sxs-lookup"><span data-stu-id="8f729-138">Related resources</span></span>
 
-* [<span data-ttu-id="610ed-136">Начало работы</span><span class="sxs-lookup"><span data-stu-id="610ed-136">Get Started</span></span>](xref:tutorials/signalr)
-* [<span data-ttu-id="610ed-137">Клиент .NET</span><span class="sxs-lookup"><span data-stu-id="610ed-137">.NET client</span></span>](xref:signalr/dotnet-client)
-* [<span data-ttu-id="610ed-138">Клиент JavaScript</span><span class="sxs-lookup"><span data-stu-id="610ed-138">JavaScript client</span></span>](xref:signalr/javascript-client)
+* [<span data-ttu-id="8f729-139">Начало работы</span><span class="sxs-lookup"><span data-stu-id="8f729-139">Get Started</span></span>](xref:tutorials/signalr)
+* [<span data-ttu-id="8f729-140">Клиент .NET</span><span class="sxs-lookup"><span data-stu-id="8f729-140">.NET client</span></span>](xref:signalr/dotnet-client)
+* [<span data-ttu-id="8f729-141">Клиент JavaScript</span><span class="sxs-lookup"><span data-stu-id="8f729-141">JavaScript client</span></span>](xref:signalr/javascript-client)
