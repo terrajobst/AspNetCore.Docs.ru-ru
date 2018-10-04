@@ -8,12 +8,12 @@ ms.date: 01/20/2014
 ms.assetid: 979d6c9f-0129-4e5b-ae56-4507b281b86d
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: f13720c5e9de99fb4ae5b27a757c257cac881f89
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 35cf3bf555218b6b49b30f48186e4c67aff4ff7b
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829101"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795555"
 ---
 <a name="attribute-routing-in-aspnet-web-api-2"></a>Маршрутизация в ASP.NET Web API 2 с помощью атрибутов
 ====================
@@ -25,10 +25,9 @@ ms.locfileid: "41829101"
 
 В этом разделе показано, как включить маршрутизацию атрибутов и описываются различные параметры для маршрутизации с помощью атрибутов. End-to-end учебник, в котором используется маршрутизация с помощью атрибутов, см. в разделе [Создание REST API с помощью маршрутизации с помощью атрибутов в веб-API 2](create-a-rest-api-with-attribute-routing.md).
 
-
 ## <a name="prerequisites"></a>Предварительные требования
 
-[Visual Studio 2017](https://www.visualstudio.com/vs/) Community, Professional или Enterprise Edition
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community, Professional или Enterprise edition
 
 Кроме того можно используйте диспетчер пакетов NuGet для установки необходимых пакетов. Из **средства** меню в Visual Studio, выберите пункт **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**. Введите следующую команду в окне консоли диспетчера пакетов:
 
@@ -55,21 +54,21 @@ ms.locfileid: "41829101"
 
 В этом примере «/ api/v1/products» будет перенаправляться в другом контроллере, чем «/ api/v2/products».
 
-`/api/v1/products`  
+`/api/v1/products`
 `/api/v2/products`
 
 **Перегруженный сегментов URI-адреса**
 
 В этом примере «1» — это номер заказа, но «ожидание», которому сопоставлен коллекции.
 
-`/orders/1`  
+`/orders/1`
 `/orders/pending`
 
 **Несколькими типами параметров**
 
 В этом примере «1» — это номер заказа, но дата «2013/06/16".
 
-`/orders/1`  
+`/orders/1`
 `/orders/2013/06/16`
 
 <a id="enable"></a>
@@ -251,7 +250,7 @@ ms.locfileid: "41829101"
 Вот, как определяется общем порядке:
 
 1. Сравнение **RouteOrder** свойство атрибута маршрута.
-2. Рассмотрим каждый сегмент URI в шаблоне маршрута. Для каждого сегмента заказов следующим образом: 
+2. Рассмотрим каждый сегмент URI в шаблоне маршрута. Для каждого сегмента заказов следующим образом:
 
     1. Литерал сегменты.
     2. Параметры маршрута с ограничениями.

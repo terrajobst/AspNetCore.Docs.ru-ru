@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 9f969dda-78ea-4329-b1e3-e51c02210a2b
 msc.legacyurl: /signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: e710980cecf9093ea9046b5790379befb5b61841
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 008cbc8ec7ca0af4b20e5e3974cf3862efa7677e
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836715"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48794884"
 ---
 <a name="tutorial-high-frequency-realtime-with-signalr-2"></a>Учебник: В реальном времени высокой частотой с помощью SignalR 2
 ====================
@@ -213,7 +213,7 @@ ms.locfileid: "41836715"
 
 ## <a name="further-steps"></a>Дальнейшие действия
 
-В этом руководстве вы узнали, как запрограммировать приложение SignalR, которое отправляет сообщения с высокой частотой между клиентами и серверами. Эта парадигма связи полезен для разработки игр и других режимов моделирования, такие как [ShootR игры, созданные с помощью SignalR](http://shootr.signalr.net).
+В этом руководстве вы узнали, как запрограммировать приложение SignalR, которое отправляет сообщения с высокой частотой между клиентами и серверами. Эта парадигма связи полезен для разработки игр и других режимов моделирования, такие как [ShootR игры, созданные с помощью SignalR](https://shootr.azurewebsites.net/).
 
 Готовое приложение, созданное в этом руководстве можно загрузить из [коллекции исходных кодов](https://code.msdn.microsoft.com/SignalR-20-MoveShape-Demo-6285b83a).
 

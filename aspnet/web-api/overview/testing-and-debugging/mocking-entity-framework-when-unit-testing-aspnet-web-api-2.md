@@ -8,12 +8,12 @@ ms.date: 12/13/2013
 ms.assetid: cd844025-ccad-41ce-8694-595f1022a49f
 msc.legacyurl: /web-api/overview/testing-and-debugging/mocking-entity-framework-when-unit-testing-aspnet-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: 0bc5ab59583a2be3f889ba05d26c6cda4589057d
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 8945f913abe8fb8397d07a5994000fff2348f1f7
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836758"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795383"
 ---
 <a name="mocking-entity-framework-when-unit-testing-aspnet-web-api-2"></a>Макетирование Entity Framework при модульном тестировании ASP.NET Web API 2
 ====================
@@ -22,17 +22,15 @@ ms.locfileid: "41836758"
 [Скачать завершенный проект](https://code.msdn.microsoft.com/Unit-Testing-with-ASPNET-1374bc11)
 
 > Это руководство и приложения показано, как создавать модульные тесты для приложения веб-API 2, использующий Entity Framework. Нем показано, как изменить сформированный контроллера для включения передачи объекта контекста для тестирования и создают тестовые объекты, которые работают с Entity Framework.
-> 
+>
 > Введение в модульное тестирование с помощью веб-API ASP.NET, см. в разделе [модульное тестирование с помощью ASP.NET Web API 2](unit-testing-with-aspnet-web-api.md).
-> 
+>
 > Предполагается, что вы знакомы с основными понятиями веб-API ASP.NET. Вводное руководство см. в разделе [Приступая к работе с веб-API ASP.NET 2](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md).
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
-> - [Visual Studio 2017](https://www.visualstudio.com/vs/)
+>
+> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 > - Веб-API 2
-
 
 ## <a name="in-this-topic"></a>Содержание раздела
 

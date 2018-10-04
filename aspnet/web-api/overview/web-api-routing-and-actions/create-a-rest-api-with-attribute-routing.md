@@ -8,12 +8,12 @@ ms.date: 06/26/2013
 ms.assetid: 23fc77da-2725-4434-99a0-ff872d96336b
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: da3ca8f89f823fcb2c4ab74af6ddf4f61d4e663a
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 191452204d4347396b1d339d9b82d583a2ce9f3c
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829821"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795522"
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>Создание REST API с помощью маршрутизации атрибутов в ASP.NET Web API 2
 ====================
@@ -46,13 +46,13 @@ ms.locfileid: "41829821"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-[Visual Studio 2017](https://www.visualstudio.com/vs/) Community, Professional или Enterprise edition.
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community, Professional или Enterprise edition.
 
 ## <a name="create-the-visual-studio-project"></a>Создание проекта Visual Studio
 
 Запустить Visual Studio. Из **файл** меню, выберите **New** , а затем выберите **проекта**.
 
-В **шаблоны** области выберите **установленные шаблоны** и разверните **Visual C#** узла. В разделе **Visual C#** выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Назовите проект &quot;BooksAPI&quot;.
+Разверните **установленные** > **Visual C#** категории. В разделе **Visual C#** выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Назовите проект &quot;BooksAPI&quot;.
 
 ![](create-a-rest-api-with-attribute-routing/_static/image1.png)
 

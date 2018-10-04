@@ -8,12 +8,12 @@ ms.date: 05/28/2015
 ms.assetid: e879487e-dbcd-4b33-b092-d67c37ae768c
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 4abe0e06dfd927765efd8e566584e111cf4117d5
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d65c0ea35ec766ef9d9093c6502230f9de72a3f3
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829000"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795218"
 ---
 <a name="using-web-api-2-with-entity-framework-6"></a>Использование веб-API 2 с Entity Framework 6
 ====================
@@ -22,16 +22,14 @@ ms.locfileid: "41829000"
 [Скачать завершенный проект](https://github.com/MikeWasson/BookService)
 
 > Этот учебник поможет, что основы создания веб-приложения с помощью ASP.NET Web API серверной части. В руководстве используется Entity Framework 6 для уровня данных и Knockout.js для клиентского приложения JavaScript. Этом руководстве также показано, как развернуть приложение в веб-приложениях службы приложений Azure.
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
+>
 > - Веб-API 2.1
-> - [Visual Studio 2013 с обновлением 2](https://www.visualstudio.com/downloads/download-visual-studio-vs)
+> - Visual Studio 2013 (скачать Visual Studio 2017 [здесь](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017))
 > - Entity Framework 6
 > - .NET 4.5
 > - [Knockout.js](http://knockoutjs.com/) 3.1
-
 
 Этом руководстве используется ASP.NET Web API 2 с Entity Framework 6 создание веб-приложения, который управляет серверной базы данных. Ниже приведен снимок экрана приложения, который будет создан.
 

@@ -8,38 +8,38 @@ ms.date: 02/13/2014
 ms.assetid: 0acfec5a-48f2-4766-a801-a0f426966f0a
 msc.legacyurl: /web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio
 msc.type: authoredcontent
-ms.openlocfilehash: 41cb1048b9dab21516e38cfff0772b8b690d474f
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: f3c1a74b23a0d9535256caa660408701062fe21c
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41823993"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795451"
 ---
 <a name="programming-aspnet-web-pages-razor-using-visual-studio"></a>Программирование веб-страниц ASP.NET (Razor) с помощью Visual Studio
 ====================
 по [Tom FitzMacken](https://github.com/tfitzmac)
 
 > В этой статье объясняется, как можно использовать Visual Studio или Visual Web Developer Express программу веб-сайтов ASP.NET Web Pages (Razor).
-> 
+>
 > Вы узнаете, как
-> 
+>
 > - Что необходимо для установки (при ее наличии) для работы с веб-страниц ASP.NET в вашей версии Visual Studio.
 > - Как добавить поддержку для веб-страниц ASP.NET в Visual Web Developer 2010 Express.
 > - Как использовать функции в Visual Studio для работы с ASP.NET Razor pages, включая IntelliSense и отладчик.
->   
-> 
+>
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
+>
+>
 > - Веб-страниц ASP.NET (Razor) 3
 > - Visual Studio 2013
 > - WebMatrix 3
->   
-> 
+>
+>
 > Этот учебник также работает с веб-страниц ASP.NET 2, Visual Studio 2012, Visual Studio 2010 и WebMatrix 2.
 
 
-Можно программировать веб-страницы ASP.NET с синтаксисом Razor с помощью WebMatrix или других редакторов кода. Также можно использовать Microsoft Visual Studio, который является это полнофункциональная интегрированная среда разработки (IDE), предоставляет мощный набор средств для создания различных типов приложений (не только веб-сайтов). Для работы с ASP.NET Razor pages, вы можете либо воспользуйтесь одним из полных выпусках Visual Studio или бесплатного [Visual Studio Express для Web](https://www.visualstudio.com/downloads/download-visual-studio-vs#d-2013-express) edition.
+Можно программировать веб-страницы ASP.NET с синтаксисом Razor с помощью WebMatrix или других редакторов кода. Также можно использовать Microsoft Visual Studio, который является это полнофункциональная интегрированная среда разработки (IDE), предоставляет мощный набор средств для создания различных типов приложений (не только веб-сайтов). Для работы с ASP.NET Razor pages, можно использовать [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017).
 
 Ниже приведены два особенно полезных возможностей, предоставляемых Visual Studio для программирования с использованием веб-страниц ASP.NET Razor.
 
@@ -47,6 +47,8 @@ ms.locfileid: "41823993"
 - *Отладчик*. Отладчик позволяет устранять кода, остановки программы во время его выполнения, изучении состояния переменных и пошаговое выполнение кода по одной строке.
 
 ## <a name="using-visual-studio-with-different-versions-of-aspnet-web-pages"></a>Использование Visual Studio с разными версиями веб-страниц ASP.NET
+
+Для разработки веб-приложений ASP.NET в Visual Studio 2017 следует установить **ASP.NET и веб-разработка** рабочей нагрузки.
 
 Visual Studio 2012 и Visual Studio 2013 включают поддержку для веб-страниц ASP.NET. (При установке Visual Studio будут установлены пакеты, которые требуются для поддержки веб-страниц ASP.NET.)
 
@@ -73,7 +75,7 @@ Visual Studio 2010 не поддерживает по умолчанию для 
 
 Чтобы создать на веб-сайте ASP.NET Razor в Visual Studio:
 
-1. Запустите Visual Studio или Visual Web Developer.
+1. Запустите Visual Studio.
 2. В **файл** меню, щелкните **новый веб-сайт**.
 
     ![Создание нового веб-сайта](program-asp-net-web-pages-in-visual-studio/_static/image2.png)
@@ -90,28 +92,27 @@ Visual Studio 2010 не поддерживает по умолчанию для 
 Теперь, когда вы создали узел, вы увидите сообщение о том, как работает технология IntelliSense в Visual Studio.
 
 1. Откройте в веб-сайт, вы только что создали, *Default.cshtml* страницы.
-2. После `<h3>` введите теги в странице `@ServerInfo.` (включая точку). Функция IntelliSense покажет доступные методы для `ServerInfo` вспомогательная функция в раскрывающемся списке. 
+2. После `<h3>` введите теги в странице `@ServerInfo.` (включая точку). Функция IntelliSense покажет доступные методы для `ServerInfo` вспомогательная функция в раскрывающемся списке.
 
     ![IntelliSense](program-asp-net-web-pages-in-visual-studio/_static/image4.png)
-3. Выберите `GetHtml` метод в списке и нажмите клавишу ВВОД. IntelliSense автоматически заполняет метод. (Как с помощью любого метода в C#, необходимо добавить `()` символов после метода.)  
-   Полный код для `GetHtml` метод выглядит как в следующем примере:  
+3. Выберите `GetHtml` метод в списке и нажмите клавишу ВВОД. IntelliSense автоматически заполняет метод. (Как с помощью любого метода в C#, необходимо добавить `()` символов после метода.) Полный код для `GetHtml` метод выглядит как в следующем примере:
 
     [!code-cshtml[Main](program-asp-net-web-pages-in-visual-studio/samples/sample1.cshtml)]
-4. Нажмите клавиши Ctrl + F5, чтобы запустить эту страницу. Это выглядит страницы при отображению в браузере: 
+4. Нажмите клавиши Ctrl + F5, чтобы запустить эту страницу. Это выглядит страницы при отображению в браузере:
 
     ![страница по умолчанию в браузере](program-asp-net-web-pages-in-visual-studio/_static/image5.png)
 5. Закройте браузер.
 
 ### <a name="using-the-debugger"></a>С помощью отладчика
 
-1. В верхней части *Default.cshtml* страницы после строки, которая начинается с `Page.Title`, добавьте следующую строку кода: 
+1. В верхней части *Default.cshtml* страницы после строки, которая начинается с `Page.Title`, добавьте следующую строку кода:
 
     [!code-csharp[Main](program-asp-net-web-pages-in-visual-studio/samples/sample2.cs)]
 2. В сером поле редактора слева от кода, щелкните рядом с этой новой строке, чтобы добавить *точки останова*. Точка останова — маркер, который указывает отладчику, чтобы остановить выполнение программы на этом этапе, чтобы можно было видеть, что происходит.
 
     ![Задание точки останова](program-asp-net-web-pages-in-visual-studio/_static/image6.png)
 3. Удалите вызов `ServerInfo.GetHtml` метод и добавьте вызов `@myTime` переменной на его месте. Этот вызов отображает текущее значение времени, который возвращается новая строка кода.
-4. Нажмите клавишу F5, чтобы запустить эту страницу в отладчике. Страницы останавливается в заданной точке останова. Ниже представлен результат страницы в редакторе с точкой останова (желтым цветом). 
+4. Нажмите клавишу F5, чтобы запустить эту страницу в отладчике. Страницы останавливается в заданной точке останова. Ниже представлен результат страницы в редакторе с точкой останова (желтым цветом).
 
     ![точки останова для отладки](program-asp-net-web-pages-in-visual-studio/_static/image7.png)
 5. На панели инструментов отладки, нажмите кнопку **шаг с заходом** (или клавишу F11) для запуска следующей строке кода. Каждый раз при нажатии этой кнопки выполнения вы перейдите на следующую строку кода.

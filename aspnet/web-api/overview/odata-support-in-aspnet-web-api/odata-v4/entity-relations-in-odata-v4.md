@@ -8,41 +8,37 @@ ms.date: 06/26/2014
 ms.assetid: 72657550-ec09-4779-9bfc-2fb15ecd51c7
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/entity-relations-in-odata-v4
 msc.type: authoredcontent
-ms.openlocfilehash: 80173519f1c8abd77b4138b7d29f780ffc60a188
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d07ddab83462ee1bc84ba8ab15fe906937f506e6
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41828798"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795396"
 ---
 <a name="entity-relations-in-odata-v4-using-aspnet-web-api-22"></a>Отношения сущностей в OData v4 с помощью ASP.NET Web API 2.2
 ====================
 по [Майк Уоссон](https://github.com/MikeWasson)
 
 > В большинстве наборов данных определения отношений между сущностями: клиенты имеют заказы; у книги может быть авторов; продукты, имеют поставщики. С помощью OData, клиенты можно переходить через отношения сущности. Учитывая продукта, можно найти поставщика. Также можно создать или удалить связи. Например можно задать поставщик для продукта.
-> 
+>
 > Этом руководстве показано, как для поддержки этих операций в OData v4, с помощью веб-API ASP.NET. Учебном курсе руководство [создания OData v4 конечной точки с помощью веб-API ASP.NET 2](create-an-odata-v4-endpoint.md).
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
+>
 > - Веб-API 2.1
 > - OData v4
-> - [Visual Studio 2013 с обновлением 2](https://www.visualstudio.com/downloads/download-visual-studio-vs)
+> - Visual Studio 2013 (скачать Visual Studio 2017 [здесь](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017))
 > - Entity Framework 6
 > - .NET 4.5
-> 
-> 
+>
 > ## <a name="tutorial-versions"></a>Учебника по версии
-> 
+>
 > OData версии 3, см. в разделе [поддержка отношений сущностей в OData v3](https://asp.net/web-api/overview/odata-support-in-aspnet-web-api/odata-v3/working-with-entity-relations).
-
 
 ## <a name="add-a-supplier-entity"></a>Добавление сущности Supplier
 
 > [!NOTE]
 > Учебном курсе руководство [создания OData v4 конечной точки с помощью веб-API ASP.NET 2](create-an-odata-v4-endpoint.md).
-
 
 Во-первых мы должны связанной сущности. Добавьте класс с именем `Supplier` в папку Models.
 

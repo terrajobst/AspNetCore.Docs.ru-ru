@@ -4,18 +4,18 @@ author: scottaddie
 description: Узнайте, как оптимизировать статические ресурсы в веб-приложении ASP.NET Core, применяя методы объединения и минификации.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 01/10/2018
+ms.date: 10/04/2018
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 45200d34974cbbb44787616eba7508458882416c
-ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
+ms.openlocfilehash: 152f3c810b587d734c1b1076a09ea38d13872e2d
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47028145"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795409"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Объединение и Минификация статических ресурсов в ASP.NET Core
 
-Автор: [Скотт Адди](https://twitter.com/Scott_Addie) (Scott Addie)
+По [Scott Addie](https://twitter.com/Scott_Addie) и [сосну Дэвид](https://twitter.com/davidpine7)
 
 В этой статье описаны преимущества применения объединения и минификации, включая использование этих функций с веб-приложений ASP.NET Core.
 

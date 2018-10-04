@@ -8,12 +8,12 @@ ms.date: 06/05/2014
 ms.assetid: bf20f78d-ff91-48be-abd1-88e23dcc70ba
 msc.legacyurl: /web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 0a3f9ddde725995359de85c5e0783106f5de02bd
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 91cca2789b66b7b8983f8786b506c5fc71db8b75
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41828739"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795438"
 ---
 <a name="unit-testing-aspnet-web-api-2"></a>Модульное тестирование ASP.NET Web API 2
 ====================
@@ -22,17 +22,15 @@ ms.locfileid: "41828739"
 [Скачать завершенный проект](https://code.msdn.microsoft.com/Unit-Testing-with-ASPNET-1374bc11)
 
 > Это руководство и приложение демонстрируется создание простого модульных тестов для приложения веб-API 2. Этом руководстве показано, как включить проект модульного теста в решении, а написание методов теста, которые проверяют возвращаемые из метода контроллера.
-> 
+>
 > Предполагается, что вы знакомы с основными понятиями веб-API ASP.NET. Вводное руководство см. в разделе [Приступая к работе с веб-API ASP.NET 2](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md).
-> 
+>
 > В этом разделе модульные тесты намеренно ограничены простых сценариев. Модульное тестирование более сложных сценариев данных, см. в разделе [макетирование Entity Framework при модульного тестирования ASP.NET Web API 2](mocking-entity-framework-when-unit-testing-aspnet-web-api-2.md).
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
-> - [Visual Studio 2017](https://www.visualstudio.com/vs/)
+>
+> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 > - Веб-API 2
-
 
 ## <a name="in-this-topic"></a>Содержание раздела
 
@@ -41,7 +39,6 @@ ms.locfileid: "41828739"
 - [Необходимые компоненты](#prereqs)
 - [Скачать код](#download)
 - [Создание приложения с помощью проекта модульного теста](#appwithunittest)
-
     - [Добавьте проект модульного теста, при создании приложения](#whencreate)
     - [Добавление проекта модульного тестирование в существующее приложение](#addtoexisting)
 - [Настройка приложения веб-API 2](#setupproject)
@@ -52,7 +49,7 @@ ms.locfileid: "41828739"
 <a id="prereqs"></a>
 ## <a name="prerequisites"></a>Предварительные требования
 
-Visual Studio 2017 Community, Professional или Enterprise edition
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community, Professional или Enterprise edition
 
 <a id="download"></a>
 ## <a name="download-code"></a>Скачать код

@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 11/28/2017
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 14796ce31187a0f6a6331b46477fadc77e281c3b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 62e99a41ba935470c39476c9aea8ee4193543425
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41837195"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795297"
 ---
 <a name="get-started-with-aspnet-web-api-2-c"></a>Начало работы с ASP.NET Web API 2 (C#)
 ====================
@@ -21,14 +21,13 @@ ms.locfileid: "41837195"
 [Скачать завершенный проект](https://code.msdn.microsoft.com/Sample-code-of-Getting-c56ccb28)
 
 HTTP не только для предоставления веб-страниц. Протокол HTTP также является мощной платформой для создания API, которые предоставляют службы и данные. HTTP — простую, гибкую и повсеместно. Практически любой платформе, можно представить себе имеет библиотеки HTTP, поэтому службы HTTP могут стать идеальным широкого круга клиентов, включая браузеры мобильных устройств и Классические приложения.
- 
+
 Веб-API ASP.NET — это платформа для создания веб-API-интерфейсы на основе .NET Framework. В этом руководстве используется веб-API ASP.NET для создания веб-API, который возвращает список продуктов.
 
- 
- ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-  
- - [Visual Studio 2017](https://www.visualstudio.com/downloads/)
- - Веб-API 2
+## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
+
+- [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
+- Веб-API 2
 
 См. в разделе [Создание веб-API с помощью ASP.NET Core и Visual Studio для Windows](https://docs.microsoft.com/aspnet/core/tutorials/first-web-api) для более новой версии этого руководства.
 

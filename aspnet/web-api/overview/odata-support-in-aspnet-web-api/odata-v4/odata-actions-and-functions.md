@@ -8,32 +8,29 @@ ms.date: 06/27/2014
 ms.assetid: 0e6fb03c-b16d-4bb0-ab0b-552bd2b6ece1
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/odata-actions-and-functions
 msc.type: authoredcontent
-ms.openlocfilehash: 4e61c6b4bf59792b6570e32e6d24635d4f5e5ac3
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 45b84ec4ee76e83ece99bf6841c28e13c3ab7728
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838263"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795271"
 ---
 <a name="actions-and-functions-in-odata-v4-using-aspnet-web-api-22"></a>Действия и функции в OData v4, с помощью ASP.NET Web API 2.2
 ====================
 по [Майк Уоссон](https://github.com/MikeWasson)
 
 > В OData действия и функции — это способ для добавления поведений на стороне сервера, которые легко не определены как операций CRUD в объектах. Этом руководстве показано, как добавить действия и функции для конечной точки OData v4, с помощью веб-API 2.2. Учебном курсе руководство [создания OData v4 конечной точки с помощью ASP.NET Web API 2](create-an-odata-v4-endpoint.md)
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
+>
 > - Веб-API 2.2
 > - OData v4
-> - [Visual Studio 2013 с обновлением 2](https://www.visualstudio.com/downloads/download-visual-studio-vs)
+> - Visual Studio 2013 (скачать Visual Studio 2017 [здесь](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017))
 > - .NET 4.5
-> 
-> 
+>
 > ## <a name="tutorial-versions"></a>Учебника по версии
-> 
+>
 > OData версии 3, см. в разделе [действия OData в веб-API ASP.NET 2](../odata-v3/odata-actions.md).
-
 
 Разница между *действия* и *функции* действия может иметь побочные эффекты, а функции — нет. Действия и функции могут возвращать данные. Некоторые способы для действий:
 

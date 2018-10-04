@@ -7,12 +7,12 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 02/01/2017
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: c2374e7c9ac89c2af26436529c7fa58a2d2d6ba6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1343bd100f521326477ecd831aa627b4394bad44
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814162"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795357"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>Перенос приложений ASP.NET MVC в контейнеры Windows
 
@@ -35,16 +35,16 @@ ms.locfileid: "37814162"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Компьютер разработки должен быть запущен
+Компьютер разработки необходимо иметь следующее программное обеспечение:
 
-- [Юбилейное обновление Windows 10](https://www.microsoft.com/software-download/windows10/) (или выше) либо [Windows Server 2016](https://www.microsoft.com/cloud-platform/windows-server) (или выше).
+- [Юбилейное обновление Windows 10](https://www.microsoft.com/software-download/windows10/) (или более поздней версии) или [Windows Server 2016](https://www.microsoft.com/cloud-platform/windows-server) (или более поздней версии)
 - [Docker для Windows](https://docs.docker.com/docker-for-windows/) — версия Stable 1.13.0 или 1.12 Beta 26 (или более поздние)
-- [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx).
+- [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 
 > [!IMPORTANT]
 > При использовании Windows Server 2016 выполните инструкции по [развертыванию узла контейнеров в Windows Server](https://msdn.microsoft.com/virtualization/windowscontainers/deployment/deployment).
 
-После установки и запуска Docker щелкните правой кнопкой мыши значок на панели задач и выберите **Переключиться на контейнеры Windows**. Это нужно для запуска образов Docker на основе Windows. На выполнение этой команды требуется несколько секунд:
+После установки и запуска Docker, щелкните правой кнопкой мыши значок на панели задач и выберите **переключиться на контейнеры Windows**. Это нужно для запуска образов Docker на основе Windows. На выполнение этой команды требуется несколько секунд:
 
 ![Контейнер Windows][windows-container]
 
@@ -114,7 +114,7 @@ docker run -d --name randomanswers mvcrandomanswers
 
 Аргумент `-d` предписывает Docker запустить образ в отсоединенном режиме. Это значит, что образ Docker запускается в отрыве от текущей оболочки.
 
-Во многих примерах docker может появиться -p, чтобы сопоставление портов контейнера и узла. Изображение aspnet по умолчанию уже настроен контейнер для прослушивания порта 80 и предоставите к нему доступ. 
+Во многих примерах docker может появиться -p, чтобы сопоставление портов контейнера и узла. Изображение aspnet по умолчанию уже настроен контейнер для прослушивания порта 80 и предоставите к нему доступ.
 
 Аргумент `--name randomanswers` содержит имя запущенного контейнера. Это имя можно использовать вместо идентификатора контейнера в большинстве команд.
 

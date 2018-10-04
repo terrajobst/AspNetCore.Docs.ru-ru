@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: 1bc333c5-f096-4ea7-b170-779accc21c1a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
 msc.type: authoredcontent
-ms.openlocfilehash: 6f4fa7cf3746da0a6cdd4bd037fea509d488a59d
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 435ee61a9c28ad0035457990cd3a889f5b240517
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578020"
+ms.locfileid: "48795542"
 ---
 <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>Приложение: Исправление пример приложения (Создание реальных облачных приложений с помощью Azure)
 ====================
@@ -22,7 +22,6 @@ ms.locfileid: "48578020"
 [Загрузите исправление, его проекта](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)
 
 > **Создание реальных облачных приложений в условиях Azure** электронная книга основана на презентацию, разработанная Скоттом Гатри. Здесь объясняется 13 шаблоны и рекомендации, которые помогут вам быть в успешном развертывании веб-приложений для облака. Сведения о книге, см. в разделе [первой главы](introduction.md).
-
 
 В этом приложении для создание реальных облачных приложений в условиях электронная книга содержит следующие разделы, предоставляющие дополнительные сведения о Fix It примера приложения, который можно загрузить.
 
@@ -177,11 +176,11 @@ ASP.NET автоматически предотвращает множество
 
 Если асинхронный метод не должно возвращать значение, возвращают `Task` типа вместо `void`.
 
-Этот пример взят из `FixItQueueManager` класса: 
+Этот пример взят из `FixItQueueManager` класса:
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample15.cs)]
 
-Следует использовать `async void` только для обработчиков событий верхнего уровня. При определении метода в качестве `async void`, вызывающий объект не может **await** метода или перехватывайте любые исключения, метод создает исключение. Дополнительные сведения см. в разделе [рекомендации в асинхронное программирование](https://msdn.microsoft.com/magazine/jj991977.aspx). 
+Следует использовать `async void` только для обработчиков событий верхнего уровня. При определении метода в качестве `async void`, вызывающий объект не может **await** метода или перехватывайте любые исключения, метод создает исключение. Дополнительные сведения см. в разделе [рекомендации в асинхронное программирование](https://msdn.microsoft.com/magazine/jj991977.aspx).
 
 ### <a name="use-a-cancellation-token-to-break-from-worker-role-loop"></a>Использовать токен отмены для из этого цикла рабочей роли
 
@@ -216,8 +215,8 @@ ASP.NET автоматически предотвращает множество
 <a id="runbase"></a>
 ### <a name="run-the-base-application"></a>Запуск базового приложения
 
-1. Установка [Visual Studio 2013 или Visual Studio 2013 Express для Web](https://www.visualstudio.com/downloads).
-2. Установка [Azure SDK для .NET для Visual Studio 2013.](https://go.microsoft.com/fwlink/p/?linkid=323510&amp;clcid=0x409)
+1. Установка [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017).
+2. Установка [Azure SDK для .NET для Visual Studio](https://azure.microsoft.com/downloads/).
 3. Скачайте ZIP-файл из [коллекции кода MSDN](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4).
 4. В проводнике щелкните правой кнопкой мыши ZIP-файл и выберите пункт Свойства, а затем в окне свойств нажмите кнопку разблокировать.
 5. Распакуйте файл.
@@ -225,7 +224,7 @@ ASP.NET автоматически предотвращает множество
 7. В меню "Сервис" выберите диспетчер пакетов библиотеки, затем консоль диспетчера пакетов.
 8. В консоли диспетчера пакетов (PMC), нажмите кнопку Восстановить.
 9. Закройте Visual Studio.
-10. Запуск [эмулятора хранения Azure](https://msdn.microsoft.com/library/windowsazure/hh403989.aspx).
+10. Запуск [эмулятора хранения Azure](/azure/storage/common/storage-use-emulator).
 11. Перезапустите Visual Studio, откройте файл решения вы закрыли на предыдущем шаге.
 12. Убедитесь, что проект FixIt задан в качестве запускаемого проекта и нажмите клавишу CTRL + F5, чтобы запустить проект.
 
@@ -234,24 +233,24 @@ ASP.NET автоматически предотвращает множество
 
 1. Следуйте указаниям, приведенным для [запуска базового приложения](#runbase), а затем закройте браузер и закрыть Visual Studio.
 2. Запустите Visual Studio с правами администратора. (Вы будете использовать эмулятор вычислений Azure, и, требуются права администратора).
-3. В приложении *Web.config* файл *MyFixIt* проекта (веб-проект), измените значение свойства `appSettings/UseQueues` «true»: 
+3. В приложении *Web.config* файл *MyFixIt* проекта (веб-проект), измените значение свойства `appSettings/UseQueues` «true»:
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample19.cmd?highlight=3)]
 4. Если [эмулятора хранения Azure](https://msdn.microsoft.com/library/windowsazure/hh403989.aspx) не все еще выполняется, запустите его снова.
 5. Запустите FixIt веб-проект и проект MyFixItCloudService одновременно.
 
-    С помощью Visual Studio 2013:
+    С помощью Visual Studio:
 
-   1. Нажмите клавишу F5 для запуска проекта FixIt.
-   2. В **обозревателе решений**, щелкните правой кнопкой мыши проект MyFixItCloudService и нажмите кнопку **Отладка** -- **запустить новый экземпляр**.
+   1. Нажмите клавишу **F5** для запуска проекта FixIt.
+   2. В **обозревателе решений**, щелкните правой кнопкой мыши проект MyFixItCloudService и нажмите кнопку **Отладка** > **запустить новый экземпляр**.
 
-      С помощью Visual Studio 2013 Express для Web.
+    С помощью Visual Studio 2013 Express для Web.
 
    3. В обозревателе решений щелкните правой кнопкой мыши решение решить и выберите **свойства**.
-   4. Выберите **несколько запускаемых проектов**...
+   4. Выберите **несколько запускаемых проектов**.
    5. В **действие** выберите в раскрывающемся списке в разделе MyFixIt и MyFixItCloudService, **запустить**.
    6. Нажмите кнопку **ОК**.
-   7. Нажмите клавишу F5, чтобы запустить оба проекта.
+   7. Нажмите клавишу **F5** запуск обоих проектов.
 
       При запуске проекта MyFixItCloudService, Visual Studio запускает эмулятор вычислений Azure. В зависимости от конфигурации брандмауэра необходимо разрешить в эмуляторе через брандмауэр.
 
@@ -354,8 +353,7 @@ ASP.NET автоматически предотвращает множество
 
 - `Get-AzureWebsite`
 - `Get-AzureSqlDatabaseServer`
-- `Get-AzureSqlDatabase`: Для выполнения этого командлета, передайте имя сервера базы данных, чтобы `Get-AzureSqlDatabase`:  
-    `Get-AzureSqlDatabaseServer | Get-AzureSqlDatabase.`
+- `Get-AzureSqlDatabase`: Для выполнения этого командлета, передайте имя сервера базы данных, чтобы `Get-AzureSqlDatabase`:   `Get-AzureSqlDatabaseServer | Get-AzureSqlDatabase.`
 
 Чтобы удалить эти ресурсы, используйте следующие команды. Обратите внимание, что при удалении сервера базы данных, вы автоматически удаления баз данных, связанных с сервером.
 
@@ -366,7 +364,7 @@ ASP.NET автоматически предотвращает множество
 <a id="deployqueues"></a>
 ## <a name="how-to-deploy-the-app-with-queue-processing-to-azure-app-service-web-apps-and-an-azure-cloud-service"></a>Как развернуть приложение с очередью, обработку для веб-приложениях службы приложений Azure и в облачной службе Azure
 
-Чтобы включить очереди, внести следующие изменения в файл MyFixIt\Web.config. В разделе `appSettings`, измените значение свойства `UseQueues` «true»: 
+Чтобы включить очереди, внести следующие изменения в файл MyFixIt\Web.config. В разделе `appSettings`, измените значение свойства `UseQueues` «true»:
 
 [!code-xml[Main](the-fix-it-sample-application/samples/sample31.xml)]
 

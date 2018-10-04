@@ -8,38 +8,38 @@ ms.date: 02/20/2014
 ms.assetid: 68de4326-7611-4b9b-b5f6-79b7adc3069f
 msc.legacyurl: /web-pages/overview/testing-and-debugging/introduction-to-debugging
 msc.type: authoredcontent
-ms.openlocfilehash: da04158c58054a8c0b8e31d3a55bea2dcbae7a05
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: fb9a69d568e10ddafd71e2b9600b3dae21576807
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836881"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48794993"
 ---
 <a name="introduction-to-debugging-aspnet-web-pages-razor-sites"></a>Общие сведения об отладке ASP.NET Web Pages сайтов (Razor)
 ====================
 по [Tom FitzMacken](https://github.com/tfitzmac)
 
 > В этой статье поясняются различные способы для отладки страниц в на веб-сайте ASP.NET Web Pages (Razor). Отладка — это процесс поиска и устранения ошибок в коде страницы.
-> 
-> **Вы узнаете, как:** 
-> 
+>
+> **Вы узнаете, как:**
+>
 > - Как отобразить сведения, которые помогут анализе и отладке страниц.
 > - Как использовать отладку средств в Visual Studio.
->   
-> 
+>
+>
 > Ниже приведены функции ASP.NET, представленные в этой статье.
-> 
+>
 > - `ServerInfo` Вспомогательный.
 > - `ObjectInfo` Вспомогательный метод.
->   
-> 
+>
+>
 > ## <a name="software-versions"></a>Версии программного обеспечения
-> 
-> 
+>
+>
 > - Веб-страниц ASP.NET (Razor) 3
 > - Visual Studio 2013
->   
-> 
+>
+>
 > Этот учебник также работает с ASP.NET Web Pages 2. Можно использовать WebMatrix 3, но интегрированный отладчик не поддерживается.
 
 
@@ -54,8 +54,8 @@ ms.locfileid: "41836881"
 
     Вы можете добавить `ServerInfo` код в любом месте страницы. Но его добавления в конце сохранит его выходные данные отдельно от других содержимое страницы, что делает его более удобным для чтения.
 
-    > [!NOTE] 
-    > 
+    > [!NOTE]
+    >
     > **Важные** любой код диагностики следует удалить из веб-страниц, перед перемещением веб-страниц на рабочем сервере. Это относится к `ServerInfo` вспомогательный, а также других методах диагностики в этой статье, включающих добавление кода на страницу. Вы не хотите посетителей веб-сайта, чтобы просмотреть сведения об имени сервера, имена пользователей, пути на сервере, а подобной подробной информации, так как такого рода сведения могут пригодиться для людей с злоумышленниками.
 3. Сохраните страницу и запустите его в браузере.
 
@@ -119,7 +119,7 @@ ms.locfileid: "41836881"
 
 ## <a name="using-debugging-tools-in-visual-studio"></a>С помощью средства отладки в Visual Studio
 
-Более широкие возможности отладки, можно использовать в Visual Studio 2013 или бесплатная версия [Visual Studio Express 2013 для Web](https://www.visualstudio.com/downloads/download-visual-studio-vs#d-2013-express). С помощью Visual Studio можно установить точку останова в коде строки, который требуется проверить.
+Более широкие возможности отладки, используйте [Visual Studio](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017). С помощью Visual Studio можно установить точку останова в коде строки, который требуется проверить.
 
 ![Задание точки останова](introduction-to-debugging/_static/image1.png)
 
