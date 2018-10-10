@@ -8,12 +8,12 @@ ms.date: 02/15/2013
 ms.assetid: ae4def81-fa37-4883-a13e-d9896cbf6c36
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
 msc.type: authoredcontent
-ms.openlocfilehash: 7bdf443fbce7376ac057c848df146717955203f9
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 67f44d9f23a2fe83c48e68328b1dee739056e32f
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41839171"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912388"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>Веб-развертывание ASP.NET с помощью Visual Studio: Подготовка к развертыванию базы данных
 ====================
@@ -84,15 +84,13 @@ LocalDB — это специального режима выполнения SQ
 > [!NOTE]
 > Еще один способ указать класс инициализатора является выполняется путем вызова `Database.SetInitializer` в `Application_Start` метод в *Global.asax* файл. При включении миграции в проекте, который использует этот метод для указания инициализатор, удалите эту строку кода.
 
-
 > [!NOTE]
 > Если вы используете Visual Studio 2013, сделайте следующее: между шаги 2 и 3: (a) в PMC введите «entityframework update-package-версии 6.1.1» для получения текущей версии EF. Затем (b) создайте проект для получения списка ошибок сборки и исправлять их. Удалите операторы using для пространства имен, которые больше не существует, щелкните правой кнопкой мыши и выберите разрешение, чтобы добавить с помощью инструкций, где они требуются и измените вхождения System.Data.EntityState System.Data.Entity.EntityState.
-
 
 ### <a name="enable-code-first-migrations"></a>Включение Code First Migrations
 
 1. Убедитесь, что проект ContosoUniversity (не ContosoUniversity.DAL) задан в качестве запускаемого проекта. В **обозревателе решений**, щелкните правой кнопкой мыши проект ContosoUniversity и выберите **Назначить запускаемым проектом**. Code First Migrations будет выглядеть в Автозагружаемый проект, чтобы найти строку подключения к базе данных.
-2. Из **средства** меню, щелкните **диспетчер пакетов библиотеки** (или **диспетчер пакетов NuGet**) и затем **консоль диспетчера пакетов**.
+2. Из **средства** меню, выберите **диспетчер пакетов NuGet** > **консоль диспетчера пакетов**.
 
     ![Selecting_Package_Manager_Console](preparing-databases/_static/image3.png)
 3. В верхней части **консоль диспетчера пакетов** окне выберите в качестве проекта по умолчанию, а затем at ContosoUniversity.DAL `PM>` командной строке введите «enable-migrations».

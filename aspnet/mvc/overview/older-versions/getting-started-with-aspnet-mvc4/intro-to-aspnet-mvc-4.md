@@ -8,39 +8,39 @@ ms.date: 08/15/2012
 ms.assetid: ed66530a-04d5-49eb-b76a-85be1f57c437
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 62f67d0d0dfe7a3c9d04eacfbcac56f7fd03ef07
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: ea3d1517192ded0e5372c49897bb1fec33324b6f
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577370"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912401"
 ---
 <a name="intro-to-aspnet-mvc-4"></a>Введение в ASP.NET MVC 4
 ====================
 по [Рик Андерсон]((https://twitter.com/RickAndMSFT))
 
-> Обновленную версию, если это руководство доступно [здесь](../../getting-started/introduction/getting-started.md) с помощью [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads). Новое учебное использует ASP.NET MVC 5, который содержит множество улучшений на этом руководстве.
-> 
+> Обновленную версию, если это руководство доступно [здесь](../../getting-started/introduction/getting-started.md) с помощью [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013). Новое учебное использует ASP.NET MVC 5, который содержит множество улучшений на этом руководстве.
+>
 > Этот учебник поможет основы создания MVC 4 веб-приложения ASP.NET с помощью Microsoft [Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/products/express) или Visual Web Developer 2010 Express пакетом обновления 1. Visual Studio 2012 мы рекомендуем устанавливать ничего для работы с этим руководством не требуется. Если вы используете Visual Studio 2010 необходимо установить компонентов, перечисленных ниже. Все из них можно установить по ссылкам ниже:
-> 
+>
 > - [Необходимые компоненты для Visual Studio Web Developer Express SP1](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)
 > - [Установщик удостоверения рабочего Процесса для ASP.NET MVC 4](https://go.microsoft.com/fwlink/?LinkId=243392)
 > - [LocalDB](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLLocalDBOnly_11_0)
 > - [SSDT](https://blogs.msdn.com/b/rickandy/archive/2012/08/02/installing-and-using-sql-server-data-tools-ssdt-on-visual-studio-2010-and-vwd.aspx)
-> 
+>
 > Если вы используете Visual Studio 2010 вместо Visual Web Developer 2010, установите [установщик удостоверения рабочего Процесса для ASP.NET MVC 4](https://go.microsoft.com/fwlink/?LinkId=243392) и: [необходимых компонентов Visual Studio 2010](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack)
-> 
+>
 > Проект Visual Web Developer с исходным кодом C# — прилагаются в этом разделе. [Загрузить версию C#](https://code.msdn.microsoft.com/Intro-to-ASPNET-MVC-4-61d0219d/file/114480/1/MvcMovie.zip).
-> 
+>
 > В этом руководстве вы запустите приложение в Visual Studio. Вы можете также сделать приложение доступным через Интернет, развернув ее у поставщика услуг размещения. Корпорация Майкрософт предлагает бесплатные услуг хостинга до 10 веб-сайтов в [бесплатную пробную учетную запись Windows Azure](https://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A443DD604). Сведения о развертывании веб-проекта Visual Studio для веб-сайта Windows Azure, см. в разделе [Создание и развертывание веб-узла ASP.NET и базы данных SQL с помощью Visual Studio](https://docs.microsoft.com/dotnet/azure/). Этот учебник также показано, как использовать Entity Framework Code First Migrations для развертывания базы данных SQL Server в базу данных SQL Windows Azure (прежнее название — SQL Azure).
-> 
+>
 > Это руководство было написано с Рик Андерсон ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) ).
 
 
 ## <a name="what-youll-build"></a>Что вы создадите
 
 > [!NOTE]
-> Обновленную версию, если это руководство доступно [здесь](../../getting-started/introduction/getting-started.md) с помощью [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads). Новое учебное использует ASP.NET MVC 5, который содержит множество улучшений на этом руководстве.
+> Обновленную версию, если это руководство доступно [здесь](../../getting-started/introduction/getting-started.md) с помощью [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013). Новое учебное использует ASP.NET MVC 5, который содержит множество улучшений на этом руководстве.
 
 
 Вы реализуете простое приложение списка фильмов, который поддерживает создание, изменение, поиска и список фильмов из базы данных. Ниже приведены два снимка экрана приложения, который вам предстоит создать. Он включает страницы, отображающей список фильмов из базы данных:

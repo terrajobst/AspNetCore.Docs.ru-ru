@@ -8,12 +8,12 @@ ms.date: 08/15/2012
 ms.assetid: 27dc4fc8-1b51-43b0-933f-fc1b52476523
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: 8b82b8b9b1ee6646072931da889c643afb34d474
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 6fe55a14b40f8c50dee91cdc7f59d0378f2a1ea2
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578163"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912336"
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>Возможности ASP.NET MVC 4 для мобильных приложений
 ====================
@@ -184,7 +184,7 @@ ms.locfileid: "48578163"
 
 Установка *jQuery.Mobile.MVC* пакет NuGet, таким образом:
 
-1. Из **средства** меню, выберите **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**.
+1. Из **средства** меню, выберите **диспетчер пакетов NuGet**, а затем выберите **консоль диспетчера пакетов**.
 
     [![p3_packageMgr](aspnet-mvc-4-mobile-features/_static/image20.png)](aspnet-mvc-4-mobile-features/_static/image19.png)
 2. В **консоль диспетчера пакетов**, введите `Install-Package jQuery.Mobile.MVC -version 1.0.0`
@@ -245,11 +245,11 @@ ms.locfileid: "48578163"
 
 > [!NOTE]
 > Отладка Примечание: можно добавить следующий код в конец Views\Shared\\_ViewSwitcher.cshtml для отладки представления, настроенное с помощью строки агента пользователя браузера на мобильном устройстве.
-> 
+>
 > [!code-csharp[Main](aspnet-mvc-4-mobile-features/samples/sample15.cs)]
-> 
->  и следующий заголовок для добавления *Views\Shared\\_Layout.cshtml* файла.  
-> 
+>
+>  и следующий заголовок для добавления *Views\Shared\\_Layout.cshtml* файла.
+>
 > [!code-html[Main](aspnet-mvc-4-mobile-features/samples/sample16.html)]
 
 

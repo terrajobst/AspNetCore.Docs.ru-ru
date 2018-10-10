@@ -8,12 +8,12 @@ ms.date: 05/01/2013
 ms.assetid: 501db899-e68c-49ff-81b2-1dc561bfe908
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: d3c5af75c87f4ba51bb5627ddf237a70e5181678
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d597eebc958815b1b1b9fdffc256c4453efce6b3
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838136"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910958"
 ---
 <a name="signalr-scaleout-with-azure-service-bus-signalr-1x"></a>Масштабирование SignalR с помощью Azure Service Bus (SignalR 1.x)
 ====================
@@ -88,7 +88,7 @@ ms.locfileid: "41838136"
 
 Чтобы создать приложение чата, следуйте указаниям в этом руководстве [начало работы с SignalR и MVC 4](tutorial-getting-started-with-signalr-and-mvc-4.md).
 
-Используйте NuGet для установки необходимых библиотек. Из **средства** меню, выберите **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**. В **консоль диспетчера пакетов** окно, введите следующие команды:
+Используйте NuGet для установки необходимых библиотек. Из **средства** меню, выберите **диспетчер пакетов NuGet**, а затем выберите **консоль диспетчера пакетов**. В **консоль диспетчера пакетов** окно, введите следующие команды:
 
 [!code-powershell[Main](scaleout-with-windows-azure-service-bus/samples/sample2.ps1)]
 

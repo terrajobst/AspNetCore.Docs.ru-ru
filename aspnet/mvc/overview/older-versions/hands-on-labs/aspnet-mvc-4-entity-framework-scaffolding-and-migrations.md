@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 093c1362-f10b-407c-a708-be370f4b62b0
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 10a61b70ef52aa9f5bb9004df3dba9e323d021db
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: bfb1edfcb756706e44126e7e96803bd2e9ce99fb
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829639"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911023"
 ---
 # <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>Перенос и ASP.NET MVC 4 Entity Framework, формирование шаблонов
 
@@ -172,7 +172,7 @@ ms.locfileid: "41829639"
 
 В этой задаче будет обновить базу данных с помощью миграций Entity Framework. Вы поймете, насколько это просто для изменения модели и отражение изменений в базах данных с помощью функции миграции Entity Framework.
 
-1. Откройте консоль диспетчера пакетов. Выберите **инструменты | Диспетчер пакетов библиотеки | Консоль диспетчера пакетов**.
+1. Откройте консоль диспетчера пакетов. Выберите **средства** > **диспетчер пакетов NuGet** > **консоль диспетчера пакетов**.
 2. В консоли диспетчера пакетов введите следующую команду:
 
     PMC

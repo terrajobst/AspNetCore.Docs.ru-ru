@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: fdc3599a-5217-44c1-951f-0eec9812dce7
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 2223675ab2ec40a7e25229bf34b2f0ffddc31fed
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d541dad19d8fd547d61e8850d64e514ea5db7fcf
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41828641"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912427"
 ---
 <a name="tutorial-getting-started-with-signalr-1x"></a>Учебник: Начало работы с SignalR 1.x
 ====================
@@ -66,7 +66,7 @@ SignalR упрощает процесс создания приложений в
 1. В Visual Studio создайте пустое веб-приложение ASP.NET.
 
     ![Создать пустой веб-узел](tutorial-getting-started-with-signalr/_static/image2.png)
-2. Откройте **консоль диспетчера пакетов** , выбрав **инструменты | Диспетчер пакетов библиотеки | Консоль диспетчера пакетов**. Введите следующую команду в окне консоли:
+2. Откройте **консоль диспетчера пакетов** , выбрав **инструменты | Диспетчер пакетов NuGet | Консоль диспетчера пакетов**. Введите следующую команду в окне консоли:
 
     `Install-Package Microsoft.AspNet.SignalR -Version 1.1.3`
 

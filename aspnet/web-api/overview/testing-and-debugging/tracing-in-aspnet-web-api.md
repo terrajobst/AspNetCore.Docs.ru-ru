@@ -8,12 +8,12 @@ ms.date: 02/25/2014
 ms.assetid: 66a837e9-600b-4b72-97a9-19804231c64a
 msc.legacyurl: /web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 426e3500c504a651a325eec021e2d9e8b9cc1d32
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: e0d525e497cf41a79820417a9c832fa6b5cd7f8a
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795284"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912843"
 ---
 <a name="tracing-in-aspnet-web-api-2"></a>Трассировка в ASP.NET Web API 2
 ====================
@@ -37,7 +37,7 @@ ms.locfileid: "48795284"
 
 [![](tracing-in-aspnet-web-api/_static/image4.png)](tracing-in-aspnet-web-api/_static/image3.png)
 
-Из **средства** меню, выберите **диспетчер пакетов библиотеки**, затем **консоли**.
+Из **средства** меню, выберите **диспетчер пакетов NuGet**, затем **консоли**.
 
 В окне консоли диспетчера пакетов введите следующие команды.
 
@@ -47,7 +47,6 @@ ms.locfileid: "48795284"
 
 > [!NOTE]
 > Если вы хотите охватить определенную версию веб-API, используйте флаг версии, при установке пакета трассировки.
-
 
 Откройте файл WebApiConfig.cs в приложении\_Начальная папка. Добавьте следующий код, чтобы **зарегистрировать** метод.
 

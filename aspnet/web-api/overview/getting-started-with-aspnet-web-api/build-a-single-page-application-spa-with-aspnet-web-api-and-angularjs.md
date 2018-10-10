@@ -8,12 +8,12 @@ ms.date: 09/30/2015
 ms.assetid: 719727b7-bef3-45ad-bfe9-ba5bcdb2305f
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs
 msc.type: authoredcontent
-ms.openlocfilehash: 24ab1c470a22b5b328d1f3bc400400978eb31600
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 3c3557bb2be2807b11874937fcc629b5b773e463
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838876"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912258"
 ---
 <a name="hands-on-lab-build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs"></a>Практическое лабораторное занятие: Создание одностраничного приложения (SPA) с веб-API ASP.NET и Angular.js
 ====================
@@ -308,7 +308,7 @@ ms.locfileid: "41838876"
 
 
 1. Откройте **Visual Studio Express 2013 для Web** и откройте **GeekQuiz.sln** решение находится в **источника/Ex2-CreatingASPAInterface/начало** папки. Кроме того можно продолжить с решением, полученный в предыдущем упражнении.
-2. Откройте **консоль диспетчера пакетов** из **средства** | **диспетчер пакетов библиотеки**. Введите следующую команду, чтобы установить **AngularJS.Core** пакет NuGet.
+2. Откройте **консоль диспетчера пакетов** из **средства** > **диспетчер пакетов NuGet**. Введите следующую команду, чтобы установить **AngularJS.Core** пакет NuGet.
 
     [!code-powershell[Main](build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs/samples/sample16.ps1)]
 3. В **обозревателе решений**, щелкните правой кнопкой мыши **сценарии** папке **GeekQuiz** проекта и выберите **Add | Новая папка**. Назовите папку **приложения** и нажмите клавишу **ввод**.

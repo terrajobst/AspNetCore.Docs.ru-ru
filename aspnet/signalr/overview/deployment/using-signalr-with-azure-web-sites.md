@@ -8,31 +8,31 @@ ms.date: 07/01/2015
 ms.assetid: 2a7517a0-b88c-4162-ade3-9bf6ca7062fd
 msc.legacyurl: /signalr/overview/deployment/using-signalr-with-azure-web-sites
 msc.type: authoredcontent
-ms.openlocfilehash: a6dfb4e5f3cd594860939eb54c88e6453e5db181
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: c5ede2891ef18b622ed269723603dea3b67a135d
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836954"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912609"
 ---
 <a name="using-signalr-with-web-apps-in-azure-app-service"></a>С помощью SignalR с веб-приложениями в службе приложений Azure
 ====================
 по [Патрик Флетчера](https://github.com/pfletcher)
 
 > В этом документе описываются способы настройки приложения SignalR, которое работает на базе Microsoft Azure.
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads) или Visual Studio 2012
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013) или Visual Studio 2012
 > - .NET 4.5
 > - SignalR версии 2
 > - Пакет Azure SDK 2.3 для Visual Studio 2013 или 2012
->   
-> 
-> 
+>
+>
+>
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
-> 
+>
 > Оставьте свои отзывы на том, как вам понравилось, и этот учебник и что можно улучшить в комментариях в нижней части страницы. Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум по ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR), [StackOverflow.com](http://stackoverflow.com/), или [форумы Microsoft Azure](https://social.msdn.microsoft.com/Forums/windowsazure/home?category=windowsazureplatform).
 
 

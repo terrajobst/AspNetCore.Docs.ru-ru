@@ -5,12 +5,12 @@ description: Узнайте, как создать приложение Razor Pa
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: 2fb13f0772a1f8aa4ed2ff3ece2a2c5d3b7360c9
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 71b7855958b530b8bac32843a8d1e7db0113ffd9
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010940"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912635"
 ---
 ::: moniker range="<= aspnetcore-1.1"
 
@@ -350,6 +350,7 @@ dotnet ef database update
 
 ### <a name="additional-resources"></a>Дополнительные ресурсы
 
+* [Создание веб-приложения .NET Core с базой данных SQL в службе приложений Azure](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 * [ASP.NET Core авторизация лаборатории](https://github.com/blowdart/AspNetAuthorizationWorkshop). Это лабораторное занятие содержит более подробные сведения о функциях безопасности, представленных в этом руководстве.
 * [Авторизация в ASP.NET Core: простая, ролей, на основе утверждений и пользовательская](xref:security/authorization/index)
 * [Пользовательская авторизация на основе политик](xref:security/authorization/policies)

@@ -8,25 +8,25 @@ ms.date: 07/09/2013
 ms.assetid: a90a04ce-9d07-43ad-8250-8a92fb2bd3d5
 msc.legacyurl: /web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 0d16498e94ac0a66c117ed057db398c14080beaa
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 06fd13fe9b12d172d615ae76a71d246a89f5386d
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41824109"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910490"
 ---
 <a name="use-owin-to-self-host-aspnet-web-api-2"></a>Использование OWIN для резидентного размещения веб-API 2 ASP.NET
 ====================
 по [Kanchan Mehrotra](https://twitter.com/kanchanmeh)
 
 > Этом руководстве показано, как разместить веб-API ASP.NET в консольном приложении, с помощью OWIN для резидентного размещения платформа веб-API.
-> 
+>
 > [Открыть веб-интерфейс .NET](http://owin.org) (OWIN) определяет абстракции между веб-серверов .NET и веб-приложений. OWIN отделяет веб-приложения на сервер, который идеально OWIN для резидентного размещения веб-приложения в собственном процессе, за пределами служб IIS.
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads) (также работает с Visual Studio 2012)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013) (также работает с Visual Studio 2012)
 > - Веб-API 2
 
 
@@ -42,7 +42,7 @@ ms.locfileid: "41824109"
 
 ## <a name="add-the-web-api-and-owin-packages"></a>Добавьте веб-API и пакеты OWIN
 
-Из **средства** меню, щелкните **диспетчер пакетов библиотеки**, затем нажмите кнопку **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
+Из **средства** меню, щелкните **диспетчер пакетов NuGet**, затем нажмите кнопку **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
 
 `Install-Package Microsoft.AspNet.WebApi.OwinSelfHost`
 

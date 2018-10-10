@@ -8,20 +8,20 @@ ms.date: 11/07/2014
 ms.assetid: 18cdd896-8ed9-4547-b143-114711e3eafb
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 16bef0094406f3f45307eabd19c0872e90ecf7ef
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 18d3720f891e2356af42b58389776f2d04eee39d
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829893"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913207"
 ---
 <a name="reading-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Чтение связанных данных с Entity Framework в приложении ASP.NET MVC
 ====================
 по [том Дайкстра](https://github.com/tdykstra)
 
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8) или [скачать PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio 2013. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
+> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 
 
 В предыдущем учебном курсе мы завершили модели School. В этом руководстве можно прочитать и отображения связанных данных — то есть данные, которые Entity Framework загружает в свойства навигации.
@@ -36,7 +36,7 @@ ms.locfileid: "41829893"
 
 Существует несколько способов, что платформа Entity Framework может загружать связанные данные в свойства навигации сущности:
 
-- *Отложенная загрузка*. При первом чтении сущности связанные данные не извлекаются. Однако при первой попытке доступа к свойству навигации необходимые для этого свойства навигации данные извлекаются автоматически. Это приводит к отправке нескольких запросов к базе данных — один для самой сущности и один каждый раз, что связанные данные для сущности должны извлекаться. `DbContext` Класс включает отложенной загрузки по умолчанию. 
+- *Отложенная загрузка*. При первом чтении сущности связанные данные не извлекаются. Однако при первой попытке доступа к свойству навигации необходимые для этого свойства навигации данные извлекаются автоматически. Это приводит к отправке нескольких запросов к базе данных — один для самой сущности и один каждый раз, что связанные данные для сущности должны извлекаться. `DbContext` Класс включает отложенной загрузки по умолчанию.
 
     ![Lazy_loading_example](https://asp.net/media/2577850/Windows-Live-Writer_Reading-Re.NET-MVC-Application-5-of-10h1_ADC3_Lazy_loading_example_2c44eabb-5fd3-485a-837d-8e3d053f2c0c.png)
 - *Безотложная загрузка*. При чтении сущности связанные данные извлекаются вместе с ней. Обычно такая загрузка представляет собой одиночный запрос с соединением, который получает все необходимые данные. Безотложная загрузка указывается с помощью `Include` метод.
@@ -69,7 +69,7 @@ ms.locfileid: "41829893"
 Ниже приведены некоторые другие [способа отключить отложенную загрузку](https://msdn.microsoft.com/data/jj574232):
 
 - Для свойства навигации конкретного, пропустить `virtual` ключевое слово при объявлении свойства.
-- Для всех свойств навигации, задайте `LazyLoadingEnabled` для `false`, поместите следующий код в конструктор класса контекста: 
+- Для всех свойств навигации, задайте `LazyLoadingEnabled` для `false`, поместите следующий код в конструктор класса контекста:
 
     [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
@@ -183,10 +183,10 @@ ms.locfileid: "41829893"
 
 - Изменили класс модели на `InstructorIndexData`.
 - Изменили заголовок страницы с **Index** на **Instructors**.
-- Добавлен **Office** столбец, отображающий `item.OfficeAssignment.Location` только если `item.OfficeAssignment` не равно null. (Так как это связь один к нулю или одному, может быть связанным `OfficeAssignment` сущности.) 
+- Добавлен **Office** столбец, отображающий `item.OfficeAssignment.Location` только если `item.OfficeAssignment` не равно null. (Так как это связь один к нулю или одному, может быть связанным `OfficeAssignment` сущности.)
 
     [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample16.cshtml)]
-- Добавили код, который будет динамически добавлять `class="success"` для `tr` элемент выбранного преподавателя. Этот параметр задает цвет фона для выбранной строки с помощью [Bootstrap](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap) класса. 
+- Добавили код, который будет динамически добавлять `class="success"` для `tr` элемент выбранного преподавателя. Этот параметр задает цвет фона для выбранной строки с помощью [Bootstrap](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap) класса.
 
     [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample17.cshtml)]
 - Добавлено новое `ActionLink` с меткой **выберите** сразу перед другими ссылками в каждой строке, что приводит идентификатор выбранного преподавателя отправку `Index` метод.
@@ -243,7 +243,7 @@ ms.locfileid: "41829893"
 
 Теперь вы использовали все три способа (отложенная, упреждающая и явная) загружать связанные данные в свойства навигации. В следующем руководстве вы узнаете, как обновлять связанные данные.
 
-Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить. Можно также запросить новые темы на [показать мне как с помощью кода](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code).
+Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить.
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 

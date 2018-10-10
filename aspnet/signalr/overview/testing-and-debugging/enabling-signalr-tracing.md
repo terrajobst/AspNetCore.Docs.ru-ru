@@ -8,32 +8,32 @@ ms.date: 08/08/2014
 ms.assetid: 30060acb-be3e-4347-996f-3870f0c37829
 msc.legacyurl: /signalr/overview/testing-and-debugging/enabling-signalr-tracing
 msc.type: authoredcontent
-ms.openlocfilehash: ee62a7b01ff357262aa89dbac4f49180b4c58fe0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 89b27267bec5edb0692fe75061d08b4688df5a8c
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829128"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912071"
 ---
 <a name="enabling-signalr-tracing"></a>Включение трассировки SignalR
 ====================
 по [Tom FitzMacken](https://github.com/tfitzmac)
 
 > В этом документе описывается, как включить и настроить трассировку для SignalR серверов и клиентов. Трассировка позволяет просмотреть диагностические сведения о событиях в приложении SignalR.
-> 
+>
 > В этом разделе был первоначально написан Майклом Патрик Флетчера.
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET Framework 4,5
 > - SignalR версии 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
-> 
+>
 > Оставьте свои отзывы на том, как вам понравилось, и этот учебник и что можно улучшить в комментариях в нижней части страницы. Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум по ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) или [StackOverflow.com](http://stackoverflow.com/).
 
 
@@ -134,7 +134,7 @@ ms.locfileid: "41829128"
 <a id="phone"></a>
 ## <a name="enabling-tracing-in-windows-phone-8-clients"></a>Включение трассировки в клиенты Windows Phone 8
 
-SignalR приложения для приложений Windows Phone используют один и тот же клиент .NET как классические приложения, но [Console.Out](https://msdn.microsoft.com/library/system.console.out(v=vs.110).aspx) и запись в файл с [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) недоступны. Вместо этого необходимо создать пользовательскую реализацию [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter(v=vs.110).aspx) для трассировки. 
+SignalR приложения для приложений Windows Phone используют один и тот же клиент .NET как классические приложения, но [Console.Out](https://msdn.microsoft.com/library/system.console.out(v=vs.110).aspx) и запись в файл с [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) недоступны. Вместо этого необходимо создать пользовательскую реализацию [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter(v=vs.110).aspx) для трассировки.
 
 <a id="phone_ui"></a>
 ### <a name="logging-windows-phone-client-events-to-the-ui"></a>Ведение журнала событий клиента Windows Phone в пользовательский интерфейс

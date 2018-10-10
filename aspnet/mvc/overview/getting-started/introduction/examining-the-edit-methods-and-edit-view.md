@@ -8,12 +8,12 @@ ms.date: 05/22/2015
 ms.assetid: 52a4d5fe-aa31-4471-b3cb-a064f82cb791
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 27c4bcc6dd127fe1a430aaec462e2c19a5fb7851
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 29ece7754bc6e25ea968c25a99a2f48ab837e12c
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577383"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911552"
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>Изучение методов Edit и представления Edit
 ====================
@@ -99,16 +99,15 @@ ms.locfileid: "48577383"
 > [!NOTE]
 > Поддержка проверки jQuery для английского, используйте запятую (&quot;,&quot;) для десятичного разделителя и форматов даты неанглийские США, необходимо включить *globalize.js* и конкретными  *cultures/globalize.cultures.js* файла (из [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) и JavaScript, чтобы использовать `Globalize.parseFloat`. Проверка локализованной jQuery можно получить из NuGet. (Не устанавливайте Globalize при использовании английского языка.)
 
+1. Из **средства** меню **диспетчер пакетов NuGet**, а затем нажмите кнопку **управление пакетами NuGet для решения**.
 
-1. Из **средства** меню выберите **диспетчера пакетов NuGetLibrary**, а затем нажмите кнопку **управление пакетами NuGet для решения**.  
-  
     ![](examining-the-edit-methods-and-edit-view/_static/image5.png)
 2. На левой панели выберите <strong>Обзор *.</strong>* (См. на рисунке ниже).
-3. В поле ввода введите * Globalize **.  
-  
+3. В поле ввода введите * Globalize **.
+
     ![](examining-the-edit-methods-and-edit-view/_static/image6.png) Выберите `jQuery.Validation.Globalize`, выберите `MvcMovie` и нажмите кнопку **установить**. *Scripts\jquery.globalize\globalize.js* файл будет добавлен в проект. *Scripts\jquery.globalize\cultures\* папка будет содержать большое количество файлов JavaScript языка и региональных параметров. Обратите внимание, что может занять 5 минут, чтобы установить этот пакет.
 
-   В следующем коде показано изменения в файл Views\Movies\Edit.cshtml: 
+   В следующем коде показано изменения в файл Views\Movies\Edit.cshtml:
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample10.cshtml)]
 

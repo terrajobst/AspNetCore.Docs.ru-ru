@@ -8,12 +8,12 @@ ms.date: 06/16/2014
 ms.assetid: 76e2013a-65b7-488c-834d-9448ecea378e
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 533d3a6e9a69584fb2523b2c0a604755e372f031
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 733b1c343d774e5fa8757808be07a9ae67481d84
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41837656"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910503"
 ---
 <a name="use-code-first-migrations-to-seed-the-database"></a>Использовать Code First Migrations заполнить базу данных
 ====================
@@ -23,7 +23,7 @@ ms.locfileid: "41837656"
 
 В этом разделе вы воспользуетесь [Code First Migrations](https://msdn.microsoft.com/data/jj591621) в EF для заполнения базы тестовыми данными.
 
-Из **средства** меню, выберите **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
+Из **средства** меню, выберите **диспетчер пакетов NuGet**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
 
 [!code-console[Main](part-3/samples/sample1.cmd)]
 

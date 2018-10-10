@@ -8,12 +8,12 @@ ms.date: 08/29/2011
 ms.assetid: 57666c69-2b0f-423a-a61d-be49547fa585
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 7ecd180b7608e82ea143575c6590574b92843dcf
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 6768472b0c75757c9f368cfea58d5084c26719e1
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577500"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913168"
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-4"></a>Использование HTML5 и элемент интерфейса всплывающего календаря на jQuery в ASP.NET MVC. часть 4
 ====================
@@ -76,13 +76,13 @@ ms.locfileid: "48577500"
 
 Во-первых необходимо установить библиотеки пользовательского интерфейса jQuery. Чтобы сделать это, вы используете NuGet, который представляет собой диспетчер пакетов, включенный в версии с пакетом обновления 1 Visual Studio 2010 и Visual Web Developer.
 
-В Visual Web Developer из **средства** меню, выберите **диспетчер пакетов библиотеки** , а затем выберите **управление пакетами NuGet**.
+В Visual Web Developer из **средства** меню, выберите **диспетчер пакетов NuGet** , а затем выберите **управление пакетами NuGet**.
 
 ![](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-4/_static/image3.png)
 
-Примечание: Если **средства** не отображает меню **диспетчер пакетов библиотеки** команды, необходимо установить пакет NuGet, следуя инструкциям [Установка NuGet](http://docs.nuget.org/docs/start-here/installing-nuget) страницы на веб-сайте NuGet.   
+Примечание: Если **средства** не отображает меню **диспетчер пакетов NuGet** команды, необходимо установить пакет NuGet, следуя инструкциям [Установка NuGet](http://docs.nuget.org/docs/start-here/installing-nuget) страницы на веб-сайте NuGet.   
   
-Если вы используете Visual Studio вместо Visual Web Developer из **средства** меню, выберите **диспетчер пакетов библиотеки** , а затем выберите **добавьте ссылки на пакет библиотеки**.
+Если вы используете Visual Studio вместо Visual Web Developer из **средства** меню, выберите **диспетчер пакетов NuGet** , а затем выберите **добавьте ссылки на пакет библиотеки**.
 
 ![](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-4/_static/image4.png)
 

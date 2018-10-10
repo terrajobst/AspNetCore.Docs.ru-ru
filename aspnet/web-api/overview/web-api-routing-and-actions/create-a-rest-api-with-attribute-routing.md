@@ -8,12 +8,12 @@ ms.date: 06/26/2013
 ms.assetid: 23fc77da-2725-4434-99a0-ff872d96336b
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 191452204d4347396b1d339d9b82d583a2ce9f3c
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 3b66f02c9be6441ff7d6c38d6180cc8556c6b8b9
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795522"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912895"
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>Создание REST API с помощью маршрутизации атрибутов в ASP.NET Web API 2
 ====================
@@ -104,7 +104,7 @@ ms.locfileid: "48795522"
 
 ### <a name="seed-the-database"></a>Заполнение базы данных
 
-В меню "Сервис" выберите **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**.
+В меню "Сервис" выберите **диспетчер пакетов NuGet**, а затем выберите **консоль диспетчера пакетов**.
 
 В окне консоли диспетчера пакетов введите следующую команду:
 
@@ -171,7 +171,7 @@ ms.locfileid: "48795522"
 
 Чтобы получить сведения о книге, клиент отправит запрос GET к `/api/books/{id}/details`, где *{id}* идентификатор книги.
 
-Добавьте следующий метод в класс `BooksController`.
+Добавьте следующий метод в класс `BooksController` .
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample13.cs)]
 

@@ -8,12 +8,12 @@ ms.date: 05/15/2013
 ms.assetid: eaa206c4-edb3-487e-8fcb-54a3261fed36
 msc.legacyurl: /signalr/overview/older-versions/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: d59ca85f1005b08ff52ded61d94323dabdb40d0a
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 905dea4918be731673c39e788069ce2dc78e1649
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835450"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910698"
 ---
 <a name="dependency-injection-in-signalr-1x"></a>Внедрение зависимостей в SignalR 1.x
 ====================
@@ -122,7 +122,7 @@ Visual Studio создает новый интерфейс с именем `ISto
 
 Существует множество контейнеров инверсии управления открытым исходным кодом для .NET. В этом учебнике я использую [Ninject](http://www.ninject.org/). (Включить других популярных библиотек [Castle Windsor](http://www.castleproject.org/), [Spring.Net](http://www.springframework.net/), [Autofac](https://code.google.com/p/autofac/), [Unity](https://github.com/unitycontainer/unity), и [StructureMap ](http://docs.structuremap.net).)
 
-С помощью диспетчера пакетов NuGet для установки [Ninject библиотеки](https://nuget.org/packages/Ninject/3.0.1.10). В Visual Studio из **средства** меню выберите **диспетчер пакетов библиотеки** | **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
+С помощью диспетчера пакетов NuGet для установки [Ninject библиотеки](https://nuget.org/packages/Ninject/3.0.1.10). В Visual Studio из **средства** меню выберите **диспетчер пакетов NuGet** > **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
 
 [!code-powershell[Main](dependency-injection/samples/sample13.ps1)]
 

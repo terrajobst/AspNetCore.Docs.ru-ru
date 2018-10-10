@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: 4ba029b6-ee7c-4e45-a0e7-b703c37e5d9a
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 037f67d679762a037eaef9f0a4060156b94d97b1
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: b691f718258f98e03513a089ca26b286f284765e
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41837683"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913240"
 ---
 <a name="creating-an-entity-framework-data-model-for-an-aspnet-mvc-application-1-of-10"></a>Создание модели данных Entity Framework для приложения ASP.NET MVC (1 из 10)
 ====================
@@ -142,7 +142,7 @@ ms.locfileid: "41837683"
 
 Свойство `StudentID` будет использоваться в качестве столбца первичного ключа в таблице базы данных, соответствующей этому классу. По умолчанию Entity Framework интерпретирует свойство с именем `ID` или *classname* `ID` как первичный ключ.
 
-`Enrollments` Свойство *свойство навигации*. Свойства навигации содержат другие сущности, связанные с этой сущностью. В этом случае `Enrollments` свойство `Student` сущность будет содержать все `Enrollment` сущностей, которые связаны `Student` сущности. Другими словами если заданный `Student` строк в базе данных имеет два связанных `Enrollment` строк (значение строки, которые содержат первичный ключ этого учащегося в их `StudentID` внешний ключевой столбец), в котором `Student` сущности `Enrollments` свойство навигации будет содержать две этих `Enrollment` сущностей.
+Свойство `Enrollments` является *свойством навигации*. Свойства навигации содержат другие сущности, связанные с этой сущностью. В этом случае `Enrollments` свойство `Student` сущность будет содержать все `Enrollment` сущностей, которые связаны `Student` сущности. Другими словами если заданный `Student` строк в базе данных имеет два связанных `Enrollment` строк (значение строки, которые содержат первичный ключ этого учащегося в их `StudentID` внешний ключевой столбец), в котором `Student` сущности `Enrollments` свойство навигации будет содержать две этих `Enrollment` сущностей.
 
 Свойства навигации, обычно определяются как `virtual` таким образом, чтобы они можно воспользоваться преимуществами определенные функциональные возможности Entity Framework, такие как *отложенная загрузка*. (Отложенная загрузка, будет рассматриваться далее в [чтение связанных данных](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) далее в этой серии руководств.
 
@@ -210,7 +210,7 @@ ms.locfileid: "41837683"
 
 ### <a name="enable-code-first-migrations"></a>Включение Code First Migrations
 
-1. Из **средства** меню, щелкните **диспетчер пакетов библиотеки** и затем **консоль диспетчера пакетов**.
+1. Из **средства** меню, щелкните **диспетчер пакетов NuGet** и затем **консоль диспетчера пакетов**.
 
     ![Selecting_Package_Manager_Console](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image10.png)
 2. В `PM>` командной строке введите следующую команду:

@@ -8,32 +8,32 @@ ms.date: 06/10/2014
 ms.assetid: 98358b6e-9139-4239-ba3a-2d7dd74dd664
 msc.legacyurl: /signalr/overview/performance/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: c99b38e9326ee60bfedbd7ec2f383685343cf3c0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 7d9acfc8ed2dd692f36528a8a9700d92d86a4203
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838237"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910451"
 ---
 <a name="signalr-scaleout-with-sql-server"></a>Масштабирование SignalR с помощью SQL Server
 ====================
 по [Майк Уоссон](https://github.com/MikeWasson), [Патрик Флетчера](https://github.com/pfletcher)
 
 > ## <a name="software-versions-used-in-this-topic"></a>Версии программного обеспечения, используемого в этом разделе
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR версии 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>Предыдущие версии этого раздела
-> 
+>
 > Сведения о более ранних версий SignalR, см. в разделе [более старых версий SignalR](../older-versions/index.md).
-> 
+>
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
-> 
+>
 > Оставьте свои отзывы на том, как вам понравилось, и этот учебник и что можно улучшить в комментариях в нижней части страницы. Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум по ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) или [StackOverflow.com](http://stackoverflow.com/).
 
 
@@ -50,16 +50,16 @@ Microsoft SQL Server 2005 или более поздней версии. Зад�
 Прежде чем мы перейдем к подробный учебник, ниже приведен краткий обзор. ваши действия.
 
 1. Создание новой пустой базы данных. Задняя панель создаст необходимые таблицы в этой базе данных.
-2. Добавьте следующие пакеты NuGet приложения: 
+2. Добавьте следующие пакеты NuGet приложения:
 
     - [Microsoft.AspNet.SignalR](http://nuget.org/packages/Microsoft.AspNet.SignalR)
     - [Microsoft.AspNet.SignalR.SqlServer](http://nuget.org/packages/Microsoft.AspNet.SignalR.SqlServer)
 3. Создайте приложение SignalR.
-4. Добавьте следующий код в Startup.cs для настройки на задней стороне: 
+4. Добавьте следующий код в Startup.cs для настройки на задней стороне:
 
     [!code-csharp[Main](scaleout-with-sql-server/samples/sample1.cs)]
 
-   Этот код настраивает задней панели со значениями по умолчанию для [TableCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.sqlscaleoutconfiguration.tablecount(v=vs.118).aspx) и [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Дополнительные сведения об изменении этих значений см. в разделе [производительность SignalR: метрики горизонтального масштабирования](signalr-performance.md#scaleout_metrics). 
+   Этот код настраивает задней панели со значениями по умолчанию для [TableCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.sqlscaleoutconfiguration.tablecount(v=vs.118).aspx) и [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Дополнительные сведения об изменении этих значений см. в разделе [производительность SignalR: метрики горизонтального масштабирования](signalr-performance.md#scaleout_metrics).
 
 ## <a name="configure-the-database"></a>Настройка базы данных
 
@@ -96,7 +96,7 @@ Microsoft SQL Server 2005 или более поздней версии. Зад�
 - [Начало работы с SignalR 2.0](../getting-started/tutorial-getting-started-with-signalr.md)
 - [Начало работы с SignalR 2.0 и MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
 
-Затем мы изменим приложение чата для поддержки горизонтального масштабирования с помощью SQL Server. Во-первых добавьте пакет SignalR.SqlServer NuGet в проект. В Visual Studio из **средства** меню, выберите **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
+Затем мы изменим приложение чата для поддержки горизонтального масштабирования с помощью SQL Server. Во-первых добавьте пакет SignalR.SqlServer NuGet в проект. В Visual Studio из **средства** меню, выберите **диспетчер пакетов NuGet**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
 
 [!code-powershell[Main](scaleout-with-sql-server/samples/sample4.ps1)]
 

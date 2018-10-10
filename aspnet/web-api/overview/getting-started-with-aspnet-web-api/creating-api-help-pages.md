@@ -8,12 +8,12 @@ ms.date: 04/01/2013
 ms.assetid: 0150e67b-c50d-4613-83ea-7b4ef8cacc5a
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 2d8758034ca4339ed7e9699cf2f2643bfab87ba4
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: c081064a32151a71fc4f3ea407e0c48a1539432a
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41837578"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913129"
 ---
 <a name="creating-help-pages-for-aspnet-web-api"></a>Создание страниц справки для веб-API ASP.NET
 ====================
@@ -55,7 +55,7 @@ ms.locfileid: "41837578"
 
 Страницы справки можно добавить в существующий проект веб-API с помощью диспетчера пакетов NuGet. Этот параметр полезен, можно начать с шаблона другому проекту от шаблона «Веб-API».
 
-Из **средства** меню, выберите **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**. В [консоль диспетчера пакетов](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) окно, введите одну из следующих команд:
+Из **средства** меню, выберите **диспетчер пакетов NuGet**, а затем выберите **консоль диспетчера пакетов**. В [консоль диспетчера пакетов](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) окно, введите одну из следующих команд:
 
 Для **C#** приложения: `Install-Package Microsoft.AspNet.WebApi.HelpPage`
 

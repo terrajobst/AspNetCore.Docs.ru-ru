@@ -8,38 +8,38 @@ ms.date: 09/28/2015
 ms.assetid: a9fd4dc0-1b96-4443-82ca-932a5b4a8ea4
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: de47593e7f54757d4f91a6e92485567e74b829ed
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 9edb7fd100a3f4c5331454045ac206d2f7a81961
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835938"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912453"
 ---
 <a name="aspnet-signalr-hubs-api-guide---javascript-client"></a>Руководство по API концентраторов ASP.NET SignalR — клиент JavaScript
 ====================
 по [Флетчера Патрик](https://github.com/pfletcher), [том Дайкстра](https://github.com/tdykstra)
 
 > Этот документ содержит вводные сведения по API концентраторов SignalR версии 2 в клиентах JavaScript, таких как браузеры и приложения Windows Store (WinJS).
-> 
+>
 > API концентраторов SignalR позволяет вам выбрать удаленные вызовы процедур (RPC), с сервера подключенным клиентам и от клиентов к серверу. В серверном коде определяют методы, которые могут быть вызваны клиентов и вызывать методы, которые выполняются на клиенте. В клиентском коде определяют методы, которые могут вызываться с сервера и вызывать методы, которые выполняются на сервере. SignalR берет на себя все необходимое для вас клиент сервер.
-> 
+>
 > SignalR также предлагает API низкого уровня, вызывается постоянные подключения. Введение в SignalR, концентраторы и постоянные подключения, см. в разделе [введение в SignalR](../getting-started/introduction-to-signalr.md).
-> 
+>
 > ## <a name="software-versions-used-in-this-topic"></a>Версии программного обеспечения, используемого в этом разделе
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR версии 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>Предыдущие версии этого раздела
-> 
+>
 > Сведения о более ранних версий SignalR, см. в разделе [более старых версий SignalR](../older-versions/index.md).
-> 
+>
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
-> 
+>
 > Оставьте свои отзывы на том, как вам понравилось, и этот учебник и что можно улучшить в комментариях в нижней части страницы. Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум по ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) или [StackOverflow.com](http://stackoverflow.com/).
 
 
@@ -234,7 +234,7 @@ ms.locfileid: "41835938"
 
 ### <a name="calling-usecors"></a>Вызов UseCors
 
- В следующем фрагменте кода демонстрируется реализация междоменных подключений в SignalR 2. 
+ В следующем фрагменте кода демонстрируется реализация междоменных подключений в SignalR 2.
 
 **Реализация междоменных запросов в SignalR 2**
 
@@ -242,12 +242,12 @@ ms.locfileid: "41835938"
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample11.cs)]
 
-> [!NOTE] 
-> 
+> [!NOTE]
+>
 > - Не устанавливайте `jQuery.support.cors` значение true в коде.
-> 
+>
 >     ![Не присвоено значение true jQuery.support.cors](hubs-api-guide-javascript-client/_static/image7.png)
-> 
+>
 >     SignalR обрабатывает использование CORS. Параметр `jQuery.support.cors` в значение true отключает JSONP, так как вызывает SignalR предположить браузером CORS.
 > - При подключении к URL-адрес localhost, Internet Explorer 10 не будет считать соединение между доменами, поэтому приложение будет работать локально с помощью Internet Explorer 10 даже если вы не включили междоменных подключений на сервере.
 > - Сведения об использовании подключений между доменами с Internet Explorer 9, см. в разделе [цепочке обсуждений StackOverflow](http://stackoverflow.com/questions/13573397/siganlr-ie9-cross-domain-request-dont-work).

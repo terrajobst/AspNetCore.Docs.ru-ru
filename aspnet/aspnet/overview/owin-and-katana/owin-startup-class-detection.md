@@ -8,43 +8,43 @@ ms.date: 10/17/2013
 ms.assetid: 08257f55-36f4-4e39-9c88-2a5602838c79
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-startup-class-detection
 msc.type: authoredcontent
-ms.openlocfilehash: 49ea01bf2170698de66b633b260664ce3d105ca1
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 4e753187f1caae646402712c2abc28856ae71a79
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577487"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910711"
 ---
 <a name="owin-startup-class-detection"></a>Определение класса запуска OWIN
 ====================
 по [Praburaj Thiagarajan](https://github.com/Praburaj), [Рик Андерсон]((https://twitter.com/RickAndMSFT))
 
 > Этом руководстве демонстрируется настройка загружается какой класс запуска OWIN. Дополнительные сведения о OWIN, см. в разделе [Обзор проекта Katana](an-overview-of-project-katana.md). Это руководство было написано с Рик Андерсон ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) ), Praburaj Thiagarajan и Говард Дайеркинг ( [ @howard \_Дайеркинг](https://twitter.com/howard_dierking) ).
-> 
+>
 > ## <a name="prerequisites"></a>Предварительные требования
-> 
-> [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+> [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 
 
 ## <a name="owin-startup-class-detection"></a>Определение класса запуска OWIN
 
- Каждое приложение OWIN имеет класс запуска, где указываются компоненты конвейера приложения. Существует несколько способов, вы можете подключиться классе запуска в среде выполнения, в зависимости от модели размещения выберите (OwinHost, IIS и IIS Express). Класс startup, в этом учебнике используется в каждое приложение размещения. Класс startup для соединения с размещения среды выполнения с помощью, один из этих приближается к:  
+ Каждое приложение OWIN имеет класс запуска, где указываются компоненты конвейера приложения. Существует несколько способов, вы можете подключиться классе запуска в среде выполнения, в зависимости от модели размещения выберите (OwinHost, IIS и IIS Express). Класс startup, в этом учебнике используется в каждое приложение размещения. Класс startup для соединения с размещения среды выполнения с помощью, один из этих приближается к:
 
 1. **Соглашение об именовании**: Katana ищет класс с именем `Startup` в пространстве имен, имя сборки или глобальное пространство имен.
-2. **Атрибут OwinStartup**: именно этот подход, большинство разработчиков займет для указания класса startup. Следующий атрибут будет присвоено класс startup `TestStartup` в класс `StartupDemo` пространства имен. 
+2. **Атрибут OwinStartup**: именно этот подход, большинство разработчиков займет для указания класса startup. Следующий атрибут будет присвоено класс startup `TestStartup` в класс `StartupDemo` пространства имен.
 
     [!code-csharp[Main](owin-startup-class-detection/samples/sample1.cs)]
 
    `OwinStartup` Атрибут переопределяет соглашение об именовании. Также можно указать понятное имя с этим атрибутом, тем не менее, используя понятное имя требует также использования `appSetting` элемент в файле конфигурации.
-3. **В файле конфигурации элемент appSetting**: `appSetting` переопределяет `OwinStartup` атрибут и соглашение об именовании. Можно иметь несколько классов запуска (каждый с помощью `OwinStartup` атрибут) и настройки, какой класс запуска будут загружены в файл конфигурации, используя разметку, аналогичную следующей:  
+3. **В файле конфигурации элемент appSetting**: `appSetting` переопределяет `OwinStartup` атрибут и соглашение об именовании. Можно иметь несколько классов запуска (каждый с помощью `OwinStartup` атрибут) и настройки, какой класс запуска будут загружены в файл конфигурации, используя разметку, аналогичную следующей:
 
     [!code-xml[Main](owin-startup-class-detection/samples/sample2.xml)]
 
-   Также можно использовать следующий раздел, который явно указывает класс startup и сборки: 
+   Также можно использовать следующий раздел, который явно указывает класс startup и сборки:
 
     [!code-xml[Main](owin-startup-class-detection/samples/sample3.xml)]
 
-   Следующий код XML в файле конфигурации задает имя класса понятное запуска `ProductionConfiguration`.  
+   Следующий код XML в файле конфигурации задает имя класса понятное запуска `ProductionConfiguration`.
 
     [!code-xml[Main](owin-startup-class-detection/samples/sample4.xml)]
 
@@ -57,33 +57,32 @@ ms.locfileid: "48577487"
 
 ## <a name="create-an-aspnet-web-app-using-owin-startup"></a>Создать веб-приложение ASP.NET, с помощью запуска OWIN
 
-1. Создайте пустое веб-приложение Asp.Net и назовите его **StartupDemo**. -Установить `Microsoft.Owin.Host.SystemWeb` с помощью диспетчера пакетов NuGet. Из **средства** меню, выберите **диспетчер пакетов библиотеки**, а затем **консоль диспетчера пакетов**. Введите следующую команду:  
+1. Создайте пустое веб-приложение Asp.Net и назовите его **StartupDemo**. -Установить `Microsoft.Owin.Host.SystemWeb` с помощью диспетчера пакетов NuGet. Из **средства** меню, выберите **диспетчер пакетов NuGet**, а затем **консоль диспетчера пакетов**. Введите следующую команду:
 
     [!code-powershell[Main](owin-startup-class-detection/samples/sample7.ps1)]
-2. Добавьте класс запуска OWIN. В Visual Studio 2013 правой кнопкой мыши проект и выберите **Добавление класса**. — в **Добавление нового элемента** диалогового окна введите *OWIN* в поле поиска и измените имя на Startup.cs, а затем нажмите кнопку **добавить**.  
-  
-     ![](owin-startup-class-detection/_static/image1.png)   
-  
-   В следующий раз, вы хотите добавить *класс запуска Owin*, будет доступен из **добавить** меню.  
-   
-     ![](owin-startup-class-detection/_static/image2.png)  
-  
-   Кроме того, можно правой кнопкой мыши проект и выберите **добавить**, а затем выберите **новый элемент**, а затем выберите **класс запуска Owin**.  
-  
-     ![](owin-startup-class-detection/_static/image3.png)  
-  
-- Замените сгенерированный код в *Startup.cs* файл со следующими:  
+2. Добавьте класс запуска OWIN. В Visual Studio 2013 правой кнопкой мыши проект и выберите **Добавление класса**. — в **Добавление нового элемента** диалогового окна введите *OWIN* в поле поиска и измените имя на Startup.cs, а затем нажмите кнопку **добавить**.
+
+     ![](owin-startup-class-detection/_static/image1.png)
+
+   В следующий раз, вы хотите добавить *класс запуска Owin*, будет доступен из **добавить** меню.
+
+     ![](owin-startup-class-detection/_static/image2.png)
+
+   Кроме того, можно правой кнопкой мыши проект и выберите **добавить**, а затем выберите **новый элемент**, а затем выберите **класс запуска Owin**.
+
+     ![](owin-startup-class-detection/_static/image3.png)
+
+- Замените сгенерированный код в *Startup.cs* файл со следующими:
 
     [!code-csharp[Main](owin-startup-class-detection/samples/sample8.cs?highlight=5,7,15-28,31-34)]
-  
+
   `app.Use` Лямбда-выражение используется для регистрации компонента указанного по промежуточного слоя в конвейер OWIN. В этом случае мы собираемся настроить ведение журнала входящих запросов, прежде чем отвечать на входящий запрос. `next` Параметр является делегатом ( [Func](https://msdn.microsoft.com/library/bb534960(v=vs.100).aspx) &lt; [задачи](https://msdn.microsoft.com/library/dd321424(v=vs.100).aspx) &gt; ) к следующему компоненту в конвейере. `app.Run` Лямбда-выражение подключает конвейер для входящих запросов и предоставляет механизм ответа.
      > [!NOTE]
-     > В приведенном выше коде мы закомментирован `OwinStartup` атрибут и мы полагаетесь на соглашению под управлением с именем класса `Startup` .-Press ***F5*** для запуска приложения. Несколько раз нажмите кнопку обновления.  
-  
-    ![](owin-startup-class-detection/_static/image4.png)  
-  Примечание: Значение, показанное в образы в этом руководстве не будет соответствовать номера, который отображается. Миллисекунды строка используется для отображения нового ответа при обновлении страницы.  
-  Вы увидите сведения о трассировке в **вывода** окна.  
-  
+     > В приведенном выше коде мы закомментирован `OwinStartup` атрибут и мы полагаетесь на соглашению под управлением с именем класса `Startup` .-Press ***F5*** для запуска приложения. Несколько раз нажмите кнопку обновления.
+
+    ![](owin-startup-class-detection/_static/image4.png) Примечание: Значение, показанное в образы в этом руководстве не будет соответствовать номера, который отображается. Миллисекунды строка используется для отображения нового ответа при обновлении страницы.
+  Вы увидите сведения о трассировке в **вывода** окна.
+
     ![](owin-startup-class-detection/_static/image5.png)
 
 ## <a name="add-more-startup-classes"></a>Добавить дополнительные классы запуска
@@ -94,11 +93,11 @@ ms.locfileid: "48577487"
 2. Замените сгенерированный код следующим кодом:
 
     [!code-csharp[Main](owin-startup-class-detection/samples/sample9.cs?highlight=14-18)]
-3. Нажмите клавишу F5 элемента управления, чтобы запустить приложение. `OwinStartup` Атрибут указывает, выполняется класс startup рабочей среде.  
-  
+3. Нажмите клавишу F5 элемента управления, чтобы запустить приложение. `OwinStartup` Атрибут указывает, выполняется класс startup рабочей среде.
+
     ![](owin-startup-class-detection/_static/image6.png)
 4. Создайте еще один класс запуска OWIN и назовите его `TestStartup`.
-5. Замените сгенерированный код следующим кодом:  
+5. Замените сгенерированный код следующим кодом:
 
     [!code-csharp[Main](owin-startup-class-detection/samples/sample10.cs?highlight=6,14-18)]
 
@@ -106,8 +105,8 @@ ms.locfileid: "48577487"
 6. Откройте *web.config* файл и добавьте ключ запуска приложения OWIN, который указывает понятное имя в классе Startup:
 
     [!code-xml[Main](owin-startup-class-detection/samples/sample11.xml?highlight=3-5)]
-7. Нажмите клавишу F5 элемента управления, чтобы запустить приложение. Элемент параметров приложения имеет высокий приоритет и тест запускается конфигурации.  
-  
+7. Нажмите клавишу F5 элемента управления, чтобы запустить приложение. Элемент параметров приложения имеет высокий приоритет и тест запускается конфигурации.
+
     ![](owin-startup-class-detection/_static/image7.png)
 8. Удалить *понятное* имя из `OwinStartup` атрибут в `TestStartup` класса.
 
@@ -115,11 +114,11 @@ ms.locfileid: "48577487"
 9. Замените ключ запуска приложения OWIN в *web.config* файл со следующими:
 
     [!code-xml[Main](owin-startup-class-detection/samples/sample13.xml)]
-10. Отменить `OwinStartup` атрибута этих классов в код атрибута по умолчанию, созданный средой Visual Studio:  
+10. Отменить `OwinStartup` атрибута этих классов в код атрибута по умолчанию, созданный средой Visual Studio:
 
     [!code-csharp[Main](owin-startup-class-detection/samples/sample14.cs)]
 
-    Каждый ключ запуска приложения OWIN ниже приведет к производственного класса для запуска. 
+    Каждый ключ запуска приложения OWIN ниже приведет к производственного класса для запуска.
 
     [!code-xml[Main](owin-startup-class-detection/samples/sample15.xml)]
 
@@ -129,36 +128,36 @@ ms.locfileid: "48577487"
 
 ## <a name="using-owinhostexe"></a>С помощью Owinhost.exe
 
-1. Замените файл Web.config следующую разметку:  
+1. Замените файл Web.config следующую разметку:
 
     [!code-xml[Main](owin-startup-class-detection/samples/sample17.xml?highlight=3-6)]
 
    Ключ последнего wins, поэтому в данном случае `TestStartup` указан.
-2. Установка Owinhost из PMC: 
+2. Установка Owinhost из PMC:
 
     [!code-console[Main](owin-startup-class-detection/samples/sample18.cmd)]
-3. Перейдите в папку приложения (в папку, содержащую *Web.config* файл) и в командную строку и введите: 
+3. Перейдите в папку приложения (в папку, содержащую *Web.config* файл) и в командную строку и введите:
 
     [!code-console[Main](owin-startup-class-detection/samples/sample19.cmd)]
 
-   Командное окно будет показано следующее: 
+   Командное окно будет показано следующее:
 
     [!code-console[Main](owin-startup-class-detection/samples/sample20.cmd)]
-4. Окно браузера с URL-адрес `http://localhost:5000/`.  
-  
-    ![](owin-startup-class-detection/_static/image8.png)  
-  
+4. Окно браузера с URL-адрес `http://localhost:5000/`.
+
+    ![](owin-startup-class-detection/_static/image8.png)
+
    OwinHost соблюдаться соглашения, запуска, перечисленные выше.
 5. В окне командной строки нажмите клавишу ВВОД для выхода OwinHost.
 6. В `ProductionStartup` добавьте следующий атрибут OwinStartup, который указывает понятное имя *ProductionConfiguration*.
 
     [!code-csharp[Main](owin-startup-class-detection/samples/sample21.cs)]
-7. В командную строку и введите: 
+7. В командную строку и введите:
 
     [!code-console[Main](owin-startup-class-detection/samples/sample22.cmd)]
 
-   Класс startup рабочей загрузки.  
-    ![](owin-startup-class-detection/_static/image9.png)  
+   Класс startup рабочей загрузки.
+    ![](owin-startup-class-detection/_static/image9.png)
    Наше приложение имеет несколько классов запуска, а в этом примере мы имеют отсроченные какой класс startup для загрузки только во время выполнения.
 8. Проверьте следующие параметры запуска среды выполнения:
 

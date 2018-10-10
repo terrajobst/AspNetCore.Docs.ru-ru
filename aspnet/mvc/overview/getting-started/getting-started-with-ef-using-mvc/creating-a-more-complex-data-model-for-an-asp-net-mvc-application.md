@@ -8,20 +8,20 @@ ms.date: 11/07/2014
 ms.assetid: 46f7f3c9-274f-4649-811d-92222a9b27e2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 25bd71f9860db01afb7177da0f9befbdd8eb8e12
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 25cec8bb9384dbd053f8af12855171a54675a40e
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838896"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912492"
 ---
 <a name="creating-a-more-complex-data-model-for-an-aspnet-mvc-application"></a>Создание более сложной модели данных для приложения ASP.NET MVC
 ====================
 по [том Дайкстра](https://github.com/tdykstra)
 
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8) или [скачать PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio 2013. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
+> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 
 
 В предыдущих руководствах вы работали с простой модели данных, состоящей из трех сущностей. В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных путем указания форматирования, проверки и правила сопоставления базы данных. Вы увидите два способа настройки модели данных: путем добавления атрибутов к классам сущностей и добавив код в класс контекста базы данных.
@@ -230,13 +230,13 @@ ms.locfileid: "41838896"
 
 Свойства внешнего ключа и свойства навигации в `Course` сущности отражают следующие связи:
 
-- Курс назначается одной кафедре, поэтому по указанным выше причинам имеется внешний ключ `DepartmentID` и свойство навигации `Department`. 
+- Курс назначается одной кафедре, поэтому по указанным выше причинам имеется внешний ключ `DepartmentID` и свойство навигации `Department`.
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample17.cs)]
-- На курс может быть зачислено любое количество учащихся, поэтому свойство навигации `Enrollments` является коллекцией: 
+- На курс может быть зачислено любое количество учащихся, поэтому свойство навигации `Enrollments` является коллекцией:
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample18.cs)]
-- Курс могут вести несколько преподавателей, поэтому свойство навигации `Instructors` является коллекцией: 
+- Курс могут вести несколько преподавателей, поэтому свойство навигации `Instructors` является коллекцией:
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample19.cs)]
 
@@ -260,15 +260,15 @@ ms.locfileid: "41838896"
 
 Свойства внешнего ключа и навигации отражают следующие связи:
 
-- Кафедра может иметь или не иметь администратора, и администратор всегда является преподавателем. Таким образом `InstructorID` свойство включается как внешний ключ к `Instructor` сущность и знак вопроса добавляется после `int` введите обозначения свойство как допускающие значение NULL. Свойство навигации называется `Administrator` , но содержит `Instructor` сущности: 
+- Кафедра может иметь или не иметь администратора, и администратор всегда является преподавателем. Таким образом `InstructorID` свойство включается как внешний ключ к `Instructor` сущность и знак вопроса добавляется после `int` введите обозначения свойство как допускающие значение NULL. Свойство навигации называется `Administrator` , но содержит `Instructor` сущности:
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample22.cs)]
-- Кафедра может иметь несколько курсов, поэтому `Courses` свойство навигации: 
+- Кафедра может иметь несколько курсов, поэтому `Courses` свойство навигации:
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample23.cs)]
 
   > [!NOTE]
-  > По соглашению Entity Framework разрешает каскадное удаление для внешних ключей, не допускающих значение null, и связей многие ко многим. Это может привести к циклическим правилам каскадного удаления, которые вызывают исключение при попытке добавить миграцию. Например, если вы не `Department.InstructorID` свойство допускает значение NULL, возникнет следующее сообщение об исключении: «ссылочную связь приведет к циклическая ссылка, не допускается.» Если вашей бизнес-правила требуют `InstructorID` значение отличное от NULL, необходимо использовать следующий оператор текучего API, чтобы отключить каскадное удаление для связи: 
+  > По соглашению Entity Framework разрешает каскадное удаление для внешних ключей, не допускающих значение null, и связей многие ко многим. Это может привести к циклическим правилам каскадного удаления, которые вызывают исключение при попытке добавить миграцию. Например, если вы не `Department.InstructorID` свойство допускает значение NULL, возникнет следующее сообщение об исключении: «ссылочную связь приведет к циклическая ссылка, не допускается.» Если вашей бизнес-правила требуют `InstructorID` значение отличное от NULL, необходимо использовать следующий оператор текучего API, чтобы отключить каскадное удаление для связи:
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample24.cs)]
 
@@ -285,10 +285,10 @@ ms.locfileid: "41838896"
 
 Свойства внешнего ключа и навигации отражают следующие связи:
 
-- Запись зачисления предназначена для одного курса, поэтому доступно свойство первичного ключа `CourseID` и свойство навигации `Course`: 
+- Запись зачисления предназначена для одного курса, поэтому доступно свойство первичного ключа `CourseID` и свойство навигации `Course`:
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample26.cs)]
-- Запись зачисления предназначена для одного учащегося, поэтому доступно свойство первичного ключа `StudentID` и свойство навигации `Student`: 
+- Запись зачисления предназначена для одного учащегося, поэтому доступно свойство первичного ключа `StudentID` и свойство навигации `Student`:
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample27.cs)]
 
@@ -382,13 +382,13 @@ ms.locfileid: "41838896"
 
 > [!NOTE]
 > Это можно получить другие ошибки при переносе данных и внесения изменений схемы. Если вы получаете ошибки миграции, которые не удается устранить, измените имя базы данных в строке подключения или удалите базу данных. Самым простым подходом является переименовать базу данных, в *Web.config* файл. В следующем примере показано имя изменено на CU\_теста:
-> 
+>
 > [!code-xml[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample36.xml?highlight=1)]
-> 
+>
 > В новой базе данных нет данных для переноса и `update-database` команда является гораздо большей долей вероятности завершится без ошибок. Инструкции о том, как удалить базу данных, см. в разделе [как удалить базу данных из Visual Studio 2012](http://romiller.com/2013/05/17/how-to-drop-a-database-from-visual-studio-2012/).
-> 
+>
 > В случае неудачи, попробуйте еще вариант — это повторно инициализировать базу данных, введя следующую команду в PMC:
-> 
+>
 > `update-database -TargetMigration:0`
 
 
@@ -406,7 +406,7 @@ ms.locfileid: "41838896"
 
 Теперь у вас есть более сложная модель данных и соответствующая база данных. В следующем руководстве вы узнаете о различных способах доступа к соответствующим данным.
 
-Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить. Можно также запросить новые темы на [показать мне как с помощью кода](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code).
+Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить.
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 

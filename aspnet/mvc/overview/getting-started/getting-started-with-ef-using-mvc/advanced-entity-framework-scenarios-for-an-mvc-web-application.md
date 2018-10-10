@@ -8,21 +8,20 @@ ms.date: 12/08/2014
 ms.assetid: f35a9b0c-49ef-4cde-b06d-19d1543feb0b
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 6e3de242f7cfc584f4c3d1dfa3d1948ee4d49d66
-ms.sourcegitcommit: 67a0a04ebb3b21c826e5b9600bacfc897abd6a46
+ms.openlocfilehash: 0aa440e700c9bfb02aa5d55ebf481850a730febe
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42899829"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912687"
 ---
 <a name="advanced-entity-framework-6-scenarios-for-an-mvc-5-web-application-12-of-12"></a>Сценарии расширенные Entity Framework 6, 5 веб-приложения MVC (12, 12)
 ====================
 по [том Дайкстра](https://github.com/tdykstra)
 
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8) или [скачать PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio 2013. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
+> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 
 В предыдущем учебнике было реализовано таблица на иерархию наследования. Этот учебник включает описываются некоторые расширенные, которые необходимо учитывать при переходе от основ разработки веб-приложений ASP.NET, использующих Entity Framework Code First. Пошаговые инструкции описаны код и с помощью Visual Studio в следующих разделах:
 
@@ -150,7 +149,7 @@ Entity Framework API для Code First включает методы, котор
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample6.cs)]
 
-Теперь установите точку останова на `return` инструкции (F9 с курсором, в этой строке). Нажмите клавишу F5, чтобы запустить проект в режиме отладки, выберите на странице индекса курсов. Когда код достигает точки останова, изучите `sql` переменной. Появится запрос, который отправляется в SQL Server. Это простой `Select` инструкции.
+Теперь установите точку останова на `return` инструкции (F9 с курсором, в этой строке). Нажмите клавишу **F5** выполнение проекта в режиме отладки, и выберите на странице индекса курсов. Когда код достигает точки останова, изучите `sql` переменной. Появится запрос, который отправляется в SQL Server. Это простой `Select` инструкции.
 
 [!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample7.json)]
 
@@ -291,7 +290,6 @@ Entity Framework API для Code First включает методы, котор
 
 > Не удается создать теневую копию "&lt;filename&gt;" Когда этот файл уже существует.
 
-
 Решение
 
 Подождите несколько секунд и обновите страницу.
@@ -301,7 +299,6 @@ Entity Framework API для Code First включает методы, котор
 Сообщение об ошибке (из `Update-Database` команду в PMC):
 
 > Термин «Update-Database» не распознан как имя командлета, функции, файла скрипта или действующей программы. Проверьте правильность написания имени или если был задан путь, проверьте правильность пути и повторите попытку.
-
 
 Решение
 
@@ -313,7 +310,6 @@ Entity Framework API для Code First включает методы, котор
 
 > Не удалось проверить один или несколько сущностей. Свойству «EntityValidationErrors» Дополнительные сведения см.
 
-
 Решение
 
 Одной из причин этой проблемы является ошибки проверки при `Seed` выполнения метода. См. в разделе [заполнения и отладка Entity Framework (EF) DBs](https://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx) советы по отладке `Seed` метод.
@@ -322,9 +318,7 @@ Entity Framework API для Code First включает методы, котор
 
 Сообщение об ошибке:
 
-> Ошибка HTTP 500.19 — Внутренняя ошибка сервера  
-> Запрошенной страницы не может быть недоступна из-за неверной конфигурации данных для страницы.
-
+> Ошибка HTTP 500.19 — Внутренняя ошибка сервера запрошенную страницу не может быть недоступна из-за неверной конфигурации данных для страницы.
 
 Решение
 
@@ -335,7 +329,6 @@ Entity Framework API для Code First включает методы, котор
 Сообщение об ошибке:
 
 > При установлении подключения к SQL Server произошла ошибка сети или ошибка экземпляра. Сервер не найден или недоступен. Проверьте правильность имени экземпляра и настройку сервера SQL Server для удаленных подключений. (поставщик: сетевые интерфейсы SQL, ошибка: 26 — ошибка при обнаружении указанного сервера или экземпляра)
-
 
 Решение
 

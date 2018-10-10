@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 400db427-27af-4f2f-abf0-5486d5e024b5
 msc.legacyurl: /signalr/overview/deployment/tutorial-signalr-self-host
 msc.type: authoredcontent
-ms.openlocfilehash: 5d7d485357a6c820f11e0135e2ff9479c1965d96
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: a08ce2e89ae13125cbc3915b44bcd1120fc22150
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829485"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911539"
 ---
 <a name="tutorial-signalr-self-host"></a>Учебник: Резидентное размещение SignalR
 ====================
@@ -22,29 +22,29 @@ ms.locfileid: "41829485"
 [Скачать завершенный проект](http://code.msdn.microsoft.com/SignalR-Self-Host-Sample-6da0f383)
 
 > Этом руководстве показано, как создать локальную среду сервера SignalR 2 и способ подключения к нему с помощью клиента JavaScript.
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR версии 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="using-visual-studio-2012-with-this-tutorial"></a>С помощью Visual Studio 2012 с помощью этого руководства
-> 
-> 
+>
+>
 > Чтобы использовать Visual Studio 2012 с этим руководством, сделайте следующее:
-> 
+>
 > - Обновление вашей [диспетчера пакетов](http://docs.nuget.org/docs/start-here/installing-nuget) до последней версии.
 > - Установка [установщик веб-платформы](https://www.microsoft.com/web/downloads/platform.aspx).
 > - В установщик веб-платформы, найдите и установите **ASP.NET и Web Tools 2013.1 для Visual Studio 2012**. Это будет установки Visual Studio шаблоны для SignalR классов, таких как **центр**.
 > - Некоторые шаблоны (такие как **класс запуска OWIN**) будут недоступны; для этого используйте файл класса.
-> 
-> 
+>
+>
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
-> 
+>
 > Оставьте свои отзывы на том, как вам понравилось, и этот учебник и что можно улучшить в комментариях в нижней части страницы. Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум по ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) или [StackOverflow.com](http://stackoverflow.com/).
 
 
@@ -74,7 +74,7 @@ SignalR сервера обычно размещается в приложени
 1. Откройте Visual Studio 2013 с правами администратора. Выберите **файл**, **новый проект**. Выберите **Windows** под **Visual C#** узел в **шаблоны** области и выберите **консольное приложение** шаблона. Назовите новый проект «SignalRSelfHost» и нажмите кнопку **ОК**.
 
     ![](tutorial-signalr-self-host/_static/image1.png)
-2. Откройте консоль диспетчера пакетов библиотеки, выбрав **средства**, **диспетчер пакетов библиотеки**, **консоль диспетчера пакетов**.
+2. Откройте консоль диспетчера пакетов NuGet, выбрав **средства** > **диспетчер пакетов NuGet** > **консоль диспетчера пакетов**.
 3. В консоли диспетчера пакетов введите следующую команду:
 
     [!code-powershell[Main](tutorial-signalr-self-host/samples/sample1.ps1)]

@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: 80bfe5fb-bdfc-41fe-ac43-2132e5d69fac
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 3fca46ac1e73905063afec9fc1eb9cf8df3aee24
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: a58b95adfb5d0165887b95abd3247d3a829aa882
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838455"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912232"
 ---
 <a name="tutorial-getting-started-with-signalr-2-and-mvc-5"></a>Учебник: Начало работы с SignalR 2 и MVC 5
 ====================
@@ -21,35 +21,35 @@ ms.locfileid: "41838455"
 
 [Скачать завершенный проект](http://code.msdn.microsoft.com/Getting-Started-with-c366b2f3)
 
-> Этом руководстве показано, как использовать ASP.NET SignalR 2 для создания приложения разговора в режиме реального времени. Следует добавить SignalR в приложение MVC 5 и создать представления чата для отправки и отображения сообщений. 
-> 
+> Этом руководстве показано, как использовать ASP.NET SignalR 2 для создания приложения разговора в режиме реального времени. Следует добавить SignalR в приложение MVC 5 и создать представления чата для отправки и отображения сообщений.
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - MVC 5
 > - SignalR версии 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="using-visual-studio-2012-with-this-tutorial"></a>С помощью Visual Studio 2012 с помощью этого руководства
-> 
-> 
+>
+>
 > Чтобы использовать Visual Studio 2012 с этим руководством, сделайте следующее:
-> 
+>
 > - Обновление вашей [диспетчера пакетов](http://docs.nuget.org/docs/start-here/installing-nuget) до последней версии.
 > - Установка [установщик веб-платформы](https://www.microsoft.com/web/downloads/platform.aspx).
 > - В установщик веб-платформы, найдите и установите **ASP.NET и Web Tools 2013.1 для Visual Studio 2012**. Это будет установки Visual Studio шаблоны для SignalR классов, таких как **центр**.
 > - Некоторые шаблоны (такие как **класс запуска OWIN**) будут недоступны; для этого используйте файл класса.
-> 
-> 
+>
+>
 > ## <a name="tutorial-versions"></a>Учебника по версии
-> 
+>
 > Сведения о более ранних версий SignalR, см. в разделе [более старых версий SignalR](../older-versions/index.md).
-> 
+>
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
-> 
+>
 > Оставьте свои отзывы на том, как вам понравилось, и этот учебник и что можно улучшить в комментариях в нижней части страницы. Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум по ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) или [StackOverflow.com](http://stackoverflow.com/).
 
 
@@ -97,7 +97,7 @@ ms.locfileid: "41838455"
     > [!NOTE]
     > Если выбрать поставщик проверки подлинности для приложения, `Startup.cs` класса будут создаваться автоматически; не нужно будет создать свой собственный `Startup.cs` класс на шаге 10 ниже.
 4. Нажмите кнопку **ОК** в **новый проект ASP.NET** диалоговое окно.
-5. Откройте **инструменты | Диспетчер пакетов библиотеки | Консоль диспетчера пакетов** и выполните следующую команду. Этот шаг добавляет в проект набор файлов сценариев и ссылки на сборки, обеспечивающие функциональные возможности SignalR.
+5. Откройте **Сервис > Диспетчер пакетов NuGet > консоль диспетчера пакетов** и выполните следующую команду. Этот шаг добавляет в проект набор файлов сценариев и ссылки на сборки, обеспечивающие функциональные возможности SignalR.
 
     `install-package Microsoft.AspNet.SignalR`
 6. В **обозревателе решений**, разверните папку «скрипты». Обратите внимание на то, что библиотеки скрипта для SignalR были добавлены в проект.

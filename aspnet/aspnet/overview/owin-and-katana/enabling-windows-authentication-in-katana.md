@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: 82324ef0-3b75-4f63-a217-76ef4036ec93
 msc.legacyurl: /aspnet/overview/owin-and-katana/enabling-windows-authentication-in-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 0aa578020a1f02fa68c74e758014c642219b4265
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 8afa2c9dfbe03a9874513f7d083adf7608f4218f
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41828168"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910464"
 ---
 <a name="enabling-windows-authentication-in-katana"></a>Включение проверки подлинности Windows в Katana
 ====================
@@ -36,7 +36,6 @@ Katana в настоящее время предоставляет два сер
 > [!NOTE]
 > Katana не поддерживает в настоящее время по промежуточного слоя OWIN для проверки подлинности Windows, так как эта функция уже доступна на серверах.
 
-
 ## <a name="windows-authentication-in-iis"></a>Проверка подлинности Windows в IIS
 
 С помощью Microsoft.Owin.Host.SystemWeb, можно просто включить проверку подлинности Windows в службах IIS.
@@ -45,7 +44,7 @@ Katana в настоящее время предоставляет два сер
 
 ![](enabling-windows-authentication-in-katana/_static/image1.png)
 
-Добавьте пакеты NuGet. Из **средства** меню, выберите **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
+Добавьте пакеты NuGet. Из **средства** меню, выберите **диспетчер пакетов NuGet**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
 
 [!code-console[Main](enabling-windows-authentication-in-katana/samples/sample1.cmd)]
 
@@ -75,7 +74,7 @@ Katana в настоящее время предоставляет два сер
 
 Если вы используете Microsoft.Owin.Host.HttpListener для резидентного размещения Katana, проверку подлинности Windows можно включить непосредственно на **HttpListener** экземпляра.
 
-Во-первых создайте новое консольное приложение. Добавьте пакеты NuGet. Из **средства** меню, выберите **диспетчер пакетов библиотеки**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
+Во-первых создайте новое консольное приложение. Добавьте пакеты NuGet. Из **средства** меню, выберите **диспетчер пакетов NuGet**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
 
 [!code-console[Main](enabling-windows-authentication-in-katana/samples/sample4.cmd)]
 

@@ -8,27 +8,27 @@ ms.date: 04/02/2014
 ms.assetid: 6980ee2e-d6b0-4a08-8fb6-ab96362dd0e3
 msc.legacyurl: /web-api/overview/hosting-aspnet-web-api/host-aspnet-web-api-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: cabf88e4e6c946f92a9e4534a4db5ae15dd8cae5
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 40cb1a4514beaf81e7ed75bbd3e478f2ba146fe5
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829115"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910750"
 ---
 <a name="host-aspnet-web-api-2-in-an-azure-worker-role"></a>Размещение ASP.NET Web API 2 в рабочей роли Azure
 ====================
 по [Майк Уоссон](https://github.com/MikeWasson)
 
 > Этом руководстве показано, как разместить веб-API ASP.NET в рабочей роли Azure, с помощью OWIN для резидентного размещения платформа веб-API.
-> 
+>
 > [Открыть веб-интерфейс .NET](http://owin.org/) (OWIN) определяет абстракции между веб-серверов .NET и веб-приложений. OWIN отделяет веб-приложения на сервер, который идеально OWIN для резидентного размещения веб-приложения в собственном процессе, за пределами IIS — например, внутри рабочей роли Azure.
-> 
+>
 > В этом руководстве вы используете пакет Microsoft.Owin.Host.HttpListener, предоставляющую HTTP-сервер, который используется для резидентного размещения приложения OWIN.
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - Веб-API 2
 > - [Пакет Azure SDK для .NET 2.3](https://azure.microsoft.com/downloads/)
 
@@ -56,7 +56,7 @@ ms.locfileid: "41829115"
 
 ## <a name="add-the-web-api-and-owin-packages"></a>Добавьте веб-API и пакеты OWIN
 
-Из **средства** меню, щелкните **диспетчер пакетов библиотеки**, затем нажмите кнопку **консоль диспетчера пакетов**.
+Из **средства** меню, щелкните **диспетчер пакетов NuGet**, затем нажмите кнопку **консоль диспетчера пакетов**.
 
 В окне консоли диспетчера пакетов введите следующую команду:
 

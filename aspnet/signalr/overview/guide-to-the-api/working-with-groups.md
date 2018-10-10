@@ -8,34 +8,34 @@ ms.date: 06/10/2014
 ms.assetid: cd378ecd-3e9e-4236-b902-65916d85a048
 msc.legacyurl: /signalr/overview/guide-to-the-api/working-with-groups
 msc.type: authoredcontent
-ms.openlocfilehash: 31dd3239e2e0cd919c23419459bc43ae8e1a6437
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 75ef2998efe4d9bcea62c4a42a2043e2dabd6d85
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829908"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911515"
 ---
 <a name="working-with-groups-in-signalr"></a>Работа с группами в SignalR
 ====================
 по [Флетчера Патрик](https://github.com/pfletcher), [Tom FitzMacken](https://github.com/tfitzmac)
 
-> В этом разделе описывается добавление пользователей в группы и сохранять данные членства в группе. 
-> 
+> В этом разделе описывается добавление пользователей в группы и сохранять данные членства в группе.
+>
 > ## <a name="software-versions-used-in-this-topic"></a>Версии программного обеспечения, используемого в этом разделе
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR версии 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>Предыдущие версии этого раздела
-> 
+>
 > Сведения о более ранних версий SignalR, см. в разделе [более старых версий SignalR](../older-versions/index.md).
-> 
+>
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
-> 
+>
 > Оставьте свои отзывы на том, как вам понравилось, и этот учебник и что можно улучшить в комментариях в нижней части страницы. Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум по ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) или [StackOverflow.com](http://stackoverflow.com/).
 
 
@@ -81,13 +81,13 @@ ms.locfileid: "41829908"
 
 Можно отправлять сообщения для всех участников группы или только указанные члены группы, как показано в следующих примерах.
 
-- **Все** подключенных клиентов в указанной группе. 
+- **Все** подключенных клиентов в указанной группе.
 
     [!code-css[Main](working-with-groups/samples/sample3.css)]
-- Все подключенные клиенты в указанной группе **указанным клиентам, за исключением**, идентифицируемый идентификатор соединения. 
+- Все подключенные клиенты в указанной группе **указанным клиентам, за исключением**, идентифицируемый идентификатор соединения.
 
     [!code-csharp[Main](working-with-groups/samples/sample4.cs)]
-- Все подключенные клиенты в указанной группе **, кроме вызывающего клиента**. 
+- Все подключенные клиенты в указанной группе **, кроме вызывающего клиента**.
 
     [!code-css[Main](working-with-groups/samples/sample5.css)]
 

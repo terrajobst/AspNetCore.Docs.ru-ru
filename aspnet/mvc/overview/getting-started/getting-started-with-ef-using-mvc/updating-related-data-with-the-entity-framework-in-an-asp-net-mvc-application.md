@@ -8,20 +8,20 @@ ms.date: 05/01/2015
 ms.assetid: 7ba88418-5d0a-437d-b6dc-7c3816d4ec07
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: e7f5fd725a0d151f19f49be9ceaf52b049d459c0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 647793a65dec8feaf37de561ad77b4585bb869a8
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41837275"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912219"
 ---
 <a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Обновление связанных данных с Entity Framework в приложении ASP.NET MVC
 ====================
 по [том Дайкстра](https://github.com/tdykstra)
 
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8) или [скачать PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio 2013. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
+> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 
 
 В предыдущем руководстве вы отобразили связанные данные; в этом руководстве описано обновление связанных данных. Для большинства связей это можно сделать путем обновления полей внешнего ключа или свойства навигации. Для связей многие ко многим Entity Framework не предоставляет таблицы соединения напрямую, поэтому можно добавлять и удалять сущности и из соответствующих свойств навигации.
@@ -214,8 +214,8 @@ ms.locfileid: "41837275"
 
 Измените некоторые назначения курсов и нажмите кнопку **Сохранить**. Вносимые вами изменения отражаются на странице индекса.
 
- Примечание: К редактированию данных курсов для преподавателя, описываемый здесь подход работает также в том случае, когда ограниченном числе курсов. Для коллекций большего размера следовало бы применять другой пользовательский интерфейс и другой метод обновления.  
- 
+ Примечание: К редактированию данных курсов для преподавателя, описываемый здесь подход работает также в том случае, когда ограниченном числе курсов. Для коллекций большего размера следовало бы применять другой пользовательский интерфейс и другой метод обновления.
+
 
 ## <a name="update-the-deleteconfirmed-method"></a>Обновите метод DeleteConfirmed
 
@@ -269,7 +269,7 @@ ms.locfileid: "41837275"
 
 Теперь вы завершили этот введение в работу со связанными данными. До сих в этих руководствах вы работали с кодом, который выполняет синхронный ввод-вывод. Можно сделать приложение более эффективного использования ресурсов веб-сервера путем реализации асинхронного кода, и вам необходимо в следующем учебном курсе.
 
-Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить. Можно также запросить новые темы на [показать мне как с помощью кода](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code).
+Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить.
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 

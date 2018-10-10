@@ -8,49 +8,49 @@ ms.date: 10/13/2014
 ms.assetid: 1568247f-60b5-4eca-96e0-e661fbb2b273
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: c2248e68b3c9411687ab6410f12ec85488fe0738
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 7a85a704dc5d830ec793540fbc44a3ce7ec8c934
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829736"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911549"
 ---
 <a name="tutorial-server-broadcast-with-signalr-2"></a>Руководство: Передача сообщений с сервера с помощью SignalR 2
 ====================
 по [том Дайкстра](https://github.com/tdykstra), [Tom FitzMacken](https://github.com/tfitzmac)
 
 > Этом руководстве показано, как создать веб-приложения, использующего ASP.NET SignalR 2 для предоставления широковещательных функциональные возможности сервера. Рассылка сервера означает, что связям клиентам инициируются сервером. Данный сценарий требует другого подхода программирования, чем peer-to-peer сценариев, таких как приложения чата, в которых инициируется связям клиентам по одному или нескольким из клиентов.
-> 
+>
 > Приложение, которое вы создадите в этом руководстве имитирует биржевые сводки, типичный сценарий для широковещательных функциональные возможности сервера.
-> 
+>
 > В этом разделе был первоначально написан Майклом Патрик Флетчера.
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Версии программного обеспечения, используемые в этом руководстве
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR версии 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="using-visual-studio-2012-with-this-tutorial"></a>С помощью Visual Studio 2012 с помощью этого руководства
-> 
-> 
+>
+>
 > Чтобы использовать Visual Studio 2012 с этим руководством, сделайте следующее:
-> 
+>
 > - Обновление вашей [диспетчера пакетов](http://docs.nuget.org/docs/start-here/installing-nuget) до последней версии.
 > - Установка [установщик веб-платформы](https://www.microsoft.com/web/downloads/platform.aspx).
 > - В установщик веб-платформы, найдите и установите **ASP.NET и Web Tools 2013.1 для Visual Studio 2012**. Это будет установки Visual Studio шаблоны для SignalR классов, таких как **центр**.
 > - Некоторые шаблоны (такие как **класс запуска OWIN**) будут недоступны; для этого используйте файл класса.
-> 
-> 
+>
+>
 > ## <a name="tutorial-versions"></a>Учебника по версии
-> 
+>
 > Сведения о более ранних версий SignalR, см. в разделе [более старых версий SignalR](../older-versions/index.md).
-> 
+>
 > ## <a name="questions-and-comments"></a>Вопросы и комментарии
-> 
+>
 > Оставьте свои отзывы на том, как вам понравилось, и этот учебник и что можно улучшить в комментариях в нижней части страницы. Если у вас есть вопросы, которые не имеют отношения к руководству, их можно разместить [форум по ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) или [StackOverflow.com](http://stackoverflow.com/).
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "41829736"
 - [Тестирование приложения](#test)
 - [Включение ведения журнала](#enablelogging)
 - [Установка и просмотрите полный пример StockTicker](#fullsample)
-- [Дальнейшие действия](#nextsteps)
+- [Следующие шаги](#nextsteps)
 
 [Microsoft.AspNet.SignalR.Sample](http://nuget.org/packages/microsoft.aspnet.signalr.sample) пакет NuGet устанавливает пример simulated биржевые сводки приложения в проекте Visual Studio.
 

@@ -8,12 +8,12 @@ ms.date: 11/17/2011
 ms.assetid: c3c76516-4c48-4153-bd03-d70e3a3edbb0
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 378bcc038335ee852cd1a6c6e545eb72c6e0c78b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 9b3d47c3c8fe5f0b37f1d45e19341df3f91a5bb0
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829889"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911192"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-sql-server-compact-databases---2-of-12"></a>Развертывание веб-приложения ASP.NET с SQL Server Compact с помощью Visual Studio или Visual Web Developer: развертывание Compact баз данных SQL Server - 2 12
 ====================
@@ -105,12 +105,11 @@ ms.locfileid: "41829889"
 > [!NOTE]
 > Еще один способ указать класс инициализатора является выполняется путем вызова `Database.SetInitializer` в `Application_Start` метод в *Global.asax* файл. При включении миграции в проекте, который использует этот метод для указания инициализатор, удалите эту строку кода.
 
-
 Затем включите Code First Migrations.
 
 Первым делом следует убедиться, что проект ContosoUniversity задан в качестве запускаемого проекта. В **обозревателе решений**, щелкните правой кнопкой мыши проект ContosoUniversity и выберите **Назначить запускаемым проектом**. Code First Migrations будет выглядеть в Автозагружаемый проект, чтобы найти строку подключения к базе данных.
 
-Из **средства** меню, щелкните **диспетчер пакетов библиотеки** и затем **консоль диспетчера пакетов**.
+Из **средства** меню, щелкните **диспетчер пакетов NuGet** и затем **консоль диспетчера пакетов**.
 
 ![Selecting_Package_Manager_Console](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image6.png)
 

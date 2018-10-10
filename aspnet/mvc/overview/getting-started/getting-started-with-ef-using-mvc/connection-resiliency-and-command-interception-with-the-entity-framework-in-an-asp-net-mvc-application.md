@@ -8,21 +8,20 @@ ms.date: 01/13/2015
 ms.assetid: c89d809f-6c65-4425-a3fa-c9f6e8ac89f2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9b326ec22fc70a8c1746c5cd2c302c7f04fa8d3e
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: ab6a553100d704746840eaad512ec140d4576c44
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41837588"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911790"
 ---
 <a name="connection-resiliency-and-command-interception-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Устойчивость подключений и перехват команд с помощью Entity Framework в приложении ASP.NET MVC
 ====================
 по [том Дайкстра](https://github.com/tdykstra)
 
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8) или [скачать PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio 2013. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
+> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 
 Пока приложение будет выполняться локально в IIS Express на компьютере разработчика. Чтобы реальных приложение стало доступным для других пользователей в Интернете, необходимо развернуть его на веб-поставщик услуг размещения и у вас есть развертывание базы данных на сервер базы данных.
 
@@ -73,7 +72,7 @@ ms.locfileid: "41837588"
 
 ### <a name="create-a-logging-interface-and-class"></a>Создайте класс и интерфейс ведения журнала
 
-Объект [рекомендация для ведения журнала](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry.md#log) — это с помощью интерфейса вместо жестко запрограммированного вызовы методов System.Diagnostics.Trace или класса ведения журнала. Что упрощает изменение вашего механизма ведения позже, если вы захотите это сделать. Поэтому в этом разделе мы создадим интерфейс ведения журнала и класса для реализации его/p > 
+Объект [рекомендация для ведения журнала](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry.md#log) — это с помощью интерфейса вместо жестко запрограммированного вызовы методов System.Diagnostics.Trace или класса ведения журнала. Что упрощает изменение вашего механизма ведения позже, если вы захотите это сделать. Поэтому в этом разделе мы создадим интерфейс ведения журнала и класса для реализации его/p >
 
 1. Создание папки в проект и назовите его *ведение журнала*.
 2. В *ведение журнала* папке создайте файл класса с именем *ILogger.cs*и замените код шаблона следующим кодом:
@@ -138,7 +137,7 @@ ms.locfileid: "41837588"
 
 ## <a name="test-logging-and-connection-resiliency"></a>Тест ведения журнала и устойчивость подключений
 
-1. Нажмите клавишу F5, чтобы запустить приложение в режиме отладки, а затем нажмите кнопку **учащихся** вкладки.
+1. Нажмите клавишу **F5** запустите приложение в режиме отладки, и нажмите кнопку **учащихся** вкладки.
 2. Посмотрите на Visual Studio **вывода** окно, чтобы просмотреть выходные данные трассировки. Может потребоваться прокрутить вверх после некоторых ошибок JavaScript, чтобы получить журналы, сохраняемые в средство ведения журналов.
 
     Обратите внимание на то, что вы видите фактические SQL-запросы, отправляемые в базу данных. Вы увидите некоторые начальные запросы и команды, которые Entity Framework выполняет обновление, чтобы приступить к работе, проверка версии базы данных и таблицы журнала миграции (вы узнаете о миграции в следующем учебном курсе). Появится запрос для разбиения на страницы, чтобы узнать, сколько учащихся, и наконец видеть запрос, который получает данные об учащихся.
@@ -172,7 +171,7 @@ ms.locfileid: "41837588"
 
 В этом руководстве вы узнали, как включить устойчивость подключений и журнала команд SQL, Entity Framework составляет и отправляет в базу данных. В следующем руководстве вы развернете приложение к Интернету, с помощью Code First Migrations для развертывания базы данных.
 
-Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить. Можно также запросить новые темы на [показать мне как с помощью кода](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code).
+Оставьте свои отзывы на том, как вам понравилось, и этот учебник, и что можно улучшить.
 
 Ссылки на другие ресурсы Entity Framework можно найти в [доступ к данным ASP.NET — рекомендуемые ресурсы](../../../../whitepapers/aspnet-data-access-content-map.md).
 

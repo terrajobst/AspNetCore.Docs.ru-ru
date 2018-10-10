@@ -8,12 +8,12 @@ ms.date: 06/12/2014
 ms.assetid: 1bc333c5-f096-4ea7-b170-779accc21c1a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
 msc.type: authoredcontent
-ms.openlocfilehash: 435ee61a9c28ad0035457990cd3a889f5b240517
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: de3c8ea29f2c271136f58d8165bb92f4ab28ce83
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795542"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912830"
 ---
 <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>Приложение: Исправление пример приложения (Создание реальных облачных приложений с помощью Azure)
 ====================
@@ -221,7 +221,7 @@ ASP.NET автоматически предотвращает множество
 4. В проводнике щелкните правой кнопкой мыши ZIP-файл и выберите пункт Свойства, а затем в окне свойств нажмите кнопку разблокировать.
 5. Распакуйте файл.
 6. Дважды щелкните файл SLN-файл для запуска Visual Studio.
-7. В меню "Сервис" выберите диспетчер пакетов библиотеки, затем консоль диспетчера пакетов.
+7. Из **средства** меню, щелкните **диспетчер пакетов NuGet**, затем **консоль диспетчера пакетов**.
 8. В консоли диспетчера пакетов (PMC), нажмите кнопку Восстановить.
 9. Закройте Visual Studio.
 10. Запуск [эмулятора хранения Azure](/azure/storage/common/storage-use-emulator).

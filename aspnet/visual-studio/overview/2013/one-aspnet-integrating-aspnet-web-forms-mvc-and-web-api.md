@@ -8,12 +8,12 @@ ms.date: 07/16/2014
 ms.assetid: 4fe2558d-67cc-4d12-a5c1-6fb9f6f16137
 msc.legacyurl: /visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: b6ac0dca92ab3d75eb871099882dcea549264354
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: c18911680b59448cd67190f71e951a3fcf3d0478
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829012"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912739"
 ---
 <a name="hands-on-lab-one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api"></a>Практическое лабораторное занятие: ASP.NET: интеграция веб-форм ASP.NET, MVC и веб-API
 ====================
@@ -372,7 +372,7 @@ Entity Framework Code First рабочий процесс моделирован
 
 При создании веб-API, полезно создать страницу справки, чтобы другие разработчики будете знать, как вызвать API. Можно создать и обновлять страницы документации вручную, но лучше автоматически создавать их, чтобы не пришлось выполнять работу обслуживания. В этой задаче будет использовать пакет Nuget для автоматического создания страниц справки веб-API в решение.
 
-1. Из **средства** меню в Visual Studio, выберите пункт **диспетчер пакетов библиотеки**, а затем нажмите кнопку **консоль диспетчера пакетов**.
+1. Из **средства** меню в Visual Studio, выберите пункт **диспетчер пакетов NuGet**, а затем нажмите кнопку **консоль диспетчера пакетов**.
 2. В **консоль диспетчера пакетов** окно, выполните следующую команду:
 
     [!code-powershell[Main](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/samples/sample7.ps1)]

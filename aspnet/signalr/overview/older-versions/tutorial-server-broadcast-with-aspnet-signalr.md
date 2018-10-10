@@ -8,12 +8,12 @@ ms.date: 04/10/2013
 ms.assetid: ab7b2554-956a-4f6d-b2a0-4ae0c62e8580
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 76dc2f4d54f6ab4cebbde06dfd611a9b5ee5ae64
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 7d604af11ade848358e291d1df25f2f8df850132
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836326"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911985"
 ---
 <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Руководство: Передача сообщений с сервера с помощью SignalR 1.x
 ====================
@@ -48,7 +48,7 @@ ms.locfileid: "41836326"
 - [Тестирование приложения](#test)
 - [Включение ведения журнала](#enablelogging)
 - [Установка и просмотрите полный пример StockTicker](#fullsample)
-- [Дальнейшие действия](#nextsteps)
+- [Следующие шаги](#nextsteps)
 
 > [!NOTE]
 > Если вы не хотите работать шаги по созданию приложения, можно установить пакет SignalR.Sample в новом **пустое веб-приложение ASP.NET** проекта, а также считывать эти шаги для получения объяснения кода. Первой части этого руководства охватывает подмножество SignalR.Sample код, а вторая часть Описание ключевых особенностей дополнительные функции в пакете SignalR.Sample.
@@ -80,7 +80,7 @@ ms.locfileid: "41836326"
 
 Путем установки пакета NuGet в проект можно добавить функциональные возможности SignalR.
 
-1. Нажмите кнопку **инструменты | Диспетчер пакетов библиотеки | Консоль диспетчера пакетов**.
+1. Нажмите кнопку **инструменты | Диспетчер пакетов NuGet | Консоль диспетчера пакетов**.
 2. Введите следующую команду в диспетчере пакетов.
 
     [!code-powershell[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample1.ps1)]

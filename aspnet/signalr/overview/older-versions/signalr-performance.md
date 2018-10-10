@@ -8,12 +8,12 @@ ms.date: 07/03/2013
 ms.assetid: 9594d644-66b6-4223-acdd-23e29a6e4c46
 msc.legacyurl: /signalr/overview/older-versions/signalr-performance
 msc.type: authoredcontent
-ms.openlocfilehash: 4fba0cc79046f5f3fd1dc50e5b69ddb78d98c23d
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 3ac62639617e1ff83761d0a1d45c27303d0b820d
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41824077"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912765"
 ---
 <a name="signalr-performance-signalr-1x"></a>Производительность SignalR (SignalR 1.x)
 ====================
@@ -119,7 +119,7 @@ ms.locfileid: "41824077"
 
 Счетчики производительности можно добавить на сервер, с помощью служебной программы, называется SignalR.exe. Чтобы установить эту программу, выполните следующие действия.
 
-1. В приложении Visual Studio выберите **средства**, **диспетчер пакетов библиотеки**, **управление пакетами NuGet для решения...**
+1. В Visual Studio выберите **средства** > **диспетчер пакетов NuGet** > **управление пакетами NuGet для решения**
 2. Поиск **signalr.utils**и выберите команду установить.
 
     ![](signalr-performance/_static/image1.png)
