@@ -8,20 +8,20 @@ ms.date: 11/07/2014
 ms.assetid: 08834147-77ec-454a-bb7a-d931d2a40dab
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9bfe860761a18cb4a69d33336d64a169e3c834f9
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 613494d58d7652f69a52241bcd3a7e896bc5407c
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838853"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912713"
 ---
 <a name="implementing-inheritance-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-11-of-12"></a>Реализация наследования с использованием Entity Framework 6 в приложении ASP.NET MVC 5 (11 из 12)
 ====================
 по [том Дайкстра](https://github.com/tdykstra)
 
-[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8) или [скачать PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio 2013. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
+> Пример веб-приложение университета Contoso демонстрирует создание приложения ASP.NET MVC 5, используя Entity Framework 6 Code First и Visual Studio. Сведения о серии руководств см. в [первом руководстве серии](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 
 
 В предыдущем учебнике показана обработка исключений параллелизма. В этом учебнике демонстрируется, как реализовать наследование в модели данных.
@@ -116,9 +116,9 @@ TPC и шаблоны наследование TPH как правило, обе
 
 > [!NOTE]
 > Это можно получить другие ошибки при переносе данных и внесения изменений схемы. Если вы получаете ошибки миграции не удается устранить, можно будет продолжить руководства, изменив строку подключения в *Web.config* файла или путем удаления базы данных. Самым простым подходом является переименовать базу данных, в *Web.config* файл. Например измените имя базы данных на ContosoUniversity2, как показано в следующем примере:
-> 
+>
 > [!code-xml[Main](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample6.xml?highlight=2)]
-> 
+>
 > В новой базе данных нет данных для переноса и `update-database` команда является гораздо большей долей вероятности завершится без ошибок. Инструкции о том, как удалить базу данных, см. в разделе [как удалить базу данных из Visual Studio 2012](http://romiller.com/2013/05/17/how-to-drop-a-database-from-visual-studio-2012/). При использовании этого подхода для продолжения работы с учебником пропустить шаг развертывания в конце этого руководства, или развернуть для нового сайта и базы данных. Если вы развернете обновление на тот же сайт, на которой развертывание уже, EF получите та же ошибка, при выполнении миграции автоматически. Если вы хотите устранении ошибки миграции, самый лучший ресурс является одним из форумы Entity Framework или StackOverflow.com.
 
 
@@ -142,13 +142,13 @@ TPC и шаблоны наследование TPH как правило, обе
 
 В этом разделе, необходимо завершить необязательный **развертыванию приложения в Azure** статьи [части 3, сортировку, фильтрацию и разбиение по страницам](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md) этой серии руководств. Если у вас есть ошибки миграции, которые можно разрешить путем удаления базы данных в локальном проекте, пропустите этот шаг; или создайте новый сайт и базы данных, а развертывание в новую среду.
 
-1. В Visual Studio щелкните правой кнопкой мыши проект в **обозревателе решений** и выберите **публикации** в контекстном меню.  
-  
+1. В Visual Studio щелкните правой кнопкой мыши проект в **обозревателе решений** и выберите **публикации** в контекстном меню.
+
     ![Публикация в контекстном меню проекта](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
-2. Нажмите кнопку **Опубликовать**.  
-  
-    ![publish](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)  
-  
+2. Нажмите кнопку **Опубликовать**.
+
+    ![publish](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
+
    Веб-приложение откроется в браузере по умолчанию.
 3. Протестируйте приложение, чтобы проверить его работы.
 
