@@ -3,92 +3,187 @@ title: Тестирование логики контроллера в ASP.NET C
 author: ardalis
 description: Узнайте, как протестировать логику контроллера в ASP.NET Core с помощью Moq и xUnit.
 ms.author: riande
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 08/23/2018
 uid: mvc/controllers/testing
-ms.openlocfilehash: d0b2a25d00187c088671be147844aa892f824c6e
-ms.sourcegitcommit: 64c2ca86fff445944b155635918126165ee0f8aa
+ms.openlocfilehash: f036181f43d12ece89243fa3b0b0070ea84f8bc7
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41751763"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46010992"
 ---
 # <a name="test-controller-logic-in-aspnet-core"></a>Тестирование логики контроллера в ASP.NET Core
 
 Автор: [Стив Смит](https://ardalis.com/) (Steve Smith)
 
-Контроллеры — это центральный элемент любого приложения ASP.NET Core MVC. По этой причине необходима уверенность в том, что они работают, как планировалось. С помощью автоматических тестов можно убедиться в этом и обнаружить ошибки до ввода контроллеров в рабочую среду. Важно избегать реализации в контроллерах лишних функций, а тесты должны быть ориентированы только на функции контроллеров.
-
-Логике контролера следует быть минимальной и не связанной с бизнес-логикой или проблемами инфраструктуры (например, с доступом к данным). Тестировать нужно логику контроллера, а не платформу. Тестируйте *работу* контроллера на основе допустимых и недопустимых значений. Проверяйте ответы контроллера на основе результата выполняемой им бизнес-операции.
-
-Типичные функции контроллера:
-
-* Проверяет значение `ModelState.IsValid`.
-* Возвращает ответ об ошибке, если состояние `ModelState` недопустимо.
-* Возвращает бизнес-элемент из хранилища.
-* Выполняет действие с бизнес-элементом.
-* Сохраняет бизнес-элемент в хранилище.
-* Возвращает соответствующий результат `IActionResult`.
+[Контроллеры](xref:mvc/controllers/actions) играют важнейшую роль в любом приложении MVC на ASP.NET Core. Это означает, что вы должны быть полностью уверены в правильности их работы. Автоматические тесты позволяют обнаружить ошибки до развертывания приложения в рабочей среде.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/testing/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="unit-tests-of-controller-logic"></a>Модульное тестирование логики контроллера
 
-[Модульное тестирование](/dotnet/articles/core/testing/unit-testing-with-dotnet-test) предполагает тестирование части приложения изолированно от его инфраструктуры и зависимостей. При модульном тестировании логики контроллера тестируется только содержимое отдельного действия, но не поведение его зависимостей или сама платформа. Выполняя модульное тестирование действий контроллера, следует сосредоточиться только на его поведении. В рамках модульного тестирования контроллера не учитываются такие аспекты, как [фильтры](xref:mvc/controllers/filters), [маршрутизация](xref:fundamentals/routing) или [привязка модели](xref:mvc/models/model-binding). Благодаря нацеленности на отдельный компонент модульные тесты, как правило, проще создавать, а выполняются они быстрее. Правильно составленный набор модульных тестов можно выполнять часто без значительных затрат. Однако модульные тесты не выявляют проблемы с взаимодействием между компонентами. Для этого используется [тестирование интеграции](xref:test/integration-tests).
+[Модульное тестирование](/dotnet/articles/core/testing/unit-testing-with-dotnet-test) предполагает тестирование части приложения изолированно от его инфраструктуры и зависимостей. При модульном тестировании логики контроллера тестируется только содержимое отдельного действия, но не поведение его зависимостей или самой платформы.
 
-Если вы создаете пользовательские фильтры и маршруты, их следует подвергать модульному тестированию изолированно, но не в рамках тестирования определенного действия контроллера.
+Настройте модульные тесты для действий контроллера, чтобы сосредоточиться на поведении контроллера. В модульных тестах контроллера не учитываются такие аспекты, как [фильтрация](xref:mvc/controllers/filters), [маршрутизация](xref:fundamentals/routing) и (или) [привязка модели](xref:mvc/models/model-binding). Тесты, учитывающие взаимодействие компонентов, участвующих в ответе на запрос, включены в *интеграционные тесты*. Дополнительные сведения об интеграционных тестах см. в статье <xref:test/integration-tests>.
 
-> [!TIP]
-> [Создавайте и выполняйте модульные тесты с помощью Visual Studio](/visualstudio/test/unit-test-your-code).
+Если вы создаете пользовательские фильтры и маршруты, проводите для них модульное тестирование изолированно, но не в рамках тестирования определенного действия контроллера.
 
-Для демонстрации модульного тестирования рассмотрим представленный ниже контроллер. Он выводит список сеансов мозгового штурма и позволяет создавать такие сеансы с помощью запроса POST.
+Для демонстрации модульных тестов контроллера давайте рассмотрим контроллер в приведенном ниже примере приложения. Этот контроллер Home выводит список сеансов мозгового штурма и позволяет создавать новые сеансы с помощью запроса POST.
 
-[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/HomeController.cs?highlight=12,16,21,42,43)]
+[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/HomeController.cs?name=snippet_HomeController&highlight=1,5,10,31-32)]
 
-Контроллер следует [принципу явных зависимостей](http://deviq.com/explicit-dependencies-principle/), предполагающему предоставление экземпляра `IBrainstormSessionRepository` при внедрении зависимостей. Благодаря этому его достаточно легко протестировать с помощью платформы макетов объектов, например [Moq](https://www.nuget.org/packages/Moq/). В методе `HTTP GET Index` нет циклов или ветвления, и он вызывает лишь один метод. Чтобы протестировать этот метод `Index`, необходимо проверить, возвращается ли результат `ViewResult` с объектом `ViewModel` из метода `List` репозитория.
+Предыдущий контроллер:
 
-[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=17-18&range=1-33,76-95)]
+* Соблюдает [Принцип явных зависимостей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies).
+* Ожидает, что [внедрение зависимостей (DI)](xref:fundamentals/dependency-injection) предоставит экземпляр `IBrainstormSessionRepository`.
+* Допускает проверку с помощью макета службы `IBrainstormSessionRepository` на платформе макетов объектов, например [Moq](https://www.nuget.org/packages/Moq/). *Макет объекта* представляет собой специально созданный объект с определенным набором свойств и методов поведения, который предназначен для тестирования. Дополнительные сведения см. в разделе [Introduction to integration tests](xref:test/integration-tests#introduction-to-integration-tests) (Введение в интеграционные тесты).
 
-Метод `HomeController` `HTTP POST Index` (показанный выше) должен проверять, выполняются ли следующие действия:
+В методе `HTTP GET Index` нет циклов или ветвления, и он вызывает лишь один метод. Модульный тест для этого действия позволяет выполнить следующие задачи:
 
-* Метод действия возвращает результат `ViewResult` типа "Неверный запрос" с соответствующими данными, если свойство `ModelState.IsValid` имеет значение `false`.
+* Создание макета службы `IBrainstormSessionRepository` с помощью метода `GetTestSessions`. `GetTestSessions` создает два макета сессий мозгового штурма с датами и именами сеансов;
+* Выполнение метода `Index`
+* Создание утверждений по возвращаемым методом результатам:
+  * возвращается <xref:Microsoft.AspNetCore.Mvc.ViewResult>;
+  * [ViewDataDictionary.Model](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ViewDataDictionary.Model*) имеет тип `StormSessionViewModel`;
+  * в `ViewDataDictionary.Model` сохраняются два сеанса мозгового штурма.
 
-* Вызывается метод `Add` репозитория, и возвращается результат `RedirectToActionResult` с правильными аргументами, если свойство `ModelState.IsValid` имеет значение true.
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?name=snippet_Index_ReturnsAViewResult_WithAListOfBrainstormSessions&highlight=14-17)]
 
-Недопустимое состояние модели можно проверить, добавив ошибки с помощью метода `AddModelError`, как показано в первом тесте ниже.
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?name=snippet_GetTestSessions)]
 
-[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=8,15-16,37-39&range=35-75)]
+Метод `HTTP POST Index` в контроллере Home проверяет следующее:
 
-Первый тест проверяет, возвращается ли тот же результат `ViewResult`, что и для запроса `GET`, если состояние `ModelState` недопустимо. Обратите внимание на то, что он не пытается передать недопустимую модель. Это бы в любом случае не удалось, так как привязка модели не запущена (хотя [тест интеграции](xref:test/integration-tests) использовал бы тестовую привязку модели). В этом случае привязка модели не тестируется. Эти модульные тесты проверяют только действия, выполняемые кодом в методе действия.
+* Если [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*) имеет значение `false`, метод действия возвращает результат <xref:Microsoft.AspNetCore.Mvc.ViewResult> *400 Неверный запрос* с соответствующими данными.
+* Если `ModelState.IsValid` имеет значение `true`:
+  * вызывается метод `Add` для репозитория;
+  * возвращается <xref:Microsoft.AspNetCore.Mvc.RedirectToActionResult> с правильными аргументами.
 
-Второй тест проверяет, добавляется ли новый объект `BrainstormSession` (через репозиторий) и возвращает ли метод результат `RedirectToActionResult` с ожидаемыми свойствами, если состояние `ModelState` допустимо. Макеты вызовов, которые не выполняются, обычно игнорируются, но вызов `Verifiable` в конце вызова Setup позволяет проверить его в тесте. Для этого служит вызов метода `mockRepo.Verify`, в результате которого тест будет считаться непройденным, если требуемый метод не был вызван.
+Недопустимое состояние модели можно проверить, добавив ошибки с помощью метода <xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.AddModelError*>, как показано в первом тесте ниже.
+
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?name=snippet_ModelState_ValidOrInvalid&highlight=9,16-17,38-41)]
+
+Если [ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary) не является допустимым, возвращается тот же результат `ViewResult`, что и для запроса GET. В этом тесте не выполняются попытки передать недопустимую модель. Передача недопустимой модели будет неправильным подходом, так как привязка такой модели не работает (хотя [интеграционный тест](xref:test/integration-tests) и использует привязку модели). В этом случае привязка модели не тестируется. Эти модульные тесты проверяют только код в методе действия.
+
+Второй тест проверяет, выполняются ли при допустимом значении `ModelState` следующие условия:
+
+* добавляется новый `BrainstormSession` (через [репозиторий](xref:fundamentals/repository-pattern));
+* метод возвращает `RedirectToActionResult` с ожидаемыми свойствами.
+
+Макеты вызовов, которые не выполняются, обычно игнорируются, но вызов `Verifiable` в конце вызова Setup позволяет проверить макет в тесте. Для этого выполняется вызов метода `mockRepo.Verify`, который устанавливает состояние непройденного теста, если требуемый метод не был вызван.
 
 > [!NOTE]
-> Библиотека Moq, используемая в этом примере, позволяет легко сочетать проверяемые (строгие) макеты и непроверяемые (которые также называют нестрогими макетами или заглушками). Узнайте больше о [настройке поведения макетов с помощью Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
+> Библиотека Moq, используемая в этом примере, позволяет сочетать проверяемые (строгие) и непроверяемые макеты (которые также называют нестрогими макетами или заглушками). Узнайте больше о [настройке поведения макетов с помощью Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-Другой контроллер в приложении выводит сведения, связанные с определенным сеансом мозгового штурма. Он содержит логику для обработки недопустимых значений id:
+Другой контроллер в примере приложения выводит сведения, связанные с определенным сеансом мозгового штурма. Этот контроллер содержит логику для работы с недопустимыми значениями `id` (два сценария `return` в следующем примере посвящены этим сценариям). Завершающая инструкция `return` возвращает в представление новое значение `StormSessionViewModel`:
 
-[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?highlight=19,20,21,22,25,26,27,28)]
+[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
-Действие контроллера имеет три тестируемых случая, по одному на каждый оператор `return`:
+Модульные тесты содержат по одному тесту для каждого сценария `return` в контроллере Session действия `Index`:
 
-[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs?highlight=27,28,29,46,47,64,65,66,67,68)]
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs?name=snippet_SessionControllerTests&highlight=2,11-14,18,31-32,36,50-55)]
 
-Приложение предоставляет функциональные возможности в виде веб-интерфейса API (список идей, связанных с сеансом мозгового штурма, и метод для добавления новых идей в сеанс):
+Теперь перейдем к контроллеру Ideas, в котором приложение предоставляет функциональные возможности веб-API для маршрута `api/ideas`:
 
-[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?highlight=21,22,27,30,31,32,33,34,35,36,41,42,46,52,65)]
+* Список идей (`IdeaDTO`), полученных в сеансе мозгового штурма, возвращается методом `ForSession`.
+* Метод `Create` позволяет добавить в сеанс новые идеи.
 
-Метод `ForSession` возвращает список типов `IdeaDTO`. Старайтесь не возвращать бизнес-элементы непосредственно через вызовы API, так как они часто содержат больше данных, чем требуется клиенту API, и связывают внутреннюю модель предметной области приложения с интерфейсом API, доступным извне, чего следует избегать. Сопоставлять элементы предметной области и типы, возвращаемые по сети, можно вручную (с помощью инструкции LINQ `Select`, как показано здесь) или с помощью такой библиотеки, как [AutoMapper](https://github.com/AutoMapper/AutoMapper).
+[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?name=snippet_ForSessionAndCreate&highlight=1-2,21-22)]
 
-Модульные тесты для методов API `Create` и `ForSession`:
+Старайтесь не возвращать сущности рабочей предметной области напрямую через вызовы API. Сущности предметной области:
 
-[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?highlight=18,23,29,33,38-39,43,50,58-59,68-70,76-78&range=1-83,121-135)]
+* часто содержат больше данных, чем нужно клиенту;
+* неоправданно связывают модели предметной области приложения с общедоступным API-интерфейсом.
 
-Как уже говорилось ранее, чтобы протестировать поведение метода в случае, если состояние `ModelState` недопустимо, следует добавить ошибку модели в контроллер в рамках теста. Не пытайтесь тестировать проверку модели или привязку модели с помощью модульных тестов — проверяйте только поведение метода действия при определенных значениях `ModelState`.
+Сопоставление между сущностями предметной области и типами, которые возвращаются клиенту, можно выполнять следующими способами:
 
-Во втором тесте предполагается, что репозиторий возвращает значение NULL, поэтому макет репозитория настроен так, чтобы возвращать значение NULL. Создавать тестовую базу данных (в памяти или где-либо еще) и запрос, возвращающий этот результат, не нужно — это можно сделать в одном операторе, как показано в примере.
+* Вручную с помощью LINQ `Select`, как в этом примере приложения. Дополнительные сведения см. в статье [Встроенный язык запросов LINQ](/dotnet/standard/using-linq).
+* Автоматически через специальную библиотеку, например [AutoMapper](https://github.com/AutoMapper/AutoMapper).
 
-Последний тест проверяет, вызывается ли метод `Update` репозитория. Как и ранее, макет вызывается с помощью метода `Verifiable`, а затем вызывается метод `Verify` макета репозитория для подтверждения выполнения проверяемого метода. Проверка того, сохранил ли метод `Update` данные, не относится к задачам модульного теста. Это можно сделать с помощью теста интеграции.
+Далее этот пример демонстрирует модульные тесты для методов API `Create` и `ForSession` в контроллере Ideas.
+
+Этот пример приложения содержит два теста `ForSession`. Первый тест определяет, возвращает ли `ForSession` значение <xref:Microsoft.AspNetCore.Mvc.NotFoundObjectResult> (ответ HTTP "Не найдено") при недопустимом значении сеанса:
+
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests4&highlight=5,7-8,15-16)]
+
+Второй тест `ForSession` проверяет, возвращает ли `ForSession` список идей сеанса (`<List<IdeaDTO>>`) для допустимого сеанса. Также выполняется анализ первой идеи для проверки правильности свойства `Name`:
+
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests5&highlight=5,7-8,15-18)]
+
+Чтобы протестировать поведение метода `Create`, если состояние `ModelState` недопустимо, пример приложения в рамках теста добавляет ошибку модели в контроллер. Не пытайтесь тестировать проверку или привязку модели с помощью модульных тестов &mdash; проверяйте только поведение метода действия при некорректных значениях `ModelState`:
+
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests1&highlight=7,13)]
+
+Для второго теста `Create` нужно, чтобы репозиторий возвращал значение `null`, поэтому здесь настроен макет репозитория, возвращающий значение `null`. Создавать тестовую базу данных (в памяти или где-либо еще) и запрос, возвращающий этот результат, не нужно. Тест можно выполнить в одной инструкции, как показано в примере кода:
+
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests2&highlight=7-8,15)]
+
+Третий тест `Create` (`Create_ReturnsNewlyCreatedIdeaForSession`) позволяет проверить, вызывается ли метод `UpdateAsync` репозитория. С помощью метода `Verifiable` создается обращение к макету репозитория, а затем вызывается метод `Verify` этого макета для подтверждения выполнения проверяемого метода. Проверка того, сохранил ли метод `UpdateAsync` данные, не относится к задачам модульного теста &mdash; это можно сделать с помощью интеграционного теста.
+
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests3&highlight=20-22,28-33)]
+
+::: moniker range=">= aspnetcore-2.1"
+
+## <a name="test-actionresultlttgt"></a>Тестирование ActionResult&lt;T&gt;
+
+В ASP.NET Core 2.1 и более поздних версий [ActionResult&lt;T&gt;](xref:web-api/action-return-types#actionresultt-type) (<xref:Microsoft.AspNetCore.Mvc.ActionResult`1>) позволяет возвращать тип, производный от `ActionResult`, или произвольный тип.
+
+Пример приложения содержит метод, который возвращает `List<IdeaDTO>` для указанного сеанса `id`. Если сеанс `id` не существует, контроллер возвращает <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*>:
+
+[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?name=snippet_ForSessionActionResult&highlight=10,21)]
+
+В `ApiIdeasControllerTests` включены два теста контроллера `ForSessionActionResult`.
+
+Первый из этих тестов проверяет, что контроллер возвращает `ActionResult`, но не возвращает несуществующий список идей для несуществующего сеанса `id`:
+
+* `ActionResult` имеет тип `ActionResult<List<IdeaDTO>>`;
+* <xref:Microsoft.AspNetCore.Mvc.ActionResult`1.Result*> представляет собой <xref:Microsoft.AspNetCore.Mvc.NotFoundObjectResult>.
+
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ForSessionActionResult_ReturnsNotFoundObjectResultForNonexistentSession&highlight=7,10,13-14)]
+
+Второй тест проверяет, что для допустимого сеанса `id` этот метод возвращает следующее:
+
+* `ActionResult` с типом `List<IdeaDTO>`;
+* значение [ActionResult&lt;T&gt;.Value](xref:Microsoft.AspNetCore.Mvc.ActionResult`1.Value*) имеет тип `List<IdeaDTO>`;
+* первый элемент в списке является допустимой идеей, которая совпадает с первой идеей в макете сеанса (полученной с помощью вызова `GetTestSession`).
+
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ForSessionActionResult_ReturnsIdeasForSession&highlight=7-8,15-18)]
+
+Пример приложения содержит также метод создания нового значения `Idea` для указанного сеанса. Контроллер возвращает следующие результаты:
+
+* <xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*> для недопустимой модели;
+* <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*>, если сеанс не существует;
+* <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*>, если в сеанс добавлена новая идея.
+
+[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?name=snippet_CreateActionResult&highlight=9,16,29)]
+
+В `ApiIdeasControllerTests` включены три теста `CreateActionResult`.
+
+Первый из этих тестов позволяет проверить, возвращается ли <xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*> для недопустимой модели.
+
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_CreateActionResult_ReturnsBadRequest_GivenInvalidModel&highlight=7,13-14)]
+
+Второй тест позволяет проверить, возвращается ли <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*>, если сеанс не существует.
+
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_CreateActionResult_ReturnsNotFoundObjectResultForNonexistentSession&highlight=5,15,22-23)]
+
+Последний тест позволяет проверить, выполняются ли для действительного сеанса `id` следующие условия:
+
+* Метод возвращает `ActionResult` с типом `BrainstormSession`.
+* Значение [ActionResult&lt;T&gt;.Result](xref:Microsoft.AspNetCore.Mvc.ActionResult`1.Result*) имеет тип <xref:Microsoft.AspNetCore.Mvc.CreatedAtActionResult>. `CreatedAtActionResult` аналогично ответу *201 — создан ресурс* с заголовком `Location`.
+* Значение [ActionResult&lt;T&gt;.Value](xref:Microsoft.AspNetCore.Mvc.ActionResult`1.Value*) имеет тип `BrainstormSession`.
+* Выполняется вызов макета `UpdateAsync(testSession)` для обновления сеанса. Вызов метода `Verifiable` проверяется выполнением `mockRepo.Verify()` в утверждениях.
+* Возвращаются два объекта `Idea` для сеанса.
+* Последний элемент (идея `Idea`, добавленная в макет с помощью вызова `UpdateAsync`) совпадает со значением `newIdea`, добавленным в сеанс в этом тесте.
+
+[!code-csharp[](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_CreateActionResult_ReturnsNewlyCreatedIdeaForSession&highlight=20-22,28-34)]
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
+* <xref:test/index>
 * <xref:test/integration-tests>
+* [Создавайте и выполняйте модульные тесты с помощью Visual Studio](/visualstudio/test/unit-test-your-code).
+* <xref:fundamentals/repository-pattern>
+* [Принцип явных зависимостей](https://deviq.com/explicit-dependencies-principle/)

@@ -4,14 +4,15 @@ author: guardrex
 description: Общие сведения о веб-сервере HTTP.sys для ASP.NET Core в Windows. Веб-сервер HTTP.sys на основе работающего в режиме ядра драйвера Http.Sys — это альтернатива Kestrel, которую можно использовать для прямого подключения к Интернету без служб IIS.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: tdykstra
-ms.date: 08/15/2018
+ms.custom: mvc
+ms.date: 09/13/2018
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 58f71596b8ad54dd500699265ab022dc57c4f7a3
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: e845cb4eb7fe805e3d2195124073f7ab646d66cb
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751416"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011672"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Реализация веб-сервера HTTP.sys в ASP.NET Core
 
@@ -55,6 +56,28 @@ HTTP.sys удобно использовать с развертываниями
   ![HTTP.sys взаимодействует с внутренней сетью напрямую](httpsys/_static/httpsys-to-internal.png)
 
 HTTP.sys — это проверенная технология, которая защищает от многих типов атак, а также обеспечивает надежность, безопасность и масштабируемость полнофункционального веб-сервера. Сами службы IIS выполняются в качестве HTTP-прослушивателя поверх HTTP.sys.
+
+## <a name="http2-support"></a>Поддержка HTTP/2
+
+Протокол [HTTP/2](https://httpwg.org/specs/rfc7540.html) включен для приложений ASP.NET Core, если выполнены следующие базовые требования:
+
+* установлена ОС Windows Server 2016 либо Windows 10 или более поздних версий;
+* установлено подключение с поддержкой [согласования протокола уровня приложений (ALPN)](https://tools.ietf.org/html/rfc7301#section-3);
+* установлено подключение TLS 1.2 или более поздней версии.
+
+::: moniker range=">= aspnetcore-2.2"
+
+Если установлено подключение HTTP/2, [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) возвращает `HTTP/2`.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+Если установлено подключение HTTP/2, [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) возвращает `HTTP/1.1`.
+
+::: moniker-end
+
+Протокол HTTP/2 включен по умолчанию. Если не удается установить подключение HTTP/2, применяется резервный вариант HTTP/1.1. В будущих версиях Windows будут доступны флаги конфигурации HTTP/2, в том числе возможность отключения HTTP/2 с использованием HTTP.sys.
 
 ## <a name="kernel-mode-authentication-with-kerberos"></a>Проверка подлинности в режиме ядра с помощью Kerberos
 

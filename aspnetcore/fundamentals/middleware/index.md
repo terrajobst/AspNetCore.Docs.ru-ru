@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/21/2018
 uid: fundamentals/middleware/index
-ms.openlocfilehash: e6dc76b7cb80e0dfda102df5aefb5d9ce9b821ed
-ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
+ms.openlocfilehash: 84e79df7fcf5790e658a20c80f21d73cdc76c054
+ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43055810"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46483013"
 ---
 # <a name="aspnet-core-middleware"></a>ПО промежуточного слоя ASP.NET Core
 
@@ -54,18 +54,22 @@ ms.locfileid: "43055810"
 >
 > <xref:Microsoft.AspNetCore.Http.HttpResponse.HasStarted*> удобно использовать для обозначения того, были ли отправлены заголовки или выполнена запись в тело отклика.
 
-## <a name="order"></a>Порядок
+## <a name="order"></a>Номер
 
 Порядок, в котором компоненты промежуточного слоя добавляются в метод `Startup.Configure`, определяет порядок их вызова при запросах и обратный порядок для отклика. Соблюдение этого порядка крайне важно для обеспечения безопасности, производительности и функциональности.
 
-Следующий метод `Configure` добавляет следующие компоненты промежуточного слоя.
-
-1. Обработка исключений/ошибок
-2. Статический файловый сервер
-3. Проверка подлинности
-4. MVC
+Метод `Startup.Configure` добавляет компоненты ПО промежуточного слоя для распространенных сценариев приложений:
 
 ::: moniker range=">= aspnetcore-2.0"
+
+1. Обработка исключений/ошибок
+1. Протокол HTTP Strict Transport Security.
+1. Перенаправление HTTPS
+1. Статический файловый сервер
+1. Применение политик в отношении файлов cookie.
+1. Проверка подлинности
+1. Сеанс
+1. MVC
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -96,11 +100,15 @@ public void Configure(IApplicationBuilder app)
     app.UseStaticFiles();
 
     // Use Cookie Policy Middleware to conform to EU General Data 
-    //   Protection Regulation (GDPR) regulations.
+    // Protection Regulation (GDPR) regulations.
     app.UseCookiePolicy();
 
     // Authenticate before the user accesses secure resources.
     app.UseAuthentication();
+
+    // If the app uses session state, call Session Middleware after Cookie 
+    // Policy Middleware and before MVC Middleware.
+    app.UseSession();
 
     // Add MVC to the request pipeline.
     app.UseMvc();
@@ -110,6 +118,12 @@ public void Configure(IApplicationBuilder app)
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
+
+1. Обработка исключений/ошибок
+1. Статические файлы
+1. Проверка подлинности
+1. Сеанс
+1. MVC
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -123,6 +137,10 @@ public void Configure(IApplicationBuilder app)
 
     // Authenticate before you access secure resources.
     app.UseIdentity();
+
+    // If the app uses session state, call UseSession before 
+    // MVC Middleware.
+    app.UseSession();
 
     // Add MVC to the request pipeline.
     app.UseMvcWithDefaultRoute();
@@ -212,15 +230,16 @@ app.Map("/level1", level1App => {
 
 ASP.NET Core содержит следующие компоненты промежуточного слоя. В столбце *Порядок* указаны сведения о размещении ПО промежуточного слоя в конвейере запросов и условия, в соответствии с которыми ПО промежуточного слоя может прервать запрос и предотвратить обработку запроса в других ПО промежуточного слоя.
 
-| ПО промежуточного слоя | Описание: | Порядок |
+| ПО промежуточного слоя | Описание: | Номер |
 | ---------- | ----------- | ----- |
 | [Authentication](xref:security/authentication/identity) | Обеспечивает поддержку проверки подлинности. | Ставится перед тем, как потребуется `HttpContext.User`. Является конечным для обратных вызовов OAuth. |
+| [Cookie Policy](xref:security/gdpr) | Позволяет отслеживать согласие пользователей на хранение личных сведений и применять минимальные стандарты для полей файлов cookie, таких как `secure` и `SameSite`. | Перед ПО промежуточного слоя, которое использует файлы cookie. Например: Authentication, Session, MVC (TempData). |
 | [CORS](xref:security/cors) | Настраивает общий доступ к ресурсам независимо от источника. | Ставится перед компонентами, использующими CORS. |
 | [Error Handling](xref:fundamentals/error-handling) | Настраивает диагностику. | Ставится перед компонентами, выдающими ошибки. |
-| [Forwarded Headers](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions) | Пересылает заголовки, переданные через прокси-сервер, в текущий запрос. | Ставится перед компонентами, использующими обновленные поля (например: схема, узел, IP-адрес клиента, метод). |
+| [Forwarded Headers](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions) | Пересылает заголовки, переданные через прокси-сервер, в текущий запрос. | Перед компонентами, использующими обновленные поля. Например: схема, узел, IP-адрес клиента, метод. |
 | [HTTP Method Override](/dotnet/api/microsoft.aspnetcore.builder.httpmethodoverrideextensions) | Разрешает входящий запрос POST для переопределения этого метода. | Ставится перед компонентами, использующими обновленный метод. |
 | [HTTPS Redirection](xref:security/enforcing-ssl#require-https) | Перенаправление всех запросов HTTP на HTTPS (ASP.NET Core 2.1 или более поздней версии). | Ставится перед компонентами, использующими URL-адрес. |
-| [HTTP Strict Transport Security (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | ПО промежуточного слоя для усовершенствования безопасности, которое добавляет специальный заголовок ответа (ASP.NET Core 2.1 или более поздней версии). | Перед отправкой ответов и после компонентов, изменяющих запросы (например, перенаправленные заголовки, переопределение URL-адреса). |
+| [HTTP Strict Transport Security (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | ПО промежуточного слоя для усовершенствования безопасности, которое добавляет специальный заголовок ответа (ASP.NET Core 2.1 или более поздней версии). | Перед отправкой ответов и после компонентов, изменяющих запросы. Например: Forwarded Headers и URL Rewriting. |
 | [MVC](xref:mvc/overview) | Обрабатывает запросы с помощью MVC/Razor Pages (ASP.NET Core 2.0 или более поздней версии). | Является конечным, если запрос соответствует маршруту. |
 | [OWIN](xref:fundamentals/owin) | Взаимодействие с приложениями, серверами и ПО промежуточного слоя на основе OWIN. | Является конечным, если ПО промежуточного слоя OWIN полностью обрабатывает запрос. |
 | [Кэширование ответов](xref:performance/caching/middleware) | Обеспечивает поддержку для кэширования откликов. | Ставится перед компонентами, требующими кэширование. |

@@ -4,14 +4,14 @@ author: guardrex
 description: Узнайте, как разместить приложение ASP.NET Core в службе Windows.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 06/04/2018
+ms.date: 09/25/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 68afe77b05a717cffecc32188f18e9fde208b81f
-ms.sourcegitcommit: 3ca20ed63bf1469f4365f0c1fbd00c98a3191c84
+ms.openlocfilehash: eb88b0bb2e9ce4cfd3a7db2081ad7d62d5dcb08e
+ms.sourcegitcommit: 599ebae5c2d6fcb22dfa6ae7d1f4bdfcacb79af4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41755608"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47211043"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -21,13 +21,13 @@ ms.locfileid: "41755608"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="get-started"></a>Начало работы
+## <a name="convert-a-project-into-a-windows-service"></a>Преобразование проекта в службу Windows
 
-Чтобы настроить существующий проект ASP.NET Core для запуска в службе, требуется следующий минимальный набор изменений:
+Чтобы настроить запуск в виде службы для существующего проекта ASP.NET Core, выполните следующий минимальный набор изменений.
 
 1. В файле проекта:
 
-   1. Подтвердите наличие идентификатора среды выполнения или добавьте его в **\<PropertyGroup >**, где содержится требуемая версия платформы:
+   * Подтвердите наличие [идентификатора среды выполнения](/dotnet/core/rid-catalog) Windows или добавьте его в `<PropertyGroup>`, где содержится требуемая версия платформы:
 
       ::: moniker range=">= aspnetcore-2.1"
 
@@ -62,7 +62,14 @@ ms.locfileid: "41755608"
 
       ::: moniker-end
 
-   1. Добавьте ссылку на пакет для [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices/).
+      Чтобы выполнить публикацию для нескольких идентификаторов RID, сделайте следующее.
+
+      * Укажите список идентификаторов RID, разделив их точкой с запятой.
+      * Укажите имя свойства `<RuntimeIdentifiers>` (множественное число).
+
+      Дополнительные сведения см. в [каталоге RID для .NET Core](/dotnet/core/rid-catalog).
+
+   * Добавьте ссылку на пакет для [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices).
 
 1. Внесите следующие изменения в `Program.Main`:
 
@@ -84,10 +91,10 @@ ms.locfileid: "41755608"
 
 1. Опубликуйте приложение. Используйте команду [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) или [профиль публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles). Работая в Visual Studio, выберите **FolderProfile**.
 
-   Чтобы опубликовать пример приложения из командной строки, выполните следующую команду в окне консоли из папки проекта:
+   Чтобы опубликовать пример приложения через интерфейс командной строки (CLI), выполните в командной строке команду [dotnet publish](/dotnet/core/tools/dotnet-publish) в папке проекта. Идентификатор RID следует указать в свойстве `<RuntimeIdenfifier>` (или `<RuntimeIdentifiers>`) в файле проекта. Следующий пример публикует приложение в конфигурации выпуска для среды выполнения `win7-x64`:
 
    ```console
-   dotnet publish --configuration Release
+   dotnet publish --configuration Release --runtime win7-x64
    ```
 
 1. Используйте программу командной строки [sc.exe](https://technet.microsoft.com/library/bb490995), чтобы создать службу. Значение `binPath` обозначает путь к исполняемому файлу приложения, включая имя самого файла. **Требуется пробел между знаком равенства и кавычками, с которых начинается путь.**
@@ -98,7 +105,7 @@ ms.locfileid: "41755608"
 
    Для создания службы, опубликованной в папке проекта, используйте путь к папке *publish*. В следующем примере:
 
-   * Проект находится в папке `c:\my_services\AspNetCoreService`.
+   * Проект находится в папке *c:\\my_services\\AspNetCoreService*.
    * Проект публикуется в конфигурации `Release`.
    * Моникер целевой платформы (TFM) — `netcoreapp2.1`.
    * Идентификатор среды выполнения (RID) — `win7-x64`.
@@ -110,14 +117,14 @@ ms.locfileid: "41755608"
    ```console
    sc create MyService binPath= "c:\my_services\AspNetCoreService\bin\Release\netcoreapp2.1\win7-x64\publish\AspNetCoreService.exe"
    ```
-   
+
    > [!IMPORTANT]
    > Убедитесь, что между аргументом `binPath=` и его значением есть пробел.
-   
+
    Чтобы опубликовать и запустить службу из другой папки:
-   
-      1. Используйте параметр [--output &lt;OUTPUT_DIRECTORY&gt;](/dotnet/core/tools/dotnet-publish#options) команды `dotnet publish`. Если вы используете Visual Studio, настройте **Целевое расположение** на странице свойств публикации **FolderProfile**, прежде чем нажимать кнопку **Опубликовать**.
-   1. Создайте службу с помощью команды `sc.exe`, используя путь к папке выходных данных. Включите имя исполняемого файла службы в путь, передаваемый в `binPath`.
+
+      * Используйте параметр [--output &lt;OUTPUT_DIRECTORY&gt;](/dotnet/core/tools/dotnet-publish#options) команды `dotnet publish`. Если вы используете Visual Studio, настройте **Целевое расположение** на странице свойств публикации **FolderProfile**, прежде чем нажимать кнопку **Опубликовать**.
+      * Создайте службу с помощью команды `sc.exe`, используя путь к папке выходных данных. Включите имя исполняемого файла службы в путь, передаваемый в `binPath`.
 
 1. Запустите службу с помощью команды `sc start <SERVICE_NAME>`.
 
@@ -129,7 +136,7 @@ ms.locfileid: "41755608"
 
    Команде потребуется несколько секунд, чтобы запустить службу.
 
-1. Команду `sc query <SERVICE_NAME>` можно использовать для проверки состояния службы:
+1. Чтобы проверить состояние службы, используйте команду `sc query <SERVICE_NAME>`. Состояние отображается одним из следующих значений:
 
    * `START_PENDING`
    * `RUNNING`
@@ -168,7 +175,7 @@ ms.locfileid: "41755608"
    sc delete MyService
    ```
 
-## <a name="provide-a-way-to-run-outside-of-a-service"></a>Обеспечение возможности запуска за пределами службы
+## <a name="run-the-app-outside-of-a-service"></a>Запуск приложения вне службы
 
 Тестирование и отладку проще выполнять при работе вне службы. Поэтому разработчики обычно добавляют код, который вызывает `RunAsService` только при соблюдении определенных условий. Например, приложение может выполняться как консольное приложение с аргументом командной строки `--console` или при присоединении отладчика:
 
@@ -232,7 +239,7 @@ ms.locfileid: "41755608"
 
 ## <a name="current-directory-and-content-root"></a>Текущий каталог и корневой каталог содержимого
 
-Текущий рабочий каталог, возвращенный путем вызова `Directory.GetCurrentDirectory()` для службы Windows, — это папка *C:\WINDOWS\system32*. Папка *system32* не подходит для хранения файлов службы (например, файлов параметров). Используйте один из следующих методов для сохранения и доступа к ресурсам и файлам параметров службы с помощью [FileConfigurationExtensions.SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath) при использовании [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder):
+Для службы Windows `Directory.GetCurrentDirectory()` возвращает текущий рабочий каталог *C:\\WINDOWS\\system32*. Папка *system32* не подходит для хранения файлов службы (например, файлов параметров). Используйте один из следующих методов для сохранения и доступа к ресурсам и файлам параметров службы с помощью [FileConfigurationExtensions.SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath) при использовании [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder):
 
 * Используйте путь корневого каталога содержимого. `IHostingEnvironment.ContentRootPath` — это тот же путь, предоставленный аргументом `binPath` при создании службы. Вместо использования `Directory.GetCurrentDirectory()` для создания путей к файлам параметров используйте путь корневого каталога содержимого и храните файлы в корневом каталоге содержимого приложения.
 * Храните файлы в подходящем месте на диске. Укажите абсолютный путь с помощью `SetBasePath` к папке, содержащей файлы.

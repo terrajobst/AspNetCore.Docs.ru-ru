@@ -4,14 +4,14 @@ author: zuckerthoben
 description: Узнайте, как использовать NSwag для создания документации и страниц справки для веб-API в ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 06/29/2018
+ms.date: 09/20/2018
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: c0811593609b7d1e3529d5253e8b053f180281f3
-ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
+ms.openlocfilehash: b9266e2df75563be6bad1a1f464cef788c333d4c
+ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37126278"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47028172"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Начало работы с NSwag и ASP.NET Core
 
@@ -29,9 +29,14 @@ ms.locfileid: "37126278"
 
 ::: moniker-end
 
-Для использования [NSwag](https://github.com/RSuter/NSwag) с ПО промежуточного слоя ASP.NET Core требуется пакет NuGet [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/). Пакет состоит из генератора Swagger, пользовательского интерфейса Swagger (v2 и v3) и [пользовательского интерфейса ReDoc](https://github.com/Rebilly/ReDoc).
+Зарегистрируйте ПО промежуточного слоя NSwag, чтобы выполнять следующие задачи:
 
-Настоятельно рекомендуется использовать возможности создания кода в NSwag. Выберите один из следующих вариантов создания кода:
+* создавать спецификации Swagger для реализованного веб-API;
+* применять пользовательский интерфейс Swagger для просмотра и тестирования веб-API.
+
+Чтобы использовать ПО промежуточного слоя [NSwag](https://github.com/RSuter/NSwag) для ASP.NET Core, установите пакет NuGet [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/). Этот пакет содержит ПО промежуточного слоя, которое позволяет создавать и использовать спецификацию Swagger, пользовательский интерфейс Swagger (версий 2 и 3) и [пользовательский интерфейс ReDoc](https://github.com/Rebilly/ReDoc).
+
+Также настоятельно рекомендуется использовать возможности создания кода в NSwag. Выберите один из следующих вариантов для использования возможностей создания кода:
 
 * Используйте [NSwagStudio](https://github.com/NSwag/NSwag/wiki/NSwagStudio), классическое приложение Windows для создания клиентского кода в C# и TypeScript для вашего API.
 * Используйте пакеты NuGet [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) или [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/), чтобы создавать код внутри проекта.
@@ -40,7 +45,7 @@ ms.locfileid: "37126278"
 
 ## <a name="features"></a>Функции
 
-Основная причина применения NSwag — возможность не только ввести пользовательский интерфейс Swagger и генератор Swagger, но и использовать гибкие возможности создания кода. Вам не требуется существующий API &mdash; вы можете использовать API сторонних разработчиков, которые содержат Swagger и позволяют NSwag создавать реализацию клиента. В любом случае цикл разработки ускоряется, и вам проще адаптироваться к изменениям API.
+Основная причина применения NSwag — возможность не только ввести пользовательский интерфейс Swagger и генератор Swagger, но и использовать гибкие возможности создания кода. Вам не требуется существующий API &mdash; вы можете использовать API сторонних разработчиков, которые содержат Swagger и позволяют NSwag создавать реализацию клиента. В любом случае цикл разработки ускоряется, и вам проще адаптироваться к изменениям API.
 
 ## <a name="package-installation"></a>Установка пакета
 
@@ -94,7 +99,11 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_StartupConfigureImports)]
 
-В методе `Startup.Configure` включите ПО промежуточного слоя для обслуживания созданной спецификации Swagger и пользовательского интерфейса Swagger:
+Используя метод `Startup.ConfigureServices`, зарегистрируйте необходимые службы Swagger: 
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_ConfigureServices&highlight=8)]
+
+В методе `Startup.Configure` включите ПО промежуточного слоя для обслуживания созданной спецификации Swagger и пользовательского интерфейса Swagger версии 3:
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_Configure&highlight=6-10)]
 
@@ -254,6 +263,7 @@ XML-комментарии можно включить следующим обр
 ### <a name="data-annotations"></a>Заметки к данным
 
 ::: moniker range="<= aspnetcore-2.0"
+
 NSwag использует [Отражение](/dotnet/csharp/programming-guide/concepts/reflection), и для действий веб-API рекомендуется возвращать значение типа [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult). Следовательно, NSwag не удается определить, что делает ваше действие и что оно возвращает. Рассмотрим следующий пример.
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
@@ -261,8 +271,11 @@ NSwag использует [Отражение](/dotnet/csharp/programming-guide
 Предыдущее действие возвращает `IActionResult`, но внутри действия возвращается [CreatedAtRoute](/dotnet/api/system.web.http.apicontroller.createdatroute) или [BadRequest](/dotnet/api/system.web.http.apicontroller.badrequest). Заметки к данным используются, чтобы сообщить клиентам, какие коды состояния HTTP возвращает это действие. Добавьте к действию следующие атрибуты:
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 NSwag использует [Отражение](/dotnet/csharp/programming-guide/concepts/reflection), и для действий веб-API рекомендуется возвращать значение типа [IActionResult\<T>](/dotnet/api/microsoft.aspnetcore.mvc.actionresult-1). Следовательно, NSwag может вывести только тип возвращаемого значения, определенный `T`. Другие типы возвращаемых значений в действии вывести невозможно. Рассмотрим следующий пример.
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
@@ -270,6 +283,7 @@ NSwag использует [Отражение](/dotnet/csharp/programming-guide
 Предыдущее действие возвращает `ActionResult<T>`, но внутри действия возвращается [CreatedAtRoute](/dotnet/api/system.web.http.apicontroller.createdatroute). Поскольку контроллер дополнен атрибутом [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute), ответ [BadRequest](/dotnet/api/system.web.http.apicontroller.badrequest) также возможен. Дополнительные сведения см. в разделе [Автоматические отклики HTTP 400](xref:web-api/index#automatic-http-400-responses). Заметки к данным используются, чтобы сообщить клиентам, какие коды состояния HTTP возвращает это действие. Добавьте к действию следующие атрибуты:
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
+
 ::: moniker-end
 
 Генератор Swagger теперь может точно описать это действие, и созданные клиенты знают, что они получают при вызове конечной точки. Настоятельно рекомендуется добавлять эти атрибуты ко всем действиям. Рекомендации о том, какие ответы HTTP должны возвращать ваши действия API, см. в [спецификации RFC 7231](https://tools.ietf.org/html/rfc7231#section-4.3).

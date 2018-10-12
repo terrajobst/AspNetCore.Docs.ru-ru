@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/02/2018
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: b9c322e56c0902c2a78bbbf2563dd01ce79fdc9a
-ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
+ms.openlocfilehash: 50986eeb4c5c8b06c739ee9f860665b877853d78
+ms.sourcegitcommit: 517bb1366da2a28b0014e384fa379755c21b47d8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2018
-ms.locfileid: "42927901"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47230195"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
 Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith), [Скотт Эдди](https://scottaddie.com) (Scott Addie) и [Люк Латам](https://github.com/guardrex) (Luke Latham)
 
-ASP.NET Core поддерживает проектирование программного обеспечения с возможностью внедрения зависимостей. При таком подходе достигается [инверсия управления](https://deviq.com/inversion-of-control/) между классами и их зависимостями.
+ASP.NET Core поддерживает проектирование программного обеспечения с возможностью внедрения зависимостей. При таком подходе достигается [инверсия управления](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) между классами и их зависимостями.
 
 Дополнительные сведения о внедрении зависимостей в контроллерах MVC см. в статье <xref:mvc/controllers/dependency-injection>.
 
@@ -243,7 +243,7 @@ public void ConfigureServices(IServiceCollection services)
 Службы можно разрешать двумя методами:
 
 * `IServiceProvider`
-* [ActivatorUtilities.](/dotnet/api/microsoft.extensions.dependencyinjection.activatorutilities) Позволяет создавать объекты без регистрации службы в контейнере внедрения зависимостей. `ActivatorUtilities` используется с абстракциями пользовательского уровня, например с вспомогательными функциями для тегов, контроллерами MVC, концентраторами SignalR и связывателями моделей.
+* [ActivatorUtilities.](/dotnet/api/microsoft.extensions.dependencyinjection.activatorutilities) Позволяет создавать объекты без регистрации службы в контейнере внедрения зависимостей. `ActivatorUtilities` используется с абстракциями пользовательского уровня, например со вспомогательными функциями для тегов, контроллерами MVC, и связывателями моделей.
 
 Конструкторы могут принимать аргументы, которые не предоставляются внедрением зависимостей, но эти аргументы должны назначать значения по умолчанию.
 
@@ -442,7 +442,7 @@ public static void Main(string[] args)
 
 Соблюдение [принципов SOLID для объектно-ориентированного проектирования](https://deviq.com/solid/) поможет сделать программные классы небольшими, хорошо организованными и удобными в тестировании.
 
-Если класс имеет слишком много внедренных зависимостей, обычно это указывает на то, что у класса слишком много задач и он не соответствует [принципу единственной обязанности](https://deviq.com/single-responsibility-principle/). Попробуйте выполнить рефакторинг класса и перенести часть его обязанностей в новый класс. Помните, что в классах модели страниц Razor Pages и классах контроллера MVC должны преимущественно выполняться задачи, связанные с пользовательским интерфейсом. Бизнес-правила и реализация доступа к данным должны обрабатываться в классах, которые предназначены для [этих целей](https://deviq.com/separation-of-concerns/).
+Если класс имеет слишком много внедренных зависимостей, обычно это указывает на то, что у класса слишком много задач и он не соответствует [принципу единственной обязанности](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#single-responsibility). Попробуйте выполнить рефакторинг класса и перенести часть его обязанностей в новый класс. Помните, что в классах модели страниц Razor Pages и классах контроллера MVC должны преимущественно выполняться задачи, связанные с пользовательским интерфейсом. Бизнес-правила и реализация доступа к данным должны обрабатываться в классах, которые предназначены для [этих целей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns).
 
 ### <a name="disposal-of-services"></a>Удаление служб
 
@@ -563,6 +563,7 @@ public void ConfigureServices(IServiceCollection services)
 * <xref:fundamentals/middleware/extensibility>
 * [Написание чистого кода в ASP.NET Core с внедрением зависимостей (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
 * [Проектирование приложения на основе контейнеров. Вступление. К чему относится контейнер?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/)
-* [Принцип явных зависимостей](https://deviq.com/explicit-dependencies-principle/)
+* [Принцип явных зависимостей](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)
 * [Контейнеры с инверсией управления и шаблон внедрения зависимостей (Мартин Фаулер)](https://www.martinfowler.com/articles/injection.html)
 * [Ключевое слово New — связующий элемент (связывание кода с определенной реализацией)](https://ardalis.com/new-is-glue)
+* [How to register a service with multiple interfaces in ASP.NET Core DI](https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/) (Регистрация службы с несколькими интерфейсами с помощью внедрения зависимостей ASP.NET Core)

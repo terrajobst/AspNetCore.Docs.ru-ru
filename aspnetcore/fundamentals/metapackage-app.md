@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 09/20/2017
 uid: fundamentals/metapackage-app
-ms.openlocfilehash: d27c3aa53d6edd235006dc136f09558395e15b6e
-ms.sourcegitcommit: a742b55e4b8276a48b8b4394784554fecd883c84
+ms.openlocfilehash: 68b5aca60273a8c6ef03c0a29842e6a5305adeb3
+ms.sourcegitcommit: 517bb1366da2a28b0014e384fa379755c21b47d8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45538457"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47230169"
 ---
 # <a name="microsoftaspnetcoreapp-metapackage-for-aspnet-core-21"></a>Метапакет Microsoft.AspNetCore.App для ASP.NET Core 2.1
 
@@ -45,13 +45,26 @@ ms.locfileid: "45538457"
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
 </Project>
 ```
 
-Указание номера версии метапакета `Microsoft.AspNetCore.App` в ссылке на него **не** гарантирует, что будет использоваться эта версия общей платформы. Например, пусть указана версия `2.1.1`, но установлена версия `2.1.3`. В этом случае приложение будет использовать версию `2.1.3`. Хотя это и не рекомендуется, можно отключить функцию выбора последней версии (для исправлений и (или) вспомогательных версий). Дополнительные сведения о процедуре выбора последней версии пакета см. [здесь](https://github.com/dotnet/core-setup/blob/master/Documentation/design-docs/roll-forward-on-no-candidate-fx.md).
+Предыдущая разметка представляет типичный шаблон ASP.NET Core 2.1 и более поздних версий. Он не задает номер версии в ссылке на пакет `Microsoft.AspNetCore.App`. Если версия не указана, она задается [неявно](https://github.com/dotnet/core/blob/master/release-notes/1.0/sdk/1.0-rc3-implicit-package-refs.md) пакетом SDK, то есть пакетом `Microsoft.NET.Sdk.Web`. Рекомендуется использовать неявное указание версии через пакет SDK, а не задавать номер версии явно в ссылке на пакет. Если у вас возникли вопросы по этому подходу, оставьте комментарий на GitHub в [обсуждении неявного указания версий Microsoft.AspNetCore.App](https://github.com/aspnet/Docs/issues/6430).
+
+Для переносимых приложений при неявном указании версии устанавливается значение `major.minor.0`. Механизм выбора последней общей платформы будет запускать приложение на последней совместимой версии среди установленных общих платформ. Чтобы гарантировать, что используется одна и та же версия при разработке, тестировании и эксплуатации, убедитесь, что установлена одинаковая версия общей платформы во всех средах. Для автономных приложений неявный номер версии общей платформы, включенной в установленный пакет SDK, устанавливается в значение `major.minor.patch`.
+
+Указание номера версии метапакета `Microsoft.AspNetCore.App` в ссылке на него **не** гарантирует, что будет выбрана эта версия общей платформы. Например, пусть указана версия "2.1.1", но установлена версия "2.1.3". В этом случае приложение будет использовать версию "2.1.3". Хотя это не рекомендуется, можно отключить функцию выбора последней версии (для исправлений и (или) вспомогательных версий). Дополнительную информацию см. в статье о [выборе последней версии на узле .NET](https://github.com/dotnet/core-setup/blob/master/Documentation/design-docs/roll-forward-on-no-candidate-fx.md).
+
+Для `<Project Sdk` нужно установить значение `Microsoft.NET.Sdk.Web`, чтобы использовать неявную версию `Microsoft.AspNetCore.App`.  При использовании `<Project Sdk="Microsoft.NET.Sdk">` (без `.Web` в конце) происходит следующее:
+
+* Создается такое предупреждение:
+
+     *Предупреждение NU1604. Зависимость проекта Microsoft.AspNetCore.App не содержит включенную нижнюю границу. Включите нижнюю границу в версию зависимости, чтобы гарантировать согласованные результаты восстановления.*
+* Это известная проблема с пакетом SDK для .NET Core 2.1. Она будет устранена в пакете SDK для .NET Core 2.2.
+
+<a name="update"></a>
 
 ## <a name="update-aspnet-core"></a>Обновление ASP.NET Core
 

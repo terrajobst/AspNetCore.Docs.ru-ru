@@ -5,12 +5,12 @@ description: В этом руководстве описано обновлен�
 ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: e987971f60e5c5a9fb79e30440c7c986df64447e
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: c9d0e97dc612744f0023c48a27eb1c89fd153b95
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38189306"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523172"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Razor Pages с EF Core в ASP.NET Core — обновление связанных данных — 7 из 8
 
@@ -18,7 +18,7 @@ ms.locfileid: "38189306"
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
-В этом учебнике демонстрируется обновление связанных данных. При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение для этого этапа](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part7).
+В этом учебнике демонстрируется обновление связанных данных. При возникновении проблем, которые вам не удается устранить, [скачайте или просмотрите готовое приложение.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:tutorials/index#how-to-download-a-sample).
 
 На следующих рисунках изображены некоторые готовые страницы.
 

@@ -4,14 +4,14 @@ description: Процедура настройки Apache в качестве о
 author: spboyer
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 03/13/2018
+ms.date: 09/08/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 2431e989d6fc2cf83bca47aaa41a2bf686c0ab54
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 534e0415b2d278a518aea0ecb8042aeab4a0aa0e
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219359"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523211"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -56,8 +56,10 @@ dotnet publish --configuration Release
 Любой компонент, который зависит от схемы, например проверка подлинности, генерация ссылок, перенаправление и геолокация, должен находиться после вызова ПО промежуточного слоя перенаправления заголовков. Как правило, ПО промежуточного слоя перенаправления заголовков должно выполняться до остального ПО промежуточного слоя, за исключением ПО промежуточного слоя для диагностики и обработки ошибок. Такой порядок гарантирует, что ПО промежуточного слоя, полагающееся на сведения о перенаправленных заголовках, может использовать значения заголовков для обработки.
 
 ::: moniker range=">= aspnetcore-2.0"
+
 > [!NOTE]
 > Любая из этих конфигураций &mdash; с обратным прокси-сервером и без него &mdash; является допустимой и поддерживаемой для размещения основных компонентов приложений ASP.NET версии 2.0 и выше. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
+
 ::: moniker-end
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
@@ -95,7 +97,16 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 Если параметр [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) не задан для ПО промежуточного слоя, по умолчанию перенаправляются заголовки `None`.
 
-Для приложений, размещенных за прокси-серверами и подсистемами балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).
+По умолчанию доверенными считаются только прокси-серверы, работающие на localhost (127.0.0.1, [:: 1]). Если запросы между Интернетом и веб-сервером обрабатывают другие прокси-серверы или сети организации, добавьте их в список <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> или <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> с помощью <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>. Следующий пример добавляет доверенный прокси-сервер с IP-адресом 10.0.0.100 в ПО промежуточного слоя для перенаправления заголовков `KnownProxies` в `Startup.ConfigureServices`:
+
+```csharp
+services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+});
+```
+
+Дополнительные сведения см. в разделе <xref:host-and-deploy/proxy-load-balancer>.
 
 ### <a name="install-apache"></a>Установка Apache
 
@@ -198,6 +209,7 @@ ExecStart=/usr/local/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
 Restart=always
 # Restart service after 10 seconds if the dotnet service crashes:
 RestartSec=10
+KillSignal=SIGINT
 SyslogIdentifier=dotnet-example
 User=apache
 Environment=ASPNETCORE_ENVIRONMENT=Production 
@@ -206,27 +218,32 @@ Environment=ASPNETCORE_ENVIRONMENT=Production
 WantedBy=multi-user.target
 ```
 
-> [!NOTE]
-> **Пользователь.** Если пользователь *apache* в вашей конфигурации еще не используется, его необходимо создать и правильно предоставить ему права владения для соответствующих файлов.
+Если пользователь *apache* в вашей конфигурации еще не используется, его необходимо создать и правильно предоставить ему права владения для соответствующих файлов.
 
-> [!NOTE]
-> Некоторые значения (например, строки подключения SQL) необходимо экранировать, чтобы поставщики конфигурации могли считать переменные среды. Используйте следующую команду, чтобы создать правильно экранированное значение для файла конфигурации:
->
-> ```console
-> systemd-escape "<value-to-escape>"
-> ```
+Используйте `TimeoutStopSec`, чтобы настроить время ожидания до завершения работы приложения после начального сигнала прерывания. Если приложение не завершит работу в течение этого периода, оно прерывается сигналом SIGKILL. Укажите значение в секундах без единиц измерения (например, `150`), значение интервала (например, `2min 30s`) или значение `infinity`, которое отключает время ожидания. По умолчанию `TimeoutStopSec` принимает значение `DefaultTimeoutStopSec` в файле конфигурации диспетчера (*systemd-system.conf*, *system.conf.d*, *systemd-user.conf*, *user.conf.d*). В большинстве дистрибутивов по умолчанию устанавливается время ожидания 90 секунд.
+
+```
+# The default value is 90 seconds for most distributions.
+TimeoutStopSec=90
+```
+
+Некоторые значения (например, строки подключения SQL) необходимо экранировать, чтобы поставщики конфигурации могли считать переменные среды. Используйте следующую команду, чтобы создать правильно экранированное значение для файла конфигурации:
+
+```console
+systemd-escape "<value-to-escape>"
+```
 
 Сохраните файл и включите службу.
 
 ```bash
-systemctl enable kestrel-hellomvc.service
+sudo systemctl enable kestrel-hellomvc.service
 ```
 
 Запустите службу и убедитесь, что она работает.
 
 ```bash
-systemctl start kestrel-hellomvc.service
-systemctl status kestrel-hellomvc.service
+sudo systemctl start kestrel-hellomvc.service
+sudo systemctl status kestrel-hellomvc.service
 
 ● kestrel-hellomvc.service - Example .NET Web API App running on CentOS 7
     Loaded: loaded (/etc/systemd/system/kestrel-hellomvc.service; enabled)

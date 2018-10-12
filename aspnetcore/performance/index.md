@@ -1,21 +1,24 @@
 ---
 title: Производительность в ASP.NET Core
-author: ardalis
+author: guardrex
 description: Разделы, относящиеся к производительности приложений ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 09/16/2018
 uid: performance/index
-ms.openlocfilehash: e168432280f40f9d3b918a11deb55959c9ffeb70
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: da400078f4e8899ce41ff395c86fdea14bc3c376
+ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273641"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47028106"
 ---
 # <a name="performance-in-aspnet-core"></a>Производительность в ASP.NET Core
 
-* [Ответы кэша](caching/index.md)
-  * [Кэш в памяти](caching/memory.md)
-  * [Работа с распределенным кэшем](caching/distributed.md)
-  * [Кэширование ответов](caching/response.md)
-* [ПО промежуточного слоя для сжатия ответов](response-compression.md)
+В следующих разделах описаны сценарии производительности в ASP.NET Core.
+
+[Ответы кэша](xref:performance/caching/index)  
+Узнайте, как кэшировать данных и ответы в ASP.NET Core.
+
+[Сжатие откликов](xref:performance/response-compression)  
+Сведения о сжатии откликов и способах использования ПО промежуточного слоя для сжатия откликов в приложениях ASP.NET Core.

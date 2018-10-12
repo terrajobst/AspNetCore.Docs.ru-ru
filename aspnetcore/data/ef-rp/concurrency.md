@@ -5,12 +5,12 @@ description: Это руководство описывает, как обраб
 ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: a010e2ed660bea56b112799e850f2fb0ff37579e
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 722676b6765c32f3d11d5a3e23a5bea6ebe5488d
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219398"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523263"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Razor Pages с EF Core в ASP.NET Core — параллелизм — 8 из 8
 
@@ -18,7 +18,7 @@ ms.locfileid: "39219398"
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
-Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей параллельно (одновременно) изменяют одну сущность. При возникновении проблем, которые вам не удается устранить, скачайте [готовое приложение для этого этапа](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part8).
+Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей параллельно (одновременно) изменяют одну сущность. При возникновении проблем, которые вам не удается устранить, [скачайте или просмотрите готовое приложение.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:tutorials/index#how-to-download-a-sample).
 
 ## <a name="concurrency-conflicts"></a>Конфликты параллелизма
 

@@ -5,12 +5,12 @@ description: В этой статье показано, как использо�
 ms.author: tdykstra
 ms.date: 02/24/2017
 uid: data/entity-framework-6
-ms.openlocfilehash: 500954bdf8ea592e0ed706943e0f5ba4f4594dbc
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: ba3ee137bfefd53cf2b7be2f328651ad38104ab5
+ms.sourcegitcommit: 70fb7c9d5f2ddfcf4747382a9f7159feca7a6aa7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274083"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45601747"
 ---
 # <a name="get-started-with-aspnet-core-and-entity-framework-6"></a>Начало работы с ASP.NET Core и Entity Framework 6
 
@@ -66,9 +66,10 @@ ms.locfileid: "36274083"
 
 * Создайте решение.
 
-* **Добавить новый проект > Интернет > Веб-приложение ASP.NET Core (.NET Framework)**
+* **Создать** > **Новый проект** > **Веб** > **Веб-приложение ASP.NET Core**
+  * В диалоговом окне для выбора шаблона проекта укажите версию API и .NET Framework в раскрывающемся списке.
 
-* **Добавить новый проект > Классический рабочий стол Windows > Библиотека классов (.NET Framework)**
+* **Создать** > **Новый проект** > **Классическое приложение для Windows** > **Библиотека классов (.NET Framework)**
 
 * В **консоли диспетчера пакетов** для обоих проектов выполните команду `Install-Package Entityframework`.
 

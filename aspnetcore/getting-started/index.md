@@ -6,14 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/31/2018
 uid: getting-started
-ms.openlocfilehash: 7ab9f303d74786c4ac76f002d0f2c66371e78cb8
-ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
+ms.openlocfilehash: a6a5023594aec01370143e7d1f35fb45c109122a
+ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228586"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47860944"
 ---
 # <a name="get-started-with-aspnet-core"></a>Начало работы с ASP.NET Core
+
+В этом документе приводятся инструкции по созданию и запуску приложения ASP.NET Core.
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -21,55 +23,57 @@ ms.locfileid: "39228586"
 
 2. Создайте проект ASP.NET Core. Откройте окно командной оболочки и введите следующую команду.
 
-    ```console
-    dotnet new webapp -o aspnetcoreapp
-    ```
-
-    [!INCLUDE [](~/includes/webapp-alias-notice.md)]
+   ```console
+   dotnet new webapp -o aspnetcoreapp
+   ```
 
 3. Установите доверие к сертификату разработки HTTPS.
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-    ```console
-    dotnet dev-certs https --trust
-    ```
+  ```console
+  dotnet dev-certs https --trust
+  ```
 
-   Приведенная выше команда отображает следующее диалоговое окно.
+  Приведенная выше команда отображает следующее диалоговое окно.
 
-   ![Диалоговое окно "Предупреждение о безопасности"](_static/cert.png)
+  ![Диалоговое окно "Предупреждение о безопасности"](_static/cert.png)
 
-   Выберите **Да**, если согласны доверять сертификату разработки.
+  Выберите **Да**, если согласны доверять сертификату разработки.
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-    ```console
-    dotnet dev-certs https --trust
-    ```
+  ```console
+  dotnet dev-certs https --trust
+  ```
 
-   Приведенная выше команда отображает следующее сообщение.
+  Приведенная выше команда отображает следующее сообщение.
 
-   *Запрошено доверие к сертификату разработки HTTPS. Если сертификат не является доверенным, выполните следующую команду:* `'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'` *Эта команда может запросить пароль для установки сертификата в системной цепочке ключей.    Пароль:* 
+  *Запрошено доверие к сертификату разработки HTTPS. Если сертификат не является доверенным, выполните следующую команду:* `'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`.  
+  * Эта команда может запросить пароль для установки сертификата в системной цепочке ключей.
+  
+  Пароль: *
 
-   Введите пароль, если согласны доверять сертификату разработки.
+  Введите пароль, если согласны доверять сертификату разработки.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-   <a name="see-the-documentation-for-your-linux-distribution-on-how-to-trust-the-https-development-certificate"></a>Просмотрите документацию по дистрибутиву Linux, чтобы узнать, как установить отношение доверия к сертификату разработки HTTPS.
+  Просмотрите документацию по дистрибутиву Linux, чтобы узнать, как установить отношение доверия к сертификату разработки HTTPS.
+   
 ---
 
 4. Запустите приложение:
 
-    ```console
-    cd aspnetcoreapp
-    dotnet run
-    ```
+   ```console
+   cd aspnetcoreapp
+   dotnet run
+   ```
 
 5. Перейдите по адресу [http://localhost:5001](http://localhost:5001).  Щелкните **Принять**, чтобы принять политику конфиденциальности и использования файлов cookie. Это приложение не хранит персональные данные.
 
 6. Откройте *Pages/About.cshtml* и измените страницу, добавив выделенное исправление.
 
-    [!code-cshtml[](sample/getting-started/about.cshtml?highlight=9)]
+   [!code-cshtml[](sample/getting-started/about.cshtml?highlight=9)]
 
 7. Перейдите к [http://localhost:5001/About](http://localhost:5001/About) и проверьте, отобразились ли изменения.
 
@@ -85,22 +89,22 @@ ms.locfileid: "39228586"
 
    Откройте командную оболочку. Введите следующую команду:
 
-    ```console
-    dotnet new razor -o aspnetcoreapp
-    ```
+   ```console
+   dotnet new razor -o aspnetcoreapp
+   ```
 
 3. Запустите приложение с помощью следующих команд:
 
-    ```console
-    cd aspnetcoreapp
-    dotnet run
-    ```
+   ```console
+   cd aspnetcoreapp
+   dotnet run
+   ```
 
 4. Перейдите по адресу [http://localhost:5000](http://localhost:5000).
 
 5. Откройте файл *Pages/About.cshtml* и измените страницу, чтобы на ней отображалось сообщение "Hello, world! Время на сервере — @DateTime.Now" :
 
-    [!code-cshtml[](sample/getting-started/about.cshtml?highlight=9&range=1-9)]
+   [!code-cshtml[](sample/getting-started/about.cshtml?highlight=9&range=1-9)]
 
 6. Перейдите к [http://localhost:5000/About](http://localhost:5000/About) и проверьте изменения.
 
@@ -137,9 +141,9 @@ ms.locfileid: "39228586"
 
 5. Восстановите пакеты.
 
-    ```console
-    dotnet restore
-    ```
+   ```console
+   dotnet restore
+   ```
 
 6. Запустите приложение.
 
@@ -152,4 +156,5 @@ ms.locfileid: "39228586"
 7. Перейдите по адресу `http://localhost:5000`.
 
 [!INCLUDE [next steps](~/includes/getting-started/next-steps.md)]
+
 ::: moniker-end

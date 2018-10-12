@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2018
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: 1833b5bb77b199bb5fd0257e9f33b4d6f0c23ec5
-ms.sourcegitcommit: 8268cc67beb1bb1ca470abb0e28b15a7a71b8204
+ms.openlocfilehash: a03250d6cafe7279c3fcf3957d33214a9b4ed514
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44126739"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523055"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки
 
@@ -121,6 +121,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 ```
 
 ::: moniker range=">= aspnetcore-2.1"
+
 | Параметр | Описание: |
 | ------ | ----------- |
 | AllowedHosts | Ограничивает узлы в заголовке `X-Forwarded-Host` списком указанных значений.<ul><li>Значения сравниваются по порядковым номерам без учета регистра.</li><li>Номера портов указывать не нужно.</li><li>Если список пуст, разрешены все узлы.</li><li>Подстановочный знак верхнего уровня `*` разрешает все непустые значения узлов.</li><li>Подстановочные знаки поддоменов допускаются, но не могут указывать на корневой домен. Например, `*.contoso.com` соответствует поддомену `foo.contoso.com`, но не корневому домену `contoso.com`.</li><li>Имена узлов в Юникоде разрешены, но для сопоставления они преобразуются в [Punycode](https://tools.ietf.org/html/rfc3492).</li><li>[IPv6-адреса](https://tools.ietf.org/html/rfc4291) должны включать ограничивающие квадратные скобки и иметь [стандартный формат](https://tools.ietf.org/html/rfc4291#section-2.2) (например, `[ABCD:EF01:2345:6789:ABCD:EF01:2345:6789]`). IPv6-адреса не приводятся к специальным правилам регистра для логического соответствия разных форматов, и к ним не применяется канонизация.</li><li>Если список разрешенных узлов не будет ограничен, злоумышленник сможет подделать ссылки, создаваемые службой.</li></ul>Значение по умолчанию — пустая строка [IList\<string>](/dotnet/api/system.collections.generic.ilist-1). |
@@ -129,14 +130,17 @@ services.Configure<ForwardedHeadersOptions>(options =>
 | [ForwardedHostHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedhostheadername) | Заголовок, заданный этим свойством, используется вместо заголовка, указанного в параметре [ForwardedHeadersDefaults.XForwardedHostHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xforwardedhostheadername). Этот параметр применяется в случае, если для перенаправления данных прокси-сервер или сервер пересылки не используют заголовок `X-Forwarded-Host`, а используют другой заголовок.<br><br>Значение по умолчанию — `X-Forwarded-Host`. |
 | [ForwardedProtoHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedprotoheadername) | Заголовок, заданный этим свойством, используется вместо заголовка, указанного в параметре [ForwardedHeadersDefaults.XForwardedProtoHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xforwardedprotoheadername). Этот параметр применяется в случае, если для перенаправления данных прокси-сервер или сервер пересылки не используют заголовок `X-Forwarded-Proto`, а используют другой заголовок.<br><br>Значение по умолчанию — `X-Forwarded-Proto`. |
 | [ForwardLimit](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardlimit) | Ограничивает количество записей в обрабатываемых заголовках. Установите значение `null`, чтобы отключить это ограничение, но только в том случае, если настроено свойство `KnownProxies` или `KnownNetworks`.<br><br>Значение по умолчанию — 1. |
-| [KnownNetworks](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.knownnetworks) | Диапазоны адресов известных сетей, от которых можно принимать перенаправленные заголовки. Диапазоны IP-адресов указываются в нотации CIDR.<br><br>Если сервер использует сокеты с двумя режимами, IPv4-адреса указываются в формате IPv6 (например, IPv4-адрес `10.0.0.1` в формате IPv6 выглядит так: `::ffff:10.0.0.1`). Сведения см. в статье о методе [IPAddress.MapToIPv6](xref:System.Net.IPAddress.MapToIPv6*). Определите, нужно ли использовать этот формат, ознакомившись со статьей о свойстве [HttpContext.Connection.RemoteIpAddress](xref:Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress*). Дополнительные сведения см. в разделе [Конфигурация для IPv4-адреса, представленного в формате IPv6](#configuration-for-an-ipv4-address-represented-as-an-ipv6-address).<br><br>Значение по умолчанию — [IList](/dotnet/api/system.collections.generic.ilist-1)\<[IPNetwork](/dotnet/api/microsoft.aspnetcore.httpoverrides.ipnetwork)> с одной записью для `IPAddress.Loopback`. |
+| [KnownNetworks](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.knownnetworks) | Диапазоны адресов известных сетей, от которых можно принимать перенаправленные заголовки. Диапазоны IP-адресов указываются в нотации CIDR.<br><br>Если сервер использует сокеты с двумя режимами, IPv4-адреса указываются в формате IPv6 (например, IPv4-адрес `10.0.0.1` в формате IPv6 выглядит так: `::ffff:10.0.0.1`). См. статью о методе [IPAddress.MapToIPv6](xref:System.Net.IPAddress.MapToIPv6*). Определите, нужно ли использовать этот формат, ознакомившись со статьей о свойстве [HttpContext.Connection.RemoteIpAddress](xref:Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress*). Дополнительные сведения см. в разделе [Конфигурация для IPv4-адреса, представленного в формате IPv6](#configuration-for-an-ipv4-address-represented-as-an-ipv6-address).<br><br>Значение по умолчанию — [IList](/dotnet/api/system.collections.generic.ilist-1)\<[IPNetwork](/dotnet/api/microsoft.aspnetcore.httpoverrides.ipnetwork)> с одной записью для `IPAddress.Loopback`. |
 | [KnownProxies](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.knownproxies) | Адреса известных прокси-серверов, от которых можно принимать перенаправленные заголовки. Используйте `KnownProxies`, чтобы указать точные IP-адреса.<br><br>Если сервер использует сокеты с двумя режимами, IPv4-адреса указываются в формате IPv6 (например, IPv4-адрес `10.0.0.1` в формате IPv6 выглядит так: `::ffff:10.0.0.1`). См. статью о методе [IPAddress.MapToIPv6](xref:System.Net.IPAddress.MapToIPv6*). Определите, нужно ли использовать этот формат, ознакомившись со статьей о свойстве [HttpContext.Connection.RemoteIpAddress](xref:Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress*). Дополнительные сведения см. в разделе [Конфигурация для IPv4-адреса, представленного в формате IPv6](#configuration-for-an-ipv4-address-represented-as-an-ipv6-address).<br><br>Значение по умолчанию — [IList](/dotnet/api/system.collections.generic.ilist-1)\<[IPAddress](/dotnet/api/system.net.ipaddress)> с одной записью для `IPAddress.IPv6Loopback`. |
 | [OriginalForHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.originalforheadername) | Заголовок, заданный этим свойством, используется вместо заголовка, указанного в параметре [ForwardedHeadersDefaults.XOriginalForHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xoriginalforheadername).<br><br>Значение по умолчанию — `X-Original-For`. |
 | [OriginalHostHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.originalhostheadername) | Заголовок, заданный этим свойством, используется вместо заголовка, указанного в параметре [ForwardedHeadersDefaults.XOriginalHostHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xoriginalhostheadername).<br><br>Значение по умолчанию — `X-Original-Host`. |
 | [OriginalProtoHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.originalprotoheadername) | Заголовок, заданный этим свойством, используется вместо заголовка, указанного в параметре [ForwardedHeadersDefaults.XOriginalProtoHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xoriginalprotoheadername).<br><br>Значение по умолчанию — `X-Original-Proto`. |
 | [RequireHeaderSymmetry](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.requireheadersymmetry) | Требует синхронизации некоторых значений заголовков во всех обрабатываемых [ForwardedHeadersOptions.ForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedheaders).<br><br>Значение по умолчанию в ASP.NET Core 1.x — `true`. Значение по умолчанию в ASP.NET Core 2.0 или более поздней версии — `false`. |
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 | Параметр | Описание: |
 | ------ | ----------- |
 | [ForwardedForHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedforheadername) | Заголовок, заданный этим свойством, используется вместо заголовка, указанного в параметре [ForwardedHeadersDefaults.XForwardedForHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xforwardedforheadername). Этот параметр применяется в случае, если для перенаправления данных прокси-сервер или сервер пересылки не используют заголовок `X-Forwarded-For`, а используют другой заголовок.<br><br>Значение по умолчанию — `X-Forwarded-For`. |
@@ -150,6 +154,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 | [OriginalHostHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.originalhostheadername) | Заголовок, заданный этим свойством, используется вместо заголовка, указанного в параметре [ForwardedHeadersDefaults.XOriginalHostHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xoriginalhostheadername).<br><br>Значение по умолчанию — `X-Original-Host`. |
 | [OriginalProtoHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.originalprotoheadername) | Заголовок, заданный этим свойством, используется вместо заголовка, указанного в параметре [ForwardedHeadersDefaults.XOriginalProtoHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xoriginalprotoheadername).<br><br>Значение по умолчанию — `X-Original-Proto`. |
 | [RequireHeaderSymmetry](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.requireheadersymmetry) | Требует синхронизации некоторых значений заголовков во всех обрабатываемых [ForwardedHeadersOptions.ForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedheaders).<br><br>Значение по умолчанию в ASP.NET Core 1.x — `true`. Значение по умолчанию в ASP.NET Core 2.0 или более поздней версии — `false`. |
+
 ::: moniker-end
 
 ## <a name="scenarios-and-use-cases"></a>Сценарии и варианты использования
@@ -244,44 +249,85 @@ services.Configure<ForwardedHeadersOptions>(options =>
 
 ## <a name="troubleshoot"></a>Устранение неполадок
 
-Если заголовки перенаправляются не так, как ожидалось, включите [ведение журнала](xref:fundamentals/logging/index). Если журналы не содержат достаточно информации для устранения неполадок, просмотрите список заголовков в запросе, полученном сервером. Заголовки можно записать в ответ, создаваемый приложением, с помощью встроенного ПО промежуточного слоя:
+Если заголовки перенаправляются не так, как ожидалось, включите [ведение журнала](xref:fundamentals/logging/index). Если журналы не содержат достаточно информации для устранения неполадок, просмотрите список заголовков в запросе, полученном сервером. Используйте встроенное ПО промежуточного слоя для записи заголовков запроса в ответ приложения или для сохранения заголовков в журнал. Поместите любой из следующих примеров кода сразу же после вызова <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> в `Startup.Configure`.
+
+Чтобы записать заголовки в ответ приложения, используйте следующее встроенное ПО промежуточного слоя на терминале:
 
 ```csharp
-public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory)
+app.Run(async (context) =>
 {
-    app.Run(async (context) =>
+    context.Response.ContentType = "text/plain";
+
+    // Request method, scheme, and path
+    await context.Response.WriteAsync(
+        $"Request Method: {context.Request.Method}{Environment.NewLine}");
+    await context.Response.WriteAsync(
+        $"Request Scheme: {context.Request.Scheme}{Environment.NewLine}");
+    await context.Response.WriteAsync(
+        $"Request Path: {context.Request.Path}{Environment.NewLine}");
+
+    // Headers
+    await context.Response.WriteAsync($"Request Headers:{Environment.NewLine}");
+
+    foreach (var header in context.Request.Headers)
     {
-        context.Response.ContentType = "text/plain";
+        await context.Response.WriteAsync($"{header.Key}: " +
+            $"{header.Value}{Environment.NewLine}");
+    }
 
-        // Request method, scheme, and path
-        await context.Response.WriteAsync(
-            $"Request Method: {context.Request.Method}{Environment.NewLine}");
-        await context.Response.WriteAsync(
-            $"Request Scheme: {context.Request.Scheme}{Environment.NewLine}");
-        await context.Response.WriteAsync(
-            $"Request Path: {context.Request.Path}{Environment.NewLine}");
+    await context.Response.WriteAsync(Environment.NewLine);
 
-        // Headers
-        await context.Response.WriteAsync($"Request Headers:{Environment.NewLine}");
-
-        foreach (var header in context.Request.Headers)
-        {
-            await context.Response.WriteAsync($"{header.Key}: " +
-                $"{header.Value}{Environment.NewLine}");
-        }
-
-        await context.Response.WriteAsync(Environment.NewLine);
-
-        // Connection: RemoteIp
-        await context.Response.WriteAsync(
-            $"Request RemoteIp: {context.Connection.RemoteIpAddress}");
-    });
-}
+    // Connection: RemoteIp
+    await context.Response.WriteAsync(
+        $"Request RemoteIp: {context.Connection.RemoteIpAddress}");
+});
 ```
 
-Следите за тем, чтобы полученные сервером заголовки X-Forwarded-* содержали ожидаемые значения. Если в некотором заголовке содержится несколько значений, учитывайте, что ПО промежуточного слоя перенаправления заголовков обрабатывает их в обратном порядке: справа налево.
+Также можно записывать заголовки в журналы, а не в текст ответа, используя следующее встроенное ПО промежуточного слоя. Это позволяет сайту нормально работать во время отладки.
 
-Удаленный IP-адрес исходного запроса должен совпадать с записью в списке `KnownProxies` или `KnownNetworks`, чтобы выполнялась обработка `X-Forwarded-For`. Это позволяет избежать некоторых методов спуфинга, отклоняя запросы от ненадежных прокси-серверов пересылки.
+```csharp
+var logger = _loggerFactory.CreateLogger<Startup>();
+
+app.Use(async (context, next) =>
+{
+    // Request method, scheme, and path
+    logger.LogDebug("Request Method: {METHOD}", context.Request.Method);
+    logger.LogDebug("Request Scheme: {SCHEME}", context.Request.Scheme);
+    logger.LogDebug("Request Path: {PATH}", context.Request.Path);
+
+    // Headers
+    foreach (var header in context.Request.Headers)
+    {
+        logger.LogDebug("Header: {KEY}: {VALUE}", header.Key, header.Value);
+    }
+
+    // Connection: RemoteIp
+    logger.LogDebug("Request RemoteIp: {REMOTE_IP_ADDRESS}", 
+        context.Connection.RemoteIpAddress);
+
+    await next();
+});
+```
+
+После обработки значения `X-Forwarded-{For|Proto|Host}` перемещаются в `X-Original-{For|Proto|Host}`. Если в некотором заголовке содержится несколько значений, учитывайте, что ПО промежуточного слоя перенаправления заголовков обрабатывает их в обратном порядке: справа налево. По умолчанию `ForwardLimit` имеет значение 1 (один), а значит обрабатывается только крайнее правое значение из заголовков, если не увеличить значение `ForwardLimit`.
+
+Удаленный IP-адрес из исходного запроса должен совпадать с записью в списке `KnownProxies` или `KnownNetworks`, чтобы происходила обработка заголовков переадресации. Это позволяет избежать некоторых методов спуфинга, отклоняя запросы от ненадежных прокси-серверов пересылки. В журнале указываются адреса неизвестных обнаруженных прокси-серверов:
+
+```console
+September 20th 2018, 15:49:44.168 Unknown proxy: 10.0.0.100:54321
+```
+
+В приведенном выше примере указан прокси-сервер с адресом 10.0.0.100. Если сервер является доверенным прокси-сервером, добавьте его IP-адрес в `KnownProxies` (или добавьте доверенную сеть в `KnownNetworks`) в файле `Startup.ConfigureServices`. Дополнительные сведения см. в разделе [о параметрах ПО промежуточного слоя перенаправления заголовков](#forwarded-headers-middleware-options).
+
+```csharp
+services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+});
+```
+
+> [!IMPORTANT]
+> Переадресацию заголовков следует разрешить только доверенным прокси-серверам и сетям. В противном случае будут возможны атаки [подмены IP-адресов](https://www.iplocation.net/ip-spoofing).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

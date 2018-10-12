@@ -4,14 +4,14 @@ author: rick-anderson
 description: В статье описывается процедура настройки Nginx как обратного прокси-сервера на Ubuntu 16.04 для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в Kestrel.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/22/2018
+ms.date: 09/08/2018
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: d94640075f6fe5db06672f7dc641470c71076a16
-ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
+ms.openlocfilehash: bf1fb8c0db2afd4e0c6044f3d08c22d619931554
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44040017"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523237"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -118,21 +118,20 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 Если параметр [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) не задан для ПО промежуточного слоя, по умолчанию перенаправляются заголовки `None`.
 
-Для приложений, размещенных за прокси-серверами и подсистемами балансировки нагрузки, может потребоваться дополнительная настройка. Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).
+По умолчанию доверенными считаются только прокси-серверы, работающие на localhost (127.0.0.1, [:: 1]). Если запросы между Интернетом и веб-сервером обрабатывают другие прокси-серверы или сети организации, добавьте их в список <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> или <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> с помощью <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>. Следующий пример добавляет доверенный прокси-сервер с IP-адресом 10.0.0.100 в ПО промежуточного слоя для перенаправления заголовков `KnownProxies` в `Startup.ConfigureServices`:
+
+```csharp
+services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+});
+```
+
+Дополнительные сведения см. в разделе <xref:host-and-deploy/proxy-load-balancer>.
 
 ### <a name="install-nginx"></a>Установка Nginx
 
-Установите Nginx с помощью команды `apt-get`. Программа установки создает сценарий инициализации *systemd*, который запускает Nginx как управляющую программу при запуске системы. 
-
-```bash
-sudo -s
-nginx=stable # use nginx=development for latest development version
-add-apt-repository ppa:nginx/$nginx
-apt-get update
-apt-get install nginx
-```
-
-Ubuntu Personal Package Archive (PPA) обслуживается добровольцами и не распространяется на [nginx.org](https://nginx.org/). Дополнительные сведения см. в разделе [Nginx: двоичные выпуски. Официальные пакеты Debian и Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages).
+Установите Nginx с помощью команды `apt-get`. Программа установки создает сценарий инициализации *systemd*, который запускает Nginx как управляющую программу при запуске системы. Следуйте инструкциям по установке для Ubuntu, которые представлены в [описании официальных пакетов Nginx для Debian и Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages).
 
 > [!NOTE]
 > Если необходимы дополнительные модули Nginx, может потребоваться создание Nginx из источника.
@@ -222,6 +221,7 @@ ExecStart=/usr/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
 Restart=always
 # Restart service after 10 seconds if the dotnet service crashes:
 RestartSec=10
+KillSignal=SIGINT
 SyslogIdentifier=dotnet-example
 User=www-data
 Environment=ASPNETCORE_ENVIRONMENT=Production
@@ -233,26 +233,32 @@ WantedBy=multi-user.target
 
 Если пользователь *www-data* в конфигурации не используется, необходимо сначала создать определенного в примере пользователя, а затем предоставить ему необходимые права владения для файлов.
 
+Используйте `TimeoutStopSec`, чтобы настроить время ожидания до завершения работы приложения после начального сигнала прерывания. Если приложение не завершит работу в течение этого периода, оно прерывается сигналом SIGKILL. Укажите значение в секундах без единиц измерения (например, `150`), значение интервала (например, `2min 30s`) или значение `infinity`, которое отключает время ожидания. По умолчанию `TimeoutStopSec` принимает значение `DefaultTimeoutStopSec` в файле конфигурации диспетчера (*systemd-system.conf*, *system.conf.d*, *systemd-user.conf*, *user.conf.d*). В большинстве дистрибутивов по умолчанию устанавливается время ожидания 90 секунд.
+
+```
+# The default value is 90 seconds for most distributions.
+TimeoutStopSec=90
+```
+
 Linux имеет файловую систему, в которой учитывается регистр символов. Если для параметра ASPNETCORE_ENVIRONMENT установить значение Production, будет выполнен поиск файла конфигурации *appsettings.Production.json*, а не файла *appsettings.production.json*.
 
-> [!NOTE]
-> Некоторые значения (например, строки подключения SQL) необходимо экранировать, чтобы поставщики конфигурации могли читать переменные среды. Используйте следующую команду, чтобы создать правильно экранированное значение для файла конфигурации:
->
-> ```console
-> systemd-escape "<value-to-escape>"
-> ```
+Некоторые значения (например, строки подключения SQL) необходимо экранировать, чтобы поставщики конфигурации могли читать переменные среды. Используйте следующую команду, чтобы создать правильно экранированное значение для файла конфигурации:
+
+```console
+systemd-escape "<value-to-escape>"
+```
 
 Сохраните файл и включите службу.
 
 ```bash
-systemctl enable kestrel-hellomvc.service
+sudo systemctl enable kestrel-hellomvc.service
 ```
 
 Запустите службу и убедитесь, что она работает.
 
 ```
-systemctl start kestrel-hellomvc.service
-systemctl status kestrel-hellomvc.service
+sudo systemctl start kestrel-hellomvc.service
+sudo systemctl status kestrel-hellomvc.service
 
 ● kestrel-hellomvc.service - Example .NET Web API App running on Ubuntu
     Loaded: loaded (/etc/systemd/system/kestrel-hellomvc.service; enabled)

@@ -5,12 +5,12 @@ description: Узнайте, как работают фильтры и как и
 ms.author: riande
 ms.date: 08/15/2018
 uid: mvc/controllers/filters
-ms.openlocfilehash: 6b3d5446b1c9aafc02d4c31ad57a234f16513e3f
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: e20d934a17337d404249220d703ac4bb7164dfa6
+ms.sourcegitcommit: 9bdba90b2c97a4016188434657194b2d7027d6e3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751508"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47402163"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -231,6 +231,8 @@ System.InvalidOperationException: No service for type
 В приведенном ниже примере показано, как передавать аргументы в тип с помощью `TypeFilterAttribute`.
 
 [!code-csharp[](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_TypeFilter&highlight=1,2)]
+
+### <a name="ifilterfactory-implemented-on-your-attribute"></a>Интерфейс IFilterFactory, реализованный в атрибуте
 
 Если у вас есть фильтр, который:
 

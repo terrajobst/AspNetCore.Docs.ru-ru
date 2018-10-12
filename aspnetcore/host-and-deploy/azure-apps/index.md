@@ -1,19 +1,19 @@
 ---
-title: Размещение ASP.NET Core в службе приложений Azure
+title: Развертывание приложений ASP.NET Core в Службе приложений Azure
 author: guardrex
-description: Узнайте, как размещать приложения ASP.NET Core в службе приложений Azure, с помощью ссылок на полезные ресурсы.
+description: Эта статья содержит ссылки на ресурсы по размещению и развертыванию в Azure.
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/29/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: bc2a686c5ddc44fded135c9eed5caf676218773a
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: f2de81af4bd2992aec76a287484d0057021231d8
+ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312074"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47860970"
 ---
-# <a name="host-aspnet-core-on-azure-app-service"></a>Размещение ASP.NET Core в службе приложений Azure
+# <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Развертывание приложений ASP.NET Core в Службе приложений Azure
 
 [Служба приложений Azure](https://azure.microsoft.com/services/app-service/) — это [платформа облачных вычислений Microsoft](https://azure.microsoft.com/), предназначенная для размещения веб-приложений, включая ASP.NET Core.
 
@@ -32,13 +32,10 @@ ms.locfileid: "43312074"
 [Опубликовать в Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs)  
 Сведения о публикации приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio.
 
-[Публикация в Azure с инструментами командной строки](xref:tutorials/publish-to-azure-webapp-using-cli)  
-Сведения о публикации приложения ASP.NET Core в службе приложений Azure с помощью клиента командной строки Git.
-
 [Непрерывное развертывание в Azure с помощью Visual Studio и Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment)  
 Сведения о создании веб-приложения ASP.NET Core с помощью Visual Studio и его развертывании в службе приложений Azure с использованием Git для непрерывного развертывания.
 
-[Непрерывное развертывание в Azure с помощью VSTS](https://www.visualstudio.com/docs/build/aspnet/core/quick-to-azure)  
+[Создание первого конвейера с помощью Azure Pipelines](/azure/devops/pipelines/get-started-yaml)  
 Сведения о настройке сборки CI для приложения ASP.NET Core и последующем создании выпуска непрерывного развертывания в службе приложений Azure.
 
 [Песочница веб-приложений Azure](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  

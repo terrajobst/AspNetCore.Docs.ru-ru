@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: e27253e3f02fa808136494ed5373059ef6e0df0d
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 6144bfb9e731ace51b4f23870fdb06519fd4a9ea
+ms.sourcegitcommit: 599ebae5c2d6fcb22dfa6ae7d1f4bdfcacb79af4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011598"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47211030"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Добавление проверки на страницу Razor в ASP.NET Core
 
@@ -160,7 +160,7 @@ public DateTime ReleaseDate { get; set; }
 
 ### <a name="publish-to-azure"></a>Публикация в Azure
 
-Дополнительные сведения о публикации этого приложения в Azure см. в руководстве по [публикации веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs).
+Сведения о развертывании в Azure см. в статье [Руководство. Создание приложения ASP.NET в Azure с подключением к базе данных SQL](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase). Инструкция приведена для приложения ASP.NET, а не ASP.NET Core, но шаги совпадают.
 
 Благодарим вас за изучение общих сведений о страницах Razor. Мы благодарны за ваш отзыв! Отличным дополнением к этому руководству является руководство по [началу работы с Razor Pages и EF Core](xref:data/ef-rp/intro).
 

@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/12/2018
 uid: razor-pages/index
-ms.openlocfilehash: f5549a24c5b5fe2e6b33bd55960f87a8bf86bd19
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: f55d0e534dafb0709f1411bad9b038a87abde7ab
+ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41870884"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46523315"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -41,8 +41,6 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 Из командной строки выполните команду `dotnet new webapp`.
 
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
-
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
@@ -59,8 +57,6 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 Из командной строки выполните команду `dotnet new webapp`.
 
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
-
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
@@ -74,8 +70,6 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 ::: moniker range=">= aspnetcore-2.1"
 
 Из командной строки выполните команду `dotnet new webapp`.
-
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
 
 ::: moniker-end
 
@@ -376,6 +370,8 @@ Pages работает со всеми функциями подсистемы �
 
 [Начальный проект Razor Pages](#rpvs17) содержит файл *Pages/_ValidationScriptsPartial.cshtml*, который подключает проверку на стороне клиента.
 
+Дополнительные сведения о частичных представлениях см. в <xref:mvc/views/partial>.
+
 <a name="url_gen"></a>
 
 ## <a name="url-generation-for-pages"></a>Формирование URL-адресов для страниц
@@ -417,6 +413,7 @@ Pages работает со всеми функциями подсистемы �
 Привязка относительных имен полезна при создании сайтов со сложной структурой. Если для связи между страницами в определенной папке используются относительные имена, эту папку можно переименовать. При этом все ссылки останутся рабочими (так как не включают имя папки).
 
 ::: moniker range=">= aspnetcore-2.1"
+
 ## <a name="viewdata-attribute"></a>Атрибут ViewData
 
 Данные могут передаваться на страницу с помощью атрибута [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute). Свойства на контроллерах или моделях страниц Razor, отмеченные атрибутом `[ViewData]`, обладают своими собственными значениями, загружаемыми из [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary).
@@ -450,6 +447,7 @@ public class AboutModel : PageModel
     <title>@ViewData["Title"] - WebApplication</title>
     ...
 ```
+
 ::: moniker-end
 
 ## <a name="tempdata"></a>TempData
@@ -558,11 +556,12 @@ services.AddMvc()
     .WithRazorPagesRoot("/path/to/razor/pages");
 ```
 
-## <a name="see-also"></a>См. также
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Введение в ASP.NET Core](xref:index)
-* [Синтаксис Razor](xref:mvc/views/razor)
-* [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
-* [Соглашения об авторизации Razor Pages](xref:security/authorization/razor-pages-authorization)
-* [Пользовательские поставщики моделей маршрутов и страниц Razor Pages](xref:razor-pages/razor-pages-conventions)
-* [Модульные тесты страниц Razor](xref:test/razor-pages-tests)
+* <xref:index>
+* <xref:mvc/views/razor>
+* <xref:tutorials/razor-pages/razor-pages-start>
+* <xref:security/authorization/razor-pages-authorization>
+* <xref:razor-pages/razor-pages-conventions>
+* <xref:test/razor-pages-tests>
+* <xref:mvc/views/partial>

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/14/2016
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 3470d9278574a95115b14f25b90a0a93bb3b8a67
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 5ae8ce01610828417fc76ed6626e518c8493bd0f
+ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751700"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44340203"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Непрерывное развертывание ASP.NET Core в Azure с помощью Visual Studio и Git
 
@@ -21,7 +21,7 @@ ms.locfileid: "41751700"
 
 В этом руководстве показано, как создать веб-приложение ASP.NET Core с помощью Visual Studio и развернуть его из Visual Studio в службе приложений Azure, используя непрерывное развертывание.
 
-См. также статью [Использование VSTS для сборки и публикации в веб-приложении Azure с помощью непрерывного развертывания](/vsts/build-release/archive/apps/aspnet/aspnet-4-ci-cd-azure-automatic), в которой показано, как настроить рабочий процесс непрерывной поставки для [службы приложений Azure](/azure/app-service/app-service-web-overview) с помощью Visual Studio Team Services. Непрерывная поставка Azure в Team Services упрощает настройку надежного конвейера развертывания с целью публикации обновлений для приложений, размещенных в Службе приложений Azure. Этот конвейер можно настроить на портале Azure для сборки, выполнения тестов, развертывания в промежуточном слоте и последующего развертывания в рабочей среде.
+См. также статью [Create your first pipeline](/azure/devops/pipelines/get-started-yaml) (Создание первого конвейера), в которой объяснятеся, как настроить рабочий процесс непрерывной поставки (CD) для [Службы приложений Azure](/azure/app-service/app-service-web-overview) с помощью служб Azure DevOps. Azure Pipelines (служба, входящая в пакет Azure DevOps Services) упрощает настройку надежного конвейера развертывания с целью публикации обновлений для приложений, размещенных в Службе приложений Azure. Этот конвейер можно настроить на портале Azure для сборки, выполнения тестов, развертывания в промежуточном слоте и последующего развертывания в рабочей среде.
 
 > [!NOTE]
 > Для работы с этим руководством требуется учетная запись Microsoft Azure. Чтобы получить учетную запись, [активируйте преимущества подписчика MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A261C142F) или [зарегистрируйтесь для получения бесплатной версии](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -228,5 +228,5 @@ Git — это распределенная система управления 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Use VSTS to Build and Publish to an Azure Web App with Continuous Deployment](/vsts/build-release/archive/apps/aspnet/aspnet-4-ci-cd-azure-automatic) (Использование VSTS для сборки и публикации в веб-приложении Azure с помощью непрерывного развертывания)
+* [Создание первого конвейера с помощью Azure Pipelines](/azure/devops/pipelines/get-started-yaml)
 * [Проект Kudu](https://github.com/projectkudu/kudu/wiki)
