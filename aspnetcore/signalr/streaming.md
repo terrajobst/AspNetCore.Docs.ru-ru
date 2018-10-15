@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/07/2018
 uid: signalr/streaming
-ms.openlocfilehash: 0001eed830249ac46ba35331759187bb4e7e8fd3
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 3ae9b83d60019eaa3196f35645bf9b4b03f6d8c6
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095266"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325644"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>Использовать потоковую передачу в ASP.NET Core SignalR
 
@@ -62,7 +62,7 @@ Console.WriteLine("Streaming completed");
 
 [!code-javascript[Streaming javascript](streaming/sample/wwwroot/js/stream.js?range=19-36)]
 
-Чтобы завершить поток, из этого клиентского вызова `dispose` метод `ISubscription` , возвращаемый методом `subscribe` метод.
+Чтобы завершить поток, из клиента, вызовите `dispose` метод `ISubscription` , возвращаемый методом `subscribe` метод.
 
 ## <a name="related-resources"></a>Связанные ресурсы
 

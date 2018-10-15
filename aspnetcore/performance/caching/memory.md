@@ -1,17 +1,17 @@
 ---
 title: Кэш в памяти в ASP.NET Core
 author: rick-anderson
-description: Узнайте, как кэширование данных в памяти в ASP.NET Core.
+description: Узнайте, как кэшировать данные в памяти в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/15/2018
 uid: performance/caching/memory
-ms.openlocfilehash: 2570ad7d939d67530b3de8cd0147815c2e25ecc8
-ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
+ms.openlocfilehash: 960aa18f9d14f633118ccd716201e61464085c05
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46482987"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325930"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэш в памяти в ASP.NET Core
 
@@ -27,7 +27,11 @@ ASP.NET Core поддерживает несколько разных кэшах
 
 Non прикрепленные сеансы на веб-ферме требуется [распределенный кеш](distributed.md) во избежание проблем с согласованностью кэша. Для некоторых приложений распределенного кэша может поддерживать более горизонтальное масштабирование, чем кэш, расположенный в памяти. С помощью распределенного кэша разгружает кэш-памяти во внешний процесс.
 
+::: moniker range="< aspnetcore-2.0"
+
 `IMemoryCache` Кэша вытеснит записей кэша при недостатке свободной памяти, если не [кэшировать приоритет](/dotnet/api/microsoft.extensions.caching.memory.cacheitempriority) присваивается `CacheItemPriority.NeverRemove`. Можно задать `CacheItemPriority` изменять приоритет, с которым кэша исключает элементы при недостатке свободной памяти.
+
+::: moniker-end
 
 Кэш в памяти можно хранить любой объект; интерфейс распределенного кэша ограничен `byte[]`.
 

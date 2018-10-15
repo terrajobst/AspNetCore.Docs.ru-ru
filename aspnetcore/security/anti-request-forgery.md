@@ -4,14 +4,14 @@ author: steve-smith
 description: Узнайте, как предотвратить атаки, направленные на веб-приложений, где вредоносный сайт может влиять на взаимодействие между клиентским браузером и приложения.
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/19/2018
+ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: 6a30e1e2321ca3a81d6e1a320d1d87dddb3033c7
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 213d6d09501b5428bdaad454ec487702ef2a02a6
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095792"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325917"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Предотвращения межсайтовых (запросов XSRF/CSRF) атак с подделкой в ASP.NET Core
 
@@ -179,6 +179,31 @@ ASP.NET Core включает в себя три [фильтры](xref:mvc/contr
 
 Настройка [против подделки параметры](/dotnet/api/Microsoft.AspNetCore.Antiforgery.AntiforgeryOptions) в `Startup.ConfigureServices`:
 
+::: moniker range=">= aspnetcore-2.0"
+
+```csharp
+services.AddAntiforgery(options => 
+{
+    // Set Cookie properties using CookieBuilder properties†.
+    options.FormFieldName = "AntiforgeryFieldname";
+    options.HeaderName = "X-CSRF-TOKEN-HEADERNAME";
+    options.SuppressXFrameOptionsHeader = false;
+});
+```
+
+&dagger;Задайте защиты от подделки `Cookie` свойства с помощью свойства [CookieBuilder](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder) класса.
+
+| Параметр | Описание |
+| ------ | ----------- |
+| [Файл cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания против подделки файлы cookie. |
+| [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Имя скрытого поля формы используемые против подделки системой для подготовки к просмотру против подделки токенов в представлениях. |
+| [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Имя заголовка, используемый системой против подделки. Если `null`, то система рассматривает только данные формы. |
+| [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Указывает, следует ли подавлять поколение `X-Frame-Options` заголовка. По умолчанию заголовок создается со значением «SAMEORIGIN». По умолчанию — `false`. |
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
 ```csharp
 services.AddAntiforgery(options => 
 {
@@ -192,7 +217,7 @@ services.AddAntiforgery(options =>
 });
 ```
 
-| Параметр | Описание: |
+| Параметр | Описание |
 | ------ | ----------- |
 | [Файл cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Определяет параметры, используемые для создания против подделки файлы cookie. |
 | [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Домен cookie. По умолчанию — `null`. Это свойство является устаревшим и будет удален в будущей версии. Рекомендуемой альтернативой является Cookie.Domain. |
@@ -202,6 +227,8 @@ services.AddAntiforgery(options =>
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Имя заголовка, используемый системой против подделки. Если `null`, то система рассматривает только данные формы. |
 | [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Указывает, требуется ли SSL против подделки системой. Если `true`, происходит сбой запросов без SSL. По умолчанию — `false`. Это свойство является устаревшим и будет удален в будущей версии. Рекомендуемой альтернативой является установка Cookie.SecurePolicy. |
 | [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Указывает, следует ли подавлять поколение `X-Frame-Options` заголовка. По умолчанию заголовок создается со значением «SAMEORIGIN». По умолчанию — `false`. |
+
+::: moniker-end
 
 Дополнительные сведения см. в разделе [CookieAuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.CookieAuthenticationOptions).
 

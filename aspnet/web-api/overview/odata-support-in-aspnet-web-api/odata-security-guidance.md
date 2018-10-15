@@ -8,12 +8,12 @@ ms.date: 02/06/2013
 ms.assetid: b91e6424-1544-4747-bd0b-d1f8418c9653
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-security-guidance
 msc.type: authoredcontent
-ms.openlocfilehash: 2a5b776a81cb3e3cf809dd3c4229448988086a32
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 4ba53e15dab83368097a58ba4d0d2e46d113d1d2
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829636"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325722"
 ---
 <a name="security-guidance-for-aspnet-web-api-2-odata"></a>Руководство по безопасности для веб-API 2 ASP.NET OData
 ====================
@@ -59,7 +59,7 @@ ms.locfileid: "41829636"
 - Рекомендуется отключить функции any() и all(), так как они могут выполняться медленно. 
 
     [!code-csharp[Main](odata-security-guidance/samples/sample7.cs)]
-- Если любые свойства строки содержат больших строк & #8212for пример, описание продукта или запись в блоге & #8212consider отключение строковые функции. 
+- Если любые свойства строки содержат больших строк&#8212;к примеру, описание продукта или запись в блоге&#8212;рекомендуется отключить строковые функции. 
 
     [!code-csharp[Main](odata-security-guidance/samples/sample8.cs)]
 - Рассмотрите возможность запрета, фильтрация по свойствам навигации. Фильтрация по свойствам навигации может привести соединение, которое может быть медленным, в зависимости от схемы базы данных. В следующем коде показано запроса проверяющий элемент управления, не позволяющая фильтрация по свойствам навигации. Дополнительные сведения о запросе проверяющие элементы управления, см. в разделе [Проверка запроса](supporting-odata-query-options.md#query-validation). 
