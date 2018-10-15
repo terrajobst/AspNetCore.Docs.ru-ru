@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/01/2018
 uid: fundamentals/file-providers
-ms.openlocfilehash: 512229cfe7d7efdcd9050fa13dbdbf793be29a0b
-ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
+ms.openlocfilehash: a0d326f5fc995cb903380315879d39a8ce851d06
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39410160"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913220"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Поставщики файлов в ASP.NET Core
 
@@ -141,7 +141,7 @@ var physicalProvider = _env.ContentRootFileProvider;
 [ManifestEmbeddedFileProvider](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider) используется для доступа к файлам, внедренным в сборки. `ManifestEmbeddedFileProvider` использует манифест, скомпилированный в сборку, для воссоздания исходных путей для внедренных файлов.
 
 > [!NOTE]
-> `ManifestEmbeddedFileProvider` доступно в ASP.NET Core 2.1 и более поздних версий. Чтобы получить доступ к файлам, внедренным в сборки, из ASP.NET Core 2.0 или более ранних версий см. в [версии этой статьи для ASP.NET Core 1.x](xref:fundamentals/file-providers?view=aspnetcore-1.1).
+> `ManifestEmbeddedFileProvider` доступно в ASP.NET Core 2.1 и более поздних версий. Чтобы получить доступ к файлам, внедренным в сборки, из ASP.NET Core 2.0 или более ранних версий см. в [версии этой статьи для ASP.NET Core 1.x](/aspnet/core/fundamentals/file-providers?view=aspnetcore-1.1).
 
 Чтобы создать манифест для внедренных файлов, задайте для свойства `<GenerateEmbeddedFilesManifest>` значение `true`. Выберите файлы для внедрения с помощью [&lt;EmbeddedResource&gt;](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects):
 
