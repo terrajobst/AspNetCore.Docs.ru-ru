@@ -4,14 +4,14 @@ author: guardrex
 description: Узнайте, как использовать соглашения поставщика модели маршрутов и приложений для управления маршрутизацией, обнаружением и обработкой страниц.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 09/17/2018
+ms.date: 10/12/2018
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: ea4f785dc8a64b430e312fd122a4d3184b61949e
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 13fd6c156afd5ab62739b09296a929120ce3450f
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011866"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348537"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>Соглашения для маршрутов и приложений Razor Pages в ASP.NET Core
 
@@ -87,13 +87,13 @@ public void ConfigureServices(IServiceCollection services)
 
 По возможности избегайте в зависимости от установленного маршрута обработки заказа. Как правило Маршрутизация выбирает соответствующий маршрут с соответствующими URL-адрес. Если необходимо задать маршрут `Order` свойства для маршрутизации запросов правильно, маршрутизации схему приложения, вероятно, заблуждение клиентов и уязвимости для поддержания. Поиск для упрощения маршрутизации схемы приложения. Пример приложения требуется явный маршрут обработки заказа, чтобы продемонстрировать несколько сценариев маршрутизации, с помощью одного приложения. Тем не менее, стоит пытаться избежать практика параметр маршрута `Order` в рабочих приложениях.
 
-Razor Pages маршрутизации и маршрутизации ресурса контроллера MVC реализацию. Информация на порядок маршрута в разделах MVC доступна на [Маршрутизация к действиям контроллера: упорядочение маршрутов на основе атрибутов](xref:mvc/controllers/routing#ordering-attribute-routes).
+Средства маршрутизации в Razor Pages и контроллере MVC имеют общую реализацию. Информация на порядок маршрута в разделах MVC доступна на [Маршрутизация к действиям контроллера: упорядочение маршрутов на основе атрибутов](xref:mvc/controllers/routing#ordering-attribute-routes).
 
 ## <a name="model-conventions"></a>Соглашения для моделей
 
 Добавьте делегат для [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention), чтобы добавить [соглашения для модели](xref:mvc/controllers/application-model#conventions), применяемые к Razor Pages.
 
-**Добавление соглашения для модели маршрутов ко всем страницам**
+### <a name="add-a-route-model-convention-to-all-pages"></a>Добавление соглашения для модели маршрутов ко всем страницам
 
 Используйте свойство [Conventions](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions), чтобы создать и добавить [IPageRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageroutemodelconvention) в коллекцию экземпляров [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention), которые применяются при формировании модели маршрутов страниц.
 
@@ -117,7 +117,7 @@ Razor Pages маршрутизации и маршрутизации ресур�
 
 ![Запрос страницы About с сегментом маршрута GlobalRouteValue. Отображенная страница показывает, что значение данных маршрута получено в методе OnGet страницы.](razor-pages-conventions/_static/about-page-global-template.png)
 
-**Добавление соглашения для модели приложений ко всем страницам**
+### <a name="add-an-app-model-convention-to-all-pages"></a>Добавить соглашение для модели приложений ко всем страницам
 
 Используйте свойство [Conventions](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions), чтобы создать и добавить [IPageApplicationModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageapplicationmodelconvention) в коллекцию экземпляров [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention), которые применяются при формировании модели приложения страницы.
 
@@ -137,12 +137,12 @@ Razor Pages маршрутизации и маршрутизации ресур�
 
 ::: moniker range=">= aspnetcore-2.1"
 
-**Добавление соглашения для модели обработчика ко всем страницам**
+### <a name="add-a-handler-model-convention-to-all-pages"></a>Добавление обработчика модели соглашение ко всем страницам
 
 Используйте свойство [Conventions](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions), чтобы создать и добавить [IPageHandlerModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipagehandlermodelconvention) в коллекцию экземпляров [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention), которые применяются при формировании модели обработчика страницы.
 
 ```csharp
-public class GlobalPageHandlerModelConvention 
+public class GlobalPageHandlerModelConvention
     : IPageHandlerModelConvention
 {
     public void Apply(PageHandlerModel model)
@@ -168,7 +168,7 @@ services.AddMvc()
 
 Поставщик модели маршрутов по умолчанию, который является производным от [IPageRouteModelProvider](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageroutemodelprovider), использует соглашения, создающие точки расширения для настройки маршрутов страниц.
 
-**Соглашение для модели маршрутов папки**
+### <a name="folder-route-model-convention"></a>Соглашение для модели маршрутов папки
 
 Используйте метод [AddFolderRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection.addfolderroutemodelconvention), чтобы создать и добавить интерфейс [IPageRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageroutemodelconvention), вызывающий действие в классе [PageRouteModel](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageroutemodel) для всех страниц в указанной папке.
 
@@ -184,7 +184,7 @@ services.AddMvc()
 
 ![Страница Page1 в папке OtherPages запрашивается с сегментом маршрута GlobalRouteValue и OtherPagesRouteValue. Отображенная страница показывает, что значения данных маршрута получены в методе OnGet страницы.](razor-pages-conventions/_static/otherpages-page1-global-and-otherpages-templates.png)
 
-**Соглашение для модели маршрутов страницы**
+### <a name="page-route-model-convention"></a>Соглашение для модели маршрутов страницы
 
 Используйте метод [AddPageRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection.addpageroutemodelconvention), чтобы создать и добавить интерфейс [IPageRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageroutemodelconvention), вызывающий действие в классе [PageRouteModel](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageroutemodel) для страницы с указанным именем.
 
@@ -199,6 +199,44 @@ services.AddMvc()
 Запросите страницу About по адресу `localhost:5000/About/GlobalRouteValue/AboutRouteValue` из примера и проверьте результат:
 
 ![Страница About запрашивается с сегментами маршрута для GlobalRouteValue и AboutRouteValue. Отображенная страница показывает, что значения данных маршрута получены в методе OnGet страницы.](razor-pages-conventions/_static/about-page-global-and-about-templates.png)
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="use-a-parameter-transformer-to-customize-page-routes"></a>Использовать параметр преобразователя для настройки маршрутов страниц
+
+Страница маршруты, созданный ASP.NET Core можно настроить, используя параметр преобразователя. Реализует преобразователь параметр `IOutboundParameterTransformer` и преобразует значения параметров. Например, пользовательский `SlugifyParameterTransformer` изменения параметров transformer `SubscriptionManagement` значение маршрута `subscription-management`.
+
+`PageRouteTransformerConvention` Соглашение для модели маршрутов страницы применяется параметр преобразователя от сегментов имени файлов и папок автоматически созданные маршруты в приложении. Например, файл страницы Razor Pages в */Pages/SubscriptionManagement/ViewAll.cshtml* бы маршрута из переписать `/SubscriptionManagement/ViewAll` для `/subscription-management/view-all`.
+
+`PageRouteTransformerConvention` только преобразует автоматически созданный сегменты маршрута страницы, полученные из папки Razor Pages и имя файла. Он не преобразует сегментами маршрута, добавленные с помощью `@page` директива. Соглашение также не преобразует маршруты, добавленные с <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>.
+
+`PageRouteTransformerConvention` Зарегистрирован в качестве параметра в `Startup.ConfigureServices`:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc()
+        .AddRazorPagesOptions(options =>
+            {
+                options.Conventions.Add(
+                    new PageRouteTransformerConvention(
+                        new SlugifyParameterTransformer()));
+            });
+}
+
+public class SlugifyParameterTransformer : IOutboundParameterTransformer
+{
+    public string TransformOutbound(object value)
+    {
+        if (value == null) { return null; }
+
+        // Slugify value
+        return Regex.Replace(value.ToString(), "([a-z])([A-Z])", "$1-$2").ToLower();
+    }
+}
+```
+
+::: moniker-end
 
 ## <a name="configure-a-page-route"></a>Настройка маршрута страницы
 
