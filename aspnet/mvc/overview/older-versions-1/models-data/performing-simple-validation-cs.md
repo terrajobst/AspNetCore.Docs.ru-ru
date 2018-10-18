@@ -8,12 +8,12 @@ ms.date: 03/02/2009
 ms.assetid: 21383c9d-6aea-4bad-a99b-b5f2c9d6503f
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/performing-simple-validation-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 14d7857c64268df3b998e05797f749f03509dd4b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 8ee1d892cd58534c2b64455efed01aa8c2dfdcce
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836012"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391182"
 ---
 <a name="performing-simple-validation-c"></a>Выполнение простой проверки (C#)
 ====================
@@ -90,7 +90,7 @@ ms.locfileid: "41836012"
 
 - входные данные —-ошибка проверки — применяется к &lt;ввода&gt; к просмотру Html.TextBox() вспомогательной функцией тега.
 - поле--Ошибка проверки — применяется к &lt;span&gt; к просмотру Html.ValidationMessage() вспомогательной функцией тега.
-- Сводка ошибки проверки - применяется к &lt;ul&gt; к просмотру Html.ValidationSumamry() вспомогательной функцией тега.
+- Сводка ошибки проверки - применяется к &lt;ul&gt; к просмотру Html.ValidationSummary() вспомогательной функцией тега.
 
 Можно изменить эти каскадные таблицы стилей классы стилей и таким образом изменить внешний вид ошибки проверки, изменив файл Site.css, расположенный в папке Content.
 

@@ -5,14 +5,14 @@ description: Узнайте, как использовать поставщик 
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/01/2018
+ms.date: 10/17/2018
 uid: security/key-vault-configuration
-ms.openlocfilehash: 933f4fb1f2c1c412d318af5974cc9653805242ca
-ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
+ms.openlocfilehash: 474824cccdc63bb3dc3978ed68cf4c89cec12ad5
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2018
-ms.locfileid: "42927991"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391146"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Поставщик конфигурации Azure Key Vault в ASP.NET Core
 
@@ -32,7 +32,7 @@ ms.locfileid: "42927991"
 
 Поставщик добавляется в конфигурацию приложения с `AddAzureKeyVault` расширения. В образце приложения, расширение использует три значения конфигурации, загруженного из *appsettings.json* файла.
 
-| Параметр приложения    | Описание:                    | Пример                                      |
+| Параметр приложения    | Описание                    | Пример                                      |
 | -------------- | ------------------------------ | -------------------------------------------- |
 | `Vault`        | Имя хранилища ключей Azure           | contosovault                                 |
 | `ClientId`     | Идентификатор приложения Azure Active Directory  | 627e911e-43cc-61d4-992e-12db9c81b413         |
@@ -62,6 +62,48 @@ ms.locfileid: "42927991"
 При запуске приложения, веб-страницы показывает загруженные значения секрета:
 
 ![Окно браузера с значения секретов, загруженном с помощью конфигурации Azure Key Vault Provider](key-vault-configuration/_static/sample1.png)
+
+## <a name="bind-an-array-to-a-class"></a>Привязка массива к классу
+
+Поставщик способный считывать значения конфигурации в массив для привязки к массиву POCO.
+
+При чтении из источника конфигурации, который позволяет ключи содержат двоеточия (`:`) разделители, числового ключа сегмента используется для различения ключи, составляющие массив (`:0:`, `:1:`,... `:{n}:`). Дополнительные сведения см. в разделе [конфигурации: привязка массива к классу](xref:fundamentals/configuration/index#bind-an-array-to-a-class).
+
+Azure Key Vault ключи нельзя использовать двоеточие в качестве разделителя. Подход, описанный в этом разделе используются двойные тире (`--`) как разделитель для значений иерархической (разделов). Массив ключи хранятся в хранилище ключей Azure с double штрихов и числовых ключей сегментов (`--0--`, `--1--`,... `--{n}--`).
+
+Рассмотрим следующую [Serilog](https://serilog.net/) конфигурация поставщика, предоставляемые JSON-файл журнала. Существуют два объектных литералов, определенные в `WriteTo` массива, который отражает две Serilog *приемников*, описывающих назначения для выходных данных ведения журнала:
+
+```json
+"Serilog": {
+  "WriteTo": [
+    {
+      "Name": "AzureTableStorage",
+      "Args": {
+        "storageTableName": "logs",
+        "connectionString": "DefaultEnd...ountKey=Eby8...GMGw=="
+      }
+    },
+    {
+      "Name": "AzureDocumentDB",
+      "Args": {
+        "endpointUrl": "https://contoso.documents.azure.com:443",
+        "authorizationKey": "Eby8...GMGw=="
+      }
+    }
+  ]
+}
+```
+
+Конфигурации, представленной выше JSON-файл хранится в хранилище ключей Azure с помощью двойной штрих (`--`) нотации и числовые сегменты:
+
+| Ключ | Значение |
+| --- | ----- |
+| `Serilog--WriteTo--0--Name` | `AzureTableStorage` |
+| `Serilog--WriteTo--0--Args--storageTableName` | `logs` |
+| `Serilog--WriteTo--0--Args--connectionString` | `DefaultEnd...ountKey=Eby8...GMGw==` |
+| `Serilog--WriteTo--1--Name` | `AzureDocumentDB` |
+| `Serilog--WriteTo--1--Args--endpointUrl` | `https://contoso.documents.azure.com:443` |
+| `Serilog--WriteTo--1--Args--authorizationKey` | `Eby8...GMGw==` |
 
 ## <a name="create-prefixed-key-vault-secrets-and-load-configuration-values-key-name-prefix-sample"></a>Создание секретов с префиксом хранилища ключей и загрузить значения конфигурации (ключ имя префикс sample)
 

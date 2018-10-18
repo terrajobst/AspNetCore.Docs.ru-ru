@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 09/06/2018
 uid: signalr/configuration
-ms.openlocfilehash: 72fc53cad7caf55e85d0668c9dbea1a70fc8674b
-ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
+ms.openlocfilehash: 855446003ae9d994854d4d8bb7d0f542a22734e4
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46292340"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391106"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>Конфигурация ASP.NET Core SignalR
 
@@ -120,7 +120,7 @@ services.AddSignalR().AddHubOptions<MyHub>(options =>
 
 ### <a name="configure-logging"></a>Настройка ведения журнала
 
-Настроить ведение журнала с помощью клиента .NET `ConfigureLogging` метод. Ведение журнала, поставщики и фильтры могут быть зарегистрированы в так же как при работе на сервере. См. в разделе [ведения журналов в ASP.NET Core](xref:fundamentals/logging/index#how-to-add-providers) Дополнительные сведения см.
+Настроить ведение журнала с помощью клиента .NET `ConfigureLogging` метод. Ведение журнала, поставщики и фильтры могут быть зарегистрированы в так же как при работе на сервере. См. в разделе [ведения журналов в ASP.NET Core](xref:fundamentals/logging/index) Дополнительные сведения см.
 
 > [!NOTE]
 > Чтобы зарегистрировать поставщики ведения журналов, необходимо установить необходимые пакеты. См. в разделе [встроенные поставщики ведения журналов](xref:fundamentals/logging/index#built-in-logging-providers) разделе документы с полным списком.
