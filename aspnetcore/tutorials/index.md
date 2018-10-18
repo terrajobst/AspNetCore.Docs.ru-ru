@@ -5,12 +5,12 @@ description: Список пошаговых руководств для изу�
 ms.author: riande
 ms.date: 10/14/2017
 uid: tutorials/index
-ms.openlocfilehash: 3d2fbb453c8f6510806d8dc263ea344023aa4cda
-ms.sourcegitcommit: 32f5ee0690604d451f61e9a5c28881c9fcf85738
+ms.openlocfilehash: c7c17da1bc5fdc2f8e451ad11ebd8b42d1723a31
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/29/2018
-ms.locfileid: "47454795"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391080"
 ---
 # <a name="aspnet-core-tutorials"></a>Учебники по ASP.NET Core
 
@@ -73,7 +73,6 @@ ms.locfileid: "47454795"
 * [Использование Gulp](xref:client-side/using-gulp)
 * [Использование Grunt](xref:client-side/using-grunt)
 * [Управление клиентскими пакетами с помощью Bower](xref:client-side/bower)
-* [Создание адаптивных веб-сайтов с помощью Bootstrap](xref:client-side/bootstrap)
 
 ## <a name="test"></a>Проверка
 
