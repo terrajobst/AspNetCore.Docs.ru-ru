@@ -1,18 +1,18 @@
 ---
 title: По промежуточного слоя в ASP.NET Core кэширования ответов
 author: guardrex
-description: Узнайте, как настроить и использовать по промежуточного слоя, кэширование ответов в ASP.NET Core.
+description: Узнайте, как настроить и использовать ПО промежуточного слоя для кэширование ответов в ASP.NET Core.
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/26/2017
 uid: performance/caching/middleware
-ms.openlocfilehash: f4e5a414b92e3ca65e19188ebd2bfaef6f32fee7
-ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
+ms.openlocfilehash: d991bc48ed07ee71b0decaa0bee4df811fdc74c4
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43893094"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477531"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>По промежуточного слоя в ASP.NET Core кэширования ответов
 
@@ -159,7 +159,7 @@ if (responseCachingFeature != null)
 * [ПО промежуточного слоя](xref:fundamentals/middleware/index)
 * [Кэш в памяти](xref:performance/caching/memory)
 * [Работа с распределенным кэшем](xref:performance/caching/distributed)
-* [Обнаружение изменений с помощью маркеров изменений](xref:fundamentals/primitives/change-tokens)
+* [Обнаружение изменений с помощью маркеров изменений](xref:fundamentals/change-tokens)
 * [Кэширование ответов](xref:performance/caching/response)
 * [Вспомогательная функция тега кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
 * [Вспомогательная функция тега распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

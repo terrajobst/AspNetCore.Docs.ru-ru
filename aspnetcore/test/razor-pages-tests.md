@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/27/2017
 uid: test/razor-pages-tests
-ms.openlocfilehash: 364c4c0fd75954f1c7e0bfbc221938afe5332bde
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 924908a92eea23fd2dc81a3809e74760d9295e4f
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838616"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477414"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>Тестирование страниц Razor в ASP.NET Core
 
@@ -34,7 +34,7 @@ ASP.NET Core поддерживает модульные тесты прилож
 
 Пример проекта состоит из двух приложений:
 
-| Приложение         | Папка проекта                        | Описание: |
+| Приложение         | Папка проекта                        | Описание |
 | ----------- | ------------------------------------- | ----------- |
 | Сообщение приложения | *src/RazorPagesTestSample*            | Позволяет пользователю добавить, удалить один, удалить все и анализ сообщений. |
 | Тестирование приложения    | *tests/RazorPagesTestSample.Tests*    | Используется для сообщения приложения модульного теста: доступа к данным уровня (DAL) и модель страницы индекса. |
@@ -57,13 +57,13 @@ dotnet test
 
 &#8224;В разделе EF [теста с помощью InMemory](/ef/core/miscellaneous/testing/in-memory), объясняется, как использовать базу данных в памяти для тестов с использованием MSTest. В этом разделе используется [xUnit](https://xunit.github.io/) платформы тестирования. Концепциях тестирования и тестирования реализации различных тестовых платформ доступны, но не идентичен.
 
-Несмотря на то, что приложение не использует [шаблон репозитория](xref:fundamentals/repository-pattern) и не эффективный пример [шаблон единицы работы (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages поддерживает эти шаблоны разработки. Дополнительные сведения см. в разделе [проектирование уровня сохраняемости инфраструктуры](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design), <xref:fundamentals/repository-pattern>, и [тестирование логики контроллера](/aspnet/core/mvc/controllers/testing) (этот пример реализует шаблон репозитория).
+Несмотря на то, что приложение не использует шаблон репозитория и не эффективный пример [шаблон единицы работы (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages поддерживает эти шаблоны разработки. Дополнительные сведения см. в разделе [проектирование уровня сохраняемости инфраструктуры](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) и [тестирование логики контроллера](/aspnet/core/mvc/controllers/testing) (этот пример реализует шаблон репозитория).
 
 ## <a name="test-app-organization"></a>Тестирование приложений организации
 
 Тестирование приложения — это консольное приложение внутри *tests/RazorPagesTestSample.Tests* папки.
 
-| Папка тестового приложения | Описание: |
+| Папка тестового приложения | Описание |
 | --------------- | ----------- |
 | *UnitTests*     | <ul><li>*DataAccessLayerTest.cs* содержит модульные тесты для DAL.</li><li>*IndexPageTests.cs* содержит модульные тесты для модели страницы индекса.</li></ul> |
 | *Служебные программы*     | Содержит `TestingDbContextOptions` метод, используемый для создания новой базы данных параметры контекста для каждого модульного теста DAL, таким образом, чтобы база данных будет переведена в состояние базовых показателей для каждого теста. |
