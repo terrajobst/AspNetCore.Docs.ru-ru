@@ -1,4 +1,4 @@
-[Visual Studio 2017 версии 15.7.3 или более поздней](https://www.microsoft.com/net/download/windows) со следующими рабочими нагрузками
+[Visual Studio 2017 версии 15.7.3 или более поздней](https://visualstudio.microsoft.com/downloads/) со следующими рабочими нагрузками
 
 * **ASP.NET и веб-разработка**
 * **Кроссплатформенная разработка .NET Core**

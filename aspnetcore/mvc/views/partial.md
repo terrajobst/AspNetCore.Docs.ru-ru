@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/11/2018
 uid: mvc/views/partial
-ms.openlocfilehash: a836ed073dfe769fc3cc0cd0622b17937747928b
-ms.sourcegitcommit: 70fb7c9d5f2ddfcf4747382a9f7159feca7a6aa7
+ms.openlocfilehash: d3d2f55645881dd05f7663e0a9d3e45d6bb6d77f
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45601760"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477687"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Частичные представления в ASP.NET Core
 
@@ -44,7 +44,7 @@ ms.locfileid: "45601760"
 
 ## <a name="declare-partial-views"></a>Объявление частичных представлений
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.0"
 
 Частичное представление — это файл разметки *.cshtml*, размещенный в папке *Views* (в модели MVC) или *Pages* (в модели Razor Pages).
 
@@ -52,11 +52,11 @@ ms.locfileid: "45601760"
 
 В отличие от представления MVC и отображения страниц, частичное представление не выполняет файл *_ViewStart.cshtml*. Дополнительные сведения о файле *_ViewStart.cshtml*, см. здесь: <xref:mvc/views/layout>.
 
-Имена файлов частичного представления обычно начинаются с символа подчеркивания (`_`). Это соглашение об именовании не является обязательным требованием, но помогает отличать частичные представления от обычных представлений и страниц. Если имя файла начинается со знака подчеркивания, Razor Pages не обрабатывает файл разметки как страницу Razor Pages, даже если эта разметка включает директиву `@page`.
+Имена файлов частичного представления обычно начинаются с символа подчеркивания (`_`). Это соглашение об именовании не является обязательным требованием, но помогает отличать частичные представления от обычных представлений и страниц.
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-2.1"
+::: moniker range="< aspnetcore-2.0"
 
 Частичное представление — это файл разметки *.cshtml*, размещенный в папке *Views*.
 
@@ -130,7 +130,7 @@ ms.locfileid: "45601760"
 <partial name="../Account/_PartialName.cshtml" />
 ```
 
-Дополнительные сведения см. в разделе <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
+Для получения дополнительной информации см. <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
 
 ::: moniker-end
 

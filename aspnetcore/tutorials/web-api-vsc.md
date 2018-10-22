@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/30/2018
 uid: tutorials/web-api-vsc
-ms.openlocfilehash: 4ce808ec4241ab2fc3c2fb81c3fdb15dd853cd90
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: b8e5c8b7d3dc04513997997d903295853dd1ff46
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342280"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348433"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio-code"></a>Создание веб-API с помощью ASP.NET Core и Visual Studio Code
 
@@ -29,9 +29,11 @@ ms.locfileid: "39342280"
 
 [!INCLUDE[template files](../includes/webApi/intro.md)]
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>Необходимые компоненты
 
 [!INCLUDE[prerequisites](~/includes/net-core-prereqs-vscode.md)]
+
+Советы по использованию VS Code см. в [справке по Visual Studio Code](#visual-studio-code-help).
 
 ## <a name="create-the-project"></a>Создание проекта
 
@@ -57,13 +59,13 @@ code TodoApi
 ["value1","value2"]
 ```
 
-Советы по использованию VS Code см. в [справке по Visual Studio Code](#visual-studio-code-help).
+
 
 ## <a name="add-support-for-entity-framework-core"></a>Добавление поддержки для Entity Framework Core
 
 :::moniker range=">= aspnetcore-2.1"
 
-При создании проекта в ASP.NET Core 2.1 или более поздней версии в файл *TodoApi.csproj* добавляется ссылка на пакет [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App). Добавьте атрибут `Version`, если он еще не задан.
+При создании проекта в ASP.NET Core 2.1 или более поздней версии в файл *TodoApi.csproj* добавляется ссылка на пакет [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App):
 
 [!code-xml[](first-web-api/samples/2.1/TodoApi/TodoApi.csproj?name=snippet_Metapackage&highlight=2)]
 
