@@ -5,16 +5,16 @@ description: Узнайте, как использовать клиент ASP.NE
 monikerRange: '>= aspnetcore-2.2'
 ms.author: mimengis
 ms.custom: mvc
-ms.date: 09/06/2018
+ms.date: 10/18/2018
 uid: signalr/java-client
-ms.openlocfilehash: 0eba59a05ea6fd3fed46fcab86ac20caf40ebb65
-ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
+ms.openlocfilehash: 77ea338f08b1986e69ba8ef1578c4cfe01a310de
+ms.sourcegitcommit: ce6b6792c650708e92cdea051a5d166c0708c7c0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46482922"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49652310"
 ---
-# <a name="aspnet-core-signalr-java-client"></a>Клиент SignalR Java ASP.NET Core
+# <a name="aspnet-core-signalr-java-client"></a>ASP.NET Core SignalR Java-клиент
 
 По [Майкл Mengistu](https://twitter.com/MikaelM_12)
 
@@ -26,12 +26,13 @@ ms.locfileid: "46482922"
 
 ## <a name="install-the-signalr-java-client-package"></a>Установка пакета клиента SignalR Java
 
-*Signalr-0.1.0-имеет предварительную версию 2-35174* JAR-файл позволяет клиентам подключаться к концентраторов SignalR. Чтобы найти номер последней версии файла JAR-ФАЙЛ, см. в разделе [результаты поиска Maven](https://search.maven.org/search?q=g:com.microsoft.aspnet%20AND%20a:signalr&core=gav).
+*Signalr 1.0.0-preview3 35501* JAR-файл позволяет клиентам подключаться к концентраторов SignalR. Чтобы найти номер последней версии файла JAR-ФАЙЛ, см. в разделе [результаты поиска Maven](https://search.maven.org/search?q=g:com.microsoft.signalr%20AND%20a:signalr).
 
 Если с помощью Gradle, добавьте следующую строку для `dependencies` часть вашей *build.gradle* файла:
 
 ```gradle
-implementation 'com.microsoft.aspnet:signalr:0.1.0-preview2-35174'
+implementation 'com.microsoft.signalr:signalr:1.0.0-preview3-35501'
+implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
 ```
 
 Если с помощью Maven, добавьте следующие строки внутри `<dependencies>` элемент вашей *pom.xml* файла:
@@ -42,29 +43,45 @@ implementation 'com.microsoft.aspnet:signalr:0.1.0-preview2-35174'
 
 Чтобы установить эту `HubConnection`, `HubConnectionBuilder` следует использовать. Уровень концентратора URL-адрес и журнала можно настроить при создании подключения. Настройте любые необходимые параметры при вызовах `HubConnectionBuilder` методы перед `build`. Установить подключение с `start`.
 
-[!code-java[Build hub connection](java-client/sample/src/main/java/Chat.java?range=17-20)]
+[!code-java[Build hub connection](java-client/sample/src/main/java/Chat.java?range=16-17)]
 
 ## <a name="call-hub-methods-from-client"></a>Вызов методов концентратора из клиента
 
 Вызов `send` вызывающая метод концентратора. Передайте имя метода концентратора и все аргументы, заданные в методе концентратора, чтобы `send`.
 
-[!code-java[send method](java-client/sample/src/main/java/Chat.java?range=31)]
+[!code-java[send method](java-client/sample/src/main/java/Chat.java?range=28)]
 
 ## <a name="call-client-methods-from-hub"></a>Вызывать методы клиента от концентратора
 
 Используйте `hubConnection.on` для определения методов на стороне клиента, который может вызывать концентратора. Определите методы после сборки, но прежде чем выполнять подключение.
 
-[!code-java[Define client methods](java-client/sample/src/main/java/Chat.java?range=22-24)]
+[!code-java[Define client methods](java-client/sample/src/main/java/Chat.java?range=19-21)]
+
+## <a name="add-logging"></a>Добавление ведения журнала
+
+Клиент SignalR Java использует [SLF4J](https://www.slf4j.org/) библиотеки для ведения журнала. Это API высокого уровня ведения журнала, который позволяет пользователям библиотеки выбрал свою собственную реализацию определенного ведения журнала, Собрав воедино в зависимость от конкретных ведения журнала. В следующем фрагменте кода показано, как использовать `java.util.logging` с клиентом SignalR Java.
+
+```gradle
+implementation 'org.slf4j:slf4j-jdk14:1.7.25'
+```
+
+Если не настроить ведение журнала в зависимости, SLF4J загружает средство ведения журнала по умолчанию без операции с следующее предупреждающее сообщение:
+
+```
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+```
+
+Это можно игнорировать.
 
 ## <a name="known-limitations"></a>Известные ограничения
 
-Это ранняя Предварительная версия клиента Java. Существует множество функций, которые пока не поддерживаются. Следующие пропусков которой вы работаете в будущие выпуски:
+Это предварительная версия клиента Java. Некоторые функции не поддерживаются:
 
-* Только типы-примитивы могут быть приняты в качестве параметров и возвращаемых типов.
-* API-интерфейсы являются синхронными.
-* В настоящее время поддерживается только тип вызова «Отправить». «Вызов» и потоковую передачу возвращаемых значений, не поддерживаются.
 * Поддерживается только протокол JSON.
 * Поддерживается только транспорт WebSockets.
+* Потоковая передача еще не поддерживается.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
