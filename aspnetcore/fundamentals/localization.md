@@ -5,12 +5,12 @@ description: Сведения о службах и ПО промежуточно
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 6e8c4723ab0105b8c756221d3e3c5eebba6cc4e2
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 375d09d9bef59cf18b7805cbefe500aeb2e0cde7
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912042"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326008"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -206,9 +206,9 @@ using Microsoft.Extensions.Localization;
 
 ### <a name="configure-localization"></a>Настройка локализации
 
-Локализация настраивается в методе `ConfigureServices`:
+Локализация настраивается в методе `Startup.ConfigureServices`:
 
-[!code-csharp[](localization/sample/Localization/Program.cs?name=snippet1)]
+[!code-csharp[](localization/sample/Localization/Startup.cs?name=snippet1)]
 
 * Метод `AddLocalization` добавляет службы локализации в контейнер служб. В приведенном выше коде также задается путь к ресурсам "Resources".
 
@@ -218,9 +218,9 @@ using Microsoft.Extensions.Localization;
 
 ### <a name="localization-middleware"></a>Промежуточный слой локализации
 
-Текущий язык и региональные параметры в запросе задаются в [промежуточном слое](xref:fundamentals/middleware/index) локализации. Промежуточный слой локализации включается в методе `Configure`. Промежуточный слой локализации должен настраиваться перед другими промежуточными слоями, которые могут проверять язык и региональные параметры запроса (например, `app.UseMvcWithDefaultRoute()`).
+Текущий язык и региональные параметры в запросе задаются в [промежуточном слое](xref:fundamentals/middleware/index) локализации. Промежуточный слой локализации включается в методе `Startup.Configure`. Промежуточный слой локализации должен настраиваться перед другими промежуточными слоями, которые могут проверять язык и региональные параметры запроса (например, `app.UseMvcWithDefaultRoute()`).
 
-[!code-csharp[](localization/sample/Localization/Program.cs?name=snippet2)]
+[!code-csharp[](localization/sample/Localization/Startup.cs?name=snippet2)]
 
 `UseRequestLocalization` инициализирует объект `RequestLocalizationOptions`. При каждом запросе проверяется список поставщиков `RequestCultureProvider` в объекте `RequestLocalizationOptions` и используется первый поставщик, который может успешно определить язык и региональные параметры запроса. Поставщики по умолчанию берутся из класса `RequestLocalizationOptions`:
 

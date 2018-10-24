@@ -5,12 +5,12 @@ description: Введение в ASP.NET Core — кроссплатформе�
 ms.author: riande
 ms.date: 9/28/2018
 uid: index
-ms.openlocfilehash: 69ab702e9d9f8d746b7bc546d4f2bbb831ff59c7
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 3bb86fa255548ff66592ac14c1020e0c6b47959c
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911707"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391161"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -43,7 +43,7 @@ ASP.NET Core MVC предоставляет функции, которые по�
 
 ## <a name="client-side-development"></a>Клиентская разработка
 
-ASP.NET Core легко интегрируется с распространенными клиентскими платформами и библиотеками, в том числе [Angular](xref:spa/angular), [React](xref:spa/react) и [Bootstrap](xref:client-side/bootstrap). Дополнительные сведения см. в разделе о [клиентской разработке](xref:client-side/index).
+ASP.NET Core легко интегрируется с распространенными клиентскими платформами и библиотеками, в том числе [Angular](xref:spa/angular), [React](xref:spa/react) и [Bootstrap](https://getbootstrap.com/). Дополнительные сведения см. в разделе о [клиентской разработке](xref:client-side/index).
 
 <a name="target-framework"></a>
 
