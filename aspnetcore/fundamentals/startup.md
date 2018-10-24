@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
 uid: fundamentals/startup
-ms.openlocfilehash: 923d17be9c2bb1a9d338599d1cdc4c34302cddab
-ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
+ms.openlocfilehash: 392dc83666bc6b9012adc6c32169ae7bdc7ed8d7
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44040099"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391119"
 ---
 # <a name="application-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
@@ -52,7 +52,7 @@ ms.locfileid: "44040099"
 
 Метод [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices):
 
-* Optional
+* Необязательный
 * Вызывается веб-узлом перед методом `Configure` для настройки служб приложения.
 * По соглашению используется для задания [параметров конфигурации](xref:fundamentals/configuration/index).
 
@@ -62,11 +62,11 @@ ms.locfileid: "44040099"
 
 Веб-узел может настраивать некоторые службы перед вызовом методов `Startup`. Дополнительные сведения см. в разделе о [размещении в ASP.NET Core](xref:fundamentals/host/index).
 
-Для функций, нуждающихся в значительной настройке, существуют методы расширения `Add[Service]` в [IServiceCollection](/dotnet/api/Microsoft.Extensions.DependencyInjection.IServiceCollection). Обычное веб-приложение регистрирует службы для Entity Framework, удостоверения и MVC:
+Для функций, нуждающихся в значительной настройке, существуют методы расширения `Add[Service]` в [IServiceCollection](/dotnet/api/Microsoft.Extensions.DependencyInjection.IServiceCollection). Обычное приложение ASP.NET Core регистрирует службы для Entity Framework, удостоверения и MVC:
 
 [!code-csharp[](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
 
-## <a name="the-configure-method"></a>Метод Configure 
+## <a name="the-configure-method"></a>Метод конфигурации
 
 Метод [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) используется для указания того, как приложение реагирует на HTTP-запросы. Конвейер запросов настраивается путем добавления компонентов [ПО промежуточного слоя](xref:fundamentals/middleware/index) в экземпляр [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder). `IApplicationBuilder` доступен для метода `Configure`, но он не зарегистрирован в контейнере службы. При размещении создается `IApplicationBuilder` и передается непосредственно в `Configure`.
 

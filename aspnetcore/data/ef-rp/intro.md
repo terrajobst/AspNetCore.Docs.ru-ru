@@ -5,12 +5,12 @@ description: Сведения о том, как создать приложен�
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/intro
-ms.openlocfilehash: 89002f7b4a5af17a9404b14822086c7a9a6ec265
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: f714934a2ef804813290ae0c04432470a2ba5816
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011464"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477570"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages с Entity Framework Core в ASP.NET Core: учебник 1 из 8
 
@@ -26,7 +26,7 @@ ms.locfileid: "46011464"
 
 [Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Указания по скачиванию](xref:tutorials/index#how-to-download-a-sample).
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>Необходимые компоненты
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -151,7 +151,7 @@ EF Core воспринимает свойство как внешний ключ
 
 В этом разделе формируется шаблон для модели Student. То есть средство формирования шаблонов создает страницы для операций создания, чтения, обновления и удаления для модели Student.
 
-* Выполните построение проекта.
+* Выполните сборку проекта.
 * Создайте папку *Pages/Students*.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
@@ -187,7 +187,7 @@ dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Models.Sc
 * *Pages/Students* Create, Delete, Details, Edit, Index.
 * *Data/SchoolContext.cs*.
 
-### <a name="files-updates"></a>Обновленные файлы
+### <a name="file-updates"></a>Обновления файла
 
 * *Startup.cs*. Изменения в этом файле подробно описываются в следующем разделе.
 * *appsettings.json*. Добавляется строка подключения, используемая для подключения к локальной базе данных.

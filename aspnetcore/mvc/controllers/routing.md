@@ -5,12 +5,12 @@ description: Узнайте, как в MVC ASP.NET Core используется
 ms.author: riande
 ms.date: 09/17/2018
 uid: mvc/controllers/routing
-ms.openlocfilehash: d66c2f14adf55dd0c4a7c3adfad7e5737e4deda1
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 2f6328a5efaa96fd8e4f0cafdbde77dd63a1548f
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011657"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477648"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Маршрутизация к действиям контроллера в ASP.NET Core
 
@@ -383,7 +383,7 @@ public class HomeController : Controller
 
 ## <a name="token-replacement-in-route-templates-controller-action-area"></a>Замена токенов в шаблонах маршрутов ([controller], [action], [area])
 
-Для удобства маршрута на основе атрибутов поддерживают *замену токенов* путем заключения токена в квадратные скобки (`[`, `]`). Токены `[action]`, `[area]` и `[controller]` будут заменяться значениями имени действия, имени области и имени контроллера из действия, в котором определен маршрут. В этом примере действия могут соответствовать путям URL-адресов, как описано в комментариях:
+Для удобства маршрута на основе атрибутов поддерживают *замену токенов* путем заключения токена в квадратные скобки (`[`, `]`). Токены `[action]`, `[area]` и `[controller]` заменяются значениями имени действия, имени области и имени контроллера из действия, в котором определен маршрут. В следующем примере действия могут соответствовать путям URL-адресов, как описано в комментариях:
 
 [!code-csharp[](routing/sample/main/Controllers/ProductsController.cs?range=7-11,13-17,20-22)]
 
@@ -407,9 +407,56 @@ public class ProductsController : MyBaseController
 }
 ```
 
-Замена токенов также применяется к именам маршрутов, определенным в маршрутах на основе атрибутов. `[Route("[controller]/[action]", Name="[controller]_[action]")]` будет создавать уникальное имя маршрута для каждого действия.
+Замена токенов также применяется к именам маршрутов, определенным в маршрутах на основе атрибутов. `[Route("[controller]/[action]", Name="[controller]_[action]")]` создает уникальное имя маршрута для каждого действия.
 
 Для сопоставления с литеральным разделителем замены токенов `[` или `]` его следует экранировать путем повтора символа (`[[` или `]]`).
+
+::: moniker range=">= aspnetcore-2.2"
+
+<a name="routing-token-replacement-transformers-ref-label"></a>
+
+### <a name="use-a-parameter-transformer-to-customize-token-replacement"></a>Использование преобразователя параметров для настройки замены токенов
+
+Замену токенов можно настроить, используя преобразователь параметров. Преобразователь параметров реализует `IOutboundParameterTransformer` и преобразует значения параметров. Например, пользовательский преобразователь параметра `SlugifyParameterTransformer` изменяет значение маршрута `SubscriptionManagement` на `subscription-management`.
+
+`RouteTokenTransformerConvention` является соглашением для модели приложения, которое:
+
+* Применяет преобразователь параметров ко всем маршрутам атрибута в приложении.
+* Настраивает значения токена маршрут атрибута при замене.
+
+```csharp
+public class SubscriptionManagementController : Controller
+{
+    [HttpGet("[controller]/[action]")] // Matches '/subscription-management/list-all'
+    public IActionResult ListAll() { ... }
+}
+```
+
+`RouteTokenTransformerConvention` регистрируется в качестве параметра в `ConfigureServices`.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc(options =>
+    {
+        options.Conventions.Add(new RouteTokenTransformerConvention(
+                                     new SlugifyParameterTransformer()));
+    });
+}
+
+public class SlugifyParameterTransformer : IOutboundParameterTransformer
+{
+    public string TransformOutbound(object value)
+    {
+        if (value == null) { return null; }
+
+        // Slugify value
+        return Regex.Replace(value.ToString(), "([a-z])([A-Z])", "$1-$2").ToLower();
+    }
+}
+```
+
+::: moniker-end
 
 <a name="routing-multiple-routes-ref-label"></a>
 
@@ -510,6 +557,10 @@ public class MyApiControllerAttribute : Attribute, IRouteTemplateProvider
 
 > [!NOTE]
 > Два типа систем маршрутизации отличает процесс, выполняемый после нахождения URL-адреса, соответствующего шаблону маршрута. При маршрутизации на основе соглашений значения маршрута из соответствия используются для выбора действия и контроллера из таблицы подстановки, содержащей все действия с маршрутизацией на основе соглашений. При маршрутизации с помощью атрибутов каждый шаблон уже связан с действием, и дальнейшая подстановка не требуется.
+
+## <a name="complex-segments"></a>Сложные сегменты
+
+Сложные сегменты (например, `[Route("/dog{token}cat")]`) обрабатываются путем "нежадного" сопоставления литералов справа налево. Описание см. в [исходном коде](https://github.com/aspnet/Routing/blob/9cea167cfac36cf034dbb780e3f783114ef94780/src/Microsoft.AspNetCore.Routing/Patterns/RoutePatternMatcher.cs#L296). Дополнительные сведения см. в [этой проблеме](https://github.com/aspnet/Docs/issues/8197).
 
 <a name="routing-url-gen-ref-label"></a>
 

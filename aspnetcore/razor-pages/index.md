@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/12/2018
 uid: razor-pages/index
-ms.openlocfilehash: f55d0e534dafb0709f1411bad9b038a87abde7ab
-ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
+ms.openlocfilehash: 7bd597acedade65f2be53f4f50a436981e576b1f
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46523315"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326125"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -23,7 +23,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 Этот документ содержит вводные сведения о Razor Pages. Это не пошаговое руководство. Если некоторые разделы покажутся вам слишком сложными, см. [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start). Общие сведения об ASP.NET Core см. в разделе [Введение в ASP.NET Core](xref:index).
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>Необходимые компоненты
 
 [!INCLUDE [](~/includes/net-core-prereqs.md)]
 
@@ -112,7 +112,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 | */Pages/Store/Contact.cshtml* | `/Store/Contact` |
 | */Pages/Store/Index.cshtml* | `/Store` или `/Store/Index` |
 
-Примечания.
+Примечания:
 
 * Среда выполнения по умолчанию ищет файлы Razor Pages в папке *Pages*.
 * Если в URL-адресе не указана конкретная страница, по умолчанию открывается страница `Index`.
@@ -246,7 +246,9 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 ## <a name="manage-head-requests-with-the-onget-handler"></a>Управление запросами HEAD с помощью обработчика OnGet
 
-Обработчик HEAD обычно создается и вызывается для выполнения запросов HEAD:
+Запросы HEAD позволяют получать заголовки для определенного ресурса. В отличие от запросов GET запросы HEAD не возвращают текст ответа. 
+
+Обработчик HEAD обычно создается и вызывается для выполнения запросов HEAD: 
 
 ```csharp
 public void OnHead()
@@ -255,12 +257,14 @@ public void OnHead()
 }
 ```
 
-Если обработчик HEAD (`OnHead`) не определен, Razor Pages выполнит вызов обработчика страниц GET (`OnGet`) в ASP.NET Core 2.1 или более поздней версии. Вы можете явно выбрать такое поведение с помощью [метода SetCompatibilityVersion](xref:mvc/compatibility-version) в `Startup.Configure` ASP.NET Core 2.1–2.x:
+Если обработчик HEAD (`OnHead`) не определен, Razor Pages выполнит вызов обработчика страниц GET (`OnGet`) в ASP.NET Core 2.1 или более поздней версии. В ASP.NET Core 2.1 и 2.2 такая ситуация возникает при использовании [SetCompatibilityVersion](xref:mvc/compatibility-version) в `Startup.Configure`:
 
 ```csharp
 services.AddMvc()
     .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 ```
+
+Шаблоны по умолчанию создают вызов `SetCompatibilityVersion` в ASP.NET Core 2.1 и 2.2.
 
 `SetCompatibilityVersion` задает для параметра `AllowMappingHeadRequestsToGetHandler` Razor Pages значение `true`.
 

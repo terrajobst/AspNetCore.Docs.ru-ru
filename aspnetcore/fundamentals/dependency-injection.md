@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/02/2018
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 50986eeb4c5c8b06c739ee9f860665b877853d78
-ms.sourcegitcommit: 517bb1366da2a28b0014e384fa379755c21b47d8
+ms.openlocfilehash: 33fae5d87029c8b3afdc321e0247555c1e479d07
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47230195"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912622"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
@@ -540,11 +540,11 @@ public void ConfigureServices(IServiceCollection services)
 
 При работе с внедрением зависимостей соблюдайте следующие рекомендации:
 
-* Не храните данные и конфигурацию непосредственно в контейнере служб. Например, обычно не следует добавлять корзину пользователя в контейнер служб. Конфигурация должна использовать [шаблон параметров](xref:fundamentals/configuration/options). Аналогичным образом, избегайте объектов "хранения данных", которые служат лишь для доступа к некоторому другому объекту. По возможности лучше запросить фактический элемент через внедрение зависимостей.
+* Не храните данные и конфигурацию непосредственно в контейнере служб. Например, обычно не следует добавлять корзину пользователя в контейнер служб. Конфигурация должна использовать [шаблон параметров](xref:fundamentals/configuration/options). Аналогичным образом, избегайте объектов "хранения данных", которые служат лишь для доступа к некоторому другому объекту. Лучше запросить фактический элемент через внедрение зависимостей.
 
 * Не используйте статический доступ к службам (например, не используйте везде [IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices)).
 
-* Не используйте шаблон обнаружения службы (например, [IServiceProvider.GetService](/dotnet/api/system.iserviceprovider.getservice)).
+* Старайтесь не использовать *схему указателя служб*. Например, не вызывайте <xref:System.IServiceProvider.GetService*> для получения экземпляра службы, когда можно использовать внедрение зависимостей. Другой вариант указателя службы, позволяющий избежать этого, — внедрение фабрики, которая разрешает зависимости во время выполнения. Оба метода смешивают стратегии [инверсии управления](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion).
 
 * Не используйте статический доступ к `HttpContext` (например, [IHttpContextAccessor.HttpContext](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor.httpcontext)).
 

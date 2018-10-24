@@ -5,12 +5,12 @@ description: Из этого руководства вы узнаете, как 
 ms.author: riande
 ms.date: 11/05/2017
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: f57853fae7fb1cb7df130f38a6996c87a5c08e83
-ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
+ms.openlocfilehash: e23b8bb870b329bd705fbc9548df62524303893e
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46523289"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912329"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Razor Pages с EF Core в ASP.NET Core — чтение связанных данных — 6 из 8
 
@@ -51,7 +51,7 @@ ms.locfileid: "46523289"
 
   ![Пример явной загрузки](read-related-data/_static/explicit-loading.png)
 
-* [Отложенная загрузка](https://docs.microsoft.com/ef/core/querying/related-data#lazy-loading). [Сейчас EF Core не поддерживает отложенную загрузку](https://github.com/aspnet/EntityFrameworkCore/issues/3797). При первом чтении сущности связанные данные не извлекаются. При первом обращении к свойству навигации необходимые для этого свойства данные извлекаются автоматически. Запрос к базе данных отправляется при каждом первом обращении к свойству навигации.
+* [Отложенная загрузка](https://docs.microsoft.com/ef/core/querying/related-data#lazy-loading). [В EF Core версии 2.1 добавлена отложенная загрузка](/ef/core/querying/related-data#lazy-loading). При первом чтении сущности связанные данные не извлекаются. При первом обращении к свойству навигации необходимые для этого свойства данные извлекаются автоматически. Запрос к базе данных отправляется при каждом первом обращении к свойству навигации.
 
 * Оператор `Select` загружает только необходимые связанные данные.
 

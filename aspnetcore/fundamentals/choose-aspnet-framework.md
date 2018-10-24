@@ -1,41 +1,45 @@
 ---
-title: Выбор между ASP.NET и ASP.NET Core
+title: Выбор между ASP.NET 4.x и ASP.NET Core
 author: rick-anderson
-description: Как выбрать между ASP.NET и ASP.NET Core.
+description: Что такое ASP.NET Core и ASP.NET 4.x и как выбрать между ними.
 ms.author: riande
-ms.date: 05/11/2018
+ms.date: 09/11/2018
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 6d759c0bc5e5c7d32d6c14786db6ba9fe7a2f1e8
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: f046491e2ec68b6beaad581e2b04e6688a81f2d1
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36297233"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911049"
 ---
-# <a name="choose-between-aspnet-and-aspnet-core"></a>Выбор между ASP.NET и ASP.NET Core
+# <a name="choose-between-aspnet-4x-and-aspnet-core"></a>Выбор между ASP.NET 4.x и ASP.NET Core
 
-Независимо от того, какое веб-приложение вы создаете, ASP.NET предлагает вам решение: от корпоративных веб-приложений, предназначенных для Windows Server, до небольших микрослужб, предназначенных для контейнеров Linux, и все остальное.
+ASP.NET Core является переработанной версией ASP.NET 4.x. В этой статье перечислены различия между ними.
 
 ## <a name="aspnet-core"></a>ASP.NET Core
 
 ASP.NET Core — это кроссплатформенная среда с открытым кодом для создания современных облачных веб-приложений в Windows, macOS или Linux.
 
-## <a name="aspnet"></a>ASP.NET
+[!INCLUDE[](~/includes/benefits.md)]
 
-ASP.NET — это развитая платформа, предоставляющая все необходимые службы для создания серверных веб-приложений корпоративного класса в Windows.
+## <a name="aspnet-4x"></a>ASP.NET 4.x
+
+ASP.NET 4.x — это развитая платформа, предоставляющая необходимые службы для создания серверных веб-приложений корпоративного класса в Windows.
 
 ## <a name="framework-selection"></a>Выбор платформы
 
-Просмотрите следующую таблицу и выберите подходящую платформу.
+В следующей таблице сравниваются ASP.NET Core и ASP.NET 4.x.
 
-| ASP.NET Core | ASP.NET |
+| ASP.NET Core | ASP.NET 4.x |
 |---|---|
 |Предназначена для Windows, macOS или Linux|Предназначена для Windows|
 |[Razor Pages](xref:razor-pages/index) — рекомендуемый метод создания пользовательского веб-интерфейса в ASP.NET Core 2.x. См. также [MVC](xref:mvc/overview), [веб-API](xref:tutorials/first-web-api), и [SignalR](xref:signalr/introduction).|Использование [веб-форм](/aspnet/web-forms), [SignalR](/aspnet/signalr), [MVC](/aspnet/mvc), [веб-API](/aspnet/web-api/), [веб-перехватчиков](/aspnet/webhooks/) или [веб-страниц](/aspnet/web-pages)|
 |Несколько версий для одного компьютера|Одна версия для одного компьютера|
 |Разработка в Visual Studio, [Visual Studio для Mac](https://www.visualstudio.com/vs/visual-studio-mac/) или [Visual Studio Code](https://code.visualstudio.com/) с использованием C# или F#|Разработка с Visual Studio с использованием C#, VB и F#|
-|Более высокая производительность, чем в ASP.NET|Хорошая производительность|
+|Более высокая производительность, чем в ASP.NET 4.x|Хорошая производительность|
 |[Выбор среды выполнения .NET Framework или .NET Core](/dotnet/articles/standard/choosing-core-framework-server)|Использование среды выполнения .NET Framework|
+
+Дополнительные сведения о поддержке ASP.NET Core 2.x на платформе .NET Framework см. в разделе [ASP.NET Core для платформы .NET Framework](xref:index#target-framework).
 
 ## <a name="aspnet-core-scenarios"></a>Сценарии ASP.NET Core
 
@@ -43,14 +47,17 @@ ASP.NET — это развитая платформа, предоставля�
 * [Веб-сайты](xref:tutorials/first-mvc-app/index)
 * [API-интерфейсы](xref:tutorials/first-web-api)
 * [Режим реального времени](xref:signalr/index)
+* [Развертывание приложения ASP.NET Core в Azure](/azure/app-service/app-service-web-get-started-dotnet)
 
-## <a name="aspnet-scenarios"></a>Сценарии ASP.NET
+## <a name="aspnet-4x-scenarios"></a>Сценарии ASP.NET 4.x
 
 * [Веб-сайты](/aspnet/mvc)
 * [API-интерфейсы](/aspnet/web-api)
 * [Режим реального времени](/aspnet/signalr)
+* [Создание веб-приложение ASP.NET 4.x в Azure](/azure/app-service/app-service-web-get-started-dotnet-framework)
 
-## <a name="resources"></a>Ресурсы
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Введение в ASP.NET](/aspnet/overview)
 * [Введение в ASP.NET Core](xref:index)
+* <xref:host-and-deploy/azure-apps/index>

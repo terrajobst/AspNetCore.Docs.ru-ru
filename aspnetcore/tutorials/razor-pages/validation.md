@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 6144bfb9e731ace51b4f23870fdb06519fd4a9ea
-ms.sourcegitcommit: 599ebae5c2d6fcb22dfa6ae7d1f4bdfcacb79af4
+ms.openlocfilehash: cd958b9c084de4b3e12784774544610873a519f9
+ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47211030"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48045527"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Добавление проверки на страницу Razor в ASP.NET Core
 
@@ -27,7 +27,7 @@ ms.locfileid: "47211030"
 
 ### <a name="adding-validation-rules-to-the-movie-model"></a>Добавление правил проверки к модели фильма
 
-Откройте файл *Movie.cs*. Класс [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) предоставляет набор встроенных атрибутов проверки, которые декларативно применяются к классу или свойству. Кроме того, DataAnnotations содержит атрибуты форматирования (такие как `DataType`), которые обеспечивают форматирование и не предназначены для проверки.
+Откройте файл *Models/Movie.cs*. Класс [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) предоставляет набор встроенных атрибутов проверки, которые декларативно применяются к классу или свойству. Кроме того, DataAnnotations содержит атрибуты форматирования (такие как `DataType`), которые обеспечивают форматирование и не предназначены для проверки.
 
 Обновите класс `Movie`, чтобы использовать преимущества атрибутов проверки `Required`, `StringLength`, `RegularExpression` и `Range`.
 
@@ -79,7 +79,7 @@ ms.locfileid: "47211030"
 
 Реализация проверки на стороне сервера:
 
-* Отключите JavaScript в браузере. Если сделать это не удается, попробуйте использовать другой браузер.
+* Отключите JavaScript в браузере. Это можно сделать с помощью средств разработчика в браузере. Если сделать это не удается, попробуйте использовать другой браузер.
 * Поместите точку останова в метод `OnPostAsync` страниц создания или редактирования.
 * Отправьте форму с ошибками проверки.
 * Проверка недопустимого состояния модели:

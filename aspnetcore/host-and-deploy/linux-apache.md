@@ -4,14 +4,14 @@ description: Процедура настройки Apache в качестве о
 author: spboyer
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 09/08/2018
+ms.date: 10/09/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 534e0415b2d278a518aea0ecb8042aeab4a0aa0e
-ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
+ms.openlocfilehash: 237646f839a4973074bb64176a024ebb3d32ee4e
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46523211"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913012"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -40,7 +40,7 @@ dotnet publish --configuration Release
 
 Приложение может быть опубликовано как [автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd), если вы предпочитаете не сохранять среду выполнения .NET Core на сервере.
 
-Скопируйте приложение ASP.NET Core на сервер с помощью инструмента, интегрированного в ваш рабочий процесс (например, SCP или SFTP). Обычно веб-приложения находятся в каталоге *var* (например, *var/aspnetcore/hellomvc*).
+Скопируйте приложение ASP.NET Core на сервер с помощью инструмента, интегрированного в ваш рабочий процесс (например, SCP или SFTP). Обычно веб-приложения находятся в каталоге *var* (например, *var/www/helloapp*).
 
 > [!NOTE]
 > Если развертывание выполняется в рабочей среде, рабочий процесс непрерывной интеграции автоматически опубликует приложение и скопирует его ресурсы на сервер.
@@ -147,7 +147,7 @@ Complete!
 
 Файлы конфигурации для Apache находятся в каталоге `/etc/httpd/conf.d/`. В алфавитном порядке обрабатываются все файлы с расширением *.conf*, а также файлы конфигурации модуля из папки `/etc/httpd/conf.modules.d/`, где содержатся файлы конфигурации, необходимые для загрузки модулей.
 
-Создайте для приложения файл конфигурации с именем *hellomvc.conf*:
+Создайте для приложения файл конфигурации с именем *helloapp.conf*:
 
 ```
 <VirtualHost *:*>
@@ -160,8 +160,8 @@ Complete!
     ProxyPassReverse / http://127.0.0.1:5000/
     ServerName www.example.com
     ServerAlias *.example.com
-    ErrorLog ${APACHE_LOG_DIR}hellomvc-error.log
-    CustomLog ${APACHE_LOG_DIR}hellomvc-access.log common
+    ErrorLog ${APACHE_LOG_DIR}helloapp-error.log
+    CustomLog ${APACHE_LOG_DIR}helloapp-access.log common
 </VirtualHost>
 ```
 
@@ -194,7 +194,7 @@ sudo systemctl enable httpd
 Создайте файл определения службы.
 
 ```bash
-sudo nano /etc/systemd/system/kestrel-hellomvc.service
+sudo nano /etc/systemd/system/kestrel-helloapp.service
 ```
 
 Пример файла службы для приложения:
@@ -204,8 +204,8 @@ sudo nano /etc/systemd/system/kestrel-hellomvc.service
 Description=Example .NET Web API App running on CentOS 7
 
 [Service]
-WorkingDirectory=/var/aspnetcore/hellomvc
-ExecStart=/usr/local/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
+WorkingDirectory=/var/www/helloapp
+ExecStart=/usr/local/bin/dotnet /var/www/helloapp/helloapp.dll
 Restart=always
 # Restart service after 10 seconds if the dotnet service crashes:
 RestartSec=10
@@ -236,21 +236,21 @@ systemd-escape "<value-to-escape>"
 Сохраните файл и включите службу.
 
 ```bash
-sudo systemctl enable kestrel-hellomvc.service
+sudo systemctl enable kestrel-helloapp.service
 ```
 
 Запустите службу и убедитесь, что она работает.
 
 ```bash
-sudo systemctl start kestrel-hellomvc.service
-sudo systemctl status kestrel-hellomvc.service
+sudo systemctl start kestrel-helloapp.service
+sudo systemctl status kestrel-helloapp.service
 
-● kestrel-hellomvc.service - Example .NET Web API App running on CentOS 7
-    Loaded: loaded (/etc/systemd/system/kestrel-hellomvc.service; enabled)
+● kestrel-helloapp.service - Example .NET Web API App running on CentOS 7
+    Loaded: loaded (/etc/systemd/system/kestrel-helloapp.service; enabled)
     Active: active (running) since Thu 2016-10-18 04:09:35 NZDT; 35s ago
 Main PID: 9021 (dotnet)
-    CGroup: /system.slice/kestrel-hellomvc.service
-            └─9021 /usr/local/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
+    CGroup: /system.slice/kestrel-helloapp.service
+            └─9021 /usr/local/bin/dotnet /var/www/helloapp/helloapp.dll
 ```
 
 Теперь, когда обратный прокси-сервер настроен и *systemd* управляет процессом Kestrel, веб-приложение можно считать полностью настроенным и вы можете обратиться к нему по адресу `http://localhost` из браузера на локальном компьютере. Заголовок **Server** в ответе подтверждает, что приложение ASP.NET Core обслуживается Kestrel.
@@ -266,16 +266,16 @@ Transfer-Encoding: chunked
 
 ### <a name="viewing-logs"></a>Просмотр журналов
 
-Так как веб-приложением, использующим Kestrel, управляет *systemd*, все события и процессы регистрируются в централизованном журнале. Но этот журнал содержит все записи обо всех службах и процессах, управляемых *systemd*. Чтобы просмотреть элементы, связанные с `kestrel-hellomvc.service`, используйте следующую команду.
+Так как веб-приложением, использующим Kestrel, управляет *systemd*, все события и процессы регистрируются в централизованном журнале. Но этот журнал содержит все записи обо всех службах и процессах, управляемых *systemd*. Чтобы просмотреть элементы, связанные с `kestrel-helloapp.service`, используйте следующую команду.
 
 ```bash
-sudo journalctl -fu kestrel-hellomvc.service
+sudo journalctl -fu kestrel-helloapp.service
 ```
 
 Чтобы отфильтровать элементы по времени, укажите в команде параметры времени. Например, `--since today` позволяет отфильтровать данные за текущий день, а `--until 1 hour ago` — просмотреть записи за предыдущий час. Дополнительные сведения см. на странице руководства о команде [journalctl](https://www.unix.com/man-page/centos/1/journalctl/).
 
 ```bash
-sudo journalctl -fu kestrel-hellomvc.service --since "2016-10-18" --until "2016-10-18 04:00"
+sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-10-18 04:00"
 ```
 
 ## <a name="data-protection"></a>Защита данных
@@ -343,7 +343,7 @@ sudo yum install mod_ssl
 sudo yum install mod_rewrite
 ```
 
-Измените файл *hellomvc.conf*, чтобы разрешить перезапись URL-адресов и безопасный обмен данными через порт 443.
+Измените файл *helloapp.conf*, чтобы разрешить перезапись URL-адресов и безопасный обмен данными через порт 443:
 
 ```
 <VirtualHost *:*>
@@ -360,8 +360,8 @@ sudo yum install mod_rewrite
     ProxyPreserveHost On
     ProxyPass / http://127.0.0.1:5000/
     ProxyPassReverse / http://127.0.0.1:5000/
-    ErrorLog /var/log/httpd/hellomvc-error.log
-    CustomLog /var/log/httpd/hellomvc-access.log common
+    ErrorLog /var/log/httpd/helloapp-error.log
+    CustomLog /var/log/httpd/helloapp-access.log common
     SSLEngine on
     SSLProtocol all -SSLv2
     SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:!RC4+RSA:+HIGH:+MEDIUM:!LOW:!RC4
@@ -427,7 +427,7 @@ sudo nano /etc/httpd/conf/httpd.conf
 sudo yum install mod_proxy_balancer
 ```
 
-В представленном ниже файле конфигурации настроен дополнительный экземпляр приложения `hellomvc`, работающий на порту 5001. В разделе *Proxy* настраивается конфигурация подсистемы балансировки нагрузки с двумя членами для распределения нагрузки методом *byrequests*.
+В представленном ниже файле конфигурации настроен дополнительный экземпляр `helloapp`, работающий на порте 5001. В разделе *Proxy* настраивается конфигурация подсистемы балансировки нагрузки с двумя членами для распределения нагрузки методом *byrequests*.
 
 ```
 <VirtualHost *:*>
@@ -455,8 +455,8 @@ sudo yum install mod_proxy_balancer
     <Location />
         SetHandler balancer
     </Location>
-    ErrorLog /var/log/httpd/hellomvc-error.log
-    CustomLog /var/log/httpd/hellomvc-access.log common
+    ErrorLog /var/log/httpd/helloapp-error.log
+    CustomLog /var/log/httpd/helloapp-access.log common
     SSLEngine on
     SSLProtocol all -SSLv2
     SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:!RC4+RSA:+HIGH:+MEDIUM:!LOW:!RC4

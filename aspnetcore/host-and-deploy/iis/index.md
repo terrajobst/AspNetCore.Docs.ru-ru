@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о размещении приложений ASP.NET Core в службах Windows Server Internet Information Services (IIS).
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/13/2018
+ms.date: 09/21/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 8f2155cbf0bc3101b78b890c1d66797278f1ca4b
-ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
+ms.openlocfilehash: 12075f68dd828680f6bfbd46ea22ebd7bbe52dc7
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47028314"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326021"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -40,11 +40,13 @@ ms.locfileid: "47028314"
   * Подключение TLS 1.2 или более поздней версии
 * Внепроцессно
   * Windows Server 2016 / Windows 10 или более поздних версий; IIS 10 или более поздней версии
-  * Подключения Edge используют протокол HTTP/2, но подключения к [серверу Kestrel](xref:fundamentals/servers/kestrel) через обратный прокси-сервер выполняются по HTTP/1.1.
+  * Подключения к пограничным серверам, открытых для общего доступа, выполняются по протоколу HTTP/2, а подключения к [серверу Kestrel](xref:fundamentals/servers/kestrel) через обратный прокси-сервер — по HTTP/1.1.
   * Целевая платформа: неприменимо к развертываниям вне процесса, так как IIS полностью обрабатывает подключение HTTP/2.
   * Подключение TLS 1.2 или более поздней версии
 
 При внутрипроцессном развертывании и установленном подключении HTTP/2 [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) возвращает `HTTP/2`. При внепроцессном развертывании и установленном подключении HTTP/2 [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) возвращает `HTTP/1.1`.
+
+Дополнительные сведения о моделях размещения внутри и вне процесса см. в статьях <xref:fundamentals/servers/aspnet-core-module> и <xref:host-and-deploy/aspnet-core-module>.
 
 ::: moniker-end
 
@@ -53,7 +55,7 @@ ms.locfileid: "47028314"
 [HTTP/2](https://httpwg.org/specs/rfc7540.html) поддерживается для внепроцессных развертываний, которые удовлетворяют следующим базовым требованиям:
 
 * Windows Server 2016 / Windows 10 или более поздних версий; IIS 10 или более поздней версии
-* Подключения Edge используют протокол HTTP/2, но подключения к [серверу Kestrel](xref:fundamentals/servers/kestrel) через обратный прокси-сервер выполняются по HTTP/1.1.
+* Подключения к пограничным серверам, открытых для общего доступа, выполняются по протоколу HTTP/2, а подключения к [серверу Kestrel](xref:fundamentals/servers/kestrel) через обратный прокси-сервер — по HTTP/1.1.
 * Целевая платформа: неприменимо к развертываниям вне процесса, так как IIS полностью обрабатывает подключение HTTP/2.
 * Подключение TLS 1.2 или более поздней версии
 
@@ -67,9 +69,31 @@ ms.locfileid: "47028314"
 
 ### <a name="enable-the-iisintegration-components"></a>Включение компонентов IISIntegration
 
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-2.2"
 
-Обычно *Program.cs* вызывает [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder), чтобы начать настройку узла. `CreateDefaultBuilder` настраивает [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и активирует интеграцию IIS, задавая базовый путь и порт для [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module):
+**Модель внутрипроцессного размещения**
+
+Обычно *Program.cs* вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, чтобы начать настройку узла. `CreateDefaultBuilder` вызывает метод `UseIIS` для загрузки [CoreCLR](/dotnet/standard/glossary#coreclr) и размещения приложения внутри рабочего процесса IIS (`w3wp.exe`). Результаты тестов производительности показывают, что размещение приложения .NET Core в процессе позволяет обработать больше запросов по сравнению с размещением приложения вне процесса с перенаправлением запросов к [Kestrel](xref:fundamentals/servers/kestrel).
+
+**Модель размещения вне процесса**
+
+Обычно *Program.cs* вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, чтобы начать настройку узла. Для размещения вне процесса с IIS `CreateDefaultBuilder` настраивает [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и активирует интеграцию с IIS, задавая базовый путь и порт для [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module):
+
+```csharp
+public static IWebHost BuildWebHost(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        ...
+```
+
+Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. `CreateDefaultBuilder` вызывает метод <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>, который выбирает динамический порт и настраивает Kestrel для ожидания передачи данных на адрес `http://localhost:{dynamicPort}/`. Это переопределяет другие конфигурации URL-адресов, такие как вызовы `UseUrls` или [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). Таким образом, вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. Если вызван `UseUrls` или `Listen`, Kestrel ожидает передачи данных на порт только при выполнении приложения без IIS.
+
+Дополнительные сведения о моделях размещения внутри и вне процесса см. в статьях <xref:fundamentals/servers/aspnet-core-module> и <xref:host-and-deploy/aspnet-core-module>.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
+
+Обычно *Program.cs* вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, чтобы начать настройку узла. `CreateDefaultBuilder` настраивает [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и активирует интеграцию IIS, задавая базовый путь и порт для [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module):
 
 ```csharp
 public static IWebHost BuildWebHost(string[] args) =>
@@ -113,7 +137,7 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| Параметр                         | Значение по умолчанию | Параметр |
+| Параметр                         | По умолчанию | Параметр |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Если значение — `true`, ПО промежуточного слоя для интеграции IIS задает свойство `HttpContext.User`, которое прошло [проверку подлинности Windows](xref:security/authentication/windowsauth). Если значение — `false`, ПО промежуточного слоя только предоставляет идентификатор для `HttpContext.User` и отвечает на явные запросы защиты от `AuthenticationScheme`. Для работы `AutomaticAuthentication` необходимо включить в службах IIS проверку подлинности Windows. Дополнительные сведения см. в статье о [проверке подлинности Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Задает отображаемое имя для пользователей на страницах входа. |
@@ -212,8 +236,13 @@ services.Configure<IISOptions>(options =>
    1. Запустите установщик на сервере.
 
    **Важно!** Если пакет размещения устанавливается до установки служб IIS, его нужно восстановить. После установки служб IIS запустите установщик пакета размещения еще раз.
-   
-   Чтобы запретить установщику установку пакетов x86 в операционной системе x64, запускать установщик следует из командной строки с правами администратора с параметром `OPT_NO_X86=1`.
+
+   Запустите установщик из командной строки с правами администратора, используя один или несколько из следующих параметров для управления поведением установщика:
+
+   * `OPT_NO_ANCM=1` — пропуск установки модуля ASP.NET Core;
+   * `OPT_NO_RUNTIME=1` — пропуск установки среды выполнения .NET Core;
+   * `OPT_NO_SHAREDFX=1` — пропуск установки общей платформы ASP.NET (среды выполнения ASP.NET);
+   * `OPT_NO_X86=1` — пропуск установки 32-разрядных сред выполнения. Этот параметр следует использовать, если вы наверняка не будете размещать 32-разрядные приложения. Если есть хоть малейшая возможность, что в будущем придется размещать и 32-разрядные, и 64-разрядные приложения, не указывайте этот параметр и установите обе среды выполнения.
 
 1. Перезагрузите систему или в командой строке выполните команду **net stop was /y**, а затем — команду **net start w3svc**. Перезапуск служб IIS позволит обнаружить внесенные установщиком изменения в системном пути, который является переменной среды.
 

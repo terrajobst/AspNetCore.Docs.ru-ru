@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2018
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: c2af9099fe439e1cdbf9ba86ffae3b2b0f67391e
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 4b9bceb3ce0153af2d9a30c402febe09707145b7
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751719"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477310"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Вспомогательные функции тегов в ASP.NET Core
 
@@ -127,6 +127,10 @@ public class Movie
 ![изображение](intro/_static/thp.png)
 
 Правила иерархии, которые применяются к `@addTagHelper`, также применяются и к `@tagHelperPrefix`.
+
+## <a name="self-closing-tag-helpers"></a>Самозакрывающиеся вспомогательные функции тегов
+
+Многие вспомогательные функции тегов нельзя использовать как самозакрывающиеся теги. Некоторые вспомогательные функции тегов созданы как самозакрывающиеся теги. При использовании вспомогательной функции тегов, которая не создана как самозакрывающаяся, подавляются выводимые данные. При самостоятельном закрывании вспомогательной функции тегов в выводимых данных появляется самозакрывающийся тег. Дополнительные сведения см. в [этом примечании](xref:mvc/views/tag-helpers/authoring#self-closing) в статье [Создание вспомогательных функций тегов](xref:mvc/views/tag-helpers/authoring).
 
 ## <a name="intellisense-support-for-tag-helpers"></a>Поддержка Intellisense для вспомогательных функций тегов
 

@@ -5,12 +5,12 @@ description: Сведения о переопределении и перена�
 ms.author: riande
 ms.date: 08/17/2017
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: d3484e222c4412a427d086c1b71a12b81095ba72
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: d9f33f34f75fe7bf534146c5a426335e74635018
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276351"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326073"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ПО промежуточного слоя для переопределения URL-адресов в ASP.NET Core
 
@@ -63,13 +63,15 @@ ms.locfileid: "36276351"
 
 ## <a name="extension-and-options"></a>Расширение и параметры
 
-Задайте правила переопределения и перенаправления URL-адресов, создав экземпляр класса `RewriteOptions` для каждого правила помощью методов расширения. Несколько правил можно объединить в цепочку в том порядке, в котором они должны обрабатываться. `RewriteOptions` передаются в ПО промежуточного слоя для переопределения URL-адресов по мере его добавления в конвейер запросов с помощью `app.UseRewriter(options);`.
+Задайте правила переопределения и перенаправления URL-адресов, создав экземпляр класса [RewriteOptions](/dotnet/api/microsoft.aspnetcore.rewrite.rewriteoptions) для каждого правила с помощью методов расширения. Несколько правил можно объединить в цепочку в том порядке, в котором они должны обрабатываться. `RewriteOptions` передаются в ПО промежуточного слоя для переопределения URL-адресов по мере его добавления в конвейер запросов с помощью `app.UseRewriter(options);`.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -88,17 +90,31 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
----
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+### <a name="redirect-non-www-to-www"></a>Перенаправление не www на www
+
+Три параметра разрешают приложению перенаправлять запросы, отличные от `www`, на `www`:
+
+* [AddRedirectToWwwPermanent(RewriteOptions)](/dotnet/api/microsoft.aspnetcore.rewrite.rewriteoptionsextensions.addredirecttowwwpermanent) &ndash; окончательно перенаправляет запрос в поддомен `www`, если запрос не является `www`. Перенаправляет с кодом состояния [Status308PermanentRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status308permanentredirect).
+* [AddRedirectToWww(RewriteOptions)](/dotnet/api/microsoft.aspnetcore.rewrite.rewriteoptionsextensions.addredirecttowww) &ndash; перенаправляет запрос в поддомен `www`, если входящий запрос не является `www`. Перенаправляет с кодом состояния [Status307TemporaryRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status307temporaryredirect).
+* [AddRedirectToWww(RewriteOptions, Int32)](/dotnet/api/microsoft.aspnetcore.rewrite.rewriteoptionsextensions.addredirecttowww) &ndash; перенаправляет запрос в поддомен `www`, если входящий запрос не является `www`. Позволяет предоставить код состояния для ответа. Используйте поля класса [StatusCodes](/dotnet/api/microsoft.aspnetcore.http.statuscodes) для назначений `AddRedirectToWww`.
+
+::: moniker-end
 
 ### <a name="url-redirect"></a>Перенаправление URL-адресов
 
 Используйте `AddRedirect` для перенаправления запросов. Первый параметр содержит регулярное выражение, соответствующее пути входящего URL-адреса. Второй параметр является строкой замены. Третий параметр (при его наличии) указывает код состояния. Если код состояния не задан, по умолчанию используется код "302 (найдено)", указывающий, что ресурс временно перемещен или заменен.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=9)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -110,7 +126,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
----
+::: moniker-end
 
 В браузере с включенными средствами разработчика выполните запрос для примера приложения по пути `/redirect-rule/1234/5678`. Регулярное выражение соответствует пути запроса в `redirect-rule/(.*)`, и этот путь заменяется на `/redirected/1234/5678`. URL-адрес перенаправления отправляется обратно клиенту с кодом состояния "302 (найдено)". Браузер выполняет новый запрос на URL-адрес перенаправления, отображаемый в адресной строке. Так как ни одно из правил в примере приложения не соответствует URL-адресу перенаправления, второй запрос получает от приложения отклик "200 (ОК)", в тексте которого указан этот URL-адрес перенаправления. При *перенаправлении* URL-адреса используется круговое обращение к серверу.
 
@@ -168,11 +184,13 @@ public void Configure(IApplicationBuilder app)
 
 Используйте `AddRewrite`, чтобы создать правило для переопределения URL-адресов. Первый параметр содержит регулярное выражение, соответствующее пути входящего URL-адреса. Второй параметр является строкой замены. Третий параметр `skipRemainingRules: {true|false}` сообщает ПО промежуточного слоя, нужно ли пропустить дополнительные правила переопределения, если применяется текущее правило.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=10-11)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -185,7 +203,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
----
+::: moniker-end
 
 Исходный запрос: `/rewrite-rule/1234/5678`
 
@@ -222,13 +240,15 @@ public void Configure(IApplicationBuilder app)
 
 Для применения правил mod_rewrite Apache можно использовать `AddApacheModRewrite`. Убедитесь, что файл правил развертывается вместе с приложением. Дополнительные сведения и примеры правил mod_rewrite см. в статье о [правилах mod_rewrite Apache](https://httpd.apache.org/docs/2.4/rewrite/).
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 `StreamReader` используется для чтения правил из файла *ApacheModRewrite.txt*.
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=3-4,12)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Первый параметр принимает `IFileProvider`, предоставляемый посредством [внедрения зависимостей](dependency-injection.md). `IHostingEnvironment` внедряется для предоставления `ContentRootFileProvider`. Второй параметр является путем к файлу правил (в данном примере приложения это *ApacheModRewrite.txt*).
 
@@ -242,7 +262,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
----
+::: moniker-end
 
 Пример приложения перенаправляет запросы из `/apache-mod-rules-redirect/(.\*)` в `/redirected?id=$1`. Отклик имеет код состояния "302 (найдено)".
 
@@ -251,8 +271,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 Исходный запрос: `/apache-mod-rules-redirect/1234`
 
 ![Окно браузера, в котором средства разработчика отслеживают запросы и отклики](url-rewriting/_static/add_apache_mod_redirect.png)
-
-##### <a name="supported-server-variables"></a>Поддерживаемые переменные сервера
 
 ПО промежуточного слоя поддерживает следующие переменные сервера в mod_rewrite Apache:
 
@@ -290,13 +308,15 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Чтобы использовать правила, применяемые к модулю переопределения URL-адресов для IIS, используйте `AddIISUrlRewrite`. Убедитесь, что файл правил развертывается вместе с приложением. Не направляйте ПО промежуточного слоя для использования вашего файла *web.config* при работе в службах IIS Windows Server. В IIS эти правила нужно хранить за пределами *web.config*, чтобы предотвратить конфликты с модулем переопределения для IIS. Дополнительные сведения и примеры правил модуля переопределения URL-адресов для IIS см. в разделах [Использование модуля переопределения URL-адресов 2.0](/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) и [Справочник по конфигурации модуля переопределения URL-адресов](/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference).
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 `StreamReader` используется для чтения правил из файла *IISUrlRewrite.xml*.
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=5-6,13)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Первый параметр принимает `IFileProvider`, а второй является путем к файлу правил XML (в данном примере приложения это *IISUrlRewrite.xml*).
 
@@ -310,7 +330,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
----
+::: moniker-end
 
 Пример приложения переопределяет запросы с `/iis-rules-rewrite/(.*)` на `/rewritten?id=$1`. Клиенту отправляется отклик с кодом состояния "200 (ОК)".
 
@@ -324,7 +344,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 #### <a name="unsupported-features"></a>Неподдерживаемые функции
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ПО промежуточного слоя, выпущенное вместе с ASP.NET Core 2.x, не поддерживает следующие функции в модуле переопределения URL-адресов для IIS:
 
@@ -333,7 +353,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 * Знаки подстановки
 * LogRewrittenUrl
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ПО промежуточного слоя, выпущенное вместе с ASP.NET Core 1.x, не поддерживает следующие функции в модуле переопределения URL-адресов для IIS:
 
@@ -346,7 +368,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 * Action:CustomResponse
 * LogRewrittenUrl
 
----
+::: moniker-end
 
 #### <a name="supported-server-variables"></a>Поддерживаемые переменные сервера
 
@@ -385,11 +407,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 | `RuleResult.EndResponse`             | Остановка применения правил и отправка отклика                       |
 | `RuleResult.SkipRemainingRules`      | Остановка применения правил и отправка контекста в следующий компонент ПО промежуточного слоя |
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=14)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -401,7 +425,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
----
+::: moniker-end
 
 Пример приложения демонстрирует метод, который перенаправляет запросы для путей, заканчивающихся на *.xml*. Если сделать запрос `/file.xml`, он перенаправляется в `/xmlfiles/file.xml`. Для кода состояния задается значение "301 (перемещен окончательно)". Для перенаправления нужно явно задать код состояния ответа, в противном случае возвращается код состояния "200 (ОК)" и перенаправление для клиента не выполняется.
 
@@ -415,11 +439,13 @@ public void Configure(IApplicationBuilder app)
 
 Используйте `Add(IRule)`, чтобы реализовать собственную логику правил в классе, являющемся производным от `IRule`. Использование `IRule` позволяет более гибко применять правила, основанные на методах. Производный класс может включать конструктор, куда можно передать параметры для метода `ApplyRule`.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=15-16)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -432,7 +458,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
----
+::: moniker-end
 
 Значения параметров в примере приложения для `extension` и `newPath` проверяются на соответствие нескольким условиям. `extension` должен содержать одно из значений: *.png*, *.jpg* или *.gif*. Если `newPath` не является допустимым, возникает исключение `ArgumentException`. Если сделать запрос *image.png*, он перенаправляется в `/png-images/image.png`. Если сделать запрос *image.jpg*, он перенаправляется в `/jpg-images/image.jpg`. Для кода состояния устанавливается значение "301 (перемещен окончательно)", а также задается `context.Result`, чтобы остановить обработку и отправить отклик.
 
@@ -448,7 +474,7 @@ public void Configure(IApplicationBuilder app)
 
 ## <a name="regex-examples"></a>Примеры регулярных выражений
 
-| Goal | Пример строки регулярного выражения<br>и совпадения | Пример строки замены и<br>выходных данных |
+| Цель | Пример строки регулярного выражения<br>и совпадения | Пример строки замены и<br>выходных данных |
 | ---- | :-----------------------------: | :------------------------------------: |
 | Переопределение пути в строке запроса | `^path/(.*)/(.*)`<br>`/path/abc/123` | `path?var1=$1&var2=$2`<br>`/path?var1=abc&var2=123` |
 | Удаление косой черты в конце | `(.*)/$`<br>`/path/` | `$1`<br>`/path` |

@@ -3,60 +3,67 @@ title: Вспомогательная функция тега среды в ASP.
 author: pkellner
 description: Определенная в ASP.NET Core вспомогательная функция тега среды, включая все свойства
 ms.author: riande
-ms.date: 07/14/2017
+ms.custom: mvc
+ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: 4a283a3a03aa6cac228ec6effd02e3f1095be260
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 379f58ed37329f047d53adf1dcfdfd2ad6a6ca4e
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342228"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325241"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега среды в ASP.NET Core
 
-Авторы: [Питер Кельнер (Peter Kellner)](http://peterkellner.net) и [Хишам Бин Атея](https://twitter.com/hishambinateya) (Hisham Bin Ateya)
+Авторы: [Питер Кельнер (Peter Kellner)](http://peterkellner.net), [Хишам Бин Атейя (Hisham Bin Ateya)](https://twitter.com/hishambinateya) и [Люк Лэтэм (Luke Latham)](https://github.com/guardrex)
 
-Вспомогательная функция тега среды условно отрисовывает заключенное в нее содержимое с учетом текущей среды размещения. Ее единственным атрибутом `names` является разделенный запятыми список имен сред, который при наличии совпадения с текущей средой запустит отрисовку содержимого.
+Вспомогательная функция тега среды условно отрисовывает заключенное в нее содержимое с учетом текущей [среды размещения](xref:fundamentals/environments). Единственный атрибут вспомогательной функции тега среды, `names`, — это разделенный запятыми список имен сред. Если одно из указанных имен среды соответствует текущей среде, включенное содержимое подготавливается к просмотру.
+
+Общие сведения о вспомогательных функциях тегов см. в разделе <xref:mvc/views/tag-helpers/intro>.
 
 ## <a name="environment-tag-helper-attributes"></a>Атрибуты вспомогательной функции тега среды
 
 ### <a name="names"></a>имена
 
-Принимает одно имя среды размещения или список разделенных запятыми имен сред размещения, которые запускают отрисовку включенного в функцию содержимого.
+`names` принимает одно имя среды размещения или список разделенных запятыми имен сред размещения, которые запускают отрисовку включенного в функцию содержимого.
 
-Эти значения сравниваются с текущим значением, возвращаемым из статического свойства ASP.NET Core `HostingEnvironment.EnvironmentName`.  Это значение является одним из следующих: **Staging**, **Development** или **Production**. При сравнении регистр не учитывается.
+Значения среды сравниваются с текущим значением, возвращенным [IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*). При сравнении регистр не учитывается.
 
-Пример допустимой функции тега `environment`:
+В приведенном ниже примере используется вспомогательная функция тега среды. Содержимое подготавливается к просмотру в том случае, если среда размещения является промежуточной или рабочей:
 
 ```cshtml
 <environment names="Staging,Production">
-  <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
+    <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
 </environment>
 ```
+
+::: moniker range=">= aspnetcore-2.0"
 
 ## <a name="include-and-exclude-attributes"></a>Атрибуты include и exclude
 
-В ASP.NET Core 2.x добавлены атрибуты `include` & `exclude`. Эти атрибуты управляют отрисовкой включенного содержимого на основе имен включенных или исключенных сред размещения.
+Атрибуты `include` & `exclude` управляют отрисовкой включенного содержимого на основе имен включенных или исключенных сред размещения.
 
-### <a name="include-aspnet-core-20-and-later"></a>включить ASP.NET Core 2.0 и более поздние версии
+### <a name="include"></a>include
 
-Свойство `include` действует аналогично атрибуту `names` в ASP.NET Core 1.0.
+Свойство `include` ведет себя так же для атрибута `names`. Среда, указанная в значении атрибута `include`, должна соответствовать среде размещения приложения ([IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*)) для отрисовки содержимого тега `<environment>`.
 
 ```cshtml
 <environment include="Staging,Production">
-  <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
+    <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
 </environment>
 ```
 
-### <a name="exclude-aspnet-core-20-and-later"></a>исключить ASP.NET Core 2.0 и более поздние версии
+### <a name="exclude"></a>exclude
 
-Напротив, свойство `exclude` позволяет `EnvironmentTagHelper` отрисовывать включенное в функцию содержимое для всех имен сред размещения, за исключением указанных.
+В отличие от атрибута `include`, содержимое тега `<environment>` отрисовывается, когда среда размещения не соответствует среде, указанной в значении атрибута `exclude`.
 
 ```cshtml
 <environment exclude="Development">
-  <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
+    <strong>HostingEnvironment.EnvironmentName is not Development</strong>
 </environment>
 ```
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

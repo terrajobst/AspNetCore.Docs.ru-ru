@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/23/2018
 uid: mvc/controllers/testing
-ms.openlocfilehash: f036181f43d12ece89243fa3b0b0070ea84f8bc7
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 582a5ba461ee2df73b99e4f499e8152f7c6cb7cf
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010992"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477167"
 ---
 # <a name="test-controller-logic-in-aspnet-core"></a>Тестирование логики контроллера в ASP.NET Core
 
@@ -67,7 +67,7 @@ ms.locfileid: "46010992"
 
 Второй тест проверяет, выполняются ли при допустимом значении `ModelState` следующие условия:
 
-* добавляется новый `BrainstormSession` (через [репозиторий](xref:fundamentals/repository-pattern));
+* добавляется новый `BrainstormSession` (через репозиторий);
 * метод возвращает `RedirectToActionResult` с ожидаемыми свойствами.
 
 Макеты вызовов, которые не выполняются, обычно игнорируются, но вызов `Verifiable` в конце вызова Setup позволяет проверить макет в тесте. Для этого выполняется вызов метода `mockRepo.Verify`, который устанавливает состояние непройденного теста, если требуемый метод не был вызван.
@@ -185,5 +185,4 @@ ms.locfileid: "46010992"
 * <xref:test/index>
 * <xref:test/integration-tests>
 * [Создавайте и выполняйте модульные тесты с помощью Visual Studio](/visualstudio/test/unit-test-your-code).
-* <xref:fundamentals/repository-pattern>
 * [Принцип явных зависимостей](https://deviq.com/explicit-dependencies-principle/)

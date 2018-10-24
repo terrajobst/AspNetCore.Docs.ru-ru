@@ -4,22 +4,24 @@ author: pkellner
 description: Обнаруживайте атрибуты вспомогательной функции тега привязки ASP.NET Core и роль, которую играет каждый атрибут в расширении поведения тега привязки HTML.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 01/31/2018
+ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 6bdf71eaf38f134cb15b5950d2cae6ab67f861a4
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 13508729c1e3b64a8b0e6965da57880738ab85c3
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273888"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325553"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Вспомогательная функция тега привязки в ASP.NET Core MVC
 
 Авторы: [Питер Кельнер (Peter Kellner)](http://peterkellner.net) и [Скотт Эдди](https://github.com/scottaddie) (Scott Addie).
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
-
 [Вспомогательная функция тега привязки](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper) повышает эффективность стандартного тега привязки HTML (`<a ... ></a>`) путем добавления новых атрибутов. Как правило, все имена атрибутов начинаются с `asp-`. Отображаемое значение атрибута `href` элемента привязки определяется значениями атрибутов `asp-`.
+
+Общие сведения о вспомогательных функциях тегов см. в разделе <xref:mvc/views/tag-helpers/intro>.
+
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
 В примерах в этом документе используется *SpeakerController*
 
@@ -171,7 +173,7 @@ ms.locfileid: "36273888"
 
 Атрибут [asp-area](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.area) указывает имя области, используемое платформой для определения соответствующего маршрута. Ниже приведен пример того, как атрибут области приводит к повторному сопоставлению маршрутов. При установке для атрибута `asp-area` значения Blogs перед маршрутами связанных контроллеров и представлений для этого тега привязки добавляется каталог *Areas/Blogs*.
 
-* **<Имя проекта\>**
+* **{Имя проекта}**
   * **wwwroot**
   * **Области**
     * **Блоги**
@@ -181,7 +183,7 @@ ms.locfileid: "36273888"
         * **Корневая папка**
           * *AboutBlog.cshtml*
           * *Index.cshtml*
-        * *_ViewStart.cshtml*
+        * *\_ViewStart.cshtml*
   * **Контроллеры**
 
 С учетом предыдущей иерархии каталогов элемент для ссылки на файл *AboutBlog.cshtml* будет таким:
@@ -195,7 +197,9 @@ ms.locfileid: "36273888"
 ```
 
 > [!TIP]
-> Чтобы в приложении MVC использовались области, в шаблон маршрута необходимо включить ссылку на область, если она существует. Этот шаблон представлен вторым параметром вызова метода `routes.MapRoute` в *Startup.Configure*: [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
+> Чтобы в приложении MVC использовались области, в шаблон маршрута необходимо включить ссылку на область, если она существует. Этот шаблон представлен вторым параметром вызова метода `routes.MapRoute` в *Startup.Configure*:
+>
+> [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
 ## <a name="asp-protocol"></a>asp-protocol
 
@@ -267,5 +271,5 @@ ms.locfileid: "36273888"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Области](xref:mvc/controllers/areas)
-* [Общие сведения о Razor Pages](xref:razor-pages/index)
+* <xref:mvc/controllers/areas>
+* <xref:razor-pages/index>

@@ -5,12 +5,12 @@ description: Сведения о начале работы с MVC ASP.NET Core �
 ms.author: riande
 ms.date: 10/07/2017
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 41f986a06ec46dc025c4e8218745b4a513e8ee2a
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: fe555e4cfcaec5d4bb8ccee00b06d1bbcaae9dcd
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011710"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391210"
 ---
 # <a name="get-started-with-aspnet-core-mvc-and-visual-studio"></a>Начало работы с MVC ASP.NET Core и Visual Studio
 
@@ -48,7 +48,7 @@ ms.locfileid: "46011710"
 Заполните данные в диалоговом окне **Создание веб-приложения ASP.NET Core (.NET Core) — MvcMovie**.
 
 * Выберите в раскрывающемся списке выбора версии **ASP.NET Core 2.1**
-* Выберите **Веб-приложение (модель-представление-контроллер)**.
+* Выберите **Веб-приложение (модель — представление — контроллер)**
 * Нажмите кнопку **ОК**.
 
 ![Диалоговое окно нового проекта, .NET Core в левой области, веб-узел ASP.NET Core ](start-mvc/_static/new_project22-21.png)

@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 09/19/2018
 uid: fundamentals/logging/index
-ms.openlocfilehash: e3bf5909edb515a2dabba206abaa160bc431d622
-ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
+ms.openlocfilehash: 7a87791abdc91c43796ce72764d0cb3938ed90ec
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46483091"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578462"
 ---
 # <a name="logging-in-aspnet-core"></a>Ведение журналов в ASP.NET Core
 
@@ -25,7 +25,7 @@ ASP.NET Core поддерживает API ведения журнала, кот�
 
 ## <a name="how-to-create-logs"></a>Создание журналов
 
-Для создания журналов реализуйте объект [ILogger&lt;TCategoryName&gt;](/dotnet/api/microsoft.extensions.logging.ilogger-1) из контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection).
+Для создания журналов получите объект [ILogger&lt;TCategoryName&gt;](/dotnet/api/microsoft.extensions.logging.ilogger-1) из контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection).
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -759,6 +759,7 @@ loggerFactory.AddAzureWebAppDiagnostics();
 * [KissLog.net](https://kisslog.net/) ([репозиторий GitHub](https://github.com/catalingavan/KissLog-net))
 * [Loggr](http://loggr.net/) ([в репозитории GitHub](https://github.com/imobile3/Loggr.Extensions.Logging));
 * [NLog](http://nlog-project.org/) ([в репозитории GitHub](https://github.com/NLog/NLog.Extensions.Logging));
+* [Sentry](https://sentry.io/welcome/) ([репозиторий GitHub](https://github.com/getsentry/sentry-dotnet))
 * [Serilog](https://serilog.net/) ([в репозитории GitHub](https://github.com/serilog/serilog-extensions-logging)).
 
 Некоторые сторонние платформы выполняют [семантическое ведение журналов, также известное как структурированное ведение журналов](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).

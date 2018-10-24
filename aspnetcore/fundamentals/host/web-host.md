@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о веб-узле в ASP.NET Core, который отвечает за запуск приложений и управление временем существования.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/01/2018
+ms.date: 10/18/2018
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 7440ab26534840b190a346614f645860fc2b7d78
-ms.sourcegitcommit: 7211ae2dd702f67d36365831c490d6178c9a46c8
+ms.openlocfilehash: e19f12f69dfdd5653aea9c6be2b05f24009b875e
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44089903"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477453"
 ---
 # <a name="aspnet-core-web-host"></a>Веб-узел ASP.NET Core
 
@@ -46,10 +46,10 @@ public class Program
 * Загружает [конфигурацию узла](#host-configuration-values) из:
   * Переменные среды с префиксом `ASPNETCORE_` (например, `ASPNETCORE_ENVIRONMENT`).
   * аргументы командной строки.
-* Загружает конфигурацию приложения из:
+* Загружает конфигурацию приложения в следующем порядке из:
   * *appsettings.json*;
   * *appsettings.{Environment}.json*;
-  * [секреты пользователя](xref:security/app-secrets), когда приложение выполняется в среде `Development` с использованием начальных сборок;
+  * [Менеджера секретов](xref:security/app-secrets), когда приложение выполняется в среде `Development` с использованием начальных сборок.
   * Переменные среды.
   * аргументы командной строки.
 * Настраивает [ведение журнала](xref:fundamentals/logging/index) для выходных данных консоли и отладки. Ведение журнала включает в себя правила [фильтрации журналов](xref:fundamentals/logging/index#log-filtering), заданные в разделе конфигурации ведения журнала в файле *appsettings.json* или *appsettings.{Environment}.json*.
@@ -164,7 +164,7 @@ host.Run();
 
 ::: moniker-end
 
-При настройке узла можно предоставить методы [Configure](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure?view=aspnetcore-1.1) и [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices?view=aspnetcore-1.1). Если используется класс `Startup`, в нем должен быть определен метод `Configure`. Дополнительные сведения см. в разделе <xref:fundamentals/startup>. Несколько вызовов `ConfigureServices` добавляются друг к другу. При нескольких вызовах `Configure` или `UseStartup` в `WebHostBuilder` предыдущие параметры заменяются.
+При настройке узла можно предоставить методы [Configure](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure?view=aspnetcore-1.1) и [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices?view=aspnetcore-1.1). Если используется класс `Startup`, в нем должен быть определен метод `Configure`. Для получения дополнительной информации см. <xref:fundamentals/startup>. Несколько вызовов `ConfigureServices` добавляются друг к другу. При нескольких вызовах `Configure` или `UseStartup` в `WebHostBuilder` предыдущие параметры заменяются.
 
 ## <a name="host-configuration-values"></a>Значения конфигурации узла
 
@@ -184,7 +184,7 @@ host.Run();
 **Тип**: *string*  
 **По умолчанию**: имя сборки, содержащей точку входа приложения  
 **Задается с помощью**: `UseSetting`  
-**Переменная среды**: `ASPNETCORE_APPLICATIONKEY`
+**Переменная среды**: `ASPNETCORE_APPLICATIONNAME`
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -304,7 +304,7 @@ var host = new WebHostBuilder()
 **Задается с помощью**: `UseEnvironment`  
 **Переменная среды**: `ASPNETCORE_ENVIRONMENT`
 
-В качестве среды можно указать любое значение. В платформе определены значения `Development`, `Staging` и `Production`. Регистр символов в значениях не учитывается. По умолчанию значение параметра *Среда* считывается из переменной среды `ASPNETCORE_ENVIRONMENT`. При использовании [Visual Studio](https://www.visualstudio.com/) переменные среды можно задавать в файле *launchSettings.json*. Дополнительные сведения см. в разделе <xref:fundamentals/environments>.
+В качестве среды можно указать любое значение. В платформе определены значения `Development`, `Staging` и `Production`. Регистр символов в значениях не учитывается. По умолчанию значение параметра *Среда* считывается из переменной среды `ASPNETCORE_ENVIRONMENT`. При использовании [Visual Studio](https://www.visualstudio.com/) переменные среды можно задавать в файле *launchSettings.json*. Для получения дополнительной информации см. <xref:fundamentals/environments>.
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -365,15 +365,13 @@ WebHost.CreateDefaultBuilder(args)
 
 ### <a name="hosting-startup-exclude-assemblies"></a>Исключаемые начальные сборки размещения
 
-DESCRIPTION
+Разделенная точками с запятой строка начальных сборок размещения, которые необходимо исключить при запуске.
 
 **Ключ**: hostingStartupExcludeAssemblies  
 **Тип**: *string*  
 **Значение по умолчанию**: пустая строка  
 **Задается с помощью**: `UseSetting`  
 **Переменная среды**: `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
-
-Разделенная точками с запятой строка начальных сборок размещения, которые необходимо исключить при запуске.
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -405,7 +403,7 @@ WebHost.CreateDefaultBuilder(args)
 
 ### <a name="prevent-hosting-startup"></a>Запретить запуск размещения
 
-Запрещает автоматическую загрузку начальных сборок размещения, включая начальные сборки размещения, настроенные сборкой приложения. Дополнительные сведения см. в разделе <xref:fundamentals/configuration/platform-specific-configuration>.
+Запрещает автоматическую загрузку начальных сборок размещения, включая начальные сборки размещения, настроенные сборкой приложения. Для получения дополнительной информации см. <xref:fundamentals/configuration/platform-specific-configuration>.
 
 **Ключ**: preventHostingStartup  
 **Тип**: *bool* (`true` или `1`)  
@@ -439,7 +437,7 @@ WebHost.CreateDefaultBuilder(args)
     .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
 ```
 
-Kestrel имеет собственный интерфейс API настройки конечных точек. Дополнительные сведения см. в разделе <xref:fundamentals/servers/kestrel#endpoint-configuration>.
+Kestrel имеет собственный интерфейс API настройки конечных точек. Для получения дополнительной информации см. <xref:fundamentals/servers/kestrel#endpoint-configuration>.
 
 ::: moniker-end
 
@@ -659,7 +657,7 @@ dotnet run --urls "http://*:8080"
 host.Run();
 ```
 
-**Start**
+**Запуск**
 
 Чтобы запустить узел без блокировки, вызовите метод `Start`.
 
@@ -832,7 +830,7 @@ using (var host = WebHost.StartWith("http://localhost:8080", app =>
 host.Run();
 ```
 
-**Start**
+**Запуск**
 
 Чтобы запустить узел без блокировки, вызовите метод `Start`.
 
@@ -917,7 +915,7 @@ public class Startup
 ```
 
 > [!NOTE]
-> Помимо метода расширения `IsDevelopment`, интерфейс `IHostingEnvironment` предоставляет методы `IsStaging`, `IsProduction` и `IsEnvironment(string environmentName)`. Дополнительные сведения см. в разделе <xref:fundamentals/environments>.
+> Помимо метода расширения `IsDevelopment`, интерфейс `IHostingEnvironment` предоставляет методы `IsStaging`, `IsProduction` и `IsEnvironment(string environmentName)`. Для получения дополнительной информации см. <xref:fundamentals/environments>.
 
 Службу `IHostingEnvironment` также можно внедрять непосредственно в метод `Configure` для настройки конвейера обработки:
 

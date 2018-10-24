@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/29/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: f2de81af4bd2992aec76a287484d0057021231d8
-ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
+ms.openlocfilehash: 315261c4d20970fc399cc2a879dd452bdf3be93f
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47860970"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326060"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Развертывание приложений ASP.NET Core в Службе приложений Azure
 
@@ -59,6 +59,8 @@ ms.locfileid: "47860970"
 
 Область **Параметры приложения** колонки **Параметры приложения** позволяет устанавливать переменные среды для приложения. Переменные среды могут использоваться [поставщиком конфигураций переменных среды](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
 
+Когда вы создаете или изменяете параметр приложения на портале Azure, при нажатии кнопки **Сохранить** происходит перезапуск приложения Azure. Переменная среды доступна в приложении после перезапуска службы.
+
 Если приложение использует [Веб-узел](xref:fundamentals/host/web-host) и создает узел с помощью [WebHost.CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder), переменные среды, которые настраивают узел, используют префикс `ASPNETCORE_`. Дополнительные сведения см. в разделах <xref:fundamentals/host/web-host> и [Конфигурация для разных сред](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
 
 Если приложение использует [универсальный узел](xref:fundamentals/host/generic-host), переменные среды не загружаются в конфигурацию приложения по умолчанию и поставщик конфигурации должен быть добавлен разработчиком. Разработчик определяет префикс переменной среды при добавлении поставщика конфигурации. Дополнительные сведения см. в разделах <xref:fundamentals/host/generic-host> и [Конфигурация для разных сред](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
@@ -101,11 +103,11 @@ ms.locfileid: "47860970"
 
 ## <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>Развертывание предварительной версии ASP.NET Core в службе приложений Azure
 
-Предварительную версию приложения ASP.NET Core можно развернуть в службе приложений Azure, используя следующие методы.
+Воспользуйтесь одним из перечисленных ниже подходов.
 
-* [Установка расширения сайта предварительной версии](#install-the-preview-site-extension)
-<!-- * [Deploy the app self-contained](#deploy-the-app-self-contained) -->
-* [Использование Docker с веб-приложениями для контейнеров](#use-docker-with-web-apps-for-containers)
+* [Установка расширения сайта предварительной версии](#install-the-preview-site-extension).
+* [Автономное развертывание приложения](#deploy-the-app-self-contained).
+* [Использование Docker с веб-приложениями для контейнеров](#use-docker-with-web-apps-for-containers).
 
 ### <a name="install-the-preview-site-extension"></a>Установка расширения сайта предварительной версии
 
@@ -161,18 +163,46 @@ ms.locfileid: "47860970"
 
 Если вы используете шаблон ARM для создания и развертывания приложений, можно использовать тип ресурса `siteextensions`, чтобы добавить расширение сайта в веб-приложение. Пример:
 
-[!code-json[Main](index/sample/arm.json?highlight=2)]
+[!code-json[](index/sample/arm.json?highlight=2)]
 
-<!--
-### Deploy the app self-contained
+### <a name="deploy-the-app-self-contained"></a>Автономное развертывание приложения
 
-A [self-contained app](/dotnet/core/deploying/#self-contained-deployments-scd) can be deployed that carries the preview runtime in the deployment. When deploying a self-contained app:
+Объект [автономного развертывания (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd), который предназначен для предварительной версии среды выполнения, включает в развертывание среду выполнения предварительной версии.
 
-* The site doesn't need to be prepared.
-* The app must be published differently than when publishing for a framework-dependent deployment with the shared runtime and host on the server.
+При развертывании автономного приложения:
 
-Self-contained apps are an option for all ASP.NET Core apps.
--->
+* Сайт в Службе приложений Azure не требует [предварительной версии расширения сайта](#install-the-preview-site-extension).
+* Для публикации приложений следует использовать другой подход, нежели при публикации [зависящего от платформы развертывания (FDD)](/dotnet/core/deploying#framework-dependent-deployments-fdd).
+
+#### <a name="publish-from-visual-studio"></a>Публикация из Visual Studio
+
+1. Выберите **Сборка** > **Опубликовать {имя_приложения}** на панели инструментов Visual Studio.
+1. В диалоговом оке **Выберите целевой объект публикации** убедитесь, что выбран вариант **Служба приложений**.
+1. Выберите **Дополнительно**. Откроется диалоговое окно **Публикация**.
+1. В диалоговом окне **Публикация**:
+   * Убедитесь, что выбрана конфигурация **Выпуск**.
+   * Откройте раскрывающийся список **Режим развертывания** и выберите вариант **Автономное**.
+   * Выберите целевую среду выполнения из раскрывающегося списка **Целевая среда выполнения**. Значение по умолчанию — `win-x86`.
+   * Если потребуется удалить дополнительные файлы после развертывания, откройте **Параметры публикации файлов** и установите флажок для удаления дополнительных файлов в месте назначения.
+   * Нажмите кнопку **Сохранить**.
+1. Создайте новый сайт или обновите существующий, следуя остальным подсказкам мастера публикации.
+
+#### <a name="publish-using-command-line-interface-cli-tools"></a>Публикация с помощью средств интерфейса командной строки
+
+1. В файле проекта укажите один или несколько [идентификаторов сред выполнения (RID)](/dotnet/core/rid-catalog). Используйте `<RuntimeIdentifier>` (в единственном числе) для одного RID или `<RuntimeIdentifiers>` (во множественном числе), чтобы предоставить разделенный точкой с запятой список идентификаторов RID. В следующем примере указан RID `win-x86`:
+
+   ```xml
+   <PropertyGroup>
+     <TargetFramework>netcoreapp2.1</TargetFramework>
+     <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+   </PropertyGroup>
+   ```
+1. Из командной оболочки опубликуйте приложение в конфигурации выпуска для среды выполнения узла, выполнив команду [dotnet publish](/dotnet/core/tools/dotnet-publish). В следующем примере публикуется приложение с RID `win-x86`. Предоставленный в параметре `--runtime` RID должены быть указан в свойстве `<RuntimeIdentifier>` (или `<RuntimeIdentifiers>`) в файле проекта.
+
+   ```console
+   dotnet publish --configuration Release --runtime win-x86
+   ```
+1. Переместите содержимое каталога *bin/Release/{целевая_платформа}/{идентификатор_среды_выполнения}/publish* на сайт в Службе приложений.
 
 ### <a name="use-docker-with-web-apps-for-containers"></a>Использование Docker с веб-приложениями для контейнеров
 

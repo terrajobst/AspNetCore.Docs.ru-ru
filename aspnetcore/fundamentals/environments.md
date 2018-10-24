@@ -5,12 +5,12 @@ description: Сведения об управлении поведением п�
 ms.author: riande
 ms.date: 07/03/2018
 uid: fundamentals/environments
-ms.openlocfilehash: 720e5ef9fb63b83499ce1801a1c3f9df4786d748
-ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
+ms.openlocfilehash: de3c3fd5a2f0e49366d9d5b4e992d0247bcab0e5
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2018
-ms.locfileid: "42927946"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577527"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Использование нескольких сред в ASP.NET Core
 
@@ -28,7 +28,7 @@ ASP.NET Core считывает переменную среды `ASPNETCORE_ENVI
 
 Предыдущий код:
 
-* Вызывает [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage) и [UseBrowserLink](/dotnet/api/microsoft.aspnetcore.builder.browserlinkextensions.usebrowserlink), если переменная `ASPNETCORE_ENVIRONMENT` имеет значение `Development`.
+* Вызывает [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage), если `ASPNETCORE_ENVIRONMENT` имеет значение `Development`.
 * Вызывает [UseExceptionHandler](/dotnet/api/microsoft.aspnetcore.builder.exceptionhandlerextensions.useexceptionhandler), если переменная `ASPNETCORE_ENVIRONMENT` имеет одно из следующих значений:
 
     * `Staging`
@@ -245,7 +245,6 @@ $Env:ASPNETCORE_ENVIRONMENT = "Development"
 > [!IMPORTANT]
 > При размещении приложения в службах IIS и добавлении или изменении переменной среды `ASPNETCORE_ENVIRONMENT` используйте один из следующих подходов по применению нового значения в приложении.
 >
-> * Перезапустите пул приложений.
 > * Из командной строки выполните команду `net stop was /y`, за которой следует `net start w3svc`.
 > * Перезапустите сервер.
 

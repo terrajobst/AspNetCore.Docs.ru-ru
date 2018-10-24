@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: 33fad930e617c74d9a8c07f850764a6b81fa8ab5
-ms.sourcegitcommit: 2c158fcfd325cad97ead608a816e525fe3dcf757
+ms.openlocfilehash: 52c7916b9fc55c875d56acd49c01f76dd2053817
+ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41751507"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47861009"
 ---
 # <a name="static-files-in-aspnet-core"></a>Статические файлы в ASP.NET Core
 
@@ -137,7 +137,7 @@ ms.locfileid: "41751507"
 
 ## <a name="serve-a-default-document"></a>Обслуживание документа по умолчанию
 
-Домашняя страница по умолчанию является для пользователей логической отправной точкой при посещении веб-сайта. Для обслуживания страницы по умолчанию без указания полного имени URI вызовите метод [UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) из `Startup.Configure`:
+Домашняя страница по умолчанию является для посетителей логической отправной точкой при посещении веб-сайта. Для обслуживания страницы по умолчанию без указания полного имени URI вызовите метод [UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) из `Startup.Configure`:
 
 [!code-csharp[](static-files/samples/1x/StartupEmpty.cs?name=snippet_ConfigureMethod&highlight=3)]
 
@@ -216,7 +216,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 ## <a name="non-standard-content-types"></a>Нестандартные типы содержимого
 
-ПО промежуточного слоя для статических файлов воспринимает почти 400 известных типов содержимого файлов. Если пользователь запрашивает файл неизвестного типа, ПО промежуточного слоя для статических файлов возвращает ответ HTTP 404 (не найдено). Если просмотр каталогов разрешен, то отображается ссылка на файл. URI возвращает ошибку HTTP 404.
+ПО промежуточного слоя для статических файлов воспринимает почти 400 известных типов содержимого файлов. Если пользователь запрашивает файл неизвестного типа, ПО промежуточного слоя статических файлов передает запрос следующему компоненту ПО промежуточного слоя в конвейере. Если ПО промежуточного слоя не удается обработать запрос, возвращается ответ *404 Не найдено*. Если просмотр каталогов разрешен, то в списке каталогов отображается ссылка на файл.
 
 Следующий код включает обслуживание неизвестных типов и обслуживает неизвестные файлы как изображения:
 

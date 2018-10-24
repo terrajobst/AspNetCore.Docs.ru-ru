@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/16/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: e19a8a78b4c02fbae3d3acd23ee357c6003c35cf
-ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
+ms.openlocfilehash: 0924e2764958911dc1711d5427f6dd58e8873739
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44039969"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477609"
 ---
 # <a name="net-generic-host"></a>Универсальный узел .NET
 
@@ -45,6 +45,19 @@ ms.locfileid: "44039969"
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_HostBuilder)]
 
+## <a name="default-services"></a>Службы по умолчанию
+
+Во время инициализации узла регистрируются следующие службы:
+
+* [Окружение](xref:fundamentals/environments) (<xref:Microsoft.Extensions.Hosting.IHostingEnvironment>)
+* <xref:Microsoft.Extensions.Hosting.HostBuilderContext>
+* [Конфигурация](xref:fundamentals/configuration/index) (<xref:Microsoft.Extensions.Configuration.IConfiguration>)
+* <xref:Microsoft.Extensions.Hosting.IApplicationLifetime> (<xref:Microsoft.Extensions.Hosting.Internal.ApplicationLifetime>)
+* <xref:Microsoft.Extensions.Hosting.IHostLifetime> (<xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime>)
+* <xref:Microsoft.Extensions.Hosting.IHost>
+* [Параметры](xref:fundamentals/configuration/options) (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions*>)
+* [Ведение журнала](xref:fundamentals/logging/index) (<xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging*>)
+
 ## <a name="host-configuration"></a>Конфигурация узла
 
 Для задания значений конфигурации узла класс [HostBuilder](/dotnet/api/microsoft.extensions.hosting.hostbuilder) поддерживает следующие подходы:
@@ -58,7 +71,7 @@ ms.locfileid: "44039969"
 
 Конфигурация переменной среды не добавляется по умолчанию. Вызовите [AddEnvironmentVariables](/dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables) в конструкторе узла, чтобы настроить узел из переменных среды. `AddEnvironmentVariables` принимает необязательный определяемый пользователем префикс. В примере приложения используется префикс `PREFIX_`. Префикс удаляется при чтении переменных среды. После настройки узла в примере приложения значение переменной среды для `PREFIX_ENVIRONMENT` становится значением конфигурации узла для ключа `environment`.
 
-Во время разработки с использованием [Visual Studio](https://www.visualstudio.com/) или запуска приложения с помощью `dotnet run` переменные среды можно задать в файле *Properties/launchSettings.json*. В [Visual Studio Code](https://code.visualstudio.com/) переменные среды можно задавать в файле *.vscode/launch.json* во время разработки. Дополнительные сведения см. в разделе <xref:fundamentals/environments>.
+Во время разработки с использованием [Visual Studio](https://www.visualstudio.com/) или запуска приложения с помощью `dotnet run` переменные среды можно задать в файле *Properties/launchSettings.json*. В [Visual Studio Code](https://code.visualstudio.com/) переменные среды можно задавать в файле *.vscode/launch.json* во время разработки. Для получения дополнительной информации см. <xref:fundamentals/environments>.
 
 Метод `ConfigureHostConfiguration` может вызываться несколько раз с накоплением результатов. Хост использует значение, заданное последним.
 
@@ -85,7 +98,7 @@ ms.locfileid: "44039969"
 **Тип**: *string*  
 **По умолчанию**: имя сборки, содержащей точку входа приложения  
 **Задается с помощью**: `HostBuilderContext.HostingEnvironment.ApplicationName`  
-**Переменная среды**: `<PREFIX_>APPLICATIONKEY` (`<PREFIX_>` [необязательно и определяется пользователем](#configuration-builder))
+**Переменная среды**: `<PREFIX_>APPLICATIONNAME` (`<PREFIX_>` [необязательно и определяется пользователем](#configuration-builder))
 
 ```csharp
 var host = new HostBuilder()
@@ -158,7 +171,7 @@ var host = new HostBuilder()
 
 Метод [ConfigureServices](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices) добавляет службы в контейнер [внедрения зависимостей](xref:fundamentals/dependency-injection) приложения. Метод `ConfigureServices` может вызываться несколько раз с накоплением результатов.
 
-Размещенная служба — это класс с логикой фоновой задачи, реализующий интерфейс [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice). Дополнительные сведения см. в разделе <xref:fundamentals/host/hosted-services>.
+Размещенная служба — это класс с логикой фоновой задачи, реализующий интерфейс [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice). Для получения дополнительной информации см. <xref:fundamentals/host/hosted-services>.
 
 [Пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) использует метод расширения `AddHostedService` для добавления службы для событий времени жизни (`LifetimeEventsHostedService`) и синхронизированной фоновой задачи (`TimedHostedService`):
 
@@ -194,7 +207,7 @@ var host = new HostBuilder()
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_ContainerConfiguration)]
 
-## <a name="extensibility"></a>Расширение среды
+## <a name="extensibility"></a>Расширяемость
 
 Расширяемость узла выполняется с помощью методов расширения класса `IHostBuilder`. В следующем примере показано, как метод расширения расширяет реализацию класса `IHostBuilder` с помощью класса [TimedHostedService](xref:fundamentals/host/hosted-services#timed-background-tasks), пример которого приведен в статье <xref:fundamentals/host/hosted-services>.
 
@@ -228,7 +241,7 @@ public static class Extensions
 
 Реализация [IHost](/dotnet/api/microsoft.extensions.hosting.ihost) отвечает за запуск и остановку реализаций `IHostedService`, которые зарегистрированы в контейнере службы.
 
-### <a name="run"></a>Выполнить
+### <a name="run"></a>Запуск
 
 Метод [Run](/dotnet/api/microsoft.extensions.hosting.hostingabstractionshostextensions.run) запускает приложение и блокирует вызывающий поток, пока работа узла не будет завершена:
 
@@ -424,7 +437,7 @@ public class MyClass
 }
 ```
 
-Дополнительные сведения см. в разделе <xref:fundamentals/environments>.
+Для получения дополнительной информации см. <xref:fundamentals/environments>.
 
 ## <a name="iapplicationlifetime-interface"></a>Интерфейс IApplicationLifetime
 

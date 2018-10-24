@@ -5,12 +5,12 @@ description: Узнайте, как привязка модели позволя
 ms.author: riande
 ms.date: 04/10/2017
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: f5bd9a3eefb1fd9c1534e8767ad8e8af37514adb
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: b8745241b0699d270bb8f3a56ab614b0ca49e64b
+ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275397"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48045540"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Пользовательская привязка модели в ASP.NET Core
 
@@ -101,7 +101,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo1&highlight=2)]
 
-Поскольку в этом примере имя аргумента не является `authorId` по умолчанию, оно указывается в параметре с помощью атрибута `ModelBinder`. Обратите внимание, что функционал контроллера и метода действия упрощен по сравнению с поиском сущности в методе действия. Логика для выборки автора с использованием Entity Framework Core перемещается в связыватель модели. Такой подход позволит существенно упростить работу, если у вас есть несколько методов для привязки к модели автора, и поможет вам следовать [принципу "не повторяйся"](http://deviq.com/don-t-repeat-yourself/).
+Поскольку в этом примере имя аргумента не является `authorId` по умолчанию, оно указывается в параметре с помощью атрибута `ModelBinder`. Обратите внимание, что функционал контроллера и метода действия упрощен по сравнению с поиском сущности в методе действия. Логика для выборки автора с использованием Entity Framework Core перемещается в связыватель модели. Такой подход позволит существенно упростить работу, если у вас есть несколько методов для привязки к модели `Author`, и поможет вам следовать принципу ["не повторяйся"](http://deviq.com/don-t-repeat-yourself/).
 
 Чтобы указать определенный связыватель модели или имя только для данного типа или действия, можно применить атрибут `ModelBinder` к свойствам отдельной модели (таким как viewmodel) или к параметрам метода действия.
 

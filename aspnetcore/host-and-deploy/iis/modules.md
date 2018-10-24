@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/04/2018
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: 40af94f9cbb83f27f22d90b6b0f2854090687d34
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 78cdf74648a29ed718d1373d7b3666b10749843d
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312350"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577565"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Модули IIS с ASP.NET Core
 
@@ -39,7 +39,7 @@ ms.locfileid: "43312350"
 | **Трассировка**<br>`FailedRequestsTracingModule` | Да | [Ведение журналов ASP.NET Core](xref:fundamentals/logging/index#tracesource-provider) |
 | **Кэширование файлов**<br>`FileCacheModule` | Нет | [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware) |
 | **Кэширование HTTP**<br>`HttpCacheModule` | Нет | [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware) |
-| **Ведение журнала HTTP**<br>`HttpLoggingModule` | Да | [Ведение журналов ASP.NET Core](xref:fundamentals/logging/index)<br>Реализации: [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging), [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging), [NLog](https://github.com/NLog/NLog.Extensions.Logging), [Serilog](https://github.com/serilog/serilog-extensions-logging)
+| **Ведение журнала HTTP**<br>`HttpLoggingModule` | Да | [Ведение журналов ASP.NET Core](xref:fundamentals/logging/index)<br>Реализации: [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging), [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging), [NLog](https://github.com/NLog/NLog.Extensions.Logging), [Sentry](https://github.com/getsentry/sentry-dotnet), [Serilog](https://github.com/serilog/serilog-extensions-logging)
 | **Перенаправление HTTP**<br>`HttpRedirectionModule` | Да | [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting) |
 | **Аутентификация IIS с сопоставлением сертификата клиента**<br>`IISCertificateMappingAuthenticationModule` | Да | |
 | **Ограничения IP-адресов и доменов**<br>`IpRestrictionModule` | Да | |
@@ -48,7 +48,7 @@ ms.locfileid: "43312350"
 | **Поддержка протоколов**<br>`ProtocolSupportModule` | Да | |
 | **Фильтрация запросов**<br>`RequestFilteringModule` | Да | [ПО промежуточного слоя для переопределения URL-адресов`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **Монитор запросов**<br>`RequestMonitorModule` | Да | |
-| **Переопределение URL-адресов**<br>`RewriteModule` | Да&#8224; | [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting) |
+| **URL Rewriting**<br>`RewriteModule` | Да&#8224; | [ПО промежуточного слоя для переопределения URL-адресов](xref:fundamentals/url-rewriting) |
 | **Включения на стороне сервера**<br>`ServerSideIncludeModule` | Нет | |
 | **Статическое сжатие**<br>`StaticCompressionModule` | Нет | [ПО промежуточного слоя для сжатия ответов](xref:performance/response-compression) |
 | **Статическое содержимое**<br>`StaticFileModule` | Нет | [ПО промежуточного слоя для статических файлов](xref:fundamentals/static-files) |

@@ -3,14 +3,15 @@ title: Фильтры в ASP.NET Core
 author: ardalis
 description: Узнайте, как работают фильтры и как использовать их в ASP.NET Core MVC.
 ms.author: riande
-ms.date: 08/15/2018
+ms.custom: mvc
+ms.date: 10/15/2018
 uid: mvc/controllers/filters
-ms.openlocfilehash: e20d934a17337d404249220d703ac4bb7164dfa6
-ms.sourcegitcommit: 9bdba90b2c97a4016188434657194b2d7027d6e3
+ms.openlocfilehash: 6803e8e3a285716792427e9fb059c204f5a88ecb
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47402163"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391314"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -132,12 +133,12 @@ ms.locfileid: "47402163"
 
 | Sequence | Область фильтра | Метод фильтра |
 |:--------:|:------------:|:-------------:|
-| 1 | Global | `OnActionExecuting` |
+| 1 | Глобальные | `OnActionExecuting` |
 | 2 | Контроллер | `OnActionExecuting` |
 | 3 | Метод | `OnActionExecuting` |
 | 4 | Метод | `OnActionExecuted` |
 | 5 | Контроллер | `OnActionExecuted` |
-| 6 | Global | `OnActionExecuted` |
+| 6 | Глобальные | `OnActionExecuted` |
 
 Эта последовательность показывает:
 
@@ -163,8 +164,8 @@ ms.locfileid: "47402163"
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Метод | 0 | `OnActionExecuting` |
 | 2 | Контроллер | 1  | `OnActionExecuting` |
-| 3 | Global | 2  | `OnActionExecuting` |
-| 4 | Global | 2  | `OnActionExecuted` |
+| 3 | Глобальные | 2  | `OnActionExecuting` |
+| 4 | Глобальные | 2  | `OnActionExecuted` |
 | 5 | Контроллер | 1  | `OnActionExecuted` |
 | 6 | Метод | 0  | `OnActionExecuted` |
 
@@ -204,13 +205,15 @@ ms.locfileid: "47402163"
 
 ### <a name="servicefilterattribute"></a>ServiceFilterAttribute
 
-Атрибут `ServiceFilter` извлекает экземпляр фильтра из внедрения зависимостей. Вы добавляете фильтр в контейнер в методе `ConfigureServices` и ссылаетесь на него в атрибуте `ServiceFilter`.
+Типы реализации фильтра службы регистрируются во внедрении зависимостей. Атрибут `ServiceFilterAttribute` извлекает экземпляр фильтра из внедрения зависимостей. Добавьте `ServiceFilterAttribute` в контейнер в методе `Startup.ConfigureServices` и ссылайтесь на него в атрибуте `[ServiceFilter]`:
 
 [!code-csharp[](./filters/sample/src/FiltersSample/Startup.cs?name=snippet_ConfigureServices&highlight=11)]
 
 [!code-csharp[](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_ServiceFilter&highlight=1)]
 
-Использование атрибута `ServiceFilter` без регистрации типа фильтра приводит к исключению:
+При использовании `ServiceFilterAttribute` задание `IsReusable` является указанием, что экземпляр фильтра *можно* многократно использовать за пределами области запроса, в которой он был создан. Платформа не предоставляет никаких гарантий, что будет создан хоть один экземпляр фильтра или фильтр не будет повторно запрошен из контейнера внедрения зависимостей позднее. Старайтесь не использовать `IsReusable` при использовании фильтра, который зависит от служб со временем существования, кроме singleton.
+
+Использование атрибута `ServiceFilterAttribute` без регистрации типа фильтра приводит к исключению:
 
 ```
 System.InvalidOperationException: No service for type
@@ -226,7 +229,9 @@ System.InvalidOperationException: No service for type
 Из-за этого отличия:
 
 * Типы, на которые ссылаются с помощью `TypeFilterAttribute`, не нужно сначала регистрировать в контейнере.  Их зависимости выполняются контейнером. 
-* Атрибут `TypeFilterAttribute` может также принимать аргументы конструктора для типа. 
+* Атрибут `TypeFilterAttribute` может также принимать аргументы конструктора для типа.
+
+При использовании `TypeFilterAttribute` задание `IsReusable` является указанием, что экземпляр фильтра *можно* многократно использовать за пределами области запроса, в которой он был создан. Платформа не предоставляет никаких гарантий, что будет создан хотя бы один экземпляр фильтра. Старайтесь не использовать `IsReusable` при использовании фильтра, который зависит от служб со временем существования, кроме singleton.
 
 В приведенном ниже примере показано, как передавать аргументы в тип с помощью `TypeFilterAttribute`.
 

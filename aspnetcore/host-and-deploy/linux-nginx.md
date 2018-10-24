@@ -4,14 +4,14 @@ author: rick-anderson
 description: В статье описывается процедура настройки Nginx как обратного прокси-сервера на Ubuntu 16.04 для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в Kestrel.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/08/2018
+ms.date: 10/09/2018
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: bf1fb8c0db2afd4e0c6044f3d08c22d619931554
-ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
+ms.openlocfilehash: 8d3c158b44c9f30e7c0746398306aa1c0fd9e15b
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46523237"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912120"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -52,7 +52,7 @@ dotnet publish --configuration Release
 
 Приложение может быть опубликовано как [автономное развертывание](/dotnet/core/deploying/#self-contained-deployments-scd), если вы предпочитаете не сохранять среду выполнения .NET Core на сервере.
 
-Скопируйте приложение ASP.NET Core на сервер с помощью инструмента, интегрированного в ваш рабочий процесс (например, SCP или SFTP). Обычно веб-приложения находятся в каталоге *var* (например, *var/aspnetcore/hellomvc*).
+Скопируйте приложение ASP.NET Core на сервер с помощью инструмента, интегрированного в ваш рабочий процесс (например, SCP или SFTP). Обычно веб-приложения находятся в каталоге *var* (например, *var/www/helloapp*).
 
 > [!NOTE]
 > Если развертывание выполняется в рабочей среде, рабочий процесс непрерывной интеграции автоматически опубликует приложение и скопирует его ресурсы на сервер.
@@ -185,13 +185,7 @@ server {
 Для непосредственного запуска приложений на сервере:
 
 1. Перейдите в каталог приложения.
-1. Запустите исполняемый файл приложения: `./<app_executable>`.
-
-Если возникает ошибка прав доступа, измените права доступа:
-
-```console
-chmod u+x <app_executable>
-```
+1. Запустите приложение: `dotnet <app_assembly.dll>`, где `app_assembly.dll` — имя файла сборки приложения.
 
 Если приложение выполняется на сервере, но не отвечает по Интернету, проверьте брандмауэр сервера и убедитесь, что порт 80 открыт. При использовании виртуальной машины Ubuntu Azure добавьте правило группы безопасности сети (NSG), которое разрешает входящий трафик через порт 80. Не нужно включать правило исходящего трафика на порте 80, так как исходящий трафик предоставляется автоматически при включении правила для входящего трафика.
 
@@ -206,7 +200,7 @@ chmod u+x <app_executable>
 Создайте файл определения службы.
 
 ```bash
-sudo nano /etc/systemd/system/kestrel-hellomvc.service
+sudo nano /etc/systemd/system/kestrel-helloapp.service
 ```
 
 Далее представлен пример файла службы для нашего приложения.
@@ -216,8 +210,8 @@ sudo nano /etc/systemd/system/kestrel-hellomvc.service
 Description=Example .NET Web API App running on Ubuntu
 
 [Service]
-WorkingDirectory=/var/aspnetcore/hellomvc
-ExecStart=/usr/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
+WorkingDirectory=/var/www/helloapp
+ExecStart=/usr/bin/dotnet /var/www/helloapp/helloapp.dll
 Restart=always
 # Restart service after 10 seconds if the dotnet service crashes:
 RestartSec=10
@@ -251,21 +245,21 @@ systemd-escape "<value-to-escape>"
 Сохраните файл и включите службу.
 
 ```bash
-sudo systemctl enable kestrel-hellomvc.service
+sudo systemctl enable kestrel-helloapp.service
 ```
 
 Запустите службу и убедитесь, что она работает.
 
 ```
-sudo systemctl start kestrel-hellomvc.service
-sudo systemctl status kestrel-hellomvc.service
+sudo systemctl start kestrel-helloapp.service
+sudo systemctl status kestrel-helloapp.service
 
-● kestrel-hellomvc.service - Example .NET Web API App running on Ubuntu
-    Loaded: loaded (/etc/systemd/system/kestrel-hellomvc.service; enabled)
+● kestrel-helloapp.service - Example .NET Web API App running on Ubuntu
+    Loaded: loaded (/etc/systemd/system/kestrel-helloapp.service; enabled)
     Active: active (running) since Thu 2016-10-18 04:09:35 NZDT; 35s ago
 Main PID: 9021 (dotnet)
-    CGroup: /system.slice/kestrel-hellomvc.service
-            └─9021 /usr/local/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
+    CGroup: /system.slice/kestrel-helloapp.service
+            └─9021 /usr/local/bin/dotnet /var/www/helloapp/helloapp.dll
 ```
 
 Теперь, когда обратный прокси-сервер настроен и systemd управляет процессом Kestrel, веб-приложение можно считать полностью настроенным и вы можете обратиться к нему по адресу `http://localhost` из браузера на локальном компьютере. Оно также доступно для удаленных компьютеров, несмотря на наличие блокирующих трафик межсетевых экранов. Заголовок `Server` в ответе подтверждает, что приложение ASP.NET Core обслуживается Kestrel.
@@ -281,16 +275,16 @@ Transfer-Encoding: chunked
 
 ### <a name="viewing-logs"></a>Просмотр журналов
 
-Так как веб-приложение, использующее Kestrel, управляется через `systemd`, все события и процессы регистрируются в централизованном журнале. При этом журнал содержит все записи обо всех службах и процессах, управляемых `systemd`. Чтобы просмотреть элементы, связанные с `kestrel-hellomvc.service`, используйте следующую команду.
+Так как веб-приложение, использующее Kestrel, управляется через `systemd`, все события и процессы регистрируются в централизованном журнале. При этом журнал содержит все записи обо всех службах и процессах, управляемых `systemd`. Чтобы просмотреть элементы, связанные с `kestrel-helloapp.service`, используйте следующую команду.
 
 ```bash
-sudo journalctl -fu kestrel-hellomvc.service
+sudo journalctl -fu kestrel-helloapp.service
 ```
 
 Кроме того, количество возвращаемых записей можно уменьшить, указав параметры времени, например `--since today`, `--until 1 hour ago` или их комбинацию.
 
 ```bash
-sudo journalctl -fu kestrel-hellomvc.service --since "2016-10-18" --until "2016-10-18 04:00"
+sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-10-18 04:00"
 ```
 
 ## <a name="data-protection"></a>Защита данных

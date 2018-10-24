@@ -3,23 +3,24 @@ title: Встроенные вспомогательные функции тег
 author: pkellner
 description: Узнайте, как использовать встроенные вспомогательные функции тегов ASP.NET Core для более эффективной работы.
 ms.author: riande
-ms.date: 09/18/2018
+ms.custom: mvc
+ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 5d9425e0b68578c86a6f9a691322e0bb63a860fb
-ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
+ms.openlocfilehash: 58840d6ecd09bd2ae7f96c046a0cb93c018f9645
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46292314"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325488"
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a>Встроенные вспомогательные функции тегов ASP.NET Core
 
 Автор: [Питер Кельнер (Peter Kellner)](http://peterkellner.net)
 
-ASP.NET Core включает множество встроенных вспомогательных функций для эффективной работы с тегами. В этом разделе приводится их обзор.
+Общие сведения о вспомогательных функциях тегов см. здесь: <xref:mvc/views/tag-helpers/intro>.
 
 > [!NOTE]
-> Некоторые встроенные вспомогательные функции тегов здесь не рассматриваются, так как они используются для внутренних задач обработчика представлений [Razor](xref:mvc/views/razor). В их число входит вспомогательная функция для знака "~", который разворачивается к корневому пути веб-сайта.
+> Есть и другие встроенные вспомогательные функции тегов, которые здесь не описаны. Эти вспомогательные функции используются внутренними механизмами системой просмотра [Razor](xref:mvc/views/razor). В их число входит вспомогательная функция для знака `~` (тильда), который указывает на корневой путь веб-сайта.
 
 ## <a name="built-in-aspnet-core-tag-helpers"></a>Встроенные вспомогательные функции тегов ASP.NET Core
 
