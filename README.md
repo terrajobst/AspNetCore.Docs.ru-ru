@@ -1,13 +1,10 @@
-ASP.NET Docs
-============
+# <a name="aspnet-docs"></a><span data-ttu-id="74f1b-101">Документация ASP.NET</span><span class="sxs-lookup"><span data-stu-id="74f1b-101">ASP.NET Docs</span></span>
 
-This project provides the source for [docs.asp.net](http://docs.asp.net/). You can learn more about ASP.NET Core at the [Home](https://github.com/aspnet/home) repo. See the [Contributing Guide](CONTRIBUTING.md) and the [issues list](\https://github.com/aspnet/Docs/issues) if you would like to help out.
+<span data-ttu-id="74f1b-102">Этот репозиторий содержит концептуальные документы для ASP.NET Core и ASP.NET 4.x, размещенные на [docs.microsoft.com/aspnet](https://docs.microsoft.com/aspnet).</span><span class="sxs-lookup"><span data-stu-id="74f1b-102">This repository contains the conceptual ASP.NET Core and ASP.NET 4.x documentation hosted at [docs.microsoft.com/aspnet](https://docs.microsoft.com/aspnet).</span></span> <span data-ttu-id="74f1b-103">См. [руководство для участников](CONTRIBUTING.md) и [список проблем](https://github.com/aspnet/Docs/issues), если вы хотите помочь.</span><span class="sxs-lookup"><span data-stu-id="74f1b-103">See the [Contributing Guide](CONTRIBUTING.md) and the [issues list](https://github.com/aspnet/Docs/issues) if you would like to help out.</span></span>
 
-API PR's ( *api/autoapi/...* ) should not be made here. Changes to API documentation should be made in the source repository against the triple slash /// comments. 
+<span data-ttu-id="74f1b-104">Изменения в документации по API нужно вносить в [репозиторий ApiDocs](https://github.com/aspnet/ApiDocs) с комментариями с тройной косой чертой `///`.</span><span class="sxs-lookup"><span data-stu-id="74f1b-104">API documentation changes should be made in the [ApiDocs repository](https://github.com/aspnet/ApiDocs) against the triple slash `///` comments.</span></span>
 
-This project has adopted the [Microsoft Open Source Code of
-Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct
-FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com)
-with any additional questions or comments.
+## <a name="microsoft-open-source-code-of-conduct"></a><span data-ttu-id="74f1b-105">Правила поведения корпорации Майкрософт при работе с открытым кодом</span><span class="sxs-lookup"><span data-stu-id="74f1b-105">Microsoft Open Source Code of Conduct</span></span>
+
+<span data-ttu-id="74f1b-106">Этот проект ввела [Microsoft Open источника Кодекс](https://opensource.microsoft.com/codeofconduct/).</span><span class="sxs-lookup"><span data-stu-id="74f1b-106">This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).</span></span>
+<span data-ttu-id="74f1b-107">Дополнительные сведения см. в [вопросах и ответах по правилам поведения](https://opensource.microsoft.com/codeofconduct/faq/). С любыми дополнительными вопросами или комментариями обращайтесь по адресу [opencode@microsoft.com](mailto:opencode@microsoft.com).</span><span class="sxs-lookup"><span data-stu-id="74f1b-107">For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.</span></span>
