@@ -3,14 +3,15 @@ title: Миграция с ASP.NET Core 1.x на 2.0
 author: scottaddie
 description: В этой статье описываются предварительные требования и стандартные этапы миграции проекта ASP.NET Core 1.x в ASP.NET Core 2.0.
 ms.author: scaddie
-ms.date: 10/03/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 1052b17b433f06162325db340cd53ee61b76a184
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: f5bd2bc9862a7487658125e14837798886efad11
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272508"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090534"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>Миграция с ASP.NET Core 1.x на 2.0
 
@@ -23,11 +24,13 @@ ms.locfileid: "36272508"
 <a name="prerequisites"></a>
 
 ## <a name="prerequisites"></a>Предварительные требования
+
 См. [Начало работы с ASP.NET Core](xref:getting-started).
 
 <a name="tfm"></a>
 
 ## <a name="update-target-framework-moniker-tfm"></a>Обновление моникера целевой платформы (TFM)
+
 Проекты, предназначенные для .NET Core, должны использовать [моникер целевой платформы](/dotnet/standard/frameworks#referring-to-frameworks) версии не ниже .NET Core 2.0. Найдите в файле *CSPROJ* узел `<TargetFramework>` и замените его содержимое на `netcoreapp2.0`:
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=3)]
@@ -42,13 +45,15 @@ ms.locfileid: "36272508"
 <a name="global-json"></a>
 
 ## <a name="update-net-core-sdk-version-in-globaljson"></a>Обновление версии пакета SDK для .NET Core в файле global.json
-Если ваше решение использует файл [*global.json*](https://docs.microsoft.com/dotnet/core/tools/global-json) для указания целевой версии пакета SDK для .NET Core, измените значение свойства `version` так, чтобы использовалась версия 2.0, установленная на компьютере:
+
+Если ваше решение использует файл [*global.json*](/dotnet/core/tools/global-json) для указания целевой версии пакета SDK для .NET Core, измените значение свойства `version` так, чтобы использовалась версия 2.0, установленная на компьютере:
 
 [!code-json[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/global.json?highlight=3)]
 
 <a name="package-reference"></a>
 
 ## <a name="update-package-references"></a>Обновление ссылок на пакеты
+
 В файле *CSPROJ* в проекте версии 1.x перечислены все проекты NuGet, используемые проектом.
 
 В проекте ASP.NET Core 2.0, предназначенном для .NET Core 2.0, коллекция пакетов в файле *CSPROJ* заменяется ссылкой на один [метапакет](xref:fundamentals/metapackage):
@@ -66,6 +71,7 @@ ms.locfileid: "36272508"
 <a name="dot-net-cli-tool-reference"></a>
 
 ## <a name="update-net-core-cli-tools"></a>Обновление средств CLI для .NET Core
+
 Измените значение атрибута *каждого узла* в файле `Version`CSPROJ`<DotNetCliToolReference />` на 2.0.0.
 
 Например, вот список средств CLI, используемых в типичном проекте ASP.NET Core 2.0, предназначенном для .NET Core 2.0:
@@ -75,6 +81,7 @@ ms.locfileid: "36272508"
 <a name="package-target-fallback"></a>
 
 ## <a name="rename-package-target-fallback-property"></a>Переименование свойства PackageTargetFallback
+
 В проектах версии 1.x в файлах *CSPROJ* использовался узел `PackageTargetFallback` и переменная:
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=5)]
@@ -86,6 +93,7 @@ ms.locfileid: "36272508"
 <a name="program-cs"></a>
 
 ## <a name="update-main-method-in-programcs"></a>Обновление метода Main в файле Program.cs
+
 В проектах версии 1.x метод `Main` в файле *Program.cs* выглядел так:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Program.cs?name=snippet_ProgramCs&highlight=8-19)]
@@ -103,6 +111,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 <a name="add-modify-configuration"></a>
 
 ## <a name="add-configuration-providers"></a>Все поставщики конфигурации
+
 В проектах 1.x поставщики конфигурации добавлялись в приложение с помощью конструктора `Startup`. Для этого нужно было создать экземпляр `ConfigurationBuilder`, загрузить применимые поставщики (переменные сред, параметры приложений и т. д.) и инициализировать член `IConfigurationRoot`.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_1xStartup)]
@@ -124,10 +133,12 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 <a name="db-init-code"></a>
 
 ## <a name="move-database-initialization-code"></a>Перенос кода инициализации базы данных
+
 В проектах 1.x, где используется EF Core 1.x, такая команда, как `dotnet ef migrations add`, делает следующее.
+
 1. Создает экземпляр `Startup`.
-2. Вызывает метод `ConfigureServices`, чтобы зарегистрировать все службы с использованием вставки зависимостей (включая типы `DbContext`).
-3. Выполняет свои требуемые задачи.
+1. Вызывает метод `ConfigureServices`, чтобы зарегистрировать все службы с использованием вставки зависимостей (включая типы `DbContext`).
+1. Выполняет свои требуемые задачи.
 
 В проектах 2.0, где используется EF Core 2.0, вызывается `Program.BuildWebHost`, чтобы получить службы приложений. В отличие от 1.x, это также приводит к вызову `Startup.Configure`. Если ваше приложение 1.x вызвало код инициализации базы данных в своем методе `Configure`, могут возникнуть непредвиденные проблемы. Например, если база данных еще не существует, код заполнения запускается до выполнения команды миграции EF Core. Из-за этой проблемы, если база данных еще не существует, команда `dotnet ef migrations list` не срабатывает.
 
@@ -144,6 +155,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 <a name="view-compilation"></a>
 
 ## <a name="review-razor-view-compilation-setting"></a>Проверка параметра компиляции представлений Razor
+
 Сокращение времени запуска приложений и уменьшение размеров публикуемых пакетов крайне важны. По этой причине в ASP.NET Core 2.0 по умолчанию включена [компиляция представлений Razor](xref:mvc/views/view-compilation).
 
 Присваивать свойству `MvcRazorCompileOnPublish` значение true больше не нужно. Если вы не собираетесь отключать компиляцию представлений, это свойство можно удалить из файла *CSPROJ*.
@@ -155,12 +167,13 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 <a name="app-insights"></a>
 
 ## <a name="rely-on-application-insights-light-up-features"></a>Использование подсветки функций Application Insights
-Простота настройки инструментария для обеспечения производительности приложений имеет большое значение. Теперь вам доступны новые функции подготовки [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) в составе средств Visual Studio 2017.
+
+Простота настройки инструментария для обеспечения производительности приложений имеет большое значение. Теперь вам доступны новые функции подготовки [Application Insights](/azure/application-insights/app-insights-overview) в составе средств Visual Studio 2017.
 
 При создании проектов ASP.NET Core 1.1 в Visual Studio 2017 служба Application Insights добавлялась по умолчанию. Если вы не используете пакет SDK для Application Insights напрямую вне файлов *Program.cs* и *Startup.cs*, выполните указанные ниже действия.
 
 1. Для работы с .NET Core удалите из файла *CSPROJ* следующий узел `<PackageReference />`:
-    
+
     [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=10)]
 
 2. Для работы с .NET Core удалите вызов метода расширения `UseApplicationInsights` из файла *Program.cs*:
@@ -176,6 +189,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 <a name="auth-and-identity"></a>
 
 ## <a name="adopt-authenticationidentity-improvements"></a>Усовершенствования проверки подлинности и службы идентификации
+
 В ASP.NET Core 2.0 реализована новая модель проверки подлинности и внесен ряд важных изменений в удостоверение ASP.NET Core. Если при создании проекта вы включили отдельные учетные записи пользователей либо вручную добавили проверку подлинности или удостоверение, см. статью [Миграция на другой метод проверки подлинности и другие удостоверения в ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы

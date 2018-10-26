@@ -3,14 +3,15 @@ title: Введение в ASP.NET Core
 author: rick-anderson
 description: Введение в ASP.NET Core — кроссплатформенную высокопроизводительную платформу с открытым исходным кодом для создания современных облачных интернет-приложений.
 ms.author: riande
-ms.date: 9/28/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: index
-ms.openlocfilehash: 3bb86fa255548ff66592ac14c1020e0c6b47959c
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: fcd95b88b970073f4d7eddf89729683d18be449d
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391161"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090658"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -21,11 +22,11 @@ ASP.NET Core является кроссплатформенной, высоко
 * Создавать веб-приложения и службы, приложения [IoT](https://www.microsoft.com/internet-of-things/) и серверные части для мобильных приложений.
 * Использовать избранные средства разработки в Windows, macOS и Linux.
 * Выполнять развертывания в облаке или локальной среде.
-* Работать в [.NET Core или .NET Framework](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server).
+* Работать в [.NET Core или .NET Framework](/dotnet/articles/standard/choosing-core-framework-server).
 
 ## <a name="why-use-aspnet-core"></a>Зачем использовать ASP.NET Core?
 
-Миллионы разработчиков использовали и продолжают использовать [ASP.NET 4.x](https://docs.microsoft.com/aspnet/overview) для создания веб-приложений. ASP.NET Core — это модификация ASP.NET 4.x с архитектурными изменениями, формирующими более рациональную и более модульную платформу.
+Миллионы разработчиков использовали и продолжают использовать [ASP.NET 4.x](/aspnet/overview) для создания веб-приложений. ASP.NET Core — это модификация ASP.NET 4.x с архитектурными изменениями, формирующими более рациональную и более модульную платформу.
 
 [!INCLUDE[](~/includes/benefits.md)]
 
