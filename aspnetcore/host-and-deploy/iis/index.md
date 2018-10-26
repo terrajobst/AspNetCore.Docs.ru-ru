@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 12075f68dd828680f6bfbd46ea22ebd7bbe52dc7
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 5092564ad885b0de090129a7a0f0bbbd472cb868
+ms.sourcegitcommit: ce6b6792c650708e92cdea051a5d166c0708c7c0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326021"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49652349"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -85,13 +85,19 @@ public static IWebHost BuildWebHost(string[] args) =>
         ...
 ```
 
-Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. `CreateDefaultBuilder` вызывает метод <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>, который выбирает динамический порт и настраивает Kestrel для ожидания передачи данных на адрес `http://localhost:{dynamicPort}/`. Это переопределяет другие конфигурации URL-адресов, такие как вызовы `UseUrls` или [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). Таким образом, вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. Если вызван `UseUrls` или `Listen`, Kestrel ожидает передачи данных на порт только при выполнении приложения без IIS.
+Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. `CreateDefaultBuilder` вызывает метод <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>. `UseIISIntegration` настраивает Kestrel для прослушивания динамического порта по IP-адресу localhost (`127.0.0.1`). Если динамический порт — 1234, Kestrel прослушивает `127.0.0.1:1234`. Эта конфигурация заменяет другие конфигурации URL-адресов, предоставляемые:
+
+* `UseUrls`
+* [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration);
+* [Конфигурацией](xref:fundamentals/configuration/index) (или [параметром командной строки--urls](xref:fundamentals/host/web-host#override-configuration)).
+
+Вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel ожидает передачи данных на порты, указанные только при выполнении приложения без IIS.
 
 Дополнительные сведения о моделях размещения внутри и вне процесса см. в статьях <xref:fundamentals/servers/aspnet-core-module> и <xref:host-and-deploy/aspnet-core-module>.
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
+::: moniker range="= aspnetcore-2.1"
 
 Обычно *Program.cs* вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, чтобы начать настройку узла. `CreateDefaultBuilder` настраивает [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и активирует интеграцию IIS, задавая базовый путь и порт для [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module):
 
@@ -101,7 +107,33 @@ public static IWebHost BuildWebHost(string[] args) =>
         ...
 ```
 
-Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. `CreateDefaultBuilder` вызывает метод [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration), который принимает этот динамический порт и настраивает Kestrel для прослушивания по адресу `http://localhost:{dynamicPort}/`. Это переопределяет другие конфигурации URL-адресов, такие как вызовы `UseUrls` или [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). Таким образом, вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel прослушивает порт, указанный при выполнении приложения без IIS.
+Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. `CreateDefaultBuilder` вызывает метод [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration). `UseIISIntegration` настраивает Kestrel для прослушивания динамического порта по IP-адресу localhost (`127.0.0.1`). Если динамический порт — 1234, Kestrel прослушивает `127.0.0.1:1234`. Эта конфигурация заменяет другие конфигурации URL-адресов, предоставляемые:
+
+* `UseUrls`
+* [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration);
+* [Конфигурацией](xref:fundamentals/configuration/index) (или [параметром командной строки--urls](xref:fundamentals/host/web-host#override-configuration)).
+
+Вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel ожидает передачи данных на порт, указанный только при выполнении приложения без IIS.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Обычно *Program.cs* вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, чтобы начать настройку узла. `CreateDefaultBuilder` настраивает [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и активирует интеграцию IIS, задавая базовый путь и порт для [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module):
+
+```csharp
+public static IWebHost BuildWebHost(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        ...
+```
+
+Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. `CreateDefaultBuilder` вызывает метод [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration). `UseIISIntegration` настраивает Kestrel для прослушивания динамического порта по IP-адресу localhost (`localhost`). Если динамический порт — 1234, Kestrel прослушивает `localhost:1234`. Эта конфигурация заменяет другие конфигурации URL-адресов, предоставляемые:
+
+* `UseUrls`
+* [API прослушивания Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration);
+* [Конфигурацией](xref:fundamentals/configuration/index) (или [параметром командной строки--urls](xref:fundamentals/host/web-host#override-configuration)).
+
+Вызовы `UseUrls` или API `Listen` Kestrel при работе с этим модулем не требуются. При вызове `UseUrls` или `Listen` Kestrel ожидает передачи данных на порт, указанный только при выполнении приложения без IIS.
 
 ::: moniker-end
 
@@ -118,7 +150,12 @@ var host = new WebHostBuilder()
 
 Оба метода, [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel) и [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration), — обязательные. Код, вызывающий `UseIISIntegration`, не влияет на переносимость кода. Если приложение запускается не в IIS (например, запускается непосредственно в Kestrel), `UseIISIntegration` не работает.
 
-Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. Метод `UseIISIntegration` принимает этот динамический порт и настраивает Kestrel для прослушивания адресу `http://locahost:{dynamicPort}/`. Это переопределяет другие конфигурации URL-адресов, такие как вызовы `UseUrls`. Таким образом, при использовании этого модуля вызов `UseUrls` не требуется. При вызове `UseUrls` Kestrel прослушивает порт, указанный при выполнении приложения без IIS.
+Модуль ASP.NET Core создает динамический порт для назначения серверному процессу. `UseIISIntegration` настраивает Kestrel для прослушивания динамического порта по IP-адресу localhost (`localhost`). Если динамический порт — 1234, Kestrel прослушивает `localhost:1234`. Эта конфигурация заменяет другие конфигурации URL-адресов, предоставляемые:
+
+* `UseUrls`
+* [Конфигурацией](xref:fundamentals/configuration/index) (или [параметром командной строки--urls](xref:fundamentals/host/web-host#override-configuration)).
+
+При использовании этого модуля вызов `UseUrls` не требуется. При вызове `UseUrls` Kestrel ожидает передачи данных на порт, указанный только при выполнении приложения без IIS.
 
 При вызове `UseUrls` в приложении ASP.NET Core 1.0 следует выполнять вызов **до** вызова `UseIISIntegration`, чтобы исключить перезапись порта, настроенного в модуле. В ASP.NET Core 1.1 соблюдать этот порядок вызовов не требуется, так как параметр модуля переопределяет `UseUrls`.
 
@@ -137,7 +174,7 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| Параметр                         | По умолчанию | Параметр |
+| Параметр                         | Значение по умолчанию | Параметр |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Если значение — `true`, ПО промежуточного слоя для интеграции IIS задает свойство `HttpContext.User`, которое прошло [проверку подлинности Windows](xref:security/authentication/windowsauth). Если значение — `false`, ПО промежуточного слоя только предоставляет идентификатор для `HttpContext.User` и отвечает на явные запросы защиты от `AuthenticationScheme`. Для работы `AutomaticAuthentication` необходимо включить в службах IIS проверку подлинности Windows. Дополнительные сведения см. в статье о [проверке подлинности Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Задает отображаемое имя для пользователей на страницах входа. |
