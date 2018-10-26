@@ -3,14 +3,15 @@ title: Миграция с ASP.NET на ASP.NET Core 2.0
 author: isaac2004
 description: Получают рекомендации для переноса существующих приложений ASP.NET MVC или веб-API в ASP.NET Core 2.0.
 ms.author: scaddie
-ms.date: 08/27/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: migration/mvc2
-ms.openlocfilehash: 42fbabb2fe5bd79a72cd220230faa9d75ff1c9d8
-ms.sourcegitcommit: a742b55e4b8276a48b8b4394784554fecd883c84
+ms.openlocfilehash: 006eeeba28dbd351698e46547abe3c96818a63d9
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45538392"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090463"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>Миграция с ASP.NET на ASP.NET Core 2.0
 
@@ -28,7 +29,8 @@ ms.locfileid: "45538392"
   * Рабочая нагрузка **Кроссплатформенная разработка .NET Core**
 
 ## <a name="target-frameworks"></a>Требуемые версии .NET Framework
-Проекты ASP.NET Core 2.0 предлагают разработчикам гибкость работы с .NET Core и .NET Framework. Определить наиболее подходящую платформу поможет статья [Выбор между .NET Core и .NET Framework для серверных приложений](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
+
+Проекты ASP.NET Core 2.0 предлагают разработчикам гибкость работы с .NET Core и .NET Framework. Определить наиболее подходящую платформу поможет статья [Выбор между .NET Core и .NET Framework для серверных приложений](/dotnet/standard/choosing-core-framework-server).
 
 При разработке для .NET Framework проекты должны ссылаться на отдельные пакеты NuGet.
 
@@ -40,17 +42,20 @@ ms.locfileid: "45538392"
 </ItemGroup>
 ```
 
-При использовании метапакета никакие указанные по ссылкам пакеты с приложением не развертываются. Все эти ресурсы входят в хранилище среды выполнения .NET Core и предварительно компилируются для повышения производительности. Дополнительные сведения см. в статье [Метапакет Microsoft.AspNetCore.All для ASP.NET Core 2](xref:fundamentals/metapackage).
+При использовании метапакета никакие указанные по ссылкам пакеты с приложением не развертываются. Все эти ресурсы входят в хранилище среды выполнения .NET Core и предварительно компилируются для повышения производительности. См. в разделе <xref:fundamentals/metapackage> для получения дополнительных сведений.
 
 ## <a name="project-structure-differences"></a>Различия в структуре пакетов
-В ASP.NET Core упрощен формат файла *.csproj*. Вот некоторые основные изменения.
-- Чтобы файлы считались частью проекта, включать их явно теперь не требуется. Это уменьшает вероятность конфликтов слияния XML при работе в больших командах.
-- GUID-ссылки на другие проекты не используются, что повышает удобочитаемость файла.
-- Файл можно редактировать, не выгружая его в Visual Studio.
 
-    ![Параметр изменения файла CSPROJ в контекстном меню в Visual Studio 2017](_static/EditProjectVs2017.png)
+В ASP.NET Core упрощен формат файла *.csproj*. Вот некоторые основные изменения.
+
+* Чтобы файлы считались частью проекта, включать их явно теперь не требуется. Это уменьшает вероятность конфликтов слияния XML при работе в больших командах.
+* GUID-ссылки на другие проекты не используются, что повышает удобочитаемость файла.
+* Файл можно редактировать, не выгружая его в Visual Studio.
+
+  ![Параметр изменения файла CSPROJ в контекстном меню в Visual Studio 2017](_static/EditProjectVs2017.png)
 
 ## <a name="globalasax-file-replacement"></a>Замена файла Global.asax
+
 В ASP.NET Core появился новый механизм для начальной загрузки приложения. Точкой входа для приложений ASP.NET стал файл *Global.asax*. Такие задачи, как конфигурация маршрута, а также регистрации фильтров и областей, теперь выполняются в файле *Global.asax*.
 
 [!code-csharp[](samples/globalasax-sample.cs)]
@@ -77,9 +82,10 @@ ASP.NET Core использует аналогичный подход, но не
 
 Сервер и приложение разделены, что позволит вам в будущем легко перейти на другую платформу.
 
-**Примечание**. Более подробный справочник по запуску ASP.NET Core и ПО промежуточного слоя см. в статье [Запуск в ASP.NET Core](xref:fundamentals/startup).
+Более подробное руководство по запуску ASP.NET Core и по промежуточного слоя, см. в разделе <xref:fundamentals/startup>.
 
 ## <a name="storing-configurations"></a>Конфигурации хранения
+
 ASP.NET поддерживает параметры хранения. Эти параметры используются, например, для поддержки среды, в которой развертываются приложения. Как правило, все пользовательские пары ключей и значений хранятся в разделе `<appSettings>` файла *Web.config*:
 
 [!code-xml[](samples/webconfig-sample.xml)]
@@ -107,7 +113,7 @@ ASP.NET Core может сохранять данные конфигурации
 services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
 ````
 
-**Примечание**. Более подробное руководство по конфигурации ASP.NET Core см. в статье [Конфигурация в ASP.NET Core](xref:fundamentals/configuration/index).
+**Примечание:** более подробное руководство по конфигурации ASP.NET Core, см. в разделе <xref:fundamentals/configuration/index>.
 
 ## <a name="native-dependency-injection"></a>Собственные функции внедрения зависимостей
 
@@ -133,7 +139,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 Репозиторий, как и в Unity, можно внедрять где угодно.
 
-Дополнительные сведения о внедрении зависимостей в ASP.NET Core см. в разделе [внедрения зависимостей](xref:fundamentals/dependency-injection).
+Дополнительные сведения о внедрении зависимостей в ASP.NET Core см. в разделе <xref:fundamentals/dependency-injection>.
 
 ## <a name="serving-static-files"></a>Обработка статических файлов
 
@@ -149,7 +155,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 Например, ресурс изображения в папке *wwwroot/images* доступен для браузера в расположении `http://<app>/images/<imageFileName>`.
 
-**Примечание:** более подробное руководство по обработке статических файлов в ASP.NET Core, см. в разделе [статические файлы](xref:fundamentals/static-files).
+**Примечание:** более подробное руководство по обработке статических файлов в ASP.NET Core, см. в разделе <xref:fundamentals/static-files>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

@@ -3,14 +3,15 @@ title: Расширяемость управления ключами в ASP.NET
 author: rick-anderson
 description: Дополнительные сведения о расширяемости защиты данных в ASP.NET Core управление ключами.
 ms.author: riande
-ms.date: 11/22/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: b52212ff3462748a5c64f21e1b7854673e5fcadc
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: 1cf3fc30f72fb872ff9d7f33fc5ffb12a11a982f
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477466"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090619"
 ---
 # <a name="key-management-extensibility-in-aspnet-core"></a>Расширяемость управления ключами в ASP.NET Core
 
@@ -60,7 +61,7 @@ ms.locfileid: "49477466"
 
 ## <a name="xmlkeymanager"></a>XmlKeyManager
 
-`XmlKeyManager` Измеряется в поле конкретная реализация `IKeyManager`. Он предоставляет несколько полезных набор возможностей, включая перенос ключа, а также шифрование неактивных ключей. Ключи в этой системе представлены в виде XML-элементы (в частности, [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)).
+`XmlKeyManager` Измеряется в поле конкретная реализация `IKeyManager`. Он предоставляет несколько полезных набор возможностей, включая перенос ключа, а также шифрование неактивных ключей. Ключи в этой системе представлены в виде XML-элементы (в частности, [XElement](/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)).
 
 `XmlKeyManager` зависит от нескольких компонентов во время выполнении своих задач.
 

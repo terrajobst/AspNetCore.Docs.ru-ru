@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/26/2017
 uid: performance/caching/middleware
-ms.openlocfilehash: d991bc48ed07ee71b0decaa0bee4df811fdc74c4
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: b5eef012356236d600d026e5161a2df5a7954e3b
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477531"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090489"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>По промежуточного слоя в ASP.NET Core кэширования ответов
 
@@ -120,10 +120,10 @@ if (responseCachingFeature != null)
 
 Для большего контроля над поведением кэширования Изучите другие функции кэширования ASP.NET Core. См. указанные ниже разделы.
 
-* [Кэш в памяти](xref:performance/caching/memory)
-* [Работа с распределенным кэшем](xref:performance/caching/distributed)
-* [Вспомогательная функция тега в ASP.NET Core MVC кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Вспомогательная функция тега распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:performance/caching/memory>
+* <xref:performance/caching/distributed>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
@@ -155,11 +155,11 @@ if (responseCachingFeature != null)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Запуск приложения](xref:fundamentals/startup)
-* [ПО промежуточного слоя](xref:fundamentals/middleware/index)
-* [Кэш в памяти](xref:performance/caching/memory)
-* [Работа с распределенным кэшем](xref:performance/caching/distributed)
-* [Обнаружение изменений с помощью маркеров изменений](xref:fundamentals/change-tokens)
-* [Кэширование ответов](xref:performance/caching/response)
-* [Вспомогательная функция тега кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Вспомогательная функция тега распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:fundamentals/startup>
+* <xref:fundamentals/middleware/index>
+* <xref:performance/caching/memory>
+* <xref:performance/caching/distributed>
+* <xref:fundamentals/change-tokens>
+* <xref:performance/caching/response>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>

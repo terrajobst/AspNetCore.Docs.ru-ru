@@ -3,18 +3,19 @@ title: DevOps с помощью ASP.NET Core и Azure | Развертывани
 author: CamSoper
 description: Рекомендации по созданию сквозного решения конвейера DevOps для приложения ASP.NET Core, размещенного в Azure.
 ms.author: casoper
-ms.date: 08/07/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 710e65a048fdc062219e90b0db323e8e96fd8e9d
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: 33026ed510aae63a9e580aa5d708f94aad778fca
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340138"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090941"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Развертывание приложения в службе приложений
 
-[Служба приложений Azure](https://docs.microsoft.com/azure/app-service/) Azure веб-платформы размещения. Развертывание веб-приложения в службе приложений Azure можно сделать вручную или с помощью автоматизированного процесса. В этом разделе руководства рассматриваются методы развертывания, которые могут выполняться вручную или с помощью командной строки скрипта, или запускаются вручную с помощью Visual Studio.
+[Служба приложений Azure](/azure/app-service/) Azure веб-платформы размещения. Развертывание веб-приложения в службе приложений Azure можно сделать вручную или с помощью автоматизированного процесса. В этом разделе руководства рассматриваются методы развертывания, которые могут выполняться вручную или с помощью командной строки скрипта, или запускаются вручную с помощью Visual Studio.
 
 В этом разделе вы будете выполнять следующие задачи:
 
@@ -70,7 +71,7 @@ ms.locfileid: "44340138"
 
 ## <a name="create-the-azure-app-service-web-app"></a>Создание веб-приложения службы приложений Azure
 
-Чтобы развернуть приложение, необходимо создать службу приложений [веб-приложение](https://docs.microsoft.com/azure/app-service/app-service-web-overview). После создания веб-приложения вы развернете в него с локального компьютера с помощью Git.
+Чтобы развернуть приложение, необходимо создать службу приложений [веб-приложение](/azure/app-service/app-service-web-overview). После создания веб-приложения вы развернете в него с локального компьютера с помощью Git.
 
 1. Войдите в [Azure Cloud Shell](https://shell.azure.com/bash). Примечание: При входе в систему в первый раз Cloud Shell предлагает создать учетную запись хранения для файлов конфигурации. Примите значения по умолчанию или задайте уникальное имя.
 
@@ -88,7 +89,7 @@ ms.locfileid: "44340138"
     az group create --location centralus --name AzureTutorial
     ```
 
-    `az` Команда вызывает [Azure CLI](https://docs.microsoft.com/cli/azure/). Интерфейс командной строки можно выполнять локально, но использовать его в Cloud Shell экономит время и конфигурации.
+    `az` Команда вызывает [Azure CLI](/cli/azure/). Интерфейс командной строки можно выполнять локально, но использовать его в Cloud Shell экономит время и конфигурации.
 
     В. Создайте план службы приложений на уровне S1. План службы приложений — это группа веб-приложений, которые совместно используют тот же уровень ценообразования. Уровень на S1 не бесплатные, но это обязательно для функцию промежуточных слотов.
 
@@ -238,7 +239,7 @@ Visual Studio создает и развертывает приложение в
 
 ## <a name="additional-reading"></a>Дополнительные материалы для чтения
 
-* [Обзор веб-приложений](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
-* [Создание веб-приложения .NET Core с базой данных SQL в службе приложений Azure](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
-* [Настройка учетных данных развертывания для службы приложений Azure](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials)
-* [Настройка промежуточных сред в службе приложений Azure](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing)
+* [Обзор веб-приложений](/azure/app-service/app-service-web-overview)
+* [Создание веб-приложения .NET Core с базой данных SQL в службе приложений Azure](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
+* [Настройка учетных данных развертывания для службы приложений Azure](/azure/app-service/app-service-deployment-credentials)
+* [Настройка промежуточных сред в службе приложений Azure](/azure/app-service/web-sites-staged-publishing)

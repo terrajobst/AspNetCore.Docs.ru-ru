@@ -5,12 +5,12 @@ description: Узнайте, как использовать кэширован�
 ms.author: riande
 ms.date: 09/20/2017
 uid: performance/caching/response
-ms.openlocfilehash: 4bf61502738d70760679ec98c8f2f303eca9d504
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: bbf5b649bac9d31aa6d0ecdc3828648677b05716
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477493"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090697"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Кэширование ответов в ASP.NET Core
 
@@ -68,7 +68,7 @@ ms.locfileid: "49477493"
 
 Используйте распределенный кэш для хранения данных в памяти, когда приложение будет размещено в облаке или сервер фермы. Кэш распределяется по всем серверам, которые обрабатывают запросы. Клиент может отправить запрос, обрабатываемый любой сервер в группе, при наличии кэшированных данных для клиента. ASP.NET Core предлагает SQL Server и кэши Redis распределенных.
 
-Дополнительные сведения см. в разделе [Работа с распределенным кэшем](xref:performance/caching/distributed).
+Дополнительные сведения см. в разделе <xref:performance/caching/distributed>.
 
 ### <a name="cache-tag-helper"></a>Вспомогательная функция тега кэша
 
@@ -230,9 +230,9 @@ Cache-Control: public,max-age=60
 
 * [Сохранения ответов в кэше](https://tools.ietf.org/html/rfc7234#section-3)
 * [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
-* [Кэш в памяти](xref:performance/caching/memory)
-* [Работа с распределенным кэшем](xref:performance/caching/distributed)
-* [Обнаружение изменений с помощью маркеров изменений](xref:fundamentals/change-tokens)
-* [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
-* [Вспомогательная функция тега кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Вспомогательная функция тега распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:performance/caching/memory>
+* <xref:performance/caching/distributed>
+* <xref:fundamentals/change-tokens>
+* <xref:performance/caching/middleware>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>

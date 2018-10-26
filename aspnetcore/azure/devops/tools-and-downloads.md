@@ -3,18 +3,19 @@ title: DevOps с помощью ASP.NET Core и Azure | Средства и фа
 author: CamSoper
 description: Рекомендации по созданию сквозного решения конвейера DevOps для приложения ASP.NET Core, размещенного в Azure.
 ms.author: casoper
-ms.date: 08/07/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: 5529068b83db475315784571fbf4151d7ecd0d5d
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: 573e257e6fc7614010a8749ff439f16011c2c10a
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340164"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50089387"
 ---
 # <a name="tools-and-downloads"></a>Средства и файлы для загрузки
 
-Azure имеет несколько интерфейсов для подготовки и управления ресурсами, такими как [портала Azure](https://portal.azure.com), [Azure CLI](https://docs.microsoft.com/cli/azure/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), [облако Azure Оболочка](https://shell.azure.com/bash)и Visual Studio. В этом руководстве принимает минималистский подход и использует Azure Cloud Shell, чтобы уменьшить шаги. Тем не менее портала Azure необходимо использовать для некоторых частей.
+Azure имеет несколько интерфейсов для подготовки и управления ресурсами, такими как [портала Azure](https://portal.azure.com), [Azure CLI](/cli/azure/), [Azure PowerShell](/powershell/azure/overview), [облако Azure Оболочка](https://shell.azure.com/bash)и Visual Studio. В этом руководстве принимает минималистский подход и использует Azure Cloud Shell, чтобы уменьшить шаги. Тем не менее портала Azure необходимо использовать для некоторых частей.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -39,7 +40,7 @@ Azure имеет несколько интерфейсов для подгото
 
 * [Visual Studio](https://www.visualstudio.com/)в надежные средства Azure предоставляют графический интерфейс пользователя для большинства функций, описанных в этом руководстве. Подойдет любой выпуск Visual Studio, включая бесплатный выпуск Visual Studio Community. Учебники, записываются для демонстрации разработки, развертывания и инструменты DevOps с и без Visual Studio.
 
-  Убедитесь, что Visual Studio имеет следующие [рабочих нагрузок](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) установлен:
+  Убедитесь, что Visual Studio имеет следующие [рабочих нагрузок](/visualstudio/install/modify-visual-studio) установлен:
 
   * ASP.NET и веб-разработка
   * Разработка для Azure

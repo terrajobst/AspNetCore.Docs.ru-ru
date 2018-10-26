@@ -3,14 +3,15 @@ title: Защита данных в ASP.NET Core
 author: rick-anderson
 description: Дополнительные сведения о концепции защиты данных и принципы проектирования API защиты данных ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: security/data-protection/introduction
-ms.openlocfilehash: a49eee89e8c11b26c76ba167215c141482159933
-ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
+ms.openlocfilehash: 37f170a3e8a46ef2215b0999358d46dd402636df
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46292301"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50089552"
 ---
 # <a name="aspnet-core-data-protection"></a>Защита данных в ASP.NET Core
 
@@ -44,7 +45,7 @@ ms.locfileid: "46292301"
 
 С помощью этих принципов в виду, мы разработали это простые, [прост в использовании](xref:security/data-protection/using-data-protection) стеке защиты данных.
 
-Интерфейсы API защиты данных ASP.NET Core не предназначены главным образом для неопределенного сохраняемости конфиденциальных полезных данных. Другие технологии, такие как [Windows CNG DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) и [Azure Rights Management](https://docs.microsoft.com/rights-management/) больше подходят для сценария неопределенное хранилища, и они обладают возможностями соответственно строгого управления ключами. С другой стороны, нет ничего запрет разработчику использовать интерфейсы API защиты данных ASP.NET Core для долгосрочной защиты конфиденциальных данных.
+Интерфейсы API защиты данных ASP.NET Core не предназначены главным образом для неопределенного сохраняемости конфиденциальных полезных данных. Другие технологии, такие как [Windows CNG DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) и [Azure Rights Management](/rights-management/) больше подходят для сценария неопределенное хранилища, и они обладают возможностями соответственно строгого управления ключами. С другой стороны, нет ничего запрет разработчику использовать интерфейсы API защиты данных ASP.NET Core для долгосрочной защиты конфиденциальных данных.
 
 ## <a name="audience"></a>Аудитория
 

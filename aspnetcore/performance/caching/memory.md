@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/15/2018
 uid: performance/caching/memory
-ms.openlocfilehash: be2e81d1aa6a89d65414d53a70ca2d2fb5d2d3a3
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: f0d5bb74985b6ce0da7d4c5b69e31b8d2bbb5105
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477193"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090050"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Кэш в памяти в ASP.NET Core
 
@@ -172,9 +172,9 @@ Non прикрепленные сеансы на веб-ферме требуе�
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Работа с распределенным кэшем](xref:performance/caching/distributed)
-* [Обнаружение изменений с помощью маркеров изменений](xref:fundamentals/change-tokens)
-* [Кэширование ответов](xref:performance/caching/response)
-* [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
-* [Вспомогательная функция тега кэша](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Вспомогательная функция тега распределенного кэша](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:performance/caching/distributed>
+* <xref:fundamentals/change-tokens>
+* <xref:performance/caching/response>
+* <xref:performance/caching/middleware>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>

@@ -1,24 +1,24 @@
 ---
-title: Авторизация в нужной раскладки в ASP.NET Core
+title: Авторизация с определенной схемой в ASP.NET Core
 author: rick-anderson
-description: В этой статье объясняется, как ограничить удостоверение для нужной раскладки при работе с несколькими методами проверки подлинности.
+description: В этой статье объясняется, как для ограничения удостоверений для определенной схемы, при работе с нескольких методов проверки подлинности.
 ms.author: riande
-ms.date: 10/12/2017
+ms.date: 10/22/2018
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: 231c664006ee7ff91f471aa8d16c1fd18dcbabb1
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: fbe9f32e01a214f41b5a6e9f43e8fdee5fc612df
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278204"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50089400"
 ---
-# <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>Авторизация в нужной раскладки в ASP.NET Core
+# <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>Авторизация с определенной схемой в ASP.NET Core
 
-В некоторых сценариях, например приложений на одной странице (SPAs) обычно используется несколько методов проверки подлинности. Например приложение может использовать проверку подлинности на основе файлов cookie для входа и проверки подлинности носителя JWT для запросов JavaScript. В некоторых случаях приложение может иметь несколько экземпляров обработчик проверки подлинности. Например два обработчика куки-файл, где один содержит основные идентификаторов и один создается при инициирована многофакторная проверка подлинности (MFA). Могут быть предприняты многофакторной проверки Подлинности, поскольку пользователь запросил операцию, которая требует дополнительной безопасности.
+В некоторых сценариях, таких как одностраничные приложения (SPA) довольно часто для использования нескольких методов проверки подлинности. Например приложение может использовать проверку подлинности на основе файлов cookie для входа и проверки подлинности носителя JWT для запросов JavaScript. В некоторых случаях приложение может иметь несколько экземпляров обработчика проверки подлинности. Например два обработчика файлов cookie, где один содержит базовой идентификации и один создается при активации многофакторной проверки подлинности (MFA). Могут быть предприняты многофакторной проверки Подлинности, поскольку пользователь запросил операцию, которая требует дополнительной безопасности.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Имя схемы проверки подлинности — при настройке службы проверки подлинности во время проверки подлинности. Пример:
+При настройке службы проверки подлинности во время проверки подлинности с именем схемы проверки подлинности. Пример:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -36,14 +36,14 @@ public void ConfigureServices(IServiceCollection services)
         });
 ```
 
-В приведенном выше коде были добавлены два обработчики проверки подлинности: один для файлов cookie и один для носителя.
+В приведенном выше коде, были добавлены два обработчика проверки подлинности: один для файлов cookie и один для носителя.
 
 >[!NOTE]
->Указание схемы по умолчанию приводит к `HttpContext.User` свойства, задаваемого этому удостоверению. Если такое поведение не требуется, отключите его с вызова без параметров форме `AddAuthentication`.
+>Указывает схему по умолчанию приводит `HttpContext.User` свойство этому удостоверению. Если такое поведение не требуется, отключите его путем вызова без параметров вида `AddAuthentication`.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Схемы проверки подлинности-это именованные middlewares проверки подлинности настраиваются во время проверки подлинности. Пример:
+Схемы проверки подлинности присваиваются в том случае, если по промежуточного слоя проверки подлинности настраиваются во время проверки подлинности. Пример:
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -68,16 +68,16 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
     });
 ```
 
-В приведенном выше коде были добавлены два middlewares проверки подлинности: один для файлов cookie и один для носителя.
+В приведенном выше коде, были добавлены два компонента проверки подлинности: один для файлов cookie и один для носителя.
 
 >[!NOTE]
->Указание схемы по умолчанию приводит к `HttpContext.User` свойства, задаваемого этому удостоверению. Если такое поведение не требуется, отключить, задав `AuthenticationOptions.AutomaticAuthenticate` свойства `false`.
+>Указывает схему по умолчанию приводит `HttpContext.User` свойство этому удостоверению. Если такое поведение не требуется, отключить, задав `AuthenticationOptions.AutomaticAuthenticate` свойства `false`.
 
 ---
 
-## <a name="selecting-the-scheme-with-the-authorize-attribute"></a>При выборе схемы с атрибутом авторизовать
+## <a name="selecting-the-scheme-with-the-authorize-attribute"></a>Выбор схемы с помощью атрибута авторизации
 
-Во время авторизации приложение сообщает, что обработчик для использования. Выберите обработчик, с помощью которого приложение будет авторизации, передавая список с разделителями запятыми схем проверки подлинности для `[Authorize]`. `[Authorize]` Атрибут указывает схему проверки подлинности или схем, которые будут использовать независимо от того, настроена ли значение по умолчанию. Пример:
+При авторизации приложение указывает обработчик для использования. Выберите обработчик, с которым приложение будет авторизовать путем передачи разделенный запятыми список схем проверки подлинности `[Authorize]`. `[Authorize]` Атрибут указывает схему проверки подлинности или схемы, чтобы использовать независимо от того, настроена ли по умолчанию. Пример:
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -107,7 +107,7 @@ public class MixedController : Controller
 
 ---
 
-В предыдущем примере носителя и файл cookie обработчики запуска и иметь возможность создания и добавления удостоверение для текущего пользователя. Указав только одну схему, выполняется соответствующий обработчик.
+В приведенном выше примере носителя и файл cookie обработчики запуска и иметь возможность создать и добавить удостоверение для текущего пользователя. Указав только единственную схему, выполняется соответствующий обработчик.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -127,11 +127,11 @@ public class MixedController : Controller
 
 ---
 
-В приведенном выше коде выполняется обработчик, со схемой «Bearer». Всех удостоверений на основе файлов cookie учитываются.
+В приведенном выше коде выполняется только обработчик с использованием схемы «Bearer». Удостоверения на основе файлов cookie учитываются.
 
-## <a name="selecting-the-scheme-with-policies"></a>При выборе схемы с помощью политик
+## <a name="selecting-the-scheme-with-policies"></a>Выбор схемы с помощью политик
 
-Чтобы задать нужный схем в [политики](xref:security/authorization/policies), можно задать `AuthenticationSchemes` коллекции при добавлении политики:
+Если вы хотите задать нужный схем в [политики](xref:security/authorization/policies), можно задать `AuthenticationSchemes` коллекции при добавлении политики:
 
 ```csharp
 services.AddAuthorization(options =>
@@ -145,9 +145,62 @@ services.AddAuthorization(options =>
 });
 ```
 
-В предыдущем примере политики «Over18» выполняется только для идентификаторов, созданные с помощью обработчика «Bearer». Используйте политику, задав `[Authorize]` атрибута `Policy` свойство:
+В приведенном выше примере «Over18» политики выполняется только от удостоверения, созданного с помощью обработчика «Bearer». Используйте политику, задав `[Authorize]` атрибута `Policy` свойство:
 
 ```csharp
 [Authorize(Policy = "Over18")]
 public class RegistrationController : Controller
 ```
+
+::: moniker range=">= aspnetcore-2.0"
+
+## <a name="use-multiple-authentication-schemes"></a>Использование нескольких схем проверки подлинности
+
+Некоторые приложения может потребоваться поддержка нескольких типов проверки подлинности. Например приложение может проверять подлинность пользователей из Azure Active Directory и из базы данных пользователей. Другой пример — приложение, которое выполняет проверку подлинности пользователей служб федерации Active Directory и Azure Active Directory B2C. В этом случае приложение должно принимать токена носителя JWT от нескольких поставщиков.
+
+Добавьте все схемы проверки подлинности, которые вы хотите принять. Например, следующий код в `Startup.ConfigureServices` добавляет две схемы проверки подлинности носителя JWT с помощью различных поставщиков:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // Code omitted for brevity
+
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.Audience = "https://localhost:5000/";
+            options.Authority = "https://localhost:5000/identity/";
+        })
+        .AddJwtBearer("AzureAD", options =>
+        {
+            options.Audience = "https://localhost:5000/";
+            options.Authority = "https://login.microsoftonline.com/eb971100-6f99-4bdc-8611-1bc8edd7f436/";
+        });
+}
+```
+
+> [!NOTE]
+> Схема проверки подлинности по умолчанию зарегистрирован только один проверки подлинности носителя JWT `JwtBearerDefaults.AuthenticationScheme`. Дополнительная проверка подлинности должен быть зарегистрирован с уникальной аутентификацией на основе схемы.
+
+Следующим шагом является обновление политики авторизации по умолчанию для приема обе схемы проверки подлинности. Пример:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // Code omitted for brevity
+
+    services.AddAuthorization(options =>
+    {
+        var defaultAuthorizationPolicyBuilder = new AuthorizationPolicyBuilder(
+            JwtBearerDefaults.AuthenticationScheme,
+            "AzureAD");
+        defaultAuthorizationPolicyBuilder = 
+            defaultAuthorizationPolicyBuilder.RequireAuthenticatedUser();
+        options.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
+    });
+}
+```
+
+Как политика авторизации по умолчанию переопределяется, можно использовать простую `[Authorize]` атрибутом в контроллерах. Затем контроллер принимает запросы с маркер JWT, выданный первого или второго поставщика.
+
+::: moniker-end
