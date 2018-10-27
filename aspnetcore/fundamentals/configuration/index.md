@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/09/2018
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 35f283becd156da22a4d9d2034055ee79b75ffda
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: f60b0611a8fa1880273dd465f23a262c135c37db
+ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326177"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50148906"
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -88,7 +88,7 @@ ms.locfileid: "49326177"
 
 Дополнительные сведения см. в статье [Использование нескольких сред в ASP.NET Core](xref:fundamentals/environments) и руководствуйтесь статьей [Безопасное хранение секретов приложения во время разработки в ASP.NET Core](xref:security/app-secrets) (включает рекомендации по использованию переменной среды для хранения конфиденциальных данных). Менеджер секретов использует поставщик конфигурации файла для хранения конфиденциальных данных пользователя в файле JSON в локальной системе. Поставщик конфигурации файлов описан ниже в этом разделе.
 
-[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) — один из вариантов для безопасного хранения секретов приложения. Для получения дополнительной информации см. <xref:security/key-vault-configuration>.
+[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) — один из вариантов для безопасного хранения секретов приложения. Дополнительные сведения см. в разделе <xref:security/key-vault-configuration>.
 
 ## <a name="hierarchical-configuration-data"></a>Иерархическая модель конфигурации
 
@@ -238,7 +238,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-В приведенном выше примере имя среды (`env.EnvironmentName`) и имя сборки приложения (`env.ApplicationName`) предоставляются <xref:Microsoft.Extensions.Hosting.IHostingEnvironment>. Для получения дополнительной информации см. <xref:fundamentals/environments>.
+В приведенном выше примере имя среды (`env.EnvironmentName`) и имя сборки приложения (`env.ApplicationName`) предоставляются <xref:Microsoft.Extensions.Hosting.IHostingEnvironment>. Дополнительные сведения см. в разделе <xref:fundamentals/environments>.
 
 ::: moniker-end
 
@@ -293,7 +293,7 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 // Call other providers here and call AddCommandLine last.
-                config.AddCommandLine(args)
+                config.AddCommandLine(args);
             })
             .UseStartup<Startup>();
 }
@@ -432,7 +432,7 @@ public class Program
         WebHost.CreateDefaultBuilder()
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
-                config.AddCommandLine(args, _switchMappings)
+                config.AddCommandLine(args, _switchMappings);
             })
             .UseStartup<Startup>();
 }
@@ -571,7 +571,7 @@ public class Program
                 // Call additional providers here as needed.
                 // Call AddEnvironmentVariables last if you need to allow environment
                 // variables to override values from other providers.
-                config.AddEnvironmentVariables(prefix: "PREFIX_")
+                config.AddEnvironmentVariables(prefix: "PREFIX_");
             })
             .UseStartup<Startup>();
 }
@@ -653,7 +653,7 @@ var host = new WebHostBuilder()
 
 * ASPNETCORE_
 * urls
-* Ведение журналов
+* Ведение журнала
 * ENVIRONMENT
 * contentRoot
 * AllowedHosts
@@ -756,7 +756,7 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddIniFile("config.ini", optional: true, reloadOnChange: true)
+                config.AddIniFile("config.ini", optional: true, reloadOnChange: true);
             })
             .UseStartup<Startup>();
 }
@@ -887,7 +887,7 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddJsonFile("config.json", optional: true, reloadOnChange: true)
+                config.AddJsonFile("config.json", optional: true, reloadOnChange: true);
             })
             .UseStartup<Startup>();
 }
@@ -968,7 +968,7 @@ var host = new WebHostBuilder()
 | -------------------------- | :---------------: | :--------------: |
 | Logging:LogLevel:System    | Сведения       | Сведения      |
 | Logging:LogLevel:Microsoft | Сведения       | Сведения      |
-| Logging:LogLevel:Default   | Отладка             | Ошибка            |
+| Logging:LogLevel:Default   | Отладка             | Error            |
 | AllowedHosts               | *                 | *                |
 
 ### <a name="xml-configuration-provider"></a>Поставщик конфигурации XML
@@ -1002,7 +1002,7 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddXmlFile("config.xml", optional: true, reloadOnChange: true)
+                config.AddXmlFile("config.xml", optional: true, reloadOnChange: true);
             })
             .UseStartup<Startup>();
 }
@@ -1151,7 +1151,7 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddKeyPerFile(directoryPath: path, optional: true)
+                config.AddKeyPerFile(directoryPath: path, optional: true);
             })
             .UseStartup<Startup>();
 }
@@ -1204,7 +1204,7 @@ public class Program
         WebHost.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
-                config.AddInMemoryCollection(_dict)
+                config.AddInMemoryCollection(_dict);
             })
             .UseStartup<Startup>();
 }
@@ -1367,7 +1367,7 @@ var sectionExists = _config.GetSection("section2:subsection2").Exists();
 
 ## <a name="bind-to-a-class"></a>Привязка к классу
 
-Конфигурация может быть привязана к классам, которые представляют группы связанных параметров, используя шаблон *вариантов*. Для получения дополнительной информации см. <xref:fundamentals/configuration/options>.
+Конфигурация может быть привязана к классам, которые представляют группы связанных параметров, используя шаблон *вариантов*. Дополнительные сведения см. в разделе <xref:fundamentals/configuration/options>.
 
 Значения конфигурации возвращаются как строки, но вызов <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> позволяет построить объекты [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object).
 
@@ -1854,7 +1854,7 @@ public class Startup
 
 ## <a name="add-configuration-from-an-external-assembly"></a>Добавление конфигурации из внешней сборки
 
-Реализация <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> позволяет при запуске добавлять в приложение улучшения из внешней сборки вне приложения класса `Startup`. Для получения дополнительной информации см. <xref:fundamentals/configuration/platform-specific-configuration>.
+Реализация <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> позволяет при запуске добавлять в приложение улучшения из внешней сборки вне приложения класса `Startup`. Дополнительные сведения см. в разделе <xref:fundamentals/configuration/platform-specific-configuration>.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
