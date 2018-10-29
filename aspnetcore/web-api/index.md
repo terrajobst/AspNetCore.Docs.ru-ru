@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/15/2018
 uid: web-api/index
-ms.openlocfilehash: d410f28ff7fda3bf33f73c06b3e626dfd4ee7dd8
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: 763b95fb8ed3806bc67b7ad199153ea1027efa57
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41822144"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090424"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>Сборка веб-API с использованием ASP.NET Core
 
@@ -47,7 +47,7 @@ ms.locfileid: "41822144"
 
 [!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Controllers/ProductsController.cs?name=snippet_ControllerSignature&highlight=2)]
 
-Для использования этого атрибута требуется версия совместимости 2.1 или более поздняя, заданная с помощью <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*>. Например, выделенный код в *Startup.ConfigureServices* задает флаг совместимости 2.1:
+Для использования этого атрибута требуется версия совместимости 2.1 или более поздняя, заданная с помощью <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*>. Например, выделенный код в *Startup.ConfigureServices* задает флаг совместимости 2.2:
 
 [!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Startup.cs?name=snippet_SetCompatibilityVersion&highlight=2)]
 
@@ -61,15 +61,46 @@ ms.locfileid: "41822144"
 
 В следующих разделах описаны удобные функции, добавляемые этим атрибутом.
 
+### <a name="problem-details-responses-for-error-status-codes"></a>Отклики со сведениями о проблемах для кодов состояния ошибки
+
+ASP.NET Core 2.1 и более поздние версии содержат [ProblemDetails](xref:Microsoft.AspNetCore.Mvc.ProblemDetails) — тип на основе [спецификации RFC 7807](https://tools.ietf.org/html/rfc7807). Тип `ProblemDetails` предоставляет стандартизированный формат для передачи распознаваемых компьютером сведений об ошибках в HTTP-отклике.
+
+В ASP.NET Core 2.2 и более поздних версиях MVC преобразует результаты кода состояния ошибки (код состояния 400 и выше) в результат с помощью `ProblemDetails`. Рассмотрим следующий код.
+
+[!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Controllers/PetsController.cs?name=snippet_ProblemDetails_StatusCode&highlight=4)]
+
+HTTP-отклик для результата `NotFound`содержит код состояния 404 с текстом `ProblemDetails`, подобным следующему:
+
+```js
+{
+    type: "https://tools.ietf.org/html/rfc7231#section-6.5.4",
+    title: "Not Found",
+    status: 404,
+    traceId: "0HLHLV31KRN83:00000001"
+}
+```
+
+Для функции сведений о проблеме необходим флаг совместимости 2.2 или более поздней версии. Поведение по умолчанию отключается, если свойству [SuppressModelStateInvalidFilter](/dotnet/api/microsoft.aspnetcore.Mvc.ApiBehaviorOptions) <!--  Until these resolve, link to the parent class <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressMapClientErrors> --> задано значение `true`. Следующий выделенный код из `Startup.ConfigureServices` отключает сведения о проблеме:
+
+[!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Startup.cs?name=snippet_SetCompatibilityVersion&highlight=8)]
+
+Используйте свойство [ClientErrorMapping](/dotnet/api/microsoft.aspnetcore.Mvc.ApiBehaviorOptions) <!--  Until these resolve, link to the parent class <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping> -->, чтобы настроить содержимое отклика `ProblemDetails`. Например, в следующем коде показано обновление свойства `type` для откликов 404:
+
+[!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Startup.cs?name=snippet_SetCompatibilityVersion&highlight=10)]
+
 ### <a name="automatic-http-400-responses"></a>Автоматические отклики HTTP 400
 
 Ошибки проверки автоматически активируют отклик HTTP 400. Следующий код становится ненужным в ваших действиях:
 
 [!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api.Pre21/Controllers/PetsController.cs?name=snippet_ModelStateIsValidCheck)]
 
+Используйте <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory> для настройки выходных данных итогового отклика.
+
 Поведение по умолчанию отключается, если свойству <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressModelStateInvalidFilter> задано значение `true`. Добавьте следующий код в *Startup.ConfigureServices* после `services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);`:
 
 [!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=5)]
+
+Если установлен флаг совместимости 2.2 или более поздней версии, для откликов 400 по умолчанию возвращается тип отклика <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>. Воспользуйтесь свойством [SuppressUseValidationProblemDetailsForInvalidModelStateResponses](/dotnet/api/microsoft.aspnetcore.Mvc.ApiBehaviorOptions) <!--  <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressUseValidationProblemDetailsForInvalidModelStateResponses> -->, чтобы использовать формат ошибок ASP.NET Core 2.1.
 
 ### <a name="binding-source-parameter-inference"></a>Вывод параметров источника привязки
 
