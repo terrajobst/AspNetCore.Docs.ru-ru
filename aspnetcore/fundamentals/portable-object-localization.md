@@ -5,12 +5,12 @@ description: Эта статья содержит вводные сведени�
 ms.author: scaddie
 ms.date: 09/26/2017
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 0baa8dbb1f42cdc30185108fe90937f89d0d42bf
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c9f892f5a886d7167b4705595ed2277279495201
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275789"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207632"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Настройка локализации переносных объектов в ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "36275789"
 
 **Примечание**. Orchard Core не является продуктом корпорации Майкрософт. Поэтому корпорация Майкрософт не предоставляет поддержку для этого компонента.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>Что такое файл переносимых объектов?
 

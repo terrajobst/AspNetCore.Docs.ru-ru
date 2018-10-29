@@ -3,14 +3,15 @@ title: ASP.NET Core MVC с EF Core — параллелизм — 8 из 10
 author: rick-anderson
 description: Это руководство описывает, как обрабатывать конфликты, когда несколько пользователей одновременно изменяют одну сущность.
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 9bf65621213c9657232dfff1701c9937d5105a9c
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 0ae566a76a2ef656843452ed537b8fdfbddaed22
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38186641"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090905"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---concurrency---8-of-10"></a>ASP.NET Core MVC с EF Core — параллелизм — 8 из 10
 
@@ -219,7 +220,6 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 В шаблонном коде, который вы только что заменили, этот метод принимал только идентификатор записи:
 
-
 ```csharp
 public async Task<IActionResult> DeleteConfirmed(int id)
 ```
@@ -278,7 +278,7 @@ public async Task<IActionResult> Delete(Department department)
 
 ## <a name="summary"></a>Сводка
 
-На этом заканчивается введение в обработку конфликтов параллелизма. Дополнительные сведения об обработке параллелизма в EF Core см. в разделе [Конфликты параллелизма](https://docs.microsoft.com/ef/core/saving/concurrency). Следующее руководство описывает, как реализовать наследование "одна таблица на иерархию" для сущностей Instructor и Student.
+На этом заканчивается введение в обработку конфликтов параллелизма. Дополнительные сведения об обработке параллелизма в EF Core см. в разделе [Конфликты параллелизма](/ef/core/saving/concurrency). Следующее руководство описывает, как реализовать наследование "одна таблица на иерархию" для сущностей Instructor и Student.
 
 ::: moniker-end
 

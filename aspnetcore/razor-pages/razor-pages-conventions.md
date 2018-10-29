@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 10/12/2018
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: 13fd6c156afd5ab62739b09296a929120ce3450f
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: f04e0930966c9aaf38543729565b1ef4a80a09e2
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348537"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207697"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>Соглашения для маршрутов и приложений Razor Pages в ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.locfileid: "49348537"
 
 Существуют зарезервированные слова, которые нельзя использовать в качестве сегментами маршрута или имена параметров. Дополнительные сведения см. в разделе [маршрутизации: зарезервированных имен маршрутизации](xref:fundamentals/routing#reserved-routing-names).
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/sample/) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/sample/) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ::: moniker range="= aspnetcore-2.0"
 
@@ -204,7 +204,7 @@ services.AddMvc()
 
 ## <a name="use-a-parameter-transformer-to-customize-page-routes"></a>Использовать параметр преобразователя для настройки маршрутов страниц
 
-Страница маршруты, созданный ASP.NET Core можно настроить, используя параметр преобразователя. Реализует преобразователь параметр `IOutboundParameterTransformer` и преобразует значения параметров. Например, пользовательский `SlugifyParameterTransformer` изменения параметров transformer `SubscriptionManagement` значение маршрута `subscription-management`.
+Страница маршруты, созданный ASP.NET Core можно настроить, используя параметр преобразователя. Преобразователь параметров реализует `IOutboundParameterTransformer` и преобразует значения параметров. Например, пользовательский преобразователь параметра `SlugifyParameterTransformer` изменяет значение маршрута `SubscriptionManagement` на `subscription-management`.
 
 `PageRouteTransformerConvention` Соглашение для модели маршрутов страницы применяется параметр преобразователя от сегментов имени файлов и папок автоматически созданные маршруты в приложении. Например, файл страницы Razor Pages в */Pages/SubscriptionManagement/ViewAll.cshtml* бы маршрута из переписать `/SubscriptionManagement/ViewAll` для `/subscription-management/view-all`.
 

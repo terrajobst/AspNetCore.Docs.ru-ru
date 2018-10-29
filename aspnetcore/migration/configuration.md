@@ -1,53 +1,53 @@
 ---
 title: Перенос конфигурации в ASP.NET Core
 author: ardalis
-description: Дополнительные сведения о миграции конфигурации из проекта ASP.NET MVC в проект ASP.NET Core MVC.
+description: Узнайте, как выполнять миграцию конфигурации из проекта ASP.NET MVC в проект ASP.NET Core MVC.
 ms.author: riande
 ms.date: 10/14/2016
 uid: migration/configuration
-ms.openlocfilehash: 40b332f9042a4ce793acd29ef5e3f3e389056a62
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 5a1c4d0cbbdf74a00073c654e78a05f44948caae
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275825"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50205916"
 ---
 # <a name="migrate-configuration-to-aspnet-core"></a>Перенос конфигурации в ASP.NET Core
 
 Авторы: [Стив Смит](https://ardalis.com/) (Steve Smith) и [Скотт Эдди](https://scottaddie.com) (Scott Addie)
 
-В предыдущей статье мы начали [миграции проекта ASP.NET MVC в ASP.NET Core MVC](xref:migration/mvc). В этой статье мы миграцию конфигурации.
+В предыдущей статье, мы начали [миграции проекта ASP.NET MVC в ASP.NET Core MVC](xref:migration/mvc). В этой статье мы переносим конфигурации.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/configuration/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/configuration/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="setup-configuration"></a>Настройка установки
 
-Больше не используется ASP.NET Core *Global.asax* и *web.config* файлы, загруженные в предыдущих версиях ASP.NET. В более ранних версиях ASP.NET логику запуска приложения был помещен в `Application_StartUp` метода в *Global.asax*. Далее, в ASP.NET MVC *файла Startup.cs* файл был включен в корне проекта; и он был вызван при запуске приложения. ASP.NET Core полностью приняла этот подход, поместив вся логика запуска в *файла Startup.cs* файл.
+ASP.NET Core больше не использует *Global.asax* и *web.config* файлы, которые используются в предыдущих версиях ASP.NET. В более ранних версиях ASP.NET, логика запуска приложения был помещен в `Application_StartUp` метода в *Global.asax*. Далее, в ASP.NET MVC, *Startup.cs* файл был включен в корне проекта; и он был вызван при запуске приложения. ASP.NET Core была внедрена такой подход полностью, поместив вся логика запуска в *Startup.cs* файла.
 
-*Web.config* также завершает в ASP.NET Core. Сама конфигурация теперь можно, как часть процедуры при запуске приложения, описанной в *файла Startup.cs*. Конфигурация по-прежнему можно использовать XML-файлов, но обычно проекты ASP.NET Core будет помещать значения конфигурации в файл в формате JSON, такие как *appsettings.json*. Система конфигурации ASP.NET Core можно также легко получить переменные среды, которые содержат информацию о [более безопасным и надежным расположение](xref:security/app-secrets) для конкретных значений. Это особенно верно для секретов, такие как строки подключения и ключи API, которые не должны проверяться в системе управления версиями. В разделе [конфигурации](xref:fundamentals/configuration/index) для получения дополнительных сведений о конфигурации в ASP.NET Core.
+*Web.config* файла также был заменен в ASP.NET Core. Самой конфигурации теперь можно настроить, как часть процедуры запуска приложения, описанные в *Startup.cs*. Конфигурации по-прежнему могут использовать XML-файлы, но обычно проекты ASP.NET Core и помещает значения конфигурации в файл в формате JSON, такие как *appsettings.json*. Система конфигурации ASP.NET Core также упрощает доступ к переменные среды, которые может предоставить [более безопасные и надежные расположения](xref:security/app-secrets) для конкретных значений. Это особенно верно для секретные данные, например строки подключения и ключи API, которые не должны быть проверены в систему управления версиями. См. в разделе [конфигурации](xref:fundamentals/configuration/index) Дополнительные сведения о конфигурации в ASP.NET Core.
 
-Для данной статьи мы приступаете к работе с частично перенесенного проекта ASP.NET Core из [предыдущей статьи](xref:migration/mvc). Для настройки конфигурации, добавьте следующий конструктор и свойства *файла Startup.cs* файл, расположенный в корневой папке проекта:
+В этой статье мы начинаем с частично переноса проекта ASP.NET Core из [предыдущей статье](xref:migration/mvc). Чтобы настроить конфигурацию, добавьте следующий конструктор и свойства *Startup.cs* файл, расположенный в корневой папке проекта:
 
 [!code-csharp[](configuration/samples/WebApp1/src/WebApp1/Startup.cs?range=11-16)]
 
-Обратите внимание, на этом этапе *файла Startup.cs* файла не может быть скомпилирован, как все равно нужно добавить следующие `using` инструкции:
+Обратите внимание, на этом этапе *Startup.cs* файл не будет компилироваться, так как мы еще нужно добавить следующие `using` инструкции:
 
 ```csharp
 using Microsoft.Extensions.Configuration;
 ```
 
-Добавить *appsettings.json* файла в корневую папку проекта, с помощью шаблона соответствующий элемент:
+Добавить *appsettings.json* файл в корень проекта, с помощью шаблона соответствующего элемента:
 
-![Добавить AppSettings JSON](configuration/_static/add-appsettings-json.png)
+![Добавьте AppSettings JSON](configuration/_static/add-appsettings-json.png)
 
 ## <a name="migrate-configuration-settings-from-webconfig"></a>Перенос параметров конфигурации из файла web.config
 
-Наш проект ASP.NET MVC включены в строку подключения базы данных, необходимых в *web.config*в `<connectionStrings>` элемент. В данном проекте ASP.NET Core мы будем хранить эти сведения в *appsettings.json* файла. Откройте *appsettings.json*и обратите внимание, что он уже включает в себя следующее:
+Наш проект ASP.NET MVC включены строку подключения базы данных, необходимых в *web.config*в `<connectionStrings>` элемент. В нашем проекте ASP.NET Core, мы хотим сохранить эту информацию в *appsettings.json* файла. Откройте *appsettings.json*и обратите внимание, что он уже содержит следующее:
 
 [!code-json[](../migration/configuration/samples/WebApp1/src/WebApp1/appsettings.json?highlight=4)]
 
-В выделенной строке, описанные выше, измените имя базы данных из **_CHANGE_ME** к имени базы данных.
+В выделенной строке, описанному выше, измените имя базы данных из **_CHANGE_ME** имя базы данных.
 
 ## <a name="summary"></a>Сводка
 
-ASP.NET Core заключает всю логику запуска приложения в одном файле, в котором необходимые службы и зависимости может быть определения и настройка. Он заменяет *web.config* файла с помощью функции гибкая настройка, который можно использовать в разнообразных форматах, например JSON, а также переменные среды.
+ASP.NET Core помещает всю логику запуска для приложения в одном файле, в котором необходимые службы и зависимости могут быть определены и настроен. Он заменяет *web.config* файл с помощью функции гибкой конфигурации, который можно использовать разные форматы файлов, таких как JSON, а также переменные среды.

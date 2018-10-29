@@ -8,12 +8,12 @@ ms.date: 03/26/2015
 ms.assetid: d4911cb3-1afb-4805-b860-10818c4b1280
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: 02a0153f20e9390a5ab8d4ecb4f73556b339d9a9
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 5092476c6cf59bea6fab6fa6f169ff11ec4c9c4a
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48576469"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207489"
 ---
 <a name="create-a-secure-aspnet-mvc-5-web-app-with-log-in-email-confirmation-and-password-reset-c"></a>Создание безопасного веб-приложения ASP.NET MVC 5 со входом, отправить по электронной почте подтверждение и сброс пароля (C#)
 ====================
@@ -56,6 +56,8 @@ ms.locfileid: "48576469"
 
 <a id="SG"></a>
 ## <a name="hook-up-sendgrid"></a>Подключить SendGrid
+
+Инструкции в этом разделе не является текущей. См. в разделе [поставщика услуг электронной почты SendGrid Настройка](/aspnet/core/security/authentication/accconfirm#configure-email-provider) обновленные инструкции.
 
 Несмотря на то, что этот учебник только показано, как добавить уведомление по электронной почте через [SendGrid](http://sendgrid.com/), вы можете отправить электронную почту с помощью SMTP и другие механизмы (см. в разделе [дополнительные ресурсы](#addRes)).
 

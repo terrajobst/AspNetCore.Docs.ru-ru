@@ -4,14 +4,15 @@ author: rick-anderson
 description: Практическое руководство по добавлению проверки на страницу Razor в ASP.NET Core.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 08/07/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: cd958b9c084de4b3e12784774544610873a519f9
-ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
+ms.openlocfilehash: 2518b9911f13da79c76c84e530cf53fc2df474e5
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045527"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090450"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Добавление проверки на страницу Razor в ASP.NET Core
 
@@ -27,7 +28,7 @@ ms.locfileid: "48045527"
 
 ### <a name="adding-validation-rules-to-the-movie-model"></a>Добавление правил проверки к модели фильма
 
-Откройте файл *Models/Movie.cs*. Класс [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) предоставляет набор встроенных атрибутов проверки, которые декларативно применяются к классу или свойству. Кроме того, DataAnnotations содержит атрибуты форматирования (такие как `DataType`), которые обеспечивают форматирование и не предназначены для проверки.
+Откройте файл *Models/Movie.cs*. Класс [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) предоставляет набор встроенных атрибутов проверки, которые декларативно применяются к классу или свойству. Кроме того, DataAnnotations содержит атрибуты форматирования (такие как `DataType`), которые обеспечивают форматирование и не предназначены для проверки.
 
 Обновите класс `Movie`, чтобы использовать преимущества атрибутов проверки `Required`, `StringLength`, `RegularExpression` и `Range`.
 
@@ -45,7 +46,7 @@ ms.locfileid: "48045527"
 
 Атрибуты проверки определяют поведение, которое применяется к свойствам модели.
 
-* Атрибуты `Required` и `MinimumLength` означают, что свойство должно иметь значение. Но пользователь может ввести пробел, чтобы соблюсти ограничение проверки для типа, допускающего значение null. [Типы значений](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/value-types), не допускающие значение null (например, `decimal`, `int`, `float` и `DateTime`), являются обязательными и не требуют атрибута `Required`.
+* Атрибуты `Required` и `MinimumLength` означают, что свойство должно иметь значение. Но пользователь может ввести пробел, чтобы соблюсти ограничение проверки для типа, допускающего значение null. [Типы значений](/dotnet/csharp/language-reference/keywords/value-types), не допускающие значение null (например, `decimal`, `int`, `float` и `DateTime`), являются обязательными и не требуют атрибута `Required`.
 * Атрибут `RegularExpression` ограничивает символы, которые может ввести пользователь. В приведенном выше коде строка `Genre` должна начинаться с одной или нескольких заглавных букв, после чего могут следовать ноль или несколько букв, двойных или одинарных кавычек, пробелов или дефисов. Строка `Rating` должна начинаться с одной или нескольких заглавных букв, после чего могут следовать ноль или несколько букв, цифр, двойных или одинарных кавычек, пробелов или дефисов.
 * Атрибут `Range` ограничивает диапазон значений.
 * Атрибут `StringLength` задает максимальную и при необходимости минимальную длину строки. 
@@ -95,7 +96,7 @@ ms.locfileid: "48045527"
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
-[Вспомогательная функция тега Input](xref:mvc/views/working-with-forms) использует атрибуты [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) и создает HTML-атрибуты, необходимые для проверки jQuery на стороне клиента. [Вспомогательная функция тега Validation](xref:mvc/views/working-with-forms#the-validation-tag-helpers) отображает ошибки проверки. Дополнительные сведения см. в разделе [Проверка](xref:mvc/models/validation).
+[Вспомогательная функция тега Input](xref:mvc/views/working-with-forms) использует атрибуты [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) и создает HTML-атрибуты, необходимые для проверки jQuery на стороне клиента. [Вспомогательная функция тега Validation](xref:mvc/views/working-with-forms#the-validation-tag-helpers) отображает ошибки проверки. Дополнительные сведения см. в разделе [Проверка](xref:mvc/models/validation).
 
 На страницах создания и редактирования не определены правила проверки. Правила проверки и строки ошибок указываются только в классе `Movie`. Они автоматически применяются к страницам Razor, которые редактируют модель `Movie`.
 
@@ -166,10 +167,10 @@ public DateTime ReleaseDate { get; set; }
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Работа с формами](xref:mvc/views/working-with-forms)
-* [Глобализация и локализация](xref:fundamentals/localization)
-* [Общие сведения о вспомогательных функциях тегов](xref:mvc/views/tag-helpers/intro)
-* [Создание вспомогательных функций тегов](xref:mvc/views/tag-helpers/authoring)
+* <xref:mvc/views/working-with-forms>
+* <xref:fundamentals/localization>
+* <xref:mvc/views/tag-helpers/intro>
+* <xref:mvc/views/tag-helpers/authoring>
 
 > [!div class="step-by-step"]
 > [Предыдущая тема. Добавление нового поля](xref:tutorials/razor-pages/new-field)

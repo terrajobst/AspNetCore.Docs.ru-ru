@@ -3,14 +3,15 @@ title: Передача файлов в ASP.NET Core
 author: ardalis
 description: Сведения об использовании привязки модели и потоковой передачи для передачи файлов в ASP.NET Core MVC.
 ms.author: riande
-ms.date: 07/05/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 771e22ca01c67f2b6bbee780324d9d08759b3279
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 913fc9aa473950b7117fb9da5c8913e658c43a9d
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38201736"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090271"
 ---
 # <a name="file-uploads-in-aspnet-core"></a>Передача файлов в ASP.NET Core
 
@@ -70,7 +71,7 @@ public interface IFormFile
 
 [!code-csharp[](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
 
-Файлы, передаваемые с помощью интерфейса `IFormFile`, буферизуются в памяти или на диске на веб-сервере перед обработкой. Внутри метода действия содержимое `IFormFile` доступно в виде потока. Помимо локальной файловой системы, файлы могут передаваться в потоковом режиме в [хранилище BLOB-объектов Azure](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/) или в [Entity Framework](https://docs.microsoft.com/ef/core/index).
+Файлы, передаваемые с помощью интерфейса `IFormFile`, буферизуются в памяти или на диске на веб-сервере перед обработкой. Внутри метода действия содержимое `IFormFile` доступно в виде потока. Помимо локальной файловой системы, файлы могут передаваться в потоковом режиме в [хранилище BLOB-объектов Azure](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs) или в [Entity Framework](/ef/core/index).
 
 Для сохранения данных двоичных файлов в базе данных с помощью Entity Framework определите для сущности свойство типа `byte[]`:
 
@@ -117,7 +118,7 @@ public async Task<IActionResult> Register(RegisterViewModel model)
             user.AvatarImage = memoryStream.ToArray();
         }
     // additional logic omitted
-    
+
     // Don't rely on or trust the model.AvatarImage.FileName property 
     // without validation.
 }

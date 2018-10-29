@@ -3,14 +3,15 @@ title: Razor Pages с EF Core в ASP.NET Core — модель данных— 
 author: rick-anderson
 description: В этом руководстве вы добавите дополнительные сущности и связи, а также настроите модель данных, указав правила форматирования, проверки и сопоставления.
 ms.author: riande
-ms.date: 6/31/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: b81918cbd74200f0672f3002f916523fb4a9a914
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: 9a0d5a8e722487ccf7e08aadb39f838a0963451d
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477661"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090981"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Razor Pages с EF Core в ASP.NET Core — модель данных— 5 из 8
 
@@ -121,9 +122,10 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 ```SQL
 SqlException: Invalid column name 'FirstName'.
 ```
+
 Для обновления базы данных сделайте следующее:
 
-* Выполните сборку проекта.
+* Выполните построение проекта.
 * Откройте командное окно в папке проекта. Введите следующие команды для создания миграции и обновления базы данных:
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
@@ -157,7 +159,7 @@ Please review the migration for accuracy.
 
 ![Таблица учащихся в SSOX после миграций](complex-data-model/_static/ssox-after-migration.png)
 
-До применения миграции столбцы имен имели тип [nvarchar(MAX)](https://docs.microsoft.com/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql). Теперь столбцы имен имеют тип `nvarchar(50)`. Имя столбца изменилось с `FirstMidName` на `FirstName`.
+До применения миграции столбцы имен имели тип [nvarchar(MAX)](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql). Теперь столбцы имен имеют тип `nvarchar(50)`. Имя столбца изменилось с `FirstMidName` на `FirstName`.
 
 > [!Note]
 > В следующем разделе сборка приложения на некоторых этапах приводит к возникновению ошибок компилятора. В инструкциях указано, когда производить сборку приложения.
@@ -295,7 +297,7 @@ public Instructor Instructor { get; set; }
 
 EF Core не требует свойство внешнего ключа для модели данных, если она имеет свойство навигации для связанной сущности.
 
-EF Core автоматически создает внешние ключи в базе данных по мере необходимости. EF Core создает [теневые свойства](https://docs.microsoft.com/ef/core/modeling/shadow-properties) для автоматически созданных внешних ключей. Наличие внешнего ключа в модели данных позволяет сделать обновления проще и эффективнее. Например, рассмотрим модель, где свойство внешнего ключа `DepartmentID` *не* включено. При получении сущности курса для редактирования:
+EF Core автоматически создает внешние ключи в базе данных по мере необходимости. EF Core создает [теневые свойства](/ef/core/modeling/shadow-properties) для автоматически созданных внешних ключей. Наличие внешнего ключа в модели данных позволяет сделать обновления проще и эффективнее. Например, рассмотрим модель, где свойство внешнего ключа `DepartmentID` *не* включено. При получении сущности курса для редактирования:
 
 * сущность `Department` имеет значение null, если она не загружена явно;
 * для обновления сущности курса нужно сначала получить сущность `Department`.
@@ -314,7 +316,7 @@ public int CourseID { get; set; }
 
 По умолчанию EF Core предполагает, что значения первичного ключа создаются базой данных. Обычно лучше всего использовать значения первичного ключа, созданные базой данных. Для сущностей `Course` пользователь указывает первичный ключ. Например, номер курса, такой как серия 1000 для кафедры математики и серия 2000 для кафедры английского языка.
 
-Атрибут `DatabaseGenerated` также может использоваться для создания значений по умолчанию. Например, база данных может автоматически создать поле даты для записи даты, когда строка была создана или изменена. Дополнительные сведения см. в разделе [Созданные свойства](https://docs.microsoft.com/ef/core/modeling/generated-properties).
+Атрибут `DatabaseGenerated` также может использоваться для создания значений по умолчанию. Например, база данных может автоматически создать поле даты для записи даты, когда строка была создана или изменена. Дополнительные сведения см. в разделе [Созданные свойства](/ef/core/modeling/generated-properties).
 
 ### <a name="foreign-key-and-navigation-properties"></a>Свойства внешнего ключа и навигации
 
@@ -478,7 +480,7 @@ public Student Student { get; set; }
 Сущность соединения `Enrollment` определяет собственный первичный ключ, поэтому подобные дубликаты возможны. Для предотвращения подобных дубликатов:
 
 * добавьте уникальный индекс для полей внешнего ключа или
-* настройте `Enrollment` с первичным составным ключом аналогично `CourseAssignment`. Дополнительные сведения см. в разделе [Индексы](https://docs.microsoft.com/ef/core/modeling/indexes).
+* настройте `Enrollment` с первичным составным ключом аналогично `CourseAssignment`. Дополнительные сведения см. в разделе [Индексы](/ef/core/modeling/indexes).
 
 ## <a name="update-the-db-context"></a>Изменение контекста базы данных
 
@@ -490,7 +492,7 @@ public Student Student { get; set; }
 
 ## <a name="fluent-api-alternative-to-attributes"></a>Текучий API вместо атрибутов
 
-Метод `OnModelCreating` в предыдущем коде использует для настройки поведения EF Core *текучий API*. Этот API называется "текучим", так как часто используется для объединения серии вызовов методов в один оператор. В [следующем коде](https://docs.microsoft.com/ef/core/modeling/#methods-of-configuration) показан пример текучего API:
+Метод `OnModelCreating` в предыдущем коде использует для настройки поведения EF Core *текучий API*. Этот API называется "текучим", так как часто используется для объединения серии вызовов методов в один оператор. В [следующем коде](/ef/core/modeling/#methods-of-configuration) показан пример текучего API:
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -516,7 +518,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 * только для конфигурации EF Core (например, `HasKey`);
 * для проверки и конфигурации EF Core (например, `[StringLength(50)]`).
 
-Дополнительные сведения о сравнении атрибутов и текучего API см. в разделе [Методы конфигурации](https://docs.microsoft.com/ef/core/modeling/#methods-of-configuration).
+Дополнительные сведения о сравнении атрибутов и текучего API см. в разделе [Методы конфигурации](/ef/core/modeling/#methods-of-configuration).
 
 ## <a name="entity-diagram-showing-relationships"></a>Схема сущностей, показывающая связи
 
@@ -543,7 +545,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ## <a name="add-a-migration"></a>Добавление миграции
 
-Выполните сборку проекта.
+Выполните построение проекта.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -577,6 +579,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 ## <a name="apply-the-migration"></a>Применение миграции
 
 Теперь у вас есть база данных, и пора подумать о том, как применять к ней будущие изменения. В этом руководстве показано два подхода:
+
 * [Удаление и повторное создание базы данных](#drop)
 * [Применение миграции к существующей базе данных](#applyexisting). Хотя этот метод является более сложным и трудоемким, в реальной рабочей среде лучше использовать именно его. **Примечание**. Это необязательный раздел руководства. Вы можете выполнить удаление и повторное создание и пропустить этот раздел. Если вы хотите выполнить инструкции в этом разделе, не выполняйте удаление и повторное создание. 
 

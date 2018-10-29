@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о диагностике проблем с развертываниями приложений ASP.NET Core на платформе IIS.
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/07/2018
+ms.date: 10/24/2018
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: f22914c9b0d6d1902dd37c9b21b80a18894c97e7
-ms.sourcegitcommit: d1c4580f56656b503cf528ec9f5ba570d790b57d
+ms.openlocfilehash: 6a53c1ba5badd741afc3321ce21b047965c611db
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41751780"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090606"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Устранение неполадок ASP.NET Core в службах IIS
 
@@ -23,10 +23,10 @@ ms.locfileid: "41751780"
 
 Дополнительные статьи по устранению неполадок:
 
-[Устранение неполадок ASP.NET Core в службе приложений Azure](xref:host-and-deploy/azure-apps/troubleshoot)  
+<xref:host-and-deploy/azure-apps/troubleshoot>  
 Служба приложений использует для размещения приложений [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) и IIS, но самые полезные рекомендации вы найдете в статье с инструкциями для самой службы приложений.
 
-[Обработка ошибок](xref:fundamentals/error-handling)  
+<xref:fundamentals/error-handling>  
 Узнайте, как обрабатывать ошибки в приложениях ASP.NET Core при разработке в локальной системе.
 
 [Сведения об отладке с помощью Visual Studio](/visualstudio/debugger/getting-started-with-the-debugger)  
@@ -131,9 +131,9 @@ ms.locfileid: "41751780"
 
 Настройка переменной среды `ASPNETCORE_ENVIRONMENT` рекомендуется только на промежуточных и тестовых серверах, доступ к которым из Интернета закрыт. Завершив устранение неполадок, удалите эту переменную среды из файла *web.config*. Сведения о настройке переменных среды в файле *web.config* см. в статье о [дочернем элементе environmentVariables в aspNetCore](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
 
-## <a name="common-startup-errors"></a>Распространенные ошибки запуска 
+## <a name="common-startup-errors"></a>Стандартные ошибки запуска 
 
-См. [справочник по общим ошибкам для приложений ASP.NET Core](xref:host-and-deploy/azure-iis-errors-reference). В этой статье рассматривается большинство распространенных ошибок, препятствующих запуску приложений.
+См. раздел <xref:host-and-deploy/azure-iis-errors-reference>. В этой статье рассматривается большинство распространенных ошибок, препятствующих запуску приложений.
 
 ## <a name="slow-or-hanging-app"></a>Медленное или зависающее приложение
 
@@ -167,7 +167,7 @@ ms.locfileid: "41751780"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Общие сведения об обработке ошибок в ASP.NET Core](xref:fundamentals/error-handling)
-* [Справочник по общим ошибкам для службы приложений Azure и служб IIS с ASP.NET Core](xref:host-and-deploy/azure-iis-errors-reference)
-* [Справочник по конфигурации модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
-* [Устранение неполадок ASP.NET Core в службе приложений Azure](xref:host-and-deploy/azure-apps/troubleshoot)
+* <xref:fundamentals/error-handling>
+* <xref:host-and-deploy/azure-iis-errors-reference>
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:host-and-deploy/azure-apps/troubleshoot>

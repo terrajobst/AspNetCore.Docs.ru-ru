@@ -7,12 +7,12 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 02/01/2017
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: b3eb643daf230336ce5def96007b6096f86390e6
-ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
+ms.openlocfilehash: 7b34187747d3081998b8b60a72adae78cafe2c3e
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50148945"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207970"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>Перенос приложений ASP.NET MVC в контейнеры Windows
 
@@ -71,7 +71,7 @@ ms.locfileid: "50148945"
 Определение образа Docker в Dockerfile. Dockerfile содержит инструкции для базового образа, дополнительные компоненты, приложение, которое нужно запустить, и другие образы конфигурации.  Dockerfile содержит входные параметры для команды `docker build`, которая создает образ.
 
 Вы создадите образ на основе образа `microsoft/aspnet`, расположенного на [Docker Hub](https://hub.docker.com/r/microsoft/aspnet/).
-Базовый образ `microsoft/aspnet` — это образ Windows Server. Он содержит Windows Server Core, IIS и ASP.NET 4.6.2. При запуске этого образа в контейнере он автоматически использует IIS и установленные веб-сайты.
+Базовый образ `microsoft/aspnet` — это образ Windows Server. Он содержит Windows Server Core, IIS и ASP.NET 4.7.2. При запуске этого образа в контейнере он автоматически использует IIS и установленные веб-сайты.
 
 Dockerfile, который создает образ, выглядит следующим образом:
 
@@ -122,18 +122,7 @@ docker run -d --name randomanswers mvcrandomanswers
 
 ## <a name="verify-in-the-browser"></a>Проверка в браузере
 
-> [!NOTE]
-> В текущем выпуске контейнера Windows не удается просмотреть `http://localhost`.
-> Это связано с известным поведением в WinNAT. В будущем проблема будет устранена. А пока этого не произошло, необходимо использовать IP-адрес контейнера.
-
-После запуска контейнера найдите его IP-адрес. В этом случае вы сможете подключиться к запущенному контейнеру из браузера:
-
-```console
-docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" randomanswers
-172.31.194.61
-```
-
-Подключиться к запущенному контейнеру, указав IPv4-адрес, `http://172.31.194.61` в приведенном примере. Введите этот URL-адрес в адресной строке браузера, и вы увидите работающий сайт.
+После запуска контейнера, соединиться с запущенным контейнером с помощью `http://localhost` в приведенном примере. Введите этот URL-адрес в адресной строке браузера, и вы увидите работающий сайт.
 
 > [!NOTE]
 > Некоторые программы VPN или прокси-серверы могут препятствовать переходу на ваш узел.
@@ -145,10 +134,9 @@ docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" randomanswers
 ./run.ps1
 ```
 
-Она создает образ, отображает список образов на компьютере, запускает контейнер и отображает IP-адрес для этого контейнера.
+Приведенная выше команда создает образ, отображает список образов на компьютере и запускается контейнер.
 
-Чтобы остановить контейнер, выполните команду `docker
-stop`:
+Чтобы остановить контейнер, выполните команду `docker stop`:
 
 ```console
 docker stop randomanswers

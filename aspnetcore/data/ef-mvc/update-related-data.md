@@ -3,14 +3,15 @@ title: ASP.NET Core MVC и EF Core — обновление связанных 
 author: rick-anderson
 description: В этом руководстве описано обновление связанных данных путем обновления полей внешнего ключа и свойств навигации.
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: ef8cb3916e5d1542e4d36cad694351462b94ed32
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 37985c945f2e4b15cfcefb0c126c3209e0bdeac4
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38126730"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090737"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---update-related-data---7-of-10"></a>ASP.NET Core MVC и EF Core — обновление связанных данных — 7 из 10
 
@@ -290,7 +291,7 @@ public ICollection<CourseAssignment> CourseAssignments
 
 ## <a name="handling-transactions"></a>Обработка транзакций
 
-Как описано в [руководстве по CRUD](crud.md), платформа Entity Framework реализует транзакции неявно. Если вам требуется дополнительный контроль, например в сценариях с операциями, выполняемыми в транзакции вне платформы Entity Framework, ознакомьтесь с разделом [Транзакции](https://docs.microsoft.com/ef/core/saving/transactions).
+Как описано в [руководстве по CRUD](crud.md), платформа Entity Framework реализует транзакции неявно. Если вам требуется дополнительный контроль, например в сценариях с операциями, выполняемыми в транзакции вне платформы Entity Framework, ознакомьтесь с разделом [Транзакции](/ef/core/saving/transactions).
 
 ## <a name="summary"></a>Сводка
 
