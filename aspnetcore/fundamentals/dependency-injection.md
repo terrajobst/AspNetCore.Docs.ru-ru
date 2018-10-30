@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/02/2018
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 33fae5d87029c8b3afdc321e0247555c1e479d07
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 193bfc7651b6da6db69e8c15bd6beb82906bde0a
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912622"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477674"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Внедрение зависимостей в ASP.NET Core
 
@@ -249,7 +249,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Когда разрешение служб выполняется через `IServiceProvider` или `ActivatorUtilities`, для внедрения через конструктор требуется *открытый* конструктор.
 
-Когда разрешение служб выполняется через `ActivatorUtilities`, для внедрения через конструктор требуется наличие только одного соответствующего конструктора. Перегрузки конструктора поддерживаются, но может существовать всего одна перегрузка, все аргументы которой могут быть обработаны с помощью внедрения зависимостей.
+Когда разрешение служб выполняется через `ActivatorUtilities`, для внедрения с помощью конструктора требуется наличие только одного соответствующего конструктора. Перегрузки конструктора поддерживаются, но может существовать всего одна перегрузка, все аргументы которой могут быть обработаны с помощью внедрения зависимостей.
 
 ## <a name="entity-framework-contexts"></a>Контексты Entity Framework
 
@@ -287,9 +287,9 @@ public void ConfigureServices(IServiceCollection services)
 
 Регистрируется служба `OperationService`, которая зависит от каждого из других типов `Operation`. Когда служба `OperationService` запрашивается через внедрение зависимостей, она получает либо новый экземпляр каждой службы, либо экземпляр уже существующей службы в зависимости от времени существования зависимой службы.
 
-* Если при запросе создаются временные службы, `OperationsId` службы `IOperationTransient` отличается от `OperationsId` службы `OperationService`. `OperationService` получает новый экземпляр класса `IOperationTransient`. Новый экземпляр возвращает другой идентификатор `OperationsId`.
-* Если при запросе создаются регулируемые службы, идентификатор `OperationsId` службы `IOperationScoped` будет таким же, как для службы `OperationService` в запросе. В разных запросах обе службы используют разные значения `OperationsId`.
-* Если одинарные службы и службы с одинарным экземпляром создаются один раз и используются во всех запросах и службах, идентификатор `OperationsId` будет одинаковым во всех запросах служб.
+* Если при запросе создаются временные службы, `OperationId` службы `IOperationTransient` отличается от `OperationId` службы `OperationService`. `OperationService` получает новый экземпляр класса `IOperationTransient`. Новый экземпляр возвращает другой идентификатор `OperationId`.
+* Если при запросе создаются регулируемые службы, идентификатор `OperationId` службы `IOperationScoped` будет таким же, как для службы `OperationService` в запросе. В разных запросах обе службы используют разные значения `OperationId`.
+* Если одинарные службы и службы с одинарным экземпляром создаются один раз и используются во всех запросах и службах, идентификатор `OperationId` будет одинаковым во всех запросах служб.
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -538,7 +538,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="recommendations"></a>Рекомендации
 
-При работе с внедрением зависимостей соблюдайте следующие рекомендации:
+* Разрешение служб на основе `async/await` и `Task` не поддерживается. C# не поддерживает асинхронные конструкторы, поэтому рекомендуем использовать асинхронные методы после асинхронного разрешения службы.
 
 * Не храните данные и конфигурацию непосредственно в контейнере служб. Например, обычно не следует добавлять корзину пользователя в контейнер служб. Конфигурация должна использовать [шаблон параметров](xref:fundamentals/configuration/options). Аналогичным образом, избегайте объектов "хранения данных", которые служат лишь для доступа к некоторому другому объекту. Лучше запросить фактический элемент через внедрение зависимостей.
 
@@ -557,7 +557,6 @@ public void ConfigureServices(IServiceCollection services)
 * <xref:mvc/views/dependency-injection>
 * <xref:mvc/controllers/dependency-injection>
 * <xref:security/authorization/dependencyinjection>
-* <xref:fundamentals/repository-pattern>
 * <xref:fundamentals/startup>
 * <xref:test/index>
 * <xref:fundamentals/middleware/extensibility>

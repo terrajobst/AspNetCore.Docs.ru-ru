@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/01/2018
 uid: fundamentals/routing
-ms.openlocfilehash: d9ba96c7b2abd35b1b13c84814bf3f776e8d8731
-ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
+ms.openlocfilehash: 500cefbc7caee2054b4afda7c1277685862f5ad4
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47861061"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348563"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -391,7 +391,15 @@ public User GetUserById(int id) { }
 
 ## <a name="parameter-transformer-reference"></a>Справочник по преобразователям параметров
 
-Преобразователи параметров выполняются при формировании ссылки для `Route`. Преобразователи параметров принимают значение маршрута параметра и преобразуют его в новое строковое значение. Преобразованное значение используется в сформированной ссылке. Например, пользовательский преобразователь параметра `slugify` в шаблоне маршрута `blog\{article:slugify}` с `Url.Action(new { article = "MyTestArticle" })` формирует значение `blog\my-test-article`. Преобразователи параметров реализуют `Microsoft.AspNetCore.Routing.IOutboundParameterTransformer` и настраиваются с помощью <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap>.
+Преобразователи параметров:
+
+* Выполняются при формировании ссылки для `Route`.
+* Реализуйте расширение `Microsoft.AspNetCore.Routing.IOutboundParameterTransformer`.
+* Настраиваются с помощью <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap>.
+* Принимают значение маршрута параметра и изменяют его на новое строковое значение.
+* Преобразованное значение используется в сформированной ссылке.
+
+Например, пользовательский преобразователь параметра `slugify` в шаблоне маршрута `blog\{article:slugify}` с `Url.Action(new { article = "MyTestArticle" })` формирует значение `blog\my-test-article`.
 
 Преобразователи параметров также используются платформами для преобразования URI, в который разрешается конечная точка. Например, ASP.NET Core MVC с помощью преобразователей параметров преобразует значение маршрута, используемое для сопоставления `area`, `controller`, `action` и `page`.
 
@@ -403,7 +411,10 @@ routes.MapRoute(
 
 С помощью предыдущего маршрута действие `SubscriptionManagementController.GetAll()` сопоставляется с URI `/subscription-management/get-all`. Преобразователь параметра не изменяет значения маршрута, используемые для формирования ссылки. `Url.Action("GetAll", "SubscriptionManagement")` дает в результате `/subscription-management/get-all`.
 
-ASP.NET Core MVC также поставляется с соглашением об API `Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention`. Это соглашение применяет указанный преобразователь параметра ко всем токенам маршрутов атрибутов в приложении.
+ASP.NET Core предоставляет соглашения об API для использования преобразователей параметров со сформированными маршрутами:
+
+* ASP.NET Core MVC поддерживает соглашение об API `Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention`. Это соглашение применяет указанный преобразователь параметров ко всем маршрутам атрибутов в приложении. Преобразователь параметров преобразует маркеры маршрутов атрибутов по мере их замены. Дополнительные сведения см. в разделе об [использовании преобразователя параметров для настройки замены маркеров](/aspnet/core/mvc/controllers/routing#use-a-parameter-transformer-to-customize-token-replacement).
+* Страницы Razor поддерживают соглашение об API `Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention`. Это соглашение применяет указанный преобразователь параметров ко всем автоматически обнаруженным страницам Razor. Преобразователь параметров преобразует сегменты папок и имен файлов маршрутов страниц Razor. Дополнительные сведения см. в разделе об [использовании преобразователя параметров для настройки маршрутов страниц](/aspnet/core/razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes).
 
 ::: moniker-end
 

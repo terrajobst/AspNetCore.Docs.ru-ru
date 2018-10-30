@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: 52c7916b9fc55c875d56acd49c01f76dd2053817
-ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
+ms.openlocfilehash: 63ebc5ce5094053eca08a9212b3b4c074c4bed64
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47861009"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325982"
 ---
 # <a name="static-files-in-aspnet-core"></a>Статические файлы в ASP.NET Core
 
 Авторы: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson) и [Скотт Адди](https://twitter.com/Scott_Addie) (Scott Addie)
 
-Статические файлы, такие как HTML, CSS, изображения и JavaScript, являются ресурсами, которые приложения ASP.NET Core предоставляют клиентам напрямую. В некоторых случаях необходима возможность обслуживания таких файлов.
+Статические файлы, такие как HTML, CSS, изображения и JavaScript, являются ресурсами, которые приложения ASP.NET Core предоставляют клиентам напрямую. Для обслуживания таких файлов требуется настроить некоторые параметры.
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
 
