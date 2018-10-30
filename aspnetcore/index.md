@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: index
-ms.openlocfilehash: fcd95b88b970073f4d7eddf89729683d18be449d
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 37448b1b3d0da4e3cb34b1cd51f663b7e53ddced
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090658"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207398"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -66,6 +66,14 @@ ASP.NET Core 2.x поддерживается в версиях .NET Framework, 
 * Открытый исходный код
 
 Мы прилагаем максимум усилий, чтобы устранить различия API между .NET Framework и .NET Core. Благодаря [пакету обеспечения совместимости Windows](/dotnet/core/porting/windows-compat-pack) в .NET Core доступны тысячи API-интерфейсов, созданных только для Windows. Эти API-интерфейсы не были доступны в .NET Core 1.x.
+
+## <a name="how-to-download-a-sample"></a>Загрузка примера
+
+Многие статьи и учебники содержат ссылки на примеры кода.
+
+1. [Загрузите ZIP-файл репозитория ASP.NET](https://codeload.github.com/aspnet/Docs/zip/master).
+1. Распакуйте файл *Docs-master.zip*.
+1. Перейдите в папку примера по URL-адресу, указанному в примере.
 
 ## <a name="next-steps"></a>Следующие шаги
 

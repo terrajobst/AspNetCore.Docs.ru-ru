@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/12/2018
 uid: razor-pages/index
-ms.openlocfilehash: 7bd597acedade65f2be53f4f50a436981e576b1f
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 7fc048e427fd49e2142160615a12989fd4f40303
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326125"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207619"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Введение в Razor Pages в ASP.NET Core
 
@@ -23,7 +23,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 Этот документ содержит вводные сведения о Razor Pages. Это не пошаговое руководство. Если некоторые разделы покажутся вам слишком сложными, см. [Начало работы с Razor Pages](xref:tutorials/razor-pages/razor-pages-start). Общие сведения об ASP.NET Core см. в разделе [Введение в ASP.NET Core](xref:index).
 
-## <a name="prerequisites"></a>Необходимые компоненты
+## <a name="prerequisites"></a>Предварительные требования
 
 [!INCLUDE [](~/includes/net-core-prereqs.md)]
 
@@ -112,7 +112,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 | */Pages/Store/Contact.cshtml* | `/Store/Contact` |
 | */Pages/Store/Index.cshtml* | `/Store` или `/Store/Index` |
 
-Примечания:
+Примечания.
 
 * Среда выполнения по умолчанию ищет файлы Razor Pages в папке *Pages*.
 * Если в URL-адресе не указана конкретная страница, по умолчанию открывается страница `Index`.
@@ -236,7 +236,7 @@ Razor Pages — это новый аспект платформы MVC ASP.NET�
 
 ::: moniker range=">= aspnetcore-2.1"
 
-## <a name="mark-page-properties-required"></a>Маркировка свойств страницы как обязательных
+## <a name="mark-page-properties-as-required"></a>Маркировка свойств страницы как обязательных
 
 Свойства класса `PageModel` можно отметить атрибутом [Required](/dotnet/api/system.componentmodel.dataannotations.requiredattribute):
 
