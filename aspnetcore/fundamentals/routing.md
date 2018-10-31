@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/01/2018
 uid: fundamentals/routing
-ms.openlocfilehash: 500cefbc7caee2054b4afda7c1277685862f5ad4
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: 06059d720bd4444b1ec12e42d466ee54d1658203
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348563"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207760"
 ---
 # <a name="routing-in-aspnet-core"></a>Маршрутизация в ASP.NET Core
 
@@ -22,7 +22,7 @@ ms.locfileid: "49348563"
 > [!IMPORTANT]
 > В этом документе рассматривается низкоуровневая маршрутизация ASP.NET Core. Сведения о маршрутизации ASP.NET Core MVC см. в разделе <xref:mvc/controllers/routing>.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Основы маршрутизации
 
@@ -47,7 +47,7 @@ ms.locfileid: "49348563"
 
 [RouteData.Values](xref:Microsoft.AspNetCore.Routing.RouteData.Values*) — это словарь *значений маршрута*, полученных из маршрута. Как правило, эти значения определяются путем разбивки URL-адреса на сегменты и могут использоваться для принятия входных данных пользователя или принятия дальнейших решений об отправке в приложении.
 
-[RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*) — это контейнер свойств с дополнительными данными, связанными с соответствующим маршрутом. Свойства `DataTokens` обеспечивают связывание данных состояния с каждым маршрутом, что позволяет приложению в дальнейшем принимать решения в зависимости от соответствующего маршрута. Эти значения определяются разработчиком и никоим образом **не** влияют на поведение маршрутизации. Кроме того, значения, спрятанные в токенах данных, могут быть любого типа в отличие от значений маршрутов, которые должны легко преобразовываться в строки и из строк.
+[RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*) — это контейнер свойств с дополнительными данными, связанными с соответствующим маршрутом. Свойства `DataTokens` обеспечивают связывание данных состояния с каждым маршрутом, что позволяет приложению в дальнейшем принимать решения в зависимости от соответствующего маршрута. Эти значения определяются разработчиком и никоим образом **не** влияют на поведение маршрутизации. Кроме того, значения, спрятанные в `RouteData.DataTokens`, могут быть любого типа в отличие от `RouteData.Values`, которые должны легко преобразовываться в строки и из строк.
 
 [RouteData.Routers](xref:Microsoft.AspNetCore.Routing.RouteData.Routers*) — это список маршрутов, которые участвовали в успешном сопоставлении с запросом. Маршруты могут быть вложены друг в друга. Свойство `Routers` отражает путь по логическому дереву маршрутов, который привел к совпадению. Как правило, первый элемент в свойстве `Routers` — это коллекция маршрутов, используемая для формирования URL-адресов. Последний элемент в свойстве `Routers` — это соответствующий обработчик маршрутов.
 
