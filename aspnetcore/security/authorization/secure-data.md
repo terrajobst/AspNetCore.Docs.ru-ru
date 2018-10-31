@@ -5,12 +5,12 @@ description: Узнайте, как создать приложение Razor Pa
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: 786e83eb28722e83eea46def962593f58ad524e2
-ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
+ms.openlocfilehash: 185628d4e06c9b5ae7f2685c10ea9e46dd5abe92
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244844"
+ms.locfileid: "50253225"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Создание приложения ASP.NET Core с помощью данных пользователя с помощью авторизации
 
@@ -71,16 +71,16 @@ ms.locfileid: "50244844"
 Этот учебник является дополнительным. Вы должны быть знакомы с:
 
 * [ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc)
-* [Authentication](xref:security/authentication/index)
+* [Authentication](xref:security/authentication/identity)
 * [Подтверждение учетной записи и восстановление пароля](xref:security/authentication/accconfirm)
-* [Авторизация](xref:security/authorization/index)
+* [Авторизация](xref:security/authorization/introduction)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
 
-В ASP.NET Core 2.1 `User.IsInRole` завершается сбоем при использовании `AddDefaultIdentity`. В этом руководстве используется `AddDefaultIdentity` и поэтому нуждается в предварительной версии ASP.NET Core 2.2 1 или более поздней версии. См. в разделе [проблема GitHub](https://github.com/aspnet/Identity/issues/1813#issuecomment-394543909) для обхода.
+В ASP.NET Core 2.1 `User.IsInRole` завершается сбоем при использовании `AddDefaultIdentity`. В этом руководстве используется `AddDefaultIdentity` и поэтому нуждается в ASP.NET Core версии 2.2 или более поздней версии. См. в разделе [проблема GitHub](https://github.com/aspnet/Identity/issues/1813#issuecomment-394543909) для обхода.
 
 ::: moniker-end
 
@@ -352,7 +352,7 @@ dotnet ef database update
 
 * [Создание веб-приложения .NET Core с базой данных SQL в службе приложений Azure](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 * [ASP.NET Core авторизация лаборатории](https://github.com/blowdart/AspNetAuthorizationWorkshop). Это лабораторное занятие содержит более подробные сведения о функциях безопасности, представленных в этом руководстве.
-* [Авторизация в ASP.NET Core: простая, ролей, на основе утверждений и пользовательская](xref:security/authorization/index)
+* <xref:security/authorization/introduction>
 * [Пользовательская авторизация на основе политик](xref:security/authorization/policies)
 
 ::: moniker-end

@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/index
-ms.openlocfilehash: f3b1f74f2e3a991b72cae94019f42548e3858f20
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 4277266e20ab1921a2ba24d4500358ba90330370
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091032"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50252949"
 ---
 # <a name="overview-of-aspnet-core-security"></a>Общие сведения о безопасности ASP.NET Core
 
@@ -40,7 +40,7 @@ ASP.NET Core и EF содержат средства, помогающие за�
 
 ## <a name="aspnet-core-security-documentation"></a>Документация по безопасности ASP.NET Core
 
-* [Authentication](xref:security/authentication/index)
+* Проверка подлинности
   * [Общие сведения об Identity](xref:security/authentication/identity)
   * [Включение проверки подлинности с помощью Facebook, Google и других внешних поставщиков](xref:security/authentication/social/index)
   * [Включение проверки подлинности с помощью WS-Federation](xref:security/authentication/ws-federation)
@@ -54,7 +54,7 @@ ASP.NET Core и EF содержат средства, помогающие за�
     * [Вызов веб-API в веб-приложении ASP.NET Core с помощью Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
     * [ASP.NET Core с Azure AD B2C](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapp/)
   * [Защита приложений ASP.NET Core с помощью IdentityServer4](https://identityserver4.readthedocs.io)
-* [Авторизация](xref:security/authorization/index)
+* Авторизация
   * [Введение](xref:security/authorization/introduction)
   * [Создание приложения с защитой данных пользователя с помощью авторизации](xref:security/authorization/secure-data)
   * [Простая авторизация](xref:security/authorization/simple)
@@ -65,10 +65,10 @@ ASP.NET Core и EF содержат средства, помогающие за�
   * [Авторизация на основе ресурсов](xref:security/authorization/resourcebased)
   * [Авторизация на основе представлений](xref:security/authorization/views)
   * [Ограничение идентификаторов по схеме](xref:security/authorization/limitingidentitybyscheme)
-* [Защита данных](xref:security/data-protection/index)
+* Защита данных
   * [Общие сведения о защите данных](xref:security/data-protection/introduction)
   * [Начало работы с API защиты данных](xref:security/data-protection/using-data-protection)
-  * [Потребительские API](xref:security/data-protection/consumer-apis/index)
+  * Потребительские API
     * [Обзор потребительских API](xref:security/data-protection/consumer-apis/overview)
     * [Строки назначений](xref:security/data-protection/consumer-apis/purpose-strings)
     * [Иерархия назначений и мультитенантность](xref:security/data-protection/consumer-apis/purpose-strings-multitenancy)
