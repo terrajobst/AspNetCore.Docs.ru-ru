@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 6b2cf853575b02de76d44bf79849fe11bb458fbd
-ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
+ms.openlocfilehash: b204eeb35f8765bbafc85b3bb283809727356d3e
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244948"
+ms.locfileid: "50253212"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -401,7 +401,7 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="data-protection"></a>Защита данных
 
-[Стек защиты данных ASP.NET Core](xref:security/data-protection/index) используют несколько [ПО промежуточного слоя](xref:fundamentals/middleware/index) ASP.NET Core, включая ПО, которое применяется для аутентификации. Даже если API-интерфейсы защиты данных не вызываются из пользовательского кода, защиту данных следует настроить для создания постоянного [хранилища криптографических ключей](xref:security/data-protection/implementation/key-management). Это можно сделать с помощью скрипта развертывания или в пользовательском коде. Если защита данных не настроена, ключи хранятся в памяти и удаляются при перезапуске приложения.
+[Стек защиты данных ASP.NET Core](xref:security/data-protection/introduction) используют несколько [ПО промежуточного слоя](xref:fundamentals/middleware/index) ASP.NET Core, включая ПО, которое применяется для аутентификации. Даже если API-интерфейсы защиты данных не вызываются из пользовательского кода, защиту данных следует настроить для создания постоянного [хранилища криптографических ключей](xref:security/data-protection/implementation/key-management). Это можно сделать с помощью скрипта развертывания или в пользовательском коде. Если защита данных не настроена, ключи хранятся в памяти и удаляются при перезапуске приложения.
 
 Если набор ключей хранится в памяти, при перезапуске приложения происходит следующее:
 
@@ -434,7 +434,7 @@ services.Configure<IISOptions>(options =>
 
 * **Настройка политики защиты данных на уровне компьютера**.
 
-  Система защиты данных обеспечивает ограниченную поддержку задания [политики по умолчанию на уровне компьютера](xref:security/data-protection/configuration/machine-wide-policy) для всех приложений, использующих интерфейсы API защиты данных. Дополнительные сведения см. в [документации по защите данных](xref:security/data-protection/index).
+  Система защиты данных обеспечивает ограниченную поддержку задания [политики по умолчанию на уровне компьютера](xref:security/data-protection/configuration/machine-wide-policy) для всех приложений, использующих интерфейсы API защиты данных. Дополнительные сведения см. в разделе <xref:security/data-protection/introduction>.
 
 ## <a name="sub-application-configuration"></a>Конфигурация дочерних приложений
 
