@@ -82,7 +82,7 @@ ms.locfileid: "41837497"
 **Рис. 4**: для достаточно больших источников данных, один столбец DataList будет требовать горизонтальной прокрутки ([Просмотр полноразмерного изображения](showing-multiple-records-per-row-with-the-datalist-control-vb/_static/image12.png))
 
 
-## <a name="step-3-displaying-data-in-a-multi-column-multi-row-table"></a>Step 3: Displaying Data in a Multi-Column, Multi-Row Table
+## <a name="step-3-displaying-data-in-a-multi-column-multi-row-table"></a>Шаг 3. Отображение данных в многоколоночном, многострочном столбце
 
 Чтобы создать элемент управления DataList несколькими столбцами, нескольких строк, нам нужно установить [ `RepeatColumns` свойство](https://msdn.microsoft.com/system.web.ui.webcontrols.datalist.repeatcolumns.aspx) число столбцов для отображения. По умолчанию `RepeatColumns` задано значение 0, что приведет к DataList отобразить все элементы в одну строку или столбец (в зависимости от значения `RepeatDirection` свойство).
 
