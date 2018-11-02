@@ -8,12 +8,12 @@ ms.date: 02/07/2014
 ms.assetid: aa67d304-583b-4bf8-a231-195656cfb587
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-c
 msc.type: authoredcontent
-ms.openlocfilehash: 347e5ddbc02866887d3f422ecc291e5e3dfacaaf
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: b242bf52bbd63d726e6ce6ab7be01a1b81c5bf1b
+ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207918"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50758262"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-c"></a>Введение в программирование веб-ASP.NET с использованием синтаксиса Razor (C#)
 ====================
@@ -342,13 +342,13 @@ Razor имеет ограничения на вложенные блоки C#. �
 
 :::row:::
     :::column:::
-        <strong>Method</strong>
+    <strong>Метод</strong>
     :::column-end:::
     :::column:::
-        <strong>Description</strong>
+    <strong>Описание</strong>
     :::column-end:::
     :::column:::
-        <strong>Example</strong>
+    <strong>Пример</strong>
     :::column-end:::
 :::row-end:::
 * * *
@@ -357,7 +357,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `AsInt(), IsInt()`
     :::column-end:::
     :::column:::
-        Converts a string that represents a whole number (like "593") to an integer.
+    Преобразует строку, которая представляет целое число (например, «593)» в целое число.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample28.cs)]
@@ -369,7 +369,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `AsBool(), IsBool()`
     :::column-end:::
     :::column:::
-        Converts a string like &quot;true&quot; or &quot;false&quot; to a Boolean type.
+    Преобразует строку как &quot;true&quot; или &quot;false&quot; к логическому типу.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample29.cs)]
@@ -381,7 +381,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `AsFloat(), IsFloat()`
     :::column-end:::
     :::column:::
-        Converts a string that has a decimal value like &quot;1.3&quot; or &quot;7.439&quot; to a floating-point number.
+    Преобразует строку, которая имеет значение десятичного числа, например &quot;1.3&quot; или &quot;7.439&quot; число с плавающей запятой.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample30.cs)]
@@ -393,7 +393,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `AsDecimal(), IsDecimal()`
     :::column-end:::
     :::column:::
-        Converts a string that has a decimal value like &quot;1.3&quot; or &quot;7.439&quot; to a decimal number. (In ASP.NET, a decimal number is more precise than a floating-point number.)
+    Преобразует строку, которая имеет значение десятичного числа, например &quot;1.3&quot; или &quot;7.439&quot; в десятичное число. (В ASP.NET, десятичное число является более точным, чем число с плавающей запятой.)
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample31.cs)]
@@ -405,7 +405,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `AsDateTime(), IsDateTime()`
     :::column-end:::
     :::column:::
-        Converts a string that represents a date and time value to the ASP.NET `DateTime` type.
+    Преобразует строку, представляющую значение даты и времени для ASP.NET `DateTime` типа.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample32.cs)]
@@ -417,7 +417,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `ToString()`
     :::column-end:::
     :::column:::
-        Converts any other data type to a string.
+    Любой другой тип данных преобразуется в строку.
     :::column-end:::
     :::column:::
         [!code-javascript[Main](introducing-razor-syntax-c/samples/sample33.js)]
@@ -431,13 +431,13 @@ Razor имеет ограничения на вложенные блоки C#. �
 
 :::row:::
     :::column:::
-        <strong>Operator</strong>
+    <strong>Operator</strong>
     :::column-end:::
     :::column:::
-        <strong>Description</strong>
+    <strong>Описание</strong>
     :::column-end:::
     :::column:::
-        <strong>Examples</strong>
+    <strong>Примеры</strong>
     :::column-end:::
 :::row-end:::
 * * *
@@ -446,7 +446,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `+` `-` `*` `/`
     :::column-end:::
     :::column:::
-        Math operators used in numerical expressions.
+    Математические операторы, используемые в числовых выражений.
     :::column-end:::
     :::column:::
         [!code-css[Main](introducing-razor-syntax-c/samples/sample34.css)]
@@ -458,7 +458,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `=`
     :::column-end:::
     :::column:::
-        Assignment. Assigns the value on the right side of a statement to the object on the left side.
+    Присваивание. Присваивает значение правой стороны оператора объекту с левой стороны.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample35.cs)]
@@ -470,7 +470,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `==`
     :::column-end:::
     :::column:::
-        Equality. Returns `true` if the values are equal. (Notice the distinction between the `=` operator and the `==` operator.)
+    Равенство. Возвращает `true` Если значения равны. (Обратите внимание, что разница между `=` оператор и `==` оператор.)
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample36.cs)]
@@ -482,7 +482,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `!=`
     :::column-end:::
     :::column:::
-        Inequality. Returns `true` if the values are not equal.
+    Неравенство. Возвращает `true` Если значения не равны.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample37.cs)]
@@ -494,7 +494,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `< > <= >=`
     :::column-end:::
     :::column:::
-        Less-than, greater-than, less-than-or-equal, and greater-than-or-equal.
+    Меньше-чем», «больше — чем меньше или равно и больше или равно.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample38.cs)]
@@ -506,7 +506,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `+`
     :::column-end:::
     :::column:::
-        Concatenation, which is used to join strings. ASP.NET knows the difference between this operator and the addition operator based on the data type of the expression.
+    Объединение, который используется для объединения строк. ASP.NET знает разницу между этот оператор и оператор сложения, исходя из типа данных выражения.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample39.cs)]
@@ -518,7 +518,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `+=` `-=`
     :::column-end:::
     :::column:::
-        The increment and decrement operators, which add and subtract 1 (respectively) from a variable.
+    Операторы инкремента и декремента, которые сложения и вычитания 1 (соответственно) из переменной.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample40.cs)]
@@ -530,7 +530,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `.`
     :::column-end:::
     :::column:::
-        Dot. Used to distinguish objects and their properties and methods.
+    Точка. Используются для различения объектов и их свойства и методы.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample41.cs)]
@@ -542,7 +542,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `()`
     :::column-end:::
     :::column:::
-        Parentheses. Used to group expressions and to pass parameters to methods.
+    Круглые скобки. Используется для группирования выражений и для передачи параметров в методы.
     :::column-end:::
     :::column:::
         [!code-javascript[Main](introducing-razor-syntax-c/samples/sample42.js)]
@@ -554,7 +554,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `[]`
     :::column-end:::
     :::column:::
-        Brackets. Used for accessing values in arrays or collections.
+    Квадратные скобки. Используется для доступа к значениям в массивы или коллекции.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample43.cs)]
@@ -566,7 +566,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `!`
     :::column-end:::
     :::column:::
-        Not. Reverses a `true` value to `false` and vice versa. Typically used as a shorthand way to test for `false` (that is, for not `true`).
+    Нет. Обращает `true` значение `false` и наоборот. Обычно используется в качестве быстрым способом для проверки `false` (то есть для не `true`).
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample44.cs)]
@@ -578,7 +578,7 @@ Razor имеет ограничения на вложенные блоки C#. �
         `&&` <code>&#124;&#124;</code>
     :::column-end:::
     :::column:::
-        Logical AND and OR, which are used to link conditions together.
+    Логическое и и или, которые используются для связывания условий.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample45.cs)]
