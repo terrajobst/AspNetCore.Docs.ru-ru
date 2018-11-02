@@ -1,51 +1,51 @@
 ---
 title: ASP.NET Core SignalR поддерживаемые платформы
 author: tdykstra
-description: Поддерживаемые платформы для ASP.NET Core SignalR
+description: Дополнительные сведения о поддерживаемых платформ для ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 09/26/2018
+ms.date: 10/31/2018
 uid: signalr/supported-platforms
-ms.openlocfilehash: d6d74a55d35ddb34a6f66a171bfe3f343dd61b63
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 773f6c020dbb2982911e177b55855473c750d52a
+ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577630"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50758184"
 ---
-# <a name="aspnet-core-signalr-supported-platforms"></a><span data-ttu-id="83017-103">ASP.NET Core SignalR поддерживаемые платформы</span><span class="sxs-lookup"><span data-stu-id="83017-103">ASP.NET Core SignalR supported platforms</span></span>
+# <a name="aspnet-core-signalr-supported-platforms"></a><span data-ttu-id="de037-103">ASP.NET Core SignalR поддерживаемые платформы</span><span class="sxs-lookup"><span data-stu-id="de037-103">ASP.NET Core SignalR supported platforms</span></span>
 
-## <a name="server-system-requirements"></a><span data-ttu-id="83017-104">Системные требования для сервера</span><span class="sxs-lookup"><span data-stu-id="83017-104">Server system requirements</span></span>
+## <a name="server-system-requirements"></a><span data-ttu-id="de037-104">Системные требования для сервера</span><span class="sxs-lookup"><span data-stu-id="de037-104">Server system requirements</span></span>
 
-<span data-ttu-id="83017-105">SignalR для ASP.NET Core поддерживает любой серверной платформой ASP.NET Core поддерживает.</span><span class="sxs-lookup"><span data-stu-id="83017-105">SignalR for ASP.NET Core supports any server platform ASP.NET Core supports.</span></span>
+<span data-ttu-id="de037-105">SignalR для ASP.NET Core поддерживает любой платформе сервера, которая поддерживает ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="de037-105">SignalR for ASP.NET Core supports any server platform that ASP.NET Core supports.</span></span>
 
-## <a name="javascript-client"></a><span data-ttu-id="83017-106">Клиент JavaScript</span><span class="sxs-lookup"><span data-stu-id="83017-106">JavaScript client</span></span>
+## <a name="javascript-client"></a><span data-ttu-id="de037-106">Клиент JavaScript</span><span class="sxs-lookup"><span data-stu-id="de037-106">JavaScript client</span></span>
 
-<span data-ttu-id="83017-107">[Клиента JavaScript](https://www.npmjs.com/package/@aspnet/signalr) работает на NodeJS 8 и более поздних версиях, а также следующие браузеры:</span><span class="sxs-lookup"><span data-stu-id="83017-107">The [JavaScript client](https://www.npmjs.com/package/@aspnet/signalr) runs on NodeJS 8 and later versions and the following browsers:</span></span>
+<span data-ttu-id="de037-107">[Клиента JavaScript](https://www.npmjs.com/package/@aspnet/signalr) работает на NodeJS 8 и более поздних версиях, а также следующие браузеры:</span><span class="sxs-lookup"><span data-stu-id="de037-107">The [JavaScript client](https://www.npmjs.com/package/@aspnet/signalr) runs on NodeJS 8 and later versions and the following browsers:</span></span>
 
-| <span data-ttu-id="83017-108">Браузер</span><span class="sxs-lookup"><span data-stu-id="83017-108">Browser</span></span> | <span data-ttu-id="83017-109">Версия</span><span class="sxs-lookup"><span data-stu-id="83017-109">Version</span></span> |
-| ------- | ------- |
-| <span data-ttu-id="83017-110">Microsoft Edge</span><span class="sxs-lookup"><span data-stu-id="83017-110">Microsoft Edge</span></span> | <span data-ttu-id="83017-111">текущий</span><span class="sxs-lookup"><span data-stu-id="83017-111">current</span></span> |
-| <span data-ttu-id="83017-112">Mozilla Firefox</span><span class="sxs-lookup"><span data-stu-id="83017-112">Mozilla Firefox</span></span> | <span data-ttu-id="83017-113">текущий</span><span class="sxs-lookup"><span data-stu-id="83017-113">current</span></span> |
-| <span data-ttu-id="83017-114">Google Chrome; включает в себя Android</span><span class="sxs-lookup"><span data-stu-id="83017-114">Google Chrome; includes Android</span></span> | <span data-ttu-id="83017-115">текущий</span><span class="sxs-lookup"><span data-stu-id="83017-115">current</span></span> |
-| <span data-ttu-id="83017-116">Safari; включает в себя iOS</span><span class="sxs-lookup"><span data-stu-id="83017-116">Safari; includes iOS</span></span> | <span data-ttu-id="83017-117">текущий</span><span class="sxs-lookup"><span data-stu-id="83017-117">current</span></span> |
-| <span data-ttu-id="83017-118">Microsoft Internet Explorer</span><span class="sxs-lookup"><span data-stu-id="83017-118">Microsoft Internet Explorer</span></span> | <span data-ttu-id="83017-119">11</span><span class="sxs-lookup"><span data-stu-id="83017-119">11</span></span> |
+| <span data-ttu-id="de037-108">Браузер</span><span class="sxs-lookup"><span data-stu-id="de037-108">Browser</span></span>                         | <span data-ttu-id="de037-109">Версия</span><span class="sxs-lookup"><span data-stu-id="de037-109">Version</span></span> |
+| ------------------------------- | ------- |
+| <span data-ttu-id="de037-110">Microsoft Edge</span><span class="sxs-lookup"><span data-stu-id="de037-110">Microsoft Edge</span></span>                  | <span data-ttu-id="de037-111">текущий</span><span class="sxs-lookup"><span data-stu-id="de037-111">current</span></span> |
+| <span data-ttu-id="de037-112">Mozilla Firefox</span><span class="sxs-lookup"><span data-stu-id="de037-112">Mozilla Firefox</span></span>                 | <span data-ttu-id="de037-113">текущий</span><span class="sxs-lookup"><span data-stu-id="de037-113">current</span></span> |
+| <span data-ttu-id="de037-114">Google Chrome; включает в себя Android</span><span class="sxs-lookup"><span data-stu-id="de037-114">Google Chrome; includes Android</span></span> | <span data-ttu-id="de037-115">текущий</span><span class="sxs-lookup"><span data-stu-id="de037-115">current</span></span> |
+| <span data-ttu-id="de037-116">Safari; включает в себя iOS</span><span class="sxs-lookup"><span data-stu-id="de037-116">Safari; includes iOS</span></span>            | <span data-ttu-id="de037-117">текущий</span><span class="sxs-lookup"><span data-stu-id="de037-117">current</span></span> |
+| <span data-ttu-id="de037-118">Microsoft Internet Explorer</span><span class="sxs-lookup"><span data-stu-id="de037-118">Microsoft Internet Explorer</span></span>     | <span data-ttu-id="de037-119">11</span><span class="sxs-lookup"><span data-stu-id="de037-119">11</span></span>      |
  
-## <a name="net-client"></a><span data-ttu-id="83017-120">Клиент .NET</span><span class="sxs-lookup"><span data-stu-id="83017-120">.NET client</span></span>
+## <a name="net-client"></a><span data-ttu-id="de037-120">Клиент .NET</span><span class="sxs-lookup"><span data-stu-id="de037-120">.NET client</span></span>
 
-<span data-ttu-id="83017-121">[Клиента .NET](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) выполняется на любой платформе сервера, поддерживаемых ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="83017-121">The [.NET client](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) runs on any server platform supported by ASP.NET Core.</span></span>
+<span data-ttu-id="de037-121">[Клиента .NET](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) выполняется на любой платформе сервера, поддерживаемых ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="de037-121">The [.NET client](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) runs on any server platform supported by ASP.NET Core.</span></span>
 
-<span data-ttu-id="83017-122">Когда на сервере IIS, транспортный протокол WebSocket требует IIS 8.0 или более поздней версии, в Windows Server 2012 или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="83017-122">When the server runs IIS, the WebSockets transport requires IIS 8.0 or higher, on Windows Server 2012 or higher.</span></span> <span data-ttu-id="83017-123">Другие транспорты, поддерживаются на всех платформах.</span><span class="sxs-lookup"><span data-stu-id="83017-123">Other transports are supported on all platforms.</span></span>
+<span data-ttu-id="de037-122">Если сервер работает IIS, транспортный протокол WebSocket требует IIS 8.0 или более поздней версии на Windows Server 2012 или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="de037-122">If the server runs IIS, the WebSockets transport requires IIS 8.0 or higher on Windows Server 2012 or higher.</span></span> <span data-ttu-id="de037-123">Другие транспорты, поддерживаются на всех платформах.</span><span class="sxs-lookup"><span data-stu-id="de037-123">Other transports are supported on all platforms.</span></span>
 
-## <a name="java-client"></a><span data-ttu-id="83017-124">Клиент Java</span><span class="sxs-lookup"><span data-stu-id="83017-124">Java client</span></span>
+## <a name="java-client"></a><span data-ttu-id="de037-124">Клиент Java</span><span class="sxs-lookup"><span data-stu-id="de037-124">Java client</span></span>
 
-<span data-ttu-id="83017-125">[Клиента Java](https://search.maven.org/artifact/com.microsoft.aspnet/signalr) поддерживает Java 8 и более поздних версий.</span><span class="sxs-lookup"><span data-stu-id="83017-125">The [Java client](https://search.maven.org/artifact/com.microsoft.aspnet/signalr) supports Java 8 and later versions.</span></span>
+<span data-ttu-id="de037-125">[Клиента Java](https://search.maven.org/artifact/com.microsoft.aspnet/signalr) поддерживает Java 8 и более поздних версий.</span><span class="sxs-lookup"><span data-stu-id="de037-125">The [Java client](https://search.maven.org/artifact/com.microsoft.aspnet/signalr) supports Java 8 and later versions.</span></span>
 
-## <a name="unsupported-clients"></a><span data-ttu-id="83017-126">Неподдерживаемый клиентов</span><span class="sxs-lookup"><span data-stu-id="83017-126">Unsupported clients</span></span>
+## <a name="unsupported-clients"></a><span data-ttu-id="de037-126">Неподдерживаемый клиентов</span><span class="sxs-lookup"><span data-stu-id="de037-126">Unsupported clients</span></span>
 
-<span data-ttu-id="83017-127">Следующие клиенты доступны, но экспериментальной или неофициальный.</span><span class="sxs-lookup"><span data-stu-id="83017-127">The following clients are available but are experimental or unofficial.</span></span> <span data-ttu-id="83017-128">Они теперь не поддерживаются и могут никогда не будут поддерживаться.</span><span class="sxs-lookup"><span data-stu-id="83017-128">They are not supported now and may not ever be supported.</span></span>
+<span data-ttu-id="de037-127">Следующие клиенты доступны, но экспериментальной или неофициальный.</span><span class="sxs-lookup"><span data-stu-id="de037-127">The following clients are available but are experimental or unofficial.</span></span> <span data-ttu-id="de037-128">Они уже не поддерживаются и никогда не может быть.</span><span class="sxs-lookup"><span data-stu-id="de037-128">They aren't currently supported and may never be.</span></span>
 
-* [<span data-ttu-id="83017-129">Клиент C++</span><span class="sxs-lookup"><span data-stu-id="83017-129">C++ client</span></span>](https://github.com/aspnet/SignalR/tree/master/clients/cpp)
+* [<span data-ttu-id="de037-129">Клиент C++</span><span class="sxs-lookup"><span data-stu-id="de037-129">C++ client</span></span>](https://github.com/aspnet/SignalR/tree/master/clients/cpp)
 
-* [<span data-ttu-id="83017-130">SWIFT клиента</span><span class="sxs-lookup"><span data-stu-id="83017-130">Swift client</span></span>](https://github.com/moozzyk/SignalR-Client-Swift)
+* [<span data-ttu-id="de037-130">SWIFT клиента</span><span class="sxs-lookup"><span data-stu-id="de037-130">Swift client</span></span>](https://github.com/moozzyk/SignalR-Client-Swift)
