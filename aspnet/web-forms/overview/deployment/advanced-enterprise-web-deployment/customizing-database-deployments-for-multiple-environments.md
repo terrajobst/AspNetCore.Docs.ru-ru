@@ -91,7 +91,7 @@ ms.locfileid: "41836410"
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image1.png)
 3. <span data-ttu-id="2fc3f-200">В **новый файл конфигурации развертывания** диалогового окна поле, присвойте файлу понятное имя (например, **TestEnvironment.sqldeployment**) и нажмите кнопку **Сохранить**.</span><span class="sxs-lookup"><span data-stu-id="2fc3f-200">In the **New Deployment Configuration File** dialog box, give the file a meaningful name (for example, **TestEnvironment.sqldeployment**), and then click **Save**.</span></span>
-4. <span data-ttu-id="2fc3f-201">На *[имя_файла] *** .sqldeployment** странице, задание свойства развертывания в соответствии с требованиями целевой среды и затем сохраните файл.</span><span class="sxs-lookup"><span data-stu-id="2fc3f-201">On the *[Filename]***.sqldeployment** page, set the deployment properties to match the requirements of your destination environment, and then save the file.</span></span>
+4. <span data-ttu-id="2fc3f-201">На *[имя_файла] \*\*\* .sqldeployment*\* странице, задание свойства развертывания в соответствии с требованиями целевой среды и затем сохраните файл.</span><span class="sxs-lookup"><span data-stu-id="2fc3f-201">On the *[Filename]\*\*\*.sqldeployment*\* page, set the deployment properties to match the requirements of your destination environment, and then save the file.</span></span>
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image2.png)
 5. <span data-ttu-id="2fc3f-202">Обратите внимание на то, что новый файл добавляется в папку "Свойства" в проекте базы данных.</span><span class="sxs-lookup"><span data-stu-id="2fc3f-202">Notice that the new file is added to the Properties folder in your database project.</span></span>

@@ -92,7 +92,7 @@ ms.locfileid: "41824138"
 1. <span data-ttu-id="90185-157">Откройте решение в Visual Studio 2010.</span><span class="sxs-lookup"><span data-stu-id="90185-157">Open your solution in Visual Studio 2010.</span></span>
 2. <span data-ttu-id="90185-158">В **обозревателе решений** окно, щелкните правой кнопкой мыши узел проекта web application (например, **ContactManager.Mvc**), пункты **добавить**и нажмите кнопку **Новый элемент**.</span><span class="sxs-lookup"><span data-stu-id="90185-158">In the **Solution Explorer** window, right-click your web application project node (for example, **ContactManager.Mvc**), point to **Add**, and then click **New Item**.</span></span>
 3. <span data-ttu-id="90185-159">В **Добавление нового элемента** выберите **XML-файл** шаблона.</span><span class="sxs-lookup"><span data-stu-id="90185-159">In the **Add New Item** dialog box, select the **XML File** template.</span></span>
-4. <span data-ttu-id="90185-160">В **имя** введите *[имя_проекта] ***.wpp.targets** (например, **ContactManager.Mvc.wpp.targets**), а затем нажмите кнопку **добавить**.</span><span class="sxs-lookup"><span data-stu-id="90185-160">In the **Name** box, type *[project name]***.wpp.targets** (for example, **ContactManager.Mvc.wpp.targets**), and then click **Add**.</span></span>
+4. <span data-ttu-id="90185-160">В **имя** введите \*[имя_проекта] \***.wpp.targets** (например, **ContactManager.Mvc.wpp.targets**), а затем нажмите кнопку **добавить**.</span><span class="sxs-lookup"><span data-stu-id="90185-160">In the **Name** box, type *[project name]\*\*\*.wpp.targets*\* (for example, **ContactManager.Mvc.wpp.targets**), and then click **Add**.</span></span>
 
     ![](excluding-files-and-folders-from-deployment/_static/image3.png)
 
