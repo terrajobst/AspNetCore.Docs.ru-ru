@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: fundamentals/servers/index
-ms.openlocfilehash: 161ab3fdf48e58d8c9af991dc5531e46d9c5adff
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 6b6ebbe9d31d571ea470fba0989d622dcf6e68af
+ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325865"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50758210"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Реализации веб-сервера в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "49325865"
 
 Приложение ASP.NET Core выполняется вместе с внутрипроцессной реализацией HTTP-сервера. Реализация сервера прослушивает HTTP-запросы и передает их в приложение как наборы [функций запросов](xref:fundamentals/request-features), объединенных в <xref:Microsoft.AspNetCore.Http.HttpContext>.
 
-ASP.NET Core предоставляет три реализации серверов:
+ASP.NET Core содержит следующие реализации серверов:
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -76,13 +76,13 @@ IIS, Nginx или Apache нельзя использовать без Kestrel и
 
 При использовании [IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture) или [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) ASP.NET Core запускает приложение в том же процессе, что и рабочий процесс IIS (модель *внутрипроцессного* размещения) или отдельном процессе из рабочего процесса IIS (модель *внепроцессного* размещения).
 
-[Модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) — это собственный модуль IIS, который обрабатывает собственные запросы IIS между HTTP-сервером IIS (внутрипроцессно) или сервером Kestrel (внепроцессно). Для получения дополнительной информации см. <xref:fundamentals/servers/aspnet-core-module>.
+[Модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) — это собственный модуль IIS, который обрабатывает собственные запросы IIS между HTTP-сервером IIS (внутрипроцессно) или сервером Kestrel (внепроцессно). Дополнительные сведения см. в разделе <xref:fundamentals/servers/aspnet-core-module>.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-При использовании [IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture) или [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) в качестве обратного прокси-сервера для ASP.NET Core приложение ASP.NET Core выполняется отдельно от рабочего процесса IIS. В процессе IIS [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) координирует связь с обратным прокси-сервером. Основные функции модуля ASP.NET Core — это запуск приложения ASP.NET Core, его перезапуск в случае сбоя и перенаправление HTTP-трафика в это приложение. Для получения дополнительной информации см. <xref:fundamentals/servers/aspnet-core-module>.
+При использовании [IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture) или [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) в качестве обратного прокси-сервера для ASP.NET Core приложение ASP.NET Core выполняется отдельно от рабочего процесса IIS. В процессе IIS [модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) координирует связь с обратным прокси-сервером. Основные функции модуля ASP.NET Core — это запуск приложения ASP.NET Core, его перезапуск в случае сбоя и перенаправление HTTP-трафика в это приложение. Дополнительные сведения см. в разделе <xref:fundamentals/servers/aspnet-core-module>.
 
 ::: moniker-end
 
