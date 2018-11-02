@@ -3,14 +3,15 @@ title: Публикация приложения ASP.NET Core в Azure с пом
 author: rick-anderson
 description: Сведения о публикации приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio.
 ms.author: riande
-ms.date: 12/16/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 7211da268c1c52e7b859e6f98ce433fd19b218ff
-ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
+ms.openlocfilehash: a5a02112d87563a47d5e2dab355359fa39da9a89
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39320730"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090359"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Публикация приложения ASP.NET Core в Azure с помощью Visual Studio
 
@@ -20,7 +21,7 @@ ms.locfileid: "39320730"
 
 Если вы работаете в macOS, см. раздел [Публикация в Azure из Visual Studio для Mac](https://blog.xamarin.com/publish-azure-visual-studio-mac/).
 
-В разделе [Устранение неполадок ASP.NET Core в службе приложений Azure](xref:host-and-deploy/azure-apps/troubleshoot) описывается устранение проблемы с развертыванием службы приложений.
+Сведения об устранении проблем развертывания службы приложений см. в статье <xref:host-and-deploy/azure-apps/troubleshoot>.
 
 ## <a name="set-up"></a>Настройка
 
@@ -179,11 +180,11 @@ Visual Studio создает веб-приложение и SQL Server в Azure.
 
 ### <a name="next-steps"></a>Следующие шаги
 
-* [Непрерывное развертывание в Azure с помощью Visual Studio и Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment)
+* <xref:host-and-deploy/azure-apps/azure-continuous-deployment>
 
 ## <a name="additonal-resources"></a>Дополнительные ресурсы
 
-* [служба приложений Azure](https://docs.microsoft.com/azure/app-service/app-service-web-overview);
-* [Группа ресурсов Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)
-* [База данных SQL Azure](https://docs.microsoft.com/azure/sql-database/)
-* [Устранение неполадок ASP.NET Core в службе приложений Azure](xref:host-and-deploy/azure-apps/troubleshoot)
+* [служба приложений Azure](/azure/app-service/app-service-web-overview);
+* [Группа ресурсов Azure](/azure/azure-resource-manager/resource-group-overview#resource-groups)
+* [База данных SQL Azure](/azure/sql-database/)
+* <xref:host-and-deploy/azure-apps/troubleshoot>

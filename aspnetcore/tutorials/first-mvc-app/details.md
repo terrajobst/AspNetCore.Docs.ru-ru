@@ -5,12 +5,12 @@ description: Узнайте о методе и представлении кон
 ms.author: riande
 ms.date: 03/07/2017
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: ce5b2af148ddba9bc718345c0b8074da8724308d
-ms.sourcegitcommit: 32f5ee0690604d451f61e9a5c28881c9fcf85738
+ms.openlocfilehash: c5d21bc70aae4c1a1d10bb333871eeef25a1879c
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/29/2018
-ms.locfileid: "47454808"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50208009"
 ---
 # <a name="examine-the-details-and-delete-methods-of-an-aspnet-core-app"></a>Изучение методов Details и Delete в приложении ASP.NET Core
 
@@ -73,7 +73,7 @@ public async Task<IActionResult> Delete(int id, bool notUsed)
 
 ### <a name="publish-to-azure"></a>Публикация в Azure
 
-Сведения о развертывании в Azure см. в статье [Руководство. Создание приложения ASP.NET в Azure с подключением к базе данных SQL](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase). Инструкция приведена для приложения ASP.NET, а не ASP.NET Core, но шаги совпадают.
+Сведения о развертывании в Azure см. в статье [Руководство. Создание веб-приложения .NET Core с базой данных SQL в службе приложений Azure](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb).
 
 > [!div class="step-by-step"]
 > [Назад](validation.md)

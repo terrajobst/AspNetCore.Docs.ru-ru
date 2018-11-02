@@ -3,14 +3,15 @@ title: 'ASP.NET Core MVC с Entity Framework Core: учебник 1 из 10'
 author: rick-anderson
 description: ''
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 46cc5144a289637a0fb1c1c2ac22aba2d881af52
-ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
+ms.openlocfilehash: 6f867875ed670065ef76728342d3854281f08ae4
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336111"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091071"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC с Entity Framework Core: учебник 1 из 10
 
@@ -28,7 +29,7 @@ ms.locfileid: "43336111"
 
 [Скачайте или ознакомьтесь с готовым приложением.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-EF Core 2.0 — это последняя версия платформы EF, однако в ней реализованы еще не все возможности EF 6.x. Дополнительные сведения о выборе между платформами EF 6.x и EF Core см. в [этой статье](https://docs.microsoft.com/ef/efcore-and-ef6/). Если вы используете платформу EF 6.x, ознакомьтесь с [предыдущей версией этой серии учебников](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
+EF Core 2.0 — это последняя версия платформы EF, однако в ней реализованы еще не все возможности EF 6.x. Дополнительные сведения о выборе между платформами EF 6.x и EF Core см. в [этой статье](/ef/efcore-and-ef6/). Если вы используете платформу EF 6.x, ознакомьтесь с [предыдущей версией этой серии учебников](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
 > [!NOTE]
 > Версия этого учебника для ASP.NET Core 1.1 и VS 2017 с обновлением 2 в формате PDF доступна [здесь](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf).
@@ -106,11 +107,11 @@ EF Core 2.0 — это последняя версия платформы EF, 
 
 ## <a name="entity-framework-core-nuget-packages"></a>Пакеты Entity Framework Core NuGet
 
-Чтобы реализовать поддержку EF Core в проекте, установите поставщик целевой базы данных. В этом учебнике используется SQL Server, для которого требуется пакет поставщика [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/). Этот пакет уже входит в состав метапакета [Microsoft.AspNetCore.All](xref:fundamentals/metapackage), поэтому устанавливать его не требуется.
+Чтобы реализовать поддержку EF Core в проекте, установите поставщик целевой базы данных. В этом учебнике используется SQL Server, для которого требуется пакет поставщика [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/). Этот пакет входит в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app), поэтому если приложение уже содержит ссылку на пакет `Microsoft.AspNetCore.App`, ссылаться на него не нужно.
 
 Этот пакет и его зависимости (`Microsoft.EntityFrameworkCore` и `Microsoft.EntityFrameworkCore.Relational`) обеспечивают поддержку среды выполнения для платформы EF. Пакет средств будет добавлен позднее в рамках учебника [Миграции](migrations.md).
 
-Дополнительные сведения о других поставщиках баз данных, которые доступны для платформы Entity Framework Core, см. в разделе [Поставщики баз данных](https://docs.microsoft.com/ef/core/providers/).
+Дополнительные сведения о других поставщиках баз данных, которые доступны для платформы Entity Framework Core, см. в разделе [Поставщики баз данных](/ef/core/providers/).
 
 ## <a name="create-the-data-model"></a>Создание модели данных
 
@@ -357,7 +358,7 @@ ASP.NET Core по умолчанию реализует технологию [в
 
 * Если вы хотите использовать преимущества в производительности, которые обеспечивает асинхронный код, убедитесь, что все используемые пакеты библиотек (например, для разбиения на страницы) также используют асинхронный код при вызове любых методов Entity Framework, выполняющих запросы к базе данных.
 
-Дополнительные сведения об асинхронных методах программирования в .NET см. в разделе [Обзор асинхронной модели](https://docs.microsoft.com/dotnet/articles/standard/async).
+Дополнительные сведения об асинхронных методах программирования в .NET см. в разделе [Обзор асинхронной модели](/dotnet/articles/standard/async).
 
 ## <a name="summary"></a>Сводка
 

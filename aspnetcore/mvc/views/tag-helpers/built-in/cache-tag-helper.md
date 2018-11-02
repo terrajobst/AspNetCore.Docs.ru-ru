@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 7d64c500168166b0a7a29d5b92473726d5a9f49a
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 2590682755721a4bb14902b9fe7138a3bff56d31
+ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325345"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50148815"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Вспомогательная функция тегов кэша в MVC-моделях ASP.NET Core
 
@@ -33,7 +33,7 @@ ms.locfileid: "49325345"
 
 ### <a name="enabled"></a>enabled
 
-| Тип атрибута  | Примеры        | По умолчанию |
+| Тип атрибута  | Примеры        | Значение по умолчанию |
 | --------------- | --------------- | ------- |
 | Boolean         | `true`, `false` | `true`  |
 
@@ -65,7 +65,7 @@ ms.locfileid: "49325345"
 
 ### <a name="expires-after"></a>expires-after
 
-| Тип атрибута | Пример                      | По умолчанию    |
+| Тип атрибута | Пример                      | Значение по умолчанию    |
 | -------------- | ---------------------------- | ---------- |
 | `TimeSpan`     | `@TimeSpan.FromSeconds(120)` | 20 минут |
 
@@ -119,7 +119,7 @@ ms.locfileid: "49325345"
 | -------------- | -------------------- |
 | String         | `Make`, `Make,Model` |
 
-`vary-by-query` принимает список разделенных запятыми значений заголовков, запускающих обновление кэша при их изменении.
+`vary-by-query` принимает список разделенных запятыми <xref:Microsoft.AspNetCore.Http.IQueryCollection.Keys*> в строке запроса (<xref:Microsoft.AspNetCore.Http.HttpRequest.Query*>), запускающих обновление кэша при изменении значения любого указанного ключа.
 
 Следующий пример показывает отслеживание значений `Make` и `Model`. Содержимое будет кэшироваться для каждого отдельного заголовка `Make` и `Model`, представленного на веб-сервере:
 
@@ -173,7 +173,7 @@ routes.MapRoute(
 
 ### <a name="vary-by-user"></a>vary-by-user
 
-| Тип атрибута  | Примеры        | По умолчанию |
+| Тип атрибута  | Примеры        | Значение по умолчанию |
 | --------------- | --------------- | ------- |
 | Boolean         | `true`, `false` | `true`  |
 
@@ -222,7 +222,7 @@ public IActionResult Index(string myParam1, string myParam2, string myParam3)
 
 ### <a name="priority"></a>priority
 
-| Тип атрибута      | Примеры                               | По умолчанию  |
+| Тип атрибута      | Примеры                               | Значение по умолчанию  |
 | ------------------- | -------------------------------------- | -------- |
 | `CacheItemPriority` | `High`, `Low`, `NeverRemove`, `Normal` | `Normal` |
 

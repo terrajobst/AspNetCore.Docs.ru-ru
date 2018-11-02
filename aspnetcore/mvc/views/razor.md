@@ -3,14 +3,14 @@ title: Справочник по синтаксису Razor для ASP.NET Core
 author: rick-anderson
 description: Сведения о синтаксисе разметки Razor для внедрения в веб-страницы серверного кода.
 ms.author: riande
-ms.date: 10/18/2017
+ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: d0f4d59cb605cc3cc7cdfa84bfc65399699e475a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 10f0db168b36fed82def8227b3c3edcf5b57f6d7
+ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272692"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50148893"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Справочник по синтаксису Razor для ASP.NET Core
 
@@ -404,7 +404,7 @@ Razor поддерживает комментарии C# и HTML:
 
 Узнав, каким образом Razor создает код для представления, вы сможете легко понять принципы работы директив.
 
-[!code-html[](razor/sample/Views/Home/Contact8.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact8.cshtml)]
 
 Код создает класс, аналогичный следующему:
 
@@ -422,7 +422,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 }
 ```
 
-Сведения о просмотре этого класса приводятся в разделе [Просмотр Razor-класса C#, созданного для представления](#viewing-the-razor-c-class-generated-for-a-view) далее в этой статье.
+Сведения о просмотре этого класса приводятся в разделе [Просмотр Razor-класса C#, созданного для представления](#inspect-the-razor-c-class-generated-for-a-view) далее в этой статье.
 
 <a name="using"></a>
 ### <a name="using"></a>@using
@@ -497,7 +497,6 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 ```
 
 ### <a name="inject"></a>@inject
-
 
 Директива `@inject` позволяет странице Razor внедрять в представление службу из [контейнера службы](xref:fundamentals/dependency-injection). Дополнительные сведения: [Внедрение зависимостей в представления](xref:mvc/views/dependency-injection).
 
@@ -574,32 +573,76 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 * класс
 
-## <a name="viewing-the-razor-c-class-generated-for-a-view"></a>Просмотр Razor-класса C#, созданного для представления
+## <a name="inspect-the-razor-c-class-generated-for-a-view"></a>Просмотр Razor-класса C#, созданного для представления
+
+::: moniker range=">= aspnetcore-2.1"
+
+При использовании пакета SDK для .NET Core 2.1 или более поздней версии [пакет SDK для Razor](xref:razor-pages/sdk) обрабатывает компиляцию файлов Razor. При сборке проекта пакет SDK для Razor создает каталог *obj/<конфигурация_сборки>/<моникер_целевой_платформы>/Razor* в корневом каталоге проекта. Структура каталогов в каталоге *Razor* отражает структуру каталогов проекта.
+
+Рассмотрим следующую структуру каталогов в проекте ASP.NET Core 2.1 Razor Pages, предназначенном для .NET Core 2.1.
+
+* **Areas/**
+  * **Admin/**
+    * **Pages/**
+      * *Index.cshtml*
+      * *Index.cshtml.cs*
+* **Pages/**
+  * **Shared/**
+    * *_Layout.cshtml*
+  * *_ViewImports.cshtml*
+  * *_ViewStart.cshtml*
+  * *Index.cshtml*
+  * *Index.cshtml.cs*
+
+При сборке проекта в конфигурации *Отладка* создается следующий каталог *obj*:
+
+* **obj/**
+  * **Debug/**
+    * **netcoreapp2.1/**
+      * **Razor/**
+        * **Areas/**
+          * **Admin/**
+            * **Pages/**
+              * *Index.g.cshtml.cs*
+        * **Pages/**
+          * **Shared/**
+            * *_Layout.g.cshtml.cs*
+          * *_ViewImports.g.cshtml.cs*
+          * *_ViewStart.g.cshtml.cs*
+          * *Index.g.cshtml.cs*
+
+Чтобы просмотреть созданный класс для *Pages/Index.cshtml* откройте *obj/Debug/netcoreapp2.1/Razor/Pages/Index.g.cshtml.cs*.
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
 
 Добавьте в MVC-проект ASP.NET следующий класс:
 
 [!code-csharp[](razor/sample/Utilities/CustomTemplateEngine.cs)]
 
-Переопределите класс `RazorTemplateEngine`, добавленный MVC, классом `CustomTemplateEngine`:
+В `Startup.ConfigureServices` переопределите класс `RazorTemplateEngine`, добавленный MVC, классом `CustomTemplateEngine`:
 
 [!code-csharp[](razor/sample/Startup.cs?highlight=4&range=10-14)]
 
-Установите точку останова в операторе `return csharpDocument` класса `CustomTemplateEngine`. Когда выполнение программы остановится в этой точке, просмотрите значение `generatedCode`.
+Установите точку останова в операторе `return csharpDocument;` класса `CustomTemplateEngine`. Когда выполнение программы остановится в этой точке, просмотрите значение `generatedCode`.
 
 ![Представление generatedCode в визуализаторе текста](razor/_static/tvr.png)
+
+::: moniker-end
 
 ## <a name="view-lookups-and-case-sensitivity"></a>Поиск данных в представлениях и учет регистра
 
 Модуль представлений Razor позволяет искать в представлениях данные с учетом регистра. Однако фактический поиск зависит от используемой файловой системы.
 
-* Источники в виде файлов: 
+* Источники в виде файлов:
   * В операционных системах, файловые системы которых не учитывают регистр (например, Windows), поиск поставщика физических файлов не зависит от регистра. Например, поиск по `return View("Test")` выводит совпадения */Views/Home/Test.cshtml*, */Views/home/test.cshtml* и другие варианты с различными сочетаниями регистра.
   * В файловых системах, учитывающих регистр (например, в Linux, OSX и где используется `EmbeddedFileProvider`), поиск выполняется с учетом регистра. Например, поиск по `return View("Test")` дает точное совпадение */Views/Home/Test.cshtml*.
 * Предварительно скомпилированные представления: в ASP.NET Core 2.0 и более поздних версиях поиск в предварительно скомпилированных представлениях выполняется без учета регистра во всех операционных системах. Это поведение аналогично поведению поставщика физических файлов в Windows. Если два предварительно скомпилированных представления отличаются только регистром, результат поиска является недетерминированным.
 
 Разработчикам рекомендуется использовать для файлов и каталогов тот же регистр, что и для:
 
-    * имен областей, контроллеров и действий; 
+    * имен областей, контроллеров и действий;
     * страниц Razor Pages.
-    
+
 Совпадающий регистр гарантирует, что развертываемые службы смогут находить свои представления вне зависимости от используемой файловой системы.

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/30/2018
 uid: tutorials/web-api-vsc
-ms.openlocfilehash: b8e5c8b7d3dc04513997997d903295853dd1ff46
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: 740110908358a382f20bc1e54e98056296278acf
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348433"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50089668"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio-code"></a>Создание веб-API с помощью ASP.NET Core и Visual Studio Code
 
@@ -29,7 +29,7 @@ ms.locfileid: "49348433"
 
 [!INCLUDE[template files](../includes/webApi/intro.md)]
 
-## <a name="prerequisites"></a>Необходимые компоненты
+## <a name="prerequisites"></a>Предварительные требования
 
 [!INCLUDE[prerequisites](~/includes/net-core-prereqs-vscode.md)]
 
@@ -65,7 +65,7 @@ code TodoApi
 
 :::moniker range=">= aspnetcore-2.1"
 
-При создании проекта в ASP.NET Core 2.1 или более поздней версии в файл *TodoApi.csproj* добавляется ссылка на пакет [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App):
+При создании проекта в ASP.NET Core 2.1 или более поздней версии в файл проекта добавляется метапакет [Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 [!code-xml[](first-web-api/samples/2.1/TodoApi/TodoApi.csproj?name=snippet_Metapackage&highlight=2)]
 
@@ -73,7 +73,7 @@ code TodoApi
 
 :::moniker range="<= aspnetcore-2.0"
 
-При создании проекта в ASP.NET Core 2.0 в файл *TodoApi.csproj* добавляется ссылка на пакет [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All):
+При создании проекта в ASP.NET Core 2.0 в файл проекта добавляется метапакет [Microsoft.AspNetCore.All](xref:fundamentals/metapackage).
 
 [!code-xml[](first-web-api/samples/2.0/TodoApi/TodoApi.csproj?name=snippet_Metapackage&highlight=2)]
 

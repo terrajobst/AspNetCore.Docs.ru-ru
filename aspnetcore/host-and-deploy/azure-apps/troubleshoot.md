@@ -1,17 +1,17 @@
 ---
-title: Устранение неполадок ASP.NET Core в службе приложений Azure
+title: Устранение ошибок запуска ASP.NET Core в службе приложений Azure
 author: guardrex
 description: Сведения о диагностике проблем с развертываниями ASP.NET Core в службе приложений Azure.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/31/2018
+ms.date: 10/24/2018
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: a995c743b4e43be8bea5329affb3f2c736b1d016
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: 05bb024f5b0d2b554cc861c250a92fd7ae23437f
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41902558"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090749"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Устранение неполадок ASP.NET Core в службе приложений Azure
 
@@ -108,7 +108,7 @@ ms.locfileid: "41902558"
 
 ## <a name="common-startup-errors"></a>Стандартные ошибки запуска 
 
-См. [справочник по общим ошибкам для приложений ASP.NET Core](xref:host-and-deploy/azure-iis-errors-reference). В этой статье рассматривается большинство распространенных ошибок, препятствующих запуску приложений.
+См. раздел <xref:host-and-deploy/azure-iis-errors-reference>. В этой статье рассматривается большинство распространенных ошибок, препятствующих запуску приложений.
 
 ## <a name="slow-or-hanging-app"></a>Медленное или зависающее приложение
 
@@ -175,8 +175,8 @@ ms.locfileid: "41902558"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Общие сведения об обработке ошибок в ASP.NET Core](xref:fundamentals/error-handling)
-* [Справочник по общим ошибкам для службы приложений Azure и служб IIS с ASP.NET Core](xref:host-and-deploy/azure-iis-errors-reference)
+* <xref:fundamentals/error-handling>
+* <xref:host-and-deploy/azure-iis-errors-reference>
 * [Устранение неполадок веб-приложения в службе приложений Azure с помощью Visual Studio](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio)
 * [Устранение ошибок HTTP "502 — недопустимый шлюз" и "503 — служба недоступна" в веб-приложениях Azure](/azure/app-service/app-service-web-troubleshoot-http-502-http-503)
 * [Устранение проблем с производительностью медленных веб приложений в службе приложений Azure](/azure/app-service/app-service-web-troubleshoot-performance-degradation)

@@ -6,18 +6,20 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
 uid: fundamentals/startup
-ms.openlocfilehash: 392dc83666bc6b9012adc6c32169ae7bdc7ed8d7
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: 2212344cb3c651714e8c520b096ab0c4eaf5a180
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391119"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206460"
 ---
-# <a name="application-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
+# <a name="app-startup-in-aspnet-core"></a>Запуск приложения в ASP.NET Core
 
 Авторы: [Стив Смит](https://ardalis.com) (Steve Smith), [Том Дикстра](https://github.com/tdykstra) (Tom Dykstra) и [Люк Лэтем](https://github.com/guardrex) (Luke Latham)
 
 Класс `Startup` настраивает службы и конвейер запросов приложения.
+
+[Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/startup/sample/) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 ## <a name="the-startup-class"></a>Класс Startup
 
@@ -44,7 +46,7 @@ ms.locfileid: "49391119"
 
 [!code-csharp[](startup/snapshot_sample/Startup2.cs)]
 
-Альтернативой внедрению `IHostingEnvironment` является использование подхода на основе соглашений. Приложение может определять отдельные классы `Startup` для различных сред (например, `StartupDevelopment`), при этом подходящий класс `Startup` выбирается во время выполнения. Класс, у которого суффикс имени соответствует текущей среде, получает приоритет. Если приложение выполняется в среде разработки и включает в себя оба класса — `Startup` и `StartupDevelopment`, используется класс `StartupDevelopment`. Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments#environment-based-startup-class-and-methods).
+Альтернативой внедрению `IHostingEnvironment` является использование подхода на основе соглашений. Когда приложение определяет отдельные классы `Startup` для различных сред (например, `StartupDevelopment`), подходящий класс `Startup` выбирается во время выполнения. Класс, у которого суффикс имени соответствует текущей среде, получает приоритет. Если приложение выполняется в среде разработки и включает в себя оба класса — `Startup` и `StartupDevelopment`, используется класс `StartupDevelopment`. Дополнительные сведения см. в статье [Использование нескольких сред](xref:fundamentals/environments#environment-based-startup-class-and-methods).
 
 Дополнительные сведения о `WebHostBuilder` см. в разделе [Размещение](xref:fundamentals/host/index). Сведения об обработке ошибок во время запуска см. в разделе [Обработка исключений при запуске](xref:fundamentals/error-handling#startup-exception-handling).
 
@@ -52,7 +54,7 @@ ms.locfileid: "49391119"
 
 Метод [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices):
 
-* Необязательный
+* Optional
 * Вызывается веб-узлом перед методом `Configure` для настройки служб приложения.
 * По соглашению используется для задания [параметров конфигурации](xref:fundamentals/configuration/index).
 
@@ -66,7 +68,7 @@ ms.locfileid: "49391119"
 
 [!code-csharp[](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
 
-## <a name="the-configure-method"></a>Метод конфигурации
+## <a name="the-configure-method"></a>Метод Configure 
 
 Метод [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) используется для указания того, как приложение реагирует на HTTP-запросы. Конвейер запросов настраивается путем добавления компонентов [ПО промежуточного слоя](xref:fundamentals/middleware/index) в экземпляр [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder). `IApplicationBuilder` доступен для метода `Configure`, но он не зарегистрирован в контейнере службы. При размещении создается `IApplicationBuilder` и передается непосредственно в `Configure`.
 
@@ -96,7 +98,7 @@ ms.locfileid: "49391119"
 
 Каждый `IStartupFilter` реализует один или несколько компонентов ПО промежуточного слоя в конвейере запросов. Фильтры вызываются в том порядке, в котором они были добавлены в контейнер службы. Фильтры могут добавлять ПО промежуточного слоя до или после передачи управления следующему фильтру, поэтому они добавляются в начало или конец конвейера приложения.
 
-[Пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/startup/sample/) ([описание скачивания](xref:tutorials/index#how-to-download-a-sample)) показывает, как зарегистрировать ПО промежуточного слоя с помощью `IStartupFilter`. Этот пример включает ПО промежуточного слоя, которое задает значение параметров из параметра строки запроса:
+В примере приложения показано, как зарегистрировать ПО промежуточного слоя с помощью `IStartupFilter`. Этот пример включает ПО промежуточного слоя, которое задает значение параметров из параметра строки запроса:
 
 [!code-csharp[](startup/sample/RequestSetOptionsMiddleware.cs?name=snippet1)]
 

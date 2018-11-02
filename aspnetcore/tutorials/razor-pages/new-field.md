@@ -4,20 +4,21 @@ author: rick-anderson
 description: Демонстрирует, как добавить новое поле на страницу Razor с помощью Entity Framework Core
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 05/30/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: d6d59ff336095e2f1b8b2e9a0338b7791605ad7a
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: f8be269887903797803257d8a21e002519102047
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010901"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50089517"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Добавление нового поля на страницу Razor в ASP.NET Core
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-В этом разделе вы будете использовать [Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) Code First Migrations для добавления нового поля к модели и переноса этого изменения в базу данных.
+В этом разделе вы будете использовать [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First Migrations для добавления нового поля к модели и переноса этого изменения в базу данных.
 
 Если вы используете EF Code First для автоматического создания базы данных, Code First:
 
@@ -96,7 +97,9 @@ SqlException: Invalid column name 'Rating'.
 
 Постройте решение.
 
-<a name="pmc"></a> В меню **Сервис** последовательно выберите пункты **Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
+<a name="pmc"></a>
+
+В меню **Сервис** последовательно выберите пункты **Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
 В PMC введите следующие команды:
 
 ```powershell
@@ -111,7 +114,9 @@ Update-Database
 
 В качестве имени файла переноса используется произвольное имя "Rating". Рекомендуется присваивать этому файлу понятное имя.
 
-<a name="ssox"></a> Если удалить все записи из базы данных, при инициализации она будет заполнена значениями и в нее будет включено поле `Rating`. Это можно сделать с помощью ссылок удаления в браузере или из [обозревателя объектов SQL Server](xref:tutorials/razor-pages/sql#ssox) (SSOX). Удаление базы данных из SSOX:
+<a name="ssox"></a>
+
+Если удалить все записи из базы данных, при инициализации она будет заполнена начальными значениями и в нее будет включено поле `Rating`. Это можно сделать с помощью ссылок удаления в браузере или из [обозревателя объектов SQL Server](xref:tutorials/razor-pages/sql#ssox) (SSOX). Удаление базы данных из SSOX:
 
 * Выберите базу данных в SSOX.
 * Щелкните базу данных правой кнопкой мыши и выберите *Удалить*.

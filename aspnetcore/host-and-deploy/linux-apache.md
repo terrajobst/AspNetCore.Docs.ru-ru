@@ -4,14 +4,14 @@ description: Процедура настройки Apache в качестве о
 author: spboyer
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 10/09/2018
+ms.date: 10/23/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 237646f839a4973074bb64176a024ebb3d32ee4e
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 25545be5e4d9cb922b3aac4f6666503c1143d555
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48913012"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090324"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -57,13 +57,6 @@ dotnet publish --configuration Release
 
 ::: moniker range=">= aspnetcore-2.0"
 
-> [!NOTE]
-> Любая из этих конфигураций &mdash; с обратным прокси-сервером и без него &mdash; является допустимой и поддерживаемой для размещения основных компонентов приложений ASP.NET версии 2.0 и выше. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
-
-::: moniker-end
-
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
 Вызовите метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызвать [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
 ```csharp
@@ -75,7 +68,9 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 app.UseAuthentication();
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Вызывайте метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызвать [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity), [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
@@ -93,7 +88,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 });
 ```
 
----
+::: moniker-end
 
 Если параметр [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) не задан для ПО промежуточного слоя, по умолчанию перенаправляются заголовки `None`.
 
@@ -399,13 +394,17 @@ sudo yum install mod_headers
 
 [Кликджекинг](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger) (или *атака с подменой пользовательского интерфейса*) является вредоносной атакой, при которой посетителя сайта обманным путем вынуждают щелкнуть ссылку или нажать кнопку не той страницы, на которой он находится. Используйте `X-FRAME-OPTIONS` для защиты сайта.
 
-Измените файл *httpd.conf*.
+Чтобы уменьшить риск атак кликджекинга, выполните указанные ниже действия.
 
-```bash
-sudo nano /etc/httpd/conf/httpd.conf
-```
+1. Измените файл *httpd.conf*.
 
-Добавьте строку `Header append X-FRAME-OPTIONS "SAMEORIGIN"`. Сохраните файл. Перезапустите Apache.
+   ```bash
+   sudo nano /etc/httpd/conf/httpd.conf
+   ```
+
+   Добавьте строку `Header append X-FRAME-OPTIONS "SAMEORIGIN"`.
+1. Сохраните файл.
+1. Перезапустите Apache.
 
 #### <a name="mime-type-sniffing"></a>Сканирование типа MIME
 
@@ -485,4 +484,5 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
+* [Необходимые компоненты для .NET Core в Linux](/dotnet/core/linux-prerequisites)
 * [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer)

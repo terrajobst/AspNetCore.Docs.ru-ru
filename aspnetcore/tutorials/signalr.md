@@ -7,29 +7,29 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 55fb6b1c13549129a00541c1228956a93854ad78
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: c059ace7ebe0e65ecb3ac068677d65ae148322a0
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578033"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207684"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Руководство. Начало работы с SignalR ASP.NET Core
 
 В этом руководстве описаны основы создания приложения в режиме реального времени с помощью SignalR. Вы научитесь:
 
 > [!div class="checklist"]
-> * создавать проект веб-приложения;
+> * Создайте веб-проект.
 > * добавлять клиентскую библиотеку SignalR;
 > * создавать концентратор SignalR;
 > * настраивать проект для использования SignalR;
-> * добавлять код, использующий концентратор для отправки сообщений из любого клиента всем подключенным клиентам.
+> * Добавлять код для отправки сообщений из любого клиента всем подключенным клиентам.
 
 В итоге вы получите работающее приложение чата:
 
 ![Пример приложения SignalR](signalr/_static/signalr-get-started-finished.png)
 
-[Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr/sample) ([описание скачивания](xref:tutorials/index#how-to-download-a-sample)).
+[Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr/sample) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
 ## <a name="prerequisites"></a>Предварительные требования
 

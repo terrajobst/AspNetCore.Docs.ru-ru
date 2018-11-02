@@ -2,9 +2,11 @@
 
 Автор: [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-Объект `MovieContext` обрабатывает задачу подключения к базе данных и сопоставления объектов `Movie` с записями базы данных. Контекст базы данных регистрируется с помощью контейнера [внедрения зависимостей](xref:fundamentals/dependency-injection) в методе `ConfigureServices` в файле *Startup.cs*:
+Объект `MovieContext` обрабатывает задачу подключения к базе данных и сопоставления объектов `Movie` с записями базы данных. Контекст базы данных регистрируется с помощью контейнера [внедрения зависимостей (DI)](xref:fundamentals/dependency-injection) в методе `ConfigureServices` в файле *Startup.cs*:
 
 [!code-csharp[](code/Startup.cs?name=snippet2&highlight=6-8)]
+
+Дополнительные сведения об использовании `DbContext` с внедрением зависимостей см. в статье об [использовании DbContext с внедрением зависимостей](/ef/core/miscellaneous/configuring-dbcontext#using-dbcontext-with-dependency-injection).
 
 ## <a name="sqlite"></a>SQLite
 

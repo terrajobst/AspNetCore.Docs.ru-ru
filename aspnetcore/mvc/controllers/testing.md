@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/23/2018
 uid: mvc/controllers/testing
-ms.openlocfilehash: 582a5ba461ee2df73b99e4f499e8152f7c6cb7cf
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: 18674f85a0cf8c6dfffa94a2160f7182752674f7
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477167"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207996"
 ---
 # <a name="test-controller-logic-in-aspnet-core"></a>Тестирование логики контроллера в ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "49477167"
 
 [Контроллеры](xref:mvc/controllers/actions) играют важнейшую роль в любом приложении MVC на ASP.NET Core. Это означает, что вы должны быть полностью уверены в правильности их работы. Автоматические тесты позволяют обнаружить ошибки до развертывания приложения в рабочей среде.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/testing/sample) ([как скачивать](xref:tutorials/index#how-to-download-a-sample))
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/testing/sample) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="unit-tests-of-controller-logic"></a>Модульное тестирование логики контроллера
 
@@ -75,7 +75,7 @@ ms.locfileid: "49477167"
 > [!NOTE]
 > Библиотека Moq, используемая в этом примере, позволяет сочетать проверяемые (строгие) и непроверяемые макеты (которые также называют нестрогими макетами или заглушками). Узнайте больше о [настройке поведения макетов с помощью Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-Другой контроллер в примере приложения выводит сведения, связанные с определенным сеансом мозгового штурма. Этот контроллер содержит логику для работы с недопустимыми значениями `id` (два сценария `return` в следующем примере посвящены этим сценариям). Завершающая инструкция `return` возвращает в представление новое значение `StormSessionViewModel`:
+[SessionController](https://github.com/aspnet/Docs/blob/master/aspnetcore/mvc/controllers/testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) в примере приложения выводит сведения, связанные с определенным сеансом мозгового штурма. Этот контроллер содержит логику для работы с недопустимыми значениями `id` (два сценария `return` в следующем примере посвящены этим сценариям). Конечная инструкция `return` возвращает новый `StormSessionViewModel` в представление (*Controllers/SessionController.cs*):
 
 [!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 

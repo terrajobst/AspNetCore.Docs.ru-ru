@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 0ae19b26bc86c9da7a61f3117aaae1844115593a
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 0d167f779f9dcae6b0d946dce5e341793daf43bf
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48913285"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091019"
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>Справочник по конфигурации модуля ASP.NET Core
 
@@ -48,6 +48,8 @@ ms.locfileid: "48913285"
 * Архитектура (разрядность) приложения и установленная среда выполнения (x64 или x86) должны соответствовать архитектуре пула приложений.
 
 * Если вы настраиваете узел приложения вручную с помощью `WebHostBuilder` (не используя [CreateDefaultBuilder](xref:fundamentals/host/web-host#set-up-a-host)) и приложение запускается напрямую на сервере Kestrel (с локальным размещением), вызывайте `UseKestrel` перед вызовом `UseIISIntegration`. Если изменить порядок, узел не запустится.
+
+* Обнаружены отключения клиентов. При отключении клиента происходит отмена токена отмены [HttpContext.RequestAborted](xref:Microsoft.AspNetCore.Http.HttpContext.RequestAborted*).
 
 ### <a name="hosting-model-changes"></a>Изменения модели размещения
 
@@ -155,7 +157,7 @@ ms.locfileid: "48913285"
 
 | Атрибут | Описание: | Значение по умолчанию |
 | --------- | ----------- | :-----: |
-| `arguments` | <p>Необязательный строковый атрибут.</p><p>Аргументы для исполняемого файла, указанного в атрибуте **processPath**.</p>| |
+| `arguments` | <p>Необязательный строковый атрибут.</p><p>Аргументы для исполняемого файла, указанного в атрибуте **processPath**.</p> | |
 | `disableStartUpErrorPage` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, страница **502.5 — ошибка процесса** подавляется и страница в файле *web.config* с кодом состояния 502 имеет более высокий приоритет.</p> | `false` |
 | `forwardWindowsAuthToken` | <p>Дополнительный логический атрибут.</p><p>Если значение равно true, маркер безопасности отправляется дочернему процессу, прослушивающему порт %ASPNETCORE_PORT% как заголовок "MS-ASPNETCORE-WINAUTHTOKEN" каждого запроса. Этот процесс вызывает CloseHandle по этому маркеру безопасности каждого запроса.</p> | `true` |
 | `hostingModel` | <p>Необязательный строковый атрибут.</p><p>Указывает модель размещения — внутри процесса (`inprocess`) или вне процесса (`outofprocess`).</p> | `outofprocess` |
@@ -306,6 +308,50 @@ ms.locfileid: "48913285"
     stdoutLogFile="\\?\%home%\LogFiles\stdout">
 </aspNetCore>
 ```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="enhanced-diagnostic-logs"></a>Расширенные журналы диагностики
+
+Модуль ASP.NET Core предоставляет возможности настройки, позволяющие работать с расширенными журналами диагностики. Добавьте элемент `<handlerSettings>` в элемент `<aspNetCore>` в файле *web.config*. Задайте параметру `debugLevel` значение `TRACE`, чтобы обеспечить высокую точность диагностических сведений:
+
+```xml
+<aspNetCore processPath="dotnet"
+    arguments=".\MyApp.dll"
+    stdoutLogEnabled="false"
+    stdoutLogFile="\\?\%home%\LogFiles\stdout"
+    hostingModel="inprocess">
+  <handlerSettings>
+    <handlerSetting name="debugFile" value="aspnetcore-debug.log" />
+    <handlerSetting name="debugLevel" value="FILE,TRACE" />
+  </handlerSettings>
+</aspNetCore>
+```
+
+Значения уровня отладки (`debugLevel`) могут включать уровень и расположение.
+
+Уровни (в порядке возрастания степени детализации):
+
+* ОШИБКА
+* ПРЕДУПРЕЖДЕНИЕ
+* ИНФОРМАЦИЯ
+* TRACE
+
+Расположения (допускаются несколько расположений):
+
+* CONSOLE
+* EVENTLOG
+* ФАЙЛ
+
+Параметры обработчика могут быть указаны с помощью переменных среды:
+
+* `ASPNETCORE_MODULE_DEBUG_FILE` &ndash; Путь к файлу журнала отладки. (По умолчанию: *aspnetcore debug.log*)
+* `ASPNETCORE_MODULE_DEBUG` &ndash; Параметр уровня отладки.
+
+> [!WARNING]
+> **Не** оставляйте ведение журнала отладки включенным в развертывании дольше того времени, которое требуется для устранения проблемы. Размер журнала не ограничен. Если оставить журнал отладки включенным, он может исчерпать все доступное место на диске и привести к сбою сервера или службы приложений.
 
 ::: moniker-end
 

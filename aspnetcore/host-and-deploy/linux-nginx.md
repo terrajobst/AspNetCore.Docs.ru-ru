@@ -4,14 +4,14 @@ author: rick-anderson
 description: В статье описывается процедура настройки Nginx как обратного прокси-сервера на Ubuntu 16.04 для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в Kestrel.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/09/2018
+ms.date: 10/23/2018
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 8d3c158b44c9f30e7c0746398306aa1c0fd9e15b
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: ea2631f5112efabac07275f86e65432889cb8081
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912120"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090522"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -66,13 +66,6 @@ dotnet publish --configuration Release
 
 Обратный прокси-сервер — это стандартный вариант настройки для обслуживания динамических веб-приложений. Обратный прокси-сервер завершает HTTP-запрос и перенаправляет его в приложение ASP.NET Core.
 
-::: moniker range=">= aspnetcore-2.0"
-
-> [!NOTE]
-> Любая из этих конфигураций &mdash; с обратным прокси-сервером и без него &mdash; является допустимой и поддерживаемой для размещения основных компонентов приложений ASP.NET версии 2.0 и выше. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
-
-::: moniker-end
-
 ### <a name="use-a-reverse-proxy-server"></a>Использование обратного прокси-сервера
 
 Kestrel является отличным решением для обслуживания динамического содержимого из ASP.NET Core. При этом компоненты для работы с веб-службами не настолько функциональны, как серверы типа IIS, Apache или Nginx. Обратный прокси-сервер может облегчить такую работу, как обслуживание статического содержимого, кэширование запросов, сжатие запросов и завершение SSL с HTTP-сервера. Обратный прокси-сервер можно разместить на отдельном компьютере или развернуть параллельно с HTTP-сервером.
@@ -83,7 +76,7 @@ Kestrel является отличным решением для обслужи
 
 Любой компонент, который зависит от схемы, например проверка подлинности, генерация ссылок, перенаправление и геолокация, должен находиться после вызова ПО промежуточного слоя перенаправления заголовков. Как правило, ПО промежуточного слоя перенаправления заголовков должно выполняться до остального ПО промежуточного слоя, за исключением ПО промежуточного слоя для диагностики и обработки ошибок. Такой порядок гарантирует, что ПО промежуточного слоя, полагающееся на сведения о перенаправленных заголовках, может использовать значения заголовков для обработки.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 Вызовите метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызвать [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
@@ -96,7 +89,9 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 app.UseAuthentication();
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Вызывайте метод [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) в `Startup.Configure`, прежде чем вызвать [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity), [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) или другое ПО промежуточного слоя для проверки подлинности по аналогичной схеме. В ПО промежуточного слоя настройте перенаправление заголовков `X-Forwarded-For` и `X-Forwarded-Proto`:
 
@@ -114,7 +109,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 });
 ```
 
----
+::: moniker-end
 
 Если параметр [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) не задан для ПО промежуточного слоя, по умолчанию перенаправляются заголовки `None`.
 
@@ -333,7 +328,7 @@ sudo ufw enable
 
 Внесите изменения в файл *src/http/ngx_http_header_filter_module.c*:
 
-```c
+```
 static char ngx_http_server_string[] = "Server: Web Server" CRLF;
 static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 ```
@@ -348,9 +343,9 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 * Обеспечьте дополнительную защиту, применив некоторые методы, показанные в представленном ниже файле */etc/nginx/nginx.conf*. Это может быть выбор более строгого шифра и перенаправление всего HTTP-трафика в HTTPS.
 
-* При добавлении заголовка `HTTP Strict-Transport-Security` (HSTS) все последующие запросы клиента будут проходить только по протоколу HTTPS.
+* При добавлении заголовка `HTTP Strict-Transport-Security` (HSTS) все последующие запросы клиента будут проходить по протоколу HTTPS.
 
-* Если в дальнейшем планируется отключить SSL, не добавляйте заголовок Strict-Transport-Security или выберите соответствующий `max-age`.
+* Если в дальнейшем планируется отключить SSL, не добавляйте заголовок HSTS или выберите соответствующий `max-age`.
 
 Добавьте файл конфигурации */etc/nginx/proxy.conf*:
 
@@ -361,15 +356,20 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 [!code-nginx[](linux-nginx/nginx.conf?highlight=2)]
 
 #### <a name="secure-nginx-from-clickjacking"></a>Защита Nginx от кликджекинга
-Кликджекинг — это способ обмана, предназначенный для перехвата кликов пострадавшего пользователя. Кликджекинг обманом заставляет пользователей (посетителей) щелкать зараженные сайты. Для защиты сайта используйте X-FRAME-OPTIONS.
 
-Измените файл *nginx.conf*.
+[Кликджекинг](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger) (или *атака с подменой пользовательского интерфейса*) является вредоносной атакой, при которой посетителя сайта обманным путем вынуждают щелкнуть ссылку или нажать кнопку не той страницы, на которой он находится. Используйте `X-FRAME-OPTIONS` для защиты сайта.
 
-```bash
-sudo nano /etc/nginx/nginx.conf
-```
+Чтобы уменьшить риск атак кликджекинга, выполните указанные ниже действия.
 
-Добавьте строку `add_header X-Frame-Options "SAMEORIGIN";` и сохраните файл, а затем перезапустите Nginx.
+1. Измените файл *nginx.conf*.
+
+   ```bash
+   sudo nano /etc/nginx/nginx.conf
+   ```
+
+   Добавьте строку `add_header X-Frame-Options "SAMEORIGIN";`.
+1. Сохраните файл.
+1. Перезапустите Nginx.
 
 #### <a name="mime-type-sniffing"></a>Сканирование типа MIME
 

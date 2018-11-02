@@ -3,15 +3,15 @@ title: Вспомогательные функции тегов в формах 
 author: rick-anderson
 description: Сведения о встроенных вспомогательных функциях тегов, используемых в формах.
 ms.author: riande
-ms.custom: H1Hack27Feb2017
-ms.date: 02/14/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: e613dc1e85b84cc5e2b8ad2bf3958040257d1966
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
-ms.translationtype: HT
+ms.openlocfilehash: efc71cc8d072769cde07e129b6d9bb933fc2f7af
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911283"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090220"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Вспомогательные функции тегов в формах в ASP.NET Core
 
@@ -29,7 +29,7 @@ ms.locfileid: "48911283"
 
 * Создает значение атрибута HTML [\<FORM>](https://www.w3.org/TR/html401/interact/forms.html)`action` для действия контроллера MVC или именованного маршрута.
 
-* Создает скрытый [токен проверки запроса](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) для предотвращения подделки межсайтовых запросов (при использовании с атрибутом `[ValidateAntiForgeryToken]` в методе действия HTTP Post).
+* Создает скрытый [токен проверки запроса](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) для предотвращения подделки межсайтовых запросов (при использовании с атрибутом `[ValidateAntiForgeryToken]` в методе действия HTTP Post).
 
 * Предоставляет атрибут `asp-route-<Parameter Name>`, где `<Parameter Name>` добавляется в значения маршрута. Параметры `routeValues` для `Html.BeginForm` и `Html.BeginRouteForm` предоставляют аналогичные функциональные возможности.
 
@@ -48,7 +48,7 @@ ms.locfileid: "48911283"
 </form>
 ```
 
-Среда выполнения MVC генерирует значение атрибута `action` на основе атрибутов вспомогательной функции тега формы `asp-controller` и `asp-action`. Вспомогательная функция тега формы также создает скрытый [токен проверки запроса](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) для предотвращения подделки межсайтовых запросов (при использовании с атрибутом `[ValidateAntiForgeryToken]` в методе действия HTTP Post). Защита чистой формы HTML от подделки межсайтовых запросов является трудной задачей, поэтому для ее решения используется вспомогательная функция тега формы.
+Среда выполнения MVC генерирует значение атрибута `action` на основе атрибутов вспомогательной функции тега формы `asp-controller` и `asp-action`. Вспомогательная функция тега формы также создает скрытый [токен проверки запроса](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) для предотвращения подделки межсайтовых запросов (при использовании с атрибутом `[ValidateAntiForgeryToken]` в методе действия HTTP Post). Защита чистой формы HTML от подделки межсайтовых запросов является трудной задачей, поэтому для ее решения используется вспомогательная функция тега формы.
 
 ### <a name="using-a-named-route"></a>Использование именованного маршрута
 
@@ -106,12 +106,12 @@ Type expected
 
 |Тип .NET|Тип входных данных|
 |---|---|
-|Bool|type=”checkbox”|
-|String|type=”text”|
-|DateTime|type=”datetime”|
-|Byte|type=”number”|
-|Int|type=”number”|
-|Single, Double|type=”number”|
+|Bool|type="checkbox"|
+|String|type="text"|
+|DateTime|type="datetime"|
+|Byte|type="number"|
+|Int|type="number"|
+|Single, Double|type="number"|
 
 
 В следующей таблице приведены некоторые наиболее распространенные атрибуты [заметок к данным](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter), которые вспомогательная функция тега входных данных будет сопоставлять с определенными типами входных данных (указаны не все атрибуты проверки):
@@ -119,13 +119,13 @@ Type expected
 
 |Атрибут|Тип входных данных|
 |---|---|
-|[EmailAddress]|type=”email”|
-|[Url]|type=”url”|
-|[HiddenInput]|type=”hidden”|
-|[Phone]|type=”tel”|
-|[DataType(DataType.Password)]| type=”password”|
-|[DataType(DataType.Date)]| type=”date”|
-|[DataType(DataType.Time)]| type=”time”|
+|[EmailAddress]|type="email"|
+|[Url]|type="url"|
+|[HiddenInput]|type="hidden"|
+|[Phone]|type="tel"|
+|[DataType(DataType.Password)]| type="password"|
+|[DataType(DataType.Date)]| type="date"|
+|[DataType(DataType.Time)]| type="time"|
 
 
 Пример:
@@ -244,7 +244,6 @@ public IActionResult Edit(int id, int colorIndex)
 Шаблон *Views/Shared/EditorTemplates/ToDoItem.cshtml*:
 
 [!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
-
 
 >[!NOTE]
 >Для итерации по списку всегда следует использовать `for` (а *не* `foreach`). Оценка индексатора в выражении LINQ может быть ресурсоемкой, поэтому ее нужно минимизировать.
@@ -574,10 +573,10 @@ public IActionResult Edit(int id, int colorIndex)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Вспомогательные функции тегов](xref:mvc/views/tag-helpers/intro)
+* <xref:mvc/views/tag-helpers/intro>
 * [Элемент формы HTML](https://www.w3.org/TR/html401/interact/forms.html)
 * [Токен проверки запроса](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
-* [Привязка модели](xref:mvc/models/model-binding)
-* [Проверка модели](xref:mvc/models/validation)
+* <xref:mvc/models/model-binding>
+* <xref:mvc/models/validation>
 * [Интерфейс IAttributeAdapter](/dotnet/api/Microsoft.AspNetCore.Mvc.DataAnnotations.IAttributeAdapter)
 * [Фрагменты кода для этого документа](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/working-with-forms/sample/final)

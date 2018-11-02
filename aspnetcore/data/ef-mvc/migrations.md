@@ -3,14 +3,15 @@ title: ASP.NET Core MVC с EF Core — миграции — 4 из 10
 author: rick-anderson
 description: В этом руководстве вы начинаете использовать функцию миграций EF Core для управления изменениями модели данных в приложении ASP.NET Core MVC.
 ms.author: tdykstra
-ms.date: 03/15/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 556d7d4ad05679ebfce6c909b29610482bb3f350
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 21ef3a675579d8a6671343d84cbe4f4b62979679
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011473"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090814"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---migrations---4-of-10"></a>ASP.NET Core MVC с EF Core — миграции — 4 из 10
 
@@ -37,7 +38,7 @@ ms.locfileid: "46011473"
 Средства EF для интерфейса командной строки (CLI) доступны в [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet). Чтобы установить этот пакет, добавьте его в коллекцию `DotNetCliToolReference` в файле *CSPROJ*, как показано ниже. **Примечание**. Необходимо установить этот пакет, отредактировав файл *.csproj*; использовать команду `install-package` или графический пользовательский интерфейс диспетчера пакетов нельзя. Вы можете изменить файл *CSPROJ*, щелкнув правой кнопкой мыши имя проекта в **обозревателе решений** и выбрав пункт **Изменить ContosoUniversity.csproj**.
 
 [!code-xml[](intro/samples/cu/ContosoUniversity.csproj?range=12-15&highlight=2)]
-  
+
 (На момент написания руководства номера версий в этом примере были актуальными.)
 
 ## <a name="change-the-connection-string"></a>Изменение строки подключения
@@ -104,7 +105,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 Функция миграций создает *моментальный снимок* текущей схемы базы данных в *Migrations/SchoolContextModelSnapshot.cs*. При добавлении миграции EF определяет, что именно изменилось, сравнивая модель данных с файлом моментального снимка.
 
-При удалении миграции используйте команду [dotnet ef migrations remove](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove). `dotnet ef migrations remove` удаляет миграцию и гарантирует корректный сброс моментального снимка.
+При удалении миграции используйте команду [dotnet ef migrations remove](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove). `dotnet ef migrations remove` удаляет миграцию и гарантирует корректный сброс моментального снимка.
 
 Дополнительные сведения об использовании файла моментального снимка см. в разделе [Миграции Core EF в средах групп](/ef/core/managing-schemas/migrations/teams).
 
@@ -116,7 +117,7 @@ Done. To undo this action, use 'ef migrations remove'
 dotnet ef database update
 ```
 
-Выходные данные команды аналогичны команде `migrations add`, за исключением того, что вы видите журналы для команд SQL, настраивающих базу данных. В приведенном ниже примере выходных данных большинство журналов опущено. Если вам не нужен такой уровень детализации сообщений журнала, можно изменить уровень ведения журнала в файле *appsettings.Development.json*. Дополнительные сведения см. в статье [Введение в ведение журналов](xref:fundamentals/logging/index).
+Выходные данные команды аналогичны команде `migrations add`, за исключением того, что вы видите журналы для команд SQL, настраивающих базу данных. В приведенном ниже примере выходных данных большинство журналов опущено. Если вам не нужен такой уровень детализации сообщений журнала, можно изменить уровень ведения журнала в файле *appsettings.Development.json*. Дополнительные сведения см. в разделе <xref:fundamentals/logging/index>.
 
 ```text
 info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[0]
@@ -143,7 +144,7 @@ info: Microsoft.EntityFrameworkCore.Database.Command[200101]
 Done.
 ```
 
-Используйте **обозреватель объектов SQL Server** для проверки базы данных, как описано в первом руководстве.  Вы заметите добавление таблицы __EFMigrationsHistory, отслеживающей миграции, которые были применены к базе данных. Просмотрев данные в этой таблице, вы увидите одну строку для первой миграции. (Последний журнал в предыдущем примере выходных данных интерфейса командной строки показывает оператор INSERT, создающий эту строку.)
+Используйте **обозреватель объектов SQL Server** для проверки базы данных, как описано в первом руководстве.  Вы заметите добавление таблицы \_\_EFMigrationsHistory, отслеживающей миграции, которые были применены к базе данных. Просмотрев данные в этой таблице, вы увидите одну строку для первой миграции. (Последний журнал в предыдущем примере выходных данных интерфейса командной строки показывает оператор INSERT, создающий эту строку.)
 
 Запустите приложение, чтобы убедиться, что все работает, как и раньше.
 
@@ -154,13 +155,13 @@ Done.
 
 Средства EF для управления миграциями доступны в виде команд интерфейса командной строки .NET Core или командлетов PowerShell в окне **консоли диспетчера пакетов** Visual Studio. Это руководство описывает использование интерфейса командной строки, но вы можете использовать и консоль диспетчера пакетов.
 
-Команды EF для команд консоли диспетчера пакетов находятся в пакете [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools). Этот пакет уже входит в состав метапакета [Microsoft.AspNetCore.All](xref:fundamentals/metapackage), поэтому устанавливать его не требуется.
+Команды EF для команд консоли диспетчера пакетов находятся в пакете [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools). Этот пакет входит в [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app), поэтому если приложение уже содержит ссылку на пакет `Microsoft.AspNetCore.App`, добавлять ссылку на пакет не нужно.
 
 **Важно!** Это не тот же пакет, который вы устанавливаете для интерфейса командной строки, изменив файл *CSPROJ*. Его имя заканчивается на `Tools`, а имя пакета интерфейса командной строки — на `Tools.DotNet`.
 
-Дополнительные сведения о командах интерфейса командной строки см. в разделе [.NET Core CLI](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet).
+Дополнительные сведения о командах интерфейса командной строки см. в разделе [.NET Core CLI](/ef/core/miscellaneous/cli/dotnet).
 
-Дополнительные сведения о командах консоли диспетчера пакетов см. в разделе [Консоль диспетчера пакетов (Visual Studio)](https://docs.microsoft.com/ef/core/miscellaneous/cli/powershell).
+Дополнительные сведения о командах консоли диспетчера пакетов см. в разделе [Консоль диспетчера пакетов (Visual Studio)](/ef/core/miscellaneous/cli/powershell).
 
 ## <a name="summary"></a>Сводка
 
