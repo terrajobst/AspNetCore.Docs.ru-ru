@@ -1,16 +1,17 @@
 ---
 title: Настройка проверки подлинности Windows в ASP.NET Core
-author: ardalis
-description: В этой статье описывается настройка проверки подлинности Windows в ASP.NET Core, используя IIS Express, службы IIS, HTTP.sys и WebListener.
+author: scottaddie
+description: Узнайте, как настроить проверку подлинности Windows в ASP.NET Core, используя IIS Express, службы IIS, HTTP.sys и WebListener.
 ms.author: riande
-ms.date: 08/18/2018
+ms.custom: mvc
+ms.date: 11/01/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: a8066d248c0d4db1d1f61b2a14bdb4656a2f4265
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 87fcab75555c1dae0b2815c30d79fd4615df9660
+ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312416"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50968297"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Настройка проверки подлинности Windows в ASP.NET Core
 
@@ -98,6 +99,9 @@ ms.locfileid: "43312416"
 
 > [!NOTE]
 > HTTP.sys делегирует задачи в проверку подлинности в режиме ядра с помощью протокола проверки подлинности Kerberos. Проверка подлинности в режиме пользователя не поддерживается с Kerberos и HTTP.sys. Необходимо использовать учетную запись компьютера для расшифровки маркера/билета Kerberos, полученного из Active Directory и переадресованного клиентом на сервер для проверки подлинности пользователя. Зарегистрируйте имя субъекта-службы (SPN) для узла, а не пользователя приложения.
+
+> [!NOTE]
+> HTTP.sys не поддерживается на сервере Nano Server версии 1709 или более поздней версии. Чтобы использовать проверку подлинности Windows и HTTP.sys с сервером Nano Server, используйте [контейнера Server Core (microsoft/windowsservercore)](https://hub.docker.com/r/microsoft/windowsservercore/). Дополнительные сведения о Server Core см. в разделе [Какова вариант установки Server Core в Windows Server?](/windows-server/administration/server-core/what-is-server-core).
 
 ::: moniker-end
 
