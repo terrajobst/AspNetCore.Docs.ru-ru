@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/09/2018
 uid: fundamentals/configuration/index
-ms.openlocfilehash: cbc48222aeb4a1d23144bfb70aece5a83a700d09
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 2af66c0f35109dc1de954bf501f33ad61ddef4db
+ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207905"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50968375"
 ---
 # <a name="configuration-in-aspnet-core"></a>Конфигурация в .NET Core
 
@@ -392,9 +392,9 @@ var host = new WebHostBuilder()
 Примеры команд.
 
 ```console
-dotnet run CommandLineKey1=value --CommandLineKey2=value /CommandLineKey2=value
-dotnet run --CommandLineKey1 value /CommandLineKey2 value
-dotnet run CommandLineKey1= CommandLineKey2=value
+dotnet run CommandLineKey1=value1 --CommandLineKey2=value2 /CommandLineKey3=value3
+dotnet run --CommandLineKey1 value1 /CommandLineKey2 value2
+dotnet run CommandLineKey1= CommandLineKey2=value2
 ```
 
 ### <a name="switch-mappings"></a>Сопоставления переключений
@@ -546,7 +546,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 * [секреты пользователя (Менеджер секретов)](xref:security/app-secrets) (только в среде разработки);
 * аргументы командной строки.
 
-Поставщик конфигурации переменных среды вызывается после того, как настройка была создана из секретов пользователя и файлов *appsettings*. Вызов поставщика в этой позиции разрешает чтение переменных среды выполнения, чтобы переопределить конфигурацию, заданную секретом пользователя и файлом *appsettings*.
+Поставщик конфигурации переменных среды вызывается после выполнения настройки с помощью секретов пользователя и файлов *appsettings*. Вызов поставщика в этой позиции разрешает чтение переменных среды выполнения, чтобы переопределить конфигурацию, заданную секретом пользователя и файлом *appsettings*.
 
 ::: moniker-end
 
