@@ -542,8 +542,8 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 * page (требуется ASP.NET Core 2.0 или более поздние версии)
 * namespace
-* функции
-* наследует
+* functions
+* inherits
 * model
 * section
 * helper (сейчас не поддерживается в ASP.NET Core)
@@ -552,7 +552,7 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 
 ### <a name="c-razor-keywords"></a>Ключевые слова C# в Razor
 
-* регистр знаков
+* case
 * do
 * default
 * for
@@ -564,7 +564,7 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 * try
 * catch
 * finally
-* использование
+* using
 * while
 
 Для ключевых слов C# в Razor требуется двойной escape-символ: `@(@C# Razor Keyword)` (например, `@(@case)`). Первый `@` предназначен для обхода синтаксического анализа Razor, а второй `@` — для обхода C#.
