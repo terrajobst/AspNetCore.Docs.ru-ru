@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 title: Знакомство с веб-страниц ASP.NET — обновление баз данных | Документация Майкрософт
-author: tfitzmac
+author: Rick-Anderson
 description: Этом руководстве показано, как обновить запись (изменение) существующей базы данных, при использовании веб-страниц ASP.NET (Razor). Предполагается, что вы выполнили ряд th...
 ms.author: riande
 ms.date: 01/02/2018
 ms.assetid: ac86ec9c-6b69-485b-b9e0-8b9127b13e6b
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 msc.type: authoredcontent
-ms.openlocfilehash: 9d0da2eed9964e56a01f3c811d6a14c9d1735e10
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 206d7e209857aceb3eb92c2405bb73f7ff7dbaeb
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829209"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021434"
 ---
 <a name="introducing-aspnet-web-pages---updating-database-data"></a>Знакомство с веб-страниц ASP.NET — обновление баз данных
 ====================
@@ -35,7 +35,7 @@ ms.locfileid: "41829209"
 > 
 > - `WebGrid` Вспомогательный.
 > - SQL `Update` команды.
-> - метод `Database.Execute`;
+> - метод `Database.Execute` ;
 > - Скрытые поля (`<input type="hidden">`).
 
 

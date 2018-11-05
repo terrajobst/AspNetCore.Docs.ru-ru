@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/intro-to-web-pages-programming
 title: Знакомство с веб-страниц ASP.NET — основы программирования | Документация Майкрософт
-author: tfitzmac
+author: Rick-Anderson
 description: 'Этот учебник дает Общие сведения о программе в ASP.NET Web Pages с синтаксисом Razor. Вы узнаете, как: базовый синтаксис «Razor», который используется для запроса на Вытягивание...'
 ms.author: riande
 ms.date: 06/17/2015
 ms.assetid: 7526ed45-a97d-4e8a-8301-01324ef0eff9
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/intro-to-web-pages-programming
 msc.type: authoredcontent
-ms.openlocfilehash: 120246fab3e71afeef2e2b7c4388f7c294e6b703
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: ec1c055d1b3f6ca5c6374a18840c2595bb368e0e
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836961"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021538"
 ---
 <a name="introducing-aspnet-web-pages---programming-basics"></a>Знакомство с веб-страниц ASP.NET — основы программирования
 ====================

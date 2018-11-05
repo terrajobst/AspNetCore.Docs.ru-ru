@@ -1,19 +1,19 @@
 ---
 uid: aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead
 title: Чего не следует делать в ASP.NET и что нужно делать вместо этого | Документация Майкрософт
-author: tfitzmac
+author: Rick-Anderson
 description: В этом разделе описывается несколько распространенных ошибок, которые люди делают в веб-проектов ASP.NET. Представлены рекомендации по что делать, чтобы избежать этих commo...
 ms.author: riande
 ms.date: 05/08/2014
 ms.assetid: c39b9965-545c-4b04-8f55-21be7f28a9e5
 msc.legacyurl: /aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead
 msc.type: authoredcontent
-ms.openlocfilehash: 7f2366ef8cb258a08c3cb96407f605864e5ec9a9
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 69040ca6a1ddeaf029062da45475dd2171b1afa6
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41827993"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021447"
 ---
 <a name="what-not-to-do-in-aspnet-and-what-to-do-instead"></a>Чего не следует делать в ASP.NET и разрешенные действия
 ====================

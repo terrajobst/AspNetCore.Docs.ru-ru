@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/installing-helpers
 title: Установка вспомогательного метода в веб-ASP.NET страниц узла (Razor) | Документация Майкрософт
-author: tfitzmac
+author: Rick-Anderson
 description: В этой статье описывается установка вспомогательного метода в на веб-сайте ASP.NET Web Pages (Razor). Помощник представляет собой многократно используемый компонент включает код и разметку для каждого...
 ms.author: riande
 ms.date: 02/18/2014
 ms.assetid: 5e968ead-906a-45ea-ac2a-c70e57e1a9b1
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/installing-helpers
 msc.type: authoredcontent
-ms.openlocfilehash: 8629d91e1e297244228898e28f70616c7ccf1acf
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 5ad717cd7c64e830ce66d5e1361d0eb6ef3cbbec
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41828564"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021369"
 ---
 <a name="installing-a-helper-in-an-aspnet-web-pages-razor-site"></a>Установка вспомогательного метода на сайте ASP.NET Web Pages (Razor)
 ====================

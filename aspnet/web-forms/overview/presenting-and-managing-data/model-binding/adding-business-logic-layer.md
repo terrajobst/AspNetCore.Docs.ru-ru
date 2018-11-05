@@ -1,19 +1,19 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/adding-business-logic-layer
 title: Добавление уровня бизнес-логики в проект, использующий привязки модели и веб-форм | Документация Майкрософт
-author: tfitzmac
+author: Rick-Anderson
 description: В этой серии руководств показано основными аспектами с помощью привязки модели с проектом веб-форм ASP.NET. Привязка модели позволяет взаимодействие с данными более прямой-...
 ms.author: riande
 ms.date: 02/27/2014
 ms.assetid: 7ef664b3-1cc8-4cbf-bb18-9f0f3a3ada2b
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/adding-business-logic-layer
 msc.type: authoredcontent
-ms.openlocfilehash: 2c54c0a635c662c8740aa7f9b6bd02cd71913e24
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 4ba1830ce51f257e18880f752b249dbeb77f504e
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838917"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021655"
 ---
 <a name="adding-business-logic-layer-to-a-project-that-uses-model-binding-and-web-forms"></a>Добавление уровня бизнес-логики в проект, использующий привязки модели и веб-форм
 ====================

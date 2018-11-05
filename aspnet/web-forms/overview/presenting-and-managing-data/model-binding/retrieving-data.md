@@ -1,19 +1,19 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
 title: Извлечение и отображение данных с помощью модели привязки и веб-форм | Документация Майкрософт
-author: tfitzmac
+author: Rick-Anderson
 description: В этой серии руководств показано основными аспектами с помощью привязки модели с проектом веб-форм ASP.NET. Привязка модели позволяет взаимодействие с данными более прямой-...
 ms.author: riande
 ms.date: 02/27/2014
 ms.assetid: 9f24fb82-c7ac-48da-b8e2-51b3da17e365
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
 msc.type: authoredcontent
-ms.openlocfilehash: c04e4c94378c8143c919e83af90312dd003b8c84
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: b05f3780d7c4e4734b35c0d9377a89d6f3edb0f8
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838122"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021343"
 ---
 <a name="retrieving-and-displaying-data-with-model-binding-and-web-forms"></a>Извлечение и отображение данных с помощью привязки модели и веб-форм
 ====================

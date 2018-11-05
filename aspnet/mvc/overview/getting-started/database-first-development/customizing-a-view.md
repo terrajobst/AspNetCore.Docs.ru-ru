@@ -1,19 +1,19 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/customizing-a-view
 title: 'EF Database First с ASP.NET MVC: Настройка представления | Документация Майкрософт'
-author: tfitzmac
+author: Rick-Anderson
 description: С помощью MVC, Entity Framework и формирование шаблонов ASP.NET, можно создать веб-приложение, которое предоставляет интерфейс для существующей базы данных. Этот учебник seri...
 ms.author: riande
 ms.date: 10/01/2014
 ms.assetid: 269380ff-d7e1-4035-8ad1-fe1316a25f76
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/customizing-a-view
 msc.type: authoredcontent
-ms.openlocfilehash: ce450af93459f2a69557b3fe0d1ead813ae99986
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: f66e097d53514ab3842e04cd545ca626c652478a
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829724"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021214"
 ---
 <a name="ef-database-first-with-aspnet-mvc-customizing-a-view"></a>EF Database First с ASP.NET MVC: Настройка представления
 ====================

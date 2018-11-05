@@ -8,12 +8,12 @@ ms.date: 06/26/2013
 ms.assetid: 23fc77da-2725-4434-99a0-ff872d96336b
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 3b66f02c9be6441ff7d6c38d6180cc8556c6b8b9
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 18a44c280e6df1603837938d24d7d639d8c87cc2
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912895"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021421"
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>Создание REST API с помощью маршрутизации атрибутов в ASP.NET Web API 2
 ====================
@@ -39,7 +39,7 @@ ms.locfileid: "48912895"
 - Жанра
 - Дата публикации
 - Цена
-- Описание:
+- Описание
 - AuthorID (внешний ключ к таблице Authors)
 
 Большинство запросов тем не менее, API вернет подмножество этих данных ("Заголовок", "Автор" и "genre"). Чтобы получить полную запись клиента запросы `/api/books/{id}/details`.
@@ -52,11 +52,11 @@ ms.locfileid: "48912895"
 
 Запустить Visual Studio. Из **файл** меню, выберите **New** , а затем выберите **проекта**.
 
-Разверните **установленные** > **Visual C#** категории. В разделе **Visual C#** выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET MVC 4**. Назовите проект &quot;BooksAPI&quot;.
+Разверните **установленные** > **Visual C#** категории. В разделе **Visual C#** выберите **Web**. В списке шаблонов проектов выберите **веб-приложение ASP.NET (.NET Framework)**. Назовите проект &quot;BooksAPI&quot;.
 
 ![](create-a-rest-api-with-attribute-routing/_static/image1.png)
 
-В **новый проект ASP.NET** диалоговом окне выберите **пустой** шаблона. В разделе «Добавление папок и основные ссылки для» выберите **веб-API** флажок. Нажмите кнопку **Создание проекта**.
+В **новое веб-приложение ASP.NET** диалоговом окне выберите **пустой** шаблона. В разделе «Добавление папок и основные ссылки для» выберите **веб-API** флажок. Нажмите кнопку **ОК**.
 
 ![](create-a-rest-api-with-attribute-routing/_static/image2.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "48912895"
 
 ![](create-a-rest-api-with-attribute-routing/_static/image4.png)
 
-В **Добавление шаблона** диалоговое окно, выберите «веб-API 2 контроллер с действиями чтения и записи, использующий Entity Framework.»
+В **Добавление шаблона** диалоговом окне выберите **контроллер Web API 2 с действиями, использующий Entity Framework**.
 
 [![](create-a-rest-api-with-attribute-routing/_static/image6.png)](create-a-rest-api-with-attribute-routing/_static/image5.png)
 

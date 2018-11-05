@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/data/working-with-files
 title: Работа с файлами на сайте ASP.NET Web Pages (Razor) | Документация Майкрософт
-author: tfitzmac
+author: Rick-Anderson
 description: В этой главе объясняется, как для чтения, записи, добавление, удаление и передачи файлов.
 ms.author: riande
 ms.date: 02/20/2014
 ms.assetid: eee916e4-ba4c-439a-a24e-68df7d45a569
 msc.legacyurl: /web-pages/overview/data/working-with-files
 msc.type: authoredcontent
-ms.openlocfilehash: 20fdbfda7d3e4b214a8e201c4a815a29c5bb7061
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 8b9176cb88f6e460fe5494167d4a5880456530aa
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836266"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021564"
 ---
 <a name="working-with-files-in-an-aspnet-web-pages-razor-site"></a>Работа с файлами на сайте ASP.NET Web Pages (Razor)
 ====================

@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/9-working-with-images
 title: Работа с изображениями на сайте ASP.NET Web Pages (Razor) | Документация Майкрософт
-author: tfitzmac
+author: Rick-Anderson
 description: В этой главе показано, как добавить, отображения и управления ими (изменение размера, отражение и добавление водяных знаков) в веб-сайта.
 ms.author: riande
 ms.date: 02/20/2014
 ms.assetid: 778c4e58-4372-4d25-bab9-aec4a8d8e38d
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/9-working-with-images
 msc.type: authoredcontent
-ms.openlocfilehash: e609cd1c6ab74b5b40d28bde353501dbacb5d544
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 7536f71eb9afce9d7c8bb7e4d6326d280658c27b
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838508"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021723"
 ---
 <a name="working-with-images-in-an-aspnet-web-pages-razor-site"></a>Работа с изображениями на сайте ASP.NET Web Pages (Razor)
 ====================

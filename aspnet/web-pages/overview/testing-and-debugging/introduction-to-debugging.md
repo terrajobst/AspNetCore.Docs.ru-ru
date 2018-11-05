@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/testing-and-debugging/introduction-to-debugging
 title: Общие сведения об отладке ASP.NET Web Pages сайтов (Razor) | Документация Майкрософт
-author: tfitzmac
+author: Rick-Anderson
 description: Отладка — это процесс поиска и устранения ошибок в коде страницы. В этой главе показано определенные инструменты и методы, которые можно использовать для отладки и анализ...
 ms.author: riande
 ms.date: 02/20/2014
 ms.assetid: 68de4326-7611-4b9b-b5f6-79b7adc3069f
 msc.legacyurl: /web-pages/overview/testing-and-debugging/introduction-to-debugging
 msc.type: authoredcontent
-ms.openlocfilehash: fb9a69d568e10ddafd71e2b9600b3dae21576807
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: e5302492f01cbd507e0b0fd995f21621bf6f04c8
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48794993"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021317"
 ---
 <a name="introduction-to-debugging-aspnet-web-pages-razor-sites"></a>Общие сведения об отладке ASP.NET Web Pages сайтов (Razor)
 ====================
