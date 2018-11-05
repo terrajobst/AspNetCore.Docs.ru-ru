@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2018
 uid: mvc/controllers/filters
-ms.openlocfilehash: 6803e8e3a285716792427e9fb059c204f5a88ecb
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: e5305852fad058961661373f9310d6dcaf30aa16
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391314"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50253199"
 ---
 # <a name="filters-in-aspnet-core"></a>Фильтры в ASP.NET Core
 
@@ -133,12 +133,12 @@ ms.locfileid: "49391314"
 
 | Sequence | Область фильтра | Метод фильтра |
 |:--------:|:------------:|:-------------:|
-| 1 | Глобальные | `OnActionExecuting` |
+| 1 | Global | `OnActionExecuting` |
 | 2 | Контроллер | `OnActionExecuting` |
 | 3 | Метод | `OnActionExecuting` |
 | 4 | Метод | `OnActionExecuted` |
 | 5 | Контроллер | `OnActionExecuted` |
-| 6 | Глобальные | `OnActionExecuted` |
+| 6 | Global | `OnActionExecuted` |
 
 Эта последовательность показывает:
 
@@ -160,12 +160,12 @@ ms.locfileid: "49391314"
 
 Если имеются те же 3 фильтра действий, что и в предыдущем примере, но свойству `Order` фильтра контроллера и глобального фильтра присвоены значения 1 и 2 соответственно, порядок выполнения будет обратным.
 
-| Sequence | Область фильтра | Свойство `Order` | Метод фильтра |
+| Sequence | Область фильтра | Свойство`Order`  | Метод фильтра |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Метод | 0 | `OnActionExecuting` |
 | 2 | Контроллер | 1  | `OnActionExecuting` |
-| 3 | Глобальные | 2  | `OnActionExecuting` |
-| 4 | Глобальные | 2  | `OnActionExecuted` |
+| 3 | Global | 2  | `OnActionExecuting` |
+| 4 | Global | 2  | `OnActionExecuted` |
 | 5 | Контроллер | 1  | `OnActionExecuted` |
 | 6 | Метод | 0  | `OnActionExecuted` |
 
@@ -261,7 +261,7 @@ System.InvalidOperationException: No service for type
 
 В фильтрах авторизации не следует вызывать исключения, поскольку они никак не будут обрабатываться (фильтры исключений не будут обрабатывать их). Возможно, при возникновении исключения следует создать вызов.
 
-Дополнительные сведения об [авторизации](../../security/authorization/index.md).
+Дополнительные сведения об [авторизации](xref:security/authorization/introduction).
 
 ## <a name="resource-filters"></a>Фильтры ресурсов
 

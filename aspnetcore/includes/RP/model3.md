@@ -1,4 +1,5 @@
 <a name="cli"></a>
+
 ## <a name="add-scaffold-tooling-and-perform-initial-migration"></a>Добавление средств формирования шаблонов и выполнение первоначальной миграции
 
 Добавьте следующие строки в файл *RazorPagesMovie.csproj* непосредственно перед закрывающим тегом `</Project>`:
@@ -7,7 +8,8 @@
 <ItemGroup>
   <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.1.0-preview1-final"/>
 </ItemGroup>
-```  
+```
+  
 Из командной строки выполните следующие команды интерфейса командной строки .NET Core.
 
 ```console
