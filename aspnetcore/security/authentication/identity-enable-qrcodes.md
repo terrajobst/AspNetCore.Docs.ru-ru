@@ -5,12 +5,12 @@ description: Узнайте, как включение создания кода
 ms.author: riande
 ms.date: 08/14/2018
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: 4535efdde7340436c6a508848bff86e103df570e
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 437f354f71128a98bae9abdced291e04efc9f48e
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838495"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225386"
 ---
 # <a name="enable-qr-code-generation-for-totp-authenticator-apps-in-aspnet-core"></a>Включение создания QR-код для приложения TOTP для проверки подлинности в ASP.NET Core
 
@@ -97,7 +97,7 @@ ASP.NET Core поставляется с поддержкой проверки �
 
 Код по умолчанию из шаблона выглядит следующим образом:
 
-```c#
+```csharp
 private string GenerateQrCodeUri(string email, string unformattedKey)
 {
     return string.Format(

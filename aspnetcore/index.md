@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: index
-ms.openlocfilehash: e9bca9fe22dbb64086eba3445c50941c5440974c
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: 60f7d64baa0441b90befb2d785999a707e1025c5
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253071"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225399"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -50,12 +50,14 @@ ASP.NET Core легко интегрируется с распространен
 
 ## <a name="aspnet-core-targeting-net-framework"></a>ASP.NET Core для платформы .NET Framework
 
-Приложения ASP.NET Core могут выполняться в .NET Core или .NET Framework. Приложения ASP.NET Core, предназначенные для .NET Framework, не являются кроссплатформенными &mdash; они выполняются только в Windows. Отказ от поддержки .NET Framework в ASP.NET Core не планируется. Как правило, ASP.NET Core состоит из библиотек [.NET Standard](/dotnet/standard/net-standard). Приложения, написанные для .NET Standard 2.0 запускаются везде, где есть поддержка .NET Standard 2.0.
+Приложения ASP.NET Core 2.x могут выполняться в .NET Core или .NET Framework. Приложения ASP.NET Core, предназначенные для .NET Framework, не являются кроссплатформенными &mdash; они выполняются только в Windows. Как правило, ASP.NET Core 2.x состоит из библиотек [.NET Standard](/dotnet/standard/net-standard). Приложения, написанные для .NET Standard 2.0 запускаются везде, где есть поддержка .NET Standard 2.0.
 
 ASP.NET Core 2.x поддерживается в версиях .NET Framework, совместимых с .NET Standard 2.0:
 
 * .NET Framework 4.7.1 и более поздних версий (рекомендуется).
 * .NET Framework 4.6.1 и более поздних версий.
+
+ASP.NET Core версии 3.0 и более поздних будут выполняться только в .NET Core. Дополнительные сведения об этом изменении см. в разделе [Первое знакомство с предстоящими изменениями в ASP.NET Core 3.0](https://blogs.msdn.microsoft.com/webdev/2018/10/29/a-first-look-at-changes-coming-in-asp-net-core-3-0/).
 
 При использовании .NET Core существуют некоторые преимущества, и их число увеличивается с каждым выпуском. Преимущества .NET Core по сравнению с .NET Framework включают:
 

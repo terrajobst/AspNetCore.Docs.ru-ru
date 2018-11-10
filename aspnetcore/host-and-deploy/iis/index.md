@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о размещении приложений ASP.NET Core в службах Windows Server Internet Information Services (IIS).
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/21/2018
+ms.date: 11/05/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: b204eeb35f8765bbafc85b3bb283809727356d3e
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: 5408fb04231a61e0c4c7a91eb15196bf754ddfa7
+ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253212"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51191377"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
@@ -82,7 +82,7 @@ ms.locfileid: "50253212"
 Обычно *Program.cs* вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, чтобы начать настройку узла. Для размещения вне процесса с IIS `CreateDefaultBuilder` настраивает [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и активирует интеграцию с IIS, задавая базовый путь и порт для [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module):
 
 ```csharp
-public static IWebHost BuildWebHost(string[] args) =>
+public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
         ...
 ```
@@ -104,7 +104,7 @@ public static IWebHost BuildWebHost(string[] args) =>
 Обычно *Program.cs* вызывает <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, чтобы начать настройку узла. `CreateDefaultBuilder` настраивает [Kestrel](xref:fundamentals/servers/kestrel) в качестве веб-сервера и активирует интеграцию IIS, задавая базовый путь и порт для [модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module):
 
 ```csharp
-public static IWebHost BuildWebHost(string[] args) =>
+public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
         ...
 ```

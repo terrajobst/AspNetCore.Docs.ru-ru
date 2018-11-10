@@ -5,14 +5,14 @@ description: Узнайте, как использовать проверку п
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
-ms.date: 10/17/2018
+ms.date: 11/06/2018
 uid: signalr/security
-ms.openlocfilehash: 1adf762cd6de4f0cf62e31c0ec6e595a32ed56f8
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: f646d319cf3030fd4d769e882514da14b230bbdd
+ms.sourcegitcommit: c3fa5aded0bf76a7414047d50b8a2311d27ee1ef
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477544"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51276149"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>Вопросы безопасности в ASP.NET Core SignalR
 
@@ -35,7 +35,7 @@ CORS необходимо настроить в приложении SignalR, р
 * Методы HTTP `GET` и `POST` должны быть разрешены.
 * Необходимо включить учетные данные, даже в том случае, если не используется проверка подлинности.
 
-Например, следующая политика CORS позволяет клиенту браузера SignalR, размещенных на `http://example.com` для доступа к приложению SignalR, размещенных на `http://signalr.example.com`:
+Например, следующая политика CORS позволяет клиенту браузера SignalR, размещенных на `https://example.com` для доступа к приложению SignalR, размещенных на `https://signalr.example.com`:
 
 [!code-csharp[Main](security/sample/Startup.cs?name=snippet1)]
 
@@ -43,6 +43,14 @@ CORS необходимо настроить в приложении SignalR, р
 > SignalR не совместим с встроенной функции CORS в службе приложений Azure.
 
 ## <a name="websocket-origin-restriction"></a>Ограничение WebSocket Origin
+
+::: moniker range=">= aspnetcore-2.2"
+
+Защиты, предоставляемые CORS не применяются к WebSockets. Origin ограничение на WebSockets, чтение [WebSockets origin ограничение](xref:fundamentals/websockets#websocket-origin-restriction).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
 
 Защиты, предоставляемые CORS не применяются к WebSockets. Браузеры иметь **не**:
 
@@ -58,9 +66,18 @@ CORS необходимо настроить в приложении SignalR, р
 > [!NOTE]
 > `Origin` Заголовок контролируется с помощью клиента и, подобно `Referer` заголовка, можно подделать. Эти заголовки должен **не** использоваться в качестве механизма проверки подлинности.
 
+::: moniker-end
+
 ## <a name="access-token-logging"></a>Ведение журнала для маркера доступа
 
-При использовании WebSockets или Server-Sent события, браузер клиент отправляет маркер доступа в строке запроса. Получение маркера доступа с помощью строки запроса является обычно так безопасен, как с помощью стандарта `Authorization` заголовка. Тем не менее многие веб-серверы входа URL-адрес для каждого запроса, включая строку запроса. Ведение журнала URL-адреса могут вносить в журнал маркер доступа. Рекомендуется задать параметры ведения журнала сервера для предотвращения маркеры доступа ведения журнала в Интернете.
+При использовании WebSockets или Server-Sent события, браузер клиент отправляет маркер доступа в строке запроса. Получение маркера доступа с помощью строки запроса является обычно так безопасен, как с помощью стандарта `Authorization` заголовка. Следует всегда использовать протокол HTTPS, чтобы обеспечить безопасное подключение между клиентом и сервером end-to-end. Многие веб-серверы входа URL-адрес для каждого запроса, включая строку запроса. Ведение журнала URL-адреса могут вносить в журнал маркер доступа. ASP.NET Core регистрирует URL-адрес для каждого запроса по умолчанию, который будет включать строку запроса. Пример:
+
+```
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:5000/myhub?access_token=1234
+```
+
+Если у вас есть вопросы о ведении журнала эти данные с сервера журналов, можно отключить ведение журнала полностью, настроив `Microsoft.AspNetCore.Hosting` средство ведения журнала `Warning` уровне или выше (эти сообщения записываются в `Info` уровень). См. в документации на [фильтрации журнала](xref:fundamentals/logging/index#log-filtering) Дополнительные сведения. Если вы хотите по-прежнему журнал определенные сведения запроса, вы можете [записи по промежуточного слоя](xref:fundamentals/middleware/index#write-middleware) данные требовать и отфильтровать `access_token` значения строки запроса (при его наличии).
 
 ## <a name="exceptions"></a>Исключения
 

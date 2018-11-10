@@ -759,7 +759,7 @@ jQuery версии 1.2.0 "Миграция"
 
 ### <a name="respond-releases-on-the-cdn"></a>Ответ выпусков в сети доставки Содержимого
 
-Следующие выпуски [ https://github.com/scottjehl/Respond ] (https://github.com/scottjehl/Respond " https://github.com/scottjehl/Respond ") ответ размещаются в сети доставки Содержимого:
+Следующие выпуски [https://github.com/scottjehl/Respond](https://github.com/scottjehl/Respond "https://github.com/scottjehl/Respond") ответ размещаются в сети доставки Содержимого:
 
 #### <a name="respond-version-142"></a>Ответ версии 1.4.2
 

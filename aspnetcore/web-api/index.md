@@ -4,14 +4,14 @@ author: scottaddie
 description: Сведения о функциях, доступных для сборки веб-API в ASP.NET Core, и о ситуациях, в которых уместно использовать каждую из них.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/30/2018
+ms.date: 11/06/2018
 uid: web-api/index
-ms.openlocfilehash: b3e26bee5e4dc8937e810bc5db300a486437f568
-ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
+ms.openlocfilehash: 010c437afc494fa4426f6922421afac46bbf6b39
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244766"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225438"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>Сборка веб-API с использованием ASP.NET Core
 
@@ -77,13 +77,13 @@ ms.locfileid: "50244766"
 
 ### <a name="automatic-http-400-responses"></a>Автоматические отклики HTTP 400
 
-Ошибки проверки автоматически активируют отклик HTTP 400. Следующий код становится ненужным в ваших действиях:
+Ошибки проверки модели автоматически активируют отклик HTTP 400. В результате следующий код становится ненужным в ваших действиях:
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.Pre21/Controllers/PetsController.cs?name=snippet_ModelStateIsValidCheck)]
 
 Используйте <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory> для настройки выходных данных итогового ответа.
 
-Поведение по умолчанию отключается, если свойству <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressModelStateInvalidFilter> задано значение `true`. Добавьте следующий код в `Startup.ConfigureServices` после `services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_<version_number>);`:
+Отключение поведения по умолчанию полезно, если ваше действие может восстановиться после ошибки проверки модели. Поведение по умолчанию отключается, если свойству <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressModelStateInvalidFilter> задано значение `true`. Добавьте следующий код в `Startup.ConfigureServices` после `services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_<version_number>);`:
 
 ::: moniker-end
 
