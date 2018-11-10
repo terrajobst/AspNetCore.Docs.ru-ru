@@ -2,7 +2,8 @@
 
 Этот пример приложения состоит из следующих проектов:
 
-- **WebApiSample.Api**: проект ASP.NET Core 2.1, предназначенный для .NET Core 2.1.
+- **WebApiSample.Api.22*: проект ASP.NET Core 2.2, предназначенный для .NET Core 2.2.
+- **WebApiSample.Api.21**: проект ASP.NET Core 2.1, предназначенный для .NET Core 2.1.
 - **WebApiSample.Api.Pre21**: проект ASP.NET Core 2.0, предназначенный для .NET Core 2.0.
 - **WebApiSample.DataAccess**: библиотека классов .NET Standard 2.0, которая служит уровнем доступа к данным для двух проектов веб-API.
 

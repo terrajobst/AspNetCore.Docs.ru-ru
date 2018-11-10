@@ -2,16 +2,17 @@
 title: Размещение ASP.NET Core в службе Windows
 author: guardrex
 description: Узнайте, как разместить приложение ASP.NET Core в службе Windows.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 09/25/2018
+ms.date: 10/30/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: f9b1c3fbfafa839c116688e0ac63804afcd5dbe0
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 11913019bfe5d06c259b806fce9cc580a8280ad5
+ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206677"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50758197"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Размещение ASP.NET Core в службе Windows
 
@@ -29,38 +30,12 @@ ms.locfileid: "50206677"
 
    * Подтвердите наличие [идентификатора среды выполнения](/dotnet/core/rid-catalog) Windows или добавьте его в `<PropertyGroup>`, где содержится требуемая версия платформы:
 
-      ::: moniker range=">= aspnetcore-2.1"
-
       ```xml
       <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
         <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
       </PropertyGroup>
       ```
-
-      ::: moniker-end
-
-      ::: moniker range="= aspnetcore-2.0"
-
-      ```xml
-      <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
-        <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
-      </PropertyGroup>
-      ```
-
-      ::: moniker-end
-
-      ::: moniker range="< aspnetcore-2.0"
-
-      ```xml
-      <PropertyGroup>
-        <TargetFramework>netcoreapp1.1</TargetFramework>
-        <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
-      </PropertyGroup>
-      ```
-
-      ::: moniker-end
 
       Чтобы выполнить публикацию для нескольких идентификаторов RID, сделайте следующее.
 
@@ -77,56 +52,88 @@ ms.locfileid: "50206677"
 
    * Вызовите [UseContentRoot](xref:fundamentals/host/web-host#content-root) и используйте путь к расположению публикации приложения вместо `Directory.GetCurrentDirectory()`.
 
-     ::: moniker range=">= aspnetcore-2.0"
-
      [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=ServiceOnly&highlight=8-9,16)]
 
-     ::: moniker-end
+1. Опубликуйте приложение с помощью команды [dotnet publish](/dotnet/articles/core/tools/dotnet-publish), [профиля публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles) или Visual Studio Code. Если вы используете Visual Studio, выберите **FolderProfile** и настройте **целевое расположение**, прежде чем нажимать кнопку **Опубликовать**.
 
-     ::: moniker range="< aspnetcore-2.0"
-
-     [!code-csharp[](windows-service/samples_snapshot/1.x/AspNetCoreService/Program.cs?name=ServiceOnly&highlight=3-4,8,13)]
-
-     ::: moniker-end
-
-1. Опубликуйте приложение. Используйте команду [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) или [профиль публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles). Работая в Visual Studio, выберите **FolderProfile**.
-
-   Чтобы опубликовать пример приложения через интерфейс командной строки (CLI), выполните в командной строке команду [dotnet publish](/dotnet/core/tools/dotnet-publish) в папке проекта. Идентификатор RID следует указать в свойстве `<RuntimeIdenfifier>` (или `<RuntimeIdentifiers>`) в файле проекта. Следующий пример публикует приложение в конфигурации выпуска для среды выполнения `win7-x64`:
+   Чтобы опубликовать пример приложения через интерфейс командной строки (CLI), выполните в командной строке команду [dotnet publish](/dotnet/core/tools/dotnet-publish) в папке проекта. Идентификатор RID следует указать в свойстве `<RuntimeIdenfifier>` (или `<RuntimeIdentifiers>`) в файле проекта. В следующем примере публикуется приложение в конфигурации выпуска для среды выполнения `win7-x64` в папке, созданной в каталоге *c:\\svc*:
 
    ```console
-   dotnet publish --configuration Release --runtime win7-x64
+   dotnet publish --configuration Release --runtime win7-x64 --output c:\svc
    ```
 
-1. Используйте программу командной строки [sc.exe](https://technet.microsoft.com/library/bb490995), чтобы создать службу. Значение `binPath` обозначает путь к исполняемому файлу приложения, включая имя самого файла. **Требуется пробел между знаком равенства и кавычками, с которых начинается путь.**
+1. Создайте учетную запись пользователя для службы с помощью команды `net user`:
 
    ```console
-   sc create <SERVICE_NAME> binPath= "<PATH_TO_SERVICE_EXECUTABLE>"
+   net user {USER ACCOUNT} {PASSWORD} /add
    ```
 
-   Для создания службы, опубликованной в папке проекта, используйте путь к папке *publish*. В следующем примере:
+   Для примера приложения создайте учетную запись пользователя с именем `ServiceUser` и пароль. В следующей команде замените `{PASSWORD}` на [надежный пароль](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements).
 
-   * Проект находится в папке *c:\\my_services\\AspNetCoreService*.
-   * Проект публикуется в конфигурации `Release`.
-   * Моникер целевой платформы (TFM) — `netcoreapp2.1`.
-   * Идентификатор среды выполнения (RID) — `win7-x64`.
-   * Имя исполняемого файла приложения — *AspNetCoreService.exe*.
+   ```console
+   net user ServiceUser {PASSWORD} /add
+   ```
+
+   Если вам нужно добавить пользователя в группу, используйте команду `net localgroup`, где `{GROUP}` — это имя группы:
+
+   ```console
+   net localgroup {GROUP} {USER ACCOUNT} /add
+   ```
+
+   Дополнительные сведения см. в статье [Service User Accounts](/windows/desktop/services/service-user-accounts) (Учетные записи пользователей службы).
+
+1. Предоставьте доступ на запись, чтение и выполнение для папки приложения с помощью команды [icacls](/windows-server/administration/windows-commands/icacls):
+
+   ```console
+   icacls "{PATH}" /grant {USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS} /t
+   ```
+
+   * `{PATH}` &ndash; путь к папке приложения.
+   * `{USER ACCOUNT}` &ndash; учетная запись пользователя (SID).
+   * `(OI)` &ndash; флаг наследования объекта, который распространяет разрешения на вложенные файлы.
+   * `(CI)` &ndash; флаг наследования контейнера, который распространяет разрешения на вложенные папки.
+   * `{PERMISSION FLAGS}` &ndash; устанавливает разрешения для доступа к приложениям.
+     * Запись (`W`)
+     * Чтение (`R`)
+     * Выполнение (`X`)
+     * Полное (`F`)
+     * Изменение (`M`)
+   * `/t` &ndash; применяется рекурсивно к имеющимся вложенным папкам и файлам.
+
+   Для примера приложения, опубликованного в папке *c:\\svc*, и учетной записи `ServiceUser` с разрешениями на запись, чтение и выполнение используйте следующую команду:
+
+   ```console
+   icacls "c:\svc" /grant ServiceUser:(OI)(CI)WRX /t
+   ```
+
+   Дополнительные сведения см. в статье об [icacls](/windows-server/administration/windows-commands/icacls).
+
+1. Используйте программу командной строки [sc.exe](https://technet.microsoft.com/library/bb490995), чтобы создать службу. Значение `binPath` обозначает путь к исполняемому файлу приложения, включая имя самого файла. **Требуется пробел между знаком равенства и кавычками для каждого обязательного параметра и значения.**
+
+   ```console
+   sc create {SERVICE NAME} binPath= "{PATH}" obj= "{DOMAIN}\{USER ACCOUNT}" password= "{PASSWORD}"
+   ```
+
+   * `{SERVICE NAME}` &ndash; имя, присваиваемое службе в [диспетчере служб](/windows/desktop/services/service-control-manager).
+   * `{PATH}` &ndash; путь к исполняемому файлу.
+   * `{DOMAIN}` (если компьютер не присоединен к домену, имя локального компьютера) и `{USER ACCOUNT}` &ndash; домен (или имя локального компьютера) и учетная запись пользователя, под которой выполняется служба. **Не** пропускайте параметр `obj`. Значение по умолчанию параметра `obj` — это [учетная запись LocalSystem](/windows/desktop/services/localsystem-account). Выполнение службы под учетной записью `LocalSystem` представляет собой серьезную угрозу безопасности. Всегда запускайте службу под учетной записью пользователя с ограниченными привилегиями на сервере.
+   * `{PASSWORD}` &ndash; пароль учетной записи пользователя.
+
+   В следующем примере:
+
    * Служба называется **MyService**.
-
-   Пример
+   * Опубликованная служба размещается в папке *c:\\svc*. Имя исполняемого файла приложения — *AspNetCoreService.exe*. Значение `binPath` заключено в прямые кавычки (").
+   * Служба работает под учетной записью `ServiceUser`. Замените `{DOMAIN}` на домен учетной записи пользователя или имя локального компьютера. Заключите значение `obj` в прямые кавычки ("). Пример: если система размещения — это локальный компьютер с именем `MairaPC`, задайте для параметра `obj` значение `"MairaPC\ServiceUser"`.
+   * Замените `{PASSWORD}` на пароль учетной записи пользователя. Значение `password` заключено в прямые кавычки (").
 
    ```console
-   sc create MyService binPath= "c:\my_services\AspNetCoreService\bin\Release\netcoreapp2.1\win7-x64\publish\AspNetCoreService.exe"
+   sc create MyService binPath= "c:\svc\aspnetcoreservice.exe" obj= "{DOMAIN}\ServiceUser" password= "{PASSWORD}"
    ```
 
    > [!IMPORTANT]
-   > Убедитесь, что между аргументом `binPath=` и его значением есть пробел.
+   > Убедитесь, что между знаками равенства и значениями параметров есть пробелы.
 
-   Чтобы опубликовать и запустить службу из другой папки:
-
-      * Используйте параметр [--output &lt;OUTPUT_DIRECTORY&gt;](/dotnet/core/tools/dotnet-publish#options) команды `dotnet publish`. Если вы используете Visual Studio, настройте **Целевое расположение** на странице свойств публикации **FolderProfile**, прежде чем нажимать кнопку **Опубликовать**.
-      * Создайте службу с помощью команды `sc.exe`, используя путь к папке выходных данных. Включите имя исполняемого файла службы в путь, передаваемый в `binPath`.
-
-1. Запустите службу с помощью команды `sc start <SERVICE_NAME>`.
+1. Запустите службу с помощью команды `sc start {SERVICE NAME}`.
 
    Чтобы запустить пример службы приложения, используйте следующую команду:
 
@@ -136,7 +143,7 @@ ms.locfileid: "50206677"
 
    Команде потребуется несколько секунд, чтобы запустить службу.
 
-1. Чтобы проверить состояние службы, используйте команду `sc query <SERVICE_NAME>`. Состояние отображается одним из следующих значений:
+1. Чтобы проверить состояние службы, используйте команду `sc query {SERVICE NAME}`. Состояние отображается одним из следующих значений:
 
    * `START_PENDING`
    * `RUNNING`
@@ -153,7 +160,7 @@ ms.locfileid: "50206677"
 
    Чтобы получить пример службы приложений, найдите приложение по адресу `http://localhost:5000`.
 
-1. Остановите службу с помощью команды `sc stop <SERVICE_NAME>`.
+1. Остановите службу с помощью команды `sc stop {SERVICE NAME}`.
 
    Чтобы остановить пример службы приложения, используйте следующую команду:
 
@@ -161,7 +168,7 @@ ms.locfileid: "50206677"
    sc stop MyService
    ```
 
-1. После небольшой задержки для остановки службы удалите службу с помощью команды `sc delete <SERVICE_NAME>`.
+1. После небольшой задержки для остановки службы удалите службу с помощью команды `sc delete {SERVICE NAME}`.
 
    Проверьте состояние примера службы приложений:
 
@@ -179,22 +186,12 @@ ms.locfileid: "50206677"
 
 Тестирование и отладку проще выполнять при работе вне службы. Поэтому разработчики обычно добавляют код, который вызывает `RunAsService` только при соблюдении определенных условий. Например, приложение может выполняться как консольное приложение с аргументом командной строки `--console` или при присоединении отладчика:
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=ServiceOrConsole)]
 
 Так как для конфигурации ASP.NET Core требуется пара имя-значение для аргументов командной строки, параметр `--console` удаляется до передачи аргументов в [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder).
 
 > [!NOTE]
 > `isService` не передается из `Main` в `CreateWebHostBuilder`, так как для правильного [тестирования интеграции](xref:test/integration-tests) сигнатура `CreateWebHostBuilder` должна иметь значение `CreateWebHostBuilder(string[])`.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](windows-service/samples_snapshot/1.x/AspNetCoreService/Program.cs?name=ServiceOrConsole)]
-
-::: moniker-end
 
 ## <a name="handle-stopping-and-starting-events"></a>Обработка событий остановки и запуска
 
@@ -210,20 +207,10 @@ ms.locfileid: "50206677"
 
 3. В `Program.Main` измените вызов [RunAsService](/dotnet/api/microsoft.aspnetcore.hosting.windowsservices.webhostwindowsserviceextensions.runasservice) на вызов нового метода расширения `RunAsCustomService`:
 
-   ::: moniker range=">= aspnetcore-2.0"
-
    [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=HandleStopStart&highlight=17)]
 
    > [!NOTE]
    > `isService` не передается из `Main` в `CreateWebHostBuilder`, так как для правильного [тестирования интеграции](xref:test/integration-tests) сигнатура `CreateWebHostBuilder` должна иметь значение `CreateWebHostBuilder(string[])`.
-
-   ::: moniker-end
-
-   ::: moniker range="< aspnetcore-2.0"
-
-   [!code-csharp[](windows-service/samples_snapshot/1.x/AspNetCoreService/Program.cs?name=HandleStopStart&highlight=27)]
-
-   ::: moniker-end
 
 Если пользовательский код `WebHostService` обращается к службе путем внедрения зависимости (например, к средству ведения журнала), ее можно получить из свойства [IWebHost.Services](/dotnet/api/microsoft.aspnetcore.hosting.iwebhost.services):
 
@@ -235,7 +222,12 @@ ms.locfileid: "50206677"
 
 ## <a name="configure-https"></a>Настройка HTTPS
 
-Укажите [конфигурацию конечной точки HTTPS для сервера Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration).
+Чтобы настроить службу с защищенной конечной точкой, сделайте следующее:
+
+1. Создайте сертификат X.509 для системы размещения с помощью механизмов получения и развертывания сертификата вашей платформы.
+1. Укажите [конфигурацию конечной точки HTTPS для сервера Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration), чтобы использовать сертификат.
+
+Использование сертификата разработки ASP.NET Core HTTPS для защиты конечной точки службы не поддерживается.
 
 ## <a name="current-directory-and-content-root"></a>Текущий каталог и корневой каталог содержимого
 

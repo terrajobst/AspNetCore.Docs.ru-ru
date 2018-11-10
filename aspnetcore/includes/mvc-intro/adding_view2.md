@@ -28,7 +28,7 @@
 
 ::: moniker range=">= aspnetcore-2.1"
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout21.cshtml?highlight=7,31)]
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout21.cshtml?highlight=6,29)]
 
 ::: moniker-end
 
@@ -115,6 +115,6 @@
 
 ![Представление сведений, в котором отображается приветственный заголовок и четыре раза выводится фраза "Hello Rick"](~/tutorials/first-mvc-app/adding-view/_static/rick2.png)
 
-В примере выше мы использовали словарь `ViewData` для передачи данных из контроллера в представление. Далее в этом руководстве для передачи данных из контроллера в представление мы будем использовать модель представления. Подход к передаче данных на основе модели представления является предпочтительным относительно применения словаря `ViewData`. Дополнительные сведения см. в разделе [Сравнение ViewModel, ViewData, ViewBag, TempData и Session в модели MVC](http://www.mytecbits.com/microsoft/dot-net/viewmodel-viewdata-viewbag-tempdata-mvc).
+В примере выше мы использовали словарь `ViewData` для передачи данных из контроллера в представление. Далее в этом руководстве для передачи данных из контроллера в представление мы будем использовать модель представления. Подход к передаче данных на основе модели представления является предпочтительным относительно применения словаря `ViewData`. Дополнительные сведения см. в статье [When to use ViewBag, ViewData, or TempData in ASP.NET MVC 3 applications](http://www.rachelappel.com/when-to-use-viewbag-viewdata-or-tempdata-in-asp-net-mvc-3-applications/) (Использование ViewBag, ViewData или TempData в приложениях ASP.NET MVC 3).
 
 Этот подход характерен для модели, а не для базы данных. Итак, обобщим все полученные данные и попробуем создать базу данных фильмов.

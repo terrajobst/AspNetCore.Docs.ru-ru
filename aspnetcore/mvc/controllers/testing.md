@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/23/2018
 uid: mvc/controllers/testing
-ms.openlocfilehash: 18674f85a0cf8c6dfffa94a2160f7182752674f7
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 7e27f30e35c2c6e9062c8321b8b8544a38a69605
+ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207996"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "50758145"
 ---
 # <a name="test-controller-logic-in-aspnet-core"></a>Тестирование логики контроллера в ASP.NET Core
 
@@ -182,7 +182,6 @@ ms.locfileid: "50207996"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* <xref:test/index>
 * <xref:test/integration-tests>
 * [Создавайте и выполняйте модульные тесты с помощью Visual Studio](/visualstudio/test/unit-test-your-code).
 * [Принцип явных зависимостей](https://deviq.com/explicit-dependencies-principle/)

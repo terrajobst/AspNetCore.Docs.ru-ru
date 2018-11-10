@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/17/2018
 uid: tutorials/first-web-api
-ms.openlocfilehash: 2694388324cdbd246aad6c88d8439171704dfe89
-ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
+ms.openlocfilehash: 88d1958ce5c42d559754972a855c1ffe22ab45a6
+ms.sourcegitcommit: 2ef32676c16f76282f7c23154d13affce8c8bf35
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "39722520"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234583"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio"></a>Создание веб-API с помощью ASP.NET Core и Visual Studio
 
@@ -21,7 +21,7 @@ ms.locfileid: "39722520"
 
 Существуют три версии этого руководства:
 
-* Создание веб-API с помощью Visual Studio в Windows (это руководство)
+* Windows: создание веб-API с помощью Visual Studio в Windows (см. это руководство в [видеоверсии](https://www.youtube.com/watch?v=TTkhEyGBfAk))
 * macOS: [создание веб-API с помощью Visual Studio для Mac](xref:tutorials/first-web-api-mac)
 * macOS, Linux, Windows: [создание веб-API с помощью Visual Studio Code](xref:tutorials/web-api-vsc)
 

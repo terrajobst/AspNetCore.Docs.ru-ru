@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: tutorials/signalr
-ms.openlocfilehash: fcfe2fa6cc88b9eee1389e171fa5eb7711b4f14f
-ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
+ms.openlocfilehash: 7d9f3a3f8aa7a5e47169da66e6fa2d6a28de3853
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50758132"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021252"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Руководство. Начало работы с SignalR ASP.NET Core
 
@@ -69,12 +69,13 @@ ms.locfileid: "50758132"
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
 
-* Откройте папку, которую можно использовать для нового проекта.
+* Откройте [интегрированный терминал](https://code.visualstudio.com/docs/editor/integrated-terminal) и перейдите в папку, в которой будет создаваться папка нового проекта.
 
-* Во [встроенном терминале](https://code.visualstudio.com/docs/editor/integrated-terminal) выполните следующую команду:
+* Выполните следующие команды:
 
    ```console
    dotnet new webapp -o SignalRChat
+   code -r SignalRChat
    ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
@@ -113,13 +114,11 @@ ms.locfileid: "50758132"
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code/)
 
-* Во **встроенном терминале** выполните следующую команду, чтобы установить LibMan.
+* В интегрированном терминале выполните следующую команду, чтобы установить LibMan.
 
   ```console
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
-
-* Перейдите в папку проекта (где расположен файл *SignalRChat.csproj*).
 
 * Выполните приведенную ниже команду, чтобы получить клиентскую библиотеку SignalR с помощью LibMan. Возможно, придется подождать несколько секунд, прежде чем появятся выходные данные.
 
@@ -225,8 +224,12 @@ ms.locfileid: "50758132"
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code.](#tab/visual-studio-code)
 
-* Нажмите клавиши **CTRL+F5**, чтобы запустить приложение без отладки.
+* В интегрированном терминале выполните следующую команду:
 
+  ```console
+  dotnet run -p SignalRChat
+  ```
+  
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio для Mac](#tab/visual-studio-mac)
 
 * В меню выберите **Запуск > Запуск без отладки**.

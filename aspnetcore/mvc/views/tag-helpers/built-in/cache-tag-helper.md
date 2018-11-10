@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 2590682755721a4bb14902b9fe7138a3bff56d31
-ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
+ms.openlocfilehash: fb69584f6e9d4756e175bbd6f3deb1f413b80fc5
+ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50148815"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50244818"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Вспомогательная функция тегов кэша в MVC-моделях ASP.NET Core
 
@@ -135,7 +135,7 @@ ms.locfileid: "50148815"
 | -------------- | -------------------- |
 | String         | `Make`, `Make,Model` |
 
-`vary-by-route` принимает список разделенных запятыми значений заголовков, запускающих обновление кэша при изменении значения параметра данных маршрута.
+`vary-by-route` принимает список разделенных запятыми имен параметров маршрута, запускающих обновление кэша при изменении значения параметра данных маршрута.
 
 Пример
 
@@ -161,7 +161,7 @@ routes.MapRoute(
 | -------------- | -------------------------------------------------------------------------------- |
 | String         | `.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor` |
 
-`vary-by-cookie` принимает список разделенных запятыми значений заголовков, запускающих обновление кэша при их изменении.
+`vary-by-cookie` принимает список разделенных запятыми имен cookie, запускающих обновление кэша при изменении их значений.
 
 Следующий пример отслеживает файл cookie, связанный с удостоверением ASP.NET Core. При проверке подлинности пользователя изменения в файле cookie удостоверений инициирует обновление кэша:
 

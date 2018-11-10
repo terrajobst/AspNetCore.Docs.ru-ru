@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как CORS в качестве стандарта для предоставления или отклонения запросов независимо от источника в приложении ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 uid: security/cors
-ms.openlocfilehash: cfbf24edb1dae76f676d51738b0d57266688d53e
-ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
+ms.openlocfilehash: 8e5056b448d47d75272e9394b03ce8a58b05a0f4
+ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045592"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51191325"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Включение запросов о происхождении (CORS) в ASP.NET Core
 
@@ -137,17 +137,37 @@ ms.locfileid: "48045592"
 
 ### <a name="set-the-allowed-origins"></a>Задайте разрешенные источники
 
-Чтобы разрешить один или несколько определенных источников, вызовите <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithOrigins*>:
+По промежуточного слоя CORS в ASP.NET Core MVC имеет несколько способов, чтобы указать разрешенные источники:
+
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithOrigins*>: Позволяет, указав один или несколько URL-адреса. URL-адрес может включать схему, имя узла и порт без включения данных пути. Например, `https://example.com`. URL-адрес должен быть указан без косой чертой (`/`).
 
 [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=20-24&highlight=4)]
 
-Чтобы разрешить любые источники, вызовите <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>:
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>: Разрешает запросы CORS из всех источников с любой схемой (`http` или `https`).
 
 [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=28-32&highlight=4)]
 
 Тщательно обдумайте прежде чем разрешить запросы из любого источника. Разрешение запросов из любого источника означает, что *любой веб-сайт* могут выполнять запросы независимо от источника к приложению.
 
+::: moniker range=">= aspnetcore-2.2"
+
+> [!NOTE]
+> Указание `AllowAnyOrigin` и `AllowCredentials` является небезопасной конфигурацией и может привести к подделки межсайтовых запросов. CORS, служба возвращает недопустимый ответ CORS приложения настроен с двумя.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+> [!NOTE]
+> Указание `AllowAnyOrigin` и `AllowCredentials` является небезопасной конфигурацией и может привести к подделки межсайтовых запросов. Можно указать точный список источников, если клиенту необходимо авторизовать доступ к ресурсам сервера.
+
+::: moniker-end
+
 Этот параметр влияет на [перед запуском выявила запросы и заголовка Access-Control-Allow-Origin](#preflight-requests) (описывается далее в этом разделе).
+
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetIsOriginAllowedToAllowWildcardSubdomains*> -Разрешает запросы CORS из любого поддомена в данном домене. Схема не может быть подстановочного знака.
+
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=98-104&highlight=4)]
 
 ### <a name="set-the-allowed-http-methods"></a>Задайте разрешенные методы HTTP
 

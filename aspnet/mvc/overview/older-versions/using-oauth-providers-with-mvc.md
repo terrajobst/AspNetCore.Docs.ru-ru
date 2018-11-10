@@ -1,19 +1,19 @@
 ---
 uid: mvc/overview/older-versions/using-oauth-providers-with-mvc
 title: Использование поставщиков OAuth с MVC 4 | Документация Майкрософт
-author: tfitzmac
+author: Rick-Anderson
 description: Этот учебник показывает, как создавать веб-приложения ASP.NET MVC 4, который позволяет пользователям входить в систему с учетными данными из внешнего поставщика, например Facebo...
 ms.author: riande
 ms.date: 06/19/2013
 ms.assetid: 7a87f16f-0e19-4f15-a88a-094ae866c4a2
 msc.legacyurl: /mvc/overview/older-versions/using-oauth-providers-with-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 9b0db2775db5c74762bdc55328ad44ef7ebe75ce
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d0203b62c911056fc56ed103c1c42f67816cbbf0
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836626"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021759"
 ---
 <a name="using-oauth-providers-with-mvc-4"></a>Использование поставщиков OAuth с MVC 4
 ====================
@@ -83,7 +83,7 @@ ms.locfileid: "41836626"
 - [Microsoft](http://manage.dev.live.com/)
 - [Twitter](https://dev.twitter.com/)
 
-Если регистрация веб-узла с помощью Facebook, вы можете предоставить &quot;localhost&quot; для домена сайта и `&quot;http://localhost/&quot;` для URL-адреса, как показано на рисунке ниже. С помощью localhost работает с большинством поставщиков, но в настоящее время не работает с поставщиком Microsoft. Для поставщика Microsoft необходимо включить веб-сайт, допустимый URL-адрес.
+Если регистрация веб-узла с помощью Facebook, вы можете предоставить &quot;localhost&quot; для домена сайта и `&quot; http://localhost/&quot;` для URL-адреса, как показано на рисунке ниже. С помощью localhost работает с большинством поставщиков, но в настоящее время не работает с поставщиком Microsoft. Для поставщика Microsoft необходимо включить веб-сайт, допустимый URL-адрес.
 
 ![Зарегистрируйте сайт](using-oauth-providers-with-mvc/_static/image4.png)
 

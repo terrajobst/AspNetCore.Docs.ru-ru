@@ -5,12 +5,12 @@ description: Узнайте, как приступить к миграции п�
 ms.author: riande
 ms.date: 03/07/2017
 uid: migration/mvc
-ms.openlocfilehash: e2ecc5b1a5e2ede4c815807d4e1b1499ae1a4242
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 7c9d927bbd06f96f130d53e946a2963b5804960b
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090476"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505743"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>Миграция с ASP.NET MVC для ASP.NET Core MVC
 
@@ -159,7 +159,7 @@ ASP.NET MVC старый проект использует [Bootstrap](https://g
 
 * Удалите `@Scripts.Render("~/bundles/modernizr")`.
 
-* Закомментируйте `@Html.Partial("_LoginPartial")` строки (заключить строку с `@*...*@`). Мы вернемся к нему в следующем учебном курсе.
+* Закомментируйте `@Html.Partial("_LoginPartial")` строки (заключить строку с `@*...*@`). Дополнительные сведения см. в разделе [перенести проверки подлинности и удостоверения в ASP.NET Core](xref:migration/identity)
 
 * Замените `@Scripts.Render("~/bundles/jquery")` с `<script>` элемент (см. ниже).
 

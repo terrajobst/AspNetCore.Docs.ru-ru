@@ -1,17 +1,17 @@
 ---
 title: Обработка ошибок в ASP.NET Core
-author: ardalis
+author: tdykstra
 description: Узнайте, как обрабатывать ошибки в приложениях ASP.NET Core.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 07/05/2018
+ms.date: 11/01/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: d1e94fdc89fbebc264dc001bbf35666af16f4799
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 89117d78486493747d649c3bb0d9cce9f97ef419
+ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50208035"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50968323"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Обработка ошибок в ASP.NET Core
 
@@ -119,17 +119,28 @@ app.UseStatusCodePages();
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePages)]
 
-Другой метод принимает строку формата и типа содержимого:
+Перегрузка `UseStatusCodePages` принимает строку формата и тип содержимого:
 
 ```csharp
 app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
 ```
+### <a name="redirect-re-execute-extension-methods"></a>Методы расширения для повторного выполнения при перенаправлении
 
-Имеются также методы расширения для перенаправления и повторного выполнения. Метод перенаправления отправляет клиенту код состояния *302 Найдено* и перенаправляет клиент к указанному шаблону URL-адреса расположения. Шаблон может содержать заполнитель `{0}` для кода состояния. В начало URL-адресов, начинающихся с `~`, добавлен базовый путь. URL-адрес, который не начинается с `~`, используется как есть.
+<xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePagesWithRedirects*>:
+
+* Отправляет клиенту код состояния *302 — Found*.
+* Перенаправляет клиента к расположению, предоставленному в шаблоне URL-адреса. 
+
+Шаблон может содержать заполнитель `{0}` для кода состояния. Шаблон должен начинаться с косой черты (`/`).
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
 
-Метод повторного выполнения возвращает клиенту исходный код состояния и указывает, что текст ответа должен создаваться путем повторного выполнения конвейера запросов с использованием другого пути. Этот путь может содержать заполнитель `{0}` для кода состояния:
+<xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePagesWithReExecute*>:
+
+* Возвращает исходный код состояния клиенту.
+* Указывает, что текст ответа должен создаваться путем повторного выполнения конвейера запросов с использованием другого пути. 
+
+Шаблон может содержать заполнитель `{0}` для кода состояния. Шаблон должен начинаться с косой черты (`/`).
 
 ```csharp
 app.UseStatusCodePagesWithReExecute("/error/{0}");
@@ -146,7 +157,7 @@ if (statusCodePagesFeature != null)
 }
 ```
 
-Если вы используете перегрузку `UseStatusCodePages*`, которая указывает на конечную точку в приложении, создайте представление MVC или страницу Razor для конечной точки. Например, шаблон [dotnet new](/dotnet/core/tools/dotnet-new) для приложения Razor Pages создает следующую страницу и класс модели страницы:
+Чтобы использовать перегрузку `UseStatusCodePages*`, которая указывает на конечную точку в приложении, создайте представление MVC или страницу Razor для конечной точки. Например, шаблон [dotnet new](/dotnet/core/tools/dotnet-new) для приложения Razor Pages создает следующую страницу и класс модели страницы:
 
 *Error.cshtml*:
 
