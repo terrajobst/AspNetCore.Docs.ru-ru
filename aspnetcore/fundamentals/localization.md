@@ -5,12 +5,12 @@ description: Сведения о службах и ПО промежуточно
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 5014d697603d802929b417e6439d4cc6983184d2
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: af11906f86fe4ea91ed520584daedc094ab2dc0b
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207593"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505834"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Глобализация и локализация в ASP.NET Core
 
@@ -338,6 +338,8 @@ services.Configure<RequestLocalizationOptions>(options =>
 * Конкретные язык и региональные параметры: язык и региональные параметры, для которых указаны язык и регион (например, "en-US", "en-GB", "es-CL").
 * Родительские язык и региональные параметры: нейтральные язык и региональные параметры, содержащие конкретные язык и региональные параметры (например, "en" — это родительские язык и региональные параметры для "en-US" и "en-GB").
 * Языковой стандарт: тот же, что и язык и региональные параметры.
+
+[!INCLUDE[](~/includes/currency.md)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
