@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 08/09/2018
 uid: client-side/bower
-ms.openlocfilehash: 8606c21596a5d9d6ada9c60b55b2f54da21c601b
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: 06edf7ee791aac0984ff71c2f243f61093f0d503
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41902723"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570026"
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Управление пакетами на стороне клиента с помощью Bower в ASP.NET Core
 
@@ -40,7 +40,7 @@ ms.locfileid: "41902723"
 
   ![Управление пакетами bower](bower/_static/manage-bower-packages.png)
 
-* Убедитесь, что «сохранить изменения в *bower.json*» установлен флажок. Выберите версию в раскрывающемся списке и нажмите кнопку **установить** кнопки. **Вывода** окне отображаются сведения об установке.
+* Убедитесь, что «сохранить изменения в *bower.json*"будет установлен флажок. Выберите версию в раскрывающемся списке и нажмите кнопку **установить** кнопки. **Вывода** окне отображаются сведения об установке.
 
 ### <a name="manual-installation-in-bowerjson"></a>Установка вручную в bower.json
 
