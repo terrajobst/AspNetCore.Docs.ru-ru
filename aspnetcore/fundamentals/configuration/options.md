@@ -4,14 +4,14 @@ author: guardrex
 description: Узнайте, как использовать шаблон параметров для представления групп связанных параметров в приложениях ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/28/2017
+ms.date: 11/09/2018
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 359bd438066aefcf572c91dacee99e85c0f10b1a
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 99aa5028a8704c7e9e3010415137e2560213a2ad
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207359"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505801"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Шаблон параметров в ASP.NET Core
 
@@ -252,7 +252,7 @@ named_options_2: option1 = named_options_2_value1_from_action, option2 = 5
 
 ## <a name="configure-all-options-with-the-configureall-method"></a>Настройка всех параметров с помощью метода ConfigureAll
 
-Настройте все экземпляры параметров с помощью метода [OptionsServiceCollectionExtensions.ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall). Приведенный ниже код настраивает `Option1` для всех экземпляров конфигурации с общим значением. Добавьте следующий код в метод `Configure` вручную:
+Настройте все экземпляры параметров с помощью метода [OptionsServiceCollectionExtensions.ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall). Приведенный ниже код настраивает `Option1` для всех экземпляров конфигурации с общим значением. Добавьте следующий код в метод `ConfigureServices` вручную:
 
 ```csharp
 services.ConfigureAll<MyOptions>(myOptions => 
@@ -270,6 +270,35 @@ named_options_2: option1 = ConfigureAll replacement value, option2 = 5
 
 > [!NOTE]
 > Все параметры являются именованными экземплярами. Существующие экземпляры `IConfigureOption` считаются нацеленными на экземпляр `Options.DefaultName`, который имеет значение `string.Empty`. Интерфейс `IConfigureNamedOptions` также реализует интерфейс `IConfigureOptions`. Реализация [IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) по умолчанию ([источник ссылки](https://github.com/aspnet/Options/blob/release/2.0/src/Microsoft.Extensions.Options/IOptionsFactory.cs)) содержит логику для надлежащего использования каждого экземпляра. Именованный параметр `null` предназначен для всех именованных экземпляров, а не для какого-то определенного ([ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) и [PostConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall) следуют этому соглашению).
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+## <a name="optionsbuilder-api"></a>API OptionsBuilder
+
+<xref:Microsoft.Extensions.Options.OptionsBuilder`1> используется для настройки экземпляров `TOptions`. `OptionsBuilder` упрощает создание именованных параметров, так как он является единственным параметром для первоначального вызова `AddOptions<TOptions>(string optionsName)` и не должен появляться во всех последующих вызовах. Проверка параметров и перегрузки `ConfigureOptions`, принимающие зависимости службы, доступны только через `OptionsBuilder`.
+
+```csharp
+// Options.DefaultName = "" is used.
+services.AddOptions<MyOptions>().Configure(o => o.Property = "default");
+    
+services.AddOptions<MyOptions>("optionalName")
+    .Configure(o => o.Property = "named");
+```
+
+## <a name="configurelttoptions-tdep1--tdep4gt-method"></a>Настройка метода &lt;TOptions, TDep1, … Метод TDep4&gt;
+
+Использование служб из DI для настройки параметров путем реализации `IConfigure[Named]Options` стандартным способом является довольно громоздким вариантом. Перегрузки для `ConfigureOptions` в `OptionsBuilder<TOptions>` позволяют использовать до пяти служб для настройки параметров.
+
+```csharp
+services.AddOptions<MyOptions>("optionalName")
+    .Configure<Service1, Service2, Service3, Service4, Service5>(
+        (o, s, s2, s3, s4, s5) => 
+            o.Property = DoSomethingWith(s, s2, s3, s4, s5));
+```
+
+Перегрузка регистрирует временный универсальный интерфейс <xref:Microsoft.Extensions.Options.IConfigureNamedOptions`1>, имеющий конструктор, который принимает указанные универсальные типы службы. 
 
 ::: moniker-end
 
@@ -329,7 +358,49 @@ public interface IValidateOptions<TOptions> where TOptions : class
 }
 ```
 
-Упреждающая проверка (с завершением работы при первой ошибке во время запуска) и проверка на основе заметок к данным будут реализованы в будущих выпусках.
+Проверка на основе заметок к данным доступна в пакете [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) путем вызова метода `ValidateDataAnnotations` в `OptionsBuilder<TOptions>`:
+
+```csharp
+private class AnnotatedOptions
+{
+    [Required]
+    public string Required { get; set; }
+
+    [StringLength(5, ErrorMessage = "Too long.")]
+    public string StringLength { get; set; }
+
+    [Range(-5, 5, ErrorMessage = "Out of range.")]
+    public int IntRange { get; set; }
+}
+    
+[Fact]
+public void CanValidateDataAnnotations()
+{
+    var services = new ServiceCollection();
+    services.AddOptions<AnnotatedOptions>()
+        .Configure(o =>
+        {
+            o.StringLength = "111111";
+            o.IntRange = 10;
+            o.Custom = "nowhere";
+        })
+        .ValidateDataAnnotations();
+
+    var sp = services.BuildServiceProvider();
+
+    var error = Assert.Throws<OptionsValidationException>(() => 
+        sp.GetRequiredService<IOptions<AnnotatedOptions>>().Value);
+    ValidateFailure<AnnotatedOptions>(error, Options.DefaultName, 1,
+        "DataAnnotation validation failed for members Required " +
+            "with the error 'The Required field is required.'.",
+        "DataAnnotation validation failed for members StringLength " +
+            "with the error 'Too long.'.",
+        "DataAnnotation validation failed for members IntRange " +
+            "with the error 'Out of range.'.");
+}    
+```
+
+Безотложная проверка (быстрое прекращение при запуске) находится на этапе рассмотрения для включения в будущие выпуски.
 
 ::: moniker-end
 

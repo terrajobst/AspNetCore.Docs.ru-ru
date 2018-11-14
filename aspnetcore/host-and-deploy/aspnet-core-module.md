@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 0d167f779f9dcae6b0d946dce5e341793daf43bf
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: ca86b1548c7c28a64fd391617b2e8290c1c264cf
+ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091019"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51191364"
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>Справочник по конфигурации модуля ASP.NET Core
 
-Авторы [Люк Латэм](https://github.com/guardrex) (Luke Latham), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson), и [Сураб Ширхатти](https://twitter.com/sshirhatti) (Sourabh Shirhatti)
+Авторы [Люк Латэм](https://github.com/guardrex) (Luke Latham), [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson), [Сураб Ширхатти](https://twitter.com/sshirhatti) (Sourabh Shirhatti) и [Джастин Коталик](https://github.com/jkotalik) (Justin Kotalik)
 
 Этот документ содержит инструкции о том, как настроить модуль ASP.NET Core для размещения приложений ASP.NET Core. Для ознакомления с модулем ASP.NET Core и инструкциями по установке см. [Обзор модуля ASP.NET Core](xref:fundamentals/servers/aspnet-core-module).
 
@@ -27,11 +27,11 @@ ms.locfileid: "50091019"
 
 Внутрипроцессное размещение необходимо явно выбирать в существующих приложениях, но в шаблонах [dotnet new](/dotnet/core/tools/dotnet-new) оно включено по умолчанию для всех сценариев IIS и IIS Express.
 
-Чтобы настроить приложение для внутрипроцессного размещения, добавьте свойство `<AspNetCoreModuleHostingModel>` к файлу проекта приложения со значением `inprocess` (размещение вне процесса имеет значение `outofprocess`):
+Чтобы настроить приложение для внутрипроцессного размещения, добавьте свойство `<AspNetCoreHostingModel>` в файл проекта приложения (например, *MyApp.csproj*) со значением `inprocess` (размещение вне процесса имеет значение `outofprocess`):
 
 ```xml
 <PropertyGroup>
-  <AspNetCoreModuleHostingModel>inprocess</AspNetCoreModuleHostingModel>
+  <AspNetCoreHostingModel>inprocess</AspNetCoreHostingModel>
 </PropertyGroup>
 ```
 
@@ -51,6 +51,8 @@ ms.locfileid: "50091019"
 
 * Обнаружены отключения клиентов. При отключении клиента происходит отмена токена отмены [HttpContext.RequestAborted](xref:Microsoft.AspNetCore.Http.HttpContext.RequestAborted*).
 
+* `Directory.GetCurrentDirectory()` возвращает рабочий каталог процесса, запущенного службами IIS, а не каталог приложения (например, *C:\Windows\System32\inetsrv* для *w3wp.exe*).
+
 ### <a name="hosting-model-changes"></a>Изменения модели размещения
 
 Если параметр `hostingModel` изменяется в файле *web.config* (как описано в разделе [Конфигурация с помощью web.config](#configuration-with-webconfig)), модуль перезапускает рабочий процесс для служб IIS.
@@ -59,7 +61,7 @@ ms.locfileid: "50091019"
 
 ### <a name="process-name"></a>Имя процесса
 
-`Process.GetCurrentProcess().ProcessName` сообщает `w3wp` (внутри процесса) или `dotnet` (вне процесса).
+`Process.GetCurrentProcess().ProcessName` сообщает `w3wp`/`iisexpress` (внутри процесса) или `dotnet` (вне процесса).
 
 ::: moniker-end
 
@@ -74,16 +76,18 @@ ms.locfileid: "50091019"
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
-  <system.webServer>
-    <handlers>
-      <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
-    </handlers>
-    <aspNetCore processPath="dotnet" 
-                arguments=".\MyApp.dll" 
-                stdoutLogEnabled="false" 
-                stdoutLogFile=".\logs\stdout" 
-                hostingModel="inprocess" />
-  </system.webServer>
+  <location path="." inheritInChildApplications="false">
+    <system.webServer>
+      <handlers>
+        <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
+      </handlers>
+      <aspNetCore processPath="dotnet" 
+                  arguments=".\MyApp.dll" 
+                  stdoutLogEnabled="false" 
+                  stdoutLogFile=".\logs\stdout" 
+                  hostingModel="inprocess" />
+    </system.webServer>
+  </location>
 </configuration>
 ```
 
@@ -115,15 +119,17 @@ ms.locfileid: "50091019"
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
-  <system.webServer>
-    <handlers>
-      <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
-    </handlers>
-    <aspNetCore processPath=".\MyApp.exe" 
-                stdoutLogEnabled="false" 
-                stdoutLogFile=".\logs\stdout" 
-                hostingModel="inprocess" />
-  </system.webServer>
+  <location path="." inheritInChildApplications="false">
+    <system.webServer>
+      <handlers>
+        <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
+      </handlers>
+      <aspNetCore processPath=".\MyApp.exe" 
+                  stdoutLogEnabled="false" 
+                  stdoutLogFile=".\logs\stdout" 
+                  hostingModel="inprocess" />
+    </system.webServer>
+  </location>
 </configuration>
 ```
 
@@ -266,13 +272,25 @@ ms.locfileid: "50091019"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-*Применяется только к размещению вне процесса.*
+Если при внутри- или внепроцессном размещении происходит сбой запуска приложения, открываются страницы пользовательских сообщений об ошибках.
+
+Если модулю ASP.NET Core не удается найти внутри- или внепроцессный обработчик запросов, откроется страница кода состояния *500.0 — ошибка загрузки внутри- или внепроцессного обработчика запросов*.
+
+Если в модели размещения внутри процесса модулю ASP.NET Core не удается запустить приложение, откроется страница кода состояния *500.30 — ошибка запуска*.
+
+Если в модели размещения вне процесса модулю ASP.NET Core не удается запустить серверный процесс или начинается серверный процесс, но ему не удается прослушать настроенный порт, появится страница кода состояния *502.5 — ошибка процесса*.
+
+Чтобы подавить отображение этой странице и вернуться к странице IIS кода состояния 5xx по умолчанию, используйте атрибут `disableStartUpErrorPage`. Дополнительные сведения о настройке пользовательских сообщений об ошибках см. в разделе [Ошибки HTTP &lt;httpErrors&gt;](/iis/configuration/system.webServer/httpErrors/).
 
 ::: moniker-end
 
-Если модулю ASP.NET Core не удалось запустить серверный процесс или начинается серверный процесс, но ему не удается прослушать настроенный порт, появится страница кода состояния *502.5 — ошибка процесса*. Чтобы подавить эту страницу и вернуться к странице IIS кода состояния 502 по умолчанию, используйте атрибут `disableStartUpErrorPage`. Дополнительные сведения о настройке пользовательских сообщений об ошибках см. в разделе [Ошибки HTTP `<httpErrors>`](/iis/configuration/system.webServer/httpErrors/).
+::: moniker range="< aspnetcore-2.2"
+
+Если модулю ASP.NET Core не удается запустить серверный процесс или начинается серверный процесс, но ему не удается прослушать настроенный порт, появится страница кода состояния *502.5 — ошибка процесса*. Чтобы подавить эту страницу и вернуться к странице IIS кода состояния 502 по умолчанию, используйте атрибут `disableStartUpErrorPage`. Дополнительные сведения о настройке пользовательских сообщений об ошибках см. в разделе [Ошибки HTTP &lt;httpErrors&gt;](/iis/configuration/system.webServer/httpErrors/).
 
 ![Страница кода состояния "502.5 — ошибка процесса"](aspnet-core-module/_static/ANCM-502_5.png)
+
+::: moniker-end
 
 ## <a name="log-creation-and-redirection"></a>Создание и перенаправление журнала
 
@@ -283,6 +301,12 @@ ms.locfileid: "50091019"
 Использование журнала stdout рекомендуется только для устранения неполадок при запуске приложений. Не используйте журнал stdout для ведения общего журнала приложений. Для обычного входа в приложение ASP.NET Core используйте библиотеку ведения журналов, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
 При создании файла журнала автоматически добавляются отметка времени и расширение файла. Имя файла журнала составляется путем добавления метки времени, идентификатора процесса и расширения файла (*.log*) к последнему сегменту атрибута пути `stdoutLogFile` (обычно *stdout*) с символами подчеркивания в качестве разделителей. Если атрибут пути `stdoutLogFile` заканчивается элементом *stdout*, журнал приложения с идентификатором 1934, созданный 5 февраля 2018 г. в 19:42:32, будет иметь имя *stdout_20180205194132_1934.log*.
+
+::: moniker range=">= aspnetcore-2.2"
+
+Если `stdoutLogEnabled` имеет значение false, возникающие при запуске приложения ошибки записываются и передаются в журнал событий (макс. 30 КБ). После запуска все дополнительные журналы удаляются.
+
+::: moniker-end
 
 В следующем примере элемент `aspNetCore` настраивает ведение журнала stdout для приложения, размещенного в службе приложений Azure. Для локального ведения журнала допустим локальный или общий сетевой путь. Убедитесь, что идентификатор пользователя AppPool имеет разрешение на запись по указанному пути.
 
@@ -399,11 +423,27 @@ ms.locfileid: "50091019"
 
    * %windir%\SysWOW64\inetsrv\aspnetcore.dll
 
+::: moniker range=">= aspnetcore-2.2"
+
+   * %ProgramFiles%\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll
+
+   * %ProgramFiles(x86)%\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll
+
+::: moniker-end
+
 **IIS Express (x86/amd64):**
 
    * %ProgramFiles%\IIS Express\aspnetcore.dll
 
    * %ProgramFiles(x86)%\IIS Express\aspnetcore.dll
+
+::: moniker range=">= aspnetcore-2.2"
+
+   * %ProgramFiles%\IIS Express\Asp.Net Core Module\V2\aspnetcorev2.dll
+
+   * %ProgramFiles(x86)%\IIS Express\Asp.Net Core Module\V2\aspnetcorev2.dll
+
+::: moniker-end
 
 ### <a name="schema"></a>Схема
 
@@ -411,9 +451,20 @@ ms.locfileid: "50091019"
 
    * %windir%\System32\inetsrv\config\schema\aspnetcore_schema.xml
 
+::: moniker range=">= aspnetcore-2.2"
+
+   * %windir%\System32\inetsrv\config\schema\aspnetcore_schema_v2.xml
+
+::: moniker-end
 **IIS Express**
 
    * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema.xml
+
+::: moniker range=">= aspnetcore-2.2"
+
+   * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema_v2.xml
+
+::: moniker-end
 
 ### <a name="configuration"></a>Конфигурация
 
@@ -423,6 +474,6 @@ ms.locfileid: "50091019"
 
 **IIS Express**
 
-   * .vs\config\applicationHost.config
+   * %ProgramFiles%\IIS Express\config\templates\PersonalWebServer\applicationHost.config
 
-Файлы можно найти путем поиска *aspnetcore.dll* в файле *applicationHost.config*. Для IIS Express файл *applicationHost.config* по умолчанию не должен существовать. Файл будет создан в *\<application_root>\\.vs\\config* при запуске любого проекта веб-приложения в решении Visual Studio.
+Файлы можно найти путем поиска *aspnetcore* в файле *applicationHost.config*.

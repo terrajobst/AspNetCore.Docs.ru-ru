@@ -4,14 +4,14 @@ author: rick-anderson
 description: Введение в ASP.NET Core — кроссплатформенную высокопроизводительную платформу с открытым исходным кодом для создания современных облачных интернет-приложений.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/10/2018
 uid: index
-ms.openlocfilehash: 60f7d64baa0441b90befb2d785999a707e1025c5
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: 1699acc0086dfd50c573afc239bc8f37eb9e7af9
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225399"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569992"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -76,6 +76,22 @@ ASP.NET Core версии 3.0 и более поздних будут выпол
 1. [Загрузите ZIP-файл репозитория ASP.NET](https://codeload.github.com/aspnet/Docs/zip/master).
 1. Распакуйте файл *Docs-master.zip*.
 1. Перейдите в папку примера по URL-адресу, указанному в примере.
+
+Для демонстрации нескольких сценариев в примерах приложений используются инструкции C# `#define` и `#if-#else/#elif-#endif`, выборочно компилирующие и запускающие разные фрагменты примеров кода. В примерах, где применяется этот подход, задайте в начале файлов C# инструкцию `#define` для символа, связанного со сценарием, который нужно запустить. Возможно, для запуска сценария в примере потребуется задать символ в начале нескольких файлов.
+
+Например, в следующем списке символов `#define` видно, что доступно четыре сценария (один сценарий на символ). В текущем примере конфигурации запускается сценарий `TemplateCode`:
+
+```csharp
+#define TemplateCode // or LogFromMain or ExpandDefault or FilterInCode
+```
+
+Чтобы запустить в примере сценарий `ExpandDefault`, задайте символ `ExpandDefault` и оставьте остальные символы раскомментированными:
+
+```csharp
+#define ExpandDefault // TemplateCode or LogFromMain or FilterInCode
+```
+
+Дополнительные сведения об использовании [директив препроцессора C#](/dotnet/csharp/language-reference/preprocessor-directives/) для выборочной компиляции фрагментов кода см. в разделах [#define (Справочник по C#)](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-define) и [#if (Справочник по C#)](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if).
 
 ## <a name="next-steps"></a>Следующие шаги
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как настроить защиту данных в ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/17/2017
+ms.date: 11/13/2018
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 0377fe9fbe5a1eeddb384443370751baa3c0ee43
-ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
+ms.openlocfilehash: 3be220df4b14ed8dbbd1fab70f46578e9408aa26
+ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46483000"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635320"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Настройка защиты данных в ASP.NET Core
 
@@ -135,7 +135,14 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="setapplicationname"></a>SetApplicationName
 
-По умолчанию система защиты данных изолирует приложений друг от друга, даже если они совместно используют тот же репозиторий физического ключа. Это предотвращает основные сведения о других защищенных полезных данных приложения. Для совместного использования защищенных полезных данных между двумя приложениями, используйте [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) с одинаковым значением для каждого приложения:
+По умолчанию система защиты данных изолирует приложений друг от друга, даже если они совместно используют тот же репозиторий физического ключа. Это предотвращает основные сведения о других защищенных полезных данных приложения.
+
+Совместное использование защищенных полезных данных между приложениями:
+
+* Настройка <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*> в каждом приложении, с тем же значением.
+* Используют ту же версию API защиты данных стека между этими приложениями. Выполните **либо** из следующих в файлах проектов приложений:
+  * Ссылаться на той же версии общей платформы, с помощью [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+  * Ссылаются на тот же [защиты данных пакета](xref:security/data-protection/introduction#package-layout) версии.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -177,7 +184,7 @@ public void ConfigureServices(IServiceCollection services)
 
 В стеке защиты данных можно изменить алгоритм по умолчанию, используемые вновь созданные ключи. Самый простой способ сделать это является вызов [UseCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecryptographicalgorithms) из обратного вызова конфигурации:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 services.AddDataProtection()
@@ -189,7 +196,9 @@ services.AddDataProtection()
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 services.AddDataProtection()
@@ -201,7 +210,7 @@ services.AddDataProtection()
     });
 ```
 
----
+::: moniker-end
 
 По умолчанию EncryptionAlgorithm AES-256-CBC, а значение по умолчанию ValidationAlgorithm — HMACSHA256. Политика по умолчанию можно задать с системным администратором через [политики на уровне компьютера](xref:security/data-protection/configuration/machine-wide-policy), но явный вызов `UseCryptographicAlgorithms` переопределяет политику по умолчанию.
 
@@ -214,7 +223,7 @@ services.AddDataProtection()
 
 ### <a name="specifying-custom-managed-algorithms"></a>Указание пользовательских управляемых алгоритмов
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 Чтобы указать пользовательские управляемые алгоритмы, создайте [ManagedAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.managedauthenticatedencryptorconfiguration) экземпляр, который указывает типы реализации:
 
@@ -234,7 +243,9 @@ serviceCollection.AddDataProtection()
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Чтобы указать пользовательские управляемые алгоритмы, создайте [ManagedAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.managedauthenticatedencryptionsettings) экземпляр, который указывает типы реализации:
 
@@ -254,7 +265,7 @@ serviceCollection.AddDataProtection()
     });
 ```
 
----
+::: moniker-end
 
 Обычно \*тип свойства должен указывать на конкретный, допускающий создание экземпляров (через открытый конструктор без параметров) реализации [SymmetricAlgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm) и [KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm), хотя Специальные случаи системы некоторые значения, такие как `typeof(Aes)` для удобства.
 
@@ -263,7 +274,7 @@ serviceCollection.AddDataProtection()
 
 ### <a name="specifying-custom-windows-cng-algorithms"></a>Указание пользовательские алгоритмы Windows CNG
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 Чтобы задать пользовательский алгоритм Windows CNG с помощью шифрования в режиме CBC с проверкой HMAC, создайте [CngCbcAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration) экземпляр, содержащий данные алгоритма:
 
@@ -285,7 +296,9 @@ services.AddDataProtection()
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Чтобы задать пользовательский алгоритм Windows CNG с помощью шифрования в режиме CBC с проверкой HMAC, создайте [CngCbcAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cngcbcauthenticatedencryptionsettings) экземпляр, содержащий данные алгоритма:
 
@@ -307,12 +320,12 @@ services.AddDataProtection()
     });
 ```
 
----
+::: moniker-end
 
 > [!NOTE]
 > Алгоритм симметричного блочного шифрования должен иметь длину ключа > = 128 бит, размер блока > = 64 бита, и он должен поддерживать шифрование CBC режим заполнения PKCS #7. Хэш-алгоритм, должен иметь размер хэш-кода из > 128 бит и должен поддерживать, открытого в BCRYPT\_ALG\_ОБРАБАТЫВАТЬ\_HMAC\_флаг ФЛАГ. \*Поставщика свойства можно задать значение null, чтобы использовать поставщика по умолчанию для указанного алгоритма. См. в разделе [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) Дополнительные сведения см.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 Чтобы задать пользовательский алгоритм Windows CNG с помощью счетчиков Galois режим шифрования с помощью проверки, создайте [CngGcmAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cnggcmauthenticatedencryptorconfiguration) экземпляр, содержащий данные алгоритма:
 
@@ -330,7 +343,9 @@ services.AddDataProtection()
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Чтобы задать пользовательский алгоритм Windows CNG с помощью счетчиков Galois режим шифрования с помощью проверки, создайте [CngGcmAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cnggcmauthenticatedencryptionsettings) экземпляр, содержащий данные алгоритма:
 
@@ -348,7 +363,7 @@ services.AddDataProtection()
     });
 ```
 
----
+::: moniker-end
 
 > [!NOTE]
 > Алгоритм симметричного блочного шифрования должен иметь длину ключа > = 128 бит, размер блока в точности 128 бит, и он должен поддерживать шифрование GCM. Можно задать [EncryptionAlgorithmProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration.encryptionalgorithmprovider) свойство значение null, чтобы использовать поставщика по умолчанию для указанного алгоритма. См. в разделе [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) Дополнительные сведения см.
@@ -364,7 +379,7 @@ services.AddDataProtection()
 * Папка, — это том Docker, который сохраняется вне пределов продолжительности контейнера, например общего тома или узла подключенного тома.
 * Внешнего поставщика, таких как [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) или [Redis](https://redis.io/).
 
-## <a name="see-also"></a>См. также
+## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * <xref:security/data-protection/configuration/non-di-scenarios>
 * <xref:security/data-protection/configuration/machine-wide-policy>

@@ -5,12 +5,12 @@ description: Сведения о начале работы с MVC ASP.NET Core �
 ms.author: riande
 ms.date: 8/23/2017
 uid: tutorials/first-mvc-app-mac/start-mvc
-ms.openlocfilehash: e94b9aa6b6c594ae407792387788410f776d4c1d
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 059ac1f7fa94d97adc958be3c0b936cdfa7f6d3e
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272297"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225477"
 ---
 # <a name="get-started-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>Начало работы с MVC ASP.NET Core и Visual Studio для Mac
 
@@ -36,7 +36,7 @@ ms.locfileid: "36272297"
 
 ![Новое решение macOS](../first-web-api-mac/_static/sln.png)
 
-Выберите **Приложение .NET Core > ASP.NET Core > Веб-приложение > Далее**.
+Выберите **Приложение .NET Core > ASP.NET Core > Веб-приложение ASP.NET Core (MVC) > Далее**.
 
 ![Диалоговое окно "Новый проект" в macOS](start-mvc/1.png)
 
