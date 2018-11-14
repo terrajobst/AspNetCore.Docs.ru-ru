@@ -185,6 +185,8 @@
 ## [Типы возвращаемых значений действий](xref:web-api/action-return-types)
 ## [Форматирование данных ответа](xref:web-api/advanced/formatting)
 ## [Пользовательские модули форматирования](xref:web-api/advanced/custom-formatters)
+## [Анализаторы](xref:web-api/advanced/analyzers)
+## [Соглашения](xref:web-api/advanced/conventions)
 
 # Приложения в режиме реального времени
 ## [Обзор набора средств Visual Studio для Unity](xref:signalr/introduction)
