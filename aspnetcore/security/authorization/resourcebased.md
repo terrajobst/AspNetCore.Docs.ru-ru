@@ -4,20 +4,20 @@ author: scottaddie
 description: Узнайте, как реализовать авторизацию на основе ресурсов в приложениях ASP.NET Core при атрибут Authorize будет недостаточно.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/07/2017
+ms.date: 11/15/2018
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 2cb3844a38f7482c27fb471343109d51a516ea20
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 6a163caa26b277fbee6b9d61f8f1d16a60c75b03
+ms.sourcegitcommit: d3392f688cfebc1f25616da7489664d69c6ee330
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206700"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51818373"
 ---
 # <a name="resource-based-authorization-in-aspnet-core"></a>Авторизация на основе ресурсов в ASP.NET Core
 
-Стратегии авторизации зависит от ресурса к которому выполняется доступ. Рассмотрим документ, который имеет свойство автора. Только автор может обновлять документа. Следовательно документа должны извлекаться из хранилища данных для оценки авторизации.
+Стратегии авторизации зависит от ресурса к которому выполняется доступ. Рассмотрим, имеющему свойство автора документа. Только автор может обновлять документа. Следовательно документа должны извлекаться из хранилища данных для оценки авторизации.
 
-Атрибут оценивается перед привязкой данных и перед выполнением обработчика страницы или действие, которое загружает документ. По этим причинам декларативной авторизации с помощью `[Authorize]` атрибут будет недостаточно. Вместо этого можно вызвать метод настраиваемой авторизации&mdash;стиль называется принудительной авторизации.
+Атрибут оценивается перед привязкой данных и перед выполнением обработчика страницы или действие, которое загружает документ. По этим причинам декларативной авторизации с помощью `[Authorize]` атрибут недостаточно. Вместо этого можно вызвать метод настраиваемой авторизации&mdash;стиль, известный как *принудительной авторизации*.
 
 [Просмотреть или скачать пример кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples) ([описание скачивания](xref:index#how-to-download-a-sample)).
 
@@ -31,7 +31,7 @@ ms.locfileid: "50206700"
 
 `IAuthorizationService` имеет два `AuthorizeAsync` перегрузок метода: один принимает ресурс и имя политики, а другой принимает ресурс и список требований для оценки.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 Task<AuthorizationResult> AuthorizeAsync(ClaimsPrincipal user,
@@ -42,7 +42,9 @@ Task<AuthorizationResult> AuthorizeAsync(ClaimsPrincipal user,
                           string policyName);
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 ```csharp
 Task<bool> AuthorizeAsync(ClaimsPrincipal user,
@@ -53,7 +55,7 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
                           string policyName);
 ```
 
----
+::: moniker-end
 
 <a name="security-authorization-resource-based-imperative"></a>
 
@@ -62,31 +64,39 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 > [!NOTE]
 > Следующий код в приведенных примерах предполагается, выполнена проверка подлинности и набор `User` свойство.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Pages/Document/Edit.cshtml.cs?name=snippet_DocumentEditHandler)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentEditAction)]
 
----
+::: moniker-end
 
 ## <a name="write-a-resource-based-handler"></a>Написание обработчика, на основе ресурсов
 
-Написание обработчика для авторизации на основе ресурсов не сильно отличается от [написание обработчика plain требования](xref:security/authorization/policies#security-authorization-policies-based-authorization-handler). Создание класса пользовательского требования и реализовать класс обработчика требование. Класс обработчика задает требование и тип ресурса. Например, обработчик использование `SameAuthorRequirement` требование и `Document` ресурсов выглядит следующим образом:
+Написание обработчика для авторизации на основе ресурсов не сильно отличается от [написание обработчика plain требования](xref:security/authorization/policies#security-authorization-policies-based-authorization-handler). Создание класса пользовательского требования и реализовать класс обработчика требование. Дополнительные сведения о создании класс требования, см. в разделе [требования](xref:security/authorization/policies#requirements).
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+Класс обработчика задает требование и тип ресурса. Например, обработчик использование `SameAuthorRequirement` и `Document` ресурсов следующим образом:
+
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
 
----
+::: moniker-end
 
-Зарегистрируйте требование и обработчик в `Startup.ConfigureServices` метод:
+Представим, что в приведенном выше примере `SameAuthorRequirement` является особым случаем более универсальной `SpecificAuthorRequirement` класса. `SpecificAuthorRequirement` Класс (не показано) содержит `Name` свойство, представляющее имя автора. `Name` Удалось задать свойство для текущего пользователя.
+
+Зарегистрируйте требование и обработчик в `Startup.ConfigureServices`:
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Startup.cs?name=snippet_ConfigureServicesSample&highlight=3-7,9)]
 
@@ -98,15 +108,17 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 
 Обработчик реализуется следующим образом, с помощью `OperationAuthorizationRequirement` требование и `Document` ресурсов:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
 
----
+::: moniker-end
 
 Предыдущий обработчик проверяет операцию, используя ресурс, удостоверение пользователя и требование `Name` свойство.
 
@@ -115,16 +127,18 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 > [!NOTE]
 > Следующий код в приведенных примерах предполагается, выполнена проверка подлинности и набор `User` свойство.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Pages/Document/View.cshtml.cs?name=snippet_DocumentViewHandler&highlight=10-11)]
 
 Если авторизация выполняется успешно, возвращается на страницу для просмотра документа. Если происходит сбой авторизации, но пользователь проходит проверку подлинности, возвращая `ForbidResult` информирует любое по промежуточного слоя проверки подлинности, который не удалось выполнить авторизацию. Объект `ChallengeResult` возвращается, если необходимо выполнить проверку подлинности. Для интерактивного обозревателя клиента может потребоваться перенаправить пользователя на страницу входа.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentViewAction&highlight=11-12)]
 
 Если авторизация выполняется успешно, возвращается представление для документа. Если авторизация заканчивается неудачей, возвращая `ChallengeResult` информирует любое по промежуточного слоя проверки подлинности, что не удалось выполнить авторизацию, и по промежуточного слоя может принимать ответные действия. Код состояния 401 или 403 может возвращаться соответствующий ответ. Для интерактивного обозревателя клиента это может означать перенаправления пользователя на страницу входа.
 
----
+::: moniker-end
