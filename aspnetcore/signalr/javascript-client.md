@@ -5,14 +5,14 @@ description: Общие сведения о клиенте ASP.NET Core SignalR 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 08/14/2018
+ms.date: 11/14/2018
 uid: signalr/javascript-client
-ms.openlocfilehash: 02844c35d1933d36576c25ff335a572fb65eff5c
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 7de7abd7176e160154a458a3b90f662ba8f47f8c
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50208022"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708391"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>Клиент ASP.NET Core SignalR JavaScript
 
@@ -98,6 +98,17 @@ SignalR определяют, какой метод клиента для выз
 Используйте [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging) метод [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) настроить уровень ведения журнала. Сообщения записываются в консоли браузера.
 
 [!code-javascript[Logging levels](javascript-client/sample/wwwroot/js/chat.js?range=9-12)]
+
+## <a name="reconnect-clients"></a>Повторное подключение клиентов
+
+Клиент JavaScript для SignalR не повторное соединение производится автоматически. Необходимо написать код, который позволит приложению повторно подключиться клиент вручную. Следующий код демонстрирует подход обычно повторного подключения:
+
+1. Функции (в этом случае `start` функции) создается при запуске подключения.
+1. Вызовите `start` функции в соединении `onclose` обработчик событий.
+
+[!code-javascript[Reconnect the JavaScript client](javascript-client/sample/wwwroot/js/chat.js?range=30-42)]
+
+Реальную реализацию будут использовать стратегию экспоненциальной отсрочки или повторите указанное число раз, прежде чем прекратить. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

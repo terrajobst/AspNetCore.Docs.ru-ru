@@ -4,14 +4,14 @@ author: tdykstra
 description: Различия между SignalR и ASP.NET Core SignalR
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
-ms.date: 09/10/2018
+ms.date: 11/14/2018
 uid: signalr/version-differences
-ms.openlocfilehash: 8f07647959b6ef815eed599703bdb1bfb446572f
-ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
+ms.openlocfilehash: c9302f1c9e7cd4e62eaeaef871feb54ef26aa3ca
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51505756"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708417"
 ---
 # <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a>Различия между ASP.NET SignalR и ASP.NET Core SignalR
 
@@ -75,6 +75,10 @@ ASP.NET Core SignalR теперь поддерживает [потоковой �
 ### <a name="state"></a>Регион
 
 Возможность передавать произвольное состояние между клиентами и концентратор (часто называемые HubState) был удален, а также поддержка сообщения о ходе выполнения. На данный момент нет не существовал центра учетных записей-посредников.
+
+### <a name="persistentconnection-removal"></a>Удаление PersistentConnection
+
+В ASP.NET Core SignalR [PersistentConnection](https://docs.microsoft.com/previous-versions/aspnet/jj919047(v%3dvs.118)) класс был удален. 
 
 ### <a name="globalhost"></a>GlobalHost
 

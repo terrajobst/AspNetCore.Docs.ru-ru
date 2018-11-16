@@ -1,94 +1,95 @@
 ---
-title: Программа установки внешней учетной записи Google в ASP.NET Core
+title: Настройка внешней учетной записи Google в ASP.NET Core
 author: rick-anderson
-description: В этом учебнике показано интеграции проверки подлинности пользователя учетной записи Google в существующее приложение ASP.NET Core.
+description: В этом учебнике показано интеграцию Google учетной записи пользователя и проверки подлинности в существующее приложение ASP.NET Core.
 ms.author: riande
-ms.date: 08/02/2017
+ms.custom: mvc
+ms.date: 11/11/2018
 uid: security/authentication/google-logins
-ms.openlocfilehash: c5b6c992e134a2c4f0314d9d6e0465e6228c54ee
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: dfda83e1d7cf3c5ff8e31de20c15d468de5d15c0
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274915"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708456"
 ---
-# <a name="google-external-login-setup-in-aspnet-core"></a>Программа установки внешней учетной записи Google в ASP.NET Core
+# <a name="google-external-login-setup-in-aspnet-core"></a>Настройка внешней учетной записи Google в ASP.NET Core
 
 Авторы: [Валерий Новицкий](https://github.com/01binary) (Valeriy Novytskyy) и [Рик Андерсон](https://twitter.com/RickAndMSFT) (Rick Anderson)
 
-Этого учебника показано, как предоставить пользователям возможность войти в их Google + учетную запись с помощью ASP.NET 2.0 основной пример проекта создан на [предыдущую страницу](xref:security/authentication/social/index). Мы начать со следующих [официальный действия](https://developers.google.com/identity/sign-in/web/devconsole-project) для создания нового приложения в консоли Google API.
+Этом руководстве показано, как разрешить пользователям вход с помощью своей учетной записи Google + используя образец проекта ASP.NET Core 2.0, созданные на [предыдущую страницу](xref:security/authentication/social/index). Мы начнем, следуя [официальный действия](https://developers.google.com/identity/sign-in/web/devconsole-project) для создания нового приложения в консоли Google API.
 
 ## <a name="create-the-app-in-google-api-console"></a>Создание приложения в консоли Google API
 
-* Перейдите к [ https://console.developers.google.com/projectselector/apis/library ](https://console.developers.google.com/projectselector/apis/library) и выполните вход. Если у вас еще нет учетной записи Google, используйте **Дополнительные параметры** > **[создать учетную запись](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api)**  ссылку, чтобы создать один:
+* Перейдите к [ https://console.developers.google.com/projectselector/apis/library ](https://console.developers.google.com/projectselector/apis/library) и войдите в систему. Если у вас нет учетной записи Google, используйте **Дополнительные параметры** > **[создать учетную запись](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api)**  ссылку, чтобы создать его:
 
 ![Консоли Google API](index/_static/GoogleConsoleLogin.png)
 
 * Вы будете перенаправлены на **библиотека API диспетчера** страницы:
 
-![Библиотека API диспетчера страницы](index/_static/GoogleConsoleSwitchboard.png)
+![Страница API диспетчера библиотеки](index/_static/GoogleConsoleSwitchboard.png)
 
-* Коснитесь **создать** и введите ваш **имя проекта**:
+* Коснитесь **создать** и введите ваш **имя_проекта**:
 
 ![Диалоговое окно создания нового проекта](index/_static/GoogleConsoleNewProj.png)
 
-* После принятия диалоговое окно, вы будете перенаправлены на страницу библиотеки, в которой можно выбрать компоненты для нового приложения. Найти **API Google +** в списке и щелкните ссылку на нее, чтобы добавить компонент API:
+* После принятия диалогового окна, вы будете перенаправлены на страницу библиотеки, в которой можно выбрать функции для нового приложения. Найти **Google + API** в списке и щелкните ссылку на нее, чтобы добавить компонент API:
 
-![Библиотека API диспетчера страницы](index/_static/GoogleConsoleChooseApi.png)
+![Страница API диспетчера библиотеки](index/_static/GoogleConsoleChooseApi.png)
 
-* Откроется страница для вновь добавленного API. Коснитесь **включить** Добавление приложения Google + знак в функции:
+* Откроется страница для вновь добавленного API. Коснитесь **включить** Добавление Google + знак в компонент приложения:
 
 ![Страница диспетчера API Google + API](index/_static/GoogleConsoleEnableApi.png)
 
-* После включения API, коснитесь **создать учетные данные** Настройка секреты:
+* После включения API, коснитесь **Создание учетных данных** Настройка секреты:
 
 ![Страница диспетчера API Google + API](index/_static/GoogleConsoleGoCredentials.png)
 
 * Выберите:
-   * **Google + API**
-   * **Веб-сервера (например node.js, Tomcat)**, и
-   * **Данные пользователя**:
+  * **Google + API**
+  * **Веб-сервера (например node.js, Tomcat)**, и
+  * **Данные пользователя**:
 
-![Страница API диспетчера учетных данных: Узнайте, что тип учетных данных вы должны панели](index/_static/GoogleConsoleChooseCred.png)
+![Страница API диспетчера учетных данных: Узнайте также довольно учетные данные, вы должны панели](index/_static/GoogleConsoleChooseCred.png)
 
-* Коснитесь **какие учетные данные нужны?** которой осуществляется переход ко второму шагу Конфигурация приложения **создать идентификатор клиента OAuth 2.0**:
+* Коснитесь **какие учетные данные нужны?** , чтобы перейти на втором шаге Конфигурация приложения **создать идентификатор клиента OAuth 2.0**:
 
-![Страница API диспетчера учетных данных: создать идентификатор клиента OAuth 2.0](index/_static/GoogleConsoleCreateClient.png)
+![Страница API диспетчера учетных данных: создайте идентификатор клиента OAuth 2.0](index/_static/GoogleConsoleCreateClient.png)
 
-* Поскольку мы создаем с какой-либо функции (вход), мы можете ввести тот же проект Google + **имя** для идентификатор клиента OAuth 2.0, что мы использовали для проекта.
+* Поскольку мы создаем проект Google + со всего одной функцией (вход), мы можете ввести тот же **имя** для идентификатора клиента OAuth 2.0, который мы использовали для проекта.
 
-* Введите URI разработки с `/signin-google` добавляется в **авторизованные URI перенаправления** поля (например: `https://localhost:44320/signin-google`). Проверка подлинности Google далее в этом учебнике автоматически будет обрабатывать запросы на `/signin-google` маршрута для реализации потока OAuth.
+* Введите URI разработки с `/signin-google` добавляется в **авторизованные URI перенаправления** поле (например: `https://localhost:44320/signin-google`). Проверка подлинности Google настроена далее в этом руководстве автоматически будет обрабатывать запросы на `/signin-google` маршрута, чтобы реализовать поток OAuth.
 
 > [!NOTE]
-> Сегмент URI `/signin-google` задан в качестве обратного вызова по умолчанию поставщика проверки подлинности Google. URI обратного вызова по умолчанию можно изменить во время настройки по промежуточного слоя проверки подлинности Google через наследуемого [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) свойство [GoogleOptions](/dotnet/api/microsoft.aspnetcore.authentication.google.googleoptions) класса.
+> Сегмент URI `/signin-google` задан в качестве обратного вызова по умолчанию поставщик проверки подлинности Google. URI обратного вызова по умолчанию можно изменить при настройке по промежуточного слоя проверки подлинности Google с помощью наследуемого [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) свойство [GoogleOptions](/dotnet/api/microsoft.aspnetcore.authentication.google.googleoptions) класса.
 
-* Нажмите клавишу TAB, чтобы добавить **авторизованные URI перенаправления** входа.
+* Нажмите клавишу TAB, чтобы добавить **авторизованные URI перенаправления** запись.
 
-* Коснитесь **создать идентификатор клиента**, которой осуществляется переход к третьему этапу **настроить экран согласия OAuth 2.0**:
+* Коснитесь **создать идентификатор клиента**, которой осуществляется переход к третьему этапу — **настроить экран согласия OAuth 2.0**:
 
 ![Страница API диспетчера учетных данных: настроить экран согласия OAuth 2.0](index/_static/GoogleConsoleAddCred.png)
 
-* Введите ваш общедоступным **адрес электронной почты** и **название продукта** показано для своего приложения Google + пользователю войти в систему по запросу. Дополнительные параметры доступны в разделе **Дополнительные параметры настройки**.
+* Введите ваш общедоступны **адрес электронной почты** и **название продукта** показано для вашего приложения, когда Google + предлагает пользователю войти в систему. Доступны дополнительные параметры в разделе **возможностей настройки**.
 
-* Коснитесь **Продолжить** для перейдите к последнему шагу, **загрузить учетные данные**:
+* Коснитесь **Продолжить** для перейдите к последнему шагу, **скачать учетные данные**:
 
-![Страница API диспетчера учетных данных: загрузить учетные данные](index/_static/GoogleConsoleFinish.png)
+![Страница API диспетчера учетных данных: скачивание учетных данных](index/_static/GoogleConsoleFinish.png)
 
-* Коснитесь **загрузки** для сохранения файла JSON с секретами приложения и **сделать** для завершения создания нового приложения.
+* Коснитесь **загрузить** сохранить файл JSON с помощью секретов приложения и **сделать** чтобы завершить создание нового приложения.
 
-* При развертывании узла необходимо будет повторно **консоли Google** и зарегистрировать новый общедоступный URL-адрес.
+* При развертывании на сайте необходимо будет пересмотреть **консоли Google** и зарегистрировать новый общедоступный URL-адрес.
 
-## <a name="store-google-clientid-and-clientsecret"></a>Магазин Google ClientID и ClientSecret
+## <a name="store-google-clientid-and-clientsecret"></a>Store Google ClientID и ClientSecret
 
-Связать конфиденциальные параметры, например Google `Client ID` и `Client Secret` в конфигурации приложения с помощью [секрет диспетчер](xref:security/app-secrets). В целях этого учебника назовите токены `Authentication:Google:ClientId` и `Authentication:Google:ClientSecret`.
+Связать конфиденциальные параметры, такие как Google `Client ID` и `Client Secret` для конфигурации приложения с помощью [Secret Manager](xref:security/app-secrets). В целях этого учебника назовите токены `Authentication:Google:ClientId` и `Authentication:Google:ClientSecret`.
 
-Значения для этих маркеров можно найти в JSON-файл, загруженный в предыдущем шаге, в `web.client_id` и `web.client_secret`.
+Значения для этих маркеров можно найти в JSON-файл, Скачанный на предыдущем шаге, в `web.client_id` и `web.client_secret`.
 
 ## <a name="configure-google-authentication"></a>Настройка проверки подлинности Google
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
-Добавление службы Google в `ConfigureServices` метод в *файла Startup.cs* файла:
+Добавить службу Google в `ConfigureServices` метод в *Startup.cs* файла:
 
 ```csharp
 services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -104,18 +105,20 @@ services.AddAuthentication().AddGoogle(googleOptions =>
 
 [!INCLUDE [default settings configuration](includes/default-settings.md)]
 
-[!INCLUDE[](~/includes/chain-auth-providers.md)]
+[!INCLUDE[](includes/chain-auth-providers.md)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
 
-Шаблон проекта, используемые в этом учебнике гарантирует, что [Microsoft.AspNetCore.Authentication.Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google) пакет установлен.
+::: moniker range="< aspnetcore-2.0"
 
-* Чтобы установить этот пакет с 2017 г. для Visual Studio, щелкните правой кнопкой мыши проект и выберите пункт **управление пакетами NuGet**.
-* Чтобы установить с .NET Core CLI, выполните следующую команду в каталоге проекта:
+Шаблон проекта, используемый в этом руководстве гарантирует, что [Microsoft.AspNetCore.Authentication.Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google) установки пакета.
+
+* Установить этот пакет с помощью Visual Studio 2017, щелкните правой кнопкой мыши проект и выберите **управление пакетами NuGet**.
+* Чтобы установить с помощью интерфейса командной строки .NET Core, выполните следующую команду в каталоге проекта:
 
 `dotnet add package Microsoft.AspNetCore.Authentication.Google`
 
-Добавить по промежуточного слоя Google в `Configure` метод в *файла Startup.cs* файла:
+Добавьте по промежуточного слоя Google в `Configure` метод в *Startup.cs* файла:
 
 ```csharp
 app.UseGoogleAuthentication(new GoogleOptions()
@@ -125,36 +128,38 @@ app.UseGoogleAuthentication(new GoogleOptions()
 });
 ```
 
----
+::: moniker-end
 
-В разделе [GoogleOptions](/dotnet/api/microsoft.aspnetcore.builder.googleoptions) Справочник по API для дополнительных сведений о параметрах конфигурации, поддерживаемых проверкой подлинности Google. Это можно использовать для запроса различные сведения о пользователе.
+См. в разделе [GoogleOptions](/dotnet/api/microsoft.aspnetcore.builder.googleoptions) Справочник по API, Дополнительные сведения о параметрах конфигурации, поддерживается проверка подлинности Google. Это может использоваться для запроса различные сведения о пользователе.
 
-## <a name="sign-in-with-google"></a>Вход Google
+## <a name="sign-in-with-google"></a>Войдите с помощью Google
 
-Запустите приложение и нажмите кнопку **входа**. Появляется возможность войти с помощью Google:
+Запустите приложение и нажмите кнопку **вход**. Появится возможность войти с помощью Google:
 
 ![Веб-приложение работает в Microsoft Edge: пользователь не прошел проверку подлинности](index/_static/DoneGoogle.png)
 
-При нажатии кнопки на Google, вы будете перенаправлены на Google для проверки подлинности:
+При выборе Google, вы будете перенаправлены на Google для проверки подлинности:
 
 ![Диалоговое окно проверки подлинности Google](index/_static/GoogleLogin.png)
 
-После ввода учетных данных Google, затем вы будете перенаправлены к веб-сайта, где вы можете задать ваш адрес электронной почты.
+После ввода учетных данных Google, затем вы будете перенаправлены обратно на веб-узел, где вы можете задать свой адрес электронной почты.
 
-Будет выполнен вход с помощью учетных данных Google:
+Теперь вы вошли с использованием учетных данных Google:
 
 ![Веб-приложение работает в Microsoft Edge: пользователь прошел проверку подлинности](index/_static/Done.png)
 
+[!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
+
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-* При получении `403 (Forbidden)` страницы ошибки из вашего собственного приложения, когда работает в режиме разработки (или приостановки выполнения в отладчике с той же ошибки), убедитесь, что **API Google +** была включена в **библиотека API диспетчера** , выполнив следующие действия [ранее на этой странице](#create-the-app-in-google-api-console). Если вход не работает, а не получают все ошибки, переключитесь в режим разработки для упрощения процесса отладки проблему.
-* **ASP.NET Core 2.x только:** Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: необходимо указать параметр «SignInScheme»*. Шаблон проекта, используемые в этом учебнике гарантирует, что происходит.
-* Если не был создан путем применения первоначальной миграции базы данных сайта, вы получите *не удалось выполнить операцию базы данных при обработке запроса* ошибки. Коснитесь **применить миграции** для создания базы данных и обновить, чтобы продолжить выполнение после ошибки.
+* Если появится `403 (Forbidden)` страницу ошибки из собственного приложения, когда работает в режиме разработки (или приостановки выполнения в отладчике с той же ошибкой), убедитесь, что **Google + API** была включена в **библиотека API диспетчера** , выполнив действия, описанные [более ранних версий на этой странице](#create-the-app-in-google-api-console). Если вход не работает, а не получают все ошибки, переключитесь в режим разработки для упрощения процесса отладки проблемы.
+* **ASP.NET Core 2.x только:** Если удостоверение не настроена, вызвав `services.AddIdentity` в `ConfigureServices`, пытающиеся выполнить проверку подлинности приведет к *ArgumentException: необходимо указать параметр «SignInScheme»*. Шаблон проекта, используемый в этом руководстве гарантирует, что это будет сделано.
+* Если база данных сайта не был создан путем применения первоначальной миграции, вы получите *сбой операции из базы данных при обработке запроса* ошибки. Коснитесь **применить миграции** для создания базы данных и обновить, чтобы продолжить выполнение после ошибки.
 
 ## <a name="next-steps"></a>Следующие шаги
 
-* В этой статье показано, как можно выполнить проверку подлинности с помощью Google. Можно выполнить подобный подход для проверки подлинности для других поставщиков на [предыдущую страницу](xref:security/authentication/social/index).
+* В этой статье объясняется, как можно выполнить проверку подлинности с помощью Google. Можно выполнить аналогичный подход для проверки подлинности с помощью других поставщиков, перечисленных на [предыдущую страницу](xref:security/authentication/social/index).
 
-* После публикации веб-сайте Azure веб-приложения, необходимо переустановить `ClientSecret` в консоли Google API.
+* После публикации веб-сайт веб-приложение Azure, необходимо сбросить `ClientSecret` в консоли Google API.
 
-* Задать `Authentication:Google:ClientId` и `Authentication:Google:ClientSecret` как параметры приложения на портале Azure. Система конфигурации настраивается для чтения ключи из переменных среды.
+* Задайте `Authentication:Google:ClientId` и `Authentication:Google:ClientSecret` как параметры приложения на портале Azure. Система конфигурации предназначена для чтения разделов из переменных среды.

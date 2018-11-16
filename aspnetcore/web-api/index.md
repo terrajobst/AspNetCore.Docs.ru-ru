@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/06/2018
 uid: web-api/index
-ms.openlocfilehash: 010c437afc494fa4426f6922421afac46bbf6b39
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: 7541c4c308deaecda0bda9a9c77d9372b65a5100
+ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225438"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635307"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>Сборка веб-API с использованием ASP.NET Core
 
@@ -41,7 +41,7 @@ ms.locfileid: "51225438"
 
 ::: moniker range=">= aspnetcore-2.1"
 
-## <a name="annotation-with-apicontrollerattribute"></a>Аннотирование атрибутом ApiControllerAttribute
+## <a name="annotation-with-apicontroller-attribute"></a>Заметка с атрибутом ApiController
 
 В ASP.NET Core 2.1 появился атрибут [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute), обозначающий класс контроллера веб-API. Пример:
 

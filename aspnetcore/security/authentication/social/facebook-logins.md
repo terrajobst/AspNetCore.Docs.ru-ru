@@ -3,14 +3,15 @@ title: Настройка внешней учетной записи Facebook в
 author: rick-anderson
 description: В этом учебнике показано интеграцию Facebook учетной записи пользователя и проверки подлинности в существующее приложение ASP.NET Core.
 ms.author: riande
-ms.date: 08/01/2017
+ms.custom: mvc
+ms.date: 11/11/2018
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 3ba6fe7785afa268e54e6032f1963c1867f6bb27
-ms.sourcegitcommit: 74c09caec8992635825b45b7f065f871d33c077a
+ms.openlocfilehash: e8ae16538b5d6844af7d983071fad629ebbe6217
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42634813"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708508"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>Настройка внешней учетной записи Facebook в ASP.NET Core
 
@@ -28,19 +29,19 @@ ms.locfileid: "42634813"
 
 * Заполните форму и коснитесь **создать идентификатор приложения** кнопки.
 
-   ![Создание формы новый идентификатор приложения](index/_static/FBNewAppId.png)
+  ![Создание формы новый идентификатор приложения](index/_static/FBNewAppId.png)
 
 * На **выбрать продукт** щелкните **Настройка** на **имени для входа Facebook** карты.
 
-   ![Страница установки продукта](index/_static/FBProductSetup.png)
+  ![Страница установки продукта](index/_static/FBProductSetup.png)
 
 * **Быстрого запуска** будет запущен мастер с **выберите платформу** первая страница. Сейчас пропустить мастера, нажав кнопку **параметры** ссылку в меню слева:
 
-   ![Пропустить быстрый запуск](index/_static/FBSkipQuickStart.png)
+  ![Пропустить быстрый запуск](index/_static/FBSkipQuickStart.png)
 
 * Появится **клиентские настройки OAuth** страницы:
 
-![Параметры OAuth клиента](index/_static/FBOAuthSetup.png)
+  ![Параметры OAuth клиента](index/_static/FBOAuthSetup.png)
 
 * Введите URI разработки с */signin-facebook* добавляется в **допустимый URI перенаправления OAuth** поле (например: `https://localhost:44320/signin-facebook`). Проверка подлинности Facebook, Настройка описывается далее в этом руководстве автоматически будет обрабатывать запросы на */signin-facebook* маршрут, чтобы реализовать поток OAuth.
 
@@ -49,10 +50,9 @@ ms.locfileid: "42634813"
 
 * Нажмите кнопку **сохранить изменения**.
 
-* Нажмите кнопку **параметры > Basic** ссылку в левой области навигации. 
+* Нажмите кнопку **параметры** > **основные** ссылку в левой области навигации.
 
-    На этой странице, запомните или запишите вашей `App ID` и `App Secret`. Оба сертификата в приложении ASP.NET Core будет добавлена в следующем разделе:
-
+  На этой странице, запомните или запишите вашей `App ID` и `App Secret`. Оба сертификата в приложении ASP.NET Core будет добавлена в следующем разделе:
 
 * При развертывании на сайте необходимо пересмотреть **имени для входа Facebook** установки: страница и зарегистрировать новый открытый универсальный код Ресурса.
 
@@ -69,7 +69,7 @@ dotnet user-secrets set Authentication:Facebook:AppSecret <app-secret>
 
 ## <a name="configure-facebook-authentication"></a>Настройка проверки подлинности Facebook
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 Добавьте службу Facebook в `ConfigureServices` метод в *Startup.cs* файла:
 
@@ -87,9 +87,11 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 
 [!INCLUDE [default settings configuration](includes/default-settings.md)]
 
-[!INCLUDE[](~/includes/chain-auth-providers.md)]
+[!INCLUDE[](includes/chain-auth-providers.md)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Установка [Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) пакета.
 
@@ -108,7 +110,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 });
 ```
 
----
+::: moniker-end
 
 См. в разделе [FacebookOptions](/dotnet/api/microsoft.aspnetcore.builder.facebookoptions) Справочник по API, Дополнительные сведения о параметрах конфигурации, поддерживаемых проверкой подлинности Facebook. Параметры конфигурации может использоваться для:
 
@@ -134,6 +136,8 @@ app.UseFacebookAuthentication(new FacebookOptions()
 Теперь вы вошли с использованием учетных данных Facebook:
 
 ![Веб-приложения: пользователь прошел проверку подлинности](index/_static/Done.png)
+
+[!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 

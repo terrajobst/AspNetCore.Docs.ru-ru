@@ -332,7 +332,7 @@
 #### [Проверка подлинности Twitter](xref:security/authentication/twitter-logins)
 #### [Проверка подлинности Google](xref:security/authentication/google-logins)
 #### [Проверка подлинности Майкрософт](xref:security/authentication/microsoft-logins)
-#### [Другие поставщики проверки подлинности](xref:security/authentication/otherlogins)
+#### [Внешние поставщики проверки подлинности](xref:security/authentication/otherlogins)
 #### [Дополнительные утверждения](xref:security/authentication/social/additional-claims)
 ### [Проверка подлинности с помощью WS-Federation](xref:security/authentication/ws-federation)
 ### [Подтверждение учетной записи и восстановление пароля](xref:security/authentication/accconfirm)

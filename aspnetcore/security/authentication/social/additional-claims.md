@@ -5,14 +5,14 @@ description: Узнайте, как установить дополнитель�
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/28/2018
+ms.date: 11/11/2018
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: dc8b3e32141466a12e4eff0c86d2d4bed689afe5
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 9a24ac138950ef2bedac48f506655d06520137cf
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206361"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708365"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>Сохранять дополнительные утверждения и маркеры от внешних поставщиков в ASP.NET Core
 
@@ -22,13 +22,11 @@ ms.locfileid: "50206361"
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/social/additional-claims/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisite"></a>Предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 Решите, какие поставщики внешней проверки подлинности для поддержки в приложении. Для каждого поставщика Регистрация приложения и получить идентификатор клиента и секрет клиента. Дополнительные сведения см. в разделе <xref:security/authentication/social/index>. [Пример приложения](#sample-app-instructions) использует [поставщик проверки подлинности Google](xref:security/authentication/google-logins).
 
-## <a name="authentication-provider-configuration"></a>Конфигурация поставщика проверки подлинности
-
-### <a name="set-the-client-id-and-client-secret"></a>Задание идентификатора и секрета клиента
+## <a name="set-the-client-id-and-client-secret"></a>Задание идентификатора и секрета клиента
 
 Поставщик проверки подлинности OAuth устанавливает отношение доверия с помощью приложения с помощью идентификатора клиента и секрет клиента. Идентификатор клиента и секрет клиента, создаваемые для приложения поставщика внешней проверки подлинности при регистрации приложения с поставщиком. Каждый внешний поставщик, приложение использует должны быть настроены независимо друг от друга идентификатор клиента и секрет клиента поставщика. Дополнительные сведения см. в разделах поставщика внешней проверки подлинности, которые применяются к вашему сценарию:
 
@@ -43,7 +41,7 @@ ms.locfileid: "50206361"
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=4,6)]
 
-### <a name="establish-the-authentication-scope"></a>Установить область проверки подлинности
+## <a name="establish-the-authentication-scope"></a>Установить область проверки подлинности
 
 Укажите список разрешений для получения от поставщика, путем указания <xref:Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Scope*>. В следующей таблице отображаются области проверки подлинности для распространенных внешних поставщиков.
 
@@ -58,7 +56,7 @@ ms.locfileid: "50206361"
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=7)]
 
-### <a name="map-user-data-keys-and-create-claims"></a>Сопоставить ключи данных пользователя и создать утверждения
+## <a name="map-user-data-keys-and-create-claims"></a>Сопоставить ключи данных пользователя и создать утверждения
 
 В параметрах поставщика, укажите <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.MapJsonKey*> для каждого ключа в внешнего поставщика JSON пользовательские данные для удостоверения приложения для чтения при входе. Дополнительные сведения о типах утверждений, см. в разделе <xref:System.Security.Claims.ClaimTypes>.
 
@@ -72,7 +70,7 @@ ms.locfileid: "50206361"
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=30-31)]
 
-### <a name="save-the-access-token"></a>Сохранить маркер доступа
+## <a name="save-the-access-token"></a>Сохранить маркер доступа
 
 <xref:Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.SaveTokens*> Определяет, следует ли хранить маркеров доступа и обновления в <xref:Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties> после успешной авторизации. `SaveTokens` имеет значение `false` по умолчанию, чтобы уменьшить размер файла cookie окончательной проверки подлинности.
 
@@ -93,7 +91,7 @@ ms.locfileid: "50206361"
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnGetCallbackAsync&highlight=31-32)]
 
-### <a name="how-to-add-additional-custom-tokens"></a>Как добавить дополнительные пользовательские маркеры
+## <a name="how-to-add-additional-custom-tokens"></a>Как добавить дополнительные пользовательские маркеры
 
 Чтобы продемонстрировать, как добавить пользовательский маркер, который хранится как часть `SaveTokens`, пример приложения добавляет <xref:Microsoft.AspNetCore.Authentication.AuthenticationToken> с текущим <xref:System.DateTime> для [AuthenticationToken.Name](xref:Microsoft.AspNetCore.Authentication.AuthenticationToken.Name*) из `TicketCreated`:
 
@@ -143,3 +141,5 @@ Authentication Properties
 .expires
     Mon, 10 Sep 2018 18:08:05 GMT
 ```
+
+[!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
