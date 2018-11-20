@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/30/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 9943c9dd2d6dd67a79186ee880b181a5915d06be
-ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
+ms.openlocfilehash: cac5ccdea7838d26b7468f9bf1ab8d317b444b46
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51505717"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708521"
 ---
 # <a name="net-generic-host"></a>Универсальный узел .NET
 
@@ -75,7 +75,7 @@ ms.locfileid: "51505717"
 **Тип**: *string*  
 **По умолчанию**: имя сборки, содержащей точку входа приложения  
 **Задается с помощью**: `HostBuilderContext.HostingEnvironment.ApplicationName`  
-**Переменная среды**: `<PREFIX_>APPLICATIONNAME` (`<PREFIX_>` [необязательно и определяется пользователем](#configuration-builder))
+**Переменная среды**: `<PREFIX_>APPLICATIONNAME` (`<PREFIX_>` [необязательно и определяется пользователем](#configurehostconfiguration))
 
 ### <a name="content-root"></a>Корневой каталог содержимого
 
@@ -85,7 +85,7 @@ ms.locfileid: "51505717"
 **Тип**: *string*  
 **Значение по умолчанию**: папка, в которой находится сборка приложения.  
 **Задается с помощью**: `UseContentRoot`  
-**Переменная среды**: `<PREFIX_>CONTENTROOT` (`<PREFIX_>` [необязательно и определяется пользователем](#configuration-builder))
+**Переменная среды**: `<PREFIX_>CONTENTROOT` (`<PREFIX_>` [необязательно и определяется пользователем](#configurehostconfiguration))
 
 Если путь не существует, узел не запускается.
 
@@ -99,7 +99,7 @@ ms.locfileid: "51505717"
 **Тип**: *string*  
 **Значение по умолчанию**: Production  
 **Задается с помощью**: `UseEnvironment`  
-**Переменная среды**: `<PREFIX_>ENVIRONMENT` (`<PREFIX_>` [необязательно и определяется пользователем](#configuration-builder))
+**Переменная среды**: `<PREFIX_>ENVIRONMENT` (`<PREFIX_>` [необязательно и определяется пользователем](#configurehostconfiguration))
 
 В качестве среды можно указать любое значение. В платформе определены значения `Development`, `Staging` и `Production`. Регистр символов в значениях не учитывается.
 
