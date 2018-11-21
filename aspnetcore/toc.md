@@ -34,7 +34,7 @@
 ## [Запуск приложений](xref:fundamentals/startup)
 ## [Введение зависимостей (службы)](xref:fundamentals/dependency-injection)
 ## [Routing](xref:fundamentals/routing)
-## [Несколько сред](xref:fundamentals/environments)
+## [Среды (разработки, промежуточные, рабочие)](xref:fundamentals/environments)
 ## [Конфигурация](xref:fundamentals/configuration/index)
 ## [Параметры](xref:fundamentals/configuration/options)
 ## [Ведение журнала](xref:fundamentals/logging/index)
@@ -432,6 +432,7 @@
 ## [Сжатие откликов](xref:performance/response-compression)
 
 # Миграция
+## [С 2.1 до 2.2](xref:migration/21-to-22)
 ## [С 2.0 до 2.1](xref:migration/20_21)
 ## С 1.x до 2.0
 ### [Обзор набора средств Visual Studio для Unity](xref:migration/1x-to-2x/index)
