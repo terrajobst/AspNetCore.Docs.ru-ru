@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/01/2018
 uid: fundamentals/file-providers
-ms.openlocfilehash: 3274615a0d6b6f928301ce97d18f5d9768963a30
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 5d0d46ba82cd84e48e5a9b23d6d330d8888beb41
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207320"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570104"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Поставщики файлов в ASP.NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "50207320"
 ASP.NET Core абстрагирует доступ к файловой системе с помощью поставщиков файлов. В рамках платформы ASP.NET Core используются поставщики файлов.
 
 * [IHostingEnvironment](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment) предоставляет корневой каталог содержимого приложения и корневой каталог веб-сайта в виде типов `IFileProvider`.
-* [Static Files Middleware](xref:fundamentals/static-files) использует поставщики файлов для поиска статических файлов.
+* [ПО промежуточного слоя для статических файлов](xref:fundamentals/static-files) использует поставщики файлов для поиска статических файлов.
 * [Razor](xref:mvc/views/razor) использует поставщики файлов для поиска страниц и представлений.
 * Инструменты .NET Core используют поставщики файлов и стандартные маски, чтобы указать файлы для публикации.
 

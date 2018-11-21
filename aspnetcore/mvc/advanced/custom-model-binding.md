@@ -3,14 +3,14 @@ title: Пользовательская привязка модели в ASP.NET
 author: ardalis
 description: Узнайте, как привязка модели позволяет действиям контроллера работать непосредственно с типами модели в ASP.NET Core.
 ms.author: riande
-ms.date: 04/10/2017
+ms.date: 11/13/2018
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: dc901aea3c20e7f2e955f39d923216de70ef015b
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 1da42829270e8ff4a626a45aec4d4e825062bd4f
+ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090411"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635300"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Пользовательская привязка модели в ASP.NET Core
 
@@ -87,11 +87,14 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Data/Author.cs?highlight=10)]
 
-В приведенном выше коде атрибут `ModelBinder` указывает тип `IModelBinder`, который следует использовать для привязки параметров действия `Author`. 
+В приведенном выше коде атрибут `ModelBinder` указывает тип `IModelBinder`, который следует использовать для привязки параметров действия `Author`.
 
-`AuthorEntityBinder` используется для привязки параметра `Author` получения сущности из источника данных с помощью Entity Framework Core и `authorId`:
+Следующий класс `AuthorEntityBinder` привязывает параметр `Author` путем получения сущности из источника данных с помощью Entity Framework Core и `authorId`:
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinder.cs?name=demo)]
+
+> [!NOTE]
+> Предыдущий класс `AuthorEntityBinder` предназначен для демонстрации пользовательского связывателя модели. Класс не предназначен для демонстрации рекомендаций для использования сценария просмотра. Чтобы выполнить просмотр, привяжите `authorId` и отправьте запрос к базе данных в методе действия. Этот подход отделяет ошибки привязки модели от вариантов `NotFound`.
 
 В следующем примере кода демонстрируется использование `AuthorEntityBinder` в методе действия.
 
@@ -130,6 +133,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 ## <a name="recommendations-and-best-practices"></a>Рекомендации и советы
 
 Ниже приведены рекомендации относительно настраиваемых связывателей моделей.
+
 - Связыватели моделей не следует использовать для установки кодов состояния или возвращаемых результатов (например, "404 — не найдено"). При сбое привязки модели обрабатывать ошибку должен сам [фильтр действий](xref:mvc/controllers/filters) или логика в самом методе действия.
 - Связыватели наиболее полезны в сценариях исключения повторяющихся частей кода и решения взаимосвязанных проблем с методами действий.
 - Как правило, связыватели не следует использовать для преобразования строки в пользовательский тип. Лучшим вариантом обычно является [`TypeConverter`](/dotnet/api/system.componentmodel.typeconverter).

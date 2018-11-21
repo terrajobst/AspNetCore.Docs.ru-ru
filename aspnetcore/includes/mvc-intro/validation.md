@@ -60,7 +60,7 @@
 
 На следующем рисунке показано, как отключить JavaScript в браузере FireFox.
 
-![Firefox: в разделе "Настройки" на вкладке "Содержимое" снимите флажок "Включить Javascript".](~/tutorials/first-mvc-app/validation/_static/ff.png)
+![Firefox: на вкладке "Содержимое" в разделе "Настройки" снимите флажок "Включить JavaScript".](~/tutorials/first-mvc-app/validation/_static/ff.png)
 
 На следующем рисунке показано, как отключить JavaScript в браузере Chrome.
 

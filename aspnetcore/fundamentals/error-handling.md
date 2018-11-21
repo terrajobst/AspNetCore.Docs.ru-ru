@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/01/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: 89117d78486493747d649c3bb0d9cce9f97ef419
-ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
+ms.openlocfilehash: fbc86d36f66e71e6ebd84f536148fba2e3c452d8
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50968323"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570065"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Обработка ошибок в ASP.NET Core
 
@@ -109,7 +109,7 @@ public IActionResult Error()
 app.UseStatusCodePages();
 ```
 
-<xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages*> должен вызываться перед ПО промежуточного слоя, обрабатывающим запрос в конвейере (например, ПО промежуточного слоя статических файлов и ПО промежуточного слоя MVC).
+<xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages*> должен вызываться перед ПО промежуточного слоя, обрабатывающим запрос в конвейере (например, ПО промежуточного слоя для статических файлов и ПО промежуточного слоя MVC).
 
 По умолчанию это ПО промежуточного слоя добавляет текстовые обработчики для распространенных кодов состояния, например 404.
 
