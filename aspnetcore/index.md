@@ -4,14 +4,14 @@ author: rick-anderson
 description: Введение в ASP.NET Core — кроссплатформенную высокопроизводительную платформу с открытым исходным кодом для создания современных облачных интернет-приложений.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/10/2018
+ms.date: 11/16/2018
 uid: index
-ms.openlocfilehash: 1699acc0086dfd50c573afc239bc8f37eb9e7af9
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: ccf00316218c0787136193a7acaf55b8687c6ede
+ms.sourcegitcommit: 04b55a5ce9d649ff2df926157ec28ae47afe79e2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569992"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52156949"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -77,7 +77,9 @@ ASP.NET Core версии 3.0 и более поздних будут выпол
 1. Распакуйте файл *Docs-master.zip*.
 1. Перейдите в папку примера по URL-адресу, указанному в примере.
 
-Для демонстрации нескольких сценариев в примерах приложений используются инструкции C# `#define` и `#if-#else/#elif-#endif`, выборочно компилирующие и запускающие разные фрагменты примеров кода. В примерах, где применяется этот подход, задайте в начале файлов C# инструкцию `#define` для символа, связанного со сценарием, который нужно запустить. Возможно, для запуска сценария в примере потребуется задать символ в начале нескольких файлов.
+### <a name="preprocessor-directives-in-sample-code"></a>Директивы препроцессора в примере кода
+
+Для демонстрации нескольких сценариев в примерах приложений используются инструкции C# `#define` и `#if-#else/#elif-#endif`, выборочно компилирующие и запускающие разные фрагменты примеров кода. В примерах, где применяется этот подход, задайте в начале файлов C# инструкцию `#define` для символа, связанного со сценарием, который нужно запустить. Для запуска сценария в некоторых примерах потребуется задать символ в начале нескольких файлов.
 
 Например, в следующем списке символов `#define` видно, что доступно четыре сценария (один сценарий на символ). В текущем примере конфигурации запускается сценарий `TemplateCode`:
 
@@ -92,6 +94,33 @@ ASP.NET Core версии 3.0 и более поздних будут выпол
 ```
 
 Дополнительные сведения об использовании [директив препроцессора C#](/dotnet/csharp/language-reference/preprocessor-directives/) для выборочной компиляции фрагментов кода см. в разделах [#define (Справочник по C#)](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-define) и [#if (Справочник по C#)](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if).
+
+### <a name="regions-in-sample-code"></a>Регионы в примере кода
+
+Некоторые примеры приложений содержат фрагменты кода внутри инструкций C# [#region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-region) и [#end-region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-endregion). Система сборки документации вставляет эти регионы в обработанные разделы документации.  
+
+Названия регионов обычно содержат слово "фрагмент". В следующем примере показан регион с именем `snippet_FilterInCode`:
+
+```csharp
+#region snippet_FilterInCode
+WebHost.CreateDefaultBuilder(args)
+    .UseStartup<Startup>()
+    .ConfigureLogging(logging =>
+        logging.AddFilter("System", LogLevel.Debug)
+            .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Trace))
+            .Build();
+#endregion
+```
+
+На предыдущий фрагмент кода C# указывает ссылка в следующей строке в файле Markdown раздела:
+
+```
+[!code-csharp[](sample/SampleApp/Program.cs?name=snippet_FilterInCode)]
+```
+
+Вы можете спокойно проигнорировать или удалить инструкции `#region` и `#end-region` вокруг кода. Не изменяйте код внутри этих инструкций, если планируете запустить примеры сценариев, описанные в разделе. Вы можете изменить код, экспериментируя с другими сценариями.
+
+Дополнительные сведения см. в разделе [Вклад в документацию ASP.NET: фрагменты кода](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets).
 
 ## <a name="next-steps"></a>Следующие шаги
 
