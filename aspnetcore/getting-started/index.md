@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/31/2018
 uid: getting-started
-ms.openlocfilehash: 4a5a0cc5a5dab2171ab8ef43818185a4ee91af0e
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 4c899ff3c087f1b569521c6e2e8458fca01d6061
+ms.sourcegitcommit: bdfba5e7575b2a786ef27c0edf688c7dbd09ee95
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912570"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288646"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Руководство. Начало работы с ASP.NET Core
 
@@ -110,3 +110,8 @@ ms.locfileid: "48912570"
 
 > [!div class="nextstepaction"]
 > <xref:index>
+
+
+
+> [!NOTE]
+> Мы тестируем удобство использования новой предлагаемой структуры оглавления для ASP.NET Core.  Если у вас есть несколько минут, и вы хотите попробовать найти семь разных тем в существующей или планируемой структуре оглавления, [щелкните здесь, чтобы принять участие в исследовании](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82).
