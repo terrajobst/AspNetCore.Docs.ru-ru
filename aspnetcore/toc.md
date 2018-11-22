@@ -85,7 +85,7 @@
 ##### [Обновление страниц](xref:tutorials/razor-pages-mac/da1)
 ##### [Добавление поиска](xref:tutorials/razor-pages-mac/search)
 ### [Фильтры](xref:razor-pages/filter)
-### [Библиотеки классов](xref:razor-pages/ui-class)
+### [Библиотеки классов Razor](xref:razor-pages/ui-class)
 ### [Соглашения для маршрутов и приложений](xref:razor-pages/razor-pages-conventions)
 ### [Отправка файлов](xref:razor-pages/upload-files)
 ### [Пакет SDK для Razor](xref:razor-pages/sdk)
