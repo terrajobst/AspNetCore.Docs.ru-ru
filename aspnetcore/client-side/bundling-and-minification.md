@@ -4,14 +4,14 @@ author: scottaddie
 description: Узнайте, как оптимизировать статические ресурсы в веб-приложении ASP.NET Core, применяя методы объединения и минификации.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/04/2018
+ms.date: 11/20/2018
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 152f3c810b587d734c1b1076a09ea38d13872e2d
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 5d5f0aadb7740c9b2b959d12a585cd8c91758ce8
+ms.sourcegitcommit: 4225e2c49a0081e6ac15acff673587201f54b4aa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795409"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282149"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Объединение и Минификация статических ресурсов в ASP.NET Core
 
@@ -27,7 +27,7 @@ ms.locfileid: "48795409"
 
 ### <a name="bundling"></a>Объединение
 
-Объединение позволяет объединить несколько файлов в один файл. Объединение уменьшает число запросов сервера, которые необходимы для подготовки к просмотру web активов, таких как веб-страницы. Можно создать любое количество отдельных наборов специально для CSS, JavaScript и т. д. Меньшее количество файлов означает меньшее количество HTTP-запросы из браузера на сервер или службой, предоставляющей приложение. В результате повышение производительности загрузки первой страницы.
+Объединение позволяет объединить несколько файлов в один файл. Объединение сокращает число запросов к серверу, которые необходимы для подготовки к просмотру web активов, таких как веб-страницы. Можно создать любое количество отдельных наборов специально для CSS, JavaScript и т. д. Меньшее количество файлов означает меньшее количество HTTP-запросы из браузера на сервер или службой, предоставляющей приложение. В результате повышение производительности загрузки первой страницы.
 
 ### <a name="minification"></a>Минификация
 
@@ -67,9 +67,21 @@ ms.locfileid: "48795409"
 
 ## <a name="configure-bundling-and-minification"></a>Настроить объединение и Минификация
 
-Шаблоны проектов MVC и Razor Pages обеспечивают *bundleconfig.json* файл конфигурации, который определяет параметры для каждого пакета. По умолчанию, в отдельный пакет конфигурации определяется пользовательский код JavaScript (*wwwroot/js/site.js*) и таблицы стилей (*wwwroot/css/site.css*) файлов:
+::: moniker range="<= aspnetcore-2.0"
+
+В ASP.NET Core 2.0 или более ранней версии, предоставляют шаблоны проектов MVC и Razor Pages *bundleconfig.json* файл конфигурации, который определяет параметры для каждого пакета:
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+В ASP.NET Core 2.1 или более поздней версии, добавьте новый файл JSON с именем *bundleconfig.json*, в корень проекта MVC и Razor Pages. Включите приведенный ниже код JSON в этот файл в качестве отправной точки:
+
+::: moniker-end
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig.json)]
+
+*Bundleconfig.json* файл определяет параметры для каждого пакета. В приведенном выше примере конфигурации одного пакета определяется пользовательский код JavaScript (*wwwroot/js/site.js*) и таблицы стилей (*wwwroot/css/site.css*) файлы.
 
 Варианты конфигурации:
 
@@ -156,7 +168,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 dotnet clean
 ```
 
-Появляется следующий результат:
+Появится следующий результат:
 
 ```console
 Microsoft (R) Build Engine version 15.4.8.50001 for .NET Core
@@ -216,27 +228,31 @@ dotnet bundle
 
 Следующие `environment` отображения тега необработанных файлов CSS, при работе в `Development` среды:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=21-24)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=9-12)]
 
----
+::: moniker-end
 
 Следующие `environment` отображения тега объединенные в пакет и минифицированные CSS-файл, при работе в среде, отличное от `Development`. Например, на котором работают `Production` или `Staging` инициирует отрисовку эти таблицы стилей:
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=5&range=25-30)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
 
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=13-18)]
 
----
+::: moniker-end
 
 ## <a name="consume-bundleconfigjson-from-gulp"></a>Использовать bundleconfig.json из Gulp
 
