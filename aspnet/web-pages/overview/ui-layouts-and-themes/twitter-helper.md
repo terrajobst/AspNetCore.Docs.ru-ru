@@ -4,20 +4,23 @@ title: Вспомогательный модуль с помощью ASP.NET Web
 author: Rick-Anderson
 description: Этот раздел и приложения показано, как добавить вспомогательный модуль Twitter для WebMatrix 3 проекта. Он содержит код вспомогательный модуль Twitter и показан способ вызова вспомогательного приложения...
 ms.author: riande
-ms.date: 02/07/2014
+ms.date: 11/26/2018
 ms.assetid: c1a1244e-b9c8-42e6-a00b-8456a4ec027c
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/twitter-helper
 msc.type: authoredcontent
-ms.openlocfilehash: 89c8c520cd32ca2ee24e6cd90e11f7bdf39c7a80
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: fabe9f2b84d278a766dc8d8b7bfc00e1eb967127
+ms.sourcegitcommit: 710fc5fcac258cc8415976dc66bdb355b3e061d5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51020577"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52299434"
 ---
 <a name="twitter-helper-with-aspnet-web-pages"></a>Вспомогательное приложение Twitter с помощью веб-страниц ASP.NET
 ====================
 по [Tom FitzMacken](https://github.com/tfitzmac)
+
+> [!IMPORTANT]
+> Вспомогательные функции Twitter являются устаревшими. Twitter новейшие средства взаимодействия для веб-сайтов, см. в разделе [Twitter для веб-сайтов Обзор](https://developer.twitter.com/en/docs/twitter-for-websites/overview).
 
 > Этот раздел и приложения показано, как добавить вспомогательный модуль Twitter для WebMatrix 3 проекта. Он содержит код вспомогательный модуль Twitter и демонстрируется вызов вспомогательных методов.
 > 
