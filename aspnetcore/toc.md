@@ -283,7 +283,7 @@
 ## Размещение в службе приложений Azure
 ### [Обзор набора средств Visual Studio для Unity](xref:host-and-deploy/azure-apps/index)
 ### [Публикация с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs)
-### [Публикация с помощью инструментов CLI](/azure/app-service/app-service-web-get-started-dotnet)
+### [Публикация с помощью инструментов CLI](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 ### [Публикация с помощью Visual Studio и Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment)
 ### [Непрерывное развертывание с Azure Pipelines](/azure/devops/pipelines/get-started-yaml)
 ### [Устранение ошибок запуска](xref:host-and-deploy/azure-apps/troubleshoot)
@@ -313,7 +313,6 @@
 ## [Профили публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles)
 ## [Структура каталогов](xref:host-and-deploy/directory-structure)
 ## [Справочник по ошибкам для службы приложений Azure и служб IIS](xref:host-and-deploy/azure-iis-errors-reference)
-
 
 # Безопасность и удостоверения
 ## [Обзор набора средств Visual Studio для Unity](xref:security/index)
