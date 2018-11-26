@@ -5,12 +5,12 @@ description: Что такое ASP.NET Core и ASP.NET 4.x и как выбра�
 ms.author: riande
 ms.date: 09/11/2018
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: f046491e2ec68b6beaad581e2b04e6688a81f2d1
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 79e56e10b756677431ceff289300c251e54bf632
+ms.sourcegitcommit: bdfba5e7575b2a786ef27c0edf688c7dbd09ee95
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911049"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288672"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>Выбор между ASP.NET 4.x и ASP.NET Core
 
@@ -61,3 +61,6 @@ ASP.NET 4.x — это развитая платформа, предостав�
 * [Введение в ASP.NET](/aspnet/overview)
 * [Введение в ASP.NET Core](xref:index)
 * <xref:host-and-deploy/azure-apps/index>
+
+> [!NOTE]
+> Мы тестируем удобство использования новой предлагаемой структуры оглавления для ASP.NET Core.  Если у вас есть несколько минут, и вы хотите попробовать найти семь разных тем в существующей или планируемой структуре оглавления, [щелкните здесь, чтобы принять участие в исследовании](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82).
