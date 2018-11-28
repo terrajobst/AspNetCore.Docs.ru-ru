@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: Устранение неполадок при возникновении ошибок и предупреждений в проектах ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/26/2018
 uid: test/troubleshoot
-ms.openlocfilehash: 150f2192bb4b6dd0d330fd678d9c5fa0bf31673e
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 7a3361970bde2b8761c76884fc1905957d075c5c
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090115"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450779"
 ---
 # <a name="troubleshoot-aspnet-core-projects"></a>Устранение неполадок с проектов ASP.NET Core
 
@@ -67,3 +67,97 @@ ms.locfileid: "50090115"
 
 * Установите или убедитесь, что установлен пакет SDK для .NET Core.
 * Убедитесь, что `PATH` переменной среды указывает на расположение, в котором установлен пакет SDK. Установщик обычно задает `PATH`.
+
+## <a name="obtain-data-from-an-app"></a>Получение данных из приложения
+
+Если приложение может отвечать на запросы, можно получить следующие данные из приложения, с помощью по промежуточного слоя:
+
+* Запросить &ndash; строка заголовков запроса метода, схему, узел, pathbase, путь,
+* Подключение &ndash; удаленный IP-адрес, удаленный порт, локальный IP-адрес, локальный порт, сертификат клиента
+* Удостоверение &ndash; имя, отображаемое имя
+* Параметры конфигурации
+* Переменные среды
+
+Поместите следующий [по промежуточного слоя](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder) кода в начале `Startup.Configure` конвейера обработки запросов метода. Среде проверяется перед запуском по промежуточного слоя, чтобы убедиться, что код выполняется только в среде разработки.
+
+Чтобы получить среду, используйте один из следующих подходов:
+
+* Внедрить `IHostingEnvironment` в `Startup.Configure` метод и проверьте среды с локальной переменной. В следующем примере кода демонстрируется этот подход.
+
+* Присвоить свойству в среде `Startup` класса. Проверьте среду, с помощью свойства (например, `if (Environment.IsDevelopment())`).
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, 
+    IConfiguration config)
+{
+    if (env.IsDevelopment())
+    {
+        app.Run(async (context) =>
+        {
+            var sb = new StringBuilder();
+            var nl = System.Environment.NewLine;
+            var rule = string.Concat(nl, new string('-', 40), nl);
+            var authSchemeProvider = app.ApplicationServices
+                .GetRequiredService<IAuthenticationSchemeProvider>();
+
+            sb.Append($"Request{rule}");
+            sb.Append($"{DateTimeOffset.Now}{nl}");
+            sb.Append($"{context.Request.Method} {context.Request.Path}{nl}");
+            sb.Append($"Scheme: {context.Request.Scheme}{nl}");
+            sb.Append($"Host: {context.Request.Headers["Host"]}{nl}");
+            sb.Append($"PathBase: {context.Request.PathBase.Value}{nl}");
+            sb.Append($"Path: {context.Request.Path.Value}{nl}");
+            sb.Append($"Query: {context.Request.QueryString.Value}{nl}{nl}");
+
+            sb.Append($"Connection{rule}");
+            sb.Append($"RemoteIp: {context.Connection.RemoteIpAddress}{nl}");
+            sb.Append($"RemotePort: {context.Connection.RemotePort}{nl}");
+            sb.Append($"LocalIp: {context.Connection.LocalIpAddress}{nl}");
+            sb.Append($"LocalPort: {context.Connection.LocalPort}{nl}");
+            sb.Append($"ClientCert: {context.Connection.ClientCertificate}{nl}{nl}");
+
+            sb.Append($"Identity{rule}");
+            sb.Append($"User: {context.User.Identity.Name}{nl}");
+            var scheme = await authSchemeProvider
+                .GetSchemeAsync(IISDefaults.AuthenticationScheme);
+            sb.Append($"DisplayName: {scheme?.DisplayName}{nl}{nl}");
+
+            sb.Append($"Headers{rule}");
+            foreach (var header in context.Request.Headers)
+            {
+                sb.Append($"{header.Key}: {header.Value}{nl}");
+            }
+            sb.Append(nl);
+
+            sb.Append($"Websockets{rule}");
+            if (context.Features.Get<IHttpUpgradeFeature>() != null)
+            {
+                sb.Append($"Status: Enabled{nl}{nl}");
+            }
+            else
+            {
+                sb.Append($"Status: Disabled{nl}{nl}");
+            }
+
+            sb.Append($"Configuration{rule}");
+            foreach (var pair in config.AsEnumerable())
+            {
+                sb.Append($"{pair.Path}: {pair.Value}{nl}");
+            }
+            sb.Append(nl);
+
+            sb.Append($"Environment Variables{rule}");
+            var vars = System.Environment.GetEnvironmentVariables();
+            foreach (var key in vars.Keys.Cast<string>().OrderBy(key => key, 
+                StringComparer.OrdinalIgnoreCase))
+            {
+                var value = vars[key];
+                sb.Append($"{key}: {value}{nl}");
+            }
+
+            context.Response.ContentType = "text/plain";
+            await context.Response.WriteAsync(sb.ToString());
+        });
+    }
+}
+```

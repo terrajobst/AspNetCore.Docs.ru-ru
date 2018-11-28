@@ -5,14 +5,14 @@ description: Узнайте, как с помощью интеграционны
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/30/2018
+ms.date: 11/26/2018
 uid: test/integration-tests
-ms.openlocfilehash: a136a362cd8973b3684f9a70bd4792d75238eab0
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 9729925c89c212bb6e6fac1a484b6288697afe57
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207879"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450753"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Интеграционные тесты в ASP.NET Core
 
@@ -100,8 +100,8 @@ ms.locfileid: "50207879"
 Необходимо тестового проекта:
 
 * Ссылаться на следующие пакеты:
-  - [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
-  - [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
+  * [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
+  * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * Укажите Web SDK в файле проекта (`<Project Sdk="Microsoft.NET.Sdk.Web">`). Web SDK является обязательным при ссылке на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 Эти компоненты можно увидеть в [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/). Проверьте *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj* файла. Пример приложения использует [xUnit](https://xunit.github.io/) платформы тестирования и [AngleSharp](https://anglesharp.github.io/) библиотеки средство синтаксического анализа, поэтому в примере приложения также ссылается на:
@@ -316,6 +316,10 @@ _client = _factory.CreateClient(clientOptions);
   "shadowCopy": false
 }
 ```
+
+## <a name="disposal-of-objects"></a>Реализации объектов
+
+После тестирования `IClassFixture` реализации выполняются, [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) и [HttpClient](/dotnet/api/system.net.http.httpclient) , удаляются при уничтожает xUnit [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) . Если экземпляров разработчиком требуют реализации, удалить их в `IClassFixture` реализации. Дополнительные сведения см. в разделе [реализация метода Dispose](/dotnet/standard/garbage-collection/implementing-dispose).
 
 ## <a name="integration-tests-sample"></a>Пример тестов интеграции
 

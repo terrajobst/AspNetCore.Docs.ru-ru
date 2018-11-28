@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как CORS в качестве стандарта для предоставления или отклонения запросов независимо от источника в приложении ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/05/2018
+ms.date: 11/27/2018
 uid: security/cors
-ms.openlocfilehash: 8e5056b448d47d75272e9394b03ce8a58b05a0f4
-ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
+ms.openlocfilehash: f0e01cfa618184d8a3b19c06212dc3914183a2e4
+ms.sourcegitcommit: e7fafb153b9de7595c2558a0133f8d1c33a3bddb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51191325"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52458547"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Включение запросов о происхождении (CORS) в ASP.NET Core
 
@@ -124,7 +124,7 @@ ms.locfileid: "51191325"
 
 ## <a name="cors-policy-options"></a>Параметры политики CORS
 
-В этом разделе описываются различные параметры, которые можно задать в политику CORS.
+В этом разделе описываются различные параметры, которые можно задать в политику CORS. <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions.AddPolicy*> Метод вызывается в `Startup.ConfigureServices`.
 
 * [Задайте разрешенные источники](#set-the-allowed-origins)
 * [Задайте разрешенные методы HTTP](#set-the-allowed-http-methods)
@@ -139,55 +139,59 @@ ms.locfileid: "51191325"
 
 По промежуточного слоя CORS в ASP.NET Core MVC имеет несколько способов, чтобы указать разрешенные источники:
 
-* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithOrigins*>: Позволяет, указав один или несколько URL-адреса. URL-адрес может включать схему, имя узла и порт без включения данных пути. Например, `https://example.com`. URL-адрес должен быть указан без косой чертой (`/`).
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithOrigins*> &ndash; Позволяет указать один или несколько URL-адреса. URL-адрес может включать схему, имя узла и порт без включения данных пути. Например, `https://example.com`. URL-адрес должен быть указан без косой чертой (`/`).
 
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=20-24&highlight=4)]
+  [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=20-25&highlight=4-5)]
 
-* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>: Разрешает запросы CORS из всех источников с любой схемой (`http` или `https`).
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*> &ndash; Разрешает запросы CORS из всех источников с любой схемой (`http` или `https`).
 
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=28-32&highlight=4)]
+  [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=29-33&highlight=4)]
 
-Тщательно обдумайте прежде чем разрешить запросы из любого источника. Разрешение запросов из любого источника означает, что *любой веб-сайт* могут выполнять запросы независимо от источника к приложению.
+  Тщательно обдумайте прежде чем разрешить запросы из любого источника. Разрешение запросов из любого источника означает, что *любой веб-сайт* могут выполнять запросы независимо от источника к приложению.
 
-::: moniker range=">= aspnetcore-2.2"
+  ::: moniker range=">= aspnetcore-2.2"
 
-> [!NOTE]
-> Указание `AllowAnyOrigin` и `AllowCredentials` является небезопасной конфигурацией и может привести к подделки межсайтовых запросов. CORS, служба возвращает недопустимый ответ CORS приложения настроен с двумя.
+  > [!NOTE]
+  > Указание `AllowAnyOrigin` и `AllowCredentials` является небезопасной конфигурацией и может привести к подделки межсайтовых запросов. CORS, служба возвращает недопустимый ответ CORS приложения настраивается с помощью обоих методов.
+
+  ::: moniker-end
+
+  ::: moniker range="< aspnetcore-2.2"
+
+  > [!NOTE]
+  > Указание `AllowAnyOrigin` и `AllowCredentials` является небезопасной конфигурацией и может привести к подделки межсайтовых запросов. Можно указать точный список источников, если клиент должен авторизоваться сам доступ к ресурсам сервера.
+
+  ::: moniker-end
+
+  Этот параметр влияет на предварительные запросы и `Access-Control-Allow-Origin` заголовка. Дополнительные сведения см. в разделе [перед запуском выявила запросы](#preflight-requests) раздел.
+
+::: moniker range=">= aspnetcore-2.0"
+
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetIsOriginAllowedToAllowWildcardSubdomains*> &ndash; Наборы <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.IsOriginAllowed*> свойство быть функцией, которая позволяет источники, которые можно соответствовать домену настроенных с подстановочными знаками, при оценке, если разрешено источника политики.
+
+  [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=100-104&highlight=4)]
 
 ::: moniker-end
-
-::: moniker range="< aspnetcore-2.2"
-
-> [!NOTE]
-> Указание `AllowAnyOrigin` и `AllowCredentials` является небезопасной конфигурацией и может привести к подделки межсайтовых запросов. Можно указать точный список источников, если клиенту необходимо авторизовать доступ к ресурсам сервера.
-
-::: moniker-end
-
-Этот параметр влияет на [перед запуском выявила запросы и заголовка Access-Control-Allow-Origin](#preflight-requests) (описывается далее в этом разделе).
-
-* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetIsOriginAllowedToAllowWildcardSubdomains*> -Разрешает запросы CORS из любого поддомена в данном домене. Схема не может быть подстановочного знака.
-
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=98-104&highlight=4)]
 
 ### <a name="set-the-allowed-http-methods"></a>Задайте разрешенные методы HTTP
 
 Чтобы разрешить все методы HTTP, вызовите <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyMethod*>:
 
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=45-50&highlight=5)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=46-51&highlight=5)]
 
-Этот параметр влияет на [перед запуском выявила запросы и заголовка Access-Control-Allow-Methods](#preflight-requests) (описывается далее в этом разделе).
+Этот параметр влияет на предварительные запросы и `Access-Control-Allow-Methods` заголовка. Дополнительные сведения см. в разделе [перед запуском выявила запросы](#preflight-requests) раздел.
 
 ### <a name="set-the-allowed-request-headers"></a>Задать заголовки запросов
 
 Чтобы разрешить специальные заголовки, которые будут отправляться в запрос CORS с именем *создания заголовков запроса*, вызовите <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*> и укажите разрешенные заголовки:
 
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=54-59&highlight=5)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=55-60&highlight=5)]
 
 Чтобы разрешить все создавать заголовки запроса, вызовите <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyHeader*>:
 
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=63-68&highlight=5)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=64-69&highlight=5)]
 
-Этот параметр влияет на [перед запуском выявила запросы и заголовка Access-Control-Request-Headers](#preflight-requests) (описывается далее в этом разделе).
+Этот параметр влияет на предварительные запросы и `Access-Control-Request-Headers` заголовка. Дополнительные сведения см. в разделе [перед запуском выявила запросы](#preflight-requests) раздел.
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -247,7 +251,7 @@ Access-Control-Request-Headers: Cache-Control, Content-Language
 
 Спецификация CORS вызывает эти заголовки *заголовки ответа на простой*. Чтобы сделать доступным для приложения другие заголовки, вызовите <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithExposedHeaders*>:
 
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=72-77&highlight=5)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=73-78&highlight=5)]
 
 ### <a name="credentials-in-cross-origin-requests"></a>Учетные данные в запросов о происхождении
 
@@ -274,7 +278,7 @@ $.ajax({
 
 Кроме того сервер необходимо разрешить учетные данные. Чтобы разрешить учетные данные от источника, вызовите <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowCredentials*>:
 
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=81-86&highlight=5)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=82-87&highlight=5)]
 
 Ответ HTTP содержит `Access-Control-Allow-Credentials` заголовок, который указывает обозревателю, учетные данные для запроса независимо от источника, поддерживает ли сервер.
 
@@ -320,11 +324,11 @@ Content-Length: 0
 
 Чтобы разрешить специальные заголовки, вызовите <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>:
 
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=54-59&highlight=5)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=55-60&highlight=5)]
 
 Чтобы разрешить все создавать заголовки запроса, вызовите <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyHeader*>:
 
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=63-68&highlight=5)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=64-69&highlight=5)]
 
 Браузеры не полностью согласованные, в том, как они заданы `Access-Control-Request-Headers`. Если задать заголовки на что-либо отличное от `"*"` (или используйте <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.AllowAnyHeader*>), должен включать по крайней мере `Accept`, `Content-Type`, и `Origin`, а также любые пользовательские заголовки, которые требуется поддерживать.
 
@@ -349,7 +353,7 @@ Date: Wed, 20 May 2015 06:33:22 GMT
 
 `Access-Control-Max-Age` Заголовок указывает, как долго можно кэшировать ответ на Предварительный запрос. Чтобы задать этот заголовок, вызовите <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetPreflightMaxAge*>:
 
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=90-95&highlight=5)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=91-96&highlight=5)]
 
 ## <a name="how-cors-works"></a>Как работает CORS
 
