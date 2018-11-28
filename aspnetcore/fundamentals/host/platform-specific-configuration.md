@@ -5,18 +5,18 @@ description: Узнайте, как улучшить приложение ASP.NE
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/13/2018
+ms.date: 11/22/2018
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: a06c2da04c1631f5811a535c891ca5190b0d8864
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: ef3b48dc72f294a783d789c4c9a796e3498a91d9
+ms.sourcegitcommit: 710fc5fcac258cc8415976dc66bdb355b3e061d5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207567"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52299460"
 ---
 # <a name="enhance-an-app-from-an-external-assembly-in-aspnet-core-with-ihostingstartup"></a>Усовершенствование приложения из внешней сборки в ASP.NET Core с IHostingStartup
 
-Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
+Авторы [Люк Латэм](https://github.com/guardrex) (Luke Latham) и [Павел Крымец](https://github.com/pakrym) (Pavel Krymets)
 
 Реализация [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) (размещение при запуске) позволяет добавлять в приложение улучшения из внешней сборки при запуске. Например, внешняя библиотека может использовать реализацию размещения при запуске, чтобы доставить дополнительные поставщики конфигурации или службы для приложения. `IHostingStartup` *доступен в ASP.NET Core 2.0 или в более поздних версиях.*
 
@@ -113,14 +113,21 @@ ms.locfileid: "50207567"
 
 *Этот подход может использоваться только для приложений .NET Core, но не для приложений .NET Framework.*
 
-Улучшение динамического размещения при запуске, для активации которого не требуется ссылка во время компиляции, может быть указано в консольном приложении без точки входа. Приложение содержит атрибут `HostingStartup`. Чтобы создать динамическое размещение при запуске, выполните следующие действия:
+Расширение динамического размещения при запуске, для активации которого не требуется ссылка во время компиляции, может быть реализовано в консольном приложении без точки входа, содержащем атрибут `HostingStartup`. При публикации консольного приложения создается начальная сборка размещения, которая может использоваться в хранилище среды выполнения.
 
-1. Библиотека реализации создается на основе класса, содержащего реализацию `IHostingStartup`. Библиотека реализации считается обычным пакетом.
-1. Консольное приложение без точки входа ссылается на пакет библиотеки реализации. Консольное приложение используется по следующим причинам:
-   * Файл зависимостей — это запускаемый ресурс приложения, поэтому библиотека не может предоставить файл зависимостей.
-   * Библиотеку невозможно добавить непосредственно в [хранилище пакетов среды выполнения](/dotnet/core/deploying/runtime-store), для которого требуется запускаемый проект для общей среды выполнения.
-1. Консольное приложение публикуется для получения зависимостей начальной загрузки. После публикации консольного приложения неиспользуемые зависимости исключаются из файла зависимостей.
-1. Приложения и его файл зависимостей размещаются в хранилище пакетов среды выполнения. Чтобы обнаружить сборку начального размещения и ее файл зависимостей, ссылка на них осуществляется в паре переменных среды.
+В этом процессе используется консольное приложение без точки входа, так как:
+
+* Файл зависимостей необходим для функционирования размещения при запуске в начальной сборке размещения. Файл зависимостей является ресурсом исполняемого приложения, который создается путем публикации приложения, а не библиотеки.
+* Библиотеку невозможно добавить непосредственно в [хранилище пакетов среды выполнения](/dotnet/core/deploying/runtime-store), для которого требуется запускаемый проект для общей среды выполнения.
+
+В ходе создания динамического размещения при запуске:
+
+* Начальная сборка размещения создается из консольного приложения без точки входа, которое:
+  * содержит класс с реализацией `IHostingStartup`;
+  * содержит атрибут [HostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.hostingstartupattribute) для определения класса реализации `IHostingStartup`.
+* Консольное приложение публикуется для получения зависимостей начальной загрузки. После публикации консольного приложения неиспользуемые зависимости исключаются из файла зависимостей.
+* Файл зависимостей изменяется, чтобы задать расположение среды выполнения начальной сборки размещения.
+* Начальная сборка размещения и соответствующий файл зависимостей размещаются в хранилище пакетов среды выполнения. Чтобы можно было обнаружить начальную сборку размещения и ее файл зависимостей, они указываются в паре переменных среды.
 
 Консольное приложение ссылается на пакет [Microsoft.AspNetCore.Hosting.Abstractions](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.Abstractions/):
 
@@ -167,187 +174,98 @@ HostingStartupLibrary;HostingStartupPackage;StartupDiagnostics
 
 Реализация размещения при запуске помещается в [хранилище среды выполнения](/dotnet/core/deploying/runtime-store). Ссылка на сборку во время компиляции не требуется расширенному приложению.
 
-После сборки размещения при запуске файл проекта размещения при запуске выступает в качестве файла манифеста для команды [dotnet store](/dotnet/core/tools/dotnet-store).
+После начальной сборки размещения создается хранилище среды выполнения с помощью файла манифеста проекта и команды [dotnet store](/dotnet/core/tools/dotnet-store).
 
 ```console
-dotnet store --manifest <PROJECT_FILE> --runtime <RUNTIME_IDENTIFIER>
+dotnet store --manifest {MANIFEST FILE} --runtime {RUNTIME IDENTIFIER} --output {OUTPUT LOCATION} --skip-optimization
 ```
 
-Эта команда помещает начальную сборку размещения и другие зависимости, которые не являются частью общей платформы, в хранилище среды выполнения в профиле пользователя:
+В примере приложения (проект *RuntimeStore*) используется такая команда:
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-```
-%USERPROFILE%\.dotnet\store\x64\<TARGET_FRAMEWORK_MONIKER>\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\<TARGET_FRAMEWORK_MONIKER>\
+``` console
+dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./deployment/store --skip-optimization
 ```
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
-
-```
-/Users/<USER>/.dotnet/store/x64/<TARGET_FRAMEWORK_MONIKER>/<ENHANCEMENT_ASSEMBLY_NAME>/<ENHANCEMENT_VERSION>/lib/<TARGET_FRAMEWORK_MONIKER>/
-```
-
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-```
-/Users/<USER>/.dotnet/store/x64/<TARGET_FRAMEWORK_MONIKER>/<ENHANCEMENT_ASSEMBLY_NAME>/<ENHANCEMENT_VERSION>/lib/<TARGET_FRAMEWORK_MONIKER>/
-```
-
----
-
-Если вы хотите разместить сборку и зависимости для глобального использования, добавьте параметр `-o|--output` в команду `dotnet store`, указав следующий путь:
-
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-```
-%PROGRAMFILES%\dotnet\store\x64\<TARGET_FRAMEWORK_MONIKER>\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\<TARGET_FRAMEWORK_MONIKER>\
-```
-
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
-
-```
-/usr/local/share/dotnet/store/x64/<TARGET_FRAMEWORK_MONIKER>/<ENHANCEMENT_ASSEMBLY_NAME>/<ENHANCEMENT_VERSION>/lib/<TARGET_FRAMEWORK_MONIKER>/
-```
-
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-```
-/usr/local/share/dotnet/store/x64/<TARGET_FRAMEWORK_MONIKER>/<ENHANCEMENT_ASSEMBLY_NAME>/<ENHANCEMENT_VERSION>/lib/<TARGET_FRAMEWORK_MONIKER>/
-```
-
----
+Чтобы среда выполнения могла обнаружить хранилище среды выполнения, расположение хранилища среды выполнения добавляется к переменной среды `DOTNET_SHARED_STORE`.
 
 **Изменение и размещение файла зависимостей размещения при запуске**
 
-Расположение среды выполнения указывается в файле *\*.deps.json*. Для активации улучшения элемент `runtime` должен указывать на расположение среды выполнения сборки для улучшения. Расположение `runtime` должно иметь префикс `lib/<TARGET_FRAMEWORK_MONIKER>/`:
+Чтобы активировать расширение без ссылки на пакет расширения, укажите дополнительные зависимости в среде выполнения с помощью `additionalDeps`. `additionalDeps` предоставляет следующие возможности:
 
-[!code-json[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement2.deps.json?range=2-13&highlight=8)]
+* Расширять граф библиотеки приложения, предоставляя набор дополнительных файлов *\*.deps.json* для объединения с собственным файлом *\*.deps.json* приложения при запуске.
+* Обнаруживать и скачивать начальную сборку размещения.
 
-В коде примера (проект *StartupDiagnostics*) изменение файла *\*.deps.json* осуществляется сценарием [PowerShell](/powershell/scripting/powershell-scripting). Скрипт PowerShell запускается автоматически целевым объектом сборки в файле проекта.
+Рекомендуемые действия при создании файла дополнительных зависимостей.
 
-Файл реализации *\*.deps.json* должен находиться в доступном расположении.
+ 1. Выполните команду `dotnet publish` для файла манифеста хранилища среды выполнения, ссылка на который создавалась в предыдущем разделе.
+ 1. Удалите ссылку на манифест из библиотек и раздела `runtime` итогового файла *\*deps.json*.
 
-Для индивидуального использования поместите файл в папку *additionalDeps* в параметрах профиля пользователя `.dotnet`:
+В примере проекта свойство `store.manifest/1.0.0` удаляется из разделов `targets` и `libraries`.
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-```
-%USERPROFILE%\.dotnet\x64\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\
-```
-
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
-
-```
-/Users/<USER>/.dotnet/x64/additionalDeps/<ENHANCEMENT_ASSEMBLY_NAME>/shared/Microsoft.NETCore.App/<SHARED_FRAMEWORK_VERSION>/
-```
-
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-```
-/Users/<USER>/.dotnet/x64/additionalDeps/<ENHANCEMENT_ASSEMBLY_NAME>/shared/Microsoft.NETCore.App/<SHARED_FRAMEWORK_VERSION>/
-```
-
----
-
-Для глобального использования поместите файл в папку *additionalDeps* в установке .NET Core:
-
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-```
-%PROGRAMFILES%\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\
-```
-
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
-
-```
-/usr/local/share/dotnet/additionalDeps/<ENHANCEMENT_ASSEMBLY_NAME>/shared/Microsoft.NETCore.App/<SHARED_FRAMEWORK_VERSION>/
-```
-
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-```
-/usr/local/share/dotnet/additionalDeps/<ENHANCEMENT_ASSEMBLY_NAME>/shared/Microsoft.NETCore.App/<SHARED_FRAMEWORK_VERSION>/
-```
-
----
-
-Версия общей платформы отражает версию общей среды выполнения, которую использует целевое приложение. Общая среда выполнения указана в файле *\*.runtimeconfig.json*. В примере приложения (*HostingStartupApp*) общая среда выполнения задается в файле *HostingStartupApp.runtimeconfig.json*.
-
-**Указание расположения для файла зависимостей размещения при запуске**
-
-Расположение файла зависимостей размещения *\*.deps.json* указывается в переменной среды `DOTNET_ADDITIONAL_DEPS`.
-
-Если файл размещен в папке *.dotnet* профиля пользователя, установите следующее значение переменной среды:
-
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-```
-%USERPROFILE%\.dotnet\x64\additionalDeps\
+```json
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "4ea77c7b75ad1895ae1ea65e6ba2399010514f99"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "store.manifest/1.0.0": {
+        "dependencies": {
+          "StartupDiagnostics": "1.0.0"
+        },
+        "runtime": {
+          "store.manifest.dll": {}
+        }
+      },
+      "StartupDiagnostics/1.0.0": {
+        "runtime": {
+          "lib/netcoreapp2.1/StartupDiagnostics.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "store.manifest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StartupDiagnostics/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oiQr60vBQW7+nBTmgKLSldj06WNLRTdhOZpAdEbCuapoZ+M2DJH2uQbRLvFT8EGAAv4TAKzNtcztpx5YOgBXQQ==",
+      "path": "startupdiagnostics/1.0.0",
+      "hashPath": "startupdiagnostics.1.0.0.nupkg.sha512"
+    }
+  }
+}
 ```
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+Поместите файл *\*.deps.json* в следующее расположение:
 
 ```
-/Users/<USER>/.dotnet/x64/additionalDeps/
+{ADDITIONAL DEPENDENCIES PATH}/shared/{SHARED FRAMEWORK NAME}/{SHARED FRAMEWORK VERSION}/{ENHANCEMENT ASSEMBLY NAME}.deps.json
 ```
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+* `{ADDITIONAL DEPENDENCIES PATH}` &ndash; расположение, добавленное к переменной среды `DOTNET_ADDITIONAL_DEPS`.
+* `{SHARED FRAMEWORK NAME}` &ndash; общая платформа, требуемая для этого файла дополнительных зависимостей.
+* `{SHARED FRAMEWORK VERSION}` &ndash; минимальная версия общей платформы.
+* `{ENHANCEMENT ASSEMBLY NAME}` &ndash; имя сборки расширения.
+
+В примере приложения (проект *RuntimeStore*) файл дополнительных зависимостей помещается в следующее расположение:
 
 ```
-/Users/<USER>/.dotnet/x64/additionalDeps/
+additionalDeps/shared/Microsoft.AspNetCore.App/2.1.0/StartupDiagnostics.deps.json
 ```
 
----
+Чтобы среда выполнения могла обнаружить хранилище среды выполнения, расположение файла дополнительных зависимостей добавляется к переменной среды `DOTNET_ADDITIONAL_DEPS`.
 
-Если файл расположен в установке .NET Core для глобального использования, укажите полный путь к файлу:
-
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-```
-%PROGRAMFILES%\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
-```
-
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
-
-```
-/usr/local/share/dotnet/additionalDeps/<ENHANCEMENT_ASSEMBLY_NAME>/shared/Microsoft.NETCore.App/<SHARED_FRAMEWORK_VERSION>/<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
-```
-
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-```
-/usr/local/share/dotnet/additionalDeps/<ENHANCEMENT_ASSEMBLY_NAME>/shared/Microsoft.NETCore.App/<SHARED_FRAMEWORK_VERSION>/<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
-```
-
----
-
-Для примера приложения (*HostingStartupApp*) файл зависимостей (*HostingStartupApp.runtimeconfig.json*) размещается в профиле пользователя.
-
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
-
-Установите следующее значение для переменной среды `DOTNET_ADDITIONAL_DEPS`:
-
-```
-%UserProfile%\.dotnet\x64\additionalDeps\StartupDiagnostics\
-```
-
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
-
-Установите следующее значение для переменной среды `DOTNET_ADDITIONAL_DEPS`:
-
-```
-/Users/<USER>/.dotnet/x64/additionalDeps/StartupDiagnostics/
-```
-
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
-
-Установите следующее значение для переменной среды `DOTNET_ADDITIONAL_DEPS`:
-
-```
-/Users/<USER>/.dotnet/x64/additionalDeps/StartupDiagnostics/
-```
-
----
+В примере приложения (проект *RuntimeStore*) для сборки хранилища среды выполнения и создания файла дополнительных зависимостей используется скрипт [PowerShell](/powershell/scripting/powershell-scripting).
 
 Примеры установки переменных среды для различных операционных систем см. в разделе [Использование нескольких сред](xref:fundamentals/environments).
 
@@ -355,9 +273,9 @@ dotnet store --manifest <PROJECT_FILE> --runtime <RUNTIME_IDENTIFIER>
 
 Чтобы упростить развертывание размещения при запуске в среде с несколькими компьютерами, пример приложения создает в опубликованном результате папку *deployment*. Эта папка содержит:
 
-* Начальную сборку размещения.
+* Хранилище среды выполнения размещения при запуске.
 * Файл зависимостей размещения при запуске.
-* Сценарий PowerShell, который создает или изменяет `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` и `DOTNET_ADDITIONAL_DEPS` для поддержки активации размещения при запуске. Запустите сценарий из командной строки PowerShell с правами администратора в системе развертывания.
+* Скрипт PowerShell, который создает или изменяет `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`, `DOTNET_SHARED_STORE` и `DOTNET_ADDITIONAL_DEPS` для поддержки активации размещения при запуске. Запустите сценарий из командной строки PowerShell с правами администратора в системе развертывания.
 
 ### <a name="nuget-package"></a>Пакет NuGet
 
