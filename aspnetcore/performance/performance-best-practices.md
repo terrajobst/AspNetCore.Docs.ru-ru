@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 11/29/2018
 uid: performance/performance-best-practices
-ms.openlocfilehash: ced86dbc2d6f40b503493eda122d8977d6df7035
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 9f3ed97bf4d4eb371ff5ae3874234b44745cc4ca
+ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452989"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52618120"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Рекомендации по производительности ASP.NET Core
 
@@ -24,7 +24,7 @@ ms.locfileid: "52452989"
 
 ## <a name="cache-aggressively"></a>Кэшировать агрессивно
 
-Кэширование обсуждается в нескольких частях этого документа. Дополнительные сведения см. в разделе [кэшировать ответы в ASP.NET Core](xref:performance/caching/index).
+Кэширование обсуждается в нескольких частях этого документа. Дополнительные сведения см. в разделе <xref:performance/caching/response>.
 
 ## <a name="avoid-blocking-calls"></a>Избегайте блокирующих вызовов
 
@@ -71,7 +71,7 @@ ms.locfileid: "52452989"
 
 * **Сделать** асинхронный вызов доступа ко всем данным API-интерфейсы.
 * **Не** получить больше данных, чем необходимо. Написать запросы для получения только данные, необходимые для текущего HTTP-запроса.
-* **Сделать** рассмотрим кэширование часто запрашиваемых данных, полученных из базы данных или удаленной службы, если это допустимо для данных, которые требуется немного устарела. В зависимости от сценария, можно использовать [MemoryCache](xref:performance/caching/memory) или [DistributedCache](xref:performance/caching/distributed). Дополнительные сведения см. в разделе [кэшировать ответы в ASP.NET Core](xref:performance/caching/index).
+* **Сделать** рассмотрим кэширование часто запрашиваемых данных, полученных из базы данных или удаленной службы, если это допустимо для данных, которые требуется немного устарела. В зависимости от сценария, можно использовать [MemoryCache](xref:performance/caching/memory) или [DistributedCache](xref:performance/caching/distributed). Дополнительные сведения см. в разделе <xref:performance/caching/response>.
 * Свести к минимуму сетевой циклами. Целью является для получения всех данных, которые потребуются в одном вызове, а не несколько вызовов.
 * **Сделать** использовать [Отключение отслеживания запросов](/ef/core/querying/tracking#no-tracking-queries) в Entity Framework Core, при доступе к данным в целях только для чтения. EF Core может возвращать результаты Отключение отслеживания запросов более эффективно.
 * **Сделать** фильтра и объединение запросов LINQ (с `.Where`, `.Select`, или `.Sum` инструкций, например), которая выполняется в базе данных.
