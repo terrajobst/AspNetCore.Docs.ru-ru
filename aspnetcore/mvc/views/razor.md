@@ -5,12 +5,12 @@ description: Сведения о синтаксисе разметки Razor д�
 ms.author: riande
 ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: 10f0db168b36fed82def8227b3c3edcf5b57f6d7
-ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
+ms.openlocfilehash: ab9fb3f55399764c5fe985811d92c504ed210767
+ms.sourcegitcommit: ad28d1bc6657a743d5c2fa8902f82740689733bb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50148893"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52256584"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Справочник по синтаксису Razor для ASP.NET Core
 
@@ -525,6 +525,105 @@ public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 ### <a name="section"></a>@section
 
 Директива `@section` используется в сочетании с [макетом](xref:mvc/views/layout) и позволяет представлениям отображать содержимое в различных частях HTML-страницы. Дополнительные сведения: [Разделы](xref:mvc/views/layout#layout-sections-label).
+
+## <a name="templated-razor-delegates"></a>Шаблонные делегаты Razor
+
+Шаблоны Razor позволяют определить фрагмент кода пользовательского интерфейса в следующем формате:
+
+```cshtml
+@<tag>...</tag>
+```
+
+Следующий пример показывает, как указать шаблонный делегат Razor в виде <xref:System.Func`2>. [Динамический тип](/dotnet/csharp/programming-guide/types/using-type-dynamic) указывается для параметра метода, инкапсулируемого делегатом. [Тип объекта](/dotnet/csharp/language-reference/keywords/object) указывается в качестве возвращаемого значения делегата. Этот шаблон используется с <xref:System.Collections.Generic.List`1>объекта `Pet`, имеющим свойство `Name`.
+
+```csharp
+public class Pet
+{
+    public string Name { get; set; }
+}
+```
+
+```cshtml
+@{
+    Func<dynamic, object> petTemplate = @<p>You have a pet named @item.Name.</p>;
+
+    var pets = new List<Pet>
+    {
+        new Pet { Name = "Rin Tin Tin" },
+        new Pet { Name = "Mr. Bigglesworth" },
+        new Pet { Name = "K-9" }
+    };
+}
+```
+
+Шаблон отрисовывается с использованием `pets`, предоставляемого оператором `foreach`:
+
+```cshtml
+@foreach (var pet in pets)
+{
+    @petTemplate2(pet)
+}
+```
+
+Отображенные выходные данные:
+
+```html
+<p>You have a pet named <strong>Rin Tin Tin</strong>.</p>
+<p>You have a pet named <strong>Mr. Bigglesworth</strong>.</p>
+<p>You have a pet named <strong>K-9</strong>.</p>
+```
+
+Вы также можете предоставить встроенный шаблон Razor в качестве аргумента для метода. В следующем примере метод `Repeat` получает шаблон Razor. Метод использует этот шаблон для создания HTML-содержимого с повторениями элементов из списка:
+
+```cshtml
+@using Microsoft.AspNetCore.Html
+
+@functions {
+    public static IHtmlContent Repeat(IEnumerable<dynamic> items, int times, 
+        Func<dynamic, IHtmlContent> template)
+    {
+        var html = new HtmlContentBuilder();
+
+        foreach (var item in items)
+        {
+            for (var i = 0; i < times; i++)
+            {
+                html.AppendHtml(template(item));
+            }
+        }
+
+        return html;
+    }
+}
+```
+
+С использованием списка домашних животных из предыдущего примера метод `Repeat` вызывается следующим образом:
+
+* <xref:System.Collections.Generic.List`1> объекта `Pet`.
+* Количество повторений для каждого домашнего животного.
+* Встроенный шаблон, используемый для перечисления элементов неупорядоченного списка.
+
+```cshtml
+<ul>
+    @Repeat(pets, 3, @<li>@item.Name</li>)
+</ul>
+```
+
+Отображенные выходные данные:
+
+```html
+<ul>
+    <li>Rin Tin Tin</li>
+    <li>Rin Tin Tin</li>
+    <li>Rin Tin Tin</li>
+    <li>Mr. Bigglesworth</li>
+    <li>Mr. Bigglesworth</li>
+    <li>Mr. Bigglesworth</li>
+    <li>K-9</li>
+    <li>K-9</li>
+    <li>K-9</li>
+</ul>
+```
 
 ## <a name="tag-helpers"></a>Вспомогательные функции тегов
 
