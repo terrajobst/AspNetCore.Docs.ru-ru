@@ -20,6 +20,7 @@
 ### [С Visual Studio Code](xref:tutorials/web-api-vsc)
 ### [С Visual Studio для Mac](xref:tutorials/first-web-api-mac)
 ### [Для мобильных приложений с машинным кодом](xref:mobile/native-mobile-backend)
+### [Использование MongoDB](xref:tutorials/first-mongo-app)
 ## Веб-приложения в режиме реального времени
 ### [SignalR с JavaScript](xref:tutorials/signalr)
 ### [SignalR с TypeScript](xref:tutorials/signalr-typescript-webpack)
@@ -178,6 +179,7 @@
 ### [Веб-API в Visual Studio Code](xref:tutorials/web-api-vsc)
 ### [Веб-API в Visual Studio для Mac](xref:tutorials/first-web-api-mac)
 ### [Веб-API для мобильных приложений с машинным кодом](xref:mobile/native-mobile-backend)
+### [Использование веб-API с MongoDB](xref:tutorials/first-mongo-app)
 ## Swagger (OpenAPI)
 ### [Обзор набора средств Visual Studio для Unity](xref:tutorials/web-api-help-pages-using-swagger)
 ### [Начало работы с Swashbuckle](xref:tutorials/get-started-with-swashbuckle)
@@ -189,7 +191,7 @@
 ## [Соглашения](xref:web-api/advanced/conventions)
 
 # Приложения в режиме реального времени
-## [Обзор набора средств Visual Studio для Unity](xref:signalr/introduction)
+## [Общие сведения о SignalR](xref:signalr/introduction)
 ## [Поддерживаемые платформы](xref:signalr/supported-platforms)
 ## Учебники
 ### [SignalR с JavaScript](xref:tutorials/signalr)
@@ -208,6 +210,10 @@
 ### [Клиент JavaScript](xref:signalr/javascript-client)
 ### [Справочник по API JavaScript](/javascript/api/?view=signalr-js-latest)
 ### [WebPack и TypeScript](xref:tutorials/signalr-typescript-webpack)
+## Размещение и масштабирование
+### [Обзор набора средств Visual Studio для Unity](xref:signalr/scale)
+### [Служба Azure SignalR](/azure/azure-signalr/signalr-overview)
+### [Канал обмена Redis](xref:signalr/redis-backplane)
 ## [Конфигурация](xref:signalr/configuration)
 ## [Проверка подлинности и авторизация](xref:signalr/authn-and-authz)
 ## [Вопросы безопасности](xref:signalr/security)
@@ -407,6 +413,15 @@
 ## [Совместное использование приложениями файлов cookie](xref:security/cookie-sharing)
 ## [Список надежных IP-адресов](xref:security/ip-safelist)
 
+# Производительность
+## [Обзор набора средств Visual Studio для Unity](xref:performance/performance-best-practices)
+##  Кэширование откликов
+### [Обзор набора средств Visual Studio для Unity](xref:performance/caching/response)
+### [Кэш в памяти](xref:performance/caching/memory)
+### [Распределенное кэширование](xref:performance/caching/distributed)
+### [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
+## [Сжатие откликов](xref:performance/response-compression)
+
 # Другие темы
 ## [Глобализация и локализация](xref:fundamentals/localization)
 ## [Локализация переносимых объектов с помощью Orchard Core](xref:fundamentals/portable-object-localization)
@@ -422,13 +437,6 @@
 ## [Метапакет Microsoft.AspNetCore.All](xref:fundamentals/metapackage)
 ## [Ведение журнала с LoggerMessage](xref:fundamentals/logging/loggermessage)
 ## [Использование наблюдателя за файлами](xref:tutorials/dotnet-watch)
-## Ответы кэша
-### [Обзор набора средств Visual Studio для Unity](xref:performance/caching/index)
-### [Кэш в памяти](xref:performance/caching/memory)
-### [Распределенное кэширование](xref:performance/caching/distributed)
-### [Кэширование ответов](xref:performance/caching/response)
-### [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
-## [Сжатие откликов](xref:performance/response-compression)
 
 # Миграция
 ## [С 2.1 до 2.2](xref:migration/21-to-22)
