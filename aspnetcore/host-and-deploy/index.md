@@ -4,14 +4,14 @@ author: rick-anderson
 description: Сведения о настройке сред размещения и развертывании приложений ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/07/2017
+ms.date: 11/26/2018
 uid: host-and-deploy/index
-ms.openlocfilehash: 024275be3fc5db3f2ed2f7cea1582a1a5f12bda7
-ms.sourcegitcommit: 32f5ee0690604d451f61e9a5c28881c9fcf85738
+ms.openlocfilehash: f70b05df6bf710e2ab54a1eaafb71b4f9b306cbe
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/29/2018
-ms.locfileid: "47454762"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450623"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Размещение и развертывание ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "47454762"
 
 Приложения .NET Core могут публиковаться как *автономные* или *зависящие от платформы*. Если приложение автономное, в папку *публикации* добавляются *DLL*-файлы, содержащие среду выполнения .NET. Если приложение зависит от платформы, файлы среды выполнения .NET не добавляются, так как приложение ссылается на версию .NET, установленную на сервере. По умолчанию используется модель развертывания с зависимостью от платформы. Дополнительные сведения см. в статье [Развертывание приложений .NET Core](/dotnet/articles/core/deploying/index).
 
-В дополнение к *EXE*- и *DLL*-файлам папка *публикации* для приложения ASP.NET Core обычно содержит файлы конфигурации, статические ресурсы и представления MVC. Дополнительные сведения см. в статье [Структура каталогов](xref:host-and-deploy/directory-structure).
+В дополнение к *EXE*- и *DLL*-файлам папка *публикации* для приложения ASP.NET Core обычно содержит файлы конфигурации, статические ресурсы и представления MVC. Дополнительные сведения см. в разделе <xref:host-and-deploy/directory-structure>.
 
 ## <a name="set-up-a-process-manager"></a>Настройка диспетчер процессов
 
@@ -46,31 +46,33 @@ ms.locfileid: "47454762"
 
 ## <a name="set-up-a-reverse-proxy"></a>Настройка обратного прокси-сервера
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 Если приложение использует веб-сервер [Kestrel](xref:fundamentals/servers/kestrel), вы можете использовать [nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache) или [IIS](xref:host-and-deploy/iis/index) в качестве обратного прокси-сервера. Обратный прокси-сервер получает HTTP-запросы из Интернета и пересылает их в Kestrel после определенной предварительной обработки.
 
 Любая из этих конфигураций &mdash; с обратным прокси-сервером и без него &mdash; является допустимой и поддерживаемой для размещения основных компонентов приложений ASP.NET версии 2.0 и выше. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Если приложение использует веб-сервер [Kestrel](xref:fundamentals/servers/kestrel) и к приложению открыт доступ из Интернета, используйте в качестве обратного прокси-сервера [nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache) или [IIS](xref:host-and-deploy/iis/index). Обратный прокси-сервер получает HTTP-запросы из Интернета и пересылает их в Kestrel после определенной предварительной обработки. Основной причиной использования обратного прокси-сервера является безопасность. Дополнительные сведения см. в статье [Использование Kestrel с обратным прокси-сервером](xref:fundamentals/servers/kestrel?tabs=aspnetcore1x#when-to-use-kestrel-with-a-reverse-proxy).
 
----
+::: moniker-end
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Сценарии использования прокси-сервера и подсистемы балансировки нагрузки
 
 Для приложений, размещенных за прокси-серверами и подсистемами балансировки нагрузки, может потребоваться дополнительная настройка. Без дополнительной настройки приложение может не иметь доступ к схеме (HTTP/HTTPS) и удаленному IP-адресу, где был сформирован запрос. Дополнительные сведения см. в разделе [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer).
 
-## <a name="using-visual-studio-and-msbuild-to-automate-deployment"></a>Использование Visual Studio и MSBuild для автоматизации развертывания
+## <a name="use-visual-studio-and-msbuild-to-automate-deployments"></a>Использование Visual Studio и MSBuild для автоматизации развертывания
 
-Помимо копирования выходных данных из [dotnet publish](/dotnet/core/tools/dotnet-publish) на сервер в процессе развертывания часто требуется выполнение и других задач. Например, может потребоваться включить дополнительные файлы в папку *publish* или исключить их из нее. Visual Studio использует для веб-развертывания MSBuild и настраивает MSBuild для решения многих других задач в процессе развертывания. Дополнительные сведения см. в статье [Профили публикации в Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles) и в книге [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Использование MSBuild и сборки Team Foundation).
+Помимо копирования выходных данных из [dotnet publish](/dotnet/core/tools/dotnet-publish) на сервер в процессе развертывания часто требуется выполнение и других задач. Например, может потребоваться включить дополнительные файлы в папку *publish* или исключить их из нее. Visual Studio использует для веб-развертывания MSBuild и настраивает MSBuild для решения многих других задач в процессе развертывания. Дополнительные сведения см. в статье <xref:host-and-deploy/visual-studio-publish-profiles> (Профили публикации в Visual Studio) и книге [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Использование MSBuild и сборки Team Foundation).
 
 Развертывание приложений можно выполнять напрямую из Visual Studio в службу приложений Azure, используя [компонент веб-публикации](xref:tutorials/publish-to-azure-webapp-using-vs) или [встроенную поддержку Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment). Azure DevOps Services поддерживает [непрерывное развертывание в Службе приложений Azure](/azure/devops/pipelines/targets/webapp).
 
-## <a name="publishing-to-azure"></a>Публикация в Azure
+## <a name="publish-to-azure"></a>Публикация в Azure
 
-Инструкции о публикации приложения в Azure с помощью Visual Studio см. в руководстве по [публикации веб-приложения ASP.NET Core в службе приложений Azure с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs). Приложение можно также опубликовать в Azure из [командной строки](/azure/app-service/app-service-web-get-started-dotnet).
+См. сведения о публикации приложения в Azure с помощью Visual Studio (<xref:tutorials/publish-to-azure-webapp-using-vs>). Приложение можно также опубликовать в Azure из [командной строки](/azure/app-service/app-service-web-get-started-dotnet).
 
 ## <a name="host-in-a-web-farm"></a>Размещение в веб-ферме
 
@@ -78,4 +80,5 @@ ms.locfileid: "47454762"
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Сведения об использовании Docker в качестве среды размещения см. в статье [Размещение приложений ASP.NET Core в Docker](xref:host-and-deploy/docker/index).
+* <xref:host-and-deploy/docker/index>
+* <xref:test/troubleshoot>

@@ -4,20 +4,23 @@ author: guardrex
 description: Сведения о размещении приложений ASP.NET Core в службах Windows Server Internet Information Services (IIS).
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/10/2018
+ms.date: 11/26/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 1b34195dc51ca8dab5e8eda10f05ff6678fbc78c
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: 77fa6e1ef6a7fc707c2665826d3c1f4c2691979c
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570169"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450805"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Размещение ASP.NET Core в Windows со службами IIS
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
 [Установка пакета размещения .NET Core](#install-the-net-core-hosting-bundle)
+
+> [!NOTE]
+> Мы тестируем удобство использования новой предлагаемой структуры оглавления для ASP.NET Core.  Если у вас есть несколько минут, и вы хотите попробовать найти семь разных тем в существующей или планируемой структуре оглавления, [щелкните здесь, чтобы принять участие в исследовании](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5).
 
 ## <a name="supported-operating-systems"></a>Поддерживаемые операционные системы
 
@@ -416,31 +419,19 @@ services.Configure<IISOptions>(options =>
 
   Система защиты данных обеспечивает ограниченную поддержку задания [политики по умолчанию на уровне компьютера](xref:security/data-protection/configuration/machine-wide-policy) для всех приложений, использующих интерфейсы API защиты данных. Дополнительные сведения см. в разделе <xref:security/data-protection/introduction>.
 
-## <a name="sub-application-configuration"></a>Конфигурация дочерних приложений
+## <a name="virtual-directories"></a>Виртуальные каталоги
 
-Дочерние приложения, добавленные в корневое приложение, не должны включать в себя модуль ASP.NET Core в качестве обработчика. Если модуль добавляется в качестве обработчика в файл *web.config* дочернего приложения, при попытке работы с этим приложением выводится ошибка *500.19* (внутренняя ошибка сервера) с указанием некорректного файла конфигурации.
+[Виртуальные каталоги IIS](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories) не поддерживаются в приложениях ASP.NET Core. Приложение может размещаться как [вложенное](#sub-applications).
 
-Вот пример опубликованного файла *web.config* для дочернего приложения ASP.NET Core:
+## <a name="sub-applications"></a>Вложенные приложения
 
-::: moniker range=">= aspnetcore-2.2"
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <location path="." inheritInChildApplications="false">
-    <system.webServer>
-      <aspNetCore processPath="dotnet" 
-        arguments=".\MyApp.dll" 
-        stdoutLogEnabled="false" 
-        stdoutLogFile=".\logs\stdout" />
-    </system.webServer>
-  </location>
-</configuration>
-```
-
-::: moniker-end
+Приложение ASP.NET Core можно разместить как [вложенное приложение IIS](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#applications). Путь к вложенному приложению становится частью URL-адреса главного приложения.
 
 ::: moniker range="< aspnetcore-2.2"
+
+Вложенное приложение не должно включать модуль ASP.NET Core в качестве обработчика. Если модуль добавляется в качестве обработчика в файл *web.config* дочернего приложения, при попытке работы с этим приложением выводится ошибка *500.19* (внутренняя ошибка сервера) с указанием некорректного файла конфигурации.
+
+Вот пример опубликованного файла *web.config* для дочернего приложения ASP.NET Core:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -454,7 +445,7 @@ services.Configure<IISOptions>(options =>
 </configuration>
 ```
 
-При размещении дочернего приложения не на основе ASP.NET Core в приложении ASP.NET Core, нужно явным образом удалить унаследованный обработчик из файла *web.config* дочернего приложения.
+Размещая вложенное приложение не на основе ASP.NET Core в приложении ASP.NET Core, явным образом удалите унаследованный обработчик из файла *web.config* вложенного приложения.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -473,7 +464,23 @@ services.Configure<IISOptions>(options =>
 
 ::: moniker-end
 
-Дополнительные сведения о настройке модуля ASP.NET Core см. в статье [Введение в модуль ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) и в [справочнике по настройке модуля ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
+В ссылках на статический ресурс во вложенном приложении следует использовать нотацию `~/`. Такая нотация активирует [вспомогательную функцию тега](xref:mvc/views/tag-helpers/intro) для добавления свойства pathbase вложенного приложения в начало отображаемой относительной ссылки. Для вложенного приложения с путем `/subapp_path` ссылка на изображение `src="~/image.png"` отображается как `src="/subapp_path/image.png"`. ПО промежуточного слоя для обработки статических файлов в главном приложении не обрабатывает такой запрос статического файла. Запрос обрабатывается соответствующим ПО вложенного приложения.
+
+Если атрибуту `src` статического ресурса присваивается абсолютный путь (например, `src="/image.png"`), ссылка отображается без свойства pathbase вложенного приложения. ПО промежуточного слоя для обработки статических файлов в главном приложении пытается найти ресурс в папке [webroot](xref:fundamentals/index#web-root-webroot) главного приложения, что приводит к ошибке *404 — Not Found* (не найдено), кроме случаев, когда статический ресурс доступен из главного приложения.
+
+Для размещения приложения ASP.NET Core в качестве приложения, вложенного в другое приложение ASP.NET Core, сделайте следующее:
+
+1. Создайте пул приложений для вложенного приложения. Для параметра **Версия среды CLR .NET** выберите значение **Без управляемого кода**.
+
+1. Добавьте корневой веб-сайт в диспетчере служб IIS с вложенным приложением в папке внутри корневого веб-сайта.
+
+1. Щелкните правой кнопкой мыши папку вложенного приложения в диспетчере служб IIS и выберите **Convert to Application** (Преобразовать в приложение).
+
+1. В диалоговом окне **Add Application** (Добавление приложения) нажмите кнопку **Select** (Выбрать), чтобы назначить созданный **пул приложений** вложенному приложению. Нажмите кнопку **ОК**.
+
+Назначение отдельного пула приложений вложенному приложению является обязательным при использовании модели внутрипроцессного размещения.
+
+Дополнительные сведения о внутрипроцессной модели размещения и настройке модуля ASP.NET Core см. в статьях <xref:fundamentals/servers/aspnet-core-module> и <xref:host-and-deploy/aspnet-core-module>.
 
 ## <a name="configuration-of-iis-with-webconfig"></a>Настройка служб IIS с помощью файла web.config
 
@@ -610,6 +617,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
+* <xref:test/troubleshoot>
 * [Введение в ASP.NET Core](xref:index)
 * [Официальный веб-сайт Microsoft IIS](https://www.iis.net/)
 * [Библиотека технического содержимого по Windows Server](/windows-server/windows-server)
