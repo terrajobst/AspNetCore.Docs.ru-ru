@@ -1,1 +1,1 @@
-[Visual Studio для Mac](https://www.microsoft.com/net/download/macos)
+[Visual Studio для Mac](https://visualstudio.microsoft.com/vs/mac/)
