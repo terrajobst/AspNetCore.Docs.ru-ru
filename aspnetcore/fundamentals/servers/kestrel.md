@@ -4,14 +4,14 @@ author: guardrex
 description: Общие сведения о Kestrel — кроссплатформенном веб-сервере для ASP.NET Core.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 11/12/2018
+ms.date: 11/26/2018
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 793aa6e190da0170a395292ea661f7c828f817c1
-ms.sourcegitcommit: 1d6ab43eed9cb3df6211c22b97bb3a9351ec4419
+ms.openlocfilehash: 1ef9491ebbc31fd8aa3752b53123eb6c9cf31b42
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51597814"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450846"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Реализации веб-сервера Kestrel в ASP.NET Core
 
@@ -468,7 +468,7 @@ Kestrel ожидает передачи данных через `http://localhos
 
 Дополнительные сведения см. в разделах [URL-адреса серверов](xref:fundamentals/host/web-host#server-urls) и [Переопределение конфигурации](xref:fundamentals/host/web-host#override-configuration).
 
-Значение, указанное с помощью этих подходов, может быть одной или несколькими конечными точками HTTP и HTTPS (HTTPS при наличии сертификата по умолчанию). Настройте значение в виде списка с разделением точкой с запятой (например, `"Urls": "http://localhost:8000;http://localhost:8001"`).
+Значение, указанное с помощью этих подходов, может быть одной или несколькими конечными точками HTTP и HTTPS (HTTPS при наличии сертификата по умолчанию). Настройте значение в виде списка с разделением точкой с запятой (например, `"Urls": "http://localhost:8000; http://localhost:8001"`).
 
 *Замена сертификата по умолчанию из конфигурации*
 
@@ -1027,7 +1027,8 @@ private class TlsFilterAdapter : IConnectionAdapter
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Принудительное использование HTTPS](xref:security/enforcing-ssl)
+* <xref:test/troubleshoot>
+* <xref:security/enforcing-ssl>
+* <xref:host-and-deploy/proxy-load-balancer>
 * [Исходный код Kestrel](https://github.com/aspnet/KestrelHttpServer)
 * [RFC 7230. Синтаксис и маршрутизация сообщений (раздел 5.4. Узел)](https://tools.ietf.org/html/rfc7230#section-5.4)
-* [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer)
