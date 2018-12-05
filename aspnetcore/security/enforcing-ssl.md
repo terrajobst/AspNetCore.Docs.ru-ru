@@ -4,14 +4,14 @@ author: rick-anderson
 description: Узнайте, как требовать HTTPS/TLS в веб-приложения ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/18/2018
+ms.date: 12/01/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: d287d30203fbf367203afe65e05478806fafab34
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: b15c6b5ac77f047c40704c9e164165c55b6ae93b
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570052"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861528"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Принудительное использование HTTPS в ASP.NET Core
 
@@ -76,12 +76,12 @@ ms.locfileid: "51570052"
   При настройке <xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder> в `Program`:
 
   [!code-csharp[](enforcing-ssl/sample-snapshot/Program.cs?name=snippet_Program&highlight=10)]
-* Указать порт с безопасной схемы с помощью `ASPNETCORE_URLS` переменной среды. Переменная среды настраивает сервер. По промежуточного слоя косвенно обнаруживает HTTPS-порт, через <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>. (Does **не** работают в развертываниях обратного прокси-сервера.)
+* Указать порт с безопасной схемы с помощью `ASPNETCORE_URLS` переменной среды. Переменная среды настраивает сервер. По промежуточного слоя косвенно обнаруживает HTTPS-порт, через <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>. Этот подход не работает в развертываниях обратного прокси-сервера.
 * В разработке, задать URL-адрес HTTPS в *launchsettings.json*. Включите протокол HTTPS, если используется IIS Express.
-* Настроить конечную точку HTTPS URL-адрес для развертывания общедоступных edge [Kestrel](xref:fundamentals/servers/kestrel) или [HTTP.sys](xref:fundamentals/servers/httpsys). Только **один порт HTTPS** используется приложением. По промежуточного слоя обнаруживает порт с помощью <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>.
+* Настроить конечную точку HTTPS URL-адрес для развертывания общедоступных edge [Kestrel](xref:fundamentals/servers/kestrel) сервера или [HTTP.sys](xref:fundamentals/servers/httpsys) сервера. Только **один порт HTTPS** используется приложением. По промежуточного слоя обнаруживает порт с помощью <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>.
 
 > [!NOTE]
-> При запуске приложения позади обратного прокси-сервера (например, IIS, IIS Express), `IServerAddressesFeature` недоступна. Необходимо вручную настроить порт. Если порт не задан, не перенаправляет запросы.
+> Когда приложение выполняется в конфигурации обратного прокси-сервера, <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> недоступна. Задайте номер порта, с помощью одного из других подходов, описанных в этом разделе.
 
 Если Kestrel и HTTP.sys используется в качестве общедоступных пограничного сервера, Kestrel и HTTP.sys должны быть настроены на прослушивание оба:
 

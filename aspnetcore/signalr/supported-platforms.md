@@ -5,14 +5,14 @@ description: Дополнительные сведения о поддержив
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/31/2018
+ms.date: 11/12/2018
 uid: signalr/supported-platforms
-ms.openlocfilehash: 773f6c020dbb2982911e177b55855473c750d52a
-ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
+ms.openlocfilehash: be3d4d0049395fb2499bd0b4aac126e953ce7910
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50758184"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861723"
 ---
 # <a name="aspnet-core-signalr-supported-platforms"></a>ASP.NET Core SignalR поддерживаемые платформы
 
@@ -34,7 +34,7 @@ SignalR для ASP.NET Core поддерживает любой платформ
  
 ## <a name="net-client"></a>Клиент .NET
 
-[Клиента .NET](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) выполняется на любой платформе сервера, поддерживаемых ASP.NET Core.
+[Клиента .NET](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) выполняется на любой платформе, поддерживаемой ASP.NET Core. Например [Xamarin разработчики могут использовать SignalR](https://github.com/aspnet/Announcements/issues/305) для создания приложения Android с помощью Xamarin.Android 8.4.0.1 и более поздней версии и приложений iOS с помощью Xamarin.iOS 11.14.0.4 и более поздних версий.
 
 Если сервер работает IIS, транспортный протокол WebSocket требует IIS 8.0 или более поздней версии на Windows Server 2012 или более поздней версии. Другие транспорты, поддерживаются на всех платформах.
 

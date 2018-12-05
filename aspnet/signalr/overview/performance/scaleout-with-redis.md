@@ -8,23 +8,23 @@ ms.date: 06/10/2014
 ms.assetid: 6ecd08c1-e364-4cd7-ad4c-806521911585
 msc.legacyurl: /signalr/overview/performance/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: ebb61e4296f78bcd74622b729a10d45b60ebb724
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: f92946ae99bf8cb3840adb5d98004acb87e24925
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912791"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861294"
 ---
 <a name="signalr-scaleout-with-redis"></a>Масштабирование SignalR с помощью Redis
 ====================
-по [Майк Уоссон](https://github.com/MikeWasson), [Патрик Флетчера](https://github.com/pfletcher)
+по [Майк Уоссон](https://github.com/MikeWasson)
 
 > ## <a name="software-versions-used-in-this-topic"></a>Версии программного обеспечения, используемого в этом разделе
 >
 >
 > - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
-> - SignalR версии 2
+> - SignalR версии 2.4
 >
 >
 >
@@ -65,7 +65,8 @@ Redis — это хранилище ключ значение в памяти. �
 2. Добавьте следующие пакеты NuGet приложения:
 
     - [Microsoft.AspNet.SignalR](http://nuget.org/packages/Microsoft.AspNet.SignalR)
-    - [Microsoft.AspNet.SignalR.Redis](http://nuget.org/packages/Microsoft.AspNet.SignalR.Redis)
+    - [Microsoft.AspNet.SignalR.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.StackExchangeRedis)
+    
 3. Создайте приложение SignalR.
 4. Добавьте следующий код в Startup.cs для настройки на задней стороне:
 
@@ -112,7 +113,7 @@ Redis — это хранилище ключ значение в памяти. �
 - [Начало работы с SignalR 2.0](../getting-started/tutorial-getting-started-with-signalr.md)
 - [Начало работы с SignalR 2.0 и MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
 
-Затем мы изменим приложение чата для поддержки горизонтального масштабирования с помощью Redis. Во-первых добавьте пакет SignalR.Redis NuGet в проект. В Visual Studio из **средства** меню, выберите **диспетчер пакетов NuGet**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
+Затем мы изменим приложение чата для поддержки горизонтального масштабирования с помощью Redis. Во-первых, добавьте `Microsoft.AspNet.SignalR.StackExchangeRedis` свой проект пакет NuGet. В Visual Studio из **средства** меню, выберите **диспетчер пакетов NuGet**, а затем выберите **консоль диспетчера пакетов**. В окне консоли диспетчера пакетов введите следующую команду:
 
 [!code-powershell[Main](scaleout-with-redis/samples/sample5.ps1)]
 

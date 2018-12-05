@@ -5,14 +5,14 @@ description: Сведения о сжатии откликов и способа
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/21/2018
+ms.date: 12/01/2018
 uid: performance/response-compression
-ms.openlocfilehash: 8c3d74b6a346d51507d3c278b03ddc842feea13e
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 2516fbb30e55990dc4ad0d92069853bc26874bc9
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207983"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861892"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Сжатие откликов в ASP.NET Core
 
@@ -24,7 +24,7 @@ ms.locfileid: "50207983"
 
 ## <a name="when-to-use-response-compression-middleware"></a>Когда следует использовать по промежуточного слоя для сжатия ответов
 
-Использование технологий сжатия ответ на основе сервера в IIS, Apache или Nginx. Производительность по промежуточного слоя скорее всего, не соответствует серверных модулей. [Сервер HTTP.sys](xref:fundamentals/servers/httpsys) и [Kestrel](xref:fundamentals/servers/kestrel) настоящее время не предлагает поддержку встроенную функцию сжатия.
+Использование технологий сжатия ответ на основе сервера в IIS, Apache или Nginx. Производительность по промежуточного слоя скорее всего, не соответствует серверных модулей. [Сервер HTTP.sys](xref:fundamentals/servers/httpsys) сервера и [Kestrel](xref:fundamentals/servers/kestrel) server сейчас не предлагают поддержку в встроенную функцию сжатия.
 
 Используйте по промежуточного слоя для сжатия ответов, когда вы будете:
 
@@ -33,8 +33,8 @@ ms.locfileid: "50207983"
   * [Модуль mod_deflate Apache](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
   * [Nginx сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
 * Размещение непосредственно на:
-  * [Сервер HTTP.sys](xref:fundamentals/servers/httpsys) (которая раньше называлась [WebListener](xref:fundamentals/servers/weblistener))
-  * [Kestrel](xref:fundamentals/servers/kestrel)
+  * [HTTP.sys](xref:fundamentals/servers/httpsys) сервера (которые ранее назывались [WebListener](xref:fundamentals/servers/weblistener))
+  * [Kestrel](xref:fundamentals/servers/kestrel) сервера
 
 ## <a name="response-compression"></a>Сжатие откликов
 
@@ -432,7 +432,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>По промежуточного слоя проблемы при работе за Nginx обратный прокси-сервер
 
-При наличии запроса, передаются Nginx, `Accept-Encoding` заголовок удаляется. Это предотвращает сжатие ответ по промежуточного слоя. Дополнительные сведения см. в разделе [NGINX: сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Эта проблема отслеживается [выяснить сквозной сжатие для Nginx (BasicMiddleware #123)](https://github.com/aspnet/BasicMiddleware/issues/123).
+При наличии запроса, передаются Nginx, `Accept-Encoding` заголовок удаляется. Удаление `Accept-Encoding` заголовок запрещает сжатие ответ по промежуточного слоя. Дополнительные сведения см. в разделе [NGINX: сжатия и распаковки](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Эта проблема отслеживается [выяснить сквозной сжатие для Nginx (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123).
 
 ## <a name="working-with-iis-dynamic-compression"></a>Работа с динамического сжатия служб IIS
 

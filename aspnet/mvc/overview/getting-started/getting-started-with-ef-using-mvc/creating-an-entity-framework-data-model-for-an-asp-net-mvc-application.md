@@ -3,16 +3,16 @@ uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-
 title: Начало работы с Entity Framework 6 Code First с помощью MVC 5 | Документация Майкрософт
 author: tdykstra
 ms.author: riande
-ms.date: 10/04/2018
+ms.date: 12/04/2018
 ms.assetid: 00bc8b51-32ed-4fd3-9745-be4c2a9c1eaf
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 5dd9a5a24d8c67c5190c98e3240d132eaa27661c
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: c7ab9458f83e05af84f72d9a2519a8c1c39b84b5
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912414"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861437"
 ---
 # <a name="get-started-with-entity-framework-6-code-first-using-mvc-5"></a>Начало работы с Entity Framework 6 Code First с помощью MVC 5
 
@@ -21,7 +21,7 @@ ms.locfileid: "48912414"
 [Скачать завершенный проект](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
 > [!NOTE]
-> Объект [новой версии этой серии руководств](/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-2.1) — доступны, использующий [Razor Pages](/aspnet/core/razor-pages). Razor Pages — это основанная на страницах модель программирования, которая упрощает и повышает эффективность создания пользовательского веб-интерфейса. Руководство по Razor Pages рекомендуется по сравнению с версией MVC. Руководство по Razor Pages:
+> Для разработки новых приложений мы рекомендуем [ASP.NET Core Razor Pages](/aspnet/core/razor-pages) по ASP.NET MVC контроллеры и представления. Серии руководств примерно такой доступен для Razor Pages, [руководство по Razor Pages](/aspnet/core/tutorials/razor-pages/razor-pages-start):
 >
 > * проще для выполнения;
 > * содержит больше рекомендаций по EF Core;

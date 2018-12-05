@@ -1,0 +1,2 @@
+* [Visual Studio 2017 версии 15,9 или более поздней версии](https://visualstudio.microsoft.com/downloads/) с **ASP.NET и веб-разработка** рабочей нагрузки
+* [Пакет SDK версии 2.2 или более поздней версии .NET core](https://www.microsoft.com/net/download/all)
