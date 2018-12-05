@@ -4,14 +4,14 @@ author: rick-anderson
 description: Познакомьтесь с основными понятиями для создания приложений ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/25/2018
+ms.date: 12/01/2018
 uid: fundamentals/index
-ms.openlocfilehash: ab140051648c1640b3c4f382bfd8201c5c0c2039
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 8bd447632f915cadcc5199ec50b292ad27f6c3ba
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207476"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861593"
 ---
 # <a name="aspnet-core-fundamentals"></a>Основы ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.locfileid: "50207476"
 * загружает среду выполнения [.NET Core](https://github.com/dotnet/coreclr);
 * использует первый аргумент командной строки в качестве пути к управляемому двоичному файлу, который содержит точку входа (`Main`) и начинает выполнение кода.
 
-Метод `Main` вызывает [WebHost.CreateDefaultBuilder](xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*), создающий веб-узел по [шаблону конструктора](https://wikipedia.org/wiki/Builder_pattern). Конструктор содержит методы, определяющие веб-сервер (например, <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>), а также класс запуска (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*>). В приведенном выше примере веб-сервер [Kestrel](xref:fundamentals/servers/kestrel) выделяется автоматически. Веб-хост ASP.NET Core попытается запуститься в службах IIS, если они доступны. Другие веб-серверы, такие как [HTTP.sys](xref:fundamentals/servers/httpsys), можно использовать, вызывая соответствующий метод расширения. `UseStartup` подробно описывается в следующем разделе.
+Метод `Main` вызывает [WebHost.CreateDefaultBuilder](xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*), создающий веб-узел по [шаблону конструктора](https://wikipedia.org/wiki/Builder_pattern). Конструктор содержит методы, определяющие веб-сервер (например, <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>), а также класс запуска (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*>). В приведенном выше примере веб-сервер [Kestrel](xref:fundamentals/servers/kestrel) выделяется автоматически. Веб-хост ASP.NET Core попытается запуститься в [службах IIS](https://www.iis.net/), если они доступны. Другие веб-серверы, такие как [HTTP.sys](xref:fundamentals/servers/httpsys), можно использовать, вызывая соответствующий метод расширения. `UseStartup` подробно описывается в разделе [Для стартапов](#startup).
 
 <xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder>, тип возвращаемого значения вызова `WebHost.CreateDefaultBuilder`, предоставляет множество вспомогательных методов. В число таких методов входят, например, `UseHttpSys` для размещения приложения в HTTP.sys и <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseContentRoot*> для указания корневого каталога содержимого. Методы <xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder.Build*> и <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*> собирают объект <xref:Microsoft.AspNetCore.Hosting.IWebHost>, в котором будет размещаться приложение, и переходят к ожиданию HTTP-запросов.
 
@@ -131,7 +131,50 @@ ASP.NET Core включает целый ряд встроенного ПО пр
 
 ## <a name="servers"></a>Серверы
 
-Модель размещения ASP.NET Core не прослушивает запросы напрямую. Модель размещения полагается на реализацию HTTP-сервера для переадресации запроса в приложение. Переадресованный запрос упаковывается как набор объектов функций, доступ к которым можно получить через интерфейсы. ASP.NET Core включает управляемый кроссплатформенный веб-сервер под названием [Kestrel](xref:fundamentals/servers/kestrel). Kestrel обычно выполняется позади рабочего веб-сервера, например [IIS](https://www.iis.net/) или [Nginx](http://nginx.org), в обратной конфигурации прокси-сервера. Kestrel также можно использовать в роли общедоступного пограничного сервера с прямым доступом к Интернету в ASP.NET Core 2.0 или более поздней версии.
+Модель размещения ASP.NET Core не прослушивает запросы напрямую. Модель размещения полагается на реализацию HTTP-сервера для переадресации запроса в приложение.
+
+::: moniker range=">= aspnetcore-2.2"
+
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+ASP.NET Core предоставляет следующие реализации серверов:
+
+* Сервер [Kestrel](xref:fundamentals/servers/kestrel) — это управляемый кроссплатформенный веб-сервер. Он часто запускается в реконфигурации прокси-сервера с помощью [IIS](https://www.iis.net/). Kestrel также можно использовать в роли общедоступного пограничного сервера с прямым доступом к Интернету в ASP.NET Core 2.0 или более поздней версии.
+* HTTP-сервер службы IIS (`IISHttpServer`) является [внутрипроцессным сервером службы IIS](xref:fundamentals/servers/aspnet-core-module#in-process-hosting-model).
+* Сервер [HTTP.sys](xref:fundamentals/servers/httpsys) является сервером для ASP.NET Core в Windows.
+
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+
+ASP.NET Core использует реализацию сервера [Kestrel](xref:fundamentals/servers/kestrel). Kestrel — это управляемый кроссплатформенный веб-сервер. Kestrel также можно использовать в роли общедоступного пограничного сервера с прямым доступом к Интернету в ASP.NET Core 2.0 или более поздней версии.
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+ASP.NET Core использует реализацию сервера [Kestrel](xref:fundamentals/servers/kestrel). Kestrel — это управляемый кроссплатформенный веб-сервер. Он часто запускается в реконфигурации прокси-сервера с помощью [Nginx](http://nginx.org) или [Apache](https://httpd.apache.org/). Kestrel также можно использовать в роли общедоступного пограничного сервера с прямым доступом к Интернету в ASP.NET Core 2.0 или более поздней версии.
+
+---
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+ASP.NET Core предоставляет следующие реализации серверов:
+
+* Сервер [Kestrel](xref:fundamentals/servers/kestrel) — это управляемый кроссплатформенный веб-сервер. Он часто запускается в реконфигурации прокси-сервера с помощью [IIS](https://www.iis.net/). Kestrel также можно использовать в роли общедоступного пограничного сервера с прямым доступом к Интернету в ASP.NET Core 2.0 или более поздней версии.
+* Сервер [HTTP.sys](xref:fundamentals/servers/httpsys) является сервером для ASP.NET Core в Windows.
+
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+
+ASP.NET Core использует реализацию сервера [Kestrel](xref:fundamentals/servers/kestrel). Kestrel — это управляемый кроссплатформенный веб-сервер. Kestrel также можно использовать в роли общедоступного пограничного сервера с прямым доступом к Интернету в ASP.NET Core 2.0 или более поздней версии.
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+ASP.NET Core использует реализацию сервера [Kestrel](xref:fundamentals/servers/kestrel). Kestrel — это управляемый кроссплатформенный веб-сервер. Он часто запускается в реконфигурации прокси-сервера с помощью [Nginx](http://nginx.org) или [Apache](https://httpd.apache.org/). Kestrel также можно использовать в роли общедоступного пограничного сервера с прямым доступом к Интернету в ASP.NET Core 2.0 или более поздней версии.
+
+---
+
+::: moniker-end
 
 Дополнительные сведения см. в разделе <xref:fundamentals/servers/index>.
 

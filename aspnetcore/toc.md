@@ -6,24 +6,31 @@
 # [Начало работы](xref:getting-started)
 
 # Учебники
+## [Создание веб-API](xref:tutorials/first-web-api)
 ## Веб-приложения
 ### Razor Pages
-#### [С Visual Studio](xref:tutorials/razor-pages/index)
-#### [С Visual Studio Code](xref:tutorials/razor-pages-vsc/index)
-#### [С Visual Studio для Mac](xref:tutorials/razor-pages-mac/index)
+#### [Введение в Razor Pages](xref:razor-pages/index)
+
+#### [Руководство по Razor Pages](xref:tutorials/razor-pages/index)
+##### [Начало работы](xref:tutorials/razor-pages/razor-pages-start)
+##### [Добавление модели](xref:tutorials/razor-pages/model)
+##### [Формирование шаблонов](xref:tutorials/razor-pages/page)
+##### [Работа с базой данных](xref:tutorials/razor-pages/sql)
+##### [Обновление страниц](xref:tutorials/razor-pages/da1)
+##### [Добавление поиска](xref:tutorials/razor-pages/search)
+##### [Добавление нового поля](xref:tutorials/razor-pages/new-field)
+##### [Добавление проверки](xref:tutorials/razor-pages/validation)
+
 ### MVC
 #### [С Visual Studio](xref:tutorials/first-mvc-app/index)
 #### [С Visual Studio Code](xref:tutorials/first-mvc-app-xplat/index)
 #### [С Visual Studio для Mac](xref:tutorials/first-mvc-app-mac/index)
-## Веб-API
-### [С Visual Studio](xref:tutorials/first-web-api)
-### [С Visual Studio Code](xref:tutorials/web-api-vsc)
-### [С Visual Studio для Mac](xref:tutorials/first-web-api-mac)
-### [Для мобильных приложений с машинным кодом](xref:mobile/native-mobile-backend)
-### [Использование MongoDB](xref:tutorials/first-mongo-app)
+
 ## Веб-приложения в режиме реального времени
 ### [SignalR с JavaScript](xref:tutorials/signalr)
 ### [SignalR с TypeScript](xref:tutorials/signalr-typescript-webpack)
+## [Создание серверных служб для собственных мобильных приложений](xref:mobile/native-mobile-backend)
+
 ## Доступ к данным
 ### [EF Core с Razor Pages](xref:data/ef-rp/index)
 ### [EF Core с MVC, существующая база данных](/ef/core/get-started/aspnetcore/existing-db)
@@ -58,33 +65,16 @@
 # Веб-приложения
 ## Razor Pages
 ### [Обзор набора средств Visual Studio для Unity](xref:razor-pages/index)
-### Учебники
-#### Razor Pages с Visual Studio
-##### [Обзор набора средств Visual Studio для Unity](xref:tutorials/razor-pages/index)
-##### [Начало работы](xref:tutorials/razor-pages/razor-pages-start)
-##### [Добавление модели](xref:tutorials/razor-pages/model)
-##### [Формирование шаблонов](xref:tutorials/razor-pages/page)
-##### [SQL Server](xref:tutorials/razor-pages/sql)
-##### [Обновление страниц](xref:tutorials/razor-pages/da1)
-##### [Добавление поиска](xref:tutorials/razor-pages/search)
-##### [Добавление нового поля](xref:tutorials/razor-pages/new-field)
-##### [Добавление проверки](xref:tutorials/razor-pages/validation)
-#### Razor Pages с Visual Studio Code
-##### [Обзор набора средств Visual Studio для Unity](xref:tutorials/razor-pages-vsc/index)
-##### [Начало работы с Razor Pages](xref:tutorials/razor-pages-vsc/razor-pages-start)
-##### [Добавление модели](xref:tutorials/razor-pages-vsc/model)
-##### [Сформированные страницы Razor Pages](xref:tutorials/razor-pages-vsc/page)
-##### [Работа с SQLite](xref:tutorials/razor-pages-vsc/sql)
-##### [Обновление страниц](xref:tutorials/razor-pages-vsc/da1)
-##### [Добавление поиска](xref:tutorials/razor-pages-vsc/search)
-#### Razor Pages с Visual Studio для Mac
-##### [Обзор набора средств Visual Studio для Unity](xref:tutorials/razor-pages-mac/index)
-##### [Начало работы с Razor Pages](xref:tutorials/razor-pages-mac/razor-pages-start)
-##### [Добавление модели](xref:tutorials/razor-pages-mac/model)
-##### [Сформированные страницы Razor Pages](xref:tutorials/razor-pages-mac/page)
-##### [Работа с SQLite](xref:tutorials/razor-pages-mac/sql)
-##### [Обновление страниц](xref:tutorials/razor-pages-mac/da1)
-##### [Добавление поиска](xref:tutorials/razor-pages-mac/search)
+### [Руководство по Razor Pages](xref:tutorials/razor-pages/index)
+#### [Начало работы](xref:tutorials/razor-pages/razor-pages-start)
+#### [Добавление модели](xref:tutorials/razor-pages/model)
+#### [Формирование шаблонов](xref:tutorials/razor-pages/page)
+#### [Работа с базой данных](xref:tutorials/razor-pages/sql)
+#### [Обновление страниц](xref:tutorials/razor-pages/da1)
+#### [Добавление поиска](xref:tutorials/razor-pages/search)
+#### [Добавление нового поля](xref:tutorials/razor-pages/new-field)
+#### [Добавление проверки](xref:tutorials/razor-pages/validation)
+
 ### [Фильтры](xref:razor-pages/filter)
 ### [Библиотеки классов Razor](xref:razor-pages/ui-class)
 ### [Соглашения для маршрутов и приложений](xref:razor-pages/razor-pages-conventions)
@@ -99,7 +89,7 @@
 ##### [Добавление контроллера](xref:tutorials/first-mvc-app/adding-controller)
 ##### [Добавление представления](xref:tutorials/first-mvc-app/adding-view)
 ##### [Добавление модели](xref:tutorials/first-mvc-app/adding-model)
-##### [Работа с SQL Server](xref:tutorials/first-mvc-app/working-with-sql)
+##### [Работа с базой данных](xref:tutorials/first-mvc-app/working-with-sql)
 ##### [Действия и представления контроллера](xref:tutorials/first-mvc-app/controller-methods-views)
 ##### [Добавление поиска](xref:tutorials/first-mvc-app/search)
 ##### [Добавление нового поля](xref:tutorials/first-mvc-app/new-field)
@@ -174,12 +164,9 @@
 
 # Веб-API
 ## [Обзор набора средств Visual Studio для Unity](xref:web-api/index)
-## Учебники
-### [Веб-API с Visual Studio](xref:tutorials/first-web-api)
-### [Веб-API в Visual Studio Code](xref:tutorials/web-api-vsc)
-### [Веб-API в Visual Studio для Mac](xref:tutorials/first-web-api-mac)
-### [Веб-API для мобильных приложений с машинным кодом](xref:mobile/native-mobile-backend)
-### [Использование веб-API с MongoDB](xref:tutorials/first-mongo-app)
+
+## [Создание веб-API](xref:tutorials/first-web-api)
+
 ## Swagger (OpenAPI)
 ### [Обзор набора средств Visual Studio для Unity](xref:tutorials/web-api-help-pages-using-swagger)
 ### [Начало работы с Swashbuckle](xref:tutorials/get-started-with-swashbuckle)
@@ -187,6 +174,7 @@
 ## [Типы возвращаемых значений действий](xref:web-api/action-return-types)
 ## [Форматирование данных ответа](xref:web-api/advanced/formatting)
 ## [Пользовательские модули форматирования](xref:web-api/advanced/custom-formatters)
+
 ## [Анализаторы](xref:web-api/advanced/analyzers)
 ## [Соглашения](xref:web-api/advanced/conventions)
 
@@ -209,7 +197,6 @@
 ### [Справочник по API Java](/java/api/com.microsoft.signalr?view=aspnet-signalr-java)
 ### [Клиент JavaScript](xref:signalr/javascript-client)
 ### [Справочник по API JavaScript](/javascript/api/?view=signalr-js-latest)
-### [WebPack и TypeScript](xref:tutorials/signalr-typescript-webpack)
 ## Размещение и масштабирование
 ### [Обзор набора средств Visual Studio для Unity](xref:signalr/scale)
 ### [Служба Azure SignalR](/azure/azure-signalr/signalr-overview)
@@ -319,6 +306,7 @@
 ## [Профили публикации Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles)
 ## [Структура каталогов](xref:host-and-deploy/directory-structure)
 ## [Справочник по ошибкам для службы приложений Azure и служб IIS](xref:host-and-deploy/azure-iis-errors-reference)
+## [Проверки работоспособности](xref:host-and-deploy/health-checks)
 
 # Безопасность и удостоверения
 ## [Обзор набора средств Visual Studio для Unity](xref:security/index)
@@ -455,6 +443,7 @@
 ### [Миграция с модулей HTTP на ПО промежуточного слоя](xref:migration/http-modules)
 
 # Новые возможности
+## [Новые возможности версии 2.2](xref:aspnetcore-2.2)
 ## [Новые возможности версии 2.1](xref:aspnetcore-2.1)
 ## [Новые возможности версии 2.0](xref:aspnetcore-2.0)
 ## [Новые возможности версии 1.1](xref:aspnetcore-1.1)
