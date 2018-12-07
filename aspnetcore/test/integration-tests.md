@@ -95,16 +95,16 @@ ms.locfileid: "52450753"
 
 В сущности, между конфигурацией для тестов приложений Razor Pages и MVC-приложений нет никаких отличий. Единственное отличие заключается в том, как именуются тесты. В приложении Razor Pages тесты конечных точек страницы обычно именуются по классу модели страницы (например, `IndexPageTests` для тестирования интеграции компонентов на странице Index). В приложении MVC тесты обычно организованы по классам контроллеров и именуются по контроллеру, который они проверяют (например, `HomeControllerTests` для тестирования интеграции компонентов на контроллере Home).
 
-## <a name="test-app-prerequisites"></a>Проверка необходимых компонентов приложения
+## <a name="test-app-prerequisites"></a>Проверка необходимых требований к приложению
 
-Необходимо тестового проекта:
+Тестовый проект должен:
 
 * Ссылаться на следующие пакеты:
   * [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
   * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
-* Укажите Web SDK в файле проекта (`<Project Sdk="Microsoft.NET.Sdk.Web">`). Web SDK является обязательным при ссылке на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+* Указывать Web SDK в файле проекта (`<Project Sdk="Microsoft.NET.Sdk.Web">`). Web SDK необходим при ссылке на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
-Эти компоненты можно увидеть в [пример приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/). Проверьте *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj* файла. Пример приложения использует [xUnit](https://xunit.github.io/) платформы тестирования и [AngleSharp](https://anglesharp.github.io/) библиотеки средство синтаксического анализа, поэтому в примере приложения также ссылается на:
+Выполнение необходимых требований можно посмотреть в [примере приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/). Изучите файл *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj*. Образец приложения использует тестовый фреймворк [xUnit](https://xunit.github.io/) и библиотеку для парсинга [AngleSharp](https://anglesharp.github.io/), поэтому он также ссылается на:
 
 * [xUnit](https://www.nuget.org/packages/xunit/)
 * [xUnit.Runner.VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
