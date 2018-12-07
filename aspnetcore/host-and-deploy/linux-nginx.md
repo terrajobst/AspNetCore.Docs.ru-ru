@@ -4,14 +4,14 @@ author: rick-anderson
 description: В статье описывается процедура настройки Nginx как обратного прокси-сервера на Ubuntu 16.04 для перенаправления трафика HTTP в веб-приложение ASP.NET Core, выполняемое в Kestrel.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/23/2018
+ms.date: 11/26/2018
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: d29a9287cbce27a54e779fadfa05e57febec0413
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: d4bffab80ba20d4cf77a358249c7b349033de5bd
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253123"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450792"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Среда размещения ASP.NET Core в операционной системе Linux с Nginx
 
@@ -186,7 +186,7 @@ server {
 
 Когда закончите тестировать приложение, завершите его работу с помощью `Ctrl+C` в командной строке.
 
-## <a name="monitoring-the-app"></a>Мониторинг приложения
+## <a name="monitor-the-app"></a>Мониторинг приложения
 
 Сервер настроен на перенаправление запросов к `http://<serveraddress>:80` в приложение ASP.NET Core, выполняемое в Kestrel по адресу `http://127.0.0.1:5000`. При этом Nginx не настроен для управления процессом Kestrel. Для запуска и мониторинга соответствующего веб-приложения можно использовать *systemd* и создать файл службы. *systemd* — это система инициализации, предоставляющая различные функции для запуска и остановки процессов, а также управления ими. 
 
@@ -268,7 +268,7 @@ Connection: Keep-Alive
 Transfer-Encoding: chunked
 ```
 
-### <a name="viewing-logs"></a>Просмотр журналов
+### <a name="view-logs"></a>Просмотр журналов
 
 Так как веб-приложение, использующее Kestrel, управляется через `systemd`, все события и процессы регистрируются в централизованном журнале. При этом журнал содержит все записи обо всех службах и процессах, управляемых `systemd`. Чтобы просмотреть элементы, связанные с `kestrel-helloapp.service`, используйте следующую команду.
 
@@ -297,13 +297,13 @@ sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-
 * <xref:security/data-protection/implementation/key-storage-providers>
 * <xref:security/data-protection/implementation/key-encryption-at-rest>
 
-## <a name="securing-the-app"></a>Защита приложения
+## <a name="secure-the-app"></a>Защита приложения
 
 ### <a name="enable-apparmor"></a>Включение AppArmor
 
 Начиная с версии 2.6 ядро Linux включает платформу модулей безопасности Linux (LSM). LSM поддерживают различные реализации модулей безопасности. [AppArmor](https://wiki.ubuntu.com/AppArmor) — это LSM, который реализует систему обязательного контроля доступа, позволяющую ограничивать программу определенным набором ресурсов. Убедитесь, что AppArmor включен и правильно настроен.
 
-### <a name="configuring-the-firewall"></a>Настройка межсетевого экрана
+### <a name="configure-the-firewall"></a>Настройка брандмауэра
 
 Закройте все внешние порты, которые не используются. Незамысловатый межсетевой экран (ufw) позволяет взаимодействовать с `iptables`, предоставляя интерфейс командной строки для настройки межсетевого экрана.
 
@@ -322,7 +322,7 @@ sudo ufw allow 443/tcp
 sudo ufw enable
 ```
 
-### <a name="securing-nginx"></a>Защита Nginx
+### <a name="secure-nginx"></a>Защита Nginx
 
 #### <a name="change-the-nginx-response-name"></a>Изменение имени ответа Nginx
 
@@ -387,5 +387,6 @@ sudo nano /etc/nginx/nginx.conf
 
 * [Необходимые компоненты для .NET Core в Linux](/dotnet/core/linux-prerequisites)
 * [Nginx: двоичные выпуски. Официальные пакеты Debian и Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages)
-* [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer)
+* <xref:test/troubleshoot>
+* <xref:host-and-deploy/proxy-load-balancer>
 * [NGINX. Использование перенаправленного заголовка](https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/)

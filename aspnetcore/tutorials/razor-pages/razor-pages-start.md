@@ -5,12 +5,12 @@ description: В этой серии руководств объясняется,
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 4ee9a014114e2536f7584b2a1ff9d699fb971aa8
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: ca5b134aaa0a9218bc3b0466c3448bd41e8cef8b
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206982"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450740"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Руководство. Начало работы с Razor Pages в ASP.NET Core
 
@@ -33,6 +33,9 @@ ms.locfileid: "50206982"
 * macOS, Linux и Windows: [Начало работы с Razor Pages в ASP.NET Core с Visual Studio Code](xref:tutorials/razor-pages-vsc/razor-pages-start)
 
 [Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample) ([как скачивать](xref:index#how-to-download-a-sample))
+
+> [!NOTE]
+> Мы тестируем удобство использования новой предлагаемой структуры оглавления для ASP.NET Core.  Если у вас есть несколько минут, и вы хотите попробовать найти семь разных тем в существующей или планируемой структуре оглавления, [щелкните здесь, чтобы принять участие в исследовании](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5).
 
 ::: moniker range=">= aspnetcore-2.1"
 

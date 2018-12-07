@@ -4,69 +4,80 @@ author: guardrex
 description: Узнайте, как использовать шаблон параметров для представления групп связанных параметров в приложениях ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/09/2018
+ms.date: 11/28/2018
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 99aa5028a8704c7e9e3010415137e2560213a2ad
-ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
+ms.openlocfilehash: 67f74657fb9aa5ba8235be159e2f10cf80ebce3d
+ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51505801"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52618107"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Шаблон параметров в ASP.NET Core
 
 Автор [Люк Латэм](https://github.com/guardrex) (Luke Latham)
 
+::: moniker range="<= aspnetcore-1.1"
+
+Для версии 1.1 этого раздела скачайте статью [Шаблон параметров в ASP.NET Core (версия 1.1, PDF-файл)](https://webpifeed.blob.core.windows.net/webpifeed/Partners/Options_1.1.pdf).
+
+::: moniker-end
+
 Шаблон параметров использует классы для представления групп связанных настроек. Когда [параметры конфигурации](xref:fundamentals/configuration/index) изолируются по сценарию в отдельных классах, в приложениях соблюдаются два важных принципа программной инженерии.
 
-* [Принцип изоляции интерфейсов](http://deviq.com/interface-segregation-principle/). Сценарии (классы), которые зависят от параметров конфигурации, зависят только от используемых ими параметров конфигурации.
-* [Разделение ответственности](http://deviq.com/separation-of-concerns/). Параметры для разных частей приложения не зависят друг от друга и не связаны друг с другом.
+* [Принцип изоляции интерфейсов или инкапсуляция](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation). Сценарии (классы), которые зависят от параметров конфигурации, зависят только от используемых ими параметров конфигурации.
+* [Разделение ответственности](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns). Параметры для разных частей приложения не зависят друг от друга и не связаны друг с другом.
 
-[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([как скачивать](xref:index#how-to-download-a-sample)). Информацию в этой статье будет проще воспринимать, если пользоваться примером приложения.
+В параметрах также предусмотрен механизм для проверки данных конфигурации. Дополнительные сведения см. в разделе [Проверка параметров](#options-validation).
+
+[Просмотреть или скачать образец кода](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([как скачивать](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-::: moniker range=">= aspnetcore-2.1"
-
 Добавьте ссылку на [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) или добавьте ссылку на пакет в пакет [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
 
-::: moniker-end
+## <a name="options-interfaces"></a>Интерфейсы параметров
 
-::: moniker range="= aspnetcore-2.0"
+<xref:Microsoft.Extensions.Options.IOptionsMonitor`1> используется для извлечения параметров и управления уведомлениями о параметрах для экземпляров `TOptions`. <xref:Microsoft.Extensions.Options.IOptionsMonitor`1> поддерживается в следующих сценариях:
 
-Добавьте ссылку на [метапакет Microsoft.AspNetCore.All](xref:fundamentals/metapackage) или добавьте ссылку на пакет в пакет [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
+* уведомления об изменениях;
+* [именованные параметры](#named-options-support-with-iconfigurenamedoptions);
+* [перезагружаемые конфигурации](#reload-configuration-data-with-ioptionssnapshot);
+* объявление определенных параметров недействительными (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1>).
 
-::: moniker-end
+Сценарии [пост-конфигурации](#options-post-configuration) позволяют задать или изменить параметры после выполнения всех действий настройки с помощью <xref:Microsoft.Extensions.Options.IConfigureOptions`1>.
 
-::: moniker range="< aspnetcore-2.0"
+Интерфейс <xref:Microsoft.Extensions.Options.IOptionsFactory`1> отвечает за создание экземпляров параметров. Он имеет единственный метод <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*>. При реализации по умолчанию принимаются все зарегистрированные интерфейсы <xref:Microsoft.Extensions.Options.IConfigureOptions`1> и <xref:Microsoft.Extensions.Options.IPostConfigureOptions`1>. Также сначала выполняются все основные настройки, а затем действия после конфигурации. Она различает интерфейсы <xref:Microsoft.Extensions.Options.IConfigureNamedOptions`1> и <xref:Microsoft.Extensions.Options.IConfigureOptions`1> и вызывает только соответствующий интерфейс.
 
-Добавьте ссылку на пакет в пакет [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
+<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1> используется интерфейсом <xref:Microsoft.Extensions.Options.IOptionsMonitor`1> для записи экземпляров `TOptions` в кэш. <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1> делает экземпляры параметров в мониторе недействительными, что приводит к повторному вычислению значений (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>). Значения можно также вводить вручную с помощью <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*>. Метод <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> используется, если необходимо повторно создать все именованные экземпляры по требованию.
 
-::: moniker-end
+<xref:Microsoft.Extensions.Options.IOptionsSnapshot`1> полезно использовать в сценариях, когда параметры должны заново вычисляться при каждом запросе. Дополнительные сведения см. в разделе [Повторная загрузка данных конфигурации с помощью IOptionsSnapshot](#reload-configuration-data-with-ioptionssnapshot).
 
-## <a name="basic-options-configuration"></a>Конфигурация основных параметров
+<xref:Microsoft.Extensions.Options.IOptions`1> можно использовать, чтобы обеспечить поддержку определенных параметров. Но <xref:Microsoft.Extensions.Options.IOptions`1> не поддерживается в описанных выше сценариях <xref:Microsoft.Extensions.Options.IOptionsMonitor`1>. Вы можете продолжать использовать <xref:Microsoft.Extensions.Options.IOptions`1> в существующих платформах и библиотеках, которые уже используют интерфейс <xref:Microsoft.Extensions.Options.IOptions`1>. В таком случае вам не потребуются сценарии, предоставляемые <xref:Microsoft.Extensions.Options.IOptionsMonitor`1>.
 
-Конфигурация основных параметров демонстрируется в примере &num; 1 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+## <a name="general-options-configuration"></a>Конфигурация общих параметров
+
+Конфигурация общих параметров демонстрируется в примере &num;1 в примере приложения.
 
 Класс параметров должен быть неабстрактным с открытым конструктором без параметров. Приведенный ниже класс (`MyOptions`) имеет два свойства: `Option1` и `Option2`. Задавать значения по умолчанию необязательно, однако конструктор класса в этом примере задает значение по умолчанию для `Option1`. Значение по умолчанию для `Option2` устанавливается путем прямой инициализации (*Models/MyOptions.cs*).
 
-[!code-csharp[](options/sample/Models/MyOptions.cs?name=snippet1)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptions.cs?name=snippet1)]
 
-Класс `MyOptions` добавляется в контейнер службы с помощью [Configure&lt;TOptions&gt;(IServiceCollection, IConfiguration)](/dotnet/api/microsoft.extensions.dependencyinjection.optionsconfigurationservicecollectionextensions.configure#Microsoft_Extensions_DependencyInjection_OptionsConfigurationServiceCollectionExtensions_Configure__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_) и привязывается к конфигурации:
+Класс `MyOptions` добавляется в контейнер службы с помощью интерфейса <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure*> и привязывается к конфигурации.
 
-[!code-csharp[](options/sample/Startup.cs?name=snippet_Example1)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example1)]
 
-Следующая страничная модель использует [внедрение зависимостей конструктора](xref:mvc/controllers/dependency-injection) с помощью [IOptions&lt;TOptions&gt;](/dotnet/api/Microsoft.Extensions.Options.IOptions-1) для доступа к параметрам (*Pages/Index.cshtml.cs*):
+В следующей страничной модели применяется [внедрение зависимостей конструктора](xref:mvc/controllers/dependency-injection) с помощью <xref:Microsoft.Extensions.Options.IOptionsMonitor`1> для доступа к параметрам (*Pages/Index.cshtml.cs*):
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?range=9)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?name=snippet2&highlight=2,8)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet2&highlight=2,8)]
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?name=snippet_Example1)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example1)]
 
 В файле *appsettings.json* образца задаются значения для свойств `option1` и `option2`:
 
-[!code-json[](options/sample/appsettings.json?highlight=2-3)]
+[!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=2-3)]
 
 Когда приложение выполняется, метод `OnGet` страничной модели возвращает строку со значениями класса параметров:
 
@@ -75,7 +86,7 @@ option1 = value1_from_json, option2 = -1
 ```
 
 > [!NOTE]
-> При использовании настраиваемого компонента [ConfigurationBuilder](/dotnet/api/system.configuration.configurationbuilder) для загрузки конфигурации параметров из файла настроек необходимо убедиться, что базовый путь задан правильно:
+> При использовании настраиваемого компонента <xref:System.Configuration.ConfigurationBuilder> для загрузки конфигурации параметров из файла настроек необходимо убедиться, что базовый путь задан правильно:
 >
 > ```csharp
 > var configBuilder = new ConfigurationBuilder()
@@ -86,31 +97,31 @@ option1 = value1_from_json, option2 = -1
 > services.Configure<MyOptions>(config);
 > ```
 >
-> При загрузке конфигурации параметров из файла настроек с помощью [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) явно задавать базовый путь не требуется.
+> При загрузке конфигурации параметров из файла настроек с помощью <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> явно задавать базовый путь не требуется.
 
 ## <a name="configure-simple-options-with-a-delegate"></a>Настройка простых параметров с помощью делегата
 
-Настройка простых параметров с помощью делегата демонстрируется в примере &num; 2 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Настройка простых параметров с помощью делегата демонстрируется в примере &num;2 в примере приложения.
 
 Используйте делегат для задания значений параметров. В образце приложения используется класс `MyOptionsWithDelegateConfig` (*Models/MyOptionsWithDelegateConfig.cs*):
 
-[!code-csharp[](options/sample/Models/MyOptionsWithDelegateConfig.cs?name=snippet1)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptionsWithDelegateConfig.cs?name=snippet1)]
 
-В приведенном ниже коде в контейнер службы добавляется еще одна служба `IConfigureOptions<TOptions>`. Она использует делегат для настройки привязки к `MyOptionsWithDelegateConfig`:
+В приведенном ниже коде в контейнер службы добавляется еще одна служба <xref:Microsoft.Extensions.Options.IConfigureOptions`1>. Она использует делегат для настройки привязки к `MyOptionsWithDelegateConfig`:
 
-[!code-csharp[](options/sample/Startup.cs?name=snippet_Example2)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example2)]
 
 *Index.cshtml.cs*:
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?range=10)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=10)]
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?name=snippet2&highlight=3,9)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet2&highlight=3,9)]
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?name=snippet_Example2)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-Можно добавить несколько поставщиков конфигурации. Поставщики конфигурации доступны в пакетах NuGet. Они применяются в порядке регистрации.
+Можно добавить несколько поставщиков конфигурации. Поставщики конфигурации доступны в пакетах NuGet и применяются в порядке регистрации. Дополнительные сведения см. в разделе <xref:fundamentals/configuration/index>.
 
-Каждый вызов [Configure&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1.configure) добавляет службу `IConfigureOptions<TOptions>` в контейнер службы. В предыдущем примере значения `Option1` и `Option2` задаются в файле *appsettings.json*, однако значения `Option1` и `Option2` переопределяются настроенным делегатом.
+При каждом вызове <xref:Microsoft.Extensions.Options.IConfigureOptions`1.Configure*> служба <xref:Microsoft.Extensions.Options.IConfigureOptions`1> добавляется в контейнер службы. В предыдущем примере значения `Option1` и `Option2` задаются в файле *appsettings.json*, однако значения `Option1` и `Option2` переопределяются настроенным делегатом.
 
 Если включено более одной службы конфигурации, последний источник конфигурации *имеет приоритет* и определяет значение конфигурации. Когда приложение выполняется, метод `OnGet` страничной модели возвращает строку со значениями класса параметров:
 
@@ -120,33 +131,33 @@ delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 
 ## <a name="suboptions-configuration"></a>Конфигурация подпараметров
 
-Конфигурация подпараметров демонстрируется в примере &num; 3 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Конфигурация подпараметров демонстрируется в примере &num;3 в примере приложения.
 
 В приложениях должны создаваться классы приложений, относящиеся к определенным группам сценариев (классам). Части приложения, которым требуются значения конфигурации, должны иметь доступ только к используемым ими значениям конфигурации.
 
 При привязке параметров к конфигурации каждое свойство, относящееся к типу параметров, привязывается к ключу конфигурации в формате `property[:sub-property:]`. Например, свойство `MyOptions.Option1` привязывается к ключу `Option1`, который считывается из свойства `option1` в файле *appsettings.json*.
 
-В приведенном ниже коде в контейнер службы добавляется третья служба `IConfigureOptions<TOptions>`. Она привязывает `MySubOptions` к разделу `subsection` файла *appsettings.json*.
+В приведенном ниже коде в контейнер службы добавляется третья служба <xref:Microsoft.Extensions.Options.IConfigureOptions`1>. Она привязывает `MySubOptions` к разделу `subsection` файла *appsettings.json*.
 
-[!code-csharp[](options/sample/Startup.cs?name=snippet_Example3)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
 Методу расширения `GetSection` требуется пакет NuGet [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/). Если приложение использует [метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 или более поздней версии), пакет включается автоматически.
 
 В файле *appsettings.json* образца определяется член `subsection` с ключами для `suboption1` и `suboption2`.
 
-[!code-json[](options/sample/appsettings.json?highlight=4-7)]
+[!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=4-7)]
 
 Класс `MySubOptions` определяет свойства `SubOption1` и `SubOption2` для хранения значений параметров (*Models/MySubOptions.cs*):
 
-[!code-csharp[](options/sample/Models/MySubOptions.cs?name=snippet1)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Models/MySubOptions.cs?name=snippet1)]
 
 Метод `OnGet` страничной модели возвращает строку со значениями параметров (*Pages/Index.cshtml.cs*):
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?range=11)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=11)]
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?name=snippet2&highlight=4,10)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet2&highlight=4,10)]
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?name=snippet_Example3)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example3)]
 
 Когда приложение выполняется, метод `OnGet` возвращает строку со значениями класса подпараметров:
 
@@ -156,55 +167,39 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="options-provided-by-a-view-model-or-with-direct-view-injection"></a>Параметры, предоставляемые моделью представления или посредством прямого внедрения представления
 
-Параметры, предоставляемые моделью представления или посредством прямого внедрения представления, демонстрируются в примере &num; 4 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Параметры, предоставляемые моделью представления или посредством прямого внедрения представления, демонстрируются в примере &num;4 в примере приложения.
 
-Параметры могут передаваться в модель представления или путем внедрения `IOptions<TOptions>` непосредственно в представление (*Pages/Index.cshtml.cs*):
+Параметры могут передаваться в модель представления или путем внедрения <xref:Microsoft.Extensions.Options.IOptionsMonitor`1> непосредственно в представление (*Pages/Index.cshtml.cs*):
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?range=9)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?name=snippet2&highlight=2,8)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet2&highlight=2,8)]
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?name=snippet_Example4)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example4)]
 
-Чтобы выполнить прямое внедрение, внедрите `IOptions<MyOptions>` с помощью директивы `@inject`:
+В примере приложения показано, как внедрить `IOptionsMonitor<MyOptions>` с директивой `@inject`.
 
-[!code-cshtml[](options/sample/Pages/Index.cshtml?range=1-10&highlight=5)]
+[!code-cshtml[](options/samples/2.x/OptionsSample/Pages/Index.cshtml?range=1-10&highlight=4)]
 
 Когда запускается приложение, значения параметров появляются на отображаемой странице:
 
 ![Значения параметров Option1: value1_from_json и Option2: –1 загружаются из модели и путем внедрения в представление.](options/_static/view.png)
 
-::: moniker range=">= aspnetcore-1.1"
-
 ## <a name="reload-configuration-data-with-ioptionssnapshot"></a>Повторная загрузка данных конфигурации с помощью IOptionsSnapshot
 
-Повторная загрузка данных конфигурации с помощью `IOptionsSnapshot` демонстрируется в примере &num; 5 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Повторная загрузка данных конфигурации с помощью <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1> демонстрируется в примере &num;5 в примере приложения.
 
-Интерфейс [IOptionsSnapshot](/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1) поддерживает повторную загрузку параметров с минимальными затратами на обработку.
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.0"
+Интерфейс <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1> поддерживает повторную загрузку параметров с минимальными затратами на обработку.
 
 Параметры вычисляются один раз на каждый запрос при обращении к ним и кэшируются на все время существования запроса.
 
-::: moniker-end
+В приведенном ниже примере демонстрируется создание экземпляра <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1> после изменения файла *appsettings.json* (*Pages/Index.cshtml.cs*). Несколько запросов к серверу возвращают константные значения, предоставляемые файлом *appsettings.json*, пока файл не изменится и конфигурация не загрузится повторно.
 
-::: moniker range="< aspnetcore-2.0"
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=12)]
 
-Интерфейс `IOptionsSnapshot` является моментальным снимком [IOptionsMonitor&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) и обновляется автоматически каждый раз, когда монитор инициирует изменения при изменении источника данных.
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet2&highlight=5,11)]
 
-::: moniker-end
-
-::: moniker range=">= aspnetcore-1.1"
-
-В приведенном ниже примере демонстрируется создание экземпляра `IOptionsSnapshot` после изменения файла *appsettings.json* (*Pages/Index.cshtml.cs*). Несколько запросов к серверу возвращают константные значения, предоставляемые файлом *appsettings.json*, пока файл не изменится и конфигурация не загрузится повторно.
-
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?range=12)]
-
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?name=snippet2&highlight=5,11)]
-
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?name=snippet_Example5)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example5)]
 
 Ниже показаны начальные значения `option1` и `option2`, загруженные из файла *appsettings.json*.
 
@@ -218,25 +213,21 @@ snapshot option1 = value1_from_json, snapshot option2 = -1
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 ```
 
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.0"
-
 ## <a name="named-options-support-with-iconfigurenamedoptions"></a>Поддержка именованных параметров в IConfigureNamedOptions
 
-Поддержка именованных параметров в [IConfigureNamedOptions](/dotnet/api/microsoft.extensions.options.iconfigurenamedoptions-1) демонстрируется в примере &num; 6 в [образце приложения](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Включение поддержки именованных параметров в <xref:Microsoft.Extensions.Options.IConfigureNamedOptions`1> демонстрируется в примере &num;6 в примере приложения.
 
-Поддержка *именованных параметров* позволяет приложению различать конфигурации именованных параметров. В примере приложения именованные параметры должны быть объявлены с помощью [OptionsServiceCollectionExtensions.Configure&lt;TOptions&gt;(IServiceCollection, String, Action&lt;TOptions&gt;)](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configure), что, в свою очередь, вызывает метод расширения [ConfigureNamedOptions&lt;TOptions&gt;.Configure](/dotnet/api/microsoft.extensions.options.configurenamedoptions-1.configure):
+Поддержка *именованных параметров* позволяет приложению различать конфигурации именованных параметров. В примере приложения именованные параметры объявляются с помощью <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*>. `Configure` вызывает метод расширения <xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*>:
 
-[!code-csharp[](options/sample/Startup.cs?name=snippet_Example6)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
-Образец приложения обращается к именованным параметрам с помощью метода [IOptionsSnapshot&lt;TOptions&gt;.Get](/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1.get) (*Pages/Index.cshtml.cs*):
+Пример приложения обращается к именованным параметрам с помощью метода <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*):
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?range=13-14)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=13-14)]
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?name=snippet2&highlight=6,12-13)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet2&highlight=6,12-13)]
 
-[!code-csharp[](options/sample/Pages/Index.cshtml.cs?name=snippet_Example6)]
+[!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example6)]
 
 При запуске образца приложения возвращаются именованные параметры:
 
@@ -252,7 +243,7 @@ named_options_2: option1 = named_options_2_value1_from_action, option2 = 5
 
 ## <a name="configure-all-options-with-the-configureall-method"></a>Настройка всех параметров с помощью метода ConfigureAll
 
-Настройте все экземпляры параметров с помощью метода [OptionsServiceCollectionExtensions.ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall). Приведенный ниже код настраивает `Option1` для всех экземпляров конфигурации с общим значением. Добавьте следующий код в метод `ConfigureServices` вручную:
+Настройте все экземпляры параметров с помощью метода <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*>. Приведенный ниже код настраивает `Option1` для всех экземпляров конфигурации с общим значением. Добавьте следующий код в метод `Startup.ConfigureServices` вручную:
 
 ```csharp
 services.ConfigureAll<MyOptions>(myOptions => 
@@ -269,11 +260,7 @@ named_options_2: option1 = ConfigureAll replacement value, option2 = 5
 ```
 
 > [!NOTE]
-> Все параметры являются именованными экземплярами. Существующие экземпляры `IConfigureOption` считаются нацеленными на экземпляр `Options.DefaultName`, который имеет значение `string.Empty`. Интерфейс `IConfigureNamedOptions` также реализует интерфейс `IConfigureOptions`. Реализация [IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) по умолчанию ([источник ссылки](https://github.com/aspnet/Options/blob/release/2.0/src/Microsoft.Extensions.Options/IOptionsFactory.cs)) содержит логику для надлежащего использования каждого экземпляра. Именованный параметр `null` предназначен для всех именованных экземпляров, а не для какого-то определенного ([ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) и [PostConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall) следуют этому соглашению).
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
+> Все параметры являются именованными экземплярами. Существующие экземпляры <xref:Microsoft.Extensions.Options.IConfigureOptions`1> считаются нацеленными на экземпляр `Options.DefaultName`, который имеет значение `string.Empty`. Интерфейс <xref:Microsoft.Extensions.Options.IConfigureNamedOptions`1> также реализует интерфейс <xref:Microsoft.Extensions.Options.IConfigureOptions`1>. Реализация <xref:Microsoft.Extensions.Options.IOptionsFactory`1> по умолчанию содержит логику для надлежащего использования каждого экземпляра. Именованный параметр `null` предназначен для всех именованных экземпляров, а не для какого-то определенного (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> и <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> следуют этому соглашению).
 
 ## <a name="optionsbuilder-api"></a>API OptionsBuilder
 
@@ -282,7 +269,7 @@ named_options_2: option1 = ConfigureAll replacement value, option2 = 5
 ```csharp
 // Options.DefaultName = "" is used.
 services.AddOptions<MyOptions>().Configure(o => o.Property = "default");
-    
+
 services.AddOptions<MyOptions>("optionalName")
     .Configure(o => o.Property = "named");
 ```
@@ -300,8 +287,6 @@ services.AddOptions<MyOptions>("optionalName")
 
 Перегрузка регистрирует временный универсальный интерфейс <xref:Microsoft.Extensions.Options.IConfigureNamedOptions`1>, имеющий конструктор, который принимает указанные универсальные типы службы. 
 
-::: moniker-end
-
 ::: moniker range=">= aspnetcore-2.2"
 
 ## <a name="options-validation"></a>Проверка параметров
@@ -314,7 +299,7 @@ services.AddOptions<MyOptions>("optionalOptionsName")
     .Configure(o => { }) // Configure the options
     .Validate(o => YourValidationShouldReturnTrueIfValid(o), 
         "custom error");
-        
+
 // Consumption
 var monitor = services.BuildServiceProvider()
     .GetService<IOptionsMonitor<MyOptions>>();
@@ -322,7 +307,7 @@ var monitor = services.BuildServiceProvider()
 try
 {
     var options = monitor.Get("optionalOptionsName");
-} 
+}
 catch (OptionsValidationException e) 
 {
    // e.OptionsName returns "optionalOptionsName"
@@ -342,7 +327,7 @@ catch (OptionsValidationException e)
 Метод `Validate` принимает `Func<TOptions, bool>`. Чтобы полностью настроить проверку, реализуйте `IValidateOptions<TOptions>`, чтобы:
 
 * выполнить проверку нескольких типов параметров — `class ValidateTwo : IValidateOptions<Option1>, IValidationOptions<Option2>`;
-* выполнить проверку, зависящую от другого типа параметра — `public DependsOnAnotherOptionValidator(IOptions<AnotherOption> options)`.
+* выполнить проверку, зависящую от другого типа параметра — `public DependsOnAnotherOptionValidator(IOptionsMonitor<AnotherOption> options)`.
 
 `IValidateOptions` проверяет:
 
@@ -358,7 +343,7 @@ public interface IValidateOptions<TOptions> where TOptions : class
 }
 ```
 
-Проверка на основе заметок к данным доступна в пакете [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) путем вызова метода `ValidateDataAnnotations` в `OptionsBuilder<TOptions>`:
+Проверка на основе заметок к данным доступна в пакете [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) с помощью вызова метода `ValidateDataAnnotations` в `OptionsBuilder<TOptions>`. `Microsoft.Extensions.Options.DataAnnotations` входит в состав [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 или более поздней версии).
 
 ```csharp
 private class AnnotatedOptions
@@ -372,7 +357,7 @@ private class AnnotatedOptions
     [Range(-5, 5, ErrorMessage = "Out of range.")]
     public int IntRange { get; set; }
 }
-    
+
 [Fact]
 public void CanValidateDataAnnotations()
 {
@@ -389,7 +374,7 @@ public void CanValidateDataAnnotations()
     var sp = services.BuildServiceProvider();
 
     var error = Assert.Throws<OptionsValidationException>(() => 
-        sp.GetRequiredService<IOptions<AnnotatedOptions>>().Value);
+        sp.GetRequiredService<IOptionsMonitor<AnnotatedOptions>>().Value);
     ValidateFailure<AnnotatedOptions>(error, Options.DefaultName, 1,
         "DataAnnotation validation failed for members Required " +
             "with the error 'The Required field is required.'.",
@@ -397,18 +382,16 @@ public void CanValidateDataAnnotations()
             "with the error 'Too long.'.",
         "DataAnnotation validation failed for members IntRange " +
             "with the error 'Out of range.'.");
-}    
+}
 ```
 
 Безотложная проверка (быстрое прекращение при запуске) находится на этапе рассмотрения для включения в будущие выпуски.
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.0"
+## <a name="options-post-configuration"></a>Пост-конфигурация параметров
 
-## <a name="ipostconfigureoptions"></a>IPostConfigureOptions
-
-Задайте пост-конфигурацию с помощью [IPostConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ipostconfigureoptions-1). Пост-конфигурация применяется после выполнения всех действий настройки с помощью [IConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1):
+Задайте пост-конфигурацию с помощью <xref:Microsoft.Extensions.Options.IPostConfigureOptions`1>. Пост-конфигурация применяется после выполнения всех действий настройки с помощью <xref:Microsoft.Extensions.Options.IConfigureOptions`1>.
 
 ```csharp
 services.PostConfigure<MyOptions>(myOptions =>
@@ -417,7 +400,7 @@ services.PostConfigure<MyOptions>(myOptions =>
 });
 ```
 
-Для последующей настройки именованных параметров доступен метод [PostConfigure&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ipostconfigureoptions-1.postconfigure):
+Для последующей настройки именованных параметров доступен метод <xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*>.
 
 ```csharp
 services.PostConfigure<MyOptions>("named_options_1", myOptions =>
@@ -426,7 +409,7 @@ services.PostConfigure<MyOptions>("named_options_1", myOptions =>
 });
 ```
 
-Для последующей настройки всех экземпляров конфигурации служит метод [PostConfigureAll&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall):
+Для последующей настройки всех экземпляров конфигурации служит метод <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*>.
 
 ```csharp
 services.PostConfigureAll<MyOptions>(myOptions =>
@@ -435,32 +418,18 @@ services.PostConfigureAll<MyOptions>(myOptions =>
 });
 ```
 
-::: moniker-end
-
-## <a name="options-factory-monitoring-and-cache"></a>Фабрика, мониторинг и кэш параметров
-
-Интерфейс [IOptionsMonitor](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) служит для создания уведомлений об изменении экземпляров `TOptions`. `IOptionsMonitor` поддерживает перезагружаемые параметры, уведомления об изменениях и `IPostConfigureOptions`.
-
-::: moniker range=">= aspnetcore-2.0"
-
-Интерфейс [IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) отвечает за создание экземпляров параметров. Он имеет единственный метод [Create](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1.create). Реализация по умолчанию принимает все зарегистрированные интерфейсы `IConfigureOptions` и `IPostConfigureOptions` и выполняет сначала все конфигурации, а затем постконфигурации. Она различает интерфейсы `IConfigureNamedOptions` и `IConfigureOptions` и вызывает только соответствующий интерфейс.
-
-Интерфейс [IOptionsMonitorCache&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1) используется интерфейсом `IOptionsMonitor` для кэширования экземпляров `TOptions`. `IOptionsMonitorCache` делает экземпляры параметров в мониторе недействительными, что приводит к повторному вычислению значений ([TryRemove](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryremove)). Значения можно также вводить вручную с помощью [TryAdd](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryadd). Метод [Clear](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.clear) используется, если необходимо повторно создать все именованные экземпляры по требованию.
-
-::: moniker-end
-
 ## <a name="accessing-options-during-startup"></a>Доступ к параметрам во время запуска
 
-`IOptions` можно использовать в методе `Startup.Configure`, так как службы создаются до выполнения метода `Configure`.
+<xref:Microsoft.Extensions.Options.IOptions`1> и <xref:Microsoft.Extensions.Options.IOptionsMonitor`1> можно использовать в методе `Startup.Configure`, так как службы создаются до выполнения метода `Configure`.
 
 ```csharp
-public void Configure(IApplicationBuilder app, IOptions<MyOptions> optionsAccessor)
+public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> optionsAccessor)
 {
-    var option1 = optionsAccessor.Value.Option1;
+    var option1 = optionsAccessor.CurrentValue.Option1;
 }
 ```
 
-`IOptions` не следует использовать в `Startup.ConfigureServices`. Из-за очередности регистрации служб состояние параметров может быть несогласованным.
+Не используйте <xref:Microsoft.Extensions.Options.IOptions`1> или <xref:Microsoft.Extensions.Options.IOptionsMonitor`1> в `Startup.ConfigureServices`. Из-за очередности регистрации служб состояние параметров может быть несогласованным.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

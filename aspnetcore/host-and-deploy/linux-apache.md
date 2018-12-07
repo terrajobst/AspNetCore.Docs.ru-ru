@@ -4,14 +4,14 @@ description: Процедура настройки Apache в качестве о
 author: spboyer
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 10/23/2018
+ms.date: 11/26/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 1d303fbde2a398b4628d3390aea80957a59f711b
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: d0e36d0a73df43a26c03dc4154962240683817b5
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253147"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450818"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Размещение ASP.NET Core в операционной системе Linux с Apache
 
@@ -180,9 +180,9 @@ sudo systemctl restart httpd
 sudo systemctl enable httpd
 ```
 
-## <a name="monitoring-the-app"></a>Мониторинг приложения
+## <a name="monitor-the-app"></a>Мониторинг приложения
 
-Теперь Apache настроен на перенаправление запросов к `http://localhost:80` в приложение ASP.NET Core, выполняемое в Kestrel по адресу `http://127.0.0.1:5000`.  Но Apache не настроен для управления процессом Kestrel. Для запуска и мониторинга базового веб-приложения используйте *systemd* и создайте файл службы. *systemd* — это система инициализации, предоставляющая различные функции для запуска и остановки процессов, а также управления ими. 
+Теперь Apache настроен на перенаправление запросов к `http://localhost:80` в приложение ASP.NET Core, выполняемое в Kestrel по адресу `http://127.0.0.1:5000`. Но Apache не настроен для управления процессом Kestrel. Для запуска и мониторинга базового веб-приложения используйте *systemd* и создайте файл службы. *systemd* — это система инициализации, предоставляющая различные функции для запуска и остановки процессов, а также управления ими.
 
 ### <a name="create-the-service-file"></a>Создание файла службы
 
@@ -259,7 +259,7 @@ Connection: Keep-Alive
 Transfer-Encoding: chunked
 ```
 
-### <a name="viewing-logs"></a>Просмотр журналов
+### <a name="view-logs"></a>Просмотр журналов
 
 Так как веб-приложением, использующим Kestrel, управляет *systemd*, все события и процессы регистрируются в централизованном журнале. Но этот журнал содержит все записи обо всех службах и процессах, управляемых *systemd*. Чтобы просмотреть элементы, связанные с `kestrel-helloapp.service`, используйте следующую команду.
 
@@ -288,7 +288,7 @@ sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-
 * <xref:security/data-protection/implementation/key-storage-providers>
 * <xref:security/data-protection/implementation/key-encryption-at-rest>
 
-## <a name="securing-the-app"></a>Защита приложения
+## <a name="secure-the-app"></a>Защита приложения
 
 ### <a name="configure-firewall"></a>Настройка брандмауэра
 
@@ -485,4 +485,5 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Необходимые компоненты для .NET Core в Linux](/dotnet/core/linux-prerequisites)
-* [Настройка ASP.NET Core для работы с прокси-серверами и подсистемами балансировки нагрузки](xref:host-and-deploy/proxy-load-balancer)
+* <xref:test/troubleshoot>
+* <xref:host-and-deploy/proxy-load-balancer>

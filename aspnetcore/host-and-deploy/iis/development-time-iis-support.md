@@ -4,14 +4,14 @@ author: shirhatti
 description: Узнайте о поддерживаемых возможностях для отладки приложений ASP.NET Core, выполняемых в службах IIS на Windows Server.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/14/2018
+ms.date: 11/26/2018
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: eb8b4369d6d5434adbac187f59b18d7a2b80055c
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 65dbe690a33d82a4edddf315803dc4c656db27a0
+ms.sourcegitcommit: e8d80ff566bfe505b43389d7bc4551edb1c0c872
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277658"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52549108"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Поддержка служб IIS во время разработки в Visual Studio для ASP.NET Core
 
@@ -129,13 +129,19 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ## <a name="run-the-project"></a>Запуск проекта
 
-В пользовательском интерфейсе Visual Studio установите кнопку "Выполнить" для профиля **IIS** и нажмите кнопку запуска приложения:
+В Visual Studio сделайте следующее:
 
-![Кнопка "Выполнить" на панели инструментов Visual Studio, установленная для профиля IIS.](development-time-iis-support/_static/toolbar.png)
+* Убедитесь, что для раскрывающегося списка с конфигурацией сборки построения выбрано значение **Отладка**.
+* Выберите для кнопки "Выполнить" профиль **IIS** и нажмите ее запуска приложения:
+
+![Для кнопки "Выполнить" на панели инструментов VS выбран профиль IIS. Для раскрывающегося списка конфигурации сборки выбрано значение "Выпуск".](development-time-iis-support/_static/toolbar.png)
 
 Если вы вошли в Visual Studio без прав администратора, возможно, потребуется перезапуск. Перезапустите Visual Studio при появлении соответствующего запроса.
 
 Если используется сертификат разработки без доверия, возможно, потребуется создать исключение для этого ненадежного сертификата по запросу в браузере.
+
+> [!NOTE]
+> Отладка конфигурации сборки выпуска с использованием функции [Только мой код](/visualstudio/debugger/just-my-code) и оптимизации компилятора приводит к ограничению возможностей. Например, точки останова не будут достигнуты.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

@@ -4,14 +4,14 @@ author: guardrex
 description: Сведения о диагностике проблем с развертываниями приложений ASP.NET Core на платформе IIS.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/26/2018
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 2b23bf8230f7a1c207ef7870da098ffb0c597fd5
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: 2ff870623de43676be38c5de8f338a7913e885a8
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225451"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450714"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Устранение неполадок ASP.NET Core в службах IIS
 
@@ -47,7 +47,8 @@ ms.locfileid: "51225451"
 
 ## <a name="app-startup-errors"></a>Ошибки при запуске приложения
 
-**502.5 — ошибка процесса**  
+### <a name="5025-process-failure"></a>502.5 Process Failure (ошибка процесса)
+
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
 Модуль ASP.NET Core пытается запустить процесс dotnet серверной части, но он не запускается. Обычно причину сбоя при запуске процесса можно определить по записям в [журнале событий приложения](#application-event-log) и [журнале вывода stdout модуля ASP.NET Core](#aspnet-core-module-stdout-log). 
@@ -60,7 +61,7 @@ ms.locfileid: "51225451"
 
 ::: moniker range=">= aspnetcore-2.2"
 
-**500.30 — ошибка внутрипроцессного запуска**
+### <a name="50030-in-process-startup-failure"></a>500.30 In-Process Startup Failure (ошибка внутрипроцессного запуска)
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
@@ -68,7 +69,7 @@ ms.locfileid: "51225451"
 
 Распространенной причиной сбоя является неправильная настройка приложения с выбором отсутствующей версии общей платформы ASP.NET Core. Проверьте, какие версии общей платформы ASP.NET Core установлены на целевом компьютере.
 
-**500.0 — ошибка загрузки внутрипроцессного обработчика**
+### <a name="5000-in-process-handler-load-failure"></a>500.0 In-Process Handler Load Failure (ошибка загрузки внутрипроцессного обработчика)
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
@@ -77,7 +78,7 @@ ms.locfileid: "51225451"
 * приложение предназначено для пакета NuGet [Microsoft.AspNetCore.Server.IIS](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IIS) или [метапакета Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app);
 * версия общей платформы ASP.NET Core, для которой предназначено приложение, установлена на целевом компьютере.
 
-**500.0 — ошибка загрузки внепроцессного обработчика**
+### <a name="5000-out-of-process-handler-load-failure"></a>500.0 Out-Of-Process Handler Load Failure (ошибка загрузки внепроцессного обработчика)
 
 Рабочий процесс завершается ошибкой. Приложение не запускается.
 
@@ -85,12 +86,13 @@ ms.locfileid: "51225451"
 
 ::: moniker-end
 
-**500 — внутренняя ошибка сервера**  
+### <a name="500-internal-server-error"></a>500 Internal Server Error (внутренняя ошибка сервера)
+
 Приложение запускается, но ошибка не позволяет серверу выполнить запрос.
 
 Эта ошибка возникает в коде приложения при запуске или при создании ответа. Ответ может не иметь содержимого или ответ в браузере может выглядеть как *500 — внутренняя ошибка сервера*. Как правило, в журнале событий приложения указывается, что приложение запускается в обычном режиме. Сервер действует правильно. Приложение запустилось, но не может сформировать допустимый ответ. Чтобы устранить проблему, [запустите приложение в командной строке](#run-the-app-at-a-command-prompt) на сервере или [включите журнал вывода stdout для модуля ASP.NET Core](#aspnet-core-module-stdout-log).
 
-**Сброс подключения**
+### <a name="connection-reset"></a>Сброс подключения
 
 Если ошибка возникает после отправки заголовков, сервер уже не может отправить страницу **500 — внутренняя ошибка сервера**. Это часто происходит, когда ошибка возникает во время сериализации составных объектов ответа. Этот тип ошибки отображается на стороне клиента как ошибка *Сброс подключения*. [Ведение журналов для приложений](xref:fundamentals/logging/index) может помочь устранить эти ошибки.
 
@@ -113,7 +115,7 @@ ms.locfileid: "51225451"
 
 Многие ошибки запуска не создают полезные сведения в журнале событий приложения. Для некоторых ошибок можно найти причину, запустив приложение в командной строке на компьютере размещения.
 
-**Развертывание, зависящее от платформы**
+#### <a name="framework-dependent-deployment"></a>развертывание, зависящее от платформы;
 
 Если развертываемое приложение [зависит от платформы](/dotnet/core/deploying/#framework-dependent-deployments-fdd), сделайте следующее:
 
@@ -121,7 +123,7 @@ ms.locfileid: "51225451"
 1. Выходные данные приложения, в том числе любые ошибки, будут выведены в окно консоли.
 1. Если ошибки возникают при выполнении запроса к приложению, выполните запрос к узлу и порту, где Kestrel ожидает передачи данных. Создайте запрос к `http://localhost:5000/`, используя узел и порт по умолчанию. Если приложение отвечает на запросы по адресу конечной точки Kestrel, значит проблема скорее связана с конфигурацией обратного прокси, а не с самим приложением.
 
-**Автономное развертывание**
+#### <a name="self-contained-deployment"></a>автономное развертывание;
 
 Если приложение [развертывается автономно](/dotnet/core/deploying/#self-contained-deployments-scd), сделайте следующее:
 
@@ -142,7 +144,8 @@ ms.locfileid: "51225451"
 1. Перейдите в папку *logs*. Найдите и откройте последний журнал вывода stdout.
 1. Проверьте, нет ли в нем ошибок.
 
-**Важно!** Завершив устранение неполадок, отключите ведение журнала stdout.
+> [!IMPORTANT]
+> Завершив устранение неполадок, отключите ведение журнала stdout.
 
 1. Измените файл *web.config*.
 1. Задайте параметру **stdoutLogEnabled** значение `false`.
@@ -153,9 +156,27 @@ ms.locfileid: "51225451"
 >
 > Для обычного ведения журналов для приложения ASP.NET Core используйте библиотеку, которая ограничивает размер файла журнала и выполняет циклический сдвиг журналов. Дополнительные сведения см. в разделе [Сторонние поставщики ведения журналов](xref:fundamentals/logging/index#third-party-logging-providers).
 
-## <a name="enabling-the-developer-exception-page"></a>Включение страницы со сведениями об исключении для разработчика
+## <a name="enable-the-developer-exception-page"></a>Включение страницы исключений для разработчика
 
 Можно добавить переменную среды `ASPNETCORE_ENVIRONMENT` [в файл web.config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables), чтобы запустить приложение в среде разработки. Если среда не переопределяется при запуске приложения использованием `UseEnvironment` в конструкторе узла, эта переменная среды позволяет отображать [страницу исключения для разработчика](xref:fundamentals/error-handling) при запуске приложения.
+
+::: moniker range=">= aspnetcore-2.2"
+
+```xml
+<aspNetCore processPath="dotnet"
+      arguments=".\MyApp.dll"
+      stdoutLogEnabled="false"
+      stdoutLogFile=".\logs\stdout"
+      hostingModel="inprocess">
+  <environmentVariables>
+    <environmentVariable name="ASPNETCORE_ENVIRONMENT" value="Development" />
+  </environmentVariables>
+</aspNetCore>
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -168,11 +189,17 @@ ms.locfileid: "51225451"
 </aspNetCore>
 ```
 
+::: moniker-end
+
 Настройка переменной среды `ASPNETCORE_ENVIRONMENT` рекомендуется только на промежуточных и тестовых серверах, доступ к которым из Интернета закрыт. Завершив устранение неполадок, удалите эту переменную среды из файла *web.config*. Сведения о настройке переменных среды в файле *web.config* см. в статье о [дочернем элементе environmentVariables в aspNetCore](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
 
-## <a name="common-startup-errors"></a>Стандартные ошибки запуска 
+## <a name="common-startup-errors"></a>Стандартные ошибки запуска
 
 См. раздел <xref:host-and-deploy/azure-iis-errors-reference>. В этой статье рассматривается большинство распространенных ошибок, препятствующих запуску приложений.
+
+## <a name="obtain-data-from-an-app"></a>Получение данных из приложения
+
+Если приложение способно отвечать на запросы, получите данные о запросе, подключении и дополнительные данные из приложений с помощью встроенного терминала ПО промежуточного слоя. Дополнительные сведения и примеры с кодом см. здесь: <xref:test/troubleshoot#obtain-data-from-an-app>.
 
 ## <a name="slow-or-hanging-app"></a>Медленное или зависающее приложение
 
@@ -190,7 +217,7 @@ ms.locfileid: "51225451"
 
 [Application Insights](/azure/application-insights/) предоставляет данные телеметрии из приложений, размещенных в IIS, в том числе возможности регистрации ошибок и создания отчетов. Application Insights может сообщать только об ошибках, возникающих после запуска приложения, когда становятся доступными функции ведения журнала приложения. Дополнительные сведения см. в статье [Application Insights для ASP.NET Core](/azure/application-insights/app-insights-asp-net-core).
 
-## <a name="additional-troubleshooting-advice"></a>Дополнительные рекомендации по устранению неполадок
+## <a name="additional-advice"></a>Дополнительные советы
 
 Иногда приложения-функции перестают работать сразу после обновления пакета SDK для .NET Core на компьютере разработки или обновления пакетов в самом приложении. В некоторых случаях в результате важного обновления несогласованные версии пакетов могут привести к нарушению работы приложения. Большинство этих проблем можно исправить следующим образом:
 
@@ -201,11 +228,12 @@ ms.locfileid: "51225451"
 
 > [!TIP]
 > Очистить кэши пакета проще всего командой `dotnet nuget locals all --clear` из командной строки.
-> 
+>
 > Также очистку кэшей пакетов можно выполнить средством [nuget.exe](https://www.nuget.org/downloads) или командой `nuget locals all -clear`. *NuGet.exe* не входит в пакет установки операционной системы Windows для настольных компьютеров и его нужно получить отдельно на [веб-сайте NuGet](https://www.nuget.org/downloads).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
+* <xref:test/troubleshoot>
 * <xref:fundamentals/error-handling>
 * <xref:host-and-deploy/azure-iis-errors-reference>
 * <xref:host-and-deploy/aspnet-core-module>

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/12/2018
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 32fbf2b19da2d088847279f447f9a72cedcf8085
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: 5a3fd9c3453c07ee550c7de0333c9a49d5d5d1af
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570182"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450662"
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>Справочник по конфигурации модуля ASP.NET Core
 
@@ -157,7 +157,7 @@ ms.locfileid: "51570182"
 
 Когда приложение развернуто в [службе приложений Azure](https://azure.microsoft.com/services/app-service/), путь `stdoutLogFile` задан как `\\?\%home%\LogFiles\stdout`. Путь сохраняет журналы stdout в папке *LogFiles*, расположение которой автоматически создается службой.
 
-Важное примечание, относящееся к конфигурации файла *web.config* для дочерних приложений, см. в разделе [Конфигурация дочерних приложений](xref:host-and-deploy/iis/index#sub-application-configuration).
+Сведения о конфигурации дочерних приложений IIS см. здесь: <xref:host-and-deploy/iis/index#sub-applications>.
 
 ### <a name="attributes-of-the-aspnetcore-element"></a>Атрибуты элемента aspNetCore
 

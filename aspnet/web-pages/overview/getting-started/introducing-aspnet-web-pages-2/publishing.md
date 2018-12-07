@@ -8,12 +8,12 @@ ms.date: 05/28/2015
 ms.assetid: 7e85c70e-1a88-4408-8b3d-29611c7713ed
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/publishing
 msc.type: authoredcontent
-ms.openlocfilehash: fe196e5db8fd1cecbe84b2eb970939303f9313d1
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: bd6611a03ee4940f5d4176ce23464f313b9ec884
+ms.sourcegitcommit: eef99d14d96dc8c3c1bb0e2c4cb14da152f8a952
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51021460"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53022509"
 ---
 <a name="introducing-aspnet-web-pages---publishing-a-site-by-using-webmatrix"></a>Знакомство с веб-страниц ASP.NET — публикация сайта с помощью WebMatrix
 ====================
@@ -50,7 +50,7 @@ ms.locfileid: "51021460"
 <a id="defaultpage"></a>
 ## <a name="setting-up-the-default-page"></a>Настройка страницы по умолчанию
 
-При переходе к базовому адресу для веб-сайт, для пользователя отображается страница по умолчанию для веб-узла. Например, если Default.htm имеет значение по умолчанию для сайта, в www.contoso.com, затем открыть меню <strong>www.contoso.com</strong> совпадает со значением переход к <strong>www.contoso.com/Default.htm</strong>.
+При переходе к базовому адресу для веб-сайт, для пользователя отображается страница по умолчанию для веб-узла. Например, если *Default.htm* имеет значение по умолчанию для сайта по адресу `www.contoso.com`, затем открыть меню `www.contoso.com` совпадает со значением переход к `www.contoso.com/Default.htm`.
 
 В настоящее время веб-сайт использует **Default.cshtml** страницей по умолчанию. Эта страница работает для страницы по умолчанию, но в этом руководстве вы не добавили любое содержимое на эту страницу, поэтому он будет отображаться пустая страница. Откройте Default.cshtml и замените содержимое следующим кодом.
 
