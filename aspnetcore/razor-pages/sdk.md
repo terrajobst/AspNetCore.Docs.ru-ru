@@ -4,15 +4,15 @@ author: Rick-Anderson
 description: Сведения о применении в ASP.NET Core функции Razor Pages, которая делает создание кодов сценариев для страниц проще и эффективнее по сравнению с MVC.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 10/25/2018
 uid: razor-pages/sdk
-ms.openlocfilehash: 1f38d768d872175e20f5cb0cb679bc3d52696eb9
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: eb4db69f71ec1e481e022192ca05b9d9d61573b9
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090200"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121444"
 ---
 # <a name="aspnet-core-razor-sdk"></a>Пакет SDK для Razor в ASP.NET Core
 
@@ -75,7 +75,7 @@ ms.locfileid: "50090200"
 | `RazorTargetAssemblyAttribute` | Элементы, используемые для создания атрибутов для сборки Razor. Пример:  <br>`RazorAssemblyAttribute`<br>`Include="System.Reflection.AssemblyMetadataAttribute"`<br>`_Parameter1="BuildSource" _Parameter2="https://docs.microsoft.com/">` |
 | `RazorEmbeddedResource` | Элемент элементы добавляются в виде внедренных ресурсов на созданную сборку Razor. |
 
-| Свойство. | Описание |
+| Свойство | Описание |
 | -------- | ----------- |
 | `RazorTargetName` | Имя файла (без расширения) для сборки, созданной Razor. | 
 | `RazorOutputPath` | Выходной каталог Razor. |

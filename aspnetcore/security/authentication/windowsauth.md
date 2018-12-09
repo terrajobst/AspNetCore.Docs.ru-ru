@@ -3,15 +3,15 @@ title: Настройка проверки подлинности Windows в ASP
 author: scottaddie
 description: Узнайте, как настроить проверку подлинности Windows в ASP.NET Core, используя IIS Express, службы IIS, HTTP.sys и WebListener.
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 11/01/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 87fcab75555c1dae0b2815c30d79fd4615df9660
-ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
+ms.openlocfilehash: 342759a6ff4b5679e0d54c979188ae66d339562d
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50968297"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121301"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Настройка проверки подлинности Windows в ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "50968297"
 
 ### <a name="use-the-windows-authentication-app-template"></a>Использовать шаблон приложения проверки подлинности Windows
 
-В Visual Studio:
+В Visual Studio сделайте следующее:
 
 1. Создайте новое веб-приложение ASP.NET Core.
 1. Выберите веб-приложение из списка шаблонов.
@@ -47,7 +47,7 @@ ms.locfileid: "50968297"
 
 В проект Visual Studio **свойства** страницы **Отладка** вкладка предоставляет флажки для проверки подлинности Windows и анонимную проверку подлинности.
 
-![Снимок экрана обозревателя проверки подлинности Windows](windowsauth/_static/vs-auth-property-menu.png)
+![Снимок экрана обозревателя проверки подлинности Windows с выделенным параметрами проверки подлинности](windowsauth/_static/vs-auth-property-menu.png)
 
 Кроме того, эти свойства можно задать в *launchSettings.json* файла:
 

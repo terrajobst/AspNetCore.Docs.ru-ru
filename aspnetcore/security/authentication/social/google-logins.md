@@ -3,15 +3,15 @@ title: Настройка внешней учетной записи Google в A
 author: rick-anderson
 description: В этом учебнике показано интеграцию Google учетной записи пользователя и проверки подлинности в существующее приложение ASP.NET Core.
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 11/11/2018
 uid: security/authentication/google-logins
-ms.openlocfilehash: dfda83e1d7cf3c5ff8e31de20c15d468de5d15c0
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: e5deda5d521643e3155be00f4630a86c6a82575c
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708456"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121535"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>Настройка внешней учетной записи Google в ASP.NET Core
 
@@ -27,7 +27,7 @@ ms.locfileid: "51708456"
 
 * Вы будете перенаправлены на **библиотека API диспетчера** страницы:
 
-![Страница API диспетчера библиотеки](index/_static/GoogleConsoleSwitchboard.png)
+![Целевая на странице библиотеки API диспетчера](index/_static/GoogleConsoleSwitchboard.png)
 
 * Коснитесь **создать** и введите ваш **имя_проекта**:
 
@@ -35,15 +35,15 @@ ms.locfileid: "51708456"
 
 * После принятия диалогового окна, вы будете перенаправлены на страницу библиотеки, в которой можно выбрать функции для нового приложения. Найти **Google + API** в списке и щелкните ссылку на нее, чтобы добавить компонент API:
 
-![Страница API диспетчера библиотеки](index/_static/GoogleConsoleChooseApi.png)
+![Поиск «Google + API» на странице библиотеки API диспетчера](index/_static/GoogleConsoleChooseApi.png)
 
 * Откроется страница для вновь добавленного API. Коснитесь **включить** Добавление Google + знак в компонент приложения:
 
-![Страница диспетчера API Google + API](index/_static/GoogleConsoleEnableApi.png)
+![Целевая на странице диспетчера API Google + API](index/_static/GoogleConsoleEnableApi.png)
 
 * После включения API, коснитесь **Создание учетных данных** Настройка секреты:
 
-![Страница диспетчера API Google + API](index/_static/GoogleConsoleGoCredentials.png)
+![Создание кнопки учетные данные на странице диспетчера API Google + API](index/_static/GoogleConsoleGoCredentials.png)
 
 * Выберите:
   * **Google + API**

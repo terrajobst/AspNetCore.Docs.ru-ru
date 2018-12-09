@@ -1,19 +1,19 @@
 ---
-title: Облачной проверки подлинности в веб-API с помощью Azure Active Directory B2C в ASP.NET Core
+title: Проверка подлинности в веб-API с помощью Azure Active Directory B2C в ASP.NET Core
 author: camsoper
 description: Узнайте, как настроить проверку подлинности Azure Active Directory B2C с помощью веб-API ASP.NET Core. Тестирование прошедшего проверку подлинности веб-API с помощью приложения Postman.
 ms.author: casoper
 ms.date: 09/21/2018
-ms.custom: mvc
+ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: a7a109909d66b1016e78eedc8b802068143c65e3
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: e8ac1e33819dd369460139df25597e1aa0979c91
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348550"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121717"
 ---
-# <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Облачной проверки подлинности в веб-API с помощью Azure Active Directory B2C в ASP.NET Core
+# <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Проверка подлинности в веб-API с помощью Azure Active Directory B2C в ASP.NET Core
 
 Автор [Кэм Сопер (Cam Soper)](https://twitter.com/camsoper)
 
@@ -69,7 +69,7 @@ Azure Active Directory (Azure AD) и Azure AD B2C являются отдель�
 
 Шаблон веб-приложения Visual Studio можно настроить для использования клиента Azure AD B2C для проверки подлинности.
 
-В Visual Studio:
+В Visual Studio сделайте следующее:
 
 1. Создайте новое веб-приложение ASP.NET Core. 
 2. Выберите **веб-API** из списка шаблонов.

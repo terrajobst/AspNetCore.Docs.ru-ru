@@ -1,17 +1,17 @@
 ---
-title: DevOps с помощью ASP.NET Core и Azure | Мониторинг и отладка
+title: Мониторинг и отладка - DevOps с помощью ASP.NET Core и Azure
 author: CamSoper
-description: Рекомендации по созданию сквозного решения конвейера DevOps для приложения ASP.NET Core, размещенного в Azure.
+description: Мониторинг и отладка кода как часть решения DevOps с помощью ASP.NET Core и Azure
 ms.author: casoper
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/monitor
-ms.openlocfilehash: c4013de574fdf34114f2ae6c6a2150d72f807578
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: e005b951aec578b396fc19dec5d2f55cbce4f664
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090204"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121613"
 ---
 # <a name="monitor-and-debug"></a>Мониторинг и отладка
 
@@ -35,7 +35,7 @@ ms.locfileid: "50090204"
 
 1. **Обзор** вкладка отображает полезные сведения «в краткие», включая диаграммы, отображения последних метрик.
 
-    ![Панель "Обзор"](./media/monitoring/overview.png)
+    ![Панель обзора отображение экрана](./media/monitoring/overview.png)
 
     * **HTTP 5xx**: число ошибок на стороне сервера, обычно исключения в коде ASP.NET Core.
     * **Данные в**: объем входящих данных, поступающих на веб-приложения.
@@ -45,7 +45,7 @@ ms.locfileid: "50090204"
 
     Несколько средств самообслуживания, для устранения неполадок и оптимизации, можно также найти на этой странице.
 
-    ![Средства самообслуживания](./media/monitoring/wizards.png)
+    ![Снимок экрана: отображение самообслуживания](./media/monitoring/wizards.png)
 
     * **Диагностика и устранение неполадок** — это средство самостоятельного устранения неполадок.
     * **Application Insights** — для профилирования производительности и поведение приложения и рассматривается далее в этом разделе.
@@ -103,7 +103,7 @@ ASP.NET Core и веб-сервер (служба приложений) журн
 1. Откройте [портала Azure](https://portal.azure.com)и перейдите к *mywebapp\<unique_number\>*  службы приложений.
 1. В меню слева, прокрутите вниз до раздела **мониторинг** и выберите **поток журналов**.
 
-    ![Ссылка журнала потока](./media/monitoring/log-stream.png)
+    ![Снимок экрана: отображение журнала потока ссылку](./media/monitoring/log-stream.png)
 
 Журналы также может быть [потоковую передачу с помощью Azure CLI или Azure PowerShell](/azure/app-service/web-sites-enable-diagnostic-log#streamlogs), в том числе через Cloud Shell.
 
