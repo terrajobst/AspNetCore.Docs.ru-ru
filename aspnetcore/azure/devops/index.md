@@ -4,13 +4,14 @@ author: CamSoper
 description: Рекомендации по созданию сквозного решения конвейера DevOps для приложения ASP.NET Core, размещенного в Azure.
 ms.author: casoper
 ms.date: 08/07/2018
+ms.custom: seodec18
 uid: azure/devops/index
-ms.openlocfilehash: 53667831f5e33107178a947f23d957ff22e8c1a0
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: 6b6f17fd917f32b9e0682414febee10643cf3d13
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340099"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121197"
 ---
 # <a name="devops-with-aspnet-core-and-azure"></a>DevOps с ASP.NET Core и Azure
 
@@ -52,7 +53,7 @@ ms.locfileid: "44340099"
 
 Мониторинг, устранение неполадок и настройка приложения с помощью инструментов Azure.
 
-### <a name="next-stepsxrefazuredevopsnext-steps"></a>[Дальнейшие действия](xref:azure/devops/next-steps)
+### <a name="next-stepsxrefazuredevopsnext-steps"></a>[Следующие шаги](xref:azure/devops/next-steps)
 
 Другие способы изучения Azure для разработчиков ASP.NET Core.
 

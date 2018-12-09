@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/16/2018
 uid: index
-ms.openlocfilehash: 1b075518b3a744fe8d8506c9a17a3e9c67394be1
-ms.sourcegitcommit: 8a65f6c2cbe290fb2418eed58f60fb74c95392c8
+ms.openlocfilehash: 708fa3438c9d22a25eae9f37e4d17f69e27d3be9
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892111"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121743"
 ---
 # <a name="introduction-to-aspnet-core"></a>Введение в ASP.NET Core
 
@@ -132,4 +132,4 @@ WebHost.CreateDefaultBuilder(args)
 * [В еженедельном выпуске ASP.NET Community Standup](https://live.asp.net/) рассматривается ход работы и планы команды. Помимо этого, публикуются новые блоги и стороннее программное обеспечение.
 
 > [!NOTE]
-> Мы тестируем удобство использования новой предлагаемой структуры оглавления для ASP.NET Core.  Если у вас есть несколько минут, и вы хотите попробовать найти семь разных тем в существующей или планируемой структуре оглавления, [щелкните здесь, чтобы принять участие в исследовании](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5).
+> Мы тестируем удобство использования новой предлагаемой структуры оглавления для ASP.NET Core.  Если у вас есть несколько минут, и вы хотите попробовать найти семь разных тем в существующей или планируемой структуре оглавления, [щелкните здесь, чтобы принять участие в исследовании](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82).
