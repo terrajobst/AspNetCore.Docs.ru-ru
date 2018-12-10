@@ -1,17 +1,17 @@
 ---
 title: Сборка веб-API с использованием ASP.NET Core и MongoDB
-author: pratik-khandelwal
+author: prkhandelwal
 description: В руководстве показано, как выполнять сборку веб-API ASP.NET Core с помощью базы данных NoSQL MongoDB.
 ms.author: scaddie
-ms.custom: mvc
+ms.custom: mvc,seodec18
 ms.date: 11/29/2018
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: becf55bf94a1bfe78935013d802168a0b05dccce
-ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
+ms.openlocfilehash: df3b8656618c813838d6618efc9394f0ccb6e563
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52618094"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121483"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Создание веб-API с помощью ASP.NET Core и MongoDB
 
@@ -19,10 +19,10 @@ ms.locfileid: "52618094"
 
 В этом руководстве описано, как создать веб-API, который выполняет операции создания, чтения, обновления и удаления (CRUD) в базе данных NoSQL [MongoDB](https://www.mongodb.com/what-is-mongodb).
 
-Из этого руководства вы узнаете, как:
+В этом руководстве вы узнаете, как:
 
 > [!div class="checklist"]
-> * настроить MongoDB;
+> * Настройка MongoDB
 > * создать базу данных MongoDB;
 > * определить коллекцию и схему MongoDB;
 > * выполнить операции CRUD MongoDB из веб-API.
