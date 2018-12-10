@@ -6,20 +6,11 @@
 # [Начало работы](xref:getting-started)
 
 # Учебники
-## [Создание веб-API](xref:tutorials/first-web-api)
+## Веб-API
+### [Создание веб-API](xref:tutorials/first-web-api)
+### [Использование веб-API с MongoDB](xref:tutorials/first-mongo-app)
 ## Веб-приложения
-### Razor Pages
-#### [Введение в Razor Pages](xref:razor-pages/index)
-
-#### [Руководство по Razor Pages](xref:tutorials/razor-pages/index)
-##### [Начало работы](xref:tutorials/razor-pages/razor-pages-start)
-##### [Добавление модели](xref:tutorials/razor-pages/model)
-##### [Формирование шаблонов](xref:tutorials/razor-pages/page)
-##### [Работа с базой данных](xref:tutorials/razor-pages/sql)
-##### [Обновление страниц](xref:tutorials/razor-pages/da1)
-##### [Добавление поиска](xref:tutorials/razor-pages/search)
-##### [Добавление нового поля](xref:tutorials/razor-pages/new-field)
-##### [Добавление проверки](xref:tutorials/razor-pages/validation)
+### [Razor Pages](xref:tutorials/razor-pages/index)
 
 ### MVC
 #### [С Visual Studio](xref:tutorials/first-mvc-app/index)
@@ -165,7 +156,9 @@
 # Веб-API
 ## [Обзор набора средств Visual Studio для Unity](xref:web-api/index)
 
-## [Создание веб-API](xref:tutorials/first-web-api)
+## Учебники
+### [Создание веб-API](xref:tutorials/first-web-api)
+### [Использование веб-API с MongoDB](xref:tutorials/first-mongo-app)
 
 ## Swagger (OpenAPI)
 ### [Обзор набора средств Visual Studio для Unity](xref:tutorials/web-api-help-pages-using-swagger)
@@ -420,7 +413,7 @@
 ## [Маркеры изменений](xref:fundamentals/change-tokens)
 ## [Открытый веб-интерфейс для .NET (OWIN)](xref:fundamentals/owin)
 ## [Фоновые задачи с размещенными службами](xref:fundamentals/host/hosted-services)
-## [Усовершенствование приложения из внешней сборки](xref:fundamentals/configuration/platform-specific-configuration)
+## [Размещение начальных сборок](xref:fundamentals/configuration/platform-specific-configuration)
 ## [Метапакет Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app)
 ## [Метапакет Microsoft.AspNetCore.All](xref:fundamentals/metapackage)
 ## [Ведение журнала с LoggerMessage](xref:fundamentals/logging/loggermessage)
