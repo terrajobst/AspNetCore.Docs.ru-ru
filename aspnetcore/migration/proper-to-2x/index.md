@@ -3,14 +3,14 @@ title: Миграция с ASP.NET на ASP.NET Core
 author: isaac2004
 description: Здесь вы найдете указания по миграции существующих приложений MVC ASP.NET или веб-API на ASP.NET Core.web
 ms.author: scaddie
-ms.date: 08/27/2017
+ms.date: 12/10/2018
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 1a3e3f0b514c262cfe13ea8391ab97b95aa4384e
-ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
+ms.openlocfilehash: 6808fefb890dcdec6abdd0604ab61dfd2573d910
+ms.sourcegitcommit: 1872d2e6f299093c78a6795a486929ffb0bbffff
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50148802"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53216798"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Миграция с ASP.NET на ASP.NET Core
 
@@ -66,7 +66,7 @@ ASP.NET Core использует аналогичный подход, но не
 
 `Startup` должен включать метод `Configure`. В `Configure` добавьте в конвейер необходимое ПО промежуточного слоя. В следующем примере (на основе шаблона веб-сайта по умолчанию) используются несколько методов расширения для настройки конвейера с поддержкой следующих компонентов.
 
-* [BrowserLink](http://vswebessentials.com/features/browserlink)
+* [Привязывание к браузеру](xref:client-side/using-browserlink)
 * Страницы ошибок
 * Статические файлы
 * ASP.NET Core MVC

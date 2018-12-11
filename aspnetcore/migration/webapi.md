@@ -4,14 +4,14 @@ author: ardalis
 description: Узнайте, как перенести реализацию веб-API из веб-API ASP.NET 4.x в ASP.NET Core MVC.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/01/2018
+ms.date: 12/10/2018
 uid: migration/webapi
-ms.openlocfilehash: f5d886a7c3182b5cd372762ade67c2e748051049
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 9806c502f8f5244740f9f9614657a40cfaa03314
+ms.sourcegitcommit: 1872d2e6f299093c78a6795a486929ffb0bbffff
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207281"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53216837"
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>Перенос из веб-API ASP.NET в ASP.NET Core
 
@@ -23,8 +23,7 @@ ms.locfileid: "50207281"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [Пакет SDK для .NET Core 2.1 или более поздней версии](https://www.microsoft.com/net/download/all)
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.7.3 или более поздней версии с рабочей нагрузкой **ASP.NET и веб-разработка**
+[!INCLUDE [net-core-prereqs-vs-2.2](../includes/net-core-prereqs-vs-2.2.md)]
 
 ## <a name="review-aspnet-4x-web-api-project"></a>Просмотрите проект веб-API ASP.NET 4.x
 
@@ -34,15 +33,15 @@ ms.locfileid: "50207281"
 
 [!code-csharp[](webapi/sample/ProductsApp/Global.asax.cs?highlight=14)]
 
-`WebApiConfig` определяется в *App_Start* папки. Он имеет только один статический `Register` метод:
+`WebApiConfig` Класс находится в *App_Start* папки и имеет статическое `Register` метод:
 
-[!code-csharp[](webapi/sample/ProductsApp/App_Start/WebApiConfig.cs?highlight=15-20)]
+[!code-csharp[](webapi/sample/ProductsApp/App_Start/WebApiConfig.cs)]
 
 Этот класс настраивает [маршрутизации с помощью атрибутов](/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2), несмотря на то, что он фактически не используется в проекте. Он также настраивает таблицы маршрутизации, который используется в веб-API ASP.NET. В этом случае веб-API ASP.NET 4.x ожидает, что URL-адреса в соответствии с форматом `/api/{controller}/{id}`, с помощью `{id}` дополнительными.
 
-*ProductsApp* проект включает в себя один контроллер. Контроллер наследует от `ApiController` и предоставляет два метода:
+*ProductsApp* проект включает в себя один контроллер. Контроллер наследует от `ApiController` и содержит два действия:
 
-[!code-csharp[](webapi/sample/ProductsApp/Controllers/ProductsController.cs?highlight=19,24)]
+[!code-csharp[](webapi/sample/ProductsApp/Controllers/ProductsController.cs?highlight=28,33)]
 
 `Product` Модели, используемой `ProductsController` — это простой класс:
 
@@ -88,6 +87,12 @@ ASP.NET Core не использует *App_Start* папку или *Global.asa
 1. Удалите `using System.Web.Http;`.
 1. Изменение `GetProduct` тип возвращаемого значения действия из `IHttpActionResult` для `ActionResult<Product>`.
 
+Упростите `GetProduct` действия `return` следующим образом:
+
+```csharp
+return product;
+```
+
 ## <a name="configure-routing"></a>Настройка маршрутизации
 
 Настройка маршрутизации следующим образом:
@@ -102,11 +107,19 @@ ASP.NET Core не использует *App_Start* папку или *Global.asa
     Предыдущий [[Route]](xref:Microsoft.AspNetCore.Mvc.RouteAttribute) атрибут настраивает шаблон маршрутизации атрибутов контроллера. [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) атрибут делает Маршрутизация атрибутов является обязательным для всех действий в контроллер.
 
     Маршрутизация с помощью атрибутов поддерживают только токены, такие как `[controller]` и `[action]`. Во время выполнения каждый токен заменяется именем контроллера или действия, соответственно, к которому был применен атрибут. Токены сократить число соответствующих строк в проекте. Маркеры также убедиться в том случае, маршруты будут синхронизированы соответствующие контроллеры и действия при автоматически переименовать рефакторинг применяются.
+1. Задайте режим совместимости проекта ASP.NET Core 2.2:
+
+    [!code-csharp[](webapi/sample/ProductsCore/Startup.cs?name=snippet_ConfigureServices&highlight=4)]
+
+    Предыдущего изменения:
+
+    * Необходим для использования `[ApiController]` атрибут на уровне контроллера.
+    * Позволяет способно нарушить особенности поведения, обусловленные в ASP.NET Core 2.2.
 1. Включить запросы HTTP Get к `ProductController` действия:
     * Применить [[HttpGet]](xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute) атрибут `GetAllProducts` действие.
     * Применить `[HttpGet("{id}")]` атрибут `GetProduct` действие.
 
-После изменения и удаления неиспользуемых `using` инструкций, *ProductsController.cs* файл выглядит следующим образом:
+После указанные выше изменения и удаления неиспользуемых `using` инструкций, *ProductsController.cs* файл выглядит следующим образом:
 
 [!code-csharp[](webapi/sample/ProductsCore/Controllers/ProductsController.cs)]
 
@@ -147,3 +160,4 @@ ASP.NET Core не использует *App_Start* папку или *Global.asa
 
 * <xref:web-api/index>
 * <xref:web-api/action-return-types>
+* <xref:mvc/compatibility-version>
