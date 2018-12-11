@@ -29,7 +29,7 @@
 ### [EF Core с MVC, подробный учебник](xref:data/ef-mvc/index)
 
 # Основы
-## [Обзор набора средств Visual Studio для Unity](xref:fundamentals/index)
+## [Обзор](xref:fundamentals/index)
 ## [Запуск приложений](xref:fundamentals/startup)
 ## [Введение зависимостей (службы)](xref:fundamentals/dependency-injection)
 ## [Routing](xref:fundamentals/routing)
@@ -39,15 +39,15 @@
 ## [Ведение журнала](xref:fundamentals/logging/index)
 ## [Обработка ошибок](xref:fundamentals/error-handling)
 ## ПО промежуточного слоя
-### [Обзор набора средств Visual Studio для Unity](xref:fundamentals/middleware/index)
+### [Обзор](xref:fundamentals/middleware/index)
 ### [Фабричное ПО промежуточного слоя](xref:fundamentals/middleware/extensibility)
 ### [Фабричное ПО промежуточного слоя со сторонним контейнером](xref:fundamentals/middleware/extensibility-third-party-container)
 ## Ведущее приложение
-### [Обзор набора средств Visual Studio для Unity](xref:fundamentals/host/index)
+### [Обзор](xref:fundamentals/host/index)
 ### [Веб-узел](xref:fundamentals/host/web-host)
 ### [Универсальный узел](xref:fundamentals/host/generic-host)
 ## Серверы
-### [Обзор набора средств Visual Studio для Unity](xref:fundamentals/servers/index)
+### [Обзор](xref:fundamentals/servers/index)
 ### [Kestrel](xref:fundamentals/servers/kestrel)
 ### [Модуль ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
 ### [HTTP.sys](xref:fundamentals/servers/httpsys)
@@ -55,7 +55,7 @@
 
 # Веб-приложения
 ## Razor Pages
-### [Обзор набора средств Visual Studio для Unity](xref:razor-pages/index)
+### [Обзор](xref:razor-pages/index)
 ### [Руководство по Razor Pages](xref:tutorials/razor-pages/index)
 #### [Начало работы](xref:tutorials/razor-pages/razor-pages-start)
 #### [Добавление модели](xref:tutorials/razor-pages/model)
@@ -72,10 +72,10 @@
 ### [Отправка файлов](xref:razor-pages/upload-files)
 ### [Пакет SDK для Razor](xref:razor-pages/sdk)
 ## MVC
-### [Обзор набора средств Visual Studio для Unity](xref:mvc/overview)
+### [Обзор](xref:mvc/overview)
 ### Учебники
 #### MVC с Visual Studio
-##### [Обзор набора средств Visual Studio для Unity](xref:tutorials/first-mvc-app/index)
+##### [Обзор](xref:tutorials/first-mvc-app/index)
 ##### [Начало работы](xref:tutorials/first-mvc-app/start-mvc)
 ##### [Добавление контроллера](xref:tutorials/first-mvc-app/adding-controller)
 ##### [Добавление представления](xref:tutorials/first-mvc-app/adding-view)
@@ -87,7 +87,7 @@
 ##### [Добавление проверки](xref:tutorials/first-mvc-app/validation)
 ##### [Изучение методов Details и Delete](xref:tutorials/first-mvc-app/details)
 #### MVC с Visual Studio Code
-##### [Обзор набора средств Visual Studio для Unity](xref:tutorials/first-mvc-app-xplat/index)
+##### [Обзор](xref:tutorials/first-mvc-app-xplat/index)
 ##### [Начало работы](xref:tutorials/first-mvc-app-xplat/start-mvc)
 ##### [Добавление контроллера](xref:tutorials/first-mvc-app-xplat/adding-controller)
 ##### [Добавление представления](xref:tutorials/first-mvc-app-xplat/adding-view)
@@ -99,7 +99,7 @@
 ##### [Добавление проверки](xref:tutorials/first-mvc-app-xplat/validation)
 ##### [Изучение методов Details и Delete](xref:tutorials/first-mvc-app/details)
 #### MVC с Visual Studio для Mac
-##### [Обзор набора средств Visual Studio для Unity](xref:tutorials/first-mvc-app-mac/index)
+##### [Обзор](xref:tutorials/first-mvc-app-mac/index)
 ##### [Начало работы](xref:tutorials/first-mvc-app-mac/start-mvc)
 ##### [Добавление контроллера](xref:tutorials/first-mvc-app-mac/adding-controller)
 ##### [Добавление представления](xref:tutorials/first-mvc-app-mac/adding-view)
@@ -120,7 +120,7 @@
 ### [Модульное тестирование](xref:mvc/controllers/testing)
 ## [Состояние сеанса и приложения](xref:fundamentals/app-state)
 ## Вспомогательные функции тегов
-### [Обзор набора средств Visual Studio для Unity](xref:mvc/views/tag-helpers/intro)
+### [Обзор](xref:mvc/views/tag-helpers/intro)
 ### [Создание вспомогательных функций тегов](xref:mvc/views/tag-helpers/authoring)
 ### [Использование вспомогательных функций тегов в формах](xref:mvc/views/working-with-forms)
 ### [Компоненты вспомогательной функции тегов](xref:mvc/views/tag-helpers/th-components)
@@ -154,14 +154,14 @@
 ### [Совместимая версия](xref:mvc/compatibility-version)
 
 # Веб-API
-## [Обзор набора средств Visual Studio для Unity](xref:web-api/index)
+## [Обзор](xref:web-api/index)
 
 ## Учебники
 ### [Создание веб-API](xref:tutorials/first-web-api)
 ### [Использование веб-API с MongoDB](xref:tutorials/first-mongo-app)
 
 ## Swagger (OpenAPI)
-### [Обзор набора средств Visual Studio для Unity](xref:tutorials/web-api-help-pages-using-swagger)
+### [Обзор](xref:tutorials/web-api-help-pages-using-swagger)
 ### [Начало работы с Swashbuckle](xref:tutorials/get-started-with-swashbuckle)
 ### [Начало работы с NSwag](xref:tutorials/get-started-with-nswag)
 ## [Типы возвращаемых значений действий](xref:web-api/action-return-types)
@@ -191,7 +191,7 @@
 ### [Клиент JavaScript](xref:signalr/javascript-client)
 ### [Справочник по API JavaScript](/javascript/api/?view=signalr-js-latest)
 ## Размещение и масштабирование
-### [Обзор набора средств Visual Studio для Unity](xref:signalr/scale)
+### [Обзор](xref:signalr/scale)
 ### [Служба Azure SignalR](/azure/azure-signalr/signalr-overview)
 ### [Канал обмена Redis](xref:signalr/redis-backplane)
 ## [Конфигурация](xref:signalr/configuration)
@@ -215,7 +215,7 @@
 # Доступ к данным
 ## Учебники
 ### EF Core с Razor Pages
-#### [Обзор набора средств Visual Studio для Unity](xref:data/ef-rp/index)
+#### [Обзор](xref:data/ef-rp/index)
 #### [Начало работы](xref:data/ef-rp/intro)
 #### [Создание, чтение, обновление и удаление](xref:data/ef-rp/crud)
 #### [Сортировка, фильтрация, разбиение по страницам и группировка](xref:data/ef-rp/sort-filter-page)
@@ -227,7 +227,7 @@
 ### [EF Core с MVC, новая база данных](/ef/core/get-started/aspnetcore/new-db)
 ### [EF Core с MVC, существующая база данных](/ef/core/get-started/aspnetcore/existing-db)
 ### EF Core с MVC, подробный учебник
-#### [Обзор набора средств Visual Studio для Unity](xref:data/ef-mvc/index)
+#### [Обзор](xref:data/ef-mvc/index)
 #### [Начало работы](xref:data/ef-mvc/intro)
 #### [Создание, чтение, обновление и удаление](xref:data/ef-mvc/crud)
 #### [Сортировка, фильтрация, разбиение по страницам и группировка](xref:data/ef-mvc/sort-filter-page)
@@ -246,11 +246,11 @@
 ### [Хранилище таблиц](/azure/vs-storage-aspnet5-getting-started-tables/)
 
 # Клиентская разработка
-## [Обзор набора средств Visual Studio для Unity](xref:client-side/index)
+## [Обзор](xref:client-side/index)
 ## [Gulp](xref:client-side/using-gulp)
 ## [Grunt](xref:client-side/using-grunt)
 ## LibMan
-### [Обзор набора средств Visual Studio для Unity](xref:client-side/libman/index)
+### [Обзор](xref:client-side/libman/index)
 ### [CLI](xref:client-side/libman/libman-cli)
 ### [Visual Studio](xref:client-side/libman/libman-vs)
 ## [Bower](xref:client-side/bower)
@@ -258,30 +258,30 @@
 ## [Объединение и минификация](xref:client-side/bundling-and-minification)
 ## [Привязывание к браузеру](xref:client-side/using-browserlink)
 ## Одностраничные приложения
-### [Обзор набора средств Visual Studio для Unity](xref:spa/index)
+### [Обзор](xref:spa/index)
 ### [Angular](xref:spa/angular)
 ### [React](xref:spa/react)
 ### [React с Redux](xref:spa/react-with-redux)
 ### [JavaScriptServices](xref:client-side/spa-services)
 
 # Размещение и развертывание
-## [Обзор набора средств Visual Studio для Unity](xref:host-and-deploy/index)
+## [Обзор](xref:host-and-deploy/index)
 ## Размещение в службе приложений Azure
-### [Обзор набора средств Visual Studio для Unity](xref:host-and-deploy/azure-apps/index)
+### [Обзор](xref:host-and-deploy/azure-apps/index)
 ### [Публикация с помощью Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs)
 ### [Публикация с помощью инструментов CLI](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 ### [Публикация с помощью Visual Studio и Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment)
 ### [Непрерывное развертывание с Azure Pipelines](/azure/devops/pipelines/get-started-yaml)
 ### [Устранение ошибок запуска](xref:host-and-deploy/azure-apps/troubleshoot)
 ## DevOps 
-### [Обзор набора средств Visual Studio для Unity](xref:azure/devops/index)
+### [Обзор](xref:azure/devops/index)
 ### [Инструменты и файлы для скачивания](xref:azure/devops/tools-and-downloads)
 ### [Развертывание в службу приложений](xref:azure/devops/deploy-to-app-service)
 ### [Непрерывная интеграция и развертывание](xref:azure/devops/cicd)
 ### [Мониторинг и устранение неполадок](xref:azure/devops/monitor)
 ### [Следующие шаги](xref:azure/devops/next-steps)
 ## Размещение в Windows с помощью IIS
-### [Обзор набора средств Visual Studio для Unity](xref:host-and-deploy/iis/index)
+### [Обзор](xref:host-and-deploy/iis/index)
 ### [Устранение неполадок в IIS](xref:host-and-deploy/iis/troubleshoot)
 ### [Справочник по модулю ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 ### [Поддержка IIS в Visual Studio](xref:host-and-deploy/iis/development-time-iis-support)
@@ -290,7 +290,7 @@
 ## [Размещение в Linux с использованием Nginx](xref:host-and-deploy/linux-nginx)
 ## [Размещение в Linux с использованием Apache](xref:host-and-deploy/linux-apache)
 ## Размещение в Docker
-### [Обзор набора средств Visual Studio для Unity](xref:host-and-deploy/docker/index)
+### [Обзор](xref:host-and-deploy/docker/index)
 ### [Создание образов Docker](/dotnet/articles/core/docker/building-net-docker-images)
 ### [Инструменты Visual Studio](xref:host-and-deploy/docker/visual-studio-tools-for-docker)
 ### [Публикация в образ Docker](/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
@@ -302,7 +302,7 @@
 ## [Проверки работоспособности](xref:host-and-deploy/health-checks)
 
 # Безопасность и удостоверения
-## [Обзор набора средств Visual Studio для Unity](xref:security/index)
+## [Обзор](xref:security/index)
 ## Проверка подлинности
 ### [Общие сведения об Identity](xref:security/authentication/identity)
 ### [Удостоверение шаблона](xref:security/authentication/scaffold-identity)
@@ -313,7 +313,7 @@
 ### [Настройка проверки подлинности Windows](xref:security/authentication/windowsauth)
 ### [Пользовательские поставщики хранилищ для Identity](xref:security/authentication/identity-custom-storage-providers)
 ### Внешние поставщики
-#### [Обзор набора средств Visual Studio для Unity](xref:security/authentication/social/index)
+#### [Обзор](xref:security/authentication/social/index)
 #### [Проверка подлинности Facebook](xref:security/authentication/facebook-logins)
 #### [Проверка подлинности Twitter](xref:security/authentication/twitter-logins)
 #### [Проверка подлинности Google](xref:security/authentication/google-logins)
@@ -326,7 +326,7 @@
 ### [Двухфакторная проверка подлинности с помощью SMS](xref:security/authentication/2fa)
 ### [Использование проверки подлинности с помощью файлов cookie без Identity](xref:security/authentication/cookie)
 ### Azure Active Directory
-#### [Обзор набора средств Visual Studio для Unity](xref:security/authentication/azure-active-directory/index)
+#### [Обзор](xref:security/authentication/azure-active-directory/index)
 #### [Интеграция Azure AD в веб-приложение](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
 #### [Интеграция Azure AD B2C в веб-приложение](xref:security/authentication/azure-ad-b2c)
 #### [Интеграция Azure AD B2C в веб-API](xref:security/authentication/azure-ad-b2c-webapi)
@@ -336,7 +336,7 @@
 ### [Защита приложений ASP.NET Core с помощью проверки подлинности в службе приложений Azure (Easy Auth)](/azure/app-service/app-service-authentication-overview)
 ### [Учетные записи отдельных пользователей](xref:security/authentication/individual)
 ## Авторизация
-### [Обзор набора средств Visual Studio для Unity](xref:security/authorization/introduction)
+### [Обзор](xref:security/authorization/introduction)
 ### [Создание веб-приложения с авторизацией](xref:security/authorization/secure-data)
 ### [Соглашения об авторизации Razor Pages](xref:security/authorization/razor-pages-authorization)
 ### [Простая авторизация](xref:security/authorization/simple)
@@ -349,28 +349,28 @@
 ### [Авторизация на основе представлений](xref:security/authorization/views)
 ### [Ограничение идентификаторов по схеме](xref:security/authorization/limitingidentitybyscheme)
 ## Защита данных
-### [Обзор набора средств Visual Studio для Unity](xref:security/data-protection/introduction)
+### [Обзор](xref:security/data-protection/introduction)
 ### [API защиты данных](xref:security/data-protection/using-data-protection)
 ### Потребительские API
-#### [Обзор набора средств Visual Studio для Unity](xref:security/data-protection/consumer-apis/overview)
+#### [Обзор](xref:security/data-protection/consumer-apis/overview)
 #### [Строки назначений](xref:security/data-protection/consumer-apis/purpose-strings)
 #### [Иерархия назначений и мультитенантность](xref:security/data-protection/consumer-apis/purpose-strings-multitenancy)
 #### [Хэшированные пароли](xref:security/data-protection/consumer-apis/password-hashing)
 #### [Ограничение времени существования защищенных полезных данных](xref:security/data-protection/consumer-apis/limited-lifetime-payloads)
 #### [Снятие защиты полезных данных, ключи которых были отозваны](xref:security/data-protection/consumer-apis/dangerous-unprotect)
 ### Конфигурация
-#### [Обзор набора средств Visual Studio для Unity](xref:security/data-protection/configuration/index)
+#### [Обзор](xref:security/data-protection/configuration/index)
 #### [Настройка защиты данных](xref:security/data-protection/configuration/overview)
 #### [Параметры по умолчанию](xref:security/data-protection/configuration/default-settings)
 #### [Политики уровня компьютера](xref:security/data-protection/configuration/machine-wide-policy)
 #### [Сценарии без введения зависимостей](xref:security/data-protection/configuration/non-di-scenarios)
 ### API расширяемости
-#### [Обзор набора средств Visual Studio для Unity](xref:security/data-protection/extensibility/index)
+#### [Обзор](xref:security/data-protection/extensibility/index)
 #### [Расширяемость базового шифрования](xref:security/data-protection/extensibility/core-crypto)
 #### [Расширяемость управления ключами](xref:security/data-protection/extensibility/key-management)
 #### [Различные API](xref:security/data-protection/extensibility/misc-apis)
 ### Реализация
-#### [Обзор набора средств Visual Studio для Unity](xref:security/data-protection/implementation/index)
+#### [Обзор](xref:security/data-protection/implementation/index)
 #### [Сведения о шифровании с проверкой подлинности](xref:security/data-protection/implementation/authenticated-encryption-details)
 #### [Формирование подключа и шифрование с проверкой подлинности](xref:security/data-protection/implementation/subkeyderivation)
 #### [Заголовки контекста](xref:security/data-protection/implementation/context-headers)
@@ -381,7 +381,7 @@
 #### [Формат хранилища ключей](xref:security/data-protection/implementation/key-storage-format)
 #### [Временные поставщики защиты данных](xref:security/data-protection/implementation/key-storage-ephemeral)
 ### Совместимость
-#### [Обзор набора средств Visual Studio для Unity](xref:security/data-protection/compatibility/index)
+#### [Обзор](xref:security/data-protection/compatibility/index)
 #### [Замена <machineKey> в ASP.NET](xref:security/data-protection/compatibility/replacing-machinekey)
 ## [Защита секретов в развертывании](xref:security/app-secrets)
 ## [Принудительное использование HTTPS](xref:security/enforcing-ssl)
@@ -395,9 +395,9 @@
 ## [Список надежных IP-адресов](xref:security/ip-safelist)
 
 # Производительность
-## [Обзор набора средств Visual Studio для Unity](xref:performance/performance-best-practices)
+## [Обзор](xref:performance/performance-best-practices)
 ##  Кэширование откликов
-### [Обзор набора средств Visual Studio для Unity](xref:performance/caching/response)
+### [Обзор](xref:performance/caching/response)
 ### [Кэш в памяти](xref:performance/caching/memory)
 ### [Распределенное кэширование](xref:performance/caching/distributed)
 ### [ПО промежуточного слоя для кэширования ответов](xref:performance/caching/middleware)
@@ -423,10 +423,10 @@
 ## [С 2.1 до 2.2](xref:migration/21-to-22)
 ## [С 2.0 до 2.1](xref:migration/20_21)
 ## С 1.x до 2.0
-### [Обзор набора средств Visual Studio для Unity](xref:migration/1x-to-2x/index)
+### [Обзор](xref:migration/1x-to-2x/index)
 ### [Проверка подлинности и удостоверения](xref:migration/1x-to-2x/identity-2x)
 ## Миграция с ASP.NET на ASP.NET Core
-### [Обзор набора средств Visual Studio для Unity](xref:migration/proper-to-2x/index)
+### [Обзор](xref:migration/proper-to-2x/index)
 ### [MVC](xref:migration/mvc)
 ### [Веб-API](xref:migration/webapi)
 ### [Конфигурация](xref:migration/configuration)
